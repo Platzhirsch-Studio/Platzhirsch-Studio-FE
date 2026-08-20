@@ -1,0 +1,49 @@
+{
+  "name": "platzhirsch-studio",
+  "version": "0.1.0",
+  "private": true,
+  "browserslist": {
+    "production": [
+      "chrome >= 90",
+      "firefox >= 90",
+      "safari >= 15",
+      "edge >= 90",
+      "ios >= 15",
+      "android >= 90"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "scripts": {
+    "dev": "next dev ",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "cookies-next": "^6.1.0",
+    "lucide-react": "^0.539.0",
+    "next": "^16.2.9",
+    "next-intl": "^4.13.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-icons": "^5.5.0",
+    "react-photoswipe-gallery": "^4.1.2",
+    "react-share": "^5.2.2",
+    "react-slick": "^0.31.0",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/estree": "^1.0.9",
+    "@types/json-schema": "^7.0.15",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.9",
+    "tailwindcss": "^4.3.1"
+  }
+}
