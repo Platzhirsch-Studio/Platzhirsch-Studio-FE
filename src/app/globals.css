@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+
+body {
+  background: #ffffff;
+  color: #171717;
+  /* --font-montserrat is set by next/font in [locale]/layout.js */
+  font-family: var(--font-montserrat), "Montserrat", Helvetica, Arial, sans-serif;
+}
+
+/* Used by scrollable strips (product gallery thumbnails, banner nav links)
+   that pair this with their own visible prev/next controls, so the native
+   scrollbar would just be visual clutter. */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+

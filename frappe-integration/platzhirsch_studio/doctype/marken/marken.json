@@ -1,0 +1,60 @@
+{
+  "doctype": "DocType",
+  "name": "Marken",
+  "module": "Platzhirsch Studio",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "track_changes": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "autoname": "hash",
+  "title_field": "name1",
+  "search_fields": "name1,status",
+  "engine": "InnoDB",
+  "description": "One doctype for every brand shown on the site — the brand-story pages (/ueber-uns/marken/[title] + its en/fr/it siblings), the brand-listing grid, the brand-detail Open Graph/JSON-LD, and the commercial product-listing page's brand header (/produkte/[title]). Reverse-engineered from every place the Next.js frontend reads a `marke.*` field (src/components/MarkenItems/markenitems.js, src/components/ProdukteItem/produkteitem.js, src/lib/api/fetchMarkenData.js, src/lib/seo/brandSchema.js, src/app/[locale]/{ueber-uns/marken,about-us/brands,a-propos/marques,chi-siamo/marche}/[title]/page.js). `Produkte.marken` links to this doctype by its `name1`-derived slug context — see frappe-integration/README.md.",
+  "fields": [
+    { "fieldname": "core_section", "fieldtype": "Section Break", "label": "Core" },
+    { "fieldname": "name1", "fieldtype": "Data", "label": "Markenname", "reqd": 1, "unique": 1, "in_list_view": 1, "in_global_search": 1, "description": "The ONLY name field the frontend actually reads (marke.name1) — used for the <h1>, the URL slug (generateSlug(name1)), breadcrumbs, JSON-LD Brand.name, generateStaticParams, and the sitemap. Do not confuse with the doc's own Frappe `name` (autoname hash) — a few frontend files (src/app/[locale]/ueber-uns/marken/[title]/page.js ~line 97/114) read `marke.name` for a description/alt fallback, which is a pre-existing frontend bug reading the docname instead of name1, not a field this doctype needs to provide." },
+    { "fieldname": "column_break_core", "fieldtype": "Column Break" },
+    { "fieldname": "status", "fieldtype": "Select", "options": "Aktiv\nInaktiv", "default": "Aktiv", "label": "Status", "reqd": 1, "in_list_view": 1, "in_standard_filter": 1, "description": "Every brand-facing page (story page, listing grid, product-listing header) filters/404s on `=== \"Aktiv\"` client-side — the API does not filter this itself, matching how Produkte's raw endpoints work." },
+    { "fieldname": "es_gibt_produkte", "fieldtype": "Check", "default": "0", "label": "Hat Produkte", "in_standard_filter": 1, "description": "Gates whether the brand appears on the /produkte overview (fetchMarkenWithProducts in fetchMarkenData.js checks `es_gibt_produkte === 1 || \"1\"`). Not related to whether any `Produkte` records actually link here — purely an editorial toggle." },
+
+    { "fieldname": "facts_section", "fieldtype": "Section Break", "label": "Marken-Fakten", "collapsible": 1 },
+    { "fieldname": "grundungsjahr", "fieldtype": "Data", "label": "Gründungsjahr" },
+    { "fieldname": "herkunftsland", "fieldtype": "Data", "label": "Herkunftsland" },
+    { "fieldname": "column_break_facts", "fieldtype": "Column Break" },
+    { "fieldname": "grunder", "fieldtype": "Data", "label": "Gründer" },
+    { "fieldname": "firmenlink", "fieldtype": "Data", "options": "URL", "label": "Offizielle Website", "description": "Brand's own official site. brandSchema.js normalizes this down to its origin for the JSON-LD Brand.sameAs link; the story page also links out to it directly." },
+
+    { "fieldname": "media_section", "fieldtype": "Section Break", "label": "Medien" },
+    { "fieldname": "logo", "fieldtype": "Attach Image", "label": "Logo", "description": "Used two places: the brand-listing grid (fetchMarkenData default export returns it as `images`) and the JSON-LD Brand.logo (brandSchema.js) — NOT the hero/gallery image on the story page, that's bild_anhagen below." },
+    { "fieldname": "column_break_media", "fieldtype": "Column Break" },
+    { "fieldname": "bild_anhagen", "fieldtype": "Table", "options": "Marken Bild", "label": "Bildergalerie", "description": "Hero image + gallery slider on the brand-story page, and the Open Graph/Twitter/JSON-LD primary image (always reads row [0]). Row order = display order. Spelled with ONE 'n' (bild_anhagen) — this is deliberately the opposite spelling from Produkte's `bild_anhangen` (two n's); each doctype is internally consistent, just don't cross-copy the fieldname between them." },
+
+    { "fieldname": "beschreibung_section", "fieldtype": "Section Break", "label": "Beschreibung (Über die Marke)" },
+    { "fieldname": "beschreibung", "fieldtype": "Text Editor", "label": "Beschreibung (DE)" },
+    { "fieldname": "beschreibung_en", "fieldtype": "Text Editor", "label": "Description (EN)" },
+    { "fieldname": "column_break_beschreibung", "fieldtype": "Column Break" },
+    { "fieldname": "beschreibung_fr", "fieldtype": "Text Editor", "label": "Description (FR)" },
+    { "fieldname": "beschreibung_it", "fieldtype": "Text Editor", "label": "Descrizione (IT)" },
+
+    { "fieldname": "produkte_section", "fieldtype": "Section Break", "label": "Produkte (Sortiments-Beschreibung)", "description": "Not a list of actual Produkte records — free text describing the brand's product range, shown on the story page's \"Produkte\" block and used as the brand-detail meta-description fallback (`marke?.produkte`)." },
+    { "fieldname": "produkte", "fieldtype": "Text Editor", "label": "Produkte (DE)" },
+    { "fieldname": "produkte_en", "fieldtype": "Text Editor", "label": "Products (EN)" },
+    { "fieldname": "column_break_produkte", "fieldtype": "Column Break" },
+    { "fieldname": "produkte_fr", "fieldtype": "Text Editor", "label": "Produits (FR)" },
+    { "fieldname": "produkte_it", "fieldtype": "Text Editor", "label": "Prodotti (IT)" },
+
+    { "fieldname": "seo_section", "fieldtype": "Section Break", "label": "SEO", "collapsible": 1 },
+    { "fieldname": "metadata_description_de", "fieldtype": "Small Text", "label": "Meta Description (DE)" },
+    { "fieldname": "metadata_description_en", "fieldtype": "Small Text", "label": "Meta Description (EN)" },
+    { "fieldname": "column_break_seo", "fieldtype": "Column Break" },
+    { "fieldname": "metadata_description_fr", "fieldtype": "Small Text", "label": "Meta Description (FR)" },
+    { "fieldname": "metadata_description_it", "fieldtype": "Small Text", "label": "Meta Description (IT)" }
+  ],
+  "permissions": [
+    { "role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "export": 1, "print": 1, "email": 1, "share": 1 },
+    { "role": "Website Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "export": 1 }
+  ]
+}

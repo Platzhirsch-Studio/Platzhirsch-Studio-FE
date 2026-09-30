@@ -1,0 +1,859 @@
+{
+  "Navbar": {
+    "home": "CASA",
+    "products": "PRODOTTI",
+    "consultation": "CONSULENZA",
+    "about": "CHI SIAMO",
+    "platzhirsch": "PLATZHIRSCH",
+    "brands": "MARCHE",
+    "team": "TEAM",
+    "career": "CARRIERA",
+    "press": "STAMPA",
+    "partners": "PARTNER",
+    "news": "NOTIZIE",
+    "contact": "CONTATTO",
+    "wishlist": "LISTA DESIDERI",
+    "hours": "Mar–Ven: 10–18 · Sab: 10–14",
+    "search": "Cerca prodotti",
+    "searchBrands": "Marchi",
+    "searchCategories": "Categorie",
+    "searchCategoryBrands": "{category} per marchio",
+    "searchBrandCategories": "{brand} – Categorie",
+    "searchProductCount": "{count, plural, one {# prodotto} other {# prodotti}}",
+    "searchProducts": "Prodotti",
+    "searchNoResults": "Nessun risultato trovato",
+    "searchClear": "Cancella ricerca",
+    "languages": {
+      "en": "Inglese",
+      "de": "Tedesco",
+      "fr": "Francese",
+      "it": "Italiano"
+    }
+  },
+  "ProductsMenu": {
+    "indoor": "Indoor",
+    "outdoor": "Outdoor",
+    "groups": [
+      { "title": "Divani & Poltrone", "items": [
+        { "label": "Divani", "key": "sofas-couches" },
+        { "label": "Divani angolari", "key": "corner-sofas" },
+        { "label": "Divani letto", "key": "sleeper-sofas" },
+        { "label": "Chaise longue & Daybed", "key": "chaise-longues-daybeds" },
+        { "label": "Poltrone & Pouf", "key": "armchairs-stools" },
+        { "label": "Divani in pelle", "key": "leather-sofas" }
+      ] },
+      { "title": "Sedie & Tavoli", "items": [
+        { "label": "Sedie da pranzo", "key": "dining-chairs" },
+        { "label": "Sgabelli da bar", "key": "bar-stools" },
+        { "label": "Sedie da scrivania", "key": "desk-chairs" },
+        { "label": "Tavoli da pranzo", "key": "dining-tables" },
+        { "label": "Tavolini da caffè", "key": "coffee-tables" },
+        { "label": "Tavolini", "key": "side-tables" }
+      ] },
+      { "title": "Camera da letto", "items": [
+        { "label": "Letti", "key": "beds" },
+        { "label": "Comodini", "key": "night-tables" },
+        { "label": "Armadi", "key": "wardrobes" },
+        { "label": "Biancheria da letto", "key": "bedwear" }
+      ] },
+      { "title": "Contenitori", "items": [
+        { "label": "Madie & Cassettiere", "key": "sideboards-chests" },
+        { "label": "Scaffali", "key": "shelves" },
+        { "label": "Mobili TV", "key": "tv-low-units" },
+        { "label": "Vetrine", "key": "display-cabinets" },
+        { "label": "Piccoli mobili", "key": "small-furniture" }
+      ] },
+      { "title": "Outdoor", "items": [
+        { "label": "Tavoli da giardino", "key": "garden-tables" },
+        { "label": "Sedie da giardino", "key": "garden-chairs" },
+        { "label": "Mobili lounge & Daybed", "key": "lounge-furniture-daybeds" },
+        { "label": "Lettini prendisole", "key": "sun-loungers" },
+        { "label": "Ombrelloni", "key": "parasols" },
+        { "label": "Riscaldatori", "key": "heaters" }
+      ] },
+      { "title": "Accessori Casa", "items": [
+        { "label": "Lampade", "key": "lamps" },
+        { "label": "Tappeti", "key": "rugs" },
+        { "label": "Decorazioni", "key": "decor" },
+        { "label": "Specchi", "key": "mirrors" },
+        { "label": "Accessori da cucina", "key": "kitchen-accessories" },
+        { "label": "Cucine", "key": "kitchen" },
+        { "label": "Candele", "key": "candles" }
+      ] }
+    ]
+  },
+  "Buttons": {
+    "discover": "Scopri ora"
+  },
+  "ProductsPage": {
+    "title": "I Nostri Prodotti",
+    "description": "Estendi il tuo soggiorno all'esterno con mobili esclusivi di Minotti, Paola Lenti, Solpuri e altri. Stile, comfort e resistenza agli agenti atmosferici combinati.",
+    "keywords": {
+      "outdoormoebel": "Acquista mobili da esterno",
+      "luxus": "Mobili da giardino di lusso",
+      "terrassengestaltung": "Design della terrazza",
+      "minotti": "Minotti Outdoor",
+      "paola": "Mobili Paola Lenti",
+      "solpuri": "Mobili lounge Solpuri",
+      "design": "Design per spazi esterni",
+      "vorarlberg": "Mobili da terrazza Vorarlberg",
+      "studio": "Platzhirsch Home Living Outdoor"
+    },
+    "ogDescription": "Trasforma il tuo giardino, balcone o terrazza in un paradiso esterno elegante con design resistente agli agenti atmosferici di marchi top.",
+    "ogImageAlt": "Salotto esterno con mobili da giardino eleganti",
+    "twitterTitle": "Mobili & Design per Esterni | Platzhirsch Home Living",
+    "twitterDescription": "Mobili esclusivi per terrazze e giardini – scopri i nostri mondi esterni.",
+    "homeLink": "Home",
+    "productsLink": "Prodotti"
+  },
+  "Slider": {
+    "minotti": "Eleganza nella precisione architettonica",
+    "poliform": "Mobili di design per zona giorno e notte",
+    "classicon": "Pezzi d’arredo di designer contemporanei",
+    "rimadesio": "Eleganti sistemi a parete e scaffalature",
+    "treca_paris": "Dormire come un re in Francia",
+    "flos": "Design di illuminazione espressiva",
+    "poliform_cucine": "Cucine modulari dal design italiano"
+  },
+  "About": {
+    "imgAlt": "Informazioni sulla nostra azienda",
+    "ourMissionTitle": "La nostra missione",
+    "ourMissionDesc": "In Platzhirsch Home Living ci impegniamo a sviluppare soluzioni creative e ponderate che rafforzino le identità del marchio e rimangano nella memoria. Il nostro obiettivo è colmare il divario tra design e strategia per posizionare con successo i nostri clienti a lungo termine.",
+    "aboutUs": "CHI SIAMO",
+    "yourVisionTitle": "La vostra visione, la nostra motivazione",
+    "yourVisionDesc": "Platzhirsch Home Living rappresenta design creativo, soluzioni innovative e strategie di marca su misura. Diamo vita alle idee – in modo autentico, moderno ed efficace."
+  },
+  "TrendingProducts": {
+    "title": "Prodotti di tendenza",
+    "subtitle": "Scopri i mobili più trendy: eleganti, funzionali e di tendenza.",
+    "headline": "Esplora i prodotti",
+    "noImage": "Nessuna immagine",
+    "error": "Errore durante il caricamento dei prodotti",
+    "tryAgain": "Riprova",
+    "loadMore": "Carica di più"
+  },
+  "Benefits": {
+    "heading": "I nostri vantaggi per te",
+    "description": "Scopri come arrediamo perfettamente la tua casa con un servizio su misura,\nqualità premium e assistenza completa senza pensieri.",
+    "service1": {
+      "title": "Servizio di consegna premium",
+      "text": "Goditi il nostro servizio di consegna premium gratuito, inclusa la consegna professionale e la sistemazione dei tuoi nuovi mobili. Il nostro team lascia il tuo spazio impeccabile."
+    },
+    "service2": {
+      "title": "Servizio di montaggio professionale",
+      "text": "I nostri tecnici certificati assemblano ogni mobile per te, senza bisogno di attrezzi. Rilassati mentre ci occupiamo di tutto."
+    },
+    "service3": {
+      "title": "Consulenza di design personalizzata",
+      "text": "Collabora direttamente con i nostri specialisti di interior design per abbinare superfici, tessuti e dimensioni al tuo ambiente."
+    },
+    "service4": {
+      "title": "Garanzia a vita sulla qualità",
+      "text": "Garantiamo la nostra maestria artigianale. Ogni acquisto include una garanzia a vita contro i difetti di fabbricazione, per la tua massima tranquillità."
+    }
+  },
+  "Vernissage": {
+    "heading": "Inaugurazione",
+    "title": "Platzhirsch Home Living & l'artista Kaja El Attar",
+    "subtitle": "L'arte dell'abitare incontra le emozioni a colori.",
+    "date": "Venerdì 4 settembre 2026",
+    "time": "ore 17:00",
+    "location": "Platzhirsch, Landstrasse 9, Lochau",
+    "cta": "Vedi l'invito",
+    "artistLink": "https://kajaelattar.de/de/",
+    "altArtworkOne": "Dipinto di Kaja El Attar – un albero della vita colorato su fondo oro",
+    "altInterior": "Salotto Minotti presso Platzhirsch Home Living a Lochau",
+    "altArtworkTwo": "Opera calligrafica in bianco e nero di Kaja El Attar",
+    "popupTitle": "Invito all'inaugurazione",
+    "popupText": "Platzhirsch Home Living & l'artista Kaja El Attar. L'arte dell'abitare incontra le emozioni a colori – vi aspettiamo.",
+    "popupCta": "Scopri di più",
+    "popupDismiss": "Più tardi",
+    "close": "Chiudi"
+  },
+  "BlogSection": {
+    "heading": "Notizie",
+    "loading": "Caricamento delle notizie...",
+    "empty": "Nessun articolo trovato.",
+    "latest": "Ultime notizie",
+    "readMore": "Scopri di più"
+  },
+  "JobsDetails": {
+    "years": "Anni",
+    "monthly": "Mensile",
+    "jobType": "Tipo di lavoro",
+    "category": "Categoria",
+    "posted": "Pubblicato",
+    "salary": "Salario",
+    "experience": "Esperienza",
+    "application_end": "Fine candidatura",
+    "description": "Descrizione",
+    "applyNow": "Candidati ora",
+    "Requirements": "Requisiti",
+    "Responsibilities": "Responsabilità",
+    "Benefits": "Vantaggi",
+    "applySuccess": "Grazie per la tua candidatura! Ti contatteremo a breve.",
+    "applyError": "Errore durante l'invio della candidatura. Si prega di riprovare più tardi.",
+    "workingHours": "Orario di lavoro",
+    "statement": "Dichiarazione",
+    "shareWith": "Condividi con",
+    "summary": "Riepilogo"
+  },
+  "Choice": {
+    "bestChoice": "LA TUA SCELTA MIGLIORE",
+    "startProject": "Iniziamo il tuo nuovo progetto da sogno",
+    "sendNow": "INVIA MESSAGGIO ORA"
+  },
+  "Footer": {
+    "contactUs": "Contattaci",
+    "aboutUs": "CHI SIAMO",
+    "address": {
+      "line1": "Landstraße 9",
+      "line2": "6911 Lochau (Vorarlberg)",
+      "country": "Austria"
+    },
+    "emailLabel": "E-mail:",
+    "openingHoursTitle": "ORARI DI APERTURA",
+    "openingHours": {
+      "tuesday": "Martedì – 10:00 – 18:00",
+      "wednesday": "Mercoledì – 10:00 – 18:00",
+      "thursday": "Giovedì – 10:00 – 18:00",
+      "friday": "Venerdì – 10:00 – 18:00",
+      "saturday": "Sabato – 10:00 – 14:00",
+      "sunday": "Domenica – Chiuso",
+      "monday": "Lunedì – Chiuso"
+    },
+    "appointment": "Fuori orario, siamo disponibili su appuntamento.",
+    "brandsTitle": "TOP MARCHE",
+    "allBrands": "Tutte le marche",
+    "linksTitle": "LINK UTILI",
+    "newsletter": "Newsletter",
+    "contact": "Contatto",
+    "cafe": "Platzhirsch Cafe",
+    "privacySettings": "Impostazioni privacy",
+    "privacy": "Privacy",
+    "imprint": "Note legali",
+    "allRightsReserved": "Tutti i diritti riservati."
+  },
+  "Outdoor": {
+    "bannerTitle": "Prodotti",
+    "breadcrumbHome": "Home",
+    "breadcrumbProducts": "Prodotti",
+    "title": "Vivere &",
+    "secondTitle": "Abitare Senza Tempo",
+    "desc1": "Benvenuto nella pagina prodotti di Platzhirsch Home Living – il tuo spazio creativo per soluzioni d’arredo indoor e outdoor di stile. I nostri prodotti uniscono design minimalista a maestria artigianale e materiali di alta qualità. Ogni pezzo qui presente è pensato per essere funzionale e per creare un forte impatto visivo – sia in spazi privati, negozi o aree esterne.",
+    "desc2": "La nostra collezione indoor offre mobili e accessori moderni che valorizzano il carattere di ogni ambiente senza appesantirlo. Da eleganti sistemi di scaffali a sedute su misura e oggetti decorativi – curiamo ogni dettaglio. Linee pulite, materiali naturali e superfici resistenti assicurano prodotti che sapranno conquistarti oggi e in futuro.",
+    "desc3": "Per l’esterno proponiamo soluzioni di design che collegano perfettamente interno ed esterno. Le nostre sedute, tavoli e oggetti di design resistenti alle intemperie non solo affrontano gli elementi, ma invitano anche al relax – che sia in terrazza, in giardino o in spazi pubblici. Estetica e durata si fondono perfettamente."
+  },
+  "FeaturesSection": {
+    "header": {
+      "stepTitle": "Il Nostro Processo",
+      "headline": "Il tuo percorso verso un interni da sogno – Il nostro processo di consulenza",
+      "subline": "Sogni un interni unico? Il nostro studio realizza le tue idee con stile e qualità."
+    },
+    "features": [
+      {
+        "title": "Primo Contatto",
+        "description": "Come possiamo aiutarti? Il tuo primo contatto.",
+        "bullets": [
+          "E-mail",
+          "Telefono",
+          "Di persona"
+        ]
+      },
+      {
+        "title": "Visita in Negozio",
+        "description": "Siamo lieti di accoglierti. La tua visita presso Platzhirsch Home Living.",
+        "bullets": [
+          "Visita con o senza appuntamento",
+          "Anche fuori orario"
+        ]
+      },
+      {
+        "title": "Analisi",
+        "description": "Cosa desideri? Di cosa hai bisogno? La nostra consulenza.",
+        "bullets": [
+          "Analisi delle esigenze",
+          "Analisi dei desideri"
+        ]
+      },
+      {
+        "title": "Pianificazione",
+        "description": "Hai bisogno di supporto per immaginare? La nostra pianificazione preliminare.",
+        "bullets": [
+          "Pianificazione preliminare",
+          "Visualizzazione con rendering 3D"
+        ]
+      },
+      {
+        "title": "Offerta",
+        "description": "Vuoi conoscere i costi del tuo sogno? La nostra offerta.",
+        "bullets": [
+          "Invio dell’offerta",
+          "Conferma dell’ordine"
+        ]
+      },
+      {
+        "title": "Esecuzione",
+        "description": "La realizzazione del tuo progetto.",
+        "bullets": [
+          "Pianificazione dettagliata",
+          "Coordinamento degli artigiani"
+        ]
+      },
+      {
+        "title": "Consegna",
+        "description": "Il risultato è meraviglioso. Grazie per la fiducia.",
+        "bullets": [
+          "Consegna del progetto"
+        ]
+      }
+    ]
+  },
+  "MultiStepForm": {
+    "formTitle": "Richiesta",
+    "step1Title": "La mia richiesta riguarda",
+    "step2Title": "Il progetto deve essere realizzato",
+    "step3Title": "Descriva il suo progetto",
+    "step4Title": "I suoi dati di contatto",
+    "step1Options": [
+      "una nuova costruzione",
+      "una ristrutturazione",
+      "Altro"
+    ],
+    "step2Options": [
+      "in una casa unifamiliare",
+      "in un appartamento",
+      "in un immobile commerciale"
+    ],
+    "describePlaceholder": "Descriva il suo progetto...",
+    "continue": "Continua",
+    "send": "Invia",
+    "thankYou": "Grazie per la sua richiesta! La contatteremo a breve.",
+    "field": {
+      "vorname": "Nome",
+      "nachname": "Cognome",
+      "email": "Indirizzo email",
+      "telefon": "Numero di telefono"
+    },
+    "notification": {
+      "selectAll": "Selezioni tutte le opzioni.",
+      "describeRequired": "Compili il campo del messaggio.",
+      "describeMinLength": "Il messaggio deve contenere almeno 10 caratteri.",
+      "nameRequired": "Nome e cognome non possono essere vuoti.",
+      "emailInvalid": "Inserisca un indirizzo email valido.",
+      "telefonInvalid": "Inserisca un numero di telefono valido.",
+      "submitError": "Errore durante l’invio del messaggio."
+    }
+  },
+  "MarkenSection": {
+    "headline": "Marchi",
+    "subheadline": "Marchi di prestigio",
+    "paragraphs": [
+      "Il nostro portfolio riunisce una selezione esclusiva di marchi rinomati, sinonimo di eleganza senza tempo, artigianato di altissimo livello e design all'avanguardia. Ogni marchio che proponiamo racconta la propria storia e porta la sua firma inconfondibile nel mondo del design.",
+      "Questa varietà si ritrova in ogni ambiente della casa. Per la zona giorno e la sala da pranzo proponiamo imbottiti di Minotti, Bullfrog e Papadatos, tavoli e sedie di Desalto e Tonon, oltre ai classici del design firmati ClassiCon. Rimadesio e Poliform completano la selezione con sistemi contenitori, pareti divisorie e porte in vetro che uniscono architettura e arredamento.",
+      "Per cucina e bagno lavoriamo con next125, Schüller e Frost, oltre che con antoniolupi e Agape – marchi che dedicano la stessa attenzione alla funzione e alla qualità dei materiali. Per l'esterno ci sono Gloster, Paola Lenti, Solpuri, Sifas, EMU, Tuuci e Umbrosa: arredi, ombrelloni e tessuti che mantengono il loro carattere anche dopo anni all'aperto. Heatsail prolunga la stagione fino ai mesi più freddi con i suoi riscaldatori da esterno.",
+      "La luce è un capitolo a sé. Con Flos, Tom Dixon, Brand van Egmond e Quasar mettiamo in scena gli ambienti – dall'illuminazione di base più discreta al pezzo scultoreo. Treca si prende cura del riposo, Trapa dei pavimenti in legno locale, e gli accessori di Eichholtz, Lambert, Pomax, Qeeboo, 101 Copenhagen, Baobab e Alonpi danno a ogni stanza il tocco finale.",
+      "Scoprite da noi la varietà e l'esclusività di marchi conosciuti a livello internazionale per la loro straordinaria reputazione. Siamo orgogliosi di presentare ai nostri clienti marchi che soddisfano le esigenze più elevate e incarnano l'essenza del lusso e dell'innovazione. Nel nostro showroom di Lochau (Vorarlberg) potete vedere questi marchi in dialogo tra loro – e il nostro servizio di consulenza d'arredo vi aiuta a comporre un insieme armonioso."
+    ]
+  },
+  "TeamSection": {
+    "imageAlt": "Il nostro team al tavolo",
+    "pretitle": "Il nostro team",
+    "title": "Scopri tutto su di noi",
+    "paragraphs": [
+      "Passione per i marchi esclusivi, un occhio attento al design e una spiccata sensibilità per la personalità – questo e altro unisce il nostro straordinario team. Ognuno di noi porta non solo competenza e passione per ciò che fa, ma anche la capacità di comprendere e realizzare desideri e bisogni individuali.",
+      "Il nostro team è composto da professionisti esperti, menti creative e personalità impegnate che si dedicano ogni giorno a offrirvi un'esperienza unica. Insieme lavoriamo per unire massima qualità, idee innovative e consulenza personale.",
+      "Che si tratti di selezionare pezzi di design, pianificare i vostri sogni di arredamento o realizzare progetti speciali – siamo qui per voi con cuore e mente. Per noi il focus non è solo sull'estetica, ma soprattutto sul legame tra persona e spazio che vogliamo creare con il nostro lavoro."
+    ]
+  },
+  "TeamBanner": {
+    "bgAlt": "Chi siamo",
+    "headline": "Team",
+    "breadcrumb": {
+      "home": "Home",
+      "team": "Team"
+    }
+  },
+  "TeamClient": {
+    "pretitle": "conosci il nostro team",
+    "headline": "Creiamo spazi abitativi",
+    "headlineAfterBreak": " che ispirano.",
+    "noTeam": "Nessun membro attivo trovato"
+  },
+  "KarriereBanner": {
+    "bgAlt": "Immagine di sfondo del banner carriera",
+    "headline": "Carriera",
+    "breadcrumb": {
+      "home": "Home",
+      "karriere": "Carriera"
+    }
+  },
+  "KarriereTeam": {
+    "section": "Carriera",
+    "headline": "Candidati con noi come collaboratore a tempo pieno o part-time.",
+    "imageAlt": "Personale al lavoro nello studio",
+    "paragraphs": [
+      "Da Platzhirsch Home Living, il nostro obiettivo è realizzare i sogni abitativi dei clienti più esigenti con stile, esclusività e qualità.",
+      "Offriamo ai nostri clienti un supporto completo dal primo contatto alla consegna delle chiavi – e oltre. Garantiamo consulenza eccellente, soluzioni su misura e una passione inesauribile per il design di alta qualità.",
+      "Il nostro lavoro si basa su valori forti: spirito di squadra, innovazione e il desiderio di offrire sempre il meglio ai nostri clienti. Per realizzare questa visione, cerchiamo persone talentuose, creative e motivate che condividano la nostra passione per l’arredo e il design.",
+      "Sei creativo, hai esperienza nella progettazione di cucine e vuoi vivere la tua passione per gli interni eleganti?",
+      "Allora sei nel posto giusto!"
+    ]
+  },
+  "KarrierePosition": {
+    "headline": "Offerte di lavoro attuali",
+    "desc": "Candidati liberamente alle nostre offerte di lavoro in qualsiasi momento.",
+    "noJobs": "Attualmente non ci sono posizioni aperte.",
+    "positions": "collaboratori",
+    "posted": "Pubblicato",
+    "applyNow": "Candidati ora",
+    "helmut": {
+      "section": "Carriera presso Platzhirsch",
+      "headline": "Domande sulle offerte di lavoro",
+      "desc": "Per domande sulle posizioni aperte o sul processo di candidatura, il nostro team sarà lieto di risponderti.",
+      "bullets": [
+        "Team motivato e creativo con gerarchie piatte",
+        "Sviluppo individuale & postazioni di lavoro moderne",
+        "Orari flessibili e retribuzione equa"
+      ],
+      "floating1": "Numero di candidati",
+      "floating2": "Regione datore di lavoro"
+    }
+  },
+  "Press": {
+    "header": "Stampa",
+    "title": "Platzhirsch Home Living sulla stampa",
+    "description": "Area stampa - Sempre aggiornata. Qui troverete informazioni attuali, comunicati stampa e notizie interessanti sulla nostra azienda, sui nostri marchi esclusivi e sui nostri ultimi progetti. Che si tratti di innovazioni di prodotto, eventi speciali o collaborazioni con partner rinomati, vi terremo informati su tutto ciò che accade da noi. Il nostro obiettivo è creare trasparenza e offrirvi una visione completa del nostro lavoro e dei nostri valori. Come fonte affidabile per soluzioni di design di alta qualità e idee abitative stimolanti, condividiamo la nostra visione e passione con il mondo.La nostra area stampa è il punto di contatto centrale per i rappresentanti dei media, i designer e chiunque sia interessato a saperne di più sul nostro marchio. Qui non solo forniamo comunicati stampa, ma anche immagini esclusive, informazioni aggiuntive e approfondimenti dettagliati sui nostri progetti e partnership. Poniamo grande enfasi nel raccontare la storia dietro i nostri prodotti e progetti. Il nostro lavoro con la stampa riflette la passione e la creatività che contraddistinguono la nostra azienda, e siamo lieti di condividere il nostro percorso con voi. Se avete domande o avete bisogno di materiali aggiuntivi, siamo sempre a vostra disposizione.",
+    "imageAlt": "Immagine stampa che mostra mobili moderni"
+  },
+  "presse": {
+    "magazines": [
+      "Nuove collezioni",
+      "Dormire sulle nuvole",
+      "Casa di Minotti",
+      "Collezione Minotti 2022",
+      "Dormire su Treca Paris",
+      "Cultura della cucina per anni",
+      "Per una casa bella",
+      "Design tono su tono",
+      "Stile outdoor cool",
+      "Più che semplici mobili",
+      "Indoor & Outdoor",
+      "Intervista: Susanne Messmer",
+      "La cucina individuale",
+      "Il Platzhirsch",
+      "Cucinare con stile",
+      "Atmosfera estiva",
+      "Nuova apertura: Platzhirsch Home Living"
+    ]
+  },
+  "partners": {
+    "headline": "Partnership forti per progetti eccezionali",
+    "description": "Da Platzhirsch Home Living progettiamo e realizziamo spazi esclusivi. I nostri progetti sono sviluppati con partner selezionati.",
+    "phone": "Tel",
+    "email": "E-mail",
+    "website": "Visita il sito",
+    "0": {
+      "role": "Partner per progetti immobiliari"
+    },
+    "1": {
+      "role": "Partner per immobili esclusivi a Lindau"
+    },
+    "2": {
+      "role": "Sviluppatore del progetto Bahnhofcity Feldkirch"
+    },
+    "3": {
+      "role": "Partner per sistemi solari e fotovoltaici, pianificazione e finanziamento"
+    },
+    "4": {
+      "role": "Partner per coperture e lavori di lattoneria"
+    },
+    "5": {
+      "role": "Partner per ingegneria elettrica da Lochau"
+    },
+    "6": {
+      "role": ""
+    },
+    "7": {
+      "role": "Ristorante di montagna sul Pfänder"
+    }
+  },
+  "contact": {
+    "headline": "Contatto",
+    "stepHeadline": "Fai il primo passo",
+    "desc": "Hai domande, richieste o vuoi fissare una consulenza? Contattaci telefonicamente o tramite il nostro modulo di contatto.",
+    "location": "Sede principale",
+    "address": "Platzhirsch Home Living\nLandstraße 9, 6911 Lochau,\nAustria",
+    "phone": "Numero di telefono",
+    "opening": "Orari di apertura",
+    "openTimes": "Lunedì: chiuso\nMartedì–Venerdì: 10:00 – 18:00\nSabato: 10:00 – 14:00",
+    "email": "E-mail",
+    "sendForm": "Contattaci",
+    "formHeadline": "Modulo di contatto",
+    "formDesc": "Inviaci un messaggio",
+    "formName": "Nome *",
+    "formCompany": "Azienda (opzionale)",
+    "formMail": "E-mail *",
+    "formPhone": "Telefono (opzionale)",
+    "formMessage": "Il tuo messaggio *",
+    "formSend": "INVIA MESSAGGIO",
+    "formSending": "Invio...",
+    "formSuccess": "Grazie per la tua richiesta! Ti contatteremo al più presto.",
+    "formErrorName": "Il nome deve essere lungo almeno 2 caratteri.",
+    "formErrorMail": "Inserisci un indirizzo e-mail valido.",
+    "formErrorPhone": "Inserisci un numero di telefono valido.",
+    "formErrorMsg": "Il messaggio deve essere lungo almeno 10 caratteri.",
+    "directions": "Ottieni indicazioni",
+    "welcomeBack": "Bentornato!",
+    "welcomeMsg": "Attendiamo il tuo messaggio e siamo a tua disposizione!"
+  },
+  "cart": {
+    "wishlist": "Lista dei desideri",
+    "clearList": "Cancella lista",
+    "noItemsHeadline": "Non hai ancora aggiunto prodotti alla tua lista dei desideri",
+    "findProducts": "Trova qui i nostri prodotti.",
+    "productDetail": "Dettagli prodotto",
+    "remove": "Rimuovi",
+    "sendRequest": "Invia richiesta"
+  },
+  "product": {
+    "noImage": "Nessuna immagine disponibile",
+    "description": "Descrizione:",
+    "noDescription": "Nessuna descrizione disponibile.",
+    "addToCart": "Richiedi ora",
+    "addedSuccess": "Prodotto aggiunto con successo alla lista dei desideri",
+    "addedError": "Questo prodotto è già nella tua lista dei desideri"
+  },
+  "related": {
+    "headline": "Prodotti correlati",
+    "desc": "Altri prodotti della stessa categoria",
+    "noImage": "Nessuna immagine"
+  },
+  "grid": {
+    "showMore": "Mostra di più",
+    "showLess": "Mostra meno"
+  },
+  "uberuns": {
+    "breadcrumbHome": "HOME",
+    "breadcrumbUberUns": "CHI SIAMO",
+    "headline": "Chi siamo"
+  },
+  "brand": {
+    "about": "Informazioni su {brand}",
+    "products": "Prodotti",
+    "foundingYear": "Anno di fondazione",
+    "originCountry": "Paese di origine",
+    "founder": "Fondatore",
+    "officialWebsite": "Sito ufficiale",
+    "visitWebsite": "Visita il sito"
+  },
+  "products": {
+    "selectCategory": "Seleziona categoria",
+    "viewAll": "Mostra tutto",
+    "searchPlaceholder": "Cerca per nome prodotto",
+    "noImage": "Nessuna immagine",
+    "selectBrand": "Seleziona prodotti"
+  },
+  "press": {
+    "navHome": "HOME",
+    "navPress": "STAMPA",
+    "headline": "Stampa"
+  },
+  "partner": {
+    "navHome": "HOME",
+    "navPartner": "PARTNER",
+    "headline": "Partner"
+  },
+  "newsletter": {
+    "headline": "Newsletter",
+    "intro1": "Rimani informato – con la newsletter di Platzhirsch Home Living!",
+    "intro2": "Ricevi regolarmente approfondimenti nel mondo di Platzhirsch Home Living e lasciati ispirare dalle nostre offerte esclusive, idee d’arredo creative e design stimolanti. Nuove collezioni, eventi o promozioni speciali – con la nostra newsletter sei sempre un passo avanti.",
+    "reasonsHeadline": "Perché iscriversi:",
+    "reasons1": "Anteprime esclusive: Sii il primo a conoscere nuovi mobili, tendenze di design e le nostre mostre impressionanti.",
+    "reasons2": "Idee ispiratrici: Scopri concetti creativi e lasciati guidare dai consigli dei nostri esperti d’interni.",
+    "reasons3": "Offerte vantaggiose: Approfitta di sconti e promozioni riservate solo agli iscritti alla newsletter.",
+    "reasons4": "Inviti a eventi: Ricevi inviti personali a eventi esclusivi e tour a 360 gradi.",
+    "howHeadline": "Come iscriversi:",
+    "howText": "Iscriviti subito e non perdere più nessuna novità. Tutto ciò che ti serve direttamente nella tua casella di posta – gratis, senza impegno e cancellabile in qualsiasi momento.",
+    "outro": "Lasciati ispirare ed entra a far parte della community di Platzhirsch Home Living – saremo lieti di darti il benvenuto nella nostra newsletter!",
+    "subscribeHeadline": "Iscriviti ora:",
+    "inputPlaceholder": "Il tuo indirizzo e-mail",
+    "btnSubscribe": "ISCRIVITI",
+    "btnLoading": "Invio...",
+    "success": "Grazie! Ora sei iscritto alla nostra newsletter.",
+    "errInvalid": "Inserisci un indirizzo e-mail valido",
+    "errAlready": "Questo indirizzo e-mail è già iscritto",
+    "errGeneric": "Iscrizione non riuscita. Riprova più tardi."
+  },
+  "newsletter-banner": {
+    "bannerTitle": "Newsletter",
+    "breadcrumbHome": "HOME",
+    "breadcrumbNewsletter": "NEWSLETTER"
+  },
+  "news": {
+    "noNews": "Attualmente non ci sono notizie da mostrare.",
+    "learnMore": "Scopri di più",
+    "previous": "Precedente",
+    "next": "Successivo",
+    "news1Title": "Ispirazione per un'estate indimenticabile",
+    "news1Desc": "Amplia il tuo spazio interno con le esclusive collezioni da esterno di Minotti, Solpuri e EMU.",
+    "news2Title": "Salone del Mobile 2024 e mobili da esterno",
+    "news2Desc": "Vi raccontiamo il Salone del Mobile 2024 e vi presentiamo esclusivi mobili da esterno."
+  },
+  "article": {
+    "moreNews": "Altre notizie",
+    "learnMore": "Scopri di più"
+  },
+  "marken": {
+    "about": "Informazioni su {brand}",
+    "products": "Prodotti",
+    "foundingYear": "Anno di fondazione",
+    "country": "Paese",
+    "founder": "Fondatore",
+    "officialWebsite": "Sito ufficiale",
+    "visitWebsite": "Visita il sito",
+    "productCount": "{count, plural, one {# prodotto} other {# prodotti}}",
+    "collection_discover": "Scopri la collezione",
+    "designApproach": "Approccio progettuale",
+    "categories": "Categorie",
+    "philosophyEyebrow": "Filosofia & Artigianalità",
+    "philosophyTitle": "Pezzi realizzati con cura che raccontano una storia",
+    "portfolioEyebrow": "Punti di forza del portfolio",
+    "portfolioTitle": "Categorie di prodotti del marchio",
+    "craftEyebrow": "Materiali & Maestria",
+    "craftTitle": "Discipline artigianali",
+    "collectionEyebrow": "Collezione",
+    "collectionTitle": "Prodotti selezionati",
+    "showroomEyebrow": "In esclusiva in Austria",
+    "requestConsultation": "Richiedi una consulenza personale",
+    "location": "Sede",
+    "locationText": "Platzhirsch Studio\nLochau, Vorarlberg (Austria)",
+    "service": "Servizio & Offerta",
+    "serviceText": "Consulenza d'arredo personalizzata, ordini da catalogo e consegna in tutta l'Austria.",
+    "breadcrumbHome": "Casa",
+    "breadcrumbBrands": "Marche",
+    "collectionProductsTitle": "Prodotti della collezione",
+    "moreCollections": "Altre collezioni di {brand}",
+    "backToBrand": "Torna a {brand}",
+    "aboutBrandLink": "Scopri {brand}",
+    "viewCollection": "Vedi la collezione",
+    "collectionConsultTitle": "Scopri la collezione {collection} nel nostro showroom",
+    "collectionEmpty": "Nessun prodotto è ancora stato aggiunto a questa collezione.",
+    "aboutCollection": "La collezione"
+  },
+  "enquiry": {
+    "backToWishlist": "← Torna alla lista dei desideri",
+    "productsInRequest": "Prodotti nella tua richiesta:",
+    "buyingAs": "Stai acquistando come:",
+    "person": "Privato",
+    "business": "Azienda",
+    "companyName": "Nome azienda",
+    "taxNumber": "Partita IVA",
+    "firstName": "Nome",
+    "lastName": "Cognome",
+    "country": "Paese",
+    "city": "Città",
+    "address": "Indirizzo",
+    "description": "Descrizione",
+    "email": "E-mail",
+    "phone": "Numero di telefono",
+    "sendMessage": "Invia messaggio",
+    "sending": "Invio in corso...",
+    "error": {
+      "requiredFields": "Per favore, compila tutti i campi obbligatori: {fields}",
+      "invalidEmail": "Inserisci un indirizzo email valido",
+      "invalidPhone": "Inserisci un numero di telefono valido",
+      "submitFailed": "Si è verificato un errore. Riprova più tardi.",
+      "apiFailed": "Errore nell'invio della richiesta",
+      "notEnoughStock": "Scorte insufficienti disponibili"
+    },
+    "success": {
+      "submitted": "La tua richiesta è stata inviata con successo!",
+      "addedToCart": "Aggiunto al carrello",
+      "removedFromCart": "Articolo rimosso dal carrello"
+    },
+    "fields": {
+      "companyName": "Nome azienda",
+      "taxNumber": "Partita IVA",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "E-mail",
+      "phone": "Numero di telefono",
+      "country": "Paese",
+      "city": "Città",
+      "address": "Indirizzo",
+      "userType": "Tipo utente"
+    }
+  },
+  "services": {
+    "title": "I nostri servizi",
+    "subtitle": "Offriamo più di semplici servizi di qualità",
+    "readMore": "leggi di più",
+    "smartCareTitle": "Assistenza intelligente",
+    "smartCareDesc": "Orgogliosi dei servizi e-commerce professionali in chat dal vivo, consulenza dedicata da esperti e designer professionisti.",
+    "kitchenPlannerTitle": "Pianificatore di cucine",
+    "kitchenPlannerDesc": "Goditi una consegna veloce con il nostro servizio. Ricevi mobili per interni/esterni per la casa rapidamente e al miglior prezzo.",
+    "homeCheckTitle": "Controllo casa",
+    "homeCheckDesc": "Consulenza perfetta con il controllo casa. Controlla attentamente la tua casa prima di suggerire l’arredamento più adatto.",
+    "kitchenDesignTitle": "Design cucina",
+    "kitchenDesignDesc": "Non sai da dove iniziare? Lascia fare a noi. Possiamo gestire tutti gli aspetti del rinnovo della tua cucina, creare il tuo stile personale e renderlo speciale."
+  },
+  "work": {
+    "headerTag": "Come lavoriamo",
+    "headerTitle": "3 semplici passaggi per ottenere un interior design",
+    "headerSubtitle": "La disposizione della tua cucina varia da un progetto all'altro.",
+    "steps": [
+      {
+        "title": "Ti visitiamo a casa",
+        "description": "Misuriamo la tua cucina, ti facciamo domande e iniziamo insieme il vero processo di progettazione."
+      },
+      {
+        "title": "Progetti preliminari al computer",
+        "description": "Misuriamo la tua cucina, ti facciamo domande e iniziamo insieme il vero processo di progettazione."
+      },
+      {
+        "title": "Iniziare il processo di progettazione dettagliato",
+        "description": "Misuriamo la tua cucina, ti facciamo domande e iniziamo insieme il vero processo di progettazione."
+      }
+    ],
+    "learnMore": "Scopri di più"
+  },
+  "about": {
+    "first_section": {
+      "title": "Chi siamo",
+      "subtitle": "Platzhirsch Home Living – il vostro studio di mobili di design nel Vorarlberg, Austria",
+      "text": "Benvenuti da Platzhirsch Home Living, il vostro punto di riferimento per mobili di design esclusivi e concetti d'arredo di alta gamma sul Lago di Costanza. Nel nostro showroom di Lochau, vicino a Bregenz – Landstraße 9, a pochi minuti dai confini con la Germania e la Svizzera – potete scoprire marchi internazionali di prestigio, un interior design curato nei dettagli e una consulenza personalizzata ai massimi livelli. Ciò che ci contraddistingue è la passione per il design senza tempo, la qualità artigianale e la sostenibilità: ogni mobile, ogni lampada e ogni accessorio della nostra esposizione è selezionato con cura. Il nostro team esperto vi accompagna dalla prima idea alla progettazione, fino alla consegna e al montaggio – che si tratti di un singolo pezzo del cuore, dell'arredamento completo di una casa o di un ambizioso progetto di interior design. Veniteci a conoscere, esplorate il nostro mondo di marchi e lasciatevi contagiare dal nostro entusiasmo per il bello dell'abitare. Vi aspettiamo nel Vorarlberg, in Austria."
+    },
+    "ausstellung": {
+      "showroom": "Showroom Platzhirsch a Lochau",
+      "headline": "L'ispirazione è l'inizio di ogni arredamento.",
+      "desc": "Ogni nuovo arredamento inizia con la ricerca di ispirazione – ed è proprio per questo che abbiamo creato il nostro ampio showroom sul Lago di Costanza. Nella nostra esposizione a Lochau presentiamo idee d'arredo e uno sguardo sul mondo dei nostri marchi di mobili raffinati e in gran parte orientati alla sostenibilità, come Minotti, Poliform, Rimadesio, ClassiCon, Flos, Eichholtz, Paola Lenti e Treca Paris. Accessori selezionati, pitture murali di pregio, carte da parati e tappeti completano l'assortimento. E la cosa migliore: da noi potete sedervi, sdraiarvi e sognare in tutta libertà – con calma e con una consulenza personalizzata.",
+      "career": "IL NOSTRO TEAM",
+      "careerTitle": "Conoscete le persone dietro Platzhirsch Home Living.",
+      "more": "INCONTRA IL TEAM",
+      "studio": "Il nostro studio",
+      "tourTitle": "Tour a 360° del nostro showroom",
+      "tourDesc1": "Immergetevi nel mondo di Platzhirsch Home Living e vivete il nostro studio d'arredamento di Lochau comodamente da casa vostra. Con il nostro tour virtuale a 360° potete esplorare la nostra esposizione, gli eleganti mobili di design e gli ispiranti concetti d'arredo – in qualsiasi momento e ovunque vi troviate.",
+      "tourDesc2": "Muovetevi liberamente nei nostri spazi curati nei minimi dettagli, osservate da vicino i nostri pezzi di design più esclusivi e percepite l'atmosfera unica del nostro studio sul Lago di Costanza. Che siate alla ricerca di nuove idee d'arredo, di un'anteprima delle nostre collezioni o semplicemente di ispirazione – il tour a 360° è l'introduzione perfetta alla vostra visita nel Vorarlberg, in Austria."
+    }
+  },
+  "error404": {
+    "title": "404",
+    "headline": "Ops! Pagina non trovata.",
+    "description": "La pagina che stai cercando è stata spostata, rimossa, rinominata o potrebbe non essere mai esistita.",
+    "backHome": "TORNA ALLA HOME"
+  },
+  "tabs": {
+    "description": "Descrizione",
+    "additional": "Informazioni aggiuntive",
+    "files": "Download"
+  },
+  "additional": {
+    "weight": "Peso",
+    "dimensions": "Dimensioni",
+    "material": "Materiale",
+    "color": "Colore"
+  },
+  "files": {
+    "2d": "2D",
+    "3d": "3D",
+    "catalog": "Catalogo digitale",
+    "no2d": "Nessun file 2D disponibile.",
+    "no3d": "Nessun file 3D disponibile.",
+    "nocatalog": "Nessun catalogo disponibile.",
+    "download": "SCARICA"
+  },
+  "productsItemMetaData": {
+    "title": "Platzhirsch Home Living",
+    "description": "En savoir plus sur"
+  },
+  "ContactSection": {
+    "imageAlt": "Consulenza personalizzata presso Platzhirsch Home Living",
+    "pretitle": "Contatti",
+    "title": "Iniziamo \n a conoscerci",
+    "paragraphs": [
+      "Ogni progetto d'interni nasce da un confronto personale. Che tu abbia una semplice idea o una visione già definita, ci prendiamo il tempo necessario per comprendere le tue esigenze e sviluppare insieme la soluzione più adatta.",
+      "Il nostro team di professionisti ti accompagna con consulenze personalizzate, idee creative e una costante attenzione alla qualità e al design. Crediamo in una collaborazione basata sulla fiducia, capace di trasformare ogni progetto in qualcosa di unico.",
+      "Contattaci telefonicamente, via e-mail oppure vieni a trovarci nel nostro studio. Saremo lieti di accoglierti e di creare insieme spazi che rispecchino la tua personalità."
+    ]
+  },
+  "shop": {
+    "moreCategories": "Altre categorie",
+    "emptyCategory": "Al momento non ci sono prodotti online in questa categoria. Visitate il nostro studio o richiedete una consulenza personale.",
+    "close": "Chiudi",
+    "filters": "Filtri",
+    "clearAll": "Cancella tutto",
+    "brand": "Marca",
+    "category": "Categoria prodotto",
+    "subCategory": "Tipo",
+    "indoorOutdoor": "Interno/Esterno",
+    "designer": "Designer",
+    "color": "Colore",
+    "material": "Materiale",
+    "resultsCount": "{count, plural, one {# prodotto} other {# prodotti}}",
+    "noResults": "Nessun prodotto corrisponde ai filtri selezionati.",
+    "requestConsultation": "Richiedi consulenza",
+    "shopByCategory": "Sfoglia per categoria",
+    "viewMore": "Mostra altro (+{count})",
+    "viewLess": "Mostra meno",
+    "showMoreProducts": "Mostra altri prodotti",
+    "showingCount": "{shown} di {total, plural, one {# prodotto} other {# prodotti}} visualizzati",
+    "relatedHeading": "Potrebbe piacerti anche",
+    "backToCategory": "Torna a {category}",
+    "model": "Modello",
+    "specifications": "Specifiche",
+    "compositions": "Composizioni",
+    "finishesOptions": "Finiture e opzioni",
+    "productDetails": "Dettagli del prodotto",
+    "structure": "Struttura",
+    "padding": "Imbottitura",
+    "covers": "Rivestimenti",
+    "base": "Base",
+    "top": "Piano",
+    "finish": "Finitura",
+    "finishesHeading": "Finiture",
+    "glassHeading": "Vetro",
+    "stoneHeading": "Pietra naturale",
+    "lightSource": "Sorgente luminosa",
+    "dimmable": "Dimmerabile",
+    "frame": "Telaio",
+    "canopy": "Telo",
+    "mechanism": "Meccanismo",
+    "dimensions": "Dimensioni",
+    "powerOutput": "Potenza",
+    "coverage": "Copertura",
+    "technology": "Tecnologia",
+    "rating": "Grado di protezione",
+    "fronts": "Ante",
+    "carcass": "Struttura",
+    "countertop": "Piano di lavoro",
+    "hardware": "Ferramenta",
+    "panel": "Pannello",
+    "wax": "Cera",
+    "scent": "Profumo",
+    "burnTime": "Durata di combustione",
+    "size": "Dimensione",
+    "headrest": "Poggiatesta",
+    "seatPreparation": "Preparazione della seduta",
+    "cushions": "Cuscini",
+    "colorOptionsCount": "{count, plural, one {# colore disponibile} other {# colori disponibili}}",
+    "aboutBrand": "Informazioni sul marchio",
+    "aboutDesigner": "Informazioni sul designer",
+    "founded": "Fondata nel",
+    "expand": "Espandi",
+    "collapse": "Comprimi",
+    "descriptionTab": "Descrizione",
+    "dimensionsTab": "Dimensioni",
+    "materialsCareTab": "Materiali e cura",
+    "configurationsTab": "Configurazioni",
+    "viewBrandPage": "Vai alla pagina del marchio",
+    "saveToWishlist": "Salva",
+    "savedToWishlist": "Salvato",
+    "addToWishlistAria": "Aggiungi alla lista dei desideri",
+    "removeFromWishlistAria": "Rimuovi dalla lista dei desideri",
+    "showMoreDetails": "Mostra più dettagli",
+    "addCollectionToWishlistAria": "Salva {count, plural, one {il prodotto} other {tutti i # prodotti}} della collezione {collection}",
+    "removeCollectionFromWishlistAria": "Rimuovi la collezione {collection} dalla lista dei desideri",
+    "viewDetails": "Vedi dettagli"
+  }
+}

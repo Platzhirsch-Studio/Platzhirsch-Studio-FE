@@ -1,0 +1,14 @@
+{
+  "doctype": "DocType",
+  "name": "Produkte Dimension",
+  "module": "Platzhirsch Studio",
+  "custom": 0,
+  "istable": 1,
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "description": "Technical/dimension drawing images, rendered in their own 'Technische Merkmale' grid below the description tabs (separate from bild_anhangen's product-photo gallery). Returned by the dedicated product_dimensions_data API.",
+  "fields": [
+    { "fieldname": "attach_image", "fieldtype": "Attach Image", "label": "Image", "reqd": 1, "in_list_view": 1 },
+    { "fieldname": "alt_text_image", "fieldtype": "Data", "label": "Alt Text", "in_list_view": 1, "description": "Falls back to the parent product's product_name when blank." }
+  ]
+}

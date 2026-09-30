@@ -1,0 +1,13 @@
+{
+  "doctype": "DocType",
+  "name": "Produkte Keyword",
+  "module": "Platzhirsch Studio",
+  "custom": 0,
+  "istable": 1,
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "description": "Single-column child row shared by all 12 keyword tables on Produkte (short/mid/long-tail × de/en/fr/it). One doctype, reused everywhere, so there is nothing category- or locale-specific to maintain here.",
+  "fields": [
+    { "fieldname": "keyword", "fieldtype": "Data", "label": "Keyword", "reqd": 1, "in_list_view": 1 }
+  ]
+}
