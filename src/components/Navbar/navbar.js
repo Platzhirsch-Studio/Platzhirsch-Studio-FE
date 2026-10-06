@@ -183,7 +183,8 @@ const Navbar = ({ activeCategoryKeys = null }) => {
   // path is locale-invariant (e.g. /en/produkte/beds): category pages only
   // exist under the German-named `produkte` folder, so the translated
   // ROUTES.produkte segment (/products, /produits, …) would 404.
-  const shopPath = "/produkte";
+  // Translated catalogue base (/produkte, /products, /produits, /prodotti).
+  const shopPath = ROUTES.produkte[urlLocale] || ROUTES.produkte.de;
 
   const toggleDropdown = (name) => {
     setOpenDropdown((prev) => (prev === name ? null : name));
@@ -694,7 +695,15 @@ const Navbar = ({ activeCategoryKeys = null }) => {
                       />
                     </Link>
                   ) : (
-                    <button className="flex items-center gap-1 uppercase text-xs font-semibold tracking-wider text-[#30373e] hover:text-[#d1b250] transition py-0.5 cursor-pointer whitespace-nowrap">
+                    <button
+                      type="button"
+                      aria-haspopup="true"
+                      aria-expanded={openDropdown === key}
+                      // Opens on hover; click/Enter also opens (keyboard users),
+                      // never closes it — a hover-then-click would otherwise toggle it shut.
+                      onClick={() => setOpenDropdown(key)}
+                      className="flex items-center gap-1 uppercase text-xs font-semibold tracking-wider text-[#30373e] hover:text-[#d1b250] transition py-0.5 cursor-pointer whitespace-nowrap"
+                    >
                       {item.name}
                       <ChevronDown
                         size={16}
@@ -720,8 +729,15 @@ const Navbar = ({ activeCategoryKeys = null }) => {
           })}
         </div>
 
-        {productsItem && openDropdown === "products" && (
-          <div className="absolute left-0 top-full w-full bg-white shadow-2xl border-t border-gray-100 animate-fadeInSlideDown">
+        {/* Mega menus are always in the HTML (hidden until hover) so crawlers
+            see their category/About links — Googlebot never hovers, so a
+            conditionally rendered menu would never exist for it. */}
+        {productsItem && (
+          <div
+            className={`absolute left-0 top-full w-full bg-white shadow-2xl border-t border-gray-100 animate-fadeInSlideDown ${
+              openDropdown === "products" ? "" : "hidden"
+            }`}
+          >
             <div className="max-w-7xl mx-auto px-6 py-10">
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 mb-10">
                 {productGroups.map((group) => (
@@ -788,8 +804,12 @@ const Navbar = ({ activeCategoryKeys = null }) => {
           </div>
         )}
 
-        {aboutItem && openDropdown === aboutItem.name && (
-          <div className="absolute left-0 top-full w-full bg-white shadow-2xl border-t border-gray-100 animate-fadeInSlideDown">
+        {aboutItem && (
+          <div
+            className={`absolute left-0 top-full w-full bg-white shadow-2xl border-t border-gray-100 animate-fadeInSlideDown ${
+              openDropdown === aboutItem.name ? "" : "hidden"
+            }`}
+          >
             <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
               <div>
                 <p className="text-[#d1b250] text-xs font-semibold uppercase tracking-widest mb-4">
@@ -831,21 +851,21 @@ const Navbar = ({ activeCategoryKeys = null }) => {
               </Link>
 
               <Link
-                href={localizeHref(ROUTES.team[urlLocale])}
+                href={localizeHref(ROUTES.marken[urlLocale])}
                 prefetch={true}
                 onClick={() => setOpenDropdown(null)}
                 className="relative h-56 group overflow-hidden block"
               >
                 <Image
-                  src="/Images/Home/secondAboutHome.jpg"
-                  alt={t("team")}
+                  src="/Images/Home/slider/minotti-sofa-wohnzimmer.webp"
+                  alt={t("brands")}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition" />
                 <span className="absolute bottom-4 left-4 text-white text-sm font-semibold uppercase tracking-wide">
-                  {t("team")}
+                  {t("brands")}
                 </span>
               </Link>
             </div>

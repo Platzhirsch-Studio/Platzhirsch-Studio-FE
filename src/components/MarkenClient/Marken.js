@@ -82,7 +82,7 @@ const Marken = ({ marken }) => {
                 >
                   {item?.images ? (
                     <Image
-                      src={`/cms${item.images}`}
+                      src={`/cmx${item.images}`}
                       alt={item.title || "Brand logo"}
                       width={100}
                       height={100}

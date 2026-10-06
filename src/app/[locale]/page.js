@@ -12,6 +12,7 @@ import { buildShopProducts } from "@/lib/shop/shopProducts";
 import { IN_LANGUAGE, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/structuredData";
 import JsonLd from "@/components/Reusable/JsonLd";
 import { metadata } from "../layout";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Dynamically import non-critical components
 const TrendingProducts = dynamic(() => import("@/components/ProuductSectionHome/ProuductSectionHome"));
@@ -108,19 +109,19 @@ export async function generateMetadata({ params }) {
     ];
     const safeType = validOGTypes.includes(meta.type) ? meta.type : "website";
 
-    const image = home.metadata?.metadata_images_de?.[0]?.bild_anhagen
-      ? `https://platzhirsch.studio${home.metadata.metadata_images_de[0].bild_anhagen}`
+    // Social preview image (og:image / twitter:image): the CMS image for this
+    // locale, falling back to the German one, then to a static image. CMS
+    // files live on the backoffice and are served through the /cms rewrite —
+    // without the /cms prefix the URL 404s.
+    const cmsImagePath =
+      home.metadata?.[`metadata_images_${locale}`]?.[0]?.bild_anhagen ||
+      home.metadata?.metadata_images_de?.[0]?.bild_anhagen;
+    const image = cmsImagePath
+      ? `https://platzhirsch.studio/cms${cmsImagePath.replace(/ /g, "%20")}`
       : "https://platzhirsch.studio/Images/Home/aboutHome.jpg";
     const canonical = `${BASE_URL}/${locale}`;
 
-    const languages = {
-      'de-AT': `${BASE_URL}/de`,
-      'de': `${BASE_URL}/de`,
-      'en': `${BASE_URL}/en`,
-      'fr-FR': `${BASE_URL}/fr`,
-      'it-IT': `${BASE_URL}/it`,
-      'x-default': `${BASE_URL}/de`,
-    };
+    const languages = hreflangLanguages((l) => `${BASE_URL}/${l}`);
 
     return {
       title: meta.title,
@@ -132,7 +133,7 @@ export async function generateMetadata({ params }) {
         siteName: meta.sitename,
         title: meta.title,
         description: meta.description,
-        images: [{ url: image, width: 1200, height: 630, alt: "Designermarken – Platzhirsch Home Living" }],
+        images: [{ url: image, alt: "Designermarken – Platzhirsch Home Living" }],
         locale: meta.locale,
       },
       twitter: {
@@ -193,7 +194,6 @@ export default async function Home({ params }) {
       {/* Page Content */}
       <ImageSlider />
       <About data={homeContent?.second_content} />
-      <VernissageSection />
       <TrendingProducts data={trendingProducts} />
       <WhyChooseUsSectionHome data={homeContent?.below_products} />
       <BlogSection data={newsData} />

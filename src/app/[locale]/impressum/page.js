@@ -1,6 +1,7 @@
 import React from 'react';
 import Impressum from "@/components/Impressum/impressumbanner";
 import Content from "@/components/Impressum/impressum";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -70,15 +71,7 @@ export async function generateMetadata({ params }) {
     robots: { index: false, follow: true },
     alternates: {
       canonical: PAGE_URL,
-      languages: {
-        'de-AT': getImpressumPageUrl('de'),
-        'de': getImpressumPageUrl('de'),
-        'en': getImpressumPageUrl('en'),
-        'fr-FR': getImpressumPageUrl('fr'),
-        'it-IT': getImpressumPageUrl('it'),
-        'x-default': getImpressumPageUrl('de'),
-
-      }
+      languages: hreflangLanguages((l) => getImpressumPageUrl(l))
     },
     openGraph: {
       type: "website",
@@ -125,12 +118,11 @@ export default async function Page({ params }) {
     name: pageName,
     description: localizedMeta.description,
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: homeName, item: `${BASE_URL}/${locale}` },
+        { "@type": "ListItem", position: 1, name: homeName, item: `https://platzhirsch.studio/${locale}` },
         { "@type": "ListItem", position: 2, name: pageName, item: PAGE_URL },
       ],
     },

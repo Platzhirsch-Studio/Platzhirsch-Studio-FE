@@ -9,6 +9,7 @@ import {
 } from "@/lib/api/Keywords/fetchKontaktKeywords";
 import { ROUTES } from "@/utils/routing";
 import KontaktLastSection from "@/components/Kontakt/KontaktLastSection";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 const DOMAIN = "https://platzhirsch.studio";
 
@@ -68,13 +69,7 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de': getKontaktPageUrl('de'),
-            'en': getKontaktPageUrl('en'),
-            'fr': getKontaktPageUrl('fr'),
-            'it': getKontaktPageUrl('it'),
-            'x-default': getKontaktPageUrl('de'),
-          }
+          languages: hreflangLanguages((l) => getKontaktPageUrl(l))
         },
         openGraph: {
           type: "website",
@@ -83,13 +78,13 @@ export async function generateMetadata({ params }) {
           description: getLocalizedDescription(locale),
           siteName: "Platzhirsch Home Living",
           locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url: "/Images/Kontakt/questionmark.png", width: 1200, height: 630, alt: "Kontakt – Platzhirsch Home Living" }],
+          images: [{ url: "/Images/Kontakt/questionmark-og.jpg", width: 1200, height: 630, alt: "Kontakt – Platzhirsch Home Living" }],
         },
         twitter: {
           card: "summary_large_image",
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
-          images: ["/Images/Kontakt/questionmark.png"],
+          images: ["/Images/Kontakt/questionmark-og.jpg"],
         },
       };
     }
@@ -104,14 +99,7 @@ export async function generateMetadata({ params }) {
       robots: { index: true, follow: true },
       alternates: {
         canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de-AT': getKontaktPageUrl('de'),
-          'de': getKontaktPageUrl('de'),
-          'en': getKontaktPageUrl('en'),
-          'fr-FR': getKontaktPageUrl('fr'),
-          'it-IT': getKontaktPageUrl('it'),
-          'x-default': getKontaktPageUrl('de'),
-        }
+        languages: hreflangLanguages((l) => getKontaktPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
@@ -119,7 +107,7 @@ export async function generateMetadata({ params }) {
         url: meta?.url || PAGE_URL,
         siteName: "Platzhirsch Home Living",
         images: [{
-          url: image ? image : "/Images/Kontakt/questionmark.png",
+          url: image ? image : "/Images/Kontakt/questionmark-og.jpg",
           width: 1200,
           height: 630,
           alt: "Kontakt – Platzhirsch Home Living",
@@ -132,7 +120,7 @@ export async function generateMetadata({ params }) {
         card: "summary_large_image",
         title: meta?.title || getLocalizedTitle(locale),
         description: meta?.description || getLocalizedDescription(locale),
-        images: [image ? image : "/Images/Kontakt/questionmark.png"],
+        images: [image ? image : "/Images/Kontakt/questionmark-og.jpg"],
       },
     };
   } catch (error) {
@@ -142,7 +130,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getKontaktPageUrl(l)) },
     };
   }
 }
@@ -184,7 +172,6 @@ export default async function Page({ params }) {
     isPartOf: { "@id": `${DOMAIN}/#website` },
     about: { "@id": `${DOMAIN}/#organization` },
     mainEntity: { "@id": `${DOMAIN}/#organization` },
-    dateModified: new Date().toISOString().split("T")[0],
     breadcrumb: {
       "@type": "BreadcrumbList",
       "@id": `${PAGE_URL}/#breadcrumb`,

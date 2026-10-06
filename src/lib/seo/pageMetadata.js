@@ -16,19 +16,40 @@ export function localeUrl(locale, path = "") {
   return `${SITE_URL}/${locale}${path}`;
 }
 
-// { "de-AT", "de", "en", "fr-FR", "it-IT", "x-default" } → absolute URLs.
-// `pathByLocale` is either one path shared by every locale or a
-// { de, en, fr, it } map of translated paths.
+// The site-wide hreflang set. Every page uses this, so the codes can't drift:
+//   de, de-AT, de-CH        → German page
+//   en                      → English page
+//   fr, fr-FR, fr-CH        → French page
+//   it, it-IT, it-CH        → Italian page
+//   x-default               → German page
+// Plain "fr"/"it" catch speakers in any other country; the -CH variants serve
+// Switzerland (and Liechtenstein) in each language.
+// `urlForLocale(locale)` returns the page's absolute URL in that locale.
+export function hreflangLanguages(urlForLocale) {
+  const de = urlForLocale("de");
+  const en = urlForLocale("en");
+  const fr = urlForLocale("fr");
+  const it = urlForLocale("it");
+  return {
+    de,
+    "de-AT": de,
+    "de-CH": de,
+    en,
+    fr,
+    "fr-FR": fr,
+    "fr-CH": fr,
+    it,
+    "it-IT": it,
+    "it-CH": it,
+    "x-default": de,
+  };
+}
+
+// hreflang alternates from paths. `pathByLocale` is either one path shared by
+// every locale or a { de, en, fr, it } map of translated paths.
 export function hreflangAlternates(pathByLocale) {
   const pathFor = (locale) => (typeof pathByLocale === "string" ? pathByLocale : pathByLocale[locale] ?? pathByLocale.de);
-  return {
-    "de-AT": localeUrl("de", pathFor("de")),
-    de: localeUrl("de", pathFor("de")),
-    en: localeUrl("en", pathFor("en")),
-    "fr-FR": localeUrl("fr", pathFor("fr")),
-    "it-IT": localeUrl("it", pathFor("it")),
-    "x-default": localeUrl("de", pathFor("de")),
-  };
+  return hreflangLanguages((locale) => localeUrl(locale, pathFor(locale)));
 }
 
 // Plain-text, single-line, ≤ maxLength (cut at a word boundary) — for meta

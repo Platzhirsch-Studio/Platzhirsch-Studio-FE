@@ -72,7 +72,7 @@ const Marken = ({ marken }) => {
               >
                 <div className="relative w-full h-full flex justify-center items-center aspect-square">
                   <Image
-                    src={`/cms${item?.images}`}
+                    src={`/cmx${item?.images}`}
                     alt={item.title || "Brand logo"}
                     width={100}
                     height={100}

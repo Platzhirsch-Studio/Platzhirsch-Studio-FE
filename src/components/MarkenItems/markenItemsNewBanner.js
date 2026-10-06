@@ -15,7 +15,7 @@ export default function BrandPage({ marke }) {
       {/* ---------------------------------------------------------- */}
       <header className="relative h-150 lg:h-200 flex items-end">
         <Image
-          src={`/cms${marke.bild_anhagen[0].bild_anhagen}`}
+          src={`/cmx${marke.bild_anhagen[0].bild_anhagen}`}
           alt={marke.name}
           fill
           priority

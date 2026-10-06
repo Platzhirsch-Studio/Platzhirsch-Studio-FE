@@ -503,6 +503,7 @@
     "formErrorMail": "Inserisci un indirizzo e-mail valido.",
     "formErrorPhone": "Inserisci un numero di telefono valido.",
     "formErrorMsg": "Il messaggio deve essere lungo almeno 10 caratteri.",
+    "formErrorSend": "Non è stato possibile inviare il messaggio. Riprova più tardi o chiamaci.",
     "directions": "Ottieni indicazioni",
     "welcomeBack": "Bentornato!",
     "welcomeMsg": "Attendiamo il tuo messaggio e siamo a tua disposizione!"
@@ -855,5 +856,105 @@
     "addCollectionToWishlistAria": "Salva {count, plural, one {il prodotto} other {tutti i # prodotti}} della collezione {collection}",
     "removeCollectionFromWishlistAria": "Rimuovi la collezione {collection} dalla lista dei desideri",
     "viewDetails": "Vedi dettagli"
+  },
+  "Cookies": {
+    "bannerTitle": "Impostazioni dei cookie",
+    "bannerText": "Utilizziamo i cookie per offrirti la migliore esperienza di navigazione possibile.",
+    "acceptAll": "Accetta tutti",
+    "rejectAll": "Continua senza consenso",
+    "customize": "Impostazioni individuali",
+    "modalTitle": "Preferenze individuali sulla privacy",
+    "savePreferences": "Salva selezione",
+    "showPreferences": "Preferenze individuali sulla privacy",
+    "intro": "Sul nostro sito web utilizziamo cookie e tecnologie simili e trattiamo dati personali che ti riguardano, come il tuo indirizzo IP. Condividiamo questi dati anche con terze parti. Il trattamento dei dati può avvenire con il tuo consenso o sulla base di un legittimo interesse, al quale puoi opporti. Hai il diritto di acconsentire solo ai servizi essenziali e di modificare o revocare il tuo consenso in un secondo momento nell'informativa sulla privacy. Di seguito trovi una panoramica di tutti i servizi utilizzati da questo sito web. Puoi consultare informazioni dettagliate su ciascun servizio e acconsentire singolarmente oppure esercitare il tuo diritto di opposizione.",
+    "thirdCountryNotice": "Alcuni servizi trattano dati personali in paesi terzi non sicuri. Acconsentendo all'utilizzo di questi servizi, acconsenti anche al trattamento dei tuoi dati in tali paesi terzi non sicuri ai sensi dell'art. 49, par. 1, lett. a) del GDPR. Ciò comporta il rischio che i tuoi dati vengano trattati dalle autorità a fini di controllo e sorveglianza, eventualmente senza possibilità di ricorso legale.",
+    "consentModeNotice": "Inoltre, autorizzi il trattamento dei dati da parte dei partner aderenti in conformità al Google Consent Mode, sulla base del tuo consenso, per le seguenti finalità:",
+    "showDetails": "Mostra dettagli",
+    "hideDetails": "Nascondi dettagli",
+    "privacyPolicy": "Informativa sulla privacy",
+    "imprint": "Note legali",
+    "categories": {
+      "essential": {
+        "name": "Essenziali",
+        "description": "I servizi essenziali sono necessari per il funzionamento di base del sito web. Comprendono solo servizi tecnicamente necessari. Non è possibile opporsi a questi servizi."
+      },
+      "functional": {
+        "name": "Funzionali",
+        "description": "I servizi funzionali sono necessari per offrire funzionalità che vanno oltre quelle essenziali, come caratteri più gradevoli, la riproduzione di video o funzioni interattive web 2.0. I contenuti provenienti ad esempio da piattaforme video e social media sono bloccati per impostazione predefinita e possono essere consentiti. Se acconsenti al servizio, questi contenuti vengono caricati automaticamente senza ulteriore consenso manuale."
+      },
+      "statistics": {
+        "name": "Statistiche",
+        "description": "I servizi statistici sono necessari per raccogliere dati pseudonimizzati sui visitatori del sito web. Questi dati ci permettono di comprendere meglio i visitatori e di ottimizzare il sito web."
+      },
+      "marketing": {
+        "name": "Marketing",
+        "description": "I servizi di marketing sono utilizzati da noi e da terze parti per tracciare il comportamento dei singoli visitatori (su più pagine), analizzare i dati raccolti e, ad esempio, mostrare annunci personalizzati. Questi servizi ci permettono di tracciare i visitatori su più siti web."
+      }
+    },
+    "services": {
+      "googleMaps": {
+        "description": "Consente di integrare mappe interattive nel nostro sito web.",
+        "purpose": "Google Maps consente di integrare mappe direttamente nei siti web per arricchirli. A tal fine vengono trattati l'indirizzo IP e i metadati dell'utente. Possono essere memorizzati e letti cookie o tecnologie simili, che possono contenere dati personali e dati tecnici come l'ID utente, il consenso, le impostazioni del visualizzatore della mappa e token di sicurezza. Questi dati possono essere utilizzati per rilevare i siti web visitati, creare statistiche dettagliate sul comportamento degli utenti e migliorare i servizi di Google. Google può collegare questi dati a quelli degli utenti che hanno effettuato l'accesso ai siti web di Google (ad es. google.com e youtube.com). Google trasmette dati personali alle proprie società affiliate e ad altre aziende o persone di fiducia che li trattano per conto di Google, sulla base delle sue istruzioni e nel rispetto dell'informativa sulla privacy di Google."
+      },
+      "googleTagManager": {
+        "description": "Gestisce i tag e gli script del nostro sito web.",
+        "purpose": "Servizio per la gestione dei tag attivati da eventi specifici."
+      },
+      "googleAnalytics": {
+        "description": "Fornisce statistiche dettagliate sul comportamento degli utenti sul sito web.",
+        "purpose": "Google Analytics crea statistiche dettagliate sul comportamento degli utenti sul sito web, trattando tra l'altro l'indirizzo IP e i metadati, che consentono di determinare il paese, la città e la lingua di un utente. Rileva, tra le altre cose, le pagine visualizzate, il tempo trascorso sulle pagine e i dispositivi utilizzati."
+      },
+      "googleAds": {
+        "description": "Misura le conversioni e consente il remarketing per le campagne Google Ads.",
+        "purpose": "Il monitoraggio delle conversioni di Google Ads misura il tasso di conversione e il successo delle campagne Google Ads, utilizzando i cookie per distinguere gli utenti e tracciarne il comportamento. Consente inoltre il remarketing, ovvero la visualizzazione di annunci mirati agli utenti che hanno già interagito con un annuncio Google Ads."
+      }
+    },
+    "details": {
+      "purpose": "Finalità:",
+      "provider": "Fornitore:",
+      "phone": "Telefono:",
+      "email": "E-mail:",
+      "providerPrivacy": "Informativa sulla privacy",
+      "cookiesUsed": "Cookie utilizzati:",
+      "cookieName": "Nome tecnico del cookie:",
+      "type": "Tipo:",
+      "host": "Host:",
+      "duration": "Durata:",
+      "localStorage": "Local storage:",
+      "thirdCountries": "Trattamento dei dati in paesi terzi:",
+      "securityMechanisms": "Meccanismi di sicurezza:"
+    },
+    "cookieTypes": {
+      "http": "Cookie HTTP",
+      "localStorage": "Local storage"
+    },
+    "durations": {
+      "day": "{count, plural, one {# giorno} other {# giorni}}",
+      "month": "{count, plural, one {# mese} other {# mesi}}",
+      "year": "{count, plural, one {# anno} other {# anni}}",
+      "none": "Nessuna scadenza"
+    },
+    "countries": {
+      "US": "Stati Uniti",
+      "AU": "Australia",
+      "BR": "Brasile",
+      "CA": "Canada",
+      "CL": "Cile",
+      "HK": "Hong Kong",
+      "IN": "India",
+      "ID": "Indonesia",
+      "IL": "Israele",
+      "JP": "Giappone",
+      "KR": "Corea del Sud",
+      "QA": "Qatar",
+      "SG": "Singapore",
+      "CH": "Svizzera",
+      "TW": "Taiwan",
+      "GB": "Regno Unito"
+    },
+    "mechanisms": {
+      "adequacy": "Decisione di adeguatezza",
+      "scc": "Clausole contrattuali standard"
+    }
   }
 }

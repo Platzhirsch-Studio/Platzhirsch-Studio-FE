@@ -2,6 +2,7 @@ import React from "react";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import CartPage from "@/components/CartPage/CartPage";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -71,15 +72,7 @@ export async function generateMetadata({ params }) {
     robots: { index: false, follow: true },
     alternates: {
       canonical: PAGE_URL,
-      languages: {
-        'de-AT': getMerklistePageUrl('de'),
-        'de': getMerklistePageUrl('de'),
-        'en': getMerklistePageUrl('en'),
-        'fr-FR': getMerklistePageUrl('fr'),
-        'it-IT': getMerklistePageUrl('it'),
-        'x-default': getMerklistePageUrl('de'),
-
-      }
+      languages: hreflangLanguages((l) => getMerklistePageUrl(l))
     },
     openGraph: {
       type: "website",
@@ -137,12 +130,11 @@ export default async function Page({ params }) {
     name: titleOne,
     description: "Verwalten Sie Ihre Lieblingsmöbel und Designprodukte in Ihrer persönlichen Merkliste.",
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: `${BASE_URL}/${locale}` },
+        { "@type": "ListItem", position: 1, name: Home, item: `https://platzhirsch.studio/${locale}` },
         { "@type": "ListItem", position: 2, name: titleOne, item: PAGE_URL },
       ],
     },

@@ -503,6 +503,7 @@
     "formErrorMail": "Veuillez saisir une adresse e-mail valide.",
     "formErrorPhone": "Veuillez saisir un numéro de téléphone valide.",
     "formErrorMsg": "Le message doit comporter au moins 10 caractères.",
+    "formErrorSend": "Votre message n’a pas pu être envoyé. Veuillez réessayer plus tard ou nous appeler.",
     "directions": "Itinéraire",
     "welcomeBack": "Bon retour !",
     "welcomeMsg": "Nous attendons votre message avec impatience et sommes à votre disposition !"
@@ -855,5 +856,105 @@
     "addCollectionToWishlistAria": "Enregistrer {count, plural, one {le produit} other {les # produits}} de la collection {collection}",
     "removeCollectionFromWishlistAria": "Retirer la collection {collection} de la liste de souhaits",
     "viewDetails": "Voir les détails"
+  },
+  "Cookies": {
+    "bannerTitle": "Paramètres des cookies",
+    "bannerText": "Nous utilisons des cookies afin de vous offrir la meilleure expérience utilisateur possible.",
+    "acceptAll": "Tout accepter",
+    "rejectAll": "Continuer sans consentement",
+    "customize": "Paramètres individuels",
+    "modalTitle": "Préférences de confidentialité individuelles",
+    "savePreferences": "Enregistrer la sélection",
+    "showPreferences": "Préférences de confidentialité individuelles",
+    "intro": "Nous utilisons des cookies et des technologies similaires sur notre site web et traitons des données personnelles vous concernant, comme votre adresse IP. Nous partageons également ces données avec des tiers. Le traitement des données peut être effectué avec votre consentement ou sur la base d'un intérêt légitime, auquel vous pouvez vous opposer. Vous avez le droit de ne consentir qu'aux services essentiels et de modifier ou de retirer votre consentement ultérieurement dans la politique de confidentialité. Vous trouverez ci-dessous un aperçu de tous les services utilisés par ce site web. Vous pouvez consulter des informations détaillées sur chaque service et y consentir individuellement ou exercer votre droit d'opposition.",
+    "thirdCountryNotice": "Certains services traitent des données personnelles dans des pays tiers non sûrs. En consentant à l'utilisation de ces services, vous consentez également au traitement de vos données dans ces pays tiers non sûrs conformément à l'art. 49, paragraphe 1, point a), du RGPD. Cela comporte le risque que vos données soient traitées par des autorités à des fins de contrôle et de surveillance, éventuellement sans possibilité de recours juridique.",
+    "consentModeNotice": "Vous autorisez également le traitement des données par les partenaires participants conformément au Google Consent Mode, sur la base de votre consentement, aux fins suivantes :",
+    "showDetails": "Afficher les détails",
+    "hideDetails": "Masquer les détails",
+    "privacyPolicy": "Politique de confidentialité",
+    "imprint": "Mentions légales",
+    "categories": {
+      "essential": {
+        "name": "Essentiels",
+        "description": "Les services essentiels sont nécessaires au fonctionnement de base du site web. Ils ne comprennent que des services techniquement nécessaires. Il n'est pas possible de s'opposer à ces services."
+      },
+      "functional": {
+        "name": "Fonctionnels",
+        "description": "Les services fonctionnels sont nécessaires pour proposer des fonctionnalités allant au-delà des fonctions essentielles, comme de plus belles polices, la lecture de vidéos ou des fonctionnalités interactives web 2.0. Les contenus provenant par exemple de plateformes vidéo et de réseaux sociaux sont bloqués par défaut et peuvent être autorisés. Si vous consentez au service, ces contenus sont chargés automatiquement sans autre consentement manuel."
+      },
+      "statistics": {
+        "name": "Statistiques",
+        "description": "Les services statistiques sont nécessaires pour collecter des données pseudonymisées sur les visiteurs du site web. Ces données nous permettent de mieux comprendre les visiteurs et d'optimiser le site web."
+      },
+      "marketing": {
+        "name": "Marketing",
+        "description": "Les services marketing sont utilisés par nous et par des tiers pour suivre le comportement des visiteurs individuels (sur plusieurs pages), analyser les données collectées et, par exemple, afficher des publicités personnalisées. Ces services nous permettent de suivre les visiteurs sur plusieurs sites web."
+      }
+    },
+    "services": {
+      "googleMaps": {
+        "description": "Permet d'intégrer des cartes interactives sur notre site web.",
+        "purpose": "Google Maps permet d'intégrer des cartes directement dans des sites web afin de les enrichir. Cela nécessite le traitement de l'adresse IP et des métadonnées de l'utilisateur. Des cookies ou des technologies similaires peuvent être enregistrés et lus. Ils peuvent contenir des données personnelles et des données techniques telles que l'identifiant de l'utilisateur, le consentement, les paramètres de la carte et des jetons de sécurité. Ces données peuvent servir à recenser les sites web visités, à établir des statistiques détaillées sur le comportement des utilisateurs et à améliorer les services de Google. Google peut relier ces données à celles des utilisateurs connectés sur les sites web de Google (par ex. google.com et youtube.com). Google transmet des données personnelles à ses sociétés affiliées et à d'autres entreprises ou personnes de confiance qui les traitent pour son compte, selon les instructions de Google et conformément à la politique de confidentialité de Google."
+      },
+      "googleTagManager": {
+        "description": "Gère les balises et les scripts de notre site web.",
+        "purpose": "Service de gestion des balises déclenchées par des événements spécifiques."
+      },
+      "googleAnalytics": {
+        "description": "Fournit des statistiques détaillées sur le comportement des utilisateurs sur le site web.",
+        "purpose": "Google Analytics établit des statistiques détaillées sur le comportement des utilisateurs sur le site web, en traitant notamment l'adresse IP et des métadonnées qui permettent de déterminer le pays, la ville et la langue d'un utilisateur. Il mesure entre autres les pages vues, le temps passé sur les pages et les appareils utilisés."
+      },
+      "googleAds": {
+        "description": "Mesure les conversions et permet le remarketing pour les campagnes Google Ads.",
+        "purpose": "Le suivi des conversions Google Ads mesure le taux de conversion et le succès des campagnes Google Ads, en utilisant des cookies pour distinguer les utilisateurs et suivre leur comportement. Il permet également le remarketing, c'est-à-dire l'affichage de publicités ciblées auprès d'utilisateurs ayant déjà interagi avec une annonce Google Ads."
+      }
+    },
+    "details": {
+      "purpose": "Finalité :",
+      "provider": "Fournisseur :",
+      "phone": "Téléphone :",
+      "email": "E-mail :",
+      "providerPrivacy": "Politique de confidentialité",
+      "cookiesUsed": "Cookies utilisés :",
+      "cookieName": "Nom technique du cookie :",
+      "type": "Type :",
+      "host": "Hôte :",
+      "duration": "Durée :",
+      "localStorage": "Stockage local :",
+      "thirdCountries": "Traitement des données dans des pays tiers :",
+      "securityMechanisms": "Mécanismes de sécurité :"
+    },
+    "cookieTypes": {
+      "http": "Cookie HTTP",
+      "localStorage": "Stockage local"
+    },
+    "durations": {
+      "day": "{count, plural, one {# jour} other {# jours}}",
+      "month": "{count, plural, other {# mois}}",
+      "year": "{count, plural, one {# an} other {# ans}}",
+      "none": "Sans expiration"
+    },
+    "countries": {
+      "US": "États-Unis",
+      "AU": "Australie",
+      "BR": "Brésil",
+      "CA": "Canada",
+      "CL": "Chili",
+      "HK": "Hong Kong",
+      "IN": "Inde",
+      "ID": "Indonésie",
+      "IL": "Israël",
+      "JP": "Japon",
+      "KR": "Corée du Sud",
+      "QA": "Qatar",
+      "SG": "Singapour",
+      "CH": "Suisse",
+      "TW": "Taïwan",
+      "GB": "Royaume-Uni"
+    },
+    "mechanisms": {
+      "adequacy": "Décision d'adéquation",
+      "scc": "Clauses contractuelles types"
+    }
   }
 }

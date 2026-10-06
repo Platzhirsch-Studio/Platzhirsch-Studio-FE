@@ -88,9 +88,14 @@ const ProductInfoTabs = ({ labels, descriptionParagraphs, dims, materialsFields,
         ))}
       </div>
 
+      {/* All panels stay in the HTML (inactive ones hidden with CSS) so
+          search engines read every tab, not just the first one. */}
       <div className="pt-8">
-        {active === "description" && (
-          <div className="columns-1 gap-10 text-sm leading-relaxed text-[#30373e]/80 lg:columns-2">
+        {tabs.includes("description") && (
+          <div
+            role="tabpanel"
+            className={`columns-1 gap-10 text-sm leading-relaxed text-[#30373e]/80 lg:columns-2 ${active === "description" ? "" : "hidden"}`}
+          >
             {descriptionParagraphs.map((p, i) => (
   <p
     key={i}
@@ -102,8 +107,11 @@ const ProductInfoTabs = ({ labels, descriptionParagraphs, dims, materialsFields,
           </div>
         )}
 
-        {active === "dimensions" && dims && (
-          <div className="flex flex-col items-start gap-8 sm:flex-row sm:gap-16">
+        {tabs.includes("dimensions") && (
+          <div
+            role="tabpanel"
+            className={`flex flex-col items-start gap-8 sm:flex-row sm:gap-16 ${active === "dimensions" ? "" : "hidden"}`}
+          >
             <DimensionDiagram dims={dims} size="lg" />
             <dl className="grid flex-1 grid-cols-2 gap-x-10 gap-y-6 sm:grid-cols-3">
               {Object.entries(dims).map(([key, value]) => (
@@ -116,8 +124,11 @@ const ProductInfoTabs = ({ labels, descriptionParagraphs, dims, materialsFields,
           </div>
         )}
 
-        {active === "materials" && (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {tabs.includes("materials") && (
+          <div
+            role="tabpanel"
+            className={`grid grid-cols-1 gap-4 sm:grid-cols-2 ${active === "materials" ? "" : "hidden"}`}
+          >
             {materialsFields.map((f) => {
               const Icon = FIELD_ICONS[f.key] || Layers;
               return (
@@ -142,8 +153,11 @@ const ProductInfoTabs = ({ labels, descriptionParagraphs, dims, materialsFields,
           </div>
         )}
 
-        {active === "configurations" && (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {tabs.includes("configurations") && (
+          <div
+            role="tabpanel"
+            className={`grid grid-cols-1 gap-4 sm:grid-cols-2 ${active === "configurations" ? "" : "hidden"}`}
+          >
             {configurations.map((c) => (
               <div
                 key={c.name}

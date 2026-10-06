@@ -503,6 +503,7 @@
     "formErrorMail": "Please enter a valid e-mail address.",
     "formErrorPhone": "Please enter a valid phone number.",
     "formErrorMsg": "Message must be at least 10 characters long.",
+    "formErrorSend": "Your message could not be sent. Please try again later or give us a call.",
     "directions": "Get Directions",
     "welcomeBack": "Welcome Back!",
     "welcomeMsg": "We look forward to your message and are happy to assist you!"
@@ -859,5 +860,105 @@
     "addCollectionToWishlistAria": "Save all {count, plural, one {# product} other {# products}} of the {collection} collection",
     "removeCollectionFromWishlistAria": "Remove the {collection} collection from the wishlist",
     "viewDetails": "View details"
+  },
+  "Cookies": {
+    "bannerTitle": "Cookie settings",
+    "bannerText": "We use cookies to give you the best possible user experience.",
+    "acceptAll": "Accept all",
+    "rejectAll": "Continue without consent",
+    "customize": "Individual settings",
+    "modalTitle": "Individual privacy preferences",
+    "savePreferences": "Save selection",
+    "showPreferences": "Individual privacy preferences",
+    "intro": "We use cookies and similar technologies on our website and process personal data about you, such as your IP address. We also share this data with third parties. Data processing may take place with your consent or on the basis of a legitimate interest, which you can object to. You have the right to consent to essential services only and to change or withdraw your consent at a later time in the privacy policy. Below you will find an overview of all services used by this website. You can view detailed information about each service and consent to them individually or exercise your right to object.",
+    "thirdCountryNotice": "Some services process personal data in unsafe third countries. By consenting to the use of these services, you also consent to the processing of your data in these unsafe third countries in accordance with Art. 49 (1) (a) GDPR. This involves the risk that your data will be processed by authorities for control and surveillance purposes, possibly without any legal remedy.",
+    "consentModeNotice": "You also allow data processing by participating partners in accordance with Google Consent Mode, based on your consent, for the following purposes:",
+    "showDetails": "Show details",
+    "hideDetails": "Hide details",
+    "privacyPolicy": "Privacy policy",
+    "imprint": "Imprint",
+    "categories": {
+      "essential": {
+        "name": "Essential",
+        "description": "Essential services are required for the basic functionality of the website. They only contain technically necessary services. These services cannot be objected to."
+      },
+      "functional": {
+        "name": "Functional",
+        "description": "Functional services are necessary to provide features beyond the essential functionality such as prettier fonts, video playback or interactive web 2.0 features. Content from e.g. video platforms and social media platforms is blocked by default and can be consented to. If the service is agreed to, this content is loaded automatically without further manual consent."
+      },
+      "statistics": {
+        "name": "Statistics",
+        "description": "Statistics services are needed to collect pseudonymous data about the visitors of the website. The data enables us to understand visitors better and to optimize the website."
+      },
+      "marketing": {
+        "name": "Marketing",
+        "description": "Marketing services are used by us and third parties to track the behaviour of individual visitors (across multiple pages), analyse the data collected and, for example, display personalized advertisements. These services enable us to track visitors across multiple websites."
+      }
+    },
+    "services": {
+      "googleMaps": {
+        "description": "Enables embedding of interactive maps on our website.",
+        "purpose": "Google Maps enables the embedding of maps directly into websites to enhance the website. This requires processing the user’s IP address and metadata. Cookies or cookie-like technologies can be stored and read. These can contain personal data and technical data like user ID, consent, settings of the map viewer and security tokens. This data can be used to collect visited websites, detailed statistics about user behavior, and it can be used to improve the services of Google. This data may be linked by Google to the data of users logged in on the websites of Google (e.g. google.com and youtube.com). Google provides personal information to their affiliates and other trusted businesses or persons to process it for them, based on Google's instructions and in compliance with Google's privacy policy."
+      },
+      "googleTagManager": {
+        "description": "Manages tags and scripts on our website.",
+        "purpose": "Service for managing tags triggered by specific events."
+      },
+      "googleAnalytics": {
+        "description": "Provides detailed statistics about user behavior on the website.",
+        "purpose": "Google Analytics creates detailed statistics about user behavior on the website, including the processing of IP address and metadata, which can help determine a user's country, city, and language. It tracks page views, time spent on pages, device usage, and more."
+      },
+      "googleAds": {
+        "description": "Tracks conversions and enables remarketing for Google Ads campaigns.",
+        "purpose": "Google Ads Conversion Tracking tracks the conversion rate and success of Google Ads campaigns, using cookies to differentiate users and track their behavior. It also enables remarketing, displaying targeted ads to users who have already interacted with a Google Ads ad."
+      }
+    },
+    "details": {
+      "purpose": "Purpose:",
+      "provider": "Provider information:",
+      "phone": "Phone:",
+      "email": "Email:",
+      "providerPrivacy": "Privacy policy",
+      "cookiesUsed": "Cookies used:",
+      "cookieName": "Technical cookie name:",
+      "type": "Type:",
+      "host": "Host:",
+      "duration": "Duration:",
+      "localStorage": "Local storage:",
+      "thirdCountries": "Data processing in third countries:",
+      "securityMechanisms": "Security mechanisms:"
+    },
+    "cookieTypes": {
+      "http": "HTTP cookie",
+      "localStorage": "Local storage"
+    },
+    "durations": {
+      "day": "{count, plural, one {# day} other {# days}}",
+      "month": "{count, plural, one {# month} other {# months}}",
+      "year": "{count, plural, one {# year} other {# years}}",
+      "none": "No expiry"
+    },
+    "countries": {
+      "US": "United States",
+      "AU": "Australia",
+      "BR": "Brazil",
+      "CA": "Canada",
+      "CL": "Chile",
+      "HK": "Hong Kong",
+      "IN": "India",
+      "ID": "Indonesia",
+      "IL": "Israel",
+      "JP": "Japan",
+      "KR": "South Korea",
+      "QA": "Qatar",
+      "SG": "Singapore",
+      "CH": "Switzerland",
+      "TW": "Taiwan",
+      "GB": "United Kingdom"
+    },
+    "mechanisms": {
+      "adequacy": "Adequacy decision",
+      "scc": "Standard contractual clauses"
+    }
   }
 }

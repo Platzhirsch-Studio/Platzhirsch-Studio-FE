@@ -1,4 +1,5 @@
 import { notFound, redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { ROUTES } from "@/utils/routing";
 import ProduktePage from "@/app/[locale]/produkte/page";
 import BeratungPage from "@/app/[locale]/beratung/page";
@@ -149,9 +150,17 @@ export async function generateMetadata({ params }) {
     return kontaktGenerateMetadata({ params });
   }
 
-  // Fallback metadata
+  if (pageType === 'impressum') {
+    const { generateMetadata: impressumGenerateMetadata } = await import('@/app/[locale]/impressum/page');
+    return impressumGenerateMetadata({ params });
+  }
+
+  // Anything else renders notFound() above — give it the translated 404 title,
+  // not "<slug> | …", and keep it out of the index.
+  const t = await getTranslations({ locale, namespace: "error404" });
   return {
-    title: `${slug} | Platzhirsch Home Living`,
-    description: `Page about ${slug}`,
+    title: `${t("headline")} | Platzhirsch Home Living`,
+    description: t("description"),
+    robots: { index: false, follow: true },
   };
 }

@@ -9,6 +9,7 @@
 // <lastmod> (see toUrlsetXml); hreflang lives in each page's own <head>.
 import "server-only";
 import { generateSlug } from "@/lib/slugify";
+import { productsPathByLocale } from "@/utils/routing";
 import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData";
 import { fetchNewsData } from "@/lib/api/fetchNewsData";
 import { fetchProduktePaths } from "@/lib/api/fetchAllProdukte";
@@ -354,7 +355,7 @@ export async function getProductEntries() {
   const entries = [];
   const [productPaths, cmsCategoryKeys] = await Promise.all([fetchProductPaths(), fetchCategoryKeys()]);
 
-  // Category pages (/produkte/<category> — same path in every locale). Only
+  // Category pages at their translated path (/produkte/<category>, /products/…). Only
   // categories that actually have products: empty ones are noindex (see
   // produkte/[category]/page.js).
   const lastModifiedByCategory = new Map();
@@ -369,24 +370,24 @@ export async function getProductEntries() {
       .filter((key) => lastModifiedByCategory.has(key))
   );
   for (const key of categoryKeys) {
-    const path = `/produkte/${generateSlug(key)}`;
+    const pathByLocale = productsPathByLocale(generateSlug(key));
     for (const locale of LOCALES) {
-      addEntry(entries, `${BASE_URL}/${locale}${path}`, lastModifiedByCategory.get(key), "weekly", 0.8, samePath(path));
+      addEntry(entries, `${BASE_URL}/${locale}${pathByLocale[locale]}`, lastModifiedByCategory.get(key), "weekly", 0.8, pathByLocale);
     }
   }
 
-  // Product detail pages (/produkte/<category>/<product> — same path in every
-  // locale; titles/descriptions localized with German fallback).
+  // Product detail pages at their translated path (/de/produkte/…,
+  // /en/products/…, /fr/produits/…, /it/prodotti/…); hreflang between them.
   for (const product of productPaths) {
-    const path = `/produkte/${generateSlug(product.kategories.toLowerCase())}/${product.path_field}`;
+    const pathByLocale = productsPathByLocale(generateSlug(product.kategories.toLowerCase()), product.path_field);
     for (const locale of LOCALES) {
       addEntry(
         entries,
-        `${BASE_URL}/${locale}${path}`,
+        `${BASE_URL}/${locale}${pathByLocale[locale]}`,
         product.modified ? new Date(product.modified) : STATIC_LAST_MODIFIED,
         "monthly",
         0.6,
-        samePath(path)
+        pathByLocale
       );
     }
   }
@@ -403,14 +404,21 @@ export async function getNewsEntries() {
   const news = await fetchNews();
 
   for (const newsItem of news) {
-    const slug = newsItem.slug || generateSlug(newsItem.name1 || newsItem.title);
+    // Only active articles: the article route 404s anything else
+    // (news/[title]/page.js), so a deactivated one must not be listed.
+    if (newsItem.status !== "Aktiv") continue;
+    // Same slug the route matches on (generateSlug(name1)) — a different
+    // source here would list URLs that 404.
+    const slug = generateSlug(newsItem.name1);
     if (!slug) continue;
 
+    // lastmod: the article's own change date, else its publication date.
+    const changed = newsItem.modified || newsItem.daten;
     for (const locale of LOCALES) {
       addEntry(
         entries,
         `${BASE_URL}/${locale}/news/${slug}`,
-        newsItem.modified ? new Date(newsItem.modified) : STATIC_LAST_MODIFIED,
+        changed ? new Date(changed) : STATIC_LAST_MODIFIED,
         "weekly",
         0.6,
         samePath(`/news/${slug}`)

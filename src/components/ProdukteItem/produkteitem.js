@@ -316,7 +316,7 @@ export default function BrandPage({ marke }) {
               (marke.bild_anhagen.length === 1 ? (
                 <div className="relative w-full h-[550px] rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src={`/cms${marke.bild_anhagen[0].bild_anhagen}`}
+                    src={`/cmx${marke.bild_anhagen[0].bild_anhagen}`}
                     alt="Markenbild"
                     fill
                     priority
@@ -331,7 +331,7 @@ export default function BrandPage({ marke }) {
                       <div
                         className="w-full h-full bg-cover bg-center rounded-xl"
                         style={{
-                          backgroundImage: `url('/cms/${image.bild_anhagen}')`,
+                          backgroundImage: `url('/cmx${image.bild_anhagen}')`,
                         }}
                       ></div>
                     </div>

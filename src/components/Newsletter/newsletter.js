@@ -1,67 +1,54 @@
 "use client";
 import React, { useState } from "react";
-import { API_BASE_URL } from "@/lib/apiBaseUrl";
 import { useTranslations } from "next-intl";
+
+// Error codes from /api/newsletter_subscribe → translated messages.
+const ERROR_KEYS = {
+  invalid_email: "errInvalid",
+  already_subscribed: "errAlready",
+};
 
 const Newsletter = () => {
   const t = useTranslations("newsletter");
   const [email, setEmail] = useState("");
+  // Honeypot — hidden from people, only bots fill it in (see the route).
+  const [website, setWebsite] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  const handleSubscribe = async () => {
+  // Posts to our own server route — the backend address never reaches the
+  // browser (src/app/api/newsletter_subscribe/route.js forwards it).
+  const handleSubscribe = async (event) => {
+    event?.preventDefault();
+    if (loading) return;
     setEmailError("");
     setSubscribed(false);
-    if (!validateEmail(email)) {
+    const value = email.trim();
+    if (!validateEmail(value)) {
       setEmailError(t("errInvalid"));
       return;
     }
 
     setLoading(true);
-
     try {
-      const response = await fetch(
-        `${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.newsletter_website.api.subscribe_newsletter`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({ email: email.trim() }),
-        }
-      );
+      const response = await fetch("/api/newsletter_subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: value, website }),
+      });
+      const result = await response.json().catch(() => ({}));
 
-      const result = await response.json();
-
-      if (result.exc) {
-        const errorMsg = result._server_messages
-          ? JSON.parse(result._server_messages)[0]
-          : t("errGeneric");
-        throw new Error(JSON.parse(errorMsg).message);
-      }
-
-      if (response.ok) {
+      if (response.ok && result.success) {
         setSubscribed(true);
         setEmail("");
       } else {
-        throw new Error(result.message || t("errGeneric"));
+        setEmailError(t(ERROR_KEYS[result.code] || "errGeneric"));
       }
-    } catch (error) {
-      if (
-        error.message.includes("bereits angemeldet") ||
-        error.message.includes("already subscribed")
-      ) {
-        setEmailError(t("errAlready"));
-      } else {
-        setEmailError(
-          error.message ||
-          t("errGeneric")
-        );
-      }
+    } catch {
+      setEmailError(t("errGeneric"));
     } finally {
       setLoading(false);
     }
@@ -98,28 +85,54 @@ const Newsletter = () => {
       </div>
       <div className="max-w-4xl mx-auto px-6  text-[#303030]">
         <h3 className="text-xl font-semibold mb-3">{t("subscribeHeadline")}</h3>
-        <div className="flex border border-transparent bg-gray-100 hover:border-[#d1b250] transition-colors duration-200 rounded-r">
+        <form
+          onSubmit={handleSubscribe}
+          noValidate
+          className="relative flex border border-transparent bg-gray-100 hover:border-[#d1b250] transition-colors duration-200 rounded-r"
+        >
           <input
             type="email"
+            name="email"
+            autoComplete="email"
+            aria-label={t("inputPlaceholder")}
+            aria-invalid={emailError ? "true" : undefined}
+            aria-describedby={emailError ? "newsletter-error" : undefined}
             placeholder={t("inputPlaceholder")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-2 text-gray-800 text-sm outline-none bg-gray-100 rounded-r "
           />
+          {/* Honeypot: off-screen and skipped by keyboard/screen readers. */}
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            className="absolute -left-[9999px] h-px w-px opacity-0"
+          />
           <button
-            onClick={handleSubscribe}
+            type="submit"
             disabled={loading}
-            className="px-4 py-2 text-xs text-white bg-[#d1b250] cursor-pointer rounded-r"
-            aria-label={t("btnSubscribe")}
+            className="px-4 py-2 text-xs text-white bg-[#d1b250] cursor-pointer rounded-r disabled:opacity-70"
           >
             {loading ? t("btnLoading") : t("btnSubscribe")}
           </button>
-        </div>
+        </form>
 
-        {emailError && <p className="text-red-600 text-sm mt-2">{emailError}</p>}
+        {emailError && (
+          <p id="newsletter-error" role="alert" className="text-red-600 text-sm mt-2">
+            {emailError}
+          </p>
+        )}
 
         {subscribed && (
-          <div className="mt-3 px-4 py-3 bg-[#d1b250] text-white text-sm font-medium rounded transition-opacity duration-300 ease-in-out">
+          <div
+            role="status"
+            className="mt-3 px-4 py-3 bg-[#d1b250] text-white text-sm font-medium rounded transition-opacity duration-300 ease-in-out"
+          >
             {t("success")}
           </div>
         )}

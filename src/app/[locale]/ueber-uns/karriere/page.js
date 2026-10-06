@@ -4,6 +4,7 @@ import KarrierePosition from "@/components/Karriere/karriereposition";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import { fetchKarriereData } from "@/lib/api/fetchKarrierData";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 import {
   fetchCareerKeywords,
   getLocalizedCareerMetadata,
@@ -67,15 +68,7 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de-AT': getKarrierePageUrl('de'),
-            'de': getKarrierePageUrl('de'),
-            'en': getKarrierePageUrl('en'),
-            'fr-FR': getKarrierePageUrl('fr'),
-            'it-IT': getKarrierePageUrl('it'),
-            'x-default': getKarrierePageUrl('de'),
-
-          }
+          languages: hreflangLanguages((l) => getKarrierePageUrl(l))
         },
         openGraph: {
           type: "website",
@@ -127,14 +120,7 @@ export async function generateMetadata({ params }) {
       },
       alternates: {
         canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de': getKarrierePageUrl('de'),
-          'en': getKarrierePageUrl('en'),
-          'fr': getKarrierePageUrl('fr'),
-          'it': getKarrierePageUrl('it'),
-          'x-default': getKarrierePageUrl('de'),
-
-        }
+        languages: hreflangLanguages((l) => getKarrierePageUrl(l))
       },
     };
   } catch (error) {
@@ -144,7 +130,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getKarrierePageUrl(l)) },
     };
   }
 }
@@ -186,7 +172,7 @@ export default async function Page({ params }) {
   const BASE_URL = getBaseUrl(locale);
   const PAGE_URL = getKarrierePageUrl(locale);
 
-  const karrierePath = ROUTES.karriere[locale] ? `${ROUTES.karriere[locale]}` : `/ueber-uns/marken`;
+  const karrierePath = ROUTES.karriere[locale] ? `${ROUTES.karriere[locale]}` : `/ueber-uns/karriere`;
 
   const BannerInfo = {
     image: image,

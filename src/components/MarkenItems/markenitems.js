@@ -9,6 +9,7 @@ import FadeInView from "@/components/Reusable/FadeInView";
 import { Link } from "@/i18n/navigation";
 import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
 import { generateSlug } from "@/lib/slugify";
+import { productsPath } from "@/utils/routing";
 import { formatCollectionName, collectionPath } from "@/lib/marken/collections";
 import {
   ArrowUpRight,
@@ -129,7 +130,7 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
         <Image
           src={
             marke.bild_anhagen?.[0]?.bild_anhagen
-              ? `/cms${marke.bild_anhagen[0].bild_anhagen}`
+              ? `/cmx${marke.bild_anhagen[0].bild_anhagen}`
               : "/Images/fallback-banner.jpg"
           }
           alt={marke.name1}
@@ -235,7 +236,7 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
           <div key={img.bild_anhagen}>
             <div className="relative h-[320px] overflow-hidden rounded-xl shadow-lg md:h-[480px]">
               <Image
-                src={`/cms${img.bild_anhagen}`}
+                src={`/cmx${img.bild_anhagen}`}
                 alt={`${marke.name1} Detail ${i + 1}`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -249,7 +250,7 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
       marke.bild_anhagen?.[0] && (
         <div className="relative h-[320px] overflow-hidden rounded-xl shadow-lg md:h-[480px]">
           <Image
-            src={`/cms${marke.bild_anhagen[0].bild_anhagen}`}
+            src={`/cmx${marke.bild_anhagen[0].bild_anhagen}`}
             alt={marke.name1}
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
@@ -281,7 +282,7 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
               return (
                 <Link
                   key={kat.category_key}
-                  href={`/produkte/${generateSlug(kat.category_key)}?marke=${generateSlug(marke.name1)}`}
+                  href={`${productsPath(locale, generateSlug(kat.category_key))}?marke=${generateSlug(marke.name1)}`}
                   locale={locale}
                   className="group relative block h-[280px] overflow-hidden rounded-lg border border-[#30373e]/10 bg-gray-100 shadow-[0_1px_3px_rgba(48,55,62,0.06)] transition-shadow duration-300 hover:shadow-[0_8px_24px_rgba(48,55,62,0.12)]"
                 >
@@ -290,7 +291,7 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
                       kat.product_image
                         ? `/cmx${kat.product_image}`
                         : kat.image
-                          ? `/cms${kat.image}`
+                          ? `/cmx${kat.image}`
                           : "/Images/fallback-banner.jpg"
                     }
                     alt={kat[`alt_text_${locale}`] || name}

@@ -12,7 +12,7 @@ import { fetchFarben, getFarbenOptions } from "@/lib/api/fetchFarben";
 import { fetchMaterialien, getMaterialienOptions } from "@/lib/api/fetchMaterialien";
 import { localizeCategory } from "@/lib/seo/productCategories";
 import { generateSlug } from "@/lib/slugify";
-import { ROUTES } from "@/utils/routing";
+import { ROUTES, productsPath, productsPathByLocale } from "@/utils/routing";
 import { buildPageMetadata, localeUrl } from "@/lib/seo/pageMetadata";
 import { breadcrumbList, collectionPageSchema, graph } from "@/lib/seo/structuredData";
 import JsonLd from "@/components/Reusable/JsonLd";
@@ -101,7 +101,7 @@ export async function generateMetadata({ params }) {
   const { title, description } = categorySeo(locale, { label, count: products.length, brands: topBrands });
   return buildPageMetadata({
     locale,
-    pathByLocale: `/produkte/${categorySlug}`,
+    pathByLocale: productsPathByLocale(categorySlug),
     title,
     description,
     image: products.find((p) => p.image)?.image,
@@ -133,7 +133,7 @@ export default async function ShopCategoryPage({ params }) {
 
   const Home = locale === "it" ? "Casa" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
   const productsLabel = locale === "it" ? "Prodotti" : locale === "en" ? "Products" : locale === "fr" ? "Produits" : "Produkte";
-  const productPath = ROUTES.produkte[locale] ? `${ROUTES.produkte[locale]}` : `/produkte`;
+  const productPath = productsPath(locale);
 
   const breadcrumbLinks = [
     { linkName: Home, link: "/" },
@@ -151,7 +151,7 @@ export default async function ShopCategoryPage({ params }) {
 
   // CollectionPage + ItemList of every product in the category (the grid only
   // renders the first batch, so this also lists the rest for crawlers).
-  const pageUrl = localeUrl(locale, `/produkte/${categorySlug}`);
+  const pageUrl = localeUrl(locale, productsPath(locale, categorySlug));
   const structuredData = graph(
     collectionPageSchema({
       url: pageUrl,
@@ -159,7 +159,7 @@ export default async function ShopCategoryPage({ params }) {
       locale,
       items: products.map((p) => ({
         name: p.brand ? `${p.brand} ${p.name}` : p.name,
-        url: localeUrl(locale, `/produkte/${generateSlug(p.categoryKey)}/${p.url_slug}`),
+        url: localeUrl(locale, productsPath(locale, generateSlug(p.categoryKey), p.url_slug)),
         image: p.image,
       })),
       breadcrumb: breadcrumbList([

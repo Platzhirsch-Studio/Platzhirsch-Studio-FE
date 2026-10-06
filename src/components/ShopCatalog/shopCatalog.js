@@ -8,7 +8,7 @@ import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
 import { ChevronDown, X, SlidersHorizontal } from "lucide-react";
 import { localizeCategory } from "@/lib/seo/productCategories";
 import { generateSlug } from "@/lib/slugify";
-import { ROUTES } from "@/utils/routing";
+import { ROUTES, productsPath } from "@/utils/routing";
 import WishlistHeart from "@/components/ShopCatalog/wishlistHeart";
 
 // Filters whose options come straight off the product list itself — brand
@@ -440,13 +440,13 @@ const ShopCatalog = ({ products, excludeGroups = [], subCategoryOptions = [], co
             <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-12">
               {visibleProducts.map((p, index) => {
                 // Same /produkte path in every locale (see the produkte pages).
-                const detailHref = `/produkte/${generateSlug(p.categoryKey)}/${p.url_slug}`;
+                const detailHref = productsPath(locale, generateSlug(p.categoryKey), p.url_slug);
                 return (
                 <div
                   key={p.id}
                   className="group relative overflow-hidden rounded-lg border border-[#30373e]/10 bg-white transition-shadow duration-300 hover:shadow-[0_8px_24px_rgba(48,55,62,0.12)]"
                 >
-                  <WishlistHeart product={{ ...p, href: detailHref }} />
+                  <WishlistHeart product={{ ...p, href: productsPath("de", generateSlug(p.categoryKey), p.url_slug) }} />
                   <Link href={detailHref} locale={locale} className="relative block h-[260px] w-full overflow-hidden bg-gray-100">
                     <Image
                       src={p.image || "/Images/fallback-banner.jpg"}

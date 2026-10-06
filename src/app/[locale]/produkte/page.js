@@ -44,9 +44,8 @@ export default async function ShopPage({ params }) {
   const Home = locale === "it" ? "Casa" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
   const productsLabel = locale === "it" ? "Prodotti" : locale === "en" ? "Products" : locale === "fr" ? "Produits" : "Produkte";
   const productPath = ROUTES.produkte[locale] ? `${ROUTES.produkte[locale]}` : `/produkte`;
-  // Category pages only exist under the German-named produkte folder, so
-  // their path is the same in every locale (the translated /products/... 404).
-  const basePath = "/produkte";
+  // Category links use the translated catalogue path (/products/…, /produits/…).
+  const basePath = productPath;
 
   const breadcrumbLinks = [
     { linkName: Home, link: "/" },
@@ -85,7 +84,7 @@ export default async function ShopPage({ params }) {
         countLabel: t("resultsCount", { count }),
         // CMS image first, else a matching room photo (a room shot reads better
         // on this overview than a product cut-out, and keeps the tiles uniform).
-        image: cms?.image ? `/cms${cms.image}` : getCategoryImage(slug, index),
+        image: cms?.image ? `/cmx${cms.image}` : getCategoryImage(slug, index),
       };
     })
     // Only categories that actually have products get a tile.

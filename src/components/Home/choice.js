@@ -4,17 +4,32 @@ import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
 import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
 import FadeInView from "@/components/Reusable/FadeInView";
+import { ROUTES, localizeProductsHref } from "@/utils/routing";
+
+// The CMS only stores a German link (link_before_footer_de, e.g. "/kontakt").
+// Map it to the page language's path via ROUTES ("/kontakt" → "/contact",
+// "/contatto", …); unknown paths are used as-is, empty → the contact page.
+function localizeCmsPath(path, locale) {
+  if (!path) return ROUTES.kontakt[locale] || ROUTES.kontakt.de;
+  const clean = path.replace(/^\/(de|en|fr|it)(?=\/|$)/, "") || "/";
+  for (const paths of Object.values(ROUTES)) {
+    if (paths.de === clean) return paths[locale] || clean;
+  }
+  return localizeProductsHref(clean, locale);
+}
 
 export default function Choice({ data }) {
   const pathname = usePathname();
   const locale = getLocaleFromPath(pathname);
+  const ctaText = data?.[`link_text_${locale}`] || data?.link_text_de || "";
+  const ctaHref = localizeCmsPath(data?.link_before_footer_de, locale);
   return (
     <div className="relative w-full ">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/Images/Home/bannerImage-3.jpg"
-          alt="Background"
+          alt=""
           fill
           className="object-cover"
           sizes="100vw"
@@ -52,20 +67,21 @@ export default function Choice({ data }) {
           distance={20}
           delay={400}
         >
-          <Link href={data?.link_before_footer_de} locale={locale}>
-            <div className="button-custom9">
-              <button aria-label={data?.[`link_text_${locale}`]} data-text={data?.[`link_text_${locale}`]}>
-                <span></span>
-                <p data-title={data?.[`link_text_${locale}`]} data-text={data?.[`link_text_${locale}`]}></p>
-              </button>
-            </div>
-          </Link>
+          <div className="button-custom9">
+            <Link href={ctaHref} locale={locale} className="block">
+              <span className="cta">
+                <span className="lines"></span>
+                <span className="sr-only">{ctaText}</span>
+                <p aria-hidden="true" data-title={ctaText} data-text={ctaText}></p>
+              </span>
+            </Link>
+          </div>
           <style jsx> {`
           .button-custom9{
            display: flex;
   justify-content: center;
 
-  button {
+  .cta {
     width: 250px;
     height: 45px;
     background-color: transparent;
@@ -112,7 +128,7 @@ export default function Choice({ data }) {
       bottom: 0;
     }
 
-    span {
+    .lines {
       width: 100%;
       height: 100%;
       position: absolute;
@@ -175,8 +191,8 @@ export default function Choice({ data }) {
       width: 100%;
     }
 
-    &:hover span::before,
-    &:hover span::after {
+    &:hover .lines::before,
+    &:hover .lines::after {
       height: 100%;
     }
 

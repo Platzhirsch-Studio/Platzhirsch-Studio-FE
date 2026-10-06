@@ -9,6 +9,7 @@ import { fetchProdukteNewByMarke } from "@/lib/api/fetchAllProdukte";
 import { buildShopProducts } from "@/lib/shop/shopProducts";
 import { formatCollectionName, collectionPath } from "@/lib/marken/collections";
 import { generateSlug } from "@/lib/slugify";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 const DOMAIN = "https://platzhirsch.studio";
 const LOCALES = ["de", "en", "fr", "it"];
@@ -143,14 +144,7 @@ export async function buildCollectionMetadata(locale, brandSlug, collectionSlug)
     twitter: { card: "summary_large_image", title, description, images: [image] },
     alternates: {
       canonical: urlFor(LOCALES.includes(locale) ? locale : "de"),
-      languages: {
-        "de-AT": urlFor("de"),
-        de: urlFor("de"),
-        en: urlFor("en"),
-        "fr-FR": urlFor("fr"),
-        "it-IT": urlFor("it"),
-        "x-default": urlFor("de"),
-      },
+      languages: hreflangLanguages(urlFor),
     },
   };
 }

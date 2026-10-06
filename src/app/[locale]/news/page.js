@@ -8,6 +8,7 @@ import {
   validateOGType
 } from "@/lib/api/Keywords/fetchNewsKeywords";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -73,14 +74,7 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de-AT': getNewsPageUrl('de'),
-            'de': getNewsPageUrl('de'),
-            'en': getNewsPageUrl('en'),
-            'fr-FR': getNewsPageUrl('fr'),
-            'it-IT': getNewsPageUrl('it'),
-            'x-default': getNewsPageUrl('de'),
-          }
+          languages: hreflangLanguages((l) => getNewsPageUrl(l))
         },
         openGraph: {
           type: "website",
@@ -112,14 +106,7 @@ export async function generateMetadata({ params }) {
       robots: { index: true, follow: true },
       alternates: {
         canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de-AT': getNewsPageUrl('de'),
-          'de': getNewsPageUrl('de'),
-          'en': getNewsPageUrl('en'),
-          'fr-FR': getNewsPageUrl('fr'),
-          'it-IT': getNewsPageUrl('it'),
-          'x-default': getNewsPageUrl('de'),
-        }
+        languages: hreflangLanguages((l) => getNewsPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
@@ -151,7 +138,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getNewsPageUrl(l)) },
     };
   }
 }
@@ -192,12 +179,11 @@ export default async function Home({ params }) {
     name: titleOne,
     description: "Aktuelle Neuigkeiten, Updates und Artikel von Platzhirsch Home Living. Entdecken Sie die neuesten Designtrends und Unternehmensnews.",
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: `${BASE_URL}/${locale}` },
+        { "@type": "ListItem", position: 1, name: Home, item: `https://platzhirsch.studio/${locale}` },
         { "@type": "ListItem", position: 2, name: titleOne, item: PAGE_URL },
       ],
     },

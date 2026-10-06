@@ -5,6 +5,8 @@ import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData"
 import { fetchKategorienByMarke } from "@/lib/api/fetchKategorien";
 import { fetchCollectionsByMarke } from "@/lib/api/fetchCollections";
 import { buildBrandNode } from "@/lib/seo/brandSchema";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { ROUTES } from "@/utils/routing";
 
 // Fetch the paths dynamically from your API for SSG (Static Site Generation)
 export async function generateStaticParams() {
@@ -99,7 +101,7 @@ export async function generateMetadata(context) {
       siteName: "Platzhirsch Home Living",
       images: [
         {
-          url: marke.bild_anhagen?.[0]?.bild_anhagen ? `/cms${marke.bild_anhagen[0].bild_anhagen}` : "/Images/fallback-banner.jpg",
+          url: marke.bild_anhagen?.[0]?.bild_anhagen ? `/cmx${marke.bild_anhagen[0].bild_anhagen}` : "/Images/fallback-banner.jpg",
           width: 1200,
           height: 630,
           alt: marke.name,
@@ -112,19 +114,11 @@ export async function generateMetadata(context) {
       card: "summary_large_image",
       title: pageTitle,
       description: `Learn more about ${marke.name}`,
-      images: [marke.bild_anhagen?.[0]?.bild_anhagen ? `/cms${marke.bild_anhagen[0].bild_anhagen}` : "/Images/fallback-banner.jpg"],
+      images: [marke.bild_anhagen?.[0]?.bild_anhagen ? `/cmx${marke.bild_anhagen[0].bild_anhagen}` : "/Images/fallback-banner.jpg"],
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        'de-AT': `https://platzhirsch.studio/de/ueber-uns/marken/${brandSlug}`,
-        'de': `https://platzhirsch.studio/de/ueber-uns/marken/${brandSlug}`,
-        'en': `https://platzhirsch.studio/en/about-us/brands/${brandSlug}`,
-        'fr-FR': `https://platzhirsch.studio/fr/a-propos/marques/${brandSlug}`,
-        'it-IT': `https://platzhirsch.studio/it/chi-siamo/marche/${brandSlug}`,
-        'x-default': `https://platzhirsch.studio/de/ueber-uns/marken/${brandSlug}`,
-
-      }
+      languages: hreflangLanguages((l) => `https://platzhirsch.studio/${l}${ROUTES.marken[l]}/${brandSlug}`),
     },
   };
 
@@ -221,7 +215,7 @@ export default async function MarkenDetailPage(props) {
     marke[`metadata_description_${locale}`] || marke.metadata_description_de ||
     marke[`beschreibung_${locale}`] || marke.beschreibung || "";
   const brandImage = marke.bild_anhagen?.[0]?.bild_anhagen
-    ? `${DOMAIN}/cms${marke.bild_anhagen[0].bild_anhagen}`
+    ? `${DOMAIN}/cmx${marke.bild_anhagen[0].bild_anhagen}`
     : `${DOMAIN}/Images/fallback-banner.jpg`;
 
   const brandSchema = {

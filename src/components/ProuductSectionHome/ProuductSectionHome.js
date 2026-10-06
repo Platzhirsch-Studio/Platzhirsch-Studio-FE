@@ -5,7 +5,7 @@ import Image from "next/image";
 import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
 import { useTranslations } from "next-intl";
 import { generateSlug } from "@/lib/slugify";
-import { ROUTES } from "@/utils/routing";
+import { ROUTES, productsPath } from "@/utils/routing";
 import WishlistHeart from "@/components/ShopCatalog/wishlistHeart";
 
 // `data` = shop-card products (buildShopProducts() in src/lib/shop/shopProducts.js)
@@ -32,7 +32,7 @@ export default function TrendingProducts({ data, brand = "Minotti" }) {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {products.map((product) => {
-          const href = `/produkte/${generateSlug(product.categoryKey)}/${product.url_slug}`;
+          const href = productsPath(locale, generateSlug(product.categoryKey), product.url_slug);
           return (
           <div key={product.id} className="relative">
             <Link href={href} locale={locale} className="group block cursor-pointer">
@@ -51,7 +51,7 @@ export default function TrendingProducts({ data, brand = "Minotti" }) {
                 </h3>
               </div>
             </Link>
-            <WishlistHeart product={{ ...product, href }} />
+            <WishlistHeart product={{ ...product, href: productsPath("de", generateSlug(product.categoryKey), product.url_slug) }} />
           </div>
           );
         })}

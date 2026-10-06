@@ -1,18 +1,28 @@
 // CookieDetails.js
 import React from "react";
+import { useTranslations } from "next-intl";
 
 const CookieDetails = ({ service }) => {
+  const t = useTranslations("Cookies");
+
+  const formatDuration = ({ count, unit }) =>
+    unit === "none" ? t("durations.none") : t(`durations.${unit}`, { count });
+
   return (
-    <div className="mt-3 p-4 bg-gray-50 rounded-lg text-sm space-y-3">
+    <div className="mt-3 p-4 bg-gray-50 border border-[#30373e]/10 rounded-lg text-sm leading-relaxed space-y-3 text-[#30373e] [&_strong]:font-semibold [&_strong]:text-[#30373e]">
       <p>
-        <strong>Purpose:</strong> {service?.purpose}
+        <strong>{t("details.purpose")}</strong> {t(`services.${service.id}.purpose`)}
       </p>
 
-      <p className="font-medium mt-2">Provider Information:</p>
+      <p className="font-medium mt-2">{t("details.provider")}</p>
       <p>{service?.provider}</p>
       <ul className="list-disc pl-5 space-y-1">
-        <li>Phone: {service?.contact.phone}</li>
-        <li>Email: {service?.contact.email}</li>
+        <li>
+          {t("details.phone")} {service?.contact.phone}
+        </li>
+        <li>
+          {t("details.email")} {service?.contact.email}
+        </li>
         <li>
           <a
             href={service?.contact.privacy}
@@ -20,37 +30,36 @@ const CookieDetails = ({ service }) => {
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
-            Privacy Policy
+            {t("details.providerPrivacy")}
           </a>
         </li>
       </ul>
 
       {service?.cookies && (
         <>
-          <p className="font-medium mt-2">Cookies Used:</p>
+          <p className="font-medium mt-2">{t("details.cookiesUsed")}</p>
           <ul className="list-disc pl-5 space-y-1">
             {service?.cookies.map((cookie, index) => (
               <li key={index}>
                 {cookie.name && (
                   <span>
-                    <strong>Technischer Cookie Name:</strong>
-                    {cookie.name} <br />
+                    <strong>{t("details.cookieName")}</strong> {cookie.name} <br />
                   </span>
                 )}
                 {cookie.type && (
                   <span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>Typ:</strong> {cookie.type} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>{t("details.type")}</strong> {t(`cookieTypes.${cookie.type}`)}{" "}
+                    <br />
                   </span>
                 )}
                 {cookie.host && (
                   <span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>Host:</strong> {cookie.host} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>{t("details.host")}</strong> {cookie.host} <br />
                   </span>
                 )}
                 {cookie.duration && (
                   <span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>Dauer:</strong>
-                    {cookie.duration}
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>{t("details.duration")}</strong> {formatDuration(cookie.duration)}
                   </span>
                 )}
               </li>
@@ -61,11 +70,12 @@ const CookieDetails = ({ service }) => {
 
       {service?.storage && (
         <>
-          <p className="font-medium mt-2">Local Storage:</p>
+          <p className="font-medium mt-2">{t("details.localStorage")}</p>
           <ul className="list-disc pl-5 space-y-1">
             {service?.storage.map((item, index) => (
               <li key={index}>
-                <strong>{item.name}</strong> ({item.type}) - {item.host} - {item.duration}
+                <strong>{item.name}</strong> ({t(`cookieTypes.${item.type}`)}) - {item.host} -{" "}
+                {formatDuration(item.duration)}
               </li>
             ))}
           </ul>
@@ -73,20 +83,23 @@ const CookieDetails = ({ service }) => {
       )}
 
       <p className="font-medium mt-2">
-        Data Processing in Third Countries:
+        {t("details.thirdCountries")}{" "}
         {service?.dataProcessing?.countries?.map((country, index) => (
-          <span key={index}>
-            &nbsp;{country.name} {country.sub && <sup>{country.sub} </sup>} ,
+          <span key={country.code}>
+            {index > 0 && ", "}
+            {t(`countries.${country.code}`)}
+            {country.sub && <sup>{country.sub}</sup>}
           </span>
         ))}
       </p>
 
       <p className="font-medium mt-2">
-        Security Mechanisms:
+        {t("details.securityMechanisms")}{" "}
         {service?.dataProcessing?.mechanisms?.map((mechanism, index) => (
-          <span key={index}>
-            {mechanism.name}
-            <sup>{mechanism.sub}</sup>
+          <span key={mechanism.key}>
+            {index > 0 && ", "}
+            {t(`mechanisms.${mechanism.key}`)}
+            {mechanism.sub && <sup>{mechanism.sub}</sup>}
           </span>
         ))}
       </p>

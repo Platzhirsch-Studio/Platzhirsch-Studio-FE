@@ -4,6 +4,7 @@ import Teamsecond from "@/components/Team/team";
 import TeamMember from "@/components/Team/teammember";
 import { fetchTeamData } from "@/lib/api/fetchTeam";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 import {
   fetchTeamKeywords,
   getLocalizedTeamMetadata,
@@ -64,14 +65,7 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de-AT': getTeamPageUrl('de'),
-            'de': getTeamPageUrl('de'),
-            'en': getTeamPageUrl('en'),
-            'fr-FR': getTeamPageUrl('fr'),
-            'it-IT': getTeamPageUrl('it'),
-            'x-default': getTeamPageUrl('de'),
-          }
+          languages: hreflangLanguages((l) => getTeamPageUrl(l))
         },
         openGraph: {
           type: "website",
@@ -102,14 +96,7 @@ export async function generateMetadata({ params }) {
       robots: { index: true, follow: true },
       alternates: {
         canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de-AT': getTeamPageUrl('de'),
-          'de': getTeamPageUrl('de'),
-          'en': getTeamPageUrl('en'),
-          'fr-FR': getTeamPageUrl('fr'),
-          'it-IT': getTeamPageUrl('it'),
-          'x-default': getTeamPageUrl('de'),
-        }
+        languages: hreflangLanguages((l) => getTeamPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
@@ -141,7 +128,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getTeamPageUrl(l)) },
     };
   }
 }
@@ -207,8 +194,7 @@ export default async function page({ params }) {
     name: linkNameTwo,
     description: "Unser kreatives Team bei Platzhirsch Home Living - Experten für exklusives Design.",
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [

@@ -2,6 +2,7 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/config";
+import { detectLocale, notFoundTitle } from "@/i18n/detectLocale";
 
 import "../globals.css";
 
@@ -115,67 +116,54 @@ const siteSchema = {
   ]
 };
 
+// Site-wide DEFAULTS only. Canonical, hreflang and og:url are deliberately
+// NOT set here: every page sets its own, and a layout value would be inherited
+// by any page (or error branch) that doesn't — pointing it at the homepage.
+// metadataBase is returned in every branch so relative image/canonical URLs
+// on the pages always resolve.
+const METADATA_BASE = new URL("https://platzhirsch.studio");
+const OG_LOCALE = { de: "de_DE", en: "en_US", fr: "fr_FR", it: "it_IT" };
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
 
   if (!routing.locales.includes(locale)) {
-    return { title: "Page Not Found" };
+    // Not a locale (e.g. /wp-login.php): the page becomes the global 404 in
+    // src/app/not-found.js, so title it in the visitor's language.
+    return { metadataBase: METADATA_BASE, title: await notFoundTitle(await detectLocale()) };
   }
 
+  const defaults = {
+    metadataBase: METADATA_BASE,
+    title: "Platzhirsch Home Living",
+    openGraph: {
+      siteName: "Platzhirsch Home Living",
+      locale: OG_LOCALE[locale] || OG_LOCALE.de,
+      type: "website",
+      images: [{ url: "/Images/Home/aboutHome.jpg", alt: "Platzhirsch Home Living" }],
+    },
+    twitter: { card: "summary_large_image", images: ["/Images/Home/aboutHome.jpg"] },
+  };
+
   try {
-    const [layoutData] = await Promise.all([
-      fetchLayoutData()
-    ]);
-
-    const layoutMetadata = layoutData || {};
-    const localeLayoutData = layoutMetadata[`metadata_${locale}_tab`] || {};
-
-    const ogImage = "/Images/Home/aboutHome.jpg";
-
-    const languages = {};
-    routing.locales.forEach(loc => {
-      languages[loc] = localeLayoutData[`metadata_url_${loc}`] || `https://platzhirsch.studio/${loc}`;
-    });
-    languages['x-default'] = localeLayoutData[`metadata_url_de`] || `https://platzhirsch.studio/de`;
+    const layoutData = (await fetchLayoutData()) || {};
+    const cms = layoutData[`metadata_${locale}_tab`] || {};
+    const title = cms[`metadata_title_${locale}`];
+    const description = cms[`metadata_description_${locale}`];
 
     return {
-      htmlLang: locale,
-      metadataBase: new URL("https://platzhirsch.studio"),
-      title: localeLayoutData[`metadata_title_${locale}`] || "Platzhirsch Home Living",
-      description: localeLayoutData[`metadata_description_${locale}`] || "",      openGraph: {
-        title: localeLayoutData[`metadata_title_${locale}`] || "Platzhirsch Home Living",
-        description: localeLayoutData[`metadata_description_${locale}`] || "",
-        url: localeLayoutData[`metadata_url_${locale}`] || "https://platzhirsch.studio",
-        siteName: localeLayoutData[`metadata_sitename_${locale}`] || "Platzhirsch Home Living",
-        images: [
-          {
-            url: ogImage,
-            width: 1200,
-            height: 630,
-            alt: "Platzhirsch Home Living Indoor",
-          },
-        ],
-        locale: localeLayoutData[`metadata_local_${locale}`] ||
-          (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
-        type: localeLayoutData[`metadata_type_${locale}`] || "website",
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: localeLayoutData[`metadata_title_${locale}`] || "Platzhirsch Home Living",
-        description: localeLayoutData[`metadata_description_${locale}`] || "",
-        images: [ogImage],
-      },
-      alternates: {
-        canonical: localeLayoutData[`metadata_url_${locale}`] || "https://platzhirsch.studio/de",
-        languages
+      ...defaults,
+      ...(title ? { title } : {}),
+      // Only when the CMS has one — never an empty description.
+      ...(description ? { description } : {}),
+      openGraph: {
+        ...defaults.openGraph,
+        ...(cms[`metadata_sitename_${locale}`] ? { siteName: cms[`metadata_sitename_${locale}`] } : {}),
       },
     };
   } catch (err) {
     console.error("Metadata fetch error:", err);
-    return {
-      title: "Platzhirsch Home Living",
-      description: ""
-    };
+    return defaults;
   }
 }
 
@@ -216,6 +204,13 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <html lang={locale} dir="ltr" className={montserrat.variable}>
       <head>
+        {/* Google Consent Mode v2 default: must run before any Google tag, so
+            everything is denied until the cookie banner sends its update. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});`,
+          }}
+        />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />

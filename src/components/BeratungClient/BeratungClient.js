@@ -32,7 +32,7 @@ const Notification = ({ type, text }) => (
     >
       {type === "error" ? <CircleAlert size={12} /> : <CircleCheck size={12} />}
     </div>
-    <p>{text}</p>
+    <p role={type === "error" ? "alert" : "status"}>{text}</p>
   </FadeInView>
 );
 
@@ -174,10 +174,12 @@ const MultiStepForm = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 lg:gap-x-0 place-items-center">
                 {t.raw(stepNum === 1 ? "step1Options" : "step2Options").map((label, idx) => (
-                  <div
+                  <button
+                    type="button"
                     key={label}
                     onClick={() => handleOptionSelect(stepNum, label)}
-                    className={`cursor-pointer mx-auto p-6 rounded-xl w-[240px] lg:w-[260px] border transition-all duration-300 shadow-sm hover:shadow-md hover:border-[#d1b250] ${selectedOptions[`step${stepNum}`] === label
+                    aria-pressed={selectedOptions[`step${stepNum}`] === label}
+                    className={`cursor-pointer mx-auto p-6 rounded-xl w-[240px] lg:w-[260px] border transition-all duration-300 shadow-sm hover:shadow-md hover:border-[#d1b250] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d1b250] focus-visible:ring-offset-2 ${selectedOptions[`step${stepNum}`] === label
                       ? "border-[#d1b250] bg-[#fdf9f1]"
                       : "border-gray-200"
                       }`}
@@ -188,7 +190,7 @@ const MultiStepForm = () => {
                       </div>
                       <p className="text-sm font-medium mt-3 text-gray-700">{label}</p>
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
             </FadeInView>
@@ -217,6 +219,7 @@ const MultiStepForm = () => {
               className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d1b250] text-sm"
               rows={5}
               placeholder={t("describePlaceholder")}
+              aria-label={t("describePlaceholder")}
               required
             />
             <div className="mt-8 flex justify-center">
@@ -235,6 +238,7 @@ const MultiStepForm = () => {
                     setErrorMessage("");
                     setStep(4);
                   }}
+                  aria-label={t("continue")}
                   className="w-full py-3 bg-[#171717] text-white font-semibold rounded-lg hover:bg-[#d1b250] transition"
                 >
                   <span></span>
@@ -374,24 +378,32 @@ const MultiStepForm = () => {
                   placeholder: t("field.vorname"),
                   value: selectedOptions.vorname,
                   name: "vorname",
+                  type: "text",
+                  autoComplete: "given-name",
                 },
                 {
                   icon: <User />,
                   placeholder: t("field.nachname"),
                   value: selectedOptions.nachname,
                   name: "nachname",
+                  type: "text",
+                  autoComplete: "family-name",
                 },
                 {
                   icon: <Mail />,
                   placeholder: t("field.email"),
                   value: selectedOptions.email,
                   name: "email",
+                  type: "email",
+                  autoComplete: "email",
                 },
                 {
                   icon: <Phone />,
                   placeholder: t("field.telefon"),
                   value: selectedOptions.telefon,
                   name: "telefon",
+                  type: "tel",
+                  autoComplete: "tel",
                 },
               ].map((input, index) => (
                 <div key={index} className="relative">
@@ -399,7 +411,10 @@ const MultiStepForm = () => {
                     {input.icon}
                   </div>
                   <input
-                    type="text"
+                    type={input.type}
+                    name={input.name}
+                    autoComplete={input.autoComplete}
+                    aria-label={input.placeholder}
                     placeholder={input.placeholder}
                     className="pl-10 pr-3 py-3 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-[#d1b250]"
                     value={input.value}
@@ -418,6 +433,7 @@ const MultiStepForm = () => {
               <div className="flex justify-center">
                 <button
                   type="submit"
+                  aria-label={t("send")}
                   className="
       group
       relative

@@ -5,7 +5,7 @@ import { fetchKategorien, fetchMarkeKategorien, getKategorieLabel, indexKategori
 import { getActiveMarken } from "@/lib/api/fetchMarkenData";
 import { localizeCategory } from "@/lib/seo/productCategories";
 import { generateSlug } from "@/lib/slugify";
-import { ROUTES } from "@/utils/routing";
+import { ROUTES, productsPath } from "@/utils/routing";
 
 // Powers the navbar search dropdown: matches the query against real brands
 // (Marken), shop categories, and products (same data as /produkte and
@@ -35,7 +35,8 @@ export async function GET(request) {
   const needle = q.toLowerCase();
   // Locale-invariant: the category/product pages only exist under the
   // German-named produkte folder (the translated /products/... would 404).
-  const shopPath = "/produkte";
+  // Translated catalogue base for this locale (/produkte, /products, …).
+  const shopPath = productsPath(locale);
   const markenPath = ROUTES.marken[locale] || "/ueber-uns/marken";
 
   // Products are matched by the backend (search_produkte, max 6 rows) instead
@@ -62,7 +63,7 @@ export async function GET(request) {
     .slice(0, 3)
     .map((m) => ({
       name: m.name1,
-      image: m.bild_anhagen?.[0]?.bild_anhagen ? `/cms${m.bild_anhagen[0].bild_anhagen}` : null,
+      image: m.bild_anhagen?.[0]?.bild_anhagen ? `/cmx${m.bild_anhagen[0].bild_anhagen}` : null,
       href: `${markenPath}/${generateSlug(m.name1)}`,
     }));
 
@@ -97,7 +98,7 @@ export async function GET(request) {
   // pre-selected (?marke=<brand-slug>, read by ShopCatalogFromUrl). Brands are
   // derived from the category's own product list (cached per category).
   const logoByBrand = new Map(
-    marken.map((m) => [m.name1, m.bild_anhagen?.[0]?.bild_anhagen ? `/cms${m.bild_anhagen[0].bild_anhagen}` : null])
+    marken.map((m) => [m.name1, m.bild_anhagen?.[0]?.bild_anhagen ? `/cmx${m.bild_anhagen[0].bild_anhagen}` : null])
   );
   const categoryBrands = (
     await Promise.all(

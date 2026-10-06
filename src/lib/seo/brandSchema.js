@@ -55,6 +55,6 @@ export function buildBrandNode(marke, slug) {
   };
   const sameAs = officialBrandUrl(marke?.firmenlink);
   if (sameAs) node.sameAs = [sameAs];
-  if (marke?.logo) node.logo = `${DOMAIN}/cms${marke.logo}`;
+  if (marke?.logo) node.logo = `${DOMAIN}/cmx${marke.logo}`;
   return node;
 }

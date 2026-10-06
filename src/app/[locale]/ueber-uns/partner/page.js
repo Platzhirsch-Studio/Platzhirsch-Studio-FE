@@ -2,6 +2,7 @@ import React from "react";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import PartnerSecond from "@/components/Partner/partner";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 import {
   fetchPartnersKeywords,
   getLocalizedPartnersMetadata,
@@ -74,15 +75,7 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de-AT': getPartnerPageUrl('de'),
-            'de': getPartnerPageUrl('de'),
-            'en': getPartnerPageUrl('en'),
-            'fr-FR': getPartnerPageUrl('fr'),
-            'it-IT': getPartnerPageUrl('it'),
-            'x-default': getPartnerPageUrl('de'),
-
-          }
+          languages: hreflangLanguages((l) => getPartnerPageUrl(l))
         },
         openGraph: {
           type: "website",
@@ -112,15 +105,7 @@ export async function generateMetadata({ params }) {
       robots: { index: true, follow: true },
       alternates: {
         canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de-AT': getPartnerPageUrl('de'),
-          'de': getPartnerPageUrl('de'),
-          'en': getPartnerPageUrl('en'),
-          'fr-FR': getPartnerPageUrl('fr'),
-          'it-IT': getPartnerPageUrl('it'),
-          'x-default': getPartnerPageUrl('de'),
-
-        }
+        languages: hreflangLanguages((l) => getPartnerPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
@@ -152,7 +137,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getPartnerPageUrl(l)) },
     };
   }
 }
@@ -219,8 +204,7 @@ export default async function Page({ params }) {
     name: linkNameTwo,
     description: "Unsere Partner im exklusiven Design bei Platzhirsch Home Living - Hochwertige Kooperationen.",
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [

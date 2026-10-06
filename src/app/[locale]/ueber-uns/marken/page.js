@@ -8,6 +8,7 @@ import {
   validateOGType
 } from "@/lib/api/Keywords/fetchBrandsKeywords";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -66,12 +67,7 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de': getMarkenPageUrl('de'),
-            'en': getMarkenPageUrl('en'),
-            'fr': getMarkenPageUrl('fr'),
-            'it': getMarkenPageUrl('it'),
-          }
+          languages: hreflangLanguages((l) => getMarkenPageUrl(l))
         },
         openGraph: {
           type: "website",
@@ -101,15 +97,7 @@ export async function generateMetadata({ params }) {
       robots: { index: true, follow: true },
       alternates: {
         canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de-AT': getMarkenPageUrl('de'),
-          'de': getMarkenPageUrl('de'),
-          'en': getMarkenPageUrl('en'),
-          'fr-FR': getMarkenPageUrl('fr'),
-          'it-IT': getMarkenPageUrl('it'),
-          'x-default': getMarkenPageUrl('de'),
-
-        }
+        languages: hreflangLanguages((l) => getMarkenPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
@@ -141,7 +129,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getMarkenPageUrl(l)) },
     };
   }
 }
@@ -184,8 +172,7 @@ export default async function Home({ params }) {
     name: linkNameTwo,
     description: "Exklusive Designmarken bei Platzhirsch Home Living - Qualität und Stil für Ihr Zuhause und Büro.",
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [

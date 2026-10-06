@@ -7,7 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { generateSlug } from "@/lib/slugify";
 import { localizeCategory } from "@/lib/seo/productCategories";
 import { collectionPath } from "@/lib/marken/collections";
-import { ROUTES } from "@/utils/routing";
+import { ROUTES, localizeProductsHref } from "@/utils/routing";
 import WishlistHeart from "@/components/ShopCatalog/wishlistHeart";
 
 // One collection of a brand (/ueber-uns/marken/[title]/[collection]): hero with
@@ -57,7 +57,7 @@ const ProductCard = ({ product, locale }) => {
   return (
     <div className="relative">
       {product.href ? (
-        <Link href={product.href} locale={locale} className="group block">
+        <Link href={localizeProductsHref(product.href, locale)} locale={locale} className="group block">
           {body}
         </Link>
       ) : (

@@ -1,8 +1,15 @@
+// app/[locale]/ueber-uns/karriere/[slug]/page.js — serves all four languages
+// (/en/about-us/career/…, /fr/a-propos/carriere/…, /it/chi-siamo/carriera/…
+// are mapped here by src/proxy.js).
 import { fetchKarriereData } from "@/lib/api/fetchKarrierData";
 import JobDetailsClient from "./jobdetailsclient";
 import { generateSlug } from "@/lib/slugify";
 import { notFound } from "next/navigation";
+import { ROUTES } from "@/utils/routing";
+import { toMetaDescription } from "@/lib/seo/pageMetadata";
+import { localizedJobDescription } from "@/lib/seo/structuredData";
 import JobPostingJsonLd from "@/components/Karriere/jobPostingJsonLd";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 export async function generateStaticParams() {
   const jobs = await fetchKarriereData();
@@ -20,8 +27,6 @@ export async function generateStaticParams() {
       });
     }
   }
-
-
   return paths;
 }
 
@@ -56,83 +61,53 @@ export async function generateMetadata(props) {
 
   const karriereData = await fetchKarriereData();
 
-  const produkt = karriereData?.find((p) => `${generateSlug(p.title)}` === slug);
-  // if (!produkt) notFound();
-  if (!produkt) {
+  const job = karriereData?.find((p) => `${generateSlug(p.title)}` === slug);
+  if (!job) {
     notFound();
   }
+
+  // Get the slug for the URL
+  const jobSlug = job.slug || generateSlug(job.title);
+
+  // Get localized title
+  const title = job.title || "Job Opening";
+  // Per-language CMS field (description_de_lemploi for FR, …), German fallback.
+  const description = toMetaDescription(localizedJobDescription(job, locale));
+  const careerLabel = CAREER_LABEL[locale] || CAREER_LABEL.de;
+
   // Initialize metadata with defaults
   let metadata = {
-    title: `${produkt.title} | ${CAREER_LABEL[locale] || CAREER_LABEL.de} | Platzhirsch Home Living`,
-    description: produkt.stellenbeschreibung || "", // Fallback description
+    title: `${title} | ${careerLabel} | Platzhirsch Home Living`,
+    description: description,
     // Indexable: each open job carries JobPosting data (Google Jobs).
     robots: { index: true, follow: true },
     openGraph: {
-      title: `${produkt.title} | Platzhirsch Home Living`,
-      description: `Learn more about ${produkt?.stellenbeschreibung}`,
-      url: `${getKarrierePageUrl(locale)}/${generateSlug(produkt.title)}`,
+      type: "website",
+      url: `https://platzhirsch.studio/${locale}${ROUTES.karriere[locale] || ROUTES.karriere.de}/${jobSlug}`,
+      title: `${title} | ${careerLabel} | Platzhirsch Home Living`,
+      description: description,
       siteName: "Platzhirsch Home Living",
+      locale: locale === "it" ? "it_IT" : locale === "en" ? "en_GB" : locale === "fr" ? "fr_FR" : "de_AT",
       images: [
         {
           url: "/Images/Arbeiten/bannerImageArbeiten1.jpg",
           width: 1200,
           height: 630,
-          alt: produkt.title,
+          alt: `${title} – ${careerLabel} – Platzhirsch Home Living`,
         },
       ],
-      locale: "de_AT",
-      type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${produkt.title} | Platzhirsch Home Living`,
-      description: produkt.title,
+      title: `${title} | ${careerLabel} | Platzhirsch Home Living`,
+      description: description,
       images: ["/Images/Arbeiten/bannerImageArbeiten1.jpg"],
     },
     alternates: {
-      canonical: `${getKarrierePageUrl(locale)}/${generateSlug(produkt?.title)}`,
-      languages: {
-        'de-AT': `${getKarrierePageUrl('de')}/${generateSlug(produkt?.title)}`,
-        'de': `${getKarrierePageUrl('de')}/${generateSlug(produkt?.title)}`,
-        'en': `${getKarrierePageUrl('en')}/${generateSlug(produkt?.title)}`,
-        'fr-FR': `${getKarrierePageUrl('fr')}/${generateSlug(produkt?.title)}`,
-        'it-IT': `${getKarrierePageUrl('it')}/${generateSlug(produkt?.title)}`,
-        'x-default': `${getKarrierePageUrl('de')}/${generateSlug(produkt?.title)}`,
-
-      }
+      canonical: `${getKarrierePageUrl(locale)}/${generateSlug(job?.title)}`,
+      languages: hreflangLanguages((l) => `${getKarrierePageUrl(l)}/${generateSlug(job?.title)}`)
     },
   };
-
-  // Handle language-specific metadata
-  switch (locale) {
-    case "en":
-      if (produkt.job_description_en) {
-        metadata.description = produkt.job_description_en;
-      }
-      break;
-
-    case "it":
-      if (produkt.jobs_description_it) {
-        metadata.description = produkt.jobs_description_it;
-      }
-      break;
-    case "fr":
-      if (produkt.description_de_lemploi) {
-        metadata.description = produkt.description_de_lemploi;
-      }
-      break;
-    default:
-      if (produkt.stellenbeschreibung) {
-        metadata.description = produkt.stellenbeschreibung;
-      }
-      break;
-  }
-
-  // Update OpenGraph and Twitter descriptions with the localized description
-  metadata.description = metadata.description;
-  metadata.openGraph.description = metadata.description;
-  metadata.twitter.description = metadata.description;
-
   return metadata;
 }
 
@@ -150,3 +125,6 @@ export default async function JobDetailsPage({ params }) {
     </>
   );
 }
+
+// Revalidate the page every hour
+export const revalidate = 3600;

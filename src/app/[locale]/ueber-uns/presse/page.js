@@ -9,6 +9,7 @@ import {
   validateOGType
 } from "@/lib/api/Keywords/fetchPressKeywords";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -66,15 +67,7 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de-AT': getPressePageUrl('de'),
-            'de': getPressePageUrl('de'),
-            'en': getPressePageUrl('en'),
-            'fr-FR': getPressePageUrl('fr'),
-            'it-IT': getPressePageUrl('it'),
-            'x-default': getPressePageUrl('de'),
-
-          }
+          languages: hreflangLanguages((l) => getPressePageUrl(l))
         },
         openGraph: {
           type: "website",
@@ -104,14 +97,7 @@ export async function generateMetadata({ params }) {
       robots: { index: true, follow: true },
       alternates: {
         canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de-AT': getPressePageUrl('de'),
-          'de': getPressePageUrl('de'),
-          'en': getPressePageUrl('en'),
-          'fr-FR': getPressePageUrl('fr'),
-          'it-IT': getPressePageUrl('it'),
-          'x-default': getPressePageUrl('de'),
-        }
+        languages: hreflangLanguages((l) => getPressePageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
@@ -143,7 +129,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getPressePageUrl(l)) },
     };
   }
 }
@@ -185,8 +171,7 @@ export default async function Page({ params }) {
     name: linkNameTwo,
     description: "Pressebereich von Platzhirsch Home Living - Aktuelle News, Pressemitteilungen und Medienkontakt.",
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [

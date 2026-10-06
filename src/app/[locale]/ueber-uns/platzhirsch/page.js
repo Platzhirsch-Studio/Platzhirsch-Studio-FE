@@ -2,6 +2,7 @@ import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import Uberuns from "@/components/UberUns/uberuns";
 import Austellung from "@/components/UberUns/austellung";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 function getBaseUrl(locale) {
     const domain = "https://platzhirsch.studio";
@@ -61,15 +62,7 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
             canonical: PAGE_URL,
-            languages: {
-                'de-AT': getPartnerPageUrl('de'),
-                'de': getPartnerPageUrl('de'),
-                'en': getPartnerPageUrl('en'),
-                'fr-FR': getPartnerPageUrl('fr'),
-                'it-IT': getPartnerPageUrl('it'),
-                'x-default': getPartnerPageUrl('de'),
-
-            }
+            languages: hreflangLanguages((l) => getPartnerPageUrl(l))
         },
         openGraph: {
             title: m.title,

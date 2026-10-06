@@ -20,7 +20,7 @@ import { fetchCollectionsByMarke } from "@/lib/api/fetchCollections";
 import { toShopProductDetail } from "@/lib/shop/shopProducts";
 import { localizeCategory } from "@/lib/seo/productCategories";
 import { generateSlug } from "@/lib/slugify";
-import { ROUTES } from "@/utils/routing";
+import { ROUTES, productsPath, productsPathByLocale } from "@/utils/routing";
 import { formatCollectionName, collectionPath } from "@/lib/marken/collections";
 import { buildPageMetadata, localeUrl, toMetaDescription } from "@/lib/seo/pageMetadata";
 import { breadcrumbList, graph, productSchema } from "@/lib/seo/structuredData";
@@ -64,7 +64,7 @@ function buildBrandInfo(marke, locale) {
   const bio = localizedMarkenField(marke, "produkte", locale);
   if (!bio) return null;
   return {
-    image: marke.bild_anhagen?.[0]?.bild_anhagen ? `/cms${marke.bild_anhagen[0].bild_anhagen}` : null,
+    image: marke.bild_anhagen?.[0]?.bild_anhagen ? `/cmx${marke.bild_anhagen[0].bild_anhagen}` : null,
     founded: marke.grundungsjahr || null,
     country: marke.herkunftsland || null,
     bio,
@@ -133,8 +133,8 @@ function productMetaTitle(detail, product, locale) {
   return (typeof fromCms === "string" && fromCms.trim()) || productTitle(product);
 }
 
-// Indexable in every locale (same /produkte/<category>/<product> path,
-// hreflang between them). Unknown/inactive products 404 in the page itself.
+// Indexable in every locale at its translated path (/de/produkte/…,
+// /en/products/…, /fr/produits/…, /it/prodotti/…), hreflang between them. Unknown/inactive products 404 in the page itself.
 export async function generateMetadata({ params }) {
   const { locale, category: categorySlug, product: productSlug } = await params;
   const detail = await fetchProduktNewByPathField(productSlug, locale);
@@ -143,7 +143,7 @@ export async function generateMetadata({ params }) {
   const product = toShopProductDetail(detail, locale);
   return buildPageMetadata({
     locale,
-    pathByLocale: `/produkte/${categorySlug}/${productSlug}`,
+    pathByLocale: productsPathByLocale(categorySlug, productSlug),
     title: productMetaTitle(detail, product, locale),
     description: productMetaDescription(detail, product, locale),
     image: product.images[0],
@@ -200,11 +200,10 @@ export default async function ShopProductPage({ params }) {
 
   const Home = locale === "it" ? "Casa" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
   const productsLabel = locale === "it" ? "Prodotti" : locale === "en" ? "Products" : locale === "fr" ? "Produits" : "Produkte";
-  const productPath = ROUTES.produkte[locale] ? `${ROUTES.produkte[locale]}` : `/produkte`;
-  // Category/product pages only exist under the German-named produkte folder,
-  // so their path is the same in every locale (the translated /products/... 404).
-  const shopPath = "/produkte";
-  const categoryPath = `${shopPath}/${categorySlug}`;
+  // Translated catalogue paths (/products/…, /produits/…, /prodotti/…) — the
+  // middleware serves them from this German-named folder.
+  const productPath = productsPath(locale);
+  const categoryPath = productsPath(locale, categorySlug);
 
   const breadcrumbLinks = [
     { linkName: Home, link: "/" },
@@ -235,7 +234,7 @@ export default async function ShopProductPage({ params }) {
   };
 
   // Product (no offers/price — prices aren't published) + BreadcrumbList.
-  const pageUrl = localeUrl(locale, `${categoryPath}/${productSlug}`);
+  const pageUrl = localeUrl(locale, productsPath(locale, categorySlug, productSlug));
   const structuredData = graph(
     productSchema({
       product,
@@ -298,7 +297,7 @@ export default async function ShopProductPage({ params }) {
                 categoryKey: product.categoryKey,
                 image: product.images[0],
                 url_slug: productSlug,
-                href: `${categoryPath}/${productSlug}`,
+                href: productsPath("de", categorySlug, productSlug),
               })}
               labels={{
                 requestConsultation: t("requestConsultation"),
@@ -390,7 +389,7 @@ export default async function ShopProductPage({ params }) {
           <h2 className="text-xl font-light text-[#30373e] mb-6">{t("relatedHeading")}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {related.map((rp) => {
-              const href = `${shopPath}/${generateSlug(rp.categoryKey)}/${rp.url_slug}`;
+              const href = productsPath(locale, generateSlug(rp.categoryKey), rp.url_slug);
               return (
                 <div key={rp.id} className="relative">
                   <Link
@@ -412,7 +411,7 @@ export default async function ShopProductPage({ params }) {
                       <p className="text-sm text-[#30373e] font-medium">{rp.name}</p>
                     </div>
                   </Link>
-                  <WishlistHeart product={{ ...rp, href }} />
+                  <WishlistHeart product={{ ...rp, href: productsPath("de", generateSlug(rp.categoryKey), rp.url_slug) }} />
                 </div>
               );
             })}

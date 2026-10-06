@@ -34,7 +34,7 @@ const Notification = ({ type, text }) => (
     >
       {type === "error" ? <CircleAlert size={12} /> : <CircleCheck size={12} />}
     </div>
-    <p>{text}</p>
+    <p role={type === "error" ? "alert" : "status"}>{text}</p>
   </FadeInView>
 );
 
@@ -81,7 +81,7 @@ const Kontakt = () => {
     if (!validateName(formData.name)) {
       setMessage({
         type: "error",
-        text: t("contact.formErrorMail"),
+        text: t("formErrorName"),
       });
       setLoading(false);
       return;
@@ -90,7 +90,7 @@ const Kontakt = () => {
     if (!validateEmail(formData.email_address)) {
       setMessage({
         type: "error",
-        text: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        text: t("formErrorMail"),
       });
       setLoading(false);
       return;
@@ -99,7 +99,7 @@ const Kontakt = () => {
     if (!validatePhone(formData.telefon)) {
       setMessage({
         type: "error",
-        text: "Bitte geben Sie eine gültige Telefonnummer ein.",
+        text: t("formErrorPhone"),
       });
       setLoading(false);
       return;
@@ -108,7 +108,7 @@ const Kontakt = () => {
     if (!validateMessage(formData.ihre_nachricht)) {
       setMessage({
         type: "error",
-        text: "Nachricht muss mindestens 10 Zeichen lang sein.",
+        text: t("formErrorMsg"),
       });
       setLoading(false);
       return;
@@ -122,15 +122,15 @@ const Kontakt = () => {
         body: JSON.stringify(formData),
       });
 
-      const responseData = await response.json();
+      const responseData = await response.json().catch(() => ({}));
 
       if (!response.ok || !responseData.success) {
-        throw new Error(responseData.error || responseData.message || "Fehler beim Senden.");
+        throw new Error("send_failed");
       }
 
       setMessage({
         type: "success",
-        text: t('formSuccess') || "Nachricht erfolgreich gesendet!"
+        text: t('formSuccess')
       });
 
       setFormData({
@@ -141,7 +141,9 @@ const Kontakt = () => {
         ihre_nachricht: "",
       });
     } catch (error) {
-      setMessage({ type: "error", text: error.message });
+      // Details stay in the console; visitors get the translated message.
+      console.error("Kontakt form:", error);
+      setMessage({ type: "error", text: t("formErrorSend") });
     } finally {
       setLoading(false);
       setTimeout(() => setMessage(null), 5000);
@@ -278,7 +280,7 @@ const Kontakt = () => {
                 rel="noopener noreferrer"
                 className="bg-[#d1b250] text-white px-5 py-2 rounded-full shadow-lg hover:bg-[#bfa047] transition"
               >
-                Get Directions
+                {t("directions")}
               </a>
             </div>
           </FadeInView>
@@ -336,10 +338,12 @@ const Kontakt = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="relative">
-                    <User className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <User aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
                     <input
                       type="text"
                       name="name"
+                      autoComplete="name"
+                      aria-label={t('formName')}
                       value={formData.name}
                       onChange={handleChange}
                       placeholder={t('formName')}
@@ -348,10 +352,12 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <Building className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <Building aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
                     <input
                       type="text"
                       name="company"
+                      autoComplete="organization"
+                      aria-label={t('formCompany')}
                       value={formData.company}
                       onChange={handleChange}
                       placeholder={t('formCompany')}
@@ -359,10 +365,12 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <Mail className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <Mail aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
                     <input
                       type="email"
                       name="email_address"
+                      autoComplete="email"
+                      aria-label={t('formMail')}
                       value={formData.email_address}
                       onChange={handleChange}
                       placeholder={t('formMail')}
@@ -371,10 +379,12 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <Contact className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <Contact aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
                     <input
-                      type="text"
+                      type="tel"
                       name="telefon"
+                      autoComplete="tel"
+                      aria-label={t('formPhone')}
                       value={formData.telefon}
                       onChange={handleChange}
                       placeholder={t('formPhone')}
@@ -382,9 +392,10 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <MessageSquare className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <MessageSquare aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
                     <textarea
                       name="ihre_nachricht"
+                      aria-label={t('formMessage')}
                       value={formData.ihre_nachricht}
                       onChange={handleChange}
                       placeholder={t('formMessage')}
@@ -393,7 +404,7 @@ const Kontakt = () => {
                     ></textarea>
                   </div>
                   <div className="button-custom2">
-                    <button disabled={loading}>
+                    <button type="submit" disabled={loading} aria-label={loading ? t('formSending') : t('formSend')}>
                       <span></span>
                       <p data-title={t('formSend')}>
                         {loading ? (

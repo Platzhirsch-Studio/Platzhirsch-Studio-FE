@@ -8,6 +8,7 @@ import {
   validateOGType
 } from "@/lib/api/Keywords/fetchBeratungKeywords";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -65,14 +66,7 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de-AT': getBeratungPageUrl('de'),
-            'de': getBeratungPageUrl('de'),
-            'en': getBeratungPageUrl('en'),
-            'fr-FR': getBeratungPageUrl('fr'),
-            'it-IT': getBeratungPageUrl('it'),
-            'x-default': getBeratungPageUrl('de'),
-          }
+          languages: hreflangLanguages((l) => getBeratungPageUrl(l))
         },
         openGraph: {
           type: "website",
@@ -102,15 +96,7 @@ export async function generateMetadata({ params }) {
       robots: { index: true, follow: true },
       alternates: {
         canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de-AT': getBeratungPageUrl('de'),
-          'de': getBeratungPageUrl('de'),
-          'en': getBeratungPageUrl('en'),
-          'fr-FR': getBeratungPageUrl('fr'),
-          'it-IT': getBeratungPageUrl('it'),
-          'x-default': getBeratungPageUrl('de'),
-
-        }
+        languages: hreflangLanguages((l) => getBeratungPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
@@ -142,7 +128,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getBeratungPageUrl(l)) },
     };
   }
 }
@@ -176,18 +162,17 @@ export default async function Home({ params }) {
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": `${PAGE_URL}/#webpage`,
-    url: PAGE_URL,
+    "@id": `https://platzhirsch.studio${PAGE_URL}#webpage`,
+    url: `https://platzhirsch.studio${PAGE_URL}`,
     name: titleOne,
     description: "Professionelle Beratung für exklusives Design bei Platzhirsch Home Living - Maßgeschneiderte Lösungen für Ihr Zuhause und Büro.",
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: `${BASE_URL}/${locale}` },
-        { "@type": "ListItem", position: 2, name: titleOne, item: PAGE_URL },
+        { "@type": "ListItem", position: 1, name: Home, item: `https://platzhirsch.studio/${locale}` },
+        { "@type": "ListItem", position: 2, name: titleOne, item: `https://platzhirsch.studio${PAGE_URL}` },
       ],
     },
   };
