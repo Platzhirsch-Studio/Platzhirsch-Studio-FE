@@ -181,6 +181,7 @@ The owner ran the site through a browser agent that clicked every page and sent 
 
 **Smaller**
 - News article title length for the meta title: 58 → 65 characters.
+- Language switch did not navigate on click (owner report after the merge): the header closes every menu when focus lands outside a menu root, and the language list (desktop) and the mobile drawer were not marked as roots. The mousedown on an option focused it, the list unmounted, and the click never fired — on desktop since the options became links, on mobile also before. Fixed by marking the language wrapper as a menu root and exempting the mobile drawer; verified with real pointer/touch clicks on 4 desktop and 3 mobile pages (all land on the localised URL, query string kept).
 - Homepage hero on phones and tablets (owner report): the section had a fixed 600 px height while headline + lead + CTAs + trust row need more, so the block overflowed upward under the fixed header and the H1 was cut off at 360–768 px. The hero now has a minimum height instead of a fixed one, the H1 is 36 px on phones (was 41.6 px) and 56 px on tablets; verified with screenshots at 360, 390, 430, 768 and 1024 px.
 
 **Verified on the owner's dev server (port 3001)**: no console or page errors on home, category, product, consultation (with `?produkt=`), brand (Schüller), team, Italian products, French home; the wizard's textarea is pre-filled after two steps; language links resolve to localised URLs on 6 route types; 0 FadeInView blocks invisible after 2 s on the brand, news and home pages.
