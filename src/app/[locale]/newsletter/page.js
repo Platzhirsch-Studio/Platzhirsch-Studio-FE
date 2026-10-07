@@ -1,6 +1,8 @@
 import React from 'react';
+import JsonLd from "@/components/Reusable/JsonLd";
 import Newsletter from "@/components/Newsletter/newsletterbanner";
 import Content from "@/components/Newsletter/newsletter";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -29,28 +31,28 @@ function getNewsletterPageUrl(locale) {
 function getLocalizedMetadata(locale) {
   const metadataMap = {
     de: {
-      title: "Newsletter | Wohnideen & Angebote – Platzhirsch Studio",
-      description: "Melden Sie sich zum Platzhirsch Studio Newsletter an und erhalten Sie regelmäßig Einblicke, Inspiration und exklusive Angebote rund ums Interior Design.",
+      title: "Newsletter | Wohnideen & Angebote – Platzhirsch Home Living",
+      description: "Melden Sie sich zum Platzhirsch Home Living Newsletter an und erhalten Sie regelmäßig Einblicke, Inspiration und exklusive Angebote rund ums Interior Design.",
       ogTitle: "Newsletter – Exklusive Wohnideen & Angebote",
-      ogDescription: "Bleiben Sie informiert mit dem Newsletter von Platzhirsch Studio: Designtrends, Rabatte, Events & mehr direkt in Ihr Postfach.",
+      ogDescription: "Bleiben Sie informiert mit dem Newsletter von Platzhirsch Home Living: Designtrends, Rabatte, Events & mehr direkt in Ihr Postfach.",
     },
     en: {
-      title: "Newsletter | Exclusive Living Ideas – Platzhirsch Studio",
-      description: "Sign up for the Platzhirsch Studio newsletter and receive regular insights, inspiration and exclusive offers on interior design.",
+      title: "Newsletter | Exclusive Living Ideas – Platzhirsch Home Living",
+      description: "Sign up for the Platzhirsch Home Living newsletter and receive regular insights, inspiration and exclusive offers on interior design.",
       ogTitle: "Newsletter – Exclusive Living Ideas & Offers",
-      ogDescription: "Stay informed with the Platzhirsch Studio newsletter: design trends, discounts, events & more straight to your inbox.",
+      ogDescription: "Stay informed with the Platzhirsch Home Living newsletter: design trends, discounts, events & more straight to your inbox.",
     },
     fr: {
-      title: "Newsletter | Idées Exclusives – Platzhirsch Studio",
-      description: "Inscrivez-vous à la newsletter de Platzhirsch Studio et recevez des idées, de l'inspiration et des offres exclusives sur le design.",
+      title: "Newsletter | Idées Exclusives – Platzhirsch Home Living",
+      description: "Inscrivez-vous à la newsletter de Platzhirsch Home Living et recevez des idées, de l'inspiration et des offres exclusives sur le design.",
       ogTitle: "Newsletter – Idées d'habitat exclusives & Offres",
-      ogDescription: "Restez informé avec la newsletter de Platzhirsch Studio : tendances design, réductions, événements et plus directement dans votre boîte aux lettres.",
+      ogDescription: "Restez informé avec la newsletter de Platzhirsch Home Living : tendances design, réductions, événements et plus directement dans votre boîte aux lettres.",
     },
     it: {
-      title: "Newsletter | Idee Esclusive – Platzhirsch Studio",
-      description: "Iscriviti alla newsletter di Platzhirsch Studio e ricevi regolarmente approfondimenti, ispirazione e offerte esclusive sul design d'interni.",
+      title: "Newsletter | Idee Esclusive – Platzhirsch Home Living",
+      description: "Iscriviti alla newsletter di Platzhirsch Home Living e ricevi regolarmente approfondimenti, ispirazione e offerte esclusive sul design d'interni.",
       ogTitle: "Newsletter – Idee esclusive per la casa & Offerte",
-      ogDescription: "Rimani informato con la newsletter di Platzhirsch Studio: tendenze del design, sconti, eventi e altro ancora direttamente nella tua casella di posta.",
+      ogDescription: "Rimani informato con la newsletter di Platzhirsch Home Living: tendenze del design, sconti, eventi e altro ancora direttamente nella tua casella di posta.",
     },
   };
 
@@ -69,27 +71,20 @@ export async function generateMetadata({ params }) {
     robots: { index: false, follow: true },
     alternates: {
       canonical: PAGE_URL,
-      languages: {
-        'de': getNewsletterPageUrl('de'),
-        'en': getNewsletterPageUrl('en'),
-        'fr': getNewsletterPageUrl('fr'),
-        'it': getNewsletterPageUrl('it'),
-        'x-default': getNewsletterPageUrl('de'),
-
-      }
+      languages: hreflangLanguages((l) => getNewsletterPageUrl(l))
     },
     openGraph: {
       type: "website",
       url: PAGE_URL,
       title: localizedMeta.ogTitle,
       description: localizedMeta.ogDescription,
-      siteName: "Platzhirsch Studio",
+      siteName: "Platzhirsch Home Living",
       images: [
         {
           url: "/Images/fallback-og.jpg",
           width: 1200,
           height: 630,
-          alt: "Newsletter Anmeldung Platzhirsch Studio",
+          alt: "Newsletter Anmeldung Platzhirsch Home Living",
         },
       ],
       locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
@@ -111,7 +106,7 @@ export default async function Page({ params }) {
 
   const localizedMeta = getLocalizedMetadata(locale);
 
-  const homeName = locale === "it" ? "Casa" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
+  const homeName = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
   const pageName = "Newsletter"; // Same across all locales
 
   // ✅ JSON-LD Structured Data
@@ -122,13 +117,12 @@ export default async function Page({ params }) {
     url: PAGE_URL,
     name: pageName,
     description: localizedMeta.description,
-    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-DE",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: homeName, item: `/${locale}` },
+        { "@type": "ListItem", position: 1, name: homeName, item: `https://platzhirsch.studio/${locale}` },
         { "@type": "ListItem", position: 2, name: pageName, item: PAGE_URL },
       ],
     },
@@ -136,10 +130,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <Newsletter />
       <Content />
     </div>

@@ -52,3 +52,30 @@ export const ROUTES = {
         it: '/chi-siamo/carriera',
     },
 };
+
+// Product catalogue URLs. The pages exist once under src/app/[locale]/produkte/
+// and serve every language at its translated path (/en/products/<category>/
+// <product>, /fr/produits/…, /it/prodotti/…) via the middleware's `pathnames`
+// table — same mechanism as the About section. Always build product links
+// with these helpers, never with a hardcoded "/produkte".
+
+// "/products/sofas-couches/toulouse" for locale "en" (no locale prefix).
+export function productsPath(locale, ...segments) {
+    const base = ROUTES.produkte[locale] || ROUTES.produkte.de;
+    return [base, ...segments.filter(Boolean)].join("/");
+}
+
+// { de: "/produkte/…", en: "/products/…", fr: "/produits/…", it: "/prodotti/…" }
+// — for hreflang alternates and sitemap entries.
+export function productsPathByLocale(...segments) {
+    return Object.fromEntries(
+        Object.keys(ROUTES.produkte).map((locale) => [locale, productsPath(locale, ...segments)])
+    );
+}
+
+// Stored links (wishlist entries, collection data) use the German form
+// "/produkte/…"; swap in the locale's translated base when rendering.
+export function localizeProductsHref(href, locale) {
+    if (typeof href !== "string") return href;
+    return href.replace(/^\/produkte(?=\/|\?|$)/, ROUTES.produkte[locale] || ROUTES.produkte.de);
+}

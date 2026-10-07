@@ -1,9 +1,11 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import Teamsecond from "@/components/Team/team";
 import TeamMember from "@/components/Team/teammember";
 import { fetchTeamData } from "@/lib/api/fetchTeam";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 import {
   fetchTeamKeywords,
   getLocalizedTeamMetadata,
@@ -35,19 +37,19 @@ function getTeamPageUrl(locale) {
 
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "Il Nostro Team | Esperti di Design da Platzhirsch Studio";
-    case "en": return "Meet Our Team | Design Experts at Platzhirsch Studio";
-    case "fr": return "Notre Équipe | Experts en Design chez Platzhirsch Studio";
-    default: return "Unser Team | Kreativexperten bei Platzhirsch Studio";
+    case "it": return "Il Nostro Team | Esperti di Design da Platzhirsch Home Living";
+    case "en": return "Meet Our Team | Design Experts at Platzhirsch Home Living";
+    case "fr": return "Notre Équipe | Experts en Design chez Platzhirsch Home Living";
+    default: return "Unser Team | Kreativexperten bei Platzhirsch Home Living";
   }
 };
 
 const getLocalizedDescription = (locale) => {
   switch (locale) {
-    case "it": return "Conosci il nostro team creativo di Platzhirsch Studio. Esperti nel design esclusivo.";
-    case "en": return "Meet our creative team at Platzhirsch Studio. Experts in exclusive design.";
-    case "fr": return "Rencontrez notre équipe créative chez Platzhirsch Studio. Experts en design exclusif.";
-    default: return "Lernen Sie unser kreatives Team bei Platzhirsch Studio kennen. Experten für exklusives Design.";
+    case "it": return "Conosci il nostro team creativo di Platzhirsch Home Living. Esperti nel design esclusivo.";
+    case "en": return "Meet our creative team at Platzhirsch Home Living. Experts in exclusive design.";
+    case "fr": return "Rencontrez notre équipe créative chez Platzhirsch Home Living. Experts en design exclusif.";
+    default: return "Lernen Sie unser kreatives Team bei Platzhirsch Home Living kennen. Experten für exklusives Design.";
   }
 };
 
@@ -64,22 +66,16 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de': getTeamPageUrl('de'),
-            'en': getTeamPageUrl('en'),
-            'fr': getTeamPageUrl('fr'),
-            'it': getTeamPageUrl('it'),
-            'x-default': getTeamPageUrl('de'),
-          }
+          languages: hreflangLanguages((l) => getTeamPageUrl(l))
         },
         openGraph: {
           type: "website",
           url: PAGE_URL,
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
-          siteName: "Platzhirsch Studio",
+          siteName: "Platzhirsch Home Living",
           locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url: "/Images/Team/reading-area.jpg", width: 1200, height: 630, alt: "Team – Platzhirsch Studio" }],
+          images: [{ url: "/Images/Team/reading-area.jpg", width: 1200, height: 630, alt: "Team – Platzhirsch Home Living" }],
         },
         twitter: {
           card: "summary_large_image",
@@ -100,26 +96,20 @@ export async function generateMetadata({ params }) {
       description: meta?.description || getLocalizedDescription(locale),
       robots: { index: true, follow: true },
       alternates: {
-        canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de': getTeamPageUrl('de'),
-          'en': getTeamPageUrl('en'),
-          'fr': getTeamPageUrl('fr'),
-          'it': getTeamPageUrl('it'),
-          'x-default': getTeamPageUrl('de'),
-        }
+        canonical: PAGE_URL,
+        languages: hreflangLanguages((l) => getTeamPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
         description: meta?.description || getLocalizedDescription(locale),
-        url: meta?.url || PAGE_URL,
-        siteName: "Platzhirsch Studio",
+        url: PAGE_URL,
+        siteName: "Platzhirsch Home Living",
         images: [
           {
             url: image ? image : "/Images/Team/reading-area.jpg",
             width: 1200,
             height: 630,
-            alt: "Team – Platzhirsch Studio",
+            alt: "Team – Platzhirsch Home Living",
           },
         ],
         locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
@@ -139,7 +129,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getTeamPageUrl(l)) },
     };
   }
 }
@@ -168,7 +158,7 @@ export default async function page({ params }) {
           : "Team";
   const Home =
     locale == "it"
-      ? "Casa "
+      ? "Home"
       : locale == "en"
         ? "Home"
         : locale == "fr"
@@ -203,16 +193,14 @@ export default async function page({ params }) {
     "@id": `${PAGE_URL}/#webpage`,
     url: PAGE_URL,
     name: linkNameTwo,
-    description: "Unser kreatives Team bei Platzhirsch Studio - Experten für exklusives Design.",
-    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-DE",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    description: "Unser kreatives Team bei Platzhirsch Home Living - Experten für exklusives Design.",
+    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: `/${locale}` },
-        { "@type": "ListItem", position: 2, name: linkNameOne },
-        { "@type": "ListItem", position: 3, name: linkNameTwo, item: PAGE_URL },
+        { "@type": "ListItem", position: 1, name: Home, item: BASE_URL },
+        { "@type": "ListItem", position: 2, name: linkNameTwo, item: PAGE_URL },
       ],
     },
   };
@@ -220,10 +208,7 @@ export default async function page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <Teamsecond />
       <TeamMember team={team} />

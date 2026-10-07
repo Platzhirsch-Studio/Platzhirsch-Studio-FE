@@ -1,5 +1,6 @@
 // src/app/robots.js
-// Next.js generates /robots.txt from this at runtime (same convention as sitemap.js).
+// Next.js generates /robots.txt from this at runtime. The sitemap below is the
+// index at src/app/sitemap.xml/route.js, which lists the per-section sitemaps.
 // Do NOT also add public/robots.txt or app/robots.txt/route.js — they would conflict.
 //
 // Deliberate crawler policy (ported 1:1 from the previous app/robots.txt/route.js):

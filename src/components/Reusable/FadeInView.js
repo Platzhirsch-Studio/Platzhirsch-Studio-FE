@@ -17,6 +17,9 @@ const FadeInView = ({
 }) => {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
+    // Staggers are passed as index * 70–150 ms; on long grids (40 brands) that
+    // added up to ~3 s of blank cards. Nothing should wait longer than 600 ms.
+    const stagger = Math.min(delay, 600);
 
     useEffect(() => {
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -39,7 +42,14 @@ const FadeInView = ({
         );
 
         if (ref.current) observer.observe(ref.current);
-        return () => observer.disconnect();
+        // Safety net: whatever happens with the observer (fast scrolling,
+        // automation, zoomed layouts, an element already past the viewport),
+        // the content is shown after 1.2 s — it must never stay at opacity 0.
+        const fallback = setTimeout(() => setIsVisible(true), 1200);
+        return () => {
+            observer.disconnect();
+            clearTimeout(fallback);
+        };
     }, [threshold, once]);
 
     const getTransform = () => {
@@ -91,10 +101,14 @@ const FadeInView = ({
         <Tag
             ref={ref}
             className={className}
+            // Hook for the <noscript> rule in [locale]/layout.js that forces
+            // this content visible when JavaScript doesn't run (crawlers,
+            // JS-off) — the inline opacity:0 below would otherwise hide it.
+            data-fade-in=""
             style={{
                 transition: `
-opacity ${duration}ms cubic-bezier(0.4,0,0.2,1) ${delay}ms,
-transform ${duration}ms cubic-bezier(0.4,0,0.2,1) ${delay}ms
+opacity ${duration}ms cubic-bezier(0.4,0,0.2,1) ${stagger}ms,
+transform ${duration}ms cubic-bezier(0.4,0,0.2,1) ${stagger}ms
 `,
                 opacity: isVisible ? 1 : 0,  // FIXED: Always apply opacity
                 transform: getTransform(),

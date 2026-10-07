@@ -1,11 +1,12 @@
 // src/lib/api/markenApi.js
 import "server-only";
-import { API_BASE_URL } from "@/lib/apiBaseUrl";
+import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
 
 // Base fetch function (private - not exported)
 export async function fetchRawMarkenData() {
-  const response = await fetch(`${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.marken.api.marken_data`, {
+  const response = await fetch(`${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.marken.api.marken_data`, {
     next: { revalidate: 3600, tags: ["marken"] },
+    signal: AbortSignal.timeout(15000),
   });
 
   if (!response.ok) {

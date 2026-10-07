@@ -1,7 +1,9 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import CartPage from "@/components/CartPage/CartPage";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -30,28 +32,28 @@ function getMerklistePageUrl(locale) {
 function getLocalizedMetadata(locale) {
   const metadataMap = {
     de: {
-      title: "Merkliste | Platzhirsch Studio",
-      description: "Verwalten Sie Ihre Lieblings-Möbel und Designprodukte in Ihrer persönlichen Merkliste bei Platzhirsch Studio. Sammeln Sie Inspirationen für Ihr Zuhause.",
-      ogTitle: "Merkliste | Platzhirsch Studio",
-      ogDescription: "Sammeln Sie Ihre Lieblings-Designprodukte und planen Sie Ihre Traumeinrichtung mit der Platzhirsch Studio Merkliste.",
+      title: "Merkliste | Platzhirsch Home Living",
+      description: "Verwalten Sie Ihre Lieblings-Möbel und Designprodukte in Ihrer persönlichen Merkliste bei Platzhirsch Home Living. Sammeln Sie Inspirationen für Ihr Zuhause.",
+      ogTitle: "Merkliste | Platzhirsch Home Living",
+      ogDescription: "Sammeln Sie Ihre Lieblings-Designprodukte und planen Sie Ihre Traumeinrichtung mit der Platzhirsch Home Living Merkliste.",
     },
     en: {
-      title: "Wishlist | Furniture Favorites – Platzhirsch Studio",
-      description: "Manage your favorite furniture and design products in your personal wishlist at Platzhirsch Studio. Collect inspiration for your home.",
-      ogTitle: "Wishlist | Platzhirsch Studio",
-      ogDescription: "Collect your favorite design products and plan your dream interior with the Platzhirsch Studio wishlist.",
+      title: "Wishlist | Furniture Favorites – Platzhirsch Home Living",
+      description: "Manage your favorite furniture and design products in your personal wishlist at Platzhirsch Home Living. Collect inspiration for your home.",
+      ogTitle: "Wishlist | Platzhirsch Home Living",
+      ogDescription: "Collect your favorite design products and plan your dream interior with the Platzhirsch Home Living wishlist.",
     },
     fr: {
-      title: "Liste de Souhaits | Platzhirsch Studio",
-      description: "Gérez vos meubles et produits de design préférés dans votre liste de souhaits chez Platzhirsch Studio. Collectez l'inspiration pour votre maison.",
-      ogTitle: "Liste de souhaits | Platzhirsch Studio",
-      ogDescription: "Collectez vos produits de design préférés et planifiez votre intérieur de rêve avec la liste de souhaits Platzhirsch Studio.",
+      title: "Liste de Souhaits | Platzhirsch Home Living",
+      description: "Gérez vos meubles et produits de design préférés dans votre liste de souhaits chez Platzhirsch Home Living. Collectez l'inspiration pour votre maison.",
+      ogTitle: "Liste de souhaits | Platzhirsch Home Living",
+      ogDescription: "Collectez vos produits de design préférés et planifiez votre intérieur de rêve avec la liste de souhaits Platzhirsch Home Living.",
     },
     it: {
-      title: "Lista dei Desideri | Platzhirsch Studio",
-      description: "Gestisci i tuoi mobili e prodotti di design preferiti nella tua lista dei desideri presso Platzhirsch Studio. Raccogli ispirazione per la tua casa.",
-      ogTitle: "Lista dei desideri | Platzhirsch Studio",
-      ogDescription: "Raccogli i tuoi prodotti di design preferiti e pianifica i tuoi interni da sogno con la lista dei desideri di Platzhirsch Studio.",
+      title: "Lista dei Desideri | Platzhirsch Home Living",
+      description: "Gestisci i tuoi mobili e prodotti di design preferiti nella tua lista dei desideri presso Platzhirsch Home Living. Raccogli ispirazione per la tua casa.",
+      ogTitle: "Lista dei desideri | Platzhirsch Home Living",
+      ogDescription: "Raccogli i tuoi prodotti di design preferiti e pianifica i tuoi interni da sogno con la lista dei desideri di Platzhirsch Home Living.",
     },
   };
 
@@ -71,27 +73,20 @@ export async function generateMetadata({ params }) {
     robots: { index: false, follow: true },
     alternates: {
       canonical: PAGE_URL,
-      languages: {
-        'de': getMerklistePageUrl('de'),
-        'en': getMerklistePageUrl('en'),
-        'fr': getMerklistePageUrl('fr'),
-        'it': getMerklistePageUrl('it'),
-        'x-default': getMerklistePageUrl('de'),
-
-      }
+      languages: hreflangLanguages((l) => getMerklistePageUrl(l))
     },
     openGraph: {
       type: "website",
       url: PAGE_URL,
       title: localizedMeta.ogTitle,
       description: localizedMeta.ogDescription,
-      siteName: "Platzhirsch Studio",
+      siteName: "Platzhirsch Home Living",
       images: [
         {
           url: "/Images/fallback-og.jpg",
           width: 1200,
           height: 630,
-          alt: "Platzhirsch Studio Merkliste",
+          alt: "Platzhirsch Home Living Merkliste",
         },
       ],
       locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
@@ -109,20 +104,20 @@ export default async function Page({ params }) {
   const { locale } = await params;
 
   const titleOne = locale == "it" ? "Lista dei desideri" : locale == "en" ? "Wishlist" : locale == "fr" ? "Liste de souhaits" : "Merkliste";
-  const Home = locale == "it" ? "Casa" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
 
   // Dynamic URLs
   const BASE_URL = getBaseUrl(locale);
   const PAGE_URL = getMerklistePageUrl(locale);
 
-  const merkenlistPath = ROUTES.kontakt[locale] ? `${ROUTES.merkliste[locale]}` : `/merkliste`;
+  const merklistePath = ROUTES.merkliste[locale] || ROUTES.merkliste.de;
 
 
   const BannerInfo = {
     image: "/Images/Newsletter/room.jpg",
     links: [
       { linkName: Home, link: `/` }, // Fixed: use locale prefix
-      { linkName: titleOne, link: merkenlistPath },
+      { linkName: titleOne, link: merklistePath },
     ],
     title: titleOne,
   };
@@ -135,13 +130,12 @@ export default async function Page({ params }) {
     url: PAGE_URL,
     name: titleOne,
     description: "Verwalten Sie Ihre Lieblingsmöbel und Designprodukte in Ihrer persönlichen Merkliste.",
-    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-DE",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: `/${locale}` },
+        { "@type": "ListItem", position: 1, name: Home, item: `https://platzhirsch.studio/${locale}` },
         { "@type": "ListItem", position: 2, name: titleOne, item: PAGE_URL },
       ],
     },
@@ -149,10 +143,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <CartPage />
     </div>

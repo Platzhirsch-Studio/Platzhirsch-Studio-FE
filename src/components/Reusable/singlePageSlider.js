@@ -2,67 +2,54 @@
 import React from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { usePathname } from "next/navigation";
-import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
-import FadeInView from "@/components/Reusable/FadeInView";
+import { useLocale } from "next-intl";
 
+// Photo header for the content pages (Beratung, Kontakt, Team, News, landing
+// pages …): full-bleed photo, the title in the display face, a semantic
+// breadcrumb. Text sits bottom-left over a gradient (not centred over a flat
+// 30 % overlay), the same stage as the homepage hero. No entrance animation
+// here: the page should be readable the instant it paints.
 const SinglePageBanner = ({ info }) => {
-  const pathname = usePathname();
-  const locale = getLocaleFromPath(pathname);
+  const locale = useLocale();
+  const links = Array.isArray(info.links) ? info.links : [];
+
   return (
-    <div className="relative w-full h-150 lg:h-200">
-      {/* Background image */}
+    <div className="relative isolate w-full h-150 lg:h-200 text-white">
       <Image
         src={info.image}
-        alt="Banner"
+        // Pages can pass their own `info.alt`; otherwise describe it by the page title.
+        alt={info.alt || `${info.title} – Platzhirsch Home Living`}
         fill
-        style={{ objectFit: "cover", objectPosition: "center" }}
         priority
         sizes="100vw"
+        className="object-cover object-center -z-20"
       />
+      <div className="absolute inset-0 -z-10 bg-linear-to-t from-night/85 via-night/35 to-night/20" />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-30" />
-
-      {/* Content */}
-      <div className="relative  z-20 flex flex-col pt-23 items-center justify-center h-full">
-        {/* Title */}
-        <FadeInView
-          as="h1"
-          direction="bottom"
-          duration={600}
-          distance={20}
-          className="font-bold mb-5 text-2xl md:text-4xl lg:text-5xl tracking-normal text-white text-center"
-        >
-          {info.title}
-        </FadeInView>
-
-        {/* Breadcrumbs */}
-        <FadeInView
-          as="div"
-          direction="bottom"
-          duration={600}
-          distance={10}
-          delay={300}
-          className="flex items-center justify-center text-white gap-2 mb-4 md:mb-6"
-        >
-          {info.links.map((link, index) => (
-            <React.Fragment key={index}>
-              {link?.link ? (
-                <Link href={link.link} locale={locale}>
-                  <p className="text-sm font-normal uppercase hover:underline transition">
-                    {link.linkName}
-                  </p>
-                </Link>
-              ) : (
-                <p className="text-sm font-normal uppercase ">
-                  {link.linkName}
-                </p>
-              )}
-              {index < info.links.length - 1 && <span className="mx-1">/</span>}
-            </React.Fragment>
-          ))}
-        </FadeInView>
+      <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-10 pt-28 sm:px-6 lg:pb-16 lg:pt-56">
+        <nav aria-label="Breadcrumb">
+          <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-white/70">
+            {links.map((link, index) => {
+              const isCurrent = index === links.length - 1;
+              return (
+                <li key={index} className="flex items-center gap-2">
+                  {index > 0 && <span aria-hidden="true" className="text-white/40">/</span>}
+                  {link?.link && !isCurrent ? (
+                    <Link href={link.link} locale={locale} className="transition-colors hover:text-gold">
+                      {link.linkName}
+                    </Link>
+                  ) : (
+                    <span aria-current={isCurrent ? "page" : undefined} className={isCurrent ? "text-white" : undefined}>
+                      {link.linkName}
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </nav>
+        <h1 className="font-display mt-4 max-w-4xl text-4xl leading-[1.05] md:text-5xl lg:text-6xl">{info.title}</h1>
+        {info.subtitle && <p className="mt-4 max-w-2xl text-base text-white/85 md:text-lg">{info.subtitle}</p>}
       </div>
     </div>
   );

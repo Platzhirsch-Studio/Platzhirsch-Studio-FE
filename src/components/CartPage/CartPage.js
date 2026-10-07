@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Trash2, ShoppingBag, ArrowRight } from "lucide-react";
-import { useCart } from "@/context/CartContext";
+import { useCart, wishlistImageSrc } from "@/context/CartContext";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
@@ -10,6 +10,7 @@ import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
 import AnfrageFormProduct from "@/components/AnfrageFormProduct/AnfrageFormProduct";
 import { useTranslations } from "next-intl";
 import { generateSlug } from "@/lib/slugify";
+import { productsPath, localizeProductsHref } from "@/utils/routing";
 
 
 export default function CartPage() {
@@ -53,7 +54,7 @@ export default function CartPage() {
               <ShoppingBag size={60} className="text-gray-400" />
             </div>
             <h3 className="text-xl font-normal mb-3 text-gray-800">{t("noItemsHeadline")}</h3>
-            <Link href="/produkte" locale={locale}>
+            <Link href={productsPath(locale)} locale={locale}>
               <p className="text-[#d1b250] font-medium hover:underline">{t("findProducts")}</p>
             </Link>
           </div>
@@ -68,7 +69,7 @@ export default function CartPage() {
               <div className="relative w-full h-64 bg-gray-50">
                 {item.image ? (
                   <Image
-                    src={`/cms${item?.image}`}
+                    src={wishlistImageSrc(item?.image)}
                     alt={item?.name || "Produktbild"}
                     fill
                     className="object-cover"
@@ -89,7 +90,7 @@ export default function CartPage() {
                 </div>
                 <div className="flex justify-between align-center">
                   <Link
-                    href={`/produkte/${generateSlug(item?.category)}/${item.path_field}`}
+                    href={localizeProductsHref(item.href || productsPath("de", generateSlug(item?.kategories), item.url_slug), locale)}
                     locale={locale}
                     className="bg-gray-200 hover:bg-[#d1b250] py-2 px-10 rounded-full shadow-sm hover:shadow-md transition-all duration-200 text-gray-600 group cursor-pointer"
                   >

@@ -13,12 +13,210 @@
     "news": "ACTUALITÉS",
     "contact": "CONTACT",
     "wishlist": "LISTE DE SOUHAITS",
+    "hours": "Mar–Ven : 10h–18h · Sam : 10h–14h",
+    "search": "Rechercher des produits",
+    "searchBrands": "Marques",
+    "searchCategories": "Catégories",
+    "searchCategoryBrands": "{category} par marque",
+    "searchBrandCategories": "{brand} – Catégories",
+    "searchProductCount": "{count, plural, one {# produit} other {# produits}}",
+    "searchProducts": "Produits",
+    "searchNoResults": "Aucun résultat trouvé",
+    "searchClear": "Effacer la recherche",
     "languages": {
       "en": "Anglais",
       "de": "Allemand",
       "fr": "Français",
       "it": "Italien"
-    }
+    },
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "call": "Appeler",
+    "logoAlt": "Platzhirsch Home Living – accueil",
+    "allProducts": "Voir tous les produits",
+    "mainNavigation": "Navigation principale"
+  },
+  "ProductsMenu": {
+    "indoor": "Intérieur",
+    "outdoor": "Extérieur",
+    "groups": [
+      {
+        "title": "Canapés & Fauteuils",
+        "items": [
+          {
+            "label": "Canapés",
+            "key": "sofas-couches"
+          },
+          {
+            "label": "Canapés d'angle",
+            "key": "corner-sofas"
+          },
+          {
+            "label": "Canapés convertibles",
+            "key": "sleeper-sofas"
+          },
+          {
+            "label": "Chaises longues & Daybeds",
+            "key": "chaise-longues-daybeds"
+          },
+          {
+            "label": "Fauteuils & Poufs",
+            "key": "armchairs-stools"
+          },
+          {
+            "label": "Canapés en cuir",
+            "key": "leather-sofas"
+          }
+        ]
+      },
+      {
+        "title": "Chaises & Tables",
+        "items": [
+          {
+            "label": "Chaises de salle à manger",
+            "key": "dining-chairs"
+          },
+          {
+            "label": "Tabourets de bar",
+            "key": "bar-stools"
+          },
+          {
+            "label": "Chaises de bureau",
+            "key": "desk-chairs"
+          },
+          {
+            "label": "Tables à manger",
+            "key": "dining-tables"
+          },
+          {
+            "label": "Tables basses",
+            "key": "coffee-tables"
+          },
+          {
+            "label": "Tables d'appoint",
+            "key": "side-tables"
+          }
+        ]
+      },
+      {
+        "title": "Chambre",
+        "items": [
+          {
+            "label": "Lits",
+            "key": "beds"
+          },
+          {
+            "label": "Tables de chevet",
+            "key": "night-tables"
+          },
+          {
+            "label": "Armoires",
+            "key": "wardrobes"
+          },
+          {
+            "label": "Linge de lit",
+            "key": "bedwear"
+          }
+        ]
+      },
+      {
+        "title": "Rangement",
+        "items": [
+          {
+            "label": "Buffets & Commodes",
+            "key": "sideboards-chests"
+          },
+          {
+            "label": "Étagères",
+            "key": "shelves"
+          },
+          {
+            "label": "Meubles TV",
+            "key": "tv-low-units"
+          },
+          {
+            "label": "Vitrines",
+            "key": "display-cabinets"
+          },
+          {
+            "label": "Petits meubles",
+            "key": "small-furniture"
+          }
+        ]
+      },
+      {
+        "title": "Extérieur",
+        "items": [
+          {
+            "label": "Tables de jardin",
+            "key": "garden-tables"
+          },
+          {
+            "label": "Chaises de jardin",
+            "key": "garden-chairs"
+          },
+          {
+            "label": "Mobilier lounge & Daybeds",
+            "key": "lounge-furniture-daybeds"
+          },
+          {
+            "label": "Bains de soleil",
+            "key": "sun-loungers"
+          },
+          {
+            "label": "Parasols",
+            "key": "parasols"
+          },
+          {
+            "label": "Chauffages",
+            "key": "heaters"
+          }
+        ]
+      },
+      {
+        "title": "Cuisines",
+        "items": [
+          {
+            "label": "Cuisines",
+            "key": "kitchen"
+          },
+          {
+            "label": "Accessoires de cuisine",
+            "key": "kitchen-accessories"
+          }
+        ]
+      },
+      {
+        "title": "Luminaires",
+        "items": [
+          {
+            "label": "Luminaires",
+            "key": "lamps"
+          }
+        ]
+      },
+      {
+        "title": "Accessoires",
+        "items": [
+          {
+            "label": "Tapis",
+            "key": "rugs"
+          },
+          {
+            "label": "Décoration",
+            "key": "decor"
+          },
+          {
+            "label": "Miroirs",
+            "key": "mirrors"
+          },
+          {
+            "label": "Bougies",
+            "key": "candles"
+          }
+        ]
+      }
+    ]
   },
   "Buttons": {
     "discover": "Découvrir"
@@ -35,11 +233,11 @@
       "solpuri": "Meubles de salon Solpuri",
       "design": "Design pour espaces extérieurs",
       "vorarlberg": "Meubles de terrasse Vorarlberg",
-      "studio": "Platzhirsch Studio Outdoor"
+      "studio": "Platzhirsch Home Living Outdoor"
     },
     "ogDescription": "Transformez votre jardin, balcon ou terrasse en un paradis extérieur élégant avec un design résistant aux intempéries de grandes marques.",
     "ogImageAlt": "Salon extérieur avec des meubles de jardin élégants",
-    "twitterTitle": "Meubles & Design d'Extérieur | Platzhirsch Studio",
+    "twitterTitle": "Meubles & Design d'Extérieur | Platzhirsch Home Living",
     "twitterDescription": "Meubles exclusifs pour terrasses et jardins – découvrez nos mondes extérieurs.",
     "homeLink": "Accueil",
     "productsLink": "Produits"
@@ -51,15 +249,16 @@
     "rimadesio": "Systèmes muraux et étagères élégants",
     "treca_paris": "Dormir comme un roi en France",
     "flos": "Designs d’éclairage expressifs",
-    "poliform_cucine": "Cuisine modulaire de design italien"
+    "poliform_cucine": "Cuisine modulaire de design italien",
+    "headline": "Mobilier design, cuisines & Interior Design au Vorarlberg"
   },
   "About": {
     "imgAlt": "À propos de notre entreprise",
     "ourMissionTitle": "Notre mission",
-    "ourMissionDesc": "Chez Platzhirsch Studio, nous nous efforçons de développer des solutions créatives et réfléchies qui renforcent l’identité de la marque et laissent une impression durable. Notre objectif est de faire le lien entre le design et la stratégie afin d’assurer le succès à long terme de nos clients.",
+    "ourMissionDesc": "Chez Platzhirsch Home Living, nous nous efforçons de développer des solutions créatives et réfléchies qui renforcent l’identité de la marque et laissent une impression durable. Notre objectif est de faire le lien entre le design et la stratégie afin d’assurer le succès à long terme de nos clients.",
     "aboutUs": "À PROPOS",
     "yourVisionTitle": "Votre vision, notre moteur",
-    "yourVisionDesc": "Platzhirsch Studio incarne le design créatif, des solutions innovantes et des stratégies de marque sur mesure. Nous donnons vie aux idées – de manière authentique, moderne et percutante."
+    "yourVisionDesc": "Platzhirsch Home Living incarne le design créatif, des solutions innovantes et des stratégies de marque sur mesure. Nous donnons vie aux idées – de manière authentique, moderne et percutante."
   },
   "TrendingProducts": {
     "title": "Produits tendance",
@@ -74,21 +273,39 @@
     "heading": "Nos avantages pour vous",
     "description": "Découvrez comment nous équipons parfaitement votre maison avec un service sur mesure,\nune qualité supérieure et une prise en charge complète sans souci.",
     "service1": {
-      "title": "Service de livraison premium",
-      "text": "Profitez de notre service de livraison premium gratuit comprenant la livraison professionnelle et la mise en place de vos nouveaux meubles. Notre équipe professionnelle laisse votre espace impeccable."
+      "title": "Livraison & montage",
+      "text": "Livraison et montage professionnel par notre équipe – dans le Vorarlberg, toute l'Autriche, l'Allemagne et la Suisse, à la date qui vous convient."
     },
     "service2": {
-      "title": "Service de montage professionnel",
-      "text": "Nos techniciens certifiés assemblent chaque meuble pour vous – aucun outil requis. Détendez-vous pendant que nous nous occupons de l'installation complète."
+      "title": "Planification sur mesure",
+      "text": "Nous planifions chaque pièce pour votre espace : prise de mesures, agencement, matières et couleurs – avant la commande."
     },
     "service3": {
       "title": "Conseil design personnalisé",
       "text": "Travaillez directement avec nos spécialistes de l’aménagement pour assortir parfaitement surfaces, tissus et dimensions à votre espace."
     },
     "service4": {
-      "title": "Garantie qualité à vie",
-      "text": "Nous garantissons notre savoir-faire. Chaque achat inclut une garantie à vie contre les défauts de fabrication – pour votre tranquillité d'esprit."
+      "title": "Pièces originales au showroom",
+      "text": "Plus de 35 marques à Lochau : essayer, comparer tissus et finitions, décider en toute tranquillité."
     }
+  },
+  "Vernissage": {
+    "heading": "Vernissage",
+    "title": "Platzhirsch Home Living & l'artiste Kaja El Attar",
+    "subtitle": "L'art d'habiter rencontre les émotions en couleur.",
+    "date": "Vendredi 4 septembre 2026",
+    "time": "17h00",
+    "location": "Platzhirsch, Landstrasse 9, Lochau",
+    "cta": "Voir l'invitation",
+    "artistLink": "https://kajaelattar.de/de/",
+    "altArtworkOne": "Peinture de Kaja El Attar – un arbre de vie coloré sur fond doré",
+    "altInterior": "Ensemble de salon Minotti au Platzhirsch Home Living à Lochau",
+    "altArtworkTwo": "Œuvre calligraphique en noir et blanc de Kaja El Attar",
+    "popupTitle": "Invitation au vernissage",
+    "popupText": "Platzhirsch Home Living & l'artiste Kaja El Attar. L'art d'habiter rencontre les émotions en couleur – au plaisir de vous accueillir.",
+    "popupCta": "En savoir plus",
+    "popupDismiss": "Plus tard",
+    "close": "Fermer"
   },
   "BlogSection": {
     "heading": "Actualités",
@@ -127,7 +344,7 @@
     "contactUs": "Contactez-nous",
     "aboutUs": "À PROPOS",
     "address": {
-      "line1": "Landstraße 11",
+      "line1": "Landstraße 9",
       "line2": "6911 Lochau (Vorarlberg)",
       "country": "Autriche"
     },
@@ -151,7 +368,16 @@
     "cafe": "Platzhirsch Cafe",
     "privacySettings": "Paramètres de confidentialité",
     "privacy": "Politique de confidentialité",
-    "allRightsReserved": "Tous droits réservés."
+    "imprint": "Mentions légales",
+    "allRightsReserved": "Tous droits réservés.",
+    "tagline": "Studio d'aménagement pour mobilier design, cuisines design et luminaires au bord du lac de Constance – showroom à Lochau près de Bregenz, conseil et montage en Autriche, Allemagne et Suisse.",
+    "showroomTitle": "Showroom",
+    "productsTitle": "Univers produits",
+    "serviceTitle": "Service & régions",
+    "consultation": "Prendre rendez-vous",
+    "route": "Itinéraire",
+    "brandsHeading": "Marques",
+    "aboutLink": "À propos"
   },
   "Outdoor": {
     "bannerTitle": "Produits",
@@ -159,7 +385,7 @@
     "breadcrumbProducts": "Produits",
     "title": "Habitat intemporel &",
     "secondTitle": "Vie",
-    "desc1": "Bienvenue sur la page produits de Platzhirsch Studio – votre espace créatif pour des solutions élégantes d’intérieur et d’extérieur. Nos produits allient design minimaliste, savoir-faire artisanal et matériaux de haute qualité. Chaque pièce présentée ici est soigneusement conçue pour être fonctionnelle et marquer visuellement – que ce soit dans les espaces privés, commerciaux ou extérieurs.",
+    "desc1": "Bienvenue sur la page produits de Platzhirsch Home Living – votre espace créatif pour des solutions élégantes d’intérieur et d’extérieur. Nos produits allient design minimaliste, savoir-faire artisanal et matériaux de haute qualité. Chaque pièce présentée ici est soigneusement conçue pour être fonctionnelle et marquer visuellement – que ce soit dans les espaces privés, commerciaux ou extérieurs.",
     "desc2": "Notre collection intérieure propose des meubles et accessoires modernes qui soulignent le caractère d’une pièce sans la surcharger. Des systèmes d’étagères élégants aux sièges personnalisés en passant par des éléments décoratifs – nous portons une attention particulière à chaque détail. Lignes épurées, matériaux naturels et surfaces durables garantissent des produits qui vous plairont aujourd’hui et demain.",
     "desc3": "Pour l’extérieur, nous offrons des solutions de style qui relient harmonieusement intérieur et extérieur. Nos sièges, tables et objets design résistants aux intempéries bravent les éléments et invitent à la détente – sur la terrasse, dans le jardin ou dans l’espace public. Esthétique et durabilité vont de pair ici."
   },
@@ -181,7 +407,7 @@
       },
       {
         "title": "Visite en Magasin",
-        "description": "Heureux de vous accueillir. Votre visite chez Platzhirsch Studio.",
+        "description": "Heureux de vous accueillir. Votre visite chez Platzhirsch Home Living.",
         "bullets": [
           "Visite avec ou sans rendez-vous",
           "Également en dehors des horaires"
@@ -268,10 +494,11 @@
     "headline": "Marques",
     "subheadline": "Marques d'excellence",
     "paragraphs": [
-      "Notre portefeuille comprend une sélection exclusive de marques renommées, synonymes d'élégance intemporelle, d'artisanat d'exception et de design innovant.",
-      "Chaque marque que nous proposons raconte sa propre histoire et apporte sa signature unique dans l'univers du design.",
-      "Découvrez chez nous la diversité et l’exclusivité de marques reconnues internationalement pour leur réputation d'excellence.",
-      "Nous sommes fiers de présenter à nos clients des marques qui répondent aux exigences les plus élevées et incarnent l'essence du luxe et de l'innovation."
+      "Notre portfolio réunit une sélection exclusive de marques renommées, synonymes d'élégance intemporelle, d'un artisanat d'excellence et d'un design avant-gardiste. Chaque marque que nous représentons raconte sa propre histoire et apporte sa signature unique à l'univers du design.",
+      "Cette diversité se retrouve dans chaque espace de vie. Pour le salon et la salle à manger, nous proposons des meubles rembourrés de Minotti, Bullfrog et Papadatos, des tables et des chaises de Desalto et Tonon, ainsi que des classiques du design signés ClassiCon. Rimadesio et Poliform complètent cette sélection avec des systèmes de rangement, des cloisons et des portes tout en verre qui unissent architecture et aménagement.",
+      "Pour la cuisine et la salle de bains, nous travaillons avec next125, Schüller et Frost, ainsi qu'avec antoniolupi et Agape – des marques qui accordent autant d'importance à la fonction qu'à la qualité des matériaux. Pour l'extérieur, Gloster, Paola Lenti, Solpuri, Sifas, EMU, Tuuci et Umbrosa proposent des meubles, des parasols et des textiles qui conservent leur caractère après des années en plein air. Heatsail prolonge la saison jusqu'aux mois plus frais grâce à ses chauffages d'extérieur.",
+      "La lumière est un chapitre à part entière. Avec Flos, Tom Dixon, Brand van Egmond et Quasar, nous mettons les espaces en scène – de l'éclairage d'ambiance discret à la pièce sculpturale. Treca veille sur un sommeil réparateur, Trapa sur des sols en bois local, et les accessoires d'Eichholtz, Lambert, Pomax, Qeeboo, 101 Copenhagen, Baobab et Alonpi apportent la touche finale à chaque pièce.",
+      "Découvrez chez nous la diversité et l'exclusivité de marques reconnues à l'international pour leur réputation exceptionnelle. Nous sommes fiers de présenter à nos clients des marques qui répondent aux exigences les plus élevées et incarnent l'essence du luxe et de l'innovation. Dans notre showroom à Lochau (Vorarlberg), vous découvrez ces marques réunies en un seul lieu – et notre service de conseil en aménagement vous aide à composer un ensemble harmonieux."
     ]
   },
   "TeamSection": {
@@ -366,11 +593,6 @@
     ]
   },
   "partners": {
-    "headline": "Des partenariats forts pour des projets exceptionnels",
-    "description": "Chez Platzhirsch Home Living, nous concevons et aménageons des espaces exclusifs. Nos projets sont réalisés avec des partenaires soigneusement sélectionnés.",
-    "phone": "Tél",
-    "email": "E-mail",
-    "website": "Visiter le site",
     "0": {
       "role": "Partenaire pour les projets immobiliers"
     },
@@ -394,14 +616,19 @@
     },
     "7": {
       "role": "Restaurant de montagne sur le Pfänder"
-    }
+    },
+    "headline": "Des partenariats forts pour des projets exceptionnels",
+    "description": "Chez Platzhirsch Home Living, nous concevons et aménageons des espaces exclusifs. Nos projets sont réalisés avec des partenaires soigneusement sélectionnés.",
+    "phone": "Tél",
+    "email": "E-mail",
+    "website": "Visiter le site"
   },
   "contact": {
     "headline": "Contact",
     "stepHeadline": "Faites le premier pas",
     "desc": "Vous avez des questions, des demandes ou souhaitez prendre rendez-vous pour une consultation ? Contactez-nous par téléphone ou via notre formulaire de contact.",
-    "location": "Siège",
-    "address": "Platzhirsch Home Living\nLandstraße 11, 6911 Lochau,\nAutriche",
+    "location": "Showroom Lochau",
+    "address": "Platzhirsch Home Living\nLandstraße 9, 6911 Lochau,\nAutriche",
     "phone": "Numéro de téléphone",
     "opening": "Horaires d'ouverture",
     "openTimes": "Lundi : fermé\nMardi–Vendredi : 10h – 18h\nSamedi : 10h – 14h",
@@ -421,8 +648,9 @@
     "formErrorMail": "Veuillez saisir une adresse e-mail valide.",
     "formErrorPhone": "Veuillez saisir un numéro de téléphone valide.",
     "formErrorMsg": "Le message doit comporter au moins 10 caractères.",
+    "formErrorSend": "Votre message n’a pas pu être envoyé. Veuillez réessayer plus tard ou nous appeler.",
     "directions": "Itinéraire",
-    "welcomeBack": "Bon retour !",
+    "welcomeBack": "Écrivez-nous",
     "welcomeMsg": "Nous attendons votre message avec impatience et sommes à votre disposition !"
   },
   "cart": {
@@ -484,8 +712,8 @@
   },
   "newsletter": {
     "headline": "Newsletter",
-    "intro1": "Restez informé – avec la newsletter Platzhirsch Studio !",
-    "intro2": "Recevez régulièrement des aperçus passionnants de l'univers du Platzhirsch Studio et laissez-vous inspirer par nos offres exclusives, nos idées d'aménagement créatives et nos designs inspirants. Nouvelles collections, événements ou promotions spéciales – avec notre newsletter, vous avez toujours une longueur d'avance.",
+    "intro1": "Restez informé – avec la newsletter Platzhirsch Home Living !",
+    "intro2": "Recevez régulièrement des aperçus passionnants de l'univers du Platzhirsch Home Living et laissez-vous inspirer par nos offres exclusives, nos idées d'aménagement créatives et nos designs inspirants. Nouvelles collections, événements ou promotions spéciales – avec notre newsletter, vous avez toujours une longueur d'avance.",
     "reasonsHeadline": "Pourquoi s'inscrire :",
     "reasons1": "Aperçus exclusifs : Soyez les premiers informés des nouveaux meubles, tendances design et nos expositions impressionnantes.",
     "reasons2": "Idées inspirantes : Découvrez des concepts de vie créatifs et laissez-vous guider par les conseils de nos experts d'intérieur.",
@@ -493,7 +721,7 @@
     "reasons4": "Invitations à des événements : Recevez des invitations personnelles à des événements exclusifs et des visites à 360°.",
     "howHeadline": "Comment s'inscrire :",
     "howText": "Inscrivez-vous dès maintenant et ne manquez plus aucune actualité. Tout ce que vous devez savoir directement dans votre boîte e-mail – gratuit, sans engagement et résiliable à tout moment.",
-    "outro": "Laissez-vous inspirer et rejoignez la communauté Platzhirsch Studio – nous nous réjouissons de vous accueillir dans notre newsletter !",
+    "outro": "Laissez-vous inspirer et rejoignez la communauté Platzhirsch Home Living – nous nous réjouissons de vous accueillir dans notre newsletter !",
     "subscribeHeadline": "S'inscrire maintenant :",
     "inputPlaceholder": "Votre adresse e-mail",
     "btnSubscribe": "S'INSCRIRE",
@@ -529,7 +757,36 @@
     "country": "Pays",
     "founder": "Fondateur",
     "officialWebsite": "Site officiel",
-    "visitWebsite": "Visiter le site"
+    "visitWebsite": "Visiter le site",
+    "productCount": "{count, plural, one {# produit} other {# produits}}",
+    "collection_discover": "Découvrir la collection",
+    "designApproach": "Approche design",
+    "categories": "Catégories",
+    "philosophyEyebrow": "Philosophie & Savoir-faire",
+    "philosophyTitle": "Des pièces soigneusement façonnées qui racontent une histoire",
+    "portfolioEyebrow": "Points forts du portfolio",
+    "portfolioTitle": "Catégories de produits de la marque",
+    "craftEyebrow": "Matière & Maîtrise",
+    "craftTitle": "Savoir-faire artisanal",
+    "collectionEyebrow": "Collection",
+    "collectionTitle": "Produits sélectionnés",
+    "showroomEyebrow": "Au showroom de Lochau",
+    "requestConsultation": "Demander un conseil personnalisé",
+    "location": "Adresse",
+    "locationText": "Platzhirsch Studio\nLochau, Vorarlberg (Autriche)",
+    "service": "Service & Offre",
+    "serviceText": "Conseil personnalisé en aménagement, commandes sur catalogue et livraison dans toute l'Autriche.",
+    "breadcrumbHome": "Accueil",
+    "breadcrumbBrands": "Marques",
+    "collectionProductsTitle": "Produits de la collection",
+    "moreCollections": "Autres collections de {brand}",
+    "backToBrand": "Retour à {brand}",
+    "aboutBrandLink": "À propos de {brand}",
+    "viewCollection": "Voir la collection",
+    "collectionConsultTitle": "Découvrez la collection {collection} dans notre showroom",
+    "collectionEmpty": "Aucun produit n’a encore été ajouté à cette collection.",
+    "aboutCollection": "À propos de la collection",
+    "consultationCta": "Prendre rendez-vous"
   },
   "enquiry": {
     "backToWishlist": "← Retour à la liste de souhaits",
@@ -611,19 +868,19 @@
   "about": {
     "first_section": {
       "title": "À propos de nous",
-      "subtitle": "Platzhirsch Studio – votre studio de mobilier design au Vorarlberg, en Autriche",
-      "text": "Bienvenue chez Platzhirsch Studio, votre adresse pour le mobilier design exclusif et les concepts d'aménagement intérieur haut de gamme au bord du lac de Constance. Dans notre showroom de Lochau, près de Bregenz – Landstraße 11, à quelques minutes seulement des frontières allemande et suisse – vous découvrez des marques internationales de prestige, une architecture d'intérieur réfléchie et un conseil personnalisé du plus haut niveau. Ce qui nous définit, c'est la passion du design intemporel, de la qualité artisanale et de la durabilité : chaque meuble, chaque luminaire et chaque accessoire de notre exposition est soigneusement sélectionné. Notre équipe expérimentée vous accompagne de la première idée à la livraison et au montage, en passant par la planification – qu'il s'agisse d'une pièce coup de cœur, de l'aménagement complet d'un logement ou d'un projet de décoration d'intérieur ambitieux. Faites notre connaissance, explorez notre univers de marques et laissez-vous gagner par notre enthousiasme pour l'art de vivre. Nous nous réjouissons de votre visite au Vorarlberg, en Autriche."
+      "subtitle": "Platzhirsch Home Living – votre studio de mobilier design au Vorarlberg, en Autriche",
+      "text": "Bienvenue chez Platzhirsch Home Living, votre adresse pour le mobilier design exclusif et les concepts d'aménagement intérieur haut de gamme au bord du lac de Constance. Dans notre showroom de Lochau, près de Bregenz – Landstraße 9, à quelques minutes seulement des frontières allemande et suisse – vous découvrez des marques internationales de prestige, une architecture d'intérieur réfléchie et un conseil personnalisé du plus haut niveau. Ce qui nous définit, c'est la passion du design intemporel, de la qualité artisanale et de la durabilité : chaque meuble, chaque luminaire et chaque accessoire de notre exposition est soigneusement sélectionné. Notre équipe expérimentée vous accompagne de la première idée à la livraison et au montage, en passant par la planification – qu'il s'agisse d'une pièce coup de cœur, de l'aménagement complet d'un logement ou d'un projet de décoration d'intérieur ambitieux. Faites notre connaissance, explorez notre univers de marques et laissez-vous gagner par notre enthousiasme pour l'art de vivre. Nous nous réjouissons de votre visite au Vorarlberg, en Autriche."
     },
     "ausstellung": {
       "showroom": "Showroom Platzhirsch à Lochau",
       "headline": "L'inspiration est le point de départ de tout aménagement.",
       "desc": "Tout nouvel aménagement commence par la recherche d'inspiration – c'est précisément pour cela que nous avons créé notre vaste showroom au bord du lac de Constance. Sur notre surface d'exposition à Lochau, nous présentons des idées d'aménagement et un aperçu de l'univers de nos marques de mobilier exigeantes et majoritairement orientées vers la durabilité, telles que Minotti, Poliform, Rimadesio, ClassiCon, Flos, Eichholtz, Paola Lenti et Treca Paris. Des accessoires choisis, des peintures murales haut de gamme, des papiers peints et des tapis complètent l'assortiment. Et le meilleur : chez nous, vous pouvez vous asseoir, vous allonger et rêver à volonté – en toute tranquillité et avec un conseil personnalisé.",
       "career": "NOTRE ÉQUIPE",
-      "careerTitle": "Rencontrez les personnes derrière Platzhirsch Studio.",
+      "careerTitle": "Rencontrez les personnes derrière Platzhirsch Home Living.",
       "more": "RENCONTRER L'ÉQUIPE",
       "studio": "Notre studio",
       "tourTitle": "Visite à 360° de notre showroom",
-      "tourDesc1": "Plongez dans l'univers de Platzhirsch Studio et découvrez notre studio d'aménagement à Lochau, confortablement installé chez vous. Grâce à notre visite virtuelle à 360°, explorez notre exposition, nos meubles design élégants et nos concepts d'intérieur inspirants – à tout moment et où que vous soyez.",
+      "tourDesc1": "Plongez dans l'univers de Platzhirsch Home Living et découvrez notre studio d'aménagement à Lochau, confortablement installé chez vous. Grâce à notre visite virtuelle à 360°, explorez notre exposition, nos meubles design élégants et nos concepts d'intérieur inspirants – à tout moment et où que vous soyez.",
       "tourDesc2": "Déplacez-vous librement dans nos espaces soigneusement aménagés, admirez nos pièces phares de près et ressentez l'atmosphère unique de notre studio au bord du lac de Constance. Que vous cherchiez de nouvelles idées de décoration, un aperçu de nos collections ou simplement de l'inspiration – la visite à 360° est la parfaite introduction à votre venue au Vorarlberg, en Autriche."
     }
   },
@@ -631,7 +888,10 @@
     "title": "404",
     "headline": "Oups ! Page non trouvée.",
     "description": "La page que vous recherchez a été déplacée, supprimée, renommée ou n'a peut-être jamais existé.",
-    "backHome": "RETOUR À L’ACCUEIL"
+    "backHome": "RETOUR À L’ACCUEIL",
+    "browseProducts": "Découvrir les produits",
+    "browseBrands": "Nos marques",
+    "contact": "Nous contacter"
   },
   "tabs": {
     "description": "Description",
@@ -658,7 +918,7 @@
     "description": "En savoir plus sur"
   },
   "ContactSection": {
-    "imageAlt": "Conseil personnalisé chez Platzhirsch Studio",
+    "imageAlt": "Conseil personnalisé chez Platzhirsch Home Living",
     "pretitle": "Contact",
     "title": "Échangeons \n ensemble",
     "paragraphs": [
@@ -666,5 +926,217 @@
       "Notre équipe expérimentée vous accompagne avec des conseils sur mesure, des concepts créatifs et une exigence élevée en matière de qualité et de design. Nous privilégions une collaboration de confiance qui donne vie à des idées uniques.",
       "Contactez-nous par téléphone, par e-mail ou rendez-nous visite directement dans notre studio. Nous serons ravis de vous accueillir et de créer avec vous des espaces qui reflètent votre personnalité."
     ]
+  },
+  "shop": {
+    "moreCategories": "Autres catégories",
+    "emptyCategory": "Aucun produit n'est actuellement en ligne dans cette catégorie. Rendez-nous visite au studio ou demandez un conseil personnalisé.",
+    "close": "Fermer",
+    "filters": "Filtres",
+    "clearAll": "Tout effacer",
+    "brand": "Marque",
+    "category": "Catégorie de produit",
+    "subCategory": "Type",
+    "indoorOutdoor": "Intérieur/Extérieur",
+    "designer": "Designer",
+    "color": "Couleur",
+    "material": "Matériau",
+    "resultsCount": "{count, plural, one {# produit} other {# produits}}",
+    "noResults": "Aucun produit ne correspond aux filtres sélectionnés.",
+    "requestConsultation": "Demander un conseil",
+    "shopByCategory": "Parcourir par catégorie",
+    "viewMore": "Voir plus (+{count})",
+    "viewLess": "Voir moins",
+    "showMoreProducts": "Afficher plus de produits",
+    "showingCount": "{shown} sur {total, plural, one {# produit} other {# produits}} affichés",
+    "relatedHeading": "Vous aimerez peut-être aussi",
+    "backToCategory": "Retour à {category}",
+    "model": "Modèle",
+    "specifications": "Spécifications",
+    "compositions": "Compositions",
+    "finishesOptions": "Finitions et options",
+    "productDetails": "Détails du produit",
+    "structure": "Structure",
+    "padding": "Rembourrage",
+    "covers": "Housses",
+    "base": "Piètement",
+    "top": "Plateau",
+    "finish": "Finition",
+    "finishesHeading": "Finitions",
+    "glassHeading": "Verre",
+    "stoneHeading": "Pierre naturelle",
+    "lightSource": "Source lumineuse",
+    "dimmable": "Dimmable",
+    "frame": "Cadre",
+    "canopy": "Toile",
+    "mechanism": "Mécanisme",
+    "dimensions": "Dimensions",
+    "powerOutput": "Puissance",
+    "coverage": "Portée",
+    "technology": "Technologie",
+    "rating": "Indice de protection",
+    "fronts": "Façades",
+    "carcass": "Caisson",
+    "countertop": "Plan de travail",
+    "hardware": "Ferrures",
+    "panel": "Panneau",
+    "wax": "Cire",
+    "scent": "Parfum",
+    "burnTime": "Durée de combustion",
+    "size": "Taille",
+    "headrest": "Appui-tête",
+    "seatPreparation": "Préparation de l'assise",
+    "cushions": "Coussins",
+    "colorOptionsCount": "{count, plural, one {# couleur disponible} other {# couleurs disponibles}}",
+    "aboutBrand": "À propos de la marque",
+    "aboutDesigner": "À propos du designer",
+    "founded": "Fondée en",
+    "expand": "Développer",
+    "collapse": "Réduire",
+    "descriptionTab": "Description",
+    "dimensionsTab": "Dimensions",
+    "materialsCareTab": "Matériaux et entretien",
+    "configurationsTab": "Configurations",
+    "viewBrandPage": "Voir la page de la marque",
+    "saveToWishlist": "Enregistrer",
+    "savedToWishlist": "Enregistré",
+    "addToWishlistAria": "Ajouter à la liste de souhaits",
+    "removeFromWishlistAria": "Retirer de la liste de souhaits",
+    "showMoreDetails": "Voir plus de détails",
+    "addCollectionToWishlistAria": "Enregistrer {count, plural, one {le produit} other {les # produits}} de la collection {collection}",
+    "removeCollectionFromWishlistAria": "Retirer la collection {collection} de la liste de souhaits",
+    "viewDetails": "Voir les détails",
+    "callUs": "Appeler",
+    "brandPageLink": "Tous les produits {brand}"
+  },
+  "Cookies": {
+    "bannerTitle": "Paramètres des cookies",
+    "bannerText": "Nous utilisons des cookies afin de vous offrir la meilleure expérience utilisateur possible.",
+    "acceptAll": "Tout accepter",
+    "rejectAll": "Continuer sans consentement",
+    "customize": "Paramètres individuels",
+    "modalTitle": "Préférences de confidentialité individuelles",
+    "savePreferences": "Enregistrer la sélection",
+    "showPreferences": "Préférences de confidentialité individuelles",
+    "intro": "Nous utilisons des cookies et des technologies similaires sur notre site web et traitons des données personnelles vous concernant, comme votre adresse IP. Nous partageons également ces données avec des tiers. Le traitement des données peut être effectué avec votre consentement ou sur la base d'un intérêt légitime, auquel vous pouvez vous opposer. Vous avez le droit de ne consentir qu'aux services essentiels et de modifier ou de retirer votre consentement ultérieurement dans la politique de confidentialité. Vous trouverez ci-dessous un aperçu de tous les services utilisés par ce site web. Vous pouvez consulter des informations détaillées sur chaque service et y consentir individuellement ou exercer votre droit d'opposition.",
+    "thirdCountryNotice": "Certains services traitent des données personnelles dans des pays tiers non sûrs. En consentant à l'utilisation de ces services, vous consentez également au traitement de vos données dans ces pays tiers non sûrs conformément à l'art. 49, paragraphe 1, point a), du RGPD. Cela comporte le risque que vos données soient traitées par des autorités à des fins de contrôle et de surveillance, éventuellement sans possibilité de recours juridique.",
+    "consentModeNotice": "Vous autorisez également le traitement des données par les partenaires participants conformément au Google Consent Mode, sur la base de votre consentement, aux fins suivantes :",
+    "showDetails": "Afficher les détails",
+    "hideDetails": "Masquer les détails",
+    "privacyPolicy": "Politique de confidentialité",
+    "imprint": "Mentions légales",
+    "categories": {
+      "essential": {
+        "name": "Essentiels",
+        "description": "Les services essentiels sont nécessaires au fonctionnement de base du site web. Ils ne comprennent que des services techniquement nécessaires. Il n'est pas possible de s'opposer à ces services."
+      },
+      "functional": {
+        "name": "Fonctionnels",
+        "description": "Les services fonctionnels sont nécessaires pour proposer des fonctionnalités allant au-delà des fonctions essentielles, comme de plus belles polices, la lecture de vidéos ou des fonctionnalités interactives web 2.0. Les contenus provenant par exemple de plateformes vidéo et de réseaux sociaux sont bloqués par défaut et peuvent être autorisés. Si vous consentez au service, ces contenus sont chargés automatiquement sans autre consentement manuel."
+      },
+      "statistics": {
+        "name": "Statistiques",
+        "description": "Les services statistiques sont nécessaires pour collecter des données pseudonymisées sur les visiteurs du site web. Ces données nous permettent de mieux comprendre les visiteurs et d'optimiser le site web."
+      },
+      "marketing": {
+        "name": "Marketing",
+        "description": "Les services marketing sont utilisés par nous et par des tiers pour suivre le comportement des visiteurs individuels (sur plusieurs pages), analyser les données collectées et, par exemple, afficher des publicités personnalisées. Ces services nous permettent de suivre les visiteurs sur plusieurs sites web."
+      }
+    },
+    "services": {
+      "googleMaps": {
+        "description": "Permet d'intégrer des cartes interactives sur notre site web.",
+        "purpose": "Google Maps permet d'intégrer des cartes directement dans des sites web afin de les enrichir. Cela nécessite le traitement de l'adresse IP et des métadonnées de l'utilisateur. Des cookies ou des technologies similaires peuvent être enregistrés et lus. Ils peuvent contenir des données personnelles et des données techniques telles que l'identifiant de l'utilisateur, le consentement, les paramètres de la carte et des jetons de sécurité. Ces données peuvent servir à recenser les sites web visités, à établir des statistiques détaillées sur le comportement des utilisateurs et à améliorer les services de Google. Google peut relier ces données à celles des utilisateurs connectés sur les sites web de Google (par ex. google.com et youtube.com). Google transmet des données personnelles à ses sociétés affiliées et à d'autres entreprises ou personnes de confiance qui les traitent pour son compte, selon les instructions de Google et conformément à la politique de confidentialité de Google."
+      },
+      "googleTagManager": {
+        "description": "Gère les balises et les scripts de notre site web.",
+        "purpose": "Service de gestion des balises déclenchées par des événements spécifiques."
+      },
+      "googleAnalytics": {
+        "description": "Fournit des statistiques détaillées sur le comportement des utilisateurs sur le site web.",
+        "purpose": "Google Analytics établit des statistiques détaillées sur le comportement des utilisateurs sur le site web, en traitant notamment l'adresse IP et des métadonnées qui permettent de déterminer le pays, la ville et la langue d'un utilisateur. Il mesure entre autres les pages vues, le temps passé sur les pages et les appareils utilisés."
+      },
+      "googleAds": {
+        "description": "Mesure les conversions et permet le remarketing pour les campagnes Google Ads.",
+        "purpose": "Le suivi des conversions Google Ads mesure le taux de conversion et le succès des campagnes Google Ads, en utilisant des cookies pour distinguer les utilisateurs et suivre leur comportement. Il permet également le remarketing, c'est-à-dire l'affichage de publicités ciblées auprès d'utilisateurs ayant déjà interagi avec une annonce Google Ads."
+      }
+    },
+    "details": {
+      "purpose": "Finalité :",
+      "provider": "Fournisseur :",
+      "phone": "Téléphone :",
+      "email": "E-mail :",
+      "providerPrivacy": "Politique de confidentialité",
+      "cookiesUsed": "Cookies utilisés :",
+      "cookieName": "Nom technique du cookie :",
+      "type": "Type :",
+      "host": "Hôte :",
+      "duration": "Durée :",
+      "localStorage": "Stockage local :",
+      "thirdCountries": "Traitement des données dans des pays tiers :",
+      "securityMechanisms": "Mécanismes de sécurité :"
+    },
+    "cookieTypes": {
+      "http": "Cookie HTTP",
+      "localStorage": "Stockage local"
+    },
+    "durations": {
+      "day": "{count, plural, one {# jour} other {# jours}}",
+      "month": "{count, plural, other {# mois}}",
+      "year": "{count, plural, one {# an} other {# ans}}",
+      "none": "Sans expiration"
+    },
+    "countries": {
+      "US": "États-Unis",
+      "AU": "Australie",
+      "BR": "Brésil",
+      "CA": "Canada",
+      "CL": "Chili",
+      "HK": "Hong Kong",
+      "IN": "Inde",
+      "ID": "Indonésie",
+      "IL": "Israël",
+      "JP": "Japon",
+      "KR": "Corée du Sud",
+      "QA": "Qatar",
+      "SG": "Singapour",
+      "CH": "Suisse",
+      "TW": "Taïwan",
+      "GB": "Royaume-Uni"
+    },
+    "mechanisms": {
+      "adequacy": "Décision d'adéquation",
+      "scc": "Clauses contractuelles types"
+    },
+    "embedTitle": "Google Maps est désactivé",
+    "embedText": "En chargeant la carte, vous acceptez la politique de confidentialité de Google.",
+    "embedButton": "Charger la carte",
+    "close": "Fermer"
+  },
+  "Home": {
+    "heroEyebrow": "Platzhirsch Home Living · Lochau, lac de Constance",
+    "heroCtaPrimary": "Prendre rendez-vous",
+    "heroCtaSecondary": "Découvrir les marques",
+    "trust1": "Plus de 35 marques premium",
+    "trust2": "Showroom à Lochau près de Bregenz",
+    "trust3": "Livraison & montage en AT · DE · CH",
+    "heroBrandsLabel": "Dans le showroom",
+    "brandsTitle": "{count} marques de design internationales – conseil personnalisé à Lochau",
+    "allBrands": "Voir les {count} marques",
+    "categoriesTitle": "Salon, chambre, cuisine, luminaires et extérieur",
+    "allCategories": "Toutes les catégories",
+    "regionsTitle": "Votre studio d'aménagement pour le Vorarlberg, le lac de Constance et la Suisse orientale",
+    "regionsText": "Notre showroom se trouve à Lochau, à quelques minutes de Bregenz et à la frontière allemande et suisse. Nous conseillons, planifions, livrons et montons dans toute la région du lac de Constance.",
+    "regionsCta": "En savoir plus",
+    "showroomVisit": "Rendez-nous visite à Lochau",
+    "showroomText": "Découvrez mobilier design, luminaires et cuisines dans de vraies ambiances – et parlons de votre projet. Rendez-vous possibles hors horaires d'ouverture.",
+    "addressTitle": "Adresse",
+    "route": "Itinéraire",
+    "heroLead": "Mobilier design italien, cuisines et luminaires – sélectionnés dans notre showroom au bord du lac de Constance, planifiés pour votre intérieur.",
+    "mobileCall": "Appeler",
+    "mobileAppointment": "Prendre rendez-vous",
+    "brandsLead": "Chaque marque est présente au showroom avec des pièces originales, tissus et finitions – pas seulement en catalogue.",
+    "categoriesLead": "Du fauteuil unique à l'aménagement complet : nous planifions chaque pièce sur mesure pour vos espaces et la livrons montée.",
+    "regionsLead": "Nous venons chez vous – pour mesurer, planifier et monter.",
+    "faqTitle": "Questions fréquentes"
   }
 }

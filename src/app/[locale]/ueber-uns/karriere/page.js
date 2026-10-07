@@ -1,9 +1,11 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import KarriereSecond from "@/components/Karriere/karriere";
 import KarrierePosition from "@/components/Karriere/karriereposition";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import { fetchKarriereData } from "@/lib/api/fetchKarrierData";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 import {
   fetchCareerKeywords,
   getLocalizedCareerMetadata,
@@ -36,19 +38,19 @@ function getKarrierePageUrl(locale) {
 
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "Carriera | Lavora con Noi da Platzhirsch Studio";
-    case "en": return "Careers | Join the Platzhirsch Studio Design Team";
-    case "fr": return "Carrière | Rejoignez Platzhirsch Studio";
-    default: return "Karriere | Werden Sie Teil von Platzhirsch Studio";
+    case "it": return "Carriera | Lavora con Noi da Platzhirsch Home Living";
+    case "en": return "Careers | Join the Platzhirsch Home Living Design Team";
+    case "fr": return "Carrière | Rejoignez Platzhirsch Home Living";
+    default: return "Karriere | Werden Sie Teil von Platzhirsch Home Living";
   }
 };
 
 const getLocalizedDescription = (locale) => {
   switch (locale) {
-    case "it": return "Opportunità di carriera in Platzhirsch Studio. Lavora con noi nel settore del design esclusivo.";
-    case "en": return "Career opportunities at Platzhirsch Studio. Work with us in exclusive design.";
-    case "fr": return "Opportunités de carrière chez Platzhirsch Studio. Travaillez avec nous dans le design exclusif.";
-    default: return "Karrieremöglichkeiten bei Platzhirsch Studio. Arbeiten Sie mit uns im exklusiven Design.";
+    case "it": return "Opportunità di carriera in Platzhirsch Home Living. Lavora con noi nel settore del design esclusivo.";
+    case "en": return "Career opportunities at Platzhirsch Home Living. Work with us in exclusive design.";
+    case "fr": return "Opportunités de carrière chez Platzhirsch Home Living. Travaillez avec nous dans le design exclusif.";
+    default: return "Karrieremöglichkeiten bei Platzhirsch Home Living. Arbeiten Sie mit uns im exklusiven Design.";
   }
 };
 
@@ -64,24 +66,19 @@ export async function generateMetadata({ params }) {
       return {
         title: getLocalizedTitle(locale),
         description: getLocalizedDescription(locale),
-        robots: { index: locale === "de", follow: true },
+        robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de': getKarrierePageUrl('de'),
-            'en': getKarrierePageUrl('en'),
-            'fr': getKarrierePageUrl('fr'),
-            'it': getKarrierePageUrl('it'),
-          }
+          languages: hreflangLanguages((l) => getKarrierePageUrl(l))
         },
         openGraph: {
           type: "website",
           url: PAGE_URL,
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
-          siteName: "Platzhirsch Studio",
+          siteName: "Platzhirsch Home Living",
           locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url: "/Images/UberUns/livingroom-view.jpg", width: 1200, height: 630, alt: "Karriere bei Platzhirsch Studio" }],
+          images: [{ url: "/Images/UberUns/livingroom-view.jpg", width: 1200, height: 630, alt: "Karriere bei Platzhirsch Home Living" }],
         },
         twitter: {
           card: "summary_large_image",
@@ -99,18 +96,18 @@ export async function generateMetadata({ params }) {
     return {
       title: meta?.title || getLocalizedTitle(locale),
       description: meta?.description || getLocalizedDescription(locale),
-      robots: { index: locale === "de", follow: true },
+      robots: { index: true, follow: true },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
         description: meta?.description || getLocalizedDescription(locale),
-        url: meta?.url || PAGE_URL,
-        siteName: "Platzhirsch Studio",
+        url: PAGE_URL,
+        siteName: "Platzhirsch Home Living",
         images: [
           {
             url: image ? image : "/Images/UberUns/livingroom-view.jpg",
             width: 1200,
             height: 630,
-            alt: "Karriere bei Platzhirsch Studio",
+            alt: "Karriere bei Platzhirsch Home Living",
           },
         ],
         locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
@@ -123,15 +120,8 @@ export async function generateMetadata({ params }) {
         images: [image ? image : "/Images/UberUns/livingroom-view.jpg"],
       },
       alternates: {
-        canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de': getKarrierePageUrl('de'),
-          'en': getKarrierePageUrl('en'),
-          'fr': getKarrierePageUrl('fr'),
-          'it': getKarrierePageUrl('it'),
-          'x-default': getKarrierePageUrl('de'),
-
-        }
+        canonical: PAGE_URL,
+        languages: hreflangLanguages((l) => getKarrierePageUrl(l))
       },
     };
   } catch (error) {
@@ -140,8 +130,8 @@ export async function generateMetadata({ params }) {
     return {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
-      robots: { index: locale === "de", follow: true },
-      alternates: { canonical: PAGE_URL },
+      robots: { index: true, follow: true },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getKarrierePageUrl(l)) },
     };
   }
 }
@@ -167,7 +157,7 @@ export default async function Page({ params }) {
           : "Karriere";
   const Home =
     locale == "it"
-      ? "Casa "
+      ? "Home"
       : locale == "en"
         ? "Home"
         : locale == "fr"
@@ -183,7 +173,7 @@ export default async function Page({ params }) {
   const BASE_URL = getBaseUrl(locale);
   const PAGE_URL = getKarrierePageUrl(locale);
 
-  const karrierePath = ROUTES.karriere[locale] ? `${ROUTES.karriere[locale]}` : `/ueber-uns/marken`;
+  const karrierePath = ROUTES.karriere[locale] ? `${ROUTES.karriere[locale]}` : `/ueber-uns/karriere`;
 
   const BannerInfo = {
     image: image,
@@ -217,7 +207,7 @@ export default async function Page({ params }) {
     "@id": `${PAGE_URL}/#webpage`,
     url: PAGE_URL,
     name: linkNameTwo,
-    description: "Karrieremöglichkeiten bei Platzhirsch Studio - Arbeiten Sie mit uns im exklusiven Designbereich.",
+    description: "Karrieremöglichkeiten bei Platzhirsch Home Living - Arbeiten Sie mit uns im exklusiven Designbereich.",
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
     // Site-wide WebSite node lives at the apex #website — never locale-scoped.
     isPartOf: { "@id": "https://platzhirsch.studio/#website" },
@@ -234,10 +224,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <KarriereSecond />
       <KarrierePosition karriere={karriere} />

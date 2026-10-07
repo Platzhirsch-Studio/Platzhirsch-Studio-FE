@@ -3,49 +3,59 @@ import React from "react";
 import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
 import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
+import { ROUTES } from "@/utils/routing";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { generateSlug } from "@/lib/slugify";
 import FadeInView from "@/components/Reusable/FadeInView";
-import { Clock } from 'lucide-react';
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" },
-};
+const hasText = (value) => typeof value === "string" && value.trim() !== "";
 
-const ArticleDetail = ({ data }) => {
+// Localized CMS text: `${base}_${locale}` for en/fr/it, German as fallback
+// (German lives in `germanField`, e.g. name1 / beschreibung).
+function localizedText(data, base, germanField, locale) {
+  if (locale !== "de" && hasText(data?.[`${base}_${locale}`])) return data[`${base}_${locale}`];
+  return data?.[germanField] || "";
+}
+
+// Product sections of the article in the page's language. The CMS keeps one
+// table per language (artikel_table, artikel_table_en/_fr/_it); a translated
+// row may leave image/name/brand empty, so those fall back to the German row
+// at the same position. No translated table → the German one.
+function localizedSections(data, locale) {
+  const german = Array.isArray(data?.artikel_table) ? data.artikel_table : [];
+  const translated = locale !== "de" ? data?.[`artikel_table_${locale}`] : null;
+  if (!Array.isArray(translated) || translated.length === 0) return german;
+  return translated.map((row, index) => {
+    const base = german[index] || {};
+    const merged = { ...base };
+    for (const [key, value] of Object.entries(row || {})) {
+      if (value !== null && value !== undefined && value !== "") merged[key] = value;
+    }
+    return merged;
+  });
+}
+
+const ArrowIcon = ({ className }) => (
+  <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+  </svg>
+);
+
+// `moreNews`: the latest other articles, built on the server from the CMS
+// (src/app/[locale]/news/[title]/page.js) — [{ title, description, image, link }].
+const ArticleDetail = ({ data, moreNews = [] }) => {
   const pathname = usePathname();
   const locale = getLocaleFromPath(pathname);
   const t = useTranslations("article");
-  const news = useTranslations("news");
 
-  // Ideally, translate these statically in messages, but for demo, set up like this:
-  const moreNews = [
-    {
-      title: news("news1Title") || "Inspiration für einen unvergesslichen Sommer",
-      description:
-        news("news1Desc") ||
-        "Erweitern Sie Ihren Innenbereich mit den exklusiven Outdoor-Kollektionen von Minotti, Solpuri und EMU.",
-      image: "/Images/NewsItem/inspirationfur.jpg",
-      link: "/news/inspiration-fuer-einen-unvergesslichen-sommer",
-    },
-    {
-      title: news("news2Title") || "Salone del Mobile 2024 und Möbel für den Außenbereich",
-      description:
-        news("news2Desc") ||
-        "Wir berichten von der Salone del Mobile 2024 und stellen Ihnen exklusive Möbel für den Außenbereich vor.",
-      image: "/Images/NewsItem/salonedelMobile.jpg",
-      link: "/news/salone-del-mobile-2024-und-moebel-fuer-den-aussenbereich",
-    },
-  ];
+  const title = localizedText(data, "name", "name1", locale);
+  const description = localizedText(data, "beschreibung", "beschreibung", locale);
+  const sections = localizedSections(data, locale);
 
   return (
     <div className="max-w-7xl mx-auto px-4 my-10 lg:my-16 ">
-      {/* Title & Date */}
-
-
+      {/* Title */}
       <FadeInView
         as="h2"
         direction="bottom"
@@ -53,18 +63,11 @@ const ArticleDetail = ({ data }) => {
         distance={30}
         className="text-3xl font-bold text-center text-gray-900 mb-4 leading-tight tracking-tight"
       >
-        {locale === "en"
-          ? data?.name_en
-          : locale === "it"
-            ? data?.name_it
-            : locale === "fr"
-              ? data?.name_fr
-              : data?.name1}
-        {/* {data.name1} */}
+        {title}
       </FadeInView>
 
-
-      {/* {data.daten && (
+      {/* Article date — currently disabled (needs `import { Clock } from "lucide-react"`):
+      {data.daten && (
         <FadeInView
           as="p"
           direction="bottom"
@@ -82,7 +85,8 @@ const ArticleDetail = ({ data }) => {
         </FadeInView>
       )} */}
 
-      {locale === "it" && data.beschreibung_it && (
+      {/* Description — page language, German fallback */}
+      {hasText(description) && (
         <FadeInView
           as="div"
           direction="bottom"
@@ -91,58 +95,14 @@ const ArticleDetail = ({ data }) => {
           delay={300}
           className="prose prose-lg max-w-none mb-8 text-gray-800"
         >
-          {data.beschreibung_it.split("\n\n").map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </FadeInView>
-      )}
-
-      {/* Description */}
-      {locale === "fr" && data.beschreibung_fr && (
-        <FadeInView
-          as="div"
-          direction="bottom"
-          duration={600}
-          distance={30}
-          delay={300}
-          className="prose prose-lg max-w-none mb-8 text-gray-800"
-        >
-          {data.beschreibung_fr.split("\n\n").map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </FadeInView>
-      )}
-      {locale === "en" && data.beschreibung_en && (
-        <FadeInView
-          as="div"
-          direction="bottom"
-          duration={600}
-          distance={30}
-          delay={300}
-          className="prose prose-lg max-w-none mb-8 text-gray-800"
-        >
-          {data.beschreibung_en.split("\n\n").map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </FadeInView>
-      )}
-      {locale === "de" && data.beschreibung && (
-        <FadeInView
-          as="div"
-          direction="bottom"
-          duration={600}
-          distance={30}
-          delay={300}
-          className="prose prose-lg max-w-none mb-8 text-gray-800"
-        >
-          {data.beschreibung.split("\n\n").map((paragraph, index) => (
+          {description.split("\n\n").map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </FadeInView>
       )}
 
       {/* Image */}
-      {data.bild_anhagen && (
+      {data?.bild_anhagen && (
         <FadeInView
           as="div"
           direction="bottom"
@@ -152,7 +112,7 @@ const ArticleDetail = ({ data }) => {
         >
           <Image
             src={`/cms${data.bild_anhagen}`}
-            alt={data.name1 || "Article image"}
+            alt={title}
             fill
             sizes="(max-width: 768px) 90vw, (max-width: 1200px) 80vw, 1000px"
             className="object-cover rounded-2xl"
@@ -160,11 +120,12 @@ const ArticleDetail = ({ data }) => {
         </FadeInView>
       )}
 
-      {locale === "de" && data.beschreibung && data.artikel_table?.length > 0 && (
+      {/* Product sections — page language, German fallback */}
+      {sections.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
-          {data.artikel_table.map((artikel, index) => (
+          {sections.map((artikel, index) => (
             <FadeInView
-              key={artikel?.name}
+              key={artikel?.name || index}
               as="div"
               direction="bottom"
               duration={600}
@@ -172,77 +133,11 @@ const ArticleDetail = ({ data }) => {
               delay={index * 150}
               className="group relative transition-all duration-300 hover:-translate-y-1"
             >
-              {/* Image */}
               {artikel?.bild_anhagen && (
                 <div className="rounded-xl overflow-hidden shadow-md relative min-h-[300px]">
                   <Image
-                    src={`/cms${artikel?.bild_anhagen}`}
-                    alt={artikel?.artikel_name || "Article image"}
-                    fill
-                    sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 500px"
-                    className="w-[500px] h-[260px] object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-              )}
-
-              {/* Text */}
-              <div className="pt-6 px-1">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#d1b250] transition-colors">
-                  {artikel?.artikel_name}
-                </h3>
-                <p className={`text-sm text-gray-600 ${artikel?.beschreibung ? "mb-15" : ""}`}>
-                  {artikel?.beschreibung?.split("\n")[0]}
-                </p>
-
-                {artikel?.unternehmen && (
-                  <Link
-                    href={`/ueber-uns/marken/${generateSlug(artikel?.unternehmen)}`}
-                    locale={locale}
-                    className="inline-flex items-center gap-2 text-[#30373e] font-medium relative group"
-                  >
-                    <span className="z-10 group-hover:text-[#d1b250] transition-colors duration-300">
-                      {artikel?.unternehmen}
-                    </span>
-
-                    <svg
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:stroke-[#d1b250]"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-
-                    <span
-                      className="absolute left-0 bottom-0 w-full h-[2px] bg-[#30373e] transition-all duration-300 ease-in-out
-             md:scale-x-0 md:group-hover:scale-x-100 scale-x-100 origin-left"
-                    />
-                  </Link>
-                )}
-              </div>
-            </FadeInView>
-          ))}
-        </div>
-      )}
-      {locale === "en" && data.artikel_table_en?.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
-          {data.artikel_table.map((artikel, index) => (
-            <FadeInView
-              key={artikel?.name}
-              as="div"
-              direction="bottom"
-              duration={600}
-              distance={40}
-              delay={index * 150}
-              className="group relative transition-all duration-300 hover:-translate-y-1"
-            >
-              {/* Image */}
-              {artikel?.bild_anhagen && (
-                <div className="rounded-xl overflow-hidden shadow-md relative min-h-[300px]">
-                  <Image
-                    src={`/cms${artikel?.bild_anhagen}`}
-                    alt={artikel?.artikel_name || "Article image"}
+                    src={`/cms${artikel.bild_anhagen}`}
+                    alt={artikel?.artikel_name || title}
                     fill
                     sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 500px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -250,7 +145,6 @@ const ArticleDetail = ({ data }) => {
                 </div>
               )}
 
-              {/* Text */}
               <div className="pt-6 px-1">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#d1b250] transition-colors">
                   {artikel?.artikel_name}
@@ -261,24 +155,14 @@ const ArticleDetail = ({ data }) => {
 
                 {artikel?.unternehmen && (
                   <Link
-                    href={`/ueber-uns/marken/${generateSlug(artikel?.unternehmen)}`}
+                    href={`${ROUTES.marken[locale]}/${generateSlug(artikel.unternehmen)}`}
                     locale={locale}
                     className="inline-flex items-center gap-2 text-[#30373e] font-medium relative group"
                   >
                     <span className="z-10 group-hover:text-[#d1b250] transition-colors duration-300">
-                      {artikel?.unternehmen}
+                      {artikel.unternehmen}
                     </span>
-
-                    <svg
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:stroke-[#d1b250]"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-
+                    <ArrowIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:stroke-[#d1b250]" />
                     <span
                       className="absolute left-0 bottom-0 w-full h-[2px] bg-[#30373e] transition-all duration-300 ease-in-out
              md:scale-x-0 md:group-hover:scale-x-100 scale-x-100 origin-left"
@@ -290,199 +174,63 @@ const ArticleDetail = ({ data }) => {
           ))}
         </div>
       )}
-      {locale === "it" && data.beschreibung && data.artikel_table_it?.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
-          {data.artikel_table.map((artikel, index) => (
-            <FadeInView
-              key={artikel?.name}
-              as="div"
-              direction="bottom"
-              duration={600}
-              distance={40}
-              delay={index * 150}
-              className="group relative transition-all duration-300 hover:-translate-y-1"
-            >
-              {/* Image */}
-              {artikel?.bild_anhagen && (
+
+      {/* Weitere Neuigkeiten — the latest other articles from the CMS */}
+      {moreNews.length > 0 && (
+        <div className="mt-16">
+          <FadeInView
+            as="h2"
+            direction="bottom"
+            duration={500}
+            distance={30}
+            className="text-3xl font-bold text-center text-gray-900 leading-tight tracking-tight py-4 mb-6"
+          >
+            {t("moreNews")}
+          </FadeInView>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
+            {moreNews.map((item, index) => (
+              <FadeInView
+                key={item.link}
+                as="div"
+                direction="bottom"
+                duration={600}
+                distance={40}
+                delay={index * 150}
+                className="group relative transition-all duration-300 hover:-translate-y-1"
+              >
                 <div className="rounded-xl overflow-hidden shadow-md relative min-h-[300px]">
                   <Image
-                    src={`/cms${artikel?.bild_anhagen}`}
-                    alt={artikel?.artikel_name || "Article image"}
+                    src={item.image}
+                    alt={item.title}
                     fill
                     sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 500px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-              )}
 
-              {/* Text */}
-              <div className="pt-6 px-1">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#d1b250] transition-colors">
-                  {artikel?.artikel_name}
-                </h3>
-                <p className={`text-sm text-gray-600 ${artikel?.beschreibung ? "mb-15" : ""}`}>
-                  {artikel?.beschreibung?.split("\n")[0]}
-                </p>
+                <div className="pt-6 px-1">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#d1b250] transition-colors">
+                    {item.title}
+                  </h3>
+                  {item.description && <p className="text-sm text-gray-600 mb-4">{item.description}</p>}
 
-                {artikel?.unternehmen && (
                   <Link
-                    href={`/ueber-uns/marken/${generateSlug(artikel?.unternehmen)}`}
+                    href={item.link}
+                    prefetch={true}
                     locale={locale}
-                    className="inline-flex items-center gap-2 text-[#30373e] font-medium relative group"
+                    className="inline-flex items-center gap-2 text-[#30373e] font-medium relative group/button"
                   >
-                    <span className="z-10 group-hover:text-[#d1b250] transition-colors duration-300">
-                      {artikel?.unternehmen}
-                    </span>
-
-                    <svg
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:stroke-[#d1b250]"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-
-                    <span
-                      className="absolute left-0 bottom-0 w-full h-[2px] bg-[#30373e] transition-all duration-300 ease-in-out
-             md:scale-x-0 md:group-hover:scale-x-100 scale-x-100 origin-left"
-                    />
+                    <span className="z-10  hover:text-[#d1b250]">{t("learnMore")}</span>
+                    <ArrowIcon className="w-4 h-4 transition-transform duration-300 group-hover/button:translate-x-1" />
+                    <span className="absolute left-0 bottom-0 h-[2px] bg-[#30373e] group-hover:bg-[#d1b250] transition-all duration-300 ease-in-out w-32 lg:w-[0px] group-hover:w-[150px]" />
                   </Link>
-                )}
-              </div>
-            </FadeInView>
-          ))}
-        </div>
-      )}
-      {locale === "fr" && data.artikel_table_fr?.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
-          {data.artikel_table.map((artikel, index) => (
-            <FadeInView
-              key={artikel?.name}
-              as="div"
-              direction="bottom"
-              duration={600}
-              distance={40}
-              delay={index * 150}
-              className="group relative transition-all duration-300 hover:-translate-y-1"
-            >
-              {/* Image */}
-              {artikel?.bild_anhagen && (
-                <div className="rounded-xl overflow-hidden shadow-md relative min-h-[300px]">
-                  <Image
-                    src={`/cms${artikel?.bild_anhagen}`}
-                    alt={artikel?.artikel_name || "Article image"}
-                    fill
-                    sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 500px"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
                 </div>
-              )}
-
-              {/* Text */}
-              <div className="pt-6 px-1">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#d1b250] transition-colors">
-                  {artikel?.artikel_name}
-                </h3>
-                <p className={`text-sm text-gray-600 ${artikel?.beschreibung ? "mb-15" : ""}`}>
-                  {artikel?.beschreibung?.split("\n")[0]}
-                </p>
-
-                {artikel?.unternehmen && (
-                  <Link
-                    href={`/ueber-uns/marken/${generateSlug(artikel?.unternehmen)}`}
-                    locale={locale}
-                    className="inline-flex items-center gap-2 text-[#30373e] font-medium relative group"
-                  >
-                    <span className="z-10 group-hover:text-[#d1b250] transition-colors duration-300">
-                      {artikel?.unternehmen}
-                    </span>
-
-                    <svg
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:stroke-[#d1b250]"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-
-                    <span
-                      className="absolute left-0 bottom-0 w-full h-[2px] bg-[#30373e] transition-all duration-300 ease-in-out
-             md:scale-x-0 md:group-hover:scale-x-100 scale-x-100 origin-left"
-                    />
-                  </Link>
-                )}
-              </div>
-            </FadeInView>
-          ))}
+              </FadeInView>
+            ))}
+          </div>
         </div>
       )}
-
-      {/* Weitere Neuigkeiten */}
-      <div className="">
-        <FadeInView
-          as="h2"
-          direction="bottom"
-          duration={500}
-          distance={30}
-          className="text-3xl font-bold text-center text-gray-900 leading-tight tracking-tight py-4 mb-6"
-        >
-          {t("moreNews")}
-        </FadeInView>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
-          {moreNews.map((item, index) => (
-            <FadeInView
-              key={index}
-              as="div"
-              direction="bottom"
-              duration={600}
-              distance={40}
-              delay={index * 150}
-              className="group relative transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="rounded-xl overflow-hidden shadow-md relative min-h-[300px]">
-                <Image
-                  src={item.image}
-                  alt={item.title || "Related article"}
-                  fill
-                  sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 500px"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-
-              <div className="pt-6 px-1">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#d1b250] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-600 mb-4">{item.description}</p>
-
-                <Link
-                  href={item.link}
-                  prefetch={true}
-                  locale={locale}
-                  className="inline-flex items-center gap-2 text-[#30373e] font-medium relative group/button"
-                >
-                  <span className="z-10  hover:text-[#d1b250]">{t("learnMore")}</span>
-                  <svg
-                    className="w-4 h-4 transition-transform duration-300 group-hover/button:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                  <span className="absolute left-0 bottom-0 h-[2px] bg-[#30373e] group-hover:bg-[#d1b250] transition-all duration-300 ease-in-out w-32 lg:w-[0px] group-hover:w-[150px]" />
-                </Link>
-              </div>
-            </FadeInView>
-          ))}
-        </div>
-      </div>
     </div>
   );
 };

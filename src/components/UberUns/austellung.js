@@ -1,4 +1,5 @@
 'use client'
+import ConsentEmbed from "@/components/Cookies/ConsentEmbed";
 import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
@@ -63,7 +64,6 @@ const Ausstellung = () => {
         >
           {[
             "/Images/Home/tuuci.png",
-            "/Images/Home/heritage.png",
             "/Images/Home/umbrosa.png",
             "/Images/Home/coppenhagen.png",
             "/Images/Home/treca.png",
@@ -114,7 +114,7 @@ const Ausstellung = () => {
           </Slider>
         </div>
       </div>
-      <div className="relative w-full h-150 ">
+      <div className="relative w-full  ">
         <Image
           src={bgImage}
           alt="Über Uns"
@@ -128,7 +128,7 @@ const Ausstellung = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black opacity-30 z-10" />
 
-        <div className="relative z-20 flex flex-col items-center justify-center h-full">
+        <div className="relative z-20 flex flex-col items-center justify-center h-full max-w-7xl mx-auto px-4 py-32 space-y-6">
 
           <h2 className="text-base mb-8 text-[#d1b250] tracking-[0.7] font-semibold">{t("ausstellung.career")}</h2>
 
@@ -154,12 +154,16 @@ const Ausstellung = () => {
           {t("ausstellung.tourDesc2")}
         </p>
         <div className="aspect-video w-full h-150">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!4v1735203151096!6m8!1m7!1sCAoSLEFGMVFpcE9INDQ0M1hMX3BwU2dfbm5RTzlnb2hVR0hDTzBuU1k1cEdBV2JO!2m2!1d47.53018791759509!2d9.751478651722408!3f280!4f0!5f0.7820865974627469"
-            allowFullScreen
-            loading="lazy"
-            className="w-full h-150 border-none"
-          ></iframe>
+          {/* Street View loads only after the Google Maps opt-in. */}
+          <ConsentEmbed service="googleMaps">
+            <iframe
+              title="Google Street View – Showroom Platzhirsch Home Living, Lochau"
+              src="https://www.google.com/maps/embed?pb=!4v1735203151096!6m8!1m7!1sCAoSLEFGMVFpcE9INDQ0M1hMX3BwU2dfbm5RTzlnb2hVR0hDTzBuU1k1cEdBV2JO!2m2!1d47.53018791759509!2d9.751478651722408!3f280!4f0!5f0.7820865974627469"
+              allowFullScreen
+              loading="lazy"
+              className="w-full h-150 border-none"
+            ></iframe>
+          </ConsentEmbed>
         </div>
       </div>
     </>

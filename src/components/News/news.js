@@ -19,10 +19,10 @@ const GridComponent = ({ items }) => {
 
   const activeItems = items.filter((item) => item.status === "Aktiv");
   const totalPages = Math.ceil(activeItems.length / itemsPerPage);
-  const currentItems = activeItems.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  // All cards are rendered (crawlers see every article link); the ones that
+  // aren't on the current page are hidden with CSS.
+  const pageStart = (currentPage - 1) * itemsPerPage;
+  const isOnPage = (index) => index >= pageStart && index < pageStart + itemsPerPage;
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -40,10 +40,10 @@ const GridComponent = ({ items }) => {
   return (
     <div className="max-w-7xl mx-auto px-4  my-10 lg:my-16" ref={gridRef}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {currentItems.map((item, index) => (
+        {activeItems.map((item, index) => (
           <div
-            key={item.id || index}
-            className="bg-white overflow-hidden"
+            key={item.id || item.name || index}
+            className={`bg-white overflow-hidden ${isOnPage(index) ? "" : "hidden"}`}
             style={{
               animation: "fade-in-up-smooth 0.5s ease-out forwards",
             }}

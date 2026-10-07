@@ -13,11 +13,11 @@ import { generateSlug } from "@/lib/slugify";
 
 const BASE_URL = "https://platzhirsch.studio";
 
-const HEADER = `# Platzhirsch Studio
+const HEADER = `# Platzhirsch Home Living
 
 > Einrichtungsstudio für exklusive Designermöbel und Interior Design in Lochau, Vorarlberg (Österreich). Autorisierter Händler von über 35 internationalen Premium-Marken wie Minotti, Poliform, Flos, Rimadesio, Paola Lenti und Tom Dixon.
 
-Platzhirsch Studio führt eine kuratierte Auswahl an Designmarken für Wohnen, Küche, Outdoor und Beleuchtung und bietet persönliche Einrichtungsberatung und Innenarchitektur, eine Ausstellung in Lochau am Bodensee sowie Lieferung und Montage in ganz Österreich. Primärsprache ist Deutsch (de-AT); die deutschen Seiten sind maßgeblich (kanonisch).
+Platzhirsch Home Living führt eine kuratierte Auswahl an Designmarken für Wohnen, Küche, Outdoor und Beleuchtung und bietet persönliche Einrichtungsberatung und Innenarchitektur, eine Ausstellung in Lochau am Bodensee sowie Lieferung und Montage in ganz Österreich. Primärsprache ist Deutsch (de-AT); die deutschen Seiten sind maßgeblich (kanonisch).
 
 ## Hauptseiten
 
@@ -31,7 +31,7 @@ Platzhirsch Studio führt eine kuratierte Auswahl an Designmarken für Wohnen, K
 const OPTIONAL = `## Optional
 
 - [Aktuelles](${BASE_URL}/de/news): News und Neuigkeiten aus dem Studio.
-- [Team](${BASE_URL}/de/ueber-uns/team): Das Team von Platzhirsch Studio.
+- [Team](${BASE_URL}/de/ueber-uns/team): Das Team von Platzhirsch Home Living.
 - [Partner](${BASE_URL}/de/ueber-uns/partner): Partnerbetriebe und Kooperationen.
 - [Presse](${BASE_URL}/de/ueber-uns/presse): Pressebereich.
 - [Impressum](${BASE_URL}/de/impressum): Impressum.

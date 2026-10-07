@@ -3,15 +3,15 @@
 </p>
 
 
-🛋️ Platzhirsch Studio – General Branch
+🛋️ Platzhirsch Home Living – General Branch
 
-Welcome to the general branch of the official website developed by IT Engineers for Platzhirsch Studio.
+Welcome to the general branch of the official website developed by Solensa HUB for Platzhirsch Home Living.
 
 This branch is dedicated to developers for implementing and refining new features. All development work should be carried out in this branch. Once a feature is completed and verified, it should be merged into the develop branch for further testing and integration.
 
 📌 Project Overview
 
-This website showcases the furniture collections, interior design concepts, and studio experience of Platzhirsch Studio. Built for visual richness and performance, it supports modular content, elegant UI components, and optimized loading.
+This website showcases the furniture collections, interior design concepts, and studio experience of Platzhirsch Home Living. Built for visual richness and performance, it supports modular content, elegant UI components, and optimized loading.
 
 Frontend: Next.js (App Router, JavaScript, Tailwind CSS)
 
@@ -132,7 +132,7 @@ Push to the remote develop branch.
 
 📄 License
 
-This platform is proprietary software, developed exclusively by Solensa HUB for Platzhirsch Studio.
+This platform is proprietary software, developed exclusively by Solensa HUB for Platzhirsch Home Living.
 
 📢 Contact
 

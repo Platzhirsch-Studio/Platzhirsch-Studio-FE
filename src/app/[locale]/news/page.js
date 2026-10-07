@@ -1,4 +1,5 @@
 import GridComponent from "@/components/News/news";
+import JsonLd from "@/components/Reusable/JsonLd";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import { fetchNewsData } from "@/lib/api/fetchNewsData";
 import {
@@ -8,6 +9,7 @@ import {
   validateOGType
 } from "@/lib/api/Keywords/fetchNewsKeywords";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -34,19 +36,19 @@ function getNewsPageUrl(locale) {
 
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "Notizie | Tendenze e Aggiornamenti da Platzhirsch Studio";
-    case "en": return "News | Design Trends & Updates from Platzhirsch Studio";
-    case "fr": return "Actualités | Tendances Design de Platzhirsch Studio";
-    default: return "News | Designtrends & Updates von Platzhirsch Studio";
+    case "it": return "Notizie | Tendenze e Aggiornamenti da Platzhirsch Home Living";
+    case "en": return "News | Design Trends & Updates from Platzhirsch Home Living";
+    case "fr": return "Actualités | Tendances Design de Platzhirsch Home Living";
+    default: return "News | Designtrends & Updates von Platzhirsch Home Living";
   }
 };
 
 const getLocalizedDescription = (locale) => {
   switch (locale) {
-    case "it": return "Ultime notizie, aggiornamenti e articoli da Platzhirsch Studio. Scopri le ultime tendenze del design e le novità aziendali.";
-    case "en": return "Latest news, updates and articles from Platzhirsch Studio. Discover the latest design trends, interior inspiration, expert insights and company news today.";
-    case "fr": return "Dernières actualités et articles de Platzhirsch Studio. Découvrez les tendances design et les nouvelles de l'entreprise.";
-    default: return "Aktuelle Neuigkeiten und Artikel von Platzhirsch Studio. Entdecken Sie aktuelle Designtrends und Neuigkeiten aus unserem Studio.";
+    case "it": return "Ultime notizie, aggiornamenti e articoli da Platzhirsch Home Living. Scopri le ultime tendenze del design e le novità aziendali.";
+    case "en": return "Latest news, updates and articles from Platzhirsch Home Living. Discover the latest design trends, interior inspiration, expert insights and company news today.";
+    case "fr": return "Dernières actualités et articles de Platzhirsch Home Living. Découvrez les tendances design et les nouvelles de l'entreprise.";
+    default: return "Aktuelle Neuigkeiten und Artikel von Platzhirsch Home Living. Entdecken Sie aktuelle Designtrends und Neuigkeiten aus unserem Studio.";
   }
 };
 
@@ -73,22 +75,16 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de': getNewsPageUrl('de'),
-            'en': getNewsPageUrl('en'),
-            'fr': getNewsPageUrl('fr'),
-            'it': getNewsPageUrl('it'),
-            'x-default': getNewsPageUrl('de'),
-          }
+          languages: hreflangLanguages((l) => getNewsPageUrl(l))
         },
         openGraph: {
           type: "website",
           url: PAGE_URL,
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
-          siteName: "Platzhirsch Studio",
+          siteName: "Platzhirsch Home Living",
           locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url: "/Images/Home/download.jpg", width: 1200, height: 630, alt: "News – Platzhirsch Studio" }],
+          images: [{ url: "/Images/Home/download.jpg", width: 1200, height: 630, alt: "News – Platzhirsch Home Living" }],
         },
         twitter: {
           card: "summary_large_image",
@@ -106,30 +102,24 @@ export async function generateMetadata({ params }) {
     const description = meta?.description || getCMSDescription(newsKeywords, locale) || getLocalizedDescription(locale);
 
     return {
-      title: meta?.name || getLocalizedTitle(locale),
+      title: meta?.title || getLocalizedTitle(locale),
       description,
       robots: { index: true, follow: true },
       alternates: {
-        canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de': getNewsPageUrl('de'),
-          'en': getNewsPageUrl('en'),
-          'fr': getNewsPageUrl('fr'),
-          'it': getNewsPageUrl('it'),
-          'x-default': getNewsPageUrl('de'),
-        }
+        canonical: PAGE_URL,
+        languages: hreflangLanguages((l) => getNewsPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
         description,
-        url: meta?.url || PAGE_URL,
-        siteName: "Platzhirsch Studio",
+        url: PAGE_URL,
+        siteName: "Platzhirsch Home Living",
         images: [
           {
             url: image ? image : "/Images/Home/download.jpg",
             width: 2560,
             height: 1888,
-            alt: "News – Platzhirsch Studio",
+            alt: "News – Platzhirsch Home Living",
           },
         ],
         locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
@@ -149,7 +139,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getNewsPageUrl(l)) },
     };
   }
 }
@@ -158,7 +148,7 @@ export default async function Home({ params }) {
   const { locale } = await params;
 
   const titleOne = locale == "it" ? "Notizie" : locale == "en" ? "News" : locale == "fr" ? "Actualités" : "News";
-  const Home = locale == "it" ? "Casa" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
 
   // Dynamic URLs
   const BASE_URL = getBaseUrl(locale);
@@ -188,14 +178,13 @@ export default async function Home({ params }) {
     "@id": `${PAGE_URL}/#webpage`,
     url: PAGE_URL,
     name: titleOne,
-    description: "Aktuelle Neuigkeiten, Updates und Artikel von Platzhirsch Studio. Entdecken Sie die neuesten Designtrends und Unternehmensnews.",
-    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-DE",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    description: "Aktuelle Neuigkeiten, Updates und Artikel von Platzhirsch Home Living. Entdecken Sie die neuesten Designtrends und Unternehmensnews.",
+    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: `/${locale}` },
+        { "@type": "ListItem", position: 1, name: Home, item: `https://platzhirsch.studio/${locale}` },
         { "@type": "ListItem", position: 2, name: titleOne, item: PAGE_URL },
       ],
     },
@@ -203,10 +192,7 @@ export default async function Home({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <GridComponent items={news} />
     </div>

@@ -104,7 +104,7 @@ const Datenschutz = () => {
         <p>
           <strong>Platzhirsch Home Living</strong><br />
           MW Immobilienverwaltungs GmbH<br />
-          Landstraße 11<br />
+          Landstraße 9<br />
           6911 Lochau<br />
           Österreich
         </p>

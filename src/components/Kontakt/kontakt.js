@@ -1,8 +1,10 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { PHONE_DISPLAY, PHONE_HREF, EMAIL, EMAIL_HREF } from "@/lib/site";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import FadeInView from "@/components/Reusable/FadeInView";
+import ConsentEmbed from "@/components/Cookies/ConsentEmbed";
 import {
   Phone,
   Mail,
@@ -34,7 +36,7 @@ const Notification = ({ type, text }) => (
     >
       {type === "error" ? <CircleAlert size={12} /> : <CircleCheck size={12} />}
     </div>
-    <p>{text}</p>
+    <p role={type === "error" ? "alert" : "status"}>{text}</p>
   </FadeInView>
 );
 
@@ -66,13 +68,7 @@ const Kontakt = () => {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
-  const [show, setShow] = useState(false);
   const t = useTranslations('contact')
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShow(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,7 +83,7 @@ const Kontakt = () => {
     if (!validateName(formData.name)) {
       setMessage({
         type: "error",
-        text: t("contact.formErrorMail"),
+        text: t("formErrorName"),
       });
       setLoading(false);
       return;
@@ -96,7 +92,7 @@ const Kontakt = () => {
     if (!validateEmail(formData.email_address)) {
       setMessage({
         type: "error",
-        text: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        text: t("formErrorMail"),
       });
       setLoading(false);
       return;
@@ -105,7 +101,7 @@ const Kontakt = () => {
     if (!validatePhone(formData.telefon)) {
       setMessage({
         type: "error",
-        text: "Bitte geben Sie eine gültige Telefonnummer ein.",
+        text: t("formErrorPhone"),
       });
       setLoading(false);
       return;
@@ -114,7 +110,7 @@ const Kontakt = () => {
     if (!validateMessage(formData.ihre_nachricht)) {
       setMessage({
         type: "error",
-        text: "Nachricht muss mindestens 10 Zeichen lang sein.",
+        text: t("formErrorMsg"),
       });
       setLoading(false);
       return;
@@ -128,15 +124,15 @@ const Kontakt = () => {
         body: JSON.stringify(formData),
       });
 
-      const responseData = await response.json();
+      const responseData = await response.json().catch(() => ({}));
 
       if (!response.ok || !responseData.success) {
-        throw new Error(responseData.error || responseData.message || "Fehler beim Senden.");
+        throw new Error("send_failed");
       }
 
       setMessage({
         type: "success",
-        text: t('formSuccess') || "Nachricht erfolgreich gesendet!"
+        text: t('formSuccess')
       });
 
       setFormData({
@@ -147,7 +143,9 @@ const Kontakt = () => {
         ihre_nachricht: "",
       });
     } catch (error) {
-      setMessage({ type: "error", text: error.message });
+      // Details stay in the console; visitors get the translated message.
+      console.error("Kontakt form:", error);
+      setMessage({ type: "error", text: t("formErrorSend") });
     } finally {
       setLoading(false);
       setTimeout(() => setMessage(null), 5000);
@@ -161,7 +159,8 @@ const Kontakt = () => {
       duration={600}
       distance={0}
     >
-      {show && (
+      {/* Rendered straight away (no client-only mount gate) so the address,
+          map and form are in the server HTML that search engines read. */}
         <>
           {/* CONTACT INFO SECTION */}
           <FadeInView
@@ -198,9 +197,7 @@ const Kontakt = () => {
                   <Phone className="text-[#d1b250]" /> {t('phone')}
                 </div>
                 <p className="text-sm mt-1 text-[#30373e]/80">
-                  <a href="tel:+43 5574 46255" className="hover:text-[#d1b250]">
-                    +43 5574 46255
-                  </a>
+                  <a href={PHONE_HREF} className="hover:text-[#d1b250]">{PHONE_DISPLAY}</a>
                 </p>
               </div>
             </div>
@@ -221,10 +218,10 @@ const Kontakt = () => {
                 </div>
                 <p className="text-sm mt-1 text-[#30373e]/80">
                   <a
-                    href="mailto:info@platzhirsch.studio"
+                    href={EMAIL_HREF}
                     className="hover:text-[#d1b250]"
                   >
-                    info@platzhirsch.studio
+                    {EMAIL}
                   </a>
                 </p>
               </div>
@@ -237,22 +234,27 @@ const Kontakt = () => {
             distance={0}
             className="relative w-full h-[400px] overflow-hidden shadow-lg group cursor-pointer"
           >
-            <iframe
-              title="Platzhirsch Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2732.9094444536347!2d9.741196115613785!3d47.48721237917747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479c3a06d30d1993%3A0x9b1b64c7aa92d0e5!2sLandstra%C3%9Fe%2011%2C%206911%20Lochau%2C%20Austria!5e0!3m2!1sen!2sat!4v1678817752460!5m2!1sen!2sat"
-              width="100%"
-              height="100%"
-              style={{ border: 0, pointerEvents: "none" }}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full"
-            ></iframe>
+            {/* Loads only after the visitor opts in (Google Maps is an opt-in
+                "functional" service in the cookie banner). */}
+            <ConsentEmbed service="googleMaps">
+              <iframe
+                title="Google Maps – Platzhirsch Home Living, Landstraße 9, 6911 Lochau"
+                // Google Business Profile pin (Landstraße 9, 6911 Lochau).
+                src="https://maps.google.com/maps?q=Platzhirsch%20Home%20Living%2C%20Landstra%C3%9Fe%209%2C%206911%20Lochau&ll=47.5302782,9.7517183&z=17&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, pointerEvents: "none" }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              ></iframe>
+            </ConsentEmbed>
             <div className="absolute inset-0 bg-black/30 backdrop-blur-sm z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute top-[43%] left-1/2 z-20 -translate-x-1/2 -translate-y-full pointer-events-none animate-bounce-slow h-[80px]  w-[60px]">
               <Image
                 src="/Images/Licht/custom-marker.png"
-                alt="Custom Marker"
+                alt=""
                 fill
                 sizes="60px"
                 className="w-[60px] h-auto drop-shadow-md"
@@ -275,14 +277,15 @@ const Kontakt = () => {
 }
               `}
             </style>
-            <div className="absolute mt-8 top-[52%] left-1/2 z-30 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {/* Always visible: a hover-only link doesn't exist for touch or keyboard users. */}
+            <div className="absolute mt-8 top-[52%] left-1/2 z-30 -translate-x-1/2">
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=Landstraße+11,+6911+Lochau,+Austria"
+                href="https://www.google.com/maps/dir/?api=1&destination=Landstraße+9,+6911+Lochau,+Austria"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#d1b250] text-white px-5 py-2 rounded-full shadow-lg hover:bg-[#bfa047] transition"
               >
-                Get Directions
+                {t("directions")}
               </a>
             </div>
           </FadeInView>
@@ -340,10 +343,12 @@ const Kontakt = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="relative">
-                    <User className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <User aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/75 text-lg" />
                     <input
                       type="text"
                       name="name"
+                      autoComplete="name"
+                      aria-label={t('formName')}
                       value={formData.name}
                       onChange={handleChange}
                       placeholder={t('formName')}
@@ -352,10 +357,12 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <Building className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <Building aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/75 text-lg" />
                     <input
                       type="text"
                       name="company"
+                      autoComplete="organization"
+                      aria-label={t('formCompany')}
                       value={formData.company}
                       onChange={handleChange}
                       placeholder={t('formCompany')}
@@ -363,10 +370,12 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <Mail className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <Mail aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/75 text-lg" />
                     <input
                       type="email"
                       name="email_address"
+                      autoComplete="email"
+                      aria-label={t('formMail')}
                       value={formData.email_address}
                       onChange={handleChange}
                       placeholder={t('formMail')}
@@ -375,10 +384,12 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <Contact className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <Contact aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/75 text-lg" />
                     <input
-                      type="text"
+                      type="tel"
                       name="telefon"
+                      autoComplete="tel"
+                      aria-label={t('formPhone')}
                       value={formData.telefon}
                       onChange={handleChange}
                       placeholder={t('formPhone')}
@@ -386,9 +397,10 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <MessageSquare className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <MessageSquare aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/75 text-lg" />
                     <textarea
                       name="ihre_nachricht"
+                      aria-label={t('formMessage')}
                       value={formData.ihre_nachricht}
                       onChange={handleChange}
                       placeholder={t('formMessage')}
@@ -397,7 +409,7 @@ const Kontakt = () => {
                     ></textarea>
                   </div>
                   <div className="button-custom2">
-                    <button disabled={loading}>
+                    <button type="submit" disabled={loading} aria-label={loading ? t('formSending') : t('formSend')}>
                       <span></span>
                       <p data-title={t('formSend')}>
                         {loading ? (
@@ -548,7 +560,6 @@ const Kontakt = () => {
             </div>
           </FadeInView>
         </>
-      )}
     </FadeInView>
   );
 };

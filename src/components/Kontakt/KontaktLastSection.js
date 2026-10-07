@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import kontaktImage from "../../../public/Images/Kontakt/questionmark.png";
+import kontaktImage from "../../../public/Images/Kontakt/questionmark.webp";
 import { useTranslations } from "next-intl";
 import FadeInView from "@/components/Reusable/FadeInView";
 

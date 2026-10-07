@@ -1,6 +1,8 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import Datenschutz from "@/components/Datenschutz/datenbanner";
 import Content from "@/components/Datenschutz/datenschutz";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -32,25 +34,25 @@ function getLocalizedMetadata(locale) {
       title: "Datenschutz & Cookies bei Platzhirsch – DSGVO-konform",
       description: "Erfahren Sie, wie Platzhirsch Ihre Daten schützt (DSGVO), Cookies nutzt und Google Analytics einsetzt. Newsletter Datenschutz inklusive.",
       ogTitle: "Datenschutz – Ihre Privatsphäre",
-      ogDescription: "Sicherheit & Transparenz: Alles über die Datenverarbeitung, Cookie-Nutzung und Webanalyse bei Platzhirsch Studio.",
+      ogDescription: "Sicherheit & Transparenz: Alles über die Datenverarbeitung, Cookie-Nutzung und Webanalyse bei Platzhirsch Home Living.",
     },
     en: {
       title: "Privacy & Cookies at Platzhirsch – GDPR Compliant",
       description: "Learn how Platzhirsch protects your data (GDPR), uses cookies and Google Analytics. Newsletter privacy included.",
       ogTitle: "Privacy – Your Privacy Matters",
-      ogDescription: "Security & Transparency: Everything about data processing, cookie usage and web analytics at Platzhirsch Studio.",
+      ogDescription: "Security & Transparency: Everything about data processing, cookie usage and web analytics at Platzhirsch Home Living.",
     },
     fr: {
       title: "Confidentialité & Cookies chez Platzhirsch – Conforme RGPD",
       description: "Découvrez comment Platzhirsch protège vos données (RGPD), utilise les cookies et Google Analytics. Confidentialité des newsletters incluse.",
       ogTitle: "Confidentialité – Votre vie privée",
-      ogDescription: "Sécurité & Transparence : Tout sur le traitement des données, l'utilisation des cookies et l'analyse web chez Platzhirsch Studio.",
+      ogDescription: "Sécurité & Transparence : Tout sur le traitement des données, l'utilisation des cookies et l'analyse web chez Platzhirsch Home Living.",
     },
     it: {
       title: "Privacy & Cookies presso Platzhirsch – Conforme GDPR",
       description: "Scopri come Platzhirsch protegge i tuoi dati (GDPR), utilizza cookie e Google Analytics. Privacy della newsletter inclusa.",
       ogTitle: "Privacy – La tua privacy",
-      ogDescription: "Sicurezza & Trasparenza: Tutto sul trattamento dei dati, l'uso dei cookie e l'analisi web presso Platzhirsch Studio.",
+      ogDescription: "Sicurezza & Trasparenza: Tutto sul trattamento dei dati, l'uso dei cookie e l'analisi web presso Platzhirsch Home Living.",
     },
   };
 
@@ -69,27 +71,20 @@ export async function generateMetadata({ params }) {
     robots: { index: false, follow: true },
     alternates: {
       canonical: PAGE_URL,
-      languages: {
-        'de': getDatenschutzPageUrl('de'),
-        'en': getDatenschutzPageUrl('en'),
-        'fr': getDatenschutzPageUrl('fr'),
-        'it': getDatenschutzPageUrl('it'),
-        'x-default': getDatenschutzPageUrl('de'),
-
-      }
+      languages: hreflangLanguages((l) => getDatenschutzPageUrl(l))
     },
     openGraph: {
       type: "website",
       url: PAGE_URL,
       title: localizedMeta.ogTitle,
       description: localizedMeta.ogDescription,
-      siteName: "Platzhirsch Studio",
+      siteName: "Platzhirsch Home Living",
       images: [
         {
           url: "/Images/fallback-og.jpg",
           width: 1200,
           height: 630,
-          alt: "Platzhirsch Studio Datenschutz",
+          alt: "Platzhirsch Home Living Datenschutz",
         },
       ],
       locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
@@ -111,7 +106,7 @@ export default async function Page({ params }) {
 
   const localizedMeta = getLocalizedMetadata(locale);
 
-  const homeName = locale === "it" ? "Casa" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
+  const homeName = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
   const pageName = locale === "it" ? "Privacy" : locale === "en" ? "Privacy Policy" : locale === "fr" ? "Confidentialité" : "Datenschutz";
 
   // ✅ JSON-LD Structured Data
@@ -122,13 +117,12 @@ export default async function Page({ params }) {
     url: PAGE_URL,
     name: pageName,
     description: localizedMeta.description,
-    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-DE",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: homeName, item: `/${locale}` },
+        { "@type": "ListItem", position: 1, name: homeName, item: `https://platzhirsch.studio/${locale}` },
         { "@type": "ListItem", position: 2, name: pageName, item: PAGE_URL },
       ],
     },
@@ -136,10 +130,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <Datenschutz />
       <Content />
     </div>

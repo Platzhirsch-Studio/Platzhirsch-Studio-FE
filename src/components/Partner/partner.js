@@ -27,7 +27,7 @@ const partners = [
     role: "partner3.role",
     address: ["Rosamichlweg 10", "6800 Feldkirch"],
     phone: "+43 5574 581 58",
-    website: "https://bauart.at",
+    website: "https://www.bauart.at/",
   },
   {
     name: "Ökovolt Solartechnik GmbH",
@@ -35,7 +35,7 @@ const partners = [
     role: "partner3.role",
     address: ["Gewerbegebiet 10", "5121 Ostermiething"],
     phone: "+43 6278 71030",
-    website: "https://oekovolt.at",
+    website: "https://www.oekovolt.com/",
   },
   {
     name: "Rusch Abdichter, Spengler + Dachdecker GmbH",
@@ -43,7 +43,7 @@ const partners = [
     role: "partner4.role",
     address: ["Funkenstraße 8", "6923 Lauterach"],
     phone: "+43 5574 716 70",
-    website: "https://rusch.at",
+    website: "https://rusch.at/de-de",
   },
   {
     name: "Stecher Elektrotechnik",
@@ -57,7 +57,7 @@ const partners = [
     name: "Platzhirsch Café Lounge",
     logo: "/Images/Partner/partner1.png",
     role: "partner6.role",
-    address: ["Landstrasse 11", "6911 Lochau"],
+    address: ["Landstrasse 9", "6911 Lochau"],
     phone: "+43 5574 46257",
     website: "https://platzhirsch.cafe",
   },
@@ -67,7 +67,7 @@ const partners = [
     role: "partner7.role",
     address: ["Moosegg 1", "6911 Lochau"],
     phone: "+43 5574 58696",
-    website: "https://moosegg.at",
+    website: "https://www.moosegg.at",
   },
 ];
 

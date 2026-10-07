@@ -14,9 +14,15 @@ export const CartProvider = ({ children }) => {
   const [cartLoaded, setCartLoaded] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedCart = localStorage.getItem("cart");
-      if (savedCart) {
-        setCartItems(JSON.parse(savedCart));
+      // A corrupted value must not white-screen the whole site (no error
+      // boundary sits above this provider) — drop it and start empty.
+      try {
+        const savedCart = localStorage.getItem("cart");
+        const parsed = savedCart ? JSON.parse(savedCart) : null;
+        if (Array.isArray(parsed)) setCartItems(parsed);
+        else if (savedCart) localStorage.removeItem("cart");
+      } catch {
+        try { localStorage.removeItem("cart"); } catch { /* storage unavailable */ }
       }
       setCartLoaded(true);
     }
@@ -73,6 +79,21 @@ export const CartProvider = ({ children }) => {
     );
   };
  
+  // Batch versions (e.g. saving a whole collection at once) — functional
+  // updates, since calling addToCart in a loop would overwrite itself.
+  const addManyToCart = (items) => {
+    setCartItems((prev) => {
+      const ids = new Set(prev.map(generateCartItemId));
+      const fresh = items.filter((item) => !ids.has(generateCartItemId(item)));
+      return [...prev, ...fresh.map((item) => ({ ...item, quantity: 1 }))];
+    });
+  };
+
+  const removeManyFromCart = (items) => {
+    const ids = new Set(items.map(generateCartItemId));
+    setCartItems((prev) => prev.filter((item) => !ids.has(generateCartItemId(item))));
+  };
+
   const clearCart = () => {
     setCartItems([]);
   };
@@ -89,6 +110,8 @@ export const CartProvider = ({ children }) => {
         cartItems,
         addToCart,
         removeFromCart,
+        addManyToCart,
+        removeManyFromCart,
         updateItemQuantity,
         clearCart,
         getTotalItems,
@@ -102,6 +125,15 @@ export const CartProvider = ({ children }) => {
   );
 };
  
+// Merkliste item image → <Image> src. Old "Produkte" items store a bare
+// "/files/..." path (original backend → /cms); "Produkte New" items store the
+// complete "/cmx/files/..." path (see ProductActions), used as-is.
+export const wishlistImageSrc = (image) => {
+  if (!image) return null;
+  if (/^(\/cmx\/|\/cms\/|\/Images\/|https?:)/.test(image)) return image;
+  return `/cms${image}`;
+};
+
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {

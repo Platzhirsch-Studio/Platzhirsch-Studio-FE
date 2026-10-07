@@ -2,11 +2,37 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/config";
+import { detectLocale, notFoundTitle } from "@/i18n/detectLocale";
 
 import "../globals.css";
 
+import { Montserrat, Bodoni_Moda } from "next/font/google";
 import LoaderWrapper from "./LoaderWrapper";
+import JsonLd from "@/components/Reusable/JsonLd";
 import { fetchLayoutData } from "@/lib/api/Keywords/fetchLayoutKeywords"
+import { fetchKategorienWithCounts } from "@/lib/api/fetchAllProdukte";
+
+// The brand font. globals.css always asked for "Montserrat" but nothing loaded
+// it, so visitors got Helvetica/Arial. next/font downloads it at build time and
+// serves it from this domain (no Google request, no layout shift). Montserrat
+// is a variable font, so every weight (font-light … font-bold) is included;
+// latin-ext covers German/French/Italian accents.
+const montserrat = Montserrat({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-montserrat",
+});
+
+// Display face for headlines (homepage hero and section titles): Bodoni Moda,
+// the high-contrast serif of Italian design and fashion houses — the brands
+// this showroom sells. Variable font with optical sizes; served from this
+// domain like Montserrat. Used via the `font-display` utility (globals.css).
+const bodoni = Bodoni_Moda({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-bodoni",
+  axes: ["opsz"],
+});
 
 // Site-wide structured data. Organization is modelled as a FurnitureStore
 // (a LocalBusiness subtype) — the business is a physical Einrichtungsstudio in
@@ -17,30 +43,57 @@ const siteSchema = {
     {
       "@type": ["Organization", "FurnitureStore"],
       "@id": "https://platzhirsch.studio/#organization",
-      "name": "Platzhirsch Studio",
-      "alternateName": "Platzhirsch Home Living",
+      "name": "Platzhirsch Home Living",
+      "alternateName": "Platzhirsch Studio",
       "url": "https://platzhirsch.studio",
       "logo": {
         "@type": "ImageObject",
         "url": "https://platzhirsch.studio/Images/Navbar/Logo.png",
       },
       "image": "https://platzhirsch.studio/Images/Footer/PlatzImage.png",
-      "description": "Platzhirsch Studio – Einrichtungsstudio in Lochau (Vorarlberg) für exklusive Designmöbel, Interior Design und persönliche Einrichtungsberatung. Möbel führender Marken wie Minotti, Poliform und Rimadesio für ganz Österreich.",
+      "description": "Platzhirsch Home Living – Einrichtungsstudio in Lochau (Vorarlberg) für exklusive Designmöbel, Interior Design und persönliche Einrichtungsberatung. Möbel führender Marken wie Minotti, Poliform und Rimadesio für ganz Österreich.",
       "telephone": "+43 5574 46255",
       "email": "info@platzhirsch.studio",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Landstraße 11",
+        "streetAddress": "Landstraße 9",
         "postalCode": "6911",
         "addressLocality": "Lochau",
         "addressRegion": "Vorarlberg",
         "addressCountry": "AT"
       },
       "priceRange": "€€€",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Österreich"
+      "currenciesAccepted": "EUR",
+      // Google Business Profile listing (cid = the place id 0x9006009a275bf15e).
+      "hasMap": "https://maps.google.com/?cid=10377983053407187294",
+      // Pin of the Google Business Profile listing.
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 47.5302782,
+        "longitude": 9.7517183
       },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Vorarlberg" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Schweiz" },
+        { "@type": "Country", "name": "Liechtenstein" }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+43 5574 46255",
+        "email": "info@platzhirsch.studio",
+        "contactType": "customer service",
+        "areaServed": "AT",
+        "availableLanguage": ["German", "English", "Italian", "French"]
+      },
+      // Brands carried in the showroom (was a price-less OfferCatalog on the
+      // home page, which Google flags as incomplete offers).
+      "brand": [
+        "Minotti", "Poliform", "Rimadesio", "Flos", "Paola Lenti", "Tom Dixon",
+        "Eichholtz", "Gloster", "Tonon", "ClassiCon", "next125", "Tréca",
+        "101 Copenhagen", "Tuuci", "Trapa", "Umbrosa", "solpuri"
+      ].map((name) => ({ "@type": "Brand", "name": name })),
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -65,8 +118,8 @@ const siteSchema = {
       "@type": "WebSite",
       "@id": "https://platzhirsch.studio/#website",
       "url": "https://platzhirsch.studio",
-      "name": "Platzhirsch Studio",
-      "inLanguage": "de-AT",
+      "name": "Platzhirsch Home Living",
+      "inLanguage": ["de-AT", "en", "fr-FR", "it-IT"],
       "publisher": {
         "@id": "https://platzhirsch.studio/#organization"
       }
@@ -74,67 +127,54 @@ const siteSchema = {
   ]
 };
 
+// Site-wide DEFAULTS only. Canonical, hreflang and og:url are deliberately
+// NOT set here: every page sets its own, and a layout value would be inherited
+// by any page (or error branch) that doesn't — pointing it at the homepage.
+// metadataBase is returned in every branch so relative image/canonical URLs
+// on the pages always resolve.
+const METADATA_BASE = new URL("https://platzhirsch.studio");
+const OG_LOCALE = { de: "de_DE", en: "en_US", fr: "fr_FR", it: "it_IT" };
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
 
   if (!routing.locales.includes(locale)) {
-    return { title: "Page Not Found" };
+    // Not a locale (e.g. /wp-login.php): the page becomes the global 404 in
+    // src/app/not-found.js, so title it in the visitor's language.
+    return { metadataBase: METADATA_BASE, title: await notFoundTitle(await detectLocale()) };
   }
 
+  const defaults = {
+    metadataBase: METADATA_BASE,
+    title: "Platzhirsch Home Living",
+    openGraph: {
+      siteName: "Platzhirsch Home Living",
+      locale: OG_LOCALE[locale] || OG_LOCALE.de,
+      type: "website",
+      images: [{ url: "/Images/Home/aboutHome.jpg", alt: "Platzhirsch Home Living" }],
+    },
+    twitter: { card: "summary_large_image", images: ["/Images/Home/aboutHome.jpg"] },
+  };
+
   try {
-    const [layoutData] = await Promise.all([
-      fetchLayoutData()
-    ]);
-
-    const layoutMetadata = layoutData || {};
-    const localeLayoutData = layoutMetadata[`metadata_${locale}_tab`] || {};
-
-    const ogImage = "/Images/Home/aboutHome.jpg";
-
-    const languages = {};
-    routing.locales.forEach(loc => {
-      languages[loc] = localeLayoutData[`metadata_url_${loc}`] || `https://platzhirsch.studio/${loc}`;
-    });
-    languages['x-default'] = localeLayoutData[`metadata_url_de`] || `https://platzhirsch.studio/de`;
+    const layoutData = (await fetchLayoutData()) || {};
+    const cms = layoutData[`metadata_${locale}_tab`] || {};
+    const title = cms[`metadata_title_${locale}`];
+    const description = cms[`metadata_description_${locale}`];
 
     return {
-      htmlLang: locale,
-      metadataBase: new URL("https://platzhirsch.studio"),
-      title: localeLayoutData[`metadata_title_${locale}`] || "Platzhirsch Studio",
-      description: localeLayoutData[`metadata_description_${locale}`] || "",      openGraph: {
-        title: localeLayoutData[`metadata_title_${locale}`] || "Platzhirsch Studio",
-        description: localeLayoutData[`metadata_description_${locale}`] || "",
-        url: localeLayoutData[`metadata_url_${locale}`] || "https://platzhirsch.studio",
-        siteName: localeLayoutData[`metadata_sitename_${locale}`] || "Platzhirsch Studio",
-        images: [
-          {
-            url: ogImage,
-            width: 1200,
-            height: 630,
-            alt: "Platzhirsch Studio Indoor",
-          },
-        ],
-        locale: localeLayoutData[`metadata_local_${locale}`] ||
-          (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
-        type: localeLayoutData[`metadata_type_${locale}`] || "website",
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: localeLayoutData[`metadata_title_${locale}`] || "Platzhirsch Studio",
-        description: localeLayoutData[`metadata_description_${locale}`] || "",
-        images: [ogImage],
-      },
-      alternates: {
-        canonical: localeLayoutData[`metadata_url_${locale}`] || "https://platzhirsch.studio/de",
-        languages
+      ...defaults,
+      ...(title ? { title } : {}),
+      // Only when the CMS has one — never an empty description.
+      ...(description ? { description } : {}),
+      openGraph: {
+        ...defaults.openGraph,
+        ...(cms[`metadata_sitename_${locale}`] ? { siteName: cms[`metadata_sitename_${locale}`] } : {}),
       },
     };
   } catch (err) {
     console.error("Metadata fetch error:", err);
-    return {
-      title: "Platzhirsch Studio",
-      description: ""
-    };
+    return defaults;
   }
 }
 
@@ -160,22 +200,35 @@ export default async function LocaleLayout({ children, params }) {
     notFound();
   }
 
+  // Category keys that currently have products — the navbar's product menu
+  // hides every other category (empty categories are noindex dead ends).
+  // null when the backend is unreachable: the navbar then shows its full
+  // menu instead of an empty one. Cached 1h, flushed by /revalidate/produkte.
+  const kategorienWithCounts = await fetchKategorienWithCounts();
+  const activeCategoryKeys = kategorienWithCounts.length
+    ? kategorienWithCounts
+        .filter((k) => k.produkt_count > 0 && k.category_key)
+        .map((k) => k.category_key.toLowerCase())
+    : null;
+
   // The locale is now correctly set from params
   return (
-    <html lang={locale} dir="ltr">
+    <html lang={locale} dir="ltr" className={`${montserrat.variable} ${bodoni.variable}`}>
       <head>
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        {/* Google Consent Mode v2 default lives in Cookies/cookiecomponent.js
+            (ensureGtag): no Google tag loads before consent, and a raw <script>
+            here was re-created by React on every client-side language switch
+            ("Encountered a script tag while rendering React component"). */}
         <meta name="ahrefs-site-verification" content="7c9d1c48de554cc2567eb6db64f49352c141ab335b8573e9366103bc7aaa9587" />
+        {/* FadeInView renders with inline opacity:0 until JS reveals it —
+            without JS (crawlers, JS-off) show that content immediately. */}
+        <noscript>
+          <style>{"[data-fade-in]{opacity:1!important;transform:none!important}"}</style>
+        </noscript>
       </head>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
-        />
-        <LoaderWrapper messages={messages} locale={locale}>
+        <JsonLd data={siteSchema} />
+        <LoaderWrapper messages={messages} locale={locale} activeCategoryKeys={activeCategoryKeys}>
           {children}
         </LoaderWrapper>
       </body>

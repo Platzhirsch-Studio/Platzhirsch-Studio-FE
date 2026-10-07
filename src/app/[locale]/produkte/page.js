@@ -1,238 +1,146 @@
-import OutdoorSection from "@/components/Outdoor/outdoor";
-import BannerSlider from "@/components/Reusable/bannerSlider";
-import WohnenClient from "@/components/WohnenClient/wohnenClient";
-import {
-  fetchProductsKeywords,
-  getLocalizedProductsMetadata,
-  getProductsOGImage,
-  validateOGType
-} from "@/lib/api/Keywords/fetchProductsKeywords";
-import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData";
+import { getTranslations } from "next-intl/server";
+import BreadcrumbBar from "@/components/Reusable/breadcrumbBar";
+import ShopCategoryGrid from "@/components/ShopCatalog/shopCategoryGrid";
+import { fetchKategorienWithCounts } from "@/lib/api/fetchAllProdukte";
+import { fetchKategorien, getKategorieLabel, getKategorieAlt } from "@/lib/api/fetchKategorien";
+import { localizeCategory } from "@/lib/seo/productCategories";
+import { generateSlug } from "@/lib/slugify";
+import { getCategoryImage } from "@/lib/shop/categoryImages";
 import { ROUTES } from "@/utils/routing";
+import { buildPageMetadata, localeUrl } from "@/lib/seo/pageMetadata";
+import { breadcrumbList, collectionPageSchema, graph } from "@/lib/seo/structuredData";
+import JsonLd from "@/components/Reusable/JsonLd";
+import { hubSeo } from "@/lib/seo/shopSeoCopy";
 
-function getBaseUrl(locale) {
-  const domain = "https://platzhirsch.studio";
-  // Always include the locale in the URL, even for 'de'
-  return `${domain}/${locale}`;
-}
-
-function getProductsPageUrl(locale) {
-  const baseUrl = getBaseUrl(locale);
-
-  switch (locale) {
-    case "it":
-      return `${baseUrl}/prodotti`;
-    case "en":
-      return `${baseUrl}/products`;
-    case "fr":
-      return `${baseUrl}/produits`;
-    case "de":
-      return `${baseUrl}/produkte`
-    default: // German
-      return `${baseUrl}/produkte`;
-  }
-}
-
-// Direct API call function for indoor/marken data
-async function fetchIndoorData() {
-  try {
-    const res = await fetchRawMarkenData();
-
-    // ✅ Filter by status "Aktiv"
-    const activeItems = res?.filter(
-      (item) => item.status === "Aktiv" && (item.es_gibt_produkte === 1 || item.es_gibt_produkte === "1")
-    );
-
-    return activeItems.map((item) => ({
-      title: item.name1,
-      description: item.produkte,
-      produkte: item.produkte,
-      produkte_en: item.produkte_en,
-      produkte_fr: item.produkte_fr,
-      produkte_it: item.produkte_it,
-      image: item.bild_anhagen,
-      status: item.status,
-    }));
-  } catch (error) {
-    console.error("Fetch error:", error);
-    return [];
-  }
-}
 
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "Prodotti | Marchi di Design Esclusivi – Platzhirsch Studio";
-    case "en": return "Products | Exclusive Designer Brands – Platzhirsch Studio";
-    case "fr": return "Produits | Marques de Design Exclusives – Platzhirsch Studio";
-    default: return "Produkte | Exklusive Designermarken – Platzhirsch Studio";
+    case "it": return "Catalogo Prodotti";
+    case "en": return "Product Catalog";
+    case "fr": return "Catalogue Produits";
+    default: return "Produktkatalog";
   }
 };
 
-const getLocalizedDescription = (locale) => {
-  switch (locale) {
-    case "it": return "Marchi di design esclusivi per un living e working elegante. Scopri l'assortimento di mobili e complementi d'arredo di Platzhirsch Studio.";
-    case "en": return "Exclusive designer brands for stylish living and working. Explore Platzhirsch Studio's curated furniture and interior accessories collection.";
-    case "fr": return "Marques de design exclusives pour un habitat et un travail élégants. Découvrez la sélection de mobilier de Platzhirsch Studio.";
-    default: return "Exklusive Designermarken für stilvolles Wohnen und Arbeiten. Entdecken Sie die kuratierte Möbel- und Einrichtungsauswahl von Platzhirsch Studio.";
-  }
-};
-
+// Indexable in every locale, each at its translated hub path (/de/produkte,
+// /en/products, …) with hreflang between them.
 export async function generateMetadata({ params }) {
   const { locale } = await params;
-
-  const PAGE_URL = getProductsPageUrl(locale);
-
-  try {
-    const contactKeywords = await fetchProductsKeywords();
-
-    if (!contactKeywords) {
-      return {
-        title: getLocalizedTitle(locale),
-        description: getLocalizedDescription(locale),
-        robots: { index: true, follow: true },
-        alternates: {
-          canonical: getProductsPageUrl(locale),
-          languages: {
-            'de': getProductsPageUrl('de'),
-            'en': getProductsPageUrl('en'),
-            'fr': getProductsPageUrl('fr'),
-            'it': getProductsPageUrl('it'),
-            'x-default': getProductsPageUrl('de'),
-          }
-        },
-        openGraph: {
-          type: "website",
-          url: getProductsPageUrl(locale),
-          title: getLocalizedTitle(locale),
-          description: getLocalizedDescription(locale),
-          siteName: "Platzhirsch Studio",
-          locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url:"/Images/Wohnen/bannerImage2.jpg", width: 1200, height: 630, alt:"Produkte Main Page" }],
-        },
-      };
-    }
-
-    const meta = getLocalizedProductsMetadata(contactKeywords, locale);
-    const image = getProductsOGImage(contactKeywords);
-    const safeType = validateOGType(meta?.type);
-
-    return {
-      title: meta?.title || getLocalizedTitle(locale),
-      description: meta?.description || getLocalizedDescription(locale),
-      robots: { index: true, follow: true },
-      alternates: {
-        canonical: meta?.url || PAGE_URL,
-        // ✅ Add hreflang for multilingual SEO
-        languages: {
-          'de': getProductsPageUrl('de'),
-          'en': getProductsPageUrl('en'),
-          'fr': getProductsPageUrl('fr'),
-          'it': getProductsPageUrl('it'),
-          'x-default': getProductsPageUrl('de'),
-
-        }
-      },
-      openGraph: {
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
-        url: meta?.url || PAGE_URL,
-        siteName: "Platzhirsch Studio",
-        images: [
-          {
-            url: image ? image : "/Images/Wohnen/bannerImage2.jpg",
-            width: 1200,
-            height: 630,
-            alt: "Designermarken – Platzhirsch Studio",
-          },
-        ],
-        locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
-        type: safeType,
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
-        images: [image ? image : "/Images/Wohnen/bannerImage2.jpg"],
-      },
-    };
-  } catch (error) {
-    console.error("❌ Metadata fetch error:", error);
-
-    return {
-      title: getLocalizedTitle(locale),
-      description: getLocalizedDescription(locale),
-      robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
-    };
-  }
+  const { title, description } = hubSeo(locale);
+  return buildPageMetadata({ locale, pathByLocale: ROUTES.produkte, title, description });
 }
 
-
-export default async function Home({ params }) {
+// Category hub: each category gets its own dedicated page (better for SEO and for
+// showcasing the products, instead of one long filtered list) — this page is the
+// directory linking into /produkte/[category], grouped like the navbar's
+// Produkte mega-menu (ProductsMenu.groups in messages/*.json).
+export default async function ShopPage({ params }) {
   const { locale } = await params;
 
-  const images = [
-    "/Images/Wohnen/bannerImage2.jpg",
-    "/Images/Arbeiten/bannerImageArbeiten2.jpg",
-    "/Images/Kuche/bannerImageKuche1.jpg",
-    "/Images/Accessories/bannerImageAccessories1.jpg",
-    "/Images/Outdoor/bannerImage5.jpg",
+  const t = await getTranslations({ locale, namespace: "shop" });
+  const tMenu = await getTranslations({ locale, namespace: "ProductsMenu" });
+
+  const title = getLocalizedTitle(locale);
+  const Home = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
+  const productsLabel = locale === "it" ? "Prodotti" : locale === "en" ? "Products" : locale === "fr" ? "Produits" : "Produkte";
+  const productPath = ROUTES.produkte[locale] ? `${ROUTES.produkte[locale]}` : `/produkte`;
+  // Category links use the translated catalogue path (/products/…, /produits/…).
+  const basePath = productPath;
+
+  const breadcrumbLinks = [
+    { linkName: Home, link: "/" },
+    { linkName: productsLabel, link: productPath },
   ];
 
-  const data = await fetchIndoorData();
+  const [kategorienWithCounts, kategorien] = await Promise.all([fetchKategorienWithCounts(), fetchKategorien()]);
+  // Active-product count per category, straight from the backend (the hub
+  // doesn't need the products themselves). Keyed by category_key, the same key
+  // the CMS list and the /produkte/[category] slugs use.
+  const countByKey = new Map(
+    kategorienWithCounts
+      .filter((k) => k.category_key)
+      .map((k) => [k.category_key.toLowerCase(), Number(k.produkt_count) || 0])
+  );
 
-  const SecondPart = {
-    image: "/Images/Outdoor/bannerImage5.jpg",
-  };
+  // The Produkte Kategorie CMS list is the source of truth for which tiles show
+  // up (it's curated on purpose, independent of what happens to have products
+  // today) — the counts only decide which tiles have products. Falls back to
+  // the counted categories alone if the Kategorien API is empty/unreachable,
+  // so the hub never goes blank just because one of the two calls failed.
+  const categorySource = kategorien.length
+    ? kategorien.map((cms) => ({ categoryKey: cms.category_key, cms }))
+    : [...countByKey.keys()].map((categoryKey) => ({ categoryKey, cms: null }));
 
-  const title = locale == "it" ? "Prodotti" : locale == "en" ? "Products" : locale == "fr" ? "Produits" : "Produkte";
-  const productPath = ROUTES.produkte[locale] ? `${ROUTES.produkte[locale]}` : `/produkte`;
+  const categories = categorySource
+    .map(({ categoryKey, cms }, index) => {
+      const label = cms ? getKategorieLabel(cms, locale) : localizeCategory(categoryKey, locale);
+      const count = countByKey.get(String(categoryKey || "").toLowerCase()) || 0;
+      const slug = generateSlug(categoryKey);
+      return {
+        slug,
+        label,
+        alt: cms ? getKategorieAlt(cms, locale) : label,
+        count,
+        countLabel: t("resultsCount", { count }),
+        // CMS image first, else a matching room photo (a room shot reads better
+        // on this overview than a product cut-out, and keeps the tiles uniform).
+        image: cms?.image ? `/cmx${cms.image}` : getCategoryImage(slug, index),
+      };
+    })
+    // Only categories that actually have products get a tile.
+    .filter((c) => c.count > 0);
 
-  const Home = locale == "it" ? "Casa " : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  // Group the tiles like the navbar mega-menu (same order, same translated
+  // titles). Categories the menu doesn't list yet land in a trailing
+  // "more categories" group, so nothing the CMS adds is ever hidden.
+  const categoriesBySlug = new Map(categories.map((c) => [c.slug, c]));
+  const placed = new Set();
+  const groups = (tMenu.raw("groups") || []).map((group, i) => {
+    const items = group.items
+      .map((item) => categoriesBySlug.get(generateSlug(item.key)))
+      .filter(Boolean);
+    items.forEach((c) => placed.add(c.slug));
+    return { id: `group-${i + 1}`, title: group.title, items };
+  });
+  const rest = categories
+    .filter((c) => !placed.has(c.slug))
+    .sort((a, b) => a.label.localeCompare(b.label));
+  if (rest.length) groups.push({ id: "group-more", title: t("moreCategories"), items: rest });
 
-  const PAGE_URL = getProductsPageUrl(locale);
-  const BASE_URL = getBaseUrl(locale);
+  const sections = groups
+    .filter((g) => g.items.length > 0)
+    .map((g) => ({
+      id: g.id,
+      title: g.title,
+      tiles: g.items,
+      countLabel: t("resultsCount", { count: g.items.reduce((sum, c) => sum + c.count, 0) }),
+    }));
 
-  // ✅ Add JSON-LD structured data with correct URLs
-  const webPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": `${PAGE_URL}/#webpage`,
-    url: PAGE_URL,
-    name: title,
-    description: "Exklusive Designermarken für stilvolles Wohnen und Arbeiten.",
-    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-DE",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
-    // ✅ Add breadcrumb with correct locale paths
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: BASE_URL },
-        { "@type": "ListItem", position: 2, name: title, item: PAGE_URL },
-      ],
-    },
-  };
-
+  // CollectionPage + ItemList of the category pages shown as tiles.
+  const pageUrl = localeUrl(locale, productPath);
+  const structuredData = graph(
+    collectionPageSchema({
+      url: pageUrl,
+      name: title,
+      description: hubSeo(locale).description,
+      locale,
+      items: sections.flatMap((s) => s.tiles).map((c) => ({
+        name: c.label,
+        url: localeUrl(locale, `${basePath}/${c.slug}`),
+      })),
+      breadcrumb: breadcrumbList([{ name: Home, url: localeUrl(locale) }, { name: productsLabel }]),
+    })
+  );
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      <JsonLd data={structuredData} />
+      <BreadcrumbBar links={breadcrumbLinks} title={title} subtitle={hubSeo(locale).description} />
+      <ShopCategoryGrid
+        sections={sections}
+        locale={locale}
+        basePath={basePath}
       />
-      <BannerSlider
-        title={title}
-        links={[
-          { link: "/", linkName: Home },
-          { link: productPath, linkName: title },
-        ]}
-        images={images}
-      />
-      <OutdoorSection second={SecondPart} />
-      <WohnenClient data={data} />
     </div>
   );
 }
-
-export const revalidate = 3600;

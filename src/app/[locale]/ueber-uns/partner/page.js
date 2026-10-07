@@ -1,7 +1,9 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import PartnerSecond from "@/components/Partner/partner";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 import {
   fetchPartnersKeywords,
   getLocalizedPartnersMetadata,
@@ -34,10 +36,10 @@ function getPartnerPageUrl(locale) {
 
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "I Nostri Partner | Collaborazioni di Platzhirsch Studio";
-    case "en": return "Our Partners | Trusted Collaborations at Platzhirsch Studio";
-    case "fr": return "Nos Partenaires | Collaborations de Platzhirsch Studio";
-    default: return "Unsere Partner | Kooperationen von Platzhirsch Studio";
+    case "it": return "I Nostri Partner | Collaborazioni di Platzhirsch Home Living";
+    case "en": return "Our Partners | Trusted Collaborations at Platzhirsch Home Living";
+    case "fr": return "Nos Partenaires | Collaborations de Platzhirsch Home Living";
+    default: return "Unsere Partner | Kooperationen von Platzhirsch Home Living";
   }
 };
 
@@ -74,23 +76,16 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de': getPartnerPageUrl('de'),
-            'en': getPartnerPageUrl('en'),
-            'fr': getPartnerPageUrl('fr'),
-            'it': getPartnerPageUrl('it'),
-            'x-default': getPartnerPageUrl('de'),
-
-          }
+          languages: hreflangLanguages((l) => getPartnerPageUrl(l))
         },
         openGraph: {
           type: "website",
           url: PAGE_URL,
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
-          siteName: "Platzhirsch Studio",
+          siteName: "Platzhirsch Home Living",
           locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url: "/Images/Partner/dinner-area.jpg", width: 1200, height: 630, alt: "Partner – Platzhirsch Studio" }],
+          images: [{ url: "/Images/Partner/dinner-area.jpg", width: 1200, height: 630, alt: "Partner – Platzhirsch Home Living" }],
         },
         twitter: {
           card: "summary_large_image",
@@ -110,27 +105,20 @@ export async function generateMetadata({ params }) {
       description: meta?.description || getLocalizedDescription(locale),
       robots: { index: true, follow: true },
       alternates: {
-        canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de': getPartnerPageUrl('de'),
-          'en': getPartnerPageUrl('en'),
-          'fr': getPartnerPageUrl('fr'),
-          'it': getPartnerPageUrl('it'),
-          'x-default': getPartnerPageUrl('de'),
-
-        }
+        canonical: PAGE_URL,
+        languages: hreflangLanguages((l) => getPartnerPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
         description: meta?.description || getLocalizedDescription(locale),
-        url: meta?.url || PAGE_URL,
-        siteName: "Platzhirsch Studio",
+        url: PAGE_URL,
+        siteName: "Platzhirsch Home Living",
         images: [
           {
             url: image ? image : "/Images/Partner/dinner-area.jpg",
             width: 1200,
             height: 630,
-            alt: "Partner – Platzhirsch Studio",
+            alt: "Partner – Platzhirsch Home Living",
           },
         ],
         locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
@@ -150,7 +138,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getPartnerPageUrl(l)) },
     };
   }
 }
@@ -177,7 +165,7 @@ export default async function Page({ params }) {
           : "Partner";
   const Home =
     locale == "it"
-      ? "Casa "
+      ? "Home"
       : locale == "en"
         ? "Home"
         : locale == "fr"
@@ -215,14 +203,13 @@ export default async function Page({ params }) {
     "@id": `${PAGE_URL}/#webpage`,
     url: PAGE_URL,
     name: linkNameTwo,
-    description: "Unsere Partner im exklusiven Design bei Platzhirsch Studio - Hochwertige Kooperationen.",
-    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-DE",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    description: "Unsere Partner im exklusiven Design bei Platzhirsch Home Living - Hochwertige Kooperationen.",
+    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: `/${locale}` },
+        { "@type": "ListItem", position: 1, name: Home, item: BASE_URL },
         { "@type": "ListItem", position: 2, name: linkNameTwo, item: PAGE_URL },
       ],
     },
@@ -230,10 +217,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <PartnerSecond />
     </div>

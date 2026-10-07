@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
+import { ROUTES } from "@/utils/routing";
 import teamImage from "../../../public/Images/Home/helmut.jpg";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -64,7 +65,7 @@ const KarrierePosition = ({ karriere }) => {
                       <div className="text-sm text-gray-500 flex flex-wrap gap-x-4 gap-y-2">
                         <span className="flex items-center gap-1">
                           <BriefcaseBusiness className="text-[#d1b250]" />{" "}
-                          Platzhirsch Studio
+                          Platzhirsch Home Living
                         </span>
                         <span className="flex items-center gap-1">
                           <MapPin className="text-[#d1b250]" /> Lochau,
@@ -95,7 +96,7 @@ const KarrierePosition = ({ karriere }) => {
                       </span>
 
                       <Link
-                        href={`/ueber-uns/karriere/${job.slug}`}
+                        href={`${ROUTES.karriere[locale]}/${job.slug}`}
                         locale={locale}
                       >
 

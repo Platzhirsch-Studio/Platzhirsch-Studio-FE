@@ -33,7 +33,7 @@ const Marken = ({ marken }) => {
       </FadeInView>
 
       <FadeInView
-        as="h4"
+        as="h3"
         direction="bottom"
         duration={500}
         distance={30}
@@ -50,7 +50,7 @@ const Marken = ({ marken }) => {
           duration={500}
           distance={20}
           delay={200 + (index * 100)}
-          className="space-y-6 text-md text-[#30373e]/80"
+          className="mb-4 text-base leading-relaxed text-[#30373e]/80"
         >
           {paragraph}
         </FadeInView>
@@ -72,39 +72,28 @@ const Marken = ({ marken }) => {
                 distance={30}
                 delay={index * 70}
               >
+                {/* Logo turns gold on hover/keyboard focus; brands without a logo show their name. */}
                 <Link
                   href={`${basePath}/${slug}`}
                   prefetch={true}
                   locale={locale}
-                  className="group flex items-center w-auto h-[130px] justify-center border border-gray-800 bg-white p-6 transition duration-300 hover:shadow-lg slider1-hover-wrapper"
+                  aria-label={item.title}
+                  className="group flex h-[130px] w-auto items-center justify-center border border-gray-800 bg-white p-6 transition-shadow duration-300 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d1b250]"
                 >
-                  <div className="relative w-full h-full flex justify-center items-center aspect-square">
+                  {item?.images ? (
                     <Image
-                      src={`/cms${item?.images}`}
+                      src={`/cmx${item.images}`}
                       alt={item.title || "Brand logo"}
                       width={100}
                       height={100}
-                      className="object-contain filter-none h-auto duration-[20s] group-hover:[filter:brightness(0)_saturate(100%)_invert(83%)_sepia(65%)_saturate(707%)_hue-rotate(355deg)_brightness(85%)_contrast(90%)]"
+                      className="h-auto max-h-full w-[100px] object-contain group-hover:[filter:brightness(0)_saturate(100%)_invert(83%)_sepia(65%)_saturate(707%)_hue-rotate(355deg)_brightness(85%)_contrast(90%)] group-focus-visible:[filter:brightness(0)_saturate(100%)_invert(83%)_sepia(65%)_saturate(707%)_hue-rotate(355deg)_brightness(85%)_contrast(90%)]"
                     />
-                  </div>
+                  ) : (
+                    <span className="text-center text-sm font-semibold uppercase tracking-wide text-[#30373e] group-hover:text-[#d1b250] group-focus-visible:text-[#d1b250]">
+                      {item.title}
+                    </span>
+                  )}
                 </Link>
-                <style jsx>
-                  {`
-                  .slider1-hover-wrapper {
-  cursor: pointer;
-}
-
-.slider1-hover-wrapper img {
-  width: 100px;
-  /* Remove filter transition to prevent flicker */
-  transition: none;
-}
-
-/* Gold filter applied instantly on hover */
-.slider1-hover-wrapper:hover img {
-  filter: brightness(0) saturate(100%) invert(83%) sepia(65%) saturate(707%) hue-rotate(355deg) brightness(85%) contrast(90%);
-}`}
-                </style>
               </FadeInView>
             );
           })}

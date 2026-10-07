@@ -24,7 +24,8 @@ export async function fetchNewsData() {
 export async function fetchSlicedNewsData() {
     try {
         const response = await fetch(`${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.news.api.news_data`, {
-            next: { revalidate: 3600 },
+            // Tagged so /revalidate/news also refreshes the home page news block.
+            next: { revalidate: 3600, tags: ["news"] },
         });
 
         if (!response.ok) {

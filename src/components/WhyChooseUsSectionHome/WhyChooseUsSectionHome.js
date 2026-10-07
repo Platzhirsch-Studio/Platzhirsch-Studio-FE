@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
 import { Truck, Wrench, Palette, ShieldCheck, Star, ThumbsUp } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -9,16 +10,17 @@ export default function Home({ data }) {
   const locale = getLocaleFromPath(pathname);
   const t = useTranslations("Benefits");
   return (
-    <div
-      className="h-full relative"
-      style={{
-        backgroundImage: `url('/Images/Home/bannerImage-4.jpg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      /<div className="absolute inset-0 bg-black/50"></div>
+    <div className="h-full relative">
+      {/* Optimised background (was a 355 KB CSS background-image, which bypasses
+          next/image entirely); decorative, so alt="". */}
+      <Image
+        src="/Images/Home/bannerImage-4.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-black/50"></div>
       <div className="relative z-10 container mx-auto px-4 py-8 lg:py-16">
         <div className="text-center mb-8">
           <div className="flex justify-center items-center mb-6">

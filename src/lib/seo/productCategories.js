@@ -91,11 +91,15 @@ export const CATEGORY_I18N = {
 
   // Outdoor
   "outdoor": { de: "Outdoor", en: "Outdoor", fr: "Extérieur", it: "Outdoor" },
+  "parasols": { de: "Sonnenschirme", en: "Parasols", fr: "Parasols", it: "Ombrelloni" },
   "round parasols": { de: "Sonnenschirme rund", en: "Round Parasols", fr: "Parasols ronds", it: "Ombrelloni rotondi" },
   "square parasols": { de: "Sonnenschirme eckig", en: "Square Parasols", fr: "Parasols carrés", it: "Ombrelloni quadrati" },
   "cantilever parasols": { de: "Ampelschirme", en: "Cantilever Parasols", fr: "Parasols déportés", it: "Ombrelloni a braccio" },
   "wall mounted parasols": { de: "Wandschirme", en: "Wall-Mounted Parasols", fr: "Parasols muraux", it: "Ombrelloni a parete" },
   "center post parasols": { de: "Mittelstockschirme", en: "Center-Post Parasols", fr: "Parasols à mât central", it: "Ombrelloni a palo centrale" },
+  "heaters": { de: "Heizstrahler", en: "Heaters", fr: "Chauffages", it: "Riscaldatori" },
+  "doors": { de: "Türen", en: "Doors", fr: "Portes", it: "Porte" },
+  "candles": { de: "Kerzen", en: "Candles", fr: "Bougies", it: "Candele" },
 
   // Generic groupings
   "accessories": { de: "Accessoires", en: "Accessories", fr: "Accessoires", it: "Accessori" },
@@ -134,4 +138,30 @@ export function localizeCategory(rawLabel, locale = "de") {
   const hit = CATEGORY_I18N[rawLabel.trim().toLowerCase()];
   if (!hit) return rawLabel;
   return hit[locale] || hit.de || rawLabel;
+}
+
+// Produkte.kategories is stored as "{Category}-{Brand}" (e.g. "Betten-Poliform").
+// Strip the trailing brand suffix to get back the raw category label ("Betten").
+// Shared by every place that needs that split (product-detail <title>/<h1>,
+// brand-listing intros, and the /produkte taxonomy below) so the same
+// regex isn't reimplemented per call site.
+export function stripBrandFromKategorie(kategorienRaw, marken) {
+  let label = (kategorienRaw || "").trim();
+  if (!label) return "";
+  const marke = (marken || "").trim();
+  if (marke) {
+    const escaped = marke.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    label = label.replace(new RegExp(`[\\s-]*${escaped}\\s*$`, "i"), "");
+  }
+  return label.replace(/[-\s]+$/g, "").trim();
+}
+
+// Lowercased, brand-suffix-stripped category key derived from a real product's
+// `kategories` field. Matches CATEGORY_I18N's keys (for the localized label)
+// and, for most brands, the Kategorien doctype's `category_key` (see
+// src/lib/api/fetchKategorien.js) — both are keyed off the same raw CMS
+// category words. Used to group real Produkte rows into the /produkte
+// category taxonomy without a static per-product categoryKey.
+export function deriveCategoryKey(kategorienRaw, marken) {
+  return stripBrandFromKategorie(kategorienRaw, marken).toLowerCase();
 }

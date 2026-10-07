@@ -1,4 +1,5 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import KontaktSecond from "@/components/Kontakt/kontakt";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import {
@@ -9,6 +10,9 @@ import {
 } from "@/lib/api/Keywords/fetchKontaktKeywords";
 import { ROUTES } from "@/utils/routing";
 import KontaktLastSection from "@/components/Kontakt/KontaktLastSection";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+
+const DOMAIN = "https://platzhirsch.studio";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -36,19 +40,19 @@ function getKontaktPageUrl(locale) {
 
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "Contattaci | Consulenza Design da Platzhirsch Studio";
-    case "en": return "Contact Us | Design Consultation at Platzhirsch Studio";
-    case "fr": return "Contactez-Nous | Conseil Design chez Platzhirsch Studio";
-    default: return "Kontakt | Designberatung bei Platzhirsch Studio";
+    case "it": return "Contattaci | Consulenza Design da Platzhirsch Home Living";
+    case "en": return "Contact Us | Design Consultation at Platzhirsch Home Living";
+    case "fr": return "Contactez-Nous | Conseil Design chez Platzhirsch Home Living";
+    default: return "Kontakt | Designberatung bei Platzhirsch Home Living";
   }
 };
 
 const getLocalizedDescription = (locale) => {
   switch (locale) {
-    case "it": return "Contattate Platzhirsch Studio per consulenze di design, progetti personalizzati e informazioni sui prodotti.";
-    case "en": return "Contact Platzhirsch Studio for design consultations, custom projects and product information.";
-    case "fr": return "Contactez Platzhirsch Studio pour des consultations en design, des projets personnalisés et des informations sur les produits.";
-    default: return "Kontaktieren Sie Platzhirsch Studio für Designberatungen, individuelle Projekte und Produktinformationen.";
+    case "it": return "Contattate Platzhirsch Home Living per consulenze di design, progetti personalizzati e informazioni sui prodotti.";
+    case "en": return "Contact Platzhirsch Home Living for design consultations, custom projects and product information.";
+    case "fr": return "Contactez Platzhirsch Home Living pour des consultations en design, des projets personnalisés et des informations sur les produits.";
+    default: return "Kontaktieren Sie Platzhirsch Home Living für Designberatungen, individuelle Projekte und Produktinformationen.";
   }
 };
 
@@ -66,28 +70,22 @@ export async function generateMetadata({ params }) {
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
-          languages: {
-            'de': getKontaktPageUrl('de'),
-            'en': getKontaktPageUrl('en'),
-            'fr': getKontaktPageUrl('fr'),
-            'it': getKontaktPageUrl('it'),
-            'x-default': getKontaktPageUrl('de'),
-          }
+          languages: hreflangLanguages((l) => getKontaktPageUrl(l))
         },
         openGraph: {
           type: "website",
           url: PAGE_URL,
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
-          siteName: "Platzhirsch Studio",
+          siteName: "Platzhirsch Home Living",
           locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url: "/Images/Kontakt/questionmark.png", width: 1200, height: 630, alt: "Kontakt – Platzhirsch Studio" }],
+          images: [{ url: "/Images/Kontakt/questionmark-og.jpg", width: 1200, height: 630, alt: "Kontakt – Platzhirsch Home Living" }],
         },
         twitter: {
           card: "summary_large_image",
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
-          images: ["/Images/Kontakt/questionmark.png"],
+          images: ["/Images/Kontakt/questionmark-og.jpg"],
         },
       };
     }
@@ -101,25 +99,19 @@ export async function generateMetadata({ params }) {
       description: meta?.description || getLocalizedDescription(locale),
       robots: { index: true, follow: true },
       alternates: {
-        canonical: meta?.url || PAGE_URL,
-        languages: {
-          'de': getKontaktPageUrl('de'),
-          'en': getKontaktPageUrl('en'),
-          'fr': getKontaktPageUrl('fr'),
-          'it': getKontaktPageUrl('it'),
-          'x-default': getKontaktPageUrl('de'),
-        }
+        canonical: PAGE_URL,
+        languages: hreflangLanguages((l) => getKontaktPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
         description: meta?.description || getLocalizedDescription(locale),
-        url: meta?.url || PAGE_URL,
-        siteName: "Platzhirsch Studio",
+        url: PAGE_URL,
+        siteName: "Platzhirsch Home Living",
         images: [{
-          url: image ? image : "/Images/Kontakt/questionmark.png",
+          url: image ? image : "/Images/Kontakt/questionmark-og.jpg",
           width: 1200,
           height: 630,
-          alt: "Kontakt – Platzhirsch Studio",
+          alt: "Kontakt – Platzhirsch Home Living",
         },
         ],
         locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
@@ -129,7 +121,7 @@ export async function generateMetadata({ params }) {
         card: "summary_large_image",
         title: meta?.title || getLocalizedTitle(locale),
         description: meta?.description || getLocalizedDescription(locale),
-        images: [image ? image : "/Images/Kontakt/questionmark.png"],
+        images: [image ? image : "/Images/Kontakt/questionmark-og.jpg"],
       },
     };
   } catch (error) {
@@ -139,7 +131,7 @@ export async function generateMetadata({ params }) {
       title: getLocalizedTitle(locale),
       description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL },
+      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getKontaktPageUrl(l)) },
     };
   }
 }
@@ -148,7 +140,7 @@ export default async function Page({ params }) {
   const { locale } = await params;
 
   const titleOne = locale == "it" ? "Contatto" : locale == "en" ? "Contact" : locale == "fr" ? "Contact" : "Kontakt";
-  const Home = locale == "it" ? "Casa" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
 
   // Dynamic URLs
   const BASE_URL = getBaseUrl(locale);
@@ -170,20 +162,22 @@ export default async function Page({ params }) {
   };
 
   // ✅ JSON-LD Structured Data
-  const webPageSchema = {
+  const contactPageSchema = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": "ContactPage",
     "@id": `${PAGE_URL}/#webpage`,
     url: PAGE_URL,
-    name: titleOne,
-    description: "Kontaktieren Sie Platzhirsch Studio für Designberatungen, individuelle Projekte und Produktinformationen.",
-    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-DE",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    name: getLocalizedTitle(locale),
+    description: getLocalizedDescription(locale),
+    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
+    isPartOf: { "@id": `${DOMAIN}/#website` },
+    about: { "@id": `${DOMAIN}/#organization` },
+    mainEntity: { "@id": `${DOMAIN}/#organization` },
     breadcrumb: {
       "@type": "BreadcrumbList",
+      "@id": `${PAGE_URL}/#breadcrumb`,
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: `/${locale}` },
+        { "@type": "ListItem", position: 1, name: Home, item: `${DOMAIN}/${locale}` },
         { "@type": "ListItem", position: 2, name: titleOne, item: PAGE_URL },
       ],
     },
@@ -191,10 +185,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={contactPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <KontaktSecond />
       <KontaktLastSection />

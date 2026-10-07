@@ -1,6 +1,8 @@
 import React from 'react';
+import JsonLd from "@/components/Reusable/JsonLd";
 import Impressum from "@/components/Impressum/impressumbanner";
 import Content from "@/components/Impressum/impressum";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -29,28 +31,28 @@ function getImpressumPageUrl(locale) {
 function getLocalizedMetadata(locale) {
   const metadataMap = {
     de: {
-      title: "Impressum | Platzhirsch Studio",
-      description: "Informationen, Kontaktangaben und Unternehmensdaten des Platzhirsch Studios in Lochau. Transparenz & Vertrauen stehen bei uns an erster Stelle.",
+      title: "Impressum | Platzhirsch Home Living",
+      description: "Informationen, Kontaktangaben und Unternehmensdaten des Platzhirsch Home Livings in Lochau. Transparenz & Vertrauen stehen bei uns an erster Stelle.",
       ogTitle: "Impressum",
-      ogDescription: "Hier finden Sie alle rechtlichen Informationen zum Platzhirsch Studio, inklusive Firmenbuchnummer, Geschäftsführung und Kontaktmöglichkeiten.",
+      ogDescription: "Hier finden Sie alle rechtlichen Informationen zum Platzhirsch Home Living, inklusive Firmenbuchnummer, Geschäftsführung und Kontaktmöglichkeiten.",
     },
     en: {
-      title: "Legal Notice | Platzhirsch Studio",
-      description: "Legal information, contact details and company data of Platzhirsch Studio in Lochau. Transparency & trust are our top priorities.",
+      title: "Legal Notice | Platzhirsch Home Living",
+      description: "Legal information, contact details and company data of Platzhirsch Home Living in Lochau. Transparency & trust are our top priorities.",
       ogTitle: "Legal Notice",
-      ogDescription: "Here you will find all legal information about Platzhirsch Studio, including commercial register number, management and contact options.",
+      ogDescription: "Here you will find all legal information about Platzhirsch Home Living, including commercial register number, management and contact options.",
     },
     fr: {
-      title: "Mentions Légales | Platzhirsch Studio",
-      description: "Informations légales, coordonnées et données d'entreprise de Platzhirsch Studio à Lochau. La transparence et la confiance sont nos priorités.",
+      title: "Mentions Légales | Platzhirsch Home Living",
+      description: "Informations légales, coordonnées et données d'entreprise de Platzhirsch Home Living à Lochau. La transparence et la confiance sont nos priorités.",
       ogTitle: "Mentions Légales",
-      ogDescription: "Vous trouverez ici toutes les informations légales concernant Platzhirsch Studio, y compris le numéro du registre du commerce, la direction et les coordonnées.",
+      ogDescription: "Vous trouverez ici toutes les informations légales concernant Platzhirsch Home Living, y compris le numéro du registre du commerce, la direction et les coordonnées.",
     },
     it: {
-      title: "Note Legali | Platzhirsch Studio",
-      description: "Informazioni legali, contatti e dati aziendali di Platzhirsch Studio a Lochau. Trasparenza e fiducia sono le nostre priorità.",
+      title: "Note Legali | Platzhirsch Home Living",
+      description: "Informazioni legali, contatti e dati aziendali di Platzhirsch Home Living a Lochau. Trasparenza e fiducia sono le nostre priorità.",
       ogTitle: "Note Legali",
-      ogDescription: "Qui troverete tutte le informazioni legali su Platzhirsch Studio, incluso il numero del registro delle imprese, la direzione e le opzioni di contatto.",
+      ogDescription: "Qui troverete tutte le informazioni legali su Platzhirsch Home Living, incluso il numero del registro delle imprese, la direzione e le opzioni di contatto.",
     },
   };
 
@@ -70,21 +72,14 @@ export async function generateMetadata({ params }) {
     robots: { index: false, follow: true },
     alternates: {
       canonical: PAGE_URL,
-      languages: {
-        'de': getImpressumPageUrl('de'),
-        'en': getImpressumPageUrl('en'),
-        'fr': getImpressumPageUrl('fr'),
-        'it': getImpressumPageUrl('it'),
-        'x-default': getImpressumPageUrl('de'),
-
-      }
+      languages: hreflangLanguages((l) => getImpressumPageUrl(l))
     },
     openGraph: {
       type: "website",
       url: PAGE_URL,
       title: localizedMeta.ogTitle,
       description: localizedMeta.ogDescription,
-      siteName: "Platzhirsch Studio",
+      siteName: "Platzhirsch Home Living",
       images: [
         {
           url: "/Images/fallback-og.jpg",
@@ -112,7 +107,7 @@ export default async function Page({ params }) {
 
   const localizedMeta = getLocalizedMetadata(locale);
 
-  const homeName = locale === "it" ? "Casa" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
+  const homeName = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
   const pageName = locale === "it" ? "Note Legali" : locale === "en" ? "Legal Notice" : locale === "fr" ? "Mentions Légales" : "Impressum";
 
   // ✅ JSON-LD Structured Data
@@ -123,13 +118,12 @@ export default async function Page({ params }) {
     url: PAGE_URL,
     name: pageName,
     description: localizedMeta.description,
-    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-DE",
-    isPartOf: { "@id": `${BASE_URL}/#website` },
-    dateModified: new Date().toISOString().split("T")[0],
+    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
+    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: homeName, item: `/${locale}` },
+        { "@type": "ListItem", position: 1, name: homeName, item: `https://platzhirsch.studio/${locale}` },
         { "@type": "ListItem", position: 2, name: pageName, item: PAGE_URL },
       ],
     },
@@ -137,10 +131,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <Impressum />
       <Content />
     </div>

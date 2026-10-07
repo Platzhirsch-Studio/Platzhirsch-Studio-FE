@@ -1,0 +1,15 @@
+{
+  "doctype": "DocType",
+  "name": "Produkte PDF",
+  "module": "Platzhirsch Studio",
+  "custom": 0,
+  "istable": 1,
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "description": "Feeds the product page's 'Download' tab, grouped into three sections: 2D, 3D and Digital Catalog. IMPORTANT: Frappe fieldnames can't start with a digit, so the columns are named attach_2d/attach_3d here, but api.py must re-key them to the literal JSON keys \"2d\"/\"3d\" the frontend already expects (see README API contract). katalog needs no remap since it's already a valid identifier.",
+  "fields": [
+    { "fieldname": "attach_2d", "fieldtype": "Attach", "label": "2D File" },
+    { "fieldname": "attach_3d", "fieldtype": "Attach", "label": "3D File" },
+    { "fieldname": "katalog", "fieldtype": "Attach", "label": "Digital Catalog" }
+  ]
+}

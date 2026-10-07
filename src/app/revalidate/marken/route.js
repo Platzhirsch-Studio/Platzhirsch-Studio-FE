@@ -1,23 +1,11 @@
-// app/revalidate-career/route.js
-import { revalidateTag } from "next/cache";
-import { NextResponse } from "next/server";
+// src/app/revalidate/marken/route.js
+// Webhook called by the backoffice (POST) when Marken (brands) change.
+// Requires the X-Revalidate-Secret header — see src/lib/revalidateAuth.js.
+// Keep the tag list in sync with the fetchers in src/lib/api.
+import { handleRevalidate } from "@/lib/revalidateAuth";
+
+const TAGS = ["marken"];
 
 export async function POST(request) {
-  try {
-
-    // Revalidate everything with 'career' tag
-    revalidateTag('marken');
-
-    return NextResponse.json({
-      revalidated: true,
-      now: Date.now(),
-      message: "Marken pages revalidated successfully using tag"
-    });
-  } catch (err) {
-    console.error("❌ Revalidation failed:", err);
-    return NextResponse.json(
-      { revalidated: false, message: String(err) },
-      { status: 500 }
-    );
-  }
+  return handleRevalidate(request, TAGS, "marken");
 }

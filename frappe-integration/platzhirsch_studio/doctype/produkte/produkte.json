@@ -1,0 +1,75 @@
+{
+  "doctype": "DocType",
+  "name": "Produkte",
+  "module": "Platzhirsch Studio",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "track_changes": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "autoname": "hash",
+  "title_field": "product_name",
+  "search_fields": "product_name,url_slug,marken,kategories",
+  "engine": "InnoDB",
+  "description": "Single doctype for every product sold across all categories (beds, sofas, tables, chairs, lamps, outdoor, ...). Category is data-driven via `kategories` / `indoor_and_outdoor`, never a separate doctype per category.",
+  "fields": [
+    { "fieldname": "core_section", "fieldtype": "Section Break", "label": "Core" },
+    { "fieldname": "product_name", "fieldtype": "Data", "label": "Product Name", "reqd": 1, "in_list_view": 1, "in_global_search": 1 },
+    { "fieldname": "url_slug", "fieldtype": "Data", "label": "URL Slug", "reqd": 1, "unique": 1, "in_list_view": 1, "description": "Used verbatim as the last URL segment: /produkte/{brand-slug}/{url_slug}. Must be URL-safe and unique across ALL products, not just within a brand." },
+    { "fieldname": "column_break_core", "fieldtype": "Column Break" },
+    { "fieldname": "marken", "fieldtype": "Link", "options": "Marken", "label": "Brand", "reqd": 1, "in_list_view": 1, "in_standard_filter": 1 },
+    { "fieldname": "status", "fieldtype": "Select", "options": "Aktiv\nInaktiv", "default": "Aktiv", "label": "Status", "reqd": 1, "in_list_view": 1, "in_standard_filter": 1, "description": "Only 'Aktiv' products are ever shown on the site. The detail page also 404s if the linked brand is not 'Aktiv'." },
+
+    { "fieldname": "category_section", "fieldtype": "Section Break", "label": "Category" },
+    { "fieldname": "kategories", "fieldtype": "Data", "label": "Kategorien (raw)", "in_list_view": 1, "in_standard_filter": 1, "description": "Stored as \"{Category}-{Brand}\", e.g. \"Betten-Poliform\". The frontend strips the trailing \"-{Brand}\" itself — do not include locale text here, this is the German/raw source value." },
+    { "fieldname": "column_break_category", "fieldtype": "Column Break" },
+    { "fieldname": "indoor_and_outdoor", "fieldtype": "Select", "options": "\nIndoor\nOutdoor", "label": "Indoor / Outdoor", "in_standard_filter": 1 },
+    { "fieldname": "category_i18n_section", "fieldtype": "Section Break", "label": "Category label overrides (optional)", "collapsible": 1, "description": "Leave blank to let the frontend derive the label from `kategories` via its own translation table. Fill in only when a brand-specific category needs a bespoke, non-generic translation. Fieldnames match the frontend's existing produkt.category.category_name_en/_fr/_it lookup exactly — api.py nests them into a `category` object in the response, no frontend change required." },
+    { "fieldname": "category_name_en", "fieldtype": "Data", "label": "Category label (EN)" },
+    { "fieldname": "category_name_fr", "fieldtype": "Data", "label": "Category label (FR)" },
+    { "fieldname": "category_name_it", "fieldtype": "Data", "label": "Category label (IT)" },
+
+    { "fieldname": "beschreibung_section", "fieldtype": "Section Break", "label": "Beschreibung (short, shown next to gallery)" },
+    { "fieldname": "beschreibung", "fieldtype": "Text Editor", "label": "Beschreibung (DE)" },
+    { "fieldname": "beschreibung_en", "fieldtype": "Text Editor", "label": "Description (EN)" },
+    { "fieldname": "column_break_beschreibung", "fieldtype": "Column Break" },
+    { "fieldname": "beschreibung_fr", "fieldtype": "Text Editor", "label": "Description (FR)" },
+    { "fieldname": "beschreibung_it", "fieldtype": "Text Editor", "label": "Descrizione (IT)" },
+
+    { "fieldname": "mehr_beschreibung_section", "fieldtype": "Section Break", "label": "Ausführliche Beschreibung (Tab content)" },
+    { "fieldname": "mehr_beschreibung", "fieldtype": "Text Editor", "label": "Mehr Beschreibung (DE)" },
+    { "fieldname": "mehr_beschreibung_en", "fieldtype": "Text Editor", "label": "More Description (EN)" },
+    { "fieldname": "column_break_mehr_beschreibung", "fieldtype": "Column Break" },
+    { "fieldname": "mehr_beschreibung_fr", "fieldtype": "Text Editor", "label": "Description détaillée (FR)" },
+    { "fieldname": "mehr_beschreibung_it", "fieldtype": "Text Editor", "label": "Descrizione estesa (IT)" },
+
+    { "fieldname": "seo_section", "fieldtype": "Section Break", "label": "SEO", "collapsible": 1 },
+    { "fieldname": "metadata_title_de", "fieldtype": "Data", "label": "Meta Title (DE)" },
+    { "fieldname": "metadata_description_de", "fieldtype": "Small Text", "label": "Meta Description (DE)" },
+    { "fieldname": "metadata_title_en", "fieldtype": "Data", "label": "Meta Title (EN)" },
+    { "fieldname": "metadata_description_en", "fieldtype": "Small Text", "label": "Meta Description (EN)" },
+    { "fieldname": "column_break_seo", "fieldtype": "Column Break" },
+    { "fieldname": "metadata_title_fr", "fieldtype": "Data", "label": "Meta Title (FR)" },
+    { "fieldname": "metadata_description_fr", "fieldtype": "Small Text", "label": "Meta Description (FR)" },
+    { "fieldname": "metadata_title_it", "fieldtype": "Data", "label": "Meta Title (IT)" },
+    { "fieldname": "metadata_description_it", "fieldtype": "Small Text", "label": "Meta Description (IT)" },
+
+    { "fieldname": "media_section", "fieldtype": "Section Break", "label": "Medien" },
+    { "fieldname": "bannerbild", "fieldtype": "Attach Image", "label": "Bannerbild", "description": "Hero image for the product-detail page banner. Falls back to the first gallery image if empty." },
+    { "fieldname": "bild_anhangen", "fieldtype": "Table", "options": "Produkte Bild", "label": "Bildergalerie", "description": "Gallery images shown in the slider + PhotoSwipe lightbox. Row order = display order (uses the child table's built-in idx, no separate sort field needed)." },
+
+    { "fieldname": "additional_information_section", "fieldtype": "Section Break", "label": "Zusätzliche Informationen" },
+    { "fieldname": "additional_information", "fieldtype": "Table", "options": "Produkte Additional Information", "label": "Zusätzliche Informationen", "description": "Feeds the 'Additional Information' tab (weight / dimensions / material / color). Fill only the columns that apply per row." },
+
+    { "fieldname": "files_section", "fieldtype": "Section Break", "label": "Dateien" },
+    { "fieldname": "pdf_produkte", "fieldtype": "Table", "options": "Produkte PDF", "label": "Dateien (2D / 3D / Katalog)", "description": "Feeds the 'Download' tab. Tab is hidden entirely if every row is empty." },
+
+    { "fieldname": "dimension_section", "fieldtype": "Section Break", "label": "Technische Merkmale" },
+    { "fieldname": "produkte_dimension", "fieldtype": "Table", "options": "Produkte Dimension", "label": "Maßzeichnungen", "description": "Technical-drawing / dimension images shown in their own grid below the tabs (NOT inside the tab component). Section is hidden entirely if empty." }
+  ],
+  "permissions": [
+    { "role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "export": 1, "print": 1, "email": 1, "share": 1 },
+    { "role": "Website Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "export": 1 }
+  ]
+}

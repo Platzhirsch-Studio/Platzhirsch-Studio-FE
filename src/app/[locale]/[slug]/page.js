@@ -1,12 +1,15 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { ROUTES } from "@/utils/routing";
 import ProduktePage from "@/app/[locale]/produkte/page";
 import BeratungPage from "@/app/[locale]/beratung/page";
 import NewsPage from "@/app/[locale]/news/page";
 import KontaktPage from "@/app/[locale]/kontakt/page";
 import MerklistePage from "@/app/[locale]/merkliste/page";
-import UeberUnsPage from "@/components/Unusable/page";
-import Impressum from "@/app/[locale]/impressum/page";
+
+// Same ISR window as the pages this route serves (they export revalidate = 3600,
+// but that export doesn't travel with the imported component).
+export const revalidate = 3600;
 
 export default async function DynamicPage({ params }) {
   const { locale, slug } = await params;
@@ -22,13 +25,7 @@ export default async function DynamicPage({ params }) {
 
       const cleanPath = translatedPath.startsWith("/") ? translatedPath.slice(1) : translatedPath;
 
-      // Exact match
       if (cleanSlug === cleanPath) {
-        return routeKey;
-      }
-
-      // Subpath match (for ueber)
-      if (cleanSlug.startsWith(`${cleanPath}/`) && routeKey === "ueber") {
         return routeKey;
       }
     }
@@ -49,8 +46,6 @@ export default async function DynamicPage({ params }) {
     news: NewsPage,
     kontakt: KontaktPage,
     merkliste: MerklistePage,
-    ueber: UeberUnsPage,
-    impressum: Impressum,
   };
 
   const PageComponent = componentMap[pageType];
@@ -66,19 +61,16 @@ export default async function DynamicPage({ params }) {
 export async function generateStaticParams() {
   const params = [];
 
+  // Only single-segment translated slugs that this route actually serves
+  // (/en/consultation, /it/contatto, …). German paths and nested About paths
+  // are real folders under [locale] and must not be emitted here.
+  const SERVED = new Set(["produkte", "beratung", "news", "kontakt", "merkliste"]);
   Object.entries(ROUTES).forEach(([routeKey, translations]) => {
+    if (!SERVED.has(routeKey)) return;
     Object.entries(translations).forEach(([lang, path]) => {
       const cleanPath = path.startsWith("/") ? path.slice(1) : path;
-
-      // Base path
+      if (lang === "de" || cleanPath.includes("/") || cleanPath === translations.de.slice(1)) return;
       params.push({ locale: lang, slug: cleanPath });
-
-      // Example subpaths for dynamic routes
-      if (routeKey === "ueber") {
-        params.push({ locale: lang, slug: `${cleanPath}/team` });
-        params.push({ locale: lang, slug: `${cleanPath}/management` });
-      }
-      // Add other route subpaths as needed
     });
   });
 
@@ -138,20 +130,19 @@ export async function generateMetadata({ params }) {
     return kontaktGenerateMetadata({ params });
   }
 
-  if (pageType === 'ueber-uns') {
-    // Import and call the KontaktPage's generateMetadata
-    const { generateMetadata: kontaktGenerateMetadata } = await import('@/components/Unusable/page');
-    return kontaktGenerateMetadata({ params });
-  }
   if (pageType === 'news') {
     // Import and call the KontaktPage's generateMetadata
     const { generateMetadata: kontaktGenerateMetadata } = await import('@/app/[locale]/news/page');
     return kontaktGenerateMetadata({ params });
   }
 
-  // Fallback metadata
+
+  // Anything else renders notFound() above — give it the translated 404 title,
+  // not "<slug> | …", and keep it out of the index.
+  const t = await getTranslations({ locale, namespace: "error404" });
   return {
-    title: `${slug} | Platzhirsch Studio`,
-    description: `Page about ${slug}`,
+    title: `${t("headline")} | Platzhirsch Home Living`,
+    description: t("description"),
+    robots: { index: false, follow: true },
   };
 }

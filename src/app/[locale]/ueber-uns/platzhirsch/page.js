@@ -2,6 +2,7 @@ import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import Uberuns from "@/components/UberUns/uberuns";
 import Austellung from "@/components/UberUns/austellung";
 import { ROUTES } from "@/utils/routing";
+import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 function getBaseUrl(locale) {
     const domain = "https://platzhirsch.studio";
@@ -32,49 +33,42 @@ export async function generateMetadata({ params }) {
 
     const metaByLocale = {
         de: {
-            title: "Über uns | Platzhirsch Studio Lochau",
-            description: "Lernen Sie Platzhirsch Studio kennen: Showroom für exklusive Designermöbel in Lochau mit Minotti, Poliform und Rimadesio.",
-            ogAlt: "Platzhirsch Studio Showroom in Lochau – Designermöbel und Wohnkonzepte",
+            title: "Über uns | Platzhirsch Home Living Lochau",
+            description: "Lernen Sie Platzhirsch Home Living kennen: Showroom für exklusive Designermöbel in Lochau mit Minotti, Poliform und Rimadesio.",
+            ogAlt: "Platzhirsch Home Living Showroom in Lochau – Designermöbel und Wohnkonzepte",
         },
         en: {
-            title: "About Us | Platzhirsch Studio Lochau",
-            description: "Get to know Platzhirsch Studio: a designer furniture showroom in Lochau featuring Minotti, Poliform and Rimadesio.",
-            ogAlt: "Platzhirsch Studio showroom in Lochau – designer furniture and interior concepts",
+            title: "About Us | Platzhirsch Home Living Lochau",
+            description: "Get to know Platzhirsch Home Living: a designer furniture showroom in Lochau featuring Minotti, Poliform and Rimadesio.",
+            ogAlt: "Platzhirsch Home Living showroom in Lochau – designer furniture and interior concepts",
         },
         fr: {
-            title: "À propos | Platzhirsch Studio Lochau",
-            description: "Découvrez Platzhirsch Studio : showroom de mobilier design à Lochau avec Minotti, Poliform et Rimadesio.",
-            ogAlt: "Showroom Platzhirsch Studio à Lochau – mobilier design et concepts d'intérieur",
+            title: "À propos | Platzhirsch Home Living Lochau",
+            description: "Découvrez Platzhirsch Home Living : showroom de mobilier design à Lochau avec Minotti, Poliform et Rimadesio.",
+            ogAlt: "Showroom Platzhirsch Home Living à Lochau – mobilier design et concepts d'intérieur",
         },
         it: {
-            title: "Chi siamo | Platzhirsch Studio Lochau",
-            description: "Scoprite Platzhirsch Studio: showroom di mobili di design a Lochau con Minotti, Poliform e Rimadesio.",
-            ogAlt: "Showroom Platzhirsch Studio a Lochau – mobili di design e concetti d'arredo",
+            title: "Chi siamo | Platzhirsch Home Living Lochau",
+            description: "Scoprite Platzhirsch Home Living: showroom di mobili di design a Lochau con Minotti, Poliform e Rimadesio.",
+            ogAlt: "Showroom Platzhirsch Home Living a Lochau – mobili di design e concetti d'arredo",
         },
     };
 
     const m = metaByLocale[locale] || metaByLocale.de;
 
     return {
-        title: m.title || "Platzhirsch Studio",
+        title: m.title || "Platzhirsch Home Living",
         description: m.description,
         robots: { index: true, follow: true },
         alternates: {
             canonical: PAGE_URL,
-            languages: {
-                'de': getPartnerPageUrl('de'),
-                'en': getPartnerPageUrl('en'),
-                'fr': getPartnerPageUrl('fr'),
-                'it': getPartnerPageUrl('it'),
-                'x-default': getPartnerPageUrl('de'),
-
-            }
+            languages: hreflangLanguages((l) => getPartnerPageUrl(l))
         },
         openGraph: {
             title: m.title,
             description: m.description,
             url: PAGE_URL,
-            siteName: "Platzhirsch Studio",
+            siteName: "Platzhirsch Home Living",
             images: [
                 {
                     url: "/Images/UberUns/white-sofas.jpg",
@@ -98,7 +92,7 @@ export async function generateMetadata({ params }) {
 
 export default async function UberUns({ params }) {
     const { locale } = await params;
-    const partnerPath = ROUTES.partner[locale] ? `${ROUTES.platzhirsch[locale]}` : `/ueber-uns/platzhirsch`;
+    const partnerPath = ROUTES.platzhirsch[locale] ? `${ROUTES.platzhirsch[locale]}` : `/ueber-uns/platzhirsch`;
 
     const linkNameOne =
         locale == "it"
@@ -110,10 +104,19 @@ export default async function UberUns({ params }) {
                     : "ÜBER UNS";
 
     const linkNameTwo = "PLATZHIRSCH";
+    // Descriptive H1 (was the bare word "PLATZHIRSCH" in every language).
+    const pageTitle =
+        locale == "it"
+            ? "Platzhirsch Home Living – Studio d'arredamento a Lochau"
+            : locale == "en"
+                ? "Platzhirsch Home Living – Interior Design Studio in Lochau"
+                : locale == "fr"
+                    ? "Platzhirsch Home Living – Studio d'aménagement à Lochau"
+                    : "Platzhirsch Home Living – Einrichtungsstudio in Lochau";
 
     const Home =
         locale == "it"
-            ? "Casa "
+            ? "Home"
             : locale == "en"
                 ? "Home"
                 : locale == "fr"
@@ -136,7 +139,7 @@ export default async function UberUns({ params }) {
                 link: partnerPath
             },
         ],
-        title: linkNameTwo,
+        title: pageTitle,
     };
 
     return (
