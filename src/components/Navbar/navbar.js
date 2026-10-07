@@ -508,9 +508,11 @@ const Navbar = ({ activeCategoryKeys = null }) => {
     <header
       className="fixed w-full z-50 shadow-md"
       // Keyboard: a mega menu opened by focus closes again once focus leaves
-      // its trigger AND its panel (both carry data-menu-root).
+      // its trigger AND its panel (both carry data-menu-root). The mobile
+      // drawer is exempt: tapping a language option there focuses it, and the
+      // close-on-focus unmounted the option before its click could fire.
       onFocusCapture={(e) => {
-        if (!e.target.closest("[data-menu-root]")) setOpenDropdown(null);
+        if (!e.target.closest("[data-menu-root], #mobile-menu")) setOpenDropdown(null);
       }}
     >
       <style jsx>{`
@@ -639,8 +641,13 @@ const Navbar = ({ activeCategoryKeys = null }) => {
             </Link>
 
             {/* LANGUAGE DROPDOWN */}
+            {/* data-menu-root: the header's onFocusCapture closes every menu when
+                focus lands outside a menu root. Without it, the mousedown on a
+                language link focused the link, the list unmounted before mouseup,
+                and the click (hence the navigation) never happened. */}
             <div
               className="relative"
+              data-menu-root=""
               onMouseEnter={() => { clearTimeout(languageCloseTimer.current); setOpenDropdown("language"); }}
               onMouseLeave={() => { languageCloseTimer.current = setTimeout(() => setOpenDropdown((d) => (d === "language" ? null : d)), 250); }}
             >
