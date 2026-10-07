@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation"; // To handle 404 page
+import JsonLd from "@/components/Reusable/JsonLd";
 import BrandPage from "@/components/MarkenItems/markenitems";
 import { generateSlug } from "@/lib/slugify";
 import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData"
 import { fetchKategorienByMarke } from "@/lib/api/fetchKategorien";
 import { fetchCollectionsByMarke } from "@/lib/api/fetchCollections";
 import { buildBrandNode } from "@/lib/seo/brandSchema";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { hreflangLanguages, toMetaDescription } from "@/lib/seo/pageMetadata";
 import { ROUTES } from "@/utils/routing";
 
 // Fetch the paths dynamically from your API for SSG (Static Site Generation)
@@ -63,6 +64,7 @@ export async function generateMetadata(context) {
     return {
       title: "Brand Not Found | Platzhirsch Home Living",
       description: "The requested brand could not be found.",
+      robots: { index: false, follow: true },
     };
   }
 
@@ -90,13 +92,15 @@ export async function generateMetadata(context) {
 
   const metadata = {
     title: pageTitle,
-    description: marke?.produkte || "", // Fallback description
+    // Fallback: the brand intro, trimmed to snippet length (the CMS
+    // metadata_description_<locale> below wins where it exists).
+    description: toMetaDescription(marke?.produkte || ""),
     // All four locales are genuinely translated and indexed — Italy + Switzerland
     // (fr/it) are target markets. hreflang below maps each locale to its counterpart.
     robots: { index: true, follow: true },
     openGraph: {
       title: pageTitle,
-      description: `Learn more about ${marke.name}`,
+      description: "",
       url: canonicalUrl,
       siteName: "Platzhirsch Home Living",
       images: [
@@ -104,7 +108,7 @@ export async function generateMetadata(context) {
           url: marke.bild_anhagen?.[0]?.bild_anhagen ? `/cmx${marke.bild_anhagen[0].bild_anhagen}` : "/Images/fallback-banner.jpg",
           width: 1200,
           height: 630,
-          alt: marke.name,
+          alt: marke.name1,
         },
       ],
       locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_AT",
@@ -113,7 +117,7 @@ export async function generateMetadata(context) {
     twitter: {
       card: "summary_large_image",
       title: pageTitle,
-      description: `Learn more about ${marke.name}`,
+      description: "",
       images: [marke.bild_anhagen?.[0]?.bild_anhagen ? `/cmx${marke.bild_anhagen[0].bild_anhagen}` : "/Images/fallback-banner.jpg"],
     },
     alternates: {
@@ -126,23 +130,23 @@ export async function generateMetadata(context) {
   switch (locale) {
     case "en":
       if (marke?.metadata_description_en) {
-        metadata.description = marke?.metadata_description_en;
+        metadata.description = toMetaDescription(marke.metadata_description_en);
       }
       break;
 
     case "it":
       if (marke?.metadata_description_it) {
-        metadata.description = marke?.metadata_description_it;
+        metadata.description = toMetaDescription(marke.metadata_description_it);
       }
       break;
     case "fr":
       if (marke?.metadata_description_fr) {
-        metadata.description = marke?.metadata_description_fr;
+        metadata.description = toMetaDescription(marke.metadata_description_fr);
       }
       break;
     default:
       if (marke?.metadata_description_de) {
-        metadata.description = marke?.metadata_description_de;
+        metadata.description = toMetaDescription(marke.metadata_description_de);
       }
       break;
   }
@@ -187,7 +191,7 @@ export default async function MarkenDetailPage(props) {
           : "Marken";
   const Home =
     locale == "it"
-      ? "Casa"
+      ? "Home"
       : locale == "en"
         ? "Home"
         : locale == "fr"
@@ -243,10 +247,7 @@ export default async function MarkenDetailPage(props) {
 
   return (
     <div className="">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(brandSchema) }}
-      />
+      <JsonLd data={brandSchema} />
       <BrandPage marke={marke} kategorien={kategorien} collections={collections} />
     </div>
   );

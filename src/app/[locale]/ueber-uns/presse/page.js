@@ -1,4 +1,5 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import PresseSecond from "@/components/Presse/presse";
 import PresseArticle from "@/components/Presse/pressearticle";
@@ -96,13 +97,13 @@ export async function generateMetadata({ params }) {
       description: meta?.description || getLocalizedDescription(locale),
       robots: { index: true, follow: true },
       alternates: {
-        canonical: meta?.url || PAGE_URL,
+        canonical: PAGE_URL,
         languages: hreflangLanguages((l) => getPressePageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
         description: meta?.description || getLocalizedDescription(locale),
-        url: meta?.url || PAGE_URL,
+        url: PAGE_URL,
         siteName: "Platzhirsch Home Living",
         images: [
           {
@@ -139,7 +140,7 @@ export default async function Page({ params }) {
 
   const linkNameOne = locale == "it" ? "SU DI NOI" : locale == "en" ? "ABOUT US" : locale == "fr" ? "À PROPOS" : "ÜBER UNS";
   const linkNameTwo = locale == "it" ? "Stampa" : locale == "en" ? "Press" : locale == "fr" ? "Presse" : "Presse";
-  const Home = locale == "it" ? "Casa" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
 
   // Dynamic URLs
   const BASE_URL = getBaseUrl(locale);
@@ -175,7 +176,7 @@ export default async function Page({ params }) {
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: `${BASE_URL}/${locale}` },
+        { "@type": "ListItem", position: 1, name: Home, item: BASE_URL },
         { "@type": "ListItem", position: 2, name: linkNameTwo, item: PAGE_URL },
       ],
     },
@@ -183,10 +184,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <PresseSecond />
       <PresseArticle />

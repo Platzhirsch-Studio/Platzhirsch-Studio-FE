@@ -69,13 +69,16 @@ const VISIBLE_OPTION_LIMIT = 3;
 // Product cards rendered per "show more" step — the whole category is still
 // loaded (filters and their counts need every product), only the grid is
 // revealed in batches. 12 fills whole rows at 1, 2 and 3 columns.
-const PRODUCTS_PER_PAGE = 12;
+const PRODUCTS_PER_PAGE = 24;
 
 const FilterSection = ({ title, options, selected, onToggle, defaultOpen = true, t, swatch = false }) => {
   const [open, setOpen] = useState(defaultOpen);
   const [expanded, setExpanded] = useState(false);
 
-  if (!options.length) return null;
+  // Options with no products are noise (and a filter with a single option
+  // decides nothing) — hidden unless already selected.
+  options = options.filter((o) => o.count > 0 || selected.has(o.value));
+  if (options.length < 2 && !selected.size) return null;
 
   // Collapsed, ticked options come first so a selection is never hidden
   // behind "view more" (e.g. a brand pre-selected via ?marke=).
@@ -140,7 +143,7 @@ const FilterSection = ({ title, options, selected, onToggle, defaultOpen = true,
             <button
               type="button"
               onClick={() => setExpanded((v) => !v)}
-              className="mt-2 text-xs font-medium uppercase tracking-wide text-[#d1b250] hover:underline"
+              className="mt-2 text-xs font-medium uppercase tracking-wide text-gold-text hover:underline"
             >
               {expanded ? t("viewLess") : t("viewMore", { count: hiddenCount })}
             </button>
@@ -285,7 +288,7 @@ const ShopCatalog = ({ products, excludeGroups = [], subCategoryOptions = [], co
           <button
             type="button"
             onClick={clearAll}
-            className="text-xs font-medium uppercase tracking-wide text-[#d1b250] hover:underline"
+            className="text-xs font-medium uppercase tracking-wide text-gold-text hover:underline"
           >
             {t("clearAll")}
           </button>
@@ -430,7 +433,7 @@ const ShopCatalog = ({ products, excludeGroups = [], subCategoryOptions = [], co
               <button
                 type="button"
                 onClick={clearAll}
-                className="mt-4 text-sm font-medium uppercase tracking-wide text-[#d1b250] hover:underline"
+                className="mt-4 text-sm font-medium uppercase tracking-wide text-gold-text hover:underline"
               >
                 {t("clearAll")}
               </button>
@@ -462,7 +465,7 @@ const ShopCatalog = ({ products, excludeGroups = [], subCategoryOptions = [], co
                     )}
                   </Link>
                   <div className="p-4">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-[#d1b250]">{p.brand}</p>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-gold-text">{p.brand}</p>
                     <Link
                       href={detailHref}
                       locale={locale}
@@ -472,7 +475,7 @@ const ShopCatalog = ({ products, excludeGroups = [], subCategoryOptions = [], co
                       {p.name}
                     </Link>
                     {p.indoorOutdoor && (
-                      <p className="mt-1 text-sm text-[#30373e]/55">{p.indoorOutdoor}</p>
+                      <p className="mt-1 text-sm text-[#30373e]/70">{p.indoorOutdoor}</p>
                     )}
 
                     <Link
@@ -494,7 +497,7 @@ const ShopCatalog = ({ products, excludeGroups = [], subCategoryOptions = [], co
 
             {filteredProducts.length > PRODUCTS_PER_PAGE && (
               <div className="mt-14 flex flex-col items-center gap-4">
-                <p className="text-sm text-[#30373e]/60" aria-live="polite">
+                <p className="text-sm text-[#30373e]/75" aria-live="polite">
                   {t("showingCount", { shown: visibleProducts.length, total: filteredProducts.length })}
                 </p>
                 <div className="h-[3px] w-48 max-w-full overflow-hidden rounded-full bg-[#30373e]/10" aria-hidden="true">

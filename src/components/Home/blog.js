@@ -25,7 +25,7 @@ const BlogSection = ({ data }) => {
     return (
       <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-lg mb-8 text-[#d1b250] text-center uppercase">
+          <h2 className="text-lg mb-8 text-gold-text text-center uppercase">
             {t("heading")}
           </h2>
           <p className="text-3xl md:text-4xl mb-8 max-w-2xl font-bold text-center text-[#30373e]">
@@ -45,10 +45,10 @@ const BlogSection = ({ data }) => {
         distance={30}
         className="text-center flex flex-col items-center"
       >
-        <h2 className="text-lg mb-4 text-[#d1b250] text-center uppercase">
+        <h2 className="text-lg mb-4 text-gold-text text-center uppercase">
           {t("heading")}
         </h2>
-        <p className="text-2xl md:text-3xl lg:text-4xl mb-10 lg:mb-16 max-w-2xl font-bold text-center text-[#30373e]">
+        <p className="font-display text-3xl md:text-4xl lg:text-[2.75rem] leading-tight mb-10 lg:mb-16 max-w-2xl text-center text-[#30373e]">
           {t("latest")}
         </p>
       </FadeInView>

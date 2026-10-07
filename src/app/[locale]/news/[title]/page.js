@@ -19,20 +19,8 @@ function getBaseUrl(locale) {
 }
 
 function getNewsPageUrl(locale) {
-  const baseUrl = getBaseUrl(locale);
-
-  switch (locale) {
-    case "it":
-      return `${baseUrl}/news`;
-    case "en":
-      return `${baseUrl}/news`;
-    case "fr":
-      return `${baseUrl}/news`;
-    case "de":
-      return `${baseUrl}/news`;
-    default:
-      return `${baseUrl}/news`;
-  }
+  // Hub lives at the translated path (/fr/nouvelles, /it/notizie); articles stay under /news/.
+  return `${getBaseUrl(locale)}${ROUTES.news[locale] || ROUTES.news.de}`;
 }
 
 function getNewsDetailPageUrl(locale, newsSlug) {
@@ -81,7 +69,7 @@ export async function generateMetadata(context) {
 
     // Get localized title, description, and keywords
     const BRAND = "Platzhirsch Home Living";
-    const MAX_LENGTH = 58; // adjust to 65 if you want a bit more room
+    const MAX_LENGTH = 65;
 
     const truncateTitle = (title) => {
       const suffix = ` | ${BRAND}`;
@@ -99,14 +87,10 @@ export async function generateMetadata(context) {
       return `${cleanTruncated}${suffix}`;
     };
 
-    const getLocalizedTitle = () => {
-      switch (locale) {
-        case "en": return truncateTitle(news.name_en);
-        case "it": return truncateTitle(news.name_it);
-        case "fr": return truncateTitle(news.name_fr);
-        default: return truncateTitle(news.name1);
-      }
-    };
+    // Localized headline, German (name1) when the translation is missing — an
+    // untranslated article must not 500 the en/fr/it URL (all are in the sitemap).
+    const getLocalizedTitle = () =>
+      truncateTitle(String((locale !== "de" && news[`name_${locale}`]) || news.name1 || ""));
 
     const getLocalizedDescription = () => {
       switch (locale) {
@@ -189,7 +173,7 @@ function buildMoreNews(allNews, current, locale) {
     item?.[germanField] ||
     "";
   const excerpt = (value, max = 160) => {
-    const clean = String(value || "").replace(/s+/g, " ").trim();
+    const clean = String(value || "").replace(/\s+/g, " ").trim();
     if (clean.length <= max) return clean;
     const cut = clean.slice(0, max - 1);
     const lastSpace = cut.lastIndexOf(" ");
@@ -230,7 +214,7 @@ export default async function NewsDetailPage(props) {
   const moreNews = buildMoreNews(data, news, locale);
 
   const titleOne = locale == "it" ? "Notizie" : locale == "en" ? "News" : locale == "fr" ? "Actualités" : "News";
-  const Home = locale == "it" ? "Casa" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
 
   // Dynamic URLs
   const PAGE_URL = getNewsDetailPageUrl(locale, title);
@@ -251,14 +235,8 @@ export default async function NewsDetailPage(props) {
 
 
   // Get localized title, description, and keywords
-  const getLocalizedTitle = () => {
-    switch (locale) {
-      case "en": return `${news.name_en}`;
-      case "it": return `${news.name_it}`;
-      case "fr": return `${news.name_fr}`;
-      default: return `${news.name1}`;
-    }
-  };
+  // Same fallback as the <title>: German headline when no translation exists.
+  const getLocalizedTitle = () => (locale !== "de" && news[`name_${locale}`]) || news.name1 || "";
 
   const BannerInfo = {
     image: getNewsImage(),

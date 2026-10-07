@@ -14,9 +14,15 @@ export const CartProvider = ({ children }) => {
   const [cartLoaded, setCartLoaded] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedCart = localStorage.getItem("cart");
-      if (savedCart) {
-        setCartItems(JSON.parse(savedCart));
+      // A corrupted value must not white-screen the whole site (no error
+      // boundary sits above this provider) — drop it and start empty.
+      try {
+        const savedCart = localStorage.getItem("cart");
+        const parsed = savedCart ? JSON.parse(savedCart) : null;
+        if (Array.isArray(parsed)) setCartItems(parsed);
+        else if (savedCart) localStorage.removeItem("cart");
+      } catch {
+        try { localStorage.removeItem("cart"); } catch { /* storage unavailable */ }
       }
       setCartLoaded(true);
     }

@@ -1,6 +1,6 @@
 {
   "Navbar": {
-    "home": "CASA",
+    "home": "Home",
     "products": "PRODOTTI",
     "consultation": "CONSULENZA",
     "about": "CHI SIAMO",
@@ -28,58 +28,194 @@
       "de": "Tedesco",
       "fr": "Francese",
       "it": "Italiano"
-    }
+    },
+    "openMenu": "Apri il menu",
+    "closeMenu": "Chiudi il menu",
+    "call": "Chiama",
+    "logoAlt": "Platzhirsch Home Living – home",
+    "allProducts": "Vedi tutti i prodotti",
+    "mainNavigation": "Navigazione principale"
   },
   "ProductsMenu": {
     "indoor": "Indoor",
     "outdoor": "Outdoor",
     "groups": [
-      { "title": "Divani & Poltrone", "items": [
-        { "label": "Divani", "key": "sofas-couches" },
-        { "label": "Divani angolari", "key": "corner-sofas" },
-        { "label": "Divani letto", "key": "sleeper-sofas" },
-        { "label": "Chaise longue & Daybed", "key": "chaise-longues-daybeds" },
-        { "label": "Poltrone & Pouf", "key": "armchairs-stools" },
-        { "label": "Divani in pelle", "key": "leather-sofas" }
-      ] },
-      { "title": "Sedie & Tavoli", "items": [
-        { "label": "Sedie da pranzo", "key": "dining-chairs" },
-        { "label": "Sgabelli da bar", "key": "bar-stools" },
-        { "label": "Sedie da scrivania", "key": "desk-chairs" },
-        { "label": "Tavoli da pranzo", "key": "dining-tables" },
-        { "label": "Tavolini da caffè", "key": "coffee-tables" },
-        { "label": "Tavolini", "key": "side-tables" }
-      ] },
-      { "title": "Camera da letto", "items": [
-        { "label": "Letti", "key": "beds" },
-        { "label": "Comodini", "key": "night-tables" },
-        { "label": "Armadi", "key": "wardrobes" },
-        { "label": "Biancheria da letto", "key": "bedwear" }
-      ] },
-      { "title": "Contenitori", "items": [
-        { "label": "Madie & Cassettiere", "key": "sideboards-chests" },
-        { "label": "Scaffali", "key": "shelves" },
-        { "label": "Mobili TV", "key": "tv-low-units" },
-        { "label": "Vetrine", "key": "display-cabinets" },
-        { "label": "Piccoli mobili", "key": "small-furniture" }
-      ] },
-      { "title": "Outdoor", "items": [
-        { "label": "Tavoli da giardino", "key": "garden-tables" },
-        { "label": "Sedie da giardino", "key": "garden-chairs" },
-        { "label": "Mobili lounge & Daybed", "key": "lounge-furniture-daybeds" },
-        { "label": "Lettini prendisole", "key": "sun-loungers" },
-        { "label": "Ombrelloni", "key": "parasols" },
-        { "label": "Riscaldatori", "key": "heaters" }
-      ] },
-      { "title": "Accessori Casa", "items": [
-        { "label": "Lampade", "key": "lamps" },
-        { "label": "Tappeti", "key": "rugs" },
-        { "label": "Decorazioni", "key": "decor" },
-        { "label": "Specchi", "key": "mirrors" },
-        { "label": "Accessori da cucina", "key": "kitchen-accessories" },
-        { "label": "Cucine", "key": "kitchen" },
-        { "label": "Candele", "key": "candles" }
-      ] }
+      {
+        "title": "Divani & Poltrone",
+        "items": [
+          {
+            "label": "Divani",
+            "key": "sofas-couches"
+          },
+          {
+            "label": "Divani angolari",
+            "key": "corner-sofas"
+          },
+          {
+            "label": "Divani letto",
+            "key": "sleeper-sofas"
+          },
+          {
+            "label": "Chaise longue & Daybed",
+            "key": "chaise-longues-daybeds"
+          },
+          {
+            "label": "Poltrone & Pouf",
+            "key": "armchairs-stools"
+          },
+          {
+            "label": "Divani in pelle",
+            "key": "leather-sofas"
+          }
+        ]
+      },
+      {
+        "title": "Sedie & Tavoli",
+        "items": [
+          {
+            "label": "Sedie da pranzo",
+            "key": "dining-chairs"
+          },
+          {
+            "label": "Sgabelli da bar",
+            "key": "bar-stools"
+          },
+          {
+            "label": "Sedie da scrivania",
+            "key": "desk-chairs"
+          },
+          {
+            "label": "Tavoli da pranzo",
+            "key": "dining-tables"
+          },
+          {
+            "label": "Tavolini da caffè",
+            "key": "coffee-tables"
+          },
+          {
+            "label": "Tavolini",
+            "key": "side-tables"
+          }
+        ]
+      },
+      {
+        "title": "Camera da letto",
+        "items": [
+          {
+            "label": "Letti",
+            "key": "beds"
+          },
+          {
+            "label": "Comodini",
+            "key": "night-tables"
+          },
+          {
+            "label": "Armadi",
+            "key": "wardrobes"
+          },
+          {
+            "label": "Biancheria da letto",
+            "key": "bedwear"
+          }
+        ]
+      },
+      {
+        "title": "Contenitori",
+        "items": [
+          {
+            "label": "Madie & Cassettiere",
+            "key": "sideboards-chests"
+          },
+          {
+            "label": "Scaffali",
+            "key": "shelves"
+          },
+          {
+            "label": "Mobili TV",
+            "key": "tv-low-units"
+          },
+          {
+            "label": "Vetrine",
+            "key": "display-cabinets"
+          },
+          {
+            "label": "Piccoli mobili",
+            "key": "small-furniture"
+          }
+        ]
+      },
+      {
+        "title": "Outdoor",
+        "items": [
+          {
+            "label": "Tavoli da giardino",
+            "key": "garden-tables"
+          },
+          {
+            "label": "Sedie da giardino",
+            "key": "garden-chairs"
+          },
+          {
+            "label": "Mobili lounge & Daybed",
+            "key": "lounge-furniture-daybeds"
+          },
+          {
+            "label": "Lettini prendisole",
+            "key": "sun-loungers"
+          },
+          {
+            "label": "Ombrelloni",
+            "key": "parasols"
+          },
+          {
+            "label": "Riscaldatori",
+            "key": "heaters"
+          }
+        ]
+      },
+      {
+        "title": "Cucine",
+        "items": [
+          {
+            "label": "Cucine",
+            "key": "kitchen"
+          },
+          {
+            "label": "Accessori da cucina",
+            "key": "kitchen-accessories"
+          }
+        ]
+      },
+      {
+        "title": "Illuminazione",
+        "items": [
+          {
+            "label": "Lampade",
+            "key": "lamps"
+          }
+        ]
+      },
+      {
+        "title": "Accessori Casa",
+        "items": [
+          {
+            "label": "Tappeti",
+            "key": "rugs"
+          },
+          {
+            "label": "Decorazioni",
+            "key": "decor"
+          },
+          {
+            "label": "Specchi",
+            "key": "mirrors"
+          },
+          {
+            "label": "Candele",
+            "key": "candles"
+          }
+        ]
+      }
     ]
   },
   "Buttons": {
@@ -113,7 +249,8 @@
     "rimadesio": "Eleganti sistemi a parete e scaffalature",
     "treca_paris": "Dormire come un re in Francia",
     "flos": "Design di illuminazione espressiva",
-    "poliform_cucine": "Cucine modulari dal design italiano"
+    "poliform_cucine": "Cucine modulari dal design italiano",
+    "headline": "Mobili di design, cucine & Interior Design in Vorarlberg"
   },
   "About": {
     "imgAlt": "Informazioni sulla nostra azienda",
@@ -136,20 +273,20 @@
     "heading": "I nostri vantaggi per te",
     "description": "Scopri come arrediamo perfettamente la tua casa con un servizio su misura,\nqualità premium e assistenza completa senza pensieri.",
     "service1": {
-      "title": "Servizio di consegna premium",
-      "text": "Goditi il nostro servizio di consegna premium gratuito, inclusa la consegna professionale e la sistemazione dei tuoi nuovi mobili. Il nostro team lascia il tuo spazio impeccabile."
+      "title": "Consegna & montaggio",
+      "text": "Consegna e montaggio professionale dal nostro team – nel Vorarlberg, in tutta l'Austria, Germania e Svizzera, nella data che preferisci."
     },
     "service2": {
-      "title": "Servizio di montaggio professionale",
-      "text": "I nostri tecnici certificati assemblano ogni mobile per te, senza bisogno di attrezzi. Rilassati mentre ci occupiamo di tutto."
+      "title": "Progettazione su misura",
+      "text": "Progettiamo ogni pezzo per il tuo ambiente: misure, disposizione, materiali e colori – prima dell'ordine."
     },
     "service3": {
       "title": "Consulenza di design personalizzata",
       "text": "Collabora direttamente con i nostri specialisti di interior design per abbinare superfici, tessuti e dimensioni al tuo ambiente."
     },
     "service4": {
-      "title": "Garanzia a vita sulla qualità",
-      "text": "Garantiamo la nostra maestria artigianale. Ogni acquisto include una garanzia a vita contro i difetti di fabbricazione, per la tua massima tranquillità."
+      "title": "Pezzi originali in showroom",
+      "text": "Oltre 35 marchi a Lochau: provare, confrontare tessuti e finiture, decidere con calma."
     }
   },
   "Vernissage": {
@@ -232,7 +369,15 @@
     "privacySettings": "Impostazioni privacy",
     "privacy": "Privacy",
     "imprint": "Note legali",
-    "allRightsReserved": "Tutti i diritti riservati."
+    "allRightsReserved": "Tutti i diritti riservati.",
+    "tagline": "Studio d'arredamento per mobili di design, cucine di design e illuminazione sul Lago di Costanza – showroom a Lochau vicino a Bregenz, consulenza e montaggio in Austria, Germania e Svizzera.",
+    "showroomTitle": "Showroom",
+    "productsTitle": "Mondi di prodotto",
+    "serviceTitle": "Servizi & regioni",
+    "consultation": "Prenota una consulenza",
+    "route": "Indicazioni stradali",
+    "brandsHeading": "Marchi",
+    "aboutLink": "Chi siamo"
   },
   "Outdoor": {
     "bannerTitle": "Prodotti",
@@ -448,11 +593,6 @@
     ]
   },
   "partners": {
-    "headline": "Partnership forti per progetti eccezionali",
-    "description": "Da Platzhirsch Home Living progettiamo e realizziamo spazi esclusivi. I nostri progetti sono sviluppati con partner selezionati.",
-    "phone": "Tel",
-    "email": "E-mail",
-    "website": "Visita il sito",
     "0": {
       "role": "Partner per progetti immobiliari"
     },
@@ -476,13 +616,18 @@
     },
     "7": {
       "role": "Ristorante di montagna sul Pfänder"
-    }
+    },
+    "headline": "Partnership forti per progetti eccezionali",
+    "description": "Da Platzhirsch Home Living progettiamo e realizziamo spazi esclusivi. I nostri progetti sono sviluppati con partner selezionati.",
+    "phone": "Tel",
+    "email": "E-mail",
+    "website": "Visita il sito"
   },
   "contact": {
     "headline": "Contatto",
     "stepHeadline": "Fai il primo passo",
     "desc": "Hai domande, richieste o vuoi fissare una consulenza? Contattaci telefonicamente o tramite il nostro modulo di contatto.",
-    "location": "Sede principale",
+    "location": "Showroom Lochau",
     "address": "Platzhirsch Home Living\nLandstraße 9, 6911 Lochau,\nAustria",
     "phone": "Numero di telefono",
     "opening": "Orari di apertura",
@@ -505,7 +650,7 @@
     "formErrorMsg": "Il messaggio deve essere lungo almeno 10 caratteri.",
     "formErrorSend": "Non è stato possibile inviare il messaggio. Riprova più tardi o chiamaci.",
     "directions": "Ottieni indicazioni",
-    "welcomeBack": "Bentornato!",
+    "welcomeBack": "Scrivici",
     "welcomeMsg": "Attendiamo il tuo messaggio e siamo a tua disposizione!"
   },
   "cart": {
@@ -625,13 +770,13 @@
     "craftTitle": "Discipline artigianali",
     "collectionEyebrow": "Collezione",
     "collectionTitle": "Prodotti selezionati",
-    "showroomEyebrow": "In esclusiva in Austria",
+    "showroomEyebrow": "In showroom a Lochau",
     "requestConsultation": "Richiedi una consulenza personale",
     "location": "Sede",
     "locationText": "Platzhirsch Studio\nLochau, Vorarlberg (Austria)",
     "service": "Servizio & Offerta",
     "serviceText": "Consulenza d'arredo personalizzata, ordini da catalogo e consegna in tutta l'Austria.",
-    "breadcrumbHome": "Casa",
+    "breadcrumbHome": "Home",
     "breadcrumbBrands": "Marche",
     "collectionProductsTitle": "Prodotti della collezione",
     "moreCollections": "Altre collezioni di {brand}",
@@ -640,7 +785,8 @@
     "viewCollection": "Vedi la collezione",
     "collectionConsultTitle": "Scopri la collezione {collection} nel nostro showroom",
     "collectionEmpty": "Nessun prodotto è ancora stato aggiunto a questa collezione.",
-    "aboutCollection": "La collezione"
+    "aboutCollection": "La collezione",
+    "consultationCta": "Prenota una consulenza"
   },
   "enquiry": {
     "backToWishlist": "← Torna alla lista dei desideri",
@@ -742,7 +888,10 @@
     "title": "404",
     "headline": "Ops! Pagina non trovata.",
     "description": "La pagina che stai cercando è stata spostata, rimossa, rinominata o potrebbe non essere mai esistita.",
-    "backHome": "TORNA ALLA HOME"
+    "backHome": "TORNA ALLA HOME",
+    "browseProducts": "Scopri i prodotti",
+    "browseBrands": "I nostri marchi",
+    "contact": "Contattaci"
   },
   "tabs": {
     "description": "Descrizione",
@@ -855,7 +1004,9 @@
     "showMoreDetails": "Mostra più dettagli",
     "addCollectionToWishlistAria": "Salva {count, plural, one {il prodotto} other {tutti i # prodotti}} della collezione {collection}",
     "removeCollectionFromWishlistAria": "Rimuovi la collezione {collection} dalla lista dei desideri",
-    "viewDetails": "Vedi dettagli"
+    "viewDetails": "Vedi dettagli",
+    "callUs": "Chiama",
+    "brandPageLink": "Tutti i prodotti {brand}"
   },
   "Cookies": {
     "bannerTitle": "Impostazioni dei cookie",
@@ -955,6 +1106,37 @@
     "mechanisms": {
       "adequacy": "Decisione di adeguatezza",
       "scc": "Clausole contrattuali standard"
-    }
+    },
+    "embedTitle": "Google Maps è disattivato",
+    "embedText": "Caricando la mappa accetti l'informativa sulla privacy di Google.",
+    "embedButton": "Carica la mappa",
+    "close": "Chiudi"
+  },
+  "Home": {
+    "heroEyebrow": "Platzhirsch Home Living · Lochau, Lago di Costanza",
+    "heroCtaPrimary": "Prenota una consulenza",
+    "heroCtaSecondary": "Scopri i marchi",
+    "trust1": "Oltre 35 marchi premium",
+    "trust2": "Showroom a Lochau vicino a Bregenz",
+    "trust3": "Consegna & montaggio in AT · DE · CH",
+    "heroBrandsLabel": "In showroom",
+    "brandsTitle": "{count} marchi di design internazionali – consulenza personale a Lochau",
+    "allBrands": "Vedi tutti i {count} marchi",
+    "categoriesTitle": "Living, notte, cucina, luce e outdoor",
+    "allCategories": "Tutte le categorie",
+    "regionsTitle": "Il tuo studio d'arredamento per Vorarlberg, Lago di Costanza e Svizzera orientale",
+    "regionsText": "Il nostro showroom è a Lochau, a pochi minuti da Bregenz e al confine con Germania e Svizzera. Consigliamo, progettiamo, consegniamo e montiamo in tutta la regione del Lago di Costanza.",
+    "regionsCta": "Scopri di più",
+    "showroomVisit": "Vieni a trovarci a Lochau",
+    "showroomText": "Scopri mobili di design, lampade e cucine in veri ambienti abitativi – e parliamo del tuo progetto. Appuntamenti anche fuori orario.",
+    "addressTitle": "Indirizzo",
+    "route": "Indicazioni stradali",
+    "heroLead": "Mobili di design italiani, cucine e luce – selezionati nel nostro showroom sul Lago di Costanza, progettati per la tua casa.",
+    "mobileCall": "Chiama",
+    "mobileAppointment": "Prenota una consulenza",
+    "brandsLead": "Ogni marchio è presente in showroom con pezzi originali, tessuti e finiture – non solo a catalogo.",
+    "categoriesLead": "Dalla singola poltrona all'arredo completo: progettiamo ogni pezzo su misura per i tuoi spazi e lo consegniamo montato.",
+    "regionsLead": "Veniamo da te – per misurare, progettare e montare.",
+    "faqTitle": "Domande frequenti"
   }
 }

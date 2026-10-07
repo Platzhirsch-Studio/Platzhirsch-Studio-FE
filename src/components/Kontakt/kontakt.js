@@ -1,8 +1,10 @@
 "use client";
+import { PHONE_DISPLAY, PHONE_HREF, EMAIL, EMAIL_HREF } from "@/lib/site";
 import React, { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import FadeInView from "@/components/Reusable/FadeInView";
+import ConsentEmbed from "@/components/Cookies/ConsentEmbed";
 import {
   Phone,
   Mail,
@@ -195,9 +197,7 @@ const Kontakt = () => {
                   <Phone className="text-[#d1b250]" /> {t('phone')}
                 </div>
                 <p className="text-sm mt-1 text-[#30373e]/80">
-                  <a href="tel:+43 5574 46255" className="hover:text-[#d1b250]">
-                    +43 5574 46255
-                  </a>
+                  <a href={PHONE_HREF} className="hover:text-[#d1b250]">{PHONE_DISPLAY}</a>
                 </p>
               </div>
             </div>
@@ -218,10 +218,10 @@ const Kontakt = () => {
                 </div>
                 <p className="text-sm mt-1 text-[#30373e]/80">
                   <a
-                    href="mailto:info@platzhirsch.studio"
+                    href={EMAIL_HREF}
                     className="hover:text-[#d1b250]"
                   >
-                    info@platzhirsch.studio
+                    {EMAIL}
                   </a>
                 </p>
               </div>
@@ -234,23 +234,27 @@ const Kontakt = () => {
             distance={0}
             className="relative w-full h-[400px] overflow-hidden shadow-lg group cursor-pointer"
           >
-            <iframe
-              title="Platzhirsch Map"
-              // Google Business Profile pin (Landstraße 9, 6911 Lochau).
-              src="https://maps.google.com/maps?q=Platzhirsch%20Home%20Living%2C%20Landstra%C3%9Fe%209%2C%206911%20Lochau&ll=47.5302782,9.7517183&z=17&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0, pointerEvents: "none" }}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full"
-            ></iframe>
+            {/* Loads only after the visitor opts in (Google Maps is an opt-in
+                "functional" service in the cookie banner). */}
+            <ConsentEmbed service="googleMaps">
+              <iframe
+                title="Google Maps – Platzhirsch Home Living, Landstraße 9, 6911 Lochau"
+                // Google Business Profile pin (Landstraße 9, 6911 Lochau).
+                src="https://maps.google.com/maps?q=Platzhirsch%20Home%20Living%2C%20Landstra%C3%9Fe%209%2C%206911%20Lochau&ll=47.5302782,9.7517183&z=17&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, pointerEvents: "none" }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              ></iframe>
+            </ConsentEmbed>
             <div className="absolute inset-0 bg-black/30 backdrop-blur-sm z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute top-[43%] left-1/2 z-20 -translate-x-1/2 -translate-y-full pointer-events-none animate-bounce-slow h-[80px]  w-[60px]">
               <Image
                 src="/Images/Licht/custom-marker.png"
-                alt="Custom Marker"
+                alt=""
                 fill
                 sizes="60px"
                 className="w-[60px] h-auto drop-shadow-md"
@@ -273,7 +277,8 @@ const Kontakt = () => {
 }
               `}
             </style>
-            <div className="absolute mt-8 top-[52%] left-1/2 z-30 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {/* Always visible: a hover-only link doesn't exist for touch or keyboard users. */}
+            <div className="absolute mt-8 top-[52%] left-1/2 z-30 -translate-x-1/2">
               <a
                 href="https://www.google.com/maps/dir/?api=1&destination=Landstraße+9,+6911+Lochau,+Austria"
                 target="_blank"
@@ -338,7 +343,7 @@ const Kontakt = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="relative">
-                    <User aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <User aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/75 text-lg" />
                     <input
                       type="text"
                       name="name"
@@ -352,7 +357,7 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <Building aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <Building aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/75 text-lg" />
                     <input
                       type="text"
                       name="company"
@@ -365,7 +370,7 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <Mail aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <Mail aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/75 text-lg" />
                     <input
                       type="email"
                       name="email_address"
@@ -379,7 +384,7 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <Contact aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <Contact aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/75 text-lg" />
                     <input
                       type="tel"
                       name="telefon"
@@ -392,7 +397,7 @@ const Kontakt = () => {
                     />
                   </div>
                   <div className="relative">
-                    <MessageSquare aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/60 text-lg" />
+                    <MessageSquare aria-hidden="true" className="absolute top-3 left-3 text-[#30373e]/75 text-lg" />
                     <textarea
                       name="ihre_nachricht"
                       aria-label={t('formMessage')}

@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Check } from "lucide-react";
@@ -16,6 +16,7 @@ import { parseDimensions } from "@/components/ShopCatalog/dimensionDiagram";
 import { getDesignerInfo } from "@/lib/data/staticShopProducts";
 import { fetchProduktePaths, fetchProduktNewByPathField, fetchRelatedProdukteNew } from "@/lib/api/fetchAllProdukte";
 import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData";
+import { fetchKategorien, getKategorieLabel, indexKategorienByKey } from "@/lib/api/fetchKategorien";
 import { fetchCollectionsByMarke } from "@/lib/api/fetchCollections";
 import { toShopProductDetail } from "@/lib/shop/shopProducts";
 import { localizeCategory } from "@/lib/seo/productCategories";
@@ -26,6 +27,20 @@ import { buildPageMetadata, localeUrl, toMetaDescription } from "@/lib/seo/pageM
 import { breadcrumbList, graph, productSchema } from "@/lib/seo/structuredData";
 import JsonLd from "@/components/Reusable/JsonLd";
 import { productTitle } from "@/lib/seo/shopSeoCopy";
+import { resolveLegacyProductUrl } from "@/lib/seo/legacyProductRedirects";
+
+// A legacy /produkte/{brand}/{old-slug} URL (previous site, still indexed and
+// linked) → 308 to the matching new product, else to the brand page. Only
+// reached when the slug is not a current product, so the lookups never run
+// for regular traffic.
+async function redirectLegacyProductUrl(locale, categorySlug, productSlug) {
+  const target = await resolveLegacyProductUrl(categorySlug, productSlug);
+  if (!target) return;
+  if (target.type === "product") {
+    permanentRedirect(`/${locale}${productsPath(locale, generateSlug(target.categoryKey), target.pathField)}`);
+  }
+  permanentRedirect(`/${locale}${ROUTES.marken[locale] || ROUTES.marken.de}/${target.brandSlug}`);
+}
 
 const getLocalizedCollectionTitle = (locale, brand) => {
   switch (locale) {
@@ -113,23 +128,22 @@ export async function generateStaticParams() {
   return params;
 }
 
-// CMS metadata_description_<locale> → German metadata_description_de → the
-// product's own (localized, German-fallback) description text → a generated
-// sentence, so every locale gets a real description even before translation.
+// CMS metadata_description_<locale> → the product's own description text in
+// the page language → German CMS description → a generated sentence. For
+// en/fr/it the localized product text ranks ahead of the German CMS meta so
+// those pages don't carry a German snippet (duplicate across locales).
 function productMetaDescription(detail, product, locale) {
-  const fromCms =
-    (locale !== "de" && detail?.[`metadata_description_${locale}`]) ||
-    detail?.metadata_description_de ||
-    product.descriptionParagraphs.join(" ");
+  const localizedCms = locale !== "de" ? detail?.[`metadata_description_${locale}`] : detail?.metadata_description_de;
+  const ownText = product.descriptionParagraphs.join(" ");
+  const fromCms = localizedCms || (locale === "de" ? ownText : ownText || detail?.metadata_description_de);
   return toMetaDescription(fromCms || buildFallbackDescription(product, locale));
 }
 
-// CMS metadata_title_<locale> → German metadata_title_de → "Name – Brand |
-// Platzhirsch Home Living", so a title set in the CMS always wins.
+// CMS metadata_title_<locale> → "Name – Brand | Platzhirsch Home Living". The
+// German CMS title is only used on the German page: reusing it on en/fr/it
+// produced identical titles across the four locales.
 function productMetaTitle(detail, product, locale) {
-  const fromCms =
-    (locale !== "de" && detail?.[`metadata_title_${locale}`]) ||
-    detail?.metadata_title_de;
+  const fromCms = locale !== "de" ? detail?.[`metadata_title_${locale}`] : detail?.metadata_title_de;
   return (typeof fromCms === "string" && fromCms.trim()) || productTitle(product);
 }
 
@@ -154,8 +168,9 @@ export async function generateMetadata({ params }) {
 export default async function ShopProductPage({ params }) {
   const { locale, category: categorySlug, product: productSlug } = await params;
 
-  const [detail, marken] = await Promise.all([
+  const [detail, marken, kategorien] = await Promise.all([
     fetchProduktNewByPathField(productSlug, locale),
+    fetchKategorien(),
     // fetchRawMarkenData() throws on a backend hiccup (unlike the other
     // fetch* helpers here, which swallow errors and return []) — a transient
     // Marken outage must not 500 an otherwise-valid product page, so it just
@@ -163,10 +178,18 @@ export default async function ShopProductPage({ params }) {
     fetchRawMarkenData().catch(() => []),
   ]);
 
-  if (!detail || detail.status !== "Aktiv") notFound();
+  if (!detail || detail.status !== "Aktiv") {
+    await redirectLegacyProductUrl(locale, categorySlug, productSlug);
+    notFound();
+  }
 
   const product = toShopProductDetail(detail, locale);
-  if (!product.categoryKey || generateSlug(product.categoryKey) !== categorySlug) notFound();
+  if (!product.categoryKey) notFound();
+  // Right product, wrong category segment (moved category, hand-typed URL):
+  // one canonical URL per product, so send it to the correct one.
+  if (generateSlug(product.categoryKey) !== categorySlug) {
+    permanentRedirect(`/${locale}${productsPath(locale, generateSlug(product.categoryKey), productSlug)}`);
+  }
 
   const t = await getTranslations({ locale, namespace: "shop" });
   const tBenefits = await getTranslations({ locale, namespace: "Benefits" });
@@ -196,9 +219,15 @@ export default async function ShopProductPage({ params }) {
       wishlistItems: (productsByCollection[c.name] || []).map(toWishlistItem),
     }));
 
-  const categoryLabel = localizeCategory(product.categoryKey, locale);
+  // Category label: the CMS name (Produkte Kategorie) first; localizeCategory
+  // only knows the old space-separated keys, so slugs like "sofas-couches"
+  // used to surface raw in breadcrumb, chip and "back" link.
+  const cmsKategorie = indexKategorienByKey(kategorien).get(product.categoryKey);
+  const humanized = product.categoryKey.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  const localized = localizeCategory(product.categoryKey, locale);
+  const categoryLabel = (cmsKategorie && getKategorieLabel(cmsKategorie, locale)) || (localized !== product.categoryKey ? localized : humanized);
 
-  const Home = locale === "it" ? "Casa" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
+  const Home = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
   const productsLabel = locale === "it" ? "Prodotti" : locale === "en" ? "Products" : locale === "fr" ? "Produits" : "Produkte";
   // Translated catalogue paths (/products/…, /produits/…, /prodotti/…) — the
   // middleware serves them from this German-named folder.
@@ -276,9 +305,17 @@ export default async function ShopProductPage({ params }) {
           )}
 
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-[#d1b250]">{product.brand}</p>
-            <h1 className="mt-1 text-3xl md:text-4xl font-semibold text-[#30373e]">{product.name}</h1>
-            {product.designer && <p className="mt-2 text-[#30373e]/60">{product.designer}</p>}
+            <p className="text-sm font-semibold uppercase tracking-wide text-gold-text">
+              {brandPageHref ? (
+                <Link href={brandPageHref} locale={locale} className="hover:underline" title={t("brandPageLink", { brand: product.brand })}>
+                  {product.brand}
+                </Link>
+              ) : (
+                product.brand
+              )}
+            </p>
+            <h1 className="font-display mt-1 text-4xl leading-tight text-ink md:text-5xl">{product.name}</h1>
+            {product.designer && <p className="mt-2 text-[#30373e]/75">{product.designer}</p>}
 
             <div className="mt-5 flex flex-wrap gap-2">
               <span className="rounded-full border border-[#30373e]/15 px-3 py-1 text-xs font-medium uppercase tracking-wide text-[#30373e]">
@@ -288,7 +325,8 @@ export default async function ShopProductPage({ params }) {
 
             <ProductActions
               locale={locale}
-              consultationHref={ROUTES.beratung[locale] || "/beratung"}
+              // The consultation wizard pre-fills "Anfrage zu: <Marke> <Produkt>".
+              consultationHref={`${ROUTES.beratung[locale] || "/beratung"}?produkt=${encodeURIComponent(`${product.brand} ${product.name}`)}`}
               detailsAnchor="produktdetails"
               wishlistItem={toWishlistItem({
                 id: detail.name,
@@ -306,6 +344,7 @@ export default async function ShopProductPage({ params }) {
                 addToWishlist: t("addToWishlistAria"),
                 removeFromWishlist: t("removeFromWishlistAria"),
                 showMoreDetails: t("showMoreDetails"),
+                callUs: t("callUs"),
               }}
             />
 
@@ -322,7 +361,7 @@ export default async function ShopProductPage({ params }) {
               <Link
                 href={categoryPath}
                 locale={locale}
-                className="text-sm text-[#30373e]/60 hover:text-[#d1b250] transition-colors"
+                className="text-sm text-[#30373e]/75 hover:text-[#d1b250] transition-colors"
               >
                 ← {t("backToCategory", { category: categoryLabel })}
               </Link>
@@ -407,7 +446,7 @@ export default async function ShopProductPage({ params }) {
                       />
                     </div>
                     <div className="p-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#d1b250]">{rp.brand}</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-gold-text">{rp.brand}</p>
                       <p className="text-sm text-[#30373e] font-medium">{rp.name}</p>
                     </div>
                   </Link>

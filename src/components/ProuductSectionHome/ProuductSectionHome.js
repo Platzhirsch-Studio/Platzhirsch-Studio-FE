@@ -26,7 +26,7 @@ export default function TrendingProducts({ data, brand = "Minotti" }) {
     <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-16">
       <div className="text-center flex flex-col items-center">
         <h2 className="text-lg mb-4 text-[#30373e] text-center uppercase">{t("title")}</h2>
-        <p className="text-2xl md:text-3xl lg:text-4xl mb-10 lg:mb-16 max-w-2xl font-bold text-center text-[#30373e]">
+        <p className="font-display text-3xl md:text-4xl lg:text-[2.75rem] leading-tight mb-10 lg:mb-16 max-w-2xl text-center text-[#30373e]">
           {t("headline")}
         </p>
       </div>

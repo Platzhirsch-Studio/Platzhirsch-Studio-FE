@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import BreadcrumbBar from "@/components/Reusable/breadcrumbBar";
 import ShopCatalog from "@/components/ShopCatalog/shopCatalog";
@@ -17,6 +17,7 @@ import { buildPageMetadata, localeUrl } from "@/lib/seo/pageMetadata";
 import { breadcrumbList, collectionPageSchema, graph } from "@/lib/seo/structuredData";
 import JsonLd from "@/components/Reusable/JsonLd";
 import { categorySeo } from "@/lib/seo/shopSeoCopy";
+import { findBrandBySlug } from "@/lib/seo/legacyProductRedirects";
 
 // Every valid /produkte/[category] slug: the curated Produkte Kategorie
 // list plus any category a real product uses that the CMS list doesn't have a
@@ -53,6 +54,14 @@ export async function generateStaticParams() {
 // products — shared by generateMetadata and the page (the fetches are cached,
 // so calling it twice per request costs nothing). Returns null for a slug
 // that is neither a real category nor a curated navbar menu category.
+// Brands of a category ordered by product count — used for the meta
+// description AND the visible intro sentence, so both name the same brands.
+function topBrandsOf(products) {
+  const counts = new Map();
+  for (const p of products) if (p.brand) counts.set(p.brand, (counts.get(p.brand) || 0) + 1);
+  return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([brand]) => brand);
+}
+
 async function resolveCategory(locale, categorySlug) {
   const [kategorien, paths] = await Promise.all([fetchKategorien(), fetchProduktePaths()]);
   const kategorienByKey = indexKategorienByKey(kategorien);
@@ -94,11 +103,7 @@ export async function generateMetadata({ params }) {
   if (!category) return { robots: { index: false, follow: true } };
 
   const { label, products } = category;
-  const brandCounts = new Map();
-  for (const p of products) if (p.brand) brandCounts.set(p.brand, (brandCounts.get(p.brand) || 0) + 1);
-  const topBrands = [...brandCounts.entries()].sort((a, b) => b[1] - a[1]).map(([brand]) => brand);
-
-  const { title, description } = categorySeo(locale, { label, count: products.length, brands: topBrands });
+  const { title, description } = categorySeo(locale, { label, count: products.length, brands: topBrandsOf(products), key: categorySlug });
   return buildPageMetadata({
     locale,
     pathByLocale: productsPathByLocale(categorySlug),
@@ -119,7 +124,16 @@ export default async function ShopCategoryPage({ params }) {
     fetchFarben(),
     fetchMaterialien(),
   ]);
-  if (!category) notFound();
+  if (!category) {
+    // Legacy catalogue URL /produkte/{brand} (the old site listed products by
+    // brand here, ~35 indexed URLs per locale): send it permanently to the
+    // brand story page, which is where that intent lives now.
+    const brand = await findBrandBySlug(categorySlug);
+    if (brand) {
+      permanentRedirect(`/${locale}${ROUTES.marken[locale] || ROUTES.marken.de}/${generateSlug(brand.name1)}`);
+    }
+    notFound();
+  }
 
   const { categoryKey, products, label: categoryLabel } = category;
   // Sourced from the Sub Kategorie CMS list, not derived by counting products
@@ -131,7 +145,7 @@ export default async function ShopCategoryPage({ params }) {
   const colorOptions = getFarbenOptions(farben, locale);
   const materialOptions = getMaterialienOptions(materialien, locale);
 
-  const Home = locale === "it" ? "Casa" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
+  const Home = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
   const productsLabel = locale === "it" ? "Prodotti" : locale === "en" ? "Products" : locale === "fr" ? "Produits" : "Produkte";
   const productPath = productsPath(locale);
 
@@ -173,7 +187,12 @@ export default async function ShopCategoryPage({ params }) {
   return (
     <div>
       <JsonLd data={structuredData} />
-      <BreadcrumbBar links={breadcrumbLinks} title={categoryLabel} />
+      <BreadcrumbBar
+        links={breadcrumbLinks}
+        title={categoryLabel}
+        // The same sentence as the meta description: brands, showroom, service area.
+        subtitle={categorySeo(locale, { label: categoryLabel, count: products.length, brands: topBrandsOf(products), key: categorySlug }).description}
+      />
 
       {/* ShopCatalogFromUrl reads ?marke= (brand pages link here with it) to
           pre-select that brand; the plain catalog is the prerendered fallback. */}

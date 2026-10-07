@@ -92,7 +92,7 @@ export async function generateMetadata({ params }) {
 
 export default async function UberUns({ params }) {
     const { locale } = await params;
-    const partnerPath = ROUTES.partner[locale] ? `${ROUTES.platzhirsch[locale]}` : `/ueber-uns/platzhirsch`;
+    const partnerPath = ROUTES.platzhirsch[locale] ? `${ROUTES.platzhirsch[locale]}` : `/ueber-uns/platzhirsch`;
 
     const linkNameOne =
         locale == "it"
@@ -104,10 +104,19 @@ export default async function UberUns({ params }) {
                     : "ÜBER UNS";
 
     const linkNameTwo = "PLATZHIRSCH";
+    // Descriptive H1 (was the bare word "PLATZHIRSCH" in every language).
+    const pageTitle =
+        locale == "it"
+            ? "Platzhirsch Home Living – Studio d'arredamento a Lochau"
+            : locale == "en"
+                ? "Platzhirsch Home Living – Interior Design Studio in Lochau"
+                : locale == "fr"
+                    ? "Platzhirsch Home Living – Studio d'aménagement à Lochau"
+                    : "Platzhirsch Home Living – Einrichtungsstudio in Lochau";
 
     const Home =
         locale == "it"
-            ? "Casa "
+            ? "Home"
             : locale == "en"
                 ? "Home"
                 : locale == "fr"
@@ -130,7 +139,7 @@ export default async function UberUns({ params }) {
                 link: partnerPath
             },
         ],
-        title: linkNameTwo,
+        title: pageTitle,
     };
 
     return (

@@ -2,6 +2,7 @@
 // language (ueber-uns/marken, about-us/brands, a-propos/marques,
 // chi-siamo/marche), so all four [title]/[collection]/page.js files are thin
 // wrappers around these two functions instead of four copies of the logic.
+import { sanitizeCmsHtml } from "@/lib/shop/shopProducts";
 import "server-only";
 import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData";
 import { fetchCollectionsByMarke } from "@/lib/api/fetchCollections";
@@ -26,7 +27,8 @@ function collectionDescription(collection, locale) {
 // Same splitting as product descriptions (shopProducts.js): CMS rich text,
 // rendered as HTML paragraphs.
 const toParagraphs = (text) =>
-  (text || "")
+  // Same allowlist sanitizer as the product descriptions (rendered as HTML).
+  sanitizeCmsHtml(text)
     .replace(/[ \t]+/g, " ")
     .split(/\n{2,}/)
     .map((p) => p.trim())

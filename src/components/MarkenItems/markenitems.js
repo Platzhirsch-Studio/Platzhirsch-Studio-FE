@@ -1,4 +1,5 @@
 "use client";
+import { PHONE_DISPLAY, PHONE_HREF, EMAIL_HREF } from "@/lib/site";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,7 +10,9 @@ import FadeInView from "@/components/Reusable/FadeInView";
 import { Link } from "@/i18n/navigation";
 import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
 import { generateSlug } from "@/lib/slugify";
-import { productsPath } from "@/utils/routing";
+import { ROUTES, productsPath } from "@/utils/routing";
+import { displayBrandName } from "@/lib/content/brands";
+import { Phone } from "lucide-react";
 import { formatCollectionName, collectionPath } from "@/lib/marken/collections";
 import {
   ArrowUpRight,
@@ -52,10 +55,10 @@ const PrevArrow = ({ onClick }) => (
 
 const SectionHeader = ({ eyebrow, title }) => (
   <div className="mb-10">
-    <span className="block text-xs font-semibold uppercase tracking-wide text-[#d1b250]">
+    <span className="block text-xs font-semibold uppercase tracking-wide text-gold-text">
       {eyebrow}
     </span>
-    <h2 className="mt-2 text-2xl md:text-3xl font-bold text-[#30373e]">{title}</h2>
+    <h2 className="font-display mt-2 text-3xl md:text-4xl text-ink">{title}</h2>
     <div className="mt-3 h-1 w-20 rounded-full bg-[#d1b250]" />
   </div>
 );
@@ -72,8 +75,6 @@ const getKategorieName = (kategorie, locale) =>
 // `<key>_de` for most fields but the unsuffixed `<key>` for beschreibung/produkte.
 const localized = (obj, key, locale) =>
   obj?.[`${key}_${locale}`] || obj?.[`${key}_de`] || obj?.[key] || "";
-
-const SHOWROOM_EMAIL = "info@platzhirsch.studio";
 
 export default function BrandPage({ marke, kategorien = [], collections = [] }) {
   const pathname = usePathname();
@@ -126,7 +127,9 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
       {/* ---------------------------------------------------------- */}
       {/* HERO                                                        */}
       {/* ---------------------------------------------------------- */}
-      <header className="relative h-150 lg:h-200 flex items-end">
+      {/* <section>, not <header>/<main>: the page shell already provides those
+          landmarks and nesting a second <main> is invalid. */}
+      <section className="relative h-150 lg:h-200 flex items-end">
         <Image
           src={
             marke.bild_anhagen?.[0]?.bild_anhagen
@@ -143,8 +146,8 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 lg:pb-20 text-white">
           <div className="max-w-[950px]">
-                <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] tracking-[2px] uppercase mb-5 font-light leading-[1.05] break-words">
-              {marke.name1}
+                <h1 className="font-display text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] mb-5 leading-[1.02] break-words">
+              {displayBrandName(marke.name1)}
             </h1>
 
             {intro && (
@@ -173,19 +176,19 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
             )}
           </div>
         </div>
-      </header>
+      </section>
 
-      <main className="mx-auto my-10 max-w-7xl px-6 lg:my-16">
+      <div className="mx-auto my-10 max-w-7xl px-6 lg:my-16">
         {/* -------------------------------------------------------- */}
         {/* EDITORIAL / PHILOSOPHY                                    */}
         {/* -------------------------------------------------------- */}
         <section className="mb-16 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <FadeInView as="div" direction="left" duration={700}>
             <div>
-              <span className="block text-xs font-semibold uppercase tracking-wide text-[#d1b250]">
+              <span className="block text-xs font-semibold uppercase tracking-wide text-gold-text">
                 {t("philosophyEyebrow")}
               </span>
-              <h2 className="mt-2 text-2xl font-bold text-[#30373e] md:text-3xl">
+              <h2 className="font-display mt-2 text-3xl text-ink md:text-4xl">
                 {t("philosophyTitle")}
               </h2>
               <div className="mb-6 mt-3 h-1 w-20 rounded-full bg-[#d1b250]" />
@@ -201,7 +204,7 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
               <figure className="mt-8 border-l-2 border-[#d1b250] pl-6">
                 {designApproach && (
                 <>
-                  <span className="block text-xs font-semibold uppercase tracking-wide text-[#d1b250]">
+                  <span className="block text-xs font-semibold uppercase tracking-wide text-gold-text">
                     {t("designApproach")}
                   </span>
                   <blockquote className="mt-2 text-lg font-light italic leading-relaxed text-[#30373e] md:text-xl">
@@ -215,7 +218,7 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
                     <CircleUser size={18} />
                   </span>
                   <span>
-                    <span className="block text-[11px] font-semibold uppercase tracking-wide text-[#30373e]/50">
+                    <span className="block text-[11px] font-semibold uppercase tracking-wide text-[#30373e]/70">
                       {t("founder")}
                     </span>
                     <span className="block text-sm font-semibold text-[#30373e]">{marke.grunder}</span>
@@ -329,7 +332,7 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
                 key={i}
                 className="rounded-2xl border border-[#30373e]/10 p-6 shadow-[0_1px_3px_rgba(48,55,62,0.06)] md:p-10"
               >
-                <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-[#d1b250]">
+                <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-gold-text">
                   {localized(item, "eyeline", locale)}
                 </span>
                 <h3 className="mb-3 text-xl font-bold text-[#30373e]">{localized(item, "title", locale)}</h3>
@@ -376,7 +379,7 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
                       <p className="leading-relaxed text-gray-600">
                         {t("productCount", { count: collection.produkt_count || 0 })}
                       </p>
-                      <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-[#30373e]/60 transition-colors duration-300 group-hover:text-[#d1b250]">
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-[#30373e]/75 transition-colors duration-300 group-hover:text-[#d1b250]">
                         {t("viewCollection")}
                         <ArrowUpRight size={14} />
                       </span>
@@ -418,7 +421,7 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
             </span>
             <div className="mt-3 h-[2px] w-12 bg-[#d1b250]" />
             {dealersTitle && (
-            <h2 className="mt-5 text-3xl font-light uppercase tracking-wide text-white sm:text-4xl">
+            <h2 className="font-display mt-5 text-3xl text-white sm:text-4xl">
               {dealersTitle}
             </h2>
             )}
@@ -427,12 +430,28 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
               {dealersDescription}
             </p>
             )}
-            <a
-              href={`mailto:${SHOWROOM_EMAIL}`}
-              className="mt-8 inline-flex items-center gap-2 rounded-[3px] border-2 border-[#d1b250] px-5 py-2.5 text-xs font-medium uppercase tracking-wide text-white transition-colors duration-300 hover:bg-[#d1b250] hover:text-[#30373e]"
-            >
-              {t("requestConsultation")}
-            </a>
+            {/* Conversion paths: appointment (primary), phone, e-mail — the
+                panel used to offer only a mailto link. */}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                href={ROUTES.beratung[locale] || ROUTES.beratung.de}
+                locale={locale}
+                className="inline-flex items-center gap-2 rounded-[3px] bg-[#d1b250] px-5 py-3 text-xs font-medium uppercase tracking-wide text-[#30373e] transition-colors duration-300 hover:bg-white"
+              >
+                {t("consultationCta")}
+              </Link>
+              <a
+                href={PHONE_HREF}
+                className="inline-flex items-center gap-2 rounded-[3px] border-2 border-[#d1b250] px-5 py-2.5 text-xs font-medium uppercase tracking-wide text-white transition-colors duration-300 hover:bg-[#d1b250] hover:text-[#30373e]"
+              >
+                <Phone size={14} aria-hidden="true" />{PHONE_DISPLAY}</a>
+              <a
+                href={EMAIL_HREF}
+                className="inline-flex items-center text-xs font-medium uppercase tracking-wide text-white/80 underline decoration-[#d1b250] underline-offset-4 transition-colors hover:text-[#d1b250]"
+              >
+                {t("requestConsultation")}
+              </a>
+            </div>
           </div>
           <div>
             <strong className="mb-1 block text-xs font-semibold uppercase tracking-wide text-[#d1b250]">
@@ -448,7 +467,7 @@ export default function BrandPage({ marke, kategorien = [], collections = [] }) 
             <p className="text-sm leading-relaxed text-white/65">{t("serviceText")}</p>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 }

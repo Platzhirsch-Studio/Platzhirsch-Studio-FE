@@ -9,7 +9,8 @@ export async function fetchLayoutData() {
         const res = await fetch(LAYOUT_API_URL, {
             method: "GET",
             cache: "force-cache",
-            next: { revalidate: 3600 } // Revalidate every hour
+            next: { revalidate: 3600 }, // Revalidate every hour
+            signal: AbortSignal.timeout(15000),
         });
 
         if (!res.ok) {

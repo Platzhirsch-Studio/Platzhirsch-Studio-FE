@@ -1,17 +1,22 @@
 // src/app/[locale]/page.js
 import dynamic from "next/dynamic";
-import ImageSlider from "@/components/Home/banner";
+import Hero from "@/components/Home/Hero";
+import BrandWall from "@/components/Home/BrandWall";
+import CategoryTiles from "@/components/Home/CategoryTiles";
+import RegionLinks from "@/components/Home/RegionLinks";
+import ShowroomCta from "@/components/Home/ShowroomCta";
+import SeoIntro from "@/components/Home/SeoIntro";
+import { homeSeo } from "@/lib/content/homeSeo";
 import About from "@/components/Home/about";
-import VernissageSection from "@/components/Home/vernissage";
 import BlogSection from "@/components/Home/blog";
-import Choice from "@/components/Home/choice";
 import { fetchSlicedNewsData } from "@/lib/api/fetchNewsData";
 import { fetchHomepage } from "@/lib/api/fetchHomepage";
-import { fetchProdukteNewByMarke } from "@/lib/api/fetchAllProdukte";
+import { fetchProdukteNewByMarke, fetchKategorienWithCounts } from "@/lib/api/fetchAllProdukte";
+import { fetchKategorien } from "@/lib/api/fetchKategorien";
+import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData";
 import { buildShopProducts } from "@/lib/shop/shopProducts";
 import { IN_LANGUAGE, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/structuredData";
 import JsonLd from "@/components/Reusable/JsonLd";
-import { metadata } from "../layout";
 import { hreflangLanguages } from "@/lib/seo/pageMetadata";
 
 // Dynamically import non-critical components
@@ -44,9 +49,23 @@ function getFallbackMeta(locale) {
   return FALLBACK_META_BY_LOCALE[locale] || FALLBACK_META_BY_LOCALE.de;
 }
 
+// Complete metadata when the CMS is unavailable: canonical, hreflang and robots
+// must not disappear just because the backend hiccuped (the layout deliberately
+// sets none of them, so a title-only fallback left the page without a canonical).
+function fallbackMetadata(locale) {
+  const meta = getFallbackMeta(locale);
+  const canonical = `${BASE_URL}/${locale}`;
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical, languages: hreflangLanguages((l) => `${BASE_URL}/${l}`) },
+    robots: { index: true, follow: true },
+    openGraph: { type: "website", url: canonical, title: meta.title, description: meta.description },
+  };
+}
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
-  const FALLBACK_META = getFallbackMeta(locale);
 
   try {
     const [apiData] = await Promise.all([
@@ -56,12 +75,7 @@ export async function generateMetadata({ params }) {
     const home = apiData?.[0];
 
 
-    if (!home) {
-      return {
-        title: FALLBACK_META.title,
-        description: FALLBACK_META.description,
-      };
-    }
+    if (!home) return fallbackMetadata(locale);
 
     // Safely extract localized metadata fields
     const metaTabs = {
@@ -145,10 +159,7 @@ export async function generateMetadata({ params }) {
     };
   } catch (error) {
     console.error("❌ Metadata fetch error:", error);
-    return {
-      title: FALLBACK_META.title,
-      description: FALLBACK_META.description,
-    };
+    return fallbackMetadata(locale);
   }
 }
 
@@ -156,14 +167,22 @@ export default async function Home({ params }) {
   const { locale } = await params;
 
   // Fetch all data in parallel
-  const [apiData, newsData, produkte] = await Promise.all([
+  const [apiData, newsData, produkte, brands, kategorienWithCounts, kategorien] = await Promise.all([
     fetchHomepage(),
     fetchSlicedNewsData(),
-    fetchProdukteNewByMarke("Minotti")
+    fetchProdukteNewByMarke("Minotti"),
+    // Brand wall + category tiles: cached 1h like everything else; a backend
+    // hiccup hides the section instead of failing the page.
+    fetchRawMarkenData().catch(() => []),
+    fetchKategorienWithCounts(),
+    fetchKategorien(),
   ]);
   // Shop card shape (categoryKey/url_slug/image) so the strip links to the
   // live /produkte/<category>/<product> pages; only 8 are shown.
-  const trendingProducts = buildShopProducts(produkte).slice(0, 8);
+  // Newest Minotti products first (the API returns alphabetical order).
+  const trendingProducts = buildShopProducts(
+    [...(produkte || [])].sort((a, b) => String(b.modified || "").localeCompare(String(a.modified || "")))
+  ).slice(0, 8);
 
   const homeContent = apiData?.[0];
   const metaData = apiData?.[0];
@@ -186,18 +205,39 @@ export default async function Home({ params }) {
     about: { "@id": ORGANIZATION_ID },
     datePublished: "2026-06-01",
   };
+  // The homepage FAQ (SeoIntro) as FAQPage, same questions and answers.
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${BASE_URL}/${locale}/#faq`,
+    inLanguage: IN_LANGUAGE[locale] || IN_LANGUAGE.de,
+    mainEntity: homeSeo(locale).faq.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
 
   return (
     <div>
       {/* Structured Data Scripts */}
       <JsonLd data={webPageSchema} />
-      {/* Page Content */}
-      <ImageSlider />
+      <JsonLd data={faqSchema} />
+      {/* Page order follows the visitor's questions: what is this (hero), which
+          brands (the strongest search demand), what can I buy (categories),
+          who are you (About), what's new (products, news), why you (benefits),
+          where/when (regions, showroom). All sections except About/products/
+          benefits/news are server components — no carousel JS on the homepage. */}
+      <Hero locale={locale} />
+      <BrandWall locale={locale} brands={brands} />
+      <CategoryTiles locale={locale} kategorienWithCounts={kategorienWithCounts} kategorien={kategorien} />
       <About data={homeContent?.second_content} />
       <TrendingProducts data={trendingProducts} />
       <WhyChooseUsSectionHome data={homeContent?.below_products} />
+      <SeoIntro locale={locale} />
+      <RegionLinks locale={locale} />
       <BlogSection data={newsData} />
-      <Choice data={homeContent?.above_footer} />
+      <ShowroomCta locale={locale} data={homeContent?.above_footer} />
     </div>
   );
 }

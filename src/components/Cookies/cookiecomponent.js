@@ -1,12 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { setCookie, getCookie, deleteCookie } from "cookies-next";
 import { useTranslations } from "next-intl";
 import CookieDetails from "./cookieItem";
 import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
 import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
-import { Dot } from "lucide-react";
+import { Dot, X } from "lucide-react";
 
 // cookieData.js
 // Only names, contacts and codes live here; every visible text (descriptions,
@@ -120,7 +120,7 @@ const DEFAULT_CONSENT = {
 // Google Consent Mode v2 update. The "default: denied" call runs first, in the
 // <head> of src/app/[locale]/layout.js, which also defines window.gtag.
 function sendConsentUpdate(consentState) {
-  if (typeof window.gtag !== "function") return;
+  ensureGtag();
   const ads = consentState.googleAds ? "granted" : "denied";
   window.gtag("consent", "update", {
     analytics_storage: consentState.googleAnalytics ? "granted" : "denied",
@@ -130,8 +130,55 @@ function sendConsentUpdate(consentState) {
   });
 }
 
-// Loads GA once, only for a consent the visitor has already saved.
+// Google Consent Mode v2 default: everything denied until the visitor's
+// choice is applied. Runs on the dataLayer *before* gtag.js is requested (see
+// loadGoogleAnalytics), which is the only place a Google tag is loaded at all.
+// This used to be an inline <script> in the <head> of [locale]/layout.js; a
+// plain <script> element inside the React tree is re-created on every
+// client-side locale switch and React logs "Encountered a script tag while
+// rendering React component" — the error that showed up when changing the
+// language. No Google tag runs without consent, so nothing is lost by
+// setting the default here instead.
+function ensureGtag() {
+  window.dataLayer = window.dataLayer || [];
+  if (typeof window.gtag !== "function") {
+    window.gtag = function gtag() {
+      window.dataLayer.push(arguments);
+    };
+  }
+  if (!window.phConsentDefaultSet) {
+    window.gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+      wait_for_update: 500,
+    });
+    window.phConsentDefaultSet = true;
+  }
+}
+
+// Removes Google Analytics' own cookies when analytics consent is withdrawn
+// (a "denied" consent update alone leaves the already-set _ga/_ga_* in place).
+function removeAnalyticsCookies() {
+  const names = document.cookie.split(";").map((c) => c.trim().split("=")[0]).filter((n) => n === "_ga" || n.startsWith("_ga_"));
+  const host = window.location.hostname;
+  const domains = [undefined, host, `.${host}`, `.${host.split(".").slice(-2).join(".")}`];
+  for (const name of names) {
+    for (const domain of domains) {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domain ? `; domain=${domain}` : ""}`;
+    }
+  }
+}
+
+// Loads GA once, only for a consent the visitor has already saved. The consent
+// update is sent on EVERY call (accept → reject → accept in one session must
+// re-grant), only the script injection and config happen once.
 function loadGoogleAnalytics(consentState) {
+  // Default + granted update are queued before the library loads, so GA's
+  // config already runs with the right consent state.
+  ensureGtag();
+  sendConsentUpdate(consentState);
   if (window.gtagInitialized) return;
 
   if (!document.querySelector(`script[src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"]`)) {
@@ -141,18 +188,9 @@ function loadGoogleAnalytics(consentState) {
     script.defer = true;
     document.head.appendChild(script);
   }
-
-  window.dataLayer = window.dataLayer || [];
-  if (typeof window.gtag !== "function") {
-    window.gtag = function gtag() {
-      window.dataLayer.push(arguments);
-    };
-  }
   window.gtagInitialized = true;
 
   window.gtag("js", new Date());
-  // Consent first, so GA's config already runs with the granted state.
-  sendConsentUpdate(consentState);
   window.gtag("config", GA_ID, {
     anonymize_ip: true,
   });
@@ -161,7 +199,9 @@ function loadGoogleAnalytics(consentState) {
 export default function CookieBanner({ forceShow = false, onClose }) {
   const t = useTranslations("Cookies");
   const [isShown, setIsShown] = useState(false);
-  const [isCompact, setIsCompact] = useState(true);
+  // Opened from the footer's "privacy settings" (forceShow): straight to the
+  // settings dialog, not the compact bar.
+  const [isCompact, setIsCompact] = useState(!forceShow);
   const pathname = usePathname();
   const locale = getLocaleFromPath(pathname);
 
@@ -196,6 +236,19 @@ export default function CookieBanner({ forceShow = false, onClose }) {
     }
   }, []);
 
+  // Consent granted elsewhere (ConsentEmbed's "load map" button) → keep this
+  // banner's state in sync, so "save selection" can't overwrite it with stale values.
+  useEffect(() => {
+    const onChange = (event) => {
+      const next = event?.detail;
+      if (next && typeof next === "object" && !Array.isArray(next)) {
+        setConsent((prev) => ({ ...prev, ...next, essential: true }));
+      }
+    };
+    window.addEventListener("ph-consent-change", onChange);
+    return () => window.removeEventListener("ph-consent-change", onChange);
+  }, []);
+
   useEffect(() => {
     // Update category consent based on individual services
     setConsent((prev) => ({
@@ -213,38 +266,65 @@ export default function CookieBanner({ forceShow = false, onClose }) {
       statistics: true,
       marketing: true,
       googleMaps: true,
-
       googleTagManager: true,
       googleAnalytics: true,
       googleAds: true,
     };
     setConsent(newConsent);
     saveConsent(newConsent);
-    window.location.reload();
   };
 
   const handleAcceptSelected = () => {
     saveConsent(consent);
-    window.location.reload();
   };
 
   const handleRejectAll = () => {
     setConsent(DEFAULT_CONSENT);
     saveConsent(DEFAULT_CONSENT);
-    window.location.reload();
   };
 
   const handleClose = () => {
-    setShowBanner(false);
+    setIsCompact(true);
+    // Dismissing the settings dialog (Escape, backdrop) without a decision must
+    // not hide the consent bar for the rest of the SPA session: without a saved
+    // choice the compact bar stays (nothing loads until the visitor decides).
+    if (forceShow || getCookie("cookieConsent")) setShowBanner(false);
     if (onClose) onClose(); // Notify parent to reset forceShow
   };
+
+  // Persist + apply the choice in place. Previously every button did a full
+  // window.location.reload() — a jarring flash on the very first interaction
+  // and a hit on LCP/INP field data. Now: cookie, Consent Mode update, GA load
+  // (if granted), notify consent-gated embeds (ConsentEmbed), close.
   const saveConsent = (consentState) => {
     setCookie("cookieConsent", JSON.stringify(consentState), {
       maxAge: 60 * 60 * 24 * 365,
+      sameSite: "lax",
+      secure: window.location.protocol === "https:",
     });
 
-    sendConsentUpdate(consentState);
+    if (consentState.googleAnalytics) {
+      loadGoogleAnalytics(consentState);
+    } else {
+      sendConsentUpdate(consentState);
+      removeAnalyticsCookies();
+    }
+    window.dispatchEvent(new CustomEvent("ph-consent-change", { detail: consentState }));
+    handleClose();
   };
+
+  // Escape closes the settings dialog without saving; focus moves into it on open.
+  const dialogRef = useRef(null);
+  useEffect(() => {
+    if (isCompact || !(forceShow || showBanner)) return;
+    dialogRef.current?.focus();
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") handleClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCompact, forceShow, showBanner]);
 
   const toggleConsent = (category) => {
     setConsent((prev) => {
@@ -298,45 +378,72 @@ export default function CookieBanner({ forceShow = false, onClose }) {
   if (!forceShow && !showBanner) return null;
   if (isCompact) {
     return (
-      <div className="fixed bottom-0 left-0 right-0 bg-white text-[#30373e] shadow-lg z-50 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
-          <div className="flex- mb-4 md:mb-0 ">
-            <h3 className="font-medium text-gray-900">{t("bannerTitle")}</h3>
+      <section
+        role="region"
+        aria-label={t("bannerTitle")}
+        className="fixed bottom-0 left-0 right-0 bg-white text-[#30373e] shadow-lg z-50 border-t border-gray-200"
+      >
+        <div className="max-w-7xl mx-auto px-4 py-3 md:py-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div>
+            {/* Not a heading: the bar is on every page and must not join the outline. */}
+            <p className="font-medium text-gray-900">{t("bannerTitle")}</p>
             <p className="text-sm text-gray-600">{t("bannerText")}</p>
           </div>
-          <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+          {/* Accept and Reject get the same weight (no dark-pattern nudge); compact
+              two-column layout on phones so the bar covers less of the page. */}
+          <div className="grid grid-cols-2 md:flex gap-2 md:gap-3 w-full md:w-auto">
             <button
+              type="button"
               onClick={handleAcceptAll}
-              className="px-4 py-2 text-white bg-gray-800 rounded-lg hover:bg-gray-800 transition-colors text-sm "
+              className="px-4 py-2.5 text-white bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors text-sm"
             >
               {t("acceptAll")}
             </button>
             <button
+              type="button"
               onClick={handleRejectAll}
-              className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+              className="px-4 py-2.5 text-white bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors text-sm"
             >
               {t("rejectAll")}
             </button>
             <button
+              type="button"
               onClick={toggleCompact}
-              className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+              className="col-span-2 px-4 py-2.5 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm"
             >
               {t("customize")}
             </button>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/50 z-60 backdrop-blur-sm" />
+      <div className="fixed inset-0 bg-black/50 z-60 backdrop-blur-sm" onClick={handleClose} />
       <div className={`fixed inset-0 flex items-center justify-center z-60 pointer-events-none `}>
-        <div className="max-h-[100dvh] h-full lg:max-w-[800px] lg:max-h-[90vh] bg-white text-[#30373e] lg:rounded-xl shadow-2xl overflow-hidden flex flex-col pointer-events-auto overflow-y-auto relative lg:h-auto ">
-          <h2 className="text-2xl font-bold text-gray-800 p-6 sticky bg-white z-10 pb-4 top-0 md:relative">
-            {t("modalTitle")}
-          </h2>
+        <div
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cookie-settings-title"
+          tabIndex={-1}
+          className="max-h-[100dvh] h-full lg:max-w-[800px] lg:max-h-[90vh] bg-white text-[#30373e] lg:rounded-xl shadow-2xl overflow-hidden flex flex-col pointer-events-auto overflow-y-auto relative lg:h-auto outline-none"
+        >
+          <div className="flex items-start justify-between gap-4 p-6 pb-4 sticky bg-white z-10 top-0 md:relative">
+            <h2 id="cookie-settings-title" className="text-2xl font-bold text-gray-800">
+              {t("modalTitle")}
+            </h2>
+            <button
+              type="button"
+              onClick={handleClose}
+              aria-label={t("close")}
+              className="-mr-2 -mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+            >
+              <X size={20} aria-hidden="true" />
+            </button>
+          </div>
           {/* Header - Updated layout */}
           <div className="p-6 border-b border-gray-200 flex justify-between flex-col-reverse items-start md:flex-row relative">
             <div className="w-[100%] flex-1 md:w-[60%]">
@@ -370,12 +477,14 @@ export default function CookieBanner({ forceShow = false, onClose }) {
             {t("consentModeNotice")}
           </p>
           <div className="mt-3">
-            <p
-              className={`text-center text-sm text-[var(--secondry)]/80  ${isShown && `hidden`} md:hidden pb-4 `}
+            <button
+              type="button"
+              className={`block w-full text-center text-sm text-[#30373e]/80 underline ${isShown ? "hidden" : ""} md:hidden pb-4`}
               onClick={() => setIsShown(!isShown)}
+              aria-expanded={isShown}
             >
               {t("showPreferences")}
-            </p>
+            </button>
           </div>
 
           {/* Scrollable Content - Keep this part exactly the same */}

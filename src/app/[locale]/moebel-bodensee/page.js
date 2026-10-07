@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
   });
 }
 
-// Placeholder answers — check them before switching the page to index.
+// Content is static German copy; keep facts (address, hours, brands) in sync with the footer/CMS.
 const CONTENT = {
   banner: {
     image: "/Images/Wohnen/bannerImage5.jpg",
@@ -102,5 +102,5 @@ const CONTENT = {
 export default async function MoebelBodenseePage({ params }) {
   const { locale } = await params;
   if (locale !== "de") notFound();
-  return <LandingPage content={CONTENT} />;
+  return <LandingPage content={CONTENT} path={PATH} />;
 }

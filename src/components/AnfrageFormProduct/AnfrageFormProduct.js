@@ -297,14 +297,14 @@ export default function AnfrageFormProduct({ onBack }) {
                             distance={20}
                             delay={150}
                         >
-                            <label className="block text-gray-700 font-medium mb-2">
+                            <label htmlFor="anfrage-companyName" className="block text-gray-700 font-medium mb-2">
                                 {t('companyName')} <span className="text-red-500">*</span>
                             </label>
-                            <input
+                            <input id="anfrage-companyName" autoComplete="organization"
                                 type="text"
                                 value={formData.companyName}
                                 onChange={(e) => handleInputChange('companyName', e.target.value)}
-                                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400 transition-all"
+                                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d1b250] focus:border-[#d1b250] transition-all"
                                 required={formData.userType === 'Geschäft'}
                             />
                         </FadeInView>
@@ -314,14 +314,14 @@ export default function AnfrageFormProduct({ onBack }) {
                             distance={20}
                             delay={200}
                         >
-                            <label className="block text-gray-700 font-medium mb-2">
+                            <label htmlFor="anfrage-nrFiscal" className="block text-gray-700 font-medium mb-2">
                                 {t('taxNumber')} <span className="text-red-500">*</span>
                             </label>
-                            <input
+                            <input id="anfrage-nrFiscal"
                                 type="text"
                                 value={formData.nrFiscal}
                                 onChange={(e) => handleInputChange('nrFiscal', e.target.value)}
-                                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400 transition-all"
+                                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d1b250] focus:border-[#d1b250] transition-all"
                                 required={formData.userType === 'Geschäft'}
                             />
                         </FadeInView>
@@ -335,14 +335,14 @@ export default function AnfrageFormProduct({ onBack }) {
                         distance={20}
                         delay={250}
                     >
-                        <label className="block text-gray-700 font-medium mb-2">
+                        <label htmlFor="anfrage-firstName" className="block text-gray-700 font-medium mb-2">
                             {t('firstName')} <span className="text-red-500">*</span>
                         </label>
-                        <input
+                        <input id="anfrage-firstName" autoComplete="given-name"
                             type="text"
                             value={formData.firstName}
                             onChange={(e) => handleInputChange('firstName', e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400 transition-all"
+                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d1b250] focus:border-[#d1b250] transition-all"
                             required
                         />
                     </FadeInView>
@@ -352,14 +352,14 @@ export default function AnfrageFormProduct({ onBack }) {
                         distance={20}
                         delay={300}
                     >
-                        <label className="block text-gray-700 font-medium mb-2">
+                        <label htmlFor="anfrage-lastName" className="block text-gray-700 font-medium mb-2">
                             {t('lastName')} <span className="text-red-500">*</span>
                         </label>
-                        <input
+                        <input id="anfrage-lastName" autoComplete="family-name"
                             type="text"
                             value={formData.lastName}
                             onChange={(e) => handleInputChange('lastName', e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400 transition-all"
+                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d1b250] focus:border-[#d1b250] transition-all"
                             required
                         />
                     </FadeInView>
@@ -372,14 +372,14 @@ export default function AnfrageFormProduct({ onBack }) {
                         distance={20}
                         delay={350}
                     >
-                        <label className="block text-gray-700 font-medium mb-2">
+                        <label htmlFor="anfrage-country" className="block text-gray-700 font-medium mb-2">
                             {t('country')} <span className="text-red-500">*</span>
                         </label>
-                        <input
+                        <input id="anfrage-country" autoComplete="country-name"
                             type="text"
                             value={formData.country}
                             onChange={(e) => handleInputChange('country', e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400 transition-all"
+                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d1b250] focus:border-[#d1b250] transition-all"
                             required
                         />
                     </FadeInView>
@@ -389,14 +389,14 @@ export default function AnfrageFormProduct({ onBack }) {
                         distance={20}
                         delay={400}
                     >
-                        <label className="block text-gray-700 font-medium mb-2">
+                        <label htmlFor="anfrage-city" className="block text-gray-700 font-medium mb-2">
                             {t('city')} <span className="text-red-500">*</span>
                         </label>
-                        <input
+                        <input id="anfrage-city" autoComplete="address-level2"
                             type="text"
                             value={formData.city}
                             onChange={(e) => handleInputChange('city', e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400 transition-all"
+                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d1b250] focus:border-[#d1b250] transition-all"
                             required
                         />
                     </FadeInView>
@@ -408,7 +408,7 @@ export default function AnfrageFormProduct({ onBack }) {
                     distance={20}
                     delay={450}
                 >
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label htmlFor="anfrage-alternativeAddress" className="block text-gray-700 font-medium mb-2">
                         {t('address')} <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -432,7 +432,7 @@ export default function AnfrageFormProduct({ onBack }) {
                     <label className="block text-gray-600 mb-2">
                         {t('description')}
                     </label>
-                    <input
+                    <input id="anfrage-alternativeAddress"
                         type="text"
                         value={formData.alternativeAddress}
                         onChange={(e) =>
@@ -450,14 +450,14 @@ export default function AnfrageFormProduct({ onBack }) {
                         distance={20}
                         delay={550}
                     >
-                        <label className="block text-gray-700 font-medium mb-2">
+                        <label htmlFor="anfrage-email" className="block text-gray-700 font-medium mb-2">
                             {t('email')} <span className="text-red-500">*</span>
                         </label>
-                        <input
+                        <input id="anfrage-email" autoComplete="email"
                             type="email"
                             value={formData.email}
                             onChange={(e) => handleInputChange('email', e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400 transition-all"
+                            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d1b250] focus:border-[#d1b250] transition-all"
                             required
                         />
                     </FadeInView>

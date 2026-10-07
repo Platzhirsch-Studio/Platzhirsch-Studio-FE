@@ -5,6 +5,7 @@ export async function fetchHomepage() {
     try {
         const response = await fetch(`${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.homepage.api.homepage_data`, {
             next: { revalidate: 3600 }, // 3600 seconds = 1 hour
+            signal: AbortSignal.timeout(15000),
         });
 
         if (!response.ok) {

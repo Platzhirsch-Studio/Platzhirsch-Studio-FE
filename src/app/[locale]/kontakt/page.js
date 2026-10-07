@@ -1,4 +1,5 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import KontaktSecond from "@/components/Kontakt/kontakt";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import {
@@ -98,13 +99,13 @@ export async function generateMetadata({ params }) {
       description: meta?.description || getLocalizedDescription(locale),
       robots: { index: true, follow: true },
       alternates: {
-        canonical: meta?.url || PAGE_URL,
+        canonical: PAGE_URL,
         languages: hreflangLanguages((l) => getKontaktPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
         description: meta?.description || getLocalizedDescription(locale),
-        url: meta?.url || PAGE_URL,
+        url: PAGE_URL,
         siteName: "Platzhirsch Home Living",
         images: [{
           url: image ? image : "/Images/Kontakt/questionmark-og.jpg",
@@ -139,7 +140,7 @@ export default async function Page({ params }) {
   const { locale } = await params;
 
   const titleOne = locale == "it" ? "Contatto" : locale == "en" ? "Contact" : locale == "fr" ? "Contact" : "Kontakt";
-  const Home = locale == "it" ? "Casa" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
 
   // Dynamic URLs
   const BASE_URL = getBaseUrl(locale);
@@ -184,10 +185,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
-      />
+      <JsonLd data={contactPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <KontaktSecond />
       <KontaktLastSection />

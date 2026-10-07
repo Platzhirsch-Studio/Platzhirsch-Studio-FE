@@ -1,5 +1,7 @@
 import Advice from "@/components/Beratung/advice";
+import JsonLd from "@/components/Reusable/JsonLd";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
+import { Suspense } from "react";
 import BeratungClient from "@/components/BeratungClient/BeratungClient";
 import {
   fetchConsultationKeywords,
@@ -33,21 +35,23 @@ function getBeratungPageUrl(locale) {
   }
 }
 
+// Fallback metadata (the CMS consultation keywords win when set). Targets the
+// "interior design" cluster (SISTRIX AT: 1,250 clicks/month, "innenarchitekt" 300).
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "Consulenza Design | Platzhirsch Home Living Lochau";
-    case "en": return "Design Consulting | Platzhirsch Home Living Lochau";
-    case "fr": return "Conseil en Design | Platzhirsch Home Living Lochau";
-    default: return "Designberatung | Platzhirsch Home Living Lochau";
+    case "it": return "Interior Design & Consulenza d'arredo in Vorarlberg | Platzhirsch";
+    case "en": return "Interior Design & Consulting in Vorarlberg | Platzhirsch Home Living";
+    case "fr": return "Interior Design & Conseil en aménagement au Vorarlberg | Platzhirsch";
+    default: return "Interior Design & Einrichtungsberatung in Vorarlberg | Platzhirsch";
   }
 };
 
 const getLocalizedDescription = (locale) => {
   switch (locale) {
-    case "it": return "Consulenza esperta per il design della tua casa e ufficio. Soluzioni personalizzate per i tuoi spazi.";
-    case "en": return "Expert consulting for your home and office design. Personalized solutions for your spaces.";
-    case "fr": return "Conseil d'expert pour l'aménagement de votre maison et bureau. Solutions personnalisées pour vos espaces.";
-    default: return "Expertenberatung für Ihr Zuhause und Büro. Maßgeschneiderte Lösungen für Ihre Räume.";
+    case "it": return "Interior design e consulenza d'arredo per casa, appartamento e spazi commerciali: progettazione di mobili, cucine e luce dallo showroom di Lochau sul Lago di Costanza – in tutta l'Austria, Germania e Svizzera.";
+    case "en": return "Interior design and consulting for houses, apartments and commercial spaces: planning of furniture, kitchens and lighting from the showroom in Lochau on Lake Constance – across Austria, Germany and Switzerland.";
+    case "fr": return "Interior design et conseil en aménagement pour maison, appartement et espaces professionnels : planification du mobilier, des cuisines et de l'éclairage depuis le showroom de Lochau, lac de Constance – Autriche, Allemagne, Suisse.";
+    default: return "Innenarchitektur und Einrichtungsberatung für Haus, Wohnung und Objekt: Planung von Designermöbeln, Küchen und Licht aus dem Showroom in Lochau am Bodensee – in Vorarlberg, ganz Österreich, Deutschland und der Schweiz.";
   }
 };
 
@@ -95,13 +99,13 @@ export async function generateMetadata({ params }) {
       description: meta?.description || getLocalizedDescription(locale),
       robots: { index: true, follow: true },
       alternates: {
-        canonical: meta?.url || PAGE_URL,
+        canonical: PAGE_URL,
         languages: hreflangLanguages((l) => getBeratungPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
         description: meta?.description || getLocalizedDescription(locale),
-        url: meta?.url || PAGE_URL,
+        url: PAGE_URL,
         siteName: "Platzhirsch Home Living",
         images: [
           {
@@ -137,7 +141,7 @@ export default async function Home({ params }) {
   const { locale } = await params;
 
   const titleOne = locale == "it" ? "Consulenza" : locale == "en" ? "Consulting" : locale == "fr" ? "Conseil" : "Beratung";
-  const Home = locale == "it" ? "Casa" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
 
   // Dynamic URLs
   const BASE_URL = getBaseUrl(locale);
@@ -179,13 +183,13 @@ export default async function Home({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <Advice />
-      <BeratungClient />
+      {/* Suspense: the wizard reads ?produkt= via useSearchParams. */}
+      <Suspense fallback={null}>
+        <BeratungClient />
+      </Suspense>
     </div>
   );
 }

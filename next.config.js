@@ -205,21 +205,22 @@ const baseConfig = {
         destination: "/de/ueber-uns/marken/minotti",
         permanent: true,
       },
-      // Local-intent landing pages (Vorarlberg keywords) — reclaim link equity now;
-      // recreating these as real localized pages is a high-value local-SEO follow-up.
+      // Old local-intent landing pages → their dedicated successors
+      // (src/app/[locale]/<slug>/page.js), so the local keyword equity lands on
+      // the page that actually targets that query.
       {
         source: "/interior-design-beratung-planung-vorarlberg",
-        destination: "/de/beratung",
+        destination: "/de/interior-design-vorarlberg",
         permanent: true,
       },
       {
         source: "/exklusive-kuechen-vorarlberg",
-        destination: "/de/produkte/kitchen",
+        destination: "/de/kuechen-vorarlberg",
         permanent: true,
       },
       {
         source: "/wohnkonzepte-wohnzimmer-vorarlberg",
-        destination: "/de/produkte",
+        destination: "/de/wohnzimmer-einrichten-vorarlberg",
         permanent: true,
       },
       { source: "/", destination: "/de", permanent: true },

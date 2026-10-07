@@ -6,7 +6,7 @@ import { detectLocale, notFoundTitle } from "@/i18n/detectLocale";
 
 import "../globals.css";
 
-import { Montserrat } from "next/font/google";
+import { Montserrat, Bodoni_Moda } from "next/font/google";
 import LoaderWrapper from "./LoaderWrapper";
 import JsonLd from "@/components/Reusable/JsonLd";
 import { fetchLayoutData } from "@/lib/api/Keywords/fetchLayoutKeywords"
@@ -21,6 +21,17 @@ const montserrat = Montserrat({
   subsets: ["latin", "latin-ext"],
   display: "swap",
   variable: "--font-montserrat",
+});
+
+// Display face for headlines (homepage hero and section titles): Bodoni Moda,
+// the high-contrast serif of Italian design and fashion houses — the brands
+// this showroom sells. Variable font with optical sizes; served from this
+// domain like Montserrat. Used via the `font-display` utility (globals.css).
+const bodoni = Bodoni_Moda({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-bodoni",
+  axes: ["opsz"],
 });
 
 // Site-wide structured data. Organization is modelled as a FurnitureStore
@@ -202,19 +213,12 @@ export default async function LocaleLayout({ children, params }) {
 
   // The locale is now correctly set from params
   return (
-    <html lang={locale} dir="ltr" className={montserrat.variable}>
+    <html lang={locale} dir="ltr" className={`${montserrat.variable} ${bodoni.variable}`}>
       <head>
-        {/* Google Consent Mode v2 default: must run before any Google tag, so
-            everything is denied until the cookie banner sends its update. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});`,
-          }}
-        />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        {/* Google Consent Mode v2 default lives in Cookies/cookiecomponent.js
+            (ensureGtag): no Google tag loads before consent, and a raw <script>
+            here was re-created by React on every client-side language switch
+            ("Encountered a script tag while rendering React component"). */}
         <meta name="ahrefs-site-verification" content="7c9d1c48de554cc2567eb6db64f49352c141ab335b8573e9366103bc7aaa9587" />
         {/* FadeInView renders with inline opacity:0 until JS reveals it —
             without JS (crawlers, JS-off) show that content immediately. */}

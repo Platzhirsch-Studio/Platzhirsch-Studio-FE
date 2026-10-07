@@ -1,4 +1,5 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import KarriereSecond from "@/components/Karriere/karriere";
 import KarrierePosition from "@/components/Karriere/karriereposition";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
@@ -99,7 +100,7 @@ export async function generateMetadata({ params }) {
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
         description: meta?.description || getLocalizedDescription(locale),
-        url: meta?.url || PAGE_URL,
+        url: PAGE_URL,
         siteName: "Platzhirsch Home Living",
         images: [
           {
@@ -119,7 +120,7 @@ export async function generateMetadata({ params }) {
         images: [image ? image : "/Images/UberUns/livingroom-view.jpg"],
       },
       alternates: {
-        canonical: meta?.url || PAGE_URL,
+        canonical: PAGE_URL,
         languages: hreflangLanguages((l) => getKarrierePageUrl(l))
       },
     };
@@ -156,7 +157,7 @@ export default async function Page({ params }) {
           : "Karriere";
   const Home =
     locale == "it"
-      ? "Casa "
+      ? "Home"
       : locale == "en"
         ? "Home"
         : locale == "fr"
@@ -223,10 +224,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <KarriereSecond />
       <KarrierePosition karriere={karriere} />

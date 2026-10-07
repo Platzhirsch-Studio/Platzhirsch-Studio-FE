@@ -6,6 +6,7 @@ import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
 export async function fetchRawMarkenData() {
   const response = await fetch(`${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.marken.api.marken_data`, {
     next: { revalidate: 3600, tags: ["marken"] },
+    signal: AbortSignal.timeout(15000),
   });
 
   if (!response.ok) {

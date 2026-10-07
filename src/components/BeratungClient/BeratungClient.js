@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import FadeInView from "@/components/Reusable/FadeInView";
 import {
   Home,
@@ -39,10 +40,14 @@ const Notification = ({ type, text }) => (
 const MultiStepForm = () => {
   const t = useTranslations("MultiStepForm");
   const [step, setStep] = useState(1);
+  // ?produkt=<Marke Produkt> (from a product page's "Beratung anfragen"):
+  // the request starts with the product named, so the visitor doesn't have to
+  // type which piece it is about.
+  const produkt = useSearchParams().get("produkt");
   const [selectedOptions, setSelectedOptions] = useState({
     step1: null,
     step2: null,
-    message: "",
+    message: produkt ? `Anfrage zu: ${produkt}\n` : "",
     vorname: "",
     nachname: "",
     email: "",
@@ -156,7 +161,7 @@ const MultiStepForm = () => {
 
   return (
     <div className="max-w-4xl mx-auto my-10 lg:my-16 px-4">
-      <h2 className="text-md mb-3 text-center text-[#d1b250] uppercase">{t("formTitle")}</h2>
+      <h2 className="text-md mb-3 text-center text-gold-text uppercase">{t("formTitle")}</h2>
       <form onSubmit={handleSubmit} className="space-y-8">
 
         {[1, 2].map((stepNum) =>

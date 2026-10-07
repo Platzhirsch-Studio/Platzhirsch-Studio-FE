@@ -96,13 +96,17 @@ const ProductInfoTabs = ({ labels, descriptionParagraphs, dims, materialsFields,
             role="tabpanel"
             className={`columns-1 gap-10 text-sm leading-relaxed text-[#30373e]/80 lg:columns-2 ${active === "description" ? "" : "hidden"}`}
           >
+            {/* <div>, not <p>: the CMS text is rich text and often contains its
+                own <p> tags. A <p> inside a <p> is invalid HTML — the browser
+                closes the outer one, the server HTML no longer matches React's
+                tree and every product page logged a hydration error. */}
             {descriptionParagraphs.map((p, i) => (
-  <p
-    key={i}
-    className="mb-4 break-inside-avoid"
-    dangerouslySetInnerHTML={{ __html: p }}
-  />
-))}
+              <div
+                key={i}
+                className="mb-4 break-inside-avoid [&>p]:mb-4 [&>p:last-child]:mb-0"
+                dangerouslySetInnerHTML={{ __html: p }}
+              />
+            ))}
 
           </div>
         )}

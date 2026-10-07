@@ -1,4 +1,5 @@
 // src/lib/shop/shopProducts.js
+import { cleanProductName, displayBrandName } from "@/lib/content/brands";
 // Turns the raw Produkte New card rows (fetchProdukteByKategorie(),
 // searchProdukte()) into the shape the /produkte category-listing page and
 // the navbar search need — replaces the
@@ -24,8 +25,8 @@ function toShopProduct(p) {
   const firstImage = p.bild_anhangen?.[0]?.bild_anhangen;
   return {
     id: p.name,
-    name: p.produkt_name,
-    brand: p.marken,
+    name: cleanProductName(p.produkt_name),
+    brand: displayBrandName(p.marken),
     categoryKey,
     indoorOutdoor: p.indoor_and_outdoor,
     image: firstImage ? `/cmx${firstImage}` : null,
@@ -63,11 +64,36 @@ function localizedField(detail, baseKey, locale) {
   return (detail?.[baseKey] || "").trim();
 }
 
+// CMS rich text is rendered with dangerouslySetInnerHTML on the product and
+// collection pages, so it is reduced to a small allowlist here, on the server:
+// script/style/iframe/object/embed/svg blocks are dropped, unknown tags are
+// stripped (their text stays), event handlers and javascript: URLs are
+// removed, and links get rel="noopener". CMS editors are trusted, but one
+// compromised backoffice account must not become site-wide XSS.
+const ALLOWED_TAGS = new Set(["p", "br", "strong", "b", "em", "i", "u", "ul", "ol", "li", "a", "span", "h3", "h4"]);
+export function sanitizeCmsHtml(html) {
+  let out = String(html || "");
+  out = out.replace(/<!--[\s\S]*?-->/g, "");
+  out = out.replace(/<(script|style|iframe|object|embed|svg|math|form|textarea|template|noscript)\b[\s\S]*?<\/\1\s*>/gi, "");
+  out = out.replace(/<(script|style|iframe|object|embed|svg|math|form|textarea|template|noscript)\b[^>]*>/gi, "");
+  out = out.replace(/<\/?([a-zA-Z][a-zA-Z0-9-]*)\b([^>]*)>/g, (match, rawTag, attrs) => {
+    const tag = rawTag.toLowerCase();
+    if (!ALLOWED_TAGS.has(tag)) return "";
+    if (match.startsWith("</")) return `</${tag}>`;
+    if (tag !== "a") return `<${tag}>`;
+    const href = /href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i.exec(attrs || "");
+    const url = (href && (href[1] ?? href[2] ?? href[3]) || "").trim();
+    const safe = /^(https?:\/\/|mailto:|tel:|\/(?!\/)|#)/i.test(url) ? url.replace(/"/g, "%22") : null;
+    return safe ? `<a href="${safe}" rel="noopener">` : "<a>";
+  });
+  return out;
+}
+
 // CMS rich-text fields come through with literal tab runs (copy/pasted from
 // Word) and inconsistent blank-line spacing — collapse both before splitting
 // into paragraphs for display.
 function toParagraphs(text) {
-  return (text || "")
+  return sanitizeCmsHtml(text)
     .replace(/[ \t]+/g, " ")
     .split(/\n{2,}/)
     .map((p) => p.trim())
@@ -86,17 +112,26 @@ export function toShopProductDetail(detail, locale, listEntry) {
     .filter(Boolean)
     .map((path) => `/cmx${path}`);
 
-  const descriptionParagraphs = [
-    ...toParagraphs(localizedField(detail, "beschreibung", locale)),
-    ...toParagraphs(localizedField(detail, "mehr_beschreibung", locale)),
-  ];
+  // The CMS often holds the same manufacturer text twice (beschreibung = the
+  // rewritten version, mehr_beschreibung = the original) — rendered side by
+  // side that is self-duplicated content. Paragraphs of the second field that
+  // largely repeat the first are dropped.
+  const first = toParagraphs(localizedField(detail, "beschreibung", locale));
+  const firstWords = new Set(first.join(" ").toLowerCase().replace(/<[^>]*>/g, " ").split(/\W+/).filter((w) => w.length > 3));
+  const second = toParagraphs(localizedField(detail, "mehr_beschreibung", locale)).filter((p) => {
+    const words = p.toLowerCase().replace(/<[^>]*>/g, " ").split(/\W+/).filter((w) => w.length > 3);
+    if (!words.length || !firstWords.size) return true;
+    const shared = words.filter((w) => firstWords.has(w)).length / words.length;
+    return shared < 0.6;
+  });
+  const descriptionParagraphs = [...first, ...second];
 
   const infoRow = (detail.additional_information || [])[0] || null;
 
   return {
     id: detail.name,
-    name: detail.produkt_name,
-    brand: detail.marken,
+    name: cleanProductName(detail.produkt_name),
+    brand: displayBrandName(detail.marken),
     designer: detail.designer || listEntry?.designer || null,
     categoryKey: (detail.kategories || listEntry?.categoryKey || "").toLowerCase(),
     images,

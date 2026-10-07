@@ -41,7 +41,7 @@ export default async function ShopPage({ params }) {
   const tMenu = await getTranslations({ locale, namespace: "ProductsMenu" });
 
   const title = getLocalizedTitle(locale);
-  const Home = locale === "it" ? "Casa" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
+  const Home = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
   const productsLabel = locale === "it" ? "Prodotti" : locale === "en" ? "Products" : locale === "fr" ? "Produits" : "Produkte";
   const productPath = ROUTES.produkte[locale] ? `${ROUTES.produkte[locale]}` : `/produkte`;
   // Category links use the translated catalogue path (/products/…, /produits/…).
@@ -135,7 +135,7 @@ export default async function ShopPage({ params }) {
   return (
     <div>
       <JsonLd data={structuredData} />
-      <BreadcrumbBar links={breadcrumbLinks} title={title} subtitle={t("shopByCategory")} />
+      <BreadcrumbBar links={breadcrumbLinks} title={title} subtitle={hubSeo(locale).description} />
       <ShopCategoryGrid
         sections={sections}
         locale={locale}

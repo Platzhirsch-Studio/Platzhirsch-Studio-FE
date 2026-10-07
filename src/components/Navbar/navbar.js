@@ -1,4 +1,6 @@
 "use client";
+import { PHONE_DISPLAY, PHONE_HREF, EMAIL, EMAIL_HREF } from "@/lib/site";
+import { LANDING_PAGE_SLUGS } from "@/lib/content/landingPages";
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -29,6 +31,7 @@ const Navbar = ({ activeCategoryKeys = null }) => {
   const [searchLoading, setSearchLoading] = useState(false);
   const searchBoxRef = useRef(null);
   const searchAbortRef = useRef(null);
+  const languageCloseTimer = useRef(null);
   const t = useTranslations('Navbar');
   const tp = useTranslations('ProductsMenu');
   const router = useRouter();
@@ -90,13 +93,21 @@ const Navbar = ({ activeCategoryKeys = null }) => {
     localStorage.setItem('preferredLocale', urlLocale);
   }, [urlLocale]);
 
-  // Handle language change with proper route translation
-  const handleLanguageChange = (newLang) => {
+  // Handle language change with proper route translation.
+  // Pages that exist in German only (the local landing pages): switching the
+  // language there used to land on a 404 — send those to the other locale's
+  // homepage instead. Keep in sync with LANDING_PAGES in Reusable/Footer.js.
+  const GERMAN_ONLY_PAGES = LANDING_PAGE_SLUGS;
+  // URL of the current page in `newLang` (pure; used for the real <a href>
+  // options in the desktop list and by handleLanguageChange).
+  const languageHref = (newLang) => {
     const segments = pathname.split('/').filter(Boolean);
     let currentLocale = supportedLocales.includes(segments[0]?.toLowerCase())
       ? segments.shift()
       : urlLocale;
     const currentPath = segments.join('/');
+
+    if (newLang !== 'de' && GERMAN_ONLY_PAGES.includes(currentPath)) return `/${newLang}`;
 
     // Try to find a matching route in ROUTES
     let newPath = '';
@@ -129,17 +140,36 @@ const Navbar = ({ activeCategoryKeys = null }) => {
     //   }
     // }
 
+    // Dynamic pages (/produkte/<kategorie>/<produkt>, /ueber-uns/marken/<marke>,
+    // /news/<titel>): translate the longest matching route prefix and keep the
+    // rest. Without this the link pointed at e.g. /en/produkte/beds, which only
+    // worked through the middleware's redirect to /en/products/beds.
+    if (!newPath) {
+      let best = null;
+      Object.values(ROUTES).forEach((translations) => {
+        if (typeof translations !== 'object') return;
+        const from = (translations[currentLocale] || '').replace(/^\//, '');
+        if (from && (currentPath === from || currentPath.startsWith(from + '/')) && (!best || from.length > best.from.length)) {
+          best = { from, to: translations[newLang] };
+        }
+      });
+      if (best && best.to) newPath = `${best.to}${currentPath.slice(best.from.length)}`;
+    }
+
     // Fallback: just switch the locale
     if (!newPath) {
       newPath = currentPath;
     }
 
-    document.cookie = `NEXT_LOCALE=${newLang}; path=/; max-age=${60 * 60 * 24 * 365}`;
 
-    // ✅ Save to localStorage as backup
+    // Keep the query string (?marke=, ?q=) — it used to be dropped on switch.
+    const search = typeof window !== 'undefined' ? window.location.search : '';
+    return `/${newLang}${newPath.startsWith('/') ? '' : '/'}${newPath}${search}`;
+  };
+
+  const handleLanguageChange = (newLang) => {
     localStorage.setItem('preferredLocale', newLang);
-
-    router.push(`/${newLang}${newPath.startsWith('/') ? '' : '/'}${newPath}`);
+    router.push(languageHref(newLang));
   };
 
   // Navigation items with proper localized paths
@@ -302,6 +332,19 @@ const Navbar = ({ activeCategoryKeys = null }) => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
 
+  // Escape closes whatever is open (mobile drawer, mega menus, language list, search).
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key !== "Escape") return;
+      setOpenDropdown(null);
+      setOpenProductGroup(null);
+      setIsOpen(false);
+      closeSearch();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [closeSearch]);
+
   // Force-close the mobile drawer when the viewport grows past the mobile
   // breakpoint, so it never stays mounted (and body scroll never stays
   // locked) once the desktop nav takes over.
@@ -318,7 +361,7 @@ const Navbar = ({ activeCategoryKeys = null }) => {
   // Search results list — shared by the desktop dropdown and the mobile menu.
   const renderSearchResults = () =>
       searchLoading ? (
-        <p className="px-4 py-4 text-sm text-[#30373e]/60">…</p>
+        <p className="px-4 py-4 text-sm text-[#30373e]/75">…</p>
       ) : hasSearchResults ? (
         <>
           {/* "Sofas nach Marke" first: brands with products in a matched
@@ -458,11 +501,18 @@ const Navbar = ({ activeCategoryKeys = null }) => {
           )}
         </>
       ) : (
-        <p className="px-4 py-4 text-sm text-[#30373e]/60">{t("searchNoResults")}</p>
+        <p className="px-4 py-4 text-sm text-[#30373e]/75">{t("searchNoResults")}</p>
       );
 
   return (
-    <header className="fixed w-full z-50 shadow-md">
+    <header
+      className="fixed w-full z-50 shadow-md"
+      // Keyboard: a mega menu opened by focus closes again once focus leaves
+      // its trigger AND its panel (both carry data-menu-root).
+      onFocusCapture={(e) => {
+        if (!e.target.closest("[data-menu-root]")) setOpenDropdown(null);
+      }}
+    >
       <style jsx>{`
         @keyframes fadeInSlideDown {
           from { opacity: 0; transform: translateY(-8px); }
@@ -473,7 +523,7 @@ const Navbar = ({ activeCategoryKeys = null }) => {
 
       {/* TOP UTILITY BAR */}
       <div
-        className={`hidden lg:block bg-[#0f1624] text-white overflow-hidden transition-all duration-300 ${scrolled ? "max-h-0 opacity-0" : "max-h-12 opacity-100"
+        className={`hidden lg:block bg-night text-white overflow-hidden transition-all duration-300 ${scrolled ? "max-h-0 opacity-0" : "max-h-12 opacity-100"
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center py-2 text-xs">
@@ -484,7 +534,7 @@ const Navbar = ({ activeCategoryKeys = null }) => {
             </span>
             <span className="flex items-center gap-1.5 hover:text-[#d1b250] transition">
               <Phone size={13} />
-              <a href="tel:+43557446255">+43 5574 46255</a>
+              <a href={PHONE_HREF}>{PHONE_DISPLAY}</a>
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -526,12 +576,11 @@ const Navbar = ({ activeCategoryKeys = null }) => {
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center py-3">
           <Link
             href={localizeHref("/")}
-            prefetch={true}
             className="flex items-center h-14 w-36 relative shrink-0"
           >
             <Image
               src="/Images/Navbar/Logo.png"
-              alt="Logo"
+              alt={t("logoAlt")}
               fill
               className="object-contain object-left"
               sizes="(max-width: 768px) 130px, 150px"
@@ -543,10 +592,12 @@ const Navbar = ({ activeCategoryKeys = null }) => {
             <div ref={searchBoxRef} className="relative w-56 xl:w-72">
               <form
                 onSubmit={handleSearchSubmit}
+                role="search"
                 className="flex items-center border border-[#30373e]/20 rounded-full overflow-hidden focus-within:ring-1 focus-within:ring-[#d1b250] transition"
               >
                 <input
-                  type="text"
+                  type="search"
+                  aria-label={t("search")}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onFocus={() => { if (hasSearchResults) setSearchOpen(true); }}
@@ -572,8 +623,7 @@ const Navbar = ({ activeCategoryKeys = null }) => {
 
             <Link
               href={ROUTES.merkliste[urlLocale] ? localizeHref(ROUTES.merkliste[urlLocale]) : localizeHref("/merkliste")}
-              prefetch={true}
-              aria-label="Merkliste"
+              aria-label={`${t("wishlist")}${getTotalItems() > 0 ? ` (${getTotalItems()})` : ""}`}
               className="flex items-center text-[#30373e] hover:text-[#d1b250] transition no-underline"
               style={{ textDecoration: 'none' }}
               onClick={closeMobileMenu}
@@ -591,29 +641,36 @@ const Navbar = ({ activeCategoryKeys = null }) => {
             {/* LANGUAGE DROPDOWN */}
             <div
               className="relative"
-              onMouseEnter={() => setOpenDropdown("language")}
-              onMouseLeave={() => setOpenDropdown(null)}
-              onClick={() => toggleDropdown("language")}
+              onMouseEnter={() => { clearTimeout(languageCloseTimer.current); setOpenDropdown("language"); }}
+              onMouseLeave={() => { languageCloseTimer.current = setTimeout(() => setOpenDropdown((d) => (d === "language" ? null : d)), 250); }}
             >
-              <div className="flex items-center text-[#30373e] text-sm cursor-pointer transition">
+              {/* A real button: focusable and announced. Click only OPENS — hover
+                  already opened it, so a toggling click closed it again on touch
+                  tablets (mouseenter + click fire together). Escape closes. */}
+              <button
+                type="button"
+                aria-haspopup="true"
+                aria-expanded={openDropdown === "language"}
+                onClick={() => setOpenDropdown("language")}
+                className="flex items-center text-[#30373e] text-sm cursor-pointer transition"
+              >
                 <div className="w-6 h-6 mr-2 relative overflow-hidden rounded-sm">
-                  <Image
-                    src={currentLang.flag}
-                    alt={currentLang.name}
-                    fill
-                    className="object-cover"
-                    sizes="24px"
-                  />
+                  <Image src={currentLang.flag} alt="" fill className="object-cover" sizes="32px" />
                 </div>
                 {currentLang.code.toUpperCase()}
-                <ChevronDown className="ml-1 hover:text-[#d1b250]" size={16} />
-              </div>
+                {/* Full language name for screen readers; the visible label stays "DE". */}
+                <span className="sr-only"> – {currentLang.name}</span>
+                <ChevronDown className="ml-1 hover:text-[#d1b250]" size={16} aria-hidden="true" />
+              </button>
               {openDropdown === "language" && (
                 <div className="absolute right-0 top-full w-20 bg-white text-black shadow-2xl z-50 animate-fadeInSlideDown">
                   {languages.map((lang) => (
-                    <button
+                    <Link
                       key={lang.code}
-                      onClick={() => handleLanguageChange(lang.code)}
+                      lang={lang.code}
+                      hrefLang={lang.code}
+                      href={languageHref(lang.code)}
+                      onClick={() => localStorage.setItem('preferredLocale', lang.code)}
                       className={`flex items-center w-full px-3 py-2 text-sm font-medium hover:bg-gray-800 hover:text-[#d1b250] transition cursor-pointer ${currentLang.code === lang.code
                         ? "bg-gray-800 text-white"
                         : "text-black"
@@ -631,7 +688,7 @@ const Navbar = ({ activeCategoryKeys = null }) => {
                       <span className="flex-1 text-left">
                         {lang.code.toUpperCase()}
                       </span>
-                    </button>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -640,10 +697,18 @@ const Navbar = ({ activeCategoryKeys = null }) => {
 
           {/* Mobile view - Shopping cart and menu button */}
           <div className="lg:hidden flex items-center">
+            {/* Tap-to-call in the mobile header (the phone number is otherwise
+                only in the desktop utility bar and the footer). */}
+            <a
+              href={PHONE_HREF}
+              aria-label={t("call")}
+              className="flex h-11 w-11 items-center justify-center text-[#30373e] hover:text-[#d1b250]"
+            >
+              <Phone size={22} aria-hidden="true" />
+            </a>
             <Link
               href={ROUTES.merkliste[urlLocale] ? localizeHref(ROUTES.merkliste[urlLocale]) : localizeHref("/merkliste")}
-              prefetch={true}
-              aria-label="Merkliste"
+              aria-label={`${t("wishlist")}${getTotalItems() > 0 ? ` (${getTotalItems()})` : ""}`}
               className="flex items-center justify-between py-2 text-[#30373e] hover:text-[#d1b250] uppercase text-sm no-underline mr-1"
               style={{ textDecoration: 'none' }}
               onClick={closeMobileMenu}
@@ -658,9 +723,12 @@ const Navbar = ({ activeCategoryKeys = null }) => {
               </div>
             </Link>
             <button
-              className="text-[#30373e] p-2 focus:outline-none"
+              type="button"
+              className="flex h-11 w-11 items-center justify-center text-[#30373e]"
               onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
+              aria-label={isOpen ? t("closeMenu") : t("openMenu")}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -673,19 +741,20 @@ const Navbar = ({ activeCategoryKeys = null }) => {
         className="hidden lg:block bg-white relative"
         onMouseLeave={() => setOpenDropdown(null)}
       >
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center gap-6 py-3">
+        <nav aria-label={t("mainNavigation")} className="max-w-7xl mx-auto px-4 flex justify-between items-center gap-6 py-3">
           {navItems.map((item) => {
             const isProducts = productsItem && item === productsItem;
 
             if (item.subItems || isProducts) {
               const key = isProducts ? "products" : item.name;
               return (
-                <div key={item.name} onMouseEnter={() => setOpenDropdown(key)}>
+                <div key={item.name} data-menu-root="" onMouseEnter={() => setOpenDropdown(key)} onFocus={() => setOpenDropdown(key)}>
                   {isProducts ? (
                     <Link
                       href={localizeHref(item.href)}
-                      prefetch={true}
                       onClick={() => setOpenDropdown(null)}
+                      aria-haspopup="true"
+                      aria-expanded={openDropdown === key}
                       className="flex items-center gap-1 uppercase text-xs font-semibold tracking-wider text-[#30373e] hover:text-[#d1b250] transition py-0.5 whitespace-nowrap"
                     >
                       {item.name}
@@ -719,7 +788,6 @@ const Navbar = ({ activeCategoryKeys = null }) => {
               <Link
                 key={item.name}
                 href={localizeHref(item.href)}
-                prefetch={true}
                 onMouseEnter={() => setOpenDropdown(null)}
                 className="uppercase text-xs font-semibold tracking-wider text-[#30373e] hover:text-[#d1b250] transition py-0.5 whitespace-nowrap"
               >
@@ -727,13 +795,14 @@ const Navbar = ({ activeCategoryKeys = null }) => {
               </Link>
             );
           })}
-        </div>
+        </nav>
 
         {/* Mega menus are always in the HTML (hidden until hover) so crawlers
             see their category/About links — Googlebot never hovers, so a
             conditionally rendered menu would never exist for it. */}
         {productsItem && (
           <div
+            data-menu-root=""
             className={`absolute left-0 top-full w-full bg-white shadow-2xl border-t border-gray-100 animate-fadeInSlideDown ${
               openDropdown === "products" ? "" : "hidden"
             }`}
@@ -748,9 +817,8 @@ const Navbar = ({ activeCategoryKeys = null }) => {
                         <li key={item.key}>
                           <Link
                             href={localizeHref(`${shopPath}/${item.key}`)}
-                            prefetch={true}
                             onClick={() => setOpenDropdown(null)}
-                            className="text-sm text-[#30373e]/75 hover:text-[#d1b250] transition"
+                            className="inline-block py-1 text-sm text-[#30373e]/75 hover:text-[#d1b250] transition"
                           >
                             {item.label}
                           </Link>
@@ -764,7 +832,6 @@ const Navbar = ({ activeCategoryKeys = null }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Link
                   href={localizeHref(productsItem.href)}
-                  prefetch={true}
                   onClick={() => setOpenDropdown(null)}
                   className="relative h-48 group overflow-hidden block"
                 >
@@ -782,8 +849,9 @@ const Navbar = ({ activeCategoryKeys = null }) => {
                 </Link>
 
                 <Link
-                  href={localizeHref(productsItem.href)}
-                  prefetch={true}
+                  // Straight to the Outdoor group on the hub (#group-5 =
+                  // ProductsMenu.groups[4]); the Indoor card is the hub itself.
+                  href={localizeHref(`${shopPath}#group-5`)}
                   onClick={() => setOpenDropdown(null)}
                   className="relative h-48 group overflow-hidden block"
                 >
@@ -806,6 +874,7 @@ const Navbar = ({ activeCategoryKeys = null }) => {
 
         {aboutItem && (
           <div
+            data-menu-root=""
             className={`absolute left-0 top-full w-full bg-white shadow-2xl border-t border-gray-100 animate-fadeInSlideDown ${
               openDropdown === aboutItem.name ? "" : "hidden"
             }`}
@@ -820,7 +889,6 @@ const Navbar = ({ activeCategoryKeys = null }) => {
                     <li key={subItem.name}>
                       <Link
                         href={localizeHref(subItem.href)}
-                        prefetch={true}
                         onClick={() => setOpenDropdown(null)}
                         className="text-sm font-medium text-[#30373e] hover:text-[#d1b250] transition"
                       >
@@ -833,7 +901,6 @@ const Navbar = ({ activeCategoryKeys = null }) => {
 
               <Link
                 href={localizeHref(ROUTES.platzhirsch[urlLocale])}
-                prefetch={true}
                 onClick={() => setOpenDropdown(null)}
                 className="relative h-56 group overflow-hidden block"
               >
@@ -852,7 +919,6 @@ const Navbar = ({ activeCategoryKeys = null }) => {
 
               <Link
                 href={localizeHref(ROUTES.marken[urlLocale])}
-                prefetch={true}
                 onClick={() => setOpenDropdown(null)}
                 className="relative h-56 group overflow-hidden block"
               >
@@ -880,26 +946,34 @@ const Navbar = ({ activeCategoryKeys = null }) => {
             onClick={closeMobileMenu}
           >
             <div
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label={t("mainNavigation")}
               className="absolute right-0 top-0 h-full w-full sm:w-[350px] bg-white text-[#30373e] shadow-lg transition-transform duration-300 overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-center px-6 py-4 border-b border-gray-200">
                 <Link
                   href={localizeHref("/")}
-                  prefetch={true}
                   onClick={closeMobileMenu}
                   className="w-[140px] relative h-12"
                 >
                   <Image
                     src="/Images/Navbar/Logo.png"
-                    alt="Logo"
+                    alt={t("logoAlt")}
                     fill
                     className="object-contain"
                     sizes="140px"
                   />
                 </Link>
-                <button onClick={closeMobileMenu} className="text-[#30373e] text-xl">
-                  <X />
+                <button
+                  type="button"
+                  onClick={closeMobileMenu}
+                  aria-label={t("closeMenu")}
+                  className="flex h-11 w-11 items-center justify-center text-[#30373e]"
+                >
+                  <X aria-hidden="true" />
                 </button>
               </div>
 
@@ -967,7 +1041,6 @@ const Navbar = ({ activeCategoryKeys = null }) => {
                               {item.subItems.map((subItem) => (
                                 <li key={subItem.name}>
                                   <Link
-                                    prefetch={true}
                                     href={localizeHref(subItem.href)}
                                     className="block py-2 text-[#30373e]/75 hover:text-[#d1b250] uppercase text-sm"
                                     onClick={closeMobileMenu}
@@ -990,6 +1063,15 @@ const Navbar = ({ activeCategoryKeys = null }) => {
                           </button>
                           {openDropdown === item.name && (
                             <div className="pl-4 pb-2">
+                              {/* The hub itself — on desktop "Produkte" is a link, on
+                                  mobile it was only an accordion toggle. */}
+                              <Link
+                                href={localizeHref(item.href)}
+                                className="block py-2.5 border-b border-gray-100 text-sm font-semibold text-[#7a5f17] hover:text-[#30373e]"
+                                onClick={closeMobileMenu}
+                              >
+                                {t("allProducts")}
+                              </Link>
                               {productGroups.map((group) => (
                                 <div key={group.title}>
                                   <button
@@ -1014,7 +1096,6 @@ const Navbar = ({ activeCategoryKeys = null }) => {
                                       {group.items.map((catItem) => (
                                         <li key={catItem.key}>
                                           <Link
-                                            prefetch={true}
                                             href={localizeHref(`${shopPath}/${catItem.key}`)}
                                             className="block py-1.5 text-[#30373e]/75 hover:text-[#d1b250] text-sm"
                                             onClick={closeMobileMenu}
@@ -1033,7 +1114,6 @@ const Navbar = ({ activeCategoryKeys = null }) => {
                       ) : (
                         <Link
                           href={localizeHref(item.href)}
-                          prefetch={true}
                           className="block py-3 border-b border-gray-200 text-[#30373e] hover:text-[#d1b250] uppercase text-sm"
                           onClick={closeMobileMenu}
                         >
@@ -1099,19 +1179,17 @@ const Navbar = ({ activeCategoryKeys = null }) => {
                 <p className="mb-2">Landstraße 9, 6911 Lochau</p>
                 <p className="mb-2">
                   <a
-                    href="mailto:info@platzhirsch.studio"
+                    href={EMAIL_HREF}
                     className="hover:text-[#d1b250] transition-colors duration-200"
                   >
-                    info@platzhirsch.studio
+                    {EMAIL}
                   </a>
                 </p>
                 <p className="mb-4">
                   <a
-                    href="tel:+43557446255"
+                    href={PHONE_HREF}
                     className="hover:text-[#d1b250] transition-colors duration-200"
-                  >
-                    +43 5574 46255
-                  </a>
+                  >{PHONE_DISPLAY}</a>
                 </p>
                 <p className="mb-4 text-[#30373e]/70">{t("hours")}</p>
                 <div className="flex gap-3">
@@ -1119,25 +1197,28 @@ const Navbar = ({ activeCategoryKeys = null }) => {
                     href="https://www.facebook.com/platzhirsch.studio/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border border-[#d1b250] w-8 h-8 flex items-center justify-center rounded-full text-[#d1b250] hover:bg-[#d1b250] hover:text-white"
+                    aria-label="Facebook"
+                    className="border border-[#d1b250] w-10 h-10 flex items-center justify-center rounded-full text-[#d1b250] hover:bg-[#d1b250] hover:text-white"
                   >
-                    <FaFacebookF />
+                    <FaFacebookF aria-hidden="true" />
                   </a>
                   <a
                     href="https://www.instagram.com/platzhirsch.studio"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border border-[#d1b250] w-8 h-8 flex items-center justify-center rounded-full text-[#d1b250] hover:bg-[#d1b250] hover:text-white"
+                    aria-label="Instagram"
+                    className="border border-[#d1b250] w-10 h-10 flex items-center justify-center rounded-full text-[#d1b250] hover:bg-[#d1b250] hover:text-white"
                   >
-                    <FaInstagram />
+                    <FaInstagram aria-hidden="true" />
                   </a>
                   <a
                     href="https://www.linkedin.com/company/platzhirsch-studio"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border border-[#d1b250] w-8 h-8 flex items-center justify-center rounded-full text-[#d1b250] hover:bg-[#d1b250] hover:text-white"
+                    aria-label="LinkedIn"
+                    className="border border-[#d1b250] w-10 h-10 flex items-center justify-center rounded-full text-[#d1b250] hover:bg-[#d1b250] hover:text-white"
                   >
-                    <FaLinkedinIn />
+                    <FaLinkedinIn aria-hidden="true" />
                   </a>
                 </div>
               </div>

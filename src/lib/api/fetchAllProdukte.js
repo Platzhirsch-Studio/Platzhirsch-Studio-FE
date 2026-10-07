@@ -1,6 +1,7 @@
 // src/lib/api/fetchAllProdukte.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { cleanProductName, displayBrandName } from "@/lib/content/brands";
 
 // "Produkte New" fetchers for the /produkte category-hub, category-listing
 // and product-detail pages and the navbar search. The real doctype on the dev
@@ -20,6 +21,8 @@ async function getMessage(url, { fallback, label, init }) {
     const response = await fetch(url, {
       method: "GET",
       ...(init || { next: { revalidate: 3600, tags: ["products"] } }),
+      // Never hang a render on a stalled backend (a dev run once took 4.7 min).
+      signal: AbortSignal.timeout(15000),
     });
 
     if (!response.ok) {
@@ -58,15 +61,17 @@ export async function fetchProdukteNewByMarke(marken) {
 }
 
 // Navbar search: up to `limit` active products whose name or brand contains
-// `q` (name-starts-with ranked first by the backend). Not cached — every
-// query string is different, and the search route is dynamic anyway.
-export async function searchProdukte(q, limit = 6) {
+// `q` (name-starts-with ranked first by the backend). Not cached by default —
+// every query string is different, and the search route is dynamic anyway.
+// `cached: true` (legacy-URL redirect resolver) stores the result for a day so
+// repeated hits on the same old URL don't reach the backend again.
+export async function searchProdukte(q, limit = 6, { cached = false } = {}) {
   if (!q || q.trim().length < 2) return [];
   const query = new URLSearchParams({ q: q.trim(), limit: String(limit) });
   return getMessage(`${PRODUKTE_NEW_API}.search_produkte?${query}`, {
     fallback: [],
     label: "search",
-    init: { cache: "no-store" },
+    init: cached ? { next: { revalidate: 86400, tags: ["products"] } } : { cache: "no-store" },
   });
 }
 
@@ -122,8 +127,8 @@ export async function fetchRelatedProdukteNew({ marken, kategories, path_field, 
     .filter((p) => p?.path_field && p?.kategories)
     .map((p) => ({
       id: p.name || p.path_field,
-      name: p.produkt_name,
-      brand: p.marken,
+      name: cleanProductName(p.produkt_name),
+      brand: displayBrandName(p.marken),
       categoryKey: p.kategories.toLowerCase(),
       image: p.bild_anhangen ? `/cmx${p.bild_anhangen}` : null,
       url_slug: p.path_field,

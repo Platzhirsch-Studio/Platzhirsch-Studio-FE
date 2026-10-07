@@ -46,7 +46,7 @@ const ThumbPrevArrow = ({ onClick }) => (
     type="button"
     onClick={onClick}
     aria-label="Previous image"
-    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[#30373e]/60 transition-colors hover:bg-gray-100 hover:text-[#30373e]"
+    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#30373e]/75 transition-colors hover:bg-gray-100 hover:text-[#30373e]"
   >
     <ChevronLeft size={18} />
   </button>
@@ -57,7 +57,7 @@ const ThumbNextArrow = ({ onClick }) => (
     type="button"
     onClick={onClick}
     aria-label="Next image"
-    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[#30373e]/60 transition-colors hover:bg-gray-100 hover:text-[#30373e]"
+    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#30373e]/75 transition-colors hover:bg-gray-100 hover:text-[#30373e]"
   >
     <ChevronRight size={18} />
   </button>
@@ -181,7 +181,7 @@ const ProductGallery = ({ images, alt }) => {
 
   if (!hasMultiple) {
     return (
-      <div className="relative w-full aspect-square overflow-hidden rounded-lg border border-[#30373e]/10 bg-gray-100">
+      <div className="relative w-full aspect-4/3 lg:aspect-square overflow-hidden rounded-lg border border-[#30373e]/10 bg-gray-100">
         <button
           type="button"
           onClick={() => setLightboxOpen(true)}
@@ -264,7 +264,7 @@ const ProductGallery = ({ images, alt }) => {
                 type="button"
                 onClick={() => setLightboxOpen(true)}
                 aria-label="Open full-screen view"
-                className="group relative block aspect-square w-full cursor-zoom-in"
+                className="group relative block aspect-4/3 lg:aspect-square w-full cursor-zoom-in"
               >
                 <Image
                   src={src}

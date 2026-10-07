@@ -28,7 +28,13 @@
       "de": "Deutsch",
       "fr": "Französisch",
       "it": "Italienisch"
-    }
+    },
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "call": "Anrufen",
+    "logoAlt": "Platzhirsch Home Living – zur Startseite",
+    "allProducts": "Alle Produkte ansehen",
+    "mainNavigation": "Hauptnavigation"
   },
   "Buttons": {
     "discover": "Jetzt entdecken"
@@ -37,52 +43,182 @@
     "indoor": "Indoor",
     "outdoor": "Outdoor",
     "groups": [
-      { "title": "Sofas & Sessel", "items": [
-        { "label": "Sofas & Couches", "key": "sofas-couches" },
-        { "label": "Ecksofas", "key": "corner-sofas" },
-        { "label": "Schlaf- & Ausziehsofas", "key": "sleeper-sofas" },
-        { "label": "Chaiselongues & Daybeds", "key": "chaise-longues-daybeds" },
-        { "label": "Sessel & Hocker", "key": "armchairs-stools" },
-        { "label": "Ledersofas", "key": "leather-sofas" }
-      ] },
-      { "title": "Stühle & Tische", "items": [
-        { "label": "Esszimmerstühle", "key": "dining-chairs" },
-        { "label": "Barhocker", "key": "bar-stools" },
-        { "label": "Schreibtischstühle", "key": "desk-chairs" },
-        { "label": "Esstische", "key": "dining-tables" },
-        { "label": "Couchtische", "key": "coffee-tables" },
-        { "label": "Beistelltische", "key": "side-tables" }
-      ] },
-      { "title": "Schlafzimmer", "items": [
-        { "label": "Betten", "key": "beds" },
-        { "label": "Nachttische", "key": "night-tables" },
-        { "label": "Kleiderschränke", "key": "wardrobes" },
-        { "label": "Bettwäsche", "key": "bedwear" }
-      ] },
-      { "title": "Aufbewahrung", "items": [
-        { "label": "Sideboards & Kommoden", "key": "sideboards-chests" },
-        { "label": "Regale", "key": "shelves" },
-        { "label": "TV- & Lowboards", "key": "tv-low-units" },
-        { "label": "Vitrinen", "key": "display-cabinets" },
-        { "label": "Kleinmöbel", "key": "small-furniture" }
-      ] },
-      { "title": "Outdoor", "items": [
-        { "label": "Gartentische", "key": "garden-tables" },
-        { "label": "Gartenstühle", "key": "garden-chairs" },
-        { "label": "Loungemöbel & Daybeds", "key": "lounge-furniture-daybeds" },
-        { "label": "Gartenliegen", "key": "sun-loungers" },
-        { "label": "Sonnenschirme", "key": "parasols" },
-        { "label": "Heizstrahler", "key": "heaters" }
-      ] },
-      { "title": "Wohnaccessoires", "items": [
-        { "label": "Leuchten", "key": "lamps" },
-        { "label": "Teppiche", "key": "rugs" },
-        { "label": "Deko", "key": "decor" },
-        { "label": "Spiegel", "key": "mirrors" },
-        { "label": "Küchenzubehör", "key": "kitchen-accessories" },
-        { "label": "Küchen", "key": "kitchen" },
-        { "label": "Kerzen", "key": "candles" }
-      ] }
+      {
+        "title": "Sofas & Sessel",
+        "items": [
+          {
+            "label": "Sofas & Couches",
+            "key": "sofas-couches"
+          },
+          {
+            "label": "Ecksofas",
+            "key": "corner-sofas"
+          },
+          {
+            "label": "Schlaf- & Ausziehsofas",
+            "key": "sleeper-sofas"
+          },
+          {
+            "label": "Chaiselongues & Daybeds",
+            "key": "chaise-longues-daybeds"
+          },
+          {
+            "label": "Sessel & Hocker",
+            "key": "armchairs-stools"
+          },
+          {
+            "label": "Ledersofas",
+            "key": "leather-sofas"
+          }
+        ]
+      },
+      {
+        "title": "Stühle & Tische",
+        "items": [
+          {
+            "label": "Esszimmerstühle",
+            "key": "dining-chairs"
+          },
+          {
+            "label": "Barhocker",
+            "key": "bar-stools"
+          },
+          {
+            "label": "Schreibtischstühle",
+            "key": "desk-chairs"
+          },
+          {
+            "label": "Esstische",
+            "key": "dining-tables"
+          },
+          {
+            "label": "Couchtische",
+            "key": "coffee-tables"
+          },
+          {
+            "label": "Beistelltische",
+            "key": "side-tables"
+          }
+        ]
+      },
+      {
+        "title": "Schlafzimmer",
+        "items": [
+          {
+            "label": "Betten",
+            "key": "beds"
+          },
+          {
+            "label": "Nachttische",
+            "key": "night-tables"
+          },
+          {
+            "label": "Kleiderschränke",
+            "key": "wardrobes"
+          },
+          {
+            "label": "Bettwäsche",
+            "key": "bedwear"
+          }
+        ]
+      },
+      {
+        "title": "Aufbewahrung",
+        "items": [
+          {
+            "label": "Sideboards & Kommoden",
+            "key": "sideboards-chests"
+          },
+          {
+            "label": "Regale",
+            "key": "shelves"
+          },
+          {
+            "label": "TV- & Lowboards",
+            "key": "tv-low-units"
+          },
+          {
+            "label": "Vitrinen",
+            "key": "display-cabinets"
+          },
+          {
+            "label": "Kleinmöbel",
+            "key": "small-furniture"
+          }
+        ]
+      },
+      {
+        "title": "Outdoor",
+        "items": [
+          {
+            "label": "Gartentische",
+            "key": "garden-tables"
+          },
+          {
+            "label": "Gartenstühle",
+            "key": "garden-chairs"
+          },
+          {
+            "label": "Loungemöbel & Daybeds",
+            "key": "lounge-furniture-daybeds"
+          },
+          {
+            "label": "Gartenliegen",
+            "key": "sun-loungers"
+          },
+          {
+            "label": "Sonnenschirme",
+            "key": "parasols"
+          },
+          {
+            "label": "Heizstrahler",
+            "key": "heaters"
+          }
+        ]
+      },
+      {
+        "title": "Küchen",
+        "items": [
+          {
+            "label": "Küchen",
+            "key": "kitchen"
+          },
+          {
+            "label": "Küchenzubehör",
+            "key": "kitchen-accessories"
+          }
+        ]
+      },
+      {
+        "title": "Licht",
+        "items": [
+          {
+            "label": "Leuchten",
+            "key": "lamps"
+          }
+        ]
+      },
+      {
+        "title": "Wohnaccessoires",
+        "items": [
+          {
+            "label": "Teppiche",
+            "key": "rugs"
+          },
+          {
+            "label": "Deko",
+            "key": "decor"
+          },
+          {
+            "label": "Spiegel",
+            "key": "mirrors"
+          },
+          {
+            "label": "Kerzen",
+            "key": "candles"
+          }
+        ]
+      }
     ]
   },
   "ProductsPage": {
@@ -113,7 +249,8 @@
     "rimadesio": "Elegante Wand- und Regalsysteme",
     "treca_paris": "Schlafen wie Gott in Frankreich",
     "flos": "Ausdrucksstarke Leuchten-Designs",
-    "poliform_cucine": "Modulares Küchendesign aus Italien"
+    "poliform_cucine": "Modulares Küchendesign aus Italien",
+    "headline": "Designermöbel, Küchen & Interior Design in Vorarlberg"
   },
   "About": {
     "imgAlt": "Über unser Unternehmen",
@@ -136,20 +273,20 @@
     "heading": "Unsere Vorteile für Sie",
     "description": "Entdecken Sie, wie wir mit maßgeschneidertem Service, erstklassiger\nQualität und Rundum-sorglos-Betreuung Ihr Zuhause perfekt ausstatten.",
     "service1": {
-      "title": "Premium-Lieferservice",
-      "text": "Genießen Sie unseren kostenlosen Premium-Lieferservice inklusive fachgerechter Lieferung und Platzierung Ihrer neuen Möbel. Unser professionelles Team hinterlässt Ihren Raum makellos."
+      "title": "Lieferung & Montage",
+      "text": "Lieferung und fachgerechte Montage durch unser Team – in Vorarlberg, ganz Österreich, Deutschland und der Schweiz, abgestimmt auf Ihren Wunschtermin."
     },
     "service2": {
-      "title": "Fachgerechter Montage-Service",
-      "text": "Unsere zertifizierten Techniker montieren jedes Möbelstück für Sie – Werkzeuge sind nicht erforderlich. Lehnen Sie sich zurück, während wir den kompletten Aufbau übernehmen."
+      "title": "Maßgenaue Planung",
+      "text": "Wir planen jedes Stück für Ihren Raum: Aufmaß, Anordnung, Materialien und Farben – bevor Sie bestellen."
     },
     "service3": {
       "title": "Individuelle Design-Beratung",
       "text": "Arbeiten Sie persönlich mit unseren Inneneinrichtungsspezialisten zusammen, um Oberflächen, Stoffe und Maße optimal auf Ihren Raum abzustimmen."
     },
     "service4": {
-      "title": "Lebenslange Qualitätsgarantie",
-      "text": "Wir stehen hinter unserer Handwerkskunst. Jeder Kauf beinhaltet eine lebenslange Garantie gegen Produktionsfehler – für Ihre vollumfängliche Sicherheit."
+      "title": "Originalstücke im Showroom",
+      "text": "Über 35 Marken in Lochau: Probesitzen, Stoffe und Oberflächen vergleichen und in Ruhe entscheiden."
     }
   },
   "Vernissage": {
@@ -231,7 +368,15 @@
     "privacySettings": "Privatsphäre-Einstellungen",
     "privacy": "Datenschutz",
     "imprint": "Impressum",
-    "allRightsReserved": "Alle Rechte vorbehalten."
+    "allRightsReserved": "Alle Rechte vorbehalten.",
+    "tagline": "Einrichtungshaus für Designermöbel, Designerküchen und Leuchten am Bodensee – Showroom in Lochau bei Bregenz, Beratung und Montage in Österreich, Deutschland und der Schweiz.",
+    "showroomTitle": "Showroom",
+    "productsTitle": "Produktwelten",
+    "serviceTitle": "Service & Regionen",
+    "consultation": "Beratungstermin",
+    "route": "Route planen",
+    "brandsHeading": "Marken",
+    "aboutLink": "Über uns"
   },
   "Outdoor": {
     "bannerTitle": "Produkte",
@@ -447,11 +592,6 @@
     ]
   },
   "partners": {
-    "headline": "Starke Partnerschaften für außergewöhnliche Projekte",
-    "description": "Bei Platzhirsch Home Living planen und gestalten wir exklusive Räume und Orte. Unsere Projekte realisieren wir mit ausgewählten Partnern.",
-    "phone": "Tel",
-    "email": "E-Mail",
-    "website": "Website besuchen",
     "0": {
       "role": "Partner für Immobilienprojekte"
     },
@@ -475,13 +615,18 @@
     },
     "7": {
       "role": "Bergrestaurant am Pfänder"
-    }
+    },
+    "headline": "Starke Partnerschaften für außergewöhnliche Projekte",
+    "description": "Bei Platzhirsch Home Living planen und gestalten wir exklusive Räume und Orte. Unsere Projekte realisieren wir mit ausgewählten Partnern.",
+    "phone": "Tel",
+    "email": "E-Mail",
+    "website": "Website besuchen"
   },
   "contact": {
     "headline": "Kontakt",
     "stepHeadline": "Machen Sie den ersten Schritt",
     "desc": "Sie haben Fragen, Wünsche oder möchten einen Beratungstermin vereinbaren? Kontaktieren Sie uns gerne direkt telefonisch oder per Kontaktformular.",
-    "location": "Hauptsitz",
+    "location": "Showroom Lochau",
     "address": "Platzhirsch Home Living\nLandstraße 9, 6911 Lochau,\nÖsterreich",
     "phone": "Telefonnummer",
     "opening": "Öffnungszeiten",
@@ -504,7 +649,7 @@
     "formErrorMsg": "Nachricht muss mindestens 10 Zeichen lang sein.",
     "formErrorSend": "Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.",
     "directions": "Route planen",
-    "welcomeBack": "Willkommen Zurück!",
+    "welcomeBack": "Schreiben Sie uns",
     "welcomeMsg": "Wir freuen uns auf Ihre Nachricht und stehen Ihnen gerne zur Verfügung!"
   },
   "cart": {
@@ -624,7 +769,7 @@
     "craftTitle": "Handwerkliche Disziplinen",
     "collectionEyebrow": "Kollektion",
     "collectionTitle": "Ausgewählte Produkte",
-    "showroomEyebrow": "Exklusiv in Österreich",
+    "showroomEyebrow": "Im Showroom in Lochau",
     "requestConsultation": "Persönliche Beratung anfragen",
     "location": "Standort",
     "locationText": "Platzhirsch Studio\nLochau, Vorarlberg (Österreich)",
@@ -639,7 +784,8 @@
     "viewCollection": "Kollektion ansehen",
     "collectionConsultTitle": "Die Kollektion {collection} im Showroom erleben",
     "collectionEmpty": "Für diese Kollektion sind noch keine Produkte hinterlegt.",
-    "aboutCollection": "Über die Kollektion"
+    "aboutCollection": "Über die Kollektion",
+    "consultationCta": "Beratungstermin vereinbaren"
   },
   "enquiry": {
     "backToWishlist": "← Zurück zur Wunschliste",
@@ -728,7 +874,10 @@
     "title": "404",
     "headline": "Hoppla! Seite nicht gefunden.",
     "description": "Die gesuchte Seite wurde verschoben, entfernt, umbenannt oder hat möglicherweise nie existiert.",
-    "backHome": "ZURÜCK ZUR STARTSEITE"
+    "backHome": "ZURÜCK ZUR STARTSEITE",
+    "browseProducts": "Produkte entdecken",
+    "browseBrands": "Unsere Marken",
+    "contact": "Kontakt aufnehmen"
   },
   "tabs": {
     "description": "Beschreibung",
@@ -841,7 +990,9 @@
     "showMoreDetails": "Mehr Details anzeigen",
     "addCollectionToWishlistAria": "Alle {count, plural, one {# Produkt} other {# Produkte}} der Kollektion {collection} merken",
     "removeCollectionFromWishlistAria": "Kollektion {collection} von der Merkliste entfernen",
-    "viewDetails": "Details ansehen"
+    "viewDetails": "Details ansehen",
+    "callUs": "Anrufen",
+    "brandPageLink": "Alle Produkte von {brand}"
   },
   "Cookies": {
     "bannerTitle": "Cookie-Einstellungen",
@@ -941,6 +1092,37 @@
     "mechanisms": {
       "adequacy": "Angemessenheitsbeschluss",
       "scc": "Standardvertragsklauseln"
-    }
+    },
+    "embedTitle": "Google Maps ist deaktiviert",
+    "embedText": "Mit dem Laden der Karte akzeptieren Sie die Datenschutzerklärung von Google.",
+    "embedButton": "Karte laden",
+    "close": "Schließen"
+  },
+  "Home": {
+    "heroEyebrow": "Platzhirsch Home Living · Lochau am Bodensee",
+    "heroCtaPrimary": "Beratungstermin vereinbaren",
+    "heroCtaSecondary": "Marken entdecken",
+    "trust1": "Über 35 Premium-Marken",
+    "trust2": "Showroom in Lochau bei Bregenz",
+    "trust3": "Lieferung & Montage in AT · DE · CH",
+    "heroBrandsLabel": "Im Showroom u. a.",
+    "brandsTitle": "{count} internationale Designmarken – persönlich beraten in Lochau",
+    "allBrands": "Alle {count} Marken ansehen",
+    "categoriesTitle": "Wohnen, Schlafen, Küche, Licht und Outdoor",
+    "allCategories": "Alle Kategorien",
+    "regionsTitle": "Ihr Einrichtungsstudio für Vorarlberg, Bodensee und Ostschweiz",
+    "regionsText": "Unser Showroom liegt in Lochau, nur wenige Minuten von Bregenz und direkt an der Grenze zu Deutschland und der Schweiz. Wir beraten, planen, liefern und montieren in der gesamten Bodenseeregion.",
+    "regionsCta": "Mehr erfahren",
+    "showroomVisit": "Besuchen Sie uns in Lochau",
+    "showroomText": "Erleben Sie Designermöbel, Leuchten und Küchen in echten Wohnsituationen – und sprechen Sie mit uns über Ihr Projekt. Gerne mit Termin, auch außerhalb der Öffnungszeiten.",
+    "addressTitle": "Adresse",
+    "route": "Route planen",
+    "heroLead": "Italienische Designmöbel, Küchen und Licht – ausgewählt in unserem Showroom am Bodensee, geplant für Ihr Zuhause.",
+    "mobileCall": "Anrufen",
+    "mobileAppointment": "Termin anfragen",
+    "brandsLead": "Jede Marke ist im Showroom mit Originalstücken, Stoffen und Oberflächen vertreten – nicht nur im Katalog.",
+    "categoriesLead": "Vom einzelnen Sessel bis zur kompletten Einrichtung: Alle Stücke planen wir maßgenau für Ihre Räume und liefern sie montiert.",
+    "regionsLead": "Wir kommen zu Ihnen – zum Ausmessen, Planen und Montieren.",
+    "faqTitle": "Häufige Fragen"
   }
 }

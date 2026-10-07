@@ -29,9 +29,9 @@ const ShopCategoryGrid = ({ sections, locale, basePath }) => {
       <div className="space-y-16 lg:space-y-20">
         {sections.map((section) => (
           <section key={section.id} id={section.id} className="scroll-mt-32 lg:scroll-mt-60">
-            <div className="mb-6 flex items-end justify-between gap-4 border-b border-[#30373e]/10 pb-4">
+            <div className="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-2 border-b border-[#30373e]/10 pb-4">
               <div>
-                <h2 className="text-2xl font-light text-[#30373e] md:text-3xl">{section.title}</h2>
+                <h2 className="font-display text-3xl text-ink md:text-4xl">{section.title}</h2>
                 <div className="mt-3 h-[2px] w-12 bg-[#d1b250]" />
               </div>
               <p className="shrink-0 text-sm text-[#30373e]/70">{section.countLabel}</p>

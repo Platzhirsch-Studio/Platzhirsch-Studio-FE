@@ -1,4 +1,5 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import Teamsecond from "@/components/Team/team";
 import TeamMember from "@/components/Team/teammember";
@@ -95,13 +96,13 @@ export async function generateMetadata({ params }) {
       description: meta?.description || getLocalizedDescription(locale),
       robots: { index: true, follow: true },
       alternates: {
-        canonical: meta?.url || PAGE_URL,
+        canonical: PAGE_URL,
         languages: hreflangLanguages((l) => getTeamPageUrl(l))
       },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
         description: meta?.description || getLocalizedDescription(locale),
-        url: meta?.url || PAGE_URL,
+        url: PAGE_URL,
         siteName: "Platzhirsch Home Living",
         images: [
           {
@@ -157,7 +158,7 @@ export default async function page({ params }) {
           : "Team";
   const Home =
     locale == "it"
-      ? "Casa "
+      ? "Home"
       : locale == "en"
         ? "Home"
         : locale == "fr"
@@ -198,7 +199,7 @@ export default async function page({ params }) {
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: `${BASE_URL}/${locale}` },
+        { "@type": "ListItem", position: 1, name: Home, item: BASE_URL },
         { "@type": "ListItem", position: 2, name: linkNameTwo, item: PAGE_URL },
       ],
     },
@@ -207,10 +208,7 @@ export default async function page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <Teamsecond />
       <TeamMember team={team} />

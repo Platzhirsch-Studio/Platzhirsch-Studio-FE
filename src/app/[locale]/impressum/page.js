@@ -1,4 +1,5 @@
 import React from 'react';
+import JsonLd from "@/components/Reusable/JsonLd";
 import Impressum from "@/components/Impressum/impressumbanner";
 import Content from "@/components/Impressum/impressum";
 import { hreflangLanguages } from "@/lib/seo/pageMetadata";
@@ -106,7 +107,7 @@ export default async function Page({ params }) {
 
   const localizedMeta = getLocalizedMetadata(locale);
 
-  const homeName = locale === "it" ? "Casa" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
+  const homeName = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
   const pageName = locale === "it" ? "Note Legali" : locale === "en" ? "Legal Notice" : locale === "fr" ? "Mentions Légales" : "Impressum";
 
   // ✅ JSON-LD Structured Data
@@ -130,10 +131,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <Impressum />
       <Content />
     </div>

@@ -33,9 +33,17 @@ const ABOUT_SECTIONS = {
 // /it/prodotti/… (hub, category and product pages); /en/produkte/… etc. get a
 // 308 to the translated URL. Links are built with productsPath() in
 // src/utils/routing.js.
+// Single pages with a translated URL (/en/consultation, /it/contatto, …): the
+// wrong-language form (/en/beratung) used to answer 200 as a duplicate of the
+// canonical URL — now it 308s like the About/product sections. Only the news
+// hub is listed here: article URLs stay /{locale}/news/<slug> in every locale.
 const TRANSLATED_SECTIONS = {
   ...ABOUT_SECTIONS,
   produkte: ["", "/[category]", "/[category]/[product]"],
+  beratung: [""],
+  kontakt: [""],
+  merkliste: [""],
+  news: [""],
 };
 const translatedPathnames = {};
 for (const [key, suffixes] of Object.entries(TRANSLATED_SECTIONS)) {
@@ -46,7 +54,7 @@ for (const [key, suffixes] of Object.entries(TRANSLATED_SECTIONS)) {
   }
 }
 const TRANSLATED_PATH =
-  /^\/(de|en|fr|it)\/(?:(?:ueber-uns|about-us|a-propos|chi-siamo)\/|(?:produkte|products|produits|prodotti)(?:\/|$))/;
+  /^\/(de|en|fr|it)\/(?:(?:ueber-uns|about-us|a-propos|chi-siamo)\/|(?:produkte|products|produits|prodotti)(?:\/|$)|(?:beratung|consultation|conseil|consulenza|kontakt|contact|contatto|merkliste|wishlist|liste-de-souhaits|lista-desideri|news|nouvelles|notizie)$)/;
 
 const intlMiddleware = createMiddleware({
   ...routing,

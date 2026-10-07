@@ -1,3 +1,4 @@
+import { PHONE_DISPLAY, PHONE_HREF, EMAIL, EMAIL_HREF } from "@/lib/site";
 // Shared layout for the local landing pages (/de/kuechen-vorarlberg,
 // /de/wohnzimmer-einrichten-vorarlberg, …). Each page only supplies its
 // `content` (texts, photos, brands, FAQ); the design lives here once.
@@ -6,27 +7,63 @@ import Image from "next/image";
 import { ArrowRight, Check, Clock, MapPin, Phone } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
+import JsonLd from "@/components/Reusable/JsonLd";
 import { ROUTES } from "@/utils/routing";
+import { SITE_URL } from "@/lib/seo/pageMetadata";
+import { breadcrumbList, graph, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/structuredData";
 
-const eyebrowClass = "text-sm font-semibold uppercase tracking-[0.12em] text-[#d1b250]";
+const eyebrowClass = "text-sm font-semibold uppercase tracking-[0.12em] text-gold-text";
 const headingClass = "mt-3 text-2xl md:text-3xl lg:text-4xl font-bold text-[#30373e]";
 const primaryButtonClass =
   "inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#d1b250] px-6 py-3 text-sm font-medium uppercase tracking-wide text-[#30373e] transition-colors duration-300 hover:bg-[#bfa047]";
 const outlineButtonClass =
   "inline-flex items-center justify-center gap-2 rounded-[3px] border-2 border-[#d1b250] px-6 py-3 text-sm font-medium uppercase tracking-wide text-[#30373e] transition-colors duration-300 hover:bg-[#d1b250]";
 
-// Metadata for a landing page. Kept noindex while the copy is a draft —
-// pass `index: true` once the texts are final.
-export function landingMetadata({ path, title, description, index = false }) {
+// Metadata for a landing page. German-only pages (no hreflang: the other
+// locales 404 on purpose). Indexable by default — these pages target the
+// local queries the site needs most (Küchen Vorarlberg, Designermöbel Bregenz,
+// Möbel Bodensee, …); pass `index: false` to pull one out again.
+export function landingMetadata({ path, title, description, index = true }) {
+  const url = `${SITE_URL}/de${path}`;
   return {
     title: `${title} | Platzhirsch Home Living`,
     description,
     robots: { index, follow: true },
-    alternates: { canonical: `https://platzhirsch.studio/de${path}` },
+    alternates: { canonical: url },
+    openGraph: { type: "website", url, title, description, siteName: "Platzhirsch Home Living", locale: "de_AT" },
   };
 }
 
-export default function LandingPage({ content }) {
+// WebPage + BreadcrumbList + FAQPage for one landing page (German, de-AT).
+function landingSchema(content, path) {
+  const url = `${SITE_URL}/de${path}`;
+  return graph(
+    {
+      "@type": "WebPage",
+      "@id": `${url}#webpage`,
+      url,
+      name: content.banner.title,
+      inLanguage: "de-AT",
+      isPartOf: { "@id": WEBSITE_ID },
+      about: { "@id": ORGANIZATION_ID },
+      primaryImageOfPage: `${SITE_URL}${content.banner.image}`,
+      breadcrumb: breadcrumbList([{ name: "Home", url: `${SITE_URL}/de` }, { name: content.banner.crumb }], `${url}#breadcrumb`),
+    },
+    content.faq?.items?.length
+      ? {
+          "@type": "FAQPage",
+          "@id": `${url}#faq`,
+          mainEntity: content.faq.items.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }
+      : null
+  );
+}
+
+export default function LandingPage({ content, path }) {
   const { banner, intro, brands, steps, gallery, showroom, cta, faq } = content;
   const beratungHref = ROUTES.beratung.de;
   const kontaktHref = ROUTES.kontakt.de;
@@ -43,6 +80,7 @@ export default function LandingPage({ content }) {
 
   return (
     <div>
+      {path && <JsonLd data={landingSchema(content, path)} />}
       <SinglePageBanner info={bannerInfo} />
 
       {/* Intro */}
@@ -69,10 +107,8 @@ export default function LandingPage({ content }) {
                 Beratungstermin vereinbaren
                 <ArrowRight size={16} />
               </Link>
-              <a href="tel:+43557446255" className={outlineButtonClass}>
-                <Phone size={16} />
-                +43 5574 46255
-              </a>
+              <a href={PHONE_HREF} className={outlineButtonClass}>
+                <Phone size={16} />{PHONE_DISPLAY}</a>
             </div>
           </div>
 
@@ -117,7 +153,7 @@ export default function LandingPage({ content }) {
                   <Link
                     href={`${ROUTES.marken.de}/${brand.slug}`}
                     locale="de"
-                    className="mt-5 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wide text-[#d1b250] hover:underline"
+                    className="mt-5 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wide text-gold-text hover:underline"
                   >
                     Mehr über {brand.name}
                     <ArrowRight size={14} />
@@ -213,9 +249,9 @@ export default function LandingPage({ content }) {
               <Phone size={22} className="text-[#d1b250]" />
               <p className="mt-3 text-sm font-semibold uppercase tracking-wide">Kontakt</p>
               <p className="mt-2 text-white/75 text-sm leading-relaxed">
-                <a href="tel:+43557446255" className="hover:text-[#d1b250]">+43 5574 46255</a>
+                <a href={PHONE_HREF} className="hover:text-[#d1b250]">{PHONE_DISPLAY}</a>
                 <br />
-                <a href="mailto:info@platzhirsch.studio" className="hover:text-[#d1b250]">info@platzhirsch.studio</a>
+                <a href={EMAIL_HREF} className="break-all hover:text-[#d1b250]">{EMAIL}</a>
               </p>
             </div>
           </div>
@@ -254,9 +290,7 @@ export default function LandingPage({ content }) {
           <h2 className={headingClass}>{faq.heading}</h2>
           <p className="mt-4 text-[#30373e]/70">
             Ihre Frage ist nicht dabei? Rufen Sie uns an unter{" "}
-            <a href="tel:+43557446255" className="font-medium text-[#30373e] hover:text-[#d1b250]">
-              +43 5574 46255
-            </a>
+            <a href={PHONE_HREF} className="font-medium text-[#30373e] hover:text-[#d1b250]">{PHONE_DISPLAY}</a>
             .
           </p>
         </div>

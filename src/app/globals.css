@@ -1,11 +1,135 @@
 @import "tailwindcss";
 
+/* Design tokens (Tailwind v4 theme → utilities such as bg-stone, text-gold-text,
+   font-display).
+   Colour: the showroom's materials rather than a tech palette — ink for text,
+   limestone ("stone") for quiet surfaces, walnut for the dark closing section,
+   and the house gold. --color-gold (#d1b250) is the signature accent: fine for
+   buttons, borders and text on dark backgrounds, but 2.0:1 on white, so small
+   text on light surfaces uses --color-gold-text (≈4.9:1).
+   Type: Bodoni Moda for display (the typography of Italian design houses —
+   Minotti, Poliform, Flos are the product), Montserrat for UI and body. */
+@theme {
+  --color-gold: #d1b250;
+  --color-gold-text: #7a5f17;
+  --color-ink: #30373e;
+  --color-stone: #ece8e1;
+  --color-bone: #f7f5f1;
+  --color-walnut: #3f3129;
+  --color-night: #0f1624;
+  --color-ink-deep: #1f252b;
+  --font-display: var(--font-bodoni), "Bodoni Moda", "Didot", Georgia, serif;
+}
+
+html {
+  /* In-page anchors (#produkte, #produktdetails, …) must not land under the
+     fixed header (~80px on phones, up to ~190px on desktop). */
+  scroll-padding-top: 6rem;
+}
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 12rem;
+  }
+}
 
 body {
   background: #ffffff;
   color: #171717;
-  /* --font-montserrat is set by next/font in [locale]/layout.js */
+  /* --font-montserrat / --font-bodoni are set by next/font in [locale]/layout.js */
   font-family: var(--font-montserrat), "Montserrat", Helvetica, Arial, sans-serif;
+}
+
+/* Display type: slightly heavier than Bodoni's default so it holds up at hero
+   sizes on screens. */
+.font-display {
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* ---- Motion -------------------------------------------------------------
+   Two kinds only, both CSS, both off under prefers-reduced-motion:
+   1. .hero-reveal — the single page-load entrance (hero panel + showroom card).
+   2. .reveal — scroll-driven: a section settles in as it enters the viewport.
+      Uses the CSS scroll-driven animation timeline (no JavaScript, no layout
+      thrash); browsers without `animation-timeline` simply show the content.
+   3. .marquee — the brand-name band, a slow continuous drift, paused on hover. */
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-reveal {
+  animation: hero-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+/* The hero photograph settles from a slight zoom — once, slowly, together with
+   the text entrance. Same orchestrated moment, not a second effect. */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.hero-zoom {
+  animation: hero-zoom 1600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform;
+}
+
+/* Transform only (no opacity): a section that starts invisible below the fold
+   is read by accessibility tooling as zero-contrast text. The settle is enough. */
+@keyframes reveal {
+  from {
+    transform: translateY(32px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 48s linear infinite;
+}
+.marquee-group:hover .marquee,
+.marquee-group:focus-within .marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal,
+  .hero-zoom,
+  .reveal,
+  .marquee {
+    animation: none;
+  }
+}
+
+/* Visible keyboard focus everywhere (several components remove the native
+   outline). Mouse clicks don't trigger :focus-visible, so pointer users see no change. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid #d1b250;
+  outline-offset: 2px;
 }
 
 /* Used by scrollable strips (product gallery thumbnails, banner nav links)
@@ -18,4 +142,3 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
-

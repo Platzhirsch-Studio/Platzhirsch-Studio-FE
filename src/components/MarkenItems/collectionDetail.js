@@ -250,7 +250,7 @@ export default function CollectionDetail({ marke, collection, products = [], oth
         <Link
           href={brandHref}
           locale={locale}
-          className="inline-flex items-center gap-2 text-sm text-[#30373e]/60 transition-colors hover:text-[#d1b250]"
+          className="inline-flex items-center gap-2 text-sm text-[#30373e]/75 transition-colors hover:text-[#d1b250]"
         >
           <ArrowLeft size={16} />
           {t("backToBrand", { brand: marke.name1 })}

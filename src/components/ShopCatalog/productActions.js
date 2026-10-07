@@ -1,5 +1,6 @@
 "use client";
-import { Heart, ChevronDown } from "lucide-react";
+import { PHONE_HREF } from "@/lib/site";
+import { Heart, ChevronDown, Phone } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useWishlistToggle } from "@/components/ShopCatalog/wishlistHeart";
 
@@ -48,6 +49,16 @@ export default function ProductActions({ locale, consultationHref, detailsAnchor
           />
           <span>{saved ? labels.saved : labels.save}</span>
         </button>
+
+        {/* Direct phone line — the showroom sells through conversation, so a
+            call is the shortest path from product interest to an appointment. */}
+        <a
+          href={PHONE_HREF}
+          className="inline-flex items-center gap-2 rounded-[3px] border border-[#30373e]/20 px-4 py-3 text-sm font-medium uppercase tracking-wide text-[#30373e] transition-colors duration-300 hover:border-[#d1b250]"
+        >
+          <Phone size={16} aria-hidden="true" />
+          <span>{labels.callUs}</span>
+        </a>
       </div>
 
       <a

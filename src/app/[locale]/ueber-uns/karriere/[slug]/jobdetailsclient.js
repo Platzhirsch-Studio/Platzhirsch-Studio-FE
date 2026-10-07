@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { User, Mail, Phone, History, FileUp, CircleCheck } from "lucide-react";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
+import { ROUTES } from "@/utils/routing";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import FadeInView from "@/components/Reusable/FadeInView";
@@ -179,15 +180,15 @@ const JobDetailsClient = ({ job }) => {
     locale === "it" ? "SU DI NOI" : locale === "en" ? "ABOUT US" : locale === "fr" ? "À PROPOS" : "ABOUT US";
   const linkNameTwo =
     locale === "it" ? "Carriera" : locale === "en" ? "Career" : locale === "fr" ? "Carrière" : "Career";
-  const Home = locale === "it" ? "Casa " : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
+  const Home = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
 
   const BannerInfo = {
     image: "/Images/Arbeiten/bannerImageArbeiten1.jpg",
     links: [
       { linkName: Home, link: "/" },
       { linkName: linkNameOne },
-      { linkName: linkNameTwo, link: "/about-us/career" },
-      { linkName: job.title, link: `/about-us/career/${job.slug}` },
+      { linkName: linkNameTwo, link: ROUTES.karriere[locale] || ROUTES.karriere.de },
+      { linkName: job.title, link: null },
     ],
     title: job.title,
   };

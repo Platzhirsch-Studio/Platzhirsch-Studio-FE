@@ -8,6 +8,7 @@
 // Each URL belongs to exactly one section. The XML lists only <loc> +
 // <lastmod> (see toUrlsetXml); hreflang lives in each page's own <head>.
 import "server-only";
+import { LANDING_PAGES, landingPagePath } from "@/lib/content/landingPages";
 import { generateSlug } from "@/lib/slugify";
 import { productsPathByLocale } from "@/utils/routing";
 import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData";
@@ -138,6 +139,11 @@ const STATIC_PAGES_CONFIG = [
   // newsletter / merkliste / impressum / datenschutz are noindex → intentionally
   // excluded here (don't advertise pages we ask Google not to index).
 ];
+
+// Local landing pages (src/app/[locale]/<slug>/page.js) — German only, indexable,
+// no hreflang (the other locales 404 on purpose). Keep in sync with
+// LANDING_PAGES in src/components/Reusable/Footer.js.
+const LOCAL_LANDING_PATHS = LANDING_PAGES.map((p) => landingPagePath(p.slug));
 
 // ------------------------------------------------------------------
 // DATA FETCHERS
@@ -271,6 +277,10 @@ export async function getStaticEntries() {
         );
       }
     }
+  }
+
+  for (const path of LOCAL_LANDING_PATHS) {
+    addEntry(entries, `${BASE_URL}/de${path}`, STATIC_LAST_MODIFIED, "monthly", 0.8);
   }
 
   // Open job postings (/…/karriere/<slug>, translated career path per locale)

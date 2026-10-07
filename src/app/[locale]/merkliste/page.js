@@ -1,4 +1,5 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import CartPage from "@/components/CartPage/CartPage";
 import { ROUTES } from "@/utils/routing";
@@ -103,20 +104,20 @@ export default async function Page({ params }) {
   const { locale } = await params;
 
   const titleOne = locale == "it" ? "Lista dei desideri" : locale == "en" ? "Wishlist" : locale == "fr" ? "Liste de souhaits" : "Merkliste";
-  const Home = locale == "it" ? "Casa" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
 
   // Dynamic URLs
   const BASE_URL = getBaseUrl(locale);
   const PAGE_URL = getMerklistePageUrl(locale);
 
-  const merkenlistPath = ROUTES.kontakt[locale] ? `${ROUTES.merkliste[locale]}` : `/merkliste`;
+  const merklistePath = ROUTES.merkliste[locale] || ROUTES.merkliste.de;
 
 
   const BannerInfo = {
     image: "/Images/Newsletter/room.jpg",
     links: [
       { linkName: Home, link: `/` }, // Fixed: use locale prefix
-      { linkName: titleOne, link: merkenlistPath },
+      { linkName: titleOne, link: merklistePath },
     ],
     title: titleOne,
   };
@@ -142,10 +143,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <SinglePageBanner info={BannerInfo} />
       <CartPage />
     </div>

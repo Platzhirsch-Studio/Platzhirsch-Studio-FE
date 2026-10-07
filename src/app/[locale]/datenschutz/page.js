@@ -1,4 +1,5 @@
 import React from "react";
+import JsonLd from "@/components/Reusable/JsonLd";
 import Datenschutz from "@/components/Datenschutz/datenbanner";
 import Content from "@/components/Datenschutz/datenschutz";
 import { hreflangLanguages } from "@/lib/seo/pageMetadata";
@@ -105,7 +106,7 @@ export default async function Page({ params }) {
 
   const localizedMeta = getLocalizedMetadata(locale);
 
-  const homeName = locale === "it" ? "Casa" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
+  const homeName = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
   const pageName = locale === "it" ? "Privacy" : locale === "en" ? "Privacy Policy" : locale === "fr" ? "Confidentialité" : "Datenschutz";
 
   // ✅ JSON-LD Structured Data
@@ -129,10 +130,7 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <JsonLd data={webPageSchema} />
       <Datenschutz />
       <Content />
     </div>
