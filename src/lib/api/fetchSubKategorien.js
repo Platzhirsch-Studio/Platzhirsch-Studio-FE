@@ -3,9 +3,8 @@ import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
 
 // Subcategory options (e.g. Chandeliers -> wall-mounted/ceiling-mounted/
-// floor-standing) for the /produkte/[category] filter panel. See
-// frappe-integration/platzhirsch_studio/doctype/sub_kategorie — text-only
-// (no image), each row scoped to its parent Produkte Kategorie via
+// floor-standing) for the /produkte/[category] filter panel (Frappe doctype
+// Sub Kategorie) — text-only (no image), each row scoped to its parent Produkte Kategorie via
 // `kategorie`. Not yet deployed to the production SERVER, so this calls
 // NEW_API_BASE_URL instead (see src/lib/apiBaseUrl.js), same as fetchKategorien.js.
 export async function fetchSubKategorien() {
