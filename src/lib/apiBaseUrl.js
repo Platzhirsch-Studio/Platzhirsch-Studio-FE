@@ -7,14 +7,13 @@ const API_SECRET = process.env.API_SECRET;
 
 export const API_BASE_URL = `${SERVER}/api/method/`;
 
-// Backend for endpoints still under development (Produkte New's
-// product/category endpoints, Produkte Kategorie's get_all_kategorien_api, Sub
-// Kategorie, Produkte Farbe, Produkte Material) that haven't been deployed to
-// SERVER yet. Every one of them is a whitelisted allow_guest method, same as
-// SERVER's own endpoints — no credentials needed for any fetch* module.
-// Override via NEW_API_SERVER in .env.local; defaults to the dev instance
-// these were built against.
-export const NEW_API_SERVER = process.env.NEW_API_SERVER || "http://10.30.70.201:8000";
+// Backend for the product/brand endpoints (Produkte New, Marken, Produkte
+// Kategorie, Sub Kategorie, Produkte Farbe, Produkte Material, collections) and
+// the /cmx file proxy. These are now deployed on SERVER, so they use it too.
+// Every one of them is a whitelisted allow_guest method — no credentials
+// needed for any fetch* module. Falls back to the dev instance when SERVER is
+// not set.
+export const NEW_API_SERVER = SERVER || "http://10.30.70.201:8000";
 export const NEW_API_BASE_URL = `${NEW_API_SERVER}/api/method/`;
 
 export function getApiHeaders() {
