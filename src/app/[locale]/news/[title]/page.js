@@ -23,10 +23,11 @@ function getNewsPageUrl(locale) {
   return `${getBaseUrl(locale)}${ROUTES.news[locale] || ROUTES.news.de}`;
 }
 
+// Articles exist only at /{locale}/news/<slug> (this route) in every locale —
+// /fr/nouvelles/<slug> and /it/notizie/<slug> 404, so canonical and hreflang
+// must not use the translated hub path.
 function getNewsDetailPageUrl(locale, newsSlug) {
-  const newsBaseUrl = getNewsPageUrl(locale);
-
-  return `${newsBaseUrl}/${newsSlug}`;
+  return `${getBaseUrl(locale)}/news/${newsSlug}`;
 }
 
 // Function to generate static paths for all locales
