@@ -34,7 +34,8 @@ export function landingMetadata({ path, title, description, index = true }) {
   };
 }
 
-// WebPage + BreadcrumbList + FAQPage for one landing page (German, de-AT).
+// WebPage + BreadcrumbList + FAQPage for one landing page. German; de-AT unless
+// the page targets German or Swiss visitors (`content.inLanguage`).
 function landingSchema(content, path) {
   const url = `${SITE_URL}/de${path}`;
   return graph(
@@ -43,7 +44,7 @@ function landingSchema(content, path) {
       "@id": `${url}#webpage`,
       url,
       name: content.banner.title,
-      inLanguage: "de-AT",
+      inLanguage: content.inLanguage || "de-AT",
       isPartOf: { "@id": WEBSITE_ID },
       about: { "@id": ORGANIZATION_ID },
       primaryImageOfPage: `${SITE_URL}${content.banner.image}`,

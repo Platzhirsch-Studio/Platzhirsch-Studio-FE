@@ -26,8 +26,8 @@ export default async function RegionLinks({ locale }) {
             {PLACES.join(" — ")}
           </p>
         </div>
-        {/* A rule-separated list, not a card deck: these are five routes into
-            the same showroom, read top to bottom. */}
+        {/* A rule-separated list, not a card deck: these are routes into the
+            same showroom, read top to bottom. */}
         <ul className="divide-y divide-[#30373e]/12 border-y border-[#30373e]/12 lg:col-span-7">
           {LANDING_PAGES.map((page) => (
             <li key={page.slug}>
