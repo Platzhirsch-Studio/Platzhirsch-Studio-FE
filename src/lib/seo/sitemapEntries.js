@@ -13,18 +13,31 @@ import { generateSlug } from "@/lib/slugify";
 import { productsPathByLocale } from "@/utils/routing";
 import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData";
 import { fetchNewsData } from "@/lib/api/fetchNewsData";
-import { fetchProduktePaths } from "@/lib/api/fetchAllProdukte";
+import { fetchProduktePaths, fetchProdukteNewByMarke } from "@/lib/api/fetchAllProdukte";
 import { fetchKategorien } from "@/lib/api/fetchKategorien";
 import { fetchKarriereData } from "@/lib/api/fetchKarrierData";
 import { fetchCollectionsByMarke } from "@/lib/api/fetchCollections";
 import { collectionPath } from "@/lib/marken/collections";
 
 export const BASE_URL = "https://platzhirsch.studio";
-// Hardcoded, NOT new Date(): a lastModified that changes on every deploy is a
-// freshness signal search engines learn to ignore. Bump this only when the static
-// pages' content actually changes. Dynamic entries (brands/products/news/jobs) below
-// use their real backend `modified` timestamp and fall back to this when missing.
+// <lastmod> must be the date the content really changed — never new Date():
+// a value that changes on every deploy is a freshness signal search engines
+// learn to ignore. Where it comes from:
+//   static pages   → `lastModified` in STATIC_PAGES_CONFIG (bump on copy change);
+//                    hub pages that list backend data also take the newest
+//                    item (products hub ← newest product, news hub ← newest article …)
+//   landing pages  → `lastModified` in src/lib/content/landingPages.js
+//   products/news/jobs → their backend `modified`
+//   brands/collections → newest of BRAND_TEMPLATE_LAST_MODIFIED and the
+//                    `modified` of the brand's (collection's) products —
+//                    marken_data has no `modified` of its own
+// STATIC_LAST_MODIFIED is only the last-resort fallback when none of these exist.
 const STATIC_LAST_MODIFIED = "2026-07-08";
+// Last change of the brand / collection page templates (page.js, MarkenItems,
+// collectionDetail, brandSchema, collectionPage) — a template change changes
+// every brand page, and brands without products have no other date. Bump it
+// when you change those files.
+const BRAND_TEMPLATE_LAST_MODIFIED = "2026-10-07";
 
 // Supported locales
 const LOCALES = ['de', 'en', 'fr', 'it'];
@@ -123,27 +136,27 @@ const STATIC_PAGE_TRANSLATIONS = {
   },
 };
 
-// Static pages configuration
+// Static pages configuration. `lastModified` = date the page's own code/copy
+// last changed (from git history) — bump it when you change that page.
 const STATIC_PAGES_CONFIG = [
-  { key: 'home', path: '/', changeFrequency: "weekly", priority: 1.0 },
-  { key: 'platzhirsch', path: '/ueber-uns/platzhirsch', changeFrequency: "monthly", priority: 0.9 },
-  { key: 'brands', path: '/ueber-uns/marken', changeFrequency: "weekly", priority: 0.9 },
-  { key: 'team', path: '/ueber-uns/team', changeFrequency: "monthly", priority: 0.8 },
-  { key: 'career', path: '/ueber-uns/karriere', changeFrequency: "weekly", priority: 0.8 },
-  { key: 'partners', path: '/ueber-uns/partner', changeFrequency: "monthly", priority: 0.7 },
-  { key: 'press', path: '/ueber-uns/presse', changeFrequency: "monthly", priority: 0.7 },
-  { key: 'products', path: '/produkte', changeFrequency: "weekly", priority: 0.9 },
-  { key: 'consulting', path: '/beratung', changeFrequency: "monthly", priority: 0.8 },
-  { key: 'contact', path: '/kontakt', changeFrequency: "monthly", priority: 0.8 },
-  { key: 'news', path: '/news', changeFrequency: "weekly", priority: 0.8 },
+  { key: 'home', path: '/', changeFrequency: "weekly", priority: 1.0, lastModified: "2026-10-08" },
+  { key: 'platzhirsch', path: '/ueber-uns/platzhirsch', changeFrequency: "monthly", priority: 0.9, lastModified: "2026-10-07" },
+  { key: 'brands', path: '/ueber-uns/marken', changeFrequency: "weekly", priority: 0.9, lastModified: "2026-10-07" },
+  { key: 'team', path: '/ueber-uns/team', changeFrequency: "monthly", priority: 0.8, lastModified: "2026-10-07" },
+  { key: 'career', path: '/ueber-uns/karriere', changeFrequency: "weekly", priority: 0.8, lastModified: "2026-10-07" },
+  { key: 'partners', path: '/ueber-uns/partner', changeFrequency: "monthly", priority: 0.7, lastModified: "2026-10-07" },
+  { key: 'press', path: '/ueber-uns/presse', changeFrequency: "monthly", priority: 0.7, lastModified: "2026-10-07" },
+  { key: 'products', path: '/produkte', changeFrequency: "weekly", priority: 0.9, lastModified: "2026-10-07" },
+  { key: 'consulting', path: '/beratung', changeFrequency: "monthly", priority: 0.8, lastModified: "2026-10-07" },
+  { key: 'contact', path: '/kontakt', changeFrequency: "monthly", priority: 0.8, lastModified: "2026-10-07" },
+  { key: 'news', path: '/news', changeFrequency: "weekly", priority: 0.8, lastModified: "2026-10-07" },
   // newsletter / merkliste / impressum / datenschutz are noindex → intentionally
   // excluded here (don't advertise pages we ask Google not to index).
 ];
 
 // Local landing pages (src/app/[locale]/<slug>/page.js) — German only, indexable,
-// no hreflang (the other locales 404 on purpose). Keep in sync with
-// LANDING_PAGES in src/components/Reusable/Footer.js.
-const LOCAL_LANDING_PATHS = LANDING_PAGES.map((p) => landingPagePath(p.slug));
+// no hreflang (the other locales 404 on purpose). Listed from LANDING_PAGES in
+// src/lib/content/landingPages.js, which also holds each page's lastModified.
 
 // ------------------------------------------------------------------
 // DATA FETCHERS
@@ -200,6 +213,40 @@ async function fetchCategoryKeys() {
   }
 }
 
+// Newest valid date among the given values (strings/Dates/null, arrays are
+// flattened), or null when there is none.
+function newest(...values) {
+  let best = null;
+  for (const value of values.flat()) {
+    if (!value) continue;
+    const date = value instanceof Date ? value : new Date(value);
+    if (!isNaN(date.getTime()) && (!best || date > best)) best = date;
+  }
+  return best;
+}
+
+// Per brand (by name1): { brand, collections } with the newest `modified` of the
+// brand's products and of each collection's products. marken_data and
+// get_collections carry no change date, so the products are the best signal
+// that a brand or collection page changed. One cached call per brand (the same
+// call the brand pages make).
+async function fetchBrandDates(brands) {
+  const pairs = await Promise.all(
+    brands.map(async (brand) => {
+      const products = await fetchProdukteNewByMarke(brand.name1);
+      const collections = new Map();
+      for (const product of products || []) {
+        if (!product.collection) continue;
+        collections.set(product.collection, newest(collections.get(product.collection), product.modified));
+      }
+      const brandDate = newest(BRAND_TEMPLATE_LAST_MODIFIED, brand.modified, (products || []).map((p) => p.modified));
+      for (const [name, date] of collections) collections.set(name, newest(BRAND_TEMPLATE_LAST_MODIFIED, date));
+      return [brand.name1, { brand: brandDate, collections }];
+    })
+  );
+  return new Map(pairs);
+}
+
 // Helper to add entry. `pathByLocale` ({ de, en, fr, it } → path after the
 // locale prefix) adds hreflang alternates, matching the pages' own tags.
 function addEntry(entries, url, lastModified, changeFrequency, priority, pathByLocale) {
@@ -231,7 +278,19 @@ function dedupe(entries) {
 export async function getStaticEntries() {
   const entries = [];
 
+  // Hub pages list backend data, so they also change when that data changes:
+  // the newest item counts as well as the page's own lastModified.
+  const [productPaths, news, jobs, brands] = await Promise.all([fetchProductPaths(), fetchNews(), fetchJobs(), fetchBrands()]);
+  const brandDates = await fetchBrandDates(brands);
+  const hubDataDate = {
+    products: newest(productPaths.map((p) => p.modified)),
+    news: newest(news.filter((n) => n.status === "Aktiv").map((n) => n.modified || n.daten)),
+    career: newest(jobs.map((j) => j.modified || j.posted)),
+    brands: newest([...brandDates.values()].map((d) => d.brand)),
+  };
+
   for (const config of STATIC_PAGES_CONFIG) {
+    const lastModified = newest(config.lastModified, hubDataDate[config.key]);
     // Check if this is an about-us related page
     const aboutUsKeys = ['platzhirsch', 'brands', 'team', 'career', 'partners', 'press'];
     // deOnly pages (career list) are noindex for non-DE, so list them DE-only —
@@ -250,7 +309,7 @@ export async function getStaticEntries() {
           addEntry(
             entries,
             url,
-            config.lastModified || STATIC_LAST_MODIFIED,
+            lastModified,
             config.changeFrequency,
             config.priority,
             alternates
@@ -270,7 +329,7 @@ export async function getStaticEntries() {
         addEntry(
           entries,
           `${BASE_URL}/${locale}${localizedPath === '/' ? '' : localizedPath}`,
-          config.lastModified || STATIC_LAST_MODIFIED,
+          lastModified,
           config.changeFrequency,
           config.priority,
           alternates
@@ -279,13 +338,12 @@ export async function getStaticEntries() {
     }
   }
 
-  for (const path of LOCAL_LANDING_PATHS) {
-    addEntry(entries, `${BASE_URL}/de${path}`, STATIC_LAST_MODIFIED, "monthly", 0.8);
+  for (const page of LANDING_PAGES) {
+    addEntry(entries, `${BASE_URL}/de${landingPagePath(page.slug)}`, page.lastModified, "monthly", 0.8);
   }
 
   // Open job postings (/…/karriere/<slug>, translated career path per locale)
   // — indexable, with JobPosting data for Google Jobs.
-  const jobs = await fetchJobs();
   for (const job of jobs) {
     if (!job.slug) continue;
     const pathByLocale = Object.fromEntries(
@@ -312,6 +370,7 @@ export async function getStaticEntries() {
 export async function getBrandEntries() {
   const entries = [];
   const brands = await fetchBrands();
+  const brandDates = await fetchBrandDates(brands);
   const BRAND_STORY_BASE = { de: '/ueber-uns/marken', en: '/about-us/brands', fr: '/a-propos/marques', it: '/chi-siamo/marche' };
   for (const brand of brands) {
     const slug = generateSlug(brand.name1);
@@ -321,7 +380,7 @@ export async function getBrandEntries() {
       addEntry(
         entries,
         `${BASE_URL}/${locale}${BRAND_STORY_BASE[locale]}/${slug}`,
-        brand.modified ? new Date(brand.modified) : STATIC_LAST_MODIFIED,
+        brandDates.get(brand.name1)?.brand,
         "monthly",
         0.7,
         Object.fromEntries(LOCALES.map((l) => [l, `${BRAND_STORY_BASE[l]}/${slug}`]))
@@ -331,8 +390,8 @@ export async function getBrandEntries() {
 
   // Collection pages (/…/marken/<brand>/<collection>), every collection of
   // every active brand — the same list get_collections gives the pages, so
-  // each URL resolves. Collections have no `modified` of their own; the
-  // brand's is used.
+  // each URL resolves. Collections have no `modified` of their own: the
+  // newest of their products is used, else the brand's.
   const collectionsByBrand = await Promise.all(
     brands.map(async (brand) => [brand, await fetchCollectionsByMarke(brand.name1).catch(() => [])])
   );
@@ -342,11 +401,13 @@ export async function getBrandEntries() {
       const pathByLocale = Object.fromEntries(
         LOCALES.map((l) => [l, collectionPath(l, brand.name1, collection.name)])
       );
+      const dates = brandDates.get(brand.name1);
+      const collectionDate = dates?.collections.get(collection.name) || dates?.brand;
       for (const locale of LOCALES) {
         addEntry(
           entries,
           `${BASE_URL}/${locale}${pathByLocale[locale]}`,
-          brand.modified ? new Date(brand.modified) : STATIC_LAST_MODIFIED,
+          collectionDate,
           "monthly",
           0.6,
           pathByLocale
