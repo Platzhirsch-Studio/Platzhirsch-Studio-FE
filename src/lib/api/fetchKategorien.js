@@ -3,9 +3,7 @@ import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
 
 // CMS-managed category tiles (Produkte Kategorie doctype) for the
-// /produkte hub. See
-// frappe-integration/platzhirsch_studio/doctype/produkte_kategorie — replaces
-// the static CATEGORY_I18N map + getShopCategories() tile image with real
+// /produkte hub. Replaces the static CATEGORY_I18N map + getShopCategories() tile image with real
 // data. Not yet deployed to the production SERVER, so this calls
 // NEW_API_BASE_URL instead (see src/lib/apiBaseUrl.js).
 export async function fetchKategorien() {

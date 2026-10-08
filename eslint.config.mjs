@@ -13,7 +13,6 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Not part of the app:
     "archive/**",
-    "frappe-integration/**",
     "public/**",
   ]),
 ]);

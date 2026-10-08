@@ -3,7 +3,7 @@ import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
 
 // Color options (with hex swatch) for the /produkte/[category] filter
-// panel. See frappe-integration/platzhirsch_studio/doctype/produkte_farbe.
+// panel (Frappe doctype Produkte Farbe).
 export async function fetchFarben() {
   const API_URL = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.produkte_farbe.api.get_all_farben_api`;
 
