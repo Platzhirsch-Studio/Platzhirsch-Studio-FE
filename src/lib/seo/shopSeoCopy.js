@@ -83,7 +83,7 @@ export function categorySeo(locale, { label, count, brands, key }) {
         title: keywordDe
           ? `${keywordDe} in Vorarlberg – ${label}${SUFFIX}`
           : `${label} – Designermöbel in Vorarlberg${SUFFIX}`,
-        description: `${count ? `${count} ` : ""}${keywordDe || label}${brandList ? ` von ${brandList}` : ""} – im Showroom in Lochau am Bodensee erleben. Persönliche Beratung, Lieferung und Montage in Österreich, Deutschland und der Schweiz.`,
+        description: `${count ? `${count} ` : ""}${keywordDe || label}${brandList ? ` von ${brandList}` : ""} – im Showroom in Lochau am Bodensee erleben. Persönliche Beratung, Lieferung und Montage in ganz Österreich.`,
       };
   }
 }
