@@ -1,12 +1,15 @@
 // src/lib/api/markenApi.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
 
 // Base fetch function (private - not exported)
 export async function fetchRawMarkenData() {
-  const response = await fetch(`${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.marken.api.marken_data`, {
+  const response = await backofficeFetch(`${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.marken.api.marken_data`, {
     next: { revalidate: 3600, tags: ["marken"] },
-    signal: AbortSignal.timeout(15000),
+    // 2 x 7 s inside a 15 s budget: a retry, but never longer than the old single 15 s limit.
+    timeoutMs: 7000,
+    budgetMs: 15000,
   });
 
   if (!response.ok) {

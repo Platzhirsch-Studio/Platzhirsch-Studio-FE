@@ -1,13 +1,11 @@
 import React from "react";
 import JsonLd from "@/components/Reusable/JsonLd";
-import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import PartnerSecond from "@/components/Partner/partner";
-import { ROUTES } from "@/utils/routing";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { hreflangLanguages, ogLocale, DEFAULT_OG_IMAGE } from "@/lib/seo/pageMetadata";
+import { homeCrumbLabel } from "@/lib/seo/breadcrumbs";
 import {
   fetchPartnersKeywords,
   getLocalizedPartnersMetadata,
-  getPartnersOGImage,
   validateOGType
 } from "@/lib/api/Keywords/fetchPartnersKeywords";
 
@@ -36,19 +34,25 @@ function getPartnerPageUrl(locale) {
 
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "I Nostri Partner | Collaborazioni di Platzhirsch Home Living";
-    case "en": return "Our Partners | Trusted Collaborations at Platzhirsch Home Living";
-    case "fr": return "Nos Partenaires | Collaborations de Platzhirsch Home Living";
-    default: return "Unsere Partner | Kooperationen von Platzhirsch Home Living";
+    // Runde 2 (recht P2-7): plain "Partner", no advertising phrase – and the
+    // CMS title ("Starke Partnerschaften") no longer overrides it.
+    // Runde 5 P6 (seo): 30–60 characters, says what the page lists
+    // (Partnerbetriebe in Vorarlberg), still without superlatives.
+    case "it": return "Aziende partner in Vorarlberg | Platzhirsch Home Living";
+    case "en": return "Partner companies in Vorarlberg | Platzhirsch Home Living";
+    case "fr": return "Entreprises partenaires au Vorarlberg | Platzhirsch";
+    default: return "Partnerbetriebe in Vorarlberg | Platzhirsch Home Living";
   }
 };
 
+// Description: our own, factual text wins over the CMS (QA Runde 1, P2-2:
+// the CMS text still says "exklusiv"). The CMS keeps title, image and type.
 const getLocalizedDescription = (locale) => {
   switch (locale) {
-    case "it": return "I nostri partner di fiducia nel design esclusivo. Collaborazioni di alta qualità.";
-    case "en": return "Our trusted partners in exclusive design. High-quality collaborations.";
-    case "fr": return "Nos partenaires de confiance en design exclusif. Collaborations de haute qualité.";
-    default: return "Unsere vertrauenswürdigen Partner im exklusiven Design. Hochwertige Kooperationen.";
+    case "it": return "Le aziende con cui Platzhirsch Home Living collabora in Vorarlberg e sul Lago di Costanza: immobili, costruzione, tecnica e gastronomia.";
+    case "en": return "The companies Platzhirsch Home Living works with in Vorarlberg and around Lake Constance: real estate, building, technology and hospitality.";
+    case "fr": return "Les partenaires de Platzhirsch Home Living au Vorarlberg et autour du lac de Constance : immobilier, construction, technique et restauration.";
+    default: return "Mit diesen Unternehmen arbeitet Platzhirsch Home Living in Vorarlberg und am Bodensee zusammen: Immobilien, Bau, Technik und Gastronomie.";
   }
 };
 
@@ -84,51 +88,51 @@ export async function generateMetadata({ params }) {
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
           siteName: "Platzhirsch Home Living",
-          locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url: "/Images/Partner/dinner-area.jpg", width: 1200, height: 630, alt: "Partner – Platzhirsch Home Living" }],
+          locale: ogLocale(locale),
+          images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: "Partner – Platzhirsch Home Living" }],
         },
         twitter: {
           card: "summary_large_image",
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
-          images: ["/Images/Partner/dinner-area.jpg"],
+          images: [DEFAULT_OG_IMAGE],
         },
       };
     }
 
     const meta = getLocalizedPartnersMetadata(partnersKeywords, locale);
-    const image = getPartnersOGImage(partnersKeywords);
     const safeType = validateOGType(meta?.type);
 
     return {
-      title: meta?.title || getLocalizedTitle(locale),
-      description: meta?.description || getLocalizedDescription(locale),
+      title: getLocalizedTitle(locale),
+      description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
       alternates: {
         canonical: PAGE_URL,
         languages: hreflangLanguages((l) => getPartnerPageUrl(l))
       },
       openGraph: {
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
+        title: getLocalizedTitle(locale),
+        description: getLocalizedDescription(locale),
         url: PAGE_URL,
         siteName: "Platzhirsch Home Living",
         images: [
           {
-            url: image ? image : "/Images/Partner/dinner-area.jpg",
+            // Rat 9,5 B5: own OG image only; the CMS image has no documented rights (bildrechte.csv).
+            url: DEFAULT_OG_IMAGE,
             width: 1200,
             height: 630,
             alt: "Partner – Platzhirsch Home Living",
           },
         ],
-        locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
+        locale: ogLocale(locale),
         type: safeType,
       },
       twitter: {
         card: "summary_large_image",
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
-        images: [image ? image : "/Images/Partner/dinner-area.jpg"],
+        title: getLocalizedTitle(locale),
+        description: getLocalizedDescription(locale),
+        images: [DEFAULT_OG_IMAGE],
       },
     };
   } catch (error) {
@@ -147,14 +151,6 @@ export default async function Page({ params }) {
   const { locale } = await params;
 
 
-  const linkNameOne =
-    locale == "it"
-      ? "SU DI NOI"
-      : locale == "en"
-        ? "ABOUT US"
-        : locale == "fr"
-          ? "À PROPOS"
-          : "ÜBER UNS";
   const linkNameTwo =
     locale == "it"
       ? "Partner"
@@ -163,39 +159,13 @@ export default async function Page({ params }) {
         : locale == "fr"
           ? "Partenaire"
           : "Partner";
-  const Home =
-    locale == "it"
-      ? "Home"
-      : locale == "en"
-        ? "Home"
-        : locale == "fr"
-          ? "Accueil"
-          : "Home";
+  const Home = homeCrumbLabel(locale);
 
   const BASE_URL = getBaseUrl(locale);
   const PAGE_URL = getPartnerPageUrl(locale);
 
-  const partnerPath = ROUTES.partner[locale] ? `${ROUTES.partner[locale]}` : `/ueber-uns/partner`;
 
 
-  const BannerInfo = {
-    image: "/Images/Partner/dinner-area.jpg",
-    links: [
-      {
-        linkName: Home,
-        link: "/",
-      },
-      {
-        linkName: linkNameOne,
-
-      },
-      {
-        linkName: linkNameTwo,
-        link: partnerPath,
-      },
-    ],
-    title: linkNameTwo,
-  };
 
   const webPageSchema = {
     "@context": "https://schema.org",
@@ -203,7 +173,7 @@ export default async function Page({ params }) {
     "@id": `${PAGE_URL}/#webpage`,
     url: PAGE_URL,
     name: linkNameTwo,
-    description: "Unsere Partner im exklusiven Design bei Platzhirsch Home Living - Hochwertige Kooperationen.",
+    description: getLocalizedDescription(locale),
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
     isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
@@ -218,7 +188,6 @@ export default async function Page({ params }) {
   return (
     <div>
       <JsonLd data={webPageSchema} />
-      <SinglePageBanner info={BannerInfo} />
       <PartnerSecond />
     </div>
   );

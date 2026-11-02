@@ -2,6 +2,7 @@
 // Layout: src/components/Landing/landingPage.js. Kept noindex until the copy is final.
 import { notFound } from "next/navigation";
 import LandingPage, { landingMetadata } from "@/components/Landing/landingPage";
+import RegionLinks from "@/app/[locale]/regionen/RegionLinks";
 
 const PATH = "/moebel-bodensee";
 
@@ -18,6 +19,10 @@ export async function generateMetadata({ params }) {
 
 // Content is static German copy; keep facts (address, hours, brands) in sync with the footer/CMS.
 const CONTENT = {
+  // Runde 2 (P3): Termin-Knöpfe mit Kontext (ux P1-1) und der Kern-USP als
+  // kurzer Abschnitt mit eigenem Satz (gesamtwerk P1-4, Durchdringungsplan §4/§5).
+  processText:
+    "Bevor wir Möbel vorschlagen, sehen wir uns Ihren Raum an, und Harald Menghin zeichnet ihn von Hand. Danach planen wir in 3D, und Sie sehen Ihre Einrichtung als Rendering, bevor etwas bestellt wird.",
   banner: {
     image: "/Images/Wohnen/bannerImage5.jpg",
     title: "Designermöbel am Bodensee",
@@ -35,7 +40,7 @@ const CONTENT = {
       "Showroom in Lochau am Bodensee",
       "Einrichtung für drinnen und draußen",
       "Persönliche Beratung und Planung",
-      "Lieferung und Montage in ganz Österreich",
+      "Lieferung und Montage auf Wunsch",
     ],
     image: "/Images/Home/helmut.jpg",
     imageAlt: "Sofas und Sessel im Showroom von Platzhirsch Home Living in Lochau",
@@ -70,6 +75,10 @@ const CONTENT = {
       { title: "Auswahl im Showroom", text: "Sie erleben Möbel, Stoffe und Oberflächen im Original und treffen Ihre Auswahl in Ruhe." },
       { title: "Lieferung & Montage", text: "Wir koordinieren Lieferung und Montage, damit am Ende alles genau so steht, wie es geplant war." },
     ],
+    links: [
+      { href: "/arbeitsweise", label: "Unsere Arbeitsweise: von der Handzeichnung zum Rendering" },
+      { href: "/3d-ansicht", label: "Möbel in 3D & AR ansehen" },
+    ],
   },
   gallery: [
     { src: "/Images/Home/secondImage.jpg", alt: "Terrasse mit Esstisch, Outdoor-Stühlen und Pool" },
@@ -89,7 +98,7 @@ const CONTENT = {
     name: "bodensee-faq",
     heading: "Fragen zu Möbeln am Bodensee",
     items: [
-      { q: "Wo liegt Ihr Showroom?", a: "In der Landstraße 9 in 6911 Lochau – am österreichischen Ufer des Bodensees, nur wenige Minuten von Bregenz und direkt an der Grenze zu Deutschland." },
+      { q: "Wo liegt Ihr Showroom?", a: "In der Landstraße 11 in 6911 Lochau – am österreichischen Ufer des Bodensees, nur wenige Minuten von Bregenz und direkt an der Grenze zu Deutschland." },
       { q: "Beraten Sie auch Kundinnen und Kunden aus Deutschland und der Schweiz?", a: "Ja, gerne. Für Lieferung und Montage außerhalb Österreichs sprechen Sie uns bitte direkt an, damit wir die Details für Ihr Projekt klären können." },
       { q: "Führen Sie auch Outdoor-Möbel für Terrasse und Garten?", a: "Ja. Neben Möbeln für innen führen wir Outdoor-Möbel und Accessoires für Terrasse, Balkon und Garten." },
       { q: "Wann hat der Showroom geöffnet?", a: "Dienstag bis Freitag von 10 bis 18 Uhr und Samstag von 10 bis 14 Uhr. Für eine ausführliche Beratung empfehlen wir einen Termin." },
@@ -102,5 +111,11 @@ const CONTENT = {
 export default async function MoebelBodenseePage({ params }) {
   const { locale } = await params;
   if (locale !== "de") notFound();
-  return <LandingPage content={CONTENT} path={PATH} />;
+  return (
+    <>
+      <LandingPage content={CONTENT} path={PATH} />
+      {/* AP-11 (SEO-Team A): Regionen, Minotti Studio, Küche, Bad & Wellness, Arbeitsweise */}
+      <RegionLinks path={PATH} />
+    </>
+  );
 }

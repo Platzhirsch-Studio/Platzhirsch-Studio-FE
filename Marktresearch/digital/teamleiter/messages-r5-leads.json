@@ -1,0 +1,83 @@
+{
+  "_hinweis": "R5-leads-perf, 26.10.2026: Vorschlag für src/messages/{de,en,fr,it}.json (Deep-Merge, nur neue Schlüssel): forms.selfReport.* für das optionale Feld „Wie sind Sie auf uns aufmerksam geworden?“ (Kontakt, Beratung Schritt 4, Produktanfrage). Fallback bis zur Übernahme: src/lib/forms/selfReport.js (SELF_REPORT_TEXT, gleiche Werte, geprüft von tests/unit/r5-leads.test.mjs). Die Werte ans Backoffice sind feste deutsche Bezeichnungen (SELF_REPORT_OPTIONS), unabhängig von der Seitensprache. IT tu-Form, FR vous.",
+  "de": {
+    "forms": {
+      "selfReport": {
+        "label": "Wie sind Sie auf uns aufmerksam geworden?",
+        "empty": "Bitte wählen",
+        "options": {
+          "google": "Google-Suche",
+          "maps": "Google Maps",
+          "ki": "KI-Assistent (z. B. ChatGPT)",
+          "instagram": "Instagram",
+          "empfehlung": "Empfehlung von Freunden oder Kunden",
+          "architekt": "Architekt oder Planer",
+          "event": "Veranstaltung oder Café",
+          "vorbeigefahren": "Vorbeigefahren",
+          "presse": "Presse",
+          "sonstiges": "Anderes"
+        }
+      }
+    }
+  },
+  "en": {
+    "forms": {
+      "selfReport": {
+        "label": "How did you hear about us?",
+        "empty": "Please choose",
+        "options": {
+          "google": "Google search",
+          "maps": "Google Maps",
+          "ki": "AI assistant (e.g. ChatGPT)",
+          "instagram": "Instagram",
+          "empfehlung": "Recommendation from friends or clients",
+          "architekt": "Architect or planner",
+          "event": "Event or café",
+          "vorbeigefahren": "Passed by",
+          "presse": "Press",
+          "sonstiges": "Other"
+        }
+      }
+    }
+  },
+  "fr": {
+    "forms": {
+      "selfReport": {
+        "label": "Comment nous avez-vous connus ?",
+        "empty": "Veuillez choisir",
+        "options": {
+          "google": "Recherche Google",
+          "maps": "Google Maps",
+          "ki": "Assistant IA (p. ex. ChatGPT)",
+          "instagram": "Instagram",
+          "empfehlung": "Recommandation d’amis ou de clients",
+          "architekt": "Architecte ou planificateur",
+          "event": "Événement ou café",
+          "vorbeigefahren": "En passant devant",
+          "presse": "Presse",
+          "sonstiges": "Autre"
+        }
+      }
+    }
+  },
+  "it": {
+    "forms": {
+      "selfReport": {
+        "label": "Come ci hai conosciuto?",
+        "empty": "Scegli",
+        "options": {
+          "google": "Ricerca Google",
+          "maps": "Google Maps",
+          "ki": "Assistente IA (ad es. ChatGPT)",
+          "instagram": "Instagram",
+          "empfehlung": "Consiglio di amici o clienti",
+          "architekt": "Architetto o progettista",
+          "event": "Evento o caffè",
+          "vorbeigefahren": "Passando davanti",
+          "presse": "Stampa",
+          "sonstiges": "Altro"
+        }
+      }
+    }
+  }
+}

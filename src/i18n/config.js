@@ -3,7 +3,13 @@ import { getRequestConfig } from 'next-intl/server';
 export const routing = {
   locales: ['de', 'en', 'fr', 'it'],
   defaultLocale: 'de',
-  localeDetection: false
+  localeDetection: false,
+  // R5 (recht P1-4, technik P2): next-intl writes NO NEXT_LOCALE cookie –
+  // not in the middleware (first visit, prefetch, cached pages) and not in
+  // its Link/useRouter. Contract for the privacy policy: NEXT_LOCALE and
+  // preferredLocale are only set when the visitor actively switches the
+  // language (src/components/Navbar/LanguageSwitcher.js, rememberLocale).
+  localeCookie: false
 };
 
 

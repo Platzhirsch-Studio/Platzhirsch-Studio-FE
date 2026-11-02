@@ -2,7 +2,7 @@ import React from 'react';
 import JsonLd from "@/components/Reusable/JsonLd";
 import Impressum from "@/components/Impressum/impressumbanner";
 import Content from "@/components/Impressum/impressum";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { hreflangLanguages, ogLocale, DEFAULT_OG_IMAGE } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -32,25 +32,25 @@ function getLocalizedMetadata(locale) {
   const metadataMap = {
     de: {
       title: "Impressum | Platzhirsch Home Living",
-      description: "Informationen, Kontaktangaben und Unternehmensdaten des Platzhirsch Home Livings in Lochau. Transparenz & Vertrauen stehen bei uns an erster Stelle.",
+      description: "Impressum von Platzhirsch Home Living in Lochau: Anbieter, Kontakt, Firmenbuch, Gewerberecht und Offenlegung nach § 25 MedienG.",
       ogTitle: "Impressum",
-      ogDescription: "Hier finden Sie alle rechtlichen Informationen zum Platzhirsch Home Living, inklusive Firmenbuchnummer, Geschäftsführung und Kontaktmöglichkeiten.",
+      ogDescription: "Anbieter, Kontakt, Firmenbuchnummer, Geschäftsführung und Offenlegung von Platzhirsch Home Living.",
     },
     en: {
       title: "Legal Notice | Platzhirsch Home Living",
-      description: "Legal information, contact details and company data of Platzhirsch Home Living in Lochau. Transparency & trust are our top priorities.",
+      description: "Legal notice of Platzhirsch Home Living in Lochau: provider, contact, company register, trade law and disclosure (in German).",
       ogTitle: "Legal Notice",
       ogDescription: "Here you will find all legal information about Platzhirsch Home Living, including commercial register number, management and contact options.",
     },
     fr: {
       title: "Mentions Légales | Platzhirsch Home Living",
-      description: "Informations légales, coordonnées et données d'entreprise de Platzhirsch Home Living à Lochau. La transparence et la confiance sont nos priorités.",
+      description: "Mentions légales de Platzhirsch Home Living à Lochau : prestataire, contact, registre du commerce, droit professionnel et publication (en allemand).",
       ogTitle: "Mentions Légales",
       ogDescription: "Vous trouverez ici toutes les informations légales concernant Platzhirsch Home Living, y compris le numéro du registre du commerce, la direction et les coordonnées.",
     },
     it: {
       title: "Note Legali | Platzhirsch Home Living",
-      description: "Informazioni legali, contatti e dati aziendali di Platzhirsch Home Living a Lochau. Trasparenza e fiducia sono le nostre priorità.",
+      description: "Note legali di Platzhirsch Home Living a Lochau: fornitore, contatti, registro delle imprese, diritto commerciale e informativa (in tedesco).",
       ogTitle: "Note Legali",
       ogDescription: "Qui troverete tutte le informazioni legali su Platzhirsch Home Living, incluso il numero del registro delle imprese, la direzione e le opzioni di contatto.",
     },
@@ -82,19 +82,19 @@ export async function generateMetadata({ params }) {
       siteName: "Platzhirsch Home Living",
       images: [
         {
-          url: "/Images/fallback-og.jpg",
+          url: DEFAULT_OG_IMAGE, // Rat 9,5 B5: altes Teilen-Bild ohne geklärte Rechte ersetzt
           width: 1200,
           height: 630,
           alt: "Impressum",
         },
       ],
-      locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
+      locale: ogLocale(locale),
     },
     twitter: {
       card: "summary_large_image",
       title: localizedMeta.ogTitle,
       description: localizedMeta.ogDescription,
-      images: ["/Images/fallback-og.jpg"],
+      images: [DEFAULT_OG_IMAGE],
     },
   };
 }

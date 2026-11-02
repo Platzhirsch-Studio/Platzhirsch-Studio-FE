@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "stand": null,
+  "aufnahme": null,
+  "zonen": [],
+  "testszene": {
+    "id": "_testszene",
+    "drehung": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "stimmungen": {
+      "tag": {
+        "lod": [
+          {
+            "id": "lo",
+            "url": "/showroom/_testszene/tag/lo.sog",
+            "bytes": 967092,
+            "gaussians": 145560
+          },
+          {
+            "id": "hi",
+            "url": "/showroom/_testszene/tag/hi.sog",
+            "bytes": 1868902,
+            "gaussians": 415885
+          }
+        ],
+        "gepackt": "2026-10-28",
+        "poster": {
+          "avif": "/showroom/_testszene/tag/poster-breit.avif",
+          "webp": "/showroom/_testszene/tag/poster-breit.webp",
+          "width": 1920,
+          "height": 1080,
+          "bytes": {
+            "avif": 53106,
+            "webp": 46510
+          },
+          "tall": {
+            "avif": "/showroom/_testszene/tag/poster-mobil.avif",
+            "webp": "/showroom/_testszene/tag/poster-mobil.webp",
+            "width": 960,
+            "height": 1200,
+            "bytes": {
+              "avif": 26968,
+              "webp": 22200
+            }
+          }
+        },
+        "video": {
+          "av1": "/showroom/_testszene/tag/fahrt-av1.mp4",
+          "h264": "/showroom/_testszene/tag/fahrt-h264.mp4",
+          "poster": "/showroom/_testszene/tag/fahrt-poster.webp",
+          "width": 1280,
+          "height": 720,
+          "dauer": 25.6,
+          "datum": "2026-10-28",
+          "bytes": {
+            "av1": 1494055,
+            "h264": 2316119
+          }
+        }
+      },
+      "abend": {
+        "lod": [
+          {
+            "id": "lo",
+            "url": "/showroom/_testszene/abend/lo.sog",
+            "bytes": 973401,
+            "gaussians": 145560
+          },
+          {
+            "id": "hi",
+            "url": "/showroom/_testszene/abend/hi.sog",
+            "bytes": 1825430,
+            "gaussians": 415885
+          }
+        ],
+        "gepackt": "2026-10-28"
+      }
+    }
+  }
+}

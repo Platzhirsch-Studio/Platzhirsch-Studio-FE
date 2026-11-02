@@ -1,0 +1,113 @@
+{
+  "_hinweis": "Vorschlag Wow-Team (wow-spezifikation §7), Namespace \"Wow\". DE verbindlicher Vorschlag, EN/FR/IT Entwurf zur Prüfung. Quelle im Code: src/lib/wow/messages.js. Bis zur Übernahme in src/messages/*.json liest WowStage aus dieser Quelle. Push-Runde 3: drei Zustände (Linie · Licht · Raum), Regler-Texte (slider), Schlusszeile (coda) statt „So arbeiten wir“, Lupe entfernt. Push-Runde 4: Werkzeugleiste (states) und „Noch einmal“ (replay) entfallen; neu: show (stille Schaltfläche „Die Linie zeigen“ / „Nur das Foto“) und slider.grip (sichtbare Griffbeschriftung „Linie ↔ Raum“). Fix-Runde 1 (F1): Bildzeile Phase A „Linie: Grafik, keine Skizze“, Coda-Link EN/FR/IT auf die Beratungsseite derselben Sprache. Runde 2 (Fix-Team P2): Coda-Link „Unsere Arbeitsweise“ auf /arbeitsweise; außerhalb DE hängt codaLabel() den Sprachhinweis an (kein eigener Schlüssel).",
+  "_vorschlagInhaber": {
+    "Home.hero.title (H1, nicht im Wow-Namespace, Entscheidung Inhaber)": {
+      "de": "Erst die Linie. Dann Ihr Raum.",
+      "ab": {
+        "A": "Italienisches Wohnen am Bodensee. (heute, Kontrolle)",
+        "B": "Erst die Linie. Dann Ihr Raum."
+      },
+      "hinweis": "A/B-Vorschlag zur Entscheidung des Inhabers (Antreiber Runde 2: luxus-cd #5, awwwards #4; Runde 3 erneut von awwwards #4 und luxus-cd #5 empfohlen). Die SEO-Unterzeile (Slider.headline) bleibt in beiden Varianten in der H1. Messgröße: Klicks auf „Termin wählen“ je Sitzung. Seit Push-Runde 3 steht der Satz als Schlusszeile (Wow.coda) unter der Bühne bzw. am Handy unter „Termin wählen“; wählt der Inhaber B, entfällt die Schlusszeile (keine Doppelung). Nicht umgesetzt: die H1 gehört zum Startseiten-Text, nicht zum Wow-Team."
+    }
+  },
+  "de": {
+    "Wow": {
+      "stage": {
+        "label": "Von der Linie zum Raum",
+        "description": "Hilfslinien und eine Tuschelinie zeichnen unseren Showroom in Lochau. Abendlicht fällt vom Fenster herein und gibt das Foto des Raums frei. Danach lässt sich die Zeichnung mit einer Schaltfläche wieder einblenden und mit einem Regler über das Foto ziehen."
+      },
+      "show": {
+        "open": "Die Linie zeigen",
+        "close": "Nur das Foto"
+      },
+      "slider": {
+        "label": "Zeichnung über das Foto ziehen",
+        "value": "{n} % Zeichnung",
+        "grip": "Linie ↔ Raum"
+      },
+      "caption": {
+        "phaseA": "Showroom Lochau · Linie: Zeichen des Studios",
+        "phaseB": "Foto: Showroom Lochau · Linie: Harald Menghin, von Hand gezeichnet"
+      },
+      "coda": {
+        "text": "Erst die Linie. Dann Ihr Raum.",
+        "link": "Unsere Arbeitsweise"
+      }
+    }
+  },
+  "en": {
+    "Wow": {
+      "stage": {
+        "label": "From line to room",
+        "description": "Construction lines and an ink line draw our showroom in Lochau. Evening light falls in from the window and reveals the photograph of the room. Afterwards a button shows the drawing again and a slider pulls it across the photo."
+      },
+      "show": {
+        "open": "Show the line",
+        "close": "Photo only"
+      },
+      "slider": {
+        "label": "Pull the drawing across the photo",
+        "value": "{n} % drawing",
+        "grip": "Line ↔ Room"
+      },
+      "caption": {
+        "phaseA": "Showroom Lochau · Line: the studio’s mark",
+        "phaseB": "Photo: Showroom Lochau · Line: Harald Menghin, drawn by hand"
+      },
+      "coda": {
+        "text": "First the line. Then your room.",
+        "link": "How we work"
+      }
+    }
+  },
+  "fr": {
+    "Wow": {
+      "stage": {
+        "label": "De la ligne à l’espace",
+        "description": "Des lignes de construction et un trait d’encre dessinent notre showroom à Lochau. La lumière du soir entre par la fenêtre et révèle la photo de l’espace. Ensuite, un bouton réaffiche le dessin et un curseur le fait glisser sur la photo."
+      },
+      "show": {
+        "open": "Montrer la ligne",
+        "close": "Photo seule"
+      },
+      "slider": {
+        "label": "Faire glisser le dessin sur la photo",
+        "value": "{n} % de dessin",
+        "grip": "Ligne ↔ Espace"
+      },
+      "caption": {
+        "phaseA": "Showroom de Lochau · Ligne : signe du studio",
+        "phaseB": "Photo : showroom de Lochau · Ligne : Harald Menghin, dessinée à la main"
+      },
+      "coda": {
+        "text": "D’abord la ligne. Puis votre espace.",
+        "link": "Notre méthode"
+      }
+    }
+  },
+  "it": {
+    "Wow": {
+      "stage": {
+        "label": "Dalla linea allo spazio",
+        "description": "Linee di costruzione e un tratto d’inchiostro disegnano il nostro showroom a Lochau. La luce della sera entra dalla finestra e svela la foto dello spazio. Poi un pulsante mostra di nuovo il disegno e un cursore lo fa scorrere sulla foto."
+      },
+      "show": {
+        "open": "Mostrate la linea",
+        "close": "Solo la foto"
+      },
+      "slider": {
+        "label": "Trascinare il disegno sulla foto",
+        "value": "{n} % di disegno",
+        "grip": "Linea ↔ Spazio"
+      },
+      "caption": {
+        "phaseA": "Showroom di Lochau · Linea: segno dello studio",
+        "phaseB": "Foto: showroom di Lochau · Linea: Harald Menghin, disegnata a mano"
+      },
+      "coda": {
+        "text": "Prima la linea. Poi il vostro spazio.",
+        "link": "Il nostro metodo"
+      }
+    }
+  }
+}

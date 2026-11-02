@@ -1,0 +1,360 @@
+/* Dreiländer-Karte & Preisrechner – nur, was Tailwind nicht gut kann
+   (SVG-Strokes, Routen-Animation, Puls). Farben = Theme-Tokens aus globals.css.
+   SVG-Text: Instrument Sans (--font-sans, vorgeladen) mit Langform-Eigenschaften
+   und explizitem Gewicht 500/600 (zusätzlich als Attribut) – WebKit rendert
+   sonst den dünnen Schnitt. Fahrzeiten in --map-time (6,7 : 1 auf Bone). */
+.map,
+.mini {
+  --map-font: var(--font-sans, "Instrument Sans", Helvetica, Arial, sans-serif);
+  --map-time: #6b5314;
+  --map-halo: var(--color-bone, #f7f5f1);
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.land {
+  fill: var(--color-bone);
+}
+.lake {
+  fill: #cfdde3;
+  stroke: #b7cad2;
+  stroke-width: 1;
+}
+.river {
+  fill: none;
+  stroke: #b7cad2;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.border {
+  fill: none;
+  stroke: #30373e;
+  stroke-opacity: 0.28;
+  stroke-width: 1.2;
+  stroke-dasharray: 5 5;
+}
+.lakeLabel {
+  font-family: var(--map-font);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  fill: #3f5b66;
+}
+.country {
+  font-family: var(--map-font);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.24em;
+  paint-order: stroke;
+  stroke: var(--map-halo);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  fill: #30373e;
+  opacity: 0.72;
+  transition: opacity 400ms ease, fill 400ms ease;
+}
+.countryActive {
+  opacity: 0.9;
+  fill: var(--color-gold-text);
+}
+
+/* Routen: per pathLength=1 als Linie "gezeichnet". */
+.route {
+  fill: none;
+  stroke: var(--color-gold);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  transition: stroke-dashoffset 900ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms ease, stroke-width 300ms ease;
+}
+.routeCountry {
+  stroke-dashoffset: 0;
+  opacity: 0.45;
+}
+.routeActive {
+  stroke-dashoffset: 0;
+  opacity: 1;
+  stroke-width: 3;
+}
+
+.place {
+  cursor: pointer;
+  outline: none;
+}
+.hit {
+  fill: transparent;
+}
+.dot {
+  fill: #fff;
+  stroke: #30373e;
+  stroke-width: 2;
+  transition: r 250ms ease, fill 250ms ease, stroke 250ms ease;
+}
+.place:hover .dot,
+.place:focus-visible .dot {
+  fill: var(--color-gold);
+}
+.placeActive .dot {
+  fill: var(--color-gold);
+  stroke: #1f252b;
+  r: 9px;
+}
+.focusRing {
+  pointer-events: none;
+  fill: none;
+  stroke: #1f252b;
+  stroke-width: 2.5;
+  opacity: 0;
+}
+.place:focus-visible .focusRing {
+  opacity: 1;
+}
+/* Beschriftungs-Ebene liegt über Routen und Punkten; Halo in Bone. */
+.labels {
+  cursor: pointer;
+}
+.label {
+  font-family: var(--map-font);
+  font-weight: 600;
+  font-size: 16px;
+  fill: #1f252b;
+  paint-order: stroke;
+  stroke: var(--map-halo);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+.labelActive .label {
+  fill: #000;
+}
+.time {
+  font-family: var(--map-font);
+  font-weight: 600;
+  font-size: 13px;
+  fill: var(--map-time);
+  paint-order: stroke;
+  stroke: var(--map-halo);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+.leader {
+  stroke: #30373e;
+  stroke-opacity: 0.55;
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+}
+.mobileOnly {
+  display: none;
+}
+@media (max-width: 639px) {
+  .label {
+    font-size: 21px;
+    stroke-width: 7px;
+  }
+  /* Ohne Fahrzeitzeile rückt ein Label über dem Punkt näher heran. */
+  .labelTop {
+    transform: translateY(14px);
+  }
+  .time {
+    display: none;
+  }
+  /* Bregenz/Rheintal: mobil Name als Callout mit Führungslinie statt am Punkt. */
+  .desktopOnly {
+    display: none;
+  }
+  .mobileOnly {
+    display: inline;
+  }
+  /* Mobil ist die Beschriftungs-Ebene für Zeiger durchlässig: Tipp und
+     Hit-Test (Assistive Touch, elementFromPoint) treffen den Orts-Button bzw.
+     das Callout-Rechteck darunter, statt am Namen hängen zu bleiben. */
+  .labels {
+    pointer-events: none;
+  }
+  .leader {
+    pointer-events: none;
+  }
+}
+
+.homeGroup {
+  pointer-events: none;
+}
+.home {
+  fill: var(--color-walnut);
+}
+.homeLabel {
+  font-family: var(--map-font);
+  font-weight: 600;
+  font-size: 17px;
+  fill: var(--color-walnut);
+  paint-order: stroke;
+  stroke: var(--map-halo);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+.pulse {
+  fill: none;
+  stroke: var(--color-gold);
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+.pulse2 {
+  animation-delay: 1.4s;
+}
+@keyframes pulse {
+  from {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* Chips: horizontales Wischen auf Mobil, rechter Rand blendet aus (zeigt: es geht weiter) */
+@media (max-width: 639px) {
+  .chipsFade {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+  }
+}
+.chips {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.chips::-webkit-scrollbar {
+  display: none;
+}
+.chips > * {
+  scroll-snap-align: start;
+}
+
+/* Vergleichsbalken */
+.bar {
+  transform-origin: left center;
+  transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Mini-Karte im Desktop-Hero (dekorativ, auf Night). */
+.mini {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 26rem;
+}
+.miniLake {
+  fill: rgb(236 232 225 / 0.1);
+  stroke: rgb(236 232 225 / 0.35);
+  stroke-width: 1;
+}
+.miniRiver {
+  fill: none;
+  stroke: rgb(236 232 225 / 0.3);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.miniBorder {
+  fill: none;
+  stroke: rgb(236 232 225 / 0.3);
+  stroke-width: 1.2;
+  stroke-dasharray: 5 5;
+}
+.miniRoute {
+  fill: none;
+  stroke: var(--color-gold);
+  stroke-opacity: 0.4;
+  stroke-width: 1.2;
+}
+.miniDot {
+  fill: rgb(236 232 225 / 0.85);
+}
+.miniHome {
+  fill: var(--color-gold);
+}
+.miniCountry {
+  font-family: var(--map-font);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.24em;
+  fill: rgb(255 255 255 / 0.7);
+}
+.miniHomeLabel {
+  font-family: var(--map-font);
+  font-weight: 600;
+  font-size: 18px;
+  fill: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route,
+  .dot,
+  .country,
+  .bar {
+    transition: none;
+  }
+  .pulse {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .homeLabel {
+    font-size: 20px;
+  }
+}
+
+/* Lupe Lochau/Bregenz (R5, P3-4): dekorativ, für Zeiger durchlässig. */
+.inset {
+  pointer-events: none;
+}
+.insetBg {
+  fill: var(--color-bone);
+}
+.insetRim {
+  fill: none;
+  stroke: #30373e;
+  stroke-opacity: 0.45;
+  stroke-width: 1.5;
+}
+.insetActive {
+  fill: var(--color-gold);
+  stroke: #1f252b;
+}
+.insetCaption {
+  font-family: var(--map-font);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  fill: var(--map-time);
+  paint-order: stroke;
+  stroke: var(--map-halo);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+@media (max-width: 639px) {
+  .insetCaption {
+    font-size: 17px;
+  }
+}
+
+/* R5 P3-4: Halo um den Lochau-Punkt, damit der direkt darunter liegende
+   Bregenz-Punkt sich sichtbar absetzt (Lage unverändert). */
+.home {
+  stroke: var(--map-halo);
+  stroke-width: 4;
+  paint-order: stroke;
+}

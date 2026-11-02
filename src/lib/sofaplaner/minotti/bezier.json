@@ -1,0 +1,839 @@
+{
+  "name": "Bézier",
+  "slug": "bezier",
+  "hersteller": "Minotti",
+  "designer": "Marcio Kogan / Studio MK27",
+  "jahr": 2025,
+  "jahr_quelle": "Produktseite: Tag „2025 Collection“",
+  "typ": "modulares Sitzsystem mit organischen, unregelmäßigen Elementen (indoor)",
+  "quellen": [
+    "https://www.minotti.com/en/bezier",
+    "https://www.minotti.com/de/bezier",
+    "https://www.minotti.com/downloads/25028/28161/BEZIER_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/26117/29766/BEZIER_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/26118/29768/BEZIER_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/26119/29770/BEZIER_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/26120/29772/BEZIER_arrangement_04.pdf",
+    "https://www.minotti.com/downloads/26121/29774/BEZIER_arrangement_05.pdf",
+    "https://www.minotti.com/downloads/26122/29776/BEZIER_arrangement_06.pdf",
+    "https://www.minotti.com/downloads/26123/29778/BEZIER_arrangement_07.pdf",
+    "https://www.minotti.com/downloads/26133/29780/BEZIER_arrangement_08.pdf",
+    "https://www.minotti.com/downloads/26134/29782/BEZIER_arrangement_09.pdf",
+    "https://www.minotti.com/downloads/26135/29784/BEZIER_arrangement_10.pdf",
+    "https://www.minotti.com/downloads/26136/29786/BEZIER_arrangement_11.pdf",
+    "https://www.minotti.com/downloads/26137/29788/BEZIER_arrangement_12.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Maße in cm aus Technical Sheet (Stand Dezember 2025) und Bildnamen der „Technical Features“. Elemente sind gekrümmt: breite_cm x tiefe_cm = umschließendes Rechteck laut Hersteller. Hersteller: Gesamthöhe hängt von Höhe und Art der verwendeten Kissen ab. SX/DX = Minotti-Bezeichnung sinistra/destra (links/rechts) laut Datenblatt-Zeichnung.",
+  "elemente": [
+    {
+      "code": "BEZIER-PAOLINA-114x156-FIX",
+      "name": "Sessel / Paolina 114x156 cm, fest",
+      "name_hersteller": "Armchair / Paolina 114x156 cm - fixed",
+      "art": "sessel",
+      "breite_cm": 114,
+      "tiefe_cm": 156,
+      "hoehe_cm": 66,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 84,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "unterart": "paolina",
+      "hinweis": "Empfohlenes Kissen 55x55 cm"
+    },
+    {
+      "code": "BEZIER-PAOLINA-114x156-SWIVEL",
+      "name": "Sessel / Paolina 114x156 cm, drehbar",
+      "name_hersteller": "Armchair / Paolina 114x156 cm - swivel",
+      "art": "sessel",
+      "breite_cm": 114,
+      "tiefe_cm": 156,
+      "hoehe_cm": 66,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 84,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "unterart": "paolina",
+      "hinweis": "Starre Polyamid-Rollen, 360° drehbar; empfohlenes Kissen 55x55 cm"
+    },
+    {
+      "code": "BEZIER-PAOLINA-125x198",
+      "name": "Paolina 125x198 cm",
+      "name_hersteller": "Paolina 125x198 cm",
+      "art": "sessel",
+      "breite_cm": 125,
+      "tiefe_cm": 198,
+      "hoehe_cm": 66,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 167,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "unterart": "paolina",
+      "hinweis": "Sockel mit Rollen, 360° drehbar; empfohlen 2 Kissen 55x55 cm"
+    },
+    {
+      "code": "BEZIER-SOFA-297x171-DD",
+      "name": "Sofa 297x171 cm, doppelte Tiefe",
+      "name_hersteller": "Sofa 297x171 cm - double depth",
+      "art": "sofa",
+      "breite_cm": 297,
+      "tiefe_cm": 171,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 139,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "BEZIER-EL1A-136x113",
+      "name": "Endelement mit 1 Armlehne 136 cm",
+      "name_hersteller": "Element with 1 armrest 136 cm",
+      "art": "endelement",
+      "breite_cm": 136,
+      "tiefe_cm": 113,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "BEZIER-EL1A-166x118",
+      "name": "Endelement mit 1 Armlehne 166 cm",
+      "name_hersteller": "Element with 1 armrest 166 cm",
+      "art": "endelement",
+      "breite_cm": 166,
+      "tiefe_cm": 118,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "BEZIER-EL1A-188x124",
+      "name": "Endelement mit 1 Armlehne 188 cm",
+      "name_hersteller": "Element with 1 armrest 188 cm",
+      "art": "endelement",
+      "breite_cm": 188,
+      "tiefe_cm": 124,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "BEZIER-EL1A-224x136",
+      "name": "Endelement mit 1 Armlehne 224 cm",
+      "name_hersteller": "Element with 1 armrest 224 cm",
+      "art": "endelement",
+      "breite_cm": 224,
+      "tiefe_cm": 136,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "BEZIER-EL1A-271x155",
+      "name": "Endelement mit 1 Armlehne 271 cm",
+      "name_hersteller": "Element with 1 armrest 271 cm",
+      "art": "endelement",
+      "breite_cm": 271,
+      "tiefe_cm": 155,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "BEZIER-EL1A-208x275",
+      "name": "Endelement mit 1 Armlehne 208 cm",
+      "name_hersteller": "Element with 1 armrest 208 cm",
+      "art": "endelement",
+      "breite_cm": 208,
+      "tiefe_cm": 275,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "BEZIER-EL1A-271x162-DD",
+      "name": "Endelement mit 1 Armlehne 271x162 cm, doppelte Tiefe",
+      "name_hersteller": "Element with 1 armrest 271x162 cm - double depth",
+      "art": "endelement",
+      "breite_cm": 271,
+      "tiefe_cm": 162,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 139,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "BEZIER-EL1A-273x206-DD",
+      "name": "Endelement mit 1 Armlehne 273x206 cm, doppelte Tiefe",
+      "name_hersteller": "Element with 1 armrest 273x206 cm - double depth",
+      "art": "endelement",
+      "breite_cm": 273,
+      "tiefe_cm": 206,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 82,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "BEZIER-EL1A-275x233-DD",
+      "name": "Endelement mit 1 Armlehne 275x233 cm, doppelte Tiefe",
+      "name_hersteller": "Element with 1 armrest 275x233 cm - double depth",
+      "art": "endelement",
+      "breite_cm": 275,
+      "tiefe_cm": 233,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 82,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "BEZIER-CENT-127",
+      "name": "Mittelelement 127 cm",
+      "name_hersteller": "Central element 127 cm",
+      "art": "mittel",
+      "breite_cm": 127,
+      "tiefe_cm": 106,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "Unteres Zeichnungsmaß entspricht der Gesamttiefe; Sitztiefe nicht eindeutig."
+    },
+    {
+      "code": "BEZIER-CENT-164",
+      "name": "Mittelelement 164 cm",
+      "name_hersteller": "Central element 164 cm",
+      "art": "mittel",
+      "breite_cm": 164,
+      "tiefe_cm": 108,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "Unteres Zeichnungsmaß entspricht der Gesamttiefe; Sitztiefe nicht eindeutig."
+    },
+    {
+      "code": "BEZIER-CENT-224",
+      "name": "Mittelelement 224 cm",
+      "name_hersteller": "Central element 224 cm",
+      "art": "mittel",
+      "breite_cm": 224,
+      "tiefe_cm": 111,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "Unteres Zeichnungsmaß entspricht der Gesamttiefe; Sitztiefe nicht eindeutig."
+    },
+    {
+      "code": "BEZIER-OPENEND-220",
+      "name": "Open-End-Element 220 cm",
+      "name_hersteller": "Open-end element 220 cm",
+      "art": "peninsula",
+      "breite_cm": 220,
+      "tiefe_cm": 130,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "BEZIER-CENT-220x188-DD",
+      "name": "Mittelelement 220x188 cm, doppelte Tiefe",
+      "name_hersteller": "Central element 220x188 cm - double depth",
+      "art": "mittel",
+      "breite_cm": 220,
+      "tiefe_cm": 188,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "BEZIER-CENT-274x224-DD",
+      "name": "Mittelelement 274x224 cm, doppelte Tiefe",
+      "name_hersteller": "Central element 274x224 cm - double depth",
+      "art": "mittel",
+      "breite_cm": 274,
+      "tiefe_cm": 224,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "BEZIER-CENT-230x277-DD",
+      "name": "Mittelelement 230x277 cm, doppelte Tiefe",
+      "name_hersteller": "Central element 230x277 cm - double depth",
+      "art": "mittel",
+      "breite_cm": 230,
+      "tiefe_cm": 277,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "BEZIER-CORNER-208x197",
+      "name": "Eckelement 208x197 cm",
+      "name_hersteller": "Corner element 208x197 cm",
+      "art": "ecke",
+      "breite_cm": 208,
+      "tiefe_cm": 197,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 105
+    },
+    {
+      "code": "BEZIER-CHAISE-173x173",
+      "name": "Chaiselongue 173x173 cm",
+      "name_hersteller": "Chaise-longue 173x173 cm",
+      "art": "chaise",
+      "breite_cm": 173,
+      "tiefe_cm": 173,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "BEZIER-CHAISE-175x210",
+      "name": "Chaiselongue 175x210 cm",
+      "name_hersteller": "Chaise-longue 175x210 cm",
+      "art": "chaise",
+      "breite_cm": 175,
+      "tiefe_cm": 210,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 162,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "BEZIER-CHAISE-190x210",
+      "name": "Chaiselongue 190x210 cm",
+      "name_hersteller": "Chaise-longue 190x210 cm",
+      "art": "chaise",
+      "breite_cm": 190,
+      "tiefe_cm": 210,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "BEZIER-CHAISE-228x228",
+      "name": "Chaiselongue 228x228 cm",
+      "name_hersteller": "Chaise-longue 228x228 cm",
+      "art": "chaise",
+      "breite_cm": 228,
+      "tiefe_cm": 228,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 105,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "BEZIER-BENCH-216x89",
+      "name": "Bank 216x89 cm",
+      "name_hersteller": "Bench 216x89 cm",
+      "art": "bank",
+      "breite_cm": 216,
+      "tiefe_cm": 89,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-105x97-FIX",
+      "name": "Hocker 105x97 cm, fest",
+      "name_hersteller": "Ottoman 105x97 cm - fixed",
+      "art": "hocker",
+      "breite_cm": 105,
+      "tiefe_cm": 97,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-105x97-CASTORS",
+      "name": "Hocker 105x97 cm, mit Rollen (360°)",
+      "name_hersteller": "Ottoman 105x97 cm - with castors",
+      "art": "hocker",
+      "breite_cm": 105,
+      "tiefe_cm": 97,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-140x131-FIX",
+      "name": "Hocker 140x131 cm, fest",
+      "name_hersteller": "Ottoman 140x131 cm - fixed",
+      "art": "hocker",
+      "breite_cm": 140,
+      "tiefe_cm": 131,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-140x131-CASTORS",
+      "name": "Hocker 140x131 cm, mit Rollen (360°)",
+      "name_hersteller": "Ottoman 140x131 cm - with castors",
+      "art": "hocker",
+      "breite_cm": 140,
+      "tiefe_cm": 131,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-93x78-FIX",
+      "name": "Hocker 93x78 cm, fest",
+      "name_hersteller": "Ottoman 93x78 cm - fixed",
+      "art": "hocker",
+      "breite_cm": 93,
+      "tiefe_cm": 78,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-93x78-CASTORS",
+      "name": "Hocker 93x78 cm, mit Rollen (360°)",
+      "name_hersteller": "Ottoman 93x78 cm - with castors",
+      "art": "hocker",
+      "breite_cm": 93,
+      "tiefe_cm": 78,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-129x114-FIX",
+      "name": "Hocker 129x114 cm, fest",
+      "name_hersteller": "Ottoman 129x114 cm - fixed",
+      "art": "hocker",
+      "breite_cm": 129,
+      "tiefe_cm": 114,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-129x114-CASTORS",
+      "name": "Hocker 129x114 cm, mit Rollen (360°)",
+      "name_hersteller": "Ottoman 129x114 cm - with castors",
+      "art": "hocker",
+      "breite_cm": 129,
+      "tiefe_cm": 114,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-78x121-FIX",
+      "name": "Hocker 78x121 cm, fest",
+      "name_hersteller": "Ottoman 78x121 cm - fixed",
+      "art": "hocker",
+      "breite_cm": 78,
+      "tiefe_cm": 121,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-78x121-CASTORS",
+      "name": "Hocker 78x121 cm, mit Rollen (360°)",
+      "name_hersteller": "Ottoman 78x121 cm - with castors",
+      "art": "hocker",
+      "breite_cm": 78,
+      "tiefe_cm": 121,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-114x156-FIX",
+      "name": "Hocker 114x156 cm, fest",
+      "name_hersteller": "Ottoman 114x156 cm - fixed",
+      "art": "hocker",
+      "breite_cm": 114,
+      "tiefe_cm": 156,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "BEZIER-OTT-114x156-CASTORS",
+      "name": "Hocker 114x156 cm, mit Rollen (360°)",
+      "name_hersteller": "Ottoman 114x156 cm - with castors",
+      "art": "hocker",
+      "breite_cm": 114,
+      "tiefe_cm": 156,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Gepolsterter Rücken, per Schnellverschluss vom Sockel abnehmbar; durchgehendes Lendenkissen (Querschnitt 24 x 13 cm) entlang des Rückens",
+      "quelle": "https://www.minotti.com/downloads/25028/28161/BEZIER_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "name": "Optionales Rückenkissen 65x60 cm",
+      "quelle": "https://www.minotti.com/downloads/25028/28161/BEZIER_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "name": "Paolina: Rücken mit Stiften und Hebeln an der Struktur befestigt",
+      "quelle": "https://www.minotti.com/downloads/25028/28161/BEZIER_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Eine Armlehnenform, in den gekrümmten Rücken integriert; Elemente in SX/DX-Ausführung",
+      "quelle": "https://www.minotti.com/downloads/25028/28161/BEZIER_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Füße aus Metallrohr, matt lackiert Dark Brown (Testa di Moro), auf dunkelbraunen SEBS-Gleitern. Hocker und Paolina zusätzlich mit umlaufendem Sockel aus Blech, matt lackiert Dark Brown. Hocker auch mit Rollen (Nylon/TPU); Paolina drehbar auf starren Polyamid-Rollen (360°).",
+    "finishes": [
+      "Metall matt lackiert Dark Brown (Testa di Moro)"
+    ],
+    "fusshoehe_cm": {
+      "standard": 5,
+      "hoch": 8,
+      "hoch_hinweis": "Auf Anfrage ohne Aufpreis Füße/Rollen-Kit H 8 cm (für Hocker und Paolina), 3 cm höher als Standard"
+    },
+    "quelle": "https://www.minotti.com/downloads/25028/28161/BEZIER_TECHNICAL_SHEET.pdf"
+  },
+  "bezuege": {
+    "kategorien": [
+      "Stoff (Minotti-Kollektion)",
+      "Leder (Minotti-Kollektion)"
+    ],
+    "bezugsart": "abnehmbar",
+    "hinweis": "Bezug ist bei allen Versionen (Stoff und Leder) vollständig abnehmbar. Nähte folgen exakt den Kurven der Elemente.",
+    "farbmuster": "Stoff- und Lederfarbmuster der Minotti-Kollektion bitte im Showroom Lochau ansehen; Bildschirmfarben sind nicht verbindlich (Minotti: „Printed colours are to be considered as purely indicative“).",
+    "quelle": "https://www.minotti.com/en/bezier"
+  },
+  "kissenoptionen": [
+    {
+      "code": "BEZIER-CUSH-65x60",
+      "name": "Optionales Rückenkissen 65x60 cm",
+      "breite_cm": 65,
+      "hoehe_cm": 60,
+      "fuellung": "Gesteppte Gänsedaunen (Assopiuma Gold Label) mit PU-Kern"
+    },
+    {
+      "code": "BEZIER-CUSH-55x55",
+      "name": "Optionales Kissen 55x55 cm (für Paolina empfohlen)",
+      "breite_cm": 55,
+      "hoehe_cm": 55,
+      "fuellung": "Gesteppte Gänsedaunen (Assopiuma Gold Label)"
+    },
+    {
+      "code": "BEZIER-LUMBAR",
+      "name": "Lendenkissen (serienmäßig, entlang des Rückens)",
+      "querschnitt_cm": {
+        "hoehe": 24,
+        "tiefe": 13
+      },
+      "fuellung": "PU-Schaum variabler Dichte, mit weißem elastischem Stoff kaschiert"
+    }
+  ],
+  "outdoor": false,
+  "outdoor_hinweis": "Separate Outdoor-Produkte „Bézier Outdoor“ und „Bézier „Cord“ Outdoor“ haben eigene Produktseiten und sind hier nicht erfasst.",
+  "besonderheiten": [
+    "Organische, frei kombinierbare Elemente nach Bézier-Kurven; inselartige Kompositionen, auch für Hospitality",
+    "Zwei Tiefensysteme: Standard (H 79) und doppelte Tiefe (H 84)",
+    "Paolina-Sessel fest oder drehbar; Paolina 125x198 drehbar auf Rollen",
+    "Hocker wahlweise fest oder mit Rollen",
+    "Holzbauteile FSC-zertifiziert",
+    "Abweichungen in Hersteller-Arrangements: Endelement 166 cm dort 166x124 (Datenblatt 166x118), Endelement 271 cm dort H80 (Datenblatt H79)"
+  ],
+  "beispielkompositionen": [
+    {
+      "nr": "01",
+      "gesamtmasse_cm": [
+        381,
+        349
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 188X124 H79",
+        "CORNER ELEMENT 208X197 H79",
+        "ELEMENT WITH 1 ARMREST DX CM 136X113 H79"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26117/29766/BEZIER_arrangement_01.pdf"
+    },
+    {
+      "nr": "02",
+      "gesamtmasse_cm": [
+        314,
+        356
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 188X124 H79",
+        "ELEMENT WITH 1 ARMREST DX CM 208X275 H79"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26118/29768/BEZIER_arrangement_02.pdf"
+    },
+    {
+      "nr": "03",
+      "gesamtmasse_cm": [
+        441,
+        209
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 271X162 H84 DOUBLE DEPTH",
+        "CHAISE-LONGUE DX CM 175X210 H84"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26119/29770/BEZIER_arrangement_03.pdf"
+    },
+    {
+      "nr": "04",
+      "gesamtmasse_cm": [
+        281,
+        655
+      ],
+      "elemente": [
+        "CHAISE-LONGUE SX CM 175X210 H84",
+        "CENTRAL ELEMENT SX CM 220X188 H84",
+        "CENTRAL ELEMENT CM 127X106 H79",
+        "CHAISE-LONGUE DX CM 228X228 H84"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26120/29772/BEZIER_arrangement_04.pdf"
+    },
+    {
+      "nr": "05",
+      "gesamtmasse_cm": [
+        189,
+        460
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 273X206 H84 DOUBLE DEPTH",
+        "ELEMENT WITH 1 ARMREST DX CM 188X124 H79"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26121/29774/BEZIER_arrangement_05.pdf"
+    },
+    {
+      "nr": "06",
+      "gesamtmasse_cm": [
+        482,
+        275
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 208X275 H79",
+        "CENTRAL ELEMENT DX CM 274X224 H84 DOUBLE DEPTH"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26122/29776/BEZIER_arrangement_06.pdf"
+    },
+    {
+      "nr": "07",
+      "gesamtmasse_cm": [
+        187,
+        408
+      ],
+      "elemente": [
+        "CENTRAL ELEMENT SX CM 220X188 H84 DOUBLE DEPTH",
+        "ELEMENT WITH 1 ARMREST DX CM 188X124 H79"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26123/29778/BEZIER_arrangement_07.pdf"
+    },
+    {
+      "nr": "08",
+      "gesamtmasse_cm": [
+        245,
+        425
+      ],
+      "elemente": [
+        "CHAISE-LONGUE SX CM 190X210 H84",
+        "ELEMENT WITH 1 ARMREST DX CM 271X155 H80"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26133/29780/BEZIER_arrangement_08.pdf"
+    },
+    {
+      "nr": "09",
+      "gesamtmasse_cm": [
+        548,
+        330
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 188X124 H79",
+        "CENTRAL ELEMENT DX CM 274X224 H84 DOUBLE DEPTH",
+        "CHAISE-LONGUE DX CM 175X210 H84"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26134/29782/BEZIER_arrangement_09.pdf"
+    },
+    {
+      "nr": "10",
+      "gesamtmasse_cm": [
+        512,
+        195
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 166X124 H79",
+        "OPEN-END ELEMENT SX CM 220X130 H79",
+        "CHAISE-LONGUE DX CM 173X173 H84"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26135/29784/BEZIER_arrangement_10.pdf"
+    },
+    {
+      "nr": "11",
+      "gesamtmasse_cm": [
+        206,
+        607
+      ],
+      "elemente": [
+        "CHAISE-LONGUE SX CM 173X173 H84",
+        "OPEN-END ELEMENT SX CM 220X130 H79",
+        "ELEMENT WITH 1 ARMREST DX CM 273X206 H84 DOUBLE DEPTH"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26136/29786/BEZIER_arrangement_11.pdf"
+    },
+    {
+      "nr": "12",
+      "gesamtmasse_cm": [
+        289,
+        173
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 136X113 H79",
+        "CHAISE-LONGUE DX CM 173X173 H84"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26137/29788/BEZIER_arrangement_12.pdf"
+    }
+  ],
+  "kombinierbarkeit": "Keine formale Anschlussmatrix veröffentlicht („infinitely combinable seating elements“). Wegen der gekrümmten Formen sind nur die in den Arrangements 01–12 gezeigten Kombinationen sicher belegt.",
+  "fehlend": [
+    "Formale Anschluss-/Kombinationsregeln und Anschlusswinkel der gekrümmten Elemente",
+    "Exakte Grundriss-Konturen (nur DWG/3D nach Login)",
+    "Sitzhöhe bei Doppeltiefe-Elementen, Open-End-Element und Chaiselongues nicht separat bemaßt",
+    "Sitztiefe der Mittelelemente 127/164/224 nicht eindeutig",
+    "Seitenvarianten (SX/DX) des Eckelements 208x197 nicht angegeben",
+    "Bezugsfarben und Preisgruppen je Modell",
+    "Preise (nicht öffentlich)",
+    "Gewichte"
+  ],
+  "rechte_hinweis": "Texte, Bilder, Zeichnungen und CAD-Dateien © Minotti S.p.A.; Bilder dürfen nicht verändert werden. Hier nur Maß- und Optionsdaten übernommen.",
+  "anzahl_elemente": 38,
+  "vollstaendigkeit_masse": {
+    "felder_gesamt": 177,
+    "felder_belegt": 163,
+    "prozent": 92.1,
+    "berechnung": "Anteil belegter Maßfelder (breite, tiefe, hoehe, sitzhoehe, sitztiefe) über alle Elemente; nicht anwendbare Felder (Sitztiefe bei Hockern/Bank) ausgenommen"
+  }
+}

@@ -1,0 +1,553 @@
+{
+  "name": "Brasilia",
+  "slug": "brasilia",
+  "hersteller": "Minotti",
+  "designer": "Marcio Kogan / Studio MK27",
+  "jahr": 2021,
+  "kollektion": "2021 Collection",
+  "typ": "Sofa-Familie aus festen Sofas, Endelementen mit 1 Armlehne (mit/ohne Holz-Top), Verbindungstischchen, Hocker und Sessel (kein frei modulares Ecksystem)",
+  "quellen": [
+    "https://www.minotti.com/en/brasilia",
+    "https://www.minotti.com/downloads/18669/18517/BRASILIA_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/20454/21015/BRASILIA_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/20455/21017/BRASILIA_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/20456/21019/BRASILIA_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/20457/21021/BRASILIA_arrangement_04.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Maße in cm laut Technical Sheet (© Minotti 2021). sitzhoehe_cm und armlehnenhoehe_cm sind aus den unbeschrifteten Höhenkoten der Zeichnungen abgeleitet (42 bzw. 63 cm). CAD-Maße können laut Minotti leicht abweichen.",
+  "elemente": [
+    {
+      "code": "BRA-SOFA-196",
+      "name": "Sofa cm 196",
+      "name_de": "Sofa 196 cm",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 196,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": null
+    },
+    {
+      "code": "BRA-SOFA-273",
+      "name": "Sofa cm 273",
+      "name_de": "Sofa 273 cm",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 273,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": null
+    },
+    {
+      "code": "BRA-END-175-SX",
+      "name": "Element with 1 armrest SX cm 175",
+      "name_de": "Endelement mit 1 Armlehne links 175 cm",
+      "art": "anbau-links",
+      "ausrichtung": "sx",
+      "breite_cm": 175,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Offene Seite an Endelement DX oder an Verbindungstischchen (Connecting table cm 44x98) – laut Technical Sheet „How to use connecting table with elements with 1 armrest“; Beispiel Brasilia 01: SX 175 + Connecting table + DX 175 (394 cm), Brasilia 03: SX 252 + DX 175.",
+      "hinweis": null
+    },
+    {
+      "code": "BRA-END-175-DX",
+      "name": "Element with 1 armrest DX cm 175",
+      "name_de": "Endelement mit 1 Armlehne rechts 175 cm",
+      "art": "anbau-rechts",
+      "ausrichtung": "dx",
+      "breite_cm": 175,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Offene Seite an Endelement SX oder an Verbindungstischchen (Connecting table cm 44x98) – laut Technical Sheet „How to use connecting table with elements with 1 armrest“; Beispiel Brasilia 01: SX 175 + Connecting table + DX 175 (394 cm), Brasilia 03: SX 252 + DX 175.",
+      "hinweis": null
+    },
+    {
+      "code": "BRA-END-252-SX",
+      "name": "Element with 1 armrest SX cm 252",
+      "name_de": "Endelement mit 1 Armlehne links 252 cm",
+      "art": "anbau-links",
+      "ausrichtung": "sx",
+      "breite_cm": 252,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Offene Seite an Endelement DX oder an Verbindungstischchen (Connecting table cm 44x98) – laut Technical Sheet „How to use connecting table with elements with 1 armrest“; Beispiel Brasilia 01: SX 175 + Connecting table + DX 175 (394 cm), Brasilia 03: SX 252 + DX 175.",
+      "hinweis": null
+    },
+    {
+      "code": "BRA-END-252-DX",
+      "name": "Element with 1 armrest DX cm 252",
+      "name_de": "Endelement mit 1 Armlehne rechts 252 cm",
+      "art": "anbau-rechts",
+      "ausrichtung": "dx",
+      "breite_cm": 252,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Offene Seite an Endelement SX oder an Verbindungstischchen (Connecting table cm 44x98) – laut Technical Sheet „How to use connecting table with elements with 1 armrest“; Beispiel Brasilia 01: SX 175 + Connecting table + DX 175 (394 cm), Brasilia 03: SX 252 + DX 175.",
+      "hinweis": null
+    },
+    {
+      "code": "BRA-END-TOPS-220-CAN-SX",
+      "name": "Element with 1 armrest cm 220 with top small SX – Canaletto walnut",
+      "name_de": "Endelement mit 1 Armlehne und Top klein 220 cm links",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "sx",
+      "breite_cm": 220,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top mit Lamellen (Doghe) aus Canaletto-Nussbaum, Dark Brown gebeizt. Top-Breite laut Zeichnung 45 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-END-TOPS-220-CAN-DX",
+      "name": "Element with 1 armrest cm 220 with top small DX – Canaletto walnut",
+      "name_de": "Endelement mit 1 Armlehne und Top klein 220 cm rechts",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "dx",
+      "breite_cm": 220,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top mit Lamellen (Doghe) aus Canaletto-Nussbaum, Dark Brown gebeizt. Top-Breite laut Zeichnung 45 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-END-TOPS-220-PAL-SX",
+      "name": "Element with 1 armrest cm 220 with top small SX – Palisander Santos",
+      "name_de": "Endelement mit 1 Armlehne und Top klein 220 cm links",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "sx",
+      "breite_cm": 220,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top einteilig aus Palisander Santos, Dark Brown gebeizt. Top-Breite laut Zeichnung 45 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-END-TOPS-220-PAL-DX",
+      "name": "Element with 1 armrest cm 220 with top small DX – Palisander Santos",
+      "name_de": "Endelement mit 1 Armlehne und Top klein 220 cm rechts",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "dx",
+      "breite_cm": 220,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top einteilig aus Palisander Santos, Dark Brown gebeizt. Top-Breite laut Zeichnung 45 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-END-TOPS-297-CAN-SX",
+      "name": "Element with 1 armrest cm 297 with top small SX – Canaletto walnut",
+      "name_de": "Endelement mit 1 Armlehne und Top klein 297 cm links",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "sx",
+      "breite_cm": 297,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top mit Lamellen (Doghe) aus Canaletto-Nussbaum, Dark Brown gebeizt. Top-Breite laut Zeichnung 45 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet). Technical Sheet nennt 297 cm; die Produktseite listet stattdessen „cm 273 with top small“ – Abweichung beim Hersteller klären."
+    },
+    {
+      "code": "BRA-END-TOPS-297-CAN-DX",
+      "name": "Element with 1 armrest cm 297 with top small DX – Canaletto walnut",
+      "name_de": "Endelement mit 1 Armlehne und Top klein 297 cm rechts",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "dx",
+      "breite_cm": 297,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top mit Lamellen (Doghe) aus Canaletto-Nussbaum, Dark Brown gebeizt. Top-Breite laut Zeichnung 45 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet). Technical Sheet nennt 297 cm; die Produktseite listet stattdessen „cm 273 with top small“ – Abweichung beim Hersteller klären."
+    },
+    {
+      "code": "BRA-END-TOPS-297-PAL-SX",
+      "name": "Element with 1 armrest cm 297 with top small SX – Palisander Santos",
+      "name_de": "Endelement mit 1 Armlehne und Top klein 297 cm links",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "sx",
+      "breite_cm": 297,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top einteilig aus Palisander Santos, Dark Brown gebeizt. Top-Breite laut Zeichnung 45 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet). Technical Sheet nennt 297 cm; die Produktseite listet stattdessen „cm 273 with top small“ – Abweichung beim Hersteller klären."
+    },
+    {
+      "code": "BRA-END-TOPS-297-PAL-DX",
+      "name": "Element with 1 armrest cm 297 with top small DX – Palisander Santos",
+      "name_de": "Endelement mit 1 Armlehne und Top klein 297 cm rechts",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "dx",
+      "breite_cm": 297,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top einteilig aus Palisander Santos, Dark Brown gebeizt. Top-Breite laut Zeichnung 45 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet). Technical Sheet nennt 297 cm; die Produktseite listet stattdessen „cm 273 with top small“ – Abweichung beim Hersteller klären."
+    },
+    {
+      "code": "BRA-END-TOPL-273-CAN-SX",
+      "name": "Element with 1 armrest cm 273 with top large SX – Canaletto walnut",
+      "name_de": "Endelement mit 1 Armlehne und Top groß 273 cm links",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "sx",
+      "breite_cm": 273,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top mit Lamellen (Doghe) aus Canaletto-Nussbaum, Dark Brown gebeizt. Top-Breite laut Zeichnung 98 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-END-TOPL-273-CAN-DX",
+      "name": "Element with 1 armrest cm 273 with top large DX – Canaletto walnut",
+      "name_de": "Endelement mit 1 Armlehne und Top groß 273 cm rechts",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "dx",
+      "breite_cm": 273,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top mit Lamellen (Doghe) aus Canaletto-Nussbaum, Dark Brown gebeizt. Top-Breite laut Zeichnung 98 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-END-TOPL-273-PAL-SX",
+      "name": "Element with 1 armrest cm 273 with top large SX – Palisander Santos",
+      "name_de": "Endelement mit 1 Armlehne und Top groß 273 cm links",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "sx",
+      "breite_cm": 273,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top einteilig aus Palisander Santos, Dark Brown gebeizt. Top-Breite laut Zeichnung 98 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-END-TOPL-273-PAL-DX",
+      "name": "Element with 1 armrest cm 273 with top large DX – Palisander Santos",
+      "name_de": "Endelement mit 1 Armlehne und Top groß 273 cm rechts",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "dx",
+      "breite_cm": 273,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top einteilig aus Palisander Santos, Dark Brown gebeizt. Top-Breite laut Zeichnung 98 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-END-TOPL-350-CAN-SX",
+      "name": "Element with 1 armrest cm 350 with top large SX – Canaletto walnut",
+      "name_de": "Endelement mit 1 Armlehne und Top groß 350 cm links",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "sx",
+      "breite_cm": 350,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top mit Lamellen (Doghe) aus Canaletto-Nussbaum, Dark Brown gebeizt. Top-Breite laut Zeichnung 98 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-END-TOPL-350-CAN-DX",
+      "name": "Element with 1 armrest cm 350 with top large DX – Canaletto walnut",
+      "name_de": "Endelement mit 1 Armlehne und Top groß 350 cm rechts",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "dx",
+      "breite_cm": 350,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top mit Lamellen (Doghe) aus Canaletto-Nussbaum, Dark Brown gebeizt. Top-Breite laut Zeichnung 98 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-END-TOPL-350-PAL-SX",
+      "name": "Element with 1 armrest cm 350 with top large SX – Palisander Santos",
+      "name_de": "Endelement mit 1 Armlehne und Top groß 350 cm links",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "sx",
+      "breite_cm": 350,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top einteilig aus Palisander Santos, Dark Brown gebeizt. Top-Breite laut Zeichnung 98 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-END-TOPL-350-PAL-DX",
+      "name": "Element with 1 armrest cm 350 with top large DX – Palisander Santos",
+      "name_de": "Endelement mit 1 Armlehne und Top groß 350 cm rechts",
+      "art": "endelement-mit-ablage",
+      "ausrichtung": "dx",
+      "breite_cm": 350,
+      "tiefe_cm": 98,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "Top bildet den offenen Abschluss; Einzelstück-Nutzung laut Arrangements (Brasilia 02/04: 350 cm mit Top large).",
+      "hinweis": "Top einteilig aus Palisander Santos, Dark Brown gebeizt. Top-Breite laut Zeichnung 98 cm; Zeichnung zeigt zusätzlich 22 cm (nicht beschriftet)."
+    },
+    {
+      "code": "BRA-CONN-TABLE-CAN",
+      "name": "Connecting table – Canaletto walnut",
+      "name_de": "Verbindungstischchen 44 × 98 cm, Lamellen Canaletto-Nussbaum",
+      "art": "verbindungstisch",
+      "ausrichtung": null,
+      "breite_cm": 44,
+      "tiefe_cm": 98,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Zwischen Endelement mit 1 Armlehne SX und DX.",
+      "hinweis": "Höhe in Zeichnung nicht eindeutig zuordenbar (Koten 22 und 46 cm ohne Beschriftung). Kein Sitzelement."
+    },
+    {
+      "code": "BRA-CONN-TABLE-PAL",
+      "name": "Connecting table – Palisander Santos",
+      "name_de": "Verbindungstischchen 44 × 98 cm, Palisander Santos",
+      "art": "verbindungstisch",
+      "ausrichtung": null,
+      "breite_cm": 44,
+      "tiefe_cm": 98,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Zwischen Endelement mit 1 Armlehne SX und DX.",
+      "hinweis": "Höhe in Zeichnung nicht eindeutig zuordenbar. Kein Sitzelement."
+    },
+    {
+      "code": "BRA-OTTOMAN",
+      "name": "Ottoman",
+      "name_de": "Hocker 98 × 98 cm",
+      "art": "hocker",
+      "ausrichtung": null,
+      "breite_cm": 98,
+      "tiefe_cm": 98,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": null
+    },
+    {
+      "code": "BRA-ARMCHAIR",
+      "name": "Armchair cm 95x86 H63",
+      "name_de": "Sessel 95 × 86 cm",
+      "art": "sessel",
+      "ausrichtung": null,
+      "breite_cm": 95,
+      "tiefe_cm": 86,
+      "hoehe_cm": 63,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": null,
+      "hinweis": "Zeichnung zeigt zusätzlich 50 cm (nicht beschriftet)."
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Fester gepolsterter Rücken im Holzrahmen",
+      "hinweis": "Rücken und Armlehnen über Hebel unter dem Möbel abnehmbar (zum Abziehen der Bezüge). Keine alternativen Rückenhöhen publiziert."
+    },
+    {
+      "name": "Optionales Rückenkissen 65 × 55 cm"
+    },
+    {
+      "name": "Optionales Rückenkissen mit Band 60 × 50 cm"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Gepolsterte Armlehne im Palisander-Santos-Rahmen",
+      "hoehe_cm": 63,
+      "hinweis": "Keine alternativen Armlehnenformen publiziert; Endelemente mit 1 Armlehne in SX/DX."
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Rahmen/Struktur",
+      "material": "Sperrholz mit Palisander-Santos-Furnier (aus verantwortungsvoll bewirtschafteten Wäldern)",
+      "finish": "Dark Brown gebeizt, matter Polyesterlack"
+    },
+    {
+      "teil": "Lamellen (Doghe) / Top",
+      "material": "Massive Canaletto-Nussbaum-Lamellen oder Palisander Santos einteilig",
+      "finish": "Dark Brown gebeizt, matter Polyesterlack"
+    },
+    {
+      "teil": "Füße",
+      "material": "Massiver Metallstab Ø 25 mm, satiniert",
+      "finish": "Lackiert Brandy glänzend; Spitze Metall Brandy glänzend; verstellbare schwarze PE-Gleiter"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "bezugsarten": [
+      "abnehmbar"
+    ],
+    "abnehmbar_hinweis": "Sitz- und Rückenkissenbezüge in allen Versionen (Stoff und Leder) komplett abnehmbar.",
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Stoffe, Leder, Holz- und Metalloberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optional backrest cushion",
+      "masse": "65 × 55 cm"
+    },
+    {
+      "name": "Optional backrest cushion with band",
+      "masse": "60 × 50 cm"
+    },
+    {
+      "name": "Optional cushion",
+      "masse": "50 × 50 cm"
+    },
+    {
+      "name": "Optional cushion",
+      "masse": "40 × 40 cm"
+    },
+    {
+      "name": "Optional cushion for armchair",
+      "masse": "60 × 50 cm"
+    },
+    {
+      "name": "Optional cushion for armchair",
+      "masse": "60 × 40 cm"
+    },
+    {
+      "name": "Kissen „Mirage“ (Minotti Studio)",
+      "masse": "65 × 65 cm / 50 × 50 cm",
+      "hinweis": "100 % Gänsedaune kanalisiert, PU-Einlage, abziehbar, Stoff Mirage mit Verlaufseffekt, wendbar"
+    },
+    {
+      "name": "Kissen „Double“ (Minotti Studio)",
+      "masse": "65 × 65 cm / 50 × 50 cm",
+      "hinweis": "Front Stoff mit Band aus Leder Aspen oder Nabuk, Rückseite im gleichen Leder; nicht wendbar"
+    }
+  ],
+  "polsterung": "Struktur PU-Schaum variabler Dichte + Memory Foam; Metall-Sitz mit elastischen Gurten; Sitz-/Rückenkissen kanalisierte Gänsedaune (Assopiuma Gold Label) mit PU-Einlage + Memory Foam.",
+  "outdoor": false,
+  "besonderheiten": [
+    "Mid-Century-Ästhetik, Polster in quadratischem Holzrahmen",
+    "Endelemente mit integriertem Holz-Top (small 45 cm / large 98 cm) als Ablage",
+    "Verbindungstischchen 44 × 98 cm zwischen zwei Endelementen",
+    "Lamellen können sich durch Temperatur/Feuchte leicht verschieben (Herstellerhinweis)",
+    "Zur Familie gehört auch Brasilia Bed (nicht erfasst)"
+  ],
+  "beispiel_kompositionen": [
+    {
+      "name": "Brasilia 01",
+      "elemente": [
+        "BRA-END-175-SX",
+        "BRA-CONN-TABLE-*",
+        "BRA-END-175-DX"
+      ],
+      "gesamtbreite_cm": 394
+    },
+    {
+      "name": "Brasilia 02",
+      "elemente": [
+        "BRA-END-TOPL-350-*-SX"
+      ],
+      "gesamtbreite_cm": 350
+    },
+    {
+      "name": "Brasilia 03",
+      "elemente": [
+        "BRA-END-252-SX",
+        "BRA-END-175-DX"
+      ],
+      "gesamtbreite_cm": 402.5,
+      "hinweis": "Über Eck; zweites Maß 355 cm"
+    },
+    {
+      "name": "Brasilia 04",
+      "elemente": [
+        "BRA-END-TOPL-350-*-DX"
+      ],
+      "gesamtbreite_cm": 350
+    }
+  ],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. Minotti-Bilder dürfen nicht verändert werden.",
+  "fehlend": [
+    "Sitztiefe aller Elemente (nicht beschriftet)",
+    "Höhe Verbindungstischchen (Koten nicht eindeutig)",
+    "Bedeutung der Kote 22 cm an Top-Elementen und 50 cm am Sessel",
+    "Herstellerartikelnummern",
+    "Stoff-/Lederkollektionen und Preisgruppen je Element",
+    "Regeln, welche Elementlängen SX/DX kombinierbar sind (nur Beispiele)",
+    "Abweichung Top small 273 (Website) vs. 297 cm (Technical Sheet)",
+    "Gewichte"
+  ],
+  "vollstaendigkeit": {
+    "masse_prozent": 77,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe/sitzhoehe/sitztiefe über alle Elemente; Options-/Materialfelder separat in fehlend[] bewertet."
+  }
+}

@@ -1,0 +1,1171 @@
+{
+  "name": "Daylight",
+  "slug": "daylight",
+  "hersteller": "Minotti",
+  "designer": "GamFratesi",
+  "jahr": 2024,
+  "jahr_quelle": "Produktseite: „2024 Collection“; Technical Sheet © Mai 2025",
+  "kollektion": "2024 Collection",
+  "typ": "Outdoor-Sitzsystem auf Teakbasis mit fächerartig geschwungenem Kordelrahmen für Rücken/Armlehnen; zwei Sitztiefen (Elementtiefe 109 bzw. 89 cm), Sofa, End-, Eck-, Mittel-, Peninsula-Elemente, Elemente mit Ablage (TOP), Hocker, drehbare Sessel/Loveseat, Liege und Couchtische",
+  "quellen": [
+    "https://www.minotti.com/en/daylight",
+    "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/24720/27541/DAYLIGHT_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/24721/27543/DAYLIGHT_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/24722/27545/DAYLIGHT_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/24723/27547/DAYLIGHT_arrangement_04.pdf",
+    "https://www.minotti.com/downloads/24724/27549/DAYLIGHT_arrangement_05.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Maße in cm laut Technical Sheet (© Minotti, Mai 2025), Elementliste „Technical Features“ der Produktseite und Minotti-Bilddateinamen der Elementzeichnungen (z. B. „DAYLIGHT_SOFA_216X109_H82“). Sitzhöhe 42 cm und Armlehnenhöhe 64 cm aus unbeschrifteten Koten abgeleitet (42 = Hockerhöhe H42). Sitztiefe = Modultiefe 96 bzw. 76 cm. Codes sind interne Planer-Schlüssel, keine Minotti-Artikelnummern.",
+  "sitzmodule_cm": [
+    [
+      96,
+      96
+    ],
+    [
+      96,
+      76
+    ]
+  ],
+  "linien": [
+    {
+      "id": "tiefe-109",
+      "name": "Tiefe 109 cm (Modul 96 × 96)",
+      "elementtiefe_cm": 109,
+      "sitztiefe_cm": 96
+    },
+    {
+      "id": "tiefe-89",
+      "name": "Tiefe 89 cm (Modul 96 × 76)",
+      "elementtiefe_cm": 89,
+      "sitztiefe_cm": 76,
+      "hinweis": "Kein Eckelement in dieser Tiefe gelistet; zusätzlich Endelement 109 × 89."
+    }
+  ],
+  "elemente": [
+    {
+      "code": "DAYLIGHT-ARMCHAIR-77X74",
+      "name": "Armchair 77x74 cm",
+      "name_de": "Sessel 77 × 74 cm",
+      "art": "sessel-drehbar",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 77,
+      "tiefe_cm": 74,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": null,
+      "top": false,
+      "drehbar": true,
+      "anschluesse": null,
+      "hinweis": "Runde Edelstahlbasis auf Rollen, 360° drehbar.",
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-ARMCHAIR-96X94",
+      "name": "Armchair 96x94 cm",
+      "name_de": "Sessel 96 × 94 cm",
+      "art": "sessel-drehbar",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 96,
+      "tiefe_cm": 94,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": null,
+      "top": false,
+      "drehbar": true,
+      "anschluesse": null,
+      "hinweis": "Runde Edelstahlbasis auf Rollen, 360° drehbar.",
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-LOVESEAT-168X164",
+      "name": "Loveseat 168x164 cm",
+      "name_de": "Loveseat 168 × 164 cm",
+      "art": "sofa-rund",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 168,
+      "tiefe_cm": 164,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": null,
+      "top": false,
+      "drehbar": true,
+      "anschluesse": null,
+      "hinweis": "Runde Edelstahlbasis auf Rollen, 360° drehbar.",
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-SOFA-216X109",
+      "name": "Sofa 216x109 cm",
+      "name_de": "Sofa 216 × 109 cm",
+      "art": "sofa",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 216,
+      "tiefe_cm": 109,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 96,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        96
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-CORNER-ELEMENT-109X109",
+      "name": "Corner element 109x109 cm",
+      "name_de": "Eckelement 109 × 109 cm",
+      "art": "ecke",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 109,
+      "tiefe_cm": 109,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 96,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        96
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": "Eckelement mit Rücken auf zwei Seiten",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-ELEMENT-WITH-1-ARMREST-209X109",
+      "name": "Element with 1 armrest 209x109 cm",
+      "name_de": "Endelement mit 1 Armlehne 209 × 109 cm",
+      "art": "endelement",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 209,
+      "tiefe_cm": 109,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 96,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        96
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-ELEMENT-WITH-1-ARMREST-WITH-TOP-209X109",
+      "name": "Element with 1 armrest with TOP 209x109 cm",
+      "name_de": "Endelement mit 1 Armlehne und Ablage 209 × 109 cm",
+      "art": "endelement-mit-ablage",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 209,
+      "tiefe_cm": 109,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 96,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        96
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": "Integrierte Ablage (TOP) aus Ceppo-di-Gré-Stein 15 mm auf Teakrahmen; unbeschriftete Kote 14 cm an der Ablage.",
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OPEN-END-ELEMENT-WITH-ARMREST-209X109",
+      "name": "Open-end element with armrest 209x109 cm",
+      "name_de": "Peninsula-Endelement mit Armlehne 209 × 109 cm",
+      "art": "endelement-peninsula",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 209,
+      "tiefe_cm": 109,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 96,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        96
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-CENTRAL-ELEMENT-102X109",
+      "name": "Central element 102x109 cm",
+      "name_de": "Mittelelement 102 × 109 cm",
+      "art": "mittel",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 102,
+      "tiefe_cm": 109,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 96,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        96
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-CENTRAL-ELEMENT-202X109",
+      "name": "Central element 202x109 cm",
+      "name_de": "Mittelelement 202 × 109 cm",
+      "art": "mittel",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 202,
+      "tiefe_cm": 109,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 96,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        96
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-CENTRAL-ELEMENT-WITH-TOP-202X109",
+      "name": "Central element with TOP 202x109 cm",
+      "name_de": "Mittelelement mit Ablage 202 × 109 cm",
+      "art": "mittel",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 202,
+      "tiefe_cm": 109,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 96,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        96
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": "Integrierte Ablage (TOP) aus Ceppo-di-Gré-Stein 15 mm auf Teakrahmen; unbeschriftete Kote 14 cm an der Ablage.",
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OPEN-END-ELEMENT-202X109",
+      "name": "Open-end element 202x109 cm",
+      "name_de": "Peninsula-Element 202 × 109 cm",
+      "art": "peninsula",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 202,
+      "tiefe_cm": 109,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 96,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        96
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OTTOMAN-102X102",
+      "name": "Ottoman 102x102 cm",
+      "name_de": "Hocker 102 × 102 cm",
+      "art": "hocker",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 102,
+      "tiefe_cm": 102,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzmodul_cm": null,
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OTTOMAN-202X102",
+      "name": "Ottoman 202x102 cm",
+      "name_de": "Hocker 202 × 102 cm",
+      "art": "hocker",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 202,
+      "tiefe_cm": 102,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzmodul_cm": null,
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OTTOMAN-WITH-TOP-202X102",
+      "name": "Ottoman with TOP 202x102 cm",
+      "name_de": "Hocker mit Ablage 202 × 102 cm",
+      "art": "hocker",
+      "linie": "tiefe-109",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 202,
+      "tiefe_cm": 102,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzmodul_cm": null,
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": "Integrierte Ablage (TOP) aus Ceppo-di-Gré-Stein 15 mm auf Teakrahmen; unbeschriftete Kote 14 cm an der Ablage.",
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-SOFA-216X89",
+      "name": "Sofa 216x89 cm",
+      "name_de": "Sofa 216 × 89 cm",
+      "art": "sofa",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 216,
+      "tiefe_cm": 89,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 76,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        76
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-ELEMENT-WITH-1-ARMREST-109X89",
+      "name": "Element with 1 armrest 109x89 cm",
+      "name_de": "Endelement mit 1 Armlehne 109 × 89 cm",
+      "art": "endelement",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 109,
+      "tiefe_cm": 89,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 76,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        76
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": "Nur in der Tiefe 89 cm erhältlich.",
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-ELEMENT-WITH-1-ARMREST-209X89",
+      "name": "Element with 1 armrest 209x89 cm",
+      "name_de": "Endelement mit 1 Armlehne 209 × 89 cm",
+      "art": "endelement",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 209,
+      "tiefe_cm": 89,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 76,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        76
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-ELEMENT-WITH-1-ARMREST-WITH-TOP-209X89",
+      "name": "Element with 1 armrest with TOP 209x89 cm",
+      "name_de": "Endelement mit 1 Armlehne und Ablage 209 × 89 cm",
+      "art": "endelement-mit-ablage",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 209,
+      "tiefe_cm": 89,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 76,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        76
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": "Integrierte Ablage (TOP) aus Ceppo-di-Gré-Stein 15 mm auf Teakrahmen; unbeschriftete Kote 14 cm an der Ablage.",
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OPEN-END-ELEMENT-WITH-ARMREST-209X89",
+      "name": "Open-end element with armrest 209x89 cm",
+      "name_de": "Peninsula-Endelement mit Armlehne 209 × 89 cm",
+      "art": "endelement-peninsula",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 209,
+      "tiefe_cm": 89,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 76,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        76
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-CENTRAL-ELEMENT-102X89",
+      "name": "Central element 102x89 cm",
+      "name_de": "Mittelelement 102 × 89 cm",
+      "art": "mittel",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 102,
+      "tiefe_cm": 89,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 76,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        76
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-CENTRAL-ELEMENT-202X89",
+      "name": "Central element 202x89 cm",
+      "name_de": "Mittelelement 202 × 89 cm",
+      "art": "mittel",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 202,
+      "tiefe_cm": 89,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 76,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        76
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-CENTRAL-ELEMENT-WITH-TOP-202X89",
+      "name": "Central element with TOP 202x89 cm",
+      "name_de": "Mittelelement mit Ablage 202 × 89 cm",
+      "art": "mittel",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 202,
+      "tiefe_cm": 89,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 76,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        76
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": "Integrierte Ablage (TOP) aus Ceppo-di-Gré-Stein 15 mm auf Teakrahmen; unbeschriftete Kote 14 cm an der Ablage.",
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OPEN-END-ELEMENT-202X89",
+      "name": "Open-end element 202x89 cm",
+      "name_de": "Peninsula-Element 202 × 89 cm",
+      "art": "peninsula",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 202,
+      "tiefe_cm": 89,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 76,
+      "sitztiefe_quelle": "Sitztiefe = Sitzmodul-Tiefe laut Datenblatt („Modulo | Module cm 96x96“ bzw. „96x76“); Minotti nennt „two different seat depths“.",
+      "armlehnenhoehe_cm": 64,
+      "sitzmodul_cm": [
+        96,
+        76
+      ],
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OTTOMAN-102X82",
+      "name": "Ottoman 102x82 cm",
+      "name_de": "Hocker 102 × 82 cm",
+      "art": "hocker",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 102,
+      "tiefe_cm": 82,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzmodul_cm": null,
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OTTOMAN-202X82",
+      "name": "Ottoman 202x82 cm",
+      "name_de": "Hocker 202 × 82 cm",
+      "art": "hocker",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 202,
+      "tiefe_cm": 82,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzmodul_cm": null,
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OTTOMAN-WITH-TOP-202X82",
+      "name": "Ottoman with TOP 202x82 cm",
+      "name_de": "Hocker mit Ablage 202 × 82 cm",
+      "art": "hocker",
+      "linie": "tiefe-89",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 202,
+      "tiefe_cm": 82,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzmodul_cm": null,
+      "top": false,
+      "drehbar": false,
+      "anschluesse": null,
+      "hinweis": "Integrierte Ablage (TOP) aus Ceppo-di-Gré-Stein 15 mm auf Teakrahmen; unbeschriftete Kote 14 cm an der Ablage.",
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-DAYBED-RECLINING-205",
+      "name": "Daybed with reclining backrest 205 cm",
+      "name_de": "Liege mit verstellbarer Rückenlehne 205 cm",
+      "art": "daybed",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 100,
+      "tiefe_cm": 205,
+      "hoehe_cm": 35,
+      "sitzhoehe_cm": 35,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Bildname „100X205_H35“; Rückenlehne mehrstufig verstellbar (Zeichnung 23°/37°/48°/56°, max. Kote 90 cm); Teakräder; Batyline-Bespannung.",
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-COFFEE-TABLE-60X63-H40",
+      "name": "Coffee table 60x63xh40 cm",
+      "name_de": "Couchtisch 60 × 63 × H40 cm",
+      "art": "tisch",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 60,
+      "tiefe_cm": 63,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Teakgestell, eingelassene Platte Ceppo di Gré® 15 mm.",
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-COFFEE-TABLE-100X103-H28",
+      "name": "Coffee table 100x103xh28 cm",
+      "name_de": "Couchtisch 100 × 103 × H28 cm",
+      "art": "tisch",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 100,
+      "tiefe_cm": 103,
+      "hoehe_cm": 28,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Teakgestell, eingelassene Platte Ceppo di Gré® 15 mm.",
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-COFFEE-TABLE-82X82-H14",
+      "name": "Coffee table 82x82xh14 cm",
+      "name_de": "Couchtisch 82 × 82 × H14 cm",
+      "art": "tisch",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 82,
+      "tiefe_cm": 82,
+      "hoehe_cm": 14,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Teakgestell, eingelassene Platte Ceppo di Gré® 15 mm.",
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-COFFEE-TABLE-102X82-H14",
+      "name": "Coffee table 102x82xh14 cm",
+      "name_de": "Couchtisch 102 × 82 × H14 cm",
+      "art": "tisch",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 102,
+      "tiefe_cm": 82,
+      "hoehe_cm": 14,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Teakgestell, eingelassene Platte Ceppo di Gré® 15 mm.",
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-COFFEE-TABLE-102X102-H14",
+      "name": "Coffee table 102x102xh14 cm",
+      "name_de": "Couchtisch 102 × 102 × H14 cm",
+      "art": "tisch",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 102,
+      "tiefe_cm": 102,
+      "hoehe_cm": 14,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Teakgestell, eingelassene Platte Ceppo di Gré® 15 mm.",
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-COFFEE-TABLE-102X102-H28",
+      "name": "Coffee table 102x102xh28 cm",
+      "name_de": "Couchtisch 102 × 102 × H28 cm",
+      "art": "tisch",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 102,
+      "tiefe_cm": 102,
+      "hoehe_cm": 28,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Teakgestell, eingelassene Platte Ceppo di Gré® 15 mm.",
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OPTIONAL-BACKREST-CUSHION-75X50",
+      "name": "Optional backrest cushion 75x50",
+      "name_de": "Rückenkissen 75 × 50 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 75,
+      "tiefe_cm": 50,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OPTIONAL-BACKREST-CUSHION-65X50",
+      "name": "Optional backrest cushion 65x50",
+      "name_de": "Rückenkissen 65 × 50 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 65,
+      "tiefe_cm": 50,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OPTIONAL-CUSHION-50X50",
+      "name": "Optional cushion 50x50",
+      "name_de": "Kissen 50 × 50 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 50,
+      "tiefe_cm": 50,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OPTIONAL-CUSHION-45X45",
+      "name": "Optional cushion 45x45",
+      "name_de": "Kissen 45 × 45 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 45,
+      "tiefe_cm": 45,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Nur im Technical Sheet, nicht in der Elementliste der Produktseite.",
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OPTIONAL-CUSHION-45X40",
+      "name": "Optional cushion 45x40",
+      "name_de": "Kissen 45 × 40 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 45,
+      "tiefe_cm": 40,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "DAYLIGHT-OPTIONAL-CUSHION-WITH-BAND-45X40",
+      "name": "Optional cushion with band 45x40",
+      "name_de": "Kissen mit Band 45 × 40 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 45,
+      "tiefe_cm": 40,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23326/25508/DAYLIGHT_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Geschwungener Kordelrahmen (Fächerform), fester Rücken",
+      "hoehe_cm": 82
+    },
+    {
+      "name": "Ohne Rücken (Hocker)"
+    },
+    {
+      "name": "Verstellbare Rückenlehne nur bei der Liege (Daybed with reclining backrest)"
+    },
+    {
+      "name": "Optionale Rückenkissen 75 × 50 und 65 × 50 cm"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Kordel-Armlehne als Fortsetzung des Rückenrahmens",
+      "hoehe_cm": 64,
+      "hinweis": "Höhe aus unbeschrifteter Kote abgeleitet; keine alternativen Armlehnen publiziert."
+    },
+    {
+      "name": "Ablage (TOP) aus Ceppo di Gré® an End-, Mittelelement und Hocker",
+      "hinweis": "Stein 15 mm, HPL-Unterplatte 10 mm"
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Basis",
+      "material": "Massives Teak 40 mm (Tectona Grandis – First European Quality), CNC, 45°-Fingerzinken; Metall-Gegenrahmen; elastische UV-beständige Gurte",
+      "finish": "Teak natur"
+    },
+    {
+      "teil": "Füße",
+      "material": "Edelstahlrohr mit Teakverkleidung, Abschluss Aluminium",
+      "finish": "Bronze lackiert, Alu-Dekor Bronze glänzend Anti-Fingerprint; verstellbar, schwarze SEBS-Gleiter"
+    },
+    {
+      "teil": "Oberer Rahmen",
+      "material": "Edelstahlrohr, Taslan-Polypropylenkordel Ø 8 mm",
+      "finish": "Bronze pulverbeschichtet glänzend Anti-Fingerprint; Alu-Anker Bronze mit DELRIN®-Distanzstücken"
+    },
+    {
+      "teil": "Sessel/Loveseat",
+      "material": "Teakrahmen 40 mm + runde Edelstahlbasis auf Polyamid-Rollen",
+      "finish": "Bronze; 360° drehbar"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Outdoor-Stoff"
+    ],
+    "kordelfarben": [
+      "Blue",
+      "Moss",
+      "Rust",
+      "Sand",
+      "Teak",
+      "Dark Brown (Testa di Moro)"
+    ],
+    "bezugsarten": [
+      "abnehmbar"
+    ],
+    "abnehmbar_hinweis": "Sitz- und Rückenkissenbezüge komplett abnehmbar; Kissen in wasserabweisender Polyester-Innenhülle.",
+    "leder": false,
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Kordelfarben, Bezugsstoffe, Holz-, Metall- und Steinoberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": [
+    {
+      "name": "Sitz- und Rückenkissen (Standard)",
+      "hinweis": "HR-PU-Schaum + umweltfreundliche, wasserabweisende Faser"
+    },
+    {
+      "name": "Optional backrest cushion",
+      "masse": "75 × 50 cm"
+    },
+    {
+      "name": "Optional backrest cushion",
+      "masse": "65 × 50 cm"
+    },
+    {
+      "name": "Optional cushion",
+      "masse": "50 × 50 cm"
+    },
+    {
+      "name": "Optional cushion",
+      "masse": "45 × 45 cm",
+      "hinweis": "nur Technical Sheet"
+    },
+    {
+      "name": "Optional cushion",
+      "masse": "45 × 40 cm"
+    },
+    {
+      "name": "Optional cushion with band",
+      "masse": "45 × 40 cm"
+    },
+    {
+      "name": "Optional rain cover",
+      "hinweis": "Für jedes Element erhältlich"
+    }
+  ],
+  "polsterung": "Kissen HR-PU-Schaum und wasserabweisende Faser in wasserabweisender Polyesterhülle; Reißverschlüsse/Garn wasserabweisend.",
+  "outdoor": true,
+  "besonderheiten": [
+    "Jedes Element kann laut Minotti auch einzeln stehen (Teakbasis auf vier zylindrischen Füßen)",
+    "Zwei Sitztiefen",
+    "Drehbare Sessel und Loveseat auf runder Basis",
+    "Elemente und Hocker mit integrierter Steinablage (TOP)",
+    "Liege mit mehrstufig verstellbarer Rückenlehne",
+    "Regenhülle (rain cover) für jedes Element"
+  ],
+  "beispiel_kompositionen": [
+    {
+      "name": "Daylight 01",
+      "elemente": [
+        "DAYLIGHT-CORNER-ELEMENT-109X109 (SX)",
+        "DAYLIGHT-CORNER-ELEMENT-109X109 (DX)",
+        "DAYLIGHT-OTTOMAN-102X102"
+      ],
+      "gesamtbreite_cm": null
+    },
+    {
+      "name": "Daylight 02",
+      "elemente": [
+        "DAYLIGHT-CORNER-ELEMENT-109X109 (SX)",
+        "DAYLIGHT-CENTRAL-ELEMENT-202X89",
+        "DAYLIGHT-ELEMENT-WITH-1-ARMREST-209X109 (SX)",
+        "DAYLIGHT-OTTOMAN-102X102"
+      ],
+      "gesamtbreite_cm": 420,
+      "gesamttiefe_cm": 311
+    },
+    {
+      "name": "Daylight 03",
+      "elemente": [
+        "DAYLIGHT-ELEMENT-WITH-1-ARMREST-209X109 (SX)",
+        "DAYLIGHT-OPEN-END-ELEMENT-202X109 (SX)",
+        "DAYLIGHT-LOVESEAT-168X164"
+      ],
+      "gesamtbreite_cm": 411
+    },
+    {
+      "name": "Daylight 04",
+      "elemente": [
+        "DAYLIGHT-ELEMENT-WITH-1-ARMREST-209X109 (SX)",
+        "DAYLIGHT-ELEMENT-WITH-1-ARMREST-209X109 (DX)",
+        "DAYLIGHT-ELEMENT-WITH-1-ARMREST-WITH-TOP-209X89 (DX)",
+        "DAYLIGHT-ARMCHAIR-96X94",
+        "DAYLIGHT-ARMCHAIR-77X74"
+      ],
+      "gesamtbreite_cm": 418
+    },
+    {
+      "name": "Daylight 05",
+      "elemente": [
+        "DAYLIGHT-LOVESEAT-168X164",
+        "DAYLIGHT-ARMCHAIR-96X94"
+      ],
+      "gesamtbreite_cm": null
+    }
+  ],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für den internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "fehlend": [
+    "Sitzhöhe 42 und Armlehnenhöhe 64 cm nur aus unbeschrifteten Koten abgeleitet",
+    "Sitztiefe der Hocker, Sessel, Loveseat und Liege",
+    "Verbindliche Kombinationsregeln (Mischbarkeit der Tiefen 109/89 – Arrangement 02 kombiniert beide) – nur Beispiel-Arrangements",
+    "Position/Maß der TOP-Ablage je SX/DX (nur Zeichnung, Kote 14 cm)",
+    "Gesamtbreiten Arrangements 01 und 05",
+    "Herstellerartikelnummern",
+    "Stoffkollektion/Farbpalette der Kissenbezüge und Preisgruppen",
+    "Gewichte"
+  ],
+  "vollstaendigkeit": {
+    "masse_prozent": 93,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe/sitzhoehe/sitztiefe über alle Sitz-/Hocker-/Liegeelemente (ohne Tische, Kissen)."
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "_hinweis": "Rat 9,5 · T4 (Startseite, Kern-USP, Team). Nur neue/geänderte Schlüssel, null = löschen. Begründung je Block in qa-screenshots/umsetzung95/t4.md. USP-Texte: fachlicher Besitzer T4 (Plan §3 Übernahme-Schritt). contact.uspLink, inhalt.beratung.uspLink und forms.confirmation.processLang erst übernehmen, wenn T1 die Links auf die eigene Sprache umgestellt hat (Auftrag T1 in auftraege.md).",
+  "de": {
+    "HomePage": {
+      "process": {
+        "linkGerman": null
+      },
+      "region": {
+        "mapDesc": "Karte des Bodensees mit Lochau am Ostufer und Orten in Österreich, Deutschland, der Schweiz und Liechtenstein, mit ungefähren Fahrzeiten.",
+        "mapCaption": "Uferlinie und Straßendaten © OpenStreetMap-Mitwirkende. Fahrzeiten ohne Verkehr, berechnet mit OSRM, Stand {stand}. Die Linien zeigen die Richtung, nicht die Route.",
+        "driveTitle": "Mit dem Auto ab Lochau, ca.",
+        "driveMinutes": "{n} Min."
+      }
+    },
+    "Wow": {
+      "coda": {
+        "link": "Unsere Arbeitsweise"
+      }
+    },
+    "contact": {
+      "uspLink": "So arbeiten wir"
+    },
+    "forms": {
+      "confirmation": {
+        "processLang": null
+      }
+    },
+    "inhalt": {
+      "beratung": {
+        "uspLink": "So arbeiten wir"
+      },
+      "team": {
+        "notesLink": null,
+        "harald": {
+          "eyebrow": "Von Hand gezeichnet",
+          "steps": [
+            "Handzeichnung",
+            "Modell",
+            "3D-Planung",
+            "Rendering"
+          ],
+          "stepsLabel": "Reihenfolge der Planung",
+          "profile": "Mehr über Harald Menghin"
+        }
+      }
+    }
+  },
+  "en": {
+    "HomePage": {
+      "process": {
+        "linkGerman": null
+      },
+      "region": {
+        "mapDesc": "Map of Lake Constance with Lochau on the eastern shore and places in Austria, Germany, Switzerland and Liechtenstein, with approximate driving times.",
+        "mapCaption": "Shoreline and road data © OpenStreetMap contributors. Driving times without traffic, calculated with OSRM, as of {stand}. The lines show the direction, not the route.",
+        "driveTitle": "By car from Lochau, approx.",
+        "driveMinutes": "{n} min"
+      }
+    },
+    "Wow": {
+      "coda": {
+        "link": "How we work"
+      }
+    },
+    "contact": {
+      "uspLink": "How we work"
+    },
+    "forms": {
+      "confirmation": {
+        "processLang": null
+      }
+    },
+    "inhalt": {
+      "beratung": {
+        "uspLink": "How we work"
+      },
+      "team": {
+        "notesLink": null,
+        "harald": {
+          "eyebrow": "Drawn by hand",
+          "steps": [
+            "Hand drawing",
+            "Model",
+            "3D planning",
+            "Rendering"
+          ],
+          "stepsLabel": "Order of the planning",
+          "profile": "More about Harald Menghin"
+        }
+      }
+    }
+  },
+  "fr": {
+    "HomePage": {
+      "process": {
+        "linkGerman": null
+      },
+      "region": {
+        "mapDesc": "Carte du lac de Constance avec Lochau sur la rive est et des localités en Autriche, en Allemagne, en Suisse et au Liechtenstein, avec des temps de trajet approximatifs.",
+        "mapCaption": "Rives et données routières © les contributeurs d’OpenStreetMap. Temps de trajet sans trafic, calculés avec OSRM, état {stand}. Les lignes indiquent la direction, pas l’itinéraire.",
+        "driveTitle": "En voiture depuis Lochau, env.",
+        "driveMinutes": "{n} min"
+      }
+    },
+    "Wow": {
+      "coda": {
+        "link": "Notre méthode"
+      }
+    },
+    "contact": {
+      "uspLink": "Notre méthode"
+    },
+    "forms": {
+      "confirmation": {
+        "processLang": null
+      }
+    },
+    "inhalt": {
+      "beratung": {
+        "uspLink": "Notre méthode"
+      },
+      "team": {
+        "notesLink": null,
+        "harald": {
+          "eyebrow": "Dessiné à la main",
+          "steps": [
+            "Dessin à la main",
+            "Maquette",
+            "Planification 3D",
+            "Rendu"
+          ],
+          "stepsLabel": "Ordre de la planification",
+          "profile": "En savoir plus sur Harald Menghin"
+        }
+      }
+    }
+  },
+  "it": {
+    "HomePage": {
+      "process": {
+        "linkGerman": null
+      },
+      "region": {
+        "mapDesc": "Mappa del Lago di Costanza con Lochau sulla riva orientale e località in Austria, Germania, Svizzera e Liechtenstein, con tempi di percorrenza indicativi.",
+        "mapCaption": "Linea di costa e dati stradali © collaboratori di OpenStreetMap. Tempi di percorrenza senza traffico, calcolati con OSRM, aggiornati a {stand}. Le linee indicano la direzione, non il percorso.",
+        "driveTitle": "In auto da Lochau, ca.",
+        "driveMinutes": "{n} min"
+      }
+    },
+    "Wow": {
+      "coda": {
+        "link": "Il nostro metodo"
+      }
+    },
+    "contact": {
+      "uspLink": "Il nostro metodo"
+    },
+    "forms": {
+      "confirmation": {
+        "processLang": null
+      }
+    },
+    "inhalt": {
+      "beratung": {
+        "uspLink": "Il nostro metodo"
+      },
+      "team": {
+        "notesLink": null,
+        "harald": {
+          "eyebrow": "Disegnato a mano",
+          "steps": [
+            "Disegno a mano",
+            "Modello",
+            "Progettazione 3D",
+            "Rendering"
+          ],
+          "stepsLabel": "Ordine della progettazione",
+          "profile": "Di più su Harald Menghin"
+        }
+      }
+    }
+  }
+}

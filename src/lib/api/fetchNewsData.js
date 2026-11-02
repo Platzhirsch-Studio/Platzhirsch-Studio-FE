@@ -1,9 +1,11 @@
 import "server-only"; // Ensures this only runs on server
 import { API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
+import { isWithheldNews } from "@/lib/news/withheldNews";
 
 export async function fetchNewsData() {
     try {
-        const response = await fetch(`${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.news.api.news_data`, {
+        const response = await backofficeFetch(`${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.news.api.news_data`, {
             next: { revalidate: 3600, tags:["news"] }, // 3600 seconds = 1 hour
         });
 
@@ -23,7 +25,7 @@ export async function fetchNewsData() {
 
 export async function fetchSlicedNewsData() {
     try {
-        const response = await fetch(`${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.news.api.news_data`, {
+        const response = await backofficeFetch(`${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.news.api.news_data`, {
             // Tagged so /revalidate/news also refreshes the home page news block.
             next: { revalidate: 3600, tags: ["news"] },
         });
@@ -35,7 +37,8 @@ export async function fetchSlicedNewsData() {
         const data = await response.json();
 
         const formattedPosts = data.message
-            .filter((post) => post.status === "Aktiv")
+            // UWG: ended discount promotions are not teased (src/lib/news/withheldNews.js).
+            .filter((post) => post.status === "Aktiv" && !isWithheldNews(post))
             .sort((a, b) => new Date(b.daten) - new Date(a.daten))
             .slice(0, 3);
 

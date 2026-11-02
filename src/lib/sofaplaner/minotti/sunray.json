@@ -1,0 +1,890 @@
+{
+  "name": "Sunray",
+  "slug": "sunray",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2020,
+  "jahr_hinweis": "Produktseite: „2020 Collection“; Technical Sheet © Minotti, Stand Januar 2023.",
+  "typ": "Modulares Outdoor-Sitzsystem auf Teak-Rahmen: Sessel, Sofas, schräge Sofas, Endelemente (auch Penisola mit Teilrücken und mit Teak-Top), Chaise-longue, Loveseat, Daybed mit verstellbarer Rückenlehne, Couchtische",
+  "modular": true,
+  "outdoor": true,
+  "quellen": [
+    "https://www.minotti.com/en/sunray",
+    "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/14060/11693/2020_COLLECTION.pdf",
+    "https://www.minotti.com/downloads/10411/21544/MINOTTI_CONSUMER_CATALOGUE_THE_COLLECTION_2024.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "masse_hinweis": "Maße aus dem Technical Sheet (Januar 2023), Gesamtmaße teils in den Kompositionsbeispielen bestätigt. Lesart: 86 = Gesamthöhe, 40 = Sitzhöhe; 66/26 unbeschriftet. SX/DX gemäß Minotti-Konvention (Armlehne links/rechts). CAD-Maße können leicht abweichen.",
+  "rechte_hinweis": "Bild-URLs nur als Quellennachweis. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "preis": {
+    "hinweis": "Keine Preise erfasst. Preise nur aus der Konfigurationstabelle, gekennzeichnet „Richtwert – vom Inhaber festzulegen“."
+  },
+  "rueckenoptionen": [
+    {
+      "name": "Geschwungener Rücken: Edelstahlrohr Bronze, mit Flachkordel (Polypropylen 24×7 mm) linear umflochten, mit losen Rückenkissen",
+      "elemente": "Alle Sitzelemente"
+    },
+    {
+      "name": "Teilrücken (Penisola / Open-End): Rückenlänge 110, 154 oder 197 cm",
+      "elemente": "OPEN-END ELEMENT 162/204/248"
+    },
+    {
+      "name": "Verstellbare Rückenlehne (4 Positionen 23°/37°/48°/56°), Batyline-Bespannung",
+      "elemente": "DAYBED WITH RECLINING BACKREST"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Zwei Armlehnen",
+      "elemente": "ARMCHAIR, SOFA 166/208/252"
+    },
+    {
+      "name": "Eine Armlehne links (SX) oder rechts (DX)",
+      "elemente": "ELEMENT WITH 1 ARMREST (auch mit Top / Open-End), INCLINED SOFA, CHAISE-LONGUE"
+    },
+    {
+      "name": "Ohne Armlehne",
+      "elemente": "DAYBED WITH RECLINING BACKREST; LOVESEAT laut Zeichnung (nicht eindeutig)"
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Oberrahmen und Beine",
+      "material": "Edelstahlrohr lackiert",
+      "finish": [
+        "Bronze, poliert, Anti-Fingerprint"
+      ]
+    },
+    {
+      "teil": "Geflecht",
+      "material": "Polypropylen-Flachkordel 24×7 mm",
+      "finish": [
+        "Ecru",
+        "Bronze"
+      ]
+    },
+    {
+      "teil": "Sitzrahmen/Basis",
+      "material": "Massives Teak (Tectona Grandis, First European Quality) 60 mm, kammergetrocknet, 45°-Fingerzinken mit Dübeln",
+      "finish": [
+        "Teak natur"
+      ]
+    },
+    {
+      "teil": "Gleiter",
+      "material": "Polyethylen",
+      "finish": [
+        "Bronze"
+      ]
+    },
+    {
+      "teil": "Daybed-Gestell",
+      "material": "Edelstahl lackiert, Batyline-Bespannung",
+      "finish": [
+        "Bronze glänzend, Anti-Fingerprint"
+      ]
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff (Outdoor-Stoffe der Minotti Textile Collection 2020 ff.)"
+    ],
+    "kategorien_hinweis": "Produktseite: „wide choice of the fabrics of the 2020 Textile Collection“. Leder nicht angegeben. Stoffliste/Kategorien nur über „The World of Materials“ (Login).",
+    "bezugsart": "Abnehmbar: Kissenbezüge vollständig abziehbar; wasserabweisender Polyester-Innenbezug, wasserabweisende Reißverschlüsse und Garne.",
+    "preisgruppen": null,
+    "farbmuster_hinweis": "Original-Stoff-, Kordel- und Holzmuster bitte im Showroom ansehen – Bildschirmfarben sind nicht verbindlich (Minotti: „Printed colours are to be considered as purely indicative“)."
+  },
+  "polsterung": "Matratzenartige Sitz- und Rückenkissen aus hochelastischem PU-Schaum und wasserabweisender, umweltverträglicher Faser; liegen auf dem Teakrahmen auf.",
+  "kissenoptionen": [
+    {
+      "name": "OPTIONAL BACKREST CUSHION",
+      "masse_cm": {
+        "breite": 60,
+        "hoehe": 60
+      },
+      "quelle": "https://www.minotti.com/media/immagini/28206_n_SUNRAY-OPTIONAL-BACKREST-CUSHION-60X60.jpg"
+    },
+    {
+      "name": "OPTIONAL CUSHION",
+      "masse_cm": {
+        "breite": 45,
+        "hoehe": 45
+      },
+      "quelle": "https://www.minotti.com/media/immagini/28207_n_SUNRAY-OPTIONAL-CUSHION-45X45.jpg"
+    }
+  ],
+  "zubehoer": [
+    {
+      "name": "Optional Rain Cover",
+      "hinweis": "Für jedes Element erhältlich",
+      "farben": [
+        "Green",
+        "Grey",
+        "Pewter"
+      ],
+      "farben_quelle": "Bilddateinamen MINOTTI_RAINCOVER_* auf der Produktseite"
+    },
+    {
+      "name": "Sunray Luke (Ottomane, separates Produkt)",
+      "hinweis": "Bildnamen nennen 88×55, 150×55, 88×90, Ø 120 – eigene Produktseite, hier nicht erfasst"
+    },
+    {
+      "name": "Sunray Meg (Beistelltische, separates Produkt)",
+      "hinweis": "Bildnamen nennen Ø 60 H41, Ø 80 H30, Ø 100 H30, 80×80 H30 – eigene Produktseite"
+    }
+  ],
+  "kombinierbarkeit": [
+    "Endelemente mit 1 Armlehne (SX/DX) werden mit gegenläufigen Endelementen, Chaise-longue oder Penisola-Elementen zu Linear-/Eckkompositionen verbunden.",
+    "Kompositionsbeispiele im Datenblatt: A) Inclined Sofa 293 × 155; B) Endelement SX 204 + Endelement mit Top Small SX 248; C) Endelement SX 204 + Chaise-longue DX 162 × 162 (Gesamtlänge 366 cm); D) 2 Sessel + Inclined Sofa DX 257.",
+    "Verbindungsart/Kupplung der Elemente nicht öffentlich beschrieben."
+  ],
+  "besonderheiten": [
+    "Teak-Rahmen mit abgeschrägtem Profil trägt matratzenartige Kissen.",
+    "Rücken mit Flachkordel in linearem Muster, Ecru oder Bronze.",
+    "Endelemente mit integriertem Teak-Top (Small/Large) als Ablage.",
+    "Schräge (Inclined) Sofas mit trapezförmigem Grundriss."
+  ],
+  "fehlend": [
+    "Sitztiefe (nicht beschriftet).",
+    "Bedeutung der Höhen 66/26 und der Innenmaße.",
+    "Exakte Maße der Teak-Tops Small/Large (nur Lesart 43/87).",
+    "Daybed: Gesamthöhe aufgestellt, Liegehöhe nur unbeschriftet (34).",
+    "Loveseat: 166 (Datenblatt) vs. 162 (Bilddatei).",
+    "Kupplungs-/Verbindungssystem, Minotti-Artikelnummern.",
+    "Outdoor-Stoffliste, Preisgruppen.",
+    "Preise (vom Inhaber festzulegen), Gewicht, Lieferzeit."
+  ],
+  "elemente": [
+    {
+      "code": "sunray-armchair",
+      "name": "ARMCHAIR",
+      "art": "sessel",
+      "breite_cm": 82,
+      "tiefe_cm": 84,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "Freistehend",
+      "weitere_masse_cm": [
+        {
+          "wert": 62,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Armlehnenhöhe)"
+        },
+        {
+          "wert": 64,
+          "bedeutung": "Unbeschriftetes Innenmaß (vermutl. Sitzbreite)"
+        }
+      ],
+      "mass_hinweis": "Breite × Tiefe × Höhe 82 × 84 × 82 auch in Komposition D des Datenblatts bestätigt.",
+      "quelle": "https://www.minotti.com/media/immagini/28184_n_SUNRAY-ARMCHAIR-82.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-sofa-166",
+      "name": "SOFA CM 166",
+      "art": "sofa",
+      "breite_cm": 166,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "Freistehend, beidseitig Armlehnen",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 138,
+          "bedeutung": "Unbeschriftetes Innenmaß in der Draufsicht (vermutl. Sitzbreite)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28185_n_SUNRAY-SOFA-166.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-sofa-208",
+      "name": "SOFA CM 208",
+      "art": "sofa",
+      "breite_cm": 208,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "Freistehend, beidseitig Armlehnen",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 180,
+          "bedeutung": "Unbeschriftetes Innenmaß in der Draufsicht (vermutl. Sitzbreite)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28186_n_SUNRAY-SOFA-208.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-sofa-252",
+      "name": "SOFA CM 252",
+      "art": "sofa",
+      "breite_cm": 252,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "Freistehend, beidseitig Armlehnen",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 224,
+          "bedeutung": "Unbeschriftetes Innenmaß in der Draufsicht (vermutl. Sitzbreite)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28187_n_SUNRAY-SOFA-252.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-inclined-sofa-257",
+      "name": "INCLINED SOFA CM 257",
+      "art": "sofa-geneigt",
+      "breite_cm": 257,
+      "tiefe_cm": 134,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "anschluesse": "Freistehendes Sofa mit schräg verlaufendem Ende (Grundriss trapezförmig); links/rechts",
+      "weitere_masse_cm": [
+        {
+          "wert": 124,
+          "bedeutung": "Unbeschriftetes Maß (vermutl. Länge der schrägen Seite/Teilbreite)"
+        },
+        {
+          "wert": 82,
+          "bedeutung": "Unbeschriftetes Maß (Teiltiefe)"
+        },
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28188_n_SUNRAY-INCLINED-SOFA-257.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-inclined-sofa-293",
+      "name": "INCLINED SOFA CM 293",
+      "art": "sofa-geneigt",
+      "breite_cm": 293,
+      "tiefe_cm": 155,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "anschluesse": "Freistehendes Sofa mit schräg verlaufendem Ende; links/rechts. 293 × 155 × H 86 in Komposition A bestätigt.",
+      "weitere_masse_cm": [
+        {
+          "wert": 124,
+          "bedeutung": "Unbeschriftetes Maß (vermutl. Länge der schrägen Seite)"
+        },
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28189_n_SUNRAY-INCLINED-SOFA-293.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-element-1-armrest-162",
+      "name": "ELEMENT WITH 1 ARMREST CM 162",
+      "art": "endelement",
+      "breite_cm": 162,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "anschluesse": "Anbauelement mit einer Armlehne; offene Seite an weiteres Element (z. B. Chaise-longue, Loveseat, Endelement)",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 152,
+          "bedeutung": "Unbeschriftetes Innenmaß in der Draufsicht (vermutl. Sitzbreite)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28190_n_SUNRAY-ELEMENT-WITH-1-ARMREST-162.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-element-1-armrest-204",
+      "name": "ELEMENT WITH 1 ARMREST CM 204",
+      "art": "endelement",
+      "breite_cm": 204,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "anschluesse": "Anbauelement mit einer Armlehne. 204 × 91 × H 86 in Komposition B/C bestätigt.",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 194,
+          "bedeutung": "Unbeschriftetes Innenmaß in der Draufsicht (vermutl. Sitzbreite)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28191_n_SUNRAY-ELEMENT-WITH-1-ARMREST-204.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-element-1-armrest-248",
+      "name": "ELEMENT WITH 1 ARMREST CM 248",
+      "art": "endelement",
+      "breite_cm": 248,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "anschluesse": "Anbauelement mit einer Armlehne",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 238,
+          "bedeutung": "Unbeschriftetes Innenmaß in der Draufsicht (vermutl. Sitzbreite)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28192_n_SUNRAY-ELEMENT-WITH-1-ARMREST-248.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-open-end-162-back-110",
+      "name": "OPEN-END ELEMENT WITH ARMREST CM 162 - BACKREST CM 110",
+      "art": "peninsula",
+      "breite_cm": 162,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "rueckenlaenge_cm": 110,
+      "anschluesse": "Endelement mit Armlehne, Rücken nur auf 110 cm Länge (Rest offen, Penisola)",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 152,
+          "bedeutung": "Unbeschriftetes Innenmaß in der Draufsicht (vermutl. Sitzbreite)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28193_n_SUNRAY-OPEN-END-ELEMENT-WITH-ARMREST-162-BACKREST-110.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-open-end-204-back-110",
+      "name": "OPEN-END ELEMENT WITH ARMREST CM 204 - BACKREST CM 110",
+      "art": "peninsula",
+      "breite_cm": 204,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "rueckenlaenge_cm": 110,
+      "anschluesse": "Penisola-Endelement, Rücken 110 cm",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 194,
+          "bedeutung": "Unbeschriftetes Innenmaß in der Draufsicht (vermutl. Sitzbreite)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28194_n_SUNRAY-OPEN-END-ELEMENT-WITH-ARMREST-204-BACKREST-110.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-open-end-204-back-154",
+      "name": "OPEN-END ELEMENT WITH ARMREST CM 204 - BACKREST CM 154",
+      "art": "peninsula",
+      "breite_cm": 204,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "rueckenlaenge_cm": 154,
+      "anschluesse": "Penisola-Endelement, Rücken 154 cm",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 194,
+          "bedeutung": "Unbeschriftetes Innenmaß in der Draufsicht (vermutl. Sitzbreite)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28195_n_SUNRAY-OPEN-END-ELEMENT-WITH-ARMREST-204-BACKREST-154.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-open-end-248-back-154",
+      "name": "OPEN-END ELEMENT WITH ARMREST CM 248 - BACKREST CM 154",
+      "art": "peninsula",
+      "breite_cm": 248,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "rueckenlaenge_cm": 154,
+      "anschluesse": "Penisola-Endelement, Rücken 154 cm",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 238,
+          "bedeutung": "Unbeschriftetes Innenmaß in der Draufsicht (vermutl. Sitzbreite)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28196_n_SUNRAY-OPEN-END-ELEMENT-WITH-ARMREST-248-BACKREST-154.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-open-end-248-back-197",
+      "name": "OPEN-END ELEMENT WITH ARMREST CM 248 - BACKREST CM 197",
+      "art": "peninsula",
+      "breite_cm": 248,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "rueckenlaenge_cm": 197,
+      "anschluesse": "Penisola-Endelement, Rücken 197 cm",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 238,
+          "bedeutung": "Unbeschriftetes Innenmaß in der Draufsicht (vermutl. Sitzbreite)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28197_n_SUNRAY-OPEN-END-ELEMENT-WITH-ARMREST-248-BACKREST-197.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-element-1-armrest-162-top-small",
+      "name": "ELEMENT WITH 1 ARMREST CM 162 WITH TOP SMALL",
+      "art": "endelement-top",
+      "breite_cm": 162,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "top": {
+        "groesse": "small",
+        "hoehe_cm": 20,
+        "material": "Massives Teak 60 mm, natur",
+        "hinweis": "Top-Höhe 20 cm lt. Datenblatt; Top-Breite in der Zeichnung ca. 43 cm (Lesart unsicher, Tiefe 87)."
+      },
+      "anschluesse": "Endelement mit Armlehne und integrierter Teak-Ablage (Top Small) am offenen Ende",
+      "quelle": "https://www.minotti.com/media/immagini/28198_n_SUNRAY-ELEMENT-WITH-1-ARMREST-162-TOP-SMALL.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-element-1-armrest-204-top-small",
+      "name": "ELEMENT WITH 1 ARMREST CM 204 WITH TOP SMALL",
+      "art": "endelement-top",
+      "breite_cm": 204,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "top": {
+        "groesse": "small",
+        "hoehe_cm": 20,
+        "material": "Massives Teak 60 mm, natur",
+        "hinweis": "Top-Höhe 20 cm lt. Datenblatt; Top-Breite in der Zeichnung ca. 43 cm (Lesart unsicher, Tiefe 87)."
+      },
+      "anschluesse": "Endelement mit Armlehne und Teak-Ablage (Top Small)",
+      "quelle": "https://www.minotti.com/media/immagini/28199_n_SUNRAY-ELEMENT-WITH-1-ARMREST-204-TOP-SMALL.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-element-1-armrest-204-top-large",
+      "name": "ELEMENT WITH 1 ARMREST CM 204 WITH TOP LARGE",
+      "art": "endelement-top",
+      "breite_cm": 204,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "top": {
+        "groesse": "large",
+        "hoehe_cm": 20,
+        "material": "Massives Teak 60 mm, natur",
+        "hinweis": "Top-Höhe 20 cm lt. Datenblatt; Top-Breite in der Zeichnung ca. 87 cm (Lesart unsicher, Tiefe 87)."
+      },
+      "anschluesse": "Endelement mit Armlehne und Teak-Ablage (Top Large)",
+      "quelle": "https://www.minotti.com/media/immagini/28200_n_SUNRAY-ELEMENT-WITH-1-ARMREST-204-TOP-LARGE.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-element-1-armrest-248-top-small",
+      "name": "ELEMENT WITH 1 ARMREST CM 248 WITH TOP SMALL",
+      "art": "endelement-top",
+      "breite_cm": 248,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "top": {
+        "groesse": "small",
+        "hoehe_cm": 20,
+        "material": "Massives Teak 60 mm, natur",
+        "hinweis": "Top-Höhe 20 cm lt. Datenblatt; Top-Breite in der Zeichnung ca. 43 cm (Lesart unsicher, Tiefe 87)."
+      },
+      "anschluesse": "Endelement mit Armlehne und Teak-Ablage (Top Small). 248 × 91 × H 86 in Komposition B bestätigt.",
+      "quelle": "https://www.minotti.com/media/immagini/28201_n_SUNRAY-ELEMENT-WITH-1-ARMREST-248-TOP-SMALL.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-element-1-armrest-248-top-large",
+      "name": "ELEMENT WITH 1 ARMREST CM 248 WITH TOP LARGE",
+      "art": "endelement-top",
+      "breite_cm": 248,
+      "tiefe_cm": 91,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "top": {
+        "groesse": "large",
+        "hoehe_cm": 20,
+        "material": "Massives Teak 60 mm, natur",
+        "hinweis": "Top-Höhe 20 cm lt. Datenblatt; Top-Breite in der Zeichnung ca. 87 cm (Lesart unsicher, Tiefe 87)."
+      },
+      "anschluesse": "Endelement mit Armlehne und Teak-Ablage (Top Large)",
+      "quelle": "https://www.minotti.com/media/immagini/28202_n_SUNRAY-ELEMENT-WITH-1-ARMREST-248-TOP-LARGE.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-chaise-longue",
+      "name": "CHAISE-LONGUE",
+      "art": "chaise",
+      "breite_cm": 162,
+      "tiefe_cm": 162,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "anschluesse": "Eck-/Abschlusselement mit Liegefläche; kombiniert mit Endelement mit 1 Armlehne (Komposition C: Endelement SX 204 + Chaise-longue DX 162 × 162).",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 152,
+          "bedeutung": "Unbeschriftetes Innenmaß"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28203_n_SUNRAY-CHAISE-LONGUE-162X162.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-loveseat",
+      "name": "LOVESEAT",
+      "art": "loveseat",
+      "breite_cm": 166,
+      "tiefe_cm": 162,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "Freistehend oder als Abschluss; Bilddatei nennt 162×162, Zeichnung 166 × 162",
+      "masskonflikt": "Bilddateiname „LOVESEAT-162X162“, Technical Sheet zeigt 166 × 162 – Datenblatt übernommen.",
+      "weitere_masse_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Armlehnen-/Rückenrahmenhöhe)"
+        },
+        {
+          "wert": 26,
+          "bedeutung": "Unbeschriftete Höhe (vermutl. Oberkante Teakrahmen)"
+        },
+        {
+          "wert": 138,
+          "bedeutung": "Unbeschriftetes Innenmaß"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/28204_n_SUNRAY-LOVESEAT-162X162.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-daybed-reclining-backrest",
+      "name": "DAYBED WITH RECLINING BACKREST",
+      "art": "liege",
+      "breite_cm": 87,
+      "tiefe_cm": 202,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": "Freistehende Sonnenliege; Gestell Edelstahl Bronze, Bespannung Batyline",
+      "rueckenverstellung_grad": [
+        23,
+        37,
+        48,
+        56
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 34,
+          "bedeutung": "Unbeschriftete Höhe in der Seitenansicht (vermutl. Liegehöhe)"
+        }
+      ],
+      "mass_hinweis": "Länge 202, Breite 87 lt. Datenblatt; Gesamthöhe in aufgestellter Position nicht angegeben.",
+      "quelle": "https://www.minotti.com/media/immagini/28205_n_SUNRAY-DAYBED-WITH-RECLINING-BACKREST-202.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-coffee-table-87x87",
+      "name": "COFFEE TABLE CM 87X87 H20",
+      "art": "tisch",
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 20,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": "Freistehend; Höhe entspricht der Top-Höhe der Endelemente",
+      "quelle": "https://www.minotti.com/media/immagini/28208_n_SUNRAY-COFFEE-TABLE-87X87-H20.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    },
+    {
+      "code": "sunray-coffee-table-158x87",
+      "name": "COFFEE TABLE CM 158X87 H20",
+      "art": "tisch",
+      "breite_cm": 158,
+      "tiefe_cm": 87,
+      "hoehe_cm": 20,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": "Freistehend",
+      "quelle": "https://www.minotti.com/media/immagini/28209_n_SUNRAY-COFFEE-TABLE-158X87-H20.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/17017/15851/SUNRAY_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/sunray"
+      ]
+    }
+  ],
+  "vollstaendigkeit": {
+    "felder_gesamt": 110,
+    "felder_belegt": 86,
+    "prozent": 78,
+    "basis": "Maßfelder breite/tiefe/hoehe/sitzhoehe/sitztiefe aller Sitz-/Bank-Elemente (ohne Tische/Kissen/Zubehör)"
+  },
+  "vollstaendigkeit_prozent": 78
+}

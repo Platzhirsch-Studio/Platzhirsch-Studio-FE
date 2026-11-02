@@ -1,12 +1,13 @@
 // src/lib/api/careerKeywordsApi.js
 import "server-only"; // Ensures this only runs on server
 import { API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
 
 const CAREER_KEYWORDS_API_URL = `${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.career_keywords.api.career_keywords_data`;
 
 export async function fetchCareerKeywords() {
   try {
-    const response = await fetch(CAREER_KEYWORDS_API_URL, {
+    const response = await backofficeFetch(CAREER_KEYWORDS_API_URL, {
       method: "GET",
       next: { revalidate: 3600 }, // Cache for 1 hour
     });

@@ -1,0 +1,4016 @@
+{
+  "$schema_note": "Inventur 3D-Quellen je Marke. Erzeugt am 27.10.2026 aus Backoffice (Produkte New, nur GET), Herstellerwebsites (ohne Login) und Herstellermaterial/. Siehe Marktresearch/digital/features/ar-viewer-quellen.md.",
+  "stand": "2026-10-27",
+  "stufen": {
+    "3d": "Öffentliches Hersteller-3D-Modell dem Produkt zugeordnet (Download ohne Login) – Konvertierung nach GLB möglich, Freigabe nötig",
+    "3d_marke": "Hersteller bietet öffentlich 3D je Produkt an, Zuordnung zum Katalogprodukt noch offen",
+    "ar_foto_masse": "Kein 3D, aber Bild + Maße (Backoffice-Feld oder Beschreibung) → maßstäbliche Foto-Karte in AR",
+    "nur_bild": "Bild ohne verwertbare Maße",
+    "nur_masse": "Maße, aber kein Bild im Backoffice",
+    "nichts": "weder Bild noch Maße im Backoffice"
+  },
+  "summe": {
+    "produkte": 1760,
+    "3d": 395,
+    "3d_marke": 519,
+    "ar_foto_masse": 485,
+    "nur_bild": 221,
+    "nur_masse": 112,
+    "nichts": 28
+  },
+  "lokal_herstellermaterial": {
+    "dateien3d": 0,
+    "zips": 0,
+    "hinweis": "Herstellermaterial/** enthält keine 3D-, CAD- oder ZIP-Dateien (3.121 Dateien: 1.888 JPG, 1.063 PDF, 71 PNG, 35 JPEG, 19 WebP, 4 EPS, 1 AI …). Maße stehen dort nur in Datenblatt-PDFs."
+  },
+  "backoffice_3d_feld": "pdf_produkte[].3d ist bei allen 662 Einträgen null",
+  "marken": {
+    "101 Copenhagen": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 62,
+        "mitBild": 62,
+        "bildMedianPx": 2000,
+        "bildMinPx": 1500,
+        "bildMaxPx": 2000,
+        "bild1600plus": 61,
+        "mitMassen": 59,
+        "massQuelle": {
+          "backoffice_feld": 59
+        },
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 59,
+        "nur_bild": 3,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/101_Copenhagen",
+        "dateien3d": [],
+        "pdfs": 0,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Livintwist": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 9,
+        "mitBild": 9,
+        "bildMedianPx": 1280,
+        "bildMinPx": 1000,
+        "bildMaxPx": 1333,
+        "bild1600plus": 0,
+        "mitMassen": 7,
+        "massQuelle": {
+          "backoffice_feld": 7
+        },
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 7,
+        "nur_bild": 2,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Livintwist",
+        "dateien3d": [],
+        "pdfs": 0,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Solpuri": {
+      "quelle3d": {
+        "status": "configurator",
+        "formats": [],
+        "url": "https://planer.solpuri.com/",
+        "note": "Online-3D-Planer, keine Dateidownloads gefunden."
+      },
+      "katalog": {
+        "produkte": 59,
+        "mitBild": 59,
+        "bildMedianPx": 1200,
+        "bildMinPx": 1200,
+        "bildMaxPx": 1200,
+        "bild1600plus": 0,
+        "mitMassen": 55,
+        "massQuelle": {
+          "backoffice_feld": 55
+        },
+        "mitPdfAnhang": 58
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 55,
+        "nur_bild": 4,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Solpuri",
+        "dateien3d": [],
+        "pdfs": 47,
+        "datenblaetterMitMassen": 45,
+        "beispiele": [
+          "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_ALLURE.pdf",
+          "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_ATON.pdf",
+          "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_BASKET.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Tuuci": {
+      "quelle3d": {
+        "status": "configurator",
+        "formats": [
+          "skp",
+          "rvt (Export)"
+        ],
+        "url": "https://www.tuuci.com/shadestudio/",
+        "note": "Shade Studio exportiert Modelle nach SketchUp/Revit; Seite zeigt Login/Create Account. Kein öffentlicher Dateidownload gefunden."
+      },
+      "katalog": {
+        "produkte": 15,
+        "mitBild": 15,
+        "bildMedianPx": 1000,
+        "bildMinPx": 800,
+        "bildMaxPx": 2000,
+        "bild1600plus": 1,
+        "mitMassen": 15,
+        "massQuelle": {
+          "backoffice_feld": 15
+        },
+        "mitPdfAnhang": 15
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 15,
+        "nur_bild": 0,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Tuuci",
+        "dateien3d": [],
+        "pdfs": 247,
+        "datenblaetterMitMassen": 246,
+        "beispiele": [
+          "Herstellermaterial/Tuuci/datenblaetter/Tuuci_11-Meritage-Dining-Table-Data-Sheet-08-26_v3.pdf",
+          "Herstellermaterial/Tuuci/datenblaetter/Tuuci_6-Meritage-Dining-Table-Data-Sheet-08-26_v3.pdf",
+          "Herstellermaterial/Tuuci/datenblaetter/Tuuci_9-Meritage-Dining-Table-Data-Sheet-08-26_v3.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Umbrosa": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 16,
+        "mitBild": 15,
+        "bildMedianPx": 2000,
+        "bildMinPx": 979,
+        "bildMaxPx": 2000,
+        "bild1600plus": 11,
+        "mitMassen": 1,
+        "massQuelle": {
+          "beschreibungstext": 1
+        },
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 0,
+        "nur_bild": 15,
+        "nur_masse": 1,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Umbrosa",
+        "dateien3d": [],
+        "pdfs": 55,
+        "datenblaetterMitMassen": 55,
+        "beispiele": [
+          "Herstellermaterial/Umbrosa/datenblaetter/Anleitungen_Pflege_Garantie/Umbrosa_2026_windguidelines.pdf",
+          "Herstellermaterial/Umbrosa/datenblaetter/Anleitungen_Pflege_Garantie/Umbrosa_260505_-_Manual_Aurelis_Cantilever.pdf",
+          "Herstellermaterial/Umbrosa/datenblaetter/Anleitungen_Pflege_Garantie/Umbrosa_Aanvraag_garantie_Umbrosa.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Desalto": {
+      "quelle3d": {
+        "status": "login",
+        "formats": [],
+        "url": "https://www.desalto.it/it/area-riservata",
+        "note": "Öffentliche Downloadseite ohne 3D; CAD vermutlich Area riservata."
+      },
+      "katalog": {
+        "produkte": 50,
+        "mitBild": 50,
+        "bildMedianPx": 1620,
+        "bildMinPx": 1440,
+        "bildMaxPx": 1920,
+        "bild1600plus": 49,
+        "mitMassen": 50,
+        "massQuelle": {
+          "backoffice_feld": 50
+        },
+        "mitPdfAnhang": 49
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 50,
+        "nur_bild": 0,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Desalto",
+        "dateien3d": [],
+        "pdfs": 13,
+        "datenblaetterMitMassen": 1,
+        "beispiele": [
+          "Herstellermaterial/Desalto/datenblaetter/Desalto_Digital_Handbook_2026.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Next125": {
+      "quelle3d": {
+        "status": "login",
+        "formats": [],
+        "url": "https://extranet.schueller.de/de/login/",
+        "note": "Planungsdaten über Schüller-Extranet; Küchen werden ohnehin im Küchenplaner modelliert."
+      },
+      "katalog": {
+        "produkte": 13,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 0,
+        "nur_bild": 0,
+        "nur_masse": 0,
+        "nichts": 13
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Next125",
+        "dateien3d": [],
+        "pdfs": 50,
+        "datenblaetterMitMassen": 47,
+        "beispiele": [
+          "Herstellermaterial/Next125/datenblaetter/01_next125_Datenblatt_nx240_Kristallweiss.pdf",
+          "Herstellermaterial/Next125/datenblaetter/02_next125_Datenblatt_nx660_Eiche-elegant-natur_NX960_Bianco-beige.pdf",
+          "Herstellermaterial/Next125/datenblaetter/03_next125_Datenblatt_nx670_Nussbaum-natur_nx912_basalt-metallic_Homebar.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Bullfrog": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Bullfrog",
+        "dateien3d": [],
+        "pdfs": 199,
+        "datenblaetterMitMassen": 195,
+        "beispiele": [
+          "Herstellermaterial/Bullfrog/datenblaetter/montageanleitungen/MAGA_0001_Funki_Bullfrog_DE.pdf",
+          "Herstellermaterial/Bullfrog/datenblaetter/montageanleitungen/MAGA_0001_Kissen_Bullfrog_DE.pdf",
+          "Herstellermaterial/Bullfrog/datenblaetter/montageanleitungen/MAGA_0001_ProBier_DE.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Bombyxx": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Bombyxx",
+        "dateien3d": [],
+        "pdfs": 0,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "EMU": {
+      "quelle3d": {
+        "status": "login",
+        "formats": [],
+        "url": "https://www.emu.it/professionisti/",
+        "note": "„Modelli 3D e 2D“ in der Area Clienti; keine Produkte im Katalog."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/EMU",
+        "dateien3d": [],
+        "pdfs": 6,
+        "datenblaetterMitMassen": 1,
+        "beispiele": [
+          "Herstellermaterial/EMU/datenblaetter/EMU_Materialkarte_2026.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Trapa": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Trapa",
+        "dateien3d": [],
+        "pdfs": 4,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Pomax": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Pomax",
+        "dateien3d": [],
+        "pdfs": 8,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Frost": {
+      "quelle3d": {
+        "status": "public",
+        "formats": [
+          "rvt",
+          "dwg",
+          "pCon"
+        ],
+        "url": "https://frostdenmark.com/en/downloads/professionals/2d-3d-files/",
+        "note": "Revit-Paket und 2D/3D-Seite öffentlich; keine Produkte im Katalog."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Frost",
+        "dateien3d": [],
+        "pdfs": 169,
+        "datenblaetterMitMassen": 169,
+        "beispiele": [
+          "Herstellermaterial/Frost/datenblaetter/Frost_Reinigung-und-Pflege_allgemein_2017-09.pdf",
+          "Herstellermaterial/Frost/datenblaetter/montageanleitungen/architectural-hardware/fitting-instruction_a1001s-2024.pdf",
+          "Herstellermaterial/Frost/datenblaetter/montageanleitungen/architectural-hardware/fitting-instruction_a1007-2024.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Lambert": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Lambert",
+        "dateien3d": [],
+        "pdfs": 0,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Heatsail": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 12,
+        "mitBild": 12,
+        "bildMedianPx": 690,
+        "bildMinPx": 385,
+        "bildMaxPx": 1035,
+        "bild1600plus": 0,
+        "mitMassen": 8,
+        "massQuelle": {
+          "backoffice_feld": 8
+        },
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 8,
+        "nur_bild": 4,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Heatsail",
+        "dateien3d": [],
+        "pdfs": 19,
+        "datenblaetterMitMassen": 18,
+        "beispiele": [
+          "Herstellermaterial/Heatsail/datenblaetter/Heatsail_EU_BEEM_TECHNICAL_SHEET.pdf",
+          "Herstellermaterial/Heatsail/datenblaetter/Heatsail_EU_DISC_FS_TECHNICAL_SHEET.pdf",
+          "Herstellermaterial/Heatsail/datenblaetter/Heatsail_EU_DISC_PT_TECHNICAL_SHEET.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Tom Dixon": {
+      "quelle3d": {
+        "status": "login",
+        "formats": [],
+        "url": "https://www.bimobject.com/en/tom-dixon",
+        "note": "Professional Toolbox (VOCAST) bzw. bimobject (Konto). Keine Produkte im Katalog."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Tom_Dixon",
+        "dateien3d": [],
+        "pdfs": 13,
+        "datenblaetterMitMassen": 13,
+        "beispiele": [
+          "Herstellermaterial/Tom_Dixon/datenblaetter/TomDixon_Bell_Portable_Instructions.pdf",
+          "Herstellermaterial/Tom_Dixon/datenblaetter/TomDixon_Jack_Portable_Instructions.pdf",
+          "Herstellermaterial/Tom_Dixon/datenblaetter/TomDixon_LED_Pendant_Instructions_EU.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Sifas": {
+      "quelle3d": {
+        "status": "public",
+        "formats": [
+          "obj",
+          "skp"
+        ],
+        "url": "https://sifas.com/medias/3D/Coco/COCOSFP.zip",
+        "note": "Jede Produktseite verlinkt ein 3D-ZIP (Stichprobe Coco: OBJ + MTL + SKP, 3,4 MB). Fotos/Material nur mit schriftlicher Genehmigung."
+      },
+      "katalog": {
+        "produkte": 59,
+        "mitBild": 59,
+        "bildMedianPx": 1500,
+        "bildMinPx": 545,
+        "bildMaxPx": 1600,
+        "bild1600plus": 1,
+        "mitMassen": 59,
+        "massQuelle": {
+          "backoffice_feld": 59
+        },
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 59,
+        "ar_foto_masse": 0,
+        "nur_bild": 0,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Sifas",
+        "dateien3d": [],
+        "pdfs": 1,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Papadatos": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Papadatos",
+        "dateien3d": [],
+        "pdfs": 0,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Treca": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 96,
+        "mitBild": 96,
+        "bildMedianPx": 1829,
+        "bildMinPx": 615,
+        "bildMaxPx": 1829,
+        "bild1600plus": 82,
+        "mitMassen": 86,
+        "massQuelle": {
+          "backoffice_feld": 50,
+          "beschreibungstext": 36
+        },
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 86,
+        "nur_bild": 10,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Treca",
+        "dateien3d": [],
+        "pdfs": 0,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Brand van Egmond": {
+      "quelle3d": {
+        "status": "login",
+        "formats": [],
+        "url": "https://brandvanegmond.com/downloads",
+        "note": "„2D and 3D models“ im Downloadbereich nur mit Login."
+      },
+      "katalog": {
+        "produkte": 111,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 111,
+        "massQuelle": {
+          "backoffice_feld": 111
+        },
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 0,
+        "nur_bild": 0,
+        "nur_masse": 111,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Brand_van_Egmond",
+        "dateien3d": [],
+        "pdfs": 2,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Qeeboo": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Qeeboo",
+        "dateien3d": [],
+        "pdfs": 3,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Rimadesio": {
+      "quelle3d": {
+        "status": "login",
+        "formats": [],
+        "url": "https://www.rimadesio.it/en/products/self-up/",
+        "note": "Knopf „2D/3D“ führt zur Reserved Area."
+      },
+      "katalog": {
+        "produkte": 63,
+        "mitBild": 61,
+        "bildMedianPx": 1836,
+        "bildMinPx": 902,
+        "bildMaxPx": 2400,
+        "bild1600plus": 31,
+        "mitMassen": 7,
+        "massQuelle": {
+          "beschreibungstext": 7
+        },
+        "mitPdfAnhang": 42
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 7,
+        "nur_bild": 54,
+        "nur_masse": 0,
+        "nichts": 2
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Rimadesio",
+        "dateien3d": [],
+        "pdfs": 15,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Minotti": {
+      "quelle3d": {
+        "status": "public",
+        "formats": [
+          "rfa (Revit)",
+          "pdf (Ansichten)"
+        ],
+        "url": "https://www.minotti.com/en/connery",
+        "note": "Produktseiten verlinken ZIP „Download file Revit“ (/downloads/…/MINOTTI_<Name>.zip) ohne Login; Inhalt je ZIP unterschiedlich (z. B. Connery 178 RFA, 353 MB; Jeff nur PDF + Texturen). DWG/3DS laut Seite in der Download Area (Login). Nutzung nur mit schriftlicher Zustimmung (Minotti-Bedingungen); RFA→GLB braucht Revit/Konverter."
+      },
+      "katalog": {
+        "produkte": 487,
+        "mitBild": 483,
+        "bildMedianPx": 1920,
+        "bildMinPx": 1000,
+        "bildMaxPx": 2000,
+        "bild1600plus": 474,
+        "mitMassen": 279,
+        "massQuelle": {
+          "beschreibungstext": 277,
+          "backoffice_feld": 2
+        },
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 314,
+        "3d_marke": 173,
+        "ar_foto_masse": 0,
+        "nur_bild": 0,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Minotti",
+        "dateien3d": [],
+        "pdfs": 4,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": [
+        {
+          "produkt": "Alexander",
+          "path_field": "tables-alexander",
+          "url": "https://www.minotti.com/downloads/14458/14098/MINOTTI_Alexander_seating_system.zip",
+          "seite": "https://www.minotti.com/en/alexander",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Allen",
+          "path_field": "sofas-allen",
+          "url": "https://www.minotti.com/downloads/449/14082/MINOTTI_ALLEN.zip",
+          "seite": "https://www.minotti.com/en/allen",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Alps",
+          "path_field": "rugs-alps",
+          "url": "https://www.minotti.com/downloads/17014/17990/MINOTTI_Alps.zip",
+          "seite": "https://www.minotti.com/en/alps",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Aeron",
+          "path_field": "produkt-aeron",
+          "url": "https://www.minotti.com/downloads/592/14032/MINOTTI_AERON_coffee table_mod A-B-C-D.rfa.zip",
+          "seite": "https://www.minotti.com/en/aeron",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Amber",
+          "path_field": "produkt-amber",
+          "url": "https://www.minotti.com/downloads/15744/15678/MINOTTI_Amber_collection.zip",
+          "seite": "https://www.minotti.com/en/amber",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Anish Wood",
+          "path_field": "side-tables-anish-wood",
+          "url": "https://www.minotti.com/downloads/22091/24991/MINOTTI_Anish_Wood.zip",
+          "seite": "https://www.minotti.com/en/anish-wood",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Angie",
+          "path_field": "armchairs-angie",
+          "url": "https://www.minotti.com/downloads/15716/15679/MINOTTI_Angie_collection.zip",
+          "seite": "https://www.minotti.com/en/angie",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Anish",
+          "path_field": "produkt-anish",
+          "url": "https://www.minotti.com/downloads/15711/15704/MINOTTI_Anish.zip",
+          "seite": "https://www.minotti.com/en/anish",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Aston \"Armchair\"",
+          "path_field": "armchairs-aston-armchair",
+          "url": "https://www.minotti.com/downloads/1965/15735/MINOTTI_Aston_armchair.zip",
+          "seite": "https://www.minotti.com/en/aston-armchair",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Angie \"Dining\"",
+          "path_field": "armchairs-angie-dining",
+          "url": "https://www.minotti.com/downloads/15755/15680/MINOTTI_Angie_collection.zip",
+          "seite": "https://www.minotti.com/en/angie-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Aston “Lounge”",
+          "path_field": "armchairs-aston-lounge",
+          "url": "https://www.minotti.com/downloads/1974/15737/MINOTTI_Aston_lounge.zip",
+          "seite": "https://www.minotti.com/en/aston-lounge",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Aston “Cord” Indoor",
+          "path_field": "tables-aston-cord-indoor",
+          "url": "https://www.minotti.com/downloads/1969/15738/MINOTTI_Aston Cord Indoor_Armchair.rfa.zip",
+          "seite": "https://www.minotti.com/en/aston-cord-indoor",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Aston Sofa",
+          "path_field": "armchairs-aston-sofa",
+          "url": "https://www.minotti.com/downloads/434/15733/MINOTTI_ Aston_collection.zip",
+          "seite": "https://www.minotti.com/en/aston-sofa",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Bangle",
+          "path_field": "produkt-bangle",
+          "url": "https://www.minotti.com/downloads/15742/15706/MINOTTI_Bangle.zip",
+          "seite": "https://www.minotti.com/en/bangle",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Aston Stool",
+          "path_field": "stools-aston-stool",
+          "url": "https://www.minotti.com/downloads/540/15734/MINOTTI_Aston_stool.zip",
+          "seite": "https://www.minotti.com/en/aston-stool",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Aston “Dining”",
+          "path_field": "produkt-aston-dining",
+          "url": "https://www.minotti.com/downloads/1973/15736/MINOTTI_Aston_dining.zip",
+          "seite": "https://www.minotti.com/en/aston-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Bailly",
+          "path_field": "side-tables-bailly",
+          "url": "https://www.minotti.com/downloads/15710/15705/MINOTTI_Bailly.zip",
+          "seite": "https://www.minotti.com/en/bailly",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Bellagio \"Dining\" Pewter",
+          "path_field": "dining-tables-bellagio-dining-pewter",
+          "url": "https://www.minotti.com/downloads/564/14047/MINOTTI_Bellagio Dining Pewter.zip",
+          "seite": "https://www.minotti.com/en/bellagio-dining-pewter",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Belt (Variant)",
+          "path_field": "produkt-belt-variant",
+          "url": "https://www.minotti.com/downloads/18670/20907/MINOTTI_Belt_Collection.zip",
+          "seite": "https://www.minotti.com/en/belt",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Bellagio \"Dining\" Wood",
+          "path_field": "dining-tables-bellagio-dining-wood",
+          "url": "https://www.minotti.com/downloads/1868/14048/MINOTTI_Bellagio Dining Wood.zip",
+          "seite": "https://www.minotti.com/en/bellagio-dining-wood",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Belt \"Dining\"",
+          "path_field": "produkt-belt-dining",
+          "url": "https://www.minotti.com/downloads/18674/20909/MINOTTI_Belt_Collection.zip",
+          "seite": "https://www.minotti.com/en/belt-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Bézier (Sofas)",
+          "path_field": "sofas-bezier-sofas",
+          "url": "https://www.minotti.com/downloads/25028/29986/MINOTTI_Bezier.zip",
+          "seite": "https://www.minotti.com/en/bezier",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Bézier \"Dining\" Table",
+          "path_field": "dining-tables-bezier-dining-table",
+          "url": "https://www.minotti.com/downloads/25028/29986/MINOTTI_Bezier.zip",
+          "seite": "https://www.minotti.com/en/bezier",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Bender",
+          "path_field": "side-tables-bender",
+          "url": "https://www.minotti.com/downloads/14472/14100/MINOTTI_Bender_Coffee_Table.zip",
+          "seite": "https://www.minotti.com/en/bender",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Belt (Armchairs)",
+          "path_field": "armchairs-belt-armchairs",
+          "url": "https://www.minotti.com/downloads/18670/20907/MINOTTI_Belt_Collection.zip",
+          "seite": "https://www.minotti.com/en/belt",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Bellagio Lounge \"Bronze\"",
+          "path_field": "tables-bellagio-lounge-bronze",
+          "url": "https://www.minotti.com/downloads/565/14046/MINOTTI_Bellagio_Lounge Bronze_table_round-oval_d cm90-cm130x80 h61.rfa.zip",
+          "seite": "https://www.minotti.com/en/bellagio-lounge-bronze",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Bézier (Armchairs)",
+          "path_field": "armchairs-bezier-armchairs",
+          "url": "https://www.minotti.com/downloads/25028/29986/MINOTTI_Bezier.zip",
+          "seite": "https://www.minotti.com/en/bezier",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Bézier Coffee Table",
+          "path_field": "side-tables-bezier-coffee-table",
+          "url": "https://www.minotti.com/downloads/25042/30009/MINOTTI_Bezier_Coffee_Tables.zip",
+          "seite": "https://www.minotti.com/en/bezier-coffee-table",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Blanche",
+          "path_field": "tables-blanche",
+          "url": "https://www.minotti.com/downloads/14482/14103/MINOTTI_Blanche_collection.rfa.zip",
+          "seite": "https://www.minotti.com/en/blanche",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Brady",
+          "path_field": "side-tables-brady",
+          "url": "https://www.minotti.com/downloads/22090/24993/MINOTTI_Brady.zip",
+          "seite": "https://www.minotti.com/en/brady",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Boteco (Side Tables)",
+          "path_field": "side-tables-boteco-side-tables",
+          "url": "https://www.minotti.com/downloads/17002/17885/MINOTTI_Boteco_Coffee_Table.zip",
+          "seite": "https://www.minotti.com/en/boteco",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Brady \"Dining\"",
+          "path_field": "dining-tables-brady-dining",
+          "url": "https://www.minotti.com/downloads/22097/24992/MINOTTI_Brady_Dining.zip",
+          "seite": "https://www.minotti.com/en/brady-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Brasilia (Variant)",
+          "path_field": "produkt-brasilia-variant",
+          "url": "https://www.minotti.com/downloads/18669/20911/MINOTTI_Brasilia_Collection.zip",
+          "seite": "https://www.minotti.com/en/brasilia",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Boteco (Tables)",
+          "path_field": "tables-boteco-tables",
+          "url": "https://www.minotti.com/downloads/17002/17885/MINOTTI_Boteco_Coffee_Table.zip",
+          "seite": "https://www.minotti.com/en/boteco",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Brasilia \"Nightstand\"",
+          "path_field": "night-tables-brasilia-nightstand",
+          "url": "https://www.minotti.com/downloads/20389/21065/MINOTTI_Brasilia_Nightstand.zip",
+          "seite": "https://www.minotti.com/en/brasilia-nightstand",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Brasilia (Armchairs)",
+          "path_field": "armchairs-brasilia-armchairs",
+          "url": "https://www.minotti.com/downloads/18669/20911/MINOTTI_Brasilia_Collection.zip",
+          "seite": "https://www.minotti.com/en/brasilia",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Calder \"Bronze\"",
+          "path_field": "side-tables-calder-bronze",
+          "url": "https://www.minotti.com/downloads/589/14034/MINOTTI_Calder Bronze_coffee table_round_d cm90-120 H 27.rfa.zip",
+          "seite": "https://www.minotti.com/en/calder-bronze",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Boden",
+          "path_field": "side-tables-boden",
+          "url": "https://www.minotti.com/downloads/14476/14101/MINOTTI_Boden_Coffee_Table.zip",
+          "seite": "https://www.minotti.com/en/boden",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Brisley",
+          "path_field": "side-tables-brisley",
+          "url": "https://www.minotti.com/downloads/593/14031/MINOTTI_BRISLEY_coffee table_cm 36x32 h45_mod A-B.rfa.zip",
+          "seite": "https://www.minotti.com/en/brisley",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Calder Bronze \"Sideboard\"",
+          "path_field": "console-tables-calder-bronze-sideboard",
+          "url": "https://www.minotti.com/downloads/13216/13994/MINOTTI_Calder Bronze Sideboard_cm180-240x55h55-72.rfa.zip",
+          "seite": "https://www.minotti.com/en/calder-bronze-sideboard",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Calder \"Bronze\" console",
+          "path_field": "side-tables-calder-bronze-console",
+          "url": "https://www.minotti.com/downloads/709/14035/MINOTTI_Calder Bronze_console_cm180x60 H50_220x35 H68.rfa.zip",
+          "seite": "https://www.minotti.com/en/calder-bronze-console",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Cameo",
+          "path_field": "side-tables-cameo",
+          "url": "https://www.minotti.com/downloads/25047/30019/MINOTTI_Cameo.zip",
+          "seite": "https://www.minotti.com/en/cameo",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Carson",
+          "path_field": "tables-carson",
+          "url": "https://www.minotti.com/downloads/643/14044/MINOTTI_CARSON.zip",
+          "seite": "https://www.minotti.com/en/carson",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Brasilia Bed",
+          "path_field": "sofas-brasilia-bed",
+          "url": "https://www.minotti.com/downloads/18680/20912/MINOTTI_Brasilia_Bed.zip",
+          "seite": "https://www.minotti.com/en/brasilia-bed",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Carson \"Bookcase\"",
+          "path_field": "tables-carson-bookcase",
+          "url": "https://www.minotti.com/downloads/13215/13995/MINOTTI_Carson_Bookcase_cm180x40h147.rfa.zip",
+          "seite": "https://www.minotti.com/en/carson-bookcase",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Carson \"Writing Desk\"",
+          "path_field": "desks-carson-writing-desk",
+          "url": "https://www.minotti.com/downloads/13214/14006/MINOTTI_Carson_WritingDesk.zip",
+          "seite": "https://www.minotti.com/en/carson-writing-desk",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Calder \"Bronze\" Side Tables",
+          "path_field": "side-tables-calder-bronze-side-tables",
+          "url": "https://www.minotti.com/downloads/587/14033/MINOTTI_Calder Bronze_coffee-side table_cm 60x60 H 35-50_108-140-160x35-60 H38-50.rfa.zip",
+          "seite": "https://www.minotti.com/en/calder-bronze-side-tables",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Case",
+          "path_field": "produkt-case",
+          "url": "https://www.minotti.com/downloads/550/15829/MINOTTI_Case.zip",
+          "seite": "https://www.minotti.com/en/case",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Carson Dine",
+          "path_field": "shelves-carson-dine",
+          "url": "https://www.minotti.com/downloads/15724/15707/MINOTTI_Carson_dine.zip",
+          "seite": "https://www.minotti.com/en/carson-dine",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Clive (Console Tables)",
+          "path_field": "console-tables-clive-console-tables",
+          "url": "https://www.minotti.com/downloads/15713/15709/MINOTTI_Clive.zip",
+          "seite": "https://www.minotti.com/en/clive",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Clive (Variant)",
+          "path_field": "produkt-clive-variant",
+          "url": "https://www.minotti.com/downloads/15713/15709/MINOTTI_Clive.zip",
+          "seite": "https://www.minotti.com/en/clive",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Cesar",
+          "path_field": "side-tables-cesar",
+          "url": "https://www.minotti.com/downloads/635/15708/MINOTTI_Cesar.zip",
+          "seite": "https://www.minotti.com/en/cesar",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Coupé (Tables 2)",
+          "path_field": "tables-coupe-tables-2",
+          "url": "https://www.minotti.com/downloads/25027/29928/MINOTTI_Coupe.zip",
+          "seite": "https://www.minotti.com/en/coupe",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Colette",
+          "path_field": "armchairs-colette",
+          "url": "https://www.minotti.com/downloads/13197/14009/MINOTTI_Colette.zip",
+          "seite": "https://www.minotti.com/en/colette",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Curtis",
+          "path_field": "beds-curtis",
+          "url": "https://www.minotti.com/downloads/14483/14102/MINOTTI_Curtis_bed.zip",
+          "seite": "https://www.minotti.com/en/curtis",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Damier",
+          "path_field": "little-armchairs-and-stools-damier",
+          "url": "https://www.minotti.com/downloads/14466/14104/MINOTTI_Damier.zip",
+          "seite": "https://www.minotti.com/en/damier",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Connery",
+          "path_field": "tables-connery",
+          "url": "https://www.minotti.com/downloads/16945/17881/MINOTTI_Connery.zip",
+          "seite": "https://www.minotti.com/en/connery",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Daiki Studio",
+          "path_field": "chairs-daiki-studio",
+          "url": "https://www.minotti.com/downloads/18673/20913/MINOTTI_Daiki_Studio.zip",
+          "seite": "https://www.minotti.com/en/daiki-studio",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Coupé (Tables)",
+          "path_field": "tables-coupe-tables",
+          "url": "https://www.minotti.com/downloads/25027/29928/MINOTTI_Coupe.zip",
+          "seite": "https://www.minotti.com/en/coupe",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dalton \"Bronze\"",
+          "path_field": "shelves-dalton-bronze",
+          "url": "https://www.minotti.com/downloads/642/14043/MINOTTI_Dalton Bronze_bookcase.zip",
+          "seite": "https://www.minotti.com/en/dalton-bronze",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Daiki",
+          "path_field": "sofas-daiki",
+          "url": "https://www.minotti.com/downloads/16946/17860/MINOTTI_Daiki.zip",
+          "seite": "https://www.minotti.com/en/daiki",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Cross Flag",
+          "path_field": "rugs-cross-flag",
+          "url": "https://www.minotti.com/downloads/20602/22761/MINOTTI_Cross_Flag_Rug.zip",
+          "seite": "https://www.minotti.com/en/cross-flag",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Daniels",
+          "path_field": "sofas-daniels",
+          "url": "https://www.minotti.com/downloads/15720/15677/MINOTTI_Daniels_seating_system.zip",
+          "seite": "https://www.minotti.com/en/daniels",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Darren",
+          "path_field": "produkt-darren",
+          "url": "https://www.minotti.com/downloads/15726/15711/MINOTTI_Darren.zip",
+          "seite": "https://www.minotti.com/en/darren",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Darren \"Night Storage Units\"",
+          "path_field": "drawer-units-darren-night-storage-units",
+          "url": "https://www.minotti.com/downloads/16582/15712/MINOTTI_Darren_collection.zip",
+          "seite": "https://www.minotti.com/en/darren-night-storage-units",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Decor",
+          "path_field": "cushion-decor",
+          "url": "https://www.minotti.com/downloads/14277/13996/MINOTTI_Decor _Optional cushion_cm 43x43-50x50.zip",
+          "seite": "https://www.minotti.com/en/decor",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Diagramma \"Sideboard\"",
+          "path_field": "side-tables-diagramma-sideboard",
+          "url": "https://www.minotti.com/downloads/25050/30020/MINOTTI_Diagramma_sideboard.zip",
+          "seite": "https://www.minotti.com/en/diagramma-sideboard",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Diagramma \"Writing Desk\"",
+          "path_field": "side-tables-diagramma-writing-desk",
+          "url": "https://www.minotti.com/downloads/23354/27818/MINOTTI_Diagramma_writing_desk.zip",
+          "seite": "https://www.minotti.com/en/diagramma-writing-desk",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Delaunay Quilt",
+          "path_field": "armchairs-delaunay-quilt",
+          "url": "https://www.minotti.com/downloads/15717/15681/MINOTTI_Delaunay_quilt.zip",
+          "seite": "https://www.minotti.com/en/delaunay-quilt",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dan",
+          "path_field": "tables-dan",
+          "url": "https://www.minotti.com/downloads/14479/14105/MINOTTI_Dan_Table.zip",
+          "seite": "https://www.minotti.com/en/dan",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dibbets \"Rim\"",
+          "path_field": "tables-dibbets-rim",
+          "url": "https://www.minotti.com/downloads/13220/13998/MINOTTI_DibbetsRim_Rug_cm 225-450x225 450x450.rfa.zip",
+          "seite": "https://www.minotti.com/en/dibbets-rim",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Diagramma Wood \"Writing Desk\"",
+          "path_field": "coffee-tables-diagramma-wood-writing-desk",
+          "url": "https://www.minotti.com/downloads/23310/27817/MINOTTI_Diagramma_coffee_tables.zip",
+          "seite": "https://www.minotti.com/en/diagramma",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Diagramma",
+          "path_field": "side-tables-diagramma",
+          "url": "https://www.minotti.com/downloads/23310/27817/MINOTTI_Diagramma_coffee_tables.zip",
+          "seite": "https://www.minotti.com/en/diagramma",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dibbets \"Diagonal\"",
+          "path_field": "rugs-dibbets-diagonal",
+          "url": "https://www.minotti.com/downloads/13221/14011/MINOTTI_Dibbets_Diagonal.zip",
+          "seite": "https://www.minotti.com/en/dibbets-diagonal",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dibbets \"Tonneau\"",
+          "path_field": "rugs-dibbets-tonneau",
+          "url": "https://www.minotti.com/downloads/663/18003/MINOTTI_Dibbets.zip",
+          "seite": "https://www.minotti.com/en/dibbets",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dibbets Rainbow",
+          "path_field": "produkt-dibbets-rainbow",
+          "url": "https://www.minotti.com/downloads/663/18003/MINOTTI_Dibbets.zip",
+          "seite": "https://www.minotti.com/en/dibbets",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dibbets Frame \"Tonneau\"",
+          "path_field": "rugs-dibbets-frame-tonneau",
+          "url": "https://www.minotti.com/downloads/663/18003/MINOTTI_Dibbets.zip",
+          "seite": "https://www.minotti.com/en/dibbets",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dibbets Cambré",
+          "path_field": "tables-dibbets-cambre",
+          "url": "https://www.minotti.com/downloads/663/18003/MINOTTI_Dibbets.zip",
+          "seite": "https://www.minotti.com/en/dibbets",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dibbets Frame",
+          "path_field": "rugs-dibbets-frame",
+          "url": "https://www.minotti.com/downloads/663/18003/MINOTTI_Dibbets.zip",
+          "seite": "https://www.minotti.com/en/dibbets",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Drake",
+          "path_field": "side-tables-drake",
+          "url": "https://www.minotti.com/downloads/23302/27820/MINOTTI_Drake_coffee_table.zip",
+          "seite": "https://www.minotti.com/en/drake",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Doyle",
+          "path_field": "side-tables-doyle",
+          "url": "https://www.minotti.com/downloads/20598/22758/MINOTTI_Doyle.zip",
+          "seite": "https://www.minotti.com/en/doyle",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Drake \"Console\"",
+          "path_field": "side-tables-drake-console",
+          "url": "https://www.minotti.com/downloads/23351/27821/MINOTTI_Drake_coffee_table.zip",
+          "seite": "https://www.minotti.com/en/drake-console",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dibbets \"Flag\"",
+          "path_field": "rugs-dibbets-flag",
+          "url": "https://www.minotti.com/downloads/659/14045/MINOTTI_Dibbets Flag_rug_cm350x200-250-cm450x200-250.rfa.zip",
+          "seite": "https://www.minotti.com/en/dibbets-flag",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dibbets",
+          "path_field": "rugs-dibbets",
+          "url": "https://www.minotti.com/downloads/663/18003/MINOTTI_Dibbets.zip",
+          "seite": "https://www.minotti.com/en/dibbets",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dibbets Barcode",
+          "path_field": "tables-dibbets-barcode",
+          "url": "https://www.minotti.com/downloads/17016/17996/MINOTTI_Dibbets_Barcode.zip",
+          "seite": "https://www.minotti.com/en/dibbets-barcode",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Easel",
+          "path_field": "cabinets-easel",
+          "url": "https://www.minotti.com/downloads/15725/15713/MINOTTI_Easel_collection.zip",
+          "seite": "https://www.minotti.com/en/easel",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dylan",
+          "path_field": "sofas-dylan",
+          "url": "https://www.minotti.com/downloads/22080/24979/MINOTTI_Dylan.zip",
+          "seite": "https://www.minotti.com/en/dylan",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Duchamp \"Bronze\"",
+          "path_field": "tables-duchamp-bronze",
+          "url": "https://www.minotti.com/downloads/591/14036/MINOTTI_Duchamp Bronze_coffee table.zip",
+          "seite": "https://www.minotti.com/en/duchamp-bronze",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Emmi",
+          "path_field": "armchairs-emmi",
+          "url": "https://www.minotti.com/downloads/23299/27822/MINOTTI_Emmi.zip",
+          "seite": "https://www.minotti.com/en/emmi",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Fairway",
+          "path_field": "rugs-fairway",
+          "url": "https://www.minotti.com/downloads/25056/30024/MINOTTI_Fairway.zip",
+          "seite": "https://www.minotti.com/en/fairway",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dylan Low",
+          "path_field": "sofas-dylan-low",
+          "url": "https://www.minotti.com/downloads/22082/24981/MINOTTI_Dylan_Low.zip",
+          "seite": "https://www.minotti.com/en/dylan-low",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Ethan",
+          "path_field": "side-tables-ethan",
+          "url": "https://www.minotti.com/downloads/23305/27824/MINOTTI_Ethan.zip",
+          "seite": "https://www.minotti.com/en/ethan",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Ellis",
+          "path_field": "side-tables-ellis",
+          "url": "https://www.minotti.com/downloads/13205/14012/MINOTTI_Ellis_Coffeetable.zip",
+          "seite": "https://www.minotti.com/en/ellis",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Flirt",
+          "path_field": "side-tables-flirt",
+          "url": "https://www.minotti.com/downloads/17007/17997/MINOTTI_Flirt.zip",
+          "seite": "https://www.minotti.com/en/flirt",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Fil Noir \"Dining\"",
+          "path_field": "armchairs-fil-noir-dining",
+          "url": "https://www.minotti.com/downloads/13200/14014/MINOTTI_Fil Noir_Little armchair_cm58x59h83.rfa.zip",
+          "seite": "https://www.minotti.com/en/fil-noir-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Fill (Side Tables)",
+          "path_field": "side-tables-fill-side-tables",
+          "url": "https://www.minotti.com/downloads/23304/27825/MINOTTI_Fill.zip",
+          "seite": "https://www.minotti.com/en/fill",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Freeman \"Duvet\"",
+          "path_field": "sofas-freeman-duvet",
+          "url": "https://www.minotti.com/downloads/428/14056/MINOTTI_Freeman_Duvet_.zip",
+          "seite": "https://www.minotti.com/en/freeman-duvet",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Dylan Small",
+          "path_field": "sofas-dylan-small",
+          "url": "https://www.minotti.com/downloads/22081/24980/MINOTTI_Dylan_Small.zip",
+          "seite": "https://www.minotti.com/en/dylan-small",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Freeman \"Tailor\"",
+          "path_field": "produkt-freeman-tailor",
+          "url": "https://www.minotti.com/downloads/427/14055/MINOTTI_Freeman_Tailor_.zip",
+          "seite": "https://www.minotti.com/en/freeman-tailor",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Fill (Night Tables)",
+          "path_field": "night-tables-fill-night-tables",
+          "url": "https://www.minotti.com/downloads/23304/27825/MINOTTI_Fill.zip",
+          "seite": "https://www.minotti.com/en/fill",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Fil Noir",
+          "path_field": "produkt-fil-noir",
+          "url": "https://www.minotti.com/downloads/13199/14013/MINOTTI_Fil Noir_armchair_cm79x84h75.rfa.zip",
+          "seite": "https://www.minotti.com/en/fil-noir",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Gladstone",
+          "path_field": "side-tables-gladstone",
+          "url": "https://www.minotti.com/downloads/20597/22757/MINOTTI_Gladstone.zip",
+          "seite": "https://www.minotti.com/en/gladstone",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Freeman \"Lounge\"",
+          "path_field": "produkt-freeman-lounge",
+          "url": "https://www.minotti.com/downloads/426/14054/MINOTTI_Freeman_Lounge_.zip",
+          "seite": "https://www.minotti.com/en/freeman-lounge",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Fynn \"Dining\"",
+          "path_field": "tables-fynn-dining",
+          "url": "https://www.minotti.com/downloads/16984/17888/MINOTTI_Fynn_FynnSaddle-Hide.zip",
+          "seite": "https://www.minotti.com/en/fynn-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Fynn (Tables 2)",
+          "path_field": "tables-fynn-tables-2",
+          "url": "https://www.minotti.com/downloads/16983/17887/MINOTTI_Fynn_FynnSaddle-Hide.zip",
+          "seite": "https://www.minotti.com/en/fynn",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Fynn (Tables 3)",
+          "path_field": "tables-fynn-tables-3",
+          "url": "https://www.minotti.com/downloads/16983/17887/MINOTTI_Fynn_FynnSaddle-Hide.zip",
+          "seite": "https://www.minotti.com/en/fynn",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Fynn (Tables)",
+          "path_field": "tables-fynn-tables",
+          "url": "https://www.minotti.com/downloads/16983/17887/MINOTTI_Fynn_FynnSaddle-Hide.zip",
+          "seite": "https://www.minotti.com/en/fynn",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Gray",
+          "path_field": "side-tables-gray",
+          "url": "https://www.minotti.com/downloads/588/14037/MINOTTI_Gray_coffee table_cm 47x80-100-110 h34.rfa.zip",
+          "seite": "https://www.minotti.com/en/gray",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Grant",
+          "path_field": "side-tables-grant",
+          "url": "https://www.minotti.com/downloads/15714/15714/MINOTTI_Grant.zip",
+          "seite": "https://www.minotti.com/en/grant",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Goodman",
+          "path_field": "sofas-goodman",
+          "url": "https://www.minotti.com/downloads/20589/22736/MINOTTI_GOODMAN.zip",
+          "seite": "https://www.minotti.com/en/goodman",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Helene",
+          "path_field": "side-tables-helene",
+          "url": "https://www.minotti.com/downloads/23303/27826/MINOTTI_Helene.zip",
+          "seite": "https://www.minotti.com/en/helene",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Horizonte (Tables)",
+          "path_field": "tables-horizonte-tables",
+          "url": "https://www.minotti.com/downloads/20582/22734/MINOTTI_Horizonte.zip",
+          "seite": "https://www.minotti.com/en/horizonte",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Gray \"Tray\"",
+          "path_field": "tables-gray-tray",
+          "url": "https://www.minotti.com/downloads/512/14038/MINOTTI_Gray_Tray_cm44x44 h5.rfa.zip",
+          "seite": "https://www.minotti.com/en/gray-tray",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Horizonte (Side Tables)",
+          "path_field": "side-tables-horizonte-side-tables",
+          "url": "https://www.minotti.com/downloads/20582/22734/MINOTTI_Horizonte.zip",
+          "seite": "https://www.minotti.com/en/horizonte",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Jacques (Armchairs)",
+          "path_field": "armchairs-jacques-armchairs",
+          "url": "https://www.minotti.com/downloads/13234/14020/MINOTTI_Jacques_Armchair.zip",
+          "seite": "https://www.minotti.com/en/jacques",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Horizonte Bed",
+          "path_field": "sofas-horizonte-bed",
+          "url": "https://www.minotti.com/downloads/22099/24995/MINOTTI_Horizonte_Bed.zip",
+          "seite": "https://www.minotti.com/en/horizonte-bed",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Hope",
+          "path_field": "side-tables-hope",
+          "url": "https://www.minotti.com/downloads/17969/17998/MINOTTI_Hope.zip",
+          "seite": "https://www.minotti.com/en/hope",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Jacques (Armchairs 2)",
+          "path_field": "armchairs-jacques-armchairs-2",
+          "url": "https://www.minotti.com/downloads/13234/14020/MINOTTI_Jacques_Armchair.zip",
+          "seite": "https://www.minotti.com/en/jacques",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "James",
+          "path_field": "side-tables-james",
+          "url": "https://www.minotti.com/downloads/20599/22759/MINOTTI_James.zip",
+          "seite": "https://www.minotti.com/en/james",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Jason",
+          "path_field": "cabinets-jason",
+          "url": "https://www.minotti.com/downloads/23321/27828/MINOTTI_Jason.zip",
+          "seite": "https://www.minotti.com/en/jason",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Jacob \"Writing Desk\"",
+          "path_field": "side-tables-jacob-writing-desk",
+          "url": "https://www.minotti.com/downloads/559/14039/MINOTTI_JACOB_Writing desk.zip",
+          "seite": "https://www.minotti.com/en/jacob-writing-desk",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Jacques (Armchairs 3)",
+          "path_field": "armchairs-jacques-armchairs-3",
+          "url": "https://www.minotti.com/downloads/13234/14020/MINOTTI_Jacques_Armchair.zip",
+          "seite": "https://www.minotti.com/en/jacques",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Janis",
+          "path_field": "screens-janis",
+          "url": "https://www.minotti.com/downloads/23313/27827/MINOTTI_Janis.zip",
+          "seite": "https://www.minotti.com/en/janis",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Jeff",
+          "path_field": "side-tables-jeff",
+          "url": "https://www.minotti.com/downloads/15707/15715/MINOTTI_Jeff.zip",
+          "seite": "https://www.minotti.com/en/jeff",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Jensen",
+          "path_field": "produkt-jensen",
+          "url": "https://www.minotti.com/downloads/1902/14075/MINOTTI_JENSEN.zip",
+          "seite": "https://www.minotti.com/en/jensen",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Keel",
+          "path_field": "side-tables-keel",
+          "url": "https://www.minotti.com/downloads/18687/20914/MINOTTI_Keel.zip",
+          "seite": "https://www.minotti.com/en/keel",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Keiko",
+          "path_field": "rugs-keiko",
+          "url": "https://www.minotti.com/downloads/23339/27830/MINOTTI_Keiko.zip",
+          "seite": "https://www.minotti.com/en/keiko",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Journey",
+          "path_field": "cabinets-journey",
+          "url": "https://www.minotti.com/downloads/23311/27829/MINOTTI_Journey.zip",
+          "seite": "https://www.minotti.com/en/journey",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Kenneth",
+          "path_field": "produkt-kenneth",
+          "url": "https://www.minotti.com/downloads/22095/24997/MINOTTI_Kenneth.zip",
+          "seite": "https://www.minotti.com/en/kenneth",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Kendall",
+          "path_field": "armchairs-kendall",
+          "url": "https://www.minotti.com/downloads/23297/27831/MINOTTI_Kendall.zip",
+          "seite": "https://www.minotti.com/en/kendall",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Kobe",
+          "path_field": "rugs-kobe",
+          "url": "https://www.minotti.com/downloads/22100/24998/MINOTTI_Kobe.zip",
+          "seite": "https://www.minotti.com/en/kobe",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Kyle",
+          "path_field": "produkt-kyle",
+          "url": "https://www.minotti.com/downloads/17008/17895/MINOTTI_Kyle.zip",
+          "seite": "https://www.minotti.com/en/kyle",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lance",
+          "path_field": "tables-lance",
+          "url": "https://www.minotti.com/downloads/14481/14108/MINOTTI_Lance_Chair.rfa.zip",
+          "seite": "https://www.minotti.com/en/lance",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Landfield Stripes",
+          "path_field": "rugs-landfield-stripes",
+          "url": "https://www.minotti.com/downloads/20604/22763/MINOTTI_Landfield_Stripes_Rug.zip",
+          "seite": "https://www.minotti.com/en/landfield-stripes",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Landfield Square",
+          "path_field": "rugs-landfield-square",
+          "url": "https://www.minotti.com/downloads/20603/22762/MINOTTI_Landfield_Square_Rug.zip",
+          "seite": "https://www.minotti.com/en/landfield-square",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Laurel \"Dining\"",
+          "path_field": "armchairs-laurel-dining",
+          "url": "https://www.minotti.com/downloads/25037/30005/MINOTTI_Laurel.zip",
+          "seite": "https://www.minotti.com/en/laurel-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Laurel",
+          "path_field": "armchairs-laurel",
+          "url": "https://www.minotti.com/downloads/25036/30004/MINOTTI_Laurel.zip",
+          "seite": "https://www.minotti.com/en/laurel",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lazy Susan",
+          "path_field": "tables-lazy-susan",
+          "url": "https://www.minotti.com/downloads/16735/15830/MINOTTI_Lazy_Susan.zip",
+          "seite": "https://www.minotti.com/en/lazy-susan",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lawson \"Dining\"",
+          "path_field": "armchairs-lawson-dining",
+          "url": "https://www.minotti.com/downloads/15754/15684/MINOTTI_Lawson_dining_chair.zip",
+          "seite": "https://www.minotti.com/en/lawson-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lawrence Bed",
+          "path_field": "beds-lawrence-bed",
+          "url": "https://www.minotti.com/downloads/13217/14022/MINOTTI_Lawrence_bed.zip",
+          "seite": "https://www.minotti.com/en/lawrence-bed",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lars",
+          "path_field": "sofas-lars",
+          "url": "https://www.minotti.com/downloads/20588/22742/MINOTTI_Lars.zip",
+          "seite": "https://www.minotti.com/en/lars",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lazy Susan 24",
+          "path_field": "tables-lazy-susan-24",
+          "url": "https://www.minotti.com/downloads/23887/27832/MINOTTI_Lazy_susan.zip",
+          "seite": "https://www.minotti.com/en/lazy-susan-24",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lawson (Armchairs 2)",
+          "path_field": "armchairs-lawson-armchairs-2",
+          "url": "https://www.minotti.com/downloads/15719/15682/MINOTTI_Lawson.zip",
+          "seite": "https://www.minotti.com/en/lawson",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lawrence",
+          "path_field": "sofas-lawrence",
+          "url": "https://www.minotti.com/downloads/13189/14023/MINOTTI_Lawrence_.zip",
+          "seite": "https://www.minotti.com/en/lawrence",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Leslie \"Dining\"",
+          "path_field": "armchairs-leslie-dining",
+          "url": "https://www.minotti.com/downloads/1913/15731/MINOTTI_Leslie_dining.zip",
+          "seite": "https://www.minotti.com/en/leslie-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lawrence \"Clan\"",
+          "path_field": "produkt-lawrence-clan",
+          "url": "https://www.minotti.com/downloads/13190/14024/MINOTTI_Lawrence_Clan.zip",
+          "seite": "https://www.minotti.com/en/lawrence-clan",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Leslie \"Armchair\"",
+          "path_field": "armchairs-leslie-armchair",
+          "url": "https://www.minotti.com/downloads/472/15730/MINOTTI_Leslie_armchair.zip",
+          "seite": "https://www.minotti.com/en/leslie-armchair",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lelong (Side Tables)",
+          "path_field": "side-tables-lelong-side-tables",
+          "url": "https://www.minotti.com/downloads/20595/22755/MINOTTI_Lelong.zip",
+          "seite": "https://www.minotti.com/en/lelong",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lelong 23",
+          "path_field": "side-tables-lelong-23",
+          "url": "https://www.minotti.com/downloads/22093/24999/MINOTTI_Lelong23.zip",
+          "seite": "https://www.minotti.com/en/lelong-23",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Leslie \"Lounge\"",
+          "path_field": "armchairs-leslie-lounge",
+          "url": "https://www.minotti.com/downloads/1915/15732/MINOTTI_Leslie_lounge.zip",
+          "seite": "https://www.minotti.com/en/leslie-lounge",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lawson (Armchairs)",
+          "path_field": "armchairs-lawson-armchairs",
+          "url": "https://www.minotti.com/downloads/15719/15682/MINOTTI_Lawson.zip",
+          "seite": "https://www.minotti.com/en/lawson",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Libra \"Sideboard\"",
+          "path_field": "dining-tables-libra-sideboard",
+          "url": "https://www.minotti.com/downloads/25049/30002/MINOTTI_Libra_sideboard.zip",
+          "seite": "https://www.minotti.com/en/libra-sideboard",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Libra \"Bedspread\"",
+          "path_field": "beds-libra-bedspread",
+          "url": "https://www.minotti.com/downloads/25035/29997/MINOTTI_Libra.zip",
+          "seite": "https://www.minotti.com/en/libra",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Libra",
+          "path_field": "armchairs-libra",
+          "url": "https://www.minotti.com/downloads/25035/29997/MINOTTI_Libra.zip",
+          "seite": "https://www.minotti.com/en/libra",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Libra Bed",
+          "path_field": "tables-libra-bed",
+          "url": "https://www.minotti.com/downloads/25054/30001/MINOTTI_Libra_Bed.zip",
+          "seite": "https://www.minotti.com/en/libra-bed",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Leger \"Bronze\"",
+          "path_field": "side-tables-leger-bronze",
+          "url": "https://www.minotti.com/downloads/590/14041/MINOTTI_Leger Bronze_coffee table.zip",
+          "seite": "https://www.minotti.com/en/leger-bronze",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Libra \"Table\"",
+          "path_field": "tables-libra-table",
+          "url": "https://www.minotti.com/downloads/25051/29999/MINOTTI_Libra_tables.zip",
+          "seite": "https://www.minotti.com/en/libra-table",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Libra Coffee Table",
+          "path_field": "side-tables-libra-coffee-table",
+          "url": "https://www.minotti.com/downloads/25040/29998/MINOTTI_Libra_coffee_tables.zip",
+          "seite": "https://www.minotti.com/en/libra-coffee-table",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lido (Armchairs)",
+          "path_field": "armchairs-lido-armchairs",
+          "url": "https://www.minotti.com/downloads/18672/20916/MINOTTI_Lido.zip",
+          "seite": "https://www.minotti.com/en/lido",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Liam",
+          "path_field": "produkt-liam",
+          "url": "https://www.minotti.com/downloads/17009/17882/MINOTTI_Liam.zip",
+          "seite": "https://www.minotti.com/en/liam",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Leslie Sofa",
+          "path_field": "sofas-leslie-sofa",
+          "url": "https://www.minotti.com/downloads/429/15729/MINOTTI_Leslie_collection.zip",
+          "seite": "https://www.minotti.com/en/leslie-sofa",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lelong (Side Tables 2)",
+          "path_field": "side-tables-lelong-side-tables-2",
+          "url": "https://www.minotti.com/downloads/20595/22755/MINOTTI_Lelong.zip",
+          "seite": "https://www.minotti.com/en/lelong",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Libra \"Throw\"",
+          "path_field": "throw-libra-throw",
+          "url": "https://www.minotti.com/downloads/25035/29997/MINOTTI_Libra.zip",
+          "seite": "https://www.minotti.com/en/libra",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Libra Bench",
+          "path_field": "benches-libra-bench",
+          "url": "https://www.minotti.com/downloads/25984/30003/MINOTTI_Libra.zip",
+          "seite": "https://www.minotti.com/en/libra-bench",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Linha",
+          "path_field": "side-tables-linha",
+          "url": "https://www.minotti.com/downloads/17038/17896/MINOTTI_Linha_Coffee_Table.zip",
+          "seite": "https://www.minotti.com/en/linha",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lido (Side Tables)",
+          "path_field": "side-tables-lido-side-tables",
+          "url": "https://www.minotti.com/downloads/18672/20916/MINOTTI_Lido.zip",
+          "seite": "https://www.minotti.com/en/lido",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lido (Sofas)",
+          "path_field": "sofas-lido-sofas",
+          "url": "https://www.minotti.com/downloads/18672/20916/MINOTTI_Lido.zip",
+          "seite": "https://www.minotti.com/en/lido",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Linha \"Dining\"",
+          "path_field": "dining-tables-linha-dining",
+          "url": "https://www.minotti.com/downloads/17011/17897/MINOTTI_Linha_Dining.zip",
+          "seite": "https://www.minotti.com/en/linha-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Linha Studio",
+          "path_field": "dining-tables-linha-studio",
+          "url": "https://www.minotti.com/downloads/18691/20917/MINOTTI_Linha_Studio.zip",
+          "seite": "https://www.minotti.com/en/linha-studio",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Linha Fina",
+          "path_field": "tables-linha-fina",
+          "url": "https://www.minotti.com/downloads/20600/22752/MINOTTI_Linha_Fina.zip",
+          "seite": "https://www.minotti.com/en/linha-fina",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Linha Livre",
+          "path_field": "dining-tables-linha-livre",
+          "url": "https://www.minotti.com/downloads/25052/30017/MINOTTI_Linha_Livra.zip",
+          "seite": "https://www.minotti.com/en/linha-livre",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Libra \"Dining\"",
+          "path_field": "armchairs-libra-dining",
+          "url": "https://www.minotti.com/downloads/25038/30000/MINOTTI_Libra.zip",
+          "seite": "https://www.minotti.com/en/libra-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lido \"Dining\"",
+          "path_field": "sofas-lido-dining",
+          "url": "https://www.minotti.com/downloads/18675/20915/MINOTTI_Lido.zip",
+          "seite": "https://www.minotti.com/en/lido-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Logan",
+          "path_field": "cabinets-logan",
+          "url": "https://www.minotti.com/downloads/23320/27833/MINOTTI_Logan.zip",
+          "seite": "https://www.minotti.com/en/logan",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lou \"Dining\"",
+          "path_field": "tables-lou-dining",
+          "url": "https://www.minotti.com/downloads/13210/14026/MINOTTI_Lou_Table.zip",
+          "seite": "https://www.minotti.com/en/lou-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Louver",
+          "path_field": "side-tables-louver",
+          "url": "https://www.minotti.com/downloads/20594/22754/MINOTTI_Louver.zip",
+          "seite": "https://www.minotti.com/en/louver",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lou \"Sideboard\"",
+          "path_field": "bookcases-and-sideboards-lou-sideboard",
+          "url": "https://www.minotti.com/downloads/13211/14110/MINOTTI_Lou.rfa.zip",
+          "seite": "https://www.minotti.com/en/lou-sideboard",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Marvin",
+          "path_field": "tables-marvin",
+          "url": "https://www.minotti.com/downloads/18689/20918/MINOTTI_Marvin.zip",
+          "seite": "https://www.minotti.com/en/marvin",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Mattia (Variant 3)",
+          "path_field": "produkt-mattia-variant-3",
+          "url": "https://www.minotti.com/downloads/16998/17865/MINOTTI_Mattia.zip",
+          "seite": "https://www.minotti.com/en/mattia",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Mattia (Variant)",
+          "path_field": "produkt-mattia-variant",
+          "url": "https://www.minotti.com/downloads/16998/17865/MINOTTI_Mattia.zip",
+          "seite": "https://www.minotti.com/en/mattia",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lou 2020",
+          "path_field": "tables-lou-2020",
+          "url": "https://www.minotti.com/downloads/17010/18002/MINOTTI_Lou_2020.zip",
+          "seite": "https://www.minotti.com/en/lou-2020",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Mills",
+          "path_field": "chairs-mills",
+          "url": "https://www.minotti.com/downloads/1923/14077/MILLS_CHAIR_62x60x76.rfa.zip",
+          "seite": "https://www.minotti.com/en/mills",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Mattia (Variant 2)",
+          "path_field": "produkt-mattia-variant-2",
+          "url": "https://www.minotti.com/downloads/16998/17865/MINOTTI_Mattia.zip",
+          "seite": "https://www.minotti.com/en/mattia",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Milton \"Nightstand\"",
+          "path_field": "night-tables-milton-nightstand",
+          "url": "https://www.minotti.com/downloads/14526/14112/MINOTTI_Milton_Nightstand.rfa.zip",
+          "seite": "https://www.minotti.com/en/milton-nightstand",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Mills \"Low\"",
+          "path_field": "armchairs-mills-low",
+          "url": "https://www.minotti.com/downloads/1924/14078/MILLS_LOW_CHAIR_62X60X72.rfa.zip",
+          "seite": "https://www.minotti.com/en/mills-low",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Nastro",
+          "path_field": "side-tables-nastro",
+          "url": "https://www.minotti.com/downloads/25043/30018/MINOTTI_Nastro.zip",
+          "seite": "https://www.minotti.com/en/nastro",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Nico",
+          "path_field": "tables-nico",
+          "url": "https://www.minotti.com/downloads/23319/27834/MINOTTI_Nico.zip",
+          "seite": "https://www.minotti.com/en/nico",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Lou",
+          "path_field": "side-tables-lou",
+          "url": "https://www.minotti.com/downloads/13212/14025/MINOTTI_Lou_Coffee Table.zip",
+          "seite": "https://www.minotti.com/en/lou",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Oliver",
+          "path_field": "side-tables-oliver",
+          "url": "https://www.minotti.com/downloads/14477/14113/MINOTTI_Oliver_Coffee Table.rfa.zip",
+          "seite": "https://www.minotti.com/en/oliver",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Noor",
+          "path_field": "side-tables-noor",
+          "url": "https://www.minotti.com/downloads/13206/14000/MINOTTI_Noor_coffee table_cm 40,5x36h45.rfa.zip",
+          "seite": "https://www.minotti.com/en/noor",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Oliver \"Lounge\"",
+          "path_field": "tables-oliver-lounge",
+          "url": "https://www.minotti.com/downloads/14478/14114/MINOTTI_Oliver.zip",
+          "seite": "https://www.minotti.com/en/oliver-lounge",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Osaka",
+          "path_field": "produkt-osaka",
+          "url": "https://www.minotti.com/downloads/17013/17999/MINOTTI_Osaka.zip",
+          "seite": "https://www.minotti.com/en/osaka",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Oliver \"Dining\"",
+          "path_field": "tables-oliver-dining",
+          "url": "https://www.minotti.com/downloads/15766/15716/MINOTTI_Oliver.zip",
+          "seite": "https://www.minotti.com/en/oliver-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Outline Roundy",
+          "path_field": "rugs-outline-roundy",
+          "url": "https://www.minotti.com/downloads/23340/27835/MINOTTI_Outline_roundy.zip",
+          "seite": "https://www.minotti.com/en/outline-roundy",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Osaka Flag",
+          "path_field": "produkt-osaka-flag",
+          "url": "https://www.minotti.com/downloads/20607/22765/MINOTTI_Osaka_Flag_Rug.zip",
+          "seite": "https://www.minotti.com/en/osaka-flag",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Osaka Chevron",
+          "path_field": "rugs-osaka-chevron",
+          "url": "https://www.minotti.com/downloads/20606/22764/MINOTTI_Osaka_Chevron_Rug.zip",
+          "seite": "https://www.minotti.com/en/osaka-chevron",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Milton",
+          "path_field": "side-tables-milton",
+          "url": "https://www.minotti.com/downloads/14474/14111/MINOTTI_Milton.rfa.zip",
+          "seite": "https://www.minotti.com/en/milton",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Outline",
+          "path_field": "rugs-outline",
+          "url": "https://www.minotti.com/downloads/17015/18000/MINOTTI_Outline.zip",
+          "seite": "https://www.minotti.com/en/outline",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Penthouse",
+          "path_field": "tables-penthouse",
+          "url": "https://www.minotti.com/downloads/17012/18001/MINOTTI_Penthouse.zip",
+          "seite": "https://www.minotti.com/en/penthouse",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Overby",
+          "path_field": "tables-overby",
+          "url": "https://www.minotti.com/downloads/13209/14001/MINOTTI_Overby_Tray_cm40x40-35x55h5.rfa.zip",
+          "seite": "https://www.minotti.com/en/overby",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Page",
+          "path_field": "shelves-page",
+          "url": "https://www.minotti.com/downloads/15723/15717/MINOTTI_Page.zip",
+          "seite": "https://www.minotti.com/en/page",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Pattie",
+          "path_field": "produkt-pattie",
+          "url": "https://www.minotti.com/downloads/23295/27836/MINOTTI_Pattie.zip",
+          "seite": "https://www.minotti.com/en/pattie",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Pilotis",
+          "path_field": "produkt-pilotis",
+          "url": "https://www.minotti.com/downloads/18683/23199/MINOTTI_Pilotis_Wood.zip",
+          "seite": "https://www.minotti.com/en/pilotis",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Pilotis Bench",
+          "path_field": "console-tables-pilotis-bench",
+          "url": "https://www.minotti.com/downloads/23300/27840/MINOTTI_Pilotis_Bench.zip",
+          "seite": "https://www.minotti.com/en/pilotis-bench",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Prince",
+          "path_field": "armchairs-prince",
+          "url": "https://www.minotti.com/downloads/488/15740/MINOTTI_Prince.zip",
+          "seite": "https://www.minotti.com/en/prince",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Pilotis \"Console\"",
+          "path_field": "console-tables-pilotis-console",
+          "url": "https://www.minotti.com/downloads/22094/25000/MINOTTI_Pilotis_Console.zip",
+          "seite": "https://www.minotti.com/en/pilotis-console",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Quincy Chevron",
+          "path_field": "beds-quincy-chevron",
+          "url": "https://www.minotti.com/downloads/17039/17866/MINOTTI_Quincy.zip",
+          "seite": "https://www.minotti.com/en/quincy-chevron",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Raphael \"Dining\"",
+          "path_field": "produkt-raphael-dining",
+          "url": "https://www.minotti.com/downloads/22085/24984/MINOTTI_Raphael.zip",
+          "seite": "https://www.minotti.com/en/raphael-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Rayan Coffee Table",
+          "path_field": "side-tables-rayan-coffee-table",
+          "url": "https://www.minotti.com/downloads/25423/30023/MINOTTI_Rayan_coffee_table.zip",
+          "seite": "https://www.minotti.com/en/rayan-coffee-table",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Portofino",
+          "path_field": "armchairs-portofino",
+          "url": "https://www.minotti.com/downloads/1931/15739/MINOTTI_Portofino.zip",
+          "seite": "https://www.minotti.com/en/portofino",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Reeves \"Dining\"",
+          "path_field": "armchairs-reeves-dining",
+          "url": "https://www.minotti.com/downloads/1876/14062/MINOTTI_Reeves_ Little-Lounge_Armchair_cm 56x55 h 79-72.rfa.zip",
+          "seite": "https://www.minotti.com/en/reeves-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Rayan",
+          "path_field": "tables-rayan",
+          "url": "https://www.minotti.com/downloads/23318/27843/MINOTTI_Rayan.zip",
+          "seite": "https://www.minotti.com/en/rayan",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Reeves \"Lounge sofa\"",
+          "path_field": "sofas-reeves-lounge-sofa",
+          "url": "https://www.minotti.com/downloads/424/14058/MINOTTI_REEVES_collection.zip",
+          "seite": "https://www.minotti.com/en/reeves-lounge-sofa",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Reeves \"Large\"",
+          "path_field": "armchairs-reeves-large",
+          "url": "https://www.minotti.com/downloads/1879/14060/Minotti_REEVES_Large Armchair.zip",
+          "seite": "https://www.minotti.com/en/reeves-large",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Reeves \"Small\"",
+          "path_field": "armchairs-reeves-small",
+          "url": "https://www.minotti.com/downloads/468/14059/Minotti_REEVES_Small_ Armchair.zip",
+          "seite": "https://www.minotti.com/en/reeves-small",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Raphael (Variant)",
+          "path_field": "produkt-raphael-variant",
+          "url": "https://www.minotti.com/downloads/22083/24982/MINOTTI_Raphael.zip",
+          "seite": "https://www.minotti.com/en/raphael",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Reeves \"Semi-round Lounge Sofa\"",
+          "path_field": "sofas-reeves-semi-round-lounge-sofa",
+          "url": "https://www.minotti.com/downloads/423/14057/MINOTTI_REEVES_collection.zip",
+          "seite": "https://www.minotti.com/en/reeves-semi-round-lounge-sofa",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Prince \"Cord\" Indoor",
+          "path_field": "produkt-prince-cord-indoor",
+          "url": "https://www.minotti.com/downloads/14467/14115/MINOTTI_Prince Cord_Indoor.rfa.zip",
+          "seite": "https://www.minotti.com/en/prince-cord-indoor",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Riley",
+          "path_field": "sofas-riley",
+          "url": "https://www.minotti.com/downloads/25029/29930/MINOTTI_Riley.zip",
+          "seite": "https://www.minotti.com/en/riley",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Roger (Side Tables)",
+          "path_field": "side-tables-roger-side-tables",
+          "url": "https://www.minotti.com/downloads/18668/21038/MINOTTI_Roger.zip",
+          "seite": "https://www.minotti.com/en/roger",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Reeves \"Lounge\"",
+          "path_field": "tables-reeves-lounge",
+          "url": "https://www.minotti.com/downloads/1877/14063/MINOTTI_Reeves_ Little-Lounge_Armchair_cm 56x55 h 79-72.rfa.zip",
+          "seite": "https://www.minotti.com/en/reeves-lounge",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Ritter",
+          "path_field": "side-tables-ritter",
+          "url": "https://www.minotti.com/downloads/594/14042/MINOTTI_RITTER_coffe table_cm86x86-110x110 h18,5.rfa.zip",
+          "seite": "https://www.minotti.com/en/ritter",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Ring",
+          "path_field": "side-tables-ring",
+          "url": "https://www.minotti.com/downloads/14464/14119/MINOTTI_Ring_Coffee table.rfa.zip",
+          "seite": "https://www.minotti.com/en/ring",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Richer",
+          "path_field": "produkt-richer",
+          "url": "https://www.minotti.com/downloads/15708/15720/MINOTTI_Richer.zip",
+          "seite": "https://www.minotti.com/en/richer",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Reeves Bed",
+          "path_field": "headboards-reeves-bed",
+          "url": "https://www.minotti.com/downloads/671/14030/MINOTTI_Reeves_bed_cm 190-210-230x226-cm183-223x229 h90.rfa.zip",
+          "seite": "https://www.minotti.com/en/reeves-bed",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Raphael (Armchairs)",
+          "path_field": "armchairs-raphael-armchairs",
+          "url": "https://www.minotti.com/downloads/22083/24982/MINOTTI_Raphael.zip",
+          "seite": "https://www.minotti.com/en/raphael",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Russell \"Dining\"",
+          "path_field": "armchairs-russell-dining",
+          "url": "https://www.minotti.com/downloads/14516/14122/MINOTTI_Russel_Chair.rfa.zip",
+          "seite": "https://www.minotti.com/en/russell-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Reeves \"Wood\"",
+          "path_field": "armchairs-reeves-wood",
+          "url": "https://www.minotti.com/downloads/1881/14061/Minotti_REEVES_Wood_ Armchair.zip",
+          "seite": "https://www.minotti.com/en/reeves-wood",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Saki \"Table\"",
+          "path_field": "tables-saki-table",
+          "url": "https://www.minotti.com/downloads/25053/30014/MINOTTI_Saki_table.zip",
+          "seite": "https://www.minotti.com/en/saki-table",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Russell (Armchairs 2)",
+          "path_field": "armchairs-russell-armchairs-2",
+          "url": "https://www.minotti.com/downloads/14459/14120/MINOTTI_Russel.rfa.zip",
+          "seite": "https://www.minotti.com/en/russell",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Russell (Armchairs)",
+          "path_field": "armchairs-russell-armchairs",
+          "url": "https://www.minotti.com/downloads/14459/14120/MINOTTI_Russel.rfa.zip",
+          "seite": "https://www.minotti.com/en/russell",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Saki (Armchairs)",
+          "path_field": "armchairs-saki-armchairs",
+          "url": "https://www.minotti.com/downloads/25031/29932/MINOTTI_Saki.zip",
+          "seite": "https://www.minotti.com/en/saki",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Roger (Sofas)",
+          "path_field": "sofas-roger-sofas",
+          "url": "https://www.minotti.com/downloads/18668/21038/MINOTTI_Roger.zip",
+          "seite": "https://www.minotti.com/en/roger",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Roger Bed",
+          "path_field": "sofas-roger-bed",
+          "url": "https://www.minotti.com/downloads/18679/21071/MINOTTI_Roger_Bed.zip",
+          "seite": "https://www.minotti.com/en/roger-bed",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Sally (Tables)",
+          "path_field": "tables-sally-tables",
+          "url": "https://www.minotti.com/downloads/22089/25001/MINOTTI_Sally.zip",
+          "seite": "https://www.minotti.com/en/sally",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Sendai \"dining\"",
+          "path_field": "armchairs-sendai-dining",
+          "url": "https://www.minotti.com/downloads/20586/22740/MINOTTI_Sendai.zip",
+          "seite": "https://www.minotti.com/en/sendai-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Saki (Variant)",
+          "path_field": "produkt-saki-variant",
+          "url": "https://www.minotti.com/downloads/25031/29932/MINOTTI_Saki.zip",
+          "seite": "https://www.minotti.com/en/saki",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Russell \"Lounge\"",
+          "path_field": "armchairs-russell-lounge",
+          "url": "https://www.minotti.com/downloads/14517/14123/MINOTTI_Russel_Chair.rfa.zip",
+          "seite": "https://www.minotti.com/en/russell-lounge",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Side (Tables)",
+          "path_field": "tables-side-tables",
+          "url": "https://www.minotti.com/downloads/15743/15721/MINOTTI_Side.zip",
+          "seite": "https://www.minotti.com/en/side",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Sally (Tables 2)",
+          "path_field": "tables-sally-tables-2",
+          "url": "https://www.minotti.com/downloads/22089/25001/MINOTTI_Sally.zip",
+          "seite": "https://www.minotti.com/en/sally",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Sendai (Lounge Chairs)",
+          "path_field": "lounge-chairs-sendai-lounge-chairs",
+          "url": "https://www.minotti.com/downloads/20584/22741/MINOTTI_Sendai.zip",
+          "seite": "https://www.minotti.com/en/sendai",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Saki (Sofas)",
+          "path_field": "sofas-saki-sofas",
+          "url": "https://www.minotti.com/downloads/25031/29932/MINOTTI_Saki.zip",
+          "seite": "https://www.minotti.com/en/saki",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Shelley",
+          "path_field": "produkt-shelley",
+          "url": "https://www.minotti.com/downloads/15715/15685/MINOTTI_Shelley.zip",
+          "seite": "https://www.minotti.com/en/shelley",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Solid \"Saddle-Hide\"",
+          "path_field": "tables-solid-saddle-hide",
+          "url": "https://www.minotti.com/downloads/18333/17989/17867_MINOTTI_Solid_1.zip",
+          "seite": "https://www.minotti.com/en/solid-saddle-hide",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Solid \"Console\"",
+          "path_field": "console-tables-solid-console",
+          "url": "https://www.minotti.com/downloads/17005/17868/MINOTTI_Solid.zip",
+          "seite": "https://www.minotti.com/en/solid-console",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Solid (Side Tables)",
+          "path_field": "side-tables-solid-side-tables",
+          "url": "https://www.minotti.com/downloads/17004/17867/MINOTTI_Solid.zip",
+          "seite": "https://www.minotti.com/en/solid",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Side (Variant)",
+          "path_field": "produkt-side-variant",
+          "url": "https://www.minotti.com/downloads/15743/15721/MINOTTI_Side.zip",
+          "seite": "https://www.minotti.com/en/side",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Song",
+          "path_field": "side-tables-song",
+          "url": "https://www.minotti.com/downloads/13204/14028/MINOTTI_Song.zip",
+          "seite": "https://www.minotti.com/en/song",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Shelley \"Dining\"",
+          "path_field": "armchairs-shelley-dining",
+          "url": "https://www.minotti.com/downloads/16742/15831/MINOTTI_Shelley.zip",
+          "seite": "https://www.minotti.com/en/shelley-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Solid Steel",
+          "path_field": "side-tables-solid-steel",
+          "url": "https://www.minotti.com/downloads/20593/22753/MINOTTI_Solid_Steel.zip",
+          "seite": "https://www.minotti.com/en/solid-steel",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Sendai (Lounge Chairs 2)",
+          "path_field": "lounge-chairs-sendai-lounge-chairs-2",
+          "url": "https://www.minotti.com/downloads/20584/22741/MINOTTI_Sendai.zip",
+          "seite": "https://www.minotti.com/en/sendai",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Solid (Tables)",
+          "path_field": "tables-solid-tables",
+          "url": "https://www.minotti.com/downloads/17004/17867/MINOTTI_Solid.zip",
+          "seite": "https://www.minotti.com/en/solid",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Suitcase Line",
+          "path_field": "armchairs-suitcase-line",
+          "url": "https://www.minotti.com/downloads/15718/15686/MINOTTI_Suitcase_line.zip",
+          "seite": "https://www.minotti.com/en/suitcase-line",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Shields",
+          "path_field": "side-tables-shields",
+          "url": "https://www.minotti.com/downloads/14475/14124/MINOTTI_Shields_Coffee Table.rfa.zip",
+          "seite": "https://www.minotti.com/en/shields",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Stage",
+          "path_field": "side-tables-stage",
+          "url": "https://www.minotti.com/downloads/25046/30010/MINOTTI_Stage.zip",
+          "seite": "https://www.minotti.com/en/stage",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Supermoon (Armchairs)",
+          "path_field": "armchairs-supermoon-armchairs",
+          "url": "https://www.minotti.com/downloads/23293/27844/MINOTTI_Supermoon.zip",
+          "seite": "https://www.minotti.com/en/supermoon",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Supermoon Bed",
+          "path_field": "sofas-supermoon-bed",
+          "url": "https://www.minotti.com/downloads/23322/27846/MINOTTI_Supermoon_Bed.zip",
+          "seite": "https://www.minotti.com/en/supermoon-bed",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Taiko",
+          "path_field": "side-tables-taiko",
+          "url": "https://www.minotti.com/downloads/22092/25003/MINOTTI_Taiko.zip",
+          "seite": "https://www.minotti.com/en/taiko",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Superblocks",
+          "path_field": "produkt-superblocks",
+          "url": "https://www.minotti.com/downloads/22096/25002/MINOTTI_Superblocks.zip",
+          "seite": "https://www.minotti.com/en/superblocks",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Supermoon (Tables)",
+          "path_field": "tables-supermoon-tables",
+          "url": "https://www.minotti.com/downloads/23293/27844/MINOTTI_Supermoon.zip",
+          "seite": "https://www.minotti.com/en/supermoon",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Supermoon (Variant)",
+          "path_field": "produkt-supermoon-variant",
+          "url": "https://www.minotti.com/downloads/23293/27844/MINOTTI_Supermoon.zip",
+          "seite": "https://www.minotti.com/en/supermoon",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Superquadra (Tables)",
+          "path_field": "tables-superquadra-tables",
+          "url": "https://www.minotti.com/downloads/21145/21446/20943_MINOTTI_Superquadra_Sideboards_1.zip",
+          "seite": "https://www.minotti.com/en/superquadra",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Superquadra (Cabinets 2)",
+          "path_field": "cabinets-superquadra-cabinets-2",
+          "url": "https://www.minotti.com/downloads/21145/21446/20943_MINOTTI_Superquadra_Sideboards_1.zip",
+          "seite": "https://www.minotti.com/en/superquadra",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Tokie",
+          "path_field": "side-tables-tokie",
+          "url": "https://www.minotti.com/downloads/23301/27847/MINOTTI_Tokie.zip",
+          "seite": "https://www.minotti.com/en/tokie",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Superquadra (Cabinets)",
+          "path_field": "cabinets-superquadra-cabinets",
+          "url": "https://www.minotti.com/downloads/21145/21446/20943_MINOTTI_Superquadra_Sideboards_1.zip",
+          "seite": "https://www.minotti.com/en/superquadra",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Torii",
+          "path_field": "armchairs-torii",
+          "url": "https://www.minotti.com/downloads/16947/17874/MINOTTI_Torii.zip",
+          "seite": "https://www.minotti.com/en/torii",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Tatlin",
+          "path_field": "headboards-tatlin",
+          "url": "https://www.minotti.com/downloads/677/14076/TATLIN_BED_224X97X226.rfa.zip",
+          "seite": "https://www.minotti.com/en/tatlin",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Tatlin-Cover",
+          "path_field": "headboards-tatlin-cover",
+          "url": "https://www.minotti.com/downloads/677/14076/TATLIN_BED_224X97X226.rfa.zip",
+          "seite": "https://www.minotti.com/en/tatlin",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Teddy",
+          "path_field": "sofas-teddy",
+          "url": "https://www.minotti.com/downloads/15396/14127/MINOTTI_ Teddy.rfa.zip",
+          "seite": "https://www.minotti.com/en/teddy",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Torii (Sofas)",
+          "path_field": "sofas-torii-sofas",
+          "url": "https://www.minotti.com/downloads/16947/17874/MINOTTI_Torii.zip",
+          "seite": "https://www.minotti.com/en/torii",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Superquadra (Variant)",
+          "path_field": "produkt-superquadra-variant",
+          "url": "https://www.minotti.com/downloads/21145/21446/20943_MINOTTI_Superquadra_Sideboards_1.zip",
+          "seite": "https://www.minotti.com/en/superquadra",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Tatlin \"Soft\"",
+          "path_field": "headboards-tatlin-soft",
+          "url": "https://www.minotti.com/downloads/677/14076/TATLIN_BED_224X97X226.rfa.zip",
+          "seite": "https://www.minotti.com/en/tatlin",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Tape \"Dining\"",
+          "path_field": "armchairs-tape-dining",
+          "url": "https://www.minotti.com/downloads/25039/30028/MINOTTI_Tape.zip",
+          "seite": "https://www.minotti.com/en/tape-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Tape (Tables)",
+          "path_field": "tables-tape-tables",
+          "url": "https://www.minotti.com/downloads/14461/14126/MINOTTI_Tape_Armchair.rfa.zip",
+          "seite": "https://www.minotti.com/en/tape",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Torii (Sofas 3)",
+          "path_field": "sofas-torii-sofas-3",
+          "url": "https://www.minotti.com/downloads/16947/17874/MINOTTI_Torii.zip",
+          "seite": "https://www.minotti.com/en/torii",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Torii \"Dining\"",
+          "path_field": "sofas-torii-dining",
+          "url": "https://www.minotti.com/downloads/16995/17876/MINOTTI_Torii.zip",
+          "seite": "https://www.minotti.com/en/torii-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Tape (Tables 2)",
+          "path_field": "tables-tape-tables-2",
+          "url": "https://www.minotti.com/downloads/14461/14126/MINOTTI_Tape_Armchair.rfa.zip",
+          "seite": "https://www.minotti.com/en/tape",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Torii Bold (Armchairs)",
+          "path_field": "armchairs-torii-bold-armchairs",
+          "url": "https://www.minotti.com/downloads/16947/17874/MINOTTI_Torii.zip",
+          "seite": "https://www.minotti.com/en/torii",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Torii Bold (Stools)",
+          "path_field": "stools-torii-bold-stools",
+          "url": "https://www.minotti.com/downloads/16947/17874/MINOTTI_Torii.zip",
+          "seite": "https://www.minotti.com/en/torii",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Superquadra (Side Tables)",
+          "path_field": "side-tables-superquadra-side-tables",
+          "url": "https://www.minotti.com/downloads/21145/21446/20943_MINOTTI_Superquadra_Sideboards_1.zip",
+          "seite": "https://www.minotti.com/en/superquadra",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Torii Bold (Chairs)",
+          "path_field": "chairs-torii-bold-chairs",
+          "url": "https://www.minotti.com/downloads/16947/17874/MINOTTI_Torii.zip",
+          "seite": "https://www.minotti.com/en/torii",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Turner",
+          "path_field": "tables-turner",
+          "url": "https://www.minotti.com/downloads/1947/14029/MINOTTI_Turner_Tray round_ cm90 h6.rfa.zip",
+          "seite": "https://www.minotti.com/en/turner",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Trio \"Dining\"",
+          "path_field": "tables-trio-dining",
+          "url": "https://www.minotti.com/downloads/25082/30006/MINOTTI_Trio.zip",
+          "seite": "https://www.minotti.com/en/trio-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Twiggy (Variant)",
+          "path_field": "produkt-twiggy-variant",
+          "url": "https://www.minotti.com/downloads/20590/22737/MINOTTI_Twiggy.zip",
+          "seite": "https://www.minotti.com/en/twiggy",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Twiggy (Sofas)",
+          "path_field": "sofas-twiggy-sofas",
+          "url": "https://www.minotti.com/downloads/20590/22737/MINOTTI_Twiggy.zip",
+          "seite": "https://www.minotti.com/en/twiggy",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Vivienne \"Dining\"",
+          "path_field": "tables-vivienne-dining",
+          "url": "https://www.minotti.com/downloads/23348/27853/MINOTTI_Vivienne.zip",
+          "seite": "https://www.minotti.com/en/vivienne-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Torii (Sofas 2)",
+          "path_field": "sofas-torii-sofas-2",
+          "url": "https://www.minotti.com/downloads/16947/17874/MINOTTI_Torii.zip",
+          "seite": "https://www.minotti.com/en/torii",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Twiggy Bed",
+          "path_field": "sofas-twiggy-bed",
+          "url": "https://www.minotti.com/downloads/22098/25004/MINOTTI_Twiggy_Bed.zip",
+          "seite": "https://www.minotti.com/en/twiggy-bed",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Vivienne (Tables)",
+          "path_field": "tables-vivienne-tables",
+          "url": "https://www.minotti.com/downloads/23296/27852/MINOTTI_Vivienne.zip",
+          "seite": "https://www.minotti.com/en/vivienne",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Waves",
+          "path_field": "side-tables-waves",
+          "url": "https://www.minotti.com/downloads/14463/14128/MINOTTI_Waves_Coffee Table.rfa.zip",
+          "seite": "https://www.minotti.com/en/waves",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Twiggy (Armchairs)",
+          "path_field": "armchairs-twiggy-armchairs",
+          "url": "https://www.minotti.com/downloads/20590/22737/MINOTTI_Twiggy.zip",
+          "seite": "https://www.minotti.com/en/twiggy",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Vivienne (Armchairs)",
+          "path_field": "armchairs-vivienne-armchairs",
+          "url": "https://www.minotti.com/downloads/23296/27852/MINOTTI_Vivienne.zip",
+          "seite": "https://www.minotti.com/en/vivienne",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Wedge \"Dining\"",
+          "path_field": "produkt-wedge-dining",
+          "url": "https://www.minotti.com/downloads/15709/15687/MINOTTI_Wedge_dining.zip",
+          "seite": "https://www.minotti.com/en/wedge-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Trio",
+          "path_field": "armchairs-trio",
+          "url": "https://www.minotti.com/downloads/23298/27849/MINOTTI_Trio.zip",
+          "seite": "https://www.minotti.com/en/trio",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "West (Sofas)",
+          "path_field": "sofas-west-sofas",
+          "url": "https://www.minotti.com/downloads/15721/15689/MINOTTI_West_seating_system.zip",
+          "seite": "https://www.minotti.com/en/west",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "West (Variant)",
+          "path_field": "produkt-west-variant",
+          "url": "https://www.minotti.com/downloads/15721/15689/MINOTTI_West_seating_system.zip",
+          "seite": "https://www.minotti.com/en/west",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Wedge",
+          "path_field": "side-tables-wedge",
+          "url": "https://www.minotti.com/downloads/15722/15688/MINOTTI_Wedge_coffee_table.zip",
+          "seite": "https://www.minotti.com/en/wedge",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Wisp Roundy",
+          "path_field": "rugs-wisp-roundy",
+          "url": "https://www.minotti.com/downloads/15759/15728/MINOTTI_Wisp_roundy.zip",
+          "seite": "https://www.minotti.com/en/wisp-roundy",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Yoko",
+          "path_field": "tables-yoko",
+          "url": "https://www.minotti.com/downloads/20583/22748/MINOTTI_Yoko.zip",
+          "seite": "https://www.minotti.com/en/yoko",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Wisp Shade",
+          "path_field": "mirrors-wisp-shade",
+          "url": "https://www.minotti.com/downloads/20605/22766/MINOTTI_Wisp_Shade_Rug.zip",
+          "seite": "https://www.minotti.com/en/wisp-shade",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Wisp Mosaic",
+          "path_field": "rugs-wisp-mosaic",
+          "url": "https://www.minotti.com/downloads/22101/25005/MINOTTI_Wisp_Mosaic.zip",
+          "seite": "https://www.minotti.com/en/wisp-mosaic",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Wisp Relief",
+          "path_field": "rugs-wisp-relief",
+          "url": "https://www.minotti.com/downloads/15758/15727/MINOTTI_Wisp_relief.zip",
+          "seite": "https://www.minotti.com/en/wisp-relief",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Winston",
+          "path_field": "armchairs-winston",
+          "url": "https://www.minotti.com/downloads/467/14049/MINOTTI_Winston_Armchair_cm84x80 h78.rfa.zip",
+          "seite": "https://www.minotti.com/en/winston",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Yves",
+          "path_field": "sofas-yves",
+          "url": "https://www.minotti.com/downloads/23289/27854/MINOTTI_Yves_Yves_Suite.zip",
+          "seite": "https://www.minotti.com/en/yves",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Yves Bed",
+          "path_field": "sofas-yves-bed",
+          "url": "https://www.minotti.com/downloads/23323/27857/MINOTTI_Yves_Bed.zip",
+          "seite": "https://www.minotti.com/en/yves-bed",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Yves Coffee Table",
+          "path_field": "side-tables-yves-coffee-table",
+          "url": "https://www.minotti.com/downloads/25044/30025/MINOTTI_Yves_coffee_tables.zip",
+          "seite": "https://www.minotti.com/en/yves-coffee-table",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Yoko \"dining\"",
+          "path_field": "sofas-yoko-dining",
+          "url": "https://www.minotti.com/downloads/20585/22749/MINOTTI_Yoko.zip",
+          "seite": "https://www.minotti.com/en/yoko-dining",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Zealand",
+          "path_field": "rugs-zealand",
+          "url": "https://www.minotti.com/downloads/25055/30022/MINOTTI_Zealand.zip",
+          "seite": "https://www.minotti.com/en/zealand",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Yves \"Console\"",
+          "path_field": "side-tables-yves-console",
+          "url": "https://www.minotti.com/downloads/25045/30026/MINOTTI_Yves_coffee_tables.zip",
+          "seite": "https://www.minotti.com/en/yves-console",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Zoe",
+          "path_field": "shelves-zoe",
+          "url": "https://www.minotti.com/downloads/23314/27860/MINOTTI_Zoe.zip",
+          "seite": "https://www.minotti.com/en/zoe",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Yves Round \"Lounge\"",
+          "path_field": "armchairs-yves-round-lounge",
+          "url": "https://www.minotti.com/downloads/23361/27859/MINOTTI_Yves_Round.zip",
+          "seite": "https://www.minotti.com/en/yves-round-lounge",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Yves \"Sideboard\"",
+          "path_field": "sofas-yves-sideboard",
+          "url": "https://www.minotti.com/downloads/25048/30027/MINOTTI_Yves_sideboard.zip",
+          "seite": "https://www.minotti.com/en/yves-sideboard",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Yves Sofà",
+          "path_field": "tables-yves-sofa",
+          "url": "https://www.minotti.com/downloads/23289/27854/MINOTTI_Yves_Yves_Suite.zip",
+          "seite": "https://www.minotti.com/en/yves",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        },
+        {
+          "produkt": "Yves Round",
+          "path_field": "armchairs-yves-round",
+          "url": "https://www.minotti.com/downloads/23292/27856/MINOTTI_Yves_Round.zip",
+          "seite": "https://www.minotti.com/en/yves-round",
+          "format": "zip (Revit RFA, Inhalt prüfen)"
+        }
+      ]
+    },
+    "Flos": {
+      "quelle3d": {
+        "status": "public",
+        "formats": [
+          "3dm",
+          "3ds",
+          "c4d",
+          "dxf",
+          "fbx",
+          "obj"
+        ],
+        "url": "https://professional.flos.com/en/global/product-downloads/planning-aids/",
+        "note": "Planning Aids öffentlich (2.328 Dateien laut Seite, nur erste Seite ausgelesen: 10 3D-ZIPs). Arco-3D.zip: FBX/OBJ/3DS/3DM/C4D. Abgleich je Produkt offen."
+      },
+      "katalog": {
+        "produkte": 139,
+        "mitBild": 135,
+        "bildMedianPx": 2000,
+        "bildMinPx": 500,
+        "bildMaxPx": 2400,
+        "bild1600plus": 134,
+        "mitMassen": 114,
+        "massQuelle": {
+          "backoffice_feld": 112,
+          "beschreibungstext": 2
+        },
+        "mitPdfAnhang": 29
+      },
+      "stufen": {
+        "3d": 2,
+        "3d_marke": 137,
+        "ar_foto_masse": 0,
+        "nur_bild": 0,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Flos",
+        "dateien3d": [],
+        "pdfs": 4,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": [
+        {
+          "produkt": "Arco",
+          "path_field": "lamps-arco",
+          "url": "https://downloads.ctfassets.net/jga3k084hr2w/Arco-3D_3D/78c73ff83f71f571edbe233563e85b2f/Arco-3D.zip",
+          "format": "zip (FBX/OBJ/3DS)"
+        },
+        {
+          "produkt": "2097-30",
+          "path_field": "lamps-2097-30",
+          "url": "https://downloads.ctfassets.net/jga3k084hr2w/2097-30-3D_3D/ff96a9cca502661c1f43ac84e2f87f77/2097-30-3D.zip",
+          "format": "zip (FBX/OBJ/3DS)"
+        }
+      ]
+    },
+    "Poliform": {
+      "quelle3d": {
+        "status": "public_form",
+        "formats": [
+          "fbx",
+          "obj",
+          "max",
+          "skp",
+          "3dm",
+          "dwg"
+        ],
+        "url": "https://www.poliform.it/en/products/sofas/bristol/",
+        "note": "Produktseiten bieten 3D (FBX/OBJ/MAX/SKP/3DM) über Download-Dialog mit Formular-Registrierung („Ora puoi scaricare tutti i file Poliform per 30 giorni“). Formular vom Team selbst ausfüllen; Nutzung laut Terms nur „personal and non-commercial“ → Freigabe nötig."
+      },
+      "katalog": {
+        "produkte": 103,
+        "mitBild": 100,
+        "bildMedianPx": 989,
+        "bildMinPx": 960,
+        "bildMaxPx": 1920,
+        "bild1600plus": 4,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 53
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 103,
+        "ar_foto_masse": 0,
+        "nur_bild": 0,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Poliform",
+        "dateien3d": [],
+        "pdfs": 13,
+        "datenblaetterMitMassen": 3,
+        "beispiele": [
+          "Herstellermaterial/Poliform/datenblaetter/Poliform_Night_Systems_Technical_Lexington_2026.pdf",
+          "Herstellermaterial/Poliform/datenblaetter/Poliform_Night_Systems_Technical_Senzafine_2026.pdf",
+          "Herstellermaterial/Poliform/datenblaetter/Poliform_Night_Systems_Technical_Ubik_2026.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Paola Lenti": {
+      "quelle3d": {
+        "status": "login",
+        "formats": [],
+        "url": "https://www.paolalenti.it/en/reserved-area/",
+        "note": "Produktseite: nur PDF/„Download area“; 3D nicht öffentlich gefunden. Drittanbieter (designconnected) nur als Hinweis."
+      },
+      "katalog": {
+        "produkte": 100,
+        "mitBild": 100,
+        "bildMedianPx": 720,
+        "bildMinPx": 415,
+        "bildMaxPx": 720,
+        "bild1600plus": 0,
+        "mitMassen": 5,
+        "massQuelle": {
+          "beschreibungstext": 5
+        },
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 5,
+        "nur_bild": 95,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Paola_Lenti",
+        "dateien3d": [],
+        "pdfs": 23,
+        "datenblaetterMitMassen": 23,
+        "beispiele": [
+          "Herstellermaterial/Paola_Lenti/datenblaetter/PaolaLenti_Datenblatt_ami-sofa-new.pdf",
+          "Herstellermaterial/Paola_Lenti/datenblaetter/PaolaLenti_Datenblatt_bistro-parasol-new-2.pdf",
+          "Herstellermaterial/Paola_Lenti/datenblaetter/PaolaLenti_Datenblatt_cast.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Eichholtz": {
+      "quelle3d": {
+        "status": "on_request",
+        "formats": [
+          "3ds"
+        ],
+        "url": "https://www.eichholtz.com/en/services",
+        "note": "„3DS FILES – A curated selection of 3D files“ als Service, kein öffentlicher Direktlink."
+      },
+      "katalog": {
+        "produkte": 150,
+        "mitBild": 150,
+        "bildMedianPx": 1200,
+        "bildMinPx": 1200,
+        "bildMaxPx": 1200,
+        "bild1600plus": 0,
+        "mitMassen": 150,
+        "massQuelle": {
+          "backoffice_feld": 150
+        },
+        "mitPdfAnhang": 150
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 150,
+        "nur_bild": 0,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Eichholtz",
+        "dateien3d": [],
+        "pdfs": 0,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Tonon": {
+      "quelle3d": {
+        "status": "public",
+        "formats": [
+          "3dm",
+          "zip"
+        ],
+        "url": "https://tononitalia.com/en/downloads/?category=3d-en",
+        "note": "3D-Dateien je Produkt öffentlich; keine Produkte im Katalog."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Tonon",
+        "dateien3d": [],
+        "pdfs": 26,
+        "datenblaetterMitMassen": 18,
+        "beispiele": [
+          "Herstellermaterial/Tonon/datenblaetter/Tonon_Datenblatt_Eli_Collection.pdf",
+          "Herstellermaterial/Tonon/datenblaetter/Tonon_Datenblatt_Full_Moon.pdf",
+          "Herstellermaterial/Tonon/datenblaetter/Tonon_Datenblatt_Little_Moon.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Gloster": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Gloster",
+        "dateien3d": [],
+        "pdfs": 17,
+        "datenblaetterMitMassen": 16,
+        "beispiele": [
+          "Herstellermaterial/Gloster/datenblaetter/Gloster_Pflege_Acrylic_Stone.pdf",
+          "Herstellermaterial/Gloster/datenblaetter/Gloster_Pflege_Brushed_Stainless_Steel.pdf",
+          "Herstellermaterial/Gloster/datenblaetter/Gloster_Pflege_Ceramic.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "ClassiCon": {
+      "quelle3d": {
+        "status": "public",
+        "formats": [
+          "3ds",
+          "dwg",
+          "dxf"
+        ],
+        "url": "https://www.classicon.com/en/2d-3d-data.html",
+        "note": "96 ZIPs „2D3D“ je Produkt öffentlich, z. B. AIXIA: 3DS + DWG. Einziger Hersteller mit belegtem Händlereintrag."
+      },
+      "katalog": {
+        "produkte": 126,
+        "mitBild": 125,
+        "bildMedianPx": 2400,
+        "bildMinPx": 800,
+        "bildMaxPx": 2400,
+        "bild1600plus": 123,
+        "mitMassen": 15,
+        "massQuelle": {
+          "beschreibungstext": 15
+        },
+        "mitPdfAnhang": 124
+      },
+      "stufen": {
+        "3d": 79,
+        "3d_marke": 47,
+        "ar_foto_masse": 0,
+        "nur_bild": 0,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/ClassiCon",
+        "dateien3d": [],
+        "pdfs": 111,
+        "datenblaetterMitMassen": 100,
+        "beispiele": [
+          "Herstellermaterial/ClassiCon/datenblaetter/ClassiCon-Adjustable-Table-E-1027-Product-Sheet.pdf",
+          "Herstellermaterial/ClassiCon/datenblaetter/ClassiCon-Aerias-Chair-Product_Sheet.pdf",
+          "Herstellermaterial/ClassiCon/datenblaetter/ClassiCon-Aixia-Chair-Product-Sheet.pdf"
+        ]
+      },
+      "modelle3d": [
+        {
+          "produkt": "Aristo Armchair",
+          "path_field": "armchairs-stools-aristo-armchair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-ARISTO-ARMCHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Aristo Chair",
+          "path_field": "dining-chairs-aristo-chair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-ARISTO-CHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bell Coffee Table",
+          "path_field": "coffee-tables-bell-coffee-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BELL-COFFEE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bell Coffee Table (Bell Coffee Table 2)",
+          "path_field": "coffee-tables-bell-coffee-table-bell-coffee-table-2",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BELL-COFFEE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Banu Stool",
+          "path_field": "armchairs-stools-banu-stool",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BANU-STOOL-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Aixia Chair",
+          "path_field": "dining-chairs-aixia-chair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-AIXIA-CHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bell Side Table Copper Special Edition",
+          "path_field": "side-tables-bell-side-table-copper-special-edition",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BELL-SIDE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bell Coffee Table Copper Special Edition",
+          "path_field": "coffee-tables-bell-coffee-table-copper-special-edition",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BELL-COFFEE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Aërias Chair",
+          "path_field": "dining-chairs-aerias-chair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-AERIAS-CHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bibendum Armchair",
+          "path_field": "armchairs-stools-bibendum-armchair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/Classicon-BIBENDUM-ARMCHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bell Side Table Marble",
+          "path_field": "side-tables-bell-side-table-marble",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BELL-SIDE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bell Side Table (Bell Side Table Black)",
+          "path_field": "side-tables-bell-side-table-bell-side-table-black",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BELL-SIDE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bell Dining Table",
+          "path_field": "dining-tables-bell-dining-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-Bell-DINING-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bell Side Table",
+          "path_field": "side-tables-bell-side-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BELL-SIDE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bow Coffee Table No. 3 Marble",
+          "path_field": "coffee-tables-bow-coffee-table-no-3-marble",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BOW-COFFEE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bonaparte Armchair",
+          "path_field": "armchairs-stools-bonaparte-armchair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BONAPARTE-ARMCHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bow Coffee Table No. 2",
+          "path_field": "coffee-tables-bow-coffee-table-no-2",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BOW-COFFEE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bow Coffee Table No. 1",
+          "path_field": "coffee-tables-bow-coffee-table-no-1",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BOW-COFFEE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bow Coffee Table No. 3",
+          "path_field": "coffee-tables-bow-coffee-table-no-3",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BOW-COFFEE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bow Coffee Table No. 5",
+          "path_field": "coffee-tables-bow-coffee-table-no-5",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BOW-COFFEE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bow Coffee Table No. 4",
+          "path_field": "coffee-tables-bow-coffee-table-no-4",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BOW-COFFEE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Bow Coffee Table No. 6",
+          "path_field": "coffee-tables-bow-coffee-table-no-6",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BOW-COFFEE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Chaos Chair",
+          "path_field": "dining-chairs-chaos-chair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-CHAOS-CHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Corker No. 1",
+          "path_field": "side-tables-corker-no-1",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-CORKER-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Corker No. 2",
+          "path_field": "side-tables-corker-no-2",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-CORKER-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Castellar Mirror",
+          "path_field": "mirrors-castellar-mirror",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-CASTELLAR-MIRROR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Corker No. 1 Marble",
+          "path_field": "side-tables-corker-no-1-marble",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-CORKER-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Brick Screen",
+          "path_field": "decor-brick-screen",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-BRICK-SCREEN-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Corker No. 3",
+          "path_field": "side-tables-corker-no-3",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-CORKER-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "De Stijl Rug",
+          "path_field": "rugs-de-stijl-rug",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-DE-STIJL-RUG_2D-3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "De Stijl Table",
+          "path_field": "dining-tables-de-stijl-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-DE-STIJL-TABLE_2D-3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Cypris Mirror (Cypris Mirror 70x70)",
+          "path_field": "mirrors-cypris-mirror-cypris-mirror-70x70",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-CYPRIS-MIRROR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Cypris Mirror (Cypris Mirror 60x180)",
+          "path_field": "mirrors-cypris-mirror-cypris-mirror-60x180",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-CYPRIS-MIRROR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Day Bed Grand",
+          "path_field": "chaise-longues-daybeds-day-bed-grand",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-DAY-BED-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Day Bed",
+          "path_field": "chaise-longues-daybeds-day-bed",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-DAY-BED-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Cypris Mirror",
+          "path_field": "mirrors-cypris-mirror",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-CYPRIS-MIRROR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Double X Table",
+          "path_field": "dining-tables-double-x-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-DOUBLE-X-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Forma Table Lamp",
+          "path_field": "lamps-forma-table-lamp",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-FORMA-TABLE-LAMP_2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Euvira Lounge Chair",
+          "path_field": "armchairs-stools-euvira-lounge-chair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-EUVIRA-LOUNGE-CHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Euvira Rocking Chair",
+          "path_field": "armchairs-stools-euvira-rocking-chair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-EUVIRA-ROCKING-CHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Folding Screen",
+          "path_field": "decor-folding-screen",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-FOLDING-SCREEN-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Jean Table",
+          "path_field": "dining-tables-jean-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-JEAN-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Lou Perou Table",
+          "path_field": "dining-tables-lou-perou-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-LOU-PEROU-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Mars Chair",
+          "path_field": "dining-chairs-mars-chair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-MARS-CHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Mandu Valet Stand",
+          "path_field": "small-furniture-mandu-valet-stand",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-MANDU-VALET-STAND-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Menton Table",
+          "path_field": "side-tables-menton-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-MENTON-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Lota Sofa",
+          "path_field": "sofas-couches-lota-sofa",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-LOTA-SOFA-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Munich Armchair",
+          "path_field": "armchairs-stools-munich-armchair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-MUNICH-ARMCHAIR_2D-3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Munich Stool",
+          "path_field": "armchairs-stools-munich-stool",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-MUNICH-STOOL-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Non Conformist Armchair",
+          "path_field": "armchairs-stools-non-conformist-armchair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-NON-CONFORMIST-ARMCHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Notos Standing Desk",
+          "path_field": "small-furniture-notos-standing-desk",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-NOTOS-STANDING-DESK-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Nymphenburg Coat Stand",
+          "path_field": "small-furniture-nymphenburg-coat-stand",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-NYMPHENBURG-COAT-STAND-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Monte Carlo Sofa",
+          "path_field": "sofas-couches-monte-carlo-sofa",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-MONTE-CARLO-SOFA-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Pallas Table",
+          "path_field": "garden-tables-pallas-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-PALLAS-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Odin Sofa",
+          "path_field": "sofas-couches-odin-sofa",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-ODIN-SOFA-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Orcus Home Desk",
+          "path_field": "small-furniture-orcus-home-desk",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-ORCUS-HOME-DESK-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Occasional Table",
+          "path_field": "side-tables-occasional-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-OCCASIONAL-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Petite Coiffeuse",
+          "path_field": "side-tables-petite-coiffeuse",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-PETITE-COIFFEUSE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Occasional Table (Occasional Table Square)",
+          "path_field": "side-tables-occasional-table-occasional-table-square",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-OCCASIONAL-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Pailla Wall Lamp",
+          "path_field": "lamps-pailla-wall-lamp",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-PAILLA-WALL-LAMP-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Paris Shelf",
+          "path_field": "shelves-paris-shelf",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-PARIS-SHELF-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Pegasus Home Desk",
+          "path_field": "small-furniture-pegasus-home-desk",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-PEGASUS-HOME-DESK-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Satish Bar Stool",
+          "path_field": "bar-stools-satish-bar-stool",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-SATISH-BAR-STOOL-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Roattino Floor Lamp",
+          "path_field": "lamps-roattino-floor-lamp",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-ROATTINO-FLOOR-LAMP-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Sol Side Table",
+          "path_field": "side-tables-sol-side-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-SOL-SIDE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Saturn Coat Stand",
+          "path_field": "small-furniture-saturn-coat-stand",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-SATURN-COAT-STAND-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Rivoli Table",
+          "path_field": "side-tables-rivoli-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-RIVOLI-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Triton Bar Stool",
+          "path_field": "bar-stools-triton-bar-stool",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-TRITON-BAR-STOOL-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Roquebrune Chair",
+          "path_field": "dining-chairs-roquebrune-chair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-ROQUEBRUNE-CHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Sol Side Table Miniature",
+          "path_field": "decor-sol-side-table-miniature",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-SOL-SIDE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Triton Counter Stool",
+          "path_field": "bar-stools-triton-counter-stool",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-TRITON-COUNTER-STOOL-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Ulisse Daybed",
+          "path_field": "chaise-longues-daybeds-ulisse-daybed",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-ULISSE-DAYBED-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Usha Umbrella Stand",
+          "path_field": "small-furniture-usha-umbrella-stand",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-USHA-UMBRELLA-STAND-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Vase",
+          "path_field": "decor-vase",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-VASE-BOWL-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Volkshaus Lounge Chair",
+          "path_field": "armchairs-stools-volkshaus-lounge-chair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-VOLKSHAUS-LOUNGE-CHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Tube Light Floor Lamp",
+          "path_field": "lamps-tube-light-floor-lamp",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-TUBE-LIGHT-FLOOR-LAMP-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Volkshaus Stool",
+          "path_field": "armchairs-stools-volkshaus-stool",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-VOLKSHAUS-STOOL-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Volkshaus Side Table",
+          "path_field": "side-tables-volkshaus-side-table",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-VOLKSHAUS-SIDE-TABLE-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        },
+        {
+          "produkt": "Venus Chair",
+          "path_field": "dining-chairs-venus-chair",
+          "url": "https://www.classicon.com/files/classicon/2d3d%20files/ClassiCon-VENUS-CHAIR-2D3D.zip",
+          "format": "zip (3DS/DWG)"
+        }
+      ]
+    },
+    "Alonpi": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 23,
+        "mitBild": 23,
+        "bildMedianPx": 6000,
+        "bildMinPx": 6000,
+        "bildMaxPx": 6000,
+        "bild1600plus": 23,
+        "mitMassen": 23,
+        "massQuelle": {
+          "backoffice_feld": 23
+        },
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 23,
+        "nur_bild": 0,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Alonpi",
+        "dateien3d": [],
+        "pdfs": 0,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Quasar": {
+      "quelle3d": {
+        "status": "login",
+        "formats": [
+          "pCon"
+        ],
+        "url": "https://quasarholland.com/en/pcon/",
+        "note": "3D-Modelle auf pCon.catalog (Konto nötig)."
+      },
+      "katalog": {
+        "produkte": 14,
+        "mitBild": 1,
+        "bildMedianPx": 768,
+        "bildMinPx": 768,
+        "bildMaxPx": 768,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 0,
+        "nur_bild": 1,
+        "nur_masse": 0,
+        "nichts": 13
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Quasar",
+        "dateien3d": [],
+        "pdfs": 3,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Schueller": {
+      "quelle3d": {
+        "status": "login",
+        "formats": [],
+        "url": "https://extranet.schueller.de/de/login/",
+        "note": "Wie Next125."
+      },
+      "katalog": {
+        "produkte": 29,
+        "mitBild": 29,
+        "bildMedianPx": 1556,
+        "bildMinPx": 1534,
+        "bildMaxPx": 2741,
+        "bild1600plus": 10,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 0,
+        "nur_bild": 29,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Schueller",
+        "dateien3d": [],
+        "pdfs": 3,
+        "datenblaetterMitMassen": 2,
+        "beispiele": [
+          "Herstellermaterial/Schueller/datenblaetter/Schueller_Bedienungs-und-Pflegeanleitung_2026.pdf",
+          "Herstellermaterial/Schueller/datenblaetter/Schueller_Kuechencheckliste_2024_DE_EN_ES.pdf"
+        ]
+      },
+      "modelle3d": []
+    },
+    "Antoniolupi": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Antoniolupi",
+        "dateien3d": [],
+        "pdfs": 0,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "agape": {
+      "quelle3d": {
+        "status": "login",
+        "formats": [],
+        "url": "https://www.agapedesign.it/area-riservata/",
+        "note": "Keine Produkte im Katalog."
+      },
+      "katalog": {
+        "produkte": 0,
+        "mitBild": 0,
+        "bildMedianPx": null,
+        "bildMinPx": null,
+        "bildMaxPx": null,
+        "bild1600plus": 0,
+        "mitMassen": 0,
+        "massQuelle": {},
+        "mitPdfAnhang": 0
+      },
+      "stufen": {},
+      "lokal": {
+        "ordner": "Herstellermaterial/Agape",
+        "dateien3d": [],
+        "pdfs": 7,
+        "datenblaetterMitMassen": 0,
+        "beispiele": []
+      },
+      "modelle3d": []
+    },
+    "Baobab": {
+      "quelle3d": {
+        "status": "none_found",
+        "formats": [],
+        "url": null,
+        "note": "Kein öffentliches 3D-Angebot gefunden (Website, QUELLEN.md)."
+      },
+      "katalog": {
+        "produkte": 24,
+        "mitBild": 24,
+        "bildMedianPx": 1750,
+        "bildMinPx": 1750,
+        "bildMaxPx": 1750,
+        "bild1600plus": 24,
+        "mitMassen": 20,
+        "massQuelle": {
+          "backoffice_feld": 20
+        },
+        "mitPdfAnhang": 0
+      },
+      "stufen": {
+        "3d": 0,
+        "3d_marke": 0,
+        "ar_foto_masse": 20,
+        "nur_bild": 4,
+        "nur_masse": 0,
+        "nichts": 0
+      },
+      "lokal": {
+        "ordner": "Herstellermaterial/Baobab",
+        "dateien3d": [],
+        "pdfs": 1,
+        "datenblaetterMitMassen": 1,
+        "beispiele": [
+          "Herstellermaterial/Baobab/datenblaetter/Baobab_Brennanleitung-Sicherheitshinweise.pdf"
+        ]
+      },
+      "modelle3d": []
+    }
+  }
+}

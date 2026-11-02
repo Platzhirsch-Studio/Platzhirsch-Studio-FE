@@ -1,0 +1,80 @@
+{
+  "_meta": {
+    "team": "Welle 2 · Kundenbetreuung, Newsletter, Empfehlung",
+    "stand": "2026-10-29",
+    "hinweis": "Nur Labels für Navigation/Footer und vorgeschlagene Textänderungen am Newsletter. Seiteninhalte von /empfehlen stehen in src/lib/kundenbetreuung/empfehlenContent.js (DE/EN/FR/IT), das Archiv ist nur DE. Die Integration übernimmt die Schlüssel in src/messages/*.json.",
+    "newsletterSuccess": "ERST übernehmen, wenn /api/newsletter_subscribe auf den DOI-Endpunkt der Frappe-App zeigt (platzhirsch_kundenbetreuung.kundenbetreuung.newsletter.anmelden). Vorher stimmt der Satz nicht."
+  },
+  "de": {
+    "Shell": { "nav": { "empfehlen": "Empfehlen", "newsletterArchiv": "Newsletter-Archiv" } },
+    "Footer": { "empfehlen": "Weiterempfehlen", "newsletterArchiv": "Newsletter-Archiv" },
+    "newsletter": { "success": "Danke. Bitte bestätigen Sie die Anmeldung über den Link, den wir Ihnen gerade geschickt haben." },
+    "inhalt": {
+      "newsletter": {
+        "success": "Danke. Bitte bestätigen Sie die Anmeldung über den Link, den wir Ihnen gerade geschickt haben.",
+        "reasons": [
+          "Neue Stücke in der Ausstellung in Lochau",
+          "Haralds Skizze des Monats: ein Blick in die Mappe",
+          "Termine und Einladungen zu Abenden im Haus",
+          "Ein praktischer Tipp zum Einrichten und Pflegen"
+        ],
+        "howText": "Sie brauchen nur Ihre E-Mail-Adresse. Nach der Anmeldung bestätigen Sie den Link in Ihrem Postfach. Abmelden können Sie sich jederzeit über den Link in jeder Ausgabe oder per E-Mail an marketing@platzhirsch.studio.",
+        "archivLink": "Bisherige Ausgaben ansehen"
+      }
+    }
+  },
+  "en": {
+    "Shell": { "nav": { "empfehlen": "Recommend us", "newsletterArchiv": "Newsletter archive (German)" } },
+    "Footer": { "empfehlen": "Recommend us", "newsletterArchiv": "Newsletter archive (German)" },
+    "newsletter": { "success": "Thank you. Please confirm your subscription using the link we have just sent you." },
+    "inhalt": {
+      "newsletter": {
+        "success": "Thank you. Please confirm your subscription using the link we have just sent you.",
+        "reasons": [
+          "New pieces in the showroom in Lochau",
+          "Harald's sketch of the month: a look into his folder",
+          "Dates and invitations to evenings at the house",
+          "A practical tip on furnishing and care"
+        ],
+        "howText": "All you need is your e-mail address. After signing up, confirm the link in your inbox. You can unsubscribe at any time via the link in every issue or by e-mail to marketing@platzhirsch.studio.",
+        "archivLink": "See past issues (in German)"
+      }
+    }
+  },
+  "fr": {
+    "Shell": { "nav": { "empfehlen": "Recommander", "newsletterArchiv": "Archives de la newsletter (allemand)" } },
+    "Footer": { "empfehlen": "Nous recommander", "newsletterArchiv": "Archives de la newsletter (allemand)" },
+    "newsletter": { "success": "Merci. Veuillez confirmer votre inscription grâce au lien que nous venons de vous envoyer." },
+    "inhalt": {
+      "newsletter": {
+        "success": "Merci. Veuillez confirmer votre inscription grâce au lien que nous venons de vous envoyer.",
+        "reasons": [
+          "Nouvelles pièces au showroom de Lochau",
+          "Le croquis du mois de Harald : un regard dans son carnet",
+          "Dates et invitations aux soirées à la maison",
+          "Un conseil pratique d’aménagement et d’entretien"
+        ],
+        "howText": "Il suffit de votre adresse e-mail. Après l’inscription, confirmez le lien reçu dans votre boîte. Désinscription à tout moment via le lien présent dans chaque numéro ou par e-mail à marketing@platzhirsch.studio.",
+        "archivLink": "Voir les numéros précédents (en allemand)"
+      }
+    }
+  },
+  "it": {
+    "Shell": { "nav": { "empfehlen": "Consigliateci", "newsletterArchiv": "Archivio newsletter (tedesco)" } },
+    "Footer": { "empfehlen": "Consigliateci", "newsletterArchiv": "Archivio newsletter (tedesco)" },
+    "newsletter": { "success": "Grazie. Confermate l’iscrizione tramite il link che vi abbiamo appena inviato." },
+    "inhalt": {
+      "newsletter": {
+        "success": "Grazie. Confermate l’iscrizione tramite il link che vi abbiamo appena inviato.",
+        "reasons": [
+          "Nuovi pezzi nello showroom di Lochau",
+          "Lo schizzo del mese di Harald: uno sguardo nella sua cartella",
+          "Date e inviti alle serate in casa",
+          "Un consiglio pratico per arredare e curare"
+        ],
+        "howText": "Basta il vostro indirizzo e-mail. Dopo l’iscrizione confermate il link nella vostra casella. Potete disiscrivervi in qualsiasi momento tramite il link in ogni numero o scrivendo a marketing@platzhirsch.studio.",
+        "archivLink": "Vedere i numeri precedenti (in tedesco)"
+      }
+    }
+  }
+}

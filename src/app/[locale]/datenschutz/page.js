@@ -2,7 +2,8 @@ import React from "react";
 import JsonLd from "@/components/Reusable/JsonLd";
 import Datenschutz from "@/components/Datenschutz/datenbanner";
 import Content from "@/components/Datenschutz/datenschutz";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import Kurzfassung from "@/components/Datenschutz/kurzfassung";
+import { DEFAULT_OG_IMAGE, hreflangLanguages, ogLocale } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -31,28 +32,28 @@ function getDatenschutzPageUrl(locale) {
 function getLocalizedMetadata(locale) {
   const metadataMap = {
     de: {
-      title: "Datenschutz & Cookies bei Platzhirsch – DSGVO-konform",
-      description: "Erfahren Sie, wie Platzhirsch Ihre Daten schützt (DSGVO), Cookies nutzt und Google Analytics einsetzt. Newsletter Datenschutz inklusive.",
-      ogTitle: "Datenschutz – Ihre Privatsphäre",
-      ogDescription: "Sicherheit & Transparenz: Alles über die Datenverarbeitung, Cookie-Nutzung und Webanalyse bei Platzhirsch Home Living.",
+      title: "Datenschutz | Platzhirsch Home Living",
+      description: "Welche Daten Platzhirsch Home Living auf der Website, bei Anfragen, im Concierge, im Kundenportal und bei Google-Diensten verarbeitet, wozu und wie lange.",
+      ogTitle: "Datenschutz",
+      ogDescription: "Datenverarbeitung, Cookies und Ihre Rechte bei Platzhirsch Home Living in Lochau.",
     },
     en: {
-      title: "Privacy & Cookies at Platzhirsch – GDPR Compliant",
-      description: "Learn how Platzhirsch protects your data (GDPR), uses cookies and Google Analytics. Newsletter privacy included.",
-      ogTitle: "Privacy – Your Privacy Matters",
-      ogDescription: "Security & Transparency: Everything about data processing, cookie usage and web analytics at Platzhirsch Home Living.",
+      title: "Privacy Policy | Platzhirsch Home Living",
+      description: "Which data Platzhirsch Home Living processes on the website, for enquiries, in the concierge, in the customer portal and for Google services. Summary in English, full text in German.",
+      ogTitle: "Privacy Policy",
+      ogDescription: "Data processing, cookies and your rights at Platzhirsch Home Living in Lochau: summary in English.",
     },
     fr: {
-      title: "Confidentialité & Cookies chez Platzhirsch – Conforme RGPD",
-      description: "Découvrez comment Platzhirsch protège vos données (RGPD), utilise les cookies et Google Analytics. Confidentialité des newsletters incluse.",
-      ogTitle: "Confidentialité – Votre vie privée",
-      ogDescription: "Sécurité & Transparence : Tout sur le traitement des données, l'utilisation des cookies et l'analyse web chez Platzhirsch Home Living.",
+      title: "Protection des données | Platzhirsch Home Living",
+      description: "Les données que Platzhirsch Home Living traite sur le site, pour les demandes, dans le concierge, dans l'espace client et pour les services Google. Résumé en français, texte complet en allemand.",
+      ogTitle: "Protection des données",
+      ogDescription: "Traitement des données, cookies et vos droits chez Platzhirsch Home Living à Lochau : résumé en français.",
     },
     it: {
-      title: "Privacy & Cookies presso Platzhirsch – Conforme GDPR",
-      description: "Scopri come Platzhirsch protegge i tuoi dati (GDPR), utilizza cookie e Google Analytics. Privacy della newsletter inclusa.",
-      ogTitle: "Privacy – La tua privacy",
-      ogDescription: "Sicurezza & Trasparenza: Tutto sul trattamento dei dati, l'uso dei cookie e l'analisi web presso Platzhirsch Home Living.",
+      title: "Privacy | Platzhirsch Home Living",
+      description: "Quali dati tratta Platzhirsch Home Living sul sito, per le richieste, nel concierge, nell'area clienti e per i servizi Google. Sintesi in italiano, testo completo in tedesco.",
+      ogTitle: "Privacy",
+      ogDescription: "Trattamento dei dati, cookie e i vostri diritti presso Platzhirsch Home Living a Lochau: sintesi in italiano.",
     },
   };
 
@@ -81,19 +82,20 @@ export async function generateMetadata({ params }) {
       siteName: "Platzhirsch Home Living",
       images: [
         {
-          url: "/Images/fallback-og.jpg",
+          // Rat 9,5 B5: eigenes OG-Bild; das frühere Foto hat in bildrechte.csv „freigabe offen“.
+          url: DEFAULT_OG_IMAGE,
           width: 1200,
           height: 630,
           alt: "Platzhirsch Home Living Datenschutz",
         },
       ],
-      locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
+      locale: ogLocale(locale),
     },
     twitter: {
       card: "summary_large_image",
       title: localizedMeta.ogTitle,
       description: localizedMeta.ogDescription,
-      images: ["/Images/fallback-og.jpg"],
+      images: [DEFAULT_OG_IMAGE],
     },
   };
 }
@@ -107,7 +109,7 @@ export default async function Page({ params }) {
   const localizedMeta = getLocalizedMetadata(locale);
 
   const homeName = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
-  const pageName = locale === "it" ? "Privacy" : locale === "en" ? "Privacy Policy" : locale === "fr" ? "Confidentialité" : "Datenschutz";
+  const pageName = locale === "it" ? "Informativa sulla privacy" : locale === "en" ? "Privacy policy" : locale === "fr" ? "Protection des données" : "Datenschutz";
 
   // ✅ JSON-LD Structured Data
   const webPageSchema = {
@@ -132,6 +134,7 @@ export default async function Page({ params }) {
     <div>
       <JsonLd data={webPageSchema} />
       <Datenschutz />
+      <Kurzfassung locale={locale} />
       <Content />
     </div>
   );

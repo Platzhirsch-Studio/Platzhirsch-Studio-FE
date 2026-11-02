@@ -1,0 +1,330 @@
+// src/lib/showroom/copy.js – Texte des Rundgangs /[locale]/showroom (N1) in DE/EN/FR/IT.
+//
+// Bis das i18n-Team den Namespace „Showroom“ in src/messages/*.json übernimmt
+// (Vorschlag: Marktresearch/digital/features/showroom-messages-vorschlag.json,
+// gleiche Schlüssel), liest die Seite diese Datei. Regeln: keine Superlative,
+// keine Preise, Händler-Wort nur für ClassiCon und Ezarri (dealerLine()),
+// Haralds Arbeit nur mit echtem Material (Inhaber-Entscheidung Nr. 8).
+//
+// Rein, ohne Pakete: Server, Client und node --test dürfen importieren.
+import { CLAIM_REGISTER, isVerifiedDealerBrand, toBrandSlug } from "../legal/claims.js";
+
+export const SHOWROOM_LOCALES = Object.freeze(["de", "en", "fr", "it"]);
+
+/**
+ * Marken, bei denen der Inhaber eine Händler-Aussage erlaubt (ClassiCon; Ezarri laut
+ * Entscheidung Nr. 7). Sichtbar wird sie nur, wenn die Marke zusätzlich im
+ * Claim-Register src/lib/legal/claims.js belegt ist (Stand 28.10.2026: nur ClassiCon;
+ * den Ezarri-Eintrag setzt der Teamleiter mit EZARRI_PUBLIC).
+ */
+export const DEALER_BRANDS = Object.freeze(["ClassiCon", "Ezarri"]);
+
+const MONTHS = {
+  de: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+  en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  fr: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+  it: ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"],
+};
+
+/** "2026-11" oder "2026-11-15" → "November 2026" (je Sprache). */
+export function monthYear(iso, locale = "de") {
+  const m = /^(\d{4})-(\d{2})/.exec(String(iso || ""));
+  if (!m) return "";
+  return `${(MONTHS[locale] || MONTHS.de)[Number(m[2]) - 1]} ${m[1]}`;
+}
+
+const DE = {
+  meta: {
+    title: "Showroom Lochau als Rundgang | Platzhirsch Home Living",
+    description:
+      "Gehen Sie durch die Ausstellung von Platzhirsch Home Living in Lochau am Bodensee: Wohnen, Küche, Café und Outdoor, mit Stücken zum Merken und Terminwunsch.",
+  },
+  eyebrow: "Showroom Lochau · Rundgang",
+  h1: "Das Haus, jederzeit offen.",
+  lead: "Gehen Sie durch unsere Ausstellung in Lochau, so wie sie heute steht: Station für Station, mit den Stücken, die Sie bei uns ausprobieren können.",
+  stand: (s) => `Ausstellung, Stand: ${s}`,
+  start: "Rundgang starten",
+  startHinweis: (mb) => `3D-Ansicht im Browser, erster Abschnitt ca. ${mb} MB`,
+  video: "Als Video ansehen",
+  liste: "Alle Stationen und Stücke als Liste",
+  station: (i, n) => `Station ${i} von ${n}`,
+  weiter: "Weiter",
+  zurueck: "Zurück",
+  stationWaehlen: "Station wählen",
+  stimmung: "Lichtstimmung",
+  tag: "Tag",
+  abend: "Abend",
+  laden: "Der Raum wird geladen …",
+  ladenProzent: (p) => `Der Raum wird geladen … ${p} %`,
+  fehler: "Die 3D-Ansicht konnte nicht geladen werden. Video und Fotos zeigen dieselben Stationen.",
+  keinWebgl: "Ihr Browser zeigt keine 3D-Ansicht an. Video und Fotos zeigen dieselben Stationen.",
+  beenden: "Rundgang beenden",
+  vollbild: "Vollbild",
+  vollbildAus: "Vollbild beenden",
+  bedienung: "Pfeiltasten ← → wechseln die Station, Tab führt zu den Stücken. Ziehen oder A/D/W/S dreht den Blick leicht.",
+  stueck: "Stück ansehen",
+  aktionen: {
+    produkt: "Zur Produktseite",
+    ar: "In 3D und AR ansehen",
+    merken: "Merken",
+    gemerkt: "Gemerkt",
+    termin: "Hier Probe sitzen: Termin anfragen",
+  },
+  terminPrefix: "Rundgang Showroom Lochau",
+  schliessen: "Schließen",
+  imShowroom: "Steht in der Ausstellung in Lochau",
+  ohneStuecke: "An dieser Station zeigen wir den Raum.",
+  nurFoto: "An dieser Station zeigen wir ein Foto, weil Glas und Spiegel in der 3D-Aufnahme nicht sauber wirken.",
+  videoTitel: "Rundgang durch den Showroom Lochau",
+  videoText: "Die Kamerafahrt zeigt dieselben Stationen wie der Rundgang.",
+  fotos: "Die Stationen als Fotos",
+  zurueckZu3d: "Zurück zur 3D-Ansicht",
+  abschnitte: {
+    sehenTitel: "Was Sie hier sehen",
+    sehenText:
+      "Der Rundgang ist aus Fotos unserer eigenen Ausstellung zusammengesetzt, aufgenommen nach Ladenschluss. Es ist kein gerendertes Bild und keine KI-Erzeugung: Was Sie sehen, steht so in Lochau. Weil sich die Ausstellung ändert, nennen wir den Stand der Aufnahme und blenden Stücke aus, die nicht mehr da sind.",
+    harald: "Wie bei uns eine Einrichtung entsteht",
+    haraldText:
+      "Harald Menghin zeichnet jede Einrichtung zuerst von Hand und baut bei Bedarf ein kleines Modell. Erst danach folgen 3D-Planung und Rendering. Dafür nimmt er sich Zeit bei Ihnen vor Ort, bei Bedarf ein bis zwei Tage: Licht, Räume, Gewohnheiten.",
+    haraldLink: "So arbeiten wir",
+    besuch: "Lieber in echt?",
+    besuchText: "Der Rundgang ersetzt keinen Besuch. Probe sitzen, Stoffe fühlen, beim Kaffee planen: Wir nehmen uns Zeit für Sie.",
+    termin: "Termin anfragen",
+    route: "Route planen",
+    zeiten: "Öffnungszeiten",
+    technik: "Technik und Datenschutz",
+    technikText:
+      "Die 3D-Ansicht lädt erst, wenn Sie „Rundgang starten“ wählen, und nur von unserem eigenen Server. Sie setzt keine Cookies. Messungen zur Nutzung gibt es nur mit Ihrer Einwilligung.",
+  },
+  vorschau: "Vorschau mit synthetischer Testszene: Noch keine Aufnahme der Ausstellung, diese Seite ist nicht öffentlich.",
+  zonen: { cafe: "Eingang und Café", wohnen: "Wohnen", kueche: "Küche", outdoor: "Outdoor und Ezarri", _testszene: "Testszene" },
+};
+
+const EN = {
+  meta: {
+    title: "Lochau showroom tour | Platzhirsch Home Living",
+    description:
+      "Walk through the Platzhirsch Home Living showroom in Lochau on Lake Constance: living, kitchen, café and outdoor, with pieces to save and an appointment request.",
+  },
+  eyebrow: "Lochau showroom · Tour",
+  h1: "The house, open at any hour.",
+  lead: "Walk through our showroom in Lochau as it stands today: station by station, with the pieces you can try out in person.",
+  stand: (s) => `Showroom as of ${s}`,
+  start: "Start the tour",
+  startHinweis: (mb) => `3D view in your browser, first section approx. ${mb} MB`,
+  video: "Watch as video",
+  liste: "All stations and pieces as a list",
+  station: (i, n) => `Station ${i} of ${n}`,
+  weiter: "Next",
+  zurueck: "Back",
+  stationWaehlen: "Choose a station",
+  stimmung: "Light",
+  tag: "Day",
+  abend: "Evening",
+  laden: "Loading the room …",
+  ladenProzent: (p) => `Loading the room … ${p} %`,
+  fehler: "The 3D view could not be loaded. The video and photos show the same stations.",
+  keinWebgl: "Your browser cannot show the 3D view. The video and photos show the same stations.",
+  beenden: "End the tour",
+  vollbild: "Full screen",
+  vollbildAus: "Exit full screen",
+  bedienung: "Arrow keys ← → change the station, Tab moves to the pieces. Drag or A/D/W/S turns the view slightly.",
+  stueck: "View piece",
+  aktionen: {
+    produkt: "Product page",
+    ar: "View in 3D and AR",
+    merken: "Save",
+    gemerkt: "Saved",
+    termin: "Try it in person: request an appointment",
+  },
+  terminPrefix: "Lochau showroom tour",
+  schliessen: "Close",
+  imShowroom: "On display in Lochau",
+  ohneStuecke: "At this station we show the room.",
+  nurFoto: "At this station we show a photo, because glass and mirrors do not come out cleanly in the 3D capture.",
+  videoTitel: "Tour of the Lochau showroom",
+  videoText: "The camera path shows the same stations as the tour.",
+  fotos: "The stations as photos",
+  zurueckZu3d: "Back to the 3D view",
+  abschnitte: {
+    sehenTitel: "What you are looking at",
+    sehenText:
+      "The tour is assembled from photos of our own showroom, taken after closing time. It is not a rendering and not AI-generated: what you see stands in Lochau. As the showroom changes, we state the date of the capture and hide pieces that are no longer there.",
+    harald: "How an interior comes about with us",
+    haraldText:
+      "Harald Menghin first draws every interior by hand and, where useful, builds a small model. Only then follow 3D planning and rendering. He takes time with you on site, a day or two if needed: light, rooms, habits.",
+    haraldLink: "How we work",
+    besuch: "Prefer the real thing?",
+    besuchText: "The tour does not replace a visit. Sit, feel the fabrics, plan over a coffee: we take time for you.",
+    termin: "Request an appointment",
+    route: "Plan your route",
+    zeiten: "Opening hours",
+    technik: "Technology and privacy",
+    technikText:
+      "The 3D view only loads when you choose “Start the tour”, and only from our own server. It sets no cookies. Usage is measured only with your consent.",
+  },
+  vorschau: "Preview with a synthetic test scene: the showroom has not been captured yet, this page is not public.",
+  zonen: { cafe: "Entrance and café", wohnen: "Living", kueche: "Kitchen", outdoor: "Outdoor and Ezarri", _testszene: "Test scene" },
+};
+
+const FR = {
+  meta: {
+    title: "Visite du showroom de Lochau | Platzhirsch Home Living",
+    description:
+      "Parcourez le showroom Platzhirsch Home Living à Lochau, au bord du lac de Constance : séjour, cuisine, café et extérieur, avec des pièces à retenir et une demande de rendez-vous.",
+  },
+  eyebrow: "Showroom de Lochau · Visite",
+  h1: "La maison, ouverte à toute heure.",
+  lead: "Parcourez notre exposition à Lochau telle qu’elle est aujourd’hui : station après station, avec les pièces que vous pouvez essayer chez nous.",
+  stand: (s) => `Exposition, état : ${s}`,
+  start: "Commencer la visite",
+  startHinweis: (mb) => `Vue 3D dans le navigateur, première partie env. ${mb} Mo`,
+  video: "Voir en vidéo",
+  liste: "Toutes les stations et pièces sous forme de liste",
+  station: (i, n) => `Station ${i} sur ${n}`,
+  weiter: "Suivant",
+  zurueck: "Retour",
+  stationWaehlen: "Choisir une station",
+  stimmung: "Lumière",
+  tag: "Jour",
+  abend: "Soir",
+  laden: "Chargement de la pièce …",
+  ladenProzent: (p) => `Chargement de la pièce … ${p} %`,
+  fehler: "La vue 3D n’a pas pu être chargée. La vidéo et les photos montrent les mêmes stations.",
+  keinWebgl: "Votre navigateur ne peut pas afficher la vue 3D. La vidéo et les photos montrent les mêmes stations.",
+  beenden: "Terminer la visite",
+  vollbild: "Plein écran",
+  vollbildAus: "Quitter le plein écran",
+  bedienung: "Les flèches ← → changent de station, Tab mène aux pièces. Faites glisser ou A/D/W/S pour tourner légèrement le regard.",
+  stueck: "Voir la pièce",
+  aktionen: {
+    produkt: "Page produit",
+    ar: "Voir en 3D et en RA",
+    merken: "Retenir",
+    gemerkt: "Retenu",
+    termin: "L’essayer sur place : demander un rendez-vous",
+  },
+  terminPrefix: "Visite du showroom de Lochau",
+  schliessen: "Fermer",
+  imShowroom: "Exposé à Lochau",
+  ohneStuecke: "À cette station, nous montrons la pièce.",
+  nurFoto: "À cette station, nous montrons une photo, car le verre et les miroirs ne ressortent pas proprement en 3D.",
+  videoTitel: "Visite du showroom de Lochau",
+  videoText: "Le parcours de la caméra montre les mêmes stations que la visite.",
+  fotos: "Les stations en photos",
+  zurueckZu3d: "Retour à la vue 3D",
+  abschnitte: {
+    sehenTitel: "Ce que vous voyez",
+    sehenText:
+      "La visite est composée de photos de notre propre exposition, prises après la fermeture. Ce n’est ni un rendu ni une création par IA : ce que vous voyez se trouve à Lochau. L’exposition évolue ; nous indiquons donc la date de la prise de vue et masquons les pièces qui n’y sont plus.",
+    harald: "Comment naît un intérieur chez nous",
+    haraldText:
+      "Harald Menghin dessine d’abord chaque aménagement à la main et construit au besoin une petite maquette. Viennent ensuite la planification 3D et le rendu. Il prend le temps de venir chez vous, un ou deux jours si nécessaire : lumière, pièces, habitudes.",
+    haraldLink: "Notre méthode",
+    besuch: "Vous préférez en vrai ?",
+    besuchText: "La visite ne remplace pas une venue. S’asseoir, toucher les tissus, planifier autour d’un café : nous prenons le temps pour vous.",
+    termin: "Demander un rendez-vous",
+    route: "Itinéraire",
+    zeiten: "Horaires",
+    technik: "Technique et confidentialité",
+    technikText:
+      "La vue 3D ne se charge que lorsque vous choisissez « Commencer la visite », et uniquement depuis notre propre serveur. Elle ne dépose aucun cookie. L’utilisation n’est mesurée qu’avec votre consentement.",
+  },
+  vorschau: "Aperçu avec une scène de test synthétique : l’exposition n’a pas encore été capturée, cette page n’est pas publique.",
+  zonen: { cafe: "Entrée et café", wohnen: "Séjour", kueche: "Cuisine", outdoor: "Extérieur et Ezarri", _testszene: "Scène de test" },
+};
+
+const IT = {
+  meta: {
+    title: "Visita allo showroom di Lochau | Platzhirsch Home Living",
+    description:
+      "Percorrete lo showroom Platzhirsch Home Living a Lochau sul lago di Costanza: living, cucina, caffè ed esterni, con pezzi da salvare e richiesta di appuntamento.",
+  },
+  eyebrow: "Showroom di Lochau · Visita",
+  h1: "La casa, aperta a ogni ora.",
+  lead: "Percorrete la nostra esposizione a Lochau così com’è oggi: stazione dopo stazione, con i pezzi che potete provare da noi.",
+  stand: (s) => `Esposizione, aggiornata a ${s}`,
+  start: "Iniziate la visita",
+  startHinweis: (mb) => `Vista 3D nel browser, prima parte circa ${mb} MB`,
+  video: "Guardate il video",
+  liste: "Tutte le stazioni e i pezzi come elenco",
+  station: (i, n) => `Stazione ${i} di ${n}`,
+  weiter: "Avanti",
+  zurueck: "Indietro",
+  stationWaehlen: "Scegliete una stazione",
+  stimmung: "Luce",
+  tag: "Giorno",
+  abend: "Sera",
+  laden: "Caricamento dello spazio …",
+  ladenProzent: (p) => `Caricamento dello spazio … ${p} %`,
+  fehler: "Non è stato possibile caricare la vista 3D. Il video e le foto mostrano le stesse stazioni.",
+  keinWebgl: "Il vostro browser non può mostrare la vista 3D. Il video e le foto mostrano le stesse stazioni.",
+  beenden: "Terminate la visita",
+  vollbild: "Schermo intero",
+  vollbildAus: "Uscite dallo schermo intero",
+  bedienung: "I tasti freccia ← → cambiano stazione, Tab porta ai pezzi. Trascinate o usate A/D/W/S per ruotare leggermente lo sguardo.",
+  stueck: "Vedete il pezzo",
+  aktionen: {
+    produkt: "Pagina prodotto",
+    ar: "Guardate in 3D e AR",
+    merken: "Salvate",
+    gemerkt: "Salvato",
+    termin: "Provatelo di persona: richiedete un appuntamento",
+  },
+  terminPrefix: "Visita showroom di Lochau",
+  schliessen: "Chiudi",
+  imShowroom: "Esposto a Lochau",
+  ohneStuecke: "In questa stazione mostriamo lo spazio.",
+  nurFoto: "In questa stazione mostriamo una foto, perché vetro e specchi non risultano puliti nella ripresa 3D.",
+  videoTitel: "Visita allo showroom di Lochau",
+  videoText: "Il percorso della telecamera mostra le stesse stazioni della visita.",
+  fotos: "Le stazioni in foto",
+  zurueckZu3d: "Tornate alla vista 3D",
+  abschnitte: {
+    sehenTitel: "Che cosa vedete",
+    sehenText:
+      "La visita è composta da foto della nostra esposizione, scattate dopo la chiusura. Non è un rendering e non è generata con l’IA: ciò che vedete si trova a Lochau. Poiché l’esposizione cambia, indichiamo la data della ripresa e nascondiamo i pezzi che non ci sono più.",
+    harald: "Come nasce un arredamento da noi",
+    haraldText:
+      "Harald Menghin disegna prima a mano ogni arredamento e, se serve, costruisce un piccolo modello. Solo dopo arrivano la progettazione 3D e il rendering. Si prende tempo da voi sul posto, se necessario uno o due giorni: luce, spazi, abitudini.",
+    haraldLink: "Il nostro metodo",
+    besuch: "Meglio dal vivo?",
+    besuchText: "La visita non sostituisce una visita vera. Sedersi, toccare i tessuti, progettare davanti a un caffè: ci prendiamo tempo per voi.",
+    termin: "Richiedete un appuntamento",
+    route: "Pianificate il percorso",
+    zeiten: "Orari",
+    technik: "Tecnica e privacy",
+    technikText:
+      "La vista 3D si carica solo quando scegliete «Iniziate la visita», e solo dal nostro server. Non imposta cookie. L’uso viene misurato solo con il vostro consenso.",
+  },
+  vorschau: "Anteprima con una scena di prova sintetica: l’esposizione non è ancora stata ripresa, questa pagina non è pubblica.",
+  zonen: { cafe: "Ingresso e caffè", wohnen: "Living", kueche: "Cucina", outdoor: "Esterni ed Ezarri", _testszene: "Scena di prova" },
+};
+
+const COPY = { de: DE, en: EN, fr: FR, it: IT };
+
+/** Texte einer Sprache (Fallback Deutsch). */
+export function showroomCopy(locale) {
+  return COPY[locale] || DE;
+}
+
+/** Text aus einer Sprach-Map { de, en, fr, it } oder einem String. */
+export function pick(value, locale) {
+  if (value == null) return "";
+  if (typeof value === "string") return value;
+  return value[locale] ?? value.de ?? "";
+}
+
+/**
+ * Händler-Zeile zu einer Marke: der belegte Satz aus dem Claim-Register, nur für
+ * ClassiCon/Ezarri und nur wenn dort eingetragen; sonst null. Das Register ist
+ * deutsch – für EN/FR/IT erscheint die Zeile erst mit übersetztem Registertext
+ * (Feld texts.<locale>), bis dahin null (lieber nichts als ungeprüft).
+ */
+export function dealerLine(marke, locale = "de") {
+  if (!DEALER_BRANDS.includes(marke) || !isVerifiedDealerBrand(marke)) return null;
+  const entry = CLAIM_REGISTER.find((c) => c.brandSlug === toBrandSlug(marke) && c.claim === "dealer");
+  if (!entry) return null;
+  if (locale === "de") return entry.text;
+  return entry.texts?.[locale] ?? null;
+}

@@ -1,0 +1,12 @@
+{
+  "_zweck": "fix2 (28.10.2026): Upload.consent.purpose EN/FR/IT ohne „exklusiv“-Formen (tests/unit/r6-i18n.test.mjs (3), Design-Bibel). DE „ausschließlich“ bleibt 1:1 (CONSENT_VERSION). Weiterhin vorläufige Arbeitsübersetzung mit Kanzlei-Vorbehalt.",
+  "en": {
+    "Upload.consent.purpose": "I consent to {site} (Lochau) storing and using the photos, videos, plans and my note uploaded here solely to process my request{ref}."
+  },
+  "fr": {
+    "Upload.consent.purpose": "J’accepte que {site} (Lochau) enregistre et utilise les photos, vidéos, plans et ma note envoyés ici uniquement pour le traitement de ma demande{ref}."
+  },
+  "it": {
+    "Upload.consent.purpose": "Acconsento che {site} (Lochau) conservi e utilizzi le foto, i video, le piante e la mia nota caricati qui unicamente per gestire la mia richiesta{ref}."
+  }
+}

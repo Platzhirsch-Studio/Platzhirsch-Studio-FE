@@ -1,6 +1,7 @@
 // src/lib/api/fetchKategorien.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
 
 // CMS-managed category tiles (Produkte Kategorie doctype) for the
 // /produkte hub. Replaces the static CATEGORY_I18N map + getShopCategories() tile image with real
@@ -10,7 +11,7 @@ export async function fetchKategorien() {
   const API_URL = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.produkte_kategorie.api.get_all_kategorien_api`;
 
   try {
-    const response = await fetch(API_URL, {
+    const response = await backofficeFetch(API_URL, {
       method: "GET",
       next: { revalidate: 3600, tags: ["kategorien"] },
     });
@@ -35,7 +36,7 @@ const PRODUKTE_NEW_API = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_stud
 // that has one. Returns a Map(kategories -> "/files/...").
 async function fetchProductImageByKategorie(markenName) {
   try {
-    const response = await fetch(
+    const response = await backofficeFetch(
       `${PRODUKTE_NEW_API}.get_produkte_by_marke_api?marken=${encodeURIComponent(markenName)}`,
       { method: "GET", next: { revalidate: 3600, tags: ["products", "kategorien"] } }
     );
@@ -72,7 +73,7 @@ export async function fetchKategorienByMarke(markenName) {
 
   try {
     const [response, imageByKategorie] = await Promise.all([
-      fetch(`${PRODUKTE_NEW_API}.get_kategorien_by_marke?marken=${encodeURIComponent(markenName)}`, {
+      backofficeFetch(`${PRODUKTE_NEW_API}.get_kategorien_by_marke?marken=${encodeURIComponent(markenName)}`, {
         method: "GET",
         next: { revalidate: 3600, tags: ["kategorien"] },
       }),
@@ -102,7 +103,7 @@ export async function fetchKategorienByMarke(markenName) {
 export async function fetchMarkeKategorien(markenName) {
   if (!markenName) return [];
   try {
-    const response = await fetch(
+    const response = await backofficeFetch(
       `${PRODUKTE_NEW_API}.get_kategorien_by_marke?marken=${encodeURIComponent(markenName)}`,
       { method: "GET", next: { revalidate: 3600, tags: ["kategorien"] } }
     );

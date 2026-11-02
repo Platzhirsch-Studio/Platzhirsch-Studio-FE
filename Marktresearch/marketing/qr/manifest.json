@@ -1,0 +1,87 @@
+{
+  "url": "https://platzhirsch.studio/de/bewerten",
+  "errorCorrection": "M",
+  "quietZoneModules": 4,
+  "version": 3,
+  "size": 29,
+  "mask": 4,
+  "moduleMmOnCard": 1.216,
+  "card": {
+    "format": "A6 quer",
+    "mm": [
+      148,
+      105
+    ],
+    "qrBoxMm": 45,
+    "dpi": 300
+  },
+  "generator": "scripts/make-review-qr.mjs",
+  "qrcode": "1.5.4",
+  "selfTest": {
+    "ok": true,
+    "results": [
+      {
+        "file": "qr-bewerten.svg",
+        "ok": true,
+        "decoded": "https://platzhirsch.studio/de/bewerten",
+        "version": 3,
+        "ecl": "M",
+        "mask": 4,
+        "modes": [
+          "byte"
+        ]
+      },
+      {
+        "file": "qr-bewerten.png",
+        "ok": true,
+        "decoded": "https://platzhirsch.studio/de/bewerten",
+        "version": 3,
+        "ecl": "M",
+        "mask": 4,
+        "modes": [
+          "byte"
+        ]
+      },
+      {
+        "file": "karte-bewerten-rueckseite.svg",
+        "ok": true,
+        "decoded": "https://platzhirsch.studio/de/bewerten",
+        "version": 3,
+        "ecl": "M",
+        "mask": 4,
+        "modes": [
+          "byte"
+        ]
+      },
+      {
+        "file": "karte-bewerten-rueckseite.png",
+        "ok": true,
+        "decoded": "https://platzhirsch.studio/de/bewerten",
+        "version": 3,
+        "ecl": "M",
+        "mask": 4,
+        "modes": [
+          "byte"
+        ]
+      },
+      {
+        "file": "(Gegenprobe /de/kontakt)",
+        "ok": true,
+        "decoded": "https://platzhirsch.studio/de/kontakt"
+      },
+      {
+        "file": "karte-bewerten-rueckseite.png (Format)",
+        "ok": true,
+        "decoded": "1748 × 1240 px = A6 quer bei 300 dpi"
+      }
+    ]
+  },
+  "sha256": {
+    "qr-bewerten.svg": "e4df92a5b9eeb87feadf459694a1a70c2fa74b8496145020431ac2e23e55abad",
+    "qr-bewerten.png": "5c6a57812f29422f313fe75f97a7ee80a8bc966ddd6058f0cfe293d9680b692c",
+    "karte-bewerten-rueckseite.svg": "3933b593a6cf5830622767b40ccb6632752b06ec96adf1d1b01bb3f0435ae9b0",
+    "karte-bewerten-rueckseite.png": "c2ae822c1533cde9ac976f6c75e9fccc59ab479fb0f4599170d275b65e1a9bd8",
+    "karte-bewerten-vorderseite.svg": "6f3196f30a8a5e0d38a8e7aca9179875273893296cff4d1b336e938a8ff60cd5",
+    "karte-bewerten-vorderseite.png": "322ebe07f090984d8177f0206642b20e54d86b79cc9be5776415d76378c08a11"
+  }
+}

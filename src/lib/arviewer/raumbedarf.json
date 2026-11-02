@@ -1,0 +1,4404 @@
+{
+  "$note": "Erzeugt von scripts/arviewer/raumbedarf.mjs. Stufe 2b: Grundfläche + halbtransparenter Quader in Originalgröße aus dims.json (Herstellermaße mit Quelle), ohne Herstellerbild. profil.art = stufen (Sitz/Rücken/Armlehnen aus Datenblatt-Werten des Elements) bzw. linien (Sitz-/Armlehnenhöhe als Linien); ohne Werte bleibt der Quader. groessen = weitere Größen der Familie als eigene AR-Dateien. GLB für model-viewer/Scene Viewer, USDZ für AR Quick Look, Poster = Axonometrie.",
+  "stand": "2026-10-28",
+  "produkte": {
+    "armchairs-andersen-armchair": {
+      "glb": "/labs/ar-viewer/raum/armchairs-andersen-armchair.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-andersen-armchair.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-andersen-armchair.webp",
+      "w": 91,
+      "d": 91,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Andersen \"Armchair\"",
+      "modell": "Sessel",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 61,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/1955/8731/ANDERSEN_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-aston-sofa": {
+      "glb": "/labs/ar-viewer/raum/armchairs-aston-sofa.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-aston-sofa.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-aston-sofa.webp",
+      "w": 167,
+      "d": 95,
+      "h": 75,
+      "marke": "Minotti",
+      "name": "Aston Sofa",
+      "modell": "Sofa 167 cm",
+      "profil": {
+        "sitzhoehe": 43,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/434/1654/ASTON_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-belt-armchairs": {
+      "glb": "/labs/ar-viewer/raum/armchairs-belt-armchairs.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-belt-armchairs.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-belt-armchairs.webp",
+      "w": 78,
+      "d": 84,
+      "h": 93,
+      "marke": "Minotti",
+      "name": "Belt",
+      "modell": "Bergère (Ohrensessel)",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/18670/18513/BELT_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sessel",
+          "w": 78,
+          "d": 81,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/armchairs-belt-armchairs--sessel.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-belt-armchairs--sessel.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Lounge-Sessel",
+          "w": 73,
+          "d": 72,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/armchairs-belt-armchairs--lounge-sessel.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-belt-armchairs--lounge-sessel.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-bezier-armchairs": {
+      "glb": "/labs/ar-viewer/raum/armchairs-bezier-armchairs.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-bezier-armchairs.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-bezier-armchairs.webp",
+      "w": 114,
+      "d": 156,
+      "h": 66,
+      "marke": "Minotti",
+      "name": "Bézier",
+      "modell": "Sessel / Paolina 114x156 cm, drehbar",
+      "profil": {
+        "sitzhoehe": 41,
+        "sitztiefe": 84,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/25028/28161/BEZIER_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Paolina 125x198 cm",
+          "w": 125,
+          "d": 198,
+          "h": 66,
+          "glb": "/labs/ar-viewer/raum/armchairs-bezier-armchairs--paolina-125x198-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-bezier-armchairs--paolina-125x198-cm.usdz",
+          "profil": "stufen"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-brasilia-armchairs": {
+      "glb": "/labs/ar-viewer/raum/armchairs-brasilia-armchairs.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-brasilia-armchairs.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-brasilia-armchairs.webp",
+      "w": 95,
+      "d": 86,
+      "h": 63,
+      "marke": "Minotti",
+      "name": "Brasilia",
+      "modell": "Sessel 95 × 86 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 63,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/18669/18517/BRASILIA_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-jacques-armchairs": {
+      "glb": "/labs/ar-viewer/raum/armchairs-jacques-armchairs.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-jacques-armchairs.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-jacques-armchairs.webp",
+      "w": 71,
+      "d": 74,
+      "h": 66,
+      "marke": "Minotti",
+      "name": "Jacques",
+      "modell": "Sessel „Low“ fest",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 57,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/13191/10675/JACQUES_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sessel „High“ fest",
+          "w": 78,
+          "d": 86,
+          "h": 78,
+          "glb": "/labs/ar-viewer/raum/armchairs-jacques-armchairs--sessel-high-fest.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-jacques-armchairs--sessel-high-fest.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Bergère (Ohrensessel) fest",
+          "w": 79,
+          "d": 92,
+          "h": 103,
+          "glb": "/labs/ar-viewer/raum/armchairs-jacques-armchairs--bergere-ohrensessel-fest.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-jacques-armchairs--bergere-ohrensessel-fest.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-jacques-armchairs-2": {
+      "glb": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-2.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-2.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-2.webp",
+      "w": 78,
+      "d": 86,
+      "h": 78,
+      "marke": "Minotti",
+      "name": "Jacques",
+      "modell": "Sessel „High“ fest",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 53,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/13191/10675/JACQUES_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sessel „Low“ fest",
+          "w": 71,
+          "d": 74,
+          "h": 66,
+          "glb": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-2--sessel-low-fest.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-2--sessel-low-fest.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Bergère (Ohrensessel) fest",
+          "w": 79,
+          "d": 92,
+          "h": 103,
+          "glb": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-2--bergere-ohrensessel-fest.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-2--bergere-ohrensessel-fest.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-jacques-armchairs-3": {
+      "glb": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-3.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-3.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-3.webp",
+      "w": 79,
+      "d": 92,
+      "h": 103,
+      "marke": "Minotti",
+      "name": "Jacques",
+      "modell": "Bergère (Ohrensessel) fest",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 53,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/13191/10675/JACQUES_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sessel „Low“ fest",
+          "w": 71,
+          "d": 74,
+          "h": 66,
+          "glb": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-3--sessel-low-fest.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-3--sessel-low-fest.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sessel „High“ fest",
+          "w": 78,
+          "d": 86,
+          "h": 78,
+          "glb": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-3--sessel-high-fest.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-jacques-armchairs-3--sessel-high-fest.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-lawson-armchairs": {
+      "glb": "/labs/ar-viewer/raum/armchairs-lawson-armchairs.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-lawson-armchairs.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-lawson-armchairs.webp",
+      "w": 72,
+      "d": 78,
+      "h": 74,
+      "marke": "Minotti",
+      "name": "Lawson",
+      "modell": "Lounge armchair",
+      "profil": {
+        "sitzhoehe": 45,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": 5,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Legs lounge armchair",
+          "w": 79,
+          "d": 89,
+          "h": 80,
+          "glb": "/labs/ar-viewer/raum/armchairs-lawson-armchairs--legs-lounge-armchair.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-lawson-armchairs--legs-lounge-armchair.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Legs lounge little armchair",
+          "w": 65,
+          "d": 65,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/armchairs-lawson-armchairs--legs-lounge-little-armchair.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-lawson-armchairs--legs-lounge-little-armchair.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Medium armchair cm 77",
+          "w": 77,
+          "d": 90,
+          "h": 80,
+          "glb": "/labs/ar-viewer/raum/armchairs-lawson-armchairs--medium-armchair-cm-77.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-lawson-armchairs--medium-armchair-cm-77.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Large armchair cm 84",
+          "w": 84,
+          "d": 98,
+          "h": 80,
+          "glb": "/labs/ar-viewer/raum/armchairs-lawson-armchairs--large-armchair-cm-84.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-lawson-armchairs--large-armchair-cm-84.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-lawson-armchairs-2": {
+      "glb": "/labs/ar-viewer/raum/armchairs-lawson-armchairs-2.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-lawson-armchairs-2.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-lawson-armchairs-2.webp",
+      "w": 79,
+      "d": 89,
+      "h": 80,
+      "marke": "Minotti",
+      "name": "Lawson",
+      "modell": "Legs lounge armchair",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": 7,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Lounge armchair",
+          "w": 72,
+          "d": 78,
+          "h": 74,
+          "glb": "/labs/ar-viewer/raum/armchairs-lawson-armchairs-2--lounge-armchair.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-lawson-armchairs-2--lounge-armchair.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Legs lounge little armchair",
+          "w": 65,
+          "d": 65,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/armchairs-lawson-armchairs-2--legs-lounge-little-armchair.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-lawson-armchairs-2--legs-lounge-little-armchair.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Medium armchair cm 77",
+          "w": 77,
+          "d": 90,
+          "h": 80,
+          "glb": "/labs/ar-viewer/raum/armchairs-lawson-armchairs-2--medium-armchair-cm-77.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-lawson-armchairs-2--medium-armchair-cm-77.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Large armchair cm 84",
+          "w": 84,
+          "d": 98,
+          "h": 80,
+          "glb": "/labs/ar-viewer/raum/armchairs-lawson-armchairs-2--large-armchair-cm-84.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-lawson-armchairs-2--large-armchair-cm-84.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-lawson-dining": {
+      "glb": "/labs/ar-viewer/raum/armchairs-lawson-dining.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-lawson-dining.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-lawson-dining.webp",
+      "w": 62,
+      "d": 60,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Lawson \"Dining\"",
+      "modell": "Dining little armchair",
+      "profil": {
+        "sitzhoehe": 48,
+        "sitztiefe": null,
+        "armlehnenhoehe": 62,
+        "armlehnenbreite": 7.5,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Dining chair",
+          "w": 53,
+          "d": 60,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/armchairs-lawson-dining--dining-chair.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-lawson-dining--dining-chair.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-lido-armchairs": {
+      "glb": "/labs/ar-viewer/raum/armchairs-lido-armchairs.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-lido-armchairs.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-lido-armchairs.webp",
+      "w": 93,
+      "d": 99,
+      "h": 85,
+      "marke": "Minotti",
+      "name": "Lido",
+      "modell": "ARMCHAIR WITH LEGS",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "LOUNGE ARMCHAIR",
+          "w": 75,
+          "d": 78,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/armchairs-lido-armchairs--lounge-armchair.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-lido-armchairs--lounge-armchair.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-raphael-armchairs": {
+      "glb": "/labs/ar-viewer/raum/armchairs-raphael-armchairs.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-raphael-armchairs.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-raphael-armchairs.webp",
+      "w": 82,
+      "d": 90,
+      "h": 78,
+      "marke": "Minotti",
+      "name": "Raphael",
+      "modell": "LARGE ARMCHAIR - SWIVEL",
+      "groessen": [
+        {
+          "modell": "ARMCHAIR - SWIVEL",
+          "w": 74,
+          "d": 86,
+          "h": 78,
+          "glb": "/labs/ar-viewer/raum/armchairs-raphael-armchairs--armchair-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-raphael-armchairs--armchair-swivel.usdz"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-russell-armchairs": {
+      "glb": "/labs/ar-viewer/raum/armchairs-russell-armchairs.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-russell-armchairs.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-russell-armchairs.webp",
+      "w": 87,
+      "d": 90,
+      "h": 100,
+      "marke": "Minotti",
+      "name": "Russell",
+      "modell": "BERGÈRE - SWIVEL",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 60,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "ARMCHAIR - SWIVEL",
+          "w": 86,
+          "d": 85,
+          "h": 70,
+          "glb": "/labs/ar-viewer/raum/armchairs-russell-armchairs--armchair-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-russell-armchairs--armchair-swivel.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "\"LOUNGE\" LITTLE ARMCHAIR - SWIVEL",
+          "w": 65,
+          "d": 63,
+          "h": 72,
+          "glb": "/labs/ar-viewer/raum/armchairs-russell-armchairs--lounge-little-armchair-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-russell-armchairs--lounge-little-armchair-swivel.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-russell-armchairs-2": {
+      "glb": "/labs/ar-viewer/raum/armchairs-russell-armchairs-2.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-russell-armchairs-2.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-russell-armchairs-2.webp",
+      "w": 86,
+      "d": 85,
+      "h": 70,
+      "marke": "Minotti",
+      "name": "Russell",
+      "modell": "ARMCHAIR - SWIVEL",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 60,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "BERGÈRE - SWIVEL",
+          "w": 87,
+          "d": 90,
+          "h": 100,
+          "glb": "/labs/ar-viewer/raum/armchairs-russell-armchairs-2--bergere-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-russell-armchairs-2--bergere-swivel.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "\"LOUNGE\" LITTLE ARMCHAIR - SWIVEL",
+          "w": 65,
+          "d": 63,
+          "h": 72,
+          "glb": "/labs/ar-viewer/raum/armchairs-russell-armchairs-2--lounge-little-armchair-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-russell-armchairs-2--lounge-little-armchair-swivel.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-russell-dining": {
+      "glb": "/labs/ar-viewer/raum/armchairs-russell-dining.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-russell-dining.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-russell-dining.webp",
+      "w": 65,
+      "d": 61,
+      "h": 81,
+      "marke": "Minotti",
+      "name": "Russell \"Dining\"",
+      "modell": "\"DINING\" LITTLE ARMCHAIR - SWIVEL",
+      "profil": {
+        "sitzhoehe": 49,
+        "sitztiefe": null,
+        "armlehnenhoehe": 64,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-russell-lounge": {
+      "glb": "/labs/ar-viewer/raum/armchairs-russell-lounge.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-russell-lounge.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-russell-lounge.webp",
+      "w": 65,
+      "d": 63,
+      "h": 72,
+      "marke": "Minotti",
+      "name": "Russell \"Lounge\"",
+      "modell": "\"LOUNGE\" LITTLE ARMCHAIR - SWIVEL",
+      "profil": {
+        "sitzhoehe": 43,
+        "sitztiefe": null,
+        "armlehnenhoehe": 57,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "BERGÈRE - SWIVEL",
+          "w": 87,
+          "d": 90,
+          "h": 100,
+          "glb": "/labs/ar-viewer/raum/armchairs-russell-lounge--bergere-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-russell-lounge--bergere-swivel.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "ARMCHAIR - SWIVEL",
+          "w": 86,
+          "d": 85,
+          "h": 70,
+          "glb": "/labs/ar-viewer/raum/armchairs-russell-lounge--armchair-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-russell-lounge--armchair-swivel.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-saki-armchairs": {
+      "glb": "/labs/ar-viewer/raum/armchairs-saki-armchairs.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-saki-armchairs.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-saki-armchairs.webp",
+      "w": 104,
+      "d": 91,
+      "h": 70,
+      "marke": "Minotti",
+      "name": "Saki",
+      "modell": "Armchair 104x91xh70 cm",
+      "profil": {
+        "sitzhoehe": 41,
+        "sitztiefe": 57,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Armchair 104x92xh70 cm – with fixed or swivel base",
+          "w": 104,
+          "d": 92,
+          "h": 70,
+          "glb": "/labs/ar-viewer/raum/armchairs-saki-armchairs--armchair-104x92xh70-cm-with-fixed-or-swivel-base.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-saki-armchairs--armchair-104x92xh70-cm-with-fixed-or-swivel-base.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Armchair with armrest 92x91xh70 cm",
+          "w": 92,
+          "d": 91,
+          "h": 70,
+          "glb": "/labs/ar-viewer/raum/armchairs-saki-armchairs--armchair-with-armrest-92x91xh70-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-saki-armchairs--armchair-with-armrest-92x91xh70-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Armchair with armrest 92x92xh70 cm – with fixed or swivel base",
+          "w": 92,
+          "d": 92,
+          "h": 70,
+          "glb": "/labs/ar-viewer/raum/armchairs-saki-armchairs--armchair-with-armrest-92x92xh70-cm-with-fixed-or-swivel-base.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-saki-armchairs--armchair-with-armrest-92x92xh70-cm-with-fixed-or-swivel-base.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Armchair without armrests 80x91xh70 cm",
+          "w": 80,
+          "d": 91,
+          "h": 70,
+          "glb": "/labs/ar-viewer/raum/armchairs-saki-armchairs--armchair-without-armrests-80x91xh70-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-saki-armchairs--armchair-without-armrests-80x91xh70-cm.usdz",
+          "profil": "stufen"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-sendai-dining": {
+      "glb": "/labs/ar-viewer/raum/armchairs-sendai-dining.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-sendai-dining.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-sendai-dining.webp",
+      "w": 58,
+      "d": 60,
+      "h": 77,
+      "marke": "Minotti",
+      "name": "Sendai \"dining\"",
+      "modell": "Dining little armchair cm 58 - swivel base",
+      "profil": {
+        "sitzhoehe": 48,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/20587/21564/SENDAI_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-stools-bibendum-armchair": {
+      "glb": "/labs/ar-viewer/raum/armchairs-stools-bibendum-armchair.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-stools-bibendum-armchair.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-stools-bibendum-armchair.webp",
+      "w": 90,
+      "d": 79,
+      "h": 72,
+      "marke": "ClassiCon",
+      "name": "Bibendum Armchair",
+      "modell": "Bibendum Armchair",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-28"
+    },
+    "armchairs-stools-club-footstool": {
+      "glb": "/labs/ar-viewer/raum/armchairs-stools-club-footstool.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-stools-club-footstool.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-stools-club-footstool.webp",
+      "w": 80,
+      "d": 80,
+      "h": 40,
+      "marke": "Solpuri",
+      "name": "CLUB footstool",
+      "modell": "Hocker inkl. Sitz-Polster",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-stools-jazz-footstool": {
+      "glb": "/labs/ar-viewer/raum/armchairs-stools-jazz-footstool.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-stools-jazz-footstool.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-stools-jazz-footstool.webp",
+      "w": 48,
+      "d": 45,
+      "h": 41,
+      "marke": "Solpuri",
+      "name": "JAZZ footstool",
+      "modell": "Hocker",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-stools-jazz-recliner-high-back": {
+      "glb": "/labs/ar-viewer/raum/armchairs-stools-jazz-recliner-high-back.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-stools-jazz-recliner-high-back.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-stools-jazz-recliner-high-back.webp",
+      "w": 56,
+      "d": 72,
+      "h": 113,
+      "marke": "Solpuri",
+      "name": "JAZZ recliner, high back",
+      "modell": "Verstellsessel hoch, stapelbar",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-stools-leopold-armchair": {
+      "glb": "/labs/ar-viewer/raum/armchairs-stools-leopold-armchair.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-stools-leopold-armchair.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-stools-leopold-armchair.webp",
+      "w": 80.5,
+      "d": 77,
+      "h": 69.5,
+      "marke": "Poliform",
+      "name": "Leopold Armchair",
+      "modell": "Leopold poltrona l 805 p 770 h 695 (mm)",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-stools-orbis-armchair": {
+      "glb": "/labs/ar-viewer/raum/armchairs-stools-orbis-armchair.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-stools-orbis-armchair.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-stools-orbis-armchair.webp",
+      "w": 86,
+      "d": 77,
+      "h": 69,
+      "marke": "Poliform",
+      "name": "Orbis Armchair",
+      "modell": "Orbis poltrona l 860 p 770 h 690 (mm)",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-stools-owen-armchair": {
+      "glb": "/labs/ar-viewer/raum/armchairs-stools-owen-armchair.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-stools-owen-armchair.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-stools-owen-armchair.webp",
+      "w": 106,
+      "d": 88,
+      "h": 69,
+      "marke": "Poliform",
+      "name": "Owen Armchair",
+      "modell": "Owen poltrona l 1060 p 880 h 690 (mm)",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-torii-bold-armchairs": {
+      "glb": "/labs/ar-viewer/raum/armchairs-torii-bold-armchairs.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-torii-bold-armchairs.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-torii-bold-armchairs.webp",
+      "w": 94,
+      "d": 94,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Torii Bold",
+      "modell": "LARGE Armchair cm 94 - SWIVEL",
+      "profil": {
+        "sitzhoehe": 41,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/en/torii-bold"
+      },
+      "groessen": [
+        {
+          "modell": "MEDIUM Armchair cm 88 - SWIVEL",
+          "w": 88,
+          "d": 88,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/armchairs-torii-bold-armchairs--medium-armchair-cm-88-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-torii-bold-armchairs--medium-armchair-cm-88-swivel.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SMALL Armchair cm 82 - SWIVEL",
+          "w": 82,
+          "d": 80,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/armchairs-torii-bold-armchairs--small-armchair-cm-82-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-torii-bold-armchairs--small-armchair-cm-82-swivel.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-vivienne-armchairs": {
+      "glb": "/labs/ar-viewer/raum/armchairs-vivienne-armchairs.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-vivienne-armchairs.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-vivienne-armchairs.webp",
+      "w": 212,
+      "d": 100,
+      "h": 76,
+      "marke": "Minotti",
+      "name": "Vivienne",
+      "modell": "Lounge sofa 212 cm",
+      "profil": {
+        "sitzhoehe": 40,
+        "sitztiefe": 68,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 276 cm",
+          "w": 276,
+          "d": 107,
+          "h": 80,
+          "glb": "/labs/ar-viewer/raum/armchairs-vivienne-armchairs--sofa-276-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-vivienne-armchairs--sofa-276-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Sofa 290 cm – backrest 185 cm with TOP",
+          "w": 290,
+          "d": 118,
+          "h": 80,
+          "glb": "/labs/ar-viewer/raum/armchairs-vivienne-armchairs--sofa-290-cm-backrest-185-cm-with-top.glb",
+          "usdz": "/labs/ar-viewer/raum/armchairs-vivienne-armchairs--sofa-290-cm-backrest-185-cm-with-top.usdz"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-yves-round": {
+      "glb": "/labs/ar-viewer/raum/armchairs-yves-round.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-yves-round.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-yves-round.webp",
+      "w": 163,
+      "d": 77,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Yves Round",
+      "modell": "Lounge-Sofa geschwungen 163x77",
+      "profil": {
+        "sitzhoehe": 41,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/23292/25492/YVES_ROUND_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "armchairs-yves-round-lounge": {
+      "glb": "/labs/ar-viewer/raum/armchairs-yves-round-lounge.glb",
+      "usdz": "/labs/ar-viewer/raum/armchairs-yves-round-lounge.usdz",
+      "poster": "/labs/ar-viewer/raum/armchairs-yves-round-lounge.webp",
+      "w": 63,
+      "d": 65,
+      "h": 71,
+      "marke": "Minotti",
+      "name": "Yves Round \"Lounge\"",
+      "modell": "Lounge-Sessel klein 63",
+      "profil": {
+        "sitzhoehe": 41,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/23292/25492/YVES_ROUND_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "chairs-torii-bold-chairs": {
+      "glb": "/labs/ar-viewer/raum/chairs-torii-bold-chairs.glb",
+      "usdz": "/labs/ar-viewer/raum/chairs-torii-bold-chairs.usdz",
+      "poster": "/labs/ar-viewer/raum/chairs-torii-bold-chairs.webp",
+      "w": 212,
+      "d": 100,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Torii Bold",
+      "modell": "Angled sofa cm 212",
+      "groessen": [
+        {
+          "modell": "Angled sofa cm 247",
+          "w": 247,
+          "d": 106,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/chairs-torii-bold-chairs--angled-sofa-cm-247.glb",
+          "usdz": "/labs/ar-viewer/raum/chairs-torii-bold-chairs--angled-sofa-cm-247.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "chaise-longues-daybeds-day-bed": {
+      "glb": "/labs/ar-viewer/raum/chaise-longues-daybeds-day-bed.glb",
+      "usdz": "/labs/ar-viewer/raum/chaise-longues-daybeds-day-bed.usdz",
+      "poster": "/labs/ar-viewer/raum/chaise-longues-daybeds-day-bed.webp",
+      "w": 190,
+      "d": 86,
+      "h": 60,
+      "marke": "ClassiCon",
+      "name": "Day Bed",
+      "modell": "Day Bed (Höhe mit Rückenbügel)",
+      "groessen": [
+        {
+          "modell": "Day Bed Grand",
+          "w": 200,
+          "d": 90,
+          "h": 60,
+          "glb": "/labs/ar-viewer/raum/chaise-longues-daybeds-day-bed--day-bed-grand.glb",
+          "usdz": "/labs/ar-viewer/raum/chaise-longues-daybeds-day-bed--day-bed-grand.usdz"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-28"
+    },
+    "chaise-longues-daybeds-day-bed-grand": {
+      "glb": "/labs/ar-viewer/raum/chaise-longues-daybeds-day-bed-grand.glb",
+      "usdz": "/labs/ar-viewer/raum/chaise-longues-daybeds-day-bed-grand.usdz",
+      "poster": "/labs/ar-viewer/raum/chaise-longues-daybeds-day-bed-grand.webp",
+      "w": 200,
+      "d": 90,
+      "h": 60,
+      "marke": "ClassiCon",
+      "name": "Day Bed Grand",
+      "modell": "Day Bed Grand (Höhe mit Rückenbügel)",
+      "groessen": [
+        {
+          "modell": "Day Bed",
+          "w": 190,
+          "d": 86,
+          "h": 60,
+          "glb": "/labs/ar-viewer/raum/chaise-longues-daybeds-day-bed-grand--day-bed.glb",
+          "usdz": "/labs/ar-viewer/raum/chaise-longues-daybeds-day-bed-grand--day-bed.usdz"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-28"
+    },
+    "garden-chairs-basket-dining-chair-incl-seat-back-cushion": {
+      "glb": "/labs/ar-viewer/raum/garden-chairs-basket-dining-chair-incl-seat-back-cushion.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-chairs-basket-dining-chair-incl-seat-back-cushion.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-chairs-basket-dining-chair-incl-seat-back-cushion.webp",
+      "w": 61,
+      "d": 68,
+      "h": 83,
+      "marke": "Solpuri",
+      "name": "BASKET Dining Chair incl. Seat Back Cushion",
+      "modell": "Dining Sessel inkl. Sitz-/Rücken-Polster",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "garden-chairs-breeze-stacking-chair": {
+      "glb": "/labs/ar-viewer/raum/garden-chairs-breeze-stacking-chair.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-chairs-breeze-stacking-chair.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-chairs-breeze-stacking-chair.webp",
+      "w": 58,
+      "d": 65,
+      "h": 92,
+      "marke": "Solpuri",
+      "name": "BREEZE Stacking Chair",
+      "modell": "Stapelsessel",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "garden-chairs-breeze-stacking-chair-high": {
+      "glb": "/labs/ar-viewer/raum/garden-chairs-breeze-stacking-chair-high.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-chairs-breeze-stacking-chair-high.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-chairs-breeze-stacking-chair-high.webp",
+      "w": 58,
+      "d": 66,
+      "h": 110,
+      "marke": "Solpuri",
+      "name": "BREEZE Stacking Chair high",
+      "modell": "Stapelsessel hoch",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "garden-chairs-dance-stacking-chair-with-swing-back": {
+      "glb": "/labs/ar-viewer/raum/garden-chairs-dance-stacking-chair-with-swing-back.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-chairs-dance-stacking-chair-with-swing-back.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-chairs-dance-stacking-chair-with-swing-back.webp",
+      "w": 57,
+      "d": 68,
+      "h": 92,
+      "marke": "Solpuri",
+      "name": "DANCE Stacking Chair with Swing-Back",
+      "modell": "Stapelsessel mit Swing-Rücken",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "garden-chairs-jazz-spring-chair": {
+      "glb": "/labs/ar-viewer/raum/garden-chairs-jazz-spring-chair.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-chairs-jazz-spring-chair.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-chairs-jazz-spring-chair.webp",
+      "w": 56,
+      "d": 64,
+      "h": 89,
+      "marke": "Solpuri",
+      "name": "JAZZ spring chair",
+      "modell": "Freischwinger, stapelbar",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "garden-chairs-jazz-spring-chair-high": {
+      "glb": "/labs/ar-viewer/raum/garden-chairs-jazz-spring-chair-high.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-chairs-jazz-spring-chair-high.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-chairs-jazz-spring-chair-high.webp",
+      "w": 56,
+      "d": 64,
+      "h": 118,
+      "marke": "Solpuri",
+      "name": "JAZZ spring chair high",
+      "modell": "Freischwinger hoch, stapelbar",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "garden-chairs-jazz-stacking-chair": {
+      "glb": "/labs/ar-viewer/raum/garden-chairs-jazz-stacking-chair.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-chairs-jazz-stacking-chair.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-chairs-jazz-stacking-chair.webp",
+      "w": 56,
+      "d": 64,
+      "h": 87,
+      "marke": "Solpuri",
+      "name": "JAZZ stacking chair",
+      "modell": "Stapelsessel",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "garden-tables-bari-bar-table-ceramic-dekton": {
+      "glb": "/labs/ar-viewer/raum/garden-tables-bari-bar-table-ceramic-dekton.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-tables-bari-bar-table-ceramic-dekton.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-tables-bari-bar-table-ceramic-dekton.webp",
+      "w": 175,
+      "d": 68,
+      "h": 104,
+      "marke": "Solpuri",
+      "name": "BARI bar table ceramic + dekton",
+      "modell": "Bari Classic, Edelstahl, 175 x 68, H 104",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "garden-tables-bari-bar-table-hpl": {
+      "glb": "/labs/ar-viewer/raum/garden-tables-bari-bar-table-hpl.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-tables-bari-bar-table-hpl.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-tables-bari-bar-table-hpl.webp",
+      "w": 175,
+      "d": 68,
+      "h": 104,
+      "marke": "Solpuri",
+      "name": "BARI bar table HPL",
+      "modell": "Bari Classic, Edelstahl, 175 x 68, H 104",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "garden-tables-charlie-ceramic-dining-table": {
+      "glb": "/labs/ar-viewer/raum/garden-tables-charlie-ceramic-dining-table.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-tables-charlie-ceramic-dining-table.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-tables-charlie-ceramic-dining-table.webp",
+      "w": 170,
+      "d": 100,
+      "h": 75,
+      "marke": "Solpuri",
+      "name": "CHARLIE Ceramic Dining Table",
+      "modell": "Charlie 170 x 100, H 75",
+      "groessen": [
+        {
+          "modell": "Charlie 230 x 100, H 75",
+          "w": 230,
+          "d": 100,
+          "h": 75,
+          "glb": "/labs/ar-viewer/raum/garden-tables-charlie-ceramic-dining-table--charlie-230-x-100-h-75.glb",
+          "usdz": "/labs/ar-viewer/raum/garden-tables-charlie-ceramic-dining-table--charlie-230-x-100-h-75.usdz"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "garden-tables-charlie-teak-dining-table": {
+      "glb": "/labs/ar-viewer/raum/garden-tables-charlie-teak-dining-table.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-tables-charlie-teak-dining-table.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-tables-charlie-teak-dining-table.webp",
+      "w": 170,
+      "d": 100,
+      "h": 75,
+      "marke": "Solpuri",
+      "name": "CHARLIE Teak Dining Table",
+      "modell": "Charlie 170 x 100, H 75",
+      "groessen": [
+        {
+          "modell": "Charlie 230 x 100, H 75",
+          "w": 230,
+          "d": 100,
+          "h": 75,
+          "glb": "/labs/ar-viewer/raum/garden-tables-charlie-teak-dining-table--charlie-230-x-100-h-75.glb",
+          "usdz": "/labs/ar-viewer/raum/garden-tables-charlie-teak-dining-table--charlie-230-x-100-h-75.usdz"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "garden-tables-club-coffee-table": {
+      "glb": "/labs/ar-viewer/raum/garden-tables-club-coffee-table.glb",
+      "usdz": "/labs/ar-viewer/raum/garden-tables-club-coffee-table.usdz",
+      "poster": "/labs/ar-viewer/raum/garden-tables-club-coffee-table.webp",
+      "w": 80,
+      "d": 80,
+      "h": 30,
+      "marke": "Solpuri",
+      "name": "CLUB coffee table",
+      "modell": "Kaffeetisch 30 x 80 x 80 cm",
+      "groessen": [
+        {
+          "modell": "Kaffeetisch 45 x 80 x 80 cm",
+          "w": 80,
+          "d": 80,
+          "h": 45,
+          "glb": "/labs/ar-viewer/raum/garden-tables-club-coffee-table--kaffeetisch-45-x-80-x-80-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/garden-tables-club-coffee-table--kaffeetisch-45-x-80-x-80-cm.usdz"
+        },
+        {
+          "modell": "Kaffeetisch 65 x 80 x 80 cm",
+          "w": 80,
+          "d": 80,
+          "h": 65,
+          "glb": "/labs/ar-viewer/raum/garden-tables-club-coffee-table--kaffeetisch-65-x-80-x-80-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/garden-tables-club-coffee-table--kaffeetisch-65-x-80-x-80-cm.usdz"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "little-armchairs-and-stools-yang-ottoman": {
+      "glb": "/labs/ar-viewer/raum/little-armchairs-and-stools-yang-ottoman.glb",
+      "usdz": "/labs/ar-viewer/raum/little-armchairs-and-stools-yang-ottoman.usdz",
+      "poster": "/labs/ar-viewer/raum/little-armchairs-and-stools-yang-ottoman.webp",
+      "w": 80,
+      "d": 50,
+      "h": 36,
+      "marke": "Minotti",
+      "name": "Yang \"Ottoman\"",
+      "modell": "Hocker 80 × 50 cm",
+      "groessen": [
+        {
+          "modell": "Hocker 105 × 50 cm",
+          "w": 105,
+          "d": 50,
+          "h": 36,
+          "glb": "/labs/ar-viewer/raum/little-armchairs-and-stools-yang-ottoman--hocker-105-50-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/little-armchairs-and-stools-yang-ottoman--hocker-105-50-cm.usdz"
+        },
+        {
+          "modell": "Hocker 120 × 50 cm",
+          "w": 120,
+          "d": 50,
+          "h": 36,
+          "glb": "/labs/ar-viewer/raum/little-armchairs-and-stools-yang-ottoman--hocker-120-50-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/little-armchairs-and-stools-yang-ottoman--hocker-120-50-cm.usdz"
+        },
+        {
+          "modell": "Hocker 130 × 50 cm",
+          "w": 130,
+          "d": 50,
+          "h": 36,
+          "glb": "/labs/ar-viewer/raum/little-armchairs-and-stools-yang-ottoman--hocker-130-50-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/little-armchairs-and-stools-yang-ottoman--hocker-130-50-cm.usdz"
+        },
+        {
+          "modell": "Hocker 160 × 50 cm",
+          "w": 160,
+          "d": 50,
+          "h": 36,
+          "glb": "/labs/ar-viewer/raum/little-armchairs-and-stools-yang-ottoman--hocker-160-50-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/little-armchairs-and-stools-yang-ottoman--hocker-160-50-cm.usdz"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "lounge-chairs-sendai-lounge-chairs": {
+      "glb": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs.glb",
+      "usdz": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs.usdz",
+      "poster": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs.webp",
+      "w": 65,
+      "d": 67,
+      "h": 67,
+      "marke": "Minotti",
+      "name": "Sendai",
+      "modell": "Lounge armchair cm 65 - swivel",
+      "profil": {
+        "sitzhoehe": 43,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/20587/21564/SENDAI_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Armchair cm 74 - fixed",
+          "w": 74,
+          "d": 76,
+          "h": 72,
+          "glb": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs--armchair-cm-74-fixed.glb",
+          "usdz": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs--armchair-cm-74-fixed.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Armchair cm 74 - swivel",
+          "w": 74,
+          "d": 76,
+          "h": 68,
+          "glb": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs--armchair-cm-74-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs--armchair-cm-74-swivel.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Armchair with armrests cm 87 - swivel",
+          "w": 87,
+          "d": 83,
+          "h": 78,
+          "glb": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs--armchair-with-armrests-cm-87-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs--armchair-with-armrests-cm-87-swivel.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Lounge little armchair cm 58",
+          "w": 58,
+          "d": 60,
+          "h": 72,
+          "glb": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs--lounge-little-armchair-cm-58.glb",
+          "usdz": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs--lounge-little-armchair-cm-58.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "lounge-chairs-sendai-lounge-chairs-2": {
+      "glb": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs-2.glb",
+      "usdz": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs-2.usdz",
+      "poster": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs-2.webp",
+      "w": 58,
+      "d": 60,
+      "h": 72,
+      "marke": "Minotti",
+      "name": "Sendai",
+      "modell": "Lounge little armchair cm 58",
+      "profil": {
+        "sitzhoehe": 43,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/20587/21564/SENDAI_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Armchair cm 74 - fixed",
+          "w": 74,
+          "d": 76,
+          "h": 72,
+          "glb": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs-2--armchair-cm-74-fixed.glb",
+          "usdz": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs-2--armchair-cm-74-fixed.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Armchair cm 74 - swivel",
+          "w": 74,
+          "d": 76,
+          "h": 68,
+          "glb": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs-2--armchair-cm-74-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs-2--armchair-cm-74-swivel.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Armchair with armrests cm 87 - swivel",
+          "w": 87,
+          "d": 83,
+          "h": 78,
+          "glb": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs-2--armchair-with-armrests-cm-87-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs-2--armchair-with-armrests-cm-87-swivel.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Lounge armchair cm 65 - swivel",
+          "w": 65,
+          "d": 67,
+          "h": 67,
+          "glb": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs-2--lounge-armchair-cm-65-swivel.glb",
+          "usdz": "/labs/ar-viewer/raum/lounge-chairs-sendai-lounge-chairs-2--lounge-armchair-cm-65-swivel.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "lounge-furniture-daybeds-loop-lounge-chair": {
+      "glb": "/labs/ar-viewer/raum/lounge-furniture-daybeds-loop-lounge-chair.glb",
+      "usdz": "/labs/ar-viewer/raum/lounge-furniture-daybeds-loop-lounge-chair.usdz",
+      "poster": "/labs/ar-viewer/raum/lounge-furniture-daybeds-loop-lounge-chair.webp",
+      "w": 80,
+      "d": 86,
+      "h": 75,
+      "marke": "Solpuri",
+      "name": "LOOP Lounge Chair",
+      "modell": "Lounge Sessel",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "lounge-furniture-daybeds-loop-lounge-chair-high-back": {
+      "glb": "/labs/ar-viewer/raum/lounge-furniture-daybeds-loop-lounge-chair-high-back.glb",
+      "usdz": "/labs/ar-viewer/raum/lounge-furniture-daybeds-loop-lounge-chair-high-back.usdz",
+      "poster": "/labs/ar-viewer/raum/lounge-furniture-daybeds-loop-lounge-chair-high-back.webp",
+      "w": 80,
+      "d": 91,
+      "h": 124,
+      "marke": "Solpuri",
+      "name": "LOOP Lounge Chair High Back",
+      "modell": "Lounge Sessel Hochlehner",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "parasols-aton-sunshade-rectangular": {
+      "glb": "/labs/ar-viewer/raum/parasols-aton-sunshade-rectangular.glb",
+      "usdz": "/labs/ar-viewer/raum/parasols-aton-sunshade-rectangular.usdz",
+      "poster": "/labs/ar-viewer/raum/parasols-aton-sunshade-rectangular.webp",
+      "w": 350,
+      "d": 240,
+      "h": 300,
+      "marke": "Solpuri",
+      "name": "ATON Sunshade rectangular",
+      "modell": "Sonnenschirm rechteckig 350 x 240 cm (H x B x T 300 x 350 x 240)",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "parasols-aton-sunshade-round-8-squared": {
+      "glb": "/labs/ar-viewer/raum/parasols-aton-sunshade-round-8-squared.glb",
+      "usdz": "/labs/ar-viewer/raum/parasols-aton-sunshade-round-8-squared.usdz",
+      "poster": "/labs/ar-viewer/raum/parasols-aton-sunshade-round-8-squared.webp",
+      "w": 300,
+      "d": 300,
+      "h": 265,
+      "rund": true,
+      "marke": "Solpuri",
+      "name": "ATON Sunshade round (8-squared)",
+      "modell": "Sonnenschirm rund (8-eckig) Ø 300 cm (H x B 265 x Ø 300)",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "parasols-aton-sunshade-square": {
+      "glb": "/labs/ar-viewer/raum/parasols-aton-sunshade-square.glb",
+      "usdz": "/labs/ar-viewer/raum/parasols-aton-sunshade-square.usdz",
+      "poster": "/labs/ar-viewer/raum/parasols-aton-sunshade-square.webp",
+      "w": 350,
+      "d": 350,
+      "h": 300,
+      "marke": "Solpuri",
+      "name": "ATON Sunshade square",
+      "modell": "Sonnenschirm quadratisch 350 x 350 cm (H x B x T 300 x 350 x 350)",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-belt-dining": {
+      "glb": "/labs/ar-viewer/raum/produkt-belt-dining.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-belt-dining.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-belt-dining.webp",
+      "w": 64,
+      "d": 60,
+      "h": 83,
+      "marke": "Minotti",
+      "name": "Belt \"Dining\"",
+      "modell": "Dining-Armlehnstuhl",
+      "profil": {
+        "sitzhoehe": 49,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/18670/18513/BELT_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-belt-variant": {
+      "glb": "/labs/ar-viewer/raum/produkt-belt-variant.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-belt-variant.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-belt-variant.webp",
+      "w": 78,
+      "d": 84,
+      "h": 93,
+      "marke": "Minotti",
+      "name": "Belt",
+      "modell": "Bergère (Ohrensessel)",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/18670/18513/BELT_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sessel",
+          "w": 78,
+          "d": 81,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/produkt-belt-variant--sessel.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-belt-variant--sessel.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Lounge-Sessel",
+          "w": 73,
+          "d": 72,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/produkt-belt-variant--lounge-sessel.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-belt-variant--lounge-sessel.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-blazer": {
+      "glb": "/labs/ar-viewer/raum/produkt-blazer.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-blazer.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-blazer.webp",
+      "w": 178,
+      "d": 108,
+      "h": 86,
+      "marke": "Minotti",
+      "name": "Blazer",
+      "modell": "SOFA CM 178",
+      "profil": {
+        "sitzhoehe": 40,
+        "sitztiefe": null,
+        "armlehnenhoehe": 66,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/16982/15867/BLAZER_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "SOFA CM 213",
+          "w": 213,
+          "d": 108,
+          "h": 86,
+          "glb": "/labs/ar-viewer/raum/produkt-blazer--sofa-cm-213.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-blazer--sofa-cm-213.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA CM 248",
+          "w": 248,
+          "d": 108,
+          "h": 86,
+          "glb": "/labs/ar-viewer/raum/produkt-blazer--sofa-cm-248.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-blazer--sofa-cm-248.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA CM 283",
+          "w": 283,
+          "d": 108,
+          "h": 86,
+          "glb": "/labs/ar-viewer/raum/produkt-blazer--sofa-cm-283.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-blazer--sofa-cm-283.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA CHAISE-LONGUE CM 143X143",
+          "w": 143,
+          "d": 143,
+          "h": 86,
+          "glb": "/labs/ar-viewer/raum/produkt-blazer--sofa-chaise-longue-cm-143x143.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-blazer--sofa-chaise-longue-cm-143x143.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-brasilia-variant": {
+      "glb": "/labs/ar-viewer/raum/produkt-brasilia-variant.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-brasilia-variant.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-brasilia-variant.webp",
+      "w": 95,
+      "d": 86,
+      "h": 63,
+      "marke": "Minotti",
+      "name": "Brasilia",
+      "modell": "Sessel 95 × 86 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 63,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/18669/18517/BRASILIA_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-freeman-lounge": {
+      "glb": "/labs/ar-viewer/raum/produkt-freeman-lounge.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-freeman-lounge.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-freeman-lounge.webp",
+      "w": 182,
+      "d": 91,
+      "h": 58,
+      "marke": "Minotti",
+      "name": "Freeman \"Lounge\"",
+      "modell": "Sofa 182 cm",
+      "profil": {
+        "sitzhoehe": 37,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": 28,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 203 cm",
+          "w": 203,
+          "d": 91,
+          "h": 58,
+          "glb": "/labs/ar-viewer/raum/produkt-freeman-lounge--sofa-203-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-freeman-lounge--sofa-203-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 224 cm",
+          "w": 224,
+          "d": 91,
+          "h": 58,
+          "glb": "/labs/ar-viewer/raum/produkt-freeman-lounge--sofa-224-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-freeman-lounge--sofa-224-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-freeman-tailor": {
+      "glb": "/labs/ar-viewer/raum/produkt-freeman-tailor.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-freeman-tailor.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-freeman-tailor.webp",
+      "w": 224,
+      "d": 112,
+      "h": 89,
+      "marke": "Minotti",
+      "name": "Freeman \"Tailor\"",
+      "modell": "Sofa 224 cm",
+      "profil": {
+        "sitzhoehe": 37,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": 28,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa komponiert 308 cm",
+          "w": 308,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/produkt-freeman-tailor--sofa-komponiert-308-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-freeman-tailor--sofa-komponiert-308-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Wing-Sofa 84 cm (Einsitzer)",
+          "w": 84,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/produkt-freeman-tailor--wing-sofa-84-cm-einsitzer.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-freeman-tailor--wing-sofa-84-cm-einsitzer.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Wing-Sofa 126 cm",
+          "w": 126,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/produkt-freeman-tailor--wing-sofa-126-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-freeman-tailor--wing-sofa-126-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Wing-Sofa 168 cm mit 2 Rücken à 84 cm",
+          "w": 168,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/produkt-freeman-tailor--wing-sofa-168-cm-mit-2-rucken-a-84-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-freeman-tailor--wing-sofa-168-cm-mit-2-rucken-a-84-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-lawrence-clan": {
+      "glb": "/labs/ar-viewer/raum/produkt-lawrence-clan.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-lawrence-clan.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-lawrence-clan.webp",
+      "w": 168,
+      "d": 112,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Lawrence \"Clan\"",
+      "modell": "Sofa 168 × 112 cm, 2 Rücken à 84 cm",
+      "groessen": [
+        {
+          "modell": "Sofa 224 × 112 cm, 2 Rücken à 112 cm (DX)",
+          "w": 224,
+          "d": 112,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/produkt-lawrence-clan--sofa-224-112-cm-2-rucken-a-112-cm-dx.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-lawrence-clan--sofa-224-112-cm-2-rucken-a-112-cm-dx.usdz"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-lounge-seymour": {
+      "glb": "/labs/ar-viewer/raum/produkt-lounge-seymour.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-lounge-seymour.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-lounge-seymour.webp",
+      "w": 190,
+      "d": 95,
+      "h": 76,
+      "marke": "Minotti",
+      "name": "Lounge Seymour",
+      "modell": "Sofa High 190 cm",
+      "profil": {
+        "sitzhoehe": 37,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/431/1850/LOUNGE%20SEYMOUR_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa Mix 182 cm",
+          "w": 182,
+          "d": 95,
+          "h": 76,
+          "glb": "/labs/ar-viewer/raum/produkt-lounge-seymour--sofa-mix-182-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-lounge-seymour--sofa-mix-182-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa Low 174 cm",
+          "w": 174,
+          "d": 87,
+          "h": 70,
+          "glb": "/labs/ar-viewer/raum/produkt-lounge-seymour--sofa-low-174-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-lounge-seymour--sofa-low-174-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Lounge-Sofa High 257 cm",
+          "w": 257,
+          "d": 95,
+          "h": 76,
+          "glb": "/labs/ar-viewer/raum/produkt-lounge-seymour--lounge-sofa-high-257-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-lounge-seymour--lounge-sofa-high-257-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Open-Sofa Mix 249 cm (Rücken 162 cm)",
+          "w": 249,
+          "d": 95,
+          "h": 76,
+          "glb": "/labs/ar-viewer/raum/produkt-lounge-seymour--open-sofa-mix-249-cm-rucken-162-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-lounge-seymour--open-sofa-mix-249-cm-rucken-162-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-mattia-variant": {
+      "glb": "/labs/ar-viewer/raum/produkt-mattia-variant.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-mattia-variant.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-mattia-variant.webp",
+      "w": 182,
+      "d": 85,
+      "h": 67,
+      "marke": "Minotti",
+      "name": "Mattia",
+      "modell": "LOUNGE SOFA CM 182",
+      "profil": {
+        "sitzhoehe": 44,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/17000/15878/MATTIA_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-raphael-dining": {
+      "glb": "/labs/ar-viewer/raum/produkt-raphael-dining.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-raphael-dining.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-raphael-dining.webp",
+      "w": 60,
+      "d": 62,
+      "h": 78,
+      "marke": "Minotti",
+      "name": "Raphael \"Dining\"",
+      "modell": "DINING LITTLE ARMCHAIR - SWIVEL",
+      "profil": {
+        "sitzhoehe": 51,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/en/raphael"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-raphael-variant": {
+      "glb": "/labs/ar-viewer/raum/produkt-raphael-variant.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-raphael-variant.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-raphael-variant.webp",
+      "w": 192,
+      "d": 91,
+      "h": 88,
+      "marke": "Minotti",
+      "name": "Raphael",
+      "modell": "SOFA CM 192",
+      "profil": {
+        "sitzhoehe": 44,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/en/raphael"
+      },
+      "groessen": [
+        {
+          "modell": "ANGLED SOFA CM 227",
+          "w": 227,
+          "d": 118,
+          "h": 88,
+          "glb": "/labs/ar-viewer/raum/produkt-raphael-variant--angled-sofa-cm-227.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-raphael-variant--angled-sofa-cm-227.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-saki-variant": {
+      "glb": "/labs/ar-viewer/raum/produkt-saki-variant.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-saki-variant.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-saki-variant.webp",
+      "w": 180,
+      "d": 91,
+      "h": 71,
+      "marke": "Minotti",
+      "name": "Saki",
+      "modell": "Sofa 180x91 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": 57,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 254x91 cm",
+          "w": 254,
+          "d": 91,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/produkt-saki-variant--sofa-254x91-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-saki-variant--sofa-254x91-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Corner sofa 180x95 cm",
+          "w": 180,
+          "d": 95,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/produkt-saki-variant--corner-sofa-180x95-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-saki-variant--corner-sofa-180x95-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Corner sofa 254x95 cm",
+          "w": 254,
+          "d": 95,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/produkt-saki-variant--corner-sofa-254x95-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-saki-variant--corner-sofa-254x95-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Corner sofa 328x95 cm",
+          "w": 328,
+          "d": 95,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/produkt-saki-variant--corner-sofa-328x95-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-saki-variant--corner-sofa-328x95-cm.usdz",
+          "profil": "stufen"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-supermoon-variant": {
+      "glb": "/labs/ar-viewer/raum/produkt-supermoon-variant.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-supermoon-variant.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-supermoon-variant.webp",
+      "w": 226,
+      "d": 106,
+      "h": 77,
+      "marke": "Minotti",
+      "name": "Supermoon",
+      "modell": "Sofa 226",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/23293/25488/SUPERMOON_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 278",
+          "w": 278,
+          "d": 106,
+          "h": 77,
+          "glb": "/labs/ar-viewer/raum/produkt-supermoon-variant--sofa-278.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-supermoon-variant--sofa-278.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 304",
+          "w": 304,
+          "d": 106,
+          "h": 77,
+          "glb": "/labs/ar-viewer/raum/produkt-supermoon-variant--sofa-304.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-supermoon-variant--sofa-304.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa gebogen 306x141",
+          "w": 306,
+          "d": 141,
+          "h": 77,
+          "glb": "/labs/ar-viewer/raum/produkt-supermoon-variant--sofa-gebogen-306x141.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-supermoon-variant--sofa-gebogen-306x141.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa gebogen 312x126",
+          "w": 312,
+          "d": 126,
+          "h": 77,
+          "glb": "/labs/ar-viewer/raum/produkt-supermoon-variant--sofa-gebogen-312x126.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-supermoon-variant--sofa-gebogen-312x126.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "produkt-west-variant": {
+      "glb": "/labs/ar-viewer/raum/produkt-west-variant.glb",
+      "usdz": "/labs/ar-viewer/raum/produkt-west-variant.usdz",
+      "poster": "/labs/ar-viewer/raum/produkt-west-variant.webp",
+      "w": 228,
+      "d": 114,
+      "h": 79,
+      "marke": "Minotti",
+      "name": "West",
+      "modell": "Sofa cm 228 - seat cushion cm 85",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Corner sofa cm 313 - seat cushion cm 85",
+          "w": 313,
+          "d": 114,
+          "h": 79,
+          "glb": "/labs/ar-viewer/raum/produkt-west-variant--corner-sofa-cm-313-seat-cushion-cm-85.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-west-variant--corner-sofa-cm-313-seat-cushion-cm-85.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Corner sofa cm 293 - seat cushion cm 85",
+          "w": 293,
+          "d": 114,
+          "h": 79,
+          "glb": "/labs/ar-viewer/raum/produkt-west-variant--corner-sofa-cm-293-seat-cushion-cm-85.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-west-variant--corner-sofa-cm-293-seat-cushion-cm-85.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa cm 208 - seat cushion cm 75",
+          "w": 208,
+          "d": 114,
+          "h": 79,
+          "glb": "/labs/ar-viewer/raum/produkt-west-variant--sofa-cm-208-seat-cushion-cm-75.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-west-variant--sofa-cm-208-seat-cushion-cm-75.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa cm 283 - seat cushion cm 75",
+          "w": 283,
+          "d": 114,
+          "h": 79,
+          "glb": "/labs/ar-viewer/raum/produkt-west-variant--sofa-cm-283-seat-cushion-cm-75.glb",
+          "usdz": "/labs/ar-viewer/raum/produkt-west-variant--sofa-cm-283-seat-cushion-cm-75.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-allen": {
+      "glb": "/labs/ar-viewer/raum/sofas-allen.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-allen.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-allen.webp",
+      "w": 186,
+      "d": 103,
+      "h": 90,
+      "marke": "Minotti",
+      "name": "Allen",
+      "modell": "Sofa 186 cm",
+      "profil": {
+        "sitzhoehe": 40,
+        "sitztiefe": null,
+        "armlehnenhoehe": 76,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/449/1663/ALLEN_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 206 cm",
+          "w": 206,
+          "d": 103,
+          "h": 90,
+          "glb": "/labs/ar-viewer/raum/sofas-allen--sofa-206-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-allen--sofa-206-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa-Chaiselongue 226 cm",
+          "w": 226,
+          "d": 103,
+          "h": 90,
+          "glb": "/labs/ar-viewer/raum/sofas-allen--sofa-chaiselongue-226-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-allen--sofa-chaiselongue-226-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa-Chaiselongue 252 cm",
+          "w": 252,
+          "d": 103,
+          "h": 90,
+          "glb": "/labs/ar-viewer/raum/sofas-allen--sofa-chaiselongue-252-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-allen--sofa-chaiselongue-252-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Kompositionssofa 288 cm (2 × Endelement 144)",
+          "w": 288,
+          "d": 103,
+          "h": 90,
+          "glb": "/labs/ar-viewer/raum/sofas-allen--kompositionssofa-288-cm-2-endelement-144.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-allen--kompositionssofa-288-cm-2-endelement-144.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-andersen": {
+      "glb": "/labs/ar-viewer/raum/sofas-andersen.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-andersen.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-andersen.webp",
+      "w": 178,
+      "d": 103,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Andersen",
+      "modell": "Sofa 178 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 62,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/1955/8731/ANDERSEN_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 206 cm",
+          "w": 206,
+          "d": 103,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen--sofa-206-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen--sofa-206-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 247 cm",
+          "w": 247,
+          "d": 103,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen--sofa-247-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen--sofa-247-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 288 cm (mit 2 Sitzkissen)",
+          "w": 288,
+          "d": 103,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen--sofa-288-cm-mit-2-sitzkissen.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen--sofa-288-cm-mit-2-sitzkissen.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-andersen-line": {
+      "glb": "/labs/ar-viewer/raum/sofas-andersen-line.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-andersen-line.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-andersen-line.webp",
+      "w": 178,
+      "d": 103,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Andersen Line",
+      "modell": "Sofa 178 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 62,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/1956/8736/ANDERSEN_LINE_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 206 cm",
+          "w": 206,
+          "d": 103,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen-line--sofa-206-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen-line--sofa-206-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 247 cm",
+          "w": 247,
+          "d": 103,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen-line--sofa-247-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen-line--sofa-247-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 288 cm (2 Sitzkissen)",
+          "w": 288,
+          "d": 103,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen-line--sofa-288-cm-2-sitzkissen.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen-line--sofa-288-cm-2-sitzkissen.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-andersen-line-quilt": {
+      "glb": "/labs/ar-viewer/raum/sofas-andersen-line-quilt.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-andersen-line-quilt.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-andersen-line-quilt.webp",
+      "w": 178,
+      "d": 103,
+      "h": 73,
+      "marke": "Minotti",
+      "name": "Andersen Line \"Quilt\"",
+      "modell": "Sofa 178 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 62,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/1957/8742/ANDERSEN_LINE_QUILT_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 206 cm",
+          "w": 206,
+          "d": 103,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen-line-quilt--sofa-206-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen-line-quilt--sofa-206-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 247 cm",
+          "w": 247,
+          "d": 103,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen-line-quilt--sofa-247-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen-line-quilt--sofa-247-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 288 cm",
+          "w": 288,
+          "d": 103,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen-line-quilt--sofa-288-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen-line-quilt--sofa-288-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-andersen-quilt": {
+      "glb": "/labs/ar-viewer/raum/sofas-andersen-quilt.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-andersen-quilt.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-andersen-quilt.webp",
+      "w": 178,
+      "d": 103,
+      "h": 73,
+      "marke": "Minotti",
+      "name": "Andersen \"Quilt\"",
+      "modell": "Sofa 178 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 62,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/1958/8741/ANDERSEN_QUILT_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 206 cm",
+          "w": 206,
+          "d": 103,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen-quilt--sofa-206-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen-quilt--sofa-206-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 247 cm",
+          "w": 247,
+          "d": 103,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen-quilt--sofa-247-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen-quilt--sofa-247-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 288 cm",
+          "w": 288,
+          "d": 103,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/sofas-andersen-quilt--sofa-288-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-andersen-quilt--sofa-288-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-bezier-sofas": {
+      "glb": "/labs/ar-viewer/raum/sofas-bezier-sofas.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-bezier-sofas.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-bezier-sofas.webp",
+      "w": 297,
+      "d": 171,
+      "h": 84,
+      "marke": "Minotti",
+      "name": "Bézier",
+      "modell": "Sofa 297x171 cm, doppelte Tiefe",
+      "profil": {
+        "sitzhoehe": 41,
+        "sitztiefe": 139,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/25028/28161/BEZIER_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-couches-lota-sofa": {
+      "glb": "/labs/ar-viewer/raum/sofas-couches-lota-sofa.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-couches-lota-sofa.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-couches-lota-sofa.webp",
+      "w": 240,
+      "d": 95,
+      "h": 85,
+      "marke": "ClassiCon",
+      "name": "Lota Sofa",
+      "modell": "Lota Sofa (Tiefe 95 cm mit Kissen, Gestell 88 cm)",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-28"
+    },
+    "sofas-couches-odin-sofa": {
+      "glb": "/labs/ar-viewer/raum/sofas-couches-odin-sofa.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-couches-odin-sofa.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-couches-odin-sofa.webp",
+      "w": 160,
+      "d": 70,
+      "h": 74,
+      "marke": "ClassiCon",
+      "name": "Odin Sofa",
+      "modell": "Odin 2-Sitzer (Grundriss oval, Quader = Hüllmaß)",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-28"
+    },
+    "sofas-daniels": {
+      "glb": "/labs/ar-viewer/raum/sofas-daniels.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-daniels.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-daniels.webp",
+      "w": 228,
+      "d": 105,
+      "h": 80,
+      "marke": "Minotti",
+      "name": "Daniels",
+      "modell": "Sofa cm 228",
+      "profil": {
+        "sitzhoehe": 40,
+        "sitztiefe": null,
+        "armlehnenhoehe": 49,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa cm 248",
+          "w": 248,
+          "d": 105,
+          "h": 80,
+          "glb": "/labs/ar-viewer/raum/sofas-daniels--sofa-cm-248.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-daniels--sofa-cm-248.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa cm 268",
+          "w": 268,
+          "d": 105,
+          "h": 80,
+          "glb": "/labs/ar-viewer/raum/sofas-daniels--sofa-cm-268.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-daniels--sofa-cm-268.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa cm 310",
+          "w": 310,
+          "d": 105,
+          "h": 80,
+          "glb": "/labs/ar-viewer/raum/sofas-daniels--sofa-cm-310.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-daniels--sofa-cm-310.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-deep-suitcase": {
+      "glb": "/labs/ar-viewer/raum/sofas-deep-suitcase.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-deep-suitcase.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-deep-suitcase.webp",
+      "w": 152,
+      "d": 98,
+      "h": 78,
+      "marke": "Minotti",
+      "name": "Deep Suitcase",
+      "modell": "Sofa 152 cm (2-Sitzer)",
+      "profil": {
+        "sitzhoehe": 45,
+        "sitztiefe": null,
+        "armlehnenhoehe": 64,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/462/1664/DEEP_SUITCASE_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 216 cm (3-Sitzer)",
+          "w": 216,
+          "d": 98,
+          "h": 78,
+          "glb": "/labs/ar-viewer/raum/sofas-deep-suitcase--sofa-216-cm-3-sitzer.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-deep-suitcase--sofa-216-cm-3-sitzer.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Schlafsofa 152 cm",
+          "w": 152,
+          "d": 235,
+          "h": 64,
+          "glb": "/labs/ar-viewer/raum/sofas-deep-suitcase--schlafsofa-152-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-deep-suitcase--schlafsofa-152-cm.usdz"
+        },
+        {
+          "modell": "Schlafsofa 216 cm",
+          "w": 216,
+          "d": 235,
+          "h": 64,
+          "glb": "/labs/ar-viewer/raum/sofas-deep-suitcase--schlafsofa-216-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-deep-suitcase--schlafsofa-216-cm.usdz"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-dylan": {
+      "glb": "/labs/ar-viewer/raum/sofas-dylan.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-dylan.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-dylan.webp",
+      "w": 204,
+      "d": 102,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Dylan",
+      "modell": "Sofa cm 204",
+      "profil": {
+        "sitzhoehe": 41,
+        "sitztiefe": null,
+        "armlehnenhoehe": 64,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/22080/23233/DYLAN_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Open sofa cm 283",
+          "w": 283,
+          "d": 102,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan--open-sofa-cm-283.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan--open-sofa-cm-283.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Inclined sofa cm 238x152",
+          "w": 238,
+          "d": 152,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan--inclined-sofa-cm-238x152.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan--inclined-sofa-cm-238x152.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Inclined sofa cm 317x152",
+          "w": 317,
+          "d": 152,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan--inclined-sofa-cm-317x152.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan--inclined-sofa-cm-317x152.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa cm 186 - SEAT CUSHION 68 CM",
+          "w": 186,
+          "d": 102,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan--sofa-cm-186-seat-cushion-68-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan--sofa-cm-186-seat-cushion-68-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-dylan-low": {
+      "glb": "/labs/ar-viewer/raum/sofas-dylan-low.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-dylan-low.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-dylan-low.webp",
+      "w": 204,
+      "d": 102,
+      "h": 81,
+      "marke": "Minotti",
+      "name": "Dylan Low",
+      "modell": "LOW - Sofa cm 204",
+      "profil": {
+        "sitzhoehe": 40,
+        "sitztiefe": null,
+        "armlehnenhoehe": 63,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/22082/23231/DYLAN_LOW_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "LOW - Open sofa cm 283",
+          "w": 283,
+          "d": 102,
+          "h": 81,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan-low--low-open-sofa-cm-283.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan-low--low-open-sofa-cm-283.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "LOW - Inclined sofa cm 238x152",
+          "w": 238,
+          "d": 152,
+          "h": 81,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan-low--low-inclined-sofa-cm-238x152.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan-low--low-inclined-sofa-cm-238x152.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "LOW - Inclined sofa cm 317x152",
+          "w": 317,
+          "d": 152,
+          "h": 81,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan-low--low-inclined-sofa-cm-317x152.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan-low--low-inclined-sofa-cm-317x152.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "LOW - Sofa cm 186 - SEAT CUSHION 68 CM",
+          "w": 186,
+          "d": 102,
+          "h": 81,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan-low--low-sofa-cm-186-seat-cushion-68-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan-low--low-sofa-cm-186-seat-cushion-68-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-dylan-small": {
+      "glb": "/labs/ar-viewer/raum/sofas-dylan-small.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-dylan-small.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-dylan-small.webp",
+      "w": 174,
+      "d": 87,
+      "h": 64,
+      "marke": "Minotti",
+      "name": "Dylan Small",
+      "modell": "SMALL - Sofa cm 174",
+      "profil": {
+        "sitzhoehe": 41,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/22081/23232/DYLAN_SMALL_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "SMALL - Sofa cm 241",
+          "w": 241,
+          "d": 87,
+          "h": 64,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan-small--small-sofa-cm-241.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan-small--small-sofa-cm-241.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SMALL - Inclined sofa cm 187x125",
+          "w": 187,
+          "d": 125,
+          "h": 64,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan-small--small-inclined-sofa-cm-187x125.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan-small--small-inclined-sofa-cm-187x125.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SMALL - Inclined sofa cm 277x125",
+          "w": 277,
+          "d": 125,
+          "h": 64,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan-small--small-inclined-sofa-cm-277x125.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan-small--small-inclined-sofa-cm-277x125.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SMALL - Inclined sofa cm 246x125",
+          "w": 246,
+          "d": 125,
+          "h": 64,
+          "glb": "/labs/ar-viewer/raum/sofas-dylan-small--small-inclined-sofa-cm-246x125.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-dylan-small--small-inclined-sofa-cm-246x125.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-freeman-duvet": {
+      "glb": "/labs/ar-viewer/raum/sofas-freeman-duvet.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-freeman-duvet.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-freeman-duvet.webp",
+      "w": 182,
+      "d": 112,
+      "h": 89,
+      "marke": "Minotti",
+      "name": "Freeman \"Duvet\"",
+      "modell": "Sofa „Duvet“ 182 cm",
+      "profil": {
+        "sitzhoehe": 38,
+        "sitztiefe": null,
+        "armlehnenhoehe": 58,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/428/1874/FREEMAN_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa „Duvet“ 224 cm",
+          "w": 224,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-freeman-duvet--sofa-duvet-224-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-freeman-duvet--sofa-duvet-224-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa „Duvet“ 245 cm",
+          "w": 245,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-freeman-duvet--sofa-duvet-245-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-freeman-duvet--sofa-duvet-245-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa „Duvet“ zusammengesetzt 308 cm",
+          "w": 308,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-freeman-duvet--sofa-duvet-zusammengesetzt-308-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-freeman-duvet--sofa-duvet-zusammengesetzt-308-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa „Duvet“ zusammengesetzt 392 cm",
+          "w": 392,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-freeman-duvet--sofa-duvet-zusammengesetzt-392-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-freeman-duvet--sofa-duvet-zusammengesetzt-392-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-goodman": {
+      "glb": "/labs/ar-viewer/raum/sofas-goodman.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-goodman.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-goodman.webp",
+      "w": 242,
+      "d": 110,
+      "h": 86,
+      "marke": "Minotti",
+      "name": "Goodman",
+      "modell": "Low Arm - Sofa cm 242",
+      "profil": {
+        "sitzhoehe": 40,
+        "sitztiefe": 82,
+        "armlehnenhoehe": 52,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Low Arm - Sofa cm 268",
+          "w": 268,
+          "d": 110,
+          "h": 86,
+          "glb": "/labs/ar-viewer/raum/sofas-goodman--low-arm-sofa-cm-268.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-goodman--low-arm-sofa-cm-268.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Rainbow - Angled sofa cm 330",
+          "w": 330,
+          "d": 146,
+          "h": 86,
+          "glb": "/labs/ar-viewer/raum/sofas-goodman--rainbow-angled-sofa-cm-330.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-goodman--rainbow-angled-sofa-cm-330.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Rainbow - Angled sofa cm 342",
+          "w": 342,
+          "d": 132,
+          "h": 86,
+          "glb": "/labs/ar-viewer/raum/sofas-goodman--rainbow-angled-sofa-cm-342.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-goodman--rainbow-angled-sofa-cm-342.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-hamilton": {
+      "glb": "/labs/ar-viewer/raum/sofas-hamilton.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-hamilton.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-hamilton.webp",
+      "w": 180,
+      "d": 104,
+      "h": 73,
+      "marke": "Minotti",
+      "name": "Hamilton",
+      "modell": "Sofa 180 cm",
+      "profil": {
+        "sitzhoehe": 40,
+        "sitztiefe": null,
+        "armlehnenhoehe": 54,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 208 cm",
+          "w": 208,
+          "d": 104,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/sofas-hamilton--sofa-208-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-hamilton--sofa-208-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofà 236 cm",
+          "w": 236,
+          "d": 104,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/sofas-hamilton--sofa-236-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-hamilton--sofa-236-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 280 cm",
+          "w": 280,
+          "d": 104,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/sofas-hamilton--sofa-280-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-hamilton--sofa-280-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofà 314 cm (2 Armlehnen)",
+          "w": 314,
+          "d": 104,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/sofas-hamilton--sofa-314-cm-2-armlehnen.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-hamilton--sofa-314-cm-2-armlehnen.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-lars": {
+      "glb": "/labs/ar-viewer/raum/sofas-lars.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-lars.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-lars.webp",
+      "w": 217,
+      "d": 100,
+      "h": 74,
+      "marke": "Minotti",
+      "name": "Lars",
+      "modell": "SEMI-ROUND SOFA CM 217",
+      "profil": {
+        "sitzhoehe": 43,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/20588/21557/LARS_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-lawrence": {
+      "glb": "/labs/ar-viewer/raum/sofas-lawrence.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-lawrence.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-lawrence.webp",
+      "w": 224,
+      "d": 112,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Lawrence",
+      "modell": "Sofa 224 cm, hohe Armlehne",
+      "profil": {
+        "sitzhoehe": 41,
+        "sitztiefe": null,
+        "armlehnenhoehe": 59,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/13189/10713/LAWRENCE_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 234 cm, niedrige Armlehne",
+          "w": 234,
+          "d": 112,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-lawrence--sofa-234-cm-niedrige-armlehne.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-lawrence--sofa-234-cm-niedrige-armlehne.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 314 cm, hohe Armlehne",
+          "w": 314,
+          "d": 112,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-lawrence--sofa-314-cm-hohe-armlehne.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-lawrence--sofa-314-cm-hohe-armlehne.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 324 cm, niedrige Armlehne",
+          "w": 324,
+          "d": 112,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-lawrence--sofa-324-cm-niedrige-armlehne.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-lawrence--sofa-324-cm-niedrige-armlehne.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 404 cm, hohe Armlehne",
+          "w": 404,
+          "d": 112,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-lawrence--sofa-404-cm-hohe-armlehne.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-lawrence--sofa-404-cm-hohe-armlehne.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-leslie-sofa": {
+      "glb": "/labs/ar-viewer/raum/sofas-leslie-sofa.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-leslie-sofa.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-leslie-sofa.webp",
+      "w": 156,
+      "d": 87,
+      "h": 75,
+      "marke": "Minotti",
+      "name": "Leslie Sofa",
+      "modell": "Sofa 156 cm",
+      "profil": {
+        "sitzhoehe": 39,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/429/1599/LESLIE_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-lido-dining": {
+      "glb": "/labs/ar-viewer/raum/sofas-lido-dining.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-lido-dining.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-lido-dining.webp",
+      "w": 66,
+      "d": 67,
+      "h": 81,
+      "marke": "Minotti",
+      "name": "Lido \"Dining\"",
+      "modell": "DINING LITTLE ARMCHAIR",
+      "profil": {
+        "sitzhoehe": 49,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-lido-sofas": {
+      "glb": "/labs/ar-viewer/raum/sofas-lido-sofas.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-lido-sofas.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-lido-sofas.webp",
+      "w": 183,
+      "d": 99,
+      "h": 85,
+      "marke": "Minotti",
+      "name": "Lido",
+      "modell": "SOFA WITH LEGS",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-powell": {
+      "glb": "/labs/ar-viewer/raum/sofas-powell.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-powell.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-powell.webp",
+      "w": 175,
+      "d": 98,
+      "h": 88,
+      "marke": "Minotti",
+      "name": "Powell",
+      "modell": "Sofa 175 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 63,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/447/1861/POWELL_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 215 cm",
+          "w": 215,
+          "d": 98,
+          "h": 88,
+          "glb": "/labs/ar-viewer/raum/sofas-powell--sofa-215-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-powell--sofa-215-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 255 cm",
+          "w": 255,
+          "d": 98,
+          "h": 88,
+          "glb": "/labs/ar-viewer/raum/sofas-powell--sofa-255-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-powell--sofa-255-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 275 cm",
+          "w": 275,
+          "d": 98,
+          "h": 88,
+          "glb": "/labs/ar-viewer/raum/sofas-powell--sofa-275-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-powell--sofa-275-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 295 cm",
+          "w": 295,
+          "d": 98,
+          "h": 88,
+          "glb": "/labs/ar-viewer/raum/sofas-powell--sofa-295-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-powell--sofa-295-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-reeves-lounge-sofa": {
+      "glb": "/labs/ar-viewer/raum/sofas-reeves-lounge-sofa.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-reeves-lounge-sofa.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-reeves-lounge-sofa.webp",
+      "w": 170,
+      "d": 78,
+      "h": 72,
+      "marke": "Minotti",
+      "name": "Reeves \"Lounge sofa\"",
+      "modell": "Lounge-Sofa 170 cm",
+      "profil": {
+        "sitzhoehe": 38,
+        "sitztiefe": null,
+        "armlehnenhoehe": 68,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/en/reeves-lounge-sofa"
+      },
+      "groessen": [
+        {
+          "modell": "Halbrundes Lounge-Sofa 170 cm",
+          "w": 170,
+          "d": 94,
+          "h": 68,
+          "glb": "/labs/ar-viewer/raum/sofas-reeves-lounge-sofa--halbrundes-lounge-sofa-170-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-reeves-lounge-sofa--halbrundes-lounge-sofa-170-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-reeves-semi-round-lounge-sofa": {
+      "glb": "/labs/ar-viewer/raum/sofas-reeves-semi-round-lounge-sofa.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-reeves-semi-round-lounge-sofa.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-reeves-semi-round-lounge-sofa.webp",
+      "w": 170,
+      "d": 94,
+      "h": 68,
+      "marke": "Minotti",
+      "name": "Reeves \"Semi-round Lounge Sofa\"",
+      "modell": "Halbrundes Lounge-Sofa 170 cm",
+      "profil": {
+        "sitzhoehe": 38,
+        "sitztiefe": null,
+        "armlehnenhoehe": 58,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/en/reeves-semi-round-lounge-sofa"
+      },
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-riley": {
+      "glb": "/labs/ar-viewer/raum/sofas-riley.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-riley.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-riley.webp",
+      "w": 242,
+      "d": 112,
+      "h": 85,
+      "marke": "Minotti",
+      "name": "Riley",
+      "modell": "Sofa 242 cm",
+      "profil": {
+        "sitzhoehe": 40,
+        "sitztiefe": 78,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/25029/28178/RILEY_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 262 cm",
+          "w": 262,
+          "d": 112,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/sofas-riley--sofa-262-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-riley--sofa-262-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Sofa 282 cm",
+          "w": 282,
+          "d": 112,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/sofas-riley--sofa-282-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-riley--sofa-282-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Sofa 302 cm",
+          "w": 302,
+          "d": 112,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/sofas-riley--sofa-302-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-riley--sofa-302-cm.usdz",
+          "profil": "stufen"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-roger-sofas": {
+      "glb": "/labs/ar-viewer/raum/sofas-roger-sofas.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-roger-sofas.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-roger-sofas.webp",
+      "w": 250,
+      "d": 101,
+      "h": 91,
+      "marke": "Minotti",
+      "name": "Roger",
+      "modell": "SPRING - SOFA LOW CM 250",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": 72,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/18668/18533/ROGER_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "SPRING - SOFA HIGH SQUARE CM 258",
+          "w": 258,
+          "d": 101,
+          "h": 91,
+          "glb": "/labs/ar-viewer/raum/sofas-roger-sofas--spring-sofa-high-square-cm-258.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-roger-sofas--spring-sofa-high-square-cm-258.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "SPRING - SOFA LOW CM 274",
+          "w": 274,
+          "d": 101,
+          "h": 91,
+          "glb": "/labs/ar-viewer/raum/sofas-roger-sofas--spring-sofa-low-cm-274.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-roger-sofas--spring-sofa-low-cm-274.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "SPRING - SOFA HIGH SQUARE CM 282",
+          "w": 282,
+          "d": 101,
+          "h": 91,
+          "glb": "/labs/ar-viewer/raum/sofas-roger-sofas--spring-sofa-high-square-cm-282.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-roger-sofas--spring-sofa-high-square-cm-282.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "SPRING - SOFA LOW CM 298",
+          "w": 298,
+          "d": 101,
+          "h": 91,
+          "glb": "/labs/ar-viewer/raum/sofas-roger-sofas--spring-sofa-low-cm-298.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-roger-sofas--spring-sofa-low-cm-298.usdz",
+          "profil": "stufen"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-saki-sofas": {
+      "glb": "/labs/ar-viewer/raum/sofas-saki-sofas.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-saki-sofas.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-saki-sofas.webp",
+      "w": 180,
+      "d": 91,
+      "h": 71,
+      "marke": "Minotti",
+      "name": "Saki",
+      "modell": "Sofa 180x91 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": 57,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 254x91 cm",
+          "w": 254,
+          "d": 91,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/sofas-saki-sofas--sofa-254x91-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-saki-sofas--sofa-254x91-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Corner sofa 180x95 cm",
+          "w": 180,
+          "d": 95,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/sofas-saki-sofas--corner-sofa-180x95-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-saki-sofas--corner-sofa-180x95-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Corner sofa 254x95 cm",
+          "w": 254,
+          "d": 95,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/sofas-saki-sofas--corner-sofa-254x95-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-saki-sofas--corner-sofa-254x95-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Corner sofa 328x95 cm",
+          "w": 328,
+          "d": 95,
+          "h": 71,
+          "glb": "/labs/ar-viewer/raum/sofas-saki-sofas--corner-sofa-328x95-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-saki-sofas--corner-sofa-328x95-cm.usdz",
+          "profil": "stufen"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-seymour": {
+      "glb": "/labs/ar-viewer/raum/sofas-seymour.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-seymour.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-seymour.webp",
+      "w": 220,
+      "d": 110,
+      "h": 76,
+      "marke": "Minotti",
+      "name": "Seymour",
+      "modell": "Sofa High 220 cm",
+      "profil": {
+        "sitzhoehe": 40,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/432/1851/SEYMOUR_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa Mix 212 cm",
+          "w": 212,
+          "d": 110,
+          "h": 76,
+          "glb": "/labs/ar-viewer/raum/sofas-seymour--sofa-mix-212-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-seymour--sofa-mix-212-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa Low 204 cm",
+          "w": 204,
+          "d": 102,
+          "h": 70,
+          "glb": "/labs/ar-viewer/raum/sofas-seymour--sofa-low-204-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-seymour--sofa-low-204-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Open-Sofa Mix 262 cm (Rücken 190 cm)",
+          "w": 262,
+          "d": 110,
+          "h": 76,
+          "glb": "/labs/ar-viewer/raum/sofas-seymour--open-sofa-mix-262-cm-rucken-190-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-seymour--open-sofa-mix-262-cm-rucken-190-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Open-Sofa Low 254 cm (Rücken 182 cm)",
+          "w": 254,
+          "d": 102,
+          "h": 70,
+          "glb": "/labs/ar-viewer/raum/sofas-seymour--open-sofa-low-254-cm-rucken-182-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-seymour--open-sofa-low-254-cm-rucken-182-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-torii-sofas": {
+      "glb": "/labs/ar-viewer/raum/sofas-torii-sofas.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-torii-sofas.webp",
+      "w": 184,
+      "d": 92,
+      "h": 87,
+      "marke": "Minotti",
+      "name": "Torii",
+      "modell": "SOFA LOW CM 184",
+      "profil": {
+        "sitzhoehe": 43,
+        "sitztiefe": null,
+        "armlehnenhoehe": 66,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/16947/15879/TORII_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "ANGLED SOFA LOW CM 220",
+          "w": 220,
+          "d": 105,
+          "h": 87,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas--angled-sofa-low-cm-220.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas--angled-sofa-low-cm-220.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA LOW CM 198",
+          "w": 198,
+          "d": 92,
+          "h": 87,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas--sofa-low-cm-198.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas--sofa-low-cm-198.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA HIGH CM 198",
+          "w": 198,
+          "d": 92,
+          "h": 96,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas--sofa-high-cm-198.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas--sofa-high-cm-198.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA LOW CM 244",
+          "w": 244,
+          "d": 92,
+          "h": 87,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas--sofa-low-cm-244.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas--sofa-low-cm-244.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-torii-sofas-2": {
+      "glb": "/labs/ar-viewer/raum/sofas-torii-sofas-2.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas-2.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-torii-sofas-2.webp",
+      "w": 220,
+      "d": 105,
+      "h": 87,
+      "marke": "Minotti",
+      "name": "Torii",
+      "modell": "ANGLED SOFA LOW CM 220",
+      "profil": {
+        "sitzhoehe": 43,
+        "sitztiefe": null,
+        "armlehnenhoehe": 66,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/16947/15879/TORII_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "SOFA LOW CM 184",
+          "w": 184,
+          "d": 92,
+          "h": 87,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas-2--sofa-low-cm-184.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas-2--sofa-low-cm-184.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA LOW CM 198",
+          "w": 198,
+          "d": 92,
+          "h": 87,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas-2--sofa-low-cm-198.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas-2--sofa-low-cm-198.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA HIGH CM 198",
+          "w": 198,
+          "d": 92,
+          "h": 96,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas-2--sofa-high-cm-198.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas-2--sofa-high-cm-198.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA LOW CM 244",
+          "w": 244,
+          "d": 92,
+          "h": 87,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas-2--sofa-low-cm-244.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas-2--sofa-low-cm-244.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-torii-sofas-3": {
+      "glb": "/labs/ar-viewer/raum/sofas-torii-sofas-3.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas-3.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-torii-sofas-3.webp",
+      "w": 198,
+      "d": 92,
+      "h": 87,
+      "marke": "Minotti",
+      "name": "Torii",
+      "modell": "SOFA LOW CM 198",
+      "profil": {
+        "sitzhoehe": 43,
+        "sitztiefe": null,
+        "armlehnenhoehe": 66,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/16947/15879/TORII_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "SOFA LOW CM 184",
+          "w": 184,
+          "d": 92,
+          "h": 87,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas-3--sofa-low-cm-184.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas-3--sofa-low-cm-184.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "ANGLED SOFA LOW CM 220",
+          "w": 220,
+          "d": 105,
+          "h": 87,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas-3--angled-sofa-low-cm-220.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas-3--angled-sofa-low-cm-220.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA HIGH CM 198",
+          "w": 198,
+          "d": 92,
+          "h": 96,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas-3--sofa-high-cm-198.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas-3--sofa-high-cm-198.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA LOW CM 244",
+          "w": 244,
+          "d": 92,
+          "h": 87,
+          "glb": "/labs/ar-viewer/raum/sofas-torii-sofas-3--sofa-low-cm-244.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-torii-sofas-3--sofa-low-cm-244.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-west-sofas": {
+      "glb": "/labs/ar-viewer/raum/sofas-west-sofas.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-west-sofas.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-west-sofas.webp",
+      "w": 228,
+      "d": 114,
+      "h": 79,
+      "marke": "Minotti",
+      "name": "West",
+      "modell": "Sofa cm 228 - seat cushion cm 85",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Corner sofa cm 313 - seat cushion cm 85",
+          "w": 313,
+          "d": 114,
+          "h": 79,
+          "glb": "/labs/ar-viewer/raum/sofas-west-sofas--corner-sofa-cm-313-seat-cushion-cm-85.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-west-sofas--corner-sofa-cm-313-seat-cushion-cm-85.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Corner sofa cm 293 - seat cushion cm 85",
+          "w": 293,
+          "d": 114,
+          "h": 79,
+          "glb": "/labs/ar-viewer/raum/sofas-west-sofas--corner-sofa-cm-293-seat-cushion-cm-85.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-west-sofas--corner-sofa-cm-293-seat-cushion-cm-85.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa cm 208 - seat cushion cm 75",
+          "w": 208,
+          "d": 114,
+          "h": 79,
+          "glb": "/labs/ar-viewer/raum/sofas-west-sofas--sofa-cm-208-seat-cushion-cm-75.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-west-sofas--sofa-cm-208-seat-cushion-cm-75.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa cm 283 - seat cushion cm 75",
+          "w": 283,
+          "d": 114,
+          "h": 79,
+          "glb": "/labs/ar-viewer/raum/sofas-west-sofas--sofa-cm-283-seat-cushion-cm-75.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-west-sofas--sofa-cm-283-seat-cushion-cm-75.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-white": {
+      "glb": "/labs/ar-viewer/raum/sofas-white.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-white.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-white.webp",
+      "w": 195,
+      "d": 103,
+      "h": 89,
+      "marke": "Minotti",
+      "name": "White",
+      "modell": "White Sofà 195 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 61,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/442/8931/WHITE_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "White Sofà 220 cm",
+          "w": 220,
+          "d": 103,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-white--white-sofa-220-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-white--white-sofa-220-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 245 cm (Tiefe 103)",
+          "w": 245,
+          "d": 103,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-white--sofa-245-cm-tiefe-103.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-white--sofa-245-cm-tiefe-103.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 270 cm (Tiefe 103)",
+          "w": 270,
+          "d": 103,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-white--sofa-270-cm-tiefe-103.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-white--sofa-270-cm-tiefe-103.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 290 cm (Tiefe 103)",
+          "w": 290,
+          "d": 103,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-white--sofa-290-cm-tiefe-103.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-white--sofa-290-cm-tiefe-103.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-white-saddle-hide": {
+      "glb": "/labs/ar-viewer/raum/sofas-white-saddle-hide.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-white-saddle-hide.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-white-saddle-hide.webp",
+      "w": 195,
+      "d": 103,
+      "h": 89,
+      "marke": "Minotti",
+      "name": "White \"Saddle-Hide\"",
+      "modell": "Sofà 195 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 61,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/1951/8932/WHITE%20SADDLE_HIDE_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofà 220 cm mit Ablage-Top 44×44 (am Rücken)",
+          "w": 220,
+          "d": 103,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-white-saddle-hide--sofa-220-cm-mit-ablage-top-44-44-am-rucken.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-white-saddle-hide--sofa-220-cm-mit-ablage-top-44-44-am-rucken.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 245 cm (Tiefe 103)",
+          "w": 245,
+          "d": 103,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-white-saddle-hide--sofa-245-cm-tiefe-103.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-white-saddle-hide--sofa-245-cm-tiefe-103.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 270 cm (Tiefe 103)",
+          "w": 270,
+          "d": 103,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-white-saddle-hide--sofa-270-cm-tiefe-103.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-white-saddle-hide--sofa-270-cm-tiefe-103.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 320 cm (Tiefe 103)",
+          "w": 320,
+          "d": 103,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/sofas-white-saddle-hide--sofa-320-cm-tiefe-103.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-white-saddle-hide--sofa-320-cm-tiefe-103.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-yang": {
+      "glb": "/labs/ar-viewer/raum/sofas-yang.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-yang.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-yang.webp",
+      "w": 180,
+      "d": 105,
+      "h": 78,
+      "marke": "Minotti",
+      "name": "Yang",
+      "modell": "Sofa 180 cm",
+      "profil": {
+        "sitzhoehe": 38,
+        "sitztiefe": 80,
+        "armlehnenhoehe": 61,
+        "armlehnenbreite": 25,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 210 cm",
+          "w": 210,
+          "d": 105,
+          "h": 78,
+          "glb": "/labs/ar-viewer/raum/sofas-yang--sofa-210-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-yang--sofa-210-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Sofa 230 cm",
+          "w": 230,
+          "d": 105,
+          "h": 78,
+          "glb": "/labs/ar-viewer/raum/sofas-yang--sofa-230-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-yang--sofa-230-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Daybed-Sofa 260 cm, Rücken 180 cm",
+          "w": 260,
+          "d": 105,
+          "h": 78,
+          "glb": "/labs/ar-viewer/raum/sofas-yang--daybed-sofa-260-cm-rucken-180-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-yang--daybed-sofa-260-cm-rucken-180-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Daybed-Sofa 290 cm, Rücken 185 cm",
+          "w": 290,
+          "d": 105,
+          "h": 78,
+          "glb": "/labs/ar-viewer/raum/sofas-yang--daybed-sofa-290-cm-rucken-185-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-yang--daybed-sofa-290-cm-rucken-185-cm.usdz",
+          "profil": "stufen"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sofas-yves": {
+      "glb": "/labs/ar-viewer/raum/sofas-yves.glb",
+      "usdz": "/labs/ar-viewer/raum/sofas-yves.usdz",
+      "poster": "/labs/ar-viewer/raum/sofas-yves.webp",
+      "w": 248,
+      "d": 113,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Yves",
+      "modell": "SUITE - Sofa MIX 248 cm",
+      "profil": {
+        "sitzhoehe": 43,
+        "sitztiefe": 79,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "SUITE - Daybed-Sofa MIX 274 cm",
+          "w": 274,
+          "d": 113,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-yves--suite-daybed-sofa-mix-274-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-yves--suite-daybed-sofa-mix-274-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "SUITE - Daybed-Sofa MIX 300 cm",
+          "w": 300,
+          "d": 113,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-yves--suite-daybed-sofa-mix-300-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-yves--suite-daybed-sofa-mix-300-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "SUITE - Daybed-Sofa MIX 326 cm",
+          "w": 326,
+          "d": 113,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-yves--suite-daybed-sofa-mix-326-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-yves--suite-daybed-sofa-mix-326-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "BEND - Sofa MIX 300x140 cm",
+          "w": 300,
+          "d": 140,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/sofas-yves--bend-sofa-mix-300x140-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/sofas-yves--bend-sofa-mix-300x140-cm.usdz",
+          "profil": "stufen"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "stools-torii-bold-stools": {
+      "glb": "/labs/ar-viewer/raum/stools-torii-bold-stools.glb",
+      "usdz": "/labs/ar-viewer/raum/stools-torii-bold-stools.usdz",
+      "poster": "/labs/ar-viewer/raum/stools-torii-bold-stools.webp",
+      "w": 152,
+      "d": 59,
+      "h": 41,
+      "marke": "Minotti",
+      "name": "Torii Bold",
+      "modell": "Ottoman cm 152x59 - fixed",
+      "groessen": [
+        {
+          "modell": "Angled ottoman cm 94x56 - fixed",
+          "w": 94,
+          "d": 56,
+          "h": 41,
+          "glb": "/labs/ar-viewer/raum/stools-torii-bold-stools--angled-ottoman-cm-94x56-fixed.glb",
+          "usdz": "/labs/ar-viewer/raum/stools-torii-bold-stools--angled-ottoman-cm-94x56-fixed.usdz"
+        },
+        {
+          "modell": "Angled ottoman cm 152x68 - fixed",
+          "w": 152,
+          "d": 68,
+          "h": 41,
+          "glb": "/labs/ar-viewer/raum/stools-torii-bold-stools--angled-ottoman-cm-152x68-fixed.glb",
+          "usdz": "/labs/ar-viewer/raum/stools-torii-bold-stools--angled-ottoman-cm-152x68-fixed.usdz"
+        },
+        {
+          "modell": "LARGE Ottoman Ø cm 77 - fixed",
+          "w": 77,
+          "d": 77,
+          "h": 41,
+          "glb": "/labs/ar-viewer/raum/stools-torii-bold-stools--large-ottoman-cm-77-fixed.glb",
+          "usdz": "/labs/ar-viewer/raum/stools-torii-bold-stools--large-ottoman-cm-77-fixed.usdz"
+        },
+        {
+          "modell": "MEDIUM Ottoman Ø cm 71 - fixed",
+          "w": 71,
+          "d": 71,
+          "h": 41,
+          "glb": "/labs/ar-viewer/raum/stools-torii-bold-stools--medium-ottoman-cm-71-fixed.glb",
+          "usdz": "/labs/ar-viewer/raum/stools-torii-bold-stools--medium-ottoman-cm-71-fixed.usdz"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sun-loungers-foxx-lounger": {
+      "glb": "/labs/ar-viewer/raum/sun-loungers-foxx-lounger.glb",
+      "usdz": "/labs/ar-viewer/raum/sun-loungers-foxx-lounger.usdz",
+      "poster": "/labs/ar-viewer/raum/sun-loungers-foxx-lounger.webp",
+      "w": 75,
+      "d": 200,
+      "h": 45,
+      "marke": "Solpuri",
+      "name": "FOXX Lounger",
+      "modell": "Liege mit Onlay, stapelbar",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "sun-loungers-jazz-lounger": {
+      "glb": "/labs/ar-viewer/raum/sun-loungers-jazz-lounger.glb",
+      "usdz": "/labs/ar-viewer/raum/sun-loungers-jazz-lounger.usdz",
+      "poster": "/labs/ar-viewer/raum/sun-loungers-jazz-lounger.webp",
+      "w": 73,
+      "d": 200,
+      "h": 50,
+      "marke": "Solpuri",
+      "name": "JAZZ lounger",
+      "modell": "Liege inkl. Nackenrolle",
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-alexander": {
+      "glb": "/labs/ar-viewer/raum/tables-alexander.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-alexander.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-alexander.webp",
+      "w": 229,
+      "d": 105,
+      "h": 83,
+      "marke": "Minotti",
+      "name": "Alexander",
+      "modell": "SOFA MIX CM 229",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": 27,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "SOFA MIX CM 254",
+          "w": 254,
+          "d": 105,
+          "h": 83,
+          "glb": "/labs/ar-viewer/raum/tables-alexander--sofa-mix-cm-254.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-alexander--sofa-mix-cm-254.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "DROP - SOFA MIX CM 274",
+          "w": 274,
+          "d": 105,
+          "h": 83,
+          "glb": "/labs/ar-viewer/raum/tables-alexander--drop-sofa-mix-cm-274.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-alexander--drop-sofa-mix-cm-274.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "DROP - SOFA MIX CM 304",
+          "w": 304,
+          "d": 105,
+          "h": 83,
+          "glb": "/labs/ar-viewer/raum/tables-alexander--drop-sofa-mix-cm-304.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-alexander--drop-sofa-mix-cm-304.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-andersen-slim-103": {
+      "glb": "/labs/ar-viewer/raum/tables-andersen-slim-103.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-103.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-andersen-slim-103.webp",
+      "w": 186,
+      "d": 103,
+      "h": 85,
+      "marke": "Minotti",
+      "name": "Andersen Slim 103",
+      "modell": "Sofa 186 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 71,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/1959/8740/ANDERSEN_SLIM_103_103_QUILT_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 227 cm",
+          "w": 227,
+          "d": 103,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-103--sofa-227-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-103--sofa-227-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 288 cm",
+          "w": 288,
+          "d": 103,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-103--sofa-288-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-103--sofa-288-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 316 cm",
+          "w": 316,
+          "d": 103,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-103--sofa-316-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-103--sofa-316-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 372 cm",
+          "w": 372,
+          "d": 103,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-103--sofa-372-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-103--sofa-372-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-andersen-slim-103-quilt": {
+      "glb": "/labs/ar-viewer/raum/tables-andersen-slim-103-quilt.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-103-quilt.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-andersen-slim-103-quilt.webp",
+      "w": 186,
+      "d": 103,
+      "h": 73,
+      "marke": "Minotti",
+      "name": "Andersen Slim 103 \"Quilt\"",
+      "modell": "Sofa 186 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 71,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/1960/8739/ANDERSEN_SLIM_103_103_QUILT_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 227 cm",
+          "w": 227,
+          "d": 103,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-103-quilt--sofa-227-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-103-quilt--sofa-227-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 288 cm",
+          "w": 288,
+          "d": 103,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-103-quilt--sofa-288-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-103-quilt--sofa-288-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 316 cm",
+          "w": 316,
+          "d": 103,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-103-quilt--sofa-316-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-103-quilt--sofa-316-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 372 cm",
+          "w": 372,
+          "d": 103,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-103-quilt--sofa-372-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-103-quilt--sofa-372-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-andersen-slim-90": {
+      "glb": "/labs/ar-viewer/raum/tables-andersen-slim-90.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-90.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-andersen-slim-90.webp",
+      "w": 158,
+      "d": 90,
+      "h": 85,
+      "marke": "Minotti",
+      "name": "Andersen Slim 90",
+      "modell": "Sofa 158 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 71,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/1961/8737/ANDERSEN_SLIM_90_90_QUILT_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 186 cm",
+          "w": 186,
+          "d": 90,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-90--sofa-186-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-90--sofa-186-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 227 cm",
+          "w": 227,
+          "d": 90,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-90--sofa-227-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-90--sofa-227-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 316 cm",
+          "w": 316,
+          "d": 90,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-90--sofa-316-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-90--sofa-316-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 372 cm",
+          "w": 372,
+          "d": 90,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-90--sofa-372-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-90--sofa-372-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-andersen-slim-90-quilt": {
+      "glb": "/labs/ar-viewer/raum/tables-andersen-slim-90-quilt.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-90-quilt.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-andersen-slim-90-quilt.webp",
+      "w": 158,
+      "d": 90,
+      "h": 73,
+      "marke": "Minotti",
+      "name": "Andersen Slim 90 \"Quilt\"",
+      "modell": "Sofa 158 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 71,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/1962/8738/ANDERSEN_SLIM_90_90_QUILT_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 186 cm",
+          "w": 186,
+          "d": 90,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-90-quilt--sofa-186-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-90-quilt--sofa-186-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 227 cm",
+          "w": 227,
+          "d": 90,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-90-quilt--sofa-227-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-90-quilt--sofa-227-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Kompositionssofa 316 cm (2 × Endelement 158)",
+          "w": 316,
+          "d": 90,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-90-quilt--kompositionssofa-316-cm-2-endelement-158.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-90-quilt--kompositionssofa-316-cm-2-endelement-158.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Kompositionssofa 372 cm (2 × Endelement 186)",
+          "w": 372,
+          "d": 90,
+          "h": 73,
+          "glb": "/labs/ar-viewer/raum/tables-andersen-slim-90-quilt--kompositionssofa-372-cm-2-endelement-186.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-andersen-slim-90-quilt--kompositionssofa-372-cm-2-endelement-186.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-connery": {
+      "glb": "/labs/ar-viewer/raum/tables-connery.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-connery.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-connery.webp",
+      "w": 214,
+      "d": 102,
+      "h": 88,
+      "marke": "Minotti",
+      "name": "Connery",
+      "modell": "Sofa 214 cm",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 68,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/16945/15898/CONNERY_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 297 cm",
+          "w": 297,
+          "d": 102,
+          "h": 88,
+          "glb": "/labs/ar-viewer/raum/tables-connery--sofa-297-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-connery--sofa-297-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa mit Flap 230 cm",
+          "w": 230,
+          "d": 102,
+          "h": 88,
+          "glb": "/labs/ar-viewer/raum/tables-connery--sofa-mit-flap-230-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-connery--sofa-mit-flap-230-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa mit Flap 313 cm",
+          "w": 313,
+          "d": 102,
+          "h": 88,
+          "glb": "/labs/ar-viewer/raum/tables-connery--sofa-mit-flap-313-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-connery--sofa-mit-flap-313-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa 184 cm",
+          "w": 184,
+          "d": 102,
+          "h": 88,
+          "glb": "/labs/ar-viewer/raum/tables-connery--sofa-184-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-connery--sofa-184-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-coupe-tables": {
+      "glb": "/labs/ar-viewer/raum/tables-coupe-tables.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-coupe-tables.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-coupe-tables.webp",
+      "w": 240,
+      "d": 109,
+      "h": 68,
+      "marke": "Minotti",
+      "name": "Coupé",
+      "modell": "Sofa 240 cm",
+      "profil": {
+        "sitzhoehe": 39,
+        "sitztiefe": 70,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/25027/28165/COUPE_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 268 cm",
+          "w": 268,
+          "d": 109,
+          "h": 68,
+          "glb": "/labs/ar-viewer/raum/tables-coupe-tables--sofa-268-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-coupe-tables--sofa-268-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Sofa 296 cm",
+          "w": 296,
+          "d": 109,
+          "h": 68,
+          "glb": "/labs/ar-viewer/raum/tables-coupe-tables--sofa-296-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-coupe-tables--sofa-296-cm.usdz",
+          "profil": "stufen"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-coupe-tables-2": {
+      "glb": "/labs/ar-viewer/raum/tables-coupe-tables-2.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-coupe-tables-2.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-coupe-tables-2.webp",
+      "w": 268,
+      "d": 109,
+      "h": 68,
+      "marke": "Minotti",
+      "name": "Coupé",
+      "modell": "Sofa 268 cm",
+      "profil": {
+        "sitzhoehe": 39,
+        "sitztiefe": 70,
+        "armlehnenhoehe": null,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/25027/28165/COUPE_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 240 cm",
+          "w": 240,
+          "d": 109,
+          "h": 68,
+          "glb": "/labs/ar-viewer/raum/tables-coupe-tables-2--sofa-240-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-coupe-tables-2--sofa-240-cm.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Sofa 296 cm",
+          "w": 296,
+          "d": 109,
+          "h": 68,
+          "glb": "/labs/ar-viewer/raum/tables-coupe-tables-2--sofa-296-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-coupe-tables-2--sofa-296-cm.usdz",
+          "profil": "stufen"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-freeman": {
+      "glb": "/labs/ar-viewer/raum/tables-freeman.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-freeman.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-freeman.webp",
+      "w": 182,
+      "d": 112,
+      "h": 89,
+      "marke": "Minotti",
+      "name": "Freeman",
+      "modell": "Sofa „Duvet“ 182 cm",
+      "profil": {
+        "sitzhoehe": 38,
+        "sitztiefe": null,
+        "armlehnenhoehe": 58,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/420/1873/FREEMAN_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Sofa 224 cm („Tailor“)",
+          "w": 224,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/tables-freeman--sofa-224-cm-tailor.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-freeman--sofa-224-cm-tailor.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa „Duvet“ 245 cm",
+          "w": 245,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/tables-freeman--sofa-duvet-245-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-freeman--sofa-duvet-245-cm.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa zusammengesetzt 308 cm („Tailor“)",
+          "w": 308,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/tables-freeman--sofa-zusammengesetzt-308-cm-tailor.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-freeman--sofa-zusammengesetzt-308-cm-tailor.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "Sofa „Duvet“ zusammengesetzt 392 cm",
+          "w": 392,
+          "d": 112,
+          "h": 89,
+          "glb": "/labs/ar-viewer/raum/tables-freeman--sofa-duvet-zusammengesetzt-392-cm.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-freeman--sofa-duvet-zusammengesetzt-392-cm.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-horizonte-tables": {
+      "glb": "/labs/ar-viewer/raum/tables-horizonte-tables.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-horizonte-tables.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-horizonte-tables.webp",
+      "w": 254,
+      "d": 106,
+      "h": 85,
+      "marke": "Minotti",
+      "name": "Horizonte",
+      "modell": "SOFA CM 254",
+      "profil": {
+        "sitzhoehe": 42,
+        "sitztiefe": null,
+        "armlehnenhoehe": 65,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/en/horizonte"
+      },
+      "groessen": [
+        {
+          "modell": "SOFA CM 280",
+          "w": 280,
+          "d": 106,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/tables-horizonte-tables--sofa-cm-280.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-horizonte-tables--sofa-cm-280.usdz",
+          "profil": "linien"
+        },
+        {
+          "modell": "SOFA CM 306",
+          "w": 306,
+          "d": 106,
+          "h": 85,
+          "glb": "/labs/ar-viewer/raum/tables-horizonte-tables--sofa-cm-306.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-horizonte-tables--sofa-cm-306.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-tape-tables": {
+      "glb": "/labs/ar-viewer/raum/tables-tape-tables.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-tape-tables.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-tape-tables.webp",
+      "w": 163,
+      "d": 78,
+      "h": 74.5,
+      "marke": "Minotti",
+      "name": "Tape",
+      "modell": "SOFA CM 163",
+      "profil": {
+        "sitzhoehe": 40,
+        "sitztiefe": null,
+        "armlehnenhoehe": 64.5,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "SOFA CM 228",
+          "w": 228,
+          "d": 79,
+          "h": 74.5,
+          "glb": "/labs/ar-viewer/raum/tables-tape-tables--sofa-cm-228.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-tape-tables--sofa-cm-228.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-tape-tables-2": {
+      "glb": "/labs/ar-viewer/raum/tables-tape-tables-2.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-tape-tables-2.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-tape-tables-2.webp",
+      "w": 228,
+      "d": 79,
+      "h": 74.5,
+      "marke": "Minotti",
+      "name": "Tape",
+      "modell": "SOFA CM 228",
+      "profil": {
+        "sitzhoehe": 40,
+        "sitztiefe": null,
+        "armlehnenhoehe": 64.5,
+        "armlehnenbreite": null,
+        "art": "linien",
+        "quelle": "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "SOFA CM 163",
+          "w": 163,
+          "d": 78,
+          "h": 74.5,
+          "glb": "/labs/ar-viewer/raum/tables-tape-tables-2--sofa-cm-163.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-tape-tables-2--sofa-cm-163.usdz",
+          "profil": "linien"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    },
+    "tables-yves-sofa": {
+      "glb": "/labs/ar-viewer/raum/tables-yves-sofa.glb",
+      "usdz": "/labs/ar-viewer/raum/tables-yves-sofa.usdz",
+      "poster": "/labs/ar-viewer/raum/tables-yves-sofa.webp",
+      "w": 248,
+      "d": 100,
+      "h": 82,
+      "marke": "Minotti",
+      "name": "Yves Sofà",
+      "modell": "Sofa 248",
+      "profil": {
+        "sitzhoehe": 43,
+        "sitztiefe": 66,
+        "armlehnenhoehe": 62,
+        "armlehnenbreite": null,
+        "art": "stufen",
+        "quelle": "https://www.minotti.com/downloads/23291/25494/YVES_SOFA_TECHNICAL_SHEET.pdf"
+      },
+      "groessen": [
+        {
+          "modell": "Lounge: Sofa 274",
+          "w": 274,
+          "d": 100,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/tables-yves-sofa--lounge-sofa-274.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-yves-sofa--lounge-sofa-274.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Lounge: Sofa 300",
+          "w": 300,
+          "d": 100,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/tables-yves-sofa--lounge-sofa-300.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-yves-sofa--lounge-sofa-300.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Sofa geneigt 268",
+          "w": 268,
+          "d": 155,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/tables-yves-sofa--sofa-geneigt-268.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-yves-sofa--sofa-geneigt-268.usdz",
+          "profil": "stufen"
+        },
+        {
+          "modell": "Lounge: Sofa geneigt 306x165",
+          "w": 306,
+          "d": 165,
+          "h": 82,
+          "glb": "/labs/ar-viewer/raum/tables-yves-sofa--lounge-sofa-geneigt-306x165.glb",
+          "usdz": "/labs/ar-viewer/raum/tables-yves-sofa--lounge-sofa-geneigt-306x165.usdz",
+          "profil": "stufen"
+        }
+      ],
+      "bildnutzung": "keine",
+      "erzeugt": "2026-10-27"
+    }
+  }
+}

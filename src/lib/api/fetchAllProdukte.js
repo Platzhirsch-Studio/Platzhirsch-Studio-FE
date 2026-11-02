@@ -1,6 +1,8 @@
 // src/lib/api/fetchAllProdukte.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
+import { fetchProduktDetail } from "@/lib/api/produktDetail";
 import { cleanProductName, displayBrandName } from "@/lib/content/brands";
 
 // "Produkte New" fetchers for the /produkte category-hub, category-listing
@@ -18,11 +20,13 @@ const PRODUKTE_NEW_API = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_stud
 
 async function getMessage(url, { fallback, label, init }) {
   try {
-    const response = await fetch(url, {
+    const response = await backofficeFetch(url, {
       method: "GET",
       ...(init || { next: { revalidate: 3600, tags: ["products"] } }),
       // Never hang a render on a stalled backend (a dev run once took 4.7 min).
-      signal: AbortSignal.timeout(15000),
+      // 2 x 7 s inside a 15 s budget: a retry, but never longer than the old single 15 s limit.
+      timeoutMs: 7000,
+      budgetMs: 15000,
     });
 
     if (!response.ok) {
@@ -89,11 +93,34 @@ export async function fetchKategorienWithCounts() {
 // /produkte/[category]/[product] detail page. Returns the child tables too
 // (bild_anhangen/pdf_produkte/additional_information), plus the localized
 // beschreibung/mehr_beschreibung/metadata_description fields.
+// R5-produkt (P2): null ONLY when the product really does not exist (the
+// page then 404s). A timeout, 5xx or broken answer THROWS a BackofficeError
+// (→ error.js, HTTP 500, nothing cached) – it used to come back as null and
+// turned live products into 404s under load. Callers that want a soft
+// fallback (home page strip) keep their own .catch(() => null).
+//
+// Technik R7 (r6-technik P0-1): a slug that is not in the (cached) path list
+// is answered with null WITHOUT a backoffice call – every unknown slug used
+// to leave its own entry in the data cache (.next/cache/fetch-cache), without
+// limit. An empty list (endpoint missing, backoffice down) skips the check.
+const knownPathSets = new WeakMap();
+async function isUnknownProductPath(path_field) {
+  const paths = await fetchProduktePaths();
+  if (!Array.isArray(paths) || !paths.length) return false;
+  let set = knownPathSets.get(paths);
+  if (!set) {
+    set = new Set(paths.map((p) => p?.path_field).filter(Boolean));
+    knownPathSets.set(paths, set);
+  }
+  return !set.has(path_field);
+}
+
 export async function fetchProduktNewByPathField(path_field, locale = "de") {
   if (!path_field) return null;
-  return getMessage(
+  if (await isUnknownProductPath(path_field)) return null;
+  return fetchProduktDetail(
     `${PRODUKTE_NEW_API}.get_produkt_by_path_field_api?path_field=${encodeURIComponent(path_field)}&lang=${encodeURIComponent(locale)}`,
-    { fallback: null, label: "detail" }
+    { next: { revalidate: 3600, tags: ["products"] }, timeoutMs: 7000, budgetMs: 15000 }
   );
 }
 

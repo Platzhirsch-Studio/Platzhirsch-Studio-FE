@@ -1,0 +1,2061 @@
+{
+  "name": "Freeman \"Tailor\"",
+  "slug": "freeman-tailor",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2016,
+  "jahr_hinweis": "Produktseite verlinkt auf „2016 Collection“; Technical Sheet Stand Dezember 2024.",
+  "kollektion": "2016 Collection",
+  "typ": "Modulares Sitzsystem (Freeman-System) mit Monoblock-Sitzen und Ziernähten; drei Linien: „Tailor“ (gepolsterte Arm-/Rückenlehnen), „Tailor Wing“ (schlanke Wing-Arm-/Rückenlehnen aus Metall + PU) und „Tailor Mix“ (Wing-Armlehne + gepolsterter Rücken). Sofas, End-, Mittel-, Eck-, Peninsula-, Daybed-, Couch- und Chaiselongue-Elemente, dazu Hocker, Bänke und Armlehnen-Hocker.",
+  "modular": true,
+  "quellen": [
+    "https://www.minotti.com/en/freeman-tailor_2",
+    "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/427/14055/MINOTTI_Freeman_Tailor_.zip",
+    "https://www.minotti.com/downloads/2127/8765/Freeman%20arrangement%201.pdf",
+    "https://www.minotti.com/downloads/2128/8773/Freeman%20arrangement%202.pdf",
+    "https://www.minotti.com/downloads/2129/8792/Freeman%20arrangement%203.pdf",
+    "https://www.minotti.com/downloads/2130/8776/Freeman%20arrangement%204.pdf",
+    "https://www.minotti.com/downloads/11094/8779/Freeman%20arrangement%205.pdf",
+    "https://www.minotti.com/downloads/11095/8783/Freeman%20arrangement%206.pdf",
+    "https://www.minotti.com/downloads/11096/8784/Freeman%20arrangement%207.pdf",
+    "https://www.minotti.com/downloads/11097/8789/Freeman%20arrangement%208.pdf",
+    "https://www.minotti.com/downloads/14150/11939/Freeman%20arrangement%209.pdf",
+    "https://www.minotti.com/downloads/14151/11943/Freeman%20arrangement%2010.pdf"
+  ],
+  "technisches_datenblatt": "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf",
+  "datenblatt_stand": "Dezember 2024 (gemeinsames Freeman-Datenblatt für Duvet, Tailor, Tailor Wing/Mix und Lounge; Seiten 11–18 = Tailor)",
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "masse_hinweis": "Maße aus den bemaßten Zeichnungen des Technical Sheet (Dezember 2024) und den Elementlisten/Arrangements der Produktseite. Zeichnungen sind doppelt bemaßt (cm + Zoll): 89/35 = Gesamthöhe 89 cm (35\"), 58/22 7/8 = Struktur-/Rückenhöhe ohne Kissen 58 cm, 37/14 5/8 = Sitzhöhe 37 cm. Standardtiefe 112 cm (Produktseite z. B. „CENTRAL ELEMENT CM 168X112 H89“). innen_sitzbreite_cm = beschriftetes Innenmaß der Draufsicht. Standardfüße H 7,5 cm (Zeichnung); Höhen gelten für Standardfüße.",
+  "raster": {
+    "sitzbreiten_cm": [
+      63,
+      84,
+      126,
+      147,
+      168
+    ],
+    "tiefe_cm": 112,
+    "hinweis": "Grundraster 21 cm (63/84/105/126/147/168) – abgeleitet aus den Innenmaßen, nicht als Regel publiziert."
+  },
+  "elemente": [
+    {
+      "code": "FRT-SOFA-224",
+      "name": "TAILOR - SOFA CM 224",
+      "name_de": "Sofa 224 cm",
+      "art": "sofa",
+      "linie": "Tailor",
+      "seitenvarianten": null,
+      "breite_cm": 224,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-SOFA-COMP-308",
+      "name": "TAILOR - COMPOSED SOFA CM 308",
+      "name_de": "Sofa komponiert 308 cm",
+      "art": "sofa",
+      "linie": "Tailor",
+      "seitenvarianten": null,
+      "breite_cm": 308,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 252,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Komposition aus Endelement SX + DX à 154 cm (laut Datenblatt)",
+      "hinweis": "Innenmaß laut Zeichnung 2 × 126 cm.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-END-112",
+      "name": "TAILOR - ELEMENT WITH 1 ARMREST CM 112",
+      "name_de": "Endelement mit 1 Armlehne 112 cm",
+      "art": "endelement",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 112,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne (SX = Armlehne links, DX = rechts, Sicht von vorn); an der offenen Seite anbaubar an Mittel-, Eck-, Peninsula- oder weiteres Endelement.",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-END-154",
+      "name": "TAILOR - ELEMENT WITH 1 ARMREST CM 154",
+      "name_de": "Endelement mit 1 Armlehne 154 cm",
+      "art": "endelement",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 154,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne (SX = Armlehne links, DX = rechts, Sicht von vorn); an der offenen Seite anbaubar an Mittel-, Eck-, Peninsula- oder weiteres Endelement.",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-END-175",
+      "name": "TAILOR - ELEMENT WITH 1 ARMREST CM 175",
+      "name_de": "Endelement mit 1 Armlehne 175 cm",
+      "art": "endelement",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne (SX = Armlehne links, DX = rechts, Sicht von vorn); an der offenen Seite anbaubar an Mittel-, Eck-, Peninsula- oder weiteres Endelement.",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-END-196",
+      "name": "TAILOR - ELEMENT WITH 1 ARMREST CM 196",
+      "name_de": "Endelement mit 1 Armlehne 196 cm",
+      "art": "endelement",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne (SX = Armlehne links, DX = rechts, Sicht von vorn); an der offenen Seite anbaubar an Mittel-, Eck-, Peninsula- oder weiteres Endelement.",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-CEN-84",
+      "name": "TAILOR - CENTRAL ELEMENT CM 84",
+      "name_de": "Mittelelement 84 cm",
+      "art": "mittel",
+      "linie": "Tailor",
+      "seitenvarianten": null,
+      "breite_cm": 84,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-CEN-126",
+      "name": "TAILOR - CENTRAL ELEMENT CM 126",
+      "name_de": "Mittelelement 126 cm",
+      "art": "mittel",
+      "linie": "Tailor",
+      "seitenvarianten": null,
+      "breite_cm": 126,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-CEN-147",
+      "name": "TAILOR - CENTRAL ELEMENT CM 147",
+      "name_de": "Mittelelement 147 cm",
+      "art": "mittel",
+      "linie": "Tailor",
+      "seitenvarianten": null,
+      "breite_cm": 147,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-CEN-168",
+      "name": "TAILOR - CENTRAL ELEMENT CM 168",
+      "name_de": "Mittelelement 168 cm",
+      "art": "mittel",
+      "linie": "Tailor",
+      "seitenvarianten": null,
+      "breite_cm": 168,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-OEARM-175-112",
+      "name": "TAILOR - OPEN-END ELEMENT WITH ONE ARMREST CM 175 - BACKREST CM 112",
+      "name_de": "Peninsula-Endelement mit 1 Armlehne 175 cm, Rücken 112 cm",
+      "art": "endelement-peninsula",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 112,
+      "offene_laenge_cm": 63,
+      "anschluesse": "Armlehne an einer Seite, Rücken nur teilweise (offener Sitzbereich ohne Rücken), andere Seite anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-OEARM-196-112",
+      "name": "TAILOR - OPEN-END ELEMENT WITH ONE ARMREST CM 196 - BACKREST CM 112",
+      "name_de": "Peninsula-Endelement mit 1 Armlehne 196 cm, Rücken 112 cm",
+      "art": "endelement-peninsula",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 112,
+      "offene_laenge_cm": 84,
+      "anschluesse": "Armlehne an einer Seite, Rücken nur teilweise (offener Sitzbereich ohne Rücken), andere Seite anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-OE-147-84",
+      "name": "TAILOR - OPEN-END ELEMENT CM 147 - BACKREST CM 84",
+      "name_de": "Peninsula-Element 147 cm, Rücken 84 cm",
+      "art": "peninsula",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 147,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 63,
+      "anschluesse": "Ohne Armlehne, Rücken nur teilweise",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-OE-168-84",
+      "name": "TAILOR - OPEN-END ELEMENT CM 168 - BACKREST CM 84",
+      "name_de": "Peninsula-Element 168 cm, Rücken 84 cm",
+      "art": "peninsula",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 168,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": "Ohne Armlehne, Rücken nur teilweise",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-OE-168-126",
+      "name": "TAILOR - OPEN-END ELEMENT CM 168 - BACKREST CM 126",
+      "name_de": "Peninsula-Element 168 cm, Rücken 126 cm",
+      "art": "peninsula",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 168,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 126,
+      "offene_laenge_cm": 42,
+      "anschluesse": "Ohne Armlehne, Rücken nur teilweise",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-DAY-175-84",
+      "name": "TAILOR - DAYBED ELEMENT CM 175 - BACKREST CM 84",
+      "name_de": "Daybed-Element 175 cm, Rücken 84 cm",
+      "art": "daybed",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 63,
+      "anschluesse": "Kurzseitige Rückenlehne an einem Ende (Zeichnung), Längsrücken nur teilweise",
+      "hinweis": "Innenmaß laut Draufsicht 147 cm; Kote „63“ = Abstand des Längsrückens zur Daybed-Seite.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-DAY-196-84",
+      "name": "TAILOR - DAYBED ELEMENT CM 196 - BACKREST CM 84",
+      "name_de": "Daybed-Element 196 cm, Rücken 84 cm",
+      "art": "daybed",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": "Kurzseitige Rückenlehne an einem Ende (Zeichnung), Längsrücken nur teilweise",
+      "hinweis": "Innenmaß laut Draufsicht 168 cm; Kote „84“ = Abstand des Längsrückens zur Daybed-Seite.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-DAY-196-126",
+      "name": "TAILOR - DAYBED ELEMENT CM 196 - BACKREST CM 126",
+      "name_de": "Daybed-Element 196 cm, Rücken 126 cm",
+      "art": "daybed",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 126,
+      "offene_laenge_cm": 42,
+      "anschluesse": "Kurzseitige Rückenlehne an einem Ende (Zeichnung), Längsrücken nur teilweise",
+      "hinweis": "Innenmaß laut Draufsicht 168 cm; Kote „42“ = Abstand des Längsrückens zur Daybed-Seite.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-COUCH-84x175",
+      "name": "TAILOR - COUCH CM 84X175",
+      "name_de": "Couch/Liege 84 × 175 cm",
+      "art": "couch",
+      "linie": "Tailor",
+      "seitenvarianten": null,
+      "breite_cm": 84,
+      "tiefe_cm": 175,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Rücken an der Kurzseite, freistehend oder anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-COUCH-84x196",
+      "name": "TAILOR - COUCH CM 84X196",
+      "name_de": "Couch/Liege 84 × 196 cm",
+      "art": "couch",
+      "linie": "Tailor",
+      "seitenvarianten": null,
+      "breite_cm": 84,
+      "tiefe_cm": 196,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Rücken an der Kurzseite, freistehend oder anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-CHAISE-112x175",
+      "name": "TAILOR - CHAISE-LONGUE CM 112X175",
+      "name_de": "Chaiselongue 112 × 175 cm",
+      "art": "chaise",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 112,
+      "tiefe_cm": 175,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne + Rücken an der Kurzseite; offene Seite anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-CHAISE-112x196",
+      "name": "TAILOR - CHAISE-LONGUE CM 112X196",
+      "name_de": "Chaiselongue 112 × 196 cm",
+      "art": "chaise",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 112,
+      "tiefe_cm": 196,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne + Rücken an der Kurzseite; offene Seite anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRT-CHAISE-175x196",
+      "name": "TAILOR - CHAISE-LONGUE CM 175X196",
+      "name_de": "Chaiselongue 175 × 196 cm",
+      "art": "chaise",
+      "linie": "Tailor",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 196,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne + Rücken an der Kurzseite; offene Seite anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-SOFA-84",
+      "name": "TAILOR \"WING\" - SOFÀ CM 84",
+      "name_de": "Wing-Sofa 84 cm (Einsitzer)",
+      "art": "sofa",
+      "linie": "Tailor Wing",
+      "seitenvarianten": null,
+      "breite_cm": 84,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar. Wing-Armlehnen laut Zeichnung außerhalb der 84 cm – Gesamtbreite inkl. Wing nicht beschriftet.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-SOFA-126",
+      "name": "TAILOR \"WING\" - SOFÀ CM 126",
+      "name_de": "Wing-Sofa 126 cm",
+      "art": "sofa",
+      "linie": "Tailor Wing",
+      "seitenvarianten": null,
+      "breite_cm": 126,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar. Gesamtbreite inkl. Wing-Armlehnen nicht beschriftet.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-SOFA-168-2x84",
+      "name": "TAILOR \"WING\" - SOFÀ CM 168 - N 2 BACKRESTS CM 84",
+      "name_de": "Wing-Sofa 168 cm mit 2 Rücken à 84 cm",
+      "art": "sofa",
+      "linie": "Tailor Wing",
+      "seitenvarianten": null,
+      "breite_cm": 168,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-END-112-W84",
+      "name": "TAILOR \"WING\" - ELEMENT WITH 1 ARMREST CM 112 - BACKREST CM 84",
+      "name_de": "Wing-Endelement 112 cm, Wing-Rücken 84 cm",
+      "art": "endelement",
+      "linie": "Tailor Wing",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 112,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne (SX = Armlehne links, DX = rechts, Sicht von vorn); an der offenen Seite anbaubar an Mittel-, Eck-, Peninsula- oder weiteres Endelement.",
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-OEARM-175-W84",
+      "name": "TAILOR \"WING\" - OPEN-END ELEMENT WITH ONE ARMREST CM 175 - BACKREST CM 84",
+      "name_de": "Wing-Peninsula-Endelement 175 cm, Wing-Rücken 84 cm",
+      "art": "endelement-peninsula",
+      "linie": "Tailor Wing",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 63,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-OEARM-196-W84",
+      "name": "TAILOR \"WING\" - OPEN-END ELEMENT WITH ONE ARMREST CM 196 - BACKREST CM 84",
+      "name_de": "Wing-Peninsula-Endelement 196 cm, Wing-Rücken 84 cm",
+      "art": "endelement-peninsula",
+      "linie": "Tailor Wing",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-OEARM-196-W126",
+      "name": "TAILOR \"WING\" - OPEN-END ELEMENT WITH ONE ARMREST CM 196 - BACKREST CM 126",
+      "name_de": "Wing-Peninsula-Endelement 196 cm, Wing-Rücken 126 cm",
+      "art": "endelement-peninsula",
+      "linie": "Tailor Wing",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 126,
+      "offene_laenge_cm": 42,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-OE-147-W84",
+      "name": "TAILOR \"WING\" - OPEN-END ELEMENT CM 147 - BACKREST CM 84",
+      "name_de": "Wing-Peninsula-Element 147 cm, Wing-Rücken 84 cm",
+      "art": "peninsula",
+      "linie": "Tailor Wing",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 147,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 63,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-OE-168-W84",
+      "name": "TAILOR \"WING\" - OPEN-END ELEMENT CM 168 - BACKREST CM 84",
+      "name_de": "Wing-Peninsula-Element 168 cm, Wing-Rücken 84 cm",
+      "art": "peninsula",
+      "linie": "Tailor Wing",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 168,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-OE-168-W126",
+      "name": "TAILOR \"WING\" - OPEN-END ELEMENT CM 168 - BACKREST CM 126",
+      "name_de": "Wing-Peninsula-Element 168 cm, Wing-Rücken 126 cm",
+      "art": "peninsula",
+      "linie": "Tailor Wing",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 168,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 126,
+      "offene_laenge_cm": 42,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-DAY-196-W84",
+      "name": "TAILOR \"WING\" - DAYBED ELEMENT CM 196 - BACKREST CM 84",
+      "name_de": "Wing-Daybed 196 cm, Wing-Rücken 84 cm",
+      "art": "daybed",
+      "linie": "Tailor Wing",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-COUCH-84x175",
+      "name": "TAILOR \"WING\" - COUCH CM 84X175",
+      "name_de": "Wing-Couch 84 × 175 cm",
+      "art": "couch",
+      "linie": "Tailor Wing",
+      "seitenvarianten": null,
+      "breite_cm": 84,
+      "tiefe_cm": 175,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-COUCH-84x196",
+      "name": "TAILOR \"WING\" - COUCH CM 84X196",
+      "name_de": "Wing-Couch 84 × 196 cm",
+      "art": "couch",
+      "linie": "Tailor Wing",
+      "seitenvarianten": null,
+      "breite_cm": 84,
+      "tiefe_cm": 196,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-CHAISE-112x175",
+      "name": "TAILOR \"WING\" - CHAISE-LONGUE CM 112X175",
+      "name_de": "Wing-Chaiselongue 112 × 175 cm",
+      "art": "chaise",
+      "linie": "Tailor Wing",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 112,
+      "tiefe_cm": 175,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTW-CHAISE-112x196",
+      "name": "TAILOR \"WING\" - CHAISE-LONGUE CM 112X196",
+      "name_de": "Wing-Chaiselongue 112 × 196 cm",
+      "art": "chaise",
+      "linie": "Tailor Wing",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 112,
+      "tiefe_cm": 196,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Wing“-Rücken/-Armlehne: Metallrahmen mit PU-Schaum, schlanke Linie; Wing-Bezug nur in Stoff abnehmbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-END-112",
+      "name": "TAILOR \"MIX\" - ELEMENT WITH 1 ARMREST CM 112",
+      "name_de": "Mix-Endelement 112 cm",
+      "art": "endelement",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 112,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne (SX = Armlehne links, DX = rechts, Sicht von vorn); an der offenen Seite anbaubar an Mittel-, Eck-, Peninsula- oder weiteres Endelement.",
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-END-154",
+      "name": "TAILOR \"MIX\" - ELEMENT WITH 1 ARMREST CM 154",
+      "name_de": "Mix-Endelement 154 cm",
+      "art": "endelement",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 154,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne (SX = Armlehne links, DX = rechts, Sicht von vorn); an der offenen Seite anbaubar an Mittel-, Eck-, Peninsula- oder weiteres Endelement.",
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-END-175",
+      "name": "TAILOR \"MIX\" - ELEMENT WITH 1 ARMREST CM 175",
+      "name_de": "Mix-Endelement 175 cm",
+      "art": "endelement",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne (SX = Armlehne links, DX = rechts, Sicht von vorn); an der offenen Seite anbaubar an Mittel-, Eck-, Peninsula- oder weiteres Endelement.",
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-END-196",
+      "name": "TAILOR \"MIX\" - ELEMENT WITH 1 ARMREST CM 196",
+      "name_de": "Mix-Endelement 196 cm",
+      "art": "endelement",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne (SX = Armlehne links, DX = rechts, Sicht von vorn); an der offenen Seite anbaubar an Mittel-, Eck-, Peninsula- oder weiteres Endelement.",
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-END-154-W126",
+      "name": "TAILOR \"MIX\" ELEMENT WITH 1 ARMREST CM 154 - \"WING\" BACKREST CM 126",
+      "name_de": "Mix-Endelement 154 cm, Wing-Rücken 126 cm",
+      "art": "endelement",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 154,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": 126,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eine Armlehne (SX = Armlehne links, DX = rechts, Sicht von vorn); an der offenen Seite anbaubar an Mittel-, Eck-, Peninsula- oder weiteres Endelement.",
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-CORNER-112",
+      "name": "TAILOR \"MIX\" - CORNER ELEMENT CM 112",
+      "name_de": "Mix-Eckelement 112 × 112 cm",
+      "art": "ecke",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 112,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Eckelement mit Wing-Armlehne und Rücken über Eck; für L-Kompositionen",
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-OEARM-175-84",
+      "name": "TAILOR \"MIX\" - OPEN-END ELEMENT WITH ONE ARMREST CM 175 - BACKREST CM 84",
+      "name_de": "Mix-Peninsula-Endelement 175 cm, Rücken 84 cm",
+      "art": "endelement-peninsula",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 63,
+      "anschluesse": null,
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-OEARM-196-84",
+      "name": "TAILOR \"MIX\" - OPEN-END ELEMENT WITH ONE ARMREST CM 196 - BACKREST CM 84",
+      "name_de": "Mix-Peninsula-Endelement 196 cm, Rücken 84 cm",
+      "art": "endelement-peninsula",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": null,
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-OEARM-196-126",
+      "name": "TAILOR \"MIX\" - OPEN-END ELEMENT WITH ONE ARMREST CM 196 - BACKREST CM 126",
+      "name_de": "Mix-Peninsula-Endelement 196 cm, Rücken 126 cm",
+      "art": "endelement-peninsula",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 126,
+      "offene_laenge_cm": 42,
+      "anschluesse": null,
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-DAY-175-84",
+      "name": "TAILOR \"MIX\" - DAYBED ELEMENT CM 175 - BACKREST CM 84",
+      "name_de": "Mix-Daybed 175 cm, Rücken 84 cm",
+      "art": "daybed",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 63,
+      "anschluesse": null,
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-DAY-175-W84",
+      "name": "TAILOR \"MIX\" - DAYBED ELEMENT CM 175 - \"WING\" BACKREST CM 84",
+      "name_de": "Mix-Daybed 175 cm, Wing-Rücken 84 cm",
+      "art": "daybed",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 63,
+      "anschluesse": null,
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-DAY-196-84",
+      "name": "TAILOR \"MIX\" - DAYBED ELEMENT CM 196 - BACKREST CM 84",
+      "name_de": "Mix-Daybed 196 cm, Rücken 84 cm",
+      "art": "daybed",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": null,
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-DAY-196-W84",
+      "name": "TAILOR \"MIX\" - DAYBED ELEMENT CM 196 - \"WING\" BACKREST CM 84",
+      "name_de": "Mix-Daybed 196 cm, Wing-Rücken 84 cm",
+      "art": "daybed",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": null,
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-DAY-196-126",
+      "name": "TAILOR \"MIX\" - DAYBED ELEMENT CM 196 - BACKREST CM 126",
+      "name_de": "Mix-Daybed 196 cm, Rücken 126 cm",
+      "art": "daybed",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 126,
+      "offene_laenge_cm": 42,
+      "anschluesse": null,
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-CHAISE-112x175",
+      "name": "TAILOR \"MIX\" - CHAISE-LONGUE CM 112X175",
+      "name_de": "Mix-Chaiselongue 112 × 175 cm",
+      "art": "chaise",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 112,
+      "tiefe_cm": 175,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-CHAISE-112x196",
+      "name": "TAILOR \"MIX\" - CHAISE-LONGUE CM 112X196",
+      "name_de": "Mix-Chaiselongue 112 × 196 cm",
+      "art": "chaise",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 112,
+      "tiefe_cm": 196,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 84,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRTM-CHAISE-175x196",
+      "name": "TAILOR \"MIX\" - CHAISE-LONGUE CM 175X196",
+      "name_de": "Mix-Chaiselongue 175 × 196 cm",
+      "art": "chaise",
+      "linie": "Tailor Mix",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 196,
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Mix“: Wing-Armlehne kombiniert mit gepolstertem Rücken (bzw. Wing-Rücken, wo angegeben).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-OTT-63x84",
+      "name": "OTTOMAN CM 63X84",
+      "name_de": "Hocker 63 × 84 cm",
+      "art": "hocker",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 63,
+      "tiefe_cm": 84,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend oder vor Sitzelemente gestellt (Tiefe 84 = Sitzbreite-Raster)",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-OTT-84x84",
+      "name": "OTTOMAN CM 84X84",
+      "name_de": "Hocker 84 × 84 cm",
+      "art": "hocker",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 84,
+      "tiefe_cm": 84,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend oder vor Sitzelemente gestellt (Tiefe 84 = Sitzbreite-Raster)",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-BENCH-126x84",
+      "name": "BENCH CM 126X84",
+      "name_de": "Bank 126 × 84 cm",
+      "art": "bank",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 126,
+      "tiefe_cm": 84,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend oder vor Sitzelemente",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-BENCH-147x84",
+      "name": "BENCH CM 147X84",
+      "name_de": "Bank 147 × 84 cm",
+      "art": "bank",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 147,
+      "tiefe_cm": 84,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend oder vor Sitzelemente",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-BENCH-168x84",
+      "name": "BENCH CM 168X84",
+      "name_de": "Bank 168 × 84 cm",
+      "art": "bank",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 168,
+      "tiefe_cm": 84,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend oder vor Sitzelemente",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-BENCH-63x112",
+      "name": "BENCH CM 63X112",
+      "name_de": "Bank 63 × 112 cm",
+      "art": "bank",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 63,
+      "tiefe_cm": 112,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Tiefe 112 = Sofatiefe – als sitzhohe Verlängerung anreihbar (Abbildungen/Arrangements)",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-BENCH-84x112",
+      "name": "BENCH CM 84X112",
+      "name_de": "Bank 84 × 112 cm",
+      "art": "bank",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 84,
+      "tiefe_cm": 112,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Tiefe 112 = Sofatiefe – als sitzhohe Verlängerung anreihbar (Abbildungen/Arrangements)",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-ARMOTT-38x84",
+      "name": "ARMREST-OTTOMAN CM 38X84",
+      "name_de": "Armlehnen-Hocker 38 × 84 cm",
+      "art": "armlehne",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 38,
+      "tiefe_cm": 84,
+      "hoehe_cm": 46,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Als Armlehne an Sitz-/Bankelemente anstellbar oder als Hocker",
+      "hinweis": "Höhe 46 cm laut Zeichnung.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-ARMOTT-38x112",
+      "name": "ARMREST-OTTOMAN CM 38X112",
+      "name_de": "Armlehnen-Hocker 38 × 112 cm",
+      "art": "armlehne",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 38,
+      "tiefe_cm": 112,
+      "hoehe_cm": 46,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Als Armlehne an Sitz-/Bankelemente anstellbar oder als Hocker",
+      "hinweis": "Höhe 46 cm laut Zeichnung.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-STANDALONE-84",
+      "name": "BENCH \"STAND-ALONE\" CM 84",
+      "name_de": "Stand-alone-Bank 84 × 38 cm",
+      "art": "bank",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 84,
+      "tiefe_cm": 38,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Schmale Bank, frei stellbar (z. B. hinter Rücken, Arrangements Freeman 01/03/04)",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-STANDALONE-168",
+      "name": "BENCH \"STAND-ALONE\" CM 168",
+      "name_de": "Stand-alone-Bank 168 × 38 cm",
+      "art": "bank",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 168,
+      "tiefe_cm": 38,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Schmale Bank, frei stellbar (z. B. hinter Rücken, Arrangements Freeman 01/03/04)",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-CUSH-BACK-65",
+      "name": "OPTIONAL BACK CUSHION CM 65X65",
+      "name_de": "Optionales Rückenkissen 65 × 65 cm",
+      "art": "rueckenkissen-optional",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 65,
+      "tiefe_cm": null,
+      "hoehe_cm": 65,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-CUSH-LUMB-58",
+      "name": "OPTIONAL LUMBAR CUSHION CM 58X33",
+      "name_de": "Optionales Lendenkissen 58 × 33 cm",
+      "art": "dekokissen-optional",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 58,
+      "tiefe_cm": null,
+      "hoehe_cm": 33,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Laut Datenblatt Dicke 13 cm; nur für Sitz 63 cm.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-CUSH-LUMB-77",
+      "name": "OPTIONAL LUMBAR CUSHION CM 77X33",
+      "name_de": "Optionales Lendenkissen 77 × 33 cm",
+      "art": "dekokissen-optional",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 77,
+      "tiefe_cm": null,
+      "hoehe_cm": 33,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Laut Datenblatt Dicke 13 cm; nur für Sitz 84 cm.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FR-CUSH-45",
+      "name": "OPTIONAL CUSHION CM 45X45",
+      "name_de": "Optionales Kissen 45 × 45 cm",
+      "art": "dekokissen-optional",
+      "linie": "Freeman Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 45,
+      "tiefe_cm": null,
+      "hoehe_cm": 45,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-tailor_2",
+        "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Gepolsterter Rücken (Tailor) mit Rückenkissen",
+      "hoehe_cm": 89,
+      "strukturhoehe_cm": 58,
+      "hinweis": "Elemente inkl. Rückenkissen (Daunen, Memory-Foam-Kern)."
+    },
+    {
+      "name": "„Wing“-Rücken (Metallrahmen, PU-Schaum ummantelt)",
+      "hinweis": "Bei Tailor Wing und ausgewählten Mix-Elementen; Wing-Bezug nur in Stoff abnehmbar."
+    },
+    {
+      "name": "Rückenlängen bei Peninsula/Daybed: 84, 112 oder 126 cm (je Element)"
+    },
+    {
+      "name": "Ohne Rücken (Bänke, Hocker, offene Seite der Peninsula-Elemente)"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Gepolsterte Tailor-Armlehne",
+      "hinweis": "Höhe nicht separat beschriftet (Seitenansicht zeigt Strukturhöhe 58 cm)."
+    },
+    {
+      "name": "„Wing“-Armlehne (Metallrahmen, PU-Schaum)",
+      "hinweis": "Linien Tailor Wing und Tailor Mix; Ausladung/Höhe nicht beschriftet."
+    },
+    {
+      "name": "Armlehnen-Hocker 38 × 84 / 38 × 112 cm, H 46",
+      "hinweis": "Separates Element."
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Basis",
+      "material": "Rahmen aus stranggepresstem Aluminium mit Verbindungselementen aus Aluminium-Druckguss (Minotti-Studio-Design)",
+      "finish": "Bronze glänzend, Anti-Fingerprint lackiert"
+    },
+    {
+      "teil": "Füße",
+      "material": "Metall",
+      "finish": "Bronze glänzend, Anti-Fingerprint lackiert",
+      "hoehe_cm": 7.5,
+      "optionen": [
+        {
+          "name": "Hohe Füße (auf Anfrage)",
+          "hoehe_cm": 10.5,
+          "hinweis": "3 cm höher als Standard – Gesamt-/Sitzhöhe entsprechend +3 cm (rechnerisch, nicht beschriftet)."
+        }
+      ]
+    },
+    {
+      "teil": "Gleiter",
+      "material": "SEBS (weicher, kratzfester Gummi)",
+      "finish": "Bronze"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "bezugsarten": [
+      "abnehmbar",
+      "fest"
+    ],
+    "abnehmbar_hinweis": "Rückenkissenbezüge in allen Versionen (Stoff/Leder) komplett abnehmbar. Wing-Element-Bezug nur in Stoff abnehmbar. Struktur-Stoffbezug abnehmbar nach Lösen der Metallbasis (Rändelgriffe, Schlüssel liegt bei). Struktur-Lederbezug NICHT abnehmbar (fest).",
+    "naehte": "Stoffteile mit bronzefarbenem Öko-Leder-Band und Doppelnaht verbunden; in der Lederversion Band im gleichen Leder.",
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Stoffe, Leder, Metalloberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "polsterung": "Sperrholz mit Federung durch Elastikgurte; Sitz aus mehreren Schichten PU-Schaum variabler Dichte (Oberschicht aus konturierten hochelastischen Einzelbändern), atmungsaktive thermogebundene Faser auf weißem hypoallergenem Baumwollstoff. Rückenkissen: kanalisierte Gänsedaune (Assopiuma Gold Label) mit Memory-Foam-Kern. Monoblock-Sitz ohne separates Sitzkissen.",
+  "kissenoptionen": [
+    {
+      "name": "Optionales Rückenkissen",
+      "masse": "65 × 65 cm"
+    },
+    {
+      "name": "Optionales Lendenkissen",
+      "masse": "58 × 33 cm (D 13)",
+      "hinweis": "nur für 63-cm-Sitz"
+    },
+    {
+      "name": "Optionales Lendenkissen",
+      "masse": "77 × 33 cm (D 13)",
+      "hinweis": "nur für 84-cm-Sitz"
+    },
+    {
+      "name": "Optionales Kissen",
+      "masse": "45 × 45 cm"
+    }
+  ],
+  "zubehoer": [
+    {
+      "name": "Gray Couchtisch",
+      "masse": "47 × 110 cm, H 34 (Grundfläche 45 × 46 laut Zeichnung), 2 offene Fächer",
+      "quelle": "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "kombinierbarkeit": [
+    "Kombinierbar mit Freeman „Duvet“-Elementen (gleiches Freeman-System, Tiefe 112 cm, H 89) – laut Produktseite und Arrangements Freeman 01–10.",
+    "SX/DX: Armlehne bzw. Rücken links/rechts (Sicht von vorn).",
+    "Arm- und Rückenlehnen per Schnellkupplung von der Basis lösbar (Transport, Bezugswechsel).",
+    "Verbindliche Anschlussregeln (welche Elemente direkt verbunden werden dürfen) sind nicht publiziert – nur Beispiel-Arrangements."
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "Monoblock-Sitze mit Ziernähten (Tailor-Charakter)",
+    "Drei Linien: Tailor, Tailor Wing, Tailor Mix",
+    "Peninsula- und Daybed-Elemente mit Rückenlängen 84/112/126 cm",
+    "Hohe Füße +3 cm auf Anfrage"
+  ],
+  "beispiel_kompositionen": [
+    {
+      "name": "Freeman 01",
+      "pdf": "https://www.minotti.com/downloads/2127/8765/Freeman%20arrangement%201.pdf",
+      "elemente": [
+        "Duvet Endelement 1 Armlehne DX 280×112 H89",
+        "Tailor Mittelelement 168×112 H89",
+        "Duvet Chaiselongue SX 175×175 H89",
+        "Stand-alone-Bank"
+      ]
+    },
+    {
+      "name": "Freeman 02",
+      "pdf": "https://www.minotti.com/downloads/2128/8773/Freeman%20arrangement%202.pdf",
+      "elemente": [
+        "Duvet Endelement DX 196×112",
+        "Duvet Endelement SX 196×112",
+        "Tailor Sofa 168×112 H89",
+        "Lounge Bank 168×63 H37"
+      ]
+    },
+    {
+      "name": "Freeman 03",
+      "pdf": "https://www.minotti.com/downloads/2129/8792/Freeman%20arrangement%203.pdf",
+      "elemente": [
+        "Tailor Chaiselongue DX 122×196 H89 (Produktseite; Datenblatt kennt 112×196)",
+        "Ottoman 84×84 H37",
+        "Duvet Endelement SX 280×112",
+        "Stand-alone-Bank 84×38 H37"
+      ]
+    },
+    {
+      "name": "Freeman 04",
+      "pdf": "https://www.minotti.com/downloads/2130/8776/Freeman%20arrangement%204.pdf",
+      "elemente": [
+        "Duvet Endelement SX 196×112",
+        "Tailor Couch 84×196 H89",
+        "Duvet Endelement DX 196×112",
+        "Armlehnen-Hocker 38×112 H46",
+        "Stand-alone-Bank 84×38 H37"
+      ]
+    },
+    {
+      "name": "Freeman 06",
+      "pdf": "https://www.minotti.com/downloads/11095/8783/Freeman%20arrangement%206.pdf",
+      "elemente": [
+        "Duvet Endelement SX 196×112",
+        "Duvet Mittelelement 168×112",
+        "Tailor Couch 84×196 H89",
+        "Ottoman 84×84 H37"
+      ]
+    },
+    {
+      "name": "Freeman 07",
+      "pdf": "https://www.minotti.com/downloads/11096/8784/Freeman%20arrangement%207.pdf",
+      "elemente": [
+        "Tailor Mittelelement 168×112 H89",
+        "Tailor Endelement DX 196×112 H89",
+        "Bank 168×84 H37"
+      ]
+    },
+    {
+      "name": "Freeman 08",
+      "pdf": "https://www.minotti.com/downloads/11097/8789/Freeman%20arrangement%208.pdf",
+      "elemente": [
+        "Tailor Endelement DX 196×112 H89",
+        "Tailor Daybed SX 196×112 H89",
+        "2× Bank 168×84 H37",
+        "Lounge Bank 168×63 H37"
+      ]
+    },
+    {
+      "name": "Freeman 10",
+      "pdf": "https://www.minotti.com/downloads/14151/11943/Freeman%20arrangement%2010.pdf",
+      "elemente": [
+        "Duvet Endelement SX 196×112",
+        "Duvet Endelement DX 196×112",
+        "Tailor Sofa 168×112 H89 mit 2 Rücken 84",
+        "Stand-alone-Bank 84×38 H37"
+      ]
+    }
+  ],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für den internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. CAD-Dateien nur für Interior-Design-Zwecke freigegeben. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "fehlend": [
+    "Sitztiefe aller Elemente (in den Zeichnungen nicht beschriftet)",
+    "Armlehnenhöhe/-breite separat (nur Strukturhöhe 58 cm beschriftet); Ausladung der Wing-Arm-/Rückenlehnen",
+    "Gesamtbreite der Wing-Sofas 84/126 inkl. Wing-Armlehnen",
+    "Verbindliche Kombinationsregeln Tailor/Wing/Mix/Duvet – nur Beispiel-Arrangements öffentlich",
+    "Abweichung Produktseite „Chaise-longue DX 122x196“ (Arrangement 03) vs. Datenblatt 112x196 – ungeklärt",
+    "Herstellerartikelnummern (Codes hier intern vergeben)",
+    "Stoff-/Lederkollektionen, Preisgruppen, Preise",
+    "Gewichte",
+    "Freeman „Duvet“-Elemente sind eine eigene Familie und hier nicht erfasst"
+  ],
+  "anzahl_elemente": 70,
+  "vollstaendigkeit": {
+    "masse_prozent": 79,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe/sitzhoehe/sitztiefe über alle Sitz-, Bank- und Hockerelemente (ohne Kissen); Options-/Materialfelder separat in fehlend[] bewertet."
+  }
+}

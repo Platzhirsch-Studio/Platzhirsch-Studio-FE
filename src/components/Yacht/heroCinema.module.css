@@ -1,0 +1,98 @@
+/* ---- Photo hero „Titelsequenz“ (visual-design, 31.10.2026) ----------------
+   The Navetta photo itself is never transformed beyond proportional scaling
+   (Minotti condition: no crop, no filter, nothing laid over it). Only
+   transform/opacity, compositor-only; the LCP image keeps opacity 1. */
+
+/* ab lg: the figure reaches the right screen edge (container is max 90rem).
+   QM r1 (ezarri-yacht): the width is set explicitly (grid area + bleed). Before,
+   the figure was fit-content and took its width from the caption's text – 634 px
+   at 1920 (470 px dark gap), a 110 px strip at 200 % text. The caption keeps the
+   bleed as right padding, so the photo credit ends at the content edge and never
+   runs out of the viewport or under the concierge tab. */
+@media (min-width: 64rem) {
+  .heroBleed {
+    --hero-bleed: max(var(--space-gutter), (100vw - 90rem) / 2 + var(--space-gutter));
+    margin-right: calc(-1 * var(--hero-bleed));
+    width: calc(100% + var(--hero-bleed));
+  }
+  .heroBleed figcaption {
+    padding-right: var(--hero-bleed);
+  }
+}
+
+/* evening light breathing on the ink ground, BEHIND the photo (z-index −1) */
+.heroStage::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -20% -10% auto 30%;
+  height: 120%;
+  background: radial-gradient(closest-side, rgb(209 178 80 / 0.16), rgb(154 122 42 / 0.06) 55%, transparent 75%);
+  pointer-events: none;
+}
+
+@keyframes heroIn {
+  from {
+    transform: translate3d(0, 14px, 0) scale(0.965);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes heroOut {
+  from {
+    transform: none;
+  }
+  to {
+    transform: translate3d(0, 9%, 0) scale(0.95);
+  }
+}
+@keyframes breathe {
+  from {
+    transform: translate3d(-3%, 0, 0) scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: translate3d(3%, -2%, 0) scale(1.06);
+    opacity: 1;
+  }
+}
+
+.heroIn,
+.heroDrift {
+  transform-origin: 50% 40%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .heroIn {
+    animation: heroIn 1800ms var(--ease-drift) 80ms both;
+  }
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .heroHorizon {
+    transform-origin: 0 50%;
+    animation: reveal 2000ms var(--ease-quiet) 250ms both;
+  }
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .heroStage::before {
+    animation: breathe 14s var(--ease-quiet-inout) infinite alternate;
+  }
+  /* root scroll, so progress is exactly 0 at the top of the page (no shift at load) */
+  @supports (animation-timeline: scroll()) {
+    :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .heroDrift {
+      /* Langschrift: die Kurzschrift + Timeline verwirft Chromium nach dem CSS-Compiler */
+      animation-name: heroOut;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100svh;
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

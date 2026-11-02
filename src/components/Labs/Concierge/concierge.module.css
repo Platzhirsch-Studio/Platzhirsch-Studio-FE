@@ -1,0 +1,744 @@
+/* KI-Concierge – mobile first. Tokens from globals.css @theme. */
+.panel {
+  --paper: #faf8f4;
+  --ink: var(--color-ink, #30373e);
+  --line: rgb(48 55 62 / 0.14);
+  --bone: var(--color-bone, #f7f5f1);
+  --stone: var(--color-stone, #ece8e1);
+  --walnut: var(--color-walnut, #3f3129);
+  --goldText: var(--color-gold-text, #7a5f17);
+  --gold: var(--color-gold, #d1b250);
+
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 9991;
+  display: flex;
+  flex-direction: column;
+  height: 88dvh;
+  max-height: 88dvh;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -12px 40px rgb(15 22 36 / 0.18);
+  transform: translateY(105%);
+  visibility: hidden;
+  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 320ms;
+  overflow: hidden;
+}
+.panel.open {
+  transform: translateY(0);
+  visibility: visible;
+  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s;
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  background: rgb(15 22 36 / 0.45);
+}
+
+.launcher {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  /* Below the cookie banner (z-50); it is also hidden while the banner shows. */
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--color-ink, #30373e);
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 24px rgb(15 22 36 / 0.25);
+  /* Lifted above fixed bottom bars via inline bottom (A3/N1). */
+  transition: bottom 200ms ease;
+}
+.launcher[hidden] {
+  display: none;
+}
+
+.head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 22px 16px 14px;
+  border-bottom: 1px solid var(--line);
+  touch-action: none;
+}
+.handle {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 40px;
+  height: 4px;
+  margin-left: -20px;
+  border-radius: 4px;
+  background: rgb(48 55 62 / 0.25);
+}
+.headText {
+  flex: 1;
+  min-width: 0;
+}
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.title {
+  outline: none;
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 400;
+}
+.sub {
+  margin-top: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  color: rgb(48 55 62 / 0.8);
+}
+.aiBadge,
+.mockBadge {
+  display: inline-block;
+  padding: 1px 7px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--goldText);
+}
+.mockBadge {
+  color: var(--walnut);
+  background: var(--stone);
+  border-color: transparent;
+}
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+}
+.close:hover {
+  background: var(--stone);
+}
+
+.textBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 10px;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.log {
+  position: relative; /* offsetTop reference for scroll pinning */
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px 16px 8px;
+  scroll-behavior: smooth;
+}
+
+.welcome {
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.ornament {
+  display: block;
+  width: 36px;
+  height: 1px;
+  margin-bottom: 14px;
+  background: var(--gold);
+}
+.spacer {
+  height: 0;
+  flex: none;
+}
+.welcomeTitle {
+  font-family: var(--font-display);
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.user {
+  width: fit-content;
+  max-width: 85%;
+  margin: 14px 0 14px auto;
+  padding: 10px 14px;
+  border-radius: 14px 14px 4px 14px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.bot {
+  margin: 14px 0 18px;
+  font-size: 15px;
+  line-height: 1.65;
+}
+.botLabel {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--goldText);
+}
+.prose {
+  overflow-wrap: anywhere;
+}
+.prose p + p,
+.prose p + ul,
+.prose ul + p {
+  margin-top: 10px;
+}
+.prose ul {
+  padding-left: 18px;
+  list-style: disc;
+}
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--gold);
+}
+.softNotice {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-left: 2px solid var(--gold);
+  background: var(--bone);
+  font-size: 14px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 14px;
+  font-size: 13px;
+  color: rgb(48 55 62 / 0.8);
+}
+.dots {
+  display: inline-flex;
+  gap: 4px;
+}
+.dots i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--goldText);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+.dots i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.dots i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+/* Product cards */
+.cardsWrap {
+  position: relative;
+}
+/* Fade on both edges that still have more cards (N3). z-index: the card
+   images are positioned, so without it the left fade sat underneath them. */
+.cardsWrap::before,
+.cardsWrap::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 2px;
+  bottom: 10px;
+  width: 32px;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+.cardsWrap::before {
+  left: -16px;
+  background: linear-gradient(to right, var(--paper), transparent);
+}
+.cardsWrap::after {
+  right: -16px;
+  background: linear-gradient(to left, var(--paper), transparent);
+}
+.cardsWrap[data-start="true"]::before,
+.cardsWrap[data-end="true"]::after {
+  opacity: 0;
+}
+.cardNav {
+  display: none;
+}
+.cards {
+  display: flex;
+  gap: 12px;
+  margin: 12px -16px 4px;
+  padding: 2px 16px 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 16px;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+.card {
+  flex: 0 0 152px;
+  scroll-snap-align: start;
+}
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-radius: 4px;
+}
+.cardLink:hover .cardName {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cardImage {
+  display: block;
+  aspect-ratio: 4 / 5;
+  margin-bottom: 6px;
+  overflow: hidden;
+  background: var(--bone);
+  border-radius: 3px;
+}
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+.cardLink:hover .cardImage img {
+  transform: scale(1.04);
+}
+.cardNoImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 12px;
+  color: rgb(48 55 62 / 0.6);
+}
+.cardBrand {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--goldText);
+}
+.cardName {
+  font-size: 14px;
+  line-height: 1.35;
+}
+.cardCat {
+  font-size: 12px;
+  color: rgb(48 55 62 / 0.75);
+}
+
+/* Handoff to humans */
+.handoff {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 6px;
+  background: var(--stone);
+}
+.handoffTitle {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.summary {
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  background: var(--paper);
+  border-radius: 4px;
+  font-size: 14px;
+}
+.summaryLabel {
+  font-size: 12px;
+  color: rgb(48 55 62 / 0.8);
+  margin-bottom: 4px;
+}
+.handoffActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+.primary {
+  background: var(--ink);
+  color: #fff;
+}
+.primary:hover {
+  background: var(--color-ink-deep, #1f252b);
+}
+.secondary {
+  border: 1px solid rgb(48 55 62 / 0.4);
+  color: var(--ink);
+}
+.secondary:hover {
+  background: var(--bone);
+}
+
+/* Consent / notice */
+.consent,
+.notice {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.consent > * + *,
+.notice > * + * {
+  margin-top: 12px;
+}
+.consent a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.consentLead {
+  font-family: var(--font-display);
+  font-size: 22px;
+}
+.check {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+.check input {
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  flex: none;
+  accent-color: var(--ink);
+}
+.infoBox {
+  padding: 10px 12px;
+  border-left: 2px solid var(--gold);
+  background: var(--bone);
+}
+.primary:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+.hours {
+  display: grid;
+  gap: 6px;
+  padding: 12px 0;
+  border-block: 1px solid var(--line);
+}
+.hoursRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 16px;
+}
+.hoursRow dt {
+  font-weight: 600;
+}
+.noticeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.devBtn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: rgb(48 55 62 / 0.8);
+}
+
+/* No API key: compact inline card on every width (no sheet, no launcher) */
+.panel.inline {
+  position: relative;
+  inset: auto;
+  z-index: auto;
+  align-self: start; /* do not stretch to the grid row */
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: 0 24px 60px rgb(15 22 36 / 0.08);
+  transform: none;
+  visibility: visible;
+  transition: none;
+}
+.panel.inline .head {
+  padding: 16px;
+  touch-action: auto;
+}
+.panel.inline .notice {
+  flex: none;
+  overflow: visible;
+}
+.error {
+  color: #9b2c2c;
+}
+
+/* Suggestions – directly under the greeting, wrapping */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.chip {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 16px;
+  line-height: 1.3;
+  text-align: left;
+  border: 1px solid rgb(48 55 62 / 0.3);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 14px;
+}
+.chip:hover {
+  border-color: var(--ink);
+}
+
+/* Composer */
+.composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin: 0 16px;
+  padding: 6px 6px 6px 14px;
+  border: 1px solid rgb(48 55 62 / 0.3);
+  border-radius: 22px;
+  background: #fff;
+}
+.composer:focus-within {
+  border-color: var(--ink);
+}
+.input {
+  flex: 1;
+  min-width: 0;
+  min-height: 36px;
+  max-height: 140px;
+  padding: 7px 0;
+  border: 0;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font-size: 16px; /* no iOS zoom */
+  line-height: 1.4;
+  field-sizing: content;
+}
+.send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+}
+.send:disabled {
+  opacity: 0.35;
+}
+.foot {
+  padding: 6px 16px calc(2px + env(safe-area-inset-bottom));
+}
+.hint {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: rgb(48 55 62 / 0.78);
+}
+.footLinks {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 18px;
+}
+/* Text links with a 44 px touch target */
+.tapLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 12.5px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: inherit;
+}
+.tapLink:disabled {
+  opacity: 0.6;
+}
+.consent .tapLink {
+  font-size: 14px;
+  margin-block: -8px;
+}
+
+.panel :focus-visible,
+.launcher:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.composer .input:focus-visible {
+  outline: none;
+}
+
+/* Desktop: inline panel, always visible */
+@media (min-width: 768px) {
+  .panel {
+    position: relative;
+    inset: auto;
+    z-index: auto;
+    /* Header is 81 px below lg: keep the whole panel in view. While the cookie
+       banner is open, Concierge.js caps max-height so the footer stays above it. */
+    height: min(calc(100dvh - 81px - 112px), 760px);
+    min-height: 480px;
+    max-height: none;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: 0 24px 60px rgb(15 22 36 / 0.08);
+    transform: none !important;
+    visibility: visible;
+    transition: none;
+  }
+  .launcher,
+  .handle,
+  .close,
+  .scrim {
+    display: none !important;
+  }
+  .head {
+    padding: 18px 20px;
+    touch-action: auto;
+  }
+  .log {
+    padding: 20px 24px 8px;
+  }
+  .composer {
+    margin: 0 24px;
+  }
+  .foot {
+    padding: 8px 24px 6px;
+  }
+  .panel.inline .head {
+    padding: 18px 24px;
+  }
+  .panel.inline .notice {
+    padding: 22px 24px 24px;
+  }
+  .cards {
+    margin: 12px -24px 4px;
+    padding: 2px 24px 10px;
+    scroll-padding-left: 24px;
+    scrollbar-width: thin;
+  }
+  /* Wider fades on desktop, plus arrow buttons above them */
+  .cardsWrap::before,
+  .cardsWrap::after {
+    width: 56px;
+  }
+  .cardsWrap::before {
+    left: -24px;
+  }
+  .cardsWrap::after {
+    right: -24px;
+  }
+  .cardNav {
+    position: absolute;
+    top: calc(2px + 84px);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+    box-shadow: 0 6px 18px rgb(15 22 36 / 0.12);
+    transform: translateY(-50%);
+    transition: opacity 200ms ease;
+  }
+  .cardNav:hover:not(:disabled) {
+    border-color: var(--ink);
+  }
+  .cardNav:disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .cardPrev {
+    left: -8px;
+  }
+  .cardNext {
+    right: -8px;
+  }
+  .card {
+    flex-basis: 168px;
+  }
+}
+
+/* Desktop nav makes the fixed header 165 px tall */
+@media (min-width: 1024px) {
+  .panel:not(.inline) {
+    height: min(calc(100dvh - 165px - 112px), 760px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .launcher,
+  .cardsWrap::before,
+  .cardsWrap::after,
+  .cardNav,
+  .panel,
+  .panel.open,
+  .cardImage img {
+    transition: none;
+  }
+  .log {
+    scroll-behavior: auto;
+  }
+  .dots i {
+    animation: none;
+    opacity: 0.7;
+  }
+}

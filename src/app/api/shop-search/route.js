@@ -6,6 +6,10 @@ import { getActiveMarken } from "@/lib/api/fetchMarkenData";
 import { localizeCategory } from "@/lib/seo/productCategories";
 import { generateSlug } from "@/lib/slugify";
 import { ROUTES, productsPath } from "@/utils/routing";
+import { getRouteLimiter, tooManyRequests } from "../../cmx/_lib/routeLimit.js";
+
+// AP1.4: längere Eingaben bringen keine besseren Treffer, nur Last.
+const MAX_QUERY_CHARS = 100;
 
 // Powers the navbar search dropdown: matches the query against real brands
 // (Marken), shop categories, and products (same data as /produkte and
@@ -23,7 +27,7 @@ const CATEGORIES_PER_BRAND = 8;
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  const q = (searchParams.get("q") || "").trim();
+  const q = (searchParams.get("q") || "").trim().slice(0, MAX_QUERY_CHARS).trim();
   const locale = ["de", "en", "fr", "it"].includes(searchParams.get("locale"))
     ? searchParams.get("locale")
     : "de";
@@ -31,6 +35,11 @@ export async function GET(request) {
   if (q.length < 2) {
     return NextResponse.json({ brands: [], categories: [], categoryBrands: [], brandCategories: [], products: [] });
   }
+
+  // AP1.4: Rate-Limit je IP, erst für echte Suchen (kurze Eingaben kosten
+  // nichts). Die Navbar zeigt bei !res.ok einfach keine Treffer (SearchDialog).
+  const limit = await getRouteLimiter("search").check(request.headers);
+  if (!limit.ok) return tooManyRequests(limit.retryAfter, { json: true });
 
   const needle = q.toLowerCase();
   // Locale-invariant: the category/product pages only exist under the

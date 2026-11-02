@@ -3,6 +3,7 @@
 // (src/app/sitemap.xml/route.js) pointing at one file per section:
 //   /sitemap-static.xml   home, about/hub pages, open jobs   → getStaticEntries()
 //   /sitemap-marken.xml   brand story + collection pages     → getBrandEntries()
+//                         (+ brand × category, switch off until round 3)
 //   /sitemap-news.xml     news articles                      → getNewsEntries()
 //   /sitemap-produkte.xml product categories + product pages → getProductEntries()
 // Each URL belongs to exactly one section. The XML lists only <loc> +
@@ -13,13 +14,49 @@ import { generateSlug } from "@/lib/slugify";
 import { productsPathByLocale } from "@/utils/routing";
 import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData";
 import { fetchNewsData } from "@/lib/api/fetchNewsData";
+import { isWithheldNews } from "@/lib/news/withheldNews";
 import { fetchProduktePaths, fetchProdukteNewByMarke } from "@/lib/api/fetchAllProdukte";
 import { fetchKategorien } from "@/lib/api/fetchKategorien";
 import { fetchKarriereData } from "@/lib/api/fetchKarrierData";
+import { publishableJobs } from "@/components/Karriere/glbg";
 import { fetchCollectionsByMarke } from "@/lib/api/fetchCollections";
 import { collectionPath } from "@/lib/marken/collections";
+import { MULTILINGUAL_PAGES, katalogSitemapPages, visibleExtraPages } from "@/lib/seo/sitemap/extraPages";
+import { shopStartSitemapPage } from "@/lib/shop/shopStart";
+import { conciergeIndexable, conciergeLive } from "@/lib/concierge/config";
+import { getEzarriEntriesByLocale } from "@/lib/ezarri/data";
+import { pageLocales } from "@/lib/content/landingKern/links";
 
-export const BASE_URL = "https://platzhirsch.studio";
+// Tag, an dem die Kern-Landingpages EN/FR/IT bekamen (Sprach-Integration).
+const KERN_INTL_DATE = "2026-11-01";
+import { showroomSitemapPaths } from "@/lib/showroom/config";
+import { REGION_FACTS, REGION_FACTS_DATE, passesDoorwayAudit } from "@/lib/seo/sitemap/doorwayAudit";
+import { REGION_LINKS_DATE } from "@/lib/seo/regionen";
+import { PROFILE_LOCALES, profilePath, profileUrl } from "@/components/Team/haraldProfil";
+import { wunschlisteAvailable } from "@/lib/wunschliste/mode";
+
+const WUNSCHLISTE_LAST_MODIFIED = "2026-10-30";
+
+// Profilseite Harald Menghin: Datum der letzten Änderung von page.js (30.10.2026).
+const PROFILE_LAST_MODIFIED = "2026-10-31";
+import { BASE_URL } from "@/lib/seo/sitemap/xml";
+import { withImages } from "@/lib/seo/sitemap/images";
+import { newsLastModified, untrustedNewsChangeDays } from "@/lib/seo/sitemap/newsLastmod";
+import { getIndexableRatgeber } from "@/lib/ratgeber";
+import { toRatgeberEntries } from "@/lib/seo/sitemap/ratgeber";
+import { BRAND_CATEGORY_SITEMAP_ENABLED } from "@/lib/seo/sitemap/brandCategorySitemap";
+import { getBrandCategoryEntries } from "@/lib/seo/sitemap/brandCategoryEntries";
+import { terminMode } from "@/lib/booking/config";
+
+// /termin: content date of the booking page (bump on copy change).
+const TERMIN_LAST_MODIFIED = "2026-10-29";
+
+export { BASE_URL };
+
+/** Concierge in sitemap/llms only while the page itself is index (Footer rule). */
+export function conciergeAvailableForSeo() {
+  return conciergeIndexable() && conciergeLive();
+}
 // <lastmod> must be the date the content really changed — never new Date():
 // a value that changes on every deploy is a freshness signal search engines
 // learn to ignore. Where it comes from:
@@ -139,14 +176,14 @@ const STATIC_PAGE_TRANSLATIONS = {
 // Static pages configuration. `lastModified` = date the page's own code/copy
 // last changed (from git history) — bump it when you change that page.
 const STATIC_PAGES_CONFIG = [
-  { key: 'home', path: '/', changeFrequency: "weekly", priority: 1.0, lastModified: "2026-10-08" },
+  { key: 'home', path: '/', changeFrequency: "weekly", priority: 1.0, lastModified: "2026-10-28" }, // Neuauftritt: page.js + components/Home (Hero, Process, Services) zuletzt am 28.10.2026 geändert
   { key: 'platzhirsch', path: '/ueber-uns/platzhirsch', changeFrequency: "monthly", priority: 0.9, lastModified: "2026-10-07" },
   { key: 'brands', path: '/ueber-uns/marken', changeFrequency: "weekly", priority: 0.9, lastModified: "2026-10-07" },
   { key: 'team', path: '/ueber-uns/team', changeFrequency: "monthly", priority: 0.8, lastModified: "2026-10-07" },
   { key: 'career', path: '/ueber-uns/karriere', changeFrequency: "weekly", priority: 0.8, lastModified: "2026-10-07" },
   { key: 'partners', path: '/ueber-uns/partner', changeFrequency: "monthly", priority: 0.7, lastModified: "2026-10-07" },
   { key: 'press', path: '/ueber-uns/presse', changeFrequency: "monthly", priority: 0.7, lastModified: "2026-10-07" },
-  { key: 'products', path: '/produkte', changeFrequency: "weekly", priority: 0.9, lastModified: "2026-10-07" },
+  { key: 'products', path: '/produkte', changeFrequency: "weekly", priority: 0.9, lastModified: "2026-10-28" }, // serverseitige Suche (F6)
   { key: 'consulting', path: '/beratung', changeFrequency: "monthly", priority: 0.8, lastModified: "2026-10-07" },
   { key: 'contact', path: '/kontakt', changeFrequency: "monthly", priority: 0.8, lastModified: "2026-10-07" },
   { key: 'news', path: '/news', changeFrequency: "weekly", priority: 0.8, lastModified: "2026-10-07" },
@@ -156,7 +193,9 @@ const STATIC_PAGES_CONFIG = [
 
 // Local landing pages (src/app/[locale]/<slug>/page.js) — German only, indexable,
 // no hreflang (the other locales 404 on purpose). Listed from LANDING_PAGES in
-// src/lib/content/landingPages.js, which also holds each page's lastModified.
+// src/lib/content/landingPages.js, which also holds each page's lastModified,
+// plus EXTRA_PAGES (src/lib/seo/sitemap/extraPages.js) for indexable pages
+// that are not in LANDING_PAGES yet.
 
 // ------------------------------------------------------------------
 // DATA FETCHERS
@@ -194,10 +233,11 @@ async function fetchProductPaths() {
   }
 }
 
-// Active jobs, each with its `slug` (see fetchKarrierData.js).
+// Active jobs, each with its `slug` (see fetchKarrierData.js). Rat 9,5 A13
+// (GlBG § 9 Abs 2): only jobs with a salary are published (glbg.js).
 async function fetchJobs() {
   try {
-    return await fetchKarriereData();
+    return publishableJobs(await fetchKarriereData());
   } catch (error) {
     console.error("Error fetching jobs for sitemap:", error);
     return [];
@@ -265,6 +305,22 @@ function addEntry(entries, url, lastModified, changeFrequency, priority, pathByL
   entries.push(entry);
 }
 
+// Same path in some locales only (Welle 2: DE/EN pages). `only` limits the
+// entries written to one locale (Ezarri list is already one row per locale).
+function addLocalizedEntries(entries, path, locales, lastModified, changeFrequency, priority, only = null) {
+  const languages = Object.fromEntries(locales.map((l) => [l, `${BASE_URL}/${l}${path}`]));
+  languages["x-default"] = languages.de || Object.values(languages)[0];
+  for (const locale of only ? [only] : locales) {
+    entries.push({
+      url: `${BASE_URL}/${locale}${path}`,
+      lastModified: lastModified || STATIC_LAST_MODIFIED,
+      changeFrequency: changeFrequency || "monthly",
+      priority: priority || 0.6,
+      alternates: { languages },
+    });
+  }
+}
+
 // Same path in every locale (category/product/news pages).
 const samePath = (path) => Object.fromEntries(LOCALES.map((locale) => [locale, path]));
 
@@ -284,7 +340,8 @@ export async function getStaticEntries() {
   const brandDates = await fetchBrandDates(brands);
   const hubDataDate = {
     products: newest(productPaths.map((p) => p.modified)),
-    news: newest(news.filter((n) => n.status === "Aktiv").map((n) => n.modified || n.daten)),
+    // Only real change dates (no migration day, Inhaber-offen Nr. 47).
+    news: newest(news.filter((n) => n.status === "Aktiv" && !isWithheldNews(n)).map((n) => newsLastModified(n, untrustedNewsChangeDays(news)))),
     career: newest(jobs.map((j) => j.modified || j.posted)),
     brands: newest([...brandDates.values()].map((d) => d.brand)),
   };
@@ -338,9 +395,103 @@ export async function getStaticEntries() {
     }
   }
 
+  const landingPaths = new Set();
   for (const page of LANDING_PAGES) {
-    addEntry(entries, `${BASE_URL}/de${landingPagePath(page.slug)}`, page.lastModified, "monthly", 0.8);
+    landingPaths.add(landingPagePath(page.slug));
+    // Region pages below the doorway rule (< 4 own facts) are not listed
+    // (src/lib/seo/sitemap/doorwayAudit.js). Since Runde 3 P5 (28.10.2026)
+    // Bregenz, Dornbirn, Lindau, Friedrichshafen and St. Gallen pass; their
+    // lastmod is at least the day their facts were added (REGION_FACTS_DATE).
+    const path = landingPagePath(page.slug);
+    if (!passesDoorwayAudit(path)) continue;
+    // Rat 9,5 B15: every region page got the /regionen crumb and the cross
+    // links on REGION_LINKS_DATE (src/lib/seo/regionen.js).
+    const lastModified = newest(REGION_FACTS[path] ? newest(page.lastModified, REGION_FACTS_DATE) : page.lastModified, REGION_LINKS_DATE);
+    // Sprach-Integration 01.11.2026: Küchen, Interior Design und Wohnzimmer gibt
+    // es in DE/EN/FR/IT (landingKern) → je Sprache mit hreflang wie die Seiten
+    // (withKernLanguages; Quelle pageLocales = deOnlyRedirects.cjs). Regionsseiten
+    // bleiben nur Deutsch.
+    const locales = pageLocales(path);
+    if (locales.length > 1) addLocalizedEntries(entries, path, locales, newest(lastModified, KERN_INTL_DATE), "monthly", 0.8);
+    else addEntry(entries, `${BASE_URL}/de${path}`, lastModified, "monthly", 0.8);
   }
+
+  // Indexable German-only pages not (yet) in LANDING_PAGES — new region pages
+  // that passed the doorway audit and /yacht-interior (src/lib/seo/sitemap/
+  // extraPages.js). A page already in LANDING_PAGES is skipped, so it is never
+  // listed twice. No hreflang: the other locales 404.
+  // Rule pages (Runde 2): /arbeitsweise once index,follow, /concierge only
+  // while the concierge answers (otherwise the page is noindex, technik P1-7).
+  // Runde 5 P6 (seo P2, recht P2): the SAME rule as the page robots and the
+  // footer (Footer.js) – conciergeIndexable() && conciergeLive(). Without an
+  // ANTHROPIC_API_KEY (or with mock/kill switch) /concierge is noindex and
+  // not listed, also in development.
+  // Welle 2 (Inhaber Nr. 13): pages with `locales` (Yacht, Sofaplaner) and the
+  // MULTILINGUAL_PAGES (Hotel & Objekt, Architekten; seit 31.10.2026 auch
+  // /kuechengeraete in allen vier Sprachen) once per listed locale,
+  // with hreflang for exactly those locales + x-default (= de), like the pages.
+  for (const page of visibleExtraPages({ conciergeAvailable: conciergeAvailableForSeo() })) {
+    if (landingPaths.has(page.path) || !passesDoorwayAudit(page.path)) continue;
+    if (page.locales) addLocalizedEntries(entries, page.path, page.locales, page.lastModified, "monthly", 0.7);
+    else addEntry(entries, `${BASE_URL}/de${page.path}`, page.lastModified, "monthly", 0.7);
+  }
+  for (const page of MULTILINGUAL_PAGES) addLocalizedEntries(entries, page.path, page.locales, page.lastModified, "monthly", 0.7);
+  // Herstellerkatalog (31.10.2026): /bad-wellness/produkte, /…/marke/<marke>,
+  // /…/produkte/<slug> (und /kuechengeraete/…, sobald Produkte da sind) je Sprache.
+  for (const page of katalogSitemapPages()) addLocalizedEntries(entries, page.path, page.locales, page.lastModified, "monthly", page.typ === "produkt" ? 0.5 : 0.6);
+  // Shop-Startseite /accessoires (Accessoires-Shop) je Sprache, über den Listen (0.7).
+  {
+    const shop = shopStartSitemapPage();
+    if (shop) addLocalizedEntries(entries, shop.path, shop.locales, shop.lastModified, "weekly", 0.7);
+  }
+
+  // Rat 9,5 (T4 → T6): Profilseite Harald Menghin (index, follow), seit
+  // 31.10.2026 in allen vier Sprachen unter den übersetzten Pfaden
+  // (/en/about-us/team/…, PROFILE_LOCALES) mit hreflang-Satz.
+  {
+    const pathByLocale = Object.fromEntries(LOCALES.map((l) => [l, profilePath(l)]));
+    for (const locale of PROFILE_LOCALES) addEntry(entries, profileUrl(locale), PROFILE_LAST_MODIFIED, "monthly", 0.6, pathByLocale);
+  }
+
+  // Rat 9,5 (T2 → T6): Wunschliste-Einstieg /wunschliste, in allen vier
+  // Sprachen unter demselben Pfad – nur solange die Seite index ist
+  // (wunschlisteAvailable(): Produktion erst mit freigegebener DSE-Ergänzung).
+  if (wunschlisteAvailable()) addLocalizedEntries(entries, "/wunschliste", LOCALES, WUNSCHLISTE_LAST_MODIFIED, "monthly", 0.5);
+
+  // Ezarri world (Inhaber-Entscheidung Nr. 7; Welle 2: German and English):
+  // hub, worlds, collections and base mosaics – [] while EZARRI_PUBLIC is
+  // false (src/lib/ezarri/data.js getEzarriEntriesByLocale, lastmod = data stand).
+  // Sprach-Integration 01.11.2026: Sprachen je URL (ezarriLocalesFor) – Welt,
+  // Konfigurator und Rechner in DE/EN/FR/IT, Custom Mix nur DE/EN.
+  for (const e of getEzarriEntriesByLocale()) {
+    addLocalizedEntries(entries, e.path, Object.keys(e.alternates), e.lastmod, "monthly", e.path === "/ezarri" ? 0.8 : 0.6, e.locale);
+  }
+
+  // Showroom tour (N1, all four languages, same path): only once the real,
+  // released recording is there (showroomSitemapPaths() is [] until then).
+  for (const p of showroomSitemapPaths()) {
+    const alternates = Object.fromEntries(LOCALES.map((l) => [l, p]));
+    for (const locale of LOCALES) addEntry(entries, `${BASE_URL}/${locale}${p}`, STATIC_LAST_MODIFIED, "monthly", 0.7, alternates);
+  }
+
+  // Online-Kalender /termin (all four languages, same path): only while the
+  // page is index, i.e. terminMode() === "frappe" (mock/off are noindex,
+  // src/app/[locale]/termin/page.js). Confirm/manage pages are never listed.
+  if (terminMode() === "frappe") {
+    const alternates = Object.fromEntries(LOCALES.map((l) => [l, "/termin"]));
+    for (const locale of LOCALES) addEntry(entries, `${BASE_URL}/${locale}/termin`, TERMIN_LAST_MODIFIED, "monthly", 0.8, alternates);
+  }
+
+  // Ratgeber (German only): hub + released articles from getIndexableRatgeber()
+  // — never listRatgeber(). Empty until an article has freigegeben: true; the
+  // pages are noindex until then (src/lib/seo/sitemap/ratgeber.js).
+  let ratgeber = [];
+  try {
+    ratgeber = getIndexableRatgeber();
+  } catch (error) {
+    console.error("Error reading Ratgeber for sitemap:", error);
+  }
+  for (const entry of toRatgeberEntries(ratgeber, BASE_URL)) entries.push(entry);
 
   // Open job postings (/…/karriere/<slug>, translated career path per locale)
   // — indexable, with JobPosting data for Google Jobs.
@@ -361,7 +512,10 @@ export async function getStaticEntries() {
     }
   }
 
-  return dedupe(entries);
+  // Bilder-SEO (31.10.2026): Bild-Einträge (image:image) für Katalog, Bad & Wellness,
+  // Küchengeräte und eigene Fotos (src/lib/seo/sitemap/images.js) – nur an
+  // Einträgen dieser Datei, keine eigene Bilder-Sitemap (jede URL einmal).
+  return withImages(dedupe(entries));
 }
 
 // ------------------------------------------------------------------
@@ -416,6 +570,13 @@ export async function getBrandEntries() {
     }
   }
 
+  // "Marke × Kategorie" pages (/…/marken/<brand>/<category>) — behind a switch
+  // that is OFF until round 3 wires the page into [title]/[collection]
+  // (src/lib/seo/sitemap/brandCategorySitemap.js). Only indexable combinations.
+  if (BRAND_CATEGORY_SITEMAP_ENABLED) {
+    for (const entry of await getBrandCategoryEntries()) entries.push(entry);
+  }
+
   return dedupe(entries);
 }
 
@@ -449,6 +610,12 @@ export async function getProductEntries() {
 
   // Product detail pages at their translated path (/de/produkte/…,
   // /en/products/…, /fr/produits/…, /it/prodotti/…); hreflang between them.
+  // Imported catalogues (Brand van Egmond, Treca, Next125) are listed here
+  // like every other brand: they are "Produkte New" records in the backoffice
+  // (R4-seo, 26.10.2026: 111 + 96 + 13 active, all in this list). The ids of
+  // src/lib/data/importedProducts/* ("bve-15", "n125-3", "treca-1") are NOT
+  // URLs — no route renders that static file — so they are never listed.
+  // Checked live by src/lib/seo/audit/crawl.mjs --imported (200, index).
   for (const product of productPaths) {
     const pathByLocale = productsPathByLocale(generateSlug(product.kategories.toLowerCase()), product.path_field);
     for (const locale of LOCALES) {
@@ -473,27 +640,28 @@ export async function getProductEntries() {
 export async function getNewsEntries() {
   const entries = [];
   const news = await fetchNews();
+  const untrusted = untrustedNewsChangeDays(news);
 
   for (const newsItem of news) {
     // Only active articles: the article route 404s anything else
     // (news/[title]/page.js), so a deactivated one must not be listed.
     if (newsItem.status !== "Aktiv") continue;
+    // UWG: ended discount promotions are noindex and stay out of the sitemap
+    // (src/lib/news/withheldNews.js).
+    if (isWithheldNews(newsItem)) continue;
     // Same slug the route matches on (generateSlug(name1)) — a different
     // source here would list URLs that 404.
     const slug = generateSlug(newsItem.name1);
     if (!slug) continue;
 
-    // lastmod: the article's own change date, else its publication date.
-    const changed = newsItem.modified || newsItem.daten;
+    // lastmod: the article's own change date, else its publication date –
+    // but never the migration/import day (Runde 5 P6, Inhaber-offen Nr. 47):
+    // without a real date the entry has NO <lastmod> (src/lib/seo/sitemap/
+    // newsLastmod.js), not the import day and not STATIC_LAST_MODIFIED.
+    const changed = newsLastModified(newsItem, untrusted);
     for (const locale of LOCALES) {
-      addEntry(
-        entries,
-        `${BASE_URL}/${locale}/news/${slug}`,
-        changed ? new Date(changed) : STATIC_LAST_MODIFIED,
-        "weekly",
-        0.6,
-        samePath(`/news/${slug}`)
-      );
+      addEntry(entries, `${BASE_URL}/${locale}/news/${slug}`, changed, "weekly", 0.6, samePath(`/news/${slug}`));
+      if (!changed) entries[entries.length - 1].lastModified = undefined;
     }
   }
 
@@ -501,68 +669,10 @@ export async function getNewsEntries() {
 }
 
 // ------------------------------------------------------------------
-// XML serialization
+// XML serialization — lives in the pure module ./sitemap/xml.js (unit-tested
+// with node --test); re-exported here so the routes keep one import.
 // ------------------------------------------------------------------
-function escapeXml(value) {
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&apos;");
-}
-
-function toW3CDate(value) {
-  const date = value instanceof Date ? value : new Date(value);
-  return isNaN(date.getTime()) ? null : date.toISOString();
-}
-
-// <urlset> with just <loc> + <lastmod> per URL, the same shape as the index.
-// Deliberately no xhtml:link hreflang alternates: every page already declares
-// them in its own <head> (Google accepts either place), and XHTML-namespaced
-// elements make browsers render the sitemap as run-together text instead of
-// the XML tree. changefreq/priority are left out too — Google ignores both.
-export function toUrlsetXml(entries) {
-  const urls = entries
-    .map((entry) => {
-      const lastmod = toW3CDate(entry.lastModified);
-      return `<url>\n<loc>${escapeXml(entry.url)}</loc>${lastmod ? `\n<lastmod>${lastmod}</lastmod>` : ""}\n</url>`;
-    })
-    .join("\n");
-
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
-}
-
-// <sitemapindex> listing the child sitemaps. `sitemaps` = [{ path, lastModified }].
-export function toSitemapIndexXml(sitemaps) {
-  const items = sitemaps
-    .map(({ path, lastModified }) => {
-      const lastmod = lastModified ? toW3CDate(lastModified) : null;
-      return `<sitemap>\n<loc>${escapeXml(`${BASE_URL}${path}`)}</loc>${lastmod ? `\n<lastmod>${lastmod}</lastmod>` : ""}\n</sitemap>`;
-    })
-    .join("\n");
-
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${items}\n</sitemapindex>\n`;
-}
-
-// Newest lastModified among entries — the index's <lastmod> for that file.
-export function latestLastModified(entries) {
-  let latest = null;
-  for (const entry of entries) {
-    const date = new Date(entry.lastModified);
-    if (!isNaN(date.getTime()) && (!latest || date > latest)) latest = date;
-  }
-  return latest;
-}
-
-export function xmlResponse(xml) {
-  return new Response(xml, {
-    headers: {
-      "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
-    },
-  });
-}
+export { toUrlsetXml, toSitemapIndexXml, latestLastModified, xmlResponse } from "@/lib/seo/sitemap/xml";
 
 // The child sitemaps, in the order the index lists them.
 export const SITEMAP_SECTIONS = [

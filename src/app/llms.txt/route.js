@@ -1,65 +1,108 @@
 // src/app/llms.txt/route.js
 // Serves /llms.txt — a concise, spec-compliant (llmstxt.org) Markdown index that helps
 // AI answer engines (ChatGPT/Perplexity/Claude-Web, allowed in robots.js) understand and
-// navigate the site. Generated from the live CMS brand list (like sitemap.js) so the
-// index never goes stale, with a static fallback if the backend is unavailable.
+// navigate the site. Generated from the live CMS brand list (like the sitemap) so the
+// index never goes stale; a backend outage degrades to the static sections.
 //
-// Replaces the old oversized public/llms.txt (341 KB), which used bare URLs instead of
-// Markdown links (validators reported "no links"). The spec wants: one H1, a short
-// summary, then H2 sections of `- [Title](url): description` links.
+// The body is built by the pure module src/lib/seo/llms.js (unit-tested in
+// tests/unit/llms.test.mjs): only index,follow pages, LANDING_PAGES only when they
+// pass the doorway audit, Ratgeber only from getIndexableRatgeber() (today []).
+// Ezarri: only the hub (noindex mosaics never appear, src/lib/ezarri/indexierung.js).
+// Brand × category: only indexable combinations (>= 4 models, src/lib/marken/brandCategory.js).
 
 import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData";
+import { LANDING_PAGES } from "@/lib/content/landingPages";
+import { MULTILINGUAL_PAGES, visibleExtraPages } from "@/lib/seo/sitemap/extraPages";
+import { conciergeLive } from "@/lib/concierge/config";
+import { APPOINTMENT_OFFERED } from "@/lib/agent/tools";
+import { getIndexableRatgeber } from "@/lib/ratgeber";
+import { buildLlmsTxt, LLMS_FEATURED_BRANDS } from "@/lib/seo/llms";
+import { fetchProdukteNewByMarke } from "@/lib/api/fetchAllProdukte";
+import { fetchCollectionsByMarke } from "@/lib/api/fetchCollections";
+import { fetchKategorien } from "@/lib/api/fetchKategorien";
+import { buildBrandCategories } from "@/lib/marken/brandCategory";
+import { withoutNonProducts } from "@/lib/marken/brandCategoryAudit";
 import { generateSlug } from "@/lib/slugify";
+import { ezarriInSitemap } from "@/lib/ezarri/config";
+import { showroomSitemapPaths } from "@/lib/showroom/config";
 
-const BASE_URL = "https://platzhirsch.studio";
+// Pages with their own publication rule (integration 28.10.2026): listed only
+// while they are indexable – Ezarri with EZARRI_PUBLIC, the showroom tour with
+// a real, released recording.
+function ruledPages() {
+  const out = [];
+  if (ezarriInSitemap()) {
+    out.push({
+      path: "/ezarri",
+      label: "Ezarri Glasmosaik",
+      llms: "Glasmosaik von Ezarri für Pool, Bad und Wellness: Sortiment, Mosaik-Übersicht, Konfigurator und Mengenrechner; Beratung und Muster in Lochau.",
+      // Welle 2 (Nr. 13): the Ezarri world also in English (EZARRI_LOCALES).
+      locales: ["de", "en"],
+      en: { label: "Ezarri glass mosaic", llms: "Ezarri glass mosaic for pool, bath and wellness: range, mosaic overview, configurator and quantity calculator; advice and samples in Lochau." },
+    });
+  }
+  for (const p of showroomSitemapPaths()) {
+    // Runde 4 P5 (seo P1-4): kein 3D-Versprechen – die Seite zeigt, was es gibt.
+    out.push({ path: p, label: "Showroom-Rundgang", llms: "Rundgang durch die Ausstellung in Lochau mit Stationen und ausgestellten Stücken." });
+  }
+  return out;
+}
 
-const HEADER = `# Platzhirsch Home Living
-
-> Einrichtungsstudio für exklusive Designermöbel und Interior Design in Lochau, Vorarlberg (Österreich). Autorisierter Händler von über 35 internationalen Premium-Marken wie Minotti, Poliform, Flos, Rimadesio, Paola Lenti und Tom Dixon.
-
-Platzhirsch Home Living führt eine kuratierte Auswahl an Designmarken für Wohnen, Küche, Outdoor und Beleuchtung und bietet persönliche Einrichtungsberatung und Innenarchitektur, eine Ausstellung in Lochau am Bodensee sowie Lieferung und Montage in ganz Österreich. Primärsprache ist Deutsch (de-AT); die deutschen Seiten sind maßgeblich (kanonisch).
-
-## Hauptseiten
-
-- [Startseite](${BASE_URL}/de): Überblick über Studio, Marken und Leistungen.
-- [Produkte](${BASE_URL}/de/produkte): Designmöbel, Leuchten, Küchen und Outdoor nach Marke.
-- [Marken](${BASE_URL}/de/ueber-uns/marken): Alle geführten Premium-Designmarken.
-- [Einrichtungsberatung](${BASE_URL}/de/beratung): Persönliche Beratung und Innenarchitektur.
-- [Über uns](${BASE_URL}/de/ueber-uns/platzhirsch): Studio, Philosophie und Ausstellung in Lochau.
-- [Kontakt](${BASE_URL}/de/kontakt): Adresse, Öffnungszeiten und Terminanfrage.`;
-
-const OPTIONAL = `## Optional
-
-- [Aktuelles](${BASE_URL}/de/news): News und Neuigkeiten aus dem Studio.
-- [Team](${BASE_URL}/de/ueber-uns/team): Das Team von Platzhirsch Home Living.
-- [Partner](${BASE_URL}/de/ueber-uns/partner): Partnerbetriebe und Kooperationen.
-- [Presse](${BASE_URL}/de/ueber-uns/presse): Pressebereich.
-- [Impressum](${BASE_URL}/de/impressum): Impressum.
-- [Datenschutz](${BASE_URL}/de/datenschutz): Datenschutzerklärung.`;
-
-function buildBrandSection(brands) {
-  const lines = (brands || [])
-    .map((b) => (b?.name1 || "").trim())
-    .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b, "de"))
-    .map((name) => `- [${name}](${BASE_URL}/de/ueber-uns/marken/${generateSlug(name)})`)
-    .join("\n");
-  return lines ? `## Marken\n\n${lines}` : "";
+// Indexable brand × category pages of the featured brands (same rule as the
+// sitemap); [] on any backend error.
+async function loadBrandCategories(brands) {
+  try {
+    const featured = brands.filter((b) => LLMS_FEATURED_BRANDS.includes(generateSlug(b.name1)));
+    const [kategorien, ...perBrand] = await Promise.all([
+      fetchKategorien().catch(() => []),
+      ...featured.map(async (b) => {
+        const [rows, collections] = await Promise.all([
+          fetchProdukteNewByMarke(b.name1).catch(() => []),
+          fetchCollectionsByMarke(b.name1).catch(() => []),
+        ]);
+        return buildBrandCategories(withoutNonProducts(rows), { [b.name1]: collections });
+      }),
+    ]);
+    const labels = Object.fromEntries((kategorien || []).map((k) => [k.category_key || k.name, k.name_de || k.category_key]));
+    return { summaries: perBrand.flat(), labels };
+  } catch (error) {
+    console.error("llms.txt brand × category fetch failed:", error);
+    return { summaries: [], labels: {} };
+  }
 }
 
 export async function GET() {
-  let brandSection = "";
+  let brands = [];
   try {
     const marken = await fetchRawMarkenData();
-    const active = (marken || []).filter((m) => m?.status === "Aktiv");
-    brandSection = buildBrandSection(active);
+    brands = (marken || []).filter((m) => m?.status === "Aktiv");
   } catch (error) {
-    // A backend outage must not break /llms.txt — degrade to header + optional, which
-    // is still a valid llms.txt (H1, summary and Markdown links present).
+    // A backend outage must not break /llms.txt — the brand section is left out,
+    // which is still a valid llms.txt (H1, summary and Markdown links present).
     console.error("llms.txt brand fetch failed:", error);
   }
 
-  const body = [HEADER, brandSection, OPTIONAL].filter(Boolean).join("\n\n") + "\n";
+  let ratgeber = [];
+  try {
+    ratgeber = getIndexableRatgeber();
+  } catch (error) {
+    console.error("llms.txt ratgeber read failed:", error);
+  }
+
+  const { summaries, labels } = await loadBrandCategories(brands);
+  const body = buildLlmsTxt({
+    brands,
+    brandCategories: summaries,
+    categoryLabels: labels,
+    landingPages: LANDING_PAGES,
+    // Same rules as the sitemap; the /ki-assistenten line follows the
+    // appointment switch like the MCP instructions (Runde 2, recht P1-3).
+    // Runde 4 P5: the concierge line only while it really answers with a key
+    // (conciergeLive(): ANTHROPIC_API_KEY set, no forced mock, no kill switch).
+    // Welle 2: Hotel & Objekt and Architekten (DE/EN, MULTILINGUAL_PAGES).
+    extraPages: [...visibleExtraPages({ conciergeAvailable: conciergeLive(), appointmentOffered: APPOINTMENT_OFFERED }), ...MULTILINGUAL_PAGES, ...ruledPages()],
+    ratgeber,
+  });
 
   return new Response(body, {
     headers: {

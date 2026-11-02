@@ -1,50 +1,28 @@
-"use client";
-import React from "react";
-import Image from "next/image";
-import { Link } from "@/i18n/navigation";
-import { usePathname } from "next/navigation";
-import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
-import bgImage from "../../../public/Images/Newsletter/indoor-dinner-space.jpg";
+import PageHeader from "@/components/UberUns/PageHeader";
+import useInhalt from "@/components/UberUns/inhalt/useInhalt";
+import { dseHeader } from "./kurzfassung";
 
+// Legal page opening: text only (no photo – the H1 is the LCP element).
+// Rat 9,5 A16 (QA Recht −0,1): EN/FR/IT get the H1 and crumb in the page
+// language and a summary in that language (./kurzfassung.js) above the German
+// full text (approved by the law firm on 29.10.2026: see datenschutz.js). The
+// lead says that the German version is authoritative.
 const Datenbanner = () => {
-  const pathname = usePathname();
-  const locale = getLocaleFromPath(pathname);
+  const legal = useInhalt("legal");
+  const common = useInhalt("common");
+  const { locale } = legal;
+  const own = dseHeader(locale);
+  const title = own ? own.title : "Datenschutz";
   return (
-    <div>
-      <div className="relative w-full h-150 pt-25">
-        <Image
-          src={bgImage}
-          alt="Newsletter"
-          fill
-          style={{ objectFit: "cover", objectPosition: "center" }}
-          placeholder="blur"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute inset-0 bg-black opacity-30 z-10" />
-
-        <div className="relative z-20 flex flex-col items-center justify-center h-full">
-          <h1 className="font-bold text-2xl lg:text-5xl mb-5 md:text-3xl tracking-normal text-white text-center">
-            Datenschutz
-          </h1>
-          <div className="flex items-center justify-center text-white gap-2 mb-8">
-            <div>
-              <Link href="/" prefetch={true} locale={locale}>
-                <p className="text-sm font-normal">HOME</p>
-              </Link>
-            </div>
-            <div>
-              <p>/</p>
-            </div>
-            <div>
-              <Link href="/datenschutz" locale={locale}>
-                <p className="text-sm font-normal">DATENSCHUTZ</p>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <PageHeader
+      breadcrumbs={[{ label: common.t("home"), href: "/" }, { label: title }]}
+      eyebrow={legal.t("eyebrow")}
+      // QM content-legal r3 (200 % text): soft hyphen at the compound joint – the size
+      // cap (longestWordCap) counts the longer piece, so the H1 stays clearly larger
+      // than the body text („Daten-/schutz“ only when it really has to break).
+      title={own ? title : "Daten­schutz"}
+      lead={own ? <span data-german-only-notice="">{own.lead}</span> : undefined}
+    />
   );
 };
 

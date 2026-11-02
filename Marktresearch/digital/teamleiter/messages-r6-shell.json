@@ -1,0 +1,31 @@
+{
+  "_hinweis": "R6-shell-perf, 26.10.2026. Übernommen durch R6-i18n: Shell.header.germanOnlyNote steht in src/messages/{de,en,fr,it}.json (geprüft im Fix 26.10.2026). shellLabels.js liest den Schlüssel direkt, die Ersatztabelle ist entfernt. Diese Datei bleibt nur als Beleg; r6-shell-perf.test.mjs prüft, dass Katalog und Vorschlag gleich sind.",
+  "de": {
+    "Shell": {
+      "header": {
+        "germanOnlyNote": "Diese Seite gibt es nur auf Deutsch. Die anderen Sprachen führen zur Startseite."
+      }
+    }
+  },
+  "en": {
+    "Shell": {
+      "header": {
+        "germanOnlyNote": "This page is only available in German. The other languages lead to the home page."
+      }
+    }
+  },
+  "fr": {
+    "Shell": {
+      "header": {
+        "germanOnlyNote": "Cette page n’existe qu’en allemand. Les autres langues mènent à la page d’accueil."
+      }
+    }
+  },
+  "it": {
+    "Shell": {
+      "header": {
+        "germanOnlyNote": "Questa pagina è disponibile solo in tedesco. Le altre lingue ti portano alla pagina iniziale."
+      }
+    }
+  }
+}

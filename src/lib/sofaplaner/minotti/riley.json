@@ -1,0 +1,985 @@
+{
+  "name": "Riley",
+  "slug": "riley",
+  "hersteller": "Minotti",
+  "designer": "Hannes Peer",
+  "jahr": 2025,
+  "jahr_quelle": "Produktseite: Tag „2025 Collection“",
+  "typ": "modulares Sitzsystem (indoor), zwei Sitztiefen",
+  "quellen": [
+    "https://www.minotti.com/en/riley",
+    "https://www.minotti.com/de/riley",
+    "https://www.minotti.com/downloads/25029/28178/RILEY_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/26145/29804/RILEY_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/26146/29806/RILEY_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/26147/29808/RILEY_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/26148/29810/RILEY_arrangement_04.pdf",
+    "https://www.minotti.com/downloads/26149/29812/RILEY_arrangement_05.pdf",
+    "https://www.minotti.com/downloads/26150/29814/RILEY_arrangement_06.pdf",
+    "https://www.minotti.com/downloads/26151/29816/RILEY_arrangement_07.pdf",
+    "https://www.minotti.com/downloads/26152/29818/RILEY_arrangement_08.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Maße in cm aus Technical Sheet (Stand November 2025) und Bildnamen der „Technical Features“. sitztiefe_cm = unteres Tiefenmaß der Sitzfläche in der Zeichnung. Armlehnenhöhe laut Zeichnung 60 cm. SX/DX = Minotti-Bezeichnung sinistra/destra (links/rechts) laut Datenblatt-Zeichnung.",
+  "elemente": [
+    {
+      "code": "RILEY-SOFA-242",
+      "name": "Sofa 242 cm",
+      "name_hersteller": "Sofa 242 cm",
+      "art": "sofa",
+      "breite_cm": 242,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-SOFA-262",
+      "name": "Sofa 262 cm",
+      "name_hersteller": "Sofa 262 cm",
+      "art": "sofa",
+      "breite_cm": 262,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-SOFA-282",
+      "name": "Sofa 282 cm",
+      "name_hersteller": "Sofa 282 cm",
+      "art": "sofa",
+      "breite_cm": 282,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-SOFA-302",
+      "name": "Sofa 302 cm",
+      "name_hersteller": "Sofa 302 cm",
+      "art": "sofa",
+      "breite_cm": 302,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-CORNER-ARM-112",
+      "name": "Eck-Endelement mit Armlehne 112x112 cm",
+      "name_hersteller": "Corner element with armrest 112x112 cm",
+      "art": "ecke",
+      "breite_cm": 112,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "unterart": "eck-endelement"
+    },
+    {
+      "code": "RILEY-EL1A-132",
+      "name": "Endelement mit 1 Armlehne 132 cm",
+      "name_hersteller": "Element with 1 armrest 132 cm",
+      "art": "endelement",
+      "breite_cm": 132,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "RILEY-EL1A-152",
+      "name": "Endelement mit 1 Armlehne 152 cm",
+      "name_hersteller": "Element with 1 armrest 152 cm",
+      "art": "endelement",
+      "breite_cm": 152,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "RILEY-EL1A-172",
+      "name": "Endelement mit 1 Armlehne 172 cm",
+      "name_hersteller": "Element with 1 armrest 172 cm",
+      "art": "endelement",
+      "breite_cm": 172,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "RILEY-EL1A-192",
+      "name": "Endelement mit 1 Armlehne 192 cm",
+      "name_hersteller": "Element with 1 armrest 192 cm",
+      "art": "endelement",
+      "breite_cm": 192,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "RILEY-EL1A-212",
+      "name": "Endelement mit 1 Armlehne 212 cm",
+      "name_hersteller": "Element with 1 armrest 212 cm",
+      "art": "endelement",
+      "breite_cm": 212,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "RILEY-EL1A-232",
+      "name": "Endelement mit 1 Armlehne 232 cm",
+      "name_hersteller": "Element with 1 armrest 232 cm",
+      "art": "endelement",
+      "breite_cm": 232,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "RILEY-EL1A-252",
+      "name": "Endelement mit 1 Armlehne 252 cm",
+      "name_hersteller": "Element with 1 armrest 252 cm",
+      "art": "endelement",
+      "breite_cm": 252,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "RILEY-EL1A-272",
+      "name": "Endelement mit 1 Armlehne 272 cm",
+      "name_hersteller": "Element with 1 armrest 272 cm",
+      "art": "endelement",
+      "breite_cm": 272,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "RILEY-DEEP-CORNER-ARM-132",
+      "name": "DEEP – Eck-Endelement mit Armlehne 132x132 cm",
+      "name_hersteller": "DEEP - Corner element with armrest 132x132 cm",
+      "art": "ecke",
+      "breite_cm": 132,
+      "tiefe_cm": 132,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 98,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "tiefe_variante": "deep",
+      "unterart": "eck-endelement",
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-DEEP-EL1A-172",
+      "name": "DEEP – Endelement mit 1 Armlehne 172x132 cm",
+      "name_hersteller": "DEEP - Element with 1 armrest 172x132 cm",
+      "art": "endelement",
+      "breite_cm": 172,
+      "tiefe_cm": 132,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 98,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "tiefe_variante": "deep",
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-DEEP-EL1A-192",
+      "name": "DEEP – Endelement mit 1 Armlehne 192x132 cm",
+      "name_hersteller": "DEEP - Element with 1 armrest 192x132 cm",
+      "art": "endelement",
+      "breite_cm": 192,
+      "tiefe_cm": 132,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 98,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "tiefe_variante": "deep",
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-DEEP-EL1A-212",
+      "name": "DEEP – Endelement mit 1 Armlehne 212x132 cm",
+      "name_hersteller": "DEEP - Element with 1 armrest 212x132 cm",
+      "art": "endelement",
+      "breite_cm": 212,
+      "tiefe_cm": 132,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 98,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "tiefe_variante": "deep",
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-CENT-104",
+      "name": "Mittelelement 104 cm",
+      "name_hersteller": "Central element 104 cm",
+      "art": "mittel",
+      "breite_cm": 104,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-CENT-124",
+      "name": "Mittelelement 124 cm",
+      "name_hersteller": "Central element 124 cm",
+      "art": "mittel",
+      "breite_cm": 124,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-CENT-144",
+      "name": "Mittelelement 144 cm",
+      "name_hersteller": "Central element 144 cm",
+      "art": "mittel",
+      "breite_cm": 144,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-CENT-164",
+      "name": "Mittelelement 164 cm",
+      "name_hersteller": "Central element 164 cm",
+      "art": "mittel",
+      "breite_cm": 164,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-CENT-184",
+      "name": "Mittelelement 184 cm",
+      "name_hersteller": "Central element 184 cm",
+      "art": "mittel",
+      "breite_cm": 184,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-CENT-204",
+      "name": "Mittelelement 204 cm",
+      "name_hersteller": "Central element 204 cm",
+      "art": "mittel",
+      "breite_cm": 204,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-CENT-224",
+      "name": "Mittelelement 224 cm",
+      "name_hersteller": "Central element 224 cm",
+      "art": "mittel",
+      "breite_cm": 224,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-CENT-244",
+      "name": "Mittelelement 244 cm",
+      "name_hersteller": "Central element 244 cm",
+      "art": "mittel",
+      "breite_cm": 244,
+      "tiefe_cm": 112,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 78
+    },
+    {
+      "code": "RILEY-CORNER-ARM-252x132-DD",
+      "name": "Eck-Endelement mit Armlehne 252x132 cm, doppelte Tiefe",
+      "name_hersteller": "Corner element with armrest 252x132 cm - double depth",
+      "art": "ecke",
+      "breite_cm": 252,
+      "tiefe_cm": 132,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 112,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "unterart": "eck-endelement"
+    },
+    {
+      "code": "RILEY-CORNER-152",
+      "name": "Eckelement 152x152 cm",
+      "name_hersteller": "Corner element 152x152 cm",
+      "art": "ecke",
+      "breite_cm": 152,
+      "tiefe_cm": 152,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 112,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "RILEY-CORNER-172x152",
+      "name": "Eckelement 172x152 cm",
+      "name_hersteller": "Corner element 172x152 cm",
+      "art": "ecke",
+      "breite_cm": 172,
+      "tiefe_cm": 152,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 112,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-COUCH-104x132",
+      "name": "Couch 104x132 cm",
+      "name_hersteller": "Couch 104x132 cm",
+      "art": "couch",
+      "breite_cm": 104,
+      "tiefe_cm": 132,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 98
+    },
+    {
+      "code": "RILEY-COUCH-124x152",
+      "name": "Couch 124x152 cm",
+      "name_hersteller": "Couch 124x152 cm",
+      "art": "couch",
+      "breite_cm": 124,
+      "tiefe_cm": 152,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 118,
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-COUCH-144x172",
+      "name": "Couch 144x172 cm",
+      "name_hersteller": "Couch 144x172 cm",
+      "art": "couch",
+      "breite_cm": 144,
+      "tiefe_cm": 172,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 138,
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-CHAISE-152x152",
+      "name": "Chaiselongue 152x152 cm",
+      "name_hersteller": "Chaise-longue 152x152 cm",
+      "art": "chaise",
+      "breite_cm": 152,
+      "tiefe_cm": 152,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 118,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-CHAISE-172x172",
+      "name": "Chaiselongue 172x172 cm",
+      "name_hersteller": "Chaise-longue 172x172 cm",
+      "art": "chaise",
+      "breite_cm": 172,
+      "tiefe_cm": 172,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 138,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-CHAISE-132x172",
+      "name": "Chaiselongue 132x172 cm",
+      "name_hersteller": "Chaise-longue 132x172 cm",
+      "art": "chaise",
+      "breite_cm": 132,
+      "tiefe_cm": 172,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 137,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-CHAISE-132x192",
+      "name": "Chaiselongue 132x192 cm",
+      "name_hersteller": "Chaise-longue 132x192 cm",
+      "art": "chaise",
+      "breite_cm": 132,
+      "tiefe_cm": 192,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 157,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-CHAISE-132x212",
+      "name": "Chaiselongue 132x212 cm",
+      "name_hersteller": "Chaise-longue 132x212 cm",
+      "art": "chaise",
+      "breite_cm": 132,
+      "tiefe_cm": 212,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 178,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "RILEY-OTT-84x84",
+      "name": "Hocker 84x84 cm",
+      "name_hersteller": "Ottoman 84x84 cm",
+      "art": "hocker",
+      "breite_cm": 84,
+      "tiefe_cm": 84,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-112x112",
+      "name": "Hocker 112x112 cm",
+      "name_hersteller": "Ottoman 112x112 cm",
+      "art": "hocker",
+      "breite_cm": 112,
+      "tiefe_cm": 112,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-84x112",
+      "name": "Hocker 84x112 cm",
+      "name_hersteller": "Ottoman 84x112 cm",
+      "art": "hocker",
+      "breite_cm": 84,
+      "tiefe_cm": 112,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-104x64-FIX",
+      "name": "Hocker 104x64 cm, fest",
+      "name_hersteller": "Ottoman 104x64 cm - fixed",
+      "art": "hocker",
+      "breite_cm": 104,
+      "tiefe_cm": 64,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-104x64-CASTORS",
+      "name": "Hocker 104x64 cm, mit Rollen (360° drehbar)",
+      "name_hersteller": "Ottoman 104x64 cm - with castors",
+      "art": "hocker",
+      "breite_cm": 104,
+      "tiefe_cm": 64,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-124x64-FIX",
+      "name": "Hocker 124x64 cm, fest",
+      "name_hersteller": "Ottoman 124x64 cm - fixed",
+      "art": "hocker",
+      "breite_cm": 124,
+      "tiefe_cm": 64,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-124x64-CASTORS",
+      "name": "Hocker 124x64 cm, mit Rollen (360° drehbar)",
+      "name_hersteller": "Ottoman 124x64 cm - with castors",
+      "art": "hocker",
+      "breite_cm": 124,
+      "tiefe_cm": 64,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-144x64-FIX",
+      "name": "Hocker 144x64 cm, fest",
+      "name_hersteller": "Ottoman 144x64 cm - fixed",
+      "art": "hocker",
+      "breite_cm": 144,
+      "tiefe_cm": 64,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-144x64-CASTORS",
+      "name": "Hocker 144x64 cm, mit Rollen (360° drehbar)",
+      "name_hersteller": "Ottoman 144x64 cm - with castors",
+      "art": "hocker",
+      "breite_cm": 144,
+      "tiefe_cm": 64,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-164x64-FIX",
+      "name": "Hocker 164x64 cm, fest",
+      "name_hersteller": "Ottoman 164x64 cm - fixed",
+      "art": "hocker",
+      "breite_cm": 164,
+      "tiefe_cm": 64,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-164x64-CASTORS",
+      "name": "Hocker 164x64 cm, mit Rollen (360° drehbar)",
+      "name_hersteller": "Ottoman 164x64 cm - with castors",
+      "art": "hocker",
+      "breite_cm": 164,
+      "tiefe_cm": 64,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-184x64-FIX",
+      "name": "Hocker 184x64 cm, fest",
+      "name_hersteller": "Ottoman 184x64 cm - fixed",
+      "art": "hocker",
+      "breite_cm": 184,
+      "tiefe_cm": 64,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "RILEY-OTT-184x64-CASTORS",
+      "name": "Hocker 184x64 cm, mit Rollen (360° drehbar)",
+      "name_hersteller": "Ottoman 184x64 cm - with castors",
+      "art": "hocker",
+      "breite_cm": 184,
+      "tiefe_cm": 64,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Gepolsterter Rücken mit leichter vertikaler Steppung und Leder-Keder (Piping)",
+      "quelle": "https://www.minotti.com/downloads/25029/28178/RILEY_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "name": "Optionales Rückenkissen „RELAX“ 75x65 cm mit multidirektional formbarer Aluminiumstruktur (Kopfstütze)",
+      "quelle": "https://www.minotti.com/downloads/25029/28178/RILEY_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "name": "Optionale Rückenkissen 75x65, 65x55, 55x55 cm",
+      "quelle": "https://www.minotti.com/downloads/25029/28178/RILEY_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Eine Armlehnenform (quadratisch, tropfenförmiger 45°-Ausschnitt zum Sitz, umlaufender Leder-Keder); Armlehnenhöhe 60 cm; Elemente SX/DX",
+      "quelle": "https://www.minotti.com/downloads/25029/28178/RILEY_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Umlaufender, zurückgesetzter Metallsockel; verstellbare Füße aus schwarzem Polyethylen. Hocker 104/124/144/164/184x64 auch mit Rollen (Nylon/TPU), 360° drehbar.",
+    "finishes": [
+      "Metall Black Chrome (Cromo Nero)",
+      "Metall lackiert poliert, Anti-Fingerprint, Bronze"
+    ],
+    "sockelhoehe_cm": {
+      "standard": 7.5,
+      "hoch": 10.5,
+      "hoch_hinweis": "Auf Anfrage mit Aufpreis (auch Rollen-Kit für Hocker), 3 cm höher als Standard"
+    },
+    "quelle": "https://www.minotti.com/downloads/25029/28178/RILEY_TECHNICAL_SHEET.pdf"
+  },
+  "bezuege": {
+    "kategorien": [
+      "Stoff (Minotti-Kollektion)",
+      "Leder (Minotti-Kollektion)",
+      "Kundenstoff (vom Hersteller in den Pflegehinweisen erwähnt)"
+    ],
+    "bezugsart": "abnehmbar",
+    "hinweis": "Bezug ist bei allen Versionen (Stoff und Leder) vollständig abnehmbar. Pflege: für alle Indoor-Stoffe und Kundenstoffe nur extra-sanfte Trockenreinigung, nicht in den Trockner.",
+    "piping": {
+      "material": "Leder (Extra-soft dry cleaning)",
+      "farben": [
+        {
+          "code": "35",
+          "name": "Chalk (Gesso)"
+        },
+        {
+          "code": "38",
+          "name": "Cloud (Nuvola)"
+        },
+        {
+          "code": "06",
+          "name": "Pumice (Pomice)"
+        },
+        {
+          "code": "13",
+          "name": "Sand (Sabbia)"
+        },
+        {
+          "code": "14",
+          "name": "Khaki (Kaki)"
+        },
+        {
+          "code": "28",
+          "name": "Slate (Ardesia)"
+        },
+        {
+          "code": "12",
+          "name": "Clay (Argilla)"
+        },
+        {
+          "code": "30",
+          "name": "Oil Green (Verde Olio)"
+        },
+        {
+          "code": "34",
+          "name": "Moss (Muschio)"
+        },
+        {
+          "code": "33",
+          "name": "Cognac"
+        },
+        {
+          "code": "05",
+          "name": "Peat (Torba)"
+        },
+        {
+          "code": "21",
+          "name": "Blue Ocean"
+        },
+        {
+          "code": "22",
+          "name": "Bordeaux"
+        },
+        {
+          "code": "26",
+          "name": "Stone Grey"
+        },
+        {
+          "code": "01",
+          "name": "Ivory (Avorio)"
+        },
+        {
+          "code": "08",
+          "name": "Tobacco (Tabacco)"
+        },
+        {
+          "code": "02",
+          "name": "Dove Grey (Tortora)"
+        },
+        {
+          "code": "03",
+          "name": "Cacao"
+        }
+      ],
+      "regel_ohne_angabe": "Ohne Angabe wählt Minotti: Stoffbezug → Keder in gleicher Farbfamilie; Lederbezug → Keder im gleichen Leder."
+    },
+    "farbmuster": "Stoff- und Lederfarbmuster der Minotti-Kollektion bitte im Showroom Lochau ansehen; Bildschirmfarben sind nicht verbindlich (Minotti: „Printed colours are to be considered as purely indicative“).",
+    "quelle": "https://www.minotti.com/en/riley"
+  },
+  "kissenoptionen": [
+    {
+      "code": "RILEY-CUSH-RELAX-75x65",
+      "name": "Optionales Rückenkissen RELAX 75x65 cm (formbare Aluminiumstruktur)",
+      "breite_cm": 75,
+      "hoehe_cm": 65
+    },
+    {
+      "code": "RILEY-CUSH-75x65",
+      "name": "Optionales Rückenkissen 75x65 cm",
+      "breite_cm": 75,
+      "hoehe_cm": 65
+    },
+    {
+      "code": "RILEY-CUSH-65x55",
+      "name": "Optionales Rückenkissen 65x55 cm",
+      "breite_cm": 65,
+      "hoehe_cm": 55
+    },
+    {
+      "code": "RILEY-CUSH-55x55",
+      "name": "Optionales Rückenkissen 55x55 cm",
+      "breite_cm": 55,
+      "hoehe_cm": 55
+    },
+    {
+      "code": "RILEY-CUSH-50x50",
+      "name": "Optionales Kissen 50x50 cm",
+      "breite_cm": 50,
+      "hoehe_cm": 50
+    }
+  ],
+  "kissen_hinweis": "Sitz- und Rückenkissen: Gänsedaunen (Assopiuma Gold Label) mit temperaturempfindlicher HR-PU-Einlage; Sitzkissen einteilig, per umlaufendem Reißverschluss fixiert, mit 5 cm breitem Zierband.",
+  "outdoor": false,
+  "besonderheiten": [
+    "Zwei Sitztiefen: Standard (Tiefe 112, Sitztiefe 78) und DEEP (Tiefe 132, Sitztiefe 98), untereinander kombinierbar",
+    "Leder-Keder in 18 Farben, kontrastierend oder Ton-in-Ton",
+    "Tropfenförmiger 45°-Ausschnitt zwischen Armlehne und Sitz",
+    "Sitz mit Taschenfederkern",
+    "Holzbauteile FSC-zertifiziert"
+  ],
+  "beispielkompositionen": [
+    {
+      "nr": "01",
+      "gesamtmasse_cm": [
+        394
+      ],
+      "elemente": [
+        "DEEP - ELEMENT WITH 1 ARMREST SX CM 172X132 H85",
+        "DEEP - ELEMENT WITH 1 ARMREST DX CM 172X132 H85"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26145/29804/RILEY_arrangement_01.pdf"
+    },
+    {
+      "nr": "02",
+      "gesamtmasse_cm": [
+        494
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 272X112 H85",
+        "CHAISE-LONGUE DX CM 172X172 H85"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26146/29806/RILEY_arrangement_02.pdf"
+    },
+    {
+      "nr": "03",
+      "gesamtmasse_cm": [
+        240,
+        515
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 252X112 H85",
+        "DEEP - ELEMENT WITH 1 ARMREST DX CM 192X132 H85"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26147/29808/RILEY_arrangement_03.pdf"
+    },
+    {
+      "nr": "04",
+      "gesamtmasse_cm": [
+        426
+      ],
+      "elemente": [
+        "CENTRAL ELEMENT CM 204X112 H85",
+        "ELEMENT WITH 1 ARMREST DX CM 172X112 H85"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26148/29810/RILEY_arrangement_04.pdf"
+    },
+    {
+      "nr": "05",
+      "gesamtmasse_cm": [
+        466,
+        344
+      ],
+      "elemente": [
+        "CENTRAL ELEMENT CM 244X112 H85",
+        "CORNER ELEMENT DX CM 172X152 H85",
+        "DEEP - ELEMENT WITH 1 ARMREST DX CM 192X132 H85"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26149/29812/RILEY_arrangement_05.pdf"
+    },
+    {
+      "nr": "06",
+      "gesamtmasse_cm": [
+        518
+      ],
+      "elemente": [
+        "CHAISE-LONGUE SX CM 172X172 H85",
+        "CENTRAL ELEMENT CM 184X112 H85",
+        "ELEMENT WITH 1 ARMREST SX CM 272X112 H85"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26150/29814/RILEY_arrangement_06.pdf"
+    },
+    {
+      "nr": "07",
+      "gesamtmasse_cm": [
+        160,
+        396
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 212X112 H85",
+        "CENTRAL ELEMENT CM 104X112 H85"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26151/29816/RILEY_arrangement_07.pdf"
+    },
+    {
+      "nr": "08",
+      "gesamtmasse_cm": [
+        212,
+        524
+      ],
+      "elemente": [
+        "DEEP - CORNER ELEMENT WITH ARMREST SX CM 132X132 H85",
+        "CENTRAL ELEMENTS CM 104X112 H85",
+        "ELEMENT WITH 1 ARMREST DX CM 172X112 H85"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26152/29818/RILEY_arrangement_08.pdf"
+    }
+  ],
+  "kombinierbarkeit": "Keine formale Anschlussmatrix veröffentlicht. Laut Hersteller sind Elemente beider Sitztiefen kombinierbar. Belegte Kombinationen: beispielkompositionen (Arrangements 01–08; Stage-Tische entfernt).",
+  "fehlend": [
+    "Formale Anschluss-/Kombinationsregeln je Element",
+    "Sitzhöhe bei DEEP-Elementen, Eckelement 172x152, Couches 124x152/144x172 und Chaiselongues nicht separat bemaßt",
+    "Bezugsfarben und Preisgruppen je Modell (nur Keder-Farben veröffentlicht)",
+    "Füllung der optionalen Kissen außer RELAX nicht einzeln beschrieben",
+    "Preise (nicht öffentlich)",
+    "Gewichte",
+    "2D/3D-Dateien nur nach Login"
+  ],
+  "rechte_hinweis": "Texte, Bilder, Zeichnungen und CAD-Dateien © Minotti S.p.A.; Bilder dürfen nicht verändert werden. Hier nur Maß- und Optionsdaten übernommen.",
+  "anzahl_elemente": 49,
+  "vollstaendigkeit_masse": {
+    "felder_gesamt": 232,
+    "felder_belegt": 220,
+    "prozent": 94.8,
+    "berechnung": "Anteil belegter Maßfelder (breite, tiefe, hoehe, sitzhoehe, sitztiefe) über alle Elemente; nicht anwendbare Felder (Sitztiefe bei Hockern/Bank) ausgenommen"
+  }
+}

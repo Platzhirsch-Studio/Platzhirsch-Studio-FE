@@ -1,102 +1,60 @@
-"use client";
-import Image from "next/image";
-import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
-import { Truck, Wrench, Palette, ShieldCheck, Star, ThumbsUp } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
+import { Horizon, Section } from "@/components/ui";
+import SectionIntro from "@/components/Home/SectionIntro";
+import Services, { ToolsShowcase } from "@/components/Home/Services";
+import { getHomeT } from "@/components/Home/copy";
+import { ROW_REVEAL, SECTION_Y } from "@/components/Home/row";
 
-export default function Home({ data }) {
-  const pathname = usePathname();
-  const locale = getLocaleFromPath(pathname);
-  const t = useTranslations("Benefits");
+// "Gastgeber" chapter of the homepage (Bibel §1.2, Jury §3.1: the four host
+// promises of the Dreiländereck prototype). Replaces the former CMS benefit
+// cards (gold icons, stars, white cards on a photo). Only promises the site
+// already makes elsewhere – no "Anzahlung abgesichert", no response times.
+// Mobile: two columns with small text (QA runde 1, P2-4: page length), R3:
+// tighter section rhythm and horizon spacing on phones.
+// Carries the page's one Horizontlinie (§6, max. 1 per page).
+//
+// B12 (31.10.2026, Startseite 13 → 9 Kapitel, Rat 9,5 / Tempo-Team
+// freigegeben): the three list chapters that told the same kind of list –
+// promises, "Mehr als Möbel" (services) and "Vorab ausprobieren" (online
+// tools) – are ONE chapter "So arbeiten wir mit Ihnen": the host promise as
+// the chapter head, then the services and the tools as blocks with an H3
+// (Services.js, ToolsShowcase). Same texts, same links, no new copy.
+// Design-Jury P1-2 (one main movement per viewport): the chapter no longer
+// carries `.reveal` – a 24 px lift of this tall section plus the H2's own
+// .ph-chapter lift added up. Only the H2 moves now (globals.css, untouched).
+// Motion shell-home (01.11.2026): the four promises answer it one after
+// another (ROW_REVEAL, 16 px, transform only) – they enter the viewport after
+// the H2 has settled, so it is still one movement at a time.
+const ITEMS = ["time", "touch", "plan", "finish"];
+
+export default async function HostPromises({ locale }) {
+  const t = await getHomeT(locale);
   return (
-    <div className="h-full relative">
-      {/* Optimised background (was a 355 KB CSS background-image, which bypasses
-          next/image entirely); decorative, so alt="". */}
-      <Image
-        src="/Images/Home/bannerImage-4.jpg"
-        alt=""
-        fill
-        sizes="100vw"
-        className="object-cover object-center"
-      />
-      <div className="absolute inset-0 bg-black/50"></div>
-      <div className="relative z-10 container mx-auto px-4 py-8 lg:py-16">
-        <div className="text-center mb-8">
-          <div className="flex justify-center items-center mb-6">
-            <div className="flex flex-col items-center">
-              <div className="flex space-x-1 text-[#d1b250] mb-3">
-                <Star className="w-5 h-5" />
-                <Star className="w-5 h-5" />
-                <Star className="w-5 h-5" />
-              </div>
-              <div className="bg-[#d1b250] p-3 rounded-lg border border-amber-200">
-                <ThumbsUp className="w-8 h-8 text-white" />
-              </div>
-            </div>
-          </div>
-          <h2 className="text-lg mb-4 text-[#d1b250] text-center uppercase">
-            {data?.[`second_title_${locale}`]}
-          </h2>
-          <p className="text-lg text-white max-w-2xl mx-auto leading-relaxed">
-            {data?.[`second_description_${locale}`]}
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {data?.[`item_list_${locale}`]?.length > 0 && (
-            <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
-              <div className="flex flex-col items-start">
-                <div className="bg-[#d1b250] p-3 rounded-lg mb-4 border border-amber-100">
-                  <Truck className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl  text-gray-900 mb-3">{data?.[`item_list_${locale}`]?.[0].title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {data?.[`item_list_${locale}`]?.[0]?.description}
-                </p>
-              </div>
-            </div>
-          )}
-          {data?.[`item_list_${locale}`] && data?.[`item_list_${locale}`].length > 1 && (
-            <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
-              <div className="flex flex-col items-start">
-                <div className="bg-[#d1b250] p-3 rounded-lg mb-4 border border-amber-100">
-                  <Wrench className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl  text-gray-900 mb-3">{data?.[`item_list_${locale}`]?.[1].title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {data?.[`item_list_${locale}`]?.[1].description}
-                </p>
-              </div>
-            </div>
-          )}
-          {data?.[`item_list_${locale}`] && data?.[`item_list_${locale}`].length > 2 && (
-            <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
-              <div className="flex flex-col items-start">
-                <div className="bg-[#d1b250] p-3 rounded-lg mb-4 border border-amber-100">
-                  <Palette className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl  text-gray-900 mb-3">{data?.[`item_list_${locale}`]?.[2].title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {data?.[`item_list_${locale}`]?.[2].description}
-                </p>
-              </div>
-            </div>
-          )}
-          {data?.[`item_list_${locale}`] && data?.[`item_list_${locale}`].length > 3 && (
-            <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
-              <div className="flex flex-col items-start">
-                <div className="bg-[#d1b250] p-3 rounded-lg mb-4 border border-amber-100">
-                  <ShieldCheck className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl  text-gray-900 mb-3">{data?.[`item_list_${locale}`]?.[3].title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {data?.[`item_list_${locale}`]?.[3].description}
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
+    <Section labelledBy="home-host-title" spacing="none" className={SECTION_Y} data-home-work="">
+      {/* QM shell-home r3: balance left "Wir sind" alone on the first phone line –
+          pretty fills the first line ("Wir sind Gastgeber, / bevor wir …"). */}
+      <SectionIntro id="home-host-title" eyebrow={t("host.eyebrow")} title={t("host.title")} lead={t("host.lead")} titleClassName="[text-wrap:pretty]" />
+      <Horizon className="mt-6 sm:mt-16 lg:mt-12" />
+      {/* QM shell-home r4 (200 % text, phone + desktop): the columns followed
+          the viewport and stayed 2 (phone) / 4 (desktop) – "Probesitzen",
+          "confrontare" reached the screen edge, one word per line. Now a
+          container query in rem like the other home grids: 2 columns from
+          18rem (every phone at 100 %), 4 from 52rem (≈ 830 px at 100 %, the
+          lg layout), fewer with enlarged text. */}
+      <div className="@container mt-6 lg:mt-12">
+      <ol className={`${ROW_REVEAL} grid grid-cols-1 gap-x-5 gap-y-8 @min-[18rem]:grid-cols-2 @min-[52rem]:grid-cols-4 sm:gap-x-grid sm:gap-y-10`}>
+        {ITEMS.map((key, i) => (
+          <li key={key}>
+            <span className="tabular text-overline uppercase text-text-accent" aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <h3 className="mt-stack-s text-ui text-text [overflow-wrap:break-word] sm:text-title">{t(`host.items.${key}.title`)}</h3>
+            <p className="mt-2 max-w-measure text-small text-text-soft sm:text-body">{t(`host.items.${key}.text`)}</p>
+          </li>
+        ))}
+      </ol>
       </div>
-    </div>
+      <Services locale={locale} />
+      <ToolsShowcase locale={locale} />
+    </Section>
   );
 }

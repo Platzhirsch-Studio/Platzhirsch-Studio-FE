@@ -1,0 +1,2293 @@
+{
+  "name": "Goodman",
+  "slug": "goodman",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2022,
+  "jahr_hinweis": "Produktseite verweist auf Katalog „2022 Collection“; Datenblatt-Stand Juli 2024",
+  "typ": "modulares Sitzsystem (linear, geneigt 30°/75°/90°/150°, Rainbow gebogen)",
+  "quellen": [
+    "https://www.minotti.com/en/goodman",
+    "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/20589/22736/MINOTTI_GOODMAN.zip"
+  ],
+  "quellen_hinweis": "ZIP = 2D/3D-Dateien, nicht ausgewertet",
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "standardwerte": {
+    "hoehe_cm": 86,
+    "sitzhoehe_cm": 40,
+    "armlehnenhoehe_standard_cm": 62,
+    "armlehnenhoehe_low_arm_cm": 52,
+    "tiefe_linear_cm": 110,
+    "sitztiefe_linear_cm": 82,
+    "fusshoehe_standard_cm": 8.5,
+    "fusshoehe_high_cm": 11.5,
+    "steppungsraster_cm": 26
+  },
+  "elemente": [
+    {
+      "code": "sofa-cm-242",
+      "name": "Sofa cm 242",
+      "art": "sofa",
+      "breite_cm": 242,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-sofa-cm-242",
+      "name": "Low Arm - Sofa cm 242",
+      "art": "sofa",
+      "breite_cm": 242,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "sofa-cm-268",
+      "name": "Sofa cm 268",
+      "art": "sofa",
+      "breite_cm": 268,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-sofa-cm-268",
+      "name": "Low Arm - Sofa cm 268",
+      "art": "sofa",
+      "breite_cm": 268,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "mix-corner-sofa-cm-268",
+      "name": "Mix - Corner sofa cm 268",
+      "art": "ecke",
+      "breite_cm": 268,
+      "tiefe_cm": null,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Maß der zweiten Schenkelseite im Datenblatt nicht eindeutig lesbar; „Mix“ laut Bezeichnung"
+    },
+    {
+      "code": "element-with-1-armrest-cm-110",
+      "name": "Element with 1 armrest cm 110",
+      "art": "endelement",
+      "breite_cm": 110,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-element-with-1-armrest-cm-110",
+      "name": "Low Arm - Element with 1 armrest cm 110",
+      "art": "endelement",
+      "breite_cm": 110,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-1-armrest-cm-136",
+      "name": "Element with 1 armrest cm 136",
+      "art": "endelement",
+      "breite_cm": 136,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-element-with-1-armrest-cm-136",
+      "name": "Low Arm - Element with 1 armrest cm 136",
+      "art": "endelement",
+      "breite_cm": 136,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-1-armrest-cm-162",
+      "name": "Element with 1 armrest cm 162",
+      "art": "endelement",
+      "breite_cm": 162,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-element-with-1-armrest-cm-162",
+      "name": "Low Arm - Element with 1 armrest cm 162",
+      "art": "endelement",
+      "breite_cm": 162,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-1-armrest-cm-188",
+      "name": "Element with 1 armrest cm 188",
+      "art": "endelement",
+      "breite_cm": 188,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-element-with-1-armrest-cm-188",
+      "name": "Low Arm - Element with 1 armrest cm 188",
+      "art": "endelement",
+      "breite_cm": 188,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-1-armrest-cm-214",
+      "name": "Element with 1 armrest cm 214",
+      "art": "endelement",
+      "breite_cm": 214,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-element-with-1-armrest-cm-214",
+      "name": "Low Arm - Element with 1 armrest cm 214",
+      "art": "endelement",
+      "breite_cm": 214,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-1-armrest-cm-240",
+      "name": "Element with 1 armrest cm 240",
+      "art": "endelement",
+      "breite_cm": 240,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-element-with-1-armrest-cm-240",
+      "name": "Low Arm - Element with 1 armrest cm 240",
+      "art": "endelement",
+      "breite_cm": 240,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Penisola-, Couch- oder Eckelemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-with-armrest-cm-188-backrest-106-cm",
+      "name": "Open-end element with armrest cm 188 - backrest 106 cm",
+      "art": "peninsula",
+      "breite_cm": 188,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "rueckenbreite_cm": 106,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-open-end-element-with-armrest-cm-188-backrest-106-cm",
+      "name": "Low Arm - Open-end element with armrest cm 188 - backrest 106 cm",
+      "art": "peninsula",
+      "breite_cm": 188,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "rueckenbreite_cm": 106,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-with-armrest-cm-188-backrest-80-cm",
+      "name": "Open-end element with armrest cm 188 - backrest 80 cm",
+      "art": "peninsula",
+      "breite_cm": 188,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "rueckenbreite_cm": 80,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-open-end-element-with-armrest-cm-188-backrest-80-cm",
+      "name": "Low Arm - Open-end element with armrest cm 188 - backrest 80 cm",
+      "art": "peninsula",
+      "breite_cm": 188,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "rueckenbreite_cm": 80,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-with-armrest-cm-214-backrest-132-cm",
+      "name": "Open-end element with armrest cm 214 - backrest 132 cm",
+      "art": "peninsula",
+      "breite_cm": 214,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "rueckenbreite_cm": 132,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-open-end-element-with-armrest-cm-214-backrest-132-cm",
+      "name": "Low Arm - Open-end element with armrest cm 214 - backrest 132 cm",
+      "art": "peninsula",
+      "breite_cm": 214,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "rueckenbreite_cm": 132,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-with-armrest-cm-214-backrest-106-cm",
+      "name": "Open-end element with armrest cm 214 - backrest 106 cm",
+      "art": "peninsula",
+      "breite_cm": 214,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "rueckenbreite_cm": 106,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-open-end-element-with-armrest-cm-214-backrest-106-cm",
+      "name": "Low Arm - Open-end element with armrest cm 214 - backrest 106 cm",
+      "art": "peninsula",
+      "breite_cm": 214,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "rueckenbreite_cm": 106,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-with-armrest-cm-240-backrest-158-cm",
+      "name": "Open-end element with armrest cm 240 - backrest 158 cm",
+      "art": "peninsula",
+      "breite_cm": 240,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "rueckenbreite_cm": 158,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-open-end-element-with-armrest-cm-240-backrest-158-cm",
+      "name": "Low Arm - Open-end element with armrest cm 240 - backrest 158 cm",
+      "art": "peninsula",
+      "breite_cm": 240,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "rueckenbreite_cm": 158,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-with-armrest-cm-240-backrest-132-cm",
+      "name": "Open-end element with armrest cm 240 - backrest 132 cm",
+      "art": "peninsula",
+      "breite_cm": 240,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "rueckenbreite_cm": 132,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-open-end-element-with-armrest-cm-240-backrest-132-cm",
+      "name": "Low Arm - Open-end element with armrest cm 240 - backrest 132 cm",
+      "art": "peninsula",
+      "breite_cm": 240,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 52,
+      "rueckenbreite_cm": 132,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne; Rückenlehne nur über Teilbreite",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "daybed-element-cm-188",
+      "name": "Daybed element cm 188",
+      "art": "daybed",
+      "breite_cm": 188,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "daybed-element-cm-214",
+      "name": "Daybed element cm 214",
+      "art": "daybed",
+      "breite_cm": 214,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "daybed-element-cm-240",
+      "name": "Daybed element cm 240",
+      "art": "daybed",
+      "breite_cm": 240,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-82",
+      "name": "Central element cm 82",
+      "art": "mittel",
+      "breite_cm": 82,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-108",
+      "name": "Central element cm 108",
+      "art": "mittel",
+      "breite_cm": 108,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-134",
+      "name": "Central element cm 134",
+      "art": "mittel",
+      "breite_cm": 134,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-160",
+      "name": "Central element cm 160",
+      "art": "mittel",
+      "breite_cm": 160,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-186",
+      "name": "Central element cm 186",
+      "art": "mittel",
+      "breite_cm": 186,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-212",
+      "name": "Central element cm 212",
+      "art": "mittel",
+      "breite_cm": 212,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-cm-160-backrest-108-cm",
+      "name": "Open-end element cm 160 - backrest 108 cm",
+      "art": "peninsula",
+      "breite_cm": 160,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "rueckenbreite_cm": 108,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-cm-160-backrest-82-cm",
+      "name": "Open-end element cm 160 - backrest 82 cm",
+      "art": "peninsula",
+      "breite_cm": 160,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "rueckenbreite_cm": 82,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-cm-186-backrest-134-cm",
+      "name": "Open-end element cm 186 - backrest 134 cm",
+      "art": "peninsula",
+      "breite_cm": 186,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "rueckenbreite_cm": 134,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-cm-186-backrest-108-cm",
+      "name": "Open-end element cm 186 - backrest 108 cm",
+      "art": "peninsula",
+      "breite_cm": 186,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "rueckenbreite_cm": 108,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-cm-212-backrest-160-cm",
+      "name": "Open-end element cm 212 - backrest 160 cm",
+      "art": "peninsula",
+      "breite_cm": 212,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "rueckenbreite_cm": 160,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "open-end-element-cm-212-backrest-134-cm",
+      "name": "Open-end element cm 212 - backrest 134 cm",
+      "art": "peninsula",
+      "breite_cm": 212,
+      "tiefe_cm": 110,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 82,
+      "armlehnenhoehe_cm": null,
+      "rueckenbreite_cm": 134,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "couch-cm-108x162",
+      "name": "Couch cm 108x162",
+      "art": "couch",
+      "breite_cm": 108,
+      "tiefe_cm": 162,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 134,
+      "anschluesse": "Element mit verlängerter Sitztiefe, anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "couch-cm-134x162",
+      "name": "Couch cm 134x162",
+      "art": "couch",
+      "breite_cm": 134,
+      "tiefe_cm": 162,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 134,
+      "anschluesse": "Element mit verlängerter Sitztiefe, anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "couch-cm-108x188",
+      "name": "Couch cm 108x188",
+      "art": "couch",
+      "breite_cm": 108,
+      "tiefe_cm": 188,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 160,
+      "anschluesse": "Element mit verlängerter Sitztiefe, anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "couch-cm-134x188",
+      "name": "Couch cm 134x188",
+      "art": "couch",
+      "breite_cm": 134,
+      "tiefe_cm": 188,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 160,
+      "anschluesse": "Element mit verlängerter Sitztiefe, anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "chaise-longue-cm-136x162",
+      "name": "Chaise-longue cm 136x162",
+      "art": "chaise",
+      "breite_cm": 136,
+      "tiefe_cm": 162,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 134,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-chaise-longue-cm-136x162",
+      "name": "Low Arm - Chaise-longue cm 136x162",
+      "art": "chaise",
+      "breite_cm": 136,
+      "tiefe_cm": 162,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 134,
+      "armlehnenhoehe_cm": 52,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "chaise-longue-cm-162x162",
+      "name": "Chaise-longue cm 162x162",
+      "art": "chaise",
+      "breite_cm": 162,
+      "tiefe_cm": 162,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 134,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-chaise-longue-cm-162x162",
+      "name": "Low Arm - Chaise-longue cm 162x162",
+      "art": "chaise",
+      "breite_cm": 162,
+      "tiefe_cm": 162,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 134,
+      "armlehnenhoehe_cm": 52,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "chaise-longue-cm-136x188",
+      "name": "Chaise-longue cm 136x188",
+      "art": "chaise",
+      "breite_cm": 136,
+      "tiefe_cm": 188,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 160,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-chaise-longue-cm-136x188",
+      "name": "Low Arm - Chaise-longue cm 136x188",
+      "art": "chaise",
+      "breite_cm": 136,
+      "tiefe_cm": 188,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 160,
+      "armlehnenhoehe_cm": 52,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "chaise-longue-cm-162x188",
+      "name": "Chaise-longue cm 162x188",
+      "art": "chaise",
+      "breite_cm": 162,
+      "tiefe_cm": 188,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 160,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "low-arm-chaise-longue-cm-162x188",
+      "name": "Low Arm - Chaise-longue cm 162x188",
+      "art": "chaise",
+      "breite_cm": 162,
+      "tiefe_cm": 188,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 160,
+      "armlehnenhoehe_cm": 52,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-with-armrest-cm-188x82",
+      "name": "Bench with armrest cm 188x82",
+      "art": "bank",
+      "breite_cm": 188,
+      "tiefe_cm": 82,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "ohne Rückenlehne; Gesamthöhe nicht separat bemaßt (höchster Punkt = Armlehne)"
+    },
+    {
+      "code": "low-arm-bench-with-armrest-cm-188x82",
+      "name": "Low Arm - Bench with armrest cm 188x82",
+      "art": "bank",
+      "breite_cm": 188,
+      "tiefe_cm": 82,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 52,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "ohne Rückenlehne; Gesamthöhe nicht separat bemaßt (höchster Punkt = Armlehne)"
+    },
+    {
+      "code": "inclined-sofa-316x164-cm",
+      "name": "Inclined sofa 316x164 cm",
+      "art": "sofa-geneigt",
+      "breite_cm": 316,
+      "tiefe_cm": 164,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Zeichnung zeigt zusätzlich Low-Arm-Höhe 52 cm"
+    },
+    {
+      "code": "inclined-element-with-armrest-236x164-cm",
+      "name": "Inclined element with armrest 236x164 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 236,
+      "tiefe_cm": 164,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-element-with-armrest-288x164-cm",
+      "name": "Inclined element with armrest 288x164 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 288,
+      "tiefe_cm": 164,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-element-with-armrest-314x164-cm",
+      "name": "Inclined element with armrest 314x164 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 314,
+      "tiefe_cm": 164,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-element-with-armrest-281x190-cm",
+      "name": "Inclined element with armrest 281x190 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 281,
+      "tiefe_cm": 190,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-element-with-armrest-304x203-cm",
+      "name": "Inclined element with armrest 304x203 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 304,
+      "tiefe_cm": 203,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-open-end-element-with-armrest-288x164-cm",
+      "name": "Inclined open-end element with armrest 288x164 cm",
+      "art": "peninsula-geneigt",
+      "breite_cm": 288,
+      "tiefe_cm": 164,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-open-end-element-with-armrest-314x164-cm",
+      "name": "Inclined open-end element with armrest 314x164 cm",
+      "art": "peninsula-geneigt",
+      "breite_cm": 314,
+      "tiefe_cm": 164,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-central-element-212x151-cm",
+      "name": "Inclined central element 212x151 cm",
+      "art": "mittel-geneigt",
+      "breite_cm": 212,
+      "tiefe_cm": 151,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-central-element-264x151-cm",
+      "name": "Inclined central element 264x151 cm",
+      "art": "mittel-geneigt",
+      "breite_cm": 264,
+      "tiefe_cm": 151,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-central-element-290x151-cm",
+      "name": "Inclined central element 290x151 cm",
+      "art": "mittel-geneigt",
+      "breite_cm": 290,
+      "tiefe_cm": 151,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-open-end-element-264x151-cm",
+      "name": "Inclined open-end element 264x151 cm",
+      "art": "peninsula-geneigt",
+      "breite_cm": 264,
+      "tiefe_cm": 151,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-open-end-element-290x151-cm",
+      "name": "Inclined open-end element 290x151 cm",
+      "art": "peninsula-geneigt",
+      "breite_cm": 290,
+      "tiefe_cm": 151,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150°",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-30-inclined-element-with-armrest-224x112-cm",
+      "name": "Unit 30° - Inclined element with armrest 224x112 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 224,
+      "tiefe_cm": 112,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150° (Unit 30°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-30-inclined-element-with-armrest-250x112-cm",
+      "name": "Unit 30° - Inclined element with armrest 250x112 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 250,
+      "tiefe_cm": 112,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150° (Unit 30°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-30-inclined-central-element-196x112-cm",
+      "name": "Unit 30° - Inclined central element 196x112 cm",
+      "art": "mittel-geneigt",
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150° (Unit 30°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-30-inclined-central-element-222x112-cm",
+      "name": "Unit 30° - Inclined central element 222x112 cm",
+      "art": "mittel-geneigt",
+      "breite_cm": 222,
+      "tiefe_cm": 112,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150° (Unit 30°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-30-inclined-open-end-element-196x112-cm",
+      "name": "Unit 30° - Inclined open-end element 196x112 cm",
+      "art": "peninsula-geneigt",
+      "breite_cm": 196,
+      "tiefe_cm": 112,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150° (Unit 30°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-30-inclined-open-end-element-222x112-cm",
+      "name": "Unit 30° - Inclined open-end element 222x112 cm",
+      "art": "peninsula-geneigt",
+      "breite_cm": 222,
+      "tiefe_cm": 112,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "150° (Unit 30°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-75-inclined-element-with-armrest-283x124-cm",
+      "name": "Unit 75° - Inclined element with armrest 283x124 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 283,
+      "tiefe_cm": 124,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "105° (Unit 75°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-75-inclined-element-with-armrest-309x124-cm",
+      "name": "Unit 75° - Inclined element with armrest 309x124 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 309,
+      "tiefe_cm": 124,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "105° (Unit 75°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-75-inclined-central-element-255x124-cm",
+      "name": "Unit 75° - Inclined central element 255x124 cm",
+      "art": "mittel-geneigt",
+      "breite_cm": 255,
+      "tiefe_cm": 124,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "105° (Unit 75°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-75-inclined-central-element-281x124-cm",
+      "name": "Unit 75° - Inclined central element 281x124 cm",
+      "art": "mittel-geneigt",
+      "breite_cm": 281,
+      "tiefe_cm": 124,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "105° (Unit 75°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-75-inclined-open-end-element-255x124-cm",
+      "name": "Unit 75° - Inclined open-end element 255x124 cm",
+      "art": "peninsula-geneigt",
+      "breite_cm": 255,
+      "tiefe_cm": 124,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "105° (Unit 75°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-75-inclined-open-end-element-281x124-cm",
+      "name": "Unit 75° - Inclined open-end element 281x124 cm",
+      "art": "peninsula-geneigt",
+      "breite_cm": 281,
+      "tiefe_cm": 124,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "105° (Unit 75°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-90-inclined-element-with-armrest-290x131-cm",
+      "name": "Unit 90° - Inclined element with armrest 290x131 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 290,
+      "tiefe_cm": 131,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "90° (Unit 90°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-90-inclined-element-with-armrest-316x131-cm",
+      "name": "Unit 90° - Inclined element with armrest 316x131 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 316,
+      "tiefe_cm": 131,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "90° (Unit 90°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-90-inclined-central-element-262x131-cm",
+      "name": "Unit 90° - Inclined central element 262x131 cm",
+      "art": "mittel-geneigt",
+      "breite_cm": 262,
+      "tiefe_cm": 131,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "90° (Unit 90°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-90-inclined-central-element-288x131-cm",
+      "name": "Unit 90° - Inclined central element 288x131 cm",
+      "art": "mittel-geneigt",
+      "breite_cm": 288,
+      "tiefe_cm": 131,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "90° (Unit 90°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-90-inclined-open-end-element-262x131-cm",
+      "name": "Unit 90° - Inclined open-end element 262x131 cm",
+      "art": "peninsula-geneigt",
+      "breite_cm": 262,
+      "tiefe_cm": 131,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "90° (Unit 90°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "unit-90-inclined-open-end-element-288x131-cm",
+      "name": "Unit 90° - Inclined open-end element 288x131 cm",
+      "art": "peninsula-geneigt",
+      "breite_cm": 288,
+      "tiefe_cm": 131,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "winkel": "90° (Unit 90°)",
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "rainbow-angled-sofa-cm-330",
+      "name": "Rainbow - Angled sofa cm 330",
+      "art": "sofa-gebogen",
+      "breite_cm": 330,
+      "tiefe_cm": 146,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "radius_cm": 180,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Tiefe = Gesamttiefe der Bogenform laut Datenblatt; Radius 180 cm"
+    },
+    {
+      "code": "rainbow-angled-sofa-cm-342",
+      "name": "Rainbow - Angled sofa cm 342",
+      "art": "sofa-gebogen",
+      "breite_cm": 342,
+      "tiefe_cm": 132,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "radius_cm": 460,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Tiefe = Gesamttiefe der Bogenform laut Datenblatt; Radius 460 cm"
+    },
+    {
+      "code": "rainbow-angled-sofa-with-1-armrest-cm-304",
+      "name": "Rainbow - Angled sofa with 1 armrest cm 304",
+      "art": "endelement-gebogen",
+      "breite_cm": 304,
+      "tiefe_cm": 146,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "radius_cm": 180,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Tiefe = Gesamttiefe der Bogenform laut Datenblatt; Radius 180 cm"
+    },
+    {
+      "code": "rainbow-angled-sofa-with-1-armrest-cm-315",
+      "name": "Rainbow - Angled sofa with 1 armrest cm 315",
+      "art": "endelement-gebogen",
+      "breite_cm": 315,
+      "tiefe_cm": 132,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "radius_cm": 460,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Tiefe = Gesamttiefe der Bogenform laut Datenblatt; Radius 460 cm"
+    },
+    {
+      "code": "rainbow-angled-open-end-sofa-with-1-armrest-cm-292",
+      "name": "Rainbow - Angled open-end sofa with 1 armrest cm 292",
+      "art": "peninsula-gebogen",
+      "breite_cm": 292,
+      "tiefe_cm": 146,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "radius_cm": 180,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Tiefe = Gesamttiefe der Bogenform laut Datenblatt; Radius 180 cm"
+    },
+    {
+      "code": "rainbow-angled-open-end-sofa-with-1-armrest-cm-309",
+      "name": "Rainbow - Angled open-end sofa with 1 armrest cm 309",
+      "art": "peninsula-gebogen",
+      "breite_cm": 309,
+      "tiefe_cm": 132,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "radius_cm": 460,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Tiefe = Gesamttiefe der Bogenform laut Datenblatt; Radius 460 cm"
+    },
+    {
+      "code": "rainbow-angled-sofa-without-armrests-cm-280",
+      "name": "Rainbow - Angled sofa without armrests cm 280",
+      "art": "mittel-gebogen",
+      "breite_cm": 280,
+      "tiefe_cm": 132,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "radius_cm": 180,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Tiefe = Gesamttiefe der Bogenform laut Datenblatt; Radius 180 cm"
+    },
+    {
+      "code": "rainbow-angled-sofa-without-armrests-cm-288",
+      "name": "Rainbow - Angled sofa without armrests cm 288",
+      "art": "mittel-gebogen",
+      "breite_cm": 288,
+      "tiefe_cm": 125,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "radius_cm": 460,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Tiefe = Gesamttiefe der Bogenform laut Datenblatt; Radius 460 cm"
+    },
+    {
+      "code": "rainbow-angled-open-end-sofa-without-armrests-cm-268",
+      "name": "Rainbow - Angled open-end sofa without armrests cm 268",
+      "art": "peninsula-gebogen",
+      "breite_cm": 268,
+      "tiefe_cm": 132,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "radius_cm": 180,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Tiefe = Gesamttiefe der Bogenform laut Datenblatt; Radius 180 cm"
+    },
+    {
+      "code": "rainbow-angled-open-end-sofa-without-armrests-cm-282",
+      "name": "Rainbow - Angled open-end sofa without armrests cm 282",
+      "art": "peninsula-gebogen",
+      "breite_cm": 282,
+      "tiefe_cm": 125,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "radius_cm": 460,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Tiefe = Gesamttiefe der Bogenform laut Datenblatt; Radius 460 cm"
+    },
+    {
+      "code": "rainbow-angled-ottoman-cm-126x114",
+      "name": "Rainbow - Angled ottoman cm 126x114",
+      "art": "hocker-gebogen",
+      "breite_cm": 126,
+      "tiefe_cm": 114,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "radius_cm": 180,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "rainbow-angled-ottoman-cm-98x111",
+      "name": "Rainbow - Angled ottoman cm 98x111",
+      "art": "hocker-gebogen",
+      "breite_cm": 98,
+      "tiefe_cm": 111,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "radius_cm": 460,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "corner-ottoman-cm-108x108",
+      "name": "Corner ottoman cm 108x108",
+      "art": "hocker-eck",
+      "breite_cm": 108,
+      "tiefe_cm": 108,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "corner-ottoman-cm-110x110",
+      "name": "Corner ottoman cm 110x110",
+      "art": "hocker-eck",
+      "breite_cm": 110,
+      "tiefe_cm": 110,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-cm-82x82",
+      "name": "Ottoman cm 82x82",
+      "art": "hocker",
+      "breite_cm": 82,
+      "tiefe_cm": 82,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "frei stellbar oder vor Elemente gesetzt",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-cm-108x82",
+      "name": "Ottoman cm 108x82",
+      "art": "hocker",
+      "breite_cm": 108,
+      "tiefe_cm": 82,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "frei stellbar oder vor Elemente gesetzt",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-cm-134x82",
+      "name": "Ottoman cm 134x82",
+      "art": "hocker",
+      "breite_cm": 134,
+      "tiefe_cm": 82,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "frei stellbar oder vor Elemente gesetzt",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-cm-160x82",
+      "name": "Ottoman cm 160x82",
+      "art": "hocker",
+      "breite_cm": 160,
+      "tiefe_cm": 82,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "frei stellbar oder vor Elemente gesetzt",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-cm-186x82",
+      "name": "Ottoman cm 186x82",
+      "art": "hocker",
+      "breite_cm": 186,
+      "tiefe_cm": 82,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "frei stellbar oder vor Elemente gesetzt",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-cm-212x82",
+      "name": "Ottoman cm 212x82",
+      "art": "hocker",
+      "breite_cm": 212,
+      "tiefe_cm": 82,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "frei stellbar oder vor Elemente gesetzt",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-cm-82x110",
+      "name": "Ottoman cm 82x110",
+      "art": "hocker",
+      "breite_cm": 82,
+      "tiefe_cm": 110,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "frei stellbar oder vor Elemente gesetzt",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-cm-108x110",
+      "name": "Ottoman cm 108x110",
+      "art": "hocker",
+      "breite_cm": 108,
+      "tiefe_cm": 110,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "frei stellbar oder vor Elemente gesetzt",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-cm-134x134",
+      "name": "Ottoman cm 134x134",
+      "art": "hocker",
+      "breite_cm": 134,
+      "tiefe_cm": 134,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "anschluesse": "frei stellbar oder vor Elemente gesetzt",
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "zubehoer": [
+    {
+      "code": "goodman-optional-headrest-cm-60xh60",
+      "name": "Goodman optional headrest cm 60xH60",
+      "art": "kopfstuetze",
+      "breite_cm": 60,
+      "tiefe_cm": null,
+      "hoehe_cm": 60,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Zusatzmaß 77 cm in Zeichnung ohne Beschriftung"
+    },
+    {
+      "code": "goodman-tray-cm-34x40xh11",
+      "name": "Goodman tray cm 34x40xH11",
+      "art": "tablett-armlehne",
+      "breite_cm": 34,
+      "tiefe_cm": 40,
+      "hoehe_cm": 11,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/goodman",
+        "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Rückenlehne fest mit der Struktur, Rückenkissen mit Mikrofaser-Füllung",
+      "quelle": "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "name": "Open-end-Elemente mit Teil-Rückenlehne in festen Breiten (80–160 cm)",
+      "quelle": "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "name": "Optionale Kopfstütze 60 × H60 cm mit Gegengewicht",
+      "quelle": "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Standard",
+      "hoehe_cm": 62
+    },
+    {
+      "name": "Low Arm",
+      "hoehe_cm": 52
+    },
+    {
+      "name": "Mix (nur Ecksofa 268, laut Bezeichnung)",
+      "hoehe_cm": null
+    },
+    {
+      "name": "Armlehnen-Tablett in Sattelleder 34 × 40 × H11 cm (Zubehör)",
+      "hoehe_cm": null
+    }
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Umlaufender Metallrahmen und zurückversetzte Metallfüße",
+    "finishes": [
+      "Bronze (lackiert, glänzend, Anti-Fingerprint)",
+      "Chrom"
+    ],
+    "gleiter": "SEBS in Zinn (Pewter) oder Bronze passend zum Fuß",
+    "hoehen_cm": {
+      "standard": 8.5,
+      "high_auf_anfrage_ohne_aufpreis": 11.5
+    },
+    "quelle": "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf"
+  },
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "bezugsart": "abnehmbar: Rückenkissenbezüge komplett abnehmbar; Strukturbezüge in Stoff und Leder abnehmbar nach Demontage des Metallrahmens",
+    "steppung": "Matelassé-Steppung auf der Sitzfläche",
+    "farbmuster": "Stoff- und Lederkollektion sowie Farbmuster bitte im Showroom ansehen (Minotti „World of Materials“)",
+    "quelle": "https://www.minotti.com/en/goodman"
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optional backrest cushion",
+      "breite_cm": 60,
+      "tiefe_cm": 55
+    },
+    {
+      "name": "Optional cushion",
+      "breite_cm": 50,
+      "tiefe_cm": 50,
+      "hinweis": "optionale Kissen ohne PU-Kern"
+    }
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "Einteiliger Sitz mit Taschenfederkern und PU-Schichten",
+    "Armlehnen per Schnellkupplung abnehmbar (Lieferung/Bezugswechsel)",
+    "Geneigte Elemente mit Winkeln 30°, 75°, 90° und 150°; Rainbow-Bögen mit Radius 180 oder 460 cm",
+    "22 Arrangements (GOODMAN 01–22) auf der Produktseite",
+    "Seitenangabe SX/DX gemäß Minotti-Datenblatt"
+  ],
+  "fehlend": [
+    "Sitztiefe für geneigte, Unit- und Rainbow-Elemente nicht eindeutig bemaßt",
+    "Zweite Schenkellänge des Mix-Ecksofas 268 nicht eindeutig lesbar",
+    "Gesamthöhe Bank mit Armlehne nicht separat angegeben",
+    "Tiefe der Kopfstütze nicht beschriftet",
+    "Keine veröffentlichte Kompatibilitätsmatrix (Kombinationen nur über Arrangements)",
+    "Stoff-/Lederkategorien mit Preisgruppen nicht öffentlich",
+    "Preise nicht öffentlich"
+  ],
+  "rechte_hinweis": "Maße aus öffentlichem Minotti-Datenblatt; CAD-Dateien laut Minotti nur für Einrichtungsplanung nutzbar. Herstellerbilder nicht verändern.",
+  "vollstaendigkeit_prozent": 89
+}

@@ -1,47 +1,70 @@
 // src/app/[locale]/page.js
-import dynamic from "next/dynamic";
+// Homepage of the Neuauftritt (Paket "Startseite"; Design-Bibel §10.2, Jury-
+// Urteil §3). This file only composes the sections; metadata, canonical,
+// hreflang and the JSON-LD (WebPage + FAQPage) are unchanged.
+// R5-fix P2 (HTML size, technik): `curl http://localhost:3000/de` (dev,
+// 29.10.2026) 500 555 → 492 094 bytes (gzip 95 KB → 91 KB) after the
+// armchair strokes left the Wow hero and the map and pictogram paths moved
+// into static sprites (Home/dreilaenderGeo.js, Home/pictoPaths.js). Breakdown
+// of the rest: RSC payload 267 KB (dev; of it ~32 KB the client messages of
+// the layout's NextIntlClientProvider and ~16 KB the wordmark path written
+// three times by header/footer), HTML 179 KB (shell 59 KB, <main> 121 KB).
+// The < 250 KB goal needs the layout/shell (messages per namespace, wordmark
+// as sprite) – production value: measured by P1 in platzhirsch-prodtest.
 import Hero from "@/components/Home/Hero";
-import BrandWall from "@/components/Home/BrandWall";
-import CategoryTiles from "@/components/Home/CategoryTiles";
-import RegionLinks from "@/components/Home/RegionLinks";
-import ShowroomCta from "@/components/Home/ShowroomCta";
-import SeoIntro from "@/components/Home/SeoIntro";
+import HostPromises from "@/components/WhyChooseUsSectionHome/WhyChooseUsSectionHome";
+import Rooms from "@/components/Home/Rooms";
+import CuratedSelection from "@/components/ProuductSectionHome/ProuductSectionHome";
+import HouseCafe from "@/components/Home/HouseCafe";
+import Process from "@/components/Home/Process";
+import DreilaenderService from "@/components/Home/DreilaenderService";
+import Journal from "@/components/Home/Journal";
+import ClosingCta from "@/components/Home/ClosingCta";
 import { homeSeo } from "@/lib/content/homeSeo";
-import About from "@/components/Home/about";
-import BlogSection from "@/components/Home/blog";
 import { fetchSlicedNewsData } from "@/lib/api/fetchNewsData";
 import { fetchHomepage } from "@/lib/api/fetchHomepage";
-import { fetchProdukteNewByMarke, fetchKategorienWithCounts } from "@/lib/api/fetchAllProdukte";
-import { fetchKategorien } from "@/lib/api/fetchKategorien";
 import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData";
-import { buildShopProducts } from "@/lib/shop/shopProducts";
 import { IN_LANGUAGE, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/structuredData";
 import JsonLd from "@/components/Reusable/JsonLd";
+import OwnImageJsonLd from "@/components/Reusable/OwnImageJsonLd";
 import { hreflangLanguages } from "@/lib/seo/pageMetadata";
-
-// Dynamically import non-critical components
-const TrendingProducts = dynamic(() => import("@/components/ProuductSectionHome/ProuductSectionHome"));
-const WhyChooseUsSectionHome = dynamic(() => import("@/components/WhyChooseUsSectionHome/WhyChooseUsSectionHome"));
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/config";
 
 const BASE_URL = "https://platzhirsch.studio";
 
 
+// Fix-Runde 1 (F1, Release-Rat seo P1-5, USP-Durchdringungsplan 1.6): the
+// core USP "von Hand gezeichnet" (Inhaber-Entscheidung Nr. 8) in title and
+// description, the place (Lochau, Bodensee, Vorarlberg) instead of the old
+// blanket "ganz Österreich". Title ≤ 65, description ≤ 165 characters
+// (tests/unit/f1-startseite.test.mjs). These texts win over the CMS fields,
+// which still carry the old wording.
+// Runde 2, Fix-Team P2 (recht P2-5, seo P2-2): "von Hand gezeichnet" belongs
+// to the interior design, not to the designer furniture (Minotti & Co. are
+// not drawn by Platzhirsch) – the title names the planning first.
+// R5-USP (seo P1-4): the most important title of the domain names the place –
+// Lochau and Bodensee/Lake Constance – in every locale, at most 60
+// characters, the USP stays (tests/e2e/r5-usp-startseite.spec.js).
+// Inhaber-Entscheidung 30.10.2026 (bewusst geändert): der Firmenname steht vorn
+// im Titel. „platzhirsch lochau“ lief auf Platz 2 hinter platzhirsch.cafe; der
+// USP „von Hand gezeichnet“ bleibt in der Description. ≤ 65 Zeichen.
 const FALLBACK_META_BY_LOCALE = {
   de: {
-    title: "Designermöbel & Interior Design in Vorarlberg | Platzhirsch Home Living",
-    description: "Exklusive Designermöbel & Interior Design in Vorarlberg – Marken wie Poliform, Rimadesio & Minotti. Persönliche Einrichtungsberatung für ganz Österreich.",
+    title: "Platzhirsch Home Living – Interior Design & Designermöbel Lochau",
+    description: "Interior Design am Bodensee: von Hand gezeichnet, als Modell gebaut, in 3D geplant. Designermöbel im Showroom mit Café in Lochau, Vorarlberg.",
   },
   en: {
-    title: "Designer Furniture & Interior Design in Vorarlberg | Platzhirsch Home Living",
-    description: "Exclusive designer furniture & interior design in Vorarlberg, Austria – brands like Poliform, Rimadesio & Minotti. Personal interior consulting across Austria.",
+    title: "Platzhirsch Home Living – Interior Design & Furniture in Lochau",
+    description: "Interior design on Lake Constance: drawn by hand, built as a model, planned in 3D. Designer furniture in our showroom with café in Lochau, Vorarlberg.",
   },
   fr: {
-    title: "Mobilier design & Interior Design au Vorarlberg | Platzhirsch Home Living",
-    description: "Mobilier design exclusif & interior design au Vorarlberg (Autriche) – marques comme Poliform, Rimadesio & Minotti. Conseil en aménagement personnalisé dans toute l'Autriche.",
+    title: "Platzhirsch Home Living – design d’intérieur et mobilier, Lochau",
+    description: "Intérieurs au lac de Constance dessinés à la main, en maquette, puis en 3D. Mobilier design dans notre showroom avec café à Lochau, Vorarlberg.",
   },
   it: {
-    title: "Mobili di design & Interior Design in Vorarlberg | Platzhirsch Home Living",
-    description: "Mobili di design esclusivi & interior design in Vorarlberg (Austria) – marchi come Poliform, Rimadesio & Minotti. Consulenza d'arredo personalizzata in tutta l'Austria.",
+    title: "Platzhirsch Home Living – interior design e arredi a Lochau",
+    description: "Interni sul Lago di Costanza disegnati a mano, in plastico, poi in 3D. Mobili di design nel nostro showroom con caffè a Lochau, Vorarlberg.",
   },
 };
 
@@ -66,6 +89,9 @@ function fallbackMetadata(locale) {
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  // Not a locale (e.g. /wp-login.php): no home title/canonical/hreflang;
+  // the layout titles it as 404 (R4-release).
+  if (!routing.locales.includes(locale)) return { robots: { index: false, follow: true } };
 
   try {
     const [apiData] = await Promise.all([
@@ -83,32 +109,32 @@ export async function generateMetadata({ params }) {
         locale: home.metadata?.metadata_local_de || "de_AT",
         sitename: home.metadata?.metadata_sitename_de || "Platzhirsch Home Living",
         type: home.metadata?.metadata_type_de || "website",
-        title: home.metadata?.metadata_title_de || getFallbackMeta("de").title,
-        description: home.metadata?.metadata_description_de || getFallbackMeta("de").description,
+        title: getFallbackMeta("de").title, // F1: USP title wins over the CMS field
+        description: getFallbackMeta("de").description, // R6-i18n: CMS-Feld mit „exklusiv“ (Wortliste), neutrale Fassung hat Vorrang
         url: home.metadata?.metadata_url_de || BASE_URL,
       },
       en: {
         locale: home.metadata?.metadata_local_en || "en_GB",
         sitename: home.metadata?.metadata_sitename_en || "Platzhirsch Home Living",
         type: home.metadata?.metadata_type_en || "website",
-        title: home.metadata?.metadata_title_en || getFallbackMeta("en").title,
-        description: home.metadata?.metadata_description_en || getFallbackMeta("en").description,
+        title: getFallbackMeta("en").title, // F1: USP title wins over the CMS field
+        description: getFallbackMeta("en").description, // R6-i18n: CMS-Feld mit „exklusiv“ (Wortliste), neutrale Fassung hat Vorrang
         url: home.metadata?.metadata_url_en || BASE_URL,
       },
       it: {
         locale: home.metadata?.metadata_local_it || "it_IT",
         sitename: home.metadata?.metadata_sitename_it || "Platzhirsch Home Living",
         type: home.metadata?.metadata_type_it || "website",
-        title: home.metadata?.metadata_title_it || getFallbackMeta("it").title,
-        description: home.metadata?.metadata_description_it || getFallbackMeta("it").description,
+        title: getFallbackMeta("it").title, // F1: USP title wins over the CMS field
+        description: getFallbackMeta("it").description, // R6-i18n: CMS-Feld mit „exklusiv“ (Wortliste), neutrale Fassung hat Vorrang
         url: home.metadata?.metadata_url_it || BASE_URL,
       },
       fr: {
         locale: home.metadata?.metadata_local_fr || "fr_FR",
         sitename: home.metadata?.metadata_sitename_fr || "Platzhirsch Home Living",
         type: home.metadata?.metadata_type_fr || "website",
-        title: home.metadata?.metadata_title_fr || getFallbackMeta("fr").title,
-        description: home.metadata?.metadata_description_fr || getFallbackMeta("fr").description,
+        title: getFallbackMeta("fr").title, // F1: USP title wins over the CMS field
+        description: getFallbackMeta("fr").description, // R6-i18n: CMS-Feld mit „exklusiv“ (Wortliste), neutrale Fassung hat Vorrang
         url: home.metadata?.metadata_url_fr || BASE_URL,
       },
     };
@@ -165,30 +191,21 @@ export async function generateMetadata({ params }) {
 
 export default async function Home({ params }) {
   const { locale } = await params;
+  // Not a locale (e.g. /wp-login.php): 404 before any next-intl call without
+  // explicit locale reads headers() - in the static build that was a 500
+  // ("static to dynamic at runtime, reason: headers", R4-release).
+  if (!routing.locales.includes(locale)) notFound();
 
-  // Fetch all data in parallel
-  const [apiData, newsData, produkte, brands, kategorienWithCounts, kategorien] = await Promise.all([
-    fetchHomepage(),
+  // Fetch in parallel. Every fetcher has its own fallback, so a backend
+  // hiccup hides a section instead of failing the page. The curated products
+  // are loaded inside CuratedSelection (shared cache with the product pages).
+  const [newsData, brands] = await Promise.all([
     fetchSlicedNewsData(),
-    fetchProdukteNewByMarke("Minotti"),
-    // Brand wall + category tiles: cached 1h like everything else; a backend
-    // hiccup hides the section instead of failing the page.
     fetchRawMarkenData().catch(() => []),
-    fetchKategorienWithCounts(),
-    fetchKategorien(),
   ]);
-  // Shop card shape (categoryKey/url_slug/image) so the strip links to the
-  // live /produkte/<category>/<product> pages; only 8 are shown.
-  // Newest Minotti products first (the API returns alphabetical order).
-  const trendingProducts = buildShopProducts(
-    [...(produkte || [])].sort((a, b) => String(b.modified || "").localeCompare(String(a.modified || "")))
-  ).slice(0, 8);
 
-  const homeContent = apiData?.[0];
-  const metaData = apiData?.[0];
-
-  const title = metaData?.metadata?.[`metadata_title_${locale}`] || getFallbackMeta(locale).title;
-  const description = metaData?.metadata?.[`metadata_description_${locale}`] || getFallbackMeta(locale).description;
+  // Same title/description as generateMetadata (F1: the USP wording wins over the CMS fields).
+  const { title, description } = getFallbackMeta(locale);
 
   // Schema.org structured data for SEO
   const webPageSchema = {
@@ -218,29 +235,47 @@ export default async function Home({ params }) {
     })),
   };
 
+  // Bodoni on 1× / 1.25× screens (QA runde 1, P1-2): with
+  // font-optical-sizing:auto the 44–96 px display sizes get the high-contrast
+  // optical size and hairlines thinner than a device pixel ("für" → "fiir").
+  // A fixed opsz keeps the hairlines ≥ 1 px. Scoped to this page until the
+  // Fundament package moves the value into the typo tokens (globals.css).
   return (
-    <div>
+    <div className="[&_.font-display]:[font-variation-settings:'opsz'_28] [&_.font-display-italic]:[font-variation-settings:'opsz'_28]">
       {/* Structured Data Scripts */}
       <JsonLd data={webPageSchema} />
       <JsonLd data={faqSchema} />
-      {/* Page order follows the visitor's questions: what is this (hero), which
-          brands (the strongest search demand), what can I buy (categories),
-          who are you (About), what's new (products, news), why you (benefits),
-          where/when (regions, showroom). All sections except About/products/
-          benefits/news are server components — no carousel JS on the homepage. */}
+      {/* Bilder-SEO: Bildnachweis für das eigene Hero-Foto (Urheber-Register src/lib/seo/imageRights.js). */}
+      <OwnImageJsonLd images={[{ src: "/Images/Home/aboutHome.jpg", width: 2048, height: 1228 }]} />
+      {/* B12 (31.10.2026, Rat 9,5, Tempo-Team freigegeben): 13 → 9 chapters,
+          <main> on phones below 9 000 px. Nothing dropped – former chapters
+          are blocks of a neighbouring chapter:
+            1 Hero (unchanged: H1, LCP image, Wow stage, hours/address/phone)
+            2 Räume
+            3 Sechs Stücke + Marken (BrandList as foot of CuratedSelection)
+            4 Kern-USP "Von Hand gezeichnet" (Inhaber-Entscheidung Nr. 8)
+            5 Haus & Café (the page's ONE walnut surface)
+            6 Gastgeber = promises + "Mehr als Möbel" + "Vorab ausprobieren"
+              (Services and ToolsShowcase inside HostPromises)
+            7 Dreiländer-Service
+            8 Aus dem Haus = news/Ratgeber + SEO text, FAQ, region line
+              (SeoIntro as foot of Journal, still a labelled section)
+            9 Closing CTA with the Leitsatz "Nehmen Sie Platz."
+          Surfaces alternate surface/band (walnut once). All server
+          components, no carousel and no client island. */}
       <Hero locale={locale} />
-      <BrandWall locale={locale} brands={brands} />
-      <CategoryTiles locale={locale} kategorienWithCounts={kategorienWithCounts} kategorien={kategorien} />
-      <About data={homeContent?.second_content} />
-      <TrendingProducts data={trendingProducts} />
-      <WhyChooseUsSectionHome data={homeContent?.below_products} />
-      <SeoIntro locale={locale} />
-      <RegionLinks locale={locale} />
-      <BlogSection data={newsData} />
-      <ShowroomCta locale={locale} data={homeContent?.above_footer} />
+      <Rooms locale={locale} />
+      <CuratedSelection locale={locale} brands={brands} />
+      {/* Kern-USP (Inhaber-Entscheidung Nr. 8): hand drawing → model → 3D → rendering. */}
+      <Process locale={locale} />
+      <HouseCafe locale={locale} />
+      <HostPromises locale={locale} />
+      <DreilaenderService locale={locale} />
+      <Journal locale={locale} news={newsData} />
+      <ClosingCta locale={locale} />
     </div>
   );
 }
 
 // Revalidate the page every hour
-export const revalidate = 3600;
+export const revalidate = 3600;

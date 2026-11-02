@@ -1,0 +1,280 @@
+{
+  "$note": "Rechte-Register AR-Viewer je Marke (Stand 27.10.2026). Grundlage: Herstellermaterial/00-INDEX.md und Herstellermaterial/<Marke>/QUELLEN.md (Nutzungsbedingungen im Wortlaut). veraenderung = darf ein Herstellerbild verändert (freigestellt, als AR-Foto-Karte skaliert) werden: ja | nein | unklar. Keine Marke hat bisher eine schriftliche Freigabe erteilt (freigabe = null). Regeln in src/lib/arviewer/stage.js: nein → Stufe 2 nur intern (ARVIEWER_INTERN=1), öffentlich nur Stufe 3; unklar → Stufe 2 nur in den Labs (noindex) mit Hinweis „Freigabe ausstehend“; ja → Stufe 2 öffentlich. Stufe 1 (Herstellermodell) braucht immer eine Freigabe.",
+  "stand": "2026-10-27",
+  "raumbedarf": {
+    "bildnutzung": "keine",
+    "regel": "Stufe 2b „Raumbedarf in Originalgröße“ (scripts/arviewer/raumbedarf.mjs) erzeugt Grundfläche und Quader ausschließlich aus Herstellermaßen (dims.json, mit Quell-URL). Es wird kein Herstellerbild verwendet, verändert oder freigestellt – daher für jede Marke zulässig, auch bei veraenderung = nein (Minotti, Poliform, Sifas …). Marken- und Produktname erscheinen nur als Text-Label.",
+    "oeffentlich": "bisher nur Labs (noindex). Vor öffentlicher Nutzung: Inhaber-Freigabe; Maße sind Fakten aus öffentlichen Datenblättern, keine Bildrechte berührt.",
+    "vermerkt": "2026-10-27"
+  },
+  "marken": {
+    "101 Copenhagen": {
+      "veraenderung": "unklar",
+      "beleg": "Keine Nutzungsbedingungen veröffentlicht; Bilddatenbank (Kontainer) öffentlich verlinkt.",
+      "quelle": "Herstellermaterial/101_Copenhagen/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Agape": {
+      "veraenderung": "unklar",
+      "beleg": "Nur „Agape srl © 2026“, keine Bildlizenz.",
+      "quelle": "Herstellermaterial/Agape/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "agape": {
+      "veraenderung": "unklar",
+      "beleg": "Nur „Agape srl © 2026“, keine Bildlizenz.",
+      "quelle": "Herstellermaterial/Agape/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Alonpi": {
+      "veraenderung": "unklar",
+      "beleg": "Reiner Onlineshop, nur „© Achille Pinto SpA 2026“.",
+      "quelle": "Herstellermaterial/Alonpi/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Antoniolupi": {
+      "veraenderung": "unklar",
+      "beleg": "Bedingungen nicht geprüft (Downloadbereich nur im Browser).",
+      "quelle": "Herstellermaterial/Antoniolupi/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Baobab": {
+      "veraenderung": "nein",
+      "beleg": "Fotos laut AGB nur „for information purposes only“, keine Bildlizenz.",
+      "quelle": "Herstellermaterial/Baobab/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Binni": {
+      "veraenderung": "unklar",
+      "beleg": "Nur „© Copyright 2024 Binni“; schriftliche Freigabe nötig.",
+      "quelle": "Herstellermaterial/Binni/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Bombyxx": {
+      "veraenderung": "unklar",
+      "beleg": "Öffentlich keine Bilder oder Nutzungsbedingungen.",
+      "quelle": "Herstellermaterial/Bombyxx/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Brand van Egmond": {
+      "veraenderung": "nein",
+      "beleg": "Nur „for personal, educational, or informational purposes only“, keine kommerzielle Nutzung oder Weiterveröffentlichung.",
+      "quelle": "Herstellermaterial/Brand_van_Egmond/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Bullfrog": {
+      "veraenderung": "nein",
+      "beleg": "Laut Impressum nur privater, nicht kommerzieller Gebrauch; jede Verwertung braucht schriftliche Zustimmung.",
+      "quelle": "Herstellermaterial/Bullfrog/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "ClassiCon": {
+      "veraenderung": "unklar",
+      "beleg": "Nur „Copyright © ClassiCon GmbH“; hochaufgelöste Bilder nur im Bildarchiv, ClassiCon prüft jede Anfrage.",
+      "quelle": "Herstellermaterial/ClassiCon/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Desalto": {
+      "veraenderung": "unklar",
+      "beleg": "Nur „Copyright © 2025 Desalto“; Werbenutzung bestätigen lassen.",
+      "quelle": "Herstellermaterial/Desalto/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Eichholtz": {
+      "veraenderung": "unklar",
+      "beleg": "Nur „© Copyright 2026 Eichholtz B.V. All rights reserved“.",
+      "quelle": "Herstellermaterial/Eichholtz/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "EMU": {
+      "veraenderung": "unklar",
+      "beleg": "Nur „Copyright ©2018 EMU Group S.p.A.“, Freigabe nötig.",
+      "quelle": "Herstellermaterial/EMU/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Flos": {
+      "veraenderung": "unklar",
+      "beleg": "Kataloge öffentlich ohne Nutzungsvermerk, kein öffentlicher Pressebereich.",
+      "quelle": "Herstellermaterial/Flos/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Frost": {
+      "veraenderung": "nein",
+      "beleg": "Nur autorisierte Partner; Pflicht-Credit „Copyright FROST A/S. Unauthorized use not permitted“.",
+      "quelle": "Herstellermaterial/Frost/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Gloster": {
+      "veraenderung": "nein",
+      "beleg": "„Copyright © Gloster Furniture Limited. All rights reserved“, ausdrücklich auch für Fotos; laut Index nur mit schriftlicher Freigabe.",
+      "quelle": "Herstellermaterial/Gloster/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Heatsail": {
+      "veraenderung": "unklar",
+      "beleg": "Kein Copyright- oder Bildrechte-Vermerk; Freigabe bei sales@heatsail.com.",
+      "quelle": "Herstellermaterial/Heatsail/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Lambert": {
+      "veraenderung": "unklar",
+      "beleg": "Material nur im B2B-Shop.",
+      "quelle": "Herstellermaterial/Lambert/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Livintwist": {
+      "veraenderung": "unklar",
+      "beleg": "Kein Bildrechte-Vermerk; Freigabe über marketing@livintwist.com.",
+      "quelle": "Herstellermaterial/Livintwist/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Minotti": {
+      "veraenderung": "nein",
+      "beleg": "Ohne vorherige ausdrückliche schriftliche Zustimmung keine Vervielfältigung, Veröffentlichung oder Weitergabe; Bilder „proprietary to Minotti SpA“. Veränderung untersagt.",
+      "quelle": "Herstellermaterial/Minotti/QUELLEN.md",
+      "freigabe": null,
+      "freistellung": "Nur intern: ar-foto.mjs --intern schreibt nach .data/ar-viewer/intern/ (gitignored), nie nach public/ und nie ins Register arfotos.json. Stand 27.10.2026: keine Minotti-Freistellung erzeugt.",
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Next125": {
+      "veraenderung": "nein",
+      "beleg": "Pressebilder nur „zur redaktionellen Verwendung“, jede andere Nutzung braucht schriftliche Genehmigung.",
+      "quelle": "Herstellermaterial/Next125/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Paola Lenti": {
+      "veraenderung": "unklar",
+      "beleg": "Nur „© 2026 Paola Lenti“.",
+      "quelle": "Herstellermaterial/Paola_Lenti/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Papadatos": {
+      "veraenderung": "unklar",
+      "beleg": "Keine Bedingungen und kein Copyright-Vermerk gefunden.",
+      "quelle": "Herstellermaterial/Papadatos/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Poliform": {
+      "veraenderung": "nein",
+      "beleg": "Laut Terms nur „personal and non-commercial use“; Nutzung ohne Zustimmung ausdrücklich verboten.",
+      "quelle": "Herstellermaterial/Poliform/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Pomax": {
+      "veraenderung": "nein",
+      "beleg": "Bilder für redaktionelle und Projekt-Nutzung, Logo-Richtlinie; deckt keine Werbung.",
+      "quelle": "Herstellermaterial/Pomax/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Qeeboo": {
+      "veraenderung": "nein",
+      "beleg": "Vervielfältigung laut AGB nur „with express written permission“.",
+      "quelle": "Herstellermaterial/Qeeboo/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Quasar": {
+      "veraenderung": "unklar",
+      "beleg": "Kein Nutzungsvermerk.",
+      "quelle": "Herstellermaterial/Quasar/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Rimadesio": {
+      "veraenderung": "unklar",
+      "beleg": "Nur „Copyright © 2026 Rimadesio. All rights reserved“, keine Presselizenz.",
+      "quelle": "Herstellermaterial/Rimadesio/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Schueller": {
+      "veraenderung": "nein",
+      "beleg": "Wie Next125: redaktionell frei, sonst schriftliche Genehmigung.",
+      "quelle": "Herstellermaterial/Schueller/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Sifas": {
+      "veraenderung": "nein",
+      "beleg": "Nutzung von Fotos „strictly prohibited, except with prior written authorisation from SIFAS“.",
+      "quelle": "Herstellermaterial/Sifas/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Solpuri": {
+      "veraenderung": "unklar",
+      "beleg": "Nur „© 2026 solpuri“, kein weitergehender Nutzungsvermerk; Freigabe bei solpuri einholen.",
+      "quelle": "Herstellermaterial/Solpuri/QUELLEN.md",
+      "freigabe": null,
+      "freistellung": "Pilot 27.10.2026: 16 Produktbilder freigestellt (BiRefNet), nur Labs (noindex), Kennzeichnung „Freigabe ausstehend“. Vor öffentlicher Nutzung schriftliche Freigabe bei solpuri einholen.",
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Tom Dixon": {
+      "veraenderung": "unklar",
+      "beleg": "Inhalte „property of Design Research LTD … protected by international and UK copyright“.",
+      "quelle": "Herstellermaterial/Tom_Dixon/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Tonon": {
+      "veraenderung": "unklar",
+      "beleg": "Nur „2026 © Tonon by F.lli Rossetto“.",
+      "quelle": "Herstellermaterial/Tonon/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Trapa": {
+      "veraenderung": "unklar",
+      "beleg": "Quellenangabe „Quelle: www.trapa.at“ bei jeder Verwendung Pflicht.",
+      "quelle": "Herstellermaterial/Trapa/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Treca": {
+      "veraenderung": "nein",
+      "beleg": "Nur „personal, non-commercial use“, kein Download oder Speichern erlaubt.",
+      "quelle": "Herstellermaterial/Treca/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Tuuci": {
+      "veraenderung": "unklar",
+      "beleg": "Alle Inhalte gehören Tuuci, LLC; Marken und Logos nur mit schriftlicher Zustimmung.",
+      "quelle": "Herstellermaterial/Tuuci/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    },
+    "Umbrosa": {
+      "veraenderung": "nein",
+      "beleg": "Jede Nutzung ohne vorherige schriftliche Zustimmung verboten.",
+      "quelle": "Herstellermaterial/Umbrosa/QUELLEN.md",
+      "freigabe": null,
+      "raumbedarf": "ohne Bildnutzung – zulässig"
+    }
+  }
+}

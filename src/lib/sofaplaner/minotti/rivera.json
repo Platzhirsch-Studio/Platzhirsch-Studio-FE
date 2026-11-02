@@ -1,0 +1,224 @@
+{
+  "name": "Rivera",
+  "slug": "rivera",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2015,
+  "kollektion": "2015 Collection",
+  "typ": "Outdoor-Kollektion mit Zwei- und Dreisitzer-Sofa, Sesseln (98 und 84 cm tief), kleinem Sessel, Hocker und Couchtisch; Iroko-Massivholzrahmen mit auskragender Ablage, Rücken/Armlehnen in „Cannage“-Geflecht (keine modularen Anbauelemente)",
+  "quellen": [
+    "https://www.minotti.com/en/rivera",
+    "https://www.minotti.com/downloads/1936/10588/RIVERA_TECHNICAL_SHEET.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Maße in cm laut Technical Sheet (© Minotti, Januar 2023); Produktseite nennt nur „Sofa cm 166 / 236“ und Tiefen 98/84 cm. Sitzhöhe 35,5 und Innenbreiten aus unbeschrifteten Koten abgeleitet; Zuordnung beim kleinen Sessel und Zusatzkissen unsicher (Textextraktion der Zeichnung).",
+  "sitzmodule_cm": null,
+  "elemente": [
+    {
+      "code": "RIV-SOFA-166",
+      "name": "Sofa cm 166",
+      "name_de": "Sofa 166 (Zweisitzer)",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 166,
+      "tiefe_cm": 97,
+      "hoehe_cm": 76,
+      "sitzhoehe_cm": 35.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innenbreite_cm": 140,
+      "anschluesse": "freistehend, 2 Armlehnen; nicht modular",
+      "hinweis": "Auskragender Iroko-Rahmen als Ablagefläche nutzbar. 140 cm unbeschriftete Kote (vermutlich Innenbreite). Höhen laut Technical Sheet: 76 (gesamt) / 35,5 cm (Sitzhöhe, deckungsgleich mit Hockerhöhe)."
+    },
+    {
+      "code": "RIV-SOFA-236",
+      "name": "Sofa cm 236",
+      "name_de": "Sofa 236 (Dreisitzer)",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 236,
+      "tiefe_cm": 97,
+      "hoehe_cm": 76,
+      "sitzhoehe_cm": 35.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innenbreite_cm": 210,
+      "anschluesse": "freistehend, 2 Armlehnen; nicht modular",
+      "hinweis": "Auskragender Iroko-Rahmen als Ablagefläche nutzbar. 210 cm unbeschriftete Kote (vermutlich Innenbreite). Höhen laut Technical Sheet: 76 (gesamt) / 35,5 cm (Sitzhöhe, deckungsgleich mit Hockerhöhe)."
+    },
+    {
+      "code": "RIV-ARMCHAIR-LARGE",
+      "name": "Armchair \"Large\"",
+      "name_de": "Sessel „Large“",
+      "art": "sessel",
+      "ausrichtung": null,
+      "breite_cm": 100,
+      "tiefe_cm": 98,
+      "hoehe_cm": 76,
+      "sitzhoehe_cm": 35.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innenbreite_cm": 75,
+      "anschluesse": "freistehend",
+      "hinweis": "Laut Produktseite 98 cm tief mit auskragendem Rahmen (Ablage). 75 cm unbeschriftete Kote (vermutlich Innenbreite). Höhen laut Technical Sheet: 76 (gesamt) / 35,5 cm (Sitzhöhe, deckungsgleich mit Hockerhöhe)."
+    },
+    {
+      "code": "RIV-ARMCHAIR",
+      "name": "Armchair",
+      "name_de": "Sessel (kompakt)",
+      "art": "sessel",
+      "ausrichtung": null,
+      "breite_cm": 79,
+      "tiefe_cm": 84,
+      "hoehe_cm": 74,
+      "sitzhoehe_cm": 35.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innenbreite_cm": 60,
+      "anschluesse": "laut Produktseite ideal zum Zweisitzer",
+      "hinweis": "84 cm tief. 60 cm unbeschriftete Kote (vermutlich Innenbreite)."
+    },
+    {
+      "code": "RIV-LITTLE-ARMCHAIR",
+      "name": "Little armchair",
+      "name_de": "Kleiner Sessel",
+      "art": "sessel-klein",
+      "ausrichtung": null,
+      "breite_cm": 63,
+      "tiefe_cm": 64,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 48,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "anschluesse": "freistehend",
+      "hinweis": "Zuordnung aus Textextraktion: Koten 86 / 48 / 65 / 63 / 64 cm – Breite/Tiefe/Höhe plausibel, Sitz- und Armlehnenhöhe unbeschriftet. Bitte am Original-PDF prüfen."
+    },
+    {
+      "code": "RIV-OTTOMAN",
+      "name": "Ottoman",
+      "name_de": "Hocker",
+      "art": "hocker",
+      "ausrichtung": null,
+      "breite_cm": 100,
+      "tiefe_cm": 100,
+      "hoehe_cm": 35.5,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": null
+    },
+    {
+      "code": "RIV-COFFEE-TABLE",
+      "name": "Coffee table",
+      "name_de": "Couchtisch",
+      "art": "tisch",
+      "ausrichtung": null,
+      "breite_cm": 100,
+      "tiefe_cm": 100,
+      "hoehe_cm": 23.5,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Platte Beola Argentata (Silver Beola) 20 mm, fein gebürstet, im Iroko-Rahmen eingelassen; Fleckschutz ohne Garantie."
+    }
+  ],
+  "weitere_produkte_im_datenblatt": [
+    {
+      "name": "Rivera Chair (Stuhl)",
+      "hinweis": "Auf Produktseite beschrieben (Edelstahl-Rohrgestell Pewter), aber nicht im Technical Sheet bemaßt – eigenes Produkt."
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Fester Rücken mit „Cannage“-Geflecht (Taslan-Polypropylen Ø 7 mm) + abnehmbare Rückenkissen",
+      "hoehe_cm": 76
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Geflochtene Armlehne mit auskragendem Iroko-Rahmen (Ablage)",
+      "hinweis": "keine alternativen Armlehnenformen publiziert; Armlehnenhöhe nicht beschriftet"
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Gestell",
+      "material": "Edelstahl, Zink-Primer + Polyester-Pulverlack outdoor",
+      "finish": "ausschließlich Pewter (Peltro) glänzend"
+    },
+    {
+      "teil": "Rahmen",
+      "material": "Massives Iroko-Kernholz, ofengetrocknet, CNC + Handfinish, UV-/Witterungsschutzlack 35 Gloss",
+      "finish": "Iroko natur"
+    },
+    {
+      "teil": "Sitzfläche",
+      "material": "Edelstahlplatte mit lasergeschnittenem Minotti-Studio-Dekor",
+      "finish": "Pewter glänzend"
+    },
+    {
+      "teil": "Geflecht",
+      "material": "Taslan-Polypropylen-Kordel Ø 7 mm, „Cannage“-Effekt",
+      "finish": "Light Grey (Grigio chiaro) oder Dark Brown (Marrone scuro)"
+    },
+    {
+      "teil": "Gleiter",
+      "material": "SEBS (weicher, kratzfester Gummi)",
+      "finish": "schwarz"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff (Outdoor)"
+    ],
+    "bezugsarten": [
+      "abnehmbar"
+    ],
+    "abnehmbar_hinweis": "Sitz- und Rückenkissen komplett abziehbar.",
+    "varianten": null,
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Outdoor-Stoffe, Geflecht, Holz- und Metalloberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optional \"Rivera\" cushion",
+      "masse": "50 × 42 cm",
+      "hinweis": "Zuordnung aus Textextraktion, zusätzliche Kote 47 cm unklar – am PDF prüfen"
+    },
+    {
+      "name": "Optional rain cover",
+      "hinweis": "für jedes Element erhältlich"
+    },
+    {
+      "name": "Sitz-/Rückenkissen",
+      "hinweis": "HR-PU-Schaum + umweltfreundliche, wasserabweisende Faser"
+    }
+  ],
+  "polsterung": "HR-PU-Schaum mit wasserabweisender Faser.",
+  "outdoor": true,
+  "besonderheiten": [
+    "Auskragender Iroko-Rahmen als Ablage (Sofas, Sessel Large)",
+    "Lasergeschnittene Edelstahl-Sitzplatte",
+    "Handgeflochtenes „Cannage“-Geflecht",
+    "Gestell nur in Pewter"
+  ],
+  "beispiel_kompositionen": [],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "fehlend": [
+    "Sitztiefe aller Elemente (nicht beschriftet)",
+    "Armlehnenhöhen (nicht beschriftet; kleiner Sessel nur unsicher abgeleitet)",
+    "Maßzuordnung kleiner Sessel und Zusatzkissen unsicher",
+    "Outdoor-Stoffkollektionen und Preisgruppen",
+    "Maße des Rivera Chair",
+    "Keine Kompositions-/Arrangement-PDFs veröffentlicht",
+    "Gewichte, Herstellerartikelnummern"
+  ],
+  "vollstaendigkeit": {
+    "masse_prozent": 84,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe über alle Elemente, zusätzlich sitzhoehe/sitztiefe bei Sitzelementen mit Rücken (bei Hockern/Tischen/Zubehör nicht zutreffend). Runde Elemente: Ø als breite und tiefe. Options-/Materialfelder separat in fehlend[] bewertet.",
+    "felder_befuellt": 26,
+    "felder_gesamt": 31
+  }
+}

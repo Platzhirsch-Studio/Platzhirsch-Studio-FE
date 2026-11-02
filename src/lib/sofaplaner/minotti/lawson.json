@@ -1,0 +1,713 @@
+{
+  "name": "Lawson",
+  "slug": "lawson",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2019,
+  "jahr_hinweis": "Produktseite: „2019 Collection“; Datenblatt-Stand Februar 2025",
+  "typ": "Sitzfamilie mit Linien Lounge, Lounge Legs, Dining, Medium und Large (modulares Large-System: linear, offen, rund, halbrund, Chaise-Longue)",
+  "quellen": [
+    "https://www.minotti.com/en/lawson",
+    "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/15719/15682/MINOTTI_Lawson.zip",
+    "https://www.minotti.com/downloads/16580/15662/LAWSON_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/16581/15666/LAWSON_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/16665/15693/LAWSON_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/16667/15700/LAWSON_arrangement_05.pdf"
+  ],
+  "quellen_hinweis": "ZIP = 2D/3D-Dateien, nicht ausgewertet; Maße aus Datenblatt-Zeichnungen und Produktseite",
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "standardwerte": {
+    "hoehe_medium_large_cm": 80,
+    "sitzhoehe_medium_large_cm": 42,
+    "tiefe_large_linear_cm": 98,
+    "sitztiefe_large_cm": 81,
+    "sitztiefe_medium_cm": 73,
+    "sitztiefe_hinweis": "aus Draufsicht abgeleitet",
+    "hoehe_lounge_cm": 74,
+    "sitzhoehe_lounge_cm": 45,
+    "weitere_masse_unbeschriftet_cm": [
+      47
+    ],
+    "hocker_hoehe_cm": 38
+  },
+  "elemente": [
+    {
+      "code": "lounge-armchair",
+      "name": "Lounge armchair",
+      "art": "sessel",
+      "breite_cm": 72,
+      "tiefe_cm": 78,
+      "hoehe_cm": 74,
+      "sitzhoehe_cm": 45,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Lounge",
+      "sitzbreite_innen_cm": 62,
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "lounge-sofa",
+      "name": "Lounge sofa",
+      "art": "sofa",
+      "breite_cm": 171,
+      "tiefe_cm": 78,
+      "hoehe_cm": 74,
+      "sitzhoehe_cm": 45,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Lounge",
+      "sitzbreite_innen_cm": 161,
+      "hinweis": "empfohlenes Kissenset laut Datenblatt",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "lounge-angled-sofa",
+      "name": "Lounge angled sofa",
+      "art": "sofa-asymmetrisch",
+      "breite_cm": 213,
+      "tiefe_cm": 149,
+      "hoehe_cm": 74,
+      "sitzhoehe_cm": 45,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Lounge",
+      "hinweis": "gewinkeltes Sofa (Divano curvo) 213 × 149 cm; empfohlenes Kissenset laut Datenblatt",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "legs-lounge-armchair",
+      "name": "Legs lounge armchair",
+      "art": "sessel",
+      "breite_cm": 79,
+      "tiefe_cm": 89,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Lounge Legs",
+      "sitzbreite_innen_cm": 65,
+      "fuesse": "Esche Moka oder lederbezogen",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "legs-lounge-little-armchair",
+      "name": "Legs lounge little armchair",
+      "art": "sessel",
+      "breite_cm": 65,
+      "tiefe_cm": 65,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Lounge Legs",
+      "sitzbreite_innen_cm": 50,
+      "fuesse": "Esche Moka oder lederbezogen",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "dining-little-armchair",
+      "name": "Dining little armchair",
+      "art": "dining-sessel",
+      "breite_cm": 62,
+      "tiefe_cm": 60,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 48,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 62,
+      "linie": "Dining",
+      "sitzbreite_innen_cm": 47,
+      "fuesse": "Esche Moka oder lederbezogen",
+      "hinweis": "Armlehnenhöhe 62 cm aus Seitenansicht abgeleitet",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "dining-chair",
+      "name": "Dining chair",
+      "art": "dining-sessel",
+      "breite_cm": 53,
+      "tiefe_cm": 60,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 48,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Dining",
+      "fuesse": "Esche Moka oder lederbezogen",
+      "hinweis": "Zeichnung zeigt Breite 51 cm (oben) und 53 cm (Sitzebene); größerer Wert übernommen",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "medium-armchair-cm-77",
+      "name": "Medium armchair cm 77",
+      "art": "sessel",
+      "breite_cm": 77,
+      "tiefe_cm": 90,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Medium",
+      "sitzbreite_innen_cm": 63,
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "medium-semi-round-sofa-cm-236",
+      "name": "Medium semi-round sofa cm 236",
+      "art": "sofa-halbrund",
+      "breite_cm": 236,
+      "tiefe_cm": 120,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 73,
+      "armlehnenhoehe_cm": null,
+      "linie": "Medium",
+      "sitzbreite_innen_cm": 187,
+      "hinweis": "Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "medium-open-element-cm-155",
+      "name": "Medium open element cm 155",
+      "art": "endelement",
+      "breite_cm": 155,
+      "tiefe_cm": 90,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 73,
+      "armlehnenhoehe_cm": null,
+      "linie": "Medium",
+      "sitzbreite_innen_cm": 136,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Open = einseitig offen; Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-armchair-cm-84",
+      "name": "Large armchair cm 84",
+      "art": "sessel",
+      "breite_cm": 84,
+      "tiefe_cm": 98,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "sitzbreite_innen_cm": 70,
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-sofa-cm-270",
+      "name": "Large sofa cm 270",
+      "art": "sofa",
+      "breite_cm": 270,
+      "tiefe_cm": 98,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 81,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "sitzbreite_innen_cm": 255,
+      "anschluesse": "freistehend",
+      "hinweis": "Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-open-sofa-cm-220",
+      "name": "Large open sofa cm 220",
+      "art": "sofa",
+      "breite_cm": 220,
+      "tiefe_cm": 98,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 81,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "sitzbreite_innen_cm": 210,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "einseitig offen; paarweise kombinierbar (Arrangement B)",
+      "hinweis": "Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-round-sofa-cm-278",
+      "name": "Large round sofa cm 278",
+      "art": "sofa-gebogen",
+      "breite_cm": 278,
+      "tiefe_cm": 150,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 81,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-open-round-sofa-cm-268",
+      "name": "Large open round sofa cm 268",
+      "art": "sofa-gebogen",
+      "breite_cm": 268,
+      "tiefe_cm": 150,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 81,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "einseitig offen; SX+DX zu einer Rundform kombinierbar (Arrangement A)",
+      "hinweis": "Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-sofa-chaise-longue-cm-219",
+      "name": "Large sofa chaise-longue cm 219",
+      "art": "peninsula",
+      "breite_cm": 219,
+      "tiefe_cm": 132,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe nicht eindeutig beschriftet",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-open-sofa-chaise-longue-cm-214",
+      "name": "Large open sofa chaise-longue cm 214",
+      "art": "peninsula",
+      "breite_cm": 214,
+      "tiefe_cm": 132,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe nicht eindeutig beschriftet",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-element-with-1-armrest-cm-136",
+      "name": "Large element with 1 armrest cm 136",
+      "art": "endelement",
+      "breite_cm": 136,
+      "tiefe_cm": 98,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 81,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "sitzbreite_innen_cm": 128,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-element-with-1-armrest-cm-216",
+      "name": "Large element with 1 armrest cm 216",
+      "art": "endelement",
+      "breite_cm": 216,
+      "tiefe_cm": 98,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 81,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "sitzbreite_innen_cm": 208,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-open-element-cm-216",
+      "name": "Large open element cm 216",
+      "art": "mittel",
+      "breite_cm": 216,
+      "tiefe_cm": 98,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 81,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "sitzbreite_innen_cm": 208,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Open-Element; Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-semi-round-element-cm-138",
+      "name": "Large semi-round element cm 138",
+      "art": "mittel-gebogen",
+      "breite_cm": 138,
+      "tiefe_cm": 101,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 81,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-semi-round-element-cm-190",
+      "name": "Large semi-round element cm 190",
+      "art": "mittel-gebogen",
+      "breite_cm": 190,
+      "tiefe_cm": 101,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 81,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-open-semi-round-element-cm-185",
+      "name": "Large open semi-round element cm 185",
+      "art": "mittel-gebogen",
+      "breite_cm": 185,
+      "tiefe_cm": 101,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 81,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe aus Draufsicht abgeleitet (nicht ausdrücklich beschriftet)",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-chaise-longue-cm-131x132",
+      "name": "Large chaise-longue cm 131x132",
+      "art": "chaise",
+      "breite_cm": 131,
+      "tiefe_cm": 132,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Innenmaße laut Zeichnung 115 / 123 cm; Sitztiefe nicht eindeutig",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "extra-large-chaise-longue-cm-131x157",
+      "name": "Extra large chaise-longue cm 131x157",
+      "art": "chaise",
+      "breite_cm": 131,
+      "tiefe_cm": 157,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "linie": "Large",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Innenmaße laut Zeichnung 140 / 123 cm; Sitztiefe nicht eindeutig",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-d-cm-100",
+      "name": "Ottoman Ø cm 100",
+      "art": "hocker",
+      "breite_cm": 100,
+      "tiefe_cm": 100,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "form": "rund",
+      "durchmesser_cm": 100,
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-d-cm-130",
+      "name": "Ottoman Ø cm 130",
+      "art": "hocker",
+      "breite_cm": 130,
+      "tiefe_cm": 130,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "form": "rund",
+      "durchmesser_cm": 130,
+      "hinweis": "laut Datenblatt-Zeichnung mit Sternchen „nur für Bezug in Pony Look“ markiert – Zuordnung zum Ø-130-Hocker bitte im Showroom bestätigen",
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "zubehoer": [
+    {
+      "code": "optional-back-cushion-cm-62x45",
+      "name": "Optional back cushion cm 62x45",
+      "art": "rueckenkissen-optional",
+      "breite_cm": 62,
+      "tiefe_cm": null,
+      "hoehe_cm": 45,
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "optional-back-cushion-cm-52x45",
+      "name": "Optional back cushion cm 52x45",
+      "art": "rueckenkissen-optional",
+      "breite_cm": 52,
+      "tiefe_cm": null,
+      "hoehe_cm": 45,
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "optional-cushion-cm-50x50",
+      "name": "Optional cushion cm 50x50",
+      "art": "dekokissen-optional",
+      "breite_cm": 50,
+      "tiefe_cm": null,
+      "hoehe_cm": 50,
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "optional-cushion-cm-43x43",
+      "name": "Optional cushion cm 43x43",
+      "art": "dekokissen-optional",
+      "breite_cm": 43,
+      "tiefe_cm": null,
+      "hoehe_cm": 43,
+      "quelle": [
+        "https://www.minotti.com/en/lawson",
+        "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Rückenlehne mit Metallkern in feuerhemmendem PU-Schaum, umhüllt mit Faservlies auf Baumwolle; Rückenkissen Gänsedaunen (Assopiuma Gold Label) mit HR-PU-Kern",
+      "quelle": "https://www.minotti.com/en/lawson"
+    },
+    {
+      "name": "Optionale Rückenkissen 62 × 45 und 52 × 45 cm",
+      "quelle": "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "name": "Empfohlenes Kissenset für Lounge-Sofa und gewinkeltes Lounge-Sofa",
+      "quelle": "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Mit Armlehnen (Sessel, Sofa, Element mit 1 Armlehne)",
+      "hoehe_cm": null,
+      "hinweis": "Seitenansicht Medium/Large zeigt 47 cm ohne Beschriftung"
+    },
+    {
+      "name": "Open (einseitig offen): Open Sofa, Open Element, Open Round Sofa, Open Semi-round Element, Open Sofa Chaise-Longue",
+      "hoehe_cm": null
+    }
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Lounge/Medium/Large: halbgebogene Metallkufen; Lounge Legs und Dining: Beine aus Esche",
+    "finishes": [
+      "Metall: Pewter (Zinn) lackiert glänzend, Anti-Fingerprint",
+      "Metall: Chrom",
+      "Esche offenporig Moka lackiert",
+      "Esche lederbezogen (immer im gleichen Leder wie der Sessel)"
+    ],
+    "gleiter": "Schwarzes Polyethylen (Sofas), schwarzes SEBS (Sessel mit Metallbasis), Filz (Holzbeine)",
+    "hoehen_cm": null,
+    "quelle": "https://www.minotti.com/en/lawson"
+  },
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "bezugsart": "abnehmbar: Stoff- und Lederbezüge abnehmbar; Lounge Legs/Dining komplett abnehmbar außer lederbezogene Beine; Hocker in Pony Look/Zebra Look/Pony Cenere fest",
+    "kombinationen": [
+      "A) komplett Stoff oder komplett Leder (bei lederbezogenen Beinen kein reiner Stoffbezug)",
+      "B) Rückenstruktur (bzw. Struktur und Beine) in Leder Kat. Extra; Sitzstruktur, Sitz- und Rückenkissen in Stoff",
+      "C) Rückenstruktur (bzw. Struktur und Beine) in Leder Kat. Natural; Sitzstruktur, Sitz- und Rückenkissen in Stoff"
+    ],
+    "farbmuster": "Stoff- und Lederkollektion sowie Farbmuster bitte im Showroom ansehen (Minotti „World of Materials“)",
+    "quelle": "https://www.minotti.com/en/lawson"
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optional back cushion",
+      "breite_cm": 62,
+      "hoehe_cm": 45
+    },
+    {
+      "name": "Optional back cushion",
+      "breite_cm": 52,
+      "hoehe_cm": 45
+    },
+    {
+      "name": "Optional cushion",
+      "breite_cm": 50,
+      "tiefe_cm": 50
+    },
+    {
+      "name": "Optional cushion",
+      "breite_cm": 43,
+      "tiefe_cm": 43
+    }
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "Fünf Linien (Lounge, Lounge Legs, Dining, Medium, Large) in einer Familie",
+    "Large-System: offene Elemente SX/DX zu runden oder linearen Kompositionen kombinierbar",
+    "Laut Minotti auch für Hospitality geeignet",
+    "4 Arrangements (LAWSON 01, 02, 03, 05) als PDF, Datenblatt mit Arrangements A–G",
+    "Seitenangabe SX/DX gemäß Minotti-Datenblatt"
+  ],
+  "fehlend": [
+    "Sitztiefe nicht ausdrücklich beschriftet (Medium 73 / Large 81 cm aus Draufsicht abgeleitet)",
+    "Sitztiefe der Chaise-Longues und Sofa-Chaise-Longues nicht eindeutig",
+    "Sitztiefe der Sessel und Lounge-Elemente nicht angegeben",
+    "Armlehnenhöhe nicht eindeutig (47 cm unbeschriftet)",
+    "Bedeutung des Sternchens beim Hocker Ø130 („nur Pony Look“) nicht eindeutig zuordenbar",
+    "Höhe der Kufen/Beine nicht angegeben",
+    "Keine veröffentlichte Kompatibilitätsmatrix",
+    "Stoff-/Lederkategorien mit Preisgruppen nicht öffentlich",
+    "Preise nicht öffentlich"
+  ],
+  "rechte_hinweis": "Maße aus öffentlichem Minotti-Datenblatt und Produktseite; CAD-Dateien laut Minotti nur für Einrichtungsplanung nutzbar. Herstellerbilder nicht verändern (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "vollstaendigkeit_prozent": 89
+}

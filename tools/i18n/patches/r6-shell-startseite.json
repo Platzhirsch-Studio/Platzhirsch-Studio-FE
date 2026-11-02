@@ -1,0 +1,8 @@
+{
+  "_zweck": "R6-i18n: Vorlage messages-r5-shell.json (R5-shell-seo) setzt die DE-Brotkrume von „Home“ auf „Startseite“. merge.mjs behält bestehende Werte (Konflikt), deshalb erst dieser Patch, danach der Merge mit 0 Konflikten. EN/FR/IT bleiben unverändert.",
+  "de": {
+    "marken.breadcrumbHome": "Startseite",
+    "brandCategory.breadcrumbHome": "Startseite",
+    "landing.home": "Startseite"
+  }
+}

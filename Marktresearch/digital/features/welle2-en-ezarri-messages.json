@@ -1,0 +1,5 @@
+{
+  "_info": "Welle 2, Team EN-Ezarri (29.10.2026). Keine neuen messages-Schlüssel nötig: Alle Texte der Ezarri-Welt liegen in eigenen Content-Dateien (src/lib/ezarri/copy.en.js, src/lib/ezarri/konfigurator/copy.en.js, src/lib/ezarri/rechner/copy.en.js, rechner/en.js, rechner/anfrage-en.js; Auswahl über src/lib/ezarri/lang.js). Die Menütexte für das englische Menü stehen schon in src/messages/en.json (Shell.nav.ezarri = 'Ezarri glass mosaic', ezarriMosaics, ezarriConfigurator, ezarriPool). Der alte Vorschlag ezarri-messages-vorschlag.json (Namespace 'ezarri' in en.json) wird von keinem Code gelesen und kann bleiben oder entfallen.",
+  "de": {},
+  "en": {}
+}

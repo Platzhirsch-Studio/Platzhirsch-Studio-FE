@@ -1,0 +1,1105 @@
+{
+  "name": "West",
+  "slug": "west",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2019,
+  "jahr_hinweis": "Produktseite und Datenblatt: „2019 Collection“",
+  "typ": "modulares Sitzsystem (linear mit Sitzmodul 85 oder 75 cm, Ecke, geneigt, Chaise-Longue hexagonal/pentagonal/quadratisch, Couch, Saddle-Hide-Variante, Bänke, Hocker)",
+  "quellen": [
+    "https://www.minotti.com/en/west",
+    "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/15721/15689/MINOTTI_West_seating_system.zip",
+    "https://www.minotti.com/downloads/16576/15654/WEST_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/16579/15658/WEST_arrangement_02.pdf"
+  ],
+  "quellen_hinweis": "ZIP = 2D/3D-Dateien, nicht ausgewertet; Maße aus Datenblatt-Zeichnungen und Produktseite",
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "standardwerte": {
+    "hoehe_cm": 79,
+    "sitzhoehe_cm": 42,
+    "tiefe_cm": 114,
+    "tiefe_saddle_hide_cm": 120,
+    "sitzkissenbreiten_cm": [
+      85,
+      75
+    ],
+    "weitere_masse_unbeschriftet_cm": [
+      56,
+      22
+    ],
+    "saddle_hide_struktur_hoehe_unbeschriftet_cm": 65,
+    "hocker_hoehe_cm": 38,
+    "bank_hoehe_cm": 42,
+    "fusshoehe_standard_cm": 4.5,
+    "fusshoehe_high_cm": 7.5
+  },
+  "elemente": [
+    {
+      "code": "sofa-cm-228-seat-cushion-cm-85",
+      "name": "Sofa cm 228 - seat cushion cm 85",
+      "art": "sofa",
+      "breite_cm": 228,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "sofa-cm-313-seat-cushion-cm-85",
+      "name": "Sofa cm 313 - seat cushion cm 85",
+      "art": "sofa",
+      "breite_cm": 313,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-one-armrest-cm-114-seat-cushion-cm-85",
+      "name": "Element with one armrest cm 114 - seat cushion cm 85",
+      "art": "endelement",
+      "breite_cm": 114,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Eck-, Chaise- oder Couch-Elemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-one-armrest-cm-200-seat-cushion-cm-85",
+      "name": "Element with one armrest cm 200 - seat cushion cm 85",
+      "art": "endelement",
+      "breite_cm": 200,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Eck-, Chaise- oder Couch-Elemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-one-armrest-cm-285-seat-cushion-cm-85",
+      "name": "Element with one armrest cm 285 - seat cushion cm 85",
+      "art": "endelement",
+      "breite_cm": 285,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Eck-, Chaise- oder Couch-Elemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-88-seat-cushion-cm-85",
+      "name": "Central element cm 88 - seat cushion cm 85",
+      "art": "mittel",
+      "breite_cm": 88,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-173-seat-cushion-cm-85",
+      "name": "Central element cm 173 - seat cushion cm 85",
+      "art": "mittel",
+      "breite_cm": 173,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-258-seat-cushion-cm-85",
+      "name": "Central element cm 258 - seat cushion cm 85",
+      "art": "mittel",
+      "breite_cm": 258,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "corner-element-cm-114-seat-cushion-cm-85",
+      "name": "Corner element cm 114 - seat cushion cm 85",
+      "art": "ecke",
+      "breite_cm": 114,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Grundriss 114 × 114 cm",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "corner-element-cm-200-seat-cushion-cm-85",
+      "name": "Corner element cm 200 - seat cushion cm 85",
+      "art": "ecke",
+      "breite_cm": 200,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Länge des zweiten Schenkels nicht separat beschriftet",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "corner-element-cm-285-seat-cushion-cm-85",
+      "name": "Corner element cm 285 - seat cushion cm 85",
+      "art": "ecke",
+      "breite_cm": 285,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Länge des zweiten Schenkels nicht separat beschriftet",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "corner-sofa-cm-293-seat-cushion-cm-85",
+      "name": "Corner sofa cm 293 - seat cushion cm 85",
+      "art": "ecksofa",
+      "breite_cm": 293,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzkissenfolge laut Zeichnung 85/75/75; zweiter Schenkel nicht separat beschriftet",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "corner-sofa-cm-313-seat-cushion-cm-85",
+      "name": "Corner sofa cm 313 - seat cushion cm 85",
+      "art": "ecksofa",
+      "breite_cm": 313,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzkissenfolge laut Zeichnung 85/85/85; zweiter Schenkel nicht separat beschriftet",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-element-with-one-armrest-cm-244-seat-cushion-cm-85",
+      "name": "Inclined element with one armrest cm 244 - seat cushion cm 85",
+      "art": "endelement-geneigt",
+      "breite_cm": 244,
+      "tiefe_cm": 171,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Grundriss 244 × 171 cm (Arrangement C); Neigungswinkel nicht angegeben",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "inclined-central-element-cm-218-seat-cushion-cm-85",
+      "name": "Inclined central element cm 218 - seat cushion cm 85",
+      "art": "mittel-geneigt",
+      "breite_cm": 218,
+      "tiefe_cm": 157,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 85,
+      "hinweis": "Grundriss 218 × 157 cm laut Zeichnung; Neigungswinkel nicht angegeben",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "sofa-cm-208-seat-cushion-cm-75",
+      "name": "Sofa cm 208 - seat cushion cm 75",
+      "art": "sofa",
+      "breite_cm": 208,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 75,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "sofa-cm-283-seat-cushion-cm-75",
+      "name": "Sofa cm 283 - seat cushion cm 75",
+      "art": "sofa",
+      "breite_cm": 283,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 75,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-one-armrest-cm-180-seat-cushion-cm-75",
+      "name": "Element with one armrest cm 180 - seat cushion cm 75",
+      "art": "endelement",
+      "breite_cm": 180,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 75,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-one-armrest-cm-255-seat-cushion-cm-75",
+      "name": "Element with one armrest cm 255 - seat cushion cm 75",
+      "art": "endelement",
+      "breite_cm": 255,
+      "tiefe_cm": 114,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzkissen_breite_cm": 75,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "chaise-longue-hexagon-cm-167x167",
+      "name": "Chaise-longue hexagon cm 167x167",
+      "art": "chaise",
+      "breite_cm": 167,
+      "tiefe_cm": 167,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "chaise-longue-hexagon-cm-180x180",
+      "name": "Chaise-longue hexagon cm 180x180",
+      "art": "chaise",
+      "breite_cm": 180,
+      "tiefe_cm": 180,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "chaise-longue-square-cm-160x160",
+      "name": "Chaise-longue square cm 160x160",
+      "art": "chaise",
+      "breite_cm": 160,
+      "tiefe_cm": 160,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "chaise-longue-pentagon-cm-167x167",
+      "name": "Chaise-longue pentagon cm 167x167",
+      "art": "chaise",
+      "breite_cm": 167,
+      "tiefe_cm": 167,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "chaise-longue-pentagon-cm-180x180",
+      "name": "Chaise-longue pentagon cm 180x180",
+      "art": "chaise",
+      "breite_cm": 180,
+      "tiefe_cm": 180,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "sofa-chaise-longue-pentagon-cm-167x149",
+      "name": "Sofa chaise-longue pentagon cm 167x149",
+      "art": "peninsula",
+      "breite_cm": 167,
+      "tiefe_cm": 149,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "couch-cm-88x173",
+      "name": "Couch cm 88x173",
+      "art": "couch",
+      "breite_cm": 88,
+      "tiefe_cm": 173,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-couch-cm-133x159",
+      "name": "Double couch cm 133x159",
+      "art": "couch",
+      "breite_cm": 133,
+      "tiefe_cm": 159,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "saddle-hide-element-with-one-armrest-cm-179x120",
+      "name": "Saddle-hide - element with one armrest cm 179x120",
+      "art": "endelement",
+      "breite_cm": 179,
+      "tiefe_cm": 120,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "variante": "West Saddle-Hide (Rücken- und Armlehnen aus Metallstruktur mit Kernleder)",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "saddle-hide-central-element-cm-173x120",
+      "name": "Saddle-hide - central element cm 173x120",
+      "art": "mittel",
+      "breite_cm": 173,
+      "tiefe_cm": 120,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "variante": "West Saddle-Hide (Rücken- und Armlehnen aus Metallstruktur mit Kernleder)",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "saddle-hide-couch-cm-88x179",
+      "name": "Saddle-hide - couch cm 88x179",
+      "art": "couch",
+      "breite_cm": 88,
+      "tiefe_cm": 179,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "variante": "West Saddle-Hide (Rücken- und Armlehnen aus Metallstruktur mit Kernleder)",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "saddle-hide-couch-cm-114x179",
+      "name": "Saddle-hide - couch cm 114x179",
+      "art": "couch",
+      "breite_cm": 114,
+      "tiefe_cm": 179,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "variante": "West Saddle-Hide (Rücken- und Armlehnen aus Metallstruktur mit Kernleder)",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "saddle-hide-chaise-longue-cm-94x179",
+      "name": "Saddle-hide - chaise-longue cm 94x179",
+      "art": "chaise",
+      "breite_cm": 94,
+      "tiefe_cm": 179,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "variante": "West Saddle-Hide (Rücken- und Armlehnen aus Metallstruktur mit Kernleder)",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "saddle-hide-chaise-longue-cm-120x179",
+      "name": "Saddle-hide - chaise-longue cm 120x179",
+      "art": "chaise",
+      "breite_cm": 120,
+      "tiefe_cm": 179,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "variante": "West Saddle-Hide (Rücken- und Armlehnen aus Metallstruktur mit Kernleder)",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "saddle-hide-chaise-longue-hexagon-cm-180x180",
+      "name": "Saddle-hide - chaise-longue hexagon cm 180x180",
+      "art": "chaise",
+      "breite_cm": 180,
+      "tiefe_cm": 180,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "variante": "West Saddle-Hide (Rücken- und Armlehnen aus Metallstruktur mit Kernleder)",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "saddle-hide-chaise-longue-hexagon-open-cm-180x180",
+      "name": "Saddle-hide - chaise-longue hexagon open cm 180x180",
+      "art": "chaise",
+      "breite_cm": 180,
+      "tiefe_cm": 180,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "variante": "West Saddle-Hide (Rücken- und Armlehnen aus Metallstruktur mit Kernleder)",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "saddle-hide-chaise-longue-pentagon-cm-196x200",
+      "name": "Saddle-hide - chaise-longue pentagon cm 196x200",
+      "art": "chaise",
+      "breite_cm": 196,
+      "tiefe_cm": 200,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "variante": "West Saddle-Hide (Rücken- und Armlehnen aus Metallstruktur mit Kernleder)",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "saddle-hide-chaise-longue-pentagon-open-cm-196x195",
+      "name": "Saddle-hide - chaise-longue pentagon open cm 196x195",
+      "art": "chaise",
+      "breite_cm": 196,
+      "tiefe_cm": 195,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "variante": "West Saddle-Hide (Rücken- und Armlehnen aus Metallstruktur mit Kernleder)",
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-cm-88x173",
+      "name": "Bench cm 88x173",
+      "art": "bank",
+      "breite_cm": 88,
+      "tiefe_cm": 173,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-cm-78x114",
+      "name": "Bench cm 78x114",
+      "art": "bank",
+      "breite_cm": 78,
+      "tiefe_cm": 114,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-cm-114x114",
+      "name": "Bench cm 114x114",
+      "art": "bank",
+      "breite_cm": 114,
+      "tiefe_cm": 114,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-cm-88x114",
+      "name": "Bench cm 88x114",
+      "art": "bank",
+      "breite_cm": 88,
+      "tiefe_cm": 114,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-cm-88x88",
+      "name": "Bench cm 88x88",
+      "art": "bank",
+      "breite_cm": 88,
+      "tiefe_cm": 88,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-with-strip-cm-48x48",
+      "name": "Ottoman with strip cm 48x48",
+      "art": "hocker",
+      "breite_cm": 48,
+      "tiefe_cm": 48,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "Sockel mit Aluminiumleiste",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-with-strip-cm-48x88",
+      "name": "Ottoman with strip cm 48x88",
+      "art": "hocker",
+      "breite_cm": 48,
+      "tiefe_cm": 88,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "Sockel mit Aluminiumleiste",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-with-strip-cm-88x88",
+      "name": "Ottoman with strip cm 88x88",
+      "art": "hocker",
+      "breite_cm": 88,
+      "tiefe_cm": 88,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "Sockel mit Aluminiumleiste",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-with-strip-cm-133x133",
+      "name": "Ottoman with strip cm 133x133",
+      "art": "hocker",
+      "breite_cm": 133,
+      "tiefe_cm": 133,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "Sockel mit Aluminiumleiste",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-with-feet-cm-48x48",
+      "name": "Ottoman with feet cm 48x48",
+      "art": "hocker",
+      "breite_cm": 48,
+      "tiefe_cm": 48,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "auf Füßen",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-with-feet-cm-48x88",
+      "name": "Ottoman with feet cm 48x88",
+      "art": "hocker",
+      "breite_cm": 48,
+      "tiefe_cm": 88,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "auf Füßen",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-with-feet-cm-88x88",
+      "name": "Ottoman with feet cm 88x88",
+      "art": "hocker",
+      "breite_cm": 88,
+      "tiefe_cm": 88,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "auf Füßen",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-with-feet-cm-133x133",
+      "name": "Ottoman with feet cm 133x133",
+      "art": "hocker",
+      "breite_cm": 133,
+      "tiefe_cm": 133,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "auf Füßen",
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "zubehoer": [
+    {
+      "code": "optional-headrest-cm-81-seat-cm-85",
+      "name": "Optional headrest cm 81 - seat cm 85",
+      "art": "kopfstuetze",
+      "breite_cm": 81,
+      "tiefe_cm": null,
+      "hoehe_cm": 28,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Höhe 28 cm aus Zeichnung abgeleitet; Befestigung mit Band an der Struktur"
+    },
+    {
+      "code": "optional-headrest-cm-71-seat-cm-75",
+      "name": "Optional headrest cm 71 - seat cm 75",
+      "art": "kopfstuetze",
+      "breite_cm": 71,
+      "tiefe_cm": null,
+      "hoehe_cm": 28,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Höhe 28 cm aus Zeichnung abgeleitet"
+    },
+    {
+      "code": "optional-back-cushion-cm-71x49",
+      "name": "Optional back cushion cm 71x49",
+      "art": "rueckenkissen-optional",
+      "breite_cm": 71,
+      "tiefe_cm": null,
+      "hoehe_cm": 49,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "optional-back-cushion-cm-61x49",
+      "name": "Optional back cushion cm 61x49",
+      "art": "rueckenkissen-optional",
+      "breite_cm": 61,
+      "tiefe_cm": null,
+      "hoehe_cm": 49,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "optional-cushion-cm-50x50",
+      "name": "Optional cushion cm 50x50",
+      "art": "dekokissen-optional",
+      "breite_cm": 50,
+      "tiefe_cm": null,
+      "hoehe_cm": 50,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "optional-cushion-cm-45x45",
+      "name": "Optional cushion cm 45x45",
+      "art": "dekokissen-optional",
+      "breite_cm": 45,
+      "tiefe_cm": null,
+      "hoehe_cm": 45,
+      "quelle": [
+        "https://www.minotti.com/en/west",
+        "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Gepolsterte Rückenlehne, umhüllt mit gesteppter Gänsedaunen-Auflage; Rückenkissen Gänsedaunen (Assopiuma Gold Label) mit weichem PU-Kern",
+      "quelle": "https://www.minotti.com/en/west"
+    },
+    {
+      "name": "West Saddle-Hide: Rückenlehne als formgepolsterte Metallstruktur mit Kernleder und handgearbeiteter Umrandungsnaht",
+      "quelle": "https://www.minotti.com/en/west"
+    },
+    {
+      "name": "Optionale Kopfstütze 81 cm (Sitzmodul 85) bzw. 71 cm (Sitzmodul 75)",
+      "quelle": "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "name": "Optionale Rückenkissen 71 × 49 und 61 × 49 cm",
+      "quelle": "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Gepolsterte Armlehne mit Gänsedaunen-Steppung (per Schnellkupplung abnehmbar)",
+      "hoehe_cm": null,
+      "hinweis": "Seitenansicht zeigt 56 cm und 22 cm ohne Beschriftung"
+    },
+    {
+      "name": "Saddle-Hide-Armlehne (Metallstruktur mit Kernleder)",
+      "hoehe_cm": null,
+      "hinweis": "Zeichnung zeigt 65 cm ohne Beschriftung"
+    },
+    {
+      "name": "Offen/ohne Armlehne (Mittel-, Couch-, Chaise-Elemente)",
+      "hoehe_cm": null
+    }
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Im unteren Bereich vier stranggepresste Aluminiumleisten 47 × 6 mm (Minotti-Design), gebürstet und poliert; Element steht auf verstellbaren Füßen",
+    "finishes": [
+      "Aluminiumleisten: Brandy (exklusiv, Minotti Studio)",
+      "Füße: Schwarz"
+    ],
+    "gleiter": "Nylon",
+    "hoehen_cm": {
+      "standard": 4.5,
+      "high_auf_anfrage_ohne_aufpreis": 7.5
+    },
+    "hinweis": "Fußhöhe 7,5 cm muss bei Bestellung angegeben werden; Hocker wahlweise mit Leiste (strip) oder auf Füßen",
+    "quelle": "https://www.minotti.com/en/west"
+  },
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder",
+      "Kernleder (Saddle-Hide) für Rücken/Armlehnen der Saddle-Hide-Variante"
+    ],
+    "bezugsart": "abnehmbar: Sitzkissen-, Rückenkissen- und Strukturbezüge in allen Versionen (Stoff und Leder) komplett abnehmbar (vorher die vier Aluminiumleisten entfernen); Hocker in Pony Look/Zebra Look/Pony Cenere fest bezogen",
+    "saddle_hide_farben": [
+      "Mud (Fango)",
+      "Dove Grey (Tortora)",
+      "Moka",
+      "Ash (Cenere)",
+      "Black (Nero)"
+    ],
+    "farbmuster": "Stoff- und Lederkollektion sowie Farbmuster bitte im Showroom ansehen (Minotti „World of Materials“)",
+    "quelle": "https://www.minotti.com/en/west"
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optional back cushion",
+      "breite_cm": 71,
+      "hoehe_cm": 49
+    },
+    {
+      "name": "Optional back cushion",
+      "breite_cm": 61,
+      "hoehe_cm": 49
+    },
+    {
+      "name": "Optional cushion",
+      "breite_cm": 50,
+      "tiefe_cm": 50
+    },
+    {
+      "name": "Optional cushion",
+      "breite_cm": 45,
+      "tiefe_cm": 45
+    },
+    {
+      "name": "Sitzkissen wendbar: Gänsedaunen + HR-PU-Kern mit Memory-Foam-Schicht",
+      "breite_cm": null
+    }
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "Zwei Sitzmodulbreiten: 85 cm und 75 cm",
+    "Facettierte Chaise-Longues (Hexagon, Pentagon) für polygonale Kompositionen",
+    "Saddle-Hide-Variante (Rücken/Armlehnen in Kernleder) mit Standardvariante kombinierbar",
+    "Armlehnen per Schnellkupplung abnehmbar",
+    "Kombination mit Amber, Side und Clive vorgesehen",
+    "Arrangements WEST 01–02 als PDF, Datenblatt mit Arrangements A–E",
+    "Seitenangabe SX/DX gemäß Minotti-Datenblatt"
+  ],
+  "fehlend": [
+    "Sitztiefe für alle Elemente nicht beschriftet",
+    "Armlehnenhöhe nicht eindeutig (Maße 56/22 cm unbeschriftet)",
+    "Länge des zweiten Schenkels bei Eckelementen 200/285 und Ecksofas 293/313 nicht separat beschriftet",
+    "Neigungswinkel der geneigten Elemente nicht angegeben",
+    "Tiefe der Kopfstützen nicht angegeben",
+    "Keine veröffentlichte Kompatibilitätsmatrix (Kombinationen nur über Arrangements)",
+    "Stoff-/Lederkategorien mit Preisgruppen nicht öffentlich",
+    "Preise nicht öffentlich"
+  ],
+  "rechte_hinweis": "Maße aus öffentlichem Minotti-Datenblatt und Produktseite; CAD-Dateien laut Minotti nur für Einrichtungsplanung nutzbar. Herstellerbilder nicht verändern (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "vollstaendigkeit_prozent": 80
+}

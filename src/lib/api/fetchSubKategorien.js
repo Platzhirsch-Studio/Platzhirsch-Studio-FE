@@ -1,6 +1,7 @@
 // src/lib/api/fetchSubKategorien.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
 
 // Subcategory options (e.g. Chandeliers -> wall-mounted/ceiling-mounted/
 // floor-standing) for the /produkte/[category] filter panel (Frappe doctype
@@ -11,7 +12,7 @@ export async function fetchSubKategorien() {
   const API_URL = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.sub_kategorie.api.get_all_sub_kategorien_api`;
 
   try {
-    const response = await fetch(API_URL, {
+    const response = await backofficeFetch(API_URL, {
       method: "GET",
       next: { revalidate: 3600, tags: ["sub-kategorien"] },
     });

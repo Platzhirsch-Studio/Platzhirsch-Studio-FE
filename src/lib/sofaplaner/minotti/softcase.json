@@ -1,0 +1,3742 @@
+{
+  "name": "Softcase",
+  "slug": "softcase",
+  "hersteller": "Minotti",
+  "designer": "Hannes Peer",
+  "jahr": 2026,
+  "jahr_hinweis": "Teil der Minotti 2026 Collection (Designs am 16.04.2026 registriert; Datenblatt Stand Juli 2026).",
+  "typ": "Modulares Sitzsystem mit selbsttragender Rückenschale (Shell); lineare, INCLINED- und INCLINED-DEEP-Module sowie Poufs",
+  "quellen": [
+    {
+      "titel": "Produktseite Minotti Softcase",
+      "url": "https://www.minotti.com/en/softcase"
+    },
+    {
+      "titel": "Softcase Technical Sheet (PDF, Juli 2026)",
+      "url": "https://www.minotti.com/downloads/26356/32383/SOFTCASE_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "abrufdatum": "2026-10-27",
+  "mass_hinweis": "Alle Maße in cm aus dem offiziellen Technical Sheet (Zeichnungsbemaßung, PDF-Textebene maschinell ausgelesen und stichprobenartig an gerenderten Seiten geprüft). Breite = Frontbreite, Tiefe = Seitenansicht, Höhe = maximale Höhe inkl. Rückenkissen. CAD-Maße können laut Minotti leicht abweichen.",
+  "linien": {
+    "LINEAR": "Gerade Module, Tiefe 109 cm",
+    "INCLINED": "Schräg verlaufende Module (Tiefen 142/148/156/165 cm)",
+    "INCLINED DEEP": "Tiefe schräge Module (Tiefen 148/173/193/213 cm)"
+  },
+  "kompositionsregeln": [
+    "Selbsttragende Rückenpaneele per Schnellkupplung an der Struktur befestigt; Paneelverlauf im Datenblatt als Übersicht.",
+    "Einteilige Sitzflächen; End-, Eck-, Mittel-, Couch- und Chaise-Elemente laut Elementliste kombinierbar."
+  ],
+  "rueckenoptionen": [
+    "Rückenschale (Shell) mit vertikaler Mittelnaht und doppelter Umfangsnaht, in Stoff oder Leder",
+    "Rücken mit horizontalem Silikon-Detail (bei Stoff KING: Stickerei statt Silikon)",
+    "OPEN-Elemente (offene Seite) laut Elementliste"
+  ],
+  "armlehnenoptionen": [
+    "Mit 1 Armlehne (Terminal-/Endelemente)",
+    "Mit 2 Armlehnen (Sofas, Ecksofas)",
+    "Ohne Armlehnen (Sessel/Sofa/Terminal \"without armrests\", Mittelelemente)"
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Umlaufender Rahmen aus stranggepresstem Aluminium mit Aluguss-Verbindern, poliert gebürstet; verstellbare Polypropylen-Füße mit schwarzen SEBS-Gleitern.",
+    "rahmen_finish": [
+      "Aluminium poliert gebürstet"
+    ],
+    "fuss_hoehe_cm": {
+      "standard": 7.5,
+      "optional": 9.5,
+      "hinweis": "Füße bzw. Rollen-Kits 9,5 cm ohne Aufpreis, bei Bestellung angeben; nicht für Poufs 50x50."
+    },
+    "rollen": "Poufs 50x50xH43/H49 und 102x102 optional mit 360°-Rollen (Nylon/TPU)."
+  },
+  "bezuege": {
+    "kategorien": [
+      "Stoff (Minotti-Kollektion)",
+      "Leder (Minotti-Kollektion)"
+    ],
+    "bezugsart": "abnehmbar – komplett abziehbar in allen Versionen (Stoff und Leder)",
+    "konfektion": [
+      "A) komplett Stoff* oder Leder",
+      "B) Paneel in Leder Kat. Pelle Nature, Struktur und Kissen in Stoff"
+    ],
+    "ausgeschlossene_stoffe_paneele": [
+      "Check",
+      "Corium",
+      "Dandy Big/Small",
+      "Gentleman",
+      "Kabuki",
+      "King",
+      "Praslin Big/Small",
+      "Tibet Pixel/Square",
+      "Tokyo",
+      "Traces",
+      "Twill Small/Large"
+    ],
+    "pouf_50x50": {
+      "konfektion": "Streifen aus Stoff oder Leder in Connery-Technik, mit Bändern verbunden und von Hand genäht",
+      "ausgeschlossene_stoffe": [
+        "Check",
+        "Corium",
+        "Freemont",
+        "Gary/Gary Hospitality",
+        "Hunt",
+        "Jackson",
+        "Kabuki",
+        "Kerlin",
+        "King",
+        "Monterey",
+        "Nevada",
+        "Orion",
+        "Praslin Small/Big",
+        "Queen",
+        "Teddy",
+        "Tender",
+        "Tibet Pixel/Square",
+        "Timothy",
+        "Tokio",
+        "Traces"
+      ]
+    },
+    "farbmuster_hinweis": "Farb- und Materialmuster (Stoffe/Leder der Minotti-Kollektion) bitte im Showroom ansehen; Bildschirmfarben sind nur Anhaltspunkte (Datenblatt: \"Printed colours are to be considered as purely indicative\")."
+  },
+  "kissenoptionen": [
+    "Optionales Rückenkissen 60x55 cm",
+    "Optionales Kissen 50x50 cm",
+    "Sitz- und Rückenkissen Gänsedaune (Assopiuma Gold Label) mit PU-Kern; Rückenkissen-Einlage 60x50 cm",
+    "Kissenstickerei bei Stoff KING"
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "Struktur Sperrholz inkl. selbsttragender Rückenpaneele; FSC-zertifizierte Holzkomponenten.",
+    "Rücken und Armlehnen per Hebel abnehmbar, Paneele per Schnellkupplung (auch für den Transport)."
+  ],
+  "rechte_hinweis": "Texte, Datenblätter, CAD-Dateien und Bilder sind urheberrechtlich geschützt (Minotti SpA). Bilder dürfen laut Minotti nicht verändert werden – Freistellungen nur intern/Labs, im Rechte-Register vermerken. CAD-Nutzung laut Minotti nur für Einrichtungsplanung.",
+  "elemente": [
+    {
+      "id": "softcase-sofa-232",
+      "code": null,
+      "name": "SOFA CM 232",
+      "name_it": "DIVANO CM 232",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 3
+    },
+    {
+      "id": "softcase-sofa-260",
+      "code": null,
+      "name": "SOFA CM 260",
+      "name_it": "DIVANO CM 260",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 3
+    },
+    {
+      "id": "softcase-sofa-288",
+      "code": null,
+      "name": "SOFA CM 288",
+      "name_it": "DIVANO CM 288",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 288,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 3
+    },
+    {
+      "id": "softcase-corner-sofa-232",
+      "code": null,
+      "name": "CORNER SOFA CM 232",
+      "name_it": "DIVANO ANGOLARE CM 232",
+      "art": "ecksofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 3
+    },
+    {
+      "id": "softcase-corner-sofa-288",
+      "code": null,
+      "name": "CORNER SOFA CM 288",
+      "name_it": "DIVANO ANGOLARE CM 288",
+      "art": "ecksofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 288,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 4
+    },
+    {
+      "id": "softcase-corner-sofa-260",
+      "code": null,
+      "name": "CORNER SOFA CM 260",
+      "name_it": "DIVANO ANGOLARE CM 260",
+      "art": "ecksofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 4
+    },
+    {
+      "id": "softcase-armchair-with-1-armrest-120",
+      "code": null,
+      "name": "ARMCHAIR WITH 1 ARMREST CM 120",
+      "name_it": "POLTRONA CON 1 BRACCIOLO CM 120",
+      "art": "sessel",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 120,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 4
+    },
+    {
+      "id": "softcase-sofa-with-1-armrest-148",
+      "code": null,
+      "name": "SOFA WITH 1 ARMREST CM 148",
+      "name_it": "DIVANO CON 1 BRACCIOLO CM 148",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 4
+    },
+    {
+      "id": "softcase-sofa-with-1-armrest-176",
+      "code": null,
+      "name": "SOFA WITH 1 ARMREST CM 176",
+      "name_it": "DIVANO CON 1 BRACCIOLO CM 176",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 176,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 4
+    },
+    {
+      "id": "softcase-sofa-with-1-armrest-204",
+      "code": null,
+      "name": "SOFA WITH 1 ARMREST CM 204",
+      "name_it": "DIVANO CON 1 BRACCIOLO CM 204",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 204,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 4
+    },
+    {
+      "id": "softcase-sofa-with-1-armrest-232",
+      "code": null,
+      "name": "SOFA WITH 1 ARMREST CM 232",
+      "name_it": "DIVANO CON 1 BRACCIOLO CM 232",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 4
+    },
+    {
+      "id": "softcase-sofa-with-1-armrest-288",
+      "code": null,
+      "name": "SOFA WITH 1 ARMREST CM 288",
+      "name_it": "DIVANO CON 1 BRACCIOLO CM 288",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 288,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 4
+    },
+    {
+      "id": "softcase-sofa-with-1-armrest-260",
+      "code": null,
+      "name": "SOFA WITH 1 ARMREST CM 260",
+      "name_it": "DIVANO CON 1 BRACCIOLO CM 260",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 4
+    },
+    {
+      "id": "softcase-corner-sofa-with-1-armrest-204",
+      "code": null,
+      "name": "CORNER SOFA WITH 1 ARMREST CM 204",
+      "name_it": "DIVANO ANGOLARE CON 1 BRACCIOLO CM 204",
+      "art": "ecksofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 204,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 5
+    },
+    {
+      "id": "softcase-corner-sofa-with-1-armrest-232",
+      "code": null,
+      "name": "CORNER SOFA WITH 1 ARMREST CM 232",
+      "name_it": "DIVANO ANGOLARE CON 1 BRACCIOLO CM 232",
+      "art": "ecksofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 5
+    },
+    {
+      "id": "softcase-corner-sofa-with-1-armrest-260",
+      "code": null,
+      "name": "CORNER SOFA WITH 1 ARMREST CM 260",
+      "name_it": "DIVANO ANGOLARE CON 1 BRACCIOLO CM 260",
+      "art": "ecksofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 5
+    },
+    {
+      "id": "softcase-corner-sofa-with-1-armrest-288",
+      "code": null,
+      "name": "CORNER SOFA WITH 1 ARMREST CM 288",
+      "name_it": "DIVANO ANGOLARE CON 1 BRACCIOLO CM 288",
+      "art": "ecksofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 288,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 5
+    },
+    {
+      "id": "softcase-armchair-without-armrest-92",
+      "code": null,
+      "name": "ARMCHAIR WITHOUT ARMREST CM 92",
+      "name_it": "POLTRONA SENZA BRACCIOLI CM 92",
+      "art": "sessel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 92,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 5
+    },
+    {
+      "id": "softcase-sofa-without-armrests-120",
+      "code": null,
+      "name": "SOFA WITHOUT ARMRESTS CM 120",
+      "name_it": "DIVANO SENZA BRACCIOLI CM 120",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 120,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 5
+    },
+    {
+      "id": "softcase-sofa-without-armrests-148",
+      "code": null,
+      "name": "SOFA WITHOUT ARMRESTS CM 148",
+      "name_it": "DIVANO SENZA BRACCIOLI CM 148",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 148,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 5
+    },
+    {
+      "id": "softcase-sofa-without-armrests-176",
+      "code": null,
+      "name": "SOFA WITHOUT ARMRESTS CM 176",
+      "name_it": "DIVANO SENZA BRACCIOLI CM 176",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 176,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 5
+    },
+    {
+      "id": "softcase-sofa-without-armrests-204",
+      "code": null,
+      "name": "SOFA WITHOUT ARMRESTS CM 204",
+      "name_it": "DIVANO SENZA BRACCIOLI CM 204",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 204,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 6
+    },
+    {
+      "id": "softcase-sofa-without-armrests-232",
+      "code": null,
+      "name": "SOFA WITHOUT ARMRESTS CM 232",
+      "name_it": "DIVANO SENZA BRACCIOLI CM 232",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 6
+    },
+    {
+      "id": "softcase-sofa-without-armrests-260",
+      "code": null,
+      "name": "SOFA WITHOUT ARMRESTS CM 260",
+      "name_it": "DIVANO SENZA BRACCIOLI CM 260",
+      "art": "sofa",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 6
+    },
+    {
+      "id": "softcase-sofa-couch-120x148",
+      "code": null,
+      "name": "SOFA - COUCH CM 120X148",
+      "name_it": "DIVANO - COUCH CM 120X148",
+      "art": "couch",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 120,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 6
+    },
+    {
+      "id": "softcase-sofa-couch-109x176",
+      "code": null,
+      "name": "SOFA - COUCH CM 109X176",
+      "name_it": "DIVANO - COUCH CM 109X176",
+      "art": "couch",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 109,
+      "tiefe_cm": 176,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 6
+    },
+    {
+      "id": "softcase-sofa-couch-148x176",
+      "code": null,
+      "name": "SOFA - COUCH CM 148X176",
+      "name_it": "DIVANO - COUCH CM 148X176",
+      "art": "couch",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 176,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 6
+    },
+    {
+      "id": "softcase-sofa-chaise-longue-148x148-mod-a",
+      "code": null,
+      "name": "SOFA - CHAISE LONGUE CM 148X148 - MOD. A",
+      "name_it": "DIVANO - CHAISE LONGUE CM 148X148 - MOD. A",
+      "art": "chaise",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "modell": "A",
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 6
+    },
+    {
+      "id": "softcase-sofa-chaise-longue-176x176-mod-a",
+      "code": null,
+      "name": "SOFA - CHAISE LONGUE CM 176X176 - MOD. A",
+      "name_it": "DIVANO - CHAISE LONGUE CM 176X176 - MOD. A",
+      "art": "chaise",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 176,
+      "tiefe_cm": 176,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "modell": "A",
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 6
+    },
+    {
+      "id": "softcase-sofa-chaise-longue-148x148-mod-b",
+      "code": null,
+      "name": "SOFA - CHAISE LONGUE CM 148X148 - MOD. B",
+      "name_it": "DIVANO - CHAISE LONGUE CM 148X148 - MOD. B",
+      "art": "chaise",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "modell": "B",
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 7
+    },
+    {
+      "id": "softcase-sofa-chaise-longue-176x176-mod-b",
+      "code": null,
+      "name": "SOFA - CHAISE LONGUE CM 176X176 - MOD. B",
+      "name_it": "DIVANO - CHAISE LONGUE CM 176X176 - MOD. B",
+      "art": "chaise",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 176,
+      "tiefe_cm": 176,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "modell": "B",
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 7
+    },
+    {
+      "id": "softcase-terminal-element-120",
+      "code": null,
+      "name": "TERMINAL ELEMENT CM 120",
+      "name_it": "ELEMENTO TERMINALE CM 120",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 120,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 7
+    },
+    {
+      "id": "softcase-terminal-element-148",
+      "code": null,
+      "name": "TERMINAL ELEMENT CM 148",
+      "name_it": "ELEMENTO TERMINALE CM 148",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 7
+    },
+    {
+      "id": "softcase-terminal-element-176",
+      "code": null,
+      "name": "TERMINAL ELEMENT CM 176",
+      "name_it": "ELEMENTO TERMINALE CM 176",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 176,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 7
+    },
+    {
+      "id": "softcase-terminal-element-204",
+      "code": null,
+      "name": "TERMINAL ELEMENT CM 204",
+      "name_it": "ELEMENTO TERMINALE CM 204",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 204,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 7
+    },
+    {
+      "id": "softcase-terminal-element-232",
+      "code": null,
+      "name": "TERMINAL ELEMENT CM 232",
+      "name_it": "ELEMENTO TERMINALE CM 232",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 7
+    },
+    {
+      "id": "softcase-terminal-element-260",
+      "code": null,
+      "name": "TERMINAL ELEMENT CM 260",
+      "name_it": "ELEMENTO TERMINALE CM 260",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 7
+    },
+    {
+      "id": "softcase-terminal-element-288",
+      "code": null,
+      "name": "TERMINAL ELEMENT CM 288",
+      "name_it": "ELEMENTO TERMINALE CM 288",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 288,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 8
+    },
+    {
+      "id": "softcase-terminal-corner-element-148",
+      "code": null,
+      "name": "TERMINAL CORNER ELEMENT CM 148",
+      "name_it": "ELEMENTO TERMINALE ANGOLARE CM 148",
+      "art": "ecke",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 8
+    },
+    {
+      "id": "softcase-terminal-corner-element-176",
+      "code": null,
+      "name": "TERMINAL CORNER ELEMENT CM 176",
+      "name_it": "ELEMENTO TERMINALE ANGOLARE CM 176",
+      "art": "ecke",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 176,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 8
+    },
+    {
+      "id": "softcase-terminal-corner-element-204",
+      "code": null,
+      "name": "TERMINAL CORNER ELEMENT CM 204",
+      "name_it": "ELEMENTO TERMINALE ANGOLARE CM 204",
+      "art": "ecke",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 204,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 8
+    },
+    {
+      "id": "softcase-terminal-corner-element-232",
+      "code": null,
+      "name": "TERMINAL CORNER ELEMENT CM 232",
+      "name_it": "ELEMENTO TERMINALE ANGOLARE CM 232",
+      "art": "ecke",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 8
+    },
+    {
+      "id": "softcase-terminal-corner-element-260",
+      "code": null,
+      "name": "TERMINAL CORNER ELEMENT CM 260",
+      "name_it": "ELEMENTO TERMINALE ANGOLARE CM 260",
+      "art": "ecke",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 8
+    },
+    {
+      "id": "softcase-terminal-corner-element-288",
+      "code": null,
+      "name": "TERMINAL CORNER ELEMENT CM 288",
+      "name_it": "ELEMENTO TERMINALE ANGOLARE CM 288",
+      "art": "ecke",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 288,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 8
+    },
+    {
+      "id": "softcase-open-terminal-element-176",
+      "code": null,
+      "name": "OPEN TERMINAL ELEMENT CM 176",
+      "name_it": "ELEMENTO TERMINALE OPEN CM 176",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 176,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 9
+    },
+    {
+      "id": "softcase-open-terminal-element-232",
+      "code": null,
+      "name": "OPEN TERMINAL ELEMENT CM 232",
+      "name_it": "ELEMENTO TERMINALE OPEN CM 232",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 9
+    },
+    {
+      "id": "softcase-open-terminal-element-260",
+      "code": null,
+      "name": "OPEN TERMINAL ELEMENT CM 260",
+      "name_it": "ELEMENTO TERMINALE OPEN CM 260",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 9
+    },
+    {
+      "id": "softcase-open-terminal-element-204",
+      "code": null,
+      "name": "OPEN TERMINAL ELEMENT CM 204",
+      "name_it": "ELEMENTO TERMINALE OPEN CM 204",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 204,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 9
+    },
+    {
+      "id": "softcase-open-terminal-element-288",
+      "code": null,
+      "name": "OPEN TERMINAL ELEMENT CM 288",
+      "name_it": "ELEMENTO TERMINALE OPEN CM 288",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 288,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 9
+    },
+    {
+      "id": "softcase-open-terminal-corner-elements-176",
+      "code": null,
+      "name": "OPEN TERMINAL CORNER ELEMENTS CM 176",
+      "name_it": "ELEMENTO TERMINALE ANGOLARE OPEN CM 176",
+      "art": "ecke",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 176,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 9
+    },
+    {
+      "id": "softcase-open-terminal-corner-elements-204",
+      "code": null,
+      "name": "OPEN TERMINAL CORNER ELEMENTS CM 204",
+      "name_it": "ELEMENTO TERMINALE ANGOLARE OPEN CM 204",
+      "art": "ecke",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 204,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 9
+    },
+    {
+      "id": "softcase-open-terminal-corner-elements-232",
+      "code": null,
+      "name": "OPEN TERMINAL CORNER ELEMENTS CM 232",
+      "name_it": "ELEMENTO TERMINALE ANGOLARE OPEN CM 232",
+      "art": "ecke",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 9
+    },
+    {
+      "id": "softcase-open-terminal-corner-element-260",
+      "code": null,
+      "name": "OPEN TERMINAL CORNER ELEMENT CM 260",
+      "name_it": "ELEMENTO TERMINALE ANGOLARE OPEN CM 260",
+      "art": "ecke",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 9
+    },
+    {
+      "id": "softcase-open-terminal-corner-element-288",
+      "code": null,
+      "name": "OPEN TERMINAL CORNER ELEMENT CM 288",
+      "name_it": "ELEMENTO TERMINALE ANGOLARE OPEN CM 288",
+      "art": "ecke",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 288,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 9
+    },
+    {
+      "id": "softcase-terminal-element-without-armrests-92",
+      "code": null,
+      "name": "TERMINAL ELEMENT WITHOUT ARMRESTS CM 92",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI CM 92",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 92,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 10
+    },
+    {
+      "id": "softcase-terminal-element-without-armrests-120",
+      "code": null,
+      "name": "TERMINAL ELEMENT WITHOUT ARMRESTS CM 120",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI CM 120",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 120,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 10
+    },
+    {
+      "id": "softcase-terminal-element-without-armrests-148",
+      "code": null,
+      "name": "TERMINAL ELEMENT WITHOUT ARMRESTS CM 148",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI CM 148",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 10
+    },
+    {
+      "id": "softcase-terminal-element-without-armrests-176",
+      "code": null,
+      "name": "TERMINAL ELEMENT WITHOUT ARMRESTS CM 176",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI CM 176",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 176,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 10
+    },
+    {
+      "id": "softcase-terminal-element-without-armrests-204",
+      "code": null,
+      "name": "TERMINAL ELEMENT WITHOUT ARMRESTS CM 204",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI CM 204",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 204,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 10
+    },
+    {
+      "id": "softcase-terminal-element-without-armrests-260",
+      "code": null,
+      "name": "TERMINAL ELEMENT WITHOUT ARMRESTS CM 260",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI CM 260",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 10
+    },
+    {
+      "id": "softcase-terminal-element-without-armrests-232",
+      "code": null,
+      "name": "TERMINAL ELEMENT WITHOUT ARMRESTS CM 232",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI CM 232",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 10
+    },
+    {
+      "id": "softcase-open-terminal-element-without-armrests-148",
+      "code": null,
+      "name": "OPEN TERMINAL ELEMENT WITHOUT ARMRESTS CM 148",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 148",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 10
+    },
+    {
+      "id": "softcase-open-terminal-element-without-armrests-176",
+      "code": null,
+      "name": "OPEN TERMINAL ELEMENT WITHOUT ARMRESTS CM 176",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 176",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 176,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 10
+    },
+    {
+      "id": "softcase-open-terminal-element-without-armrests-204",
+      "code": null,
+      "name": "OPEN TERMINAL ELEMENT WITHOUT ARMRESTS CM 204",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 204",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 204,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 11
+    },
+    {
+      "id": "softcase-open-terminal-element-without-armrests-232",
+      "code": null,
+      "name": "OPEN TERMINAL ELEMENT WITHOUT ARMRESTS CM 232",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 232",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 11
+    },
+    {
+      "id": "softcase-open-terminal-element-without-armrests-260",
+      "code": null,
+      "name": "OPEN TERMINAL ELEMENT WITHOUT ARMRESTS CM 260",
+      "name_it": "ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 260",
+      "art": "endelement",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 11
+    },
+    {
+      "id": "softcase-terminal-element-couch-109",
+      "code": null,
+      "name": "TERMINAL ELEMENT - COUCH CM 109",
+      "name_it": "ELEMENTO TERMINALE - COUCH CM 109",
+      "art": "couch",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 109,
+      "tiefe_cm": 176,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 11
+    },
+    {
+      "id": "softcase-terminal-element-couch-120",
+      "code": null,
+      "name": "TERMINAL ELEMENT - COUCH CM 120",
+      "name_it": "ELEMENTO TERMINALE - COUCH CM 120",
+      "art": "couch",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 120,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 11
+    },
+    {
+      "id": "softcase-terminal-element-couch-148",
+      "code": null,
+      "name": "TERMINAL ELEMENT - COUCH CM 148",
+      "name_it": "ELEMENTO TERMINALE - COUCH CM 148",
+      "art": "couch",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 176,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 11
+    },
+    {
+      "id": "softcase-terminal-element-chaise-longue-148x148-mod-a",
+      "code": null,
+      "name": "TERMINAL ELEMENT - CHAISE LONGUE CM 148X148 - MOD. A",
+      "name_it": "ELEMENTO TERMINALE - CHAISE LONGUE CM 148X148 - MOD. A",
+      "art": "chaise",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "modell": "A",
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 11
+    },
+    {
+      "id": "softcase-terminal-element-chaise-longue-176x176-mod-a",
+      "code": null,
+      "name": "TERMINAL ELEMENT - CHAISE LONGUE CM 176X176 - MOD. A",
+      "name_it": "ELEMENTO TERMINALE - CHAISE LONGUE CM 176X176 - MOD. A",
+      "art": "chaise",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 176,
+      "tiefe_cm": 176,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "modell": "A",
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 11
+    },
+    {
+      "id": "softcase-terminal-element-chaise-longue-148x148-mod-b",
+      "code": null,
+      "name": "TERMINAL ELEMENT - CHAISE LONGUE CM 148X148 - MOD. B",
+      "name_it": "ELEMENTO TERMINALE - CHAISE LONGUE CM 148X148 - MOD. B",
+      "art": "chaise",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "modell": "B",
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 12
+    },
+    {
+      "id": "softcase-terminal-element-chaise-longue-176x176-mod-b",
+      "code": null,
+      "name": "TERMINAL ELEMENT - CHAISE LONGUE CM 176X176 - MOD. B",
+      "name_it": "ELEMENTO TERMINALE - CHAISE LONGUE CM 176X176 - MOD. B",
+      "art": "chaise",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 176,
+      "tiefe_cm": 176,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "modell": "B",
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 12
+    },
+    {
+      "id": "softcase-central-element-92",
+      "code": null,
+      "name": "CENTRAL ELEMENT CM 92",
+      "name_it": "ELEMENTO CENTRALE CM 92",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 92,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 12
+    },
+    {
+      "id": "softcase-central-element-148",
+      "code": null,
+      "name": "CENTRAL ELEMENT CM 148",
+      "name_it": "ELEMENTO CENTRALE CM 148",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 148,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 12
+    },
+    {
+      "id": "softcase-central-element-120",
+      "code": null,
+      "name": "CENTRAL ELEMENT CM 120",
+      "name_it": "ELEMENTO CENTRALE CM 120",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 120,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 12
+    },
+    {
+      "id": "softcase-central-element-176",
+      "code": null,
+      "name": "CENTRAL ELEMENT CM 176",
+      "name_it": "ELEMENTO CENTRALE CM 176",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 176,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 12
+    },
+    {
+      "id": "softcase-central-element-204",
+      "code": null,
+      "name": "CENTRAL ELEMENT CM 204",
+      "name_it": "ELEMENTO CENTRALE CM 204",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 204,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 12
+    },
+    {
+      "id": "softcase-central-element-232",
+      "code": null,
+      "name": "CENTRAL ELEMENT CM 232",
+      "name_it": "ELEMENTO CENTRALE CM 232",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 12
+    },
+    {
+      "id": "softcase-central-element-260",
+      "code": null,
+      "name": "CENTRAL ELEMENT CM 260",
+      "name_it": "ELEMENTO CENTRALE CM 260",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 12
+    },
+    {
+      "id": "softcase-open-central-element-148",
+      "code": null,
+      "name": "OPEN CENTRAL ELEMENT CM 148",
+      "name_it": "ELEMENTO CENTRALE OPEN CM 148",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 148,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 13
+    },
+    {
+      "id": "softcase-open-central-element-204",
+      "code": null,
+      "name": "OPEN CENTRAL ELEMENT CM 204",
+      "name_it": "ELEMENTO CENTRALE OPEN CM 204",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 204,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 13
+    },
+    {
+      "id": "softcase-open-central-element-176",
+      "code": null,
+      "name": "OPEN CENTRAL ELEMENT CM 176",
+      "name_it": "ELEMENTO CENTRALE OPEN CM 176",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 176,
+      "tiefe_cm": 109,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 13
+    },
+    {
+      "id": "softcase-open-central-element-260",
+      "code": null,
+      "name": "OPEN CENTRAL ELEMENT CM 260",
+      "name_it": "ELEMENTO CENTRALE OPEN CM 260",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 260,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 13
+    },
+    {
+      "id": "softcase-open-central-element-232",
+      "code": null,
+      "name": "OPEN CENTRAL ELEMENT CM 232",
+      "name_it": "ELEMENTO CENTRALE OPEN CM 232",
+      "art": "mittel",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 232,
+      "tiefe_cm": 109,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 13
+    },
+    {
+      "id": "softcase-central-element-couch-109x176",
+      "code": null,
+      "name": "CENTRAL ELEMENT - COUCH CM 109X176",
+      "name_it": "ELEMENTO CENTRALE - COUCH CM 109X176",
+      "art": "couch",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 109,
+      "tiefe_cm": 176,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 13
+    },
+    {
+      "id": "softcase-central-element-couch-120x148",
+      "code": null,
+      "name": "CENTRAL ELEMENT - COUCH CM 120X148",
+      "name_it": "ELEMENTO CENTRALE - COUCH CM 120X148",
+      "art": "couch",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 120,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 13
+    },
+    {
+      "id": "softcase-central-element-couch-148x176",
+      "code": null,
+      "name": "CENTRAL ELEMENT - COUCH CM 148X176",
+      "name_it": "ELEMENTO CENTRALE - COUCH CM 148X176",
+      "art": "couch",
+      "linie": "LINEAR",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 148,
+      "tiefe_cm": 176,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 13
+    },
+    {
+      "id": "softcase-inclined-sofa-241x156",
+      "code": null,
+      "name": "INCLINED SOFA CM 241X156",
+      "name_it": "INCLINED DIVANO CM 241X156",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 241,
+      "tiefe_cm": 156,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 14
+    },
+    {
+      "id": "softcase-inclined-sofa-311x156",
+      "code": null,
+      "name": "INCLINED SOFA CM 311X156",
+      "name_it": "INCLINED DIVANO CM 311X156",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 311,
+      "tiefe_cm": 156,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 14
+    },
+    {
+      "id": "softcase-inclined-corner-sofa-311x156",
+      "code": null,
+      "name": "INCLINED CORNER SOFA CM 311X156",
+      "name_it": "INCLINED DIVANO ANGOLARE CM 311X156",
+      "art": "ecksofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 311,
+      "tiefe_cm": 156,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 14
+    },
+    {
+      "id": "softcase-inclined-sofa-with-1-armrest-216x142",
+      "code": null,
+      "name": "INCLINED SOFA WITH 1 ARMREST CM 216X142",
+      "name_it": "INCLINED DIVANO CON 1 BRACCIOLO CM 216X142",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 216,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 14
+    },
+    {
+      "id": "softcase-inclined-sofa-with-1-armrest-286x142",
+      "code": null,
+      "name": "INCLINED SOFA WITH 1 ARMREST CM 286X142",
+      "name_it": "INCLINED DIVANO CON 1 BRACCIOLO CM 286X142",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 286,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 14
+    },
+    {
+      "id": "softcase-inclined-sofa-with-1-armrest-283x156",
+      "code": null,
+      "name": "INCLINED SOFA WITH 1 ARMREST CM 283X156",
+      "name_it": "INCLINED DIVANO CON 1 BRACCIOLO CM 283X156",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 283,
+      "tiefe_cm": 156,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 14
+    },
+    {
+      "id": "softcase-inclined-corner-sofa-with-1-armrest-286x142",
+      "code": null,
+      "name": "INCLINED CORNER SOFA WITH 1 ARMREST CM 286X142",
+      "name_it": "INCLINED DIVANO ANGOLARE CON 1 BRACCIOLO CM 286X142",
+      "art": "ecksofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 286,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 14
+    },
+    {
+      "id": "softcase-inclined-sofa-without-armrests-188x142",
+      "code": null,
+      "name": "INCLINED SOFA WITHOUT ARMRESTS CM 188X142",
+      "name_it": "INCLINED DIVANO SENZA BRACCIOLI CM 188X142",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 188,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 14
+    },
+    {
+      "id": "softcase-inclined-sofa-without-armrests-259x142",
+      "code": null,
+      "name": "INCLINED SOFA WITHOUT ARMRESTS CM 259X142",
+      "name_it": "INCLINED DIVANO SENZA BRACCIOLI CM 259X142",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 259,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 15
+    },
+    {
+      "id": "softcase-inclined-terminal-element-213x142",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT CM 213X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE CM 213X142",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 213,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 15
+    },
+    {
+      "id": "softcase-inclined-terminal-element-283x156",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT CM 283X156",
+      "name_it": "INCLINED ELEMENTO TERMINALE CM 283X156",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 283,
+      "tiefe_cm": 156,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 15
+    },
+    {
+      "id": "softcase-inclined-terminal-element-283x142",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT CM 283X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE CM 283X142",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 283,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 15
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-213x142",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT CM 213X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE OPEN CM 213X142",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 213,
+      "tiefe_cm": 142,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 15
+    },
+    {
+      "id": "softcase-inclined-terminal-corner-element-283x142",
+      "code": null,
+      "name": "INCLINED TERMINAL CORNER ELEMENT CM 283X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE ANGOLARE CM 283X142",
+      "art": "ecke",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 283,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 15
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-283x142",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT CM 283X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE OPEN CM 283X142",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 283,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 15
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-269x156",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT CM 269X156",
+      "name_it": "INCLINED ELEMENTO TERMINALE OPEN CM 269X156",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 269,
+      "tiefe_cm": 156,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 15
+    },
+    {
+      "id": "softcase-inclined-terminal-element-without-armrest-185x142",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT WITHOUT ARMREST CM 185X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI CM 185X142",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 185,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 16
+    },
+    {
+      "id": "softcase-inclined-open-terminal-corner-element-283x142",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL CORNER ELEMENT CM 283X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE ANGOLARE OPEN CM 283X142",
+      "art": "ecke",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 283,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 16
+    },
+    {
+      "id": "softcase-inclined-terminal-element-without-armrest-256x142",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT WITHOUT ARMREST CM 256X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI CM 256X142",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 256,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 16
+    },
+    {
+      "id": "softcase-inclined-terminal-element-without-armrest-259x142",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT WITHOUT ARMREST CM 259X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI CM 259X142",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 259,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 16
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-without-armrest-185x142",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT WITHOUT ARMREST CM 185X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 185X142",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 185,
+      "tiefe_cm": 142,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 16
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-without-armrest-256x142",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT WITHOUT ARMREST CM 256X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 256X142",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 256,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 16
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-without-armrest-245x142",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT WITHOUT ARMREST CM 245X142",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 245X142",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 245,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 16
+    },
+    {
+      "id": "softcase-inclined-central-element-185x142",
+      "code": null,
+      "name": "INCLINED CENTRAL ELEMENT CM 185X142",
+      "name_it": "INCLINED ELEMENTO CENTRALE CM 185X142",
+      "art": "mittel",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 185,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 17
+    },
+    {
+      "id": "softcase-inclined-open-central-element-185x142",
+      "code": null,
+      "name": "INCLINED OPEN CENTRAL ELEMENT CM 185X142",
+      "name_it": "INCLINED ELEMENTO CENTRALE OPEN CM 185X142",
+      "art": "mittel",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 185,
+      "tiefe_cm": 142,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 17
+    },
+    {
+      "id": "softcase-inclined-central-element-256x142",
+      "code": null,
+      "name": "INCLINED CENTRAL ELEMENT CM 256X142",
+      "name_it": "INCLINED ELEMENTO CENTRALE CM 256X142",
+      "art": "mittel",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 256,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 17
+    },
+    {
+      "id": "softcase-inclined-open-central-element-242x142",
+      "code": null,
+      "name": "INCLINED OPEN CENTRAL ELEMENT CM 242X142",
+      "name_it": "INCLINED ELEMENTO CENTRALE OPEN CM 242X142",
+      "art": "mittel",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 242,
+      "tiefe_cm": 142,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 17
+    },
+    {
+      "id": "softcase-inclined-open-central-element-256x142",
+      "code": null,
+      "name": "INCLINED OPEN CENTRAL ELEMENT CM 256X142",
+      "name_it": "INCLINED ELEMENTO CENTRALE OPEN CM 256X142",
+      "art": "mittel",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 256,
+      "tiefe_cm": 142,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 17
+    },
+    {
+      "id": "softcase-inclined-sofa-221x165",
+      "code": null,
+      "name": "INCLINED SOFA CM 221X165",
+      "name_it": "INCLINED DIVANO CM 221X165",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 221,
+      "tiefe_cm": 165,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 18
+    },
+    {
+      "id": "softcase-inclined-sofa-291x165",
+      "code": null,
+      "name": "INCLINED SOFA CM 291X165",
+      "name_it": "INCLINED DIVANO CM 291X165",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 291,
+      "tiefe_cm": 165,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 18
+    },
+    {
+      "id": "softcase-inclined-corner-sofa-291x165",
+      "code": null,
+      "name": "INCLINED CORNER SOFA CM 291X165",
+      "name_it": "INCLINED DIVANO ANGOLARE CM 291X165",
+      "art": "ecksofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 291,
+      "tiefe_cm": 165,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 18
+    },
+    {
+      "id": "softcase-inclined-sofa-with-1-armrest-201x148",
+      "code": null,
+      "name": "INCLINED SOFA WITH 1 ARMREST CM 201X148",
+      "name_it": "INCLINED DIVANO CON 1 BRACCIOLO CM 201X148",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 201,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 18
+    },
+    {
+      "id": "softcase-inclined-sofa-with-1-armrest-271x148",
+      "code": null,
+      "name": "INCLINED SOFA WITH 1 ARMREST CM 271X148",
+      "name_it": "INCLINED DIVANO CON 1 BRACCIOLO CM 271X148",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 271,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 18
+    },
+    {
+      "id": "softcase-inclined-sofa-with-1-armrest-263x165",
+      "code": null,
+      "name": "INCLINED SOFA WITH 1 ARMREST CM 263X165",
+      "name_it": "INCLINED DIVANO CON 1 BRACCIOLO CM 263X165",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 263,
+      "tiefe_cm": 165,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 18
+    },
+    {
+      "id": "softcase-inclined-sofa-without-armrests-173x148",
+      "code": null,
+      "name": "INCLINED SOFA WITHOUT ARMRESTS CM 173X148",
+      "name_it": "INCLINED DIVANO SENZA BRACCIOLI CM 173X148",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 173,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 18
+    },
+    {
+      "id": "softcase-inclined-corner-sofa-with-1-armrest-271x148",
+      "code": null,
+      "name": "INCLINED CORNER SOFA WITH 1 ARMREST CM 271X148",
+      "name_it": "INCLINED DIVANO ANGOLARE CON 1 BRACCIOLO CM 271X148",
+      "art": "ecksofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 271,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 18
+    },
+    {
+      "id": "softcase-inclined-sofa-without-armrests-243x148",
+      "code": null,
+      "name": "INCLINED SOFA WITHOUT ARMRESTS CM 243X148",
+      "name_it": "INCLINED DIVANO SENZA BRACCIOLI CM 243X148",
+      "art": "sofa",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 243,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 19
+    },
+    {
+      "id": "softcase-inclined-terminal-element-199x148",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT CM 199X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE CM 199X148",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 199,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 19
+    },
+    {
+      "id": "softcase-inclined-terminal-element-269x148",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT CM 269X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE CM 269X148",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 269,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 19
+    },
+    {
+      "id": "softcase-inclined-terminal-element-263x165",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT CM 263X165",
+      "name_it": "INCLINED ELEMENTO TERMINALE CM 263X165",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 263,
+      "tiefe_cm": 165,
+      "hoehe_cm": 67.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "hinweis": "Im Datenblatt nur Schalenhöhe 67,5 cm bemaßt; Höhe inkl. Rückenkissen nicht angegeben.",
+      "quelle_seite": 19
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-199x148",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT CM 199X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE OPEN CM 199X148",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 199,
+      "tiefe_cm": 148,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 19
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-269x148",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT CM 269X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE OPEN CM 269X148",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 269,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 19
+    },
+    {
+      "id": "softcase-inclined-terminal-corner-element-269x148",
+      "code": null,
+      "name": "INCLINED TERMINAL CORNER ELEMENT CM 269X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE ANGOLARE CM 269X148",
+      "art": "ecke",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 269,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 19
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-249x165",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT CM 249X165",
+      "name_it": "INCLINED ELEMENTO TERMINALE OPEN CM 249X165",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 249,
+      "tiefe_cm": 165,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 20
+    },
+    {
+      "id": "softcase-inclined-open-terminal-corner-element-269x148",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL CORNER ELEMENT CM 269X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE ANGOLARE OPEN CM 269X148",
+      "art": "ecke",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 269,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "offen": true,
+      "quelle_seite": 20
+    },
+    {
+      "id": "softcase-inclined-terminal-element-without-armrest-171x148",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT WITHOUT ARMREST CM 171X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI CM 171X148",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 171,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 20
+    },
+    {
+      "id": "softcase-inclined-terminal-element-without-armrest-241x148",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT WITHOUT ARMREST CM 241X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI CM 241X148",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 241,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 20
+    },
+    {
+      "id": "softcase-inclined-terminal-element-without-armrest-243x148",
+      "code": null,
+      "name": "INCLINED TERMINAL ELEMENT WITHOUT ARMREST CM 243X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI CM 243X148",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 243,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 20
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-without-armrest-171x148",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT WITHOUT ARMREST CM 171X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 171X148",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 171,
+      "tiefe_cm": 148,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 20
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-without-armrest-241x148",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT WITHOUT ARMREST CM 241X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 241X148",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 241,
+      "tiefe_cm": 148,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 20
+    },
+    {
+      "id": "softcase-inclined-open-terminal-element-without-armrest-229x148",
+      "code": null,
+      "name": "INCLINED OPEN TERMINAL ELEMENT WITHOUT ARMREST CM 229X148",
+      "name_it": "INCLINED ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 229X148",
+      "art": "endelement",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 229,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 21
+    },
+    {
+      "id": "softcase-inclined-central-element-171x148",
+      "code": null,
+      "name": "INCLINED CENTRAL ELEMENT CM 171X148",
+      "name_it": "INCLINED ELEMENTO CENTRALE CM 171X148",
+      "art": "mittel",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 171,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 21
+    },
+    {
+      "id": "softcase-inclined-central-element-241x148",
+      "code": null,
+      "name": "INCLINED CENTRAL ELEMENT CM 241X148",
+      "name_it": "INCLINED ELEMENTO CENTRALE CM 241X148",
+      "art": "mittel",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 241,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 21
+    },
+    {
+      "id": "softcase-inclined-open-central-element-241x148",
+      "code": null,
+      "name": "INCLINED OPEN CENTRAL ELEMENT CM 241X148",
+      "name_it": "INCLINED ELEMENTO CENTRALE OPEN CM 241X148",
+      "art": "mittel",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 241,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 21
+    },
+    {
+      "id": "softcase-inclined-open-central-element-171x148",
+      "code": null,
+      "name": "INCLINED OPEN CENTRAL ELEMENT CM 171X148",
+      "name_it": "INCLINED ELEMENTO CENTRALE OPEN CM 171X148",
+      "art": "mittel",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 171,
+      "tiefe_cm": 148,
+      "hoehe_cm": 84.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 21
+    },
+    {
+      "id": "softcase-inclined-open-central-element-227x148",
+      "code": null,
+      "name": "INCLINED OPEN CENTRAL ELEMENT CM 227X148",
+      "name_it": "INCLINED ELEMENTO CENTRALE OPEN CM 227X148",
+      "art": "mittel",
+      "linie": "INCLINED",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 227,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 21
+    },
+    {
+      "id": "softcase-inclined-deep-sofa-with-1-armrest-300x148",
+      "code": null,
+      "name": "INCLINED DEEP SOFA WITH 1 ARMREST CM 300X148",
+      "name_it": "INCLINED DEEP DIVANO CON 1 BRACCIOLO CM 300X148",
+      "art": "sofa",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 300,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 22
+    },
+    {
+      "id": "softcase-inclined-deep-sofa-with-1-armrest-300x173",
+      "code": null,
+      "name": "INCLINED DEEP SOFA WITH 1 ARMREST CM 300X173",
+      "name_it": "INCLINED DEEP DIVANO CON 1 BRACCIOLO CM 300X173",
+      "art": "sofa",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 300,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 22
+    },
+    {
+      "id": "softcase-inclined-deep-sofa-with-1-armrest-291x193",
+      "code": null,
+      "name": "INCLINED DEEP SOFA WITH 1 ARMREST CM 291X193",
+      "name_it": "INCLINED DEEP DIVANO CON 1 BRACCIOLO CM 291X193",
+      "art": "sofa",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 291,
+      "tiefe_cm": 193,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 22
+    },
+    {
+      "id": "softcase-inclined-deep-sofa-with-1-armrest-193x193",
+      "code": null,
+      "name": "INCLINED DEEP SOFA WITH 1 ARMREST CM 193X193",
+      "name_it": "INCLINED DEEP DIVANO CON 1 BRACCIOLO CM 193X193",
+      "art": "sofa",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 193,
+      "tiefe_cm": 193,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 22
+    },
+    {
+      "id": "softcase-inclined-deep-sofa-with-1-armrest-235x213",
+      "code": null,
+      "name": "INCLINED DEEP SOFA WITH 1 ARMREST CM 235X213",
+      "name_it": "INCLINED DEEP DIVANO CON 1 BRACCIOLO CM 235X213",
+      "art": "sofa",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 235,
+      "tiefe_cm": 213,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 22
+    },
+    {
+      "id": "softcase-inclined-deep-sofa-without-armrests-173x148",
+      "code": null,
+      "name": "INCLINED DEEP SOFA WITHOUT ARMRESTS CM 173X148",
+      "name_it": "INCLINED DEEP DIVANO SENZA BRACCIOLI CM 173X148",
+      "art": "sofa",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 173,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 22
+    },
+    {
+      "id": "softcase-inclined-deep-sofa-without-armrests-173x173",
+      "code": null,
+      "name": "INCLINED DEEP SOFA WITHOUT ARMRESTS CM 173X173",
+      "name_it": "INCLINED DEEP DIVANO SENZA BRACCIOLI CM 173X173",
+      "art": "sofa",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 173,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 22
+    },
+    {
+      "id": "softcase-inclined-deep-sofa-without-armrests-215x193",
+      "code": null,
+      "name": "INCLINED DEEP SOFA WITHOUT ARMRESTS CM 215X193",
+      "name_it": "INCLINED DEEP DIVANO SENZA BRACCIOLI CM 215X193",
+      "art": "sofa",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 215,
+      "tiefe_cm": 193,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 22
+    },
+    {
+      "id": "softcase-inclined-deep-sofa-without-armrests-271x148",
+      "code": null,
+      "name": "INCLINED DEEP SOFA WITHOUT ARMRESTS CM 271X148",
+      "name_it": "INCLINED DEEP DIVANO SENZA BRACCIOLI CM 271X148",
+      "art": "sofa",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 271,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 23
+    },
+    {
+      "id": "softcase-inclined-deep-sofa-without-armrests-271x173",
+      "code": null,
+      "name": "INCLINED DEEP SOFA WITHOUT ARMRESTS CM 271X173",
+      "name_it": "INCLINED DEEP DIVANO SENZA BRACCIOLI CM 271X173",
+      "art": "sofa",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 271,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 23
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-193x193",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT CM 193X193",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE CM 193X193",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 193,
+      "tiefe_cm": 193,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 23
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-235x213",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT CM 235X213",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE CM 235X213",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 235,
+      "tiefe_cm": 213,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 23
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-298x148",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT CM 298X148",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE CM 298X148",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 298,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 23
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-298x173",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT CM 298X173",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE CM 298X173",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 298,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 23
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-291x193",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT CM 291X193",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE CM 291X193",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 291,
+      "tiefe_cm": 193,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 67.5,
+      "quelle_seite": 23
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-without-armrests-171x148",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT WITHOUT ARMRESTS CM 171X148",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE SENZA BRACCIOLI CM 171X148",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 171,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 24
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-without-armrests-171x173",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT WITHOUT ARMRESTS CM 171X173",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE SENZA BRACCIOLI CM 171X173",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 171,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 24
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-without-armrests-213x193",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT WITHOUT ARMRESTS CM 213X193",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE SENZA BRACCIOLI CM 213X193",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 213,
+      "tiefe_cm": 193,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 24
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-without-armrests-173x173",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT WITHOUT ARMRESTS CM 173X173",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE SENZA BRACCIOLI CM 173X173",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 173,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 24
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-without-armrests-215x193",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT WITHOUT ARMRESTS CM 215X193",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE SENZA BRACCIOLI CM 215X193",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 215,
+      "tiefe_cm": 193,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 24
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-without-armrests-269x148",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT WITHOUT ARMRESTS CM 269X148",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE SENZA BRACCIOLI CM 269X148",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 269,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 24
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-without-armrests-271x148",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT WITHOUT ARMRESTS CM 271X148",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE SENZA BRACCIOLI CM 271X148",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 271,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 24
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-without-armrests-269x173",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT WITHOUT ARMRESTS CM 269X173",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE SENZA BRACCIOLI CM 269X173",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 269,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 24
+    },
+    {
+      "id": "softcase-inclined-deep-terminal-element-without-armrests-271x173",
+      "code": null,
+      "name": "INCLINED DEEP TERMINAL ELEMENT WITHOUT ARMRESTS CM 271X173",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE SENZA BRACCIOLI CM 271X173",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 271,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 25
+    },
+    {
+      "id": "softcase-inclined-deep-open-terminal-element-without-armrests-229x148",
+      "code": null,
+      "name": "INCLINED DEEP OPEN TERMINAL ELEMENT WITHOUT ARMRESTS CM 229X148",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 229X148",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 229,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 25
+    },
+    {
+      "id": "softcase-inclined-deep-open-terminal-element-without-armrests-229x173",
+      "code": null,
+      "name": "INCLINED DEEP OPEN TERMINAL ELEMENT WITHOUT ARMRESTS CM 229X173",
+      "name_it": "INCLINED DEEP ELEMENTO TERMINALE SENZA BRACCIOLI OPEN CM 229X173",
+      "art": "endelement",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 229,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 25
+    },
+    {
+      "id": "softcase-inclined-deep-central-element-171x148",
+      "code": null,
+      "name": "INCLINED DEEP CENTRAL ELEMENT CM 171X148",
+      "name_it": "INCLINED DEEP ELEMENTO CENTRALE CM 171X148",
+      "art": "mittel",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 171,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 25
+    },
+    {
+      "id": "softcase-inclined-deep-central-element-269x148",
+      "code": null,
+      "name": "INCLINED DEEP CENTRAL ELEMENT CM 269X148",
+      "name_it": "INCLINED DEEP ELEMENTO CENTRALE CM 269X148",
+      "art": "mittel",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 269,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 25
+    },
+    {
+      "id": "softcase-inclined-deep-central-element-171x173",
+      "code": null,
+      "name": "INCLINED DEEP CENTRAL ELEMENT CM 171X173",
+      "name_it": "INCLINED DEEP ELEMENTO CENTRALE CM 171X173",
+      "art": "mittel",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 171,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 25
+    },
+    {
+      "id": "softcase-inclined-deep-central-element-213x193",
+      "code": null,
+      "name": "INCLINED DEEP CENTRAL ELEMENT CM 213X193",
+      "name_it": "INCLINED DEEP ELEMENTO CENTRALE CM 213X193",
+      "art": "mittel",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 213,
+      "tiefe_cm": 193,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 25
+    },
+    {
+      "id": "softcase-inclined-deep-central-element-269x173",
+      "code": null,
+      "name": "INCLINED DEEP CENTRAL ELEMENT CM 269X173",
+      "name_it": "INCLINED DEEP ELEMENTO CENTRALE CM 269X173",
+      "art": "mittel",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 269,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-inclined-deep-open-central-element-227x148",
+      "code": null,
+      "name": "INCLINED DEEP OPEN CENTRAL ELEMENT CM 227X148",
+      "name_it": "INCLINED DEEP ELEMENTO CENTRALE OPEN CM 227X148",
+      "art": "mittel",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 227,
+      "tiefe_cm": 148,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-inclined-deep-open-central-element-227x173",
+      "code": null,
+      "name": "INCLINED DEEP OPEN CENTRAL ELEMENT CM 227X173",
+      "name_it": "INCLINED DEEP ELEMENTO CENTRALE OPEN CM 227X173",
+      "art": "mittel",
+      "linie": "INCLINED DEEP",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 227,
+      "tiefe_cm": 173,
+      "hoehe_cm": 89.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "offen": true,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-79x79-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 79X79 H41,5",
+      "name_it": "POUF CM 79X79 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 79,
+      "tiefe_cm": 79,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-109x109-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 109X109 H41,5",
+      "name_it": "POUF CM 109X109 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 109,
+      "tiefe_cm": 109,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-92x92-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 92X92 H41,5",
+      "name_it": "POUF CM 92X92 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 92,
+      "tiefe_cm": 92,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-92x109-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 92X109 H41,5",
+      "name_it": "POUF CM 92X109 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 92,
+      "tiefe_cm": 109,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-92x79-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 92X79 H41,5",
+      "name_it": "POUF CM 92X79 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 92,
+      "tiefe_cm": 79,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-176x79-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 176X79 H41,5",
+      "name_it": "POUF CM 176X79 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 176,
+      "tiefe_cm": 79,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-120x79-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 120X79 H41,5",
+      "name_it": "POUF CM 120X79 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 120,
+      "tiefe_cm": 79,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-148x79-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 148X79 H41,5",
+      "name_it": "POUF CM 148X79 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 148,
+      "tiefe_cm": 79,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-92x63-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 92X63 H41,5",
+      "name_it": "POUF CM 92X63 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 92,
+      "tiefe_cm": 63,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-176x63-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 176X63 H41,5",
+      "name_it": "POUF CM 176X63 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 176,
+      "tiefe_cm": 63,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-120x63-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 120X63 H41,5",
+      "name_it": "POUF CM 120X63 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 120,
+      "tiefe_cm": 63,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-ottoman-148x63-h41-5",
+      "code": null,
+      "name": "OTTOMAN CM 148X63 H41,5",
+      "name_it": "POUF CM 148X63 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 148,
+      "tiefe_cm": 63,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 26
+    },
+    {
+      "id": "softcase-optional-cushion-50x50",
+      "code": null,
+      "name": "OPTIONAL CUSHION CM 50X50",
+      "name_it": "CUSCINO OPTIONAL CM 50X50",
+      "art": "kissen",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 50,
+      "tiefe_cm": null,
+      "hoehe_cm": 50,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "quelle_seite": 27
+    },
+    {
+      "id": "softcase-optional-backrest-cushion-60x55",
+      "code": null,
+      "name": "OPTIONAL BACKREST CUSHION CM 60X55",
+      "name_it": "CUSCINO SCHIENALE OPTIONAL CM 60X55",
+      "art": "kissen",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 60,
+      "tiefe_cm": null,
+      "hoehe_cm": 55,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "quelle_seite": 27
+    },
+    {
+      "id": "softcase-ottoman-102x102-h41-5-fest",
+      "code": null,
+      "name": "OTTOMAN CM 102X102 H41,5",
+      "name_it": "POUF CM 102X102 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 102,
+      "tiefe_cm": 102,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 27,
+      "ausfuehrung": "fest (Füße)"
+    },
+    {
+      "id": "softcase-ottoman-102x102-h41-5-rollen",
+      "code": null,
+      "name": "OTTOMAN CM 102X102 H41,5",
+      "name_it": "POUF CM 102X102 H41,5",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 102,
+      "tiefe_cm": 102,
+      "hoehe_cm": 41.5,
+      "sitzhoehe_cm": 41.5,
+      "sitztiefe_cm": null,
+      "quelle_seite": 27,
+      "ausfuehrung": "mit Rollen (360° drehbar)"
+    },
+    {
+      "id": "softcase-ottoman-50x50-h43-fest",
+      "code": null,
+      "name": "OTTOMAN CM 50X50 H43",
+      "name_it": "POUF CM 50X50 H43",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 50,
+      "tiefe_cm": 50,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "hinweis": "Erhöhungsoption +2 cm nicht verfügbar (Datenblatt-Fußnote).",
+      "quelle_seite": 27,
+      "ausfuehrung": "fest (Füße)"
+    },
+    {
+      "id": "softcase-ottoman-50x50-h43-rollen",
+      "code": null,
+      "name": "OTTOMAN CM 50X50 H43",
+      "name_it": "POUF CM 50X50 H43",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 50,
+      "tiefe_cm": 50,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "hinweis": "Erhöhungsoption +2 cm nicht verfügbar (Datenblatt-Fußnote).",
+      "quelle_seite": 27,
+      "ausfuehrung": "mit Rollen (360° drehbar)"
+    },
+    {
+      "id": "softcase-ottoman-50x50-h49-fest",
+      "code": null,
+      "name": "OTTOMAN CM 50X50 H49",
+      "name_it": "POUF CM 50X50 H49",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 50,
+      "tiefe_cm": 50,
+      "hoehe_cm": 49,
+      "sitzhoehe_cm": 49,
+      "sitztiefe_cm": null,
+      "hinweis": "Erhöhungsoption +2 cm nicht verfügbar (Datenblatt-Fußnote).",
+      "quelle_seite": 27,
+      "ausfuehrung": "fest (Füße)"
+    },
+    {
+      "id": "softcase-ottoman-50x50-h49-rollen",
+      "code": null,
+      "name": "OTTOMAN CM 50X50 H49",
+      "name_it": "POUF CM 50X50 H49",
+      "art": "hocker",
+      "linie": "LINEAR",
+      "seitenvarianten": [],
+      "breite_cm": 50,
+      "tiefe_cm": 50,
+      "hoehe_cm": 49,
+      "sitzhoehe_cm": 49,
+      "sitztiefe_cm": null,
+      "hinweis": "Erhöhungsoption +2 cm nicht verfügbar (Datenblatt-Fußnote).",
+      "quelle_seite": 27,
+      "ausfuehrung": "mit Rollen (360° drehbar)"
+    }
+  ],
+  "fehlend": [
+    "Minotti-Artikelcodes/Bestellnummern sind öffentlich nicht verfügbar (code = null).",
+    "Sitztiefe ist im Datenblatt nicht bemaßt (sitztiefe_cm = null).",
+    "Sitzhöhe 41,5 cm (Standard, Füße 7,5 cm) bzw. 43,5 cm (hohe Version, Füße 9,5 cm) aus Detailzeichnung S. 3.",
+    "Armlehnen-/Schalenhöhe 67,5 cm aus Seitenansicht; Gesamthöhe 84,5 bzw. 89,5 cm inkl. Rückenkissen.",
+    "Bedeutung der OPEN-Varianten (offene Seite) wird im Datenblatt nicht textlich erklärt.",
+    "SX/DX-Ausführungen sind grafisch beschriftet; seitenvarianten nach Elementtyp gesetzt – im Datenblatt prüfen.",
+    "Konkrete Stoff-/Lederkategorien bzw. Preisgruppen nicht öffentlich.",
+    "Gewichte und Lieferzeiten nicht öffentlich.",
+    "Keine vollständige Kompatibilitätsmatrix; das Datenblatt zeigt nur den Verlauf der Stützpaneele (gestrichelte Linie).",
+    "sitztiefe_cm: bei 177 Element(en) nicht im Datenblatt angegeben (null) – softcase-sofa-232, softcase-sofa-260, softcase-sofa-288, softcase-corner-sofa-232, softcase-corner-sofa-288, softcase-corner-sofa-260, softcase-armchair-with-1-armrest-120, softcase-sofa-with-1-armrest-148 …"
+  ],
+  "vollstaendigkeit": {
+    "massfelder_gesamt": 943,
+    "massfelder_belegt": 766,
+    "prozent": 81,
+    "hinweis": "Anteil belegter Maßfelder (Breite/Tiefe/Höhe/Sitzhöhe/Sitztiefe, je nach Elementart) an allen relevanten Maßfeldern."
+  },
+  "abgleich_website": {
+    "website_eintraege": 197,
+    "datenblatt_elemente": 197,
+    "nur_website": [
+      "Sofa - Chaise longue 148 cm - mod. A",
+      "Sofa - Chaise longue 148 cm - mod. B",
+      "Sofa - Chaise longue 176 cm - mod. A",
+      "Sofa - Chaise longue 176 cm - mod. B",
+      "Terminal element - Couch 109 cm",
+      "Terminal element - Couch 120 cm",
+      "Terminal element - Couch 148 cm",
+      "Terminal element - Chaise longue 148 cm - mod. A",
+      "Terminal element - Chaise longue 148 cm - mod. B",
+      "Terminal element - Chaise longue 176 cm - mod. A",
+      "Terminal element - Chaise longue 176 cm - mod. B",
+      "Central element - Couch 109 cm",
+      "Central element - Couch 120 cm",
+      "Central element - Couch 148 cm"
+    ],
+    "nur_datenblatt_signaturen": [
+      "120,148#COUCH",
+      "109,176#COUCH",
+      "148,176#COUCH",
+      "148,148#CHAISE|MOD",
+      "176,176#CHAISE|MOD",
+      "109,176#CENTRAL|COUCH",
+      "120,148#CENTRAL|COUCH",
+      "148,176#CENTRAL|COUCH"
+    ],
+    "hinweis": "Anzahl Website-Liste (Technical Features) = Anzahl Datenblatt-Elemente. Verbleibende Einträge in nur_website/nur_datenblatt_signaturen sind reine Bezeichnungsunterschiede (z. B. Website ohne Rücken-/Tiefenangabe im Namen), keine fehlenden Elemente."
+  }
+}

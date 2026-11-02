@@ -1,0 +1,1909 @@
+{
+  "version": 1,
+  "stand": "2026-10-27",
+  "quelle": {
+    "katalog": "Backoffice backoffice.platzhirsch.studio, Doctype „Produkte New“, Methode produkte_new.api.get_produkte_by_marke_api, abgerufen 27.10.2026 für alle 36 Marken",
+    "hinweis": "Produkt-IDs = Frappe-docname (Feld name). Bilder (bild) sind ein Schnappschuss; zur Laufzeit über den Katalog-Adapter neu auflösen und fehlende Produkte still weglassen.",
+    "doku": "Marktresearch/digital/features/yacht-signature-konzept.md"
+  },
+  "recht": {
+    "kennzeichnungKonzept": "Beispielkonzept – kein Kundenprojekt",
+    "kennzeichnungKI": "KI-generiertes Konzeptbild (Art. 50 AI Act). Zeigt eine Stimmung, kein reales Boot und keine realen Produkte.",
+    "produktBilder": "Produktbilder stammen vom Hersteller über den Katalog; Minotti-Bilder nur unverändert (kein Zuschnitt mit Überlagerung, kein Filter). Herstellerbilder nie als KI-Input ohne Freigabe der Marke.",
+    "keineAussagen": [
+      "Händler/offiziell/autorisiert/Partner (außer ClassiCon)",
+      "marine-zertifiziert",
+      "salzwasserfest",
+      "schwer entflammbar",
+      "Komplett-Refit aus einer Hand",
+      "Bauleitung",
+      "Superlative"
+    ],
+    "aufgabenteilung": "Platzhirsch gestaltet und liefert lose Ausstattung. Polster fertigt ein befugter Bootssattler; Eingriffe in Struktur, Elektrik, Gas, Lüftung, Bohrungen und die Freigabe von Gewicht und Stabilität übernimmt die Werft.",
+    "preise": "Paket-Spannen sind Schätzungen aus Bericht 29 und werden öffentlich nicht als Preise gezeigt.",
+    "hinweisIntern": "Interne Hinweise (Bildrechte, Bericht-Verweise) stehen nicht in öffentlich angezeigten Feldern (materialien, produkte.hinweis, zonen, sattler, werft, gartenbau). Geprüft durch tests/unit/yacht-concepts.test.mjs."
+  },
+  "eignung": {
+    "aussen-marine-hersteller": {
+      "label": "Außen – Hersteller nennt Marine/Yachting allgemein",
+      "regel": "Hersteller nennt Marine- bzw. Yachting-Einsatz für seine Marke allgemein. Bordeinsatz dieses Modells, Befestigung und Gewicht vor dem Angebot schriftlich beim Hersteller und mit der Werft klären."
+    },
+    "aussen-katalog": {
+      "label": "Außen – Outdoor laut Katalog",
+      "regel": "Im Katalog als Outdoor geführt. Für Bootshaus, Steg, Seeterrasse und Hausboot-Terrasse. An Bord nur nach schriftlicher Freigabe des Herstellers."
+    },
+    "innen-lose": {
+      "label": "Innen – lose Ausstattung unter Deck",
+      "regel": "Wohnprodukt. Nur unter Deck, lose, trocken gelagert, nicht in Nassbereichen. Keine Befestigung durch Platzhirsch."
+    }
+  },
+  "zonen": [
+    {
+      "id": "deck",
+      "label": "Deck & Cockpit",
+      "kurz": "Deck",
+      "text": "Cockpitpolster, Tisch, Schatten, lose Deck-Möbel."
+    },
+    {
+      "id": "flybridge",
+      "label": "Flybridge",
+      "kurz": "Flybridge",
+      "text": "Sonnenpolster, Lounge, Bar, Schirm – das Wohnzimmer unter freiem Himmel."
+    },
+    {
+      "id": "salon",
+      "label": "Salon",
+      "kurz": "Salon",
+      "text": "Sitzpolster, Bezüge, Vorhänge, Leuchten mit Akku, Plaids."
+    },
+    {
+      "id": "kabine",
+      "label": "Kabine",
+      "kurz": "Kabine",
+      "text": "Kojenauflage, Bettwäsche, Decken, Leselicht."
+    },
+    {
+      "id": "bad",
+      "label": "Bad",
+      "kurz": "Bad",
+      "text": "Handtücher, Textilien, Ablagen – nur lose und feuchtebeständig."
+    },
+    {
+      "id": "badeplattform",
+      "label": "Badeplattform",
+      "kurz": "Badeplattform",
+      "text": "Ankommen vom Wasser: Handtücher, Matte, Liegepolster am Heck."
+    },
+    {
+      "id": "bootshaus",
+      "label": "Steg & Bootshaus",
+      "kurz": "Steg",
+      "text": "An Land, nicht an Bord: Lounge, Schatten, Wärme am Liegeplatz. Im 3D-Modell als Steg neben dem Boot.",
+      "anLand": true
+    }
+  ],
+  "modelle": {
+    "runabout": {
+      "laenge": 9,
+      "breite": 2.6,
+      "decks": 1,
+      "zonen": [
+        "deck",
+        "badeplattform"
+      ],
+      "kamera": {
+        "deck": {
+          "ziel": [
+            -2.7,
+            1,
+            0
+          ],
+          "position": [
+            -5.85,
+            3.08,
+            4.16
+          ],
+          "deckAusblenden": false
+        },
+        "badeplattform": {
+          "ziel": [
+            -4.5,
+            0.2,
+            0
+          ],
+          "position": [
+            -7.65,
+            2.28,
+            4.16
+          ],
+          "deckAusblenden": false
+        },
+        "uebersicht": {
+          "ziel": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            -8.1,
+            4.05,
+            8.1
+          ],
+          "deckAusblenden": false
+        }
+      }
+    },
+    "daycruiser": {
+      "laenge": 11,
+      "breite": 3.5,
+      "decks": 1,
+      "kajuete": true,
+      "zonen": [
+        "deck",
+        "salon",
+        "kabine",
+        "bad",
+        "badeplattform"
+      ],
+      "kamera": {
+        "deck": {
+          "ziel": [
+            -3.3,
+            1,
+            0
+          ],
+          "position": [
+            -7.15,
+            3.8,
+            5.6
+          ],
+          "deckAusblenden": false
+        },
+        "salon": {
+          "ziel": [
+            0.55,
+            0.8,
+            0
+          ],
+          "position": [
+            -0.33,
+            3.95,
+            2.1
+          ],
+          "deckAusblenden": true
+        },
+        "kabine": {
+          "ziel": [
+            3.52,
+            0.3,
+            0
+          ],
+          "position": [
+            2.64,
+            3.45,
+            2.1
+          ],
+          "deckAusblenden": true
+        },
+        "bad": {
+          "ziel": [
+            2.2,
+            0.3,
+            0
+          ],
+          "position": [
+            1.32,
+            3.45,
+            2.1
+          ],
+          "deckAusblenden": true
+        },
+        "badeplattform": {
+          "ziel": [
+            -5.5,
+            0.2,
+            0
+          ],
+          "position": [
+            -9.35,
+            3,
+            5.6
+          ],
+          "deckAusblenden": false
+        },
+        "uebersicht": {
+          "ziel": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            -9.9,
+            4.95,
+            9.9
+          ],
+          "deckAusblenden": false
+        }
+      }
+    },
+    "segelyacht": {
+      "laenge": 14,
+      "breite": 4.3,
+      "decks": 1,
+      "mast": true,
+      "zonen": [
+        "deck",
+        "salon",
+        "kabine",
+        "bad"
+      ],
+      "kamera": {
+        "deck": {
+          "ziel": [
+            -4.2,
+            1,
+            0
+          ],
+          "position": [
+            -9.1,
+            4.44,
+            6.88
+          ],
+          "deckAusblenden": false
+        },
+        "salon": {
+          "ziel": [
+            0.7,
+            0.8,
+            0
+          ],
+          "position": [
+            -0.42,
+            4.67,
+            2.58
+          ],
+          "deckAusblenden": true
+        },
+        "kabine": {
+          "ziel": [
+            4.48,
+            0.3,
+            0
+          ],
+          "position": [
+            3.36,
+            4.17,
+            2.58
+          ],
+          "deckAusblenden": true
+        },
+        "bad": {
+          "ziel": [
+            2.8,
+            0.3,
+            0
+          ],
+          "position": [
+            1.68,
+            4.17,
+            2.58
+          ],
+          "deckAusblenden": true
+        },
+        "uebersicht": {
+          "ziel": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            -12.6,
+            6.3,
+            12.6
+          ],
+          "deckAusblenden": false
+        }
+      }
+    },
+    "motoryacht": {
+      "laenge": 26,
+      "breite": 6.2,
+      "decks": 2,
+      "flybridge": true,
+      "zonen": [
+        "deck",
+        "flybridge",
+        "salon",
+        "kabine",
+        "bad",
+        "badeplattform"
+      ],
+      "kamera": {
+        "deck": {
+          "ziel": [
+            -7.8,
+            1.2,
+            0
+          ],
+          "position": [
+            -16.9,
+            6.16,
+            9.92
+          ],
+          "deckAusblenden": false
+        },
+        "flybridge": {
+          "ziel": [
+            1.3,
+            2.64,
+            0
+          ],
+          "position": [
+            -7.8,
+            7.6,
+            9.92
+          ],
+          "deckAusblenden": false
+        },
+        "salon": {
+          "ziel": [
+            1.3,
+            0.96,
+            0
+          ],
+          "position": [
+            -0.78,
+            6.54,
+            3.72
+          ],
+          "deckAusblenden": true
+        },
+        "kabine": {
+          "ziel": [
+            8.32,
+            0.36,
+            0
+          ],
+          "position": [
+            6.24,
+            5.94,
+            3.72
+          ],
+          "deckAusblenden": true
+        },
+        "bad": {
+          "ziel": [
+            5.2,
+            0.36,
+            0
+          ],
+          "position": [
+            3.12,
+            5.94,
+            3.72
+          ],
+          "deckAusblenden": true
+        },
+        "badeplattform": {
+          "ziel": [
+            -13,
+            0.24,
+            0
+          ],
+          "position": [
+            -22.1,
+            5.2,
+            9.92
+          ],
+          "deckAusblenden": false
+        },
+        "uebersicht": {
+          "ziel": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            -23.4,
+            11.7,
+            23.4
+          ],
+          "deckAusblenden": false
+        }
+      }
+    },
+    "hausboot": {
+      "laenge": 15,
+      "breite": 5,
+      "decks": 1,
+      "ponton": true,
+      "zonen": [
+        "deck",
+        "salon",
+        "kabine",
+        "badeplattform"
+      ],
+      "kamera": {
+        "deck": {
+          "ziel": [
+            -4.5,
+            1,
+            0
+          ],
+          "position": [
+            -9.75,
+            5,
+            8
+          ],
+          "deckAusblenden": false
+        },
+        "salon": {
+          "ziel": [
+            0.75,
+            0.8,
+            0
+          ],
+          "position": [
+            -0.45,
+            5.3,
+            3
+          ],
+          "deckAusblenden": true
+        },
+        "kabine": {
+          "ziel": [
+            4.8,
+            0.3,
+            0
+          ],
+          "position": [
+            3.6,
+            4.8,
+            3
+          ],
+          "deckAusblenden": true
+        },
+        "badeplattform": {
+          "ziel": [
+            -7.5,
+            0.2,
+            0
+          ],
+          "position": [
+            -12.75,
+            4.2,
+            8
+          ],
+          "deckAusblenden": false
+        },
+        "uebersicht": {
+          "ziel": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            -13.5,
+            6.75,
+            13.5
+          ],
+          "deckAusblenden": false
+        }
+      }
+    },
+    "superyacht": {
+      "laenge": 45,
+      "breite": 9,
+      "decks": 3,
+      "flybridge": true,
+      "zonen": [
+        "deck",
+        "flybridge",
+        "salon",
+        "badeplattform"
+      ],
+      "kamera": {
+        "deck": {
+          "ziel": [
+            -13.5,
+            1.2,
+            0
+          ],
+          "position": [
+            -29.25,
+            8.4,
+            14.4
+          ],
+          "deckAusblenden": false
+        },
+        "flybridge": {
+          "ziel": [
+            2.25,
+            2.64,
+            0
+          ],
+          "position": [
+            -13.5,
+            9.84,
+            14.4
+          ],
+          "deckAusblenden": false
+        },
+        "salon": {
+          "ziel": [
+            2.25,
+            0.96,
+            0
+          ],
+          "position": [
+            -1.35,
+            9.06,
+            5.4
+          ],
+          "deckAusblenden": true
+        },
+        "badeplattform": {
+          "ziel": [
+            -22.5,
+            0.24,
+            0
+          ],
+          "position": [
+            -38.25,
+            7.44,
+            14.4
+          ],
+          "deckAusblenden": false
+        },
+        "uebersicht": {
+          "ziel": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            -40.5,
+            20.25,
+            40.5
+          ],
+          "deckAusblenden": false
+        }
+      }
+    }
+  },
+  "konzepte": [
+    {
+      "id": "runabout-mahagoni",
+      "bootstyp": "Bodensee-Holzrunabout",
+      "laenge": "8–10 m",
+      "revier": "Bodensee",
+      "modell3d": "runabout",
+      "titel": "Mahagoni und Leinen",
+      "leitsatz": "Ein Abend auf dem See, bei dem nur das Holz glänzt.",
+      "stimmung": "Abendlicht über dem Pfänder, lackiertes Holz, cremefarbenes Leder, ein Plaid für die Rückfahrt. Klassisch, still, ohne Chrom-Glanzpunkte.",
+      "zielgruppe": "Eigner klassischer Holz- und Retro-Runabouts (Gruppe A, Bericht 29)",
+      "paket": {
+        "stufe": "M",
+        "spanne": "4–12 T€",
+        "hinweis": "[Schätzung] laut Bericht 29, Abschnitt 6.2; kein Angebot"
+      },
+      "stilreferenz": "Klassische Lackholz-Runabouts der Alpenseen (nur Stimmung, kein Nachbau einer Werft)",
+      "farbwelt": [
+        {
+          "name": "Mahagoni lackiert",
+          "hex": "#5a2e1b",
+          "rolle": "Rumpf, Deck"
+        },
+        {
+          "name": "Elfenbein-Leder",
+          "hex": "#efe6d2",
+          "rolle": "Polster"
+        },
+        {
+          "name": "Seegrün",
+          "hex": "#4f6b68",
+          "rolle": "Kissen-Akzent (Token see)"
+        },
+        {
+          "name": "Messing gebürstet",
+          "hex": "#9a7a2a",
+          "rolle": "Beschläge, nur Linie (Token brass-500)"
+        },
+        {
+          "name": "Dämmerung",
+          "hex": "#1f252b",
+          "rolle": "Hintergrund, Nacht (Token ink-deep)"
+        }
+      ],
+      "materialien": [
+        {
+          "name": "Lackiertes Mahagoni",
+          "einsatz": "Bestand, wird von der Werft aufgearbeitet",
+          "hinweis": "Holzarbeiten nur durch Werft/Bootsbauer"
+        },
+        {
+          "name": "Marine-Kunstleder Elfenbein",
+          "einsatz": "Sitzbank und Sonnenpolster",
+          "hinweis": "Fertigung durch Bootssattler, Datenblatt UV/Entflammbarkeit einholen"
+        },
+        {
+          "name": "Lösungsgefärbtes Acrylgewebe",
+          "einsatz": "Persenning, Kissen",
+          "hinweis": "Farbe aus dem Musterkoffer, Datenblatt des Herstellers"
+        },
+        {
+          "name": "Kaschmir-Plaid",
+          "einsatz": "lose, nach der Fahrt trocken lagern",
+          "hinweis": "Wohntextil"
+        }
+      ],
+      "zonen": {
+        "deck": "Neue Sitzbank- und Rückenpolster in Elfenbein mit seegrüner Keder-Kante; Persenning im Ton des Holzes.",
+        "badeplattform": "Liegepolster auf dem Motordeckel (falls vom Boot vorgesehen), Handtuch-Set im Bootstaufach.",
+        "bootshaus": "Lounge am Steg für die Ankunft – das eigentliche Möbel-Projekt bei Runabouts."
+      },
+      "produkte": [
+        {
+          "id": "Luberon",
+          "marke": "Alonpi",
+          "name": "Luberon",
+          "kategorie": "decor",
+          "indoorOutdoor": "Indoor",
+          "pfad": "decor-luberon",
+          "href": "/de/produkte/decor/decor-luberon",
+          "bild": "/cmx/files/Luberon_grey_beige_1_e295c4f8-7d4b-4e63-afc1-afa3551b4e4d.jpg",
+          "zone": "deck",
+          "rolle": "Plaid für die Abendfahrt",
+          "eignung": "innen-lose",
+          "hinweis": "Wohntextil: nur lose, nach der Fahrt trocken lagern",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "In Vitro Unplugged",
+          "marke": "Flos",
+          "name": "In Vitro Unplugged",
+          "kategorie": "lamps",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lamps-in-vitro-unplugged",
+          "href": "/de/produkte/lamps/lamps-in-vitro-unplugged",
+          "bild": "/cmx/files/flos-in-vitro-unplugged-01.webp",
+          "zone": "deck",
+          "rolle": "Akkuleuchte für den Abend am Liegeplatz",
+          "eignung": "aussen-katalog",
+          "hinweis": "lose, nicht während der Fahrt; Schutzart laut Datenblatt prüfen",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "JAZZ lounger",
+          "marke": "Solpuri",
+          "name": "JAZZ lounger",
+          "kategorie": "sun-loungers",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "sun-loungers-jazz-lounger",
+          "href": "/de/produkte/sun-loungers/sun-loungers-jazz-lounger",
+          "bild": "/cmx/files/solpuri-jazz-lounger-01.webp",
+          "zone": "bootshaus",
+          "rolle": "Liege am Steg",
+          "eignung": "aussen-katalog",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Versa UX",
+          "marke": "Umbrosa",
+          "name": "Versa UX",
+          "kategorie": "parasols",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "parasols-versa-ux",
+          "href": "/de/produkte/parasols/parasols-versa-ux",
+          "bild": "/cmx/files/umbrosa-versa-ux-01.webp",
+          "zone": "bootshaus",
+          "rolle": "Schatten am Steg",
+          "eignung": "aussen-katalog",
+          "hinweis": "Bodenverankerung durch Fachbetrieb",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Bleau Round Side Table",
+          "marke": "Tuuci",
+          "name": "Bleau Round Side Table",
+          "kategorie": "garden-tables",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "garden-tables-bleau-round-side-table",
+          "href": "/de/produkte/garden-tables/garden-tables-bleau-round-side-table",
+          "bild": "/cmx/files/tuuci-bleau-round-side-table-01.webp",
+          "zone": "bootshaus",
+          "rolle": "Beistelltisch am Steg",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        }
+      ],
+      "sattler": [
+        "Aufmaß und Fertigung Sitz-/Rückenpolster",
+        "Persenning im Holzton"
+      ],
+      "werft": [
+        "Lackarbeiten am Holz",
+        "Befestigungspunkte der Polster",
+        "Freigabe Gewicht"
+      ],
+      "bildprompts": [
+        {
+          "zone": "deck",
+          "format": "3:2, 2400 px",
+          "prompt": "Editorial photograph of the cockpit of a classic varnished mahogany runabout moored at a wooden jetty on an alpine lake at blue hour, ivory leather bench seats with thin sage-green piping, a folded cashmere throw, brushed brass cleats, calm water reflecting distant mountains, soft warm light from a small portable lamp, 35mm lens, natural colors, quiet luxury, shallow depth of field",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        },
+        {
+          "zone": "bootshaus",
+          "format": "4:5, 2000 px",
+          "prompt": "Editorial photograph of a minimalist lake jetty at sunset, a low teak sun lounger with off-white cushions and a square parasol in sand canvas, varnished wooden boat bow in the foreground slightly out of focus, Lake Constance atmosphere, 50mm lens, warm evening light, natural film-like colors",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        }
+      ]
+    },
+    {
+      "id": "daycruiser-seelicht",
+      "bootstyp": "Bodensee-Daycruiser mit Kajüte",
+      "laenge": "9–12 m",
+      "revier": "Bodensee",
+      "modell3d": "daycruiser",
+      "titel": "Seelicht",
+      "leitsatz": "Tagsüber Badebucht, abends Kajüte – ein Farbkonzept für beides.",
+      "stimmung": "Helles Leinen, sandfarbenes Teak, ein Hauch Seegrün. Mittagslicht auf dem Wasser, abends warmes Licht unter Deck.",
+      "zielgruppe": "Bodensee-Eigner Motorboot/Kajütboot 8–15 m (Gruppe A, Kern)",
+      "paket": {
+        "stufe": "L",
+        "spanne": "15–40 T€",
+        "hinweis": "[Schätzung] laut Bericht 29, Abschnitt 6.2; kein Angebot"
+      },
+      "stilreferenz": "Moderne Alpensee-Daycruiser mit heller Polsterung (nur Stimmung)",
+      "farbwelt": [
+        {
+          "name": "Paper",
+          "hex": "#faf8f4",
+          "rolle": "Polster, Bezüge (Token paper)"
+        },
+        {
+          "name": "Teak natur",
+          "hex": "#b08a5e",
+          "rolle": "Deck, Tisch"
+        },
+        {
+          "name": "Leinen",
+          "hex": "#e6e1d8",
+          "rolle": "Vorhänge, Kissen (Token linen)"
+        },
+        {
+          "name": "See",
+          "hex": "#4f6b68",
+          "rolle": "Akzent (Token see)"
+        },
+        {
+          "name": "Ink",
+          "hex": "#30373e",
+          "rolle": "Keder, Schrift (Token ink)"
+        }
+      ],
+      "materialien": [
+        {
+          "name": "Teak",
+          "einsatz": "Bestand Cockpit/Badeplattform",
+          "hinweis": "Pflege durch Werft"
+        },
+        {
+          "name": "Outdoor-Gewebe hell",
+          "einsatz": "Cockpit- und Sonnenpolster",
+          "hinweis": "Sattlerfertigung, offenporiger Schaum"
+        },
+        {
+          "name": "Leinen-Optik (Outdoor)",
+          "einsatz": "Salonpolster",
+          "hinweis": "abnehmbare Bezüge"
+        },
+        {
+          "name": "Baumwollsatin",
+          "einsatz": "Bettwäsche in der Vorschiffskoje",
+          "hinweis": "Wohntextil"
+        }
+      ],
+      "zonen": {
+        "deck": "Helle Cockpitpolster mit dunklem Keder, Tischauflage, lose Beistelltische im Hafen.",
+        "badeplattform": "Handtuch-Set, Sonnenpolster am Heck.",
+        "salon": "Sitzpolster neu bezogen, Plaid, Akkuleuchte auf dem Tisch.",
+        "kabine": "Kojenauflage nach Maß, Bettwäsche, Decke.",
+        "bad": "Handtücher und lose Ablagen."
+      },
+      "produkte": [
+        {
+          "id": "Bleau Stacking Side Table",
+          "marke": "Tuuci",
+          "name": "Bleau Stacking Side Table",
+          "kategorie": "garden-tables",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "garden-tables-bleau-stacking-side-table",
+          "href": "/de/produkte/garden-tables/garden-tables-bleau-stacking-side-table",
+          "bild": "/cmx/files/tuuci-bleau-stacking-side-table-01.webp",
+          "zone": "deck",
+          "rolle": "Beistelltisch im Cockpit (nur im Hafen)",
+          "eignung": "aussen-marine-hersteller",
+          "hinweis": "stapelbar, während der Fahrt verstauen",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Wadi",
+          "marke": "Paola Lenti",
+          "name": "Wadi",
+          "kategorie": "rugs",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "rugs-wadi",
+          "href": "/de/produkte/rugs/rugs-wadi",
+          "bild": "/cmx/files/paola-lenti-wadi-01.webp",
+          "zone": "deck",
+          "rolle": "Outdoor-Teppich im Cockpit am Liegeplatz",
+          "eignung": "aussen-marine-hersteller",
+          "hinweis": "Rutschhemmung mit Werft klären",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Bellhop Unplugged",
+          "marke": "Flos",
+          "name": "Bellhop Unplugged",
+          "kategorie": "lamps",
+          "indoorOutdoor": "Indoor",
+          "pfad": "lamps-bellhop-unplugged",
+          "href": "/de/produkte/lamps/lamps-bellhop-unplugged",
+          "bild": "/cmx/files/flos-bellhop-unplugged-01.webp",
+          "zone": "salon",
+          "rolle": "Tischleuchte mit Akku",
+          "eignung": "innen-lose",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Libra \"Throw\"",
+          "marke": "Minotti",
+          "name": "Libra \"Throw\"",
+          "kategorie": "decor",
+          "indoorOutdoor": "Indoor",
+          "pfad": "throw-libra-throw",
+          "href": "/de/produkte/decor/throw-libra-throw",
+          "bild": "/cmx/files/minotti-libra-throw-01.webp",
+          "zone": "salon",
+          "rolle": "Plaid",
+          "eignung": "innen-lose",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Matratzenauflage Riviera",
+          "marke": "Treca",
+          "name": "Matratzenauflage Riviera",
+          "kategorie": "bedwear",
+          "indoorOutdoor": "Indoor",
+          "pfad": "bedwear-matratzenauflage-riviera",
+          "href": "/de/produkte/bedwear/bedwear-matratzenauflage-riviera",
+          "bild": "/cmx/files/matratzenauflage-riviera-01.jpg",
+          "zone": "kabine",
+          "rolle": "Auflage auf der Koje",
+          "eignung": "innen-lose",
+          "hinweis": "Kojenform: Sondermaß beim Hersteller anfragen",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Laken aus Baumwollsatin",
+          "marke": "Minotti",
+          "name": "Laken aus Baumwollsatin",
+          "kategorie": "bedwear",
+          "indoorOutdoor": "Indoor",
+          "pfad": "tables-laken-aus-baumwollsatin",
+          "href": "/de/produkte/bedwear/tables-laken-aus-baumwollsatin",
+          "bild": "/cmx/files/minotti-laken-aus-baumwollsatin-01.webp",
+          "zone": "kabine",
+          "rolle": "Bettwäsche",
+          "eignung": "innen-lose",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Moltrasio",
+          "marke": "Alonpi",
+          "name": "Moltrasio",
+          "kategorie": "bedwear",
+          "indoorOutdoor": "Indoor",
+          "pfad": "bedwear-moltrasio",
+          "href": "/de/produkte/bedwear/bedwear-moltrasio",
+          "bild": "/cmx/files/Moltrasio_1_d0b4b936-bbcc-4745-bcc5-2654eddcb3b0.jpg",
+          "zone": "kabine",
+          "rolle": "Decke",
+          "eignung": "innen-lose",
+          "bildtyp": "stimmung"
+        }
+      ],
+      "sattler": [
+        "Cockpit- und Sonnenpolster",
+        "Salonpolster neu beziehen",
+        "Kojenmatratze nach Schablone"
+      ],
+      "werft": [
+        "Teakpflege",
+        "Befestigungen",
+        "Elektrik (keine fest verbauten Leuchten durch Platzhirsch)"
+      ],
+      "bildprompts": [
+        {
+          "zone": "deck",
+          "format": "3:2, 2400 px",
+          "prompt": "Editorial photograph of the open cockpit of a modern 11 metre day cruiser at anchor on a calm alpine lake at midday, off-white upholstered bench seating with charcoal piping, natural teak floor, a small aluminium side table with two glasses, a woven outdoor rug in sand tones, soft breeze, mountains in haze, 28mm lens, airy natural light",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        },
+        {
+          "zone": "kabine",
+          "format": "4:5, 2000 px",
+          "prompt": "Editorial interior photograph of a compact V-berth cabin of a motor boat, crisp white cotton sateen bedding, a folded linen-colored blanket, warm light from a small cordless table lamp, light oak veneer, round portlight with evening lake view, calm and uncluttered, 24mm lens, no fisheye distortion",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        }
+      ]
+    },
+    {
+      "id": "segelyacht-nordwind",
+      "bootstyp": "Segelyacht",
+      "laenge": "12–16 m",
+      "revier": "Bodensee und Adria",
+      "modell3d": "segelyacht",
+      "titel": "Nordwind",
+      "leitsatz": "Unter Deck ruhig, an Deck wetterfest – Textilien, die Krängung und Feuchte aushalten.",
+      "stimmung": "Kühles Grau-Blau, Wollweiß, gebürstetes Holz. Nordisch-reduziert, alles hat einen Platz und rutscht nicht.",
+      "zielgruppe": "Eigner von Fahrtenyachten am Bodensee oder mit Liegeplatz an der Adria (Gruppe A/B)",
+      "paket": {
+        "stufe": "L",
+        "spanne": "15–40 T€",
+        "hinweis": "[Schätzung] laut Bericht 29, Abschnitt 6.2; kein Angebot"
+      },
+      "stilreferenz": "Nordeuropäische Fahrtenyachten mit hellem Innenausbau (nur Stimmung)",
+      "farbwelt": [
+        {
+          "name": "Wollweiß",
+          "hex": "#f7f5f1",
+          "rolle": "Polster (Token bone)"
+        },
+        {
+          "name": "Fjordgrau",
+          "hex": "#5c636a",
+          "rolle": "Bezüge (Token ink-soft)"
+        },
+        {
+          "name": "Eiche hell",
+          "hex": "#c9ad86",
+          "rolle": "Bestand Innenausbau"
+        },
+        {
+          "name": "Sturmblau",
+          "hex": "#2f4554",
+          "rolle": "Kissen, Persenning"
+        },
+        {
+          "name": "Stone",
+          "hex": "#ece8e1",
+          "rolle": "Vorhänge (Token stone)"
+        }
+      ],
+      "materialien": [
+        {
+          "name": "Marine-Polsterstoff grau-blau",
+          "einsatz": "Salon-Sitzbänke",
+          "hinweis": "Sattler, Reißverschluss-Bezüge"
+        },
+        {
+          "name": "Kaltschaum mit Drainage",
+          "einsatz": "Cockpitpolster",
+          "hinweis": "Sattler"
+        },
+        {
+          "name": "Wolle/Kaschmir",
+          "einsatz": "Plaids lose",
+          "hinweis": "trocken lagern"
+        },
+        {
+          "name": "Baumwollsatin",
+          "einsatz": "Achterkabine",
+          "hinweis": "Wohntextil"
+        }
+      ],
+      "zonen": {
+        "deck": "Cockpitpolster mit Drainage, Sprayhood und Bimini im Ton der Persenning (Sattler).",
+        "salon": "Sitzbänke neu beziehen, Kissen, Vorhänge vor den Fenstern, Akkuleuchte mit niedrigem Schwerpunkt.",
+        "kabine": "Eigner- und Gästekabine: Kojenauflagen, Bettwäsche, Decken.",
+        "bad": "Handtücher, Ablagen, nichts Zerbrechliches."
+      },
+      "produkte": [
+        {
+          "id": "Bon Jour Unplugged",
+          "marke": "Flos",
+          "name": "Bon Jour Unplugged",
+          "kategorie": "lamps",
+          "indoorOutdoor": "Indoor",
+          "pfad": "lamps-bon-jour-unplugged",
+          "href": "/de/produkte/lamps/lamps-bon-jour-unplugged",
+          "bild": "/cmx/files/flos-bon-jour-unplugged-01.webp",
+          "zone": "salon",
+          "rolle": "Tischleuchte mit Akku (nur im Hafen/vor Anker)",
+          "eignung": "innen-lose",
+          "hinweis": "bei Fahrt sichern oder verstauen",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Andersen \"Throw\"",
+          "marke": "Minotti",
+          "name": "Andersen \"Throw\"",
+          "kategorie": "decor",
+          "indoorOutdoor": "Indoor",
+          "pfad": "throw-andersen-throw",
+          "href": "/de/produkte/decor/throw-andersen-throw",
+          "bild": "/cmx/files/minotti-andersen-throw-01.webp",
+          "zone": "salon",
+          "rolle": "Plaid",
+          "eignung": "innen-lose",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Matratzenauflage Seine",
+          "marke": "Treca",
+          "name": "Matratzenauflage Seine",
+          "kategorie": "bedwear",
+          "indoorOutdoor": "Indoor",
+          "pfad": "bedwear-matratzenauflage-seine",
+          "href": "/de/produkte/bedwear/bedwear-matratzenauflage-seine",
+          "bild": "/cmx/files/matratzenauflage-seine-01.jpg",
+          "zone": "kabine",
+          "rolle": "Kojenauflage",
+          "eignung": "innen-lose",
+          "hinweis": "Sondermaß anfragen",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Snow",
+          "marke": "Alonpi",
+          "name": "Snow",
+          "kategorie": "bedwear",
+          "indoorOutdoor": "Indoor",
+          "pfad": "bedwear-snow",
+          "href": "/de/produkte/bedwear/bedwear-snow",
+          "bild": "/cmx/files/Snow_1_5d4e04c8-3ff2-4b73-a2a7-1b89a5cacb43.jpg",
+          "zone": "kabine",
+          "rolle": "Bettwäsche",
+          "eignung": "innen-lose",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Region - decor",
+          "marke": "Alonpi",
+          "name": "Region - decor",
+          "kategorie": "decor",
+          "indoorOutdoor": "Indoor",
+          "pfad": "decor-region",
+          "href": "/de/produkte/decor/decor-region",
+          "bild": "/cmx/files/Region_p_ecru_1_35e8bf8c-732e-41f8-8fae-862990782924.jpg",
+          "zone": "kabine",
+          "rolle": "Decke/Kissen",
+          "eignung": "innen-lose",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Bleau Stacking Side Table",
+          "marke": "Tuuci",
+          "name": "Bleau Stacking Side Table",
+          "kategorie": "garden-tables",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "garden-tables-bleau-stacking-side-table",
+          "href": "/de/produkte/garden-tables/garden-tables-bleau-stacking-side-table",
+          "bild": "/cmx/files/tuuci-bleau-stacking-side-table-01.webp",
+          "zone": "deck",
+          "rolle": "Beistelltisch vor Anker",
+          "eignung": "aussen-marine-hersteller",
+          "hinweis": "nicht unter Segeln; verstauen",
+          "bildtyp": "freisteller"
+        }
+      ],
+      "sattler": [
+        "Cockpitpolster",
+        "Salonbezüge",
+        "Sprayhood, Bimini, Persenning"
+      ],
+      "werft": [
+        "Rigg- und Deckbeschläge",
+        "Befestigungen",
+        "Elektrik"
+      ],
+      "bildprompts": [
+        {
+          "zone": "salon",
+          "format": "3:2, 2400 px",
+          "prompt": "Editorial interior photograph of the saloon of a 14 metre cruising sailing yacht, light oak joinery, U-shaped settee upholstered in blue-grey woven fabric, wool-white cushions, a grey cashmere throw, linen curtains at the hull windows, soft morning light reflecting from water, a small cordless lamp on the table, tidy and calm, 24mm lens without distortion",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        },
+        {
+          "zone": "deck",
+          "format": "4:5, 2000 px",
+          "prompt": "Editorial photograph of the cockpit of a cruising sailing yacht at anchor in a quiet Adriatic bay at golden hour, slate-blue cushions with quick-dry foam, teak cockpit table, folded sprayhood in matching canvas, clear turquoise water, 35mm lens, natural colors",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        }
+      ]
+    },
+    {
+      "id": "motoryacht-riviera",
+      "bootstyp": "Mittelmeer-Motoryacht",
+      "laenge": "20–30 m",
+      "revier": "Adria / Mittelmeer",
+      "modell3d": "motoryacht",
+      "titel": "Riviera Abend",
+      "leitsatz": "Die Flybridge als Terrasse, der Salon als Wohnzimmer – wie zu Hause am See, nur am Meer.",
+      "stimmung": "Sand, Terrakotta und Tabak. Weiche Outdoor-Lounges oben, italienisches Wohnen im Salon, Baumwollsatin in der Eignerkabine.",
+      "zielgruppe": "Eigner aus der Region mit Motoryacht an der Adria (Gruppe B, hohe Tickets)",
+      "paket": {
+        "stufe": "XL",
+        "spanne": "40–150 T€",
+        "hinweis": "[Schätzung] laut Bericht 29, Abschnitt 6.2; kein Angebot; Logistik vor Ort individuell"
+      },
+      "stilreferenz": "Italienische Flybridge-Yachten (nur Stimmung, keine erkennbare Werft)",
+      "farbwelt": [
+        {
+          "name": "Sand",
+          "hex": "#d8c7a8",
+          "rolle": "Lounge-Polster"
+        },
+        {
+          "name": "Terrakotta",
+          "hex": "#a5583a",
+          "rolle": "Kissen, Teppich-Akzent"
+        },
+        {
+          "name": "Tabak",
+          "hex": "#6b4a33",
+          "rolle": "Holz, Leder"
+        },
+        {
+          "name": "Walnut",
+          "hex": "#3f3129",
+          "rolle": "Salon-Möbel (Token walnut)"
+        },
+        {
+          "name": "Paper",
+          "hex": "#faf8f4",
+          "rolle": "Bettwäsche, Decken (Token paper)"
+        }
+      ],
+      "materialien": [
+        {
+          "name": "Outdoor-Geflecht und -Gewebe",
+          "einsatz": "Flybridge-Lounge",
+          "hinweis": "Bordeinsatz je Modell beim Hersteller bestätigen"
+        },
+        {
+          "name": "Teak",
+          "einsatz": "Achterdeck (Bestand)",
+          "hinweis": "Werft"
+        },
+        {
+          "name": "Wohnstoffe, Bouclé, Leder",
+          "einsatz": "Salon",
+          "hinweis": "nur innen, lose Möbel nach Werft-Freigabe Gewicht/Sicherung"
+        },
+        {
+          "name": "Baumwollsatin, Kaschmir",
+          "einsatz": "Eignerkabine",
+          "hinweis": "Wohntextil"
+        }
+      ],
+      "zonen": {
+        "flybridge": "Lounge-Sofa, Esstisch und Liegen aus Outdoor-Kollektionen; Schatten nur in Abstimmung mit der Werft.",
+        "deck": "Achterdeck: Esstisch mit Stühlen, Teppich, Akkuleuchten.",
+        "salon": "Sofa, Couchtisch, Teppich und Plaids aus dem Wohnsortiment – lose, mit Sicherung durch die Werft.",
+        "kabine": "Eignerkabine mit Bettwäsche, Decken, Kojenauflagen.",
+        "bad": "Handtücher und Textilien.",
+        "badeplattform": "Liegen und Handtücher für den Beach-Club-Moment am Heck."
+      },
+      "produkte": [
+        {
+          "id": "Portofino Outdoor Sofa",
+          "marke": "Paola Lenti",
+          "name": "Portofino Outdoor Sofa",
+          "kategorie": "lounge-furniture-daybeds",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lounge-furniture-daybeds-portofino-outdoor-sofa",
+          "href": "/de/produkte/lounge-furniture-daybeds/lounge-furniture-daybeds-portofino-outdoor-sofa",
+          "bild": "/cmx/files/paola-lenti-portofino-outdoor-sofa-01.webp",
+          "zone": "flybridge",
+          "rolle": "Lounge-Sofa",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Portofino Outdoor Table",
+          "marke": "Paola Lenti",
+          "name": "Portofino Outdoor Table",
+          "kategorie": "garden-tables",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "garden-tables-portofino-outdoor-table",
+          "href": "/de/produkte/garden-tables/garden-tables-portofino-outdoor-table",
+          "bild": "/cmx/files/paola-lenti-portofino-outdoor-chaise-longue-12.webp",
+          "zone": "flybridge",
+          "rolle": "Esstisch",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Baia",
+          "marke": "Paola Lenti",
+          "name": "Baia",
+          "kategorie": "sun-loungers",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "sun-loungers-baia",
+          "href": "/de/produkte/sun-loungers/sun-loungers-baia",
+          "bild": "/cmx/files/paola-lenti-baia-01.webp",
+          "zone": "flybridge",
+          "rolle": "Sonnenliege",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Bleau Barstool",
+          "marke": "Tuuci",
+          "name": "Bleau Barstool",
+          "kategorie": "garden-chairs",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "garden-chairs-bleau-barstool",
+          "href": "/de/produkte/garden-chairs/garden-chairs-bleau-barstool",
+          "bild": "/cmx/files/tuuci-bleau-barstool-01.webp",
+          "zone": "flybridge",
+          "rolle": "Barhocker an der Flybridge-Bar",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Asira",
+          "marke": "Paola Lenti",
+          "name": "Asira",
+          "kategorie": "rugs",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "rugs-asira",
+          "href": "/de/produkte/rugs/rugs-asira",
+          "bild": "/cmx/files/paola-lenti-asira-01.webp",
+          "zone": "deck",
+          "rolle": "Outdoor-Teppich Achterdeck",
+          "eignung": "aussen-marine-hersteller",
+          "hinweis": "Rutschhemmung mit Werft klären",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "In Vitro Unplugged",
+          "marke": "Flos",
+          "name": "In Vitro Unplugged",
+          "kategorie": "lamps",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lamps-in-vitro-unplugged",
+          "href": "/de/produkte/lamps/lamps-in-vitro-unplugged",
+          "bild": "/cmx/files/flos-in-vitro-unplugged-01.webp",
+          "zone": "deck",
+          "rolle": "Akkuleuchte für den Abend",
+          "eignung": "aussen-katalog",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Bleau Double Sun Lounge",
+          "marke": "Tuuci",
+          "name": "Bleau Double Sun Lounge",
+          "kategorie": "sun-loungers",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "sun-loungers-bleau-double-sun-lounge",
+          "href": "/de/produkte/sun-loungers/sun-loungers-bleau-double-sun-lounge",
+          "bild": "/cmx/files/tuuci-bleau-double-sun-lounge-01.webp",
+          "zone": "badeplattform",
+          "rolle": "Doppelliege am Heck",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Lido (Sofas)",
+          "marke": "Minotti",
+          "name": "Lido (Sofas)",
+          "kategorie": "sofas-couches",
+          "indoorOutdoor": "Indoor",
+          "pfad": "sofas-lido-sofas",
+          "href": "/de/produkte/sofas-couches/sofas-lido-sofas",
+          "bild": "/cmx/files/minotti-lido-01.webp",
+          "zone": "salon",
+          "rolle": "Sitzmöbel im Salon – Kollektion Lido, Sofa oder Sessel",
+          "eignung": "innen-lose",
+          "hinweis": "Gewicht und Sicherung durch die Werft",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Libra Coffee Table",
+          "marke": "Minotti",
+          "name": "Libra Coffee Table",
+          "kategorie": "coffee-tables",
+          "indoorOutdoor": "Indoor",
+          "pfad": "side-tables-libra-coffee-table",
+          "href": "/de/produkte/coffee-tables/side-tables-libra-coffee-table",
+          "bild": "/cmx/files/minotti-libra-coffee-table-01.webp",
+          "zone": "salon",
+          "rolle": "Couchtisch",
+          "eignung": "innen-lose",
+          "hinweis": "Sicherung durch die Werft",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Wisp",
+          "marke": "Minotti",
+          "name": "Wisp",
+          "kategorie": "rugs",
+          "indoorOutdoor": "Indoor",
+          "pfad": "tables-wisp",
+          "href": "/de/produkte/rugs/tables-wisp",
+          "bild": "/cmx/files/minotti-wisp-01.webp",
+          "zone": "salon",
+          "rolle": "Teppich",
+          "eignung": "innen-lose",
+          "hinweis": "Rutschhemmung",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Cachemire",
+          "marke": "Minotti",
+          "name": "Cachemire",
+          "kategorie": "decor",
+          "indoorOutdoor": "Indoor",
+          "pfad": "throw-cachemire",
+          "href": "/de/produkte/decor/throw-cachemire",
+          "bild": "/cmx/files/minotti-cachemire-01.webp",
+          "zone": "salon",
+          "rolle": "Plaid",
+          "eignung": "innen-lose",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Freeman \"Duvet\"",
+          "marke": "Minotti",
+          "name": "Freeman \"Duvet\"",
+          "kategorie": "bedwear",
+          "indoorOutdoor": "Indoor",
+          "pfad": "sofas-freeman-duvet",
+          "href": "/de/produkte/bedwear/sofas-freeman-duvet",
+          "bild": "/cmx/files/minotti-freeman-duvet-01.webp",
+          "zone": "kabine",
+          "rolle": "Bettdecke Eignerkabine",
+          "eignung": "innen-lose",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Laken aus Baumwollsatin",
+          "marke": "Minotti",
+          "name": "Laken aus Baumwollsatin",
+          "kategorie": "bedwear",
+          "indoorOutdoor": "Indoor",
+          "pfad": "tables-laken-aus-baumwollsatin",
+          "href": "/de/produkte/bedwear/tables-laken-aus-baumwollsatin",
+          "bild": "/cmx/files/minotti-laken-aus-baumwollsatin-01.webp",
+          "zone": "kabine",
+          "rolle": "Bettwäsche",
+          "eignung": "innen-lose",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Matratzenauflage Riviera",
+          "marke": "Treca",
+          "name": "Matratzenauflage Riviera",
+          "kategorie": "bedwear",
+          "indoorOutdoor": "Indoor",
+          "pfad": "bedwear-matratzenauflage-riviera",
+          "href": "/de/produkte/bedwear/bedwear-matratzenauflage-riviera",
+          "bild": "/cmx/files/matratzenauflage-riviera-01.jpg",
+          "zone": "kabine",
+          "rolle": "Matratzenauflage",
+          "eignung": "innen-lose",
+          "hinweis": "Sondermaß anfragen",
+          "bildtyp": "stimmung"
+        }
+      ],
+      "sattler": [
+        "Sonnenpolster Vorschiff",
+        "Bezüge der Einbausitze",
+        "Biminis/Persenning"
+      ],
+      "werft": [
+        "Gewicht und Stabilität freigeben",
+        "Möbelsicherung an Deck und im Salon",
+        "Schirm-/Bimini-Befestigung",
+        "Elektrik, Licht fest verbaut"
+      ],
+      "bildprompts": [
+        {
+          "zone": "flybridge",
+          "format": "16:9, 2560 px",
+          "prompt": "Editorial photograph of the flybridge of a 26 metre motor yacht anchored off a rocky Mediterranean coast at sunset, deep sand-colored modular outdoor lounge with terracotta cushions, a low outdoor dining table, a woven outdoor rug, a slim aluminium bar stool, warm glow from cordless lanterns, calm sea, 28mm lens, editorial travel magazine look",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        },
+        {
+          "zone": "salon",
+          "format": "3:2, 2400 px",
+          "prompt": "Editorial interior photograph of the main saloon of a motor yacht, large windows to a calm sea, a low sand-colored sofa, a round walnut coffee table, a hand-knotted rug in warm grey, a cashmere throw, warm oak floor, late afternoon light, Italian contemporary living style, 24mm lens without distortion",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        },
+        {
+          "zone": "kabine",
+          "format": "4:5, 2000 px",
+          "prompt": "Editorial interior photograph of a full-beam owner's cabin on a motor yacht, bed with crisp white cotton sateen and a soft duvet, tobacco leather headboard, sea view through a long hull window, warm reading light, serene, 24mm lens",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        }
+      ]
+    },
+    {
+      "id": "bootshaus-ufer",
+      "bootstyp": "Hausboot und Bootshaus",
+      "laenge": "Bootshaus mit Steg, Hausboot als schwimmende Wohnung",
+      "revier": "Bodensee-Ufer",
+      "modell3d": "hausboot",
+      "titel": "Am Ufer",
+      "leitsatz": "Wo das Boot schläft, beginnt der Abend: Lounge, Wärme und Licht am Wasser.",
+      "stimmung": "Holz, Stein, Wasserlicht. Breite Lounges, ein großer Tisch, Wärme für die langen Abende im September.",
+      "zielgruppe": "Bootshäuser und Seegrundstücke (Gruppe C, beste Passung); Hausboote nur auf Anfrage (Gruppe D)",
+      "paket": {
+        "stufe": "XL",
+        "spanne": "40–150 T€",
+        "hinweis": "[Schätzung] laut Bericht 29, Abschnitt 6.2; Gartenplanung mit befugten Fachbetrieben"
+      },
+      "stilreferenz": "Bootshäuser am Bodensee in Holz und Beton (nur Stimmung)",
+      "farbwelt": [
+        {
+          "name": "Lärche vergraut",
+          "hex": "#8a8174",
+          "rolle": "Fassade, Steg (Token pebble)"
+        },
+        {
+          "name": "Stone",
+          "hex": "#ece8e1",
+          "rolle": "Polster (Token stone)"
+        },
+        {
+          "name": "Teak",
+          "hex": "#a87c4f",
+          "rolle": "Tisch"
+        },
+        {
+          "name": "See",
+          "hex": "#4f6b68",
+          "rolle": "Kissen, Akzent (Token see)"
+        },
+        {
+          "name": "Ink-deep",
+          "hex": "#1f252b",
+          "rolle": "Stahl, Nacht (Token ink-deep)"
+        }
+      ],
+      "materialien": [
+        {
+          "name": "Teak und Aluminium",
+          "einsatz": "Tisch, Liegen",
+          "hinweis": "Outdoor laut Katalog"
+        },
+        {
+          "name": "Outdoor-Gewebe",
+          "einsatz": "Lounge-Polster",
+          "hinweis": "abnehmbare Bezüge, im Winter trocken einlagern"
+        },
+        {
+          "name": "Geflecht",
+          "einsatz": "Canopy, Sessel",
+          "hinweis": "Outdoor laut Katalog"
+        },
+        {
+          "name": "Eiche, Lammfell",
+          "einsatz": "Innenraum Hausboot",
+          "hinweis": "Wohnprodukte, nur innen"
+        }
+      ],
+      "zonen": {
+        "deck": "Steg und Terrasse: Lounge, Esstisch, Schirm, Heizstrahler.",
+        "salon": "Hausboot innen: Esstisch, Sessel, Teppich, Akkuleuchten.",
+        "kabine": "Schlafbereich wie in einer kleinen Wohnung.",
+        "badeplattform": "Einstieg ins Wasser: Liege, Handtücher, Leuchte."
+      },
+      "produkte": [
+        {
+          "id": "PLATEAU Arrangement A1",
+          "marke": "Solpuri",
+          "name": "PLATEAU Arrangement A1",
+          "kategorie": "lounge-furniture-daybeds",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lounge-furniture-daybeds-plateau-arrangement-a1",
+          "href": "/de/produkte/lounge-furniture-daybeds/lounge-furniture-daybeds-plateau-arrangement-a1",
+          "bild": "/cmx/files/solpuri-plateau-arrangement-a1-01.webp",
+          "zone": "deck",
+          "rolle": "Lounge-Gruppe auf der Terrasse",
+          "eignung": "aussen-katalog",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "CHARLIE Teak Dining Table",
+          "marke": "Solpuri",
+          "name": "CHARLIE Teak Dining Table",
+          "kategorie": "garden-tables",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "garden-tables-charlie-teak-dining-table",
+          "href": "/de/produkte/garden-tables/garden-tables-charlie-teak-dining-table",
+          "bild": "/cmx/files/solpuri-charlie-teak-dining-table-01.webp",
+          "zone": "deck",
+          "rolle": "Esstisch am Wasser",
+          "eignung": "aussen-katalog",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Ketch",
+          "marke": "Poliform",
+          "name": "Ketch",
+          "kategorie": "lounge-furniture-daybeds",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lounge-furniture-daybeds-ketch",
+          "href": "/de/produkte/lounge-furniture-daybeds/lounge-furniture-daybeds-ketch",
+          "bild": "/cmx/files/poliform-ketch-01.webp",
+          "zone": "deck",
+          "rolle": "Lounge-Element",
+          "eignung": "aussen-katalog",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Belvedere Canopy",
+          "marke": "Livintwist",
+          "name": "Belvedere Canopy",
+          "kategorie": "lounge-furniture-daybeds",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lounge-furniture-daybeds-belvedere-canopy",
+          "href": "/de/produkte/lounge-furniture-daybeds/lounge-furniture-daybeds-belvedere-canopy",
+          "bild": "/cmx/files/livintwist-belvedere-canopy-01.webp",
+          "zone": "deck",
+          "rolle": "Canopy-Liege",
+          "eignung": "aussen-katalog",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Eclipsum UX",
+          "marke": "Umbrosa",
+          "name": "Eclipsum UX",
+          "kategorie": "parasols",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "parasols-eclipsum-ux",
+          "href": "/de/produkte/parasols/parasols-eclipsum-ux",
+          "bild": "/cmx/files/umbrosa-eclipsum-ux-01.webp",
+          "zone": "deck",
+          "rolle": "Schirm",
+          "eignung": "aussen-katalog",
+          "hinweis": "Verankerung durch Fachbetrieb",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Dome Pendant",
+          "marke": "Heatsail",
+          "name": "Dome Pendant",
+          "kategorie": "heaters",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "heaters-dome-pendant",
+          "href": "/de/produkte/heaters/heaters-dome-pendant",
+          "bild": "/cmx/files/heatsail-dome-pendant-01.webp",
+          "zone": "deck",
+          "rolle": "Heizstrahler",
+          "eignung": "aussen-katalog",
+          "hinweis": "Elektroanschluss durch Elektriker",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "IC F1 Outdoor H 1350 mm",
+          "marke": "Flos",
+          "name": "IC F1 Outdoor H 1350 mm",
+          "kategorie": "lamps",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lamps-ic-f1-outdoor-h-1350-mm",
+          "href": "/de/produkte/lamps/lamps-ic-f1-outdoor-h-1350-mm",
+          "bild": "/cmx/files/flos-ic-f1-outdoor-h-1350-mm-01.webp",
+          "zone": "deck",
+          "rolle": "Stehleuchte außen",
+          "eignung": "aussen-katalog",
+          "hinweis": "Anschluss durch Elektriker",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "FOXX Lounger",
+          "marke": "Solpuri",
+          "name": "FOXX Lounger",
+          "kategorie": "sun-loungers",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "sun-loungers-foxx-lounger",
+          "href": "/de/produkte/sun-loungers/sun-loungers-foxx-lounger",
+          "bild": "/cmx/files/solpuri-foxx-lounger-01.webp",
+          "zone": "badeplattform",
+          "rolle": "Liege am Einstieg",
+          "eignung": "aussen-katalog",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Arc Dining Table, Ø120 - Coffee Black Oak",
+          "marke": "101 Copenhagen",
+          "name": "Arc Dining Table, Ø120 - Coffee Black Oak",
+          "kategorie": "dining-tables",
+          "indoorOutdoor": "Indoor",
+          "pfad": "dining-tables-arc-dining-table-120-coffee-black-oak",
+          "href": "/de/produkte/dining-tables/dining-tables-arc-dining-table-120-coffee-black-oak",
+          "bild": "/cmx/files/101-copenhagen-arc-dining-table-120-coffee-black-oak-01.webp",
+          "zone": "salon",
+          "rolle": "Esstisch im Hausboot",
+          "eignung": "innen-lose",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Toe Armchair, Flat - Sheepskin",
+          "marke": "101 Copenhagen",
+          "name": "Toe Armchair, Flat - Sheepskin",
+          "kategorie": "armchairs-stools",
+          "indoorOutdoor": "Indoor",
+          "pfad": "armchairs-stools-toe-armchair-flat-sheepskin",
+          "href": "/de/produkte/armchairs-stools/armchairs-stools-toe-armchair-flat-sheepskin",
+          "bild": "/cmx/files/101-copenhagen-toe-armchair-flat-sheepskin-01.webp",
+          "zone": "salon",
+          "rolle": "Sessel",
+          "eignung": "innen-lose",
+          "bildtyp": "stimmung"
+        },
+        {
+          "id": "Tatou Floor",
+          "marke": "Flos",
+          "name": "Tatou Floor",
+          "kategorie": "lamps",
+          "indoorOutdoor": "Indoor",
+          "pfad": "lamps-tatou-floor",
+          "href": "/de/produkte/lamps/lamps-tatou-floor",
+          "bild": "/cmx/files/tatou-floor-01.jpg",
+          "zone": "salon",
+          "rolle": "Stehleuchte",
+          "eignung": "innen-lose",
+          "hinweis": "nur Innenraum, Netzanschluss",
+          "bildtyp": "freisteller"
+        }
+      ],
+      "sattler": [
+        "Polster für Einbaubänke im Bootshaus (falls gewünscht)"
+      ],
+      "werft": [
+        "Hausboot: Struktur, Elektrik, Gas ausschließlich Werft/Fachbetrieb"
+      ],
+      "gartenbau": [
+        "Gartenplanung und Ausführung durch befugte Fachbetriebe; Platzhirsch koordiniert die Termine"
+      ],
+      "bildprompts": [
+        {
+          "zone": "deck",
+          "format": "16:9, 2560 px",
+          "prompt": "Editorial architecture photograph of a contemporary timber boathouse on a quiet alpine lake shore at dusk, wide terrace with a low modular outdoor lounge in stone-grey fabric, a long teak dining table, a cantilever parasol, a pendant patio heater glowing warm, a wooden runabout resting in the open boat bay, mountains across the lake, 24mm tilt-shift look, natural colors",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        },
+        {
+          "zone": "salon",
+          "format": "4:5, 2000 px",
+          "prompt": "Editorial interior photograph inside a modern houseboat living room, round dark oak dining table, a low sheepskin armchair, floor lamp with warm light, large window with water reflections on the ceiling, Scandinavian calm, 24mm lens",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        }
+      ]
+    },
+    {
+      "id": "superyacht-lounge",
+      "bootstyp": "Superyacht-Lounge (Inspiration)",
+      "laenge": "ab 40 m",
+      "revier": "Mittelmeer",
+      "modell3d": "superyacht",
+      "titel": "Beach Club",
+      "leitsatz": "Eine Inspiration, kein Bodensee-Angebot: wie Outdoor-Kollektionen auf großen Decks wirken.",
+      "stimmung": "Kalkweiß, Salbei, Rohleinen. Tiefe Liegeinseln, Vorhänge im Wind, Licht wie in einer Strandvilla.",
+      "zielgruppe": "Inspiration für Gruppe B und für Bootshaus-Kunden. Superyacht-Interiors verantworten Designbüros und Werften; Platzhirsch liefert auf Anfrage lose Ausstattung.",
+      "paket": {
+        "stufe": "Inspiration",
+        "spanne": null,
+        "hinweis": "Kein eigenes Leistungsangebot für Superyachten (Bericht 29, Abschnitt 4)"
+      },
+      "stilreferenz": "Beach-Club-Decks großer Yachten (nur Stimmung, keine erkennbare Yacht)",
+      "farbwelt": [
+        {
+          "name": "Kalkweiß",
+          "hex": "#f2efe8",
+          "rolle": "Polster"
+        },
+        {
+          "name": "Salbei",
+          "hex": "#8fa294",
+          "rolle": "Kissen, Teppich"
+        },
+        {
+          "name": "Rohleinen",
+          "hex": "#d6cbb6",
+          "rolle": "Vorhänge"
+        },
+        {
+          "name": "Teak gebleicht",
+          "hex": "#c2a582",
+          "rolle": "Deck"
+        },
+        {
+          "name": "Tiefsee",
+          "hex": "#203a43",
+          "rolle": "Wasser, Nacht"
+        }
+      ],
+      "materialien": [
+        {
+          "name": "Outdoor-Gewebe und Seil",
+          "einsatz": "Liegeinseln, Daybeds",
+          "hinweis": "Bordeinsatz beim Hersteller bestätigen"
+        },
+        {
+          "name": "Teak gebleicht",
+          "einsatz": "Deck (Bestand)",
+          "hinweis": "Werft"
+        },
+        {
+          "name": "Outdoor-Teppich",
+          "einsatz": "Lounge",
+          "hinweis": "Rutschhemmung"
+        }
+      ],
+      "zonen": {
+        "badeplattform": "Beach Club auf Wasserhöhe: Liegeinseln, Teppich, Akkuleuchten.",
+        "flybridge": "Sundeck mit Daybeds und Schatten.",
+        "deck": "Achterdeck-Lounge mit Sofas und Beistelltischen.",
+        "salon": "Hinweis: Innenausbau großer Yachten liegt beim Designbüro der Werft."
+      },
+      "produkte": [
+        {
+          "id": "Float, Float Mini",
+          "marke": "Paola Lenti",
+          "name": "Float, Float Mini",
+          "kategorie": "lounge-furniture-daybeds",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lounge-furniture-daybeds-float-float-mini",
+          "href": "/de/produkte/lounge-furniture-daybeds/lounge-furniture-daybeds-float-float-mini",
+          "bild": "/cmx/files/paola-lenti-float-float-mini-01.webp",
+          "zone": "badeplattform",
+          "rolle": "Liegeinseln",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Wave",
+          "marke": "Paola Lenti",
+          "name": "Wave",
+          "kategorie": "sun-loungers",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "sun-loungers-wave",
+          "href": "/de/produkte/sun-loungers/sun-loungers-wave",
+          "bild": "/cmx/files/paola-lenti-wave-01.webp",
+          "zone": "badeplattform",
+          "rolle": "Sonnenliege",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Swell",
+          "marke": "Paola Lenti",
+          "name": "Swell",
+          "kategorie": "sun-loungers",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "sun-loungers-swell",
+          "href": "/de/produkte/sun-loungers/sun-loungers-swell",
+          "bild": "/cmx/files/paola-lenti-swell-01.webp",
+          "zone": "flybridge",
+          "rolle": "Liege",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Harbour",
+          "marke": "Paola Lenti",
+          "name": "Harbour",
+          "kategorie": "lounge-furniture-daybeds",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lounge-furniture-daybeds-harbour",
+          "href": "/de/produkte/lounge-furniture-daybeds/lounge-furniture-daybeds-harbour",
+          "bild": "/cmx/files/paola-lenti-harbour-01.webp",
+          "zone": "deck",
+          "rolle": "Lounge-Sofa",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Giro Outdoor Side Table",
+          "marke": "Paola Lenti",
+          "name": "Giro Outdoor Side Table",
+          "kategorie": "garden-tables",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "garden-tables-giro-outdoor-side-table",
+          "href": "/de/produkte/garden-tables/garden-tables-giro-outdoor-side-table",
+          "bild": "/cmx/files/paola-lenti-giro-outdoor-side-table-01.webp",
+          "zone": "deck",
+          "rolle": "Beistelltisch",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Bleau Sand Sun Lounge",
+          "marke": "Tuuci",
+          "name": "Bleau Sand Sun Lounge",
+          "kategorie": "sun-loungers",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "sun-loungers-bleau-sand-sun-lounge",
+          "href": "/de/produkte/sun-loungers/sun-loungers-bleau-sand-sun-lounge",
+          "bild": "/cmx/files/tuuci-bleau-sand-sun-lounge-01.webp",
+          "zone": "badeplattform",
+          "rolle": "Liege im Flachwasser-/Strandbereich",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Bleau Lounge Chair",
+          "marke": "Tuuci",
+          "name": "Bleau Lounge Chair",
+          "kategorie": "lounge-furniture-daybeds",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lounge-furniture-daybeds-bleau-lounge-chair",
+          "href": "/de/produkte/lounge-furniture-daybeds/lounge-furniture-daybeds-bleau-lounge-chair",
+          "bild": "/cmx/files/tuuci-bleau-lounge-chair-01.webp",
+          "zone": "deck",
+          "rolle": "Lounge-Sessel",
+          "eignung": "aussen-marine-hersteller",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Kalife Daybed with curtains",
+          "marke": "Sifas",
+          "name": "Kalife Daybed with curtains",
+          "kategorie": "lounge-furniture-daybeds",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lounge-furniture-daybeds-kalife-daybed-with-curtains",
+          "href": "/de/produkte/lounge-furniture-daybeds/lounge-furniture-daybeds-kalife-daybed-with-curtains",
+          "bild": "/cmx/files/sifas-kalife-daybed-with-curtains-01.webp",
+          "zone": "flybridge",
+          "rolle": "Daybed – Inspiration für Bootshaus",
+          "eignung": "aussen-katalog",
+          "hinweis": "nur Bootshaus/Terrasse, an Bord nicht belegt",
+          "bildtyp": "freisteller"
+        },
+        {
+          "id": "Captain Flint Outdoor W1",
+          "marke": "Flos",
+          "name": "Captain Flint Outdoor W1",
+          "kategorie": "lamps",
+          "indoorOutdoor": "Outdoor",
+          "pfad": "lamps-captain-flint-outdoor-w1",
+          "href": "/de/produkte/lamps/lamps-captain-flint-outdoor-w1",
+          "bild": "/cmx/files/flos-captain-flint-outdoor-w1-01.webp",
+          "zone": "deck",
+          "rolle": "Leuchte – Inspiration",
+          "eignung": "aussen-katalog",
+          "hinweis": "Anschluss/Bordeinsatz nicht belegt",
+          "bildtyp": "freisteller"
+        }
+      ],
+      "sattler": [],
+      "werft": [
+        "Gesamtverantwortung Interior und Deck beim Designbüro/der Werft"
+      ],
+      "bildprompts": [
+        {
+          "zone": "badeplattform",
+          "format": "16:9, 2560 px",
+          "prompt": "Editorial photograph of the beach club of a large modern yacht at water level, fold-down terrace open to turquoise water, low lounge islands in chalk-white outdoor fabric with sage cushions, bleached teak deck, a woven outdoor rug, linen curtains moving in the breeze, late afternoon Mediterranean light, 24mm lens, calm editorial mood",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        },
+        {
+          "zone": "flybridge",
+          "format": "3:2, 2400 px",
+          "prompt": "Editorial photograph of a sundeck on a large yacht at night, two deep daybeds in raw linen tones, soft cordless lanterns on the deck, starry sky, distant coastline lights, long exposure but natural, 28mm lens",
+          "negativ": "no logos, no brand names, no text, no watermark, no recognizable shipyard or yacht model, no copies of identifiable designer furniture, no people's faces, no HDR look, no fisheye, no oversaturated colors"
+        }
+      ]
+    }
+  ],
+  "bildtypHinweis": "bildtyp je Produkt: freisteller (Rand ≥ 90 % weiß, geprüft 27.10.2026 per Randpixel-Analyse des Katalogbilds) oder stimmung. Gilt für den hier gespeicherten bild-Pfad; liefert das Backoffice ein anderes Bild, behandelt die Seite es neutral (contain auf Weiß)."
+}

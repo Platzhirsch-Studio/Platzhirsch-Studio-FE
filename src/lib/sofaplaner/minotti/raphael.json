@@ -1,0 +1,397 @@
+{
+  "name": "Raphael",
+  "slug": "raphael",
+  "designer": "GamFratesi",
+  "jahr": 2023,
+  "jahr_hinweis": "Zugehörig zur \"2023 Collection\" lt. Produktseite (Designs registriert 12.04.2023).",
+  "typ": "Sofa-Familie aus Einzelstücken (nicht modular): 3 Sofavarianten (linear, halbrund, asymmetrisch halbrund), Sessel, Fußhocker, Dining-Sessel",
+  "modular": false,
+  "outdoor": false,
+  "quellen": [
+    "https://www.minotti.com/en/raphael",
+    "https://www.minotti.com/de/raphael",
+    "https://www.minotti.com/en/raphael-dining",
+    "https://www.minotti.com/en/raphael_armchair"
+  ],
+  "abrufdatum": "2026-10-27",
+  "hersteller": "Minotti S.p.A., Meda (MB), Italien",
+  "masseinheit": "cm",
+  "masse_hinweis": "Breite × Tiefe × Höhe aus den offiziellen Minotti-Maßzeichnungen im Abschnitt \"Technical Features\" der Produktseite (Dateiname und Bemaßung der Zeichnung). Minotti weist darauf hin, dass CAD-Maße leicht von der Produktkarte abweichen können. Die Sitztiefe ist in keiner öffentlichen Zeichnung bemaßt.",
+  "rechte_hinweis": "Zeichnungen, Fotos, CAD-/BIM-Dateien sind urheberrechtlich geschützt (Minotti S.p.A.); Veränderung ausdrücklich untersagt. quelle_zeichnung-URLs dienen nur als Beleg der Maße, nicht zur Einbindung. Freistellungen nur intern/Labs und im Rechte-Register vermerken. Deep-Linking ist laut Minotti-Nutzungsbedingungen ohne Zustimmung untersagt: Links nicht öffentlich ausspielen.",
+  "preis": {
+    "wert": null,
+    "hinweis": "Keine Preise erfasst. Preise nur aus Konfigurationstabelle, gekennzeichnet \"Richtwert – vom Inhaber festzulegen\"."
+  },
+  "elemente": [
+    {
+      "code": "raphael-sofa-cm-192",
+      "name": "SOFA CM 192",
+      "art": "sofa",
+      "breite_cm": 192,
+      "tiefe_cm": 91,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "hinweis": "Lineares Sofa, freistehend, nicht modular.",
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 55,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehne)"
+        },
+        {
+          "wert": 71,
+          "bedeutung": "nicht beschriftet (vermutl. Rückenstruktur)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41257_n_RAPHAEL_SOFA_192X91_H88.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-angled-sofa-cm-227",
+      "name": "ANGLED SOFA CM 227",
+      "art": "sofa-halbrund",
+      "breite_cm": 227,
+      "tiefe_cm": 118,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "sehne_vorderkante_cm": 184
+      },
+      "hinweis": "Halbrundes (\"semi-curved\") Sofa, freistehend.",
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 55,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehne)"
+        },
+        {
+          "wert": 72,
+          "bedeutung": "nicht beschriftet (vermutl. Rückenstruktur)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41258_n_RAPHAEL_ANGLED_SOFA_227X118_H88.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-inclined-sofa-cm-247",
+      "name": "INCLINED SOFA CM 247",
+      "art": "sofa-asymmetrisch",
+      "breite_cm": 247,
+      "tiefe_cm": 135,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "schenkel_cm": [
+          130,
+          78
+        ]
+      },
+      "hinweis": "Asymmetrisch halbrundes Sofa mit Höhenwechsel im Rücken; Spiegelvariante nicht angegeben.",
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 55,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehne)"
+        },
+        {
+          "wert": "63–73",
+          "bedeutung": "Rückenhöhe variierend (asymmetrisch geschwungener Rücken)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41259_n_RAPHAEL_INCLINED_SOFA_247X135_H88.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-large-armchair-fixed",
+      "name": "LARGE ARMCHAIR - FIXED",
+      "art": "sessel",
+      "breite_cm": 82,
+      "tiefe_cm": 90,
+      "hoehe_cm": 78,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "masz_im_grundriss_cm": 62
+      },
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 55,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehne)"
+        },
+        {
+          "wert": 70,
+          "bedeutung": "nicht beschriftet"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41249_n_RAPHAEL_LARGE_ARMCHAIR_82X90_H78_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-large-armchair-swivel",
+      "name": "LARGE ARMCHAIR - SWIVEL",
+      "art": "sessel-drehbar",
+      "breite_cm": 82,
+      "tiefe_cm": 90,
+      "hoehe_cm": 78,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "hinweis": "360° drehbar mit Rückstellung. Sitzhöhe in dieser Zeichnung nicht bemaßt.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41250_n_RAPHAEL_LARGE_ARMCHAIR_82X90_H78_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-armchair-fixed",
+      "name": "ARMCHAIR - FIXED",
+      "art": "sessel",
+      "breite_cm": 74,
+      "tiefe_cm": 86,
+      "hoehe_cm": 78,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "masz_im_grundriss_cm": 58
+      },
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 55,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehne)"
+        },
+        {
+          "wert": 71,
+          "bedeutung": "nicht beschriftet"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41251_n_RAPHAEL_ARMCHAIR_74X86_H78_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-armchair-swivel",
+      "name": "ARMCHAIR - SWIVEL",
+      "art": "sessel-drehbar",
+      "breite_cm": 74,
+      "tiefe_cm": 86,
+      "hoehe_cm": 78,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "hinweis": "360° drehbar mit Rückstellung. Sitzhöhe in dieser Zeichnung nicht bemaßt.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41252_n_RAPHAEL_ARMCHAIR_74X86_H78_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-footstool-legs",
+      "name": "FOOTSTOOL LEGS",
+      "art": "hocker",
+      "breite_cm": 60,
+      "tiefe_cm": 54,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "hinweis": "Fußhocker auf Beinen; Gesamthöhe 42.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41253_n_RAPHAEL_FOOTSTOOL_60X54_H42_LEGS.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-footstool-base",
+      "name": "FOOTSTOOL BASE",
+      "art": "hocker",
+      "breite_cm": 60,
+      "tiefe_cm": 54,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "hinweis": "Fußhocker auf Aluguss-Gestell; Gesamthöhe 42.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41254_n_RAPHAEL_FOOTSTOOL_60X54_H42.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-dining-little-armchair-fixed",
+      "name": "DINING LITTLE ARMCHAIR - FIXED",
+      "art": "esszimmer-sessel",
+      "breite_cm": 60,
+      "tiefe_cm": 62,
+      "hoehe_cm": 78,
+      "sitzhoehe_cm": 51,
+      "sitztiefe_cm": null,
+      "hinweis": "Gehört zu \"Raphael Dining\"; im Sofaplaner nur als Beistellmöbel relevant.",
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehne)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41255_n_RAPHAEL_DINING_LITTLE_ARMCHAIR_60X62_H78_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-dining-little-armchair-swivel",
+      "name": "DINING LITTLE ARMCHAIR - SWIVEL",
+      "art": "esszimmer-sessel",
+      "breite_cm": 60,
+      "tiefe_cm": 62,
+      "hoehe_cm": 78,
+      "sitzhoehe_cm": 51,
+      "sitztiefe_cm": null,
+      "hinweis": "360° drehbar mit Rückstellung.",
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehne)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41256_n_RAPHAEL_DINING_LITTLE_ARMCHAIR_60X62_H78_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-optional-backrest-cushion-cm-64x62",
+      "name": "OPTIONAL BACKREST CUSHION CM 64X62",
+      "art": "kissen",
+      "breite_cm": 64,
+      "tiefe_cm": 62,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41260_n_RAPHAEL_OPTIONAL_BACKREST_CUSHION_64X62.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    },
+    {
+      "code": "raphael-optional-cushion-cm-50x50",
+      "name": "OPTIONAL CUSHION CM 50X50",
+      "art": "kissen",
+      "breite_cm": 50,
+      "tiefe_cm": 50,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41261_n_RAPHAEL_OPTIONAL_CUSHION_50X50.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/raphael"
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Fester gepolsterter Rücken (formgebunden je Sofavariante)",
+      "hinweis": "Rücken ist Teil der Struktur; beim Inclined Sofa wechselnde Rückenhöhe (63–73 cm lt. Zeichnung)."
+    },
+    {
+      "name": "Optionales Rückenkissen 64×62 cm",
+      "code": "raphael-optional-backrest-cushion-cm-64x62"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Integrierte, geschwungene Armlehnen",
+      "hinweis": "Keine wählbaren Armlehnenvarianten veröffentlicht."
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Füße Sofa/Sessel/Fußhocker (Beine)",
+      "material": "Aluminiumguss, CNC-bearbeitet",
+      "finish": [
+        "Bronze lackiert, poliert, Anti-Fingerprint",
+        "Pewter lackiert, poliert, Anti-Fingerprint"
+      ],
+      "gleiter": "schwarze Filzgleiter oder schwarze Polyethylen-Gleiter"
+    },
+    {
+      "teil": "Füße Sofa/Sessel (Holz)",
+      "material": "Esche massiv, kammergetrocknet",
+      "finish": [
+        "offenporig lackiert Licorice"
+      ]
+    },
+    {
+      "teil": "Drehgestell Sessel",
+      "material": "Aluminiumguss, 4-Stern",
+      "finish": [
+        "Pewter poliert, Anti-Fingerprint",
+        "Bronze poliert, Anti-Fingerprint"
+      ],
+      "funktion": "360° drehbar mit Rückstellung"
+    },
+    {
+      "teil": "Gestell Fußhocker (Base)",
+      "material": "Aluminiumguss",
+      "finish": [
+        "Pewter poliert",
+        "Bronze poliert"
+      ]
+    },
+    {
+      "teil": "Dining-Sessel fix",
+      "material": "Esche massiv Licorice, an Metallrahmen Pewter poliert"
+    },
+    {
+      "teil": "Dining-Sessel drehbar",
+      "material": "Aluminiumguss 4-Stern",
+      "finish": [
+        "Pewter poliert",
+        "Bronze poliert"
+      ]
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "kategorien_detail": null,
+    "bezugsart": {
+      "fest": false,
+      "abnehmbar": true,
+      "text": "Bezüge für Kissen und Gestell in allen Versionen (Stoff und Leder) komplett abziehbar; zwei Reißverschlüsse unter dem Sitz."
+    },
+    "farbmuster_hinweis": "Stoff- und Lederfarben/-kategorien laut Minotti \"The World of Materials\"; Originalmuster im Showroom Platzhirsch Home Living (Lochau) ansehen – Bildschirmfarben sind nicht verbindlich."
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optionales Rückenkissen",
+      "masse_cm": "64×62"
+    },
+    {
+      "name": "Optionales Kissen",
+      "masse_cm": "50×50"
+    }
+  ],
+  "polsterung": {
+    "struktur": "Metall, mit flammhemmendem PU-Schaum ummantelt, atmungsaktives Faservlies mit Baumwolle kaschiert; Sitzfederung über Gummigurte",
+    "kissen": "Sitz- und Rückenkissen mit Gänsedaunen in Kanälen (Assopiuma Gold Label), Einlage HR-PU-Schaum variabler Dichte, oben temperaturempfindliches PU"
+  },
+  "besonderheiten": [
+    "Nicht modular: der Planer platziert ganze Stücke frei im Raum (keine Anbau-Logik).",
+    "Inclined Sofa ist asymmetrisch; eine Seitenwahl (links/rechts gespiegelt) ist nicht veröffentlicht.",
+    "Sessel wahlweise fix (Beine) oder drehbar (4-Stern-Gestell).",
+    "Die Arrangements der Herstellerseite (RAPHAEL 01–04) kombinieren Sofa 192, Angled 227 und Inclined 247 frei."
+  ],
+  "fehlend": [
+    "Sitztiefe aller Elemente (in keiner Zeichnung bemaßt)",
+    "Sitzhöhe der drehbaren Sessel (Zeichnung zeigt nur Gesamthöhe 78)",
+    "Sitzhöhe der Fußhocker separat (nur Gesamthöhe 42)",
+    "Minotti-Artikelnummern/Codes (nicht öffentlich)",
+    "Spiegelvariante Inclined Sofa (links/rechts) nicht angegeben",
+    "Bedeutung der Zwischenhöhen 55/70/71/72 in den Zeichnungen nicht beschriftet",
+    "Stoff-/Lederkategorien und Preisgruppen (nur in Händler-Preisliste)",
+    "Technisches Datenblatt/PDF, DWG, BIM nur nach Login im Download-Bereich",
+    "Gewichte",
+    "Liefer-/Produktionszeiten"
+  ],
+  "vollstaendigkeit": {
+    "felder_gesamt": 55,
+    "felder_belegt": 40,
+    "prozent": 73,
+    "basis": "Maßfelder breite/tiefe/hoehe/sitzhoehe/sitztiefe aller Sitz-/Hocker-Elemente (ohne Kissen/Zubehör)"
+  },
+  "vollstaendigkeit_prozent": 73
+}

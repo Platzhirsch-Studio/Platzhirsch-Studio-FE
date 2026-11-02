@@ -3,22 +3,31 @@
 // Indexable (see landingMetadata); JSON-LD WebPage + FAQPage via LandingPage.
 import { notFound } from "next/navigation";
 import LandingPage, { landingMetadata } from "@/components/Landing/landingPage";
+import RegionLinks from "@/app/[locale]/regionen/RegionLinks";
+import { SOURCE_COPY } from "@/lib/sofaplaner/consent";
+// landing-kern (01.11.2026): EN/FR/IT aus src/lib/content/landingKern (Deutsch = CONTENT unten, Master).
+import { KERN_LOCALES, kernContent, kernMetadata, withKernLanguages } from "@/lib/content/landingKern";
 
 const PATH = "/wohnzimmer-einrichten-vorarlberg";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
-  if (locale !== "de") return {};
-  return landingMetadata({
+  if (!KERN_LOCALES.includes(locale)) return {};
+  if (locale !== "de") return kernMetadata({ path: PATH, locale });
+  return withKernLanguages(landingMetadata({
     path: PATH,
     title: "Wohnzimmer einrichten in Vorarlberg",
     description:
       "Designersofas, Sessel und Wohnkonzepte von Minotti, Poliform und weiteren Marken – persönlich geplant in unserem Showroom in Lochau am Bodensee.",
-  });
+  }), PATH);
 }
 
 // Content is static German copy; keep facts (address, hours, brands) in sync with the footer/CMS.
 const CONTENT = {
+  // Runde 2 (P3): Termin-Knöpfe mit Kontext (ux P1-1) und der Kern-USP als
+  // kurzer Abschnitt mit eigenem Satz (gesamtwerk P1-4, Durchdringungsplan §5).
+  processText:
+    "Bevor wir ein Sofa vorschlagen, zeichnet Harald Menghin Ihr Wohnzimmer von Hand: Sitzplätze, Blickachsen und Licht. Danach planen wir in 3D und zeigen Ihnen ein Rendering, bevor etwas bestellt wird.",
   banner: {
     image: "/Images/Wohnen/bannerImage4.jpg",
     title: "Wohnzimmer einrichten in Vorarlberg",
@@ -29,14 +38,14 @@ const CONTENT = {
     eyebrow: "Wohnkonzepte am Bodensee",
     heading: "Ein Wohnzimmer, in dem Sie gerne ankommen",
     paragraphs: [
-      "Das Wohnzimmer ist der Raum, in dem Sie entspannen, Gäste empfangen und Zeit mit der Familie verbringen. Bei Platzhirsch Home Living in Lochau planen wir Wohnzimmer, die zu Ihrem Alltag passen – mit Designersofas, Sesseln, Tischen, Leuchten und Teppichen führender Marken.",
+      "Das Wohnzimmer ist der Raum, in dem Sie entspannen, Gäste empfangen und Zeit mit der Familie verbringen. Bei Platzhirsch Home Living in Lochau planen wir Wohnzimmer, die zu Ihrem Alltag passen – mit Designersofas, Sesseln, Tischen, Leuchten und Teppichen internationaler Marken.",
       "Ob gemütliche Sofalandschaft, offener Wohn- und Essbereich oder ruhige Leseecke: Wir stimmen Möbel, Materialien und Licht aufeinander ab, damit aus einzelnen Stücken ein stimmiges Ganzes wird.",
     ],
     benefits: [
       "Sofas und Sessel im Showroom probesitzen",
       "Stoffe, Leder und Oberflächen im Original vergleichen",
       "Möbel, Leuchten und Teppiche aus einer Hand",
-      "Lieferung und Montage in ganz Österreich",
+      "Lieferung und Montage auf Wunsch",
     ],
     image: "/Images/Wohnen/bannerImage10.jpg",
     imageAlt: "Großzügiges Wohnzimmer mit grauen Sofas und Blick ins Grüne",
@@ -71,6 +80,12 @@ const CONTENT = {
       { title: "Materialien & Details", text: "Sie wählen Stoffe, Leder, Farben und Oberflächen – ergänzt durch Leuchten, Teppiche und Accessoires." },
       { title: "Lieferung & Montage", text: "Wir koordinieren Lieferung und Aufbau, damit Ihr neues Wohnzimmer genau so steht, wie es geplant war." },
     ],
+    links: [
+      { href: "/arbeitsweise", label: "Unsere Arbeitsweise: von der Handzeichnung zum Rendering" },
+      { href: "/sofaplaner", label: SOURCE_COPY.crossLabel },
+      { href: "/stil-finder", label: "Ihren Wohnstil finden" },
+      { href: "/ratgeber/was-kostet-ein-minotti-sofa", label: "Ratgeber: Was kostet ein Minotti-Sofa?" },
+    ],
   },
   gallery: [
     { src: "/Images/Wohnen/bannerImage7.jpg", alt: "Wohnzimmer mit Kamin, Sesseln und rundem Teppich" },
@@ -96,13 +111,20 @@ const CONTENT = {
       { q: "Planen Sie auch das komplette Wohnzimmer?", a: "Ja. Wir stimmen Sofas, Sessel, Tische, Leuchten, Teppiche und Accessoires aufeinander ab – auf Wunsch zusammen mit Essbereich und Küche." },
       { q: "Was sollte ich zur Beratung mitbringen?", a: "Hilfreich sind die Maße Ihres Raumes oder ein Grundriss, Fotos der aktuellen Einrichtung und – falls vorhanden – Bilder, die Ihnen gefallen." },
       { q: "Wie lange dauert es bis zur Lieferung?", a: "Das hängt von Marke, Modell und Ausführung ab. Den konkreten Zeitrahmen nennen wir Ihnen, sobald Ihre Auswahl feststeht." },
-      { q: "Liefern und montieren Sie auch außerhalb von Vorarlberg?", a: "Ja, wir liefern und montieren in ganz Österreich. Für Projekte in Deutschland, der Schweiz und Liechtenstein sprechen Sie uns gerne direkt an." },
+      { q: "Liefern und montieren Sie auch außerhalb von Vorarlberg?", a: "Lieferung und Montage gibt es auf Wunsch, auch außerhalb Vorarlbergs auf Anfrage. Für Projekte in Deutschland, der Schweiz und Liechtenstein sprechen Sie uns gerne direkt an." },
     ],
   },
 };
 
 export default async function WohnzimmerVorarlbergPage({ params }) {
   const { locale } = await params;
-  if (locale !== "de") notFound();
-  return <LandingPage content={CONTENT} path={PATH} />;
+  if (!KERN_LOCALES.includes(locale)) notFound();
+  return (
+    <>
+      <LandingPage content={kernContent(PATH, locale, CONTENT)} path={PATH} />
+      {/* AP-11 (SEO-Team A): Regionen, Minotti Studio, Küche, Bad & Wellness, Arbeitsweise */}
+      {/* Regionsseiten gibt es nur auf Deutsch – der Block bleibt deutsch. */}
+      {locale === "de" && <RegionLinks path={PATH} />}
+    </>
+  );
 }

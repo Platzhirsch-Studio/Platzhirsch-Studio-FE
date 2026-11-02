@@ -1,0 +1,207 @@
+{
+  "_uebernommen": "R4-i18n, 26.10.2026: in src/messages übernommen. inhalt.job.*, inhalt.share.*, forms.backToList, forms.productPrefix übernommen; ContactSection.paragraphs[1] per Patch tools/i18n/patches/r4-contactsection.json (ausdrücklicher Textvorschlag P3-5).",
+  "de": {
+    "inhalt": {
+      "job": {
+        "eyebrow": "Offene Stelle",
+        "crumb": "Stelle",
+        "factsTitle": "Auf einen Blick",
+        "employment": "Anstellung",
+        "category": "Bereich",
+        "positions": "Stellen",
+        "salary": "Gehalt",
+        "experience": "Erfahrung",
+        "experienceValue": "{years} Jahre",
+        "posted": "Veröffentlicht",
+        "deadline": "Bewerbung bis",
+        "description": "Die Stelle",
+        "tasks": "Ihre Aufgaben",
+        "profile": "Ihr Profil",
+        "hours": "Arbeitszeiten",
+        "benefits": "Was wir bieten",
+        "statement": "Weitere Angaben",
+        "applyEyebrow": "Bewerbung",
+        "applyTitle": "So bewerben Sie sich",
+        "applyText": "Senden Sie uns Ihre Unterlagen per E-Mail, am besten Lebenslauf und ein kurzes Anschreiben als PDF.",
+        "applyMail": "Bewerbung per E-Mail senden",
+        "mailSubject": "Bewerbung: {title}",
+        "allJobs": "Alle offenen Stellen"
+      },
+      "share": {
+        "title": "Stelle teilen",
+        "native": "Teilen …",
+        "copy": "Link kopieren",
+        "copied": "Link kopiert.",
+        "copyFailed": "Der Link ließ sich nicht kopieren. Sie finden ihn in der Adresszeile.",
+        "email": "Per E-Mail",
+        "whatsapp": "WhatsApp",
+        "linkedin": "LinkedIn",
+        "mailBody": "Diese Stelle bei Platzhirsch Home Living könnte Sie interessieren: {url}"
+      }
+    },
+    "forms": {
+      "backToList": "Zurück zur Merkliste",
+      "productPrefix": "Anfrage zu: {product}"
+    },
+    "ContactSection": {
+      "paragraphs": [
+        "Jedes Wohnprojekt beginnt mit einem persönlichen Gespräch. Ganz gleich, ob Sie eine erste Idee haben oder bereits konkrete Vorstellungen mitbringen – wir nehmen uns Zeit, Ihre Wünsche kennenzulernen und gemeinsam die passende Lösung zu entwickeln.",
+        "Im Gespräch klären wir, was Sie brauchen: Wir hören zu, zeigen Ihnen Möglichkeiten in der Ausstellung und planen mit Ihnen Maße, Material und Ausführung. Ihre eigenen Ideen haben dabei Platz.",
+        "Kontaktieren Sie uns telefonisch, per E-Mail oder besuchen Sie uns direkt in unserem Studio. Wir freuen uns darauf, Sie persönlich willkommen zu heißen und gemeinsam Räume zu gestalten, die Ihre Persönlichkeit widerspiegeln."
+      ]
+    }
+  },
+  "en": {
+    "inhalt": {
+      "job": {
+        "eyebrow": "Open position",
+        "crumb": "Position",
+        "factsTitle": "At a glance",
+        "employment": "Employment",
+        "category": "Area",
+        "positions": "Positions",
+        "salary": "Salary",
+        "experience": "Experience",
+        "experienceValue": "{years} years",
+        "posted": "Published",
+        "deadline": "Apply by",
+        "description": "The position",
+        "tasks": "Your tasks",
+        "profile": "Your profile",
+        "hours": "Working hours",
+        "benefits": "What we offer",
+        "statement": "Further details",
+        "applyEyebrow": "Application",
+        "applyTitle": "How to apply",
+        "applyText": "Send us your documents by e-mail, ideally your CV and a short cover letter as PDF.",
+        "applyMail": "Send application by e-mail",
+        "mailSubject": "Application: {title}",
+        "allJobs": "All open positions"
+      },
+      "share": {
+        "title": "Share this position",
+        "native": "Share …",
+        "copy": "Copy link",
+        "copied": "Link copied.",
+        "copyFailed": "The link could not be copied. You will find it in the address bar.",
+        "email": "By e-mail",
+        "whatsapp": "WhatsApp",
+        "linkedin": "LinkedIn",
+        "mailBody": "This position at Platzhirsch Home Living might interest you: {url}"
+      }
+    },
+    "forms": {
+      "backToList": "Back to the wishlist",
+      "productPrefix": "Enquiry about: {product}"
+    },
+    "ContactSection": {
+      "paragraphs": [
+        "Every interior project begins with a personal conversation. Whether you have an initial idea or already have a clear vision, we take the time to understand your wishes and develop the right solution together.",
+        "In conversation we find out what you need: we listen, show you options in the showroom and plan sizes, materials and finishes with you. Your own ideas have their place.",
+        "Get in touch with us by phone, email, or visit our studio in person. We look forward to welcoming you and creating spaces that reflect your personality."
+      ]
+    }
+  },
+  "fr": {
+    "inhalt": {
+      "job": {
+        "eyebrow": "Poste ouvert",
+        "crumb": "Poste",
+        "factsTitle": "En bref",
+        "employment": "Contrat",
+        "category": "Domaine",
+        "positions": "Postes",
+        "salary": "Salaire",
+        "experience": "Expérience",
+        "experienceValue": "{years} ans",
+        "posted": "Publié le",
+        "deadline": "Candidature jusqu’au",
+        "description": "Le poste",
+        "tasks": "Vos missions",
+        "profile": "Votre profil",
+        "hours": "Horaires de travail",
+        "benefits": "Ce que nous offrons",
+        "statement": "Autres informations",
+        "applyEyebrow": "Candidature",
+        "applyTitle": "Comment postuler",
+        "applyText": "Envoyez-nous votre dossier par e-mail, de préférence votre CV et une courte lettre de motivation en PDF.",
+        "applyMail": "Envoyer la candidature par e-mail",
+        "mailSubject": "Candidature : {title}",
+        "allJobs": "Tous les postes ouverts"
+      },
+      "share": {
+        "title": "Partager ce poste",
+        "native": "Partager …",
+        "copy": "Copier le lien",
+        "copied": "Lien copié.",
+        "copyFailed": "Le lien n’a pas pu être copié. Vous le trouverez dans la barre d’adresse.",
+        "email": "Par e-mail",
+        "whatsapp": "WhatsApp",
+        "linkedin": "LinkedIn",
+        "mailBody": "Ce poste chez Platzhirsch Home Living pourrait vous intéresser : {url}"
+      }
+    },
+    "forms": {
+      "backToList": "Retour à la liste de souhaits",
+      "productPrefix": "Demande concernant : {product}"
+    },
+    "ContactSection": {
+      "paragraphs": [
+        "Chaque projet d'aménagement intérieur commence par une rencontre personnalisée. Que vous ayez une première idée ou un projet déjà bien défini, nous prenons le temps de comprendre vos attentes afin de concevoir la solution qui vous correspond.",
+        "Lors d’un échange, nous cernons vos besoins : nous vous écoutons, vous montrons des possibilités dans notre showroom et planifions avec vous dimensions, matériaux et finitions. Vos idées y ont toute leur place.",
+        "Contactez-nous par téléphone, par e-mail ou rendez-nous visite directement dans notre studio. Nous serons ravis de vous accueillir et de créer avec vous des espaces qui reflètent votre personnalité."
+      ]
+    }
+  },
+  "it": {
+    "inhalt": {
+      "job": {
+        "eyebrow": "Posizione aperta",
+        "crumb": "Posizione",
+        "factsTitle": "In breve",
+        "employment": "Contratto",
+        "category": "Ambito",
+        "positions": "Posti",
+        "salary": "Stipendio",
+        "experience": "Esperienza",
+        "experienceValue": "{years} anni",
+        "posted": "Pubblicato il",
+        "deadline": "Candidature entro il",
+        "description": "La posizione",
+        "tasks": "I tuoi compiti",
+        "profile": "Il tuo profilo",
+        "hours": "Orario di lavoro",
+        "benefits": "Cosa offriamo",
+        "statement": "Altre informazioni",
+        "applyEyebrow": "Candidatura",
+        "applyTitle": "Come candidarti",
+        "applyText": "Inviaci i tuoi documenti via e-mail, preferibilmente il curriculum e una breve lettera di presentazione in PDF.",
+        "applyMail": "Invia la candidatura via e-mail",
+        "mailSubject": "Candidatura: {title}",
+        "allJobs": "Tutte le posizioni aperte"
+      },
+      "share": {
+        "title": "Condividi la posizione",
+        "native": "Condividi …",
+        "copy": "Copia link",
+        "copied": "Link copiato.",
+        "copyFailed": "Non è stato possibile copiare il link. Lo trovi nella barra degli indirizzi.",
+        "email": "Via e-mail",
+        "whatsapp": "WhatsApp",
+        "linkedin": "LinkedIn",
+        "mailBody": "Questa posizione da Platzhirsch Home Living potrebbe interessarti: {url}"
+      }
+    },
+    "forms": {
+      "backToList": "Torna alla lista dei desideri",
+      "productPrefix": "Richiesta su: {product}"
+    },
+    "ContactSection": {
+      "paragraphs": [
+        "Ogni progetto d'interni nasce da un confronto personale. Che tu abbia una semplice idea o una visione già definita, ci prendiamo il tempo necessario per comprendere le tue esigenze e sviluppare insieme la soluzione più adatta.",
+        "Nel colloquio capiamo di cosa hai bisogno: ti ascoltiamo, ti mostriamo le possibilità nello showroom e pianifichiamo con te misure, materiali e finiture. Le tue idee hanno il loro spazio.",
+        "Contattaci telefonicamente, via e-mail oppure vieni a trovarci nel nostro studio. Saremo lieti di accoglierti e di creare insieme spazi che rispecchino la tua personalità."
+      ]
+    }
+  }
+}

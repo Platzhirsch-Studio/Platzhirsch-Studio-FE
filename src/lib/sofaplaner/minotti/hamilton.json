@@ -1,0 +1,1291 @@
+{
+  "name": "Hamilton",
+  "slug": "hamilton",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2004,
+  "jahr_hinweis": "Produktseite: „since its launch in 2004“, „2004 Collection“; Technical Sheet Stand Januar 2025.",
+  "typ": "Modulares Sitzsystem in drei Versionen (Hamilton: senkrechte Armlehne/geneigter Rücken; Hamilton Sofà: Armlehne und Rücken senkrecht; Hamilton Modulo: Armlehne und Rücken geneigt, „Wannen“-Effekt), Tiefe 104 cm, auf umlaufendem Metallrahmen oder Eschenfüßen",
+  "quellen": [
+    "https://www.minotti.com/en/hamilton",
+    "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/18288/17933/HAMILTON_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/18289/17937/HAMILTON_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/18290/17941/HAMILTON_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/18291/17945/HAMILTON_arrangement_04.pdf",
+    "https://www.minotti.com/downloads/18292/17949/HAMILTON_arrangement_05.pdf",
+    "https://www.minotti.com/downloads/18293/17953/HAMILTON_arrangement_06.pdf",
+    "https://www.minotti.com/downloads/18294/17957/HAMILTON_arrangement_07.pdf",
+    "https://www.minotti.com/downloads/18295/17961/HAMILTON_arrangement_08.pdf",
+    "https://www.minotti.com/downloads/10411/21544/MINOTTI_CONSUMER_CATALOGUE_THE_COLLECTION_2024.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "masse_hinweis": "Breiten aus Elementbezeichnungen, Tiefe 104 cm und Höhe 73 cm aus Technical Sheet (Jan. 2025) und Arrangement-Listen („cm 214x104 H73“). Sitzhöhe 40 cm laut Querschnitt (für alle drei Versionen identisch dargestellt); 54 cm ist eine unbeschriftete Kote im Querschnitt (als Armlehnenhöhe übernommen, nicht verifiziert). Bank H40 laut Arrangements.",
+  "hinweis_ausrichtung": "SX/DX nach Minotti-Nomenklatur (sinistra/destra = Armlehne bzw. Abschluss links/rechts). Für den Planer: SX ≙ anbau-links-Abschluss, DX ≙ anbau-rechts-Abschluss – Blickrichtung laut Datenblatt nicht beschriftet.",
+  "linien": [
+    {
+      "name": "Hamilton",
+      "beschreibung": "Senkrechte Armlehne, geneigter Rücken."
+    },
+    {
+      "name": "Hamilton Sofà",
+      "beschreibung": "Armlehne und Rücken senkrecht – formal, linear."
+    },
+    {
+      "name": "Hamilton Modulo",
+      "beschreibung": "Armlehne und Rücken geneigt („Wanne“); alle Elemente mit Rückenkissen 61×52 cm."
+    }
+  ],
+  "elemente": [
+    {
+      "code": "HAM-SOFA-180",
+      "name": "Hamilton – Sofa cm 180",
+      "name_de": "Sofa 180 cm",
+      "linie": "Hamilton",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 180,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7146_n_HAMILTON-SOFA-180.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-SOFA-208",
+      "name": "Hamilton – Sofa cm 208",
+      "name_de": "Sofa 208 cm",
+      "linie": "Hamilton",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 208,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7147_n_HAMILTON-SOFA-208.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-SOFA-236",
+      "name": "Hamilton – Sofa cm 236",
+      "name_de": "Sofa 236 cm",
+      "linie": "Hamilton",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 236,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7148_n_HAMILTON-SOFA-236.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-SOFA-280",
+      "name": "Hamilton – Sofa cm 280",
+      "name_de": "Sofa 280 cm",
+      "linie": "Hamilton",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 280,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "Komponiert aus Endelement SX + DX à 140 cm",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7149_n_HAMILTON-SOFA-280.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-SOFA-314",
+      "name": "Hamilton – Sofa cm 314",
+      "name_de": "Sofa 314 cm",
+      "linie": "Hamilton",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 314,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "Komponiert aus Endelement SX + DX à 157 cm",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/16420_n_HAMILTON-SOFA-314.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-CENT-82",
+      "name": "Hamilton – Central element cm 82",
+      "name_de": "Mittelelement 82 cm",
+      "linie": "Hamilton",
+      "art": "mittel",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 82,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anbaubar, ohne Armlehnen",
+      "hinweis": "Datenblatt zeigt das 82-cm-Mittelelement mit SX/DX-Angabe (vermutlich Eck-/Abschlussvariante, nicht beschriftet).",
+      "bild_quelle": "https://www.minotti.com/media/immagini/7150_n_HAMILTON-CENTRAL-ELEMENT-82.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-CENT-96",
+      "name": "Hamilton – Central element cm 96",
+      "name_de": "Mittelelement 96 cm",
+      "linie": "Hamilton",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 96,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anbaubar, ohne Armlehnen",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7151_n_HAMILTON-CENTRAL-ELEMENT-96.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-CENT-135",
+      "name": "Hamilton – Central element cm 135",
+      "name_de": "Mittelelement 135 cm",
+      "linie": "Hamilton",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 135,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anbaubar, ohne Armlehnen",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/8696_n_HAMILTON-CENTRAL-ELEMENT-135.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-CENT-157",
+      "name": "Hamilton – Central element cm 157",
+      "name_de": "Mittelelement 157 cm",
+      "linie": "Hamilton",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 157,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anbaubar, ohne Armlehnen",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/16422_n_HAMILTON-CENTRAL-ELEMENT-157.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-TERM-104",
+      "name": "Hamilton – Element with 1 armrest cm 104",
+      "name_de": "Endelement mit 1 Armlehne 104 cm",
+      "linie": "Hamilton",
+      "art": "endelement",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 104,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "anbau-links (SX) bzw. anbau-rechts (DX); Anbau an Mittel-, Eck-, Chaise- und Endelemente",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7154_n_HAMILTON-ELEMENT-WITH-1-ARMREST-104.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-TERM-118",
+      "name": "Hamilton – Element with 1 armrest cm 118",
+      "name_de": "Endelement mit 1 Armlehne 118 cm",
+      "linie": "Hamilton",
+      "art": "endelement",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 118,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "anbau-links (SX) bzw. anbau-rechts (DX); Anbau an Mittel-, Eck-, Chaise- und Endelemente",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7156_n_HAMILTON-ELEMENT-WITH-1-ARMREST-118.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-TERM-140",
+      "name": "Hamilton – Element with 1 armrest cm 140",
+      "name_de": "Endelement mit 1 Armlehne 140 cm",
+      "linie": "Hamilton",
+      "art": "endelement",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 140,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "anbau-links (SX) bzw. anbau-rechts (DX); Anbau an Mittel-, Eck-, Chaise- und Endelemente",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/29624_n_HAMILTON-ELEMENT-WITH-1-ARMREST-140.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-TERM-157",
+      "name": "Hamilton – Element with 1 armrest cm 157",
+      "name_de": "Endelement mit 1 Armlehne 157 cm",
+      "linie": "Hamilton",
+      "art": "endelement",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 157,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "anbau-links (SX) bzw. anbau-rechts (DX); Anbau an Mittel-, Eck-, Chaise- und Endelemente",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7158_n_HAMILTON-ELEMENT-WITH-1-ARMREST-157.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-TERM-186",
+      "name": "Hamilton – Element with 1 armrest cm 186",
+      "name_de": "Endelement mit 1 Armlehne 186 cm",
+      "linie": "Hamilton",
+      "art": "endelement",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 186,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "anbau-links (SX) bzw. anbau-rechts (DX); Anbau an Mittel-, Eck-, Chaise- und Endelemente",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7160_n_HAMILTON-ELEMENT-WITH-1-ARMREST-186.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-TERM-214",
+      "name": "Hamilton – Element with 1 armrest cm 214",
+      "name_de": "Endelement mit 1 Armlehne 214 cm",
+      "linie": "Hamilton",
+      "art": "endelement",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 214,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "anbau-links (SX) bzw. anbau-rechts (DX); Anbau an Mittel-, Eck-, Chaise- und Endelemente",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7162_n_HAMILTON-ELEMENT-WITH-1-ARMREST-214.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-TERM-186-SC",
+      "name": "Hamilton – Element with 1 armrest cm 186 – single seat cushion",
+      "name_de": "Endelement mit 1 Armlehne 186 cm, durchgehendes Sitzkissen",
+      "linie": "Hamilton",
+      "art": "endelement",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 186,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": null,
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/29625_n_HAMILTON-ELEMENT-WITH-1-ARMREST-186-SINGLE-SEAT-CUSHION.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-CHAISE-135",
+      "name": "Hamilton – Chaise longue cm 135x160",
+      "name_de": "Chaiselongue 135×160",
+      "linie": "Hamilton",
+      "art": "chaise",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 135,
+      "tiefe_cm": 160,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Abschluss-Chaiselongue ohne Armlehne",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7164_n_HAMILTON-CHAISE-LONGUE-135X160.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-CHAISE-135-ARM104",
+      "name": "Hamilton – Chaise-longue cm 135x160 – armrest cm 104",
+      "name_de": "Chaiselongue 135×160 mit Armlehne 104",
+      "linie": "Hamilton",
+      "art": "chaise",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 135,
+      "tiefe_cm": 160,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": null,
+      "hinweis": "Zeichnung zeigt zusätzlich 140 cm und 56 cm (unbeschriftet). Arrangement 01: „Chaise-longue DX cm 135x160 H73 – armrest cm 104“.",
+      "bild_quelle": "https://www.minotti.com/media/immagini/29626_n_HAMILTON-CHAISE-LONGUE-135X160-ARMREST-104.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-CORNER-104",
+      "name": "Hamilton – Corner sofa \"Square\" cm 104",
+      "name_de": "Eckelement „Square“ 104 cm",
+      "linie": "Hamilton",
+      "art": "ecke",
+      "ausrichtung": null,
+      "breite_cm": 104,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Eckverbindung (90°)",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7166_n_HAMILTON-CORNER-ELEMENT-104-SQUARE.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAM-BENCH-104",
+      "name": "Hamilton – Bench cm 104x104",
+      "name_de": "Bank/Hocker 104×104",
+      "linie": "Hamilton",
+      "art": "hocker",
+      "ausrichtung": null,
+      "breite_cm": 104,
+      "tiefe_cm": 104,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": "H40 laut Arrangement 02/07/08 („Bench cm 104x104 H40“).",
+      "bild_quelle": "https://www.minotti.com/media/immagini/7167_n_HAMILTON-BENCH-104X104.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMM-ENDCORNER-157",
+      "name": "Hamilton Modulo – End corner sofa cm 157",
+      "name_de": "Eck-Endsofa 157 cm",
+      "linie": "Hamilton Modulo",
+      "art": "ecke",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 157,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "Eck-Endelement mit Armlehne; Arrangement 02: „End-corner sofa SX cm 157x104 H73“",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7169_n_HAMILTONMODULO-END-CORNER-SOFA-157.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMM-ENDCORNER-186",
+      "name": "Hamilton Modulo – End corner sofa cm 186",
+      "name_de": "Eck-Endsofa 186 cm",
+      "linie": "Hamilton Modulo",
+      "art": "ecke",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 186,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": null,
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/30561_n_HAMILTONMODULO-END-CORNER-SOFA-186.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMM-CENT-157",
+      "name": "Hamilton Modulo – Central sofa cm 157",
+      "name_de": "Mittelsofa 157 cm",
+      "linie": "Hamilton Modulo",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 157,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/16429_n_HAMILTONMODULO-CENTRAL-SOFA-157.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMM-COUCH-157",
+      "name": "Hamilton Modulo – Couch cm 157",
+      "name_de": "Couch 157 cm",
+      "linie": "Hamilton Modulo",
+      "art": "couch",
+      "ausrichtung": null,
+      "breite_cm": 157,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Zeichnung zeigt 157 und 104 cm; Orientierung (Breite/Länge) nicht beschriftet.",
+      "bild_quelle": "https://www.minotti.com/media/immagini/7171_n_HAMILTONMODULO-COUCH.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMM-DAYBED",
+      "name": "Hamilton Modulo – Day bed",
+      "name_de": "Daybed",
+      "linie": "Hamilton Modulo",
+      "art": "daybed",
+      "ausrichtung": null,
+      "breite_cm": 157,
+      "tiefe_cm": null,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Zeichnung zeigt 157 und 104 cm ohne eindeutige Achszuordnung – Tiefe offen.",
+      "bild_quelle": "https://www.minotti.com/media/immagini/7172_n_HAMILTONMODULO-DAYBED.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-SOFA-236",
+      "name": "Hamilton Sofà – Sofà cm 236",
+      "name_de": "Sofà 236 cm",
+      "linie": "Hamilton Sofà",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 236,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": null,
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/29628_n_HAMILTONSOFA-SOFA-236.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-SOFA-314",
+      "name": "Hamilton Sofà – Sofà with two armrest cm 314",
+      "name_de": "Sofà 314 cm (2 Armlehnen)",
+      "linie": "Hamilton Sofà",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 314,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "Komponiert aus Sofà mit Armlehne SX + DX à 157 cm",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/16431_n_HAMILTONSOFA-SOFA-314.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-OPEN-208",
+      "name": "Hamilton Sofà – Open-end sofa cm 208",
+      "name_de": "Sofà mit Penisola 208 cm",
+      "linie": "Hamilton Sofà",
+      "art": "peninsula",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 208,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Zeichnung zeigt zusätzlich 56 cm (Penisola-Rückenanteil, unbeschriftet).",
+      "bild_quelle": "https://www.minotti.com/media/immagini/7174_n_HAMILTONSOFA-OPEN-END-SOFA-208.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-OPEN-160",
+      "name": "Hamilton Sofà – Open-end sofà cm 160",
+      "name_de": "Sofà mit Penisola 160 cm",
+      "linie": "Hamilton Sofà",
+      "art": "peninsula",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 160,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/29629_n_HAMILTONSOFA-OPEN-END-SOFA-160.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-OPEN-208-SC",
+      "name": "Hamilton Sofà – Open-end sofà cm 208 – single seat cushion",
+      "name_de": "Sofà mit Penisola 208 cm, durchgehendes Sitzkissen",
+      "linie": "Hamilton Sofà",
+      "art": "peninsula",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 208,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/29630_n_HAMILTONSOFA-OPEN-END-SOFA-208-SINGLE-SEAT-CUSHION.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-OPEN-ARM-208",
+      "name": "Hamilton Sofà – Open-end sofà with armrest cm 208",
+      "name_de": "Sofà mit Penisola und Armlehne 208 cm",
+      "linie": "Hamilton Sofà",
+      "art": "peninsula",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 208,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": null,
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/29631_n_HAMILTONSOFA-OPEN-END-SOFA-WITH-ARMREST-208.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-NOARM-82",
+      "name": "Hamilton Sofà – Armrest-free sofa cm 82",
+      "name_de": "Sofà ohne Armlehnen 82 cm",
+      "linie": "Hamilton Sofà",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 82,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/26660_n_HAMILTONSOFA-SOFA-WITHOUT-ARMRESTS-82.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-NOARM-104",
+      "name": "Hamilton Sofà – Armrest-free sofa cm 104",
+      "name_de": "Sofà ohne Armlehnen 104 cm",
+      "linie": "Hamilton Sofà",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 104,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7175_n_HAMILTONSOFA-SOFA-WITHOUT-ARMRESTS-104.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-NOARM-135",
+      "name": "Hamilton Sofà – Armrest-free sofa cm 135",
+      "name_de": "Sofà ohne Armlehnen 135 cm",
+      "linie": "Hamilton Sofà",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 135,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/8693_n_HAMILTONSOFA-SOFA-WITHOUT-ARMRESTS-135.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-NOARM-157",
+      "name": "Hamilton Sofà – Armrest-free sofa cm 157",
+      "name_de": "Sofà ohne Armlehnen 157 cm",
+      "linie": "Hamilton Sofà",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 157,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7176_n_HAMILTONSOFA-SOFA-WITHOUT-ARMRESTS-157.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-NOARM-208",
+      "name": "Hamilton Sofà – Armrest-free sofa cm 208",
+      "name_de": "Sofà ohne Armlehnen 208 cm",
+      "linie": "Hamilton Sofà",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 208,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/26659_n_HAMILTONSOFA-SOFA-WITHOUT-ARMRESTS-208.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-ARM-104",
+      "name": "Hamilton Sofà – Sofà with armrest cm 104",
+      "name_de": "Sofà mit 1 Armlehne 104 cm",
+      "linie": "Hamilton Sofà",
+      "art": "endelement",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 104,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "anbau-links (SX) bzw. anbau-rechts (DX)",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/8694_n_HAMILTONSOFA-SOFA-WITH-ARMREST-104.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-ARM-157",
+      "name": "Hamilton Sofà – Sofà with armrest cm 157",
+      "name_de": "Sofà mit 1 Armlehne 157 cm",
+      "linie": "Hamilton Sofà",
+      "art": "endelement",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 157,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "anbau-links (SX) bzw. anbau-rechts (DX)",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7178_n_HAMILTONSOFA-SOFA-WITH-ARMREST-157.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-ARM-186",
+      "name": "Hamilton Sofà – Sofà with armrest cm 186",
+      "name_de": "Sofà mit 1 Armlehne 186 cm",
+      "linie": "Hamilton Sofà",
+      "art": "endelement",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 186,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "anbau-links (SX) bzw. anbau-rechts (DX)",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/26664_n_HAMILTONSOFA-SOFA-WITH-ARMREST-186.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-ARM-208",
+      "name": "Hamilton Sofà – Sofà with armrest cm 208",
+      "name_de": "Sofà mit 1 Armlehne 208 cm",
+      "linie": "Hamilton Sofà",
+      "art": "endelement",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 208,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": "anbau-links (SX) bzw. anbau-rechts (DX)",
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7180_n_HAMILTONSOFA-SOFA-WITH-ARMREST-208.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-COUCH-157",
+      "name": "Hamilton Sofà – Couch cm 157",
+      "name_de": "Sofà-Couch 157 cm",
+      "linie": "Hamilton Sofà",
+      "art": "couch",
+      "ausrichtung": null,
+      "breite_cm": 157,
+      "tiefe_cm": 104,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Zeichnung zeigt 104 und 157 cm; Orientierung nicht beschriftet.",
+      "bild_quelle": "https://www.minotti.com/media/immagini/8695_n_HAMILTONSOFA-SOFA-COUCH-157.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-CHAISEISLE-160",
+      "name": "Hamilton Sofà – Chaise-longue isle cm 160",
+      "name_de": "Chaiselongue-Insel 160 cm",
+      "linie": "Hamilton Sofà",
+      "art": "insel",
+      "ausrichtung": null,
+      "breite_cm": 160,
+      "tiefe_cm": 160,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Tiefe 160 aus Zeichnung abgeleitet (Koten 160/160, zusätzlich 56 cm) – nicht beschriftet.",
+      "bild_quelle": "https://www.minotti.com/media/immagini/7458_n_HAMILTONSOFA-CHAISE-LONGUE-ISLE-160.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-CHAISE-160x160",
+      "name": "Hamilton Sofà – Chaise longue cm 160x160",
+      "name_de": "Sofà-Chaiselongue 160×160",
+      "linie": "Hamilton Sofà",
+      "art": "chaise",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 160,
+      "tiefe_cm": 160,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/7557_n_HAMILTONSOFA-CHAISE-LONGUE-SOFA-160X160.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-CHAISE-160x180",
+      "name": "Hamilton Sofà – Chaise longue cm 160x180",
+      "name_de": "Sofà-Chaiselongue 160×180",
+      "linie": "Hamilton Sofà",
+      "art": "chaise",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 160,
+      "tiefe_cm": 180,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Zeichnung zeigt zusätzlich 76 cm (unbeschriftet).",
+      "bild_quelle": "https://www.minotti.com/media/immagini/26661_n_HAMILTONSOFA-CHAISE-LONGUE-SOFA-160X180.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-CHAISE-135x160",
+      "name": "Hamilton Sofà – Chaise longue cm 135x160",
+      "name_de": "Sofà-Chaiselongue 135×160",
+      "linie": "Hamilton Sofà",
+      "art": "chaise",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 135,
+      "tiefe_cm": 160,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/26662_n_HAMILTONSOFA-CHAISE-LONGUE-SOFA-135X160.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-INCL-245",
+      "name": "Hamilton Sofà – Inclined sofà cm 245",
+      "name_de": "Schräges Sofà 245 cm",
+      "linie": "Hamilton Sofà",
+      "art": "sofa-schraeg",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 245,
+      "tiefe_cm": null,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Trapezförmiges Element; Zeichnung zeigt 245, 155 und 130 cm ohne Achsbeschriftung – Tiefe offen.",
+      "bild_quelle": "https://www.minotti.com/media/immagini/8698_n_HAMILTONSOFA-INCLINED-SOFA-245.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "HAMS-INCL-ARM-266",
+      "name": "Hamilton Sofà – Inclined sofà with armrest cm 266",
+      "name_de": "Schräges Sofà mit Armlehne 266 cm",
+      "linie": "Hamilton Sofà",
+      "art": "sofa-schraeg",
+      "ausrichtung": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 266,
+      "tiefe_cm": null,
+      "hoehe_cm": 73,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 54,
+      "anschluesse": null,
+      "hinweis": "Zeichnung zeigt 266, 166, 130 und 104 cm ohne Achsbeschriftung – Tiefe offen.",
+      "bild_quelle": "https://www.minotti.com/media/immagini/8697_n_HAMILTONSOFA-INCLINED-SOFA-WITH-ARMREST-266.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/hamilton",
+        "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    "Hamilton: geneigter Rücken.",
+    "Hamilton Sofà: senkrechter Rücken.",
+    "Hamilton Modulo: geneigter Rücken mit Rückenkissen 61×52 cm (Element „Back cushion“).",
+    "Optionale Kopfstütze 60×79 cm."
+  ],
+  "armlehnenoptionen": [
+    "Hamilton: senkrechte Armlehne.",
+    "Hamilton Sofà: senkrechte Armlehne.",
+    "Hamilton Modulo: geneigte Armlehne.",
+    "Elemente ohne Armlehne (Mittelelemente, Penisola/Open-end, Chaiselongues)."
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Version mit Rahmen („Frame version“)",
+      "material": "Umlaufender Metallrahmen, ovaler Querschnitt 40×20 mm",
+      "finish": [
+        "Black-Nickel poliert/glänzend",
+        "Bronze glänzend lackiert, Anti-Fingerprint"
+      ],
+      "hinweis": "Zurückgesetzte schwarze Hinterfüße."
+    },
+    {
+      "teil": "Version mit Füßen („Feet version“)",
+      "material": "Esche",
+      "finish": [
+        "Offenporig gebeizt Moka"
+      ],
+      "hinweis": "Ohne umlaufenden Rahmen."
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "bezugsarten": [
+      "abnehmbar (Stoff)",
+      "fest (Leder)"
+    ],
+    "abnehmbar_hinweis": "Stoffversion komplett abziehbar durch Demontage des äußeren Rahmens/Sockels; Lederversion nicht abziehbar.",
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Stoffe, Leder, Cuoio, Holz- und Metalloberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "polsterung": "Struktur Massivholz; HR-PU-Schaum unterschiedlicher Dichte; erste Kaschierung thermogebundene Faser auf weißem Baumwollgewebe; elastische Gurte mit hohem Kautschukanteil. Sitz- und Rückenkissen kanalisierte Gänsedaune mit HR-PU-Einlage.",
+  "kissenoptionen": [
+    {
+      "name": "Cushion „Hamilton“",
+      "masse": "40 × 40 cm",
+      "bild_quelle": "https://www.minotti.com/media/immagini/16942_n_HAMILTON-OPTIONAL-CUSHION-40X40.jpg"
+    },
+    {
+      "name": "Cushion „Hamilton“",
+      "masse": "60 × 60 cm",
+      "bild_quelle": "https://www.minotti.com/media/immagini/16423_n_HAMILTON-OPTIONAL-CUSHION-60X60.jpg"
+    },
+    {
+      "name": "Cushion „Cross“",
+      "masse": "40 × 40 cm",
+      "bild_quelle": "https://www.minotti.com/media/immagini/16425_n_HAMILTON-OPTIONAL-CUSHION-CROSS-40X40.jpg"
+    },
+    {
+      "name": "Cushion „Cross“",
+      "masse": "60 × 60 cm",
+      "bild_quelle": "https://www.minotti.com/media/immagini/16424_n_HAMILTON-OPTIONAL-CUSHION-CROSS-60X60.jpg"
+    },
+    {
+      "name": "Cushion „Milano“",
+      "masse": "46 × 46 cm",
+      "bild_quelle": "https://www.minotti.com/media/immagini/16426_n_HAMILTON-OPTIONAL-CUSHION-MILANO-46X46.jpg"
+    },
+    {
+      "name": "Optional headrest",
+      "masse": "60 × 79 cm",
+      "bild_quelle": "https://www.minotti.com/media/immagini/29632_n_HAMILTON-OPTIONAL-HEADREST.jpg"
+    },
+    {
+      "name": "Back cushion (Hamilton Modulo)",
+      "masse": "61 × 52 cm",
+      "bild_quelle": "https://www.minotti.com/media/immagini/16430_n_HAMILTONSOFA-05-BACKREST-CUSHION.jpg"
+    },
+    {
+      "hinweis": "Zierkissen komplett mit kanalisierter Gänsedaune gefüllt, komplett abziehbar."
+    }
+  ],
+  "kombinierbarkeit": [
+    "Elemente innerhalb einer Version mit gleicher Tiefe (104 cm) kombinierbar.",
+    "Komponierte Sofas: Hamilton 280 = 2×140, 314 = 2×157; Hamilton Sofà 314 = 2×157 (Sofà mit Armlehne).",
+    "Offizielle Beispiele (Arrangements 01–08) kombinieren Hamilton, Hamilton Sofà und Hamilton Modulo sowie die Bank 104×104 in einer Komposition (z. B. Arr. 02: Hamilton-Endelement 214 SX + Modulo-Eck-Endsofa 157 SX + Bank)."
+  ],
+  "beispiel_kompositionen": [
+    {
+      "name": "Arrangement 01",
+      "gesamtbreite_cm": 349,
+      "elemente": [
+        "HAM-TERM-214 (SX)",
+        "HAM-CHAISE-135-ARM104 (DX)"
+      ]
+    },
+    {
+      "name": "Arrangement 02",
+      "gesamtbreite_cm": 318,
+      "gesamttiefe_cm": 261,
+      "elemente": [
+        "HAM-TERM-214 (SX)",
+        "HAMM-ENDCORNER-157 (SX)",
+        "HAM-BENCH-104"
+      ]
+    },
+    {
+      "name": "Arrangement 03",
+      "gesamtbreite_cm": 312,
+      "elemente": [
+        "HAMS-ARM-208 + …"
+      ],
+      "hinweis": "Nur „Sofà with armrest cm 208x104 H73“ aufgeführt."
+    },
+    {
+      "name": "Arrangement 04",
+      "gesamtbreite_cm": 415,
+      "elemente": [
+        "HAMS-CHAISE-160x160 (SX)",
+        "HAMS-ARM-208 (DX)",
+        "HAMS-OPEN-208 (DX)"
+      ]
+    },
+    {
+      "name": "Arrangement 05",
+      "gesamtbreite_cm": 368,
+      "elemente": [
+        "HAMS-ARM-208 (SX)",
+        "HAMS-CHAISE-160x160 (DX)"
+      ]
+    },
+    {
+      "name": "Arrangement 06",
+      "gesamtbreite_cm": 314,
+      "gesamttiefe_cm": 312,
+      "elemente": [
+        "HAM-TERM-157 (SX)",
+        "HAM-TERM-157 (DX)",
+        "HAMS-OPEN-208 (DX)"
+      ]
+    },
+    {
+      "name": "Arrangement 07",
+      "gesamtbreite_cm": 472,
+      "elemente": [
+        "HAMS-CHAISE-160x160 (SX)",
+        "HAMS-OPEN-208 (DX)",
+        "HAM-BENCH-104",
+        "HAMS-ARM-208 (DX)"
+      ]
+    },
+    {
+      "name": "Arrangement 08",
+      "gesamtbreite_cm": 372,
+      "gesamttiefe_cm": 312,
+      "elemente": [
+        "HAMS-ARM-208 (SX)",
+        "HAM-BENCH-104",
+        "HAMS-OPEN-208 (SX)"
+      ]
+    }
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "Ikonischer, bodennaher Metallrahmen, der den Umriss der Elemente nachzeichnet (Minotti-Signatur seit 2004).",
+    "Drei Versionen mit unterschiedlicher Armlehnen-/Rückengeometrie bei identischen Grundmaßen (Querschnitt H73, Sitz 40, Tiefe 104).",
+    "Schräge (Inclined) Sofà-Elemente für nicht-rechtwinklige Kompositionen.",
+    "Varianten mit durchgehendem Sitzkissen (Single seat cushion)."
+  ],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für den internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken). Bild-URLs nur als Quellennachweis.",
+  "fehlend": [
+    "Sitztiefe aller Elemente (nicht beschriftet).",
+    "Armlehnenhöhe eindeutig (nur unbeschriftete Kote 54 cm).",
+    "Tiefe der Inclined-Elemente und des Daybed; Orientierung der Couch-Elemente.",
+    "Höhe von Modulo-Elementen bzw. Sofà separat (Datenblatt zeigt identischen Querschnitt).",
+    "Ob Rahmen- und Fußversion für alle drei Linien gleichermaßen erhältlich ist.",
+    "Maße der Elemente „End corner sofa 186“ / „Central sofa 157“ (Modulo) außer Breite – Tiefe 104 aus Datenblatt übernommen.",
+    "Minotti-Artikelnummern, vollständige Stoff-/Lederliste und Preisgruppen (Händlerbereich).",
+    "Preise (vom Inhaber festzulegen), Gewicht, Lieferzeit."
+  ],
+  "vollstaendigkeit": {
+    "masse_prozent": 79,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe/sitzhoehe/sitztiefe über alle Elemente; Options-/Materialfelder separat in fehlend[] bewertet."
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "_uebernommen": "R5-i18n, 26.10.2026: per tools/i18n/merge.mjs in src/messages übernommen (cart.selection.showroom|showroomNote, booking.*; 24 Blätter, 0 Konflikte).",
+  "_hinweis": "R4-leads, 26.10.2026: Vorschlag für src/messages/{de,en,fr,it}.json (Deep-Merge, nur neue Schlüssel). cart.selection.showroom/showroomNote (Merkliste → Showroom) und booking.* (Termin-Link hinter BOOKING_PROVIDER=link). Quelle und Fallback bis zur Übernahme: src/lib/forms/leadsCopy.js (LEADS_TEXT, gleiche Werte, geprüft von tests/unit/r4-leads.test.mjs). IT tu-Form, FR vous.",
+  "de": {
+    "cart": {
+      "selection": {
+        "showroom": "Diese Auswahl im Showroom ansehen",
+        "showroomNote": "Vereinbaren Sie einen Besuch in Lochau. Ihre Auswahl steht schon im Formular."
+      }
+    },
+    "booking": {
+      "title": "Termin online wählen",
+      "text": "Sie können einen freien Termin auch direkt im Kalender auswählen.",
+      "cta": "Kalender öffnen",
+      "note": "Öffnet {host} in einem neuen Fenster. Dort gelten die Datenschutzhinweise des Anbieters."
+    }
+  },
+  "en": {
+    "cart": {
+      "selection": {
+        "showroom": "View this selection in the showroom",
+        "showroomNote": "Arrange a visit to Lochau. Your selection is already filled in."
+      }
+    },
+    "booking": {
+      "title": "Choose an appointment online",
+      "text": "You can also pick a free slot directly in the calendar.",
+      "cta": "Open calendar",
+      "note": "Opens {host} in a new window. The provider's privacy notice applies there."
+    }
+  },
+  "fr": {
+    "cart": {
+      "selection": {
+        "showroom": "Voir cette sélection au showroom",
+        "showroomNote": "Convenez d'une visite à Lochau. Votre sélection figure déjà dans le formulaire."
+      }
+    },
+    "booking": {
+      "title": "Choisir un rendez-vous en ligne",
+      "text": "Vous pouvez aussi choisir un créneau libre directement dans le calendrier.",
+      "cta": "Ouvrir le calendrier",
+      "note": "Ouvre {host} dans une nouvelle fenêtre. La politique de confidentialité du prestataire s'y applique."
+    }
+  },
+  "it": {
+    "cart": {
+      "selection": {
+        "showroom": "Vedi questa selezione nello showroom",
+        "showroomNote": "Fissa una visita a Lochau. La tua selezione è già nel modulo."
+      }
+    },
+    "booking": {
+      "title": "Scegli un appuntamento online",
+      "text": "Puoi anche scegliere un orario libero direttamente nel calendario.",
+      "cta": "Apri il calendario",
+      "note": "Apre {host} in una nuova finestra. Lì vale l'informativa privacy del fornitore."
+    }
+  }
+}

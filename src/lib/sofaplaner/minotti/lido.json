@@ -1,0 +1,137 @@
+{
+  "name": "Lido",
+  "slug": "lido",
+  "hersteller": "Minotti",
+  "designer": "GamFratesi",
+  "jahr": 2022,
+  "jahr_hinweis": "Produktseite verlinkt auf „2022 Collection“ (Zweisitzer als Ergänzung der Lido-Familie); Technical Sheet Stand Januar 2023.",
+  "typ": "Kompaktes Zweisitzer-Sofa (nicht modular) mit Sockel oder Beinen, Teil der Lido-Sitzfamilie (Sessel, Hocker, Lounge-Sessel, Dining-Sessel, Couchtische)",
+  "quellen": [
+    "https://www.minotti.com/en/lido_sofa",
+    "https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/20592/22743/MINOTTI_Lido.zip"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "hinweis_masse": "Maße aus den Zeichnungen des Technical Sheet (Januar 2023). Laut Minotti können CAD-Maße leicht vom Datenblatt abweichen. Das in Sofa- und Sesselzeichnung wiederkehrende Maß 77 cm ist nicht beschriftet (vermutl. Armlehnen-/Schalenhöhe) und wurde nicht zugeordnet.",
+  "hinweis_rechte": "Bild-URLs nur als Quellennachweis. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, Rechte-Register beachten).",
+  "elemente": [
+    {
+      "code": "sofa-with-base", "name": "SOFA WITH BASE", "art": "sofa",
+      "breite_cm": 183, "tiefe_cm": 99, "hoehe_cm": 85, "sitzhoehe_cm": 42, "sitztiefe_cm": null,
+      "ausrichtung": null, "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/38825_n_LIDO_SOFA_WITH_BASE_183.jpg",
+      "mass_quelle": ["https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"],
+      "hinweise": ["Zweisitzer mit Sockel.", "Zusätzliche, unbeschriftete Zeichnungsmaße: 77 und 155 (vermutl. innere Breite)."]
+    },
+    {
+      "code": "sofa-with-legs", "name": "SOFA WITH LEGS", "art": "sofa",
+      "breite_cm": 183, "tiefe_cm": 99, "hoehe_cm": 85, "sitzhoehe_cm": 42, "sitztiefe_cm": null,
+      "ausrichtung": null, "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/38826_n_LIDO_SOFA_WITH_LEGS_183.jpg",
+      "mass_quelle": ["https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"],
+      "hinweise": ["Zweisitzer mit Beinen.", "Zusätzliche, unbeschriftete Zeichnungsmaße: 77 und 155."]
+    },
+    {
+      "code": "armchair-with-base", "name": "ARMCHAIR WITH BASE", "art": "sessel",
+      "breite_cm": 93, "tiefe_cm": 99, "hoehe_cm": 85, "sitzhoehe_cm": 42, "sitztiefe_cm": null,
+      "ausrichtung": null, "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/34164_n_LIDO-ARMCHAIR-WITH-BASE-93.jpg",
+      "mass_quelle": ["https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"],
+      "hinweise": ["Zusätzliche, unbeschriftete Zeichnungsmaße: 77 und 65."]
+    },
+    {
+      "code": "armchair-with-legs", "name": "ARMCHAIR WITH LEGS", "art": "sessel",
+      "breite_cm": 93, "tiefe_cm": 99, "hoehe_cm": 85, "sitzhoehe_cm": 42, "sitztiefe_cm": null,
+      "ausrichtung": null, "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/34165_n_LIDO-ARMCHAIR-WITH-LEGS-93.jpg",
+      "mass_quelle": ["https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"],
+      "hinweise": ["Zusätzliche, unbeschriftete Zeichnungsmaße: 77 und 65."]
+    },
+    {
+      "code": "footstool-with-base", "name": "FOOTSTOOL WITH BASE", "art": "hocker",
+      "breite_cm": 74, "tiefe_cm": 74, "hoehe_cm": 42, "sitzhoehe_cm": 42, "sitztiefe_cm": null,
+      "ausrichtung": null, "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/34167_n_LIDO-FOOTSTOOL-WITH-BASE-74.jpg",
+      "mass_quelle": ["https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"],
+      "hinweise": []
+    },
+    {
+      "code": "footstool-with-legs", "name": "FOOTSTOOL WITH LEGS", "art": "hocker",
+      "breite_cm": 74, "tiefe_cm": 74, "hoehe_cm": 42, "sitzhoehe_cm": 42, "sitztiefe_cm": null,
+      "ausrichtung": null, "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/34166_n_LIDO-FOOTSTOOL-WITH-LEGS-74.jpg",
+      "mass_quelle": ["https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"],
+      "hinweise": []
+    },
+    {
+      "code": "lounge-armchair", "name": "LOUNGE ARMCHAIR", "art": "sessel",
+      "breite_cm": 75, "tiefe_cm": 78, "hoehe_cm": 71, "sitzhoehe_cm": 42, "sitztiefe_cm": null,
+      "ausrichtung": null, "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/34168_n_LIDO-LOUNGE-LITTLE-ARMCHAIR-75.jpg",
+      "mass_quelle": ["https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"],
+      "hinweise": ["Nur mit Massivholzbeinen.", "Zusätzliches, unbeschriftetes Zeichnungsmaß: 57."]
+    },
+    {
+      "code": "dining-little-armchair", "name": "DINING LITTLE ARMCHAIR", "art": "dining-sessel",
+      "breite_cm": 66, "tiefe_cm": 67, "hoehe_cm": 81, "sitzhoehe_cm": 49, "sitztiefe_cm": null,
+      "ausrichtung": null, "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/34169_n_LIDO-DINING-LITTLE-ARMCHAIR-66.jpg",
+      "mass_quelle": ["https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"],
+      "hinweise": ["Nur mit Massivholzbeinen.", "Zusätzliches, unbeschriftetes Zeichnungsmaß: 47."]
+    },
+    {
+      "code": "optional-cushion", "name": "OPTIONAL CUSHION", "art": "dekokissen-optional",
+      "breite_cm": 42, "tiefe_cm": null, "hoehe_cm": 42, "sitzhoehe_cm": null, "sitztiefe_cm": null,
+      "ausrichtung": null, "anschluesse": null,
+      "bild_quelle": null,
+      "mass_quelle": ["https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf"],
+      "hinweise": ["Nur im Technical Sheet (Seite 3) aufgeführt, nicht in der Elementliste der Produktseite."]
+    }
+  ],
+  "rueckenoptionen": ["Eine Ausführung: geschwungene, nestartige Schale mit losem Rückenkissen"],
+  "armlehnenoptionen": ["Keine Varianten – Armlehnen in die umlaufende Schale integriert"],
+  "fuesse_sockel": [
+    {
+      "teil": "Sockel (VERSION WITH BASE) – Sofa, Sessel, Hocker",
+      "material": "Schichtholz MDF und Aluminium, 19 mm, Eschenfurnier",
+      "finish": ["Offenporig lackiert Moka"]
+    },
+    {
+      "teil": "Beine (VERSION WITH LEGS) – Sofa, Sessel, Hocker, Lounge-Sessel, Dining-Sessel",
+      "material": "Massive Esche oder Nussbaum Canaletto; oben dekorativer Stahleinsatz",
+      "finish": ["Esche offenporig lackiert Moka", "Nussbaum Canaletto gebeizt Dark Brown, matter Polyesterlack", "Einsatz: Stahl lackiert Bronze"]
+    },
+    { "teil": "Gleiter", "material": "Filzgleiter schwarz bzw. Polyethylen-Gleiter schwarz" }
+  ],
+  "struktur": {
+    "sofa_sessel": "Metall mit elastischen Gurten (hoher Kautschukanteil), flammhemmender PU-Schaum, gesteppte thermogebundene Faser auf weißem hypoallergenem Baumwollstoff.",
+    "lounge_dining": "Aluminium mit elastischen Gurten, flammhemmender PU-Schaum, gesteppte thermogebundene Faser."
+  },
+  "bezuege": {
+    "kategorien": ["Stoff", "Leder"],
+    "bezugsart": "Abnehmbar: Struktur, Sitz- und Rückenkissen in allen Versionen (Stoff und Leder) komplett abziehbar.",
+    "preisgruppen": null,
+    "farbmuster_hinweis": "Stoff- und Lederkollektion (Minotti „The World of Materials“) nur teils öffentlich; Original-Farbmuster bitte im Showroom ansehen – Bildschirmfarben sind nicht verbindlich."
+  },
+  "kissenoptionen": [
+    { "name": "Sitz- und Rückenkissen (Sofa, Sessel)", "details": "Kanalisierte Gänsedaunen (Assopiuma Gold Label) mit Kern aus hochelastischem PU-Schaum unterschiedlicher Dichte; Sitz- und Rückenkissen wendbar." },
+    { "name": "Sitzkissen (Lounge-/Dining-Sessel)", "details": "Thermogebundene Faser mit PU-Kern." },
+    { "name": "Optionales Kissen", "masse_cm": ["42x42"] }
+  ],
+  "kombinierbarkeit": ["Einzelmöbel ohne Anbauelemente; Familie ergänzt durch Lido-Couchtische (X-Fuß, Platte Marmor Bianconero oder Esche Moka)."],
+  "outdoor": false,
+  "besonderheiten": [
+    "Nestartige, geschwungene Silhouette, inspiriert von den 1950er-Jahren und brutalistischer Architektur.",
+    "Sofa, Sessel und Hocker wahlweise mit Sockel oder mit Beinen.",
+    "Für Wohnen und Hospitality."
+  ],
+  "fehlend": [
+    "Sitztiefe aller Elemente (nicht beschriftet).",
+    "Bedeutung der Zeichnungsmaße 77, 155, 65, 57, 47.",
+    "Minotti-Artikelnummern.",
+    "Vollständige Stoff-/Lederliste und Preisgruppen (Händler-/Login-Bereich).",
+    "Preise (vom Inhaber festzulegen).",
+    "Gewicht, Lieferzeit."
+  ]
+}

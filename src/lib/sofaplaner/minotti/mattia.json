@@ -1,0 +1,189 @@
+{
+  "name": "Mattia",
+  "slug": "mattia",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2020,
+  "jahr_hinweis": "Produktseite: „2020 Collection“; Neuinterpretation eines Minotti-Archiventwurfs der frühen 1970er; Technical Sheet Stand Februar 2025.",
+  "typ": "Nicht modulares Schalensofa (Dreisitzer „Lounge Sofa“) mit passendem Sessel und drehbarem Lounge-Sessel",
+  "quellen": [
+    "https://www.minotti.com/en/mattia_3",
+    "https://www.minotti.com/downloads/17000/15878/MATTIA_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/17000/17863/MINOTTI_Mattia.zip (BIM/RFA)"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "hinweis_masse": "Alle Maße aus den Zeichnungen des Technical Sheet (Februar 2025). Sitztiefe nicht bemaßt.",
+  "hinweis_rechte": "Bild-URLs nur als Quellennachweis. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "elemente": [
+    {
+      "code": "lounge-sofa-cm-182",
+      "name": "LOUNGE SOFA CM 182",
+      "linie": null,
+      "art": "sofa",
+      "ruecken_armlehne": null,
+      "breite_cm": 182,
+      "tiefe_cm": 85,
+      "hoehe_cm": 67,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "durchmesser_cm": null,
+      "ausrichtung": null,
+      "anschluesse": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/27954_n_MATTIA-SOFA-LOUNGE-182.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/mattia_3",
+        "https://www.minotti.com/downloads/17000/15878/MATTIA_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Dreisitzer mit Schale; Rückenrolle; empfohlenes Kissenset in Zeichnung dargestellt."
+      ]
+    },
+    {
+      "code": "optional-cushion-cm-65x65",
+      "name": "OPTIONAL CUSHION CM 65X65",
+      "linie": null,
+      "art": "kissen",
+      "ruecken_armlehne": null,
+      "breite_cm": 65,
+      "tiefe_cm": null,
+      "hoehe_cm": 65,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "durchmesser_cm": null,
+      "ausrichtung": null,
+      "anschluesse": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/27955_n_MATTIA-OPTIONAL-CUSHION-65X65.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/mattia_3",
+        "https://www.minotti.com/downloads/17000/15878/MATTIA_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": []
+    },
+    {
+      "code": "optional-cushion-o-cm-42",
+      "name": "OPTIONAL CUSHION Ø CM 42",
+      "linie": null,
+      "art": "kissen",
+      "ruecken_armlehne": null,
+      "breite_cm": null,
+      "tiefe_cm": null,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "durchmesser_cm": 42,
+      "ausrichtung": null,
+      "anschluesse": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/27956_n_MATTIA-OPTIONAL-CUSHION-42.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/mattia_3",
+        "https://www.minotti.com/downloads/17000/15878/MATTIA_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Rundkissen Ø 42 cm."
+      ]
+    }
+  ],
+  "einzelmoebel_ergaenzend": [
+    {
+      "name": "ARMCHAIR",
+      "breite_cm": 90,
+      "tiefe_cm": 85,
+      "hoehe_cm": 67,
+      "sitzhoehe_cm": 44,
+      "bild_quelle": "https://www.minotti.com/media/immagini/27957_n_MATTIA-ARMCHAIR-90.jpg",
+      "hinweis": "Sessel, Maße aus Technical Sheet (Februar 2025)."
+    },
+    {
+      "name": "LOUNGE ARMCHAIR - SWIVEL",
+      "breite_cm": 87,
+      "tiefe_cm": 79,
+      "hoehe_cm": 67,
+      "sitzhoehe_cm": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/27958_n_MATTIA-ARMCHAIR-LOUNGE-SWIVEL-87.jpg",
+      "hinweis": "Drehbar 360° mit Rückstellung; Sitzhöhe nicht bemaßt."
+    }
+  ],
+  "rueckenoptionen": [
+    "Fester Rücken: Schale aus Baydur®-Strukturschaum mit Rückenrolle (keine Varianten)"
+  ],
+  "armlehnenoptionen": [
+    "Feste, in die Schale integrierte Armlehnen (keine Varianten)"
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Füße",
+      "material": "Stahl/Metall, vorstehend",
+      "finish": [
+        "Black-Nickel"
+      ]
+    },
+    {
+      "teil": "Drehgestell (nur Lounge-Sessel)",
+      "material": "Metall",
+      "finish": [
+        "Black-Nickel"
+      ],
+      "details": "360° drehbar mit Rückstellung"
+    },
+    {
+      "teil": "Gleiter",
+      "material": "SEBS, schwarz"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "ausfuehrungen": [
+      "A) komplett Stoff oder komplett Leder",
+      "B) Schale in Leder Aspen, Nabuk oder Lodge (Kat. Leder Nature); gepolsterte Basis, Rücken und Sitzkissen in Stoff"
+    ],
+    "bezugsart": "Abnehmbar: Struktur, Sitzkissen und Rücken in Stoff und Leder komplett abziehbar.",
+    "preisgruppen": null,
+    "farbmuster_hinweis": "Stoff- und Lederkollektion (Minotti „The World of Materials“) nur teilweise öffentlich; Original-Farbmuster bitte im Showroom ansehen – Bildschirmfarben sind nicht verbindlich."
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optionales Kissen",
+      "masse_cm": [
+        "65x65"
+      ]
+    },
+    {
+      "name": "Optionales Rundkissen",
+      "masse_cm": [
+        "Ø 42"
+      ]
+    },
+    {
+      "name": "Sitzkissen",
+      "details": "Kanalisierte Gänsedaunen (Assopiuma Gold Label) mit PU-Kern; Rücken mit PU-Kern unterschiedlicher Dichte."
+    }
+  ],
+  "passende_tische": "Mattia Couchtische (Ø50, Ø90, Ø120, 100x45, 160x100, 140x140 cm; Höhen 28/45/50) mit Platte Calacatta, Nero in pasta oder Esche Liquirizia – siehe Technical Sheet.",
+  "kombinierbarkeit": [
+    "Nicht modular – ein Sofa (182 cm), keine Anbauelemente.",
+    "Familie: Sofa, Sessel, Lounge-Sessel drehbar, Couchtische."
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "Re-Edition eines Minotti-Designs der frühen 1970er Jahre.",
+    "Korollenartige Schale mit charakteristischer Rückenrolle.",
+    "Vorstehende Stahlfüße in Black-Nickel.",
+    "Zweifarbige Ausführung möglich (Lederschale + Stoffpolster)."
+  ],
+  "fehlend": [
+    "Minotti-Artikelnummern (code = abgeleiteter Slug).",
+    "Sitztiefe (nicht bemaßt); Sitzhöhe Lounge-Sessel.",
+    "Armlehnenhöhe (nicht separat bemaßt).",
+    "Tiefe der optionalen Kissen.",
+    "Vollständige Stoff-/Lederliste und Preisgruppen (Händlerbereich).",
+    "Preise (Richtwert – vom Inhaber festzulegen), Lieferzeiten, Gewichte."
+  ],
+  "vollstaendigkeit_masse_prozent": 78
+}

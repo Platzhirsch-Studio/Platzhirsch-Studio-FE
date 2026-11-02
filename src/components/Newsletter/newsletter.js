@@ -1,15 +1,27 @@
 "use client";
-import React, { useState } from "react";
-import { useTranslations } from "next-intl";
+import React, { useId, useRef, useState } from "react";
+import { AlertCircle } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
+import Button from "@/components/ui/Button";
+import { SuccessIcon } from "@/components/Forms/FormField";
 
-// Error codes from /api/newsletter_subscribe → translated messages.
+// Error codes from /api/newsletter_subscribe → keys of `labels.errors`.
 const ERROR_KEYS = {
-  invalid_email: "errInvalid",
-  already_subscribed: "errAlready",
+  invalid_email: "invalid",
+  already_subscribed: "already",
 };
 
-const Newsletter = () => {
-  const t = useTranslations("newsletter");
+/**
+ * Newsletter sign-up form (client island). All copy comes from the server
+ * component (NewsletterContent) as `labels`, so no translation fallback ships
+ * to the browser.
+ * labels: { emailLabel, submit, sending, success, errors: { invalid, already, generic } }
+ * Visible label, autocomplete, error at the field (aria-invalid +
+ * aria-describedby) and focus back to the field on error (Bibel §14).
+ */
+const Newsletter = ({ labels }) => {
+  const id = useId();
+  const inputRef = useRef(null);
   const [email, setEmail] = useState("");
   // Honeypot — hidden from people, only bots fill it in (see the route).
   const [website, setWebsite] = useState("");
@@ -17,7 +29,12 @@ const Newsletter = () => {
   const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+  const fail = (message) => {
+    setEmailError(message);
+    inputRef.current?.focus();
+  };
 
   // Posts to our own server route — the backend address never reaches the
   // browser (src/app/api/newsletter_subscribe/route.js forwards it).
@@ -28,7 +45,7 @@ const Newsletter = () => {
     setSubscribed(false);
     const value = email.trim();
     if (!validateEmail(value)) {
-      setEmailError(t("errInvalid"));
+      fail(labels.errors.invalid);
       return;
     }
 
@@ -44,100 +61,99 @@ const Newsletter = () => {
       if (response.ok && result.success) {
         setSubscribed(true);
         setEmail("");
+        trackEvent("sign_up", { method: "newsletter" });
       } else {
-        setEmailError(t(ERROR_KEYS[result.code] || "errGeneric"));
+        fail(labels.errors[ERROR_KEYS[result.code]] || labels.errors.generic);
       }
     } catch {
-      setEmailError(t("errGeneric"));
+      fail(labels.errors.generic);
     } finally {
       setLoading(false);
     }
   };
+
+  const errorId = `${id}-error`;
+
   return (
-    <div className='py-10 lg:py-16'>
-      <div className="max-w-4xl mx-auto px-6 text-[#303030]">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">{t("headline")}</h2>
-
-        <p className="text-gray-700 leading-relaxed">
-          {t("intro1")}
-        </p>
-
-        <p className="mb-8 text-gray-700 leading-relaxed">
-          {t("intro2")}
-        </p>
-
-        <h3 className="text-xl font-semibold mb-3">{t("reasonsHeadline")}</h3>
-        <ul className="list-disc list-inside mb-8 space-y-2 text-gray-700 ">
-          <li>{t("reasons1")}</li>
-          <li>{t("reasons2")}</li>
-          <li>{t("reasons3")}</li>
-          <li>{t("reasons4")}</li>
-        </ul>
-
-        <h3 className="text-xl font-semibold mb-3">{t("howHeadline")}</h3>
-        <p className="text-gray-700 leading-relaxed">
-          {t("howText")}
-        </p>
-
-        <p className="text-gray-700 leading-relaxed mb-8">
-          {t("outro")}
-        </p>
-      </div>
-      <div className="max-w-4xl mx-auto px-6  text-[#303030]">
-        <h3 className="text-xl font-semibold mb-3">{t("subscribeHeadline")}</h3>
-        <form
-          onSubmit={handleSubscribe}
-          noValidate
-          className="relative flex border border-transparent bg-gray-100 hover:border-[#d1b250] transition-colors duration-200 rounded-r"
-        >
+    <form onSubmit={handleSubscribe} noValidate className="relative">
+      <label htmlFor={`${id}-email`} className="block text-ui text-text">
+        {labels.emailLabel}
+      </label>
+      {/* Error sits at the field, before the button, with icon + text
+          (QA Runde 1, P2-8; Bibel §4.5 "Statusmeldungen immer Icon + Text"). */}
+      <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-start">
+        <div className="min-w-0 flex-1">
           <input
+            ref={inputRef}
+            id={`${id}-email`}
             type="email"
             name="email"
             autoComplete="email"
-            aria-label={t("inputPlaceholder")}
+            inputMode="email"
+            required
             aria-invalid={emailError ? "true" : undefined}
-            aria-describedby={emailError ? "newsletter-error" : undefined}
-            placeholder={t("inputPlaceholder")}
+            aria-describedby={emailError ? errorId : undefined}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-2 text-gray-800 text-sm outline-none bg-gray-100 rounded-r "
+            className="min-h-12 w-full min-w-0 border border-line-control bg-paper px-4 text-ui text-text placeholder:text-text-soft aria-invalid:border-error lg:min-h-13"
           />
-          {/* Honeypot: off-screen and skipped by keyboard/screen readers. */}
-          <input
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            value={website}
-            onChange={(e) => setWebsite(e.target.value)}
-            className="absolute -left-[9999px] h-px w-px opacity-0"
-          />
-          <button
-            type="submit"
-            disabled={loading}
-            className="px-4 py-2 text-xs text-white bg-[#d1b250] cursor-pointer rounded-r disabled:opacity-70"
-          >
-            {loading ? t("btnLoading") : t("btnSubscribe")}
-          </button>
-        </form>
-
-        {emailError && (
-          <p id="newsletter-error" role="alert" className="text-red-600 text-sm mt-2">
-            {emailError}
-          </p>
-        )}
-
-        {subscribed && (
-          <div
-            role="status"
-            className="mt-3 px-4 py-3 bg-[#d1b250] text-white text-sm font-medium rounded transition-opacity duration-300 ease-in-out"
-          >
-            {t("success")}
-          </div>
-        )}
+          {emailError && (
+            <p
+              id={errorId}
+              className="ph-arrive mt-2 flex items-start gap-2 text-small text-error"
+            >
+              <AlertCircle
+                aria-hidden="true"
+                className="mt-0.5 size-4 shrink-0"
+                strokeWidth={1.5}
+              />
+              <span>{emailError}</span>
+            </p>
+          )}
+        </div>
+        <Button
+          type="submit"
+          variant="primary"
+          disabled={loading}
+          aria-disabled={loading || undefined}
+          className="shrink-0"
+        >
+          {loading ? labels.sending : labels.submit}
+        </Button>
       </div>
-    </div>
+      {/* Honeypot: off-screen and skipped by keyboard/screen readers. */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        className="absolute -left-[9999px] h-px w-px opacity-0"
+      />
+
+      <p
+        role="status"
+        className={
+          subscribed
+            ? "mt-4 border-l-2 border-success pl-4 text-body text-text"
+            : "sr-only"
+        }
+      >
+        {/* Motion: the confirmation settles in and its tick draws once
+            (ph-arrive + ph-tick, @starting-style; instant when calm). The
+            live region itself stays mounted, so the text is still announced. */}
+        {subscribed ? (
+          <span className="ph-arrive flex items-start gap-2">
+            <SuccessIcon className="mt-0.5 text-success" />
+            <span>{labels.success}</span>
+          </span>
+        ) : (
+          ""
+        )}
+      </p>
+    </form>
   );
 };
 

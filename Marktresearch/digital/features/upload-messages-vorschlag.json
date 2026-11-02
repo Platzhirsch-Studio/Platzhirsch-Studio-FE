@@ -1,0 +1,341 @@
+{
+  "_meta": {
+    "fix1_f3": "Fix-Runde 1 (F3, 28.10.2026): Upload.consent.daysPlaceholder entfernt – keine eckigen Platzhalter in Message-Texten; die Frist kommt als ICU-Variable {n} über Upload.consent.days (Wert aus src/lib/upload/config.js).",
+    "status": "Vorschlag (R-6 aus qa-screenshots/labs-ausbau/handy-upload/abnahme.md), Stand 28.10.2026. Nicht automatisch übernommen.",
+    "fuer": "Übersetzungsteam: Schlüssel unter dem bestehenden Namespace \"Upload\" in src/messages/de.json ergänzen und EN/FR/IT übersetzen. Bestehende Schlüssel Upload.page, Upload.problem und Upload.frame bleiben unverändert und fehlen hier deshalb.",
+    "syntax": "ICU wie next-intl: {name} = Platzhalter, {count, plural, …} = Mehrzahl, <strong>…</strong> und <link>…</link> = t.rich-Tags. Zahlen und Größen (z. B. {size}) setzt der Code fertig formatiert ein (formatBytes, Komma als Dezimalzeichen).",
+    "einwilligung": "Upload.consent ist der Einwilligungstext. Jede inhaltliche Änderung braucht eine neue CONSENT_VERSION in src/lib/upload/config.js (die gespeicherte Einwilligung verweist auf die Version). Übersetzungen vor der Freigabe rechtlich prüfen lassen (Rechtspaket).",
+    "quellen": "Upload.client = src/components/Upload/UploadClient.js · Upload.handoff = src/components/Upload/UploadHandoff.js · Upload.consent = src/components/Upload/ConsentText.js · Upload.errors, Upload.handoffReasons = src/lib/upload/messages.js · Upload.demo = src/app/[locale]/labs/upload-demo/page.js (nur Labs, DE genügt).",
+    "danach": "Sobald die Schlüssel in src/messages/de.json stehen, stellt das Upload-Team die Komponenten auf tx(t, key, deFallback) um (wie bei Upload.page in Runde 5). Die Upload-Seite bleibt bis dahin DE-only (locale !== \"de\" → 404).",
+    "festeWoerter": "Platzhirsch, SMS, PDF, JPEG, HEIC, GPS bleiben unübersetzt. Zur Website-Sprache passend: Sie-Form, keine Superlative."
+  },
+  "Upload": {
+    "categories": {
+      "photo": {
+        "one": "Foto",
+        "many": "Fotos"
+      },
+      "video": {
+        "one": "Video",
+        "many": "Videos"
+      },
+      "plan": {
+        "one": "Plan",
+        "many": "Pläne"
+      },
+      "count": "{count, plural, one {# Datei} other {# Dateien}}"
+    },
+    "client": {
+      "stepper": {
+        "label": "Fortschritt: Schritt {step} von 3",
+        "consent": "Zustimmen",
+        "capture": "Aufnehmen",
+        "send": "Senden"
+      },
+      "tips": {
+        "title": "So gelingen die Aufnahmen",
+        "carouselLabel": "Aufnahme-Tipps, seitlich wischen",
+        "pickerLabel": "Tipp wählen",
+        "dotLabel": "Tipp {n}: {title}",
+        "corners": {
+          "title": "Aus den Ecken fotografieren",
+          "text": "In jede Ecke stellen und diagonal in den Raum fotografieren – so sehen wir alle Wände."
+        },
+        "video": {
+          "title": "Video langsam schwenken",
+          "text": "Einmal langsam im Kreis drehen, das Handy ruhig auf Brusthöhe halten."
+        },
+        "measures": {
+          "title": "Maße notieren",
+          "text": "Raumhöhe, Wandlängen, Fenster und Türen – grob genügt. Einfach in die Notiz schreiben."
+        },
+        "light": {
+          "title": "Licht an, Vorhänge auf",
+          "text": "Tageslicht zeigt Farben und Materialien am ehrlichsten."
+        }
+      },
+      "consent": {
+        "detailsSummary": "Details: Speicherdauer, Widerruf, Datenschutz",
+        "hint": "Bitte zuerst zustimmen – dann können Sie Fotos und Pläne hinzufügen.",
+        "lockedFirst": "Einmal oben zustimmen – dann geht es los.",
+        "lockedUpload": "Zum Hochladen bitte zuerst oben zustimmen."
+      },
+      "capture": {
+        "heading": "Was möchten Sie zeigen?",
+        "groupLabel": "Dateien hinzufügen",
+        "photo": {
+          "title": "Foto aufnehmen",
+          "text": "Raumfotos mit der Kamera"
+        },
+        "video": {
+          "title": "Video",
+          "text": "Kamera · max. {minutes} Min."
+        },
+        "plan": {
+          "title": "Grundriss / Plan",
+          "text": "PDF oder Bild"
+        },
+        "gallery": {
+          "title": "Aus Galerie",
+          "text": "Fotos & Videos"
+        },
+        "chosen": "{count, plural, one {# Datei} other {# Dateien}} gewählt",
+        "gpsNote": "Standortdaten (GPS) entfernen wir aus JPEG-Fotos automatisch. Bei HEIC-Fotos (iPhone „High Efficiency“) bitte den Standort in der Kamera ausschalten."
+      },
+      "validation": {
+        "tooManyFiles": "Maximal {max} Dateien pro Anfrage.",
+        "tooLarge": "Zu groß: max. {size} für {category}.",
+        "videoTooLong": "Video ist {seconds} s lang – bitte max. {minutes} Minuten."
+      },
+      "files": {
+        "heading": "Ihre Dateien",
+        "summary": "{done} von {total} · {size}",
+        "listLabel": "Ihre Dateien",
+        "remove": "{name} entfernen",
+        "progressLabel": "Upload {name}",
+        "checking": "Wird geprüft…",
+        "waiting": "Wartet…",
+        "retrying": "Verbindung holpert – neuer Versuch ({n}/{of})…",
+        "slow": "Verbindung ist langsam – wir bleiben dran…",
+        "preparing": "Wird vorbereitet…",
+        "uploading": "Lädt hoch · {percent} %",
+        "paused": "Pausiert – wartet auf Verbindung",
+        "interrupted": "Unterbrochen bei {percent} % – dieselbe Datei erneut auswählen, um fortzusetzen.",
+        "done": "Hochgeladen",
+        "gpsRemoved": " · Standort entfernt",
+        "rejected": "Abgelehnt:",
+        "stopped": "Gestoppt:",
+        "retry": "Erneut versuchen"
+      },
+      "note": {
+        "label": "Notiz & Maße",
+        "optional": "(optional)",
+        "placeholder": "z. B. Raumhöhe 2,60 m, Fenster nach Süden, Sofa soll an die linke Wand",
+        "written": "Notiz geschrieben – tippen zum Bearbeiten",
+        "shortcutHint": "Raumhöhe, Wandlängen, Wünsche"
+      },
+      "submit": {
+        "sending": "Wird gesendet…",
+        "busy": "Upload läuft…",
+        "send": "An Platzhirsch senden",
+        "footer": "{count, plural, one {# Datei} other {# Dateien}} · {size}",
+        "validUntil": " · Link gültig bis {datetime} Uhr",
+        "offline": "Keine Verbindung – bitte tippen Sie erneut auf „Senden“, sobald Sie wieder online sind.",
+        "confirmMissing": "Ihre Dateien sind gespeichert – nur die Bestätigung fehlt. Bitte tippen Sie erneut auf „Senden“.",
+        "failed": "Senden fehlgeschlagen – bitte erneut versuchen."
+      },
+      "bar": {
+        "paused": "Pausiert – wartet auf Verbindung",
+        "retrying": "Neuer Versuch {n}/{of}…",
+        "slow": "Verbindung ist langsam – wir bleiben dran…",
+        "preparing": "Wird vorbereitet…",
+        "uploading": "Lädt hoch…",
+        "failed": "{count, plural, one {# Datei} other {# Dateien}} nicht hochgeladen",
+        "ready": "{count, plural, one {# Datei} other {# Dateien}} bereit",
+        "none": "Keine Datei hochgeladen",
+        "detail": "{done} von {total} fertig · {percent} % der Daten",
+        "retry": "Erneut versuchen",
+        "send": "Senden"
+      },
+      "live": {
+        "retryStarted": "Neuer Versuch gestartet.",
+        "retrying": "Verbindung holpert – neuer Versuch {n} von {of}.",
+        "fileDone": "{name} hochgeladen.",
+        "fileFallbackName": "Datei",
+        "slow": "Verbindung ist langsam – wir bleiben dran.",
+        "stalled": "Es geht gerade nicht voran. Unten können Sie einen neuen Versuch starten.",
+        "percent": "{percent} Prozent hochgeladen.",
+        "sent": "Vielen Dank – Ihre Unterlagen sind bei uns."
+      },
+      "offline": "Keine Verbindung – der Upload geht automatisch weiter, sobald Sie wieder online sind.",
+      "linkProblem": "Fertig hochgeladene Dateien bleiben bei uns. Für weitere Unterlagen rufen Sie uns an (<phone>{phone}</phone>) oder schreiben Sie an <mail>{email}</mail>.",
+      "demoDisabled": "Demo nur in der Entwicklungsumgebung: Hier werden keine Dateien angenommen.",
+      "thanks": {
+        "title": "Vielen Dank!",
+        "arrivedFiles": "{count, plural, one {# Datei ({size}) ist} other {# Dateien ({size}) sind}} bei uns angekommen. Wir melden uns persönlich.",
+        "arrivedNote": "Ihre Notiz ist bei uns angekommen. Wir melden uns persönlich.",
+        "sentListLabel": "Gesendete Dateien",
+        "reference": "Ihre Referenz",
+        "documents": "Unterlagen",
+        "note": "Notiz",
+        "nextHeading": "So geht es weiter",
+        "doneLabel": "Erledigt:",
+        "next": {
+          "arrived": {
+            "title": "Ihre Unterlagen sind da",
+            "text": "Sicher gespeichert, nur für diese Anfrage."
+          },
+          "review": {
+            "title": "Wir sehen sie uns vorab an",
+            "text": "Damit das erste Gespräch gleich konkret wird."
+          },
+          "contact": {
+            "title": "Wir melden uns persönlich",
+            "text": "Mit Ideen und Rückfragen – telefonisch oder per E-Mail."
+          }
+        },
+        "demoNotice": "Demo-Modus: Es wurde niemand benachrichtigt.",
+        "addMore": "Weitere Dateien hinzufügen",
+        "toWebsite": "Zur Website von Platzhirsch"
+      }
+    },
+    "handoff": {
+      "overline": "Optional · dauert 1 Minute",
+      "title": "Zeigen Sie uns Ihren Raum",
+      "intro": "Mit Fotos, einem kurzen Video-Rundgang oder Ihrem Grundriss bereiten wir Ihre Beratung gezielt vor – direkt aus der Handykamera, ohne App und ohne Anmeldung.",
+      "chipsLabel": "Möglich sind",
+      "chips": {
+        "photos": "Raumfotos",
+        "video": "Video ≤ {minutes} Min.",
+        "plans": "Grundriss & Pläne"
+      },
+      "dismiss": "Hinweis schließen",
+      "failedMail": "Sie können uns Fotos und Pläne gern per E-Mail an <mail>{email}</mail> senden.",
+      "retry": "Erneut versuchen",
+      "qrAlt": "QR-Code zur Upload-Seite – mit der Handykamera scannen",
+      "qrCreating": "QR-Code wird erstellt…",
+      "qrReady": "Code bereit",
+      "qrReadyLong": " · mit der Kamera scannen",
+      "qrReadyShort": " · scannen",
+      "qrScan": "Mit der Handykamera scannen",
+      "valid": "Gültig",
+      "remaining": {
+        "minutes": "noch {n} Min.",
+        "hours": "noch {n} Std.",
+        "days": "noch {n} Tage"
+      },
+      "until": {
+        "today": "bis {time} Uhr",
+        "date": "bis {date}, {time} Uhr"
+      },
+      "stepsLabel": "So geht es",
+      "stepPrefix": "Schritt {n}: ",
+      "steps": {
+        "camera": {
+          "title": "Kamera öffnen",
+          "text": "Die normale Kamera-App genügt – ohne App, ohne Anmeldung."
+        },
+        "aim": {
+          "title": "Code anvisieren",
+          "text": "Auf den Link tippen, der über dem Code erscheint."
+        },
+        "show": {
+          "title": "Raum zeigen",
+          "text": "Fotos, Video-Rundgang oder Grundriss senden. Fertig."
+        }
+      },
+      "mobileCta": "Jetzt Fotos & Pläne senden",
+      "mobileCtaHint": "Öffnet die Upload-Seite hier auf Ihrem Handy.",
+      "desktopHeading": "Auf diesem Gerät hochladen",
+      "desktopText": "Fotos und Pläne liegen schon auf dem Computer?",
+      "openPage": "Upload-Seite öffnen",
+      "newTab": "(neuer Tab)",
+      "copy": "Link kopieren",
+      "copied": "Kopiert",
+      "copiedLive": "Link kopiert.",
+      "copyFailed": "Kopieren nicht möglich – Link markiert, mit {shortcut} + C kopieren",
+      "footer": "Referenz <strong>{ref}</strong> · gültig bis {validUntil} · nur über diesen Link erreichbar",
+      "creating": "Upload-Link wird erstellt…",
+      "creatingSlow": "Das dauert gerade länger als üblich – einen Moment bitte…",
+      "send": {
+        "title": "Link an mich senden",
+        "badge": "Vorbereitet",
+        "subtitle": "per E-Mail oder SMS",
+        "channelLabel": "Versandweg",
+        "phoneLabel": "Ihre Handynummer",
+        "emailLabel": "Ihre E-Mail-Adresse",
+        "staysLocal": "(bleibt auf diesem Gerät)",
+        "openSms": "In meiner SMS-App öffnen",
+        "openMail": "In meiner Mail-App öffnen",
+        "notActiveSms": "Vorbereitet: Der direkte Versand durch Platzhirsch ist noch nicht aktiv. Dieser Knopf öffnet Ihre eigene SMS-App mit dem fertigen Link – Platzhirsch sendet und speichert dabei nichts.",
+        "notActiveMail": "Vorbereitet: Der direkte Versand durch Platzhirsch ist noch nicht aktiv. Dieser Knopf öffnet Ihre eigene Mail-App mit dem fertigen Link – Platzhirsch sendet und speichert dabei nichts.",
+        "mailSubject": "Upload-Link Platzhirsch ({ref})",
+        "body": "Fotos, Videos und Pläne zu meiner Anfrage hochladen (Platzhirsch, {ref}):\n{url}",
+        "next": "Weiter"
+      }
+    },
+    "consent": {
+      "short": "Ich bin einverstanden, dass {site} meine Dateien nur für diese Anfrage nutzt.",
+      "purpose": "Ich willige ein, dass {site} (Lochau) die hier hochgeladenen Fotos, Videos, Pläne und meine Notiz ausschließlich zur Bearbeitung meiner Anfrage{ref} speichert und verwendet.",
+      "refSuffix": " ({ref})",
+      "retention": "Speicherdauer: {days} nach Ablauf dieses Links, außer die Unterlagen werden für einen Auftrag benötigt. Die Einwilligung ist freiwillig und jederzeit widerrufbar per E-Mail an {email}; Ihre Anfrage gilt auch ohne Upload. Bitte keine Aufnahmen von Personen ohne deren Einverständnis.",
+      "days": "{n} Tage",
+      "privacyLink": "Mehr in der <link>Datenschutzerklärung</link>."
+    },
+    "errors": {
+      "too_large": "Datei ist zu groß.",
+      "quota_exceeded": "Das Speicherlimit für diesen Link ist erreicht.",
+      "too_many_files": "Die maximale Anzahl Dateien ist erreicht.",
+      "unsupported_type": "Nur Fotos, Videos und PDF möglich.",
+      "bad_category": "Nur Fotos, Videos und PDF möglich.",
+      "consent_required": "Bitte zuerst die Einwilligung bestätigen.",
+      "expired": "Dieser Upload-Link ist abgelaufen.",
+      "invalid": "Dieser Upload-Link ist ungültig.",
+      "demo_disabled": "Demo-Uploads sind auf dieser Umgebung abgeschaltet.",
+      "storage_full": "Der Upload ist gerade nicht möglich – bitte später erneut versuchen.",
+      "rate_limited": "Zu viele Versuche in kurzer Zeit – bitte in ein paar Minuten erneut versuchen.",
+      "daily_limit": "Heute sind keine weiteren Uploads möglich – bitte morgen erneut versuchen.",
+      "file_not_found": "Die Datei ist nicht mehr auf dem Server – bitte erneut auswählen.",
+      "bad_index": "Übertragungsfehler – bitte erneut versuchen.",
+      "bad_chunk_size": "Übertragungsfehler – bitte erneut versuchen.",
+      "bad_request": "Die Anfrage war unvollständig – bitte Seite neu laden.",
+      "network": "Verbindung unterbrochen.",
+      "server_error": "Serverfehler – bitte später erneut versuchen.",
+      "fallback": "Upload fehlgeschlagen – bitte erneut versuchen."
+    },
+    "handoffReasons": {
+      "rate_limited": "Gerade werden sehr viele Upload-Links erstellt. Bitte versuchen Sie es in einigen Minuten erneut",
+      "daily_limit": "Heute können wir keine weiteren Upload-Links erstellen",
+      "storage_full": "Der Upload ist gerade nicht möglich",
+      "ticket_expired": "Der Upload-Link konnte nicht mehr erstellt werden, weil seit dem Absenden zu viel Zeit vergangen ist",
+      "network": "Keine Verbindung – der Upload-Link konnte nicht geladen werden",
+      "timeout": "Die Erstellung des Upload-Links dauert gerade länger als üblich. Bitte versuchen Sie es gleich noch einmal",
+      "server": "Der Upload-Link konnte gerade nicht erstellt werden"
+    },
+    "demo": {
+      "_hinweis": "Service-Seite /de/upload (früher Labs-Demo /de/labs/upload-demo, noindex), nur DE. Integration 28.10.2026: Titel ohne „Labs“.",
+      "metaTitle": "Fotos per Handy senden | Platzhirsch Home Living",
+      "metaDescription": "Nach der Anfrage Fotos, Raum-Video und Grundriss direkt vom Handy senden – Demo mit Test-Token.",
+      "overline": "Service · Fotos per Handy",
+      "title": "Fotos per Handy senden",
+      "intro": "Nach jeder Anfrage kann der Kunde mit dem Handy Fotos, einen Raum-Rundgang und Pläne nachreichen – ohne App, ohne Konto, ohne E-Mail-Anhänge.",
+      "enabled": "Ihre persönliche Demo (Referenz {ref}): eigener Test-Link, <strong>1 Stunde</strong> gültig, max. {maxFiles} Dateien / {maxSize}. Dateien landen nur im lokalen Entwicklungs-Speicher und werden nach Ablauf gelöscht. Neu laden startet eine neue Demo.",
+      "disabled": "Demo nur in der Entwicklungsumgebung: Auf dieser Umgebung werden keine Demo-Dateien angenommen.",
+      "steps": {
+        "inquiry": {
+          "title": "Anfrage senden",
+          "text": "Produktanfrage, Beratung oder Kontakt – wie bisher."
+        },
+        "scan": {
+          "title": "QR-Code scannen",
+          "text": "Der Erfolgs-Bildschirm zeigt einen persönlichen, signierten Link ({days} Tage gültig)."
+        },
+        "show": {
+          "title": "Raum zeigen",
+          "text": "Fotos direkt aus der Kamera, Video-Rundgang, Grundriss als PDF, kurze Notiz."
+        },
+        "prepared": {
+          "title": "Vorbereitet beraten",
+          "text": "Das Team sieht die Unterlagen zur Anfrage-Referenz – vor dem ersten Gespräch."
+        }
+      },
+      "sectionLabel": "Demo",
+      "desktopHeading": "Erfolgs-Bildschirm am Computer",
+      "desktopText": "So erscheint die Karte unter der Bestätigung der Formulare.",
+      "sampleConfirmation": "Vielen Dank! Ihre Anfrage wurde gesendet. (Beispiel)",
+      "validLabel": "{datetime} Uhr (Demo-Link: 1 Stunde)",
+      "phoneHeading": "Upload-Seite auf dem Handy",
+      "phoneEmbedded": "Echte Seite, eingebettet.",
+      "phoneOpen": "In neuem Tab öffnen",
+      "phoneOverline": "Platzhirsch · Lochau",
+      "phoneRef": "Upload · {ref}",
+      "testNotes": "Test-Hinweise",
+      "testNotesItems": {
+        "lanIp": "Mit echtem Handy testen: Dev-Server mit <code>UPLOAD_PUBLIC_BASE_URL=http://LAN-IP:3000</code> starten, sonst zeigt der QR-Code auf diesen Rechner.",
+        "limits": "Echte Links: Fotos {photoMax}, Videos {videoMax} und {videoMinutes} Min., Pläne {planMax}, max. {maxFiles} Dateien; Start-Kontingent {initialQuota}, nach der ersten Datei {maxTotal}.",
+        "resume": "Wiederaufnahme: Während eines Video-Uploads WLAN aus- und einschalten oder die Seite neu laden und dieselbe Datei erneut wählen.",
+        "magicBytes": "Dateityp wird per Magic Bytes geprüft – eine umbenannte .exe wird abgelehnt. GPS-Daten werden aus JPEGs entfernt."
+      }
+    }
+  }
+}

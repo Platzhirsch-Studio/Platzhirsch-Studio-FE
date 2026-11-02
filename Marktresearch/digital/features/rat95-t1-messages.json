@@ -1,0 +1,371 @@
+{
+  "_hinweis": "Rat 9,5 · T1 (Wege, Termin & Vertrauen). Format laut qa-screenshots/rat95/00-plan.md §3: nur neue/geänderte Schlüssel, null = löschen. Bis zur Übernahme lesen die Komponenten src/components/Beratung/t1Copy.js bzw. src/lib/forms/terminLink.js (TERMIN_WORDS). forms.trust.step2/3 nutzen die bestehenden forms.confirmation.step2/3. Footer.accessibility kommt aus der T5-Datei (Footer liest sie, Rückfall t1Copy). de.uspLink unverändert (nur zur Schlüssel-Parität).",
+  "de": {
+    "Shell": {
+      "terminWords": {
+        "choose": "Termin wählen",
+        "write": "Lieber schreiben"
+      }
+    },
+    "forms": {
+      "attach": {
+        "title": "Wird an Ihre Anfrage angehängt",
+        "plan": "Ihr Plan aus dem Werkzeug",
+        "planOpen": "Plan ansehen",
+        "newTab": "(öffnet in neuem Tab)",
+        "board": {
+          "one": "Ihr Ideenboard (1 Karte)",
+          "other": "Ihr Ideenboard ({count} Karten)"
+        },
+        "boardUnknown": "Ihr Ideenboard",
+        "boardGone": "Der Link zu Ihrem Ideenboard ist nicht mehr gültig. Sie können ihn im Ideenboard neu erzeugen.",
+        "labelPlan": "Plan",
+        "labelBoard": "Ideenboard"
+      },
+      "trust": {
+        "title": "Mit wem Sie sprechen",
+        "people": "Ihr Team im Studio in Lochau",
+        "nextTitle": "So geht es weiter",
+        "step1": "Wir lesen Ihre Anfrage und stimmen den Termin persönlich mit Ihnen ab.",
+        "hoursTitle": "Öffnungszeiten",
+        "closed": "geschlossen",
+        "byAppointment": "Termine außerhalb der Öffnungszeiten nach Vereinbarung."
+      },
+      "draft": {
+        "restored": "Ihre Eingaben aus dieser Sitzung sind wiederhergestellt.",
+        "discard": "Neu beginnen"
+      },
+      "moreTopics": {
+        "show": "Andere Anliegen",
+        "hide": "Weniger anzeigen"
+      },
+      "confirmation": {
+        "processLang": null
+      }
+    },
+    "termin": {
+      "write": {
+        "lead": "Lieber ohne festen Termin?",
+        "link": "Lieber schreiben",
+        "hint": "Im Anfrageformular beschreiben Sie Ihr Vorhaben, und wir melden uns bei Ihnen."
+      },
+      "tisch": {
+        "online": "Termin wählen",
+        "card": "Ihre Tischkarte",
+        "cardPlace": "Platzhirsch Home Living, Landstraße 11, Lochau",
+        "cardVideo": "Videoberatung, den Link erhalten Sie per E-Mail",
+        "cardVorOrt": "Bei Ihnen vor Ort"
+      }
+    },
+    "inhalt": {
+      "beratung": {
+        "faq": {
+          "title": "Häufige Fragen zur Beratung",
+          "items": [
+            {
+              "q": "Wie läuft eine Einrichtungsberatung bei Platzhirsch ab?",
+              "a": "Wir lernen Sie und Ihre Räume kennen, im Studio in Lochau oder auf Wunsch bei Ihnen vor Ort. Harald Menghin zeichnet Ihr Konzept zuerst von Hand und baut bei Bedarf ein Raummodell, danach planen wir in 3D und zeigen Ihnen den Raum fotorealistisch."
+            },
+            {
+              "q": "Wo findet die Beratung statt?",
+              "a": "In unserem Studio mit Café an der Landstraße 11 in 6911 Lochau am Bodensee. Bei Bedarf kommen wir zu Ihnen und sehen uns Räume, Licht und Umgebung vor Ort an."
+            },
+            {
+              "q": "Was soll ich zur Beratung mitbringen?",
+              "a": "Was Sie haben: Grundriss, Fotos und Maße der Räume. Alles Weitere klären wir gemeinsam."
+            },
+            {
+              "q": "Wann haben Sie geöffnet?",
+              "a": "{hours}. Termine außerhalb der Öffnungszeiten nach Vereinbarung."
+            }
+          ]
+        },
+        "uspLink": "So arbeiten wir"
+      }
+    },
+    "contact": {
+      "imageAlt": "Ausstellung von Platzhirsch Home Living in Lochau: Sofas, Sessel und Kamin vor der Fensterfront",
+      "uspLink": "So arbeiten wir"
+    },
+    "Footer": {
+      "wishlist": "Wunschliste",
+      "allRegions": "Alle Regionen"
+    }
+  },
+  "en": {
+    "Shell": {
+      "terminWords": {
+        "choose": "Book a visit",
+        "write": "Prefer to write"
+      }
+    },
+    "forms": {
+      "attach": {
+        "title": "Attached to your enquiry",
+        "plan": "Your plan from the planner",
+        "planOpen": "View plan",
+        "newTab": "(opens in a new tab)",
+        "board": {
+          "one": "Your idea board (1 card)",
+          "other": "Your idea board ({count} cards)"
+        },
+        "boardUnknown": "Your idea board",
+        "boardGone": "The link to your idea board is no longer valid. You can create a new one in the idea board.",
+        "labelPlan": "Plan",
+        "labelBoard": "Idea board"
+      },
+      "trust": {
+        "title": "Who you will talk to",
+        "people": "Your team at the studio in Lochau",
+        "nextTitle": "What happens next",
+        "step1": "We read your enquiry and arrange the appointment with you personally.",
+        "hoursTitle": "Opening hours",
+        "closed": "closed",
+        "byAppointment": "Appointments outside opening hours by arrangement."
+      },
+      "draft": {
+        "restored": "Your entries from this session have been restored.",
+        "discard": "Start again"
+      },
+      "moreTopics": {
+        "show": "More topics",
+        "hide": "Show fewer"
+      },
+      "confirmation": {
+        "processLang": null
+      }
+    },
+    "termin": {
+      "write": {
+        "lead": "Prefer no fixed appointment?",
+        "link": "Prefer to write",
+        "hint": "Describe your project in the enquiry form and we will get back to you."
+      },
+      "tisch": {
+        "online": "Book a visit",
+        "card": "Your place card",
+        "cardPlace": "Platzhirsch Home Living, Landstraße 11, Lochau",
+        "cardVideo": "Video consultation, you will receive the link by e-mail",
+        "cardVorOrt": "At your place"
+      }
+    },
+    "inhalt": {
+      "beratung": {
+        "faq": {
+          "title": "Questions about the consultation",
+          "items": [
+            {
+              "q": "How does an interior consultation at Platzhirsch work?",
+              "a": "We get to know you and your rooms, at the studio in Lochau or at your place if you wish. Harald Menghin first draws your concept by hand and builds a room model where it helps; then we plan in 3D and show you the room photorealistically."
+            },
+            {
+              "q": "Where does the consultation take place?",
+              "a": "At our studio with café at Landstraße 11, 6911 Lochau on Lake Constance. If needed, we come to you and look at rooms, light and surroundings on site."
+            },
+            {
+              "q": "What should I bring?",
+              "a": "Whatever you have: floor plan, photos and room dimensions. We clarify everything else together."
+            },
+            {
+              "q": "When are you open?",
+              "a": "{hours}. Appointments outside opening hours by arrangement."
+            }
+          ]
+        },
+        "uspLink": "How we work"
+      }
+    },
+    "contact": {
+      "imageAlt": "Platzhirsch Home Living showroom in Lochau: sofas, armchairs and fireplace by the window front",
+      "uspLink": "How we work"
+    },
+    "Footer": {
+      "wishlist": "Wish list",
+      "allRegions": "All regions"
+    }
+  },
+  "fr": {
+    "Shell": {
+      "terminWords": {
+        "choose": "Réserver un rendez-vous",
+        "write": "Plutôt écrire"
+      }
+    },
+    "forms": {
+      "attach": {
+        "title": "Joint à votre demande",
+        "plan": "Votre plan issu de l’outil",
+        "planOpen": "Voir le plan",
+        "newTab": "(s’ouvre dans un nouvel onglet)",
+        "board": {
+          "one": "Votre tableau d’idées (1 carte)",
+          "other": "Votre tableau d’idées ({count} cartes)"
+        },
+        "boardUnknown": "Votre tableau d’idées",
+        "boardGone": "Le lien vers votre tableau d’idées n’est plus valable. Vous pouvez en créer un nouveau dans le tableau d’idées.",
+        "labelPlan": "Plan",
+        "labelBoard": "Tableau d’idées"
+      },
+      "trust": {
+        "title": "Avec qui vous parlez",
+        "people": "Votre équipe au studio de Lochau",
+        "nextTitle": "La suite",
+        "step1": "Nous lisons votre demande et fixons le rendez-vous avec vous personnellement.",
+        "hoursTitle": "Horaires d’ouverture",
+        "closed": "fermé",
+        "byAppointment": "Rendez-vous en dehors des horaires sur demande."
+      },
+      "draft": {
+        "restored": "Vos saisies de cette session ont été restaurées.",
+        "discard": "Recommencer"
+      },
+      "moreTopics": {
+        "show": "Autres sujets",
+        "hide": "Afficher moins"
+      },
+      "confirmation": {
+        "processLang": null
+      }
+    },
+    "termin": {
+      "write": {
+        "lead": "Plutôt sans rendez-vous fixe ?",
+        "link": "Plutôt écrire",
+        "hint": "Décrivez votre projet dans le formulaire de demande, nous revenons vers vous."
+      },
+      "tisch": {
+        "online": "Réserver un rendez-vous",
+        "card": "Votre carte de table",
+        "cardPlace": "Platzhirsch Home Living, Landstraße 11, Lochau",
+        "cardVideo": "Conseil en visio, vous recevez le lien par e-mail",
+        "cardVorOrt": "Chez vous"
+      }
+    },
+    "inhalt": {
+      "beratung": {
+        "faq": {
+          "title": "Questions sur le conseil",
+          "items": [
+            {
+              "q": "Comment se déroule un conseil en aménagement chez Platzhirsch ?",
+              "a": "Nous faisons connaissance avec vous et vos pièces, au studio de Lochau ou chez vous si vous le souhaitez. Harald Menghin dessine d’abord votre concept à la main et construit au besoin une maquette, puis nous planifions en 3D et vous montrons la pièce de façon photoréaliste."
+            },
+            {
+              "q": "Où a lieu le conseil ?",
+              "a": "Dans notre studio avec café, Landstraße 11, 6911 Lochau, au bord du lac de Constance. Au besoin, nous venons chez vous pour voir les pièces, la lumière et l’environnement."
+            },
+            {
+              "q": "Que dois-je apporter ?",
+              "a": "Ce que vous avez : plan, photos et dimensions des pièces. Nous clarifions le reste ensemble."
+            },
+            {
+              "q": "Quels sont vos horaires ?",
+              "a": "{hours}. Rendez-vous en dehors des horaires sur demande."
+            }
+          ]
+        },
+        "uspLink": "Notre méthode"
+      }
+    },
+    "contact": {
+      "imageAlt": "Showroom de Platzhirsch Home Living à Lochau : canapés, fauteuils et cheminée devant la baie vitrée",
+      "uspLink": "Notre méthode"
+    },
+    "Footer": {
+      "wishlist": "Liste de souhaits",
+      "allRegions": "Toutes les régions"
+    }
+  },
+  "it": {
+    "Shell": {
+      "terminWords": {
+        "choose": "Prenotate un appuntamento",
+        "write": "Preferite scrivere"
+      }
+    },
+    "forms": {
+      "attach": {
+        "title": "Allegato alla vostra richiesta",
+        "plan": "Il vostro progetto dallo strumento",
+        "planOpen": "Vedere il progetto",
+        "newTab": "(si apre in una nuova scheda)",
+        "board": {
+          "one": "La vostra bacheca di idee (1 scheda)",
+          "other": "La vostra bacheca di idee ({count} schede)"
+        },
+        "boardUnknown": "La vostra bacheca di idee",
+        "boardGone": "Il link alla vostra bacheca di idee non è più valido. Potete crearne uno nuovo nella bacheca.",
+        "labelPlan": "Progetto",
+        "labelBoard": "Bacheca di idee"
+      },
+      "trust": {
+        "title": "Con chi parlate",
+        "people": "Il vostro team nello studio di Lochau",
+        "nextTitle": "Come si procede",
+        "step1": "Leggiamo la vostra richiesta e concordiamo l’appuntamento con voi di persona.",
+        "hoursTitle": "Orari di apertura",
+        "closed": "chiuso",
+        "byAppointment": "Appuntamenti fuori orario su accordo."
+      },
+      "draft": {
+        "restored": "I dati inseriti in questa sessione sono stati ripristinati.",
+        "discard": "Ricominciate"
+      },
+      "moreTopics": {
+        "show": "Altri temi",
+        "hide": "Mostrate meno"
+      },
+      "confirmation": {
+        "processLang": null
+      }
+    },
+    "termin": {
+      "write": {
+        "lead": "Preferite senza appuntamento fisso?",
+        "link": "Preferite scrivere",
+        "hint": "Descrivete il vostro progetto nel modulo di richiesta e vi ricontattiamo."
+      },
+      "tisch": {
+        "online": "Prenotate un appuntamento",
+        "card": "Il vostro segnaposto",
+        "cardPlace": "Platzhirsch Home Living, Landstraße 11, Lochau",
+        "cardVideo": "Consulenza video, riceverete il link per e-mail",
+        "cardVorOrt": "Da voi"
+      }
+    },
+    "inhalt": {
+      "beratung": {
+        "faq": {
+          "title": "Domande sulla consulenza",
+          "items": [
+            {
+              "q": "Come si svolge una consulenza d’arredo da Platzhirsch?",
+              "a": "Conosciamo voi e i vostri ambienti, nello studio di Lochau o, se lo desiderate, da voi. Harald Menghin disegna prima il vostro concept a mano e, se serve, costruisce un modellino; poi progettiamo in 3D e vi mostriamo l’ambiente in modo fotorealistico."
+            },
+            {
+              "q": "Dove si svolge la consulenza?",
+              "a": "Nel nostro studio con café in Landstraße 11, 6911 Lochau sul Lago di Costanza. Se necessario veniamo da voi e osserviamo ambienti, luce e contesto sul posto."
+            },
+            {
+              "q": "Cosa devo portare?",
+              "a": "Ciò che avete: pianta, foto e misure degli ambienti. Il resto lo chiariamo insieme."
+            },
+            {
+              "q": "Quali sono gli orari di apertura?",
+              "a": "{hours}. Appuntamenti fuori orario su accordo."
+            }
+          ]
+        },
+        "uspLink": "Il nostro metodo"
+      }
+    },
+    "contact": {
+      "imageAlt": "Showroom di Platzhirsch Home Living a Lochau: divani, poltrone e camino davanti alla vetrata",
+      "uspLink": "Il nostro metodo"
+    },
+    "Footer": {
+      "wishlist": "Lista dei desideri",
+      "allRegions": "Tutte le regioni"
+    }
+  }
+}

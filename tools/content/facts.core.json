@@ -1,0 +1,773 @@
+{
+  "version": 1,
+  "stand": "2026-10-26",
+  "hinweis": "Handgepflegte Grundfakten fuer tools/content/check-facts.mjs. Jede Zeile nennt ihre Quelle (Datei:Zeile in Marktresearch oder, bei technischen Grenzen, die Code-Stelle). Neue Zeilen nur mit Beleg. tools/content/build-facts.mjs fuegt die Produktfakten aus Marktresearch/content/produkte/*.json hinzu und schreibt tools/content/facts.json.",
+  "facts": [
+    {
+      "id": "nap-hausnummer",
+      "art": "Stammdaten",
+      "aussage": "Geschaeftsanschrift Landstrasse 11 (Firmenbuch FN 443753d)",
+      "values": [
+        "11"
+      ],
+      "kontext": [
+        "landstra(ß|ss)e",
+        "landstrasse"
+      ],
+      "quelle": "Marktresearch/recht/04-impressum-pflichtangaben.md:12 (Ediktsdatei/Firmenbuch evi.gv.at); Marktresearch/01-bestandsanalyse.md:33 (Firmenbuch, Herold, Google)"
+    },
+    {
+      "id": "nap-plz",
+      "art": "Stammdaten",
+      "aussage": "Postleitzahl 6911 Lochau",
+      "values": [
+        "6911"
+      ],
+      "kontext": [
+        "lochau"
+      ],
+      "quelle": "Marktresearch/recht/04-impressum-pflichtangaben.md:12"
+    },
+    {
+      "id": "nap-telefon",
+      "art": "Stammdaten",
+      "aussage": "Telefon +43 5574 46255",
+      "values": [
+        "+43 5574 46255"
+      ],
+      "quelle": "Marktresearch/digital/09-local-seo-reputation.md:17"
+    },
+    {
+      "id": "oeffnungszeiten",
+      "art": "Stammdaten",
+      "aussage": "Di-Fr 10-18 Uhr, Sa 10-14 Uhr, So und Mo geschlossen",
+      "values": [
+        "10–18 Uhr",
+        "10–14 Uhr",
+        "10:00–18:00",
+        "10:00–14:00"
+      ],
+      "kontext": [
+        "uhr",
+        "\\b(di|mi|do|fr|sa|tue|wed|thu|fri|sat|mar|mer|jeu|ven|sam|gio|sab)\\b",
+        "dienstag|mittwoch|donnerstag|freitag|samstag",
+        "tuesday|wednesday|thursday|friday|saturday",
+        "mardi|mercredi|jeudi|vendredi|samedi",
+        "martedì|mercoledì|giovedì|venerdì|sabato",
+        "öffnungs|opening|horaires|orari",
+        "hours|times|opentimes|orari|horaires|öffnungszeit"
+      ],
+      "quelle": "Marktresearch/01-bestandsanalyse.md:34; Marktresearch/20-reputation-wettbewerber-und-kaufkraft.md:90"
+    },
+    {
+      "id": "oeffnungszeiten-uhrzeiten",
+      "art": "Stammdaten",
+      "aussage": "Uhrzeiten der Öffnungszeiten 10:00, 14:00 und 18:00 (nur als Uhrzeit, nicht als bloße Zahl)",
+      "values": [
+        "10:00",
+        "14:00",
+        "18:00"
+      ],
+      "strictUnit": true,
+      "quelle": "Marktresearch/01-bestandsanalyse.md:34; Marktresearch/20-reputation-wettbewerber-und-kaufkraft.md:90"
+    },
+    {
+      "id": "vernissage-2026-09",
+      "art": "Termin",
+      "aussage": "Vernissage mit Kaja El Attar am 04.09.2026",
+      "values": [
+        "04.09.2026"
+      ],
+      "kontext": [
+        "vernissage|freitag|friday|vendredi|venerdì|2026"
+      ],
+      "quelle": "Marktresearch/01-bestandsanalyse.md:116"
+    },
+    {
+      "id": "vernissage-2026-09-uhrzeit",
+      "art": "Termin",
+      "aussage": "Beginn der Vernissage mit Kaja El Attar am 04.09.2026 um 17:00 Uhr (nur als Uhrzeit, nur im Vernissage-Block)",
+      "values": [
+        "17:00"
+      ],
+      "strictUnit": true,
+      "kontext": [
+        "^Vernissage\\.time "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Live-Text der bisherigen Website, Block Vernissage (date 04.09.2026, time 17:00 Uhr / 5:00 pm / 17h00 / ore 17:00) in src/messages/{de,en,fr,it}.json:160 des Initial-Commits 54f3e4e; dieselbe Quelle wie das Datum (Marktresearch/01-bestandsanalyse.md:105 „Quelle: de.json“, :116). Termin vorbei, Popup endet laut src/components/Home/vernissagePopup.js:13 am 04.09.2026."
+    },
+    {
+      "id": "presse-minotti-2022",
+      "art": "Presse",
+      "aussage": "Pressetitel „Minotti 2022 Collection“: Minotti-Kollektion 2022, von Platzhirsch vorgestellt; Titelbild Vorarlbergerin November/Dezember 2022",
+      "values": [
+        "2022"
+      ],
+      "kontext": [
+        "^presse\\.magazines\\.\\d+ (Minotti 2022|Minotti Collection 2022|Collezione Minotti 2022)"
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/12-content-storytelling.md:30 (Beitrag der bisherigen Website „MINOTTI – Wir präsentieren die neue 2022 Collection“); public/Images/Presse/mag4.jpg (Titel „Vorarlbergerin“, NOVEMBER/DEZEMBER 2022, Nr. 8), zugeordnet in src/components/Presse/pressearticle.js:11"
+    },
+    {
+      "id": "ust-at",
+      "art": "Steuer",
+      "aussage": "Oesterreichische Umsatzsteuer 20 %",
+      "values": [
+        "20 %",
+        "1,20"
+      ],
+      "kontext": [
+        "ust|mwst|mehrwertsteuer|umsatzsteuer|vat|tva|iva|brutto|österreich"
+      ],
+      "quelle": "Marktresearch/18-schweiz-recht-steuer-logistik.md:146"
+    },
+    {
+      "id": "ust-de",
+      "art": "Steuer",
+      "aussage": "Deutsche Umsatzsteuer 19 % bei Fernverkauf ueber der EU-Schwelle",
+      "values": [
+        "19 %",
+        "1,19"
+      ],
+      "kontext": [
+        "ust|mwst|mehrwertsteuer|umsatzsteuer|vat|tva|iva|deutsch"
+      ],
+      "quelle": "Marktresearch/18-schweiz-recht-steuer-logistik.md:147 (WKO OSS-FAQ, 02.10.2025)"
+    },
+    {
+      "id": "oss-schwelle",
+      "art": "Steuer",
+      "aussage": "OSS-Schwelle 10.000 EUR netto EU-weit",
+      "values": [
+        "10.000 €"
+      ],
+      "kontext": [
+        "oss|schwelle|fernverkauf|threshold|seuil|soglia"
+      ],
+      "quelle": "Marktresearch/18-schweiz-recht-steuer-logistik.md:32 (WKO OSS-FAQ)"
+    },
+    {
+      "id": "mwst-ch-fl",
+      "art": "Steuer",
+      "aussage": "MWST-Normalsatz Schweiz und Liechtenstein 8,1 %",
+      "values": [
+        "8,1 %",
+        "1,081"
+      ],
+      "kontext": [
+        "mwst|mehrwertsteuer|vat|tva|iva|schweiz|liechtenstein|suisse|svizzera|switzerland|einfuhr"
+      ],
+      "quelle": "Marktresearch/18-schweiz-recht-steuer-logistik.md:47 (llv.li)"
+    },
+    {
+      "id": "wertfreigrenze-ch",
+      "art": "Zoll",
+      "aussage": "Wertfreigrenze im Reiseverkehr CHF 150 pro Person und Tag seit 2025",
+      "values": [
+        "CHF 150",
+        "2025"
+      ],
+      "kontext": [
+        "wertfreigrenze|freigrenze|reiseverkehr|franchise|franchigia|duty"
+      ],
+      "quelle": "Marktresearch/18-schweiz-recht-steuer-logistik.md:58 (SRF)"
+    },
+    {
+      "id": "formular-name-min",
+      "art": "technisch",
+      "aussage": "Name mindestens 2 Zeichen",
+      "values": [
+        "2"
+      ],
+      "kontext": [
+        "zeichen|characters|caractères|caratteri"
+      ],
+      "quelle": "src/lib/forms/schemas.js:51"
+    },
+    {
+      "id": "formular-nachricht-min",
+      "art": "technisch",
+      "aussage": "Nachricht bzw. Beschreibung mindestens 10 Zeichen",
+      "values": [
+        "10"
+      ],
+      "kontext": [
+        "zeichen|characters|caractères|caratteri"
+      ],
+      "quelle": "src/lib/forms/schemas.js:56 und :70"
+    },
+    {
+      "id": "formular-telefon",
+      "art": "technisch",
+      "aussage": "Telefonnummer 6 bis 20 Zeichen",
+      "values": [
+        "6",
+        "20"
+      ],
+      "kontext": [
+        "zeichen|characters|caractères|caratteri"
+      ],
+      "quelle": "src/lib/forms/schemas.js:24 (PHONE_RE)"
+    },
+    {
+      "id": "upload-schritte",
+      "art": "technisch",
+      "aussage": "Upload-Seite: Fortschrittsanzeige mit 3 Schritten (Zustimmen · Aufnehmen · Senden)",
+      "values": [
+        "3"
+      ],
+      "kontext": [
+        "^Upload.client.stepper.label "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Upload/UploadClient.js:247 (Stepper, „Schritt ${step} von 3“); Text 1:1 aus Marktresearch/digital/features/upload-messages-vorschlag.json (Upload.client.stepper.label)"
+    },
+    {
+      "id": "upload-notiz-beispiel",
+      "art": "technisch",
+      "aussage": "Platzhalter-Beispiel im Notizfeld (Raumhöhe 2,60 m), keine Tatsachenbehauptung",
+      "values": [
+        "2,60 m"
+      ],
+      "kontext": [
+        "^Upload.client.note.placeholder "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Upload/UploadClient.js:1274 (placeholder); Text 1:1 aus Marktresearch/digital/features/upload-messages-vorschlag.json (Upload.client.note.placeholder)"
+    },
+    {
+      "id": "upload-dauer-1-minute",
+      "art": "technisch",
+      "aussage": "Hinweis „Optional · dauert 1 Minute“ auf der Upload-Karte (Aufwandsangabe des Upload-Teams)",
+      "values": [
+        "1 Minute"
+      ],
+      "kontext": [
+        "^Upload.handoff.overline "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Upload/UploadHandoff.js:348 (Overline „Optional · dauert 1 Minute“); Text 1:1 aus Marktresearch/digital/features/upload-messages-vorschlag.json (Upload.handoff.overline)"
+    },
+    {
+      "id": "upload-demo-1-stunde",
+      "art": "technisch",
+      "aussage": "Demo-Upload-Link 1 Stunde gültig (Labs, nur Entwicklung)",
+      "values": [
+        "1 Stunde"
+      ],
+      "kontext": [
+        "^Upload.demo.(enabled|validLabel) "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/upload/config.js:43 (demo.ttlMinutes: 60); Marktresearch/digital/features/handy-upload.md:64 („1 Stunde gültig“)"
+    },
+    {
+      "id": "arbeitsweise-erstgespraech-60",
+      "art": "Angebot",
+      "aussage": "Erstgespräch 60 Minuten, kostenlos (Design-Bibel; Bestätigung Inhaber offen, integration.md)",
+      "values": [
+        "60 Minuten",
+        "60 minutes",
+        "60 minuti"
+      ],
+      "kontext": [
+        "^Arbeitsweise."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/expertenrat/00-design-bibel.md:277 (Unterzeile „60 Minuten · kostenlos“); Marktresearch/digital/features/arbeitsweise-konzept.md:218"
+    },
+    {
+      "id": "ezarri-kleber-c2te",
+      "art": "Hersteller",
+      "aussage": "Ezarri: Kleber mindestens Klasse C2TE",
+      "values": [
+        "C2TE"
+      ],
+      "kontext": [
+        "^ezarri."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/features/ezarri-analyse.md:118; Marktresearch/digital/features/ezarri-konzept.md:191 (Ezarri-Verlegeanleitung)"
+    },
+    {
+      "id": "ezarri-sortiment-400",
+      "art": "Hersteller",
+      "aussage": "Ezarri-Welt: 402 Referenzen (mehr als 400 Mosaike)",
+      "values": [
+        "400"
+      ],
+      "kontext": [
+        "^ezarri."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/features/ezarri-konzept.md:19 (402 Referenzen); src/lib/ezarri/references.json"
+    },
+    {
+      "id": "ezarri-reserve-10",
+      "art": "Hersteller",
+      "aussage": "Mengenrechner: 10 % Reserve nach Ezarri-Beispiel",
+      "values": [
+        "10 %"
+      ],
+      "kontext": [
+        "^ezarri."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/features/ezarri-rechner.md:35; Marktresearch/digital/features/ezarri-analyse.md:70"
+    },
+    {
+      "id": "ezarri-patterns-20",
+      "art": "Hersteller",
+      "aussage": "20 Ezarri-Patterns mit 2 bis 3 Farbkanälen",
+      "values": [
+        "20",
+        "2",
+        "3"
+      ],
+      "kontext": [
+        "^ezarri.b.modus.patternSub "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/features/ezarri-konzept.md:19 (20 Patterns); Marktresearch/digital/features/ezarri-konfigurator.md:10 (3 Kanäle), :55 (Kanalzahl je Pattern)"
+    },
+    {
+      "id": "druckformat-a4",
+      "art": "technisch",
+      "aussage": "Druckblatt im Format A4",
+      "values": [
+        "A4"
+      ],
+      "kontext": [
+        "^ezarri."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/ezarri/rechner (Druckblatt A4); Marktresearch/digital/features/ezarri-konfigurator.md"
+    },
+    {
+      "id": "widerruf-14-tage",
+      "art": "Recht",
+      "aussage": "Rücktrittsrecht 14 Tage bei Fernabsatz (FAGG § 11)",
+      "values": [
+        "14 Tagen",
+        "14 days",
+        "14 jours",
+        "14 giorni"
+      ],
+      "kontext": [
+        "^payments."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/recht/06-gutschein-event-bewertung-bedingungen.md:36 und :80 (14 Tage Rücktrittsrecht, § 11 FAGG)"
+    },
+    {
+      "id": "gutschein-30-jahre",
+      "art": "Recht",
+      "aussage": "Gutscheine: allgemeine Verjährungsfrist 30 Jahre (ABGB § 1478)",
+      "values": [
+        "30 Jahren",
+        "30 years",
+        "30 ans",
+        "30 anni"
+      ],
+      "kontext": [
+        "^payments."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/recht/06-gutschein-event-bewertung-bedingungen.md:29 (30 Jahre, § 1478 ABGB)"
+    },
+    {
+      "id": "tagebuch-upload-25-mb",
+      "art": "technisch",
+      "aussage": "Projekt-Tagebuch: Fotos bis 25 MB je Datei",
+      "values": [
+        "25 MB",
+        "25 Mo"
+      ],
+      "kontext": [
+        "^Portal.tagebuch.uploadFile"
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/portal/tagebuch/config.js:28 (maxBytes: 25 * 1024 * 1024)"
+    },
+    {
+      "id": "tagebuch-referenz-schritte",
+      "art": "technisch",
+      "aussage": "Referenz-Freigabe im Projekt-Tagebuch: Schritt 1 bis 4 (Gliederung des Formulars, keine Mengenangabe)",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "kontext": [
+        "^Portal.tagebuch.refStep[1-4] "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Portal/Tagebuch/ReferenzFreigabe.js:113, :142, :179, :185 (vier Fieldsets)"
+    },
+    {
+      "id": "wunschliste-beitrag-max-5000",
+      "art": "technisch",
+      "aussage": "Wunschliste: Gutschein-Beitrag in ganzen Euro bis 5.000 (Eingabegrenze gegen Tippfehler, wie AMOUNT_MAX der Gutscheine)",
+      "values": [
+        "5.000",
+        "5,000",
+        "5 000"
+      ],
+      "kontext": [
+        "^wunschliste.errors.amount"
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/wunschliste/config.js:45 (contributionMax: 5000)"
+    },
+    {
+      "id": "termin-bestaetigung-30-min",
+      "art": "Angebot",
+      "aussage": "Online-Kalender: Bestätigungslink (Double-Opt-in) gilt 30 Minuten, so lange ist die Uhrzeit vorgemerkt",
+      "values": [
+        "30 Minuten",
+        "30 minutes",
+        "30 minuti"
+      ],
+      "kontext": [
+        "^termin\\."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/booking/constants.js (VERIFY_TTL_MIN = 30); Marktresearch/digital/features/online-termin-video.md B5 (TTL 30 min)"
+    },
+    {
+      "id": "termin-videoraum-15-min",
+      "art": "Angebot",
+      "aussage": "Online-Kalender: Videoraum-Link erscheint ab 15 Minuten vor Beginn",
+      "values": [
+        "15 Minuten",
+        "15 minutes",
+        "15 minuti"
+      ],
+      "kontext": [
+        "^termin\\."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/booking/constants.js (MEET_OPEN_MIN = 15); Marktresearch/digital/features/online-termin-video.md B3 Nr. 8 (get_meet_link erst ab 15 min vor Start)"
+    },
+    {
+      "id": "termin-vorlauf-24-h",
+      "art": "Angebot",
+      "aussage": "Online-Kalender: frühester Termin 24 Stunden im Voraus",
+      "values": [
+        "24 Stunden",
+        "24 hours",
+        "24 heures",
+        "24 ore"
+      ],
+      "kontext": [
+        "^termin\\."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/booking/constants.js (LEAD_HOURS = 24); Marktresearch/digital/features/online-termin-video.md"
+    },
+    {
+      "id": "termin-anliegen-1000",
+      "art": "Formular",
+      "aussage": "Online-Kalender: Feld Anliegen höchstens 1000 Zeichen",
+      "values": [
+        "1000"
+      ],
+      "kontext": [
+        "^termin\\.(daten\\.anliegenHint|errors\\.anliegen)"
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/booking/schema.js (anliegen max 1000)"
+    },
+    {
+      "id": "termin-zaehler-eins",
+      "art": "Formular",
+      "aussage": "Online-Kalender: Einzahl der freien Zeiten („1 Zeit frei“, Screenreader-Text)",
+      "values": [
+        "1"
+      ],
+      "kontext": [
+        "^termin\\.zeit\\.freeLongOne"
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Termin/SlotPicker.js (Plural je Anzahl, QA UX P3)"
+    },
+    {
+      "id": "einblicke-fristen",
+      "art": "technisch",
+      "aussage": "Besucher-Einblicke: Mausraster 40 px, Sitzungs-ID 30 Minuten, Rohdaten höchstens 14 Tage, Aggregate ab 5 Besuchen",
+      "values": [
+        "40",
+        "40 px",
+        "30 Minuten",
+        "30 minutes",
+        "30 minuti",
+        "14 Tagen",
+        "14 days",
+        "14 jours",
+        "14 giorni",
+        "5"
+      ],
+      "kontext": [
+        "^Cookies.einblicke."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/einblicke/config.js (BAND_PX = 40, SESSION_MS = 30 * 60 * 1000, SERVER.rawMaxDays: 14, SERVER.k: 5)"
+    },
+    {
+      "id": "winterlager-gloster-pflege",
+      "art": "Herstellerangabe",
+      "aussage": "Winterlager & Pflege: Pflegehinweise aus den Gloster-Pflegeblättern (Teak wird in 6 Monaten bis 2 Jahren silbergrau; Seil-Reinigung 1 Teil Reiniger auf 16 Teile Wasser unter 40 °C; Kunststoffgeflecht von −20 °C bis +55 °C)",
+      "values": [
+        "6 Monate",
+        "2 Jahre",
+        "6 months",
+        "2 years",
+        "6 mois",
+        "2 ans",
+        "6 mesi",
+        "2 anni",
+        "1",
+        "16",
+        "40 °",
+        "20 °",
+        "55 °"
+      ],
+      "kontext": [
+        "^serviceWinterlager.care.items.(teak|rope|wicker).points."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/service/winterlager/copy.js SOURCES (Gloster Care & Maintenance: Teak.pdf, Outdoor Rope.pdf, Wicker.pdf; Übersicht https://www.gloster.com/en/products/care-sheets, abgerufen 29.10.2026 laut Team Winterlager); Text aus Marktresearch/digital/features/service-winterlager-messages.json"
+    },
+    {
+      "id": "winterlager-formular-beispiele",
+      "art": "technisch",
+      "aussage": "Winterlager-Formular: Platzhalter- und Hinweisbeispiele (6 Stühle, 3. Stock, 10. April), keine Tatsachenbehauptung",
+      "values": [
+        "6",
+        "3",
+        "3°",
+        "10"
+      ],
+      "kontext": [
+        "^serviceWinterlager.form.(list.hint|address.accessPlaceholder|dates.notePlaceholder) "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Service/Winterlager/WinterlagerPage.js (Hinweis/Platzhalter); Text aus Marktresearch/digital/features/service-winterlager-messages.json"
+    },
+    {
+      "id": "winterlager-formular-grenzen",
+      "art": "Formular",
+      "aussage": "Winterlager: Anzahl je Position ab 1 (Obergrenze {max} aus der Konfiguration), Countdown-Einzahl „noch 1 Tag“",
+      "values": [
+        "1",
+        "1 day"
+      ],
+      "kontext": [
+        "^serviceWinterlager.(form.errors.count|countdown.oneDay) "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/service/winterlager/form.js (parseCount, Startwert count: \"1\", WINTERLAGER_CONFIG.maxAnzahl); src/lib/service/winterlager/view.js (Countdown kind oneDay)"
+    },
+    {
+      "id": "cookie-laufzeit-12-monate",
+      "art": "technisch",
+      "aussage": "Cookies cookieConsent und NEXT_LOCALE: Laufzeit 12 Monate (365 Tage)",
+      "values": [
+        "12 Monate",
+        "12 months",
+        "12 mois",
+        "12 mesi"
+      ],
+      "kontext": [
+        "^Cookies.essentialStorage."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Cookies/cookiecomponent.js:358 (maxAge 60*60*24*365); src/components/Navbar/LanguageSwitcher.js:50 (NEXT_LOCALE Max-Age 365 Tage); gleiche Angabe in der freigegebenen DSE src/components/Datenschutz/datenschutz.js:223"
+    },
+    {
+      "id": "starpool-zerobody-dry-float-wasser",
+      "art": "Produkt",
+      "aussage": "Starpool Zerobody Dry Float: man liegt über rund 400 Litern warmem Wasser, ohne nass zu werden (Herstellerangabe)",
+      "values": [
+        "400"
+      ],
+      "kontext": [
+        "^badWellness.marke.starpool.text "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "https://www.starpool.com/products/zerobody-dry-float (geprüft 31.10.2026: ca. 400 l warmes Wasser); Kopfkommentar src/lib/wellness/marken.js; Text aus Marktresearch/digital/features/bad-wellness-messages.json"
+    }
+  ],
+  "ignore": [
+    {
+      "id": "http-404",
+      "pattern": "(?<![\\p{N}])404(?![\\p{N}])",
+      "grund": "HTTP-Statuscode der Fehlerseite, keine Tatsachenbehauptung"
+    },
+    {
+      "id": "fachbegriff-3d",
+      "pattern": "(?<![\\p{L}\\p{N}])3D(?![\\p{L}])",
+      "grund": "Fachbegriff (3D-Daten, 3D-Rendering), keine Mengenangabe"
+    },
+    {
+      "id": "fachbegriff-360",
+      "pattern": "360[-\\s]?(?:grad|°|degree|degré|gradi)",
+      "grund": "Fachbegriff Rundumansicht (360-Grad-Tour), keine Mengenangabe"
+    },
+    {
+      "id": "markenname-101-copenhagen",
+      "pattern": "101 Copenhagen",
+      "grund": "Markenname (101 Copenhagen), keine Mengenangabe"
+    },
+    {
+      "id": "markenname-next125",
+      "pattern": "next ?125",
+      "grund": "Markenname (next125), keine Mengenangabe"
+    },
+    {
+      "id": "normzitat",
+      "pattern": "(?:Art\\.?|Artikel|article|articolo|§§?)\\s*\\d+[a-z]?(?:[\\s,]*(?:\\(\\d+[a-z]?\\)|\\([a-z]\\)|(?:Abs\\.?|paragraphe|para\\.?|par\\.?|lit\\.?|lett\\.?|point|Z|S\\.|UAbs\\.?|comma|al\\.?)\\s*\\d*[a-z]?\\)?))*",
+      "grund": "Normzitat (z. B. Art. 49 Abs. 1 lit. a DSGVO), keine Tatsachenbehauptung über das Unternehmen"
+    },
+    {
+      "id": "normbezeichnung",
+      "pattern": "(?<![\\p{L}])(?:DIN EN ISO|EN ISO|DIN EN|ÖNORM EN|ÖNORM|DIN|EN|ISO|SN EN)\\s?\\d{2,5}(?:[-:]\\d+)*",
+      "grund": "Name einer Norm (z. B. EN 14465), keine Mengenangabe; die Aussage dazu prüft der Satz selbst"
+    },
+    {
+      "id": "web-2-0",
+      "pattern": "web[- ]2\\.0",
+      "grund": "Fachbegriff (Web 2.0), keine Mengenangabe"
+    },
+    {
+      "id": "fachbegriff-2d",
+      "pattern": "(?<![p{L}p{N}])2D(?![p{L}])",
+      "grund": "Fachbegriff (2D-Draufsicht), keine Mengenangabe"
+    },
+    {
+      "id": "ezarri-referenz-ash-25",
+      "pattern": "Ash 25",
+      "grund": "Referenzname des Ezarri-Mosaiks (src/lib/ezarri/gallery.json referenz_name \"Ash 25\"), keine Mengenangabe"
+    },
+    {
+      "id": "singular-eine-karte",
+      "pattern": "(1 (?:Karte|card|carte|scheda))",
+      "grund": "Singularform der Kartenzahl im Ideenboard-Anhang (forms.attach.board.one, Plural-Zweig zu {count}), keine Tatsachenbehauptung"
+    }
+  ]
+}

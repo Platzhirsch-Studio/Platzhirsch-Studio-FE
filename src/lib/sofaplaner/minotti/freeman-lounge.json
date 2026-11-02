@@ -1,0 +1,970 @@
+{
+  "name": "Freeman \"Lounge\"",
+  "slug": "freeman-lounge",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2016,
+  "jahr_hinweis": "Produktseite verlinkt auf „2016 Collection“; Technical Sheet Stand Dezember 2024.",
+  "kollektion": "2016 Collection",
+  "typ": "Modulares Sitzsystem mit reduzierter Sitztiefe (Tiefe 91 cm) als Erweiterung von Freeman „Tailor“ – für kleinere Wohnräume und Hospitality (Lobby, Wartebereich, Büro). Sofas, offene Sofas, End-, Mittel-, Peninsula-, Daybed- und geneigte Peninsula-Elemente, Couch, Bänke (auch geneigt) und Hocker; Wing-Armlehnen.",
+  "modular": true,
+  "quellen": [
+    "https://www.minotti.com/en/freeman-lounge_2",
+    "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/426/14054/MINOTTI_Freeman_Lounge_.zip",
+    "https://www.minotti.com/downloads/11238/8794/Freeman%20Lounge%20arrangement%201.pdf",
+    "https://www.minotti.com/downloads/14152/11946/Freeman%20Lounge%20arrangement%202.pdf",
+    "https://www.minotti.com/downloads/14153/11950/Freeman%20Lounge%20arrangement%203.pdf",
+    "https://www.minotti.com/downloads/14154/11954/Freeman%20Lounge%20arrangement%204.pdf"
+  ],
+  "technisches_datenblatt": "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf",
+  "datenblatt_stand": "Dezember 2024 (gemeinsames Freeman-Datenblatt; Seiten 19–22 = Lounge)",
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "masse_hinweis": "Maße aus den bemaßten Zeichnungen des Technical Sheet (Dezember 2024) und der Produktseite. Zeichnungen doppelt bemaßt (cm/Zoll): 58/22 7/8 = Höhe ohne optionale Rückenkissen 58 cm, 37/14 5/8 = Sitzhöhe 37 cm, Tiefe 91 cm. Mit optionalen Rückenkissen H 80 (Datenblatt Sofa 182 + Produktseite „168X91 H80“). hoehe_cm = 58 (Struktur), da Rückenkissen optional. Standardfüße H 7,5 cm.",
+  "raster": {
+    "sitzbreiten_cm": [
+      63,
+      84,
+      126,
+      147,
+      168
+    ],
+    "tiefe_cm": 91,
+    "hinweis": "Abgeleitet aus Innenmaßen der Draufsichten; nicht als Regel publiziert."
+  },
+  "elemente": [
+    {
+      "code": "FRL-SOFA-182",
+      "name": "SOFA CM 182",
+      "name_de": "Sofa 182 cm",
+      "art": "sofa",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 182,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend, 2 Wing-Armlehnen",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-SOFA-203",
+      "name": "SOFA CM 203",
+      "name_de": "Sofa 203 cm",
+      "art": "sofa",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 203,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend, 2 Wing-Armlehnen",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-SOFA-224",
+      "name": "SOFA CM 224",
+      "name_de": "Sofa 224 cm",
+      "art": "sofa",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 224,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend, 2 Wing-Armlehnen",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-END-154",
+      "name": "ELEMENT WITH 1 ARMREST CM 154",
+      "name_de": "Endelement mit 1 Armlehne 154 cm",
+      "art": "endelement",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 154,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Wing-Armlehne an einer Seite, andere Seite anbaubar",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-END-175",
+      "name": "ELEMENT WITH 1 ARMREST CM 175",
+      "name_de": "Endelement mit 1 Armlehne 175 cm",
+      "art": "endelement",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Wing-Armlehne an einer Seite, andere Seite anbaubar",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-END-196",
+      "name": "ELEMENT WITH 1 ARMREST CM 196",
+      "name_de": "Endelement mit 1 Armlehne 196 cm",
+      "art": "endelement",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Wing-Armlehne an einer Seite, andere Seite anbaubar",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-CEN-126",
+      "name": "CENTRAL ELEMENT CM 126",
+      "name_de": "Mittelelement 126 cm",
+      "art": "mittel",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 126,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-CEN-147",
+      "name": "CENTRAL ELEMENT CM 147",
+      "name_de": "Mittelelement 147 cm",
+      "art": "mittel",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 147,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-CEN-168",
+      "name": "CENTRAL ELEMENT CM 168",
+      "name_de": "Mittelelement 168 cm",
+      "art": "mittel",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 168,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-OEARM-154-84",
+      "name": "OPEN-END ELEMENT WITH ARMREST CM 154 - BACKREST CM 84",
+      "name_de": "Peninsula-Endelement mit Armlehne 154 cm, Rücken 84 cm",
+      "art": "endelement-peninsula",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 154,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 42,
+      "anschluesse": null,
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-OEARM-175-84",
+      "name": "OPEN-END ELEMENT WITH ARMREST CM 175 - BACKREST CM 84",
+      "name_de": "Peninsula-Endelement mit Armlehne 175 cm, Rücken 84 cm",
+      "art": "endelement-peninsula",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 63,
+      "anschluesse": null,
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-OEARM-196-84",
+      "name": "OPEN-END ELEMENT WITH ARMREST CM 196 - BACKREST CM 84",
+      "name_de": "Peninsula-Endelement mit Armlehne 196 cm, Rücken 84 cm",
+      "art": "endelement-peninsula",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": null,
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-OE-126-84",
+      "name": "OPEN-END ELEMENT CM 126 - BACKREST CM 84",
+      "name_de": "Peninsula-Element 126 cm, Rücken 84 cm",
+      "art": "peninsula",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 126,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 42,
+      "anschluesse": null,
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182). Produktseite nennt „OPEN-END ELEMENT WITH ARMREST CM 126 - BACKREST 84“; Datenblatt zeigt Element ohne Armlehne – Datenblatt übernommen.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-OE-147-84",
+      "name": "OPEN-END ELEMENT CM 147 - BACKREST CM 84",
+      "name_de": "Peninsula-Element 147 cm, Rücken 84 cm",
+      "art": "peninsula",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 147,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 63,
+      "anschluesse": null,
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-OE-168-84",
+      "name": "OPEN-END ELEMENT CM 168 - BACKREST CM 84",
+      "name_de": "Peninsula-Element 168 cm, Rücken 84 cm",
+      "art": "peninsula",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 168,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": null,
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-OPENSOFA-182-84",
+      "name": "OPEN SOFA CM 182 - BACKREST CM 84",
+      "name_de": "Offenes Sofa 182 cm, Rücken 84 cm",
+      "art": "sofa-chaise-offen",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 182,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 42,
+      "anschluesse": "Freistehend, 2 Wing-Armlehnen, Rücken nur teilweise",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-OPENSOFA-203-84",
+      "name": "OPEN SOFA CM 203 - BACKREST CM 84",
+      "name_de": "Offenes Sofa 203 cm, Rücken 84 cm",
+      "art": "sofa-chaise-offen",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 203,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 63,
+      "anschluesse": "Freistehend, 2 Wing-Armlehnen, Rücken nur teilweise",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-OPENSOFA-224-84",
+      "name": "OPEN SOFA CM 224 - BACKREST CM 84",
+      "name_de": "Offenes Sofa 224 cm, Rücken 84 cm",
+      "art": "sofa-chaise-offen",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 224,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": "Freistehend, 2 Wing-Armlehnen, Rücken nur teilweise",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-DAY-154-84",
+      "name": "DAYBED ELEMENT CM 154 - BACKREST CM 84",
+      "name_de": "Daybed-Element 154 cm, Rücken 84 cm",
+      "art": "daybed",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 154,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 126,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 42,
+      "anschluesse": "Wing-Armlehne an einer Seite, Rücken nur teilweise, andere Seite anbaubar",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-DAY-175-84",
+      "name": "DAYBED ELEMENT CM 175 - BACKREST CM 84",
+      "name_de": "Daybed-Element 175 cm, Rücken 84 cm",
+      "art": "daybed",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 147,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 63,
+      "anschluesse": "Wing-Armlehne an einer Seite, Rücken nur teilweise, andere Seite anbaubar",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-DAY-196-84",
+      "name": "DAYBED ELEMENT CM 196 - BACKREST CM 84",
+      "name_de": "Daybed-Element 196 cm, Rücken 84 cm",
+      "art": "daybed",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 196,
+      "tiefe_cm": 91,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 168,
+      "rueckenlaenge_cm": 84,
+      "offene_laenge_cm": 84,
+      "anschluesse": "Wing-Armlehne an einer Seite, Rücken nur teilweise, andere Seite anbaubar",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-INCL-OE-257-168",
+      "name": "INCLINED OPEN-END ELEMENT CM 257 - BACKREST CM 168",
+      "name_de": "Geneigtes Peninsula-Element 257 cm, Rücken 168 cm",
+      "art": "peninsula-geneigt",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 257,
+      "tiefe_cm": 138,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": 168,
+      "offene_laenge_cm": null,
+      "anschluesse": "Gerader Teil 148/168 cm + abgewinkelter Teil (Kanten 105 / 85 / 63 cm laut Draufsicht); Winkel nicht beschriftet",
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182). Produktseite: „257X138 H80“ (mit Kissen).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-COUCH-63x175",
+      "name": "COUCH CM 63X175",
+      "name_de": "Couch/Liege 63 × 175 cm",
+      "art": "couch",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 63,
+      "tiefe_cm": 175,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 63,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-COUCH-63x196",
+      "name": "COUCH CM 63X196",
+      "name_de": "Couch/Liege 63 × 196 cm",
+      "art": "couch",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 63,
+      "tiefe_cm": 196,
+      "hoehe_cm": 58,
+      "strukturhoehe_cm": 58,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 63,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Höhe 58 cm = Struktur ohne optionale Rückenkissen; mit optionalen Rückenkissen H 80 (Produktseite/Arrangements, Datenblatt-Frontansicht Sofa 182). Nur im Datenblatt, nicht in der Elementliste der Produktseite.",
+      "nur_im_datenblatt": true,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-INCL-BENCH-257",
+      "name": "INCLINED BENCH CM 257",
+      "name_de": "Geneigte Bank 257 cm",
+      "art": "bank",
+      "linie": "Lounge",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 257,
+      "tiefe_cm": 112,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Gerader Teil 148/168 cm + abgewinkelter Teil (105 / 85 / 63 cm)",
+      "hinweis": "Produktseite: „INCLINED BENCH CM 257X112 H37“.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-BENCH-126x63",
+      "name": "BENCH CM 126X63",
+      "name_de": "Bank 126 × 63 cm",
+      "art": "bank",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 126,
+      "tiefe_cm": 63,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-BENCH-147x63",
+      "name": "BENCH CM 147X63",
+      "name_de": "Bank 147 × 63 cm",
+      "art": "bank",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 147,
+      "tiefe_cm": 63,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-BENCH-168x63",
+      "name": "BENCH CM 168X63",
+      "name_de": "Bank 168 × 63 cm",
+      "art": "bank",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 168,
+      "tiefe_cm": 63,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-OTT-84x63",
+      "name": "OTTOMAN CM 84X63",
+      "name_de": "Hocker 84 × 63 cm",
+      "art": "hocker",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 84,
+      "tiefe_cm": 63,
+      "hoehe_cm": 37,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 37,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-CUSH-BACK-65",
+      "name": "OPTIONAL BACK CUSHION CM 65X65",
+      "name_de": "Optionales Rückenkissen 65 × 65 cm",
+      "art": "rueckenkissen-optional",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 65,
+      "tiefe_cm": null,
+      "hoehe_cm": 65,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "FRL-CUSH-45",
+      "name": "OPTIONAL CUSHION CM 45X45",
+      "name_de": "Optionales Kissen 45 × 45 cm",
+      "art": "dekokissen-optional",
+      "linie": "Lounge",
+      "seitenvarianten": null,
+      "breite_cm": 45,
+      "tiefe_cm": null,
+      "hoehe_cm": 45,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/freeman-lounge_2",
+        "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Gepolsterter fester Rücken (Struktur)",
+      "strukturhoehe_cm": 58
+    },
+    {
+      "name": "Mit optionalen Rückenkissen 65 × 65",
+      "hoehe_cm": 80
+    },
+    {
+      "name": "Teilrücken 84 cm (Peninsula, offene Sofas, Daybeds) bzw. 168 cm (geneigtes Element)"
+    },
+    {
+      "name": "Ohne Rücken (Couch-Liegefläche, Bänke, Hocker)"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "„Wing“-Armlehne (Metall, PU-Schaum ummantelt)",
+      "hinweis": "Einzige Armlehnenform der Lounge-Linie; Höhe/Ausladung nicht beschriftet. Wing-Bezug nur in Stoff abnehmbar."
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Basis",
+      "material": "Rahmen aus stranggepresstem Aluminium mit Verbindungselementen aus Aluminium-Druckguss (Minotti-Studio-Design)",
+      "finish": "Bronze glänzend, Anti-Fingerprint lackiert"
+    },
+    {
+      "teil": "Füße",
+      "material": "Metall",
+      "finish": "Bronze glänzend (Produktseite: „light Bronze“), Anti-Fingerprint",
+      "hoehe_cm": 7.5,
+      "optionen": [
+        {
+          "name": "Hohe Füße (auf Anfrage)",
+          "hoehe_cm": 10.5,
+          "hinweis": "3 cm höher als Standard."
+        }
+      ]
+    },
+    {
+      "teil": "Gleiter",
+      "material": "SEBS (weicher, kratzfester Gummi)",
+      "finish": "Bronze"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "bezugsarten": [
+      "abnehmbar",
+      "fest"
+    ],
+    "abnehmbar_hinweis": "Sitz- und (optionale) Rückenkissenbezüge in allen Versionen abnehmbar. Wing-Element-Bezug nur in Stoff abnehmbar. Struktur-Stoffbezug abnehmbar nach Lösen der Metallbasis (Rändelgriffe, Schlüssel). Struktur-Lederbezug NICHT abnehmbar.",
+    "naehte": "Stoffteile mit bronzefarbenem Öko-Leder-Band und Doppelnaht verbunden; in der Lederversion Band im gleichen Leder.",
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Stoffe, Leder, Metalloberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "polsterung": "Sperrholz mit Elastikgurt-Federung; Sitz aus PU-Schaum-Schichten variabler Dichte mit hochelastischer Oberschicht; atmungsaktive thermogebundene Faser auf weißem hypoallergenem Baumwollstoff. Optionale Rückenkissen: kanalisierte Gänsedaune (Assopiuma Gold Label) mit Memory-Foam-Kern.",
+  "kissenoptionen": [
+    {
+      "name": "Optionales Rückenkissen",
+      "masse": "65 × 65 cm"
+    },
+    {
+      "name": "Optionales Kissen",
+      "masse": "45 × 45 cm"
+    }
+  ],
+  "kombinierbarkeit": [
+    "Lounge-Elemente untereinander kombinierbar (SX/DX-Varianten, Mittel-/Peninsula-/Daybed-Elemente).",
+    "Arrangements zeigen Lounge-Bänke zusammen mit Freeman-Tailor/Duvet (Tailor-Arrangement 02/08) und die Freeman „Stand-alone“-Bank 84×38 H37 (Lounge 01).",
+    "Direkter Anbau an Tailor/Duvet (Tiefe 112) ist nicht dokumentiert – unterschiedliche Tiefe 91 cm.",
+    "Arm- und Rückenlehnen per Schnellkupplung von der Basis lösbar."
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "Reduzierte Tiefe 91 cm, Sitzhöhe 37 cm – für kleinere Räume und Contract/Hospitality",
+    "Rückenkissen optional (ohne Kissen sehr flache Silhouette H 58)",
+    "Geneigte (abgewinkelte) Peninsula- und Bankelemente 257 cm",
+    "Hohe Füße +3 cm auf Anfrage"
+  ],
+  "beispiel_kompositionen": [
+    {
+      "name": "Freeman Lounge 01",
+      "pdf": "https://www.minotti.com/downloads/11238/8794/Freeman%20Lounge%20arrangement%201.pdf",
+      "elemente": [
+        "2× Geneigte Bank 257×112 H37",
+        "Freeman Stand-alone-Bank 84×38 H37"
+      ]
+    },
+    {
+      "name": "Freeman Lounge 02",
+      "pdf": "https://www.minotti.com/downloads/14152/11946/Freeman%20Lounge%20arrangement%202.pdf",
+      "elemente": [
+        "Mittelelement 168×91 H80",
+        "Peninsula-Element SX 168×91 H80, Rücken 84",
+        "Bank 168×63 H37"
+      ]
+    },
+    {
+      "name": "Freeman Lounge 03",
+      "pdf": "https://www.minotti.com/downloads/14153/11950/Freeman%20Lounge%20arrangement%203.pdf",
+      "elemente": [
+        "Geneigtes Peninsula-Element DX 257×138 H80, Rücken 168",
+        "Geneigtes Peninsula-Element SX 257×138 H80, Rücken 168"
+      ]
+    },
+    {
+      "name": "Freeman Lounge 04",
+      "pdf": "https://www.minotti.com/downloads/14154/11954/Freeman%20Lounge%20arrangement%204.pdf",
+      "elemente": [
+        "Endelement 1 Armlehne SX 196×91 H80",
+        "Geneigtes Peninsula-Element SX 257×138 H80, Rücken 168"
+      ]
+    }
+  ],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für den internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. CAD-Dateien nur für Interior-Design-Zwecke freigegeben. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "fehlend": [
+    "Sitztiefe aller Elemente (nicht beschriftet)",
+    "Armlehnenhöhe und Ausladung der Wing-Armlehne; Gesamtbreite inkl. Armlehne ist in den Sofabreiten enthalten, Armbreite selbst nicht beschriftet",
+    "Winkel der geneigten Elemente (nur Kantenlängen 105/85/63)",
+    "Tiefe des geneigten Elements nur aus Seitenansicht (138) bzw. Bank (112)",
+    "Couch 63×196 nur im Datenblatt, nicht auf der Produktseite – Lieferbarkeit klären",
+    "Widerspruch Peninsula 126 („with armrest“ auf Produktseite vs. ohne Armlehne im Datenblatt)",
+    "Verbindliche Kombinationsregeln, Herstellerartikelnummern, Gewichte",
+    "Stoff-/Lederkollektionen, Preisgruppen, Preise"
+  ],
+  "anzahl_elemente": 31,
+  "vollstaendigkeit": {
+    "masse_prozent": 80,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe/sitzhoehe/sitztiefe über alle Sitz-, Bank- und Hockerelemente (ohne Kissen)."
+  }
+}

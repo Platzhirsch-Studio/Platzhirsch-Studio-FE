@@ -248,10 +248,10 @@ export const NEXT125_PRODUCTS = [
       "brown"
     ],
     "longDescription": [
-      "The board of the new front made entirely of recycled wood-based materials is fully enveloped in linoleum. This means that the edges and the interior/exterior surfaces of the front are all in the same material. Linoleum has the natural composition of linseed oil, resins, wood flour and limestone powder to thank for its many positive properties and unique appearance."
+      "The board of the new front made entirely of recycled wood-based materials is fully enveloped in linoleum. This means that the edges and the interior/exterior surfaces of the front are all in the same material. Linoleum has the natural composition of linseed oil, resins, wood flour and limestone powder to thank for its many positive properties and distinctive appearance."
     ],
     "details": {
-      "fronts": "The board of the new front made entirely of recycled wood-based materials is fully enveloped in linoleum. This means that the edges and the interior/exterior surfaces of the front are all in the same material. Linoleum has the natural composition of linseed oil, resins, wood flour and limestone powder to thank for its many positive properties and unique appearance."
+      "fronts": "The board of the new front made entirely of recycled wood-based materials is fully enveloped in linoleum. This means that the edges and the interior/exterior surfaces of the front are all in the same material. Linoleum has the natural composition of linseed oil, resins, wood flour and limestone powder to thank for its many positive properties and distinctive appearance."
     }
   },
   {
@@ -339,10 +339,10 @@ export const NEXT125_PRODUCTS = [
       "brown"
     ],
     "longDescription": [
-      "Experience the fine materials and perfectly coordinated colours of the nx510 collection – from warm wood tones to modern matt lacquer finishes. Each surface has been crafted with the utmost precision to harmoniously combine design and functionality. Be inspired by our planning examples – individual, timeless and unique."
+      "Experience the materials and carefully coordinated colours of the nx510 collection – from warm wood tones to modern matt lacquer finishes. Each surface has been crafted with precision to harmoniously combine design and functionality. Be inspired by our planning examples – individual and timeless."
     ],
     "details": {
-      "fronts": "Experience the fine materials and perfectly coordinated colours of the nx510 collection – from warm wood tones to modern matt lacquer finishes. Each surface has been crafted with the utmost precision to harmoniously combine design and functionality. Be inspired by our planning examples – individual, timeless and unique."
+      "fronts": "Experience the materials and carefully coordinated colours of the nx510 collection – from warm wood tones to modern matt lacquer finishes. Each surface has been crafted with precision to harmoniously combine design and functionality. Be inspired by our planning examples – individual and timeless."
     }
   },
   {

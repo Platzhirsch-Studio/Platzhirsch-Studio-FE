@@ -1,0 +1,203 @@
+{
+  "_uebernommen": "R4-i18n, 26.10.2026: in src/messages übernommen. forms.* und contact.* in Runde 3 übernommen (R3-i18n); in Runde 4 bestätigt (0 neu). IT contact.pageLead/formAside hier auf die tu-Form der Messages angeglichen (KONTAKT_COPY gleich). IT forms.* bleibt hier Lei-Form, weil es dem Vertrag FORM_TEXT in src/lib/forms/i18n.js entspricht (Besitzer R4-leads); die Messages haben die tu-Form.",
+  "de": {
+    "forms": {
+      "error": {
+        "invalid": "Bitte prüfen Sie Ihre Angaben.",
+        "too_large": "Ihre Nachricht ist zu lang. Bitte kürzen Sie sie etwas.",
+        "rate_limited": "Sie haben in kurzer Zeit mehrere Anfragen gesendet. Bitte versuchen Sie es in einigen Minuten noch einmal.",
+        "upstream": "Ihre Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es später noch einmal oder rufen Sie uns an: {phone}.",
+        "timeout": "Die Antwort hat zu lange gedauert. Ihre Anfrage ist vielleicht trotzdem angekommen. Rufen Sie uns im Zweifel an: {phone}.",
+        "network": "Es besteht gerade keine Verbindung. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es noch einmal.",
+        "already_subscribed": "Diese E-Mail-Adresse ist bereits angemeldet."
+      },
+      "field": {
+        "required": "Bitte füllen Sie dieses Feld aus.",
+        "check": "Bitte prüfen Sie dieses Feld.",
+        "choose": "Bitte wählen Sie eine Möglichkeit.",
+        "name": "Bitte geben Sie Ihren Namen an (mindestens 2 Zeichen).",
+        "email": "Bitte prüfen Sie die E-Mail-Adresse, zum Beispiel name@beispiel.at.",
+        "phone": "Bitte prüfen Sie die Telefonnummer (6 bis 20 Zeichen, Ziffern, +, -, Klammern).",
+        "minLength": "Bitte schreiben Sie mindestens {min} Zeichen.",
+        "tooLong": "Dieser Text ist zu lang."
+      },
+      "summary": "Bitte prüfen Sie {count, plural, one {ein Feld} other {# Felder}}:",
+      "requiredHint": "Felder mit * brauchen wir für Ihre Anfrage.",
+      "optional": "optional",
+      "sending": "Wird gesendet …",
+      "privacyBefore": "Informationen zur Verarbeitung Ihrer Daten finden Sie in unserer ",
+      "privacyLink": "Datenschutzerklärung",
+      "privacyAfter": ".",
+      "step": "Schritt {current} von {total}",
+      "back": "Zurück",
+      "next": "Weiter",
+      "continueToProducts": "Weiter zu den Produkten",
+      "newRequest": "Neue Anfrage"
+    },
+    "contact": {
+      "pageTitle": "Kontakt und Anfahrt",
+      "pageLead": "Rufen Sie uns an, schreiben Sie uns oder kommen Sie im Showroom in Lochau vorbei. Für eine ausführliche Beratung vereinbaren wir gern einen Termin.",
+      "writeCta": "Nachricht schreiben",
+      "callCta": "Anrufen",
+      "visitEyebrow": "Besuch",
+      "visitTitle": "So finden Sie zu uns",
+      "addressLabel": "Adresse",
+      "closed": "geschlossen",
+      "byAppointment": "Termine außerhalb der Öffnungszeiten nach Vereinbarung.",
+      "mapTitle": "Karte: Platzhirsch Home Living in Lochau",
+      "newTab": "öffnet in neuem Tab",
+      "formAside": "Lieber persönlich? Sie erreichen uns während der Öffnungszeiten auch telefonisch.",
+      "consultCta": "Beratung anfragen"
+    }
+  },
+  "en": {
+    "forms": {
+      "error": {
+        "invalid": "Please check your details.",
+        "too_large": "Your message is too long. Please shorten it a little.",
+        "rate_limited": "You have sent several requests in a short time. Please try again in a few minutes.",
+        "upstream": "Your request could not be sent just now. Please try again later or call us: {phone}.",
+        "timeout": "The answer took too long. Your request may still have arrived. If in doubt, please call us: {phone}.",
+        "network": "There is no connection at the moment. Please check your internet connection and try again.",
+        "already_subscribed": "This e-mail address is already subscribed."
+      },
+      "field": {
+        "required": "Please fill in this field.",
+        "check": "Please check this field.",
+        "choose": "Please choose one option.",
+        "name": "Please enter your name (at least 2 characters).",
+        "email": "Please check the e-mail address, for example name@example.com.",
+        "phone": "Please check the phone number (6 to 20 characters: digits, +, -, brackets).",
+        "minLength": "Please write at least {min} characters.",
+        "tooLong": "This text is too long."
+      },
+      "summary": "Please check {count, plural, one {one field} other {# fields}}:",
+      "requiredHint": "We need the fields marked * for your request.",
+      "optional": "optional",
+      "sending": "Sending …",
+      "privacyBefore": "Information on how we process your data is in our ",
+      "privacyLink": "privacy policy",
+      "privacyAfter": ".",
+      "step": "Step {current} of {total}",
+      "back": "Back",
+      "next": "Next",
+      "continueToProducts": "Continue to the products",
+      "newRequest": "New request"
+    },
+    "contact": {
+      "pageTitle": "Contact and directions",
+      "pageLead": "Call us, write to us or visit the showroom in Lochau. For a longer consultation we are glad to arrange an appointment.",
+      "writeCta": "Write a message",
+      "callCta": "Call",
+      "visitEyebrow": "Visit",
+      "visitTitle": "How to find us",
+      "addressLabel": "Address",
+      "closed": "closed",
+      "byAppointment": "Appointments outside opening hours by arrangement.",
+      "mapTitle": "Map: Platzhirsch Home Living in Lochau",
+      "newTab": "opens in a new tab",
+      "formAside": "Prefer to talk? You can also reach us by phone during opening hours.",
+      "consultCta": "Request a consultation"
+    }
+  },
+  "fr": {
+    "forms": {
+      "error": {
+        "invalid": "Veuillez vérifier vos informations.",
+        "too_large": "Votre message est trop long. Veuillez le raccourcir un peu.",
+        "rate_limited": "Vous avez envoyé plusieurs demandes en peu de temps. Veuillez réessayer dans quelques minutes.",
+        "upstream": "Votre demande n’a pas pu être envoyée pour le moment. Veuillez réessayer plus tard ou nous appeler : {phone}.",
+        "timeout": "La réponse a pris trop de temps. Votre demande est peut-être bien arrivée. En cas de doute, appelez-nous : {phone}.",
+        "network": "Aucune connexion pour le moment. Veuillez vérifier votre connexion Internet et réessayer.",
+        "already_subscribed": "Cette adresse e-mail est déjà inscrite."
+      },
+      "field": {
+        "required": "Veuillez remplir ce champ.",
+        "check": "Veuillez vérifier ce champ.",
+        "choose": "Veuillez choisir une option.",
+        "name": "Veuillez indiquer votre nom (au moins 2 caractères).",
+        "email": "Veuillez vérifier l’adresse e-mail, par exemple nom@exemple.fr.",
+        "phone": "Veuillez vérifier le numéro de téléphone (6 à 20 caractères : chiffres, +, -, parenthèses).",
+        "minLength": "Veuillez écrire au moins {min} caractères.",
+        "tooLong": "Ce texte est trop long."
+      },
+      "summary": "Veuillez vérifier {count, plural, one {un champ} other {# champs}} :",
+      "requiredHint": "Les champs marqués * sont nécessaires pour votre demande.",
+      "optional": "facultatif",
+      "sending": "Envoi en cours …",
+      "privacyBefore": "Vous trouverez des informations sur le traitement de vos données dans notre ",
+      "privacyLink": "politique de confidentialité",
+      "privacyAfter": ".",
+      "step": "Étape {current} sur {total}",
+      "back": "Retour",
+      "next": "Suivant",
+      "continueToProducts": "Continuer vers les produits",
+      "newRequest": "Nouvelle demande"
+    },
+    "contact": {
+      "pageTitle": "Contact et accès",
+      "pageLead": "Appelez-nous, écrivez-nous ou passez au showroom de Lochau. Pour un conseil approfondi, nous convenons volontiers d’un rendez-vous.",
+      "writeCta": "Écrire un message",
+      "callCta": "Appeler",
+      "visitEyebrow": "Visite",
+      "visitTitle": "Comment nous trouver",
+      "addressLabel": "Adresse",
+      "closed": "fermé",
+      "byAppointment": "Rendez-vous en dehors des horaires d’ouverture sur demande.",
+      "mapTitle": "Carte : Platzhirsch Home Living à Lochau",
+      "newTab": "s’ouvre dans un nouvel onglet",
+      "formAside": "Vous préférez en parler ? Vous pouvez aussi nous joindre par téléphone pendant les horaires d’ouverture.",
+      "consultCta": "Demander un conseil"
+    }
+  },
+  "it": {
+    "forms": {
+      "error": {
+        "invalid": "La preghiamo di controllare i dati inseriti.",
+        "too_large": "Il messaggio è troppo lungo. La preghiamo di accorciarlo un po’.",
+        "rate_limited": "Ha inviato diverse richieste in poco tempo. Riprovi tra qualche minuto.",
+        "upstream": "Al momento non è stato possibile inviare la richiesta. Riprovi più tardi o ci chiami: {phone}.",
+        "timeout": "La risposta ha richiesto troppo tempo. La richiesta potrebbe essere arrivata comunque. In caso di dubbio ci chiami: {phone}.",
+        "network": "Al momento non c’è connessione. Controlli la connessione a Internet e riprovi.",
+        "already_subscribed": "Questo indirizzo e-mail è già iscritto."
+      },
+      "field": {
+        "required": "Compili questo campo.",
+        "check": "Controlli questo campo.",
+        "choose": "Scelga un’opzione.",
+        "name": "Indichi il suo nome (almeno 2 caratteri).",
+        "email": "Controlli l’indirizzo e-mail, ad esempio nome@esempio.it.",
+        "phone": "Controlli il numero di telefono (da 6 a 20 caratteri: cifre, +, -, parentesi).",
+        "minLength": "Scriva almeno {min} caratteri.",
+        "tooLong": "Questo testo è troppo lungo."
+      },
+      "summary": "Controlli {count, plural, one {un campo} other {# campi}}:",
+      "requiredHint": "I campi contrassegnati con * ci servono per la sua richiesta.",
+      "optional": "facoltativo",
+      "sending": "Invio in corso …",
+      "privacyBefore": "Le informazioni sul trattamento dei suoi dati si trovano nella nostra ",
+      "privacyLink": "informativa sulla privacy",
+      "privacyAfter": ".",
+      "step": "Passo {current} di {total}",
+      "back": "Indietro",
+      "next": "Avanti",
+      "continueToProducts": "Continua con i prodotti",
+      "newRequest": "Nuova richiesta"
+    },
+    "contact": {
+      "pageTitle": "Contatti e come raggiungerci",
+      "pageLead": "Chiamaci, scrivici o passa a trovarci nello showroom di Lochau. Per una consulenza approfondita fissiamo volentieri un appuntamento.",
+      "writeCta": "Scrivi un messaggio",
+      "callCta": "Chiama",
+      "visitEyebrow": "Visita",
+      "visitTitle": "Come raggiungerci",
+      "addressLabel": "Indirizzo",
+      "closed": "chiuso",
+      "byAppointment": "Appuntamenti fuori orario su richiesta.",
+      "mapTitle": "Mappa: Platzhirsch Home Living a Lochau",
+      "newTab": "si apre in una nuova scheda",
+      "formAside": "Preferisci parlarne? Puoi raggiungerci anche per telefono durante gli orari di apertura.",
+      "consultCta": "Richiedi una consulenza"
+    }
+  }
+}

@@ -10,7 +10,7 @@ import { fetchProdukteNewByMarke } from "@/lib/api/fetchAllProdukte";
 import { buildShopProducts } from "@/lib/shop/shopProducts";
 import { formatCollectionName, collectionPath } from "@/lib/marken/collections";
 import { generateSlug } from "@/lib/slugify";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { DEFAULT_OG_IMAGE, hreflangLanguages, ogLocale } from "@/lib/seo/pageMetadata";
 
 const DOMAIN = "https://platzhirsch.studio";
 const LOCALES = ["de", "en", "fr", "it"];
@@ -124,10 +124,10 @@ export async function buildCollectionMetadata(locale, brandSlug, collectionSlug)
     {
       en: `Discover the ${collection.name} collection by ${marke.name1} at Platzhirsch Home Living in Lochau, Vorarlberg.`,
       fr: `Découvrez la collection ${collection.name} de ${marke.name1} chez Platzhirsch Home Living à Lochau, Vorarlberg.`,
-      it: `Scopri la collezione ${collection.name} di ${marke.name1} da Platzhirsch Home Living a Lochau, Vorarlberg.`,
+      it: `Scoprite la collezione ${collection.name} di ${marke.name1} da Platzhirsch Home Living a Lochau, Vorarlberg.`,
     }[locale] ||
     `Entdecken Sie die Kollektion ${collection.name} von ${marke.name1} bei Platzhirsch Home Living in Lochau, Vorarlberg.`;
-  const image = collection.image || "/Images/fallback-banner.jpg";
+  const image = collection.image || DEFAULT_OG_IMAGE;
 
   return {
     title,
@@ -140,7 +140,7 @@ export async function buildCollectionMetadata(locale, brandSlug, collectionSlug)
       url: urlFor(locale),
       siteName: "Platzhirsch Home Living",
       images: [{ url: image, width: 1200, height: 630, alt: collection.name }],
-      locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_AT",
+      locale: ogLocale(locale),
       type: "website",
     },
     twitter: { card: "summary_large_image", title, description, images: [image] },

@@ -2,18 +2,24 @@
 // (/en/about-us/career/…, /fr/a-propos/carriere/…, /it/chi-siamo/carriera/…
 // are mapped here by src/proxy.js).
 import { fetchKarriereData } from "@/lib/api/fetchKarrierData";
-import JobDetailsClient from "./jobdetailsclient";
+import JobDetail from "@/components/Karriere/JobDetail";
 import { generateSlug } from "@/lib/slugify";
 import { notFound } from "next/navigation";
 import { ROUTES } from "@/utils/routing";
 import { toMetaDescription } from "@/lib/seo/pageMetadata";
 import { localizedJobDescription } from "@/lib/seo/structuredData";
 import JobPostingJsonLd from "@/components/Karriere/jobPostingJsonLd";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { hreflangLanguages, ogLocale } from "@/lib/seo/pageMetadata";
+import { shareImageMeta } from "@/components/Karriere/shareImage";
+import { publishableJob, publishableJobs, visibleJob } from "@/components/Karriere/glbg";
+import { jobPageTitle, localizedTitle } from "@/lib/karriere/stellen";
+
+const NOINDEX = { index: false, follow: false, googleBot: { index: false, follow: false } };
 
 export async function generateStaticParams() {
   const jobs = await fetchKarriereData();
-  const activeJobs = jobs.filter(job => job.status === "Aktiv");
+  // GlBG § 9 Abs 2 (Rat 9,5 A13): ohne Entgeltangabe keine Stellenseite.
+  const activeJobs = publishableJobs(jobs);
 
   const locales = ['de', 'en', 'fr', 'it'];
   const paths = [];
@@ -61,51 +67,50 @@ export async function generateMetadata(props) {
 
   const karriereData = await fetchKarriereData();
 
-  const job = karriereData?.find((p) => `${generateSlug(p.title)}` === slug);
-  if (!job) {
+  const job = karriereData?.find((p) => (p.slug || generateSlug(p.title)) === slug);
+  // Vorschau: gesperrte Stellen sichtbar, aber noindex (glbg.js).
+  if (!job || !visibleJob(job)) {
     notFound();
   }
+  const live = publishableJob(job);
 
   // Get the slug for the URL
   const jobSlug = job.slug || generateSlug(job.title);
 
   // Get localized title
-  const title = job.title || "Job Opening";
+  const title = localizedTitle(job, locale) || "Job Opening";
   // Per-language CMS field (description_de_lemploi for FR, …), German fallback.
   const description = toMetaDescription(localizedJobDescription(job, locale));
   const careerLabel = CAREER_LABEL[locale] || CAREER_LABEL.de;
 
   // Initialize metadata with defaults
+  const pageTitle = jobPageTitle(title, careerLabel);
   let metadata = {
-    title: `${title} | ${careerLabel} | Platzhirsch Home Living`,
+    title: pageTitle,
     description: description,
     // Indexable: each open job carries JobPosting data (Google Jobs).
-    robots: { index: true, follow: true },
+    robots: live ? { index: true, follow: true } : NOINDEX,
     openGraph: {
       type: "website",
       url: `https://platzhirsch.studio/${locale}${ROUTES.karriere[locale] || ROUTES.karriere.de}/${jobSlug}`,
-      title: `${title} | ${careerLabel} | Platzhirsch Home Living`,
+      title: pageTitle,
       description: description,
       siteName: "Platzhirsch Home Living",
-      locale: locale === "it" ? "it_IT" : locale === "en" ? "en_GB" : locale === "fr" ? "fr_FR" : "de_AT",
-      images: [
-        {
-          url: "/Images/Arbeiten/bannerImageArbeiten1.jpg",
-          width: 1200,
-          height: 630,
-          alt: `${title} – ${careerLabel} – Platzhirsch Home Living`,
-        },
-      ],
+      locale: ogLocale(locale),
+      // Share image of the career pages (r4-seo P2-7): PNG 1200 × 630 at
+      // <career URL>/share-image (src/components/Karriere/shareImage.js). The
+      // former JPG had 2362 × 1586 px but declared 1200 × 630.
+      images: [shareImageMeta(getKarrierePageUrl(locale), locale)],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ${careerLabel} | Platzhirsch Home Living`,
+      title: pageTitle,
       description: description,
-      images: ["/Images/Arbeiten/bannerImageArbeiten1.jpg"],
+      images: [shareImageMeta(getKarrierePageUrl(locale), locale).url],
     },
     alternates: {
-      canonical: `${getKarrierePageUrl(locale)}/${generateSlug(job?.title)}`,
-      languages: hreflangLanguages((l) => `${getKarrierePageUrl(l)}/${generateSlug(job?.title)}`)
+      canonical: `${getKarrierePageUrl(locale)}/${jobSlug}`,
+      languages: hreflangLanguages((l) => `${getKarrierePageUrl(l)}/${jobSlug}`)
     },
   };
   return metadata;
@@ -116,12 +121,16 @@ export default async function JobDetailsPage({ params }) {
   // fetchKarriereData() only returns active jobs, each with its `slug`.
   // Unknown slug → real 404 (was a 200 "not found" text, i.e. a soft 404).
   const job = (await fetchKarriereData()).find((item) => item.slug === slug);
-  if (!job) notFound();
+  // GlBG § 9 Abs 2 (Rat 9,5 A13): Stelle ohne Entgeltangabe wird nicht
+  // veröffentlicht – in Produktion 404, in der Vorschau mit Sperr-Markierung.
+  if (!job || !visibleJob(job)) notFound();
+  const live = publishableJob(job);
 
   return (
     <>
-      <JobPostingJsonLd job={job} locale={locale} />
-      <JobDetailsClient job={job} />
+      {/* JobPosting erst mit Entgeltangabe (Google Jobs, § 9 Abs 2 GlBG). */}
+      {live && <JobPostingJsonLd job={job} locale={locale} />}
+      <JobDetail job={job} blocked={!live} />
     </>
   );
 }

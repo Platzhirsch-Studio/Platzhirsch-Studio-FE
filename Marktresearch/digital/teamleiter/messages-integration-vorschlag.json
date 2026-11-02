@@ -1,0 +1,396 @@
+{
+  "_hinweis": "Integration 28.10.2026 (Inhaber-Entscheidung Nr. 9): Übersetzungen EN/FR/IT für die DE-only-Vorschläge der Feature-Teams, damit src/messages/*.json in allen vier Sprachen vollständig ist. Quellen: features/stripe-messages-vorschlag.json (payments), features/upload-messages-vorschlag.json (Upload.demo.testNotesItems), features/ezarri-messages-vorschlag.json (14 Schlüssel nur mit deutschem Text). Widerruf/Bedingungs-Texte (payments.widerruf*, payments.kauf.checkbox, payments.kauf.hinweisWiderruf) sind vorläufig und als Rechtstext markiert (tools/i18n/legal-keys.json): verbindlich macht sie die Kanzlei.",
+  "en": {
+    "Upload": {
+      "demo": {
+        "testNotesItems": {
+          "lanIp": "Testing with a real phone: start the dev server with <code>UPLOAD_PUBLIC_BASE_URL=http://LAN-IP:3000</code>, otherwise the QR code points to this computer.",
+          "limits": "Real links: photos {photoMax}, videos {videoMax} and {videoMinutes} min., plans {planMax}, max. {maxFiles} files; starting quota {initialQuota}, after the first file {maxTotal}.",
+          "resume": "Resuming: during a video upload, switch Wi-Fi off and on, or reload the page and choose the same file again.",
+          "magicBytes": "The file type is checked by its magic bytes – a renamed .exe is rejected. GPS data is removed from JPEGs."
+        }
+      }
+    },
+    "ezarri": {
+      "b": {
+        "rezept": {
+          "gruppeFoto": "Based on the product photo (recipe incomplete or contradictory)",
+          "widerspruechlich": "Shown as in the product photo: Ezarri's recipe data for “{name}” contradict each other here, so we show the finished reference as in the product photo."
+        },
+        "stage": {
+          "vorschauTippen": "Preview, tap for 3D",
+          "vorschauFarben": "Preview, colours approximated",
+          "vorschauLabel": "Preview of the pool",
+          "keinWebglVorschau": "Your browser does not show WebGL. You see a preview with approximated colours; quantities, link, print sheet and request work as usual.",
+          "nichtsRueck": "Nothing to undo",
+          "nichtsVor": "Nothing to redo"
+        },
+        "legende": {
+          "roemisch": "Semicircles on the left: Roman steps, shallow end",
+          "eck": "Quarter circle on the left: corner steps, shallow end",
+          "voll": "Strip on the left: steps across the full width, shallow end"
+        },
+        "blatt": {
+          "fotoRezept": "Shown as in the product photo ({grund})",
+          "grundWiderspruch": "Ezarri's recipe data contradict each other",
+          "grundUnvollstaendig": "Recipe incomplete"
+        }
+      }
+    },
+    "payments": {
+      "kauf": {
+        "titel": "Buy a gift voucher",
+        "wert": "Value per voucher",
+        "wertHinweis": "From {min} €, in whole euros.",
+        "eigenerBetrag": "Your own amount",
+        "stueckzahl": "Quantity",
+        "stueckzahlHinweis": "Online up to {max} vouchers. For larger numbers of corporate gifts, please use the request further down.",
+        "widmung": "Dedication",
+        "nameAufGutschein": "Name on the voucher",
+        "grusstext": "Greeting",
+        "zustellung": "Delivery and invoice",
+        "zustellungText": "Once payment is confirmed, the voucher arrives as a PDF at your email address. You can print it or pass it on.",
+        "emailLabel": "Email for the voucher",
+        "firmaHinweis": "For the invoice; the payment page asks for the billing address.",
+        "bestellung": "Your order",
+        "zeile": "{anzahl} × voucher of {betrag}",
+        "versand": "Delivered as a PDF by email",
+        "gesamt": "Total price incl. VAT",
+        "checkbox": "I accept the <terms>voucher terms</terms> and have read the <withdrawal>cancellation policy</withdrawal>.",
+        "hinweisWiderruf": "You may cancel within 14 days of receipt, as long as the voucher has not been redeemed.",
+        "hinweisRechnung": "We send the invoice separately by email. Stripe also sends you a payment confirmation.",
+        "hinweisStripe": "Payment takes place on Stripe's payment page. Card details never reach us.",
+        "button": "Buy and pay",
+        "buttonLaedt": "Continuing to the payment page …",
+        "fehlerBedingungen": "Please confirm the voucher terms and the cancellation policy.",
+        "fehlerGesamt": "Online up to {max} per order. For more, please send us a request.",
+        "fehlerBezahlseite": "The payment page cannot be reached right now. Please try again in a few minutes or call us: +43 5574 46255.",
+        "anfrageLink": "Corporate gift or more than ten vouchers? Request a voucher",
+        "gesamtpreis": "Total price",
+        "gesamtpreisEinzweck": "Total price incl. VAT",
+        "ustHinweisMehrzweck": "VAT is charged when the voucher is redeemed."
+      },
+      "schritte": [
+        { "titel": "Choose a voucher", "text": "Set the value, design and dedication. You see the total price before you buy." },
+        { "titel": "Pay", "text": "On Stripe's payment page, with the payment methods shown there, such as card or wallet." },
+        { "titel": "PDF by email", "text": "Once payment is confirmed, the voucher arrives as a PDF. We send the invoice separately." }
+      ],
+      "erfolg": {
+        "bezahltTitel": "Thank you, your payment has arrived",
+        "bezahltGutschein": "{was}: the PDF is on its way to you by email. We send the invoice separately.",
+        "bezahltAnzahlung": "{was} for order {auftrag} is confirmed. We will show it on the invoice.",
+        "ausstehendTitel": "Thank you, your payment is on its way",
+        "ausstehend": "{was}: with direct debit, confirmation takes a few working days.",
+        "fehlgeschlagenTitel": "The payment did not go through",
+        "wartenTitel": "One moment, please",
+        "warten": "{was}: we are confirming the payment. This usually takes only a few seconds.",
+        "neutralTitel": "Thank you for your visit",
+        "testmodus": "Test mode: no real money was moved.",
+        "showroom": "We look forward to welcoming you to the showroom in Lochau, Landstraße 11.",
+        "mailFehlgeschlagen": "{was}: the email with the PDF has not been sent yet. We are taking care of it and will get back to you; you can also reach us on +43 5574 46255."
+      },
+      "abbruch": {
+        "titel": "The payment was not completed",
+        "text": "Nothing was charged. An open order without payment expires by itself.",
+        "zurueckGutschein": "Back to the vouchers",
+        "zurueckAnzahlung": "Back to the deposit"
+      },
+      "anzahlung": {
+        "titel": "Deposit for order {auftrag}",
+        "offen": "As agreed: here you pay the deposit for your order. Payment runs through Stripe's payment page.",
+        "bezahlt": "This deposit has been paid. Thank you.",
+        "abgelaufen": "This link is no longer valid. Please get in touch and we will gladly send you a new one.",
+        "button": "Pay the deposit",
+        "betrag": "Deposit incl. VAT",
+        "gueltigBis": "Link valid until",
+        "rechnung": "We show the deposit on the invoice for your order. Stripe sends you a payment confirmation.",
+        "inBearbeitung": "The last payment is being processed. Please try again in a few minutes."
+      },
+      "widerruf": {
+        "titel": "Cancel the contract",
+        "lead": "You bought a voucher online and would like to cancel the contract? Within 14 days of receipt you can do so without giving reasons, as long as the voucher has not been redeemed.",
+        "bestellung": "Order number or voucher code",
+        "button": "Confirm cancellation",
+        "eingegangenTitel": "Your cancellation has been received",
+        "eingegangen": "Received on {zeit}, reference {id}. The confirmation with your details will follow by email. We will refund the amount at the latest within 14 days using the original means of payment.",
+        "alternativ": "You can also cancel by email to info@platzhirsch.studio or by letter to Landstraße 11, 6911 Lochau."
+      },
+      "footerLink": "Cancel a contract",
+      "gueltigkeit": {
+        "unbefristet": { "druck": "Valid without expiry date", "titel": "No expiry date", "text": "Purchased vouchers are valid indefinitely." },
+        "dreissigJahre": { "druck": "Redeemable within the statutory period of 30 years", "titel": "Redeemable for a long time", "text": "Purchased vouchers can be redeemed within the statutory period of 30 years." },
+        "offen": { "druck": "Validity according to the voucher terms", "titel": "Validity", "text": "How long vouchers are valid is stated in the voucher terms." }
+      },
+      "widerrufMail": {
+        "ohneZuordnung": [
+          "Hello,",
+          "we confirm receipt of a cancellation submitted on {zeit} with this email address (reference {id}).",
+          "We will match it to the order and get back to you if we need anything else from you.",
+          "If you did not submit a cancellation, you can ignore this message."
+        ]
+      }
+    }
+  },
+  "fr": {
+    "Upload": {
+      "demo": {
+        "testNotesItems": {
+          "lanIp": "Tester avec un vrai téléphone : démarrer le serveur de développement avec <code>UPLOAD_PUBLIC_BASE_URL=http://LAN-IP:3000</code>, sinon le code QR renvoie vers cet ordinateur.",
+          "limits": "Liens réels : photos {photoMax}, vidéos {videoMax} et {videoMinutes} min., plans {planMax}, max. {maxFiles} fichiers ; quota de départ {initialQuota}, après le premier fichier {maxTotal}.",
+          "resume": "Reprise : pendant l’envoi d’une vidéo, couper puis rétablir le Wi-Fi, ou recharger la page et choisir à nouveau le même fichier.",
+          "magicBytes": "Le type de fichier est vérifié par ses octets d’en-tête – un .exe renommé est refusé. Les données GPS sont supprimées des JPEG."
+        }
+      }
+    },
+    "ezarri": {
+      "b": {
+        "rezept": {
+          "gruppeFoto": "D’après la photo du produit (recette incomplète ou contradictoire)",
+          "widerspruechlich": "Représentation d’après la photo du produit : les données de recette d’Ezarri pour « {name} » sont contradictoires ici, nous montrons la référence finie d’après la photo du produit."
+        },
+        "stage": {
+          "vorschauTippen": "Aperçu, touchez pour la 3D",
+          "vorschauFarben": "Aperçu, couleurs approximatives",
+          "vorschauLabel": "Aperçu du bassin",
+          "keinWebglVorschau": "Votre navigateur n’affiche pas WebGL. Vous voyez un aperçu aux couleurs approximatives ; quantités, lien, fiche à imprimer et demande fonctionnent comme d’habitude.",
+          "nichtsRueck": "Rien à annuler",
+          "nichtsVor": "Rien à rétablir"
+        },
+        "legende": {
+          "roemisch": "Demi-cercles à gauche : escalier romain, petit bain",
+          "eck": "Quart de cercle à gauche : escalier d’angle, petit bain",
+          "voll": "Bande à gauche : escalier sur toute la largeur, petit bain"
+        },
+        "blatt": {
+          "fotoRezept": "Représentation d’après la photo du produit ({grund})",
+          "grundWiderspruch": "Données de recette d’Ezarri contradictoires",
+          "grundUnvollstaendig": "Recette incomplète"
+        }
+      }
+    },
+    "payments": {
+      "kauf": {
+        "titel": "Acheter un bon cadeau",
+        "wert": "Valeur par bon",
+        "wertHinweis": "À partir de {min} €, en euros entiers.",
+        "eigenerBetrag": "Montant libre",
+        "stueckzahl": "Quantité",
+        "stueckzahlHinweis": "En ligne jusqu’à {max} bons. Pour des cadeaux d’entreprise en plus grand nombre, utilisez la demande plus bas.",
+        "widmung": "Dédicace",
+        "nameAufGutschein": "Nom sur le bon",
+        "grusstext": "Message",
+        "zustellung": "Envoi et facture",
+        "zustellungText": "Après confirmation du paiement, le bon arrive en PDF à votre adresse e-mail. Vous l’imprimez ou le transmettez.",
+        "emailLabel": "E-mail pour le bon",
+        "firmaHinweis": "Pour la facture ; la page de paiement demande l’adresse de facturation.",
+        "bestellung": "Votre commande",
+        "zeile": "{anzahl} × bon de {betrag}",
+        "versand": "Envoi en PDF par e-mail",
+        "gesamt": "Prix total TVA incluse",
+        "checkbox": "J’accepte les <terms>conditions des bons</terms> et j’ai lu les <withdrawal>informations sur le droit de rétractation</withdrawal>.",
+        "hinweisWiderruf": "Rétractation possible dans les 14 jours suivant la réception, tant que le bon n’a pas été utilisé.",
+        "hinweisRechnung": "Nous envoyons la facture séparément par e-mail. Stripe vous envoie en plus une confirmation de paiement.",
+        "hinweisStripe": "Le paiement se fait sur la page de paiement de Stripe. Les données de carte ne nous parviennent pas.",
+        "button": "Acheter et payer",
+        "buttonLaedt": "Vers la page de paiement …",
+        "fehlerBedingungen": "Veuillez confirmer les conditions des bons et les informations sur le droit de rétractation.",
+        "fehlerGesamt": "En ligne jusqu’à {max} par commande. Au-delà, envoyez-nous une demande.",
+        "fehlerBezahlseite": "La page de paiement n’est pas accessible pour le moment. Veuillez réessayer dans quelques minutes ou nous appeler : +43 5574 46255.",
+        "anfrageLink": "Cadeau d’entreprise ou plus de dix bons ? Demander un bon",
+        "gesamtpreis": "Prix total",
+        "gesamtpreisEinzweck": "Prix total TVA incluse",
+        "ustHinweisMehrzweck": "La TVA est calculée lors de l’utilisation du bon."
+      },
+      "schritte": [
+        { "titel": "Choisir le bon", "text": "Définissez la valeur, le motif et la dédicace. Vous voyez le prix total avant l’achat." },
+        { "titel": "Payer", "text": "Sur la page de paiement de Stripe, avec les moyens de paiement qui y sont proposés, comme la carte ou le portefeuille numérique." },
+        { "titel": "PDF par e-mail", "text": "Après confirmation du paiement, le bon arrive en PDF. Nous envoyons la facture séparément." }
+      ],
+      "erfolg": {
+        "bezahltTitel": "Merci, le paiement est arrivé",
+        "bezahltGutschein": "{was} : le PDF est en route vers votre boîte e-mail. Nous envoyons la facture séparément.",
+        "bezahltAnzahlung": "{was} pour la commande {auftrag} est confirmé. Nous l’indiquons sur la facture.",
+        "ausstehendTitel": "Merci, votre paiement est en cours",
+        "ausstehend": "{was} : en cas de prélèvement, la confirmation prend quelques jours ouvrés.",
+        "fehlgeschlagenTitel": "Le paiement n’a pas abouti",
+        "wartenTitel": "Un instant, s’il vous plaît",
+        "warten": "{was} : nous confirmons le paiement. Cela ne prend généralement que quelques secondes.",
+        "neutralTitel": "Merci de votre visite",
+        "testmodus": "Mode test : aucun argent réel n’a été débité.",
+        "showroom": "Nous nous réjouissons de votre visite au showroom de Lochau, Landstraße 11.",
+        "mailFehlgeschlagen": "{was} : l’e-mail avec le PDF n’est pas encore parti. Nous nous en occupons et revenons vers vous ; vous pouvez aussi nous joindre au +43 5574 46255."
+      },
+      "abbruch": {
+        "titel": "Le paiement n’a pas été finalisé",
+        "text": "Rien n’a été débité. Une commande ouverte sans paiement expire d’elle-même.",
+        "zurueckGutschein": "Retour aux bons cadeaux",
+        "zurueckAnzahlung": "Retour à l’acompte"
+      },
+      "anzahlung": {
+        "titel": "Acompte pour la commande {auftrag}",
+        "offen": "Comme convenu : vous réglez ici l’acompte de votre commande. Le paiement passe par la page de paiement de Stripe.",
+        "bezahlt": "Cet acompte est réglé. Merci.",
+        "abgelaufen": "Ce lien n’est plus valable. Contactez-nous, nous vous en enverrons volontiers un nouveau.",
+        "button": "Payer l’acompte",
+        "betrag": "Acompte TVA incluse",
+        "gueltigBis": "Lien valable jusqu’au",
+        "rechnung": "Nous indiquons l’acompte sur la facture de votre commande. Stripe vous envoie une confirmation de paiement.",
+        "inBearbeitung": "Le dernier paiement est en cours de traitement. Veuillez réessayer dans quelques minutes."
+      },
+      "widerruf": {
+        "titel": "Se rétracter du contrat",
+        "lead": "Vous avez acheté un bon en ligne et souhaitez vous rétracter ? Dans les 14 jours suivant la réception, c’est possible sans justification, tant que le bon n’a pas été utilisé.",
+        "bestellung": "Numéro de commande ou code du bon",
+        "button": "Confirmer la rétractation",
+        "eingegangenTitel": "Votre rétractation a été reçue",
+        "eingegangen": "Reçue le {zeit}, numéro de réception {id}. La confirmation avec vos données suit par e-mail. Nous remboursons le montant au plus tard sous 14 jours via le moyen de paiement initial.",
+        "alternativ": "Vous pouvez aussi vous rétracter par e-mail à info@platzhirsch.studio ou par courrier à Landstraße 11, 6911 Lochau."
+      },
+      "footerLink": "Se rétracter du contrat",
+      "gueltigkeit": {
+        "unbefristet": { "druck": "Valable sans date d’expiration", "titel": "Sans date d’expiration", "text": "Les bons achetés sont valables sans limite de durée." },
+        "dreissigJahre": { "druck": "Utilisable dans le délai légal de 30 ans", "titel": "Utilisable longtemps", "text": "Les bons achetés sont utilisables dans le délai légal de 30 ans." },
+        "offen": { "druck": "Validité selon les conditions des bons", "titel": "Validité", "text": "La durée de validité des bons figure dans les conditions des bons." }
+      },
+      "widerrufMail": {
+        "ohneZuordnung": [
+          "Bonjour,",
+          "nous confirmons la réception d’une rétractation envoyée le {zeit} avec cette adresse e-mail (numéro de réception {id}).",
+          "Nous l’associons à la commande et revenons vers vous si nous avons besoin d’autre chose.",
+          "Si vous n’avez pas envoyé de rétractation, vous pouvez ignorer ce message."
+        ]
+      }
+    }
+  },
+  "it": {
+    "Upload": {
+      "demo": {
+        "testNotesItems": {
+          "lanIp": "Test con un vero smartphone: avvia il server di sviluppo con <code>UPLOAD_PUBLIC_BASE_URL=http://LAN-IP:3000</code>, altrimenti il codice QR punta a questo computer.",
+          "limits": "Link reali: foto {photoMax}, video {videoMax} e {videoMinutes} min., piante {planMax}, max. {maxFiles} file; quota iniziale {initialQuota}, dopo il primo file {maxTotal}.",
+          "resume": "Ripresa: durante il caricamento di un video, spegni e riaccendi il Wi-Fi oppure ricarica la pagina e scegli di nuovo lo stesso file.",
+          "magicBytes": "Il tipo di file viene verificato tramite i magic byte – un .exe rinominato viene rifiutato. I dati GPS vengono rimossi dai JPEG."
+        }
+      }
+    },
+    "ezarri": {
+      "b": {
+        "rezept": {
+          "gruppeFoto": "Secondo la foto del prodotto (ricetta incompleta o contraddittoria)",
+          "widerspruechlich": "Rappresentazione secondo la foto del prodotto: i dati di ricetta di Ezarri per «{name}» qui sono contraddittori, mostriamo il riferimento finito secondo la foto del prodotto."
+        },
+        "stage": {
+          "vorschauTippen": "Anteprima, tocca per il 3D",
+          "vorschauFarben": "Anteprima, colori approssimati",
+          "vorschauLabel": "Anteprima della vasca",
+          "keinWebglVorschau": "Il tuo browser non mostra WebGL. Vedi un’anteprima con colori approssimati; quantità, link, scheda da stampare e richiesta funzionano come sempre.",
+          "nichtsRueck": "Niente da annullare",
+          "nichtsVor": "Niente da ripristinare"
+        },
+        "legende": {
+          "roemisch": "Semicerchi a sinistra: scala romana, lato basso",
+          "eck": "Quarto di cerchio a sinistra: scala d’angolo, lato basso",
+          "voll": "Fascia a sinistra: scala su tutta la larghezza, lato basso"
+        },
+        "blatt": {
+          "fotoRezept": "Rappresentazione secondo la foto del prodotto ({grund})",
+          "grundWiderspruch": "Dati di ricetta di Ezarri contraddittori",
+          "grundUnvollstaendig": "Ricetta incompleta"
+        }
+      }
+    },
+    "payments": {
+      "kauf": {
+        "titel": "Acquista un buono regalo",
+        "wert": "Valore per buono",
+        "wertHinweis": "Da {min} €, in euro interi.",
+        "eigenerBetrag": "Importo libero",
+        "stueckzahl": "Quantità",
+        "stueckzahlHinweis": "Online fino a {max} buoni. Per regali aziendali in quantità maggiore trovi la richiesta più in basso.",
+        "widmung": "Dedica",
+        "nameAufGutschein": "Nome sul buono",
+        "grusstext": "Messaggio",
+        "zustellung": "Consegna e fattura",
+        "zustellungText": "Dopo la conferma del pagamento il buono arriva in PDF al tuo indirizzo e-mail. Puoi stamparlo o inoltrarlo.",
+        "emailLabel": "E-mail per il buono",
+        "firmaHinweis": "Per la fattura; l’indirizzo di fatturazione viene richiesto nella pagina di pagamento.",
+        "bestellung": "Il tuo ordine",
+        "zeile": "{anzahl} × buono da {betrag}",
+        "versand": "Consegna in PDF via e-mail",
+        "gesamt": "Prezzo totale IVA inclusa",
+        "checkbox": "Accetto le <terms>condizioni dei buoni</terms> e ho letto le <withdrawal>informazioni sul recesso</withdrawal>.",
+        "hinweisWiderruf": "Recesso entro 14 giorni dal ricevimento, finché il buono non è stato utilizzato.",
+        "hinweisRechnung": "Inviamo la fattura separatamente via e-mail. Stripe ti invia inoltre una conferma di pagamento.",
+        "hinweisStripe": "Il pagamento avviene sulla pagina di pagamento di Stripe. I dati della carta non ci raggiungono.",
+        "button": "Acquista con obbligo di pagamento",
+        "buttonLaedt": "Alla pagina di pagamento …",
+        "fehlerBedingungen": "Conferma le condizioni dei buoni e le informazioni sul recesso.",
+        "fehlerGesamt": "Online fino a {max} per ordine. Per importi maggiori inviaci una richiesta.",
+        "fehlerBezahlseite": "La pagina di pagamento al momento non è raggiungibile. Riprova tra qualche minuto o chiamaci: +43 5574 46255.",
+        "anfrageLink": "Regalo aziendale o più di dieci buoni? Richiedi un buono",
+        "gesamtpreis": "Prezzo totale",
+        "gesamtpreisEinzweck": "Prezzo totale IVA inclusa",
+        "ustHinweisMehrzweck": "L’IVA viene calcolata al momento dell’utilizzo."
+      },
+      "schritte": [
+        { "titel": "Scegli il buono", "text": "Imposta valore, motivo e dedica. Vedi il prezzo totale prima dell’acquisto." },
+        { "titel": "Paga", "text": "Sulla pagina di pagamento di Stripe, con i metodi lì indicati come carta o wallet." },
+        { "titel": "PDF via e-mail", "text": "Dopo la conferma del pagamento il buono arriva in PDF. La fattura la inviamo separatamente." }
+      ],
+      "erfolg": {
+        "bezahltTitel": "Grazie, il pagamento è arrivato",
+        "bezahltGutschein": "{was}: il PDF è in arrivo via e-mail. La fattura la inviamo separatamente.",
+        "bezahltAnzahlung": "{was} per l’ordine {auftrag} è confermato. Lo indichiamo in fattura.",
+        "ausstehendTitel": "Grazie, il tuo pagamento è in corso",
+        "ausstehend": "{was}: con l’addebito diretto la conferma richiede alcuni giorni lavorativi.",
+        "fehlgeschlagenTitel": "Il pagamento non è andato a buon fine",
+        "wartenTitel": "Un momento, per favore",
+        "warten": "{was}: stiamo confermando il pagamento. Di solito servono pochi secondi.",
+        "neutralTitel": "Grazie della visita",
+        "testmodus": "Modalità di prova: non è stato mosso denaro reale.",
+        "showroom": "Ti aspettiamo nello showroom di Lochau, Landstraße 11.",
+        "mailFehlgeschlagen": "{was}: l’e-mail con il PDF non è ancora partita. Ce ne occupiamo e ti ricontattiamo; puoi raggiungerci anche al +43 5574 46255."
+      },
+      "abbruch": {
+        "titel": "Il pagamento non è stato completato",
+        "text": "Non è stato addebitato nulla. Un ordine aperto senza pagamento scade da solo.",
+        "zurueckGutschein": "Torna ai buoni regalo",
+        "zurueckAnzahlung": "Torna all’acconto"
+      },
+      "anzahlung": {
+        "titel": "Acconto per l’ordine {auftrag}",
+        "offen": "Come concordato: qui paghi l’acconto per il tuo ordine. Il pagamento passa dalla pagina di pagamento di Stripe.",
+        "bezahlt": "Questo acconto è stato pagato. Grazie.",
+        "abgelaufen": "Questo link non è più valido. Contattaci, ti inviamo volentieri un nuovo link.",
+        "button": "Paga l’acconto",
+        "betrag": "Acconto IVA inclusa",
+        "gueltigBis": "Link valido fino al",
+        "rechnung": "Indichiamo l’acconto nella fattura del tuo ordine. Stripe ti invia una conferma di pagamento.",
+        "inBearbeitung": "L’ultimo pagamento è in elaborazione. Riprova tra qualche minuto."
+      },
+      "widerruf": {
+        "titel": "Recedere dal contratto",
+        "lead": "Hai acquistato un buono online e vuoi recedere dal contratto? Entro 14 giorni dal ricevimento puoi farlo senza indicarne il motivo, finché il buono non è stato utilizzato.",
+        "bestellung": "Numero d’ordine o codice del buono",
+        "button": "Conferma il recesso",
+        "eingegangenTitel": "Il tuo recesso è stato ricevuto",
+        "eingegangen": "Ricevuto il {zeit}, numero di ricezione {id}. La conferma con i tuoi dati arriva via e-mail. Rimborsiamo l’importo al più tardi entro 14 giorni con il mezzo di pagamento originale.",
+        "alternativ": "Puoi recedere anche via e-mail a info@platzhirsch.studio o per lettera a Landstraße 11, 6911 Lochau."
+      },
+      "footerLink": "Recedere dal contratto",
+      "gueltigkeit": {
+        "unbefristet": { "druck": "Valido senza scadenza", "titel": "Senza scadenza", "text": "I buoni acquistati sono validi senza limiti di tempo." },
+        "dreissigJahre": { "druck": "Utilizzabile entro il termine legale di 30 anni", "titel": "Utilizzabile a lungo", "text": "I buoni acquistati sono utilizzabili entro il termine legale di 30 anni." },
+        "offen": { "druck": "Validità secondo le condizioni dei buoni", "titel": "Validità", "text": "La durata di validità dei buoni è indicata nelle condizioni dei buoni." }
+      },
+      "widerrufMail": {
+        "ohneZuordnung": [
+          "Buongiorno,",
+          "confermiamo la ricezione di un recesso inviato il {zeit} con questo indirizzo e-mail (numero di ricezione {id}).",
+          "Lo associamo all’ordine e ti ricontattiamo se ci serve altro da te.",
+          "Se non hai inviato alcun recesso, puoi ignorare questo messaggio."
+        ]
+      }
+    }
+  }
+}

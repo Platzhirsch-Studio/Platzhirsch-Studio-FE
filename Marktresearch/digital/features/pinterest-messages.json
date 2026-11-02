@@ -1,0 +1,507 @@
+{
+  "_hinweis": "Übernommen in src/messages/<locale>.json am 29.10.2026 (Nachbessern). Quelle ist src/messages; diese Datei spiegelt sie (Test prüft Gleichheit). pinterest.* und ideenboard.{add, addAria, added, removedStatus, view, nav} gehen in den Client-Payload jeder Seite (Inseln), ideenboard.seite.* nur auf /ideenboard (SERVER_ONLY_SUBKEYS).",
+  "de": {
+    "pinterest": {
+      "save": "Auf Pinterest merken",
+      "saveAria": "„{title}“ auf Pinterest merken (öffnet Pinterest in einem neuen Tab)"
+    },
+    "ideenboard": {
+      "add": "Zum Ideenboard",
+      "addAria": "„{title}“ zum Ideenboard hinzufügen",
+      "added": "Im Ideenboard",
+      "view": "Ideenboard ansehen",
+      "nav": "Ideenboard",
+      "removedStatus": "„{title}“ entfernt.",
+      "seite": {
+        "meta": {
+          "title": "Ihr Ideenboard | Platzhirsch Home Living",
+          "description": "Möbel, Raumbilder, Ezarri-Mosaike und Ihr Wohnstil auf einer Pinnwand. Zum Termin mitbringen oder teilen.",
+          "sharedTitle": "Geteiltes Ideenboard | Platzhirsch Home Living"
+        },
+        "eyebrow": "Ideenboard",
+        "title": "Ihre Ideen auf einer Pinnwand",
+        "lead": "Sammeln Sie Möbel, Raumbilder, Ezarri-Mischungen und Ihr Stil-Finder-Ergebnis. Hängen Sie das Board an Ihren Termin, dann kennt Harald Menghin Ihre Ideen schon vor dem Gespräch.",
+        "privacyLocal": "Das Board liegt nur in diesem Browser. Auf unseren Server kommt es erst, wenn Sie einen Teilen-Link erstellen. Sie können den Link jederzeit widerrufen.",
+        "count": "{n} Karten",
+        "countOne": "Eine Karte",
+        "empty": {
+          "title": "Ihr Board ist noch leer",
+          "text": "Mit „Zum Ideenboard“ an Raumbildern, in der Ezarri-Galerie, im Konfigurator und beim Stil-Finder legen Sie Karten hier ab. Möbel holen Sie aus Ihrer Merkliste.",
+          "ezarri": "Zur Ezarri-Galerie",
+          "stil": "Zum Stil-Finder",
+          "merkliste": "Zur Merkliste"
+        },
+        "importMerkliste": "Möbel aus der Merkliste holen ({n})",
+        "importDone": "{n} Möbel aus der Merkliste übernommen.",
+        "importNone": "Alle Möbel der Merkliste liegen schon im Board.",
+        "noteCard": {
+          "add": "Notiz-Karte anlegen",
+          "label": "Ihre Notiz",
+          "placeholder": "Zum Beispiel: Wohnzimmer mit Fenster nach Westen",
+          "save": "Notiz anlegen",
+          "added": "Notiz-Karte angelegt."
+        },
+        "types": {
+          "moebel": "Möbel",
+          "raumbild": "Raumbild",
+          "ezarri": "Ezarri-Mosaik",
+          "ezarriMix": "Ezarri-Mischung",
+          "stil": "Stil-Finder",
+          "projekt": "Projekt",
+          "notiz": "Notiz"
+        },
+        "card": {
+          "note": "Notiz zur Karte",
+          "notePlaceholder": "Was gefällt Ihnen daran?",
+          "open": "Öffnen",
+          "remove": "Entfernen",
+          "removeAria": "„{title}“ aus dem Board entfernen",
+          "removed": "„{title}“ entfernt.",
+          "undo": "Rückgängig",
+          "up": "Nach vorn",
+          "down": "Nach hinten",
+          "upAria": "„{title}“ eine Position nach vorn",
+          "downAria": "„{title}“ eine Position nach hinten",
+          "moved": "„{title}“ steht jetzt an Position {pos} von {total}.",
+          "dragHint": "Zum Umsortieren Karten am Griff ziehen oder die Pfeil-Knöpfe nutzen.",
+          "position": "Position {pos} von {total}",
+          "source": "Bild: {quelle}",
+          "noPin": "Herstellerbild: nicht für Pinterest freigegeben",
+          "dragHandle": "Ziehen zum Umsortieren",
+          "dismiss": "Hinweis schließen",
+          "noPinOther": "Bild nicht für Pinterest freigegeben"
+        },
+        "share": {
+          "title": "Teilen",
+          "text": "Ein geheimer Link zeigt Ihr Board ohne Bearbeiten. Wer den Link hat, sieht Karten und Notizen. Wir fügen keine Kontaktdaten hinzu. Bitte schreiben Sie keine persönlichen Angaben in die Notizen.",
+          "create": "Teilen-Link erstellen",
+          "created": "Der Teilen-Link ist erstellt.",
+          "update": "Geteilte Fassung aktualisieren",
+          "updated": "Geteilte Fassung aktualisiert.",
+          "copy": "Link kopieren",
+          "copied": "Link kopiert.",
+          "revoke": "Link widerrufen",
+          "revoked": "Der Link ist widerrufen. Er zeigt jetzt nichts mehr.",
+          "renew": "Neuen Link erstellen",
+          "delete": "Geteilte Fassung löschen",
+          "deleted": "Die geteilte Fassung ist gelöscht.",
+          "active": "Geteilt seit {date}",
+          "stale": "Seit dem letzten Teilen haben Sie etwas geändert.",
+          "unavailable": "Teilen ist gerade nicht möglich. Ihr Board bleibt in diesem Browser.",
+          "error": "Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.",
+          "retention": "Geteilte Boards löschen wir {months} Monate nach der letzten Änderung."
+        },
+        "termin": {
+          "title": "An Ihren Termin anhängen",
+          "text": "Buchen Sie einen Online-Termin oder einen Termin im Studio. Das Board geht als geteilter Link mit, Harald Menghin sieht es vor dem Gespräch.",
+          "cta": "Termin mit Ideenboard buchen",
+          "hint": "Dafür erstellen wir einen Teilen-Link. Sie können ihn nach dem Termin widerrufen.",
+          "textManual": "Erstellen Sie einen Teilen-Link und fügen Sie ihn bei Ihrer Terminanfrage in das Nachrichtenfeld ein. Dann sieht Harald Menghin Ihr Board vor dem Gespräch.",
+          "linkManual": "Termin anfragen"
+        },
+        "export": {
+          "title": "Auf Pinterest übernehmen",
+          "text": "Merken Sie Karten einzeln auf Pinterest und wählen Sie dort Ihr Board. Herstellerbilder sind nicht für Pinterest freigegeben, sie bleiben nur hier.",
+          "boardName": "Name Ihres Pinterest-Boards",
+          "boardDefault": "Ideen mit Platzhirsch",
+          "csv": "Als Pinterest-Liste herunterladen (CSV)",
+          "csvHint": "Für die Massenerstellung von Pins in einem Pinterest-Unternehmenskonto.",
+          "copyList": "Liste mit Links kopieren",
+          "copiedList": "Liste kopiert.",
+          "pinnable": "{n} von {total} Karten lassen sich auf Pinterest merken.",
+          "rightsHint": "Bilder: Rechte bei Ezarri bzw. Platzhirsch. Bitte Link und Quelle in den Pins nicht entfernen."
+        },
+        "shared": {
+          "eyebrow": "Geteiltes Ideenboard",
+          "title": "Ideen für ein Zuhause",
+          "lead": "Diese Pinnwand hat jemand mit Ihnen geteilt. Sie zeigt Karten und Notizen, keine Kontaktdaten.",
+          "updated": "Stand: {date}",
+          "own": "Eigenes Ideenboard beginnen",
+          "copyToMine": "In mein Ideenboard übernehmen",
+          "copied": "{n} Karten in Ihr Ideenboard übernommen.",
+          "gone": "Dieses Ideenboard ist nicht mehr geteilt."
+        },
+        "pinterestPrivacy": "Pinterest öffnet sich erst mit Ihrem Klick. Vorher lädt nichts von Pinterest.",
+        "addedStatus": "„{title}“ liegt jetzt in Ihrem Ideenboard."
+      }
+    }
+  },
+  "en": {
+    "pinterest": {
+      "save": "Save on Pinterest",
+      "saveAria": "Save “{title}” on Pinterest (opens Pinterest in a new tab)"
+    },
+    "ideenboard": {
+      "add": "Add to idea board",
+      "addAria": "Add “{title}” to your idea board",
+      "added": "On your idea board",
+      "view": "View idea board",
+      "nav": "Idea board",
+      "removedStatus": "“{title}” removed.",
+      "seite": {
+        "meta": {
+          "title": "Your idea board | Platzhirsch Home Living",
+          "description": "Furniture, room images, Ezarri mosaics and your interior style on one board. Bring it to your appointment or share it.",
+          "sharedTitle": "Shared idea board | Platzhirsch Home Living"
+        },
+        "eyebrow": "Idea board",
+        "title": "Your ideas on one board",
+        "lead": "Collect furniture, room images, Ezarri blends and your Style Finder result. Attach the board to your appointment and Harald Menghin knows your ideas before you meet.",
+        "privacyLocal": "The board stays in this browser. It only reaches our server when you create a share link. You can revoke the link at any time.",
+        "count": "{n} cards",
+        "countOne": "One card",
+        "empty": {
+          "title": "Your board is still empty",
+          "text": "Use “Add to idea board” on room images, in the Ezarri gallery, in the configurator and in the Style Finder. Bring furniture over from your wishlist.",
+          "ezarri": "Ezarri gallery",
+          "stil": "Style Finder",
+          "merkliste": "Wishlist"
+        },
+        "importMerkliste": "Bring furniture from the wishlist ({n})",
+        "importDone": "{n} pieces taken from the wishlist.",
+        "importNone": "All pieces of the wishlist are already on the board.",
+        "noteCard": {
+          "add": "Add a note card",
+          "label": "Your note",
+          "placeholder": "For example: living room with windows facing west",
+          "save": "Add note",
+          "added": "Note card added."
+        },
+        "types": {
+          "moebel": "Furniture",
+          "raumbild": "Room image",
+          "ezarri": "Ezarri mosaic",
+          "ezarriMix": "Ezarri blend",
+          "stil": "Style Finder",
+          "projekt": "Project",
+          "notiz": "Note"
+        },
+        "card": {
+          "note": "Note on this card",
+          "notePlaceholder": "What do you like about it?",
+          "open": "Open",
+          "remove": "Remove",
+          "removeAria": "Remove “{title}” from the board",
+          "removed": "“{title}” removed.",
+          "undo": "Undo",
+          "up": "Move forward",
+          "down": "Move back",
+          "upAria": "Move “{title}” one position forward",
+          "downAria": "Move “{title}” one position back",
+          "moved": "“{title}” is now at position {pos} of {total}.",
+          "dragHint": "Drag cards by the handle to reorder them or use the arrow buttons.",
+          "position": "Position {pos} of {total}",
+          "source": "Image: {quelle}",
+          "noPin": "Manufacturer image: not cleared for Pinterest",
+          "dragHandle": "Drag to reorder",
+          "dismiss": "Close notice",
+          "noPinOther": "Image not cleared for Pinterest"
+        },
+        "share": {
+          "title": "Share",
+          "text": "A secret link shows your board without editing. Anyone with the link sees the cards and notes. We add no contact details. Please do not write personal details into the notes.",
+          "create": "Create share link",
+          "created": "The share link is ready.",
+          "update": "Update shared version",
+          "updated": "Shared version updated.",
+          "copy": "Copy link",
+          "copied": "Link copied.",
+          "revoke": "Revoke link",
+          "revoked": "The link is revoked and no longer shows anything.",
+          "renew": "Create a new link",
+          "delete": "Delete shared version",
+          "deleted": "The shared version is deleted.",
+          "active": "Shared since {date}",
+          "stale": "You have changed something since you last shared.",
+          "unavailable": "Sharing is not possible right now. Your board stays in this browser.",
+          "error": "That did not work. Please try again.",
+          "retention": "We delete shared boards {months} months after the last change."
+        },
+        "termin": {
+          "title": "Attach to your appointment",
+          "text": "Choose an online appointment or a meeting at the studio. The board goes along as a share link, and Harald Menghin sees it before you meet.",
+          "cta": "Choose an appointment with your idea board",
+          "hint": "For this we create a share link. You can revoke it after the appointment.",
+          "textManual": "Create a share link and paste it into the message field of your appointment request. Harald Menghin then sees your board before you meet.",
+          "linkManual": "Request an appointment"
+        },
+        "export": {
+          "title": "Take it to Pinterest",
+          "text": "Save cards to Pinterest one by one and choose your board there. Manufacturer images are not cleared for Pinterest and stay here.",
+          "boardName": "Name of your Pinterest board",
+          "boardDefault": "Ideas with Platzhirsch",
+          "csv": "Download as Pinterest list (CSV)",
+          "csvHint": "For bulk creating Pins in a Pinterest business account.",
+          "copyList": "Copy list with links",
+          "copiedList": "List copied.",
+          "pinnable": "{n} of {total} cards can be saved on Pinterest.",
+          "rightsHint": "Images: rights held by Ezarri or Platzhirsch. Please keep the link and the source in the Pins."
+        },
+        "shared": {
+          "eyebrow": "Shared idea board",
+          "title": "Ideas for a home",
+          "lead": "Someone shared this board with you. It shows cards and notes, no contact details.",
+          "updated": "As of {date}",
+          "own": "Start your own idea board",
+          "copyToMine": "Copy to my idea board",
+          "copied": "{n} cards copied to your idea board.",
+          "gone": "This idea board is no longer shared."
+        },
+        "pinterestPrivacy": "Pinterest opens only when you click. Nothing loads from Pinterest before that.",
+        "addedStatus": "“{title}” is now on your idea board."
+      }
+    }
+  },
+  "fr": {
+    "pinterest": {
+      "save": "Enregistrer sur Pinterest",
+      "saveAria": "Enregistrer « {title} » sur Pinterest (ouvre Pinterest dans un nouvel onglet)"
+    },
+    "ideenboard": {
+      "add": "Au tableau d’idées",
+      "addAria": "Ajouter « {title} » au tableau d’idées",
+      "added": "Dans le tableau d’idées",
+      "view": "Voir le tableau d’idées",
+      "nav": "Tableau d’idées",
+      "removedStatus": "« {title} » retiré.",
+      "seite": {
+        "meta": {
+          "title": "Votre tableau d’idées | Platzhirsch Home Living",
+          "description": "Meubles, images de pièces, mosaïques Ezarri et votre style sur un seul tableau. À apporter au rendez-vous ou à partager.",
+          "sharedTitle": "Tableau d’idées partagé | Platzhirsch Home Living"
+        },
+        "eyebrow": "Tableau d’idées",
+        "title": "Vos idées sur un seul tableau",
+        "lead": "Rassemblez meubles, images de pièces, mélanges Ezarri et le résultat du test de style. Joignez le tableau à votre rendez-vous : Harald Menghin connaît vos idées avant l’entretien.",
+        "privacyLocal": "Le tableau reste dans ce navigateur. Il n’arrive sur notre serveur que si vous créez un lien de partage. Vous pouvez révoquer ce lien à tout moment.",
+        "count": "{n} cartes",
+        "countOne": "Une carte",
+        "empty": {
+          "title": "Votre tableau est encore vide",
+          "text": "Avec « Au tableau d’idées » sur les images de pièces, dans la galerie Ezarri, le configurateur et le test de style, vous déposez des cartes ici. Les meubles viennent de votre liste de souhaits.",
+          "ezarri": "Galerie Ezarri",
+          "stil": "Test de style",
+          "merkliste": "Liste de souhaits"
+        },
+        "importMerkliste": "Reprendre les meubles de la liste de souhaits ({n})",
+        "importDone": "{n} meubles repris de la liste de souhaits.",
+        "importNone": "Tous les meubles de la liste sont déjà sur le tableau.",
+        "noteCard": {
+          "add": "Ajouter une carte note",
+          "label": "Votre note",
+          "placeholder": "Par exemple : séjour avec fenêtres à l’ouest",
+          "save": "Ajouter la note",
+          "added": "Carte note ajoutée."
+        },
+        "types": {
+          "moebel": "Meuble",
+          "raumbild": "Image de pièce",
+          "ezarri": "Mosaïque Ezarri",
+          "ezarriMix": "Mélange Ezarri",
+          "stil": "Test de style",
+          "projekt": "Projet",
+          "notiz": "Note"
+        },
+        "card": {
+          "note": "Note sur cette carte",
+          "notePlaceholder": "Qu’est-ce qui vous plaît ?",
+          "open": "Ouvrir",
+          "remove": "Retirer",
+          "removeAria": "Retirer « {title} » du tableau",
+          "removed": "« {title} » retiré.",
+          "undo": "Annuler",
+          "up": "Avancer",
+          "down": "Reculer",
+          "upAria": "Avancer « {title} » d’une position",
+          "downAria": "Reculer « {title} » d’une position",
+          "moved": "« {title} » est maintenant en position {pos} sur {total}.",
+          "dragHint": "Faites glisser les cartes par la poignée pour les trier ou utilisez les flèches.",
+          "position": "Position {pos} sur {total}",
+          "source": "Image : {quelle}",
+          "noPin": "Image du fabricant : non autorisée pour Pinterest",
+          "dragHandle": "Glisser pour trier",
+          "dismiss": "Fermer la remarque",
+          "noPinOther": "Image non autorisée pour Pinterest"
+        },
+        "share": {
+          "title": "Partager",
+          "text": "Un lien secret montre votre tableau sans modification possible. Qui a le lien voit les cartes et les notes. Nous n’ajoutons aucune coordonnée. Merci de ne pas écrire de données personnelles dans les notes.",
+          "create": "Créer un lien de partage",
+          "created": "Le lien de partage est créé.",
+          "update": "Mettre à jour la version partagée",
+          "updated": "Version partagée mise à jour.",
+          "copy": "Copier le lien",
+          "copied": "Lien copié.",
+          "revoke": "Révoquer le lien",
+          "revoked": "Le lien est révoqué et n’affiche plus rien.",
+          "renew": "Créer un nouveau lien",
+          "delete": "Supprimer la version partagée",
+          "deleted": "La version partagée est supprimée.",
+          "active": "Partagé depuis le {date}",
+          "stale": "Vous avez modifié quelque chose depuis le dernier partage.",
+          "unavailable": "Le partage n’est pas possible pour le moment. Votre tableau reste dans ce navigateur.",
+          "error": "Cela n’a pas fonctionné. Veuillez réessayer.",
+          "retention": "Nous supprimons les tableaux partagés {months} mois après la dernière modification."
+        },
+        "termin": {
+          "title": "Joindre à votre rendez-vous",
+          "text": "Réservez un rendez-vous en ligne ou au studio. Le tableau suit sous forme de lien de partage, Harald Menghin le voit avant l’entretien.",
+          "cta": "Réserver avec le tableau d’idées",
+          "hint": "Pour cela, nous créons un lien de partage. Vous pouvez le révoquer après le rendez-vous.",
+          "textManual": "Créez un lien de partage et collez-le dans le champ message de votre demande de rendez-vous. Harald Menghin voit alors votre tableau avant l’entretien.",
+          "linkManual": "Demander un rendez-vous"
+        },
+        "export": {
+          "title": "Reprendre sur Pinterest",
+          "text": "Enregistrez les cartes une par une sur Pinterest et choisissez-y votre tableau. Les images des fabricants ne sont pas autorisées pour Pinterest et restent ici.",
+          "boardName": "Nom de votre tableau Pinterest",
+          "boardDefault": "Idées avec Platzhirsch",
+          "csv": "Télécharger comme liste Pinterest (CSV)",
+          "csvHint": "Pour la création groupée d’épingles dans un compte professionnel Pinterest.",
+          "copyList": "Copier la liste avec les liens",
+          "copiedList": "Liste copiée.",
+          "pinnable": "{n} cartes sur {total} peuvent être enregistrées sur Pinterest.",
+          "rightsHint": "Images : droits chez Ezarri ou Platzhirsch. Merci de conserver le lien et la source dans les épingles."
+        },
+        "shared": {
+          "eyebrow": "Tableau d’idées partagé",
+          "title": "Des idées pour un intérieur",
+          "lead": "Quelqu’un a partagé ce tableau avec vous. Il montre des cartes et des notes, aucune coordonnée.",
+          "updated": "État : {date}",
+          "own": "Commencer votre tableau d’idées",
+          "copyToMine": "Reprendre dans mon tableau",
+          "copied": "{n} cartes reprises dans votre tableau d’idées.",
+          "gone": "Ce tableau d’idées n’est plus partagé."
+        },
+        "pinterestPrivacy": "Pinterest ne s’ouvre qu’à votre clic. Rien n’est chargé depuis Pinterest avant.",
+        "addedStatus": "« {title} » est maintenant dans votre tableau d’idées."
+      }
+    }
+  },
+  "it": {
+    "pinterest": {
+      "save": "Salva su Pinterest",
+      "saveAria": "Salva «{title}» su Pinterest (apre Pinterest in una nuova scheda)"
+    },
+    "ideenboard": {
+      "add": "Nella bacheca idee",
+      "addAria": "Aggiungere «{title}» alla bacheca idee",
+      "added": "Nella bacheca idee",
+      "view": "Vedere la bacheca idee",
+      "nav": "Bacheca idee",
+      "removedStatus": "«{title}» rimosso.",
+      "seite": {
+        "meta": {
+          "title": "La vostra bacheca idee | Platzhirsch Home Living",
+          "description": "Mobili, immagini di ambienti, mosaici Ezarri e il vostro stile su una sola bacheca. Da portare all’appuntamento o da condividere.",
+          "sharedTitle": "Bacheca idee condivisa | Platzhirsch Home Living"
+        },
+        "eyebrow": "Bacheca idee",
+        "title": "Le vostre idee su una sola bacheca",
+        "lead": "Raccogliete mobili, immagini di ambienti, miscele Ezarri e il risultato del test di stile. Allegate la bacheca al vostro appuntamento: Harald Menghin conosce le vostre idee prima del colloquio.",
+        "privacyLocal": "La bacheca resta in questo browser. Arriva sul nostro server solo se create un link di condivisione. Potete revocare il link in qualsiasi momento.",
+        "count": "{n} schede",
+        "countOne": "Una scheda",
+        "empty": {
+          "title": "La vostra bacheca è ancora vuota",
+          "text": "Con «Nella bacheca idee» sulle immagini di ambienti, nella galleria Ezarri, nel configuratore e nel test di stile depositate qui le schede. I mobili arrivano dalla vostra lista dei desideri.",
+          "ezarri": "Galleria Ezarri",
+          "stil": "Test di stile",
+          "merkliste": "Lista dei desideri"
+        },
+        "importMerkliste": "Prendere i mobili dalla lista dei desideri ({n})",
+        "importDone": "{n} mobili presi dalla lista dei desideri.",
+        "importNone": "Tutti i mobili della lista sono già nella bacheca.",
+        "noteCard": {
+          "add": "Aggiungere una scheda nota",
+          "label": "La vostra nota",
+          "placeholder": "Per esempio: soggiorno con finestre a ovest",
+          "save": "Aggiungere la nota",
+          "added": "Scheda nota aggiunta."
+        },
+        "types": {
+          "moebel": "Mobile",
+          "raumbild": "Immagine d’ambiente",
+          "ezarri": "Mosaico Ezarri",
+          "ezarriMix": "Miscela Ezarri",
+          "stil": "Test di stile",
+          "projekt": "Progetto",
+          "notiz": "Nota"
+        },
+        "card": {
+          "note": "Nota su questa scheda",
+          "notePlaceholder": "Che cosa vi piace?",
+          "open": "Aprire",
+          "remove": "Rimuovere",
+          "removeAria": "Rimuovere «{title}» dalla bacheca",
+          "removed": "«{title}» rimosso.",
+          "undo": "Annulla",
+          "up": "Avanti",
+          "down": "Indietro",
+          "upAria": "Spostare «{title}» di una posizione in avanti",
+          "downAria": "Spostare «{title}» di una posizione indietro",
+          "moved": "«{title}» è ora in posizione {pos} di {total}.",
+          "dragHint": "Trascinate le schede dalla maniglia per riordinarle oppure usate i pulsanti freccia.",
+          "position": "Posizione {pos} di {total}",
+          "source": "Immagine: {quelle}",
+          "noPin": "Immagine del produttore: non autorizzata per Pinterest",
+          "dragHandle": "Trascinare per riordinare",
+          "dismiss": "Chiudere l’avviso",
+          "noPinOther": "Immagine non autorizzata per Pinterest"
+        },
+        "share": {
+          "title": "Condividete",
+          "text": "Un link segreto mostra la vostra bacheca senza possibilità di modifica. Chi ha il link vede schede e note. Non aggiungiamo dati di contatto. Vi preghiamo di non scrivere dati personali nelle note.",
+          "create": "Creare un link di condivisione",
+          "created": "Il link di condivisione è pronto.",
+          "update": "Aggiornare la versione condivisa",
+          "updated": "Versione condivisa aggiornata.",
+          "copy": "Copiare il link",
+          "copied": "Link copiato.",
+          "revoke": "Revocare il link",
+          "revoked": "Il link è revocato e non mostra più nulla.",
+          "renew": "Creare un nuovo link",
+          "delete": "Eliminare la versione condivisa",
+          "deleted": "La versione condivisa è eliminata.",
+          "active": "Condivisa dal {date}",
+          "stale": "Avete modificato qualcosa dall’ultima condivisione.",
+          "unavailable": "Al momento non è possibile condividere. La bacheca resta in questo browser.",
+          "error": "Non ha funzionato. Riprovate, per favore.",
+          "retention": "Eliminiamo le bacheche condivise {months} mesi dopo l’ultima modifica."
+        },
+        "termin": {
+          "title": "Allegate al vostro appuntamento",
+          "text": "Prenotate un appuntamento online o in studio. La bacheca arriva come link di condivisione, Harald Menghin la vede prima del colloquio.",
+          "cta": "Prenotare con la bacheca idee",
+          "hint": "Per questo creiamo un link di condivisione. Potete revocarlo dopo l’appuntamento.",
+          "textManual": "Create un link di condivisione e incollatelo nel campo messaggio della vostra richiesta di appuntamento. Così Harald Menghin vede la bacheca prima del colloquio.",
+          "linkManual": "Richiedere un appuntamento"
+        },
+        "export": {
+          "title": "Trasferite su Pinterest",
+          "text": "Salvate le schede una per una su Pinterest e scegliete lì la vostra bacheca. Le immagini dei produttori non sono autorizzate per Pinterest e restano qui.",
+          "boardName": "Nome della vostra bacheca Pinterest",
+          "boardDefault": "Idee con Platzhirsch",
+          "csv": "Scaricare come lista Pinterest (CSV)",
+          "csvHint": "Per creare Pin in blocco in un account aziendale Pinterest.",
+          "copyList": "Copiare la lista con i link",
+          "copiedList": "Lista copiata.",
+          "pinnable": "{n} schede su {total} si possono salvare su Pinterest.",
+          "rightsHint": "Immagini: diritti di Ezarri o Platzhirsch. Vi preghiamo di non rimuovere link e fonte dai Pin."
+        },
+        "shared": {
+          "eyebrow": "Bacheca idee condivisa",
+          "title": "Idee per una casa",
+          "lead": "Qualcuno ha condiviso con voi questa bacheca. Contiene schede e note, nessun dato di contatto.",
+          "updated": "Aggiornata al {date}",
+          "own": "Iniziare la propria bacheca idee",
+          "copyToMine": "Copiare nella mia bacheca",
+          "copied": "{n} schede copiate nella vostra bacheca idee.",
+          "gone": "Questa bacheca idee non è più condivisa."
+        },
+        "pinterestPrivacy": "Pinterest si apre solo con il vostro clic. Prima non viene caricato nulla da Pinterest.",
+        "addedStatus": "«{title}» è ora nella vostra bacheca idee."
+      }
+    }
+  }
+}

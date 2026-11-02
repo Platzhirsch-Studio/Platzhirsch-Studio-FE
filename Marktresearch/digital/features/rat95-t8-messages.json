@@ -1,0 +1,128 @@
+{
+  "_hinweis": "T8 Design-Studio (30.10.2026): nur typografische Korrekturen – Auslassungszeichen „…“ statt drei Punkten, schmales geschütztes Leerzeichen (U+202F) in „z. B.“ und „u. a.“, damit die Abkürzung nicht über zwei Zeilen bricht. Kein Wortlaut geändert.",
+  "de": {
+    "MultiStepForm": {
+      "describePlaceholder": "Beschreiben Sie Ihr Projekt…"
+    },
+    "contact": {
+      "formSending": "Senden…"
+    },
+    "enquiry": {
+      "sending": "Wird gesendet…"
+    },
+    "Cookies": {
+      "services": {
+        "googleMaps": {
+          "purpose": "Google Maps ermöglicht die direkte Einbettung von Karten in Websites, um die Website zu verbessern. Dafür werden die IP-Adresse und Metadaten der Nutzer verarbeitet. Cookies oder cookie-ähnliche Technologien können gespeichert und ausgelesen werden. Diese können personenbezogene Daten und technische Daten wie Nutzer-ID, Einwilligung, Einstellungen des Kartenbetrachters und Sicherheitstoken enthalten. Diese Daten können verwendet werden, um besuchte Websites zu erfassen, detaillierte Statistiken über das Nutzerverhalten zu erstellen und die Dienste von Google zu verbessern. Google kann diese Daten mit den Daten von Nutzern verknüpfen, die auf den Websites von Google (z. B. google.com und youtube.com) eingeloggt sind. Google gibt personenbezogene Daten an verbundene Unternehmen und andere vertrauenswürdige Unternehmen oder Personen weiter, die diese im Auftrag von Google, auf Grundlage der Anweisungen von Google und in Übereinstimmung mit der Datenschutzerklärung von Google verarbeiten."
+        }
+      },
+      "einblicke": {
+        "purpose": "Wir möchten verstehen, wie unsere Seiten genutzt werden, und sie verbessern. Erfasst werden nur: Klickposition und angeklicktes Element, Mausbewegung in einem groben 40-px-Raster (nur am Desktop), Scrolltiefe, Sichtzeit je Abschnitt, die Namen berührter Formularfelder (nie deren Inhalt, keine Tastatureingaben), Validierungs- und Programmfehler (nur der Typ), erreichte Ziele wie Termin oder Anfrage, Schritte in unseren Planern, der Herkunftskanal (z. B. „Organisch“), die Gerätegruppe und die Fensterbreite. Es gibt keine Sitzungsaufzeichnung, keine IP-Adresse, kein Fingerprinting und keine Weitergabe an Dritte. Eine zufällige Sitzungskennung liegt 30 Minuten im sessionStorage Ihres Browsers. Rohdaten löschen wir nach höchstens 14 Tagen; danach bleiben nur zusammengefasste Tageswerte (mindestens 5 Besuche je Seite) in unserem eigenen Backoffice. Do-Not-Track und Global Privacy Control werden beachtet."
+      }
+    },
+    "Home": {
+      "heroBrandsLabel": "Im Showroom u. a."
+    },
+    "forms": {
+      "selfReport": {
+        "options": {
+          "ki": "KI-Assistent (z. B. ChatGPT)"
+        }
+      }
+    },
+    "Portal": {
+      "tagebuch": {
+        "reviewTypologie": "Typologie (z. B. Haus, Wohnung)"
+      }
+    },
+    "Upload": {
+      "client": {
+        "note": {
+          "placeholder": "z. B. Raumhöhe 2,60 m, Fenster nach Süden, Sofa soll an die linke Wand"
+        }
+      }
+    },
+    "termin": {
+      "errors": {
+        "email": "Bitte geben Sie eine gültige E-Mail-Adresse an, z. B. name@beispiel.at."
+      },
+      "stepsShort": {
+        "art": "Art",
+        "zeit": "Zeit",
+        "daten": "Kontakt",
+        "fertig": "Fertig"
+      }
+    },
+    "serviceWinterlager": {
+      "form": {
+        "list": {
+          "notePlaceholder": "z. B. Gloster, mit Polstern"
+        },
+        "address": {
+          "accessPlaceholder": "z. B. Dachterrasse 3. Stock, Lift vorhanden"
+        },
+        "dates": {
+          "notePlaceholder": "z. B. nicht vor dem 10. April"
+        }
+      }
+    }
+  },
+  "en": {
+    "MultiStepForm": {
+      "describePlaceholder": "Describe your project…"
+    },
+    "contact": {
+      "formSending": "Sending…"
+    },
+    "enquiry": {
+      "sending": "Sending…"
+    },
+    "termin": {
+      "stepsShort": {
+        "art": "Type",
+        "zeit": "Time",
+        "daten": "Details",
+        "fertig": "Done"
+      }
+    }
+  },
+  "fr": {
+    "MultiStepForm": {
+      "describePlaceholder": "Décrivez votre projet…"
+    },
+    "contact": {
+      "formSending": "Envoi…"
+    },
+    "enquiry": {
+      "sending": "Envoi…"
+    },
+    "termin": {
+      "stepsShort": {
+        "art": "Type",
+        "zeit": "Date",
+        "daten": "Coordonnées",
+        "fertig": "Terminé"
+      }
+    }
+  },
+  "it": {
+    "MultiStepForm": {
+      "describePlaceholder": "Descrivete il vostro progetto…"
+    },
+    "contact": {
+      "formSending": "Invio…"
+    },
+    "enquiry": {
+      "sending": "Invio in corso…"
+    },
+    "termin": {
+      "stepsShort": {
+        "art": "Tipo",
+        "zeit": "Data",
+        "daten": "Contatti",
+        "fertig": "Fatto"
+      }
+    }
+  },
+  "_hinweis_stepsShort": "Design-Jury P2-17 (30.10.2026): NEUER Schlüssel termin.stepsShort (Kurzwörter der Schrittleiste). Bei Übernahme auch in src/lib/booking/copy.js (TERMIN_COPY) ergänzen – tests/unit/booking-termin.test.mjs vergleicht beide."
+}

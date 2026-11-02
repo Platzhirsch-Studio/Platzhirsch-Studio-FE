@@ -1,0 +1,23 @@
+{
+  "_hinweis": "Welle 2, Team Hotel (29.10.2026). Vorschläge für src/messages/*.json – Integration übernimmt. Seitentexte selbst liegen in src/lib/hotel/content.js (DE/EN). FR/IT der Seite: /fr|it/hotel-objekt leitet auf /en/hotel-objekt (siehe page.js), daher hier nur Menü-/Footer-/Kontext-Texte in 4 Sprachen. MultiStepForm.context.themaChalet nur nötig, wenn beratungContext.js einen Topic 'chalet' bekommt (Vorschlag in hotel-bau.md).",
+  "de": {
+    "Shell": { "nav": { "hotelObjekt": "Hotel & Objekt", "hotelObjektTeaser": "Hotels, Chalets und Gastronomie einrichten" } },
+    "Footer": { "hotelObjekt": "Für Hotels, Chalets & Gastronomie" },
+    "MultiStepForm": { "context": { "themaChalet": "Es geht um ein Chalet oder eine Ferienwohnung (Eigentum oder Vermietung)." } }
+  },
+  "en": {
+    "Shell": { "nav": { "hotelObjekt": "Hotels & projects", "hotelObjektTeaser": "Furnishing hotels, chalets and restaurants" } },
+    "Footer": { "hotelObjekt": "For hotels, chalets & restaurants" },
+    "MultiStepForm": { "context": { "themaChalet": "It is about a chalet or holiday apartment (owned or let)." } }
+  },
+  "fr": {
+    "Shell": { "nav": { "hotelObjekt": "Hôtels & projets", "hotelObjektTeaser": "Aménager hôtels, chalets et restaurants" } },
+    "Footer": { "hotelObjekt": "Pour hôtels, chalets et restaurants" },
+    "MultiStepForm": { "context": { "themaChalet": "Il s'agit d'un chalet ou d'un appartement de vacances (propriété ou location)." } }
+  },
+  "it": {
+    "Shell": { "nav": { "hotelObjekt": "Hotel & progetti", "hotelObjektTeaser": "Arredare hotel, chalet e ristoranti" } },
+    "Footer": { "hotelObjekt": "Per hotel, chalet e ristoranti" },
+    "MultiStepForm": { "context": { "themaChalet": "Si tratta di uno chalet o di un appartamento per le vacanze (proprietà o affitto)." } }
+  }
+}

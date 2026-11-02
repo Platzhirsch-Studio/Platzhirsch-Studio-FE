@@ -1,0 +1,2152 @@
+{
+  "name": "Amii",
+  "slug": "amii",
+  "hersteller": "Minotti",
+  "designer": "nendo",
+  "jahr": 2024,
+  "jahr_quelle": "Produktseite: „2024 Collection“; Technical Sheet © September 2024",
+  "kollektion": "2024 Collection",
+  "typ": "Modulares Outdoor-Sitzsystem mit geflochtenen Kordelpaneelen für Rücken und Armlehnen in drei Höhenlinien (HIGH, LOW, MIX) plus CORNER HIGH; Sofas, Daybed-Sofas, End-, Eck-, Mittel-, Peninsula-, Couch-, Chaiselongue-, Doppel-Daybed-Elemente, Hocker, Stauraum-Hocker und Couchtische",
+  "quellen": [
+    "https://www.minotti.com/en/amii",
+    "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/24718/27537/AMII_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/24719/27539/AMII_arrangement_02.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Maße in cm laut Technical Sheet (© Minotti, September 2024), Elementliste „Technical Features“ der Produktseite und Minotti-Bilddateinamen der Elementzeichnungen (z. B. „AMII_HIGH_SOFA_195X98_H96“). Einheitliche Tiefe 98 cm bei Sitzelementen. Sitzhöhe 43 cm aus unbeschrifteter Kote, die bei jedem Element vor der Gesamthöhe steht und der Hockerhöhe H43 entspricht. Rücken-/Armlehnenpaneel HIGH 88 cm, LOW 68 cm (Legende Datenblatt). Codes sind interne Planer-Schlüssel, keine Minotti-Artikelnummern.",
+  "hoehen_system": {
+    "HIGH": 96,
+    "LOW": 81,
+    "MIX": 88,
+    "CORNER HIGH": 96,
+    "hinweis": "Gesamthöhe je Linie; Mittel-, Couch-, Daybed-End- und Peninsula-Elemente der HIGH-Linie H88, Elemente mit durchgehendem Rücken (single backrest) H96."
+  },
+  "linien": [
+    {
+      "id": "high",
+      "name": "HIGH",
+      "hinweis": "Hoher Rücken – laut Minotti „intimer, geborgener Raum“"
+    },
+    {
+      "id": "low",
+      "name": "LOW",
+      "hinweis": "Niedriger Rücken – laut Minotti „besonders für gesellige Anlässe“"
+    },
+    {
+      "id": "mix",
+      "name": "MIX",
+      "hinweis": "Mischung hoher und niedriger Paneele"
+    },
+    {
+      "id": "corner-high",
+      "name": "CORNER HIGH",
+      "hinweis": "Hoch gezogene Ecke auf einer Seite (SX/DX)"
+    }
+  ],
+  "elemente": [
+    {
+      "code": "AMII-HIGH-SOFA-170-SB",
+      "name": "HIGH - Sofa 170x98 cm - single backrest",
+      "name_de": "Sofa 170 × 98 cm (HIGH), durchgehender Rücken",
+      "art": "sofa",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 170,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": "Durchgehender Rücken (single backrest); Höhe laut Datenblatt/Bildname H96 auch in der MIX-Linie.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-SOFA-170-SB",
+      "name": "MIX - Sofa 170x98 cm - single backrest",
+      "name_de": "Sofa 170 × 98 cm (MIX), durchgehender Rücken",
+      "art": "sofa",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 170,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": "Durchgehender Rücken (single backrest); Höhe laut Datenblatt/Bildname H96 auch in der MIX-Linie.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-SOFA-195",
+      "name": "HIGH - Sofa 195x98 cm",
+      "name_de": "Sofa 195 × 98 cm (HIGH)",
+      "art": "sofa",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 195,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-SOFA-195",
+      "name": "LOW - Sofa 195x98 cm",
+      "name_de": "Sofa 195 × 98 cm (LOW)",
+      "art": "sofa",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 195,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-CORNERHIGH-SOFA-195",
+      "name": "CORNER HIGH - Sofa 195x98 cm",
+      "name_de": "Sofa 195 × 98 cm (CORNER HIGH)",
+      "art": "sofa",
+      "linie": "corner-high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 195,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": "CORNER HIGH: hoher Rücken mit hochgezogener Ecke auf einer Seite (SX/DX laut Datenblatt).",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-SOFA-195",
+      "name": "MIX - Sofa 195x98 cm",
+      "name_de": "Sofa 195 × 98 cm (MIX)",
+      "art": "sofa",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": null,
+      "breite_cm": 195,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": "MIX = Kombination hoher und niedriger Rücken-/Armlehnenpaneele; SX/DX-Zuordnung im Datenblatt nicht eindeutig lesbar.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-SOFA-280",
+      "name": "HIGH - Sofa 280x98 cm",
+      "name_de": "Sofa 280 × 98 cm (HIGH)",
+      "art": "sofa",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-SOFA-280",
+      "name": "LOW - Sofa 280x98 cm",
+      "name_de": "Sofa 280 × 98 cm (LOW)",
+      "art": "sofa",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-CORNERHIGH-SOFA-280",
+      "name": "CORNER HIGH - Sofa 280x98 cm",
+      "name_de": "Sofa 280 × 98 cm (CORNER HIGH)",
+      "art": "sofa",
+      "linie": "corner-high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": "CORNER HIGH: hoher Rücken mit hochgezogener Ecke auf einer Seite (SX/DX laut Datenblatt).",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-SOFA-280",
+      "name": "MIX - Sofa 280x98 cm",
+      "name_de": "Sofa 280 × 98 cm (MIX)",
+      "art": "sofa",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": null,
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": "MIX = Kombination hoher und niedriger Rücken-/Armlehnenpaneele; SX/DX-Zuordnung im Datenblatt nicht eindeutig lesbar.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-DAYBED-SOFA-195",
+      "name": "HIGH - Daybed-Sofa 195x98 cm",
+      "name_de": "Daybed-Sofa 195 × 98 cm (HIGH)",
+      "art": "sofa-daybed",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 195,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-DAYBED-SOFA-195",
+      "name": "LOW - Daybed-Sofa 195x98 cm",
+      "name_de": "Daybed-Sofa 195 × 98 cm (LOW)",
+      "art": "sofa-daybed",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 195,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-CORNERHIGH-DAYBED-SOFA-195",
+      "name": "CORNER HIGH - Daybed-Sofa 195x98 cm",
+      "name_de": "Daybed-Sofa 195 × 98 cm (CORNER HIGH)",
+      "art": "sofa-daybed",
+      "linie": "corner-high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 195,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-DAYBED-SOFA-195",
+      "name": "MIX - Daybed-Sofa 195x98 cm",
+      "name_de": "Daybed-Sofa 195 × 98 cm (MIX)",
+      "art": "sofa-daybed",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 195,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-DAYBED-SOFA-280",
+      "name": "HIGH - Daybed-Sofa 280x98 cm",
+      "name_de": "Daybed-Sofa 280 × 98 cm (HIGH)",
+      "art": "sofa-daybed",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-DAYBED-SOFA-280",
+      "name": "LOW - Daybed-Sofa 280x98 cm",
+      "name_de": "Daybed-Sofa 280 × 98 cm (LOW)",
+      "art": "sofa-daybed",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-CORNERHIGH-DAYBED-SOFA-280",
+      "name": "CORNER HIGH - Daybed-Sofa 280x98 cm",
+      "name_de": "Daybed-Sofa 280 × 98 cm (CORNER HIGH)",
+      "art": "sofa-daybed",
+      "linie": "corner-high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-DAYBED-SOFA-280",
+      "name": "MIX - Daybed-Sofa 280x98 cm",
+      "name_de": "Daybed-Sofa 280 × 98 cm (MIX)",
+      "art": "sofa-daybed",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-OPEN-SOFA-280",
+      "name": "HIGH - Open Sofa 280x98 cm",
+      "name_de": "Sofa Open 280 × 98 cm (HIGH)",
+      "art": "sofa",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Open“-Variante laut Minotti-Bezeichnung; Bedeutung (offene Rücken-/Armlehnenpartie) im Datenblatt nur gezeichnet, nicht beschrieben.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-OPEN-SOFA-280",
+      "name": "LOW - Open Sofa 280x98 cm",
+      "name_de": "Sofa Open 280 × 98 cm (LOW)",
+      "art": "sofa",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Open“-Variante laut Minotti-Bezeichnung; Bedeutung (offene Rücken-/Armlehnenpartie) im Datenblatt nur gezeichnet, nicht beschrieben.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-CORNERHIGH-OPEN-SOFA-280",
+      "name": "CORNER HIGH - Open Sofa 280x98 cm",
+      "name_de": "Sofa Open 280 × 98 cm (CORNER HIGH)",
+      "art": "sofa",
+      "linie": "corner-high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Open“-Variante laut Minotti-Bezeichnung; Bedeutung (offene Rücken-/Armlehnenpartie) im Datenblatt nur gezeichnet, nicht beschrieben.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-OPEN-SOFA-280",
+      "name": "MIX - Open Sofa 280x98 cm",
+      "name_de": "Sofa Open 280 × 98 cm (MIX)",
+      "art": "sofa",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 280,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Open“-Variante laut Minotti-Bezeichnung; Bedeutung (offene Rücken-/Armlehnenpartie) im Datenblatt nur gezeichnet, nicht beschrieben.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-CORNER-ELEMENT-WITH-ARMREST-98",
+      "name": "HIGH - Corner element with armrest 98x98 cm",
+      "name_de": "Eckelement mit Armlehne 98 × 98 cm (HIGH)",
+      "art": "ecke",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 98,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Eckabschluss mit Armlehne; Anschluss an Mittel-/Endelemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-CORNER-ELEMENT-WITH-ARMREST-98",
+      "name": "LOW - Corner element with armrest 98x98 cm",
+      "name_de": "Eckelement mit Armlehne 98 × 98 cm (LOW)",
+      "art": "ecke",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 98,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Eckabschluss mit Armlehne; Anschluss an Mittel-/Endelemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-CORNER-ELEMENT-WITH-ARMREST-98",
+      "name": "MIX - Corner element with armrest 98x98 cm",
+      "name_de": "Eckelement mit Armlehne 98 × 98 cm (MIX)",
+      "art": "ecke",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 98,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Eckabschluss mit Armlehne; Anschluss an Mittel-/Endelemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-ELEMENT-WITH-1-ARMREST-158-SB",
+      "name": "HIGH - Element with 1 armrest 158x98 cm - single backrest",
+      "name_de": "Endelement mit 1 Armlehne 158 × 98 cm (HIGH), durchgehender Rücken",
+      "art": "endelement",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 158,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Anbau an Mittel-, Eck- oder Peninsula-Elemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-ELEMENT-WITH-1-ARMREST-158-SB",
+      "name": "MIX - Element with 1 armrest 158x98 cm - single backrest",
+      "name_de": "Endelement mit 1 Armlehne 158 × 98 cm (MIX), durchgehender Rücken",
+      "art": "endelement",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 158,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Anbau an Mittel-, Eck- oder Peninsula-Elemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-ELEMENT-WITH-1-ARMREST-183",
+      "name": "HIGH - Element with 1 armrest 183x98 cm",
+      "name_de": "Endelement mit 1 Armlehne 183 × 98 cm (HIGH)",
+      "art": "endelement",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Anbau an Mittel-, Eck- oder Peninsula-Elemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-ELEMENT-WITH-1-ARMREST-183",
+      "name": "LOW - Element with 1 armrest 183x98 cm",
+      "name_de": "Endelement mit 1 Armlehne 183 × 98 cm (LOW)",
+      "art": "endelement",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Anbau an Mittel-, Eck- oder Peninsula-Elemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-CORNERHIGH-ELEMENT-WITH-1-ARMREST-183",
+      "name": "CORNER HIGH - Element with 1 armrest 183x98 cm",
+      "name_de": "Endelement mit 1 Armlehne 183 × 98 cm (CORNER HIGH)",
+      "art": "endelement",
+      "linie": "corner-high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Anbau an Mittel-, Eck- oder Peninsula-Elemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-ELEMENT-WITH-1-ARMREST-183",
+      "name": "MIX - Element with 1 armrest 183x98 cm",
+      "name_de": "Endelement mit 1 Armlehne 183 × 98 cm (MIX)",
+      "art": "endelement",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Anbau an Mittel-, Eck- oder Peninsula-Elemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-ELEMENT-WITH-1-ARMREST-268",
+      "name": "HIGH - Element with 1 armrest 268x98 cm",
+      "name_de": "Endelement mit 1 Armlehne 268 × 98 cm (HIGH)",
+      "art": "endelement",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Anbau an Mittel-, Eck- oder Peninsula-Elemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-ELEMENT-WITH-1-ARMREST-268",
+      "name": "LOW - Element with 1 armrest 268x98 cm",
+      "name_de": "Endelement mit 1 Armlehne 268 × 98 cm (LOW)",
+      "art": "endelement",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Anbau an Mittel-, Eck- oder Peninsula-Elemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-CORNERHIGH-ELEMENT-WITH-1-ARMREST-268",
+      "name": "CORNER HIGH - Element with 1 armrest 268x98 cm",
+      "name_de": "Endelement mit 1 Armlehne 268 × 98 cm (CORNER HIGH)",
+      "art": "endelement",
+      "linie": "corner-high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Anbau an Mittel-, Eck- oder Peninsula-Elemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-ELEMENT-WITH-1-ARMREST-268",
+      "name": "MIX - Element with 1 armrest 268x98 cm",
+      "name_de": "Endelement mit 1 Armlehne 268 × 98 cm (MIX)",
+      "art": "endelement",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Anbau an Mittel-, Eck- oder Peninsula-Elemente",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-OPEN-ELEMENT-WITH-ARMREST-268",
+      "name": "HIGH - Open element with armrest 268x98 cm",
+      "name_de": "Endelement Open mit Armlehne 268 × 98 cm (HIGH)",
+      "art": "endelement",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Open“-Variante laut Minotti-Bezeichnung; Bedeutung (offene Rücken-/Armlehnenpartie) im Datenblatt nur gezeichnet, nicht beschrieben.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-OPEN-ELEMENT-WITH-ARMREST-268",
+      "name": "LOW - Open element with armrest 268x98 cm",
+      "name_de": "Endelement Open mit Armlehne 268 × 98 cm (LOW)",
+      "art": "endelement",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Open“-Variante laut Minotti-Bezeichnung; Bedeutung (offene Rücken-/Armlehnenpartie) im Datenblatt nur gezeichnet, nicht beschrieben.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-CORNERHIGH-OPEN-ELEMENT-WITH-ARMREST-268",
+      "name": "CORNER HIGH - Open element with armrest 268x98 cm",
+      "name_de": "Endelement Open mit Armlehne 268 × 98 cm (CORNER HIGH)",
+      "art": "endelement",
+      "linie": "corner-high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Open“-Variante laut Minotti-Bezeichnung; Bedeutung (offene Rücken-/Armlehnenpartie) im Datenblatt nur gezeichnet, nicht beschrieben.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-OPEN-ELEMENT-WITH-ARMREST-268",
+      "name": "MIX - Open element with armrest 268x98 cm",
+      "name_de": "Endelement Open mit Armlehne 268 × 98 cm (MIX)",
+      "art": "endelement",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Open“-Variante laut Minotti-Bezeichnung; Bedeutung (offene Rücken-/Armlehnenpartie) im Datenblatt nur gezeichnet, nicht beschrieben.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-DAYBED-ELEMENT-WITH-ARMREST-183",
+      "name": "HIGH - Daybed element with armrest 183x98 cm",
+      "name_de": "Daybed-Endelement mit Armlehne 183 × 98 cm (HIGH)",
+      "art": "daybed-element",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-DAYBED-ELEMENT-WITH-ARMREST-183",
+      "name": "LOW - Daybed element with armrest 183x98 cm",
+      "name_de": "Daybed-Endelement mit Armlehne 183 × 98 cm (LOW)",
+      "art": "daybed-element",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-DAYBED-ELEMENT-WITH-ARMREST-183",
+      "name": "MIX - Daybed element with armrest 183x98 cm",
+      "name_de": "Daybed-Endelement mit Armlehne 183 × 98 cm (MIX)",
+      "art": "daybed-element",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-DAYBED-ELEMENT-WITH-ARMREST-268",
+      "name": "HIGH - Daybed element with armrest 268x98 cm",
+      "name_de": "Daybed-Endelement mit Armlehne 268 × 98 cm (HIGH)",
+      "art": "daybed-element",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-DAYBED-ELEMENT-WITH-ARMREST-268",
+      "name": "LOW - Daybed element with armrest 268x98 cm",
+      "name_de": "Daybed-Endelement mit Armlehne 268 × 98 cm (LOW)",
+      "art": "daybed-element",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-DAYBED-ELEMENT-WITH-ARMREST-268",
+      "name": "MIX - Daybed element with armrest 268x98 cm",
+      "name_de": "Daybed-Endelement mit Armlehne 268 × 98 cm (MIX)",
+      "art": "daybed-element",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-OPEN-END-ELEMENT-WITH-ARMREST-183",
+      "name": "HIGH - Open-end element with armrest 183x98 cm",
+      "name_de": "Peninsula-Endelement mit Armlehne 183 × 98 cm (HIGH)",
+      "art": "endelement-peninsula",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-OPEN-END-ELEMENT-WITH-ARMREST-183",
+      "name": "LOW - Open-end element with armrest 183x98 cm",
+      "name_de": "Peninsula-Endelement mit Armlehne 183 × 98 cm (LOW)",
+      "art": "endelement-peninsula",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-OPEN-END-ELEMENT-WITH-ARMREST-183",
+      "name": "MIX - Open-end element with armrest 183x98 cm",
+      "name_de": "Peninsula-Endelement mit Armlehne 183 × 98 cm (MIX)",
+      "art": "endelement-peninsula",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-OPEN-END-ELEMENT-WITH-ARMREST-268",
+      "name": "HIGH - Open-end element with armrest 268x98 cm",
+      "name_de": "Peninsula-Endelement mit Armlehne 268 × 98 cm (HIGH)",
+      "art": "endelement-peninsula",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-OPEN-END-ELEMENT-WITH-ARMREST-268",
+      "name": "LOW - Open-end element with armrest 268x98 cm",
+      "name_de": "Peninsula-Endelement mit Armlehne 268 × 98 cm (LOW)",
+      "art": "endelement-peninsula",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-CORNERHIGH-OPEN-END-ELEMENT-WITH-ARMREST-268",
+      "name": "CORNER HIGH - Open-end element with armrest 268x98 cm",
+      "name_de": "Peninsula-Endelement mit Armlehne 268 × 98 cm (CORNER HIGH)",
+      "art": "endelement-peninsula",
+      "linie": "corner-high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Höhe im Bildnamen nicht angegeben; Datenblatt zeigt H96.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-OPEN-END-ELEMENT-WITH-ARMREST-268",
+      "name": "MIX - Open-end element with armrest 268x98 cm",
+      "name_de": "Peninsula-Endelement mit Armlehne 268 × 98 cm (MIX)",
+      "art": "endelement-peninsula",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-CENTRAL-ELEMENT-87",
+      "name": "HIGH - Central element 87x98 cm",
+      "name_de": "Mittelelement 87 × 98 cm (HIGH)",
+      "art": "mittel",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-CENTRAL-ELEMENT-87",
+      "name": "LOW - Central element 87x98 cm",
+      "name_de": "Mittelelement 87 × 98 cm (LOW)",
+      "art": "mittel",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-CENTRAL-ELEMENT-172",
+      "name": "HIGH - Central element 172x98 cm",
+      "name_de": "Mittelelement 172 × 98 cm (HIGH)",
+      "art": "mittel",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 172,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-CENTRAL-ELEMENT-172",
+      "name": "LOW - Central element 172x98 cm",
+      "name_de": "Mittelelement 172 × 98 cm (LOW)",
+      "art": "mittel",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 172,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-CENTRAL-ELEMENT-257",
+      "name": "HIGH - Central element 257x98 cm",
+      "name_de": "Mittelelement 257 × 98 cm (HIGH)",
+      "art": "mittel",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 257,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-CENTRAL-ELEMENT-257",
+      "name": "LOW - Central element 257x98 cm",
+      "name_de": "Mittelelement 257 × 98 cm (LOW)",
+      "art": "mittel",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 257,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "beidseitig anbaubar",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-OPEN-CENTRAL-ELEMENT-257",
+      "name": "HIGH - Open central element 257x98 cm",
+      "name_de": "Mittelelement Open 257 × 98 cm (HIGH)",
+      "art": "mittel",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 257,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Open“-Variante laut Minotti-Bezeichnung; Bedeutung (offene Rücken-/Armlehnenpartie) im Datenblatt nur gezeichnet, nicht beschrieben.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-OPEN-CENTRAL-ELEMENT-257",
+      "name": "LOW - Open central element 257x98 cm",
+      "name_de": "Mittelelement Open 257 × 98 cm (LOW)",
+      "art": "mittel",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 257,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Open“-Variante laut Minotti-Bezeichnung; Bedeutung (offene Rücken-/Armlehnenpartie) im Datenblatt nur gezeichnet, nicht beschrieben.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-OPEN-END-ELEMENT-172",
+      "name": "HIGH - Open-end element 172x98 cm",
+      "name_de": "Peninsula-Element 172 × 98 cm (HIGH)",
+      "art": "peninsula",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 172,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-OPEN-END-ELEMENT-172",
+      "name": "LOW - Open-end element 172x98 cm",
+      "name_de": "Peninsula-Element 172 × 98 cm (LOW)",
+      "art": "peninsula",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 172,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-OPEN-END-ELEMENT-257",
+      "name": "HIGH - Open-end element 257x98 cm",
+      "name_de": "Peninsula-Element 257 × 98 cm (HIGH)",
+      "art": "peninsula",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 257,
+      "tiefe_cm": 98,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-OPEN-END-ELEMENT-257",
+      "name": "LOW - Open-end element 257x98 cm",
+      "name_de": "Peninsula-Element 257 × 98 cm (LOW)",
+      "art": "peninsula",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 257,
+      "tiefe_cm": 98,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-COUCH-87",
+      "name": "HIGH - Couch 87x183 cm",
+      "name_de": "Couch 87 × 183 cm (HIGH)",
+      "art": "couch",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 183,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-COUCH-87",
+      "name": "LOW - Couch 87x183 cm",
+      "name_de": "Couch 87 × 183 cm (LOW)",
+      "art": "couch",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 183,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-CHAISE-LONGUE-98",
+      "name": "HIGH - Chaise-longue 98x183 cm",
+      "name_de": "Chaiselongue 98 × 183 cm (HIGH)",
+      "art": "chaise",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 98,
+      "tiefe_cm": 183,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-CHAISE-LONGUE-98",
+      "name": "LOW - Chaise-longue 98x183 cm",
+      "name_de": "Chaiselongue 98 × 183 cm (LOW)",
+      "art": "chaise",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 98,
+      "tiefe_cm": 183,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-CHAISE-LONGUE-98",
+      "name": "MIX - Chaise-longue 98x183 cm",
+      "name_de": "Chaiselongue 98 × 183 cm (MIX)",
+      "art": "chaise",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 98,
+      "tiefe_cm": 183,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-DOUBLE-COUCH-147-SB",
+      "name": "HIGH - Double Couch 147x158 cm - single backrest",
+      "name_de": "Doppel-Couch 147 × 158 cm (HIGH), durchgehender Rücken",
+      "art": "couch",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 147,
+      "tiefe_cm": 158,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-DOUBLE-DAYBED-170-SB",
+      "name": "HIGH - Double Daybed 170x158 cm - single backrest",
+      "name_de": "Doppel-Daybed 170 × 158 cm (HIGH), durchgehender Rücken",
+      "art": "daybed",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 170,
+      "tiefe_cm": 158,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-DOUBLE-DAYBED-170-SB",
+      "name": "MIX - Double Daybed 170x158 cm - single backrest",
+      "name_de": "Doppel-Daybed 170 × 158 cm (MIX), durchgehender Rücken",
+      "art": "daybed",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 170,
+      "tiefe_cm": 158,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-DOUBLE-DAYBED-WITH-1-ARMREST-158-SB",
+      "name": "HIGH - Double Daybed with 1 armrest 158x158 cm - single backrest",
+      "name_de": "Doppel-Daybed mit 1 Armlehne 158 × 158 cm (HIGH), durchgehender Rücken",
+      "art": "daybed",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 158,
+      "tiefe_cm": 158,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-DOUBLE-DAYBED-WITH-1-ARMREST-158-SB",
+      "name": "MIX - Double Daybed with 1 armrest 158x158 cm - single backrest",
+      "name_de": "Doppel-Daybed mit 1 Armlehne 158 × 158 cm (MIX), durchgehender Rücken",
+      "art": "daybed",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 158,
+      "tiefe_cm": 158,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-DOUBLE-DAYBED-CORNER-158-SB",
+      "name": "HIGH - Double Daybed Corner 158x158 cm - single backrest",
+      "name_de": "Doppel-Daybed Ecke 158 × 158 cm (HIGH), durchgehender Rücken",
+      "art": "daybed",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 158,
+      "tiefe_cm": 158,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": "Eck-Daybed, z. B. Arrangement 01 mit 2 × Corner-High-Endelement 183",
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-DOUBLE-COUCH-172",
+      "name": "HIGH - Double Couch 172x183 cm",
+      "name_de": "Doppel-Couch 172 × 183 cm (HIGH)",
+      "art": "couch",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 172,
+      "tiefe_cm": 183,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-DOUBLE-COUCH-172",
+      "name": "LOW - Double Couch 172x183 cm",
+      "name_de": "Doppel-Couch 172 × 183 cm (LOW)",
+      "art": "couch",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 172,
+      "tiefe_cm": 183,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-DOUBLE-DAYBED-195",
+      "name": "HIGH - Double Daybed 195x183 cm",
+      "name_de": "Doppel-Daybed 195 × 183 cm (HIGH)",
+      "art": "daybed",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 195,
+      "tiefe_cm": 183,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-DOUBLE-DAYBED-195",
+      "name": "LOW - Double Daybed 195x183 cm",
+      "name_de": "Doppel-Daybed 195 × 183 cm (LOW)",
+      "art": "daybed",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 195,
+      "tiefe_cm": 183,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-HIGH-DOUBLE-DAYBED-WITH-1-ARMREST-183",
+      "name": "HIGH - Double Daybed with 1 armrest 183x183 cm",
+      "name_de": "Doppel-Daybed mit 1 Armlehne 183 × 183 cm (HIGH)",
+      "art": "daybed",
+      "linie": "high",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 183,
+      "hoehe_cm": 96,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-LOW-DOUBLE-DAYBED-WITH-1-ARMREST-183",
+      "name": "LOW - Double Daybed with 1 armrest 183x183 cm",
+      "name_de": "Doppel-Daybed mit 1 Armlehne 183 × 183 cm (LOW)",
+      "art": "daybed",
+      "linie": "low",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 183,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-MIX-DOUBLE-DAYBED-WITH-1-ARMREST-183",
+      "name": "MIX - Double Daybed with 1 armrest 183x183 cm",
+      "name_de": "Doppel-Daybed mit 1 Armlehne 183 × 183 cm (MIX)",
+      "art": "daybed",
+      "linie": "mix",
+      "ausrichtung": null,
+      "seitenvarianten": [
+        "sx",
+        "dx"
+      ],
+      "breite_cm": 183,
+      "tiefe_cm": 183,
+      "hoehe_cm": 88,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-OTTOMAN-87X87",
+      "name": "Ottoman 87x87 cm",
+      "name_de": "Hocker 87 × 87 cm",
+      "art": "hocker",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-OTTOMAN-147X62",
+      "name": "Ottoman 147x62 cm",
+      "name_de": "Hocker 147 × 62 cm",
+      "art": "hocker",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 147,
+      "tiefe_cm": 62,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-OTTOMAN-147X87",
+      "name": "Ottoman 147x87 cm",
+      "name_de": "Hocker 147 × 87 cm",
+      "art": "hocker",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 147,
+      "tiefe_cm": 87,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-STORAGE-OTTOMAN-87X87",
+      "name": "Storage ottoman 87x87",
+      "name_de": "Hocker mit Stauraum 87 × 87 cm",
+      "art": "hocker",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": null,
+      "anschluesse": null,
+      "hinweis": "Innenraum 66 × 66 × H11 cm; Füße schwarzes Polypropylen.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-STORAGE-OTTOMAN-WITH-CASTORS-87X87",
+      "name": "Storage ottoman with castors 87x87",
+      "name_de": "Hocker mit Stauraum auf Rollen 87 × 87 cm",
+      "art": "hocker",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": null,
+      "anschluesse": null,
+      "hinweis": "Innenraum 66 × 66 × H11 cm; 4 Rollen, 360° drehbar.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-STORAGE-OTTOMAN-D87",
+      "name": "Storage ottoman D87",
+      "name_de": "Hocker mit Stauraum rund Ø 87 cm",
+      "art": "hocker",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": 87,
+      "anschluesse": null,
+      "hinweis": "Innenraum Ø 66 × H11 cm.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-STORAGE-OTTOMAN-WITH-CASTORS-D87",
+      "name": "Storage ottoman with castors D87",
+      "name_de": "Hocker mit Stauraum rund auf Rollen Ø 87 cm",
+      "art": "hocker",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": 87,
+      "anschluesse": null,
+      "hinweis": "Innenraum Ø 66 × H11 cm; 4 Rollen, 360° drehbar.",
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-COFFEE-TABLE-87X87-STONE",
+      "name": "Coffee table 87x87xh25 cm – Basaltina stone top",
+      "name_de": "Couchtisch 87 × 87 × H25 cm, Platte Basaltina-Stein",
+      "art": "tisch",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-COFFEE-TABLE-D87-STONE",
+      "name": "Coffee table Ø 87xh25 cm – Basaltina stone top",
+      "name_de": "Couchtisch Ø 87 × H25 cm, Platte Basaltina-Stein",
+      "art": "tisch",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "durchmesser_cm": 87,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-COFFEE-TABLE-87X87-GLASS",
+      "name": "Coffee table 87x87xh25 cm – Glass top",
+      "name_de": "Couchtisch 87 × 87 × H25 cm, Platte rückseitig lackiertes Glas",
+      "art": "tisch",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-COFFEE-TABLE-D87-GLASS",
+      "name": "Coffee table Ø 87xh25 cm – Glass top",
+      "name_de": "Couchtisch Ø 87 × H25 cm, Platte rückseitig lackiertes Glas",
+      "art": "tisch",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "durchmesser_cm": 87,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-OPTIONAL-BACKREST-CUSHION-65X65",
+      "name": "Optional backrest cushion 65x65",
+      "name_de": "Rückenkissen 65 × 65 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 65,
+      "tiefe_cm": 65,
+      "hoehe_cm": null,
+      "durchmesser_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-OPTIONAL-BACKREST-CUSHION-65X50",
+      "name": "Optional backrest cushion 65x50",
+      "name_de": "Rückenkissen 65 × 50 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 65,
+      "tiefe_cm": 50,
+      "hoehe_cm": null,
+      "durchmesser_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-OPTIONAL-LUMBAR-CUSHION-65X40",
+      "name": "Optional lumbar cushion 65x40",
+      "name_de": "Lendenkissen 65 × 40 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 65,
+      "tiefe_cm": 40,
+      "hoehe_cm": null,
+      "durchmesser_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-OPTIONAL-CUSHION-45X45",
+      "name": "Optional cushion 45x45",
+      "name_de": "Kissen 45 × 45 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 45,
+      "tiefe_cm": 45,
+      "hoehe_cm": null,
+      "durchmesser_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-OPTIONAL-CUSHION-45X40",
+      "name": "Optional cushion 45x40",
+      "name_de": "Kissen 45 × 40 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 45,
+      "tiefe_cm": 40,
+      "hoehe_cm": null,
+      "durchmesser_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-OPTIONAL-CUSHION-D50",
+      "name": "Optional cushion D50",
+      "name_de": "Kissen rund (Scheibe) Ø 50 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 50,
+      "tiefe_cm": 50,
+      "hoehe_cm": null,
+      "durchmesser_cm": 50,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-OPTIONAL-ROLL-70",
+      "name": "Optional roll 70",
+      "name_de": "Nackenrolle 70 cm, Ø 20 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 70,
+      "tiefe_cm": 20,
+      "hoehe_cm": 20,
+      "durchmesser_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "AMII-OPTIONAL-CUSHION-D30-H26",
+      "name": "Optional cushion D30 H26",
+      "name_de": "Kissen kugelförmig Ø 30 × H26 cm",
+      "art": "kissen-optional",
+      "linie": null,
+      "ausrichtung": null,
+      "seitenvarianten": [],
+      "breite_cm": 30,
+      "tiefe_cm": 30,
+      "hoehe_cm": 26,
+      "durchmesser_cm": 30,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "nicht_anwendbar": [
+        "sitzhoehe_cm",
+        "sitztiefe_cm"
+      ],
+      "quelle": "https://www.minotti.com/downloads/23324/25511/AMII_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "HIGH – hohes Kordelpaneel",
+      "hoehe_cm": 88,
+      "gesamthoehe_cm": 96
+    },
+    {
+      "name": "LOW – niedriges Kordelpaneel",
+      "hoehe_cm": 68,
+      "gesamthoehe_cm": 81
+    },
+    {
+      "name": "MIX – Kombination hoch/niedrig",
+      "gesamthoehe_cm": 88
+    },
+    {
+      "name": "CORNER HIGH – hohe Ecke",
+      "gesamthoehe_cm": 96
+    },
+    {
+      "name": "Single backrest – durchgehender Rücken (Sofa 170, Endelement 158, Doppel-Couch/-Daybed 147–170 × 158)"
+    },
+    {
+      "name": "Rücken über Bajonett-Stecksystem an der gepolsterten Basis eingehängt"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Kordel-Armlehne in S-Kurve, in Rückenhöhe der jeweiligen Linie (HIGH/LOW/MIX)",
+      "hinweis": "Armlehne und Rücken bilden ein durchlaufendes geflochtenes Paneel; keine separaten Armlehnenformen publiziert."
+    },
+    {
+      "name": "Ohne Armlehne (Mittel-, Peninsula-, Couch-Elemente, Hocker)"
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Füße",
+      "material": "Massives Teak (Tectona Grandis – First European Quality)",
+      "finish": "Natur, höhenverstellbar; schwarze SEBS-Gleiter"
+    },
+    {
+      "teil": "Rückenstruktur",
+      "material": "Edelstahlrohr, mit Polypropylen-Flechtband 24 × 7 mm bezogen",
+      "finish": "Bronze glänzend lackiert oder Ecru matt / Dark Brown (Testa di Moro) matt – passend zur Kordelfarbe"
+    },
+    {
+      "teil": "Sitzbasis",
+      "material": "Sperrholz + PU-Schaum variabler Dichte, wasserabweisender Polyesterbezug",
+      "finish": null
+    },
+    {
+      "teil": "Stauraum-Hocker",
+      "material": "Edelstahlrahmen mit Flechtband; Füße schwarzes Polypropylen oder Rollen Nylon/TPU (360°)",
+      "finish": "Bronze-Anti-Fingerprint-Band unten"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Outdoor-Stoff"
+    ],
+    "kordelfarben": [
+      "Ecru",
+      "Bronze",
+      "Dark Brown (Testa di Moro)"
+    ],
+    "bezugsarten": [
+      "abnehmbar"
+    ],
+    "abnehmbar_hinweis": "Bezüge komplett abnehmbar; Kissen zusätzlich in wasserabweisender Polyester-Innenhülle; Reißverschlüsse und Garn wasserabweisend.",
+    "leder": false,
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Kordelfarben, Bezugsstoffe, Holz-, Metall- und Steinoberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": [
+    {
+      "name": "Sitz- und Rückenkissen (Standard)",
+      "hinweis": "HR-PU-Schaum variabler Dichte + Viskosefaser; Standardkissen in drei Größen (Produktseite)"
+    },
+    {
+      "name": "Optional backrest cushion",
+      "masse": "65 × 65 cm"
+    },
+    {
+      "name": "Optional backrest cushion",
+      "masse": "65 × 50 cm"
+    },
+    {
+      "name": "Optional lumbar cushion",
+      "masse": "65 × 40 cm"
+    },
+    {
+      "name": "Optional cushion",
+      "masse": "45 × 45 cm"
+    },
+    {
+      "name": "Optional cushion",
+      "masse": "45 × 40 cm"
+    },
+    {
+      "name": "Optional cushion (Scheibe)",
+      "masse": "Ø 50 cm"
+    },
+    {
+      "name": "Optional roll (Zylinder)",
+      "masse": "70 cm, Ø 20 cm"
+    },
+    {
+      "name": "Optional cushion (Kugel)",
+      "masse": "Ø 30 × H26 cm"
+    },
+    {
+      "name": "Optional rain cover",
+      "hinweis": "Für jedes Element erhältlich"
+    }
+  ],
+  "polsterung": "Sitz aus Sperrholz und PU-Schaum variabler Dichte mit wasserabweisendem Polyesterbezug; Kissen HR-PU-Schaum + Viskosefaser in wasserabweisender Hülle.",
+  "outdoor": true,
+  "besonderheiten": [
+    "Outdoor-System – Name nach einem umhüllenden Netz",
+    "Drei Rückenhöhen HIGH/LOW/MIX + CORNER HIGH frei mischbar (laut Produktseite)",
+    "Geflochtene Kordelpaneele in S-Kurve, per Bajonett eingehängt",
+    "Zylinder-, Kugel- und Scheibenkissen als Zusatzkissen",
+    "Stauraum-Hocker eckig/rund, wahlweise mit Rollen",
+    "Couchtische mit Basaltina-Stein- oder rückseitig lackierter Glasplatte (Celadon, Cappuccino, Rust, Green)",
+    "Regenhülle (rain cover) für jedes Element"
+  ],
+  "beispiel_kompositionen": [
+    {
+      "name": "Amii 01",
+      "elemente": [
+        "AMII-CORNERHIGH-ELEMENT-WITH-1-ARMREST-183 (SX)",
+        "AMII-CORNERHIGH-ELEMENT-WITH-1-ARMREST-183 (DX)",
+        "AMII-HIGH-DOUBLE-DAYBED-CORNER-158-SB (DX)"
+      ],
+      "gesamtbreite_cm": 366
+    },
+    {
+      "name": "Amii 02",
+      "elemente": [
+        "AMII-LOW-ELEMENT-WITH-1-ARMREST-268 (SX)",
+        "AMII-MIX-OPEN-END-ELEMENT-WITH-ARMREST-268 (SX)",
+        "AMII-HIGH-DOUBLE-DAYBED-195"
+      ],
+      "gesamtbreite_cm": 366
+    }
+  ],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für den internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "fehlend": [
+    "Sitztiefe aller Elemente (nicht beschriftet)",
+    "Sitzhöhe nur aus unbeschrifteter Kote (43 cm) abgeleitet",
+    "Verbindliche Kombinationsregeln (welche Linien/Elemente aneinander anschließen dürfen) – nur 2 Beispiel-Arrangements öffentlich",
+    "Bedeutung der „Open“-Varianten nur gezeichnet, nicht textlich beschrieben",
+    "SX/DX-Zuordnung bei MIX-Sofas 195/280 nicht eindeutig lesbar",
+    "Herstellerartikelnummern",
+    "Stoffkollektion/Farbpalette der Kissenbezüge und Preisgruppen",
+    "Gewichte"
+  ],
+  "vollstaendigkeit": {
+    "masse_prozent": 80,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe/sitzhoehe/sitztiefe über alle Sitz-/Hockerelemente (ohne Tische, Kissen)."
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "name": "Lars",
+  "slug": "lars",
+  "hersteller": "Minotti",
+  "designer": "Inoda+Sveje",
+  "jahr": 2022,
+  "jahr_hinweis": "Produktseite verlinkt auf „2022 Collection“; Technical Sheet Stand Oktober 2022.",
+  "typ": "Halbrundes, asymmetrisches Einzelsofa (nicht modular) auf fünf Massivholzbeinen",
+  "quellen": [
+    "https://www.minotti.com/en/lars",
+    "https://www.minotti.com/downloads/20588/21557/LARS_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/20588/22742/MINOTTI_Lars.zip"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "hinweis_masse": "Maße aus der Zeichnung des Technical Sheet (Oktober 2022) und der Element-Bezeichnung der Produktseite. Laut Minotti können CAD-Maße leicht vom Datenblatt abweichen.",
+  "hinweis_rechte": "Bild-URLs nur als Quellennachweis. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, Rechte-Register beachten).",
+  "elemente": [
+    {
+      "code": "semi-round-sofa-cm-217",
+      "name": "SEMI-ROUND SOFA CM 217",
+      "art": "sofa",
+      "breite_cm": 217,
+      "tiefe_cm": 100,
+      "hoehe_cm": 74,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "ausrichtung": ["SX", "DX"],
+      "anschluesse": "Freistehend, keine Anbauelemente",
+      "bild_quelle": "https://www.minotti.com/media/immagini/38928_n_LARS_SEMI_ROUND_SOFA_217X100_H74.jpg",
+      "mass_quelle": ["https://www.minotti.com/en/lars", "https://www.minotti.com/downloads/20588/21557/LARS_TECHNICAL_SHEET.pdf"],
+      "hinweise": [
+        "Asymmetrische Form, in Ausführung SX und DX (laut Zeichnung).",
+        "Zeichnung zeigt zusätzlich die Maße 195 und 100 ohne Achsbeschriftung (vermutl. Kontur in der Draufsicht) – nicht als Sitztiefe übernommen."
+      ]
+    },
+    {
+      "code": "optional-cushion",
+      "name": "OPTIONAL CUSHION",
+      "art": "dekokissen-optional",
+      "breite_cm": 50,
+      "tiefe_cm": null,
+      "hoehe_cm": 50,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "ausrichtung": null,
+      "anschluesse": null,
+      "bild_quelle": "https://www.minotti.com/media/immagini/38930_n_LARS_OPTIONAL_CUSHION_50_H50.jpg",
+      "mass_quelle": ["https://www.minotti.com/downloads/20588/21557/LARS_TECHNICAL_SHEET.pdf"],
+      "hinweise": [
+        "Widerspruch in der Quelle: Produktseite beschriftet „OPTIONAL CUSHION CM 60X60“, Technical Sheet und Bilddatei zeigen 50x50. Übernommen: 50x50 (Datenblatt) – vor Angebot beim Hersteller klären."
+      ]
+    }
+  ],
+  "rueckenoptionen": ["Eine Ausführung: Rücken aus Metall in flammhemmendem PU-Schaum, von der Holzstruktur gerahmt"],
+  "armlehnenoptionen": ["Keine Varianten – Armlehne in die durchgehende, asymmetrische Kurve integriert"],
+  "fuesse_sockel": [
+    {
+      "teil": "Tragende Struktur mit fünf schlanken Beinen (Massivholz, Dübelverbindungen, CNC-gefertigt)",
+      "material": "Massive Esche",
+      "finish": ["Offenporig lackiert Licorice (Liquirizia)"]
+    },
+    {
+      "teil": "Tragende Struktur mit fünf schlanken Beinen (Massivholz, Dübelverbindungen, CNC-gefertigt)",
+      "material": "Massiver Nussbaum Canaletto",
+      "finish": ["Gebeizt Light Brown, matter Polyesterlack"]
+    },
+    { "teil": "Gleiter", "material": "Filzgleiter schwarz oder Polyethylen-Gleiter schwarz" }
+  ],
+  "bezuege": {
+    "kategorien": ["Stoff", "Leder"],
+    "bezugsart": "Abnehmbar: Kissen und Struktur in allen Versionen (Stoff und Leder) komplett abziehbar.",
+    "preisgruppen": null,
+    "farbmuster_hinweis": "Stoff- und Lederkollektion (Minotti „The World of Materials“) nur teils öffentlich; Original-Farbmuster bitte im Showroom ansehen – Bildschirmfarben sind nicht verbindlich."
+  },
+  "polsterung": "Sitz aus Sperrholz mit hochelastischem PU-Schaum unterschiedlicher Dichte, ummantelt mit atmungsaktiver, thermogebundener Faser auf weißem hypoallergenem Baumwollstoff.",
+  "kissenoptionen": [
+    { "name": "Optionales Kissen", "masse_cm": ["50x50 (Datenblatt) bzw. 60x60 (Produktseite) – Widerspruch"] }
+  ],
+  "kombinierbarkeit": ["Einzelsofa, keine Kombination mit Anbauelementen vorgesehen."],
+  "outdoor": false,
+  "besonderheiten": [
+    "Weiche, asymmetrische, durchgehende organische Kurve; vom Boden abgehoben auf fünf Beinen.",
+    "Holzstruktur steigt über die Sitzfläche und rahmt den Rücken; betonte Verbindungsdetails (Kunstschreinerei).",
+    "Für Wohnen und Hospitality vorgesehen."
+  ],
+  "fehlend": [
+    "Sitztiefe (nicht beschriftet).",
+    "Bedeutung der Zeichnungsmaße 195 und 100 (zweite Ansicht).",
+    "Eindeutiges Maß des optionalen Kissens (50x50 vs. 60x60).",
+    "Minotti-Artikelnummer.",
+    "Vollständige Stoff-/Lederliste und Preisgruppen (Händler-/Login-Bereich).",
+    "Preise (vom Inhaber festzulegen).",
+    "Gewicht, Lieferzeit."
+  ]
+}

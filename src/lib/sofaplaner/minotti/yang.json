@@ -1,0 +1,2209 @@
+{
+  "name": "Yang",
+  "slug": "yang",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2015,
+  "jahr_hinweis": "Produktseite verlinkt auf „2015 Collection“ (Kollektionszuordnung, kein Erscheinungsjahr); Technical Sheet ohne Datum.",
+  "kollektion": "2015 Collection",
+  "typ": "Modulares Sitzsystem mit Sitzkissen und wendbaren Rückenkissen, Aluminium-Frontleiste in Zinn/Pewter; Standard- und „Offset“-Elemente (Rücken seitlich versetzt), Sofas, Daybed-Sofas, End-, Mittel-, Peninsula-, Daybed-, Couch- und Chaiselongue-Elemente sowie umfangreiches Hocker-Programm.",
+  "modular": true,
+  "quellen": [
+    "https://www.minotti.com/en/yang_2",
+    "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/11301/8874/Yang%20arrangement%201.pdf",
+    "https://www.minotti.com/downloads/11303/8878/Yang%20arrangement%202.pdf",
+    "https://www.minotti.com/downloads/11304/8882/Yang%20arrangement%203.pdf",
+    "https://www.minotti.com/downloads/14155/11957/Yang%20arrangement%204.pdf",
+    "https://www.minotti.com/downloads/14156/11961/Yang%20arrangement%205.pdf"
+  ],
+  "technisches_datenblatt": "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf",
+  "datenblatt_stand": "Ohne Datumsangabe (7 Seiten)",
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "masse_hinweis": "Maße aus den bemaßten Zeichnungen des Technical Sheet und der Produktseite. Zeichnungen doppelt bemaßt (cm/Zoll). Höhenschema: Gesamthöhe mit Rückenkissen 78 cm, Struktur Rücken/Armlehne 61 cm, Sitzhöhe 38 cm, mit Kopfstütze 97 cm, Basis 7,5 cm. Tiefenschema: Tiefe 105 cm = Rücken 25 + Sitz 80 cm (Draufsicht „Altezze e profondità“) → sitztiefe_cm 80 für Elemente mit Längsrücken. Armlehnenbreite 25 cm. armlehnenhoehe_cm 61 = Strukturhöhe im Höhenschema (Armlehne und Rücken gleich hoch dargestellt).",
+  "raster": {
+    "sitzbreiten_cm": [
+      120,
+      130,
+      160,
+      180,
+      210,
+      240
+    ],
+    "tiefe_cm": 105,
+    "armlehnenbreite_cm": 25,
+    "hinweis": "Außenbreite Endelement = Innenmaß + 25 cm Armlehne; abgeleitet aus Zeichnungen."
+  },
+  "elemente": [
+    {
+      "code": "YNG-SOFA-180",
+      "name": "SOFA CM 180",
+      "name_de": "Sofa 180 cm",
+      "art": "sofa",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 180,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 130,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend, 2 Armlehnen",
+      "hinweis": "Nur im Datenblatt; Produktseite listet Sofas 210–310.",
+      "nur_im_datenblatt": true,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-SOFA-210",
+      "name": "SOFA CM 210",
+      "name_de": "Sofa 210 cm",
+      "art": "sofa",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 210,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 160,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-SOFA-230",
+      "name": "SOFA CM 230",
+      "name_de": "Sofa 230 cm",
+      "art": "sofa",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 230,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 180,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-SOFA-260",
+      "name": "SOFA CM 260",
+      "name_de": "Sofa 260 cm",
+      "art": "sofa",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 260,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-SOFA-290",
+      "name": "SOFA CM 290",
+      "name_de": "Sofa 290 cm",
+      "art": "sofa",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 290,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend, 2 Armlehnen",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-SOFA-COMP-310",
+      "name": "SOFA CM 310 (composed)",
+      "name_de": "Sofa komponiert 310 cm",
+      "art": "sofa",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 310,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 260,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Endelement SX + DX à 155 cm (Datenblatt)",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-SOFA-COMP-370",
+      "name": "COMPOSED SOFA CM 370",
+      "name_de": "Sofa komponiert 370 cm",
+      "art": "sofa",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 370,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 320,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Endelement SX + DX à 185 cm (Datenblatt)",
+      "hinweis": "Nur im Datenblatt.",
+      "nur_im_datenblatt": true,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-DAYSOFA-260-180",
+      "name": "DAYBED-SOFA CM 260 - BACKREST CM 180",
+      "name_de": "Daybed-Sofa 260 cm, Rücken 180 cm",
+      "art": "sofa-daybed",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": 180,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend, 2 Armlehnen, Rücken nur teilweise; kurzer Querrücken/Kopfteil im offenen Bereich",
+      "hinweis": "Draufsicht-Koten 55 / 80 cm (Lage des Querrückens) ohne Achsbeschriftung.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-DAYSOFA-290-185",
+      "name": "DAYBED-SOFA CM 290 - BACKREST CM 185",
+      "name_de": "Daybed-Sofa 290 cm, Rücken 185 cm",
+      "art": "sofa-daybed",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 290,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": 185,
+      "offene_laenge_cm": null,
+      "anschluesse": "Freistehend, 2 Armlehnen, Rücken nur teilweise; kurzer Querrücken/Kopfteil im offenen Bereich",
+      "hinweis": "Draufsicht-Koten 80 / 105 cm (Lage des Querrückens) ohne Achsbeschriftung.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-DAY-185-105",
+      "name": "DAYBED ELEMENT CM 185 - BACKREST CM 105",
+      "name_de": "Daybed-Element 185 cm, Rücken 105 cm",
+      "art": "daybed",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 185,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 160,
+      "rueckenlaenge_cm": 105,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar; Rücken nur teilweise, Querrücken im offenen Bereich",
+      "hinweis": "Draufsicht-Koten 55 / 80 cm ohne Achsbeschriftung.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-DAY-235-155",
+      "name": "DAYBED ELEMENT CM 235 - BACKREST CM 155",
+      "name_de": "Daybed-Element 235 cm, Rücken 155 cm",
+      "art": "daybed",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 235,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": 155,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar; Rücken nur teilweise, Querrücken im offenen Bereich",
+      "hinweis": "Draufsicht-Koten 55 / 80 cm ohne Achsbeschriftung.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-DAY-265-145",
+      "name": "DAYBED ELEMENT CM 265 - BACKREST CM 145",
+      "name_de": "Daybed-Element 265 cm, Rücken 145 cm",
+      "art": "daybed",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 265,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": 145,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar; Rücken nur teilweise, Querrücken im offenen Bereich",
+      "hinweis": "Draufsicht-Koten 95 / 120 cm ohne Achsbeschriftung.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-DAY-265-185",
+      "name": "DAYBED ELEMENT CM 265 - BACKREST CM 185",
+      "name_de": "Daybed-Element 265 cm, Rücken 185 cm",
+      "art": "daybed",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 265,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": 185,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar; Rücken nur teilweise, Querrücken im offenen Bereich",
+      "hinweis": "Draufsicht-Koten 55 / 80 cm ohne Achsbeschriftung.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-END-145",
+      "name": "ELEMENT WITH 1 ARMREST CM 145",
+      "name_de": "Endelement mit 1 Armlehne 145 cm",
+      "art": "endelement",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 145,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 120,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-END-155",
+      "name": "ELEMENT WITH 1 ARMREST CM 155",
+      "name_de": "Endelement mit 1 Armlehne 155 cm",
+      "art": "endelement",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 155,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 130,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-END-185",
+      "name": "ELEMENT WITH 1 ARMREST CM 185",
+      "name_de": "Endelement mit 1 Armlehne 185 cm",
+      "art": "endelement",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 185,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 160,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-END-205",
+      "name": "ELEMENT WITH 1 ARMREST CM 205",
+      "name_de": "Endelement mit 1 Armlehne 205 cm",
+      "art": "endelement",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 205,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 180,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-END-235",
+      "name": "ELEMENT WITH 1 ARMREST CM 235",
+      "name_de": "Endelement mit 1 Armlehne 235 cm",
+      "art": "endelement",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 235,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-END-265",
+      "name": "ELEMENT WITH 1 ARMREST CM 265",
+      "name_de": "Endelement mit 1 Armlehne 265 cm",
+      "art": "endelement",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 265,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OEARM-185-105",
+      "name": "OPEN-END ELEMENT WITH 1 ARMREST CM 185 - BACKREST CM 105",
+      "name_de": "Peninsula-Endelement mit Armlehne 185 cm, Rücken 105 cm",
+      "art": "endelement-peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 185,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 160,
+      "rueckenlaenge_cm": 105,
+      "offene_laenge_cm": 80,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar; Rücken nur teilweise",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OEARM-185-130",
+      "name": "OPEN-END ELEMENT WITH 1 ARMREST CM 185 - BACKREST CM 130",
+      "name_de": "Peninsula-Endelement mit Armlehne 185 cm, Rücken 130 cm",
+      "art": "endelement-peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 185,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 160,
+      "rueckenlaenge_cm": 130,
+      "offene_laenge_cm": 55,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar; Rücken nur teilweise",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OEARM-205-150",
+      "name": "OPEN-END ELEMENT WITH 1 ARMREST CM 205 - BACKREST CM 150",
+      "name_de": "Peninsula-Endelement mit Armlehne 205 cm, Rücken 150 cm",
+      "art": "endelement-peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 205,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 180,
+      "rueckenlaenge_cm": 150,
+      "offene_laenge_cm": 55,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar; Rücken nur teilweise",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OEARM-235-155",
+      "name": "OPEN-END ELEMENT WITH 1 ARMREST CM 235 - BACKREST CM 155",
+      "name_de": "Peninsula-Endelement mit Armlehne 235 cm, Rücken 155 cm",
+      "art": "endelement-peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 235,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": 155,
+      "offene_laenge_cm": 80,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar; Rücken nur teilweise",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OEARM-235-180",
+      "name": "OPEN-END ELEMENT WITH 1 ARMREST CM 235 - BACKREST CM 180",
+      "name_de": "Peninsula-Endelement mit Armlehne 235 cm, Rücken 180 cm",
+      "art": "endelement-peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 235,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": 180,
+      "offene_laenge_cm": 55,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar; Rücken nur teilweise",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OEARM-265-185",
+      "name": "OPEN-END ELEMENT WITH 1 ARMREST CM 265 - BACKREST CM 185",
+      "name_de": "Peninsula-Endelement mit Armlehne 265 cm, Rücken 185 cm",
+      "art": "endelement-peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 265,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": 185,
+      "offene_laenge_cm": 80,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar; Rücken nur teilweise",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OEARM-265-210",
+      "name": "OPEN-END ELEMENT WITH 1 ARMREST CM 265 - BACKREST CM 210",
+      "name_de": "Peninsula-Endelement mit Armlehne 265 cm, Rücken 210 cm",
+      "art": "endelement-peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 265,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": 210,
+      "offene_laenge_cm": 55,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar; Rücken nur teilweise",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OE-160-80",
+      "name": "OPEN-END ELEMENT CM 160 - BACKREST CM 80",
+      "name_de": "Peninsula-Element 160 cm, Rücken 80 cm",
+      "art": "peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 160,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 160,
+      "rueckenlaenge_cm": 80,
+      "offene_laenge_cm": 80,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OE-160-105",
+      "name": "OPEN-END ELEMENT CM 160 - BACKREST CM 105",
+      "name_de": "Peninsula-Element 160 cm, Rücken 105 cm",
+      "art": "peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 160,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 160,
+      "rueckenlaenge_cm": 105,
+      "offene_laenge_cm": 55,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OE-210-130",
+      "name": "OPEN-END ELEMENT CM 210 - BACKREST CM 130",
+      "name_de": "Peninsula-Element 210 cm, Rücken 130 cm",
+      "art": "peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 210,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": 130,
+      "offene_laenge_cm": 80,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OE-210-155",
+      "name": "OPEN-END ELEMENT CM 210 - BACKREST CM 155",
+      "name_de": "Peninsula-Element 210 cm, Rücken 155 cm",
+      "art": "peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 210,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": 155,
+      "offene_laenge_cm": 55,
+      "anschluesse": null,
+      "hinweis": "Nur im Datenblatt, nicht auf der Produktseite.",
+      "nur_im_datenblatt": true,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OE-240-160",
+      "name": "OPEN-END ELEMENT CM 240 - BACKREST CM 160",
+      "name_de": "Peninsula-Element 240 cm, Rücken 160 cm",
+      "art": "peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 240,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": 160,
+      "offene_laenge_cm": 80,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OE-240-185",
+      "name": "OPEN-END ELEMENT CM 240 - BACKREST CM 185",
+      "name_de": "Peninsula-Element 240 cm, Rücken 185 cm",
+      "art": "peninsula",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 240,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": 185,
+      "offene_laenge_cm": 55,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-CEN-120",
+      "name": "CENTRAL ELEMENT CM 120",
+      "name_de": "Mittelelement 120 cm",
+      "art": "mittel",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 120,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 120,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-CEN-130",
+      "name": "CENTRAL ELEMENT CM 130",
+      "name_de": "Mittelelement 130 cm",
+      "art": "mittel",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 130,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 130,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-CEN-160",
+      "name": "CENTRAL ELEMENT CM 160",
+      "name_de": "Mittelelement 160 cm",
+      "art": "mittel",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 160,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 160,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-CEN-180",
+      "name": "CENTRAL ELEMENT CM 180",
+      "name_de": "Mittelelement 180 cm",
+      "art": "mittel",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 180,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 180,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-CEN-210",
+      "name": "CENTRAL ELEMENT CM 210",
+      "name_de": "Mittelelement 210 cm",
+      "art": "mittel",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 210,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Ohne Armlehnen, beidseitig anbaubar",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-COUCH-130x155",
+      "name": "COUCH CM 130X155",
+      "name_de": "Couch 130 × 155 cm",
+      "art": "couch",
+      "linie": "Standard",
+      "seitenvarianten": null,
+      "breite_cm": 130,
+      "tiefe_cm": 155,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 130,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Rücken an der Kurzseite",
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-CHAISE-105x185-A80",
+      "name": "CHAISE-LONGUE CM 105X185 - ARMREST CM 80",
+      "name_de": "Chaiselongue 105 × 185 cm, Armlehne 80 cm",
+      "art": "chaise",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 105,
+      "tiefe_cm": 185,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 80,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Rücken an der Kurzseite, seitliche Armlehne 80 cm lang",
+      "hinweis": "Armlehnenlänge 80 cm.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-CHAISE-155x155-A80",
+      "name": "CHAISE-LONGUE CM 155X155 - ARMREST CM 80",
+      "name_de": "Chaiselongue 155 × 155 cm, Armlehne 80 cm",
+      "art": "chaise",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 155,
+      "tiefe_cm": 155,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 130,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Armlehnenlänge 80 cm; Draufsicht-Kote 50 cm (Lage) ohne Achsbeschriftung.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-CHAISE-155x155-A130",
+      "name": "CHAISE-LONGUE CM 155X155 - ARMREST CM 130",
+      "name_de": "Chaiselongue 155 × 155 cm, Armlehne 130 cm",
+      "art": "chaise",
+      "linie": "Standard",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 155,
+      "tiefe_cm": 155,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 130,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Armlehne durchgehend 130 cm.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-OE-235-155",
+      "name": "\"OFFSET\" OPEN-END ELEMENT CM 235 - BACKREST CM 155",
+      "name_de": "Offset-Peninsula 235 cm, Rücken 155 cm",
+      "art": "peninsula",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 235,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": 155,
+      "offene_laenge_cm": 80,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend). Produktseite schreibt irrtümlich „ARMREST CM 155“.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-OE-235-180",
+      "name": "\"OFFSET\" OPEN-END ELEMENT CM 235 - BACKREST CM 180",
+      "name_de": "Offset-Peninsula 235 cm, Rücken 180 cm",
+      "art": "peninsula",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 235,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": 180,
+      "offene_laenge_cm": 55,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-OE-265-185",
+      "name": "\"OFFSET\" OPEN-END ELEMENT CM 265 - BACKREST CM 185",
+      "name_de": "Offset-Peninsula 265 cm, Rücken 185 cm",
+      "art": "peninsula",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 265,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": 185,
+      "offene_laenge_cm": 80,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-OE-265-210",
+      "name": "\"OFFSET\" OPEN-END ELEMENT CM 265 - BACKREST CM 210",
+      "name_de": "Offset-Peninsula 265 cm, Rücken 210 cm",
+      "art": "peninsula",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 265,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": 210,
+      "offene_laenge_cm": 55,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-CEN-180",
+      "name": "\"OFFSET\" CENTRAL ELEMENT CM 180",
+      "name_de": "Offset-Mittelelement 180 cm",
+      "art": "mittel",
+      "linie": "Offset",
+      "seitenvarianten": null,
+      "breite_cm": 180,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 130,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend). Nur im Datenblatt.",
+      "nur_im_datenblatt": true,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-CEN-210",
+      "name": "\"OFFSET\" CENTRAL ELEMENT CM 210",
+      "name_de": "Offset-Mittelelement 210 cm",
+      "art": "mittel",
+      "linie": "Offset",
+      "seitenvarianten": null,
+      "breite_cm": 210,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 160,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-CEN-230",
+      "name": "\"OFFSET\" CENTRAL ELEMENT CM 230",
+      "name_de": "Offset-Mittelelement 230 cm",
+      "art": "mittel",
+      "linie": "Offset",
+      "seitenvarianten": null,
+      "breite_cm": 230,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 180,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-CEN-260",
+      "name": "\"OFFSET\" CENTRAL ELEMENT CM 260",
+      "name_de": "Offset-Mittelelement 260 cm",
+      "art": "mittel",
+      "linie": "Offset",
+      "seitenvarianten": null,
+      "breite_cm": 260,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-CEN-290",
+      "name": "\"OFFSET\" CENTRAL ELEMENT CM 290",
+      "name_de": "Offset-Mittelelement 290 cm",
+      "art": "mittel",
+      "linie": "Offset",
+      "seitenvarianten": null,
+      "breite_cm": 290,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-END-180",
+      "name": "\"OFFSET\" ELEMENT WITH 1 ARMREST CM 180",
+      "name_de": "Offset-Endelement mit Armlehne 180 cm",
+      "art": "endelement",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 180,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 130,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar",
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-END-210",
+      "name": "\"OFFSET\" ELEMENT WITH 1 ARMREST CM 210",
+      "name_de": "Offset-Endelement mit Armlehne 210 cm",
+      "art": "endelement",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 210,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 160,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar",
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-END-230",
+      "name": "\"OFFSET\" ELEMENT WITH 1 ARMREST CM 230",
+      "name_de": "Offset-Endelement mit Armlehne 230 cm",
+      "art": "endelement",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 230,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 180,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar",
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-END-260",
+      "name": "\"OFFSET\" ELEMENT WITH 1 ARMREST CM 260",
+      "name_de": "Offset-Endelement mit Armlehne 260 cm",
+      "art": "endelement",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar",
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-END-290",
+      "name": "\"OFFSET\" ELEMENT WITH 1 ARMREST CM 290",
+      "name_de": "Offset-Endelement mit Armlehne 290 cm",
+      "art": "endelement",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 290,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Armlehne an einer Seite (SX/DX), andere Seite anbaubar",
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-NOARM-145",
+      "name": "\"OFFSET\" ELEMENT WITHOUT ARMREST CM 145",
+      "name_de": "Offset-Endelement ohne Armlehne 145 cm",
+      "art": "anbau-endelement",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 145,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 120,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Rücken an einer Seite überstehend, ohne Armlehne",
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-NOARM-155",
+      "name": "\"OFFSET\" ELEMENT WITHOUT ARMREST CM 155",
+      "name_de": "Offset-Endelement ohne Armlehne 155 cm",
+      "art": "anbau-endelement",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 155,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 130,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Rücken an einer Seite überstehend, ohne Armlehne",
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-NOARM-185",
+      "name": "\"OFFSET\" ELEMENT WITHOUT ARMREST CM 185",
+      "name_de": "Offset-Endelement ohne Armlehne 185 cm",
+      "art": "anbau-endelement",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 185,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 160,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Rücken an einer Seite überstehend, ohne Armlehne",
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-NOARM-205",
+      "name": "\"OFFSET\" ELEMENT WITHOUT ARMREST CM 205",
+      "name_de": "Offset-Endelement ohne Armlehne 205 cm",
+      "art": "anbau-endelement",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 205,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 180,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Rücken an einer Seite überstehend, ohne Armlehne",
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-NOARM-235",
+      "name": "\"OFFSET\" ELEMENT WITHOUT ARMREST CM 235",
+      "name_de": "Offset-Endelement ohne Armlehne 235 cm",
+      "art": "anbau-endelement",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 235,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Rücken an einer Seite überstehend, ohne Armlehne",
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-NOARM-265",
+      "name": "\"OFFSET\" ELEMENT WITHOUT ARMREST CM 265",
+      "name_de": "Offset-Endelement ohne Armlehne 265 cm",
+      "art": "anbau-endelement",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 265,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Rücken an einer Seite überstehend, ohne Armlehne",
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-DAY-260-180",
+      "name": "\"OFFSET\" DAYBED CM 260 - BACKREST CM 180",
+      "name_de": "Offset-Daybed 260 cm, Rücken 180 cm",
+      "art": "daybed",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 210,
+      "rueckenlaenge_cm": 180,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-DAY-290-185",
+      "name": "\"OFFSET\" DAYBED CM 290 - BACKREST CM 185",
+      "name_de": "Offset-Daybed 290 cm, Rücken 185 cm",
+      "art": "daybed",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 290,
+      "tiefe_cm": 105,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 80,
+      "armlehnenhoehe_cm": 61,
+      "innen_sitzbreite_cm": 240,
+      "rueckenlaenge_cm": 185,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend).",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNGO-COUCH-155",
+      "name": "\"OFFSET\" COUCH",
+      "name_de": "Offset-Couch 155 × 155 cm",
+      "art": "couch",
+      "linie": "Offset",
+      "seitenvarianten": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 155,
+      "tiefe_cm": 155,
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": 130,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "„Offset“: Rücken gegenüber der Sitzfläche seitlich versetzt (überstehend). Draufsicht zusätzlich Kote 130 (Liegelänge) – Maße laut Datenblatt.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OTT-80x50",
+      "name": "OTTOMAN CM 80X50",
+      "name_de": "Hocker 80 × 50 cm",
+      "art": "hocker",
+      "linie": "Pouf",
+      "seitenvarianten": null,
+      "breite_cm": 80,
+      "tiefe_cm": 50,
+      "hoehe_cm": 36,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Als Ablage in Armlehnenposition oder als Sitzverlängerung vor dem Sofa",
+      "hinweis": "Höhe laut Datenblatt 36 cm; Produktseite/Arrangements nennen H38 – Widerspruch, vor Angebot klären.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OTT-105x50",
+      "name": "OTTOMAN CM 105X50",
+      "name_de": "Hocker 105 × 50 cm",
+      "art": "hocker",
+      "linie": "Pouf",
+      "seitenvarianten": null,
+      "breite_cm": 105,
+      "tiefe_cm": 50,
+      "hoehe_cm": 36,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Als Ablage in Armlehnenposition oder als Sitzverlängerung vor dem Sofa",
+      "hinweis": "Höhe laut Datenblatt 36 cm; Produktseite/Arrangements nennen H38 – Widerspruch, vor Angebot klären.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OTT-120x50",
+      "name": "OTTOMAN CM 120X50",
+      "name_de": "Hocker 120 × 50 cm",
+      "art": "hocker",
+      "linie": "Pouf",
+      "seitenvarianten": null,
+      "breite_cm": 120,
+      "tiefe_cm": 50,
+      "hoehe_cm": 36,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Als Ablage in Armlehnenposition oder als Sitzverlängerung vor dem Sofa",
+      "hinweis": "Höhe laut Datenblatt 36 cm; Produktseite/Arrangements nennen H38 – Widerspruch, vor Angebot klären.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OTT-130x50",
+      "name": "OTTOMAN CM 130X50",
+      "name_de": "Hocker 130 × 50 cm",
+      "art": "hocker",
+      "linie": "Pouf",
+      "seitenvarianten": null,
+      "breite_cm": 130,
+      "tiefe_cm": 50,
+      "hoehe_cm": 36,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Als Ablage in Armlehnenposition oder als Sitzverlängerung vor dem Sofa",
+      "hinweis": "Höhe laut Datenblatt 36 cm; Produktseite/Arrangements nennen H38 – Widerspruch, vor Angebot klären.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OTT-160x50",
+      "name": "OTTOMAN CM 160X50",
+      "name_de": "Hocker 160 × 50 cm",
+      "art": "hocker",
+      "linie": "Pouf",
+      "seitenvarianten": null,
+      "breite_cm": 160,
+      "tiefe_cm": 50,
+      "hoehe_cm": 36,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": "Als Ablage in Armlehnenposition oder als Sitzverlängerung vor dem Sofa",
+      "hinweis": "Höhe laut Datenblatt 36 cm; Produktseite/Arrangements nennen H38 – Widerspruch, vor Angebot klären.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OTT-R110",
+      "name": "OTTOMAN CM 110",
+      "name_de": "Hocker rund Ø 110 cm",
+      "art": "hocker",
+      "linie": "Pouf",
+      "seitenvarianten": null,
+      "breite_cm": 110,
+      "tiefe_cm": 110,
+      "hoehe_cm": 36,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Rund, Ø 110. Höhe laut Datenblatt 36 cm; Produktseite/Arrangements nennen H38 – Widerspruch, vor Angebot klären.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OTT-80x80",
+      "name": "OTTOMAN CM 80X80",
+      "name_de": "Hocker 80 × 80 cm",
+      "art": "hocker",
+      "linie": "Pouf",
+      "seitenvarianten": null,
+      "breite_cm": 80,
+      "tiefe_cm": 80,
+      "hoehe_cm": 36,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Höhe laut Datenblatt 36 cm; Produktseite/Arrangements nennen H38 – Widerspruch, vor Angebot klären.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OTT-105x80",
+      "name": "OTTOMAN CM 105X80",
+      "name_de": "Hocker 105 × 80 cm",
+      "art": "hocker",
+      "linie": "Pouf",
+      "seitenvarianten": null,
+      "breite_cm": 105,
+      "tiefe_cm": 80,
+      "hoehe_cm": 36,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Höhe laut Datenblatt 36 cm; Produktseite/Arrangements nennen H38 – Widerspruch, vor Angebot klären.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OTT-130x80",
+      "name": "OTTOMAN CM 130X80",
+      "name_de": "Hocker 130 × 80 cm",
+      "art": "hocker",
+      "linie": "Pouf",
+      "seitenvarianten": null,
+      "breite_cm": 130,
+      "tiefe_cm": 80,
+      "hoehe_cm": 36,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Mit 4 Rollen (Einweg-Laufrichtung). Höhe laut Datenblatt 36 cm; Produktseite/Arrangements nennen H38 – Widerspruch, vor Angebot klären.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-OTT-105x105",
+      "name": "OTTOMAN CM 105X105",
+      "name_de": "Hocker 105 × 105 cm",
+      "art": "hocker",
+      "linie": "Pouf",
+      "seitenvarianten": null,
+      "breite_cm": 105,
+      "tiefe_cm": 105,
+      "hoehe_cm": 36,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Höhe laut Datenblatt 36 cm; Produktseite/Arrangements nennen H38 – Widerspruch, vor Angebot klären.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-HEADREST",
+      "name": "OPTIONAL HEADREST",
+      "name_de": "Optionale Kopfstütze",
+      "art": "kopfstuetze",
+      "linie": "Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 76,
+      "tiefe_cm": null,
+      "hoehe_cm": 66,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Zwischen Rücken und Kissen einsteckbar; „Cambré“-Matelassé-Steppung; Bezug abnehmbar. Mit Kopfstütze Gesamthöhe 97 cm (Datenblatt), Kopfstützenhöhe in Position 88 cm.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-CUSH-BACK",
+      "name": "OPTIONAL BACKREST CUSHION",
+      "name_de": "Optionales Rückenkissen 62 × 72 cm",
+      "art": "rueckenkissen-optional",
+      "linie": "Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 62,
+      "tiefe_cm": null,
+      "hoehe_cm": 72,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": "Wendbar mit Rückfalte – auf Rücken, Armlehne oder an der Kopfstütze nutzbar.",
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-CUSH-45",
+      "name": "OPTIONAL CUSHION",
+      "name_de": "Optionales Kissen 45 × 45 cm",
+      "art": "dekokissen-optional",
+      "linie": "Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 45,
+      "tiefe_cm": null,
+      "hoehe_cm": 45,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "YNG-ROLL",
+      "name": "OPTIONAL ROLL",
+      "name_de": "Optionale Nackenrolle 76 cm, Ø 16",
+      "art": "dekokissen-optional",
+      "linie": "Zubehör",
+      "seitenvarianten": null,
+      "breite_cm": 76,
+      "tiefe_cm": null,
+      "hoehe_cm": 16,
+      "strukturhoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "innen_sitzbreite_cm": null,
+      "rueckenlaenge_cm": null,
+      "offene_laenge_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "mass_quelle": [
+        "https://www.minotti.com/en/yang_2",
+        "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Struktur-Rücken mit wendbarem Rückenkissen (Rückfalte, auch auf Armlehne/Kopfstütze nutzbar)",
+      "hoehe_cm": 78,
+      "strukturhoehe_cm": 61
+    },
+    {
+      "name": "Mit optionaler Kopfstütze",
+      "hoehe_cm": 97,
+      "hinweis": "Kopfstütze 76 × 66 cm, „Cambré“-Steppung, zwischen Rücken und Kissen positionierbar."
+    },
+    {
+      "name": "„Offset“-Rücken: seitlich über die Sitzfläche hinausragend"
+    },
+    {
+      "name": "Teilrücken bei Peninsula/Daybed: 80–210 cm je Element"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Gepolsterte Armlehne (oberer Teil Memory Foam)",
+      "breite_cm": 25,
+      "hoehe_cm": 61
+    },
+    {
+      "name": "Ohne Armlehne („Offset“-Elemente ohne Armlehne, Mittel- und Peninsula-Elemente)"
+    },
+    {
+      "name": "Hocker 50 cm tief in Armlehnenposition als Ablage",
+      "hinweis": "Laut Produktseite."
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Tragende Basis / Frontleiste",
+      "material": "Stranggepresstes Aluminium (Minotti-Studio-Design)",
+      "finish": "Zinn/Pewter (Peltro) hochglänzend, Anti-Fingerprint lackiert",
+      "hoehe_cm": 7.5
+    },
+    {
+      "teil": "Gleiter",
+      "material": "Nylon"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "bezugsarten": [
+      "abnehmbar"
+    ],
+    "abnehmbar_hinweis": "Sitzkissen, Rückenkissen und Strukturbezüge in allen Versionen (Stoff und Leder) komplett abnehmbar; Kopfstützenbezug abnehmbar. Sitzkissen wendbar.",
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Stoffe, Leder, Metalloberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "polsterung": "Multiplex-Struktur mit Elastikgurt-Federung; Sitzstruktur aus hochelastischem PU-Schaum variabler Dichte mit konkaver Mulde für das Sitzkissen; Oberteil von Arm- und Rückenlehnen aus Memory Foam; Bezug aus thermogebundener Faser auf hypoallergenem Baumwollstoff. Sitz- und Rückenkissen: kanalisierte Gänsedaune (Assopiuma Gold Label) mit PU-Kern.",
+  "kissenoptionen": [
+    {
+      "name": "Optionale Kopfstütze",
+      "masse": "76 × 66 cm"
+    },
+    {
+      "name": "Optionales Rückenkissen",
+      "masse": "62 × 72 cm"
+    },
+    {
+      "name": "Optionales Kissen",
+      "masse": "45 × 45 cm"
+    },
+    {
+      "name": "Optionale Nackenrolle",
+      "masse": "76 cm, Ø 16"
+    }
+  ],
+  "kombinierbarkeit": [
+    "Standard- und Offset-Elemente untereinander kombinierbar (Arrangements Yang 02/04 mischen beide).",
+    "Hocker in Armlehnenposition (Ablage) oder vor dem Sofa (Sitzverlängerung) – laut Produktseite.",
+    "Ergänzend Close-Beistelltische und Elliott-Couchtische (Produktseite).",
+    "Arm- und Rückenlehnen per Schnellverschluss von der Basis lösbar.",
+    "Verbindliche Anschlussregeln nicht publiziert."
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "„Offset“-Elemente mit seitlich versetztem Rücken",
+    "Wendbares Rückenkissen mit Rückfalte (Rücken, Armlehne oder Kopfstütze)",
+    "Optionale Kopfstütze mit „Cambré“-Steppung",
+    "Hocker 130 × 80 mit 4 Einweg-Rollen",
+    "Aluminium-Frontleiste in Pewter"
+  ],
+  "beispiel_kompositionen": [
+    {
+      "name": "Yang 01",
+      "pdf": "https://www.minotti.com/downloads/11301/8874/Yang%20arrangement%201.pdf",
+      "elemente": [
+        "Offset Endelement 1 Armlehne DX 210×105 H78",
+        "Offset Mittelelement 210×105 H78",
+        "Hocker 160×50 H38"
+      ]
+    },
+    {
+      "name": "Yang 02",
+      "pdf": "https://www.minotti.com/downloads/11303/8878/Yang%20arrangement%202.pdf",
+      "elemente": [
+        "Offset Element ohne Armlehne SX 155×105 H78",
+        "Mittelelement 180×105 H78",
+        "Daybed-Sofa DX 290×105 H78, Rücken 185",
+        "Hocker 160×50 H38",
+        "Hocker 130×80 H38"
+      ]
+    },
+    {
+      "name": "Yang 03",
+      "pdf": "https://www.minotti.com/downloads/11304/8882/Yang%20arrangement%203.pdf",
+      "elemente": [
+        "Offset Endelement 1 Armlehne DX 290×105 H78",
+        "Daybed SX 265×105 H78, Rücken 145",
+        "Hocker 130×50 H38"
+      ]
+    },
+    {
+      "name": "Yang 04",
+      "pdf": "https://www.minotti.com/downloads/14155/11957/Yang%20arrangement%204.pdf",
+      "elemente": [
+        "Endelement mit Armlehne SX 185×105 H78",
+        "Offset Element ohne Armlehne DX 185×105 H78",
+        "Offset Element ohne Armlehne DX 235×105 H78",
+        "Hocker 105×50 H38"
+      ]
+    },
+    {
+      "name": "Yang 05",
+      "pdf": "https://www.minotti.com/downloads/14156/11961/Yang%20arrangement%205.pdf",
+      "elemente": [
+        "Offset Mittelelement 290×105 H78",
+        "Offset Endelement mit Armlehne DX 260×105 H78",
+        "Hocker 160×50 H38"
+      ]
+    }
+  ],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für den internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. CAD-Dateien nur für Interior-Design-Zwecke freigegeben. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "fehlend": [
+    "Sitztiefe für Couch/Chaiselongue/Hocker (nicht beschriftet)",
+    "Hockerhöhe widersprüchlich: Datenblatt 36 cm, Produktseite 38 cm",
+    "Lage-Koten bei Daybed-Sofas/Daybeds (55/80/95/105/120) ohne Achsbeschriftung",
+    "Elemente nur im Datenblatt (Sofa 180, Sofa 370, Peninsula 210/155, Offset-Mittel 180) – Lieferbarkeit klären",
+    "Datum/Stand des Technical Sheet",
+    "Herstellerartikelnummern, Gewichte, verbindliche Kombinationsregeln",
+    "Stoff-/Lederkollektionen, Preisgruppen, Preise"
+  ],
+  "anzahl_elemente": 78,
+  "vollstaendigkeit": {
+    "masse_prozent": 96,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe/sitzhoehe/sitztiefe über alle Sitz-, Bank- und Hockerelemente (ohne Kissen/Kopfstütze)."
+  }
+}

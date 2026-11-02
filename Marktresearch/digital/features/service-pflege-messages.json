@@ -1,0 +1,19 @@
+{
+  "_hinweis": "Team Pflege (Service 4). Nur kurze UI-Schlüssel für src/messages/{de,en,fr,it}.json; die Seitentexte stehen in src/lib/service/pflege/copy.js (DE/EN, Seite nur DE/EN). Portal.nav.care wird von navItems.js über tx() gelesen (Fallback DE 'Pflege'). Shell.nav.pflegeService/servicePflegeHint für Menü/Footer/Leistungen-Seite in der Integration. FR/IT: nur Navigationslabel – Link dort auf /en/pflege-service oder weglassen (Seite FR/IT = 404).",
+  "de": {
+    "Portal": { "nav": { "care": "Pflege" } },
+    "Shell": { "nav": { "pflegeService": "Pflege-Service", "pflegeServiceHint": "Leder, Stoff und Holz, auch als Abo" } }
+  },
+  "en": {
+    "Portal": { "nav": { "care": "Care" } },
+    "Shell": { "nav": { "pflegeService": "Care service", "pflegeServiceHint": "Leather, fabric and wood, also as a plan" } }
+  },
+  "fr": {
+    "Portal": { "nav": { "care": "Entretien" } },
+    "Shell": { "nav": { "pflegeService": "Service d’entretien", "pflegeServiceHint": "Cuir, tissu et bois, aussi en abonnement" } }
+  },
+  "it": {
+    "Portal": { "nav": { "care": "Cura" } },
+    "Shell": { "nav": { "pflegeService": "Servizio di cura", "pflegeServiceHint": "Pelle, tessuto e legno, anche in abbonamento" } }
+  }
+}

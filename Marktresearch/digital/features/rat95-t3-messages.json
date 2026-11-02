@@ -1,0 +1,169 @@
+{
+  "_hinweis": "Rat 9,5 · T3 (Bildsprache & Geschäftsfelder). Format laut qa-screenshots/rat95/00-plan.md §3: nur neue/geänderte Schlüssel, null = löschen. Bis zur Übernahme lesen die Komponenten: landing.* → src/components/Landing/parts.js (FALLBACK, über useLandingCopy); landing.schema.* → src/components/Landing/schema/text.js; hotelObjekt.* → src/components/Hotel/t3Text.js und src/components/Hotel/quickInquiry.js (QUICK_TEXT); architekten.* → src/components/Architekten/quickLead.js (ARCH_QUICK_TEXT); ezarri.hub.heroTitle → HERO_TITLE in src/app/[locale]/ezarri/page.js; yacht.references → src/components/Yacht/YachtReferences.js. hotelObjekt/architekten/ezarri/yacht sind heute keine Namespaces in src/messages (Texte liegen in src/lib/hotel/content.js, src/lib/architekten/copy.js, src/lib/ezarri/copy.js, src/lib/yacht/*); die Übernahme kann sie dort ergänzen statt in src/messages. Hotel, Architekten und Yacht gibt es nur auf DE/EN, Ezarri-Hub DE/EN, Landing-Seiten nur DE (landing.* trotzdem in allen vier Sprachen für die Parität).",
+  "de": {
+    "landing": {
+      "outdoorEzarriAlt": "Pool im Garten mit zwei Liegen im flachen Wasser, Becken mit Glasmosaik Ezarri Ash 25",
+      "outdoorEzarriCaption": "Ezarri Ash 25 im Pool",
+      "outdoorEzarriLink": "Pool mit Ezarri-Glasmosaik",
+      "schemaLabel": "Schema des Studios",
+      "schema": {
+        "caption": "Schema des Studios",
+        "sample": "Musterzimmer",
+        "series": "Serie",
+        "layer": "Planungsdaten · Möbel",
+        "triangle": "Arbeitsdreieck",
+        "table": "Ihr Platz",
+        "board": "Ihre Ideen"
+      }
+    },
+    "hotelObjekt": {
+      "leadShort": "Zimmer, Lobby, Restaurant, Spa und Terrasse: von Hand gezeichnet, dann in 3D geplant.",
+      "jumpLabel": "Auf dieser Seite",
+      "jump": {
+        "leistungen": "Leistungen",
+        "chalets": "Chalets",
+        "ablauf": "Ablauf",
+        "musterzimmer": "Musterzimmer",
+        "anfrage": "Anfrage",
+        "faq": "Fragen"
+      },
+      "arlberg": "Einrichten am Arlberg",
+      "form": {
+        "name": "Vor- und Nachname",
+        "vorhaben": "Ihr Vorhaben in einem Satz",
+        "vorhabenHint": "Zum Beispiel: Zimmer und Lobby neu einrichten, Umbau im Frühjahr.",
+        "details": "Details ergänzen",
+        "detailsHint": "Freiwillig: Ort, Art des Hauses, Zimmer, Bereiche und Zeitfenster helfen uns bei der Vorbereitung.",
+        "errors": {
+          "nameMissing": "Bitte geben Sie Ihren Vor- und Nachnamen an.",
+          "nameBoth": "Bitte geben Sie Vor- und Nachnamen an, zum Beispiel Anna Muster.",
+          "vorhaben": "Bitte beschreiben Sie Ihr Vorhaben in einem Satz (mindestens 10 Zeichen)."
+        }
+      }
+    },
+    "architekten": {
+      "form": {
+        "name": "Vor- und Nachname",
+        "vorhaben": "Ihr Vorhaben in einem Satz",
+        "details": "Details ergänzen",
+        "detailsHint": "Freiwillig: Anliegen, Projektart, Phase und Telefon helfen uns bei der ersten Antwort.",
+        "notGiven": "nicht angegeben",
+        "errors": {
+          "nameBoth": "Bitte geben Sie Vor- und Nachnamen an, zum Beispiel Anna Muster."
+        }
+      }
+    },
+    "ezarri": {
+      "hub": {
+        "heroTitle": "Ezarri-Glasmosaik für Pool und Bad"
+      }
+    },
+    "yacht": {
+      "references": {
+        "eyebrow": "Fallstudien",
+        "heading": "Projekte an Bord",
+        "text": "Boote und Bootshäuser, die wir eingerichtet haben – mit Freigabe der Eigner."
+      }
+    }
+  },
+  "en": {
+    "landing": {
+      "outdoorEzarriAlt": "Garden pool with two loungers in the shallow water, basin in Ezarri Ash 25 glass mosaic",
+      "outdoorEzarriCaption": "Ezarri Ash 25 in a pool",
+      "outdoorEzarriLink": "Pool with Ezarri glass mosaic",
+      "schemaLabel": "Studio diagram",
+      "schema": {
+        "caption": "Studio diagram",
+        "sample": "Sample room",
+        "series": "Series",
+        "layer": "Planning data · furniture",
+        "triangle": "Work triangle",
+        "table": "Your seat",
+        "board": "Your ideas"
+      }
+    },
+    "hotelObjekt": {
+      "leadShort": "Rooms, lobby, restaurant, spa and terrace: drawn by hand, then planned in 3D.",
+      "jumpLabel": "On this page",
+      "jump": {
+        "leistungen": "Services",
+        "chalets": "Chalets",
+        "ablauf": "Process",
+        "musterzimmer": "Sample room",
+        "anfrage": "Enquiry",
+        "faq": "FAQ"
+      },
+      "arlberg": "Furnishing on the Arlberg",
+      "form": {
+        "name": "First and last name",
+        "vorhaben": "Your project in one sentence",
+        "vorhabenHint": "For example: refurnish rooms and lobby, renovation in spring.",
+        "details": "Add details",
+        "detailsHint": "Optional: location, type of property, rooms, areas and timing help us prepare.",
+        "errors": {
+          "nameMissing": "Please enter your first and last name.",
+          "nameBoth": "Please enter both first and last name, for example Anna Smith.",
+          "vorhaben": "Please describe your project in one sentence (at least 10 characters)."
+        }
+      }
+    },
+    "architekten": {
+      "form": {
+        "name": "First and last name",
+        "vorhaben": "Your project in one sentence",
+        "details": "Add details",
+        "detailsHint": "Optional: request type, project type, phase and phone help us with our first reply.",
+        "notGiven": "not specified",
+        "errors": {
+          "nameBoth": "Please enter both first and last name, for example Anna Smith."
+        }
+      }
+    },
+    "ezarri": {
+      "hub": {
+        "heroTitle": "Ezarri glass mosaic for pools and bathrooms"
+      }
+    },
+    "yacht": {
+      "references": {
+        "eyebrow": "Case studies",
+        "heading": "Projects on board",
+        "text": "Boats and boathouses we have furnished – published with the owners’ consent."
+      }
+    }
+  },
+  "fr": {
+    "landing": {
+      "outdoorEzarriAlt": "Piscine dans un jardin avec deux transats dans l’eau peu profonde, bassin en mosaïque de verre Ezarri Ash 25",
+      "outdoorEzarriCaption": "Ezarri Ash 25 dans une piscine",
+      "outdoorEzarriLink": "Piscine en mosaïque de verre Ezarri",
+      "schemaLabel": "Schéma du studio",
+      "schema": {
+        "caption": "Schéma du studio",
+        "sample": "Chambre témoin",
+        "series": "Série",
+        "layer": "Données de plan · mobilier",
+        "triangle": "Triangle d’activité",
+        "table": "Votre place",
+        "board": "Vos idées"
+      }
+    }
+  },
+  "it": {
+    "landing": {
+      "outdoorEzarriAlt": "Piscina in giardino con due lettini nell’acqua bassa, vasca in mosaico di vetro Ezarri Ash 25",
+      "outdoorEzarriCaption": "Ezarri Ash 25 in piscina",
+      "outdoorEzarriLink": "Piscina con mosaico di vetro Ezarri",
+      "schemaLabel": "Schema dello studio",
+      "schema": {
+        "caption": "Schema dello studio",
+        "sample": "Camera campione",
+        "series": "Serie",
+        "layer": "Dati di progetto · arredi",
+        "triangle": "Triangolo di lavoro",
+        "table": "Il vostro posto",
+        "board": "Le vostre idee"
+      }
+    }
+  }
+}

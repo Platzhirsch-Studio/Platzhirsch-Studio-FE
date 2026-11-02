@@ -1,0 +1,2047 @@
+{
+  "name": "Horizonte",
+  "slug": "horizonte",
+  "designer": "Marcio Kogan / Studio MK27",
+  "jahr": 2022,
+  "jahr_hinweis": "Zugehörig zur \"2022 Collection\" lt. Produktseite (Designs registriert 01.06.2022).",
+  "typ": "Modulares Sitzsystem auf schwebendem Sockel (7 cm über dem Boden, zurückversetzter Metallsockel), mit integrierten Ablagen (Tops) und geneigten Elementen",
+  "modular": true,
+  "outdoor": false,
+  "quellen": [
+    "https://www.minotti.com/en/horizonte",
+    "https://www.minotti.com/de/horizonte",
+    "https://www.minotti.com/en/horizonte_coffee_tables"
+  ],
+  "abrufdatum": "2026-10-27",
+  "hersteller": "Minotti S.p.A., Meda (MB), Italien",
+  "masseinheit": "cm",
+  "masse_hinweis": "Breite × Tiefe × Höhe aus den offiziellen Minotti-Maßzeichnungen im Abschnitt \"Technical Features\" der Produktseite (Dateiname und Bemaßung der Zeichnung). Minotti weist darauf hin, dass CAD-Maße leicht von der Produktkarte abweichen können. Die Sitztiefe ist in keiner öffentlichen Zeichnung bemaßt.",
+  "rechte_hinweis": "Zeichnungen, Fotos, CAD-/BIM-Dateien sind urheberrechtlich geschützt (Minotti S.p.A.); Veränderung ausdrücklich untersagt. quelle_zeichnung-URLs dienen nur als Beleg der Maße, nicht zur Einbindung. Freistellungen nur intern/Labs und im Rechte-Register vermerken. Deep-Linking ist laut Minotti-Nutzungsbedingungen ohne Zustimmung untersagt: Links nicht öffentlich ausspielen.",
+  "preis": {
+    "wert": null,
+    "hinweis": "Keine Preise erfasst. Preise nur aus Konfigurationstabelle, gekennzeichnet \"Richtwert – vom Inhaber festzulegen\"."
+  },
+  "elemente": [
+    {
+      "code": "horizonte-sofa-cm-254",
+      "name": "SOFA CM 254",
+      "art": "sofa",
+      "breite_cm": 254,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "hinweis": "Fertiges Sofa mit 2 Armlehnen.",
+      "armlehnenhoehe_cm": 65,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38858_n_HORIZONTE_SOFA_254X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-sofa-cm-280",
+      "name": "SOFA CM 280",
+      "art": "sofa",
+      "breite_cm": 280,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "hinweis": "Fertiges Sofa mit 2 Armlehnen.",
+      "armlehnenhoehe_cm": 65,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38859_n_HORIZONTE_SOFA_280X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-sofa-cm-306",
+      "name": "SOFA CM 306",
+      "art": "sofa",
+      "breite_cm": 306,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "hinweis": "Fertiges Sofa mit 2 Armlehnen.",
+      "armlehnenhoehe_cm": 65,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38860_n_HORIZONTE_SOFA_306X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-128",
+      "name": "ELEMENT WITH 1 ARMREST CM 128",
+      "art": "endelement",
+      "breite_cm": 128,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38861_n_HORIZONTE_ELEMENT_WITH_ARMREST_128X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-154",
+      "name": "ELEMENT WITH 1 ARMREST CM 154",
+      "art": "endelement",
+      "breite_cm": 154,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38862_n_HORIZONTE_ELEMENT_WITH_ARMREST_154X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-180",
+      "name": "ELEMENT WITH 1 ARMREST CM 180",
+      "art": "endelement",
+      "breite_cm": 180,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38863_n_HORIZONTE_ELEMENT_WITH_ARMREST_180X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-206",
+      "name": "ELEMENT WITH 1 ARMREST CM 206",
+      "art": "endelement",
+      "breite_cm": 206,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38864_n_HORIZONTE_ELEMENT_WITH_ARMREST_206X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-232",
+      "name": "ELEMENT WITH 1 ARMREST CM 232",
+      "art": "endelement",
+      "breite_cm": 232,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38865_n_HORIZONTE_ELEMENT_WITH_ARMREST_232X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-258",
+      "name": "ELEMENT WITH 1 ARMREST CM 258",
+      "art": "endelement",
+      "breite_cm": 258,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38866_n_HORIZONTE_ELEMENT_WITH_ARMREST_258X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-284",
+      "name": "ELEMENT WITH 1 ARMREST CM 284",
+      "art": "endelement",
+      "breite_cm": 284,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38867_n_HORIZONTE_ELEMENT_WITH_ARMREST_284X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-232-with-top-short",
+      "name": "ELEMENT WITH 1 ARMREST CM 232 WITH TOP SHORT",
+      "art": "endelement",
+      "breite_cm": 232,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage kurz",
+          "breite_cm": 46,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38868_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_TOP_SHORT_232X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-232-with-top-square",
+      "name": "ELEMENT WITH 1 ARMREST CM 232 WITH TOP SQUARE",
+      "art": "endelement",
+      "breite_cm": 232,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage quadratisch",
+          "breite_cm": 98,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38869_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_TOP_SQUARE_232X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-232-with-top-ottoman",
+      "name": "ELEMENT WITH 1 ARMREST CM 232 WITH TOP OTTOMAN",
+      "art": "endelement",
+      "breite_cm": 232,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Sitzverlängerung (Ottomane) ohne Rücken",
+          "breite_cm": 106,
+          "tiefe_cm": 106
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38870_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_OTTOMAN_232X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-258-with-top-short",
+      "name": "ELEMENT WITH 1 ARMREST CM 258 WITH TOP SHORT",
+      "art": "endelement",
+      "breite_cm": 258,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage kurz",
+          "breite_cm": 46,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38872_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_TOP_SHORT_258X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-258-with-top-square",
+      "name": "ELEMENT WITH 1 ARMREST CM 258 WITH TOP SQUARE",
+      "art": "endelement",
+      "breite_cm": 258,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage quadratisch",
+          "breite_cm": 98,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38873_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_TOP_SQUARE_258X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-258-with-top-ottoman",
+      "name": "ELEMENT WITH 1 ARMREST CM 258 WITH TOP OTTOMAN",
+      "art": "endelement",
+      "breite_cm": 258,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Sitzverlängerung (Ottomane) ohne Rücken",
+          "breite_cm": 106,
+          "tiefe_cm": 106
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38874_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_OTTOMAN_258X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-284-with-top-short",
+      "name": "ELEMENT WITH 1 ARMREST CM 284 WITH TOP SHORT",
+      "art": "endelement",
+      "breite_cm": 284,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage kurz",
+          "breite_cm": 46,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38876_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_TOP_SHORT_284X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-284-with-top-square",
+      "name": "ELEMENT WITH 1 ARMREST CM 284 WITH TOP SQUARE",
+      "art": "endelement",
+      "breite_cm": 284,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage quadratisch",
+          "breite_cm": 98,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38877_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_TOP_SQUARE_284X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-284-with-top-ottoman",
+      "name": "ELEMENT WITH 1 ARMREST CM 284 WITH TOP OTTOMAN",
+      "art": "endelement",
+      "breite_cm": 284,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Sitzverlängerung (Ottomane) ohne Rücken",
+          "breite_cm": 106,
+          "tiefe_cm": 106
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38878_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_OTTOMAN_284X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-310-with-top-short",
+      "name": "ELEMENT WITH 1 ARMREST CM 310 WITH TOP SHORT",
+      "art": "endelement",
+      "breite_cm": 310,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage kurz",
+          "breite_cm": 46,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38879_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_TOP_SHORT_310X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-310-with-top-square",
+      "name": "ELEMENT WITH 1 ARMREST CM 310 WITH TOP SQUARE",
+      "art": "endelement",
+      "breite_cm": 310,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage quadratisch",
+          "breite_cm": 98,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38880_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_TOP_SQUARE_310X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-element-with-1-armrest-cm-310-with-top-ottoman",
+      "name": "ELEMENT WITH 1 ARMREST CM 310 WITH TOP OTTOMAN",
+      "art": "endelement",
+      "breite_cm": 310,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Sitzverlängerung (Ottomane) ohne Rücken",
+          "breite_cm": 106,
+          "tiefe_cm": 106
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38881_n_HORIZONTE_ELEMENT_WITH_ARMREST_WITH_OTTOMAN_310X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-106",
+      "name": "CENTRAL ELEMENT CM 106",
+      "art": "mittel",
+      "breite_cm": 106,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38882_n_HORIZONTE_CENTRAL_ELEMENT_106X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-132",
+      "name": "CENTRAL ELEMENT CM 132",
+      "art": "mittel",
+      "breite_cm": 132,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38883_n_HORIZONTE_CENTRAL_ELEMENT_132X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-158",
+      "name": "CENTRAL ELEMENT CM 158",
+      "art": "mittel",
+      "breite_cm": 158,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38884_n_HORIZONTE_CENTRAL_ELEMENT_158X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-184",
+      "name": "CENTRAL ELEMENT CM 184",
+      "art": "mittel",
+      "breite_cm": 184,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38885_n_HORIZONTE_CENTRAL_ELEMENT_184X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-210",
+      "name": "CENTRAL ELEMENT CM 210",
+      "art": "mittel",
+      "breite_cm": 210,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38886_n_HORIZONTE_CENTRAL_ELEMENT_210X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-236",
+      "name": "CENTRAL ELEMENT CM 236",
+      "art": "mittel",
+      "breite_cm": 236,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38887_n_HORIZONTE_CENTRAL_ELEMENT_236X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-262",
+      "name": "CENTRAL ELEMENT CM 262",
+      "art": "mittel",
+      "breite_cm": 262,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38888_n_HORIZONTE_CENTRAL_ELEMENT_262X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-210-with-top-short",
+      "name": "CENTRAL ELEMENT CM 210 WITH TOP SHORT",
+      "art": "mittel",
+      "breite_cm": 210,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage kurz",
+          "breite_cm": 46,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38889_n_HORIZONTE_CENTRAL_ELEMENT_WITH_TOP_SHORT_210X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-210-with-top-square",
+      "name": "CENTRAL ELEMENT CM 210 WITH TOP SQUARE",
+      "art": "mittel",
+      "breite_cm": 210,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage quadratisch",
+          "breite_cm": 98,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38890_n_HORIZONTE_CENTRAL_ELEMENT_WITH_TOP_SQUARE_210X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-210-with-ottoman",
+      "name": "CENTRAL ELEMENT CM 210 WITH OTTOMAN",
+      "art": "mittel",
+      "breite_cm": 210,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Sitzverlängerung (Ottomane) ohne Rücken",
+          "breite_cm": 106,
+          "tiefe_cm": 106
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38891_n_HORIZONTE_CENTRAL_ELEMENT_WITH_OTTOMAN_210X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-236-with-top-short",
+      "name": "CENTRAL ELEMENT CM 236 WITH TOP SHORT",
+      "art": "mittel",
+      "breite_cm": 236,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage kurz",
+          "breite_cm": 46,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38892_n_HORIZONTE_CENTRAL_ELEMENT_WITH_TOP_SHORT_236X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-236-with-top-square",
+      "name": "CENTRAL ELEMENT CM 236 WITH TOP SQUARE",
+      "art": "mittel",
+      "breite_cm": 236,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage quadratisch",
+          "breite_cm": 98,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38893_n_HORIZONTE_CENTRAL_ELEMENT_WITH_TOP_SQUARE_236X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-236-with-ottoman",
+      "name": "CENTRAL ELEMENT CM 236 WITH OTTOMAN",
+      "art": "mittel",
+      "breite_cm": 236,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Sitzverlängerung (Ottomane) ohne Rücken",
+          "breite_cm": 106,
+          "tiefe_cm": 106
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38894_n_HORIZONTE_CENTRAL_ELEMENT_WITH_OTTOMAN_236X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-262-with-top-short",
+      "name": "CENTRAL ELEMENT CM 262 WITH TOP SHORT",
+      "art": "mittel",
+      "breite_cm": 262,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage kurz",
+          "breite_cm": 46,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38895_n_HORIZONTE_CENTRAL_ELEMENT_WITH_TOP_SHORT_262X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-262-with-top-square",
+      "name": "CENTRAL ELEMENT CM 262 WITH TOP SQUARE",
+      "art": "mittel",
+      "breite_cm": 262,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage quadratisch",
+          "breite_cm": 98,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38896_n_HORIZONTE_CENTRAL_ELEMENT_WITH_TOP_SQUARE_262X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-262-with-ottoman",
+      "name": "CENTRAL ELEMENT CM 262 WITH OTTOMAN",
+      "art": "mittel",
+      "breite_cm": 262,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Sitzverlängerung (Ottomane) ohne Rücken",
+          "breite_cm": 106,
+          "tiefe_cm": 106
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38897_n_HORIZONTE_CENTRAL_ELEMENT_WITH_OTTOMAN_262X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-288-with-top-short",
+      "name": "CENTRAL ELEMENT CM 288 WITH TOP SHORT",
+      "art": "mittel",
+      "breite_cm": 288,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage kurz",
+          "breite_cm": 46,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38898_n_HORIZONTE_CENTRAL_ELEMENT_WITH_TOP_SHORT_288X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-288-with-top-square",
+      "name": "CENTRAL ELEMENT CM 288 WITH TOP SQUARE",
+      "art": "mittel",
+      "breite_cm": 288,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage quadratisch",
+          "breite_cm": 98,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38899_n_HORIZONTE_CENTRAL_ELEMENT_WITH_TOP_SQUARE_288X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-central-element-cm-288-with-ottoman",
+      "name": "CENTRAL ELEMENT CM 288 WITH OTTOMAN",
+      "art": "mittel",
+      "breite_cm": 288,
+      "tiefe_cm": 106,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Sitzverlängerung (Ottomane) ohne Rücken",
+          "breite_cm": 106,
+          "tiefe_cm": 106
+        }
+      },
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38900_n_HORIZONTE_CENTRAL_ELEMENT_WITH_OTTOMAN_288X106_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-couch-cm-158x158",
+      "name": "COUCH CM 158X158",
+      "art": "couch",
+      "breite_cm": 158,
+      "tiefe_cm": 158,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "hinweis": "Rücken an einer Schmalseite, ohne Armlehne (Grundriss: Liegelänge 132).",
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38901_n_HORIZONTE_COUCH_158X158_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-couch-cm-210x158-with-top-long",
+      "name": "COUCH CM 210X158 WITH TOP LONG",
+      "art": "couch",
+      "breite_cm": 210,
+      "tiefe_cm": 158,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage lang",
+          "breite_cm": 46,
+          "tiefe_cm": 150,
+          "hoehe_cm": 21
+        }
+      },
+      "hinweis": "Rücken an einer Schmalseite, ohne Armlehne (Grundriss: Liegelänge 132).",
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38902_n_HORIZONTE_COUCH_WITH_TOP_LONG_210X158_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-chaise-longue-cm-158x158",
+      "name": "CHAISE-LONGUE CM 158X158",
+      "art": "chaise",
+      "breite_cm": 158,
+      "tiefe_cm": 158,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "hinweis": "Chaiselongue mit Armlehne an einer Seite.",
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38903_n_HORIZONTE_CHAISE_LONGUE_158X158_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-chaise-longue-cm-158x186",
+      "name": "CHAISE-LONGUE CM 158X186",
+      "art": "chaise",
+      "breite_cm": 158,
+      "tiefe_cm": 186,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "hinweis": "Chaiselongue mit Armlehne an einer Seite.",
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38904_n_HORIZONTE_CHAISE_LONGUE_158X186_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-inclined-element-with-1-armrest-cm-267",
+      "name": "INCLINED ELEMENT WITH 1 ARMREST CM 267",
+      "art": "ecke",
+      "breite_cm": 267,
+      "tiefe_cm": 195,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "schenkel_tiefe_cm": 106,
+        "diagonale_cm": 140
+      },
+      "hinweis": "Geneigtes (schräg verlaufendes) Eckelement; Winkel nicht angegeben.",
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38905_n_HORIZONTE_INCLINED_ELEMENT_WITH_ARMREST_267X195_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-inclined-central-element-cm-252",
+      "name": "INCLINED CENTRAL ELEMENT CM 252",
+      "art": "ecke",
+      "breite_cm": 252,
+      "tiefe_cm": 180,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "schenkel_tiefe_cm": 106,
+        "diagonale_cm": 140
+      },
+      "hinweis": "Geneigtes (schräg verlaufendes) Eckelement; Winkel nicht angegeben.",
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38906_n_HORIZONTE_INCLINED_CENTRAL_ELEMENT_252X180_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-inclined-element-with-1-armrest-cm-317-with-top-short",
+      "name": "INCLINED ELEMENT WITH 1 ARMREST CM 317 WITH TOP SHORT",
+      "art": "ecke",
+      "breite_cm": 317,
+      "tiefe_cm": 195,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "schenkel_tiefe_cm": 106,
+        "diagonale_cm": 140,
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage kurz",
+          "breite_cm": 46,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "hinweis": "Geneigtes (schräg verlaufendes) Eckelement; Winkel nicht angegeben.",
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38907_n_HORIZONTE_INCLINED_ELEMENT_WITH_ARMREST_WITH_TOP_SHORT_317X195_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-inclined-central-element-cm-302-with-top-short",
+      "name": "INCLINED CENTRAL ELEMENT CM 302 WITH TOP SHORT",
+      "art": "ecke",
+      "breite_cm": 302,
+      "tiefe_cm": 180,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "schenkel_tiefe_cm": 106,
+        "diagonale_cm": 140,
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage kurz",
+          "breite_cm": 46,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "hinweis": "Geneigtes (schräg verlaufendes) Eckelement; Winkel nicht angegeben.",
+      "armlehnenhoehe_cm": 65,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "hinweis": "Ausführung links lt. Zeichnung"
+        },
+        {
+          "code": "DX",
+          "hinweis": "Ausführung rechts lt. Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Armlehnen-/Rückenstrukturhöhe lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/38908_n_HORIZONTE_INCLINED_CENTRAL_ELEMENT_WITH_TOP_SHORT_302X180_H85.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-bench-cm-210x106-with-top-square",
+      "name": "BENCH CM 210X106 WITH TOP SQUARE",
+      "art": "hocker",
+      "breite_cm": 210,
+      "tiefe_cm": 106,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "zusatzmasse": {
+        "ablage_oder_verlaengerung": {
+          "typ": "Ablage quadratisch",
+          "breite_cm": 98,
+          "tiefe_cm": 98,
+          "hoehe_cm": 21
+        }
+      },
+      "hinweis": "Bank/Hocker ohne Rücken; Sitzhöhe = Gesamthöhe 42.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/38909_n_HORIZONTE_BENCH_WITH_TOP_SQUARE_210X106_H42.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-bench-cm-106x106",
+      "name": "BENCH CM 106X106",
+      "art": "hocker",
+      "breite_cm": 106,
+      "tiefe_cm": 106,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "hinweis": "Bank/Hocker ohne Rücken; Sitzhöhe = Gesamthöhe 42.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/38910_n_HORIZONTE_BENCH_106X106_H42.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-bench-cm-82x106",
+      "name": "BENCH CM 82X106",
+      "art": "hocker",
+      "breite_cm": 82,
+      "tiefe_cm": 106,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "hinweis": "Bank/Hocker ohne Rücken; Sitzhöhe = Gesamthöhe 42.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/38911_n_HORIZONTE_BENCH_82X106_H42.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-bench-cm-106x54",
+      "name": "BENCH CM 106X54",
+      "art": "hocker",
+      "breite_cm": 106,
+      "tiefe_cm": 54,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "hinweis": "Bank/Hocker ohne Rücken; Sitzhöhe = Gesamthöhe 42.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/38912_n_HORIZONTE_BENCH_106X54_H42.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-bench-cm-132x54",
+      "name": "BENCH CM 132X54",
+      "art": "hocker",
+      "breite_cm": 132,
+      "tiefe_cm": 54,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "hinweis": "Bank/Hocker ohne Rücken; Sitzhöhe = Gesamthöhe 42.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/38913_n_HORIZONTE_BENCH_132X54_H42.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-bench-cm-158x54",
+      "name": "BENCH CM 158X54",
+      "art": "hocker",
+      "breite_cm": 158,
+      "tiefe_cm": 54,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "hinweis": "Bank/Hocker ohne Rücken; Sitzhöhe = Gesamthöhe 42.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/38914_n_HORIZONTE_BENCH_158X54_H42.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-horizonte-optional-headrest-cm-65xh65",
+      "name": "HORIZONTE OPTIONAL HEADREST CM 65XH65",
+      "art": "zubehoer",
+      "breite_cm": 65,
+      "tiefe_cm": null,
+      "hoehe_cm": 65,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "hinweis": "Optionale Kopfstütze, B 65 × H 65 (Tiefe nicht bemaßt).",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/38915_n_HORIZONTE.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-optional-backrest-cushion-cm-60x60",
+      "name": "OPTIONAL BACKREST CUSHION CM 60X60",
+      "art": "kissen",
+      "breite_cm": 60,
+      "tiefe_cm": 60,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/38916_n_HORIZONTE_OPTIONAL_BACKREST_CUSHION_60X60.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    },
+    {
+      "code": "horizonte-optional-cushion-cm-60x60",
+      "name": "OPTIONAL CUSHION CM 60X60",
+      "art": "kissen",
+      "breite_cm": null,
+      "tiefe_cm": null,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "hinweis": "Listenname \"60X60\", Zeichnungsdatei und Bemaßung zeigen 50×50 – widersprüchlich, daher nicht übernommen.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/38918_n_HORIZONTE_OPTIONAL_CUSHION_50X50.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/horizonte"
+    }
+  ],
+  "raster": {
+    "tiefe_standard_cm": 106,
+    "breitenschritt_cm": 26,
+    "hinweis": "Alle linearen Sitzelemente 106 tief; Breiten in 26-cm-Schritten (Mittelelemente 106–262, Endelemente 128–284). Aus der Elementliste abgelesen, kein Herstellertext."
+  },
+  "sitzhoehe_cm_familie": {
+    "wert": 42,
+    "hinweis": "In allen Zeichnungen, die die Sitzhöhe bemaßen, 42 cm; bei Elementen ohne Bemaßung bleibt sitzhoehe_cm null."
+  },
+  "rueckenoptionen": [
+    {
+      "name": "Lose aufgelegte Rückenkissen (große Polster) auf dem Sockel",
+      "hinweis": "Rücken und Armlehnen lassen sich über Hebel unter dem Sofa herausnehmen (Transport, Bezugswechsel)."
+    },
+    {
+      "name": "Optionale Kopfstütze 65×H65 cm"
+    },
+    {
+      "name": "Optionales Rückenkissen 60×60 cm"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "2 Armlehnen",
+      "elemente": "SOFA CM 254/280/306"
+    },
+    {
+      "name": "1 Armlehne links (SX) oder rechts (DX)",
+      "elemente": "ELEMENT WITH 1 ARMREST, CHAISE-LONGUE, INCLINED ELEMENT WITH 1 ARMREST"
+    },
+    {
+      "name": "Ohne Armlehne",
+      "elemente": "CENTRAL ELEMENT, COUCH, BENCH, INCLINED CENTRAL ELEMENT"
+    }
+  ],
+  "ablagen_tops": {
+    "beschreibung": "Am Sockel befestigte Ablagen neben den Sitzpolstern: kurz 46×98, quadratisch 98×98, lang 46×150 (lt. Zeichnungen), Höhe 21.",
+    "holz": {
+      "aufbau": "Holzwerkstoffplatte 60 mm, furniert; Distanzplatte schwarz Melamin 20 mm",
+      "finish": [
+        "Canaletto-Nussbaum gebeizt Dark Brown, matter Polyesterlack",
+        "Esche offenporig lackiert Licorice"
+      ]
+    },
+    "marmor": {
+      "aufbau": "Holzwerkstoffplatte 44 mm schwarz matt, mit 16 mm Marmorplatte auf Gehrung; Distanzplatte schwarz Melamin 20 mm",
+      "finish": [
+        "Nero Marquina, geschliffen matt",
+        "Calacatta",
+        "Grigio Orobico",
+        "Belvedere-Granit, gebürstet"
+      ],
+      "hinweis": "Matt geschliffener Marmor ist empfindlich: keine Gegenstände direkt abstellen."
+    }
+  },
+  "fuesse_sockel": [
+    {
+      "teil": "Sockel",
+      "material": "Metall-Umlaufsockel mit verstellbaren Füßen",
+      "finish": [
+        "Schwarz matt lackiert"
+      ],
+      "gleiter": "schwarze, ölfreie, nicht abfärbende Polyethylen-Gleiter",
+      "hinweis": "Sockel ca. 7 cm über dem Boden (lt. Herstellertext)."
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "kategorien_detail": null,
+    "bezugsart": {
+      "fest": false,
+      "abnehmbar": true,
+      "text": "Bezüge für Struktur, Sitz- und Rückenkissen in allen Versionen (Stoff oder Leder) komplett abziehbar."
+    },
+    "farbmuster_hinweis": "Stoff- und Lederfarben/-kategorien laut Minotti \"The World of Materials\"; Originalmuster im Showroom Platzhirsch Home Living (Lochau) ansehen – Bildschirmfarben sind nicht verbindlich.",
+    "sockelbezug_varianten": [
+      {
+        "code": "A",
+        "text": "komplett Stoff oder komplett Leder"
+      },
+      {
+        "code": "B",
+        "text": "Sockel in Leder Kat. Nature Leather; Armlehnen, Sitz- und Rückenkissen in Stoff"
+      },
+      {
+        "code": "C",
+        "text": "MIX-Sockel: oben Stoff (gleich wie Element), unten Leder Kat. Nature Leather; Armlehnen, Sitz- und Rückenkissen in Stoff"
+      }
+    ],
+    "verarbeitung": "Stoffsockel: zwei Bahnen per verdecktem Reißverschluss (Ziernaht); Ledersockel: überlappend vernäht (umgeschlagene Kanten)."
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optionales Rückenkissen",
+      "masse_cm": "60×60"
+    },
+    {
+      "name": "Optionales Kissen",
+      "masse_cm": "60×60 lt. Liste / 50×50 lt. Zeichnung (widersprüchlich)"
+    },
+    {
+      "name": "Optionale Kopfstütze",
+      "masse_cm": "65×H65"
+    }
+  ],
+  "polsterung": {
+    "sitz": "Mehrschichtiger HR-PU-Schaum variabler Dichte mit Taschenfederkern; Steppvlies mit Faserfüllung aus 100 % recyceltem PET",
+    "ruecken": "Silikonisierte Mikrofaser in getrennten Kanälen"
+  },
+  "besonderheiten": [
+    "Echt modular: Endelemente SX/DX, Mittelelemente sowie Chaise/Couch/Inclined frei kombinierbar (Arrangements zeigen z. B. Element SX 232 + Element DX 258).",
+    "Elemente \"WITH TOP\" haben eine fest am Sockel montierte Ablage; \"WITH OTTOMAN\" = rückenlose Sitzverlängerung 106×106.",
+    "Geneigte Elemente (INCLINED) für stumpfe Winkel; Diagonalschenkel 140.",
+    "Zur Familie gehören außerdem Couchtische, Beistelltisch und Bett (nicht Teil dieser Datei)."
+  ],
+  "fehlend": [
+    "Sitztiefe aller Elemente",
+    "Sitzhöhe bei Elementen ohne Bemaßung in der Zeichnung (u. a. Sofa 280/306, Endelemente 154–284 ohne Top, Mittelelemente 132–262, Mittelelemente 210/236 mit Top/Ottomane)",
+    "Exakter Winkel der Inclined-Elemente (nur Längen bemaßt)",
+    "Optionales Kissen: Listenmaß 60×60 vs. Zeichnung 50×50",
+    "Tiefe der Kopfstütze",
+    "Explizite Anschluss-/Kombinationsregeln (nur aus Arrangements ableitbar)",
+    "Minotti-Artikelnummern/Codes (nicht öffentlich)",
+    "Stoff-/Lederkategorien und Preisgruppen (nur in Händler-Preisliste)",
+    "Technisches Datenblatt/PDF, DWG, BIM nur nach Login",
+    "Gewichte",
+    "Liefer-/Produktionszeiten"
+  ],
+  "vollstaendigkeit": {
+    "felder_gesamt": 275,
+    "felder_belegt": 201,
+    "prozent": 73,
+    "basis": "Maßfelder breite/tiefe/hoehe/sitzhoehe/sitztiefe aller Sitz-/Hocker-Elemente (ohne Kissen/Zubehör)"
+  },
+  "vollstaendigkeit_prozent": 73
+}

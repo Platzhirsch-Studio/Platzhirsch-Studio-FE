@@ -1,0 +1,3272 @@
+{
+  "name": "Alexander",
+  "slug": "alexander",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2018,
+  "jahr_hinweis": "Produktseite: „2018 Collection“; Technical Sheet © Minotti 2018.",
+  "typ": "Modulares Sitzsystem (gerade und gebogene „Drop“-Elemente), Rücken/Armlehnen LOW, HIGH oder MIX",
+  "modular": true,
+  "outdoor": false,
+  "quellen": [
+    "https://www.minotti.com/en/alexander",
+    "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/14458/14098/MINOTTI_Alexander_seating_system.zip",
+    "https://www.minotti.com/downloads/15427/13900/ALEXANDER_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/10411/21544/MINOTTI_CONSUMER_CATALOGUE_THE_COLLECTION_2024.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "masse_hinweis": "Alle Maße aus dem Technical Sheet (2018) und den Element-Zeichnungen der Produktseite. Lesart: 83 = Gesamthöhe inkl. Rückenkissen, 64/79 = Höhe Rücken-/Armlehnenstruktur LOW/HIGH (Legende „Bracciolo-schienale H cm 64/79“), 42 = Sitzhöhe, 105 = Tiefe; untere Maßkette = innere Sitzbreite. Laut Minotti können CAD-Maße leicht vom Datenblatt abweichen.",
+  "rechte_hinweis": "Bild-URLs nur als Quellennachweis. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "preis": {
+    "hinweis": "Keine Preise erfasst. Preise nur aus der Konfigurationstabelle, gekennzeichnet „Richtwert – vom Inhaber festzulegen“."
+  },
+  "elemente": [
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-low-229",
+      "name": "SOFA LOW CM 229",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 229,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 175,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21515_n_ALEXANDER-SOFA-LOW-229.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-high-229",
+      "name": "SOFA HIGH CM 229",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 229,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 175,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21519_n_ALEXANDER-SOFA-HIGH-229.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-mix-229",
+      "name": "SOFA MIX CM 229",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 229,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 175,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21511_n_ALEXANDER-SOFA-MIX-229.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-low-254",
+      "name": "SOFA LOW CM 254",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 254,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 200,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21514_n_ALEXANDER-SOFA-LOW-254.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-high-254",
+      "name": "SOFA HIGH CM 254",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 254,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 200,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21518_n_ALEXANDER-SOFA-HIGH-254.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-mix-254",
+      "name": "SOFA MIX CM 254",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 254,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 200,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21510_n_ALEXANDER-SOFA-MIX-254.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-low-274",
+      "name": "SOFA LOW CM 274",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 274,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21513_n_ALEXANDER-SOFA-LOW-274.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-high-274",
+      "name": "SOFA HIGH CM 274",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 274,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21517_n_ALEXANDER-SOFA-HIGH-274.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-mix-274",
+      "name": "SOFA MIX CM 274",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 274,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21509_n_ALEXANDER-SOFA-MIX-274.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-low-304",
+      "name": "SOFA LOW CM 304",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 304,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 250,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21512_n_ALEXANDER-SOFA-LOW-304.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-high-304",
+      "name": "SOFA HIGH CM 304",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 304,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 250,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21516_n_ALEXANDER-SOFA-HIGH-304.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-sofa-mix-304",
+      "name": "SOFA MIX CM 304",
+      "art": "sofa",
+      "linie": "Alexander",
+      "breite_cm": 304,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 250,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehend (2 Armlehnen)",
+      "quelle": "https://www.minotti.com/media/immagini/21508_n_ALEXANDER-SOFA-MIX-304.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-low-152",
+      "name": "ELEMENT WITH ONE ARMREST LOW CM 152",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 152,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 125,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21522_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-LOW-152.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-high-152",
+      "name": "ELEMENT WITH ONE ARMREST HIGH CM 152",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 152,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 125,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21523_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-HIGH-152.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-low-162",
+      "name": "ELEMENT WITH ONE ARMREST LOW CM 162",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 162,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 135,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21524_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-LOW-162.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-high-162",
+      "name": "ELEMENT WITH ONE ARMREST HIGH CM 162",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 162,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 135,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21525_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-HIGH-162.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-low-187",
+      "name": "ELEMENT WITH ONE ARMREST LOW CM 187",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 187,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 160,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21526_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-LOW-187.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-high-187",
+      "name": "ELEMENT WITH ONE ARMREST HIGH CM 187",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 187,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 160,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21527_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-HIGH-187.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-low-202",
+      "name": "ELEMENT WITH ONE ARMREST LOW CM 202",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 202,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 175,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21528_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-LOW-202.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-high-202",
+      "name": "ELEMENT WITH ONE ARMREST HIGH CM 202",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 202,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 175,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21529_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-HIGH-202.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-low-227",
+      "name": "ELEMENT WITH ONE ARMREST LOW CM 227",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 227,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 200,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21530_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-LOW-227.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-high-227",
+      "name": "ELEMENT WITH ONE ARMREST HIGH CM 227",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 227,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 200,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21531_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-HIGH-227.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-low-247",
+      "name": "ELEMENT WITH ONE ARMREST LOW CM 247",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 247,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21532_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-LOW-247.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-high-247",
+      "name": "ELEMENT WITH ONE ARMREST HIGH CM 247",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 247,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21533_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-HIGH-247.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-mix-247",
+      "name": "ELEMENT WITH ONE ARMREST MIX CM 247",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 247,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21536_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-MIX-247.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-low-277",
+      "name": "ELEMENT WITH ONE ARMREST LOW CM 277",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 277,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 250,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21534_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-LOW-277.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-high-277",
+      "name": "ELEMENT WITH ONE ARMREST HIGH CM 277",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 277,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 250,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21535_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-HIGH-277.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-mix-277",
+      "name": "ELEMENT WITH ONE ARMREST MIX CM 277",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 277,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 250,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21537_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-MIX-277.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-low-297",
+      "name": "ELEMENT WITH ONE ARMREST LOW CM 297",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 297,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 270,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21538_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-LOW-297.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-high-297",
+      "name": "ELEMENT WITH ONE ARMREST HIGH CM 297",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 297,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 270,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21539_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-HIGH-297.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-element-with-one-armrest-mix-297",
+      "name": "ELEMENT WITH ONE ARMREST MIX CM 297",
+      "art": "endelement",
+      "linie": "Alexander",
+      "breite_cm": 297,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 270,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "anschluesse": "Offene Seite an Mittel-, Peninsula-, Chaise- oder Drop-Elemente (gleiche Tiefe 105)",
+      "quelle": "https://www.minotti.com/media/immagini/21540_n_ALEXANDER-ELEMENT-WITH-ONE-ARMREST-MIX-297.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-central-element-low-110",
+      "name": "CENTRAL ELEMENT LOW CM 110",
+      "art": "mittel",
+      "linie": "Alexander",
+      "breite_cm": 110,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "anschluesse": "Beidseitig anbaubar (ohne Armlehne)",
+      "quelle": "https://www.minotti.com/media/immagini/21541_n_ALEXANDER-CENTRAL-ELEMENT-LOW-110.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-central-element-high-110",
+      "name": "CENTRAL ELEMENT HIGH CM 110",
+      "art": "mittel",
+      "linie": "Alexander",
+      "breite_cm": 110,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "anschluesse": "Beidseitig anbaubar (ohne Armlehne)",
+      "quelle": "https://www.minotti.com/media/immagini/21542_n_ALEXANDER-CENTRAL-ELEMENT-HIGH-110.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-central-element-low-125",
+      "name": "CENTRAL ELEMENT LOW CM 125",
+      "art": "mittel",
+      "linie": "Alexander",
+      "breite_cm": 125,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "anschluesse": "Beidseitig anbaubar (ohne Armlehne)",
+      "quelle": "https://www.minotti.com/media/immagini/21543_n_ALEXANDER-CENTRAL-ELEMENT-LOW-125.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-central-element-high-125",
+      "name": "CENTRAL ELEMENT HIGH CM 125",
+      "art": "mittel",
+      "linie": "Alexander",
+      "breite_cm": 125,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "anschluesse": "Beidseitig anbaubar (ohne Armlehne)",
+      "quelle": "https://www.minotti.com/media/immagini/21544_n_ALEXANDER-CENTRAL-ELEMENT-HIGH-125.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-central-element-low-135",
+      "name": "CENTRAL ELEMENT LOW CM 135",
+      "art": "mittel",
+      "linie": "Alexander",
+      "breite_cm": 135,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "anschluesse": "Beidseitig anbaubar (ohne Armlehne)",
+      "quelle": "https://www.minotti.com/media/immagini/21545_n_ALEXANDER-CENTRAL-ELEMENT-LOW-135.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-central-element-high-135",
+      "name": "CENTRAL ELEMENT HIGH CM 135",
+      "art": "mittel",
+      "linie": "Alexander",
+      "breite_cm": 135,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "anschluesse": "Beidseitig anbaubar (ohne Armlehne)",
+      "quelle": "https://www.minotti.com/media/immagini/21546_n_ALEXANDER-CENTRAL-ELEMENT-HIGH-135.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-central-element-low-160",
+      "name": "CENTRAL ELEMENT LOW CM 160",
+      "art": "mittel",
+      "linie": "Alexander",
+      "breite_cm": 160,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "anschluesse": "Beidseitig anbaubar (ohne Armlehne)",
+      "quelle": "https://www.minotti.com/media/immagini/21547_n_ALEXANDER-CENTRAL-ELEMENT-LOW-160.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-central-element-high-160",
+      "name": "CENTRAL ELEMENT HIGH CM 160",
+      "art": "mittel",
+      "linie": "Alexander",
+      "breite_cm": 160,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "anschluesse": "Beidseitig anbaubar (ohne Armlehne)",
+      "quelle": "https://www.minotti.com/media/immagini/35978_n_ALEXANDER-CENTRAL-ELEMENT-HIGH-160.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-central-element-low-200",
+      "name": "CENTRAL ELEMENT LOW CM 200",
+      "art": "mittel",
+      "linie": "Alexander",
+      "breite_cm": 200,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "anschluesse": "Beidseitig anbaubar (ohne Armlehne)",
+      "quelle": "https://www.minotti.com/media/immagini/21549_n_ALEXANDER-CENTRAL-ELEMENT-LOW-200.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-central-element-high-200",
+      "name": "CENTRAL ELEMENT HIGH CM 200",
+      "art": "mittel",
+      "linie": "Alexander",
+      "breite_cm": 200,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "anschluesse": "Beidseitig anbaubar (ohne Armlehne)",
+      "quelle": "https://www.minotti.com/media/immagini/21550_n_ALEXANDER-CENTRAL-ELEMENT-HIGH-200.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-with-one-armrest-low-202",
+      "name": "OPEN END ELEMENT WITH ONE ARMREST LOW CM 202",
+      "art": "endelement-peninsula",
+      "linie": "Alexander",
+      "breite_cm": 202,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 175,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils am offenen Ende lt. Zeichnung (Rücken nur teilweise; nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21551_n_ALEXANDER-OPEN-END-ELEMENT-WITH-ONE-ARMREST-LOW-202.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-with-one-armrest-high-202",
+      "name": "OPEN END ELEMENT WITH ONE ARMREST HIGH CM 202",
+      "art": "endelement-peninsula",
+      "linie": "Alexander",
+      "breite_cm": 202,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 175,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils am offenen Ende lt. Zeichnung (Rücken nur teilweise; nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21552_n_ALEXANDER-OPEN-END-ELEMENT-WITH-ONE-ARMREST-HIGH-202.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-with-one-armrest-low-217",
+      "name": "OPEN END ELEMENT WITH ONE ARMREST LOW CM 217",
+      "art": "endelement-peninsula",
+      "linie": "Alexander",
+      "breite_cm": 217,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 190,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils am offenen Ende lt. Zeichnung (Rücken nur teilweise; nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21553_n_ALEXANDER-OPEN-END-ELEMENT-WITH-ONE-ARMREST-LOW-217.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-with-one-armrest-high-217",
+      "name": "OPEN END ELEMENT WITH ONE ARMREST HIGH CM 217",
+      "art": "endelement-peninsula",
+      "linie": "Alexander",
+      "breite_cm": 217,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 190,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils am offenen Ende lt. Zeichnung (Rücken nur teilweise; nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21554_n_ALEXANDER-OPEN-END-ELEMENT-WITH-ONE-ARMREST-HIGH-217.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-with-one-armrest-low-227",
+      "name": "OPEN END ELEMENT WITH ONE ARMREST LOW CM 227",
+      "art": "endelement-peninsula",
+      "linie": "Alexander",
+      "breite_cm": 227,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 200,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils am offenen Ende lt. Zeichnung (Rücken nur teilweise; nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21555_n_ALEXANDER-OPEN-END-ELEMENT-WITH-ONE-ARMREST-LOW-227.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-with-one-armrest-high-227",
+      "name": "OPEN END ELEMENT WITH ONE ARMREST HIGH CM 227",
+      "art": "endelement-peninsula",
+      "linie": "Alexander",
+      "breite_cm": 227,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 200,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils am offenen Ende lt. Zeichnung (Rücken nur teilweise; nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21556_n_ALEXANDER-OPEN-END-ELEMENT-WITH-ONE-ARMREST-HIGH-227.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-with-one-armrest-low-252",
+      "name": "OPEN END ELEMENT WITH ONE ARMREST LOW CM 252",
+      "art": "endelement-peninsula",
+      "linie": "Alexander",
+      "breite_cm": 252,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 225,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils am offenen Ende lt. Zeichnung (Rücken nur teilweise; nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21557_n_ALEXANDER-OPEN-END-ELEMENT-WITH-ONE-ARMREST-LOW-252.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-with-one-armrest-high-252",
+      "name": "OPEN END ELEMENT WITH ONE ARMREST HIGH CM 252",
+      "art": "endelement-peninsula",
+      "linie": "Alexander",
+      "breite_cm": 252,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 225,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils am offenen Ende lt. Zeichnung (Rücken nur teilweise; nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21558_n_ALEXANDER-OPEN-END-ELEMENT-WITH-ONE-ARMREST-HIGH-252.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-low-175",
+      "name": "OPEN END ELEMENT LOW CM 175",
+      "art": "peninsula",
+      "linie": "Alexander",
+      "breite_cm": 175,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "peninsula-links",
+          "hinweis": "Minotti-Kürzel SX lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "peninsula-rechts",
+          "hinweis": "Minotti-Kürzel DX lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21559_n_ALEXANDER-OPEN-END-ELEMENT-LOW-175.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-high-175",
+      "name": "OPEN END ELEMENT HIGH CM 175",
+      "art": "peninsula",
+      "linie": "Alexander",
+      "breite_cm": 175,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "peninsula-links",
+          "hinweis": "Minotti-Kürzel SX lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "peninsula-rechts",
+          "hinweis": "Minotti-Kürzel DX lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21560_n_ALEXANDER-OPEN-END-ELEMENT-HIGH-175.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-low-190",
+      "name": "OPEN END ELEMENT LOW CM 190",
+      "art": "peninsula",
+      "linie": "Alexander",
+      "breite_cm": 190,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "peninsula-links",
+          "hinweis": "Minotti-Kürzel SX lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "peninsula-rechts",
+          "hinweis": "Minotti-Kürzel DX lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21561_n_ALEXANDER-OPEN-END-ELEMENT-LOW-190.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-high-190",
+      "name": "OPEN END ELEMENT HIGH CM 190",
+      "art": "peninsula",
+      "linie": "Alexander",
+      "breite_cm": 190,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "peninsula-links",
+          "hinweis": "Minotti-Kürzel SX lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "peninsula-rechts",
+          "hinweis": "Minotti-Kürzel DX lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21562_n_ALEXANDER-OPEN-END-ELEMENT-HIGH-190.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-low-200",
+      "name": "OPEN END ELEMENT LOW CM 200",
+      "art": "peninsula",
+      "linie": "Alexander",
+      "breite_cm": 200,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "peninsula-links",
+          "hinweis": "Minotti-Kürzel SX lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "peninsula-rechts",
+          "hinweis": "Minotti-Kürzel DX lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21563_n_ALEXANDER-OPEN-END-ELEMENT-LOW-200.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-high-200",
+      "name": "OPEN END ELEMENT HIGH CM 200",
+      "art": "peninsula",
+      "linie": "Alexander",
+      "breite_cm": 200,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "peninsula-links",
+          "hinweis": "Minotti-Kürzel SX lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "peninsula-rechts",
+          "hinweis": "Minotti-Kürzel DX lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21564_n_ALEXANDER-OPEN-END-ELEMENT-HIGH-200.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-low-225",
+      "name": "OPEN END ELEMENT LOW CM 225",
+      "art": "peninsula",
+      "linie": "Alexander",
+      "breite_cm": 225,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "peninsula-links",
+          "hinweis": "Minotti-Kürzel SX lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "peninsula-rechts",
+          "hinweis": "Minotti-Kürzel DX lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21565_n_ALEXANDER-OPEN-END-ELEMENT-LOW-225.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-open-end-element-high-225",
+      "name": "OPEN END ELEMENT HIGH CM 225",
+      "art": "peninsula",
+      "linie": "Alexander",
+      "breite_cm": 225,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "peninsula-links",
+          "hinweis": "Minotti-Kürzel SX lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "peninsula-rechts",
+          "hinweis": "Minotti-Kürzel DX lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Länge des Rückenteils lt. Zeichnung (nicht beschriftet)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21566_n_ALEXANDER-OPEN-END-ELEMENT-HIGH-225.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-couch-low-105x187",
+      "name": "COUCH LOW CM 105X187",
+      "art": "couch",
+      "linie": "Alexander",
+      "breite_cm": 105,
+      "tiefe_cm": 187,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "hinweise": [
+        "Bezeichnung 105x187; Zeichnung: Frontansicht 105, Seitenansicht/Grundriss 187 (Liegeelement – Ausrichtung vor Planung prüfen).",
+        "Keine SX/DX-Angabe im Datenblatt."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21567_n_ALEXANDER-COUCH-LOW-105X187-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-couch-high-105x187",
+      "name": "COUCH HIGH CM 105X187",
+      "art": "couch",
+      "linie": "Alexander",
+      "breite_cm": 105,
+      "tiefe_cm": 187,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "hinweise": [
+        "Bezeichnung 105x187; Zeichnung: Frontansicht 105, Seitenansicht/Grundriss 187 (Liegeelement – Ausrichtung vor Planung prüfen).",
+        "Keine SX/DX-Angabe im Datenblatt."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21568_n_ALEXANDER-COUCH-HIGH-105X187-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-chaise-longue-low-162x162",
+      "name": "CHAISE-LONGUE LOW CM 162X162",
+      "art": "chaise",
+      "linie": "Alexander",
+      "breite_cm": 162,
+      "tiefe_cm": 162,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "armlehnenlaenge_cm": 105,
+      "hinweise": [
+        "Datenblatt: „CHAISE-LONGUE 162x162 – Armlehne cm 105“."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21571_n_ALEXANDER-CHAISE-LONGUE-LOW-162X162-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-chaise-longue-high-162x162",
+      "name": "CHAISE-LONGUE HIGH CM 162X162",
+      "art": "chaise",
+      "linie": "Alexander",
+      "breite_cm": 162,
+      "tiefe_cm": 162,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "armlehnenlaenge_cm": 105,
+      "hinweise": [
+        "Datenblatt: „CHAISE-LONGUE 162x162 – Armlehne cm 105“."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21572_n_ALEXANDER-CHAISE-LONGUE-HIGH-162X162-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-chaise-longue-low-105x162",
+      "name": "CHAISE-LONGUE LOW CM 105X162",
+      "art": "chaise",
+      "linie": "Alexander",
+      "breite_cm": 105,
+      "tiefe_cm": 162,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "armlehnenlaenge_cm": 105,
+      "weitere_masse_cm": [
+        {
+          "wert": 57,
+          "bedeutung": "Unbeschriftetes Maß in der Grundriss-Zeichnung (vermutl. Rückenteil-Länge)"
+        }
+      ],
+      "hinweise": [
+        "Datenblatt: „CHAISE-LONGUE 105x162 – Armlehne cm 105“."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21569_n_ALEXANDER-CHAISE-LONGUE-LOW-105X162-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-chaise-longue-high-105x162",
+      "name": "CHAISE-LONGUE HIGH CM 105X162",
+      "art": "chaise",
+      "linie": "Alexander",
+      "breite_cm": 105,
+      "tiefe_cm": 162,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "armlehnenlaenge_cm": 105,
+      "weitere_masse_cm": [
+        {
+          "wert": 57,
+          "bedeutung": "Unbeschriftetes Maß in der Grundriss-Zeichnung (vermutl. Rückenteil-Länge)"
+        }
+      ],
+      "hinweise": [
+        "Datenblatt: „CHAISE-LONGUE 105x162 – Armlehne cm 105“."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21570_n_ALEXANDER-CHAISE-LONGUE-HIGH-105X162-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-ottoman-105x105",
+      "name": "OTTOMAN CM 105X105",
+      "art": "hocker",
+      "linie": "Alexander",
+      "breite_cm": 105,
+      "tiefe_cm": 105,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": null,
+      "hinweise": [
+        "Höhe 42 lt. Zeichnung und Kompositionsbeispiel („pouf cm 105x105 H42“); Sitzhöhe = Gesamthöhe."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21520_n_ALEXANDER-POUF-105X105.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-sofa-low-274",
+      "name": "DROP - SOFA LOW CM 274",
+      "art": "sofa-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 274,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21577_n_ALEXANDER-DROP-SOFA-LOW-274.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-sofa-high-274",
+      "name": "DROP - SOFA HIGH CM 274",
+      "art": "sofa-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 274,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21578_n_ALEXANDER-DROP-SOFA-HIGH-274.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-sofa-mix-274",
+      "name": "DROP - SOFA MIX CM 274",
+      "art": "sofa-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 274,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21579_n_ALEXANDER-DROP-SOFA-MIX-274.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-sofa-low-304",
+      "name": "DROP - SOFA LOW CM 304",
+      "art": "sofa-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 304,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 250,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss).",
+        "Produktseite listet dieses Element fälschlich als „DROP - SOFA LOW CM 274“ (doppelt); Bilddatei und Datenblatt: LOW 304."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21580_n_ALEXANDER-DROP-SOFA-LOW-304-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-sofa-high-304",
+      "name": "DROP - SOFA HIGH CM 304",
+      "art": "sofa-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 304,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 250,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21581_n_ALEXANDER-DROP-SOFA-HIGH-304-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-sofa-mix-304",
+      "name": "DROP - SOFA MIX CM 304",
+      "art": "sofa-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 304,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 250,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21582_n_ALEXANDER-DROP-SOFA-MIX-304-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-low-162",
+      "name": "DROP - ELEMENT WITH ONE ARMREST LOW CM 162",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 162,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 135,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21583_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-LOW-162.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-high-162",
+      "name": "DROP - ELEMENT WITH ONE ARMREST HIGH CM 162",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 162,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 135,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21584_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-HIGH-162.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-low-187",
+      "name": "DROP - ELEMENT WITH ONE ARMREST LOW CM 187",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 187,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 160,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21585_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-LOW-187.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-high-187",
+      "name": "DROP - ELEMENT WITH ONE ARMREST HIGH CM 187",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 187,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 160,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21586_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-HIGH-187.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-low-202",
+      "name": "DROP - ELEMENT WITH ONE ARMREST LOW CM 202",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 202,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 175,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21587_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-LOW-202.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-high-202",
+      "name": "DROP - ELEMENT WITH ONE ARMREST HIGH CM 202",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 202,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 175,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/35979_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-HIGH-202.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-low-227",
+      "name": "DROP - ELEMENT WITH ONE ARMREST LOW CM 227",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 227,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 200,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21589_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-LOW-227.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-high-227",
+      "name": "DROP - ELEMENT WITH ONE ARMREST HIGH CM 227",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 227,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 200,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21590_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-HIGH-227.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-low-247",
+      "name": "DROP - ELEMENT WITH ONE ARMREST LOW CM 247",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 247,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21591_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-LOW-247.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-high-247",
+      "name": "DROP - ELEMENT WITH ONE ARMREST HIGH CM 247",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 247,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21592_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-HIGH-247.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-mix-247",
+      "name": "DROP - ELEMENT WITH ONE ARMREST MIX CM 247",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 247,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 220,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (gerundete Armlehnen-Ecke)"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21593_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-MIX-247.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-ray-low-167x144",
+      "name": "DROP - ELEMENT WITH ONE ARMREST RAY - LOW CM 167X144",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 167,
+      "tiefe_cm": 144,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (tropfenförmiges Endelement „Ray“)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (tropfenförmiges Endelement „Ray“)"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 105,
+          "bedeutung": "Tiefe des geraden Anschlussteils lt. Grundriss"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss).",
+        "„Ray“: tropfenförmig gerundetes Endelement; Gesamttiefe 144 cm lt. Seitenansicht."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21594_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-RAY-LOW-167X144.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-element-with-one-armrest-ray-mix-167x144",
+      "name": "DROP - ELEMENT WITH ONE ARMREST RAY - MIX CM 167X144",
+      "art": "endelement-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 167,
+      "tiefe_cm": 144,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung (tropfenförmiges Endelement „Ray“)"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung (tropfenförmiges Endelement „Ray“)"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 105,
+          "bedeutung": "Tiefe des geraden Anschlussteils lt. Grundriss"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss).",
+        "„Ray“: tropfenförmig gerundetes Endelement; Gesamttiefe 144 cm lt. Seitenansicht."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21595_n_ALEXANDER-DROP-ELEMENT-WITH-ONE-ARMREST-RAY-MIX-167X144.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-open-end-element-with-one-armrest-low-227",
+      "name": "DROP - OPEN END ELEMENT WITH ONE ARMREST LOW CM 227",
+      "art": "endelement-peninsula",
+      "linie": "Alexander Drop",
+      "breite_cm": 227,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 200,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21596_n_ALEXANDER-DROP-OPEN-END-ELEMENT-WITH-ONE-ARMREST-LOW-227-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-open-end-element-with-one-armrest-high-227",
+      "name": "DROP - OPEN END ELEMENT WITH ONE ARMREST HIGH CM 227",
+      "art": "endelement-peninsula",
+      "linie": "Alexander Drop",
+      "breite_cm": 227,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 200,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21597_n_ALEXANDER-DROP-OPEN-END-ELEMENT-WITH-ONE-ARMREST-HIGH-227-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-open-end-element-with-one-armrest-low-252",
+      "name": "DROP - OPEN END ELEMENT WITH ONE ARMREST LOW CM 252",
+      "art": "endelement-peninsula",
+      "linie": "Alexander Drop",
+      "breite_cm": 252,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 225,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21598_n_ALEXANDER-DROP-OPEN-END-ELEMENT-WITH-ONE-ARMREST-LOW-252-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-open-end-element-with-one-armrest-high-252",
+      "name": "DROP - OPEN END ELEMENT WITH ONE ARMREST HIGH CM 252",
+      "art": "endelement-peninsula",
+      "linie": "Alexander Drop",
+      "breite_cm": 252,
+      "tiefe_cm": 105,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "innen_sitzbreite_cm": 225,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21599_n_ALEXANDER-DROP-OPEN-END-ELEMENT-WITH-ONE-ARMREST-HIGH-252-.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-chaise-longue-low-162x162",
+      "name": "DROP - CHAISE-LONGUE LOW CM 162X162",
+      "art": "chaise-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 162,
+      "tiefe_cm": 162,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 56,
+          "bedeutung": "Unbeschriftetes Maß lt. Zeichnung"
+        },
+        {
+          "wert": 22,
+          "bedeutung": "Unbeschriftetes Maß lt. Zeichnung"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21600_n_ALEXANDER-DROP-CHAISE-LONGUE-LOW-162X162.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-chaise-longue-high-162x162",
+      "name": "DROP - CHAISE-LONGUE HIGH CM 162X162",
+      "art": "chaise-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 162,
+      "tiefe_cm": 162,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "HIGH",
+      "ruecken_armlehnenhoehe_cm": 79,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 56,
+          "bedeutung": "Unbeschriftetes Maß lt. Zeichnung"
+        },
+        {
+          "wert": 22,
+          "bedeutung": "Unbeschriftetes Maß lt. Zeichnung"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21601_n_ALEXANDER-DROP-CHAISE-LONGUE-HIGH-162X162.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-chaise-longue-ray-low-187x167",
+      "name": "DROP - CHAISE-LONGUE RAY - LOW CM 187X167",
+      "art": "chaise-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 187,
+      "tiefe_cm": 167,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "LOW",
+      "ruecken_armlehnenhoehe_cm": 64,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 105,
+          "bedeutung": "Tiefe des geraden Anschlussteils lt. Grundriss"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21602_n_ALEXANDER-DROP-CHAISE-LONGUE-RAY-LOW-187X167.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "alexander-drop-chaise-longue-ray-mix-187x167",
+      "name": "DROP - CHAISE-LONGUE RAY - MIX CM 187X167",
+      "art": "chaise-gebogen",
+      "linie": "Alexander Drop",
+      "breite_cm": 187,
+      "tiefe_cm": 167,
+      "hoehe_cm": 83,
+      "sitzhoehe_cm": 42,
+      "ruecken_armlehne": "MIX",
+      "ruecken_armlehnenhoehe_cm": [
+        64,
+        79
+      ],
+      "version_hinweis": "MIX: Kombination hoher (H79) und niedriger (H64) Rücken-/Armlehnenteile; Ausführung SX/DX bestimmt die Lage der hohen Seite lt. Zeichnung.",
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "anbau-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "anbau-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_masse_cm": [
+        {
+          "wert": 105,
+          "bedeutung": "Tiefe des geraden Anschlussteils lt. Grundriss"
+        }
+      ],
+      "hinweise": [
+        "„Drop“-Linie: gebogenes, abgerundetes Ende (Rundung lt. Grundriss)."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21603_n_ALEXANDER-DROP-CHAISE-LONGUE-RAY-MIX-187X167.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "linie": "Alexander",
+      "sitzhoehe_cm": null,
+      "code": "alexander-optional-back-cushion-70x50",
+      "name": "OPTIONAL BACK CUSHION CM 70X50",
+      "art": "rueckenkissen-optional",
+      "breite_cm": 70,
+      "tiefe_cm": null,
+      "hoehe_cm": 50,
+      "quelle": "https://www.minotti.com/media/immagini/21573_n_ALEXANDER-OPTIONAL-BACK-CUSHION-70.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "linie": "Alexander",
+      "sitzhoehe_cm": null,
+      "code": "alexander-optional-back-cushion-50x50",
+      "name": "OPTIONAL BACK CUSHION CM 50X50",
+      "art": "rueckenkissen-optional",
+      "breite_cm": 50,
+      "tiefe_cm": null,
+      "hoehe_cm": 50,
+      "quelle": "https://www.minotti.com/media/immagini/21574_n_ALEXANDER-OPTIONAL-BACK-CUSHION-50.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "linie": "Alexander",
+      "sitzhoehe_cm": null,
+      "code": "alexander-teddy-optional-cushion-45x45",
+      "name": "TEDDY OPTIONAL CUSHION CM 45X45",
+      "art": "dekokissen-optional",
+      "breite_cm": 45,
+      "tiefe_cm": null,
+      "hoehe_cm": 45,
+      "quelle": "https://www.minotti.com/media/immagini/21575_n_TEDDY-OPTIONAL-CUSHION.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "linie": "Alexander",
+      "sitzhoehe_cm": null,
+      "code": "alexander-optional-headrest",
+      "name": "OPTIONAL HEADREST",
+      "art": "kopfstuetze",
+      "breite_cm": 86,
+      "tiefe_cm": null,
+      "hoehe_cm": 76,
+      "quelle": "https://www.minotti.com/media/immagini/21576_n_ALEXANDER-OPTIONAL-HEADREST.jpg",
+      "hinweise": [
+        "Wird zwischen Rückenlehne und Rückenkissen eingesteckt (innen versteifte, flexible Struktur).",
+        "Datenblatt zeigt zusätzlich „Headrest position“ mit unbeschriftetem Maß 79 – Bedeutung unklar."
+      ],
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/alexander"
+      ]
+    }
+  ],
+  "raster": {
+    "tiefe_cm": 105,
+    "innen_sitzbreiten_cm": [
+      125,
+      135,
+      160,
+      175,
+      190,
+      200,
+      220,
+      225,
+      250,
+      270
+    ],
+    "hinweis": "Einheitliche Tiefe 105 cm und Sitzhöhe 42 cm bei allen geraden Elementen."
+  },
+  "sitzhoehe_cm_familie": 42,
+  "rueckenoptionen": [
+    {
+      "name": "LOW – niedrige Rücken-/Armlehnenstruktur H 64 cm",
+      "hinweis": "Hält die Sicht in den Raum frei."
+    },
+    {
+      "name": "HIGH – hohe Rücken-/Armlehnenstruktur H 79 cm",
+      "hinweis": "Bildet „Alkoven“-Nischen; Bezug der HIGH-Struktur mit Reißverschluss nahe der Ziernaht."
+    },
+    {
+      "name": "MIX – Kombination hoch/niedrig",
+      "hinweis": "Nur bei Sofas 229–304, Endelementen 247/277/297, Drop-Sofas, Drop-Endelement 247 und Ray-Elementen."
+    },
+    {
+      "name": "Rückenkissen mit mittiger Ziernaht (Gänsedaune, Memory-Foam-Kern)"
+    },
+    {
+      "name": "Optionale Kopfstütze 86×H76 cm"
+    },
+    {
+      "name": "Optionale Rückenkissen 70×50 und 50×50 cm"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "2 Armlehnen",
+      "elemente": "SOFA 229/254/274/304, DROP - SOFA 274/304"
+    },
+    {
+      "name": "1 Armlehne links (SX) oder rechts (DX)",
+      "elemente": "ELEMENT WITH ONE ARMREST, OPEN END ELEMENT WITH ONE ARMREST, CHAISE-LONGUE (Armlehne 105 cm), DROP-Endelemente inkl. RAY"
+    },
+    {
+      "name": "Ohne Armlehne",
+      "elemente": "CENTRAL ELEMENT, OPEN END ELEMENT, COUCH, OTTOMAN"
+    },
+    {
+      "name": "Armlehnenhöhe = Rückenhöhe (LOW 64 / HIGH 79 cm)"
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Tragende Basis (Profile; Elemente vom Boden abgehoben)",
+      "material": "Strangpress-Aluminium",
+      "finish": [
+        "Bronze, glänzend lackiert, Anti-Fingerprint, mit schlagfestem Schutzlack"
+      ]
+    },
+    {
+      "teil": "Gleiter",
+      "material": "Nylon"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "bezugsart": "Abnehmbar: Sitz- und Rückenkissen in allen Versionen (Stoff und Leder) komplett abziehbar; Bezug der Struktur (Stoff/Leder) abnehmbar. Rücken-/Armlehnenteile per Hebel unter dem Sofa herausnehmbar.",
+    "preisgruppen": null,
+    "farbmuster_hinweis": "Original-Stoff- und Ledermuster (Minotti „The World of Materials“) bitte im Showroom ansehen – Bildschirmfarben sind nicht verbindlich."
+  },
+  "polsterung": "Gestell Massivholz mit elastischen Gurten (hoher Kautschukanteil); Sitzstruktur und Rücken-/Armlehnenteile in hochelastischem PU-Schaum unterschiedlicher Dichte. Rückenkissen: kanalisierte Gänsedaune (Assopiuma Gold Label) mit Memory-Foam-Kern. Sitzkissen: kanalisierte Gänsedaune mit PU-Kern, umhüllt von Memory Foam.",
+  "kissenoptionen": [
+    {
+      "name": "Optionales Rückenkissen",
+      "masse_cm": "70×50"
+    },
+    {
+      "name": "Optionales Rückenkissen",
+      "masse_cm": "50×50"
+    },
+    {
+      "name": "Teddy-Kissen optional",
+      "masse_cm": "45×45"
+    },
+    {
+      "name": "Optionale Kopfstütze",
+      "masse_cm": "86×H76",
+      "hinweis": "Bezug in allen Stoffen/Ledern der Kollektion, abziehbar."
+    }
+  ],
+  "kombinierbarkeit": [
+    "Gerade Elemente und „Drop“-Elemente in einer Komposition kombinierbar (L-Formen, lineare Formen mit gerundeten Enden).",
+    "Endelemente/Chaise/Peninsula in SX- und DX-Ausführung.",
+    "LOW-, HIGH- und MIX-Teile in einer Komposition mischbar (lt. Hersteller).",
+    "Hersteller-Kompositionen A–D im Technical Sheet (z. B. 307×202 cm, 457×252 cm, 467×454 cm, 427×324 cm, 414 cm)."
+  ],
+  "besonderheiten": [
+    "Schneiderische Ziernähte an der Sofaecke und an der HIGH-Rücken-/Armlehne, mittige Naht auf den Rückenkissen.",
+    "Bronzefarbene Aluminiumbasis lässt die Elemente schweben.",
+    "„Drop“-Elemente (gerundet) und „Ray“-Elemente (tropfenförmig) für geschwungene Kompositionen.",
+    "Für Wohnen und Hospitality geeignet."
+  ],
+  "fehlend": [
+    "Sitztiefe (in keiner Zeichnung beschriftet).",
+    "Bedeutung unbeschrifteter Zeichnungsmaße (65 Rückenteil Peninsula, 57/56/22 Chaise, 79 „Headrest position“).",
+    "SX/DX-Angabe beim Couch-Element.",
+    "Tiefe der optionalen Kissen/Kopfstütze.",
+    "Minotti-Artikelnummern.",
+    "Vollständige Stoff-/Lederliste und Preisgruppen (Händler-/Login-Bereich).",
+    "Explizite Anschlussregeln (nur aus Beispielkompositionen ableitbar).",
+    "Preise (vom Inhaber festzulegen), Gewicht, Lieferzeit."
+  ],
+  "vollstaendigkeit": {
+    "felder_gesamt": 455,
+    "felder_belegt": 364,
+    "prozent": 80,
+    "basis": "Maßfelder breite/tiefe/hoehe/sitzhoehe/sitztiefe aller Sitz-/Hocker-Elemente (ohne Kissen/Zubehör)"
+  },
+  "vollstaendigkeit_prozent": 80
+}

@@ -1,0 +1,35 @@
+{
+  "_hinweis": "R6-portal-labs, 26.10.2026. Neue Schlüssel für den Demo-Hinweis im Kundenportal (N7, src/lib/portal/demoNotice.js über tx()). Portal.demo.dev erscheint nur auf dem Dev-Server (next dev), Portal.demo.access in einem Produktions-Build mit Demo-Sitzung (Mock-Adapter). Ohne Übernahme in src/messages/*.json gilt der DE-Text aus dem Code (identisch mit dem DE-Vorschlag hier). Portal bleibt DE-only, bis alle Portal-Texte übersetzt sind. EN/FR/IT sind Übersetzungsvorschläge, bitte von Muttersprachlern prüfen. IT in tu-Form (Entscheidung R3; die zwei Sätze sprechen niemanden direkt an).",
+  "de": {
+    "Portal": {
+      "demo": {
+        "dev": "Demo-Daten aus der lokalen Entwicklungsumgebung – keine echten Kundendaten, keine Preise.",
+        "access": "Demo-Zugang mit Beispieldaten – keine echten Kundendaten, keine Preise."
+      }
+    }
+  },
+  "en": {
+    "Portal": {
+      "demo": {
+        "dev": "Demo data from the local development environment – no real customer data, no prices.",
+        "access": "Demo access with sample data – no real customer data, no prices."
+      }
+    }
+  },
+  "fr": {
+    "Portal": {
+      "demo": {
+        "dev": "Données de démonstration de l’environnement de développement local – aucune donnée client réelle, aucun prix.",
+        "access": "Accès de démonstration avec des données d’exemple – aucune donnée client réelle, aucun prix."
+      }
+    }
+  },
+  "it": {
+    "Portal": {
+      "demo": {
+        "dev": "Dati demo dell’ambiente di sviluppo locale – nessun dato reale dei clienti, nessun prezzo.",
+        "access": "Accesso demo con dati di esempio – nessun dato reale dei clienti, nessun prezzo."
+      }
+    }
+  }
+}

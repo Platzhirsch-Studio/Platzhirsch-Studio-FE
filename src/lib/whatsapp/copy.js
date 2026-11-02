@@ -1,0 +1,191 @@
+// src/lib/whatsapp/copy.js – Texte der WhatsApp-Beratung (DE/EN/FR/IT).
+//
+// Seit dem Nachbessern stehen die Texte in src/messages/*.json (Namespace
+// "whatsapp", Pflegeort für Übersetzungen). Im Client liest alles diese
+// Tabelle (Einstiege, Hinweis, MobileCtaBar, Concierge, link.js für den
+// vorbelegten Text); der Namespace ist deshalb in
+// src/components/Reusable/clientMessages.js server-only (Client-Payload). tests/unit/whatsapp.test.mjs prüft den Gleichstand mit
+// src/messages/*.json und Marktresearch/digital/features/whatsapp-messages.json.
+//
+// Stimme (Design-Bibel §1): Sie-Form, kurze Sätze, keine Superlative, kein
+// Ausrufezeichen, keine Antwortzeit (die kommt nur aus WHATSAPP_REPLY_NOTE).
+// Rechtlicher Inhalt des Hinweises nach Konzept A3.5: wer verarbeitet (Meta
+// als Dienstleister, Übermittlung in die USA), wofür, Alternativen, DSE-Link.
+// Nicht „Ende-zu-Ende-verschlüsselt“ schreiben (Meta verwaltet die Schlüssel
+// der Cloud API, A3.3).
+
+export const WHATSAPP_COPY = {
+  de: {
+    open: "Per WhatsApp schreiben",
+    openProduct: "Frage zu diesem Stück per WhatsApp",
+    hintTitle: "Sie wechseln zu WhatsApp (Meta)",
+    hintBody:
+      "WhatsApp ist ein Dienst von Meta. Ihre Nachricht und Ihre Nummer laufen über Server von Meta, auch in den USA. Wir nutzen Ihre Nachricht, um Ihre Anfrage zu bearbeiten, und legen sie dazu in unserem Kundensystem ab. Für Ihr WhatsApp-Konto gelten die Bedingungen von WhatsApp.",
+    hintPrefill: "Der Text ist vorbereitet. Sie können ihn vor dem Senden ändern oder löschen.",
+    privacy: "Datenschutzerklärung",
+    privacyPrefix: "Mehr dazu in der",
+    continue: "Weiter zu WhatsApp",
+    opensApp: "öffnet WhatsApp in einem neuen Fenster",
+    alternatives: "Lieber ohne WhatsApp:",
+    phone: "Telefon",
+    email: "E-Mail",
+    form: "Formular",
+    hours: "Öffnungszeiten",
+    close: "Hinweis schließen",
+    qrTitle: "Am Handy weiterschreiben",
+    qrText: "Scannen Sie den Code mit der Kamera Ihres Handys. WhatsApp öffnet sich mit dem vorbereiteten Text.",
+    qrAlt: "QR-Code: öffnet einen WhatsApp-Chat mit Platzhirsch Home Living",
+    bar: "WhatsApp",
+    barLabel: "Per WhatsApp schreiben, Hinweis öffnen",
+    kontaktEyebrow: "WhatsApp",
+    kontaktTitle: "Schreiben statt anrufen",
+    kontaktText: "Schicken Sie uns Ihre Frage per WhatsApp, gern mit Fotos oder Maßen. Es antwortet das Team in Lochau.",
+    beratungTitle: "Lieber schreiben?",
+    beratungText: "Fragen zu Ihrem Vorhaben können Sie uns auch per WhatsApp schicken. Es antwortet das Team in Lochau.",
+    concierge: "Mit einem Menschen weiterschreiben (WhatsApp)",
+    devPreview: "Dev-Vorschau mit fiktiver Testnummer",
+    prefill: {
+      general: "Guten Tag, ich habe eine Frage zur Einrichtung.",
+      page: "Guten Tag, ich habe eine Frage zu dieser Seite: {url}",
+      product: "Guten Tag, ich interessiere mich für {product} ({brand}). {url}",
+      productNoBrand: "Guten Tag, ich interessiere mich für {product}. {url}",
+      beratung: "Guten Tag, ich möchte eine Beratung vereinbaren.",
+      merkliste: "Guten Tag, ich habe eine Frage zu meiner Merkliste.",
+      ideenboard: "Guten Tag, hier ist mein Ideenboard: {url}",
+      ezarriMix: "Guten Tag, ich habe eine Frage zu meiner Ezarri-Mischung: {url}",
+    },
+  },
+  en: {
+    open: "Message us on WhatsApp",
+    openProduct: "Ask about this piece on WhatsApp",
+    hintTitle: "You are switching to WhatsApp (Meta)",
+    hintBody:
+      "WhatsApp is a service of Meta. Your message and your number pass through Meta's servers, including in the USA. We use your message to handle your enquiry and store it in our customer system for this purpose. Your WhatsApp account is governed by WhatsApp's terms.",
+    hintPrefill: "The text is prepared. You can change or delete it before sending.",
+    privacy: "privacy policy",
+    privacyPrefix: "More in our",
+    continue: "Continue to WhatsApp",
+    opensApp: "opens WhatsApp in a new window",
+    alternatives: "Prefer not to use WhatsApp:",
+    phone: "Phone",
+    email: "E-mail",
+    form: "Form",
+    hours: "Opening hours",
+    close: "Close notice",
+    qrTitle: "Continue on your phone",
+    qrText: "Scan the code with your phone camera. WhatsApp opens with the prepared text.",
+    qrAlt: "QR code: opens a WhatsApp chat with Platzhirsch Home Living",
+    bar: "WhatsApp",
+    barLabel: "Message us on WhatsApp, open notice",
+    kontaktEyebrow: "WhatsApp",
+    kontaktTitle: "Write instead of calling",
+    kontaktText: "Send us your question on WhatsApp, with photos or measurements if you like. The team in Lochau replies.",
+    beratungTitle: "Prefer to write?",
+    beratungText: "You can also send us questions about your project on WhatsApp. The team in Lochau replies.",
+    concierge: "Continue with a person (WhatsApp)",
+    devPreview: "Dev preview with a fictitious test number",
+    prefill: {
+      general: "Hello, I have a question about furnishing.",
+      page: "Hello, I have a question about this page: {url}",
+      product: "Hello, I am interested in {product} ({brand}). {url}",
+      productNoBrand: "Hello, I am interested in {product}. {url}",
+      beratung: "Hello, I would like to arrange a consultation.",
+      merkliste: "Hello, I have a question about my wishlist.",
+      ideenboard: "Hello, here is my idea board: {url}",
+      ezarriMix: "Hello, I have a question about my Ezarri mix: {url}",
+    },
+  },
+  fr: {
+    open: "Nous écrire sur WhatsApp",
+    openProduct: "Question sur cette pièce via WhatsApp",
+    hintTitle: "Vous passez à WhatsApp (Meta)",
+    hintBody:
+      "WhatsApp est un service de Meta. Votre message et votre numéro transitent par les serveurs de Meta, y compris aux États-Unis. Nous utilisons votre message pour traiter votre demande et l'enregistrons à cette fin dans notre système clients. Votre compte WhatsApp est soumis aux conditions de WhatsApp.",
+    hintPrefill: "Le texte est préparé. Vous pouvez le modifier ou le supprimer avant l'envoi.",
+    privacy: "politique de confidentialité",
+    privacyPrefix: "Plus de détails dans notre",
+    continue: "Continuer vers WhatsApp",
+    opensApp: "ouvre WhatsApp dans une nouvelle fenêtre",
+    alternatives: "Sans WhatsApp :",
+    phone: "Téléphone",
+    email: "E-mail",
+    form: "Formulaire",
+    hours: "Horaires d'ouverture",
+    close: "Fermer la notice",
+    qrTitle: "Continuer sur votre téléphone",
+    qrText: "Scannez le code avec l'appareil photo de votre téléphone. WhatsApp s'ouvre avec le texte préparé.",
+    qrAlt: "Code QR : ouvre une conversation WhatsApp avec Platzhirsch Home Living",
+    bar: "WhatsApp",
+    barLabel: "Nous écrire sur WhatsApp, ouvrir la notice",
+    kontaktEyebrow: "WhatsApp",
+    kontaktTitle: "Écrire plutôt qu'appeler",
+    kontaktText: "Envoyez-nous votre question sur WhatsApp, avec photos ou dimensions si vous le souhaitez. L'équipe de Lochau vous répond.",
+    beratungTitle: "Vous préférez écrire ?",
+    beratungText: "Vous pouvez aussi nous envoyer vos questions sur votre projet via WhatsApp. L'équipe de Lochau vous répond.",
+    concierge: "Continuer avec une personne (WhatsApp)",
+    devPreview: "Aperçu dev avec un numéro de test fictif",
+    prefill: {
+      general: "Bonjour, j'ai une question sur l'aménagement.",
+      page: "Bonjour, j'ai une question sur cette page : {url}",
+      product: "Bonjour, je suis intéressé(e) par {product} ({brand}). {url}",
+      productNoBrand: "Bonjour, je suis intéressé(e) par {product}. {url}",
+      beratung: "Bonjour, je souhaite prendre rendez-vous pour un conseil.",
+      merkliste: "Bonjour, j'ai une question sur ma liste de souhaits.",
+      ideenboard: "Bonjour, voici mon tableau d'idées : {url}",
+      ezarriMix: "Bonjour, j'ai une question sur mon mélange Ezarri : {url}",
+    },
+  },
+  it: {
+    open: "Scriveteci su WhatsApp",
+    openProduct: "Domanda su questo pezzo via WhatsApp",
+    hintTitle: "State passando a WhatsApp (Meta)",
+    hintBody:
+      "WhatsApp è un servizio di Meta. Il vostro messaggio e il vostro numero passano dai server di Meta, anche negli Stati Uniti. Usiamo il vostro messaggio per gestire la vostra richiesta e a questo scopo lo registriamo nel nostro sistema clienti. Per il vostro account WhatsApp valgono le condizioni di WhatsApp.",
+    hintPrefill: "Il testo è già preparato. Potete modificarlo o cancellarlo prima dell'invio.",
+    privacy: "informativa sulla privacy",
+    privacyPrefix: "Maggiori dettagli nella nostra",
+    continue: "Continuate su WhatsApp",
+    opensApp: "apre WhatsApp in una nuova finestra",
+    alternatives: "Senza WhatsApp:",
+    phone: "Telefono",
+    email: "E-mail",
+    form: "Modulo",
+    hours: "Orari di apertura",
+    close: "Chiudete l'avviso",
+    qrTitle: "Continuate sul telefono",
+    qrText: "Inquadrate il codice con la fotocamera del telefono. WhatsApp si apre con il testo preparato.",
+    qrAlt: "Codice QR: apre una chat WhatsApp con Platzhirsch Home Living",
+    bar: "WhatsApp",
+    barLabel: "Scriveteci su WhatsApp, apri l'avviso",
+    kontaktEyebrow: "WhatsApp",
+    kontaktTitle: "Scriveteci invece di chiamare",
+    kontaktText: "Inviateci la vostra domanda su WhatsApp, anche con foto o misure. Risponde il team di Lochau.",
+    beratungTitle: "Preferite scrivere?",
+    beratungText: "Potete inviarci domande sul vostro progetto anche via WhatsApp. Risponde il team di Lochau.",
+    concierge: "Continuate con una persona (WhatsApp)",
+    devPreview: "Anteprima dev con numero di prova fittizio",
+    prefill: {
+      general: "Buongiorno, ho una domanda sull'arredamento.",
+      page: "Buongiorno, ho una domanda su questa pagina: {url}",
+      product: "Buongiorno, sono interessato/a a {product} ({brand}). {url}",
+      productNoBrand: "Buongiorno, sono interessato/a a {product}. {url}",
+      beratung: "Buongiorno, vorrei fissare una consulenza.",
+      merkliste: "Buongiorno, ho una domanda sulla mia lista dei desideri.",
+      ideenboard: "Buongiorno, ecco la mia bacheca di idee: {url}",
+      ezarriMix: "Buongiorno, ho una domanda sul mio mix Ezarri: {url}",
+    },
+  },
+};
+
+export const LOCALES = Object.keys(WHATSAPP_COPY);
+
+/** Texte einer Sprache (Fallback Deutsch). */
+export function whatsappCopy(locale) {
+  return WHATSAPP_COPY[locale] || WHATSAPP_COPY.de;
+}
+
+/** Vorlage des vorbelegten Texts. */
+export function prefillTemplate(locale, kind) {
+  const p = whatsappCopy(locale).prefill;
+  return p[kind] || p.general;
+}

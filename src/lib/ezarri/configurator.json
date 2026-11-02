@@ -1,0 +1,6317 @@
+{
+ "stand": "2026-10-28",
+ "quelle": "https://www.ezarri.com/de/konfigurator (iframe https://www.ezarri.com/configurador/index.php?lang=DE)",
+ "hinweis": "Renderparameter aus dem Ezarri-Konfigurator (Farbe als Hex, Reflexion, Glanz). Zur Simulation eigener Mischungen; max. 4 Referenzen je Mischung laut Ezarri.",
+ "max_referenzen_je_mischung": 4,
+ "fugen": [
+  {
+   "id": "1",
+   "name": "Bianco Assoluto 100",
+   "farbe_hex": "#ededed",
+   "helligkeit": 100,
+   "reflexion": 0
+  },
+  {
+   "id": "2",
+   "name": "Grigio Ardesia 130",
+   "farbe_hex": "#95a5bb",
+   "helligkeit": 65,
+   "reflexion": 0.2
+  },
+  {
+   "id": "3",
+   "name": "Nero Carbonio 145",
+   "farbe_hex": "#141414",
+   "helligkeit": 25,
+   "reflexion": 0.2
+  },
+  {
+   "id": "4",
+   "name": "Azzurro Caraibi 320",
+   "farbe_hex": "#6c9ca0",
+   "helligkeit": 50,
+   "reflexion": 0.5
+  },
+  {
+   "id": "5",
+   "name": "Blue Denim 340",
+   "farbe_hex": "#2e618c",
+   "helligkeit": 50,
+   "reflexion": 1
+  },
+  {
+   "id": "6",
+   "name": "Blue Zaffiro 350",
+   "farbe_hex": "#2a436b",
+   "helligkeit": 53,
+   "reflexion": 1
+  },
+  {
+   "id": "7",
+   "name": "Verde Pino 430",
+   "farbe_hex": "#3d4d40",
+   "helligkeit": 53,
+   "reflexion": 1
+  }
+ ],
+ "mosaike": [
+  {
+   "id": "1",
+   "name": "Blots",
+   "serie": "Aquarelle",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "weiss",
+    "gruen"
+   ],
+   "farbe_hex": "#f7f7f7",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "AquarelleBlots.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "blots-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-aquarelle-blots-25",
+    "50": "/ezarri/konfigurator/konf-aquarelle-blots-50"
+   }
+  },
+  {
+   "id": "2",
+   "name": "Effect",
+   "serie": "Aquarelle",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gruen",
+    "braun"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "AquarelleEffect.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "effect-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-aquarelle-effect-25",
+    "50": "/ezarri/konfigurator/konf-aquarelle-effect-50"
+   }
+  },
+  {
+   "id": "3",
+   "name": "Fluid",
+   "serie": "Aquarelle",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#f0f0f0",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "AquarelleFluid.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "fluid-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-aquarelle-fluid-25",
+    "50": "/ezarri/konfigurator/konf-aquarelle-fluid-50"
+   }
+  },
+  {
+   "id": "5",
+   "name": "Pigment",
+   "serie": "Aquarelle",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 95,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.35,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "AquarellePigment.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "pigment-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-aquarelle-pigment-25",
+    "50": "/ezarri/konfigurator/konf-aquarelle-pigment-50"
+   }
+  },
+  {
+   "id": "8",
+   "name": "Sponge",
+   "serie": "Aquarelle",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "weiss",
+    "gelb",
+    "braun"
+   ],
+   "farbe_hex": "#faf8f5",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.2,
+   "glanz": 0.1,
+   "relief": 0,
+   "diffuse_tex": "AquarelleSponge.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "sponge-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-aquarelle-sponge-25",
+    "50": "/ezarri/konfigurator/konf-aquarelle-sponge-50"
+   }
+  },
+  {
+   "id": "10",
+   "name": "Strokes",
+   "serie": "Aquarelle",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "weiss",
+    "blau",
+    "gruen"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "AquarelleStrokes.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "strokes-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-aquarelle-strokes-25",
+    "50": "/ezarri/konfigurator/konf-aquarelle-strokes-50"
+   }
+  },
+  {
+   "id": "11",
+   "name": "Washes",
+   "serie": "Aquarelle",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 90,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.1,
+   "relief": 0,
+   "diffuse_tex": "AquarelleWashes.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "washes-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-aquarelle-washes-25",
+    "50": "/ezarri/konfigurator/konf-aquarelle-washes-50"
+   }
+  },
+  {
+   "id": "12",
+   "name": "Wet-in-wet",
+   "serie": "Aquarelle",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb",
+    "braun"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 90,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.1,
+   "relief": 0,
+   "diffuse_tex": "AquarelleWet.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "wet-in-wet-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-aquarelle-wet-in-wet-25",
+    "50": "/ezarri/konfigurator/konf-aquarelle-wet-in-wet-50"
+   }
+  },
+  {
+   "id": "14",
+   "name": "Celestite",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.6,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaCelestite.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "celestite",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-celestite-25"
+   }
+  },
+  {
+   "id": "17",
+   "name": "Gibeon",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 80,
+   "saettigung": 30,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaGibeon.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "gibeon",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-gibeon-25"
+   }
+  },
+  {
+   "id": "19",
+   "name": "Lace",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 95,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaLace.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "lace",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-lace-25"
+   }
+  },
+  {
+   "id": "21",
+   "name": "Magnet",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 90,
+   "saettigung": 50,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaMagnet.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "magnet",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-magnet-25"
+   }
+  },
+  {
+   "id": "22",
+   "name": "Peridot",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau",
+    "gruen"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 95,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaPeridot.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "peridot",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-peridot-25"
+   }
+  },
+  {
+   "id": "23",
+   "name": "Zircon",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau",
+    "schwarz"
+   ],
+   "farbe_hex": "#c7c7c7",
+   "textur_level": 1,
+   "helligkeit": 70,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.6,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaZircon.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "zircon",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-zircon-25"
+   }
+  },
+  {
+   "id": "24",
+   "name": "Ash",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "weiss",
+    "grau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 105,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.05,
+   "relief": 0,
+   "diffuse_tex": "ZenAsh.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "ash-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-ash-25",
+    "50": "/ezarri/konfigurator/konf-zen-ash-50"
+   }
+  },
+  {
+   "id": "25",
+   "name": "Bali Stone",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#b6eceb",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.7,
+   "relief": 0,
+   "diffuse_tex": "ZenBalistone.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "bali-stone-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-bali-stone-25",
+    "50": "/ezarri/konfigurator/konf-zen-bali-stone-50"
+   }
+  },
+  {
+   "id": "26",
+   "name": "Black Marble",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "schwarz"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.1,
+   "relief": 0,
+   "diffuse_tex": "ZenBlackmarble.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "black-marble",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-black-marble-25"
+   }
+  },
+  {
+   "id": "27",
+   "name": "Dolerite",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#e4fbed",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "ZenDolerite.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "dolerite-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-dolerite-25",
+    "50": "/ezarri/konfigurator/konf-zen-dolerite-50"
+   }
+  },
+  {
+   "id": "28",
+   "name": "Phyllite",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "schwarz"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "ZenPhyllite.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "phyllite-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-phyllite-25",
+    "50": "/ezarri/konfigurator/konf-zen-phyllite-50"
+   }
+  },
+  {
+   "id": "29",
+   "name": "Pale Cherry",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#fef8ec",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "ZenPalecherry.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "pale-cherry",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-pale-cherry-25"
+   }
+  },
+  {
+   "id": "30",
+   "name": "Creamstone",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "ZenCreamstone.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "creamstone-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-creamstone-25",
+    "50": "/ezarri/konfigurator/konf-zen-creamstone-50"
+   }
+  },
+  {
+   "id": "31",
+   "name": "Carrara",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "weiss",
+    "grau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "ZenCarrara.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "carrara-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-carrara-25",
+    "50": "/ezarri/konfigurator/konf-zen-carrara-50"
+   }
+  },
+  {
+   "id": "32",
+   "name": "Fiori di Bosco",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "ZenFiordibosco.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "fior-di-bosco-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-fior-di-bosco-25",
+    "50": "/ezarri/konfigurator/konf-zen-fior-di-bosco-50"
+   }
+  },
+  {
+   "id": "33",
+   "name": "Oak",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "ZenOak.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "oak",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-oak-25"
+   }
+  },
+  {
+   "id": "34",
+   "name": "Sandstone",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 105,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "ZenSandstone.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "sandstone-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-sandstone-25",
+    "50": "/ezarri/konfigurator/konf-zen-sandstone-50"
+   }
+  },
+  {
+   "id": "35",
+   "name": "Sarsen",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "ZenSarsen.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "sarsen-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-sarsen-25",
+    "50": "/ezarri/konfigurator/konf-zen-sarsen-50"
+   }
+  },
+  {
+   "id": "36",
+   "name": "Tigrato",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "ZenTigrato.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "tigrato-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-tigrato-25",
+    "50": "/ezarri/konfigurator/konf-zen-tigrato-50"
+   }
+  },
+  {
+   "id": "37",
+   "name": "2512-C",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#496fb6",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.2,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2512-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2512-c-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2512-c-50"
+   }
+  },
+  {
+   "id": "38",
+   "name": "2508-A",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#9cd9f7",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 72,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2508-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2508-a-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2508-a-50"
+   }
+  },
+  {
+   "id": "39",
+   "name": "2505-A",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#7cbbfd",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 83,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2505-a-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2505-a-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2505-a-50"
+   }
+  },
+  {
+   "id": "40",
+   "name": "2521-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 0.7,
+   "helligkeit": 100,
+   "saettigung": 80,
+   "farbton": 76,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2521-b-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2521-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2521-b-50"
+   }
+  },
+  {
+   "id": "41",
+   "name": "2510-A",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#64b2d3",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 87,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2510-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2510-a-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2510-a-50"
+   }
+  },
+  {
+   "id": "42",
+   "name": "2522-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50",
+    "Hexa"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#fffff5",
+   "textur_level": 0.3,
+   "helligkeit": 100,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.2,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2522-b-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2522-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2522-b-50",
+    "Hexa": "/ezarri/konfigurator/konf-niebla-2522-b-hexa"
+   }
+  },
+  {
+   "id": "43",
+   "name": "2560-A",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 0.8,
+   "helligkeit": 80,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2560-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2560-a-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2560-a-50"
+   }
+  },
+  {
+   "id": "44",
+   "name": "2516-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau",
+    "schwarz"
+   ],
+   "farbe_hex": "#787878",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2516-b-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2516-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2516-b-50"
+   }
+  },
+  {
+   "id": "45",
+   "name": "2501-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau",
+    "schwarz"
+   ],
+   "farbe_hex": "#616161",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2501-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2501-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2501-b-50"
+   }
+  },
+  {
+   "id": "46",
+   "name": "2562-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#79b0d2",
+   "textur_level": 1,
+   "helligkeit": 79,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2562-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2562-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2562-b-50"
+   }
+  },
+  {
+   "id": "47",
+   "name": "2503-D",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#39489d",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.2,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2503-d-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2503-d-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2503-d-50"
+   }
+  },
+  {
+   "id": "48",
+   "name": "2502-A",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#5dacb1",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 72,
+   "reflexion": 0.2,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2502-a-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2502-a-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2502-a-50"
+   }
+  },
+  {
+   "id": "49",
+   "name": "2529-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#d2f7fe",
+   "textur_level": 0.8,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 72,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2529-b-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2529-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2529-b-50"
+   }
+  },
+  {
+   "id": "50",
+   "name": "2507-A",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#93eca4",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 70,
+   "reflexion": 0.2,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2507-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2507-a-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2507-a-50"
+   }
+  },
+  {
+   "id": "51",
+   "name": "2585-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#67a966",
+   "textur_level": 0.9,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.2,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2585-b-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2585-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2585-b-50"
+   }
+  },
+  {
+   "id": "52",
+   "name": "2586-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#00a388",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 80,
+   "reflexion": 0.2,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2586-b-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2586-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2586-b-50"
+   }
+  },
+  {
+   "id": "53",
+   "name": "2523-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rosa"
+   ],
+   "farbe_hex": "#ffe7db",
+   "textur_level": 0.7,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": -20,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2523-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2523-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2523-b-50"
+   }
+  },
+  {
+   "id": "54",
+   "name": "2524-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rosa"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 0.7,
+   "helligkeit": 100,
+   "saettigung": 61,
+   "farbton": -42,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2524-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2524-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2524-b-50"
+   }
+  },
+  {
+   "id": "55",
+   "name": "2564-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rosa"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 0.7,
+   "helligkeit": 100,
+   "saettigung": 84,
+   "farbton": -30,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2564-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2564-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2564-b-50"
+   }
+  },
+  {
+   "id": "56",
+   "name": "2526-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#ffed75",
+   "textur_level": 0.7,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 0,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2526-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2526-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2526-b-50"
+   }
+  },
+  {
+   "id": "57",
+   "name": "2597-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": -15,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2597-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2597-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2597-b-50"
+   }
+  },
+  {
+   "id": "58",
+   "name": "2596-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 0.7,
+   "helligkeit": 100,
+   "saettigung": 70,
+   "farbton": -17,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2596-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2596-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2596-b-50"
+   }
+  },
+  {
+   "id": "59",
+   "name": "2513-A",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#b7ad8f",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": -13,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2513-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2513-a-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2513-a-50"
+   }
+  },
+  {
+   "id": "60",
+   "name": "2511-A",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#e9a558",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": -15,
+   "reflexion": 0.2,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2511-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2511-a-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2511-a-50"
+   }
+  },
+  {
+   "id": "61",
+   "name": "2525-B",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#fff0b8",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 194,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2525-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2525-b-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2525-b-50"
+   }
+  },
+  {
+   "id": "62",
+   "name": "2509-C",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rot"
+   ],
+   "farbe_hex": "#ff7300",
+   "textur_level": 0.7,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": -18,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2509-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2509-c-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2509-c-50"
+   }
+  },
+  {
+   "id": "63",
+   "name": "2506-C",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rot"
+   ],
+   "farbe_hex": "#ff622e",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": -23,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2506-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2506-c-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2506-c-50"
+   }
+  },
+  {
+   "id": "64",
+   "name": "2504-A",
+   "serie": "Niebla",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#c66524",
+   "textur_level": 1,
+   "helligkeit": 80,
+   "saettigung": 60,
+   "farbton": -23,
+   "reflexion": 0.25,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2504-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-niebla-2504-a-25",
+    "50": "/ezarri/konfigurator/konf-niebla-2504-a-50"
+   }
+  },
+  {
+   "id": "71",
+   "name": "2545-A",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25",
+    "50",
+    "Hexa"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "weiss"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2545-a-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2545-a-25",
+    "50": "/ezarri/konfigurator/konf-lisa-2545-a-50",
+    "Hexa": "/ezarri/konfigurator/konf-lisa-2545-a-hexa"
+   }
+  },
+  {
+   "id": "72",
+   "name": "2551-A",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "weiss",
+    "gelb"
+   ],
+   "farbe_hex": "#eee7c4",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.35,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2551-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2551-a-25"
+   }
+  },
+  {
+   "id": "73",
+   "name": "2546-A",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#fef8a9",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.35,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2546-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2546-a-25"
+   }
+  },
+  {
+   "id": "74",
+   "name": "2539-B",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#e3d06d",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2539-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2539-b-25"
+   }
+  },
+  {
+   "id": "75",
+   "name": "2554-C",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#fef958",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2554-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2554-c-25"
+   }
+  },
+  {
+   "id": "76",
+   "name": "2533-A",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#fec958",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2533-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2533-a-25"
+   }
+  },
+  {
+   "id": "77",
+   "name": "2532-B",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#cf7d30",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2532-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2532-b-25"
+   }
+  },
+  {
+   "id": "78",
+   "name": "2558-B",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rot"
+   ],
+   "farbe_hex": "#f08842",
+   "textur_level": 1,
+   "helligkeit": 110,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2558-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2558-b-25"
+   }
+  },
+  {
+   "id": "79",
+   "name": "2538-D",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rot"
+   ],
+   "farbe_hex": "#ff5900",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2538-d",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2538-d-25"
+   }
+  },
+  {
+   "id": "80",
+   "name": "2537-E",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rot"
+   ],
+   "farbe_hex": "#ff0000",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2537-e",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2537-e-25"
+   }
+  },
+  {
+   "id": "81",
+   "name": "2531-B",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#b03703",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2531-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2531-b-25"
+   }
+  },
+  {
+   "id": "82",
+   "name": "2553-B",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rosa"
+   ],
+   "farbe_hex": "#ff9186",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2553-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2553-b-25"
+   }
+  },
+  {
+   "id": "83",
+   "name": "2552-A",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rosa"
+   ],
+   "farbe_hex": "#feccc0",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2552-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2552-a-25"
+   }
+  },
+  {
+   "id": "84",
+   "name": "2544-A",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#828282",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2544-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2544-a-25"
+   }
+  },
+  {
+   "id": "85",
+   "name": "2559-B",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#595c57",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2559-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2559-b-25"
+   }
+  },
+  {
+   "id": "87",
+   "name": "2530-D",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "schwarz"
+   ],
+   "farbe_hex": "#020200",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2530-d",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2530-d-25"
+   }
+  },
+  {
+   "id": "88",
+   "name": "2541-A",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#8db2c1",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2541-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2541-a-25"
+   }
+  },
+  {
+   "id": "89",
+   "name": "2535-A",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#81abc5",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2535-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2535-a-25"
+   }
+  },
+  {
+   "id": "90",
+   "name": "2542-B",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#2d7cb9",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2542-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2542-b-25"
+   }
+  },
+  {
+   "id": "91",
+   "name": "2534-A",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#4d9aa8",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2534-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2534-a-25"
+   }
+  },
+  {
+   "id": "92",
+   "name": "2536-C",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#015dce",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2536-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2536-c-25"
+   }
+  },
+  {
+   "id": "93",
+   "name": "2557-D",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#001999",
+   "textur_level": 1,
+   "helligkeit": 160,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2557-d",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2557-d-25"
+   }
+  },
+  {
+   "id": "94",
+   "name": "2556-C",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#03196e",
+   "textur_level": 1,
+   "helligkeit": 160,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2556-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2556-c-25"
+   }
+  },
+  {
+   "id": "95",
+   "name": "2543-D",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#030870",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2543-d",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2543-d-25"
+   }
+  },
+  {
+   "id": "96",
+   "name": "2547-A",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#578f98",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2547-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2547-a-25"
+   }
+  },
+  {
+   "id": "97",
+   "name": "2549-A",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#76d5b7",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2549-a",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2549-a-25"
+   }
+  },
+  {
+   "id": "98",
+   "name": "2548-C",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#37af85",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2548-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2548-c-25"
+   }
+  },
+  {
+   "id": "99",
+   "name": "2555-C",
+   "serie": "Lisa",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#01411f",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "2555-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-lisa-2555-c-25"
+   }
+  },
+  {
+   "id": "100",
+   "name": "Perla",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50",
+    "Hexa"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "weiss",
+    "grau"
+   ],
+   "farbe_hex": "#ededed",
+   "textur_level": 0.1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": -15,
+   "reflexion": 0.65,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "perla-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-perla-25",
+    "50": "/ezarri/konfigurator/konf-iris-perla-50",
+    "Hexa": "/ezarri/konfigurator/konf-iris-perla-hexa"
+   }
+  },
+  {
+   "id": "101",
+   "name": "Marfil",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "weiss",
+    "gelb"
+   ],
+   "farbe_hex": "#e3decf",
+   "textur_level": 0.5,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 0,
+   "reflexion": 0.6,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "marfil-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-marfil-25",
+    "50": "/ezarri/konfigurator/konf-iris-marfil-50"
+   }
+  },
+  {
+   "id": "102",
+   "name": "Arena",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#d4c682",
+   "textur_level": 0.5,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": -10,
+   "reflexion": 0.5,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "arena-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-arena-25",
+    "50": "/ezarri/konfigurator/konf-iris-arena-50"
+   }
+  },
+  {
+   "id": "103",
+   "name": "Ambar",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#ffe14d",
+   "textur_level": 0.5,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 130,
+   "reflexion": 0.6,
+   "glanz": 0.5,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "ambar-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-ambar-25",
+    "50": "/ezarri/konfigurator/konf-iris-ambar-50"
+   }
+  },
+  {
+   "id": "104",
+   "name": "Nacar",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rosa"
+   ],
+   "farbe_hex": "#fffbe5",
+   "textur_level": 0.4,
+   "helligkeit": 85,
+   "saettigung": 100,
+   "farbton": 150,
+   "reflexion": 0.6,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "nacar-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-nacar-25",
+    "50": "/ezarri/konfigurator/konf-iris-nacar-50"
+   }
+  },
+  {
+   "id": "106",
+   "name": "Cuarzo",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#95aba9",
+   "textur_level": 0.4,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.7,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "cuarzo-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-cuarzo-25",
+    "50": "/ezarri/konfigurator/konf-iris-cuarzo-50"
+   }
+  },
+  {
+   "id": "107",
+   "name": "Ebano",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau",
+    "schwarz"
+   ],
+   "farbe_hex": "#3e5056",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 1,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "ebano-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-ebano-25",
+    "50": "/ezarri/konfigurator/konf-iris-ebano-50"
+   }
+  },
+  {
+   "id": "108",
+   "name": "Azur",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50",
+    "Hexa"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#43a8db",
+   "textur_level": 0.3,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 1,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "azur-hexa",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-azur-25",
+    "50": "/ezarri/konfigurator/konf-iris-azur-50",
+    "Hexa": "/ezarri/konfigurator/konf-iris-azur-hexa"
+   }
+  },
+  {
+   "id": "109",
+   "name": "Zafiro",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#194676",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "zafiro-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-zafiro-25",
+    "50": "/ezarri/konfigurator/konf-iris-zafiro-50"
+   }
+  },
+  {
+   "id": "110",
+   "name": "Coral",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#31ddb2",
+   "textur_level": 0.3,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.7,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "coral-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-coral-25",
+    "50": "/ezarri/konfigurator/konf-iris-coral-50"
+   }
+  },
+  {
+   "id": "111",
+   "name": "Green Pearl",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#0b7533",
+   "textur_level": 0.7,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.6,
+   "glanz": 1,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "green-pearl-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-greenpearl-25",
+    "50": "/ezarri/konfigurator/konf-iris-greenpearl-50"
+   }
+  },
+  {
+   "id": "112",
+   "name": "Jade",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50",
+    "Hexa"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#005c8a",
+   "textur_level": 0.6,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.65,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "jade-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-jade-25",
+    "50": "/ezarri/konfigurator/konf-iris-jade-50",
+    "Hexa": "/ezarri/konfigurator/konf-iris-jade-hexa"
+   }
+  },
+  {
+   "id": "113",
+   "name": "Taurus ",
+   "serie": "Space",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#5f725a",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "SpaceTaurus.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "taurus",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-space-taurus-25"
+   }
+  },
+  {
+   "id": "114",
+   "name": "Sagittarius",
+   "serie": "Space",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#32417b",
+   "textur_level": 0.8,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "SpaceSagittarius.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "sagittarius",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-space-sagittarius-25"
+   }
+  },
+  {
+   "id": "115",
+   "name": "Scorpio",
+   "serie": "Space",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#a78162",
+   "textur_level": 0.6,
+   "helligkeit": 100,
+   "saettigung": 91,
+   "farbton": 130,
+   "reflexion": 0.3,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "SpaceScorpio.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "scorpio",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-space-scorpio-25"
+   }
+  },
+  {
+   "id": "116",
+   "name": "Leo",
+   "serie": "Space",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rot"
+   ],
+   "farbe_hex": "#8a3d3d",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 89,
+   "farbton": 130,
+   "reflexion": 0.3,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "SpaceLeo.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "leo",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-space-leo-25"
+   }
+  },
+  {
+   "id": "117",
+   "name": "Capricorn",
+   "serie": "Space",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#a8a8a8",
+   "textur_level": 1,
+   "helligkeit": 90,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.3,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "SpaceCapricorn.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "capricorn",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-space-capricorn-25"
+   }
+  },
+  {
+   "id": "118",
+   "name": "Aquarius",
+   "serie": "Space",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb",
+    "braun"
+   ],
+   "farbe_hex": "#b0b0b0",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 83,
+   "farbton": 108,
+   "reflexion": 0.3,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "SpaceAquarius.png",
+   "specular_tex": "GresiteGloss_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "aquarius",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-space-aquarius-25"
+   }
+  },
+  {
+   "id": "119",
+   "name": "Fosfo",
+   "serie": "Fosfo",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "weiss"
+   ],
+   "farbe_hex": "#e5e2cc",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.7,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "fosfo",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-fosfo-fosfo-25"
+   }
+  },
+  {
+   "id": "120",
+   "name": "Beige Iridiscent",
+   "serie": "Fosfo",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "weiss",
+    "gelb"
+   ],
+   "farbe_hex": "#eee9cd",
+   "textur_level": 0.5,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 110,
+   "reflexion": 0.6,
+   "glanz": 0.7,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "fosfo-beige-iridescent",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-fosfo-fosfo-beige-iris-25"
+   }
+  },
+  {
+   "id": "122",
+   "name": "Aurum",
+   "serie": "Metal",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#be8c04",
+   "textur_level": 0.5,
+   "helligkeit": 90,
+   "saettigung": 100,
+   "farbton": 130,
+   "reflexion": 0.6,
+   "glanz": 0.9,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteEspejo_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "aurum",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-metal-aurum-25"
+   }
+  },
+  {
+   "id": "123",
+   "name": "Nickel",
+   "serie": "Metal",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "weiss",
+    "grau"
+   ],
+   "farbe_hex": "#adaca8",
+   "textur_level": 0.4,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 0,
+   "reflexion": 0.6,
+   "glanz": 0.9,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteEspejo_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "nickel",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-metal-nickel-25"
+   }
+  },
+  {
+   "id": "124",
+   "name": "Inox",
+   "serie": "Metal",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#666060",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 130,
+   "reflexion": 0.6,
+   "glanz": 0.9,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteEspejo_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "inox",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-metal-inox-25"
+   }
+  },
+  {
+   "id": "125",
+   "name": "Lava",
+   "serie": "Metal",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau",
+    "schwarz"
+   ],
+   "farbe_hex": "#616161",
+   "textur_level": 1,
+   "helligkeit": 60,
+   "saettigung": 40,
+   "farbton": 80,
+   "reflexion": 0.6,
+   "glanz": 0.9,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteEspejo_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "lava",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-metal-lava-25"
+   }
+  },
+  {
+   "id": "126",
+   "name": "Oxido",
+   "serie": "Metal",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#BAA573",
+   "textur_level": 1,
+   "helligkeit": 60,
+   "saettigung": 100,
+   "farbton": -5,
+   "reflexion": 0.6,
+   "glanz": 0.9,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteEspejo_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "oxido",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-metal-oxido-25"
+   }
+  },
+  {
+   "id": "127",
+   "name": "Esmeralda",
+   "serie": "Metal",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "#227177",
+   "textur_level": 1,
+   "helligkeit": 80,
+   "saettigung": 100,
+   "farbton": 60,
+   "reflexion": 0.6,
+   "glanz": 0.9,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteEspejo_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "esmeralda",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-metal-esmeralda-25"
+   }
+  },
+  {
+   "id": "128",
+   "name": "Grey Iridiscent",
+   "serie": "Fosfo",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#a39b95",
+   "textur_level": 0.4,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.6,
+   "glanz": 0.7,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "fosfo-grey-iridescent",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-fosfo-fosfo-grey-iris-25"
+   }
+  },
+  {
+   "id": "129",
+   "name": "Blue Iridiscent",
+   "serie": "Fosfo",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#9596a3",
+   "textur_level": 0.4,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.6,
+   "glanz": 0.7,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "fosfo-blue-iridescent",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-fosfo-fosfo-blue-iris-25"
+   }
+  },
+  {
+   "id": "130",
+   "name": "Travertino",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb",
+    "braun"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 0.9,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "ZenTravertino.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "travertino-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-travertino-25",
+    "50": "/ezarri/konfigurator/konf-zen-travertino-50"
+   }
+  },
+  {
+   "id": "131",
+   "name": "Quartz",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "weiss",
+    "gelb",
+    "braun"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaQuartz.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "quartz",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-quartz-25"
+   }
+  },
+  {
+   "id": "202",
+   "name": "Diamond",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "30;70",
+   "cf_mosaico": "100;71",
+   "referenz": "diamond",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-diamond-25"
+   }
+  },
+  {
+   "id": "203",
+   "name": "Stone",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "30;70",
+   "cf_mosaico": "106;42",
+   "referenz": "stone",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-stone-25"
+   }
+  },
+  {
+   "id": "204",
+   "name": "Sahara",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "33;20;47",
+   "cf_mosaico": "101;57;58",
+   "referenz": "sahara",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-sahara-25"
+   }
+  },
+  {
+   "id": "205",
+   "name": "Moon",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "33;47;20",
+   "cf_mosaico": "104;42",
+   "referenz": "moon",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-moon-25"
+   }
+  },
+  {
+   "id": "206",
+   "name": "Sky",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "33;20;47",
+   "cf_mosaico": "108;71;40",
+   "referenz": "sky",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-sky-25"
+   }
+  },
+  {
+   "id": "207",
+   "name": "Oasis",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "33;20;47",
+   "cf_mosaico": "108;71;37",
+   "referenz": "oasis",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-oasis-25"
+   }
+  },
+  {
+   "id": "208",
+   "name": "Argo",
+   "serie": "Fosfo",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "4;26;26;44",
+   "cf_mosaico": "120;72;57;101",
+   "referenz": "argo",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-fosfo-argo-25"
+   }
+  },
+  {
+   "id": "209",
+   "name": "Serpens",
+   "serie": "Fosfo",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "2;2;24;72",
+   "cf_mosaico": "120;106;42",
+   "referenz": "serpens",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-fosfo-serpens-25"
+   }
+  },
+  {
+   "id": "210",
+   "name": "Delphinus",
+   "serie": "Fosfo",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "4;42;40;14",
+   "cf_mosaico": "129;108;109",
+   "referenz": "delphinus",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-fosfo-delphinus-25"
+   }
+  },
+  {
+   "id": "211",
+   "name": "Aquila",
+   "serie": "Fosfo",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "4;48;48",
+   "cf_mosaico": "129;40;38",
+   "referenz": "aquila",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-fosfo-aquila-25"
+   }
+  },
+  {
+   "id": "212",
+   "name": "Draco",
+   "serie": "Fosfo",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "4;14;10;72",
+   "cf_mosaico": "120;100;125;71",
+   "referenz": "draco",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-fosfo-draco-25"
+   }
+  },
+  {
+   "id": "213",
+   "name": "Lepus",
+   "serie": "Fosfo",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "4;24;72",
+   "cf_mosaico": "120;100;71",
+   "referenz": "lepus",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-fosfo-lepus-25"
+   }
+  },
+  {
+   "id": "214",
+   "name": "Mojito",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "85;10;5",
+   "cf_mosaico": "66;117;125",
+   "referenz": "mojito",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-mojito-25"
+   }
+  },
+  {
+   "id": "215",
+   "name": "Manhattan",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "50;50",
+   "cf_mosaico": "66;107",
+   "referenz": "manhattan",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-manhattan-25"
+   }
+  },
+  {
+   "id": "216",
+   "name": "Daikiri",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "50;40;10",
+   "cf_mosaico": "135;100;126",
+   "referenz": "daikiri",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-daikiri-25"
+   }
+  },
+  {
+   "id": "217",
+   "name": "Bellini",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "60;36;4",
+   "cf_mosaico": "102;136;122",
+   "referenz": "bellini",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-bellini-25"
+   }
+  },
+  {
+   "id": "218",
+   "name": "Alexander",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "34;33;33",
+   "cf_mosaico": "115;125;126",
+   "referenz": "alexander",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-alexander-25"
+   }
+  },
+  {
+   "id": "219",
+   "name": "Kir Royal",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "45;45;10",
+   "cf_mosaico": "134;115;126",
+   "referenz": "kir-royal",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-kir-royal-25"
+   }
+  },
+  {
+   "id": "220",
+   "name": "Cosmopolitan",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "34;33;33",
+   "cf_mosaico": "115;116;126",
+   "referenz": "cosmopolitan",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-cosmopolitan-25"
+   }
+  },
+  {
+   "id": "221",
+   "name": "Bloody Mary",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "10;45;45",
+   "cf_mosaico": "126;134;116",
+   "referenz": "bloody-mary",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-bloody-mary-25"
+   }
+  },
+  {
+   "id": "222",
+   "name": "Margarita",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "90;10",
+   "cf_mosaico": "125;122",
+   "referenz": "margarita",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-margarita-25"
+   }
+  },
+  {
+   "id": "223",
+   "name": "Eclipse",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "90;10",
+   "cf_mosaico": "87;126",
+   "referenz": "eclipse",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-eclipse-25"
+   }
+  },
+  {
+   "id": "224",
+   "name": "Gin Fizz",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "10;10;70;10",
+   "cf_mosaico": "124;43;117;125",
+   "referenz": "gin-fizz",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-gin-fizz-25"
+   }
+  },
+  {
+   "id": "225",
+   "name": "San Francisco",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "10;45;45",
+   "cf_mosaico": "66;117;125",
+   "referenz": "san-francisco",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-san-francisco-25"
+   }
+  },
+  {
+   "id": "226",
+   "name": "Caipirinha",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "70;20;10",
+   "cf_mosaico": "110;66;117",
+   "referenz": "caipirinha",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-caipirinha-25"
+   }
+  },
+  {
+   "id": "227",
+   "name": "Long Island",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "60;30;10",
+   "cf_mosaico": "0;67;114",
+   "referenz": "long-island",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-long-island-25"
+   }
+  },
+  {
+   "id": "228",
+   "name": "Blue Lagoon",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "33;33;34",
+   "cf_mosaico": "108;109;114",
+   "referenz": "blue-lagoon",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-blue-lagoon-25"
+   }
+  },
+  {
+   "id": "229",
+   "name": "Blue Moon",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "45;45;10",
+   "cf_mosaico": "133;114",
+   "referenz": "blue-moon",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-blue-moon-25"
+   }
+  },
+  {
+   "id": "230",
+   "name": "Grasshopper",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "62;30;8",
+   "cf_mosaico": "111;110;118",
+   "referenz": "grasshopper",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-grasshopper-25"
+   }
+  },
+  {
+   "id": "231",
+   "name": "Tomahawk",
+   "serie": "Cocktail",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "30;10;30;30",
+   "cf_mosaico": "112;110;127;113",
+   "referenz": "tomahawk",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-cocktail-tomahawk-25"
+   }
+  },
+  {
+   "id": "232",
+   "name": "25007-C",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau",
+    "schwarz"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "30;22;48",
+   "cf_mosaico": "45;43;44",
+   "referenz": "25007-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25007-c-25"
+   }
+  },
+  {
+   "id": "235",
+   "name": "2576-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "50;50",
+   "cf_mosaico": "58;57",
+   "referenz": "2576-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-2576-b-25"
+   }
+  },
+  {
+   "id": "237",
+   "name": "2514-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "90;10",
+   "cf_mosaico": "53;42",
+   "referenz": "2514-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-2514-b-25"
+   }
+  },
+  {
+   "id": "238",
+   "name": "25004-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "50;50",
+   "cf_mosaico": "38;39",
+   "referenz": "25004-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25004-b-25"
+   }
+  },
+  {
+   "id": "239",
+   "name": "25003-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "49;51",
+   "cf_mosaico": "46;38",
+   "referenz": "25003-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25003-b-25"
+   }
+  },
+  {
+   "id": "240",
+   "name": "25001-C",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "16;34;50",
+   "cf_mosaico": "47;41;39",
+   "referenz": "25001-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25001-c-25"
+   }
+  },
+  {
+   "id": "241",
+   "name": "2577-C",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "50;50",
+   "cf_mosaico": "47;39",
+   "referenz": "2577-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25001-c-25"
+   }
+  },
+  {
+   "id": "242",
+   "name": "25002-C",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "30;45;25",
+   "cf_mosaico": "46;39;40",
+   "referenz": "25002-c",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25002-c-25"
+   }
+  },
+  {
+   "id": "243",
+   "name": "2578-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau",
+    "weiss"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "50;50",
+   "cf_mosaico": "71;90",
+   "referenz": "2578-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-2578-b-25"
+   }
+  },
+  {
+   "id": "246",
+   "name": "2518-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "50;50",
+   "cf_mosaico": "40;49",
+   "referenz": "2518-b",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-2518-b-25"
+   }
+  },
+  {
+   "id": "247",
+   "name": "Bluestone",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 75,
+   "farbton": 100,
+   "reflexion": 0.1,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "ZenBluestone.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "bluestone-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-bluestone-25",
+    "50": "/ezarri/konfigurator/konf-zen-bluestone-50"
+   }
+  },
+  {
+   "id": "248",
+   "name": "Makauba",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.7,
+   "relief": 0,
+   "diffuse_tex": "ZenMakauba.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "makauba",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-makauba-25"
+   }
+  },
+  {
+   "id": "249",
+   "name": "Palisandro",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "ZenPalisandro.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "palisandro",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-palisandro-25"
+   }
+  },
+  {
+   "id": "250",
+   "name": "Rustic",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 75,
+   "farbton": 100,
+   "reflexion": 0.1,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "ZenRustic.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "rustic",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-rustic-25"
+   }
+  },
+  {
+   "id": "251",
+   "name": "Riverstone",
+   "serie": "Zen",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.4,
+   "glanz": 0.2,
+   "relief": 0,
+   "diffuse_tex": "ZenRiverstone.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "riverstone",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-zen-riverstone-25"
+   }
+  },
+  {
+   "id": "252",
+   "name": "Ocean",
+   "serie": "Iridescent",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#1751AA",
+   "textur_level": 0.3,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteNacar_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "ocean-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-iris-ocean-25",
+    "50": "/ezarri/konfigurator/konf-iris-ocean-50"
+   }
+  },
+  {
+   "id": "253",
+   "name": "Rubi",
+   "serie": "Metal",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "rot"
+   ],
+   "farbe_hex": "#DB0000",
+   "textur_level": 0.5,
+   "helligkeit": 90,
+   "saettigung": 100,
+   "farbton": 130,
+   "reflexion": 0.6,
+   "glanz": 0.9,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteEspejo_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "rubi",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-metal-rubi-25"
+   }
+  },
+  {
+   "id": "254",
+   "name": "Opalo",
+   "serie": "Metal",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#99350A",
+   "textur_level": 0.5,
+   "helligkeit": 90,
+   "saettigung": 100,
+   "farbton": 130,
+   "reflexion": 0.6,
+   "glanz": 0.9,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteEspejo_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "opalo",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-metal-opalo-25"
+   }
+  },
+  {
+   "id": "255",
+   "name": "Azurita",
+   "serie": "Metal",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#0047A3",
+   "textur_level": 0.5,
+   "helligkeit": 90,
+   "saettigung": 100,
+   "farbton": 130,
+   "reflexion": 0.6,
+   "glanz": 0.9,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteEspejo_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "azurita",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-metal-azurita-25"
+   }
+  },
+  {
+   "id": "256",
+   "name": "Vanadium",
+   "serie": "Metal",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#16AED4",
+   "textur_level": 0.3,
+   "helligkeit": 90,
+   "saettigung": 100,
+   "farbton": 130,
+   "reflexion": 0.6,
+   "glanz": 0.9,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteEspejo_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "vanadium",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-metal-vanadium-25"
+   }
+  },
+  {
+   "id": "257",
+   "name": "Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": true,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "#F2AA00",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": -1,
+   "reflexion": 0.75,
+   "glanz": 1,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteEspejo_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "gold-25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-gold-25"
+   }
+  },
+  {
+   "id": "258",
+   "name": "Carrara Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "98;2",
+   "cf_mosaico": "31;257",
+   "referenz": "carrara-gold",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-carrara-gold-25"
+   }
+  },
+  {
+   "id": "259",
+   "name": "Bali Stone Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "98;2",
+   "cf_mosaico": "25;257",
+   "referenz": "bali-stone-gold",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-bali-stone-gold-25"
+   }
+  },
+  {
+   "id": "260",
+   "name": "Dolerite Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "98;2",
+   "cf_mosaico": "27;257",
+   "referenz": "dolerite-gold",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-dolerite-gold-25"
+   }
+  },
+  {
+   "id": "261",
+   "name": "Sponge Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "98;2",
+   "cf_mosaico": "8;257",
+   "referenz": "sponge-gold",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-sponge-gold-25"
+   }
+  },
+  {
+   "id": "262",
+   "name": "Washes Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "98;2",
+   "cf_mosaico": "11;257",
+   "referenz": "washes-gold",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-washes-gold-25"
+   }
+  },
+  {
+   "id": "263",
+   "name": "Perla Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "98;2",
+   "cf_mosaico": "100;257",
+   "referenz": "perla-gold",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-perla-gold-25"
+   }
+  },
+  {
+   "id": "264",
+   "name": "Ocean Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "98;2",
+   "cf_mosaico": "252;257",
+   "referenz": "ocean-gold",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-ocean-gold-25"
+   }
+  },
+  {
+   "id": "265",
+   "name": "Jade Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "98;2",
+   "cf_mosaico": "112;257",
+   "referenz": "jade-gold",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-jade-gold-25"
+   }
+  },
+  {
+   "id": "266",
+   "name": "Capricorn Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "98;2",
+   "cf_mosaico": "117;257",
+   "referenz": "capricorn-gold",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-capricorn-gold-25"
+   }
+  },
+  {
+   "id": "267",
+   "name": "Tomahawk Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "60;10;2;28",
+   "cf_mosaico": "112;110;257;113",
+   "referenz": "tomahawk-gold",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-tomahawk-gold-25"
+   }
+  },
+  {
+   "id": "268",
+   "name": "Alexander Gold",
+   "serie": "Gold",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "33;32;32;2",
+   "cf_mosaico": "115;125;126;257",
+   "referenz": "alexander-gold",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gold-alexander-gold-25"
+   }
+  },
+  {
+   "id": "269",
+   "name": "Balinese",
+   "serie": "Terrazzo",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau",
+    "gruen"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 110,
+   "farbton": 100,
+   "reflexion": 0.05,
+   "glanz": 0.1,
+   "relief": 0,
+   "diffuse_tex": "TerrazoBalinese.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "terrazzo_balinese_25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-terrazzo-balinese-25",
+    "50": "/ezarri/konfigurator/konf-terrazzo-balinese-50"
+   }
+  },
+  {
+   "id": "270",
+   "name": "Grey",
+   "serie": "Terrazzo",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau",
+    "schwarz"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.05,
+   "glanz": 0.1,
+   "relief": 0,
+   "diffuse_tex": "TerrazoGrey.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "terrazzo_grey_25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-terrazzo-grey-25",
+    "50": "/ezarri/konfigurator/konf-terrazzo-grey-50"
+   }
+  },
+  {
+   "id": "271",
+   "name": "Clay",
+   "serie": "Terrazzo",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb",
+    "braun"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 110,
+   "saettigung": 110,
+   "farbton": 100,
+   "reflexion": 0.05,
+   "glanz": 0.1,
+   "relief": 0,
+   "diffuse_tex": "TerrazoClay.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "terrazzo_clay_25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-terrazzo-clay-25",
+    "50": "/ezarri/konfigurator/konf-terrazzo-clay-50"
+   }
+  },
+  {
+   "id": "274",
+   "name": "Greenery",
+   "serie": "Terrazzo",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb",
+    "weiss",
+    "gruen"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 110,
+   "farbton": 100,
+   "reflexion": 0.05,
+   "glanz": 0.1,
+   "relief": 0,
+   "diffuse_tex": "TerrazoGreenery.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "terrazzo_greenery_25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-terrazzo-greenery-25",
+    "50": "/ezarri/konfigurator/konf-terrazzo-greenery-50"
+   }
+  },
+  {
+   "id": "275",
+   "name": "Teal",
+   "serie": "Terrazzo",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau",
+    "gruen"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.05,
+   "glanz": 0.1,
+   "relief": 0,
+   "diffuse_tex": "TerrazoTeal.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "terrazzo_teal_25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-terrazzo-teal-25",
+    "50": "/ezarri/konfigurator/konf-terrazzo-teal-50"
+   }
+  },
+  {
+   "id": "276",
+   "name": "Sea",
+   "serie": "Terrazzo",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 110,
+   "farbton": 100,
+   "reflexion": 0.05,
+   "glanz": 0.1,
+   "relief": 0,
+   "diffuse_tex": "TerrazoSea.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "terrazzo_sea_25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-terrazzo-sea-25",
+    "50": "/ezarri/konfigurator/konf-terrazzo-sea-50"
+   }
+  },
+  {
+   "id": "277",
+   "name": "Topaz",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "weiss",
+    "gelb",
+    "braun"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaTopaz.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "topaz25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-topaz-25"
+   }
+  },
+  {
+   "id": "278",
+   "name": "Kyanite",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau",
+    "gruen"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaKyanite.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "kyanite25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-kyanite-25"
+   }
+  },
+  {
+   "id": "279",
+   "name": "Galena",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "weiss",
+    "grau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaGalena.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "galena25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-galena-25"
+   }
+  },
+  {
+   "id": "280",
+   "name": "Tanzanite",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaTanzanite.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "tanzanite25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-tanzanite-25"
+   }
+  },
+  {
+   "id": "281",
+   "name": "Olivine",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "Hexa"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau",
+    "gruen"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaOlivine.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "olivine25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-olivine-25",
+    "Hexa": "/ezarri/konfigurator/konf-gemma-olivine-hexa"
+   }
+  },
+  {
+   "id": "282",
+   "name": "Moonstone",
+   "serie": "Gemma",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "Hexa"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau"
+   ],
+   "farbe_hex": "#ffffff",
+   "textur_level": 1,
+   "helligkeit": 100,
+   "saettigung": 100,
+   "farbton": 100,
+   "reflexion": 0.5,
+   "glanz": 0.8,
+   "relief": 0,
+   "diffuse_tex": "GemmaMoonstone.png",
+   "specular_tex": null,
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "moonstone25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gemma-moonstone-25",
+    "Hexa": "/ezarri/konfigurator/konf-gemma-moonstone-hexa"
+   }
+  },
+  {
+   "id": "283",
+   "name": "25017-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau",
+    "weiss"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "33;34;33",
+   "cf_mosaico": "46;38;71",
+   "referenz": "25017-b-25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25017-b-25"
+   }
+  },
+  {
+   "id": "284",
+   "name": "25018-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "blau",
+    "weiss"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "33;34;33",
+   "cf_mosaico": "38;39;71",
+   "referenz": "25018-b-25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25018-b-25"
+   }
+  },
+  {
+   "id": "285",
+   "name": "25019-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "50;50",
+   "cf_mosaico": "43;42",
+   "referenz": "25019-b-25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25019-b-25"
+   }
+  },
+  {
+   "id": "286",
+   "name": "25020-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "33;34;33",
+   "cf_mosaico": "43;42;71",
+   "referenz": "25020-b-25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25020-b-25"
+   }
+  },
+  {
+   "id": "287",
+   "name": "25021-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "33;33;34",
+   "cf_mosaico": "49;52;48",
+   "referenz": "25021-b-25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25021-b-25"
+   }
+  },
+  {
+   "id": "288",
+   "name": "25022-B",
+   "serie": "Mix",
+   "kategorie": "Classic",
+   "formate": [
+    "25"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gruen"
+   ],
+   "farbe_hex": "",
+   "textur_level": 0,
+   "helligkeit": 0,
+   "saettigung": 0,
+   "farbton": 0,
+   "reflexion": 0,
+   "glanz": 0,
+   "relief": 0,
+   "diffuse_tex": null,
+   "specular_tex": null,
+   "mischanteil": "25;25;25;25",
+   "cf_mosaico": "48;50;51;52",
+   "referenz": "25022-b-25",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-mix-25022-b-25"
+   }
+  },
+  {
+   "id": "297",
+   "name": "Dune",
+   "serie": "Gea",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#edb17e",
+   "textur_level": 0,
+   "helligkeit": 100,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.15,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "dune-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gea-dune-25",
+    "50": "/ezarri/konfigurator/konf-gea-dune-50"
+   }
+  },
+  {
+   "id": "298",
+   "name": "Limenstone",
+   "serie": "Gea",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#fad6af",
+   "textur_level": 0,
+   "helligkeit": 100,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.15,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "limestone-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gea-limenstone-25",
+    "50": "/ezarri/konfigurator/konf-gea-limenstone-50"
+   }
+  },
+  {
+   "id": "299",
+   "name": "Grit",
+   "serie": "Gea",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "braun"
+   ],
+   "farbe_hex": "#d6aa83",
+   "textur_level": 0,
+   "helligkeit": 100,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.15,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "grit-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gea-grit-25",
+    "50": "/ezarri/konfigurator/konf-gea-grit-50"
+   }
+  },
+  {
+   "id": "300",
+   "name": "Chalk",
+   "serie": "Gea",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#d9d5d0",
+   "textur_level": 0,
+   "helligkeit": 100,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.15,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "chalk-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gea-chalk-25",
+    "50": "/ezarri/konfigurator/konf-gea-chalk-50"
+   }
+  },
+  {
+   "id": "301",
+   "name": "Slate",
+   "serie": "Gea",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#948f87",
+   "textur_level": 0,
+   "helligkeit": 100,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.15,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "slate-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gea-slate-25",
+    "50": "/ezarri/konfigurator/konf-gea-slate-50"
+   }
+  },
+  {
+   "id": "302",
+   "name": "Basalt",
+   "serie": "Gea",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau"
+   ],
+   "farbe_hex": "#7a7572",
+   "textur_level": 0,
+   "helligkeit": 100,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.15,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "basalt-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gea-basalt-25",
+    "50": "/ezarri/konfigurator/konf-gea-basalt-50"
+   }
+  },
+  {
+   "id": "303",
+   "name": "Flint",
+   "serie": "Gea",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "grau",
+    "gruen"
+   ],
+   "farbe_hex": "#c2c1a3",
+   "textur_level": 0,
+   "helligkeit": 100,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.15,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "flint-50",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gea-flint-25",
+    "50": "/ezarri/konfigurator/konf-gea-flint-50"
+   }
+  },
+  {
+   "id": "304",
+   "name": "Moss",
+   "serie": "Gea",
+   "kategorie": "Premium",
+   "formate": [
+    "25",
+    "50"
+   ],
+   "mischbar": false,
+   "farbfilter": [
+    "gelb",
+    "weiss"
+   ],
+   "farbe_hex": "#c4b59b",
+   "textur_level": 0,
+   "helligkeit": 100,
+   "saettigung": 0,
+   "farbton": 100,
+   "reflexion": 0.15,
+   "glanz": 0.3,
+   "relief": 0,
+   "diffuse_tex": "Niebla.png",
+   "specular_tex": "GresiteSpec_AON_L1.png",
+   "mischanteil": null,
+   "cf_mosaico": null,
+   "referenz": "moss",
+   "thumbs": {
+    "25": "/ezarri/konfigurator/konf-gea-moss-25",
+    "50": "/ezarri/konfigurator/konf-gea-moss-50"
+   }
+  }
+ ],
+ "patterns": [
+  {
+   "id": "21",
+   "name": "Pattern01",
+   "design_es": "Cuatro rayas",
+   "kanaele": 3,
+   "layer": "MIX_Pattern_01",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-01-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-01-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-01-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "22",
+   "name": "Pattern02",
+   "design_es": "Dos lineas",
+   "kanaele": 2,
+   "layer": "MIX_Pattern_02",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-02-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-02-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-02-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "23",
+   "name": "Pattern03",
+   "design_es": "Punto central",
+   "kanaele": 3,
+   "layer": "MIX_Pattern_03",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-03-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-03-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-03-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "24",
+   "name": "Pattern04",
+   "design_es": "Cruz",
+   "kanaele": 3,
+   "layer": "MIX_Pattern_04",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-04-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-04-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-04-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "25",
+   "name": "Pattern05",
+   "design_es": "Variado",
+   "kanaele": 3,
+   "layer": "MIX_Pattern_05",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-05-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-05-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-05-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "26",
+   "name": "Pattern06",
+   "design_es": "Ovalo central",
+   "kanaele": 2,
+   "layer": "MIX_Pattern_06",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-06-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-06-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-06-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "27",
+   "name": "Pattern07",
+   "design_es": "Escudos",
+   "kanaele": 2,
+   "layer": "MIX_Pattern_07",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-07-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-07-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-07-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "28",
+   "name": "Pattern08",
+   "design_es": "Estrella",
+   "kanaele": 3,
+   "layer": "MIX_Pattern_08",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-08-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-08-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-08-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "29",
+   "name": "Pattern09",
+   "design_es": "Estrella negra",
+   "kanaele": 3,
+   "layer": "MIX_Pattern_09",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-09-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-09-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-09-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "30",
+   "name": "Pattern10",
+   "design_es": "Hipnotizador",
+   "kanaele": 3,
+   "layer": "MIX_Pattern_10",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-10-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-10-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-10-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "31",
+   "name": "Pattern11",
+   "design_es": "Cuadrados cruzados",
+   "kanaele": 3,
+   "layer": "MIX_Pattern_11",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-11-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-11-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-11-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "32",
+   "name": "Pattern12",
+   "design_es": "Rectangulos negros",
+   "kanaele": 2,
+   "layer": "MIX_Pattern_12",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-12-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-12-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-12-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "33",
+   "name": "Pattern13",
+   "design_es": "Tres barras",
+   "kanaele": 2,
+   "layer": "MIX_Pattern_13",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-13-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-13-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-13-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "34",
+   "name": "Pattern14",
+   "design_es": "Flor",
+   "kanaele": 3,
+   "layer": "MIX_Pattern_14",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-14-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-14-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-14-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "35",
+   "name": "Pattern15",
+   "design_es": "Petalo",
+   "kanaele": 2,
+   "layer": "MIX_Pattern_15",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-15-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-15-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-15-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "36",
+   "name": "Pattern16",
+   "design_es": "Barcelona",
+   "kanaele": 2,
+   "layer": "MIX_Pattern_16",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-16-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-16-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-16-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "37",
+   "name": "Pattern17",
+   "design_es": "Diamante",
+   "kanaele": 2,
+   "layer": "MIX_Pattern_17",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-17-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-17-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-17-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "38",
+   "name": "Pattern18",
+   "design_es": "Explosion",
+   "kanaele": 3,
+   "layer": "MIX_Pattern_18",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-18-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-18-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-18-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "39",
+   "name": "Pattern19",
+   "design_es": "Mar",
+   "kanaele": 2,
+   "layer": "MIX_Pattern_19",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-19-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-19-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-19-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  },
+  {
+   "id": "40",
+   "name": "Pattern20",
+   "design_es": "Camuflaje",
+   "kanaele": 2,
+   "layer": "MIX_Pattern_20",
+   "bild": {
+    "quelle": "https://www.ezarri.com/configurador/assets/img/thumb_mosaicos/PATRONES/296x296px/Pattern-20-patron-repetido.jpg",
+    "original": "Herstellermaterial/Ezarri/bilder/patterns/konf-pattern-20-patron-repetido.jpg",
+    "web": "/ezarri/patterns/konf-pattern-20-patron-repetido",
+    "breite": 296,
+    "hoehe": 296
+   }
+  }
+ ]
+}

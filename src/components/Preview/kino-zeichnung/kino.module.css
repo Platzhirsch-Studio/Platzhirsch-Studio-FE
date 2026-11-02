@@ -1,0 +1,527 @@
+/* Kino-Lab 3 „Die Zeichnung wird lebendig“ (/de/preview/kino-zeichnung).
+   Farben nur aus globals.css: Walnut, Ink-deep, Stone/Bone/Paper, See,
+   Brass 400/500/700 (Brass-400 nur auf Dunkel). Typo: Bodoni + Instrument Sans.
+   Grundzustand = ruhige Fassung (fertige Zeichnung + Bild). Die Animation
+   gilt nur mit [data-mode="live"] (Client: keine Reduced-Motion, keine
+   Ruhige Ansicht, keine Pause). Vor der Hydration verhält sich die Bühne
+   unter no-preference wie „live, wartet“ – mit Rückfall nach 4 s (ohne JS). */
+
+.root {
+  background: var(--color-ink-deep);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--space-gutter), 88rem);
+  margin-inline: auto;
+}
+
+.overline {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-brass-400);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  color: var(--color-paper);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--color-brass-400);
+  text-underline-offset: 0.35em;
+  text-decoration-thickness: 1px;
+}
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+.link:focus-visible,
+.pause:focus-visible,
+.replay:focus-visible {
+  outline: 2px solid var(--color-brass-400);
+  outline-offset: 3px;
+}
+
+/* ─────────────────────────────────────────────── HERO */
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100svh - var(--header-h));
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 58% 38%, var(--color-walnut), var(--color-ink-deep) 72%);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgb(31 37 43 / 0.94), rgb(31 37 43 / 0.6) 34%, rgb(31 37 43 / 0) 64%),
+    linear-gradient(90deg, rgb(31 37 43 / 0.7), rgb(31 37 43 / 0.3) 42%, rgb(31 37 43 / 0) 66%),
+    radial-gradient(140% 100% at 50% 50%, transparent 55%, rgb(31 37 43 / 0.55));
+}
+.heroText {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 18px rgb(31 37 43 / 0.55);
+  padding-block: 6rem clamp(2.5rem, 9vh, 6.5rem);
+}
+.h1 {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 1.4rem + 6vw, 8.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.h1 em {
+  display: block;
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  color: var(--color-stone);
+}
+.heroLead {
+  margin-top: 1.5rem;
+  max-width: 40ch;
+  font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.3125rem);
+  line-height: 1.55;
+  color: var(--color-stone);
+}
+.heroLinks {
+  margin-top: 1.5rem;
+}
+
+/* ─────────────────────────────────────────────── BÜHNE (gemeinsam) */
+.stage {
+  margin: 0;
+}
+.frames {
+  position: relative;
+}
+.drawPanel,
+.imgPanel {
+  position: relative;
+  overflow: hidden;
+}
+.still,
+.ink,
+.fx,
+.flood {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.still path {
+  fill: none;
+  stroke: var(--color-brass-400);
+  stroke-width: calc(1.7px * var(--w, 1));
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.still path.guide {
+  stroke: var(--color-brass-500);
+  stroke-width: 1px;
+  stroke-dasharray: 5 7;
+}
+.ink,
+.fx,
+.flood {
+  display: none;
+}
+.imgCover {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+.imgContain {
+  object-fit: contain;
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-stone-deep);
+}
+.vermerk {
+  color: var(--color-brass-400);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+}
+
+.pause,
+.replay {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-line-inverse);
+  border-radius: 999px;
+  background: rgb(31 37 43 / 0.6);
+  backdrop-filter: blur(6px);
+  color: var(--color-paper);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.pause:hover,
+.replay:hover {
+  border-color: var(--color-brass-400);
+}
+.pause[aria-pressed="true"] {
+  border-color: var(--color-brass-400);
+}
+.pauseIcon {
+  font-size: 0.6875rem;
+  color: var(--color-brass-400);
+  letter-spacing: -0.1em;
+}
+
+/* Hero-Bühne: Vollbild, Zeichnung liegt auf dem Foto (cover). */
+.stageHero {
+  position: absolute;
+  inset: 0;
+}
+.stageHero .frames {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  transform-origin: 46% 52%;
+}
+.stageHero .drawPanel,
+.stageHero .imgPanel {
+  grid-area: 1 / 1;
+}
+.stageHero .drawPanel {
+  z-index: 1;
+}
+.stageHero .still {
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+.stageHero .caption {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  left: var(--space-gutter);
+  right: 13rem;
+}
+.stageHero .pause {
+  position: absolute;
+  z-index: 3;
+  top: 0.75rem;
+  right: var(--space-gutter);
+}
+.stageHero .replay {
+  position: absolute;
+  z-index: 3;
+  top: 4rem;
+  right: var(--space-gutter);
+}
+
+/* Szenen-Bühne: ruhig = Zeichnung und Bild nebeneinander. */
+.stageSzene {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.stageSzene .frames {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+}
+.stageSzene .drawPanel,
+.stageSzene .imgPanel {
+  aspect-ratio: var(--ar);
+}
+.stageSzene .drawPanel {
+  border: 1px solid var(--color-line-inverse);
+  background: rgb(250 248 244 / 0.02);
+}
+.stageSzene .replay {
+  align-self: flex-start;
+}
+
+/* ─────────────────────────────────────────────── LIVE */
+.stage[data-mode="live"] .still {
+  opacity: 0;
+}
+.stage[data-mode="live"] .ink,
+.stage[data-mode="live"] .fx,
+.stage[data-mode="live"] .flood {
+  display: block;
+}
+.stage[data-mode="live"] .imgPanel {
+  opacity: 0;
+}
+.stage[data-mode="live"] .flood {
+  opacity: 0;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    circle at var(--lx, 50%) var(--ly, 40%),
+    rgb(250 248 244 / 0.75),
+    rgb(209 178 80 / 0.38) 16%,
+    rgb(209 178 80 / 0.08) 38%,
+    transparent 62%
+  );
+  transform-origin: var(--lx, 50%) var(--ly, 40%);
+}
+.stage[data-phase="fill"] .flood {
+  animation: kzFlood var(--fill, 1.7s) cubic-bezier(0.3, 0.1, 0.2, 1) both;
+}
+.stage[data-phase="fill"] .imgPanel,
+.stage[data-phase="done"] .imgPanel {
+  opacity: 1;
+  transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
+}
+.stage[data-phase="fill"] .ink,
+.stage[data-phase="done"] .ink {
+  opacity: 0;
+  transition: opacity 1.6s ease 0.35s;
+}
+
+/* Hero live: Foto kommt aus der Unschärfe, Linie bleibt als Hauch, Kamerafahrt */
+.stageHero {
+  --fill: 2.2s;
+}
+.stageHero[data-mode="live"] .imgPanel {
+  filter: blur(18px) brightness(1.35) saturate(0.7);
+}
+.stageHero[data-phase="fill"] .imgPanel,
+.stageHero[data-phase="done"] .imgPanel {
+  filter: blur(0) brightness(1) saturate(1);
+  transition:
+    opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
+    filter 2.6s cubic-bezier(0.3, 0.1, 0.2, 1) 0.3s;
+}
+.stageHero[data-phase="fill"] .ink,
+.stageHero[data-phase="done"] .ink {
+  opacity: 0.16;
+  mix-blend-mode: screen;
+}
+.stageHero[data-phase="fill"] .frames,
+.stageHero[data-phase="done"] .frames {
+  animation: kzKamera 32s cubic-bezier(0.25, 0.6, 0.25, 1) 0.4s both;
+}
+
+/* Szene live: Linie und Bild teilen sich EINEN Rahmen im Bildformat. */
+.stageSzene[data-mode="live"] {
+  align-items: center;
+}
+.stageSzene[data-mode="live"] .frames {
+  grid-template: 1fr / 1fr;
+  width: min(100%, calc(70svh * var(--ar)));
+  aspect-ratio: var(--ar);
+  margin-inline: auto;
+}
+.stageSzene[data-mode="live"] .drawPanel,
+.stageSzene[data-mode="live"] .imgPanel {
+  grid-area: 1 / 1;
+  aspect-ratio: auto;
+  height: 100%;
+}
+.stageSzene[data-mode="live"] .drawPanel {
+  z-index: 1;
+  border-color: transparent;
+  background: none;
+}
+.stageSzene[data-mode="live"] .caption {
+  align-self: stretch;
+  justify-content: center;
+}
+
+/* Vor der Hydration (nur no-preference, ohne Ruhige Ansicht): wie „live, wartet“,
+   Rückfall auf die ruhige Fassung nach 4 s, falls kein JS läuft. */
+@media (prefers-reduced-motion: no-preference) {
+  :global(html:not([data-motion="reduced"])) .stage:not([data-mode]) .still,
+  :global(html:not([data-motion="reduced"])) .stage:not([data-mode]) .imgPanel {
+    animation: kzFallback 0.8s ease 4s both;
+  }
+}
+
+@keyframes kzFallback {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes kzFlood {
+  0% {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+  38% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+@keyframes kzKamera {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.13) translate3d(-1.2%, -0.8%, 0);
+  }
+}
+
+/* ─────────────────────────────────────────────── SZENEN */
+.szene {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding-block: clamp(4rem, 11vh, 8rem);
+}
+.szeneWalnut {
+  background: radial-gradient(110% 80% at 70% 40%, #4a3a30, var(--color-walnut) 45%, var(--color-ink-deep));
+}
+.szeneInk {
+  background: radial-gradient(110% 80% at 30% 50%, #27303a, var(--color-ink-deep) 60%);
+}
+.szeneGrid {
+  display: grid;
+  gap: 2.5rem;
+}
+.szeneText {
+  max-width: 34rem;
+}
+.h2 {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 1.4rem + 4.2vw, 6rem);
+  line-height: 0.95;
+  text-wrap: balance;
+}
+.h2 em {
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  color: var(--color-stone);
+}
+.szeneLead {
+  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-stone-deep);
+}
+.szeneLinks {
+  margin-top: 1.25rem;
+}
+.nr {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 3rem + 8vw, 12rem);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(209 178 80 / 0.55);
+  user-select: none;
+}
+
+@media (min-width: 64rem) {
+  .szeneGrid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: center;
+    gap: clamp(3rem, 5vw, 6rem);
+  }
+  .flip .szeneText {
+    order: 2;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  /* Mobil: eigene Fassung – Bühne oben (60 svh), Text darunter auf Tinte */
+  .hero {
+    align-items: start;
+    background: var(--color-ink-deep);
+  }
+  .stageHero {
+    bottom: auto;
+    height: 60svh;
+  }
+  .stageHero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 30%;
+    z-index: 1;
+    background: linear-gradient(to top, var(--color-ink-deep), rgb(31 37 43 / 0));
+    pointer-events: none;
+  }
+  .hero::after {
+    display: none;
+  }
+  .heroText {
+    padding-top: calc(60svh - 4.5rem);
+    padding-bottom: 3rem;
+  }
+  .stageSzene .frames {
+    grid-template-columns: 1fr;
+  }
+  .stageHero .caption {
+    right: 11.5rem;
+  }
+  .stageSzene[data-mode="live"] .frames {
+    width: min(100%, calc(62svh * var(--ar)));
+  }
+}
+
+/* ─────────────────────────────────────────────── ADRESSE */
+.adresse {
+  padding-block: clamp(4rem, 10vh, 7rem);
+  background: var(--color-ink-deep);
+  border-top: 1px solid var(--color-line-inverse);
+}
+.adresseGrid {
+  display: grid;
+  gap: 2.5rem;
+}
+.h2s {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 1.5rem + 2.6vw, 4rem);
+  line-height: 1;
+}
+.adresse dl {
+  display: grid;
+  gap: 1.5rem;
+}
+.adresse dt {
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brass-400);
+}
+.adresse dd {
+  margin-top: 0.4rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--color-stone);
+}
+@media (min-width: 64rem) {
+  .adresseGrid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+  .adresse dl {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

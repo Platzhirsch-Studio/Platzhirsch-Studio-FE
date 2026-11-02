@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "hinweis": "NUR ENTWICKLUNG. Synthetische Testszene aus tools/splat/testszene.mjs – kein echter Ort, keine echten Ausstellungsstücke. Wird nie öffentlich angezeigt (config.js).",
+  "stand": "2026-10-28",
+  "stationen": [
+    {
+      "id": "t1-ankommen",
+      "zone": "_testszene",
+      "titel": { "de": "Ankommen", "en": "Arriving", "fr": "Arrivée", "it": "Arrivo" },
+      "text": {
+        "de": "Testszene: Überblick über den Raum vom Eingang aus.",
+        "en": "Test scene: overview of the room from the entrance.",
+        "fr": "Scène de test : vue d’ensemble depuis l’entrée.",
+        "it": "Scena di prova: panoramica dello spazio dall’ingresso."
+      },
+      "kamera": { "pos": [3.3, 1.7, 2.75], "ziel": [-0.6, 0.9, -1.4], "fov": 62 }
+    },
+    {
+      "id": "t2-sofa",
+      "zone": "_testszene",
+      "titel": { "de": "Sofa-Insel", "en": "Sofa island", "fr": "Îlot canapé", "it": "Isola divano" },
+      "text": {
+        "de": "Testszene: tiefe Sitzinsel mit Licht von der Fensterseite.",
+        "en": "Test scene: deep seating island with light from the window side.",
+        "fr": "Scène de test : îlot d’assise profond, éclairé côté fenêtre.",
+        "it": "Scena di prova: isola di seduta profonda con luce dal lato finestra."
+      },
+      "kamera": { "pos": [0.4, 1.3, 2.45], "ziel": [0, 0.55, -0.5], "fov": 55 }
+    },
+    {
+      "id": "t3-licht",
+      "zone": "_testszene",
+      "titel": { "de": "Licht über dem Tisch", "en": "Light above the table", "fr": "Lumière sur la table", "it": "Luce sopra il tavolo" },
+      "text": {
+        "de": "Testszene: Pendelleuchten über dem Couchtisch.",
+        "en": "Test scene: pendant lights above the coffee table.",
+        "fr": "Scène de test : suspensions au-dessus de la table basse.",
+        "it": "Scena di prova: lampade a sospensione sopra il tavolino."
+      },
+      "kamera": { "pos": [-1.9, 1.45, 2.2], "ziel": [0.1, 1.45, 0.6], "fov": 58 }
+    },
+    {
+      "id": "t4-mosaik",
+      "zone": "_testszene",
+      "titel": { "de": "Mosaikwand", "en": "Mosaic wall", "fr": "Mur en mosaïque", "it": "Parete a mosaico" },
+      "text": {
+        "de": "Testszene: Glasmosaik in Wassertönen.",
+        "en": "Test scene: glass mosaic in water tones.",
+        "fr": "Scène de test : mosaïque de verre aux tons d’eau.",
+        "it": "Scena di prova: mosaico in vetro nei toni dell’acqua."
+      },
+      "kamera": { "pos": [-1.2, 1.5, 0.9], "ziel": [-4, 1.15, -0.1], "fov": 55 }
+    },
+    {
+      "id": "t5-kueche",
+      "zone": "_testszene",
+      "titel": { "de": "Kücheninsel", "en": "Kitchen island", "fr": "Îlot de cuisine", "it": "Isola cucina" },
+      "text": {
+        "de": "Testszene: Insel mit Steinplatte.",
+        "en": "Test scene: island with a stone top.",
+        "fr": "Scène de test : îlot avec plan en pierre.",
+        "it": "Scena di prova: isola con piano in pietra."
+      },
+      "kamera": { "pos": [0.9, 1.65, 0.4], "ziel": [2.8, 0.85, -1.75], "fov": 56 }
+    },
+    {
+      "id": "t6-see",
+      "zone": "_testszene",
+      "titel": { "de": "Blick zum See", "en": "View to the lake", "fr": "Vue sur le lac", "it": "Vista sul lago" },
+      "text": {
+        "de": "Testszene: Fensterwand, Ausblick abstrahiert.",
+        "en": "Test scene: window wall, abstract view.",
+        "fr": "Scène de test : baie vitrée, vue stylisée.",
+        "it": "Scena di prova: vetrata, vista stilizzata."
+      },
+      "kamera": { "pos": [-0.4, 1.5, 0.2], "ziel": [-0.6, 1.4, -3], "fov": 64 }
+    },
+    {
+      "id": "t7-haralds-tisch",
+      "zone": "_testszene",
+      "typ": "haralds-tisch",
+      "titel": { "de": "Haralds Tisch", "en": "Harald’s table", "fr": "La table de Harald", "it": "Il tavolo di Harald" },
+      "text": { "de": "Erscheint nur mit echtem Material.", "en": "Only with real material.", "fr": "Uniquement avec du vrai matériel.", "it": "Solo con materiale reale." },
+      "kamera": { "pos": [2.2, 1.6, 1.8], "ziel": [3.6, 1.2, 0.9], "fov": 55 },
+      "material": []
+    }
+  ],
+  "hotspots": [
+    {
+      "id": "t-sofa",
+      "station": "t2-sofa",
+      "pos": [0, 0.72, -0.55],
+      "label": "Sofa-Insel (Testobjekt)",
+      "marke": null,
+      "masse": "B 290 × T 95 × H 80 cm",
+      "productPath": "/produkte",
+      "aktionen": ["produkt", "merken", "termin"],
+      "stand": "2026-10-28",
+      "imShowroom": true,
+      "rechte": "ok"
+    },
+    {
+      "id": "t-tisch",
+      "station": "t2-sofa",
+      "pos": [0, 0.42, 0.7],
+      "label": "ClassiCon · Testobjekt Tisch",
+      "marke": "ClassiCon",
+      "haendler": true,
+      "productPath": "/ueber-uns/marken/classicon",
+      "aktionen": ["produkt", "merken", "termin"],
+      "stand": "2026-10-28",
+      "imShowroom": true,
+      "rechte": "ok"
+    },
+    {
+      "id": "t-leuchte",
+      "station": "t3-licht",
+      "pos": [0.45, 2.35, 0.7],
+      "label": "Leuchte (Rechte offen, Testfall)",
+      "marke": "Testmarke",
+      "aktionen": ["merken"],
+      "stand": "2026-10-28",
+      "imShowroom": true,
+      "rechte": "pruefen"
+    },
+    {
+      "id": "t-tischleuchten",
+      "station": "t3-licht",
+      "pos": [-0.45, 2.25, 0.7],
+      "label": "Pendelleuchten (Testobjekt)",
+      "marke": null,
+      "aktionen": ["merken", "termin"],
+      "stand": "2026-10-28",
+      "imShowroom": true,
+      "rechte": "ok"
+    },
+    {
+      "id": "t-mosaik",
+      "station": "t4-mosaik",
+      "pos": [-3.95, 1.2, 0],
+      "label": "Ezarri · Glasmosaik (Testobjekt)",
+      "marke": "Ezarri",
+      "haendler": true,
+      "productPath": "/ezarri",
+      "aktionen": ["produkt", "merken", "termin"],
+      "stand": "2026-10-28",
+      "imShowroom": true,
+      "rechte": "ok"
+    },
+    {
+      "id": "t-insel",
+      "station": "t5-kueche",
+      "pos": [2.8, 0.95, -1.75],
+      "label": "Kücheninsel (Testobjekt)",
+      "marke": null,
+      "masse": "B 160 × T 90 × H 92 cm",
+      "productPath": "/kuechen-vorarlberg",
+      "aktionen": ["produkt", "termin"],
+      "stand": "2026-10-28",
+      "imShowroom": true,
+      "rechte": "ok"
+    },
+    {
+      "id": "t-sessel",
+      "station": "t2-sofa",
+      "pos": [2.2, 0.6, 0.7],
+      "label": "Sessel (abgebaut, Testfall)",
+      "marke": null,
+      "aktionen": ["merken"],
+      "stand": "2026-09-01",
+      "imShowroom": false,
+      "rechte": "ok"
+    }
+  ]
+}

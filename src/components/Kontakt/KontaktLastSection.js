@@ -1,50 +1,44 @@
-"use client";
-import React from "react";
-import Image from "next/image";
-import kontaktImage from "../../../public/Images/Kontakt/questionmark.webp";
-import { useTranslations } from "next-intl";
-import FadeInView from "@/components/Reusable/FadeInView";
+// Closing section of the contact page: the existing "ContactSection" text
+// (kept for content and search) in a quiet text column, then the Leitsatz
+// and the way to an appointment. Server component, no image (the old
+// question-mark stock graphic is gone: Bibel §7, no decoration).
+import { useLocale, useTranslations } from "next-intl";
+import { Button, Eyebrow, Heading, Leitsatz, Section } from "@/components/ui";
+import { ROUTES } from "@/utils/routing";
+import { contactCopy } from "./copy";
 
-const KontaktLastSection = () => {
-    const t = useTranslations("ContactSection")
-    return (
-        <div>
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 w-full px-4 my-10 lg:my-16  max-w-7xl mx-auto">
-                <div
-                    className="relative w-full h-[250px] sm:h-[350px] lg:h-[700px] lg:w-[500px] order-2 lg:order-2"
-                >
-                    <Image
-                        src={kontaktImage}
-                        alt={t("imageAlt") || "Creative Image"}
-                        fill
-                        className="object-contain rounded-md"
-                        sizes="(max-width: 768px) 90vw, 500px"
-                        priority
-                    />
-                </div>
-                <FadeInView
-                    as="div"
-                    direction="bottom"
-                    duration={700}
-                    distance={30}
-                    delay={100}
-                    className="w-full lg:w-1/2 order-1"
-                >
-                    <p className="text-[#d1b250] uppercase tracking-widest font-semibold mb-4">
-                        {t("pretitle")}
-                    </p>
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#303030] leading-tight mb-4">
-                        {t("title")}
-                    </h2>
-                    {t.raw("paragraphs").map((paragraph, idx) => (
-                        <p key={idx} className="max-w-2xl mx-auto text-[#30373e] text-md mt-4">
-                            {paragraph}
-                        </p>
-                    ))}
-                </FadeInView>
-            </div>
-        </div>
-    );
-};
+export default function KontaktLastSection() {
+  const locale = useLocale();
+  const t = useTranslations("ContactSection");
+  const tContact = useTranslations("contact");
+  const paragraphs = t.has("paragraphs") ? t.raw("paragraphs") : [];
+  const title = String(t("title")).replace(/\s*\n\s*/g, " ");
 
-export default KontaktLastSection;
+  return (
+    // QM content-legal r2 (iPad hoch): the centred text container stood ~96 px in
+    // from the page grid – page container, text column left-aligned with the form above.
+    // QM r3 (laptop): compact – the three sections were separated by 170–200 px empty bands.
+    <Section tone="raised" spacing="compact" contained="page" labelledBy="kontakt-gespraech-title">
+      <div className="max-w-text">
+      <Eyebrow className="mb-stack-s">{t("pretitle")}</Eyebrow>
+      <Heading id="kontakt-gespraech-title" level={2}>
+        {title}
+      </Heading>
+      <div className="mt-stack-m space-y-4">
+        {Array.isArray(paragraphs) &&
+          paragraphs.map((paragraph, idx) => (
+            <p key={idx} className="max-w-measure text-body text-text-soft">
+              {paragraph}
+            </p>
+          ))}
+      </div>
+      <Leitsatz size="m" align="start" className="mt-stack-m" />
+      <div className="mt-stack-m">
+        <Button href={ROUTES.beratung[locale] || "/beratung"} variant="secondary" arrow>
+          {contactCopy(tContact, locale, "consultCta")}
+        </Button>
+      </div>
+      </div>
+    </Section>
+  );
+}

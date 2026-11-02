@@ -1,0 +1,2707 @@
+{
+  "meta": {
+    "hersteller": "Binni (Kosovo) – Küchen, Steinoberflächen, Möbel",
+    "website": "https://www.binni.biz",
+    "abgerufen": "2026-10-26",
+    "erstellt_fuer": "Platzhirsch Küchen-Konfigurator und Binni-Landingpage (Entwurf, nicht veröffentlichen ohne Bildfreigabe)",
+    "kennzeichnung": "Alle Felder \"merkmale_aus_bild\", \"stil\", \"fronten\", \"arbeitsplatte\", \"layout\" sind aus Bild abgeleitet (Sichtprüfung, keine Herstellerangabe). Materialien wie Marmor/Granit/Quarzit sind optische Einschätzungen.",
+    "bildrechte": "Website nennt nur \"© Copyright 2024 Binni\". Keine Freigabe. Vor Veröffentlichung schriftlich klären.",
+    "lokale_bilder": "Herstellermaterial/Binni/bilder/<kategorie>/ (siehe Herstellermaterial/Binni/QUELLEN.md)",
+    "moebel_hinweis": "Möbel: Name, Herstellertext (englisch, wörtlich von der Website) und Bild-URLs erfasst; Bilder nicht einzeln beschrieben (merkmale_aus_bild = null). Küchen und Stone Surface sind vollständig gesichtet. 36 Möbelbilder haben lokal einen doppelten Dateinamen (lokal_unsicher).",
+    "nicht_erfasst": [
+      "Türen",
+      "Fenster",
+      "Referenzprojekte (nur als Bildquelle in bilder/references)"
+    ],
+    "zaehlung": {
+      "kuechen_modelle": 19,
+      "kuechen_bilder": 49,
+      "stein_bilder": 15,
+      "moebel_modelle": 96,
+      "moebel_bilder": 221,
+      "moebel_ohne_bild": [],
+      "moebel_ohne_lokale_kopie": []
+    }
+  },
+  "kuechen": [
+    {
+      "modell": "Naldo",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/naldo_kuzhine-2.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_naldo_kuzhine-2.jpg",
+              "merkmale_aus_bild": "Zeile mit Hochschränken, grifflose Fronten in mattem Hellgrau/Greige mit schwarzen Fugen-/Griffprofilen; Arbeitsplatte und Rückwand dunkel mit heller Äderung; Esstisch-Insel mit schwarzer Platte auf greigen Sockeln mit gerundeten Kanten; LED unter Oberschränken"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/naldo_kuzhine-1.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_naldo_kuzhine-1.jpg",
+              "merkmale_aus_bild": "Hochschrankwand grifflos matt Greige, schwarze vertikale Profile, beleuchtete Glasvitrine mit schwarzem Rahmen"
+            }
+          ],
+          "stil": "modern, grifflos",
+          "fronten": "matt, Hellgrau/Greige, schwarze Griffprofile",
+          "arbeitsplatte": "dunkel/schwarz mit heller Äderung (Stein oder Keramik – nicht erkennbar)",
+          "layout": "Zeile + Hochschrankwand + Tisch-Insel"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 2
+    },
+    {
+      "modell": "Loreto",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/loreto_kuzhine-2.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_loreto_kuzhine-2.jpg",
+              "merkmale_aus_bild": "L-Form mit Hochschrankwand; Fronten matt Anthrazit, grifflos; Oberschränke in dunklem Bordeaux/Aubergine mit vertikaler Rillenstruktur; gerillte Blende im Unterschrank; obere Glasaufsätze beleuchtet; Edelstahl-Zylinderhaube; Glasvitrine schwarz gerahmt"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/loreto_kuzhine-1.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_loreto_kuzhine-1.jpg",
+              "merkmale_aus_bild": "gleiche Küche, Arbeitsplatte und Rückwand schwarz glänzend mit Sprenkeln (Granit-Optik)"
+            }
+          ],
+          "stil": "modern, grifflos, Akzentfarbe",
+          "fronten": "matt Anthrazit + Bordeaux gerillt",
+          "arbeitsplatte": "schwarz, gesprenkelt, glänzend (Granit-Optik)",
+          "layout": "L-Form mit Hochschränken"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 2
+    },
+    {
+      "modell": "Livio",
+      "hinweis": "Unter \"Livio\" zeigt die Seite zwei optisch verschiedene Küchen (2025er und 2020er Bilder).",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/Livio_kuzhina-2.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_Livio_kuzhina-2.jpg",
+              "merkmale_aus_bild": "Oberschränke in warmem Holz (Nussbaum-ähnlich) mit vertikaler Rillung; Unterschränke weiß, grifflos; Arbeitsplatte und Rückwand schwarzer Stein mit weißen, wolkigen Einschlüssen; schwarze Armatur"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/Livio_kuzhina-1.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_Livio_kuzhina-1.jpg",
+              "merkmale_aus_bild": "Eckküche: weiße grifflose Hochschränke, Holz-Oberschränke gerillt, offenes Holzregal am Ende, Einbaubackofen Edelstahl"
+            }
+          ],
+          "stil": "modern, Holz + Weiß",
+          "fronten": "weiß glatt + Holz gerillt",
+          "arbeitsplatte": "schwarzer Stein mit weißer Zeichnung",
+          "layout": "L-/Eckküche mit Hochschränken"
+        },
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/777.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_777.jpg",
+              "merkmale_aus_bild": "Hochschränke und Unterschränke in Nussbaum-Optik mit horizontaler Maserung, beleuchtete Glasvitrine, schwarze Schräghaube, Arbeitsplatte dunkelgrau"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/9999.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_9999.jpg",
+              "merkmale_aus_bild": "L-Form: Unterschränke Nussbaum mit Griffleisten, Oberschränke matt Anthrazit mit LED-Leiste, Arbeitsplatte dunkelgrau (Stein-/Keramik-Optik)"
+            }
+          ],
+          "stil": "modern, wohnlich Holz",
+          "fronten": "Nussbaum-Optik + matt Anthrazit",
+          "arbeitsplatte": "dunkelgrau",
+          "layout": "L-Form mit Hochschränken"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 4
+    },
+    {
+      "modell": "Laguna",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/Laguna_Kuzhine-4.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_Laguna_Kuzhine-4.jpg",
+              "merkmale_aus_bild": "Zeile mit Hochschränken + Insel; Fronten matt Greige/Kaschmir mit schmalem Kantenprofil; schwarze Glasoberschränke beleuchtet; Rückwand und Platte schwarz mit weißer Äderung; Ledersitz-Hocker"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/Laguna_Kuzhine-3.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_Laguna_Kuzhine-3.jpg",
+              "merkmale_aus_bild": "Frontalansicht Kochinsel mit offenem Mittelfach, Hochschränke beidseitig, Glasoberschränke"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/07/2-1.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_2-1.jpg",
+              "merkmale_aus_bild": "2020er Bild derselben Ausstellung: Glasvitrinen-Oberschränke, schwarze Haube, Rückwand schwarz-weiß geädert, Rahmenprofil-Fronten Greige"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/07/1-1.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_1-1.jpg",
+              "merkmale_aus_bild": "2020er Bild: Insel mit offenem Mittelfach, Arbeitsplatte dunkel"
+            }
+          ],
+          "stil": "modern, feine Rahmenprofile",
+          "fronten": "matt Greige/Kaschmir, schmale Kantenprofile",
+          "arbeitsplatte": "schwarz mit weißer Äderung",
+          "layout": "Zeile + Kochinsel"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 4
+    },
+    {
+      "modell": "Klea",
+      "hinweis": "Unter \"Klea\" zeigt die Seite vier Bilder, die nach Bild drei bis vier verschiedene Küchen sind. Ein Bild heißt im Dateinamen \"laguna_kuzhine-1\", ein anderes zeigt dieselbe Ausstellung wie \"Naldo\". Zuordnung bei Binni klären.",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/laguna_kuzhine-1.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_laguna_kuzhine-1.jpg",
+              "merkmale_aus_bild": "Insel und Oberschränke mit schwarzen, vertikal gerillten Fronten; Hochschränke Greige; Arbeitsplatte/Rückwand schwarz mit goldbeiger Äderung; Bartisch-Verlängerung; beleuchtete Glasvitrinen (Dateiname: laguna)"
+            }
+          ],
+          "stil": "modern, gerillte Fronten",
+          "fronten": "schwarz gerillt + Greige",
+          "arbeitsplatte": "schwarz mit goldbeiger Äderung",
+          "layout": "Wand + Insel mit Theke"
+        },
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/klea_kuzhine-1.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_klea_kuzhine-1.jpg",
+              "merkmale_aus_bild": "Hochschrankwand in dunklem rötlichem Holzfurnier (Nussbaum-ähnlich); Insel und Arbeitsblock vollständig in dunklem, gesprenkeltem Stein verkleidet (Monolith-Optik); Theke mit Hockern; Rückwand dunkler Stein"
+            }
+          ],
+          "stil": "modern, Stein-Monolith",
+          "fronten": "dunkles Holzfurnier",
+          "arbeitsplatte": "dunkler gesprenkelter Stein, Seiten mitverkleidet",
+          "layout": "Wand + zwei Steinblöcke (Insel)"
+        },
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/klea_kuzhine-2.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_klea_kuzhine-2.jpg",
+              "merkmale_aus_bild": "grifflose Zeile matt Greige mit Esstisch-Insel und schwarzer Platte – dieselbe Ausstellung wie bei Naldo"
+            }
+          ],
+          "stil": "modern, grifflos",
+          "fronten": "matt Greige",
+          "arbeitsplatte": "dunkel",
+          "layout": "Zeile + Tisch-Insel"
+        },
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/Klea_Kuzhina.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_Klea_Kuzhina.jpg",
+              "merkmale_aus_bild": "Hochschrankwand in schwarzer Eiche mit sichtbarer Maserung; Insel als massiver Block in grauem, stark geädertem Stein; gleicher Stein als Rückwand; LED-Nische"
+            }
+          ],
+          "stil": "modern, Stein-Monolith",
+          "fronten": "schwarze Eiche (Struktur)",
+          "arbeitsplatte": "grauer geäderter Stein (Marmor/Quarzit-Optik), Seiten mitverkleidet",
+          "layout": "Wand + Inselblock"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 4
+    },
+    {
+      "modell": "Irena",
+      "hinweis": "Unter \"Irena\" zeigt die Seite drei verschiedene Küchen (2025, 2020 schwarz, 2020 Nussbaum/Weiß).",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/irena_kuzhine-2.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_irena_kuzhine-2.jpg",
+              "merkmale_aus_bild": "Insel mit zweistufiger Platte: dunkler, glänzender Stein mit Sprenkeln + beige Ebene; Fronten matt Sand/Champagner mit schrägen Griffleisten; Hochschränke mit zwei Backöfen; schwarze Glasvitrinen beidseitig"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/irena_kuzhine-1.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_irena_kuzhine-1.jpg",
+              "merkmale_aus_bild": "Detail Spüle in dunklem gesprenkeltem Stein, Armatur Edelstahl"
+            }
+          ],
+          "stil": "modern, warm",
+          "fronten": "matt Sand/Champagner, schräge Griffleisten",
+          "arbeitsplatte": "dunkler gesprenkelter Stein + beige Ebene",
+          "layout": "Hochschrankwand + Insel"
+        },
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/zzzz.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_zzzz.jpg",
+              "merkmale_aus_bild": "Zeile in schwarzer Holzstruktur (Eiche schwarz), grifflos; Rückwand und dünne Platte hellgrauer Quarz-/Stein-Optik, fein gemustert; LED-Nische"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/zzzazazaz.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_zzzazazaz.jpg",
+              "merkmale_aus_bild": "Gesamtansicht: Hochschrankwand schwarz, Nische mit heller Rückwand, Esstisch davor"
+            }
+          ],
+          "stil": "modern, dunkel",
+          "fronten": "schwarze Holzstruktur, grifflos",
+          "arbeitsplatte": "hellgrau fein gemustert",
+          "layout": "Zeile mit Hochschränken"
+        },
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/AAAAAAAAA.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_AAAAAAAAA.jpg",
+              "merkmale_aus_bild": "Hochschränke in dunklem Nussbaum mit zwei Backöfen; Insel weiß matt, grifflos, mit erhöhtem Block in dunkelgrauer Beton-/Metall-Optik und offenem Holzfach"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/QQQQ111.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_QQQQ111.jpg",
+              "merkmale_aus_bild": "Insel weiß matt mit Hockern, Hochschrankwand Nussbaum"
+            }
+          ],
+          "stil": "modern, Holz + Weiß",
+          "fronten": "Nussbaum + weiß matt",
+          "arbeitsplatte": "weiß + dunkelgrauer Block (Beton-/Metall-Optik)",
+          "layout": "Hochschrankwand + Insel"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 6
+    },
+    {
+      "modell": "Eglio",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/eglio_kuzhine-2.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_eglio_kuzhine-2.jpg",
+              "merkmale_aus_bild": "Fronten weiß matt, grifflos; Hochschränke einzeln mit messing-/bronzefarbenen Zwischenlisenen; Halbinsel mit Hockern; Naturstein-Wandverkleidung (Schiefer-Optik)"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/eglio_kuzhine-1.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_eglio_kuzhine-1.jpg",
+              "merkmale_aus_bild": "Detail Arbeitsplatte grau-weiß geäderter Stein, zwei Backöfen"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/04/1222.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_1222.jpg",
+              "merkmale_aus_bild": "2020er Bild derselben Küche: Zeile + Insel, Inselhaube Edelstahl/Greige, offenes Holzregal"
+            }
+          ],
+          "stil": "modern, minimalistisch",
+          "fronten": "weiß matt, grifflos",
+          "arbeitsplatte": "grau-weiß geäderter Stein",
+          "layout": "Zeile + Hochschränke + Insel"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 3
+    },
+    {
+      "modell": "Amelia",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/amelia_kuzhine-2.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_amelia_kuzhine-2.jpg",
+              "merkmale_aus_bild": "komplett schwarz: Fronten schwarze Holzstruktur, kleine schwarze Griffe; Rückwand und Platte dunkelgrüner Marmor mit weißen Adern; LED-Nische; Glasvitrine"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2025/02/amelia_kuzhine-1.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_amelia_kuzhine-1.jpg",
+              "merkmale_aus_bild": "Eck-/U-Situation mit Hochschränken, zwei Backöfen + Kaffeemaschine, runder Esstisch"
+            }
+          ],
+          "stil": "modern, dunkel, Stein-Akzent",
+          "fronten": "schwarze Holzstruktur",
+          "arbeitsplatte": "dunkelgrüner Marmor mit weißen Adern",
+          "layout": "Ecke/U mit Hochschränken"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 2
+    },
+    {
+      "modell": "Marta",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/aaaqqqqq.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_aaaqqqqq.jpg",
+              "merkmale_aus_bild": "Oberschränke weiß matt mit abgeschrägter Unterkante als Griff; Arbeitsplatte und niedrige Rückwand weiß mit grauer Marmor-Äderung; Unterspülbecken"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/AAAZAZAZAZ.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_AAAZAZAZAZ.jpg",
+              "merkmale_aus_bild": "Zeile weiß + Insel/Theke mit dicker heller Eichenplatte; Sichtbeton-Wand"
+            }
+          ],
+          "stil": "modern, hell",
+          "fronten": "weiß matt, Griff über Schräge",
+          "arbeitsplatte": "weiß mit Marmor-Äderung; Theke helle Eiche massiv-Optik",
+          "layout": "Zeile + Insel/Theke"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 2
+    },
+    {
+      "modell": "Prima",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/AAZZAZAZ.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_AAZZAZAZ.jpg",
+              "merkmale_aus_bild": "Hochschränke in rustikaler Eiche mit Rissen/Ästen; beleuchtete Glasvitrine; Insel schwarz mit schwarzer, glänzender Platte"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/LMLM.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_LMLM.jpg",
+              "merkmale_aus_bild": "Insel schwarz matt grifflos, aufgesetzte dicke Eichenbohle als Theke, Lederhocker"
+            }
+          ],
+          "stil": "modern-rustikal",
+          "fronten": "Alteiche-Optik + schwarz matt",
+          "arbeitsplatte": "schwarz glänzend (Stein-Optik) + Eichenbohle",
+          "layout": "Hochschränke + Insel mit Theke"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 2
+    },
+    {
+      "modell": "Lanza",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/00010010010.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_00010010010.jpg",
+              "merkmale_aus_bild": "Hochglanz weiß, geschwungene Griffmulden; Rückwand in Eichen-Optik mit schwarzem Metallregal; dünne Platte in Eichen-Optik; Edelstahl-Zylinderhaube"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/12QQQ11111.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_12QQQ11111.jpg",
+              "merkmale_aus_bild": "L-Form mit Hochschränken Hochglanz weiß, Backofen in schwarzer offener Regalnische"
+            }
+          ],
+          "stil": "modern, Hochglanz",
+          "fronten": "Hochglanz weiß, geschwungene Griffmulden",
+          "arbeitsplatte": "Eichen-Optik, dünn",
+          "layout": "L-Form mit Hochschränken"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 2
+    },
+    {
+      "modell": "Elio",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/00000.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_00000.jpg",
+              "merkmale_aus_bild": "Unterschränke dunkles Nussbaumholz, Oberschränke matt Orange; Arbeitsplatte und Rückwand hellgrauer, gesprenkelter Granit"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/0000000.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_0000000.jpg",
+              "merkmale_aus_bild": "L-Form mit Hochschränken in Nussbaum, Weinregal in Orange, Kaffeevollautomat"
+            }
+          ],
+          "stil": "modern, Farbakzent",
+          "fronten": "Nussbaum dunkel + matt Orange",
+          "arbeitsplatte": "hellgrauer Granit gesprenkelt",
+          "layout": "L-Form mit Hochschränken"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 2
+    },
+    {
+      "modell": "Vetro",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/666.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_666.jpg",
+              "merkmale_aus_bild": "Oberschränke, Rückwand und Nischenrahmen in dunkler Metall-/Oxid-Optik; Arbeitsplatte dunkel; Spots in der Nische"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/555.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_555.jpg",
+              "merkmale_aus_bild": "Zeile mit Hochschränken Hochglanz weiß grifflos, mittig dunkle Oxid-Nische"
+            }
+          ],
+          "stil": "modern, Hochglanz + Metall-Optik",
+          "fronten": "Hochglanz weiß + Oxid-Optik",
+          "arbeitsplatte": "dunkel (Oxid-/Stein-Optik)",
+          "layout": "Zeile mit Hochschränken"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 2
+    },
+    {
+      "modell": "Adela",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/44.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_44.jpg",
+              "merkmale_aus_bild": "Fronten matt Olivgrün, grifflos; Insel mit dicker rötlich-brauner Altholz-Thekenplatte; beleuchtete Nische mit Holzrückwand; schwarze Inselhaube"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/444.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_444.jpg",
+              "merkmale_aus_bild": "Seitenansicht: Insel + Hochschränke olivgrün, Lederhocker"
+            }
+          ],
+          "stil": "modern, Farbe + Altholz",
+          "fronten": "matt Olivgrün, grifflos",
+          "arbeitsplatte": "dunkel + Altholz-Theke",
+          "layout": "Hochschränke + Insel mit Theke"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 2
+    },
+    {
+      "modell": "Olimpia",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/333.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_333.jpg",
+              "merkmale_aus_bild": "Hochschränke Hochglanz weiß mit Kaffeevollautomat und Backofen; Holzsockel; weiße Arbeitsplatte"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/33.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_33.jpg",
+              "merkmale_aus_bild": "Insel weiß mit dicker Altholz-Theke, weiße Inselhaube mit Holzband"
+            }
+          ],
+          "stil": "modern, Hochglanz",
+          "fronten": "Hochglanz weiß, grifflos",
+          "arbeitsplatte": "weiß + Altholz-Theke",
+          "layout": "Hochschränke + Insel mit Theke"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 2
+    },
+    {
+      "modell": "Victoria",
+      "hinweis": "Unter \"Victoria\" zeigt die Seite zwei verschiedene klassische Küchen.",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/222.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_222.jpg",
+              "merkmale_aus_bild": "Landhaus: Rahmen-/Kassettenfronten weiß mit Holzstruktur, Sprossen-Glasoberschränke, dunkle Bügelgriffe, weiße Kaminhaube, dünne dunkelbraune Platte, Messingarmatur"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/10/11.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_11.jpg",
+              "merkmale_aus_bild": "Zeile + Hochschränke mit Kranzgesims, Retro-Backofen schwarz"
+            }
+          ],
+          "stil": "klassisch/Landhaus",
+          "fronten": "weiße Kassettenfronten, Holzstruktur",
+          "arbeitsplatte": "dunkelbraun, dünn",
+          "layout": "Zeile + Hochschrankblock"
+        },
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/04/11.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_2020-04_11.jpg",
+              "merkmale_aus_bild": "klassisch: Kassettenfronten weiß lackiert mit goldfarbenen Zierlinien, Zahnschnitt-Gesims, Sprossenvitrinen, Bronze-Knopfgriffe, Retro-Backofen creme"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/04/2222-2.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_2222-2.jpg",
+              "merkmale_aus_bild": "U-Form, Pilaster mit Kanneluren, Haube im gleichen Stil, Arbeitsplatte schwarz mit Glitzer (Quarz-Optik)"
+            }
+          ],
+          "stil": "klassisch, Stil-Küche",
+          "fronten": "weiß lackiert mit Goldlinien",
+          "arbeitsplatte": "schwarz glitzernd",
+          "layout": "U-Form mit Hochschränken"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 4
+    },
+    {
+      "modell": "Maura",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/04/4.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_2020-04_4.jpg",
+              "merkmale_aus_bild": "Rahmenfronten (Shaker-Stil) matt Anthrazit; Insel mit acht Schubkästen; Arbeitsplatte und Rückwand schwarzer Stein mit heller Wolkenzeichnung; Hochschränke mit Kranz; verkleidete Haube"
+            }
+          ],
+          "stil": "klassisch-modern (Shaker)",
+          "fronten": "matt Anthrazit, Rahmen",
+          "arbeitsplatte": "schwarzer Stein mit heller Zeichnung",
+          "layout": "Hochschrankwand + Insel"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 1
+    },
+    {
+      "modell": "Aldo",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/07/6.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_6.jpg",
+              "merkmale_aus_bild": "Fronten matt Blau (Petrol/Kobalt), grifflos mit Griffmulde; offene Eichen-Fächer zwischen Hochschränken"
+            },
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/07/5.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_5.jpg",
+              "merkmale_aus_bild": "Zeile mit dunkler Schiefer-/Stein-Optik-Platte, schwarzes Nischenregal als Rückwand, Hochschränke blau"
+            }
+          ],
+          "stil": "modern, Farbe",
+          "fronten": "matt Blau, grifflos",
+          "arbeitsplatte": "dunkelgrau (Schiefer-Optik)",
+          "layout": "Zeile + Hochschränke"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 2
+    },
+    {
+      "modell": "Siena",
+      "ausfuehrungen": [
+        {
+          "bilder": [
+            {
+              "url": "https://www.binni.biz/wp-content/uploads/2020/07/4.jpg",
+              "lokal": "Herstellermaterial/Binni/bilder/kitchen/binni_kitchen_4.jpg",
+              "merkmale_aus_bild": "U-Küche + Insel, Fronten weiß matt mit schwarzer Griffmulde, dünne weiße Platte mit schwarzer Kante, Nussbaum-Regalnischen, Rückwand taupe"
+            }
+          ],
+          "stil": "modern, minimalistisch",
+          "fronten": "weiß matt, schwarze Griffmulde",
+          "arbeitsplatte": "weiß, dünn, schwarze Kante",
+          "layout": "U-Form + Insel"
+        }
+      ],
+      "kategorie": "Küche",
+      "quelle": "https://www.binni.biz/products/kitchen/",
+      "herstellertext": null,
+      "anzahl_bilder": 1
+    }
+  ],
+  "stone_surface": {
+    "kategorie": "Stone Surface",
+    "quelle": "https://www.binni.biz/products/stone-surface/",
+    "herstellertext": "Nature’s durability meets modern design in these sleek, high-quality stone finishes ... (Website, englisch). Keine Sortennamen, keine Materialangaben (Granit/Marmor/Quarzit/Keramik), keine Formate.",
+    "hinweis": "Alle 14 Bilder heißen auf der Seite nur \"Stone Surface\". Sortennamen fehlen.",
+    "bilder": [
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/DSC07792.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_DSC07792.jpg",
+        "merkmale_aus_bild": "Plattenlager/Ausstellung: senkrecht hängende Rohplatten – u. a. goldbraun geädert, weiß mit grauen Adern, dunkelbraun mit weißen Adern, dunkelgrün, graubraun geädert, schwarz mit blau schimmernden Einschlüssen, weiß-grau mit braunen Flecken"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/Screenshot-2025-08-13-at-09.58.04.png",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_Screenshot-2025-08-13-at-09.58.04.png",
+        "merkmale_aus_bild": "Platzhalter, fast leer/weiß – kein Produkt erkennbar"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/6.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_6.jpg",
+        "merkmale_aus_bild": "Insel mit dunkler, gesprenkelter, glänzender Steinplatte und Unterbaubecken (wie Irena 2025)"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/DSC01260.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_DSC01260.jpg",
+        "merkmale_aus_bild": "Küche Anthrazit/schwarze Eiche, Arbeitsplatte und Rückwand grau-blauer Stein mit feiner Äderung (Quarzit-Optik)"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/DSC02069.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_DSC02069.jpg",
+        "merkmale_aus_bild": "Wohnraum (Referenz): Kaminwand in gelb-schwarz gebändertem Onyx-artigem Stein, Couchtisch-Block schwarz-gold, Beistelltische Stein"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/DSC04198.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_DSC04198.jpg",
+        "merkmale_aus_bild": "Küche: Insel und Rückwand in grauem, stark geädertem Stein, Fronten schwarze Eiche (wie Klea_Kuzhina)"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/DSC07772.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_DSC07772.jpg",
+        "merkmale_aus_bild": "Detail: Arbeitsplatte und Rückwand schwarz mit weißen Wolkeneinschlüssen, Unterbaubecken Edelstahl"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/DSC08097-Enhanced-NR.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_DSC08097-Enhanced-NR.jpg",
+        "merkmale_aus_bild": "Insel komplett in dunklem gesprenkeltem Stein, Kochfeld mit Muldenlüfter (wie Klea 2025)"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/DSC08277.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_DSC08277.jpg",
+        "merkmale_aus_bild": "Sideboard schwarze Eiche mit Deckplatte aus hellem, beige-orange geädertem Stein, gerundete Ecke"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/DSC08714.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_DSC08714.jpg",
+        "merkmale_aus_bild": "TV-Wand: Rahmung und Sockel in grün-grauem geädertem Stein, Fronten matt Taupe"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/DSC09068.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_DSC09068.jpg",
+        "merkmale_aus_bild": "Arbeitsplatte (dick) und Rückwand dunkelgrüner Marmor mit weißen Adern, Fronten schwarz (wie Amelia)"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/DSC09986.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_DSC09986.jpg",
+        "merkmale_aus_bild": "TV-Wand und Lowboard aus grau-braunem Stein mit dunklen Adern; Holzlamellen dunkel (Referenzobjekt)"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/DSC09999-2.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_DSC09999-2.jpg",
+        "merkmale_aus_bild": "Esszimmer: Wand- und Kaminverkleidung beige-grau geädert, Esstisch mit Steinplatte (Referenzobjekt)"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/VMU09840.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_VMU09840.jpg",
+        "merkmale_aus_bild": "Badmöbel: Waschtischplatte grün-grauer Stein mit Aufsatzbecken, Fronten dunkle Eiche, Binni-Logo"
+      },
+      {
+        "url": "https://www.binni.biz/wp-content/uploads/2025/08/VMU09900.jpg",
+        "lokal": "Herstellermaterial/Binni/bilder/stone-surface/binni_stone-surface_VMU09900.jpg",
+        "merkmale_aus_bild": "Schrankwand schwarze Eiche mit Nischen, Rahmen und Ablagen aus beige-grauem Stein"
+      }
+    ],
+    "anwendungen_aus_bildern": [
+      "Küchenarbeitsplatte",
+      "Rückwand",
+      "Insel-Verkleidung (Monolith)",
+      "Waschtisch",
+      "TV-/Wandverkleidung",
+      "Kamin",
+      "Sideboard-Deckplatte",
+      "Tischplatte"
+    ]
+  },
+  "moebel": [
+    {
+      "modell": "Time Corner",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Time Corner",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Time-Corner-1-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Time-Corner-1-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Time-Corner-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Time-Corner-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Sofa Set",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Sofa Set",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Sofa-Set-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Sofa-Set-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Sofa-Set-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Sofa-Set-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Santa Monica",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Santa Monica",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Santa-Monica-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Santa-Monica-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Santa-Monica-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Santa-Monica-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Sofa Collection",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Sofa Collection",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Livingroompaemer-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Livingroompaemer-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Livingroompaemer-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Livingroompaemer-2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/paemeeer-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_paemeeer-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/paemeeer-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_paemeeer-2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/paemeeer-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_paemeeer-3.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/paemer-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_paemer-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/paemer-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_paemer-2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/paemer-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_paemer-3.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/pameeeer-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_pameeeer-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/pameeeer-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_pameeeer-2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/pameeeer-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_pameeeer-3.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/pameeeer-4.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_pameeeer-4.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Powel Corner",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Powel Corner",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Powel-corner-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Powel-corner-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Powel-corner-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Powel-corner-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Eiffel",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Eiffel",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Eiffel-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Eiffel-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Eiffel-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Eiffel-2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Elisir-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Elisir-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Elisir-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Elisir-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Dante Corner",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Dante Corner",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Dante-Corner-2-1-scaled.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Dante-Corner-2-1-scaled.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Dante-Corner-1-1-scaled.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Dante-Corner-1-1-scaled.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Puzzle Corner",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Sofa Corner which perfectly complements your environment, while with its unique details make it usable while saving space! The soft material with high quality beige shade caresses your body and makes you feel more comfortable. Thanks to its special structure with the table framed in the middle, it gives your environment an incomparable beauty and practical details.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/1-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_1-3.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/2-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_2-3.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/10.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_10.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/3-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_3-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Benz",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "With its unique style and design this set will give you a wonderful and comfortable experience! The unique structure together with the sides covered with nayral wood, give a very special look to this set. The quality material used and carefully woven turns it into a comfortable and luxurious sofa which you can find at",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/1z.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_1z.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Prada",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "The soft and quality material of this sofa caresses your body and makes you feel more comfortable! Thanks to its unique structure with a special space for placing books, as well as the wooden table framed in one of the corners, it gives your environment an incomparable beauty and practical details.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/1-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_1-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Art Nouveau",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "The stunning structure of the Art Nouveau is enriched by the mastery of capitonné sewing, while the elegant exterior profile is distinguished by the sloping shape resembling the shell. This sofa is designed to give your body comfort.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/cf07c-art_nouveau_4.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_cf07c-art_nouveau_4.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/9cca2-art_nouveau_5.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_9cca2-art_nouveau_5.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/16343-art_nouveau_6.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_16343-art_nouveau_6.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Rochel Sofa",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "The Rochel sofa set is the one that adds to the beauty of your environment! The material and use for this set is natural leather with a special cognac shade that adds to your unique and recommended look environment. The soft shapes and the way of sewing highlight the pleasant details of the set, while the legs in front of the wood combine perfectly creating the color harmony.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/10/1-scaled.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_1-scaled.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Hermes",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Complete your space with the stylish Hermes sitting set! The sofas of this collection are characterized by the softness they offer and their special stitching, while the filling of small pillows with goose feathers creates comfort for your body. The table in the middle makes your stay more relaxing and the bedside table has enough spacttre for essential things in closed cupboards, and hanging shelves allow you to place various accessories.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/dhoma-e-ndejes-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_dhoma-e-ndejes-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/dhoma-e-ndejes-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_dhoma-e-ndejes-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Asos Corner",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Add unique style to your home with the Asos Corner corner! Its special color grabs your attention at first glance, while their combination with black cushions creates a color contrast and make your environment more dynamic. Its sleek metal legs add beauty to this sofa.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/3-2-1sh.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_3-2-1sh.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/3-2-1-sh-sari.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_3-2-1-sh-sari.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Lounge Corner",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "The charm of the Lounge Corner set is something that your home environment deserves! The unique structure together with the wooden sides gives a very special look to this sofa. The soft and quality material makes you feel more comfortable.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/08/3333.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_3333.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/08/44444.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_44444.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/08/5555.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_5555.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Rosemary",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "The Rosemary corner sofa is suitable for all those who want to experience modern comfort and style. The shape and its sewing in the capitonné way adds elegance and makes it more attractive.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/14.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_14.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/15.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_15.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Belle Epoque",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "The sofa that gives you the perfect comfort experience is the Belle Epoque. The modern style of the sofa designed with stamps in the capitonné way adds beauty and elegance to your environment.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/12-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_12-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/13.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_13.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Fox Trot",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "The Fox Trot sofa grabs attention with its unusual geometric shapes, it’s linear and angular elements together with the combination of natural colors with the most dynamic ones give your environment a modern look.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/10.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_10.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/11.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_11.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Time",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Time Corner sofa is created for those who want to have the originality part of their home! Its special structure with ergonomic shapes makes it extremely comfortable.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/8.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_8.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/9.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_9.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Opera",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Specially created for those who still prefer the 17th century style at home, the Opera sofa is the right one to complete your ambiance!",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/6-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_6-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/7.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_7.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Odillon",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Who can say no to a handsome and comfortable sofa like Odillon! The soft and qualitative material makes you feel comfortable.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/3-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_3-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/4-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_4-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/5-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_5-1.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Bella",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Give your environment a variety of colors inspired by nature! A set which gives warmth to your body.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/1-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_1-3.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/2-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_2-3.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Oslo",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Much more than just a place to spend time! The way the combination of colors and shapes makes this collection special and sophisticated.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/q.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_q.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/2a.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_2a.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Paride Corner",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Paride Corner features a lightweight structure supported by thin metal legs that reflect a modern style! Brown skin tones that resemble gray are what make it easy to combine with your environment.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_2.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Elegant Corner",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Elegant Corner sofa with champagne color and design features Tartani gives a special look to your environment! Sophisticated material and soft lines fit all styles, whether modern or classic.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/1s.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_1s.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/Untitled-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_Untitled-1.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Elisir",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Elisir means elegance! The wide and welcoming frame is gracefully accompanied by the soft cognac-brown leather, embellished with the highest attention to detail.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/222222.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_222222.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3333.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_3333.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1111.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_1111.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Lexus",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Elisir means elegance! The wide and welcoming frame is gracefully accompanied by the soft cognac-brown leather, embellished with the highest attention to detail.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/23444444.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_23444444.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/232323432434.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_232323432434.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/w3w132214124.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_w3w132214124.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Romeo",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "Comfort of another level! The ideal combination for those who adore the highest quality leather, is the set of Romeo sofas",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/5.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_5.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-19.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_1-19.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Puzzle Corner",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "An extraordinary collection which remains long in mind with its noble lines and precious textures! What makes this set special is the wooden cabinet that integrates easily into any part of the sofa.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/05/3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_3.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/05/4.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_4.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/05/2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_2.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/05/1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Renzo Corner",
+      "kategorie": "Sofas",
+      "kategorie_slug": "sofas",
+      "quelle": "https://www.binni.biz/products/furniture/sofas/",
+      "herstellertext": "The perfect sofa that unites you with your loved ones for pleasant moments and complete comfort! Renzo Corner is the destination of those who want to have a peace of mind and relax in their environment.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/05/5.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_5.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/05/6.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_6.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/05/7.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/sofas/binni_sofas_7.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Gaston",
+      "kategorie": "Sessel",
+      "kategorie_slug": "armchairs",
+      "quelle": "https://www.binni.biz/products/furniture/armchairs/",
+      "herstellertext": "Gaston",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Gaston.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_Gaston.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Armchair",
+      "kategorie": "Sessel",
+      "kategorie_slug": "armchairs",
+      "quelle": "https://www.binni.biz/products/furniture/armchairs/",
+      "herstellertext": "Armchair",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/kolltukpaemer-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_kolltukpaemer-2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/kolltukpaemer-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_kolltukpaemer-3.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/kolltukpaemer-4.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_kolltukpaemer-4.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/kolltukpaemer-5.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_kolltukpaemer-5.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/kolltukpaemer-6.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_kolltukpaemer-6.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/kolltukpaemer-7.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_kolltukpaemer-7.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/kolltukpaemer-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_kolltukpaemer-1.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Master Familias",
+      "kategorie": "Sessel",
+      "kategorie_slug": "armchairs",
+      "quelle": "https://www.binni.biz/products/furniture/armchairs/",
+      "herstellertext": "The model of the Master Familias armchair is created to give comfort to the body and elegant style to your environment. The main features of this armchair are the cylindrical legs made of silver colored metal that make it more unique, while the different colors in the material give life to your environment.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/5cc80-materfamilias_poltroncina_3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_5cc80-materfamilias_poltroncina_3.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Jacob",
+      "kategorie": "Sessel",
+      "kategorie_slug": "armchairs",
+      "quelle": "https://www.binni.biz/products/furniture/armchairs/",
+      "herstellertext": "The Jacob armchair highlights the timeless beauty of natural leather through modern shapes and welcoming design. Suitable for environments with cold palettes where the caramel color brings the right sweetness.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/11592-9156145.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_11592-9156145.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Tai",
+      "kategorie": "Sessel",
+      "kategorie_slug": "armchairs",
+      "quelle": "https://www.binni.biz/products/furniture/armchairs/",
+      "herstellertext": "The Tai armchair uniquely designed with dynamic nuances make your environment more! The blue and emerald green color palette can suit all tastes. The special structure in front of the wood with the black color made this armchair elegant and unique in its kind.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/1-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_1-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/2-1-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_2-1-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/3-1-1-scaled.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_3-1-1-scaled.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Delicioza",
+      "kategorie": "Sessel",
+      "kategorie_slug": "armchairs",
+      "quelle": "https://www.binni.biz/products/furniture/armchairs/",
+      "herstellertext": "The Delicioza armchair designed in the capitonné way adds a unique look to your environment! The emerald blue and green color palette can suit all tastes. The small dark brown wooden legs set this armchair apart from the others.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/08/222.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_222.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/08/12.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_12.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Venere",
+      "kategorie": "Sessel",
+      "kategorie_slug": "armchairs",
+      "quelle": "https://www.binni.biz/products/furniture/armchairs/",
+      "herstellertext": "Inviting and with a sweet cherry tint of brown, the artistry of this armchair lies in its unique metallic leg construction that elegantly holds the wide and cozy frame.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/0.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_0.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_1-2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3-5.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_3-5.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_2-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Jacob",
+      "kategorie": "Sessel",
+      "kategorie_slug": "armchairs",
+      "quelle": "https://www.binni.biz/products/furniture/armchairs/",
+      "herstellertext": "With a high or low back and excellent feather softness, Jacob reflects the classic style of armchairs, skillfully tailored to contemporary fashion trends.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1111.png",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_1111.png"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/11111111.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_11111111.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3232323.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/armchairs/binni_armchairs_3232323.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Italo",
+      "kategorie": "Stühle und Hocker",
+      "kategorie_slug": "chairs-and-stools",
+      "quelle": "https://www.binni.biz/products/furniture/chairs-and-stools/",
+      "herstellertext": "Italo chairs bring out the timeless beauty of natural leather through its unique shape! This chair made of quality material offers excellent softness and comfort, and its thin iron legs make it more attractive.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/08/castle-line-italo-stoel-in-2-kleuren-in-pu.png",
+          "lokal": "Herstellermaterial/Binni/bilder/chairs-and-stools/binni_chairs-and-stools_castle-line-italo-stoel-in-2-kleuren-in-pu.png"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/08/1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/chairs-and-stools/binni_chairs-and-stools_1.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Rita",
+      "kategorie": "Stühle und Hocker",
+      "kategorie_slug": "chairs-and-stools",
+      "quelle": "https://www.binni.biz/products/furniture/chairs-and-stools/",
+      "herstellertext": "If you want to add an elegant spirit to your modern ambiance then Rita chairs are the right ones! These extremely comfortable chairs with ergonomic shapes are created from quality material with black and cognac color make them easily combinable.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/1-4.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/chairs-and-stools/binni_chairs-and-stools_1-4.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Lawson",
+      "kategorie": "Stühle und Hocker",
+      "kategorie_slug": "chairs-and-stools",
+      "quelle": "https://www.binni.biz/products/furniture/chairs-and-stools/",
+      "herstellertext": "A fashionable sense of style expressed through the combination of materials meets the modern fluidity between round and angular shapes.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/232132313.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/chairs-and-stools/binni_chairs-and-stools_232132313.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/232323.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/chairs-and-stools/binni_chairs-and-stools_232323.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/112232323-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/chairs-and-stools/binni_chairs-and-stools_112232323-1.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Russell",
+      "kategorie": "Stühle und Hocker",
+      "kategorie_slug": "chairs-and-stools",
+      "quelle": "https://www.binni.biz/products/furniture/chairs-and-stools/",
+      "herstellertext": "Recalling the appealing style of the fifties, Russell is the perfect chair to relax, dine, or sit alone in the lounge while standing out with its black and white pattern.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2321111111233.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/chairs-and-stools/binni_chairs-and-stools_2321111111233.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/23wesdd.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/chairs-and-stools/binni_chairs-and-stools_23wesdd.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Oslo",
+      "kategorie": "Tische",
+      "kategorie_slug": "tables",
+      "quelle": "https://www.binni.biz/products/furniture/tables/",
+      "herstellertext": "Experience your moment with the comfort that the Oslo set offers with the ergonomically shaped chairs and the table with the preliminary structure to be in a convenient and new state of coffee that can be opened and can be combined with your space. The top part in front of natural marble adds a unique spirit to your environment.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/10/9-scaled.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_9-scaled.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Lusso",
+      "kategorie": "Tische",
+      "kategorie_slug": "tables",
+      "quelle": "https://www.binni.biz/products/furniture/tables/",
+      "herstellertext": "Lusso dining table inspired by nature gives a pleasant view to the dining environment! Made of natural wood and with a light brown shade, it fits perfectly with your environment. Soft shapes make this set unique and attractive. The quality leather used for this chair offers softness and comfort.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/2-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_2-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/1-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_1-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Hermes",
+      "kategorie": "Tische",
+      "kategorie_slug": "tables",
+      "quelle": "https://www.binni.biz/products/furniture/tables/",
+      "herstellertext": "Dining room set Hermes with modern lines gives elegance to your environment! Carefully designed down to the smallest detail and created with long-lasting culiat materials, the dining table with chairs offers comfort during family reunions. The champagne colored nightstand is very functional in both the interior and the upper part to place the accessories that decorate your room.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/tepezaria-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_tepezaria-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/tepezaria-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_tepezaria-2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/tepezaria-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_tepezaria-3.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Pera",
+      "kategorie": "Tische",
+      "kategorie_slug": "tables",
+      "quelle": "https://www.binni.biz/products/furniture/tables/",
+      "herstellertext": "Blended with the perfection of classic and modern, Pera table adds elegance in your dinning room! Unique table inspired by the amazing city of Istanbul as the home of ancient civilization.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/2333.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_2333.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/07/2-4.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_2-4.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Monica",
+      "kategorie": "Tische",
+      "kategorie_slug": "tables",
+      "quelle": "https://www.binni.biz/products/furniture/tables/",
+      "herstellertext": "Beautiful, elegant and full of charm, the table stand is furnished with a warm shade of velvet material that is virtuously combined with the white marble top!",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/111111.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_111111.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2222-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_2222-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/33333.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_33333.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Morgan",
+      "kategorie": "Tische",
+      "kategorie_slug": "tables",
+      "quelle": "https://www.binni.biz/products/furniture/tables/",
+      "herstellertext": "The classical banqueting table has been reinterpreted into a contemporary design composed of simple shapes and luxurious wood.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_1-3.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3-6.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_3-6.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_2-3.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Marble",
+      "kategorie": "Tische",
+      "kategorie_slug": "tables",
+      "quelle": "https://www.binni.biz/products/furniture/tables/",
+      "herstellertext": "Carefully designed and perfected down to the last detail of the fine marble and magnificent wood - the eloquent sophistication of this round table stands unrivaled.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-4.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_2-4.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-4.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_1-4.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3-7.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/tables/binni_tables_3-7.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Fit",
+      "kategorie": "Couchtische",
+      "kategorie_slug": "coffee-tables",
+      "quelle": "https://www.binni.biz/products/furniture/coffee-tables/",
+      "herstellertext": "Fit",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Fit.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/coffee-tables/binni_coffee-tables_Fit.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Wedge",
+      "kategorie": "Couchtische",
+      "kategorie_slug": "coffee-tables",
+      "quelle": "https://www.binni.biz/products/furniture/coffee-tables/",
+      "herstellertext": "Wedge",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Wedge.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/coffee-tables/binni_coffee-tables_Wedge.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Tectra",
+      "kategorie": "Couchtische",
+      "kategorie_slug": "coffee-tables",
+      "quelle": "https://www.binni.biz/products/furniture/coffee-tables/",
+      "herstellertext": "Tectra",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Tectra.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/coffee-tables/binni_coffee-tables_Tectra.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Lido",
+      "kategorie": "Couchtische",
+      "kategorie_slug": "coffee-tables",
+      "quelle": "https://www.binni.biz/products/furniture/coffee-tables/",
+      "herstellertext": "Lido",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Lido.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/coffee-tables/binni_coffee-tables_Lido.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Wedge",
+      "kategorie": "Couchtische",
+      "kategorie_slug": "coffee-tables",
+      "quelle": "https://www.binni.biz/products/furniture/coffee-tables/",
+      "herstellertext": "Bold and decorative, Wedge has an expressive style that explores circular shapes in mirror-like glass or deep dark wood.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-5.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/coffee-tables/binni_coffee-tables_1-5.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3-8.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/coffee-tables/binni_coffee-tables_3-8.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-5.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/coffee-tables/binni_coffee-tables_2-5.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Jeff",
+      "kategorie": "Couchtische",
+      "kategorie_slug": "coffee-tables",
+      "quelle": "https://www.binni.biz/products/furniture/coffee-tables/",
+      "herstellertext": "Designed to resemble an oversized tray, which makes a striking impression and entertains the eye with an amusing play in depth and light.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-6.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/coffee-tables/binni_coffee-tables_1-6.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-6.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/coffee-tables/binni_coffee-tables_2-6.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Valentino",
+      "kategorie": "Konsolen",
+      "kategorie_slug": "console-tables",
+      "quelle": "https://www.binni.biz/products/furniture/console-tables/",
+      "herstellertext": "Valentino",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Valentino-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_Valentino-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Orlando",
+      "kategorie": "Konsolen",
+      "kategorie_slug": "console-tables",
+      "quelle": "https://www.binni.biz/products/furniture/console-tables/",
+      "herstellertext": "Orlando",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Orlando.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_Orlando.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Lagos",
+      "kategorie": "Konsolen",
+      "kategorie_slug": "console-tables",
+      "quelle": "https://www.binni.biz/products/furniture/console-tables/",
+      "herstellertext": "Lagos",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Lagos1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_Lagos1.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Lagos",
+      "kategorie": "Konsolen",
+      "kategorie_slug": "console-tables",
+      "quelle": "https://www.binni.biz/products/furniture/console-tables/",
+      "herstellertext": "Lagos",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Lagos.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_Lagos.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Gerogeti",
+      "kategorie": "Konsolen",
+      "kategorie_slug": "console-tables",
+      "quelle": "https://www.binni.biz/products/furniture/console-tables/",
+      "herstellertext": "Gerogeti",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Gerogeti.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_Gerogeti.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Bentley",
+      "kategorie": "Konsolen",
+      "kategorie_slug": "console-tables",
+      "quelle": "https://www.binni.biz/products/furniture/console-tables/",
+      "herstellertext": "Bentley",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Bentley.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_Bentley.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Bronze",
+      "kategorie": "Konsolen",
+      "kategorie_slug": "console-tables",
+      "quelle": "https://www.binni.biz/products/furniture/console-tables/",
+      "herstellertext": "Sophisticated materials, like the uniquely textured marble, metallic lacquered legs, and polished wood, come together to create a refined stage for your adornments.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-7.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_2-7.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3-9.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_3-9.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-8.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_1-8.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Lang",
+      "kategorie": "Konsolen",
+      "kategorie_slug": "console-tables",
+      "quelle": "https://www.binni.biz/products/furniture/console-tables/",
+      "herstellertext": "Minimal and almost futuristic the Lang console rests on thin metal blades, while the shiny wood polish transmits a stately classic atmosphere.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-9.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_1-9.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-8.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_2-8.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3-10.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/console-tables/binni_console-tables_3-10.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Sideboards",
+      "kategorie": "Sideboards",
+      "kategorie_slug": "bookcasesandsideboards",
+      "quelle": "https://www.binni.biz/products/furniture/bookcasesandsideboards/",
+      "herstellertext": "Sideboards",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/DSC08273.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_DSC08273.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/DSC08277.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_DSC08277.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Lusso",
+      "kategorie": "Sideboards",
+      "kategorie_slug": "bookcasesandsideboards",
+      "quelle": "https://www.binni.biz/products/furniture/bookcasesandsideboards/",
+      "herstellertext": "Classic style Lusso sideboard made of natural wood makes your space extremely pleasant. The minimal design created on the doors of this nightstand adds to its beauty and makes it more special. The small, curved legs stand out, making it more attractive, while adding a unique spirit to your environment.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/6.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_6.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/1-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_1-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/3-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_3-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/4.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_4.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Angelo",
+      "kategorie": "Sideboards",
+      "kategorie_slug": "bookcasesandsideboards",
+      "quelle": "https://www.binni.biz/products/furniture/bookcasesandsideboards/",
+      "herstellertext": "Its sleek and wide contour makes Angelo the perfect closet for spacious rooms in which its rhythmic wood textures and natural color can be easily noticed and admired!",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/aaaaaa.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_aaaaaa.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/Untitled-1-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_Untitled-1-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/11111.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_11111.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Darren",
+      "kategorie": "Sideboards",
+      "kategorie_slug": "bookcasesandsideboards",
+      "quelle": "https://www.binni.biz/products/furniture/bookcasesandsideboards/",
+      "herstellertext": "The apparent simplicity of Darren and its rational, authentic design conceal a piece that is far more complicated and intricately structured than meets the eye.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-12.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_1-12.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-10.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_2-10.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3-12.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/bookcasesandsideboards/binni_bookcasesandsideboards_3-12.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "West",
+      "kategorie": "Accessoires",
+      "kategorie_slug": "accessories",
+      "quelle": "https://www.binni.biz/products/furniture/accessories/",
+      "herstellertext": "The animal print embellished on this cubic stool is what makes this piece pop and liven up the ambience with a 70’s touch",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-11.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/accessories/binni_accessories_2-11.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-13.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/accessories/binni_accessories_1-13.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Overby",
+      "kategorie": "Accessoires",
+      "kategorie_slug": "accessories",
+      "quelle": "https://www.binni.biz/products/furniture/accessories/",
+      "herstellertext": "Pleasing to the touch and charming to the eye, Overby is a sophisticated tray made out of the most luxurious leather in a deep black shade.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3-13.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/accessories/binni_accessories_3-13.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-14.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/accessories/binni_accessories_1-14.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-12.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/accessories/binni_accessories_2-12.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Valentino",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "Valentino",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Valentino-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_Valentino-1.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Owen",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "Owen",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Owen-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_Owen-1.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Mondrian",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "Mondrian",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/02/Mondrian-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_Mondrian-1.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Elda",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "With elegant look made for itself with its simplicity! Dominated by dark colors and details of natural wood, this modern room offers spiritual comfort where comfort is not lacking in any way.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/1-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_1-2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/5-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_5-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/2-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_2-2.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Opera",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "Opera bedroom reflects modern, practical and minimalist style created with imagination and a lot of love! Dominated by dark yet sweet, the rich black hue in the soft material is what accentuates the textures of the bed, creating a bold atmosphere in your bedroom. On the other side of it stands the glossy black closet that made your space more attractive.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/1-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_1-1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/4-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_4-1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/2-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_2-1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/3-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_3-1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Daytona",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "Daytona bedroom represents the modern style created with imagination and a lot of love! Dominated by sweet and rich shades, they give life to your space, emphasizing the textures of the bed and the sides that create a practical space for your personal things. On the other side of it stands the closet wrapped in nude nuance material that shines and reflects clarity.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_3.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_2.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/12/5.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_5.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Morena",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "With elegant views do for themselves with the simplicity and details it contains! The bed with magnificent structure made of natural wood and soft material with gray shade is easily combined with other accessories. Cabinets, bedside tables and mirrors are made of wood with white nuns and light brown details that reflect the clarity in your environment.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/7.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_7.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_2.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_3.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/11/4.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_4.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Otello",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "Otello bedroom represents the modern, practical and minimalist style created with imagination and a lot of love. Dominated by dark but sweet colors, the rich gray hue in the soft material is what emphasizes the textures of the bed and the sides, creating a warm atmosphere in the room. On the other side of it stands the closet covered with mirrors, which gives a larger view of the room.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/dcc726ebe6fe50a1d351569962d86118.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_dcc726ebe6fe50a1d351569962d86118.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/c3f3ae4298842818a775c25a34235d15.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_c3f3ae4298842818a775c25a34235d15.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Hermes",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "The unique design of the Hermes bedroom is instructive in modern and classic style, if they come together they create a unique look in your space. This room is worked in detail with high quality and durable wood. What stands out most are the curved legs which thus become more elegant and attractive.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/dhoma-e-gjumit-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_dhoma-e-gjumit-2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/dhoma-e-gjumit-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_dhoma-e-gjumit-1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/dhoma-e-gjumit-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_dhoma-e-gjumit-3.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Lima",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "The elegant and unique Lima bedroom captivates us with its dynamic color and design! The soft material and magnificent structure of quality brown wood, comes in the perfect combination with the closet for your wardrobe. Enough space in this closet make it practical and usable.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/lima1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_lima1.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/lima2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_lima2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/09/lima3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_lima3.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Leo",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "The majestic yet soft frame gives a grandiose introduction to the comfortable bed, followed by calm and spiritually soothing colors.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/5-2.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_5-2.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/7.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_7.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/6.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_6.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/8.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_8.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Massimo",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "Dominated by dark but sweet colors, the rich shade of blue emphasizes the warm tint of polished wooden legs, evoking classy elegance in this contemporary design.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_1-1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3-4.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_3-4.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_2-1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/4-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_4-1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Kids Bedroom",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "Children's room that gives comfort and private space to your loved ones! The quality material and the perfect combination between natural wood and sweet yellow helps to calm and concentrate the child. The closet with enough space to place clothes, as well as the small bedside table near the bed made this set usable. The desk is the one he needs most when he is finishing homework.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/10/kidsss.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_kidsss.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/10/kidsso.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_kidsso.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/10/kids.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_kids.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Monica",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "Sed consectetur velit lectus, quis molestie nisi mattis vel. Pellentesque at efficitur elit, ac feugiat urna. Morbi vel mollis lorem. Quisque vel dapibus elit.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-18.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_1-18.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-15.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_2-15.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/3-15.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_3-15.jpg"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/4-3.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_4-3.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Alvin",
+      "kategorie": "Betten",
+      "kategorie_slug": "beds",
+      "quelle": "https://www.binni.biz/products/furniture/beds/",
+      "herstellertext": "The perfect combination of classic and contemporary elements extends to all the details of the Alvin bedroom. Bedding and chairs with decorative stitches remind us of the romantic style",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/05/1-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_1-1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/05/2-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_2-1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        },
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/05/3-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/beds/binni_beds_3-1.jpg",
+          "lokal_unsicher": "Gleicher Dateiname in mehreren Upload-Ordnern; lokale Kopie zeigt nur eines davon"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Wisp Relief",
+      "kategorie": "Teppiche",
+      "kategorie_slug": "rugs",
+      "quelle": "https://www.binni.biz/products/furniture/rugs/",
+      "herstellertext": "The bold expression of the curved lines and their variating thickness contribute to a beautiful three dimensional relief and entertaining design.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/1-17.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/rugs/binni_rugs_1-17.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Ipanema",
+      "kategorie": "Teppiche",
+      "kategorie_slug": "rugs",
+      "quelle": "https://www.binni.biz/products/furniture/rugs/",
+      "herstellertext": "With a macro pattern reminiscent of Roberto Burle Marx’s famous pattern of the beach of Ipanema, the carpet recalls the soft lines typical of the Sixties.",
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2020/04/2-14.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/rugs/binni_rugs_2-14.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Tribeca",
+      "kategorie": "Matratzen",
+      "kategorie_slug": "mattres",
+      "quelle": "https://www.binni.biz/products/mattres/",
+      "herstellertext": null,
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/08/Tribeca.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/mattres/binni_mattres_Tribeca.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Switzerland Premium Plus",
+      "kategorie": "Matratzen",
+      "kategorie_slug": "mattres",
+      "quelle": "https://www.binni.biz/products/mattres/",
+      "herstellertext": null,
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/08/Switzerland_Premium_Plus.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/mattres/binni_mattres_Switzerland_Premium_Plus.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Soho House",
+      "kategorie": "Matratzen",
+      "kategorie_slug": "mattres",
+      "quelle": "https://www.binni.biz/products/mattres/",
+      "herstellertext": null,
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/08/Soho_House.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/mattres/binni_mattres_Soho_House.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Adoring Night",
+      "kategorie": "Matratzen",
+      "kategorie_slug": "mattres",
+      "quelle": "https://www.binni.biz/products/mattres/",
+      "herstellertext": null,
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/08/Screenshot-2025-08-13-at-10.47.22.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/mattres/binni_mattres_Screenshot-2025-08-13-at-10.47.22.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Royalty",
+      "kategorie": "Matratzen",
+      "kategorie_slug": "mattres",
+      "quelle": "https://www.binni.biz/products/mattres/",
+      "herstellertext": null,
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/08/Royalty-1.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/mattres/binni_mattres_Royalty-1.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Regency",
+      "kategorie": "Matratzen",
+      "kategorie_slug": "mattres",
+      "quelle": "https://www.binni.biz/products/mattres/",
+      "herstellertext": null,
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/08/Regency.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/mattres/binni_mattres_Regency.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Mercer",
+      "kategorie": "Matratzen",
+      "kategorie_slug": "mattres",
+      "quelle": "https://www.binni.biz/products/mattres/",
+      "herstellertext": null,
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/08/Mercer.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/mattres/binni_mattres_Mercer.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Cobalt Euro",
+      "kategorie": "Matratzen",
+      "kategorie_slug": "mattres",
+      "quelle": "https://www.binni.biz/products/mattres/",
+      "herstellertext": null,
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/08/Cobalt_Euro.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/mattres/binni_mattres_Cobalt_Euro.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Bowery",
+      "kategorie": "Matratzen",
+      "kategorie_slug": "mattres",
+      "quelle": "https://www.binni.biz/products/mattres/",
+      "herstellertext": null,
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/08/Bowery.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/mattres/binni_mattres_Bowery.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    },
+    {
+      "modell": "Blue Lagoon",
+      "kategorie": "Matratzen",
+      "kategorie_slug": "mattres",
+      "quelle": "https://www.binni.biz/products/mattres/",
+      "herstellertext": null,
+      "bilder": [
+        {
+          "url": "https://www.binni.biz/wp-content/uploads/2025/08/Blue_Lagoon.jpg",
+          "lokal": "Herstellermaterial/Binni/bilder/mattres/binni_mattres_Blue_Lagoon.jpg"
+        }
+      ],
+      "merkmale_aus_bild": null
+    }
+  ],
+  "kollektionen": [
+    {
+      "name": "Sierra 2019",
+      "bild": "https://www.binni.biz/wp-content/uploads/2020/04/single.jpg",
+      "quelle": "https://www.binni.biz/collections/",
+      "hinweis": "Seite im Menü auskommentiert, Inhalt nur Titelbild"
+    },
+    {
+      "name": "Wofla 2019",
+      "bild": "https://www.binni.biz/wp-content/uploads/2020/04/collection-2.jpg",
+      "quelle": "https://www.binni.biz/collections/",
+      "hinweis": "Seite im Menü auskommentiert, Inhalt nur Titelbild"
+    }
+  ],
+  "auffaelligkeiten": [
+    "Küchen haben keinen Herstellertext, keine Maße, Materialien, Farben oder Preise – nur Name + Bild.",
+    "Mehrere Modellnamen zeigen optisch verschiedene Küchen: Livio (2), Klea (bis 4), Irena (3), Victoria (2).",
+    "Bild \"laguna_kuzhine-1.jpg\" ist auf der Seite mit \"Klea\" beschriftet; \"klea_kuzhine-2.jpg\" zeigt dieselbe Ausstellung wie Naldo.",
+    "Die Bilder 2020/04/11.jpg (Victoria) und 2020/04/4.jpg (Maura) fehlten lokal wegen Namensgleichheit; jetzt als binni_kitchen_2020-04_11.jpg und binni_kitchen_2020-04_4.jpg gespeichert.",
+    "Stone Surface: 14 Bilder ohne Sortennamen; ein Bild ist ein leerer Platzhalter.",
+    "Möbel: Dateinamen deuten bei einigen Stücken auf Fremdhersteller hin (siehe fremdhersteller_indizien). Das ist nur ein Indiz.",
+    "Kategorie \"Wardrobes\" (Slug coffee-tables-2) ist leer.",
+    "Viele Möbelmodelle tragen Namen, die auch bei anderen Herstellern vorkommen; Markenrechte vor Nutzung prüfen."
+  ],
+  "fremdhersteller_indizien": [
+    {
+      "modell": "Art Nouveau",
+      "kategorie": "Sofas",
+      "indiz": "Dateiname mit Hash-Präfix \"…-art_nouveau_\" (typisch für übernommene Herstellerbilder)",
+      "url": "https://www.binni.biz/wp-content/uploads/2020/11/cf07c-art_nouveau_4.jpg"
+    },
+    {
+      "modell": "Art Nouveau",
+      "kategorie": "Sofas",
+      "indiz": "Dateiname mit Hash-Präfix \"…-art_nouveau_\" (typisch für übernommene Herstellerbilder)",
+      "url": "https://www.binni.biz/wp-content/uploads/2020/11/9cca2-art_nouveau_5.jpg"
+    },
+    {
+      "modell": "Art Nouveau",
+      "kategorie": "Sofas",
+      "indiz": "Dateiname mit Hash-Präfix \"…-art_nouveau_\" (typisch für übernommene Herstellerbilder)",
+      "url": "https://www.binni.biz/wp-content/uploads/2020/11/16343-art_nouveau_6.jpg"
+    },
+    {
+      "modell": "Master Familias",
+      "kategorie": "Sessel",
+      "indiz": "Dateiname enthält \"materfamilias\" (mögliche Fremdmarke)",
+      "url": "https://www.binni.biz/wp-content/uploads/2020/11/5cc80-materfamilias_poltroncina_3.jpg"
+    },
+    {
+      "modell": "Italo",
+      "kategorie": "Stühle und Hocker",
+      "indiz": "Dateiname enthält \"castle-line\" (mögliche Fremdmarke)",
+      "url": "https://www.binni.biz/wp-content/uploads/2020/08/castle-line-italo-stoel-in-2-kleuren-in-pu.png"
+    }
+  ],
+  "fragen_an_binni": [
+    "Vollständige Modellliste Küchen 2026 mit eindeutiger Bildzuordnung (Livio, Klea, Irena, Victoria zeigen mehrere Küchen).",
+    "Je Modell: Frontmaterial (Lack, Furnier, Laminat, Fenix, Glas), Oberfläche (matt/glänzend), Stärke, Kantenausführung.",
+    "Farb- und Dekorkarte je Modell mit Codes (RAL/NCS/eigene), inkl. Holzfurniere und Mehrpreisgruppen.",
+    "Griffvarianten (grifflos/Griffleiste/Griffmulde/Knopf), Farben der Profile.",
+    "Korpus: Material, Stärke, Farbe, Rückwand, Emissionsklasse (E1/E0,5), Nachweise EN 14749 / EN 16122.",
+    "Rastermaße: Breiten, Höhen (Sockel, Unterschrank, Hochschrank), Tiefen, Arbeitshöhen; verfügbare Sonderanfertigung.",
+    "Beschläge: Hersteller (Blum, Hettich, Grass?), Auszüge, Dämpfung, Garantie.",
+    "Stone Surface: Sortenliste mit Namen, Herkunft, Gesteinsart, Oberfläche (poliert/gebürstet/geledert), Stärken, Plattenformate, Kantenprofile, Pflege, Fleckschutz.",
+    "Ist Stein als Insel-Monolith, Rückwand, Waschtisch, Tischplatte frei kombinierbar? Mindest-/Maximalmaße, Fugenbild.",
+    "Preise: Händler-EK und UVP je Modell/Preisgruppe, Stein pro m² bzw. lfm, Fracht nach Vorarlberg, Zoll/EUR-1, Verpackung.",
+    "Lieferzeit ab Bestellung, Liefertermin-Treue, Montageanleitung, Ersatzteile, Reklamationsweg.",
+    "Garantie und Gewährleistung, Haftung bei Transportschäden.",
+    "Möbel: Welche Stücke sind Eigenfertigung, welche Handelsware anderer Marken? Darf Platzhirsch sie verkaufen und abbilden?",
+    "Möbel: Maße, Bezüge, Materialien, Preise, Lieferzeiten je Modell.",
+    "Bildrechte: schriftliche Freigabe für Web, Social, Print und KI-Visualisierung; Originale in hoher Auflösung, Freisteller, Fotografen-Credits.",
+    "CAD-/Planungsdaten: Kataloge für Planungssoftware (z. B. pCon, Winner, KPS), 3D-Modelle, Texturen der Fronten und Steine für den Konfigurator.",
+    "Gerätepartner: werden Elektrogeräte mitgeliefert? Welche Marken?",
+    "Exklusivität für Vorarlberg/Bodensee und Mindestabnahme."
+  ]
+}

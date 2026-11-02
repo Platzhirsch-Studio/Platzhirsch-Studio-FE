@@ -1,0 +1,117 @@
+{
+  "_hinweis": "Vorschlag für src/messages/*.json (Namespace 'payments'). Heute stehen die Texte deutsch in den Komponenten (Gutschein-Seite ist DE-only). Übernahme durch das i18n-Team; Quelle: src/components/Payments/*, src/app/[locale]/zahlung/**, src/components/Gutschein/VoucherSection.js. Stand 28.10.2026.",
+  "payments": {
+    "kauf": {
+      "titel": "Gutschein kaufen",
+      "wert": "Wert je Gutschein",
+      "wertHinweis": "Ab {min} €, in ganzen Euro.",
+      "eigenerBetrag": "Eigener Betrag",
+      "stueckzahl": "Stückzahl",
+      "stueckzahlHinweis": "Online bis {max} Stück. Für Firmengeschenke in größerer Zahl gibt es die Anfrage weiter unten.",
+      "widmung": "Widmung",
+      "nameAufGutschein": "Name auf dem Gutschein",
+      "grusstext": "Grußtext",
+      "zustellung": "Zustellung und Rechnung",
+      "zustellungText": "Der Gutschein kommt nach bestätigter Zahlung als PDF an Ihre E-Mail-Adresse. Sie drucken ihn aus oder leiten ihn weiter.",
+      "emailLabel": "E-Mail für den Gutschein",
+      "firmaHinweis": "Für die Rechnung, die Rechnungsadresse fragt die Bezahlseite ab.",
+      "bestellung": "Ihre Bestellung",
+      "zeile": "{anzahl} × Gutschein zu {betrag}",
+      "versand": "Zustellung als PDF per E-Mail",
+      "gesamt": "Gesamtpreis inkl. USt",
+      "checkbox": "Ich akzeptiere die <terms>Gutscheinbedingungen</terms> und habe die <withdrawal>Widerrufsbelehrung</withdrawal> gelesen.",
+      "hinweisWiderruf": "Widerruf innerhalb von 14 Tagen ab Erhalt, solange der Gutschein nicht eingelöst ist.",
+      "hinweisRechnung": "Die Rechnung senden wir gesondert per E-Mail. Von Stripe erhalten Sie zusätzlich eine Zahlungsbestätigung.",
+      "hinweisStripe": "Bezahlt wird auf der Bezahlseite von Stripe. Kartendaten erreichen uns nicht.",
+      "button": "Zahlungspflichtig kaufen",
+      "buttonLaedt": "Weiter zur Bezahlseite …",
+      "fehlerBedingungen": "Bitte bestätigen Sie die Gutscheinbedingungen und die Widerrufsbelehrung.",
+      "fehlerGesamt": "Online bis {max} je Bestellung. Für mehr senden Sie uns bitte eine Anfrage.",
+      "fehlerBezahlseite": "Die Bezahlseite ist gerade nicht erreichbar. Bitte versuchen Sie es in einigen Minuten erneut oder rufen Sie uns an: +43 5574 46255.",
+      "anfrageLink": "Firmengeschenk oder mehr als zehn Stück? Gutschein anfragen",
+      "gesamtpreis": "Gesamtpreis",
+      "gesamtpreisEinzweck": "Gesamtpreis inkl. USt",
+      "ustHinweisMehrzweck": "Die Umsatzsteuer wird bei der Einlösung berechnet."
+    },
+    "schritte": [
+      {
+        "titel": "Gutschein wählen",
+        "text": "Wert, Motiv und Widmung festlegen. Den Gesamtpreis sehen Sie vor dem Kauf."
+      },
+      {
+        "titel": "Bezahlen",
+        "text": "Auf der Bezahlseite von Stripe, mit den dort angezeigten Zahlungsarten wie Karte oder Wallet."
+      },
+      {
+        "titel": "PDF per E-Mail",
+        "text": "Nach bestätigter Zahlung kommt der Gutschein als PDF. Die Rechnung senden wir gesondert."
+      }
+    ],
+    "erfolg": {
+      "bezahltTitel": "Danke, die Zahlung ist angekommen",
+      "bezahltGutschein": "{was}: Das PDF ist per E-Mail an Sie unterwegs. Die Rechnung senden wir gesondert.",
+      "bezahltAnzahlung": "{was} zu Auftrag {auftrag} ist bestätigt. Wir weisen sie auf der Rechnung aus.",
+      "ausstehendTitel": "Danke, Ihre Zahlung ist unterwegs",
+      "ausstehend": "{was}: Bei Lastschrift dauert die Bestätigung einige Werktage.",
+      "fehlgeschlagenTitel": "Die Zahlung ist nicht durchgegangen",
+      "wartenTitel": "Einen Moment bitte",
+      "warten": "{was}: Wir bestätigen die Zahlung gerade. Das dauert meist nur wenige Sekunden.",
+      "neutralTitel": "Danke für Ihren Besuch",
+      "testmodus": "Testmodus: Es wurde kein echtes Geld bewegt.",
+      "showroom": "Wir freuen uns auf Ihren Besuch im Showroom in Lochau, Landstraße 11.",
+      "mailFehlgeschlagen": "{was}: Die E-Mail mit dem PDF ist noch nicht verschickt. Wir kümmern uns darum und melden uns bei Ihnen, Sie erreichen uns auch unter +43 5574 46255."
+    },
+    "abbruch": {
+      "titel": "Die Zahlung wurde nicht abgeschlossen",
+      "text": "Es wurde nichts abgebucht. Eine offene Bestellung ohne Zahlung verfällt von selbst.",
+      "zurueckGutschein": "Zurück zu den Gutscheinen",
+      "zurueckAnzahlung": "Zurück zur Anzahlung"
+    },
+    "anzahlung": {
+      "titel": "Anzahlung zu Auftrag {auftrag}",
+      "offen": "Wie besprochen: Hier zahlen Sie die Anzahlung zu Ihrem Auftrag. Die Zahlung läuft über die Bezahlseite von Stripe.",
+      "bezahlt": "Diese Anzahlung ist bezahlt. Danke.",
+      "abgelaufen": "Dieser Link ist nicht mehr gültig. Bitte melden Sie sich bei uns, wir senden Ihnen gerne einen neuen.",
+      "button": "Anzahlung bezahlen",
+      "betrag": "Anzahlung inkl. USt",
+      "gueltigBis": "Link gültig bis",
+      "rechnung": "Die Anzahlung weisen wir auf der Rechnung zu Ihrem Auftrag aus. Von Stripe erhalten Sie eine Zahlungsbestätigung.",
+      "inBearbeitung": "Die letzte Zahlung wird gerade verarbeitet. Bitte versuchen Sie es in einigen Minuten erneut."
+    },
+    "widerruf": {
+      "titel": "Vertrag widerrufen",
+      "lead": "Sie haben einen Gutschein online gekauft und möchten den Vertrag widerrufen? Innerhalb von 14 Tagen ab Erhalt geht das ohne Angabe von Gründen, solange der Gutschein nicht eingelöst ist.",
+      "bestellung": "Bestellnummer oder Gutscheincode",
+      "button": "Widerruf bestätigen",
+      "eingegangenTitel": "Ihr Widerruf ist eingegangen",
+      "eingegangen": "Eingang am {zeit}, Eingangsnummer {id}. Die Bestätigung mit Ihren Angaben kommt per E-Mail. Wir zahlen den Betrag spätestens binnen 14 Tagen über das ursprüngliche Zahlungsmittel zurück.",
+      "alternativ": "Sie können auch per E-Mail an info@platzhirsch.studio oder per Brief an Landstraße 11, 6911 Lochau widerrufen."
+    },
+    "footerLink": "Vertrag widerrufen",
+    "gueltigkeit": {
+      "unbefristet": {
+        "druck": "Gültig ohne Ablaufdatum",
+        "titel": "Ohne Ablaufdatum",
+        "text": "Gekaufte Gutscheine gelten unbefristet."
+      },
+      "dreissigJahre": {
+        "druck": "Einlösbar innerhalb der gesetzlichen Frist von 30 Jahren",
+        "titel": "Lange einlösbar",
+        "text": "Gekaufte Gutscheine sind innerhalb der gesetzlichen Frist von 30 Jahren einlösbar."
+      },
+      "offen": {
+        "druck": "Gültigkeit laut Gutscheinbedingungen",
+        "titel": "Gültigkeit",
+        "text": "Wie lange Gutscheine gelten, steht in den Gutscheinbedingungen."
+      }
+    },
+    "widerrufMail": {
+      "ohneZuordnung": [
+        "Guten Tag,",
+        "wir bestätigen den Eingang eines Widerrufs, der am {zeit} mit dieser E-Mail-Adresse abgegeben wurde (Eingangsnummer {id}).",
+        "Wir ordnen ihn der Bestellung zu und melden uns, falls wir dafür noch etwas von Ihnen brauchen.",
+        "Falls Sie keinen Widerruf abgegeben haben, können Sie diese Nachricht ignorieren."
+      ]
+    }
+  }
+}

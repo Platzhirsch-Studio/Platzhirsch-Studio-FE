@@ -1,0 +1,51 @@
+/* Bodensee-Licht (N4) – native Range-Regler im Stil der Design-Bibel:
+   1 px Haarlinie, Ink-Daumen, Trefferfläche 44 px Höhe, Fokusring 2 px + Abstand. */
+.range {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 44px;
+  background: transparent;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+.range:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.range::-webkit-slider-runnable-track {
+  height: 4px;
+  background: var(--color-pebble);
+}
+.range::-moz-range-track {
+  height: 4px;
+  background: var(--color-pebble);
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  margin-top: -12px;
+  background: var(--color-ink);
+  border: 3px solid var(--color-paper);
+  box-shadow: 0 0 0 1px var(--color-ink);
+}
+.range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: var(--color-ink);
+  border: 3px solid var(--color-paper);
+  box-shadow: 0 0 0 1px var(--color-ink);
+}
+
+/* Bühne: mobil klebt die 3D-Ansicht unter dem Header, damit man beim Ziehen
+   das Licht sieht; ab Tablet steht sie neben den Reglern. */
+.buehne {
+  position: sticky;
+  top: var(--header-h, 56px);
+  z-index: 20;
+}
+@media (min-width: 1024px) {
+  .buehne {
+    top: calc(var(--header-h, 72px) + 24px);
+  }
+}

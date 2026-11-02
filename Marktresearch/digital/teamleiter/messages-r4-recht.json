@@ -1,0 +1,36 @@
+{
+  "_uebernommen": "R5-i18n, 26.10.2026: ReviewNotice.* per merge.mjs übernommen (12 Blätter, 0 Konflikte). Cookies.intro/thirdCountryNotice weiter ausgeschlossen (--exclude, Anwalt).",
+  "_meta": {
+    "paket": "R4-recht-consent",
+    "stand": "2026-10-26",
+    "hinweis": "Neue UI-Texte für src/messages/*.json (Übernahme Runde 5 durch R4-i18n/Integrator per Deep-Merge). Bis dahin liest src/components/Legal/ReviewNotice.js dieselben Texte aus REVIEW_NOTICE_FALLBACK (t.has). NICHT enthalten: Cookies.intro und Cookies.thirdCountryNotice (DPF/SCC) – das ist Rechtstext, er liegt zur Freigabe in Marktresearch/recht/anwalt-vorschau.md, Abschnitt 5."
+  },
+  "de": {
+    "ReviewNotice": {
+      "label": "Hinweis zu Bewertungen",
+      "summary": "Wir zeigen Google-Bewertungen. Google prüft nicht, ob ein Kauf stattfand.",
+      "link": "Bewertungen erscheinen öffentlich auf Google. Google prüft nicht, ob ein Kauf stattfand. Für eine Bewertung gibt es von uns keine Gegenleistung."
+    }
+  },
+  "en": {
+    "ReviewNotice": {
+      "label": "About reviews",
+      "summary": "We show Google reviews. Google does not check whether a purchase took place.",
+      "link": "Reviews appear publicly on Google. Google does not check whether a purchase took place. We offer nothing in return for a review."
+    }
+  },
+  "fr": {
+    "ReviewNotice": {
+      "label": "À propos des avis",
+      "summary": "Nous affichons des avis Google. Google ne vérifie pas si un achat a eu lieu.",
+      "link": "Les avis sont publiés sur Google. Google ne vérifie pas si un achat a eu lieu. Nous n’offrons aucune contrepartie pour un avis."
+    }
+  },
+  "it": {
+    "ReviewNotice": {
+      "label": "Nota sulle recensioni",
+      "summary": "Mostriamo recensioni Google. Google non verifica se è avvenuto un acquisto.",
+      "link": "Le recensioni sono pubblicate su Google. Google non verifica se è avvenuto un acquisto. Non offriamo nulla in cambio di una recensione."
+    }
+  }
+}

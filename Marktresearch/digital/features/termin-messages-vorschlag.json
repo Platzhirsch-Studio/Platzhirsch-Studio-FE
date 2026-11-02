@@ -1,0 +1,1027 @@
+{
+  "_hinweis": "Texte Online-Kalender (/[locale]/termin), erzeugt aus src/lib/booking/copy.js (messagesCopy) am 29.10.2026. Nachbessern: Double-Opt-in, Videoraum-Link erst 15 min vor Beginn, Widerruf in der Einwilligung, Testraum ohne Herstellername, Kurzform Handy-Kalender, Einstieg /beratung, Hausregeln der Messages. Übernommen als Namespace termin.* in src/messages/{de,en,fr,it}.json. Reine Testtexte (TEST_ONLY_KEYS: testBanner, outboxLink, testraum, done.devConfirm, done.meetTest, mail.test) bleiben nur in copy.js. tests/unit/booking-termin.test.mjs prüft Gleichheit.",
+  "de": {
+    "termin": {
+      "meta": {
+        "title": "Termin online buchen | Platzhirsch Home Living",
+        "description": "Beratung im Studio in Lochau, per Video oder bei Ihnen vor Ort: Tag und Uhrzeit online wählen. Harald Menghin skizziert erste Ideen von Hand."
+      },
+      "eyebrow": "Termin",
+      "title": "Nehmen Sie sich Zeit. Wir tun es auch.",
+      "lead": "Wählen Sie, wie und wann Sie uns treffen möchten. Im Studio in Lochau, per Video oder bei Ihnen zu Hause.",
+      "usp": "Harald Menghin skizziert im Gespräch erste Ideen von Hand. Bringen Sie gern Grundriss, Fotos oder Maße mit.",
+      "off": {
+        "title": "Die Online-Buchung ist gerade nicht verfügbar",
+        "text": "Schreiben Sie uns über das Anfrageformular oder rufen Sie an. Wir melden uns mit einem Terminvorschlag.",
+        "cta": "Zum Anfrageformular",
+        "phone": "Anrufen: {phone}"
+      },
+      "stepOf": "Schritt {n} von {total}",
+      "steps": {
+        "art": "Wie möchten Sie uns treffen?",
+        "zeit": "Wann passt es Ihnen?",
+        "daten": "Wie erreichen wir Sie?",
+        "fertig": "Fertig"
+      },
+      "stepsShort": {
+        "art": "Art",
+        "zeit": "Zeit",
+        "daten": "Kontakt",
+        "fertig": "Fertig"
+      },
+      "write": {
+        "lead": "Lieber ohne festen Termin?",
+        "link": "Lieber schreiben",
+        "hint": "Im Anfrageformular beschreiben Sie Ihr Vorhaben, und wir melden uns bei Ihnen."
+      },
+      "tisch": {
+        "online": "Termin wählen",
+        "card": "Ihre Tischkarte",
+        "cardPlace": "Platzhirsch Home Living, Landstraße 11, Lochau",
+        "cardVideo": "Videoberatung, den Link erhalten Sie per E-Mail",
+        "cardVorOrt": "Bei Ihnen vor Ort"
+      },
+      "minutes": "{n} Minuten",
+      "arten": {
+        "studio": {
+          "title": "Im Studio in Lochau",
+          "text": "Mit Kaffee aus unserem Café. Sie sehen Stoffe, Materialien und Möbel im Original.",
+          "place": "Studio Lochau, Landstraße 11"
+        },
+        "video": {
+          "title": "Videoberatung",
+          "text": "Von zu Hause aus, im Browser, ohne App. Pläne und Muster zeigen wir am Bildschirm. Nichts wird aufgezeichnet.",
+          "place": "Videoberatung"
+        },
+        "vor_ort": {
+          "title": "Bei Ihnen vor Ort",
+          "text": "Wir sehen uns Räume, Licht und Umgebung an. Wenn Ihr Projekt es braucht, auch ein, zwei Tage.",
+          "place": "Bei Ihnen vor Ort"
+        },
+        "planung": {
+          "title": "Planungstermin zu einem Thema",
+          "text": "Für ein konkretes Vorhaben, zum Beispiel Küche oder Pool. Im Studio oder per Video.",
+          "place": "Planungstermin"
+        }
+      },
+      "anfrage": "Anfrage: Wir bestätigen Termin und Anfahrt persönlich.",
+      "thema": {
+        "legend": "Worum geht es?",
+        "options": {
+          "kueche": "Küche",
+          "wohnen": "Sofa und Wohnzimmer",
+          "ezarri": "Pool und Mosaik",
+          "licht": "Licht",
+          "yacht": "Yacht-Interieur",
+          "hotel": "Hotel und Objekt"
+        }
+      },
+      "modus": {
+        "legend": "Wo möchten Sie planen?",
+        "studio": "Im Studio in Lochau",
+        "video": "Per Video"
+      },
+      "zeit": {
+        "daysLegend": "Tag wählen",
+        "timesLegend": "Uhrzeit am {date}",
+        "tz": "Alle Zeiten in Ortszeit Lochau (Europe/Vienna).",
+        "tzOther": "Ihr Gerät zeigt eine andere Zeitzone ({zone}). Die Uhrzeiten unten gelten in Lochau.",
+        "prev": "Frühere Tage",
+        "next": "Weitere Tage",
+        "range": "{from} bis {to}",
+        "loading": "Freie Zeiten werden geladen …",
+        "none": "In diesem Zeitraum ist nichts frei. Sehen Sie sich die nächsten Tage an oder rufen Sie uns an.",
+        "error": "Die freien Zeiten konnten nicht geladen werden. Bitte versuchen Sie es noch einmal.",
+        "retry": "Erneut laden",
+        "free": "{n} frei",
+        "freeLong": "{n} Zeiten frei",
+        "freeLongOne": "1 Zeit frei",
+        "legendShort": "Zahl: freie Uhrzeiten · –: nicht buchbar",
+        "closed": "geschlossen",
+        "holiday": "Feiertag",
+        "full": "ausgebucht",
+        "past": "vorbei",
+        "later": "noch nicht buchbar",
+        "soon": "zu kurzfristig",
+        "chooseDay": "Wählen Sie zuerst einen Tag.",
+        "lead": "Frühestens 24 Stunden im Voraus. Kurzfristiger? Rufen Sie uns an: {phone}."
+      },
+      "daten": {
+        "vorname": "Vorname",
+        "nachname": "Nachname",
+        "email": "E-Mail",
+        "emailHint": "Hierhin schicken wir die Bestätigung und den Link zum Ändern.",
+        "telefon": "Telefon",
+        "telefonHintVideo": "Falls das Bild nicht durchkommt, rufen wir Sie an.",
+        "telefonHintVorOrt": "Für die Abstimmung der Anfahrt.",
+        "plzOrt": "PLZ und Ort",
+        "plzOrtHint": "Damit wir die Anfahrt planen können. Die genaue Adresse besprechen wir persönlich.",
+        "anliegen": "Ihr Anliegen",
+        "anliegenHint": "Zum Beispiel Raum, Zeitrahmen oder Stil. Höchstens 1000 Zeichen.",
+        "optional": "optional",
+        "upload": "Fotos, Grundriss oder Maße können Sie nach der Buchung direkt vom Handy schicken.",
+        "uploadOff": "Grundriss, Fotos oder Maße helfen uns. Bringen Sie mit, was Sie haben, oder zeigen Sie es im Videogespräch.",
+        "emailConfirm": "Den Link zur Bestätigung schicken wir an: {email}",
+        "consentLegend": "Einwilligung zur Videoberatung",
+        "consent": "Ich bin einverstanden, dass Bild und Ton während des Gesprächs live übertragen werden. Es wird nichts aufgezeichnet. Die Kamera kann ich jederzeit ausschalten. Die Einwilligung kann ich jederzeit widerrufen, etwa indem ich den Termin absage oder ins Studio wechsle.",
+        "consentHint": "Lieber ohne Video? Dann wählen Sie einen Termin im Studio oder rufen uns an.",
+        "privacy": "Wir verwenden Ihre Angaben nur für diesen Termin.",
+        "privacyLink": "Datenschutzerklärung",
+        "summary": "Ihre Auswahl",
+        "change": "Ändern"
+      },
+      "actions": {
+        "next": "Weiter",
+        "back": "Zurück",
+        "book": "Termin verbindlich buchen",
+        "request": "Termin anfragen",
+        "sending": "Wird gesendet …"
+      },
+      "errors": {
+        "summary": "Bitte prüfen Sie {n} Angaben.",
+        "summaryOne": "Bitte prüfen Sie eine Angabe.",
+        "art": "Bitte wählen Sie, wie Sie uns treffen möchten.",
+        "thema": "Bitte wählen Sie ein Thema.",
+        "modus": "Bitte wählen Sie, wo Sie planen möchten.",
+        "slot": "Bitte wählen Sie eine Uhrzeit.",
+        "vorname": "Bitte geben Sie Ihren Vornamen an.",
+        "nachname": "Bitte geben Sie Ihren Nachnamen an.",
+        "email": "Bitte geben Sie eine gültige E-Mail-Adresse an, z. B. name@beispiel.at.",
+        "telefon": "Bitte geben Sie eine Telefonnummer an (Ziffern, +, Leerzeichen).",
+        "plzOrt": "Bitte geben Sie PLZ und Ort an.",
+        "anliegen": "Bitte kürzen Sie Ihr Anliegen auf 1000 Zeichen.",
+        "consent": "Für die Videoberatung brauchen wir Ihre Einwilligung. Ohne Video geht es im Studio oder am Telefon.",
+        "slot_taken": "Diese Uhrzeit wurde gerade vergeben. Bitte wählen Sie eine andere.",
+        "outside_window": "Diese Uhrzeit ist nicht mehr buchbar. Bitte wählen Sie eine andere.",
+        "rate_limited": "Zu viele Versuche in kurzer Zeit. Bitte warten Sie einige Minuten oder rufen Sie uns an.",
+        "forbidden": "Die Anfrage wurde aus Sicherheitsgründen abgelehnt. Bitte laden Sie die Seite neu.",
+        "not_configured": "Die Online-Buchung ist gerade nicht verfügbar. Bitte nutzen Sie das Anfrageformular oder rufen Sie an.",
+        "generic": "Das hat nicht geklappt. Bitte versuchen Sie es noch einmal oder rufen Sie uns an: {phone}."
+      },
+      "done": {
+        "booked": "Ihr Termin ist gebucht",
+        "requested": "Ihre Terminanfrage ist bei uns",
+        "bookedText": "Wir freuen uns auf Sie. Die Bestätigung kommt per E-Mail an {email}.",
+        "requestedText": "Wir melden uns, um Termin und Anfahrt zu bestätigen. Bis dahin ist der Zeitraum für Sie vorgemerkt.",
+        "reference": "Referenz",
+        "when": "Wann",
+        "where": "Wo",
+        "what": "Terminart",
+        "ics": "In den Kalender eintragen (.ics)",
+        "manage": "Termin ändern oder absagen",
+        "manageNote": "Der Link ist persönlich und gilt bis zum Ende des Termins. Er steht auch in Ihrer E-Mail.",
+        "meet": "Zum Videoraum",
+        "meetNote": "Den Videoraum öffnen Sie ab 15 Minuten vor Beginn über den Link in Ihrer Bestätigungsmail. Sie warten kurz, bis wir Sie hereinholen. Ohne App, im Browser.",
+        "studioWay": "Landstraße 11, 6911 Lochau",
+        "route": "Route planen",
+        "usp": "Harald Menghin skizziert im Termin erste Ideen von Hand. Bringen Sie mit, was Sie haben: Grundriss, Fotos, Maße.",
+        "again": "Weiteren Termin buchen",
+        "pending": "Bitte bestätigen Sie Ihre E-Mail-Adresse",
+        "pendingText": "Wir haben Ihnen einen Link an {email} geschickt. Öffnen Sie ihn innerhalb von 30 Minuten, dann ist Ihr Termin gebucht. Bis dahin halten wir die Uhrzeit für Sie frei.",
+        "pendingTextRequest": "Wir haben Ihnen einen Link an {email} geschickt. Öffnen Sie ihn innerhalb von 30 Minuten, dann ist Ihre Anfrage bei uns. Bis dahin halten wir den Zeitraum für Sie frei.",
+        "pendingFix": "Adresse falsch? Korrigieren",
+        "pendingNoMail": "Keine E-Mail da? Sehen Sie bitte im Spam-Ordner nach oder rufen Sie uns an: {phone}.",
+        "meetLater": "Der Videoraum öffnet am {date} um {time} Uhr hier auf dieser Seite."
+      },
+      "manage": {
+        "metaTitle": "Termin verwalten | Platzhirsch Home Living",
+        "eyebrow": "Ihr Termin",
+        "title": "Termin ändern oder absagen",
+        "loading": "Ihr Termin wird geladen …",
+        "missing": "Dieser Link ist unvollständig. Öffnen Sie ihn bitte direkt aus der E-Mail.",
+        "invalid": "Dieser Link ist nicht gültig oder wurde durch eine Umbuchung ersetzt. Nehmen Sie den Link aus der neuesten E-Mail.",
+        "expired": "Dieser Termin liegt in der Vergangenheit. Für einen neuen Termin buchen Sie bitte erneut.",
+        "error": "Der Termin konnte nicht geladen werden. Bitte versuchen Sie es noch einmal oder rufen Sie uns an: {phone}.",
+        "status": {
+          "unbestaetigt": "Noch nicht bestätigt",
+          "bestaetigt": "Gebucht",
+          "angefragt": "Angefragt, wir bestätigen persönlich",
+          "storniert": "Abgesagt",
+          "abgelehnt": "Nicht möglich, wir melden uns"
+        },
+        "statusLabel": "Status",
+        "contact": "Kontakt",
+        "cancel": "Termin absagen",
+        "cancelConfirm": "Wirklich absagen? Der Termin wird freigegeben.",
+        "cancelYes": "Ja, absagen",
+        "cancelNo": "Nein, behalten",
+        "cancelled": "Ihr Termin ist abgesagt. Eine Bestätigung kommt per E-Mail.",
+        "reschedule": "Anderen Zeitpunkt wählen",
+        "rescheduleSave": "Auf diese Uhrzeit verschieben",
+        "rescheduled": "Ihr Termin ist verschoben. Die neue Bestätigung und ein neuer Link kommen per E-Mail. Der bisherige Link gilt nicht mehr.",
+        "tooLate": "Der Termin hat schon begonnen. Bitte rufen Sie uns an: {phone}.",
+        "newLink": "Neuer Link zum Verwalten"
+      },
+      "confirm": {
+        "metaTitle": "Termin bestätigen | Platzhirsch Home Living",
+        "eyebrow": "Ihr Termin",
+        "title": "Termin bestätigen",
+        "lead": "Ein Klick noch, dann ist Ihr Termin fest.",
+        "button": "Termin jetzt bestätigen",
+        "sending": "Wird bestätigt …",
+        "missing": "Dieser Link ist unvollständig. Öffnen Sie ihn bitte direkt aus der E-Mail.",
+        "invalid": "Dieser Bestätigungslink ist nicht gültig. Öffnen Sie ihn bitte direkt aus der neuesten E-Mail.",
+        "expired": "Der Link ist abgelaufen und die Uhrzeit wieder frei. Bitte wählen Sie einen neuen Termin.",
+        "taken": "Die Uhrzeit ist inzwischen nicht mehr frei. Bitte wählen Sie einen neuen Termin.",
+        "gone": "Dieser Termin wurde abgesagt.",
+        "already": "Ihr Termin war schon bestätigt.",
+        "error": "Das hat nicht geklappt. Bitte versuchen Sie es noch einmal oder rufen Sie uns an: {phone}."
+      },
+      "einstieg": {
+        "title": "Termin online wählen",
+        "text": "Tag und Uhrzeit direkt im Kalender: im Studio in Lochau, per Video oder bei Ihnen vor Ort. Lieber schreiben? Das Formular folgt gleich darunter.",
+        "cta": "Termin online wählen"
+      },
+      "mail": {
+        "subjectBooked": "Ihr Termin am {date} um {time} Uhr",
+        "subjectRequested": "Ihre Terminanfrage für {date}, {time} Uhr",
+        "subjectCancelled": "Ihr Termin am {date} ist abgesagt",
+        "subjectRescheduled": "Ihr Termin ist verschoben: {date}, {time} Uhr",
+        "subjectVerify": "Bitte bestätigen: Ihr Termin am {date} um {time} Uhr",
+        "hello": "Guten Tag {name},",
+        "booked": "Ihr Termin ist gebucht. Wir freuen uns auf Sie.",
+        "requested": "Danke für Ihre Anfrage. Wir melden uns, um Termin und Anfahrt zu bestätigen.",
+        "cancelled": "Ihr Termin ist abgesagt. Wenn Sie einen neuen Termin möchten, buchen Sie gern online oder rufen uns an.",
+        "rescheduled": "Ihr Termin ist verschoben. Der bisherige Link zum Verwalten gilt nicht mehr, hier ist der neue.",
+        "manage": "Termin ändern oder absagen:",
+        "meet": "Videoraum (öffnet 15 Minuten vor Beginn):",
+        "ics": "Die Kalenderdatei hängt an dieser E-Mail.",
+        "bye": "Herzliche Grüße\nIhr Team von Platzhirsch Home Living",
+        "verify": "Bitte bestätigen Sie Ihren Termin mit einem Klick auf den Link. Erst dann ist er gebucht.",
+        "verifyRequest": "Bitte bestätigen Sie Ihre Anfrage mit einem Klick auf den Link. Erst dann ist sie bei uns.",
+        "verifyButton": "Termin bestätigen",
+        "verifyNote": "Der Link gilt 30 Minuten. Bis dahin halten wir die Uhrzeit für Sie frei. Waren Sie das nicht? Dann ignorieren Sie diese E-Mail, es wird nichts gebucht.",
+        "meetLater": "Videoraum: Sie öffnen ihn ab 15 Minuten vor Beginn über den Link unten zum Ändern oder Absagen.",
+        "icsVideo": "Videoberatung. Den Videoraum öffnen Sie ab 15 Minuten vor Beginn über den Link in Ihrer Bestätigungsmail."
+      }
+    }
+  },
+  "en": {
+    "termin": {
+      "meta": {
+        "title": "Plan your visit online | Platzhirsch Home Living",
+        "description": "Consultation at our studio in Lochau, by video or at your home: choose a day and time online. Harald Menghin sketches first ideas by hand."
+      },
+      "eyebrow": "Your visit",
+      "title": "Take your time. So do we.",
+      "lead": "Choose how and when you would like to meet us. At the studio in Lochau, by video or at your home.",
+      "usp": "Harald Menghin sketches first ideas by hand during the conversation. Feel free to bring a floor plan, photos or measurements.",
+      "off": {
+        "title": "Online booking is not available right now",
+        "text": "Write to us using the enquiry form or give us a call. We will get back to you with a suggested time.",
+        "cta": "Go to the enquiry form",
+        "phone": "Call: {phone}"
+      },
+      "stepOf": "Step {n} of {total}",
+      "steps": {
+        "art": "How would you like to meet?",
+        "zeit": "When suits you?",
+        "daten": "How can we reach you?",
+        "fertig": "Done"
+      },
+      "stepsShort": {
+        "art": "Type",
+        "zeit": "Time",
+        "daten": "Details",
+        "fertig": "Done"
+      },
+      "write": {
+        "lead": "Prefer no fixed appointment?",
+        "link": "Prefer to write",
+        "hint": "Describe your project in the enquiry form and we will get back to you."
+      },
+      "tisch": {
+        "online": "Book a visit",
+        "card": "Your place card",
+        "cardPlace": "Platzhirsch Home Living, Landstraße 11, Lochau",
+        "cardVideo": "Video consultation, you will receive the link by e-mail",
+        "cardVorOrt": "At your place"
+      },
+      "minutes": "{n} minutes",
+      "arten": {
+        "studio": {
+          "title": "At the studio in Lochau",
+          "text": "With coffee from our café. You see fabrics, materials and furniture in person.",
+          "place": "Studio in Lochau, Landstraße 11"
+        },
+        "video": {
+          "title": "Video consultation",
+          "text": "From home, in your browser, no app needed. We show plans and samples on screen. Nothing is recorded.",
+          "place": "Video consultation"
+        },
+        "vor_ort": {
+          "title": "At your home",
+          "text": "We look at the rooms, the light and the surroundings. If your project needs it, for a day or two.",
+          "place": "At your home"
+        },
+        "planung": {
+          "title": "Planning session on one topic",
+          "text": "For a specific project, such as a kitchen or a pool. At the studio or by video.",
+          "place": "Planning session"
+        }
+      },
+      "anfrage": "Request: we confirm the date and travel in person.",
+      "thema": {
+        "legend": "What is it about?",
+        "options": {
+          "kueche": "Kitchen",
+          "wohnen": "Sofa and living room",
+          "ezarri": "Pool and mosaic",
+          "licht": "Lighting",
+          "yacht": "Yacht interior",
+          "hotel": "Hotel and contract"
+        }
+      },
+      "modus": {
+        "legend": "Where would you like to plan?",
+        "studio": "At the studio in Lochau",
+        "video": "By video"
+      },
+      "zeit": {
+        "daysLegend": "Choose a day",
+        "timesLegend": "Time on {date}",
+        "tz": "All times are local time in Lochau (Europe/Vienna).",
+        "tzOther": "Your device uses a different time zone ({zone}). The times below are Lochau time.",
+        "prev": "Earlier days",
+        "next": "More days",
+        "range": "{from} to {to}",
+        "loading": "Loading available times …",
+        "none": "Nothing is available in this period. Look at the following days or give us a call.",
+        "error": "The available times could not be loaded. Please try again.",
+        "retry": "Load again",
+        "free": "{n} free",
+        "freeLong": "{n} times available",
+        "freeLongOne": "1 time available",
+        "legendShort": "Number: free times · –: not available",
+        "closed": "closed",
+        "holiday": "public holiday",
+        "full": "fully booked",
+        "past": "past",
+        "later": "not yet bookable",
+        "soon": "too soon",
+        "chooseDay": "Please choose a day first.",
+        "lead": "At least 24 hours in advance. Sooner? Call us: {phone}."
+      },
+      "daten": {
+        "vorname": "First name",
+        "nachname": "Last name",
+        "email": "E-mail",
+        "emailHint": "We send the confirmation and the link to make changes here.",
+        "telefon": "Phone",
+        "telefonHintVideo": "If the video does not connect, we will call you.",
+        "telefonHintVorOrt": "To arrange the visit.",
+        "plzOrt": "Postcode and town",
+        "plzOrtHint": "So we can plan the journey. We discuss the exact address with you in person.",
+        "anliegen": "What it is about",
+        "anliegenHint": "For example room, time frame or style. Up to 1000 characters.",
+        "optional": "optional",
+        "upload": "After booking, you can send photos, a floor plan or measurements straight from your phone.",
+        "uploadOff": "A floor plan, photos or measurements help us. Bring what you have, or show it during the video call.",
+        "emailConfirm": "We will send the confirmation link to: {email}",
+        "consentLegend": "Consent to the video consultation",
+        "consent": "I agree that picture and sound are transmitted live during the conversation. Nothing is recorded. I can switch my camera off at any time. I can withdraw my consent at any time, for example by cancelling the appointment or switching to the studio.",
+        "consentHint": "Prefer no video? Choose an appointment at the studio or give us a call.",
+        "privacy": "We only use your details for this appointment.",
+        "privacyLink": "Privacy policy",
+        "summary": "Your choice",
+        "change": "Change"
+      },
+      "actions": {
+        "next": "Continue",
+        "back": "Back",
+        "book": "Reserve this time",
+        "request": "Request appointment",
+        "sending": "Sending …"
+      },
+      "errors": {
+        "summary": "Please check {n} entries.",
+        "summaryOne": "Please check one entry.",
+        "art": "Please choose how you would like to meet us.",
+        "thema": "Please choose a topic.",
+        "modus": "Please choose where you would like to plan.",
+        "slot": "Please pick a time.",
+        "vorname": "Please enter your first name.",
+        "nachname": "Please enter your last name.",
+        "email": "Please enter a valid e-mail address, e.g. name@example.com.",
+        "telefon": "Please enter a phone number (digits, +, spaces).",
+        "plzOrt": "Please enter your postcode and town.",
+        "anliegen": "Please shorten your message to 1000 characters.",
+        "consent": "We need your consent for the video consultation. Without video, we can meet at the studio or talk on the phone.",
+        "slot_taken": "This time has just been taken. Please choose another one.",
+        "outside_window": "This time can no longer be booked. Please choose another one.",
+        "rate_limited": "Too many attempts in a short time. Please wait a few minutes or give us a call.",
+        "forbidden": "The request was refused for security reasons. Please reload the page.",
+        "not_configured": "Online booking is not available right now. Please use the enquiry form or give us a call.",
+        "generic": "That did not work. Please try again or call us: {phone}."
+      },
+      "done": {
+        "booked": "Your appointment is booked",
+        "requested": "We have received your request",
+        "bookedText": "We look forward to seeing you. The confirmation is on its way to {email}.",
+        "requestedText": "We will get in touch to confirm the date and the visit. Until then, the time is reserved for you.",
+        "reference": "Reference",
+        "when": "When",
+        "where": "Where",
+        "what": "Type",
+        "ics": "Add to calendar (.ics)",
+        "manage": "Change or cancel the appointment",
+        "manageNote": "The link is personal and valid until the end of the appointment. You will also find it in your e-mail.",
+        "meet": "Go to the video room",
+        "meetNote": "You open the video room from 15 minutes before the start via the link in your confirmation e-mail. You wait briefly until we let you in. No app, in your browser.",
+        "studioWay": "Landstraße 11, 6911 Lochau, Austria",
+        "route": "Plan your route",
+        "usp": "Harald Menghin sketches first ideas by hand during the appointment. Bring what you have: floor plan, photos, measurements.",
+        "again": "Plan another visit",
+        "pending": "Please confirm your e-mail address",
+        "pendingText": "We have sent a link to {email}. Open it within 30 minutes and your appointment is booked. Until then, we hold the time for you.",
+        "pendingTextRequest": "We have sent a link to {email}. Open it within 30 minutes and your request reaches us. Until then, we hold the time for you.",
+        "pendingFix": "Wrong address? Correct it",
+        "pendingNoMail": "No e-mail? Please check your spam folder or call us: {phone}.",
+        "meetLater": "The video room opens on {date} at {time} here on this page."
+      },
+      "manage": {
+        "metaTitle": "Manage appointment | Platzhirsch Home Living",
+        "eyebrow": "Your appointment",
+        "title": "Change or cancel the appointment",
+        "loading": "Loading your appointment …",
+        "missing": "This link is incomplete. Please open it directly from the e-mail.",
+        "invalid": "This link is not valid or was replaced by a new booking time. Please use the link from the latest e-mail.",
+        "expired": "This appointment is in the past. Please book again for a new appointment.",
+        "error": "The appointment could not be loaded. Please try again or call us: {phone}.",
+        "status": {
+          "unbestaetigt": "Not confirmed yet",
+          "bestaetigt": "Booked",
+          "angefragt": "Requested, we confirm in person",
+          "storniert": "Cancelled",
+          "abgelehnt": "Not possible, we will get in touch"
+        },
+        "statusLabel": "Current status",
+        "contact": "Contact",
+        "cancel": "Cancel appointment",
+        "cancelConfirm": "Cancel for sure? The time will be released.",
+        "cancelYes": "Yes, cancel",
+        "cancelNo": "No, keep it",
+        "cancelled": "Your appointment is cancelled. A confirmation follows by e-mail.",
+        "reschedule": "Choose a different time",
+        "rescheduleSave": "Move to this time",
+        "rescheduled": "Your appointment has been moved. The new confirmation and a new link follow by e-mail. The previous link is no longer valid.",
+        "tooLate": "The appointment has already started. Please call us: {phone}.",
+        "newLink": "New link to manage"
+      },
+      "confirm": {
+        "metaTitle": "Confirm appointment | Platzhirsch Home Living",
+        "eyebrow": "Your appointment",
+        "title": "Confirm appointment",
+        "lead": "One more click and your appointment is fixed.",
+        "button": "Confirm appointment now",
+        "sending": "Confirming …",
+        "missing": "This link is incomplete. Please open it directly from the e-mail.",
+        "invalid": "This confirmation link is not valid. Please open it directly from the latest e-mail.",
+        "expired": "The link has expired and the time is free again. Please choose a new appointment.",
+        "taken": "This time is no longer available. Please choose a new appointment.",
+        "gone": "This appointment has been cancelled.",
+        "already": "Your appointment was already confirmed.",
+        "error": "That did not work. Please try again or call us: {phone}."
+      },
+      "einstieg": {
+        "title": "Choose an appointment online",
+        "text": "Pick a day and time in the calendar: at the studio in Lochau, by video or at your home. Prefer to write? The form follows right below.",
+        "cta": "Choose an appointment online"
+      },
+      "mail": {
+        "subjectBooked": "Your appointment on {date} at {time}",
+        "subjectRequested": "Your appointment request for {date}, {time}",
+        "subjectCancelled": "Your appointment on {date} is cancelled",
+        "subjectRescheduled": "Your appointment has been moved: {date}, {time}",
+        "subjectVerify": "Please confirm: your appointment on {date} at {time}",
+        "hello": "Hello {name},",
+        "booked": "Your appointment is booked. We look forward to seeing you.",
+        "requested": "Thank you for your request. We will get in touch to confirm the date and the visit.",
+        "cancelled": "Your appointment is cancelled. If you would like a new one, book online or give us a call.",
+        "rescheduled": "Your appointment has been moved. The previous link is no longer valid, here is the new one.",
+        "manage": "Change or cancel the appointment:",
+        "meet": "Video room (opens 15 minutes before the start):",
+        "ics": "The calendar file is attached to this e-mail.",
+        "bye": "Kind regards\nYour Platzhirsch Home Living team",
+        "verify": "Please confirm your appointment by clicking the link. Only then is it booked.",
+        "verifyRequest": "Please confirm your request by clicking the link. Only then does it reach us.",
+        "verifyButton": "Confirm appointment",
+        "verifyNote": "The link is valid for 30 minutes. Until then, we hold the time for you. Was this not you? Then ignore this e-mail and nothing is booked.",
+        "meetLater": "Video room: open it from 15 minutes before the start via the link below to change or cancel.",
+        "icsVideo": "Video consultation. Open the video room from 15 minutes before the start via the link in your confirmation e-mail."
+      }
+    }
+  },
+  "fr": {
+    "termin": {
+      "meta": {
+        "title": "Prendre rendez-vous en ligne | Platzhirsch Home Living",
+        "description": "Conseil au studio de Lochau, en vidéo ou chez vous : choisissez le jour et l'heure en ligne. Harald Menghin esquisse les premières idées à la main."
+      },
+      "eyebrow": "Rendez-vous",
+      "title": "Prenez votre temps. Nous aussi.",
+      "lead": "Choisissez comment et quand vous souhaitez nous rencontrer. Au studio de Lochau, en vidéo ou chez vous.",
+      "usp": "Pendant l'entretien, Harald Menghin esquisse les premières idées à la main. Apportez volontiers un plan, des photos ou des mesures.",
+      "off": {
+        "title": "La réservation en ligne n'est pas disponible pour le moment",
+        "text": "Écrivez-nous via le formulaire de demande ou appelez-nous. Nous revenons vers vous avec une proposition de rendez-vous.",
+        "cta": "Vers le formulaire de demande",
+        "phone": "Appeler : {phone}"
+      },
+      "stepOf": "Étape {n} sur {total}",
+      "steps": {
+        "art": "Comment souhaitez-vous nous rencontrer ?",
+        "zeit": "Quand cela vous convient-il ?",
+        "daten": "Comment vous joindre ?",
+        "fertig": "Terminé"
+      },
+      "stepsShort": {
+        "art": "Type",
+        "zeit": "Date",
+        "daten": "Coordonnées",
+        "fertig": "Terminé"
+      },
+      "write": {
+        "lead": "Plutôt sans rendez-vous fixe ?",
+        "link": "Plutôt écrire",
+        "hint": "Décrivez votre projet dans le formulaire de demande, nous revenons vers vous."
+      },
+      "tisch": {
+        "online": "Réserver un rendez-vous",
+        "card": "Votre carte de table",
+        "cardPlace": "Platzhirsch Home Living, Landstraße 11, Lochau",
+        "cardVideo": "Conseil en visio, vous recevez le lien par e-mail",
+        "cardVorOrt": "Chez vous"
+      },
+      "minutes": "{n} minutes",
+      "arten": {
+        "studio": {
+          "title": "Au studio de Lochau",
+          "text": "Avec un café de notre café. Vous voyez tissus, matériaux et meubles en vrai.",
+          "place": "Studio de Lochau, Landstraße 11"
+        },
+        "video": {
+          "title": "Conseil en vidéo",
+          "text": "Depuis chez vous, dans le navigateur, sans application. Nous montrons plans et échantillons à l'écran. Rien n'est enregistré.",
+          "place": "Conseil en vidéo"
+        },
+        "vor_ort": {
+          "title": "Chez vous",
+          "text": "Nous regardons les pièces, la lumière et l'environnement. Si votre projet le demande, aussi un ou deux jours.",
+          "place": "Chez vous"
+        },
+        "planung": {
+          "title": "Rendez-vous de planification sur un thème",
+          "text": "Pour un projet précis, par exemple une cuisine ou une piscine. Au studio ou en vidéo.",
+          "place": "Rendez-vous de planification"
+        }
+      },
+      "anfrage": "Demande : nous confirmons la date et le déplacement personnellement.",
+      "thema": {
+        "legend": "De quoi s'agit-il ?",
+        "options": {
+          "kueche": "Cuisine",
+          "wohnen": "Canapé et séjour",
+          "ezarri": "Piscine et mosaïque",
+          "licht": "Éclairage",
+          "yacht": "Intérieur de yacht",
+          "hotel": "Hôtel et projets"
+        }
+      },
+      "modus": {
+        "legend": "Où souhaitez-vous planifier ?",
+        "studio": "Au studio de Lochau",
+        "video": "En vidéo"
+      },
+      "zeit": {
+        "daysLegend": "Choisir un jour",
+        "timesLegend": "Heure le {date}",
+        "tz": "Toutes les heures en heure locale de Lochau (Europe/Vienna).",
+        "tzOther": "Votre appareil utilise un autre fuseau horaire ({zone}). Les heures ci-dessous sont celles de Lochau.",
+        "prev": "Jours précédents",
+        "next": "Jours suivants",
+        "range": "du {from} au {to}",
+        "loading": "Chargement des créneaux libres …",
+        "none": "Rien n'est libre sur cette période. Regardez les jours suivants ou appelez-nous.",
+        "error": "Les créneaux libres n'ont pas pu être chargés. Veuillez réessayer.",
+        "retry": "Recharger",
+        "free": "{n} libres",
+        "freeLong": "{n} créneaux libres",
+        "freeLongOne": "1 créneau libre",
+        "legendShort": "Chiffre : horaires libres · – : non réservable",
+        "closed": "fermé",
+        "holiday": "jour férié",
+        "full": "complet",
+        "past": "passé",
+        "later": "pas encore réservable",
+        "soon": "trop tôt",
+        "chooseDay": "Choisissez d'abord un jour.",
+        "lead": "Au plus tôt 24 heures à l'avance. Plus urgent ? Appelez-nous : {phone}."
+      },
+      "daten": {
+        "vorname": "Prénom",
+        "nachname": "Nom",
+        "email": "E-mail",
+        "emailHint": "Nous y envoyons la confirmation et le lien pour modifier le rendez-vous.",
+        "telefon": "Téléphone",
+        "telefonHintVideo": "Si l'image ne passe pas, nous vous appelons.",
+        "telefonHintVorOrt": "Pour organiser le déplacement.",
+        "plzOrt": "Code postal et localité",
+        "plzOrtHint": "Pour planifier le trajet. Nous convenons de l'adresse exacte avec vous.",
+        "anliegen": "Votre demande",
+        "anliegenHint": "Par exemple pièce, délai ou style. 1000 caractères au maximum.",
+        "optional": "facultatif",
+        "upload": "Après la réservation, vous pouvez envoyer photos, plan ou mesures directement depuis votre téléphone.",
+        "uploadOff": "Un plan, des photos ou des mesures nous aident. Apportez ce que vous avez, ou montrez-le pendant l'appel vidéo.",
+        "emailConfirm": "Nous enverrons le lien de confirmation à : {email}",
+        "consentLegend": "Consentement au conseil en vidéo",
+        "consent": "J'accepte que l'image et le son soient transmis en direct pendant l'entretien. Rien n'est enregistré. Je peux éteindre ma caméra à tout moment. Je peux retirer mon consentement à tout moment, par exemple en annulant le rendez-vous ou en passant au studio.",
+        "consentHint": "Plutôt sans vidéo ? Choisissez un rendez-vous au studio ou appelez-nous.",
+        "privacy": "Nous utilisons vos données seulement pour ce rendez-vous.",
+        "privacyLink": "Politique de confidentialité",
+        "summary": "Votre choix",
+        "change": "Modifier"
+      },
+      "actions": {
+        "next": "Continuer",
+        "back": "Retour",
+        "book": "Réserver le rendez-vous",
+        "request": "Demander le rendez-vous",
+        "sending": "Envoi en cours …"
+      },
+      "errors": {
+        "summary": "Veuillez vérifier {n} champs.",
+        "summaryOne": "Veuillez vérifier un champ.",
+        "art": "Veuillez choisir comment vous souhaitez nous rencontrer.",
+        "thema": "Veuillez choisir un thème.",
+        "modus": "Veuillez choisir où vous souhaitez planifier.",
+        "slot": "Veuillez choisir une heure.",
+        "vorname": "Veuillez indiquer votre prénom.",
+        "nachname": "Veuillez indiquer votre nom.",
+        "email": "Veuillez indiquer une adresse e-mail valide, p. ex. nom@exemple.fr.",
+        "telefon": "Veuillez indiquer un numéro de téléphone (chiffres, +, espaces).",
+        "plzOrt": "Veuillez indiquer le code postal et la localité.",
+        "anliegen": "Veuillez raccourcir votre demande à 1000 caractères.",
+        "consent": "Nous avons besoin de votre consentement pour le conseil en vidéo. Sans vidéo, nous pouvons nous voir au studio ou parler au téléphone.",
+        "slot_taken": "Cette heure vient d'être prise. Veuillez en choisir une autre.",
+        "outside_window": "Cette heure n'est plus réservable. Veuillez en choisir une autre.",
+        "rate_limited": "Trop de tentatives en peu de temps. Veuillez patienter quelques minutes ou nous appeler.",
+        "forbidden": "La demande a été refusée pour des raisons de sécurité. Veuillez recharger la page.",
+        "not_configured": "La réservation en ligne n'est pas disponible pour le moment. Utilisez le formulaire de demande ou appelez-nous.",
+        "generic": "Cela n'a pas fonctionné. Veuillez réessayer ou nous appeler : {phone}."
+      },
+      "done": {
+        "booked": "Votre rendez-vous est réservé",
+        "requested": "Nous avons bien reçu votre demande",
+        "bookedText": "Nous nous réjouissons de vous voir. La confirmation part par e-mail à {email}.",
+        "requestedText": "Nous vous contactons pour confirmer la date et le déplacement. D'ici là, le créneau vous est réservé.",
+        "reference": "Référence",
+        "when": "Quand",
+        "where": "Où",
+        "what": "Type de rendez-vous",
+        "ics": "Ajouter au calendrier (.ics)",
+        "manage": "Modifier ou annuler le rendez-vous",
+        "manageNote": "Le lien est personnel et valable jusqu'à la fin du rendez-vous. Il figure aussi dans votre e-mail.",
+        "meet": "Vers la salle vidéo",
+        "meetNote": "Vous ouvrez la salle vidéo à partir de 15 minutes avant le début via le lien de votre e-mail de confirmation. Vous patientez un instant jusqu'à ce que nous vous fassions entrer. Sans application, dans le navigateur.",
+        "studioWay": "Landstraße 11, 6911 Lochau, Autriche",
+        "route": "Itinéraire",
+        "usp": "Pendant le rendez-vous, Harald Menghin esquisse les premières idées à la main. Apportez ce que vous avez : plan, photos, mesures.",
+        "again": "Réserver un autre rendez-vous",
+        "pending": "Veuillez confirmer votre adresse e-mail",
+        "pendingText": "Nous vous avons envoyé un lien à {email}. Ouvrez-le dans les 30 minutes et votre rendez-vous est réservé. D'ici là, nous vous gardons l'horaire.",
+        "pendingTextRequest": "Nous vous avons envoyé un lien à {email}. Ouvrez-le dans les 30 minutes et votre demande nous parvient. D'ici là, nous vous gardons l'horaire.",
+        "pendingFix": "Adresse erronée ? Corriger",
+        "pendingNoMail": "Pas d'e-mail ? Vérifiez vos courriers indésirables ou appelez-nous : {phone}.",
+        "meetLater": "La salle vidéo ouvre le {date} à {time} ici, sur cette page."
+      },
+      "manage": {
+        "metaTitle": "Gérer le rendez-vous | Platzhirsch Home Living",
+        "eyebrow": "Votre rendez-vous",
+        "title": "Modifier ou annuler le rendez-vous",
+        "loading": "Chargement de votre rendez-vous …",
+        "missing": "Ce lien est incomplet. Veuillez l'ouvrir directement depuis l'e-mail.",
+        "invalid": "Ce lien n'est pas valable ou a été remplacé lors d'un changement d'horaire. Utilisez le lien du dernier e-mail.",
+        "expired": "Ce rendez-vous est passé. Pour un nouveau rendez-vous, veuillez réserver à nouveau.",
+        "error": "Le rendez-vous n'a pas pu être chargé. Veuillez réessayer ou nous appeler : {phone}.",
+        "status": {
+          "unbestaetigt": "Pas encore confirmé",
+          "bestaetigt": "Réservé",
+          "angefragt": "Demandé, nous confirmons personnellement",
+          "storniert": "Annulé",
+          "abgelehnt": "Pas possible, nous vous contactons"
+        },
+        "statusLabel": "Statut",
+        "contact": "Contact",
+        "cancel": "Annuler le rendez-vous",
+        "cancelConfirm": "Vraiment annuler ? Le créneau sera libéré.",
+        "cancelYes": "Oui, annuler",
+        "cancelNo": "Non, garder",
+        "cancelled": "Votre rendez-vous est annulé. Une confirmation suit par e-mail.",
+        "reschedule": "Choisir un autre horaire",
+        "rescheduleSave": "Déplacer à cette heure",
+        "rescheduled": "Votre rendez-vous est déplacé. La nouvelle confirmation et un nouveau lien suivent par e-mail. L'ancien lien n'est plus valable.",
+        "tooLate": "Le rendez-vous a déjà commencé. Veuillez nous appeler : {phone}.",
+        "newLink": "Nouveau lien de gestion"
+      },
+      "confirm": {
+        "metaTitle": "Confirmer le rendez-vous | Platzhirsch Home Living",
+        "eyebrow": "Votre rendez-vous",
+        "title": "Confirmer le rendez-vous",
+        "lead": "Encore un clic et votre rendez-vous est fixé.",
+        "button": "Confirmer le rendez-vous",
+        "sending": "Confirmation en cours …",
+        "missing": "Ce lien est incomplet. Ouvrez-le directement depuis l'e-mail.",
+        "invalid": "Ce lien de confirmation n'est pas valable. Ouvrez-le directement depuis le dernier e-mail.",
+        "expired": "Le lien a expiré et l'horaire est de nouveau libre. Veuillez choisir un nouveau rendez-vous.",
+        "taken": "Cet horaire n'est plus disponible. Veuillez choisir un nouveau rendez-vous.",
+        "gone": "Ce rendez-vous a été annulé.",
+        "already": "Votre rendez-vous était déjà confirmé.",
+        "error": "Cela n'a pas fonctionné. Veuillez réessayer ou appelez-nous : {phone}."
+      },
+      "einstieg": {
+        "title": "Rendez-vous en ligne",
+        "text": "Jour et heure directement dans le calendrier : au studio de Lochau, en vidéo ou chez vous. Vous préférez écrire ? Le formulaire suit juste en dessous.",
+        "cta": "Voir les créneaux libres"
+      },
+      "mail": {
+        "subjectBooked": "Votre rendez-vous le {date} à {time}",
+        "subjectRequested": "Votre demande de rendez-vous pour le {date}, {time}",
+        "subjectCancelled": "Votre rendez-vous du {date} est annulé",
+        "subjectRescheduled": "Votre rendez-vous est déplacé : {date}, {time}",
+        "subjectVerify": "À confirmer : votre rendez-vous du {date} à {time}",
+        "hello": "Bonjour {name},",
+        "booked": "Votre rendez-vous est réservé. Nous nous réjouissons de vous voir.",
+        "requested": "Merci pour votre demande. Nous vous contactons pour confirmer la date et le déplacement.",
+        "cancelled": "Votre rendez-vous est annulé. Pour un nouveau rendez-vous, réservez en ligne ou appelez-nous.",
+        "rescheduled": "Votre rendez-vous est déplacé. L'ancien lien n'est plus valable, voici le nouveau.",
+        "manage": "Modifier ou annuler le rendez-vous :",
+        "meet": "Salle vidéo (ouvre 15 minutes avant le début) :",
+        "ics": "Le fichier de calendrier est joint à cet e-mail.",
+        "bye": "Cordialement\nL'équipe de Platzhirsch Home Living",
+        "verify": "Veuillez confirmer votre rendez-vous en cliquant sur le lien. Il n'est réservé qu'ensuite.",
+        "verifyRequest": "Veuillez confirmer votre demande en cliquant sur le lien. Elle ne nous parvient qu'ensuite.",
+        "verifyButton": "Confirmer le rendez-vous",
+        "verifyNote": "Le lien est valable 30 minutes. D'ici là, nous vous gardons l'horaire. Ce n'était pas vous ? Ignorez cet e-mail, rien n'est réservé.",
+        "meetLater": "Salle vidéo : vous l'ouvrez à partir de 15 minutes avant le début via le lien ci-dessous pour modifier ou annuler.",
+        "icsVideo": "Conseil en vidéo. Vous ouvrez la salle vidéo à partir de 15 minutes avant le début via le lien de votre e-mail de confirmation."
+      }
+    }
+  },
+  "it": {
+    "termin": {
+      "meta": {
+        "title": "Prenotate un appuntamento online | Platzhirsch Home Living",
+        "description": "Consulenza nello studio di Lochau, in video o a casa vostra: scegliete giorno e ora online. Harald Menghin schizza le prime idee a mano."
+      },
+      "eyebrow": "Il vostro appuntamento",
+      "title": "Prendetevi il vostro tempo. Anche noi lo facciamo.",
+      "lead": "Scegliete come e quando incontrarci. Nello studio di Lochau, in video o a casa vostra.",
+      "usp": "Durante il colloquio Harald Menghin schizza le prime idee a mano. Portate pure pianta, foto o misure.",
+      "off": {
+        "title": "La prenotazione online non è disponibile al momento",
+        "text": "Scriveteci con il modulo di richiesta o chiamateci. Vi ricontattiamo con una proposta di appuntamento.",
+        "cta": "Al modulo di richiesta",
+        "phone": "Chiamateci: {phone}"
+      },
+      "stepOf": "Passo {n} di {total}",
+      "steps": {
+        "art": "Come desiderate incontrarci?",
+        "zeit": "Quando vi va bene?",
+        "daten": "Come possiamo contattarvi?",
+        "fertig": "Fatto"
+      },
+      "stepsShort": {
+        "art": "Tipo",
+        "zeit": "Data",
+        "daten": "Contatti",
+        "fertig": "Fatto"
+      },
+      "write": {
+        "lead": "Preferite senza appuntamento fisso?",
+        "link": "Preferite scrivere",
+        "hint": "Descrivete il vostro progetto nel modulo di richiesta e vi ricontattiamo."
+      },
+      "tisch": {
+        "online": "Prenotate un appuntamento",
+        "card": "Il vostro segnaposto",
+        "cardPlace": "Platzhirsch Home Living, Landstraße 11, Lochau",
+        "cardVideo": "Consulenza video, riceverete il link per e-mail",
+        "cardVorOrt": "Da voi"
+      },
+      "minutes": "{n} minuti",
+      "arten": {
+        "studio": {
+          "title": "Nello studio di Lochau",
+          "text": "Con un caffè del nostro café. Vedete tessuti, materiali e mobili dal vero.",
+          "place": "Studio di Lochau, Landstraße 11"
+        },
+        "video": {
+          "title": "Consulenza in video",
+          "text": "Da casa, nel browser, senza app. Mostriamo piante e campioni sullo schermo. Non viene registrato nulla.",
+          "place": "Consulenza in video"
+        },
+        "vor_ort": {
+          "title": "A casa vostra",
+          "text": "Guardiamo stanze, luce e dintorni. Se il vostro progetto lo richiede, anche uno o due giorni.",
+          "place": "A casa vostra"
+        },
+        "planung": {
+          "title": "Appuntamento di progettazione su un tema",
+          "text": "Per un progetto preciso, per esempio cucina o piscina. Nello studio o in video.",
+          "place": "Appuntamento di progettazione"
+        }
+      },
+      "anfrage": "Richiesta: confermiamo data e trasferta personalmente.",
+      "thema": {
+        "legend": "Di che cosa si tratta?",
+        "options": {
+          "kueche": "Cucina",
+          "wohnen": "Divano e soggiorno",
+          "ezarri": "Piscina e mosaico",
+          "licht": "Luce",
+          "yacht": "Interni per yacht",
+          "hotel": "Hotel e contract"
+        }
+      },
+      "modus": {
+        "legend": "Dove desiderate progettare?",
+        "studio": "Nello studio di Lochau",
+        "video": "In video"
+      },
+      "zeit": {
+        "daysLegend": "Scegliete un giorno",
+        "timesLegend": "Orario il {date}",
+        "tz": "Tutti gli orari sono nell'ora locale di Lochau (Europe/Vienna).",
+        "tzOther": "Il vostro dispositivo usa un altro fuso orario ({zone}). Gli orari qui sotto valgono a Lochau.",
+        "prev": "Giorni precedenti",
+        "next": "Altri giorni",
+        "range": "dal {from} al {to}",
+        "loading": "Caricamento degli orari liberi …",
+        "none": "In questo periodo non c'è nulla di libero. Guardate i giorni successivi o chiamateci.",
+        "error": "Non è stato possibile caricare gli orari liberi. Riprovate.",
+        "retry": "Ricarica",
+        "free": "{n} liberi",
+        "freeLong": "{n} orari liberi",
+        "freeLongOne": "1 orario libero",
+        "legendShort": "Numero: orari liberi · –: non prenotabile",
+        "closed": "chiuso",
+        "holiday": "festivo",
+        "full": "al completo",
+        "past": "passato",
+        "later": "non ancora prenotabile",
+        "soon": "troppo presto",
+        "chooseDay": "Scegliete prima un giorno.",
+        "lead": "Al più presto 24 ore prima. Più urgente? Chiamateci: {phone}."
+      },
+      "daten": {
+        "vorname": "Nome",
+        "nachname": "Cognome",
+        "email": "E-mail",
+        "emailHint": "Qui inviamo la conferma e il link per le modifiche.",
+        "telefon": "Telefono",
+        "telefonHintVideo": "Se il video non funziona, vi chiamiamo.",
+        "telefonHintVorOrt": "Per organizzare la trasferta.",
+        "plzOrt": "CAP e località",
+        "plzOrtHint": "Per pianificare il viaggio. L'indirizzo esatto lo concordiamo con voi.",
+        "anliegen": "La vostra richiesta",
+        "anliegenHint": "Per esempio stanza, tempi o stile. Al massimo 1000 caratteri.",
+        "optional": "facoltativo",
+        "upload": "Dopo la prenotazione potete inviare foto, pianta o misure direttamente dal telefono.",
+        "uploadOff": "Pianta, foto o misure ci aiutano. Portate quello che avete, oppure mostratelo durante la videochiamata.",
+        "emailConfirm": "Invieremo il link di conferma a: {email}",
+        "consentLegend": "Consenso alla consulenza in video",
+        "consent": "Acconsento che immagine e audio vengano trasmessi in diretta durante il colloquio. Non viene registrato nulla. Posso spegnere la videocamera in qualsiasi momento. Posso revocare il consenso in qualsiasi momento, ad esempio disdicendo l'appuntamento o passando allo studio.",
+        "consentHint": "Preferite senza video? Fissate un appuntamento in studio o chiamateci.",
+        "privacy": "Usiamo i vostri dati solo per questo appuntamento.",
+        "privacyLink": "Informativa sulla privacy",
+        "summary": "La vostra scelta",
+        "change": "Modifica"
+      },
+      "actions": {
+        "next": "Avanti",
+        "back": "Indietro",
+        "book": "Prenotate l'appuntamento",
+        "request": "Richiedete l'appuntamento",
+        "sending": "Invio in corso …"
+      },
+      "errors": {
+        "summary": "Controllate {n} campi.",
+        "summaryOne": "Controllate un campo.",
+        "art": "Scegliete come desiderate incontrarci.",
+        "thema": "Scegliete un tema.",
+        "modus": "Scegliete dove desiderate progettare.",
+        "slot": "Scegliete un orario.",
+        "vorname": "Indicate il vostro nome.",
+        "nachname": "Indicate il vostro cognome.",
+        "email": "Indicate un indirizzo e-mail valido, p. es. nome@esempio.it.",
+        "telefon": "Indicate un numero di telefono (cifre, +, spazi).",
+        "plzOrt": "Indicate CAP e località.",
+        "anliegen": "Accorciate la richiesta a 1000 caratteri.",
+        "consent": "Per la consulenza in video ci serve il vostro consenso. Senza video possiamo vederci in studio o sentirci al telefono.",
+        "slot_taken": "Questo orario è appena stato preso. Sceglietene un altro.",
+        "outside_window": "Questo orario non è più prenotabile. Sceglietene un altro.",
+        "rate_limited": "Troppi tentativi in poco tempo. Attendete qualche minuto o chiamateci.",
+        "forbidden": "La richiesta è stata rifiutata per motivi di sicurezza. Ricaricate la pagina.",
+        "not_configured": "La prenotazione online non è disponibile al momento. Usate il modulo di richiesta o chiamateci.",
+        "generic": "Non ha funzionato. Riprovate o chiamateci: {phone}."
+      },
+      "done": {
+        "booked": "Il vostro appuntamento è prenotato",
+        "requested": "Abbiamo ricevuto la vostra richiesta",
+        "bookedText": "Vi aspettiamo con piacere. La conferma arriva per e-mail a {email}.",
+        "requestedText": "Vi contattiamo per confermare data e trasferta. Fino ad allora l'orario resta riservato per voi.",
+        "reference": "Riferimento",
+        "when": "Quando",
+        "where": "Dove",
+        "what": "Tipo di appuntamento",
+        "ics": "Aggiungete al calendario (.ics)",
+        "manage": "Modificate o disdite l'appuntamento",
+        "manageNote": "Il link è personale e vale fino alla fine dell'appuntamento. Lo trovate anche nella vostra e-mail.",
+        "meet": "Alla sala video",
+        "meetNote": "La sala video si apre a partire da 15 minuti prima dell'inizio tramite il link nella vostra e-mail di conferma. Attendete un momento finché vi facciamo entrare. Senza app, nel browser.",
+        "studioWay": "Landstraße 11, 6911 Lochau, Austria",
+        "route": "Calcola il percorso",
+        "usp": "Durante l'appuntamento Harald Menghin schizza le prime idee a mano. Portate ciò che avete: pianta, foto, misure.",
+        "again": "Prenotate un altro appuntamento",
+        "pending": "Confermate il vostro indirizzo e-mail",
+        "pendingText": "Vi abbiamo inviato un link a {email}. Apritelo entro 30 minuti e il vostro appuntamento è prenotato. Fino ad allora vi teniamo libero l'orario.",
+        "pendingTextRequest": "Vi abbiamo inviato un link a {email}. Apritelo entro 30 minuti e la vostra richiesta ci arriva. Fino ad allora vi teniamo libero l'orario.",
+        "pendingFix": "Indirizzo sbagliato? Correggere",
+        "pendingNoMail": "Nessuna e-mail? Controllate la cartella spam o chiamateci: {phone}.",
+        "meetLater": "La sala video si apre il {date} alle {time} qui su questa pagina."
+      },
+      "manage": {
+        "metaTitle": "Gestione dell'appuntamento | Platzhirsch Home Living",
+        "eyebrow": "Il vostro appuntamento",
+        "title": "Modifica o disdetta dell'appuntamento",
+        "loading": "Caricamento dell'appuntamento …",
+        "missing": "Questo link è incompleto. Apritelo direttamente dall'e-mail.",
+        "invalid": "Questo link non è valido o è stato sostituito da uno spostamento. Usate il link dell'ultima e-mail.",
+        "expired": "Questo appuntamento è passato. Per un nuovo appuntamento prenotate di nuovo.",
+        "error": "Non è stato possibile caricare l'appuntamento. Riprovate o chiamateci: {phone}.",
+        "status": {
+          "unbestaetigt": "Non ancora confermato",
+          "bestaetigt": "Prenotato",
+          "angefragt": "Richiesto, confermiamo personalmente",
+          "storniert": "Disdetto",
+          "abgelehnt": "Non possibile, vi contattiamo"
+        },
+        "statusLabel": "Stato",
+        "contact": "Contatto",
+        "cancel": "Disdite l'appuntamento",
+        "cancelConfirm": "Volete davvero disdire? L'orario verrà liberato.",
+        "cancelYes": "Sì, disdire",
+        "cancelNo": "No, mantenere",
+        "cancelled": "Il vostro appuntamento è disdetto. Segue una conferma per e-mail.",
+        "reschedule": "Scegliete un altro orario",
+        "rescheduleSave": "Spostate a questo orario",
+        "rescheduled": "Il vostro appuntamento è spostato. La nuova conferma e un nuovo link seguono per e-mail. Il link precedente non vale più.",
+        "tooLate": "L'appuntamento è già iniziato. Chiamateci: {phone}.",
+        "newLink": "Nuovo link di gestione"
+      },
+      "confirm": {
+        "metaTitle": "Conferma dell'appuntamento | Platzhirsch Home Living",
+        "eyebrow": "Il vostro appuntamento",
+        "title": "Conferma dell'appuntamento",
+        "lead": "Ancora un clic e il vostro appuntamento è fissato.",
+        "button": "Confermate ora l'appuntamento",
+        "sending": "Conferma in corso …",
+        "missing": "Questo link è incompleto. Apritelo direttamente dall'e-mail.",
+        "invalid": "Questo link di conferma non è valido. Apritelo direttamente dall'ultima e-mail.",
+        "expired": "Il link è scaduto e l'orario è di nuovo libero. Scegliete un nuovo appuntamento.",
+        "taken": "Questo orario non è più libero. Scegliete un nuovo appuntamento.",
+        "gone": "Questo appuntamento è stato disdetto.",
+        "already": "Il vostro appuntamento era già confermato.",
+        "error": "Non ha funzionato. Riprovate o chiamateci: {phone}."
+      },
+      "einstieg": {
+        "title": "Scegliete l'appuntamento online",
+        "text": "Giorno e ora direttamente nel calendario: nello studio di Lochau, in video o da voi. Preferite scrivere? Il modulo segue subito sotto.",
+        "cta": "Scegliete l'appuntamento online"
+      },
+      "mail": {
+        "subjectBooked": "Il vostro appuntamento il {date} alle {time}",
+        "subjectRequested": "La vostra richiesta di appuntamento per il {date}, {time}",
+        "subjectCancelled": "Il vostro appuntamento del {date} è disdetto",
+        "subjectRescheduled": "Il vostro appuntamento è spostato: {date}, {time}",
+        "subjectVerify": "Da confermare: il vostro appuntamento del {date} alle {time}",
+        "hello": "Buongiorno {name},",
+        "booked": "Il vostro appuntamento è prenotato. Vi aspettiamo con piacere.",
+        "requested": "Grazie per la richiesta. Vi contattiamo per confermare data e trasferta.",
+        "cancelled": "Il vostro appuntamento è disdetto. Per un nuovo appuntamento prenotate online o chiamateci.",
+        "rescheduled": "Il vostro appuntamento è spostato. Il link precedente non vale più, ecco quello nuovo.",
+        "manage": "Modificate o disdite l'appuntamento:",
+        "meet": "Sala video (apre 15 minuti prima dell'inizio):",
+        "ics": "Il file del calendario è allegato a questa e-mail.",
+        "bye": "Cordiali saluti\nIl team di Platzhirsch Home Living",
+        "verify": "Confermate il vostro appuntamento cliccando sul link. Solo allora è prenotato.",
+        "verifyRequest": "Confermate la vostra richiesta cliccando sul link. Solo allora ci arriva.",
+        "verifyButton": "Confermate l'appuntamento",
+        "verifyNote": "Il link è valido 30 minuti. Fino ad allora vi teniamo libero l'orario. Non siete stati voi? Ignorate questa e-mail, non viene prenotato nulla.",
+        "meetLater": "Sala video: la aprite a partire da 15 minuti prima dell'inizio tramite il link qui sotto per modificare o disdire.",
+        "icsVideo": "Consulenza in video. La sala video si apre a partire da 15 minuti prima dell'inizio tramite il link nella vostra e-mail di conferma."
+      }
+    }
+  }
+}

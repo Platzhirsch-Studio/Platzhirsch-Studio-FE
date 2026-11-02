@@ -1,0 +1,261 @@
+{
+  "name": "Leslie Sofa",
+  "slug": "leslie-sofa",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2015,
+  "kollektion": "2015 Collection",
+  "typ": "Kompaktes, nicht modulares Sofa (eine Größe) mit umhüllendem Rücken und sichtbarem Sitzrahmen auf Aluminiumfüßen; Familie umfasst zusätzlich Bergère, Sessel, Sessel ohne Armlehnen, Hocker sowie Lounge-/Dining-Sesselchen",
+  "quellen": [
+    "https://www.minotti.com/en/leslie-sofa",
+    "https://www.minotti.com/downloads/429/1599/LESLIE_TECHNICAL_SHEET.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Maße in cm. Breite × Tiefe × Höhe aus den Elementbildern der Produktseite (z. B. „LESLIE_SOFA_156X87_H75“), bestätigt durch Technical Sheet. Sitzhöhe Sofa 39 cm aus unbeschrifteter Kote der Seitenansicht abgeleitet; weitere unbeschriftete Koten (Sofa 53 / 60 cm, innere Sitzbreite 130 cm) nicht eindeutig zuordenbar und daher nur im Hinweis.",
+  "modular": false,
+  "elemente": [
+    {
+      "code": "LES-SOFA-156",
+      "name": "Sofa",
+      "name_de": "Sofa 156 cm",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 156,
+      "tiefe_cm": 87,
+      "hoehe_cm": 75,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend, 2 Armlehnen, nicht kombinierbar",
+      "hinweis": "Maße laut Minotti-Elementbildern (Dateiname „…BxT_H…“) und Technical Sheet (Feb. 2023). Unbeschriftete Koten 53 und 60 cm (vermutl. Armlehnen-/Rückenmaß), innere Sitzbreite 130 cm laut Draufsicht."
+    },
+    {
+      "code": "LES-BERGERE",
+      "name": "Bergère",
+      "name_de": "Ohrensessel (Bergère)",
+      "art": "sessel",
+      "ausrichtung": null,
+      "breite_cm": 68,
+      "tiefe_cm": 94,
+      "hoehe_cm": 100,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Minotti-Elementbildern (Dateiname „…BxT_H…“) und Technical Sheet (Feb. 2023). Sitzhöhe 39 aus unbeschrifteter Kote abgeleitet; weitere Koten 55 / 45 cm nicht eindeutig. Außenschale nur Leder."
+    },
+    {
+      "code": "LES-ARMCHAIR",
+      "name": "Armchair",
+      "name_de": "Sessel",
+      "art": "sessel",
+      "ausrichtung": null,
+      "breite_cm": 78,
+      "tiefe_cm": 87,
+      "hoehe_cm": 75,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Minotti-Elementbildern (Dateiname „…BxT_H…“) und Technical Sheet (Feb. 2023). Unbeschriftete Koten 53 / 55 cm nicht eindeutig (Sitzhöhe fehlt). Außenschale nur Leder."
+    },
+    {
+      "code": "LES-ARMCHAIR-NOARM",
+      "name": "Armchair without armrests",
+      "name_de": "Sessel ohne Armlehnen",
+      "art": "sessel",
+      "ausrichtung": null,
+      "breite_cm": 68,
+      "tiefe_cm": 86,
+      "hoehe_cm": 74,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Minotti-Elementbildern (Dateiname „…BxT_H…“) und Technical Sheet (Feb. 2023). Unbeschriftete Koten 55 / 45 cm nicht eindeutig (Sitzhöhe fehlt). Außenschale nur Leder."
+    },
+    {
+      "code": "LES-OTTOMAN",
+      "name": "Ottoman / Footstool",
+      "name_de": "Hocker",
+      "art": "hocker",
+      "ausrichtung": null,
+      "breite_cm": 61,
+      "tiefe_cm": 45,
+      "hoehe_cm": 34,
+      "sitzhoehe_cm": 34,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Minotti-Elementbildern (Dateiname „…BxT_H…“) und Technical Sheet (Feb. 2023). Sitzhöhe = Gesamthöhe (Hocker)."
+    },
+    {
+      "code": "LES-LOUNGE-FIX",
+      "name": "Leslie \"Lounge\" – aluminium legs – fixed",
+      "name_de": "Lounge-Sesselchen, Alufüße, fest",
+      "art": "sessel",
+      "ausrichtung": null,
+      "breite_cm": 58,
+      "tiefe_cm": 63,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Minotti-Elementbildern (Dateiname „…BxT_H…“) und Technical Sheet (Feb. 2023). Unbeschriftete Koten 44 / 60 / 41 cm (vermutl. Sitzhöhe / Armlehnenhöhe / Sitzbreite) – nicht eindeutig."
+    },
+    {
+      "code": "LES-LOUNGE-SWIVEL",
+      "name": "Leslie \"Lounge\" – aluminium legs – swivel",
+      "name_de": "Lounge-Sesselchen, Alufüße, drehbar 360°",
+      "art": "sessel",
+      "ausrichtung": null,
+      "breite_cm": 58,
+      "tiefe_cm": 63,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Minotti-Elementbildern (Dateiname „…BxT_H…“) und Technical Sheet (Feb. 2023). 360° drehbar ohne Rückstellung. Unbeschriftete Koten 44 / 60 / 41 cm."
+    },
+    {
+      "code": "LES-DINING-FIX",
+      "name": "Leslie \"Dining\" – aluminium legs – fixed",
+      "name_de": "Dining-Sesselchen, Alufüße, fest",
+      "art": "stuhl",
+      "ausrichtung": null,
+      "breite_cm": 58,
+      "tiefe_cm": 63,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Minotti-Elementbildern (Dateiname „…BxT_H…“) und Technical Sheet (Feb. 2023). Unbeschriftete Koten 49 / 65 / 41 cm (vermutl. Sitzhöhe / Armlehnenhöhe / Sitzbreite)."
+    },
+    {
+      "code": "LES-DINING-SWIVEL",
+      "name": "Leslie \"Dining\" – aluminium legs – swivel",
+      "name_de": "Dining-Sesselchen, Alufüße, drehbar 360°",
+      "art": "stuhl",
+      "ausrichtung": null,
+      "breite_cm": 58,
+      "tiefe_cm": 63,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Minotti-Elementbildern (Dateiname „…BxT_H…“) und Technical Sheet (Feb. 2023). 360° drehbar ohne Rückstellung. Unbeschriftete Koten 49 / 65 / 41 cm."
+    },
+    {
+      "code": "LES-DINING-STEEL",
+      "name": "Leslie \"Dining\" – steel base",
+      "name_de": "Dining-Sesselchen, Stahldrahtgestell",
+      "art": "stuhl",
+      "ausrichtung": null,
+      "breite_cm": 58,
+      "tiefe_cm": 63,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Minotti-Elementbildern (Dateiname „…BxT_H…“) und Technical Sheet (Feb. 2023). Gestell Stahldraht Ø 12 mm. Unbeschriftete Koten 49 / 65 / 41 cm."
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Fester, umhüllender Rücken mit Memory-Foam-Einlage (laut Produktbeschreibung)",
+      "hoehe_cm": 75,
+      "hinweis": "Keine alternativen Rückenhöhen publiziert."
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Integrierte, durchgehende Armlehnen (Sofa)",
+      "hinweis": "Keine alternativen Armlehnenformen publiziert; Armlehnenhöhe nicht beschriftet."
+    },
+    {
+      "name": "Ohne Armlehnen",
+      "hinweis": "Nur als Sessel („Armchair without armrests“), nicht als Sofa."
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Füße (Sofa, Bergère, Sessel, Lounge/Dining Alu)",
+      "material": "Aluminium-Druckguss",
+      "finish": "Pewter (Zinn/Peltro) lackiert, glänzend, Anti-Fingerprint; schwarze SEBS-Gleiter"
+    },
+    {
+      "teil": "Sitzrahmen (Sofa, Bergère, Sessel)",
+      "material": "Massivholz, laut Technical Sheet Esche (Produkttext nennt Eiche)",
+      "finish": "Moka gebeizt, offenporig"
+    },
+    {
+      "teil": "Gestell Leslie Dining Steel Base",
+      "material": "Stahldraht Ø 12 mm",
+      "finish": "Pewter lackiert, glänzend; Hytrel-Gleiter"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder",
+      "Leder Extra",
+      "Leder Nature"
+    ],
+    "bezugsarten": [
+      "abnehmbar",
+      "fest"
+    ],
+    "abnehmbar_hinweis": "Sofa: Sitzbezug in Stoff oder Leder immer abnehmbar; Rücken in Stoff abnehmbar, in Leder fest. Bergère/Sessel: Außenschale nur in Leder und fest; Innenschale in Stoff abnehmbar, in Leder fest. Lounge/Dining: Stoff- und Lederbezüge komplett abnehmbar.",
+    "varianten": [
+      "Sofa: nur einheitlich – komplett Stoff ODER komplett Leder (kein Materialmix)",
+      "Bergère/Sessel A) komplett Leder (Außen-, Innenschale, Sitz im gleichen Leder)",
+      "Bergère/Sessel B) Außenschale Leder Kat. Extra, Innenschale + Sitz in Stoff",
+      "Bergère/Sessel C) Außenschale Leder Kat. Nature, Innenschale + Sitz in Stoff",
+      "Lounge/Dining A) komplett Stoff oder Leder",
+      "Lounge/Dining B) Sitzkissen Leder (Leder, Leder Extra, Leder Nature), Rücken Stoff"
+    ],
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Stoffe, Leder, Metall-/Holzoberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optional cushion",
+      "masse": "40 × 40 cm",
+      "hinweis": "Laut Technical Sheet; Minotti zeigt zusätzlich ein „Suggested set of cushions“ (Zusammensetzung nicht beschriftet)."
+    },
+    {
+      "name": "Polsterung",
+      "hinweis": "Kissen komplett kanalisierte Gänsedaune; Sitz PU-Schaum variabler Dichte mit zentraler Taschenfederkern-Einlage."
+    }
+  ],
+  "polsterung": "Metallstruktur in feuerhemmendem PU-Schaum; Sitzrahmen Massivholz Moka auf Metall-Unterrahmen mit Gummigurten; Sitz PU-Schaum mit Taschenfedern; Rücken mit Memory-Foam-Einlage.",
+  "outdoor": false,
+  "besonderheiten": [
+    "Kompakte Proportionen, für Wohnen und Contract (Lounges, Wartebereiche, Büros) gedacht",
+    "Sofa nur in einer Größe, nicht modular",
+    "Sofa nur in einem einzigen Material (komplett Stoff oder komplett Leder)",
+    "Sichtbarer Massivholz-Sitzrahmen Moka, Füße Pewter-Aluminium",
+    "Familie mit Bergère, Sessel, Hocker sowie Lounge/Dining-Sesselchen (fest oder 360° drehbar)"
+  ],
+  "beispiel_kompositionen": [],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. Minotti-Bilder dürfen nicht verändert werden.",
+  "fehlend": [
+    "Sitztiefe aller Elemente (nicht beschriftet)",
+    "Eindeutige Sitz- und Armlehnenhöhen der Sessel (Koten unbeschriftet; Sofa-Sitzhöhe 39 nur abgeleitet)",
+    "Holzart Sitzrahmen widersprüchlich (Technical Sheet: Esche; Produkttext: Eiche)",
+    "Zusammensetzung des „Suggested set of cushions“",
+    "Arrangement-PDFs (keine veröffentlicht)",
+    "Herstellerartikelnummern",
+    "Stoff-/Lederkollektionen und Preisgruppen",
+    "Gewichte"
+  ],
+  "vollstaendigkeit": {
+    "masse_prozent": 66,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe/sitzhoehe/sitztiefe über alle Elemente (bei Rücken-/Armlehnen-/Tischelementen nur breite/tiefe/hoehe); Options-/Materialfelder separat in fehlend[] bewertet."
+  }
+}

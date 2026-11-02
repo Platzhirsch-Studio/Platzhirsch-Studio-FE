@@ -18,6 +18,14 @@
 import { BRAND_VAN_EGMOND_PRODUCTS } from "./importedProducts/brandVanEgmond";
 import { NEXT125_PRODUCTS } from "./importedProducts/next125";
 import { TRECA_PRODUCTS } from "./importedProducts/treca";
+// Manufacturer copy in this file and in importedProducts/*: the superlatives
+// of the source texts were rewritten neutrally at the source in R4-produkt
+// (check:claims: 0 findings in src/lib/data). If the generator is re-run on
+// fresh CSVs, they come back – then rewrite again. The central render-time
+// filter stays as the second line of defence: every accessor below returns
+// the copy through it; render only via these accessors.
+import { filterInfoBio, filterManufacturerProduct, filterManufacturerText } from "../shop/manufacturerText.js";
+import { localizedBio } from "./designerBios.js";
 
 export const COLOR_I18N = {
   anthracite: { de: "Anthrazit", en: "Anthracite", fr: "Anthracite", it: "Antracite" },
@@ -98,26 +106,27 @@ export const SWATCHES = {
 // "About the brand" / "About the designer" cards on the product detail page.
 // `image` is a placeholder from the existing image set (no real brand/designer
 // photography in this repo yet) — swap for the real asset whenever available,
-// nothing else needs to change. `bio` is English-only for now, same placeholder
-// policy as the rest of this file's generated/curated copy. Only covers the
+// nothing else needs to change. `bio` is the English source; the DE/FR/IT
+// translations live in ./designerBios.js (Runde 9, P5, r5-recht-inhalt P1-3) –
+// a locale without a translation shows no bio, never the English text. Only covers the
 // brands/designers behind this file's curated example products; a product whose
 // brand or designer isn't listed here just doesn't get that section — see
 // getBrandInfo/getDesignerInfo.
 export const BRAND_INFO = {
-  "Minotti": { image: "/Images/Outdoor/bannerImage4.jpg", founded: "1948", country: "Italy", bio: "Founded in 1948 in Meda, Italy, by Alberto Minotti, the company began as a small artisan workshop producing traditional wooden furniture. Over more than seventy years it has grown into one of the most respected names in contemporary Italian design, known for a refined, understated aesthetic and uncompromising craftsmanship. Today Minotti is recognized worldwide as a leading name in luxury indoor and outdoor furniture, collaborating with some of the industry's most acclaimed designers." },
+  "Minotti": { image: "/Images/Outdoor/bannerImage4.jpg", founded: "1948", country: "Italy", bio: "Founded in 1948 in Meda, Italy, by Alberto Minotti, the company began as a small artisan workshop producing traditional wooden furniture. Over more than seventy years it has grown into an established name in contemporary Italian design, known for a refined, understated aesthetic and careful craftsmanship. Today Minotti makes indoor and outdoor furniture and works with well-known designers." },
   "Poliform": { image: "/Images/Outdoor/bannerImage5.jpg", founded: "1970", country: "Italy", bio: "An Italian furniture house founded in 1970 in Inverigo, near Como, Poliform built its early reputation on precision-engineered wardrobe and storage systems. It has since expanded into a full living collection, recognized for modular architecture, meticulous joinery and a design language that favors quiet, architectural rigor over decoration." },
   "Flexform": { image: "/Images/Kuche/bannerImageKuche2.jpg", founded: "1959", country: "Italy", bio: "Operating since 1959 in Meda, the heart of the Brianza furniture district, Flexform is celebrated for timeless, comfort-driven design rooted in traditional Italian upholstery craft. Its collections favor soft, enveloping volumes and natural materials over trend-driven statements, built to age well in a home over decades." },
-  "B&B Italia": { image: "/Images/Kuche/bannerImageKuche3.jpg", founded: "1966", country: "Italy", bio: "An Italian design pioneer since 1966, B&B Italia has shaped contemporary living with technologically advanced, research-driven furniture developed in its own in-house laboratories. It was among the first furniture companies to industrialize polyurethane foam upholstery, and continues to pair that engineering culture with some of the world's leading architects and designers." },
+  "B&B Italia": { image: "/Images/Kuche/bannerImageKuche3.jpg", founded: "1966", country: "Italy", bio: "An Italian design company since 1966, B&B Italia has shaped contemporary living with technologically advanced, research-driven furniture developed in its own in-house laboratories. It was among the first furniture companies to industrialize polyurethane foam upholstery, and continues to pair that engineering culture with international architects and designers." },
   "Cassina": { image: "/Images/Accessories/bannerImageAccessories1.jpg", founded: "1927", country: "Italy", bio: "Founded in 1927, Cassina is one of Italy's most historic furniture makers, and the first to bring industrial manufacturing to fine cabinetmaking. Alongside its own contemporary collections, Cassina holds the exclusive rights to reissue works by masters like Le Corbusier, Charlotte Perriand and Gio Ponti, blending design history with new production." },
   "Living Divani": { image: "/Images/Accessories/bannerImageAccessories2.jpg", founded: "1969", country: "Italy", bio: "Established in 1969 and long guided by art director Piero Lissoni, Living Divani is known for understated, research-led seating that favors quiet elegance over ornamentation. The brand's collections are defined by clean geometry, soft palettes and a deliberate restraint that lets proportion and material carry the design." },
-  "Molteni&C": { image: "/Images/Accessories/bannerImageAccessories3.jpg", founded: "1934", country: "Italy", bio: "An Italian family-run company since 1934, Molteni&C is celebrated for combining fine cabinetmaking heritage with contemporary design. Now in its third generation of family leadership, the brand pairs an in-house research center with collaborations with leading architects to produce furniture built for long service life." },
+  "Molteni&C": { image: "/Images/Accessories/bannerImageAccessories3.jpg", founded: "1934", country: "Italy", bio: "An Italian family-run company since 1934, Molteni&C is celebrated for combining fine cabinetmaking heritage with contemporary design. Now in its third generation of family leadership, the brand pairs an in-house research center with collaborations with architects to produce furniture built for long service life." },
   "Rimadesio": { image: "/Images/Arbeiten/bannerImageArbeiten2.jpg", founded: "1956", country: "Italy", bio: "Founded in 1956 near Como, Rimadesio specializes in architectural sliding doors, walk-in wardrobes and room-dividing systems in glass and aluminum. Since the 1980s its identity has been shaped by long-time art director Giuseppe Bavuso, whose precise, technical language turns structural hardware into a visible design feature rather than hiding it." },
-  "Flos": { image: "/Images/Arbeiten/bannerImageArbeiten3.jpg", founded: "1962", country: "Italy", bio: "An Italian lighting company since 1962, Flos has produced some of the most iconic lamps of the 20th and 21st centuries, working with designers from Achille Castiglioni to Philippe Starck. Many of its pieces are held in permanent design-museum collections, including MoMA in New York." },
+  "Flos": { image: "/Images/Arbeiten/bannerImageArbeiten3.jpg", founded: "1962", country: "Italy", bio: "An Italian lighting company since 1962, Flos has produced well-known lamps of the 20th and 21st centuries, working with designers from Achille Castiglioni to Philippe Starck. Many of its pieces are held in permanent design-museum collections, including MoMA in New York." },
 };
 
 export const DESIGNER_INFO = {
-  "Rodolfo Dordoni": { image: "/Images/Wohnen/bannerImage1.jpg", bio: "Born in Milan in 1954, Rodolfo Dordoni trained as an architect before turning to product and furniture design. Since 1998 he has served as Minotti's art director, shaping the brand's identity through collections defined by clean lines, tailored proportions and a quiet sense of luxury. His work spans furniture, lighting and interior architecture for some of Italy's most prestigious design houses." },
-  "Patricia Urquiola": { image: "/Images/Wohnen/bannerImage2.jpg", bio: "Born in Oviedo, Spain in 1961 and based in Milan since the 1990s, Urquiola is celebrated for sculptural, research-driven furniture developed for leading Italian brands. Her work is known for combining technical experimentation — new materials, weaving and molding techniques — with an emotional, handcrafted sensibility." },
+  "Rodolfo Dordoni": { image: "/Images/Wohnen/bannerImage1.jpg", bio: "Born in Milan in 1954, Rodolfo Dordoni trained as an architect before turning to product and furniture design. Since 1998 he has served as Minotti's art director, shaping the brand's identity through collections defined by clean lines, tailored proportions and a quiet sense of luxury. His work spans furniture, lighting and interiors for several Italian design houses." },
+  "Patricia Urquiola": { image: "/Images/Wohnen/bannerImage2.jpg", bio: "Born in Oviedo, Spain in 1961 and based in Milan since the 1990s, Urquiola is celebrated for sculptural, research-driven furniture developed for Italian design brands. Her work is known for combining technical experimentation — new materials, weaving and molding techniques — with an emotional, handcrafted sensibility." },
   "Vincent Van Duysen": { image: "/Images/Wohnen/bannerImage3.jpg", bio: "A Belgian architect and designer born in 1962, Van Duysen is known for a restrained, material-honest approach across architecture and furniture design. Since 2016 he has also served as Molteni&C's creative director, extending his minimalist architectural language into the brand's furniture collections." },
   "Achille Castiglioni": { image: "/Images/Wohnen/bannerImage4.jpg", bio: "One of Italy's most influential 20th-century designers (1918–2002), Castiglioni was renowned for witty, functional object and lighting design that turned everyday engineering — a tractor seat, a fishing-rod joint — into design icons. He designed extensively for Flos from the 1960s onward, and pieces like the Arco and Taraxacum lamps remain in production today." },
   "Giuseppe Bavuso": { image: "/Images/Wohnen/bannerImage5.jpg", bio: "An Italian architect and Rimadesio's long-time art director since the 1980s, Bavuso is known for precise, minimal systems in glass and metal. His work has defined the brand's entire product language, from sliding doors to modular walk-in wardrobes and bookcases." },
@@ -126,13 +135,23 @@ export const DESIGNER_INFO = {
   "Piero Lissoni": { image: "/Images/Wohnen/bannerImage8.jpg", bio: "An Italian architect and designer born in 1956, Lissoni is known for a minimalist, monochrome aesthetic across furniture and interior design. As long-time art director of Living Divani and B&B Italia's outdoor line, he has been influential in defining a distinctly quiet, contemporary strand of Italian design." },
 };
 
-export function getBrandInfo(brand) {
-  return BRAND_INFO[brand] || null;
+// Bio in the page language, filtered for display (null if no sentence
+// survives the claim filter or the locale has no translation).
+function localizedInfo(name, info, locale, ctx) {
+  if (!info) return null;
+  const source = filterInfoBio(info, ctx);
+  if (!source || locale === "en") return source;
+  const bio = localizedBio(name, source.bio, locale);
+  return bio ? filterInfoBio({ ...info, bio }, ctx) : null;
 }
 
-export function getDesignerInfo(designer) {
+export function getBrandInfo(brand, locale = "de") {
+  return localizedInfo(brand, BRAND_INFO[brand], locale, { brand });
+}
+
+export function getDesignerInfo(designer, locale = "de") {
   if (!designer) return null;
-  return DESIGNER_INFO[designer] || null;
+  return localizedInfo(designer, DESIGNER_INFO[designer], locale, {});
 }
 
 export function localizeAttribute(map, key, locale = "de") {
@@ -181,9 +200,11 @@ export const CATEGORY_DETAIL_FIELDS = {
 // this always normalizes to an array so the UI never needs to branch on shape.
 export function getProductDetailFields(product) {
   const details = product.details || {};
+  const ctx = { brand: product.brand };
   return Object.entries(details)
-    .filter(([, value]) => value)
-    .map(([key, value]) => ({ key, value: Array.isArray(value) ? value : [value] }));
+    .map(([key, value]) => [key, (Array.isArray(value) ? value : [value]).map((v) => filterManufacturerText(v, ctx)).filter(Boolean)])
+    .filter(([, value]) => value.length)
+    .map(([key, value]) => ({ key, value }));
 }
 
 // A handful of products (e.g. "Tréca Paris") genuinely cover several distinct
@@ -191,7 +212,7 @@ export function getProductDetailFields(product) {
 // specifications/compositions/finishes per model) for a comparison table. Most
 // products have exactly one model, described instead via `details` above.
 export function getProductVariants(product) {
-  return Array.isArray(product.variants) ? product.variants : [];
+  return Array.isArray(product.variants) ? filterManufacturerProduct({ brand: product.brand, variants: product.variants }).variants : [];
 }
 
 // Every product's own `image` stays the single cover shot used everywhere except
@@ -457,6 +478,14 @@ export const STATIC_SHOP_PRODUCTS = [
   ...NEXT125_PRODUCTS,
   ...TRECA_PRODUCTS,
 ];
+
+// The catalog for display: every manufacturer text field filtered (computed
+// once, on first use). STATIC_SHOP_PRODUCTS above stays the raw source.
+let filteredProducts = null;
+export function getStaticShopProducts() {
+  if (!filteredProducts) filteredProducts = STATIC_SHOP_PRODUCTS.map(filterManufacturerProduct);
+  return filteredProducts;
+}
 
 // Distinct categories present in `products`, each with a product count and a
 // representative image (the first product found in that category) — used to build

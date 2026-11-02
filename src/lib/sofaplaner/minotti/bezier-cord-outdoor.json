@@ -1,0 +1,519 @@
+{
+  "name": "Bézier \"Cord\" Outdoor",
+  "slug": "bezier-cord-outdoor",
+  "hersteller": "Minotti",
+  "designer": "Marcio Kogan / Studio MK27",
+  "jahr": 2025,
+  "jahr_hinweis": "Minotti 2025 Collection (Designs am 04.04.2025 in EU/China registriert).",
+  "typ": "Modulares Outdoor-Sitzsystem mit organisch gekrümmten Elementen, Rücken aus Aluminiumrohr mit Polypropylen-Kordel, Hocker fest oder mit Rollen",
+  "quellen": [
+    {
+      "titel": "Produktseite Minotti Bézier \"Cord\" Outdoor",
+      "url": "https://www.minotti.com/en/bezier-cord-outdoor"
+    },
+    {
+      "titel": "Bézier Cord Outdoor Technical Sheet (PDF)",
+      "url": "https://www.minotti.com/downloads/25034/28196/BEZIER_CORD_OUTDOOR_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "titel": "Arrangement 01 (PDF; 02–08 analog verlinkt auf der Produktseite)",
+      "url": "https://www.minotti.com/downloads/26162/29832/BEZIER%20CORD%20OUTDOOR_arrangement_01.pdf"
+    },
+    {
+      "titel": "Maßzeichnungen \"Technical Features\" (je Element, Feld zeichnung)",
+      "url": "https://www.minotti.com/en/bezier-cord-outdoor"
+    }
+  ],
+  "abrufdatum": "2026-10-27",
+  "mass_hinweis": "Maße in cm aus Technical Sheet und Maßzeichnungen (Bildnamen enthalten BxT und H). Elemente sind gekrümmt: breite_cm x tiefe_cm = Front- bzw. Seitenansicht laut Hersteller. Höhenkoten (unbeschriftet): 42 = Sitzhöhe (Hocker \"H42\"), 66 = Höhe der Rückenstruktur (Kordelrücken), 80/85 = Gesamthöhe inkl. Kissen (Bildname \"H80\"/\"H85\"). Hersteller: \"The size which indicates the total height of the element is the result of the height and the type of cushions used.\" sitztiefe_cm = Draufsicht-Kote 86 cm bei Elementen normaler Tiefe (als Sitztiefe abgeleitet, analog bezier.json). SX/DX = sinistra/destra laut Zeichnung.",
+  "rueckenoptionen": [
+    "Rücken aus Aluminiumrohr, Epoxid-Pulverlack matt in Ecru, Teak oder Dark Brown (Testa di Moro), umwickelt mit 20-mm-Taslan-Polypropylenkordel in passender Farbe.",
+    "Vertikales Abschlussprofil: flache, geformte Aluminiumleiste in Kordelfarbe.",
+    "Rücken über Schnellverschluss-System am gepolsterten Sockel befestigt.",
+    "Lendenkissen (Lumbar cushion), Koten 24 / 13 cm im Datenblatt (Bedeutung nicht beschriftet)."
+  ],
+  "armlehnenoptionen": [
+    "Elemente mit 1 Armlehne (SX/DX); Kordel-Armlehne als Fortsetzung des Rückens",
+    "Sofa doppelte Tiefe und Paolina mit umlaufendem Rücken/Armlehne",
+    "Ohne Armlehne: Mittelelemente, Peninsula, Eckelement, Bank, Hocker"
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Zurückversetzte Füße aus Edelstahlrohr, matt Dark Brown lackiert, auf SEBS-Gleitern in Dark Brown. Hocker wahlweise mit Rollen (360° drehbar).",
+    "finish": [
+      "Edelstahl lackiert matt Dark Brown (Testa di Moro)"
+    ],
+    "sockelhoehe_cm": {
+      "standard": 6.5,
+      "high": 8.5,
+      "hinweis": "Füße bzw. Rollen-Kit (Hocker) H 8,5 cm auf Anfrage ohne Aufpreis, 2 cm höher als Serie."
+    }
+  },
+  "struktur": "Bootsbausperrholz; Sitz aus mehreren Lagen hochelastischem PU-Schaum differenzierter Dichte mit wasserabweisender Polyesterfaser-Steppung. Enthält FSC®-zertifizierte Holzkomponenten.",
+  "bezuege": {
+    "kategorien": [
+      "Outdoor-Stoffe der Minotti-Kollektion"
+    ],
+    "leder": "nicht angegeben (Outdoor-Produkt)",
+    "bezugsart": "abnehmbar – Bezug komplett abziehbar.",
+    "details": "Kissen mit wasserabweisendem Polyester-Innenbezug; Reißverschlüsse/Garn wasserabweisend. Nahtführung folgt den Kurven der Elemente.",
+    "kordelfarben": [
+      "Ecru",
+      "Teak",
+      "Dark Brown"
+    ],
+    "farbmuster_hinweis": "Farb- und Materialmuster bitte im Showroom ansehen; Bildschirm- und Druckfarben sind laut Minotti nur Anhaltspunkte (\"Printed colours are to be considered as purely indicative\")."
+  },
+  "kissenoptionen": [
+    "Optionales Rückenkissen 65x60 cm (PU-Schaum differenzierter Dichte + Viskosefaser)",
+    "Optionales Kissen 55x55 cm",
+    "Lendenkissen (Lumbar cushion)",
+    "Optionale Regenschutzhülle (Rain cover) – \"Available for each element\"; Produktseite zeigt Farben Green, Grey, Pewter"
+  ],
+  "optionale_kissen": [
+    {
+      "name": "Optional backrest cushion 65x60 cm",
+      "breite_cm": 65,
+      "hoehe_cm": 60,
+      "zeichnung": "https://www.minotti.com/media/immagini/48815_n_BEZIER_OPTIONAL_BACKREST_CUSHION_65X60.jpg"
+    },
+    {
+      "name": "Optional cushion 55x55 cm",
+      "breite_cm": 55,
+      "hoehe_cm": 55,
+      "zeichnung": "https://www.minotti.com/media/immagini/48816_n_BEZIER_OPTIONAL_CUSHION_55X55.jpg"
+    }
+  ],
+  "outdoor": true,
+  "outdoor_hinweis": "Outdoor-Sitzsystem; optionale Regenhülle für jedes Element.",
+  "besonderheiten": [
+    "Outdoor-Pendant zu Bézier, inspiriert von der parametrischen Bézier-Kurve.",
+    "Einteiliger, sehr tiefer Sitz; Doppeltiefe-Elemente (154–213 cm) als Liegelandschaft.",
+    "Hocker in vier organischen Formaten, je fest oder mit Rollen.",
+    "Elemente kombinierbar oder einzeln aufstellbar; 8 Beispiel-Arrangements als PDF."
+  ],
+  "rechte_hinweis": "Herstellerbilder und Zeichnungen © Minotti S.p.A.; laut Website ist jede Veränderung (auch teilweise) untersagt. Freistellungen/Bearbeitungen von Minotti-Bildern nur intern/Labs, nicht öffentlich – im Rechte-Register vermerken. CAD-Dateien nur für Interior-Design-Zwecke freigegeben.",
+  "elemente": [
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-armchair-paolina-121x163-cm",
+      "name": "Armchair / Paolina 121x163 cm",
+      "name_de": "Sessel / Paolina 121x163 cm",
+      "art": "sessel",
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 121,
+      "tiefe_cm": 163,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": 66,
+      "koten_draufsicht_cm": [
+        114,
+        156
+      ],
+      "hinweis": "Draufsicht bemaßt 114 x 156 cm (abweichend von Front-/Seitenansicht 121/163).",
+      "zeichnung": "https://www.minotti.com/media/immagini/48845_n_BEZIER_CORD_OUTDOOR_ARMCHAIR_PAOLINA_121X163_H80.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-sofa-270x154-cm-double-depth",
+      "name": "Sofa 270x154 cm - double depth",
+      "name_de": "Sofa 270x154 cm, doppelte Tiefe",
+      "art": "sofa",
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 270,
+      "tiefe_cm": 154,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": 66,
+      "kote_draufsicht_cm": 143,
+      "zeichnung": "https://www.minotti.com/media/immagini/48846_n_BEZIER_CORD_OUTDOOR_SOFA_DOUBLE_DEPTH_270X154_H85.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-element-with-1-armrest-124-cm",
+      "name": "Element with 1 armrest 124 cm",
+      "name_de": "Anbauelement mit 1 Armlehne 124 cm",
+      "art": "anbau",
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 124,
+      "tiefe_cm": 101,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 86,
+      "rueckenhoehe_struktur_cm": 66,
+      "zeichnung": "https://www.minotti.com/media/immagini/48847_n_BEZIER_CORD_OUTDOOR_ELEMENT_WITH_1_ARMREST_124X101_H80.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-element-with-1-armrest-151-cm",
+      "name": "Element with 1 armrest 151 cm",
+      "name_de": "Anbauelement mit 1 Armlehne 151 cm",
+      "art": "anbau",
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 151,
+      "tiefe_cm": 107,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 86,
+      "rueckenhoehe_struktur_cm": 66,
+      "zeichnung": "https://www.minotti.com/media/immagini/51222_n_BEZIER_CORD_OUTDOOR_ELEMENT_WITH_1_ARMREST_151X107_H80.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-element-with-1-armrest-175-cm",
+      "name": "Element with 1 armrest 175 cm",
+      "name_de": "Anbauelement mit 1 Armlehne 175 cm",
+      "art": "anbau",
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 175,
+      "tiefe_cm": 113,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 86,
+      "rueckenhoehe_struktur_cm": null,
+      "hinweis": "Zeichnung bemaßt nur Gesamthöhe 80 cm.",
+      "zeichnung": "https://www.minotti.com/media/immagini/48848_n_BEZIER_CORD_OUTDOOR_ELEMENT_WITH_1_ARMREST_175X113_H80.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-element-with-1-armrest-260x192-cm-double-depth",
+      "name": "Element with 1 armrest 260x192 cm - double depth",
+      "name_de": "Anbauelement mit 1 Armlehne 260x192 cm, doppelte Tiefe",
+      "art": "anbau",
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 260,
+      "tiefe_cm": 192,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": 66,
+      "kote_draufsicht_cm": 86,
+      "zeichnung": "https://www.minotti.com/media/immagini/48849_n_BEZIER_CORD_OUTDOOR_ELEMENT_WITH_1_ARMREST_DOUBLE_DEPTH_260X192_H85.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-central-element-124-cm",
+      "name": "Central element 124 cm",
+      "name_de": "Mittelelement 124 cm",
+      "art": "mittel",
+      "ausfuehrung_seite": null,
+      "breite_cm": 124,
+      "tiefe_cm": 94,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 86,
+      "rueckenhoehe_struktur_cm": 66,
+      "zeichnung": "https://www.minotti.com/media/immagini/48850_n_BEZIER_CORD_OUTDOOR_CENTRAL_ELEMENT_124X94_H80.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-central-element-163-cm",
+      "name": "Central element 163 cm",
+      "name_de": "Mittelelement 163 cm",
+      "art": "mittel",
+      "ausfuehrung_seite": null,
+      "breite_cm": 163,
+      "tiefe_cm": 96,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 86,
+      "rueckenhoehe_struktur_cm": 66,
+      "zeichnung": "https://www.minotti.com/media/immagini/51220_n_BEZIER_CORD_OUTDOOR_CENTRAL_ELEMENT_163X96_H80.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-open-end-element-218-cm",
+      "name": "Open-end element 218 cm",
+      "name_de": "Peninsula-Element 218 cm",
+      "art": "peninsula",
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 218,
+      "tiefe_cm": 119,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 86,
+      "rueckenhoehe_struktur_cm": 66,
+      "zeichnung": "https://www.minotti.com/media/immagini/51223_n_BEZIER_CORD_OUTDOOR_OPEN_END_ELEMENT_218X119_H80.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-central-element-216x176-cm-double-depth",
+      "name": "Central element 216x176 cm - double depth",
+      "name_de": "Mittelelement 216x176 cm, doppelte Tiefe",
+      "art": "mittel",
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 216,
+      "tiefe_cm": 176,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "kote_draufsicht_cm": 86,
+      "hinweis": "Zeichnung bemaßt nur Gesamthöhe 85 cm.",
+      "zeichnung": "https://www.minotti.com/media/immagini/48851_n_BEZIER_CORD_OUTDOOR_CENTRAL_ELEMENT_DOUBLE_DEPTH_216X176_H85.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-central-element-268x213-cm-double-depth",
+      "name": "Central element 268x213 cm - double depth",
+      "name_de": "Mittelelement 268x213 cm, doppelte Tiefe",
+      "art": "mittel",
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 268,
+      "tiefe_cm": 213,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "kote_draufsicht_cm": 86,
+      "hinweis": "Zeichnung bemaßt nur Gesamthöhe 85 cm.",
+      "zeichnung": "https://www.minotti.com/media/immagini/48852_n_BEZIER_CORD_OUTDOOR_CENTRAL_ELEMENT_DOUBLE_DEPTH_268X213_H85.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-corner-element-197x186-cm",
+      "name": "Corner element 197x186 cm",
+      "name_de": "Eckelement 197x186 cm",
+      "art": "ecke",
+      "ausfuehrung_seite": null,
+      "breite_cm": 197,
+      "tiefe_cm": 186,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 86,
+      "rueckenhoehe_struktur_cm": 66,
+      "hinweis": "Seitenvarianten SX/DX in der Zeichnung nicht ausgewiesen.",
+      "zeichnung": "https://www.minotti.com/media/immagini/48853_n_BEZIER_CORD_OUTDOOR_CORNER_ELEMENT_197X186_H80.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-chaise-longue-162x162-cm",
+      "name": "Chaise-longue 162x162 cm",
+      "name_de": "Chaiselongue 162x162 cm",
+      "art": "chaise",
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 162,
+      "tiefe_cm": 162,
+      "hoehe_cm": 85,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "kote_draufsicht_cm": 93,
+      "zeichnung": "https://www.minotti.com/media/immagini/51221_n_BEZIER_CORD_OUTDOOR_CHAISE_LONGUE_162X162_H85.jpg",
+      "anschluesse": "kombinierbar oder freistehend (\"used together in various combinations or as standalone pieces\"); Anschlusswinkel nicht angegeben"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-bench-216x89-cm",
+      "name": "Bench 216x89 cm",
+      "name_de": "Bank 216x89 cm",
+      "art": "bank",
+      "ausfuehrung_seite": null,
+      "breite_cm": 216,
+      "tiefe_cm": 89,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "anschluesse": "freistehend, leicht gebogen",
+      "zeichnung": "https://www.minotti.com/media/immagini/51219_n_BEZIER_CORD_OUTDOOR_BENCH_216X89_H42.jpg"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-ottoman-93x78-cm-fixed",
+      "name": "Ottoman 93x78 cm - FIXED",
+      "name_de": "Hocker 93x78 cm, fest",
+      "art": "hocker",
+      "ausfuehrung_seite": null,
+      "breite_cm": 93,
+      "tiefe_cm": 78,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "rollen": false,
+      "anschluesse": "freistehend",
+      "zeichnung": "https://www.minotti.com/media/immagini/48854_n_BEZIER_CORD_OUTDOOR_OTTOMAN_93X78_H42.jpg"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-ottoman-93x78-cm-with-castors",
+      "name": "Ottoman 93x78 cm - WITH CASTORS",
+      "name_de": "Hocker 93x78 cm, mit Rollen (360° drehbar)",
+      "art": "hocker",
+      "ausfuehrung_seite": null,
+      "breite_cm": 93,
+      "tiefe_cm": 78,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "rollen": true,
+      "anschluesse": "freistehend",
+      "zeichnung": "https://www.minotti.com/media/immagini/49709_n_BEZIER_CORD_OUTDOOR_OTTOMAN_VERSION_WITH_CASTORS_93X78_H42.jpg"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-ottoman-129x114-cm-fixed",
+      "name": "Ottoman 129x114 cm - FIXED",
+      "name_de": "Hocker 129x114 cm, fest",
+      "art": "hocker",
+      "ausfuehrung_seite": null,
+      "breite_cm": 129,
+      "tiefe_cm": 114,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "rollen": false,
+      "anschluesse": "freistehend",
+      "zeichnung": "https://www.minotti.com/media/immagini/48855_n_BEZIER_CORD_OUTDOOR_OTTOMAN_129X114_H42.jpg"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-ottoman-129x114-cm-with-castors",
+      "name": "Ottoman 129x114 cm - WITH CASTORS",
+      "name_de": "Hocker 129x114 cm, mit Rollen (360° drehbar)",
+      "art": "hocker",
+      "ausfuehrung_seite": null,
+      "breite_cm": 129,
+      "tiefe_cm": 114,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "rollen": true,
+      "anschluesse": "freistehend",
+      "zeichnung": "https://www.minotti.com/media/immagini/49710_n_BEZIER_CORD_OUTDOOR_OTTOMAN_VERSION_WITH_CASTORS_129X114_H42.jpg"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-ottoman-78x121-cm-fixed",
+      "name": "Ottoman 78x121 cm - FIXED",
+      "name_de": "Hocker 78x121 cm, fest",
+      "art": "hocker",
+      "ausfuehrung_seite": null,
+      "breite_cm": 78,
+      "tiefe_cm": 121,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "rollen": false,
+      "anschluesse": "freistehend",
+      "zeichnung": "https://www.minotti.com/media/immagini/48856_n_BEZIER_CORD_OUTDOOR_OTTOMAN_78X121_H42.jpg"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-ottoman-78x121-cm-with-castors",
+      "name": "Ottoman 78x121 cm - WITH CASTORS",
+      "name_de": "Hocker 78x121 cm, mit Rollen (360° drehbar)",
+      "art": "hocker",
+      "ausfuehrung_seite": null,
+      "breite_cm": 78,
+      "tiefe_cm": 121,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "rollen": true,
+      "anschluesse": "freistehend",
+      "zeichnung": "https://www.minotti.com/media/immagini/49713_n_BEZIER_CORD_OUTDOOR_OTTOMAN_VERSION_WITH_CASTORS_78X121_H42.jpg"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-ottoman-114x156-cm-fixed",
+      "name": "Ottoman 114x156 cm - FIXED",
+      "name_de": "Hocker 114x156 cm, fest",
+      "art": "hocker",
+      "ausfuehrung_seite": null,
+      "breite_cm": 114,
+      "tiefe_cm": 156,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "rollen": false,
+      "anschluesse": "freistehend",
+      "zeichnung": "https://www.minotti.com/media/immagini/48857_n_BEZIER_CORD_OUTDOOR_OTTOMAN_114X156_H42.jpg"
+    },
+    {
+      "code": null,
+      "id": "bezier-cord-outdoor-ottoman-114x156-cm-with-castors",
+      "name": "Ottoman 114x156 cm - WITH CASTORS",
+      "name_de": "Hocker 114x156 cm, mit Rollen (360° drehbar)",
+      "art": "hocker",
+      "ausfuehrung_seite": null,
+      "breite_cm": 114,
+      "tiefe_cm": 156,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": null,
+      "rueckenhoehe_struktur_cm": null,
+      "rollen": true,
+      "anschluesse": "freistehend",
+      "zeichnung": "https://www.minotti.com/media/immagini/49712_n_BEZIER_CORD_OUTDOOR_OTTOMAN_VERSION_WITH_CASTORS_114X156_H42.jpg"
+    }
+  ],
+  "fehlend": [
+    "Minotti-Artikelcodes nicht öffentlich (code = null).",
+    "Sitz- und Rückenhöhe beim Element 175 cm und den Mittelelementen doppelter Tiefe nicht bemaßt (nur Gesamthöhe).",
+    "Sitztiefe bei Doppeltiefe-Elementen, Sofa, Paolina und Chaiselongue nicht eindeutig (nur Draufsicht-Koten 86/93/143 dokumentiert).",
+    "Seitenvarianten des Eckelements nicht angegeben.",
+    "Anschlusswinkel/Kombinationsregeln der gekrümmten Elemente nicht veröffentlicht (nur Arrangements).",
+    "Exakte Grundriss-Konturen nur in DWG/3D/BIM-Dateien.",
+    "Lendenkissen-Maße nur als unbeschriftete Koten (24/13 cm).",
+    "Outdoor-Stoffkategorien/Preisgruppen nicht öffentlich.",
+    "Gewichte, Preise, Lieferzeiten nicht öffentlich."
+  ],
+  "anzahl_elemente": 22,
+  "vollstaendigkeit": {
+    "massfelder_gesamt": 101,
+    "massfelder_belegt": 92,
+    "prozent": 91,
+    "hinweis": "Anteil belegter Maßfelder (Breite/Tiefe/Höhe/Sitzhöhe/Sitztiefe; bei Hockern/Bänken ohne Sitztiefe) an allen relevanten Maßfeldern."
+  }
+}

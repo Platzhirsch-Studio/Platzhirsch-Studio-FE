@@ -1,0 +1,222 @@
+{
+ "$note": "Showroom-Texte (dealers_title_*/dealers_description_*) aller Marken aus dem Backoffice (GET marken_data, backoffice.platzhirsch.studio), nur diese Felder. Fixture für tests/unit/r8-claims-laender.test.mjs (recht P0-2). Neu ziehen: GET-Abruf wie dort beschrieben.",
+ "stand": "2026-10-28",
+ "marken": [
+  {
+   "name1": "101 Copenhagen",
+   "status": "Aktiv",
+   "dealers_title_de": "101 Copenhagen bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr 101 Copenhagen Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Möbel und Wohnaccessoires von 101 Copenhagen live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Livintwist",
+   "status": "Aktiv",
+   "dealers_title_de": "Livintwist bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Livintwist Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Outdoormöbel von Livintwist live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Solpuri",
+   "status": "Aktiv",
+   "dealers_title_de": "Solpuri bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Solpuri Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Outdoormöbel von Solpuri live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Tuuci",
+   "status": "Aktiv",
+   "dealers_title_de": "Tuuci bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Tuuci Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Sonnenschirme und Beschattungssysteme von Tuuci live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Umbrosa",
+   "status": "Aktiv",
+   "dealers_title_de": "Umbrosa bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Umbrosa Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Sonnenschirme und Beschattungssysteme von Umbrosa live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Desalto",
+   "status": "Aktiv",
+   "dealers_title_de": "Desalto bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Desalto Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Möbel von Desalto live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Next125",
+   "status": "Aktiv",
+   "dealers_title_de": "Next125 bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Next125 Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Küchen von Next125 live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung und Montage in ganz Österreich."
+  },
+  {
+   "name1": "Bullfrog",
+   "status": "Aktiv",
+   "dealers_title_de": "Bullfrog bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Bullfrog Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Sofas von Bullfrog live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Bombyxx",
+   "status": "Aktiv",
+   "dealers_title_de": "Bombyxx bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Bombyxx Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die mundgeblasenen Glasobjekte und Wohnaccessoires von Bombyxx live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "EMU",
+   "status": "Aktiv",
+   "dealers_title_de": "EMU bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr EMU Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Outdoormöbel von EMU live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Trapa",
+   "status": "Aktiv",
+   "dealers_title_de": "Trapa bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Trapa Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die veredelten Holzböden von Trapa live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Pomax",
+   "status": "Aktiv",
+   "dealers_title_de": "Pomax bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Pomax Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Wohnaccessoires von Pomax live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Frost",
+   "status": "Aktiv",
+   "dealers_title_de": "Frost bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Frost Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Bad- und Architekturbeschläge von Frost live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Lambert",
+   "status": "Aktiv",
+   "dealers_title_de": "Lambert bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Lambert Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Möbel und Wohnaccessoires von Lambert live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Heatsail",
+   "status": "Aktiv",
+   "dealers_title_de": "Heatsail bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Heatsail Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Outdoor-Heizungen und Leuchten von Heatsail live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Tom Dixon",
+   "status": "Aktiv",
+   "dealers_title_de": "Tom Dixon bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Tom Dixon Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Leuchten und Möbel von Tom Dixon live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Sifas",
+   "status": "Aktiv",
+   "dealers_title_de": "Sifas bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Sifas Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Outdoormöbel von Sifas live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Papadatos",
+   "status": "Aktiv",
+   "dealers_title_de": "Papadatos bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Papadatos Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Polstermöbel von Papadatos live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Treca",
+   "status": "Aktiv",
+   "dealers_title_de": "Treca bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Treca Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die handgefertigten Betten und Matratzen von Treca live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Brand van Egmond",
+   "status": "Aktiv",
+   "dealers_title_de": "Brand van Egmond bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Brand van Egmond Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die handgeschmiedeten Lichtskulpturen von Brand van Egmond live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Qeeboo",
+   "status": "Aktiv",
+   "dealers_title_de": "Qeeboo bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr Qeeboo Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die skulpturalen Möbel und Objekte von Qeeboo live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Rimadesio",
+   "status": "Aktiv",
+   "dealers_title_de": "Rimadesio bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Rimadesio Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Schiebetüren und Raumsysteme von Rimadesio live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung und Montage in ganz Österreich."
+  },
+  {
+   "name1": "Minotti",
+   "status": "Aktiv",
+   "dealers_title_de": "Minotti bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Minotti Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Sofas und Möbel von Minotti live – wir begleiten Sie von der persönlichen Beratung über die Planung bis zur Lieferung und Montage in ganz Österreich."
+  },
+  {
+   "name1": "Flos",
+   "status": "Aktiv",
+   "dealers_title_de": "Flos bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Flos Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Leuchten von Flos live – wir beraten Sie persönlich und liefern in ganz Österreich."
+  },
+  {
+   "name1": "Poliform",
+   "status": "Aktiv",
+   "dealers_title_de": "Poliform bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Poliform Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Möbel und Küchen von Poliform live – wir beraten Sie persönlich und liefern in ganz Österreich."
+  },
+  {
+   "name1": "Paola Lenti",
+   "status": "Aktiv",
+   "dealers_title_de": "Paola Lenti bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Paola Lenti Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Outdoor-Möbel und Teppiche von Paola Lenti live – wir beraten Sie persönlich und liefern in ganz Österreich."
+  },
+  {
+   "name1": "Eichholtz",
+   "status": "Aktiv",
+   "dealers_title_de": "Eichholtz bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Eichholtz Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Möbel, Leuchten und Accessoires von Eichholtz live – wir beraten Sie persönlich und liefern in ganz Österreich."
+  },
+  {
+   "name1": "Tonon",
+   "status": "Aktiv",
+   "dealers_title_de": "Tonon bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Tonon Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Stühle, Tische und Sitzmöbel von Tonon live – wir beraten Sie persönlich und liefern in ganz Österreich."
+  },
+  {
+   "name1": "Gloster",
+   "status": "Aktiv",
+   "dealers_title_de": "Gloster bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Gloster Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Outdoor-Möbel von Gloster live – wir beraten Sie persönlich und liefern in ganz Österreich."
+  },
+  {
+   "name1": "ClassiCon",
+   "status": "Aktiv",
+   "dealers_title_de": "ClassiCon bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller ClassiCon Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Möbel und Leuchten von ClassiCon live – wir beraten Sie persönlich und liefern in ganz Österreich."
+  },
+  {
+   "name1": "Alonpi",
+   "status": "Aktiv",
+   "dealers_title_de": "Alonpi bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Alonpi Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Kaschmir-Decken und Wohnaccessoires von Alonpi live – wir beraten Sie persönlich und liefern in ganz Österreich."
+  },
+  {
+   "name1": "Quasar",
+   "status": "Aktiv",
+   "dealers_title_de": "Quasar bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Quasar Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Leuchten von Quasar live – wir beraten Sie persönlich und liefern in ganz Österreich."
+  },
+  {
+   "name1": "Schueller",
+   "status": "Aktiv",
+   "dealers_title_de": "Schüller bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Schüller Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Küchen von Schüller live – wir begleiten Sie von der Planung bis zur Montage in ganz Österreich."
+  },
+  {
+   "name1": "Antoniolupi",
+   "status": "Aktiv",
+   "dealers_title_de": "antoniolupi bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller antoniolupi Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Waschtische und Badmöbel von antoniolupi live – wir beraten Sie persönlich und liefern in ganz Österreich."
+  },
+  {
+   "name1": "Agape",
+   "status": "Aktiv",
+   "dealers_title_de": "Agape bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Agape Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Waschtische und Badmöbel von Agape live – wir begleiten Sie von der persönlichen Beratung bis zur Lieferung in ganz Österreich."
+  },
+  {
+   "name1": "Baobab",
+   "status": "Aktiv",
+   "dealers_title_de": "Baobab bei Platzhirsch Studio",
+   "dealers_description_de": "Platzhirsch Studio ist Ihr offizieller Baobab Collection Händler in Vorarlberg. In unserer Ausstellung in Lochau erleben Sie die Duftkerzen und Diffusoren von Baobab live – wir beraten Sie persönlich und liefern in ganz Österreich."
+  }
+ ]
+}

@@ -1,0 +1,247 @@
+{
+  "name": "Tape",
+  "slug": "tape",
+  "hersteller": "Minotti",
+  "designer": "Nendo (Oki Sato)",
+  "jahr": 2018,
+  "jahr_hinweis": "Produktseite: „2018 Collection“; Technical Sheet © Minotti 2018.",
+  "typ": "Sitzfamilie mit Schale und außenliegenden Metallfüßen: Zwei- und Dreisitzer-Sofa (nicht modular), Bergère, Sessel mit/ohne Armlehnen, Hocker",
+  "modular": false,
+  "outdoor": false,
+  "quellen": [
+    "https://www.minotti.com/en/tape_2",
+    "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/14462/14125/MINOTTI_Tape.rfa.zip",
+    "https://www.minotti.com/downloads/10411/21544/MINOTTI_CONSUMER_CATALOGUE_THE_COLLECTION_2024.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "masse_hinweis": "Maße aus dem Technical Sheet (2018). Lesart: 74,5 = Gesamthöhe, 64,5 = Armlehnenhöhe (fehlt bei Sesseln ohne Armlehnen), 40 = Sitzhöhe. CAD-Maße können leicht abweichen.",
+  "rechte_hinweis": "Bild-URLs nur als Quellennachweis. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "preis": {
+    "hinweis": "Keine Preise erfasst. Preise nur aus der Konfigurationstabelle, gekennzeichnet „Richtwert – vom Inhaber festzulegen“."
+  },
+  "elemente": [
+    {
+      "sitztiefe_cm": null,
+      "code": "tape-sofa-163",
+      "name": "SOFA CM 163",
+      "art": "sofa",
+      "breite_cm": 163,
+      "tiefe_cm": 78,
+      "hoehe_cm": 74.5,
+      "sitzhoehe_cm": 40,
+      "armlehnenhoehe_cm": 64.5,
+      "anschluesse": "Freistehend, nicht modular (Zweisitzer lt. Produktbeschreibung)",
+      "quelle": "https://www.minotti.com/media/immagini/21693_n_TAPE-SOFA-163.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/tape_2"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "tape-sofa-228",
+      "name": "SOFA CM 228",
+      "art": "sofa",
+      "breite_cm": 228,
+      "tiefe_cm": 79,
+      "hoehe_cm": 74.5,
+      "sitzhoehe_cm": 40,
+      "armlehnenhoehe_cm": 64.5,
+      "anschluesse": "Freistehend, nicht modular (Dreisitzer lt. Produktbeschreibung)",
+      "quelle": "https://www.minotti.com/media/immagini/21694_n_TAPE-SOFA-228.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/tape_2"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "tape-bergere",
+      "name": "BERGÈRE",
+      "art": "sessel",
+      "breite_cm": 77,
+      "tiefe_cm": 79,
+      "hoehe_cm": 106,
+      "sitzhoehe_cm": 40,
+      "armlehnenhoehe_cm": 64.5,
+      "weitere_masse_cm": [
+        {
+          "wert": 67,
+          "bedeutung": "Unbeschriftetes Maß in der Draufsicht"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21695_n_TAPE-BERGERE.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/tape_2"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "tape-armchair",
+      "name": "ARMCHAIR",
+      "art": "sessel",
+      "breite_cm": 77,
+      "tiefe_cm": 76,
+      "hoehe_cm": 74.5,
+      "sitzhoehe_cm": 40,
+      "armlehnenhoehe_cm": 64.5,
+      "weitere_masse_cm": [
+        {
+          "wert": 67,
+          "bedeutung": "Unbeschriftetes Maß in der Draufsicht"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21696_n_TAPE-ARMCHAIR.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/tape_2"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "tape-armchair-without-armrests-70x76",
+      "name": "ARMCHAIR WITHOUT ARMRESTS CM 70X76",
+      "art": "sessel",
+      "breite_cm": 70,
+      "tiefe_cm": 76,
+      "hoehe_cm": 74.5,
+      "sitzhoehe_cm": 40,
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/21697_n_TAPE-ARMCHAIR-WITHOUT-ARMREST-70X76.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/tape_2"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "tape-armchair-without-armrests-60x62",
+      "name": "ARMCHAIR WITHOUT ARMRESTS CM 60X62",
+      "art": "sessel",
+      "breite_cm": 60,
+      "tiefe_cm": 62,
+      "hoehe_cm": 74.5,
+      "sitzhoehe_cm": 40,
+      "armlehnenhoehe_cm": null,
+      "hinweise": [
+        "In der 3D-Dateiliste der Produktseite nicht enthalten; im Datenblatt und in der Elementliste vorhanden."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21698_n_TAPE-ARMCHAIR-WITHOUT-ARMREST-60X62.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/tape_2"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "tape-footstool",
+      "name": "FOOTSTOOL",
+      "art": "hocker",
+      "breite_cm": 60,
+      "tiefe_cm": 58,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "quelle": "https://www.minotti.com/media/immagini/21699_n_TAPE-FOOTSTOOL.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/tape_2"
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Eine Ausführung: Schale mit eingelegtem weichem Rückenkissen; Rücken per Schnellverschluss von der Basis abnehmbar (zum Abziehen)"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Mit Armlehnen (in die Schale integriert)",
+      "elemente": "SOFA 163/228, BERGÈRE, ARMCHAIR"
+    },
+    {
+      "name": "Ohne Armlehnen",
+      "elemente": "ARMCHAIR WITHOUT ARMRESTS 70×76 und 60×62"
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Basis/Beine (außen an der Struktur, gehalten vom „Tape“-Band)",
+      "material": "Metall",
+      "finish": [
+        "Bronze glänzend, Anti-Fingerprint"
+      ]
+    },
+    {
+      "teil": "Vordere Beine",
+      "material": "Band aus gebogenem Metall",
+      "finish": [
+        "Bronze (wie Basis)"
+      ]
+    },
+    {
+      "teil": "Hintere Beine – Zierband",
+      "material": "Leder (gleich Rückenbezug) oder Kernleder (Cuoio)",
+      "finish": [
+        "Kernleder Bronze, wenn Rücken in Stoff"
+      ]
+    },
+    {
+      "teil": "Verstellbare Füßchen",
+      "material": "Edelstahl",
+      "finish": [
+        "Bronze lackiert"
+      ]
+    },
+    {
+      "teil": "Gleiter",
+      "material": "Polyethylen schwarz"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "kombinationen": [
+      "A) komplett in Stoff oder Leder",
+      "B) Rückenstruktur in Nappaleder (Kat. Pelle Extra), Rücken- und Sitzkissen in Stoff",
+      "C) Rückenstruktur in Leder Aspen oder Nabuk Lodge (Kat. Pelle Nature), Rücken- und Sitzkissen in Stoff"
+    ],
+    "bezugsart": "Abnehmbar: Rückenkissen und Struktur in allen Versionen (Stoff und Leder) komplett abziehbar.",
+    "preisgruppen": null,
+    "farbmuster_hinweis": "Original-Stoff- und Ledermuster (Minotti „The World of Materials“) bitte im Showroom ansehen – Bildschirmfarben sind nicht verbindlich."
+  },
+  "polsterung": "Sitz aus Massivholz mit elastischen Gurten (hoher Kautschukanteil); Rücken mit Metalleinlage in flammhemmendem PU-Schaum, Sitz in PU-Schaum unterschiedlicher Dichte; ummantelt mit thermogebundener Faser auf weißem hypoallergenem Baumwollstoff. Rückenkissen: thermogebundene Faser mit PU-Kern.",
+  "kissenoptionen": [
+    {
+      "name": "Keine optionalen Kissen in Elementliste/Datenblatt",
+      "masse_cm": null
+    }
+  ],
+  "kombinierbarkeit": [
+    "Keine Modulkombination; Einzelstücke. Hersteller kombiniert Tape-Sessel/-Sofa in Alexander-Kompositionen."
+  ],
+  "besonderheiten": [
+    "Namensgebendes „Tape“-Detail: Band, das die bronzefarbenen Metallfüße außen an der Schale hält.",
+    "Zwei Bezugskonzepte: Schale und Band in gleichfarbigem Leder, oder Schale in Stoff mit Band aus Bronze-Kernleder.",
+    "Für Wohnen und Hospitality."
+  ],
+  "fehlend": [
+    "Sitztiefe (nicht beschriftet).",
+    "Bedeutung des Draufsichtmaßes 67 (Bergère/Sessel).",
+    "Lounge-Sessel aus der Produktbeschreibung – nicht in Elementliste/Datenblatt.",
+    "Minotti-Artikelnummern.",
+    "Vollständige Stoff-/Lederliste und Preisgruppen.",
+    "Preise (vom Inhaber festzulegen), Gewicht, Lieferzeit."
+  ],
+  "vollstaendigkeit": {
+    "felder_gesamt": 35,
+    "felder_belegt": 28,
+    "prozent": 80,
+    "basis": "Maßfelder breite/tiefe/hoehe/sitzhoehe/sitztiefe aller Sitz-/Hocker-Elemente (ohne Kissen/Zubehör)"
+  },
+  "vollstaendigkeit_prozent": 80
+}

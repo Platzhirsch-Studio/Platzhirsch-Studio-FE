@@ -1,0 +1,206 @@
+/* Homepage additions of Fix-Runde 1 (F1): line graphic of the USP chapter and
+   the typographic composition of the dark chapter. Tokens only. */
+
+.study {
+  position: relative;
+  aspect-ratio: 2048 / 1228;
+  background-color: var(--color-surface);
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 6.25% 10.42%;
+  background-position: -1px -1px;
+  border: 1px solid var(--color-line);
+}
+.studySvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.studyGuides path {
+  stroke: var(--color-line-strong);
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+.studyPens :is(path, use) {
+  stroke: var(--color-text);
+  stroke-width: 1.25px;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Draw-in while the figure enters the viewport (scroll-driven, Chromium);
+   elsewhere and with reduced motion the finished graphic stands. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html:not([data-motion="reduced"])) .studyPens :is(path, use) {
+      stroke-dasharray: 1 1;
+      animation: study-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 45%;
+    }
+  }
+}
+@keyframes study-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Dark chapter "Showroom & Café": typographic card with the opening hours
+   (no photo until the owner's own pictures arrive). Height = content
+   (Runde 2 P2, ux P2-2: no empty 4:5 frame). */
+.house {
+  position: relative;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px solid var(--color-line-inverse);
+}
+.houseRule {
+  display: block;
+  width: 4rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+/* R5-USP: typographic composition of the USP chapter while there is no real
+   sketch (Process.js). Hairline frame like the house card, no picture, no
+   placeholder look: three words, a short rule, the owner's sentence. */
+.processType {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+@media (min-width: 640px) {
+  .processType {
+    gap: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .processType {
+    gap: 1.5rem;
+    padding: 2.5rem 2.5rem 2.25rem 0;
+    border-top: 1px solid var(--color-line-strong);
+  }
+}
+.processRule {
+  display: none;
+}
+@media (min-width: 640px) {
+  .processRule {
+    display: block;
+  }
+}
+.processRule {
+  width: 3rem;
+  height: 1px;
+  background: var(--color-ink);
+}
+
+/* QM shell-home 01.11.2026: landscape phones (e.g. 844 × 390). The stage
+   frame is 3:2 from 640 px – 563 px high on a 390 px screen, so the H1 and
+   "Termin anfragen" were not in the first view. On short landscape screens
+   below lg the frame is capped (the photo crops via object-cover). */
+/* QM shell-home r2: capping the frame was not enough – the stage control
+   ("Die Linie zeigen") and its caption still came first, the H1 started at
+   366 of 390 px. On short landscape screens the order is now H1 → actions →
+   stage (unlayered, so it beats Tailwind's order-first on the stage); lead
+   and info line follow the stage as before. */
+/* QM shell-home r4 (phone-quer 844 × 390): capped at 40svh the photo was a
+   117 px strip of chair backs and floor – the wrong crop for the one hero
+   image. Short landscape screens below lg now get two columns: text (H1,
+   actions, lead, info) on the left, the stage on the right in 4:3 next to
+   it, so the first view holds the H1, "Termin wählen" AND a real photo. */
+@media (orientation: landscape) and (max-height: 500px) and (max-width: 1023px) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: repeat(5, auto) 1fr;
+    align-content: start;
+    column-gap: 0;
+  }
+  .heroGrid > * {
+    grid-column: 1;
+  }
+  .heroGrid > .heroStage {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    order: 0;
+    align-self: start;
+    padding-top: 0.75rem;
+  }
+  .heroStage [data-wow-frame] {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    max-height: calc(100svh - 7rem);
+  }
+  /* display-l of the sm layout is too tall for the half column */
+  .heroHead h1 > span:first-child {
+    font-size: var(--text-display-m);
+    line-height: 1.1;
+  }
+}
+.heroGrid {
+  min-width: 0;
+}
+/* Classes used only inside the media query above (CSS modules export them). */
+.heroHead,
+.heroCta {
+  min-width: 0;
+}
+
+/* QM shell-home r2 (200 % text, desktop): the stage spans the text rows; with
+   doubled text they reached ~2 000 px and the first view showed only ceiling
+   and curtain. The photo row is capped at the screen height (px/svh, so it
+   does not grow with the text); spare height stays below the caption. At
+   normal text sizes the cap is never reached. */
+@media (min-width: 1024px) {
+  .heroStage[data-wow-stage] {
+    grid-template-rows: minmax(0, max(480px, calc(100svh - 150px))) 52px minmax(32px, auto);
+    align-content: start;
+  }
+}
+
+/* QM shell-home r3: steps of the USP chapter (Process.js). Two columns while
+   the column is wide enough IN REM – phones at 100 % (≥ 20rem) and from 640 px
+   only from 34rem; with 200 % text the rem doubles and the list falls back to
+   one column (WCAG 1.4.4: no name over the neighbouring pictogram). */
+.stepsWrap {
+  container-type: inline-size;
+}
+.steps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+@container (min-width: 20rem) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 640px) {
+  @container (max-width: 33.99rem) {
+    .steps {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}
+/* QM shell-home r5 (iPad): seven steps in two columns left step 07 alone
+   next to an empty cell with its rule. In the two-column layout the last
+   step spans both columns (its pictogram and text stay at the start). */
+@container (min-width: 20rem) {
+  .steps > li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+@media (min-width: 640px) {
+  @container (max-width: 33.99rem) {
+    .steps > li:last-child:nth-child(odd) {
+      grid-column: auto;
+    }
+  }
+}

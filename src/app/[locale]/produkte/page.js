@@ -1,21 +1,21 @@
 import { getTranslations } from "next-intl/server";
-import BreadcrumbBar from "@/components/Reusable/breadcrumbBar";
+import CatalogHeader from "@/components/ShopCatalog/catalogHeader";
+import { withFallback } from "@/components/ShopCatalog/copy";
 import ShopCategoryGrid from "@/components/ShopCatalog/shopCategoryGrid";
-import { fetchKategorienWithCounts } from "@/lib/api/fetchAllProdukte";
-import { fetchKategorien, getKategorieLabel, getKategorieAlt } from "@/lib/api/fetchKategorien";
-import { localizeCategory } from "@/lib/seo/productCategories";
-import { generateSlug } from "@/lib/slugify";
-import { getCategoryImage } from "@/lib/shop/categoryImages";
+import { loadHubSections } from "@/lib/shop/hubSections";
 import { ROUTES } from "@/utils/routing";
 import { buildPageMetadata, localeUrl } from "@/lib/seo/pageMetadata";
 import { breadcrumbList, collectionPageSchema, graph } from "@/lib/seo/structuredData";
 import JsonLd from "@/components/Reusable/JsonLd";
 import { hubSeo } from "@/lib/seo/shopSeoCopy";
+import { CatalogSearchForm } from "@/components/ShopCatalog/catalogSearch";
+import LegacySearchRedirect from "@/components/ShopCatalog/legacySearchRedirect";
+import { homeCrumbLabel } from "@/lib/seo/breadcrumbs";
 
 
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "Catalogo Prodotti";
+    case "it": return "Catalogo prodotti";
     case "en": return "Product Catalog";
     case "fr": return "Catalogue Produits";
     default: return "Produktkatalog";
@@ -24,6 +24,11 @@ const getLocalizedTitle = (locale) => {
 
 // Indexable in every locale, each at its translated hub path (/de/produkte,
 // /en/products, …) with hreflang between them.
+// Runde 2 (technik P2-1): the hub is static/ISR again – it no longer reads
+// searchParams. The search (?q=, F6) has its own page /produkte/suche
+// (noindex, follow; canonical = hub). Old links /produkte?q=… (navbar Enter)
+// are forwarded on the client by LegacySearchRedirect.
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const { title, description } = hubSeo(locale);
@@ -34,6 +39,14 @@ export async function generateMetadata({ params }) {
 // showcasing the products, instead of one long filtered list) — this page is the
 // directory linking into /produkte/[category], grouped like the navbar's
 // Produkte mega-menu (ProductsMenu.groups in messages/*.json).
+// QM wm-r4: room photo for the hub head on wide screens – the first tile
+// picture of a later group (the first group's photo is the tiles' LCP image).
+function hubHeaderMedia(sections) {
+  const list = Array.isArray(sections) ? sections : [];
+  const tile = [...list.slice(1), ...list.slice(0, 1)].map((s) => s?.tiles?.find((c) => c?.image)).find(Boolean);
+  return tile ? { src: tile.image, alt: tile.alt || tile.label || "" } : null;
+}
+
 export default async function ShopPage({ params }) {
   const { locale } = await params;
 
@@ -41,80 +54,19 @@ export default async function ShopPage({ params }) {
   const tMenu = await getTranslations({ locale, namespace: "ProductsMenu" });
 
   const title = getLocalizedTitle(locale);
-  const Home = locale === "it" ? "Home" : locale === "en" ? "Home" : locale === "fr" ? "Accueil" : "Home";
+  // R9-P5 (seo P2-1): one home label per language, visible and in JSON-LD (DE „Startseite“).
+  const Home = homeCrumbLabel(locale);
   const productsLabel = locale === "it" ? "Prodotti" : locale === "en" ? "Products" : locale === "fr" ? "Produits" : "Produkte";
   const productPath = ROUTES.produkte[locale] ? `${ROUTES.produkte[locale]}` : `/produkte`;
   // Category links use the translated catalogue path (/products/…, /produits/…).
   const basePath = productPath;
 
-  const breadcrumbLinks = [
-    { linkName: Home, link: "/" },
-    { linkName: productsLabel, link: productPath },
-  ];
+  // Breadcrumb trail (visible); the BreadcrumbList JSON-LD stays in the
+  // CollectionPage graph below.
+  const crumbs = [{ label: Home, href: "/" }, { label: productsLabel }];
+  const tc = withFallback(t, locale, "shop");
 
-  const [kategorienWithCounts, kategorien] = await Promise.all([fetchKategorienWithCounts(), fetchKategorien()]);
-  // Active-product count per category, straight from the backend (the hub
-  // doesn't need the products themselves). Keyed by category_key, the same key
-  // the CMS list and the /produkte/[category] slugs use.
-  const countByKey = new Map(
-    kategorienWithCounts
-      .filter((k) => k.category_key)
-      .map((k) => [k.category_key.toLowerCase(), Number(k.produkt_count) || 0])
-  );
-
-  // The Produkte Kategorie CMS list is the source of truth for which tiles show
-  // up (it's curated on purpose, independent of what happens to have products
-  // today) — the counts only decide which tiles have products. Falls back to
-  // the counted categories alone if the Kategorien API is empty/unreachable,
-  // so the hub never goes blank just because one of the two calls failed.
-  const categorySource = kategorien.length
-    ? kategorien.map((cms) => ({ categoryKey: cms.category_key, cms }))
-    : [...countByKey.keys()].map((categoryKey) => ({ categoryKey, cms: null }));
-
-  const categories = categorySource
-    .map(({ categoryKey, cms }, index) => {
-      const label = cms ? getKategorieLabel(cms, locale) : localizeCategory(categoryKey, locale);
-      const count = countByKey.get(String(categoryKey || "").toLowerCase()) || 0;
-      const slug = generateSlug(categoryKey);
-      return {
-        slug,
-        label,
-        alt: cms ? getKategorieAlt(cms, locale) : label,
-        count,
-        countLabel: t("resultsCount", { count }),
-        // CMS image first, else a matching room photo (a room shot reads better
-        // on this overview than a product cut-out, and keeps the tiles uniform).
-        image: cms?.image ? `/cmx${cms.image}` : getCategoryImage(slug, index),
-      };
-    })
-    // Only categories that actually have products get a tile.
-    .filter((c) => c.count > 0);
-
-  // Group the tiles like the navbar mega-menu (same order, same translated
-  // titles). Categories the menu doesn't list yet land in a trailing
-  // "more categories" group, so nothing the CMS adds is ever hidden.
-  const categoriesBySlug = new Map(categories.map((c) => [c.slug, c]));
-  const placed = new Set();
-  const groups = (tMenu.raw("groups") || []).map((group, i) => {
-    const items = group.items
-      .map((item) => categoriesBySlug.get(generateSlug(item.key)))
-      .filter(Boolean);
-    items.forEach((c) => placed.add(c.slug));
-    return { id: `group-${i + 1}`, title: group.title, items };
-  });
-  const rest = categories
-    .filter((c) => !placed.has(c.slug))
-    .sort((a, b) => a.label.localeCompare(b.label));
-  if (rest.length) groups.push({ id: "group-more", title: t("moreCategories"), items: rest });
-
-  const sections = groups
-    .filter((g) => g.items.length > 0)
-    .map((g) => ({
-      id: g.id,
-      title: g.title,
-      tiles: g.items,
-      countLabel: t("resultsCount", { count: g.items.reduce((sum, c) => sum + c.count, 0) }),
-    }));
+  const { categories, sections } = await loadHubSections(locale, { t, tMenu });
 
   // CollectionPage + ItemList of the category pages shown as tiles.
   const pageUrl = localeUrl(locale, productPath);
@@ -135,12 +87,12 @@ export default async function ShopPage({ params }) {
   return (
     <div>
       <JsonLd data={structuredData} />
-      <BreadcrumbBar links={breadcrumbLinks} title={title} subtitle={hubSeo(locale).description} />
-      <ShopCategoryGrid
-        sections={sections}
-        locale={locale}
-        basePath={basePath}
-      />
+      <LegacySearchRedirect locale={locale} />
+      <CatalogHeader crumbs={crumbs} eyebrow={tc("catalog.hubEyebrow")} title={title} lead={hubSeo(locale).description} media={hubHeaderMedia(sections)}>
+        <CatalogSearchForm locale={locale} />
+      </CatalogHeader>
+      {/* R6-produkt-perf (Fix): no Suspense boundary here – React 19 outlines large boundaries into a hidden <div id="S:0"> after </main>, so without JS the content was missing. */}
+      <ShopCategoryGrid sections={sections} locale={locale} basePath={basePath} jumpLabel={tc("catalog.jumpTo")} />
     </div>
   );
 }

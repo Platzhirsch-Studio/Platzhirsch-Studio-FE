@@ -1,0 +1,464 @@
+{
+  "_zweck": "SEO-Team A Fork 2 (31.10.2026): Faktenblock Über uns, FAQ Bad & Wellness, Küchengeräte, Über uns, Beratung (GEO W2/W5, AP-12)",
+  "_add": true,
+  "de": {
+    "seoGeo.facts": {
+      "eyebrow": "Fakten",
+      "title": "Auf einen Blick",
+      "whoLabel": "Wer",
+      "whoText": "{name} ist ein Einrichtungsstudio für Designermöbel und Interior Design mit eigenem Café im Haus. Betreiberin ist die {legalName}.",
+      "whereLabel": "Wo",
+      "whereText": "{address}, am Bodensee zwischen Bregenz und Lindau.",
+      "minottiLabel": "Minotti Studio",
+      "minottiLink": "Pressemeldung von Minotti zur Eröffnung",
+      "dealersLabel": "Händlermarken",
+      "groupFurniture": "Möbel und Leuchten",
+      "groupPool": "Glasmosaik",
+      "groupBath": "Bad und Wellness",
+      "groupKitchen": "Küchengeräte",
+      "groupAccessories": "Accessoires",
+      "servicesLabel": "Leistungen",
+      "servicesText": "Einrichtungsplanung von Hand mit Raummodell, 3D-Planung und Rendering; Küchen mit Einbaugeräten; Bad und Wellness; Outdoor; Hotel und Objekt; Yacht-Interior. Lieferung und Montage auf Wunsch.",
+      "languagesLabel": "Beratung auf",
+      "showroomLabel": "Öffnungszeiten Showroom",
+      "cafeLabel": "Café im Haus",
+      "cafeText": "{cafe}: {hours}, {closed} geschlossen. Telefon {phone}.",
+      "contactLabel": "Kontakt",
+      "newTab": "öffnet in neuem Tab"
+    },
+    "seoGeo.faq.about": {
+      "title": "Häufige Fragen zum Haus",
+      "items": [
+        {
+          "q": "Gibt es im Haus ein Café?",
+          "a": "Ja. Im selben Haus an der Landstraße 11 liegt das {cafe}, unser eigenes Café. Es hat eigene Öffnungszeiten ({cafeHours}) und die Telefonnummer {cafePhone}."
+        },
+        {
+          "q": "In welchen Sprachen beraten Sie?",
+          "a": "Wir beraten auf Deutsch, Englisch, Italienisch und Französisch. Sagen Sie uns bei der Terminanfrage, welche Sprache Ihnen lieber ist."
+        },
+        {
+          "q": "Wo finde ich das Minotti Studio by Platzhirsch Home Living?",
+          "a": "In unserem Haus an der Landstraße 11 in 6911 Lochau am Bodensee. Minotti hat das Studio 2019 eröffnet."
+        },
+        {
+          "q": "Brauche ich einen Termin?",
+          "a": "Während der Öffnungszeiten ({hours}) können Sie vorbeikommen. Für eine Planung nehmen wir uns mit Termin Zeit; Termine außerhalb der Öffnungszeiten nach Vereinbarung."
+        }
+      ]
+    },
+    "seoGeo.faq.badWellness": {
+      "title": "Häufige Fragen zu Bad und Wellness",
+      "items": [
+        {
+          "q": "Welche Saunen und Spa-Elemente planen Sie?",
+          "a": "Mit Starpool planen wir Saunen, Dampfbäder und Erlebnisduschen, mit Soleum und Fabio Alemanno beheizte Liegen und Hammam-Tische. Was in Ihren Raum passt, hängt von Platz, Lüftung und Anschlüssen ab; das klären wir vor Ort."
+        },
+        {
+          "q": "Was braucht ein Whirlpool im Haus oder im Garten?",
+          "a": "Einen tragfähigen, ebenen Untergrund, einen Stromanschluss und Platz für Wartung und Abdeckung. Aquavia Spa baut Modelle für innen und außen, zum Einbau oder mit Überlauf; Pflege und Wasserbehandlung richten sich nach den Angaben des Herstellers."
+        },
+        {
+          "q": "Welche Gewerke braucht ein Private Spa zuhause?",
+          "a": "Meist Elektriker, Installateur, Lüftung oder Haustechnik und Fliesenleger. Wir planen Raum, Wege und Anschlüsse von Hand und in 3D und stimmen Lieferung und Montage mit den Gewerken ab."
+        },
+        {
+          "q": "Von welchen Marken sind Sie Händler?",
+          "a": "{dealers} Badobjekte von Agape planen wir ebenfalls mit Ihnen ein."
+        }
+      ]
+    },
+    "seoGeo.faq.kuechengeraete": {
+      "title": "Häufige Fragen zu Küchengeräten",
+      "items": [
+        {
+          "q": "Gaggenau oder Miele: Was ändert sich in der Planung?",
+          "a": "In der Planung zählen vor allem Einbaumaße, Nischenhöhen, Anschlusswerte und die Anordnung der Geräte zueinander; diese Angaben unterscheiden sich je Serie und Hersteller. Wir legen die Geräte in der Handzeichnung und im 3D-Plan fest, bevor die Küche bestellt wird."
+        },
+        {
+          "q": "Planen Sie Geräte auch in eine bestehende Küche ein?",
+          "a": "Ja, wir liefern und montieren Geräte auch einzeln, etwa zum Tausch. Ob ein Gerät ohne Umbau passt, hängt von Nische, Anschlüssen und Lüftung ab; bringen Sie die Maße oder das bisherige Modell mit."
+        },
+        {
+          "q": "Liefern und montieren Sie auch in Deutschland und der Schweiz?",
+          "a": "Lieferung und Montage bieten wir auf Anfrage an, auch für Projekte in Deutschland und der Schweiz. Bei Lieferungen in die Schweiz kommen Zoll und Schweizer Mehrwertsteuer hinzu; das klären wir vor der Bestellung."
+        }
+      ]
+    },
+    "inhalt.beratung.faq.items": [
+      {
+        "q": "Wie läuft eine Einrichtungsberatung bei Platzhirsch ab?",
+        "a": "Wir lernen Sie und Ihre Räume kennen, im Studio in Lochau oder auf Wunsch bei Ihnen vor Ort. Harald Menghin zeichnet Ihr Konzept zuerst von Hand und baut bei Bedarf ein Raummodell, danach planen wir in 3D und zeigen Ihnen den Raum fotorealistisch."
+      },
+      {
+        "q": "Wo findet die Beratung statt?",
+        "a": "In unserem Studio mit Café an der Landstraße 11 in 6911 Lochau am Bodensee. Bei Bedarf kommen wir zu Ihnen und sehen uns Räume, Licht und Umgebung vor Ort an."
+      },
+      {
+        "q": "Was soll ich zur Beratung mitbringen?",
+        "a": "Was Sie haben: Grundriss, Fotos und Maße der Räume. Alles Weitere klären wir gemeinsam."
+      },
+      {
+        "q": "Wann haben Sie geöffnet?",
+        "a": "{hours}. Termine außerhalb der Öffnungszeiten nach Vereinbarung."
+      },
+      {
+        "q": "Was unterscheidet Einrichtungsberatung und Interior Design?",
+        "a": "Bei der Einrichtungsberatung wählen wir mit Ihnen Möbel, Leuchten, Stoffe und Farben für vorhandene Räume aus. Beim Interior Design entwirft Harald Menghin das ganze Raumkonzept von Hand, mit Raummodell und 3D-Planung. Geht es um Statik, Haustechnik oder Bauantrag, arbeiten wir mit Ihrer Architektin oder Ihrem Architekten und den Fachplanern zusammen."
+      },
+      {
+        "q": "Wie wird die Einrichtungsplanung abgerechnet?",
+        "a": "Das hängt vom Umfang ab, von der Beratung für einen Raum bis zum ganzen Haus mit Handzeichnung, Modell und 3D-Planung. Wie wir Ihr Projekt abrechnen, besprechen wir vorab mit Ihnen; ein Angebot erhalten Sie auf Anfrage."
+      },
+      {
+        "q": "Wie lange dauert es von der Skizze bis zur Lieferung?",
+        "a": "Das hängt vor allem von den Lieferzeiten der Hersteller ab, die je nach Marke, Modell und Ausführung verschieden sind. Den Zeitplan legen wir nach der Planung gemeinsam fest, noch bevor wir Möbel und Geräte ordern."
+      }
+    ]
+  },
+  "en": {
+    "seoGeo.facts": {
+      "eyebrow": "Facts",
+      "title": "At a glance",
+      "whoLabel": "Who",
+      "whoText": "{name} is an interior design studio for designer furniture with its own café in the house. It is run by {legalName}.",
+      "whereLabel": "Where",
+      "whereText": "{address}, on Lake Constance between Bregenz and Lindau.",
+      "minottiLabel": "Minotti Studio",
+      "minottiLink": "Minotti press release on the opening",
+      "dealersLabel": "Dealer brands",
+      "groupFurniture": "Furniture and lighting",
+      "groupPool": "Glass mosaic",
+      "groupBath": "Bathroom and wellness",
+      "groupKitchen": "Kitchen appliances",
+      "groupAccessories": "Accessories",
+      "servicesLabel": "Services",
+      "servicesText": "Interior planning by hand with a room model, 3D planning and rendering; kitchens with built-in appliances; bathroom and wellness; outdoor; hotel and contract; yacht interiors. Delivery and installation on request.",
+      "languagesLabel": "Advice in",
+      "showroomLabel": "Showroom opening hours",
+      "cafeLabel": "Café in the house",
+      "cafeText": "{cafe}: {hours}, closed on {closed}. Phone {phone}.",
+      "contactLabel": "Contact",
+      "newTab": "opens in a new tab"
+    },
+    "seoGeo.faq.about": {
+      "title": "Questions about the house",
+      "items": [
+        {
+          "q": "Is there a café in the house?",
+          "a": "Yes. The {cafe}, our own café, is in the same house at Landstraße 11. It has its own opening hours ({cafeHours}) and the phone number {cafePhone}."
+        },
+        {
+          "q": "In which languages do you advise?",
+          "a": "We advise in German, English, Italian and French. Just tell us your preferred language when you request an appointment."
+        },
+        {
+          "q": "Where is the Minotti Studio by Platzhirsch Home Living?",
+          "a": "In our house at Landstraße 11, 6911 Lochau on Lake Constance. Minotti opened the studio in 2019."
+        },
+        {
+          "q": "Do I need an appointment?",
+          "a": "You are welcome to drop in during opening hours ({hours}). For planning we take our time by appointment; appointments outside opening hours by arrangement."
+        }
+      ]
+    },
+    "seoGeo.faq.badWellness": {
+      "title": "Questions about bathroom and wellness",
+      "items": [
+        {
+          "q": "Which saunas and spa elements do you plan?",
+          "a": "With Starpool we plan saunas, steam baths and experience showers, with Soleum and Fabio Alemanno heated loungers and hammam tables. What suits your room depends on space, ventilation and connections; we clarify this on site."
+        },
+        {
+          "q": "What does a hot tub need indoors or in the garden?",
+          "a": "A level base that can carry the load, a power connection and room for maintenance and the cover. Aquavia Spa makes models for indoors and outdoors, built-in or with overflow; care and water treatment follow the manufacturer’s instructions."
+        },
+        {
+          "q": "Which trades does a private spa at home need?",
+          "a": "Usually an electrician, a plumber, ventilation or building services and a tiler. We plan the room, routes and connections by hand and in 3D and coordinate delivery and installation with the trades."
+        },
+        {
+          "q": "Which brands are you a dealer for?",
+          "a": "{dealers} We also plan bathroom pieces by Agape with you."
+        }
+      ]
+    },
+    "seoGeo.faq.kuechengeraete": {
+      "title": "Questions about kitchen appliances",
+      "items": [
+        {
+          "q": "Gaggenau or Miele: what changes in the planning?",
+          "a": "Planning is mainly about installation dimensions, niche heights, connected loads and how the appliances sit next to each other; these figures differ by series and manufacturer. We fix the appliances in the hand drawing and the 3D plan before the kitchen is ordered."
+        },
+        {
+          "q": "Do you also fit appliances into an existing kitchen?",
+          "a": "Yes, we also deliver and install single appliances, for example as a replacement. Whether an appliance fits without alterations depends on the niche, connections and ventilation; bring the dimensions or the old model."
+        },
+        {
+          "q": "Do you deliver and install in Germany and Switzerland too?",
+          "a": "Delivery and installation are available on request, also for projects in Germany and Switzerland. Deliveries to Switzerland involve customs and Swiss VAT; we clarify this before you order."
+        }
+      ]
+    },
+    "inhalt.beratung.faq.items": [
+      {
+        "q": "How does an interior consultation at Platzhirsch work?",
+        "a": "We get to know you and your rooms, at the studio in Lochau or at your place if you wish. Harald Menghin first draws your concept by hand and builds a room model where it helps; then we plan in 3D and show you the room photorealistically."
+      },
+      {
+        "q": "Where does the consultation take place?",
+        "a": "At our studio with café at Landstraße 11, 6911 Lochau on Lake Constance. If needed, we come to you and look at rooms, light and surroundings on site."
+      },
+      {
+        "q": "What should I bring?",
+        "a": "Whatever you have: floor plan, photos and room dimensions. We clarify everything else together."
+      },
+      {
+        "q": "When are you open?",
+        "a": "{hours}. Appointments outside opening hours by arrangement."
+      },
+      {
+        "q": "What is the difference between interior advice and interior design?",
+        "a": "With interior advice we choose furniture, lighting, fabrics and colours for existing rooms with you. With interior design, Harald Menghin draws the whole room concept by hand, with a room model and 3D planning. Where structure, building services or planning permission are involved, we work with your architect and the specialist planners."
+      },
+      {
+        "q": "How is interior planning charged?",
+        "a": "That depends on the scope, from advice for one room to a whole house with hand drawing, model and 3D planning. We discuss how your project is charged with you in advance; you receive a quote on request."
+      },
+      {
+        "q": "How long does it take from sketch to delivery?",
+        "a": "Mainly on the manufacturers’ delivery times, which differ by brand, model and finish. We set the schedule together after the planning, before anything is ordered."
+      }
+    ]
+  },
+  "fr": {
+    "seoGeo.facts": {
+      "eyebrow": "Faits",
+      "title": "En bref",
+      "whoLabel": "Qui",
+      "whoText": "{name} est un studio d’aménagement pour le mobilier design et l’interior design, avec son propre café dans la maison. Il est exploité par la société {legalName}.",
+      "whereLabel": "Où",
+      "whereText": "{address}, au bord du lac de Constance, entre Bregenz et Lindau.",
+      "minottiLabel": "Minotti Studio",
+      "minottiLink": "Communiqué de presse de Minotti sur l’inauguration",
+      "dealersLabel": "Marques dont nous sommes revendeur",
+      "groupFurniture": "Mobilier et luminaires",
+      "groupPool": "Mosaïque de verre",
+      "groupBath": "Bain et bien-être",
+      "groupKitchen": "Électroménager encastrable",
+      "groupAccessories": "Accessoires",
+      "servicesLabel": "Prestations",
+      "servicesText": "Planification d’intérieur à la main avec maquette, plan 3D et rendu ; cuisines avec électroménager encastrable ; bain et bien-être ; extérieur ; hôtellerie et projets ; intérieurs de yachts. Livraison et montage sur demande.",
+      "languagesLabel": "Conseil en",
+      "showroomLabel": "Horaires du showroom",
+      "cafeLabel": "Café dans la maison",
+      "cafeText": "{cafe} : {hours}, fermé le {closed}. Téléphone {phone}.",
+      "contactLabel": "Contact",
+      "newTab": "s’ouvre dans un nouvel onglet"
+    },
+    "seoGeo.faq.about": {
+      "title": "Questions sur la maison",
+      "items": [
+        {
+          "q": "Y a-t-il un café dans la maison ?",
+          "a": "Oui. Le {cafe}, notre propre café, se trouve dans la même maison, Landstraße 11. Il a ses propres horaires ({cafeHours}) et le numéro de téléphone {cafePhone}."
+        },
+        {
+          "q": "Dans quelles langues conseillez-vous ?",
+          "a": "Nous conseillons en allemand, anglais, italien et français. Indiquez-nous simplement votre langue lors de la demande de rendez-vous."
+        },
+        {
+          "q": "Où se trouve le Minotti Studio by Platzhirsch Home Living ?",
+          "a": "Dans notre maison, Landstraße 11, 6911 Lochau, au bord du lac de Constance. Minotti a inauguré le studio en 2019."
+        },
+        {
+          "q": "Faut-il un rendez-vous ?",
+          "a": "Vous pouvez passer pendant les horaires d’ouverture ({hours}). Pour une planification, nous prenons le temps sur rendez-vous ; rendez-vous en dehors des horaires sur demande."
+        }
+      ]
+    },
+    "seoGeo.faq.badWellness": {
+      "title": "Questions sur le bain et le bien-être",
+      "items": [
+        {
+          "q": "Quels saunas et éléments de spa planifiez-vous ?",
+          "a": "Avec Starpool, nous planifions saunas, hammams et douches sensorielles, avec Soleum et Fabio Alemanno des banquettes chauffantes et des tables de hammam. Ce qui convient à votre pièce dépend de la place, de la ventilation et des raccordements ; nous le vérifions sur place."
+        },
+        {
+          "q": "De quoi un spa a-t-il besoin à l’intérieur ou au jardin ?",
+          "a": "D’un sol plan et porteur, d’un raccordement électrique et de place pour l’entretien et la couverture. Aquavia Spa propose des modèles pour l’intérieur et l’extérieur, encastrables ou à débordement ; l’entretien et le traitement de l’eau suivent les indications du fabricant."
+        },
+        {
+          "q": "Quels corps de métier un spa privé à la maison demande-t-il ?",
+          "a": "En général un électricien, un plombier, la ventilation ou les équipements techniques et un carreleur. Nous planifions la pièce, les circulations et les raccordements à la main et en 3D et coordonnons la livraison et le montage avec les artisans."
+        },
+        {
+          "q": "De quelles marques êtes-vous revendeur ?",
+          "a": "{dealers} Nous planifions aussi avec vous des pièces de salle de bain d’Agape."
+        }
+      ]
+    },
+    "seoGeo.faq.kuechengeraete": {
+      "title": "Questions sur l’électroménager",
+      "items": [
+        {
+          "q": "Gaggenau ou Miele : qu’est-ce qui change dans la planification ?",
+          "a": "La planification porte surtout sur les cotes d’encastrement, les hauteurs de niche, les puissances raccordées et la disposition des appareils entre eux ; ces données varient selon la série et le fabricant. Nous fixons les appareils dans le dessin à la main et le plan 3D avant la commande de la cuisine."
+        },
+        {
+          "q": "Intégrez-vous aussi des appareils dans une cuisine existante ?",
+          "a": "Oui, nous livrons et montons aussi des appareils seuls, par exemple pour un remplacement. Qu’un appareil s’intègre sans travaux dépend de la niche, des raccordements et de la ventilation ; apportez les dimensions ou l’ancien modèle."
+        },
+        {
+          "q": "Livrez-vous et montez-vous aussi en Allemagne et en Suisse ?",
+          "a": "La livraison et le montage sont possibles sur demande, aussi pour des projets en Allemagne et en Suisse. Pour la Suisse s’ajoutent la douane et la TVA suisse ; nous le clarifions avant la commande."
+        }
+      ]
+    },
+    "inhalt.beratung.faq.items": [
+      {
+        "q": "Comment se déroule un conseil en aménagement chez Platzhirsch ?",
+        "a": "Nous faisons connaissance avec vous et vos pièces, au studio de Lochau ou chez vous si vous le souhaitez. Harald Menghin dessine d’abord votre concept à la main et construit au besoin une maquette, puis nous planifions en 3D et vous montrons la pièce de façon photoréaliste."
+      },
+      {
+        "q": "Où a lieu le conseil ?",
+        "a": "Dans notre studio avec café, Landstraße 11, 6911 Lochau, au bord du lac de Constance. Au besoin, nous venons chez vous pour voir les pièces, la lumière et l’environnement."
+      },
+      {
+        "q": "Que dois-je apporter ?",
+        "a": "Ce que vous avez : plan, photos et dimensions des pièces. Nous clarifions le reste ensemble."
+      },
+      {
+        "q": "Quels sont vos horaires ?",
+        "a": "{hours}. Rendez-vous en dehors des horaires sur demande."
+      },
+      {
+        "q": "Quelle différence entre conseil en aménagement et interior design ?",
+        "a": "Avec le conseil en aménagement, nous choisissons avec vous meubles, luminaires, tissus et couleurs pour des pièces existantes. Avec l’interior design, Harald Menghin dessine tout le concept à la main, avec maquette et plan 3D. Pour la structure, les équipements techniques ou le permis de construire, nous travaillons avec votre architecte et les bureaux d’études."
+      },
+      {
+        "q": "Comment la planification est-elle facturée ?",
+        "a": "Cela dépend de l’ampleur, du conseil pour une pièce à la maison entière avec dessin à la main, maquette et plan 3D. Nous convenons avec vous à l’avance de la facturation de votre projet ; vous recevez une offre sur demande."
+      },
+      {
+        "q": "Combien de temps entre l’esquisse et la livraison ?",
+        "a": "Cela dépend surtout des délais de livraison des fabricants, qui varient selon la marque, le modèle et la finition. Nous fixons ensemble le calendrier après la planification, avant la commande."
+      }
+    ]
+  },
+  "it": {
+    "seoGeo.facts": {
+      "eyebrow": "Fatti",
+      "title": "In breve",
+      "whoLabel": "Chi",
+      "whoText": "{name} è uno studio d’arredamento per mobili di design e interior design, con un proprio café nella stessa casa. È gestito dalla società {legalName}.",
+      "whereLabel": "Dove",
+      "whereText": "{address}, sul Lago di Costanza tra Bregenz e Lindau.",
+      "minottiLabel": "Minotti Studio",
+      "minottiLink": "Comunicato stampa di Minotti sull’inaugurazione",
+      "dealersLabel": "Marchi di cui siamo rivenditori",
+      "groupFurniture": "Mobili e illuminazione",
+      "groupPool": "Mosaico in vetro",
+      "groupBath": "Bagno e benessere",
+      "groupKitchen": "Elettrodomestici da incasso",
+      "groupAccessories": "Accessori",
+      "servicesLabel": "Servizi",
+      "servicesText": "Progettazione d’interni a mano con modellino, progetto 3D e rendering; cucine con elettrodomestici da incasso; bagno e benessere; outdoor; hotel e contract; interni di yacht. Consegna e montaggio su richiesta.",
+      "languagesLabel": "Consulenza in",
+      "showroomLabel": "Orari dello showroom",
+      "cafeLabel": "Café nella stessa casa",
+      "cafeText": "{cafe}: {hours}, chiuso il {closed}. Telefono {phone}.",
+      "contactLabel": "Contatto",
+      "newTab": "si apre in una nuova scheda"
+    },
+    "seoGeo.faq.about": {
+      "title": "Domande sulla casa",
+      "items": [
+        {
+          "q": "C’è un café nella stessa casa?",
+          "a": "Sì. Il {cafe}, il nostro café, si trova nella stessa casa in Landstraße 11. Ha orari propri ({cafeHours}) e il numero di telefono {cafePhone}."
+        },
+        {
+          "q": "In quali lingue offrite consulenza?",
+          "a": "Offriamo consulenza in tedesco, inglese, italiano e francese. Indicateci la lingua che preferite quando richiedete un appuntamento."
+        },
+        {
+          "q": "Dove si trova il Minotti Studio by Platzhirsch Home Living?",
+          "a": "Nella nostra casa in Landstraße 11, 6911 Lochau sul Lago di Costanza. Minotti ha inaugurato lo studio nel 2019."
+        },
+        {
+          "q": "Serve un appuntamento?",
+          "a": "Durante gli orari di apertura ({hours}) potete passare. Per una progettazione ci prendiamo tempo su appuntamento; appuntamenti fuori orario su accordo."
+        }
+      ]
+    },
+    "seoGeo.faq.badWellness": {
+      "title": "Domande su bagno e benessere",
+      "items": [
+        {
+          "q": "Quali saune ed elementi spa progettate?",
+          "a": "Con Starpool progettiamo saune, bagni turchi e docce emozionali, con Soleum e Fabio Alemanno lettini riscaldati e tavoli hammam. Cosa si adatta al vostro ambiente dipende da spazio, ventilazione e allacciamenti; lo verifichiamo sul posto."
+        },
+        {
+          "q": "Di cosa ha bisogno una vasca idromassaggio in casa o in giardino?",
+          "a": "Di una base piana e portante, di un allacciamento elettrico e di spazio per manutenzione e copertura. Aquavia Spa realizza modelli per interni ed esterni, da incasso o a sfioro; cura e trattamento dell’acqua seguono le indicazioni del produttore."
+        },
+        {
+          "q": "Quali artigiani servono per una spa privata in casa?",
+          "a": "Di solito elettricista, idraulico, ventilazione o impiantistica e piastrellista. Progettiamo ambiente, percorsi e allacciamenti a mano e in 3D e coordiniamo consegna e montaggio con gli artigiani."
+        },
+        {
+          "q": "Di quali marchi siete rivenditori?",
+          "a": "{dealers} Con voi progettiamo anche elementi bagno di Agape."
+        }
+      ]
+    },
+    "seoGeo.faq.kuechengeraete": {
+      "title": "Domande sugli elettrodomestici",
+      "items": [
+        {
+          "q": "Gaggenau o Miele: cosa cambia nella progettazione?",
+          "a": "Nella progettazione contano soprattutto misure d’incasso, altezze delle nicchie, potenze di allacciamento e la disposizione degli apparecchi tra loro; questi dati variano per serie e produttore. Fissiamo gli apparecchi nel disegno a mano e nel progetto 3D prima di ordinare la cucina."
+        },
+        {
+          "q": "Integrate apparecchi anche in una cucina esistente?",
+          "a": "Sì, consegniamo e montiamo anche singoli apparecchi, per esempio in sostituzione. Se un apparecchio si inserisce senza modifiche dipende da nicchia, allacciamenti e ventilazione; portate le misure o il modello precedente."
+        },
+        {
+          "q": "Consegnate e montate anche in Germania e in Svizzera?",
+          "a": "Consegna e montaggio sono possibili su richiesta, anche per progetti in Germania e in Svizzera. Per la Svizzera si aggiungono dogana e IVA svizzera; lo chiariamo prima dell’ordine."
+        }
+      ]
+    },
+    "inhalt.beratung.faq.items": [
+      {
+        "q": "Come si svolge una consulenza d’arredo da Platzhirsch?",
+        "a": "Conosciamo voi e i vostri ambienti, nello studio di Lochau o, se lo desiderate, da voi. Harald Menghin disegna prima il vostro concept a mano e, se serve, costruisce un modellino; poi progettiamo in 3D e vi mostriamo l’ambiente in modo fotorealistico."
+      },
+      {
+        "q": "Dove si svolge la consulenza?",
+        "a": "Nel nostro studio con café in Landstraße 11, 6911 Lochau sul Lago di Costanza. Se necessario veniamo da voi e osserviamo ambienti, luce e contesto sul posto."
+      },
+      {
+        "q": "Cosa devo portare?",
+        "a": "Ciò che avete: pianta, foto e misure degli ambienti. Il resto lo chiariamo insieme."
+      },
+      {
+        "q": "Quali sono gli orari di apertura?",
+        "a": "{hours}. Appuntamenti fuori orario su accordo."
+      },
+      {
+        "q": "Che differenza c’è tra consulenza d’arredo e interior design?",
+        "a": "Con la consulenza d’arredo scegliamo con voi mobili, luci, tessuti e colori per ambienti esistenti. Con l’interior design, Harald Menghin disegna a mano l’intero concept, con modellino e progetto 3D. Per statica, impiantistica o permessi edilizi lavoriamo con il vostro architetto e con i progettisti specializzati."
+      },
+      {
+        "q": "Come viene fatturata la progettazione?",
+        "a": "Dipende dall’ampiezza, dalla consulenza per un ambiente fino alla casa intera con disegno a mano, modellino e progetto 3D. Concordiamo con voi in anticipo come fatturare il progetto; ricevete un’offerta su richiesta."
+      },
+      {
+        "q": "Quanto tempo passa dallo schizzo alla consegna?",
+        "a": "Dipende soprattutto dai tempi di consegna dei produttori, che variano per marchio, modello e finitura. Fissiamo insieme il calendario dopo la progettazione, prima dell’ordine."
+      }
+    ]
+  }
+}

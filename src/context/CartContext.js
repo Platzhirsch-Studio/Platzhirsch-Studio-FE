@@ -1,40 +1,77 @@
 "use client";
-import { createContext, useContext, useState, useEffect } from "react";
- 
+import { createContext, useContext, useState, useSyncExternalStore } from "react";
+import { trackWishlist } from "@/lib/analytics";
+import WebVitals from "./WebVitals";
+
 const CartContext = createContext();
- 
+
+// The Merkliste lives in localStorage("cart"). It is read through
+// useSyncExternalStore instead of "useEffect → setState" (lint
+// react-hooks/set-state-in-effect, R3-shell): the server and the hydration
+// pass see the empty list, right after hydration React re-renders with the
+// stored one – the same visible behaviour as before, without the cascading
+// effect render. Writes go through the store, which saves on every change.
+const EMPTY = [];
+const listeners = new Set();
+let items = EMPTY;
+let loaded = false;
+
+function load() {
+  if (loaded || typeof window === "undefined") return;
+  loaded = true;
+  // A corrupted value must not white-screen the whole site (no error
+  // boundary sits above this provider) – drop it and start empty.
+  try {
+    const savedCart = localStorage.getItem("cart");
+    const parsed = savedCart ? JSON.parse(savedCart) : null;
+    if (Array.isArray(parsed)) items = parsed;
+    else if (savedCart) localStorage.removeItem("cart");
+  } catch {
+    try {
+      localStorage.removeItem("cart");
+    } catch {
+      /* storage unavailable */
+    }
+  }
+}
+
+const cartStore = {
+  subscribe(listener) {
+    listeners.add(listener);
+    return () => listeners.delete(listener);
+  },
+  getSnapshot() {
+    load();
+    return items;
+  },
+  getServerSnapshot() {
+    return EMPTY;
+  },
+  /** Same contract as a useState setter: a value or an updater function. */
+  set(next) {
+    load();
+    const value = typeof next === "function" ? next(items) : next;
+    if (value === items) return;
+    items = value;
+    try {
+      localStorage.setItem("cart", JSON.stringify(items));
+    } catch {
+      /* storage full or blocked: the list still works for this visit */
+    }
+    listeners.forEach((listener) => listener());
+  },
+};
+
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const cartItems = useSyncExternalStore(cartStore.subscribe, cartStore.getSnapshot, cartStore.getServerSnapshot);
+  const setCartItems = cartStore.set;
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [alert, setAlert] = useState({
     show: false,
     message: "",
     type: "",
   });
-  const [cartLoaded, setCartLoaded] = useState(false);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      // A corrupted value must not white-screen the whole site (no error
-      // boundary sits above this provider) — drop it and start empty.
-      try {
-        const savedCart = localStorage.getItem("cart");
-        const parsed = savedCart ? JSON.parse(savedCart) : null;
-        if (Array.isArray(parsed)) setCartItems(parsed);
-        else if (savedCart) localStorage.removeItem("cart");
-      } catch {
-        try { localStorage.removeItem("cart"); } catch { /* storage unavailable */ }
-      }
-      setCartLoaded(true);
-    }
-  }, []);
- 
-  // Save to localStorage ONLY after load
-  useEffect(() => {
-    if (cartLoaded) {
-      localStorage.setItem("cart", JSON.stringify(cartItems));
-    }
-  }, [cartItems, cartLoaded]);
- 
+
   const showAlert = (message, type) => {
     setAlert({ show: true, message, type });
     setTimeout(() => setAlert({ show: false, message: "", type: "" }), 3000);
@@ -49,11 +86,12 @@ export const CartProvider = ({ children }) => {
     const existingItemIndex = cartItems.findIndex((cartItem) => generateCartItemId(cartItem) === cartItemId);
  
     if (existingItemIndex >= 0) {
-      showAlert("Dieses Produkt ist bereits in Ihrer Markenliste", "error");
+      showAlert("Dieses Produkt ist bereits in Ihrer Merkliste", "error");
     } else {
       // Add new item with quantity 1
       setCartItems([...cartItems, { ...item, quantity: 1 }]);
-      showAlert("Produkt erfolgreich zur Markenliste hinzugefügt", "success");
+      trackWishlist(item);
+      showAlert("Produkt zur Merkliste hinzugefügt", "success");
     }
   };
  
@@ -81,7 +119,12 @@ export const CartProvider = ({ children }) => {
  
   // Batch versions (e.g. saving a whole collection at once) — functional
   // updates, since calling addToCart in a loop would overwrite itself.
+  // add_to_wishlist for the pieces that are really new (worked out outside
+  // the updater, which must stay pure).
   const addManyToCart = (items) => {
+    const known = new Set(cartItems.map(generateCartItemId));
+    const added = items.filter((item) => !known.has(generateCartItemId(item)));
+    if (added.length) trackWishlist(added);
     setCartItems((prev) => {
       const ids = new Set(prev.map(generateCartItemId));
       const fresh = items.filter((item) => !ids.has(generateCartItemId(item)));
@@ -120,6 +163,7 @@ export const CartProvider = ({ children }) => {
         alert,
       }}
     >
+      <WebVitals />
       {children}
     </CartContext.Provider>
   );
@@ -130,7 +174,8 @@ export const CartProvider = ({ children }) => {
 // complete "/cmx/files/..." path (see ProductActions), used as-is.
 export const wishlistImageSrc = (image) => {
   if (!image) return null;
-  if (/^(\/cmx\/|\/cms\/|\/Images\/|https?:)/.test(image)) return image;
+  // /ezarri/: Ezarri mosaics (public/ezarri, Ezarri-Welt acceptance item 3).
+  if (/^(\/cmx\/|\/cms\/|\/Images\/|\/ezarri\/|https?:)/.test(image)) return image;
   return `/cms${image}`;
 };
 

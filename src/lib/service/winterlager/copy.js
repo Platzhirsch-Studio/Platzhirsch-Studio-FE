@@ -1,0 +1,602 @@
+// src/lib/service/winterlager/copy.js – Texte der Seite /[locale]/outdoor-winterservice (DE, EN).
+// Vorläufige Quelle, bis die Integration sie als `serviceWinterlager.*` in
+// src/messages/*.json übernimmt. Der Vorschlag dafür wird aus dieser Datei
+// erzeugt: Marktresearch/digital/features/service-winterlager-messages.json
+// (tests/unit/winterlager.test.mjs prüft, dass beide gleich sind).
+//
+// Stimme (Design-Bibel §1): Sie-Form, kurze Sätze, keine Superlative, kein
+// Ausrufezeichen. Keine Preise, kein Radius in km, keine Zusagen, die das
+// Team nicht geben kann (Inhaber-Antwort 29.10.2026: eigenes Lager ja,
+// Abholung durch uns ja, Gebiet „im Umkreis von Lochau / Bodenseeraum auf
+// Anfrage“). Pflegewissen nur mit Herstellerquelle (SOURCES unten), und nur
+// von Marken im Sortiment (Gloster: /ueber-uns/marken/gloster).
+// Platzhalter in {geschweiften Klammern}. Keine "@/..."-Importe.
+
+// Herstellerquellen, abgerufen am 29.10.2026 (Pflegeblätter „Care & Maintenance“,
+// Übersicht https://www.gloster.com/en/products/care-sheets).
+export const SOURCES = Object.freeze({
+  teak: "https://www.gloster.com/f/file/files%2Fproduct%20care%2FTeak.pdf",
+  aluminium: "https://www.gloster.com/f/file/files%2Fproduct%20care%2FPowder%20Coated%20Aluminium.pdf",
+  rope: "https://www.gloster.com/f/file/files%2Fproduct%20care%2FOutdoor%20Rope.pdf",
+  wicker: "https://www.gloster.com/f/file/files%2Fproduct%20care%2FWicker.pdf",
+  fabrics: "https://www.gloster.com/f/file/files%2Fproduct%20care%2FOutdoor%20Fabrics.pdf",
+  overview: "https://www.gloster.com/en/products/care-sheets",
+});
+export const SOURCES_CHECKED = "2026-10-29";
+
+export const MATERIAL_KEYS = Object.freeze(["teak", "aluminium", "rope", "wicker", "fabrics"]);
+export const STEP_KEYS = Object.freeze(["anmeldung", "abholung", "pflege", "lager", "reparatur", "rueckgabe", "aufbau"]);
+export const FURNITURE_KEYS = Object.freeze(["sofa", "sessel", "stuhl", "tisch", "liege", "schirm", "polster", "sonstiges"]);
+export const FORM_MATERIAL_KEYS = Object.freeze(["teak", "aluminium", "rope", "wicker", "fabrics", "edelstahl", "stein", "unbekannt"]);
+export const VARIANT_KEYS = Object.freeze(["einmal", "abo", "offen"]);
+export const COUNTRY_KEYS = Object.freeze(["AT", "DE", "CH", "LI"]);
+export const PICKUP_KEYS = Object.freeze(["flexibel", "oktober", "november", "dezember"]);
+export const RETURN_KEYS = Object.freeze(["flexibel", "maerz", "april", "mai", "juni"]);
+
+const de = {
+  meta: {
+    title: "Winterlager für Outdoor-Möbel am Bodensee",
+    description:
+      "Wir holen Ihre Outdoor-Möbel im Herbst ab, pflegen sie nach Material, lagern sie trocken in unserem eigenen Lager und bringen sie im Frühling zurück. Einmal oder im Abo.",
+  },
+  crumbs: { section: "Outdoor & Pool", page: "Winterlager & Pflege" },
+  hero: {
+    eyebrow: "Outdoor-Winterservice",
+    title: "Ihre Outdoor-Möbel überwintern bei uns.",
+    lead: "Wir holen Ihre Gartenmöbel im Herbst ab, reinigen und pflegen sie nach Material und lagern sie trocken in unserem eigenen Lager. Im Frühling bringen wir sie zurück. Einmal oder jedes Jahr im Abo.",
+    cta: "Möbel anmelden",
+    secondary: "So läuft es ab",
+  },
+  facts: {
+    label: "Das Wichtigste auf einen Blick",
+    abholung: { label: "Abholung", value: "Wir holen ab und bringen zurück" },
+    gebiet: { label: "Gebiet", value: "Im Umkreis von Lochau / Bodenseeraum auf Anfrage" },
+    gebietKm: { label: "Gebiet", value: "Bis {km} km um Lochau, weiter auf Anfrage" },
+    lager: { label: "Lagerung", value: "Trocken in unserem eigenen Lager" },
+    preis: { label: "Preis", value: "Auf Anfrage", hint: "Nach Ihrer Möbelliste erhalten Sie ein schriftliches Angebot." },
+    schluss: { label: "Anmeldeschluss", value: "{date}" },
+  },
+  countdown: {
+    label: "Anmeldung für diese Saison",
+    days: "noch {n} Tage bis zum Anmeldeschluss am {date}",
+    oneDay: "noch 1 Tag bis zum Anmeldeschluss am {date}",
+    today: "Heute ist Anmeldeschluss ({date})",
+    over: "Der Anmeldeschluss am {date} ist vorbei. Fragen Sie trotzdem gern an, wir prüfen freie Plätze.",
+  },
+  steps: {
+    eyebrow: "Ablauf",
+    title: "Vom Herbst bis zum ersten Sommerabend",
+    text: "Sie melden an, den Rest planen wir mit Ihnen.",
+    stepWord: "Schritt",
+    items: {
+      anmeldung: {
+        title: "Anmeldung",
+        text: "Sie schicken uns Ihre Möbelliste mit Anzahl und Material, gern mit Fotos. Wir prüfen Ort und Umfang und senden Ihnen ein Angebot.",
+        deadline: "Anmeldung bis {date}.",
+      },
+      abholung: {
+        title: "Abholung im Herbst",
+        text: "Wir holen Ihre Möbel, Polster und Schirme selbst bei Ihnen ab. Den Termin stimmen wir mit Ihnen ab.",
+        period: "Abholzeitraum: {period}.",
+      },
+      pflege: {
+        title: "Reinigung und Pflege nach Material",
+        text: "Teak, Aluminium, Seil, Geflecht und Outdoor-Stoffe brauchen jeweils eine andere Pflege. Wo der Hersteller Pflegehinweise gibt, richten wir uns danach.",
+      },
+      lager: {
+        title: "Trockene Lagerung",
+        text: "Über den Winter stehen Ihre Möbel trocken in unserem eigenen Lager.",
+      },
+      reparatur: {
+        title: "Kleinreparaturen auf Anfrage",
+        text: "Fällt uns bei der Pflege etwas auf, etwa eine lose Schraube oder eine Naht, melden wir uns. Repariert wird nur nach Rücksprache und mit Ihrem Einverständnis.",
+      },
+      rueckgabe: {
+        title: "Rückbringung im Frühling",
+        text: "Sie nennen Ihren Wunschtermin. Wir stimmen ihn mit unserer Tourenplanung ab und bringen alles zurück.",
+        period: "Rückgabezeitraum: {period}.",
+      },
+      aufbau: {
+        title: "Aufbau auf Wunsch",
+        text: "Auf Wunsch stellen wir Möbel, Polster und Schirme wieder auf, so wie sie im Herbst standen oder neu.",
+      },
+    },
+  },
+  care: {
+    eyebrow: "Pflegewissen",
+    title: "Jedes Material braucht seine eigene Pflege",
+    text: "So empfiehlt es Gloster, eine der Outdoor-Marken in unserem Sortiment, in seinen Pflegeblättern. Für Möbel anderer Hersteller richten wir uns nach deren Pflegeanleitung.",
+    sourceLabel: "Quelle: Gloster, Pflegeblatt „{name}“ (PDF, Englisch)",
+    checked: "Herstellerangaben geprüft am {date}.",
+    overview: "Alle Pflegeblätter von Gloster",
+    brandLink: "Gloster bei Platzhirsch",
+    items: {
+      teak: {
+        name: "Teak",
+        sheet: "Teak",
+        points: [
+          "Teak wird ohne Behandlung mit der Zeit silbergrau. Laut Gloster dauert das je nach Standort 6 Monate bis 2 Jahre.",
+          "Ein- bis zweimal im Jahr gründlich reinigen, mit Wasser und mildem Reiniger.",
+          "Nie mit dem Hochdruckreiniger: Er raut die weiche Oberfläche auf.",
+          "Über den Winter trocken lagern, aber nicht direkt in einen beheizten Raum bringen. Starke Wechsel von Temperatur und Feuchte können zu Rissen führen.",
+        ],
+      },
+      aluminium: {
+        name: "Aluminium, pulverbeschichtet",
+        sheet: "Powder Coated Aluminium",
+        points: [
+          "Mit Wasser und mildem Flüssigreiniger abwischen, mit Mikrofasertuch oder Schwamm.",
+          "Danach trocken reiben, das vermeidet Wasserflecken.",
+          "Keine scheuernden Mittel: Sie können die Pulverbeschichtung zerkratzen. Schäden an der Beschichtung lassen sich laut Gloster kaum unsichtbar ausbessern.",
+        ],
+      },
+      rope: {
+        name: "Seil",
+        sheet: "Outdoor Rope",
+        points: [
+          "Losen Schmutz zuerst sanft abbürsten.",
+          "Mit milder Lauge reinigen, laut Gloster 1 Teil Reiniger auf 16 Teile lauwarmes Wasser unter 40 °C, mit Schwamm oder weicher Bürste.",
+          "Gründlich ausspülen, bis keine Seife mehr im Seil ist, und an der Luft trocknen lassen.",
+        ],
+      },
+      wicker: {
+        name: "Geflecht",
+        sheet: "Wicker",
+        points: [
+          "Das Kunststoffgeflecht von Gloster darf laut Hersteller das ganze Jahr draußen bleiben, von −20 °C bis +55 °C. Die Einlagerung schützt vor Laub, Schmutz und Algen.",
+          "Mit milder Lauge und weicher Bürste reinigen, mit kaltem Wasser abspülen.",
+          "Alle Schaumreste entfernen: In den Zwischenräumen ziehen sie sonst Schmutz an. Teakteile nicht mit Druck abspritzen.",
+        ],
+      },
+      fabrics: {
+        name: "Outdoor-Stoffe und Polster",
+        sheet: "Outdoor Fabrics",
+        points: [
+          "Polster laut Gloster bei Nichtgebrauch abdecken oder trocken lagern.",
+          "Schmutz entfernen, bevor er sich festsetzt, Flecken gleich abtupfen.",
+          "Die Bezüge der meisten Gloster-Polster sind nicht zum Abnehmen gedacht. Gereinigt wird am Polster.",
+        ],
+      },
+    },
+  },
+  options: {
+    eyebrow: "Einmal oder Abo",
+    title: "Für eine Saison oder jedes Jahr",
+    price: "Preis",
+    onRequest: "Auf Anfrage",
+    laufzeit: "Laufzeit",
+    kuendigung: "Kündigung",
+    bedingungen: "Abo-Bedingungen lesen",
+    versicherung: "Versicherung",
+    items: {
+      einmal: {
+        title: "Einmal",
+        text: "Eine Saison: Abholung im Herbst, Pflege, Lagerung und Rückbringung im Frühling.",
+        points: ["Ein Angebot für diese Saison", "Keine Bindung für die nächsten Jahre"],
+      },
+      abo: {
+        title: "Im Abo",
+        text: "Jedes Jahr eingeplant: Wir melden uns vor der Saison wegen des Abholtermins.",
+        points: ["Abholung und Rückbringung stimmen wir jedes Jahr mit Ihnen ab", "Laufzeit und Kündigung stehen schriftlich in Ihrem Angebot"],
+      },
+    },
+  },
+  links: {
+    eyebrow: "Passend dazu",
+    title: "Garten und Terrasse planen",
+    gartenplanung: { title: "Outdoor-Planung", text: "Möbel, Schatten und Licht für Ihren Garten, mit befugten Fachbetrieben abgestimmt." },
+    licht: { title: "Bodensee-Licht", text: "Wie die Sonne zu jeder Uhrzeit auf Ihre Terrasse fällt, berechnet für Ihren Ort." },
+    process: { title: "Unsere Arbeitsweise", text: "Harald Menghin zeichnet Ihr Outdoor-Konzept von Hand, danach planen wir in 3D." },
+    deOnly: "",
+  },
+  form: {
+    eyebrow: "Anmeldung",
+    title: "Möbel für den Winter anmelden",
+    text: "Unverbindlich: Sie erhalten zuerst ein Angebot. Erst wenn Sie zustimmen, planen wir die Abholung.",
+    required: "Pflichtfelder sind mit * markiert.",
+    optional: "optional",
+    variant: {
+      legend: "Was möchten Sie?",
+      einmal: "Einmal, für diese Saison",
+      abo: "Im Abo, jedes Jahr",
+      offen: "Weiß ich noch nicht",
+    },
+    list: {
+      legend: "Ihre Möbel",
+      hint: "Eine Zeile je Möbelart und Material, zum Beispiel 6 Stühle aus Teak.",
+      item: "Position {n}",
+      type: "Art",
+      count: "Anzahl",
+      material: "Material",
+      note: "Marke oder Hinweis",
+      notePlaceholder: "z. B. Gloster, mit Polstern",
+      add: "Weitere Position",
+      remove: "Position {n} entfernen",
+      max: "Mehr als {max} Positionen? Schreiben Sie den Rest bitte in die Nachricht.",
+      types: {
+        sofa: "Sofa oder Lounge",
+        sessel: "Sessel",
+        stuhl: "Stuhl",
+        tisch: "Tisch",
+        liege: "Liege",
+        schirm: "Sonnenschirm",
+        polster: "Polster oder Kissen",
+        sonstiges: "Sonstiges",
+      },
+      materials: {
+        teak: "Teak",
+        aluminium: "Aluminium",
+        rope: "Seil",
+        wicker: "Geflecht",
+        fabrics: "Outdoor-Stoff oder Polster",
+        edelstahl: "Edelstahl",
+        stein: "Keramik oder Stein",
+        unbekannt: "Anderes oder weiß nicht",
+      },
+    },
+    extras: {
+      legend: "Zusätzlich",
+      reparatur: "Bitte auf Schäden prüfen, Kleinreparaturen nach Rücksprache",
+      aufbau: "Im Frühling wieder aufbauen",
+    },
+    address: {
+      legend: "Abholort",
+      hint: "Damit wir prüfen können, ob wir zu Ihnen kommen. Die Straße brauchen wir erst für die Abholung.",
+      street: "Straße und Hausnummer",
+      zip: "PLZ",
+      city: "Ort",
+      country: "Land",
+      countries: { AT: "Österreich", DE: "Deutschland", CH: "Schweiz", LI: "Liechtenstein" },
+      access: "Hinweise zum Zugang",
+      accessPlaceholder: "z. B. Dachterrasse 3. Stock, Lift vorhanden",
+    },
+    dates: {
+      legend: "Wunschtermine",
+      pickup: "Abholung",
+      back: "Rückbringung",
+      pickupOptions: { flexibel: "Flexibel", oktober: "Oktober", november: "November", dezember: "Dezember" },
+      returnOptions: { flexibel: "Flexibel", maerz: "März", april: "April", mai: "Mai", juni: "Juni" },
+      note: "Wunschtermin genauer",
+      notePlaceholder: "z. B. nicht vor dem 10. April",
+    },
+    contact: {
+      legend: "Ihre Kontaktdaten",
+      vorname: "Vorname",
+      nachname: "Nachname",
+      email: "E-Mail",
+      telefon: "Telefon",
+      message: "Nachricht",
+    },
+    photos: {
+      title: "Fotos",
+      text: "Nach dem Absenden können Sie Fotos Ihrer Möbel direkt vom Handy hochladen. Das hilft uns beim Angebot.",
+      textNoUpload: "Fotos können Sie uns nach dem Absenden per Antwort auf unsere E-Mail schicken.",
+    },
+    submit: "Anmeldung senden",
+    sending: "Wird gesendet …",
+    errors: {
+      summary: "Bitte prüfen Sie diese Angaben:",
+      variant: "Bitte wählen Sie einmal, Abo oder „weiß ich noch nicht“.",
+      list: "Bitte geben Sie mindestens eine Position mit Art, Anzahl und Material an.",
+      count: "Bitte eine Anzahl zwischen 1 und {max}.",
+      zip: "Bitte geben Sie die Postleitzahl an.",
+      city: "Bitte geben Sie den Ort an.",
+      vorname: "Bitte geben Sie Ihren Vornamen an.",
+      nachname: "Bitte geben Sie Ihren Nachnamen an.",
+      email: "Bitte geben Sie eine gültige E-Mail-Adresse an.",
+      telefon: "Bitte prüfen Sie die Telefonnummer.",
+      send: "Die Anmeldung konnte nicht gesendet werden. Bitte versuchen Sie es noch einmal oder rufen Sie uns an: {phone}.",
+      rate: "Zu viele Anfragen in kurzer Zeit. Bitte versuchen Sie es in einigen Minuten erneut.",
+    },
+    success: {
+      title: "Danke, Ihre Anmeldung ist bei uns.",
+      text: "Wir prüfen Ihre Möbelliste und den Abholort und schicken Ihnen ein Angebot. Bis dahin ist nichts verbindlich.",
+    },
+  },
+  payload: {
+    topic: "Outdoor-Winterlager & Pflege",
+    period: "Zeitraum: Abholung {pickup}, Rückbringung {back}",
+    header: "Winterlager-Anmeldung",
+    variant: "Variante",
+    list: "Möbelliste",
+    extras: "Zusätzlich",
+    address: "Adresse",
+    access: "Zugang",
+    pickup: "Wunsch Abholung",
+    back: "Wunsch Rückbringung",
+    dateNote: "Hinweis zum Termin",
+    message: "Nachricht",
+    none: "keine",
+  },
+};
+
+const en = {
+  meta: {
+    title: "Winter storage for outdoor furniture, Lake Constance",
+    description:
+      "We collect your outdoor furniture in autumn, care for it by material, store it dry in our own warehouse and bring it back in spring. One season or as a subscription.",
+  },
+  crumbs: { section: "Outdoor & Pool", page: "Winter storage & care" },
+  hero: {
+    eyebrow: "Outdoor winter service",
+    title: "Your outdoor furniture spends the winter with us.",
+    lead: "We collect your garden furniture in autumn, clean and care for it according to its material and store it dry in our own warehouse. In spring we bring it back. For one season or every year as a subscription.",
+    cta: "Register your furniture",
+    secondary: "How it works",
+  },
+  facts: {
+    label: "At a glance",
+    abholung: { label: "Collection", value: "We collect and bring everything back" },
+    gebiet: { label: "Area", value: "Around Lochau / the Lake Constance region on request" },
+    gebietKm: { label: "Area", value: "Up to {km} km around Lochau, further on request" },
+    lager: { label: "Storage", value: "Dry, in our own warehouse" },
+    preis: { label: "Price", value: "On request", hint: "You receive a written quote based on your furniture list." },
+    schluss: { label: "Registration deadline", value: "{date}" },
+  },
+  countdown: {
+    label: "Registration for this season",
+    days: "{n} days left until the registration deadline on {date}",
+    oneDay: "1 day left until the registration deadline on {date}",
+    today: "Today is the registration deadline ({date})",
+    over: "The registration deadline on {date} has passed. You are still welcome to ask, we will check for free space.",
+  },
+  steps: {
+    eyebrow: "How it works",
+    title: "From autumn to the first summer evening",
+    text: "You register, we plan the rest with you.",
+    stepWord: "Step",
+    items: {
+      anmeldung: {
+        title: "Registration",
+        text: "Send us your furniture list with quantity and material, photos are welcome. We check location and scope and send you a quote.",
+        deadline: "Register by {date}.",
+      },
+      abholung: {
+        title: "Collection in autumn",
+        text: "We collect your furniture, cushions and parasols from you ourselves. We agree the date with you.",
+        period: "Collection period: {period}.",
+      },
+      pflege: {
+        title: "Cleaning and care by material",
+        text: "Teak, aluminium, rope, wicker and outdoor fabrics each need different care. Where the manufacturer gives care instructions, we follow them.",
+      },
+      lager: {
+        title: "Dry storage",
+        text: "Over the winter your furniture stands dry in our own warehouse.",
+      },
+      reparatur: {
+        title: "Small repairs on request",
+        text: "If we notice something during care, such as a loose screw or a seam, we contact you. Repairs are only made after consultation and with your consent.",
+      },
+      rueckgabe: {
+        title: "Return in spring",
+        text: "You tell us your preferred date. We match it with our delivery planning and bring everything back.",
+        period: "Return period: {period}.",
+      },
+      aufbau: {
+        title: "Set-up on request",
+        text: "On request we set up furniture, cushions and parasols again, as they stood in autumn or in a new arrangement.",
+      },
+    },
+  },
+  care: {
+    eyebrow: "Care know-how",
+    title: "Every material needs its own care",
+    text: "This is what Gloster, one of the outdoor brands we carry, recommends in its care sheets. For furniture by other manufacturers we follow their care instructions.",
+    sourceLabel: "Source: Gloster care sheet “{name}” (PDF)",
+    checked: "Manufacturer information checked on {date}.",
+    overview: "All Gloster care sheets",
+    brandLink: "Gloster at Platzhirsch",
+    items: {
+      teak: {
+        name: "Teak",
+        sheet: "Teak",
+        points: [
+          "Untreated teak turns silver grey over time. According to Gloster this takes 6 months to 2 years, depending on the location.",
+          "Clean thoroughly once or twice a year with water and a mild detergent.",
+          "Never use a pressure washer: it roughens the soft surface.",
+          "Store dry over the winter, but do not move it straight into a heated room. Sharp changes in temperature and humidity can cause splits.",
+        ],
+      },
+      aluminium: {
+        name: "Powder-coated aluminium",
+        sheet: "Powder Coated Aluminium",
+        points: [
+          "Wipe with water and a mild liquid detergent, using a microfibre cloth or sponge.",
+          "Then dry it with a cloth to avoid water spots.",
+          "No abrasive cleaners: they can mark the powder coat. According to Gloster, damage to the coating is very difficult to repair invisibly.",
+        ],
+      },
+      rope: {
+        name: "Rope",
+        sheet: "Outdoor Rope",
+        points: [
+          "First brush off loose dirt gently.",
+          "Clean with a mild solution, according to Gloster 1 part detergent to 16 parts lukewarm water below 40 °C, with a sponge or soft brush.",
+          "Rinse thoroughly until no soap is left in the rope and let it air dry.",
+        ],
+      },
+      wicker: {
+        name: "Wicker",
+        sheet: "Wicker",
+        points: [
+          "According to the manufacturer, Gloster's synthetic wicker can stay outside all year, from −20 °C to +55 °C. Storage protects it from leaves, dirt and algae.",
+          "Clean with a mild solution and a soft brush, rinse with cold water.",
+          "Remove all foam residue: otherwise it attracts dirt in the gaps. Do not spray teak parts with pressure.",
+        ],
+      },
+      fabrics: {
+        name: "Outdoor fabrics and cushions",
+        sheet: "Outdoor Fabrics",
+        points: [
+          "According to Gloster, cover cushions or store them dry when not in use.",
+          "Remove dirt before it becomes embedded and blot spills straight away.",
+          "The covers of most Gloster cushions are not meant to be removed. Cleaning is done on the cushion.",
+        ],
+      },
+    },
+  },
+  options: {
+    eyebrow: "One season or subscription",
+    title: "For one season or every year",
+    price: "Price",
+    onRequest: "On request",
+    laufzeit: "Term",
+    kuendigung: "Cancellation",
+    bedingungen: "Read the subscription terms",
+    versicherung: "Insurance",
+    items: {
+      einmal: {
+        title: "One season",
+        text: "One season: collection in autumn, care, storage and return in spring.",
+        points: ["One quote for this season", "No commitment for the following years"],
+      },
+      abo: {
+        title: "Subscription",
+        text: "Planned every year: we contact you before the season about the collection date.",
+        points: ["We agree collection and return with you every year", "Term and cancellation are set out in writing in your quote"],
+      },
+    },
+  },
+  links: {
+    eyebrow: "Related",
+    title: "Plan your garden and terrace",
+    gartenplanung: { title: "Outdoor planning", text: "Furniture, shade and light for your garden, coordinated with licensed specialist firms." },
+    licht: { title: "Lake Constance light", text: "How the sun falls on your terrace at any time of day, calculated for your location." },
+    process: { title: "How we work", text: "Harald Menghin draws your outdoor concept by hand, then we plan in 3D." },
+    deOnly: "(in German)",
+  },
+  form: {
+    eyebrow: "Registration",
+    title: "Register your furniture for the winter",
+    text: "No obligation: you receive a quote first. We only plan the collection once you agree.",
+    required: "Required fields are marked with *.",
+    optional: "optional",
+    variant: {
+      legend: "What would you like?",
+      einmal: "One season",
+      abo: "Subscription, every year",
+      offen: "I don't know yet",
+    },
+    list: {
+      legend: "Your furniture",
+      hint: "One line per type and material, for example 6 teak chairs.",
+      item: "Item {n}",
+      type: "Type",
+      count: "Quantity",
+      material: "Material",
+      note: "Brand or note",
+      notePlaceholder: "e.g. Gloster, with cushions",
+      add: "Add item",
+      remove: "Remove item {n}",
+      max: "More than {max} items? Please add the rest to your message.",
+      types: {
+        sofa: "Sofa or lounge",
+        sessel: "Armchair",
+        stuhl: "Chair",
+        tisch: "Table",
+        liege: "Lounger",
+        schirm: "Parasol",
+        polster: "Cushions",
+        sonstiges: "Other",
+      },
+      materials: {
+        teak: "Teak",
+        aluminium: "Aluminium",
+        rope: "Rope",
+        wicker: "Wicker",
+        fabrics: "Outdoor fabric or cushion",
+        edelstahl: "Stainless steel",
+        stein: "Ceramic or stone",
+        unbekannt: "Other or not sure",
+      },
+    },
+    extras: {
+      legend: "In addition",
+      reparatur: "Please check for damage, small repairs after consultation",
+      aufbau: "Set everything up again in spring",
+    },
+    address: {
+      legend: "Collection address",
+      hint: "So we can check whether we come to you. We only need the street for the collection.",
+      street: "Street and number",
+      zip: "Postcode",
+      city: "Town",
+      country: "Country",
+      countries: { AT: "Austria", DE: "Germany", CH: "Switzerland", LI: "Liechtenstein" },
+      access: "Access notes",
+      accessPlaceholder: "e.g. roof terrace, 3rd floor, lift available",
+    },
+    dates: {
+      legend: "Preferred dates",
+      pickup: "Collection",
+      back: "Return",
+      pickupOptions: { flexibel: "Flexible", oktober: "October", november: "November", dezember: "December" },
+      returnOptions: { flexibel: "Flexible", maerz: "March", april: "April", mai: "May", juni: "June" },
+      note: "More precise date",
+      notePlaceholder: "e.g. not before 10 April",
+    },
+    contact: {
+      legend: "Your contact details",
+      vorname: "First name",
+      nachname: "Last name",
+      email: "Email",
+      telefon: "Phone",
+      message: "Message",
+    },
+    photos: {
+      title: "Photos",
+      text: "After sending, you can upload photos of your furniture straight from your phone. This helps us with the quote.",
+      textNoUpload: "You can send us photos after sending by replying to our email.",
+    },
+    submit: "Send registration",
+    sending: "Sending …",
+    errors: {
+      summary: "Please check these details:",
+      variant: "Please choose one season, subscription or “I don't know yet”.",
+      list: "Please enter at least one item with type, quantity and material.",
+      count: "Please enter a quantity between 1 and {max}.",
+      zip: "Please enter the postcode.",
+      city: "Please enter the town.",
+      vorname: "Please enter your first name.",
+      nachname: "Please enter your last name.",
+      email: "Please enter a valid email address.",
+      telefon: "Please check the phone number.",
+      send: "The registration could not be sent. Please try again or call us: {phone}.",
+      rate: "Too many requests in a short time. Please try again in a few minutes.",
+    },
+    success: {
+      title: "Thank you, we have received your registration.",
+      text: "We will check your furniture list and the collection address and send you a quote. Nothing is binding until then.",
+    },
+  },
+  // Backoffice text stays German (the studio team reads it), see form.js.
+  payload: de.payload,
+};
+
+export const COPY = Object.freeze({ de, en });
+export const WINTERLAGER_LOCALES = Object.freeze(["de", "en"]);
+
+/** Copy of a locale (de for unknown). */
+export function winterlagerCopy(locale) {
+  return COPY[locale] || COPY.de;
+}
+
+/** "{n} Tage" → fill placeholders. */
+export function fill(text, vars = {}) {
+  return String(text ?? "").replace(/\{(\w+)\}/g, (m, k) => (vars[k] === undefined || vars[k] === null ? m : String(vars[k])));
+}
+
+/**
+ * Message proposal for src/messages/<locale>.json (`serviceWinterlager`).
+ * Same content as COPY, minus the backoffice payload strings (they are not
+ * visitor texts). Returned per locale: { de: {...}, en: {...} }.
+ */
+export function messagesProposal() {
+  const out = {};
+  for (const locale of WINTERLAGER_LOCALES) {
+    const { payload, ...rest } = COPY[locale];
+    out[locale] = { serviceWinterlager: rest };
+  }
+  return out;
+}

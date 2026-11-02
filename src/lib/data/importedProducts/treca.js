@@ -117,7 +117,7 @@ export const TRECA_PRODUCTS = [
     ],
     "longDescription": [
       "The Impérial Air Spring Prestige sleeping sytem is the pillar of Tréca Paris’ legacy. This sleeping sytem offers our original signature comfort that made our renown worldwide.",
-      "The Impérial Air Spring® Prestige is Tréca’s signature model, illustrating the brand’s inimitable comfort. Featuring pocket-spring suspension, it’s surely the best-known model in our collection.",
+      "The Impérial Air Spring® Prestige is Tréca’s signature model. It features pocket-spring suspension and is a long-standing model in the Tréca collection.",
       "This emblematic mattress is designed to meet everyone’s preferences: available in four firmnesses, right up to extra firm, it guarantees a fully customizable experience, tailored to your needs.",
       "The Opéra topper elevates this mattress with an additional 8 cm of softness and plush comfort. The Omega Spring bed base adapts to every movement, ensuring firm and precise support."
     ],
@@ -207,9 +207,9 @@ export const TRECA_PRODUCTS = [
       "https://www.treca-paris.com/wp-content/uploads/2026/07/VERTICAL__0058_SDC.BEAU-RIVAGE_AMBIANCE-ZOOM-2.jpg"
     ],
     "longDescription": [
-      "The Beau Rivage sleeping sytem features an integrated pillow-top and a hybrid suspension. This unique fusion provides an enveloping support and thermoregulated comfort year-round.",
-      "The Beau Rivage mattress seamlessly blends sophisticated finishes with the luxurious comfort of premium raw materials, such as Merino d’Arles wool. Crafted with meticulous attention to detail, this mattress offers year-round comfort through a unique sleeping surface.",
-      "In addition to his pillow-top integrated, it is the only one to feature a fusion of two historic suspensions: Pullman® and Air Spring®. Thanks to this combination and the generous amount of wool, it brings unique comfort, where firmness and coziness meet.",
+      "The Beau Rivage sleeping sytem features an integrated pillow-top and a hybrid suspension. This combination provides an enveloping support and thermoregulated comfort year-round.",
+      "The Beau Rivage mattress seamlessly blends sophisticated finishes with the luxurious comfort of premium raw materials, such as Merino d’Arles wool. Crafted with meticulous attention to detail, this mattress offers year-round comfort through its sleeping surface.",
+      "In addition to its integrated pillow-top, it combines two historic suspensions: Pullman® and Air Spring®. Thanks to this combination and the generous amount of wool, it offers a comfort where firmness and coziness meet.",
       "It is complemented by the Softspring® bed base, offering even more enveloping support."
     ],
     "variants": [
@@ -245,8 +245,8 @@ export const TRECA_PRODUCTS = [
       "https://www.treca-paris.com/wp-content/uploads/2026/07/cap-heden-roc-category-2-1.jpg"
     ],
     "longDescription": [
-      "When Luxury Meets Sustainability. Created in exclusive collaboration with L’Hôtel du Cap-Eden-Roc, this sleeping sytem has been created with upcycled linens from the hotel. It offers a sustainable yet delicate sleep experience, embodying the elegance of the world’s finest hotels.",
-      "Tréca Paris and the Hôtel du Cap-Eden-Roc join forces to offer an unparalleled sleep experience, combining artisanal savoir-faire with the excellence of Made in France craftsmanship.",
+      "When Luxury Meets Sustainability. Created in exclusive collaboration with L’Hôtel du Cap-Eden-Roc, this sleeping sytem has been created with upcycled linens from the hotel. It offers a sustainable yet delicate sleep experience, inspired by the elegance of grand hotels.",
+      "Tréca Paris and the Hôtel du Cap-Eden-Roc join forces to offer a sleep experience, combining artisanal savoir-faire with the excellence of Made in France craftsmanship.",
       "This mattress reflects the House of Tréca’s expertise and stands out through its distinctive embroidery, the signature of the Hôtel du Cap-Eden-Roc. It provides yearround comfort and remains lightweight, allowing the bed to be dressed with the same meticulous elegance as in the hotel.",
       "In the pursuit of a more virtuous approach, linens from the Hôtel du Cap-Eden-Roc have been recycled into recycled felt, reinforcing a responsible and sustainable commitment."
     ],
@@ -293,7 +293,7 @@ export const TRECA_PRODUCTS = [
     "longDescription": [
       "The Impérial Symbiose Prestige sleeping system combines years of craftsmanship and tradition and provides an exceptional soft comfort, especially crafted for stomach and side sleepers.",
       "The Impérial Symbiose Prestige relies on natural Talalay as well as a large amount of wool on the winter side and Linen silk on the summer side to offer you incomparably soft comfort.",
-      "It is available in a choice of four firmnesses, from soft to extra firm. It’s the perfect mattress for stomach and side sleepers, thanks to its unique softness.",
+      "It is available in a choice of four firmnesses, from soft to extra firm. Its softness suits stomach and side sleepers.",
       "The Opéra topper enhances this mattress with an additional 8 cm of softness and plush comfort. The Grand Impérial bed base completes the experience with supple support."
     ],
     "variants": [
@@ -375,7 +375,7 @@ export const TRECA_PRODUCTS = [
     ],
     "longDescription": [
       "Paris Vienne Venise is born from the combination of Air Spring® pocket springs and two layers of mini pocket springs. Enhanced with lamb’s wool, silk, and linen, it harmoniously balances firmness and softness.",
-      "This mattress is created from a combination of Air Spring® pocket springs and two layers of mini pocket springs. The suspension adapts to your morphology, giving you unrivalled comfort and satisfaction. Both light and warm, we have selected camel wool for its thermal and insulating properties. This mattress is the perfect blend of firmness and softness.",
+      "This mattress is created from a combination of Air Spring® pocket springs and two layers of mini pocket springs. The suspension adapts to your morphology, for comfortable support. Both light and warm, we have selected camel wool for its thermal and insulating properties. This mattress balances firmness and softness.",
       "It is dressed with the Paris Chambord topper, extending the promise of refined comfort, and with the Grand Confort bed base, bringing the finishing touch to its suppleness."
     ],
     "variants": [
@@ -464,7 +464,7 @@ export const TRECA_PRODUCTS = [
     ],
     "longDescription": [
       "The Louange sleeping system is the result of exquisite hand-tied craftsmanship combined with exceptional materials providing an incredibly soft comfort.",
-      "An integral, side-tied, hand-knotted tufted mattress, which ensures that the natural fillings remain in place, reinforcing the mattress’s stability and hold. Its Air Spring® suspension is pocketed in cotton, and we’ve added 2 layers of mini-suspensions for perfect balance. We’ve selected the finest materials, which you can also choose from Baby Camel Wool, Baby Lama Wool, Silk and French Linen, for personalized comfort and adaptation to your desires and needs.",
+      "An integral, side-tied, hand-knotted tufted mattress, which ensures that the natural fillings remain in place, reinforcing the mattress’s stability and hold. Its Air Spring® suspension is pocketed in cotton, and 2 layers of mini-suspensions are added for balance. The fillings can be chosen from Baby Camel Wool, Baby Lama Wool, Silk and French Linen, for personalized comfort and adaptation to your desires and needs.",
       "Louange pairs seamlessly with the Couture topper, which enhances and extends its benefits. The comfort becomes softer and even more indulgent, while the Grand Confort bed base completes the ensemble with supple support."
     ],
     "variants": [
@@ -506,8 +506,8 @@ export const TRECA_PRODUCTS = [
       "https://www.treca-paris.com/wp-content/uploads/2026/07/0065_surmatelas-treca-couture.jpg"
     ],
     "longDescription": [
-      "Tréca Paris’ symbol of excellence and craftsmanship, the Apogée is entirely made by hand and has been designed using the most precious materials, guaranteeing you an ultimate comfort for years. Only achievable by three master artisans, the Apogée is the result of unrivaled expertise and provides a cloud-like comfort.",
-      "Apogée represents the quintessence of the Tréca Paris house. Entirely handcrafted by three master artisans and designed using the most exquisite materials—including two layers of Air Spring® pocket springs—this bed guarantees ultimate comfort. It is fully customizable, from the embroidery to the choice of materials."
+      "A symbol of Tréca Paris’ craftsmanship, the Apogée is entirely made by hand from selected materials and designed for comfort over many years. Made by three master artisans, the Apogée offers a soft, cloud-like comfort.",
+      "Apogée represents the craft of the Tréca Paris house. Entirely handcrafted by three master artisans and designed with selected materials—including two layers of Air Spring® pocket springs—this bed is built for lasting comfort. It is fully customizable, from the embroidery to the choice of materials."
     ],
     "variants": [
       {
@@ -548,10 +548,10 @@ export const TRECA_PRODUCTS = [
       "https://www.treca-paris.com/wp-content/uploads/2026/07/auguste-sleeping-system-treca-1.jpg"
     ],
     "longDescription": [
-      "The Auguste sleeping sytem is our most exceptional piece, guaranteeing you an absolute comfort. With over 100 meticulous steps, this sleeping sytem embodies Tréca’s finest craftsmanship, showcasing unparalleled expertise. The Auguste sleeping sytem is a true French artisanal masterpiece.",
-      "Experience Tréca’s ultimate masterpiece where ultra-noble natural materials meet exceptional craftsmanship.",
+      "The Auguste sleeping system is made in more than 100 steps and shows Tréca’s craftsmanship. It is made by hand in France.",
+      "Natural materials and handcraft from Tréca.",
       "For the first time in bed making history, Tréca Paris created the dream bed in which the bed base, support mattress, comfort mattress and mattress topper are manufactured and presented as a single unit, guaranteeing an absolute comfort.",
-      "More than 100 steps are necessary to produce the Auguste bed and over 25kg of the finest materials are used to fill the mattress. Royal Alpaca and Merino d’Arles wool are used to ensure warmth and softness; while silk and  wool ensure optimal temperature  regulation.                                                                                                                         Each mattress is entirely tufted by hand, guaranteeing gentle support and avoiding any material shifting.                                                                                                                                            The Auguste is also fully customizable and can be personalized with your choice of fabrics and embroidery."
+      "More than 100 steps are necessary to produce the Auguste bed and over 25 kg of natural materials are used to fill the mattress. Royal Alpaca and Merino d’Arles wool are used to ensure warmth and softness; while silk and  wool help regulate temperature.                                                                                                                         Each mattress is entirely tufted by hand, guaranteeing gentle support and avoiding any material shifting.                                                                                                                                            The Auguste is also fully customizable and can be personalized with your choice of fabrics and embroidery."
     ],
     "variants": [
       {

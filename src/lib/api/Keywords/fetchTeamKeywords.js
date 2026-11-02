@@ -1,12 +1,13 @@
 // src/lib/api/teamKeywordsApi.js
 import "server-only"; // Ensures this only runs on server
 import { API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
 
 const TEAM_KEYWORDS_API_URL = `${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.team_keywords.api.team_keywords_data`;
 
 export async function fetchTeamKeywords() {
   try {
-    const response = await fetch(TEAM_KEYWORDS_API_URL, {
+    const response = await backofficeFetch(TEAM_KEYWORDS_API_URL, {
       method: "GET",
       next: { revalidate: 3600 }, // Cache for 1 hour
     });

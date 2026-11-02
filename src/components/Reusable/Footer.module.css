@@ -1,0 +1,16 @@
+/* Motion shell-home (01.11.2026): footer link groups below 768 px are
+   accordions – the opened list arrives with opacity and a 4 px lift
+   (UI class 280 ms, same as the mobile menu rooms). From 768 px the groups
+   are always open and never animate. Closing is instant. Off under reduced
+   motion and the "Ruhige Ansicht" (reduced / calm). Tokens only. */
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  :global(html:not([data-motion="reduced"], [data-motion="calm"])) .group[open] > ul {
+    animation: fold-in var(--duration-ui) var(--ease-quiet) both;
+  }
+}
+@keyframes fold-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}

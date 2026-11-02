@@ -1,58 +1,32 @@
-"use client";
-import React from "react";
-import Image from "next/image";
-import { Link } from "@/i18n/navigation";
-import { useLocale } from "next-intl";
+import PageHeader from "@/components/UberUns/PageHeader";
 
-// Photo header for the content pages (Beratung, Kontakt, Team, News, landing
-// pages …): full-bleed photo, the title in the display face, a semantic
-// breadcrumb. Text sits bottom-left over a gradient (not centred over a flat
-// 30 % overlay), the same stage as the homepage hero. No entrance animation
-// here: the page should be readable the instant it paints.
-const SinglePageBanner = ({ info }) => {
-  const locale = useLocale();
+// Former photo banner (title in white over a full-bleed photo, gold hover,
+// white/40 separators, `priority`): replaced in R4-shell-perf (AP8 A11y rest)
+// by the light page opening of the content pages. Same API as before, so the
+// remaining caller (merkliste/page.js) keeps working unchanged:
+//   info.title     → the page's only H1
+//   info.subtitle  → lead paragraph
+//   info.image     → photo next to the text (LCP: preload + fetchPriority high)
+//   info.alt       → alt text (default: "<title> – Platzhirsch Home Living")
+//   info.quality   → image quality (default 50 in PageHeader; must be one of
+//                    images.qualities in next.config.js: 50, 75, 90, 100)
+//   info.links     → [{ linkName, link }] breadcrumb, last entry = current page
+// No "use client", no hooks: renders on the server, text never sits on a
+// photo (contrast), no gold text (Bibel §4).
+export default function SinglePageBanner({ info = {} }) {
   const links = Array.isArray(info.links) ? info.links : [];
+  const breadcrumbs = links.map((link, index) => ({
+    label: link?.linkName,
+    // The last entry is the current page: no link (aria-current in Breadcrumbs).
+    ...(index < links.length - 1 && link?.link ? { href: link.link } : {}),
+  }));
 
   return (
-    <div className="relative isolate w-full h-150 lg:h-200 text-white">
-      <Image
-        src={info.image}
-        // Pages can pass their own `info.alt`; otherwise describe it by the page title.
-        alt={info.alt || `${info.title} – Platzhirsch Home Living`}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center -z-20"
-      />
-      <div className="absolute inset-0 -z-10 bg-linear-to-t from-night/85 via-night/35 to-night/20" />
-
-      <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-10 pt-28 sm:px-6 lg:pb-16 lg:pt-56">
-        <nav aria-label="Breadcrumb">
-          <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-white/70">
-            {links.map((link, index) => {
-              const isCurrent = index === links.length - 1;
-              return (
-                <li key={index} className="flex items-center gap-2">
-                  {index > 0 && <span aria-hidden="true" className="text-white/40">/</span>}
-                  {link?.link && !isCurrent ? (
-                    <Link href={link.link} locale={locale} className="transition-colors hover:text-gold">
-                      {link.linkName}
-                    </Link>
-                  ) : (
-                    <span aria-current={isCurrent ? "page" : undefined} className={isCurrent ? "text-white" : undefined}>
-                      {link.linkName}
-                    </span>
-                  )}
-                </li>
-              );
-            })}
-          </ol>
-        </nav>
-        <h1 className="font-display mt-4 max-w-4xl text-4xl leading-[1.05] md:text-5xl lg:text-6xl">{info.title}</h1>
-        {info.subtitle && <p className="mt-4 max-w-2xl text-base text-white/85 md:text-lg">{info.subtitle}</p>}
-      </div>
-    </div>
+    <PageHeader
+      breadcrumbs={breadcrumbs}
+      title={info.title}
+      lead={info.subtitle}
+      image={info.image ? { src: info.image, alt: info.alt || `${info.title} – Platzhirsch Home Living`, ...(info.quality ? { quality: info.quality } : {}) } : undefined}
+    />
   );
-};
-
-export default SinglePageBanner;
+}

@@ -1,144 +1,978 @@
-@import "tailwindcss";
+/* F5 (Runde 1, Perf mobil): Tailwind scans src/ only. Automatic detection
+   used to read the whole project (Marktresearch, docs, tests, tools, scripts:
+   600+ Markdown/JS/JSON files) and turned every class-like word there into a
+   utility – CSS for nothing, on every page. source("..") = src/ (this file is
+   src/app/globals.css). */
+@import "tailwindcss" source("..");
 
-/* Design tokens (Tailwind v4 theme → utilities such as bg-stone, text-gold-text,
-   font-display).
-   Colour: the showroom's materials rather than a tech palette — ink for text,
-   limestone ("stone") for quiet surfaces, walnut for the dark closing section,
-   and the house gold. --color-gold (#d1b250) is the signature accent: fine for
-   buttons, borders and text on dark backgrounds, but 2.0:1 on white, so small
-   text on light surfaces uses --color-gold-text (≈4.9:1).
-   Type: Bodoni Moda for display (the typography of Italian design houses —
-   Minotti, Poliform, Flos are the product), Montserrat for UI and body. */
-@theme {
-  --color-gold: #d1b250;
-  --color-gold-text: #7a5f17;
-  --color-ink: #30373e;
-  --color-stone: #ece8e1;
-  --color-bone: #f7f5f1;
-  --color-walnut: #3f3129;
+/* Design-Fix (31.10.2026, Bibel §8.4): motion-safe:/motion-reduce: gelten
+   auch für die „Ruhige Ansicht“ (html[data-motion="reduced"]), nicht nur für
+   die Systemeinstellung – sonst zoomten z. B. Katalogbilder beim Hover
+   weiter (motion-safe:group-hover:scale-[1.02]). Überschreibt die
+   eingebauten Varianten gleichen Namens. */
+@custom-variant motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    :root:not([data-motion="reduced"], [data-motion="calm"]) & {
+      @slot;
+    }
+  }
+}
+@custom-variant motion-reduce {
+  @media (prefers-reduced-motion: reduce) {
+    @slot;
+  }
+  :root:is([data-motion="reduced"], [data-motion="calm"]) & {
+    @slot;
+  }
+}
+
+/* =========================================================================
+   Platzhirsch design tokens – Design-Bibel §4 (Farbe), §5 (Typo), §6 (Raster),
+   §8 (Motion). Documentation for the area teams:
+   Marktresearch/digital/redesign/fundament.md
+
+   Three levels:
+   1. raw values (paper, ink, brass-700 …)           → only here
+   2. roles (surface, text, line, action …)          → what components use
+   3. component classes (.ph-*) at the end of file   → only where Tailwind
+                                                        utilities can't express it
+   `@theme static` = every variable is always emitted (Tailwind otherwise drops
+   unused ones), so components may read them with var() too.
+   ========================================================================= */
+@theme static {
+  /* ---- Level 1: raw colours (§4.1). HEX for Tailwind, OKLCH in comments. */
+  --color-paper: #faf8f4;      /* oklch(98.0% 0.006 84.6) */
+  --color-bone: #f7f5f1;       /* oklch(97.1% 0.006 84.6) */
+  --color-stone: #ece8e1;      /* oklch(93.2% 0.010 81.8) */
+  --color-linen: #e6e1d8;      /* oklch(91.1% 0.013 82.4) – placeholders only */
+  --color-stone-deep: #d8d2c8; /* oklch(86.6% 0.015 80.7) – soft text on walnut */
+  --color-pebble: #8a8174;     /* oklch(60.7% 0.022 77.2) – control borders ≥ 3:1 */
+  --color-ink-soft: #5c636a;   /* oklch(49.6% 0.014 248.1) */
+  --color-ink: #30373e;        /* oklch(33.3% 0.016 248.3) */
+  --color-ink-deep: #1f252b;   /* oklch(26.1% 0.014 248.4) */
+  --color-walnut: #3f3129;     /* oklch(32.6% 0.025 51.3) */
+  --color-see: #4f6b68;        /* oklch(50.5% 0.033 188.0) */
+  --color-brass-400: #d1b250;  /* oklch(77.2% 0.122 91.7) – NEVER on light (1.94:1) */
+  --color-brass-500: #9a7a2a;  /* oklch(59.5% 0.104 86.4) – functional lines/icons */
+  --color-brass-700: #7a5f17;  /* oklch(50.0% 0.093 86.8) – accent text on light */
+  --color-error: #9b2c2c;      /* oklch(46.5% 0.147 24.9) */
+  --color-success: #2f6b4a;    /* oklch(47.8% 0.083 157.1) */
+  --color-notice: #8a5a00;     /* oklch(50.8% 0.108 73.3) */
+
+  /* Legacy names – the current site uses them (text-gold, bg-night …).
+     Keep until every area is rebuilt; new code uses the role names. */
+  --color-gold: #d1b250;       /* = brass-400 */
+  --color-gold-text: #7a5f17;  /* = brass-700 */
   --color-night: #0f1624;
-  --color-ink-deep: #1f252b;
+
+  /* ---- Level 2: roles (§4.2) – the only colour names new components use. */
+  --color-surface: var(--color-paper);
+  --color-surface-raised: var(--color-bone);
+  --color-surface-band: var(--color-stone);
+  --color-surface-inverse: var(--color-walnut); /* max. 1× per page */
+  --color-text: var(--color-ink);
+  --color-text-soft: var(--color-ink-soft);
+  --color-text-accent: var(--color-brass-700);
+  --color-text-inverse: var(--color-paper);
+  --color-text-inverse-soft: var(--color-stone-deep);
+  --color-accent-on-dark: var(--color-brass-400);
+  --color-line: rgb(48 55 62 / 0.12);
+  --color-line-strong: rgb(48 55 62 / 0.24);
+  --color-line-inverse: rgb(250 248 244 / 0.18);
+  --color-line-control: var(--color-pebble);
+  --color-action: var(--color-ink);
+  --color-action-hover: var(--color-ink-deep);
+  --color-focus: var(--color-ink);
+  --color-focus-on-dark: var(--color-brass-400);
+
+  /* ---- Type (§5). Families come from next/font in [locale]/layout.js. */
   --font-display: var(--font-bodoni), "Bodoni Moda", "Didot", Georgia, serif;
+  --font-display-italic: var(--font-bodoni-italic), var(--font-bodoni), "Bodoni Moda", Georgia, serif;
+  --font-sans: var(--font-instrument), "Instrument Sans", ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* Fluid scale 360 → 1440 px (max ≤ 2.5 × min, zoom-safe).
+     Utilities: text-display-xl … text-overline (size + line-height +
+     tracking + weight in one class). Bodoni only from 32 px up.
+     QM shell-home r4 (200 % text, iPhone 15 IT: „dall’ambien[te,]“ cut off):
+     the display sizes and the title size are capped by the viewport width
+     (min(…, n vw)). At 100 % the cap never bites (it equals the clamp minimum
+     at 320 px); with enlarged rem text the headings still grow, but a single
+     Bodoni word stays narrower than a phone column instead of being clipped
+     or broken mid-word. Body, UI and small text are not capped. */
+  --text-display-xl: min(clamp(3rem, 2rem + 4.44vw, 6rem), 15vw);
+  --text-display-xl--line-height: 1.02;
+  --text-display-xl--letter-spacing: -0.01em;
+  --text-display-xl--font-weight: 400;
+  --text-display-l: min(clamp(2.5rem, 2rem + 2.22vw, 4rem), 12.5vw);
+  --text-display-l--line-height: 1.05;
+  --text-display-l--letter-spacing: -0.005em;
+  --text-display-l--font-weight: 400;
+  --text-display-m: min(clamp(2rem, 1.75rem + 1.11vw, 2.75rem), 10vw);
+  --text-display-m--line-height: 1.1;
+  --text-display-m--letter-spacing: 0em;
+  --text-display-m--font-weight: 500;
+  --text-title: min(clamp(1.375rem, 1.29rem + 0.37vw, 1.625rem), 8vw);
+  --text-title--line-height: 1.25;
+  --text-title--font-weight: 500;
+  --text-lead: clamp(1.25rem, 1.21rem + 0.19vw, 1.375rem);
+  --text-lead--line-height: 1.5;
+  --text-lead--font-weight: 400;
+  --text-body: 1.125rem;
+  --text-body--line-height: 1.6;
+  --text-ui: 1rem;
+  --text-ui--line-height: 1.4;
+  --text-ui--letter-spacing: 0.005em;
+  --text-ui--font-weight: 500;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.45;
+  --text-small--letter-spacing: 0.01em;
+  --text-overline: 0.75rem;
+  --text-overline--line-height: 1.3;
+  --text-overline--letter-spacing: 0.14em;
+  --text-overline--font-weight: 500;
+
+  /* ---- Grid & spacing (§6). 8-px base, Tailwind --spacing stays 0.25rem.
+     Responsive values live in :root below; these map them to utilities:
+     px-gutter, gap-grid, mt-stack-s, space-y-stack-m, py-section … */
+  --spacing-gutter: var(--space-gutter);
+  --spacing-grid: var(--space-grid-gap);
+  --spacing-stack-s: var(--space-stack-s);
+  --spacing-stack-m: var(--space-stack-m);
+  --spacing-section: var(--space-section);
+  --spacing-header: var(--header-h);
+
+  /* max-w-page (1440), max-w-text (720), max-w-measure (68ch) */
+  --container-page: 90rem;
+  --container-text: 45rem;
+  --container-measure: 68ch;
+
+  /* Radii: 0 everywhere (§6). Only selection counter and avatars: rounded-pill.
+     (Tailwind's default rounded-* stay available for the legacy site until
+     the integration switches them off.) */
+  --radius-pill: 9999px;
+
+  /* The one shadow – mega menu, modal, sheet, toast only. */
+  --shadow-overlay: 0 24px 48px -12px rgb(31 37 43 / 0.18);
+
+  /* ---- Motion (§8.1). ease-quiet … as utilities; durations via
+     duration-(--duration-micro) etc.
+
+     MOTION-FUNDAMENT (Designsystem 01.11.2026) – what area teams use:
+       Zeit      --duration-ack 50 ms    press acknowledgement (.ph-press)
+                 --duration-micro 160 ms hover, colour, underline, icon nudge
+                 --duration-swap 240 ms  image/state swap, heart pop
+                 --duration-ui 280 ms    accordion, menu, toast, confirmation
+                 --duration-section 600 ms section entrance (= enter)
+                 --duration-shimmer 1600 ms skeleton sweep (loop, loading only)
+       Kurve     ease-quiet   (out, default for everything that arrives)
+                 ease-drift   (long, even: scroll-linked, image drift, shimmer)
+                 ease-quiet-inout (morphs), ease-exit (leaving), ease-pop (heart only)
+       Klassen   .reveal / .ph-reveal  scroll reveal (transform only, ≤ 24 px)
+                 .reveal-group         its children reveal one after another
+                 .ph-chapter           H2 lift 8 px (ui/Heading sets it)
+                 .ph-press             1 px press (ui/Button sets it)
+                 .ph-lift              opt-in hover lift 2 px for cards/tiles
+                 .ph-skeleton          loading placeholder (static when calm)
+                 .ph-arrive / .ph-arrive-card / .ph-tick  confirmation moments
+       Ruhe      everything stands still under prefers-reduced-motion AND
+                 html[data-motion="reduced"] ("Ruhige Ansicht"; "calm" is
+                 accepted as an alias in this file – module CSS of the areas
+                 only knows "reduced", so a switch must write "reduced").
+                 Tailwind: motion-safe: / motion-reduce: follow both.
+       Fallback  browsers without animation-timeline: view() show content in
+                 place (no JS observer, nothing is ever hidden). */
+  --ease-quiet: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-quiet-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-drift: cubic-bezier(0.33, 0, 0.2, 1);
+  --ease-pop: cubic-bezier(0.34, 1.4, 0.64, 1); /* ONLY selection heart + counter */
+  --duration-ack: 50ms;
+  --duration-micro: 160ms;
+  --duration-swap: 240ms;
+  --duration-ui: 280ms;
+  --duration-morph: 400ms;
+  --duration-enter: 600ms;
+  --duration-exit: 180ms;
+  --duration-slow: 1200ms;
+  --stagger-step: 60ms;
+  --stagger-max: 240ms;
+  --hover-intent: 80ms;
+  --spinner-delay: 300ms;
+  --spinner-min: 600ms;
+  --duration-section: 600ms;   /* = --duration-enter, name used by the area briefs */
+  --duration-shimmer: 1600ms;
+
+  /* Skeleton (loading placeholders): linen base, paper sweep. */
+  --color-skeleton: var(--color-linen);
+  --color-skeleton-shine: rgb(250 248 244 / 0.7);
+}
+
+/* Responsive spacing, z-scale and header metrics (§6). */
+:root {
+  color-scheme: light; /* no system dark mode at launch (§4.4) */
+  --space-gutter: 1.25rem;    /* 20 px */
+  --space-grid-gap: 1rem;     /* 16 px */
+  --space-stack-s: 0.5rem;    /* 8 px */
+  --space-stack-m: 1.5rem;    /* 24 px */
+  --space-section: 6rem;      /* 96 px */
+  --header-h: 3.5rem;         /* 56 px */
+  --measure: 68ch;
+  --z-base: 0;
+  --z-sticky: 20;
+  --z-header: 40;
+  --z-cta-bar: 45;
+  --z-menu: 50;
+  --z-overlay: 60;
+  --z-toast: 70;
+}
+@media (min-width: 768px) {
+  :root {
+    --space-gutter: 3rem;     /* 48 px */
+    --space-grid-gap: 1.5rem; /* 24 px */
+    --space-stack-m: 2rem;    /* 32 px */
+    --space-section: 8rem;    /* 128 px */
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --space-gutter: 5rem;     /* 80 px */
+    --space-grid-gap: 2rem;   /* 32 px */
+    --space-stack-s: 0.75rem; /* 12 px */
+    --space-stack-m: 2.5rem;  /* 40 px */
+    --space-section: 11rem;   /* 176 px */
+    --header-h: 4.5rem;       /* 72 px */
+  }
 }
 
 html {
-  /* In-page anchors (#produkte, #produktdetails, …) must not land under the
-     fixed header (~80px on phones, up to ~190px on desktop). */
-  scroll-padding-top: 6rem;
+  /* In-page anchors and focused elements must not land under the sticky
+     header (56/72 px) or the mobile CTA bar (64 px + safe area): 88 px top,
+     80 px bottom (Design-Bibel §6, header-footer P2-5). While the consent bar
+     is open it publishes its height as --ph-consent-h (Cookies/
+     cookiecomponent.js); the larger of the two wins (WCAG 2.4.11). */
+  scroll-padding-top: 5.5rem;
+  scroll-padding-bottom: max(5rem, calc(var(--ph-consent-h, 0px) + 1rem));
 }
-@media (min-width: 1024px) {
-  html {
-    scroll-padding-top: 12rem;
-  }
-}
-
+/* The open consent bar must not hide the last footer row (legal links,
+   privacy settings): the page gets its height as extra room at the end. */
 body {
-  background: #ffffff;
-  color: #171717;
-  /* --font-montserrat / --font-bodoni are set by next/font in [locale]/layout.js */
-  font-family: var(--font-montserrat), "Montserrat", Helvetica, Arial, sans-serif;
+  padding-bottom: var(--ph-consent-h, 0px);
+}
+/* T8: the reserved room under the footer takes the footer band colour, so
+   the page does not end in a paper strip while the consent bar is open. */
+body:has(#site-footer) {
+  background: linear-gradient(to top, var(--color-surface-band) var(--ph-consent-h, 0px), var(--color-surface) 0);
+}
+/* Customer portal on phones (R5-shell-seo): its tab bar (Portal/Core/
+   PortalNav.js, 60 px + safe area, md:hidden) stands on top of the consent bar
+   (bottom: var(--ph-consent-h)). The page reserves room for BOTH bars, so the
+   last footer row and focused elements never end up under the tab bar – with
+   the consent bar open or closed (WCAG 2.4.11). Hook = the tab bar's own
+   positioning class, which tests/unit/r4-portal.test.mjs pins. */
+@media (width < 48rem) {
+  html:has(nav[class*="bottom-[var(--ph-consent-h"]) {
+    scroll-padding-bottom: calc(var(--ph-consent-h, 0px) + 5rem + env(safe-area-inset-bottom));
+  }
+  body:has(nav[class*="bottom-[var(--ph-consent-h"]) {
+    padding-bottom: calc(var(--ph-consent-h, 0px) + 4rem + env(safe-area-inset-bottom));
+  }
+}
+/* Slim shell (Reusable/BareShell.js): its legal footer gives way when the page
+   brings its own legal nav (the upload frame), so the links never appear
+   twice. Without :has() support both stay visible – harmless. */
+main:has([data-upload-scroll], nav[aria-label="Rechtliches"]) ~ [data-shell-legal] {
+  display: none;
+}
+/* KI-Concierge launcher: one label on every page and scroll position
+   (r4-gesamtwerk Nr. 4, AI Act Art. 50). Since QM shell-home 01.11.2026 the
+   launcher has no compact form at all (vertical edge tab from 768 px,
+   Concierge/launcher.module.css), so the former override here is gone. */
+/* Mobile menu opened by tap (Navbar/MobileMenu.js): focus moves to "Menü
+   schließen" without a ring. WebKit ignores focus({ focusVisible: false }),
+   so the button carries data-pointer-focus until the first key press or blur. */
+[data-pointer-focus]:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
-/* Display type: slightly heavier than Bodoni's default so it holds up at hero
-   sizes on screens. */
-.font-display {
-  font-weight: 500;
-  letter-spacing: -0.005em;
-  font-feature-settings: "kern" 1, "liga" 1;
+@layer base {
+  body {
+    background: var(--color-surface);
+    color: var(--color-text);
+    /* Instrument Sans (next/font, [locale]/layout.js). */
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+  p, li, dd, blockquote {
+    text-wrap: pretty;
+  }
 }
 
-/* ---- Motion -------------------------------------------------------------
-   Two kinds only, both CSS, both off under prefers-reduced-motion:
-   1. .hero-reveal — the single page-load entrance (hero panel + showroom card).
-   2. .reveal — scroll-driven: a section settles in as it enters the viewport.
-      Uses the CSS scroll-driven animation timeline (no JavaScript, no layout
-      thrash); browsers without `animation-timeline` simply show the content.
-   3. .marquee — the brand-name band, a slow continuous drift, paused on hover. */
-@keyframes hero-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
+@layer components {
+  /* Display type. Weight comes from the text-display-* token when used
+     together; on its own (legacy markup) Bodoni gets 500 so it holds up on
+     screens. In a layer, so font-normal / text-display-xl can override it. */
+  .font-display {
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    font-optical-sizing: auto;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  /* Chrome desktop: with opsz = font size (40–64 px) Bodoni's hairlines break
+     apart (I, N, V, W). Cap the optical size for H1/H2 sizes (Landing-Abnahme
+     P1-5); the hero size keeps auto. */
+  .font-display:is(.text-display-l, .text-display-m):not([class*="display-xl"]),
+  .font-display-italic:is(.text-display-l, .text-display-m):not([class*="display-xl"]) {
+    font-variation-settings: "opsz" 36;
   }
-}
-.hero-reveal {
-  animation: hero-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-/* The hero photograph settles from a slight zoom — once, slowly, together with
-   the text entrance. Same orchestrated moment, not a second effect. */
-@keyframes hero-zoom {
-  from {
-    transform: scale(1.06);
+  .font-display-italic {
+    font-family: var(--font-display-italic);
+    font-style: italic;
+    font-optical-sizing: auto;
   }
-  to {
-    transform: scale(1);
+  /* Measures, prices, times. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
   }
-}
-.hero-zoom {
-  animation: hero-zoom 1600ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  will-change: transform;
 }
 
-/* Transform only (no opacity): a section that starts invisible below the fold
-   is read by accessibility tooling as zero-contrast text. The settle is enough. */
+/* =========================================================================
+   Motion
+   The scroll reveal, all CSS, off under prefers-reduced-motion and under the
+   "Ruhige Ansicht" switch (html[data-motion="reduced"], §8.4):
+   .reveal (+ .ph-horizon; FadeInView removed in R6) – scroll-driven via
+   animation-timeline: view().
+   (R4 technik P1-2: the legacy page-load entrances .hero-reveal/.hero-zoom
+   were removed – no file in src/ used them. .ph-reveal stays as the
+   documented alias of .reveal.)
+   (.marquee, the legacy brand band, was removed in R5-shell-seo: no page
+   uses it since Home/BrandList.js; nothing on the site moves by itself
+   any more, WCAG 2.2.2.)
+
+   WHY the timeline goes through a custom property:
+   Tailwind 4 / Next 16 run the CSS through Lightning CSS. With modern browser
+   targets (dev: "last 1 chrome version") it folds
+       animation: reveal linear both; animation-timeline: view();
+   into the single shorthand
+       animation: linear both reveal view();
+   Chrome does not accept a timeline inside the `animation` shorthand, drops
+   the whole declaration – and the reveal never runs. A value written as
+   var(--…) is opaque to the minifier, so the longhand survives unmerged and
+   stays AFTER the shorthand (which would otherwise reset it to auto).
+   Do not "simplify" this back to a literal view().
+   ========================================================================= */
+/* Transform only (no opacity): a section that starts below the fold must not
+   be read by accessibility tooling as low-contrast text (§8.2: text never
+   below 0.6 opacity). Text travels at most 24 px (§8.2). */
 @keyframes reveal {
   from {
-    transform: translateY(32px);
+    transform: translate3d(var(--reveal-x, 0px), var(--reveal-y, 24px), 0) scale(var(--reveal-scale, 1));
   }
   to {
-    transform: translateY(0);
+    transform: none;
+  }
+}
+/* Horizon line: draws left → right while scrolling (§8.3). */
+@keyframes ph-draw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
   }
 }
 @supports (animation-timeline: view()) {
-  .reveal {
-    animation: reveal linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 40%;
+  @media (prefers-reduced-motion: no-preference) {
+    :root:not([data-motion="reduced"], [data-motion="calm"]) :is(.reveal, .ph-reveal) {
+      --ph-timeline: view();
+      animation: reveal linear both;
+      animation-timeline: var(--ph-timeline);
+      animation-range: entry var(--reveal-start, 0%) entry var(--reveal-end, 40%);
+    }
+    :root:not([data-motion="reduced"], [data-motion="calm"]) .ph-horizon__line {
+      --ph-timeline: view();
+      animation: ph-draw linear both;
+      animation-timeline: var(--ph-timeline);
+      animation-range: entry 20% cover 45%;
+    }
   }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee {
-  animation: marquee 48s linear infinite;
-}
-.marquee-group:hover .marquee,
-.marquee-group:focus-within .marquee {
-  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-reveal,
-  .hero-zoom,
   .reveal,
-  .marquee {
+  .ph-reveal {
     animation: none;
   }
 }
-
-/* Visible keyboard focus everywhere (several components remove the native
-   outline). Mouse clicks don't trigger :focus-visible, so pointer users see no change. */
-:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
-  outline: 2px solid #d1b250;
-  outline-offset: 2px;
+:root:is([data-motion="reduced"], [data-motion="calm"]) :is(.reveal, .ph-reveal) {
+  animation: none;
 }
 
-/* Used by scrollable strips (product gallery thumbnails, banner nav links)
-   that pair this with their own visible prev/next controls, so the native
-   scrollbar would just be visual clutter. */
+/* =========================================================================
+   Focus (§4.2, W21): 2 px ink ring, 2 px gap, paper halo – visible on every
+   surface. On dark surfaces ([data-surface="inverse"]) the ring is brass-400.
+   :where() keeps specificity at 0, so components can still style their own.
+   ========================================================================= */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px var(--color-paper);
+}
+:where([data-surface="inverse"], .bg-walnut, .bg-ink, .bg-ink-deep, .bg-night)
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline-color: var(--color-focus-on-dark);
+  box-shadow: none;
+}
+
+/* Used by scrollable strips that pair this with their own visible prev/next
+   controls, so the native scrollbar would just be visual clutter. */
 .scrollbar-hide {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* =========================================================================
+   Component classes for src/components/ui (only what utilities can't do).
+   ========================================================================= */
+@layer components {
+  /* Accordion (native <details>): custom marker, smooth open where supported. */
+  .ph-accordion > summary {
+    list-style: none;
+  }
+  .ph-accordion > summary::-webkit-details-marker {
+    display: none;
+  }
+  .ph-accordion > summary .ph-accordion__icon {
+    transition: transform var(--duration-ui) var(--ease-quiet);
+  }
+  .ph-accordion[open] > summary .ph-accordion__icon {
+    transform: rotate(45deg);
+  }
+  @supports (interpolate-size: allow-keywords) {
+    .ph-accordion {
+      interpolate-size: allow-keywords;
+    }
+    .ph-accordion::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition: block-size var(--duration-ui) var(--ease-quiet), content-visibility var(--duration-ui) allow-discrete;
+    }
+    .ph-accordion[open]::details-content {
+      block-size: auto;
+    }
+  }
+
+  /* Footer link groups (Reusable/Footer.js, R4-shell-perf): accordions below
+     768 px, always open from 768 px – also without JS (FooterGroupsOpen sets
+     [open] for engines without ::details-content). */
+  @media (min-width: 768px) {
+    details[data-footer-group]::details-content {
+      content-visibility: visible;
+      block-size: auto;
+    }
+  }
+
+  /* Whole card clickable via the title link's ::after (§9 Karten). */
+  .ph-stretched::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  /* LinkArrow / Button arrow nudge. */
+  .ph-arrow {
+    transition: transform var(--duration-micro) var(--ease-quiet);
+  }
+  :is(a, button):is(:hover, :focus-visible) > .ph-arrow,
+  .group:is(:hover, :focus-within) .ph-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ProductCard hover image: only on devices that really hover. */
+  .ph-card-media__alt {
+    opacity: 0;
+    transition: opacity var(--duration-swap) var(--ease-quiet);
+  }
+  @media (hover: hover) {
+    .group:hover .ph-card-media__alt,
+    .group:focus-within .ph-card-media__alt {
+      opacity: 1;
+    }
+  }
+}
+
+/* Global 404 (src/app/not-found.js, R3 technik P2-4): the server HTML carries
+   all four languages; NF_BOOT_SCRIPT sets html[data-nf] from the path before the
+   first paint. Only that block shows; without JS German. The language link of
+   the current language is hidden. */
+[data-nf-block]:not([data-nf-block="de"]),
+html[data-nf] [data-nf-block] {
+  display: none;
+}
+html[data-nf="de"] [data-nf-block="de"],
+html[data-nf="en"] [data-nf-block="en"],
+html[data-nf="fr"] [data-nf-block="fr"],
+html[data-nf="it"] [data-nf-block="it"] {
+  display: block;
+}
+html:not([data-nf]) [data-nf-lang="de"],
+html[data-nf="de"] [data-nf-lang="de"],
+html[data-nf="en"] [data-nf-lang="en"],
+html[data-nf="fr"] [data-nf-lang="fr"],
+html[data-nf="it"] [data-nf-lang="it"] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ph-arrow,
+  .ph-card-media__alt,
+  .ph-accordion > summary .ph-accordion__icon {
+    transition: none;
+  }
+}
+
+/* =========================================================================
+   Design-Studio-Feinschliff (Rat 9,5 · T8, 30.10.2026)
+   Typografie, Zustände und Mikrobewegung für alle Seiten – nur CSS, kein JS.
+   Bewegung nur über transform/opacity, alles ruhig unter
+   prefers-reduced-motion und der „Ruhigen Ansicht“ (html[data-motion]).
+   Befunde und Vorher/Nachher: qa-screenshots/umsetzung95/design-audit.md,
+   design-umsetzung.md.
+   ========================================================================= */
+@layer base {
+  html {
+    /* Safari: öffnende Anführungszeichen und Klammern hängen in den Rand,
+       damit die Textkante optisch gerade bleibt (andere Engines ignorieren es). */
+    hanging-punctuation: first allow-end last;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures contextual;
+  }
+  /* Ziffern: Zeiten, Daten, Maße und Tabellen in Tabellenziffern. */
+  :where(time, data, output, table, .tabular) {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  /* Typografische Anführungszeichen je Sprache für <q>. */
+  :lang(de) q { quotes: "„" "“" "‚" "‘"; }
+  :lang(de-CH) q, :lang(fr) q, :lang(it) q { quotes: "«" "»" "‹" "›"; }
+  :lang(en) q { quotes: "“" "”" "‘" "’"; }
+
+  /* Unterstreichungen als Haarlinie, gleichmäßiger Abstand zur Grundlinie;
+     Utilities (underline-offset-4 …) gehen weiter vor. */
+  :where(a, button) {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Telefone: lange deutsche Komposita („Einrichtungsberatung“) im
+     Fließtext trennen, statt große Löcher am Zeilenende zu lassen. Erst ab
+     12 Zeichen, mindestens 5 Zeichen je Teil; Titel, Knöpfe und Navigation
+     werden nie getrennt. */
+  @media (max-width: 47.99rem) {
+    :where(p, li, dd, blockquote, figcaption) {
+      -webkit-hyphens: auto;
+      hyphens: auto;
+      hyphenate-limit-chars: 12 5 5;
+    }
+    :where(h1, h2, h3, h4, nav, button, label, [class*="text-overline"], [class*="font-display"]) {
+      -webkit-hyphens: manual;
+      hyphens: manual;
+    }
+  }
+
+  /* Markierung in Markenfarben statt Systemblau. */
+  ::selection {
+    background-color: var(--color-stone-deep);
+    color: var(--color-ink-deep);
+  }
+  :where([data-surface="inverse"], .bg-walnut, .bg-ink, .bg-ink-deep) ::selection {
+    background-color: var(--color-brass-400);
+    color: var(--color-ink-deep);
+  }
+}
+
+@layer components {
+  /* Versal-Overline: Satzzeichen auf Versalhöhe (·, –, Klammern), Ziffern
+     auf Linie. */
+  .text-overline {
+    font-feature-settings: "case" 1, "kern" 1;
+    font-variant-numeric: lining-nums;
+  }
+  /* Große Bodoni-Titel: Ziffern auf Linie, proportional; Kursiv nie
+     synthetisch verfettet. */
+  .font-display {
+    font-variant-numeric: lining-nums proportional-nums;
+    font-synthesis-weight: none;
+  }
+
+  /* Gedrückt-Zustand für alle Knöpfe aus ui/Button (1 px nach unten,
+     sofort, 50 ms zurück) – Rückmeldung ≤ 100 ms (§2 P7). */
+  .ph-press {
+    transition-property: color, background-color, border-color, text-decoration-color, transform;
+  }
+  .ph-press:active:not(:disabled, [aria-disabled="true"]) {
+    transform: translateY(1px);
+    transition-duration: var(--duration-ack);
+  }
+
+  /* Merk-Herz (§8.3 „Ins Haus legen“, Ausschnitt): Füllung wechselt in
+     160 ms (Ausgangswert transparent statt none, sonst springt sie), und
+     NUR nach einem Klick einmal 1 → 1,12 → 1 in 240 ms mit --ease-pop.
+     Design-Jury P1-1: nicht an aria-pressed hängen – das wechselt bei der
+     Hydration und ließ jedes gemerkte Herz beim Laden poppen. Der Knopf
+     trägt data-just-saved 240 ms lang (wishlistHeart.js markJustSaved). */
+  .ph-heart {
+    transition: fill var(--duration-micro) var(--ease-quiet), color var(--duration-micro) var(--ease-quiet);
+  }
+  [data-just-saved] .ph-heart {
+    animation: ph-pop var(--duration-swap) var(--ease-pop);
+  }
+
+  /* Kapitel-Auftakt: H2 der Abschnitte heben sich beim Hereinscrollen um
+     8 px (Design-Jury P2-8; nur transform, scrollgetrieben, ohne
+     Unterstützung steht alles). */
+  .ph-chapter {
+    --reveal-y: 8px;
+    --reveal-end: 30%;
+  }
+}
+@keyframes ph-pop {
+  50% {
+    transform: scale(1.12);
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :root:not([data-motion="reduced"], [data-motion="calm"]) .ph-chapter {
+      --ph-timeline: view();
+      animation: reveal linear both;
+      animation-timeline: var(--ph-timeline);
+      animation-range: entry var(--reveal-start, 0%) entry var(--reveal-end, 40%);
+    }
+    /* Design-Jury P1-2 / P2-8: eine Hauptbewegung pro Viewport, Text höchstens
+       24 px (§8.2). Steht die H2 in oder neben einem .reveal-Bild, hebt sich
+       nur das Bild – sonst addieren sich 24 + 12 px. Unsichtbare H2
+       (sr-only) bewegen sich nie. */
+    :root:not([data-motion="reduced"], [data-motion="calm"]) :is(.reveal, .ph-reveal, section:has(.reveal, .ph-reveal)) .ph-chapter,
+    :root:not([data-motion="reduced"], [data-motion="calm"]) .ph-chapter:is(.sr-only, .reveal, .ph-reveal) {
+      animation: none;
+    }
+  }
+}
+
+/* Telefone und Tablets ohne Hover: Links und Karten bestätigen den Tipp
+   sofort mit leichter Abblendung (statt des grauen iOS-Tap-Kastens). */
+@media (hover: none) {
+  :where(a[href], summary, [role="tab"]):active {
+    opacity: 0.72;
+  }
+  /* Karten mit Foto nur leicht (Design-Jury P2-10: 0,72 blitzt am Handy). */
+  :where(a[href]:has(img, picture, video)):active {
+    opacity: 0.86;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ph-press:active:not(:disabled, [aria-disabled="true"]) {
+    transform: none;
+  }
+  [data-just-saved] .ph-heart,
+  .ph-chapter {
+    animation: none;
+  }
+}
+:root:is([data-motion="reduced"], [data-motion="calm"]) .ph-press:active {
+  transform: none;
+}
+:root:is([data-motion="reduced"], [data-motion="calm"]) :is([data-just-saved] .ph-heart, .ph-chapter) {
+  animation: none;
+}
+
+/* Bodoni-Haarstriche auf 1×- und 1,25×-Bildschirmen (Desktop-Monitore):
+   Mit der hohen optischen Größe werden die Haarstriche großer Titel dünner
+   als ein Gerätepixel und brechen auf („f ür“, „W ir“, „Kontakt“). Die
+   Startseite hatte dafür schon opsz 28 ([locale]/page.js); jetzt gilt das
+   für alle Seiten. Unlayered, damit es die Layer-Regeln oben (opsz 36) auf
+   diesen Bildschirmen schlägt; Retina behält die feinere Zeichnung. */
+@media (max-resolution: 1.49dppx) {
+  .font-display,
+  .font-display-italic {
+    font-variation-settings: "opsz" 28;
+  }
+}
+/* Retina: auch der Hero-Titel (display-xl, 48–96 px) mit begrenzter
+   optischer Größe – bei opsz 96 wirken die Haarstriche am Telefon wie
+   Risse. */
+@layer components {
+  @media (min-resolution: 1.5dppx) {
+    .font-display.text-display-xl,
+    .font-display-italic.text-display-xl {
+      font-variation-settings: "opsz" 48;
+    }
+  }
+}
+
+/* Erfolgsmoment. Design-Jury P1-3: eine Bestätigung ist RÜCKMELDUNG
+   (Zeitklasse 80–280 ms, §8.2), kein Auftritt – und revealConfirmation()
+   scrollt sie schon sanft nach oben. Darum nur Deckkraft 0,6 → 1 (Text
+   nie darunter) in 280 ms, kein zweiter Weg.
+   Einziger Signature-Moment ist die Termin-„Tischkarte“ (§8.3,
+   .ph-arrive-card): 6 px Hebung, 600 ms.
+   Das Häkchen (P2-5): der Kreis steht, nur der Haken zeichnet sich in
+   400 ms (stroke-dashoffset), 120 ms nach der Ankunft. Nur beim Einfügen
+   (@starting-style), kein JS. Bei reduzierter Bewegung steht alles sofort. */
+@layer components {
+  .ph-arrive {
+    transition: opacity var(--duration-ui) var(--ease-quiet);
+  }
+  @starting-style {
+    .ph-arrive {
+      opacity: 0.6;
+    }
+  }
+  .ph-arrive-card {
+    transition:
+      opacity var(--duration-enter) var(--ease-quiet),
+      transform var(--duration-enter) var(--ease-quiet);
+  }
+  @starting-style {
+    .ph-arrive-card {
+      opacity: 0.6;
+      transform: translateY(6px);
+    }
+  }
+  .ph-tick > path {
+    stroke-dasharray: 16;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset var(--duration-morph) var(--ease-quiet-inout) 120ms;
+  }
+  @starting-style {
+    .ph-tick > path {
+      stroke-dashoffset: 16;
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ph-arrive,
+  .ph-arrive-card,
+  .ph-tick > path {
+    transition: none;
+  }
+}
+:root:is([data-motion="reduced"], [data-motion="calm"]) :is(.ph-arrive, .ph-arrive-card, .ph-tick > path) {
+  transition: none;
+}
+
+/* Optionsfelder (RadioCards, Termin-Assistent): überall gleich gezeichnet
+   statt im Systemgrau – 1 px Pebble-Ring (3,6:1, Bedienelement ≥ 3:1),
+   gewählt ein Ink-Punkt mit Paper-Ring; Wechsel in 160 ms (Farbwechsel
+   bleibt auch in der Ruhigen Ansicht). Fokus über den globalen Ring. */
+@layer components {
+  .ph-radio {
+    appearance: none;
+    -webkit-appearance: none;
+    display: inline-grid;
+    place-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    border: 1px solid var(--color-line-control);
+    border-radius: 9999px;
+    background: var(--color-surface);
+    box-shadow: inset 0 0 0 0.6rem var(--color-surface);
+    transition:
+      border-color var(--duration-micro) var(--ease-quiet),
+      background-color var(--duration-micro) var(--ease-quiet),
+      box-shadow var(--duration-micro) var(--ease-quiet);
+    cursor: pointer;
+  }
+  .ph-radio:hover {
+    border-color: var(--color-ink);
+  }
+  .ph-radio:checked {
+    border-color: var(--color-ink);
+    background: var(--color-ink);
+    box-shadow: inset 0 0 0 0.25rem var(--color-surface);
+  }
+  .ph-radio:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+@media (forced-colors: active) {
+  .ph-radio {
+    appearance: auto;
+    -webkit-appearance: radio;
+  }
+}
+
+/* Hängende Anführungszeichen für Zitate, die mit „ beginnen: die Textkante
+   bleibt optisch bündig. Safari macht das schon über hanging-punctuation. */
+@layer components {
+  .ph-hang {
+    text-indent: -0.42em;
+  }
+  @supports (hanging-punctuation: first) {
+    .ph-hang {
+      text-indent: 0;
+    }
+  }
+}
+
+/* =========================================================================
+   Designsystem-Fundament (Qualität 01.11.2026) – see the MOTION-FUNDAMENT
+   block in @theme for names and rules. Everything here is opt-in by class
+   except the base rules for placeholders and small headings.
+   ========================================================================= */
+@layer base {
+  h5, h6, figcaption > strong {
+    text-wrap: balance;
+  }
+  figcaption, td, th {
+    text-wrap: pretty;
+  }
+  /* Platzhalter: Tailwind-Preflight färbt sie mit 50 % der Textfarbe
+     (≈ 2,7:1 auf Paper – unter WCAG 1.4.3). ink-soft hält 5,9:1 und bleibt
+     klar heller als eingegebener Text (ink). Utilities (placeholder:…) gehen
+     vor. */
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-text-soft);
+    opacity: 1;
+  }
+}
+
+@layer components {
+  /* Gruppen-Reveal: Kinder (Kacheln, Listenpunkte) kommen nacheinander –
+     Versatz über den Startpunkt der eigenen view()-Zeitleiste, höchstens
+     vier Stufen (≈ --stagger-max). */
+  .reveal-group > :nth-child(2) {
+    --reveal-start: 4%;
+    --reveal-end: 44%;
+  }
+  .reveal-group > :nth-child(3) {
+    --reveal-start: 8%;
+    --reveal-end: 48%;
+  }
+  .reveal-group > :nth-child(n + 4) {
+    --reveal-start: 12%;
+    --reveal-end: 52%;
+  }
+
+  /* Skelett-Platzhalter beim Laden (aria-hidden setzen; Text dazu über
+     role="status"). Leinen-Fläche, ein Paper-Schimmer wandert durch. */
+  .ph-skeleton {
+    background-color: var(--color-skeleton);
+    background-image: linear-gradient(100deg, transparent 30%, var(--color-skeleton-shine) 50%, transparent 70%);
+    background-size: 200% 100%;
+    background-position: 150% 0;
+    background-repeat: no-repeat;
+  }
+
+  /* Datentabellen (Maße, technische Angaben): Haarlinien, Tabellenziffern,
+     linksbündig, Kopf in text-small/soft. */
+  .ph-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .ph-table caption {
+    caption-side: top;
+    text-align: left;
+    padding-bottom: 0.5rem;
+    font-size: var(--text-small);
+    color: var(--color-text-soft);
+  }
+  .ph-table :is(th, td) {
+    padding: 0.625rem 1rem 0.625rem 0;
+    border-bottom: 1px solid var(--color-line);
+    text-align: left;
+    vertical-align: top;
+  }
+  .ph-table thead th {
+    font-size: var(--text-small);
+    font-weight: 500;
+    color: var(--color-text-soft);
+    border-bottom-color: var(--color-line-strong);
+  }
+}
+@keyframes ph-shimmer {
+  to {
+    background-position: -50% 0;
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :root:not([data-motion="reduced"], [data-motion="calm"]) .reveal-group > * {
+      --ph-timeline: view();
+      animation: reveal linear both;
+      animation-timeline: var(--ph-timeline);
+      animation-range: entry var(--reveal-start, 0%) entry var(--reveal-end, 40%);
+    }
+    /* eine Bewegung: H2 in einer Gruppe hebt sich nicht zusätzlich */
+    :root:not([data-motion="reduced"], [data-motion="calm"]) .reveal-group .ph-chapter {
+      animation: none;
+    }
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-motion="reduced"], [data-motion="calm"]) .ph-skeleton {
+    animation: ph-shimmer var(--duration-shimmer) var(--ease-drift) infinite;
+  }
+}
+/* Hover-Hebung für Karten/Kacheln (opt-in): 2 px, nur mit echter Maus, nur
+   transform; beim Drücken sofort zurück (Rückmeldung wie .ph-press). */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  :root:not([data-motion="reduced"], [data-motion="calm"]) .ph-lift {
+    transition: transform var(--duration-micro) var(--ease-quiet);
+  }
+  :root:not([data-motion="reduced"], [data-motion="calm"]) .ph-lift:is(:hover, :focus-within) {
+    transform: translateY(-2px);
+  }
+  :root:not([data-motion="reduced"], [data-motion="calm"]) .ph-lift:active {
+    transform: none;
+    transition-duration: var(--duration-ack);
+  }
+}
+
+/* Inline-Liste mit Trennpunkt „·“ (QM shell-home r2): der Punkt steht VOR
+   jedem Eintrag in einer 1,25em breiten Spalte; die Liste ist um diese
+   Spalte nach links verschoben und per clip-path beschnitten. Beginnt ein
+   Eintrag nach dem Umbruch eine neue Zeile, liegt sein Punkt im
+   abgeschnittenen Streifen – kein „· St. Gallen“ am Zeilenanfang, kein „·“
+   am Zeilenende. Fokusring (2 px + 2 px Abstand) bleibt sichtbar: der
+   Schnitt liegt 6 px vor dem Inhalt, oben/unten/rechts 8 px Luft. */
+@layer components {
+  .ph-dotlist {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1.25em;
+    clip-path: inset(-8px -8px -8px calc(1.25em - 6px));
+  }
+  .ph-dotlist > * {
+    display: inline-flex;
+    align-items: center;
+  }
+  .ph-dotlist > *::before {
+    content: "·";
+    content: "·" / ""; /* rein dekorativ: nicht vorlesen */
+    flex: none;
+    width: 1.25em;
+    text-align: center;
+    color: var(--color-text-soft);
+  }
 }

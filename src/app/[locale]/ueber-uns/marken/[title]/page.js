@@ -5,53 +5,38 @@ import { generateSlug } from "@/lib/slugify";
 import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData"
 import { fetchKategorienByMarke } from "@/lib/api/fetchKategorien";
 import { fetchCollectionsByMarke } from "@/lib/api/fetchCollections";
+import { fetchProdukteNewByMarke } from "@/lib/api/fetchAllProdukte";
+import { getTranslations } from "next-intl/server";
+import { makeTr } from "@/components/MarkenItems/copy";
+import { brandFacts, brandMetaText, brandSchemaText } from "@/components/MarkenItems/brandData";
+import { displayBrandName } from "@/lib/content/brands";
 import { buildBrandNode } from "@/lib/seo/brandSchema";
-import { hreflangLanguages, toMetaDescription } from "@/lib/seo/pageMetadata";
+import { DEFAULT_OG_IMAGE, hreflangLanguages, ogLocale } from "@/lib/seo/pageMetadata";
+import { homeCrumbLabel } from "@/lib/seo/breadcrumbs";
 import { ROUTES } from "@/utils/routing";
+import { brandPageTitle } from "@/lib/marken/brandTitle";
+import { brandSafeTitle, fitMetaDescription } from "@/lib/seo/brandMeta";
+import { safeStaticParams } from "@/lib/marken/staticParams";
+import { brandGuide } from "@/lib/content/brandGuides";
 
-// Fetch the paths dynamically from your API for SSG (Static Site Generation)
+// SSG of the brand pages (Runde 4 P5, technik P1-5): backoffice list with
+// try/catch + timeout (src/lib/marken/staticParams.js). On a timeout the list
+// is empty and the pages render on their first visit (dynamicParams below),
+// so a slow backoffice never aborts the build.
 export async function generateStaticParams() {
-
-  const data = await fetchRawMarkenData();
-
-  // Extract paths from the data for each dynamic route
-  return data?.map((marke) => ({
-    title: generateSlug(marke?.name1),
-  }));
+  return safeStaticParams(
+    () => fetchRawMarkenData(),
+    (data) => (data || []).map((marke) => ({ title: generateSlug(marke?.name1) })),
+    { label: "marken/[title]" }
+  );
 }
 
-const BRAND_TITLE_OVERRIDES = {
-  minotti: {
-    de: "Minotti Händler Vorarlberg | Platzhirsch Home Living",
-    en: "Minotti Dealer Vorarlberg | Platzhirsch Home Living",
-    fr: "Minotti Revendeur Vorarlberg | Platzhirsch Home Living",
-    it: "Minotti Rivenditore Vorarlberg | Platzhirsch Home Living",
-  },
-  poliform: {
-    de: "Poliform Händler Vorarlberg | Platzhirsch Home Living",
-    en: "Poliform Dealer Vorarlberg | Platzhirsch Home Living",
-    fr: "Poliform Revendeur Vorarlberg | Platzhirsch Home Living",
-    it: "Poliform Rivenditore Vorarlberg | Platzhirsch Home Living",
-  },
-  tonon: {
-    de: "Tonon Händler Vorarlberg | Platzhirsch Home Living",
-    en: "Tonon Dealer Vorarlberg | Platzhirsch Home Living",
-    fr: "Tonon Revendeur Vorarlberg | Platzhirsch Home Living",
-    it: "Tonon Rivenditore Vorarlberg | Platzhirsch Home Living",
-  },
-  "paola-lenti": {
-    de: "Paola Lenti Showroom Österreich | Platzhirsch Home Living",
-    en: "Paola Lenti Showroom Austria | Platzhirsch Home Living",
-    fr: "Paola Lenti Showroom Autriche | Platzhirsch Home Living",
-    it: "Paola Lenti Showroom Austria | Platzhirsch Home Living",
-  },
-  next125: {
-    de: "Next125 Küchen Händler Vorarlberg | Platzhirsch Home Living",
-    en: "Next125 Kitchen Dealer Vorarlberg | Platzhirsch Home Living",
-    fr: "Next125 Revendeur Cuisines Vorarlberg | Platzhirsch Home Living",
-    it: "Next125 Rivenditore Cucine Vorarlberg | Platzhirsch Home Living",
-  },
-};
+// Brands missing from the build list (timeout, new brand) render on demand.
+export const dynamicParams = true;
+
+// Titles make no dealer claim (Runde 2, seo P0-2): no "Showroom Österreich/
+// Austria/Lochau", no "Händler/dealer" – except the verified dealer brands
+// ClassiCon and Ezarri ("Vertragshändler"). One rule: src/lib/marken/brandTitle.js.
 // Fetch data for each dynamic page
 export async function generateMetadata(context) {
   const { params } = await context;
@@ -85,16 +70,24 @@ export async function generateMetadata(context) {
 
   // Brand-story title, localized and distinct from the commercial product-listing
   // page (/produkte/[marke]) so the two pages don't collide on <title>.
-  const brandWord = { en: "Design Brand", fr: "Marque de design", it: "Marchio di design" }[locale] || "Designmarke";
-  const pageTitle =
-    BRAND_TITLE_OVERRIDES[brandSlug]?.[locale] ||
-    `${marke.name1} – ${brandWord} | Platzhirsch Home Living`;
+  // Runde 3 P5 (technik P2): brand once, ≤ 65 (src/lib/seo/brandMeta.js).
+  // SEO-Team A (AP-7): brands with an own guide text (brandGuides.js) carry
+  // "<Marke> in Vorarlberg – <Produktart> | Platzhirsch" – only for brands
+  // WITHOUT a dealer claim; dealer brands and Minotti keep the claim-driven title.
+  const guide = brandGuide(brandSlug, locale, displayBrandName(marke.name1));
+  const pageTitle = brandSafeTitle(guide?.title || brandPageTitle(displayBrandName(marke.name1), locale), displayBrandName(marke.name1));
+
+  // CMS metadata_description_<locale> → CMS intro → neutral sentence; page
+  // language only, without dealer (UWG, ClassiCon excepted) or luxury /
+  // superlative wordings (QA Runde 1, P1-1 + P2-5). See brandData.js.
+  const t = await getTranslations({ locale, namespace: "marken" });
+  const tr = makeTr(t, locale, "marken");
+  const metaText = brandMetaText(marke, locale, tr, brandFacts(marke, locale, displayBrandName(marke.name1)));
 
   const metadata = {
     title: pageTitle,
-    // Fallback: the brand intro, trimmed to snippet length (the CMS
-    // metadata_description_<locale> below wins where it exists).
-    description: toMetaDescription(marke?.produkte || ""),
+    // 120–155 characters in the page language (brandMeta.js, r3-seo P2-3).
+    description: fitMetaDescription(guide?.description || metaText, locale, displayBrandName(marke.name1)),
     // All four locales are genuinely translated and indexed — Italy + Switzerland
     // (fr/it) are target markets. hreflang below maps each locale to its counterpart.
     robots: { index: true, follow: true },
@@ -105,51 +98,26 @@ export async function generateMetadata(context) {
       siteName: "Platzhirsch Home Living",
       images: [
         {
-          url: marke.bild_anhagen?.[0]?.bild_anhagen ? `/cmx${marke.bild_anhagen[0].bild_anhagen}` : "/Images/fallback-banner.jpg",
+          url: marke.bild_anhagen?.[0]?.bild_anhagen ? `/cmx${marke.bild_anhagen[0].bild_anhagen}` : DEFAULT_OG_IMAGE,
           width: 1200,
           height: 630,
           alt: marke.name1,
         },
       ],
-      locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_AT",
+      locale: ogLocale(locale),
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: pageTitle,
       description: "",
-      images: [marke.bild_anhagen?.[0]?.bild_anhagen ? `/cmx${marke.bild_anhagen[0].bild_anhagen}` : "/Images/fallback-banner.jpg"],
+      images: [marke.bild_anhagen?.[0]?.bild_anhagen ? `/cmx${marke.bild_anhagen[0].bild_anhagen}` : DEFAULT_OG_IMAGE],
     },
     alternates: {
       canonical: canonicalUrl,
       languages: hreflangLanguages((l) => `https://platzhirsch.studio/${l}${ROUTES.marken[l]}/${brandSlug}`),
     },
   };
-
-  // Handle language-specific metadata
-  switch (locale) {
-    case "en":
-      if (marke?.metadata_description_en) {
-        metadata.description = toMetaDescription(marke.metadata_description_en);
-      }
-      break;
-
-    case "it":
-      if (marke?.metadata_description_it) {
-        metadata.description = toMetaDescription(marke.metadata_description_it);
-      }
-      break;
-    case "fr":
-      if (marke?.metadata_description_fr) {
-        metadata.description = toMetaDescription(marke.metadata_description_fr);
-      }
-      break;
-    default:
-      if (marke?.metadata_description_de) {
-        metadata.description = toMetaDescription(marke.metadata_description_de);
-      }
-      break;
-  }
 
   // Update OpenGraph and Twitter descriptions with the localized description
   // metadata.description = metadata.description;
@@ -175,10 +143,12 @@ export default async function MarkenDetailPage(props) {
     notFound();
   }
 
-  // Category tiles + collections ("Ausgewählte Produkte") for this brand, fetched server-side.
-  const [kategorien, collections] = await Promise.all([
+  // Category names, collections and the brand's products (chapters per
+  // category), fetched server-side. Every fetcher returns [] on errors.
+  const [kategorien, collections, products] = await Promise.all([
     fetchKategorienByMarke(marke.name1),
     fetchCollectionsByMarke(marke.name1),
+    fetchProdukteNewByMarke(marke.name1).catch(() => []),
   ]);
 
   const linkNameTwo =
@@ -189,14 +159,8 @@ export default async function MarkenDetailPage(props) {
         : locale == "fr"
           ? "Marques"
           : "Marken";
-  const Home =
-    locale == "it"
-      ? "Home"
-      : locale == "en"
-        ? "Home"
-        : locale == "fr"
-          ? "Accueil"
-          : "Home";
+  // "Startseite" / "Home" / "Accueil" / "Home" – same as the visible trail.
+  const Home = homeCrumbLabel(locale);
 
   // JSON-LD for the brand-story page: an AboutPage whose mainEntity is the Brand,
   // plus a BreadcrumbList. URLs are absolute (JSON-LD is parsed independently).
@@ -215,12 +179,12 @@ export default async function MarkenDetailPage(props) {
   };
   const pageUrl = `${DOMAIN}${storyPaths[locale] || storyPaths.de}`;
   const brandWord = { en: "Design Brand", fr: "Marque de design", it: "Marchio di design" }[locale] || "Designmarke";
-  const brandDesc =
-    marke[`metadata_description_${locale}`] || marke.metadata_description_de ||
-    marke[`beschreibung_${locale}`] || marke.beschreibung || "";
+  // Page language only, same UWG + voice filter as the visible page; no
+  // German fallback on /en, /fr, /it – the field is left out (QA P1-1).
+  const brandDesc = brandSchemaText(marke, locale);
   const brandImage = marke.bild_anhagen?.[0]?.bild_anhagen
     ? `${DOMAIN}/cmx${marke.bild_anhagen[0].bild_anhagen}`
-    : `${DOMAIN}/Images/fallback-banner.jpg`;
+    : `${DOMAIN}${DEFAULT_OG_IMAGE}`;
 
   const brandSchema = {
     "@context": "https://schema.org",
@@ -246,9 +210,12 @@ export default async function MarkenDetailPage(props) {
   };
 
   return (
-    <div className="">
+    <>
       <JsonLd data={brandSchema} />
-      <BrandPage marke={marke} kategorien={kategorien} collections={collections} />
-    </div>
+      <BrandPage marke={marke} locale={locale} kategorien={kategorien} collections={collections} products={products} />
+    </>
   );
 }
+// Runde 3 P5 (technik P2): brand pages are cacheable (ISR, like the brand
+// index): no request-time API on this route, the data fetchers cache 1 h.
+export const revalidate = 3600;

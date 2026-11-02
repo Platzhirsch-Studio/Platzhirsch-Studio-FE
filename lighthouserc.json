@@ -1,0 +1,59 @@
+{
+  "ci": {
+    "collect": {
+      "url": [
+        "http://localhost:3100/de",
+        "http://localhost:3100/de/sofaplaner",
+        "http://localhost:3100/de/yacht-interior",
+        "http://localhost:3100/de/produkte",
+        "http://localhost:3100/de/ezarri",
+        "http://localhost:3100/de/beratung"
+      ],
+      "numberOfRuns": 3,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "onlyCategories": ["performance", "accessibility", "best-practices", "seo"]
+      }
+    },
+    "assert": {
+      "assertMatrix": [
+        {
+          "matchingUrlPattern": ".*",
+          "assertions": {
+            "categories:accessibility": ["error", { "minScore": 1, "aggregationMethod": "median-run" }],
+            "categories:best-practices": ["error", { "minScore": 1, "aggregationMethod": "median-run" }],
+            "categories:seo": ["error", { "minScore": 1, "aggregationMethod": "median-run" }],
+            "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1, "aggregationMethod": "median-run" }],
+            "largest-contentful-paint": ["warn", { "maxNumericValue": 2000, "aggregationMethod": "median-run" }],
+            "total-blocking-time": ["warn", { "maxNumericValue": 200, "aggregationMethod": "median-run" }]
+          }
+        },
+        {
+          "matchingUrlPattern": "^https?://[^/]+/de/?(\\?.*)?$",
+          "assertions": { "categories:performance": ["error", { "minScore": 0.69, "aggregationMethod": "median-run" }] }
+        },
+        {
+          "matchingUrlPattern": "^https?://[^/]+/de/sofaplaner/?(\\?.*)?$",
+          "assertions": { "categories:performance": ["error", { "minScore": 0.7, "aggregationMethod": "median-run" }] }
+        },
+        {
+          "matchingUrlPattern": "^https?://[^/]+/de/yacht-interior/?(\\?.*)?$",
+          "assertions": { "categories:performance": ["error", { "minScore": 0.73, "aggregationMethod": "median-run" }] }
+        },
+        {
+          "matchingUrlPattern": "^https?://[^/]+/de/produkte/?(\\?.*)?$",
+          "assertions": { "categories:performance": ["error", { "minScore": 0.8, "aggregationMethod": "median-run" }] }
+        },
+        {
+          "matchingUrlPattern": "^https?://[^/]+/de/ezarri/?(\\?.*)?$",
+          "assertions": { "categories:performance": ["error", { "minScore": 0.71, "aggregationMethod": "median-run" }] }
+        },
+        {
+          "matchingUrlPattern": "^https?://[^/]+/de/beratung/?(\\?.*)?$",
+          "assertions": { "categories:performance": ["error", { "minScore": 0.8, "aggregationMethod": "median-run" }] }
+        }
+      ]
+    }
+  }
+}

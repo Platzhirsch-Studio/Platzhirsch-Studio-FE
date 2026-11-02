@@ -1,0 +1,117 @@
+/* ---- Navetta „Kinosaal“: film strip / pinned dolly (visual-design) --------
+   The photos are never cropped by CSS: each frame has the photo's own ratio
+   (NavettaFigure), the strip only moves sideways. Base = horizontal
+   scroll-snap strip (every browser, reduced motion, "Ruhige Ansicht"). */
+.film {
+  --film-h: min(58svh, 34rem);
+  margin-inline: calc(-1 * var(--space-gutter));
+}
+/* QM r2 (ipad-hoch): im Hochformat war das Foto (34 rem hoch) von ~175 px oben und ~320 px unten
+   leerer Fläche umgeben – dort darf der Film höher sein (der Streifen läuft ohnehin seitlich). */
+/* QM r4 (ipad-hoch): auch mit 50 svh blieben oben und unten je ~200 px dunkle Leere (≈ 30 % des
+   Bildschirms) – im Hochformat daher bis 64 svh; der Streifen läuft ohnehin seitlich durch. */
+@media (orientation: portrait) and (min-width: 48rem) {
+  .film {
+    --film-h: min(64svh, 48rem);
+  }
+}
+.filmSticky {
+  position: relative;
+  /* über dem festen Tagesbogen (DayArc, z 20): keine Linie über den Minotti-Fotos */
+  z-index: 21;
+  container-type: inline-size;
+}
+.filmTrack {
+  display: flex;
+  gap: 2rem;
+  padding-inline: var(--space-gutter);
+  padding-block: 0.25rem 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--space-gutter);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-brass-500) transparent;
+}
+.filmTrack:focus-visible {
+  outline: 2px solid var(--color-focus-on-dark);
+  outline-offset: 4px;
+}
+.filmFrame {
+  flex: none;
+  width: calc(var(--film-h) * var(--r, 1.6));
+  scroll-snap-align: start;
+}
+.filmProgress {
+  display: none;
+}
+
+@keyframes dolly {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(100cqw - 100%), 0, 0);
+  }
+}
+
+@media (min-width: 48rem) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* the chapter is pinned for ≈ 3.2 screens; the scroll moves the strip */
+    :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .film {
+      view-timeline: --navetta-film block;
+      height: 420svh;
+    }
+    :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .filmSticky {
+      position: sticky;
+      top: 0;
+      height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: var(--header-h, 4.5rem); /* site header */
+      overflow: hidden;
+    }
+    /* QM r1 (ipad-hoch): im Hochformat wirkte das Bild nach unten gerutscht – der optische
+       Mittelpunkt liegt höher als die geometrische Mitte, daher etwas Luft unten. */
+    @media (orientation: portrait) {
+      :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .filmSticky {
+        padding-bottom: 5svh;
+      }
+    }
+    :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .filmTrack {
+      width: max-content;
+      overflow: visible;
+      scroll-snap-type: none;
+      /* Langschrift: die Kurzschrift + Timeline verwirft Chromium nach dem CSS-Compiler */
+      animation-name: dolly;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: --navetta-film;
+      animation-range: contain 4% contain 96%;
+    }
+    :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .filmProgress {
+      display: block;
+      margin: 1.5rem var(--space-gutter) 0;
+      height: 1px;
+      background: var(--color-brass-400);
+      transform-origin: 0 50%;
+      /* Langschrift: die Kurzschrift + Timeline verwirft Chromium nach dem CSS-Compiler */
+      animation-name: reveal;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: --navetta-film;
+      animation-range: contain 4% contain 96%;
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

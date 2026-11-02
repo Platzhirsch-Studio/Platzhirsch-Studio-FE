@@ -1,16 +1,14 @@
-import React from "react";
+import { getTranslations } from "next-intl/server";
 import JsonLd from "@/components/Reusable/JsonLd";
+import OwnImageJsonLd from "@/components/Reusable/OwnImageJsonLd";
 import KontaktSecond from "@/components/Kontakt/kontakt";
-import SinglePageBanner from "@/components/Reusable/singlePageSlider";
-import {
-  fetchContactKeywords,
-  getLocalizedContactMetadata,
-  getContactOGImage,
-  validateOGType
-} from "@/lib/api/Keywords/fetchKontaktKeywords";
-import { ROUTES } from "@/utils/routing";
+import PageHeader from "@/components/UberUns/PageHeader";
+import { Button, SmartLink } from "@/components/ui";
+import { KONTAKT_COPY } from "@/components/Kontakt/copy";
+import { ADDRESS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
+import { withoutLangNote } from "@/components/Beratung/t1Copy";
 import KontaktLastSection from "@/components/Kontakt/KontaktLastSection";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { clampDescription, fitTitle, hreflangLanguages, ogLocale } from "@/lib/seo/pageMetadata";
 
 const DOMAIN = "https://platzhirsch.studio";
 
@@ -40,126 +38,94 @@ function getKontaktPageUrl(locale) {
 
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "Contattaci | Consulenza Design da Platzhirsch Home Living";
+    case "it": return "Contattateci | Consulenza Design da Platzhirsch Home Living";
     case "en": return "Contact Us | Design Consultation at Platzhirsch Home Living";
     case "fr": return "Contactez-Nous | Conseil Design chez Platzhirsch Home Living";
     default: return "Kontakt | Designberatung bei Platzhirsch Home Living";
   }
 };
 
+// Address and phone from src/lib/site.js (one NAP source).
 const getLocalizedDescription = (locale) => {
   switch (locale) {
-    case "it": return "Contattate Platzhirsch Home Living per consulenze di design, progetti personalizzati e informazioni sui prodotti.";
-    case "en": return "Contact Platzhirsch Home Living for design consultations, custom projects and product information.";
-    case "fr": return "Contactez Platzhirsch Home Living pour des consultations en design, des projets personnalisés et des informations sur les produits.";
-    default: return "Kontaktieren Sie Platzhirsch Home Living für Designberatungen, individuelle Projekte und Produktinformationen.";
+    case "it": return `Contatta Platzhirsch Home Living a Lochau sul Lago di Costanza: ${ADDRESS.street}, tel. ${PHONE_DISPLAY}. Richiedete un appuntamento o visitate showroom e café.`;
+    case "en": return `Contact Platzhirsch Home Living in Lochau on Lake Constance: ${ADDRESS.street}, phone ${PHONE_DISPLAY}. Request an appointment or visit showroom and café.`;
+    case "fr": return `Contact Platzhirsch Home Living à Lochau, lac de Constance : ${ADDRESS.street}, tél. ${PHONE_DISPLAY}. Demandez un rendez-vous ou visitez showroom et café.`;
+    default: return `Kontakt zu Platzhirsch Home Living in Lochau am Bodensee: ${ADDRESS.street}, Telefon ${PHONE_DISPLAY}. Termin anfragen, Showroom und Café besuchen.`;
   }
+};
+
+// Runde 3 P5 (seo P1-2, P2): own title and description in the page language
+// (the backoffice texts said "Platzhirsch Studio"), 120–155 characters, and a
+// typographic share card instead of questionmark-og.jpg (that photo carries a
+// Gemini watermark). The card (public/Images/Kontakt/kontakt-og.png, 1200 × 630,
+// same look as src/lib/seo/ogCard.js) is language-neutral, so one file serves
+// all four locales.
+const CONTACT_IMAGE = "/Images/Home/aboutHome.jpg";
+const OG_IMAGE = { url: "/Images/Kontakt/kontakt-og.png", width: 1200, height: 630 };
+const OG_ALT = {
+  de: "Kontakt – Platzhirsch Home Living, Lochau am Bodensee",
+  en: "Contact – Platzhirsch Home Living, Lochau on Lake Constance",
+  fr: "Contact – Platzhirsch Home Living, Lochau, lac de Constance",
+  it: "Contatto – Platzhirsch Home Living, Lochau sul Lago di Costanza",
 };
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const PAGE_URL = getKontaktPageUrl(locale);
-
-  try {
-    const contactKeywords = await fetchContactKeywords();
-
-    if (!contactKeywords) {
-      return {
-        title: getLocalizedTitle(locale),
-        description: getLocalizedDescription(locale),
-        robots: { index: true, follow: true },
-        alternates: {
-          canonical: PAGE_URL,
-          languages: hreflangLanguages((l) => getKontaktPageUrl(l))
-        },
-        openGraph: {
-          type: "website",
-          url: PAGE_URL,
-          title: getLocalizedTitle(locale),
-          description: getLocalizedDescription(locale),
-          siteName: "Platzhirsch Home Living",
-          locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url: "/Images/Kontakt/questionmark-og.jpg", width: 1200, height: 630, alt: "Kontakt – Platzhirsch Home Living" }],
-        },
-        twitter: {
-          card: "summary_large_image",
-          title: getLocalizedTitle(locale),
-          description: getLocalizedDescription(locale),
-          images: ["/Images/Kontakt/questionmark-og.jpg"],
-        },
-      };
-    }
-
-    const meta = getLocalizedContactMetadata(contactKeywords, locale);
-    const image = getContactOGImage(contactKeywords);
-    const safeType = validateOGType(meta?.type);
-
-    return {
-      title: meta?.title || getLocalizedTitle(locale),
-      description: meta?.description || getLocalizedDescription(locale),
-      robots: { index: true, follow: true },
-      alternates: {
-        canonical: PAGE_URL,
-        languages: hreflangLanguages((l) => getKontaktPageUrl(l))
-      },
-      openGraph: {
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
-        url: PAGE_URL,
-        siteName: "Platzhirsch Home Living",
-        images: [{
-          url: image ? image : "/Images/Kontakt/questionmark-og.jpg",
-          width: 1200,
-          height: 630,
-          alt: "Kontakt – Platzhirsch Home Living",
-        },
-        ],
-        locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
-        type: safeType,
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
-        images: [image ? image : "/Images/Kontakt/questionmark-og.jpg"],
-      },
-    };
-  } catch (error) {
-    console.error("❌ Metadata fetch error:", error);
-
-    return {
-      title: getLocalizedTitle(locale),
-      description: getLocalizedDescription(locale),
-      robots: { index: true, follow: true },
-      alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getKontaktPageUrl(l)) },
-    };
-  }
+  // Rat 9,5 A15 (T6 → T1): ≤ 60 / ≤ 150 characters, whole sentences.
+  const title = fitTitle(getLocalizedTitle(locale));
+  const description = clampDescription(getLocalizedDescription(locale));
+  const alt = OG_ALT[locale] || OG_ALT.de;
+  return {
+    title,
+    description,
+    robots: { index: true, follow: true },
+    alternates: {
+      canonical: PAGE_URL,
+      languages: hreflangLanguages((l) => getKontaktPageUrl(l)),
+    },
+    openGraph: {
+      type: "website",
+      url: PAGE_URL,
+      title,
+      description,
+      siteName: "Platzhirsch Home Living",
+      locale: ogLocale(locale),
+      images: [{ ...OG_IMAGE, alt }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [{ url: OG_IMAGE.url, alt }],
+    },
+  };
 }
+
+
+// Runde 4 (ux P1-4a): phone lead – the core USP (Inhaber-Entscheidung Nr. 8) in one sentence.
+const PHONE_LEAD = {
+  de: "Wir zeichnen von Hand, dann planen wir in 3D. Sprechen Sie uns an.",
+  en: "We draw by hand, then plan in 3D. Get in touch.",
+  fr: "Nous dessinons à la main, puis planifions en 3D. Contactez-nous.",
+  it: "Disegniamo a mano, poi progettiamo in 3D. Contattateci.",
+};
 
 export default async function Page({ params }) {
   const { locale } = await params;
 
   const titleOne = locale == "it" ? "Contatto" : locale == "en" ? "Contact" : locale == "fr" ? "Contact" : "Kontakt";
-  const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  // Same breadcrumb label as the other content pages ("Startseite", QA R3 P3-2).
+  const Home = (await getTranslations({ locale, namespace: "inhalt.common" }))("home");
 
-  // Dynamic URLs
-  const BASE_URL = getBaseUrl(locale);
   const PAGE_URL = getKontaktPageUrl(locale);
 
-  // Fetch keywords for image
-  const contactKeywords = await fetchContactKeywords();
-  const image = getContactOGImage(contactKeywords);
 
-  const kontaktPath = ROUTES.kontakt[locale] ? `${ROUTES.kontakt[locale]}` : `/kontakt`;
-
-  const BannerInfo = {
-    image: image || "/Images/Newsletter/room.jpg",
-    links: [
-      { linkName: Home, link: `/` }, // Fixed: use locale prefix
-      { linkName: titleOne, link: kontaktPath },
-    ],
-    title: titleOne,
-  };
+  // New page texts: contact.<key> once merged (messages-r2-leads.json), else fallback.
+  const t = await getTranslations({ locale, namespace: "contact" });
+  const fallback = KONTAKT_COPY[locale] || KONTAKT_COPY.de;
+  const c = (key) => (t.has(key) ? t(key) : fallback[key]);
 
   // ✅ JSON-LD Structured Data
   const contactPageSchema = {
@@ -186,7 +152,52 @@ export default async function Page({ params }) {
   return (
     <div>
       <JsonLd data={contactPageSchema} />
-      <SinglePageBanner info={BannerInfo} />
+      {/* Bilder-SEO: Bildnachweis für das eigene Foto im Seitenkopf (src/lib/seo/imageRights.js). */}
+      <OwnImageJsonLd images={[{ src: CONTACT_IMAGE, alt: t("imageAlt"), width: 2048, height: 1228 }]} />
+      {/* Light page opening (same frame as the content pages): breadcrumb,
+          the only H1, lead, one primary action, the photo next to the text. */}
+      <PageHeader
+        breadcrumbs={[{ label: Home, href: "/" }, { label: titleOne }]}
+        eyebrow={titleOne}
+        title={c("pageTitle")}
+        lead={
+          <>
+            {/* Runde 4 (ux P1-4a, iPhone 13): on phones one short lead of at
+                most three lines, so both buttons stand in the first screen
+                above the cookie bar; the full text from lg. */}
+            <span className="max-lg:hidden">
+              {c("pageLead")}{" "}
+              {/* Core USP in one sentence (Inhaber-Entscheidung Nr. 8, r1-ux P1-5);
+                  /arbeitsweise exists in all four languages (Rat 9,5 A1). */}
+              {c("usp")}{" "}
+            </span>
+            {/* QM content-legal r3 (phone quer): the last word keeps its neighbour – „an.“ stood alone. */}
+            <span className="lg:hidden">{(PHONE_LEAD[locale] || PHONE_LEAD.de).replace(/ (\S+)$/u," $1")} </span>
+            {/* Rat 9,5 A1 (UX7): /arbeitsweise in the visitor's language. */}
+            <SmartLink href="/arbeitsweise" className="whitespace-nowrap text-text underline decoration-line-strong underline-offset-4 hover:decoration-current">
+              {withoutLangNote(c("uspLink"))}
+            </SmartLink>
+          </>
+        }
+        // Rat 9,5 B5 (RE4, GW): only a picture with cleared rights – the house
+        // photo aboutHome.jpg (rights by mail 28.10.2026, Inhaber-Entscheidung
+        // Nr. 11, bildrechte.csv). The backoffice header photo and the former
+        // Newsletter room photo
+        // have no release (freigabe=offen) and are no longer shown here.
+        image={{ src: CONTACT_IMAGE, alt: t("imageAlt") }}
+        // Runde 4: phones – less top space, smaller H1, no eyebrow (repeats the breadcrumb).
+        className="max-lg:pt-4 max-lg:[&_.grid]:mt-3 max-lg:[&_h1]:text-[length:min(2rem,var(--ph-h1-cap,100vw))] max-lg:[&_h1]:leading-[1.15] max-lg:[&_.grid_p.uppercase]:hidden max-lg:[&_.grid_h1+*]:mt-3"
+      >
+        <Button href="#nachricht" variant="primary" arrow>
+          {c("writeCta")}
+        </Button>
+        <Button href={PHONE_HREF} variant="secondary">
+          {/* QM r3: the number stood three to four times on the page – the button says
+              „Anrufen“ (tel: link), the number itself is in „Besuch“, the form aside and the footer. */}
+          {c("callCta")}
+          <span className="sr-only">: {PHONE_DISPLAY}</span>
+        </Button>
+      </PageHeader>
       <KontaktSecond />
       <KontaktLastSection />
     </div>

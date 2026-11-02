@@ -1,0 +1,39 @@
+{
+  "_hinweis": "R5-shell-seo, 26.10.2026. Zur Übernahme in src/messages/{de,en,fr,it}.json (Runde 6). Navbar.searchRateLimited/searchError: neu, liest SearchSheet.js über t.has() mit gleichlautender Ersatztabelle. marken.breadcrumbHome, brandCategory.breadcrumbHome, landing.home: nur DE ändert sich ('Home' → 'Startseite'); ui/Breadcrumbs.js gleicht den Wert bis zur Übernahme schon an (lib/seo/breadcrumbs.js). IT im 'tu'.",
+  "de": {
+    "Navbar": {
+      "searchRateLimited": "Zu viele Suchanfragen in kurzer Zeit. Bitte versuchen Sie es gleich noch einmal.",
+      "searchError": "Die Suche ist gerade nicht erreichbar. Bitte versuchen Sie es später noch einmal oder drücken Sie die Eingabetaste, um im Katalog zu suchen."
+    },
+    "marken": { "breadcrumbHome": "Startseite" },
+    "brandCategory": { "breadcrumbHome": "Startseite" },
+    "landing": { "home": "Startseite" }
+  },
+  "en": {
+    "Navbar": {
+      "searchRateLimited": "Too many searches in a short time. Please try again in a moment.",
+      "searchError": "Search is not available right now. Please try again later, or press Enter to search the catalogue."
+    },
+    "marken": { "breadcrumbHome": "Home" },
+    "brandCategory": { "breadcrumbHome": "Home" },
+    "landing": { "home": "Home" }
+  },
+  "fr": {
+    "Navbar": {
+      "searchRateLimited": "Trop de recherches en peu de temps. Veuillez réessayer dans un instant.",
+      "searchError": "La recherche n’est pas disponible pour le moment. Veuillez réessayer plus tard ou appuyer sur Entrée pour chercher dans le catalogue."
+    },
+    "marken": { "breadcrumbHome": "Accueil" },
+    "brandCategory": { "breadcrumbHome": "Accueil" },
+    "landing": { "home": "Accueil" }
+  },
+  "it": {
+    "Navbar": {
+      "searchRateLimited": "Troppe ricerche in poco tempo. Riprova tra un attimo.",
+      "searchError": "La ricerca non è disponibile in questo momento. Riprova più tardi oppure premi Invio per cercare nel catalogo."
+    },
+    "marken": { "breadcrumbHome": "Home" },
+    "brandCategory": { "breadcrumbHome": "Home" },
+    "landing": { "home": "Home" }
+  }
+}

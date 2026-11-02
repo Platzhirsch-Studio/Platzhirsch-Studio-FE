@@ -1,17 +1,24 @@
-// CookieDetails.js
+// CookieDetails.js – service facts in the consent dialog (Neuauftritt: no
+// radius, tokens only, R3-shell).
 import React from "react";
 import { useTranslations } from "next-intl";
 
-const CookieDetails = ({ service }) => {
+// `texts`: own texts of a service that are not in the client messages
+// (Besucher-Einblicke: src/lib/einblicke/consentCopy.js) – purpose, the
+// sessionStorage type, minutes and "no third country".
+const CookieDetails = ({ service, texts = null }) => {
   const t = useTranslations("Cookies");
 
-  const formatDuration = ({ count, unit }) =>
-    unit === "none" ? t("durations.none") : t(`durations.${unit}`, { count });
+  const formatDuration = ({ count, unit }) => {
+    if (unit === "minute" && texts) return (count === 1 ? texts.minuteOne : texts.minuteOther).replace("#", String(count));
+    return unit === "none" ? t("durations.none") : t(`durations.${unit}`, { count });
+  };
+  const cookieType = (type) => (type === "sessionStorage" && texts ? texts.sessionStorage : t(`cookieTypes.${type}`));
 
   return (
-    <div className="mt-3 p-4 bg-gray-50 border border-[#30373e]/10 rounded-lg text-sm leading-relaxed space-y-3 text-[#30373e] [&_strong]:font-semibold [&_strong]:text-[#30373e]">
+    <div className="mt-2 space-y-3 border border-line bg-surface-raised p-4 text-small text-text [&_strong]:font-medium">
       <p>
-        <strong>{t("details.purpose")}</strong> {t(`services.${service.id}.purpose`)}
+        <strong>{t("details.purpose")}</strong> {texts ? texts.purpose : t(`services.${service.id}.purpose`)}
       </p>
 
       <p className="font-medium mt-2">{t("details.provider")}</p>
@@ -28,7 +35,7 @@ const CookieDetails = ({ service }) => {
             href={service?.contact.privacy}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="inline-flex min-h-6 items-center text-text underline decoration-line-strong underline-offset-4 hover:decoration-current"
           >
             {t("details.providerPrivacy")}
           </a>
@@ -48,7 +55,7 @@ const CookieDetails = ({ service }) => {
                 )}
                 {cookie.type && (
                   <span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>{t("details.type")}</strong> {t(`cookieTypes.${cookie.type}`)}{" "}
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>{t("details.type")}</strong> {cookieType(cookie.type)}{" "}
                     <br />
                   </span>
                 )}
@@ -74,7 +81,7 @@ const CookieDetails = ({ service }) => {
           <ul className="list-disc pl-5 space-y-1">
             {service?.storage.map((item, index) => (
               <li key={index}>
-                <strong>{item.name}</strong> ({t(`cookieTypes.${item.type}`)}) - {item.host} -{" "}
+                <strong>{item.name}</strong> ({cookieType(item.type)}) - {item.host} -{" "}
                 {formatDuration(item.duration)}
               </li>
             ))}
@@ -91,8 +98,11 @@ const CookieDetails = ({ service }) => {
             {country.sub && <sup>{country.sub}</sup>}
           </span>
         ))}
+        {/* Own services (Besucher-Einblicke): no third country at all. */}
+        {service?.dataProcessing?.countries?.length === 0 && texts?.noThirdCountry}
       </p>
 
+      {service?.dataProcessing?.mechanisms?.length !== 0 && (
       <p className="font-medium mt-2">
         {t("details.securityMechanisms")}{" "}
         {service?.dataProcessing?.mechanisms?.map((mechanism, index) => (
@@ -103,6 +113,7 @@ const CookieDetails = ({ service }) => {
           </span>
         ))}
       </p>
+      )}
     </div>
   );
 };

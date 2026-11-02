@@ -1,0 +1,305 @@
+{
+  "name": "Smith Lounge System",
+  "slug": "smith",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2008,
+  "kollektion": "2008 Collection",
+  "typ": "Modulares Bank-/Lounge-System (ursprünglich für öffentliche Räume): eine Bankgröße, steckbare Rückenlehnen in zwei Breiten und Armlehnen in zwei Breiten frei positionierbar, dazu Verbindungs- und Endtische",
+  "quellen": [
+    "https://www.minotti.com/en/smith_3",
+    "https://www.minotti.com/downloads/1943/9137/SMITH_LOUNGE_SYSTEM_TECHNICAL_SHEET.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Maße in cm. Bank 195 × 97 × H36 laut Bildbezeichnung und Zeichnung; Rücken-/Armlehnenhöhe 40 cm über Sitzfläche, Gesamthöhe mit Rücken 76 cm (Konfigurationszeichnungen). Rückenlehnen 13 cm stark. Verbindungstisch: Platte 2 cm, Tischhöhe nicht beschriftet.",
+  "modular": true,
+  "elemente": [
+    {
+      "code": "SM-BENCH-195",
+      "name": "Bench element",
+      "name_de": "Bankelement 195 cm",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 195,
+      "tiefe_cm": 97,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": 36,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Steckbohrungen („connecting holes“) für Rücken- und Armlehnen; zwei Bänke über Verbindungstisch 48 × 97 koppelbar (Gesamtbreite 438 cm)",
+      "hinweis": "Maße laut Technical Sheet „Smith Lounge System“ (Okt. 2025) und Elementbildern der Produktseite. Sitzfläche aus Polsterlatten in 3 Breiten. Sitzhöhe = Bankhöhe 36 (keine separate Kote). Fitting-Layout mit SX/DX-Seiten gezeichnet."
+    },
+    {
+      "code": "SM-BACK-132",
+      "name": "Backrest cm 132x13",
+      "name_de": "Rückenlehne 132 cm",
+      "art": "rücken",
+      "ausrichtung": null,
+      "breite_cm": 132,
+      "tiefe_cm": 13,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Steckbar in Bankelement, Position frei wählbar, Fixierung über Kunststoffgriff",
+      "hinweis": "Maße laut Technical Sheet „Smith Lounge System“ (Okt. 2025) und Elementbildern der Produktseite. Höhe 40 cm über Sitzfläche (Gesamthöhe 76).",
+      "sitzfelder_nicht_anwendbar": true
+    },
+    {
+      "code": "SM-BACK-97",
+      "name": "Backrest cm 97x13",
+      "name_de": "Rückenlehne 97 cm",
+      "art": "rücken",
+      "ausrichtung": null,
+      "breite_cm": 97,
+      "tiefe_cm": 13,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Steckbar in Bankelement (1 oder 2 Stück je Bank), Position frei wählbar, Fixierung über Kunststoffgriff",
+      "hinweis": "Maße laut Technical Sheet „Smith Lounge System“ (Okt. 2025) und Elementbildern der Produktseite. Höhe 40 cm über Sitzfläche (Gesamthöhe 76). Bildname nennt „97X40“, Liste „97X13“.",
+      "sitzfelder_nicht_anwendbar": true
+    },
+    {
+      "code": "SM-ARM-L",
+      "name": "Large armrest cm 97x36",
+      "name_de": "Armlehne groß 36 cm",
+      "art": "armlehne",
+      "ausrichtung": null,
+      "breite_cm": 36,
+      "tiefe_cm": 97,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Steckbar in Bankelement, links/rechts bzw. 1 oder 2 je Bank",
+      "hinweis": "Maße laut Technical Sheet „Smith Lounge System“ (Okt. 2025) und Elementbildern der Produktseite. Höhe 40 cm über Sitzfläche (aus Zeichnung).",
+      "sitzfelder_nicht_anwendbar": true
+    },
+    {
+      "code": "SM-ARM-S",
+      "name": "Small armrest cm 97x25",
+      "name_de": "Armlehne klein 25 cm",
+      "art": "armlehne",
+      "ausrichtung": null,
+      "breite_cm": 25,
+      "tiefe_cm": 97,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Steckbar in Bankelement, links/rechts bzw. 1 oder 2 je Bank",
+      "hinweis": "Maße laut Technical Sheet „Smith Lounge System“ (Okt. 2025) und Elementbildern der Produktseite. Höhe 40 cm über Sitzfläche (aus Zeichnung).",
+      "sitzfelder_nicht_anwendbar": true
+    },
+    {
+      "code": "SM-TABLE-CONN",
+      "name": "Connecting table cm 48x97",
+      "name_de": "Verbindungstisch 48 × 97 cm",
+      "art": "tisch",
+      "ausrichtung": null,
+      "breite_cm": 48,
+      "tiefe_cm": 97,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Zwischen zwei Bankelementen",
+      "hinweis": "Maße laut Technical Sheet „Smith Lounge System“ (Okt. 2025) und Elementbildern der Produktseite. Plattenstärke 2 cm (20 mm); Tischhöhe nicht beschriftet.",
+      "sitzfelder_nicht_anwendbar": true
+    },
+    {
+      "code": "SM-TABLE-END",
+      "name": "End connecting table cm 48x97",
+      "name_de": "Endtisch 48 × 97 cm",
+      "art": "endelement",
+      "ausrichtung": null,
+      "breite_cm": 48,
+      "tiefe_cm": 97,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Am Ende eines Bankelements",
+      "hinweis": "Maße laut Technical Sheet „Smith Lounge System“ (Okt. 2025) und Elementbildern der Produktseite. Plattenstärke 2 cm; Tischhöhe nicht beschriftet.",
+      "sitzfelder_nicht_anwendbar": true
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Ohne Rücken (reine Bank)",
+      "hoehe_cm": 36
+    },
+    {
+      "name": "Steckbare Rückenlehne 97 cm (1 oder 2 je Bank)",
+      "hoehe_cm": 76,
+      "hinweis": "Gesamthöhe; Metallrahmen in PU-Schaum, umsteckbar."
+    },
+    {
+      "name": "Steckbare Rückenlehne 132 cm (1 je Bank)",
+      "hoehe_cm": 76,
+      "hinweis": "Gesamthöhe."
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Ohne Armlehne"
+    },
+    {
+      "name": "Große Armlehne 36 × 97 cm",
+      "hoehe_cm": 76,
+      "hinweis": "Gesamthöhe; 1 oder 2 je Bank, umsteckbar."
+    },
+    {
+      "name": "Kleine Armlehne 25 × 97 cm",
+      "hoehe_cm": 76,
+      "hinweis": "Gesamthöhe; 1 oder 2 je Bank, umsteckbar."
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Basis",
+      "material": "Metall-Vierkantrohr 40 × 40 mm",
+      "finish": "Epoxid-Pulverlack Schwarz matt"
+    },
+    {
+      "teil": "Füße",
+      "material": "Aluminium gebürstet",
+      "finish": "glänzend (Natur); Nylon-Gleiter"
+    },
+    {
+      "teil": "Tischplatten (Verbindungs-/Endtisch)",
+      "material": "Nussbaum Pedulo furniert oder Naturstein Porfido Viola (Purple Porphyry), 20 mm",
+      "finish": "Nussbaum matt; Stein feinkörnig gebürstet mit Fleckschutz (kein Vollschutz)"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "bezugsarten": [
+      "abnehmbar",
+      "fest"
+    ],
+    "abnehmbar_hinweis": "Stoffversion komplett abnehmbar, Lederversion fest.",
+    "varianten": [],
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Stoffe, Leder, Metall-/Holzoberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": [
+    {
+      "name": "Smith optional cushion",
+      "masse": "60 × 30 cm"
+    },
+    {
+      "name": "Smith optional cushion",
+      "masse": "65 × 65 cm"
+    },
+    {
+      "name": "Smith optional cushion",
+      "masse": "120 × 120 cm"
+    },
+    {
+      "name": "Hinweis",
+      "hinweis": "Alle Zierkissen Gänsedaune in Kammern, Bezug komplett abnehmbar."
+    }
+  ],
+  "polsterung": "Sitz aus Latten in 3 Breiten aus feuerhemmendem PU-Schaum; Rücken-/Armlehnen mit Metallrahmen in PU-Schaum hoher Resilienz unterschiedlicher Dichte, in schwarzen Nylon-Aufnahmen steckbar.",
+  "outdoor": false,
+  "besonderheiten": [
+    "Für öffentliche Räume entwickelt, mit der Wohnkollektion kombinierbar",
+    "Rücken- und Armlehnen mit einem Handgriff umsteckbar – Konfiguration jederzeit änderbar",
+    "Verbindungs- und Endtische in Nussbaum oder Porphyr",
+    "30 von Minotti gezeichnete Konfigurationsmöglichkeiten (alle 195 cm Bankbreite bzw. 438 cm mit Verbindungstisch)"
+  ],
+  "beispiel_kompositionen": [
+    {
+      "name": "1 Bank + 1 Rücken 97 (6 Varianten)",
+      "elemente": [
+        "SM-BENCH-195",
+        "SM-BACK-97"
+      ],
+      "gesamtbreite_cm": 195,
+      "hoehe_cm": 76
+    },
+    {
+      "name": "1 Bank + 2 Rücken 97 (7 Varianten)",
+      "elemente": [
+        "SM-BENCH-195",
+        "SM-BACK-97",
+        "SM-BACK-97"
+      ],
+      "gesamtbreite_cm": 195,
+      "hoehe_cm": 76
+    },
+    {
+      "name": "1 Bank + 1 Rücken 97 + 1/2 Armlehnen (8 Varianten)",
+      "elemente": [
+        "SM-BENCH-195",
+        "SM-BACK-97",
+        "SM-ARM-L|SM-ARM-S"
+      ],
+      "gesamtbreite_cm": 195,
+      "hoehe_cm": 76
+    },
+    {
+      "name": "1 Bank + 2 Rücken 97 + 1 Armlehne (4 Varianten)",
+      "elemente": [
+        "SM-BENCH-195",
+        "SM-BACK-97",
+        "SM-BACK-97",
+        "SM-ARM-L|SM-ARM-S"
+      ],
+      "gesamtbreite_cm": 195,
+      "hoehe_cm": 76
+    },
+    {
+      "name": "1 Bank + 1 Rücken 132 + 1/2 Armlehnen (3 Varianten)",
+      "elemente": [
+        "SM-BENCH-195",
+        "SM-BACK-132",
+        "SM-ARM-L|SM-ARM-S"
+      ],
+      "gesamtbreite_cm": 195,
+      "hoehe_cm": 76
+    },
+    {
+      "name": "1 Bank + 1 Rücken 132 (1 Variante)",
+      "elemente": [
+        "SM-BENCH-195",
+        "SM-BACK-132"
+      ],
+      "gesamtbreite_cm": 195,
+      "hoehe_cm": 76
+    },
+    {
+      "name": "2 Bänke + 2 Rücken 97 + 1 Verbindungstisch (1 Variante)",
+      "elemente": [
+        "SM-BENCH-195",
+        "SM-TABLE-CONN",
+        "SM-BENCH-195",
+        "SM-BACK-97",
+        "SM-BACK-97"
+      ],
+      "gesamtbreite_cm": 438,
+      "hoehe_cm": 76
+    }
+  ],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. Minotti-Bilder dürfen nicht verändert werden.",
+  "fehlend": [
+    "Sitztiefe (nicht beschriftet; abhängig von Rückenposition)",
+    "Höhe von Verbindungs- und Endtisch",
+    "Exakte Steckpositionen/Raster der Anschlussbohrungen",
+    "Welche Armlehnengröße in den Konfigurationszeichnungen jeweils verwendet wird",
+    "Arrangement-PDFs, 3D-Dateien (nur DWG)",
+    "Herstellerartikelnummern",
+    "Stoff-/Lederkollektionen und Preisgruppen",
+    "Gewichte"
+  ],
+  "vollstaendigkeit": {
+    "masse_prozent": 87,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe/sitzhoehe/sitztiefe über alle Elemente (bei Rücken-/Armlehnen-/Tischelementen nur breite/tiefe/hoehe); Options-/Materialfelder separat in fehlend[] bewertet."
+  }
+}

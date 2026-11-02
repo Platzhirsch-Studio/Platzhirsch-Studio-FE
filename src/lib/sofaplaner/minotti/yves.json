@@ -1,0 +1,4514 @@
+{
+  "name": "Yves",
+  "slug": "yves",
+  "hersteller": "Minotti",
+  "designer": "Hannes Peer",
+  "jahr": 2024,
+  "jahr_hinweis": "Teil der Minotti „2024 Collection“ (Designs laut Minotti am 12. April 2024 in EU und China registriert). Datensatz umfasst Yves und Yves Suite (gemeinsames Datenblatt).",
+  "typ": "Modulares Sitzsystem (Indoor) mit vier Linien – LINEAR (gerade), WAVE (Sitz mit Welle, Radius 52 cm), BEND (geschwungen, Tiefe 140), INCLINED (geneigt, 150°) – sowie YVES SUITE (Variante mit separatem Sitzkissen). Sofas, Daybed-Sofas, End-, Mittel-, Peninsula-, Daybed-Elemente, Couches, Chaise-longues, Poufs, Kopfstütze und Kissen.",
+  "linien": {
+    "LINEAR": "Gerade Elemente, Tiefe 113 cm.",
+    "WAVE": "Einteiliger Sitz mit Welle (Radius 52 cm), Tiefe 113 oder 140 cm; Platz für Tischchen/Pouf in der Bucht.",
+    "BEND": "Geschwungene Elemente, Tiefe 140 cm.",
+    "INCLINED": "Geneigte Elemente mit 150°-Winkel.",
+    "SUITE": "Yves Suite: konkaver Sitz mit separatem Sitzkissen (Taschenfederkern), sonst LINEAR-Maße."
+  },
+  "quellen": [
+    "https://www.minotti.com/en/yves",
+    "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/24756/27567/YVES_arrangement_01.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Alle Maße in cm laut technischem Datenblatt (Stand November 2025, 26 Seiten). Höhe 82 cm, Sitzhöhe 43 cm und Sitztiefe 79 cm sind im Datenblatt für alle Sitzelemente einheitlich bemaßt (Sitzhöhe je Abschnitt beim ersten Element). Bei Elementen ohne Tiefe im Namen gilt die im Datenblatt bemaßte Tiefe 113 cm. Armlehnenhöhe: Standard 62 cm, LOW ARM 52 cm, MIX 62/52 cm (Datenblatt Seite 5). Mit optionalen 10,5-cm-Füßen sind alle Höhen +4 cm. Seitenvarianten SX/DX wo im Datenblatt gezeichnet bzw. bei asymmetrischen Elementen.",
+  "armlehnen_varianten": {
+    "STANDARD": {
+      "armlehnenhoehe_cm": 62
+    },
+    "LOW_ARM": {
+      "armlehnenhoehe_cm": 52
+    },
+    "MIX": {
+      "armlehnenhoehe_cm": "62 (eine Seite) / 52 (andere Seite)"
+    },
+    "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 5)"
+  },
+  "anzahl_elemente": 220,
+  "vollstaendigkeit": {
+    "gesamt_prozent": 93,
+    "kernmasse_prozent": 99,
+    "familienfelder_prozent": 80,
+    "methode": "Kernmaße (B/T/H/Sitzhöhe/Sitztiefe) aller Sitz-/Liegeelemente (Gewicht 70 %) + 10 Familienfelder (Gewicht 30 %; fehlend: offizielle Artikelcodes, Preis-/Bezugskategorien)."
+  },
+  "elemente": [
+    {
+      "code": "yves-linear-sofa-248",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa 248 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 248,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-248x113",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa 248x113 cm",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 248,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-sofa-low-arm-248",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa LOW ARM 248 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 248,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-sofa-mix-248",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa MIX 248 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 248,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-sofa-274",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa 274 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-274x113",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa 274x113 cm",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-sofa-low-arm-274",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa LOW ARM 274 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-sofa-mix-274",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa MIX 274 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-mix-274x113",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa MIX 274x113 cm",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-sofa-300",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa 300 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-300x113",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa 300x113 cm",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-sofa-low-arm-300",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa LOW ARM 300 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-low-arm-300x113",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa LOW ARM 300x113 cm",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-sofa-mix-300",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa MIX 300 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-mix-300x113-mod-a",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa MIX 300x113 cm - mod. A",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-mix-300x113-mod-b",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa MIX 300x113 cm - mod. B",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-sofa-326",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa 326 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-326x113",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa 326x113 cm",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-sofa-low-arm-326",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa LOW ARM 326 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-low-arm-326x113",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa LOW ARM 326x113 cm",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-sofa-mix-326",
+      "code_offiziell": null,
+      "name": "LINEAR - Sofa MIX 326 cm",
+      "linie": "LINEAR",
+      "art": "sofa",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-mix-326x113-mod-a",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa MIX 326x113 cm - mod. A",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-mix-326x113-mod-b",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa MIX 326x113 cm - mod. B",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-300x140",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa 300x140 cm",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "tiefe_max_innen_cm": 106
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-sofa-mix-300x140",
+      "code_offiziell": null,
+      "name": "WAVE - Sofa MIX 300x140 cm",
+      "linie": "WAVE",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "tiefe_max_innen_cm": 106
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-bend-sofa-300x140",
+      "code_offiziell": null,
+      "name": "BEND - Sofa 300x140 cm",
+      "linie": "BEND",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "tiefe_max_innen_cm": 106
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-bend-sofa-mix-300x140",
+      "code_offiziell": null,
+      "name": "BEND - Sofa MIX 300x140 cm",
+      "linie": "BEND",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "tiefe_max_innen_cm": 106
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-sofa-316x180",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined sofa 316x180 cm",
+      "linie": "INCLINED",
+      "art": "sofa-geneigt",
+      "breite_cm": 316,
+      "tiefe_cm": 180,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-sofa-low-arm-316x180",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined sofa LOW ARM 316x180 cm",
+      "linie": "INCLINED",
+      "art": "sofa-geneigt",
+      "breite_cm": 316,
+      "tiefe_cm": 180,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-sofa-mix-316x180",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined sofa MIX 316x180 cm",
+      "linie": "INCLINED",
+      "art": "sofa-geneigt",
+      "breite_cm": 316,
+      "tiefe_cm": 180,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-sofa-248",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed-Sofa 248 cm",
+      "linie": "LINEAR",
+      "art": "sofa-daybed",
+      "breite_cm": 248,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          105,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-sofa-mix-248",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed-Sofa MIX 248 cm",
+      "linie": "LINEAR",
+      "art": "sofa-daybed",
+      "breite_cm": 248,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          105,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-sofa-274",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed-Sofa 274 cm",
+      "linie": "LINEAR",
+      "art": "sofa-daybed",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          131,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-sofa-mix-274",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed-Sofa MIX 274 cm",
+      "linie": "LINEAR",
+      "art": "sofa-daybed",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          131,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-sofa-300",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed-Sofa 300 cm",
+      "linie": "LINEAR",
+      "art": "sofa-daybed",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          157,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-sofa-mix-300",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed-Sofa MIX 300 cm",
+      "linie": "LINEAR",
+      "art": "sofa-daybed",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          157,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-sofa-326",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed-Sofa 326 cm",
+      "linie": "LINEAR",
+      "art": "sofa-daybed",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          183,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-sofa-mix-326",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed-Sofa MIX 326 cm",
+      "linie": "LINEAR",
+      "art": "sofa-daybed",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          183,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-165",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest 165 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 165,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-low-arm-165",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest LOW ARM 165 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 165,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-191",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest cm 191 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 191,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-low-arm-191",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest LOW ARM 191 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 191,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-217",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest 217 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 217,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-217x113",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest 217x113 cm",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 217,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-low-arm-217",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest LOW ARM 217 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 217,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-243",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest 243 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-243x113-mod-a",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest 243x113 cm - mod. A",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-243x113-mod-b",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest 243x113 cm - mod. B",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-low-arm-243",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest LOW ARM 243 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-low-arm-243x113-mod-a",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest LOW ARM 243x113 cm - mod. A",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-low-arm-243x113-mod-b",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest LOW ARM 243x113 cm - mod. B",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-269",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest 269 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-269x113-mod-a",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest 269x113 cm - mod. A",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-269x113-mod-b",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest 269x113 cm - mod. B",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-low-arm-269",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest LOW ARM 269 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-low-arm-269x113-mod-a",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest LOW ARM 269x113 cm - mod. A",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-low-arm-269x113-mod-b",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest LOW ARM 269x113 cm - mod. B",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-295",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest 295 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-295x113-mod-a",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest 295x113 cm - mod. A",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-295x113-mod-b",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest 295x113 cm - mod. B",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-element-with-1-armrest-low-arm-295",
+      "code_offiziell": null,
+      "name": "LINEAR - Element with 1 armrest LOW ARM 295 cm",
+      "linie": "LINEAR",
+      "art": "endelement",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-low-arm-295x113-mod-a",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest LOW ARM 295x113 cm - mod. A",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-low-arm-295x113-mod-b",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest LOW ARM 295x113 cm - mod. B",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 59,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "hinweis": "Sitztiefe 59 cm an der Welle (Radius 52 cm).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-217x140",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest 217x140 cm",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 217,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-bend-element-with-1-armrest-217x140",
+      "code_offiziell": null,
+      "name": "BEND - Element with 1 armrest 217x140 cm",
+      "linie": "BEND",
+      "art": "endelement",
+      "breite_cm": 217,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-element-with-1-armrest-269x140",
+      "code_offiziell": null,
+      "name": "WAVE - Element with 1 armrest 269x140 cm",
+      "linie": "WAVE",
+      "art": "endelement",
+      "breite_cm": 269,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-bend-element-with-1-armrest-269x140",
+      "code_offiziell": null,
+      "name": "BEND - Element with 1 armrest 269x140 cm",
+      "linie": "BEND",
+      "art": "endelement",
+      "breite_cm": 269,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-with-armrest-217",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element with armrest 217 cm",
+      "linie": "LINEAR",
+      "art": "endelement-peninsula",
+      "breite_cm": 217,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-with-armrest-low-arm-217",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element with armrest LOW ARM 217 cm",
+      "linie": "LINEAR",
+      "art": "endelement-peninsula",
+      "breite_cm": 217,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-with-armrest-243",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element with armrest 243 cm",
+      "linie": "LINEAR",
+      "art": "endelement-peninsula",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-with-armrest-low-arm-243",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element with armrest LOW ARM 243 cm",
+      "linie": "LINEAR",
+      "art": "endelement-peninsula",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-with-armrest-269",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element with armrest 269 cm",
+      "linie": "LINEAR",
+      "art": "endelement-peninsula",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-with-armrest-low-arm-269",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element with armrest LOW ARM 269 cm",
+      "linie": "LINEAR",
+      "art": "endelement-peninsula",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-with-armrest-295",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element with armrest 295 cm",
+      "linie": "LINEAR",
+      "art": "endelement-peninsula",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-with-armrest-low-arm-295",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element with armrest LOW ARM 295 cm",
+      "linie": "LINEAR",
+      "art": "endelement-peninsula",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-bend-open-end-element-with-armrest-217x140",
+      "code_offiziell": null,
+      "name": "BEND - Open-end element with armrest 217x140 cm",
+      "linie": "BEND",
+      "art": "endelement-peninsula",
+      "breite_cm": 217,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-bend-open-end-element-with-armrest-269x140",
+      "code_offiziell": null,
+      "name": "BEND - Open-end element with armrest 269x140 cm",
+      "linie": "BEND",
+      "art": "endelement-peninsula",
+      "breite_cm": 269,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-open-end-element-with-armrest-269x140",
+      "code_offiziell": null,
+      "name": "WAVE - Open-end element with armrest 269x140 cm",
+      "linie": "WAVE",
+      "art": "endelement-peninsula",
+      "breite_cm": 269,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-element-with-armrest-303x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined element with armrest 303x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-geneigt",
+      "breite_cm": 303,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-element-with-armrest-low-arm-303x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined element with armrest LOW ARM 303x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-geneigt",
+      "breite_cm": 303,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-element-with-armrest-328x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined element with armrest 328x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-geneigt",
+      "breite_cm": 328,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-element-with-armrest-low-arm-328x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined element with armrest LOW ARM 328x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-geneigt",
+      "breite_cm": 328,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-element-with-armrest-282x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined element with armrest 282x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-geneigt",
+      "breite_cm": 282,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-element-with-armrest-low-arm-282x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined element with armrest LOW ARM 282x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-geneigt",
+      "breite_cm": 282,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-element-with-armrest-307x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined element with armrest 307x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-geneigt",
+      "breite_cm": 307,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-element-with-armrest-low-arm-307x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined element with armrest LOW ARM 307x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-geneigt",
+      "breite_cm": 307,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-open-end-element-with-armrest-282x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined open-end element with armrest 282x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-peninsula-geneigt",
+      "breite_cm": 282,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-open-end-element-with-armrest-low-arm-282x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined open-end element with armrest LOW ARM 282x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-peninsula-geneigt",
+      "breite_cm": 282,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-open-end-element-with-armrest-307x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined open-end element with armrest 307x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-peninsula-geneigt",
+      "breite_cm": 307,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-open-end-element-with-armrest-low-arm-307x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined open-end element with armrest LOW ARM 307x113 cm",
+      "linie": "WAVE",
+      "art": "endelement-peninsula-geneigt",
+      "breite_cm": 307,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "hinweis": "Welle mit Radius 52 cm; Sitztiefe 79 cm diagonal bemaßt.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-element-with-armrest-236x166",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined element with armrest 236x166 cm",
+      "linie": "INCLINED",
+      "art": "endelement-geneigt",
+      "breite_cm": 236,
+      "tiefe_cm": 166,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-element-with-armrest-low-arm-236x166",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined element with armrest LOW ARM 236x166 cm",
+      "linie": "INCLINED",
+      "art": "endelement-geneigt",
+      "breite_cm": 236,
+      "tiefe_cm": 166,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-element-with-armrest-285x180",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined element with armrest 285x180 cm",
+      "linie": "INCLINED",
+      "art": "endelement-geneigt",
+      "breite_cm": 285,
+      "tiefe_cm": 180,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-element-with-armrest-low-arm-285x180",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined element with armrest LOW ARM 285x180 cm",
+      "linie": "INCLINED",
+      "art": "endelement-geneigt",
+      "breite_cm": 285,
+      "tiefe_cm": 180,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-element-217",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed element 217 cm",
+      "linie": "LINEAR",
+      "art": "daybed-element",
+      "breite_cm": 217,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit Liegebereich und 1 Armlehne (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-element-243",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed element 243 cm",
+      "linie": "LINEAR",
+      "art": "daybed-element",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit Liegebereich und 1 Armlehne (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-element-269",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed element 269 cm",
+      "linie": "LINEAR",
+      "art": "daybed-element",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit Liegebereich und 1 Armlehne (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-daybed-element-295",
+      "code_offiziell": null,
+      "name": "LINEAR - Daybed element 295 cm",
+      "linie": "LINEAR",
+      "art": "daybed-element",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit Liegebereich und 1 Armlehne (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-central-element-134",
+      "code_offiziell": null,
+      "name": "LINEAR - Central element 134 cm",
+      "linie": "LINEAR",
+      "art": "mittel",
+      "breite_cm": 134,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-central-element-160",
+      "code_offiziell": null,
+      "name": "LINEAR - Central element 160 cm",
+      "linie": "LINEAR",
+      "art": "mittel",
+      "breite_cm": 160,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-central-element-186",
+      "code_offiziell": null,
+      "name": "LINEAR - Central element 186 cm",
+      "linie": "LINEAR",
+      "art": "mittel",
+      "breite_cm": 186,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-central-element-186x113",
+      "code_offiziell": null,
+      "name": "WAVE - Central element 186x113 cm",
+      "linie": "WAVE",
+      "art": "mittel",
+      "breite_cm": 186,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-central-element-212",
+      "code_offiziell": null,
+      "name": "LINEAR - Central element 212 cm",
+      "linie": "LINEAR",
+      "art": "mittel",
+      "breite_cm": 212,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-central-element-212x113",
+      "code_offiziell": null,
+      "name": "WAVE - Central element 212x113 cm",
+      "linie": "WAVE",
+      "art": "mittel",
+      "breite_cm": 212,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-central-element-238",
+      "code_offiziell": null,
+      "name": "LINEAR - Central element 238 cm",
+      "linie": "LINEAR",
+      "art": "mittel",
+      "breite_cm": 238,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-central-element-238x113",
+      "code_offiziell": null,
+      "name": "WAVE - Central element 238x113 cm",
+      "linie": "WAVE",
+      "art": "mittel",
+      "breite_cm": 238,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-central-element-264",
+      "code_offiziell": null,
+      "name": "LINEAR - Central element 264 cm",
+      "linie": "LINEAR",
+      "art": "mittel",
+      "breite_cm": 264,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-central-element-264x113",
+      "code_offiziell": null,
+      "name": "WAVE - Central element 264x113 cm",
+      "linie": "WAVE",
+      "art": "mittel",
+      "breite_cm": 264,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-central-element-186x140",
+      "code_offiziell": null,
+      "name": "WAVE - Central element 186x140 cm",
+      "linie": "WAVE",
+      "art": "mittel",
+      "breite_cm": 186,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-bend-central-element-186x140",
+      "code_offiziell": null,
+      "name": "BEND - Central element 186x140 cm",
+      "linie": "BEND",
+      "art": "mittel",
+      "breite_cm": 186,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-central-element-238x140",
+      "code_offiziell": null,
+      "name": "WAVE - Central element 238x140 cm",
+      "linie": "WAVE",
+      "art": "mittel",
+      "breite_cm": 238,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-bend-central-element-238x140",
+      "code_offiziell": null,
+      "name": "BEND - Central element 238x140 cm",
+      "linie": "BEND",
+      "art": "mittel",
+      "breite_cm": 238,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-186",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element 186 cm",
+      "linie": "LINEAR",
+      "art": "peninsula",
+      "breite_cm": 186,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-212",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element 212 cm",
+      "linie": "LINEAR",
+      "art": "peninsula",
+      "breite_cm": 212,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-238",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element 238 cm",
+      "linie": "LINEAR",
+      "art": "peninsula",
+      "breite_cm": 238,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-open-end-element-264",
+      "code_offiziell": null,
+      "name": "LINEAR - Open-end element 264 cm",
+      "linie": "LINEAR",
+      "art": "peninsula",
+      "breite_cm": 264,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-bend-open-end-element-186x140",
+      "code_offiziell": null,
+      "name": "BEND - Open-end element 186x140 cm",
+      "linie": "BEND",
+      "art": "peninsula",
+      "breite_cm": 186,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-bend-open-end-element-238x140",
+      "code_offiziell": null,
+      "name": "BEND - Open-end element 238x140 cm",
+      "linie": "BEND",
+      "art": "peninsula",
+      "breite_cm": 238,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-open-end-element-238x140",
+      "code_offiziell": null,
+      "name": "WAVE - Open-end element 238x140 cm",
+      "linie": "WAVE",
+      "art": "peninsula",
+      "breite_cm": 238,
+      "tiefe_cm": 140,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-central-element-272x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined central element 272x113 cm",
+      "linie": "WAVE",
+      "art": "mittel-geneigt",
+      "breite_cm": 272,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-central-element-297x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined central element 297x113 cm",
+      "linie": "WAVE",
+      "art": "mittel-geneigt",
+      "breite_cm": 297,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-central-element-251x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined central element 251x113 cm",
+      "linie": "WAVE",
+      "art": "mittel-geneigt",
+      "breite_cm": 251,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-central-element-276x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined central element 276x113 cm",
+      "linie": "WAVE",
+      "art": "mittel-geneigt",
+      "breite_cm": 276,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-open-end-element-251x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined open-end element 251x113 cm",
+      "linie": "WAVE",
+      "art": "peninsula-geneigt",
+      "breite_cm": 251,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-inclined-open-end-element-276x113",
+      "code_offiziell": null,
+      "name": "WAVE - Inclined open-end element 276x113 cm",
+      "linie": "WAVE",
+      "art": "peninsula-geneigt",
+      "breite_cm": 276,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-central-element-209x151",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined central element 209x151 cm",
+      "linie": "INCLINED",
+      "art": "mittel-geneigt",
+      "breite_cm": 209,
+      "tiefe_cm": 151,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-central-element-258x165",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined central element 258x165 cm",
+      "linie": "INCLINED",
+      "art": "mittel-geneigt",
+      "breite_cm": 258,
+      "tiefe_cm": 165,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-couch-134x191",
+      "code_offiziell": null,
+      "name": "LINEAR - Couch 134x191 cm",
+      "linie": "LINEAR",
+      "art": "couch",
+      "breite_cm": 134,
+      "tiefe_cm": 191,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 157,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Liegeelement ohne Armlehne mit Rückenteil auf der Schmalseite; anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-couch-160x191",
+      "code_offiziell": null,
+      "name": "LINEAR - Couch 160x191 cm",
+      "linie": "LINEAR",
+      "art": "couch",
+      "breite_cm": 160,
+      "tiefe_cm": 191,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 157,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: Liegeelement ohne Armlehne mit Rückenteil auf der Schmalseite; anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-chaise-longue-165x191",
+      "code_offiziell": null,
+      "name": "LINEAR - Chaise-longue 165x191 cm",
+      "linie": "LINEAR",
+      "art": "chaise",
+      "breite_cm": 165,
+      "tiefe_cm": 191,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 157,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-linear-chaise-longue-191x191",
+      "code_offiziell": null,
+      "name": "LINEAR - Chaise-longue 191x191 cm",
+      "linie": "LINEAR",
+      "art": "chaise",
+      "breite_cm": 191,
+      "tiefe_cm": 191,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 157,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-couch-160x165",
+      "code_offiziell": null,
+      "name": "WAVE - Couch 160x165 cm",
+      "linie": "WAVE",
+      "art": "couch",
+      "breite_cm": 160,
+      "tiefe_cm": 165,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 131,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Liegeelement ohne Armlehne mit Rückenteil auf der Schmalseite; anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-couch-160x191",
+      "code_offiziell": null,
+      "name": "WAVE - Couch 160x191 cm",
+      "linie": "WAVE",
+      "art": "couch",
+      "breite_cm": 160,
+      "tiefe_cm": 191,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 157,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "sitztiefe_an_welle_cm": 79
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Liegeelement ohne Armlehne mit Rückenteil auf der Schmalseite; anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-chaise-longue-191x165",
+      "code_offiziell": null,
+      "name": "WAVE - Chaise-longue 191x165 cm",
+      "linie": "WAVE",
+      "art": "chaise",
+      "breite_cm": 191,
+      "tiefe_cm": 165,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 131,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "sitztiefe_an_welle_cm": 79
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-chaise-longue-191x191-armrest-108",
+      "code_offiziell": null,
+      "name": "WAVE - Chaise-longue 191x191 cm - armrest 108 cm",
+      "linie": "WAVE",
+      "art": "chaise",
+      "breite_cm": 191,
+      "tiefe_cm": 191,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 157,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "armlehnenlaenge_cm": 108
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-wave-chaise-longue-191x191-armrest-160",
+      "code_offiziell": null,
+      "name": "WAVE - Chaise-longue 191x191 cm - armrest 160 cm",
+      "linie": "WAVE",
+      "art": "chaise",
+      "breite_cm": 191,
+      "tiefe_cm": 191,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 157,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "armlehnenlaenge_cm": 160
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-bend-chaise-longue-265x213",
+      "code_offiziell": null,
+      "name": "BEND - Chaise-longue 265x213 cm",
+      "linie": "BEND",
+      "art": "chaise",
+      "breite_cm": 265,
+      "tiefe_cm": 213,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 120
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-chaise-longue-236x196",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined chaise-longue 236x196 cm",
+      "linie": "INCLINED",
+      "art": "chaise-geneigt",
+      "breite_cm": 236,
+      "tiefe_cm": 196,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150,
+        "tiefe_chaise_cm": 131
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-chaise-longue-249x211",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined chaise-longue 249x211 cm",
+      "linie": "INCLINED",
+      "art": "chaise-geneigt",
+      "breite_cm": 249,
+      "tiefe_cm": 211,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-chaise-longue-287x196",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined chaise-longue 287x196 cm",
+      "linie": "INCLINED",
+      "art": "chaise-geneigt",
+      "breite_cm": 287,
+      "tiefe_cm": 196,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-chaise-longue-300x211",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined chaise-longue 300x211 cm",
+      "linie": "INCLINED",
+      "art": "chaise-geneigt",
+      "breite_cm": 300,
+      "tiefe_cm": 211,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-chaise-longue-open-287x196",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined chaise-longue Open 287x196 cm",
+      "linie": "INCLINED",
+      "art": "chaise-geneigt-offen",
+      "breite_cm": 287,
+      "tiefe_cm": 196,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-inclined-inclined-chaise-longue-open-300x211",
+      "code_offiziell": null,
+      "name": "INCLINED - Inclined chaise-longue Open 300x211 cm",
+      "linie": "INCLINED",
+      "art": "chaise-geneigt-offen",
+      "breite_cm": 300,
+      "tiefe_cm": 211,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-pouf-rund-64",
+      "code_offiziell": null,
+      "name": "Ottoman Ø 64 cm",
+      "art": "hocker",
+      "breite_cm": 64,
+      "tiefe_cm": 64,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": 64,
+      "varianten": [],
+      "zusatzmasse": {
+        "rollen": "5 Lenkrollen, 360° drehbar",
+        "sockelhoehe_standard_cm": 6.5,
+        "sockelhoehe_high_cm": 10.5
+      },
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 20)"
+    },
+    {
+      "code": "yves-pouf-rund-84",
+      "code_offiziell": null,
+      "name": "Ottoman Ø 84 cm",
+      "art": "hocker",
+      "breite_cm": 84,
+      "tiefe_cm": 84,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": 84,
+      "varianten": [],
+      "zusatzmasse": {
+        "rollen": "5 Lenkrollen, 360° drehbar",
+        "sockelhoehe_standard_cm": 6.5,
+        "sockelhoehe_high_cm": 10.5
+      },
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 20)"
+    },
+    {
+      "code": "yves-pouf-rund-104",
+      "code_offiziell": null,
+      "name": "Ottoman Ø 104 cm",
+      "art": "hocker",
+      "breite_cm": 104,
+      "tiefe_cm": 104,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": 104,
+      "varianten": [],
+      "zusatzmasse": {
+        "rollen": "5 Lenkrollen, 360° drehbar",
+        "sockelhoehe_standard_cm": 6.5,
+        "sockelhoehe_high_cm": 10.5
+      },
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 20)"
+    },
+    {
+      "code": "yves-linear-pouf-108x56",
+      "code_offiziell": null,
+      "name": "LINEAR - Ottoman 108x56 cm",
+      "linie": "LINEAR",
+      "art": "hocker",
+      "breite_cm": 108,
+      "tiefe_cm": 56,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 20)"
+    },
+    {
+      "code": "yves-linear-pouf-134x56",
+      "code_offiziell": null,
+      "name": "LINEAR - Ottoman 134x56 cm",
+      "linie": "LINEAR",
+      "art": "hocker",
+      "breite_cm": 134,
+      "tiefe_cm": 56,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 20)"
+    },
+    {
+      "code": "yves-linear-pouf-160x56",
+      "code_offiziell": null,
+      "name": "LINEAR - Ottoman 160x56 cm",
+      "linie": "LINEAR",
+      "art": "hocker",
+      "breite_cm": 160,
+      "tiefe_cm": 56,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 20)"
+    },
+    {
+      "code": "yves-linear-pouf-134x82",
+      "code_offiziell": null,
+      "name": "LINEAR - Ottoman 134x82 cm",
+      "linie": "LINEAR",
+      "art": "hocker",
+      "breite_cm": 134,
+      "tiefe_cm": 82,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 20)"
+    },
+    {
+      "code": "yves-linear-pouf-160x82",
+      "code_offiziell": null,
+      "name": "LINEAR - Ottoman 160x82 cm",
+      "linie": "LINEAR",
+      "art": "hocker",
+      "breite_cm": 160,
+      "tiefe_cm": 82,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 20)"
+    },
+    {
+      "code": "yves-linear-pouf-82x82",
+      "code_offiziell": null,
+      "name": "LINEAR - Ottoman 82x82 cm",
+      "linie": "LINEAR",
+      "art": "hocker",
+      "breite_cm": 82,
+      "tiefe_cm": 82,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 20)"
+    },
+    {
+      "code": "yves-linear-pouf-113x113",
+      "code_offiziell": null,
+      "name": "LINEAR - Ottoman 113x113 cm",
+      "linie": "LINEAR",
+      "art": "hocker",
+      "breite_cm": 113,
+      "tiefe_cm": 113,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 20)"
+    },
+    {
+      "code": "yves-linear-pouf-134x134",
+      "code_offiziell": null,
+      "name": "LINEAR - Ottoman 134x134 cm",
+      "linie": "LINEAR",
+      "art": "hocker",
+      "breite_cm": 134,
+      "tiefe_cm": 134,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 20)"
+    },
+    {
+      "code": "yves-suite-sofa-248",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa 248 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 248,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-sofa-low-arm-248",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa LOW ARM 248 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 248,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-sofa-mix-248",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa MIX 248 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 248,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-sofa-274",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa 274 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-sofa-low-arm-274",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa LOW ARM 274 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-sofa-mix-274",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa MIX 274 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-sofa-300",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa 300 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-sofa-low-arm-300",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa LOW ARM 300 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-sofa-mix-300",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa MIX 300 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-sofa-326",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa 326 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-sofa-low-arm-326",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa LOW ARM 326 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-sofa-mix-326",
+      "code_offiziell": null,
+      "name": "SUITE - Sofa MIX 326 cm",
+      "linie": "SUITE",
+      "art": "sofa",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-sofa-248",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed-Sofa 248 cm",
+      "linie": "SUITE",
+      "art": "sofa-daybed",
+      "breite_cm": 248,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          105,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-sofa-mix-248",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed-Sofa MIX 248 cm",
+      "linie": "SUITE",
+      "art": "sofa-daybed",
+      "breite_cm": 248,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          105,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-sofa-274",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed-Sofa 274 cm",
+      "linie": "SUITE",
+      "art": "sofa-daybed",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          131,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-sofa-mix-274",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed-Sofa MIX 274 cm",
+      "linie": "SUITE",
+      "art": "sofa-daybed",
+      "breite_cm": 274,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          131,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-sofa-300cm",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed-Sofa 300cm",
+      "linie": "SUITE",
+      "art": "sofa-daybed",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          157,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-sofa-mix-300",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed-Sofa MIX 300 cm",
+      "linie": "SUITE",
+      "art": "sofa-daybed",
+      "breite_cm": 300,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          157,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-sofa-326",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed-Sofa 326 cm",
+      "linie": "SUITE",
+      "art": "sofa-daybed",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          183,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-sofa-mix-326",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed-Sofa MIX 326 cm",
+      "linie": "SUITE",
+      "art": "sofa-daybed",
+      "breite_cm": 326,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": "62/52",
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "daybed_teilmasse_draufsicht_cm": [
+          183,
+          109
+        ]
+      },
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-165",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest 165 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 165,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-low-arm-165",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest LOW ARM 165 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 165,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-191",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest cm 191 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 191,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-low-arm-191",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest LOW ARM 191 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 191,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-217",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest cm 217 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 217,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-low-arm-217",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest cm LOW ARM 217 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 217,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-243",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest cm 243 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-low-arm-243",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest cm LOW ARM 243 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-269",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest cm 269 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-low-arm-269",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest cm LOW ARM 269 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-295",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest cm 295 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-element-with-1-armrest-low-arm-295",
+      "code_offiziell": null,
+      "name": "SUITE - Element with 1 armrest cm LOW ARM 295 cm",
+      "linie": "SUITE",
+      "art": "endelement",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-with-armrest-217",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element with armrest 217 cm",
+      "linie": "SUITE",
+      "art": "endelement-peninsula",
+      "breite_cm": 217,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-with-armrest-low-arm-217",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element with armrest LOW ARM 217 cm",
+      "linie": "SUITE",
+      "art": "endelement-peninsula",
+      "breite_cm": 217,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-with-armrest-243",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element with armrest 243 cm",
+      "linie": "SUITE",
+      "art": "endelement-peninsula",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-with-armrest-low-arm-243",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element with armrest LOW ARM 243 cm",
+      "linie": "SUITE",
+      "art": "endelement-peninsula",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-with-armrest-269",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element with armrest 269 cm",
+      "linie": "SUITE",
+      "art": "endelement-peninsula",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-with-armrest-low-arm-269",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element with armrest LOW ARM 269 cm",
+      "linie": "SUITE",
+      "art": "endelement-peninsula",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-with-armrest-295",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element with armrest 295 cm",
+      "linie": "SUITE",
+      "art": "endelement-peninsula",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-with-armrest-low-arm-295",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element with armrest LOW ARM 295 cm",
+      "linie": "SUITE",
+      "art": "endelement-peninsula",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 52,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-element-217",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed element 217 cm",
+      "linie": "SUITE",
+      "art": "daybed-element",
+      "breite_cm": 217,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit Liegebereich und 1 Armlehne (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-element-243",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed element 243 cm",
+      "linie": "SUITE",
+      "art": "daybed-element",
+      "breite_cm": 243,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit Liegebereich und 1 Armlehne (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-element-269",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed element 269 cm",
+      "linie": "SUITE",
+      "art": "daybed-element",
+      "breite_cm": 269,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit Liegebereich und 1 Armlehne (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-daybed-element-295",
+      "code_offiziell": null,
+      "name": "SUITE - Daybed element 295 cm",
+      "linie": "SUITE",
+      "art": "daybed-element",
+      "breite_cm": 295,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit Liegebereich und 1 Armlehne (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-central-element-134",
+      "code_offiziell": null,
+      "name": "SUITE - Central element 134 cm",
+      "linie": "SUITE",
+      "art": "mittel",
+      "breite_cm": 134,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-central-element-160",
+      "code_offiziell": null,
+      "name": "SUITE - Central element 160 cm",
+      "linie": "SUITE",
+      "art": "mittel",
+      "breite_cm": 160,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-central-element-186",
+      "code_offiziell": null,
+      "name": "SUITE - Central element 186 cm",
+      "linie": "SUITE",
+      "art": "mittel",
+      "breite_cm": 186,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-central-element-212",
+      "code_offiziell": null,
+      "name": "SUITE - Central element 212 cm",
+      "linie": "SUITE",
+      "art": "mittel",
+      "breite_cm": 212,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-central-element-238",
+      "code_offiziell": null,
+      "name": "SUITE - Central element 238 cm",
+      "linie": "SUITE",
+      "art": "mittel",
+      "breite_cm": 238,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-central-element-264",
+      "code_offiziell": null,
+      "name": "SUITE - Central element 264 cm",
+      "linie": "SUITE",
+      "art": "mittel",
+      "breite_cm": 264,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-186",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element 186 cm",
+      "linie": "SUITE",
+      "art": "peninsula",
+      "breite_cm": 186,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-212",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element 212 cm",
+      "linie": "SUITE",
+      "art": "peninsula",
+      "breite_cm": 212,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-238",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element 238 cm",
+      "linie": "SUITE",
+      "art": "peninsula",
+      "breite_cm": 238,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-open-end-element-264",
+      "code_offiziell": null,
+      "name": "SUITE - Open-end element 264 cm",
+      "linie": "SUITE",
+      "art": "peninsula",
+      "breite_cm": 264,
+      "tiefe_cm": 113,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 79,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "offenes_ende_teilmass_cm": 78
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Element mit offenem Ende (ohne Rücken auf Teillänge); als Abschluss oder Übergang nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-couch-134x191",
+      "code_offiziell": null,
+      "name": "SUITE - Couch 134x191 cm",
+      "linie": "SUITE",
+      "art": "couch",
+      "breite_cm": 134,
+      "tiefe_cm": 191,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 157,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Liegeelement ohne Armlehne mit Rückenteil auf der Schmalseite; anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-couch-160x191",
+      "code_offiziell": null,
+      "name": "SUITE - Couch 160x191 cm",
+      "linie": "SUITE",
+      "art": "couch",
+      "breite_cm": 160,
+      "tiefe_cm": 191,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 157,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: Liegeelement ohne Armlehne mit Rückenteil auf der Schmalseite; anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-chaise-longue-165x191",
+      "code_offiziell": null,
+      "name": "SUITE - Chaise-longue 165x191 cm",
+      "linie": "SUITE",
+      "art": "chaise",
+      "breite_cm": 165,
+      "tiefe_cm": 191,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 157,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-chaise-longue-191x191",
+      "code_offiziell": null,
+      "name": "SUITE - Chaise-longue 191x191 cm",
+      "linie": "SUITE",
+      "art": "chaise",
+      "breite_cm": 191,
+      "tiefe_cm": 191,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": 157,
+      "armlehnenhoehe_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "code": "yves-suite-pouf-134x82",
+      "code_offiziell": null,
+      "name": "SUITE - Ottoman 134x82 cm",
+      "linie": "SUITE",
+      "art": "hocker",
+      "breite_cm": 134,
+      "tiefe_cm": 82,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 26)"
+    },
+    {
+      "code": "yves-suite-pouf-160x82",
+      "code_offiziell": null,
+      "name": "SUITE - Ottoman 160x82 cm",
+      "linie": "SUITE",
+      "art": "hocker",
+      "breite_cm": 160,
+      "tiefe_cm": 82,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 26)"
+    },
+    {
+      "code": "yves-suite-pouf-82x82",
+      "code_offiziell": null,
+      "name": "SUITE - Ottoman 82x82 cm",
+      "linie": "SUITE",
+      "art": "hocker",
+      "breite_cm": 82,
+      "tiefe_cm": 82,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 26)"
+    },
+    {
+      "code": "yves-suite-pouf-113x113",
+      "code_offiziell": null,
+      "name": "SUITE - Ottoman 113x113 cm",
+      "linie": "SUITE",
+      "art": "hocker",
+      "breite_cm": 113,
+      "tiefe_cm": 113,
+      "hoehe_cm": 43,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 26)"
+    },
+    {
+      "code": "yves-kopfstuetze-70",
+      "code_offiziell": null,
+      "name": "Optional headrest cm 70xh56",
+      "art": "kopfstuetze",
+      "breite_cm": 70,
+      "tiefe_cm": 14,
+      "hoehe_cm": 56,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "zusatzmasse": {
+        "hoehe_ueber_boden_aufgesetzt_cm": 76
+      },
+      "anschluesse": "Optionale Kopfstütze, auf das Sitzkissen gestellt (mit Gegengewicht im Stoffband).",
+      "hinweis": "Bezug wählbar aus Stoff/Leder der Musterbücher; ohne Angabe wie Sofabezug. Antirutschstoff unten, abziehbar.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 19)"
+    },
+    {
+      "code": "yves-kissen-75x65",
+      "code_offiziell": null,
+      "name": "Optional backrest cushion 75x65 cm",
+      "art": "kissen",
+      "breite_cm": 75,
+      "tiefe_cm": null,
+      "hoehe_cm": 65,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Zubehör, auf Sitz-/Rückenfläche zu legen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 19)"
+    },
+    {
+      "code": "yves-kissen-60x55",
+      "code_offiziell": null,
+      "name": "Optional backrest cushion 60x55 cm",
+      "art": "kissen",
+      "breite_cm": 60,
+      "tiefe_cm": null,
+      "hoehe_cm": 55,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Zubehör, auf Sitz-/Rückenfläche zu legen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 19)"
+    },
+    {
+      "code": "yves-kissen-50x50",
+      "code_offiziell": null,
+      "name": "Optional cushion 50x50 cm",
+      "art": "kissen",
+      "breite_cm": 50,
+      "tiefe_cm": null,
+      "hoehe_cm": 50,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Zubehör, auf Sitz-/Rückenfläche zu legen.",
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf (Seite 19)"
+    }
+  ],
+  "rueckenoptionen": [
+    "Segmentierte, architektonische Rückenteile folgen der Sitzkurve mit Fugen zwischen den Segmenten.",
+    "Zwei Sitztypen: mit Sitzkissen (Yves Suite, klassischer) oder einteiliger Sitz (Yves, zeitgenössischer).",
+    "Optionale Rückenkissen 75x65 cm und 60x55 cm; optionale Kopfstütze 70 cm, H 56 cm.",
+    "Rücken und Armlehnen über Schnellverschlüsse von der Basis abnehmbar (Transport/Bezugswechsel; zuerst Füße abnehmen)."
+  ],
+  "armlehnenoptionen": [
+    "STANDARD: Armlehnen H 62 cm.",
+    "LOW ARM: Armlehnen H 52 cm.",
+    "MIX: eine Armlehne H 62, eine H 52 cm (SX/DX).",
+    "WAVE Chaise-longue 191x191: Armlehnenlänge 108 cm oder 160 cm."
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Primäre, tragende Füße aus Aluminium-Strangpressprofil, positioniert an den Nähten; zusätzliche Stützfüße aus Metall schwarz lackiert, poliert, Anti-Fingerprint. Gleiter SEBS/Polyethylen schwarz.",
+    "finishes": [
+      "Aluminium verchromt (Cromo/Chrome)",
+      "Aluminium lackiert poliert Black Coffee, glänzend Anti-Fingerprint"
+    ],
+    "fusshoehe_cm": {
+      "standard": 6.5,
+      "optional": 10.5,
+      "hinweis": "Optionale Füße H 10,5 cm auf Anfrage gegen Aufpreis (4 cm höher als Standard)."
+    },
+    "poufs_rund": "Runde Poufs Ø 64/84/104: Sockel Metall verchromt oder Black Coffee, auf 5 Lenkrollen (Nylon/TPU), 360° drehbar; Sockelhöhe Standard 6,5 cm oder High 10,5 cm."
+  },
+  "struktur": "Sperrholz verschiedener Stärken; Sitz aus mehreren Schichten hochelastischen PU-Schaums differenzierter Dichte mit gesteppter Gänsedaunen-Auflage (Assopiuma Gold Label); Rücken/Armlehnen aus PU-Schaum mit gesteppter thermogebundener Polyesterfaser. Asymmetrische Doppelnähte und Keder (Piping) als Haute-Couture-Detail. Yves Suite: konkaver Sitz mit separatem Sitzkissen und Taschenfederkern.",
+  "bezuege": {
+    "materialien": [
+      "Stoff (Minotti-Kollektion)",
+      "Leder (Minotti-Kollektion)",
+      "Kundenstoff möglich (Pflegehinweis gilt auch dafür)"
+    ],
+    "preis_kategorien": null,
+    "bezugsart": "Vollständig abziehbar in allen Versionen (Stoff und Leder). Wegen der besonderen Konfektion nur extra-schonende chemische Reinigung, kein Trockner.",
+    "farbmuster_hinweis": "Stoff- und Ledermuster (Farben, Haptik) bitte im Showroom Platzhirsch Home Living in Lochau ansehen; gedruckte und Bildschirm-Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": {
+    "ruecken": "Rückenkissen mit gesteppter Gänsedaune und Einlage aus hochelastischem PU-Schaum in thermosensitivem Material.",
+    "suite_sitz": "Yves Suite: Sitz- und Rückenkissen mit Gänsedaune, PU-Einlage, Sitzkissen mit Taschenfederkern.",
+    "optional": [
+      "Rückenkissen 75x65 cm",
+      "Rückenkissen 60x55 cm",
+      "Kissen 50x50 cm",
+      "Kopfstütze 70 cm, H 56 cm, Tiefe 14 cm"
+    ]
+  },
+  "outdoor": false,
+  "outdoor_hinweis": "Diese Familie ist Indoor. Minotti führt separat „Yves Outdoor“ (nicht Teil dieses Datensatzes); weitere Familien: Yves Round, Yves Round „Lounge“, Yves Bed.",
+  "besonderheiten": [
+    "Synthese aus rationalen Volumen und organischen Formen, Anmutung der 1970er-Jahre.",
+    "Wellen-Sitz (WAVE) bildet Buchten für Tischchen oder Pouf.",
+    "Asymmetrische Doppelnähte bestimmen auch die Position der Aluminiumfüße.",
+    "Sehr großes Elementprogramm (220 Positionen inkl. Suite, Poufs, Kissen).",
+    "13 Arrangement-PDFs (YVES 01–13)."
+  ],
+  "kompositionen_beispiele": [
+    {
+      "name": "YVES 01",
+      "elemente": null
+    },
+    {
+      "name": "YVES 02",
+      "elemente": null
+    },
+    {
+      "name": "YVES 03",
+      "elemente": null
+    },
+    {
+      "name": "YVES 04",
+      "elemente": null
+    },
+    {
+      "name": "YVES 05",
+      "elemente": null
+    },
+    {
+      "name": "YVES 06",
+      "elemente": null
+    },
+    {
+      "name": "YVES 07",
+      "elemente": null
+    },
+    {
+      "name": "YVES 08",
+      "elemente": null
+    },
+    {
+      "name": "YVES 09",
+      "elemente": null
+    },
+    {
+      "name": "YVES 10",
+      "elemente": null
+    },
+    {
+      "name": "YVES 11",
+      "elemente": null
+    },
+    {
+      "name": "YVES 12",
+      "elemente": null
+    },
+    {
+      "name": "YVES 13",
+      "elemente": null
+    }
+  ],
+  "kompositionen_quellen": [
+    "https://www.minotti.com/downloads/24756/27567/YVES_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/24757/27569/YVES_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/24758/27571/YVES_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/24759/27573/YVES_arrangement_04.pdf",
+    "https://www.minotti.com/downloads/24760/27575/YVES_arrangement_05.pdf",
+    "https://www.minotti.com/downloads/24761/27577/YVES_arrangement_06.pdf",
+    "https://www.minotti.com/downloads/24762/27579/YVES_arrangement_07.pdf",
+    "https://www.minotti.com/downloads/24763/27581/YVES_arrangement_08.pdf",
+    "https://www.minotti.com/downloads/24764/27583/YVES_arrangement_09.pdf",
+    "https://www.minotti.com/downloads/24765/27585/YVES_arrangement_10.pdf",
+    "https://www.minotti.com/downloads/24969/27806/YVES_arrangement_11.pdf",
+    "https://www.minotti.com/downloads/24970/27808/YVES_arrangement_12.pdf",
+    "https://www.minotti.com/downloads/24971/27810/YVES_arrangement_13.pdf"
+  ],
+  "fehlend": [
+    "Offizielle Artikel-/Bestellcodes (nicht öffentlich; Codes intern aus Namen gebildet).",
+    "Preise, Preisgruppen und Stoff-/Lederkategorien.",
+    "Elementliste der 13 Arrangements nicht ausgewertet (nur PDF-Links).",
+    "Seitenzuordnung der Elemente im Datenblatt nicht pro Element erfasst (Quelle = Gesamt-Datenblatt).",
+    "Sitztiefe der Poufs nicht separat bemaßt (null).",
+    "Bedeutung der Daybed-Teilmaße (105–183 / 109 cm) und des Penisola-Teilmaßes 78 cm nicht beschriftet.",
+    "Winkel der WAVE-Inclined-Elemente nicht bemaßt (null).",
+    "Offizielle Kombinationsregeln/Anschlussmatrix (aus Elementtyp abgeleitet).",
+    "Definition SX/DX (Blickrichtung) nicht erläutert.",
+    "Tiefe/Dicke der optionalen Kissen."
+  ],
+  "rechte_hinweis": "Minotti-Bilder und CAD-Dateien sind urheberrechtlich geschützt; CAD-Nutzung laut Minotti nur für Innenarchitektur-Zwecke. Keine veränderten Minotti-Bilder öffentlich verwenden."
+}

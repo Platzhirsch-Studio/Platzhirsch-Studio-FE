@@ -1,11 +1,14 @@
 import React from "react";
 import JsonLd from "@/components/Reusable/JsonLd";
-import SinglePageBanner from "@/components/Reusable/singlePageSlider";
-import Teamsecond from "@/components/Team/team";
+import Teamsecond, { teamTrail } from "@/components/Team/team";
+import { getTranslations } from "next-intl/server";
+import { breadcrumbJsonLd } from "@/lib/seo/breadcrumbs";
+import { graph, teamPersonSchema } from "@/lib/seo/structuredData";
 import TeamMember from "@/components/Team/teammember";
+import { HARALD } from "@/components/Team/teamCopy";
+import { PROFILE_URL } from "@/components/Team/haraldProfil";
 import { fetchTeamData } from "@/lib/api/fetchTeam";
-import { ROUTES } from "@/utils/routing";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { DEFAULT_OG_IMAGE, hreflangLanguages, ogLocale } from "@/lib/seo/pageMetadata";
 import {
   fetchTeamKeywords,
   getLocalizedTeamMetadata,
@@ -37,19 +40,22 @@ function getTeamPageUrl(locale) {
 
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "Il Nostro Team | Esperti di Design da Platzhirsch Home Living";
-    case "en": return "Meet Our Team | Design Experts at Platzhirsch Home Living";
-    case "fr": return "Notre Équipe | Experts en Design chez Platzhirsch Home Living";
-    default: return "Unser Team | Kreativexperten bei Platzhirsch Home Living";
+    // Runde 2: factual, no advertising phrase ("Kreativexperten", "Design Experts").
+    case "it": return "Il nostro team a Lochau | Platzhirsch Home Living";
+    case "en": return "Our team in Lochau | Platzhirsch Home Living";
+    case "fr": return "Notre équipe à Lochau | Platzhirsch Home Living";
+    default: return "Unser Team in Lochau | Platzhirsch Home Living";
   }
 };
 
+// Description: our own, factual text wins over the CMS (QA Runde 1, P2-2:
+// the CMS text still says "exklusiv"). The CMS keeps title, image and type.
 const getLocalizedDescription = (locale) => {
   switch (locale) {
-    case "it": return "Conosci il nostro team creativo di Platzhirsch Home Living. Esperti nel design esclusivo.";
-    case "en": return "Meet our creative team at Platzhirsch Home Living. Experts in exclusive design.";
-    case "fr": return "Rencontrez notre équipe créative chez Platzhirsch Home Living. Experts en design exclusif.";
-    default: return "Lernen Sie unser kreatives Team bei Platzhirsch Home Living kennen. Experten für exklusives Design.";
+    case "it": return "Il team di Platzhirsch Home Living a Lochau: consulenza, progettazione e montaggio di mobili di design, cucine e outdoor.";
+    case "en": return "The team of Platzhirsch Home Living in Lochau: advice, planning and installation of designer furniture, kitchens and outdoor living.";
+    case "fr": return "L’équipe de Platzhirsch Home Living à Lochau : conseil, planification et montage de mobilier design, cuisines et outdoor.";
+    default: return "Das Team von Platzhirsch Home Living in Lochau: Beratung, Planung und Montage von Designermöbeln, Küchen und Outdoor.";
   }
 };
 
@@ -74,14 +80,14 @@ export async function generateMetadata({ params }) {
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
           siteName: "Platzhirsch Home Living",
-          locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url: "/Images/Team/reading-area.jpg", width: 1200, height: 630, alt: "Team – Platzhirsch Home Living" }],
+          locale: ogLocale(locale),
+          images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: "Team – Platzhirsch Home Living" }],
         },
         twitter: {
           card: "summary_large_image",
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
-          images: ["/Images/Team/reading-area.jpg"],
+          images: [DEFAULT_OG_IMAGE],
         },
       };
     }
@@ -92,34 +98,34 @@ export async function generateMetadata({ params }) {
     const safeType = validateOGType(meta?.type);
 
     return {
-      title: meta?.title || getLocalizedTitle(locale),
-      description: meta?.description || getLocalizedDescription(locale),
+      title: getLocalizedTitle(locale),
+      description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
       alternates: {
         canonical: PAGE_URL,
         languages: hreflangLanguages((l) => getTeamPageUrl(l))
       },
       openGraph: {
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
+        title: getLocalizedTitle(locale),
+        description: getLocalizedDescription(locale),
         url: PAGE_URL,
         siteName: "Platzhirsch Home Living",
         images: [
           {
-            url: image ? image : "/Images/Team/reading-area.jpg",
+            url: image ? image : DEFAULT_OG_IMAGE,
             width: 1200,
             height: 630,
             alt: "Team – Platzhirsch Home Living",
           },
         ],
-        locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
+        locale: ogLocale(locale),
         type: safeType,
       },
       twitter: {
         card: "summary_large_image",
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
-        images: [image ? image : "/Images/Team/reading-area.jpg"],
+        title: getLocalizedTitle(locale),
+        description: getLocalizedDescription(locale),
+        images: [image ? image : DEFAULT_OG_IMAGE],
       },
     };
   } catch (error) {
@@ -140,14 +146,6 @@ export default async function page({ params }) {
 
   const team = await fetchTeamData();
 
-  const linkNameOne =
-    locale == "it"
-      ? "SU DI NOI"
-      : locale == "en"
-        ? "ABOUT US"
-        : locale == "fr"
-          ? "À PROPOS"
-          : "ÜBER UNS";
   const linkNameTwo =
     locale == "it"
       ? "Squadra"
@@ -156,61 +154,48 @@ export default async function page({ params }) {
         : locale == "fr"
           ? "L'équipe"
           : "Team";
-  const Home =
-    locale == "it"
-      ? "Home"
-      : locale == "en"
-        ? "Home"
-        : locale == "fr"
-          ? "Accueil"
-          : "Home";
-
-  const BASE_URL = getBaseUrl(locale);
   const PAGE_URL = getTeamPageUrl(locale);
-  const teamPath = ROUTES.team[locale] ? `${ROUTES.team[locale]}` : `/ueber-uns/team`;
 
-  const BannerInfo = {
-    image: "/Images/Team/reading-area.jpg",
-    links: [
-      {
-        linkName: Home,
-        link: "/",
-      },
-      {
-        linkName: linkNameOne,
-      },
-      {
-        linkName: linkNameTwo,
-        link: teamPath,
-      },
-    ],
-    title: linkNameTwo, // Added title property
-  };
+  // Runde 2 (seo P2-5/P2-6): BreadcrumbList = visible trail (menu: Das Haus ›
+  // Team, src/lib/seo/breadcrumbs.js) and a Person node per team member with an
+  // entry in TEAM_PEOPLE (Harald Menghin) – only facts the page shows.
+  const tTeam = await getTranslations({ locale, namespace: "inhalt.team" });
+  const roles = tTeam.has("roles") ? tTeam.raw("roles") || {} : {};
+  const notes = tTeam.has("notes") ? tTeam.raw("notes") || {} : {};
+  const names = new Set((Array.isArray(team) ? team : []).map((m) => m?.title).filter(Boolean));
+  const people = [...names]
+    .map((name) =>
+      teamPersonSchema({
+        name,
+        locale,
+        // Rat 9,5 (B14): Harald's Person node points to his profile page (same @id there).
+        pageUrl: name === HARALD ? PROFILE_URL : PAGE_URL,
+        jobTitle: (team.find((m) => m?.title === name)?.role || roles[name] || "").trim(),
+        description: notes[name] || "",
+      })
+    )
+    .filter(Boolean);
 
-  const webPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": `${PAGE_URL}/#webpage`,
-    url: PAGE_URL,
-    name: linkNameTwo,
-    description: "Unser kreatives Team bei Platzhirsch Home Living - Experten für exklusives Design.",
-    inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
-    isPartOf: { "@id": "https://platzhirsch.studio/#website" },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: Home, item: BASE_URL },
-        { "@type": "ListItem", position: 2, name: linkNameTwo, item: PAGE_URL },
-      ],
+  const webPageSchema = graph(
+    {
+      "@type": "WebPage",
+      "@id": `${PAGE_URL}/#webpage`,
+      url: PAGE_URL,
+      name: linkNameTwo,
+      description: getLocalizedDescription(locale),
+      inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
+      isPartOf: { "@id": "https://platzhirsch.studio/#website" },
+      breadcrumb: { "@id": `${PAGE_URL}/#breadcrumb` },
+      ...(people.length ? { mentions: people.map((p) => ({ "@id": p["@id"] })) } : {}),
     },
-  };
-
+    breadcrumbJsonLd(teamTrail(locale), locale, { id: `${PAGE_URL}/#breadcrumb`, context: false }),
+    ...people
+  );
 
   return (
     <div>
       <JsonLd data={webPageSchema} />
-      <SinglePageBanner info={BannerInfo} />
-      <Teamsecond />
+      <Teamsecond team={team} />
       <TeamMember team={team} />
     </div>
   );

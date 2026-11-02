@@ -1,0 +1,289 @@
+/* Shell motion (Design-Bibel §8): only transform + opacity, UI class 280 ms,
+   exits 180 ms. Under prefers-reduced-motion and the footer switch
+   "Ruhige Ansicht" (html[data-motion="reduced"]) menus fade in 150 ms and
+   nothing travels (§8.4). Layout and colours live in Tailwind utilities. */
+
+/* Header: sticky (in flow, no page needs a top offset). Desktop never hides;
+   below 768 px it slides away on scroll-down and comes back on scroll-up (W7). */
+.header {
+  transition: transform var(--duration-ui) var(--ease-quiet);
+}
+@media (max-width: 767px) {
+  .header[data-hidden="true"] {
+    transform: translateY(-100%);
+    transition-duration: var(--duration-exit);
+    transition-timing-function: var(--ease-exit);
+  }
+}
+
+/* Mega-menu panel. The surface (bg-surface, shadow) is opaque from the first
+   frame, so the page text never shows through; only the inner layer fades in
+   with an 8 px lift. Closing is instant (no travel, no see-through surface,
+   and a neighbour panel can take over without two layers crossing). */
+.panel[hidden] {
+  display: none;
+}
+.panelInner {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--duration-ui) var(--ease-quiet),
+    transform var(--duration-ui) var(--ease-quiet);
+}
+@starting-style {
+  .panelInner {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* Search field: one underline over the full width (1 px line-control), on
+   focus a 2 px ink underline (§4.2). The global :focus-visible ring is
+   unlayered, so Tailwind utilities cannot remove it from the input – this
+   module rule (unlayered, higher specificity) does. */
+.searchField {
+  border-bottom: 1px solid var(--color-line-control);
+  transition: box-shadow var(--duration-micro) var(--ease-quiet);
+}
+.searchField:focus-within {
+  border-bottom-color: var(--color-ink);
+  box-shadow: 0 1px 0 0 var(--color-ink);
+}
+.searchInput:focus,
+.searchInput:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Full-screen mobile menu and the search sheet (<dialog>). */
+.dialog {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity var(--duration-exit) var(--ease-exit),
+    transform var(--duration-exit) var(--ease-exit),
+    overlay var(--duration-exit) allow-discrete,
+    display var(--duration-exit) allow-discrete;
+}
+.dialog[open] {
+  opacity: 1;
+  transform: none;
+  transition-duration: var(--duration-ui);
+  transition-timing-function: var(--ease-quiet);
+}
+@starting-style {
+  .dialog[open] {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.dialog::backdrop {
+  background: rgb(31 37 43 / 0);
+  transition:
+    background-color var(--duration-ui) var(--ease-quiet),
+    overlay var(--duration-ui) allow-discrete,
+    display var(--duration-ui) allow-discrete;
+}
+.dialog[open]::backdrop {
+  background: rgb(31 37 43 / 0.32);
+}
+@starting-style {
+  .dialog[open]::backdrop {
+    background: rgb(31 37 43 / 0);
+  }
+}
+
+/* Search sheet slides from the top edge instead of from below. */
+.sheet {
+  transform: translateY(-8px);
+}
+@starting-style {
+  .sheet[open] {
+    transform: translateY(-8px);
+  }
+}
+
+/* Mobile accordion marker. */
+.summary {
+  list-style: none;
+}
+.summary::-webkit-details-marker {
+  display: none;
+}
+.chevron {
+  transition: transform var(--duration-ui) var(--ease-quiet);
+}
+details[open] > .summary .chevron {
+  transform: rotate(180deg);
+}
+
+/* Active main item: brass-500 underline (one of the three decorative brass
+   places, §4.2). 2 px, inset from the 72 px bar's bottom edge. */
+.trigger {
+  position: relative;
+}
+.trigger::after {
+  content: "";
+  position: absolute;
+  inset-inline: var(--nav-px, 0.625rem); /* = trigger padding */
+  bottom: 0.875rem;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-micro) var(--ease-quiet);
+}
+.trigger:hover::after,
+.trigger[aria-expanded="true"]::after {
+  transform: scaleX(1);
+}
+
+/* Header icon row: 44 px targets in px, not rem (min-w-11). With 200 % text
+   (WCAG 1.4.4) four 88 px boxes pushed the wordmark to 0 px and the menu
+   button off a 393 px screen; at the normal 16 px root nothing changes. */
+.tools > :is(a, button),
+.tools > div > :is(a, button) {
+  min-width: 44px;
+  min-height: 44px;
+}
+.tools :global(svg.size-6) {
+  width: 24px;
+  height: 24px;
+}
+/* QM r2 (200 % text): search, selection, cart and Ideenboard are size-5
+   (1.25rem) and grew to 40 px in their 44 px boxes – glyphs touched, while
+   the burger (px) stayed 24 px. All header symbols now in px: 20 px glyphs
+   with 24 px air between them at every text size. */
+.tools :global(svg.size-5) {
+  width: 20px;
+  height: 20px;
+}
+
+/* Main bar fit ≥ 1280 px (navFit.js, Inhaber 01.11.2026: one line in all four
+   languages). data-nav = measured density; before the first measurement the
+   server guess data-nav-start (navbar.js) picks it per width. "menu": nothing
+   fits (text spacing, large text) – the bar is hidden but keeps its slot, the
+   menu button and its dialog take over. Targets stay ≥ 44 px high, ≥ 24 px wide. */
+@media (min-width: 1280px) {
+  .header {
+    --nav-fs: 1rem;
+    --nav-px: 0.375rem;
+  }
+  /* QM r2: level 3 keeps 6 px padding (12 px between the words); the old
+     4 px level is now 4, only before the menu takes over. */
+  .header:not([data-nav])[data-nav-start="long"],
+  .header[data-nav="3"] {
+    --nav-fs: 0.875rem;
+  }
+  .header[data-nav="4"] {
+    --nav-fs: 0.875rem;
+    --nav-px: 0.25rem;
+  }
+  .header[data-nav="2"] {
+    --nav-fs: 0.9375rem;
+  }
+  .header[data-nav="0"] {
+    --nav-px: 0.625rem;
+  }
+  .trigger {
+    font-size: var(--nav-fs);
+    padding-inline: var(--nav-px);
+  }
+  .header[data-nav="menu"] .navSlot {
+    visibility: hidden;
+  }
+  .header:not([data-nav="menu"]) .burger,
+  .header:not([data-nav="menu"]) .menuDialog {
+    display: none;
+  }
+}
+/* QM shell-home r4: FR/IT at 1280–1439 px still landed on level 3 (14 px,
+   "Living Cucina Bagno" crammed). For the long locales only, the icon row
+   gives back 28 px – 40 px icon boxes (20 px glyphs, 20 px air, ≥ 24 px
+   target) and 16 px instead of 20 px CTA padding (HeaderCta.js) – so the list reaches level
+   2 (15 px). Fixed per locale, never per level: the slot width stays stable
+   while navFit.js measures. */
+@media (min-width: 1280px) and (max-width: 1439.98px) {
+  .header[data-nav-start="long"] .tools > :is(a, button),
+  .header[data-nav-start="long"] .tools > div:not([data-header-cta]) > :is(a, button),
+  .header[data-nav-start="long"] .tools [aria-controls="ph-language-list"] {
+    min-width: 40px;
+    width: 40px;
+  }
+}
+@media (min-width: 1440px) {
+  .header:not([data-nav])[data-nav-start] {
+    --nav-fs: 1rem;
+    --nav-px: 0.625rem;
+  }
+}
+.trigger[data-active="true"]::after {
+  background: var(--color-brass-500);
+  transform: scaleX(1);
+}
+
+/* Selection counter pop (only place ease-pop is allowed, §8.1). */
+.count {
+  animation: pop var(--duration-swap) var(--ease-pop);
+}
+@keyframes pop {
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .chevron,
+  .trigger::after {
+    transition: none;
+  }
+  .count {
+    animation: none;
+  }
+  .panelInner,
+  .dialog,
+  .dialog[open] {
+    transform: none;
+    transition-property: opacity, overlay, display;
+    transition-duration: 150ms;
+  }
+  @starting-style {
+    .panelInner,
+    .dialog[open] {
+      transform: none;
+    }
+  }
+}
+:global(html:is([data-motion="reduced"], [data-motion="calm"])) .header,
+:global(html:is([data-motion="reduced"], [data-motion="calm"])) .chevron,
+:global(html:is([data-motion="reduced"], [data-motion="calm"])) .trigger::after {
+  transition: none;
+}
+:global(html:is([data-motion="reduced"], [data-motion="calm"])) .count {
+  animation: none;
+}
+:global(html:is([data-motion="reduced"], [data-motion="calm"])) .panelInner,
+:global(html:is([data-motion="reduced"], [data-motion="calm"])) .dialog,
+:global(html:is([data-motion="reduced"], [data-motion="calm"])) .dialog[open] {
+  transform: none;
+  transition-property: opacity, overlay, display;
+  transition-duration: 150ms;
+}
+
+/* Motion shell-home (01.11.2026): a room of the mobile menu unfolds – its
+   content arrives with opacity and a 4 px lift in the UI class (280 ms) when
+   the <details> opens; closing stays instant (no layout animation, the
+   height jumps as before, so nothing below is pushed in steps). Off under
+   reduced motion and the "Ruhige Ansicht" (reduced / calm). */
+@media (prefers-reduced-motion: no-preference) {
+  :global(html:not([data-motion="reduced"], [data-motion="calm"])) details[open] > .fold {
+    animation: fold-in var(--duration-ui) var(--ease-quiet) both;
+  }
+}
+@keyframes fold-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}

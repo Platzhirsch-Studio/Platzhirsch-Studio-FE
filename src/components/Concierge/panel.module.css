@@ -1,0 +1,914 @@
+/* Sitewide KI-Concierge panel (lazy chunk). Design-Bibel: radius 0, one
+   shadow (--shadow-overlay, only panel/sheet), tokens only, Instrument Sans
+   below 32 px, Bodoni only from 32 px, ≥ 44 px targets, motion via
+   transform/opacity, reduced motion respected. */
+
+/* ---------- Shell: desktop side panel (non-modal <dialog>.show()) ---------- */
+.panel {
+  position: fixed;
+  /* QM r2: a cookie bar that arrives after the panel opened publishes its
+     height as --ph-consent-h – the panel moves up and shrinks above it
+     instead of lying under it (input and foot stay visible). */
+  inset: auto calc(16px + env(safe-area-inset-right, 0px)) calc(16px + var(--ph-consent-h, 0px)) auto;
+  z-index: var(--z-menu); /* 50 */
+  display: none;
+  flex-direction: column;
+  width: min(400px, calc(100vw - 32px));
+  height: min(calc(100dvh - var(--header-h, 72px) - 32px - var(--ph-consent-h, 0px)), 760px);
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-overlay);
+  font-family: var(--font-sans);
+  overflow: hidden;
+}
+.panel[open] {
+  display: flex;
+  animation: enter var(--duration-ui) var(--ease-quiet);
+}
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* ---------- Mobile: modal bottom sheet (<dialog>.showModal()) ---------- */
+.panel[data-sheet] {
+  inset: auto 0 0 0;
+  width: 100%;
+  max-width: 100%;
+  height: 88dvh;
+  border: 0;
+  border-top: 1px solid var(--color-line-strong);
+}
+.panel[data-sheet][open] {
+  animation: sheet var(--duration-ui) var(--ease-quiet);
+}
+@keyframes sheet {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+.panel::backdrop {
+  background: rgb(31 37 43 / 0.42);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel[open],
+  .panel[data-sheet][open] {
+    animation: fade 120ms linear;
+  }
+}
+:global(html[data-motion="reduced"]) .panel[open] {
+  animation: fade 120ms linear;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---------- Head ---------- */
+.head {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 18px 8px 14px 20px;
+  border-bottom: 1px solid var(--color-line);
+}
+.panel[data-sheet] .head {
+  padding-top: 26px;
+  touch-action: none;
+}
+.handle {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 40px;
+  height: 4px;
+  margin-left: -20px;
+  background: var(--color-line-strong);
+}
+.headText {
+  flex: 1;
+  min-width: 0;
+  padding-top: 6px;
+}
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.title {
+  font-size: var(--text-title);
+  line-height: 1.2;
+  font-weight: 500;
+  outline: none;
+}
+.badge,
+.badgeSoft {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 6px;
+  border: 1px solid var(--color-line-strong);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--color-text-accent);
+}
+.badgeSoft {
+  border-color: transparent;
+  background: var(--color-surface-band);
+  color: var(--color-text-soft);
+  letter-spacing: 0.06em;
+}
+.sub {
+  margin-top: 4px;
+  font-size: var(--text-small);
+  line-height: 1.45;
+  color: var(--color-text-soft);
+}
+.humanLink {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-line-strong);
+  text-underline-offset: 3px;
+  /* 24 px inline target (WCAG 2.5.8) with spacing; the full 44 px route is the
+     "Beratung" button of the contact card and the footer of the site. */
+  display: inline-block;
+  padding: 2px 0;
+}
+.humanLink:hover {
+  text-decoration-color: currentColor;
+}
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  color: var(--color-text);
+  transition: background-color var(--duration-micro) var(--ease-quiet);
+}
+.iconBtn:hover {
+  background: var(--color-surface-band);
+}
+.iconBtn:focus-visible,
+.primary:focus-visible,
+.secondary:focus-visible,
+.chip:focus-visible,
+.send:focus-visible,
+.textBtn:focus-visible,
+.tapLink:focus-visible,
+.menuItem:focus-visible,
+.cardBtn:focus-visible,
+.cardLink:focus-visible,
+.cardNav:focus-visible,
+.devBtn:focus-visible,
+.humanLink:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Menu "…" */
+.menuWrap {
+  position: relative;
+}
+.menu {
+  position: absolute;
+  top: 46px;
+  right: 0;
+  z-index: 2;
+  width: 260px;
+  padding: 6px 0;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-overlay);
+}
+.menuItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 16px;
+  text-align: left;
+  font-size: var(--text-ui);
+  font-weight: 500;
+}
+.menuItem:hover {
+  background: var(--color-surface-raised);
+}
+.menuNote {
+  padding: 2px 16px 8px;
+  font-size: var(--text-small);
+  color: var(--color-text-soft);
+  border-bottom: 1px solid var(--color-line);
+  margin-bottom: 4px;
+}
+
+/* ---------- Body: consent, contact card, loading ---------- */
+.loading {
+  padding: 24px 20px;
+  color: var(--color-text-soft);
+  font-size: var(--text-small);
+}
+.consent,
+.contact {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 22px 20px 20px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.consent > * + *,
+.contact > * + * {
+  margin-top: 12px;
+}
+.rule {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--color-brass-500);
+}
+.lead {
+  font-size: var(--text-title);
+  line-height: 1.25;
+  font-weight: 500;
+}
+.check {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  min-height: 44px;
+  padding: 10px 0;
+  font-size: var(--text-small);
+  cursor: pointer;
+}
+.check input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  accent-color: var(--color-ink);
+}
+.infoBox,
+.softNotice {
+  padding: 10px 12px;
+  border-left: 2px solid var(--color-brass-500);
+  background: var(--color-surface-raised);
+  font-size: var(--text-small);
+}
+.softNotice {
+  margin-top: 10px;
+}
+.softNotice .textBtn {
+  margin: 2px 0 -10px -4px;
+}
+
+/* Consent: short text, details on demand, checkbox + start always in view
+   (sticky inside the scrolling .consent, above the iOS home indicator). */
+.details {
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--text-small);
+  font-weight: 500;
+  cursor: pointer;
+  list-style-position: inside;
+}
+.summary:focus-visible {
+  outline: 2px solid var(--color-focus, var(--color-ink));
+  outline-offset: 2px;
+}
+.detailsBody {
+  padding-bottom: 12px;
+  font-size: var(--text-small);
+}
+.detailsBody > * + * {
+  margin-top: 10px;
+}
+.consentFoot {
+  position: sticky;
+  bottom: -20px; /* = padding-bottom of .consent */
+  margin: 16px -20px -20px;
+  padding: 4px 20px calc(16px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--color-line);
+  background: var(--color-surface);
+}
+.consentFoot .primary {
+  width: 100%;
+}
+.consentFoot > * + * {
+  margin-top: 8px;
+}
+.error {
+  color: var(--color-error);
+  font-size: var(--text-small);
+}
+.hours {
+  display: grid;
+  gap: 6px;
+  padding: 12px 0;
+  border-block: 1px solid var(--color-line);
+  font-size: var(--text-small);
+}
+.hoursRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 16px;
+}
+.hoursRow dt {
+  font-weight: 500;
+}
+.devBtn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--text-small);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--color-text-soft);
+}
+
+/* ---------- Buttons ---------- */
+.actions,
+.actionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.actionButtons > * {
+  flex: 1 1 0;
+}
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  font-size: var(--text-ui);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  transition:
+    background-color var(--duration-micro) var(--ease-quiet),
+    border-color var(--duration-micro) var(--ease-quiet);
+}
+.primary {
+  background: var(--color-action);
+  color: var(--color-paper);
+}
+.primary:hover {
+  background: var(--color-action-hover);
+}
+.primary:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+.secondary {
+  border: 1px solid var(--color-line-control);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.secondary:hover {
+  border-color: var(--color-ink);
+  background: var(--color-surface-raised);
+}
+.textBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 4px;
+  font-size: var(--text-small);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tapLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--text-small);
+  text-decoration: underline;
+  text-decoration-color: var(--color-line-strong);
+  text-underline-offset: 3px;
+  color: inherit;
+}
+.tapLink:hover {
+  text-decoration-color: currentColor;
+}
+
+/* ---------- Conversation ---------- */
+.log {
+  position: relative; /* offsetTop reference for the pinned question */
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 20px 20px 8px;
+}
+.spacer {
+  height: 0;
+  flex: none;
+}
+.welcome {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.welcome > .rule {
+  margin-bottom: 18px;
+}
+.welcomeTitle {
+  font-family: var(--font-display);
+  font-size: 2rem; /* Bodoni only from 32 px */
+  line-height: 1.1;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.chip {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 14px;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-surface);
+  font-size: var(--text-small);
+  line-height: 1.3;
+  text-align: left;
+  transition: border-color var(--duration-micro) var(--ease-quiet);
+}
+.chip:hover {
+  border-color: var(--color-ink);
+}
+.user {
+  width: fit-content;
+  max-width: 85%;
+  margin: 16px 0 16px auto;
+  padding: 10px 14px;
+  background: var(--color-surface-band);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.bot {
+  margin: 16px 0 20px;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+.botLabel {
+  display: block;
+  margin-bottom: 6px;
+  font-size: var(--text-overline);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-accent);
+}
+.prose {
+  overflow-wrap: anywhere;
+}
+.prose p + p,
+.prose p + ul,
+.prose ul + p {
+  margin-top: 10px;
+}
+.prose ul {
+  padding-left: 18px;
+  list-style: disc;
+}
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--color-brass-500);
+}
+.status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 14px;
+  font-size: var(--text-small);
+  color: var(--color-text-soft);
+}
+.dots {
+  display: inline-flex;
+  gap: 4px;
+}
+.dots i {
+  width: 4px;
+  height: 4px;
+  background: var(--color-brass-500);
+  animation: breathe 1.2s var(--ease-drift) infinite;
+}
+.dots i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.dots i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dots i {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+/* ---------- Proposal card ---------- */
+.action {
+  margin-top: 12px;
+  padding: 14px 16px 16px;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-surface-raised);
+}
+.action[data-status="stale"],
+.action[data-status="declined"] {
+  background: var(--color-surface);
+  border-color: var(--color-line);
+}
+.action > * + * {
+  margin-top: 8px;
+}
+.actionEyebrow {
+  font-size: var(--text-overline);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-accent);
+}
+.actionTitle {
+  font-size: var(--text-ui);
+  line-height: 1.45;
+}
+.actionTitle strong {
+  font-weight: 500;
+}
+.actionMeta {
+  font-size: var(--text-small);
+  color: var(--color-text-soft);
+}
+.actionPath {
+  font-size: var(--text-small);
+  color: var(--color-text-soft);
+  overflow-wrap: anywhere;
+}
+.actionPath span {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+}
+.actionButtons {
+  padding-top: 4px;
+}
+.actionDone {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 16px;
+}
+.actionDone .actionMeta {
+  flex-basis: 100%;
+}
+.actionStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-size: var(--text-small);
+  font-weight: 500;
+}
+.action[data-status="done"] .actionStatus {
+  color: var(--color-success);
+}
+.action[data-status="failed"] .actionStatus {
+  color: var(--color-error);
+}
+.draft {
+  padding: 10px 12px;
+  border-left: 2px solid var(--color-brass-500);
+  background: var(--color-surface);
+  font-size: var(--text-small);
+}
+.draftLabel {
+  margin-bottom: 4px;
+  font-size: var(--text-overline);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-accent);
+}
+
+/* ---------- Handoff ---------- */
+.handoff {
+  margin-top: 12px;
+  padding: 14px 16px 16px;
+  background: var(--color-surface-band);
+}
+.handoff > * + * {
+  margin-top: 10px;
+}
+.cardTitle {
+  font-size: var(--text-ui);
+  font-weight: 500;
+}
+
+/* ---------- Product cards ---------- */
+.cardsWrap {
+  position: relative;
+}
+.cardsWrap::before,
+.cardsWrap::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 2px;
+  bottom: 12px;
+  width: 28px;
+  pointer-events: none;
+  transition: opacity var(--duration-micro) linear;
+}
+.cardsWrap::before {
+  left: -20px;
+  background: linear-gradient(to right, var(--color-surface), transparent);
+}
+.cardsWrap::after {
+  right: -20px;
+  background: linear-gradient(to left, var(--color-surface), transparent);
+}
+.cardsWrap[data-start="true"]::before,
+.cardsWrap[data-end="true"]::after {
+  opacity: 0;
+}
+.cards {
+  display: flex;
+  gap: 12px;
+  margin: 12px -20px 4px;
+  padding: 2px 20px 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 20px;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+.card {
+  display: flex;
+  flex: 0 0 160px;
+  flex-direction: column;
+  scroll-snap-align: start;
+}
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cardLink:hover .cardName {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cardImage {
+  display: block;
+  aspect-ratio: 4 / 5;
+  margin-bottom: 8px;
+  overflow: hidden;
+  background: var(--color-linen);
+}
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cardNoImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: var(--text-small);
+  color: var(--color-text-soft);
+}
+.cardBrand {
+  font-size: var(--text-overline);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-accent);
+}
+.cardName {
+  font-size: var(--text-small);
+  line-height: 1.35;
+  font-weight: 500;
+}
+.cardCat {
+  font-size: 0.8125rem;
+  color: var(--color-text-soft);
+}
+.cardActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.cardBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 44px;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-surface);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+.cardBtn:hover {
+  border-color: var(--color-ink);
+}
+.cardBtn[aria-pressed="true"] {
+  background: var(--color-surface-band);
+}
+.cardNav {
+  display: none;
+}
+@media (min-width: 768px) {
+  .cardNav {
+    position: absolute;
+    z-index: 2;
+    top: 72px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--color-line-strong);
+    background: var(--color-surface);
+  }
+  .cardNav:disabled {
+    display: none;
+  }
+  .cardPrev {
+    left: -12px;
+  }
+  .cardNext {
+    right: -12px;
+  }
+}
+
+/* ---------- Composer ---------- */
+.composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin: 0 20px;
+  padding: 4px 4px 4px 14px;
+  border: 1px solid var(--color-line-control);
+  background: var(--color-surface);
+}
+/* One ring only (QA2 P3-2): the 2 px outline lies over the 1 px border, no gap, no corner notches. */
+.composer:focus-within {
+  border-color: var(--color-focus);
+  outline: 2px solid var(--color-focus);
+  outline-offset: -1px;
+}
+.input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  max-height: 140px;
+  padding: 11px 0;
+  border: 0;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font-size: 1rem; /* ≥ 16 px: no iOS zoom */
+  line-height: 1.4;
+  field-sizing: content;
+}
+.send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  background: var(--color-action);
+  color: var(--color-paper);
+}
+.send:disabled {
+  background: var(--color-surface-band);
+  color: var(--color-text-soft);
+}
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 16px;
+  padding: 4px 20px calc(4px + env(safe-area-inset-bottom, 0px));
+}
+.hint {
+  flex: 1 1 200px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-text-soft);
+}
+
+/* Stored conversation below the contact card (mode answer too late, QA2 P2-3). */
+.pastLog {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-line);
+}
+
+/* QA2 P3-5: the consent step only takes the height it needs on phones. */
+.panel[data-sheet]:has(> .consent) {
+  height: auto;
+  max-height: 88dvh;
+}
+/* QM shell-home r3 (iPad, desktop): the side panel was fixed high, so under
+   "Verstanden – Concierge starten" 170–200 px stayed empty. The consent step
+   takes the height it needs; the chat itself keeps the full panel height. */
+.panel:not([data-sheet]):has(> .consent) {
+  height: auto;
+  max-height: min(calc(100dvh - var(--header-h, 72px) - 32px - var(--ph-consent-h, 0px)), 760px);
+}
+
+/* QM shell-home r2 (AI Act Art. 50): on short screens (phone landscape,
+   ≤ 560 px high) the sticky consent foot ate the whole scroller – checkbox
+   and "Verstanden" were usable while the AI notice stayed hidden below it.
+   Here the foot scrolls with the text (notice first, then the controls),
+   the panel uses the full height below the header and the head is compact. */
+@media (max-height: 560px) {
+  .consentFoot {
+    position: static;
+    margin: 16px 0 0;
+    padding: 4px 0 calc(4px + env(safe-area-inset-bottom, 0px));
+  }
+  .consent {
+    padding-top: 16px;
+  }
+  .head {
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+  .panel[data-sheet] .head {
+    padding-top: 20px;
+  }
+  .panel:not([data-sheet]) {
+    top: calc(var(--header-h, 72px) + 8px);
+    bottom: calc(8px + var(--ph-consent-h, 0px));
+    height: auto;
+  }
+  .panel[data-sheet],
+  .panel[data-sheet]:has(> .consent) {
+    height: calc(100dvh - 12px);
+    max-height: none;
+  }
+}
+/* QM shell-home r5 (phone-quer 844 × 390): head and "Bevor es losgeht" took
+   the whole panel, the controls only came after scrolling. On short screens
+   the head drops its subtitle (title, KI badge and the "Mit einem Menschen
+   sprechen" link stay), the brass
+   rule goes and the lead is set in the UI size – about 90 px more for the
+   notice and its controls. */
+@media (max-height: 560px) {
+  .sub > span:first-child {
+    display: none;
+  }
+  .consent .rule {
+    display: none;
+  }
+  .consent .lead {
+    font-size: var(--text-ui);
+    line-height: 1.4;
+  }
+  .consent > * + * {
+    margin-top: 8px;
+  }
+}

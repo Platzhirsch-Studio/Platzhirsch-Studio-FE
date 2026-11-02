@@ -16,7 +16,10 @@ const CATEGORY_IMAGES = {
   "bar-stools": "/Images/Kuche/bannerImageKuche3.jpg",
   "desk-chairs": "/Images/Arbeiten/bannerImageArbeiten1.jpg",
   "dining-tables": "/Images/Newsletter/indoor-dinner-space.jpg",
-  "coffee-tables": "/Images/Footer/grey.jpg",
+  // QM wm-fix3: grey.jpg/bannerImage10.jpg are the same photo with a white
+  // wedge top right, and bannerImage4.jpg is the sofa room of "Sofas &
+  // Couches" again – each replaced by a photo used nowhere else on the hub.
+  "coffee-tables": "/Images/Home/aboutHome.jpg",
   "side-tables": "/Images/Wohnen/bannerImage1.jpg",
   // Schlafzimmer
   beds: "/Images/Home/bannerImage-1.jpg",
@@ -26,7 +29,7 @@ const CATEGORY_IMAGES = {
   // Aufbewahrung
   "sideboards-chests": "/Images/Home/bannerImage-4.jpg",
   shelves: "/Images/Wohnen/bannerImage7.jpg",
-  "tv-low-units": "/Images/Wohnen/bannerImage4.jpg",
+  "tv-low-units": "/Images/Home/slider/minotti-sofa-wohnzimmer.webp",
   "display-cabinets": "/Images/Footer/14.jpg",
   "small-furniture": "/Images/Wohnen/bannerImage9.jpg",
   // Outdoor
@@ -38,7 +41,7 @@ const CATEGORY_IMAGES = {
   heaters: "/Images/Newsletter/minotti-patio.jpg",
   // Wohnaccessoires
   lamps: "/Images/Licht/bannerImageLicht2.jpg",
-  rugs: "/Images/Wohnen/bannerImage10.jpg",
+  rugs: "/Images/Licht/bannerImageLicht1.jpg",
   decor: "/Images/Accessories/bannerImageAccessories1.jpg",
   mirrors: "/Images/UberUns/gold-vase.jpg",
   "kitchen-accessories": "/Images/Kuche/bannerImageKuche2.jpg",
@@ -54,6 +57,17 @@ const GENERIC_IMAGES = [
   "/Images/Kontakt/poliform.webp",
   "/Images/Home/thidImage.jpg",
 ];
+
+// Photos with a white border baked into one edge (wardrobes: ~9 % white
+// stripe on the right). The tile shows them in a wider, left-anchored box
+// inside its overflow-hidden frame, so the stripe falls outside – a CSS crop,
+// the file itself stays unchanged.
+const TRIM_RIGHT = new Set(["/Images/Wohnen/bannerImage6.jpg"]);
+
+/** Class for the box around a tile photo (absolute, inside the overflow-hidden frame). */
+export function categoryImageBoxClass(src) {
+  return TRIM_RIGHT.has(src) ? "absolute inset-y-0 left-0 w-[110%]" : "absolute inset-0";
+}
 
 export function getCategoryImage(slug, index = 0) {
   return CATEGORY_IMAGES[slug] || GENERIC_IMAGES[index % GENERIC_IMAGES.length];

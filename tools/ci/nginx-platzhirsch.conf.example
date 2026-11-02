@@ -1,0 +1,80 @@
+# tools/ci/nginx-platzhirsch.conf.example — R4-plattform-ci (AP1.4)
+# Vorlage für den Server, NICHT automatisch eingespielt. Nur die markierten
+# Zeilen sind für das Rate-Limit (/cmx, /api/shop-search) und das Caching von
+# /cmx nötig; TLS, Logs usw. bleiben wie auf dem Server eingerichtet.
+#
+# Warum: src/app/cmx/_lib/routeLimit.js nimmt den LETZTEN Eintrag von
+# X-Forwarded-For als Client-Adresse und lässt Loopback (Bild-Optimierer,
+# interne Abrufe) ohne Limit durch. Das ist nur sicher, wenn
+#   1. Next ausschließlich auf 127.0.0.1 lauscht (scripts/deploy.sh setzt
+#      "next start -H 127.0.0.1", BIND_HOST) und Port 3000 von außen gesperrt
+#      ist (z. B. "ufw deny 3000/tcp"), und
+#   2. nginx den Header selbst setzt, statt den des Clients durchzureichen.
+# Sonst kann ein Client "X-Forwarded-For: 127.0.0.1" schicken (gilt als intern,
+# kein Limit) oder bei jeder Anfrage eine andere Adresse angeben.
+#
+# Prüfen nach dem Einspielen (auf dem Server):
+#   ss -ltn 'sport = :3000'          → nur 127.0.0.1:3000, nicht 0.0.0.0/[::]
+#   curl -sI https://platzhirsch.studio/cmx/files/gibt-es-nicht.webp | grep -i cache-control
+#                                     → no-store (nicht immutable)
+
+# /cmx: Nur erfolgreiche Antworten ein Jahr cachen. Fehler (404, 429, 502,
+# 504) dürfen nie "immutable" werden, sonst bleibt ein später hochgeladenes
+# Bild ein Jahr lang unsichtbar. Stand R5-release: next.config.js nimmt /cmx aus
+# allen Langzeit-Regeln (Bilder, js/css, Video). Die Route setzt immutable nur
+# auf 200 und no-store auf 429/502/504; ein 404 kommt OHNE Cache-Control. Ein
+# no-store-Standard in next.config.js geht nicht (er überschreibt auch das 200
+# der Route, in `next start` geprüft). Diese Map bleibt deshalb nötig.
+map $upstream_status $platzhirsch_cmx_cache {
+    200     "public, max-age=31536000, immutable";
+    206     "public, max-age=31536000, immutable";
+    304     "public, max-age=31536000, immutable";
+    default "no-store";
+}
+
+upstream platzhirsch_next {
+    server 127.0.0.1:3000;            # nie die öffentliche Adresse
+    keepalive 16;
+}
+
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name platzhirsch.studio;
+    # ssl_certificate … (wie bisher)
+
+    client_max_body_size 25m;
+
+    # Gemeinsame Proxy-Header. WICHTIG für das Rate-Limit:
+    # $remote_addr ÜBERSCHREIBT einen vom Client mitgeschickten Header.
+    # ($proxy_add_x_forwarded_for hängt an; das geht auch, weil routeLimit.js
+    # den letzten Eintrag nimmt. $remote_addr ist strenger.)
+    # Steht ein CDN/Cloudflare davor: erst real_ip_header/set_real_ip_from für
+    # dessen Adressbereiche einrichten, sonst zählt das CDN als ein Client.
+    proxy_http_version 1.1;
+    proxy_set_header Connection        "";
+    proxy_set_header Host              $host;
+    proxy_set_header X-Forwarded-For   $remote_addr;      # ← Rate-Limit
+    proxy_set_header X-Real-IP         $remote_addr;      # ← Rate-Limit
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Host  $host;
+
+    location /cmx/ {
+        proxy_pass http://platzhirsch_next;
+        # ← Cache: Header von Next ersetzen, abhängig vom Status (siehe map).
+        # Achtung nginx-Vererbung: add_header hier ersetzt ALLE add_header der
+        # server-Ebene (z. B. HSTS). Diese hier wiederholen, falls vorhanden.
+        proxy_hide_header Cache-Control;
+        add_header Cache-Control $platzhirsch_cmx_cache always;
+        add_header X-Content-Type-Options nosniff always;
+        # Lange Videos: Body ohne Puffer durchreichen (Next hat 8 s nur bis
+        # zu den Antwort-Headern, danach keinen Timer).
+        proxy_buffering off;
+        proxy_read_timeout 60s;
+    }
+
+    location / {
+        proxy_pass http://platzhirsch_next;
+        proxy_read_timeout 60s;
+    }
+}

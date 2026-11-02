@@ -4,20 +4,18 @@
 // `dimensions` string (see parseDimensions below). Deliberately schematic, not
 // to scale — the point is to show a width/height callout "like on paper", not
 // a precise CAD drawing.
+// Neuauftritt: drawn in currentColor (ink from the parent) – no brass on a
+// light surface; scales down to the column width on phones.
 
-// Pulls labeled cm values out of a string like
-// "Width: 242 cm · Depth: 98 cm · Height: 74 cm · Seat height: 40 cm" into
-// { width: 242, depth: 98, height: 74, "seat height": 40 }. Returns null if
-// nothing matched (product has no `dimensions` field, or an unrecognized format).
+import { dimensionsSummaryMap, parseDimensionTable } from "@/lib/shop/dimensions";
+
+// Labelled cm values of the product's `dimensions` string as
+// { width: 242, depth: 98, height: 74, "seat height": 40 } (ungrouped rows
+// only, see src/lib/shop/dimensions.js – R4 reads ~20 backoffice formats,
+// "W. 242 | D. 98 | H. 74 cm", "Ø 40 | H. 60 cm", "Breite (mm): 450" …).
+// null if nothing labelled was found (no field, or an unlabelled format).
 export function parseDimensions(input) {
-  if (!input) return null;
-  const result = {};
-  const re = /([A-Za-zÀ-ÿ]+(?:\s[A-Za-zÀ-ÿ]+)?):\s*([\d.]+)\s*cm/g;
-  let match;
-  while ((match = re.exec(input))) {
-    result[match[1].toLowerCase()] = parseFloat(match[2]);
-  }
-  return Object.keys(result).length ? result : null;
+  return dimensionsSummaryMap(parseDimensionTable(input));
 }
 
 const DimensionDiagram = ({ dims, size = "sm", dark = false }) => {
@@ -33,8 +31,8 @@ const DimensionDiagram = ({ dims, size = "sm", dark = false }) => {
   // width/height attributes scale up, which scales the whole drawing
   // (outline, dimension lines, text) uniformly and proportionally.
   const rendered = size === "lg" ? { width: 280, height: 208 } : { width: 140, height: 104 };
-  const outlineColor = dark ? "#ffffff" : "#30373e";
-  const labelColor = dark ? "#ffffff" : "#30373e";
+  const outlineColor = dark ? "#ffffff" : "currentColor";
+  const labelColor = dark ? "#ffffff" : "currentColor";
 
   return (
     <svg
@@ -52,7 +50,7 @@ const DimensionDiagram = ({ dims, size = "sm", dark = false }) => {
       )}
 
       {widthLabel && !isRound && (
-        <g stroke="#d1b250" strokeWidth="1">
+        <g stroke="currentColor" strokeWidth="1">
           <line x1="25" y1="78" x2="85" y2="78" />
           <line x1="25" y1="74" x2="25" y2="82" />
           <line x1="85" y1="74" x2="85" y2="82" />
@@ -66,7 +64,7 @@ const DimensionDiagram = ({ dims, size = "sm", dark = false }) => {
 
       {heightLabel && !isRound && (
         <>
-          <g stroke="#d1b250" strokeWidth="1">
+          <g stroke="currentColor" strokeWidth="1">
             <line x1="100" y1="16" x2="100" y2="64" />
             <line x1="96" y1="16" x2="104" y2="16" />
             <line x1="96" y1="64" x2="104" y2="64" />

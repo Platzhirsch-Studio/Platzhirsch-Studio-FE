@@ -1,0 +1,1929 @@
+{
+  "name": "Daniels",
+  "slug": "daniels",
+  "hersteller": "Minotti",
+  "designer": "Christophe Delcourt",
+  "jahr": 2019,
+  "jahr_hinweis": "Produktseite und Datenblatt: „2019 Collection“",
+  "typ": "modulares Sitzsystem (linear, Offset/Double-Offset, Ecke, Chaise-Longue, rund/halbrund, Bänke, Magnet-Hocker)",
+  "quellen": [
+    "https://www.minotti.com/en/daniels",
+    "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/15720/15677/MINOTTI_Daniels_seating_system.zip",
+    "https://www.minotti.com/downloads/16563/15622/DANIELS_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/16571/15634/DANIELS_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/16572/15638/DANIELS_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/16564/15626/DANIELS_arrangement_04.pdf",
+    "https://www.minotti.com/downloads/16570/15630/DANIELS_arrangement_05.pdf",
+    "https://www.minotti.com/downloads/16573/15642/DANIELS_arrangement_06.pdf",
+    "https://www.minotti.com/downloads/16574/15646/DANIELS_arrangement_07.pdf",
+    "https://www.minotti.com/downloads/16575/15650/DANIELS_arrangement_08.pdf"
+  ],
+  "quellen_hinweis": "ZIP = 2D/3D-Dateien, nicht ausgewertet; Maße aus Datenblatt-Zeichnungen und Produktseite (Arrangements)",
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "standardwerte": {
+    "hoehe_cm": 80,
+    "sitzhoehe_cm": 40,
+    "tiefe_linear_mit_armlehne_cm": 105,
+    "tiefe_linear_ohne_armlehne_cm": 102,
+    "sitztiefe_linear_cm": 86,
+    "sitztiefe_chaise_cm": [
+      86,
+      102
+    ],
+    "armlehnenhoehe_cm": 49,
+    "armlehnenhoehe_hinweis": "49 cm erscheint nur bei Elementen mit Armlehne – Zuordnung aus Zeichnung abgeleitet",
+    "weitere_masse_unbeschriftet_cm": [
+      62,
+      89
+    ],
+    "hocker_hoehe_cm": 44,
+    "bank_hoehe_cm": 40,
+    "verlaengerung_allungo_breite_cm": 35
+  },
+  "elemente": [
+    {
+      "code": "sofa-cm-228",
+      "name": "Sofa cm 228",
+      "art": "sofa",
+      "breite_cm": 228,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "hinweis": "Sitztiefe in der Draufsicht nicht eindeutig beschriftet (Zeichnung zeigt 89 cm); Armlehnenhöhe 49 cm aus Seitenansicht abgeleitet",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "sofa-cm-248",
+      "name": "Sofa cm 248",
+      "art": "sofa",
+      "breite_cm": 248,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "hinweis": "Sitztiefe in der Draufsicht nicht eindeutig beschriftet (Zeichnung zeigt 89 cm); Armlehnenhöhe 49 cm aus Seitenansicht abgeleitet",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "sofa-cm-268",
+      "name": "Sofa cm 268",
+      "art": "sofa",
+      "breite_cm": 268,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "hinweis": "Sitztiefe in der Draufsicht nicht eindeutig beschriftet (Zeichnung zeigt 89 cm); Armlehnenhöhe 49 cm aus Seitenansicht abgeleitet",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "sofa-cm-310",
+      "name": "Sofa cm 310",
+      "art": "sofa",
+      "breite_cm": 310,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "anschluesse": "freistehend (2 Armlehnen)",
+      "hinweis": "Sitztiefe in der Draufsicht nicht eindeutig beschriftet (Zeichnung zeigt 89 cm); Armlehnenhöhe 49 cm aus Seitenansicht abgeleitet",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-one-armrest-cm-155",
+      "name": "Element with one armrest cm 155",
+      "art": "endelement",
+      "breite_cm": 155,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Offset-, Eck- oder Chaise-Elemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-one-armrest-cm-170",
+      "name": "Element with one armrest cm 170",
+      "art": "endelement",
+      "breite_cm": 170,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Offset-, Eck- oder Chaise-Elemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-one-armrest-cm-195",
+      "name": "Element with one armrest cm 195",
+      "art": "endelement",
+      "breite_cm": 195,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Offset-, Eck- oder Chaise-Elemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-one-armrest-cm-215",
+      "name": "Element with one armrest cm 215",
+      "art": "endelement",
+      "breite_cm": 215,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Offset-, Eck- oder Chaise-Elemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-one-armrest-cm-235",
+      "name": "Element with one armrest cm 235",
+      "art": "endelement",
+      "breite_cm": 235,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Offset-, Eck- oder Chaise-Elemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "element-with-one-armrest-cm-277",
+      "name": "Element with one armrest cm 277",
+      "art": "endelement",
+      "breite_cm": 277,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Anbau an Mittel-, Offset-, Eck- oder Chaise-Elemente auf der offenen Seite",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-122",
+      "name": "Central element cm 122",
+      "art": "mittel",
+      "breite_cm": 122,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-137",
+      "name": "Central element cm 137",
+      "art": "mittel",
+      "breite_cm": 137,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-162",
+      "name": "Central element cm 162",
+      "art": "mittel",
+      "breite_cm": 162,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-182",
+      "name": "Central element cm 182",
+      "art": "mittel",
+      "breite_cm": 182,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-202",
+      "name": "Central element cm 202",
+      "art": "mittel",
+      "breite_cm": 202,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "central-element-cm-244",
+      "name": "Central element cm 244",
+      "art": "mittel",
+      "breite_cm": 244,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "beidseitig anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "corner-sofa-cm-198",
+      "name": "Corner sofa cm 198",
+      "art": "ecke",
+      "breite_cm": 198,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Länge des zweiten Schenkels nicht separat angegeben",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "corner-sofa-cm-218",
+      "name": "Corner sofa cm 218",
+      "art": "ecke",
+      "breite_cm": 218,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Länge des zweiten Schenkels nicht separat angegeben",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "corner-sofa-cm-260",
+      "name": "Corner sofa cm 260",
+      "art": "ecke",
+      "breite_cm": 260,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Länge des zweiten Schenkels nicht separat angegeben",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "daybed-element-cm-198",
+      "name": "Daybed element cm 198",
+      "art": "daybed-element",
+      "breite_cm": 198,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "daybed-element-cm-218",
+      "name": "Daybed element cm 218",
+      "art": "daybed-element",
+      "breite_cm": 218,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "daybed-element-cm-260",
+      "name": "Daybed element cm 260",
+      "art": "daybed-element",
+      "breite_cm": 260,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "chaise-longue-square-cm-170",
+      "name": "Chaise-longue square cm 170",
+      "art": "chaise",
+      "breite_cm": 170,
+      "tiefe_cm": 153,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Maß 170 × 153 cm laut Datenblatt",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-with-one-armrest-cm-177",
+      "name": "Offset element with one armrest cm 177",
+      "art": "endelement",
+      "breite_cm": 177,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über die Sitzfläche hinaus",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-with-one-armrest-cm-192",
+      "name": "Offset element with one armrest cm 192",
+      "art": "endelement",
+      "breite_cm": 192,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über die Sitzfläche hinaus",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-with-one-armrest-cm-217",
+      "name": "Offset element with one armrest cm 217",
+      "art": "endelement",
+      "breite_cm": 217,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über die Sitzfläche hinaus",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-with-one-armrest-cm-237",
+      "name": "Offset element with one armrest cm 237",
+      "art": "endelement",
+      "breite_cm": 237,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über die Sitzfläche hinaus",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-with-one-armrest-cm-257",
+      "name": "Offset element with one armrest cm 257",
+      "art": "endelement",
+      "breite_cm": 257,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über die Sitzfläche hinaus",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-with-one-armrest-cm-299",
+      "name": "Offset element with one armrest cm 299",
+      "art": "endelement",
+      "breite_cm": 299,
+      "tiefe_cm": 105,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über die Sitzfläche hinaus",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-cm-144",
+      "name": "Offset element cm 144",
+      "art": "mittel",
+      "breite_cm": 144,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über; ermöglicht Anschluss von Amber-Hocker/-Containern",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-cm-159",
+      "name": "Offset element cm 159",
+      "art": "mittel",
+      "breite_cm": 159,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über; ermöglicht Anschluss von Amber-Hocker/-Containern",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-cm-184",
+      "name": "Offset element cm 184",
+      "art": "mittel",
+      "breite_cm": 184,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über; ermöglicht Anschluss von Amber-Hocker/-Containern",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-cm-204",
+      "name": "Offset element cm 204",
+      "art": "mittel",
+      "breite_cm": 204,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über; ermöglicht Anschluss von Amber-Hocker/-Containern",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-cm-224",
+      "name": "Offset element cm 224",
+      "art": "mittel",
+      "breite_cm": 224,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über; ermöglicht Anschluss von Amber-Hocker/-Containern",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-element-cm-266",
+      "name": "Offset element cm 266",
+      "art": "mittel",
+      "breite_cm": 266,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Offset: Rückenlehne steht seitlich über; ermöglicht Anschluss von Amber-Hocker/-Containern",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-offset-element-cm-166",
+      "name": "Double offset element cm 166",
+      "art": "mittel",
+      "breite_cm": 166,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "Rückenlehne beidseitig versetzt",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-offset-element-cm-181",
+      "name": "Double offset element cm 181",
+      "art": "mittel",
+      "breite_cm": 181,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "Rückenlehne beidseitig versetzt",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-offset-element-cm-206",
+      "name": "Double offset element cm 206",
+      "art": "mittel",
+      "breite_cm": 206,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "Rückenlehne beidseitig versetzt",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-offset-element-cm-226",
+      "name": "Double offset element cm 226",
+      "art": "mittel",
+      "breite_cm": 226,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "Rückenlehne beidseitig versetzt; 226 cm nur im Datenblatt/Arrangement, nicht in der 3D-Liste",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-offset-element-cm-246",
+      "name": "Double offset element cm 246",
+      "art": "mittel",
+      "breite_cm": 246,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "Rückenlehne beidseitig versetzt",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-offset-element-cm-288",
+      "name": "Double offset element cm 288",
+      "art": "mittel",
+      "breite_cm": 288,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "hinweis": "Rückenlehne beidseitig versetzt",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-corner-sofa-cm-220",
+      "name": "Offset corner sofa cm 220",
+      "art": "ecke",
+      "breite_cm": 220,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Länge des zweiten Schenkels nicht separat angegeben",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-corner-sofa-cm-240",
+      "name": "Offset corner sofa cm 240",
+      "art": "ecke",
+      "breite_cm": 240,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Länge des zweiten Schenkels nicht separat angegeben",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-corner-sofa-cm-282",
+      "name": "Offset corner sofa cm 282",
+      "art": "ecke",
+      "breite_cm": 282,
+      "tiefe_cm": 102,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Länge des zweiten Schenkels nicht separat angegeben",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-chaise-longue-square-cm-159x153",
+      "name": "Offset chaise-longue square cm 159x153",
+      "art": "chaise",
+      "breite_cm": 159,
+      "tiefe_cm": 153,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-chaise-longue-square-with-one-armrest-cm-89-cm-192x153",
+      "name": "Offset chaise-longue square with one armrest cm 89 (cm 192x153)",
+      "art": "chaise",
+      "breite_cm": 192,
+      "tiefe_cm": 153,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Armlehnenvariante 89 cm",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-chaise-longue-square-with-one-armrest-cm-105-cm-192x153",
+      "name": "Offset chaise-longue square with one armrest cm 105 (cm 192x153)",
+      "art": "chaise",
+      "breite_cm": 192,
+      "tiefe_cm": 153,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Armlehnenvariante 105 cm",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-offset-chaise-longue-square-cm-181x153",
+      "name": "Double offset chaise-longue square cm 181x153",
+      "art": "chaise",
+      "breite_cm": 181,
+      "tiefe_cm": 153,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-with-magnets-cm-44x89",
+      "name": "Ottoman with magnets cm 44x89",
+      "art": "hocker",
+      "breite_cm": 44,
+      "tiefe_cm": 89,
+      "hoehe_cm": 44,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "magnetisch seitlich an Daniels-Element (Plattenkit) oder an Stirnseite der Amber-Elemente; Rollen 360°",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-with-magnets-cm-44x105",
+      "name": "Ottoman with magnets cm 44x105",
+      "art": "hocker",
+      "breite_cm": 44,
+      "tiefe_cm": 105,
+      "hoehe_cm": 44,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "magnetisch seitlich an Daniels-Element (Plattenkit); Rollen 360°",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-with-magnets-cm-86x86",
+      "name": "Ottoman with magnets cm 86x86",
+      "art": "hocker",
+      "breite_cm": 86,
+      "tiefe_cm": 86,
+      "hoehe_cm": 44,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "magnetisch an Daniels-Element (Plattenkit); Rollen 360°",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "semi-round-ottoman-with-magnets-cm-69x92",
+      "name": "Semi-round ottoman with magnets cm 69x92",
+      "art": "hocker-gebogen",
+      "breite_cm": 69,
+      "tiefe_cm": 92,
+      "hoehe_cm": 44,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "laut Datenblatt empfohlen nur mit Amber-Tischen/-Containern",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-stand-alone-cm-44x89",
+      "name": "Ottoman stand alone cm 44x89",
+      "art": "hocker",
+      "breite_cm": 44,
+      "tiefe_cm": 89,
+      "hoehe_cm": 44,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend, Rollen 360°",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-stand-alone-cm-44x105",
+      "name": "Ottoman stand alone cm 44x105",
+      "art": "hocker",
+      "breite_cm": 44,
+      "tiefe_cm": 105,
+      "hoehe_cm": 44,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend, Rollen 360°",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "ottoman-stand-alone-cm-86x86",
+      "name": "Ottoman stand alone cm 86x86",
+      "art": "hocker",
+      "breite_cm": 86,
+      "tiefe_cm": 86,
+      "hoehe_cm": 44,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend, Rollen 360°",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "semi-round-ottoman-stand-alone-cm-69x92",
+      "name": "Semi-round ottoman stand alone cm 69x92",
+      "art": "hocker-gebogen",
+      "breite_cm": 69,
+      "tiefe_cm": 92,
+      "hoehe_cm": 44,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend, Rollen 360°",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "sofa-chaise-longue-with-one-armrest-cm-216x169",
+      "name": "Sofa chaise-longue with one armrest cm 216x169",
+      "art": "peninsula",
+      "breite_cm": 216,
+      "tiefe_cm": 169,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-sofa-chaise-longue-cm-205x169",
+      "name": "Offset sofa chaise-longue cm 205x169",
+      "art": "peninsula",
+      "breite_cm": 205,
+      "tiefe_cm": 169,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "sofa-chaise-longue-with-extension-and-armrest-cm-262x169",
+      "name": "Sofa chaise-longue with extension and armrest cm 262x169",
+      "art": "peninsula",
+      "breite_cm": 262,
+      "tiefe_cm": 169,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "mit Verlängerung (Allungo) 35 cm",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-sofa-chaise-longue-with-extension-and-armrest-cm-284x169",
+      "name": "Offset sofa chaise-longue with extension and armrest cm 284x169",
+      "art": "peninsula",
+      "breite_cm": 284,
+      "tiefe_cm": 169,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "mit Verlängerung (Allungo) 35 cm",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-sofa-chaise-longue-with-extension-cm-251x169",
+      "name": "Offset sofa chaise-longue with extension cm 251x169",
+      "art": "peninsula",
+      "breite_cm": 251,
+      "tiefe_cm": 169,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "nur im Datenblatt/Arrangement gelistet, nicht in der 3D-Liste der Produktseite",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-offset-sofa-chaise-longue-with-extension-cm-273x169",
+      "name": "Double offset sofa chaise-longue with extension cm 273x169",
+      "art": "peninsula",
+      "breite_cm": 273,
+      "tiefe_cm": 169,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-sofa-chaise-longue-with-extension-and-armrest-cm-284x183",
+      "name": "Offset sofa chaise-longue with extension and armrest cm 284x183",
+      "art": "peninsula",
+      "breite_cm": 284,
+      "tiefe_cm": 183,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 102,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-offset-sofa-chaise-longue-with-extension-cm-273x183",
+      "name": "Double offset sofa chaise-longue with extension cm 273x183",
+      "art": "peninsula",
+      "breite_cm": 273,
+      "tiefe_cm": 183,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 102,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "corner-element-cm-170x170",
+      "name": "Corner element cm 170x170",
+      "art": "ecke",
+      "breite_cm": 170,
+      "tiefe_cm": 170,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-chaise-longue-corner-sofa-with-extension-cm-244x191",
+      "name": "Offset chaise-longue corner sofa with extension cm 244x191",
+      "art": "ecke",
+      "breite_cm": 244,
+      "tiefe_cm": 191,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe laut Minotti 86/102 cm (zwei Schenkel)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "round-element-with-single-extension-cm-230x169",
+      "name": "Round element with single extension cm 230x169",
+      "art": "peninsula-gebogen",
+      "breite_cm": 230,
+      "tiefe_cm": 169,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "round-element-with-single-extension-and-armrest-cm-263x169",
+      "name": "Round element with single extension and armrest cm 263x169",
+      "art": "peninsula-gebogen",
+      "breite_cm": 263,
+      "tiefe_cm": 169,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-round-element-with-single-extension-cm-252x169",
+      "name": "Offset round element with single extension cm 252x169",
+      "art": "peninsula-gebogen",
+      "breite_cm": 252,
+      "tiefe_cm": 169,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "round-element-with-double-extension-cm-230x204",
+      "name": "Round element with double extension cm 230x204",
+      "art": "peninsula-gebogen",
+      "breite_cm": 230,
+      "tiefe_cm": 204,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "round-element-with-double-extension-and-armrest-cm-263x204",
+      "name": "Round element with double extension and armrest cm 263x204",
+      "art": "peninsula-gebogen",
+      "breite_cm": 263,
+      "tiefe_cm": 204,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "round-element-with-double-extension-and-armrest-cm-230x237",
+      "name": "Round element with double extension and armrest cm 230x237",
+      "art": "peninsula-gebogen",
+      "breite_cm": 230,
+      "tiefe_cm": 237,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-round-element-with-double-extension-cm-252x204",
+      "name": "Offset round element with double extension cm 252x204",
+      "art": "peninsula-gebogen",
+      "breite_cm": 252,
+      "tiefe_cm": 204,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-round-element-with-double-extension-cm-230x226",
+      "name": "Offset round element with double extension cm 230x226",
+      "art": "peninsula-gebogen",
+      "breite_cm": 230,
+      "tiefe_cm": 226,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-round-element-with-double-extension-and-armrest-cm-263x226",
+      "name": "Offset round element with double extension and armrest cm 263x226",
+      "art": "peninsula-gebogen",
+      "breite_cm": 263,
+      "tiefe_cm": 226,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-round-element-with-double-extension-and-armrest-cm-252x237",
+      "name": "Offset round element with double extension and armrest cm 252x237",
+      "art": "peninsula-gebogen",
+      "breite_cm": 252,
+      "tiefe_cm": 237,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-offset-round-element-with-double-extension-cm-252x226",
+      "name": "Double offset round element with double extension cm 252x226",
+      "art": "peninsula-gebogen",
+      "breite_cm": 252,
+      "tiefe_cm": 226,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "semi-round-element-with-extension-cm-175x128",
+      "name": "Semi-round element with extension cm 175x128",
+      "art": "peninsula-gebogen",
+      "breite_cm": 175,
+      "tiefe_cm": 128,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "semi-round-element-with-extension-and-armrest-cm-208x128",
+      "name": "Semi-round element with extension and armrest cm 208x128",
+      "art": "peninsula-gebogen",
+      "breite_cm": 208,
+      "tiefe_cm": 128,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "semi-round-element-with-extension-and-armrest-cm-191x153",
+      "name": "Semi-round element with extension and armrest cm 191x153",
+      "art": "peninsula-gebogen",
+      "breite_cm": 191,
+      "tiefe_cm": 153,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-semi-round-element-with-extension-cm-197x128",
+      "name": "Offset semi-round element with extension cm 197x128",
+      "art": "peninsula-gebogen",
+      "breite_cm": 197,
+      "tiefe_cm": 128,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-semi-round-element-with-extension-cm-191x128",
+      "name": "Offset semi-round element with extension cm 191x128",
+      "art": "peninsula-gebogen",
+      "breite_cm": 191,
+      "tiefe_cm": 128,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-semi-round-element-with-extension-and-armrest-cm-224x128",
+      "name": "Offset semi-round element with extension and armrest cm 224x128",
+      "art": "peninsula-gebogen",
+      "breite_cm": 224,
+      "tiefe_cm": 128,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "offset-semi-round-element-with-extension-and-armrest-cm-213x153",
+      "name": "Offset semi-round element with extension and armrest cm 213x153",
+      "art": "peninsula-gebogen",
+      "breite_cm": 213,
+      "tiefe_cm": 153,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 49,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "double-offset-semi-round-element-with-extension-cm-213x128",
+      "name": "Double offset semi-round element with extension cm 213x128",
+      "art": "peninsula-gebogen",
+      "breite_cm": 213,
+      "tiefe_cm": 128,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitztiefe der gebogenen Elemente nicht eindeutig beschriftet (Zeichnung zeigt 86 bzw. 102 cm)",
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-cm-137x137",
+      "name": "Bench cm 137x137",
+      "art": "bank",
+      "breite_cm": 137,
+      "tiefe_cm": 137,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-cm-137x86",
+      "name": "Bench cm 137x86",
+      "art": "bank",
+      "breite_cm": 137,
+      "tiefe_cm": 86,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-cm-162x86",
+      "name": "Bench cm 162x86",
+      "art": "bank",
+      "breite_cm": 162,
+      "tiefe_cm": 86,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "semi-round-bench-cm-130x114",
+      "name": "Semi-round bench cm 130x114",
+      "art": "bank",
+      "breite_cm": 130,
+      "tiefe_cm": 114,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "zubehoer": [
+    {
+      "code": "optional-angular-removable-cushion-cm-53x53",
+      "name": "Optional angular removable cushion cm 53x53",
+      "art": "kissen",
+      "breite_cm": 53,
+      "tiefe_cm": 53,
+      "hoehe_cm": 30,
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Höhe 30 cm aus Zeichnung abgeleitet; Holzleiste für Halt auf dem Sitz"
+    },
+    {
+      "code": "optional-back-cushion-cm-98x46",
+      "name": "Optional back cushion cm 98x46",
+      "art": "rueckenkissen-optional",
+      "breite_cm": 98,
+      "tiefe_cm": null,
+      "hoehe_cm": 46,
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "optional-back-cushion-cm-88x46",
+      "name": "Optional back cushion cm 88x46",
+      "art": "rueckenkissen-optional",
+      "breite_cm": 88,
+      "tiefe_cm": null,
+      "hoehe_cm": 46,
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "optional-back-cushion-cm-78x46",
+      "name": "Optional back cushion cm 78x46",
+      "art": "rueckenkissen-optional",
+      "breite_cm": 78,
+      "tiefe_cm": null,
+      "hoehe_cm": 46,
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "optional-back-cushion-cm-68x46",
+      "name": "Optional back cushion cm 68x46",
+      "art": "rueckenkissen-optional",
+      "breite_cm": 68,
+      "tiefe_cm": null,
+      "hoehe_cm": 46,
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "optional-cushion-cm-50x50",
+      "name": "Optional cushion cm 50x50",
+      "art": "dekokissen-optional",
+      "breite_cm": 50,
+      "tiefe_cm": null,
+      "hoehe_cm": 50,
+      "quelle": [
+        "https://www.minotti.com/en/daniels",
+        "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "optional-headrest-cm-68",
+      "name": "Optional headrest cm 68",
+      "art": "kopfstuetze",
+      "breite_cm": 68,
+      "tiefe_cm": null,
+      "hoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/daniels"
+      ],
+      "hinweis": "nur in der Liste „Technical Features“ der Produktseite; im Datenblatt (Stand 2019) nicht bemaßt"
+    },
+    {
+      "code": "optional-headrest-cm-88",
+      "name": "Optional headrest cm 88",
+      "art": "kopfstuetze",
+      "breite_cm": 88,
+      "tiefe_cm": null,
+      "hoehe_cm": null,
+      "quelle": [
+        "https://www.minotti.com/en/daniels"
+      ],
+      "hinweis": "nur in der Liste „Technical Features“ der Produktseite; im Datenblatt (Stand 2019) nicht bemaßt"
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Feste Rückenlehne in zwei Tiefen kombinierbar (überlappender Effekt); Rückenkissen wendbar mit Gänsedaunen (Assopiuma Gold Label) und PU-Kern",
+      "quelle": "https://www.minotti.com/en/daniels"
+    },
+    {
+      "name": "Offset: Rückenlehne ragt seitlich über die Sitzfläche (Anschluss Amber-Hocker/-Container)",
+      "quelle": "https://www.minotti.com/en/daniels"
+    },
+    {
+      "name": "Double-Offset: Rückenlehne beidseitig versetzt",
+      "quelle": "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "name": "Optionale Kopfstützen 68 / 88 cm",
+      "quelle": "https://www.minotti.com/en/daniels"
+    },
+    {
+      "name": "Optionale Rückenkissen 98/88/78/68 × H46 cm",
+      "quelle": "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "name": "Clive-Konsole hinter der Rückenlehne kombinierbar",
+      "quelle": "https://www.minotti.com/en/daniels"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Feste Armlehne (Sperrholz, PU-gepolstert, umlaufender Metallsockel Pewter)",
+      "hoehe_cm": 49,
+      "hinweis": "Höhe aus Zeichnung abgeleitet"
+    },
+    {
+      "name": "Statt Armlehne: abnehmbarer Hocker mit Magneten auf Rollen (44×89, 44×105, 86×86, halbrund 69×92; je SX/DX)",
+      "hoehe_cm": 44
+    },
+    {
+      "name": "Offener Abschluss ohne Armlehne (Mittel-/Offset-Elemente)",
+      "hoehe_cm": null
+    },
+    {
+      "name": "Optionales abnehmbares Eckkissen 53 × 53 cm (Stoff oder Leder; bei Stoff Griff immer in Leder)",
+      "hoehe_cm": 30
+    }
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Füße aus Aluminiumguss; Armlehnen mit umlaufendem Metallsockel; Hocker mit Metallsockel und 4 Rollen (360°, Nylon/TPU)",
+    "finishes": [
+      "Pewter (Zinn) lackiert glänzend, Anti-Fingerprint"
+    ],
+    "gleiter": "Nylon",
+    "hoehen_cm": null,
+    "quelle": "https://www.minotti.com/en/daniels"
+  },
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "bezugsart": "abnehmbar: Stoffbezüge von Sitz-, Rückenkissen und Struktur komplett abnehmbar; Lederbezüge von Sitz- und Rückenkissen abnehmbar; Hocker-Bezüge abnehmbar, außer Pony Look/Zebra Look/Pony Cenere (fest)",
+    "kombinationen": [
+      "A) komplett Stoff oder komplett Leder",
+      "B) Rückenstruktur und Sockel in Leder Kat. Extra; Armlehnen, Rückenkissen und Sitz in Stoff",
+      "C) Rückenstruktur und Sockel in Leder Kat. Natural; Armlehnen, Rückenkissen und Sitz in Stoff"
+    ],
+    "hocker_magnete": "Magnete mit schwarzem Sattelleder verkleidet",
+    "farbmuster": "Stoff- und Lederkollektion sowie Farbmuster bitte im Showroom ansehen (Minotti „World of Materials“)",
+    "quelle": "https://www.minotti.com/en/daniels"
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optional back cushion",
+      "breiten_cm": [
+        98,
+        88,
+        78,
+        68
+      ],
+      "hoehe_cm": 46
+    },
+    {
+      "name": "Optional cushion",
+      "breite_cm": 50,
+      "tiefe_cm": 50
+    },
+    {
+      "name": "Optional angular removable cushion",
+      "breite_cm": 53,
+      "tiefe_cm": 53,
+      "hoehe_cm": 30
+    }
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "Sitzkissen einteilig und wendbar",
+    "Rücken- und Armlehnen per Schnellverschluss abnehmbar (Transport/Bezugswechsel)",
+    "Kombination mit Amber-Containern/-Tischen und Clive-Konsole vorgesehen",
+    "Magnet-Hocker: Warnhinweis für Herzschrittmacher und Magnetkarten",
+    "8 Arrangements (DANIELS 01–08) als PDF",
+    "Seitenangabe SX/DX gemäß Minotti-Datenblatt"
+  ],
+  "fehlend": [
+    "Sitztiefe der linearen Sofas (2 Armlehnen) nicht eindeutig beschriftet",
+    "Sitztiefe der runden/halbrunden Elemente und des Offset-Chaise-Ecksofas nicht eindeutig",
+    "Länge des zweiten Schenkels bei Ecksofas nicht separat angegeben",
+    "Bedeutung der Maße 62 cm und 89 cm in den Seitenansichten nicht beschriftet",
+    "Kopfstützen 68/88 cm: Höhe/Tiefe nicht bemaßt",
+    "Fußhöhe nicht angegeben",
+    "Keine veröffentlichte Kompatibilitätsmatrix (Kombinationen nur über Arrangements)",
+    "Stoff-/Lederkategorien mit Preisgruppen nicht öffentlich",
+    "Preise nicht öffentlich"
+  ],
+  "rechte_hinweis": "Maße aus öffentlichem Minotti-Datenblatt und Produktseite; CAD-Dateien laut Minotti nur für Einrichtungsplanung nutzbar. Herstellerbilder nicht verändern (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "vollstaendigkeit_prozent": 91
+}

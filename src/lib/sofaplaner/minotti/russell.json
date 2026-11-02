@@ -1,0 +1,329 @@
+{
+  "name": "Russell",
+  "slug": "russell",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2018,
+  "jahr_hinweis": "Produktseite: „2018 Collection“; Technical Sheet © Minotti 2018.",
+  "typ": "Polsterfamilie im Stil der 1950er: gebogenes Sofa (nicht modular), Bergère, Sessel, Hocker, Lounge-/Dining-Sessel (fest oder drehbar)",
+  "modular": false,
+  "outdoor": false,
+  "quellen": [
+    "https://www.minotti.com/en/russell",
+    "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+    "https://www.minotti.com/downloads/14459/14120/MINOTTI_Russel.rfa.zip",
+    "https://www.minotti.com/downloads/10411/21544/MINOTTI_CONSUMER_CATALOGUE_THE_COLLECTION_2024.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "masse_hinweis": "Maße aus dem Technical Sheet (2018) und den Element-Zeichnungen. Lesart: erstes Höhenmaß = Gesamthöhe, zweites = Armlehnenhöhe (unbeschriftet), drittes = Sitzhöhe. CAD-Maße können leicht abweichen.",
+  "rechte_hinweis": "Bild-URLs nur als Quellennachweis. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "preis": {
+    "hinweis": "Keine Preise erfasst. Preise nur aus der Konfigurationstabelle, gekennzeichnet „Richtwert – vom Inhaber festzulegen“."
+  },
+  "elemente": [
+    {
+      "sitztiefe_cm": null,
+      "code": "russell-angled-sofa",
+      "name": "ANGLED SOFA",
+      "art": "sofa-gebogen",
+      "breite_cm": 222,
+      "tiefe_cm": 121,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "armlehnenhoehe_cm": 60,
+      "weitere_masse_cm": [
+        {
+          "wert": 85,
+          "bedeutung": "Tiefe im Grundriss (Korpus); 121 = Maß der Seitenansicht"
+        }
+      ],
+      "anschluesse": "Freistehend, nicht modular",
+      "hinweise": [
+        "Abgewinkeltes/gebogenes Sofa („Divano curvo“). 60 = unbeschriftete Höhe, nach Vergleich mit den übrigen Zeichnungen als Armlehnenhöhe gelesen.",
+        "Optionale Kissen auf Anfrage."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21682_n_RUSSELL-ANGLED-SOFA.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+        "https://www.minotti.com/en/russell"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "russell-bergere-fixed",
+      "name": "BERGÈRE - FIXED",
+      "art": "sessel",
+      "breite_cm": 87,
+      "tiefe_cm": 90,
+      "hoehe_cm": 100,
+      "sitzhoehe_cm": 42,
+      "armlehnenhoehe_cm": 60,
+      "weitere_masse_cm": [
+        {
+          "wert": "60×90",
+          "bedeutung": "Draufsicht-Maß lt. Zeichnung"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21683_n_RUSSELL-BERGERE_FIXED.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+        "https://www.minotti.com/en/russell"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "russell-bergere-swivel",
+      "name": "BERGÈRE - SWIVEL",
+      "art": "sessel-drehbar",
+      "breite_cm": 87,
+      "tiefe_cm": 90,
+      "hoehe_cm": 100,
+      "sitzhoehe_cm": 42,
+      "armlehnenhoehe_cm": 60,
+      "drehbar": "360° mit Rückstellung",
+      "quelle": "https://www.minotti.com/media/immagini/21684_n_RUSSELL-BERGERE_SWIVEL.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+        "https://www.minotti.com/en/russell"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "russell-armchair-fixed",
+      "name": "ARMCHAIR - FIXED",
+      "art": "sessel",
+      "breite_cm": 86,
+      "tiefe_cm": 85,
+      "hoehe_cm": 70,
+      "sitzhoehe_cm": 42,
+      "armlehnenhoehe_cm": 60,
+      "hinweise": [
+        "Technical Sheet Russell: 86×85; Kompositionsbeispiel im Alexander-Datenblatt: „87x85 H70“ – Abweichung 1 cm."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21685_n_RUSSELL-ARMCHAIR-FIXED.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+        "https://www.minotti.com/en/russell",
+        "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "russell-armchair-swivel",
+      "name": "ARMCHAIR - SWIVEL",
+      "art": "sessel-drehbar",
+      "breite_cm": 86,
+      "tiefe_cm": 85,
+      "hoehe_cm": 70,
+      "sitzhoehe_cm": 42,
+      "armlehnenhoehe_cm": 60,
+      "drehbar": "360° mit Rückstellung",
+      "quelle": "https://www.minotti.com/media/immagini/21686_n_RUSSELL-ARMCHAIR-SWIVEL.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+        "https://www.minotti.com/en/russell"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "russell-footstool-feet-base",
+      "name": "FOOTSTOOL FEET BASE",
+      "art": "hocker",
+      "breite_cm": 59,
+      "tiefe_cm": 59,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "quelle": "https://www.minotti.com/media/immagini/21687_n_RUSSELL-FOOTSTOOL-FEET-BASE.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+        "https://www.minotti.com/en/russell"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "russell-footstool-cross-base",
+      "name": "FOOTSTOOL CROSS BASE",
+      "art": "hocker",
+      "breite_cm": 59,
+      "tiefe_cm": 59,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "hinweise": [
+        "Basis Metall Zinn (Peltro) mit Eichenspeichen Moka."
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21688_n_RUSSELL-FOOTSTOOL-CROSS-BASE.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+        "https://www.minotti.com/en/russell"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "russell-dining-little-armchair-swivel",
+      "name": "\"DINING\" LITTLE ARMCHAIR - SWIVEL",
+      "art": "dining-sessel-drehbar",
+      "breite_cm": 65,
+      "tiefe_cm": 61,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 49,
+      "armlehnenhoehe_cm": 64,
+      "drehbar": "360° mit Rückstellung",
+      "weitere_masse_cm": [
+        {
+          "wert": 45,
+          "bedeutung": "Unbeschriftetes Maß lt. Zeichnung"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21690_n_RUSSELL-DINING-LITTLE-ARMCHAIR-SWIVEL.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+        "https://www.minotti.com/en/russell"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "russell-lounge-little-armchair-fixed",
+      "name": "\"LOUNGE\" LITTLE ARMCHAIR - FIXED",
+      "art": "sessel",
+      "breite_cm": 65,
+      "tiefe_cm": 63,
+      "hoehe_cm": 72,
+      "sitzhoehe_cm": 43,
+      "armlehnenhoehe_cm": 57,
+      "weitere_masse_cm": [
+        {
+          "wert": 45,
+          "bedeutung": "Unbeschriftetes Maß lt. Zeichnung"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21691_n_RUSSELL-LOUNGE-LITTLE-ARMCHAIR-FIXED.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+        "https://www.minotti.com/en/russell"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "russell-lounge-little-armchair-swivel",
+      "name": "\"LOUNGE\" LITTLE ARMCHAIR - SWIVEL",
+      "art": "sessel-drehbar",
+      "breite_cm": 65,
+      "tiefe_cm": 63,
+      "hoehe_cm": 72,
+      "sitzhoehe_cm": 43,
+      "armlehnenhoehe_cm": 57,
+      "drehbar": "360° mit Rückstellung",
+      "weitere_masse_cm": [
+        {
+          "wert": 45,
+          "bedeutung": "Unbeschriftetes Maß lt. Zeichnung"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/21692_n_RUSSELL-LOUNGE-LITTLE-ARMCHAIR-SWIVEL.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+        "https://www.minotti.com/en/russell"
+      ]
+    },
+    {
+      "sitztiefe_cm": null,
+      "code": "russell-optional-cushion-45x45",
+      "name": "OPTIONAL CUSHION",
+      "art": "dekokissen-optional",
+      "breite_cm": 45,
+      "tiefe_cm": null,
+      "hoehe_cm": 45,
+      "sitzhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/21689_n_RUSSELL-OPTIONAL-CUSHION-45X45.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+        "https://www.minotti.com/en/russell"
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Eine Ausführung: umhüllende Schale (Rücken und Armlehnen in einem); Außenseite optional in Leder (Varianten B/C)"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Keine Varianten – Armlehnen in die Schale integriert"
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Feste Struktur (Sofa, feste Versionen, Hocker „feet base“)",
+      "material": "Metallrahmen + Beine aus massiver Eiche",
+      "finish": [
+        "Rahmen Bronze glänzend, Anti-Fingerprint",
+        "Eichenbeine offenporig lackiert Moka",
+        "Untere Metallplatten Bronze lackiert"
+      ]
+    },
+    {
+      "teil": "Drehbare Versionen (Bergère, Sessel, Lounge-/Dining-Sessel) und Hocker „cross base“",
+      "material": "Metallbasis + Speichen aus Eiche",
+      "finish": [
+        "Metall Zinn (Peltro) glänzend lackiert",
+        "Eichenspeichen offenporig lackiert Moka"
+      ],
+      "hinweis": "360°-Drehung mit Rückstellung"
+    },
+    {
+      "teil": "Gleiter",
+      "material": "SEBS schwarz"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "kombinationen": [
+      "A) komplett in Stoff oder Leder",
+      "B) Rückenlehne außen in Nappaleder (Kat. Pelle Extra), Rückenlehne innen und Sitz in Stoff",
+      "C) Rückenlehne außen in Leder Aspen oder Nabuk Lodge (Kat. Pelle Nature), Rückenlehne innen und Sitz in Stoff"
+    ],
+    "bezugsart": "Abnehmbar: Kissen und Struktur in allen Versionen (Stoff und Leder) komplett abziehbar.",
+    "preisgruppen": null,
+    "farbmuster_hinweis": "Original-Stoff- und Ledermuster (Minotti „The World of Materials“) bitte im Showroom ansehen – Bildschirmfarben sind nicht verbindlich."
+  },
+  "polsterung": "Metallstruktur in flammhemmendem PU-Schaum, ummantelt mit atmungsaktiver thermogebundener Faser auf weißem, hypoallergenem Baumwollstoff. Sitzkissen: kanalisierte Gänsedaune (Assopiuma Gold Label) mit PU-Kern unterschiedlicher Dichte.",
+  "kissenoptionen": [
+    {
+      "name": "Optionales Kissen",
+      "masse_cm": "45×45"
+    },
+    {
+      "name": "Optionale Kissen für Angled Sofa",
+      "masse_cm": null,
+      "hinweis": "„Optional cushions available on request“ – Maße nicht angegeben."
+    }
+  ],
+  "kombinierbarkeit": [
+    "Keine Modulkombination; Einzelstücke einer Familie. Hersteller kombiniert Russell-Sessel in Alexander-Kompositionen."
+  ],
+  "besonderheiten": [
+    "Vintage-Silhouette der 1950er; Sitzkissen und Außenbezug in Stoff/Leder kombinierbar.",
+    "Bronzefarbene Struktur mit Moka-Eichenfüßen; drehbare Varianten mit Speichenbasis.",
+    "Kompakte Proportionen, für Wohnen und Hospitality."
+  ],
+  "fehlend": [
+    "Sitztiefe (nicht beschriftet).",
+    "Eindeutige Bedeutung der Maße 60 (Sofa/Bergère/Sessel), 85 (Sofa-Grundriss) und 45 (Lounge-/Dining-Sessel).",
+    "Maße der optionalen Sofakissen („auf Anfrage“).",
+    "Gerades Russell-Sofa: auf der Produktseite nicht (mehr) gelistet.",
+    "Minotti-Artikelnummern.",
+    "Vollständige Stoff-/Lederliste und Preisgruppen.",
+    "Preise (vom Inhaber festzulegen), Gewicht, Lieferzeit."
+  ],
+  "vollstaendigkeit": {
+    "felder_gesamt": 50,
+    "felder_belegt": 40,
+    "prozent": 80,
+    "basis": "Maßfelder breite/tiefe/hoehe/sitzhoehe/sitztiefe aller Sitz-/Hocker-Elemente (ohne Kissen/Zubehör)"
+  },
+  "vollstaendigkeit_prozent": 80
+}

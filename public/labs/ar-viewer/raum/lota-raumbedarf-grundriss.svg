@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -46 500 410" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" fill="#2b2f33">
+  <!-- Raumbedarf ClassiCon Lota Sofa im Grundriss (R5, Fix-Team P4): eigene Zeichnung aus den
+       Herstellermaßen 240 × 95 cm (Grundfläche, nicht die Form des Möbels) mit den Abständen,
+       die in der Planung eingerechnet werden. Maßstab 1 Einheit = 1 cm. Kein Herstellerbild. -->
+  <defs>
+    <pattern id="schraffur" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#3c6e7a" stroke-width="1.2" opacity="0.35"/>
+    </pattern>
+    <marker id="p" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2b2f33"/>
+    </marker>
+  </defs>
+  <!-- Wand hinter dem Sofa -->
+  <rect x="0" y="-8" width="420" height="8" fill="#2b2f33"/>
+  <text x="0" y="-16" font-size="12" opacity="0.7">Wand</text>
+  <!-- Abstand zur Wand 10 cm, Sofa-Grundfläche 240 × 95 cm -->
+  <rect x="90" y="10" width="240" height="95" fill="#ece6dc" stroke="#2b2f33" stroke-width="2.5"/>
+  <text x="210" y="52" text-anchor="middle" font-size="15" font-weight="600">Grundfläche 240 × 95 cm</text>
+  <text x="210" y="72" text-anchor="middle" font-size="12" opacity="0.75">Höhe 85 cm</text>
+  <!-- Beinfreiheit / Sitzbereich vor dem Sofa: 45 cm bis zum Tisch -->
+  <rect x="90" y="105" width="240" height="45" fill="url(#schraffur)"/>
+  <!-- Couchtisch -->
+  <rect x="150" y="150" width="120" height="60" fill="#ffffff" stroke="#2b2f33" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="210" y="185" text-anchor="middle" font-size="12" opacity="0.8">Tisch (Beispiel)</text>
+  <!-- Laufweg 90 cm -->
+  <rect x="0" y="210" width="420" height="90" fill="#3c6e7a" opacity="0.1"/>
+  <text x="12" y="262" font-size="13">Laufweg 90 cm</text>
+  <!-- Maßlinien -->
+  <line x1="90" y1="-30" x2="330" y2="-30" stroke="#2b2f33" stroke-width="1.2" marker-start="url(#p)" marker-end="url(#p)"/>
+  <text x="210" y="-36" text-anchor="middle">240 cm</text>
+  <line x1="350" y1="10" x2="350" y2="105" stroke="#2b2f33" stroke-width="1.2" marker-start="url(#p)" marker-end="url(#p)"/>
+  <text x="358" y="62">95 cm</text>
+  <line x1="350" y1="105" x2="350" y2="150" stroke="#3c6e7a" stroke-width="1.2" marker-start="url(#p)" marker-end="url(#p)"/>
+  <text x="358" y="133" fill="#2f5a64">45 cm zum Tisch</text>
+  <line x1="390" y1="210" x2="390" y2="300" stroke="#3c6e7a" stroke-width="1.2" marker-start="url(#p)" marker-end="url(#p)"/>
+  <!-- Gesamttiefe -->
+  <line x1="-24" y1="0" x2="-24" y2="300" stroke="#2b2f33" stroke-width="1" opacity="0.6" marker-start="url(#p)" marker-end="url(#p)"/>
+  <text x="-30" y="150" text-anchor="middle" transform="rotate(-90 -30 150)" opacity="0.8">3,00 m ab Wand</text>
+</svg>

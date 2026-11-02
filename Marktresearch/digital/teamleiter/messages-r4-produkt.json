@@ -1,0 +1,140 @@
+{
+  "_uebernommen": "R5-i18n, 26.10.2026: per merge.mjs übernommen (shop.atelier.*; 96 Blätter, 0 Konflikte). IT danach in src/messages per Patch tools/i18n/patches/r5-it-tu.json von Lei auf tu (Entscheidung R3). Diese Datei bleibt als Archiv im Originalwortlaut (tests/unit/r4-produkt.test.mjs, anderer Besitzer, prüft ihn); maßgeblich ist src/messages.",
+  "_hinweis": "R4-produkt, 26.10.2026: neue Schlüssel shop.atelier.* (Maßtabelle, Downloads, Planungsdaten). Bis zur Übernahme durch R4-i18n/Runde 5 Fallback in src/components/ShopCatalog/copy.js (R4_ATELIER, identischer Inhalt). dim.* ergänzt die vorhandenen dim-Schlüssel, ersetzt keine.",
+  "de": {
+    "shop": {
+      "atelier": {
+        "dimensionsCaption": "Maße laut Hersteller",
+        "dimensionsColLabel": "Maß",
+        "dimensionsColValue": "Wert",
+        "downloadsNone": "Für dieses Stück haben wir keine Unterlagen online. Datenblätter oder Planungsdaten fragen wir gern für Sie an.",
+        "newTab": "öffnet in neuem Tab",
+        "dimensionsUnlabelled": "Der Hersteller nennt diese Maße ohne Zuordnung zu Breite, Tiefe oder Höhe. Wir klären die Angaben gern für Sie im Studio.",
+        "planningText": "Für Architektinnen, Planer und Ihre eigene Planung: Wir fragen Zeichnungen und Planungsdaten zu diesem Stück für Sie an, soweit der Hersteller sie anbietet.",
+        "planningCta": "Planungsdaten anfragen",
+        "planningSubject": "Planungsdaten (Zeichnungen, CAD)",
+        "download2d": "Produktdatenblatt",
+        "download3d": "3D-Daten",
+        "downloadKatalog": "Katalog",
+        "dimNominalPlus": "Nennmaß + {n} cm",
+        "dimQualifier": {
+          "min": "{label} min.",
+          "max": "{label} max.",
+          "bottom": "{label} unten",
+          "top": "{label} oben"
+        },
+        "dim": {
+          "seat width": "Sitzbreite",
+          "thickness": "Stärke",
+          "weight": "Gewicht",
+          "cable length": "Kabellänge",
+          "canopy length": "Baldachin-Länge",
+          "cable colour": "Kabelfarbe",
+          "canopy colour": "Baldachin-Farbe"
+        }
+      }
+    }
+  },
+  "en": {
+    "shop": {
+      "atelier": {
+        "dimensionsCaption": "Dimensions from the manufacturer",
+        "dimensionsColLabel": "Dimension",
+        "dimensionsColValue": "Value",
+        "downloadsNone": "We have no documents online for this piece. We are happy to request data sheets or planning data for you.",
+        "newTab": "opens in a new tab",
+        "dimensionsUnlabelled": "The manufacturer gives these dimensions without stating width, depth or height. We are happy to clarify them for you in the studio.",
+        "planningText": "For architects, planners and your own planning: we request drawings and planning data for this piece for you, where the manufacturer offers them.",
+        "planningCta": "Request planning data",
+        "planningSubject": "planning data (drawings, CAD)",
+        "download2d": "Product data sheet",
+        "download3d": "3D data",
+        "downloadKatalog": "Catalogue",
+        "dimNominalPlus": "nominal size + {n} cm",
+        "dimQualifier": {
+          "min": "{label} (min.)",
+          "max": "{label} (max.)",
+          "bottom": "{label}, bottom",
+          "top": "{label}, top"
+        },
+        "dim": {
+          "seat width": "Seat width",
+          "thickness": "Thickness",
+          "weight": "Weight",
+          "cable length": "Cable length",
+          "canopy length": "Canopy length",
+          "cable colour": "Cable colour",
+          "canopy colour": "Canopy colour"
+        }
+      }
+    }
+  },
+  "fr": {
+    "shop": {
+      "atelier": {
+        "dimensionsCaption": "Dimensions selon le fabricant",
+        "dimensionsColLabel": "Dimension",
+        "dimensionsColValue": "Valeur",
+        "downloadsNone": "Nous n’avons pas de documents en ligne pour cette pièce. Nous demandons volontiers pour vous les fiches techniques ou les données de planification.",
+        "newTab": "s’ouvre dans un nouvel onglet",
+        "dimensionsUnlabelled": "Le fabricant indique ces dimensions sans préciser largeur, profondeur ou hauteur. Nous les clarifions volontiers pour vous au studio.",
+        "planningText": "Pour les architectes, les planificateurs et votre propre projet : nous demandons pour vous les plans et données de planification de cette pièce, si le fabricant les propose.",
+        "planningCta": "Demander les données de planification",
+        "planningSubject": "données de planification (plans, CAO)",
+        "download2d": "Fiche produit",
+        "download3d": "Données 3D",
+        "downloadKatalog": "Catalogue",
+        "dimNominalPlus": "dimension nominale + {n} cm",
+        "dimQualifier": {
+          "min": "{label} min.",
+          "max": "{label} max.",
+          "bottom": "{label} en bas",
+          "top": "{label} en haut"
+        },
+        "dim": {
+          "seat width": "Largeur d’assise",
+          "thickness": "Épaisseur",
+          "weight": "Poids",
+          "cable length": "Longueur du câble",
+          "canopy length": "Longueur du pavillon",
+          "cable colour": "Couleur du câble",
+          "canopy colour": "Couleur du pavillon"
+        }
+      }
+    }
+  },
+  "it": {
+    "shop": {
+      "atelier": {
+        "dimensionsCaption": "Dimensioni secondo il produttore",
+        "dimensionsColLabel": "Misura",
+        "dimensionsColValue": "Valore",
+        "downloadsNone": "Per questo pezzo non abbiamo documenti online. Richiediamo volentieri per Lei schede tecniche o dati di progettazione.",
+        "newTab": "si apre in una nuova scheda",
+        "dimensionsUnlabelled": "Il produttore indica queste misure senza specificare larghezza, profondità o altezza. Le chiariamo volentieri per Lei in studio.",
+        "planningText": "Per architetti, progettisti e il Suo progetto: richiediamo per Lei disegni e dati di progettazione di questo pezzo, se il produttore li offre.",
+        "planningCta": "Richiedere i dati di progettazione",
+        "planningSubject": "dati di progettazione (disegni, CAD)",
+        "download2d": "Scheda prodotto",
+        "download3d": "Dati 3D",
+        "downloadKatalog": "Catalogo",
+        "dimNominalPlus": "misura nominale + {n} cm",
+        "dimQualifier": {
+          "min": "{label} min.",
+          "max": "{label} max.",
+          "bottom": "{label} in basso",
+          "top": "{label} in alto"
+        },
+        "dim": {
+          "seat width": "Larghezza seduta",
+          "thickness": "Spessore",
+          "weight": "Peso",
+          "cable length": "Lunghezza del cavo",
+          "canopy length": "Lunghezza del rosone",
+          "cable colour": "Colore del cavo",
+          "canopy colour": "Colore del rosone"
+        }
+      }
+    }
+  }
+}

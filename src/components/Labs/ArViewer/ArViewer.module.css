@@ -1,0 +1,156 @@
+/* Styles that Tailwind cannot express cleanly: model-viewer hotspot states
+   (data-visible is set by model-viewer itself) and the dimension overlay. */
+
+.viewer {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  --poster-color: transparent;
+  --progress-bar-height: 0px; /* own progress bar instead */
+  outline: none;
+}
+.viewer:focus-visible {
+  outline: 2px solid #7a5f17;
+  outline-offset: -4px;
+}
+
+/* Material hotspot: 32 px disc, 44 px touch target via ::before */
+.hotspot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(48, 55, 62, 0.35);
+  background: rgba(247, 245, 241, 0.92);
+  color: #30373e;
+  font: 600 12px/1 var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.2s ease, background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.hotspot::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 9999px;
+}
+.hotspot:hover {
+  transform: scale(1.08);
+}
+.hotspot[aria-expanded="true"] {
+  background: #30373e;
+  color: #f7f5f1;
+  border-color: #30373e;
+}
+.hotspot:focus-visible {
+  outline: 2px solid #7a5f17;
+  outline-offset: 2px;
+}
+/* Occluded (normal faces away): nearly gone and not tappable */
+.hotspot:not([data-visible]) {
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Dimension markers */
+.dot {
+  display: none;
+}
+.dim {
+  padding: 2px 8px;
+  /* R2 P2: Instrument Sans (site UI font) instead of legacy Montserrat,
+     opaque white and near-black text so labels read clearly on iPhone. */
+  border: 1px solid rgba(48, 55, 62, 0.4);
+  background: #fff;
+  color: #1f252b;
+  font: 600 13px/1.35 var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 2px rgba(48, 55, 62, 0.12);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.dim:not([data-visible]),
+.dim.dimOff {
+  opacity: 0;
+}
+.dimLines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.dimLine {
+  stroke: #30373e;
+  stroke-width: 1.25;
+  stroke-dasharray: 3 3;
+  opacity: 0.75;
+  transition: opacity 0.25s ease;
+}
+.dimLine.hide {
+  opacity: 0;
+}
+.hidden {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotspot,
+  .dim,
+  .dimLine {
+    transition: none;
+  }
+}
+
+/* Desktop → Smartphone-Dialog (PhoneHandoff): ruhiger Auftritt, 280 ms, ease-quiet */
+.handoff[open] {
+  animation: arvHandoffIn var(--duration-ui, 280ms) var(--ease-quiet, ease-out);
+}
+.handoff[open]::backdrop {
+  animation: arvHandoffFade var(--duration-ui, 280ms) ease-out;
+}
+@keyframes arvHandoffIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes arvHandoffFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .handoff[open],
+  .handoff[open]::backdrop {
+    animation: arvHandoffFade 150ms linear;
+  }
+}
+
+/* QA R2 P2-5: unbestimmter Ladebalken, solange der 3D-Chunk lädt */
+.indet {
+  animation: arv-indet 1.4s ease-in-out infinite;
+}
+@keyframes arv-indet {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(300%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .indet {
+    animation: none;
+    width: 100%;
+    opacity: 0.4;
+  }
+}

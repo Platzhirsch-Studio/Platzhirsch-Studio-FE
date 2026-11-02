@@ -1,0 +1,28 @@
+{
+  "_zweck": "Bewusst belassene Treffer von tools/i18n/claims-words.mjs (keine Superlative/Alleinstellung im Sinn von UWG § 2).",
+  "allow": [
+    { "locale": "fr", "key": "cart.selection.shareNote", "word": "uniquement", "reason": "„nur“ (der Link enthält nur die Stücke, Rat 9,5 T2)" },
+    { "locale": "fr", "key": "Cookies.essentialStorage.locale", "word": "uniquement", "reason": "„nur“ (nur beim aktiven Sprachwechsel gesetzt, Rat 9,5 T5)" },
+    { "locale": "fr", "key": "cart.selection.lead", "word": "uniquement", "reason": "„nur“ (nur in diesem Browser gespeichert)" },
+    { "locale": "fr", "key": "Shell.footer.calmHint", "word": "plus grand", "reason": "größere Schrift (Barrierefreiheits-Hinweis)" },
+    { "locale": "it", "key": "Shell.footer.calmHint", "word": "più grande", "reason": "größere Schrift (Barrierefreiheits-Hinweis)" },
+    { "locale": "it", "key": "Cookies.services.googleMaps.purpose", "word": "migliorare", "reason": "„verbessern“ (Google-Dienstbeschreibung)" },
+    { "locale": "it", "key": "HomePage.hero.lead", "word": "unico", "reason": "„als ein Projekt“ (eins, nicht einzigartig)" },
+    { "locale": "it", "key": "HomePage.host.items.plan.title", "word": "unico", "reason": "„Ein Projekt“" },
+    { "locale": "it", "key": "HomePage.host.items.plan.text", "word": "unica", "reason": "„aus einer Hand“" },
+    { "locale": "it", "key": "About.yourVisionDesc", "word": "unico", "reason": "„ein Ansprechpartner“" },
+    { "locale": "it", "key": "KarriereTeam.paragraphs.1", "word": "unico", "reason": "„ein Ansprechpartner“" },
+    { "locale": "fr", "key": "KarriereTeam.paragraphs.3", "word": "haut de gamme", "reason": "entspricht DE „gehoben“, beschreibt die Branche der Bewerber, keine Eigenwerbung" },
+    { "locale": "fr", "key": "partners.1.role", "word": "haut de gamme", "reason": "entspricht DE „hochwertige Immobilien“, beschreibt den Partner" },
+    { "locale": "de", "key": "inhalt.job.applyText", "word": "besten", "reason": "„am besten“ = vorzugsweise (Hinweis zu den Unterlagen), kein Superlativ; Text ist per r3-inhalt.test.mjs an den Vorschlag gebunden (R4-i18n)" },
+    { "locale": "fr", "key": "shop.atelier.previewNote", "word": "uniquement", "reason": "„nur“ (nur Entwicklungsvorschau, R4-i18n)" },
+    { "locale": "fr", "key": "Upload.client.demoDisabled", "word": "uniquement", "reason": "„nur“ (Demo nur in der Entwicklungsumgebung) (fix2, 28.10.2026)" },
+    { "locale": "fr", "key": "Upload.client.thanks.next.arrived.text", "word": "uniquement", "reason": "„nur für diese Anfrage“ (fix2, 28.10.2026)" },
+    { "locale": "fr", "key": "Upload.handoff.footer", "word": "uniquement", "reason": "„nur über diesen Link erreichbar“ (fix2, 28.10.2026)" },
+    { "locale": "fr", "key": "Upload.consent.short", "word": "uniquement", "reason": "„nur für diese Anfrage“ (Einwilligung) (fix2, 28.10.2026)" },
+    { "locale": "fr", "key": "Upload.consent.purpose", "word": "uniquement", "reason": "DE „ausschließlich“ (Zweckbindung der Einwilligung), keine Werbeaussage (fix2, 28.10.2026)" },
+    { "locale": "fr", "key": "Upload.demo.enabled", "word": "uniquement", "reason": "„nur im lokalen Entwicklungs-Speicher“ (fix2, 28.10.2026)" },
+    { "locale": "fr", "key": "Upload.demo.disabled", "word": "uniquement", "reason": "„nur in der Entwicklungsumgebung“ (fix2, 28.10.2026)" },
+    { "locale": "fr", "key": "Cookies.intro", "word": "uniquement", "reason": "„nur mit Ihrer Einwilligung“ (Consent-Text DPF/SCC aus messages-r3-shell.json, r7-p1)" }
+  ]
+}

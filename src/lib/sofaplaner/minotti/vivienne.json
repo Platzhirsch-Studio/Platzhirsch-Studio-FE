@@ -1,0 +1,550 @@
+{
+  "name": "Vivienne",
+  "slug": "vivienne",
+  "hersteller": "Minotti",
+  "designer": "GamFratesi",
+  "jahr": 2025,
+  "jahr_hinweis": "Teil der Minotti „2025 Collection“ (Designs laut Minotti am 4. April 2025 in EU und China registriert).",
+  "typ": "Modulares Sitzsystem (Indoor) mit geschwungenem Rücken, der zugleich Armlehne ist; Sofas, Endelemente, Chaise-longues, Poufs und Elemente mit Tischplatte (Top).",
+  "quellen": [
+    "https://www.minotti.com/en/vivienne-seating-system",
+    "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/26138/29790/VIVIENNE_arrangement_01.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Alle Maße in cm laut technischem Datenblatt (Stand November 2025). Breite x Tiefe x Höhe; Sitztiefe = Kote in der Draufsicht. Sitzhöhe ist im Datenblatt teils nur beim ersten Element eines Abschnitts bemaßt und wurde für gleichartige Elemente desselben Abschnitts übernommen. „seitenkote_cm“ = unbeschriftete Höhenkote der Seitenansicht (60/63 cm, vermutlich Höhe der Rücken-/Armschale ohne Kissen). CAD-Maße können laut Minotti geringfügig abweichen.",
+  "anzahl_elemente": 21,
+  "vollstaendigkeit": {
+    "gesamt_prozent": 91,
+    "kernmasse_prozent": 96,
+    "familienfelder_prozent": 80,
+    "methode": "Kernmaße (B/T/H/Sitzhöhe/Sitztiefe) aller Sitz-/Liegeelemente (Gewicht 70 %) + 10 Familienfelder (Gewicht 30 %; fehlend: offizielle Artikelcodes, Preis-/Bezugskategorien)."
+  },
+  "elemente": [
+    {
+      "code": "viv-lounge-sofa-212",
+      "code_offiziell": null,
+      "name": "Lounge sofa 212 cm",
+      "art": "sofa",
+      "breite_cm": 212,
+      "tiefe_cm": 100,
+      "hoehe_cm": 76,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 68,
+      "seitenkote_cm": 60,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-sofa-276",
+      "code_offiziell": null,
+      "name": "Sofa 276 cm",
+      "art": "sofa",
+      "breite_cm": 276,
+      "tiefe_cm": 107,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 83,
+      "seitenkote_cm": 60,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-sofa-290-ruecken-125-top",
+      "code_offiziell": null,
+      "name": "Sofa 290 cm – backrest 125 cm with TOP",
+      "art": "sofa",
+      "breite_cm": 290,
+      "tiefe_cm": 118,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 83,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "mit_tischplatte": {
+        "hoehe_cm": 30,
+        "platte": "A (Draufsicht)"
+      },
+      "zusatzmasse": {
+        "rueckenlaenge_cm": 125
+      },
+      "anschluesse": "Element mit integrierter Tischplatte (Top); Platte zweigeteilt außer 30x83 cm.",
+      "hinweis": "Sitzhöhe für dieses Element im Datenblatt nicht bemaßt (nur Tophöhe 30 cm).",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-sofa-290-ruecken-185-top",
+      "code_offiziell": null,
+      "name": "Sofa 290 cm – backrest 185 cm with TOP",
+      "art": "sofa",
+      "breite_cm": 290,
+      "tiefe_cm": 118,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 83,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "mit_tischplatte": {
+        "hoehe_cm": 30,
+        "platte": "B (Draufsicht)"
+      },
+      "zusatzmasse": {
+        "rueckenlaenge_cm": 185
+      },
+      "anschluesse": "Element mit integrierter Tischplatte (Top); Platte zweigeteilt außer 30x83 cm.",
+      "hinweis": "Sitzhöhe für dieses Element im Datenblatt nicht bemaßt (nur Tophöhe 30 cm).",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-endelement-140",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 140 cm",
+      "art": "endelement",
+      "breite_cm": 140,
+      "tiefe_cm": 107,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 83,
+      "seitenkote_cm": 60,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-endelement-158",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 158 cm",
+      "art": "endelement",
+      "breite_cm": 158,
+      "tiefe_cm": 107,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 83,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-endelement-200",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 200 cm",
+      "art": "endelement",
+      "breite_cm": 200,
+      "tiefe_cm": 107,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 83,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-endelement-200-top",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 200 cm with TOP",
+      "art": "endelement",
+      "breite_cm": 200,
+      "tiefe_cm": 107,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 83,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "mit_tischplatte": {
+        "hoehe_cm": 30
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar. Element mit integrierter Tischplatte (Top); Platte zweigeteilt außer 30x83 cm.",
+      "hinweis": "Sitzhöhe nicht bemaßt (nur Tophöhe 30 cm).",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-endelement-245",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 245 cm",
+      "art": "endelement",
+      "breite_cm": 245,
+      "tiefe_cm": 107,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 83,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-endelement-245-top",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 245 cm with TOP",
+      "art": "endelement",
+      "breite_cm": 245,
+      "tiefe_cm": 107,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 83,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "mit_tischplatte": {
+        "hoehe_cm": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar. Element mit integrierter Tischplatte (Top); Platte zweigeteilt außer 30x83 cm.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-endelement-geneigt-242x154",
+      "code_offiziell": null,
+      "name": "Inclined element with armrest 242x154 cm",
+      "art": "endelement-geneigt",
+      "breite_cm": 242,
+      "tiefe_cm": 154,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 83,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-endelement-geneigt-242x154-top",
+      "code_offiziell": null,
+      "name": "Inclined element with armrest 242x154 cm with TOP",
+      "art": "endelement-geneigt",
+      "breite_cm": 242,
+      "tiefe_cm": 154,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 83,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "mit_tischplatte": {
+        "hoehe_cm": null
+      },
+      "zusatzmasse": {
+        "winkel_grad": 150
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: geneigtes Element mit 150°-Winkel laut Datenblatt; für abgewinkelte Kompositionen. Element mit integrierter Tischplatte (Top); Platte zweigeteilt außer 30x83 cm.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "viv-mittel-185",
+      "code_offiziell": null,
+      "name": "Central element 185 cm",
+      "art": "mittel",
+      "breite_cm": 185,
+      "tiefe_cm": 107,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 83,
+      "seitenkote_cm": 63,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "viv-mittel-185-top",
+      "code_offiziell": null,
+      "name": "Central element 185 cm with TOP",
+      "art": "mittel",
+      "breite_cm": 185,
+      "tiefe_cm": 107,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 83,
+      "seitenkote_cm": 63,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "mit_tischplatte": {
+        "hoehe_cm": null
+      },
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar. Element mit integrierter Tischplatte (Top); Platte zweigeteilt außer 30x83 cm.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "viv-eck-chaise-132x132",
+      "code_offiziell": null,
+      "name": "Corner chaise-longue 132x132 cm",
+      "art": "ecke",
+      "breite_cm": 132,
+      "tiefe_cm": 132,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 110,
+      "seitenkote_cm": 63,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: bildet eine 90°-Ecke; beidseitig an End-/Mittelelemente anreihbar.",
+      "hinweis": "Eck-Chaise-longue (Minotti: Chaise-longue angolare).",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "viv-chaise-158x163",
+      "code_offiziell": null,
+      "name": "Chaise-longue 158x163 cm",
+      "art": "chaise",
+      "breite_cm": 158,
+      "tiefe_cm": 163,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 140,
+      "seitenkote_cm": 63,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Abschluss mit Liegefläche; offene Seite an Mittel-/Endelemente anreihbar (SX/DX).",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "viv-pouf-top-154x118",
+      "code_offiziell": null,
+      "name": "Ottoman with TOP 154x118 cm",
+      "art": "hocker",
+      "breite_cm": 154,
+      "tiefe_cm": 118,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 86,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "mit_tischplatte": {
+        "hoehe_cm": 30
+      },
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise. Element mit integrierter Tischplatte (Top); Platte zweigeteilt außer 30x83 cm.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "viv-pouf-top-143x143",
+      "code_offiziell": null,
+      "name": "Ottoman with TOP 143x143 cm",
+      "art": "hocker",
+      "breite_cm": 143,
+      "tiefe_cm": 143,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 112,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "mit_tischplatte": {
+        "hoehe_cm": null
+      },
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise. Element mit integrierter Tischplatte (Top); Platte zweigeteilt außer 30x83 cm.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "viv-pouf-125x71",
+      "code_offiziell": null,
+      "name": "Ottoman 125x71 cm",
+      "art": "hocker",
+      "breite_cm": 125,
+      "tiefe_cm": 71,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "viv-rueckenkissen-65x50",
+      "code_offiziell": null,
+      "name": "Optional backrest cushion 65x50 cm",
+      "art": "kissen",
+      "breite_cm": 65,
+      "tiefe_cm": null,
+      "hoehe_cm": 50,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Zubehör, auf Sitz-/Rückenfläche zu legen.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "viv-kissen-50x50",
+      "code_offiziell": null,
+      "name": "Optional cushion 50x50 cm",
+      "art": "kissen",
+      "breite_cm": 50,
+      "tiefe_cm": null,
+      "hoehe_cm": 50,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Zubehör, auf Sitz-/Rückenfläche zu legen.",
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf (Seite 4)"
+    }
+  ],
+  "tischplatten": {
+    "beschreibung": "Einige Elemente haben eine integrierte Tischplatte (Top) in verschiedenen Größen; die Platte ist zweigeteilt, außer beim Top 30x83 cm.",
+    "formate_cm": [
+      "151x100 (Plattenbreite 28)",
+      "91x100 (Plattenbreite 28)",
+      "30x83",
+      "141x141 (Plattenbreite 28)"
+    ],
+    "zuordnung_format_zu_element": null,
+    "ausfuehrungen": [
+      "MDF 30 mm, geformt, Oberseite Esche gebürstet furniert, offenporig lackiert Licorice (Liquirizia), Unterseite schwarz glänzend lackiert",
+      "MDF 30 mm, geformt, Oberseite Nussbaum Canaletto furniert, offenporig gebeizt Light Brown, Unterseite glänzend lackiert passend",
+      "MDF 30 mm, geformt, Hochglanzlack Moka",
+      "MDF 30 mm, geformt, Hochglanzlack Cappuccino",
+      "MDF 30 mm, geformt, Hochglanzlack Birch Grey (Betulla)"
+    ],
+    "marmor_nur_top_30x83": [
+      "Calacatta",
+      "Nero Marquina",
+      "Rosso Levanto",
+      "Verde Lepanto",
+      "Grigio Orobico",
+      "Marron Damasco"
+    ],
+    "marmor_details": "Marmor 20 mm, abgeschrägt; Unterplatte MDF 30 mm schwarz matt lackiert.",
+    "fsc_hinweis": "Elemente mit Top sind nicht FSC-zertifiziert (übrige Holzkomponenten FSC-zertifiziert)."
+  },
+  "rueckenoptionen": [
+    "Fester, halbrund geschwungener Rücken, der seitlich in die Armlehne übergeht (keine wählbaren Rückenvarianten).",
+    "Rückenlänge bei Sofa 290 cm mit Top: 125 cm oder 185 cm.",
+    "Optionales Rückenkissen 65x50 cm."
+  ],
+  "armlehnenoptionen": [
+    "Armlehne ist Teil der umlaufenden Rückenschale; Endelemente mit 1 Armlehne als SX- oder DX-Variante.",
+    "Keine separaten Armlehnenmodelle oder -höhen veröffentlicht."
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Konturierte, gepolsterte Basis auf zurückgesetzten Aluminium-Profilen; Nylon-Gleiter.",
+    "finishes": [
+      "Aluminium-Strangpressprofil gebürstet (Spazzolato/Brushed), glänzend Anti-Fingerprint",
+      "Aluminium lackiert Black Coffee, glänzend Anti-Fingerprint"
+    ]
+  },
+  "struktur": "Metall, in feuerhemmenden PU-Schaum eingebettet, ummantelt mit atmungsaktiver thermogebundener Faser, kaschiert mit weißem hypoallergenem Baumwollstoff.",
+  "bezuege": {
+    "materialien": [
+      "Stoff (Minotti-Kollektion)",
+      "Leder (Minotti-Kollektion)"
+    ],
+    "preis_kategorien": null,
+    "bezugsart": "Vollständig abziehbar, in Stoff und Leder. Rücken-/Armlehnenteile lassen sich nach Lösen der Schrauben an der Unterseite abheben.",
+    "farbmuster_hinweis": "Stoff- und Ledermuster (Farben, Haptik) bitte im Showroom Platzhirsch Home Living in Lochau ansehen; gedruckte und Bildschirm-Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": {
+    "sitz": "Sitzkissen aus hochelastischem PU-Schaum mit differenzierter Dichte und Topper aus thermosensitivem Material; Oberseite mit atmungsaktivem Baumwollstoff mit Minotti-Logo.",
+    "ruecken": "Rückenkissen mit gesteppter Gänsedaune (Assopiuma Gold Label, EG-VO 1069/2009) und PU-Schaumkern.",
+    "optional": [
+      "Rückenkissen 65x50 cm",
+      "Kissen 50x50 cm"
+    ]
+  },
+  "outdoor": false,
+  "outdoor_hinweis": "Indoor-Sitzsystem; keine Outdoor-Version auf der Produktseite genannt.",
+  "besonderheiten": [
+    "Rücken als halbrunde Umarmung, abgeleitet vom Vivienne-Sessel; zugleich Armlehne.",
+    "Sitz wirkt durch teilweise in die gepolsterte Basis versenkte Kissen dünner.",
+    "Elemente mit integrierter Tischplatte (Top) für Kompositionen.",
+    "Geneigte Elemente mit 150°-Winkel.",
+    "FSC-zertifizierte Holzkomponenten (außer Elemente mit Top).",
+    "7 Arrangement-PDFs auf der Produktseite (VIVIENNE 01–07).",
+    "Weitere Familie: Vivienne „Dining“ (nicht Teil dieses Datensatzes)."
+  ],
+  "kompositionen_beispiele": [
+    {
+      "name": "VIVIENNE 01",
+      "elemente": [
+        "Corner chaise-longue SX 132x132 H80",
+        "Corner chaise-longue DX 132x132 H80"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26138/29790/VIVIENNE_arrangement_01.pdf"
+    },
+    {
+      "name": "VIVIENNE 02",
+      "elemente": [
+        "Element with 1 armrest SX 200x107 H80",
+        "Inclined element with armrest with top DX 242x154 H80"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26139/29792/VIVIENNE_arrangement_02.pdf"
+    },
+    {
+      "name": "VIVIENNE 03",
+      "elemente": [
+        "Element with 1 armrest with top SX 245x107 H80",
+        "Chaise-longue DX 158x163 H80"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26140/29794/VIVIENNE_arrangement_03.pdf"
+    },
+    {
+      "name": "VIVIENNE 04",
+      "elemente": [
+        "Sofa with top SX 290x118 H80 backrest 185",
+        "Sofa with top DX 290x118 H80 backrest 185"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26141/29796/VIVIENNE_arrangement_04.pdf"
+    },
+    {
+      "name": "VIVIENNE 05",
+      "elemente": [
+        "Element with 1 armrest SX 245x107 H80",
+        "Element with 1 armrest DX 140x107 H80",
+        "Element with 1 armrest SX 140x107 H80",
+        "Element with 1 armrest DX with top 245x107 H80",
+        "Ottoman 125x71 H40"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26142/29798/VIVIENNE_arrangement_05.pdf"
+    },
+    {
+      "name": "VIVIENNE 07",
+      "elemente": [
+        "Inclined element with armrest SX 242x154 H80"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26144/29802/VIVIENNE_arrangement_07.pdf"
+    }
+  ],
+  "fehlend": [
+    "Offizielle Artikel-/Bestellcodes der Elemente (nicht öffentlich; Codes hier intern vergeben).",
+    "Preise und Preisgruppen/Stoff- und Lederkategorien (nicht öffentlich).",
+    "Sitzhöhe bei Sofa 290 mit Top (beide Rückenlängen) und Endelement 200 mit Top (nur Tophöhe 30 cm bemaßt).",
+    "Tophöhe bei Endelement 245 mit Top, geneigtem Element mit Top, Mittelelement mit Top und Pouf 143x143 mit Top nicht separat bemaßt.",
+    "Bedeutung der Seitenansicht-Kote 60/63 cm nicht beschriftet.",
+    "Sitztiefe Pouf 125x71 nicht bemaßt.",
+    "Eindeutige Zuordnung der vier Tischplatten-Formate zu den Elementen (nur Kennbuchstaben A/B in Zeichnungen).",
+    "Offizielle Kombinationsregeln/Anschlussmatrix (Kombinierbarkeit aus Elementtyp abgeleitet).",
+    "Definition SX/DX (Blickrichtung) im Datenblatt nicht erläutert.",
+    "Tiefe/Dicke der optionalen Kissen."
+  ],
+  "rechte_hinweis": "Minotti-Bilder und CAD-Dateien sind urheberrechtlich geschützt; CAD-Nutzung laut Minotti nur für Innenarchitektur-Zwecke. Keine veränderten Minotti-Bilder öffentlich verwenden."
+}

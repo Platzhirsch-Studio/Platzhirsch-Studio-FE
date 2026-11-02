@@ -1,0 +1,203 @@
+{
+  "_hinweis": "R5-portal-labs, 26.10.2026. Neue Schlüssel für Portal-Navigation und Handy-Upload. Die Leser (tx() aus src/lib/portal/i18n.js) fallen ohne Schlüssel auf den bisherigen DE-Text zurück, die Übernahme ist also jederzeit möglich (Runde 6). Portal und Upload bleiben bis zur vollständigen Übersetzung DE-only (Layout bzw. Seite liefern für en/fr/it 404). EN/FR/IT sind Übersetzungsvorschläge, bitte von Muttersprachlern prüfen. IT in tu-Form (Entscheidung R3). {email} ist ein ICU-Platzhalter.",
+  "de": {
+    "Portal": {
+      "nav": {
+        "overview": "Übersicht",
+        "projects": "Projekte",
+        "documents": "Dokumente",
+        "appointments": "Termine",
+        "messages": "Nachrichten",
+        "pass": "Produktpass",
+        "trades": "Gewerke",
+        "newPlan": "Neue Planung",
+        "label": "Kundenportal",
+        "more": "Mehr",
+        "moreTitle": "Mehr im Kundenportal",
+        "closeMenu": "Menü schließen",
+        "room": "Ihr Raum",
+        "care": "Pflege"
+      }
+    },
+    "Upload": {
+      "page": {
+        "title": "Zeigen Sie uns Ihren Raum",
+        "introBefore": "Fotos, Video oder Grundriss zu Ihrer Anfrage",
+        "introAfter": "– so beraten wir Sie gezielt.",
+        "handoffLabel": "Am Handy weitermachen",
+        "handoffTitle": "Am Computer?",
+        "handoffText": "Scannen Sie diesen Code mit dem Handy – Fotos und Videos gehen direkt aus der Kamera.",
+        "qrAlt": "QR-Code dieser Upload-Seite – mit der Handykamera scannen",
+        "qrHint": "Mit der Kamera scannen"
+      },
+      "problem": {
+        "expired": {
+          "title": "Link abgelaufen",
+          "text": "Dieser Upload-Link ist abgelaufen. Aus Datenschutzgründen ist jeder Link nur begrenzt gültig."
+        },
+        "invalid": {
+          "title": "Link unvollständig",
+          "text": "Dieser Upload-Link ist unvollständig oder ungültig. Bitte scannen Sie den QR-Code erneut oder öffnen Sie den Link aus Ihrer E-Mail."
+        },
+        "alternatives": "Sie können uns Ihre Unterlagen auch per E-Mail senden oder uns anrufen.",
+        "call": "Anrufen",
+        "mail": "E-Mail an {email}"
+      },
+      "frame": {
+        "legal": "Rechtliches",
+        "imprint": "Impressum",
+        "privacy": "Datenschutz"
+      }
+    }
+  },
+  "en": {
+    "Portal": {
+      "nav": {
+        "overview": "Overview",
+        "projects": "Projects",
+        "documents": "Documents",
+        "appointments": "Appointments",
+        "messages": "Messages",
+        "pass": "Product passport",
+        "trades": "Trades",
+        "newPlan": "New planning",
+        "label": "Customer portal",
+        "more": "More",
+        "moreTitle": "More in the customer portal",
+        "closeMenu": "Close menu",
+        "room": "Your room",
+        "care": "Care"
+      }
+    },
+    "Upload": {
+      "page": {
+        "title": "Show us your room",
+        "introBefore": "Photos, video or floor plan for your enquiry",
+        "introAfter": "– so we can advise you precisely.",
+        "handoffLabel": "Continue on your phone",
+        "handoffTitle": "On a computer?",
+        "handoffText": "Scan this code with your phone – photos and videos go straight from the camera.",
+        "qrAlt": "QR code of this upload page – scan with your phone camera",
+        "qrHint": "Scan with the camera"
+      },
+      "problem": {
+        "expired": {
+          "title": "Link expired",
+          "text": "This upload link has expired. For data protection reasons, every link is only valid for a limited time."
+        },
+        "invalid": {
+          "title": "Link incomplete",
+          "text": "This upload link is incomplete or invalid. Please scan the QR code again or open the link from your e-mail."
+        },
+        "alternatives": "You can also send us your documents by e-mail or give us a call.",
+        "call": "Call",
+        "mail": "E-mail {email}"
+      },
+      "frame": {
+        "legal": "Legal",
+        "imprint": "Imprint",
+        "privacy": "Privacy"
+      }
+    }
+  },
+  "fr": {
+    "Portal": {
+      "nav": {
+        "overview": "Aperçu",
+        "projects": "Projets",
+        "documents": "Documents",
+        "appointments": "Rendez-vous",
+        "messages": "Messages",
+        "pass": "Passeport produit",
+        "trades": "Corps de métier",
+        "newPlan": "Nouveau projet",
+        "label": "Espace client",
+        "more": "Plus",
+        "moreTitle": "Plus dans l’espace client",
+        "closeMenu": "Fermer le menu",
+        "room": "Votre espace",
+        "care": "Entretien"
+      }
+    },
+    "Upload": {
+      "page": {
+        "title": "Montrez-nous votre pièce",
+        "introBefore": "Photos, vidéo ou plan pour votre demande",
+        "introAfter": "– pour que nous puissions vous conseiller de manière ciblée.",
+        "handoffLabel": "Continuer sur le téléphone",
+        "handoffTitle": "Sur un ordinateur ?",
+        "handoffText": "Scannez ce code avec votre téléphone – les photos et vidéos partent directement de l’appareil photo.",
+        "qrAlt": "Code QR de cette page d’envoi – à scanner avec l’appareil photo du téléphone",
+        "qrHint": "Scanner avec l’appareil photo"
+      },
+      "problem": {
+        "expired": {
+          "title": "Lien expiré",
+          "text": "Ce lien d’envoi a expiré. Pour des raisons de protection des données, chaque lien n’est valable que pour une durée limitée."
+        },
+        "invalid": {
+          "title": "Lien incomplet",
+          "text": "Ce lien d’envoi est incomplet ou invalide. Veuillez scanner à nouveau le code QR ou ouvrir le lien depuis votre e-mail."
+        },
+        "alternatives": "Vous pouvez aussi nous envoyer vos documents par e-mail ou nous appeler.",
+        "call": "Appeler",
+        "mail": "E-mail à {email}"
+      },
+      "frame": {
+        "legal": "Informations légales",
+        "imprint": "Mentions légales",
+        "privacy": "Confidentialité"
+      }
+    }
+  },
+  "it": {
+    "Portal": {
+      "nav": {
+        "overview": "Panoramica",
+        "projects": "Progetti",
+        "documents": "Documenti",
+        "appointments": "Appuntamenti",
+        "messages": "Messaggi",
+        "pass": "Passaporto prodotto",
+        "trades": "Lavorazioni",
+        "newPlan": "Nuova progettazione",
+        "label": "Area clienti",
+        "more": "Altro",
+        "moreTitle": "Altro nell’area clienti",
+        "closeMenu": "Chiudi menu",
+        "room": "Il tuo spazio",
+        "care": "Cura"
+      }
+    },
+    "Upload": {
+      "page": {
+        "title": "Mostraci il tuo ambiente",
+        "introBefore": "Foto, video o planimetria per la tua richiesta",
+        "introAfter": "– così possiamo consigliarti in modo mirato.",
+        "handoffLabel": "Continua sul telefono",
+        "handoffTitle": "Sei al computer?",
+        "handoffText": "Scansiona questo codice con il telefono – foto e video partono direttamente dalla fotocamera.",
+        "qrAlt": "Codice QR di questa pagina di caricamento – scansiona con la fotocamera del telefono",
+        "qrHint": "Scansiona con la fotocamera"
+      },
+      "problem": {
+        "expired": {
+          "title": "Link scaduto",
+          "text": "Questo link di caricamento è scaduto. Per motivi di protezione dei dati ogni link è valido solo per un periodo limitato."
+        },
+        "invalid": {
+          "title": "Link incompleto",
+          "text": "Questo link di caricamento è incompleto o non valido. Scansiona di nuovo il codice QR o apri il link dalla tua e-mail."
+        },
+        "alternatives": "Puoi anche inviarci i tuoi documenti via e-mail o chiamarci.",
+        "call": "Chiama",
+        "mail": "E-mail a {email}"
+      },
+      "frame": {
+        "legal": "Informazioni legali",
+        "imprint": "Note legali",
+        "privacy": "Privacy"
+      }
+    }
+  }
+}

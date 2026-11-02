@@ -20,6 +20,7 @@ import { API_BASE_URL } from "@/lib/apiBaseUrl";
 import { fetchRawMarkenData } from "@/lib/api/fetchMarkenData";
 import { searchProdukte } from "@/lib/api/fetchAllProdukte";
 import { generateSlug } from "@/lib/slugify";
+import { mappedLegacyProduct } from "@/lib/seo/legacyProductMap";
 
 const OLD_PRODUKTE_API = `${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.produkte.api`;
 
@@ -40,12 +41,20 @@ export async function findBrandBySlug(slug) {
 
 // The old "Produkte" record for a legacy slug ({ produkt_name, marken, kategories }), or null.
 // Slug shape is validated first so only plausible legacy slugs reach the backoffice.
-async function fetchLegacyProdukt(oldSlug) {
+// Technik R7 (r6-technik P0-1): `cacheable: false` (the uncached resolver
+// src/app/api/legacy-product/route.js) keeps the lookup out of the data cache
+// – the old slug comes straight from the URL, so a cache entry per guessed
+// slug grew .next/cache/fetch-cache without limit. The product page (ISR)
+// keeps the cached lookup: a no-store fetch there makes the page dynamic at
+// runtime (Next: "Page changed from static to dynamic", HTTP 500).
+async function fetchLegacyProdukt(oldSlug, { cacheable = true } = {}) {
   if (!oldSlug || !/^[a-z0-9-]{1,120}$/.test(oldSlug)) return null;
   try {
     const response = await fetch(
       `${OLD_PRODUKTE_API}.get_produkt_by_path_field_api?path_field=${encodeURIComponent(oldSlug)}`,
-      { next: { revalidate: 86400, tags: ["legacy-products"] }, signal: AbortSignal.timeout(8000) }
+      cacheable
+        ? { next: { revalidate: 86400, tags: ["legacy-products"] }, signal: AbortSignal.timeout(8000) }
+        : { cache: "no-store", signal: AbortSignal.timeout(8000) }
     );
     if (!response.ok) return null;
     const data = await response.json();
@@ -84,12 +93,16 @@ async function findNewProduct(name, brand) {
 // Best new target for a legacy product URL:
 //   { type: "product", categoryKey, pathField, brandSlug } |
 //   { type: "brand", brandSlug } | null
-export async function resolveLegacyProductUrl(brandSlug, oldSlug) {
+export async function resolveLegacyProductUrl(brandSlug, oldSlug, options) {
   const brand = await findBrandBySlug(brandSlug);
   if (!brand) return null;
   const targetBrandSlug = generateSlug(brand.name1);
 
-  const legacy = await fetchLegacyProdukt(oldSlug);
+  // Feste Zuordnung zuerst (die alte "Produkte"-API gibt es nicht mehr).
+  const mapped = mappedLegacyProduct(brandSlug, oldSlug);
+  if (mapped) return { type: "product", ...mapped, brandSlug: targetBrandSlug };
+
+  const legacy = await fetchLegacyProdukt(oldSlug, options);
   if (legacy) {
     const match = await findNewProduct(legacy.produkt_name, legacy.marken || brand.name1);
     if (match) {

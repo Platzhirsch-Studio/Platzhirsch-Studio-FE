@@ -2,130 +2,44 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/config";
-import { detectLocale, notFoundTitle } from "@/i18n/detectLocale";
+import { notFoundTitle } from "@/i18n/detectLocale";
 
 import "../globals.css";
 
-import { Montserrat, Bodoni_Moda } from "next/font/google";
 import LoaderWrapper from "./LoaderWrapper";
 import JsonLd from "@/components/Reusable/JsonLd";
+import { bodoni, bodoniItalic, instrument } from "@/components/Reusable/fonts";
+import Navbar from "@/components/Navbar/navbar";
+import Footer from "@/components/Reusable/Footer";
+import { WordmarkSprite } from "@/components/Brand";
+import { pickClientMessages } from "@/components/Reusable/clientMessages";
+import { siteSchema } from "@/lib/seo/structuredData";
+import { ogLocale } from "@/lib/seo/pageMetadata";
+import { openingHoursSpecification } from "@/lib/site";
 import { fetchLayoutData } from "@/lib/api/Keywords/fetchLayoutKeywords"
 import { fetchKategorienWithCounts } from "@/lib/api/fetchAllProdukte";
+import { pinterestVerificationMetadata } from "@/lib/pinterest/config";
 
-// The brand font. globals.css always asked for "Montserrat" but nothing loaded
-// it, so visitors got Helvetica/Arial. next/font downloads it at build time and
-// serves it from this domain (no Google request, no layout shift). Montserrat
-// is a variable font, so every weight (font-light … font-bold) is included;
-// latin-ext covers German/French/Italian accents.
-const montserrat = Montserrat({
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  variable: "--font-montserrat",
+// Type system of the Neuauftritt (Design-Bibel §5): Bodoni Moda (display,
+// italic not preloaded) and Instrument Sans (text/UI), self-hosted by
+// next/font. R5 (technik P1-3): legacy Montserrat no longer on <html> – no
+// file in src/ reads --font-montserrat any more (its @font-face rules and the
+// class left the shell). Defined ONCE in Reusable/fonts.js (font
+// definitions file) so the global 404 and global-error.js use the same files
+// (R6-shell-perf).
+
+// Site-wide structured data (Organization + FurnitureStore, WebSite) comes
+// from ONE builder, siteSchema() in src/lib/seo/siteSchema.js: name, legal
+// name, postal data, phone, geo, business times, service area and real
+// profiles (sameAs) are read from src/lib/site.js; `brand` only lists
+// brands that pass the dealer filter of src/lib/legal (today ClassiCon), all
+// other showroom brands stay neutral under knowsAbout. No aggregateRating.
+// The business times are handed in explicitly from site.js (r3-shell
+// contract: the layout shows where they come from); siteSchema() accepts no
+// other override. Built once per server process – the inputs are constants.
+const SITE_SCHEMA = siteSchema({
+  "openingHoursSpecification": openingHoursSpecification(),
 });
-
-// Display face for headlines (homepage hero and section titles): Bodoni Moda,
-// the high-contrast serif of Italian design and fashion houses — the brands
-// this showroom sells. Variable font with optical sizes; served from this
-// domain like Montserrat. Used via the `font-display` utility (globals.css).
-const bodoni = Bodoni_Moda({
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  variable: "--font-bodoni",
-  axes: ["opsz"],
-});
-
-// Site-wide structured data. Organization is modelled as a FurnitureStore
-// (a LocalBusiness subtype) — the business is a physical Einrichtungsstudio in
-// Lochau, not a web agency. Contact/opening-hours data mirrors the Footer/Kontakt.
-const siteSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": ["Organization", "FurnitureStore"],
-      "@id": "https://platzhirsch.studio/#organization",
-      "name": "Platzhirsch Home Living",
-      "alternateName": "Platzhirsch Studio",
-      "url": "https://platzhirsch.studio",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://platzhirsch.studio/Images/Navbar/Logo.png",
-      },
-      "image": "https://platzhirsch.studio/Images/Footer/PlatzImage.png",
-      "description": "Platzhirsch Home Living – Einrichtungsstudio in Lochau (Vorarlberg) für exklusive Designmöbel, Interior Design und persönliche Einrichtungsberatung. Möbel führender Marken wie Minotti, Poliform und Rimadesio für ganz Österreich.",
-      "telephone": "+43 5574 46255",
-      "email": "info@platzhirsch.studio",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Landstraße 9",
-        "postalCode": "6911",
-        "addressLocality": "Lochau",
-        "addressRegion": "Vorarlberg",
-        "addressCountry": "AT"
-      },
-      "priceRange": "€€€",
-      "currenciesAccepted": "EUR",
-      // Google Business Profile listing (cid = the place id 0x9006009a275bf15e).
-      "hasMap": "https://maps.google.com/?cid=10377983053407187294",
-      // Pin of the Google Business Profile listing.
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 47.5302782,
-        "longitude": 9.7517183
-      },
-      "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Vorarlberg" },
-        { "@type": "Country", "name": "Österreich" },
-        { "@type": "Country", "name": "Deutschland" },
-        { "@type": "Country", "name": "Schweiz" },
-        { "@type": "Country", "name": "Liechtenstein" }
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+43 5574 46255",
-        "email": "info@platzhirsch.studio",
-        "contactType": "customer service",
-        "areaServed": "AT",
-        "availableLanguage": ["German", "English", "Italian", "French"]
-      },
-      // Brands carried in the showroom (was a price-less OfferCatalog on the
-      // home page, which Google flags as incomplete offers).
-      "brand": [
-        "Minotti", "Poliform", "Rimadesio", "Flos", "Paola Lenti", "Tom Dixon",
-        "Eichholtz", "Gloster", "Tonon", "ClassiCon", "next125", "Tréca",
-        "101 Copenhagen", "Tuuci", "Trapa", "Umbrosa", "solpuri"
-      ].map((name) => ({ "@type": "Brand", "name": name })),
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "10:00",
-          "closes": "18:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "10:00",
-          "closes": "14:00"
-        }
-      ],
-      "sameAs": [
-        "https://www.instagram.com/platzhirsch.studio/",
-        "https://www.linkedin.com/company/platzhirsch-studio",
-        "https://www.facebook.com/platzhirsch.studio/"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://platzhirsch.studio/#website",
-      "url": "https://platzhirsch.studio",
-      "name": "Platzhirsch Home Living",
-      "inLanguage": ["de-AT", "en", "fr-FR", "it-IT"],
-      "publisher": {
-        "@id": "https://platzhirsch.studio/#organization"
-      }
-    }
-  ]
-};
 
 // Site-wide DEFAULTS only. Canonical, hreflang and og:url are deliberately
 // NOT set here: every page sets its own, and a layout value would be inherited
@@ -133,15 +47,16 @@ const siteSchema = {
 // metadataBase is returned in every branch so relative image/canonical URLs
 // on the pages always resolve.
 const METADATA_BASE = new URL("https://platzhirsch.studio");
-const OG_LOCALE = { de: "de_DE", en: "en_US", fr: "fr_FR", it: "it_IT" };
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
 
   if (!routing.locales.includes(locale)) {
     // Not a locale (e.g. /wp-login.php): the page becomes the global 404 in
-    // src/app/not-found.js, so title it in the visitor's language.
-    return { metadataBase: METADATA_BASE, title: await notFoundTitle(await detectLocale()) };
+    // src/app/not-found.js, which is German. No cookies()/headers() here: the
+    // tree is static, and reading request data turned these 404s into 500s in
+    // the production build (R4-release, errors.spec.js).
+    return { metadataBase: METADATA_BASE, title: await notFoundTitle(routing.defaultLocale) };
   }
 
   const defaults = {
@@ -149,11 +64,15 @@ export async function generateMetadata({ params }) {
     title: "Platzhirsch Home Living",
     openGraph: {
       siteName: "Platzhirsch Home Living",
-      locale: OG_LOCALE[locale] || OG_LOCALE.de,
+      // Same map as every page (pageMetadata.js OG_LOCALE).
+      locale: ogLocale(locale),
       type: "website",
       images: [{ url: "/Images/Home/aboutHome.jpg", alt: "Platzhirsch Home Living" }],
     },
     twitter: { card: "summary_large_image", images: ["/Images/Home/aboutHome.jpg"] },
+    // Rich Pins (Inhaber-Entscheidung Nr. 14): <meta name="p:domain_verify">
+    // nur, wenn PINTEREST_DOMAIN_VERIFY gesetzt ist (leer = kein Tag).
+    ...pinterestVerificationMetadata(),
   };
 
   try {
@@ -178,6 +97,20 @@ export async function generateMetadata({ params }) {
   }
 }
 
+// Only the four locales exist. Runde 5 (r5-technik P0-1): NO
+// `dynamicParams = false` here any more. Next 16.4 combines the segment
+// configs of a route with every() (build/static-paths/app.js: "dynamic params
+// should be allowed to be granular per segment but …"), so a `false` on this
+// layout closed EVERY route below it: marken/[title]/[collection] got
+// `fallback: false` and all brand × category / collection pages answered 404
+// in the production build, although the page sets `dynamicParams = true`.
+// Unknown first segments (/wp-login.php, /foo.html) are rewritten instead to
+// an unknown single segment of the default locale (next.config.js,
+// UNKNOWN_LOCALE_REWRITE, afterFiles) – that hits [locale]/[slug] with its
+// own `dynamicParams = false` and gets the same prerendered 404 of
+// src/app/not-found.js (lang="de", server-rendered) as before. notFound()
+// below stays as a second line of defence.
+// Regression test: tests/unit/r9-p1-prerender-manifest.test.mjs.
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -213,22 +146,32 @@ export default async function LocaleLayout({ children, params }) {
 
   // The locale is now correctly set from params
   return (
-    <html lang={locale} dir="ltr" className={`${montserrat.variable} ${bodoni.variable}`}>
+    <html lang={locale} dir="ltr" className={`${bodoni.variable} ${bodoniItalic.variable} ${instrument.variable}`}>
       <head>
         {/* Google Consent Mode v2 default lives in Cookies/cookiecomponent.js
             (ensureGtag): no Google tag loads before consent, and a raw <script>
             here was re-created by React on every client-side language switch
             ("Encountered a script tag while rendering React component"). */}
         <meta name="ahrefs-site-verification" content="7c9d1c48de554cc2567eb6db64f49352c141ab335b8573e9366103bc7aaa9587" />
-        {/* FadeInView renders with inline opacity:0 until JS reveals it —
-            without JS (crawlers, JS-off) show that content immediately. */}
-        <noscript>
-          <style>{"[data-fade-in]{opacity:1!important;transform:none!important}"}</style>
-        </noscript>
+        {/* No <noscript> override needed: the reveal motion is pure CSS, nothing is
+            hidden before hydration (R4-shell-perf). */}
       </head>
       <body>
-        <JsonLd data={siteSchema} />
-        <LoaderWrapper messages={messages} locale={locale} activeCategoryKeys={activeCategoryKeys}>
+        {/* Tempo & A11y (Konsolidierung): the one copy of the wordmark outline
+            that the header and footer lockups draw with <use> (Brand/Logo.js). */}
+        <WordmarkSprite />
+        <JsonLd data={SITE_SCHEMA} />
+        {/* Header and footer are Server Components (R4-shell-perf, TBT): their
+            markup and link data arrive as HTML; only the small islands inside
+            (menus, search, language, consent button, calm view) ship
+            JavaScript. They are handed to the client shell as slots, so
+            ClientLayout can still leave them out on the slim /upload shell. */}
+        <LoaderWrapper
+          messages={pickClientMessages(messages)}
+          locale={locale}
+          header={<Navbar activeCategoryKeys={activeCategoryKeys} />}
+          footer={<Footer activeCategoryKeys={activeCategoryKeys} />}
+        >
           {children}
         </LoaderWrapper>
       </body>

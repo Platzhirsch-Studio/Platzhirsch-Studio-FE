@@ -1,212 +1,280 @@
 "use client";
 
-import React, { useState } from "react";
-import { Trash2, ShoppingBag, ArrowRight } from "lucide-react";
-import { useCart, wishlistImageSrc } from "@/context/CartContext";
+import React, { useMemo, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Printer, Share2, Trash2, X } from "lucide-react";
+import { useCart, wishlistImageSrc } from "@/context/CartContext";
+import { Link } from "@/i18n/navigation";
+// Rat 9,5 B9: Merkliste (Stücke) und Ideenboard (Ideen) als Reiter von „Ihre Auswahl“.
+import SelectionTabs from "./SelectionTabs";
+import { selectionText } from "./selectionCopy";
+import { decodeSelection, selectionShareUrl, shareFromHash } from "./selectionShare";
 import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
 import AnfrageFormProduct from "@/components/AnfrageFormProduct/AnfrageFormProduct";
-import { useTranslations } from "next-intl";
 import { generateSlug } from "@/lib/slugify";
-import { productsPath, localizeProductsHref } from "@/utils/routing";
+import { productsPath, localizeProductsHref, ROUTES } from "@/utils/routing";
+import { leadsCopy, selectionLabel } from "@/lib/forms/leadsCopy";
+import Button from "@/components/ui/Button";
+import Container from "@/components/ui/Container";
+import Heading from "@/components/ui/Heading";
+import LinkArrow from "@/components/ui/LinkArrow";
+import { withFallback } from "@/components/ShopCatalog/copy";
 
+// Empty selection: three ways in (labels = menu labels, Shell.nav.*; own photos).
+const EMPTY_WAYS = [
+  { key: "living", fallback: "Wohnen", href: "/wohnzimmer-einrichten-vorarlberg", src: "/Images/Wohnen/bannerImage4.jpg" },
+  { key: "kitchen", fallback: "Küche", href: "/kuechen-vorarlberg", src: "/Images/Kuche/bannerImageKuche1.jpg" },
+  { key: "outdoor", fallback: "Outdoor", href: "/outdoor-gartenplanung", src: "/Images/Outdoor/bannerImage1.jpg" },
+];
 
-export default function CartPage() {
-  const { cartItems, removeFromCart, clearCart } = useCart();
+// "Ihre Auswahl" (Merkliste, Bibel §10): the saved pieces from CartContext
+// (localStorage) as a quiet gallery, and ONE primary action – send the
+// selection as a request (AnfrageFormProduct, unchanged). Logic as before:
+// remove one, clear all, open the form with cartItems.
+// R4-leads (AP3 Nr. 4): second way "Diese Auswahl im Showroom ansehen" →
+// /beratung?produkt=<Marke Name, …>; the consultation form starts with the
+// selection named. Texts: messages `cart.selection.showroom*`, fallback
+// src/lib/forms/leadsCopy.js.
+// The page (merkliste/page.js) renders the H1 „Ihre Auswahl“ in its banner.
+// Rat 9,5 B9 (T2, ux Nr. 4, Bibel §10.2): no second heading any more (R6 P2-8),
+// tabs „Stücke“ / „Ideen“, three equal ways (Angebot anfragen, im Showroom
+// ansehen, Teilen per Link im #Fragment), Druckansicht/PDF, and in the empty
+// state a way to the consultation. A shared link (#auswahl=…) shows the shared
+// pieces with „In meine Auswahl übernehmen“ (selectionShare.js).
+const itemKey = (item) => `${item.id}-${item.name}-${item.category || "default"}`;
+
+const subscribeHash = (cb) => {
+  window.addEventListener("hashchange", cb);
+  return () => window.removeEventListener("hashchange", cb);
+};
+const hashSnapshot = () => window.location.hash;
+const noHash = () => "";
+
+export default function CartPage({ shop = false, shopLabel } = {}) {
+  const { cartItems, removeFromCart, clearCart, addManyToCart } = useCart();
   const [showForm, setShowForm] = useState(false);
+  const [say, setSay] = useState("");
+  const hash = useSyncExternalStore(subscribeHash, hashSnapshot, noHash);
+  const shared = useMemo(() => decodeSelection(shareFromHash(hash)), [hash]);
   const pathname = usePathname();
   const locale = getLocaleFromPath(pathname);
   const t = useTranslations("cart");
+  const tc = withFallback(t, locale, "cart");
+  const tRoot = useTranslations();
+  const tx = (k, v) => selectionText(t, locale, k, v);
+  const beratungPath = ROUTES.beratung[locale] || ROUTES.beratung.de;
 
-  const handleClearAll = () => {
-    clearCart();
+  const closeShared = () => {
+    try {
+      window.history.replaceState(window.history.state, "", window.location.pathname + window.location.search);
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    } catch {
+      /* ignore */
+    }
   };
-
-  const handleSubmitRequest = () => {
-    setShowForm(true);
+  const takeShared = () => {
+    addManyToCart(shared);
+    closeShared();
+    setSay(tx("sharedTaken"));
+  };
+  const share = async () => {
+    const url = selectionShareUrl({ origin: window.location.origin, pathname: window.location.pathname, items: cartItems });
+    if (!url) return;
+    if (navigator.share && window.matchMedia?.("(pointer: coarse)").matches) {
+      try {
+        await navigator.share({ title: tx("shareTitle"), url });
+        return;
+      } catch (e) {
+        if (e?.name === "AbortError") return;
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setSay(tx("shareCopied"));
+    } catch {
+      window.prompt(tx("share"), url);
+      setSay(tx("shareFailed"));
+    }
   };
 
   if (showForm) {
     return <AnfrageFormProduct onBack={() => setShowForm(false)} cartItems={cartItems} />;
   }
 
+  const count = cartItems.length;
+
   return (
-    <div className="max-w-7xl mx-auto px-6 py-8">
-      <div className="flex justify-between items-center mb-12 pb-4 border-b border-gray-100">
-        <h2 className="text-2xl font-normal text-gray-900">{t("wishlist")}</h2>
-        {cartItems.length > 0 && (
-          <button
-            onClick={handleClearAll}
-            className="flex items-center gap-2 text-gray-600 hover:text-red-700 transition-colors duration-200 uppercase text-sm font-medium cursor-pointer"
-          >
-            <Trash2 size={18} />
-            {t("clearList")}
-          </button>
+    // Runde 5 (ux P2-9): the page head has no photo any more – little space
+    // above, so the empty state ("Noch nichts gemerkt.") is in the first screen.
+    <Container className="pt-2 pb-section md:pt-4" data-selection="">
+      <p role="status" aria-live="polite" className="sr-only">
+        {say}
+      </p>
+      <SelectionTabs active="stuecke" locale={locale} shop={shop} shopLabel={shopLabel} />
+      {shared.length > 0 && (
+        <section aria-labelledby="auswahl-geteilt" className="mt-8 border border-line bg-surface-raised p-6 print:hidden" data-selection-shared="">
+          <Heading id="auswahl-geteilt" level={2} size="title">
+            {tx("sharedTitle")}
+          </Heading>
+          <p className="mt-2 text-body text-text-soft">{tx("sharedText")}</p>
+          <ul className="mt-4 space-y-1 text-body" role="list">
+            {shared.map((item) => (
+              <li key={itemKey(item)}>{[item.category, item.name].filter(Boolean).join(" · ")}</li>
+            ))}
+          </ul>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button variant="secondary" onClick={takeShared}>
+              {tx("sharedTake")}
+            </Button>
+            <Button variant="ghost" onClick={closeShared}>
+              {tx("sharedDismiss")}
+            </Button>
+          </div>
+        </section>
+      )}
+      {count > 0 && (
+      <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pt-6 pb-8">
+        <p className="max-w-measure text-body text-text-soft">{tc("selection.lead")}</p>
+        {count > 0 && (
+          <div className="flex items-center gap-4">
+            <p className="tabular text-small text-text-soft" aria-live="polite">
+              {tc("selection.count", { count })}
+            </p>
+            <Button variant="ghost" onClick={clearCart} className="print:hidden">
+              <span className="inline-flex items-center gap-2">
+                <Trash2 aria-hidden="true" className="size-4" strokeWidth={1.5} />
+                {t("clearList")}
+              </span>
+            </Button>
+          </div>
         )}
       </div>
+      )}
 
-      {cartItems.length === 0 ? (
-        <div className="max-w-3xl mx-auto px-4 py-8">
-          <div className="flex flex-col items-center text-center justify-center py-10 text-gray-500">
-            <div className="w-32 h-32 mb-8 bg-gray-100 rounded-full flex items-center justify-center">
-              <ShoppingBag size={60} className="text-gray-400" />
-            </div>
-            <h3 className="text-xl font-normal mb-3 text-gray-800">{t("noItemsHeadline")}</h3>
-            <Link href={productsPath(locale)} locale={locale}>
-              <p className="text-[#d1b250] font-medium hover:underline">{t("findProducts")}</p>
-            </Link>
-          </div>
+      {count === 0 ? (
+        <div className="py-10 md:py-12" data-selection-empty="">
+          <p className="text-title text-text">{tc("selection.emptyTitle")}</p>
+          <p className="mt-stack-s max-w-measure text-body text-text-soft">{tc("selection.emptyText")}</p>
+          <LinkArrow href={productsPath(locale)} className="mt-4">
+            {tc("selection.browse")}
+          </LinkArrow>
+          {/* QM content-legal r3 (iPad): the empty state was text in a lot of white – three
+              ways in, with our own room photos (the same as on the planning pages). */}
+          <ul className="mt-10 grid grid-cols-1 gap-x-grid gap-y-8 sm:grid-cols-3" data-selection-start="">
+            {EMPTY_WAYS.map((w) => (
+              <li key={w.key}>
+                <Link href={w.href} className="group block">
+                  <span className="relative block aspect-[3/2] overflow-hidden bg-surface-raised">
+                    <Image src={w.src} alt="" fill sizes="(min-width: 1440px) 440px, (min-width: 640px) 30vw, 100vw" quality={60} className="object-cover transition-transform duration-(--duration-ui) ease-quiet group-hover:scale-[1.02] motion-reduce:transition-none" />
+                  </span>
+                  <span className="mt-3 block text-title text-text underline decoration-transparent underline-offset-4 group-hover:decoration-current">
+                    {tRoot.has(`Shell.nav.${w.key}`) ? tRoot(`Shell.nav.${w.key}`) : w.fallback}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {/* QM content-legal: as an inline-flex inside running text the 44 px link
+              stretched its line and broke "beraten / lassen?" apart on phones – text
+              and link now wrap as two units. */}
+          <p className="mt-10 flex flex-wrap items-center gap-x-2 border-t border-line pt-6 text-body text-text">
+            <span>{tx("emptyAdvice")}</span>
+            <LinkArrow href={beratungPath} data-selection-advice="">
+              {tx("emptyAdviceLink")}
+            </LinkArrow>
+          </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {cartItems.map((item) => (
-            <div
-              key={`${item.id}-${item.name}-${item.category || "default"}`}
-              className="bg-white border border-gray-100 rounded hover:shadow-sm transition-shadow duration-300 overflow-hidden"
-            >
-              <div className="relative w-full h-64 bg-gray-50">
-                {item.image ? (
-                  <Image
-                    src={wishlistImageSrc(item?.image)}
-                    alt={item?.name || "Produktbild"}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-300">
-                    <ShoppingBag size={48} />
-                  </div>
-                )}
-              </div>
-              <div className="p-4">
-                <div className="mb-3">
-                  <h3 className="font-normal uppercase text-gray-900 text-normal leading-tight mb-2 overflow-hidden text-ellipsis whitespace-nowrap max-w-50">
-                    {item.name}
-                  </h3>
-                  {item.category && <p className="text-sm text-[#d1b250] font-normal">{item.category}</p>}
-                </div>
-                <div className="flex justify-between align-center">
-                  <Link
-                    href={localizeProductsHref(item.href || productsPath("de", generateSlug(item?.kategories), item.url_slug), locale)}
-                    locale={locale}
-                    className="bg-gray-200 hover:bg-[#d1b250] py-2 px-10 rounded-full shadow-sm hover:shadow-md transition-all duration-200 text-gray-600 group cursor-pointer"
-                  >
-                    <p className="group-hover:text-white text-sm">{t("productDetail")}</p>
-                  </Link>
+        <>
+          <ul className="mt-12 grid grid-cols-1 gap-x-grid gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {cartItems.map((item) => {
+              const href = localizeProductsHref(item.href || productsPath("de", generateSlug(item?.kategories), item.url_slug), locale);
+              const src = wishlistImageSrc(item?.image);
+              return (
+                <li key={itemKey(item)}>
+                  <article className="group relative flex flex-col">
+                    <div className="relative aspect-[3/2] overflow-hidden bg-surface-raised">
+                      {src && (
+                        <Image
+                          src={src}
+                          alt={[item.category, item.name].filter(Boolean).join(" ")}
+                          fill
+                          sizes="(min-width: 1280px) 22vw, (min-width: 1024px) 30vw, 46vw"
+                          className="object-contain p-4 mix-blend-multiply sm:p-6"
+                        />
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => removeFromCart(itemKey(item))}
+                        aria-label={tc("selection.remove", { name: item.name })}
+                        title={tc("selection.remove", { name: item.name })}
+                        className="absolute right-2 top-2 z-10 inline-flex size-11 items-center justify-center bg-paper/90 text-ink transition-colors duration-(--duration-micro) hover:bg-paper print:hidden"
+                      >
+                        <X aria-hidden="true" className="size-4" strokeWidth={1.5} />
+                      </button>
+                    </div>
+                    <div className="mt-3 flex flex-col gap-1">
+                      {item.category && <p className="text-overline uppercase text-text-soft">{item.category}</p>}
+                      <h3 className="text-ui text-text">
+                        <Link
+                          href={href}
+                          locale={locale}
+                          className="ph-stretched underline decoration-transparent underline-offset-4 group-hover:decoration-current"
+                        >
+                          {item.name}
+                        </Link>
+                      </h3>
+                    </div>
+                  </article>
+                </li>
+              );
+            })}
+          </ul>
 
-                  <button
-                    onClick={() => removeFromCart(`${item.id}-${item.name}-${item.category || "default"}`)}
-                    className="bg-gray-200 hover:bg-red-600 py-2 px-4 rounded-full shadow-sm hover:shadow-md transition-all duration-200 text-gray-600 group cursor-pointer"
-                  >
-                    <Trash2 size={20} className="group-hover:text-white" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+          {/* Drei gleich gewichtete Wege (Bibel §10.2): gleiche Knopfart, gleiche Breite */}
+          <section aria-labelledby="auswahl-wege" className="mt-20 border-t border-line pt-12 print:hidden" data-selection-ways="">
+            <h2 id="auswahl-wege" className="text-overline uppercase text-text-accent">
+              {tx("ways")}
+            </h2>
+            <ul className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-3" role="list">
+              <li>
+                <Button variant="secondary" onClick={() => setShowForm(true)} fullWidth data-selection-way="angebot">
+                  {tx("offer")}
+                </Button>
+                <p className="mt-3 text-small text-text-soft">{tx("offerNote")}</p>
+              </li>
+              <li>
+                <Button
+                  variant="secondary"
+                  href={`${beratungPath}?produkt=${encodeURIComponent(selectionLabel(cartItems))}`}
+                  fullWidth
+                  data-selection-way="termin"
+                >
+                  {leadsCopy(tRoot, locale, "cart.selection.showroom")}
+                </Button>
+                <p className="mt-3 text-small text-text-soft">{tx("terminNote")}</p>
+              </li>
+              <li>
+                <Button variant="secondary" onClick={share} fullWidth data-selection-way="teilen">
+                  <span className="inline-flex items-center gap-2">
+                    <Share2 aria-hidden="true" className="size-4" strokeWidth={1.5} />
+                    {tx("share")}
+                  </span>
+                </Button>
+                <p className="mt-3 text-small text-text-soft">{tx("shareNote")}</p>
+              </li>
+            </ul>
+            <Button variant="link" onClick={() => window.print()} className="mt-8" data-selection-print="">
+              <span className="inline-flex items-center gap-2">
+                <Printer aria-hidden="true" className="size-4" strokeWidth={1.5} />
+                {tx("print")}
+              </span>
+            </Button>
+          </section>
+        </>
       )}
-      {cartItems.length > 0 && (
-        <div className="mt-16 flex justify-center">
-          <div className="w-full max-w-md">
-            <div className="flex justify-center">
-              <button onClick={handleSubmitRequest} className="
-      group
-      relative
-      flex
-      h-11.25
-      w-full
-      items-center
-      justify-center
-      overflow-hidden
-      rounded-[3px]
-      border-2
-      border-[#d1b250]
-      bg-transparent
-      p-1.25
-      text-[13px]
-      font-medium
-      uppercase
-      tracking-[1px]
-      text-[#30373e]
-      transition-all
-      duration-500
-
-      max-sm:h-10
-      max-sm:w-65
-      max-sm:text-[12px]
-
-      before:absolute
-      before:right-0
-      before:top-0
-      before:h-0.5
-      before:w-0
-      before:bg-[rgb(92,92,92)]
-      before:transition-all
-      before:duration-500
-      before:ease-[cubic-bezier(0.35,0.1,0.25,1)]
-
-      after:absolute
-      after:bottom-0
-      after:left-0
-      after:h-0.5
-      after:w-0
-      after:bg-[rgb(92,92,92)]
-      after:transition-all
-      after:duration-500
-      after:ease-[cubic-bezier(0.35,0.1,0.25,1)]
-
-      hover:before:w-full
-      hover:after:w-full
-    ">
-                <span className="
-        absolute
-        left-0
-        top-0
-        z-1
-        h-full
-        w-full
-
-        before:absolute
-        before:right-0
-        before:top-0
-        before:h-0
-        before:w-0.5
-        before:bg-[rgb(92,92,92)]
-        before:transition-all
-        before:duration-500
-        before:ease-[cubic-bezier(0.35,0.1,0.25,1)]
-
-        after:absolute
-        after:bottom-0
-        after:left-0
-        after:h-0
-        after:w-0.5
-        after:bg-[rgb(92,92,92)]
-        after:transition-all
-        after:duration-500
-        after:ease-[cubic-bezier(0.35,0.1,0.25,1)]
-
-        group-hover:before:h-full
-        group-hover:after:h-full
-      "></span>
-                <p className="relative z-2 inline-flex items-center gap-2 p-0 text-black" data-title={t("sendRequest")}>
-                  {t("sendRequest")} <ArrowRight className="ml-2 h-4w-4
-          transition-transform
-          duration-300
-          ease-in-out
-          group-hover:translate-x-1" />
-
-
-                </p>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+    </Container>
   );
 }

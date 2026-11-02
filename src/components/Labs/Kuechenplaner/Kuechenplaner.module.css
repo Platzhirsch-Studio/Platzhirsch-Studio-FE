@@ -1,0 +1,221 @@
+/* Küchenplaner – seitenbezogene Regeln (QA Runde 1, P1-4).
+   Die seitenweite Leiste „Anrufen / Termin anfragen“ (MobileCtaBar, gehört dem
+   Website-Team) wird auf dieser Seite ausgeblendet: Der Planer hat unten eine
+   eigene Leiste mit Preis und „Anfragen“. Reines CSS, also ohne Aufblitzen. */
+:global(body):has(.root) :global(div.fixed.inset-x-0.bottom-0.grid.grid-cols-2) {
+  display: none !important;
+}
+
+/* Felder und Meldungen landen beim Fokussieren/Scrollen nie unter der
+   angehefteten Ansicht (oben) oder der Preisleiste (unten, mobil).
+   R2 (Auflage R6): 24 px mehr Abstand oben (mobil und Desktop), damit das Label über dem
+   Feld beim Fehlerfokus sichtbar bleibt. */
+.panel :is(input, select, textarea, button, a, [role="alert"], [role="status"]) {
+  scroll-margin-top: calc(var(--kp-top, 64px) + var(--kp-stick, 0px) + 36px);
+  scroll-margin-bottom: 96px;
+}
+
+@media (min-width: 1024px) {
+  .panel :is(input, select, textarea, button, a, [role="alert"], [role="status"]) {
+    scroll-margin-bottom: 24px;
+  }
+}
+
+/* Druckansicht (Pro-Ausbau): Seitenkopf, Fuß, Cookie-Leiste und Anruf-Leiste
+   der Website weglassen (Kopf und Fuß der Druckansicht sind <div>, keine <header>/<footer>). */
+@media print {
+  :global(body):has(.print) :global(header),
+  :global(body):has(.print) :global(footer),
+  :global(body):has(.print) :global(div.fixed),
+  :global(body):has(.print) :global(section[role="region"]) {
+    display: none !important;
+  }
+  .print {
+    font-size: 11px;
+  }
+  .print svg {
+    max-height: 120mm;
+  }
+}
+
+/* QM planer-tools (01.11.2026): Die feste Preisleiste (mobil/Tablet, < 1024 px)
+   verdeckte am Seitenende die letzten Footer-Links (Privatsphäre-Einstellungen,
+   Barrierefreiheit, 29 %) und beim Fokussieren per Tastatur die Reiter bzw. die
+   Grundform-Knöpfe ganz (WCAG 2.4.11). Darum: Platz in Leistenhöhe unter der
+   Seite und scroll-padding, damit Fokus-Scrollen über der Leiste endet. */
+@media (max-width: 1023px) {
+  :global(body):has(.root) {
+    /* --kp-bar-h: gemessene Leistenhöhe (enthält die Safe-Area), sonst Schätzwert */
+    padding-bottom: var(--kp-bar-h, calc(76px + env(safe-area-inset-bottom)));
+  }
+  :global(html):has(.root) {
+    scroll-padding-bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+  .stick :is(button, a, input, select) {
+    scroll-margin-bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Fix 1, P3-4: Preisleiste (mobil) weicht, solange ein Eingabefeld fokussiert ist –
+   die Bildschirmtastatur und das Feld bleiben frei. */
+.root:has(.panel :is(input:not([type="checkbox"]):not([type="range"]), select, textarea):focus) .priceBar {
+  visibility: hidden;
+}
+
+/* Mobil-A11y fix-01 (WCAG 2.4.11 Focus Not Obscured, 1.3.4 Orientation):
+   Handy quer (≈ 340 px sichtbare Höhe) – die angeheftete Ansicht (Header + Plan +
+   Reiter ≈ 490 px) wäre höher als der Bildschirm, kein einziges Feld bliebe sichtbar.
+   Dort scrollt die Ansicht mit der Seite. */
+/* QM planer-tools: zu hohe Ansicht (200 % Textgröße, data-kp-tall aus KuechenplanerApp.js) scrollt mit */
+.root[data-kp-tall] .stick {
+  position: relative !important;
+  top: auto !important;
+}
+.root[data-kp-tall] {
+  --kp-stick: 0px !important;
+}
+
+@media (max-width: 1023px) and (max-height: 500px) {
+  .stick {
+    position: relative !important;
+    /* QM planer-tools (01.11.2026): ohne top:auto wirkte top: var(--kp-top) als
+       relativer Versatz – die Ansicht lag 57 px über dem ersten Panel-Absatz. */
+    top: auto !important;
+  }
+  .root {
+    --kp-stick: 0px !important;
+  }
+}
+
+/* Bildschirmtastatur bzw. Auswahlrad (Touch, unter 1024 px): Solange ein Feld im
+   Panel fokussiert ist, löst sich die Ansicht – sonst verdeckt sie (≈ 390 px hoch)
+   bei offener Tastatur (sichtbar bleiben ≈ 360 px) genau das Feld, in das man tippt.
+   Die Ansicht bleibt an ihrem Platz im Fluss, das Panel springt nicht. */
+@media (max-width: 1023px) and (pointer: coarse) {
+  .root:has(.panel :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea):focus) .stick {
+    position: relative;
+    top: auto; /* QM planer-tools: sonst verschiebt top (Tailwind) die Ansicht über das Panel */
+  }
+  .root:has(.panel :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea):focus) {
+    --kp-stick: 0px !important;
+  }
+  :global(html):has(.root .panel :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea):focus) {
+    scroll-padding-top: calc(var(--kp-top-px, 64px) + 8px) !important;
+  }
+}
+
+/* Motion planer-tools (01.11.2026): Reiterwechsel. Der neue Panelinhalt wird
+   eingesetzt und setzt sich in 240 ms (--duration-swap) aus 0,6 Deckkraft und
+   4 px Versatz – nur opacity/transform, kein Layout, nie unsichtbar. Gilt nur
+   für neu eingesetzte Kinder (Wechsel des Reiters), Eingaben im selben Reiter
+   lösen nichts aus. Ruhige Ansicht / reduzierte Bewegung: sofort. */
+@keyframes kpSwapIn {
+  from {
+    opacity: 0.6;
+    transform: translateY(4px);
+  }
+}
+@keyframes kpTick {
+  from {
+    opacity: 0.6;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .panel > * {
+    animation: kpSwapIn var(--duration-swap, 240ms) var(--ease-quiet, ease-out) both;
+  }
+  /* Preis-/Zahlwechsel: Text wird per key neu eingesetzt, 0,6 → 1. */
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .tick {
+    animation: kpTick var(--duration-ui, 280ms) var(--ease-quiet, ease-out) both;
+  }
+}
+@media print {
+  .panel > *,
+  .tick {
+    animation: none !important;
+  }
+}
+
+/* QM planer-tools r3 (01.11.2026) */
+/* Reiterleiste: scrollt bei großer Textgröße seitlich (eine Zeile statt 4 + 1),
+   ohne sichtbaren Balken; Scroll-Snap hält Reiter ganz im Bild. */
+.tabs {
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+.tabs > * {
+  scroll-snap-align: center;
+}
+
+/* Panel: Breite in rem gemessen → bei 200 % Text (Panel < 21rem ≈ 672 px) stehen
+   Auswahlkarten einspaltig, statt dass „Zweizeilig“ über die Karte läuft und
+   Untertitel ein Wort pro Zeile zeigen. Bei normaler Schrift (336 px) bleibt
+   alles zweispaltig. Lange Wörter werden nach Sprache getrennt. */
+.panel {
+  container: kp-panel / inline-size;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+@container kp-panel (max-width: 21rem) {
+  .panel :global(:is(.grid.grid-cols-2, .grid.grid-cols-3)) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Handy mit wenig Höhe (iPhone SE, 667 px): Ansicht etwas flacher, damit unter
+   Header + Ansicht + Reitern + Preisleiste rund ein Drittel für das Panel bleibt
+   (vorher ≈ 21 %). Reines CSS, wirkt auch vor der Hydration. */
+@media (max-width: 1023px) and (max-height: 760px) and (min-height: 501px) {
+  .view:not([class*="h-24"]) {
+    height: calc(clamp(224px, 30svh, 260px) + 68px) !important; /* 224 px: linke Planleiste (5 Knöpfe) passt */
+  }
+}
+@media (max-width: 1023px) and (max-height: 500px) {
+  /* Preisleiste quer kompakt: Zusatzzeile nur für Vorlesesoftware */
+  .priceBar [data-kp-line] + [data-kp-line] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* QM planer-tools r3: Handy quer (≥ 640 × ≤ 500 px) – Ansicht und Panel nebeneinander
+   wie am Desktop. Vorher stand die Ansicht (≈ 290 px) über dem Panel, zwischen Header
+   und Preisleiste war vom Panel nichts zu sehen – auch vor der Hydration, denn das
+   hier ist reines CSS. Links: Ansicht + Reiter angeheftet und so hoch wie der freie
+   Platz; rechts scrollt das Panel. Die Planleisten scrollen in sich, falls sie
+   nicht ganz passen. KuechenplanerApp.js erkennt die zwei Spalten (--kp-stick 0). */
+@media (max-width: 1023px) and (max-height: 500px) and (min-width: 640px) {
+  .root {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) !important;
+    column-gap: 16px;
+    align-items: start;
+  }
+  .stick {
+    position: sticky !important;
+    top: var(--kp-top, 64px) !important;
+    display: flex;
+    flex-direction: column;
+    height: calc(100svh - var(--kp-top, 64px) - var(--kp-bar-h, 60px));
+    margin-inline: 0;
+  }
+  .view,
+  .view:not([class*="h-24"]) {
+    flex: 1 1 auto;
+    height: auto !important;
+    min-height: 0;
+  }
+  .view [role="group"] {
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .root > :nth-child(2) {
+    min-height: 0;
+  }
+}

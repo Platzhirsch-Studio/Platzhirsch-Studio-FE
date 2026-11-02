@@ -1,0 +1,893 @@
+{
+  "name": "Saki \"Cord\" Outdoor",
+  "slug": "saki-cord-outdoor",
+  "hersteller": "Minotti",
+  "designer": "nendo (Oki Sato)",
+  "jahr": 2025,
+  "jahr_hinweis": "Produktseite verweist unter „View the whole range“ auf die „2025 Collection“; technisches Datenblatt Stand November 2025. Ein explizites Erscheinungsjahr steht nicht auf der Seite.",
+  "typ": "Modulares Outdoor-Sitzsystem (Outdoor-Version von Saki) mit geflochtenen Cord-Stützpaneelen: 2-, 3- und 4-Sitzer in zwei Tiefen (91/95 cm), Ecksofas, End-, Eck- und Mittelelemente, Bänke, Inselelemente (mod. A–G, fest oder drehbar), Sessel mit/ohne Armlehnen und Hocker.",
+  "quellen": [
+    "https://www.minotti.com/en/saki-cord-outdoor",
+    "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/26203/29858/SAKI%20OUTDOOR_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/26204/29860/SAKI%20OUTDOOR_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/26205/29862/SAKI%20OUTDOOR_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/26206/29864/SAKI%20OUTDOOR_arrangement_04.pdf",
+    "https://www.minotti.com/downloads/26207/29866/SAKI%20OUTDOOR_arrangement_05.pdf",
+    "https://www.minotti.com/downloads/26208/29868/SAKI%20OUTDOOR_arrangement_06.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Alle Maße in cm laut gemeinsamem technischem Datenblatt „SAKI OUTDOOR | SAKI CORD OUTDOOR“ (Stand November 2025; Cord-Version Seiten 7–11); Maße beider Versionen identisch. Sitzhöhe und „seitenkote_cm“ (unbeschriftete Höhenkote der Seitenansicht, 61/62 cm, vermutlich Armlehnen-/Paneelhöhe) sind je Abschnitt nur beim ersten Element bemaßt; die Sitzhöhe wurde für gleichartige Elemente übernommen (im Element vermerkt), die Seitenkote nur dort eingetragen, wo bemaßt. Sitztiefe = Kote in der Draufsicht.",
+  "anzahl_elemente": 40,
+  "vollstaendigkeit": {
+    "gesamt_prozent": 94,
+    "kernmasse_prozent": 100,
+    "familienfelder_prozent": 80,
+    "methode": "Kernmaße (B/T/H/Sitzhöhe/Sitztiefe) aller Elemente (Gewicht 70 %) + 10 Familienfelder (Gewicht 30 %; fehlend: offizielle Artikelcodes, Bezugs-/Preiskategorien)."
+  },
+  "elemente": [
+    {
+      "code": "saki-cord-outdoor-sessel-104x91",
+      "code_offiziell": null,
+      "name": "Armchair 104x91xh70 cm",
+      "art": "sessel",
+      "breite_cm": 104,
+      "tiefe_cm": 91,
+      "hoehe_cm": 70,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 61,
+      "varianten": [],
+      "anschluesse": "Einzelsessel.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-sessel-armlehne-92x91",
+      "code_offiziell": null,
+      "name": "Armchair with armrest 92x91xh70 cm",
+      "art": "sessel",
+      "breite_cm": 92,
+      "tiefe_cm": 91,
+      "hoehe_cm": 70,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 61,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Einzelsessel.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-sessel-ohne-armlehnen-80x91",
+      "code_offiziell": null,
+      "name": "Armchair without armrests 80x91xh70 cm",
+      "art": "sessel",
+      "breite_cm": 80,
+      "tiefe_cm": 91,
+      "hoehe_cm": 70,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 61,
+      "varianten": [],
+      "anschluesse": "Einzelsessel.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-hocker-80x78",
+      "code_offiziell": null,
+      "name": "Footstool / Ottoman 80x78xh41 cm",
+      "art": "hocker",
+      "breite_cm": 80,
+      "tiefe_cm": 78,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 78,
+      "seitenkote_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehend; als Ergänzung vor Sessel oder Sofa.",
+      "hinweis": "Sitztiefe = Gesamttiefe (keine eigene Sitztiefenkote).",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-sofa-180x91",
+      "code_offiziell": null,
+      "name": "Sofa 180x91 cm",
+      "art": "sofa",
+      "breite_cm": 180,
+      "tiefe_cm": 91,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-sofa-254x91",
+      "code_offiziell": null,
+      "name": "Sofa 254x91 cm",
+      "art": "sofa",
+      "breite_cm": 254,
+      "tiefe_cm": 91,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitzhöhe vom Sofa 180x91 übernommen (im Blatt nur dort bemaßt).",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-mittel-156x91",
+      "code_offiziell": null,
+      "name": "Central element 156x91 cm",
+      "art": "mittel",
+      "breite_cm": 156,
+      "tiefe_cm": 91,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 62,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-mittel-230x91",
+      "code_offiziell": null,
+      "name": "Central element 230x91 cm",
+      "art": "mittel",
+      "breite_cm": 230,
+      "tiefe_cm": 91,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": null,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "hinweis": "Sitzhöhe vom Element 156x91 übernommen.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-sofa-180x95",
+      "code_offiziell": null,
+      "name": "Sofa 180x95 cm",
+      "art": "sofa",
+      "breite_cm": 180,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-sofa-254x95",
+      "code_offiziell": null,
+      "name": "Sofa 254x95 cm",
+      "art": "sofa",
+      "breite_cm": 254,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitzhöhe vom Sofa 180x95 übernommen.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-sofa-328x95",
+      "code_offiziell": null,
+      "name": "Sofa 328x95 cm",
+      "art": "sofa",
+      "breite_cm": 328,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "hinweis": "Sitzhöhe vom Sofa 180x95 übernommen.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-ecksofa-180x95",
+      "code_offiziell": null,
+      "name": "Corner sofa 180x95 cm",
+      "art": "ecksofa",
+      "breite_cm": 180,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Sofa mit Eckabschluss auf einer Seite (SX/DX), für L-Kompositionen kombinierbar.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-ecksofa-254x95",
+      "code_offiziell": null,
+      "name": "Corner sofa 254x95 cm",
+      "art": "ecksofa",
+      "breite_cm": 254,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Sofa mit Eckabschluss auf einer Seite (SX/DX), für L-Kompositionen kombinierbar.",
+      "hinweis": "Sitzhöhe vom Ecksofa 180x95 übernommen.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 7)"
+    },
+    {
+      "code": "saki-cord-outdoor-ecksofa-328x95",
+      "code_offiziell": null,
+      "name": "Corner sofa 328x95 cm",
+      "art": "ecksofa",
+      "breite_cm": 328,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Sofa mit Eckabschluss auf einer Seite (SX/DX), für L-Kompositionen kombinierbar.",
+      "hinweis": "Sitzhöhe vom Ecksofa 180x95 übernommen.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 8)"
+    },
+    {
+      "code": "saki-cord-outdoor-endelement-168x95",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 168x95 cm",
+      "art": "endelement",
+      "breite_cm": 168,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel- oder Eckelement anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 8)"
+    },
+    {
+      "code": "saki-cord-outdoor-endelement-242x95",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 242x95 cm",
+      "art": "endelement",
+      "breite_cm": 242,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel- oder Eckelement anreihbar.",
+      "hinweis": "Sitzhöhe vom Element 168x95 übernommen.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 8)"
+    },
+    {
+      "code": "saki-cord-outdoor-endelement-316x95",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 316x95 cm",
+      "art": "endelement",
+      "breite_cm": 316,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel- oder Eckelement anreihbar.",
+      "hinweis": "Sitzhöhe vom Element 168x95 übernommen.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 8)"
+    },
+    {
+      "code": "saki-cord-outdoor-eckelement-168x95",
+      "code_offiziell": null,
+      "name": "Corner element 168x95 cm",
+      "art": "ecke",
+      "breite_cm": 168,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: bildet eine 90°-Ecke; an End-/Mittelelemente anreihbar.",
+      "hinweis": "Auf der Produktseite nicht gelistet, nur im Datenblatt.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 8)"
+    },
+    {
+      "code": "saki-cord-outdoor-eckelement-242x95",
+      "code_offiziell": null,
+      "name": "Corner element 242x95 cm",
+      "art": "ecke",
+      "breite_cm": 242,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: bildet eine 90°-Ecke; an End-/Mittelelemente anreihbar.",
+      "hinweis": "Auf der Produktseite fälschlich als „Element with 1 armrest“ gelistet; Sitzhöhe vom Eckelement 168x95 übernommen.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 8)"
+    },
+    {
+      "code": "saki-cord-outdoor-eckelement-316x95",
+      "code_offiziell": null,
+      "name": "Corner element 316x95 cm",
+      "art": "ecke",
+      "breite_cm": 316,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: bildet eine 90°-Ecke; an End-/Mittelelemente anreihbar.",
+      "hinweis": "Auf der Produktseite fälschlich als „Element with 1 armrest“ gelistet; Sitzhöhe vom Eckelement 168x95 übernommen.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 8)"
+    },
+    {
+      "code": "saki-cord-outdoor-mittel-156x95",
+      "code_offiziell": null,
+      "name": "Central element 156x95 cm",
+      "art": "mittel",
+      "breite_cm": 156,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": 62,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 9)"
+    },
+    {
+      "code": "saki-cord-outdoor-mittel-230x95",
+      "code_offiziell": null,
+      "name": "Central element 230x95 cm",
+      "art": "mittel",
+      "breite_cm": 230,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": null,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "hinweis": "Sitzhöhe vom Element 156x95 übernommen.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 9)"
+    },
+    {
+      "code": "saki-cord-outdoor-mittel-304x95",
+      "code_offiziell": null,
+      "name": "Central element 304x95 cm",
+      "art": "mittel",
+      "breite_cm": 304,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": null,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "hinweis": "Sitzhöhe vom Element 156x95 übernommen.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 9)"
+    },
+    {
+      "code": "saki-cord-outdoor-bank-156x82",
+      "code_offiziell": null,
+      "name": "Bench 156x82xh42 cm",
+      "art": "bank",
+      "breite_cm": 156,
+      "tiefe_cm": 82,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 82,
+      "seitenkote_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehende Bank ohne Rücken.",
+      "hinweis": "Sitztiefe = Gesamttiefe.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 9)"
+    },
+    {
+      "code": "saki-cord-outdoor-bank-230x82",
+      "code_offiziell": null,
+      "name": "Bench 230x82xh42 cm",
+      "art": "bank",
+      "breite_cm": 230,
+      "tiefe_cm": 82,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 82,
+      "seitenkote_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehende Bank ohne Rücken.",
+      "hinweis": "Datenblatt und Arrangement 01 nennen 230x82; die Produktseite listet „Bench 203x82“ (vermutlich Tippfehler). Sitztiefe = Gesamttiefe.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 9)"
+    },
+    {
+      "code": "saki-cord-outdoor-bank-304x82",
+      "code_offiziell": null,
+      "name": "Bench 304x82xh42 cm",
+      "art": "bank",
+      "breite_cm": 304,
+      "tiefe_cm": 82,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 82,
+      "seitenkote_cm": null,
+      "varianten": [],
+      "anschluesse": "Freistehende Bank ohne Rücken.",
+      "hinweis": "Sitztiefe = Gesamttiefe.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 9)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-168x168-a-fest",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm FIXED - mod. A",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "fest (Aluminiumfüße)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 9)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-168x168-a-drehbar",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm SWIVEL - mod. A",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "drehbar 360° (umlaufender Edelstahlsockel auf Rollen)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 9)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-168x168-b-fest",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm FIXED - mod. B",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "fest (Aluminiumfüße)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 9)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-168x168-b-drehbar",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm SWIVEL - mod. B",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "drehbar 360° (umlaufender Edelstahlsockel auf Rollen)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 9)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-156x168-c-fest",
+      "code_offiziell": null,
+      "name": "Island 156x168 cm FIXED - mod. C",
+      "art": "insel",
+      "breite_cm": 156,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "fest (Aluminiumfüße)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 10)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-156x168-c-drehbar",
+      "code_offiziell": null,
+      "name": "Island 156x168 cm SWIVEL - mod. C",
+      "art": "insel",
+      "breite_cm": 156,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "drehbar 360° (umlaufender Edelstahlsockel auf Rollen)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 10)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-168x168-d-fest",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm FIXED - mod. D",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "fest (Aluminiumfüße)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 10)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-168x168-d-drehbar",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm SWIVEL - mod. D",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "drehbar 360° (umlaufender Edelstahlsockel auf Rollen)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 10)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-168x168-e-fest",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm FIXED - mod. E",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "fest (Aluminiumfüße)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 10)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-168x168-e-drehbar",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm SWIVEL - mod. E",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "drehbar 360° (umlaufender Edelstahlsockel auf Rollen)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 10)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-156x168-f-fest",
+      "code_offiziell": null,
+      "name": "Island 156x168 cm FIXED - mod. F",
+      "art": "insel",
+      "breite_cm": 156,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "fest (Aluminiumfüße)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 10)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-156x168-f-drehbar",
+      "code_offiziell": null,
+      "name": "Island 156x168 cm SWIVEL - mod. F",
+      "art": "insel",
+      "breite_cm": 156,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "drehbar 360° (umlaufender Edelstahlsockel auf Rollen)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Sitztiefe 136 cm = Tiefenkote der Sitz-/Liegefläche in der Draufsicht.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 10)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-156x156-g-fest",
+      "code_offiziell": null,
+      "name": "Island 156x156 cm FIXED - mod. G",
+      "art": "insel",
+      "breite_cm": 156,
+      "tiefe_cm": 156,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 156,
+      "seitenkote_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "fest (Aluminiumfüße)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Ohne Rücken/Armlehnen; Sitztiefe = Gesamttiefe 156 cm.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 11)"
+    },
+    {
+      "code": "saki-cord-outdoor-insel-156x156-g-drehbar",
+      "code_offiziell": null,
+      "name": "Island 156x156 cm SWIVEL - mod. G",
+      "art": "insel",
+      "breite_cm": 156,
+      "tiefe_cm": 156,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 156,
+      "seitenkote_cm": null,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "zusatzmasse": {
+        "gestell": "drehbar 360° (umlaufender Edelstahlsockel auf Rollen)"
+      },
+      "anschluesse": "Inselelement; einzeln oder in Kombination (z. B. Arrangement 02: Insel mod. A + 2x mod. E) nutzbar.",
+      "hinweis": "Ohne Rücken/Armlehnen; Sitztiefe = Gesamttiefe 156 cm.",
+      "quelle": "https://www.minotti.com/downloads/25033/28199/SAKI_OUTDOOR_TECHNICAL_SHEET.pdf (Seite 11)"
+    }
+  ],
+  "rueckenoptionen": [
+    "Rücken und Armlehnen aus geschwungenen Stützpaneelen (Support panels) plus Rücken-/Armlehnenkissen, per Reißverschluss mit dem Sitz verbunden.",
+    "Stützpaneele dieser Familie: Edelstahlrohr Ø 12 mm, bespannt mit geflochtener Faser Ø 5 mm in matter Rattan-Optik, Farben Mud (Fango), Licorice (Liquirizia), Cappuccino oder Celadon; Stahlpaneele mit Epoxid-Pulverbeschichtung Bronze, glänzend, Anti-Fingerprint.",
+    "Alternative (Schwesterfamilie Saki \"Outdoor\"): Strukturpolyurethan (Baydur® 60) mit glänzender Outdoor-Lackierung in Moka, Cappuccino, Army Green, Celadon oder Terracotta. Laut Minotti sind beide Familien miteinander kombinierbar.",
+    "Inselelemente in mehreren Rücken-/Armlehnenanordnungen (mod. A–F) bzw. ganz ohne Rücken (mod. G); Bänke ohne Rücken."
+  ],
+  "armlehnenoptionen": [
+    "Sessel: mit zwei Armlehnen (104x91), mit einer Armlehne (92x91, SX/DX) oder ohne Armlehnen (80x91).",
+    "Sofas mit beidseitigen Armlehnen; Endelemente mit 1 Armlehne (SX/DX); Ecksofas und Eckelemente (SX/DX); Mittelelemente ohne Armlehnen.",
+    "Armlehnen-Paneel in gleicher Ausführung wie das Rückenpaneel."
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Geschwungene Füße aus Aluminiumguss; drehbare Inseln mit umlaufendem Sockel aus Edelstahlblech auf Rollen (360° drehbar).",
+    "finishes": [
+      "Füße: Aluminiumguss lackiert Pewter (Peltro/Zinn), glänzend, Anti-Fingerprint; Schutzgleiter Polyethylen Pewter.",
+      "Drehsockel Inseln: Edelstahlblech lackiert Pewter, glänzend, Anti-Fingerprint; starre Rollen aus Polyamid mit TPU-Lauffläche und Edelstahlhalterung."
+    ],
+    "hinweis": "Position der Sockel bei Inselelementen (SX/DX) im Datenblatt nur zeichnerisch dargestellt („Bases position Island elements“)."
+  },
+  "struktur": "Bootsbausperrholz (marine-grade plywood), ummantelt mit hochelastischem PU-Schaum differenzierter Dichte und gesteppter Viskosefaser; darüber wasserabweisender Polyesterbezug. Sitz- und Rückenbezüge mit umlaufendem Keder im Bezugsmaterial.",
+  "bezuege": {
+    "materialien": [
+      "Outdoor-Bezug aus der Minotti-Kollektion (Arrangement-PDFs: „select the upholstery of your choice from the exclusive Minotti collection“); Leder nicht angegeben."
+    ],
+    "kategorien": null,
+    "preis_kategorien": null,
+    "bezugsart": "Sitz- und Rückenkissen vollständig abziehbar: zuerst Stützpaneel abnehmen, dann Reißverschluss zwischen Rücken-/Armlehnenkissen und Sitz öffnen.",
+    "farbmuster_hinweis": "Stoffmuster und Paneel-Finishes bitte im Showroom Platzhirsch Home Living in Lochau ansehen; gedruckte und Bildschirm-Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": {
+    "sitz_ruecken_arm": "Rückenkissen aus Viskosefaser mit Kern aus hochelastischem PU-Schaum differenzierter Dichte, konturiert für Anlage an die Stützpaneele.",
+    "optional": [
+      "Kissen 50x50 cm"
+    ],
+    "zubehoer": [
+      "Optionale Regenschutzhülle (Rain cover), laut Datenblatt für jedes Element erhältlich"
+    ]
+  },
+  "outdoor": true,
+  "outdoor_hinweis": "Outdoor-Version mit wasserabweisenden Polsterhüllen. Indoor-Pendant: Saki (saki.json).",
+  "besonderheiten": [
+    "Name „Saki“ (jap. „blühen“): blütenblattförmige Rücken-/Armlehnenpaneele.",
+    "Saki Outdoor (lackierte Paneele) und Saki Cord Outdoor (Cord-Paneele) teilen Elemente und Maße und sind laut Minotti kombinierbar (Arrangements mischen beide).",
+    "Inselelemente fest oder 360° drehbar auf Rollensockel.",
+    "Gegenüber Indoor-Saki keine Sessel/Hocker mit Dreh-/Festgestell.",
+    "Optionale Regenschutzhülle für jedes Element.",
+    "6 Arrangement-PDFs (SAKI OUTDOOR 01–06); 2D/3D-CAD-Dateien (ZIP) auf der Produktseite."
+  ],
+  "kompositionen_beispiele": [
+    {
+      "name": "Arrangement 01",
+      "elemente": [
+        "Saki Cord Outdoor Sofa 254x95 H71",
+        "Saki Outdoor Bench 230x82 H42",
+        "Saki Cord Outdoor Armchairs without armrests 80x91 H70"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26203/29858/SAKI%20OUTDOOR_arrangement_01.pdf"
+    },
+    {
+      "name": "Arrangement 02",
+      "elemente": [
+        "Saki Outdoor Island SX 168x168 H71 mod. A",
+        "Island DX 168x168 H71 mod. E",
+        "Island SX 168x168 H71 mod. E"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26204/29860/SAKI%20OUTDOOR_arrangement_02.pdf"
+    },
+    {
+      "name": "Arrangement 03",
+      "elemente": [
+        "Saki Outdoor Sofa 254x95 H71",
+        "Saki Cord Outdoor Armchairs without armrests 80x91 H70"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26205/29862/SAKI%20OUTDOOR_arrangement_03.pdf"
+    },
+    {
+      "name": "Arrangement 04",
+      "elemente": [
+        "Saki Cord Outdoor Element with 1 armrest DX 242x95 H71",
+        "Saki Cord Outdoor Swivel Island SX 168x168 H71 mod. B",
+        "Armchairs without armrests 80x91 H70",
+        "Footstool / Ottoman 80x78 H41"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26206/29864/SAKI%20OUTDOOR_arrangement_04.pdf"
+    },
+    {
+      "name": "Arrangement 05",
+      "elemente": [
+        "Saki Outdoor Island DX 168x168 H71 mod. B",
+        "Island SX 168x168 H71 mod. B",
+        "Island DX 168x168 H71 mod. E",
+        "Armchairs without armrests 80x91 H70"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26207/29866/SAKI%20OUTDOOR_arrangement_05.pdf"
+    },
+    {
+      "name": "Arrangement 06",
+      "elemente": [
+        "Saki Outdoor Sofa 254x95 H71",
+        "Saki Cord Outdoor Central element 156x91 H71",
+        "Saki Outdoor Armchairs without armrests 80x91 H70"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26208/29868/SAKI%20OUTDOOR_arrangement_06.pdf"
+    }
+  ],
+  "fehlend": [
+    "Offizielle Artikel-/Bestellcodes (nicht öffentlich; Codes intern vergeben).",
+    "Preise, Preisgruppen sowie konkrete Outdoor-Stoffkategorien/-qualitäten der Kissenbezüge.",
+    "Bedeutung der Seitenansicht-Kote (61/62 cm) nicht beschriftet; nur beim ersten Element je Abschnitt bemaßt.",
+    "Sitzhöhe nur beim ersten Element je Abschnitt bemaßt (für übrige übernommen).",
+    "Sitztiefe von Hocker und Bänken = Gesamttiefe (keine eigene Kote).",
+    "Offizielle Kombinationsregeln/Anschlussmatrix (aus Elementtyp abgeleitet).",
+    "Unterschied Inseln mod. A–F (Lage von Rücken/Armlehnen) nur zeichnerisch, nicht textlich beschrieben.",
+    "Definition SX/DX (Blickrichtung) nicht erläutert.",
+    "Maße/Ausführung der Regenschutzhülle; Dicke des optionalen Kissens.",
+    "Widerspruch Produktseite/Datenblatt: Bank 203x82 (Seite) vs. 230x82 (Datenblatt, Arrangement 01) und fehlendes Eckelement 168x95 auf der Seite – Datenblatt maßgeblich."
+  ],
+  "rechte_hinweis": "Minotti-Bilder und CAD-Dateien sind urheberrechtlich geschützt; CAD-Nutzung laut Minotti nur für Innenarchitektur-Zwecke. Minotti verbietet Veränderung der Bilder – Freistellungen nur intern/Labs und im Rechte-Register vermerken."
+}

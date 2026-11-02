@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { NEW_API_SERVER } from "@/lib/apiBaseUrl";
+import { getRouteLimiter, tooManyRequests } from "../_lib/routeLimit.js";
+import { fetchWithHeaderTimeout } from "../_lib/upstream.js";
 
 // File proxy for the new "Produkte New" backend (NEW_API_SERVER): the site
 // links to /cmx/files/<name> and this route fetches <NEW_API_SERVER>/files/<name>,
@@ -32,9 +34,17 @@ const TYPES = {
   mov: "video/quicktime",
   pdf: "application/pdf",
 };
-const TIMEOUT_MS = 15000;
+// AP1.4: 8 s bis zu den Antwort-Headern des Backends (vorher 15 s für die
+// ganze Übertragung). Der Timer gilt nur bis zur Antwort: Danach läuft der
+// Body ungebremst durch, damit ein großes Video bei langsamer Leitung nicht
+// nach 8 s abreißt. Timeout → 504, sonst nicht erreichbar → 502.
+const TIMEOUT_MS = 8000;
 
-const notFound = () => new NextResponse("Not found", { status: 404 });
+// R6-release: a 404 must never be cached (a missing file that appears later
+// would otherwise stay "not found" in browser/proxy caches). The route sets
+// the header itself; next.config.js leaves /cmx/* alone (release-check §R5.2),
+// and nginx sets no-store as a second line of defence.
+const notFound = () => new NextResponse("Not found", { status: 404, headers: { "Cache-Control": "no-store" } });
 
 export async function GET(req, { params }) {
   const { path } = await params;
@@ -53,15 +63,20 @@ export async function GET(req, { params }) {
   const contentType = TYPES[extension];
   if (!contentType) return notFound();
 
+  // AP1.4: Rate-Limit je IP, erst nach der Pfadprüfung (404 kostet nichts).
+  // Interne Abrufe des Bild-Optimierers zählen nicht (siehe routeLimit.js).
+  const limit = await getRouteLimiter("cmx").check(req.headers);
+  if (!limit.ok) return tooManyRequests(limit.retryAfter);
+
   // Segments arrive decoded (file names often contain spaces); re-encode each.
   const externalUrl = `${NEW_API_SERVER}/${path.map(encodeURIComponent).join("/")}`;
 
-  let response;
-  try {
-    response = await fetch(externalUrl, { signal: AbortSignal.timeout(TIMEOUT_MS) });
-  } catch (error) {
-    console.error("cmx proxy: backend not reachable:", error);
-    return new NextResponse("Bad gateway", { status: 502 });
+  const { response, error, timedOut } = await fetchWithHeaderTimeout(externalUrl, TIMEOUT_MS);
+  if (!response) {
+    console.error(`cmx proxy: backend ${timedOut ? "timeout" : "not reachable"}:`, error?.message || error);
+    return timedOut
+      ? new NextResponse("Gateway timeout", { status: 504, headers: { "Retry-After": "10", "Cache-Control": "no-store" } })
+      : new NextResponse("Bad gateway", { status: 502, headers: { "Cache-Control": "no-store" } });
   }
 
   if (!response.ok) {

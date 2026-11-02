@@ -1,12 +1,13 @@
 // src/lib/api/contactKeywordsApi.js
 import "server-only"; // Ensures this only runs on server
 import { API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
 
 const CONTACT_KEYWORDS_API_URL = `${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.contact_keywords.api.contact_keywords_data`;
 
 export async function fetchContactKeywords() {
   try {
-    const response = await fetch(CONTACT_KEYWORDS_API_URL, {
+    const response = await backofficeFetch(CONTACT_KEYWORDS_API_URL, {
       method: "GET",
       next: { revalidate: 3600 }, // Cache for 1 hour
     });

@@ -1,0 +1,393 @@
+{
+  "name": "Twiggy",
+  "slug": "twiggy",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 2022,
+  "jahr_hinweis": "Produktseite verweist auf Katalog „2022 Collection“; Datenblatt „Update“, Stand Mai 2023",
+  "typ": "Sessel- und Elementfamilie, frei kombinierbar zu einem modularen Sitzsystem",
+  "quellen": [
+    "https://www.minotti.com/en/twiggy",
+    "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "standardwerte": {
+    "sitzhoehe_cm": 38
+  },
+  "elemente": [
+    {
+      "code": "small-armchair-cm-64x90",
+      "name": "Small armchair cm 64x90",
+      "art": "sessel-mittel",
+      "breite_cm": 64,
+      "tiefe_cm": 90,
+      "hoehe_cm": 66,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 64,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "als Sessel oder Mittelelement anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "small-armchair-with-armrest-cm-90x90",
+      "name": "Small armchair with armrest cm 90x90",
+      "art": "sessel-endelement",
+      "breite_cm": 90,
+      "tiefe_cm": 90,
+      "hoehe_cm": 66,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 64,
+      "armlehnenhoehe_cm": 66,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-armchair-cm-84x90",
+      "name": "Large armchair cm 84x90",
+      "art": "sessel-mittel",
+      "breite_cm": 84,
+      "tiefe_cm": 90,
+      "hoehe_cm": 66,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 64,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "als Sessel oder Mittelelement anreihbar",
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "large-armchair-with-armrest-cm-110x90",
+      "name": "Large armchair with armrest cm 110x90",
+      "art": "sessel-endelement",
+      "breite_cm": 110,
+      "tiefe_cm": 90,
+      "hoehe_cm": 66,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 64,
+      "armlehnenhoehe_cm": 66,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "deep-armchair-cm-84x110",
+      "name": "Deep armchair cm 84x110",
+      "art": "sessel-mittel",
+      "breite_cm": 84,
+      "tiefe_cm": 110,
+      "hoehe_cm": 89,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 84,
+      "armlehnenhoehe_cm": 66,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "66 cm = Seitenhöhe laut Zeichnung"
+    },
+    {
+      "code": "deep-armchair-with-armrest-cm-110x110",
+      "name": "Deep armchair with armrest cm 110x110",
+      "art": "sessel-endelement",
+      "breite_cm": 110,
+      "tiefe_cm": 110,
+      "hoehe_cm": 89,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 84,
+      "armlehnenhoehe_cm": 66,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "deep-high-armchair-cm-84x111",
+      "name": "Deep high armchair cm 84x111",
+      "art": "sessel-mittel",
+      "breite_cm": 84,
+      "tiefe_cm": 111,
+      "hoehe_cm": 89,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 76,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "76 cm = Seitenhöhe laut Zeichnung"
+    },
+    {
+      "code": "deep-high-armchair-with-armrest-cm-111x111",
+      "name": "Deep high armchair with armrest cm 111x111",
+      "art": "sessel-endelement",
+      "breite_cm": 111,
+      "tiefe_cm": 111,
+      "hoehe_cm": 89,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 76,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Maß 111x111 laut Produktseite"
+    },
+    {
+      "code": "deep-high-mix-armchair-with-armrest-cm-110x111",
+      "name": "Deep high mix armchair with armrest cm 110x111",
+      "art": "sessel-endelement",
+      "breite_cm": 110,
+      "tiefe_cm": 111,
+      "hoehe_cm": 89,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "couch-cm-84x150",
+      "name": "Couch cm 84x150",
+      "art": "couch",
+      "breite_cm": 84,
+      "tiefe_cm": 150,
+      "hoehe_cm": 89,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 120,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "couch-cm-124x150",
+      "name": "Couch cm 124x150",
+      "art": "couch",
+      "breite_cm": 124,
+      "tiefe_cm": 150,
+      "hoehe_cm": 89,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 120,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "comfort-couch-cm-84x172",
+      "name": "Comfort couch cm 84x172",
+      "art": "couch",
+      "breite_cm": 84,
+      "tiefe_cm": 172,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweis": "Zeichnung enthält 90, 67, 74 und 44 cm ohne eindeutige Zuordnung"
+    },
+    {
+      "code": "chaise-longue-cm-150x150",
+      "name": "Chaise-longue cm 150x150",
+      "art": "chaise",
+      "breite_cm": 150,
+      "tiefe_cm": 150,
+      "hoehe_cm": 89,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": 120,
+      "armlehnenhoehe_cm": 66,
+      "ausfuehrungen": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-cm-64x64",
+      "name": "Bench cm 64x64",
+      "art": "hocker",
+      "breite_cm": 64,
+      "tiefe_cm": 64,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-cm-84x64",
+      "name": "Bench cm 84x64",
+      "art": "hocker",
+      "breite_cm": 84,
+      "tiefe_cm": 64,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    },
+    {
+      "code": "bench-cm-84x84",
+      "name": "Bench cm 84x84",
+      "art": "hocker",
+      "breite_cm": 84,
+      "tiefe_cm": 84,
+      "hoehe_cm": 38,
+      "sitzhoehe_cm": 38,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "quelle": [
+        "https://www.minotti.com/en/twiggy",
+        "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+      ]
+    }
+  ],
+  "zubehoer": [],
+  "rueckenoptionen": [
+    {
+      "name": "Feste gepolsterte Rücken-/Seitenschale (Höhe 66 cm Small/Large, 89 cm Deep/Couch/Chaise)"
+    },
+    {
+      "name": "Optionales Rückenkissen 65 × 65 cm"
+    },
+    {
+      "name": "Plus-Rückenkissen 65 × 65 cm mit integrierter Kopfstütze/Lendenrolle 63 × 12 cm",
+      "quelle": "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "ohne Armlehne"
+    },
+    {
+      "name": "mit Armlehne SX oder DX"
+    },
+    {
+      "name": "Mix-Ausführung (nur Deep High mit Armlehne)"
+    }
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Halbgebogene Klingen aus hochfestem Aluminium, 8 mm stark",
+    "finishes": [
+      "Aluminium gebürstet, halbglänzend mit Materialeffekt (exklusives Handfinish)",
+      "Aluminium lackiert glänzend Anti-Fingerprint, Black Coffee"
+    ],
+    "gleiter": "PE in Zinn (Pewter) oder Black Coffee passend zur Basis",
+    "quelle": "https://www.minotti.com/downloads/20590/21569/TWIGGY_UPDATE_TECHNICAL_SHEET.pdf"
+  },
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder",
+      "Nubuk (laut Produktseite)"
+    ],
+    "bezugsart": "abnehmbar: Struktur- und Kissenbezüge in Stoff oder Leder komplett abnehmbar",
+    "steppung": "charakteristische gestickte Steppung",
+    "farbmuster": "Farbmuster bitte im Showroom ansehen (Minotti „World of Materials“)",
+    "quelle": "https://www.minotti.com/en/twiggy"
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optional backrest cushion",
+      "breite_cm": 65,
+      "tiefe_cm": 65
+    },
+    {
+      "name": "Plus optional backrest cushion",
+      "breite_cm": 65,
+      "tiefe_cm": 65
+    },
+    {
+      "name": "Headrest/lumbar cushion (Plus)",
+      "breite_cm": 63,
+      "tiefe_cm": 12
+    },
+    {
+      "name": "Optional cushion",
+      "breite_cm": 50,
+      "tiefe_cm": 50
+    },
+    {
+      "name": "Optional lumbar cushion",
+      "breite_cm": 65,
+      "tiefe_cm": 30
+    }
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "Familie entstand aus Einzelsessel (Small/Large/Deep); Elemente frei anreihbar ohne feste Kompositionen",
+    "Quilt-Polsterung aus zertifiziert 100 % recyceltem PET",
+    "9 Arrangements (TWIGGY 01–09) auf der Produktseite",
+    "Seitenangabe SX/DX gemäß Minotti-Datenblatt"
+  ],
+  "fehlend": [
+    "Produktseite erwähnt eine „Dormeuse“, im Datenblatt und in der Elementliste nicht enthalten",
+    "Höhe/Sitzhöhe/Sitztiefe der Comfort Couch nicht eindeutig zuordenbar",
+    "Sitztiefe der Deep-High-Varianten und Bänke nicht bemaßt",
+    "Armlehnenhöhe der Mix-Ausführung nicht bemaßt",
+    "Keine veröffentlichte Kompatibilitätsmatrix",
+    "Stoff-/Lederkategorien mit Preisgruppen nicht öffentlich",
+    "Preise nicht öffentlich"
+  ],
+  "rechte_hinweis": "Maße aus öffentlichem Minotti-Datenblatt; Herstellerbilder nicht verändern.",
+  "vollstaendigkeit_prozent": 89
+}

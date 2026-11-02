@@ -1,0 +1,3349 @@
+{
+  "name": "Patio",
+  "slug": "patio",
+  "hersteller": "Minotti",
+  "designer": "GamFratesi",
+  "jahr": 2021,
+  "jahr_hinweis": "Produktseite: „2021 Collection“; Technical Sheet „Patio Update“ © Minotti, Stand Mai 2023 (inkl. Patio Unit, Patio Small, Daybed). Variante „Patio Teak“ auf der Produktseite verlinkt.",
+  "typ": "Hochmodulares Outdoor-Sitzsystem („Mosaik“) mit Aluminium-Sockel und versetzbaren Rückenelementen: Sofas, Daybed-Sofas, End-, Mittel-, Penisola- und Vis-à-vis-Elemente, Couch, Chaise-longue, Doppel-Daybeds, Inseln, Bänke, Couchtische; Linien Patio (Tiefe 98/83), Patio Unit, Patio Small, Daybed mit verstellbarer Rückenlehne",
+  "modular": true,
+  "outdoor": true,
+  "sitzmodule": [
+    {
+      "modul_cm": "90×90",
+      "tiefen_cm": [
+        98,
+        106,
+        119,
+        188
+      ]
+    },
+    {
+      "modul_cm": "75×75",
+      "tiefen_cm": [
+        83,
+        91,
+        104,
+        158
+      ]
+    }
+  ],
+  "quellen": [
+    "https://www.minotti.com/en/patio",
+    "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/20390/20893/2021_COLLECTION.pdf",
+    "https://www.minotti.com/downloads/10411/21544/MINOTTI_CONSUMER_CATALOGUE_THE_COLLECTION_2024.pdf",
+    "https://www.minotti.com/downloads/20458/21023/PATIO_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/20459/21025/PATIO_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/20460/21027/PATIO_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/20461/21029/PATIO_arrangement_04.pdf",
+    "https://www.minotti.com/downloads/20462/21031/PATIO_arrangement_05.pdf",
+    "https://www.minotti.com/downloads/20463/21033/PATIO_arrangement_06.pdf",
+    "https://www.minotti.com/downloads/20464/21035/PATIO_arrangement_07.pdf",
+    "https://www.minotti.com/downloads/20465/21037/PATIO_arrangement_08.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "masse_hinweis": "Breite × Tiefe × Höhe aus der Elementliste der Produktseite bzw. den Bilddateinamen (z. B. PATIO-SOFA-196X98-H87), geprüft gegen das Technical Sheet (Mai 2023). Lesart der Ansichten: 87 = Gesamthöhe, 41 = Sitzhöhe, 40 = Höhe Top/Ablage, 65 unbeschriftet. Sitzmodul 90×90 bzw. 75×75 (Kissenmaß) lt. Datenblatt – keine effektive Sitztiefe angegeben. CAD-Maße können leicht abweichen.",
+  "rechte_hinweis": "Bild-URLs nur als Quellennachweis. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "preis": {
+    "hinweis": "Keine Preise erfasst. Preise nur aus der Konfigurationstabelle, gekennzeichnet „Richtwert – vom Inhaber festzulegen“."
+  },
+  "rueckenoptionen": [
+    {
+      "name": "Rückenelemente aus Edelstahl, mit Polypropylen-Gurtband 25×5 mm im skandinavischen Rautenmuster bespannt; an vielen festen Positionen entlang des Sockelumfangs montierbar",
+      "farben": [
+        "Ecru",
+        "Dark Brown (Testa di Moro)"
+      ]
+    },
+    {
+      "name": "Vollrücken (Sofa, End-, Mittelelemente)"
+    },
+    {
+      "name": "Open / Open-End: Rücken nur über Teil der Länge (Penisola)"
+    },
+    {
+      "name": "Vis-à-vis: Rücken mittig, Sitzflächen beidseitig (Sofa, Elemente, Insel)"
+    },
+    {
+      "name": "Ohne Rücken: Bänke, Couch"
+    },
+    {
+      "name": "Verstellbare Rückenlehne (Daybed, Batyline-Bespannung, 4 Positionen 23°–56°, max. H 90)"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Zwei Armlehnen",
+      "elemente": "Sofa, Daybed-Sofa, Open Sofa, Vis-à-vis-Sofa, Patio Small Armchair/Sofa"
+    },
+    {
+      "name": "Eine Armlehne links (SX) oder rechts (DX)",
+      "elemente": "Elemente mit 1 Armlehne (inkl. Daybed-, Open-, Open-End-, Vis-à-vis-Varianten), Chaise-longue, Doppel-Daybed mit 1 Armlehne, Patio Unit Eck-/Endelement"
+    },
+    {
+      "name": "Ohne Armlehnen",
+      "elemente": "Mittel-, Penisola-Elemente, Couch, Doppel-Couch, Doppel-Daybed, Loveseat ohne Armlehnen"
+    },
+    {
+      "name": "Armlehne als Holz-Top/Ablage („WITH TOP“)",
+      "elemente": "Varianten mit Top: Mahagoni Dark Brown oder Teak natur"
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Sockel/Basis",
+      "material": "Extrudiertes Aluminium, outdoor-beständig lackiert",
+      "finish": [
+        "Ecru matt",
+        "Dark Brown (Testa di Moro) matt"
+      ]
+    },
+    {
+      "teil": "Sitzgurte",
+      "material": "Elastisches Outdoor-Gurtband aus UV-beständigem Synthesekautschuk und Polypropylen",
+      "finish": [
+        "passend zur Sockelfarbe (Ecru/Dark Brown)"
+      ]
+    },
+    {
+      "teil": "Füße und rückseitige Verbinder",
+      "material": "Aluminium-Druckguss lackiert",
+      "finish": [
+        "Bronze poliert, Anti-Fingerprint"
+      ]
+    },
+    {
+      "teil": "Top/Ablage",
+      "material": "Massives Mahagoni oder Teak (Tectona Grandis, First European Quality), mit Ablaufrillen",
+      "finish": [
+        "Mahagoni Dark Brown gebeizt",
+        "Teak natur"
+      ]
+    },
+    {
+      "teil": "Couchtisch-Platte",
+      "material": "Basaltina-Stein 20 mm, fein gebürstet, auf 10-mm-Aluminiumplatte",
+      "finish": [
+        "Basaltina"
+      ]
+    },
+    {
+      "teil": "Gleiter",
+      "material": "Polyethylen schwarz, verstellbar"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff (Outdoor-Stoffe)"
+    ],
+    "kategorien_hinweis": "Quellen nennen nur Kissenbezüge aus Stoff; Leder nicht angegeben. Stoffliste/Kategorien nur über „The World of Materials“ (Login).",
+    "bezugsart": "Abnehmbar: Kissenbezüge vollständig abziehbar; wasserabweisender Polyester-Innenbezug, wasserabweisende Reißverschlüsse und Garne.",
+    "preisgruppen": null,
+    "farbmuster_hinweis": "Original-Stoff-, Kordel- und Holzmuster bitte im Showroom ansehen – Bildschirmfarben sind nicht verbindlich (Minotti: „Printed colours are to be considered as purely indicative“)."
+  },
+  "polsterung": "Sitzkissen aus hochelastischem PU-Schaum und wasserabweisender, umweltverträglicher Viskosefaser; Rückenkissen aus Viskosefaser und umweltverträglicher wasserabweisender Faser.",
+  "kissenoptionen": [
+    {
+      "name": "OPTIONAL BACKREST CUSHION CM 70X50",
+      "masse_cm": {
+        "breite": 70,
+        "hoehe": 50
+      },
+      "quelle": "https://www.minotti.com/media/immagini/34508_n_PATIO-OPTIONAL-BACKREST-CUSHION-70X50.jpg",
+      "hinweis": "Lesart Breite × Höhe aus Bezeichnung/Zeichnung"
+    },
+    {
+      "name": "OPTIONAL BACKREST CUSHION CM 60X50",
+      "masse_cm": {
+        "breite": 60,
+        "hoehe": 50
+      },
+      "quelle": "https://www.minotti.com/media/immagini/34510_n_PATIO-OPTIONAL-BACKREST-CUSHION-60X50.jpg",
+      "hinweis": "Lesart Breite × Höhe aus Bezeichnung/Zeichnung"
+    },
+    {
+      "name": "OPTIONAL BACKREST CUSHION CM 60X40",
+      "masse_cm": {
+        "breite": 60,
+        "hoehe": 40
+      },
+      "quelle": "https://www.minotti.com/media/immagini/34512_n_PATIO-OPTIONAL-BACKREST-CUSHION-60X40.jpg",
+      "hinweis": "Lesart Breite × Höhe aus Bezeichnung/Zeichnung"
+    },
+    {
+      "name": "OPTIONAL CUSHION CM 45X40",
+      "masse_cm": {
+        "breite": 45,
+        "hoehe": 40
+      },
+      "quelle": "https://www.minotti.com/media/immagini/34513_n_PATIO-OPTIONAL-CUSHION-45X40.jpg",
+      "hinweis": "Lesart Breite × Höhe aus Bezeichnung/Zeichnung"
+    }
+  ],
+  "zubehoer": [
+    {
+      "name": "Optional Rain Cover",
+      "hinweis": "Für jedes Element erhältlich",
+      "farben": [
+        "Green",
+        "Grey",
+        "Pewter"
+      ],
+      "farben_quelle": "Bilddateinamen MINOTTI_RAINCOVER_* auf der Produktseite"
+    },
+    {
+      "name": "Pflegehinweis Top",
+      "hinweis": "Holz-Top bei Regen abdecken, aber nur im vollständig trockenen Zustand"
+    }
+  ],
+  "kombinierbarkeit": [
+    "Mosaik-Prinzip: Elemente gleicher Tiefe (Modul 90 bzw. 75) werden frei aneinandergereiht; Rückenelemente an festen Positionen entlang des Sockels versetzbar.",
+    "Zwei Tiefen: 98 cm (Modul 90) und 83 cm (Modul 75); Vis-à-vis 106/91; mit Top 119/104.",
+    "Bänke und Bänke mit Couchtisch in Tiefe 90, 75 und 60 (Patio Small) als Ergänzung.",
+    "8 offizielle Arrangement-PDFs (PATIO_arrangement_01–08) als Kompositionsbeispiele.",
+    "Mischbarkeit der Module 90 und 75 in einer Komposition nicht öffentlich beschrieben."
+  ],
+  "besonderheiten": [
+    "Materialmix Aluminium, Holz (Mahagoni/Teak), Basaltina-Stein, Kordel.",
+    "Integrierte Holz-Ablagen mit Wasserablauf-Rillen.",
+    "Alle Elemente mit gleichen Füßen und rückseitigen Verbindern in Bronze.",
+    "Linien Patio Unit (Einzelsitzmodule) und Patio Small (kompakte Sofas/Loveseats)."
+  ],
+  "fehlend": [
+    "Effektive Sitztiefe (nur Sitzmodul 90×90/75×75).",
+    "Bedeutung der Höhe 65; Breite der Tops.",
+    "Liegehöhe des Daybeds (nur H 36/40 aus Dateinamen).",
+    "Kupplungssystem und Rückenpositionen im Detail.",
+    "Mischbarkeit Modul 90/75, Minotti-Artikelnummern.",
+    "Outdoor-Stoffliste, Preisgruppen.",
+    "Preise (vom Inhaber festzulegen), Gewicht, Lieferzeit."
+  ],
+  "elemente": [
+    {
+      "code": "patio-sofa-cm-196-m90",
+      "name": "SOFA CM 196 - SEATING MODULE CM 90",
+      "art": "sofa",
+      "breite_cm": 196,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Sofa mit zwei Armlehnen, freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34272_n_PATIO-SOFA-196X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-sofa-with-top-cm-217-m90",
+      "name": "SOFA WITH TOP CM 217 - SEATING MODULE CM 90",
+      "art": "sofa",
+      "breite_cm": 217,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "zwei",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Sofa mit zwei Armlehnen, freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34276_n_PATIO-SOFA-WITH-TOP-217X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-sofa-cm-286-m90",
+      "name": "SOFA CM 286 - SEATING MODULE CM 90",
+      "art": "sofa",
+      "breite_cm": 286,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Sofa mit zwei Armlehnen, freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34281_n_PATIO-SOFA-286X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-sofa-with-top-cm-307-m90",
+      "name": "SOFA WITH TOP CM 307 - SEATING MODULE CM 90",
+      "art": "sofa",
+      "breite_cm": 307,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "zwei",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Sofa mit zwei Armlehnen, freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34282_n_PATIO-SOFA-WITH-TOP-307X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-sofa-cm-196-m90",
+      "name": "DAYBED-SOFA CM 196 - SEATING MODULE CM 90",
+      "art": "daybed-sofa",
+      "breite_cm": 196,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Sofa (Rücken längs, Liegefläche), freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34283_n_PATIO-DAYBED-SOFA-196X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-sofa-with-top-cm-196-m90",
+      "name": "DAYBED-SOFA WITH TOP CM 196 - SEATING MODULE CM 90",
+      "art": "daybed-sofa",
+      "breite_cm": 196,
+      "tiefe_cm": 119,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "zwei",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Sofa (Rücken längs, Liegefläche), freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34286_n_PATIO-DAYBED-SOFA-WITH-TOP-196X119-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-sofa-cm-286-m90",
+      "name": "DAYBED-SOFA CM 286 - SEATING MODULE CM 90",
+      "art": "daybed-sofa",
+      "breite_cm": 286,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Sofa (Rücken längs, Liegefläche), freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34289_n_PATIO-DAYBED-SOFA-286X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-sofa-with-top-cm-286-m90",
+      "name": "DAYBED-SOFA WITH TOP CM 286 - SEATING MODULE CM 90",
+      "art": "daybed-sofa",
+      "breite_cm": 286,
+      "tiefe_cm": 119,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "zwei",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Sofa (Rücken längs, Liegefläche), freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34291_n_PATIO-DAYBED-SOFA-WITH-TOP-286X119-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-sofa-cm-286-m90",
+      "name": "OPEN SOFA CM 286 - SEATING MODULE CM 90",
+      "art": "sofa",
+      "breite_cm": 286,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Open-Sofa (Rücken teilweise offen), freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34323_n_PATIO-OPEN-SOFA-286X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-sofa-with-top-cm-286-m90",
+      "name": "OPEN SOFA WITH TOP CM 286 - SEATING MODULE CM 90",
+      "art": "sofa",
+      "breite_cm": 286,
+      "tiefe_cm": 119,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "zwei",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Open-Sofa (Rücken teilweise offen), freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34326_n_PATIO-OPEN-SOFA-WITH-TOP-286X119-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-element-with-1-armrest-cm-188-m90",
+      "name": "ELEMENT WITH 1 ARMREST CM 188 - SEATING MODULE CM 90",
+      "art": "endelement",
+      "breite_cm": 188,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Endelement mit 1 Armlehne, anreihbar an Mittel-/Penisola-/Chaise-Elemente",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34328_n_PATIO-ELEMENT-WITH-ARMREST-188X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-element-with-1-armrest-with-top-cm-209-m90",
+      "name": "ELEMENT WITH 1 ARMREST WITH TOP CM 209 - SEATING MODULE CM 90",
+      "art": "endelement",
+      "breite_cm": 209,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Endelement mit 1 Armlehne, anreihbar an Mittel-/Penisola-/Chaise-Elemente",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34330_n_PATIO-ELEMENT-WITH-ARMREST-WITH-TOP-209X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-element-with-1-armrest-cm-278-m90",
+      "name": "ELEMENT WITH 1 ARMREST CM 278 - SEATING MODULE CM 90",
+      "art": "endelement",
+      "breite_cm": 278,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Endelement mit 1 Armlehne, anreihbar an Mittel-/Penisola-/Chaise-Elemente",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34331_n_PATIO-ELEMENT-WITH-ARMREST-278X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-element-with-1-armrest-with-top-cm-299-m90",
+      "name": "ELEMENT WITH 1 ARMREST WITH TOP CM 299 - SEATING MODULE CM 90",
+      "art": "endelement",
+      "breite_cm": 299,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Endelement mit 1 Armlehne, anreihbar an Mittel-/Penisola-/Chaise-Elemente",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34332_n_PATIO-ELEMENT-WITH-ARMREST-WITH-TOP-299X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-element-with-armrest-cm-278-m90",
+      "name": "OPEN ELEMENT WITH ARMREST CM 278 - SEATING MODULE CM 90",
+      "art": "endelement",
+      "breite_cm": 278,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Open-Endelement mit Armlehne (Rücken teilweise offen), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34333_n_PATIO-OPEN-ELEMENT-WITH-ARMREST-278X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-element-with-armrest-with-top-cm-278-m90",
+      "name": "OPEN ELEMENT WITH ARMREST WITH TOP CM 278 - SEATING MODULE CM 90",
+      "art": "endelement",
+      "breite_cm": 278,
+      "tiefe_cm": 119,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Open-Endelement mit Armlehne (Rücken teilweise offen), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34335_n_PATIO-OPEN-ELEMENT-WITH-ARMREST-WITH-TOP-278X119-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-element-with-armrest-cm-188-m90",
+      "name": "DAYBED ELEMENT WITH ARMREST CM 188 - SEATING MODULE CM 90",
+      "art": "endelement",
+      "breite_cm": 188,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Endelement mit 1 Armlehne, anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34337_n_PATIO-DAYBED-ELEMENT-WITH-ARMREST-188X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-element-with-armrest-with-top-cm-188-m90",
+      "name": "DAYBED ELEMENT WITH ARMREST WITH TOP CM 188 - SEATING MODULE CM 90",
+      "art": "endelement",
+      "breite_cm": 188,
+      "tiefe_cm": 119,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Endelement mit 1 Armlehne, anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34339_n_PATIO-DAYBED-ELEMENT-WITH-ARMREST-WITH-TOP-188X119-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-element-with-armrest-cm-278-m90",
+      "name": "DAYBED ELEMENT WITH ARMREST CM 278 - SEATING MODULE CM 90",
+      "art": "endelement",
+      "breite_cm": 278,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Endelement mit 1 Armlehne, anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34340_n_PATIO-DAYBED-ELEMENT-WITH-ARMREST-278X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-element-with-armrest-with-top-cm-278-m90",
+      "name": "DAYBED ELEMENT WITH ARMREST WITH TOP CM 278 - SEATING MODULE CM 90",
+      "art": "endelement",
+      "breite_cm": 278,
+      "tiefe_cm": 119,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Endelement mit 1 Armlehne, anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34341_n_PATIO-DAYBED-ELEMENT-WITH-ARMREST-WITH-TOP-278X119-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-with-armrest-cm-188-m90",
+      "name": "OPEN-END ELEMENT WITH ARMREST CM 188 - SEATING MODULE CM 90",
+      "art": "peninsula",
+      "breite_cm": 188,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne (Rücken nur teilweise), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34345_n_PATIO-OPEN-END-ELEMENT-WITH-ARMREST-188X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-with-armrest-with-top-cm-188-m90",
+      "name": "OPEN-END ELEMENT WITH ARMREST WITH TOP CM 188 - SEATING MODULE CM 90",
+      "art": "peninsula",
+      "breite_cm": 188,
+      "tiefe_cm": 119,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne (Rücken nur teilweise), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34347_n_PATIO-OPEN-END-ELEMENT-WITH-ARMREST-WITH-TOP-188X119-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-with-armrest-cm-278-m90",
+      "name": "OPEN-END ELEMENT WITH ARMREST CM 278 - SEATING MODULE CM 90",
+      "art": "peninsula",
+      "breite_cm": 278,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne (Rücken nur teilweise), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34350_n_PATIO-OPEN-END-ELEMENT-WITH-ARMREST-278X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-with-armrest-with-top-cm-278-m90",
+      "name": "OPEN-END ELEMENT WITH ARMREST WITH TOP CM 278 - SEATING MODULE CM 90",
+      "art": "peninsula",
+      "breite_cm": 278,
+      "tiefe_cm": 119,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne (Rücken nur teilweise), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34348_n_PATIO-OPEN-END-ELEMENT-WITH-ARMREST-WITH-TOP-278X119-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-central-element-cm-180-m90",
+      "name": "CENTRAL ELEMENT CM 180 - SEATING MODULE CM 90",
+      "art": "mittel",
+      "breite_cm": 180,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Mittelelement ohne Armlehnen, zwischen End-/Eckelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34351_n_PATIO-CENTRAL-ELEMENT-180X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-central-element-cm-270-m90",
+      "name": "CENTRAL ELEMENT CM 270 - SEATING MODULE CM 90",
+      "art": "mittel",
+      "breite_cm": 270,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Mittelelement ohne Armlehnen, zwischen End-/Eckelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34356_n_PATIO-CENTRAL-ELEMENT-270X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-central-element-cm-270-m90",
+      "name": "OPEN CENTRAL ELEMENT CM 270 - SEATING MODULE CM 90",
+      "art": "mittel",
+      "breite_cm": 270,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Mittelelement ohne Armlehnen, zwischen End-/Eckelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34357_n_PATIO-OPEN-CENTRAL-ELEMENT-270X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-central-element-with-top-cm-270-m90",
+      "name": "OPEN CENTRAL ELEMENT WITH TOP CM 270 - SEATING MODULE CM 90",
+      "art": "mittel",
+      "breite_cm": 270,
+      "tiefe_cm": 119,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Mittelelement ohne Armlehnen, zwischen End-/Eckelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34358_n_PATIO-OPEN-CENTRAL-ELEMENT-WITH-TOP-270X119-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-cm-180-m90",
+      "name": "OPEN-END ELEMENT CM 180 - SEATING MODULE CM 90",
+      "art": "peninsula",
+      "breite_cm": 180,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Element ohne Armlehne (offenes Ende), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34361_n_PATIO-OPEN-END-ELEMENT-180X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-with-top-cm-180-m90",
+      "name": "OPEN-END ELEMENT WITH TOP CM 180 - SEATING MODULE CM 90",
+      "art": "peninsula",
+      "breite_cm": 180,
+      "tiefe_cm": 119,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "keine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Element ohne Armlehne (offenes Ende), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34362_n_PATIO-OPEN-END-ELEMENT-WITH-TOP-180X119-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-cm-270-m90",
+      "name": "OPEN-END ELEMENT CM 270 - SEATING MODULE CM 90",
+      "art": "peninsula",
+      "breite_cm": 270,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Element ohne Armlehne (offenes Ende), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34363_n_PATIO-OPEN-END-ELEMENT-270X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-with-top-cm-270-m90",
+      "name": "OPEN-END ELEMENT WITH TOP CM 270 - SEATING MODULE CM 90",
+      "art": "peninsula",
+      "breite_cm": 270,
+      "tiefe_cm": 119,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "keine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Element ohne Armlehne (offenes Ende), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34365_n_PATIO-OPEN-END-ELEMENT-WITH-TOP-270X119-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-sofa-cm-196-m90",
+      "name": "VIS-À-VIS SOFA CM 196 - SEATING MODULE CM 90",
+      "art": "sofa-vis-a-vis",
+      "breite_cm": 196,
+      "tiefe_cm": 106,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Sofa: Rücken mittig, Sitzflächen beidseitig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34366_n_PATIO-VIS-A-VIS-SOFA-196X106-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-sofa-cm-286-m90",
+      "name": "VIS-À-VIS SOFA CM 286 - SEATING MODULE CM 90",
+      "art": "sofa-vis-a-vis",
+      "breite_cm": 286,
+      "tiefe_cm": 106,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Sofa: Rücken mittig, Sitzflächen beidseitig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34368_n_PATIO-VIS-A-VIS-SOFA-286X106-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-vis-a-vis-sofa-cm-286-m90",
+      "name": "OPEN VIS-À-VIS SOFA CM 286 - SEATING MODULE CM 90",
+      "art": "sofa-vis-a-vis",
+      "breite_cm": 286,
+      "tiefe_cm": 106,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Sofa: Rücken mittig, Sitzflächen beidseitig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34369_n_PATIO-OPEN-VIS-A-VIS-SOFA-286X106-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-element-with-1-armrest-cm-188-m90",
+      "name": "VIS-À-VIS ELEMENT WITH 1 ARMREST CM 188 - SEATING MODULE CM 90",
+      "art": "endelement-vis-a-vis",
+      "breite_cm": 188,
+      "tiefe_cm": 106,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Endelement mit 1 Armlehne, Rücken mittig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34371_n_PATIO-VIS-A-VIS-ELEMENT-WITH-ARMREST-188X106-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-element-with-1-armrest-cm-278-m90",
+      "name": "VIS-À-VIS ELEMENT WITH 1 ARMREST CM 278 - SEATING MODULE CM 90",
+      "art": "endelement-vis-a-vis",
+      "breite_cm": 278,
+      "tiefe_cm": 106,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Endelement mit 1 Armlehne, Rücken mittig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34373_n_PATIO-VIS-A-VIS-ELEMENT-WITH-ARMREST-278X106-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-vis-a-vis-element-with-armrest-cm-278-m90",
+      "name": "OPEN VIS-À-VIS ELEMENT WITH ARMREST CM 278 - SEATING MODULE CM 90",
+      "art": "endelement-vis-a-vis",
+      "breite_cm": 278,
+      "tiefe_cm": 106,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Endelement mit 1 Armlehne, Rücken mittig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34374_n_PATIO-OPEN-VIS-A-VIS-ELEMENT-WITH-ARMREST-278X106-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-central-element-cm-180-m90",
+      "name": "VIS-À-VIS CENTRAL ELEMENT CM 180 - SEATING MODULE CM 90",
+      "art": "mittel-vis-a-vis",
+      "breite_cm": 180,
+      "tiefe_cm": 106,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Mittelelement, Rücken mittig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34375_n_PATIO-VIS-A-VIS-CENTRAL-ELEMENT-180X106-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-central-element-cm-270-m90",
+      "name": "VIS-À-VIS CENTRAL ELEMENT CM 270 - SEATING MODULE CM 90",
+      "art": "mittel-vis-a-vis",
+      "breite_cm": 270,
+      "tiefe_cm": 106,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Mittelelement, Rücken mittig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34377_n_PATIO-VIS-A-VIS-CENTRAL-ELEMENT-270X106-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-vis-a-vis-central-element-cm-270-m90",
+      "name": "OPEN VIS-À-VIS CENTRAL ELEMENT CM 270 - SEATING MODULE CM 90",
+      "art": "mittel-vis-a-vis",
+      "breite_cm": 270,
+      "tiefe_cm": 106,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Mittelelement, Rücken mittig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34379_n_PATIO-OPEN-VIS-A-VIS-CENTRAL-ELEMENT-270X106-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-couch-cm-90-m90",
+      "name": "COUCH CM 90 - SEATING MODULE CM 90",
+      "art": "chaise",
+      "breite_cm": 90,
+      "tiefe_cm": 188,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Couch (Liegeelement ohne Armlehne), an Sitzelemente anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34381_n_PATIO-COUCH-90X188_H87_.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-chaise-longue-cm-98-m90",
+      "name": "CHAISE-LONGUE CM 98 - SEATING MODULE CM 90",
+      "art": "chaise",
+      "breite_cm": 98,
+      "tiefe_cm": 188,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Chaise-longue; als Abschluss an Sitzelemente oder freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34384_n_PATIO-CHAISE-LONGUE-98X188_H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-chaise-longue-with-top-cm-119-m90",
+      "name": "CHAISE-LONGUE WITH TOP CM 119 - SEATING MODULE CM 90",
+      "art": "chaise",
+      "breite_cm": 119,
+      "tiefe_cm": 188,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Chaise-longue; als Abschluss an Sitzelemente oder freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34385_n_PATIO-CHAISE-LONGUE-WITH-TOP-119X188_H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-double-couch-cm-180-m90",
+      "name": "DOUBLE COUCH CM 180 - SEATING MODULE CM 90",
+      "art": "daybed",
+      "breite_cm": 180,
+      "tiefe_cm": 188,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Doppel-Couch (Liegefläche ohne Armlehnen)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34388_n_PATIO-DOUBLE-COUCH-180X188-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-double-couch-with-top-cm-209-m90",
+      "name": "DOUBLE COUCH WITH TOP CM 209 - SEATING MODULE CM 90",
+      "art": "daybed",
+      "breite_cm": 209,
+      "tiefe_cm": 188,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Doppel-Couch (Liegefläche ohne Armlehnen)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34389_n_PATIO-DOUBLE-COUCH-WITH-TOP-209X188-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-double-daybed-cm-196-m90",
+      "name": "DOUBLE DAYBED CM 196 - SEATING MODULE CM 90",
+      "art": "daybed",
+      "breite_cm": 196,
+      "tiefe_cm": 188,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Doppel-Daybed, freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34391_n_PATIO-DOUBLE-DAYBED-196X188-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-double-daybed-with-top-cm-217-m90",
+      "name": "DOUBLE DAYBED WITH TOP CM 217 - SEATING MODULE CM 90",
+      "art": "daybed",
+      "breite_cm": 217,
+      "tiefe_cm": 188,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Doppel-Daybed, freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34393_n_PATIO-DOUBLE-DAYBED-WITH-TOP-217X188-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-double-daybed-with-1-armrest-cm-188-m90",
+      "name": "DOUBLE DAYBED WITH 1 ARMREST CM 188 - SEATING MODULE CM 90",
+      "art": "daybed",
+      "breite_cm": 188,
+      "tiefe_cm": 188,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Doppel-Daybed mit 1 Armlehne",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34396_n_PATIO-DOUBLE-DAYBED-WITH-ARMREST-188X188-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-double-daybed-with-1-armrest-with-top-cm-209-m90",
+      "name": "DOUBLE DAYBED WITH 1 ARMREST WITH TOP CM 209 - SEATING MODULE CM 90",
+      "art": "daybed",
+      "breite_cm": 209,
+      "tiefe_cm": 188,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Doppel-Daybed mit 1 Armlehne",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34400_n_PATIO-DOUBLE-DAYBED-WITH-ARMREST-WITH-TOP-209X188-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-island-cm-196-m90",
+      "name": "VIS-À-VIS ISLAND CM 196 - SEATING MODULE CM 90",
+      "art": "insel",
+      "breite_cm": 196,
+      "tiefe_cm": 196,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Freistehende Vis-à-vis-Insel (Rücken mittig, beidseitig nutzbar)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34402_n_PATIO-VIS-A-VIS-ISLAND-196X196-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-island-with-top-cm-196-m90",
+      "name": "VIS-À-VIS ISLAND WITH TOP CM 196 - SEATING MODULE CM 90",
+      "art": "insel",
+      "breite_cm": 196,
+      "tiefe_cm": 217,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Freistehende Vis-à-vis-Insel (Rücken mittig, beidseitig nutzbar)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34403_n_PATIO-VIS-A-VIS-ISLAND-WITH-TOP-196X217-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-island-with-2-top-cm-238-m90",
+      "name": "VIS-À-VIS ISLAND WITH 2 TOP CM 238 - SEATING MODULE CM 90",
+      "art": "insel",
+      "breite_cm": 238,
+      "tiefe_cm": 196,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 2
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Freistehende Vis-à-vis-Insel (Rücken mittig, beidseitig nutzbar)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34405_n_PATIO-VIS-A-VIS-ISLAND-WITH-2-TOP-238X196-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-bench-cm-90x90",
+      "name": "BENCH CM 90X90",
+      "art": "bank",
+      "breite_cm": 90,
+      "tiefe_cm": 90,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Bank/Ottomane, freistehend oder als Sitzverlängerung",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34407_n_PATIO-BENCH-90X90-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-bench-cm-135x90",
+      "name": "BENCH CM 135X90",
+      "art": "bank",
+      "breite_cm": 135,
+      "tiefe_cm": 90,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Bank/Ottomane, freistehend oder als Sitzverlängerung",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34409_n_PATIO-BENCH-135X90-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-bench-cm-180x90",
+      "name": "BENCH CM 180X90",
+      "art": "bank",
+      "breite_cm": 180,
+      "tiefe_cm": 90,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Bank/Ottomane, freistehend oder als Sitzverlängerung",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34414_n_PATIO-BENCH-180X90-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-bench-with-coffee-table-cm-135x90",
+      "name": "BENCH WITH COFFEE TABLE CM 135X90",
+      "art": "bank",
+      "breite_cm": 135,
+      "tiefe_cm": 90,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 25,
+          "bedeutung": "Höhe des Couchtisch-Teils"
+        }
+      ],
+      "anschluesse": "Bank mit integriertem Couchtisch-Teil (H 25), freistehend oder vor/zwischen Sitzelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34416_n_PATIO-BENCH-WITH-COFFEE-TABLE-135X90-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-bench-with-coffee-table-cm-180x90",
+      "name": "BENCH WITH COFFEE TABLE CM 180X90",
+      "art": "bank",
+      "breite_cm": 180,
+      "tiefe_cm": 90,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 25,
+          "bedeutung": "Höhe des Couchtisch-Teils"
+        }
+      ],
+      "anschluesse": "Bank mit integriertem Couchtisch-Teil (H 25), freistehend oder vor/zwischen Sitzelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34420_n_PATIO-BENCH-WITH-COFFEE-TABLE-180X90-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-coffee-table-cm-90x90",
+      "name": "COFFEE TABLE CM 90X90",
+      "art": "tisch",
+      "breite_cm": 90,
+      "tiefe_cm": 90,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Freistehender Couchtisch (Basaltina-Platte)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34421_n_PATIO-COFFEE-TABLE-90X90-H25.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-coffee-table-cm-135x90",
+      "name": "COFFEE TABLE CM 135X90",
+      "art": "tisch",
+      "breite_cm": 135,
+      "tiefe_cm": 90,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Freistehender Couchtisch (Basaltina-Platte)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34427_n_PATIO-COFFEE-TABLE-135X90-H25.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-coffee-table-cm-180x90",
+      "name": "COFFEE TABLE CM 180X90",
+      "art": "tisch",
+      "breite_cm": 180,
+      "tiefe_cm": 90,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Freistehender Couchtisch (Basaltina-Platte)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34430_n_PATIO-COFFEE-TABLE-180X90-H25.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-sofa-with-top-cm-187-m75",
+      "name": "SOFA WITH TOP CM 187 - SEATING MODULE CM 75",
+      "art": "sofa",
+      "breite_cm": 187,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "armlehnen": "zwei",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Sofa mit zwei Armlehnen, freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34456_n_PATIO-SOFA-WITH-TOP-187X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-sofa-cm-166-m75",
+      "name": "DAYBED-SOFA CM 166 - SEATING MODULE CM 75",
+      "art": "daybed-sofa",
+      "breite_cm": 166,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Sofa (Rücken längs, Liegefläche), freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34457_n_PATIO-DAYBED-SOFA-166X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-sofa-with-top-cm-166-m75",
+      "name": "DAYBED-SOFA WITH TOP CM 166 - SEATING MODULE CM 75",
+      "art": "daybed-sofa",
+      "breite_cm": 166,
+      "tiefe_cm": 104,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "zwei",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Sofa (Rücken längs, Liegefläche), freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34460_n_PATIO-DAYBED-SOFA-WITH-TOP-166X104-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-element-with-1-armrest-cm-158-m75",
+      "name": "ELEMENT WITH 1 ARMREST CM 158 - SEATING MODULE CM 75",
+      "art": "endelement",
+      "breite_cm": 158,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Endelement mit 1 Armlehne, anreihbar an Mittel-/Penisola-/Chaise-Elemente",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34463_n_PATIO-ELEMENT-WITH-ARMREST-158X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-element-with-1-armrest-with-top-cm-179-m75",
+      "name": "ELEMENT WITH 1 ARMREST WITH TOP CM 179 - SEATING MODULE CM 75",
+      "art": "endelement",
+      "breite_cm": 179,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Endelement mit 1 Armlehne, anreihbar an Mittel-/Penisola-/Chaise-Elemente",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34465_n_PATIO-ELEMENT-WITH-ARMREST-WITH-TOP-179X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-element-with-armrest-cm-158-m75",
+      "name": "DAYBED ELEMENT WITH ARMREST CM 158 - SEATING MODULE CM 75",
+      "art": "endelement",
+      "breite_cm": 158,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Endelement mit 1 Armlehne, anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34467_n_PATIO-DAYBED-ELEMENT-WITH-ARMREST-158X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-element-with-armrest-with-top-cm-158-m75",
+      "name": "DAYBED ELEMENT WITH ARMREST WITH TOP CM 158 - SEATING MODULE CM 75",
+      "art": "endelement",
+      "breite_cm": 158,
+      "tiefe_cm": 104,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Daybed-Endelement mit 1 Armlehne, anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34470_n_PATIO-DAYBED-ELEMENT-WITH-ARMREST-WITH-TOP-158X104-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-with-armrest-cm-158-m75",
+      "name": "OPEN-END ELEMENT WITH ARMREST CM 158 - SEATING MODULE CM 75",
+      "art": "peninsula",
+      "breite_cm": 158,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne (Rücken nur teilweise), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34472_n_PATIO-OPEN-END-ELEMENT-WITH-ARMREST-158X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-with-armrest-with-top-cm-158-m75",
+      "name": "OPEN-END ELEMENT WITH ARMREST WITH TOP CM 158 - SEATING MODULE CM 75",
+      "art": "peninsula",
+      "breite_cm": 158,
+      "tiefe_cm": 104,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Endelement mit Armlehne (Rücken nur teilweise), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34474_n_PATIO-OPEN-END-ELEMENT-WITH-ARMREST-WITH-TOP-158X104-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-central-element-cm-150-m75",
+      "name": "CENTRAL ELEMENT CM 150 - SEATING MODULE CM 75",
+      "art": "mittel",
+      "breite_cm": 150,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Mittelelement ohne Armlehnen, zwischen End-/Eckelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34476_n_PATIO-CENTRAL-ELEMENT-150X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-cm-150-m75",
+      "name": "OPEN-END ELEMENT CM 150 - SEATING MODULE CM 75",
+      "art": "peninsula",
+      "breite_cm": 150,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Element ohne Armlehne (offenes Ende), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34478_n_PATIO-OPEN-END-ELEMENT-150X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-open-end-element-with-top-cm-150-m75",
+      "name": "OPEN-END ELEMENT WITH TOP CM 150 - SEATING MODULE CM 75",
+      "art": "peninsula",
+      "breite_cm": 150,
+      "tiefe_cm": 104,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "keine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Penisola-Element ohne Armlehne (offenes Ende), anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34480_n_PATIO-OPEN-END-ELEMENT-WITH-TOP-150X104-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-sofa-cm-166-m75",
+      "name": "VIS-À-VIS SOFA CM 166 - SEATING MODULE CM 75",
+      "art": "sofa-vis-a-vis",
+      "breite_cm": 166,
+      "tiefe_cm": 91,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Sofa: Rücken mittig, Sitzflächen beidseitig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34482_n_PATIO-VIS-A-VIS-SOFA-166X91-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-element-with-1-armrest-cm-158-m75",
+      "name": "VIS-À-VIS ELEMENT WITH 1 ARMREST CM 158 - SEATING MODULE CM 75",
+      "art": "endelement-vis-a-vis",
+      "breite_cm": 158,
+      "tiefe_cm": 91,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Endelement mit 1 Armlehne, Rücken mittig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34484_n_PATIO-VIS-A-VIS-ELEMENT-WITH-ARMREST-158X91-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-vis-a-vis-central-element-cm-150-m75",
+      "name": "VIS-À-VIS CENTRAL ELEMENT CM 150 - SEATING MODULE CM 75",
+      "art": "mittel-vis-a-vis",
+      "breite_cm": 150,
+      "tiefe_cm": 91,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Vis-à-vis-Mittelelement, Rücken mittig",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34485_n_PATIO-VIS-A-VIS-CENTRAL-ELEMENT-150X91-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-couch-cm-75-m75",
+      "name": "COUCH CM 75 - SEATING MODULE CM 75",
+      "art": "chaise",
+      "breite_cm": 75,
+      "tiefe_cm": 158,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Couch (Liegeelement ohne Armlehne), an Sitzelemente anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34488_n_PATIO-COUCH-75X158_H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-chaise-longue-cm-83-m75",
+      "name": "CHAISE-LONGUE CM 83 - SEATING MODULE CM 75",
+      "art": "chaise",
+      "breite_cm": 83,
+      "tiefe_cm": 158,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Chaise-longue; als Abschluss an Sitzelemente oder freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34490_n_PATIO-CHAISE-LONGUE-83X158-H87_.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-chaise-longue-with-top-cm-104-m75",
+      "name": "CHAISE-LONGUE WITH TOP CM 104 - SEATING MODULE CM 75",
+      "art": "chaise",
+      "breite_cm": 104,
+      "tiefe_cm": 158,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Chaise-longue; als Abschluss an Sitzelemente oder freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34491_n_PATIO-CHAISE-LONGUE-WITH-TOP-104X158-H87_.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-bench-cm-75x75",
+      "name": "BENCH CM 75X75",
+      "art": "bank",
+      "breite_cm": 75,
+      "tiefe_cm": 75,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Bank/Ottomane, freistehend oder als Sitzverlängerung",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34493_n_PATIO-BENCH-75X75-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-bench-cm-90x75",
+      "name": "BENCH CM 90X75",
+      "art": "bank",
+      "breite_cm": 90,
+      "tiefe_cm": 75,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Bank/Ottomane, freistehend oder als Sitzverlängerung",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34494_n_PATIO-BENCH-90X75-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-bench-cm-135x75",
+      "name": "BENCH CM 135X75",
+      "art": "bank",
+      "breite_cm": 135,
+      "tiefe_cm": 75,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Bank/Ottomane, freistehend oder als Sitzverlängerung",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34495_n_PATIO-BENCH-135X75-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-bench-cm-150x75",
+      "name": "BENCH CM 150X75",
+      "art": "bank",
+      "breite_cm": 150,
+      "tiefe_cm": 75,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Bank/Ottomane, freistehend oder als Sitzverlängerung",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34496_n_PATIO-BENCH-150X75-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-bench-with-coffee-table-cm-135x75",
+      "name": "BENCH WITH COFFEE TABLE CM 135X75",
+      "art": "bank",
+      "breite_cm": 135,
+      "tiefe_cm": 75,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 25,
+          "bedeutung": "Höhe des Couchtisch-Teils"
+        }
+      ],
+      "anschluesse": "Bank mit integriertem Couchtisch-Teil (H 25), freistehend oder vor/zwischen Sitzelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34497_n_PATIO-BENCH-WITH-COFFEE-TABLE-135X75-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-bench-with-coffee-table-cm-150x75",
+      "name": "BENCH WITH COFFEE TABLE CM 150X75",
+      "art": "bank",
+      "breite_cm": 150,
+      "tiefe_cm": 75,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 25,
+          "bedeutung": "Höhe des Couchtisch-Teils"
+        }
+      ],
+      "anschluesse": "Bank mit integriertem Couchtisch-Teil (H 25), freistehend oder vor/zwischen Sitzelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34500_n_PATIO-BENCH-WITH-COFFEE-TABLE-150X75-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-coffee-table-cm-75x75",
+      "name": "COFFEE TABLE CM 75X75",
+      "art": "tisch",
+      "breite_cm": 75,
+      "tiefe_cm": 75,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Freistehender Couchtisch (Basaltina-Platte)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34502_n_PATIO-COFFEE-TABLE-75X75-H25.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-coffee-table-cm-90x75",
+      "name": "COFFEE TABLE CM 90X75",
+      "art": "tisch",
+      "breite_cm": 90,
+      "tiefe_cm": 75,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Freistehender Couchtisch (Basaltina-Platte)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34504_n_PATIO-COFFEE-TABLE-90X75-H25.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-coffee-table-cm-135x75",
+      "name": "COFFEE TABLE CM 135X75",
+      "art": "tisch",
+      "breite_cm": 135,
+      "tiefe_cm": 75,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Freistehender Couchtisch (Basaltina-Platte)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34505_n_PATIO-COFFEE-TABLE-135X75-H25.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-coffee-table-cm-150x75",
+      "name": "COFFEE TABLE CM 150X75",
+      "art": "tisch",
+      "breite_cm": 150,
+      "tiefe_cm": 75,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "armlehnen": "keine",
+      "anschluesse": "Freistehender Couchtisch (Basaltina-Platte)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34506_n_PATIO-COFFEE-TABLE-150X75-H25.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-unit-armchair-with-top-cm-127-m90",
+      "name": "PATIO UNIT - ARMCHAIR WITH TOP CM 127 - SEATING MODULE CM 90",
+      "art": "sessel",
+      "breite_cm": 127,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio Unit",
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Unit: Sessel mit Top, freistehend oder anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34516_n_PATIO-UNIT-ARMCHAIR-WITH-TOP-127X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-unit-corner-element-element-with-1-armrest-cm-98-m90",
+      "name": "PATIO UNIT - CORNER ELEMENT/ELEMENT WITH 1 ARMREST CM 98 - SEATING MODULE CM 90",
+      "art": "ecke",
+      "breite_cm": 98,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio Unit",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Unit: Eckelement bzw. Endelement mit 1 Armlehne (Einzelsitzmodul)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34517_n_PATIO-UNIT-CORNER-ELEMENT-ELEMENT-WITH-ARMREST-98X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-unit-element-with-1-armrest-with-top-cm-119-m90",
+      "name": "PATIO UNIT - ELEMENT WITH 1 ARMREST WITH TOP CM 119 - SEATING MODULE CM 90",
+      "art": "endelement",
+      "breite_cm": 119,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio Unit",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Unit: Endelement mit 1 Armlehne und Top",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34519_n_PATIO-UNIT-ELEMENT-WITH-ARMREST-WITH-TOP-119X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-unit-central-element-cm-90-m90",
+      "name": "PATIO UNIT - CENTRAL ELEMENT CM 90 - SEATING MODULE CM 90",
+      "art": "mittel",
+      "breite_cm": 90,
+      "tiefe_cm": 98,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "90×90",
+      "linie": "Patio Unit",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Unit: Mittelelement (Einzelsitzmodul) zwischen Eck-/Endelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34521_n_PATIO-UNIT-CENTRAL-ELEMENT-90X98-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-unit-armchair-with-top-cm-112-m75",
+      "name": "PATIO UNIT - ARMCHAIR WITH TOP CM 112 - SEATING MODULE CM 75",
+      "art": "sessel",
+      "breite_cm": 112,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio Unit",
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Unit: Sessel mit Top, freistehend oder anreihbar",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34523_n_PATIO-UNIT-ARMCHAIR-WITH-TOP-112X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-unit-corner-element-element-with-1-armrest-cm-83-m75",
+      "name": "PATIO UNIT - CORNER ELEMENT/ELEMENT WITH 1 ARMREST CM 83 - SEATING MODULE CM 75",
+      "art": "ecke",
+      "breite_cm": 83,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio Unit",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Unit: Eckelement bzw. Endelement mit 1 Armlehne (Einzelsitzmodul)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34525_n_PATIO-UNIT-CORNER-ELEMENT-ELEMENT-WITH-ARMREST-83X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-unit-element-with-1-armrest-with-top-cm-104-m75",
+      "name": "PATIO UNIT - ELEMENT WITH 1 ARMREST WITH TOP CM 104 - SEATING MODULE CM 75",
+      "art": "endelement",
+      "breite_cm": 104,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio Unit",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "eine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Unit: Endelement mit 1 Armlehne und Top",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34528_n_PATIO-UNIT-ELEMENT-WITH-ARMREST-WITH-TOP-104X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-unit-central-element-cm-75-m75",
+      "name": "PATIO UNIT - CENTRAL ELEMENT CM 75 - SEATING MODULE CM 75",
+      "art": "mittel",
+      "breite_cm": 75,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "sitzmodul_cm": "75×75",
+      "linie": "Patio Unit",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Unit: Mittelelement (Einzelsitzmodul) zwischen Eck-/Endelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34529_n_PATIO-UNIT-CENTRAL-ELEMENT-75X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-armchair-cm-79x83",
+      "name": "PATIO SMALL - ARMCHAIR CM 79X83",
+      "art": "sessel",
+      "breite_cm": 79,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Small: Sessel, freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34530_n_PATIO-SMALL-ARMCHAIR-79X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-sofa-cm-166x83",
+      "name": "PATIO SMALL - SOFA CM 166X83",
+      "art": "sofa",
+      "breite_cm": 166,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Small: Sofa, freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34532_n_PATIO-SMALL-SOFA-166X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-sofa-cm-196x83",
+      "name": "PATIO SMALL - SOFA CM 196X83",
+      "art": "sofa",
+      "breite_cm": 196,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "zwei",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Small: Sofa, freistehend",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34533_n_PATIO-SMALL-SOFA-196X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-loveseat-cm-98x83",
+      "name": "PATIO SMALL - LOVESEAT CM 98X83",
+      "art": "loveseat",
+      "breite_cm": 98,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "eine-oder-zwei (aus Zeichnung nicht eindeutig)",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Small: Loveseat",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34535_n_PATIO-SMALL-LOVESEAT-98X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-loveseat-with-top-cm-127x83",
+      "name": "PATIO SMALL - LOVESEAT WITH TOP CM 127X83",
+      "art": "loveseat",
+      "breite_cm": 127,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "eine-oder-zwei (aus Zeichnung nicht eindeutig)",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Small: Loveseat",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34536_n_PATIO-SMALL-LOVESEAT-WITH-TOP-127X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-loveseat-without-armrests-cm-90x83",
+      "name": "PATIO SMALL - LOVESEAT WITHOUT ARMRESTS CM 90X83",
+      "art": "loveseat",
+      "breite_cm": 90,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Small: Loveseat ohne Armlehnen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34538_n_PATIO-SMALL-LOVESEAT-WITHOUT-ARMRESTS-90X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-loveseat-without-armrests-with-top-cm-119x83",
+      "name": "PATIO SMALL - LOVESEAT WITHOUT ARMRESTS WITH TOP CM 119X83",
+      "art": "loveseat",
+      "breite_cm": 119,
+      "tiefe_cm": 83,
+      "hoehe_cm": 87,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "keine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "weitere_masse_cm": [
+        {
+          "wert": 65,
+          "bedeutung": "Unbeschriftete Höhe in der Ansicht (vermutl. Armlehnen-/Rahmenhöhe)"
+        }
+      ],
+      "anschluesse": "Patio Small: Loveseat ohne Armlehnen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34540_n_PATIO-SMALL-LOVESEAT-WITHOUT-ARMRESTS-WITH-TOP-119X83-H87.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-bench-cm-60x60",
+      "name": "PATIO SMALL - BENCH CM 60X60",
+      "art": "bank",
+      "breite_cm": 60,
+      "tiefe_cm": 60,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "keine",
+      "anschluesse": "Bank/Ottomane, freistehend oder als Sitzverlängerung",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34542_n_PATIO-SMALL-BENCH-60X60-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-bench-cm-120x60",
+      "name": "PATIO SMALL - BENCH CM 120X60",
+      "art": "bank",
+      "breite_cm": 120,
+      "tiefe_cm": 60,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "keine",
+      "anschluesse": "Bank/Ottomane, freistehend oder als Sitzverlängerung",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34544_n_PATIO-SMALL-BENCH-120X60-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-bench-with-coffee-table-cm-120x60",
+      "name": "PATIO SMALL - BENCH WITH COFFEE TABLE CM 120X60",
+      "art": "bank",
+      "breite_cm": 120,
+      "tiefe_cm": 60,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "keine",
+      "weitere_masse_cm": [
+        {
+          "wert": 25,
+          "bedeutung": "Höhe des Couchtisch-Teils"
+        }
+      ],
+      "anschluesse": "Bank mit integriertem Couchtisch-Teil (H 25), freistehend oder vor/zwischen Sitzelementen",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34545_n_PATIO-SMALL-BENCH-WITH-COFFEE-TABLE-120X60-H41.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-coffee-table-cm-60x60",
+      "name": "PATIO SMALL - COFFEE TABLE CM 60X60",
+      "art": "tisch",
+      "breite_cm": 60,
+      "tiefe_cm": 60,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "keine",
+      "anschluesse": "Freistehender Couchtisch (Basaltina-Platte)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34547_n_PATIO-SMALL-COFFEE-TABLE-60X60-H25.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-small-coffee-table-cm-120x60",
+      "name": "PATIO SMALL - COFFEE TABLE CM 120X60",
+      "art": "tisch",
+      "breite_cm": 120,
+      "tiefe_cm": 60,
+      "hoehe_cm": 25,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "linie": "Patio Small",
+      "armlehnen": "keine",
+      "anschluesse": "Freistehender Couchtisch (Basaltina-Platte)",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/34548_n_PATIO-SMALL-COFFEE-TABLE-120X60-H25.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-with-reclining-backrest-cm-85",
+      "name": "DAYBED WITH RECLINING BACKREST CM 85",
+      "art": "liege",
+      "breite_cm": 85,
+      "tiefe_cm": 201,
+      "hoehe_cm": 36,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "keine",
+      "hoehe_hinweis": "H aus Bilddateiname (36 bzw. 40 mit Top); maximale Rückenhöhe 90 cm lt. Datenblatt",
+      "rueckenhoehe_max_cm": 90,
+      "rueckenverstellung_grad": [
+        23,
+        37,
+        48,
+        56
+      ],
+      "anschluesse": "Freistehende Sonnenliege mit verstellbarer Rückenlehne",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/40596_n_PATIO_DAYBED_WITH_RECLINING_BACKREST_85X201_H36.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    },
+    {
+      "code": "patio-daybed-with-reclining-backrest-cm-115-with-top",
+      "name": "DAYBED WITH RECLINING BACKREST CM 115 WITH TOP",
+      "art": "liege",
+      "breite_cm": 115,
+      "tiefe_cm": 201,
+      "hoehe_cm": 40,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "linie": "Patio",
+      "ausrichtung": [
+        "SX (links)",
+        "DX (rechts)"
+      ],
+      "armlehnen": "keine",
+      "top": {
+        "hoehe_cm": 40,
+        "material": "Massives Mahagoni Dark Brown gebeizt oder Teak natur, mit Wasserablauf-Rillen",
+        "anzahl": 1
+      },
+      "hoehe_hinweis": "H aus Bilddateiname (36 bzw. 40 mit Top); maximale Rückenhöhe 90 cm lt. Datenblatt",
+      "rueckenhoehe_max_cm": 90,
+      "rueckenverstellung_grad": [
+        23,
+        37,
+        48,
+        56
+      ],
+      "anschluesse": "Freistehende Sonnenliege mit verstellbarer Rückenlehne",
+      "mass_hinweis": "Breite × Tiefe × Höhe aus Elementliste/Bilddateiname der Produktseite, Sitzhöhe 41 aus Technical Sheet (Mai 2023).",
+      "quelle": "https://www.minotti.com/media/immagini/40597_n_PATIO_DAYBED_WITH_RECLINING_BACKREST_WITH_TOP_115X201_H40.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/downloads/18695/18545/PATIO_UPDATE_TECHNICAL_SHEET.pdf",
+        "https://www.minotti.com/en/patio"
+      ]
+    }
+  ],
+  "vollstaendigkeit": {
+    "felder_gesamt": 510,
+    "felder_belegt": 406,
+    "prozent": 80,
+    "basis": "Maßfelder breite/tiefe/hoehe/sitzhoehe/sitztiefe aller Sitz-/Bank-Elemente (ohne Tische/Kissen/Zubehör)"
+  },
+  "vollstaendigkeit_prozent": 80
+}

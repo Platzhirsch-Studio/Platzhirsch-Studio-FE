@@ -1,0 +1,2328 @@
+{
+  "version": 1,
+  "generiert": "node tools/content/build-facts.mjs (nicht von Hand ändern, Grundfakten in facts.core.json pflegen)",
+  "stand": "2026-10-26",
+  "quellen": [
+    "tools/content/facts.core.json",
+    "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json",
+    "Marktresearch/content/produkte/minotti-sofas.json",
+    "Marktresearch/content/produkte/minotti-tische-outdoor.json",
+    "Marktresearch/content/produkte/poliform-rimadesio.json"
+  ],
+  "anzahl": 157,
+  "facts": [
+    {
+      "id": "nap-hausnummer",
+      "art": "Stammdaten",
+      "aussage": "Geschaeftsanschrift Landstrasse 11 (Firmenbuch FN 443753d)",
+      "values": [
+        "11"
+      ],
+      "kontext": [
+        "landstra(ß|ss)e",
+        "landstrasse"
+      ],
+      "quelle": "Marktresearch/recht/04-impressum-pflichtangaben.md:12 (Ediktsdatei/Firmenbuch evi.gv.at); Marktresearch/01-bestandsanalyse.md:33 (Firmenbuch, Herold, Google)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "nap-plz",
+      "art": "Stammdaten",
+      "aussage": "Postleitzahl 6911 Lochau",
+      "values": [
+        "6911"
+      ],
+      "kontext": [
+        "lochau"
+      ],
+      "quelle": "Marktresearch/recht/04-impressum-pflichtangaben.md:12",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "nap-telefon",
+      "art": "Stammdaten",
+      "aussage": "Telefon +43 5574 46255",
+      "values": [
+        "+43 5574 46255"
+      ],
+      "quelle": "Marktresearch/digital/09-local-seo-reputation.md:17",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "oeffnungszeiten",
+      "art": "Stammdaten",
+      "aussage": "Di-Fr 10-18 Uhr, Sa 10-14 Uhr, So und Mo geschlossen",
+      "values": [
+        "10–18 Uhr",
+        "10–14 Uhr",
+        "10:00–18:00",
+        "10:00–14:00"
+      ],
+      "kontext": [
+        "uhr",
+        "\\b(di|mi|do|fr|sa|tue|wed|thu|fri|sat|mar|mer|jeu|ven|sam|gio|sab)\\b",
+        "dienstag|mittwoch|donnerstag|freitag|samstag",
+        "tuesday|wednesday|thursday|friday|saturday",
+        "mardi|mercredi|jeudi|vendredi|samedi",
+        "martedì|mercoledì|giovedì|venerdì|sabato",
+        "öffnungs|opening|horaires|orari",
+        "hours|times|opentimes|orari|horaires|öffnungszeit"
+      ],
+      "quelle": "Marktresearch/01-bestandsanalyse.md:34; Marktresearch/20-reputation-wettbewerber-und-kaufkraft.md:90",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "oeffnungszeiten-uhrzeiten",
+      "art": "Stammdaten",
+      "aussage": "Uhrzeiten der Öffnungszeiten 10:00, 14:00 und 18:00 (nur als Uhrzeit, nicht als bloße Zahl)",
+      "values": [
+        "10:00",
+        "14:00",
+        "18:00"
+      ],
+      "strictUnit": true,
+      "quelle": "Marktresearch/01-bestandsanalyse.md:34; Marktresearch/20-reputation-wettbewerber-und-kaufkraft.md:90",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "vernissage-2026-09",
+      "art": "Termin",
+      "aussage": "Vernissage mit Kaja El Attar am 04.09.2026",
+      "values": [
+        "04.09.2026"
+      ],
+      "kontext": [
+        "vernissage|freitag|friday|vendredi|venerdì|2026"
+      ],
+      "quelle": "Marktresearch/01-bestandsanalyse.md:116",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "vernissage-2026-09-uhrzeit",
+      "art": "Termin",
+      "aussage": "Beginn der Vernissage mit Kaja El Attar am 04.09.2026 um 17:00 Uhr (nur als Uhrzeit, nur im Vernissage-Block)",
+      "values": [
+        "17:00"
+      ],
+      "strictUnit": true,
+      "kontext": [
+        "^Vernissage\\.time "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Live-Text der bisherigen Website, Block Vernissage (date 04.09.2026, time 17:00 Uhr / 5:00 pm / 17h00 / ore 17:00) in src/messages/{de,en,fr,it}.json:160 des Initial-Commits 54f3e4e; dieselbe Quelle wie das Datum (Marktresearch/01-bestandsanalyse.md:105 „Quelle: de.json“, :116). Termin vorbei, Popup endet laut src/components/Home/vernissagePopup.js:13 am 04.09.2026.",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "presse-minotti-2022",
+      "art": "Presse",
+      "aussage": "Pressetitel „Minotti 2022 Collection“: Minotti-Kollektion 2022, von Platzhirsch vorgestellt; Titelbild Vorarlbergerin November/Dezember 2022",
+      "values": [
+        "2022"
+      ],
+      "kontext": [
+        "^presse\\.magazines\\.\\d+ (Minotti 2022|Minotti Collection 2022|Collezione Minotti 2022)"
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/12-content-storytelling.md:30 (Beitrag der bisherigen Website „MINOTTI – Wir präsentieren die neue 2022 Collection“); public/Images/Presse/mag4.jpg (Titel „Vorarlbergerin“, NOVEMBER/DEZEMBER 2022, Nr. 8), zugeordnet in src/components/Presse/pressearticle.js:11",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "ust-at",
+      "art": "Steuer",
+      "aussage": "Oesterreichische Umsatzsteuer 20 %",
+      "values": [
+        "20 %",
+        "1,20"
+      ],
+      "kontext": [
+        "ust|mwst|mehrwertsteuer|umsatzsteuer|vat|tva|iva|brutto|österreich"
+      ],
+      "quelle": "Marktresearch/18-schweiz-recht-steuer-logistik.md:146",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "ust-de",
+      "art": "Steuer",
+      "aussage": "Deutsche Umsatzsteuer 19 % bei Fernverkauf ueber der EU-Schwelle",
+      "values": [
+        "19 %",
+        "1,19"
+      ],
+      "kontext": [
+        "ust|mwst|mehrwertsteuer|umsatzsteuer|vat|tva|iva|deutsch"
+      ],
+      "quelle": "Marktresearch/18-schweiz-recht-steuer-logistik.md:147 (WKO OSS-FAQ, 02.10.2025)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "oss-schwelle",
+      "art": "Steuer",
+      "aussage": "OSS-Schwelle 10.000 EUR netto EU-weit",
+      "values": [
+        "10.000 €"
+      ],
+      "kontext": [
+        "oss|schwelle|fernverkauf|threshold|seuil|soglia"
+      ],
+      "quelle": "Marktresearch/18-schweiz-recht-steuer-logistik.md:32 (WKO OSS-FAQ)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "mwst-ch-fl",
+      "art": "Steuer",
+      "aussage": "MWST-Normalsatz Schweiz und Liechtenstein 8,1 %",
+      "values": [
+        "8,1 %",
+        "1,081"
+      ],
+      "kontext": [
+        "mwst|mehrwertsteuer|vat|tva|iva|schweiz|liechtenstein|suisse|svizzera|switzerland|einfuhr"
+      ],
+      "quelle": "Marktresearch/18-schweiz-recht-steuer-logistik.md:47 (llv.li)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "wertfreigrenze-ch",
+      "art": "Zoll",
+      "aussage": "Wertfreigrenze im Reiseverkehr CHF 150 pro Person und Tag seit 2025",
+      "values": [
+        "CHF 150",
+        "2025"
+      ],
+      "kontext": [
+        "wertfreigrenze|freigrenze|reiseverkehr|franchise|franchigia|duty"
+      ],
+      "quelle": "Marktresearch/18-schweiz-recht-steuer-logistik.md:58 (SRF)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "formular-name-min",
+      "art": "technisch",
+      "aussage": "Name mindestens 2 Zeichen",
+      "values": [
+        "2"
+      ],
+      "kontext": [
+        "zeichen|characters|caractères|caratteri"
+      ],
+      "quelle": "src/lib/forms/schemas.js:51",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "formular-nachricht-min",
+      "art": "technisch",
+      "aussage": "Nachricht bzw. Beschreibung mindestens 10 Zeichen",
+      "values": [
+        "10"
+      ],
+      "kontext": [
+        "zeichen|characters|caractères|caratteri"
+      ],
+      "quelle": "src/lib/forms/schemas.js:56 und :70",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "formular-telefon",
+      "art": "technisch",
+      "aussage": "Telefonnummer 6 bis 20 Zeichen",
+      "values": [
+        "6",
+        "20"
+      ],
+      "kontext": [
+        "zeichen|characters|caractères|caratteri"
+      ],
+      "quelle": "src/lib/forms/schemas.js:24 (PHONE_RE)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "upload-schritte",
+      "art": "technisch",
+      "aussage": "Upload-Seite: Fortschrittsanzeige mit 3 Schritten (Zustimmen · Aufnehmen · Senden)",
+      "values": [
+        "3"
+      ],
+      "kontext": [
+        "^Upload.client.stepper.label "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Upload/UploadClient.js:247 (Stepper, „Schritt ${step} von 3“); Text 1:1 aus Marktresearch/digital/features/upload-messages-vorschlag.json (Upload.client.stepper.label)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "upload-notiz-beispiel",
+      "art": "technisch",
+      "aussage": "Platzhalter-Beispiel im Notizfeld (Raumhöhe 2,60 m), keine Tatsachenbehauptung",
+      "values": [
+        "2,60 m"
+      ],
+      "kontext": [
+        "^Upload.client.note.placeholder "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Upload/UploadClient.js:1274 (placeholder); Text 1:1 aus Marktresearch/digital/features/upload-messages-vorschlag.json (Upload.client.note.placeholder)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "upload-dauer-1-minute",
+      "art": "technisch",
+      "aussage": "Hinweis „Optional · dauert 1 Minute“ auf der Upload-Karte (Aufwandsangabe des Upload-Teams)",
+      "values": [
+        "1 Minute"
+      ],
+      "kontext": [
+        "^Upload.handoff.overline "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Upload/UploadHandoff.js:348 (Overline „Optional · dauert 1 Minute“); Text 1:1 aus Marktresearch/digital/features/upload-messages-vorschlag.json (Upload.handoff.overline)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "upload-demo-1-stunde",
+      "art": "technisch",
+      "aussage": "Demo-Upload-Link 1 Stunde gültig (Labs, nur Entwicklung)",
+      "values": [
+        "1 Stunde"
+      ],
+      "kontext": [
+        "^Upload.demo.(enabled|validLabel) "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/upload/config.js:43 (demo.ttlMinutes: 60); Marktresearch/digital/features/handy-upload.md:64 („1 Stunde gültig“)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "arbeitsweise-erstgespraech-60",
+      "art": "Angebot",
+      "aussage": "Erstgespräch 60 Minuten, kostenlos (Design-Bibel; Bestätigung Inhaber offen, integration.md)",
+      "values": [
+        "60 Minuten",
+        "60 minutes",
+        "60 minuti"
+      ],
+      "kontext": [
+        "^Arbeitsweise."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/expertenrat/00-design-bibel.md:277 (Unterzeile „60 Minuten · kostenlos“); Marktresearch/digital/features/arbeitsweise-konzept.md:218",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "ezarri-kleber-c2te",
+      "art": "Hersteller",
+      "aussage": "Ezarri: Kleber mindestens Klasse C2TE",
+      "values": [
+        "C2TE"
+      ],
+      "kontext": [
+        "^ezarri."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/features/ezarri-analyse.md:118; Marktresearch/digital/features/ezarri-konzept.md:191 (Ezarri-Verlegeanleitung)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "ezarri-sortiment-400",
+      "art": "Hersteller",
+      "aussage": "Ezarri-Welt: 402 Referenzen (mehr als 400 Mosaike)",
+      "values": [
+        "400"
+      ],
+      "kontext": [
+        "^ezarri."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/features/ezarri-konzept.md:19 (402 Referenzen); src/lib/ezarri/references.json",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "ezarri-reserve-10",
+      "art": "Hersteller",
+      "aussage": "Mengenrechner: 10 % Reserve nach Ezarri-Beispiel",
+      "values": [
+        "10 %"
+      ],
+      "kontext": [
+        "^ezarri."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/features/ezarri-rechner.md:35; Marktresearch/digital/features/ezarri-analyse.md:70",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "ezarri-patterns-20",
+      "art": "Hersteller",
+      "aussage": "20 Ezarri-Patterns mit 2 bis 3 Farbkanälen",
+      "values": [
+        "20",
+        "2",
+        "3"
+      ],
+      "kontext": [
+        "^ezarri.b.modus.patternSub "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/digital/features/ezarri-konzept.md:19 (20 Patterns); Marktresearch/digital/features/ezarri-konfigurator.md:10 (3 Kanäle), :55 (Kanalzahl je Pattern)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "druckformat-a4",
+      "art": "technisch",
+      "aussage": "Druckblatt im Format A4",
+      "values": [
+        "A4"
+      ],
+      "kontext": [
+        "^ezarri."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/ezarri/rechner (Druckblatt A4); Marktresearch/digital/features/ezarri-konfigurator.md",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "widerruf-14-tage",
+      "art": "Recht",
+      "aussage": "Rücktrittsrecht 14 Tage bei Fernabsatz (FAGG § 11)",
+      "values": [
+        "14 Tagen",
+        "14 days",
+        "14 jours",
+        "14 giorni"
+      ],
+      "kontext": [
+        "^payments."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/recht/06-gutschein-event-bewertung-bedingungen.md:36 und :80 (14 Tage Rücktrittsrecht, § 11 FAGG)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "gutschein-30-jahre",
+      "art": "Recht",
+      "aussage": "Gutscheine: allgemeine Verjährungsfrist 30 Jahre (ABGB § 1478)",
+      "values": [
+        "30 Jahren",
+        "30 years",
+        "30 ans",
+        "30 anni"
+      ],
+      "kontext": [
+        "^payments."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "Marktresearch/recht/06-gutschein-event-bewertung-bedingungen.md:29 (30 Jahre, § 1478 ABGB)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "tagebuch-upload-25-mb",
+      "art": "technisch",
+      "aussage": "Projekt-Tagebuch: Fotos bis 25 MB je Datei",
+      "values": [
+        "25 MB",
+        "25 Mo"
+      ],
+      "kontext": [
+        "^Portal.tagebuch.uploadFile"
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/portal/tagebuch/config.js:28 (maxBytes: 25 * 1024 * 1024)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "tagebuch-referenz-schritte",
+      "art": "technisch",
+      "aussage": "Referenz-Freigabe im Projekt-Tagebuch: Schritt 1 bis 4 (Gliederung des Formulars, keine Mengenangabe)",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "kontext": [
+        "^Portal.tagebuch.refStep[1-4] "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Portal/Tagebuch/ReferenzFreigabe.js:113, :142, :179, :185 (vier Fieldsets)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "wunschliste-beitrag-max-5000",
+      "art": "technisch",
+      "aussage": "Wunschliste: Gutschein-Beitrag in ganzen Euro bis 5.000 (Eingabegrenze gegen Tippfehler, wie AMOUNT_MAX der Gutscheine)",
+      "values": [
+        "5.000",
+        "5,000",
+        "5 000"
+      ],
+      "kontext": [
+        "^wunschliste.errors.amount"
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/wunschliste/config.js:45 (contributionMax: 5000)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "termin-bestaetigung-30-min",
+      "art": "Angebot",
+      "aussage": "Online-Kalender: Bestätigungslink (Double-Opt-in) gilt 30 Minuten, so lange ist die Uhrzeit vorgemerkt",
+      "values": [
+        "30 Minuten",
+        "30 minutes",
+        "30 minuti"
+      ],
+      "kontext": [
+        "^termin\\."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/booking/constants.js (VERIFY_TTL_MIN = 30); Marktresearch/digital/features/online-termin-video.md B5 (TTL 30 min)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "termin-videoraum-15-min",
+      "art": "Angebot",
+      "aussage": "Online-Kalender: Videoraum-Link erscheint ab 15 Minuten vor Beginn",
+      "values": [
+        "15 Minuten",
+        "15 minutes",
+        "15 minuti"
+      ],
+      "kontext": [
+        "^termin\\."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/booking/constants.js (MEET_OPEN_MIN = 15); Marktresearch/digital/features/online-termin-video.md B3 Nr. 8 (get_meet_link erst ab 15 min vor Start)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "termin-vorlauf-24-h",
+      "art": "Angebot",
+      "aussage": "Online-Kalender: frühester Termin 24 Stunden im Voraus",
+      "values": [
+        "24 Stunden",
+        "24 hours",
+        "24 heures",
+        "24 ore"
+      ],
+      "kontext": [
+        "^termin\\."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/booking/constants.js (LEAD_HOURS = 24); Marktresearch/digital/features/online-termin-video.md",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "termin-anliegen-1000",
+      "art": "Formular",
+      "aussage": "Online-Kalender: Feld Anliegen höchstens 1000 Zeichen",
+      "values": [
+        "1000"
+      ],
+      "kontext": [
+        "^termin\\.(daten\\.anliegenHint|errors\\.anliegen)"
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/booking/schema.js (anliegen max 1000)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "termin-zaehler-eins",
+      "art": "Formular",
+      "aussage": "Online-Kalender: Einzahl der freien Zeiten („1 Zeit frei“, Screenreader-Text)",
+      "values": [
+        "1"
+      ],
+      "kontext": [
+        "^termin\\.zeit\\.freeLongOne"
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Termin/SlotPicker.js (Plural je Anzahl, QA UX P3)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "einblicke-fristen",
+      "art": "technisch",
+      "aussage": "Besucher-Einblicke: Mausraster 40 px, Sitzungs-ID 30 Minuten, Rohdaten höchstens 14 Tage, Aggregate ab 5 Besuchen",
+      "values": [
+        "40",
+        "40 px",
+        "30 Minuten",
+        "30 minutes",
+        "30 minuti",
+        "14 Tagen",
+        "14 days",
+        "14 jours",
+        "14 giorni",
+        "5"
+      ],
+      "kontext": [
+        "^Cookies.einblicke."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/einblicke/config.js (BAND_PX = 40, SESSION_MS = 30 * 60 * 1000, SERVER.rawMaxDays: 14, SERVER.k: 5)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "winterlager-gloster-pflege",
+      "art": "Herstellerangabe",
+      "aussage": "Winterlager & Pflege: Pflegehinweise aus den Gloster-Pflegeblättern (Teak wird in 6 Monaten bis 2 Jahren silbergrau; Seil-Reinigung 1 Teil Reiniger auf 16 Teile Wasser unter 40 °C; Kunststoffgeflecht von −20 °C bis +55 °C)",
+      "values": [
+        "6 Monate",
+        "2 Jahre",
+        "6 months",
+        "2 years",
+        "6 mois",
+        "2 ans",
+        "6 mesi",
+        "2 anni",
+        "1",
+        "16",
+        "40 °",
+        "20 °",
+        "55 °"
+      ],
+      "kontext": [
+        "^serviceWinterlager.care.items.(teak|rope|wicker).points."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/service/winterlager/copy.js SOURCES (Gloster Care & Maintenance: Teak.pdf, Outdoor Rope.pdf, Wicker.pdf; Übersicht https://www.gloster.com/en/products/care-sheets, abgerufen 29.10.2026 laut Team Winterlager); Text aus Marktresearch/digital/features/service-winterlager-messages.json",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "winterlager-formular-beispiele",
+      "art": "technisch",
+      "aussage": "Winterlager-Formular: Platzhalter- und Hinweisbeispiele (6 Stühle, 3. Stock, 10. April), keine Tatsachenbehauptung",
+      "values": [
+        "6",
+        "3",
+        "3°",
+        "10"
+      ],
+      "kontext": [
+        "^serviceWinterlager.form.(list.hint|address.accessPlaceholder|dates.notePlaceholder) "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Service/Winterlager/WinterlagerPage.js (Hinweis/Platzhalter); Text aus Marktresearch/digital/features/service-winterlager-messages.json",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "winterlager-formular-grenzen",
+      "art": "Formular",
+      "aussage": "Winterlager: Anzahl je Position ab 1 (Obergrenze {max} aus der Konfiguration), Countdown-Einzahl „noch 1 Tag“",
+      "values": [
+        "1",
+        "1 day"
+      ],
+      "kontext": [
+        "^serviceWinterlager.(form.errors.count|countdown.oneDay) "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/lib/service/winterlager/form.js (parseCount, Startwert count: \"1\", WINTERLAGER_CONFIG.maxAnzahl); src/lib/service/winterlager/view.js (Countdown kind oneDay)",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "cookie-laufzeit-12-monate",
+      "art": "technisch",
+      "aussage": "Cookies cookieConsent und NEXT_LOCALE: Laufzeit 12 Monate (365 Tage)",
+      "values": [
+        "12 Monate",
+        "12 months",
+        "12 mois",
+        "12 mesi"
+      ],
+      "kontext": [
+        "^Cookies.essentialStorage."
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "src/components/Cookies/cookiecomponent.js:358 (maxAge 60*60*24*365); src/components/Navbar/LanguageSwitcher.js:50 (NEXT_LOCALE Max-Age 365 Tage); gleiche Angabe in der freigegebenen DSE src/components/Datenschutz/datenschutz.js:223",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "starpool-zerobody-dry-float-wasser",
+      "art": "Produkt",
+      "aussage": "Starpool Zerobody Dry Float: man liegt über rund 400 Litern warmem Wasser, ohne nass zu werden (Herstellerangabe)",
+      "values": [
+        "400"
+      ],
+      "kontext": [
+        "^badWellness.marke.starpool.text "
+      ],
+      "scope": {
+        "files": [
+          "src/messages/"
+        ]
+      },
+      "quelle": "https://www.starpool.com/products/zerobody-dry-float (geprüft 31.10.2026: ca. 400 l warmes Wasser); Kopfkommentar src/lib/wellness/marken.js; Text aus Marktresearch/digital/features/bad-wellness-messages.json",
+      "beleg": "tools/content/facts.core.json"
+    },
+    {
+      "id": "produkt:lamps/lamps-arco:jahr",
+      "art": "Produkt",
+      "aussage": "Flos Arco: Jahr",
+      "values": [
+        "1962"
+      ],
+      "scope": {
+        "product": "lamps/lamps-arco"
+      },
+      "quelle": "https://flos.com/de/at/arco/M-arco.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lamps/lamps-arco:masse",
+      "art": "Produkt",
+      "aussage": "Flos Arco: Maße",
+      "values": [
+        "Höhe 2400 mm, Länge 2200 mm, Breite 1850 mm, Gewicht 63,8 kg, Kabel 2500 mm"
+      ],
+      "scope": {
+        "product": "lamps/lamps-arco"
+      },
+      "quelle": "https://flos.com/de/at/arco/M-arco.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lamps/lamps-arco:lichttechnik",
+      "art": "Produkt",
+      "aussage": "Flos Arco: Lichttechnik",
+      "values": [
+        "E27, 1 Leuchtmittel, max. 70 W, 220–250 V, direktes Licht, IP20; Leuchtmittel nicht enthalten (Empfehlung: LED 11 W 2700 K E27)"
+      ],
+      "scope": {
+        "product": "lamps/lamps-arco"
+      },
+      "quelle": "https://flos.com/de/at/arco/M-arco.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lamps/lamps-taccia:jahr",
+      "art": "Produkt",
+      "aussage": "Flos Taccia: Jahr",
+      "values": [
+        "1962"
+      ],
+      "scope": {
+        "product": "lamps/lamps-taccia"
+      },
+      "quelle": "https://flos.com/de/at/taccia/M-taccia.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lamps/lamps-taccia:masse",
+      "art": "Produkt",
+      "aussage": "Flos Taccia: Maße",
+      "values": [
+        "Höhe 645 mm, Breite 495 mm, Länge 190 mm, Gewicht 11,14 kg, Kabel 2200 mm"
+      ],
+      "scope": {
+        "product": "lamps/lamps-taccia"
+      },
+      "quelle": "https://flos.com/de/at/taccia/M-taccia.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lamps/lamps-taccia:lichttechnik",
+      "art": "Produkt",
+      "aussage": "Flos Taccia: Lichttechnik",
+      "values": [
+        "LED 28 W, 2700 K, indirektes Licht, 100–240 V, IP20; integrierter Dimmer 10–100 %; externer Treiber im Lieferumfang"
+      ],
+      "scope": {
+        "product": "lamps/lamps-taccia"
+      },
+      "quelle": "https://flos.com/de/at/taccia/M-taccia.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lamps/lamps-snoopy:jahr",
+      "art": "Produkt",
+      "aussage": "Flos Snoopy: Jahr",
+      "values": [
+        "1967"
+      ],
+      "scope": {
+        "product": "lamps/lamps-snoopy"
+      },
+      "quelle": "https://flos.com/de/at/snoopy/M-snoopy.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lamps/lamps-snoopy:masse",
+      "art": "Produkt",
+      "aussage": "Flos Snoopy: Maße",
+      "values": [
+        "Höhe 369 mm, Länge 394 mm, Gewicht 7,8 kg"
+      ],
+      "scope": {
+        "product": "lamps/lamps-snoopy"
+      },
+      "quelle": "https://flos.com/de/at/snoopy/M-snoopy.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lamps/lamps-snoopy:lichttechnik",
+      "art": "Produkt",
+      "aussage": "Flos Snoopy: Lichttechnik",
+      "values": [
+        "E27, 1 Leuchtmittel, max. 100 W, 220–240 V; Leuchtmittel nicht enthalten (Empfehlung: LED Opal 8 W 2700 K dimmbar); Touch-Dimmer im Sockel, stufenlos"
+      ],
+      "scope": {
+        "product": "lamps/lamps-snoopy"
+      },
+      "quelle": "https://flos.com/de/at/snoopy/M-snoopy.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lamps/lamps-toio-led:jahr",
+      "art": "Produkt",
+      "aussage": "Flos Toio Led: Jahr",
+      "values": [
+        "1962"
+      ],
+      "scope": {
+        "product": "lamps/lamps-toio-led"
+      },
+      "quelle": "https://flos.com/de/at/toio-led/M-toio.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lamps/lamps-toio-led:lichttechnik",
+      "art": "Produkt",
+      "aussage": "Flos Toio Led: Lichttechnik",
+      "values": [
+        "LED-Retrofit 20 W, GX16d, 2500 K, 220–240 V, indirektes Licht, Leuchtmittel enthalten, integrierter Dimmer"
+      ],
+      "scope": {
+        "product": "lamps/lamps-toio-led"
+      },
+      "quelle": "https://flos.com/de/at/toio-led/M-toio.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-adjustable-table-e1027:jahr",
+      "art": "Produkt",
+      "aussage": "ClassiCon Adjustable Table E1027: Jahr",
+      "values": [
+        "1927"
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-adjustable-table-e1027"
+      },
+      "quelle": "https://www.classicon.com/de/produkt/adjustable-table-e-1027.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-adjustable-table-e1027:masse",
+      "art": "Produkt",
+      "aussage": "ClassiCon Adjustable Table E1027: Maße",
+      "values": [
+        "Plattendurchmesser ca. 52 cm; Höhe ca. 64–102 cm; weitere Werte der Maßzeichnung: 55/93 und 46 cm"
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-adjustable-table-e1027"
+      },
+      "vorbehalt": "Recherche markiert Teile als [prüfen]; Zahlen stehen in der Quelle, Zuordnung offen",
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Adjustable-Table-E-1027-Product-Sheet.pdf",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-adjustable-table-e1027:namensherkunft",
+      "art": "Produkt",
+      "aussage": "ClassiCon Adjustable Table E1027: Namensherkunft",
+      "values": [
+        "E = Eileen, 10 = Jean (J), 2 = Badovici, 7 = Gray; benannt nach dem Haus E 1027 „Maison en bord de mer\""
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-adjustable-table-e1027"
+      },
+      "quelle": "https://www.classicon.com/de/produkt/adjustable-table-e-1027.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-adjustable-table-e1027:black-version",
+      "art": "Produkt",
+      "aussage": "ClassiCon Adjustable Table E1027: Black Version",
+      "values": [
+        "Seit 2015 bei ClassiCon, entspricht der von Gray in E 1027 verwendeten Variante"
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-adjustable-table-e1027"
+      },
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Day_Bed-Day_Bed_Grand-Product_Sheet.pdf",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:armchairs-stools/armchairs-stools-bibendum-armchair:jahr",
+      "art": "Produkt",
+      "aussage": "ClassiCon Bibendum Armchair: Jahr",
+      "values": [
+        "1926"
+      ],
+      "scope": {
+        "product": "armchairs-stools/armchairs-stools-bibendum-armchair"
+      },
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Bibendum-Armchair-Product-Sheet.pdf",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:armchairs-stools/armchairs-stools-bibendum-armchair:masse",
+      "art": "Produkt",
+      "aussage": "ClassiCon Bibendum Armchair: Maße",
+      "values": [
+        "ca. B 90 × T 79 × H 72 cm, Sitzhöhe ca. 42 cm (Maßzeichnung Produktblatt, geprüft)"
+      ],
+      "scope": {
+        "product": "armchairs-stools/armchairs-stools-bibendum-armchair"
+      },
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Bibendum-Armchair-Product-Sheet.pdf",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:armchairs-stools/armchairs-stools-bibendum-armchair:bezuge",
+      "art": "Produkt",
+      "aussage": "ClassiCon Bibendum Armchair: Bezüge",
+      "values": [
+        "Stoffgruppen 1–5, Classic-Leder (u. a. Schwarz, Grau, Cognac, Bordeaux), Premium-Leder (u. a. Terra, Enzian)"
+      ],
+      "scope": {
+        "product": "armchairs-stools/armchairs-stools-bibendum-armchair"
+      },
+      "quelle": "https://www.classicon.com/de/produkt/bibendum-armchair.html",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:chaise-longues-daybeds/chaise-longues-daybeds-day-bed:jahr",
+      "art": "Produkt",
+      "aussage": "ClassiCon Day Bed: Jahr",
+      "values": [
+        "1925"
+      ],
+      "scope": {
+        "product": "chaise-longues-daybeds/chaise-longues-daybeds-day-bed"
+      },
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Day_Bed-Day_Bed_Grand-Product_Sheet.pdf",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:chaise-longues-daybeds/chaise-longues-daybeds-day-bed:masse",
+      "art": "Produkt",
+      "aussage": "ClassiCon Day Bed: Maße",
+      "values": [
+        "Day Bed ca. 190 × 86 cm, Höhe 60 cm, Sitzhöhe ca. 43 cm; Day Bed Grand ca. 200 × 90 cm, Höhe 60 cm (Maßzeichnung Produktblatt, geprüft)"
+      ],
+      "scope": {
+        "product": "chaise-longues-daybeds/chaise-longues-daybeds-day-bed"
+      },
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Day_Bed-Day_Bed_Grand-Product_Sheet.pdf",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:chaise-longues-daybeds/chaise-longues-daybeds-day-bed:varianten",
+      "art": "Produkt",
+      "aussage": "ClassiCon Day Bed: Varianten",
+      "values": [
+        "Schwarzes Gestell seit 2019; Day Bed Grand seit 2019 (Begründung: durchschnittliche Körpergröße in 50 Jahren um annähernd 10 cm gestiegen)"
+      ],
+      "scope": {
+        "product": "chaise-longues-daybeds/chaise-longues-daybeds-day-bed"
+      },
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Day_Bed-Day_Bed_Grand-Product_Sheet.pdf",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-bell-side-table:jahr",
+      "art": "Produkt",
+      "aussage": "ClassiCon Bell Side Table: Jahr",
+      "values": [
+        "2012 (Strohmarketerie-Variante 2024)"
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-bell-side-table"
+      },
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Bell-Table-Series-Product-Sheet.pdf",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-bell-side-table:masse",
+      "art": "Produkt",
+      "aussage": "ClassiCon Bell Side Table: Maße",
+      "values": [
+        "ca. Ø 50 cm, Höhe ca. 53 cm"
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-bell-side-table"
+      },
+      "vorbehalt": "Recherche markiert Teile als [prüfen]; Zahlen stehen in der Quelle, Zuordnung offen",
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Bell-Table-Series-Product-Sheet.pdf",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:beds/beds-bett-adonis:masse",
+      "art": "Produkt",
+      "aussage": "Tréca Paris Bett Adonis: Maße",
+      "values": [
+        "Kopfteil Höhe 101 cm, Stärke 10 cm; Füße Höhe 19 cm; Füße nicht kompatibel mit Untermatratzen der Länge 190 cm"
+      ],
+      "scope": {
+        "product": "beds/beds-bett-adonis"
+      },
+      "quelle": "https://www.treca-paris.com/at/produkt/bett-adonis/",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:beds/beds-kopfteil-versailles:masse",
+      "art": "Produkt",
+      "aussage": "Tréca Paris Kopfteil Versailles: Maße",
+      "values": [
+        "Höhe 100 oder 120 cm, Stärke 9,5 cm; Breite nach Maß"
+      ],
+      "scope": {
+        "product": "beds/beds-kopfteil-versailles"
+      },
+      "quelle": "https://www.treca-paris.com/at/produkt/kopfteil-versailles/",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:beds/beds-matratze-imperial-pullman:materialien",
+      "art": "Produkt",
+      "aussage": "Tréca Paris Matratze Impérial Pullman: Materialien",
+      "values": [
+        "Doppelte Pullman®-Federung; Merino- und Mohairwolle, hypoallergene Wattierung, Softcare fest, Leinen und Seide; Bezug 96 % Viskose, 4 % Leinen (Option französisches Leinen); 6 bestickte Griffe, 4 Belüftungsösen"
+      ],
+      "scope": {
+        "product": "beds/beds-matratze-imperial-pullman"
+      },
+      "quelle": "https://www.treca-paris.com/at/produkt/imperial-pullman-matratze/",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:beds/beds-matratze-imperial-pullman:masse",
+      "art": "Produkt",
+      "aussage": "Tréca Paris Matratze Impérial Pullman: Maße",
+      "values": [
+        "Höhe 30 cm; Liegemaße nach Maß"
+      ],
+      "scope": {
+        "product": "beds/beds-matratze-imperial-pullman"
+      },
+      "quelle": "https://www.treca-paris.com/at/produkt/imperial-pullman-matratze/",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:beds/beds-liegesystem-paris-istanbul:materialien",
+      "art": "Produkt",
+      "aussage": "Tréca Paris Liegesystem Paris Istanbul: Materialien",
+      "values": [
+        "Matratze: Air Spring®-Taschenfedern und 3 Schichten Mini-Air-Spring®-Taschenfedern, Kaschmir und Wolle, französische Wolle, thermoregulierende Watte, Leinen-Seide-Kaschmir, Naturlatex; Auflage Paris: Merinowolle aus Arles, Kamelwolle und Wolle, Leinen-Seide-Kaschmir; Bezug 64 % Viskose, 36 % modifiziertes Acryl"
+      ],
+      "scope": {
+        "product": "beds/beds-liegesystem-paris-istanbul"
+      },
+      "quelle": "https://www.treca-paris.com/at/produkt/liegesystem-paris-istanbul/",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:beds/beds-liegesystem-paris-istanbul:masse",
+      "art": "Produkt",
+      "aussage": "Tréca Paris Liegesystem Paris Istanbul: Maße",
+      "values": [
+        "Auflage Paris 8 cm; Matratze Paris Istanbul 32 cm; Untermatratze Grand Confort 22 cm (Varianten 26 und 30 cm), Breiten 80–180 cm, Längen 190–220 cm"
+      ],
+      "scope": {
+        "product": "beds/beds-liegesystem-paris-istanbul"
+      },
+      "quelle": "https://www.treca-paris.com/at/produkt/liegesystem-paris-istanbul/",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:sun-loungers/sun-loungers-bleau-sun-lounge:masse",
+      "art": "Produkt",
+      "aussage": "Tuuci Bleau Sun Lounge: Maße",
+      "values": [
+        "Breite 64 cm, Länge 206 cm, Sitzhöhe 30 cm"
+      ],
+      "scope": {
+        "product": "sun-loungers/sun-loungers-bleau-sun-lounge"
+      },
+      "quelle": "https://www.tuuci.com/product/bleau-g2-sun-lounge/",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:sun-loungers/sun-loungers-bleau-sun-lounge:varianten",
+      "art": "Produkt",
+      "aussage": "Tuuci Bleau Sun Lounge: Varianten",
+      "values": [
+        "Comfort Sling, Standard Sling, jeweils auch mit Rädern; 14 Pulverlackfarben; 16 Sling-Farben; Schutzhülle Grau oder Taupe"
+      ],
+      "scope": {
+        "product": "sun-loungers/sun-loungers-bleau-sun-lounge"
+      },
+      "quelle": "https://www.tuuci.com/product/bleau-g2-sun-lounge/",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lounge-furniture-daybeds/lounge-furniture-daybeds-bleau-lounge-chair:masse",
+      "art": "Produkt",
+      "aussage": "Tuuci Bleau Lounge Chair: Maße",
+      "values": [
+        "B 70 × T 69 × H 79 cm, Sitzhöhe 41 cm (für alle Varianten angegeben)"
+      ],
+      "scope": {
+        "product": "lounge-furniture-daybeds/lounge-furniture-daybeds-bleau-lounge-chair"
+      },
+      "quelle": "https://www.tuuci.com/product/bleau-lounge-chair/",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:lounge-furniture-daybeds/lounge-furniture-daybeds-bleau-lounge-chair:varianten",
+      "art": "Produkt",
+      "aussage": "Tuuci Bleau Lounge Chair: Varianten",
+      "values": [
+        "Comfort Sling, Standard Sling, Ecowood mit Aluminiumarmlehnen, Ecowood mit Ecowood-Armlehnen; 14 Pulverlackfarben, 16 Sling-Farben, 4 Ecowood-Töne (Ashwood, Stonewood, Brazilian Walnut, Golden Teak); Schutzhülle Grau oder Taupe"
+      ],
+      "scope": {
+        "product": "lounge-furniture-daybeds/lounge-furniture-daybeds-bleau-lounge-chair"
+      },
+      "quelle": "https://www.tuuci.com/product/bleau-lounge-chair/",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:parasols/parasols-paraflex:jahr",
+      "art": "Produkt",
+      "aussage": "Umbrosa Paraflex: Jahr",
+      "values": [
+        "1999 (Erfindung)"
+      ],
+      "scope": {
+        "product": "parasols/parasols-paraflex"
+      },
+      "quelle": "https://www.umbrosa.be/en/parasol-collection/wall-mounted-parasol-paraflex",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:parasols/parasols-paraflex:materialien",
+      "art": "Produkt",
+      "aussage": "Umbrosa Paraflex: Materialien",
+      "values": [
+        "Arm und Mast Aluminium natur oder Schwarz (RAL 9005); Tuch 100 % Acryl, 260 g/m², Sunbrella oder Tuvatextil, wasserabweisend, 30 °C waschbar"
+      ],
+      "scope": {
+        "product": "parasols/parasols-paraflex"
+      },
+      "quelle": "https://www.umbrosa.be/en/parasol-collection/wall-mounted-parasol-paraflex",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:parasols/parasols-paraflex:masse",
+      "art": "Produkt",
+      "aussage": "Umbrosa Paraflex: Maße",
+      "values": [
+        "Rund Ø 270 und 300 cm; quadratisch 200 × 200 und 230 × 230 cm"
+      ],
+      "scope": {
+        "product": "parasols/parasols-paraflex"
+      },
+      "quelle": "https://www.umbrosa.be/en/parasol-collection/wall-mounted-parasol-paraflex",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:parasols/parasols-paraflex:tuchfarben",
+      "art": "Produkt",
+      "aussage": "Umbrosa Paraflex: Tuchfarben",
+      "values": [
+        "14: Natural, Black, Apio, Taupe, Canvas, Grey, Sand, Avena, Nectar, Flanelle, Acqua, Marble, Terra, Lin"
+      ],
+      "scope": {
+        "product": "parasols/parasols-paraflex"
+      },
+      "quelle": "https://www.umbrosa.be/en/parasol-collection/wall-mounted-parasol-paraflex",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:parasols/parasols-eclipsum-px:materialien",
+      "art": "Produkt",
+      "aussage": "Umbrosa Eclipsum PX: Materialien",
+      "values": [
+        "Gestell in Black oder Papyrus White; Tuch in 14 Farben (Material auf der PX-Seite nicht spezifiziert)"
+      ],
+      "scope": {
+        "product": "parasols/parasols-eclipsum-px"
+      },
+      "vorbehalt": "Recherche markiert Teile als [prüfen]; Zahlen stehen in der Quelle, Zuordnung offen",
+      "quelle": "https://www.umbrosa.be/en/parasol-collection/eclipsum-px",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:parasols/parasols-eclipsum-px:masse",
+      "art": "Produkt",
+      "aussage": "Umbrosa Eclipsum PX: Maße",
+      "values": [
+        "Rund, Durchmesser 3 m"
+      ],
+      "scope": {
+        "product": "parasols/parasols-eclipsum-px"
+      },
+      "quelle": "https://www.umbrosa.be/en/parasol-collection/eclipsum-px",
+      "beleg": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json"
+    },
+    {
+      "id": "produkt:sofas-couches/tables-connery:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Connery: materialien",
+      "values": [
+        "Gestell aus Sperrholz; PU-Schaum abgestufter Dichte mit Daunenkammern; Bezug Stoff oder Leder, Unterbau optional mit Lederstreifen; Flap-Ablagen aus 8 mm Aluminium mit Leder oder Eschenfurnier Mokka; Profile aus extrudiertem Aluminium, Finish Brandy"
+      ],
+      "scope": {
+        "product": "sofas-couches/tables-connery"
+      },
+      "quelle": "https://www.minotti.com/de/connery",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/tables-connery:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Connery: masse",
+      "values": [
+        "Höhe 88 cm (Sofas und Elemente mit Armlehne); Kissenbreite 83 oder 68 cm; Sofas 214/230/297/313 cm bzw. 184/200/252/268 cm; Chaise longue Square Large 178×178 cm (mit Flap 194×178 cm), Round Large 181×181 cm"
+      ],
+      "scope": {
+        "product": "sofas-couches/tables-connery"
+      },
+      "quelle": "https://www.minotti.com/de/connery",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-hamilton:jahr",
+      "art": "Produkt",
+      "aussage": "Minotti Hamilton: jahr",
+      "values": [
+        "2004"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-hamilton"
+      },
+      "quelle": "https://www.minotti.com/de/hamilton",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-hamilton:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Hamilton: materialien",
+      "values": [
+        "Gestell aus Massivholz, elastische Gurte; Sitz und Rücken mit kanalisierten Gänsedaunen über PU-Kern; Bodenrahmen aus Metall (oval 40×20 mm) in Black Nickel oder Bronze, alternativ Füße aus Esche Mokka"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-hamilton"
+      },
+      "quelle": "https://www.minotti.com/de/hamilton",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-hamilton:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Hamilton: masse",
+      "values": [
+        "Höhe 73 cm (Bank 40 cm); Endelemente 104–214 cm; Sofà mit zwei Armlehnen 236 und 314 cm; Chaise longue 135×160, 160×160, 160×180 cm; Bank 104×104 cm"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-hamilton"
+      },
+      "quelle": "https://www.minotti.com/de/hamilton",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-lawrence:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Lawrence: masse",
+      "values": [
+        "Höhe 82 cm (Hocker 40 cm); Tiefe 112 cm; Sofas 204, 224, 234, 314, 324, 404, 414 cm; Mittelelemente 80–270 cm; Ecksofa 319×112 cm"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-lawrence"
+      },
+      "quelle": "https://www.minotti.com/de/lawrence",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-daniels:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Daniels: masse",
+      "values": [
+        "Höhe 80 cm (Hocker 44 cm); Sitztiefe 86 oder 102 cm; Sofas 228, 248, 268, 310 cm; Mittelelemente 122–244 cm; Ecksofas 198–260 cm"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-daniels"
+      },
+      "quelle": "https://www.minotti.com/de/daniels",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/tables-horizonte-tables:designer",
+      "art": "Produkt",
+      "aussage": "Minotti Horizonte: designer",
+      "values": [
+        "Marcio Kogan / studio mk27"
+      ],
+      "scope": {
+        "product": "sofas-couches/tables-horizonte-tables"
+      },
+      "quelle": "https://www.minotti.com/de/horizonte",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/tables-horizonte-tables:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Horizonte: masse",
+      "values": [
+        "Tiefe 106 cm, Höhe 85 cm (Standard); Sofas 254, 280, 306 cm; Elemente mit Armlehne 128–310 cm; Chaise longue 158×158 und 158×186 cm; Bank Höhe 42 cm; Sockel 7 cm über dem Boden"
+      ],
+      "scope": {
+        "product": "sofas-couches/tables-horizonte-tables"
+      },
+      "quelle": "https://www.minotti.com/de/horizonte",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-goodman:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Goodman: masse",
+      "values": [
+        "Element mit 1 Armlehne 110–240 × 110 cm, H 86; Mittelelement 134/160/212 × 110 cm; Ottoman 108×110, H 40; Chaise longue 162×162 cm; Sofa 242 oder 268 cm; Tablett 34×40, H 11"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-goodman"
+      },
+      "quelle": "https://www.minotti.com/de/goodman",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-west-sofas:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti West: materialien",
+      "values": [
+        "Massivholzgestell mit elastischen Gurten; Aluminium-Leisten 47×6 mm im Finish Brandy; Gänsedaunen (Gold Label, Assopiuma), Sitzkissen mit PU-Kern und Memory Foam; Bezug Stoff oder Leder, Variante Saddle-Hide mit Kernleder; Füße schwarz, verstellbar, H 45 mm (optional 75 mm)"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-west-sofas"
+      },
+      "quelle": "https://www.minotti.com/de/west",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-west-sofas:masse",
+      "art": "Produkt",
+      "aussage": "Minotti West: masse",
+      "values": [
+        "Höhe 79 cm (Hocker 38 cm); Kissenbreite 85 oder 75 cm; Sofa 228 und 313 cm; Ecksofa 293 und 313 cm; Chaise longue Hexagon 167×167 und 180×180 cm, Square 160×160 cm"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-west-sofas"
+      },
+      "quelle": "https://www.minotti.com/de/west",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-yves:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Yves: masse",
+      "values": [
+        "Tiefe 113 cm (Bend/Wave 140 cm), Höhe 82 cm; Sofas 248, 274, 300, 326 cm; Hocker Ø 64/84/104 cm, H 43; Chaise longue Wave 191×165 cm"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-yves"
+      },
+      "quelle": "https://www.minotti.com/de/yves",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-roger-sofas:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Roger: masse",
+      "values": [
+        "Tiefe Suite und Spring 101 cm, Spring Sofà 94 cm; Höhe meist 91 cm, Bänke 42 cm; Bodenabstand 13 cm; z. B. Spring Back to Back Low 216×166 cm, Suite Daybed-Sofa 302×121 cm"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-roger-sofas"
+      },
+      "quelle": "https://www.minotti.com/de/roger",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/produkt-supermoon-variant:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Supermoon: materialien",
+      "values": [
+        "Gestell aus Sperrholz mit PU-Schaum; Daunenkissen (Assopiuma Goldenes Etikett), Sitzkern PU; Metallrahmen verchromt oder bronze, alternativ Melaminbasis; Ablagen Marmor 20 mm oder furniertes MDF (Esche, Santos-Palisander)"
+      ],
+      "scope": {
+        "product": "sofas-couches/produkt-supermoon-variant"
+      },
+      "quelle": "https://www.minotti.com/de/supermoon",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/produkt-supermoon-variant:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Supermoon: masse",
+      "values": [
+        "Höhe meist 77 cm (lackierte Basis 64 cm, Hocker 42 cm); Sofas 226, 278, 304 cm; halbrunde Sofas 306×141 und 312×126 cm; Chaise longue 166×166 und 192×192 cm"
+      ],
+      "scope": {
+        "product": "sofas-couches/produkt-supermoon-variant"
+      },
+      "quelle": "https://www.minotti.com/de/supermoon",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-saki-sofas:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Saki: materialien",
+      "values": [
+        "Sitzfläche aus Sperrholz; PU-Schaum mit Daunen (Assopiuma); Stützpaneele in Stoff, Leder oder lackiertem PU-Formteil Baydur 60; Füße Aluminiumdruckguss Black Coffee; FSC-zertifizierte Holzkomponenten"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-saki-sofas"
+      },
+      "quelle": "https://www.minotti.com/de/saki",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-saki-sofas:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Saki: masse",
+      "values": [
+        "Sofas 180, 254 (Tiefe 91 oder 95 cm) und 328×95 cm, Höhe 71 cm; Sessel 80–104×91 cm, H 70; Bänke 156–304×82 cm, H 42; Insel 168×168 cm"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-saki-sofas"
+      },
+      "quelle": "https://www.minotti.com/de/saki",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:sofas-couches/tables-alexander:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Alexander: masse",
+      "values": [
+        "Höhe 83 cm (Hauptelemente); Sofas 229, 254, 274, 304 cm; Couch 105×187 cm; Chaise longue 162×162 oder 105×162 cm; Hocker 105×105 cm"
+      ],
+      "scope": {
+        "product": "sofas-couches/tables-alexander"
+      },
+      "quelle": "https://www.minotti.com/de/alexander",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:armchairs-stools/armchairs-twiggy-armchairs:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Twiggy: materialien",
+      "values": [
+        "Gestell aus Sperrholz; mehrschichtiger PU-Schaum; Sitzfüllung aus silikonbeschichteter Mikrofaser (recyceltes PET); Bezug Leder, Nubukleder oder Stoff; Untergestell Aluminium-Flachprofil 8 mm, gebürstet oder Black Coffee"
+      ],
+      "scope": {
+        "product": "armchairs-stools/armchairs-twiggy-armchairs"
+      },
+      "quelle": "https://www.minotti.com/de/twiggy",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:armchairs-stools/armchairs-twiggy-armchairs:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Twiggy: masse",
+      "values": [
+        "Small 64×90, H 66; Large 84×90, H 66; Deep 84×110, H 89; Deep High mit Armlehne 111×111, H 89; Chaiselongue 150×150, H 89; Bank bis 84×84, H 38"
+      ],
+      "scope": {
+        "product": "armchairs-stools/armchairs-twiggy-armchairs"
+      },
+      "quelle": "https://www.minotti.com/de/twiggy",
+      "beleg": "Marktresearch/content/produkte/minotti-sofas.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-linha-fina:designer",
+      "art": "Produkt",
+      "aussage": "Minotti Linha Fina: designer",
+      "values": [
+        "Marcio Kogan / studio mk27"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-linha-fina"
+      },
+      "quelle": "https://www.minotti.com/en/linha-fina",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-linha-fina:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Linha Fina: masse",
+      "values": [
+        "Rechteckig 260/280/300 × 115 cm, H 74 cm; 400 × 115 cm, H 75 cm (nur Lattenplatte Esche); rund Ø 160/180/200 cm, H 74 cm; Kante 16 mm, abgeschrägt"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-linha-fina"
+      },
+      "quelle": "https://www.minotti.com/en/linha-fina",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-linha-fina:varianten",
+      "art": "Produkt",
+      "aussage": "Minotti Linha Fina: varianten",
+      "values": [
+        "Rund oder rechteckig; Platten in Palisander Santos (natur oder Dark Brown) oder geflammter Esche in 260/280/300 cm und Ø 160/180/200 cm; 400 cm nur mit Lattenplatte aus Esche"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-linha-fina"
+      },
+      "quelle": "https://www.minotti.com/en/linha-fina",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-morgan:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Morgan: materialien",
+      "values": [
+        "Stützen aus satiniertem, bronzefarbenem Blech mit rautenförmigem Querschnitt und schwarzen Gummigleitern; Platte aus Tischlerplatte (Tanne) mit Eichenfurnier und Massivholzrand auf verchromten Zylindern Ø 100 mm; Oberflächen: Hochglanzlack Sand/Caramel/Granite, geflammte Eiche Moka lackiert oder Tobacco gebeizt, Ebenholz-Komposit matt (nur rund)"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-morgan"
+      },
+      "quelle": "https://www.minotti.com/en/morgan",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-morgan:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Morgan: masse",
+      "values": [
+        "Plattenstärke 40 mm; rund Ø 160/180/200 cm; rechteckig 160, 180, 200, 220, 240, 260, 280 cm (ab 220 cm × 115 cm) und 300 × 120 cm, H 73 cm"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-morgan"
+      },
+      "quelle": "https://www.minotti.com/en/morgan",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-van-dyck:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Van Dyck: materialien",
+      "values": [
+        "Gestell aus drei verschweißten Metallrohren Ø 10 cm (Chrom poliert, Black-Nickel poliert oder Glanzlack Butter/Black/Pewter); Platten: Rauchglas gehärtet 12 mm oder Verbundglas 8+8 mm, Calacatta-Marmor 20 mm, MDF 30 mm mit Eichen- oder Canaletto-Nussbaumfurnier; Filzgleiter"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-van-dyck"
+      },
+      "quelle": "https://www.minotti.com/en/van-dyck",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-van-dyck:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Van Dyck: masse",
+      "values": [
+        "Rund und rechteckig in mehreren Größen; laut Herstellerseite u. a. Glas Ø 140/160/180 cm, Nussbaum Ø 160/180 cm, Marmor 150 cm, Holz/Glas 280 × 120 cm, H 73–74 cm"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-van-dyck"
+      },
+      "quelle": "https://www.minotti.com/en/van-dyck",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/dining-tables-bellagio-dining-wood:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Bellagio \"Dining\" Wood: materialien",
+      "values": [
+        "Platte 30 mm MDF, oben Sucupira-Furnier nerzfarben gebeizt, unten Moka matt lackiert, alternativ Glanzlack Sand/Granite/Mud; Fuß: Metallinnenstruktur mit gebogener Holzverkleidung in Sucupira, Abschlussplatten glänzend Bronze lackiert (Anti-Fingerprint); tragende Aluminiumstruktur unter der Platte"
+      ],
+      "scope": {
+        "product": "dining-tables/dining-tables-bellagio-dining-wood"
+      },
+      "quelle": "https://www.minotti.com/en/bellagio-dining-wood",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/dining-tables-bellagio-dining-wood:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Bellagio \"Dining\" Wood: masse",
+      "values": [
+        "H 74 cm (Dining), Lounge-Dining-Variante H 67 cm; Fußzylinder Ø 210 mm; Plattengrößen laut Bildunterschriften 160 bis 280 cm, u. a. 280 × 140 cm"
+      ],
+      "scope": {
+        "product": "dining-tables/dining-tables-bellagio-dining-wood"
+      },
+      "quelle": "https://www.minotti.com/en/bellagio-dining-wood",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-superquadra-tables:designer",
+      "art": "Produkt",
+      "aussage": "Minotti Superquadra Tisch: designer",
+      "values": [
+        "Marcio Kogan / studio mk27"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-superquadra-tables"
+      },
+      "quelle": "https://www.minotti.com/en/superquadra-table",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-superquadra-tables:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Superquadra Tisch: materialien",
+      "values": [
+        "Platte 60 mm, MDF in Gehrungstechnik mit Furnier- oder Marmorbelag (Marmor auf 5 mm Aluminiumwabe, Holz auf 5 mm MDF); Beine Aluminiumrohr Ø 50 mm, Brandy poliert lackiert, schwarze ABS-Gleiter; Unterplatte MDF schwarz matt; Oberflächen Palisander Santos Dark Brown (Polyester matt), geflammte Esche schwarz offenporig, Marmor Sahara Noir mit Palisander"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-superquadra-tables"
+      },
+      "quelle": "https://www.minotti.com/en/superquadra-table",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-superquadra-tables:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Superquadra Tisch: masse",
+      "values": [
+        "Längen 250, 300, 350, 400 cm; laut Bilddateien Tiefe 119 cm, H 74 cm"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-superquadra-tables"
+      },
+      "quelle": "https://www.minotti.com/en/superquadra-table",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-superquadra-tables:varianten",
+      "art": "Produkt",
+      "aussage": "Minotti Superquadra Tisch: varianten",
+      "values": [
+        "Palisander: 250/300/350 cm; Esche schwarz: 250/300/350/400 cm; Palisander/Sahara Noir: 300/350/400 cm; 2 oder 3 Kabeldurchlässe gegen Aufpreis"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-superquadra-tables"
+      },
+      "quelle": "https://www.minotti.com/en/superquadra-table",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-fynn-tables:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Fynn Tisch: materialien",
+      "values": [
+        "Gestell massive Esche, offenporig Liquorice gebeizt, CNC-gefertigt, Dübelverbindungen; Platte Calacatta-Marmor 20 mm; schwarze SEBS-Gleiter"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-fynn-tables"
+      },
+      "quelle": "https://www.minotti.com/en/fynn",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-fynn-tables:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Fynn Tisch: masse",
+      "values": [
+        "95 × 80 cm, H 28 cm; 155 × 80 cm, H 28 cm"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-fynn-tables"
+      },
+      "quelle": "https://www.minotti.com/en/fynn",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-fynn-tables:varianten",
+      "art": "Produkt",
+      "aussage": "Minotti Fynn Tisch: varianten",
+      "values": [
+        "Zwei Größen; separates Modell Fynn „Outdoor“ (Couchtisch) mit Teak-Gestell und Platte aus Pietra del Cardoso 20 mm, 95 × 80 und 155 × 80 cm, H 28 cm"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-fynn-tables"
+      },
+      "quelle": "https://www.minotti.com/en/fynn-outdoor_3",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:coffee-tables/side-tables-supermoon-coffee-table:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Supermoon Coffee Table: masse",
+      "values": [
+        "106 × 106 cm und 140 × 106 cm, H 28,5 cm; Platten 96 × 96 cm bzw. 130 × 96 cm"
+      ],
+      "scope": {
+        "product": "coffee-tables/side-tables-supermoon-coffee-table"
+      },
+      "quelle": "https://www.minotti.com/en/supermoon-coffee-table",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:coffee-tables/side-tables-yves-coffee-table:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Yves Coffee Table: materialien",
+      "values": [
+        "Platten: Travertin; Marmor Grigio Orobico (gebürstet), Pierre Bleue, Calacatta, Marron Damasco; MDF mit Canaletto-Nussbaumfurnier, offenporig Light Brown gebeizt, Unterseite schwarz matt; Beine Aluminium 30 mm (Black Chrome, Champagne Chrome) oder Aluminiumguss mit säuregeätzter Messingoberfläche (nur mit Grigio Orobico oder Pierre Bleue); verstellbare SEBS-Füße"
+      ],
+      "scope": {
+        "product": "coffee-tables/side-tables-yves-coffee-table"
+      },
+      "quelle": "https://www.minotti.com/en/yves-coffee-table",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:coffee-tables/side-tables-yves-coffee-table:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Yves Coffee Table: masse",
+      "values": [
+        "Laut Bilddateien u. a. Ø 120 cm, 120 × 120 cm, 220 × 80 cm, H 26,5 cm"
+      ],
+      "scope": {
+        "product": "coffee-tables/side-tables-yves-coffee-table"
+      },
+      "quelle": "https://www.minotti.com/en/yves-coffee-table",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:coffee-tables/tables-huber:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Huber: materialien",
+      "values": [
+        "Oberplatte 20 mm Etruskischer Onyx, weißer Statuario- oder Calacatta-Marmor, alternativ Holz hochglanzlackiert (White, Birch Grey, Sand, Dove Grey, Moka, Stone Grey); Unterplatte bronzefarbenes gehärtetes Glas 10 mm; Gestell ovales Metallrohr 33 × 10 mm, glänzend verchromt; PVC-Gleiter"
+      ],
+      "scope": {
+        "product": "coffee-tables/tables-huber"
+      },
+      "quelle": "https://www.minotti.com/en/huber",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:coffee-tables/tables-huber:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Huber: masse",
+      "values": [
+        "Rund oder quadratisch in mehreren Höhen; laut Bilddateien u. a. 100 × 100 × 32 cm, 70 × 70 × 45 cm, 70 × 70 × 55 cm"
+      ],
+      "scope": {
+        "product": "coffee-tables/tables-huber"
+      },
+      "quelle": "https://www.minotti.com/en/huber",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:dining-tables/tables-kirk-wood:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Kirk \"Wood\": materialien",
+      "values": [
+        "Gestell massive Esche 40 mm, offenporig Moka lackiert; Platten: MDF 22 mm mit Ebenholz-Kompositfurnier und transparentem Polyester-Glanzlack, schwarze Glaspaste (pâte de verre) 15 mm oder Marmor Marron Damasco gebürstet 20 mm"
+      ],
+      "scope": {
+        "product": "dining-tables/tables-kirk-wood"
+      },
+      "quelle": "https://www.minotti.com/en/kirk-wood",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:coffee-tables/tables-munch:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Munch: materialien",
+      "values": [
+        "Gestell aus gebogenem, laserperforiertem Metallblech 5 mm, poliert Black Nickel; Platte natürlicher Lavastein hellgrau 10 mm, fleckhemmend behandelt (kein vollständiger Schutz)"
+      ],
+      "scope": {
+        "product": "coffee-tables/tables-munch"
+      },
+      "quelle": "https://www.minotti.com/en/munch",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-lido-side-tables:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Lido Couch- und Beistelltische: materialien",
+      "values": [
+        "X-Fuß aus Aluminium 15 mm, eschefurniert, offenporig Moka lackiert, polierte Bronzedetails; Platten Bianconero-Marmor 20 mm auf 2 mm Aluminium (schwarz matt) oder MDF/Aluminium 20 mm mit Eschenfurnier Moka offenporig; Filz- und Polyethylengleiter"
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-lido-side-tables"
+      },
+      "quelle": "https://www.minotti.com/en/lido-coffeetables",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/produkt-pilotis:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Pilotis: materialien",
+      "values": [
+        "Metall poliert lackiert (Army Green, Navy Blue, Moka, Cappuccino, Plum, Malachite) oder Edelstahl poliert; Zweifarbig (nur Ø 27 H 55): Army Green/Cappuccino, Granite/Cappuccino, Moka/Ice, Navy Blue/Ice; Wood: gebogenes Sperrholz mit Eschenfurnier, offenporig Liquorice"
+      ],
+      "scope": {
+        "product": "side-tables/produkt-pilotis"
+      },
+      "quelle": "https://www.minotti.com/en/pilotis",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/produkt-pilotis:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Pilotis: masse",
+      "values": [
+        "Metall Ø 27 cm, Wood Ø 25 cm; Höhen 45 oder 55 cm"
+      ],
+      "scope": {
+        "product": "side-tables/produkt-pilotis"
+      },
+      "quelle": "https://www.minotti.com/en/pilotis",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/produkt-pilotis:varianten",
+      "art": "Produkt",
+      "aussage": "Minotti Pilotis: varianten",
+      "values": [
+        "Metall, nuancierte Metallversion (handwerklich), Wood; separates Modell Pilotis „Outdoor“ aus Edelstahl mit Corten- oder Cobalt-Blue-Effektlack, Ø 27 cm, zwei Höhen"
+      ],
+      "scope": {
+        "product": "side-tables/produkt-pilotis"
+      },
+      "quelle": "https://www.minotti.com/en/pilotis-outdoor",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-calder-bronze:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Calder \"Bronze\": materialien",
+      "values": [
+        "Gestell Metall 10 × 10 mm, satiniert bronzefarben lackiert, Zwischenfach 2 mm; Platten: MDF Glanzlack Sand, Sucupira-Furnier nerzfarben gebeizt, Ebenholz-Kompositfurnier mit transparentem Polyester-Glanzlack, Marmor Bardiglio Nuvolato, Marmor Calacatta"
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-calder-bronze"
+      },
+      "quelle": "https://www.minotti.com/en/calder-bronze",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-calder-bronze:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Calder \"Bronze\": masse",
+      "values": [
+        "Platten 20 mm (120 × 120 × H 30 cm: 50 mm); Größen laut Bilddateien u. a. 60 cm (H 35), 90, 120, 160 cm (H 38), 120 × 120 cm (H 30)"
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-calder-bronze"
+      },
+      "quelle": "https://www.minotti.com/en/calder-bronze",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-calder-bronze:varianten",
+      "art": "Produkt",
+      "aussage": "Minotti Calder \"Bronze\": varianten",
+      "values": [
+        "Mehrere Größen und Plattenausführungen; 120 × 120 H 30 nur mit Ebenholz-Glanzplatte"
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-calder-bronze"
+      },
+      "quelle": "https://www.minotti.com/en/calder-bronze",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-taiko:materialien",
+      "art": "Produkt",
+      "aussage": "Minotti Taiko: materialien",
+      "values": [
+        "Platte Aluminium 12 mm, polierter Lack Bronze/Black Coffee/Moka/Cappuccino; Fuß Aluminiumguss im selben Farbton; Säule Stahlrohr; Filzgleiter; Ersatzfüße Delrin 15 mm im Lieferumfang"
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-taiko"
+      },
+      "quelle": "https://www.minotti.com/en/taiko",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:side-tables/side-tables-taiko:masse",
+      "art": "Produkt",
+      "aussage": "Minotti Taiko: masse",
+      "values": [
+        "Ovale Platte; 46 × H 55 cm; 46 × H 48 cm; 67 × H 48 cm; Säule Ø 35 mm (46 cm) bzw. Ø 40 mm (67 cm)"
+      ],
+      "scope": {
+        "product": "side-tables/side-tables-taiko"
+      },
+      "quelle": "https://www.minotti.com/en/taiko",
+      "beleg": "Marktresearch/content/produkte/minotti-tische-outdoor.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-couches-westside-sofa:jahr",
+      "art": "Produkt",
+      "aussage": "Poliform Westside Sofa: jahr",
+      "values": [
+        "2019"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-couches-westside-sofa"
+      },
+      "quelle": "https://www.poliform.it/en/products/sofas/westside-sofa",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-couches-westside-sofa:masse",
+      "art": "Produkt",
+      "aussage": "Poliform Westside Sofa: masse",
+      "values": [
+        "Keine Gesamtmaße auf der Herstellerseite; Rückenkissen in Breiten 680 bis 980 passend zu den Rückenteilen; Modul 1200 x 600 nur an der Längsseite doppelseitig. Angaben zur Armlehne widersprüchlich"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-couches-westside-sofa"
+      },
+      "vorbehalt": "Recherche markiert Teile als [prüfen]; Zahlen stehen in der Quelle, Zuordnung offen",
+      "quelle": "https://www.poliform.it/en/products/sofas/westside-sofa",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:sofas-couches/dining-chairs-bristol:jahr",
+      "art": "Produkt",
+      "aussage": "Poliform Bristol: jahr",
+      "values": [
+        "2013 (Herstellerseite nennt zusätzlich den Zeitraum 2013 – 2021)"
+      ],
+      "scope": {
+        "product": "sofas-couches/dining-chairs-bristol"
+      },
+      "quelle": "https://www.poliform.it/en/products/bristol/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:sofas-couches/dining-chairs-bristol:masse",
+      "art": "Produkt",
+      "aussage": "Poliform Bristol: masse",
+      "values": [
+        "Gesamtmaße nicht im Text der Herstellerseite; genannt sind Kopfstütze Breite 750 mm und feste Armlehne h 482"
+      ],
+      "scope": {
+        "product": "sofas-couches/dining-chairs-bristol"
+      },
+      "vorbehalt": "Recherche markiert Teile als [prüfen]; Zahlen stehen in der Quelle, Zuordnung offen",
+      "quelle": "https://www.poliform.it/en/products/bristol/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-couches-mondrian-sofa:jahr",
+      "art": "Produkt",
+      "aussage": "Poliform Mondrian Sofa: jahr",
+      "values": [
+        "2016 (Herstellerseite: 2016 – 2021)"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-couches-mondrian-sofa"
+      },
+      "quelle": "https://www.poliform.it/en/products/mondrian-sofa/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:sofas-couches/sofas-couches-mondrian-sofa:masse",
+      "art": "Produkt",
+      "aussage": "Poliform Mondrian Sofa: masse",
+      "values": [
+        "Zwei Modultiefen 950 und 1250 mm (Bildunterschrift Ecksofa: d. 1250 mm); Armlehnen in mehreren Größen, genannt 75, 200, 400"
+      ],
+      "scope": {
+        "product": "sofas-couches/sofas-couches-mondrian-sofa"
+      },
+      "vorbehalt": "Recherche markiert Teile als [prüfen]; Zahlen stehen in der Quelle, Zuordnung offen",
+      "quelle": "https://www.poliform.it/en/products/mondrian-sofa/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:wardrobes/wardrobes-senzafine-wardrobe:masse",
+      "art": "Produkt",
+      "aussage": "Poliform Senzafine Kleiderschrank: masse",
+      "values": [
+        "Keine Höhen genannt; Tiefen: Senzafine New Entry d 18 1/4\", Senzafine Fitted d 24\""
+      ],
+      "scope": {
+        "product": "wardrobes/wardrobes-senzafine-wardrobe"
+      },
+      "vorbehalt": "Recherche markiert Teile als [prüfen]; Zahlen stehen in der Quelle, Zuordnung offen",
+      "quelle": "https://www.poliform.it/en/products/senzafine-wardrobe/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:wardrobes/wardrobes-ubik:materialien",
+      "art": "Produkt",
+      "aussage": "Poliform Ubik: materialien",
+      "values": [
+        "Struktur melaminbeschichtete Spanplatte (EPF-S E0.5); Rückpaneele in Melamin, Spiegel, Glanzglas oder geätztem Glas; Tablare und Schubladenfronten in Melamin, Tecnocover oder Fumé-Glas; Metallteile matt (Ardesia, Basalto, Champagne, Oxid)"
+      ],
+      "scope": {
+        "product": "wardrobes/wardrobes-ubik"
+      },
+      "quelle": "https://www.poliform.it/en/products/ubik/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:beds/beds-dream:jahr",
+      "art": "Produkt",
+      "aussage": "Poliform Dream: jahr",
+      "values": [
+        "2006"
+      ],
+      "scope": {
+        "product": "beds/beds-dream"
+      },
+      "quelle": "https://www.poliform.it/en/products/dream/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:beds/beds-onda-bed:jahr",
+      "art": "Produkt",
+      "aussage": "Poliform Onda Bett: jahr",
+      "values": [
+        "2007"
+      ],
+      "scope": {
+        "product": "beds/beds-onda-bed"
+      },
+      "quelle": "https://www.poliform.it/en/products/onda-beds/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:beds/beds-jacqueline:jahr",
+      "art": "Produkt",
+      "aussage": "Poliform Jacqueline: jahr",
+      "values": [
+        "2011"
+      ],
+      "scope": {
+        "product": "beds/beds-jacqueline"
+      },
+      "quelle": "https://www.poliform.it/en/products/jacqueline/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:wardrobes/wardrobes-cover:materialien",
+      "art": "Produkt",
+      "aussage": "Rimadesio Cover: materialien",
+      "values": [
+        "Türen in Glas, Litech, Stoff, Kunstleder, Rafia, Holz; Aluminiumrahmen lackiert (47 Ecolorsystem-Farben, laut Herstellerseite für Cover Sign) oder furniert (Eiche, thermobehandelte Eiche, Nussbaum); Frontglas ESG 4 mm; Schubladen aus Aluminium"
+      ],
+      "scope": {
+        "product": "wardrobes/wardrobes-cover"
+      },
+      "quelle": "https://www.rimadesio.it/en/product/cover/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:wardrobes/wardrobes-cover:masse",
+      "art": "Produkt",
+      "aussage": "Rimadesio Cover: masse",
+      "values": [
+        "Immer nach Maß; Griff 160 mm breit, 25 mm hoch; Frontglas 4 mm; Schranktiefen und -höhen laut technischem Datenblatt"
+      ],
+      "scope": {
+        "product": "wardrobes/wardrobes-cover"
+      },
+      "vorbehalt": "Recherche markiert Teile als [prüfen]; Zahlen stehen in der Quelle, Zuordnung offen",
+      "quelle": "https://www.rimadesio.it/en/product/cover/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:wardrobes/wardrobes-cover:varianten",
+      "art": "Produkt",
+      "aussage": "Rimadesio Cover: varianten",
+      "values": [
+        "Cover Sign (mit Sprossen), Cover Pure (ohne Sprossen); Taiga-Strukturglas in 29 Farben (22 Ecolorsystem, 7 metallisiert); Pfosten unsichtbar in drei Richtungen justierbar; patentierte eingelassene Scharniere mit Feinjustierung der Türhöhe; LED im Pfosten; Magnetschließung; Schloss auf Anfrage"
+      ],
+      "scope": {
+        "product": "wardrobes/wardrobes-cover"
+      },
+      "quelle": "https://www.rimadesio.it/en/product/cover/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:wardrobes/wardrobes-dress-bold:materialien",
+      "art": "Produkt",
+      "aussage": "Rimadesio Dress bold: materialien",
+      "values": [
+        "Struktur Aluminium in Farben wie 303 bronzo, 83 piombo, 14 brown; Wandpaneele in lackiertem Glas, Stoff, Rafia, Kunstleder, Holz, Spiegel, Litech; Melaminböden mit Wabenkern aus Holz"
+      ],
+      "scope": {
+        "product": "wardrobes/wardrobes-dress-bold"
+      },
+      "quelle": "https://www.rimadesio.it/en/product/dress-bold/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:wardrobes/wardrobes-dress-bold:masse",
+      "art": "Produkt",
+      "aussage": "Rimadesio Dress bold: masse",
+      "values": [
+        "Nach Maß; Melaminböden 40 mm stark; weitere Maße laut technischem Datenblatt"
+      ],
+      "scope": {
+        "product": "wardrobes/wardrobes-dress-bold"
+      },
+      "vorbehalt": "Recherche markiert Teile als [prüfen]; Zahlen stehen in der Quelle, Zuordnung offen",
+      "quelle": "https://www.rimadesio.it/en/product/dress-bold/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:wardrobes/wardrobes-hedon:materialien",
+      "art": "Produkt",
+      "aussage": "Rimadesio Hedon: materialien",
+      "values": [
+        "Aluminiumstruktur; Paneele in Stoff, Rafia, lackiertem Glas (glänzend, matt, Sahara, Taiga, Diamante), Litech, Holzfurnier; Böden in Lack, Glas, Holz, Kunstleder, Melamin; über 300 Oberflächen"
+      ],
+      "scope": {
+        "product": "wardrobes/wardrobes-hedon"
+      },
+      "quelle": "https://www.rimadesio.it/en/product/hedon/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:wardrobes/wardrobes-hedon:masse",
+      "art": "Produkt",
+      "aussage": "Rimadesio Hedon: masse",
+      "values": [
+        "Höhe millimetergenau nach Maß bis max. 3894 mm; Paneele in drei Standardbreiten; Eckpaneel W.504"
+      ],
+      "scope": {
+        "product": "wardrobes/wardrobes-hedon"
+      },
+      "quelle": "https://www.rimadesio.it/en/product/hedon/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:shelves/shelves-zenit-bucherregale:materialien",
+      "art": "Produkt",
+      "aussage": "Rimadesio Zenit Bücherregal: materialien",
+      "values": [
+        "Stützen aus Aluminium (u. a. 304 platino, 13 nero, 14 brown, 83 piombo, 69 palladio); Fronten Nussbaum Sahara oder Taiga Ebenholz-Optik; Glasböden auch mit Metallgewebe; Aluminiumschubladen; Marmorabdeckung Noir Saint Laurent"
+      ],
+      "scope": {
+        "product": "shelves/shelves-zenit-bucherregale"
+      },
+      "quelle": "https://www.rimadesio.it/en/product/zenit/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:shelves/shelves-abacus-living:masse",
+      "art": "Produkt",
+      "aussage": "Rimadesio Abacus living: masse",
+      "values": [
+        "Glaspaneele in fünf Breiten und fünf Höhen; Beispielkompositionen B 6404 x H 1989 x T 655 und B 4804 x H 1989 x T 655 (mm); Abschlussplatte T 600"
+      ],
+      "scope": {
+        "product": "shelves/shelves-abacus-living"
+      },
+      "quelle": "https://www.rimadesio.it/en/product/abacus-living/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:shelves/shelves-abacus-living:varianten",
+      "art": "Produkt",
+      "aussage": "Rimadesio Abacus living: varianten",
+      "values": [
+        "Behälter und Vitrinen mit Klapp- und Schiebetüren, Schubladen, Regale; LED oben und unten an der Rückwand (3000 K); beleuchtete Böden, Spot in Lackböden; Kabelkanal mit Steckdosen und Antennenanschluss"
+      ],
+      "scope": {
+        "product": "shelves/shelves-abacus-living"
+      },
+      "quelle": "https://www.rimadesio.it/en/product/abacus-living/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:shelves/shelves-self-plan:materialien",
+      "art": "Produkt",
+      "aussage": "Rimadesio Self Plan: materialien",
+      "values": [
+        "Struktur Aluminium in 46 Ecolorsystem-Farben; Schreibtischplatte und Rückwand in Glas oder Kunstleder (106 Oberflächen); offene Module in thermobehandelter Eiche oder Nussbaum"
+      ],
+      "scope": {
+        "product": "shelves/shelves-self-plan"
+      },
+      "quelle": "https://www.rimadesio.it/en/product/self-plan/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    },
+    {
+      "id": "produkt:shelves/shelves-wind:varianten",
+      "art": "Produkt",
+      "aussage": "Rimadesio Wind: varianten",
+      "values": [
+        "Frei stehend oder wandmontiert, Mittel- und Endelemente; Schubladen, offene Module, Glasböden innen, Receiverhalterung; Strukturfarben u. a. 83 piombo, 304 platino, 13 nero, 16 bianco latte, 14 brown"
+      ],
+      "scope": {
+        "product": "shelves/shelves-wind"
+      },
+      "quelle": "https://www.rimadesio.it/en/product/wind/",
+      "beleg": "Marktresearch/content/produkte/poliform-rimadesio.json"
+    }
+  ],
+  "ignore": [
+    {
+      "id": "http-404",
+      "pattern": "(?<![\\p{N}])404(?![\\p{N}])",
+      "grund": "HTTP-Statuscode der Fehlerseite, keine Tatsachenbehauptung"
+    },
+    {
+      "id": "fachbegriff-3d",
+      "pattern": "(?<![\\p{L}\\p{N}])3D(?![\\p{L}])",
+      "grund": "Fachbegriff (3D-Daten, 3D-Rendering), keine Mengenangabe"
+    },
+    {
+      "id": "fachbegriff-360",
+      "pattern": "360[-\\s]?(?:grad|°|degree|degré|gradi)",
+      "grund": "Fachbegriff Rundumansicht (360-Grad-Tour), keine Mengenangabe"
+    },
+    {
+      "id": "markenname-101-copenhagen",
+      "pattern": "101 Copenhagen",
+      "grund": "Markenname (101 Copenhagen), keine Mengenangabe"
+    },
+    {
+      "id": "markenname-next125",
+      "pattern": "next ?125",
+      "grund": "Markenname (next125), keine Mengenangabe"
+    },
+    {
+      "id": "normzitat",
+      "pattern": "(?:Art\\.?|Artikel|article|articolo|§§?)\\s*\\d+[a-z]?(?:[\\s,]*(?:\\(\\d+[a-z]?\\)|\\([a-z]\\)|(?:Abs\\.?|paragraphe|para\\.?|par\\.?|lit\\.?|lett\\.?|point|Z|S\\.|UAbs\\.?|comma|al\\.?)\\s*\\d*[a-z]?\\)?))*",
+      "grund": "Normzitat (z. B. Art. 49 Abs. 1 lit. a DSGVO), keine Tatsachenbehauptung über das Unternehmen"
+    },
+    {
+      "id": "normbezeichnung",
+      "pattern": "(?<![\\p{L}])(?:DIN EN ISO|EN ISO|DIN EN|ÖNORM EN|ÖNORM|DIN|EN|ISO|SN EN)\\s?\\d{2,5}(?:[-:]\\d+)*",
+      "grund": "Name einer Norm (z. B. EN 14465), keine Mengenangabe; die Aussage dazu prüft der Satz selbst"
+    },
+    {
+      "id": "web-2-0",
+      "pattern": "web[- ]2\\.0",
+      "grund": "Fachbegriff (Web 2.0), keine Mengenangabe"
+    },
+    {
+      "id": "fachbegriff-2d",
+      "pattern": "(?<![p{L}p{N}])2D(?![p{L}])",
+      "grund": "Fachbegriff (2D-Draufsicht), keine Mengenangabe"
+    },
+    {
+      "id": "ezarri-referenz-ash-25",
+      "pattern": "Ash 25",
+      "grund": "Referenzname des Ezarri-Mosaiks (src/lib/ezarri/gallery.json referenz_name \"Ash 25\"), keine Mengenangabe"
+    },
+    {
+      "id": "singular-eine-karte",
+      "pattern": "(1 (?:Karte|card|carte|scheda))",
+      "grund": "Singularform der Kartenzahl im Ideenboard-Anhang (forms.attach.board.one, Plural-Zweig zu {count}), keine Tatsachenbehauptung"
+    }
+  ],
+  "skipped": []
+}

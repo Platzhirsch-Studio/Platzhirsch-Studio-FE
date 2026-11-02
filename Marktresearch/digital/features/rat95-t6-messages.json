@@ -1,0 +1,76 @@
+{
+  "_zweck": "Rat 9,5 T6 (SEO, Katalog-Text & Sprache): neue bzw. geänderte Schlüssel für src/messages/{de,en,fr,it}.json. Übernahme im Übernahme-Schritt (Plan Abschnitt 3). inhalt.news.h1 = H1 der News-Übersicht mit Thema und Ort (A15/SEO P2-5; Komponente liest mit Fallback auf inhalt.news.title). Vernissage.location: NAP „Landstraße 11“ (A10). FR/IT: „Style Finder“ übersetzt (A10, QA P2-7).",
+  "de": {
+    "inhalt": {
+      "news": {
+        "h1": "News aus dem Studio in Lochau"
+      }
+    }
+  },
+  "en": {
+    "inhalt": {
+      "news": {
+        "h1": "News from our studio in Lochau"
+      }
+    },
+    "Vernissage": {
+      "location": "Platzhirsch, Landstraße 11, Lochau"
+    }
+  },
+  "fr": {
+    "inhalt": {
+      "news": {
+        "h1": "Actualités du studio de Lochau"
+      }
+    },
+    "Vernissage": {
+      "location": "Platzhirsch, Landstraße 11, Lochau"
+    },
+    "MultiStepForm": {
+      "context": {
+        "stilfinder": "Demande depuis le test de style",
+        "stil": "Résultat du test de style : {stil}"
+      }
+    },
+    "ideenboard": {
+      "seite": {
+        "lead": "Rassemblez meubles, images de pièces, mélanges Ezarri et le résultat du test de style. Joignez le tableau à votre rendez-vous : Harald Menghin connaît vos idées avant l’entretien.",
+        "empty": {
+          "text": "Avec « Au tableau d’idées » sur les images de pièces, dans la galerie Ezarri, le configurateur et le test de style, vous déposez des cartes ici. Les meubles viennent de votre liste de souhaits.",
+          "stil": "Test de style"
+        },
+        "types": {
+          "stil": "Test de style"
+        }
+      }
+    }
+  },
+  "it": {
+    "inhalt": {
+      "news": {
+        "h1": "Notizie dallo studio di Lochau"
+      }
+    },
+    "Vernissage": {
+      "location": "Platzhirsch, Landstraße 11, Lochau"
+    },
+    "MultiStepForm": {
+      "context": {
+        "stilfinder": "Richiesta dal test di stile",
+        "stil": "Risultato del test di stile: {stil}"
+      }
+    },
+    "ideenboard": {
+      "seite": {
+        "lead": "Raccogliete mobili, immagini di ambienti, miscele Ezarri e il risultato del test di stile. Allegate la bacheca al vostro appuntamento: Harald Menghin conosce le vostre idee prima del colloquio.",
+        "empty": {
+          "text": "Con «Nella bacheca idee» sulle immagini di ambienti, nella galleria Ezarri, nel configuratore e nel test di stile depositate qui le schede. I mobili arrivano dalla vostra lista dei desideri.",
+          "stil": "Test di stile"
+        },
+        "types": {
+          "stil": "Test di stile"
+        }
+      }
+    }
+  }
+}

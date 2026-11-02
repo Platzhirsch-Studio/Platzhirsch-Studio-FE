@@ -1,0 +1,477 @@
+/* Seite /de/arbeitsweise – nur, was Utilities nicht können.
+   Bewegung: nur transform, opacity, clip-path (Bibel §8.2). Scroll-Effekte
+   über animation-timeline: view() hinter @supports; die Timeline läuft über
+   eine Custom Property, sonst faltet Lightning CSS sie in die Kurzform und
+   Chrome verwirft die Deklaration (siehe Kommentar in src/app/globals.css).
+   Reduced Motion (System oder html[data-motion="reduced"]): alles steht im
+   Endzustand, keine Übergänge. */
+
+/* ------------------------------------------------------------------ Linie */
+
+.linie {
+  --aw-line: rgb(48 55 62 / 0.68);
+  --aw-soft: rgb(48 55 62 / 0.32);
+  --aw-faint: rgb(48 55 62 / 0.16);
+  --aw-in: 600ms;
+  --aw-morph: 900ms;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  color: var(--aw-line);
+}
+/* Dunkles Kapitel: Linien in stone-deep, Messing nur für die Haarlinie
+   (feedback-2 P3-3, Bibel: Messing sparsam). */
+.linieDark {
+  --aw-line: var(--color-stone-deep);
+  --aw-soft: rgb(216 210 200 / 0.5);
+  --aw-faint: rgb(216 210 200 / 0.2);
+}
+
+/* Ausschnitt für Standbilder flacher Phasen (LinieFrame). */
+.frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.linie svg {
+  overflow: visible;
+}
+.linie path,
+.linie circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.linie text {
+  fill: currentColor;
+  stroke: none;
+  font-size: 12px;
+  font-family: var(--font-sans, system-ui), system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.linie .soft {
+  stroke: var(--aw-soft);
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transition: transform var(--aw-morph) var(--ease-quiet-inout);
+}
+/* Grundriss und Wände liegen deckungsgleich in derselben Rasterzelle. */
+.plane,
+.walls {
+  grid-area: 1 / 1;
+  position: relative;
+  width: 62%;
+  aspect-ratio: 4 / 3;
+}
+.plane {
+  transform: rotateX(0deg) rotateZ(0deg);
+  transition:
+    transform var(--aw-morph) var(--ease-quiet-inout),
+    opacity var(--aw-in) var(--ease-quiet);
+}
+.floor {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ebenen: standardmäßig verborgen, jede Phase blendet ihre Ebenen ein. */
+.room path,
+.furniture > *,
+.sunDot {
+  opacity: 0;
+  transition: opacity 240ms var(--ease-exit);
+}
+.door,
+.grid,
+.dims,
+.sunArc,
+.sunRays {
+  opacity: 0;
+  transition: opacity 240ms var(--ease-exit);
+}
+.grid path {
+  stroke: var(--aw-faint);
+}
+.sunRays path {
+  stroke: var(--aw-soft);
+  stroke-dasharray: 2 3;
+}
+.sunDot {
+  fill: currentColor;
+}
+.window {
+  stroke: var(--aw-soft);
+}
+
+.wall {
+  position: absolute;
+  border: 1px solid currentColor;
+  opacity: 0;
+  transition:
+    transform var(--aw-morph) var(--ease-quiet-inout),
+    opacity var(--aw-in) var(--ease-quiet);
+}
+/* Nordwand auf der Kante y = 0, Ostwand auf x = 100 %. Höhe ≈ 2,60 m.
+   Jede Wand trägt die volle Matrix: Isometrie des Grundrisses (um dessen
+   Mitte, daher das Verschieben um den Abstand Wandursprung → Mitte:
+   Nordwand H/2 = 69,444 % ihrer Höhe, Ostwand W/2 = 92,593 % ihrer Breite),
+   danach das Aufrichten um die eigene Kante. */
+.wallN {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 72%;
+  transform-origin: 50% 0;
+  transform: translateY(69.444%) rotateX(58deg) rotateZ(-45deg) translateY(-69.444%) rotateX(90deg) scaleY(0);
+}
+.wallE {
+  left: 100%;
+  top: 0;
+  width: 54%;
+  height: 100%;
+  transform-origin: 0 50%;
+  transform: translateX(-92.593%) rotateX(58deg) rotateZ(-45deg) translateX(92.593%) rotateY(-90deg) scaleX(0);
+}
+.wallWindow {
+  position: absolute;
+  left: 37.5%;
+  width: 29.2%;
+  bottom: 30%;
+  height: 46%;
+  border: 1px solid var(--aw-soft);
+}
+
+.horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: currentColor;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 800ms var(--ease-quiet);
+}
+
+/* ---- Phasen ---------------------------------------------------------- */
+
+/* sichtbar: Raumumriss 1–6 */
+:is(.linie[data-phase="1"], .linie[data-phase="2"], .linie[data-phase="3"], .linie[data-phase="4"], .linie[data-phase="5"], .linie[data-phase="6"])
+  .room
+  path {
+  opacity: 1;
+  transition: opacity var(--aw-in) var(--ease-quiet) calc(var(--i, 0) * 60ms);
+}
+/* Sonnenbogen nur in 2 */
+.linie[data-phase="2"] :is(.sunArc, .sunRays) {
+  opacity: 1;
+  transition: opacity var(--aw-in) var(--ease-quiet) 120ms;
+}
+.linie[data-phase="2"] .sunDot {
+  opacity: 1;
+  transition: opacity var(--aw-in) var(--ease-quiet) calc(240ms + var(--i, 0) * 60ms);
+}
+/* Grundriss: Tür und Möbel 3–6 */
+:is(.linie[data-phase="3"], .linie[data-phase="4"], .linie[data-phase="5"], .linie[data-phase="6"]) .door {
+  opacity: 1;
+  transition: opacity var(--aw-in) var(--ease-quiet) 120ms;
+}
+:is(.linie[data-phase="3"], .linie[data-phase="4"], .linie[data-phase="5"], .linie[data-phase="6"]) .furniture > * {
+  opacity: 1;
+  transition: opacity var(--aw-in) var(--ease-quiet) calc(180ms + var(--i, 0) * 60ms);
+}
+/* Isometrie 4–6: der Grundriss kippt, die Wände wachsen */
+:is(.linie[data-phase="4"], .linie[data-phase="5"], .linie[data-phase="6"]) .stage {
+  transform: translateY(9%);
+}
+:is(.linie[data-phase="4"], .linie[data-phase="5"], .linie[data-phase="6"]) .plane {
+  transform: rotateX(58deg) rotateZ(-45deg);
+}
+:is(.linie[data-phase="4"], .linie[data-phase="5"], .linie[data-phase="6"]) .wall {
+  opacity: 1;
+  transition:
+    transform var(--aw-morph) var(--ease-quiet-inout) 760ms,
+    opacity var(--aw-in) var(--ease-quiet) 760ms;
+}
+:is(.linie[data-phase="4"], .linie[data-phase="5"], .linie[data-phase="6"]) .wallN {
+  transform: translateY(69.444%) rotateX(58deg) rotateZ(-45deg) translateY(-69.444%) rotateX(90deg) scaleY(1);
+}
+:is(.linie[data-phase="4"], .linie[data-phase="5"], .linie[data-phase="6"]) .wallE {
+  transform: translateX(-92.593%) rotateX(58deg) rotateZ(-45deg) translateX(92.593%) rotateY(-90deg) scaleX(1);
+}
+/* Drahtmodell 5–6: Raster und Maßketten */
+:is(.linie[data-phase="5"], .linie[data-phase="6"]) :is(.grid, .dims) {
+  opacity: 1;
+  transition: opacity var(--aw-in) var(--ease-quiet) 200ms;
+}
+/* Rendering 6: das Drahtmodell tritt zurück. */
+.linie[data-phase="6"] .floor {
+  opacity: 0.24;
+  transition: opacity var(--aw-in) var(--ease-quiet);
+}
+.linie[data-phase="6"] .wall {
+  opacity: 0.24;
+}
+.floor {
+  transition: opacity var(--aw-in) var(--ease-quiet);
+}
+/* Wirklichkeit 7: der Raum legt sich flach, die Linie wird Horizont */
+.linie[data-phase="7"] .plane {
+  transform: rotateX(86deg) rotateZ(0deg);
+  opacity: 0;
+  transition:
+    transform var(--aw-morph) var(--ease-quiet-inout),
+    opacity 400ms var(--ease-exit) 420ms;
+}
+.linie[data-phase="7"] .room path {
+  opacity: 1;
+}
+/* Kreis Ort → Strich → Raum → Ort: der Sonnenbogen aus Phase 2 kehrt leise
+   über dem Horizont zurück (P3-5), offen und mit den drei Sonnenpunkten. */
+.linie[data-phase="7"] .sunArc {
+  opacity: 1;
+  stroke: var(--aw-soft);
+  transition: opacity var(--aw-in) var(--ease-quiet) 900ms;
+}
+.linie[data-phase="7"] .sunDot {
+  opacity: 1;
+  transition: opacity var(--aw-in) var(--ease-quiet) calc(1000ms + var(--i, 0) * 60ms);
+}
+/* Bogenenden (y = 26 %) auf 36 % heben: deutlich über dem Horizont (50 %),
+   ohne ihn zu berühren – liest sich als Sonnenlauf, nicht als Kuppel (feedback-2 P3-5b). */
+.linie[data-phase="7"] .sun {
+  transform: translateY(10%);
+}
+.linie[data-phase="7"] .horizon {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 800ms var(--ease-quiet) 500ms;
+}
+
+/* Mobiles Standbild: zeichnet sich beim Scrollen von links nach rechts ein. */
+@keyframes awDraw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :root:not([data-motion="reduced"]) .linieReveal {
+      --aw-tl: view();
+      animation: awDraw linear both;
+      animation-timeline: var(--aw-tl);
+      /* fertig eingezeichnet, sobald die Grafik ganz im Fenster steht (feedback-1 P2-2) */
+      animation-range: entry 0% entry 80%;
+    }
+  }
+}
+
+/* ------------------------------------------------------- Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .linie,
+  .linie *,
+  .reveal,
+  .renderReveal,
+  .station,
+  .chainLayer {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+:root[data-motion="reduced"] :is(.linie, .linie *, .reveal, .renderReveal, .station, .chainLayer) {
+  transition: none !important;
+  animation: none !important;
+}
+/* --------------------------------------------- Übersicht: 7 Stationen */
+
+/* Desktop: eine Linie, sieben Stationen darauf. Mobil: zwei Spalten ohne
+   Verbindungslinie (Runde 2: Seite mobil ≤ 10 000 px). */
+.stations {
+  position: relative;
+}
+@media (min-width: 1024px) {
+  .stations::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5px;
+    height: 1px;
+    background: var(--color-line-strong);
+  }
+}
+.dot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--color-ink);
+  background: var(--color-stone);
+  border-radius: 9999px;
+  transition: background-color var(--duration-micro) var(--ease-quiet);
+}
+.stationLink:is(:hover, :focus-visible) .dot {
+  background: var(--color-ink);
+}
+
+/* Nur Bewegung, keine Deckkraft (gesamtwerk P2-5 Runde 2): „Ort / Hand / Präzision“
+   stehen von Anfang an mit vollem Kontrast. */
+@keyframes awLift {
+  from {
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes awOpen {
+  from {
+    clip-path: inset(7% 7% 7% 7%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* gestaffelt in Gruppen ≤ 5 (Bibel §8.2): Versatz über --i */
+    :root:not([data-motion="reduced"]) .station {
+      --aw-tl: view();
+      /* R5-fix P2 (technik P1-7): Bewegung ohne Deckkraft – bei opacity 0.6
+         fielen Nummer und Name der Stationen unter 4,5:1 (Lighthouse color-contrast). */
+      animation: awLift linear both;
+      animation-timeline: var(--aw-tl);
+      animation-range: entry calc(5% + var(--i, 0) * 4%) entry calc(45% + var(--i, 0) * 4%);
+    }
+    /* Signature-Moment im dunklen Kapitel: der Rendering-Platz öffnet sich
+       (Bildmaske ≤ 14 %, Bibel §8.2), Inhalt nie unter voller Deckkraft. */
+    :root:not([data-motion="reduced"]) .renderReveal {
+      --aw-tl: view();
+      animation: awOpen linear both;
+      animation-timeline: var(--aw-tl);
+      animation-range: entry 0% cover 40%;
+    }
+    :root:not([data-motion="reduced"]) .reveal {
+      --aw-tl: view();
+      animation: awLift linear both;
+      animation-timeline: var(--aw-tl);
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+/* ------------------------------------------------------------ Platzhalter */
+
+.placeholder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--color-linen);
+  border: 1px solid var(--color-line);
+  padding: 16px;
+}
+@media (min-width: 768px) {
+  .placeholder {
+    padding: 24px;
+  }
+}
+/* Passepartout-Rahmen: eine Haarlinie innen, wie ein gerahmtes Blatt. */
+.placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid var(--color-line);
+  pointer-events: none;
+}
+.placeholderDark {
+  background: rgb(250 248 244 / 0.06);
+  border-color: var(--color-line-inverse);
+}
+.placeholderDark::after {
+  border-color: rgb(250 248 244 / 0.1);
+}
+
+/* ------------------------------------------------------------------ Kette */
+
+.chainStack {
+  position: relative;
+}
+.chainLayer {
+  transition: opacity var(--duration-swap) var(--ease-quiet);
+}
+/* Ohne JS: alle fünf Bilder untereinander. Mit JS: gestapelt, eines sichtbar. */
+.chainStack[data-enhanced="true"] {
+  display: grid;
+}
+.chainStack[data-enhanced="true"] > .chainLayer {
+  grid-area: 1 / 1;
+}
+.chainStack[data-enhanced="true"] > .chainLayer[data-active="false"] {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--duration-swap) var(--ease-quiet),
+    visibility 0s linear var(--duration-swap);
+}
+.chainStack:not([data-enhanced="true"]) > .chainLayer + .chainLayer {
+  margin-top: 24px;
+}
+
+/* ----------------------------------------------------------- Abschluss */
+
+.closingLine {
+  text-wrap: balance;
+}
+
+/* --------------------------------------------- Auftakt: Papierblatt (R5-fix P2)
+   Statt der Liniengrafik des Showrooms (gesamtwerk P1-1): ein Blatt in Leinen
+   mit feiner Linierung, Haarlinie und Messing-Strich. Nur Typografie, kein
+   Bild, keine Bewegung. Text in --color-text auf Leinen (Kontrast ≥ 4,5:1);
+   die Linierung liegt bei 6 % Deckkraft unter dem Text. */
+.sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem 1.25rem 1.125rem;
+  background-color: var(--color-linen);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 31px,
+    color-mix(in srgb, var(--color-ink) 6%, transparent) 31px,
+    color-mix(in srgb, var(--color-ink) 6%, transparent) 32px
+  );
+  border: 1px solid var(--color-line);
+}
+@media (min-width: 768px) {
+  .sheet {
+    gap: 1.25rem;
+    padding: 2rem 2rem 1.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .sheet {
+    aspect-ratio: 4 / 5;
+    justify-content: flex-end;
+    padding: 2.5rem;
+  }
+}
+.sheetRule {
+  display: block;
+  width: 3rem;
+  height: 1px;
+  background: var(--color-brass-700);
+}

@@ -1,0 +1,95 @@
+/* „Ein Tag am See“ – DayArc.js. Palette only (globals.css tokens):
+   linen (Morgendunst) → see (Tag) → brass-400 (Abend) → ink-deep (Nacht). */
+.arc {
+  display: none;
+}
+
+@keyframes travel {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, calc(50svh - 10px), 0);
+  }
+}
+/* Bogen erst nach dem Hero einblenden: das Navetta-Foto im Hero bleibt frei (nichts darüber) */
+@keyframes arcIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes dusk {
+  0% {
+    background-color: var(--color-linen);
+    box-shadow: 0 0 0 3px rgb(250 248 244 / 0.6), 0 0 14px 4px rgb(250 248 244 / 0.5);
+  }
+  45% {
+    background-color: var(--color-brass-400);
+    box-shadow: 0 0 0 3px rgb(209 178 80 / 0.25), 0 0 18px 6px rgb(209 178 80 / 0.45);
+  }
+  80% {
+    background-color: var(--color-brass-500);
+    box-shadow: 0 0 0 3px rgb(154 122 42 / 0.25), 0 0 22px 8px rgb(154 122 42 / 0.4);
+  }
+  100% {
+    background-color: var(--color-paper);
+    box-shadow: 0 0 0 3px rgb(31 37 43 / 0.35), 0 0 10px 3px rgb(250 248 244 / 0.35);
+  }
+}
+
+@media (min-width: 64rem) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .arc {
+      display: block;
+      position: fixed;
+      z-index: 20;
+      right: 1.25rem;
+      top: 25svh;
+      height: 50svh;
+      width: 12px;
+      pointer-events: none;
+      /* Langschrift statt Kurzschrift: sonst fasst der CSS-Compiler zu einer
+         animation-Kurzschrift mit Timeline zusammen, die Chromium verwirft */
+      animation-name: arcIn;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root block);
+      animation-range: 70svh 110svh;
+    }
+    .line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(
+        to bottom,
+        var(--color-linen),
+        var(--color-see) 35%,
+        var(--color-brass-400) 70%,
+        var(--color-ink-deep)
+      );
+      opacity: 0.7;
+    }
+    .sun {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--color-linen);
+      /* Langschrift (siehe .arc): die Kurzschrift wurde verworfen, die Sonne stand still */
+      animation-name: travel, dusk;
+      animation-duration: auto, auto;
+      animation-timing-function: linear, linear;
+      animation-fill-mode: both, both;
+      animation-timeline: scroll(root block), scroll(root block);
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "_hinweis": "Rat 9,5 · T5 (Recht, Datenschutz & Bildrechte). Format laut qa-screenshots/rat95/00-plan.md §3: nur neue Schlüssel. Bis zur Übernahme liest src/components/Cookies/essentialStorage.js denselben Text als FALLBACK. Footer.accessibility (neben Footer.privacy/imprint) ist das Linkwort für den Footer-Link /barrierefreiheit (Einbau durch T1). Rechtstexte selbst (DSE-Kurzfassung EN/FR/IT, Barrierefreiheit, DSE-Ergänzungen) bleiben bewusst in T5-Modulen (src/components/Datenschutz/kurzfassung.js, src/lib/legal/barrierefreiheit.js, src/components/LegalDrafts/dseErgaenzungen.js), wie Legal/GermanOnlyNotice.js: Wortlaut im Besitz von Kanzlei/Team Recht.",
+  "de": {
+    "Cookies": {
+      "essentialStorage": {
+        "title": "Gespeichert ohne Einwilligung:",
+        "cookieConsent": "Cookie, speichert Ihre Auswahl in diesem Dialog, 12 Monate.",
+        "locale": "Cookie (12 Monate) und Speicher Ihres Browsers, merken sich die gewählte Sprache; nur gesetzt, wenn Sie aktiv die Sprache wechseln."
+      }
+    },
+    "Footer": {
+      "accessibility": "Barrierefreiheit"
+    }
+  },
+  "en": {
+    "Cookies": {
+      "essentialStorage": {
+        "title": "Stored without consent:",
+        "cookieConsent": "cookie, stores your choice in this dialog, 12 months.",
+        "locale": "cookie (12 months) and your browser’s storage, remember the language you chose; only set when you actively change the language."
+      }
+    },
+    "Footer": {
+      "accessibility": "Accessibility"
+    }
+  },
+  "fr": {
+    "Cookies": {
+      "essentialStorage": {
+        "title": "Enregistrés sans consentement :",
+        "cookieConsent": "cookie, enregistre votre choix dans cette fenêtre, 12 mois.",
+        "locale": "cookie (12 mois) et stockage de votre navigateur, mémorisent la langue choisie ; uniquement si vous changez activement de langue."
+      }
+    },
+    "Footer": {
+      "accessibility": "Accessibilité"
+    }
+  },
+  "it": {
+    "Cookies": {
+      "essentialStorage": {
+        "title": "Salvati senza consenso:",
+        "cookieConsent": "cookie, salva la vostra scelta in questa finestra, 12 mesi.",
+        "locale": "cookie (12 mesi) e memoria del browser, ricordano la lingua scelta; solo se cambiate attivamente lingua."
+      }
+    },
+    "Footer": {
+      "accessibility": "Accessibilità"
+    }
+  }
+}

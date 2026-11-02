@@ -2,14 +2,13 @@ import React from "react";
 import JsonLd from "@/components/Reusable/JsonLd";
 import KarriereSecond from "@/components/Karriere/karriere";
 import KarrierePosition from "@/components/Karriere/karriereposition";
-import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import { fetchKarriereData } from "@/lib/api/fetchKarrierData";
-import { ROUTES } from "@/utils/routing";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { publishableJob } from "@/components/Karriere/glbg";
+import { hreflangLanguages, ogLocale } from "@/lib/seo/pageMetadata";
+import { shareImageMeta } from "@/components/Karriere/shareImage";
 import {
   fetchCareerKeywords,
   getLocalizedCareerMetadata,
-  getCareerOGImage,
   validateOGType
 } from "@/lib/api/Keywords/fetchKarrierKeywords";
 
@@ -45,15 +44,21 @@ const getLocalizedTitle = (locale) => {
   }
 };
 
+// Description (updated 31.10.2026 for the 8 jobs, no unconfirmed full/part time): our own, factual text wins over the CMS (QA Runde 1, P2-2:
+// the CMS text still says "exklusiv"). The CMS keeps title and type.
 const getLocalizedDescription = (locale) => {
   switch (locale) {
-    case "it": return "Opportunità di carriera in Platzhirsch Home Living. Lavora con noi nel settore del design esclusivo.";
-    case "en": return "Career opportunities at Platzhirsch Home Living. Work with us in exclusive design.";
-    case "fr": return "Opportunités de carrière chez Platzhirsch Home Living. Travaillez avec nous dans le design exclusif.";
-    default: return "Karrieremöglichkeiten bei Platzhirsch Home Living. Arbeiten Sie mit uns im exklusiven Design.";
+    case "it": return "Posizioni aperte da Platzhirsch Home Living a Lochau: progettazione, interior design, vendita, montaggio, piastrelle e impiantistica.";
+    case "en": return "Open positions at Platzhirsch Home Living in Lochau: planning, interior design, sales, installation, tiling and building services.";
+    case "fr": return "Postes ouverts chez Platzhirsch Home Living à Lochau : conception, design d’intérieur, vente, montage, carrelage et technique du bâtiment.";
+    default: return "Offene Stellen bei Platzhirsch Home Living in Lochau: Planung, Interior Design, Verkauf, Montage, Fliesen und Haustechnik.";
   }
 };
 
+// Share image (r4-seo P2-7): the CMS image was arbeiten.avif, which Facebook,
+// LinkedIn and WhatsApp do not show. Now a PNG 1200 × 630 (typographic, no
+// third-party image rights) at <career URL>/share-image, see
+// src/components/Karriere/shareImage.js.
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const PAGE_URL = getKarrierePageUrl(locale);
@@ -77,47 +82,39 @@ export async function generateMetadata({ params }) {
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
           siteName: "Platzhirsch Home Living",
-          locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url: "/Images/UberUns/livingroom-view.jpg", width: 1200, height: 630, alt: "Karriere bei Platzhirsch Home Living" }],
+          locale: ogLocale(locale),
+          images: [shareImageMeta(PAGE_URL, locale)],
         },
         twitter: {
           card: "summary_large_image",
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
-          images: ["/Images/UberUns/livingroom-view.jpg"],
+          images: [shareImageMeta(PAGE_URL, locale).url],
         },
       };
     }
 
     const meta = getLocalizedCareerMetadata(careerKeywords, locale);
-    const image = getCareerOGImage(careerKeywords);
     const safeType = validateOGType(meta?.type);
 
     return {
       title: meta?.title || getLocalizedTitle(locale),
-      description: meta?.description || getLocalizedDescription(locale),
+      description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
       openGraph: {
         title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
+        description: getLocalizedDescription(locale),
         url: PAGE_URL,
         siteName: "Platzhirsch Home Living",
-        images: [
-          {
-            url: image ? image : "/Images/UberUns/livingroom-view.jpg",
-            width: 1200,
-            height: 630,
-            alt: "Karriere bei Platzhirsch Home Living",
-          },
-        ],
-        locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
+        images: [shareImageMeta(PAGE_URL, locale)],
+        locale: ogLocale(locale),
         type: safeType,
       },
       twitter: {
         card: "summary_large_image",
         title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
-        images: [image ? image : "/Images/UberUns/livingroom-view.jpg"],
+        description: getLocalizedDescription(locale),
+        images: [shareImageMeta(PAGE_URL, locale).url],
       },
       alternates: {
         canonical: PAGE_URL,
@@ -139,14 +136,6 @@ export async function generateMetadata({ params }) {
 export default async function Page({ params }) {
   const { locale } = await params;
 
-  const linkNameOne =
-    locale == "it"
-      ? "SU DI NOI"
-      : locale == "en"
-        ? "ABOUT US"
-        : locale == "fr"
-          ? "À PROPOS"
-          : "ÜBER UNS";
   const linkNameTwo =
     locale == "it"
       ? "Carriera"
@@ -166,37 +155,17 @@ export default async function Page({ params }) {
 
   const karriere = await fetchKarriereData();
 
-  const careerKeywords = await fetchCareerKeywords();
-
-  const image = getCareerOGImage(careerKeywords);
 
   const BASE_URL = getBaseUrl(locale);
   const PAGE_URL = getKarrierePageUrl(locale);
 
-  const karrierePath = ROUTES.karriere[locale] ? `${ROUTES.karriere[locale]}` : `/ueber-uns/karriere`;
 
-  const BannerInfo = {
-    image: image,
-    links: [
-      {
-        linkName: Home,
-        link: "/",
-      },
-      {
-        linkName: linkNameOne,
-      },
-      {
-        linkName: linkNameTwo,
-        link: karrierePath,
-      },
-    ],
-    title: linkNameTwo,
-  };
 
   // Real freshness signal from the most recent active job posting, not new Date()
   // (which changed every deploy → Google ignored it). Omitted when no jobs are open.
   const jobDates = (Array.isArray(karriere) ? karriere : [])
-    .filter((j) => j?.status === "Aktiv" && j?.posted)
+    // GlBG § 9 Abs 2 (Rat 9,5 A13): nur veröffentlichbare Stellen (Karriere/glbg.js).
+    .filter((j) => publishableJob(j) && j?.posted)
     .map((j) => String(j.posted).slice(0, 10))
     .filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d));
   const lastModified = jobDates.length ? jobDates.sort().at(-1) : null;
@@ -207,7 +176,7 @@ export default async function Page({ params }) {
     "@id": `${PAGE_URL}/#webpage`,
     url: PAGE_URL,
     name: linkNameTwo,
-    description: "Karrieremöglichkeiten bei Platzhirsch Home Living - Arbeiten Sie mit uns im exklusiven Designbereich.",
+    description: getLocalizedDescription(locale),
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
     // Site-wide WebSite node lives at the apex #website — never locale-scoped.
     isPartOf: { "@id": "https://platzhirsch.studio/#website" },
@@ -225,7 +194,6 @@ export default async function Page({ params }) {
   return (
     <div>
       <JsonLd data={webPageSchema} />
-      <SinglePageBanner info={BannerInfo} />
       <KarriereSecond />
       <KarrierePosition karriere={karriere} />
     </div>

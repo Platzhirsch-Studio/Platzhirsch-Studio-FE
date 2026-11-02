@@ -1,0 +1,110 @@
+{
+  "_doc": "Freigaben für check-claims.mjs. Jeder Eintrag: file (Pflicht: Pfad- oder URL-Präfix, oder eine Liste davon; Quelltext und gerenderte Seite getrennt aufführen), contains (Pflicht: Textstück der Fundstelle, ohne Groß/klein), optional id (Regel-ID oder 'dealer'/'superlative'), reason (Pflicht). Einträge ohne file oder contains werden ignoriert und lassen den Check rot werden. Nur echte Fehlalarme eintragen, keine Claims.",
+  "entries": [
+    {
+      "file": "Marktresearch/content/produkte/flos-classicon-treca-outdoor.json",
+      "contains": "der größte Teil davon",
+      "id": "de-groesste",
+      "reason": "Sachangabe zum Gewicht (Marmorsockel), keine Werbeaussage über Platzhirsch."
+    },
+    {
+      "file": [
+        "src/content/ratgeber/was-kostet-ein-minotti-sofa.md",
+        "Marktresearch/content/ratgeber/was-kostet-ein-minotti-sofa.md",
+        "/de/ratgeber/was-kostet-ein-minotti-sofa",
+        "src/content/ratgeber/was-kostet-eine-designerkueche.md",
+        "Marktresearch/content/ratgeber/was-kostet-eine-designerkueche.md",
+        "/de/ratgeber/was-kostet-eine-designerkueche"
+      ],
+      "contains": "größte Hebel",
+      "id": "de-groesste",
+      "reason": "Ratgeber-Aussage über Kostentreiber, keine Werbeaussage über Platzhirsch."
+    },
+    {
+      "file": [
+        "src/content/ratgeber/designsofa-kaufen-checkliste.md",
+        "Marktresearch/content/ratgeber/designsofa-kaufen-checkliste.md"
+      ],
+      "contains": "Nr. 1 (Was kostet",
+      "id": "de-nr1",
+      "reason": "Interne Verlinkungsnotiz (Ratgeber Nummer 1), kein Rang-Claim."
+    },
+    {
+      "file": [
+        "src/content/ratgeber/lieferzeiten-italienische-designmoebel.md",
+        "Marktresearch/content/ratgeber/lieferzeiten-italienische-designmoebel.md",
+        "/de/ratgeber/lieferzeiten-italienische-designmoebel"
+      ],
+      "contains": "Händler nennen öffentlich",
+      "id": "dealer",
+      "reason": "Quellenangabe über Dritthändler, keine Händler-Behauptung von Platzhirsch."
+    },
+    {
+      "file": [
+        "src/content/ratgeber/outdoor-moebel-am-see-material.md",
+        "Marktresearch/content/ratgeber/outdoor-moebel-am-see-material.md",
+        "/de/ratgeber/outdoor-moebel-am-see-material"
+      ],
+      "contains": "US-Händlers",
+      "id": "dealer",
+      "reason": "Quellenangabe (US-Händler über Gloster), keine Händler-Behauptung von Platzhirsch."
+    },
+    {
+      "file": "src/components/Karriere/karriere.js",
+      "contains": "unique-workplace.jpg",
+      "id": "en-unique",
+      "reason": "Dateiname eines Bildes (Pfad), kein sichtbarer Text."
+    },
+    {
+      "file": "src/components/LegalDrafts/docs/agb.js",
+      "contains": "312g Abs 2 Nr. 1",
+      "id": "de-nr1",
+      "reason": "Gesetzeszitat (§ 312g Abs 2 Nr. 1 BGB) im AGB-Entwurf, kein Rang-Claim."
+    },
+    {
+      "file": [
+        "/de/ueber-uns/marken/classicon/side-tables",
+        "/en/about-us/brands/classicon/side-tables",
+        "/fr/a-propos/marques/classicon/side-tables",
+        "/it/chi-siamo/marche/classicon/side-tables",
+        "/de/produkte/side-tables/side-tables-corker-no-1",
+        "/en/products/side-tables/side-tables-corker-no-1",
+        "/fr/produits/side-tables/side-tables-corker-no-1",
+        "/it/prodotti/side-tables/side-tables-corker-no-1"
+      ],
+      "contains": "Corker No. 1",
+      "id": "en-number-one",
+      "reason": "ClassiCon-Produktname (Eileen Gray), kein Rang-Claim. Gilt auf den ClassiCon-Kategorieseiten und den Produktseiten (Präfix, auch -marble; R4-release)."
+    },
+    {
+      "file": [
+        "/de/ueber-uns/marken/classicon/coffee-tables",
+        "/en/about-us/brands/classicon/coffee-tables",
+        "/fr/a-propos/marques/classicon/coffee-tables",
+        "/it/chi-siamo/marche/classicon/coffee-tables",
+        "/de/produkte/coffee-tables/coffee-tables-bow-coffee-table-no-1",
+        "/en/products/coffee-tables/coffee-tables-bow-coffee-table-no-1",
+        "/fr/produits/coffee-tables/coffee-tables-bow-coffee-table-no-1",
+        "/it/prodotti/coffee-tables/coffee-tables-bow-coffee-table-no-1"
+      ],
+      "contains": "Bow Coffee Table No. 1",
+      "id": "en-number-one",
+      "reason": "ClassiCon-Produktname (Eileen Gray), kein Rang-Claim. Gilt auf den ClassiCon-Kategorieseiten und den Produktseiten (Präfix, auch -marble; R4-release)."
+    },
+    {
+      "file": [
+        "/de/ueber-uns/marken/classicon/bar-stools",
+        "/en/about-us/brands/classicon/bar-stools",
+        "/fr/a-propos/marques/classicon/bar-stools",
+        "/it/chi-siamo/marche/classicon/bar-stools",
+        "/de/produkte/bar-stools/bar-stools-bar-stool-no-1",
+        "/en/products/bar-stools/bar-stools-bar-stool-no-1",
+        "/fr/produits/bar-stools/bar-stools-bar-stool-no-1",
+        "/it/prodotti/bar-stools/bar-stools-bar-stool-no-1"
+      ],
+      "contains": "Bar Stool No. 1",
+      "id": "en-number-one",
+      "reason": "ClassiCon-Produktname (Eileen Gray), kein Rang-Claim. Gilt auf den ClassiCon-Kategorieseiten und den Produktseiten (Präfix, auch -marble; R4-release)."
+    }
+  ]
+}

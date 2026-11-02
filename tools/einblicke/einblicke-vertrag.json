@@ -1,0 +1,878 @@
+{
+  "schema": 1,
+  "titel": "Besucher-Einblicke – Vertrag Website ↔ Frappe-App platzhirsch_einblicke",
+  "stand": "2026-10-29 (Nachbesserung QA Recht/Technik)",
+  "hinweis": "Identische Kopie in beiden Repos (Website: Marktresearch/digital/features oder tools/einblicke; Frappe-App: Wurzelordner). Änderungen nur mit neuer schema-Nummer.",
+  "uebertragung": {
+    "methode": "POST {EINBLICKE_FRAPPE_URL}/api/method/platzhirsch_einblicke.api.tag_speichern",
+    "header": {
+      "Authorization": "token {EINBLICKE_FRAPPE_KEY}:{EINBLICKE_FRAPPE_SECRET}",
+      "Content-Type": "application/json"
+    },
+    "benutzer": "Eigener API-Benutzer nur mit Rolle 'Einblicke Schreiber' (kein Desk-Zugriff).",
+    "body": "Objekt wie 'beispiel'. Pflicht: datum (YYYY-MM-DD, nicht in der Zukunft), schema: 1, mindestens eine der Listen seiten|heatmaps|pfade|signale|planer.",
+    "idempotenz": "Upsert über deterministische Namen: Heatmap '{route}|{geraet}|{datum}', Pfad '{datum}|{geraet}|{herkunft}', Signal '{datum}|{route}|{geraet}|{typ}|{ziel}' ('>' als '›'), Planer '{datum}|{planer}|{geraet}'. Namen > 140 Zeichen werden gehasht. Erneutes Senden überschreibt.",
+    "ersetzen": "Optional. Ohne 'teil' Standard 1: Dokumente dieses Tages, die in einer mitgesendeten Liste fehlen, werden gelöscht (Signale nur mit Status 'Neu'). Mit 'teil' (Aufteilung > 1 MB, wie splitPayload der Website) Standard 0: es wird nur überschrieben, nichts gelöscht. Sind ALLE mitgesendeten Listen leer, lehnt Frappe ersetzen=1 ab (HTTP 417), außer mit erzwingen=1; die Website sendet einen Tag ohne Rohdaten nie.",
+    "zusatzfelder": "Erlaubt und ignoriert: meta, teil, sowie name/datum/schema_version/planer_schluessel in den Einträgen. heatmaps/signale: 'route' oder 'seite'. bewegung_raster/details dürfen null sein.",
+    "robustheit": "Unbekannter Planer oder Signaltyp: Eintrag wird verworfen (Zähler 'verworfen'), der Rest gespeichert. sichtanteil/scroll_histogramm > 1 werden auf 1 gekappt, median_ms/p75_ms auf 600000. Ungültige Routen, Selektoren, Geräte oder verbotene Schlüssel lehnen das ganze Paket ab.",
+    "empfehlung": "pfade: sitzungen_mit_ziel mitsenden (genauer als ziel_quote mit einer Nachkommastelle).",
+    "max_bytes": 1048576,
+    "antwort": {
+      "message": {
+        "datum": "2026-10-28",
+        "schema": 1,
+        "heatmaps": {
+          "neu": 2,
+          "aktualisiert": 0,
+          "geloescht": 0,
+          "selten": 0
+        }
+      }
+    },
+    "fehler": "HTTP 417 (ValidationError) mit Meldung bei ungültigen Werten; HTTP 403 ohne Rolle. Das ganze Paket wird dann nicht gespeichert (Transaktion)."
+  },
+  "screenshot": {
+    "methode": "POST {EINBLICKE_FRAPPE_URL}/api/method/platzhirsch_einblicke.api.screenshot_speichern",
+    "felder": {
+      "route": "Pfad ohne Query (Pflicht)",
+      "geraet": "Handy|Tablet|Desktop (Pflicht)",
+      "vorlage": "optional",
+      "titel": "optional",
+      "inhalt": "optional, Base64 (auch data:-URL) von PNG/JPEG/WebP, max. 12 MB – JPEG/WebP empfohlen",
+      "manifest": "optional, Objekt wie 'beispiel_manifest'"
+    },
+    "wirkung": "Ersetzt Screenshot und/oder Manifest des Geräts in 'Web Seite' (privat gespeichert), setzt screenshot_datum."
+  },
+  "regeln": [
+    "Nur anonyme Aggregate. Verbotene Schlüssel (Paket wird abgelehnt): sid, session, session_id, ip, ip_adresse, user_agent, ua, referrer, referer, cookie, cookies, email, e_mail, telefon, value, wert, eingabe, lead_ref, gclid, fbclid, msclkid. Feldnamen von Formularen stehen nur als Werte (z. B. {n: 'email'}), nie als Schlüssel.",
+    "k-Schwelle 5 (Einstellung, mindestens 5): Die Website fasst Pfade, Einstiege, Ausstiege, Sankey-Kanten und Signale mit < 5 Sitzungen zu '(selten)' zusammen. Frappe prüft das erneut und fasst selbst zusammen.",
+    "Heatmaps (Seite × Gerät × Tag) mit < 5 Besuchen sendet die Website nicht: sie hält sie höchstens 14 Tage zurück und sendet sie zusammengefasst, sobald Seite × Gerät 5 Besuche erreicht (am Tag des Erreichens, Feld zusammengefasst = Liste der Tage, wird ignoriert). Frappe verwirft Heatmaps mit besuche < k (Zähler selten) und legt dafür keine Web Seite an. Die Heatmap-Seite zeigt Ebenen erst ab sichtbar_ab_besuchen im gewählten Zeitraum.",
+    "Mausbewegung (bewegung_raster) nur für geraet Desktop; für andere Geräte wird sie verworfen.",
+    "Pfade: die Zeile geraet 'Alle' + herkunft 'Alle' ist Pflicht (Kennzahlen). Zusätzlich je Gerät mit herkunft 'Alle' und je Herkunft mit geraet 'Alle'; Kombinationen Gerät × Herkunft optional.",
+    "Planer: je Gerät (Handy|Tablet|Desktop); eine 'Alle'-Zeile ist erlaubt, wird aber in Summen nicht mitgezählt.",
+    "Strings: route/vorlage beginnen mit '/', ohne '?', '#', '//' (max. 200 Zeichen); Selektoren max. 120 Zeichen ohne < \" ' `.",
+    "Routen: unbekannte Adressen/404 nur als \"/<sprache>/(404)\"; dynamische Seiten mit < 5 Sitzungen am Tag nur als Vorlage; Routen mit Zugangsschlüssel im Pfad (/ideenboard/[shareId], /wunschliste/[id]) werden nie erfasst."
+  ],
+  "werte": {
+    "geraet": [
+      "Handy",
+      "Tablet",
+      "Desktop",
+      "Alle (nur pfade/planer)"
+    ],
+    "geraet_kurzcodes": {
+      "m": "Handy",
+      "t": "Tablet",
+      "d": "Desktop"
+    },
+    "herkunft": [
+      "Alle",
+      "Google Ads",
+      "Microsoft Ads",
+      "Paid",
+      "Newsletter",
+      "Offline/QR",
+      "KI-Suche",
+      "Social",
+      "Organisch",
+      "Verweis",
+      "Direkt"
+    ],
+    "herkunft_unbekannt": "wird als 'Sonstige' gespeichert",
+    "signal_typ": [
+      "Rage-Klick",
+      "Toter Klick",
+      "Formularabbruch",
+      "Validierungsfehler",
+      "Fehler",
+      "Formular-Serverfehler"
+    ],
+    "signal_typ_kurzcodes": {
+      "rage": "Rage-Klick",
+      "dead": "Toter Klick",
+      "abbruch": "Formularabbruch",
+      "invalid": "Validierungsfehler",
+      "error": "Fehler",
+      "form_error": "Formular-Serverfehler"
+    },
+    "signal_ziel": "Selektor (Klicks), Formularname (Abbruch), 'form:feld' (Validierungsfehler), 'Typ@chunk:zeile' (Fehler), 'form:status' (Serverfehler)",
+    "planer": [
+      "Küche",
+      "Sofa",
+      "Ezarri",
+      "Stil-Finder"
+    ],
+    "planer_kurzcodes": {
+      "kuechenplaner": "Küche",
+      "sofaplaner": "Sofa",
+      "ezarri": "Ezarri",
+      "stilfinder": "Stil-Finder"
+    },
+    "planer_schritt": "[A-Za-z0-9_-]{1,40}, feste Listen laut Konzept §2.5",
+    "ziele": [
+      "termin",
+      "anfrage",
+      "planer",
+      "merkliste",
+      "kontakt"
+    ],
+    "pfadschritt": "Vorlage ('/de/…'), 'ziel:<ziel>', 'ausstieg', '…' (gekappt nach 8 Schritten) oder '(selten)'",
+    "sankey_knoten_id": "'{schritt}:{pfadschritt}', schritt 0…20",
+    "scroll_histogramm": "genau 20 Werte 0…1: Index i = Anteil der Aufrufe mit Scrolltiefe ≥ (i+1)·5 %",
+    "element_pkt": "[x20, y20, n] – 20×20-Raster innerhalb der Elementbox (0…19)",
+    "klick_raster": "{spalten: 40, bandPx: 40, zellen: [[spalte 0…39, band (pageY/40), n]]}"
+  },
+  "beispiel": {
+    "datum": "2026-10-28",
+    "schema": 1,
+    "seiten": [
+      {
+        "route": "/de",
+        "vorlage": "/de",
+        "titel": "Platzhirsch Home Living",
+        "sprache": "de"
+      },
+      {
+        "route": "/de/kontakt",
+        "vorlage": "/de/kontakt",
+        "titel": "Kontakt",
+        "sprache": "de"
+      }
+    ],
+    "heatmaps": [
+      {
+        "route": "/de",
+        "vorlage": "/de",
+        "geraet": "Desktop",
+        "besuche": 84,
+        "seitenaufrufe": 97,
+        "duenn": 0,
+        "klick_raster": {
+          "spalten": 40,
+          "bandPx": 40,
+          "zellen": [
+            [
+              6,
+              16,
+              21
+            ],
+            [
+              7,
+              16,
+              18
+            ],
+            [
+              14,
+              30,
+              9
+            ],
+            [
+              26,
+              30,
+              7
+            ],
+            [
+              4,
+              75,
+              5
+            ]
+          ]
+        },
+        "element_klicks": [
+          {
+            "sel": "cta-termin",
+            "n": 39,
+            "pkt": [
+              [
+                9,
+                10,
+                14
+              ],
+              [
+                10,
+                9,
+                12
+              ],
+              [
+                11,
+                11,
+                13
+              ]
+            ]
+          },
+          {
+            "sel": "main>#kategorien>a:1",
+            "n": 9,
+            "pkt": [
+              [
+                10,
+                8,
+                9
+              ]
+            ]
+          },
+          {
+            "sel": "main>#kategorien>a:2",
+            "n": 7,
+            "pkt": [
+              [
+                9,
+                9,
+                7
+              ]
+            ]
+          }
+        ],
+        "bewegung_raster": {
+          "spalten": 40,
+          "bandPx": 40,
+          "zellen": [
+            [
+              8,
+              15,
+              40
+            ],
+            [
+              9,
+              16,
+              35
+            ],
+            [
+              20,
+              28,
+              22
+            ],
+            [
+              20,
+              45,
+              11
+            ]
+          ]
+        },
+        "scroll_histogramm": [
+          1,
+          0.98,
+          0.95,
+          0.9,
+          0.84,
+          0.77,
+          0.7,
+          0.63,
+          0.57,
+          0.5,
+          0.45,
+          0.4,
+          0.35,
+          0.3,
+          0.26,
+          0.22,
+          0.18,
+          0.14,
+          0.1,
+          0.07
+        ],
+        "aufmerksamkeit": [
+          {
+            "sel": "hero",
+            "median_ms": 6200,
+            "p75_ms": 11800,
+            "sichtanteil": 0.99
+          },
+          {
+            "sel": "main>#kategorien",
+            "median_ms": 4100,
+            "p75_ms": 8900,
+            "sichtanteil": 0.81
+          },
+          {
+            "sel": "marken-raster",
+            "median_ms": 2300,
+            "p75_ms": 5100,
+            "sichtanteil": 0.52
+          },
+          {
+            "sel": "footer",
+            "median_ms": 900,
+            "p75_ms": 2100,
+            "sichtanteil": 0.12
+          }
+        ],
+        "viewport_breite_median": 1536,
+        "dokumenthoehe_median": 4380
+      },
+      {
+        "route": "/de/kontakt",
+        "vorlage": "/de/kontakt",
+        "geraet": "Handy",
+        "besuche": 3,
+        "seitenaufrufe": 3,
+        "duenn": 1,
+        "klick_raster": {
+          "spalten": 40,
+          "bandPx": 40,
+          "zellen": [
+            [
+              20,
+              50,
+              3
+            ]
+          ]
+        },
+        "element_klicks": [
+          {
+            "sel": "main>#formular>button:1",
+            "n": 3,
+            "pkt": [
+              [
+                10,
+                10,
+                3
+              ]
+            ]
+          }
+        ],
+        "bewegung_raster": {
+          "spalten": 40,
+          "bandPx": 40,
+          "zellen": []
+        },
+        "scroll_histogramm": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0.67,
+          0.67,
+          0.67,
+          0.67,
+          0.67,
+          0.67,
+          0.33,
+          0.33,
+          0.33,
+          0.33,
+          0.33,
+          0.33,
+          0.33,
+          0,
+          0
+        ],
+        "aufmerksamkeit": [
+          {
+            "sel": "main>#formular",
+            "median_ms": 14200,
+            "p75_ms": 20100,
+            "sichtanteil": 1
+          }
+        ],
+        "viewport_breite_median": 390,
+        "dokumenthoehe_median": 3120
+      }
+    ],
+    "pfade": [
+      {
+        "geraet": "Alle",
+        "herkunft": "Alle",
+        "sitzungen": 212,
+        "sitzungen_mit_ziel": 19,
+        "ziel_quote": 8.96,
+        "ziele": {
+          "termin": 6,
+          "anfrage": 7,
+          "planer": 4,
+          "merkliste": 9,
+          "kontakt": 3
+        },
+        "sankey": {
+          "knoten": [
+            {
+              "id": "0:/de",
+              "schritt": 0,
+              "vorlage": "/de"
+            },
+            {
+              "id": "0:/de/produkte/[category]/[product]",
+              "schritt": 0,
+              "vorlage": "/de/produkte/[category]/[product]"
+            },
+            {
+              "id": "1:/de/kuechen-vorarlberg",
+              "schritt": 1,
+              "vorlage": "/de/kuechen-vorarlberg"
+            },
+            {
+              "id": "1:ausstieg",
+              "schritt": 1,
+              "vorlage": "ausstieg"
+            },
+            {
+              "id": "1:ziel:merkliste",
+              "schritt": 1,
+              "vorlage": "ziel:merkliste"
+            },
+            {
+              "id": "2:ziel:termin",
+              "schritt": 2,
+              "vorlage": "ziel:termin"
+            },
+            {
+              "id": "2:ausstieg",
+              "schritt": 2,
+              "vorlage": "ausstieg"
+            }
+          ],
+          "kanten": [
+            {
+              "von": "0:/de",
+              "nach": "1:/de/kuechen-vorarlberg",
+              "n": 41
+            },
+            {
+              "von": "0:/de",
+              "nach": "1:ausstieg",
+              "n": 52
+            },
+            {
+              "von": "0:/de/produkte/[category]/[product]",
+              "nach": "1:ziel:merkliste",
+              "n": 9
+            },
+            {
+              "von": "0:/de/produkte/[category]/[product]",
+              "nach": "1:ausstieg",
+              "n": 60
+            },
+            {
+              "von": "1:/de/kuechen-vorarlberg",
+              "nach": "2:ziel:termin",
+              "n": 6
+            },
+            {
+              "von": "1:/de/kuechen-vorarlberg",
+              "nach": "2:ausstieg",
+              "n": 35
+            },
+            {
+              "von": "0:/de",
+              "nach": "1:(selten)",
+              "n": 12
+            }
+          ]
+        },
+        "top_pfade": [
+          {
+            "pfad": [
+              "/de/produkte/[category]/[product]",
+              "ausstieg"
+            ],
+            "n": 60
+          },
+          {
+            "pfad": [
+              "/de",
+              "ausstieg"
+            ],
+            "n": 52
+          },
+          {
+            "pfad": [
+              "/de",
+              "/de/kuechen-vorarlberg",
+              "ausstieg"
+            ],
+            "n": 35
+          },
+          {
+            "pfad": [
+              "/de/produkte/[category]/[product]",
+              "ziel:merkliste"
+            ],
+            "n": 9
+          },
+          {
+            "pfad": [
+              "/de",
+              "/de/kuechen-vorarlberg",
+              "ziel:termin"
+            ],
+            "n": 6
+          },
+          {
+            "pfad": [
+              "(selten)"
+            ],
+            "n": 50
+          }
+        ],
+        "einstiege": [
+          {
+            "vorlage": "/de",
+            "n": 105
+          },
+          {
+            "vorlage": "/de/produkte/[category]/[product]",
+            "n": 69
+          },
+          {
+            "vorlage": "(selten)",
+            "n": 38
+          }
+        ],
+        "ausstiege": [
+          {
+            "vorlage": "/de/produkte/[category]/[product]",
+            "n": 60
+          },
+          {
+            "vorlage": "/de",
+            "n": 52
+          },
+          {
+            "vorlage": "/de/kuechen-vorarlberg",
+            "n": 35
+          },
+          {
+            "vorlage": "(selten)",
+            "n": 46
+          }
+        ]
+      },
+      {
+        "geraet": "Desktop",
+        "herkunft": "Alle",
+        "sitzungen": 88,
+        "sitzungen_mit_ziel": 11,
+        "ziel_quote": 12.5,
+        "ziele": {
+          "termin": 4,
+          "anfrage": 4,
+          "planer": 3,
+          "merkliste": 2,
+          "kontakt": 1
+        },
+        "sankey": {
+          "knoten": [],
+          "kanten": [
+            {
+              "von": "0:/de",
+              "nach": "1:/de/kuechen-vorarlberg",
+              "n": 22
+            },
+            {
+              "von": "0:/de",
+              "nach": "1:ausstieg",
+              "n": 30
+            }
+          ]
+        },
+        "top_pfade": [
+          {
+            "pfad": [
+              "/de",
+              "ausstieg"
+            ],
+            "n": 30
+          }
+        ],
+        "einstiege": [
+          {
+            "vorlage": "/de",
+            "n": 52
+          }
+        ],
+        "ausstiege": [
+          {
+            "vorlage": "/de",
+            "n": 30
+          }
+        ]
+      },
+      {
+        "geraet": "Alle",
+        "herkunft": "Organisch",
+        "sitzungen": 120,
+        "sitzungen_mit_ziel": 9,
+        "ziel_quote": 7.5,
+        "ziele": {
+          "termin": 3,
+          "anfrage": 4,
+          "planer": 1,
+          "merkliste": 5,
+          "kontakt": 1
+        },
+        "sankey": {
+          "knoten": [],
+          "kanten": [
+            {
+              "von": "0:/de/produkte/[category]/[product]",
+              "nach": "1:ausstieg",
+              "n": 44
+            }
+          ]
+        },
+        "top_pfade": [
+          {
+            "pfad": [
+              "/de/produkte/[category]/[product]",
+              "ausstieg"
+            ],
+            "n": 44
+          }
+        ],
+        "einstiege": [
+          {
+            "vorlage": "/de/produkte/[category]/[product]",
+            "n": 61
+          }
+        ],
+        "ausstiege": [
+          {
+            "vorlage": "/de/produkte/[category]/[product]",
+            "n": 44
+          }
+        ]
+      }
+    ],
+    "signale": [
+      {
+        "route": "/de",
+        "geraet": "Desktop",
+        "typ": "Toter Klick",
+        "ziel": "main>#kategorien>img:2",
+        "anzahl": 17,
+        "sitzungen": 12,
+        "details": {
+          "pkt": [
+            [
+              10,
+              6,
+              9
+            ],
+            [
+              11,
+              7,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "route": "/de/kontakt",
+        "geraet": "Handy",
+        "typ": "Formularabbruch",
+        "ziel": "kontakt",
+        "anzahl": 9,
+        "sitzungen": 9,
+        "details": {
+          "felder": [
+            {
+              "n": "name",
+              "beruehrt": 21,
+              "letztes": 2
+            },
+            {
+              "n": "email",
+              "beruehrt": 19,
+              "letztes": 3
+            },
+            {
+              "n": "telefon",
+              "beruehrt": 14,
+              "letztes": 4
+            }
+          ]
+        }
+      },
+      {
+        "route": "/de/kontakt",
+        "geraet": "Handy",
+        "typ": "Validierungsfehler",
+        "ziel": "kontakt:email",
+        "anzahl": 6,
+        "sitzungen": 5,
+        "details": {}
+      },
+      {
+        "route": "/de",
+        "geraet": "Handy",
+        "typ": "Rage-Klick",
+        "ziel": "hero",
+        "anzahl": 4,
+        "sitzungen": 2,
+        "details": {}
+      }
+    ],
+    "planer": [
+      {
+        "planer": "Küche",
+        "geraet": "Desktop",
+        "starts": 14,
+        "uebergaben": 3,
+        "abbrueche": 9,
+        "median_dauer_s": 412,
+        "schritte": [
+          {
+            "schritt": "raum",
+            "n": 14
+          },
+          {
+            "schritt": "form",
+            "n": 11
+          },
+          {
+            "schritt": "fronten",
+            "n": 8
+          },
+          {
+            "schritt": "geraete",
+            "n": 5
+          },
+          {
+            "schritt": "vergleich",
+            "n": 4
+          }
+        ]
+      },
+      {
+        "planer": "Stil-Finder",
+        "geraet": "Handy",
+        "starts": 22,
+        "uebergaben": 5,
+        "abbrueche": 10,
+        "median_dauer_s": 96,
+        "schritte": [
+          {
+            "schritt": "1",
+            "n": 22
+          },
+          {
+            "schritt": "2",
+            "n": 20
+          },
+          {
+            "schritt": "3",
+            "n": 18
+          },
+          {
+            "schritt": "4",
+            "n": 16
+          },
+          {
+            "schritt": "5",
+            "n": 14
+          },
+          {
+            "schritt": "6",
+            "n": 12
+          },
+          {
+            "schritt": "7",
+            "n": 10
+          }
+        ],
+        "ergebnisse": {
+          "klassisch": 3,
+          "modern": 4,
+          "skandinavisch": 2,
+          "industrial": 1,
+          "landhaus": 2
+        }
+      }
+    ]
+  },
+  "beispiel_manifest": {
+    "breite": 1440,
+    "hoehe": 4200,
+    "erstellt": "2026-10-28T09:00:00+01:00",
+    "titel": "Platzhirsch Home Living",
+    "elemente": {
+      "header": [
+        0,
+        0,
+        1440,
+        88
+      ],
+      "header>nav>a:1": [
+        480,
+        30,
+        90,
+        28
+      ],
+      "header>nav>a:2": [
+        590,
+        30,
+        110,
+        28
+      ],
+      "hero": [
+        0,
+        88,
+        1440,
+        760
+      ],
+      "cta-termin": [
+        120,
+        620,
+        260,
+        56
+      ],
+      "main>#kategorien": [
+        0,
+        848,
+        1440,
+        900
+      ],
+      "main>#kategorien>a:1": [
+        120,
+        960,
+        380,
+        520
+      ],
+      "main>#kategorien>a:2": [
+        530,
+        960,
+        380,
+        520
+      ],
+      "main>#kategorien>a:3": [
+        940,
+        960,
+        380,
+        520
+      ],
+      "marken-raster": [
+        0,
+        1748,
+        1440,
+        700
+      ],
+      "main>#beratung": [
+        0,
+        2448,
+        1440,
+        800
+      ],
+      "main>#beratung>a:1": [
+        120,
+        2980,
+        240,
+        52
+      ],
+      "footer": [
+        0,
+        3800,
+        1440,
+        400
+      ]
+    },
+    "abschnitte": [
+      "header",
+      "hero",
+      "main>#kategorien",
+      "marken-raster",
+      "main>#beratung",
+      "footer"
+    ]
+  }
+}

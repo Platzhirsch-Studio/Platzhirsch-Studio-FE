@@ -1,12 +1,13 @@
 // src/lib/api/brandsKeywordsApi.js
 import "server-only"; // Ensures this only runs on server
 import { API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
 
 const BRANDS_KEYWORDS_API_URL = `${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.brands_keywords.api.brand_keywords_data`;
 
 export async function fetchBrandsKeywords() {
   try {
-    const response = await fetch(BRANDS_KEYWORDS_API_URL, {
+    const response = await backofficeFetch(BRANDS_KEYWORDS_API_URL, {
       method: "GET",
       next: { revalidate: 3600 }, // Cache for 1 hour
     });

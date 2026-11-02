@@ -1,0 +1,332 @@
+{
+  "name": "Torii Nest \"Outdoor\"",
+  "slug": "torii-nest-outdoor",
+  "hersteller": "Minotti",
+  "designer": "nendo",
+  "jahr": 2023,
+  "jahr_hinweis": "Torii Nest 2020 für Innen entworfen; Outdoor-Sessel „2022 Collection“, Outdoor-Sofas „2023 Collection“ (Produktseiten). Technical Sheet Stand Januar 2024.",
+  "typ": "Outdoor-Sitzfamilie aus Einzelmöbeln (nicht modular): gebogene Sofas, offene/Penisola-Sofas, Paolina, runde Loveseat-Chaiselongue, Bank, Sessel fest/drehbar",
+  "quellen": [
+    "https://www.minotti.com/en/torii-nest-outdoor_sofa",
+    "https://www.minotti.com/en/torii-nest-outdoor",
+    "https://www.minotti.com/downloads/22102/23028/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/18698/18552/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/22102/24989/MINOTTI_Torii_Nest_Outdoor.zip",
+    "https://www.minotti.com/downloads/23000/24347/TORII_NEST_OUTDOOR_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/23002/24351/TORII_NEST_OUTDOOR_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/23003/24353/TORII_NEST_OUTDOOR_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/23004/24355/TORII_NEST_OUTDOOR_arrangement_04.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masseinheit": "cm",
+  "hinweis_masse": "Breite×Tiefe×Höhe aus Produktseiten-Bezeichnungen und Bilddateinamen (z. B. „ANGLED SOFA CM 159X90 H90“), Sitzhöhe aus Technical Sheet (Januar 2024). Wiederkehrendes Maß 71 cm unbeschriftet, nicht zugeordnet. CAD-Maße können laut Minotti leicht abweichen.",
+  "hinweis_rechte": "Bild-URLs nur als Quellennachweis. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, Rechte-Register beachten).",
+  "elemente": [
+    {
+      "code": "angled-sofa-159",
+      "name": "ANGLED SOFA CM 159",
+      "art": "sofa-curved",
+      "breite_cm": 159,
+      "tiefe_cm": 90,
+      "hoehe_cm": 90,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "ausrichtung": null,
+      "anschluesse": "Freistehend (nicht modular)",
+      "bild_quelle": "https://www.minotti.com/media/immagini/40613_n_TORII_NEST_OUTDOOR_ANGLED_SOFA_159X90_H90.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/torii-nest-outdoor_sofa",
+        "https://www.minotti.com/downloads/22102/23028/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Gewinkelter/gebogener Zweisitzer.",
+        "Unbeschriftetes Zeichnungsmaß 71 cm (vermutl. Armlehnen-/Schalenhöhe), nicht zugeordnet."
+      ]
+    },
+    {
+      "code": "angled-sofa-225",
+      "name": "ANGLED SOFA CM 225",
+      "art": "sofa-curved",
+      "breite_cm": 225,
+      "tiefe_cm": 100,
+      "hoehe_cm": 90,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "ausrichtung": null,
+      "anschluesse": "Freistehend (nicht modular)",
+      "bild_quelle": "https://www.minotti.com/media/immagini/40614_n_TORII_NEST_OUTDOOR_ANGLED_SOFA_225X100_H90.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/torii-nest-outdoor_sofa",
+        "https://www.minotti.com/downloads/22102/23028/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Sitzhöhe in der Zeichnung nicht beschriftet (beim 159er: 44 cm – nicht übertragen)."
+      ]
+    },
+    {
+      "code": "angled-open-sofa-225",
+      "name": "ANGLED OPEN SOFA CM 225",
+      "art": "sofa-curved-open",
+      "breite_cm": 225,
+      "tiefe_cm": 95,
+      "hoehe_cm": 90,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "ausrichtung": null,
+      "anschluesse": "Freistehend (nicht modular)",
+      "bild_quelle": "https://www.minotti.com/media/immagini/40615_n_TORII_NEST_OUTDOOR_ANGLED_OPEN_SOFA_225X95_H90.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/torii-nest-outdoor_sofa",
+        "https://www.minotti.com/downloads/22102/23028/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Offene Version.",
+        "Unbeschriftetes Zeichnungsmaß 71 cm (vermutl. Armlehnen-/Schalenhöhe), nicht zugeordnet."
+      ]
+    },
+    {
+      "code": "angled-open-end-sofa-222",
+      "name": "ANGLED OPEN-END SOFA CM 222",
+      "art": "peninsula",
+      "breite_cm": 222,
+      "tiefe_cm": 100,
+      "hoehe_cm": 90,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehend; einseitig offen (Penisola)",
+      "bild_quelle": "https://www.minotti.com/media/immagini/40616_n_TORII_NEST_OUTDOOR_ANGLED_OPEN_END_SOFA_222X100_H90.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/torii-nest-outdoor_sofa",
+        "https://www.minotti.com/downloads/22102/23028/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Ital. „Divano penisola curvo“.",
+        "SX/DX-Ausführung.",
+        "Unbeschriftetes Zeichnungsmaß 71 cm (vermutl. Armlehnen-/Schalenhöhe), nicht zugeordnet."
+      ]
+    },
+    {
+      "code": "paolina-90x156",
+      "name": "PAOLINA CM 90X156",
+      "art": "chaise",
+      "breite_cm": 90,
+      "tiefe_cm": 156,
+      "hoehe_cm": 90,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "ausrichtung": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/40617_n_TORII_NEST_OUTDOOR_PAOLINA_90X156_H90.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/torii-nest-outdoor_sofa",
+        "https://www.minotti.com/downloads/22102/23028/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Chaiselongue („Paolina“).",
+        "SX/DX-Ausführung.",
+        "Sitzhöhe nicht beschriftet."
+      ]
+    },
+    {
+      "code": "loveseat-158x155",
+      "name": "LOVESEAT CM 158X155",
+      "art": "loveseat-rund",
+      "breite_cm": 158,
+      "tiefe_cm": 155,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "ausrichtung": null,
+      "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/40618_n_TORII_NEST_OUTDOOR_LOVESEAT_158X155_H80.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/torii-nest-outdoor_sofa",
+        "https://www.minotti.com/downloads/22102/23028/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Runde Chaiselongue laut Produkttext.",
+        "Zusätzliche unbeschriftete Maße 71 und 61 cm, nicht zugeordnet."
+      ]
+    },
+    {
+      "code": "bench-122x59",
+      "name": "BENCH CM 122X59",
+      "art": "bank",
+      "breite_cm": 122,
+      "tiefe_cm": 59,
+      "hoehe_cm": 44,
+      "sitzhoehe_cm": 44,
+      "sitztiefe_cm": null,
+      "ausrichtung": null,
+      "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/40619_n_TORII_NEST_OUTDOOR_BENCH_122X59_H44.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/torii-nest-outdoor_sofa",
+        "https://www.minotti.com/downloads/22102/23028/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Unbeschriftetes Zeichnungsmaß 48 cm, nicht zugeordnet."
+      ]
+    },
+    {
+      "code": "armchair-71",
+      "name": "ARMCHAIR",
+      "art": "sessel",
+      "breite_cm": 71,
+      "tiefe_cm": 76,
+      "hoehe_cm": 80,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "ausrichtung": null,
+      "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/34190_n_TORII-NEST-OUTDOOR-ARMCHAIR-71X76-H80.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/torii-nest-outdoor",
+        "https://www.minotti.com/downloads/22102/23028/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Fest oder drehbar (360°, ohne Rückstellung).",
+        "Separate Produktseite (Armchairs).",
+        "Unbeschriftetes Zeichnungsmaß 71 cm (vermutl. Armlehnen-/Schalenhöhe), nicht zugeordnet.",
+        "Unbeschriftetes Maß 65 cm."
+      ]
+    },
+    {
+      "code": "lounge-little-armchair",
+      "name": "LOUNGE LITTLE ARMCHAIR",
+      "art": "sessel-klein",
+      "breite_cm": 64,
+      "tiefe_cm": 64,
+      "hoehe_cm": 81,
+      "sitzhoehe_cm": 47,
+      "sitztiefe_cm": null,
+      "ausrichtung": null,
+      "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/34191_n_TORII-NEST-OUTDOOR-LOUNGE-LITTLE-ARMCHAIR-64X64-H81.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/torii-nest-outdoor",
+        "https://www.minotti.com/downloads/22102/23028/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Fest oder drehbar (360°).",
+        "Separate Produktseite.",
+        "Unbeschriftetes Zeichnungsmaß 71 cm (vermutl. Armlehnen-/Schalenhöhe), nicht zugeordnet.",
+        "Unbeschriftetes Maß 58 cm."
+      ]
+    },
+    {
+      "code": "dining-little-armchair",
+      "name": "DINING LITTLE ARMCHAIR",
+      "art": "dining-sessel",
+      "breite_cm": 64,
+      "tiefe_cm": 64,
+      "hoehe_cm": 86,
+      "sitzhoehe_cm": 52,
+      "sitztiefe_cm": null,
+      "ausrichtung": null,
+      "anschluesse": "Freistehend",
+      "bild_quelle": "https://www.minotti.com/media/immagini/34192_n_TORII-NEST-OUTDOOR-DINING-LITTLE-ARMCHAIR-64X64-H86.jpg",
+      "mass_quelle": [
+        "https://www.minotti.com/en/torii-nest-outdoor",
+        "https://www.minotti.com/downloads/22102/23028/TORII_NEST_OUTDOOR_UPDATE_TECHNICAL_SHEET.pdf"
+      ],
+      "hinweise": [
+        "Fest oder drehbar (360°).",
+        "Separate Produktseite.",
+        "Unbeschriftete Maße 76 und 58 cm."
+      ]
+    }
+  ],
+  "rueckenoptionen": [
+    "Eine Ausführung: Rückenlehne aus Edelstahlrohr, Bronze lackiert, mit geflochtenem Polypropylengarn bespannt; lose Rückenkissen",
+    "Optionale Rückenkissen 65×45 und 55×55 cm"
+  ],
+  "armlehnenoptionen": [
+    "Keine Varianten – Armlehnen Teil der umlaufenden geflochtenen Rückenschale",
+    "Offene Versionen (Open Sofa, Open-End SX/DX) als Alternative"
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Füße (alle Elemente)",
+      "material": "Stranggepresstes Aluminium",
+      "finish": [
+        "Bronze glänzend lackiert, Anti-Fingerprint"
+      ]
+    },
+    {
+      "teil": "Sessel/kleine Sessel",
+      "material": "Fuß fest oder mit 360°-Drehmechanismus (ohne Rückstellung)"
+    },
+    {
+      "teil": "Gleiter",
+      "material": "Polyethylen schwarz"
+    }
+  ],
+  "struktur": {
+    "rueckenschale": "Edelstahlrohr, Bronze glänzend Anti-Fingerprint lackiert, Polypropylengarn geflochten in Ecru, Dark Brown (Testa di Moro) oder Green Oil (Verde Olio).",
+    "sitz": "Sperrholz mit massivem Teak-Furnier, natur (Tectona Grandis – First European Quality) oder massives Mahagoni Dark Brown (Mahagoni nur für Sessel und kleine Sessel). Unterbau Sperrholz + PU-Schaum, Unterseite wasserabweisender rutschhemmender beschichteter Stoff."
+  },
+  "bezuege": {
+    "kategorien": [
+      "Stoff (Outdoor)"
+    ],
+    "leder": "In den Quellen nicht genannt",
+    "bezugsart": "Abnehmbar: Kissenbezüge komplett abziehbar.",
+    "strukturbespannung": [
+      "Ecru",
+      "Dark Brown",
+      "Green Oil"
+    ],
+    "preisgruppen": null,
+    "farbmuster_hinweis": "Original-Stoffmuster (Outdoor-Kollektion, „The World of Materials“) bitte im Showroom ansehen – Bildschirmfarben sind nicht verbindlich."
+  },
+  "kissenoptionen": [
+    {
+      "name": "Sitz- und Rückenkissen",
+      "details": "Hochelastischer PU-Schaum unterschiedlicher Dichte + wasserabweisende umweltfreundliche Viskosefaser; Inlett aus wasserabweisendem Polyester; Reißverschlüsse/Garn wasserabweisend."
+    },
+    {
+      "name": "Optionales Rückenkissen",
+      "masse_cm": [
+        "65x45",
+        "55x55"
+      ]
+    },
+    {
+      "name": "Optionales Kissen",
+      "masse_cm": [
+        "45x45"
+      ]
+    },
+    {
+      "name": "Optional Rain Cover",
+      "details": "Laut Technical Sheet für jedes Element erhältlich. Farben laut Produktseiten-Bildern: Green, Grey, Pewter."
+    }
+  ],
+  "kombinierbarkeit": [
+    "Einzelmöbel ohne Verkettung; Arrangements (4 PDF) kombinieren 225er-Sofa, Open-End-Sofa, Loveseat und Drehsessel mit Isole-, Taiko-, Pilotis-, Cesar-Tischen.",
+    "Familie ergänzt durch Torii Nest Outdoor „Dining“."
+  ],
+  "outdoor": true,
+  "besonderheiten": [
+    "Details aus japanischer Tradition, runde Kanten, schlanke Profile (nendo).",
+    "Sessel fest oder 360° drehbar.",
+    "Rain Cover für jedes Element optional."
+  ],
+  "fehlend": [
+    "Sitztiefe aller Elemente (nicht beschriftet).",
+    "Sitzhöhe ANGLED SOFA 225 und PAOLINA (nicht beschriftet).",
+    "Bedeutung der Zeichnungsmaße 71, 48, 65, 58, 61.",
+    "Minotti-Artikelnummern.",
+    "Vollständige Outdoor-Stoffliste und Preisgruppen.",
+    "Preise (Richtwert – vom Inhaber festzulegen).",
+    "Gewicht, Lieferzeit."
+  ]
+}

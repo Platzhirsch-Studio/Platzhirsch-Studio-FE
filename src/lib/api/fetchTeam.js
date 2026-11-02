@@ -1,8 +1,9 @@
 import { API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
 
 export async function fetchTeamData() {
   try {
-    const response = await fetch(`${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.team_platzhirsch.api.team_platzhirsch_data`, {
+    const response = await backofficeFetch(`${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.team_platzhirsch.api.team_platzhirsch_data`, {
       next: { revalidate: 3600, tags: ["team"] }, // 3600 seconds = 1 hour
     });
 

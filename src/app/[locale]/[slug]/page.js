@@ -6,13 +6,39 @@ import BeratungPage from "@/app/[locale]/beratung/page";
 import NewsPage from "@/app/[locale]/news/page";
 import KontaktPage from "@/app/[locale]/kontakt/page";
 import MerklistePage from "@/app/[locale]/merkliste/page";
+import NotFoundContent from "@/components/NotFound/NotFoundContent";
 
 // Same ISR window as the pages this route serves (they export revalidate = 3600,
 // but that export doesn't travel with the imported component).
 export const revalidate = 3600;
 
+// F5 (Runde 1, 404 mit lang + Server-Rendering): only the slugs from
+// generateStaticParams() below exist. Any other single segment
+// (/de/gibt-es-nicht) gets the prerendered 404 (src/app/not-found.js,
+// <html lang="de">, full HTML) instead of an on-demand notFound() render,
+// which Next 16 sends as an empty client-rendered shell
+// (<html id="__next_error__">, no lang; reproduced with 16.3.8, 16.4.1 and
+// 16.4.3, release-check.md F5).
+export const dynamicParams = false;
+
+// Same segment as NOT_FOUND_SEGMENT in src/proxy.js (target of its 404 rewrites).
+const NOT_FOUND_SEGMENT = "seite-nicht-gefunden";
+// Tempo & A11y (Konsolidierung, Technikprüfung „404 EN/FR/IT mit lang="de"“):
+// for EN/FR/IT this segment is a real, prerendered page – the localized 404
+// body INSIDE the locale layout, so the server HTML says <html lang="en|fr|it">.
+// It never answers 200: src/proxy.js serves it only by rewrite with status
+// 404 and no-store (also when the URL is requested directly). German keeps
+// the global 404 (src/app/not-found.js, lang="de", links to EN/FR/IT).
+// No notFound() here: a build-time notFound() is stored as Next 16's empty
+// <html id="__next_error__"> shell (measured in platzhirsch-prodtest).
+const LOCALIZED_404 = new Set(["en", "fr", "it"]);
+
 export default async function DynamicPage({ params }) {
   const { locale, slug } = await params;
+
+  if (slug === NOT_FOUND_SEGMENT && LOCALIZED_404.has(locale)) {
+    return <NotFoundContent locale={locale} />;
+  }
 
   // Handle German default locale redirects
 
@@ -73,6 +99,9 @@ export async function generateStaticParams() {
       params.push({ locale: lang, slug: cleanPath });
     });
   });
+
+  // The localized 404 target of src/proxy.js (see LOCALIZED_404 above).
+  for (const lang of LOCALIZED_404) params.push({ locale: lang, slug: NOT_FOUND_SEGMENT });
 
   return params;
 }

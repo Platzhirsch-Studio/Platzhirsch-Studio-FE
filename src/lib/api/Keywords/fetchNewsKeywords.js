@@ -1,12 +1,13 @@
 // src/lib/api/newsKeywordsApi.js
 import "server-only"; // Ensures this only runs on server
 import { API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
 
 const NEWS_KEYWORDS_API_URL = `${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.news_keywords.api.news_keywords_data`;
 
 export async function fetchNewsKeywords() {
   try {
-    const response = await fetch(NEWS_KEYWORDS_API_URL, {
+    const response = await backofficeFetch(NEWS_KEYWORDS_API_URL, {
       method: "GET",
       next: { revalidate: 3600 }, // Cache for 1 hour
     });

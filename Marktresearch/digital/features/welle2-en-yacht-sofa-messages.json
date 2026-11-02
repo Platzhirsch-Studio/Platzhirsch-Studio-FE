@@ -1,0 +1,30 @@
+{
+  "_info": "Welle 2, Team EN-Yacht-Sofa (29.10.2026). Nur Schlüssel für Navigation/Shell, damit /en/yacht-interior und /en/sofaplaner im englischen Menü erscheinen. Alle Seiten- und Planertexte liegen in eigenen Content-Dateien (src/lib/yacht/{content-en,concepts-en,ui}.js, src/lib/sofaplaner/copy/{source,page-en,ui-en,family-en,glossary-en}.js) und brauchen keine messages-Einträge. Bestehende Schlüssel bleiben; 'ersetzt' = Vorschlag zur einheitlichen Schreibweise.",
+  "de": {
+    "Shell": {
+      "nav": {
+        "sofaplaner": "Sofaplaner"
+      }
+    }
+  },
+  "en": {
+    "Shell": {
+      "nav": {
+        "yacht": "Yacht interiors",
+        "sofaplaner": "Sofa planner"
+      }
+    },
+    "HomePage": {
+      "services": {
+        "yacht": {
+          "title": "Yacht interiors"
+        }
+      }
+    }
+  },
+  "_hinweise": {
+    "en.Shell.nav.yacht": "ersetzt 'Yacht interior' – Seite, H1, Arbeitsweise-FAQ und OG-Karte sagen 'Yacht interiors'",
+    "en.HomePage.services.yacht.title": "ersetzt 'Yacht interior' (gleiche Begründung)",
+    "fr/it": "keine – FR/IT behalten den 308 auf /de"
+  }
+}

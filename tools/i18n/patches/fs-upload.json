@@ -1,0 +1,978 @@
+{
+  "_zweck": "Feinschliff Übersetzungen fix2 (28.10.2026): EN/FR(vous)/IT(tu) zu Marktresearch/digital/features/upload-messages-vorschlag.json (DE wird 1:1 aus dem Vorschlag übernommen). Upload.consent = vorläufige Arbeitsübersetzung mit Kanzlei-Vorbehalt, nicht freigegeben (tools/i18n/legal-keys.json). Anwenden: node tools/i18n/merge.mjs Marktresearch/digital/features/upload-messages-vorschlag.json tools/i18n/patches/fs-upload.json",
+  "en": {
+    "Upload": {
+      "categories": {
+        "photo": {
+          "one": "Photo",
+          "many": "Photos"
+        },
+        "video": {
+          "one": "Video",
+          "many": "Videos"
+        },
+        "plan": {
+          "one": "Floor plan",
+          "many": "Floor plans"
+        },
+        "count": "{count, plural, one {# file} other {# files}}"
+      },
+      "client": {
+        "stepper": {
+          "label": "Progress: step {step} of 3",
+          "consent": "Agree",
+          "capture": "Capture",
+          "send": "Send"
+        },
+        "tips": {
+          "title": "How to get good shots",
+          "carouselLabel": "Photo tips, swipe sideways",
+          "pickerLabel": "Choose a tip",
+          "dotLabel": "Tip {n}: {title}",
+          "corners": {
+            "title": "Shoot from the corners",
+            "text": "Stand in each corner and take a diagonal shot into the room – that way we see every wall."
+          },
+          "video": {
+            "title": "Pan the video slowly",
+            "text": "Turn once slowly in a circle and hold your phone steady at chest height."
+          },
+          "measures": {
+            "title": "Note the measurements",
+            "text": "Ceiling height, wall lengths, windows and doors – rough figures are fine. Simply add them to the note."
+          },
+          "light": {
+            "title": "Lights on, curtains open",
+            "text": "Daylight shows colours and materials most truthfully."
+          }
+        },
+        "consent": {
+          "detailsSummary": "Details: storage period, withdrawal, privacy",
+          "hint": "Please agree first – then you can add photos and plans.",
+          "lockedFirst": "Agree once above – then you can start.",
+          "lockedUpload": "To upload, please agree above first."
+        },
+        "capture": {
+          "heading": "What would you like to show us?",
+          "groupLabel": "Add files",
+          "photo": {
+            "title": "Take a photo",
+            "text": "Room photos with the camera"
+          },
+          "video": {
+            "title": "Video",
+            "text": "Camera · max. {minutes} min"
+          },
+          "plan": {
+            "title": "Floor plan / drawing",
+            "text": "PDF or image"
+          },
+          "gallery": {
+            "title": "From gallery",
+            "text": "Photos & videos"
+          },
+          "chosen": "{count, plural, one {# file} other {# files}} selected",
+          "gpsNote": "We automatically remove location data (GPS) from JPEG photos. For HEIC photos (iPhone “High Efficiency”), please switch off location in the camera settings."
+        },
+        "validation": {
+          "tooManyFiles": "A maximum of {max} files per request.",
+          "tooLarge": "Too large: max. {size} for {category}.",
+          "videoTooLong": "The video is {seconds} s long – please keep it to {minutes} minutes or less."
+        },
+        "files": {
+          "heading": "Your files",
+          "summary": "{done} of {total} · {size}",
+          "listLabel": "Your files",
+          "remove": "Remove {name}",
+          "progressLabel": "Uploading {name}",
+          "checking": "Checking…",
+          "waiting": "Waiting…",
+          "retrying": "Connection is patchy – trying again ({n}/{of})…",
+          "slow": "The connection is slow – we are staying on it…",
+          "preparing": "Preparing…",
+          "uploading": "Uploading · {percent} %",
+          "paused": "Paused – waiting for a connection",
+          "interrupted": "Interrupted at {percent} % – select the same file again to continue.",
+          "done": "Uploaded",
+          "gpsRemoved": " · location removed",
+          "rejected": "Rejected:",
+          "stopped": "Stopped:",
+          "retry": "Try again"
+        },
+        "note": {
+          "label": "Note & measurements",
+          "optional": "(optional)",
+          "placeholder": "e.g. ceiling height 2.60 m, windows facing south, sofa should go against the left wall",
+          "written": "Note added – tap to edit",
+          "shortcutHint": "Ceiling height, wall lengths, wishes"
+        },
+        "submit": {
+          "sending": "Sending…",
+          "busy": "Upload in progress…",
+          "send": "Send to Platzhirsch",
+          "footer": "{count, plural, one {# file} other {# files}} · {size}",
+          "validUntil": " · link valid until {datetime}",
+          "offline": "No connection – please tap “Send” again as soon as you are back online.",
+          "confirmMissing": "Your files are saved – only the confirmation is missing. Please tap “Send” again.",
+          "failed": "Sending failed – please try again."
+        },
+        "bar": {
+          "paused": "Paused – waiting for a connection",
+          "retrying": "Trying again {n}/{of}…",
+          "slow": "The connection is slow – we are staying on it…",
+          "preparing": "Preparing…",
+          "uploading": "Uploading…",
+          "failed": "{count, plural, one {# file} other {# files}} not uploaded",
+          "ready": "{count, plural, one {# file} other {# files}} ready",
+          "none": "No file uploaded",
+          "detail": "{done} of {total} done · {percent} % of the data",
+          "retry": "Try again",
+          "send": "Send"
+        },
+        "live": {
+          "retryStarted": "New attempt started.",
+          "retrying": "Connection is patchy – attempt {n} of {of}.",
+          "fileDone": "{name} uploaded.",
+          "fileFallbackName": "File",
+          "slow": "The connection is slow – we are staying on it.",
+          "stalled": "Nothing is moving at the moment. You can start a new attempt below.",
+          "percent": "{percent} percent uploaded.",
+          "sent": "Thank you – your documents have reached us."
+        },
+        "offline": "No connection – the upload continues automatically as soon as you are back online.",
+        "linkProblem": "Files that have finished uploading stay with us. For further documents, call us (<phone>{phone}</phone>) or write to <mail>{email}</mail>.",
+        "demoDisabled": "Demo only in the development environment: no files are accepted here.",
+        "thanks": {
+          "title": "Thank you!",
+          "arrivedFiles": "{count, plural, one {# file ({size}) has} other {# files ({size}) have}} reached us. We will get back to you personally.",
+          "arrivedNote": "Your note has reached us. We will get back to you personally.",
+          "sentListLabel": "Files sent",
+          "reference": "Your reference",
+          "documents": "Documents",
+          "note": "Note",
+          "nextHeading": "What happens next",
+          "doneLabel": "Done:",
+          "next": {
+            "arrived": {
+              "title": "Your documents are here",
+              "text": "Stored securely, only for this request."
+            },
+            "review": {
+              "title": "We look at them in advance",
+              "text": "So that the first conversation gets specific right away."
+            },
+            "contact": {
+              "title": "We get back to you personally",
+              "text": "With ideas and questions – by phone or email."
+            }
+          },
+          "demoNotice": "Demo mode: nobody was notified.",
+          "addMore": "Add more files",
+          "toWebsite": "To the Platzhirsch website"
+        }
+      },
+      "handoff": {
+        "overline": "Optional · takes 1 minute",
+        "title": "Show us your room",
+        "intro": "With photos, a short video walk-through or your floor plan, we can prepare your consultation in a targeted way – straight from your phone camera, with no app and no sign-up.",
+        "chipsLabel": "You can send",
+        "chips": {
+          "photos": "Room photos",
+          "video": "Video ≤ {minutes} min",
+          "plans": "Floor plans & drawings"
+        },
+        "dismiss": "Close notice",
+        "failedMail": "You are welcome to send us photos and plans by email to <mail>{email}</mail>.",
+        "retry": "Try again",
+        "qrAlt": "QR code for the upload page – scan it with your phone camera",
+        "qrCreating": "Creating QR code…",
+        "qrReady": "Code ready",
+        "qrReadyLong": " · scan with your camera",
+        "qrReadyShort": " · scan",
+        "qrScan": "Scan with your phone camera",
+        "valid": "Valid",
+        "remaining": {
+          "minutes": "{n} min left",
+          "hours": "{n} h left",
+          "days": "{n} days left"
+        },
+        "until": {
+          "today": "until {time}",
+          "date": "until {date}, {time}"
+        },
+        "stepsLabel": "How it works",
+        "stepPrefix": "Step {n}: ",
+        "steps": {
+          "camera": {
+            "title": "Open the camera",
+            "text": "Your normal camera app is enough – no app, no sign-up."
+          },
+          "aim": {
+            "title": "Point at the code",
+            "text": "Tap the link that appears above the code."
+          },
+          "show": {
+            "title": "Show your room",
+            "text": "Send photos, a video walk-through or a floor plan. Done."
+          }
+        },
+        "mobileCta": "Send photos & plans now",
+        "mobileCtaHint": "Opens the upload page here on your phone.",
+        "desktopHeading": "Upload on this device",
+        "desktopText": "Photos and plans already on your computer?",
+        "openPage": "Open upload page",
+        "newTab": "(new tab)",
+        "copy": "Copy link",
+        "copied": "Copied",
+        "copiedLive": "Link copied.",
+        "copyFailed": "Copying is not possible – link selected, copy it with {shortcut} + C",
+        "footer": "Reference <strong>{ref}</strong> · valid until {validUntil} · only reachable via this link",
+        "creating": "Creating upload link…",
+        "creatingSlow": "This is taking longer than usual – one moment please…",
+        "send": {
+          "title": "Send the link to me",
+          "badge": "Prepared",
+          "subtitle": "by email or SMS",
+          "channelLabel": "How to send",
+          "phoneLabel": "Your mobile number",
+          "emailLabel": "Your email address",
+          "staysLocal": "(stays on this device)",
+          "openSms": "Open in my SMS app",
+          "openMail": "Open in my email app",
+          "notActiveSms": "Prepared: direct sending by Platzhirsch is not active yet. This button opens your own SMS app with the link ready to go – Platzhirsch sends and stores nothing in the process.",
+          "notActiveMail": "Prepared: direct sending by Platzhirsch is not active yet. This button opens your own email app with the link ready to go – Platzhirsch sends and stores nothing in the process.",
+          "mailSubject": "Platzhirsch upload link ({ref})",
+          "body": "Upload photos, videos and plans for my request (Platzhirsch, {ref}):\n{url}",
+          "next": "Next"
+        }
+      },
+      "consent": {
+        "short": "I agree that {site} uses my files only for this request.",
+        "purpose": "I consent to {site} (Lochau) storing and using the photos, videos, plans and my note uploaded here exclusively to process my request{ref}.",
+        "refSuffix": " ({ref})",
+        "retention": "Storage period: {days} after this link expires, unless the documents are needed for an order. Consent is voluntary and can be withdrawn at any time by email to {email}; your request remains valid without an upload. Please do not include images of people without their consent.",
+        "days": "{n} days",
+        "daysPlaceholder": "{n} days [period to be set by the owner]",
+        "privacyLink": "More in the <link>privacy policy</link>."
+      },
+      "errors": {
+        "too_large": "The file is too large.",
+        "quota_exceeded": "The storage limit for this link has been reached.",
+        "too_many_files": "The maximum number of files has been reached.",
+        "unsupported_type": "Only photos, videos and PDF are possible.",
+        "bad_category": "Only photos, videos and PDF are possible.",
+        "consent_required": "Please confirm your consent first.",
+        "expired": "This upload link has expired.",
+        "invalid": "This upload link is invalid.",
+        "demo_disabled": "Demo uploads are switched off in this environment.",
+        "storage_full": "Uploading is not possible right now – please try again later.",
+        "rate_limited": "Too many attempts in a short time – please try again in a few minutes.",
+        "daily_limit": "No further uploads are possible today – please try again tomorrow.",
+        "file_not_found": "The file is no longer on the server – please select it again.",
+        "bad_index": "Transfer error – please try again.",
+        "bad_chunk_size": "Transfer error – please try again.",
+        "bad_request": "The request was incomplete – please reload the page.",
+        "network": "Connection interrupted.",
+        "server_error": "Server error – please try again later.",
+        "fallback": "Upload failed – please try again."
+      },
+      "handoffReasons": {
+        "rate_limited": "A lot of upload links are being created right now. Please try again in a few minutes",
+        "daily_limit": "We cannot create any more upload links today",
+        "storage_full": "Uploading is not possible right now",
+        "ticket_expired": "The upload link could no longer be created because too much time has passed since you sent your request",
+        "network": "No connection – the upload link could not be loaded",
+        "timeout": "Creating the upload link is taking longer than usual. Please try again in a moment",
+        "server": "The upload link could not be created just now"
+      },
+      "demo": {
+        "metaTitle": "Phone upload via QR – demo | Platzhirsch Labs",
+        "metaDescription": "After a request, send photos, a room video and the floor plan straight from your phone – demo with a test token.",
+        "overline": "Platzhirsch Labs · demo",
+        "title": "Phone upload via QR",
+        "intro": "After every request, customers can send photos, a room walk-through and plans from their phone – no app, no account, no email attachments.",
+        "enabled": "Your personal demo (reference {ref}): your own test link, valid for <strong>1 hour</strong>, max. {maxFiles} files / {maxSize}. Files only end up in local development storage and are deleted when the link expires. Reloading starts a new demo.",
+        "disabled": "Demo only in the development environment: no demo files are accepted in this environment.",
+        "steps": {
+          "inquiry": {
+            "title": "Send a request",
+            "text": "Product request, consultation or contact – as before."
+          },
+          "scan": {
+            "title": "Scan the QR code",
+            "text": "The success screen shows a personal, signed link (valid for {days} days)."
+          },
+          "show": {
+            "title": "Show the room",
+            "text": "Photos straight from the camera, a video walk-through, the floor plan as a PDF, a short note."
+          },
+          "prepared": {
+            "title": "Prepared consultation",
+            "text": "The team sees the documents under the request reference – before the first conversation."
+          }
+        },
+        "sectionLabel": "Demo",
+        "desktopHeading": "Success screen on the computer",
+        "desktopText": "This is how the card appears below the form confirmation.",
+        "sampleConfirmation": "Thank you! Your request has been sent. (example)",
+        "validLabel": "{datetime} (demo link: 1 hour)",
+        "phoneHeading": "Upload page on the phone",
+        "phoneEmbedded": "The real page, embedded.",
+        "phoneOpen": "Open in a new tab",
+        "phoneOverline": "Platzhirsch · Lochau",
+        "phoneRef": "Upload · {ref}",
+        "testNotes": "Test notes"
+      }
+    }
+  },
+  "fr": {
+    "Upload": {
+      "categories": {
+        "photo": {
+          "one": "Photo",
+          "many": "Photos"
+        },
+        "video": {
+          "one": "Vidéo",
+          "many": "Vidéos"
+        },
+        "plan": {
+          "one": "Plan",
+          "many": "Plans"
+        },
+        "count": "{count, plural, one {# fichier} other {# fichiers}}"
+      },
+      "client": {
+        "stepper": {
+          "label": "Progression : étape {step} sur 3",
+          "consent": "Accepter",
+          "capture": "Photographier",
+          "send": "Envoyer"
+        },
+        "tips": {
+          "title": "Pour des prises de vue réussies",
+          "carouselLabel": "Conseils de prise de vue, faire glisser sur le côté",
+          "pickerLabel": "Choisir un conseil",
+          "dotLabel": "Conseil {n} : {title}",
+          "corners": {
+            "title": "Photographier depuis les angles",
+            "text": "Placez-vous dans chaque angle et photographiez la pièce en diagonale – nous voyons ainsi tous les murs."
+          },
+          "video": {
+            "title": "Filmer lentement",
+            "text": "Tournez une fois lentement sur vous-même, le téléphone stable à hauteur de poitrine."
+          },
+          "measures": {
+            "title": "Noter les dimensions",
+            "text": "Hauteur sous plafond, longueur des murs, fenêtres et portes – des valeurs approximatives suffisent. Indiquez-les simplement dans la note."
+          },
+          "light": {
+            "title": "Lumière allumée, rideaux ouverts",
+            "text": "La lumière du jour rend les couleurs et les matières le plus fidèlement."
+          }
+        },
+        "consent": {
+          "detailsSummary": "Détails : durée de conservation, retrait, protection des données",
+          "hint": "Veuillez d’abord donner votre accord – vous pourrez ensuite ajouter des photos et des plans.",
+          "lockedFirst": "Donnez votre accord une fois ci-dessus – et c’est parti.",
+          "lockedUpload": "Pour envoyer des fichiers, veuillez d’abord donner votre accord ci-dessus."
+        },
+        "capture": {
+          "heading": "Que souhaitez-vous nous montrer ?",
+          "groupLabel": "Ajouter des fichiers",
+          "photo": {
+            "title": "Prendre une photo",
+            "text": "Photos de la pièce avec l’appareil photo"
+          },
+          "video": {
+            "title": "Vidéo",
+            "text": "Appareil photo · max. {minutes} min"
+          },
+          "plan": {
+            "title": "Plan au sol / plan",
+            "text": "PDF ou image"
+          },
+          "gallery": {
+            "title": "Depuis la galerie",
+            "text": "Photos et vidéos"
+          },
+          "chosen": "{count, plural, one {# fichier sélectionné} other {# fichiers sélectionnés}}",
+          "gpsNote": "Nous supprimons automatiquement les données de localisation (GPS) des photos JPEG. Pour les photos HEIC (iPhone « High Efficiency »), veuillez désactiver la localisation dans l’appareil photo."
+        },
+        "validation": {
+          "tooManyFiles": "{max} fichiers maximum par demande.",
+          "tooLarge": "Trop volumineux : max. {size} pour {category}.",
+          "videoTooLong": "La vidéo dure {seconds} s – {minutes} minutes maximum, s’il vous plaît."
+        },
+        "files": {
+          "heading": "Vos fichiers",
+          "summary": "{done} sur {total} · {size}",
+          "listLabel": "Vos fichiers",
+          "remove": "Retirer {name}",
+          "progressLabel": "Envoi de {name}",
+          "checking": "Vérification…",
+          "waiting": "En attente…",
+          "retrying": "La connexion est instable – nouvel essai ({n}/{of})…",
+          "slow": "La connexion est lente – nous restons connectés…",
+          "preparing": "Préparation…",
+          "uploading": "Envoi en cours · {percent} %",
+          "paused": "En pause – en attente de connexion",
+          "interrupted": "Interrompu à {percent} % – sélectionnez à nouveau le même fichier pour reprendre.",
+          "done": "Envoyé",
+          "gpsRemoved": " · localisation supprimée",
+          "rejected": "Refusé :",
+          "stopped": "Arrêté :",
+          "retry": "Réessayer"
+        },
+        "note": {
+          "label": "Note et dimensions",
+          "optional": "(facultatif)",
+          "placeholder": "p. ex. hauteur sous plafond 2,60 m, fenêtres côté sud, le canapé contre le mur de gauche",
+          "written": "Note rédigée – touchez pour la modifier",
+          "shortcutHint": "Hauteur sous plafond, longueur des murs, souhaits"
+        },
+        "submit": {
+          "sending": "Envoi…",
+          "busy": "Envoi des fichiers en cours…",
+          "send": "Envoyer à Platzhirsch",
+          "footer": "{count, plural, one {# fichier} other {# fichiers}} · {size}",
+          "validUntil": " · lien valable jusqu’au {datetime}",
+          "offline": "Pas de connexion – touchez à nouveau « Envoyer » dès que vous êtes de nouveau en ligne.",
+          "confirmMissing": "Vos fichiers sont enregistrés – seule la confirmation manque. Touchez à nouveau « Envoyer ».",
+          "failed": "L’envoi a échoué – veuillez réessayer."
+        },
+        "bar": {
+          "paused": "En pause – en attente de connexion",
+          "retrying": "Nouvel essai {n}/{of}…",
+          "slow": "La connexion est lente – nous restons connectés…",
+          "preparing": "Préparation…",
+          "uploading": "Envoi en cours…",
+          "failed": "{count, plural, one {# fichier non envoyé} other {# fichiers non envoyés}}",
+          "ready": "{count, plural, one {# fichier prêt} other {# fichiers prêts}}",
+          "none": "Aucun fichier envoyé",
+          "detail": "{done} sur {total} terminés · {percent} % des données",
+          "retry": "Réessayer",
+          "send": "Envoyer"
+        },
+        "live": {
+          "retryStarted": "Nouvel essai lancé.",
+          "retrying": "La connexion est instable – essai {n} sur {of}.",
+          "fileDone": "{name} envoyé.",
+          "fileFallbackName": "Fichier",
+          "slow": "La connexion est lente – nous restons connectés.",
+          "stalled": "L’envoi n’avance pas pour le moment. Vous pouvez lancer un nouvel essai ci-dessous.",
+          "percent": "{percent} pour cent envoyés.",
+          "sent": "Merci – vos documents nous sont bien parvenus."
+        },
+        "offline": "Pas de connexion – l’envoi reprend automatiquement dès que vous êtes de nouveau en ligne.",
+        "linkProblem": "Les fichiers déjà envoyés restent chez nous. Pour d’autres documents, appelez-nous (<phone>{phone}</phone>) ou écrivez à <mail>{email}</mail>.",
+        "demoDisabled": "Démo uniquement dans l’environnement de développement : aucun fichier n’est accepté ici.",
+        "thanks": {
+          "title": "Merci beaucoup !",
+          "arrivedFiles": "{count, plural, one {# fichier ({size}) nous est parvenu} other {# fichiers ({size}) nous sont parvenus}}. Nous vous recontactons personnellement.",
+          "arrivedNote": "Votre note nous est parvenue. Nous vous recontactons personnellement.",
+          "sentListLabel": "Fichiers envoyés",
+          "reference": "Votre référence",
+          "documents": "Documents",
+          "note": "Note",
+          "nextHeading": "La suite",
+          "doneLabel": "Fait :",
+          "next": {
+            "arrived": {
+              "title": "Vos documents sont arrivés",
+              "text": "Enregistrés en toute sécurité, uniquement pour cette demande."
+            },
+            "review": {
+              "title": "Nous les regardons à l’avance",
+              "text": "Pour que le premier entretien soit tout de suite concret."
+            },
+            "contact": {
+              "title": "Nous vous recontactons personnellement",
+              "text": "Avec des idées et des questions – par téléphone ou par e-mail."
+            }
+          },
+          "demoNotice": "Mode démo : personne n’a été prévenu.",
+          "addMore": "Ajouter d’autres fichiers",
+          "toWebsite": "Vers le site de Platzhirsch"
+        }
+      },
+      "handoff": {
+        "overline": "Facultatif · 1 minute",
+        "title": "Montrez-nous votre pièce",
+        "intro": "Avec des photos, une courte visite en vidéo ou votre plan, nous préparons votre conseil de manière ciblée – directement depuis l’appareil photo de votre téléphone, sans application ni inscription.",
+        "chipsLabel": "Vous pouvez envoyer",
+        "chips": {
+          "photos": "Photos de la pièce",
+          "video": "Vidéo ≤ {minutes} min",
+          "plans": "Plans au sol et plans"
+        },
+        "dismiss": "Fermer le message",
+        "failedMail": "Vous pouvez aussi nous envoyer vos photos et plans par e-mail à <mail>{email}</mail>.",
+        "retry": "Réessayer",
+        "qrAlt": "Code QR vers la page d’envoi – à scanner avec l’appareil photo du téléphone",
+        "qrCreating": "Création du code QR…",
+        "qrReady": "Code prêt",
+        "qrReadyLong": " · à scanner avec l’appareil photo",
+        "qrReadyShort": " · à scanner",
+        "qrScan": "Scanner avec l’appareil photo du téléphone",
+        "valid": "Valable",
+        "remaining": {
+          "minutes": "encore {n} min",
+          "hours": "encore {n} h",
+          "days": "encore {n} jours"
+        },
+        "until": {
+          "today": "jusqu’à {time}",
+          "date": "jusqu’au {date}, {time}"
+        },
+        "stepsLabel": "Comment ça marche",
+        "stepPrefix": "Étape {n} : ",
+        "steps": {
+          "camera": {
+            "title": "Ouvrir l’appareil photo",
+            "text": "L’application photo habituelle suffit – sans application supplémentaire, sans inscription."
+          },
+          "aim": {
+            "title": "Viser le code",
+            "text": "Touchez le lien qui apparaît au-dessus du code."
+          },
+          "show": {
+            "title": "Montrer la pièce",
+            "text": "Envoyez des photos, une visite en vidéo ou un plan. C’est tout."
+          }
+        },
+        "mobileCta": "Envoyer photos et plans",
+        "mobileCtaHint": "Ouvre la page d’envoi ici, sur votre téléphone.",
+        "desktopHeading": "Envoyer depuis cet appareil",
+        "desktopText": "Vos photos et plans sont déjà sur l’ordinateur ?",
+        "openPage": "Ouvrir la page d’envoi",
+        "newTab": "(nouvel onglet)",
+        "copy": "Copier le lien",
+        "copied": "Copié",
+        "copiedLive": "Lien copié.",
+        "copyFailed": "Copie impossible – lien sélectionné, copiez-le avec {shortcut} + C",
+        "footer": "Référence <strong>{ref}</strong> · valable jusqu’au {validUntil} · accessible uniquement par ce lien",
+        "creating": "Création du lien d’envoi…",
+        "creatingSlow": "Cela prend plus de temps que d’habitude – un instant, s’il vous plaît…",
+        "send": {
+          "title": "M’envoyer le lien",
+          "badge": "En préparation",
+          "subtitle": "par e-mail ou SMS",
+          "channelLabel": "Mode d’envoi",
+          "phoneLabel": "Votre numéro de portable",
+          "emailLabel": "Votre adresse e-mail",
+          "staysLocal": "(reste sur cet appareil)",
+          "openSms": "Ouvrir dans mon application SMS",
+          "openMail": "Ouvrir dans mon application e-mail",
+          "notActiveSms": "En préparation : l’envoi direct par Platzhirsch n’est pas encore actif. Ce bouton ouvre votre propre application SMS avec le lien prêt à l’emploi – Platzhirsch n’envoie et n’enregistre rien.",
+          "notActiveMail": "En préparation : l’envoi direct par Platzhirsch n’est pas encore actif. Ce bouton ouvre votre propre application e-mail avec le lien prêt à l’emploi – Platzhirsch n’envoie et n’enregistre rien.",
+          "mailSubject": "Lien d’envoi Platzhirsch ({ref})",
+          "body": "Envoyer des photos, vidéos et plans pour ma demande (Platzhirsch, {ref}) :\n{url}",
+          "next": "Suivant"
+        }
+      },
+      "consent": {
+        "short": "J’accepte que {site} utilise mes fichiers uniquement pour cette demande.",
+        "purpose": "J’accepte que {site} (Lochau) enregistre et utilise les photos, vidéos, plans et ma note envoyés ici exclusivement pour le traitement de ma demande{ref}.",
+        "refSuffix": " ({ref})",
+        "retention": "Durée de conservation : {days} après l’expiration de ce lien, sauf si les documents sont nécessaires pour une commande. Le consentement est facultatif et peut être retiré à tout moment par e-mail à {email} ; votre demande reste valable sans envoi de fichiers. Merci de ne pas envoyer d’images de personnes sans leur accord.",
+        "days": "{n} jours",
+        "daysPlaceholder": "{n} jours [délai à fixer par le propriétaire]",
+        "privacyLink": "Plus d’informations dans la <link>politique de confidentialité</link>."
+      },
+      "errors": {
+        "too_large": "Le fichier est trop volumineux.",
+        "quota_exceeded": "La limite de stockage de ce lien est atteinte.",
+        "too_many_files": "Le nombre maximal de fichiers est atteint.",
+        "unsupported_type": "Seuls les photos, vidéos et PDF sont acceptés.",
+        "bad_category": "Seuls les photos, vidéos et PDF sont acceptés.",
+        "consent_required": "Veuillez d’abord confirmer votre consentement.",
+        "expired": "Ce lien d’envoi a expiré.",
+        "invalid": "Ce lien d’envoi n’est pas valable.",
+        "demo_disabled": "Les envois de démonstration sont désactivés dans cet environnement.",
+        "storage_full": "L’envoi n’est pas possible pour le moment – veuillez réessayer plus tard.",
+        "rate_limited": "Trop de tentatives en peu de temps – veuillez réessayer dans quelques minutes.",
+        "daily_limit": "Aucun autre envoi n’est possible aujourd’hui – veuillez réessayer demain.",
+        "file_not_found": "Le fichier n’est plus sur le serveur – veuillez le sélectionner à nouveau.",
+        "bad_index": "Erreur de transfert – veuillez réessayer.",
+        "bad_chunk_size": "Erreur de transfert – veuillez réessayer.",
+        "bad_request": "La requête était incomplète – veuillez recharger la page.",
+        "network": "Connexion interrompue.",
+        "server_error": "Erreur du serveur – veuillez réessayer plus tard.",
+        "fallback": "L’envoi a échoué – veuillez réessayer."
+      },
+      "handoffReasons": {
+        "rate_limited": "De très nombreux liens d’envoi sont créés en ce moment. Veuillez réessayer dans quelques minutes",
+        "daily_limit": "Nous ne pouvons plus créer de liens d’envoi aujourd’hui",
+        "storage_full": "L’envoi n’est pas possible pour le moment",
+        "ticket_expired": "Le lien d’envoi n’a pas pu être créé, car trop de temps s’est écoulé depuis l’envoi de votre demande",
+        "network": "Pas de connexion – le lien d’envoi n’a pas pu être chargé",
+        "timeout": "La création du lien d’envoi prend plus de temps que d’habitude. Veuillez réessayer dans un instant",
+        "server": "Le lien d’envoi n’a pas pu être créé pour le moment"
+      },
+      "demo": {
+        "metaTitle": "Envoi depuis le téléphone par QR – démo | Platzhirsch Labs",
+        "metaDescription": "Après une demande, envoyer photos, vidéo de la pièce et plan directement depuis le téléphone – démo avec jeton de test.",
+        "overline": "Platzhirsch Labs · démo",
+        "title": "Envoi depuis le téléphone par QR",
+        "intro": "Après chaque demande, le client peut compléter son dossier depuis son téléphone avec des photos, une visite de la pièce et des plans – sans application, sans compte, sans pièces jointes par e-mail.",
+        "enabled": "Votre démo personnelle (référence {ref}) : lien de test individuel, valable <strong>1 heure</strong>, max. {maxFiles} fichiers / {maxSize}. Les fichiers sont uniquement stockés dans l’environnement de développement local et supprimés à l’expiration. Recharger la page lance une nouvelle démo.",
+        "disabled": "Démo uniquement dans l’environnement de développement : aucun fichier de démonstration n’est accepté dans cet environnement.",
+        "steps": {
+          "inquiry": {
+            "title": "Envoyer une demande",
+            "text": "Demande de produit, conseil ou contact – comme d’habitude."
+          },
+          "scan": {
+            "title": "Scanner le code QR",
+            "text": "L’écran de confirmation affiche un lien personnel et signé (valable {days} jours)."
+          },
+          "show": {
+            "title": "Montrer la pièce",
+            "text": "Photos directement depuis l’appareil photo, visite en vidéo, plan en PDF, courte note."
+          },
+          "prepared": {
+            "title": "Un conseil bien préparé",
+            "text": "L’équipe voit les documents liés à la référence de la demande – avant le premier entretien."
+          }
+        },
+        "sectionLabel": "Démo",
+        "desktopHeading": "Écran de confirmation sur l’ordinateur",
+        "desktopText": "Voici comment la carte apparaît sous la confirmation des formulaires.",
+        "sampleConfirmation": "Merci beaucoup ! Votre demande a été envoyée. (exemple)",
+        "validLabel": "{datetime} (lien de démo : 1 heure)",
+        "phoneHeading": "Page d’envoi sur le téléphone",
+        "phoneEmbedded": "La vraie page, intégrée.",
+        "phoneOpen": "Ouvrir dans un nouvel onglet",
+        "phoneOverline": "Platzhirsch · Lochau",
+        "phoneRef": "Envoi · {ref}",
+        "testNotes": "Notes de test"
+      }
+    }
+  },
+  "it": {
+    "Upload": {
+      "categories": {
+        "photo": {
+          "one": "Foto",
+          "many": "Foto"
+        },
+        "video": {
+          "one": "Video",
+          "many": "Video"
+        },
+        "plan": {
+          "one": "Pianta",
+          "many": "Piante"
+        },
+        "count": "{count, plural, one {# file} other {# file}}"
+      },
+      "client": {
+        "stepper": {
+          "label": "Avanzamento: passo {step} di 3",
+          "consent": "Acconsenti",
+          "capture": "Riprendi",
+          "send": "Invia"
+        },
+        "tips": {
+          "title": "Come ottenere buone riprese",
+          "carouselLabel": "Consigli per le riprese, scorri di lato",
+          "pickerLabel": "Scegli un consiglio",
+          "dotLabel": "Consiglio {n}: {title}",
+          "corners": {
+            "title": "Fotografa dagli angoli",
+            "text": "Mettiti in ogni angolo e fotografa la stanza in diagonale – così vediamo tutte le pareti."
+          },
+          "video": {
+            "title": "Muovi il video lentamente",
+            "text": "Gira una volta lentamente su te stesso, tenendo il telefono fermo all’altezza del petto."
+          },
+          "measures": {
+            "title": "Annota le misure",
+            "text": "Altezza del soffitto, lunghezza delle pareti, finestre e porte – bastano valori indicativi. Scrivili semplicemente nella nota."
+          },
+          "light": {
+            "title": "Luci accese, tende aperte",
+            "text": "La luce del giorno mostra colori e materiali nel modo più fedele."
+          }
+        },
+        "consent": {
+          "detailsSummary": "Dettagli: durata di conservazione, revoca, privacy",
+          "hint": "Dai prima il tuo consenso – poi puoi aggiungere foto e piante.",
+          "lockedFirst": "Dai il consenso una volta qui sopra – e si parte.",
+          "lockedUpload": "Per caricare i file, dai prima il consenso qui sopra."
+        },
+        "capture": {
+          "heading": "Cosa vuoi mostrarci?",
+          "groupLabel": "Aggiungi file",
+          "photo": {
+            "title": "Scatta una foto",
+            "text": "Foto della stanza con la fotocamera"
+          },
+          "video": {
+            "title": "Video",
+            "text": "Fotocamera · max. {minutes} min"
+          },
+          "plan": {
+            "title": "Pianta / disegno",
+            "text": "PDF o immagine"
+          },
+          "gallery": {
+            "title": "Dalla galleria",
+            "text": "Foto e video"
+          },
+          "chosen": "{count, plural, one {# file selezionato} other {# file selezionati}}",
+          "gpsNote": "Rimuoviamo automaticamente i dati di posizione (GPS) dalle foto JPEG. Per le foto HEIC (iPhone «High Efficiency») disattiva la posizione nella fotocamera."
+        },
+        "validation": {
+          "tooManyFiles": "Al massimo {max} file per richiesta.",
+          "tooLarge": "Troppo grande: max. {size} per {category}.",
+          "videoTooLong": "Il video dura {seconds} s – al massimo {minutes} minuti, per favore."
+        },
+        "files": {
+          "heading": "I tuoi file",
+          "summary": "{done} di {total} · {size}",
+          "listLabel": "I tuoi file",
+          "remove": "Rimuovi {name}",
+          "progressLabel": "Caricamento di {name}",
+          "checking": "Verifica in corso…",
+          "waiting": "In attesa…",
+          "retrying": "La connessione è instabile – nuovo tentativo ({n}/{of})…",
+          "slow": "La connessione è lenta – continuiamo a provare…",
+          "preparing": "Preparazione…",
+          "uploading": "Caricamento · {percent} %",
+          "paused": "In pausa – in attesa di connessione",
+          "interrupted": "Interrotto al {percent} % – seleziona di nuovo lo stesso file per riprendere.",
+          "done": "Caricato",
+          "gpsRemoved": " · posizione rimossa",
+          "rejected": "Rifiutato:",
+          "stopped": "Interrotto:",
+          "retry": "Riprova"
+        },
+        "note": {
+          "label": "Nota e misure",
+          "optional": "(facoltativo)",
+          "placeholder": "ad es. altezza del soffitto 2,60 m, finestre a sud, il divano va contro la parete sinistra",
+          "written": "Nota scritta – tocca per modificarla",
+          "shortcutHint": "Altezza del soffitto, lunghezza delle pareti, desideri"
+        },
+        "submit": {
+          "sending": "Invio in corso…",
+          "busy": "Caricamento in corso…",
+          "send": "Invia a Platzhirsch",
+          "footer": "{count, plural, one {# file} other {# file}} · {size}",
+          "validUntil": " · link valido fino al {datetime}",
+          "offline": "Nessuna connessione – tocca di nuovo «Invia» appena sei di nuovo online.",
+          "confirmMissing": "I tuoi file sono salvati – manca solo la conferma. Tocca di nuovo «Invia».",
+          "failed": "Invio non riuscito – riprova."
+        },
+        "bar": {
+          "paused": "In pausa – in attesa di connessione",
+          "retrying": "Nuovo tentativo {n}/{of}…",
+          "slow": "La connessione è lenta – continuiamo a provare…",
+          "preparing": "Preparazione…",
+          "uploading": "Caricamento…",
+          "failed": "{count, plural, one {# file non caricato} other {# file non caricati}}",
+          "ready": "{count, plural, one {# file pronto} other {# file pronti}}",
+          "none": "Nessun file caricato",
+          "detail": "{done} di {total} completati · {percent} % dei dati",
+          "retry": "Riprova",
+          "send": "Invia"
+        },
+        "live": {
+          "retryStarted": "Nuovo tentativo avviato.",
+          "retrying": "La connessione è instabile – tentativo {n} di {of}.",
+          "fileDone": "{name} caricato.",
+          "fileFallbackName": "File",
+          "slow": "La connessione è lenta – continuiamo a provare.",
+          "stalled": "Al momento il caricamento non procede. Qui sotto puoi avviare un nuovo tentativo.",
+          "percent": "{percent} per cento caricato.",
+          "sent": "Grazie – i tuoi documenti sono arrivati."
+        },
+        "offline": "Nessuna connessione – il caricamento riprende automaticamente appena sei di nuovo online.",
+        "linkProblem": "I file già caricati restano da noi. Per altri documenti chiamaci (<phone>{phone}</phone>) oppure scrivi a <mail>{email}</mail>.",
+        "demoDisabled": "Demo solo nell’ambiente di sviluppo: qui non vengono accettati file.",
+        "thanks": {
+          "title": "Grazie mille!",
+          "arrivedFiles": "{count, plural, one {# file ({size}) è arrivato} other {# file ({size}) sono arrivati}} da noi. Ti ricontattiamo personalmente.",
+          "arrivedNote": "La tua nota è arrivata. Ti ricontattiamo personalmente.",
+          "sentListLabel": "File inviati",
+          "reference": "Il tuo riferimento",
+          "documents": "Documenti",
+          "note": "Nota",
+          "nextHeading": "Come si procede",
+          "doneLabel": "Fatto:",
+          "next": {
+            "arrived": {
+              "title": "I tuoi documenti sono arrivati",
+              "text": "Salvati in modo sicuro, solo per questa richiesta."
+            },
+            "review": {
+              "title": "Li guardiamo in anticipo",
+              "text": "Così il primo colloquio è subito concreto."
+            },
+            "contact": {
+              "title": "Ti ricontattiamo personalmente",
+              "text": "Con idee e domande – per telefono o per e-mail."
+            }
+          },
+          "demoNotice": "Modalità demo: nessuno è stato avvisato.",
+          "addMore": "Aggiungi altri file",
+          "toWebsite": "Al sito di Platzhirsch"
+        }
+      },
+      "handoff": {
+        "overline": "Facoltativo · richiede 1 minuto",
+        "title": "Mostraci il tuo spazio",
+        "intro": "Con foto, un breve video della stanza o la tua pianta prepariamo la consulenza in modo mirato – direttamente dalla fotocamera del telefono, senza app e senza registrazione.",
+        "chipsLabel": "Puoi inviare",
+        "chips": {
+          "photos": "Foto della stanza",
+          "video": "Video ≤ {minutes} min",
+          "plans": "Piante e disegni"
+        },
+        "dismiss": "Chiudi l’avviso",
+        "failedMail": "Puoi anche inviarci foto e piante via e-mail a <mail>{email}</mail>.",
+        "retry": "Riprova",
+        "qrAlt": "Codice QR per la pagina di caricamento – scansionalo con la fotocamera del telefono",
+        "qrCreating": "Creazione del codice QR…",
+        "qrReady": "Codice pronto",
+        "qrReadyLong": " · scansiona con la fotocamera",
+        "qrReadyShort": " · scansiona",
+        "qrScan": "Scansiona con la fotocamera del telefono",
+        "valid": "Valido",
+        "remaining": {
+          "minutes": "ancora {n} min",
+          "hours": "ancora {n} h",
+          "days": "ancora {n} giorni"
+        },
+        "until": {
+          "today": "fino alle {time}",
+          "date": "fino al {date}, ore {time}"
+        },
+        "stepsLabel": "Come funziona",
+        "stepPrefix": "Passo {n}: ",
+        "steps": {
+          "camera": {
+            "title": "Apri la fotocamera",
+            "text": "Basta la normale app della fotocamera – senza app aggiuntive, senza registrazione."
+          },
+          "aim": {
+            "title": "Inquadra il codice",
+            "text": "Tocca il link che compare sopra il codice."
+          },
+          "show": {
+            "title": "Mostra lo spazio",
+            "text": "Invia foto, un video della stanza o la pianta. Fatto."
+          }
+        },
+        "mobileCta": "Invia ora foto e piante",
+        "mobileCtaHint": "Apre la pagina di caricamento qui sul tuo telefono.",
+        "desktopHeading": "Carica da questo dispositivo",
+        "desktopText": "Foto e piante sono già sul computer?",
+        "openPage": "Apri la pagina di caricamento",
+        "newTab": "(nuova scheda)",
+        "copy": "Copia link",
+        "copied": "Copiato",
+        "copiedLive": "Link copiato.",
+        "copyFailed": "Impossibile copiare – link selezionato, copialo con {shortcut} + C",
+        "footer": "Riferimento <strong>{ref}</strong> · valido fino al {validUntil} · raggiungibile solo tramite questo link",
+        "creating": "Creazione del link di caricamento…",
+        "creatingSlow": "Ci vuole più tempo del solito – un momento, per favore…",
+        "send": {
+          "title": "Inviami il link",
+          "badge": "In preparazione",
+          "subtitle": "via e-mail o SMS",
+          "channelLabel": "Modalità di invio",
+          "phoneLabel": "Il tuo numero di cellulare",
+          "emailLabel": "Il tuo indirizzo e-mail",
+          "staysLocal": "(resta su questo dispositivo)",
+          "openSms": "Apri nella mia app SMS",
+          "openMail": "Apri nella mia app e-mail",
+          "notActiveSms": "In preparazione: l’invio diretto da parte di Platzhirsch non è ancora attivo. Questo pulsante apre la tua app SMS con il link già pronto – Platzhirsch non invia e non salva nulla.",
+          "notActiveMail": "In preparazione: l’invio diretto da parte di Platzhirsch non è ancora attivo. Questo pulsante apre la tua app e-mail con il link già pronto – Platzhirsch non invia e non salva nulla.",
+          "mailSubject": "Link di caricamento Platzhirsch ({ref})",
+          "body": "Caricare foto, video e piante per la mia richiesta (Platzhirsch, {ref}):\n{url}",
+          "next": "Avanti"
+        }
+      },
+      "consent": {
+        "short": "Accetto che {site} utilizzi i miei file solo per questa richiesta.",
+        "purpose": "Acconsento che {site} (Lochau) conservi e utilizzi le foto, i video, le piante e la mia nota caricati qui esclusivamente per gestire la mia richiesta{ref}.",
+        "refSuffix": " ({ref})",
+        "retention": "Durata di conservazione: {days} dalla scadenza di questo link, salvo che i documenti servano per un ordine. Il consenso è facoltativo e revocabile in qualsiasi momento via e-mail a {email}; la tua richiesta resta valida anche senza caricamento. Non inviare riprese di persone senza il loro consenso.",
+        "days": "{n} giorni",
+        "daysPlaceholder": "{n} giorni [termine da stabilire dal titolare]",
+        "privacyLink": "Maggiori informazioni nell’<link>informativa sulla privacy</link>."
+      },
+      "errors": {
+        "too_large": "Il file è troppo grande.",
+        "quota_exceeded": "È stato raggiunto il limite di spazio per questo link.",
+        "too_many_files": "È stato raggiunto il numero massimo di file.",
+        "unsupported_type": "Sono ammessi solo foto, video e PDF.",
+        "bad_category": "Sono ammessi solo foto, video e PDF.",
+        "consent_required": "Conferma prima il tuo consenso.",
+        "expired": "Questo link di caricamento è scaduto.",
+        "invalid": "Questo link di caricamento non è valido.",
+        "demo_disabled": "I caricamenti demo sono disattivati in questo ambiente.",
+        "storage_full": "Al momento non è possibile caricare – riprova più tardi.",
+        "rate_limited": "Troppi tentativi in poco tempo – riprova tra qualche minuto.",
+        "daily_limit": "Oggi non sono possibili altri caricamenti – riprova domani.",
+        "file_not_found": "Il file non è più sul server – selezionalo di nuovo.",
+        "bad_index": "Errore di trasmissione – riprova.",
+        "bad_chunk_size": "Errore di trasmissione – riprova.",
+        "bad_request": "La richiesta era incompleta – ricarica la pagina.",
+        "network": "Connessione interrotta.",
+        "server_error": "Errore del server – riprova più tardi.",
+        "fallback": "Caricamento non riuscito – riprova."
+      },
+      "handoffReasons": {
+        "rate_limited": "In questo momento vengono creati moltissimi link di caricamento. Riprova tra qualche minuto",
+        "daily_limit": "Oggi non possiamo creare altri link di caricamento",
+        "storage_full": "Al momento non è possibile caricare",
+        "ticket_expired": "Non è stato possibile creare il link di caricamento perché è passato troppo tempo dall’invio della richiesta",
+        "network": "Nessuna connessione – non è stato possibile caricare il link",
+        "timeout": "La creazione del link di caricamento richiede più tempo del solito. Riprova tra un attimo",
+        "server": "Al momento non è stato possibile creare il link di caricamento"
+      },
+      "demo": {
+        "metaTitle": "Caricamento dal telefono via QR – demo | Platzhirsch Labs",
+        "metaDescription": "Dopo la richiesta, invia foto, video della stanza e pianta direttamente dal telefono – demo con token di prova.",
+        "overline": "Platzhirsch Labs · demo",
+        "title": "Caricamento dal telefono via QR",
+        "intro": "Dopo ogni richiesta il cliente può inviare dal telefono foto, un giro della stanza e piante – senza app, senza account, senza allegati e-mail.",
+        "enabled": "La tua demo personale (riferimento {ref}): link di prova dedicato, valido <strong>1 ora</strong>, max. {maxFiles} file / {maxSize}. I file finiscono solo nello spazio di sviluppo locale e vengono eliminati alla scadenza. Ricaricando la pagina parte una nuova demo.",
+        "disabled": "Demo solo nell’ambiente di sviluppo: in questo ambiente non vengono accettati file demo.",
+        "steps": {
+          "inquiry": {
+            "title": "Invia una richiesta",
+            "text": "Richiesta di prodotto, consulenza o contatto – come sempre."
+          },
+          "scan": {
+            "title": "Scansiona il codice QR",
+            "text": "La schermata di conferma mostra un link personale e firmato (valido {days} giorni)."
+          },
+          "show": {
+            "title": "Mostra lo spazio",
+            "text": "Foto direttamente dalla fotocamera, video della stanza, pianta in PDF, breve nota."
+          },
+          "prepared": {
+            "title": "Consulenza preparata",
+            "text": "Il team vede i documenti con il riferimento della richiesta – prima del primo colloquio."
+          }
+        },
+        "sectionLabel": "Demo",
+        "desktopHeading": "Schermata di conferma sul computer",
+        "desktopText": "Così appare la scheda sotto la conferma dei moduli.",
+        "sampleConfirmation": "Grazie mille! La tua richiesta è stata inviata. (esempio)",
+        "validLabel": "{datetime} (link demo: 1 ora)",
+        "phoneHeading": "Pagina di caricamento sul telefono",
+        "phoneEmbedded": "La pagina vera, incorporata.",
+        "phoneOpen": "Apri in una nuova scheda",
+        "phoneOverline": "Platzhirsch · Lochau",
+        "phoneRef": "Caricamento · {ref}",
+        "testNotes": "Note di prova"
+      }
+    }
+  }
+}

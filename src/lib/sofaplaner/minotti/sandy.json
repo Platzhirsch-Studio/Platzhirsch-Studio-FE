@@ -1,0 +1,187 @@
+{
+  "name": "Sandy",
+  "slug": "sandy",
+  "hersteller": "Minotti",
+  "designer": "nendo",
+  "jahr": 2026,
+  "jahr_hinweis": "Minotti 2026 Collection (Designs am 16.04.2026 in EU/China registriert; Datenblatt Stand Juli 2026).",
+  "typ": "Outdoor-Sitzfamilie (nicht modular) mit Aluminiumgestell: Sofa, Sessel, Dining- und Lounge-Armlehnstuhl, Dormeuse mit integriertem Tisch",
+  "quellen": [
+    {
+      "titel": "Produktseite Minotti Sandy",
+      "url": "https://www.minotti.com/en/sandy"
+    },
+    {
+      "titel": "Sandy Technical Sheet (PDF, Juli 2026)",
+      "url": "https://www.minotti.com/downloads/26384/32526/SANDY_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "titel": "Maßzeichnungen \"Technical Features\" (je Element, Feld zeichnung)",
+      "url": "https://www.minotti.com/en/sandy"
+    },
+    {
+      "titel": "Arrangement Orion Outdoor 01/02 (H-Angaben Sandy)",
+      "url": "https://www.minotti.com/en/orion-outdoor"
+    }
+  ],
+  "abrufdatum": "2026-10-27",
+  "mass_hinweis": "Maße in cm aus Technical Sheet und Maßzeichnungen der Produktseite. Koten sind unbeschriftet; Zuordnung: Höhe an der Frontansicht = Sitzhöhe, erste Höhe an der Seitenansicht = Armlehnenhöhe, zweite = Gesamthöhe (Gesamthöhe 77 bestätigt durch Arrangement-Angaben \"SOFA CM 170X95 H77\", \"ARMCHAIRS CM 82X95 H77\", \"DORMEUSE SX CM 101X170 H77\"). sitzbreite_cm = Breitenkoten der Sitzkissen in der Draufsicht.",
+  "rueckenoptionen": [
+    "Rücken Teil des durchgehenden Aluminium-\"Bandes\" (Armlehne → Sitz → Rücken); separates Rückenkissen, per Reißverschluss mit dem Sitzkissen verbunden. Keine Rückenvarianten."
+  ],
+  "armlehnenoptionen": [
+    "Armlehnen fest im Gestell (keine Varianten). Dormeuse mit Tisch SX oder DX."
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Gestell komplett aus Aluminium, Unterbau aus flachen Elementen auf ultraschlanken Beinen; verstellbare schwarze Schutzfüße aus Polyethylen.",
+    "gestell_finish": [
+      "Rust (Ruggine)",
+      "Dark Brown (Testa di Moro)",
+      "Chestnut (Castagna)",
+      "Forest Green (Verde Bosco)",
+      "Warm Grey"
+    ],
+    "finish_art": "Aluminium mit Outdoor-Polyester-Pulverbeschichtung, glänzend, Anti-Fingerprint; ausschließlich in diesen fünf Farben."
+  },
+  "bezuege": {
+    "kategorien": [
+      "Outdoor-Stoffe der Minotti-Kollektion (Kissenbezüge)"
+    ],
+    "leder": "nicht angegeben (Outdoor-Produkt)",
+    "bezugsart": "abnehmbar – Kissenbezug komplett abziehbar.",
+    "details": "Sitz- und Rückenkissen mit Keder; wasserabweisender Polyester-Innenbezug, Reißverschlüsse/Garn wasserabweisend; Befestigung am Gestell mit Teak-Knebeln (frogs).",
+    "farbmuster_hinweis": "Farb- und Materialmuster bitte im Showroom ansehen; Bildschirm- und Druckfarben sind laut Minotti nur Anhaltspunkte (\"Printed colours are to be considered as purely indicative\")."
+  },
+  "kissenoptionen": [
+    "Sitz- und Rückenkissen aus hochelastischem PU-Schaum und Viskosefaser (Serie)",
+    "Optionale Regenschutzhülle (Rain cover) – \"Available for each element\"",
+    "Zusätzliche Zierkissen nicht angegeben"
+  ],
+  "outdoor": true,
+  "outdoor_hinweis": "Für dauerhafte Outdoor-Nutzung in Wohn- und Hospitality-Bereichen konzipiert.",
+  "besonderheiten": [
+    "Durchgehende \"Band\"-Linie: auf einer Seite Armlehne, auf der anderen Sitz und Rücken.",
+    "Dormeuse mit integriertem Beistelltisch aus grauem Travertin (20 mm).",
+    "Verwandtes Produkt \"Sandy Dining\" (Tisch) nicht als Sitzelement erfasst."
+  ],
+  "rechte_hinweis": "Herstellerbilder und Zeichnungen © Minotti S.p.A.; laut Website ist jede Veränderung (auch teilweise) untersagt. Freistellungen/Bearbeitungen von Minotti-Bildern nur intern/Labs, nicht öffentlich – im Rechte-Register vermerken. CAD-Dateien nur für Interior-Design-Zwecke freigegeben.",
+  "elemente": [
+    {
+      "code": null,
+      "id": "sandy-sofa-170",
+      "name": "Sofa 170 cm",
+      "name_de": "Sofa 170 cm",
+      "art": "sofa",
+      "ausfuehrung_seite": null,
+      "breite_cm": 170,
+      "tiefe_cm": 95,
+      "hoehe_cm": 77,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 50,
+      "sitzbreite_cm": [
+        76,
+        76
+      ],
+      "anschluesse": "freistehend (nicht modular)",
+      "hinweis": "2 Sitzkissen à 76 cm (Draufsicht-Koten).",
+      "zeichnung": "https://www.minotti.com/media/immagini/54242_n_SANDY_SOFA_170_CM.jpg"
+    },
+    {
+      "code": null,
+      "id": "sandy-armchair-82",
+      "name": "Armchair 82 cm",
+      "name_de": "Sessel 82 cm",
+      "art": "sessel",
+      "ausfuehrung_seite": null,
+      "breite_cm": 82,
+      "tiefe_cm": 95,
+      "hoehe_cm": 77,
+      "sitzhoehe_cm": 43,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 50,
+      "sitzbreite_cm": [
+        67
+      ],
+      "anschluesse": "freistehend (nicht modular)",
+      "zeichnung": "https://www.minotti.com/media/immagini/54243_n_SANDY_ARMCHAIR_82_CM.jpg"
+    },
+    {
+      "code": null,
+      "id": "sandy-dining-little-armchair-62",
+      "name": "DINING little armchair 62 cm",
+      "name_de": "Dining-Armlehnstuhl 62 cm",
+      "art": "armlehnstuhl-dining",
+      "ausfuehrung_seite": null,
+      "breite_cm": 62,
+      "tiefe_cm": 71,
+      "hoehe_cm": 84,
+      "sitzhoehe_cm": 52,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "sitzbreite_cm": [
+        50
+      ],
+      "anschluesse": "freistehend (nicht modular)",
+      "hinweis": "Passend zum Tisch \"Sandy Dining\" (separates Produkt).",
+      "zeichnung": "https://www.minotti.com/media/immagini/54244_n_SANDY_DINING_LITTLE_ARMCHAIR_62_CM.jpg"
+    },
+    {
+      "code": null,
+      "id": "sandy-lounge-little-armchair-62",
+      "name": "LOUNGE little armchair 62 cm",
+      "name_de": "Lounge-Armlehnstuhl 62 cm",
+      "art": "armlehnstuhl-lounge",
+      "ausfuehrung_seite": null,
+      "breite_cm": 62,
+      "tiefe_cm": 71,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 47,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 58,
+      "sitzbreite_cm": [
+        50
+      ],
+      "anschluesse": "freistehend (nicht modular)",
+      "zeichnung": "https://www.minotti.com/media/immagini/54245_n_SANDY_LOUNGE_LITTLE_ARMCHAIR_62_CM.jpg"
+    },
+    {
+      "code": null,
+      "id": "sandy-dormeuse-101x170",
+      "name": "Dormeuse 101X170 cm",
+      "name_de": "Dormeuse 101x170 cm",
+      "art": "dormeuse",
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "breite_cm": 101,
+      "tiefe_cm": 170,
+      "hoehe_cm": 77,
+      "sitzhoehe_cm": 47,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "sitzbreite_cm": null,
+      "anschluesse": "freistehend (nicht modular)",
+      "kote_seitenansicht_cm": 49,
+      "tisch_platte": "Travertino Grigio (Grey Travertine), 20 mm",
+      "hinweis": "Integrierter Beistelltisch mit Platte aus grauem Travertin, 20 mm; Kote \"Ø 15\" an der Tischplatte (Bedeutung nicht beschriftet). SX/DX: Arrangement nennt \"DORMEUSE SX\", Draufsichten zeigen den Tisch links bzw. rechts. Kote 47 (Frontansicht) als Sitzhöhe gelesen, Kote 49 (Seitenansicht) nicht eindeutig zuzuordnen.",
+      "zeichnung": "https://www.minotti.com/media/immagini/54246_n_SANDY_DORMEUSE_101X170_CM.jpg"
+    }
+  ],
+  "fehlend": [
+    "Minotti-Artikelcodes nicht öffentlich (code = null).",
+    "Sitztiefe nicht bemaßt (sitztiefe_cm = null bei allen Elementen).",
+    "Höhenkoten unbeschriftet; Sitz-/Armlehnenhöhe abgeleitet (siehe mass_hinweis); Dormeuse: Armlehnenhöhe offen, Kote 49 nicht zuordenbar.",
+    "Dormeuse-Tisch nur als \"Ø 15\" ohne Erläuterung bemaßt.",
+    "Stoffkategorien/Preisgruppen der Kissen nicht öffentlich.",
+    "Gewichte, Preise, Lieferzeiten nicht öffentlich."
+  ],
+  "anzahl_elemente": 5,
+  "vollstaendigkeit": {
+    "massfelder_gesamt": 25,
+    "massfelder_belegt": 20,
+    "prozent": 80,
+    "hinweis": "Anteil belegter Maßfelder (Breite/Tiefe/Höhe/Sitzhöhe/Sitztiefe; bei Hockern/Bänken ohne Sitztiefe) an allen relevanten Maßfeldern."
+  }
+}

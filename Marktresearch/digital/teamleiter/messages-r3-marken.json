@@ -1,0 +1,24 @@
+{
+  "_uebernommen": "R4-i18n, 26.10.2026: in src/messages übernommen. brandCategory.piecesTitle übernommen.",
+  "_hinweis": "R3-marken-seo: ein neuer Schlüssel brandCategory.piecesTitle (H2 der Galerie auf der Marke-x-Kategorie-Seite, ersetzt die doppelte Überschrift aus QA-P3-3). Alle übrigen Texte stehen bereits in messages-r2-seo.json (Namespace brandCategory); Kategorienamen kommen aus dem Backoffice.",
+  "de": {
+    "brandCategory": {
+      "piecesTitle": "Alle Stücke"
+    }
+  },
+  "en": {
+    "brandCategory": {
+      "piecesTitle": "All pieces"
+    }
+  },
+  "fr": {
+    "brandCategory": {
+      "piecesTitle": "Toutes les pièces"
+    }
+  },
+  "it": {
+    "brandCategory": {
+      "piecesTitle": "Tutti i pezzi"
+    }
+  }
+}

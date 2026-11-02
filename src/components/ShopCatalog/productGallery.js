@@ -1,431 +1,309 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { useCallback, useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
+import { preloadLightboxImage } from "@/components/ShopCatalog/lightboxImage";
+import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { withFallback } from "@/components/ShopCatalog/copy";
 
-// Main image + thumbnail-nav slider for the shop product detail page, with a
-// full-screen lightbox (click the image, the expand button, or a thumbnail
-// while the lightbox is open) to view any shot at full size.
+// Product gallery of the "Atelier" page.
+// - Stage: native CSS scroll-snap track (swipe on touch, trackpad, arrow
+//   buttons, arrow keys). The first image is in the server HTML and preloaded
+//   (LCP). Manufacturer shots stay uncropped: 3:2 on bone, object-contain,
+//   white backgrounds multiplied into the surface.
+// - Inactive slides are `inert`, so only the visible image is focusable.
+// - Counter with aria-live, real <button>s, arrow keys on the region.
+// - Lightbox (zoom, swipe track): ./productLightbox.js, see there.
+// - Reduced motion: every scroll jumps instead of gliding.
+// QA history: R1 P2-1 zoom placeholder, P2-8 Safari focus return, P3-2 one
+// live counter at a time; R2/R3 stage edge to edge with the enlarge control in
+// the row below the photo; R4 q=75 stage image, no thumbnails on phones,
+// stage capped at 28svh on phones.
 //
-// Built on react-slick (already used elsewhere — see MarkenItems/markenitems.js)
-// instead of a hand-rolled overflow/scroll strip: slick's own asNavFor
-// linking keeps the big image and the thumbnail row in sync, slides one
-// thumbnail at a time via real arrows, and never shows a scrollbar (it
-// positions slides with a transform, not native scroll) — the thing every
-// earlier CSS-based attempt at this kept fighting.
-//
-// With a single image, no Slider/arrows/thumbnails/expand button render at
-// all — see getProductImages.
-const GalleryPrevArrow = ({ onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    aria-label="Previous image"
-    className="absolute left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[#30373e] shadow-md transition-colors hover:bg-white"
-  >
-    <ChevronLeft size={20} />
-  </button>
-);
+// R5-produkt (TBT /de/produkte/lamps 379 ms): less work on page load.
+// - The stage no longer boots Embla (its engine measured and wired every
+//   slide during hydration); native scroll-snap does the swiping, a cheap
+//   onScroll keeps the counter in step.
+// - The lightbox (zoom, track, 4 icons) is a separate chunk, fetched on the
+//   first hover/focus of an opener and mounted only when opened.
+// - Thumbnails (from sm only) mount after the browser is idle; a box of the
+//   same height is reserved in the server HTML, so nothing shifts (CLS 0).
 
-const GalleryNextArrow = ({ onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    aria-label="Next image"
-    className="absolute right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[#30373e] shadow-md transition-colors hover:bg-white"
-  >
-    <ChevronRight size={20} />
-  </button>
-);
+function prefersReducedMotion() {
+  if (typeof window === "undefined") return false;
+  return (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    document.documentElement.dataset.motion === "reduced"
+  );
+}
 
-const ThumbPrevArrow = ({ onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    aria-label="Previous image"
-    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#30373e]/75 transition-colors hover:bg-gray-100 hover:text-[#30373e]"
-  >
-    <ChevronLeft size={18} />
-  </button>
-);
+const loadLightbox = () => import("@/components/ShopCatalog/productLightbox");
+const ProductLightbox = dynamic(loadLightbox, { ssr: false });
 
-const ThumbNextArrow = ({ onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    aria-label="Next image"
-    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#30373e]/75 transition-colors hover:bg-gray-100 hover:text-[#30373e]"
-  >
-    <ChevronRight size={18} />
-  </button>
-);
+// Stage image request (same src + sizes + quality as the stage <Image>): the
+// lightbox shows it underneath until its own larger file has loaded, so the
+// dialog is never an empty surface (QM R3-produkt P3-1).
+const STAGE_SIZES = "(min-width: 1440px) 720px, (min-width: 1024px) 52vw, 100vw";
+// R4-produkt (release-check §4): q=75 instead of 90 for the stage photo = the
+// LCP image. Measured on the optimizer (perf/bildgroessen.txt): −21 % (AVIF)
+// to −33 % (WebP) bytes at w=1200; no visible loss on the 4 device shots.
+const STAGE_QUALITY = 75;
 
-const LightboxPrevArrow = ({ onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    aria-label="Previous image"
-    className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-  >
-    <ChevronLeft size={24} />
-  </button>
-);
+const ICON_BTN =
+  "ph-press inline-flex size-[44px] shrink-0 items-center justify-center text-text transition-colors duration-(--duration-micro) hover:bg-ink/5 disabled:opacity-40 disabled:hover:bg-transparent";
 
-const LightboxNextArrow = ({ onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    aria-label="Next image"
-    className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-  >
-    <ChevronRight size={24} />
-  </button>
-);
-
-const ProductGallery = ({ images, alt }) => {
-  const [index, setIndex] = useState(0);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [zoomed, setZoomed] = useState(false);
-  const [zoomOrigin, setZoomOrigin] = useState("50% 50%");
-  const [navMain, setNavMain] = useState(null);
-  const [navThumb, setNavThumb] = useState(null);
-  // centerMode measures real DOM widths to offset the track, which doesn't
-  // exist yet during server rendering — the server and the client's very
-  // first render would produce different slick-list markup/styles either
-  // way, so the thumbnail slider only mounts once we're definitely on the
-  // client, after that first render has already matched the server's.
-  const [thumbsMounted, setThumbsMounted] = useState(false);
-  const mainSliderRef = useRef(null);
-  const thumbSliderRef = useRef(null);
-  const hasMultiple = images.length > 1;
-  const active = images[index] || images[0];
-
+// Thumbnails only where they are shown (sm+), once the main thread is idle.
+function useIdleFrom(query) {
+  const [ready, setReady] = useState(false);
   useEffect(() => {
-    setThumbsMounted(true);
+    if (!window.matchMedia(query).matches) return undefined;
+    const idle = window.requestIdleCallback || ((cb) => window.setTimeout(cb, 200));
+    const cancel = window.cancelIdleCallback || window.clearTimeout;
+    const id = idle(() => setReady(true), { timeout: 2000 });
+    return () => cancel(id);
+  }, [query]);
+  return ready;
+}
+
+// Design-Jury P2-20: the stage frame follows the first photo's format (from
+// the server, so the box is right in the first paint – CLS 0), within 5:4 …
+// 2:1; outside that range or unknown it stays 3:2. Never cropped.
+export function stageRatio(ratio) {
+  const r = Number(ratio);
+  if (!Number.isFinite(r) || r <= 0) return 1.5;
+  return Math.min(2, Math.max(1.25, Math.round(r * 1000) / 1000));
+}
+
+export default function ProductGallery({ images, alt, ratio = null }) {
+  const frameRatio = stageRatio(ratio);
+  const locale = useLocale();
+  const tc = withFallback(useTranslations("shop"), locale, "shop");
+  const count = images.length;
+  const multiple = count > 1;
+
+  const [index, setIndex] = useState(0);
+  const [lightbox, setLightbox] = useState(false);
+  const stageRef = useRef(null);
+  const thumbsRef = useRef(null);
+  const openButtonRef = useRef(null);
+  const thumbsReady = useIdleFrom("(min-width: 640px)") && multiple;
+
+  const altFor = (i) => (i === 0 ? alt : tc("atelier.imageAlt", { name: alt, n: i + 1 }));
+
+  // Keep the active thumbnail in view – by scrolling the strip sideways only.
+  // Qualität (Designsystem, sharedNeeds Shop): scrollIntoView() also scrolled
+  // the PAGE when the strip sat below the fold (900 px window: ~187 px, ~2.7 s
+  // after load, breadcrumb under the header = axe target-size). Index 0 needs
+  // no scroll at all (the strip starts there).
+  useEffect(() => {
+    const strip = thumbsRef.current;
+    if (!strip || index === 0) return;
+    const el = strip.querySelector(`[data-thumb="${index}"]`);
+    if (!el) return;
+    const box = el.getBoundingClientRect();
+    const left = strip.scrollLeft + box.left - strip.getBoundingClientRect().left - (strip.clientWidth - box.width) / 2;
+    strip.scrollTo({ left: Math.max(0, left), behavior: prefersReducedMotion() ? "auto" : "smooth" });
+  }, [index, thumbsReady]);
+
+  const scrollStageTo = useCallback((i, instant) => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    stage.scrollTo({ left: i * stage.clientWidth, behavior: instant || prefersReducedMotion() ? "auto" : "smooth" });
   }, []);
 
-  // react-slick's asNavFor needs the OTHER slider's actual instance, which
-  // only exists once both have mounted (and the thumbnail one specifically
-  // only mounts after thumbsMounted flips — see above) — setting it from a
-  // ref during render would stay stuck at the initial null forever, since a
-  // ref changing doesn't trigger a re-render on its own.
-  useEffect(() => {
-    if (!hasMultiple || !thumbsMounted) return;
-    setNavMain(mainSliderRef.current);
-    setNavThumb(thumbSliderRef.current);
-  }, [hasMultiple, thumbsMounted]);
+  const goTo = useCallback(
+    (i) => {
+      const next = Math.max(0, Math.min(count - 1, i));
+      setIndex(next);
+      scrollStageTo(next);
+    },
+    [count, scrollStageTo]
+  );
 
-  // Single source of truth: slick owns the visible slide for the inline
-  // gallery (afterChange keeps `index` in sync); the lightbox — a separate,
-  // plain <Image> rather than its own slider, since it's an overlay, not a
-  // second synced carousel — reads/writes the same `index`, and pushes any
-  // change back into the inline slider via slickGoTo so the two never drift.
-  const go = (delta) => {
-    const next = (index + delta + images.length) % images.length;
-    setIndex(next);
-    mainSliderRef.current?.slickGoTo(next);
+  // Swipe/trackpad on the stage drives the index.
+  const onStageScroll = () => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const i = Math.round(stage.scrollLeft / Math.max(1, stage.clientWidth));
+    if (i !== index && i >= 0 && i < count) setIndex(i);
   };
 
-  const goTo = (i) => {
+  const openLightbox = (i) => {
     setIndex(i);
-    mainSliderRef.current?.slickGoTo(i);
+    setLightbox(true);
   };
 
-  // Zoom resets whenever the lightbox (re)opens or the user switches images —
-  // otherwise the next photo would open already zoomed in.
-  useEffect(() => {
-    setZoomed(false);
-  }, [index, lightboxOpen]);
-
-  const originFromEvent = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    return `${x}% ${y}%`;
+  const onLightboxClose = () => {
+    setLightbox(false);
+    scrollStageTo(index, true);
+    // Back to the one tabbable opener in the control row (the stage buttons
+    // are mouse/touch targets only, tabIndex -1 – QM P3-2). After the native
+    // focus return of <dialog>.
+    const current = index;
+    window.setTimeout(() => {
+      (openButtonRef.current || stageRef.current?.querySelector(`[data-slide-button="${current}"]`))?.focus({ preventScroll: true });
+    }, 0);
   };
 
-  const toggleZoom = (e) => {
-    e.stopPropagation();
-    if (!zoomed) setZoomOrigin(originFromEvent(e));
-    setZoomed((z) => !z);
+  // Warm the lightbox chunk and the current photo in lightbox size before
+  // the click (hover/focus of an opener) – QM wm-r4, see lightboxImage.js.
+  const warm = () => {
+    loadLightbox();
+    preloadLightboxImage(images[index]);
   };
 
-  // While zoomed, panning follows the cursor: move toward the top and the
-  // (eased, so it glides rather than snaps) transform-origin shifts toward the
-  // top, revealing more of the image above — same for every edge.
-  const handleMouseMove = (e) => {
-    if (!zoomed) return;
-    setZoomOrigin(originFromEvent(e));
-  };
-
-  useEffect(() => {
-    if (!lightboxOpen) return;
-
-    document.body.style.overflow = "hidden";
-    const handleKey = (e) => {
-      if (e.key === "Escape") setLightboxOpen(false);
-      if (hasMultiple && e.key === "ArrowLeft") go(-1);
-      if (hasMultiple && e.key === "ArrowRight") go(1);
-    };
-    window.addEventListener("keydown", handleKey);
-
-    return () => {
-      document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", handleKey);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lightboxOpen, hasMultiple]);
-
-  if (!hasMultiple) {
-    return (
-      <div className="relative w-full aspect-4/3 lg:aspect-square overflow-hidden rounded-lg border border-[#30373e]/10 bg-gray-100">
-        <button
-          type="button"
-          onClick={() => setLightboxOpen(true)}
-          aria-label="Open full-screen view"
-          className="group absolute inset-0 h-full w-full cursor-zoom-in"
-        >
-          <Image
-            src={active}
-            alt={alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-            priority
-          />
-        </button>
-        <button
-          type="button"
-          onClick={() => setLightboxOpen(true)}
-          aria-label="Open full-screen view"
-          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#30373e] shadow-md transition-colors hover:bg-white"
-        >
-          <Maximize2 size={16} />
-        </button>
-
-        {lightboxOpen && (
-          <div
-            className="fixed inset-0 z-[100] flex flex-col bg-black"
-            role="dialog"
-            aria-modal="true"
-            aria-label={alt}
-          >
-            <button
-              type="button"
-              onClick={() => setLightboxOpen(false)}
-              aria-label="Close full-screen view"
-              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-            >
-              <X size={22} />
-            </button>
-            <div className="relative flex-1 bg-black" onClick={() => setLightboxOpen(false)}>
-              <div
-                className={`relative h-full w-full overflow-hidden p-6 sm:p-12 ${zoomed ? "cursor-zoom-out" : "cursor-zoom-in"}`}
-                onClick={toggleZoom}
-                onMouseMove={handleMouseMove}
-              >
-                <Image
-                  src={active}
-                  alt={alt}
-                  fill
-                  sizes="100vw"
-                  className={`object-contain select-none transition-transform ease-out ${zoomed ? "scale-[2] duration-500" : "scale-100 duration-300"}`}
-                  style={{ transformOrigin: zoomOrigin }}
-                />
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
+  if (!count) return null;
 
   return (
-    <div>
-      <div className="relative w-full overflow-hidden rounded-lg border border-[#30373e]/10 bg-gray-100">
-        <Slider
-          ref={mainSliderRef}
-          asNavFor={navThumb}
-          afterChange={setIndex}
-          arrows
-          infinite
-          speed={400}
-          slidesToShow={1}
-          slidesToScroll={1}
-          prevArrow={<GalleryPrevArrow />}
-          nextArrow={<GalleryNextArrow />}
+    <div
+      // Several photos: the carousel is a named group and the scrollable
+      // stage below is the one region landmark (axe scrollable-region-
+      // focusable, R5-produkt P2-1) – no two landmarks with the same name.
+      role={multiple ? "group" : "region"}
+      aria-roledescription={multiple ? "carousel" : undefined}
+      aria-label={tc("atelier.galleryLabel", { name: alt })}
+      onKeyDown={(e) => {
+        if (!multiple || lightbox) return;
+        if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+        // The focused stage would also scroll natively – one step only.
+        e.preventDefault();
+        goTo(index + (e.key === "ArrowRight" ? 1 : -1));
+      }}
+    >
+      <div className="relative">
+        <div
+          ref={stageRef}
+          onScroll={multiple ? onStageScroll : undefined}
+          onPointerEnter={warm}
+          onFocus={multiple ? warm : undefined}
+          // Keyboard-reachable scroll area (WCAG 2.1.1): Tab lands on the
+          // stage, arrow keys page through the photos, Enter opens via the
+          // "enlarge" button in the control row.
+          tabIndex={multiple ? 0 : undefined}
+          role={multiple ? "region" : undefined}
+          aria-label={multiple ? tc("atelier.galleryLabel", { name: alt }) : undefined}
+          className={`bg-surface-raised ${multiple ? "scrollbar-hide flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain" : "flex overflow-hidden"}`}
         >
           {images.map((src, i) => (
-            <div key={`${src}-${i}`}>
+            <div
+              key={`${src}-${i}`}
+              className="relative aspect-[3/2] min-w-0 shrink-0 grow-0 basis-full max-sm:max-h-[28svh] max-sm:[@media(max-height:600px)]:max-h-[18svh] snap-center"
+              // 3:2 class = fallback; the inline ratio (first photo's format) wins.
+              style={{ aspectRatio: frameRatio }}
+              role={multiple ? "group" : undefined}
+              aria-roledescription={multiple ? "slide" : undefined}
+              aria-label={multiple ? tc("atelier.counter", { n: i + 1, total: count }) : undefined}
+              inert={i !== index ? true : undefined}
+            >
               <button
                 type="button"
-                onClick={() => setLightboxOpen(true)}
-                aria-label="Open full-screen view"
-                className="group relative block aspect-4/3 lg:aspect-square w-full cursor-zoom-in"
+                onClick={() => openLightbox(i)}
+                data-slide-button={i}
+                tabIndex={-1}
+                aria-label={tc("atelier.openLightbox", { n: i + 1 })}
+                aria-haspopup="dialog"
+                className="absolute inset-0 cursor-zoom-in"
               >
                 <Image
                   src={src}
-                  alt={alt}
+                  alt={altFor(i)}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  priority={i === 0}
+                  sizes={STAGE_SIZES}
+                  preload={i === 0 ? true : undefined}
+                  quality={STAGE_QUALITY}
+                  className="object-contain mix-blend-multiply"
+                  data-pin-nopin="true" // Herstellerbild: nicht für Pinterest (QA Recht Pinterest P2-4)
                 />
               </button>
             </div>
           ))}
-        </Slider>
-
-        <button
-          type="button"
-          onClick={() => setLightboxOpen(true)}
-          aria-label="Open full-screen view"
-          className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#30373e] shadow-md transition-colors hover:bg-white"
-        >
-          <Maximize2 size={16} />
-        </button>
-        <span className="absolute bottom-3 right-3 z-10 rounded-full bg-black/50 px-2.5 py-1 text-xs font-medium text-white">
-          {index + 1} / {images.length}
-        </span>
+        </div>
       </div>
 
-      {/* gallery-thumb-nav: slick renders prevArrow/slick-list/nextArrow as
-          plain block siblings, which stack vertically with no layout of our
-          own — the global rule below turns that into the left-arrow /
-          track / right-arrow row this is supposed to be. centerMode keeps
-          whichever thumbnail matches the big image centered in the row
-          (not just scrolled into view) as you move through the slides. */}
-      <div className="mt-3 gallery-thumb-nav">
-        {thumbsMounted ? (
-          <Slider
-            ref={thumbSliderRef}
-            asNavFor={navMain}
-            slidesToShow={Math.min(images.length, 5)}
-            slidesToScroll={1}
-            centerMode
-            centerPadding="0px"
-            swipeToSlide
-            focusOnSelect
-            arrows
-            infinite
-            prevArrow={<ThumbPrevArrow />}
-            nextArrow={<ThumbNextArrow />}
-            responsive={[
-              {
-                breakpoint: 480,
-                settings: { slidesToShow: Math.min(images.length, 3), centerMode: true, centerPadding: "0px" },
-              },
-            ]}
-          >
-            {images.map((src, i) => (
-              <div key={`thumb-${src}-${i}`} className="px-1">
-                <button
-                  type="button"
-                  onClick={() => goTo(i)}
-                  aria-label={`Show image ${i + 1}`}
-                  aria-current={i === index}
-                  className={`relative aspect-square w-full overflow-hidden rounded-md border-2 transition-colors ${
-                    i === index ? "border-[#d1b250]" : "border-transparent hover:border-[#30373e]/25"
-                  }`}
-                >
-                  <Image src={src} alt="" fill sizes="100px" className="object-cover" />
-                </button>
-              </div>
-            ))}
-          </Slider>
+      <div className="mt-1 flex items-center justify-between gap-4 sm:mt-3">
+        {multiple ? (
+          <p className="tabular whitespace-nowrap text-small text-text-soft" aria-live={lightbox ? undefined : "polite"}>
+            {tc("atelier.counter", { n: index + 1, total: count })}
+          </p>
         ) : (
-          // Matches the server-rendered first paint exactly (same markup on
-          // both sides) — swapped for the real Slider the instant we're
-          // mounted client-side, see thumbsMounted above. flex-1 splits the row
-          // evenly, like the slider's slidesToShow, so the thumbs don't start
-          // out full-width and then shrink.
-          <div className="flex gap-2 overflow-hidden">
-            {images.slice(0, 5).map((src, i) => (
-              <div key={`thumb-fallback-${src}-${i}`} className="relative aspect-square min-w-0 flex-1 overflow-hidden rounded-md border-2 border-transparent">
-                <Image src={src} alt="" fill sizes="100px" className="object-cover" />
-              </div>
-            ))}
-          </div>
+          <span />
         )}
-        <style jsx global>{`
-          .gallery-thumb-nav .slick-slider {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-          }
-          .gallery-thumb-nav .slick-list {
-            flex: 1;
-            min-width: 0;
-          }
-        `}</style>
-      </div>
-
-      {lightboxOpen && (
-        <div
-          className="fixed inset-0 z-[100] flex flex-col bg-black"
-          role="dialog"
-          aria-modal="true"
-          aria-label={alt}
-        >
+        <div className="flex items-center">
+          {multiple && (
+            <>
+              <button type="button" className={ICON_BTN} onClick={() => goTo(index - 1)} disabled={index === 0} aria-label={tc("atelier.prev")}>
+                <ChevronLeft aria-hidden="true" className="size-5" strokeWidth={1.5} />
+              </button>
+              <button type="button" className={ICON_BTN} onClick={() => goTo(index + 1)} disabled={index === count - 1} aria-label={tc("atelier.next")}>
+                <ChevronRight aria-hidden="true" className="size-5" strokeWidth={1.5} />
+              </button>
+            </>
+          )}
           <button
             type="button"
-            onClick={() => setLightboxOpen(false)}
-            aria-label="Close full-screen view"
-            className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            className={ICON_BTN}
+            ref={openButtonRef}
+            onClick={() => openLightbox(index)}
+            onPointerEnter={warm}
+            onFocus={warm}
+            aria-haspopup="dialog"
+            aria-label={tc("atelier.openLightbox", { n: index + 1 })}
           >
-            <X size={22} />
+            <Maximize2 aria-hidden="true" className="size-5" strokeWidth={1.5} />
           </button>
-
-          {/* Clicking the image toggles zoom (in on the point you clicked, out
-              back to fit) instead of closing — only clicking the surrounding
-              black backdrop closes the lightbox. While zoomed, moving the mouse
-              pans toward whichever edge the cursor is near (handleMouseMove). */}
-          <div className="relative flex-1 bg-black" onClick={() => setLightboxOpen(false)}>
-            <div
-              className={`relative h-full w-full overflow-hidden p-6 sm:p-12 ${zoomed ? "cursor-zoom-out" : "cursor-zoom-in"}`}
-              onClick={toggleZoom}
-              onMouseMove={handleMouseMove}
-            >
-              <Image
-                src={active}
-                alt={alt}
-                fill
-                sizes="100vw"
-                className={`object-contain select-none transition-transform ease-out ${zoomed ? "scale-[2] duration-500" : "scale-100 duration-300"}`}
-                style={{ transformOrigin: zoomOrigin }}
-              />
-            </div>
-
-            <LightboxPrevArrow onClick={(e) => { e.stopPropagation(); go(-1); }} />
-            <LightboxNextArrow onClick={(e) => { e.stopPropagation(); go(1); }} />
-          </div>
-
-          <div
-            className="scrollbar-hide flex w-full justify-center gap-2 overflow-x-auto px-4 pb-6 pt-2"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {images.map((src, i) => (
-              <button
-                key={`lb-${src}-${i}`}
-                type="button"
-                onClick={() => goTo(i)}
-                aria-label={`Show image ${i + 1}`}
-                aria-current={i === index}
-                className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-md border-2 transition-colors ${
-                  i === index ? "border-[#d1b250]" : "border-white/20 hover:border-white/50"
-                }`}
-              >
-                <Image src={src} alt="" fill sizes="56px" className="object-cover" />
-              </button>
-            ))}
-          </div>
         </div>
+      </div>
+
+      {multiple &&
+        (thumbsReady ? (
+          // Phones: no thumbnail strip (counter, arrows and swipe remain) –
+          // keeps the primary button in the first screen (Abnahme R2).
+          <ul ref={thumbsRef} aria-label={tc("atelier.thumbs")} className="scrollbar-hide mt-3 hidden gap-2 overflow-x-auto pb-1 sm:flex">
+            {images.map((src, i) => (
+              <li key={`thumb-${src}-${i}`} className="shrink-0">
+                <button
+                  type="button"
+                  data-thumb={i}
+                  onClick={() => goTo(i)}
+                  aria-label={tc("atelier.showImage", { n: i + 1 })}
+                  aria-current={i === index ? "true" : undefined}
+                  className={`relative block size-20 overflow-hidden bg-surface-raised outline-offset-2 transition-[box-shadow,opacity] duration-(--duration-micro) ease-quiet ${
+                    i === index ? "ring-1 ring-ink ring-offset-2 ring-offset-paper" : "opacity-80 hover:opacity-100"
+                  }`}
+                >
+                  <Image src={src} alt="" fill sizes="80px" quality={75} className="object-cover mix-blend-multiply" />
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          // Same box as the strip (mt-3 + 5 rem + pb-1), so nothing moves.
+          <div aria-hidden="true" className="mt-3 hidden h-[calc(5rem+4px)] sm:block" />
+        ))}
+
+      {lightbox && (
+        <ProductLightbox
+          images={images}
+          index={index}
+          onIndex={setIndex}
+          onClose={onLightboxClose}
+          altFor={altFor}
+          label={tc("atelier.galleryLabel", { name: alt })}
+          labels={{
+            counter: (n, total) => tc("atelier.counter", { n, total }),
+            zoomIn: tc("atelier.zoomIn"),
+            zoomOut: tc("atelier.zoomOut"),
+            close: tc("atelier.close"),
+            prev: tc("atelier.prev"),
+            next: tc("atelier.next"),
+          }}
+          stageSizes={STAGE_SIZES}
+          stageQuality={STAGE_QUALITY}
+          iconButton={ICON_BTN}
+          reducedMotion={prefersReducedMotion}
+        />
       )}
     </div>
   );
-};
-
-export default ProductGallery;
+}

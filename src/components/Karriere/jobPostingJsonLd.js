@@ -5,6 +5,7 @@ import JsonLd from "@/components/Reusable/JsonLd";
 import { localeUrl } from "@/lib/seo/pageMetadata";
 import { breadcrumbList, graph, jobPostingSchema } from "@/lib/seo/structuredData";
 import { ROUTES } from "@/utils/routing";
+import { localizedTitle } from "@/lib/karriere/stellen";
 
 const HOME_LABEL = { de: "Startseite", en: "Home", fr: "Accueil", it: "Home" };
 const CAREER_LABEL = { de: "Karriere", en: "Career", fr: "Carrière", it: "Carriera" };
@@ -22,7 +23,7 @@ export default function JobPostingJsonLd({ job, locale }) {
           [
             { name: HOME_LABEL[locale] || HOME_LABEL.de, url: localeUrl(locale) },
             { name: CAREER_LABEL[locale] || CAREER_LABEL.de, url: localeUrl(locale, careerPath) },
-            { name: job.title },
+            { name: localizedTitle(job, locale) },
           ],
           `${url}#breadcrumb`
         )

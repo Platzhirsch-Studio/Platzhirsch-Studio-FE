@@ -1,0 +1,95 @@
+{
+  "_hinweis": "Rechtstexte in src/messages: NICHT übersetzen oder umformulieren, nur markieren. Die verbindliche Fassung DE und die Übersetzung EN/FR/IT macht die Kanzlei (Rechtspaket 02, Marktresearch/recht/00-rechtspaket-uebersicht.md Z. 32). tools/i18n/parity.mjs meldet diese Pfade als 'Rechtstext (markiert)' und zählt sie nie als deutschen Rest. Pfad = exakter Schlüssel oder Präfix.",
+  "keys": [
+    {
+      "path": "Cookies.bannerText",
+      "grund": "Einwilligungstext Cookie-Banner (Rechtspaket 02 §4)"
+    },
+    {
+      "path": "Cookies.intro",
+      "grund": "Rechtstext, Neufassung liegt beim Anwalt (seit R4, anwalt-vorschau.md)"
+    },
+    {
+      "path": "Cookies.thirdCountryNotice",
+      "grund": "Drittland-Hinweis Art. 49 DSGVO, liegt beim Anwalt (seit R4)"
+    },
+    {
+      "path": "Cookies.consentModeNotice",
+      "grund": "Hinweis Consent Mode, Rechtspaket 02"
+    },
+    {
+      "path": "Cookies.embedText",
+      "grund": "Einwilligung für externe Inhalte (Google Maps)"
+    },
+    {
+      "path": "Cookies.categories",
+      "grund": "Zweckbeschreibungen der Einwilligungskategorien"
+    },
+    {
+      "path": "Cookies.services",
+      "grund": "Dienstbeschreibungen und Zwecke (Verarbeitungsverzeichnis)"
+    },
+    {
+      "path": "Cookies.mechanisms",
+      "grund": "Übermittlungsgrundlagen (Angemessenheitsbeschluss, SCC)"
+    },
+    {
+      "path": "forms.privacyBefore",
+      "grund": "Datenschutzhinweis an Formularen"
+    },
+    {
+      "path": "forms.privacyAfter",
+      "grund": "Datenschutzhinweis an Formularen"
+    },
+    {
+      "path": "inhalt.newsletter.privacyText",
+      "grund": "Einwilligung Newsletter (Double-Opt-in, Widerruf)"
+    },
+    {
+      "path": "marken.legalNote",
+      "grund": "Marken- und Bildrechtshinweis"
+    },
+    {
+      "path": "markenIndex.legalNote",
+      "grund": "Marken- und Bildrechtshinweis"
+    },
+    {
+      "path": "brandCategory.legalNote",
+      "grund": "Marken- und Bildrechtshinweis"
+    },
+    {
+      "path": "ReviewNotice",
+      "grund": "Pflichthinweis zu Bewertungen (UWG/Omnibus, Rechtspaket 03)"
+    },
+    {
+      "path": "booking.note",
+      "grund": "Datenschutzhinweis zum externen Terminkalender"
+    },
+    {
+      "path": "Upload.consent",
+      "grund": "Einwilligungstext Handy-Upload (DE 1:1 aus features/upload-messages-vorschlag.json, an CONSENT_VERSION in src/lib/upload/config.js gebunden: DE-Wortlaut nur mit neuer Version ändern). EN/FR/IT sind vorläufige Arbeitsübersetzungen mit Kanzlei-Vorbehalt, NICHT freigegeben (Rechtspaket 02).",
+      "status": {
+        "de": "Vorschlag Upload-Team, rechtliche Prüfung offen",
+        "en": "vorläufig, Kanzlei-Vorbehalt",
+        "fr": "vorläufig, Kanzlei-Vorbehalt",
+        "it": "vorläufig, Kanzlei-Vorbehalt"
+      }
+    },
+    {
+      "path": "payments.widerruf",
+      "grund": "Widerrufsseite Gutscheinkauf (FAGG); EN/FR/IT vorläufig, verbindlich durch die Kanzlei (Integration 28.10.2026)"
+    },
+    {
+      "path": "payments.widerrufMail",
+      "grund": "Eingangsbestätigung Widerruf (FAGG); EN/FR/IT vorläufig, Kanzlei"
+    },
+    {
+      "path": "payments.kauf.checkbox",
+      "grund": "Zustimmung Gutscheinbedingungen/Widerrufsbelehrung; EN/FR/IT vorläufig, Kanzlei"
+    },
+    {
+      "path": "payments.kauf.hinweisWiderruf",
+      "grund": "Hinweis Widerrufsrecht beim Kauf; EN/FR/IT vorläufig, Kanzlei"
+    }
+  ]
+}

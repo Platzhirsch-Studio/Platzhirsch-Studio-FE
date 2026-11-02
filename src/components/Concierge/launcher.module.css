@@ -1,0 +1,150 @@
+/* Sitewide concierge launcher (Design-Bibel §6 z-scale, §8 motion, §9 quiet).
+   Quiet button: surface, 1 px line-strong, radius 0, no shadow at rest. */
+.btn {
+  position: fixed;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + var(--ph-consent-h, 0px) + env(safe-area-inset-bottom, 0px));
+  z-index: 44; /* below --z-cta-bar (45) */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 48px;
+  height: 48px;
+  padding: 0 16px 0 14px;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: 500 1rem/1 var(--font-sans);
+  letter-spacing: 0.005em;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-micro) var(--ease-quiet),
+    background-color var(--duration-micro) var(--ease-quiet);
+}
+.btn[hidden] {
+  display: none;
+}
+.btn:hover {
+  border-color: var(--color-ink);
+  background: var(--color-surface-raised);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px var(--color-paper);
+}
+.btn svg {
+  flex: none;
+}
+.label {
+  white-space: nowrap;
+  transition: opacity var(--duration-ui) var(--ease-quiet);
+}
+.ai {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 6px;
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-text-accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+}
+/* From 768 px: a vertical tab flush with the right edge (QM shell-home
+   01.11.2026). The horizontal button (≈ 170 px) lay over product tiles,
+   prices and body text on shop, catalogue and home. 40 px wide it always fits
+   the page gutter (48 px from 768, 80 px from 1280 px), so it never covers the
+   content column, and it keeps the full label "Concierge · KI" at every scroll
+   position (r4-gesamtwerk Nr. 4). Symbol upright, label and "KI" tag read
+   top to bottom. */
+@media (min-width: 768px) {
+  .btn {
+    right: env(safe-area-inset-right, 0px);
+    writing-mode: vertical-rl;
+    width: 40px;
+    min-width: 0;
+    height: auto;
+    padding: 14px 0 12px;
+    gap: 10px;
+    border-right-width: 0;
+  }
+  .ai {
+    justify-content: center;
+    width: 20px;
+    height: auto;
+    padding: 6px 0;
+  }
+  /* A resumed conversation ("Entwurf kopiert – Gespräch fortsetzen") may
+     wrap into a second column instead of running off short screens. */
+  .btn[data-min] {
+    width: auto;
+    min-width: 40px;
+    max-height: calc(100dvh - var(--header-h) - 32px);
+    padding-inline: 10px;
+  }
+  .btn[data-min] .label {
+    white-space: normal;
+  }
+}
+/* QM shell-home r3 (gross 1920): beyond the page width (max-w-page 90rem) the
+   tab no longer sticks to the window edge far outside the content – it stands
+   on the edge of the page box, inside its 80 px gutter, with a full frame. */
+@media (min-width: 1500px) {
+  .btn {
+    right: max(0px, calc((100vw - 90rem) / 2));
+    border-right-width: 1px;
+  }
+}
+
+/* Phones: 48 × 48 symbol button; the minimised sheet becomes a 56 px bar. */
+@media (max-width: 767px) {
+  .btn {
+    gap: 6px;
+    padding: 0 8px 0 11px;
+  }
+  .btn:not([data-min]) .label {
+    display: none;
+  }
+  .btn[data-min] {
+    height: 56px;
+    left: calc(16px + env(safe-area-inset-left, 0px));
+    justify-content: center;
+    gap: 10px;
+    box-shadow: var(--shadow-overlay);
+  }
+}
+
+/* "Nicht stören" fallback tab on the right edge until the footer link
+   "KI-Concierge einblenden" exists (also on phones: without the footer link
+   there would be no way back for 30 days). 24 × 44 px. */
+.tab {
+  position: fixed;
+  right: 0;
+  /* launcher height (48) centred: 16 + 2 px; lifted like the launcher */
+  bottom: calc(18px + var(--ph-consent-h, 0px) + env(safe-area-inset-bottom, 0px));
+  z-index: 44;
+  width: 24px;
+  height: 44px;
+  border: 1px solid var(--color-line-strong);
+  border-right: 0;
+  background: var(--color-surface);
+  color: var(--color-text-accent);
+  font: 500 0.75rem/1 var(--font-sans);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+.tab:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .label {
+    transition: none;
+  }
+}
+:global(html[data-motion="reduced"]) .btn,
+:global(html[data-motion="reduced"]) .label {
+  transition: none;
+}

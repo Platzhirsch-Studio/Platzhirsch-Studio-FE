@@ -1,48 +1,26 @@
-"use client";
-import React from "react";
-import Image from "next/image";
-import { Link } from "@/i18n/navigation";
-import { usePathname } from "next/navigation";
-import { getLocaleFromPath } from "@/utils/getLocaleFromPath";
-import bgImage from "../../../public/Images/Newsletter/room.jpg";
+import PageHeader from "@/components/UberUns/PageHeader";
+import useInhalt from "@/components/UberUns/inhalt/useInhalt";
+import GermanOnlyNotice, { germanText } from "@/components/Legal/GermanOnlyNotice";
 
+// Legal page opening: text only (no photo – the H1 is the LCP element).
+// The H1 stays "Impressum" in every locale, as before; the legal text below
+// is German, approved by the law firm on 29.10.2026 (see impressum.js).
 const ImpressumBanner = () => {
-  const pathname = usePathname();
-  const locale = getLocaleFromPath(pathname);
+  const legal = useInhalt("legal");
+  const common = useInhalt("common");
+  // EN/FR/IT (r3-recht-inhalt P1-2): H1 and crumb are German → lang="de";
+  // the lead says in the page language that only the German text exists.
+  const { locale } = legal;
   return (
-    <div>
-      <div className="relative w-full h-150 pt-25">
-        {/* Background image */}
-        <Image
-          src={bgImage}
-          alt="Impressum Banner"
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black opacity-30 z-10" />
-
-        {/* Content */}
-        <div className="relative z-20 flex flex-col items-center justify-center h-full">
-          <h1 className="font-bold mb-5 text-4xl md:text-5xl tracking-normal text-white text-center">Impressum</h1>
-          <div className="flex items-center justify-center text-white gap-2 mb-8">
-            <div>
-              <Link href="/" locale={locale}>
-                <p className="text-sm font-normal">HOME</p>
-              </Link>
-            </div>
-            <div>
-              <p>/</p>
-            </div>
-            <div>
-              <p className="text-sm font-normal">IMPRESSUM</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <PageHeader
+      breadcrumbs={[{ label: common.t("home"), href: "/" }, { label: germanText("Impressum", locale) }]}
+      eyebrow={legal.t("eyebrow")}
+      // QM content-legal r3 (200 % text): a soft hyphen at the syllable lets the size cap
+      // (longestWordCap, counted per piece) keep the H1 clearly above the body text –
+      // it fits in one line anyway, the hyphen only shows if it ever has to break.
+      title={germanText("Impres­sum", locale)}
+      lead={locale !== "de" ? <GermanOnlyNotice locale={locale} /> : undefined}
+    />
   );
 };
 

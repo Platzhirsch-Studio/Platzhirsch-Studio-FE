@@ -1,0 +1,152 @@
+# .github/workflows/ci.yml — R4-plattform-ci (Masterplan AP1.6)
+# Prüft jedes Release automatisch, in dieser Reihenfolge:
+#   lint → unit → check:facts → build → Playwright + axe → Perf-Budget → check:claims → Bundle-Budget (Ratchet)
+# Jeder Schritt bricht ab, sobald er rot ist (Budget-Tor).
+#
+# Kein Deploy hier: scripts/deploy.sh läuft von Hand auf dem Server.
+# Keine Secrets: Der Build liest nur öffentliche allow_guest-Endpunkte des
+# Backoffice. SERVER kommt aus einer Repository-VARIABLE (Settings → Variables),
+# nicht aus einem Secret. Zufällige Test-Schlüssel erzeugt der Lauf selbst.
+# Mails, Zahlungen, Claude und Backoffice-Schreibzugriffe sind ohne Schlüssel
+# abgeschaltet (Portal-Adapter "mock", Concierge "unavailable").
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NEXT_TELEMETRY_DISABLED: "1"
+  SERVER: ${{ vars.SERVER || 'https://backoffice.platzhirsch.studio' }}
+  BASE_URL: http://localhost:3100
+  OUT: ci-out
+
+jobs:
+  verify:
+    name: Lint, Tests, Build, Budgets
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    defaults:
+      run:
+        # Explizit bash = "bash -eo pipefail": Der Build-Schritt mit `| tee`
+        # bricht sonst bei einem roten Build nicht ab.
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Abhängigkeiten (npm ci, exakt aus package-lock.json)
+        run: npm ci --no-audit --no-fund
+
+      - name: Next-Build-Cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**', 'public/**', 'next.config.*') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json') }}-
+
+      # 1) Lint. Die Schutzregeln (Gold-Text, Händler-Strings) sind seit R6
+      #    "error" und blockieren wie jeder andere Fehler.
+      - name: 1 · Lint
+        run: npx eslint .
+
+      # 2) Unit-Tests (node --test, ohne Netz).
+      - name: 2 · Unit-Tests
+        run: npm run test:unit
+
+      # 2b) Faktencheck-Gate (R6-release): jede Zahl in src/messages/*.json braucht
+      #     einen Beleg in tools/content/facts.json. Liest nur Dateien, kein Netz.
+      - name: 2b · check:facts
+        run: npm run check:facts
+
+      # 3) Produktions-Build.
+      - name: 3 · Build
+        run: npm run build 2>&1 | tee build.log
+
+      - name: Prod-Server starten (next start -p 3100)
+        run: |
+          mkdir -p "$OUT"
+          export UPLOAD_TOKEN_SECRET="ci-$(openssl rand -hex 24)"
+          export PORTAL_SESSION_SECRET="ci-$(openssl rand -hex 24)"
+          export UPLOAD_PUBLIC_BASE_URL="$BASE_URL"
+          nohup npx next start -p 3100 > "$OUT/start.log" 2>&1 &
+          for i in $(seq 1 90); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$BASE_URL/de" || true)
+            if [ "$code" = "200" ]; then echo "Server bereit nach ${i}×2 s"; exit 0; fi
+            sleep 2
+          done
+          echo "Server nicht bereit"; tail -n 100 "$OUT/start.log"; exit 1
+
+      - name: Playwright-Browser
+        run: npx playwright install --with-deps chromium webkit
+
+      # 4) Playwright inkl. axe (a11y.spec.js: keine "serious"/"critical").
+      - name: 4 · Playwright + axe
+        env:
+          CI: "true"
+          PW_REPORT_DIR: ci-out/playwright-report
+          PW_OUTPUT_DIR: ci-out/playwright-results
+          PW_JSON_REPORT: ci-out/playwright.json
+          PW_WORKERS: "2"
+        run: npx playwright test
+
+      # 5) Perf-Budget (Labor): LCP ≤ 2,5 s, CLS ≤ 0,1, TBT ≤ 200 ms.
+      - name: 5 · Perf-Budget
+        run: |
+          node tools/qa/perf.mjs --base="$BASE_URL" --runs=3 --json="$OUT/perf.json"
+          node tools/ci/perf-gate.mjs "$OUT/perf.json" --md="$OUT/perf.md"
+
+      # 6) Claims: Quelltexte + gerendertes HTML (Händler nur ClassiCon, keine Superlative).
+      - name: 6 · check:claims
+        run: node tools/checks/check-claims.mjs --live --base="$BASE_URL" --locales=de,en,fr,it --json="$OUT/claims.json"
+
+      # 7) JS-Budget: ≤ 190 KiB gzip Initial-JS je Route, als Ratchet.
+      #    Routen, die heute schon darüber liegen, stehen mit ihrem Ist-Wert in
+      #    tools/ci/bundle-baseline.json. Rot wird nur ein ZUWACHS (> Baseline
+      #    + 2 KiB) oder eine neue Route über 190 KiB. Nach einer Verkleinerung
+      #    die Baseline senken: node tools/ci/bundle-budget.mjs --dir=.next
+      #    --write-baseline=tools/ci/bundle-baseline.json (Wert sinkt, steigt nie).
+      #    Vorschlag aus diesem Lauf: Artefakt ci-out/bundle-baseline.next.json.
+      - name: 7 · Bundle-Budget (Ratchet)
+        run: |
+          cp tools/ci/bundle-baseline.json "$OUT/bundle-baseline.next.json"
+          node tools/ci/bundle-budget.mjs --dir=.next --budget-kb=190 --baseline=tools/ci/bundle-baseline.json --tolerance-kb=2 --write-baseline="$OUT/bundle-baseline.next.json" --json="$OUT/bundle-budget.json" --md="$OUT/bundle-budget.md"
+
+      - name: Zusammenfassung
+        if: always()
+        run: |
+          for f in "$OUT/perf.md" "$OUT/bundle-budget.md"; do
+            [ -f "$f" ] && cat "$f" >> "$GITHUB_STEP_SUMMARY"
+          done
+          exit 0
+
+      - name: Prod-Server stoppen
+        if: always()
+        run: pkill -f "next start -p 3100" || true
+
+      - name: Berichte hochladen
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-berichte-${{ github.run_number }}
+          path: |
+            ci-out/
+            build.log
+          retention-days: 14
+          if-no-files-found: ignore

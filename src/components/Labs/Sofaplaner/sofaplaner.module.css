@@ -1,0 +1,2920 @@
+/* Sofaplaner (Labs, Minotti-Modelle). Only role tokens from globals.css
+   (design bible §4.2), radius 0, one overlay shadow at most, 44 px targets. */
+.app {
+  --sp-top: var(--header-h, 56px);
+  /* Fix-Runde 1 (F2): warme Polster-Töne für die Vorschauen statt Grau */
+  --sp-thumb-fill: var(--color-stone-deep);
+  --sp-thumb-dark: color-mix(in oklab, var(--color-walnut) 55%, var(--color-pebble));
+  --sp-thumb-cushion: var(--color-bone);
+  --sp-thumb-seam: color-mix(in oklab, var(--color-pebble) 70%, transparent);
+  --sp-err-bg: color-mix(in oklab, var(--color-error) 9%, var(--color-surface));
+  --sp-warn-bg: color-mix(in oklab, var(--color-notice) 10%, var(--color-surface));
+  --sp-ok-bg: color-mix(in oklab, var(--color-success) 9%, var(--color-surface));
+  --sp-info-bg: color-mix(in oklab, var(--color-see) 9%, var(--color-surface));
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.app *,
+.app *::before,
+.app *::after {
+  box-sizing: border-box;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* --- page ---------------------------------------------------------------- */
+.page {
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 40px 0 64px;
+  overflow-x: clip;
+}
+@media (min-width: 768px) {
+  .page {
+    padding-top: 56px;
+  }
+}
+@media (min-width: 1024px) {
+  .page {
+    padding-top: 64px;
+  }
+}
+/* Fix-Runde 1 (F2): Ränder nach Design-Bibel (20/48/80 px) wie alle Werkzeugseiten */
+.pageWrap {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-gutter, 20px);
+}
+.pageHead {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 28px;
+  max-width: 760px;
+}
+.h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 1.8rem + 2vw, 3.5rem);
+  line-height: 1.05;
+  font-weight: 400;
+}
+/* R8: beschreibender Teil der H1 (SOURCE_COPY.h1 nach dem Doppelpunkt). */
+.h1Sub {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--font-sans, inherit);
+  font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.375rem);
+  line-height: 1.35;
+  color: var(--color-text-soft);
+}
+.h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 400;
+}
+.h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.h4 {
+  margin: 4px 0 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.pageLead,
+.lead {
+  margin: 0;
+  max-width: 68ch;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.lead {
+  font-size: 0.9375rem;
+  color: var(--color-text-soft);
+}
+.tips {
+  display: grid;
+  gap: 16px;
+  max-width: 860px;
+  margin-top: 64px;
+}
+
+/* --- topbar: stepper + expert switch -------------------------------------- */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 16px;
+  border-block: 1px solid var(--color-line);
+}
+.stepper {
+  min-width: 0;
+  flex: 1 1 520px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.stepper::-webkit-scrollbar {
+  display: none;
+}
+.stepper ol {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.stepBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 0 14px 0 0;
+  margin-right: 6px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--color-text-soft);
+  font: inherit;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.stepBtn[aria-current="step"] {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+  font-weight: 600;
+}
+.stepNum {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--color-line-control);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+.stepBtn[aria-current="step"] .stepNum {
+  background: var(--color-action);
+  border-color: var(--color-action);
+  color: var(--color-text-inverse);
+}
+@media (max-width: 1023px) {
+  .stepBtn:not([aria-current="step"]) .stepLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .stepBtn {
+    min-height: 44px;
+    padding-right: 2px;
+    margin-right: 2px;
+  }
+}
+/* QM planer-tools (01.11.2026): 375 px – bei „Im Raum prüfen“ ragte der Kreis 6
+   halb unter den Menü-Knopf. Etwas engere Kreise, alle sechs bleiben sichtbar
+   (Ziel ≥ 24 px bleibt). */
+@media (max-width: 400px) {
+  .stepBtn {
+    gap: 6px;
+    margin-right: 0;
+  }
+  .stepNum {
+    width: 24px;
+    height: 24px;
+  }
+}
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.switchTrack {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  border: 1px solid var(--color-line-control);
+  border-radius: 999px;
+  background: var(--color-surface-raised);
+}
+.switchThumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--color-line-control);
+  transition: transform var(--duration-micro, 160ms) var(--ease-quiet, ease);
+}
+.switch[aria-checked="true"] .switchTrack {
+  background: var(--color-action);
+  border-color: var(--color-action);
+}
+.switch[aria-checked="true"] .switchThumb {
+  background: var(--color-surface);
+  transform: translateX(18px);
+}
+.modelLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin: 0 0 16px;
+}
+.modelLineName {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* --- step 1: model picker --------------------------------------------------- */
+.picker {
+  display: grid;
+  gap: 20px;
+}
+.stepHead {
+  display: grid;
+  gap: 6px;
+}
+.stepTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-weight: 500;
+}
+.stepTitle:focus {
+  outline: none;
+}
+.pickerTools {
+  display: grid;
+  gap: 12px;
+}
+@media (min-width: 900px) {
+  .pickerTools {
+    grid-template-columns: minmax(260px, 380px) 1fr;
+    align-items: center;
+  }
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 12px;
+  border: 1px solid var(--color-line-control);
+  background: var(--color-surface);
+  color: var(--color-text-soft);
+}
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  min-height: 46px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 1rem;
+}
+.searchInput:focus {
+  outline: none;
+}
+.search:focus-within {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.modelGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.modelCard {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-micro, 160ms) var(--ease-quiet, ease),
+    transform var(--duration-micro, 160ms) var(--ease-quiet, ease);
+}
+.modelCard:hover {
+  border-color: var(--color-text);
+}
+.modelCard[aria-pressed="true"] {
+  border-color: var(--color-text);
+  box-shadow: inset 0 0 0 1px var(--color-text);
+}
+.modelThumb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  padding: 18px 24px;
+  background: var(--color-surface-band);
+}
+.thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 150px;
+}
+.modelActive {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background: var(--color-action);
+  color: var(--color-text-inverse);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.modelBody {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: 14px 16px 16px;
+}
+.modelName {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1.05;
+  font-weight: 400;
+}
+.modelMeta {
+  font-size: 0.875rem;
+  color: var(--color-text-soft);
+}
+.modelChar {
+  margin-top: 4px;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.modelFacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-top: 6px;
+  font-size: 0.8125rem;
+  color: var(--color-text-soft);
+  font-variant-numeric: tabular-nums;
+}
+.modelForms {
+  font-size: 0.8125rem;
+  color: var(--color-text-accent);
+}
+
+/* --- layout --------------------------------------------------------------- */
+.layout {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: minmax(0, 1.5fr) minmax(340px, 1fr);
+    align-items: start;
+  }
+}
+/* QM r4: auch iPad quer (1194 × 834) – vorher scrollte der Plan dort weg, links blieb
+   60 % leer, und ein angetipptes Element war im Plan nicht mehr zu sehen. Darunter
+   (Laptop 1366 × 768 und kleiner) bleiben die engeren Höhen aus dem Block weiter unten. */
+@media (min-width: 1280px) and (min-height: 760px), (min-width: 1024px) and (min-height: 800px) {
+  .stage {
+    position: sticky;
+    top: calc(var(--header-h, 72px) + 16px);
+  }
+  .stage .svg {
+    max-height: max(300px, calc(100dvh - 380px));
+  }
+  .stageEdit .svg {
+    max-height: max(280px, calc(100dvh - 446px));
+  }
+  .stage .canvas3d {
+    height: max(300px, calc(100dvh - 420px));
+  }
+}
+.stage,
+.side,
+.stack {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+.side {
+  gap: 16px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--color-line-control);
+  background: var(--color-surface);
+}
+.seg button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.seg button[aria-pressed="true"] {
+  background: var(--color-action);
+  color: var(--color-text-inverse);
+}
+
+/* --- canvas ----------------------------------------------------------------- */
+.canvasWrap {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-strong);
+  overflow: hidden;
+}
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 72vh;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.floor {
+  fill: var(--color-surface);
+}
+.gridLine {
+  stroke: var(--color-line);
+  stroke-width: 1;
+}
+.wall {
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 8;
+}
+.windowGap {
+  stroke: var(--color-surface);
+  stroke-width: 9;
+}
+.windowPane {
+  stroke: var(--color-see);
+  stroke-width: 3;
+}
+.doorLeaf {
+  stroke: var(--color-text);
+  stroke-width: 2.5;
+}
+.doorArc {
+  fill: color-mix(in oklab, var(--color-error) 5%, transparent);
+  stroke: var(--color-text-soft);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 3;
+}
+.roomDim {
+  fill: var(--color-text-soft);
+  letter-spacing: 0.04em;
+}
+.totalDim {
+  font-weight: 600;
+  fill: var(--color-text);
+}
+.module {
+  cursor: grab;
+  outline: none;
+}
+.module:active {
+  cursor: grabbing;
+}
+.moduleOutline {
+  fill: none;
+  stroke: color-mix(in oklab, var(--color-ink) 55%, transparent);
+  stroke-width: 1.5;
+}
+.moduleSel .moduleOutline {
+  stroke: var(--color-text);
+  stroke-width: 4;
+}
+.module:focus-visible .moduleOutline {
+  stroke: var(--color-text-accent);
+  stroke-width: 4;
+}
+.flag_warn .moduleOutline {
+  stroke: var(--color-notice);
+  stroke-width: 3.5;
+  stroke-dasharray: 7 4;
+}
+.flag_error .moduleOutline {
+  stroke: var(--color-error);
+  stroke-width: 4;
+}
+.dockTarget .moduleOutline {
+  stroke: var(--color-success);
+  stroke-width: 4;
+}
+.dockBlocked .moduleOutline {
+  stroke: var(--color-error);
+  stroke-width: 4;
+  stroke-dasharray: 3 3;
+}
+.missingHatch {
+  fill: none;
+  stroke: var(--color-notice);
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+  pointer-events: none;
+}
+.freeFace {
+  stroke: var(--color-success);
+  stroke-width: 5;
+  stroke-linecap: square;
+  stroke-dasharray: 10 6;
+  pointer-events: none;
+}
+.moduleLabelWrap {
+  pointer-events: none;
+  transition: opacity var(--duration-micro, 160ms);
+}
+.moduleLabel {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.moduleDim .moduleLabelWrap {
+  opacity: 0.45;
+}
+.svgLightFabric .moduleOutline {
+  stroke: color-mix(in oklab, var(--color-ink) 80%, transparent);
+}
+.dim_muted line,
+.dim_warn line,
+.dim_total line {
+  stroke-width: 1.5;
+}
+.dim_muted line {
+  stroke: var(--color-text-soft);
+}
+.dim_total line {
+  stroke: var(--color-text);
+}
+.dim_warn line {
+  stroke: var(--color-notice);
+  stroke-width: 2.5;
+}
+.dimPill {
+  fill: var(--color-surface);
+  stroke: var(--color-line-strong);
+}
+.dim_warn .dimPill {
+  fill: var(--sp-warn-bg);
+  stroke: var(--color-notice);
+}
+.dimText {
+  fill: var(--color-text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- 3D ------------------------------------------------------------------- */
+.canvas3d {
+  position: relative;
+  height: min(52svh, 380px);
+  min-height: 280px;
+}
+@media (min-width: 1024px) {
+  .canvas3d {
+    height: min(62svh, 560px);
+  }
+}
+.activate3d {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 0 16px;
+  border: 0;
+  background: transparent;
+  touch-action: pan-y;
+  cursor: pointer;
+  font: inherit;
+}
+.activate3d > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  background: var(--color-action);
+  color: var(--color-text-inverse);
+  font-size: 0.875rem;
+}
+.done3d {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--color-line-control);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+/* 3D v2: legend – original Minotti model vs. schematic volume */
+.legend3d {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: calc(100% - 120px);
+  margin: 0;
+  pointer-events: none;
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+.legend3dReal,
+.legend3dSchematic {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border: 1px solid var(--color-line-control);
+  background: color-mix(in oklab, var(--color-surface) 88%, transparent);
+  color: var(--color-text);
+}
+.legend3dReal::before,
+.legend3dSchematic::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.legend3dReal::before {
+  background: var(--color-text);
+}
+.legend3dSchematic::before {
+  border: 1px solid var(--color-text-soft);
+}
+.loading3d {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 16px;
+  text-align: center;
+  color: var(--color-text-soft);
+}
+.loadingHint {
+  display: block;
+  max-width: 34ch;
+  margin-top: 6px;
+  font-size: 0.8125rem;
+}
+.caption3d {
+  margin: 0;
+  padding: 8px 12px;
+  border-top: 1px solid var(--color-line);
+  background: var(--color-surface-raised);
+  font-size: 0.8125rem;
+  color: var(--color-text-soft);
+}
+
+/* --- status + inspector ---------------------------------------------------- */
+.hint {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0;
+  box-shadow: var(--shadow-overlay, 0 8px 24px rgb(0 0 0 / 0.12));
+  padding: 10px 12px;
+  border-left: 3px solid var(--color-error);
+  background: var(--sp-err-bg);
+  font-size: 0.875rem;
+}
+.statusLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 0;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+}
+.statusSize {
+  font-weight: 600;
+}
+.statusSize::after {
+  content: "·";
+  margin: 0 8px;
+  font-weight: 400;
+  color: var(--color-text-soft);
+}
+.statusSeats {
+  margin-right: 12px;
+}
+@media (min-width: 1024px) {
+  .statusLine {
+    display: none;
+  }
+}
+.inspector {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  min-height: 52px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface-raised);
+  font-size: 0.875rem;
+}
+.inspTitle {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+/* --- strips, chips -------------------------------------------------------- */
+.strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 16px;
+  scrollbar-width: none;
+  margin-inline: -16px;
+  padding: 2px 16px;
+}
+.strip::-webkit-scrollbar {
+  display: none;
+}
+.strip > * {
+  flex: none;
+  scroll-snap-align: start;
+}
+@media (min-width: 1024px) {
+  .strip {
+    margin-inline: 0;
+    padding-inline: 0;
+    flex-wrap: wrap;
+  }
+}
+.chips,
+.swatches,
+.btnRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip,
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--color-line-control);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.chip[aria-checked="true"],
+.swatch[aria-checked="true"] {
+  border-color: var(--color-text);
+  box-shadow: inset 0 0 0 1px var(--color-text);
+  font-weight: 600;
+}
+.chipCount {
+  min-width: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--color-surface-band);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.swatchDot {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1px solid var(--color-line-strong);
+}
+
+/* --- step 2: forms ---------------------------------------------------------- */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.formCard {
+  display: grid;
+  /* QM planer-tools: Inhalt oben ausrichten – sonst verteilte das Raster die
+     Resthöhe der gleich hohen Karten, Titel einer Reihe standen versetzt. */
+  align-content: start;
+  gap: 4px;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.formCard:hover {
+  border-color: var(--color-text);
+}
+.formCard .thumb {
+  height: 84px;
+  margin-bottom: 6px;
+}
+.formName {
+  font-weight: 600;
+}
+/* QM r4 (iPad hoch): die Form, die gerade im Plan steht, ist markiert */
+.formCard[data-current] {
+  border-color: var(--color-text);
+  box-shadow: inset 0 0 0 1px var(--color-text);
+}
+.formCurrent {
+  justify-self: start;
+  padding: 2px 8px;
+  background: var(--color-action);
+  color: var(--color-text-inverse);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* --- step 3: tiles ----------------------------------------------------------- */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tile {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  min-height: 72px;
+  padding: 10px 30px 10px 10px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.tile:hover:not([aria-disabled="true"]) {
+  border-color: var(--color-text);
+}
+.tile[aria-disabled="true"] {
+  background: var(--color-surface-raised);
+  color: var(--color-text-soft);
+  cursor: not-allowed;
+}
+.tile[aria-disabled="true"] .tileIcon {
+  opacity: 0.45;
+}
+.tileIcon {
+  display: block;
+  width: 56px;
+  height: 56px;
+}
+.tileText {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.tileName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.tileDim {
+  font-size: 0.8125rem;
+  color: var(--color-text-soft);
+  font-variant-numeric: tabular-nums;
+}
+.tileMeta {
+  font-size: 0.75rem;
+  color: var(--color-text-soft);
+}
+.tileCode {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--color-text-soft);
+  overflow-wrap: anywhere;
+}
+.tileMissing {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-notice);
+}
+/* QM planer-tools: Hinweis in der Zusammenstellung (Schritt 6) nicht mitten im Satz trennen */
+.plainList .tileMissing {
+  white-space: nowrap;
+}
+.tileReason {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-error);
+}
+.tilePlus {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  color: var(--color-text-soft);
+}
+
+/* --- side cards / panels ------------------------------------------------------ */
+.summaryCard {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-surface-band);
+}
+.summaryCard > div:first-child {
+  display: grid;
+}
+.price {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 2px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-line);
+}
+.big {
+  font-size: 1.375rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.overline {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-accent);
+}
+.status {
+  align-self: start;
+}
+.badgeOk,
+.badgeWarn,
+.badgeErr {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-inverse);
+}
+.badgeOk {
+  background: var(--color-success);
+}
+.badgeWarn {
+  background: var(--color-notice);
+}
+.badgeErr {
+  background: var(--color-error);
+}
+.panel {
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+}
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 12px 16px;
+  list-style: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.summary::-webkit-details-marker {
+  display: none;
+}
+.summary::marker {
+  content: "";
+}
+.chevron {
+  flex: none;
+  color: var(--color-text-accent);
+  transition: transform var(--duration-ui, 280ms) var(--ease-quiet, ease);
+}
+.panel[open] > .summary .chevron {
+  transform: rotate(180deg);
+}
+.summary:focus-visible,
+.app button:focus-visible,
+.app input:focus-visible,
+.app select:focus-visible,
+.app textarea:focus-visible,
+.app a:focus-visible,
+.more > summary:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.panelBody {
+  display: grid;
+  gap: 14px;
+  padding: 0 16px 18px;
+}
+.more {
+  border-top: 1px solid var(--color-line);
+  padding-top: 4px;
+  font-size: 0.875rem;
+}
+.more > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.stepNav {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-line);
+}
+@media (max-width: 1023px) {
+  .stepNav {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    margin-inline: calc(-1 * var(--spacing-gutter, 16px));
+    padding: 10px var(--spacing-gutter, 16px) calc(10px + env(safe-area-inset-bottom));
+    background: var(--color-surface);
+  }
+}
+
+/* --- form controls ---------------------------------------------------------- */
+.field {
+  display: grid;
+  gap: 4px;
+  font-size: 0.8125rem;
+  min-width: 0;
+}
+.field > label:first-child,
+.field > span:first-child {
+  color: var(--color-text-soft);
+}
+.input,
+.textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-line-control);
+  border-radius: 0;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 16px;
+}
+.textarea {
+  min-height: 160px;
+  resize: vertical;
+  font-size: 0.875rem;
+}
+.numWrap {
+  position: relative;
+  display: block;
+}
+.numWrap .input {
+  padding-right: 40px;
+}
+.suffix {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8125rem;
+  color: var(--color-text-soft);
+  pointer-events: none;
+}
+.grid2 {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+.opening,
+.fieldset {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 10px 12px 12px;
+  border: 1px solid var(--color-line);
+  min-width: 0;
+}
+.opening legend,
+.fieldset legend,
+.legend {
+  margin: 0;
+  padding: 0 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.optFixed {
+  margin: 0;
+  font-size: 0.875rem;
+}
+.optDetail {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--color-text-soft);
+}
+.radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 44px;
+  padding-block: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.radio input,
+.check input {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--color-action);
+  flex: none;
+}
+.check {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  min-height: 44px;
+  padding-block: 4px;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  cursor: pointer;
+}
+.check a {
+  text-decoration: underline;
+  padding-block: 8px;
+}
+.input[aria-invalid="true"],
+.textarea[aria-invalid="true"] {
+  border-color: var(--color-error);
+  box-shadow: inset 0 0 0 1px var(--color-error);
+}
+.check input[aria-invalid="true"] {
+  outline: 2px solid var(--color-error);
+  outline-offset: 2px;
+}
+.fieldErr {
+  color: var(--color-error);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.qtyList {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.qtyRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-line);
+  font-size: 0.875rem;
+}
+.qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+.qty output {
+  min-width: 2ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+/* --- buttons ------------------------------------------------------------------ */
+.btn,
+.btnGhost,
+.btnPrimary,
+.iconBtn,
+.iconBtnSm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 0;
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.btn {
+  border: 1px solid var(--color-action);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.btnGhost {
+  border: 1px solid var(--color-line-control);
+  background: transparent;
+  color: var(--color-text);
+}
+.btnPrimary {
+  border: 1px solid var(--color-action);
+  background: var(--color-action);
+  color: var(--color-text-inverse);
+}
+.btnPrimary:hover {
+  background: var(--color-action-hover);
+}
+.iconBtn {
+  min-width: 44px;
+  padding: 0;
+  border: 1px solid var(--color-line-control);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.iconBtnSm {
+  flex: none;
+  min-width: 44px;
+  min-height: 32px;
+  margin: -6px -6px -6px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+}
+.app button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.linkBtn {
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.checks .linkBtn {
+  text-decoration: none;
+}
+.checks .linkBtn:hover {
+  text-decoration: underline;
+}
+
+/* --- lists, notes, tables ------------------------------------------------------- */
+.checks,
+.list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+}
+.check_error,
+.check_warn,
+.check_info {
+  padding: 6px 10px;
+  border-left: 3px solid;
+}
+.check_error {
+  border-color: var(--color-error);
+  background: var(--sp-err-bg);
+}
+.check_warn {
+  border-color: var(--color-notice);
+  background: var(--sp-warn-bg);
+}
+.check_info {
+  border-color: var(--color-see);
+  background: var(--sp-info-bg);
+}
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.plainList {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  /* Optik-QA: ohne Listenpunkte (Preflight) war der 20-px-Einzug nur ein Versatz zur Überschrift */
+  padding-left: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+/* QM planer-tools: die letzte Tipp-Zeile stieß direkt an die Trennlinie der Modell-Liste. */
+.plainList + .more {
+  margin-top: 16px;
+}
+.familyList {
+  columns: 2 260px;
+  margin: 8px 0 0;
+  padding-left: 20px;
+  font-size: 0.875rem;
+  line-height: 1.9;
+}
+.familyList a {
+  color: var(--color-text);
+}
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: var(--color-surface-band);
+}
+.shareBox {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: end;
+}
+.okBox {
+  padding: 12px;
+  background: var(--sp-ok-bg);
+  font-size: 0.875rem;
+}
+.okBox p {
+  margin: 0 0 8px;
+}
+.pre {
+  margin: 0;
+  max-height: 260px;
+  overflow: auto;
+  padding: 10px;
+  background: var(--color-surface);
+  font-size: 0.75rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.err {
+  margin: 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--color-error);
+  background: var(--sp-err-bg);
+  font-size: 0.875rem;
+}
+.okText {
+  margin: 0;
+  color: var(--color-success);
+  font-weight: 600;
+}
+.note {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--color-surface-raised);
+  border-left: 3px solid var(--color-line-strong);
+  font-size: 0.875rem;
+}
+.muted {
+  color: var(--color-text-soft);
+}
+.small {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-soft);
+}
+.tableWrap {
+  overflow-x: auto;
+  margin: 8px 0;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+.table th,
+.table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--color-line);
+  text-align: left;
+  vertical-align: top;
+}
+.table th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+.missingCell {
+  color: var(--color-notice);
+  font-weight: 600;
+}
+.srcLink {
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- QM Sofaplaner R1: selection, overlays, mobile layout ------------------- */
+.selHalo {
+  fill: none;
+  stroke: var(--color-surface);
+  stroke-width: 10;
+  pointer-events: none;
+}
+.moduleSel .moduleOutline {
+  stroke: var(--color-text);
+  stroke-width: 4;
+}
+.selHandle {
+  fill: var(--color-surface);
+  stroke: var(--color-text);
+  stroke-width: 2.5;
+  pointer-events: none;
+}
+/* QM R2 P2-A: own row next to the plan (never on top of it) */
+.selSlot {
+  min-width: 0;
+  min-height: 54px;
+}
+.selIdle {
+  display: flex;
+  align-items: center;
+  min-height: 54px;
+  margin: 0;
+  padding: 0 12px;
+  border: 1px dashed var(--color-line-strong);
+  color: var(--color-text-soft);
+  font-size: 0.8125rem;
+}
+.selBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 10px;
+  min-width: 0;
+  min-height: 54px;
+  padding: 4px 4px 4px 12px;
+  border: 1px solid var(--color-text);
+  background: var(--color-surface);
+  font-size: 0.8125rem;
+}
+.selName {
+  display: grid;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  line-height: 1.25;
+}
+.selName strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.selDim {
+  overflow: hidden;
+  color: var(--color-text-soft);
+  font-variant-numeric: tabular-nums;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.selActions {
+  display: flex;
+  flex: none;
+}
+.selBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+.selBtn:hover {
+  background: var(--color-surface-band);
+}
+.toast {
+  position: absolute;
+  z-index: 3;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  padding: 8px 8px 8px 12px;
+  background: var(--color-action);
+  color: var(--color-text-inverse);
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-overlay, 0 8px 24px rgb(0 0 0 / 0.12));
+}
+.canvasWrap:has(.selBar) .toast {
+  top: 8px;
+  bottom: auto;
+}
+.toast .iconBtnSm {
+  color: inherit;
+  margin: 0;
+}
+.toastActions {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+.toastBtn {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.toolbarStatus {
+  margin-left: auto;
+  font-size: 0.875rem;
+}
+.menuBtn,
+.menu,
+.navPrevShort {
+  display: none;
+}
+.menuModel {
+  max-width: 14ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.formCard[data-nofit] {
+  background: var(--color-surface);
+  border-style: dashed;
+}
+.formCard[data-nofit] .thumb {
+  opacity: 0.45;
+}
+.familyList a {
+  display: inline-block;
+  min-height: 24px;
+  padding-block: 2px;
+}
+
+/* desktop: the step navigation sits under the step content (right column) */
+@media (min-width: 1024px) {
+  .layout > .stage {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  .layout > .side {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .layout > .stepNav {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .toolbarStatus {
+    display: none;
+  }
+}
+
+/* phones and tablets (QM R1 P1-2): compact sticky step bar, plan sticky on
+   top (max. 40 % of the screen), step content scrolls below it, sticky
+   "Zurück | Weiter" bar at the bottom above the consent bar and safe area. */
+@media (max-width: 1023px) {
+  .topbar {
+    --sp-bar-h: 52px;
+    position: sticky;
+    top: var(--sp-top);
+    z-index: 6;
+    flex-wrap: nowrap;
+    transition: top var(--duration-ui, 280ms) var(--ease-quiet, ease);
+    height: var(--sp-bar-h);
+    margin: 0 calc(-1 * var(--spacing-gutter, 16px)) 12px;
+    padding: 0 var(--spacing-gutter, 16px);
+    background: var(--color-surface);
+    gap: 8px;
+  }
+  .stepper {
+    flex: 1 1 auto;
+  }
+  .deskOnly,
+  .modelLine,
+  .inspector,
+  .statusLine {
+    display: none;
+  }
+  .menuBtn {
+    display: inline-flex;
+    flex: none;
+    gap: 6px;
+    padding: 0 10px;
+  }
+  .menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: grid;
+    gap: 12px;
+    padding: 12px 16px 16px;
+    border-bottom: 1px solid var(--color-line-strong);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-overlay, 0 8px 24px rgb(0 0 0 / 0.12));
+  }
+  .menuRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+    margin: 0;
+  }
+  .layout {
+    gap: 16px;
+  }
+  .stageSticky {
+    position: sticky;
+    top: calc(var(--sp-top) + 52px);
+    z-index: 5;
+    transition: top var(--duration-ui, 280ms) var(--ease-quiet, ease);
+    gap: 6px;
+    margin-inline: calc(-1 * var(--spacing-gutter, 16px));
+    padding: 0 var(--spacing-gutter, 16px) 8px;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .stageSticky .toolbar .seg button,
+  .stageSticky .toolbar .iconBtn {
+    min-height: 40px;
+  }
+  /* QM Restliste P3-4: fixed box, the drawing fills it (PlanSvg reads --sp-fill) */
+  .stageSticky .svg {
+    --sp-fill: 1;
+    height: max(150px, min(32svh, calc(100svh - var(--header-h, 56px) - 52px - 300px)));
+    max-height: min(32svh, calc(100svh - var(--header-h, 56px) - 52px - 300px));
+    min-height: 150px;
+  }
+  /* QM R2 P1-A: 3D keeps the sticky place and the height of the 2D plan */
+  .stageSticky .canvas3d {
+    height: max(150px, min(32svh, calc(100svh - var(--header-h, 56px) - 52px - 300px)));
+    min-height: 150px;
+  }
+  /* QM R2 P2-A: the selection row sits below the plan; while it is shown
+     the plan shrinks by its height, so the sticky area keeps its size */
+  .stageSticky .canvasWrap {
+    order: 1;
+  }
+  .stageSticky .selSlot {
+    order: 2;
+    min-height: 0;
+  }
+  .stageSticky .selSlot[data-idle] {
+    display: none;
+  }
+  .stageSticky:has(.selBar) .svg {
+    height: max(120px, calc(min(32svh, calc(100svh - var(--header-h, 56px) - 52px - 300px)) - 60px));
+    max-height: max(120px, calc(min(32svh, calc(100svh - var(--header-h, 56px) - 52px - 300px)) - 60px));
+    min-height: 120px;
+  }
+  .stageSticky .caption3d {
+    display: none;
+  }
+  /* QM Restliste P3-3: the undo message no longer covers the plan that just
+     changed – it floats just above the sticky "Zurück | Weiter" bar. */
+  .stageSticky .canvasWrap .toast,
+  .stageSticky .canvasWrap:has(.selBar) .toast {
+    position: fixed;
+    z-index: 7;
+    top: auto;
+    left: 16px;
+    right: 16px;
+    bottom: calc(var(--ph-consent-h, 0px) + var(--sp-nav-h, 64px) + 8px);
+    font-size: 0.8125rem;
+  }
+  .side > .summaryCard {
+    order: 10;
+  }
+  .side > .stack {
+    order: 1;
+  }
+  .stepNav {
+    position: sticky;
+    bottom: var(--ph-consent-h, 0px);
+    z-index: 5;
+    margin-inline: calc(-1 * var(--spacing-gutter, 16px));
+    padding: 8px var(--spacing-gutter, 16px) calc(8px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--color-line);
+    background: var(--color-surface);
+  }
+  .stepNav .btnPrimary {
+    flex: 1;
+    max-width: 340px;
+    margin-left: auto;
+  }
+  .navPrevLabel {
+    display: none;
+  }
+  .navPrevShort {
+    display: inline;
+  }
+  /* fixed height: bar (54) + grid gap (6) = what the plan gives up, so the
+     sticky area keeps its height and the page does not shift (scroll anchoring) */
+  .selBar {
+    box-sizing: border-box;
+    height: 54px;
+    min-height: 0;
+    padding-left: 10px;
+  }
+  .selLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .selBtn {
+    padding: 0;
+    justify-content: center;
+  }
+}
+@media (max-width: 479px) {
+  .menuModel {
+    display: none;
+  }
+  .menuBtn {
+    padding: 0;
+    min-width: 44px;
+  }
+}
+
+/* --- step 1 (QM R1 P2-5): filters, grouped variants, lazy thumbnails ------- */
+.thumbSlot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 90px;
+}
+.filterBox {
+  border: 1px solid var(--color-line-control);
+  background: var(--color-surface);
+}
+.filterSummary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 14px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.filterSummary::-webkit-details-marker {
+  display: none;
+}
+.filterSummary:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.filterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  align-items: end;
+  padding: 4px 14px 14px;
+}
+.modelItem {
+  display: flex;
+  flex-direction: column;
+}
+.modelItem > .modelCard {
+  flex: 1;
+}
+.modelDims {
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.variants {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px 12px;
+  border: 1px solid var(--color-line);
+  border-top: 0;
+  background: var(--color-surface-raised);
+}
+.variantsHead {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-accent);
+}
+.variantList {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.variantBtn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 6px 10px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.variantBtn:hover,
+.variantBtn[aria-pressed="true"] {
+  border-color: var(--color-text);
+}
+.variantName {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.variantDims {
+  font-size: 0.8125rem;
+  color: var(--color-text-soft);
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 767px) {
+  .leadLong,
+  .pageLeadLong {
+    display: none;
+  }
+  /* Design-Jury P2-13: Bodoni erst ab 32 px (Bibel §5) – unter 768 px
+     stehen die Modellnamen in Instrument Sans, Lead-Größe, 500. */
+  .modelName {
+    font-family: var(--font-sans);
+    font-size: var(--text-lead);
+    line-height: 1.25;
+    font-weight: 500;
+  }
+  .modelThumb {
+    aspect-ratio: 21 / 9;
+    padding: 10px 18px;
+  }
+  .modelChar {
+    -webkit-line-clamp: 2;
+  }
+}
+@media (min-width: 768px) {
+  .pageLeadShort {
+    display: none;
+  }
+}
+
+/* --- step 4 (QM R1 P2-3/P2-7) ------------------------------------------------ */
+.optOff {
+  color: var(--color-text-soft);
+  cursor: not-allowed;
+}
+.collections {
+  display: grid;
+  gap: 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-line);
+}
+.collList {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.875rem;
+}
+.collList .srcLink {
+  display: inline-block;
+  min-height: 24px;
+}
+
+/* P3-5: the draft offer stays in view after a reload */
+.banner {
+  position: sticky;
+  top: calc(var(--header-h, 72px) + 8px);
+  z-index: 7;
+  border: 1px solid var(--color-line-strong);
+  box-shadow: var(--shadow-overlay, 0 8px 24px rgb(0 0 0 / 0.12));
+}
+
+/* phones: controls scrolled to or focused never hide under the sticky plan */
+@media (max-width: 1023px) {
+  .side *,
+  .stepNav * {
+    scroll-margin-top: var(--sp-cover, 120px);
+    scroll-margin-bottom: calc(80px + var(--ph-consent-h, 0px));
+  }
+}
+@media (max-width: 479px) {
+  .longOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+/* the site header slides away on phones while scrolling down (HeaderFrame):
+   the step bar and the plan then move up to the top edge */
+@media (max-width: 767px) {
+  :global(html:has(header[data-hidden="true"])) .app {
+    --sp-top: 0px;
+  }
+}
+
+/* --- QM Sofaplaner R2 P2-D: step 4 option groups as an accordion ---------- */
+.optStack {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+  border-top: 1px solid var(--color-line);
+}
+.optStack > .small {
+  margin-top: 12px;
+}
+.optGroup {
+  border-bottom: 1px solid var(--color-line);
+}
+.optHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 56px;
+  padding: 10px 2px;
+  cursor: pointer;
+  list-style: none;
+}
+.optHead::-webkit-details-marker {
+  display: none;
+}
+.optHead::marker {
+  content: "";
+}
+.optHead:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.optHeadText {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.optTitle {
+  font-weight: 600;
+}
+.optValue {
+  overflow: hidden;
+  color: var(--color-text-soft);
+  font-size: 0.875rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.optGroup[open] > .optHead .chevron {
+  transform: rotate(180deg);
+}
+.optBody {
+  display: grid;
+  gap: 12px;
+  padding: 0 0 16px;
+  min-width: 0;
+}
+.optBody .fieldset,
+.fieldsetFlat {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.fieldsetFlat > legend {
+  margin: 0 0 6px;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+@media (prefers-reduced-motion: reduce) {
+  .optGroup .chevron {
+    transition: none;
+  }
+}
+
+/* QM R3 P3-A: choice under a start shape that does not fit the room */
+.formGrid > li:has([data-nofit-choice]) {
+  grid-column: 1 / -1;
+  display: grid;
+  align-content: start;
+}
+.formGrid > li:has([data-nofit-choice]) .formCard {
+  height: auto;
+}
+.nofitChoice {
+  display: grid;
+  gap: 10px;
+  margin-top: 6px;
+  padding: 12px;
+  border: 1px solid var(--color-line-strong);
+  border-left: 3px solid var(--color-notice);
+  background: var(--color-surface-raised);
+}
+.nofitChoice .linkBtn {
+  min-height: 44px;
+}
+
+/* QM R2 P3-D: placeholder silhouette (generic corner sofa) until the real
+   thumbnail is drawn – keeps cards filled in print and full-page captures */
+.thumbPh {
+  display: block;
+  width: 72%;
+  max-width: 220px;
+  height: 100%;
+  min-height: 90px;
+  max-height: 150px;
+  margin-inline: auto;
+  opacity: 0.35;
+  background:
+    linear-gradient(var(--sp-thumb-fill), var(--sp-thumb-fill)) left 30% / 100% 26% no-repeat,
+    linear-gradient(var(--sp-thumb-fill), var(--sp-thumb-fill)) left 30% / 30% 70% no-repeat;
+  border-radius: 2px;
+}
+@media print {
+  .thumbPh {
+    opacity: 0.5;
+  }
+}
+
+/* --- Fix-Runde 1 (F2): früher Ausgang, kürzere Modellwahl ------------------ */
+.earlyExit {
+  margin: 6px 0 0;
+}
+.earlyExit a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+}
+summary.variantsHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  cursor: pointer;
+  list-style: none;
+}
+summary.variantsHead::-webkit-details-marker {
+  display: none;
+}
+summary.variantsHead:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.variantsChevron {
+  flex: none;
+  transition: transform var(--duration-micro, 160ms) var(--ease-quiet, ease);
+}
+details[open] > summary .variantsChevron {
+  transform: rotate(180deg);
+}
+.moreRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  margin: 20px 0 8px;
+}
+/* Telefone: zwei Spalten, nur Vorschau, Name und Maße */
+@media (max-width: 639px) {
+  .modelGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .modelThumb {
+    aspect-ratio: 4 / 3;
+    padding: 10px;
+  }
+  .modelBody {
+    padding: 10px 10px 12px;
+    gap: 2px;
+  }
+  .modelMeta,
+  .modelChar,
+  .modelFacts,
+  .modelForms {
+    display: none;
+  }
+  .modelDims {
+    font-size: 0.8125rem;
+  }
+  .variants {
+    padding: 0 10px 4px;
+  }
+  summary.variantsHead {
+    font-size: 0.6875rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .variantsChevron {
+    transition: none;
+  }
+}
+.navTermin {
+  text-decoration: none;
+}
+/* Optik-QA planer-tools: bis 479 px nur das Kalender-Symbol (aria-label am Link),
+   damit „Weiter: …“ einzeilig bleibt statt zweizeilig mit abgesetztem Pfeil. */
+@media (max-width: 479px) {
+  .stepNav .navTermin {
+    flex: none;
+    min-width: 44px;
+    padding-inline: 0;
+  }
+  .stepNav .btnPrimary {
+    white-space: nowrap;
+  }
+  .navTerminLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+/* unter 420 px auch „Zurück“ nur als Pfeil (aria-label „Zurück: …“ am Button),
+   sonst ragt „Weiter: Im Raum prüfen“ bei 360–390 px aus der Leiste */
+@media (max-width: 419px) {
+  .stepNav > .btnGhost:first-child {
+    flex: none;
+    min-width: 44px;
+    padding-inline: 0;
+  }
+  .stepNav > .btnGhost:first-child .navPrevShort {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+/* sehr schmale Geräte (320 px): lieber zweizeilig als aus der Leiste ragen */
+@media (max-width: 359px) {
+  .stepNav .btnPrimary {
+    white-space: normal;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+}
+
+/* --- Release-Rat R2 (neuland P1-5): Silhouette von vorn statt grauer Glyphen --- */
+.silhouette {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+}
+.topInset {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 18%;
+  height: 34%;
+  display: grid;
+  place-items: center;
+  padding: 3px;
+  border-radius: 4px;
+  background: color-mix(in oklab, var(--color-surface) 82%, transparent);
+}
+.topInset .thumbSlot,
+.topInset .thumbPh {
+  min-height: 0;
+  max-height: 100%;
+}
+.heroSofa {
+  /* same warm tones as the planner previews (.app) – the hero sits outside .app */
+  --sp-thumb-fill: var(--color-stone-deep);
+  --sp-thumb-dark: color-mix(in oklab, var(--color-walnut) 55%, var(--color-pebble));
+  --sp-thumb-cushion: var(--color-bone);
+  --sp-thumb-seam: color-mix(in oklab, var(--color-pebble) 70%, transparent);
+  margin: 4px 0 0;
+  padding: 14px 16px 10px;
+  background: var(--color-surface-band);
+  border-radius: 4px;
+}
+.heroSofa .silhouette {
+  max-width: 380px;
+  max-height: 120px;
+  margin-inline: auto;
+}
+.heroSofa figcaption {
+  margin-top: 6px;
+  font-size: 0.8125rem;
+  color: var(--color-text-soft);
+  text-align: center;
+}
+.showroomNote {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* R5 (gesamtwerk P2, neuland P2-1): Satz-H1, kurzer Lead mobil, rechte Spalte
+   am Desktop mit Vorderansicht und Draufsicht. */
+.pageLeadShort {
+  display: none;
+}
+@media (max-width: 767px) {
+  .pageLeadShort {
+    display: block;
+  }
+}
+.headAside {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .headGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 760px) minmax(320px, 1fr);
+    column-gap: clamp(32px, 4vw, 72px);
+    /* Text oben: mittig rückte die H1 ~220 px unter den Header (e2e labs-sofaplaner
+       „H1 mit Abstand unter dem Header“) und der Schrift-Nachlade-Umbruch des Leads
+       verschob den ganzen Kopf (CLS 0,0976 bei 1440 px). */
+    align-items: start;
+  }
+  .headGrid .heroSofaMobil {
+    display: none;
+  }
+  .headAside {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+}
+.draufsicht {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  color: var(--color-ink, #2b2f33);
+}
+.draufsicht figcaption {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-text-soft, #5d5a55);
+}
+
+/* Rat 9,5 (T2) A11: Harald-Zeile unter dem Lead, Desktop-Knopf „Planung starten ↓“;
+   B11/C1: mobil die Draufsicht (Haarlinie mit Bemaßung) statt der Vorderansicht. */
+.handLine {
+  margin: 0;
+  max-width: 68ch;
+  padding-left: 12px;
+  border-left: 2px solid var(--color-ink);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+.startRow {
+  display: none;
+  margin: 4px 0 0;
+}
+.startAnchor {
+  scroll-margin-top: 88px;
+}
+.startAnchor:focus {
+  outline: none;
+}
+@media (min-width: 768px) {
+  .startRow {
+    display: block;
+  }
+}
+.heroPlanMobil {
+  margin: 4px 0 0;
+}
+.heroPlanMobil .draufsicht {
+  max-width: 300px;
+  margin-inline: auto;
+}
+.heroPlanMobil svg {
+  max-height: 200px;
+}
+/* QM planer-tools (01.11.2026): Tablet hoch (768–1023 px) – die schmale,
+   mittige Zeichnung mit Bildunterschrift darunter stand verloren in der
+   Spalte. Dort Zeichnung und Bildunterschrift nebeneinander, linksbündig
+   wie der übrige Kopf. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .heroPlanMobil .draufsicht {
+    max-width: 640px;
+    margin-inline: 0;
+    grid-template-columns: 300px minmax(0, 1fr);
+    align-items: end;
+    column-gap: 28px;
+  }
+}
+@media (min-width: 1024px) {
+  .headGrid .heroPlanMobil {
+    display: none;
+  }
+}
+
+/* --- Motion planer-tools (01.11.2026) ---------------------------------------
+   Nur Tokens aus globals.css (MOTION-FUNDAMENT), nur opacity/transform, nichts
+   startet unsichtbar (Deckkraft ab 0,6), kein Layout. */
+@keyframes spSwapIn {
+  from {
+    opacity: 0.6;
+    transform: translateY(4px);
+  }
+}
+@keyframes spFoldIn {
+  from {
+    opacity: 0.6;
+    transform: translateY(-4px);
+  }
+}
+@keyframes spArrive {
+  from {
+    opacity: 0.6;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* Schrittwechsel 2–6: der neue Schrittinhalt wird eingesetzt und setzt sich
+     (240 ms). Eingaben im selben Schritt lösen nichts aus. */
+  .side > .stack {
+    animation: spSwapIn var(--duration-swap, 240ms) var(--ease-quiet, ease-out) both;
+  }
+  /* Mobiles Menü „…“ klappt aus statt hart zu erscheinen (280 ms). */
+  .menu {
+    animation: spFoldIn var(--duration-ui, 280ms) var(--ease-quiet, ease-out) both;
+  }
+  /* Bestätigung (Anfrage vorbereitet): Rückmeldung, kein Auftritt. */
+  .okBox {
+    animation: spArrive var(--duration-ui, 280ms) var(--ease-quiet, ease-out) both;
+  }
+  /* Modellkarte: Silhouette wächst im festen Rahmen (nur Maus), Drücken 1 px. */
+  .silhouette {
+    transition: transform var(--duration-enter, 600ms) var(--ease-quiet, ease-out);
+  }
+  .modelCard:active:not(:disabled) {
+    transform: translateY(1px);
+    transition-duration: var(--duration-ack, 50ms);
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .modelCard:hover .silhouette {
+    transform: scale(1.03);
+  }
+}
+/* Ruhige Ansicht (html[data-motion="reduced"], "calm" als zweiter Name): wie
+   prefers-reduced-motion – alles sofort im Endzustand. */
+:global(:root:is([data-motion="reduced"], [data-motion="calm"])) .app *,
+:global(:root:is([data-motion="reduced"], [data-motion="calm"])) .app *::before,
+:global(:root:is([data-motion="reduced"], [data-motion="calm"])) .app *::after {
+  transition: none !important;
+  animation: none !important;
+  scroll-behavior: auto !important;
+}
+:global(:root:is([data-motion="reduced"], [data-motion="calm"])) .modelCard:hover .silhouette {
+  transform: none;
+}
+
+/* QM planer-tools r2 (phone-quer 844×390): im Querformat ließen Kopf, Schritt-
+   leiste, angehefteter Plan und untere Leiste nur ~20 px für den Schrittinhalt.
+   Flache Handys/Tablets quer bekommen deshalb zwei Spalten wie am Desktop:
+   Plan links angeheftet, Schrittinhalt und „Zurück | Weiter“ rechts. */
+@media (max-width: 1023px) and (min-width: 600px) and (max-height: 520px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    column-gap: 20px;
+  }
+  .layout > .stage {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    position: sticky;
+    top: calc(var(--sp-top) + 52px + 8px);
+    margin-inline: 0;
+    padding: 0;
+    border-bottom: 0;
+  }
+  .layout > .side {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .layout > .stepNav {
+    grid-column: 2;
+    grid-row: 2;
+    margin-inline: 0 calc(-1 * var(--spacing-gutter, 16px));
+  }
+  .layout > .stage .svg,
+  .layout > .stage .canvas3d {
+    height: max(150px, calc(100svh - var(--sp-top) - 52px - 76px));
+    max-height: max(150px, calc(100svh - var(--sp-top) - 52px - 76px));
+    min-height: 150px;
+  }
+  .layout > .stage:has(.selBar) .svg {
+    height: max(120px, calc(100svh - var(--sp-top) - 52px - 136px));
+    max-height: max(120px, calc(100svh - var(--sp-top) - 52px - 136px));
+    min-height: 120px;
+  }
+}
+/* QM r2: Werkzeugzeile des Plans beim Fokus/Hinscrollen nie unter der Schrittleiste */
+@media (max-width: 1023px) {
+  .stage .toolbar,
+  .stage .toolbar * {
+    scroll-margin-top: calc(var(--sp-top) + 52px + 8px);
+  }
+}
+/* QM r2 (200 % Text): Schrittkreise wachsen mit der Schrift statt sich zu
+   überlappen; der Weiter-Knopf bricht um, statt aus dem Bild zu laufen. */
+.stepNum {
+  flex: none;
+  width: auto;
+  min-width: max(24px, 1.85em);
+  height: max(24px, 1.85em);
+  padding-inline: 0.2em;
+  line-height: 1;
+}
+.stepNav .btnPrimary {
+  min-width: 0;
+}
+@media (max-width: 479px) {
+  .stepNav .btnPrimary {
+    white-space: normal;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+}
+/* QM r2: die Draufsicht der Startform unterscheidet die Modelle – größer zeigen */
+.topInset {
+  width: 30%;
+  height: 46%;
+}
+
+/* ===== QM planer-tools r3 (01.11.2026) ===================================== */
+/* Header-Höhe gemessen (Planner.js setzt --sp-header): Im Querformat ist der
+   Header niedriger als --header-h (72 px) – darunter lag ein leerer Streifen
+   von ≈ 30 px über der Schrittleiste. */
+.app {
+  --sp-top: var(--sp-header, var(--header-h, 56px));
+}
+
+/* 200 % Text / kleine Handys: bleibt für den Schrittinhalt < 30 % der Höhe,
+   scrollt der Plan mit (data-sp-tall aus Planner.js); nur die Schrittleiste
+   und „Zurück | Weiter“ bleiben angeheftet. */
+@media (max-width: 1023px) {
+  .app[data-sp-tall] .stageSticky {
+    position: relative;
+    top: auto;
+  }
+  /* aktive Beschriftung stößt nicht mehr an den nächsten Kreis („Modell②“) */
+  .stepBtn[aria-current="step"] {
+    padding-right: 10px;
+    margin-right: 4px;
+  }
+  /* 3D-Fehlerhinweis im angehefteten Bereich: eine kompakte Zeile, der Plan
+     gibt dafür Höhe ab – die angeheftete Fläche wächst nicht. */
+  .stageSticky .note {
+    margin: 0;
+    padding: 6px 10px;
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+  .stageSticky .noteExtra {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .stageSticky:has(.note) .svg {
+    height: max(120px, calc(min(32svh, calc(100svh - var(--header-h, 56px) - 52px - 300px)) - 44px));
+    max-height: max(120px, calc(min(32svh, calc(100svh - var(--header-h, 56px) - 52px - 300px)) - 44px));
+    min-height: 120px;
+  }
+}
+/* Schrittleiste: Breite in rem gemessen – bei 200 % Text (< 16rem ≈ 512 px)
+   steht die aktive Beschriftung nur für Vorlesesoftware, alle sechs Kreise
+   bleiben sichtbar (vorher „Anpass…“ und Kreise 4–6 weggeschoben). */
+.stepper {
+  container: sp-steps / inline-size;
+}
+@container sp-steps (max-width: 16rem) {
+  .stepBtn[aria-current="step"] .stepLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .stepBtn[aria-current="step"] {
+    padding-right: 2px;
+  }
+  /* Kreise höchstens 44 px (Ziffer wächst mit), damit alle sechs in die Leiste passen */
+  .stepBtn {
+    gap: 0;
+    margin-right: 1px;
+    padding-right: 0;
+  }
+  .stepNum {
+    min-width: 44px;
+    height: 44px;
+    padding-inline: 0;
+  }
+}
+/* iPhone SE & Co. (Höhe 521–760 px): Plan flacher, damit unter der angehefteten
+   Fläche rund 40 % für Text und Bedienelemente bleiben (vorher ≈ 28 %). */
+@media (max-width: 1023px) and (min-height: 521px) and (max-height: 760px) {
+  .stageSticky .svg,
+  .stageSticky .canvas3d {
+    height: max(140px, 25svh);
+    max-height: max(140px, 25svh);
+    min-height: 140px;
+  }
+  .stageSticky:has(.selBar) .svg {
+    height: max(110px, calc(25svh - 40px));
+    max-height: max(110px, calc(25svh - 40px));
+    min-height: 110px;
+  }
+  .stageSticky:has(.note) .svg {
+    height: max(110px, calc(25svh - 40px));
+    max-height: max(110px, calc(25svh - 40px));
+    min-height: 110px;
+  }
+}
+/* „Zurück | Termin | Weiter“: nach eigener Breite (rem) statt Fenster – im
+   Querformat (rechte Spalte) und bei 200 % Text nur Symbole für Zurück/Termin,
+   „Weiter: …“ bleibt einzeilig; Pfeile wachsen mit der Schrift. */
+.stepNav {
+  container: sp-nav / inline-size;
+}
+.stepNav svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+@container sp-nav (max-width: 30rem) {
+  .stepNav .navTermin,
+  .stepNav > .btnGhost:first-child {
+    flex: none;
+    min-width: 44px;
+    padding-inline: 0;
+  }
+  .navTerminLabel,
+  .stepNav > .btnGhost:first-child .navPrevShort,
+  .stepNav > .btnGhost:first-child .navPrevLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+/* Filter-Chips: ein langer Chip („Endelemente (Anbau links/rechts) 20“) bricht
+   in sich um, statt über die Spalte zu ragen. */
+.strip > .chip {
+  max-width: 100%;
+  text-align: left;
+}
+/* Ansicht-Umschalter nie umbrechen („2D / Draufsicht“, „3D- / Vorschau“) */
+.seg button {
+  white-space: nowrap;
+}
+/* Handy/Tablet quer (zwei Spalten): Langtexte der Umschalter weglassen,
+   Chips umbrechen statt seitlich abgeschnitten. */
+@media (max-width: 1023px) and (min-width: 600px) and (max-height: 520px) {
+  .longOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .strip {
+    flex-wrap: wrap;
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow-x: visible;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+/* QM r3 (Desktop): Auswahlleiste kürzt nicht mehr („Endelement mit 1 Arml…“),
+   sie wird zweizeilig; und nur EIN Hinweis – der Ruhetext der Auswahlleiste
+   entfällt, die Inspektor-Zeile darunter sagt dasselbe. */
+@media (min-width: 1024px) {
+  .selName strong,
+  .selDim {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+  /* Platz der Auswahlleiste bleibt reserviert (kein Springen beim Auswählen);
+     der doppelte Ruhetext der Inspektor-Zeile entfällt. */
+  .stage:has(.selSlot[data-idle]) .inspector:not(:has(.inspTitle)) {
+    display: none;
+  }
+}
+/* QM r3: Modellkarten – Draufsicht und Vorderansicht bekommen getrennte Flächen
+   (vorher lag die Draufsicht oben rechts über dem Ende der Sofa-Zeichnung). */
+.modelThumb {
+  grid-template-columns: minmax(0, 1fr) 28%;
+  column-gap: 12px;
+}
+.modelThumb > .topInset {
+  position: static;
+  width: 100%;
+  height: 62%;
+  align-self: center;
+}
+/* QM r3: kompakter Kopf ab Schritt 2 (Modell gewählt) */
+.pageHeadCompact {
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.pageHeadCompact .h1 {
+  font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+}
+.pageHeadCompact .pageLeadLong {
+  display: none;
+}
+.pageHeadCompact .pageLeadShort {
+  display: block;
+}
+/* QM r3 (Handy): Bildunterschrift der Einstiegszeichnung bündig mit der
+   Textspalte (vorher ≈ 110 px statt 48 px eingerückt); nur die Zeichnung ist
+   schmal und mittig. Tablet hoch: Unterschrift mittig neben der Zeichnung
+   statt weit unten rechts. */
+.heroPlanMobil .draufsicht {
+  max-width: none;
+}
+.heroPlanMobil .draufsicht svg {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin-inline: auto;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .heroPlanMobil .draufsicht {
+    max-width: 640px;
+    align-items: center;
+  }
+  .heroPlanMobil .draufsicht svg {
+    margin-inline: 0;
+  }
+}
+
+/* ===== QM planer-tools r4 (01.11.2026) ===================================== */
+/* Schrittleiste (200 % Text, Desktop): passt die Leiste mit allen Beschriftungen
+   nicht in die Breite, steht nur die aktive Beschriftung – vorher scrollte sie
+   seitlich, „…assen“ wurde links angeschnitten und Schritt 6 stand ohne Text.
+   Die Schwelle steht in em (Schriftgröße der Leiste) und wächst daher mit der
+   Textgröße: alle Beschriftungen brauchen ≈ 45em (720 px bei 16 px). */
+@container sp-steps (max-width: 46em) {
+  .stepBtn:not([aria-current="step"]) .stepLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .stepBtn:not([aria-current="step"]) {
+    padding-right: 2px;
+    margin-right: 2px;
+  }
+}
+/* iPhone 200 %: sechs Kreise teilen sich die Leistenbreite (höchstens 44 px),
+   Kreis 1 bzw. 6 wird nicht mehr am Rand angeschnitten. */
+@container sp-steps (max-width: 16rem) {
+  .stepNum {
+    min-width: min(44px, calc(100cqi / 6 - 5px));
+    height: min(44px, calc(100cqi / 6 - 5px));
+  }
+}
+/* Kopf ab Schritt 2, wenn der Kopf schmaler als 24 rem ist (Handy, oder Desktop
+   bei 200 % Text: 760 px = 23,75 rem; Tablet normal 47 rem bleibt): der Lead
+   (wiederholt die H1) entfällt, damit der Planer früher beginnt; Harald-Zeile
+   und Hinweis bleiben. Container auf dem Kopf selbst (keine fixed-Kinder). */
+.pageHeadCompact {
+  container: sp-head / inline-size;
+  width: 100%;
+}
+@container sp-head (max-width: 24em) {
+  .pageLead.pageLeadShort,
+  .pageLead.pageLeadLong {
+    display: none;
+  }
+}
+
+/* ===== QM planer-tools r5 ================================================== */
+/* Schrittleiste schmal (iPhone SE, Leiste ≈ 270 px): lange aktive Beschriftung
+   („Im Raum prüfen“) zweizeilig statt Kreis 6 unter dem „…“-Knopf. */
+@container sp-steps (min-width: 16.01rem) and (max-width: 21rem) {
+  .stepBtn[aria-current="step"] .stepLabel {
+    display: block;
+    max-width: 5.6em;
+    white-space: normal;
+    overflow-wrap: normal;
+    hyphens: manual;
+    font-size: 0.875rem;
+    line-height: 1.1;
+    text-align: left;
+  }
+  .stepBtn[aria-current="step"] {
+    padding-right: 4px;
+  }
+}
+
+/* Handy quer (≤ 520 px hoch, zwei Spalten): Schrittleiste scrollt mit, statt 52 px
+   dauerhaft zu belegen; Plan bekommt die frei werdende Höhe, „Zurück | Weiter“
+   kompakter. Vorher blieb für Schrittinhalt und Plan weniger als die halbe Höhe. */
+@media (max-width: 1023px) and (min-width: 600px) and (max-height: 520px) {
+  .topbar {
+    position: relative;
+    top: auto;
+    margin-bottom: 8px;
+  }
+  .layout > .stage {
+    top: calc(var(--sp-top) + 8px);
+  }
+  .layout > .stage .svg,
+  .layout > .stage .canvas3d {
+    height: max(150px, calc(100svh - var(--sp-top) - 72px));
+    max-height: max(150px, calc(100svh - var(--sp-top) - 72px));
+  }
+  .layout > .stage:has(.selBar) .svg {
+    height: max(120px, calc(100svh - var(--sp-top) - 132px));
+    max-height: max(120px, calc(100svh - var(--sp-top) - 132px));
+  }
+  .stepNav {
+    padding-top: 4px;
+    padding-bottom: calc(4px + env(safe-area-inset-bottom));
+  }
+  .stepNav :is(button, a) {
+    min-height: 44px;
+  }
+}
+
+/* Filterchips (Schritt 3) ab Tablet umbrechen statt hart am Rand abgeschnitten
+   („Chaiselongues 8“ über den Seitenrand, iPad hoch); Handys scrollen weiter. */
+@media (min-width: 600px) {
+  .strip {
+    flex-wrap: wrap;
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow-x: visible;
+  }
+}
+
+/* iPad quer / Desktop: „Zurück | Weiter“ am unteren Rand angeheftet wie auf dem
+   iPad hoch (vorher lag „Weiter: Ausführung“ in Schritt 3 gut 3500 px tiefer),
+   Elementkarten zweispaltig, sobald die Spalte breit genug ist. */
+@media (min-width: 1024px) {
+  .stepNav {
+    position: sticky;
+    bottom: var(--ph-consent-h, 0px);
+    z-index: 4;
+    padding-bottom: 12px;
+    background: var(--color-surface);
+  }
+  .tiles {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
+  }
+}
+
+/* Auswahlleiste (Laptop, Plan-Spalte ≈ 650 px): Aktionen nur als Symbol, sobald die
+   Leiste schmaler als 46rem ist – der Elementname brach sonst in einer 130 px
+   schmalen Spalte auf 4–5 Zeilen um. Die Beschriftung bleibt für Vorlesesoftware. */
+@media (min-width: 1024px) {
+  .selBar {
+    container: sp-sel / inline-size;
+  }
+  @container sp-sel (max-width: 46rem) {
+    .selBtn .selLabel {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+}

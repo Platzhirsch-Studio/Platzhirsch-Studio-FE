@@ -1,0 +1,170 @@
+# Gesamtabnahme R5-release, ergaenzt R6-release (Schlussabnahme): every page type x 4 languages (prod-check step "accept").
+# Format: <path> <expected status> [# page type]. DE-only pages must answer 404 in EN/FR/IT.
+# Start
+/de 200
+/en 200
+/fr 200
+/it 200
+# Marke
+/de/ueber-uns/marken/minotti 200
+/en/about-us/brands/minotti 200
+/fr/a-propos/marques/minotti 200
+/it/chi-siamo/marche/minotti 200
+# Marke x Kategorie
+/de/ueber-uns/marken/minotti/armchairs-stools 200
+/en/about-us/brands/minotti/armchairs-stools 200
+/fr/a-propos/marques/minotti/armchairs-stools 200
+/it/chi-siamo/marche/minotti/armchairs-stools 200
+# Katalog
+/de/produkte/lamps 200
+/en/products/lamps 200
+/fr/produits/lamps 200
+/it/prodotti/lamps 200
+# Produkt mit Bild
+/de/produkte/lamps/lamps-2097-18 200
+/en/products/lamps/lamps-2097-18 200
+/fr/produits/lamps/lamps-2097-18 200
+/it/prodotti/lamps/lamps-2097-18 200
+# Produkt ohne Bild (Brand van Egmond, R5-produkt: neutrale Flaeche)
+/de/produkte/lamps/chandeliers-arthur-chandelier-oval 200
+/en/products/lamps/chandeliers-arthur-chandelier-oval 200
+/fr/produits/lamps/chandeliers-arthur-chandelier-oval 200
+/it/prodotti/lamps/chandeliers-arthur-chandelier-oval 200
+# Landing
+/de/kuechen-vorarlberg 200
+/en/kuechen-vorarlberg 404
+/fr/kuechen-vorarlberg 404
+/it/kuechen-vorarlberg 404
+# Region
+/de/designermoebel-st-gallen 200
+/en/designermoebel-st-gallen 404
+/fr/designermoebel-st-gallen 404
+/it/designermoebel-st-gallen 404
+# Yacht
+/de/yacht-interior 200
+/en/yacht-interior 404
+/fr/yacht-interior 404
+/it/yacht-interior 404
+# Outdoor
+/de/outdoor-gartenplanung 200
+/en/outdoor-gartenplanung 404
+/fr/outdoor-gartenplanung 404
+/it/outdoor-gartenplanung 404
+# Haus (Ueber uns)
+/de/ueber-uns/platzhirsch 200
+/en/about-us/platzhirsch 200
+/fr/a-propos/platzhirsch 200
+/it/chi-siamo/platzhirsch 200
+# Team
+/de/ueber-uns/team 200
+/en/about-us/team 200
+/fr/a-propos/equipe 200
+/it/chi-siamo/team 200
+# News (Liste und Artikel)
+/de/news 200
+/en/news 200
+/fr/nouvelles 200
+/it/notizie 200
+/de/news/classicon-moebeldesign-von-klassiker-bis-moderne 200
+/en/news/classicon-moebeldesign-von-klassiker-bis-moderne 200
+/fr/news/classicon-moebeldesign-von-klassiker-bis-moderne 200
+/it/news/classicon-moebeldesign-von-klassiker-bis-moderne 200
+# Karriere
+/de/ueber-uns/karriere 200
+/en/about-us/career 200
+/fr/a-propos/carriere 200
+/it/chi-siamo/carriera 200
+# Kontakt
+/de/kontakt 200
+/en/contact 200
+/fr/contact 200
+/it/contatto 200
+# Beratung
+/de/beratung 200
+/en/consultation 200
+/fr/conseil 200
+/it/consulenza 200
+# Ratgeber (DE only)
+/de/ratgeber 200
+/de/ratgeber/designsofa-kaufen-checkliste 200
+/en/ratgeber/designsofa-kaufen-checkliste 404
+/fr/ratgeber/designsofa-kaufen-checkliste 404
+/it/ratgeber/designsofa-kaufen-checkliste 404
+# Labs
+/de/stil-finder 200
+/en/labs/stilfinder 404
+/fr/labs/stilfinder 404
+/it/labs/stilfinder 404
+# Portal-Demo (signed demo session via SHOOT_PORTAL_SECRET)
+/de/portal 200
+/de/portal/dokumente 200
+/de/portal/login 200
+# Bewerten (QR-Karte), Schweiz-Hub (noindex)
+/de/bewerten 200
+/en/bewerten 404
+/de/einkaufen-aus-der-schweiz 200
+# R5 neu, standardmaessig aus bzw. noindex
+/de/projekte 200
+/de/preview/commerce 404
+# (Vorschau nur in Entwicklung oder mit COMMERCE_PREVIEW=1, R5-commerce)
+/de/gutscheine 404
+# R6-release: Seitenarten, die in R5 fehlten
+# Produkte-Hub
+/de/produkte 200
+/en/products 200
+/fr/produits 200
+/it/prodotti 200
+# Markenuebersicht
+/de/ueber-uns/marken 200
+/en/about-us/brands 200
+/fr/a-propos/marques 200
+/it/chi-siamo/marche 200
+# Merkliste
+/de/merkliste 200
+/en/wishlist 200
+/fr/liste-de-souhaits 200
+/it/lista-desideri 200
+# Partner, Presse
+/de/ueber-uns/partner 200
+/en/about-us/partners 200
+/fr/a-propos/partenaires 200
+/it/chi-siamo/partner 200
+/de/ueber-uns/presse 200
+/en/about-us/press 200
+/fr/a-propos/presse 200
+/it/chi-siamo/stampa 200
+# Newsletter
+/de/newsletter 200
+/en/newsletter 200
+/fr/newsletter 200
+/it/newsletter 200
+# Recht (Impressum, Datenschutz)
+/de/impressum 200
+/en/impressum 200
+/fr/impressum 200
+/it/impressum 200
+/de/datenschutz 200
+/en/datenschutz 200
+/fr/datenschutz 200
+/it/datenschutz 200
+# Event (DE only)
+/de/adventsabend 200
+/en/adventsabend 404
+# Landing Interior Design
+/de/interior-design-vorarlberg 200
+# R6: DE-only-Seiten in EN/FR/IT (Sprachumschalter R6-shell-perf) und Projekte-Detail
+/en/einkaufen-aus-der-schweiz 404
+/fr/einkaufen-aus-der-schweiz 404
+/it/einkaufen-aus-der-schweiz 404
+/en/projekte 404
+/fr/projekte 404
+/it/projekte 404
+/de/projekte/gibt-es-nicht 404
+# R6: Freigabe-Cockpit (R6-uebergabe), nur mit FREIGABE_PREVIEW=1
+/de/preview/freigaben 404
+# 404
+/de/gibt-es-nicht 404
+/en/does-not-exist 404
+/fr/nexiste-pas 404
+/it/non-esiste 404
+/wp-login.php 404

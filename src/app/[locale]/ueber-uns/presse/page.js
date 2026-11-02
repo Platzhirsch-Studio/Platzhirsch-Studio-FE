@@ -1,16 +1,14 @@
 import React from "react";
 import JsonLd from "@/components/Reusable/JsonLd";
-import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import PresseSecond from "@/components/Presse/presse";
 import PresseArticle from "@/components/Presse/pressearticle";
 import {
   fetchPressKeywords,
   getLocalizedPressMetadata,
-  getPressOGImage,
   validateOGType
 } from "@/lib/api/Keywords/fetchPressKeywords";
-import { ROUTES } from "@/utils/routing";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { hreflangLanguages, ogLocale, DEFAULT_OG_IMAGE } from "@/lib/seo/pageMetadata";
+import { homeCrumbLabel } from "@/lib/seo/breadcrumbs";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -36,21 +34,26 @@ function getPressePageUrl(locale) {
   }
 }
 
+// Runde 5 P6 (seo): 30–60 characters, what the page holds (press articles +
+// press contact), no superlatives. Our own title wins over the CMS title
+// (like the partner page) – the CMS may carry advertising phrases.
 const getLocalizedTitle = (locale) => {
   switch (locale) {
-    case "it": return "Stampa & News | Rassegna Stampa di Platzhirsch Home Living";
-    case "en": return "Press & News | Media Coverage of Platzhirsch Home Living";
-    case "fr": return "Presse & Actualités | Platzhirsch Home Living dans les Médias";
-    default: return "Presse & News | Pressestimmen zu Platzhirsch Home Living";
+    case "it": return "Rassegna stampa e contatti | Platzhirsch Home Living";
+    case "en": return "Press coverage and press contact | Platzhirsch Home Living";
+    case "fr": return "Articles de presse et contact presse | Platzhirsch";
+    default: return "Presseberichte und Pressekontakt | Platzhirsch Home Living";
   }
 };
 
+// Description: our own, factual text wins over the CMS (QA Runde 1, P2-2:
+// the CMS text still says "exklusiv"). The CMS keeps title, image and type.
 const getLocalizedDescription = (locale) => {
   switch (locale) {
-    case "it": return "Rassegna stampa e comunicati di Platzhirsch Home Living. News e aggiornamenti dal mondo del design esclusivo.";
-    case "en": return "Press releases and news from Platzhirsch Home Living. Updates from the world of exclusive design.";
-    case "fr": return "Communiqués de presse et actualités de Platzhirsch Home Living. Nouvelles du monde du design exclusif.";
-    default: return "Pressemitteilungen und Neuigkeiten von Platzhirsch Home Living. Aktuelles aus der Welt des exklusiven Designs.";
+    case "it": return "Articoli di stampa su Platzhirsch Home Living, studio d’arredamento con caffè a Lochau, e contatto per la stampa.";
+    case "en": return "Press coverage of Platzhirsch Home Living, the interior studio with café in Lochau, and our press contact.";
+    case "fr": return "Articles de presse sur Platzhirsch Home Living, studio d’aménagement avec café à Lochau, et contact presse.";
+    default: return "Presseberichte über Platzhirsch Home Living, das Einrichtungsstudio mit Café in Lochau, und unser Pressekontakt.";
   }
 };
 
@@ -76,51 +79,51 @@ export async function generateMetadata({ params }) {
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
           siteName: "Platzhirsch Home Living",
-          locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
-          images: [{ url: "/Images/Presse/cool-living-room.jpg", width: 1200, height: 630, alt: "Presse – Platzhirsch Home Living" }],
+          locale: ogLocale(locale),
+          images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: "Presse – Platzhirsch Home Living" }],
         },
         twitter: {
           card: "summary_large_image",
           title: getLocalizedTitle(locale),
           description: getLocalizedDescription(locale),
-          images: ["/Images/Presse/cool-living-room.jpg"],
+          images: [DEFAULT_OG_IMAGE],
         },
       };
     }
 
     const meta = getLocalizedPressMetadata(pressKeywords, locale);
-    const image = getPressOGImage(pressKeywords);
     const safeType = validateOGType(meta?.type);
 
     return {
-      title: meta?.title || getLocalizedTitle(locale),
-      description: meta?.description || getLocalizedDescription(locale),
+      title: getLocalizedTitle(locale),
+      description: getLocalizedDescription(locale),
       robots: { index: true, follow: true },
       alternates: {
         canonical: PAGE_URL,
         languages: hreflangLanguages((l) => getPressePageUrl(l))
       },
       openGraph: {
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
+        title: getLocalizedTitle(locale),
+        description: getLocalizedDescription(locale),
         url: PAGE_URL,
         siteName: "Platzhirsch Home Living",
         images: [
           {
-            url: image ? image : "/Images/Presse/cool-living-room.jpg",
+            // Rat 9,5 B5: own OG image only; the CMS image has no documented rights (bildrechte.csv).
+            url: DEFAULT_OG_IMAGE,
             width: 1200,
             height: 630,
             alt: "Presse – Platzhirsch Home Living",
           },
         ],
-        locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
+        locale: ogLocale(locale),
         type: safeType,
       },
       twitter: {
         card: "summary_large_image",
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
-        images: [image ? image : "/Images/Presse/cool-living-room.jpg"],
+        title: getLocalizedTitle(locale),
+        description: getLocalizedDescription(locale),
+        images: [DEFAULT_OG_IMAGE],
       },
     };
   } catch (error) {
@@ -138,30 +141,16 @@ export async function generateMetadata({ params }) {
 export default async function Page({ params }) {
   const { locale } = await params;
 
-  const linkNameOne = locale == "it" ? "SU DI NOI" : locale == "en" ? "ABOUT US" : locale == "fr" ? "À PROPOS" : "ÜBER UNS";
   const linkNameTwo = locale == "it" ? "Stampa" : locale == "en" ? "Press" : locale == "fr" ? "Presse" : "Presse";
-  const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  const Home = homeCrumbLabel(locale);
 
   // Dynamic URLs
   const BASE_URL = getBaseUrl(locale);
   const PAGE_URL = getPressePageUrl(locale);
 
-  // Fetch keywords for image
-  const pressKeywords = await fetchPressKeywords();
-  const image = getPressOGImage(pressKeywords);
-
-  const pressePath = ROUTES.presse[locale] ? `${ROUTES.presse[locale]}` : `/ueber-uns/presse`;
 
 
-  const BannerInfo = {
-    image: image || "/Images/Presse/cool-living-room.jpg",
-    links: [
-      { linkName: Home, link: `/` }, // Fixed: use locale prefix
-      { linkName: linkNameOne },
-      { linkName: linkNameTwo, link: pressePath },
-    ],
-    title: linkNameTwo,
-  };
+
 
   // ✅ JSON-LD Structured Data
   const webPageSchema = {
@@ -170,7 +159,7 @@ export default async function Page({ params }) {
     "@id": `${PAGE_URL}/#webpage`,
     url: PAGE_URL,
     name: linkNameTwo,
-    description: "Pressebereich von Platzhirsch Home Living - Aktuelle News, Pressemitteilungen und Medienkontakt.",
+    description: getLocalizedDescription(locale),
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
     isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
@@ -185,7 +174,6 @@ export default async function Page({ params }) {
   return (
     <div>
       <JsonLd data={webPageSchema} />
-      <SinglePageBanner info={BannerInfo} />
       <PresseSecond />
       <PresseArticle />
     </div>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agenten-Monitor</title>
+<style>
+  :root {
+    --bg: #f6f5f2; --card: #ffffff; --ink: #1f2428; --muted: #6b7278; --line: #e4e1db;
+    --gold: #b8962e; --run: #1f7a4d; --run-bg: #e3f3ea; --done: #4b5563; --done-bg: #eceef1;
+    --idle: #a15c00; --idle-bg: #fbeedd; --plan: #3a5a9b; --plan-bg: #e5ecf8; --bar: #d9d4c7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171a; --card: #1c2024; --ink: #e8e6e1; --muted: #9aa1a8; --line: #2c3237;
+      --gold: #d1b250; --run: #5fd39a; --run-bg: #173327; --done: #b5bcc4; --done-bg: #262b31;
+      --idle: #f0b45c; --idle-bg: #3a2a14; --plan: #8fb0f0; --plan-bg: #1d2a42; --bar: #33393f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { padding: 20px 16px 8px; max-width: 1200px; margin: 0 auto; }
+  h1 { margin: 0; font-size: 22px; letter-spacing: .01em; }
+  h1 span { color: var(--gold); }
+  .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; min-width: 120px; }
+  .stat b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; }
+  .stat small { color: var(--muted); }
+  main { max-width: 1200px; margin: 0 auto; padding: 8px 16px 40px; }
+  .wf { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin-top: 16px; overflow: hidden; }
+  .wf > summary { list-style: none; cursor: pointer; padding: 14px 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .wf > summary::-webkit-details-marker { display: none; }
+  .wf-name { font-weight: 600; font-size: 16px; }
+  .wf-desc { color: var(--muted); font-size: 13px; width: 100%; }
+  .badge { font-size: 12px; padding: 2px 9px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
+  .läuft { color: var(--run); background: var(--run-bg); }
+  .fertig { color: var(--done); background: var(--done-bg); }
+  .inaktiv { color: var(--idle); background: var(--idle-bg); }
+  .geplant { color: var(--plan); background: var(--plan-bg); }
+  .meta { color: var(--muted); font-size: 12px; margin-left: auto; font-variant-numeric: tabular-nums; }
+  .phases { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 12px; }
+  .phase { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font-size: 12px; }
+  .phase b { font-size: 13px; }
+  .phase .d { color: var(--muted); display: block; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 9px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .label { font-weight: 600; }
+  .ph { color: var(--muted); font-size: 12px; }
+  .act { color: var(--muted); font-size: 12px; max-width: 460px; overflow-wrap: anywhere; }
+  .act .t { color: var(--ink); }
+  .bar { height: 6px; background: var(--bar); border-radius: 3px; overflow: hidden; margin-top: 5px; width: 110px; }
+  .bar i { display: block; height: 100%; background: var(--gold); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
+  .dot.läuft { background: var(--run); animation: pulse 1.4s infinite; }
+  .dot.fertig { background: var(--done); }
+  .dot.inaktiv { background: var(--idle); }
+  @keyframes pulse { 50% { opacity: .35; } }
+  @media (prefers-reduced-motion: reduce) { .dot.läuft { animation: none; } }
+  .new { animation: flash 2.5s ease-out; }
+  @keyframes flash { from { background: var(--run-bg); } to { background: transparent; } }
+  .err { color: var(--idle); margin-top: 16px; }
+  .note { color: var(--muted); font-size: 12px; margin-top: 18px; }
+  @media (max-width: 760px) {
+    thead { display: none; }
+    table, tbody, tr, td { display: block; width: 100%; }
+    tr { border-top: 1px solid var(--line); padding: 8px 0; }
+    td { border: 0; padding: 3px 16px; }
+    td[data-k]::before { content: attr(data-k) ": "; color: var(--muted); font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Agenten-<span>Monitor</span></h1>
+  <div class="sub" id="sub">Lade …</div>
+  <div class="stats" id="stats"></div>
+</header>
+<main id="main"></main>
+<script>
+const seen = new Set();
+let first = true;
+
+const fmt = (ms) => {
+  if (ms == null) return "–";
+  const s = Math.round(ms / 1000);
+  if (s < 60) return s + " s";
+  const m = Math.floor(s / 60);
+  if (m < 60) return m + " min " + String(s % 60).padStart(2, "0") + " s";
+  return Math.floor(m / 60) + " h " + String(m % 60).padStart(2, "0") + " min";
+};
+const clock = (t) => t ? new Date(t).toLocaleTimeString("de-AT", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "–";
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const k = (n) => n >= 1000 ? (n / 1000).toFixed(1).replace(".", ",") + " k" : String(n);
+
+function agentRow(a) {
+  const isNew = !first && !seen.has(a.id);
+  seen.add(a.id);
+  let plan = "–";
+  if (a.status === "fertig") plan = "fertig nach " + fmt(a.durationMs);
+  else if (a.expectedMs) {
+    const pct = Math.min(100, Math.round((a.durationMs / a.expectedMs) * 100));
+    plan = `noch ca. ${fmt(a.remainingMs)}<div class="bar"><i style="width:${pct}%"></i></div>`;
+  } else plan = "noch keine Vergleichswerte";
+  return `<tr class="${isNew ? "new" : ""}">
+    <td><span class="dot ${a.status}"></span><span class="label">${esc(a.label)}</span><div class="ph">${esc(a.phase)}</div></td>
+    <td data-k="Status"><span class="badge ${a.status}">${a.status}</span></td>
+    <td class="num" data-k="Start">${clock(a.start)}</td>
+    <td class="num" data-k="Dauer">${fmt(a.durationMs)}</td>
+    <td class="num" data-k="Geschätzt">${plan}</td>
+    <td class="num" data-k="Aktionen">${a.tools} Tools${a.webCalls ? ` · ${a.webCalls} Web` : ""}${a.subagents ? ` · ${a.subagents} Sub-Agenten` : ""}<div class="ph">${k(a.outputTokens)} Tokens</div></td>
+    <td class="act" data-k="Gerade">${a.status === "fertig" ? "" : `<div class="t">${esc(a.lastAction || "startet …")}</div>`}${a.lastText ? esc(a.lastText) : ""}</td>
+  </tr>`;
+}
+
+function render(state) {
+  const all = state.workflows.flatMap((w) => w.agents);
+  const running = all.filter((a) => a.status === "läuft").length;
+  const done = all.filter((a) => a.status === "fertig").length;
+  const planned = state.workflows.reduce((n, w) => n + w.phases.filter((p) => p.state === "geplant").length, 0);
+  const tokens = all.reduce((n, a) => n + a.outputTokens, 0);
+  const subs = all.reduce((n, a) => n + a.subagents, 0);
+  document.getElementById("sub").textContent = `Aktualisiert ${clock(state.now)} · alle 3 Sekunden · ${state.workflows.length} Workflows`;
+  document.getElementById("stats").innerHTML = [
+    [running, "laufen gerade"], [done, "fertig"], [all.length, "Agenten gesamt"],
+    [subs, "Sub-Agenten gestartet"], [planned, "Phasen geplant"], [k(tokens), "Output-Tokens"],
+  ].map(([v, l]) => `<div class="stat"><b>${v}</b><small>${l}</small></div>`).join("");
+
+  const openIds = new Set([...document.querySelectorAll("details.wf[open]")].map((d) => d.dataset.id));
+  document.getElementById("main").innerHTML = state.workflows.map((w) => {
+    const open = first ? w.status !== "fertig" : openIds.has(w.id);
+    const run = w.agents.filter((a) => a.status === "läuft").length;
+    return `<details class="wf" data-id="${w.id}" ${open ? "open" : ""}>
+      <summary>
+        <span class="wf-name">${esc(w.name)}</span>
+        <span class="badge ${w.status}">${w.status}</span>
+        <span class="meta">${run} laufen · ${w.agents.length} gestartet · seit ${clock(w.start)}</span>
+        <span class="wf-desc">${esc(w.description)}</span>
+      </summary>
+      <div class="phases">${w.phases.map((p) => `<div class="phase"><b>${esc(p.title)}</b> <span class="badge ${p.state}">${p.state}</span><span class="d">${esc(p.detail)}</span></div>`).join("")}</div>
+      <table>
+        <thead><tr><th>Agent</th><th>Status</th><th>Start</th><th>Dauer</th><th>Geschätzt</th><th>Aktionen</th><th>Macht gerade</th></tr></thead>
+        <tbody>${w.agents.map(agentRow).join("")}</tbody>
+      </table>
+    </details>`;
+  }).join("") + `<p class="note">„Geschätzt“ ist der Median der bereits fertigen Agenten derselben Phase – Agenten haben keine feste Planzeit. „Geplant“ sind Phasen, deren Agenten noch nicht gestartet wurden.</p>`;
+  first = false;
+}
+
+async function tick() {
+  try {
+    const res = await fetch("/api/state", { cache: "no-store" });
+    render(await res.json());
+  } catch (e) {
+    document.getElementById("sub").innerHTML = `<span class="err">Server nicht erreichbar – läuft „node tools/agent-monitor/server.mjs“?</span>`;
+  }
+}
+tick();
+setInterval(tick, 3000);
+</script>
+</body>
+</html>

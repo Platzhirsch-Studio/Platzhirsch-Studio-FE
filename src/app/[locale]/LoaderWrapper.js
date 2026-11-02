@@ -8,10 +8,13 @@ import ClientLayout from "./client-layout";
 // out of the render (a former `{!showLoader && children}` did exactly that,
 // leaving an empty <body> in the SSR HTML site-wide). The intro loader overlay
 // was removed: it hid the finished page for 2.5 s on every first visit.
-export default function LoaderWrapper({ children, messages, locale, activeCategoryKeys }) {
+// `header` / `footer` are Server Component slots from layout.js (R4-shell-perf).
+export default function LoaderWrapper({ children, messages, locale, header, footer }) {
   return (
     <NextIntlClientProvider messages={messages} locale={locale} timeZone="Europe/Vienna">
-      <ClientLayout activeCategoryKeys={activeCategoryKeys}>{children}</ClientLayout>
+      <ClientLayout header={header} footer={footer}>
+        {children}
+      </ClientLayout>
     </NextIntlClientProvider>
   );
 }

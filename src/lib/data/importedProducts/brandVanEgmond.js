@@ -32,7 +32,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "ARTHUR Ceiling Lamp Round brings the elegance of the chandelier closer to the ceiling. Hand-forged metal stripes catch the glow through polished edges and satin surfaces, creating a refined play of sharper sparkles and softer reflections.",
       "A shimmering metallic veil descends from a hand-shaped structure in a graceful round silhouette, filtering and returning the light to the space. It works beautifully in bedrooms, dressing rooms, entrance areas, corridors and compact spaces that ask for function without compromise.",
       "Crafted by hand in our atelier, ARTHUR can be adapted in size, finish and proportions to suit the architecture and atmosphere of the interior.",
-      "For a more fluid expression of this design language, discover the VICTORIA Round Ceiling Lamp, where layered strands of finest cut crystal glass fall from a metal structure with a fluid rhythm, seducing the light in motion.",
+      "For a more fluid expression of this design language, discover the VICTORIA Round Ceiling Lamp, where layered strands of cut crystal glass fall from a metal structure with a fluid rhythm, seducing the light in motion.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -1412,7 +1412,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Some stories are universal Across every culture and tongue, the language of tenderness is the same — a gift, a gesture, a light shared.",
       "The LA VIE EN ROSE collection is gentle yet profound, reminding us that beauty needs no translation.",
       "In Single Light Rose Element LA VIE EN ROSE by Brand van Egmond light blooms endlessly — a tribute to beauty, to generosity, to all that is quietly felt and deeply understood.",
-      "This unique object truly shines through bespoke compositions that can be created with single rose elements and bouquets, stretching tall and slender in a grand staircase or offering a tender accent for an intimate living space.",
+      "This object comes into its own in bespoke compositions that can be created with single rose elements and bouquets, stretching tall and slender in a grand staircase or offering a tender accent for an intimate living space.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -2336,7 +2336,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A monument to nature, sculpted in light The Greek legend of Orpheus tells of a poet and singer whose charm was so profound that even stones were enchanted by his music. Inspired by his story, the ORPHEUS collection was created to honour nature’s most remarkable treasures.",
       "Semi-precious stones and rare minerals are carefully selected in their untouched state and woven into a sculptural embrace of hand-forged metal.",
       "In addition to our curated collection of gems — amethyst, pyrite, malachite, rock crystal, labradorite, and calcite — the ORPHEUS Art Object may be personalised with a cherished mineral or stone from your own collection.",
-      "The unique and captivating sculptural language of this art object is impossible to ignore. A perfect focal feature for the boldest and most eccentric interiors, this object feels truly alive, pulsing gently with quiet energy.",
+      "The sculptural language of this art object draws the eye. As a focal feature for expressive interiors, the object has a lively, gently rhythmic presence.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -2421,7 +2421,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "ARTHUR Conical Chandelier brings reflection and metallic rhythm into a vertical form. Its hand-forged metal stripes catch the glow through polished edges and satin surfaces, creating shifting sparkles and softer reflections throughout the chandelier.",
       "The elegant, elongated silhouette gives the design a strong yet airy presence, making it especially suited to stairwells, entrance halls, double-height spaces and interiors where the eye is invited upward.",
       "Crafted by hand in our atelier, ARTHUR can be adapted in size, finish and proportions to suit the architecture and atmosphere of the interior.",
-      "For a more fluid expression of this design language, discover the VICTORIA Conical Chandelier, where layered strands of finest cut crystal glass descend from a metal structure with a fluid rhythm, seducing the light in motion.",
+      "For a more fluid expression of this design language, discover the VICTORIA Conical Chandelier, where layered strands of cut crystal glass descend from a metal structure with a fluid rhythm, seducing the light in motion.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -2510,7 +2510,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Where strength and tenderness merge Lines twist, rise, and fold — a choreography of tension and release. Each reflection is a fragment of motion, each angle a spark of defiance.",
       "The DELPHINIUM collection is a sculptural dialogue between chaos and grace, unpredictable and alive with rhythm.",
       "Conical Chandelier DELPHINIUM by Brand van Egmond is a symphony of contrasts — raw, radiant, eternal.",
-      "The elegant and well-balanced presence of this conical chandelier is a perfect statement for interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
+      "The elegant and well-balanced presence of this conical chandelier makes a statement in interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -2571,7 +2571,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A dream of free-spirited renewal As the tender drops of dew glimmer in the light of dawn, the world around us transforms, reminding us what truly matters.",
       "The ERSA collection is a vision of transcendental, fluid beauty, embodied in glass and light.",
       "Named after the Greek goddess of morning dew, who symbolises purity and fresh beginnings, Conical Chandelier ERSA by Brand van Egmond is a delicate force of nature.",
-      "The elegant and well-balanced presence of this conical chandelier is a perfect statement for interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
+      "The elegant and well-balanced presence of this conical chandelier makes a statement in interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -2703,7 +2703,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Precious memories, frozen into sparkling icicles In the sheltered heart of a tree, when the cold freezes the time into winter stillness, fresh raindrops transform into drops of icy glass.",
       "Within the HOLLYWOOD GLASS collection, metal and glass cease to be materials; they become atmosphere — a pure, suspended emotion.",
       "Conical Chandelier HOLLYWOOD GLASS by Brand van Egmond is frozen in motion, yet alive with quiet brilliance.",
-      "The elegant and well-balanced presence of this conical chandelier is a perfect statement for interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
+      "The elegant and well-balanced presence of this conical chandelier makes a statement in interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -2805,7 +2805,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A promise of harmony and joy A rhythm of light and shadow, rising and falling like waves in motion.",
       "Inspired by the soft sway of KELP strands underwater, the KELP collection blends organic movement with sculptural grace.",
       "Conical Chandelier KELP by Brand van Egmond is frivolous and light-hearted, spirited and energetic, designed to bring a sense of exhilaration into your interior.",
-      "The elegant and well-balanced presence of this conical chandelier is a perfect statement for interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
+      "The elegant and well-balanced presence of this conical chandelier makes a statement in interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -2937,7 +2937,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "An archetype, embodied in light The rose — a promise, a wound, a whisper of devotion. In its bloom lies both the ecstasy of love found and the ache of love fading.",
       "Within the LOVE YOU LOVE YOU NOT collection, metal blossoms into fragility and light caresses each curve like a whispered confession.",
       "Conical Chandelier LOVE YOU LOVE YOU NOT by Brand van Egmond, just like a rose, does not choose its fate — it simply blooms, radiant, unafraid of the hand that plucks it.",
-      "The elegant and well-balanced presence of this conical chandelier is a perfect statement for interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
+      "The elegant and well-balanced presence of this conical chandelier makes a statement in interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -3014,7 +3014,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A bridge between heritage and modernity Only when paying careful attention, we sometimes hear the quiet whispers of history from beyond the curtain of time",
       "Embracing times gone by, as well as the present, the SULTANS OF SWING collection captures Imperial elegance and the sheer pleasure of blowing new life into long-standing shapes and forms.",
       "Conical Chandelier SULTANS OF SWING by Brand van Egmond is a timeless dance between what has been and what is yet to come.",
-      "The elegant and well-balanced presence of this conical chandelier is a perfect statement for interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
+      "The elegant and well-balanced presence of this conical chandelier makes a statement in interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -3080,7 +3080,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Handcrafted timeless elegance An Eden of lightness and beauty, innocent and unspoiled.",
       "The BUBBLES FLOW collection is a burst of boundless vitality, a promise of universal joy.",
       "Conical Chandelier BUBBLES FLOW by Brand van Egmond is designed to transform a space into an experience.",
-      "The elegant and well-balanced presence of this conical chandelier is a perfect statement for interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
+      "The elegant and well-balanced presence of this conical chandelier makes a statement in interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -3294,7 +3294,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "The Splendour of the Sun Playful and vivid, primal yet surprising.",
       "The SOLIS collection — Latin for sun — is a seductive composition of warm light framed by graceful round reflectors.",
       "Subdued and poised, jazzy and bright, Conical Chandelier SOLIS by Brand van Egmond has as much character as the sun itself.",
-      "The elegant and well-balanced presence of this conical chandelier is a perfect statement for interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
+      "The elegant and well-balanced presence of this conical chandelier makes a statement in interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -3417,7 +3417,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A story, sculpted in light As the sun rises over the savannah, yesterday and tomorrow cross and merge, both lost in the haze of the warming light.",
       "Raw yet elegant, the DESERT WIND collection carries a meaning that is both personal and universal.",
       "Every curve of Conical Chandelier DESERT WIND by Brand van Egmond speaks of energy, of nature’s wild choreography.",
-      "The elegant and well-balanced presence of this conical chandelier is a perfect statement for interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
+      "The elegant and well-balanced presence of this conical chandelier makes a statement in interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -3481,7 +3481,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "As seen backstage at the Academy Awards While on a journey through Namibia, our atelier’s founder, William Brand, was moved by the slenderness and pure beauty of trees scattered across the desert landscape.",
       "Full of inspiration upon his return, William was invited to lighten up the VIP Green Room for the Oscars in LA, and thus the HOLLYWOOD collection took off amidst the stars.",
       "Conical Oval Chandelier HOLLYWOOD by Brand van Egmond embodies our atelier’s vision of lighting as art: expressive, sculptural and quietly chic.",
-      "This conical oval chandelier is a great addition to any space with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This conical oval chandelier is a great addition to any space with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -3546,7 +3546,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "As seen backstage at the Academy Awards While on a journey through Namibia, our atelier’s founder, William Brand, was moved by the slenderness and pure beauty of trees scattered across the desert landscape.",
       "Full of inspiration upon his return, William was invited to lighten up the VIP Green Room for the Oscars in LA, and thus the HOLLYWOOD collection took off amidst the stars.",
       "Conical Chandelier HOLLYWOOD by Brand van Egmond embodies our atelier’s vision of lighting as art: expressive, sculptural and quietly chic.",
-      "The elegant and well-balanced presence of this conical chandelier is a perfect statement for interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
+      "The elegant and well-balanced presence of this conical chandelier makes a statement in interiors with a lot of air and space — staircases, hallways, double-height spaces, or rooms with high ceilings.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -3612,7 +3612,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "ARTHUR Wall Lamp brings the reflective character of the collection to the vertical surfaces of the interior. Hand-forged metal stripes catch the glow through polished edges and satin surfaces, creating shifting reflections with depth and softness.",
       "Offered in two sizes, it works beautifully beside mirrors, in corridors, bedrooms, dining rooms, entrance halls and hospitality interiors, either as a single luminous accent or in pairs for a more formal arrangement.",
       "Crafted by hand in our atelier, ARTHUR can be adapted in size, finish and proportions to suit the architecture and atmosphere of the interior.",
-      "For a more fluid expression of this design language, discover the VICTORIA Wall Lamps, where layered strands of finest cut crystal glass fall from a metal structure with a fluid rhythm, seducing the light in motion.",
+      "For a more fluid expression of this design language, discover the VICTORIA Wall Lamps, where layered strands of cut crystal glass fall from a metal structure with a fluid rhythm, seducing the light in motion.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -5454,7 +5454,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Some stories are universal Across every culture and tongue, the language of tenderness is the same — a gift, a gesture, a light shared.",
       "The LA VIE EN ROSE collection is gentle yet profound, reminding us that beauty needs no translation.",
       "Hanging Lamp LA VIE EN ROSE by Brand van Egmond light blooms endlessly — a tribute to beauty, to generosity, to all that is quietly felt and deeply understood.",
-      "This hanging lamp is a great addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This hanging lamp is a great addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -5533,7 +5533,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Radiant glow, transforming moments into keepsakes A memory of summer evenings, when laughter drifts through the air and skirts swirl in dance. A vision that lives in our hearts forever.",
       "The LOUISE collection captures the lightness and warmth of moments we wish would never end.",
       "Hanging Lamp LOUISE by Brand van Egmond is crafted to illuminate these beautiful gatherings and fill your day-to-day with love and light.",
-      "This hanging lamp is a great addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This hanging lamp is a great addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -5694,7 +5694,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Radiant glow, transforming moments into keepsakes A memory of summer evenings, when laughter drifts through the air and skirts swirl in dance. A vision that lives in our hearts forever.",
       "The LOUISE collection captures the lightness and warmth of moments we wish would never end.",
       "Long Hanging Lamp LOUISE by Brand van Egmond is crafted to illuminate these beautiful gatherings and fill your day-to-day with love and light.",
-      "The refined and well-balanced shape of this long hanging lamp makes it a perfect fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The refined and well-balanced shape of this long hanging lamp makes it a good fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -5856,7 +5856,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Precise yet playful, truthful and pure No distractions, no noise, only light, delicately framed.",
       "The LINEA collection cuts through the air with its quiet power of purpose, and no matter how you approach it, no two angles are the same.",
       "Long Hanging Lamp LINEA by Brand van Egmond is an essence of luminosity, stripped down to pure glow.",
-      "The refined and well-balanced shape of this long hanging lamp makes it a perfect fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The refined and well-balanced shape of this long hanging lamp makes it a good fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -5964,7 +5964,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Grounded, evocative, and full of quiet strength There’s power in restraint. There’s poetry in absence.",
       "The SHIRO collection — Japanese for “castle” — is a triumph of serenity over chaos.",
       "Sculptural and quietly commanding, Long Hanging Lamp SHIRO by Brand van Egmond is a return to essential elements, evocative yet grounded.",
-      "The refined and well-balanced shape of this long hanging lamp makes it a perfect fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The refined and well-balanced shape of this long hanging lamp makes it a good fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -6106,7 +6106,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Handcrafted timeless elegance An Eden of lightness and beauty, innocent and unspoiled.",
       "The BUBBLES FLOW collection is a burst of boundless vitality, a promise of universal joy.",
       "Long Hanging Lamp with Downlights BUBBLES FLOW by Brand van Egmond is designed to transform a space into an experience, combining gentle and playful ambient illumination with functional light provided by separately controllable dimmable spotlights with honeycomb diffusers.",
-      "The refined and well-balanced shape of this long hanging lamp makes it a perfect fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The refined and well-balanced shape of this long hanging lamp makes it a good fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "This lighting sculpture is also available as a Long Hanging Lamp without the additional downlights.",
       "— William Brand, creator and sculptor"
     ],
@@ -6267,7 +6267,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Handcrafted timeless elegance An Eden of lightness and beauty, innocent and unspoiled.",
       "The BUBBLES FLOW collection is a burst of boundless vitality, a promise of universal joy.",
       "Long Hanging Lamp BUBBLES FLOW by Brand van Egmond is designed to transform a space into an experience.",
-      "The refined and well-balanced shape of this long hanging lamp makes it a perfect fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The refined and well-balanced shape of this long hanging lamp makes it a good fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "This lighting sculpture is also available as a Long Hanging Lamp with Downlights with up to four separately controllable dimmable spotlights, equipped with honeycomb diffusers.",
       "— William Brand, creator and sculptor"
     ],
@@ -6430,7 +6430,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "The Splendour of the Sun Playful and vivid, primal yet surprising.",
       "The SOLIS collection — Latin for sun — is a seductive composition of warm light framed by graceful round reflectors.",
       "Subdued and poised, jazzy and bright, Hanging Lamp SOLIS by Brand van Egmond has as much character as the sun itself.",
-      "This hanging lamp is a great addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This hanging lamp is a great addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -6675,7 +6675,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "The Splendour of the Sun Playful and vivid, primal yet surprising.",
       "The SOLIS collection — Latin for sun — is a seductive composition of warm light framed by graceful round reflectors.",
       "Subdued and poised, jazzy and bright, Vertical Hanging Lamp SOLIS by Brand van Egmond has as much character as the sun itself.",
-      "This vertical hanging lamp is a great addition to any spacious interior with character. Its striking sculptural presence makes it a perfect fit for spaces with a lot of air and volume — staircases, hallways, double-height spaces, or rooms with high ceilings.",
+      "This vertical hanging lamp is a great addition to any spacious interior with character. Its striking sculptural presence makes it a good fit for spaces with a lot of air and volume — staircases, hallways, double-height spaces, or rooms with high ceilings.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -6807,7 +6807,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "The Splendour of the Sun Playful and vivid, primal yet surprising.",
       "The SOLIS collection — Latin for sun — is a seductive composition of warm light framed by graceful round reflectors.",
       "Subdued and poised, jazzy and bright, Long Hanging Lamp SOLIS by Brand van Egmond has as much character as the sun itself.",
-      "The refined and well-balanced shape of this long hanging lamp makes it a perfect fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The refined and well-balanced shape of this long hanging lamp makes it a good fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -7158,7 +7158,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Mesmerising lightness and beauty Joyful spheres of iridescent glass, casting mesmerising rainbow-like reflections.",
       "A timeless classic and one of our atelier’s signatures, the BUBBLES collection is always in motion.",
       "Long Hanging Lamp BUBBLES by Brand van Egmond offers an elegant and magnetic presence with glass elements.",
-      "The refined and well-balanced shape of this long hanging lamp makes it a perfect fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The refined and well-balanced shape of this long hanging lamp makes it a good fit for any space deserving of a sculptural accent — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -7329,7 +7329,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A monument to nature, sculpted in light The Greek legend of Orpheus tells of a poet and singer whose charm was so profound that even stones were enchanted by his music. Inspired by his story, the ORPHEUS collection was created to honour nature’s most remarkable treasures.",
       "Semi-precious stones and rare minerals are carefully selected in their untouched state and woven into a sculptural embrace of hand-forged metal.",
       "In addition to our curated collection of gems — amethyst, pyrite, malachite, rock crystal, labradorite, and calcite — the ORPHEUS Art Object may be personalised with a cherished mineral or stone from your own collection.",
-      "The unique and captivating sculptural language of this art object is impossible to ignore. A perfect focal feature for the boldest and most eccentric interiors, this object feels truly alive, pulsing gently with quiet energy.",
+      "The sculptural language of this art object draws the eye. As a focal feature for expressive interiors, the object has a lively, gently rhythmic presence.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -7601,7 +7601,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "ARTHUR transforms light through tension and rhythm. Each hand-forged metal stripe catches sharper sparkles along its polished edges, while reflecting a softer radiance across satin surfaces.",
       "The Oval Chandelier ARTHUR stretches elegantly through the room, its elongated silhouette is especially suited above longer dining tables, kitchen islands, generous seating areas and refined hospitality spaces.",
       "The open metal structure creates a deep inner glow and bright instants of reflection, giving the chandelier its light and airy presence.",
-      "For a more fluid expression of this design language, discover the VICTORIA Oval Chandelier, where layered strands of finest cut crystal glass fall from a metal structure with a fluid rhythm, seducing the light in motion.",
+      "For a more fluid expression of this design language, discover the VICTORIA Oval Chandelier, where layered strands of cut crystal glass fall from a metal structure with a fluid rhythm, seducing the light in motion.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -7702,7 +7702,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Where strength and tenderness merge Lines twist, rise, and fold — a choreography of tension and release. Each reflection is a fragment of motion, each angle a spark of defiance.",
       "The DELPHINIUM collection is a sculptural dialogue between chaos and grace, unpredictable and alive with rhythm.",
       "Oval Chandelier DELPHINIUM by Brand van Egmond is a symphony of contrasts — raw, radiant, eternal.",
-      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -7775,7 +7775,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A dream of free-spirited renewal As the tender drops of dew glimmer in the light of dawn, the world around us transforms, reminding us what truly matters.",
       "The ERSA collection is a vision of transcendental, fluid beauty, embodied in glass and light.",
       "Named after the Greek goddess of morning dew, who symbolises purity and fresh beginnings, Oval Chandelier ERSA by Brand van Egmond is a delicate force of nature.",
-      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -7981,7 +7981,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "An ode to freedom FLOWER POWER embodies a sense of liberty — a design language shaped by movement, sensuality, and bold curiosity.",
       "Fluid, organic shapes emerge from precision cut metal, unfolding into a sculptural form adorned by sensual pendants of mouth-blown glass. The contrast between precision and fluidity gives the FLOWER POWER collection its distinctive character: expressive without excess, playful yet composed.",
       "Inspired by a time of experimentation and artistic openness, the FLOWER POWER Oval Chandelier is energetic, confident, and enduring — illuminating interiors with both personality and poetic grace.",
-      "This oval chandelier is a fine addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent.",
+      "This oval chandelier is a fine addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -8113,7 +8113,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Precious memories, frozen into sparkling icicles In the sheltered heart of a tree, when the cold freezes the time into winter stillness, fresh raindrops transform into drops of icy glass.",
       "Within the HOLLYWOOD GLASS collection, metal and glass cease to be materials; they become atmosphere — a pure, suspended emotion.",
       "Oval Chandelier HOLLYWOOD GLASS by Brand van Egmond is frozen in motion, yet alive with quiet brilliance.",
-      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -8205,7 +8205,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A promise of harmony and joy A rhythm of light and shadow, rising and falling like waves in motion.",
       "Inspired by the soft sway of KELP strands underwater, the KELP collection blends organic movement with sculptural grace.",
       "Oval Chandelier KELP by Brand van Egmond is frivolous and light-hearted, spirited and energetic, designed to bring a sense of exhilaration into your interior.",
-      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -8367,7 +8367,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A bridge between heritage and modernity Only when paying careful attention, we sometimes hear the quiet whispers of history from beyond the curtain of time",
       "Embracing times gone by, as well as the present, the SULTANS OF SWING collection captures Imperial elegance and the sheer pleasure of blowing new life into long-standing shapes and forms.",
       "Oval Chandelier SULTANS OF SWING by Brand van Egmond is a timeless dance between what has been and what is yet to come.",
-      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -8504,7 +8504,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "gold"
     ],
     "longDescription": [
-      "VICTORIA Oval Chandelier begins with a glimmer – light touches the finest cut crystal glass crystals first, then travels through the hand-shaped structure in soft, sparkling layers. The graceful structure gives the chandelier its flowing shape, while the cascading crystal strands shimmer with movement, rhythm and quiet brilliance.",
+      "VICTORIA Oval Chandelier begins with a glimmer – light touches the cut crystal glass first, then travels through the hand-shaped structure in soft, sparkling layers. The graceful structure gives the chandelier its flowing shape, while the cascading crystal strands shimmer with movement, rhythm and quiet brilliance.",
       "The Oval Chandelier VICTORIA stretches elegantly through the room, supporting the longer dining tables, kitchen islands, generous seating areas and refined hospitality spaces with its elongated silhouette.",
       "Crafted by hand in our atelier, VICTORIA can be adapted in size, finish and proportions to suit the architecture and atmosphere of the interior.",
       "For a more enduring expression of this design language, discover the ARTHUR Oval Chandelier, where hand-forged metal stripes create a refined interplay of glimmers and reflections.",
@@ -8611,7 +8611,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "The Splendour of the Sun Playful and vivid, primal yet surprising.",
       "The SOLIS collection — Latin for sun — is a seductive composition of warm light framed by graceful round reflectors.",
       "Subdued and poised, jazzy and bright, Oval Chandelier SOLIS by Brand van Egmond has as much character as the sun itself.",
-      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -8739,7 +8739,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A story, sculpted in light As the sun rises over the savannah, yesterday and tomorrow cross and merge, both lost in the haze of the warming light.",
       "Raw yet elegant, the DESERT WIND collection carries a meaning that is both personal and universal.",
       "Every curve of Oval Chandelier DESERT WIND by Brand van Egmond speaks of energy, of nature’s wild choreography.",
-      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -8804,7 +8804,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "As seen backstage at the Academy Awards While on a journey through Namibia, our atelier’s founder, William Brand, was moved by the slenderness and pure beauty of trees scattered across the desert landscape.",
       "Full of inspiration upon his return, William was invited to lighten up the VIP Green Room for the Oscars in LA, and thus the HOLLYWOOD collection took off amidst the stars.",
       "Oval Chandelier HOLLYWOOD by Brand van Egmond embodies our atelier’s vision of lighting as art: expressive, sculptural and quietly chic.",
-      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a unique centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
+      "This oval chandelier is a great addition to any interior with character. It highlights without overpowering and can serve as a centerpiece or a subtle accent for living areas, public spaces, and hospitality interiors alike.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -8870,7 +8870,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "ARTHUR Round Chandelier transforms light through reflection and rhythm. A shimmering metallic veil descends from a hand-shaped structure in a precise round silhouette, filtering and returning the light to the space. Each hand-forged metal stripe catches sharper sparkles along its polished edges, while reflecting a softer radiance across satin surfaces.",
       "The round chandelier gathers this reflective presence at the centre of the room. Its balanced silhouette makes it especially suited above round dining tables, in salons, entrance halls, central seating areas and refined hospitality interiors.",
       "Crafted by hand in our atelier, ARTHUR can be adapted in size, finish and proportions to suit the architecture and atmosphere of the interior.",
-      "For a more fluid expression of this design language, discover the VICTORIA Round Chandelier, where layered strands of finest cut crystal glass fall from a metal structure with a fluid rhythm, seducing the light in motion.",
+      "For a more fluid expression of this design language, discover the VICTORIA Round Chandelier, where layered strands of cut crystal glass fall from a metal structure with a fluid rhythm, seducing the light in motion.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -8958,7 +8958,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Where strength and tenderness merge Lines twist, rise, and fold — a choreography of tension and release. Each reflection is a fragment of motion, each angle a spark of defiance.",
       "The DELPHINIUM collection is a sculptural dialogue between chaos and grace, unpredictable and alive with rhythm.",
       "Round Chandelier DELPHINIUM by Brand van Egmond is a symphony of contrasts — raw, radiant, eternal.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -9031,7 +9031,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A dream of free-spirited renewal As the tender drops of dew glimmer in the light of dawn, the world around us transforms, reminding us what truly matters.",
       "The ERSA collection is a vision of transcendental, fluid beauty, embodied in glass and light.",
       "Named after the Greek goddess of morning dew, who symbolises purity and fresh beginnings, Round Chandelier ERSA by Brand van Egmond is a delicate force of nature.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -9235,7 +9235,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A constellation of energy, movement and form Where gravity meets grace, light begins to move.",
       "Avant-garde by nature, the GALAXY collection channels pure energy through form and movement.",
       "Artistic yet geometric, Round Chandelier GALAXY by Brand van Egmond blurs the boundaries between technical precision and celestial grace.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -9329,7 +9329,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A promise of harmony and joy A rhythm of light and shadow, rising and falling like waves in motion.",
       "Inspired by the soft sway of KELP strands underwater, the KELP collection blends organic movement with sculptural grace.",
       "Round Chandelier KELP by Brand van Egmond is frivolous and light-hearted, spirited and energetic, designed to bring a sense of exhilaration into your interior.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -9428,7 +9428,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Radiant glow, transforming moments into keepsakes A memory of summer evenings, when laughter drifts through the air and skirts swirl in dance. A vision that lives in our hearts forever.",
       "The LOUISE collection captures the lightness and warmth of moments we wish would never end.",
       "Round Chandelier LOUISE by Brand van Egmond is crafted to illuminate these beautiful gatherings and fill your day-to-day with love and light.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -9542,7 +9542,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Precise yet playful, truthful and pure No distractions, no noise, only light, delicately framed.",
       "The LINEA collection cuts through the air with its quiet power of purpose, and no matter how you approach it, no two angles are the same.",
       "Round Chandelier LINEA by Brand van Egmond is an essence of luminosity, stripped down to pure glow.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -9617,7 +9617,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Grounded, evocative, and full of quiet strength There’s power in restraint. There’s poetry in absence.",
       "The SHIRO collection — Japanese for “castle” — is a triumph of serenity over chaos.",
       "Sculptural and quietly commanding, Round Chandelier SHIRO by Brand van Egmond is a return to essential elements, evocative yet grounded.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -9694,7 +9694,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A bridge between heritage and modernity Only when paying careful attention, we sometimes hear the quiet whispers of history from beyond the curtain of time",
       "Embracing times gone by, as well as the present, the SULTANS OF SWING collection captures Imperial elegance and the sheer pleasure of blowing new life into long-standing shapes and forms.",
       "Round Chandelier SULTANS OF SWING by Brand van Egmond is a timeless dance between what has been and what is yet to come.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -9772,7 +9772,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Handcrafted timeless elegance An Eden of lightness and beauty, innocent and unspoiled.",
       "The BUBBLES FLOW collection is a burst of boundless vitality, a promise of universal joy.",
       "Round Chandelier BUBBLES FLOW by Brand van Egmond is designed to transform a space into an experience.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -10006,7 +10006,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "The Splendour of the Sun Playful and vivid, primal yet surprising.",
       "The SOLIS collection — Latin for sun — is a seductive composition of warm light framed by graceful round reflectors.",
       "Subdued and poised, jazzy and bright, Round Chandelier SOLIS by Brand van Egmond has as much character as the sun itself.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -10133,7 +10133,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A story, sculpted in light As the sun rises over the savannah, yesterday and tomorrow cross and merge, both lost in the haze of the warming light.",
       "Raw yet elegant, the DESERT WIND collection carries a meaning that is both personal and universal.",
       "Every curve of Round Chandelier DESERT WIND by Brand van Egmond speaks of energy, of nature’s wild choreography.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -10201,7 +10201,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Mesmerising lightness and beauty Joyful spheres of iridescent glass, casting mesmerising rainbow-like reflections.",
       "A timeless classic and one of our atelier’s signatures, the BUBBLES collection is always in motion.",
       "Round Chandelier BUBBLES by Brand van Egmond offers an elegant and magnetic presence with glass elements.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -10904,7 +10904,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "A monument to nature, sculpted in light The Greek legend of Orpheus tells of a poet and singer whose charm was so profound that even stones were enchanted by his music. Inspired by his story, the ORPHEUS collection was created to honour nature’s most remarkable treasures.",
       "Semi-precious stones, rare minerals, and delicate objects of desire are carefully selected in their untouched state and woven into a sculptural embrace of hand-forged metal.",
       "In addition to our curated collection of gems — amethyst, pyrite, malachite, rock crystal, labradorite, calcite and fine porcelain Nymphenburg rose — the ORPHEUS Round Chandelier may be personalised with a cherished mineral or stone from your own collection.",
-      "The sculptural presence of this round chandelier makes it a perfect fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
+      "The sculptural presence of this round chandelier makes it a good fit for any space that has a story to tell — whether classic or contemporary, cosy or spacious, intimate or grand.",
       "— William Brand, creator and sculptor"
     ],
     "details": {
@@ -10981,7 +10981,7 @@ export const BRAND_VAN_EGMOND_PRODUCTS = [
       "Endless delight, captured in light In a sculptural reverie, weight disappears. Light and glass entwine in a quiet dance — a choreography of shimmer and stillness.",
       "Independent in spirit and amorous at heart, the BUBBLES SWIRL collection stuns with its cloud-like shapes.",
       "Sculptural Object BUBBLES SWIRL by Brand van Egmond brings lightness and beauty into any space.",
-      "This sculptural object is a perfect choice for interiors in need of a dramatic statement. Bringing an elegant sense of movement and subtle, yet powerful grace, it was designed to tell your story through the magic of sculptural light.",
+      "This sculptural object is a fitting choice for interiors in need of a dramatic statement. Bringing an elegant sense of movement and subtle, yet powerful grace, it was designed to tell your story through the magic of sculptural light.",
       "— William Brand, creator and sculptor"
     ],
     "details": {

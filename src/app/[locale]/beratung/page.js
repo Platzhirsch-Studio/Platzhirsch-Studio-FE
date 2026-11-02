@@ -1,16 +1,22 @@
-import Advice from "@/components/Beratung/advice";
+import Advice, { BeratungHeader } from "@/components/Beratung/advice";
 import JsonLd from "@/components/Reusable/JsonLd";
-import SinglePageBanner from "@/components/Reusable/singlePageSlider";
-import { Suspense } from "react";
-import BeratungClient from "@/components/BeratungClient/BeratungClient";
+import { BeratungForm } from "@/components/BeratungClient/BeratungClient";
+import { beratungContext, headerTopic } from "@/lib/forms/beratungContext";
+// Rat 9,5 B6 (trust next to the form), B2 (Ideenboard count), C6 (FAQ).
+import TrustBlock from "@/components/Beratung/TrustBlock";
+import BeratungFaq, { faqSchema } from "@/components/Beratung/BeratungFaq";
+import { boardCardCount } from "@/lib/forms/boardCount";
+// Online appointment behind BOOKING_PROVIDER (default "none" = not rendered).
+import BookingEmbed from "@/components/Booking/BookingEmbed";
+// WhatsApp-Beratung (Inhaber-Entscheidung Nr. 15): Nebenweg, nur mit WHATSAPP_NUMBER.
+import WhatsApp from "@/components/WhatsApp";
 import {
   fetchConsultationKeywords,
   getLocalizedConsultationMetadata,
   getConsultationOGImage,
   validateOGType
 } from "@/lib/api/Keywords/fetchBeratungKeywords";
-import { ROUTES } from "@/utils/routing";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { clampDescription, fitTitle, hreflangLanguages, ogLocale } from "@/lib/seo/pageMetadata";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -37,21 +43,29 @@ function getBeratungPageUrl(locale) {
 
 // Fallback metadata (the CMS consultation keywords win when set). Targets the
 // "interior design" cluster (SISTRIX AT: 1,250 clicks/month, "innenarchitekt" 300).
-const getLocalizedTitle = (locale) => {
+// Rat 9,5 A15 (T6 → T1): titles ≤ 60 with the house suffix, descriptions ≤ 150 as whole sentences.
+const getLocalizedTitle = (locale) => fitTitle(rawTitle(locale));
+const rawTitle = (locale) => {
   switch (locale) {
-    case "it": return "Interior Design & Consulenza d'arredo in Vorarlberg | Platzhirsch";
-    case "en": return "Interior Design & Consulting in Vorarlberg | Platzhirsch Home Living";
-    case "fr": return "Interior Design & Conseil en aménagement au Vorarlberg | Platzhirsch";
-    default: return "Interior Design & Einrichtungsberatung in Vorarlberg | Platzhirsch";
+    case "it": return "Interior Design & Consulenza in Vorarlberg | Platzhirsch";
+    case "en": return "Interior Design & Consulting in Vorarlberg | Platzhirsch";
+    case "fr": return "Interior Design & Conseil au Vorarlberg | Platzhirsch";
+    default: return "Einrichtungsberatung & Interior Design Vorarlberg | Platzhirsch";
   }
 };
 
-const getLocalizedDescription = (locale) => {
+// Description: our own, factual text wins over the CMS (QA Runde 1, P2-2:
+// the CMS text still says "exklusiv"). The CMS keeps title (if it fits in
+// 65 characters, else ours), image and type. Fix-Runde 1 (F3, r1-seo P2-4/
+// P2-5): titles ≤ 65, descriptions ≤ 155 characters, the core USP (hand
+// drawing, Inhaber-Entscheidung Nr. 8) up front, no country-wide promise.
+const getLocalizedDescription = (locale) => clampDescription(rawDescription(locale));
+const rawDescription = (locale) => {
   switch (locale) {
-    case "it": return "Interior design e consulenza d'arredo per casa, appartamento e spazi commerciali: progettazione di mobili, cucine e luce dallo showroom di Lochau sul Lago di Costanza – in tutta l'Austria, Germania e Svizzera.";
-    case "en": return "Interior design and consulting for houses, apartments and commercial spaces: planning of furniture, kitchens and lighting from the showroom in Lochau on Lake Constance – across Austria, Germany and Switzerland.";
-    case "fr": return "Interior design et conseil en aménagement pour maison, appartement et espaces professionnels : planification du mobilier, des cuisines et de l'éclairage depuis le showroom de Lochau, lac de Constance – Autriche, Allemagne, Suisse.";
-    default: return "Innenarchitektur und Einrichtungsberatung für Haus, Wohnung und Objekt: Planung von Designermöbeln, Küchen und Licht aus dem Showroom in Lochau am Bodensee – in Vorarlberg, ganz Österreich, Deutschland und der Schweiz.";
+    case "it": return "Consulenza d'arredo a Lochau sul Lago di Costanza: Harald Menghin disegna il vostro concept a mano, poi progettiamo mobili, cucina e luce in 3D.";
+    case "en": return "Interior consulting in Lochau on Lake Constance: Harald Menghin draws your concept by hand, then we plan furniture, kitchen and lighting in 3D.";
+    case "fr": return "Conseil en aménagement à Lochau, lac de Constance : Harald Menghin dessine votre concept à la main, puis nous planifions mobilier et cuisine en 3D.";
+    default: return "Einrichtungsberatung in Lochau am Bodensee: Harald Menghin zeichnet Ihr Konzept von Hand, danach planen wir Möbel, Küche und Licht in 3D.";
   }
 };
 
@@ -65,8 +79,8 @@ export async function generateMetadata({ params }) {
 
     if (!consultationKeywords) {
       return {
-        title: getLocalizedTitle(locale),
-        description: getLocalizedDescription(locale),
+        title: fitTitle(getLocalizedTitle(locale)),
+        description: clampDescription(getLocalizedDescription(locale)),
         robots: { index: true, follow: true },
         alternates: {
           canonical: PAGE_URL,
@@ -75,36 +89,37 @@ export async function generateMetadata({ params }) {
         openGraph: {
           type: "website",
           url: PAGE_URL,
-          title: getLocalizedTitle(locale),
-          description: getLocalizedDescription(locale),
+          title: fitTitle(getLocalizedTitle(locale)),
+          description: clampDescription(getLocalizedDescription(locale)),
           siteName: "Platzhirsch Home Living",
-          locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
+          locale: ogLocale(locale),
           images: [{ url: "/Images/Home/download.jpg", width: 1200, height: 630, alt: "Beratung – Platzhirsch Home Living" }],
         },
         twitter: {
           card: "summary_large_image",
-          title: getLocalizedTitle(locale),
-          description: getLocalizedDescription(locale),
+          title: fitTitle(getLocalizedTitle(locale)),
+          description: clampDescription(getLocalizedDescription(locale)),
           images: ["/Images/Home/download.jpg"],
         },
       };
     }
 
     const meta = getLocalizedConsultationMetadata(consultationKeywords, locale);
+    const title = meta?.title && meta.title.length <= 60 ? meta.title : fitTitle(getLocalizedTitle(locale));
     const image = getConsultationOGImage(consultationKeywords);
     const safeType = validateOGType(meta?.type);
 
     return {
-      title: meta?.title || getLocalizedTitle(locale),
-      description: meta?.description || getLocalizedDescription(locale),
+      title,
+      description: clampDescription(getLocalizedDescription(locale)),
       robots: { index: true, follow: true },
       alternates: {
         canonical: PAGE_URL,
         languages: hreflangLanguages((l) => getBeratungPageUrl(l))
       },
       openGraph: {
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
+        title,
+        description: clampDescription(getLocalizedDescription(locale)),
         url: PAGE_URL,
         siteName: "Platzhirsch Home Living",
         images: [
@@ -115,13 +130,13 @@ export async function generateMetadata({ params }) {
             alt: "Beratung – Platzhirsch Home Living",
           },
         ],
-        locale: meta?.locale || (locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE"),
+        locale: ogLocale(locale),
         type: safeType,
       },
       twitter: {
         card: "summary_large_image",
-        title: meta?.title || getLocalizedTitle(locale),
-        description: meta?.description || getLocalizedDescription(locale),
+        title,
+        description: clampDescription(getLocalizedDescription(locale)),
         images: [image ? image : "/Images/Home/download.jpg"],
       },
     };
@@ -129,38 +144,47 @@ export async function generateMetadata({ params }) {
     console.error("❌ Metadata fetch error:", error);
 
     return {
-      title: getLocalizedTitle(locale),
-      description: getLocalizedDescription(locale),
+      title: fitTitle(getLocalizedTitle(locale)),
+      description: clampDescription(getLocalizedDescription(locale)),
       robots: { index: true, follow: true },
       alternates: { canonical: PAGE_URL, languages: hreflangLanguages((l) => getBeratungPageUrl(l)) },
     };
   }
 }
 
-export default async function Home({ params }) {
+// r8-leads (ux P1-2): the page reads ?thema=/?planer=/?rolle=… on the server,
+// so heading, picture and the preselected wizard steps are right in the first
+// HTML (no swap after hydration, no layout shift). Reading searchParams makes
+// the page dynamic; the CMS keywords stay in the fetch cache (revalidate 3600).
+function toSearchParams(sp) {
+  const q = new URLSearchParams();
+  for (const [k, v] of Object.entries(sp || {})) {
+    const first = Array.isArray(v) ? v[0] : v;
+    if (typeof first === "string") q.set(k, first);
+  }
+  return q;
+}
+
+export default async function Home({ params, searchParams }) {
   const { locale } = await params;
+  const query = toSearchParams(await searchParams);
+  const context = beratungContext(query);
+  // Rat 9,5 B2: cards of a shared Ideenboard (read only; "gone" when revoked/expired).
+  const boardCount = context.ideenboard ? await boardCardCount(context.ideenboard) : null;
+  // B1: the calendar entry on top keeps the page context (thema, produkt, ort, plan …).
+  const terminContext = Object.fromEntries(["thema", "planer", "ort", "rolle", "produkt", "plan", "ideenboard"].map((k) => [k, query.get(k)]).filter(([, v]) => v));
 
   const titleOne = locale == "it" ? "Consulenza" : locale == "en" ? "Consulting" : locale == "fr" ? "Conseil" : "Beratung";
   const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
 
   // Dynamic URLs
-  const BASE_URL = getBaseUrl(locale);
   const PAGE_URL = getBeratungPageUrl(locale);
 
   // Fetch keywords for image
   const consultationKeywords = await fetchConsultationKeywords();
 
   const image = getConsultationOGImage(consultationKeywords);
-  const beratungPath = ROUTES.beratung[locale] ? `${ROUTES.beratung[locale]}` : `/beratung`;
 
-  const BannerInfo = {
-    image: image || "/Images/Home/download.jpg",
-    links: [
-      { linkName: Home, link: `/` }, // Fixed: use locale prefix
-      { linkName: titleOne, link: beratungPath },
-    ],
-    title: titleOne,
-  };
 
   // ✅ JSON-LD Structured Data
   const webPageSchema = {
@@ -169,7 +193,7 @@ export default async function Home({ params }) {
     "@id": `https://platzhirsch.studio${PAGE_URL}#webpage`,
     url: `https://platzhirsch.studio${PAGE_URL}`,
     name: titleOne,
-    description: "Professionelle Beratung für exklusives Design bei Platzhirsch Home Living - Maßgeschneiderte Lösungen für Ihr Zuhause und Büro.",
+    description: getLocalizedDescription(locale),
     inLanguage: locale === "it" ? "it-IT" : locale === "en" ? "en-US" : locale === "fr" ? "fr-FR" : "de-AT",
     isPartOf: { "@id": "https://platzhirsch.studio/#website" },
     breadcrumb: {
@@ -184,12 +208,31 @@ export default async function Home({ params }) {
   return (
     <div>
       <JsonLd data={webPageSchema} />
-      <SinglePageBanner info={BannerInfo} />
+      <JsonLd data={await faqSchema(locale, PAGE_URL)} />
+      <BeratungHeader heroImage={image} formId="anfrage" topic={headerTopic(context)} />
+      {/* Online calendar first („Termin online wählen“, only while /termin is
+          usable: terminMode frappe or mock); the form below stays the alternative. */}
+      <BookingEmbed locale={locale} variant="top" context={terminContext} />
+      {/* The enquiry form (BeratungClient, owned by the forms team) comes
+          right after the opening – the shortest path to an appointment;
+          the process explains the rest below. scroll-mt clears the fixed header. */}
+      <div id="anfrage" className="scroll-mt-20 lg:scroll-mt-24">
+        {/* Context from the URL, resolved on the server (see above). */}
+        <BeratungForm context={context} boardCount={boardCount} aside={<TrustBlock locale={locale} />} />
+      </div>
+      {/* "Lieber schreiben?" – side path below the form, never a primary
+          button. Renders nothing without WHATSAPP_NUMBER. */}
+      <WhatsApp
+        locale={locale}
+        variant="block"
+        copy="beratung"
+        headingLevel={2}
+        context={{ kind: "beratung" }}
+        className="mx-auto w-full max-w-page px-gutter py-12 md:py-16"
+      />
+      <BookingEmbed locale={locale} />
       <Advice />
-      {/* Suspense: the wizard reads ?produkt= via useSearchParams. */}
-      <Suspense fallback={null}>
-        <BeratungClient />
-      </Suspense>
+      <BeratungFaq locale={locale} />
     </div>
   );
 }

@@ -1,0 +1,603 @@
+{
+  "version": 1,
+  "stand": "2026-11-02",
+  "hinweis": "Bilder mit kiGeneriert: true sind KI-generiert (Art. 50 AI Act): sichtbares Etikett auf der Seite Pflicht; XMP enthält IPTC DigitalSourceType trainedAlgorithmicMedia. Bilder mit kiGeneriert: false (art: rendering) sind Visualisierungen (Path-Tracing, Blender) mit Bildunterschrift „Visualisierung (Rendering)“, XMP digitalCreation; Assets: docs/bildquellen/QUELLEN-yacht-renders.md. Doku: Marktresearch/digital/features/yacht-renderings.md",
+  "renders": [
+    {
+      "id": "runabout-mahagoni-deck",
+      "konzept": "runabout-mahagoni",
+      "zone": "deck",
+      "titel": "Mahagoni und Leinen – Cockpit",
+      "format": "3:2",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/runabout-mahagoni-deck-v2-1200.avif",
+          "2400": "/labs/yacht/runabout-mahagoni-deck-v2-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/runabout-mahagoni-deck-v2-1200.webp",
+          "2400": "/labs/yacht/runabout-mahagoni-deck-v2-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 1600
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 800
+        }
+      },
+      "alt": "Cockpit eines klassischen Mahagoni-Runabouts mit elfenbeinfarbener, längs gesteppter Sitzbank mit dunkler Keder, Holzsteuerrad und Teakboden, dahinter ein ruhiger See im Abendlicht",
+      "kiGeneriert": true,
+      "kennzeichnung": "KI-generiertes Konzeptbild – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "promptOriginal": "Editorial photograph of the cockpit of a classic varnished mahogany runabout moored at a wooden jetty on an alpine lake at blue hour, ivory leather bench seats with thin sage-green piping, a folded cashmere throw, brushed brass cleats, calm water reflecting distant mountains, soft warm light from a small portable lamp, 35mm lens, natural colors, quiet luxury, shallow depth of field",
+      "prompt": "editorial photograph, inside the open cockpit of a classic varnished mahogany runabout boat at a wooden jetty, ivory white leather bench seats, cream upholstery, slim dark green piping edge, folded cashmere throw, brass fittings, wooden steering wheel, alpine lake at blue hour, 35mm, natural colors",
+      "negativ": "green seats, sage seats, green upholstery, logo, text, letters, watermark, signature, brand name, people, person, face, hands, crowd, hdr, fisheye, distorted perspective, oversaturated, cartoon, illustration, 3d render, cgi, lowres, blurry, jpeg artifacts, deformed furniture, duplicate objects, cluttered",
+      "seed": 59,
+      "modell": "Stable Diffusion XL Base 1.0 + Refiner 1.0 (stabilityai), VAE sdxl-vae-fp16-fix; Hochskalierung Real-ESRGAN x2plus",
+      "lizenz": "CreativeML Open RAIL++-M (SDXL); MIT (sdxl-vae-fp16-fix); BSD-3-Clause (Real-ESRGAN)",
+      "erzeugt": "2026-10-27",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "version": 2,
+      "c2pa": {
+        "eingebettet": true,
+        "aktion": "c2pa.created",
+        "digitalSourceType": "trainedAlgorithmicMedia",
+        "signatur": "lokale Zertifikatskette Platzhirsch (nicht in einer C2PA-Vertrauensliste)",
+        "werkzeug": "c2pa-python 0.38.0"
+      },
+      "ersetzt": "Neu gerendert am 27.10.2026 (Runde 2), damit Bild und Konzept übereinstimmen; Vorversion bleibt unter dem alten Dateinamen liegen.",
+      "farbe": "#86726a",
+      "lqip": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAABQBACdASoYABAAPu1kqU2ppaOiMAgBMB2JQBWAMYdXOkdNFpVks+dQtvswAP7UItdePWvzp3hgAFsqH67g5Di5JQfCeOOpFjrcIajgjlZq2+ZD3jjLXhKpLc0k+Zl6z/jymt/YYSNO/H/11S5Rsc3N+b7TRmeyQW7Hx2ifNToRVtP74OGSXirKamnYRM4LpkfXlhIU6VnhYTPSng7FMikWhvpkyTCrgAA="
+    },
+    {
+      "id": "runabout-mahagoni-steg",
+      "konzept": "runabout-mahagoni",
+      "zone": "bootshaus",
+      "titel": "Mahagoni und Leinen – Steg",
+      "format": "4:5",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/runabout-mahagoni-steg-1200.avif",
+          "2400": "/labs/yacht/runabout-mahagoni-steg-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/runabout-mahagoni-steg-1200.webp",
+          "2400": "/labs/yacht/runabout-mahagoni-steg-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 3000
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 1500
+        }
+      },
+      "alt": "Holzliege mit cremeweißer Auflage und Sonnenschirm aus sandfarbenem Stoff auf einem Holzsteg, ruhiger See und bewaldetes Ufer im warmen Abendlicht",
+      "kiGeneriert": true,
+      "kennzeichnung": "KI-generiertes Konzeptbild – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "promptOriginal": "Editorial photograph of a minimalist lake jetty at sunset, a low teak sun lounger with off-white cushions and a square parasol in sand canvas, varnished wooden boat bow in the foreground slightly out of focus, Lake Constance atmosphere, 50mm lens, warm evening light, natural film-like colors",
+      "prompt": "editorial photograph, minimalist wooden lake jetty at sunset, low teak sun lounger with off-white cushions, square parasol in sand canvas, varnished wooden boat bow in the foreground out of focus, Lake Constance atmosphere, 50mm, warm evening light, natural film colors",
+      "negativ": "logo, text, letters, watermark, signature, brand name, people, person, face, hands, crowd, hdr, fisheye, distorted perspective, oversaturated, cartoon, illustration, 3d render, cgi, lowres, blurry, jpeg artifacts, deformed furniture, duplicate objects, cluttered",
+      "seed": 37,
+      "modell": "Stable Diffusion XL Base 1.0 + Refiner 1.0 (stabilityai), VAE sdxl-vae-fp16-fix; Hochskalierung Real-ESRGAN x4plus",
+      "lizenz": "CreativeML Open RAIL++-M (SDXL); MIT (sdxl-vae-fp16-fix); BSD-3-Clause (Real-ESRGAN)",
+      "erzeugt": "2026-10-27",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "farbe": "#9c8c7d",
+      "lqip": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAAAQBQCdASoYAB4APu1sq1EppaOiqAqpMB2JQBibBp4dwkmeZCyxucWJyX3TPTrBjvMAAPiLuNGNXBmiirDufMbeaU5iIHMcTb51UOyMUGP0ZpM+I3IWfoR3DoNlkppwBZjNwNkOJOAegCF6lb58090HeASuU0HC5bDzCDzximM2jOpg8i41SCga6st8bmfnn20AePwUlcpArJfZU8VtFcQAAAA="
+    },
+    {
+      "id": "daycruiser-seelicht-cockpit",
+      "konzept": "daycruiser-seelicht",
+      "zone": "deck",
+      "titel": "Seelicht – Cockpit",
+      "format": "3:2",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/daycruiser-seelicht-cockpit-v2-1200.avif",
+          "2400": "/labs/yacht/daycruiser-seelicht-cockpit-v2-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/daycruiser-seelicht-cockpit-v2-1200.webp",
+          "2400": "/labs/yacht/daycruiser-seelicht-cockpit-v2-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 1600
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 800
+        }
+      },
+      "alt": "Überdachtes Cockpit eines Daycruisers mit weißem Ecksofa auf Holzsockel, zwei weißen Sesseln, petrolgrün karierten Kissen, Holztisch und hellem Teppich, dahinter der See mit einer Uferstadt und Kirchturm bei bedecktem Himmel",
+      "kiGeneriert": false,
+      "art": "rendering",
+      "kennzeichnung": "Visualisierung (Rendering) – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "bildunterschrift": "Visualisierung (Rendering)",
+      "werkzeug": "Blender 4.5 LTS, Cycles (OptiX), Path-Tracing, AgX; generische Bootsform und Möbelformen, Farben aus concepts.json (farbwelt)",
+      "lizenz": "Eigenes Rendering Platzhirsch; Szenen-Assets CC0 1.0 (Poly Haven, ambientCG) – Liste: docs/bildquellen/QUELLEN-yacht-renders.md",
+      "erzeugt": "2026-11-01",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "quelle": "kueche-yacht-render/out/final/yacht/yacht-daycruiser-seelicht-deck-tag.png (2400 × 1600 PNG, Licht „tag“)",
+      "xmp": {
+        "digitalSourceType": "digitalCreation"
+      },
+      "version": 2,
+      "ersetzt": "KI-Bild (SDXL) am 02.11.2026 durch Rendering ersetzt (Bootstyp passt); KI-Vorversion bleibt unter dem alten Dateinamen liegen.",
+      "farbe": "#bab8b9",
+      "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAwCdASoYABAAPtFUo0uoJKMhsAgBABoJaQAAXE1DhERt2g6sGwAA/tUJOvcigNRZ1x6do1WlpM/4RlOnqvIATjkpl8NhKoRI1HhRf0wWCm0BiPMk/9gjl6bDybiF/gAB6IoAAAA="
+    },
+    {
+      "id": "daycruiser-seelicht-kabine",
+      "konzept": "daycruiser-seelicht",
+      "zone": "kabine",
+      "titel": "Seelicht – Kabine",
+      "format": "3:2",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/daycruiser-seelicht-kabine-v2-1200.avif",
+          "2400": "/labs/yacht/daycruiser-seelicht-kabine-v2-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/daycruiser-seelicht-kabine-v2-1200.webp",
+          "2400": "/labs/yacht/daycruiser-seelicht-kabine-v2-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 1600
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 800
+        }
+      },
+      "alt": "Kabine eines Daycruisers mit Doppelbett in weißer Wäsche, graugrünem Bettläufer, petrolgrün kariertem Kissen und dunkel gepolstertem Kopfteil vor heller Eichenwand, zwei Nachttischleuchten, schmalem Fensterband und hellem Teppich auf Holzboden im Abendlicht",
+      "kiGeneriert": false,
+      "art": "rendering",
+      "kennzeichnung": "Visualisierung (Rendering) – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "bildunterschrift": "Visualisierung (Rendering)",
+      "werkzeug": "Blender 4.5 LTS, Cycles (OptiX), Path-Tracing, AgX; generische Bootsform und Möbelformen, Farben aus concepts.json (farbwelt)",
+      "lizenz": "Eigenes Rendering Platzhirsch; Szenen-Assets CC0 1.0 (Poly Haven, ambientCG) – Liste: docs/bildquellen/QUELLEN-yacht-renders.md",
+      "erzeugt": "2026-11-01",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "quelle": "kueche-yacht-render/out/final/yacht/yacht-daycruiser-seelicht-kabine-abend.png (2400 × 1600 PNG, Licht „abend“)",
+      "xmp": {
+        "digitalSourceType": "digitalCreation"
+      },
+      "version": 2,
+      "ersetzt": "KI-Bild (SDXL) am 02.11.2026 durch Rendering ersetzt (Bootstyp passt); KI-Vorversion bleibt unter dem alten Dateinamen liegen.",
+      "farbe": "#a2847a",
+      "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADQAwCdASoYABAALplotFoiqCgoCACYSgCdL1ADtiOD/q5tStrgSgAA99esPxNq5cc2kpsDAOoAkZ4+PO0/8NjjgWshROjwoFSUBaDvmsT6SheSmviow7rHt35HSXMMAIx757RJLBb34mMGrZU0d87KyY6vFWAA"
+    },
+    {
+      "id": "daycruiser-seelicht-salon",
+      "konzept": "daycruiser-seelicht",
+      "zone": "salon",
+      "titel": "Seelicht – Salon",
+      "format": "3:2",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/daycruiser-seelicht-salon-1200.avif",
+          "2400": "/labs/yacht/daycruiser-seelicht-salon-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/daycruiser-seelicht-salon-1200.webp",
+          "2400": "/labs/yacht/daycruiser-seelicht-salon-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 1600
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 800
+        }
+      },
+      "alt": "Salon eines Daycruisers mit weißem Sofa auf hellem Holzsockel, petrolgrün karierten Kissen, zwei weißen Sesseln auf Edelstahlgestell, rundem hellem Couchtisch und weißem Teppich, breites Fensterband mit Blick auf den See, rechts helle Eichenwand im Tageslicht",
+      "kiGeneriert": false,
+      "art": "rendering",
+      "kennzeichnung": "Visualisierung (Rendering) – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "bildunterschrift": "Visualisierung (Rendering)",
+      "werkzeug": "Blender 4.5 LTS, Cycles (OptiX), Path-Tracing, AgX; generische Bootsform und Möbelformen, Farben aus concepts.json (farbwelt)",
+      "lizenz": "Eigenes Rendering Platzhirsch; Szenen-Assets CC0 1.0 (Poly Haven, ambientCG) – Liste: docs/bildquellen/QUELLEN-yacht-renders.md",
+      "erzeugt": "2026-11-01",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "quelle": "kueche-yacht-render/out/final/yacht/yacht-daycruiser-seelicht-salon-tag.png (2400 × 1600 PNG, Licht „tag“)",
+      "xmp": {
+        "digitalSourceType": "digitalCreation"
+      },
+      "version": 1,
+      "farbe": "#ad9993",
+      "lqip": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADQAwCdASoYABAAPtFUo0uoJKMhsAgBABoJYwC7ABuMsgqRUN/v+AAA/sIoGCMyOV/7fO9dg/ELBZ/dgVqYLMT3mjjqHSC+Heig7179KvBrZvfZd/PelpsNBdZHJc69ztHwe5N3xgDiW2ukfvVxprdOlwxuw2alK7bpx+R6NoOw3QegTmWU84AA"
+    },
+    {
+      "id": "segelyacht-nordwind-salon",
+      "konzept": "segelyacht-nordwind",
+      "zone": "salon",
+      "titel": "Nordwind – Salon",
+      "format": "3:2",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/segelyacht-nordwind-salon-1200.avif",
+          "2400": "/labs/yacht/segelyacht-nordwind-salon-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/segelyacht-nordwind-salon-1200.webp",
+          "2400": "/labs/yacht/segelyacht-nordwind-salon-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 1600
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 800
+        }
+      },
+      "alt": "Salon einer Segelyacht mit U-förmiger Sitzbank in Blaugrau, wollweißen Kissen und Esstisch aus hellem Holz, Licht durch Rumpf- und Deckfenster",
+      "kiGeneriert": true,
+      "kennzeichnung": "KI-generiertes Konzeptbild – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "promptOriginal": "Editorial interior photograph of the saloon of a 14 metre cruising sailing yacht, light oak joinery, U-shaped settee upholstered in blue-grey woven fabric, wool-white cushions, a grey cashmere throw, linen curtains at the hull windows, soft morning light reflecting from water, a small cordless lamp on the table, tidy and calm, 24mm lens without distortion",
+      "prompt": "editorial interior photograph, saloon of a cruising sailing yacht, light oak joinery, U-shaped settee in blue-grey woven fabric, wool white cushions, grey cashmere throw, linen curtains at hull windows, soft morning light reflecting from water, small cordless lamp on the table, tidy calm, 24mm",
+      "negativ": "logo, text, letters, watermark, signature, brand name, people, person, face, hands, crowd, hdr, fisheye, distorted perspective, oversaturated, cartoon, illustration, 3d render, cgi, lowres, blurry, jpeg artifacts, deformed furniture, duplicate objects, cluttered",
+      "seed": 37,
+      "modell": "Stable Diffusion XL Base 1.0 + Refiner 1.0 (stabilityai), VAE sdxl-vae-fp16-fix; Hochskalierung Real-ESRGAN x2plus",
+      "lizenz": "CreativeML Open RAIL++-M (SDXL); MIT (sdxl-vae-fp16-fix); BSD-3-Clause (Real-ESRGAN)",
+      "erzeugt": "2026-10-27",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "farbe": "#867970",
+      "lqip": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOgO4AbYaY6JwRmmQlxiGAA9zPm6b2uM737fe8CSd/G1XpbW4OT5b8o/B72rvzzz74FHpX/2T3NfIb7gTAcU9m3S6KY+d9qHKoNZnfoTS+t/uGad90v5rjg6HvjRmM1Q/6UX1fhEs2NZfwtS3F1qZdbKBGkxMzqTmdB1fylrW0ReQcUdd1sfVYAZ4nMUKAL1UYw9Y3jrEAA"
+    },
+    {
+      "id": "segelyacht-nordwind-deck",
+      "konzept": "segelyacht-nordwind",
+      "zone": "deck",
+      "titel": "Nordwind – An Deck",
+      "format": "4:5",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/segelyacht-nordwind-deck-1200.avif",
+          "2400": "/labs/yacht/segelyacht-nordwind-deck-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/segelyacht-nordwind-deck-1200.webp",
+          "2400": "/labs/yacht/segelyacht-nordwind-deck-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 3000
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 1500
+        }
+      },
+      "alt": "Deck einer Segelyacht bei Sonnenuntergang mit Teakboden, petrolblauen und hellen Polstern vor dem Mast, im Hintergrund eine ruhige Bucht",
+      "kiGeneriert": true,
+      "kennzeichnung": "KI-generiertes Konzeptbild – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "promptOriginal": "Editorial photograph of the cockpit of a cruising sailing yacht at anchor in a quiet Adriatic bay at golden hour, slate-blue cushions with quick-dry foam, teak cockpit table, folded sprayhood in matching canvas, clear turquoise water, 35mm lens, natural colors",
+      "prompt": "editorial photograph, cockpit of a cruising sailing yacht at anchor in a quiet Adriatic bay at golden hour, slate blue cockpit cushions, teak cockpit table, folded sprayhood in matching canvas, clear turquoise water, 35mm, natural colors",
+      "negativ": "logo, text, letters, watermark, signature, brand name, people, person, face, hands, crowd, hdr, fisheye, distorted perspective, oversaturated, cartoon, illustration, 3d render, cgi, lowres, blurry, jpeg artifacts, deformed furniture, duplicate objects, cluttered",
+      "seed": 23,
+      "modell": "Stable Diffusion XL Base 1.0 + Refiner 1.0 (stabilityai), VAE sdxl-vae-fp16-fix; Hochskalierung Real-ESRGAN x4plus",
+      "lizenz": "CreativeML Open RAIL++-M (SDXL); MIT (sdxl-vae-fp16-fix); BSD-3-Clause (Real-ESRGAN)",
+      "erzeugt": "2026-10-27",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "farbe": "#8a8379",
+      "lqip": "data:image/webp;base64,UklGRuoAAABXRUJQVlA4IN4AAADwBQCdASoYAB4APuVepk2pJSOiN/VYASAciUATplxF05qCmmwhLYvUc6LUT7XYWdFTw5FzUXOMgAD+l1BYBQ6FcVPICoU9Cfnt9FmFrGsBkrcTDFPjFL9fa1SzsiSL9orUHVtIehFC5MY/s+R9vTzlaeSXr5kel5+h/oG+I3Qu9Dos/97f+OXOil5zeeRQMO6b75gnrZ4sM8YKAoMKIjhGJqv5fcbnY9Job5lfFud4xo/7+FlN2XL4dHmmnNJVBbbpQw+NOwhhwZ5qzyO9YfOs/V1RyxR5HtmOQtMAAAA="
+    },
+    {
+      "id": "motoryacht-riviera-flybridge",
+      "konzept": "motoryacht-riviera",
+      "zone": "flybridge",
+      "titel": "Riviera Abend – Flybridge",
+      "format": "3:2",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/motoryacht-riviera-flybridge-v3-1200.avif",
+          "2400": "/labs/yacht/motoryacht-riviera-flybridge-v3-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/motoryacht-riviera-flybridge-v3-1200.webp",
+          "2400": "/labs/yacht/motoryacht-riviera-flybridge-v3-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 1600
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 800
+        }
+      },
+      "alt": "Überdachte Lounge auf der Flybridge einer Motoryacht mit cremeweißem Ecksofa, zwei Sesseln auf dunklem Holzgestell, terrakottafarben karierten Kissen, Holztisch und terrakottafarbenem Teppich, dahinter ein stiller See mit Hügeln im dunstigen Abendlicht",
+      "kiGeneriert": false,
+      "art": "rendering",
+      "kennzeichnung": "Visualisierung (Rendering) – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "bildunterschrift": "Visualisierung (Rendering)",
+      "werkzeug": "Blender 4.5 LTS, Cycles (OptiX), Path-Tracing, AgX; generische Bootsform und Möbelformen, Farben aus concepts.json (farbwelt)",
+      "lizenz": "Eigenes Rendering Platzhirsch; Szenen-Assets CC0 1.0 (Poly Haven, ambientCG) – Liste: docs/bildquellen/QUELLEN-yacht-renders.md",
+      "erzeugt": "2026-11-01",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "quelle": "kueche-yacht-render/out/final/yacht/yacht-motoryacht-riviera-flybridge-abend.png (2400 × 1600 PNG, Licht „abend“)",
+      "xmp": {
+        "digitalSourceType": "digitalCreation"
+      },
+      "version": 3,
+      "ersetzt": "KI-Bild (SDXL) am 02.11.2026 durch Rendering ersetzt (Bootstyp passt); KI-Vorversion bleibt unter dem alten Dateinamen liegen.",
+      "farbe": "#b4a69c",
+      "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQAwCdASoYABAAPtFUo0uoJKMhsAgBABoJZwCdACIF0b26z+AlDMAA/vB9IrzsECcKqLzhoDHXaqBJth8qju+RGRx6DAHYiTg3lksEqFdB3Tz26dLZ2kjtKIC16cIeTnmYO4YYPG+ZE+HtTKj1cWZg53DJtEQHMAA="
+    },
+    {
+      "id": "motoryacht-riviera-salon",
+      "konzept": "motoryacht-riviera",
+      "zone": "salon",
+      "titel": "Riviera Abend – Salon",
+      "format": "3:2",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/motoryacht-riviera-salon-v2-1200.avif",
+          "2400": "/labs/yacht/motoryacht-riviera-salon-v2-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/motoryacht-riviera-salon-v2-1200.webp",
+          "2400": "/labs/yacht/motoryacht-riviera-salon-v2-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 1600
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 800
+        }
+      },
+      "alt": "Salon einer Motoryacht mit cremeweißem Sofa auf dunklem Sockel, terrakottafarben karierten Kissen, zwei Sesseln auf Edelstahlgestell, rundem Couchtisch und rosé-terrakottafarbenem Teppich, langes Fensterband zur Hafenmauer, rechts dunkle Holzvertäfelung im Abendlicht",
+      "kiGeneriert": false,
+      "art": "rendering",
+      "kennzeichnung": "Visualisierung (Rendering) – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "bildunterschrift": "Visualisierung (Rendering)",
+      "werkzeug": "Blender 4.5 LTS, Cycles (OptiX), Path-Tracing, AgX; generische Bootsform und Möbelformen, Farben aus concepts.json (farbwelt)",
+      "lizenz": "Eigenes Rendering Platzhirsch; Szenen-Assets CC0 1.0 (Poly Haven, ambientCG) – Liste: docs/bildquellen/QUELLEN-yacht-renders.md",
+      "erzeugt": "2026-11-01",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "quelle": "kueche-yacht-render/out/final/yacht/yacht-motoryacht-riviera-salon-abend.png (2400 × 1600 PNG, Licht „abend“)",
+      "xmp": {
+        "digitalSourceType": "digitalCreation"
+      },
+      "version": 2,
+      "ersetzt": "KI-Bild (SDXL) am 02.11.2026 durch Rendering ersetzt (Bootstyp passt); KI-Vorversion bleibt unter dem alten Dateinamen liegen.",
+      "farbe": "#a5866f",
+      "lqip": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADQAwCdASoYABAAPtFUo0uoJKMhsAgBABoJQBOgO4AYLZR9zrqGMAAA/sGg3Pp5fT9ppiHH9RW5ww5USOrLM0iyeY6gG3G35zC9QPVS+Hq/VNvE+DJsUaF2ndpw0afgFqJKVmoa4qBMWzyNuGtlALMp+y/L3iZ7Fy4LOanEny+oOtyw5ADEAaDkPUAAAA=="
+    },
+    {
+      "id": "motoryacht-riviera-kabine",
+      "konzept": "motoryacht-riviera",
+      "zone": "kabine",
+      "titel": "Riviera Abend – Eignerkabine",
+      "format": "3:2",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/motoryacht-riviera-kabine-v2-1200.avif",
+          "2400": "/labs/yacht/motoryacht-riviera-kabine-v2-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/motoryacht-riviera-kabine-v2-1200.webp",
+          "2400": "/labs/yacht/motoryacht-riviera-kabine-v2-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 1600
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 800
+        }
+      },
+      "alt": "Eignerkabine einer Motoryacht mit Doppelbett in weißer Wäsche auf dunklem Bettkasten, terrakottafarbenem Bettläufer und Kissen, gepolstertem Kopfteil vor dunkler Holzwand, zwei Nachttischleuchten und schmalem Fensterband, heller Teppich auf rotbraunem Holzboden",
+      "kiGeneriert": false,
+      "art": "rendering",
+      "kennzeichnung": "Visualisierung (Rendering) – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "bildunterschrift": "Visualisierung (Rendering)",
+      "werkzeug": "Blender 4.5 LTS, Cycles (OptiX), Path-Tracing, AgX; generische Bootsform und Möbelformen, Farben aus concepts.json (farbwelt)",
+      "lizenz": "Eigenes Rendering Platzhirsch; Szenen-Assets CC0 1.0 (Poly Haven, ambientCG) – Liste: docs/bildquellen/QUELLEN-yacht-renders.md",
+      "erzeugt": "2026-11-01",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "quelle": "kueche-yacht-render/out/final/yacht/yacht-motoryacht-riviera-kabine-abend.png (2400 × 1600 PNG, Licht „abend“)",
+      "xmp": {
+        "digitalSourceType": "digitalCreation"
+      },
+      "version": 2,
+      "ersetzt": "KI-Bild (SDXL) am 02.11.2026 durch Rendering ersetzt (Bootstyp passt); KI-Vorversion bleibt unter dem alten Dateinamen liegen.",
+      "farbe": "#836c67",
+      "lqip": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABQBACdASoYABAAPtFWo0uoJKMhsAgBABoJYwCdACKxpdCdimBZLlXLznuAAMszh8bUccew43XqlqESNMLEg+BmHgGRxcJikEq3cJM7tmUdRYF1Lr2yJxC5JRm7+nCyKY1pBcE7ZhhUrYHiB4p5NAKiP/sujdPITfFXrPLwcFkr+NACQ4nnlzCIH3/XfbUaHjmIFK9SrQAAAA=="
+    },
+    {
+      "id": "bootshaus-ufer-terrasse",
+      "konzept": "bootshaus-ufer",
+      "zone": "deck",
+      "titel": "Am Ufer – Terrasse",
+      "format": "16:9",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/bootshaus-ufer-terrasse-1200.avif",
+          "2400": "/labs/yacht/bootshaus-ufer-terrasse-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/bootshaus-ufer-terrasse-1200.webp",
+          "2400": "/labs/yacht/bootshaus-ufer-terrasse-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 1350
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 675
+        }
+      },
+      "alt": "Modernes Bootshaus aus Holz an einem Bergsee in der Dämmerung, Terrasse mit niedriger Lounge in Steingrau, warmes Licht im offenen Innenraum, verschneite Gipfel am Gegenufer",
+      "kiGeneriert": true,
+      "kennzeichnung": "KI-generiertes Konzeptbild – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "promptOriginal": "Editorial architecture photograph of a contemporary timber boathouse on a quiet alpine lake shore at dusk, wide terrace with a low modular outdoor lounge in stone-grey fabric, a long teak dining table, a cantilever parasol, a pendant patio heater glowing warm, a wooden runabout resting in the open boat bay, mountains across the lake, 24mm tilt-shift look, natural colors",
+      "prompt": "editorial architecture photograph, contemporary timber boathouse on a quiet alpine lake shore at dusk, wide terrace with low modular outdoor lounge in stone grey fabric, long teak dining table, cantilever parasol, wooden runabout in the open boat bay, mountains across the lake, 24mm, natural colors",
+      "negativ": "logo, text, letters, watermark, signature, brand name, people, person, face, hands, crowd, hdr, fisheye, distorted perspective, oversaturated, cartoon, illustration, 3d render, cgi, lowres, blurry, jpeg artifacts, deformed furniture, duplicate objects, cluttered",
+      "seed": 37,
+      "modell": "Stable Diffusion XL Base 1.0 + Refiner 1.0 (stabilityai), VAE sdxl-vae-fp16-fix; Hochskalierung Real-ESRGAN x2plus",
+      "lizenz": "CreativeML Open RAIL++-M (SDXL); MIT (sdxl-vae-fp16-fix); BSD-3-Clause (Real-ESRGAN)",
+      "erzeugt": "2026-10-27",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "farbe": "#666262",
+      "lqip": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAwBACdASoYAA4APu1iqU2ppaOiMAgBMB2JYwCdMoADZYzEd7nBSGQeToAA/unbueFCHSumVHpUMG5Fan7c7VU3A5RnoeAktM4xyf5wWAGgErMiDI0r341NTq37ZyHwOQB1665Z8qkHLXr7cXiAAO67hqYz1ZXwzcMXwecBOkQAAA=="
+    },
+    {
+      "id": "bootshaus-ufer-wohnraum",
+      "konzept": "bootshaus-ufer",
+      "zone": "salon",
+      "titel": "Am Ufer – Wohnraum",
+      "format": "4:5",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/bootshaus-ufer-wohnraum-1200.avif",
+          "2400": "/labs/yacht/bootshaus-ufer-wohnraum-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/bootshaus-ufer-wohnraum-1200.webp",
+          "2400": "/labs/yacht/bootshaus-ufer-wohnraum-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 3000
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 1500
+        }
+      },
+      "alt": "Wohnraum eines Hausboots mit grauem Sofa, zwei Sesseln mit Fellauflage und rundem Beistelltisch, raumhohe Fenster zum spiegelglatten See",
+      "kiGeneriert": true,
+      "kennzeichnung": "KI-generiertes Konzeptbild – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "promptOriginal": "Editorial interior photograph inside a modern houseboat living room, round dark oak dining table, a low sheepskin armchair, floor lamp with warm light, large window with water reflections on the ceiling, Scandinavian calm, 24mm lens",
+      "prompt": "editorial interior photograph, modern houseboat living room, round dark oak dining table, low sheepskin armchair, floor lamp with warm light, large window, water reflections on the ceiling, Scandinavian calm, 24mm",
+      "negativ": "logo, text, letters, watermark, signature, brand name, people, person, face, hands, crowd, hdr, fisheye, distorted perspective, oversaturated, cartoon, illustration, 3d render, cgi, lowres, blurry, jpeg artifacts, deformed furniture, duplicate objects, cluttered",
+      "seed": 23,
+      "modell": "Stable Diffusion XL Base 1.0 + Refiner 1.0 (stabilityai), VAE sdxl-vae-fp16-fix; Hochskalierung Real-ESRGAN x4plus",
+      "lizenz": "CreativeML Open RAIL++-M (SDXL); MIT (sdxl-vae-fp16-fix); BSD-3-Clause (Real-ESRGAN)",
+      "erzeugt": "2026-10-27",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "farbe": "#94887e",
+      "lqip": "data:image/webp;base64,UklGRhgBAABXRUJQVlA4IAwBAACwBQCdASoYAB4APu1sqlEppaOiqAqpMB2JZQC7AYxtW7tSI1tVJ01RRusItDYIug+IWzZUCgAA+pPFru7z5p/tDV8WQvoHjo+/TGtab/03J0g9h16FmqSxKkujP6mGl/lDn0q8GxTjuorZBTg1Rr+rlSg9LSKLT5n76kVcyUzuqZijJ5Hrur4psfKopP6MsN1GL4OiBx7xcV0do0qypsL1M2B+iaCSB2tB6Vowi+3uSiofaGbgMOHG9oK3vVbRWST+m4fRrVZU1T/9Htdn6WrrCH5q5ii/J1dczuqDrZpLhi577JzgXIK0LXsY6EGr6ou14xr6PttDaJSup+kHMbnlbmA9gSmwRG9ZwAAA"
+    },
+    {
+      "id": "superyacht-beachclub",
+      "konzept": "superyacht-lounge",
+      "zone": "badeplattform",
+      "titel": "Beach Club – Badeplattform",
+      "format": "16:9",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/superyacht-beachclub-1200.avif",
+          "2400": "/labs/yacht/superyacht-beachclub-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/superyacht-beachclub-1200.webp",
+          "2400": "/labs/yacht/superyacht-beachclub-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 1350
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 675
+        }
+      },
+      "alt": "Beach Club einer großen Yacht auf Wasserhöhe mit kalkweißen Liegeinseln, salbeigrünen Kissen, Leinenvorhängen und hellem Teakdeck, türkisfarbenes Wasser und bewaldete Küste",
+      "kiGeneriert": true,
+      "kennzeichnung": "KI-generiertes Konzeptbild – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "promptOriginal": "Editorial photograph of the beach club of a large modern yacht at water level, fold-down terrace open to turquoise water, low lounge islands in chalk-white outdoor fabric with sage cushions, bleached teak deck, a woven outdoor rug, linen curtains moving in the breeze, late afternoon Mediterranean light, 24mm lens, calm editorial mood",
+      "prompt": "editorial photograph, beach club of a large modern yacht at water level, fold-down terrace open to turquoise water, low lounge islands in chalk white outdoor fabric with sage cushions, bleached teak deck, woven outdoor rug, linen curtains, late afternoon Mediterranean light, 24mm, calm",
+      "negativ": "logo, text, letters, watermark, signature, brand name, people, person, face, hands, crowd, hdr, fisheye, distorted perspective, oversaturated, cartoon, illustration, 3d render, cgi, lowres, blurry, jpeg artifacts, deformed furniture, duplicate objects, cluttered",
+      "seed": 37,
+      "modell": "Stable Diffusion XL Base 1.0 + Refiner 1.0 (stabilityai), VAE sdxl-vae-fp16-fix; Hochskalierung Real-ESRGAN x2plus",
+      "lizenz": "CreativeML Open RAIL++-M (SDXL); MIT (sdxl-vae-fp16-fix); BSD-3-Clause (Real-ESRGAN)",
+      "erzeugt": "2026-10-27",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "farbe": "#979890",
+      "lqip": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAABwBACdASoYAA4APu1iqU2ppaOiMAgBMB2JYwCdMoAlwRNcp/kdY4lrdbdfAADiUGLq0TcUgpCr9ZbVELQa9GNei+ST68Rv+L3YrQbuJYoe2w0ZSOrtR4VupcfXrq+kdUGFITxeNSISUSxsHjcY3Z3e/Dq9uPmUYay7Vwan+UVlFpJcqr3PvEmngUItUU7vCWZDzTUAAAA="
+    },
+    {
+      "id": "superyacht-sonnendeck-nacht",
+      "konzept": "superyacht-lounge",
+      "zone": "flybridge",
+      "titel": "Beach Club – Sonnendeck am Abend",
+      "format": "3:2",
+      "datei": {
+        "avif": {
+          "1200": "/labs/yacht/superyacht-sonnendeck-nacht-v2-1200.avif",
+          "2400": "/labs/yacht/superyacht-sonnendeck-nacht-v2-2400.avif"
+        },
+        "webp": {
+          "1200": "/labs/yacht/superyacht-sonnendeck-nacht-v2-1200.webp",
+          "2400": "/labs/yacht/superyacht-sonnendeck-nacht-v2-2400.webp"
+        }
+      },
+      "groesse": {
+        "gross": {
+          "breite": 2400,
+          "hoehe": 1600
+        },
+        "klein": {
+          "breite": 1200,
+          "hoehe": 800
+        }
+      },
+      "alt": "Überdachte Lounge auf dem Sonnendeck einer Superyacht mit weißem Ecksofa auf Teaksockel, zwei weißen Sesseln, salbeigrün karierten Kissen, Teaktisch und salbeigrünem Teppich, dahinter ein stiller See mit Hügeln im dunstigen Abendlicht",
+      "kiGeneriert": false,
+      "art": "rendering",
+      "kennzeichnung": "Visualisierung (Rendering) – kein reales Projekt, keine abgebildeten Produkte aus unserem Sortiment",
+      "bildunterschrift": "Visualisierung (Rendering)",
+      "werkzeug": "Blender 4.5 LTS, Cycles (OptiX), Path-Tracing, AgX; generische Bootsform und Möbelformen, Farben aus concepts.json (farbwelt)",
+      "lizenz": "Eigenes Rendering Platzhirsch; Szenen-Assets CC0 1.0 (Poly Haven, ambientCG) – Liste: docs/bildquellen/QUELLEN-yacht-renders.md",
+      "erzeugt": "2026-11-01",
+      "geraet": "lokal, RTX 4060 (Lochau), keine Cloud",
+      "quelle": "kueche-yacht-render/out/final/yacht/yacht-superyacht-lounge-flybridge-abend.png (2400 × 1600 PNG, Licht „abend“)",
+      "xmp": {
+        "digitalSourceType": "digitalCreation"
+      },
+      "version": 2,
+      "ersetzt": "KI-Bild (SDXL) am 02.11.2026 durch Rendering ersetzt (Bootstyp passt); KI-Vorversion bleibt unter dem alten Dateinamen liegen.",
+      "farbe": "#bbada2",
+      "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQAwCdASoYABAAPtFUo0uoJKMhsAgBABoJZQCsACIFWWsENhbuoAAA/vB9H6zkijayc8ebyyslBqHKEvxkQl69H0sc3J01nqr1umk9Dg5XpVO1Qx+SuBIqEzS7t/Ebn9uzMFk09aZT4MKNvJMy2Un4G1w4lEG1AAA="
+    }
+  ]
+}

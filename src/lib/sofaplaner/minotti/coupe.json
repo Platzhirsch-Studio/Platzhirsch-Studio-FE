@@ -1,0 +1,788 @@
+{
+  "name": "Coupé",
+  "slug": "coupe",
+  "hersteller": "Minotti",
+  "designer": "Giampiero Tagliaferri",
+  "jahr": 2025,
+  "jahr_quelle": "Produktseite: Tag „2025 Collection“; Designs der Kollektion 2025 am 04.04.2025 registriert (Hinweis auf der Produktseite)",
+  "typ": "modulares Sitzsystem (indoor)",
+  "quellen": [
+    "https://www.minotti.com/en/coupe",
+    "https://www.minotti.com/de/coupe",
+    "https://www.minotti.com/downloads/25027/28165/COUPE_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/26109/29750/COUPE_arrangement_01.pdf",
+    "https://www.minotti.com/downloads/26110/29752/COUPE%2002_arrangement_02.pdf",
+    "https://www.minotti.com/downloads/26111/29754/COUPE_arrangement_03.pdf",
+    "https://www.minotti.com/downloads/26112/29756/COUPE_arrangement_04.pdf",
+    "https://www.minotti.com/downloads/26113/29758/COUPE_arrangement_05.pdf",
+    "https://www.minotti.com/downloads/26114/29760/COUPE_arrangement_06.pdf",
+    "https://www.minotti.com/downloads/26115/29762/COUPE_arrangement_07.pdf",
+    "https://www.minotti.com/downloads/26116/29764/COUPE_arrangement_08.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Alle Maße in cm aus dem Technical Sheet (Stand Dezember 2025) und den Bildnamen der „Technical Features“ der Produktseite. sitztiefe_cm = unteres Tiefenmaß der Sitzfläche in der Zeichnung. Hersteller: Maße in CAD-Dateien können leicht abweichen. SX/DX = Minotti-Bezeichnung sinistra/destra (links/rechts) laut Datenblatt-Zeichnung.",
+  "elemente": [
+    {
+      "code": "COUPE-SOFA-240",
+      "name": "Sofa 240 cm",
+      "name_hersteller": "Sofa 240 cm",
+      "art": "sofa",
+      "breite_cm": 240,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70
+    },
+    {
+      "code": "COUPE-SOFA-268",
+      "name": "Sofa 268 cm",
+      "name_hersteller": "Sofa 268 cm",
+      "art": "sofa",
+      "breite_cm": 268,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70
+    },
+    {
+      "code": "COUPE-SOFA-296",
+      "name": "Sofa 296 cm",
+      "name_hersteller": "Sofa 296 cm",
+      "art": "sofa",
+      "breite_cm": 296,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70
+    },
+    {
+      "code": "COUPE-EL1A-123",
+      "name": "Endelement mit 1 Armlehne 123 cm",
+      "name_hersteller": "Element with 1 armrest 123 cm",
+      "art": "endelement",
+      "breite_cm": 123,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "COUPE-EL1A-151",
+      "name": "Endelement mit 1 Armlehne 151 cm",
+      "name_hersteller": "Element with 1 armrest 151 cm",
+      "art": "endelement",
+      "breite_cm": 151,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "COUPE-EL1A-179",
+      "name": "Endelement mit 1 Armlehne 179 cm",
+      "name_hersteller": "Element with 1 armrest 179 cm",
+      "art": "endelement",
+      "breite_cm": 179,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "COUPE-EL1A-207",
+      "name": "Endelement mit 1 Armlehne 207 cm",
+      "name_hersteller": "Element with 1 armrest 207 cm",
+      "art": "endelement",
+      "breite_cm": 207,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "COUPE-EL1A-235",
+      "name": "Endelement mit 1 Armlehne 235 cm",
+      "name_hersteller": "Element with 1 armrest 235 cm",
+      "art": "endelement",
+      "breite_cm": 235,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "COUPE-EL1A-263",
+      "name": "Endelement mit 1 Armlehne 263 cm",
+      "name_hersteller": "Element with 1 armrest 263 cm",
+      "art": "endelement",
+      "breite_cm": 263,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "COUPE-CENT-90",
+      "name": "Sessel / Mittelelement 90 cm",
+      "name_hersteller": "Armchair / Central element 90 cm",
+      "art": "mittel",
+      "breite_cm": 90,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70,
+      "auch_als": "sessel"
+    },
+    {
+      "code": "COUPE-CENT-118",
+      "name": "Mittelelement 118 cm",
+      "name_hersteller": "Central element 118 cm",
+      "art": "mittel",
+      "breite_cm": 118,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70
+    },
+    {
+      "code": "COUPE-CENT-146",
+      "name": "Mittelelement 146 cm",
+      "name_hersteller": "Central element 146 cm",
+      "art": "mittel",
+      "breite_cm": 146,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70
+    },
+    {
+      "code": "COUPE-CENT-174",
+      "name": "Mittelelement 174 cm",
+      "name_hersteller": "Central element 174 cm",
+      "art": "mittel",
+      "breite_cm": 174,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70
+    },
+    {
+      "code": "COUPE-CENT-202",
+      "name": "Mittelelement 202 cm",
+      "name_hersteller": "Central element 202 cm",
+      "art": "mittel",
+      "breite_cm": 202,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70
+    },
+    {
+      "code": "COUPE-CENT-230",
+      "name": "Mittelelement 230 cm",
+      "name_hersteller": "Central element 230 cm",
+      "art": "mittel",
+      "breite_cm": 230,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70
+    },
+    {
+      "code": "COUPE-CORNER-109",
+      "name": "Eckelement 109x109 cm",
+      "name_hersteller": "Corner element 109x109 cm",
+      "art": "ecke",
+      "breite_cm": 109,
+      "tiefe_cm": 109,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 70,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "COUPE-CORNER-151-A",
+      "name": "Eckelement 151x151 cm Mod. A",
+      "name_hersteller": "Corner element 151x151 cm mod. A",
+      "art": "ecke",
+      "breite_cm": 151,
+      "tiefe_cm": 151,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 112,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "COUPE-CORNER-151-B",
+      "name": "Eckelement 151x151 cm Mod. B",
+      "name_hersteller": "Corner element 151x151 cm mod. B",
+      "art": "ecke",
+      "breite_cm": 151,
+      "tiefe_cm": 151,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 112,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "COUPE-CSOFA-179-A",
+      "name": "Ecksofa 179x179 cm Mod. A",
+      "name_hersteller": "Corner sofa 179x179 cm mod. A",
+      "art": "ecke",
+      "breite_cm": 179,
+      "tiefe_cm": 179,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 140,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "unterart": "ecksofa"
+    },
+    {
+      "code": "COUPE-CSOFA-179-B",
+      "name": "Ecksofa 179x179 cm Mod. B",
+      "name_hersteller": "Corner sofa 179x179 cm mod. B",
+      "art": "ecke",
+      "breite_cm": 179,
+      "tiefe_cm": 179,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 140,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "unterart": "ecksofa"
+    },
+    {
+      "code": "COUPE-CSOFA-179x151",
+      "name": "Ecksofa 179x151 cm",
+      "name_hersteller": "Corner sofa 179x151 cm",
+      "art": "ecke",
+      "breite_cm": 179,
+      "tiefe_cm": 151,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 112,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "unterart": "ecksofa",
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "COUPE-CSOFA-207x151",
+      "name": "Ecksofa 207x151 cm",
+      "name_hersteller": "Corner sofa 207x151 cm",
+      "art": "ecke",
+      "breite_cm": 207,
+      "tiefe_cm": 151,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 112,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "unterart": "ecksofa",
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "COUPE-CSOFA-240x151",
+      "name": "Ecksofa 240x151 cm",
+      "name_hersteller": "Corner sofa 240x151 cm",
+      "art": "ecke",
+      "breite_cm": 240,
+      "tiefe_cm": 151,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 112,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "unterart": "ecksofa",
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "COUPE-COUCH-118x151",
+      "name": "Couch 118x151 cm",
+      "name_hersteller": "Couch 118x151 cm",
+      "art": "couch",
+      "breite_cm": 118,
+      "tiefe_cm": 151,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 112,
+      "hinweis": "Couch mit doppelter Neigung (Hersteller)."
+    },
+    {
+      "code": "COUPE-COUCH-146x179",
+      "name": "Couch 146x179 cm",
+      "name_hersteller": "Couch 146x179 cm",
+      "art": "couch",
+      "breite_cm": 146,
+      "tiefe_cm": 179,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 140,
+      "hinweis": "Couch mit doppelter Neigung (Hersteller)."
+    },
+    {
+      "code": "COUPE-CHAISE-151",
+      "name": "Chaiselongue 151x151 cm",
+      "name_hersteller": "Chaise-longue 151x151 cm",
+      "art": "chaise",
+      "breite_cm": 151,
+      "tiefe_cm": 151,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": 112,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ]
+    },
+    {
+      "code": "COUPE-CHAISE-179",
+      "name": "Chaiselongue 179x179 cm",
+      "name_hersteller": "Chaise-longue 179x179 cm",
+      "art": "chaise",
+      "breite_cm": 179,
+      "tiefe_cm": 179,
+      "hoehe_cm": 68,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": 140,
+      "ausfuehrung_seite": [
+        "SX",
+        "DX"
+      ],
+      "hinweis": "Sitzhöhe in der Zeichnung nicht separat bemaßt."
+    },
+    {
+      "code": "COUPE-OTT-90x90",
+      "name": "Hocker 90x90 cm",
+      "name_hersteller": "Ottoman 90x90 cm",
+      "art": "hocker",
+      "breite_cm": 90,
+      "tiefe_cm": 90,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "COUPE-OTT-109x109",
+      "name": "Hocker 109x109 cm",
+      "name_hersteller": "Ottoman 109x109 cm",
+      "art": "hocker",
+      "breite_cm": 109,
+      "tiefe_cm": 109,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "COUPE-OTT-90x109",
+      "name": "Hocker 90x109 cm",
+      "name_hersteller": "Ottoman 90x109 cm",
+      "art": "hocker",
+      "breite_cm": 90,
+      "tiefe_cm": 109,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "COUPE-OTT-118x109",
+      "name": "Hocker 118x109 cm",
+      "name_hersteller": "Ottoman 118x109 cm",
+      "art": "hocker",
+      "breite_cm": 118,
+      "tiefe_cm": 109,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "COUPE-OTT-146x109",
+      "name": "Hocker 146x109 cm",
+      "name_hersteller": "Ottoman 146x109 cm",
+      "art": "hocker",
+      "breite_cm": 146,
+      "tiefe_cm": 109,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "COUPE-OTT-174x109",
+      "name": "Hocker 174x109 cm",
+      "name_hersteller": "Ottoman 174x109 cm",
+      "art": "hocker",
+      "breite_cm": 174,
+      "tiefe_cm": 109,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "COUPE-OTT-90x62",
+      "name": "Hocker 90x62 cm",
+      "name_hersteller": "Ottoman 90x62 cm",
+      "art": "hocker",
+      "breite_cm": 90,
+      "tiefe_cm": 62,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "COUPE-OTT-118x62",
+      "name": "Hocker 118x62 cm",
+      "name_hersteller": "Ottoman 118x62 cm",
+      "art": "hocker",
+      "breite_cm": 118,
+      "tiefe_cm": 62,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "COUPE-OTT-146x62",
+      "name": "Hocker 146x62 cm",
+      "name_hersteller": "Ottoman 146x62 cm",
+      "art": "hocker",
+      "breite_cm": 146,
+      "tiefe_cm": 62,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "COUPE-OTT-174x62",
+      "name": "Hocker 174x62 cm",
+      "name_hersteller": "Ottoman 174x62 cm",
+      "art": "hocker",
+      "breite_cm": 174,
+      "tiefe_cm": 62,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ]
+    },
+    {
+      "code": "COUPE-FOOT-90x76",
+      "name": "Fußhocker 90x76 cm",
+      "name_hersteller": "Footstool 90x76 cm",
+      "art": "hocker",
+      "breite_cm": 90,
+      "tiefe_cm": 76,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ],
+      "unterart": "fusshocker"
+    },
+    {
+      "code": "COUPE-FOOT-118x76",
+      "name": "Fußhocker 118x76 cm",
+      "name_hersteller": "Footstool 118x76 cm",
+      "art": "hocker",
+      "breite_cm": 118,
+      "tiefe_cm": 76,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ],
+      "unterart": "fusshocker"
+    },
+    {
+      "code": "COUPE-FOOT-146x76",
+      "name": "Fußhocker 146x76 cm",
+      "name_hersteller": "Footstool 146x76 cm",
+      "art": "hocker",
+      "breite_cm": 146,
+      "tiefe_cm": 76,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ],
+      "unterart": "fusshocker"
+    },
+    {
+      "code": "COUPE-FOOT-174x76",
+      "name": "Fußhocker 174x76 cm",
+      "name_hersteller": "Footstool 174x76 cm",
+      "art": "hocker",
+      "breite_cm": 174,
+      "tiefe_cm": 76,
+      "hoehe_cm": 39,
+      "sitzhoehe_cm": 39,
+      "sitztiefe_cm": null,
+      "nicht_anwendbar": [
+        "sitztiefe_cm"
+      ],
+      "unterart": "fusshocker"
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Fester gepolsterter Rücken mit Lendenkissen (stoff-/lederbezogene, abnehmbare Knöpfe) und horizontalem Kopfteil-Polster; Kopfteil über Hebel unter der Tragstruktur abnehmbar",
+      "quelle": "https://www.minotti.com/downloads/25027/28165/COUPE_TECHNICAL_SHEET.pdf"
+    },
+    {
+      "name": "Optionales Rückenkissen 75x65 cm",
+      "quelle": "https://www.minotti.com/downloads/25027/28165/COUPE_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Eine Armlehnenform (gerundet, Teil des Rücken-/Armlehnenvolumens); Elemente mit Armlehne SX oder DX",
+      "quelle": "https://www.minotti.com/downloads/25027/28165/COUPE_TECHNICAL_SHEET.pdf"
+    }
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Gebogenes, gezogenes Aluminiumprofil vorne und hinten am gepolsterten Sockel (dekorativ und als Polsterschutz). Steht auf Polypropylen-Füßen H 4,5 cm mit schwarzen SEBS-Gleitern.",
+    "finishes": [
+      "Aluminium poliert gebürstet",
+      "Aluminium lackiert poliert, Anti-Fingerprint, Black Coffee",
+      "Aluminium lackiert poliert, Anti-Fingerprint, Birch Grey (Betulla)"
+    ],
+    "fusshoehe_cm": {
+      "standard": 4.5,
+      "hoch": 7.5,
+      "hoch_hinweis": "Auf Anfrage ohne Aufpreis, 3 cm höher als Standard"
+    },
+    "quelle": "https://www.minotti.com/downloads/25027/28165/COUPE_TECHNICAL_SHEET.pdf"
+  },
+  "bezuege": {
+    "kategorien": [
+      "Stoff (Minotti-Kollektion)",
+      "Leder (Minotti-Kollektion)"
+    ],
+    "bezugsart": "abnehmbar",
+    "hinweis": "Bezug ist bei allen Versionen (Stoff und Leder) vollständig abnehmbar. Lederversion mit längslaufender Ton-in-Ton-Steppnaht vom Kopfteil über die Knöpfe am Rücken bis über den Sitz.",
+    "farbmuster": "Stoff- und Lederfarbmuster der Minotti-Kollektion bitte im Showroom Lochau ansehen; Bildschirmfarben sind nicht verbindlich (Minotti: „Printed colours are to be considered as purely indicative“).",
+    "quelle": "https://www.minotti.com/en/coupe"
+  },
+  "kissenoptionen": [
+    {
+      "code": "COUPE-CUSH-75x65",
+      "name": "Optionales Rückenkissen 75x65 cm",
+      "breite_cm": 75,
+      "hoehe_cm": 65,
+      "fuellung": "Gesteppte Gänsedaunen (Assopiuma Gold Label) mit zusätzlicher temperaturempfindlicher HR-PU-Einlage"
+    },
+    {
+      "code": "COUPE-CUSH-50x50",
+      "name": "Optionales Kissen 50x50 cm",
+      "breite_cm": 50,
+      "hoehe_cm": 50,
+      "fuellung": "Gesteppte Gänsedaunen (Assopiuma Gold Label)"
+    }
+  ],
+  "outdoor": false,
+  "besonderheiten": [
+    "Geneigter, ergonomisch konturierter Sitz mit Taschenfederkern-Einsatz",
+    "Sockelprofile vorne/hinten per Schnellverschluss abnehmbar (Bezugsabnahme, Lieferung)",
+    "Couch mit großzügigen Proportionen und doppelter Neigung",
+    "Ecklösungen in zwei Modellen (Mod. A / Mod. B)",
+    "Fußhocker 76 cm tief als Ergänzung",
+    "Hocker auch innerhalb von Kompositionen eingesetzt (Arrangements 01, 04)",
+    "Holzbauteile FSC-zertifiziert",
+    "Abweichung: Arrangement 02 nennt „Corner element DX 207x151“, Datenblatt führt 207x151 als „Corner sofa“"
+  ],
+  "beispielkompositionen": [
+    {
+      "nr": "01",
+      "gesamtmasse_cm": [
+        392,
+        302
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 151X109 H68",
+        "OTTOMAN CM 90X109 H39",
+        "CORNER ELEMENT DX CM 151X151 H68 - MOD. B",
+        "ELEMENT WITH 1 ARMREST DX CM 151X109 H68"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26109/29750/COUPE_arrangement_01.pdf"
+    },
+    {
+      "nr": "02",
+      "gesamtmasse_cm": [
+        353,
+        330
+      ],
+      "elemente": [
+        "CENTRAL ELEMENT CM 146X109 H68",
+        "CORNER ELEMENT DX CM 207X151 H68",
+        "ELEMENT WITH 1 ARMREST DX CM 179X109 H68"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26110/29752/COUPE%2002_arrangement_02.pdf"
+    },
+    {
+      "nr": "03",
+      "gesamtmasse_cm": [
+        414
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 179X109 H68",
+        "ELEMENT WITH 1 ARMREST DX CM 235X109 H68"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26111/29754/COUPE_arrangement_03.pdf"
+    },
+    {
+      "nr": "04",
+      "gesamtmasse_cm": [
+        393
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 123X109 H68",
+        "ARMCHAIRS / CENTRAL ELEMENTS CM 90X109 H68",
+        "OTTOMAN 90X109 H39",
+        "ARMCHAIRS / CENTRAL ELEMENTS CM 90X109 H68"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26112/29756/COUPE_arrangement_04.pdf"
+    },
+    {
+      "nr": "05",
+      "gesamtmasse_cm": [
+        325,
+        303
+      ],
+      "elemente": [
+        "ELEMENT WITH 1 ARMREST SX CM 151X109 H68",
+        "CENTRAL ELEMENT CM 174X109 H68",
+        "FOOTSTOOL CM 174X76 H39",
+        "ARMCHAIRS / CENTRAL ELEMENTS CM 90X109 H68",
+        "ELEMENT WITH 1 ARMREST DX CM 123X109 H68"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26113/29758/COUPE_arrangement_05.pdf"
+    },
+    {
+      "nr": "06",
+      "gesamtmasse_cm": [
+        404
+      ],
+      "elemente": [
+        "CENTRAL ELEMENTS CM 202X109 H68",
+        "OTTOMAN CM 174X109 H39"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26114/29760/COUPE_arrangement_06.pdf"
+    },
+    {
+      "nr": "07",
+      "gesamtmasse_cm": [
+        460
+      ],
+      "elemente": [
+        "CENTRAL ELEMENTS CM 230X109 H68"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26115/29762/COUPE_arrangement_07.pdf"
+    },
+    {
+      "nr": "08",
+      "gesamtmasse_cm": [
+        325
+      ],
+      "elemente": [
+        "CENTRAL ELEMENT CM 146X109 H68",
+        "ELEMENT WITH 1 ARMREST DX CM 179X109 H68",
+        "COUCH CM 146X179 H68"
+      ],
+      "pdf": "https://www.minotti.com/downloads/26116/29764/COUPE_arrangement_08.pdf"
+    }
+  ],
+  "kombinierbarkeit": "Keine formale Anschlussmatrix veröffentlicht; laut Hersteller frei kombinierbar („infinite flexible layouts“) bzw. einzeln nutzbar. Belegte Kombinationen: beispielkompositionen (Hersteller-Arrangements 01–08).",
+  "fehlend": [
+    "Formale Anschluss-/Kombinationsregeln je Element",
+    "Sitzhöhe bei Eckelementen 151x151 Mod. A/B, Ecksofas 179/207/240x151 und Chaiselongue 179x179 nicht separat bemaßt",
+    "Armlehnenhöhe nicht eindeutig bemaßt",
+    "Unterschied Mod. A / Mod. B nur als Zeichnung, nicht textlich beschrieben",
+    "Bezugsfarben und Preisgruppen je Modell",
+    "Preise (nicht öffentlich)",
+    "Gewichte",
+    "2D/3D-Dateien nur nach Login"
+  ],
+  "rechte_hinweis": "Texte, Bilder, Zeichnungen und CAD-Dateien © Minotti S.p.A.; Bilder dürfen nicht verändert werden. Hier nur Maß- und Optionsdaten übernommen.",
+  "anzahl_elemente": 41,
+  "vollstaendigkeit_masse": {
+    "felder_gesamt": 191,
+    "felder_belegt": 185,
+    "prozent": 96.9,
+    "berechnung": "Anteil belegter Maßfelder (breite, tiefe, hoehe, sitzhoehe, sitztiefe) über alle Elemente; nicht anwendbare Felder (Sitztiefe bei Hockern/Bank) ausgenommen"
+  }
+}

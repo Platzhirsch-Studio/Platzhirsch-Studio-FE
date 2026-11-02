@@ -1,0 +1,1127 @@
+{
+  "_hinweis": "Übersetzungsvorschläge der Ezarri-Teams (Schlüssel ezarri.<team>.<bereich>.<key>, je de/en/fr/it). Deutsche Quelle: src/lib/ezarri/**/copy.js. Übernahme in src/messages/*.json erst in Phase 2 (Teamleiter).",
+  "ezarri.c.rechner.title": {
+    "de": "Wie viel Mosaik braucht Ihr Becken?",
+    "en": "How much mosaic does your pool need?",
+    "fr": "De combien de mosaïque votre bassin a-t-il besoin ?",
+    "it": "Quanto mosaico serve per la sua vasca?"
+  },
+  "ezarri.c.rechner.lead": {
+    "de": "Geben Sie Form und Maße ein. Der Rechner zeigt jede Teilfläche mit ihrer Formel und rundet auf volle Kartons – mit Kleber, Fuge und Werkzeug laut Ezarri.",
+    "en": "Enter shape and dimensions. The calculator shows every surface with its formula and rounds up to full boxes – with adhesive, grout and tools according to Ezarri.",
+    "fr": "Saisissez la forme et les dimensions. Le calculateur affiche chaque surface avec sa formule et arrondit aux cartons entiers – avec colle, joint et outillage selon Ezarri.",
+    "it": "Inserisca forma e misure. Il calcolatore mostra ogni superficie con la sua formula e arrotonda a scatole intere – con adesivo, stucco e attrezzi secondo Ezarri."
+  },
+  "ezarri.c.rechner.form": {
+    "de": "Form und Maße",
+    "en": "Shape and dimensions",
+    "fr": "Forme et dimensions",
+    "it": "Forma e misure"
+  },
+  "ezarri.c.rechner.tiefe": {
+    "de": "Tiefe",
+    "en": "Depth",
+    "fr": "Profondeur",
+    "it": "Profondità"
+  },
+  "ezarri.c.rechner.einbauten": {
+    "de": "Treppe und Sitzbank",
+    "en": "Steps and bench",
+    "fr": "Escalier et banquette",
+    "it": "Scala e panca"
+  },
+  "ezarri.c.rechner.rinne": {
+    "de": "Beckenrand",
+    "en": "Pool edge",
+    "fr": "Bord du bassin",
+    "it": "Bordo vasca"
+  },
+  "ezarri.c.rechner.mosaik": {
+    "de": "Mosaik und Verschnitt",
+    "en": "Mosaic and waste",
+    "fr": "Mosaïque et chutes",
+    "it": "Mosaico e sfrido"
+  },
+  "ezarri.c.rechner.ergebnis": {
+    "de": "Ihr Ergebnis",
+    "en": "Your result",
+    "fr": "Votre résultat",
+    "it": "Il suo risultato"
+  },
+  "ezarri.c.rechner.kartons": {
+    "de": "Kartons",
+    "en": "Boxes",
+    "fr": "Cartons",
+    "it": "Scatole"
+  },
+  "ezarri.c.rechner.blaetter": {
+    "de": "Blätter mit JointPoint®",
+    "en": "Sheets with JointPoint®",
+    "fr": "Plaques avec JointPoint®",
+    "it": "Fogli con JointPoint®"
+  },
+  "ezarri.c.rechner.kleber": {
+    "de": "Kleber (mind. C2TE)",
+    "en": "Adhesive (min. C2TE)",
+    "fr": "Colle (min. C2TE)",
+    "it": "Adesivo (min. C2TE)"
+  },
+  "ezarri.c.rechner.fuge": {
+    "de": "Epoxidfuge (RG)",
+    "en": "Epoxy grout (RG)",
+    "fr": "Joint époxy (RG)",
+    "it": "Stucco epossidico (RG)"
+  },
+  "ezarri.c.rechner.rechenweg": {
+    "de": "So ist gerechnet",
+    "en": "How it is calculated",
+    "fr": "Le détail du calcul",
+    "it": "Come è calcolato"
+  },
+  "ezarri.c.rechner.hinweis": {
+    "de": "Ein Richtwert für die Planung. Das verbindliche Aufmaß macht Ihr Poolbauer oder Fliesenleger; wir rechnen die Bestellmenge mit Ihnen gemeinsam.",
+    "en": "A guide value for planning. The binding measurement is made by your pool builder or tiler; we work out the order quantity together with you.",
+    "fr": "Une valeur indicative pour la planification. Le métré définitif est fait par votre pisciniste ou carreleur ; nous calculons la quantité à commander avec vous.",
+    "it": "Un valore indicativo per la progettazione. La misurazione vincolante la fa il suo costruttore di piscine o piastrellista; la quantità da ordinare la calcoliamo insieme."
+  },
+  "ezarri.c.rechner.anfrage": {
+    "de": "Angebot und Muster anfragen",
+    "en": "Request a quote and samples",
+    "fr": "Demander un devis et des échantillons",
+    "it": "Richiedere offerta e campioni"
+  },
+  "ezarri.c.rechner.teilen": {
+    "de": "Link kopieren",
+    "en": "Copy link",
+    "fr": "Copier le lien",
+    "it": "Copia link"
+  },
+  "ezarri.c.preise": {
+    "de": "Preise auf Anfrage",
+    "en": "Prices on request",
+    "fr": "Prix sur demande",
+    "it": "Prezzi su richiesta"
+  },
+  "ezarri.c.customMix.title": {
+    "de": "Ihre eigene Mosaik-Mischung",
+    "en": "Your own mosaic blend",
+    "fr": "Votre propre mélange de mosaïque",
+    "it": "La sua miscela di mosaico"
+  },
+  "ezarri.c.customMix.lead": {
+    "de": "Bis zu vier Mosaike, Anteile in ganzen Prozent, Fuge und Format nach Wahl. Jeder Stein der Vorschau trägt einen der Töne, die das echte Mosaik hat.",
+    "en": "Up to four mosaics, shares in whole percent, grout and format of your choice. Every tile in the preview carries one of the tones of the real mosaic.",
+    "fr": "Jusqu’à quatre mosaïques, parts en pour cent entiers, joint et format au choix. Chaque tesselle de l’aperçu reprend une des teintes de la vraie mosaïque.",
+    "it": "Fino a quattro mosaici, quote in percentuali intere, stucco e formato a scelta. Ogni tessera dell’anteprima ha una delle tonalità del mosaico reale."
+  },
+  "ezarri.c.customMix.trocken": {
+    "de": "Trocken",
+    "en": "Dry",
+    "fr": "À sec",
+    "it": "Asciutto"
+  },
+  "ezarri.c.customMix.wasser": {
+    "de": "Unter Wasser",
+    "en": "Under water",
+    "fr": "Sous l’eau",
+    "it": "Sott’acqua"
+  },
+  "ezarri.c.customMix.neu": {
+    "de": "Neu mischen",
+    "en": "Shuffle",
+    "fr": "Remélanger",
+    "it": "Rimescola"
+  },
+  "ezarri.c.customMix.hinzufuegen": {
+    "de": "Mosaik hinzufügen",
+    "en": "Add mosaic",
+    "fr": "Ajouter une mosaïque",
+    "it": "Aggiungi mosaico"
+  },
+  "ezarri.c.customMix.fuge": {
+    "de": "Fugenfarbe",
+    "en": "Grout colour",
+    "fr": "Couleur du joint",
+    "it": "Colore dello stucco"
+  },
+  "ezarri.c.customMix.rezepte": {
+    "de": "Fertige Ezarri-Mischungen",
+    "en": "Ready-made Ezarri blends",
+    "fr": "Mélanges Ezarri prêts",
+    "it": "Miscele Ezarri pronte"
+  },
+  "ezarri.c.customMix.anfrage": {
+    "de": "Muster dieser Mosaike anfragen",
+    "en": "Request samples of these mosaics",
+    "fr": "Demander des échantillons de ces mosaïques",
+    "it": "Richiedere campioni di questi mosaici"
+  },
+  "ezarri.c.customMix.rechner": {
+    "de": "Menge berechnen",
+    "en": "Calculate quantity",
+    "fr": "Calculer la quantité",
+    "it": "Calcola la quantità"
+  },
+  "ezarri.c.customMix.hinweis": {
+    "de": "Bildschirmfarben weichen vom Glas ab. Die echte Wirkung zeigen Muster im Licht.",
+    "en": "Screen colours differ from the glass. Samples in daylight show the real effect.",
+    "fr": "Les couleurs à l’écran diffèrent du verre. Les échantillons à la lumière montrent l’effet réel.",
+    "it": "I colori dello schermo differiscono dal vetro. L’effetto reale lo mostrano i campioni alla luce."
+  },
+  "ezarri.c.anfrage.title": {
+    "de": "Muster, Beratung oder Angebot",
+    "en": "Samples, advice or a quote",
+    "fr": "Échantillons, conseil ou devis",
+    "it": "Campioni, consulenza o offerta"
+  },
+  "ezarri.c.anfrage.lead": {
+    "de": "Sagen Sie uns, worum es geht. Wir melden uns mit dem nächsten Schritt und legen die Muster für Ihren Termin in Lochau bereit.",
+    "en": "Tell us what it is about. We will get back to you with the next step and have the samples ready for your appointment in Lochau.",
+    "fr": "Dites-nous de quoi il s’agit. Nous revenons vers vous avec la prochaine étape et préparons les échantillons pour votre rendez-vous à Lochau.",
+    "it": "Ci dica di cosa si tratta. La ricontattiamo con il prossimo passo e prepariamo i campioni per il suo appuntamento a Lochau."
+  },
+  "ezarri.c.anfrage.art": {
+    "de": "Was möchten Sie anfragen?",
+    "en": "What would you like to request?",
+    "fr": "Que souhaitez-vous demander ?",
+    "it": "Che cosa desidera richiedere?"
+  },
+  "ezarri.c.anfrage.muster": {
+    "de": "Muster",
+    "en": "Samples",
+    "fr": "Échantillons",
+    "it": "Campioni"
+  },
+  "ezarri.c.anfrage.beratung": {
+    "de": "Beratung",
+    "en": "Advice",
+    "fr": "Conseil",
+    "it": "Consulenza"
+  },
+  "ezarri.c.anfrage.angebot": {
+    "de": "Angebot",
+    "en": "Quote",
+    "fr": "Devis",
+    "it": "Offerta"
+  },
+  "ezarri.c.anfrage.kontaktHint": {
+    "de": "E-Mail oder Telefon genügt.",
+    "en": "E-mail or phone is enough.",
+    "fr": "Un e-mail ou un téléphone suffit.",
+    "it": "Basta e-mail o telefono."
+  },
+  "ezarri.c.anfrage.einwilligung": {
+    "de": "Sie dürfen mich per E-Mail oder Telefon zu dieser Anfrage kontaktieren.",
+    "en": "You may contact me by e-mail or phone about this request.",
+    "fr": "Vous pouvez me contacter par e-mail ou téléphone au sujet de cette demande.",
+    "it": "Potete contattarmi via e-mail o telefono per questa richiesta."
+  },
+  "ezarri.c.anfrage.senden": {
+    "de": "Anfrage senden",
+    "en": "Send request",
+    "fr": "Envoyer la demande",
+    "it": "Invia richiesta"
+  },
+  "ezarri.c.anfrage.danke": {
+    "de": "Danke, Ihre Anfrage ist da.",
+    "en": "Thank you, your request has arrived.",
+    "fr": "Merci, votre demande nous est parvenue.",
+    "it": "Grazie, la sua richiesta è arrivata."
+  },
+  "ezarri.a.nav.label": {
+    "de": "Ezarri-Glasmosaik",
+    "en": "Ezarri glass mosaic",
+    "fr": "Mosaïque de verre Ezarri",
+    "it": "Mosaico in vetro Ezarri"
+  },
+  "ezarri.a.nav.uebersicht": {
+    "de": "Übersicht",
+    "en": "Overview",
+    "fr": "Aperçu",
+    "it": "Panoramica"
+  },
+  "ezarri.a.nav.mosaike": {
+    "de": "Mosaike",
+    "en": "Mosaics",
+    "fr": "Mosaïques",
+    "it": "Mosaici"
+  },
+  "ezarri.a.nav.kollektionen": {
+    "de": "Kollektionen",
+    "en": "Collections",
+    "fr": "Collections",
+    "it": "Collezioni"
+  },
+  "ezarri.a.nav.galerie": {
+    "de": "Galerie",
+    "en": "Gallery",
+    "fr": "Galerie",
+    "it": "Galleria"
+  },
+  "ezarri.a.nav.technik": {
+    "de": "Technik",
+    "en": "Technical",
+    "fr": "Technique",
+    "it": "Tecnica"
+  },
+  "ezarri.a.nav.muster": {
+    "de": "Muster anfragen",
+    "en": "Request samples",
+    "fr": "Demander des échantillons",
+    "it": "Richiedere campioni"
+  },
+  "ezarri.a.hub.title": {
+    "de": "Glasmosaik für Pool, Bad und Wellness",
+    "en": "Glass mosaic for pool, bathroom and spa",
+    "fr": "Mosaïque de verre pour piscine, salle de bains et spa",
+    "it": "Mosaico in vetro per piscina, bagno e spa"
+  },
+  "ezarri.a.hub.lead": {
+    "de": "Mehr als 400 Mosaike von Ezarri, sortiert nach dem, was Sie am Ende sehen: Ort, Wasserfarbe, Oberfläche. Gestalten Sie Ihr Becken im Browser und sehen Sie die Muster bei uns in Lochau.",
+    "en": "More than 400 Ezarri mosaics, sorted by what you will see in the end: place, water colour, surface. Design your pool in the browser and see the samples with us in Lochau.",
+    "fr": "Plus de 400 mosaïques Ezarri, classées selon ce que vous verrez au final : lieu, couleur de l’eau, surface. Concevez votre bassin dans le navigateur et voyez les échantillons chez nous à Lochau.",
+    "it": "Oltre 400 mosaici Ezarri, ordinati secondo ciò che vedrà alla fine: luogo, colore dell’acqua, superficie. Progetti la sua vasca nel browser e veda i campioni da noi a Lochau."
+  },
+  "ezarri.a.hub.primary": {
+    "de": "Becken gestalten",
+    "en": "Design your pool",
+    "fr": "Concevoir le bassin",
+    "it": "Progettare la vasca"
+  },
+  "ezarri.a.hub.primarySub": {
+    "de": "3D im Browser · ohne Anmeldung",
+    "en": "3D in the browser · no sign-up",
+    "fr": "3D dans le navigateur · sans inscription",
+    "it": "3D nel browser · senza registrazione"
+  },
+  "ezarri.a.hub.weiche": {
+    "de": "Wo soll das Mosaik liegen?",
+    "en": "Where will the mosaic go?",
+    "fr": "Où posera-t-on la mosaïque ?",
+    "it": "Dove andrà il mosaico?"
+  },
+  "ezarri.a.hub.wasser": {
+    "de": "Welche Farbe bekommt Ihr Wasser?",
+    "en": "What colour will your water be?",
+    "fr": "Quelle couleur aura votre eau ?",
+    "it": "Di che colore sarà la sua acqua?"
+  },
+  "ezarri.a.neutralClaim": {
+    "de": "Glasmosaik von Ezarri – Beratung und Muster in Lochau",
+    "en": "Ezarri glass mosaic – advice and samples in Lochau",
+    "fr": "Mosaïque de verre Ezarri – conseil et échantillons à Lochau",
+    "it": "Mosaico in vetro Ezarri – consulenza e campioni a Lochau"
+  },
+  "ezarri.a.welt.pool": {
+    "de": "Pool",
+    "en": "Pool",
+    "fr": "Piscine",
+    "it": "Piscina"
+  },
+  "ezarri.a.welt.wellness": {
+    "de": "Wellness",
+    "en": "Spa",
+    "fr": "Spa",
+    "it": "Spa"
+  },
+  "ezarri.a.welt.bad": {
+    "de": "Bad",
+    "en": "Bathroom",
+    "fr": "Salle de bains",
+    "it": "Bagno"
+  },
+  "ezarri.a.welt.kueche": {
+    "de": "Küche",
+    "en": "Kitchen",
+    "fr": "Cuisine",
+    "it": "Cucina"
+  },
+  "ezarri.a.welt.fassade": {
+    "de": "Fassade",
+    "en": "Façade",
+    "fr": "Façade",
+    "it": "Facciata"
+  },
+  "ezarri.a.wasser.himmelblau": {
+    "de": "Himmelblau",
+    "en": "Sky blue",
+    "fr": "Bleu ciel",
+    "it": "Azzurro cielo"
+  },
+  "ezarri.a.wasser.tuerkisblau": {
+    "de": "Türkisblau",
+    "en": "Turquoise",
+    "fr": "Bleu turquoise",
+    "it": "Blu turchese"
+  },
+  "ezarri.a.wasser.blau": {
+    "de": "Tiefblau",
+    "en": "Deep blue",
+    "fr": "Bleu profond",
+    "it": "Blu intenso"
+  },
+  "ezarri.a.wasser.gruen": {
+    "de": "Grün",
+    "en": "Green",
+    "fr": "Vert",
+    "it": "Verde"
+  },
+  "ezarri.a.wasser.graugruen": {
+    "de": "Graugrün",
+    "en": "Grey-green",
+    "fr": "Vert-gris",
+    "it": "Verde grigio"
+  },
+  "ezarri.a.wasser.natur": {
+    "de": "Natürlich wie ein Bergsee",
+    "en": "Natural, like a mountain lake",
+    "fr": "Naturel, comme un lac de montagne",
+    "it": "Naturale, come un lago di montagna"
+  },
+  "ezarri.a.mosaike.filter": {
+    "de": "Filter",
+    "en": "Filters",
+    "fr": "Filtres",
+    "it": "Filtri"
+  },
+  "ezarri.a.mosaike.mehrFilter": {
+    "de": "Weitere Filter",
+    "en": "More filters",
+    "fr": "Plus de filtres",
+    "it": "Altri filtri"
+  },
+  "ezarri.a.mosaike.zuruecksetzen": {
+    "de": "Alle Filter entfernen",
+    "en": "Remove all filters",
+    "fr": "Supprimer tous les filtres",
+    "it": "Rimuovere tutti i filtri"
+  },
+  "ezarri.a.mosaike.treffer": {
+    "de": "{n} Mosaike",
+    "en": "{n} mosaics",
+    "fr": "{n} mosaïques",
+    "it": "{n} mosaici"
+  },
+  "ezarri.a.mosaike.weitere": {
+    "de": "Weitere {n} laden",
+    "en": "Load {n} more",
+    "fr": "Charger {n} de plus",
+    "it": "Carica altri {n}"
+  },
+  "ezarri.a.mosaike.leer": {
+    "de": "Kein Mosaik passt zu allen Filtern",
+    "en": "No mosaic matches all filters",
+    "fr": "Aucune mosaïque ne correspond à tous les filtres",
+    "it": "Nessun mosaico corrisponde a tutti i filtri"
+  },
+  "ezarri.a.karte.vergleichen": {
+    "de": "Vergleichen",
+    "en": "Compare",
+    "fr": "Comparer",
+    "it": "Confronta"
+  },
+  "ezarri.a.vergleich.title": {
+    "de": "Mosaike vergleichen",
+    "en": "Compare mosaics",
+    "fr": "Comparer des mosaïques",
+    "it": "Mosaici a confronto"
+  },
+  "ezarri.a.vergleich.nurUnterschiede": {
+    "de": "Nur Unterschiede zeigen",
+    "en": "Show differences only",
+    "fr": "Afficher uniquement les différences",
+    "it": "Mostra solo le differenze"
+  },
+  "ezarri.a.detail.preis": {
+    "de": "Preis auf Anfrage",
+    "en": "Price on request",
+    "fr": "Prix sur demande",
+    "it": "Prezzo su richiesta"
+  },
+  "ezarri.a.detail.muster": {
+    "de": "Muster anfragen",
+    "en": "Request a sample",
+    "fr": "Demander un échantillon",
+    "it": "Richiedere un campione"
+  },
+  "ezarri.a.detail.konfigurator": {
+    "de": "Im Konfigurator ansehen",
+    "en": "View in the configurator",
+    "fr": "Voir dans le configurateur",
+    "it": "Vedi nel configuratore"
+  },
+  "ezarri.a.detail.rechner": {
+    "de": "Menge berechnen",
+    "en": "Calculate quantity",
+    "fr": "Calculer la quantité",
+    "it": "Calcola la quantità"
+  },
+  "ezarri.a.detail.luecke": {
+    "de": "laut Ezarri nicht angegeben",
+    "en": "not stated by Ezarri",
+    "fr": "non indiqué par Ezarri",
+    "it": "non indicato da Ezarri"
+  },
+  "ezarri.a.credit.bild": {
+    "de": "Bild: Ezarri, ezarri.com",
+    "en": "Image: Ezarri, ezarri.com",
+    "fr": "Image : Ezarri, ezarri.com",
+    "it": "Immagine: Ezarri, ezarri.com"
+  },
+  "ezarri.a.credit.daten": {
+    "de": "Daten: Ezarri, ezarri.com",
+    "en": "Data: Ezarri, ezarri.com",
+    "fr": "Données : Ezarri, ezarri.com",
+    "it": "Dati: Ezarri, ezarri.com"
+  },
+  "ezarri.a.technik.fachbetrieb": {
+    "de": "Die Verlegung übernimmt ein Fliesenleger-Fachbetrieb.",
+    "en": "Installation is carried out by a specialist tiling company.",
+    "fr": "La pose est réalisée par un carreleur spécialisé.",
+    "it": "La posa è eseguita da un’impresa specializzata di piastrellisti."
+  },
+  "ezarri.a.downloads.kataloge": {
+    "de": "Katalog anfragen",
+    "en": "Request a catalogue",
+    "fr": "Demander un catalogue",
+    "it": "Richiedere un catalogo"
+  },
+  "ezarri.b.seite.title": {
+    "de": "Becken gestalten",
+    "en": "Design your pool",
+    "fr": "Concevoir votre bassin",
+    "it": "Progetti la sua piscina"
+  },
+  "ezarri.b.seite.lead": {
+    "de": "Wählen Sie Mosaik, Mischung, Fuge und Beckenform und sehen Sie das Wasser dazu – in 3D, im Browser, ohne Anmeldung.",
+    "en": "Choose mosaic, blend, grout and pool shape and see the water with it – in 3D, in your browser, without signing up.",
+    "fr": "Choisissez la mosaïque, le mélange, le joint et la forme du bassin et voyez l’eau qui va avec – en 3D, dans le navigateur, sans inscription.",
+    "it": "Scelga mosaico, miscela, fuga e forma della vasca e veda l’acqua che ne risulta – in 3D, nel browser, senza registrazione."
+  },
+  "ezarri.b.seite.hinweisFarbe": {
+    "de": "Bildschirmfarben sind eine Annäherung. Glas wirkt im Tageslicht und unter Wasser anders – sehen Sie sich die Muster an, bevor Sie entscheiden.",
+    "en": "Screen colours are an approximation. Glass looks different in daylight and under water – look at the samples before you decide.",
+    "fr": "Les couleurs à l’écran sont approximatives. Le verre change à la lumière du jour et sous l’eau – regardez les échantillons avant de décider.",
+    "it": "I colori a schermo sono indicativi. Il vetro appare diverso alla luce del giorno e sott’acqua – guardi i campioni prima di decidere."
+  },
+  "ezarri.b.seite.hinweisDaten": {
+    "de": "Mengen sind eine Schätzung (Ezarri-Faktoren, 10 % Reserve). Die verbindliche Menge ermittelt Ihr Fliesenleger am Aufmaß.",
+    "en": "Quantities are an estimate (Ezarri factors, 10 % reserve). Your tiler determines the binding quantity on site.",
+    "fr": "Les quantités sont une estimation (facteurs Ezarri, 10 % de réserve). Votre carreleur détermine la quantité exacte sur place.",
+    "it": "Le quantità sono una stima (fattori Ezarri, 10 % di scorta). La quantità vincolante la stabilisce il posatore in cantiere."
+  },
+  "ezarri.b.tabs.mosaik": {
+    "de": "Mosaik",
+    "en": "Mosaic",
+    "fr": "Mosaïque",
+    "it": "Mosaico"
+  },
+  "ezarri.b.tabs.becken": {
+    "de": "Becken",
+    "en": "Pool",
+    "fr": "Bassin",
+    "it": "Vasca"
+  },
+  "ezarri.b.tabs.wasser": {
+    "de": "Wasser & Licht",
+    "en": "Water & light",
+    "fr": "Eau et lumière",
+    "it": "Acqua e luce"
+  },
+  "ezarri.b.tabs.mengen": {
+    "de": "Mengen",
+    "en": "Quantities",
+    "fr": "Quantités",
+    "it": "Quantità"
+  },
+  "ezarri.b.modus.mosaik": {
+    "de": "Ein Mosaik",
+    "en": "One mosaic",
+    "fr": "Une mosaïque",
+    "it": "Un mosaico"
+  },
+  "ezarri.b.modus.mix": {
+    "de": "Eigene Mischung",
+    "en": "Your own blend",
+    "fr": "Votre mélange",
+    "it": "Miscela propria"
+  },
+  "ezarri.b.modus.rezept": {
+    "de": "Ezarri-Mischung",
+    "en": "Ezarri blend",
+    "fr": "Mélange Ezarri",
+    "it": "Miscela Ezarri"
+  },
+  "ezarri.b.modus.pattern": {
+    "de": "Motiv-Raster",
+    "en": "Pattern grid",
+    "fr": "Trame de motifs",
+    "it": "Trama di motivi"
+  },
+  "ezarri.b.mix.hinzufuegen": {
+    "de": "Mosaik hinzufügen",
+    "en": "Add mosaic",
+    "fr": "Ajouter une mosaïque",
+    "it": "Aggiungi mosaico"
+  },
+  "ezarri.b.mix.nichtMischbar": {
+    "de": "laut Ezarri nicht mischbar – nur allein",
+    "en": "not blendable according to Ezarri – only on its own",
+    "fr": "non mélangeable selon Ezarri – uniquement seule",
+    "it": "non miscelabile secondo Ezarri – solo da solo"
+  },
+  "ezarri.b.mix.wuerfeln": {
+    "de": "Verteilung neu würfeln",
+    "en": "Shuffle distribution",
+    "fr": "Redistribuer",
+    "it": "Rimescola la distribuzione"
+  },
+  "ezarri.b.format": {
+    "de": "Format",
+    "en": "Format",
+    "fr": "Format",
+    "it": "Formato"
+  },
+  "ezarri.b.fuge": {
+    "de": "Fugenfarbe",
+    "en": "Grout colour",
+    "fr": "Couleur du joint",
+    "it": "Colore della fuga"
+  },
+  "ezarri.b.kanaele": {
+    "de": "Kanäle und Streifen",
+    "en": "Lanes and stripes",
+    "fr": "Couloirs et bandes",
+    "it": "Corsie e strisce"
+  },
+  "ezarri.b.kanal.bahnen": {
+    "de": "Bahnmarkierung am Boden",
+    "en": "Lane marking on the floor",
+    "fr": "Marquage de couloir au fond",
+    "it": "Segnacorsia sul fondo"
+  },
+  "ezarri.b.kanal.wasserlinie": {
+    "de": "Band an der Wasserlinie",
+    "en": "Band at the waterline",
+    "fr": "Frise à la ligne d’eau",
+    "it": "Fascia sulla linea d’acqua"
+  },
+  "ezarri.b.kanal.stufen": {
+    "de": "Stufenkanten",
+    "en": "Step edges",
+    "fr": "Nez de marche",
+    "it": "Bordi dei gradini"
+  },
+  "ezarri.b.spezial.corner": {
+    "de": "Kanten mit Corner-Teilen",
+    "en": "Edges with Corner pieces",
+    "fr": "Arêtes avec pièces Corner",
+    "it": "Spigoli con pezzi Corner"
+  },
+  "ezarri.b.spezial.cove": {
+    "de": "Hohlkehlen mit Cove-Teilen",
+    "en": "Coves with Cove pieces",
+    "fr": "Gorges avec pièces Cove",
+    "it": "Sgusci con pezzi Cove"
+  },
+  "ezarri.b.szene.pool": {
+    "de": "Pool",
+    "en": "Pool",
+    "fr": "Piscine",
+    "it": "Piscina"
+  },
+  "ezarri.b.szene.whirlpool": {
+    "de": "Whirlpool",
+    "en": "Hot tub",
+    "fr": "Spa",
+    "it": "Idromassaggio"
+  },
+  "ezarri.b.szene.bad": {
+    "de": "Dusche & Bad",
+    "en": "Shower & bathroom",
+    "fr": "Douche et salle de bain",
+    "it": "Doccia e bagno"
+  },
+  "ezarri.b.szene.kueche": {
+    "de": "Küchenrückwand",
+    "en": "Kitchen splashback",
+    "fr": "Crédence de cuisine",
+    "it": "Paraschizzi cucina"
+  },
+  "ezarri.b.treppe.roemisch": {
+    "de": "Römische Treppe",
+    "en": "Roman steps",
+    "fr": "Escalier romain",
+    "it": "Scala romana"
+  },
+  "ezarri.b.treppe.eck": {
+    "de": "Ecktreppe",
+    "en": "Corner steps",
+    "fr": "Escalier d’angle",
+    "it": "Scala d’angolo"
+  },
+  "ezarri.b.treppe.voll": {
+    "de": "Über die ganze Breite",
+    "en": "Full-width steps",
+    "fr": "Sur toute la largeur",
+    "it": "A tutta larghezza"
+  },
+  "ezarri.b.rand.skimmer": {
+    "de": "Skimmer",
+    "en": "Skimmer",
+    "fr": "Skimmer",
+    "it": "Skimmer"
+  },
+  "ezarri.b.rand.ueberlauf": {
+    "de": "Überlaufrinne",
+    "en": "Overflow channel",
+    "fr": "Goulotte de débordement",
+    "it": "Canale sfioratore"
+  },
+  "ezarri.b.rand.infinity": {
+    "de": "Infinity-Kante",
+    "en": "Infinity edge",
+    "fr": "Débordement à l’infini",
+    "it": "Bordo a sfioro infinito"
+  },
+  "ezarri.b.wasser.bewegt": {
+    "de": "Bewegt",
+    "en": "Moving",
+    "fr": "Agitée",
+    "it": "Mossa"
+  },
+  "ezarri.b.wasser.ruhig": {
+    "de": "Ruhig",
+    "en": "Calm",
+    "fr": "Calme",
+    "it": "Calma"
+  },
+  "ezarri.b.wasser.leer": {
+    "de": "Leer",
+    "en": "Empty",
+    "fr": "Vide",
+    "it": "Vuota"
+  },
+  "ezarri.b.zeit": {
+    "de": "Tageszeit",
+    "en": "Time of day",
+    "fr": "Moment de la journée",
+    "it": "Ora del giorno"
+  },
+  "ezarri.b.led": {
+    "de": "Unterwasser-Licht (LED)",
+    "en": "Underwater light (LED)",
+    "fr": "Éclairage subaquatique (LED)",
+    "it": "Luce subacquea (LED)"
+  },
+  "ezarri.b.kamera.unterwasser": {
+    "de": "Unter Wasser",
+    "en": "Underwater",
+    "fr": "Sous l’eau",
+    "it": "Sott’acqua"
+  },
+  "ezarri.b.aktion.muster": {
+    "de": "Muster anfragen",
+    "en": "Request samples",
+    "fr": "Demander des échantillons",
+    "it": "Richiedi campioni"
+  },
+  "ezarri.b.aktion.angebot": {
+    "de": "Angebot anfragen",
+    "en": "Request a quote",
+    "fr": "Demander un devis",
+    "it": "Richiedi un’offerta"
+  },
+  "ezarri.b.aktion.teilen": {
+    "de": "Link teilen",
+    "en": "Share link",
+    "fr": "Partager le lien",
+    "it": "Condividi link"
+  },
+  "ezarri.b.aktion.drucken": {
+    "de": "Blatt drucken oder als PDF",
+    "en": "Print sheet or save as PDF",
+    "fr": "Imprimer la fiche ou PDF",
+    "it": "Stampa la scheda o PDF"
+  },
+  "ezarri.b.aktion.vorher": {
+    "de": "Vorher festhalten",
+    "en": "Keep “before”",
+    "fr": "Garder l’« avant »",
+    "it": "Fissa il «prima»"
+  },
+  "ezarri.b.aktion.drei": {
+    "de": "In 3D ansehen",
+    "en": "View in 3D",
+    "fr": "Voir en 3D",
+    "it": "Vedi in 3D"
+  },
+  "ezarri.b.aktion.ar": {
+    "de": "Im eigenen Garten ansehen (AR)",
+    "en": "View in your own garden (AR)",
+    "fr": "Voir dans votre jardin (RA)",
+    "it": "Vedi nel suo giardino (RA)"
+  },
+  "ezarri.b.aktion.neu": {
+    "de": "Neu beginnen",
+    "en": "Start over",
+    "fr": "Recommencer",
+    "it": "Ricomincia"
+  },
+  "ezarri.b.ohneWebgl": {
+    "de": "Ihr Browser zeigt kein WebGL. Sie sehen die 2D-Draufsicht; Mengen, Link, Druckblatt und Anfrage funktionieren wie gewohnt.",
+    "en": "Your browser does not support WebGL. You see the 2D plan view; quantities, link, print sheet and enquiry work as usual.",
+    "fr": "Votre navigateur n’affiche pas WebGL. Vous voyez la vue en plan 2D ; quantités, lien, fiche et demande fonctionnent normalement.",
+    "it": "Il suo browser non supporta WebGL. Vede la pianta 2D; quantità, link, scheda e richiesta funzionano normalmente."
+  },
+  "ezarri.b.blatt.title": {
+    "de": "Ihr Becken-Entwurf",
+    "en": "Your pool design",
+    "fr": "Votre projet de bassin",
+    "it": "Il suo progetto di vasca"
+  },
+  "ezarri.b.modus.patternSub": {
+    "de": "20 Ezarri-Patterns, 2–3 Farben",
+    "en": "20 Ezarri patterns, 2–3 colours",
+    "fr": "20 motifs Ezarri, 2 à 3 couleurs",
+    "it": "20 pattern Ezarri, 2–3 colori"
+  },
+  "ezarri.b.rezept.gruppeVoll": {
+    "de": "Rezept laut Ezarri",
+    "en": "Recipe according to Ezarri",
+    "fr": "Recette selon Ezarri",
+    "it": "Ricetta secondo Ezarri"
+  },
+  "ezarri.b.rezept.gruppeFoto": "Nach Produktfoto (Rezept unvollständig oder widersprüchlich)",
+  "ezarri.b.rezept.unvollstaendig": {
+    "de": "Rezept unvollständig, Darstellung nach Produktfoto: Ezarri nennt für „{name}“ Bestandteile, die im Konfigurator-Sortiment von Ezarri fehlen. Wir zeigen deshalb die fertige Referenz mit den Farben aus dem Ezarri-Foto, nicht als veränderbare Mischung.",
+    "en": "Recipe incomplete, shown from the product photo: for “{name}” Ezarri lists components that are missing from Ezarri’s configurator range. We therefore show the finished reference with the colours from the Ezarri photo, not as an editable blend.",
+    "fr": "Recette incomplète, affichage d’après la photo du produit : pour « {name} », Ezarri cite des composants absents de la gamme de son configurateur. Nous montrons donc la référence finie avec les couleurs de la photo Ezarri, et non comme un mélange modifiable.",
+    "it": "Ricetta incompleta, visualizzazione dalla foto del prodotto: per «{name}» Ezarri indica componenti che mancano nella gamma del suo configuratore. Mostriamo quindi la referenza finita con i colori della foto Ezarri, non come miscela modificabile."
+  },
+  "ezarri.b.aktion.neuFrage": {
+    "de": "Alle Einstellungen zurücksetzen?",
+    "en": "Reset all settings?",
+    "fr": "Réinitialiser tous les réglages ?",
+    "it": "Ripristinare tutte le impostazioni?"
+  },
+  "ezarri.b.aktion.neuText": {
+    "de": "Mosaik, Becken, Wasser und Licht gehen auf den Startentwurf zurück. Mit „Rückgängig“ holen Sie den jetzigen Stand zurück.",
+    "en": "Mosaic, pool, water and light return to the starting design. “Undo” brings back the current state.",
+    "fr": "Mosaïque, bassin, eau et lumière reviennent au projet de départ. « Annuler » rétablit l’état actuel.",
+    "it": "Mosaico, vasca, acqua e luce tornano al progetto iniziale. «Annulla» ripristina lo stato attuale."
+  },
+  "ezarri.b.aktion.abbrechen": {
+    "de": "Abbrechen",
+    "en": "Cancel",
+    "fr": "Annuler",
+    "it": "Annulla"
+  },
+  "ezarri.b.picker.safe": {
+    "de": "Rutschhemmend (Safe)",
+    "en": "Slip-resistant (Safe)",
+    "fr": "Antidérapant (Safe)",
+    "it": "Antiscivolo (Safe)"
+  },
+  "ezarri.b.blatt.visualisierung": {
+    "de": "Visualisierung, Farben angenähert",
+    "en": "Visualisation, colours approximate",
+    "fr": "Visualisation, couleurs approximatives",
+    "it": "Visualizzazione, colori approssimativi"
+  },
+  "ezarri.b.blatt.erstellen": {
+    "de": "Visualisierung wird erstellt …",
+    "en": "Creating visualisation …",
+    "fr": "Création de la visualisation …",
+    "it": "Creazione della visualizzazione …"
+  },
+  "ezarri.c.rechner.mischRundung": {
+    "de": "Jedes Mosaik auf volle Kartons gerundet: +{n} Kartons gegenüber ungemischt.",
+    "en": "Each mosaic rounded up to full boxes: +{n} boxes compared with unmixed.",
+    "fr": "Chaque mosaïque arrondie au carton entier : +{n} cartons par rapport au non mélangé.",
+    "it": "Ogni mosaico arrotondato a scatole intere: +{n} scatole rispetto al non miscelato."
+  },
+  "ezarri.c.customMix.bild": {
+    "de": "Bild speichern",
+    "en": "Save image",
+    "fr": "Enregistrer l’image",
+    "it": "Salva immagine"
+  },
+  "ezarri.c.customMix.drucken": {
+    "de": "Drucken",
+    "en": "Print",
+    "fr": "Imprimer",
+    "it": "Stampa"
+  },
+  "ezarri.c.customMix.exportHinweis": {
+    "de": "Als PNG mit Rezept, oder als A4 mit QR-Code zum Teilen-Link.",
+    "en": "As a PNG with the recipe, or as an A4 page with a QR code to the share link.",
+    "fr": "En PNG avec la recette, ou en A4 avec un code QR vers le lien de partage.",
+    "it": "Come PNG con la ricetta, oppure in A4 con codice QR al link di condivisione."
+  },
+  "ezarri.c.customMix.formatGesperrt": {
+    "de": "{format} gibt es nicht für {namen}.",
+    "en": "{format} is not available for {namen}.",
+    "fr": "{format} n’existe pas pour {namen}.",
+    "it": "{format} non è disponibile per {namen}."
+  },
+  "ezarri.c.customMix.suche": {
+    "de": "Name, Code, Farbe oder Mischung",
+    "en": "Name, code, colour or blend",
+    "fr": "Nom, code, couleur ou mélange",
+    "it": "Nome, codice, colore o miscela"
+  },
+  "ezarri.c.customMix.keine": {
+    "de": "Keine Treffer.",
+    "en": "No results.",
+    "fr": "Aucun résultat.",
+    "it": "Nessun risultato."
+  },
+  "ezarri.c.customMix.zuruecksetzen": {
+    "de": "Filter zurücksetzen",
+    "en": "Reset filters",
+    "fr": "Réinitialiser les filtres",
+    "it": "Azzera i filtri"
+  },
+  "ezarri.c.customMix.festeTitel": {
+    "de": "Fertig gemischt, nicht veränderbar",
+    "en": "Pre-mixed, cannot be changed",
+    "fr": "Déjà mélangé, non modifiable",
+    "it": "Già miscelato, non modificabile"
+  },
+  "ezarri.c.customMix.festeText": {
+    "de": "Diese Mosaike mischt Ezarri selbst. Sie lassen sich nicht mit anderen kombinieren.",
+    "en": "Ezarri mixes these mosaics itself. They cannot be combined with others.",
+    "fr": "Ezarri mélange ces mosaïques lui-même. Elles ne se combinent pas avec d’autres.",
+    "it": "Ezarri miscela questi mosaici da sé. Non si possono combinare con altri."
+  },
+  "ezarri.c.anfrage.fugeFormat": {
+    "de": "Fuge: {fuge} · Format {format}",
+    "en": "Grout: {fuge} · Format {format}",
+    "fr": "Joint : {fuge} · Format {format}",
+    "it": "Fuga: {fuge} · Formato {format}"
+  },
+  "ezarri.c.anfrage.zubehoer": {
+    "de": "Zubehör mit anbieten",
+    "en": "Include accessories in the quote",
+    "fr": "Inclure les accessoires dans le devis",
+    "it": "Includi gli accessori nel preventivo"
+  },
+  "ezarri.c.anfrage.zubehoerHint": {
+    "de": "Vorbelegt aus dem Mosaik-Rechner (Verbrauch laut Ezarri). Sie können Mengen ändern oder abwählen.",
+    "en": "Prefilled from the mosaic calculator (consumption according to Ezarri). You can change or deselect quantities.",
+    "fr": "Prérempli depuis le calculateur (consommation selon Ezarri). Vous pouvez modifier ou décocher les quantités.",
+    "it": "Precompilato dal calcolatore (consumo secondo Ezarri). Può modificare o deselezionare le quantità."
+  },
+  "ezarri.c.anfrage.unavailable": {
+    "de": "Online-Anfragen sind gerade nicht möglich. Bitte rufen Sie uns an oder schreiben Sie uns:",
+    "en": "Online requests are not possible at the moment. Please call or write to us:",
+    "fr": "Les demandes en ligne ne sont pas possibles pour le moment. Appelez-nous ou écrivez-nous :",
+    "it": "Le richieste online non sono possibili al momento. Ci chiami o ci scriva:"
+  },
+  "ezarri.a.mosaike.filterKnopf": {
+    "de": "Filter",
+    "en": "Filters",
+    "fr": "Filtres",
+    "it": "Filtri"
+  },
+  "ezarri.a.mosaike.filterTitel": {
+    "de": "Mosaike filtern",
+    "en": "Filter mosaics",
+    "fr": "Filtrer les mosaïques",
+    "it": "Filtra i mosaici"
+  },
+  "ezarri.a.mosaike.anzeigen": {
+    "de": "{n} Mosaike anzeigen",
+    "en": "Show {n} mosaics",
+    "fr": "Afficher {n} mosaïques",
+    "it": "Mostra {n} mosaici"
+  },
+  "ezarri.a.mosaike.schliessen": {
+    "de": "Filter schließen",
+    "en": "Close filters",
+    "fr": "Fermer les filtres",
+    "it": "Chiudi i filtri"
+  },
+  "ezarri.a.mosaike.projektbild": {
+    "de": "Projektbild aus",
+    "en": "Project photo from",
+    "fr": "Photo de projet :",
+    "it": "Foto di progetto da"
+  },
+  "ezarri.a.mosaike.projektbildHinweis": {
+    "de": "Mosaike, die Ezarri in Projekten dieser Art zeigt.",
+    "en": "Mosaics Ezarri shows in projects of this kind.",
+    "fr": "Mosaïques qu’Ezarri présente dans des projets de ce type.",
+    "it": "Mosaici che Ezarri mostra in progetti di questo tipo."
+  },
+  "ezarri.a.mosaike.eignung": {
+    "de": "Laut Datenblatt eignen sich fast alle Ezarri-Mosaike für Wand und Boden, Pool und Wellness, innen wie außen, also auch für Bad und Küche. Für nasse Böden und Stufen wählen Sie „Nur rutschhemmend“.",
+    "en": "According to the data sheets, almost all Ezarri mosaics are suitable for walls and floors, pools and wellness, indoors and outdoors – so also for bathrooms and kitchens. For wet floors and steps, choose “Slip-resistant only”.",
+    "fr": "Selon les fiches techniques, presque toutes les mosaïques Ezarri conviennent aux murs et sols, piscines et espaces bien-être, à l’intérieur comme à l’extérieur – donc aussi à la salle de bains et à la cuisine. Pour les sols mouillés et les marches, choisissez « Antidérapant uniquement ».",
+    "it": "Secondo le schede tecniche, quasi tutti i mosaici Ezarri sono adatti a pareti e pavimenti, piscine e wellness, all’interno e all’esterno – quindi anche a bagno e cucina. Per pavimenti bagnati e gradini scelga «Solo antiscivolo»."
+  },
+  "ezarri.a.mosaike.weitereArten": {
+    "de": "{n} Safe-Steps und Formstücke unter „Art“",
+    "en": "{n} Safe-Steps and special pieces under “Type”",
+    "fr": "{n} Safe-Steps et pièces spéciales sous « Type »",
+    "it": "{n} Safe-Steps e pezzi speciali in «Tipo»"
+  },
+  "ezarri.a.mosaike.alleArten": {
+    "de": "Auch Safe-Steps und Formstücke zeigen",
+    "en": "Also show Safe-Steps and special pieces",
+    "fr": "Afficher aussi les Safe-Steps et pièces spéciales",
+    "it": "Mostra anche Safe-Steps e pezzi speciali"
+  },
+  "ezarri.a.mosaike.sortLabel": {
+    "de": "Sortierung",
+    "en": "Sort by",
+    "fr": "Trier par",
+    "it": "Ordina per"
+  },
+  "ezarri.a.mosaike.sort.empfohlen": {
+    "de": "Empfohlen",
+    "en": "Recommended",
+    "fr": "Recommandé",
+    "it": "Consigliati"
+  },
+  "ezarri.a.mosaike.sort.name": {
+    "de": "Name A–Z",
+    "en": "Name A–Z",
+    "fr": "Nom A–Z",
+    "it": "Nome A–Z"
+  },
+  "ezarri.a.mosaike.sort.kollektion": {
+    "de": "Kollektion",
+    "en": "Collection",
+    "fr": "Collection",
+    "it": "Collezione"
+  },
+  "ezarri.a.mosaike.sort.hell": {
+    "de": "Farbe hell → dunkel",
+    "en": "Colour light → dark",
+    "fr": "Couleur claire → foncée",
+    "it": "Colore chiaro → scuro"
+  },
+  "ezarri.a.hub.kachel": {
+    "de": "{n} Mosaike geeignet · {m} mit Projektbild",
+    "en": "{n} suitable mosaics · {m} with project photo",
+    "fr": "{n} mosaïques adaptées · {m} avec photo de projet",
+    "it": "{n} mosaici adatti · {m} con foto di progetto"
+  },
+  "ezarri.a.welt.alleGeeignet": {
+    "de": "Alle {n} geeigneten Mosaike",
+    "en": "All {n} suitable mosaics",
+    "fr": "Les {n} mosaïques adaptées",
+    "it": "Tutti i {n} mosaici adatti"
+  },
+  "ezarri.a.welt.mitProjektbild": {
+    "de": "{m} davon mit Ezarri-Projektbild",
+    "en": "{m} of them with an Ezarri project photo",
+    "fr": "dont {m} avec photo de projet Ezarri",
+    "it": "di cui {m} con foto di progetto Ezarri"
+  },
+  "ezarri.b.stage.vorschauTippen": "Vorschau, für 3D tippen",
+  "ezarri.b.stage.vorschauFarben": "Vorschau, Farben angenähert",
+  "ezarri.b.stage.vorschauLabel": "Vorschau des Beckens",
+  "ezarri.b.stage.keinWebglVorschau": "Ihr Browser zeigt kein WebGL. Sie sehen eine Vorschau mit angenäherten Farben; Mengen, Link, Druckblatt und Anfrage funktionieren wie gewohnt.",
+  "ezarri.b.stage.nichtsRueck": "Nichts rückgängig zu machen",
+  "ezarri.b.stage.nichtsVor": "Nichts zu wiederholen",
+  "ezarri.b.legende.roemisch": "Halbkreise links: römische Treppe, flaches Ende",
+  "ezarri.b.legende.eck": "Viertelkreis links: Ecktreppe, flaches Ende",
+  "ezarri.b.legende.voll": "Streifen links: Treppe über die ganze Breite, flaches Ende",
+  "ezarri.b.rezept.widerspruechlich": "Darstellung nach Produktfoto: Ezarris Rezeptangaben zu „{name}“ sind hier widersprüchlich, wir zeigen die fertige Referenz nach Produktfoto.",
+  "ezarri.b.blatt.fotoRezept": "Darstellung nach Produktfoto ({grund})",
+  "ezarri.b.blatt.grundWiderspruch": "Rezeptangaben von Ezarri widersprüchlich",
+  "ezarri.b.blatt.grundUnvollstaendig": "Rezept unvollständig",
+  "ezarri.a.karte.imWasser": {
+    "de": "Im Wasser:",
+    "en": "In water:",
+    "fr": "Dans l’eau :",
+    "it": "In acqua:"
+  },
+  "ezarri.a.hub.kollektionen": {
+    "de": "{kollektionen} Kollektionen und {sonder} Sonderanfertigungen",
+    "en": "{kollektionen} collections and {sonder} made-to-order lines",
+    "fr": "{kollektionen} collections et {sonder} fabrications sur mesure",
+    "it": "{kollektionen} collezioni e {sonder} produzioni su misura"
+  },
+  "ezarri.a.kollektionen.sonder": {
+    "de": "Sonderanfertigung",
+    "en": "Made to order",
+    "fr": "Fabrication sur mesure",
+    "it": "Produzione su misura"
+  },
+  "ezarri.a.mischung.title": {
+    "de": "Mischung laut Ezarri",
+    "en": "Blend according to Ezarri",
+    "fr": "Mélange selon Ezarri",
+    "it": "Miscela secondo Ezarri"
+  },
+  "ezarri.a.mischung.ohneSeite": {
+    "de": "ohne eigene Produktseite bei Ezarri",
+    "en": "no separate product page at Ezarri",
+    "fr": "sans page produit propre chez Ezarri",
+    "it": "senza pagina prodotto propria su Ezarri"
+  },
+  "ezarri.a.mischung.konfigurator": {
+    "de": "Diese Mischung im Konfigurator",
+    "en": "Open this blend in the configurator",
+    "fr": "Ouvrir ce mélange dans le configurateur",
+    "it": "Apri questa miscela nel configuratore"
+  },
+  "ezarri.a.mischung.konfiguratorFertig": {
+    "de": "Fertige Mischung im Konfigurator",
+    "en": "Ready-made blend in the configurator",
+    "fr": "Mélange prêt dans le configurateur",
+    "it": "Miscela pronta nel configuratore"
+  },
+  "ezarri.a.mischung.muster": {
+    "de": "Muster der Einzelfarben anfragen",
+    "en": "Request samples of the single colours",
+    "fr": "Demander des échantillons des couleurs",
+    "it": "Richiedi campioni dei singoli colori"
+  },
+  "ezarri.a.mischung.nurFertig": {
+    "de": "Im Konfigurator nur als fertige Mischung wählbar",
+    "en": "Only available as a ready-made blend in the configurator",
+    "fr": "Uniquement en mélange prêt dans le configurateur",
+    "it": "Nel configuratore solo come miscela pronta"
+  },
+  "ezarri.a.galerie.lead": {
+    "de": "Projektbilder von Ezarri, zu jedem Bild das verwendete Mosaik.",
+    "en": "Project photos from Ezarri, each with the mosaic used.",
+    "fr": "Photos de projets Ezarri, avec la mosaïque utilisée.",
+    "it": "Foto di progetti Ezarri, ciascuna con il mosaico usato."
+  },
+  "ezarri.a.galerie.mosaik": {
+    "de": "Mosaik: {name}",
+    "en": "Mosaic: {name}",
+    "fr": "Mosaïque : {name}",
+    "it": "Mosaico: {name}"
+  },
+  "ezarri.a.galerie.filterTitel": {
+    "de": "Galerie filtern",
+    "en": "Filter gallery",
+    "fr": "Filtrer la galerie",
+    "it": "Filtra la galleria"
+  },
+  "ezarri.a.galerie.anzeigen": {
+    "de": "{n} Bilder anzeigen",
+    "en": "Show {n} images",
+    "fr": "Afficher {n} images",
+    "it": "Mostra {n} immagini"
+  },
+  "ezarri.a.galerie.treffer": {
+    "de": "{n} Projektbilder",
+    "en": "{n} project photos",
+    "fr": "{n} photos de projets",
+    "it": "{n} foto di progetti"
+  },
+  "ezarri.a.galerie.videos": {
+    "de": "Produktvideos von Ezarri",
+    "en": "Product videos by Ezarri",
+    "fr": "Vidéos produit d’Ezarri",
+    "it": "Video di prodotto di Ezarri"
+  }
+}

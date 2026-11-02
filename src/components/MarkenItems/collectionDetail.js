@@ -1,261 +1,211 @@
-"use client";
+// One collection of a brand (/ueber-uns/marken/[title]/[collection]) –
+// Neuauftritt. Server Component; only the wishlist heart is a client island.
+// Same language as the brand page (markenitems.js): text beside the image,
+// tokens only, no radius, no shadow, no dark surface.
 import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { ArrowUpRight, ArrowLeft } from "lucide-react";
-import FadeInView from "@/components/Reusable/FadeInView";
-import { Link } from "@/i18n/navigation";
-import { generateSlug } from "@/lib/slugify";
+import { getTranslations } from "next-intl/server";
 import { localizeCategory } from "@/lib/seo/productCategories";
 import { collectionPath } from "@/lib/marken/collections";
 import { ROUTES, localizeProductsHref } from "@/utils/routing";
+import { generateSlug } from "@/lib/slugify";
+import { displayBrandName } from "@/lib/content/brands";
 import WishlistHeart from "@/components/ShopCatalog/wishlistHeart";
+import { Breadcrumbs, Button, CTABand, Card, Container, Eyebrow, Grid, Heading, Lead, Leitsatz, LinkArrow, Media, Section, SmartLink } from "@/components/ui";
+import { makeTr } from "./copy";
+import { withContext } from "@/lib/forms/beratungContext";
+import { cleanProductName } from "@/lib/content/brands";
+import { SOFAPLANER_MODEL_LABEL, sofaplanerModelPath } from "@/lib/marken/minottiBodensee";
 
-// One collection of a brand (/ueber-uns/marken/[title]/[collection]): hero with
-// the collection image, the products it contains, then the brand's other
-// collections. Same visual language as the brand story page (markenitems.js).
+// CMS names like "Region - bedwear" → "Region – Bedwear" (QA Runde 1, P3-7).
+const productName = (raw) =>
+  cleanProductName(raw).replace(/\s+-\s+(\p{L})/u, (m, c) => " – " + c.toUpperCase());
 
-const SectionHeader = ({ eyebrow, title, aside }) => (
-  <div className="mb-10 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-    <div>
-      <span className="block text-xs font-semibold uppercase tracking-wide text-[#d1b250]">{eyebrow}</span>
-      <h2 className="mt-2 text-2xl font-bold text-[#30373e] md:text-3xl">{title}</h2>
-      <div className="mt-3 h-1 w-20 rounded-full bg-[#d1b250]" />
-    </div>
-    {aside && <p className="text-sm text-[#30373e]/55">{aside}</p>}
-  </div>
-);
-
-const ProductCard = ({ product, locale }) => {
+function CollectionProduct({ product, locale, brand }) {
+  const name = productName(product.name);
   const category = product.categoryKey ? localizeCategory(product.categoryKey, locale) : null;
-  const body = (
-    <>
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-gray-100">
+  const href = product.href ? localizeProductsHref(product.href, locale) : null;
+  return (
+    <article className="group relative flex flex-col">
+      <div className="relative aspect-[4/5] overflow-hidden bg-surface-raised">
         <Image
           src={product.image || "/Images/fallback-banner.jpg"}
-          alt={product.name}
+          alt={product.alt || `${brand} ${name}`}
           fill
-          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 400px"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover"
         />
       </div>
-      <div className="flex items-start justify-between gap-3 pt-4">
-        <div className="min-w-0">
-          {category && (
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-[#d1b250]">{category}</p>
-          )}
-          <p className="mt-1 text-base font-medium text-[#30373e]">{product.name}</p>
-          {product.designer && <p className="mt-0.5 text-sm text-[#30373e]/55">{product.designer}</p>}
-        </div>
-        <ArrowUpRight
-          size={18}
-          className="mt-1 shrink-0 text-[#30373e]/30 transition-colors duration-300 group-hover:text-[#d1b250]"
-        />
-      </div>
-    </>
-  );
-
-  return (
-    <div className="relative">
-      {product.href ? (
-        <Link href={localizeProductsHref(product.href, locale)} locale={locale} className="group block">
-          {body}
-        </Link>
-      ) : (
-        <div className="group block">{body}</div>
-      )}
-      {product.url_slug && <WishlistHeart product={product} />}
-    </div>
-  );
-};
-
-export default function CollectionDetail({ marke, collection, products = [], otherCollections = [], locale }) {
-  const t = useTranslations("marken");
-  const brandHref = `${ROUTES.marken[locale] || ROUTES.marken.de}/${generateSlug(marke.name1)}`;
-
-  const breadcrumb = [
-    { name: t("breadcrumbHome"), href: "/" },
-    { name: t("breadcrumbBrands"), href: ROUTES.marken[locale] || ROUTES.marken.de },
-    { name: marke.name1, href: brandHref },
-    { name: collection.name, href: null },
-  ];
-
-  return (
-    <div className="text-[#30373e]">
-      {/* ---------------------------------------------------------- */}
-      {/* HERO                                                        */}
-      {/* ---------------------------------------------------------- */}
-      <header className="relative flex h-[560px] items-end lg:h-[720px]">
-        <Image
-          src={collection.image || "/Images/fallback-banner.jpg"}
-          alt={collection.name}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 from-0% via-black/30 via-50% to-black/30 to-100%" />
-
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 text-white lg:pb-20">
-          <nav aria-label="breadcrumb" className="mb-6">
-            <ol className="flex flex-wrap items-center gap-1 text-[11px] font-medium uppercase tracking-[0.08em] sm:text-xs">
-              {breadcrumb.map((crumb, i) => (
-                <li key={i} className="flex items-center gap-1">
-                  {crumb.href ? (
-                    <Link href={crumb.href} locale={locale} className="text-white/65 transition-colors hover:text-[#d1b250]">
-                      {crumb.name}
-                    </Link>
-                  ) : (
-                    <span aria-current="page" className="text-white">{crumb.name}</span>
-                  )}
-                  {i < breadcrumb.length - 1 && <span className="mx-1 text-white/35">/</span>}
-                </li>
-              ))}
-            </ol>
-          </nav>
-
-          <p className="text-xs font-semibold uppercase tracking-[2px] text-[#d1b250]">
-            {marke.name1} · {t("collectionEyebrow")}
-          </p>
-          <h1 className="mt-3 break-words text-[2.25rem] font-light uppercase leading-[1.05] tracking-[2px] sm:text-[3rem] md:text-[4rem] lg:text-[4.5rem]">
-            {collection.name}
-          </h1>
-          <p className="mt-4 text-[1.05rem] font-light text-[#dcdcdc] md:text-[1.2rem]">
-            {t("productCount", { count: collection.productCount })}
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-5">
-            <Link
-              href="#kollektion-produkte"
-              className="rounded-[2px] bg-white px-7 py-[14px] text-[0.8rem] font-semibold uppercase tracking-[2px] text-[#30373e] transition-all duration-[400ms] hover:bg-[#d1b250]"
+      <div className="mt-3 flex flex-col gap-1">
+        {category && <p className="text-overline uppercase text-text-soft">{category}</p>}
+        <h3 className="text-ui text-text">
+          {href ? (
+            <SmartLink
+              href={href}
+              className="ph-stretched underline decoration-transparent underline-offset-4 transition-colors duration-(--duration-micro) group-hover:decoration-current"
             >
-              {t("collection_discover")}
-            </Link>
-            <Link
-              href={brandHref}
-              locale={locale}
-              className="border-b border-white/50 pb-[3px] text-[0.85rem] uppercase tracking-[2px] text-white transition-all duration-[400ms] hover:border-[#d1b250] hover:text-[#d1b250]"
-            >
-              {t("aboutBrandLink", { brand: marke.name1 })}
-            </Link>
-          </div>
-        </div>
-      </header>
-
-      <main className="mx-auto my-12 max-w-7xl px-6 lg:my-20">
-        {/* -------------------------------------------------------- */}
-        {/* ABOUT THE COLLECTION (CMS description)                    */}
-        {/* -------------------------------------------------------- */}
-        {collection.descriptionParagraphs?.length > 0 && (
-          <FadeInView as="section" direction="up" duration={700}>
-            <section className="mb-20 grid grid-cols-1 gap-8 border-b border-[#30373e]/10 pb-16 lg:grid-cols-12 lg:gap-14">
-              <div className="lg:col-span-4">
-                <span className="block text-xs font-semibold uppercase tracking-wide text-[#d1b250]">
-                  {t("aboutCollection")}
-                </span>
-                <h2 className="mt-2 text-2xl font-bold text-[#30373e] md:text-3xl">{collection.name}</h2>
-                <div className="mt-3 h-1 w-20 rounded-full bg-[#d1b250]" />
-              </div>
-              <div className="space-y-4 text-base leading-relaxed text-gray-600 lg:col-span-8 lg:text-lg [&_a]:text-[#d1b250] [&_a]:underline [&_strong]:font-semibold [&_strong]:text-[#30373e] [&_ul]:list-disc [&_ul]:pl-5">
-                {collection.descriptionParagraphs.map((p, i) => (
-                  <div key={i} dangerouslySetInnerHTML={{ __html: p }} />
-                ))}
-              </div>
-            </section>
-          </FadeInView>
-        )}
-
-        {/* -------------------------------------------------------- */}
-        {/* PRODUCTS IN THIS COLLECTION                               */}
-        {/* -------------------------------------------------------- */}
-        <section id="kollektion-produkte" className="mb-20 scroll-mt-28">
-          <SectionHeader
-            eyebrow={collection.name}
-            title={t("collectionProductsTitle")}
-            aside={t("productCount", { count: products.length })}
-          />
-
-          {products.length > 0 ? (
-            <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-              {products.map((product, i) => (
-                <FadeInView key={product.id} as="div" direction="up" duration={600} delay={(i % 3) * 100}>
-                  <ProductCard product={product} locale={locale} />
-                </FadeInView>
-              ))}
-            </div>
+              {name}
+            </SmartLink>
           ) : (
-            <p className="text-sm text-[#30373e]/55">{t("collectionEmpty")}</p>
+            name
           )}
-        </section>
+        </h3>
+        {product.designer && <p className="text-small text-text-soft">{product.designer}</p>}
+      </div>
+      {/* The heart sits above the stretched link (z-index), outside the <a>. */}
+      {product.url_slug && <WishlistHeart product={product} />}
+    </article>
+  );
+}
 
-        {/* -------------------------------------------------------- */}
-        {/* CONSULTATION                                              */}
-        {/* -------------------------------------------------------- */}
-        <section className="mb-20 flex flex-col items-start justify-between gap-8 rounded-2xl bg-[#30373e] p-8 text-white sm:p-12 md:flex-row md:items-center lg:p-14">
-          <div className="max-w-xl">
-            <span className="text-xs font-semibold uppercase tracking-wide text-[#d1b250]">{t("showroomEyebrow")}</span>
-            <div className="mt-3 h-[2px] w-12 bg-[#d1b250]" />
-            <h2 className="mt-5 text-2xl font-light uppercase tracking-wide sm:text-3xl">
-              {t("collectionConsultTitle", { collection: collection.name })}
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-white/65">{t("serviceText")}</p>
+export default async function CollectionDetail({ marke, collection, products = [], otherCollections = [], locale = "de", sofaFamily = null }) {
+  const t = await getTranslations({ locale, namespace: "marken" });
+  const tr = makeTr(t, locale, "marken");
+  const has = (key, fallback, values) => (t.has(key) ? t(key, values) : fallback);
+
+  const brand = displayBrandName(marke.name1);
+  const markenPath = ROUTES.marken[locale] || ROUTES.marken.de;
+  const brandHref = `${markenPath}/${generateSlug(marke.name1)}`;
+  // R5 (ux P2): the Termin link carries the brand context (?produkt= → first
+  // message line "Anfrage zu: Minotti Torii", src/lib/forms/beratungContext.js).
+  const beratungPath = withContext(ROUTES.beratung[locale] || ROUTES.beratung.de, { produkt: `${brand} ${collection.name}`.trim() });
+
+  return (
+    <div className="bg-surface text-text">
+      <Section spacing="none" labelledBy="collection-title" className="pt-8 pb-12 md:pt-12 md:pb-16 lg:pb-20">
+        {/* This page has no other JSON-LD → the breadcrumb emits BreadcrumbList. */}
+        <Breadcrumbs
+          schema
+          items={[
+            { label: has("breadcrumbHome", "Home"), href: "/" },
+            { label: has("breadcrumbBrands", "Marken"), href: markenPath },
+            { label: brand, href: brandHref },
+            { label: collection.name },
+          ]}
+        />
+        <div className="mt-8 grid grid-cols-1 gap-8 lg:mt-12 lg:grid-cols-12 lg:items-center lg:gap-grid">
+          <div className="lg:col-span-5">
+            <Eyebrow className="mb-stack-s">
+              {brand} · {has("collectionEyebrow", "Kollektion")}
+            </Eyebrow>
+            <Heading id="collection-title" level={1} className="break-words">
+              {collection.name}
+            </Heading>
+            <Lead tone="soft" className="mt-stack-s tabular">
+              {has("productCount", `${collection.productCount}`, { count: collection.productCount })}
+            </Lead>
+            <div className="mt-stack-m flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Button href={beratungPath} variant="primary" arrow>
+                {tr("ctaAppointment")}
+              </Button>
+              <Button href="#kollektion-produkte" variant="secondary">
+                {tr("ctaPieces")}
+              </Button>
+            </div>
+            {/* Minotti-Sofa-Kollektion: Modell im Sofaplaner vorwählen (nur DE, nur
+                Familien aus dem Sofaplaner-Katalog, src/lib/marken/minottiBodensee.js). */}
+            {sofaFamily && locale === "de" && (
+              <LinkArrow href={sofaplanerModelPath(sofaFamily)} locale="de" className="mt-4" data-sofaplaner-model={sofaFamily}>
+                {SOFAPLANER_MODEL_LABEL}
+              </LinkArrow>
+            )}
           </div>
-          <Link
-            href={ROUTES.beratung[locale] || "/beratung"}
-            locale={locale}
-            className="inline-flex shrink-0 items-center gap-2 rounded-[3px] bg-[#d1b250] px-6 py-3 text-sm font-medium uppercase tracking-wide text-[#30373e] transition-colors duration-300 hover:bg-[#bfa047]"
-          >
-            {t("requestConsultation")}
-            <ArrowUpRight size={16} />
-          </Link>
-        </section>
+          {collection.image && (
+            <figure className="order-first lg:order-none lg:col-span-7">
+              <Media
+                src={collection.image}
+                alt={`${brand} ${collection.name}`}
+                ratio="3/2"
+                fit="contain"
+                preload
+                sizes="(min-width: 1280px) 760px, (min-width: 1024px) 56vw, 100vw"
+              />
+              <figcaption className="mt-2 text-small text-text-soft">{tr("imageCredit", { brand })}</figcaption>
+            </figure>
+          )}
+        </div>
+      </Section>
 
-        {/* -------------------------------------------------------- */}
-        {/* OTHER COLLECTIONS OF THE BRAND                            */}
-        {/* -------------------------------------------------------- */}
-        {otherCollections.length > 0 && (
-          <section className="mb-16">
-            <SectionHeader eyebrow={marke.name1} title={t("moreCollections", { brand: marke.name1 })} />
-
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {otherCollections.map((other) => (
-                <Link
-                  key={other.id}
-                  href={collectionPath(locale, marke.name1, other.id)}
-                  locale={locale}
-                  className="group relative block h-[320px] overflow-hidden rounded-lg border border-[#30373e]/10 bg-gray-100 shadow-[0_1px_3px_rgba(48,55,62,0.06)] transition-shadow duration-300 hover:shadow-[0_8px_24px_rgba(48,55,62,0.12)]"
-                >
-                  <Image
-                    src={other.image || "/Images/fallback-banner.jpg"}
-                    alt={other.name}
-                    fill
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 400px"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
-                    <div>
-                      <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-[#d1b250]">
-                        {t("productCount", { count: other.productCount })}
-                      </span>
-                      <p className="text-lg font-medium text-white">{other.name}</p>
-                    </div>
-                    <ArrowUpRight size={18} className="shrink-0 text-white/60 transition-colors group-hover:text-[#d1b250]" />
-                  </div>
-                </Link>
+      {collection.descriptionParagraphs?.length > 0 && (
+        <Section labelledBy="collection-about" spacing="compact">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-grid">
+            <div className="lg:col-span-4">
+              <Eyebrow className="mb-stack-s">{has("aboutCollection", "")}</Eyebrow>
+              <Heading id="collection-about" level={2}>
+                {collection.name}
+              </Heading>
+            </div>
+            <div className="flex flex-col gap-4 text-body text-text-soft lg:col-span-7 lg:col-start-6 [&_a]:text-text [&_a]:underline [&_strong]:font-medium [&_strong]:text-text [&_ul]:list-disc [&_ul]:pl-5">
+              {collection.descriptionParagraphs.map((p, i) => (
+                <div key={i} className="max-w-measure" dangerouslySetInnerHTML={{ __html: p }} />
               ))}
             </div>
-          </section>
-        )}
+          </div>
+        </Section>
+      )}
 
-        <Link
-          href={brandHref}
-          locale={locale}
-          className="inline-flex items-center gap-2 text-sm text-[#30373e]/75 transition-colors hover:text-[#d1b250]"
-        >
-          <ArrowLeft size={16} />
-          {t("backToBrand", { brand: marke.name1 })}
-        </Link>
-      </main>
+      <Section tone="raised" labelledBy="collection-products" id="kollektion-produkte" className="scroll-mt-24">
+        <div className="mb-stack-m flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <Heading id="collection-products" level={2}>
+            {has("collectionProductsTitle", collection.name)}
+          </Heading>
+          <p className="tabular text-small text-text-soft">{has("productCount", "", { count: products.length })}</p>
+        </div>
+        {products.length > 0 ? (
+          <Grid as="ul" cols={3} role="list">
+            {products.map((product) => (
+              <li key={product.id}>
+                <CollectionProduct product={product} locale={locale} brand={brand} />
+              </li>
+            ))}
+          </Grid>
+        ) : (
+          <p className="text-body text-text-soft">{has("collectionEmpty", "")}</p>
+        )}
+      </Section>
+
+      {otherCollections.length > 0 && (
+        <Section labelledBy="collection-more" spacing="compact">
+          <Heading id="collection-more" level={2} className="mb-stack-m">
+            {has("moreCollections", tr("collectionsTitle", { brand }), { brand })}
+          </Heading>
+          <Grid as="ul" cols={3} role="list">
+            {otherCollections.map((other) => (
+              <li key={other.id}>
+                <Card
+                  href={collectionPath(locale, marke.name1, other.id)}
+                  title={other.name}
+                  image={other.image ? { src: other.image, alt: `${brand} ${other.name}` } : undefined}
+                  footer={has("productCount", "", { count: other.productCount })}
+                />
+              </li>
+            ))}
+          </Grid>
+          <LinkArrow href={brandHref} className="mt-stack-m">
+            {has("aboutBrandLink", brand, { brand })}
+          </LinkArrow>
+        </Section>
+      )}
+
+      {/* Optik-Runde (01.11.2026): wie die Produktseite – der Leitsatz IST die
+          H2, die zweite Zeile ein Instrument-Lead (keine zwei Display-Zeilen
+          übereinander, QA P3-5). */}
+      <CTABand
+        id="collection-cta"
+        tone="raised"
+        title={<Leitsatz as="span" size="m" className="block pb-2" />}
+        text={
+          <>
+            <p className="text-lead text-text">{has("collectionConsultTitle", tr("ctaTitle", { brand }), { collection: collection.name })}</p>
+            <p className="mt-2">{tr("ctaText")}</p>
+          </>
+        }
+        primary={{ href: beratungPath, label: tr("ctaAppointment") }}
+        secondary={{ href: brandHref, label: has("backToBrand", brand, { brand }) }}
+      />
+
+      <Container className="pb-12">
+        <p className="max-w-measure border-t border-line pt-6 text-small text-text-soft">{tr("legalNote", { brand })}</p>
+      </Container>
     </div>
   );
 }

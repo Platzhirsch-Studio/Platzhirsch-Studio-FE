@@ -2,8 +2,18 @@ import React from "react";
 import JsonLd from "@/components/Reusable/JsonLd";
 import SinglePageBanner from "@/components/Reusable/singlePageSlider";
 import CartPage from "@/components/CartPage/CartPage";
+import { shopActive } from "@/lib/shop/mode";
+import { shopCopy } from "@/lib/shop/copy";
+// Service 10: „Als Wunschliste teilen“ (src/components/Wunschliste, Doku
+// qa-screenshots/service/wunschliste-bau.md). Rendert nichts bei leerer Merkliste.
+import ShareFromMerkliste from "@/components/Wunschliste/ShareFromMerkliste";
+import { wunschlisteAvailable } from "@/lib/wunschliste/mode";
+import { retentionMonths } from "@/lib/wunschliste/config";
 import { ROUTES } from "@/utils/routing";
-import { hreflangLanguages } from "@/lib/seo/pageMetadata";
+import { hreflangLanguages, ogLocale, DEFAULT_OG_IMAGE } from "@/lib/seo/pageMetadata";
+import { homeCrumbLabel } from "@/lib/seo/breadcrumbs";
+import { getTranslations } from "next-intl/server";
+import { selectionText } from "@/components/CartPage/selectionCopy";
 
 // Helper functions for URL generation
 function getBaseUrl(locale) {
@@ -51,9 +61,9 @@ function getLocalizedMetadata(locale) {
     },
     it: {
       title: "Lista dei Desideri | Platzhirsch Home Living",
-      description: "Gestisci i tuoi mobili e prodotti di design preferiti nella tua lista dei desideri presso Platzhirsch Home Living. Raccogli ispirazione per la tua casa.",
+      description: "Gestite i vostri mobili e prodotti di design preferiti nella vostra lista dei desideri di Platzhirsch Home Living. Raccogliete ispirazione per la vostra casa.",
       ogTitle: "Lista dei desideri | Platzhirsch Home Living",
-      ogDescription: "Raccogli i tuoi prodotti di design preferiti e pianifica i tuoi interni da sogno con la lista dei desideri di Platzhirsch Home Living.",
+      ogDescription: "Raccogliete i vostri prodotti di design preferiti e pianificate i vostri interni con la lista dei desideri di Platzhirsch Home Living.",
     },
   };
 
@@ -83,19 +93,19 @@ export async function generateMetadata({ params }) {
       siteName: "Platzhirsch Home Living",
       images: [
         {
-          url: "/Images/fallback-og.jpg",
+          url: DEFAULT_OG_IMAGE, // Rat 9,5 B5: altes Teilen-Bild ohne geklärte Rechte ersetzt
           width: 1200,
           height: 630,
           alt: "Platzhirsch Home Living Merkliste",
         },
       ],
-      locale: locale === "it" ? "it_IT" : locale === "en" ? "en_US" : locale === "fr" ? "fr_FR" : "de_DE",
+      locale: ogLocale(locale),
     },
     twitter: {
       card: "summary_large_image",
       title: localizedMeta.ogTitle,
       description: localizedMeta.ogDescription,
-      images: ["/Images/fallback-og.jpg"],
+      images: [DEFAULT_OG_IMAGE],
     },
   };
 }
@@ -103,8 +113,10 @@ export async function generateMetadata({ params }) {
 export default async function Page({ params }) {
   const { locale } = await params;
 
-  const titleOne = locale == "it" ? "Lista dei desideri" : locale == "en" ? "Wishlist" : locale == "fr" ? "Liste de souhaits" : "Merkliste";
-  const Home = locale == "it" ? "Home" : locale == "en" ? "Home" : locale == "fr" ? "Accueil" : "Home";
+  // Rat 9,5 B9 (T2): eine Überschrift „Ihre Auswahl“ (H1), CartPage hat keine zweite mehr.
+  const tCart = await getTranslations({ locale, namespace: "cart" });
+  const titleOne = selectionText(tCart, locale, "title") || (locale == "it" ? "Lista dei desideri" : locale == "en" ? "Wishlist" : locale == "fr" ? "Liste de souhaits" : "Merkliste");
+  const Home = homeCrumbLabel(locale);
 
   // Dynamic URLs
   const BASE_URL = getBaseUrl(locale);
@@ -113,8 +125,14 @@ export default async function Page({ params }) {
   const merklistePath = ROUTES.merkliste[locale] || ROUTES.merkliste.de;
 
 
+  // Runde 5 (ux P2-9): no photo in the head any more. The former room photo
+  // (/Images/Newsletter/room-1600.jpg) has no documented origin (bildrechte.csv:
+  // "Herstellerbild oder eigene Aufnahme – unbekannt") and looks like a
+  // manufacturer shot; next to it the empty list sat below the first screen
+  // ("linke Spalte leer"). Without the image the server-rendered empty state
+  // ("Noch nichts gemerkt.", CartPage) is in the first screen, nothing moves
+  // after hydration (CLS 0) and the LCP is text.
   const BannerInfo = {
-    image: "/Images/Newsletter/room.jpg",
     links: [
       { linkName: Home, link: `/` }, // Fixed: use locale prefix
       { linkName: titleOne, link: merklistePath },
@@ -145,7 +163,8 @@ export default async function Page({ params }) {
     <div>
       <JsonLd data={webPageSchema} />
       <SinglePageBanner info={BannerInfo} />
-      <CartPage />
+      <CartPage shop={shopActive()} shopLabel={shopCopy(locale).cartTab} />
+      {wunschlisteAvailable() && <ShareFromMerkliste retentionMonths={retentionMonths()} />}
     </div>
   );
 }

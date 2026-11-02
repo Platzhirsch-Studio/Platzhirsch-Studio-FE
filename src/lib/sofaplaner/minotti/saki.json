@@ -1,0 +1,741 @@
+{
+  "name": "Saki",
+  "slug": "saki",
+  "hersteller": "Minotti",
+  "designer": "nendo (Oki Sato)",
+  "jahr": 2025,
+  "jahr_hinweis": "Teil der Minotti „2025 Collection“ (Designs laut Minotti am 4. April 2025 in EU und China registriert).",
+  "typ": "Modulares Sitzsystem (Indoor): 2-, 3- und 4-Sitzer in zwei Tiefen (91/95 cm), End-, Eck- und Mittelelemente, Bänke, Inselelemente (mod. A–G), Sessel mit/ohne Armlehnen (optional mit Dreh- oder Festgestell) und Hocker.",
+  "quellen": [
+    "https://www.minotti.com/en/saki",
+    "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf",
+    "https://www.minotti.com/downloads/26153/29820/SAKI_arrangement_01.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Alle Maße in cm laut technischem Datenblatt (Stand November 2025). Sitzhöhe und „seitenkote_cm“ (unbeschriftete Höhenkote der Seitenansicht, 58–62 cm; bei Elementen mit Armlehne vermutlich Armlehnen-/Paneelhöhe) sind je Abschnitt teils nur beim ersten Element bemaßt; die Sitzhöhe wurde für gleichartige Elemente übernommen, die Seitenkote nur dort eingetragen, wo bemaßt. Sitztiefe = Kote in der Draufsicht.",
+  "anzahl_elemente": 38,
+  "vollstaendigkeit": {
+    "gesamt_prozent": 94,
+    "kernmasse_prozent": 100,
+    "familienfelder_prozent": 80,
+    "methode": "Kernmaße (B/T/H/Sitzhöhe/Sitztiefe) aller Sitz-/Liegeelemente (Gewicht 70 %) + 10 Familienfelder (Gewicht 30 %; fehlend: offizielle Artikelcodes, Preis-/Bezugskategorien)."
+  },
+  "elemente": [
+    {
+      "code": "saki-sessel-104x91",
+      "code_offiziell": null,
+      "name": "Armchair 104x91xh70 cm",
+      "art": "sessel",
+      "breite_cm": 104,
+      "tiefe_cm": 91,
+      "hoehe_cm": 70,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 61,
+      "varianten": [],
+      "zusatzmasse": {
+        "gestell": "fest"
+      },
+      "anschluesse": "Einzelsessel.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "saki-sessel-104x92-base",
+      "code_offiziell": null,
+      "name": "Armchair 104x92xh70 cm – with fixed or swivel base",
+      "art": "sessel",
+      "breite_cm": 104,
+      "tiefe_cm": 92,
+      "hoehe_cm": 70,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 61,
+      "varianten": [
+        "fest",
+        "drehbar 360° mit Rückstellung"
+      ],
+      "anschluesse": "Einzelsessel.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "saki-sessel-armlehne-92x91",
+      "code_offiziell": null,
+      "name": "Armchair with armrest 92x91xh70 cm",
+      "art": "sessel",
+      "breite_cm": 92,
+      "tiefe_cm": 91,
+      "hoehe_cm": 70,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 61,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Einzelsessel.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "saki-sessel-armlehne-92x92-base",
+      "code_offiziell": null,
+      "name": "Armchair with armrest 92x92xh70 cm – with fixed or swivel base",
+      "art": "sessel",
+      "breite_cm": 92,
+      "tiefe_cm": 92,
+      "hoehe_cm": 70,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 61,
+      "varianten": [
+        "SX",
+        "DX",
+        "fest",
+        "drehbar 360° mit Rückstellung"
+      ],
+      "anschluesse": "Einzelsessel.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "saki-sessel-ohne-armlehnen-80x91",
+      "code_offiziell": null,
+      "name": "Armchair without armrests 80x91xh70 cm",
+      "art": "sessel",
+      "breite_cm": 80,
+      "tiefe_cm": 91,
+      "hoehe_cm": 70,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 61,
+      "varianten": [],
+      "anschluesse": "Einzelsessel.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "saki-sessel-ohne-armlehnen-80x92-base",
+      "code_offiziell": null,
+      "name": "Armchair without armrests 80x92xh66 cm – with fixed or swivel base",
+      "art": "sessel",
+      "breite_cm": 80,
+      "tiefe_cm": 92,
+      "hoehe_cm": 66,
+      "sitzhoehe_cm": 40,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 58,
+      "varianten": [
+        "fest",
+        "drehbar 360° mit Rückstellung"
+      ],
+      "anschluesse": "Einzelsessel.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "saki-hocker-80x78",
+      "code_offiziell": null,
+      "name": "Footstool / Ottoman 80x78xh41 cm",
+      "art": "hocker",
+      "breite_cm": 80,
+      "tiefe_cm": 78,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": 78,
+      "varianten": [],
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "saki-hocker-80x78-base",
+      "code_offiziell": null,
+      "name": "Footstool / Ottoman 80x78xh42 cm – with base",
+      "art": "hocker",
+      "breite_cm": 80,
+      "tiefe_cm": 78,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 78,
+      "varianten": [],
+      "zusatzmasse": {
+        "gestell": "fest"
+      },
+      "anschluesse": "Freistehend; als Ergänzung vor Sofa oder Chaise.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 3)"
+    },
+    {
+      "code": "saki-sofa-180x91",
+      "code_offiziell": null,
+      "name": "Sofa 180x91 cm",
+      "art": "sofa",
+      "breite_cm": 180,
+      "tiefe_cm": 91,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "saki-sofa-254x91",
+      "code_offiziell": null,
+      "name": "Sofa 254x91 cm",
+      "art": "sofa",
+      "breite_cm": 254,
+      "tiefe_cm": 91,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 57,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "saki-mittel-156x91",
+      "code_offiziell": null,
+      "name": "Central element 156x91 cm",
+      "art": "mittel",
+      "breite_cm": 156,
+      "tiefe_cm": 91,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 57,
+      "seitenkote_cm": 62,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "saki-mittel-230x91",
+      "code_offiziell": null,
+      "name": "Central element 230x91 cm",
+      "art": "mittel",
+      "breite_cm": 230,
+      "tiefe_cm": 91,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 57,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "saki-sofa-180x95",
+      "code_offiziell": null,
+      "name": "Sofa 180x95 cm",
+      "art": "sofa",
+      "breite_cm": 180,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": 62,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "saki-sofa-254x95",
+      "code_offiziell": null,
+      "name": "Sofa 254x95 cm",
+      "art": "sofa",
+      "breite_cm": 254,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "saki-sofa-328x95",
+      "code_offiziell": null,
+      "name": "Sofa 328x95 cm",
+      "art": "sofa",
+      "breite_cm": 328,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "varianten": [],
+      "anschluesse": "Freistehendes Komplettsofa (nicht modular anzubauen).",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "saki-ecksofa-180x95",
+      "code_offiziell": null,
+      "name": "Corner sofa 180x95 cm",
+      "art": "ecksofa",
+      "breite_cm": 180,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Sofa mit Eckabschluss auf einer Seite (SX/DX), für L-Kompositionen kombinierbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "saki-ecksofa-254x95",
+      "code_offiziell": null,
+      "name": "Corner sofa 254x95 cm",
+      "art": "ecksofa",
+      "breite_cm": 254,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Sofa mit Eckabschluss auf einer Seite (SX/DX), für L-Kompositionen kombinierbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "saki-ecksofa-328x95",
+      "code_offiziell": null,
+      "name": "Corner sofa 328x95 cm",
+      "art": "ecksofa",
+      "breite_cm": 328,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Sofa mit Eckabschluss auf einer Seite (SX/DX), für L-Kompositionen kombinierbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 4)"
+    },
+    {
+      "code": "saki-endelement-168x95",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 168x95 cm",
+      "art": "endelement",
+      "breite_cm": 168,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 5)"
+    },
+    {
+      "code": "saki-endelement-242x95",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 242x95 cm",
+      "art": "endelement",
+      "breite_cm": 242,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 5)"
+    },
+    {
+      "code": "saki-endelement-316x95",
+      "code_offiziell": null,
+      "name": "Element with 1 armrest 316x95 cm",
+      "art": "endelement",
+      "breite_cm": 316,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: Armlehne auf einer Seite (SX oder DX), offene Seite an Mittel-, Eck-, Chaise- oder Peninsula-Element anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 5)"
+    },
+    {
+      "code": "saki-eckelement-168x95",
+      "code_offiziell": null,
+      "name": "Corner element 168x95 cm",
+      "art": "ecke",
+      "breite_cm": 168,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: bildet eine 90°-Ecke; beidseitig an End-/Mittelelemente anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 5)"
+    },
+    {
+      "code": "saki-eckelement-242x95",
+      "code_offiziell": null,
+      "name": "Corner element 242x95 cm",
+      "art": "ecke",
+      "breite_cm": 242,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: bildet eine 90°-Ecke; beidseitig an End-/Mittelelemente anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 5)"
+    },
+    {
+      "code": "saki-eckelement-316x95",
+      "code_offiziell": null,
+      "name": "Corner element 316x95 cm",
+      "art": "ecke",
+      "breite_cm": 316,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Abgeleitet aus Elementtyp: bildet eine 90°-Ecke; beidseitig an End-/Mittelelemente anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 5)"
+    },
+    {
+      "code": "saki-mittel-156x95",
+      "code_offiziell": null,
+      "name": "Central element 156x95 cm",
+      "art": "mittel",
+      "breite_cm": 156,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "seitenkote_cm": 62,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 5)"
+    },
+    {
+      "code": "saki-mittel-230x95",
+      "code_offiziell": null,
+      "name": "Central element 230x95 cm",
+      "art": "mittel",
+      "breite_cm": 230,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 5)"
+    },
+    {
+      "code": "saki-mittel-304x95",
+      "code_offiziell": null,
+      "name": "Central element 304x95 cm",
+      "art": "mittel",
+      "breite_cm": 304,
+      "tiefe_cm": 95,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 61,
+      "varianten": [],
+      "anschluesse": "Abgeleitet aus Elementtyp: ohne Armlehnen, beidseitig zwischen anderen Elementen anreihbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 5)"
+    },
+    {
+      "code": "saki-bank-156x82",
+      "code_offiziell": null,
+      "name": "Bench 156x82 cm",
+      "art": "bank",
+      "breite_cm": 156,
+      "tiefe_cm": 82,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 82,
+      "varianten": [],
+      "anschluesse": "Freistehende Bank.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 6)"
+    },
+    {
+      "code": "saki-bank-230x82",
+      "code_offiziell": null,
+      "name": "Bench 230x82 cm",
+      "art": "bank",
+      "breite_cm": 230,
+      "tiefe_cm": 82,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 82,
+      "varianten": [],
+      "anschluesse": "Freistehende Bank.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 6)"
+    },
+    {
+      "code": "saki-bank-304x82",
+      "code_offiziell": null,
+      "name": "Bench 304x82 cm",
+      "art": "bank",
+      "breite_cm": 304,
+      "tiefe_cm": 82,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 82,
+      "varianten": [],
+      "anschluesse": "Freistehende Bank.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 6)"
+    },
+    {
+      "code": "saki-insel-168x168-a",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm – mod. A",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "seitenkote_cm": 62,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Inselelement; laut Minotti als großzügige Sitz-/Liegefläche einzeln oder in Kombination nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 6)"
+    },
+    {
+      "code": "saki-insel-168x168-b",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm – mod. B",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Inselelement; laut Minotti als großzügige Sitz-/Liegefläche einzeln oder in Kombination nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 6)"
+    },
+    {
+      "code": "saki-insel-156x168-c",
+      "code_offiziell": null,
+      "name": "Island 156x168 cm – mod. C",
+      "art": "insel",
+      "breite_cm": 156,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Inselelement; laut Minotti als großzügige Sitz-/Liegefläche einzeln oder in Kombination nutzbar.",
+      "hinweis": "Im Datenblatt (Seite 6) versehentlich ebenfalls als „MOD. B“ beschriftet; Produktseite nennt es mod. C.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 6)"
+    },
+    {
+      "code": "saki-insel-168x168-d",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm – mod. D",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Inselelement; laut Minotti als großzügige Sitz-/Liegefläche einzeln oder in Kombination nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 6)"
+    },
+    {
+      "code": "saki-insel-168x168-e",
+      "code_offiziell": null,
+      "name": "Island 168x168 cm – mod. E",
+      "art": "insel",
+      "breite_cm": 168,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Inselelement; laut Minotti als großzügige Sitz-/Liegefläche einzeln oder in Kombination nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 6)"
+    },
+    {
+      "code": "saki-insel-156x168-f",
+      "code_offiziell": null,
+      "name": "Island 156x168 cm – mod. F",
+      "art": "insel",
+      "breite_cm": 156,
+      "tiefe_cm": 168,
+      "hoehe_cm": 71,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 136,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Inselelement; laut Minotti als großzügige Sitz-/Liegefläche einzeln oder in Kombination nutzbar.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 6)"
+    },
+    {
+      "code": "saki-insel-156x156-g",
+      "code_offiziell": null,
+      "name": "Island 156x156 cm – mod. G",
+      "art": "insel",
+      "breite_cm": 156,
+      "tiefe_cm": 156,
+      "hoehe_cm": 42,
+      "sitzhoehe_cm": 42,
+      "sitztiefe_cm": 156,
+      "varianten": [
+        "SX",
+        "DX"
+      ],
+      "anschluesse": "Inselelement; laut Minotti als großzügige Sitz-/Liegefläche einzeln oder in Kombination nutzbar.",
+      "hinweis": "Ohne Rücken/Armlehnen (Höhe 42 cm).",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 6)"
+    },
+    {
+      "code": "saki-kissen-50x50",
+      "code_offiziell": null,
+      "name": "Optional cushion 50x50 cm",
+      "art": "kissen",
+      "breite_cm": 50,
+      "tiefe_cm": null,
+      "hoehe_cm": 50,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "varianten": [],
+      "anschluesse": "Zubehör, auf Sitz-/Rückenfläche zu legen.",
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf (Seite 6)"
+    }
+  ],
+  "rueckenoptionen": [
+    "Rücken und Armlehnen bestehen aus geschwungenen Stützpaneelen (Support panels) plus Rücken-/Armlehnenkissen, die per Reißverschluss mit dem Sitzkissen verbunden sind.",
+    "Stützpaneele: Strukturpolyurethan (Baydur® 60) hochglanzlackiert Moka, Cappuccino oder Army Green – oder gepolstert in Stoff bzw. Leder (bei Leder mit mittiger Längs-Doppelnaht).",
+    "Bezugskombinationen laut Minotti: A) Paneele in Leder oder Stoff, Kissen in Leder oder Stoff (gleicher Bezug wie Paneele); B) Paneele lackiert (Moka/Cappuccino/Army Green), Kissen in Leder oder Stoff; C) Paneele in Leder (Kategorie Nature Leather), Kissen in Stoff.",
+    "Inselelemente in mehreren Rücken-/Armlehnenanordnungen (mod. A–F) bzw. ganz ohne Rücken (mod. G)."
+  ],
+  "armlehnenoptionen": [
+    "Sessel: mit zwei Armlehnen, mit einer Armlehne (SX/DX) oder ohne Armlehnen.",
+    "Sofas mit beidseitigen Armlehnen; Endelemente mit 1 Armlehne (SX/DX); Eckelemente und Ecksofas (SX/DX).",
+    "Armlehnen-Paneel in gleicher Ausführung wie Rückenpaneel (lackiert oder gepolstert)."
+  ],
+  "fuesse_sockel": {
+    "beschreibung": "Geschwungene Füße aus Aluminiumguss für alle Elemente; Sessel/Hocker optional mit quadratischer Bodenplatte mit abgerundeten Ecken.",
+    "finishes": [
+      "Füße: Aluminiumguss lackiert, poliert, Anti-Fingerprint, Farbe Black Coffee",
+      "Gestell Sessel/Hocker: Metall lackiert, poliert, Anti-Fingerprint, Black Coffee; Sessel drehbar 360° mit Rückstellung oder fest, Hocker nur fest; Schutzgleiter Polyethylen Black Coffee"
+    ]
+  },
+  "struktur": "Sitz aus Sperrholz, ummantelt mit hochelastischem PU-Schaum differenzierter Dichte, darüber gesteppte Gänsedaunen-Auflage (Assopiuma Gold Label), thermogebundene Faser mit weißem hypoallergenem Baumwollstoff; umlaufende Keder (Piping) im Bezugsmaterial.",
+  "bezuege": {
+    "materialien": [
+      "Stoff (Minotti-Kollektion)",
+      "Leder (Minotti-Kollektion, u. a. Kategorie Nature Leather für Variante C)"
+    ],
+    "preis_kategorien": null,
+    "bezugsart": "Struktur- und Kissenbezüge in allen Versionen (Stoff und Leder) vollständig abziehbar: zuerst Stützpaneel abnehmen, dann Reißverschluss zwischen Rücken-/Armlehnenkissen und Sitz öffnen.",
+    "farbmuster_hinweis": "Stoff- und Ledermuster (Farben, Haptik) bitte im Showroom Platzhirsch Home Living in Lochau ansehen; gedruckte und Bildschirm-Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": {
+    "sitz_ruecken_arm": "Sitz-, Rücken- und Armlehnenkissen mit gesteppter Gänsedaune (Assopiuma Gold Label) und Kern aus hochelastischem PU-Schaum; das am Paneel anliegende Kissen mit konturiertem PU-Kern.",
+    "optional": [
+      "Kissen 50x50 cm"
+    ]
+  },
+  "outdoor": false,
+  "outdoor_hinweis": "Diese Familie ist Indoor. Minotti führt separat „Saki Outdoor“ und „Saki Cord Outdoor“ (nicht Teil dieses Datensatzes).",
+  "besonderheiten": [
+    "Name „Saki“ (jap. „blühen“): Kerbe an der Kissenecke als Knospen-Motiv zwischen Rücken und Armlehne.",
+    "Stützpaneele lackiert oder gepolstert – viele Farb-/Materialkombinationen.",
+    "Quadratische Insel mit sich in der Mitte kreuzenden Nähten, für Lounge, Wohnen und Hospitality.",
+    "Sessel optional mit Dreh- oder Festgestell.",
+    "FSC-zertifizierte Holzkomponenten.",
+    "6 Arrangement-PDFs (SAKI 01–06); weitere Familie Saki „Table“."
+  ],
+  "kompositionen_beispiele": [
+    {
+      "name": "SAKI 01",
+      "elemente": [
+        "Sofa 254x95 H71",
+        "Island SX 168x168 H71 mod. B",
+        "Armchairs without armrests 80x91 H70"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26153/29820/SAKI_arrangement_01.pdf"
+    },
+    {
+      "name": "SAKI 03",
+      "elemente": [
+        "Island SX 168x168 H71 mod. E",
+        "Island DX 156x168 H71 mod. F",
+        "Island DX 168x168 H71 mod. B"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26158/29824/SAKI_arrangement_03.pdf"
+    },
+    {
+      "name": "SAKI 04",
+      "elemente": [
+        "Sofa 328x95 H71",
+        "Central element 156x95 H71",
+        "Bench 156x82 H42",
+        "Armchairs without armrests with base 80x92 H66"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26159/29826/SAKI_arrangement_04.pdf"
+    },
+    {
+      "name": "SAKI 05",
+      "elemente": [
+        "Sofas 254x95 H71",
+        "Island SX 156x156 H42 mod. G"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26160/29828/SAKI_arrangement_05.pdf"
+    },
+    {
+      "name": "SAKI 06",
+      "elemente": [
+        "Central element 304x95 H71"
+      ],
+      "quelle": "https://www.minotti.com/downloads/26161/29830/SAKI_arrangement_06.pdf"
+    }
+  ],
+  "fehlend": [
+    "Offizielle Artikel-/Bestellcodes (nicht öffentlich; Codes intern vergeben).",
+    "Preise, Preisgruppen und Stoff-/Lederkategorien (außer Hinweis „Nature Leather“).",
+    "Bedeutung der Seitenansicht-Kote (58/61/62 cm) nicht beschriftet; nur bei ersten Elementen je Abschnitt bemaßt.",
+    "Sitztiefe der Hocker und Bänke = Gesamttiefe (keine separate Sitztiefenkote).",
+    "Offizielle Kombinationsregeln/Anschlussmatrix (aus Elementtyp abgeleitet).",
+    "Unterschied Inseln mod. A–F (Lage von Rücken/Armlehnen) nur zeichnerisch dargestellt, nicht textlich beschrieben.",
+    "Definition SX/DX (Blickrichtung) nicht erläutert.",
+    "Tiefe/Dicke des optionalen Kissens."
+  ],
+  "rechte_hinweis": "Minotti-Bilder und CAD-Dateien sind urheberrechtlich geschützt; CAD-Nutzung laut Minotti nur für Innenarchitektur-Zwecke. Keine veränderten Minotti-Bilder öffentlich verwenden."
+}

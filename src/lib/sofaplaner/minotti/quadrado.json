@@ -1,0 +1,610 @@
+{
+  "name": "Quadrado",
+  "slug": "quadrado",
+  "hersteller": "Minotti",
+  "designer": "Marcio Kogan / Studio MK27",
+  "jahr": 2018,
+  "kollektion": "2018 Collection (Teak-Sofa/-Daybed/-Sessel: Technical Sheet © 2019)",
+  "typ": "Modulares Outdoor-Sitzsystem aus schwebenden, quadratischen Teak-Plattformen (Lattenrost-Optik aus dem Yachtbau) in zwei Modulgrößen (102×102 und 87×87 cm), kombiniert mit Plattform-Tischen, Tabletts und Kerzenhaltern; dazu runder Sessel, runder/eckiger Hocker sowie Teak-Sofa, Teak-Sessel und Doppel-Daybed",
+  "quellen": [
+    "https://www.minotti.com/en/quadrado",
+    "https://www.minotti.com/downloads/14465/12669/QUADRADO_TECHNICAL-SHEET.pdf",
+    "https://www.minotti.com/downloads/15423/13892/TEMPLATE%20QUADRADO%2001%20en.pdf",
+    "https://www.minotti.com/downloads/15424/13896/QUADRADO_arrangement_02.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Maße in cm laut Elementliste der Produktseite (z. B. „CORNER ELEMENT SX CM 102X102 H78,5“) und Technical Sheet (© Minotti 2019/2020). Sitzhöhe 40,5 cm und weitere Koten aus unbeschrifteten Zeichnungskoten abgeleitet. Sitztiefen sind nirgends beschriftet.",
+  "sitzmodule_cm": [
+    102,
+    87
+  ],
+  "elemente": [
+    {
+      "code": "QUA102-CORNER-SX",
+      "name": "Corner element SX cm 102x102 H78,5 – seat cushion 102",
+      "name_de": "Eckelement links 102×102",
+      "art": "ecke",
+      "ausrichtung": "sx",
+      "breite_cm": 102,
+      "tiefe_cm": 102,
+      "hoehe_cm": 78.5,
+      "sitzhoehe_cm": 40.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65.5,
+      "anschluesse": "Eck-, Mittelelement und Hocker 102×102 lassen sich laut Technical Sheet per mitgeliefertem Klettband miteinander verbinden.",
+      "hinweis": "Höhen laut Technical Sheet: 78,5 (gesamt) / 65,5 / 40,5 cm; 40,5 = Sitzhöhe (deckungsgleich mit Hockerhöhe), 65,5 cm unbeschriftete Kote (vermutlich Armlehnen-/Geflechthöhe).",
+      "sitzmodul_cm": 102
+    },
+    {
+      "code": "QUA102-CORNER-DX",
+      "name": "Corner element DX cm 102x102 H78,5 – seat cushion 102",
+      "name_de": "Eckelement rechts 102×102",
+      "art": "ecke",
+      "ausrichtung": "dx",
+      "breite_cm": 102,
+      "tiefe_cm": 102,
+      "hoehe_cm": 78.5,
+      "sitzhoehe_cm": 40.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65.5,
+      "anschluesse": "Eck-, Mittelelement und Hocker 102×102 lassen sich laut Technical Sheet per mitgeliefertem Klettband miteinander verbinden.",
+      "hinweis": "Höhen laut Technical Sheet: 78,5 (gesamt) / 65,5 / 40,5 cm; 40,5 = Sitzhöhe (deckungsgleich mit Hockerhöhe), 65,5 cm unbeschriftete Kote (vermutlich Armlehnen-/Geflechthöhe).",
+      "sitzmodul_cm": 102
+    },
+    {
+      "code": "QUA102-CENTRAL",
+      "name": "Central element cm 102x102 H78,5 – seat cushion 102",
+      "name_de": "Mittelelement 102×102",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 102,
+      "tiefe_cm": 102,
+      "hoehe_cm": 78.5,
+      "sitzhoehe_cm": 40.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Eck-, Mittelelement und Hocker 102×102 lassen sich laut Technical Sheet per mitgeliefertem Klettband miteinander verbinden.",
+      "hinweis": "Nur Rückenlehne. Höhen laut Technical Sheet: 78,5 (gesamt) / 65,5 / 40,5 cm; 40,5 = Sitzhöhe (deckungsgleich mit Hockerhöhe), 65,5 cm unbeschriftete Kote (vermutlich Armlehnen-/Geflechthöhe).",
+      "sitzmodul_cm": 102
+    },
+    {
+      "code": "QUA102-OTTOMAN-SQ",
+      "name": "Square ottoman cm 102x102 H40,5",
+      "name_de": "Hocker eckig 102×102",
+      "art": "hocker",
+      "ausrichtung": null,
+      "breite_cm": 102,
+      "tiefe_cm": 102,
+      "hoehe_cm": 40.5,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Eck-, Mittelelement und Hocker 102×102 lassen sich laut Technical Sheet per mitgeliefertem Klettband miteinander verbinden.",
+      "hinweis": null,
+      "sitzmodul_cm": 102
+    },
+    {
+      "code": "QUA-OTTOMAN-ROUND",
+      "name": "Round ottoman Ø cm 92 H40,5",
+      "name_de": "Hocker rund Ø 92",
+      "art": "hocker",
+      "ausrichtung": null,
+      "breite_cm": 92,
+      "tiefe_cm": 92,
+      "hoehe_cm": 40.5,
+      "durchmesser_cm": 92,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": null
+    },
+    {
+      "code": "QUA-ARMCHAIR-ROUND",
+      "name": "Armchair Ø cm 92 H78,5",
+      "name_de": "Runder Sessel Ø 92",
+      "art": "sessel",
+      "ausrichtung": null,
+      "breite_cm": 92,
+      "tiefe_cm": 92,
+      "hoehe_cm": 78.5,
+      "durchmesser_cm": 92,
+      "sitzhoehe_cm": 40.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65.5,
+      "anschluesse": "freistehend",
+      "hinweis": "Höhen laut Technical Sheet: 78,5 (gesamt) / 65,5 / 40,5 cm; 40,5 = Sitzhöhe (deckungsgleich mit Hockerhöhe), 65,5 cm unbeschriftete Kote (vermutlich Armlehnen-/Geflechthöhe)."
+    },
+    {
+      "code": "QUA102-TABLE-100x100",
+      "name": "Coffee table cm 100x100 H14",
+      "name_de": "Plattform-Tisch 100×100",
+      "art": "verbindungstisch",
+      "ausrichtung": null,
+      "breite_cm": 100,
+      "tiefe_cm": 100,
+      "hoehe_cm": 14,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Teak-Plattform, fügt sich zwischen die Sitzmodule 102 ein; mit Tablett/Kerzenhalter bestückbar",
+      "hinweis": null,
+      "sitzmodul_cm": 102
+    },
+    {
+      "code": "QUA102-TABLE-200x84",
+      "name": "Coffee table cm 200x84 H14",
+      "name_de": "Plattform-Tisch 200×84",
+      "art": "verbindungstisch",
+      "ausrichtung": null,
+      "breite_cm": 200,
+      "tiefe_cm": 84,
+      "hoehe_cm": 14,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Teak-Plattform; kann laut Technical Sheet mit Kissen 100×84 als Sitz-/Liegefläche genutzt werden",
+      "hinweis": null,
+      "sitzmodul_cm": 102
+    },
+    {
+      "code": "QUA102-TABLE-100x59",
+      "name": "Coffee table cm 100x59,4 H14",
+      "name_de": "Plattform-Tisch 100×59,4",
+      "art": "verbindungstisch",
+      "ausrichtung": null,
+      "breite_cm": 100,
+      "tiefe_cm": 59.4,
+      "hoehe_cm": 14,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Teak-Plattform",
+      "hinweis": null,
+      "sitzmodul_cm": 102
+    },
+    {
+      "code": "QUA102-CUSHION-100x84",
+      "name": "Cushion cm 100x84",
+      "name_de": "Auflagekissen 100×84 für Tisch 200×84",
+      "art": "kissen",
+      "ausrichtung": null,
+      "breite_cm": 100,
+      "tiefe_cm": 84,
+      "hoehe_cm": 24.5,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Auflage für Plattform-Tisch 200×84",
+      "hinweis": "Höhe 24,5 cm laut Arrangement-Liste; Technical Sheet zeigt abweichend Koten 102 / 86 / 26,5 cm – Widerspruch beim Hersteller klären.",
+      "sitzmodul_cm": 102
+    },
+    {
+      "code": "QUA87-CORNER-SX",
+      "name": "Corner element SX – seat cushion 87 cm",
+      "name_de": "Eckelement links 87×87",
+      "art": "ecke",
+      "ausrichtung": "sx",
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 78.5,
+      "sitzhoehe_cm": 40.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65.5,
+      "anschluesse": null,
+      "hinweis": "Kompaktversion für urbane/Hospitality-Projekte. Klettband-Verbindung im Sheet nur für 102er-Module erwähnt. Höhen laut Technical Sheet: 78,5 (gesamt) / 65,5 / 40,5 cm; 40,5 = Sitzhöhe (deckungsgleich mit Hockerhöhe), 65,5 cm unbeschriftete Kote (vermutlich Armlehnen-/Geflechthöhe).",
+      "sitzmodul_cm": 87
+    },
+    {
+      "code": "QUA87-CORNER-DX",
+      "name": "Corner element DX – seat cushion 87 cm",
+      "name_de": "Eckelement rechts 87×87",
+      "art": "ecke",
+      "ausrichtung": "dx",
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 78.5,
+      "sitzhoehe_cm": 40.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 65.5,
+      "anschluesse": null,
+      "hinweis": "Höhen laut Technical Sheet: 78,5 (gesamt) / 65,5 / 40,5 cm; 40,5 = Sitzhöhe (deckungsgleich mit Hockerhöhe), 65,5 cm unbeschriftete Kote (vermutlich Armlehnen-/Geflechthöhe).",
+      "sitzmodul_cm": 87
+    },
+    {
+      "code": "QUA87-CENTRAL",
+      "name": "Central element – seat cushion 87 cm",
+      "name_de": "Mittelelement 87×87",
+      "art": "mittel",
+      "ausrichtung": null,
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 78.5,
+      "sitzhoehe_cm": 40.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Nur Rückenlehne. Höhen laut Technical Sheet: 78,5 (gesamt) / 65,5 / 40,5 cm; 40,5 = Sitzhöhe (deckungsgleich mit Hockerhöhe), 65,5 cm unbeschriftete Kote (vermutlich Armlehnen-/Geflechthöhe).",
+      "sitzmodul_cm": 87
+    },
+    {
+      "code": "QUA87-OTTOMAN-SQ",
+      "name": "Square ottoman cm 87x87",
+      "name_de": "Hocker eckig 87×87",
+      "art": "hocker",
+      "ausrichtung": null,
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 40.5,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "sitzmodul_cm": 87
+    },
+    {
+      "code": "QUA87-TABLE-85x60",
+      "name": "Coffee table cm 85x60",
+      "name_de": "Plattform-Tisch 85×60",
+      "art": "verbindungstisch",
+      "ausrichtung": null,
+      "breite_cm": 85,
+      "tiefe_cm": 60,
+      "hoehe_cm": 14,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "sitzmodul_cm": 87
+    },
+    {
+      "code": "QUA87-TABLE-85x85",
+      "name": "Coffee table cm 85x85",
+      "name_de": "Plattform-Tisch 85×85",
+      "art": "verbindungstisch",
+      "ausrichtung": null,
+      "breite_cm": 85,
+      "tiefe_cm": 85,
+      "hoehe_cm": 14,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": null,
+      "sitzmodul_cm": 87
+    },
+    {
+      "code": "QUA87-TABLE-170x85",
+      "name": "Coffee table cm 170x85",
+      "name_de": "Plattform-Tisch 170×85",
+      "art": "verbindungstisch",
+      "ausrichtung": null,
+      "breite_cm": 170,
+      "tiefe_cm": 85,
+      "hoehe_cm": 14,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "kann laut Technical Sheet mit Kissen 87×87 genutzt werden",
+      "hinweis": null,
+      "sitzmodul_cm": 87
+    },
+    {
+      "code": "QUA87-CUSHION-87x87",
+      "name": "Cushion cm 87x87",
+      "name_de": "Auflagekissen 87×87 für Tisch 170×85",
+      "art": "kissen",
+      "ausrichtung": null,
+      "breite_cm": 87,
+      "tiefe_cm": 87,
+      "hoehe_cm": 26.5,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Auflage für Plattform-Tisch 170×85",
+      "hinweis": null,
+      "sitzmodul_cm": 87
+    },
+    {
+      "code": "QUA-TRAY-73x49",
+      "name": "Tray cm 73x49 H6",
+      "name_de": "Tablett 73×49",
+      "art": "zubehoer",
+      "ausrichtung": null,
+      "breite_cm": 73,
+      "tiefe_cm": 49,
+      "hoehe_cm": 6,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Einsatz für Plattform-Tische",
+      "hinweis": "Lavastein 30 mm, gebürstet"
+    },
+    {
+      "code": "QUA-TRAY-57x49",
+      "name": "Tray cm 57x49 H6",
+      "name_de": "Tablett 57×49",
+      "art": "zubehoer",
+      "ausrichtung": null,
+      "breite_cm": 57,
+      "tiefe_cm": 49,
+      "hoehe_cm": 6,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "Einsatz für Plattform-Tische",
+      "hinweis": "Lavastein 30 mm, gebürstet"
+    },
+    {
+      "code": "QUA-CANDLE-24",
+      "name": "Candle holder cm 24x24 H32",
+      "name_de": "Kerzenhalter 24×24",
+      "art": "zubehoer",
+      "ausrichtung": null,
+      "breite_cm": 24,
+      "tiefe_cm": 24,
+      "hoehe_cm": 32,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": null,
+      "hinweis": "Teak mit Metallfüßen Pewter; Kerze nicht inklusive"
+    },
+    {
+      "code": "QUA-TEAK-ARMCHAIR",
+      "name": "Armchair (teak)",
+      "name_de": "Teak-Sessel",
+      "art": "sessel",
+      "ausrichtung": null,
+      "breite_cm": 94,
+      "tiefe_cm": 94,
+      "hoehe_cm": 79,
+      "sitzhoehe_cm": 40.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 51.5,
+      "anschluesse": "freistehend",
+      "hinweis": "Struktur Massivteak, Untergestell Aluminium mit PVC-beschichtetem Polyestergewebe, Zierdetails Bronze. Weitere unbeschriftete Koten 68 / 56 cm (vermutlich Innenmaße)."
+    },
+    {
+      "code": "QUA-TEAK-SOFA",
+      "name": "Sofa (teak)",
+      "name_de": "Teak-Sofa 220",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 220,
+      "tiefe_cm": 100,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 40.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "innenbreite_cm": 212,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": "Massivteak, Füße Metall Bronze. 212 cm unbeschriftete Kote (vermutlich Sitz-Innenbreite)."
+    },
+    {
+      "code": "QUA-TEAK-DOUBLE-DAYBED",
+      "name": "Double daybed",
+      "name_de": "Doppel-Daybed 242×180",
+      "art": "daybed",
+      "ausrichtung": null,
+      "breite_cm": 242,
+      "tiefe_cm": 180,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 40.5,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 63,
+      "anschluesse": "freistehend; Nischenform mit Teak-Rücken und -Armlehnen",
+      "hinweis": "Laut Produktseite 242×180 cm, auf zwei Metall-Traversen Bronze, mit großer Matratze. Kote 234 cm vermutlich Matratzenlänge."
+    }
+  ],
+  "weitere_produkte_im_datenblatt": [
+    {
+      "name": "Quadrado Tisch (Esstisch)",
+      "masse": [
+        "240×104 H74",
+        "297×104 H74",
+        "358×104 H74"
+      ],
+      "hinweis": "Teakplatte, Beine Aluminium mit Lavasteinpulver; 69 cm unbeschriftete Kote (vermutlich Beinfreiheit). Kein Sitzelement."
+    },
+    {
+      "name": "Tablett für Tisch",
+      "masse": [
+        "40×40 H5",
+        "53×40 H5"
+      ]
+    },
+    {
+      "name": "Kerzenhalter für Tisch",
+      "masse": [
+        "22×22 H24"
+      ],
+      "hinweis": "Teak mit Lavasteinplatte"
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Fester Rücken/Armlehnen aus Metall, umflochten mit Geflecht-Optik-Faser Ø 5 mm",
+      "hoehe_cm": 78.5,
+      "hinweis": "Sitzmodule 102 und 87"
+    },
+    {
+      "name": "Optionales Rückenkissen 70 × 50 cm"
+    },
+    {
+      "name": "Teak-Rücken (Teak-Sofa, -Sessel, Doppel-Daybed)",
+      "hoehe_cm": 82
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Seitenteil aus umflochtenem Metall am Eckelement (SX/DX)",
+      "hinweis": "keine alternativen Armlehnenformen publiziert"
+    },
+    {
+      "name": "Teak-Armlehnen (Teak-Sofa 63 cm, Teak-Sessel 51,5 cm, Doppel-Daybed 63 cm)"
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Plattform/Basis",
+      "material": "Massivteak (Tectona Grandis, First European Quality), 40 mm, ofengetrocknet, 45°-Fingerzinkung mit Dübeln; Untergestell Metall outdoorlackiert; elastische Gurte aus UV-beständigem Synthesekautschuk/Polypropylen",
+      "finish": "Teak natur"
+    },
+    {
+      "teil": "Füße",
+      "material": "Metall, höhenverstellbar",
+      "finish": "Pewter (Peltro) glänzend lackiert; schwarze SEBS-Gleiter"
+    },
+    {
+      "teil": "Füße Teak-Sofa/-Sessel/Daybed",
+      "material": "Metall",
+      "finish": "Bronze outdoorlackiert; schwarze SEBS-Gleiter"
+    },
+    {
+      "teil": "Geflecht",
+      "material": "Synthetikfaser Ø 5 mm in Geflecht-Optik",
+      "finish": "Mud (Fango) oder Liquorice (Liquirizia)"
+    },
+    {
+      "teil": "Tabletts",
+      "material": "Lavastein 30 mm, gebürstet, fleckschutzbehandelt",
+      "finish": "Pietra Lavica"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff (Outdoor)"
+    ],
+    "bezugsarten": [
+      "abnehmbar"
+    ],
+    "abnehmbar_hinweis": "Kissenbezüge komplett abnehmbar; alle Kissen zusätzlich mit wasserabweisendem Polyester-Inlett.",
+    "varianten": null,
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Outdoor-Stoffe, Geflecht, Holz- und Metalloberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optional backrest cushion",
+      "masse": "70 × 50 cm"
+    },
+    {
+      "name": "Optional cushion",
+      "masse": "50 × 50 cm"
+    },
+    {
+      "name": "Optional cushion",
+      "masse": "45 × 40 cm"
+    },
+    {
+      "name": "Optional rain cover",
+      "hinweis": "für jedes Element erhältlich"
+    },
+    {
+      "name": "Sitz-/Rückenkissen",
+      "hinweis": "HR-Polyurethanschaum + wasserabweisende, umweltfreundliche Faser; Teak-Linie: Rückenkissen komplett aus Viskosefaser"
+    }
+  ],
+  "polsterung": "HR-PU-Schaum mit wasserfester Faser, Polyester-Inlett wasserabweisend; Zubehör (Scharniere, Garn) wasserfest.",
+  "outdoor": true,
+  "besonderheiten": [
+    "Zwei Modulraster 102×102 und 87×87 cm",
+    "Plattform-Tische mit Tabletts/Kerzenhaltern als Zwischenelemente („Interlocking“)",
+    "Klettband-Verbindung der 102er-Sitzmodule",
+    "Höhenverstellbare Füße",
+    "Teak altert natürlich (Vergrauung) – laut Minotti kein Mangel"
+  ],
+  "beispiel_kompositionen": [
+    {
+      "name": "Quadrado A (Technical Sheet)",
+      "elemente": [
+        "QUA102-CORNER-SX",
+        "QUA102-CENTRAL",
+        "QUA102-CENTRAL",
+        "QUA102-CORNER-DX",
+        "QUA102-OTTOMAN-SQ",
+        "QUA102-OTTOMAN-SQ",
+        "QUA-ARMCHAIR-ROUND",
+        "QUA102-TABLE-100x100",
+        "QUA102-TABLE-100x59",
+        "QUA102-TABLE-200x84",
+        "QUA-TRAY-57x49",
+        "QUA-TRAY-73x49",
+        "QUA-CANDLE-24"
+      ],
+      "gesamtbreite_cm": null
+    },
+    {
+      "name": "Quadrado B (Technical Sheet)",
+      "elemente": [
+        "QUA102-CORNER-SX",
+        "QUA102-CENTRAL",
+        "QUA102-OTTOMAN-SQ",
+        "QUA102-CORNER-DX",
+        "QUA102-TABLE-100x59",
+        "QUA102-TABLE-100x100",
+        "QUA102-TABLE-200x84",
+        "QUA-TRAY-57x49",
+        "QUA-TRAY-73x49",
+        "QUA-CANDLE-24",
+        "QUA-CANDLE-24"
+      ],
+      "gesamtbreite_cm": null
+    },
+    {
+      "name": "Quadrado C (Technical Sheet)",
+      "elemente": [
+        "QUA102-CORNER-SX",
+        "QUA102-CORNER-DX",
+        "QUA102-CENTRAL",
+        "QUA102-CENTRAL",
+        "QUA102-OTTOMAN-SQ",
+        "QUA102-TABLE-100x100",
+        "QUA102-TABLE-100x59",
+        "QUA102-TABLE-200x84",
+        "QUA102-CUSHION-100x84",
+        "QUA-TRAY-57x49",
+        "QUA-CANDLE-24",
+        "QUA-CANDLE-24"
+      ],
+      "gesamtbreite_cm": null
+    },
+    {
+      "name": "Quadrado 01 / 02 (Produktseite)",
+      "elemente": [
+        "QUA102-CORNER-SX",
+        "QUA102-OTTOMAN-SQ",
+        "QUA102-CENTRAL",
+        "QUA102-CORNER-DX",
+        "QUA102-TABLE-200x84",
+        "QUA102-TABLE-100x59",
+        "QUA102-TABLE-100x100",
+        "QUA-TRAY-73x49",
+        "QUA-TRAY-57x49",
+        "QUA-CANDLE-24"
+      ],
+      "gesamtbreite_cm": null
+    }
+  ],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. Minotti-Bilder dürfen nicht verändert werden (Freistellungen nur intern/Labs, im Rechte-Register vermerken).",
+  "fehlend": [
+    "Sitztiefe aller Elemente (nicht beschriftet)",
+    "Bedeutung der Kote 65,5 cm (Armlehnen- oder Geflechthöhe) nicht beschriftet",
+    "Maßwiderspruch Auflagekissen 100×84 H24,5 (Seite/Arrangement) vs. 102/86/26,5 (Technical Sheet)",
+    "Verbindliche Kombinationsregeln (Mischbarkeit 102/87, zulässige Plattform-Abfolgen) – nur Beispiel-Arrangements",
+    "Klettband-Verbindung für 87er-Module nicht dokumentiert",
+    "Höhe der Plattform-Tische 87er-Linie nur aus Zeichnung (14 cm), nicht in Elementliste",
+    "Outdoor-Stoffkollektionen und Preisgruppen",
+    "Gesamtmaße der Beispiel-Arrangements",
+    "Herstellerartikelnummern, Gewichte"
+  ],
+  "vollstaendigkeit": {
+    "masse_prozent": 89,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe über alle Elemente, zusätzlich sitzhoehe/sitztiefe bei Sitzelementen mit Rücken (bei Hockern/Tischen/Zubehör nicht zutreffend). Runde Elemente: Ø als breite und tiefe. Options-/Materialfelder separat in fehlend[] bewertet.",
+    "felder_befuellt": 82,
+    "felder_gesamt": 92
+  }
+}

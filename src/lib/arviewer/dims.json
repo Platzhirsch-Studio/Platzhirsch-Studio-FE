@@ -1,0 +1,3563 @@
+{
+  "$note": "Vom Hersteller belegte Maße (cm) je Katalogprodukt (path_field). Nur Werte, die wörtlich im Herstellerdokument stehen (Angabe „H x B x T“ → h, w, d). Herkunft: datenblatt (Solpuri-Aufsteller, pdftotext gegen lokale Kopie), katalog (Poliform-Monografie, Bildunterschrift l/p/h in mm), classicon-product-sheet (ClassiCon Product Sheet, Bemaßung der Maßzeichnung B/T/H, visuell gegen die lokale Kopie geprüft), minotti-technical-sheet (Sofaplaner-Datensatz src/lib/sofaplaner/minotti/*.json, Element-Maße aus Minotti Technical Sheet/Produktseite; scripts/arviewer/raumbedarf-masse.mjs). modell = gezeigte Ausführung, alternativen = weitere Größen laut Quelle. Produkte ohne Eintrag gelten als „Maße fehlen“ – Backoffice-Freitext ist keine geprüfte Quelle.",
+  "stand": "2026-10-27",
+  "produkte": {
+    "armchairs-andersen-armchair": {
+      "w": 91,
+      "d": 91,
+      "h": 82,
+      "quelle": "https://www.minotti.com/downloads/1955/8731/ANDERSEN_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/andersen_4",
+      "dokument": "src/lib/sofaplaner/minotti/andersen.json",
+      "modell": "Sessel",
+      "element": "AND-ARMCHAIR",
+      "familie": "Andersen",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-aston-sofa": {
+      "w": 167,
+      "d": 95,
+      "h": 75,
+      "quelle": "https://www.minotti.com/downloads/434/1654/ASTON_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/aston-sofa",
+      "dokument": "src/lib/sofaplaner/minotti/aston-sofa.json",
+      "modell": "Sofa 167 cm",
+      "element": "AST-SOFA-167",
+      "familie": "Aston Sofa",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-belt-armchairs": {
+      "w": 78,
+      "d": 84,
+      "h": 93,
+      "quelle": "https://www.minotti.com/downloads/18670/18513/BELT_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/belt",
+      "dokument": "src/lib/sofaplaner/minotti/belt.json",
+      "modell": "Bergère (Ohrensessel)",
+      "element": "BELT-BERGERE",
+      "familie": "Belt",
+      "alternativen": [
+        {
+          "modell": "Sessel",
+          "w": 78,
+          "d": 81,
+          "h": 71
+        },
+        {
+          "modell": "Lounge-Sessel",
+          "w": 73,
+          "d": 72,
+          "h": 71
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-bezier-armchairs": {
+      "w": 114,
+      "d": 156,
+      "h": 66,
+      "quelle": "https://www.minotti.com/downloads/25028/28161/BEZIER_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/bezier",
+      "dokument": "src/lib/sofaplaner/minotti/bezier.json",
+      "modell": "Sessel / Paolina 114x156 cm, drehbar",
+      "element": "BEZIER-PAOLINA-114x156-SWIVEL",
+      "familie": "Bézier",
+      "alternativen": [
+        {
+          "modell": "Paolina 125x198 cm",
+          "w": 125,
+          "d": 198,
+          "h": 66
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-brasilia-armchairs": {
+      "w": 95,
+      "d": 86,
+      "h": 63,
+      "quelle": "https://www.minotti.com/downloads/18669/18517/BRASILIA_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/brasilia",
+      "dokument": "src/lib/sofaplaner/minotti/brasilia.json",
+      "modell": "Sessel 95 × 86 cm",
+      "element": "BRA-ARMCHAIR",
+      "familie": "Brasilia",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-jacques-armchairs": {
+      "w": 71,
+      "d": 74,
+      "h": 66,
+      "quelle": "https://www.minotti.com/downloads/13191/10675/JACQUES_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/jacques_1",
+      "dokument": "src/lib/sofaplaner/minotti/jacques.json",
+      "modell": "Sessel „Low“ fest",
+      "element": "JAC-ARM-LOW-FIXED",
+      "familie": "Jacques",
+      "alternativen": [
+        {
+          "modell": "Sessel „High“ fest",
+          "w": 78,
+          "d": 86,
+          "h": 78
+        },
+        {
+          "modell": "Bergère (Ohrensessel) fest",
+          "w": 79,
+          "d": 92,
+          "h": 103
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-jacques-armchairs-2": {
+      "w": 78,
+      "d": 86,
+      "h": 78,
+      "quelle": "https://www.minotti.com/downloads/13191/10675/JACQUES_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/jacques_1",
+      "dokument": "src/lib/sofaplaner/minotti/jacques.json",
+      "modell": "Sessel „High“ fest",
+      "element": "JAC-ARM-HIGH-FIXED",
+      "familie": "Jacques",
+      "alternativen": [
+        {
+          "modell": "Sessel „Low“ fest",
+          "w": 71,
+          "d": 74,
+          "h": 66
+        },
+        {
+          "modell": "Bergère (Ohrensessel) fest",
+          "w": 79,
+          "d": 92,
+          "h": 103
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-jacques-armchairs-3": {
+      "w": 79,
+      "d": 92,
+      "h": 103,
+      "quelle": "https://www.minotti.com/downloads/13191/10675/JACQUES_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/jacques_1",
+      "dokument": "src/lib/sofaplaner/minotti/jacques.json",
+      "modell": "Bergère (Ohrensessel) fest",
+      "element": "JAC-BERGERE-FIXED",
+      "familie": "Jacques",
+      "alternativen": [
+        {
+          "modell": "Sessel „Low“ fest",
+          "w": 71,
+          "d": 74,
+          "h": 66
+        },
+        {
+          "modell": "Sessel „High“ fest",
+          "w": 78,
+          "d": 86,
+          "h": 78
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-lawson-armchairs": {
+      "w": 72,
+      "d": 78,
+      "h": 74,
+      "quelle": "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/lawson",
+      "dokument": "src/lib/sofaplaner/minotti/lawson.json",
+      "modell": "Lounge armchair",
+      "element": "lounge-armchair",
+      "familie": "Lawson",
+      "alternativen": [
+        {
+          "modell": "Legs lounge armchair",
+          "w": 79,
+          "d": 89,
+          "h": 80
+        },
+        {
+          "modell": "Legs lounge little armchair",
+          "w": 65,
+          "d": 65,
+          "h": 71
+        },
+        {
+          "modell": "Medium armchair cm 77",
+          "w": 77,
+          "d": 90,
+          "h": 80
+        },
+        {
+          "modell": "Large armchair cm 84",
+          "w": 84,
+          "d": 98,
+          "h": 80
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-lawson-armchairs-2": {
+      "w": 79,
+      "d": 89,
+      "h": 80,
+      "quelle": "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/lawson",
+      "dokument": "src/lib/sofaplaner/minotti/lawson.json",
+      "modell": "Legs lounge armchair",
+      "element": "legs-lounge-armchair",
+      "familie": "Lawson",
+      "alternativen": [
+        {
+          "modell": "Lounge armchair",
+          "w": 72,
+          "d": 78,
+          "h": 74
+        },
+        {
+          "modell": "Legs lounge little armchair",
+          "w": 65,
+          "d": 65,
+          "h": 71
+        },
+        {
+          "modell": "Medium armchair cm 77",
+          "w": 77,
+          "d": 90,
+          "h": 80
+        },
+        {
+          "modell": "Large armchair cm 84",
+          "w": 84,
+          "d": 98,
+          "h": 80
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-lawson-dining": {
+      "w": 62,
+      "d": 60,
+      "h": 82,
+      "quelle": "https://www.minotti.com/downloads/15719/14211/LAWSON_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/lawson",
+      "dokument": "src/lib/sofaplaner/minotti/lawson.json",
+      "modell": "Dining little armchair",
+      "element": "dining-little-armchair",
+      "familie": "Lawson",
+      "alternativen": [
+        {
+          "modell": "Dining chair",
+          "w": 53,
+          "d": 60,
+          "h": 82
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-lido-armchairs": {
+      "w": 93,
+      "d": 99,
+      "h": 85,
+      "quelle": "https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/lido_sofa",
+      "dokument": "src/lib/sofaplaner/minotti/lido.json",
+      "modell": "ARMCHAIR WITH LEGS",
+      "element": "armchair-with-legs",
+      "familie": "Lido",
+      "alternativen": [
+        {
+          "modell": "LOUNGE ARMCHAIR",
+          "w": 75,
+          "d": 78,
+          "h": 71
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-raphael-armchairs": {
+      "w": 82,
+      "d": 90,
+      "h": 78,
+      "quelle": "https://www.minotti.com/en/raphael",
+      "produktseite": "https://www.minotti.com/en/raphael",
+      "dokument": "src/lib/sofaplaner/minotti/raphael.json",
+      "modell": "LARGE ARMCHAIR - SWIVEL",
+      "element": "raphael-large-armchair-swivel",
+      "familie": "Raphael",
+      "alternativen": [
+        {
+          "modell": "ARMCHAIR - SWIVEL",
+          "w": 74,
+          "d": 86,
+          "h": 78
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-russell-armchairs": {
+      "w": 87,
+      "d": 90,
+      "h": 100,
+      "quelle": "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+      "produktseite": "https://www.minotti.com/en/russell",
+      "dokument": "src/lib/sofaplaner/minotti/russell.json",
+      "modell": "BERGÈRE - SWIVEL",
+      "element": "russell-bergere-swivel",
+      "familie": "Russell",
+      "alternativen": [
+        {
+          "modell": "ARMCHAIR - SWIVEL",
+          "w": 86,
+          "d": 85,
+          "h": 70
+        },
+        {
+          "modell": "\"LOUNGE\" LITTLE ARMCHAIR - SWIVEL",
+          "w": 65,
+          "d": 63,
+          "h": 72
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-russell-armchairs-2": {
+      "w": 86,
+      "d": 85,
+      "h": 70,
+      "quelle": "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+      "produktseite": "https://www.minotti.com/en/russell",
+      "dokument": "src/lib/sofaplaner/minotti/russell.json",
+      "modell": "ARMCHAIR - SWIVEL",
+      "element": "russell-armchair-swivel",
+      "familie": "Russell",
+      "alternativen": [
+        {
+          "modell": "BERGÈRE - SWIVEL",
+          "w": 87,
+          "d": 90,
+          "h": 100
+        },
+        {
+          "modell": "\"LOUNGE\" LITTLE ARMCHAIR - SWIVEL",
+          "w": 65,
+          "d": 63,
+          "h": 72
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-russell-dining": {
+      "w": 65,
+      "d": 61,
+      "h": 81,
+      "quelle": "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+      "produktseite": "https://www.minotti.com/en/russell",
+      "dokument": "src/lib/sofaplaner/minotti/russell.json",
+      "modell": "\"DINING\" LITTLE ARMCHAIR - SWIVEL",
+      "element": "russell-dining-little-armchair-swivel",
+      "familie": "Russell",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-russell-lounge": {
+      "w": 65,
+      "d": 63,
+      "h": 72,
+      "quelle": "https://www.minotti.com/downloads/14459/12638/RUSSELL_TECHNICAL_SHEET_.pdf",
+      "produktseite": "https://www.minotti.com/en/russell",
+      "dokument": "src/lib/sofaplaner/minotti/russell.json",
+      "modell": "\"LOUNGE\" LITTLE ARMCHAIR - SWIVEL",
+      "element": "russell-lounge-little-armchair-swivel",
+      "familie": "Russell",
+      "alternativen": [
+        {
+          "modell": "BERGÈRE - SWIVEL",
+          "w": 87,
+          "d": 90,
+          "h": 100
+        },
+        {
+          "modell": "ARMCHAIR - SWIVEL",
+          "w": 86,
+          "d": 85,
+          "h": 70
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-saki-armchairs": {
+      "w": 104,
+      "d": 91,
+      "h": 70,
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/saki",
+      "dokument": "src/lib/sofaplaner/minotti/saki.json",
+      "modell": "Armchair 104x91xh70 cm",
+      "element": "saki-sessel-104x91",
+      "familie": "Saki",
+      "alternativen": [
+        {
+          "modell": "Armchair 104x92xh70 cm – with fixed or swivel base",
+          "w": 104,
+          "d": 92,
+          "h": 70
+        },
+        {
+          "modell": "Armchair with armrest 92x91xh70 cm",
+          "w": 92,
+          "d": 91,
+          "h": 70
+        },
+        {
+          "modell": "Armchair with armrest 92x92xh70 cm – with fixed or swivel base",
+          "w": 92,
+          "d": 92,
+          "h": 70
+        },
+        {
+          "modell": "Armchair without armrests 80x91xh70 cm",
+          "w": 80,
+          "d": 91,
+          "h": 70
+        },
+        {
+          "modell": "Armchair without armrests 80x92xh66 cm – with fixed or swivel base",
+          "w": 80,
+          "d": 92,
+          "h": 66
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-sendai-dining": {
+      "w": 58,
+      "d": 60,
+      "h": 77,
+      "quelle": "https://www.minotti.com/downloads/20587/21564/SENDAI_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/sendai_sofa",
+      "dokument": "src/lib/sofaplaner/minotti/sendai.json",
+      "modell": "Dining little armchair cm 58 - swivel base",
+      "element": "dining-little-armchair-cm-58-swivel-base",
+      "familie": "Sendai",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-stools-club-footstool": {
+      "w": 80,
+      "d": 80,
+      "h": 40,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_CLUB.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_CLUB.pdf",
+      "modell": "Hocker inkl. Sitz-Polster",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-stools-jazz-footstool": {
+      "w": 48,
+      "d": 45,
+      "h": 41,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_JAZZ.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_JAZZ.pdf",
+      "modell": "Hocker",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-stools-jazz-recliner-high-back": {
+      "w": 56,
+      "d": 72,
+      "h": 113,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_JAZZ.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_JAZZ.pdf",
+      "modell": "Verstellsessel hoch, stapelbar",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-stools-leopold-armchair": {
+      "w": 80.5,
+      "d": 77,
+      "h": 69.5,
+      "modell": "Leopold poltrona l 805 p 770 h 695 (mm)",
+      "quelle": "https://s3.poliform.it/2026/02/Poliform_JOAN_monografico-2026.pdf",
+      "dokument": "Herstellermaterial/Poliform/kataloge/Poliform_Joan_Monografie_2026.pdf",
+      "herkunft": "katalog",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-stools-orbis-armchair": {
+      "w": 86,
+      "d": 77,
+      "h": 69,
+      "modell": "Orbis poltrona l 860 p 770 h 690 (mm)",
+      "quelle": "https://s3.poliform.it/2026/02/Poliform_JOAN_monografico-2026.pdf",
+      "dokument": "Herstellermaterial/Poliform/kataloge/Poliform_Joan_Monografie_2026.pdf",
+      "herkunft": "katalog",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-stools-owen-armchair": {
+      "w": 106,
+      "d": 88,
+      "h": 69,
+      "modell": "Owen poltrona l 1060 p 880 h 690 (mm)",
+      "quelle": "https://s3.poliform.it/2026/02/Poliform_JOAN_monografico-2026.pdf",
+      "dokument": "Herstellermaterial/Poliform/kataloge/Poliform_Joan_Monografie_2026.pdf",
+      "herkunft": "katalog",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-torii-bold-armchairs": {
+      "w": 94,
+      "d": 94,
+      "h": 82,
+      "quelle": "https://www.minotti.com/en/torii-bold",
+      "produktseite": "https://www.minotti.com/en/torii-bold",
+      "dokument": "src/lib/sofaplaner/minotti/torii-bold.json",
+      "modell": "LARGE Armchair cm 94 - SWIVEL",
+      "element": "torii-bold-large-armchair-cm-94-swivel",
+      "familie": "Torii Bold",
+      "alternativen": [
+        {
+          "modell": "MEDIUM Armchair cm 88 - SWIVEL",
+          "w": 88,
+          "d": 88,
+          "h": 82
+        },
+        {
+          "modell": "SMALL Armchair cm 82 - SWIVEL",
+          "w": 82,
+          "d": 80,
+          "h": 82
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-vivienne-armchairs": {
+      "w": 212,
+      "d": 100,
+      "h": 76,
+      "quelle": "https://www.minotti.com/downloads/25030/28181/VIVIENNE_SEATING_SYSTEM_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/vivienne-seating-system",
+      "dokument": "src/lib/sofaplaner/minotti/vivienne.json",
+      "modell": "Lounge sofa 212 cm",
+      "element": "viv-lounge-sofa-212",
+      "familie": "Vivienne",
+      "alternativen": [
+        {
+          "modell": "Sofa 276 cm",
+          "w": 276,
+          "d": 107,
+          "h": 80
+        },
+        {
+          "modell": "Sofa 290 cm – backrest 185 cm with TOP",
+          "w": 290,
+          "d": 118,
+          "h": 80
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-yves-round": {
+      "w": 163,
+      "d": 77,
+      "h": 82,
+      "quelle": "https://www.minotti.com/downloads/23292/25492/YVES_ROUND_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/yves-round",
+      "dokument": "src/lib/sofaplaner/minotti/yves-round.json",
+      "modell": "Lounge-Sofa geschwungen 163x77",
+      "element": "YR-LSOFA-163",
+      "familie": "Yves Round",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "armchairs-yves-round-lounge": {
+      "w": 63,
+      "d": 65,
+      "h": 71,
+      "quelle": "https://www.minotti.com/downloads/23292/25492/YVES_ROUND_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/yves-round",
+      "dokument": "src/lib/sofaplaner/minotti/yves-round.json",
+      "modell": "Lounge-Sessel klein 63",
+      "element": "YR-LCHAIR-63",
+      "familie": "Yves Round",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "chairs-torii-bold-chairs": {
+      "w": 212,
+      "d": 100,
+      "h": 82,
+      "quelle": "https://www.minotti.com/en/torii-bold",
+      "produktseite": "https://www.minotti.com/en/torii-bold",
+      "dokument": "src/lib/sofaplaner/minotti/torii-bold.json",
+      "modell": "Angled sofa cm 212",
+      "element": "torii-bold-angled-sofa-cm-212",
+      "familie": "Torii Bold",
+      "alternativen": [
+        {
+          "modell": "Angled sofa cm 247",
+          "w": 247,
+          "d": 106,
+          "h": 82
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "garden-chairs-basket-dining-chair-incl-seat-back-cushion": {
+      "w": 61,
+      "d": 68,
+      "h": 83,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_BASKET.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_BASKET.pdf",
+      "modell": "Dining Sessel inkl. Sitz-/Rücken-Polster",
+      "geprueft": "2026-10-27"
+    },
+    "garden-chairs-breeze-stacking-chair": {
+      "w": 58,
+      "d": 65,
+      "h": 92,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_BREEZE.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_BREEZE.pdf",
+      "modell": "Stapelsessel",
+      "geprueft": "2026-10-27"
+    },
+    "garden-chairs-breeze-stacking-chair-high": {
+      "w": 58,
+      "d": 66,
+      "h": 110,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_BREEZE.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_BREEZE.pdf",
+      "modell": "Stapelsessel hoch",
+      "geprueft": "2026-10-27"
+    },
+    "garden-chairs-dance-stacking-chair-with-swing-back": {
+      "w": 57,
+      "d": 68,
+      "h": 92,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_DANCE.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_DANCE.pdf",
+      "modell": "Stapelsessel mit Swing-Rücken",
+      "geprueft": "2026-10-27"
+    },
+    "garden-chairs-jazz-spring-chair": {
+      "w": 56,
+      "d": 64,
+      "h": 89,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_JAZZ.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_JAZZ.pdf",
+      "modell": "Freischwinger, stapelbar",
+      "geprueft": "2026-10-27"
+    },
+    "garden-chairs-jazz-spring-chair-high": {
+      "w": 56,
+      "d": 64,
+      "h": 118,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_JAZZ.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_JAZZ.pdf",
+      "modell": "Freischwinger hoch, stapelbar",
+      "geprueft": "2026-10-27"
+    },
+    "garden-chairs-jazz-stacking-chair": {
+      "w": 56,
+      "d": 64,
+      "h": 87,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_JAZZ.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_JAZZ.pdf",
+      "modell": "Stapelsessel",
+      "geprueft": "2026-10-27"
+    },
+    "garden-tables-bari-bar-table-ceramic-dekton": {
+      "w": 175,
+      "d": 68,
+      "h": 104,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_TISCHE.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_TISCHE.pdf",
+      "modell": "Bari Classic, Edelstahl, 175 x 68, H 104",
+      "geprueft": "2026-10-27"
+    },
+    "garden-tables-bari-bar-table-hpl": {
+      "w": 175,
+      "d": 68,
+      "h": 104,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_TISCHE.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_TISCHE.pdf",
+      "modell": "Bari Classic, Edelstahl, 175 x 68, H 104",
+      "geprueft": "2026-10-27"
+    },
+    "garden-tables-charlie-ceramic-dining-table": {
+      "w": 170,
+      "d": 100,
+      "h": 75,
+      "modell": "Charlie 170 x 100, H 75",
+      "alternativen": [
+        {
+          "modell": "Charlie 230 x 100, H 75",
+          "w": 230,
+          "d": 100,
+          "h": 75
+        }
+      ],
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_TISCHE.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_TISCHE.pdf",
+      "herkunft": "datenblatt",
+      "geprueft": "2026-10-27"
+    },
+    "garden-tables-charlie-teak-dining-table": {
+      "w": 170,
+      "d": 100,
+      "h": 75,
+      "modell": "Charlie 170 x 100, H 75",
+      "alternativen": [
+        {
+          "modell": "Charlie 230 x 100, H 75",
+          "w": 230,
+          "d": 100,
+          "h": 75
+        }
+      ],
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_TISCHE.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_TISCHE.pdf",
+      "herkunft": "datenblatt",
+      "geprueft": "2026-10-27"
+    },
+    "garden-tables-club-coffee-table": {
+      "w": 80,
+      "d": 80,
+      "h": 30,
+      "modell": "Kaffeetisch 30 x 80 x 80 cm",
+      "alternativen": [
+        {
+          "modell": "Kaffeetisch 45 x 80 x 80 cm",
+          "w": 80,
+          "d": 80,
+          "h": 45
+        },
+        {
+          "modell": "Kaffeetisch 65 x 80 x 80 cm",
+          "w": 80,
+          "d": 80,
+          "h": 65
+        }
+      ],
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_CLUB.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_CLUB.pdf",
+      "herkunft": "datenblatt",
+      "geprueft": "2026-10-27"
+    },
+    "little-armchairs-and-stools-yang-ottoman": {
+      "w": 80,
+      "d": 50,
+      "h": 36,
+      "quelle": "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/yang_2",
+      "dokument": "src/lib/sofaplaner/minotti/yang.json",
+      "modell": "Hocker 80 × 50 cm",
+      "element": "YNG-OTT-80x50",
+      "familie": "Yang",
+      "alternativen": [
+        {
+          "modell": "Hocker 105 × 50 cm",
+          "w": 105,
+          "d": 50,
+          "h": 36
+        },
+        {
+          "modell": "Hocker 120 × 50 cm",
+          "w": 120,
+          "d": 50,
+          "h": 36
+        },
+        {
+          "modell": "Hocker 130 × 50 cm",
+          "w": 130,
+          "d": 50,
+          "h": 36
+        },
+        {
+          "modell": "Hocker 160 × 50 cm",
+          "w": 160,
+          "d": 50,
+          "h": 36
+        },
+        {
+          "modell": "Hocker rund Ø 110 cm",
+          "w": 110,
+          "d": 110,
+          "h": 36
+        },
+        {
+          "modell": "Hocker 80 × 80 cm",
+          "w": 80,
+          "d": 80,
+          "h": 36
+        },
+        {
+          "modell": "Hocker 105 × 80 cm",
+          "w": 105,
+          "d": 80,
+          "h": 36
+        },
+        {
+          "modell": "Hocker 130 × 80 cm",
+          "w": 130,
+          "d": 80,
+          "h": 36
+        },
+        {
+          "modell": "Hocker 105 × 105 cm",
+          "w": 105,
+          "d": 105,
+          "h": 36
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "lounge-chairs-sendai-lounge-chairs": {
+      "w": 65,
+      "d": 67,
+      "h": 67,
+      "quelle": "https://www.minotti.com/downloads/20587/21564/SENDAI_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/sendai_sofa",
+      "dokument": "src/lib/sofaplaner/minotti/sendai.json",
+      "modell": "Lounge armchair cm 65 - swivel",
+      "element": "lounge-armchair-cm-65-swivel",
+      "familie": "Sendai",
+      "alternativen": [
+        {
+          "modell": "Armchair cm 74 - fixed",
+          "w": 74,
+          "d": 76,
+          "h": 72
+        },
+        {
+          "modell": "Armchair cm 74 - swivel",
+          "w": 74,
+          "d": 76,
+          "h": 68
+        },
+        {
+          "modell": "Armchair with armrests cm 87 - swivel",
+          "w": 87,
+          "d": 83,
+          "h": 78
+        },
+        {
+          "modell": "Lounge little armchair cm 58",
+          "w": 58,
+          "d": 60,
+          "h": 72
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "lounge-chairs-sendai-lounge-chairs-2": {
+      "w": 58,
+      "d": 60,
+      "h": 72,
+      "quelle": "https://www.minotti.com/downloads/20587/21564/SENDAI_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/sendai_sofa",
+      "dokument": "src/lib/sofaplaner/minotti/sendai.json",
+      "modell": "Lounge little armchair cm 58",
+      "element": "lounge-little-armchair-cm-58",
+      "familie": "Sendai",
+      "alternativen": [
+        {
+          "modell": "Armchair cm 74 - fixed",
+          "w": 74,
+          "d": 76,
+          "h": 72
+        },
+        {
+          "modell": "Armchair cm 74 - swivel",
+          "w": 74,
+          "d": 76,
+          "h": 68
+        },
+        {
+          "modell": "Armchair with armrests cm 87 - swivel",
+          "w": 87,
+          "d": 83,
+          "h": 78
+        },
+        {
+          "modell": "Lounge armchair cm 65 - swivel",
+          "w": 65,
+          "d": 67,
+          "h": 67
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "lounge-furniture-daybeds-loop-lounge-chair": {
+      "w": 80,
+      "d": 86,
+      "h": 75,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_LOOPlounge.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_LOOPlounge.pdf",
+      "modell": "Lounge Sessel",
+      "geprueft": "2026-10-27"
+    },
+    "lounge-furniture-daybeds-loop-lounge-chair-high-back": {
+      "w": 80,
+      "d": 91,
+      "h": 124,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_LOOPlounge.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_LOOPlounge.pdf",
+      "modell": "Lounge Sessel Hochlehner",
+      "geprueft": "2026-10-27"
+    },
+    "parasols-aton-sunshade-rectangular": {
+      "w": 350,
+      "d": 240,
+      "h": 300,
+      "modell": "Sonnenschirm rechteckig 350 x 240 cm (H x B x T 300 x 350 x 240)",
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_ATON.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_ATON.pdf",
+      "herkunft": "datenblatt",
+      "geprueft": "2026-10-27"
+    },
+    "parasols-aton-sunshade-round-8-squared": {
+      "w": 300,
+      "d": 300,
+      "h": 265,
+      "rund": true,
+      "modell": "Sonnenschirm rund (8-eckig) Ø 300 cm (H x B 265 x Ø 300)",
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_ATON.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_ATON.pdf",
+      "herkunft": "datenblatt",
+      "geprueft": "2026-10-27"
+    },
+    "parasols-aton-sunshade-square": {
+      "w": 350,
+      "d": 350,
+      "h": 300,
+      "modell": "Sonnenschirm quadratisch 350 x 350 cm (H x B x T 300 x 350 x 350)",
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_ATON.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_ATON.pdf",
+      "herkunft": "datenblatt",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-belt-dining": {
+      "w": 64,
+      "d": 60,
+      "h": 83,
+      "quelle": "https://www.minotti.com/downloads/18670/18513/BELT_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/belt",
+      "dokument": "src/lib/sofaplaner/minotti/belt.json",
+      "modell": "Dining-Armlehnstuhl",
+      "element": "BELT-DINING",
+      "familie": "Belt",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-belt-variant": {
+      "w": 78,
+      "d": 84,
+      "h": 93,
+      "quelle": "https://www.minotti.com/downloads/18670/18513/BELT_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/belt",
+      "dokument": "src/lib/sofaplaner/minotti/belt.json",
+      "modell": "Bergère (Ohrensessel)",
+      "element": "BELT-BERGERE",
+      "familie": "Belt",
+      "alternativen": [
+        {
+          "modell": "Sessel",
+          "w": 78,
+          "d": 81,
+          "h": 71
+        },
+        {
+          "modell": "Lounge-Sessel",
+          "w": 73,
+          "d": 72,
+          "h": 71
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-blazer": {
+      "w": 178,
+      "d": 108,
+      "h": 86,
+      "quelle": "https://www.minotti.com/downloads/16982/15867/BLAZER_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/blazer_2",
+      "dokument": "src/lib/sofaplaner/minotti/blazer.json",
+      "modell": "SOFA CM 178",
+      "element": "sofa-cm-178",
+      "familie": "Blazer",
+      "alternativen": [
+        {
+          "modell": "SOFA CM 213",
+          "w": 213,
+          "d": 108,
+          "h": 86
+        },
+        {
+          "modell": "SOFA CM 248",
+          "w": 248,
+          "d": 108,
+          "h": 86
+        },
+        {
+          "modell": "SOFA CM 283",
+          "w": 283,
+          "d": 108,
+          "h": 86
+        },
+        {
+          "modell": "SOFA CHAISE-LONGUE CM 143X143",
+          "w": 143,
+          "d": 143,
+          "h": 86
+        },
+        {
+          "modell": "HIGH SOFA CHAISE-LONGUE CM 143X143",
+          "w": 143,
+          "d": 143,
+          "h": 92
+        },
+        {
+          "modell": "SOFA CHAISE-LONGUE CM 178X143",
+          "w": 178,
+          "d": 143,
+          "h": 86
+        },
+        {
+          "modell": "HIGH SOFA CHAISE-LONGUE CM 178X143",
+          "w": 178,
+          "d": 143,
+          "h": 92
+        },
+        {
+          "modell": "SOFA CHAISE-LONGUE CM 178X178",
+          "w": 178,
+          "d": 178,
+          "h": 86
+        },
+        {
+          "modell": "HIGH SOFA CHAISE-LONGUE CM 178X178",
+          "w": 178,
+          "d": 178,
+          "h": 92
+        },
+        {
+          "modell": "SOFA CHAISE-LONGUE CM 213X143",
+          "w": 213,
+          "d": 143,
+          "h": 86
+        },
+        {
+          "modell": "HIGH SOFA CHAISE-LONGUE CM 213X143",
+          "w": 213,
+          "d": 143,
+          "h": 92
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-brasilia-variant": {
+      "w": 95,
+      "d": 86,
+      "h": 63,
+      "quelle": "https://www.minotti.com/downloads/18669/18517/BRASILIA_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/brasilia",
+      "dokument": "src/lib/sofaplaner/minotti/brasilia.json",
+      "modell": "Sessel 95 × 86 cm",
+      "element": "BRA-ARMCHAIR",
+      "familie": "Brasilia",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-freeman-lounge": {
+      "w": 182,
+      "d": 91,
+      "h": 58,
+      "quelle": "https://www.minotti.com/downloads/426/1640/FREEMAN_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/freeman-lounge_2",
+      "dokument": "src/lib/sofaplaner/minotti/freeman-lounge.json",
+      "modell": "Sofa 182 cm",
+      "element": "FRL-SOFA-182",
+      "familie": "Freeman \"Lounge\"",
+      "alternativen": [
+        {
+          "modell": "Sofa 203 cm",
+          "w": 203,
+          "d": 91,
+          "h": 58
+        },
+        {
+          "modell": "Sofa 224 cm",
+          "w": 224,
+          "d": 91,
+          "h": 58
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-freeman-tailor": {
+      "w": 224,
+      "d": 112,
+      "h": 89,
+      "quelle": "https://www.minotti.com/downloads/427/1641/FREEMAN_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/freeman-tailor_2",
+      "dokument": "src/lib/sofaplaner/minotti/freeman-tailor.json",
+      "modell": "Sofa 224 cm",
+      "element": "FRT-SOFA-224",
+      "familie": "Freeman \"Tailor\"",
+      "alternativen": [
+        {
+          "modell": "Sofa komponiert 308 cm",
+          "w": 308,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Wing-Sofa 84 cm (Einsitzer)",
+          "w": 84,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Wing-Sofa 126 cm",
+          "w": 126,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Wing-Sofa 168 cm mit 2 Rücken à 84 cm",
+          "w": 168,
+          "d": 112,
+          "h": 89
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-lawrence-clan": {
+      "w": 168,
+      "d": 112,
+      "h": 82,
+      "quelle": "https://www.minotti.com/downloads/13190/10714/LAWRENCE_CLAN_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/lawrence_clan_2",
+      "dokument": "src/lib/sofaplaner/minotti/lawrence-clan.json",
+      "modell": "Sofa 168 × 112 cm, 2 Rücken à 84 cm",
+      "element": "CLAN-SOFA-168X112-2BR84",
+      "familie": "Lawrence \"Clan\"",
+      "alternativen": [
+        {
+          "modell": "Sofa 168 × 112 cm, Rücken 140 + 112 cm (L-förmig) (DX)",
+          "w": 168,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 224 × 112 cm, 2 Rücken à 112 cm (DX)",
+          "w": 224,
+          "d": 112,
+          "h": 82
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-lounge-seymour": {
+      "w": 190,
+      "d": 95,
+      "h": 76,
+      "quelle": "https://www.minotti.com/downloads/431/1850/LOUNGE%20SEYMOUR_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/lounge-seymour_2",
+      "dokument": "src/lib/sofaplaner/minotti/lounge-seymour.json",
+      "modell": "Sofa High 190 cm",
+      "element": "LSY-SOFA-HIGH-190",
+      "familie": "Lounge Seymour",
+      "alternativen": [
+        {
+          "modell": "Sofa Mix 182 cm",
+          "w": 182,
+          "d": 95,
+          "h": 76
+        },
+        {
+          "modell": "Sofa Low 174 cm",
+          "w": 174,
+          "d": 87,
+          "h": 70
+        },
+        {
+          "modell": "Lounge-Sofa High 257 cm",
+          "w": 257,
+          "d": 95,
+          "h": 76
+        },
+        {
+          "modell": "Open-Sofa Mix 249 cm (Rücken 162 cm)",
+          "w": 249,
+          "d": 95,
+          "h": 76
+        },
+        {
+          "modell": "Open-Sofa Low 241 cm (Rücken 154 cm)",
+          "w": 241,
+          "d": 87,
+          "h": 70
+        },
+        {
+          "modell": "Lounge-Sofa High 230 cm",
+          "w": 230,
+          "d": 95,
+          "h": 76
+        },
+        {
+          "modell": "Lounge-Sofa Low 214 cm",
+          "w": 214,
+          "d": 87,
+          "h": 70
+        },
+        {
+          "modell": "Halbrundes Sofa Mix 286 cm",
+          "w": 286,
+          "d": 173,
+          "h": 76
+        },
+        {
+          "modell": "Halbrundes Sofa Low 269 cm",
+          "w": 269,
+          "d": 164,
+          "h": 70
+        },
+        {
+          "modell": "Halbrundes Sofa ohne Armlehnen Low 243 cm",
+          "w": 243,
+          "d": 151,
+          "h": 70
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-mattia-variant": {
+      "w": 182,
+      "d": 85,
+      "h": 67,
+      "quelle": "https://www.minotti.com/downloads/17000/15878/MATTIA_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/mattia_3",
+      "dokument": "src/lib/sofaplaner/minotti/mattia.json",
+      "modell": "LOUNGE SOFA CM 182",
+      "element": "lounge-sofa-cm-182",
+      "familie": "Mattia",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-raphael-dining": {
+      "w": 60,
+      "d": 62,
+      "h": 78,
+      "quelle": "https://www.minotti.com/en/raphael",
+      "produktseite": "https://www.minotti.com/en/raphael",
+      "dokument": "src/lib/sofaplaner/minotti/raphael.json",
+      "modell": "DINING LITTLE ARMCHAIR - SWIVEL",
+      "element": "raphael-dining-little-armchair-swivel",
+      "familie": "Raphael",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-raphael-variant": {
+      "w": 192,
+      "d": 91,
+      "h": 88,
+      "quelle": "https://www.minotti.com/en/raphael",
+      "produktseite": "https://www.minotti.com/en/raphael",
+      "dokument": "src/lib/sofaplaner/minotti/raphael.json",
+      "modell": "SOFA CM 192",
+      "element": "raphael-sofa-cm-192",
+      "familie": "Raphael",
+      "alternativen": [
+        {
+          "modell": "ANGLED SOFA CM 227",
+          "w": 227,
+          "d": 118,
+          "h": 88
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-saki-variant": {
+      "w": 180,
+      "d": 91,
+      "h": 71,
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/saki",
+      "dokument": "src/lib/sofaplaner/minotti/saki.json",
+      "modell": "Sofa 180x91 cm",
+      "element": "saki-sofa-180x91",
+      "familie": "Saki",
+      "alternativen": [
+        {
+          "modell": "Sofa 254x91 cm",
+          "w": 254,
+          "d": 91,
+          "h": 71
+        },
+        {
+          "modell": "Corner sofa 180x95 cm",
+          "w": 180,
+          "d": 95,
+          "h": 71
+        },
+        {
+          "modell": "Corner sofa 254x95 cm",
+          "w": 254,
+          "d": 95,
+          "h": 71
+        },
+        {
+          "modell": "Corner sofa 328x95 cm",
+          "w": 328,
+          "d": 95,
+          "h": 71
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-supermoon-variant": {
+      "w": 226,
+      "d": 106,
+      "h": 77,
+      "quelle": "https://www.minotti.com/downloads/23293/25488/SUPERMOON_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/supermoon",
+      "dokument": "src/lib/sofaplaner/minotti/supermoon.json",
+      "modell": "Sofa 226",
+      "element": "SM-SOFA-226",
+      "familie": "Supermoon",
+      "alternativen": [
+        {
+          "modell": "Sofa 278",
+          "w": 278,
+          "d": 106,
+          "h": 77
+        },
+        {
+          "modell": "Sofa 304",
+          "w": 304,
+          "d": 106,
+          "h": 77
+        },
+        {
+          "modell": "Sofa gebogen 306x141",
+          "w": 306,
+          "d": 141,
+          "h": 77
+        },
+        {
+          "modell": "Sofa gebogen 312x126",
+          "w": 312,
+          "d": 126,
+          "h": 77
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "produkt-west-variant": {
+      "w": 228,
+      "d": 114,
+      "h": 79,
+      "quelle": "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/west",
+      "dokument": "src/lib/sofaplaner/minotti/west.json",
+      "modell": "Sofa cm 228 - seat cushion cm 85",
+      "element": "sofa-cm-228-seat-cushion-cm-85",
+      "familie": "West",
+      "alternativen": [
+        {
+          "modell": "Corner sofa cm 313 - seat cushion cm 85",
+          "w": 313,
+          "d": 114,
+          "h": 79
+        },
+        {
+          "modell": "Corner sofa cm 293 - seat cushion cm 85",
+          "w": 293,
+          "d": 114,
+          "h": 79
+        },
+        {
+          "modell": "Sofa cm 208 - seat cushion cm 75",
+          "w": 208,
+          "d": 114,
+          "h": 79
+        },
+        {
+          "modell": "Sofa cm 283 - seat cushion cm 75",
+          "w": 283,
+          "d": 114,
+          "h": 79
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-allen": {
+      "w": 186,
+      "d": 103,
+      "h": 90,
+      "quelle": "https://www.minotti.com/downloads/449/1663/ALLEN_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/allen",
+      "dokument": "src/lib/sofaplaner/minotti/allen.json",
+      "modell": "Sofa 186 cm",
+      "element": "ALL-SOFA-186",
+      "familie": "Allen",
+      "alternativen": [
+        {
+          "modell": "Sofa 206 cm",
+          "w": 206,
+          "d": 103,
+          "h": 90
+        },
+        {
+          "modell": "Sofa-Chaiselongue 226 cm",
+          "w": 226,
+          "d": 103,
+          "h": 90
+        },
+        {
+          "modell": "Sofa-Chaiselongue 252 cm",
+          "w": 252,
+          "d": 103,
+          "h": 90
+        },
+        {
+          "modell": "Kompositionssofa 288 cm (2 × Endelement 144)",
+          "w": 288,
+          "d": 103,
+          "h": 90
+        },
+        {
+          "modell": "Kompositionssofa 316 cm (2 × Endelement 158)",
+          "w": 316,
+          "d": 103,
+          "h": 90
+        },
+        {
+          "modell": "Kompositionssofa 346 cm (2 × Endelement 173)",
+          "w": 346,
+          "d": 103,
+          "h": 90
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-andersen": {
+      "w": 178,
+      "d": 103,
+      "h": 82,
+      "quelle": "https://www.minotti.com/downloads/1955/8731/ANDERSEN_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/andersen_4",
+      "dokument": "src/lib/sofaplaner/minotti/andersen.json",
+      "modell": "Sofa 178 cm",
+      "element": "AND-SOFA-178",
+      "familie": "Andersen",
+      "alternativen": [
+        {
+          "modell": "Sofa 206 cm",
+          "w": 206,
+          "d": 103,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 247 cm",
+          "w": 247,
+          "d": 103,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 288 cm (mit 2 Sitzkissen)",
+          "w": 288,
+          "d": 103,
+          "h": 82
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-andersen-line": {
+      "w": 178,
+      "d": 103,
+      "h": 82,
+      "quelle": "https://www.minotti.com/downloads/1956/8736/ANDERSEN_LINE_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/andersen-line",
+      "dokument": "src/lib/sofaplaner/minotti/andersen-line.json",
+      "modell": "Sofa 178 cm",
+      "element": "ANDL-SOFA-178",
+      "familie": "Andersen Line",
+      "alternativen": [
+        {
+          "modell": "Sofa 206 cm",
+          "w": 206,
+          "d": 103,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 247 cm",
+          "w": 247,
+          "d": 103,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 288 cm (2 Sitzkissen)",
+          "w": 288,
+          "d": 103,
+          "h": 82
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-andersen-line-quilt": {
+      "w": 178,
+      "d": 103,
+      "h": 73,
+      "quelle": "https://www.minotti.com/downloads/1957/8742/ANDERSEN_LINE_QUILT_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/andersen-line-quilt",
+      "dokument": "src/lib/sofaplaner/minotti/andersen-line-quilt.json",
+      "modell": "Sofa 178 cm",
+      "element": "ANDLQ-SOFA-178",
+      "familie": "Andersen Line \"Quilt\"",
+      "alternativen": [
+        {
+          "modell": "Sofa 206 cm",
+          "w": 206,
+          "d": 103,
+          "h": 73
+        },
+        {
+          "modell": "Sofa 247 cm",
+          "w": 247,
+          "d": 103,
+          "h": 73
+        },
+        {
+          "modell": "Sofa 288 cm",
+          "w": 288,
+          "d": 103,
+          "h": 73
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-andersen-quilt": {
+      "w": 178,
+      "d": 103,
+      "h": 73,
+      "quelle": "https://www.minotti.com/downloads/1958/8741/ANDERSEN_QUILT_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/andersen-quilt",
+      "dokument": "src/lib/sofaplaner/minotti/andersen-quilt.json",
+      "modell": "Sofa 178 cm",
+      "element": "ANDQ-SOFA-178",
+      "familie": "Andersen \"Quilt\"",
+      "alternativen": [
+        {
+          "modell": "Sofa 206 cm",
+          "w": 206,
+          "d": 103,
+          "h": 73
+        },
+        {
+          "modell": "Sofa 247 cm",
+          "w": 247,
+          "d": 103,
+          "h": 73
+        },
+        {
+          "modell": "Sofa 288 cm",
+          "w": 288,
+          "d": 103,
+          "h": 73
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-bezier-sofas": {
+      "w": 297,
+      "d": 171,
+      "h": 84,
+      "quelle": "https://www.minotti.com/downloads/25028/28161/BEZIER_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/bezier",
+      "dokument": "src/lib/sofaplaner/minotti/bezier.json",
+      "modell": "Sofa 297x171 cm, doppelte Tiefe",
+      "element": "BEZIER-SOFA-297x171-DD",
+      "familie": "Bézier",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-daniels": {
+      "w": 228,
+      "d": 105,
+      "h": 80,
+      "quelle": "https://www.minotti.com/downloads/15720/14210/DANIELS_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/daniels",
+      "dokument": "src/lib/sofaplaner/minotti/daniels.json",
+      "modell": "Sofa cm 228",
+      "element": "sofa-cm-228",
+      "familie": "Daniels",
+      "alternativen": [
+        {
+          "modell": "Sofa cm 248",
+          "w": 248,
+          "d": 105,
+          "h": 80
+        },
+        {
+          "modell": "Sofa cm 268",
+          "w": 268,
+          "d": 105,
+          "h": 80
+        },
+        {
+          "modell": "Sofa cm 310",
+          "w": 310,
+          "d": 105,
+          "h": 80
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-deep-suitcase": {
+      "w": 152,
+      "d": 98,
+      "h": 78,
+      "quelle": "https://www.minotti.com/downloads/462/1664/DEEP_SUITCASE_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/deep-suitcase",
+      "dokument": "src/lib/sofaplaner/minotti/deep-suitcase.json",
+      "modell": "Sofa 152 cm (2-Sitzer)",
+      "element": "DS-SOFA-152",
+      "familie": "Deep Suitcase",
+      "alternativen": [
+        {
+          "modell": "Sofa 216 cm (3-Sitzer)",
+          "w": 216,
+          "d": 98,
+          "h": 78
+        },
+        {
+          "modell": "Schlafsofa 152 cm",
+          "w": 152,
+          "d": 235,
+          "h": 64
+        },
+        {
+          "modell": "Schlafsofa 216 cm",
+          "w": 216,
+          "d": 235,
+          "h": 64
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-dylan": {
+      "w": 204,
+      "d": 102,
+      "h": 82,
+      "quelle": "https://www.minotti.com/downloads/22080/23233/DYLAN_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/dylan",
+      "dokument": "src/lib/sofaplaner/minotti/dylan.json",
+      "modell": "Sofa cm 204",
+      "element": "DYLAN-001",
+      "familie": "Dylan",
+      "alternativen": [
+        {
+          "modell": "Open sofa cm 283",
+          "w": 283,
+          "d": 102,
+          "h": 82
+        },
+        {
+          "modell": "Inclined sofa cm 238x152",
+          "w": 238,
+          "d": 152,
+          "h": 82
+        },
+        {
+          "modell": "Inclined sofa cm 317x152",
+          "w": 317,
+          "d": 152,
+          "h": 82
+        },
+        {
+          "modell": "Sofa cm 186 - SEAT CUSHION 68 CM",
+          "w": 186,
+          "d": 102,
+          "h": 82
+        },
+        {
+          "modell": "Open sofa cm 256 - SEAT CUSHION 68 CM",
+          "w": 256,
+          "d": 102,
+          "h": 82
+        },
+        {
+          "modell": "Corner Daybed sofa cm 265 - SEAT CUSHION 68/77 CM",
+          "w": 265,
+          "d": 102,
+          "h": 82
+        },
+        {
+          "modell": "Inclined sofa cm 221x147 - SEAT CUSHION 68",
+          "w": 221,
+          "d": 147,
+          "h": 82
+        },
+        {
+          "modell": "Inclined sofa cm 291x147 - SEAT CUSHION 68",
+          "w": 291,
+          "d": 147,
+          "h": 82
+        },
+        {
+          "modell": "LOUNGE THEATRE inclined sofa cm 295x142",
+          "w": 295,
+          "d": 142,
+          "h": 82
+        },
+        {
+          "modell": "LOUNGE THEATRE inclined sofa with 1 armrest cm 275x142",
+          "w": 275,
+          "d": 142,
+          "h": 82
+        },
+        {
+          "modell": "LOUNGE THEATRE inclined sofa without armrests cm 255x130",
+          "w": 255,
+          "d": 130,
+          "h": 82
+        },
+        {
+          "modell": "LOUNGE THEATRE inclined sofa without armrests cm 280x142",
+          "w": 280,
+          "d": 142,
+          "h": 82
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-dylan-low": {
+      "w": 204,
+      "d": 102,
+      "h": 81,
+      "quelle": "https://www.minotti.com/downloads/22082/23231/DYLAN_LOW_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/dylan-low",
+      "dokument": "src/lib/sofaplaner/minotti/dylan-low.json",
+      "modell": "LOW - Sofa cm 204",
+      "element": "DYLAN_LOW-001",
+      "familie": "Dylan Low",
+      "alternativen": [
+        {
+          "modell": "LOW - Open sofa cm 283",
+          "w": 283,
+          "d": 102,
+          "h": 81
+        },
+        {
+          "modell": "LOW - Inclined sofa cm 238x152",
+          "w": 238,
+          "d": 152,
+          "h": 81
+        },
+        {
+          "modell": "LOW - Inclined sofa cm 317x152",
+          "w": 317,
+          "d": 152,
+          "h": 81
+        },
+        {
+          "modell": "LOW - Sofa cm 186 - SEAT CUSHION 68 CM",
+          "w": 186,
+          "d": 102,
+          "h": 81
+        },
+        {
+          "modell": "LOW - Open sofa cm 256 - MODULO SEDUTA 68 CM",
+          "w": 256,
+          "d": 102,
+          "h": 81
+        },
+        {
+          "modell": "LOW - Corner Daybed sofa cm 265 - SEAT CUSHION 68 CM",
+          "w": 265,
+          "d": 102,
+          "h": 81
+        },
+        {
+          "modell": "LOW - Inclined sofa cm 221x147 - SEAT CUSHION 68 CM",
+          "w": 221,
+          "d": 147,
+          "h": 81
+        },
+        {
+          "modell": "LOW - Inclined sofa cm 291x147 - SEAT CUSHION 68 CM",
+          "w": 291,
+          "d": 147,
+          "h": 81
+        },
+        {
+          "modell": "LOW - LOUNGE THEATRE inclined sofa cm 295x142",
+          "w": 295,
+          "d": 142,
+          "h": 81
+        },
+        {
+          "modell": "LOW - LOUNGE THEATRE inclined sofa with 1 armrest cm 275x142",
+          "w": 275,
+          "d": 142,
+          "h": 81
+        },
+        {
+          "modell": "LOW - LOUNGE THEATRE inclined sofa without armrests cm 255x130",
+          "w": 255,
+          "d": 130,
+          "h": 81
+        },
+        {
+          "modell": "LOW - LOUNGE THEATRE inclined sofa without armrests cm 280x142",
+          "w": 280,
+          "d": 142,
+          "h": 81
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-dylan-small": {
+      "w": 174,
+      "d": 87,
+      "h": 64,
+      "quelle": "https://www.minotti.com/downloads/22081/23232/DYLAN_SMALL_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/dylan-small",
+      "dokument": "src/lib/sofaplaner/minotti/dylan-small.json",
+      "modell": "SMALL - Sofa cm 174",
+      "element": "DYLAN_SMALL-001",
+      "familie": "Dylan Small",
+      "alternativen": [
+        {
+          "modell": "SMALL - Sofa cm 241",
+          "w": 241,
+          "d": 87,
+          "h": 64
+        },
+        {
+          "modell": "SMALL - Inclined sofa cm 187x125",
+          "w": 187,
+          "d": 125,
+          "h": 64
+        },
+        {
+          "modell": "SMALL - Inclined sofa cm 277x125",
+          "w": 277,
+          "d": 125,
+          "h": 64
+        },
+        {
+          "modell": "SMALL - Inclined sofa cm 246x125",
+          "w": 246,
+          "d": 125,
+          "h": 64
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-freeman-duvet": {
+      "w": 182,
+      "d": 112,
+      "h": 89,
+      "quelle": "https://www.minotti.com/downloads/428/1874/FREEMAN_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/freeman-duvet_2",
+      "dokument": "src/lib/sofaplaner/minotti/freeman-duvet.json",
+      "modell": "Sofa „Duvet“ 182 cm",
+      "element": "FRD-SOFA-182",
+      "familie": "Freeman „Duvet“",
+      "alternativen": [
+        {
+          "modell": "Sofa „Duvet“ 224 cm",
+          "w": 224,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Sofa „Duvet“ 245 cm",
+          "w": 245,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Sofa „Duvet“ zusammengesetzt 308 cm",
+          "w": 308,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Sofa „Duvet“ zusammengesetzt 392 cm",
+          "w": 392,
+          "d": 112,
+          "h": 89
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-goodman": {
+      "w": 242,
+      "d": 110,
+      "h": 86,
+      "quelle": "https://www.minotti.com/downloads/20589/21551/GOODMAN_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/goodman",
+      "dokument": "src/lib/sofaplaner/minotti/goodman.json",
+      "modell": "Low Arm - Sofa cm 242",
+      "element": "low-arm-sofa-cm-242",
+      "familie": "Goodman",
+      "alternativen": [
+        {
+          "modell": "Low Arm - Sofa cm 268",
+          "w": 268,
+          "d": 110,
+          "h": 86
+        },
+        {
+          "modell": "Rainbow - Angled sofa cm 330",
+          "w": 330,
+          "d": 146,
+          "h": 86
+        },
+        {
+          "modell": "Rainbow - Angled sofa cm 342",
+          "w": 342,
+          "d": 132,
+          "h": 86
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-hamilton": {
+      "w": 180,
+      "d": 104,
+      "h": 73,
+      "quelle": "https://www.minotti.com/downloads/464/1878/HAMILTON_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/hamilton",
+      "dokument": "src/lib/sofaplaner/minotti/hamilton.json",
+      "modell": "Sofa 180 cm",
+      "element": "HAM-SOFA-180",
+      "familie": "Hamilton",
+      "alternativen": [
+        {
+          "modell": "Sofa 208 cm",
+          "w": 208,
+          "d": 104,
+          "h": 73
+        },
+        {
+          "modell": "Sofà 236 cm",
+          "w": 236,
+          "d": 104,
+          "h": 73
+        },
+        {
+          "modell": "Sofa 280 cm",
+          "w": 280,
+          "d": 104,
+          "h": 73
+        },
+        {
+          "modell": "Sofà 314 cm (2 Armlehnen)",
+          "w": 314,
+          "d": 104,
+          "h": 73
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-lars": {
+      "w": 217,
+      "d": 100,
+      "h": 74,
+      "quelle": "https://www.minotti.com/downloads/20588/21557/LARS_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/lars",
+      "dokument": "src/lib/sofaplaner/minotti/lars.json",
+      "modell": "SEMI-ROUND SOFA CM 217",
+      "element": "semi-round-sofa-cm-217",
+      "familie": "Lars",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-lawrence": {
+      "w": 224,
+      "d": 112,
+      "h": 82,
+      "quelle": "https://www.minotti.com/downloads/13189/10713/LAWRENCE_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/lawrence",
+      "dokument": "src/lib/sofaplaner/minotti/lawrence.json",
+      "modell": "Sofa 224 cm, hohe Armlehne",
+      "element": "LAW90-SOFA-224",
+      "familie": "Lawrence",
+      "alternativen": [
+        {
+          "modell": "Sofa 234 cm, niedrige Armlehne",
+          "w": 234,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 314 cm, hohe Armlehne",
+          "w": 314,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 324 cm, niedrige Armlehne",
+          "w": 324,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 404 cm, hohe Armlehne",
+          "w": 404,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 414 cm, niedrige Armlehne",
+          "w": 414,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Ecksofa 319 cm (DX)",
+          "w": 319,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 204 cm, hohe Armlehne",
+          "w": 204,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 214 cm, niedrige Armlehne",
+          "w": 214,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 284 cm, hohe Armlehne",
+          "w": 284,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Ecksofa 294 cm, hohe Armlehne (DX)",
+          "w": 294,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 364 cm, hohe Armlehne",
+          "w": 364,
+          "d": 112,
+          "h": 82
+        },
+        {
+          "modell": "Sofa 374 cm, niedrige Armlehne",
+          "w": 374,
+          "d": 112,
+          "h": 82
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-leslie-sofa": {
+      "w": 156,
+      "d": 87,
+      "h": 75,
+      "quelle": "https://www.minotti.com/downloads/429/1599/LESLIE_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/leslie-sofa",
+      "dokument": "src/lib/sofaplaner/minotti/leslie-sofa.json",
+      "modell": "Sofa 156 cm",
+      "element": "LES-SOFA-156",
+      "familie": "Leslie Sofa",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-lido-dining": {
+      "w": 66,
+      "d": 67,
+      "h": 81,
+      "quelle": "https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/lido_sofa",
+      "dokument": "src/lib/sofaplaner/minotti/lido.json",
+      "modell": "DINING LITTLE ARMCHAIR",
+      "element": "dining-little-armchair",
+      "familie": "Lido",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-lido-sofas": {
+      "w": 183,
+      "d": 99,
+      "h": 85,
+      "quelle": "https://www.minotti.com/downloads/20592/21343/LIDO_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/lido_sofa",
+      "dokument": "src/lib/sofaplaner/minotti/lido.json",
+      "modell": "SOFA WITH LEGS",
+      "element": "sofa-with-legs",
+      "familie": "Lido",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-powell": {
+      "w": 175,
+      "d": 98,
+      "h": 88,
+      "quelle": "https://www.minotti.com/downloads/447/1861/POWELL_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/powell_3",
+      "dokument": "src/lib/sofaplaner/minotti/powell.json",
+      "modell": "Sofa 175 cm",
+      "element": "POW-SOFA-175",
+      "familie": "Powell",
+      "alternativen": [
+        {
+          "modell": "Sofa 215 cm",
+          "w": 215,
+          "d": 98,
+          "h": 88
+        },
+        {
+          "modell": "Sofa 255 cm",
+          "w": 255,
+          "d": 98,
+          "h": 88
+        },
+        {
+          "modell": "Sofa 275 cm",
+          "w": 275,
+          "d": 98,
+          "h": 88
+        },
+        {
+          "modell": "Sofa 295 cm",
+          "w": 295,
+          "d": 98,
+          "h": 88
+        },
+        {
+          "modell": "Sofa 310 cm (2 × Endelement 155)",
+          "w": 310,
+          "d": 98,
+          "h": 88
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-reeves-lounge-sofa": {
+      "w": 170,
+      "d": 78,
+      "h": 72,
+      "quelle": "https://www.minotti.com/en/reeves-lounge-sofa",
+      "produktseite": "https://www.minotti.com/en/reeves-lounge-sofa",
+      "dokument": "src/lib/sofaplaner/minotti/reeves-lounge-sofa.json",
+      "modell": "Lounge-Sofa 170 cm",
+      "element": "REE-LOUNGE-170",
+      "familie": "Reeves \"Lounge sofa\"",
+      "alternativen": [
+        {
+          "modell": "Halbrundes Lounge-Sofa 170 cm",
+          "w": 170,
+          "d": 94,
+          "h": 68
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-reeves-semi-round-lounge-sofa": {
+      "w": 170,
+      "d": 94,
+      "h": 68,
+      "quelle": "https://www.minotti.com/en/reeves-semi-round-lounge-sofa",
+      "produktseite": "https://www.minotti.com/en/reeves-semi-round-lounge-sofa",
+      "dokument": "src/lib/sofaplaner/minotti/reeves-semi-round-lounge-sofa.json",
+      "modell": "Halbrundes Lounge-Sofa 170 cm",
+      "element": "REE-SEMIROUND-170",
+      "familie": "Reeves \"Semi-round Lounge Sofa\"",
+      "alternativen": [],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-riley": {
+      "w": 242,
+      "d": 112,
+      "h": 85,
+      "quelle": "https://www.minotti.com/downloads/25029/28178/RILEY_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/riley",
+      "dokument": "src/lib/sofaplaner/minotti/riley.json",
+      "modell": "Sofa 242 cm",
+      "element": "RILEY-SOFA-242",
+      "familie": "Riley",
+      "alternativen": [
+        {
+          "modell": "Sofa 262 cm",
+          "w": 262,
+          "d": 112,
+          "h": 85
+        },
+        {
+          "modell": "Sofa 282 cm",
+          "w": 282,
+          "d": 112,
+          "h": 85
+        },
+        {
+          "modell": "Sofa 302 cm",
+          "w": 302,
+          "d": 112,
+          "h": 85
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-roger-sofas": {
+      "w": 250,
+      "d": 101,
+      "h": 91,
+      "quelle": "https://www.minotti.com/downloads/18668/18533/ROGER_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/roger",
+      "dokument": "src/lib/sofaplaner/minotti/roger.json",
+      "modell": "SPRING - SOFA LOW CM 250",
+      "element": "spring-sofa-low-cm-250",
+      "familie": "Roger",
+      "alternativen": [
+        {
+          "modell": "SPRING - SOFA HIGH SQUARE CM 258",
+          "w": 258,
+          "d": 101,
+          "h": 91
+        },
+        {
+          "modell": "SPRING - SOFA LOW CM 274",
+          "w": 274,
+          "d": 101,
+          "h": 91
+        },
+        {
+          "modell": "SPRING - SOFA HIGH SQUARE CM 282",
+          "w": 282,
+          "d": 101,
+          "h": 91
+        },
+        {
+          "modell": "SPRING - SOFA LOW CM 298",
+          "w": 298,
+          "d": 101,
+          "h": 91
+        },
+        {
+          "modell": "SPRING - SOFA HIGH SQUARE CM 306",
+          "w": 306,
+          "d": 101,
+          "h": 91
+        },
+        {
+          "modell": "SPRING - SOFA HIGH SQUARE MIX CM 278",
+          "w": 278,
+          "d": 101,
+          "h": 91
+        },
+        {
+          "modell": "SPRING - SOFA HIGH SQUARE MIX CM 302",
+          "w": 302,
+          "d": 101,
+          "h": 91
+        },
+        {
+          "modell": "SPRING - DAYBED-SOFA HIGH MIX WITH CASE CM 274",
+          "w": 274,
+          "d": 121,
+          "h": 91
+        },
+        {
+          "modell": "SPRING - DAYBED-SOFA HIGH SQUARE MIX WITH CASE CM 278",
+          "w": 278,
+          "d": 121,
+          "h": 91
+        },
+        {
+          "modell": "SPRING - DAYBED-SOFA HIGH MIX WITH CASE CM 298",
+          "w": 298,
+          "d": 121,
+          "h": 91
+        },
+        {
+          "modell": "SPRING - DAYBED-SOFA HIGH SQUARE MIX WITH CASE CM 302",
+          "w": 302,
+          "d": 121,
+          "h": 91
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-saki-sofas": {
+      "w": 180,
+      "d": 91,
+      "h": 71,
+      "quelle": "https://www.minotti.com/downloads/25031/28179/SAKI_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/saki",
+      "dokument": "src/lib/sofaplaner/minotti/saki.json",
+      "modell": "Sofa 180x91 cm",
+      "element": "saki-sofa-180x91",
+      "familie": "Saki",
+      "alternativen": [
+        {
+          "modell": "Sofa 254x91 cm",
+          "w": 254,
+          "d": 91,
+          "h": 71
+        },
+        {
+          "modell": "Corner sofa 180x95 cm",
+          "w": 180,
+          "d": 95,
+          "h": 71
+        },
+        {
+          "modell": "Corner sofa 254x95 cm",
+          "w": 254,
+          "d": 95,
+          "h": 71
+        },
+        {
+          "modell": "Corner sofa 328x95 cm",
+          "w": 328,
+          "d": 95,
+          "h": 71
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-seymour": {
+      "w": 220,
+      "d": 110,
+      "h": 76,
+      "quelle": "https://www.minotti.com/downloads/432/1851/SEYMOUR_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/seymour_2",
+      "dokument": "src/lib/sofaplaner/minotti/seymour.json",
+      "modell": "Sofa High 220 cm",
+      "element": "SEY-SOFA-HIGH-220",
+      "familie": "Seymour",
+      "alternativen": [
+        {
+          "modell": "Sofa Mix 212 cm",
+          "w": 212,
+          "d": 110,
+          "h": 76
+        },
+        {
+          "modell": "Sofa Low 204 cm",
+          "w": 204,
+          "d": 102,
+          "h": 70
+        },
+        {
+          "modell": "Open-Sofa Mix 262 cm (Rücken 190 cm)",
+          "w": 262,
+          "d": 110,
+          "h": 76
+        },
+        {
+          "modell": "Open-Sofa Low 254 cm (Rücken 182 cm)",
+          "w": 254,
+          "d": 102,
+          "h": 70
+        },
+        {
+          "modell": "Open-Sofa Mix 292 cm (Rücken 190 cm)",
+          "w": 292,
+          "d": 110,
+          "h": 76
+        },
+        {
+          "modell": "Open-Sofa Low 284 cm (Rücken 142 cm)",
+          "w": 284,
+          "d": 102,
+          "h": 70
+        },
+        {
+          "modell": "Sofa Mix 300 cm",
+          "w": 300,
+          "d": 110,
+          "h": 76
+        },
+        {
+          "modell": "Halbrundes Sofa Mix 315 cm",
+          "w": 315,
+          "d": 204,
+          "h": 76
+        },
+        {
+          "modell": "Halbrundes Sofa Mix 323 cm",
+          "w": 323,
+          "d": 212,
+          "h": 76
+        },
+        {
+          "modell": "Halbrundes Sofa Low 307 cm",
+          "w": 307,
+          "d": 203,
+          "h": 70
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-torii-sofas": {
+      "w": 184,
+      "d": 92,
+      "h": 87,
+      "quelle": "https://www.minotti.com/downloads/16947/15879/TORII_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/torii",
+      "dokument": "src/lib/sofaplaner/minotti/torii.json",
+      "modell": "SOFA LOW CM 184",
+      "element": "sofa-low-cm-184",
+      "familie": "Torii",
+      "alternativen": [
+        {
+          "modell": "ANGLED SOFA LOW CM 220",
+          "w": 220,
+          "d": 105,
+          "h": 87
+        },
+        {
+          "modell": "SOFA LOW CM 198",
+          "w": 198,
+          "d": 92,
+          "h": 87
+        },
+        {
+          "modell": "SOFA HIGH CM 198",
+          "w": 198,
+          "d": 92,
+          "h": 96
+        },
+        {
+          "modell": "SOFA LOW CM 244",
+          "w": 244,
+          "d": 92,
+          "h": 87
+        },
+        {
+          "modell": "SOFA HIGH CM 244",
+          "w": 244,
+          "d": 92,
+          "h": 96
+        },
+        {
+          "modell": "SOFA LOW CM 292",
+          "w": 292,
+          "d": 92,
+          "h": 87
+        },
+        {
+          "modell": "SOFA HIGH CM 292",
+          "w": 292,
+          "d": 92,
+          "h": 96
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-torii-sofas-2": {
+      "w": 220,
+      "d": 105,
+      "h": 87,
+      "quelle": "https://www.minotti.com/downloads/16947/15879/TORII_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/torii",
+      "dokument": "src/lib/sofaplaner/minotti/torii.json",
+      "modell": "ANGLED SOFA LOW CM 220",
+      "element": "angled-sofa-low-cm-220",
+      "familie": "Torii",
+      "alternativen": [
+        {
+          "modell": "SOFA LOW CM 184",
+          "w": 184,
+          "d": 92,
+          "h": 87
+        },
+        {
+          "modell": "SOFA LOW CM 198",
+          "w": 198,
+          "d": 92,
+          "h": 87
+        },
+        {
+          "modell": "SOFA HIGH CM 198",
+          "w": 198,
+          "d": 92,
+          "h": 96
+        },
+        {
+          "modell": "SOFA LOW CM 244",
+          "w": 244,
+          "d": 92,
+          "h": 87
+        },
+        {
+          "modell": "SOFA HIGH CM 244",
+          "w": 244,
+          "d": 92,
+          "h": 96
+        },
+        {
+          "modell": "SOFA LOW CM 292",
+          "w": 292,
+          "d": 92,
+          "h": 87
+        },
+        {
+          "modell": "SOFA HIGH CM 292",
+          "w": 292,
+          "d": 92,
+          "h": 96
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-torii-sofas-3": {
+      "w": 198,
+      "d": 92,
+      "h": 87,
+      "quelle": "https://www.minotti.com/downloads/16947/15879/TORII_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/torii",
+      "dokument": "src/lib/sofaplaner/minotti/torii.json",
+      "modell": "SOFA LOW CM 198",
+      "element": "sofa-low-cm-198",
+      "familie": "Torii",
+      "alternativen": [
+        {
+          "modell": "SOFA LOW CM 184",
+          "w": 184,
+          "d": 92,
+          "h": 87
+        },
+        {
+          "modell": "ANGLED SOFA LOW CM 220",
+          "w": 220,
+          "d": 105,
+          "h": 87
+        },
+        {
+          "modell": "SOFA HIGH CM 198",
+          "w": 198,
+          "d": 92,
+          "h": 96
+        },
+        {
+          "modell": "SOFA LOW CM 244",
+          "w": 244,
+          "d": 92,
+          "h": 87
+        },
+        {
+          "modell": "SOFA HIGH CM 244",
+          "w": 244,
+          "d": 92,
+          "h": 96
+        },
+        {
+          "modell": "SOFA LOW CM 292",
+          "w": 292,
+          "d": 92,
+          "h": 87
+        },
+        {
+          "modell": "SOFA HIGH CM 292",
+          "w": 292,
+          "d": 92,
+          "h": 96
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-west-sofas": {
+      "w": 228,
+      "d": 114,
+      "h": 79,
+      "quelle": "https://www.minotti.com/downloads/15721/14209/WEST_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/west",
+      "dokument": "src/lib/sofaplaner/minotti/west.json",
+      "modell": "Sofa cm 228 - seat cushion cm 85",
+      "element": "sofa-cm-228-seat-cushion-cm-85",
+      "familie": "West",
+      "alternativen": [
+        {
+          "modell": "Corner sofa cm 313 - seat cushion cm 85",
+          "w": 313,
+          "d": 114,
+          "h": 79
+        },
+        {
+          "modell": "Corner sofa cm 293 - seat cushion cm 85",
+          "w": 293,
+          "d": 114,
+          "h": 79
+        },
+        {
+          "modell": "Sofa cm 208 - seat cushion cm 75",
+          "w": 208,
+          "d": 114,
+          "h": 79
+        },
+        {
+          "modell": "Sofa cm 283 - seat cushion cm 75",
+          "w": 283,
+          "d": 114,
+          "h": 79
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-white": {
+      "w": 195,
+      "d": 103,
+      "h": 89,
+      "quelle": "https://www.minotti.com/downloads/442/8931/WHITE_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/white_2",
+      "dokument": "src/lib/sofaplaner/minotti/white.json",
+      "modell": "White Sofà 195 cm",
+      "element": "WHT-SF-SOFA-195",
+      "familie": "White",
+      "alternativen": [
+        {
+          "modell": "White Sofà 220 cm",
+          "w": 220,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 245 cm (Tiefe 103)",
+          "w": 245,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 270 cm (Tiefe 103)",
+          "w": 270,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 290 cm (Tiefe 103)",
+          "w": 290,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 320 cm (Tiefe 103)",
+          "w": 320,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 340 cm (Tiefe 103)",
+          "w": 340,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "White Sofà 170 cm",
+          "w": 170,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "White Sofà 145 cm",
+          "w": 145,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "White Sofà 160 cm",
+          "w": 160,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 246 cm (Tiefe 123)",
+          "w": 246,
+          "d": 123,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 349 cm (Tiefe 123)",
+          "w": 349,
+          "d": 123,
+          "h": 89
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-white-saddle-hide": {
+      "w": 195,
+      "d": 103,
+      "h": 89,
+      "quelle": "https://www.minotti.com/downloads/1951/8932/WHITE%20SADDLE_HIDE_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/white-base-cuoio",
+      "dokument": "src/lib/sofaplaner/minotti/white-base-cuoio.json",
+      "modell": "Sofà 195 cm",
+      "element": "WHS103-SOFA-195",
+      "familie": "White \"Saddle-Hide\"",
+      "alternativen": [
+        {
+          "modell": "Sofà 195 cm mit Ablage-Top 44×44 (am Rücken)",
+          "w": 195,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofà 220 cm mit Ablage-Top 44×44 (am Rücken)",
+          "w": 220,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 245 cm (Tiefe 103)",
+          "w": 245,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 270 cm (Tiefe 103)",
+          "w": 270,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 320 cm (Tiefe 103)",
+          "w": 320,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 340 cm (Tiefe 103)",
+          "w": 340,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofà 217 cm mit Ablage-Top 44×79",
+          "w": 217,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofà 242 cm mit Ablage-Top 44×79",
+          "w": 242,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofà 267 cm mit Ablage-Top 44×79",
+          "w": 267,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofa mit 1 Armlehne und Ablage-Top 44×82 – 292 cm",
+          "w": 292,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofà 145 cm",
+          "w": 145,
+          "d": 103,
+          "h": 89
+        },
+        {
+          "modell": "Sofà 160 cm",
+          "w": 160,
+          "d": 103,
+          "h": 89
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-yang": {
+      "w": 180,
+      "d": 105,
+      "h": 78,
+      "quelle": "https://www.minotti.com/downloads/433/8803/YANG_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/yang_2",
+      "dokument": "src/lib/sofaplaner/minotti/yang.json",
+      "modell": "Sofa 180 cm",
+      "element": "YNG-SOFA-180",
+      "familie": "Yang",
+      "alternativen": [
+        {
+          "modell": "Sofa 210 cm",
+          "w": 210,
+          "d": 105,
+          "h": 78
+        },
+        {
+          "modell": "Sofa 230 cm",
+          "w": 230,
+          "d": 105,
+          "h": 78
+        },
+        {
+          "modell": "Daybed-Sofa 260 cm, Rücken 180 cm",
+          "w": 260,
+          "d": 105,
+          "h": 78
+        },
+        {
+          "modell": "Daybed-Sofa 290 cm, Rücken 185 cm",
+          "w": 290,
+          "d": 105,
+          "h": 78
+        },
+        {
+          "modell": "Sofa komponiert 310 cm",
+          "w": 310,
+          "d": 105,
+          "h": 78
+        },
+        {
+          "modell": "Sofa komponiert 370 cm",
+          "w": 370,
+          "d": 105,
+          "h": 78
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-yves": {
+      "w": 248,
+      "d": 113,
+      "h": 82,
+      "quelle": "https://www.minotti.com/downloads/23289/25491/YVES_YVES_SUITE_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/yves",
+      "dokument": "src/lib/sofaplaner/minotti/yves.json",
+      "modell": "SUITE - Sofa MIX 248 cm",
+      "element": "yves-suite-sofa-mix-248",
+      "familie": "Yves",
+      "alternativen": [
+        {
+          "modell": "SUITE - Daybed-Sofa MIX 248 cm",
+          "w": 248,
+          "d": 113,
+          "h": 82
+        },
+        {
+          "modell": "SUITE - Daybed-Sofa MIX 274 cm",
+          "w": 274,
+          "d": 113,
+          "h": 82
+        },
+        {
+          "modell": "SUITE - Daybed-Sofa MIX 300 cm",
+          "w": 300,
+          "d": 113,
+          "h": 82
+        },
+        {
+          "modell": "SUITE - Daybed-Sofa MIX 326 cm",
+          "w": 326,
+          "d": 113,
+          "h": 82
+        },
+        {
+          "modell": "BEND - Sofa MIX 300x140 cm",
+          "w": 300,
+          "d": 140,
+          "h": 82
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "stools-torii-bold-stools": {
+      "w": 152,
+      "d": 59,
+      "h": 41,
+      "quelle": "https://www.minotti.com/en/torii-bold",
+      "produktseite": "https://www.minotti.com/en/torii-bold",
+      "dokument": "src/lib/sofaplaner/minotti/torii-bold.json",
+      "modell": "Ottoman cm 152x59 - fixed",
+      "element": "torii-bold-ottoman-cm-152x59-fixed",
+      "familie": "Torii Bold",
+      "alternativen": [
+        {
+          "modell": "Angled ottoman cm 94x56 - fixed",
+          "w": 94,
+          "d": 56,
+          "h": 41
+        },
+        {
+          "modell": "Angled ottoman cm 152x68 - fixed",
+          "w": 152,
+          "d": 68,
+          "h": 41
+        },
+        {
+          "modell": "LARGE Ottoman Ø cm 77 - fixed",
+          "w": 77,
+          "d": 77,
+          "h": 41
+        },
+        {
+          "modell": "MEDIUM Ottoman Ø cm 71 - fixed",
+          "w": 71,
+          "d": 71,
+          "h": 41
+        },
+        {
+          "modell": "SMALL Ottoman Ø cm 65 - fixed",
+          "w": 65,
+          "d": 65,
+          "h": 41
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sun-loungers-foxx-lounger": {
+      "w": 75,
+      "d": 200,
+      "h": 45,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_FOXX.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_FOXX.pdf",
+      "modell": "Liege mit Onlay, stapelbar",
+      "hoeheHinweis": "gemessen an der Liegefläche; mit aufgestellter Rückenlehne höher, diesen Wert nennt das Datenblatt nicht",
+      "hoeheBeleg": "Datenblatt FOXX S. 2: H 45 cm, Bemaßung 45 cm an der Liegefläche, Rückenlehne aufgestellt gezeichnet",
+      "geprueft": "2026-10-27"
+    },
+    "sun-loungers-jazz-lounger": {
+      "w": 73,
+      "d": 200,
+      "h": 50,
+      "quelle": "https://solpuri.com/wp-content/uploads/2024/01/Aufsteller24_A4_JAZZ.pdf",
+      "dokument": "Herstellermaterial/Solpuri/datenblaetter/Solpuri_Datenblatt_JAZZ.pdf",
+      "modell": "Liege inkl. Nackenrolle",
+      "hoeheHinweis": "mit flacher Rückenlehne und Nackenrolle; Liegefläche 32 cm",
+      "hoeheBeleg": "Datenblatt JAZZ S. 2: Zeichnung der Liege mit flacher Rückenlehne, H 50 cm, Bemaßung 32 cm an der Liegefläche",
+      "geprueft": "2026-10-27"
+    },
+    "tables-alexander": {
+      "w": 229,
+      "d": 105,
+      "h": 83,
+      "quelle": "https://www.minotti.com/downloads/14458/12637/ALEXANDER_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/alexander",
+      "dokument": "src/lib/sofaplaner/minotti/alexander.json",
+      "modell": "SOFA MIX CM 229",
+      "element": "alexander-sofa-mix-229",
+      "familie": "Alexander",
+      "alternativen": [
+        {
+          "modell": "SOFA MIX CM 254",
+          "w": 254,
+          "d": 105,
+          "h": 83
+        },
+        {
+          "modell": "DROP - SOFA MIX CM 274",
+          "w": 274,
+          "d": 105,
+          "h": 83
+        },
+        {
+          "modell": "DROP - SOFA MIX CM 304",
+          "w": 304,
+          "d": 105,
+          "h": 83
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-andersen-slim-103": {
+      "w": 186,
+      "d": 103,
+      "h": 85,
+      "quelle": "https://www.minotti.com/downloads/1959/8740/ANDERSEN_SLIM_103_103_QUILT_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/andersen-slim-103",
+      "dokument": "src/lib/sofaplaner/minotti/andersen-slim-103.json",
+      "modell": "Sofa 186 cm",
+      "element": "AS103-SOFA-186",
+      "familie": "Andersen Slim 103",
+      "alternativen": [
+        {
+          "modell": "Sofa 227 cm",
+          "w": 227,
+          "d": 103,
+          "h": 85
+        },
+        {
+          "modell": "Sofa 288 cm",
+          "w": 288,
+          "d": 103,
+          "h": 85
+        },
+        {
+          "modell": "Sofa 316 cm",
+          "w": 316,
+          "d": 103,
+          "h": 85
+        },
+        {
+          "modell": "Sofa 372 cm",
+          "w": 372,
+          "d": 103,
+          "h": 85
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-andersen-slim-103-quilt": {
+      "w": 186,
+      "d": 103,
+      "h": 73,
+      "quelle": "https://www.minotti.com/downloads/1960/8739/ANDERSEN_SLIM_103_103_QUILT_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/andersen-slim-103-quilt",
+      "dokument": "src/lib/sofaplaner/minotti/andersen-slim-103-quilt.json",
+      "modell": "Sofa 186 cm",
+      "element": "AS103Q-SOFA-186",
+      "familie": "Andersen Slim 103 \"Quilt\"",
+      "alternativen": [
+        {
+          "modell": "Sofa 227 cm",
+          "w": 227,
+          "d": 103,
+          "h": 73
+        },
+        {
+          "modell": "Sofa 288 cm",
+          "w": 288,
+          "d": 103,
+          "h": 73
+        },
+        {
+          "modell": "Sofa 316 cm",
+          "w": 316,
+          "d": 103,
+          "h": 73
+        },
+        {
+          "modell": "Sofa 372 cm",
+          "w": 372,
+          "d": 103,
+          "h": 73
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-andersen-slim-90": {
+      "w": 158,
+      "d": 90,
+      "h": 85,
+      "quelle": "https://www.minotti.com/downloads/1961/8737/ANDERSEN_SLIM_90_90_QUILT_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/andersen-slim-90",
+      "dokument": "src/lib/sofaplaner/minotti/andersen-slim-90.json",
+      "modell": "Sofa 158 cm",
+      "element": "AS90-SOFA-158",
+      "familie": "Andersen Slim 90",
+      "alternativen": [
+        {
+          "modell": "Sofa 186 cm",
+          "w": 186,
+          "d": 90,
+          "h": 85
+        },
+        {
+          "modell": "Sofa 227 cm",
+          "w": 227,
+          "d": 90,
+          "h": 85
+        },
+        {
+          "modell": "Sofa 316 cm",
+          "w": 316,
+          "d": 90,
+          "h": 85
+        },
+        {
+          "modell": "Sofa 372 cm",
+          "w": 372,
+          "d": 90,
+          "h": 85
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-andersen-slim-90-quilt": {
+      "w": 158,
+      "d": 90,
+      "h": 73,
+      "quelle": "https://www.minotti.com/downloads/1962/8738/ANDERSEN_SLIM_90_90_QUILT_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/andersen-slim-90-quilt",
+      "dokument": "src/lib/sofaplaner/minotti/andersen-slim-90-quilt.json",
+      "modell": "Sofa 158 cm",
+      "element": "AS90Q-SOFA-158",
+      "familie": "Andersen Slim 90 „Quilt“",
+      "alternativen": [
+        {
+          "modell": "Sofa 186 cm",
+          "w": 186,
+          "d": 90,
+          "h": 73
+        },
+        {
+          "modell": "Sofa 227 cm",
+          "w": 227,
+          "d": 90,
+          "h": 73
+        },
+        {
+          "modell": "Kompositionssofa 316 cm (2 × Endelement 158)",
+          "w": 316,
+          "d": 90,
+          "h": 73
+        },
+        {
+          "modell": "Kompositionssofa 372 cm (2 × Endelement 186)",
+          "w": 372,
+          "d": 90,
+          "h": 73
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-connery": {
+      "w": 214,
+      "d": 102,
+      "h": 88,
+      "quelle": "https://www.minotti.com/downloads/16945/15898/CONNERY_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/connery",
+      "dokument": "src/lib/sofaplaner/minotti/connery.json",
+      "modell": "Sofa 214 cm",
+      "element": "CON83-SOFA-214",
+      "familie": "Connery",
+      "alternativen": [
+        {
+          "modell": "Sofa 297 cm",
+          "w": 297,
+          "d": 102,
+          "h": 88
+        },
+        {
+          "modell": "Sofa mit Flap 230 cm",
+          "w": 230,
+          "d": 102,
+          "h": 88
+        },
+        {
+          "modell": "Sofa mit Flap 313 cm",
+          "w": 313,
+          "d": 102,
+          "h": 88
+        },
+        {
+          "modell": "Sofa 184 cm",
+          "w": 184,
+          "d": 102,
+          "h": 88
+        },
+        {
+          "modell": "Sofa 252 cm",
+          "w": 252,
+          "d": 102,
+          "h": 88
+        },
+        {
+          "modell": "Sofa mit Flap 200 cm",
+          "w": 200,
+          "d": 102,
+          "h": 88
+        },
+        {
+          "modell": "Sofa mit Flap 268 cm",
+          "w": 268,
+          "d": 102,
+          "h": 88
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-coupe-tables": {
+      "w": 240,
+      "d": 109,
+      "h": 68,
+      "quelle": "https://www.minotti.com/downloads/25027/28165/COUPE_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/coupe",
+      "dokument": "src/lib/sofaplaner/minotti/coupe.json",
+      "modell": "Sofa 240 cm",
+      "element": "COUPE-SOFA-240",
+      "familie": "Coupé",
+      "alternativen": [
+        {
+          "modell": "Sofa 268 cm",
+          "w": 268,
+          "d": 109,
+          "h": 68
+        },
+        {
+          "modell": "Sofa 296 cm",
+          "w": 296,
+          "d": 109,
+          "h": 68
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-coupe-tables-2": {
+      "w": 268,
+      "d": 109,
+      "h": 68,
+      "quelle": "https://www.minotti.com/downloads/25027/28165/COUPE_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/coupe",
+      "dokument": "src/lib/sofaplaner/minotti/coupe.json",
+      "modell": "Sofa 268 cm",
+      "element": "COUPE-SOFA-268",
+      "familie": "Coupé",
+      "alternativen": [
+        {
+          "modell": "Sofa 240 cm",
+          "w": 240,
+          "d": 109,
+          "h": 68
+        },
+        {
+          "modell": "Sofa 296 cm",
+          "w": 296,
+          "d": 109,
+          "h": 68
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-freeman": {
+      "w": 182,
+      "d": 112,
+      "h": 89,
+      "quelle": "https://www.minotti.com/downloads/420/1873/FREEMAN_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/freeman-seating-system",
+      "dokument": "src/lib/sofaplaner/minotti/freeman.json",
+      "modell": "Sofa „Duvet“ 182 cm",
+      "element": "FRD-SOFA-182",
+      "familie": "Freeman",
+      "alternativen": [
+        {
+          "modell": "Sofa 224 cm („Tailor“)",
+          "w": 224,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Sofa „Duvet“ 245 cm",
+          "w": 245,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Sofa zusammengesetzt 308 cm („Tailor“)",
+          "w": 308,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Sofa „Duvet“ zusammengesetzt 392 cm",
+          "w": 392,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 84 cm („Tailor Wing“)",
+          "w": 84,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 126 cm („Tailor Wing“)",
+          "w": 126,
+          "d": 112,
+          "h": 89
+        },
+        {
+          "modell": "Sofa 168 cm mit 2 Rücken à 84 cm („Tailor Wing“)",
+          "w": 168,
+          "d": 112,
+          "h": 89
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-horizonte-tables": {
+      "w": 254,
+      "d": 106,
+      "h": 85,
+      "quelle": "https://www.minotti.com/en/horizonte",
+      "produktseite": "https://www.minotti.com/en/horizonte",
+      "dokument": "src/lib/sofaplaner/minotti/horizonte.json",
+      "modell": "SOFA CM 254",
+      "element": "horizonte-sofa-cm-254",
+      "familie": "Horizonte",
+      "alternativen": [
+        {
+          "modell": "SOFA CM 280",
+          "w": 280,
+          "d": 106,
+          "h": 85
+        },
+        {
+          "modell": "SOFA CM 306",
+          "w": 306,
+          "d": 106,
+          "h": 85
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-tape-tables": {
+      "w": 163,
+      "d": 78,
+      "h": 74.5,
+      "quelle": "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/tape_2",
+      "dokument": "src/lib/sofaplaner/minotti/tape.json",
+      "modell": "SOFA CM 163",
+      "element": "tape-sofa-163",
+      "familie": "Tape",
+      "alternativen": [
+        {
+          "modell": "SOFA CM 228",
+          "w": 228,
+          "d": 79,
+          "h": 74.5
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-tape-tables-2": {
+      "w": 228,
+      "d": 79,
+      "h": 74.5,
+      "quelle": "https://www.minotti.com/downloads/14462/12641/TAPE_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/tape_2",
+      "dokument": "src/lib/sofaplaner/minotti/tape.json",
+      "modell": "SOFA CM 228",
+      "element": "tape-sofa-228",
+      "familie": "Tape",
+      "alternativen": [
+        {
+          "modell": "SOFA CM 163",
+          "w": 163,
+          "d": 78,
+          "h": 74.5
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "tables-yves-sofa": {
+      "w": 248,
+      "d": 100,
+      "h": 82,
+      "quelle": "https://www.minotti.com/downloads/23291/25494/YVES_SOFA_TECHNICAL_SHEET.pdf",
+      "produktseite": "https://www.minotti.com/en/yves-sof%C3%A0",
+      "dokument": "src/lib/sofaplaner/minotti/yves-sofa.json",
+      "modell": "Sofa 248",
+      "element": "YS-SOFA-248",
+      "familie": "Yves Sofà",
+      "alternativen": [
+        {
+          "modell": "Lounge: Sofa 274",
+          "w": 274,
+          "d": 100,
+          "h": 82
+        },
+        {
+          "modell": "Lounge: Sofa 300",
+          "w": 300,
+          "d": 100,
+          "h": 82
+        },
+        {
+          "modell": "Sofa geneigt 268",
+          "w": 268,
+          "d": 155,
+          "h": 82
+        },
+        {
+          "modell": "Lounge: Sofa geneigt 306x165",
+          "w": 306,
+          "d": 165,
+          "h": 82
+        },
+        {
+          "modell": "Lounge: Lounge-Sofa 190x120",
+          "w": 190,
+          "d": 120,
+          "h": 82
+        },
+        {
+          "modell": "Lounge: Lounge-Sofa 220x128",
+          "w": 220,
+          "d": 128,
+          "h": 82
+        }
+      ],
+      "herkunft": "minotti-technical-sheet",
+      "geprueft": "2026-10-27"
+    },
+    "sofas-couches-lota-sofa": {
+      "w": 240,
+      "d": 95,
+      "h": 85,
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Lota-Sofa-Product-Sheet.pdf",
+      "dokument": "Herstellermaterial/ClassiCon/datenblaetter/ClassiCon-Lota-Sofa-Product-Sheet.pdf",
+      "modell": "Lota Sofa (Tiefe 95 cm mit Kissen, Gestell 88 cm)",
+      "herkunft": "classicon-product-sheet",
+      "geprueft": "2026-10-28"
+    },
+    "armchairs-stools-bibendum-armchair": {
+      "w": 90,
+      "d": 79,
+      "h": 72,
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Bibendum-Armchair-Product-Sheet.pdf",
+      "dokument": "Herstellermaterial/ClassiCon/datenblaetter/ClassiCon-Bibendum-Armchair-Product-Sheet.pdf",
+      "modell": "Bibendum Armchair",
+      "herkunft": "classicon-product-sheet",
+      "geprueft": "2026-10-28"
+    },
+    "chaise-longues-daybeds-day-bed": {
+      "w": 190,
+      "d": 86,
+      "h": 60,
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Day_Bed-Day_Bed_Grand-Product_Sheet.pdf",
+      "dokument": "Herstellermaterial/ClassiCon/datenblaetter/ClassiCon-Day_Bed-Day_Bed_Grand-Product_Sheet.pdf",
+      "modell": "Day Bed (Höhe mit Rückenbügel)",
+      "familie": "Day Bed",
+      "alternativen": [
+        {
+          "modell": "Day Bed Grand",
+          "w": 200,
+          "d": 90,
+          "h": 60
+        }
+      ],
+      "herkunft": "classicon-product-sheet",
+      "geprueft": "2026-10-28"
+    },
+    "chaise-longues-daybeds-day-bed-grand": {
+      "w": 200,
+      "d": 90,
+      "h": 60,
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Day_Bed-Day_Bed_Grand-Product_Sheet.pdf",
+      "dokument": "Herstellermaterial/ClassiCon/datenblaetter/ClassiCon-Day_Bed-Day_Bed_Grand-Product_Sheet.pdf",
+      "modell": "Day Bed Grand (Höhe mit Rückenbügel)",
+      "familie": "Day Bed",
+      "alternativen": [
+        {
+          "modell": "Day Bed",
+          "w": 190,
+          "d": 86,
+          "h": 60
+        }
+      ],
+      "herkunft": "classicon-product-sheet",
+      "geprueft": "2026-10-28"
+    },
+    "sofas-couches-odin-sofa": {
+      "w": 160,
+      "d": 70,
+      "h": 74,
+      "quelle": "https://www.classicon.com/files/classicon/Product%20Sheets/ClassiCon-Odin-Sofa-Product-Sheet.pdf",
+      "dokument": "Herstellermaterial/ClassiCon/datenblaetter/ClassiCon-Odin-Sofa-Product-Sheet.pdf",
+      "modell": "Odin 2-Sitzer (Grundriss oval, Quader = Hüllmaß)",
+      "herkunft": "classicon-product-sheet",
+      "geprueft": "2026-10-28"
+    }
+  }
+}

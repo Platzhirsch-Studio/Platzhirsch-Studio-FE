@@ -1,0 +1,7 @@
+{
+  "_hinweis": "R5-produkt, 26.10.2026: neuer Schlüssel shop.atelier.noPhoto (neutrale Fläche statt fremdem Ersatzfoto bei Produkten ohne Backoffice-Bild: Produktseite, Katalog-Kachel, OG-Bild). Bis zur Übernahme durch den Integrator (Runde 6) liest der Code ihn mit t.has() und fällt auf src/lib/shop/noPhoto.js (identischer Inhalt) zurück. IT ohne Anrede (weder tu noch Lei nötig).",
+  "de": { "shop": { "atelier": { "noPhoto": "Für dieses Stück liegt noch kein Foto vor" } } },
+  "en": { "shop": { "atelier": { "noPhoto": "There is no photo of this piece yet" } } },
+  "fr": { "shop": { "atelier": { "noPhoto": "Nous n’avons pas encore de photo de cette pièce" } } },
+  "it": { "shop": { "atelier": { "noPhoto": "Per questo pezzo non abbiamo ancora una foto" } } }
+}

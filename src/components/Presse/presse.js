@@ -1,52 +1,61 @@
-import React from "react";
-import Image from "next/image";
-import presseImage from "../../../public/Images/Presse/black-chair-and-desk.jpg";
-import { useTranslations } from "next-intl";
-import FadeInView from "@/components/Reusable/FadeInView";
+import { houseCrumb } from "@/components/UberUns/houseCrumb";
+import { Eyebrow, Heading, Section } from "@/components/ui";
+import { EMAIL, EMAIL_HREF, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
+import PageHeader from "@/components/UberUns/PageHeader";
+import useInhalt from "@/components/UberUns/inhalt/useInhalt";
+import { softHyphens } from "@/components/UberUns/softHyphens";
 
+// QM wm-fix4: flex-wrap – at 200 % text size the label ("E-Mail") moves above
+// the value instead of being split „E-M|ail“ beside it.
+const LINK =
+  "inline-flex min-h-11 flex-wrap items-center gap-x-2 text-text underline decoration-line-strong underline-offset-4 transition-colors duration-(--duration-micro) hover:decoration-current";
+
+// Press page opening + press contact (server component).
+// Rat 9,5 B5 (QA Recht −0,4): no photo without documented rights. The former
+// hero (cool-living-room.jpg or the CMS image) and the contact photo
+// (black-chair-and-desk.jpg) have freigabe "offen" in
+// Marktresearch/recht/bildrechte.csv and look like manufacturer images →
+// text-only opening, like the legal pages. A released photo can come back
+// once its row in bildrechte.csv is "erteilt".
 const Presse = () => {
-  const t = useTranslations('Press');
+  const { t } = useInhalt("press");
+  const common = useInhalt("common");
 
   return (
-    <div>
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-8 w-full px-6 mt-10 lg:mt-16 mb-10 lg:mb-16 max-w-7xl mx-auto">
-        {/* Text section with animation */}
-        <FadeInView
-          as="div"
-          direction="bottom"
-          duration={500}
-          distance={30}
-          className="w-full lg:w-1/2 order-2"
-        >
-          <p className="text-[#d1b250] uppercase tracking-widest font-semibold mb-4">
-            {t('header')}
-          </p>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#303030] leading-tight mb-6">
-            {t('title')}
-          </h2>
-          <p className="text-[#30373e]/80 leading-relaxed space-y-3">
-            {t('description')}
-          </p>
-        </FadeInView>
+    <>
+      <PageHeader
+        breadcrumbs={[{ label: common.t("home"), href: "/" }, houseCrumb(common.locale || "de"), { label: t("title") }]}
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        lead={t("lead")}
+      />
 
-        {/* Image section with animation and hover effect */}
-        <FadeInView
-          as="div"
-          direction="bottom"
-          duration={500}
-          distance={30}
-          className="relative w-full h-[250px] sm:h-[350px] lg:h-[700px] lg:w-[500px] overflow-hidden group"
-        >
-          <Image
-            src={presseImage}
-            alt={t('imageAlt')}
-            fill
-            sizes="(max-width: 768px) 90vw, 500px"
-            className="rounded-md transition-transform duration-500 group-hover:brightness-80 object-cover object-right"
-          />
-        </FadeInView>
-      </div>
-    </div>
+      <Section tone="band" labelledBy="press-contact">
+        <div className="grid grid-cols-1 gap-y-12 gap-x-grid lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-8 xl:col-start-2 xl:col-span-7">
+            <Eyebrow className="mb-stack-s">{t("contactEyebrow")}</Eyebrow>
+            <Heading id="press-contact" level={2}>
+              {t("contactTitle")}
+            </Heading>
+            <p className="mt-stack-m max-w-measure text-body text-text-soft">{softHyphens(t("contactText"))}</p>
+            <ul className="mt-stack-m text-ui">
+              <li>
+                <a href={EMAIL_HREF} className={`${LINK} break-all`}>
+                  <span className="text-text-soft">{common.t("email")}</span>
+                  <span>{EMAIL}</span>
+                </a>
+              </li>
+              <li>
+                <a href={PHONE_HREF} className={LINK}>
+                  <span className="text-text-soft">{common.t("phone")}</span>
+                  <span className="tabular">{PHONE_DISPLAY}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </Section>
+    </>
   );
 };
 

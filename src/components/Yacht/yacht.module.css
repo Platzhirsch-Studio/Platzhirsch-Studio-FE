@@ -1,0 +1,284 @@
+/* Yacht-Interieur – motion of the hero scene and the film band.
+   Design-Bibel §8: only transform, opacity and clip-path; atmosphere
+   600–2400 ms, never delays an action, never hides text. The H1 is not
+   animated. Everything stands still with prefers-reduced-motion or the
+   "Ruhige Ansicht" switch (html[data-motion="reduced"], §8.4). */
+
+@keyframes draw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes glow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hero layers (YachtHero.js Scene): lengths in SVG user units × the "meet"
+   scale of the scene, min(100cqw / 1600, 100cqh / 450) – drift 1.5 % of the
+   viewBox = 24 units, glide 84 units, horizon drawn from x = −4000 (−4800
+   from the centre). The layers are HTML boxes, so transform and opacity run
+   on the compositor (Tempo 30.10.2026: no repaint of sky, mask and water). */
+.scene {
+  container-type: size;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(calc(-24 * min(100cqw / 1600, 100cqh / 450)), 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes parallax {
+  from {
+    transform: translate3d(0, -4%, 0) scale(1.08);
+  }
+  to {
+    transform: translate3d(0, 4%, 0) scale(1.08);
+  }
+}
+
+@keyframes reveal {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes lights {
+  from {
+    opacity: 0.18;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hero stage: the lines draw themselves once (pathLength=1 on every shape),
+   the reflection settles, the windows glow – and with scroll-driven
+   animations they "switch on" while the visitor scrolls into the page. */
+@media (prefers-reduced-motion: no-preference) {
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .stroke {
+    stroke-dasharray: 1;
+    animation: dash 2200ms var(--ease-quiet-inout) 150ms both;
+  }
+  /* the horizon draws itself from the left end of the line (x = −4000):
+     scaleX from there shows exactly what clip-path inset(0 100% 0 0) on the
+     line showed, but as a compositor transform */
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .horizon {
+    transform-origin: calc(50% - 4800 * min(100cqw / 1600, 100cqh / 450)) 50%;
+    animation: reveal 1600ms var(--ease-quiet) both;
+  }
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .reflect {
+    animation: glow 2400ms var(--ease-drift) 900ms both;
+  }
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .windows {
+    animation: lights 1200ms var(--ease-drift) 1900ms both;
+  }
+  @supports (animation-timeline: scroll()) {
+    :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .windows {
+      /* Langschrift: die Kurzschrift + Timeline verwirft Chromium nach dem CSS-Compiler */
+      animation-name: lights;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 28vh;
+    }
+  }
+
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .draw {
+    animation: draw 1400ms var(--ease-quiet) 120ms both;
+  }
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .glow {
+    animation: glow 1200ms var(--ease-drift) 1000ms both;
+  }
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .drift {
+    animation: drift 2400ms var(--ease-drift) both;
+  }
+  @supports (animation-timeline: view()) {
+    :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .parallax {
+      /* Langschrift: die Kurzschrift + Timeline verwirft Chromium nach dem CSS-Compiler */
+      animation-name: parallax;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: var(--yacht-timeline, view());
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+
+/* Teak swatch: planks with caulking (CSS only, no image) */
+.teak {
+  background-color: #a8794f; /* oiled teak, = MATERIAL_TONES.teak */
+  background-image:
+    repeating-linear-gradient(0deg, var(--color-ink-deep) 0 2px, transparent 2px 26px),
+    repeating-linear-gradient(90deg, rgb(0 0 0 / 0.05) 0 1px, transparent 1px 7px);
+}
+
+/* Solution-dyed acrylic: fine weave */
+.weave {
+  background-color: var(--color-stone-deep);
+  background-image:
+    repeating-linear-gradient(45deg, rgb(255 255 255 / 0.35) 0 2px, transparent 2px 5px),
+    repeating-linear-gradient(-45deg, rgb(48 55 62 / 0.12) 0 2px, transparent 2px 5px);
+}
+
+/* Open-cell foam: drainage pores */
+.foam {
+  background-color: var(--color-bone);
+  background-image: radial-gradient(circle, rgb(48 55 62 / 0.22) 1.6px, transparent 2px);
+  background-size: 9px 9px;
+}
+
+/* Brushed stainless */
+.steel {
+  background-image: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.5) 0 1px, transparent 1px 3px),
+    linear-gradient(120deg, var(--color-stone-deep), var(--color-paper) 45%, var(--color-pebble));
+}
+
+/* Marine faux leather: quilted seat */
+.leather {
+  background-color: var(--color-linen);
+  background-image: radial-gradient(circle at 50% 50%, rgb(48 55 62 / 0.25) 1.5px, transparent 2px),
+    linear-gradient(135deg, rgb(255 255 255 / 0.35), transparent 60%);
+  background-size: 28px 28px, 100% 100%;
+}
+
+/* Linen / cotton sateen for the cabin */
+.linen {
+  background-color: var(--color-paper);
+  background-image: repeating-linear-gradient(0deg, rgb(48 55 62 / 0.06) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgb(48 55 62 / 0.05) 0 1px, transparent 1px 4px);
+}
+
+/* Werfthalle: loading shimmer over the poster still while 3D loads
+   (transform only; static with reduced motion – the "3D wird geladen" note
+   stays as the text signal). */
+@keyframes sweep {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+.shimmer {
+  overflow: hidden;
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgb(250 248 244 / 0.38) 50%, transparent 70%);
+  transform: translate3d(-100%, 0, 0);
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .shimmer::after {
+    animation: sweep 1800ms var(--ease-quiet-inout) infinite;
+  }
+}
+
+/* Hero: the boat glides in from the right (≈ 5 % of the stage) with its
+   reflection and waterline highlight – a slow camera move, once. */
+@keyframes glide {
+  from {
+    transform: translate3d(calc(84 * min(100cqw / 1600, 100cqh / 450)), 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .glide {
+    animation: glide 3200ms var(--ease-drift) both;
+  }
+}
+
+/* Product tiles: shimmer until the manufacturer image has loaded. */
+.skeleton {
+  overflow: hidden;
+  background-color: var(--color-stone);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgb(250 248 244 / 0.7) 50%, transparent 70%);
+  transform: translate3d(-100%, 0, 0);
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(:root:not([data-motion="reduced"], [data-motion="calm"])) .skeleton::after {
+    animation: sweep 1600ms var(--ease-quiet-inout) infinite;
+  }
+}
+
+/* QM r4 (200 % Text, WCAG 1.4.4): Überschriften nie breiter als ihre Spalte. Die
+   Schriftgröße bleibt das Token, wird aber auf einen Anteil der Spaltenbreite (cqi)
+   gedeckelt, damit das längste Wort („Sattlerhandwerk“ ≈ 7,8 em, „Yachtmanagement“
+   ≈ 9 em) ganz in die Zeile passt – kein Abschneiden, kein Umbruch mitten im Wort.
+   Bei normaler Schrift greift die Kappe nicht (Spalte ≥ 295 px: 11 cqi ≥ 32 px ≈
+   36 px Token); sie wirkt nur, wenn die Schrift vergrößert ist. */
+.fitHead {
+  container-type: inline-size;
+}
+.fitHead h2 {
+  font-size: min(var(--text-display-m), 11cqi);
+}
+/* FAQ-Kopf (gemeinsame FaqSection): Container ist die Kopfspalte der H2 (ab lg 4 von 12 Spalten). */
+.fitFaq :has(> h2) {
+  container-type: inline-size;
+}
+.fitFaq h2 {
+  font-size: min(var(--text-display-m), 11cqi);
+}
+.fitTitle {
+  container-type: inline-size;
+}
+.fitTitle h3 {
+  font-size: min(var(--text-title), 11cqi);
+}
+/* Die Kappe sorgt dafür, dass jedes Wort in die Zeile passt – dann auch keine Trennung an weichen
+   Trennstellen (die Überschrift bricht nur an Wortgrenzen; QM r4: kein Umbruch mitten im Wort). */
+.fitHead h2,
+.fitFaq h2,
+.fitTitle h3 {
+  -webkit-hyphens: none;
+  hyphens: none;
+}
+/* Materialliste (Muster und Materialien): Titel neben dem Muster – „Lösungsgefärbtes“ (≈ 8,5 em)
+   passt so in die Zeile neben dem Musterfeld, auch bei großer Schrift. */
+.fitMat {
+  container-type: inline-size;
+}
+.fitMat h3 {
+  font-size: min(var(--text-ui), 9cqi);
+}
+@media (min-width: 40rem) {
+  .fitMat h3 {
+    font-size: min(var(--text-title), 7cqi);
+  }
+}

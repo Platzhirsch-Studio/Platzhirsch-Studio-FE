@@ -1,0 +1,580 @@
+{
+  "name": "Torii Bold",
+  "slug": "torii-bold",
+  "designer": "Nendo",
+  "jahr": 2023,
+  "jahr_hinweis": "Zugehörig zur \"2023 Collection\" lt. Produktseite (Designs registriert 12.04.2023).",
+  "typ": "Sofa-Familie aus Einzelstücken (nicht modular): geschwungene Sofas klein/groß, je auch als Peninsula (open-end), Sessel S/M/L fix oder drehbar, Ottomane fix oder auf Rollen",
+  "modular": false,
+  "outdoor": false,
+  "quellen": [
+    "https://www.minotti.com/en/torii-bold",
+    "https://www.minotti.com/de/torii-bold",
+    "https://www.minotti.com/en/torii-bold_armchair",
+    "https://www.minotti.com/en/torii-bold_ottoman"
+  ],
+  "abrufdatum": "2026-10-27",
+  "hersteller": "Minotti S.p.A., Meda (MB), Italien",
+  "masseinheit": "cm",
+  "masse_hinweis": "Breite × Tiefe × Höhe aus den offiziellen Minotti-Maßzeichnungen im Abschnitt \"Technical Features\" der Produktseite (Dateiname und Bemaßung der Zeichnung). Minotti weist darauf hin, dass CAD-Maße leicht von der Produktkarte abweichen können. Die Sitztiefe ist in keiner öffentlichen Zeichnung bemaßt.",
+  "rechte_hinweis": "Zeichnungen, Fotos, CAD-/BIM-Dateien sind urheberrechtlich geschützt (Minotti S.p.A.); Veränderung ausdrücklich untersagt. quelle_zeichnung-URLs dienen nur als Beleg der Maße, nicht zur Einbindung. Freistellungen nur intern/Labs und im Rechte-Register vermerken. Deep-Linking ist laut Minotti-Nutzungsbedingungen ohne Zustimmung untersagt: Links nicht öffentlich ausspielen.",
+  "preis": {
+    "wert": null,
+    "hinweis": "Keine Preise erfasst. Preise nur aus Konfigurationstabelle, gekennzeichnet \"Richtwert – vom Inhaber festzulegen\"."
+  },
+  "elemente": [
+    {
+      "code": "torii-bold-angled-sofa-cm-212",
+      "name": "Angled sofa cm 212",
+      "art": "sofa-halbrund",
+      "breite_cm": 212,
+      "tiefe_cm": 100,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "hinweis": "Geschwungenes Sofa, klein. Sitzhöhe in dieser Zeichnung nicht bemaßt.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41566_n_TORII_BOLD_ANGLED_SOFA_212X100_H82.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-angled-sofa-cm-247",
+      "name": "Angled sofa cm 247",
+      "art": "sofa-halbrund",
+      "breite_cm": 247,
+      "tiefe_cm": 106,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "Geschwungenes Sofa, groß.",
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehnen-/Rückenansatz)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41567_n_TORII_BOLD_ANGLED_SOFA_247X106_H82.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-angled-open-end-sofa-cm-204",
+      "name": "Angled open-end sofa cm 204",
+      "art": "peninsula",
+      "breite_cm": 204,
+      "tiefe_cm": 100,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "hinweis": "Peninsula-Version (eine Seite offen), klein. Sitzhöhe in dieser Zeichnung nicht bemaßt.",
+      "armlehnenhoehe_cm": null,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "peninsula-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "peninsula-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41568_n_TORII_BOLD_ANGLED_OPEN_END_SOFA_204X100_H82.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-angled-open-end-sofa-cm-240",
+      "name": "Angled open-end sofa cm 240",
+      "art": "peninsula",
+      "breite_cm": 240,
+      "tiefe_cm": 106,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "Peninsula-Version, groß.",
+      "armlehnenhoehe_cm": null,
+      "seiten": [
+        "SX",
+        "DX"
+      ],
+      "ausfuehrungen": [
+        {
+          "code": "SX",
+          "art": "peninsula-links",
+          "hinweis": "Minotti-Kürzel SX (sinistra): Armlehne/geschlossene Seite links lt. Grundriss-Zeichnung"
+        },
+        {
+          "code": "DX",
+          "art": "peninsula-rechts",
+          "hinweis": "Minotti-Kürzel DX (destra): Armlehne/geschlossene Seite rechts lt. Grundriss-Zeichnung"
+        }
+      ],
+      "weitere_hoehen_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehnen-/Rückenansatz)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41569_n_TORII_BOLD_ANGLED_OPEN_END_SOFA_240X106_H82.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-large-armchair-cm-94-fixed",
+      "name": "LARGE Armchair cm 94 - FIXED",
+      "art": "sessel",
+      "breite_cm": 94,
+      "tiefe_cm": 94,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehnen-/Rückenansatz)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41575_n_TORII_BOLD_LARGE_ARMCHAIR_94X94_H82_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-large-armchair-cm-94-swivel",
+      "name": "LARGE Armchair cm 94 - SWIVEL",
+      "art": "sessel-drehbar",
+      "breite_cm": 94,
+      "tiefe_cm": 94,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "360° drehbar mit Rückstellung.",
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehnen-/Rückenansatz)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41576_n_TORII_BOLD_LARGE_ARMCHAIR_94X94_H82_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-medium-armchair-cm-88-fixed",
+      "name": "MEDIUM Armchair cm 88 - FIXED",
+      "art": "sessel",
+      "breite_cm": 88,
+      "tiefe_cm": 88,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehnen-/Rückenansatz)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41578_n_TORII_BOLD_MEDIUM_ARMCHAIR_88X88_H82_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-medium-armchair-cm-88-swivel",
+      "name": "MEDIUM Armchair cm 88 - SWIVEL",
+      "art": "sessel-drehbar",
+      "breite_cm": 88,
+      "tiefe_cm": 88,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "360° drehbar mit Rückstellung.",
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehnen-/Rückenansatz)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41579_n_TORII_BOLD_MEDIUM_ARMCHAIR_88X88_H82_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-small-armchair-cm-82-fixed",
+      "name": "SMALL Armchair cm 82 - FIXED",
+      "art": "sessel",
+      "breite_cm": 82,
+      "tiefe_cm": 80,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehnen-/Rückenansatz)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41581_n_TORII_BOLD_SMALL_ARMCHAIR_82X80_H82_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-small-armchair-cm-82-swivel",
+      "name": "SMALL Armchair cm 82 - SWIVEL",
+      "art": "sessel-drehbar",
+      "breite_cm": 82,
+      "tiefe_cm": 80,
+      "hoehe_cm": 82,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "360° drehbar mit Rückstellung.",
+      "armlehnenhoehe_cm": null,
+      "weitere_hoehen_cm": [
+        {
+          "wert": 66,
+          "bedeutung": "nicht beschriftet (vermutl. Armlehnen-/Rückenansatz)"
+        }
+      ],
+      "quelle": "https://www.minotti.com/media/immagini/41582_n_TORII_BOLD_SMALL_ARMCHAIR_82X80_H82_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-ottoman-cm-152x59-with-castors",
+      "name": "Ottoman cm 152x59 - with castors",
+      "art": "hocker",
+      "breite_cm": 152,
+      "tiefe_cm": 59,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "Oval/länglich. Mit 4 Lenkrollen (360°, Nylon/TPU). Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41572_n_TORII_BOLD_OTTOMAN_152X59_H41_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-ottoman-cm-152x59-fixed",
+      "name": "Ottoman cm 152x59 - fixed",
+      "art": "hocker",
+      "breite_cm": 152,
+      "tiefe_cm": 59,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "Oval/länglich. Feststehend. Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/47198_n_TORII_BOLD_OTTOMAN_152X59_H41_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-angled-ottoman-cm-94x56-with-castors",
+      "name": "Angled ottoman cm 94x56 - with castors",
+      "art": "hocker",
+      "breite_cm": 94,
+      "tiefe_cm": 56,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "Nierenförmig geschwungen. Mit 4 Lenkrollen (360°, Nylon/TPU). Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41574_n_TORII_BOLD_ANGLED_OTTOMAN_94X56_H41_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-angled-ottoman-cm-94x56-fixed",
+      "name": "Angled ottoman cm 94x56 - fixed",
+      "art": "hocker",
+      "breite_cm": 94,
+      "tiefe_cm": 56,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "Nierenförmig geschwungen. Feststehend. Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/47199_n_TORII_BOLD_ANGLED_OTTOMAN_94X56_H41_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-angled-ottoman-cm-152x68-with-castors",
+      "name": "Angled ottoman cm 152x68 - with castors",
+      "art": "hocker",
+      "breite_cm": 152,
+      "tiefe_cm": 68,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "Nierenförmig geschwungen. Mit 4 Lenkrollen (360°, Nylon/TPU). Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41573_n_TORII_BOLD_ANGLED_OTTOMAN_152X68_H41_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-angled-ottoman-cm-152x68-fixed",
+      "name": "Angled ottoman cm 152x68 - fixed",
+      "art": "hocker",
+      "breite_cm": 152,
+      "tiefe_cm": 68,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "hinweis": "Nierenförmig geschwungen. Feststehend. Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/47200_n_TORII_BOLD_ANGLED_OTTOMAN_152X68_H41_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-large-ottoman-d-cm-77-with-castors",
+      "name": "LARGE Ottoman Ø cm 77 - with castors",
+      "art": "hocker",
+      "breite_cm": 77,
+      "tiefe_cm": 77,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": 77,
+      "hinweis": "Rund. Mit 4 Lenkrollen (360°, Nylon/TPU). Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41577_n_TORII_BOLD_LARGE_OTTOMAN_D77_H41_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-large-ottoman-d-cm-77-fixed",
+      "name": "LARGE Ottoman Ø cm 77 - fixed",
+      "art": "hocker",
+      "breite_cm": 77,
+      "tiefe_cm": 77,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": 77,
+      "hinweis": "Rund. Feststehend. Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/47201_n_TORII_BOLD_LARGE_OTTOMAN_D77_H41_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-medium-ottoman-d-cm-71-with-castors",
+      "name": "MEDIUM Ottoman Ø cm 71 - with castors",
+      "art": "hocker",
+      "breite_cm": 71,
+      "tiefe_cm": 71,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": 71,
+      "hinweis": "Rund. Mit 4 Lenkrollen (360°, Nylon/TPU). Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41580_n_TORII_BOLD_MEDIUM_OTTOMAN_D71_H41_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-medium-ottoman-d-cm-71-fixed",
+      "name": "MEDIUM Ottoman Ø cm 71 - fixed",
+      "art": "hocker",
+      "breite_cm": 71,
+      "tiefe_cm": 71,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": 71,
+      "hinweis": "Rund. Feststehend. Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/47202_n_TORII_BOLD_MEDIUM_OTTOMAN_D71_H41_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-small-ottoman-d-cm-65-with-castors",
+      "name": "SMALL Ottoman Ø cm 65 - with castors",
+      "art": "hocker",
+      "breite_cm": 65,
+      "tiefe_cm": 65,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": 65,
+      "hinweis": "Rund. Mit 4 Lenkrollen (360°, Nylon/TPU). Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41583_n_TORII_BOLD_SMALL_OTTOMAN_D65_H41_SWIVEL.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-small-ottoman-d-cm-65-fixed",
+      "name": "SMALL Ottoman Ø cm 65 - fixed",
+      "art": "hocker",
+      "breite_cm": 65,
+      "tiefe_cm": 65,
+      "hoehe_cm": 41,
+      "sitzhoehe_cm": 41,
+      "sitztiefe_cm": null,
+      "durchmesser_cm": 65,
+      "hinweis": "Rund. Feststehend. Sitzhöhe = Gesamthöhe 41.",
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/47203_n_TORII_BOLD_SMALL_OTTOMAN_D65_H41_FIXED.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-optional-backrest-cushion-cm-55x55",
+      "name": "Optional backrest cushion cm 55x55",
+      "art": "kissen",
+      "breite_cm": 55,
+      "tiefe_cm": 55,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41570_n_TORII_BOLD_OPTIONAL_BACKREST_CUSHION_55X55.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    },
+    {
+      "code": "torii-bold-optional-cushion-cm-45x45",
+      "name": "Optional cushion cm 45x45",
+      "art": "kissen",
+      "breite_cm": 45,
+      "tiefe_cm": 45,
+      "hoehe_cm": null,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "quelle": "https://www.minotti.com/media/immagini/41571_n_TORII_BOLD_OPTIONAL_CUSHION_45X45.jpg",
+      "quelle_produktseite": "https://www.minotti.com/en/torii-bold"
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Schmaler Rücken mit vertikaler Steppung (Lamellen-Optik), Doppelnaht, umlaufender Keder",
+      "hinweis": "Keine alternativen Rückenhöhen veröffentlicht."
+    },
+    {
+      "name": "Optionales Rückenkissen 55×55 cm"
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Rücken/Armlehne durchgehend (geschlossenes Sofa)"
+    },
+    {
+      "name": "Open-end/Peninsula: eine Seite offen, SX oder DX",
+      "elemente": [
+        "torii-bold-angled-open-end-sofa-cm-204",
+        "torii-bold-angled-open-end-sofa-cm-240"
+      ]
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Füße Sofa/Sessel",
+      "material": "Metall-Vollstab Ø 25 mm",
+      "finish": [
+        "Bronze lackiert, poliert, Anti-Fingerprint"
+      ],
+      "detail": "Spitze und Zierelement (\"Schmuckknopf\") aus Messing, Finish Black-Nickel",
+      "gleiter": "schwarze SEBS-Gleiter"
+    },
+    {
+      "teil": "Drehgestell Sessel",
+      "material": "Metall, geschwungen (verdeckt die Drehmechanik)",
+      "finish": [
+        "Bronze lackiert, poliert, Anti-Fingerprint"
+      ],
+      "funktion": "360° drehbar mit Rückstellung",
+      "gleiter": "schwarze SEBS-Gleiter"
+    },
+    {
+      "teil": "Ottomane mit Rollen",
+      "material": "4 Lenkrollen 360°, Nylon / thermoplastisches PU"
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder"
+    ],
+    "kategorien_detail": null,
+    "bezugsart": {
+      "fest": false,
+      "abnehmbar": true,
+      "text": "Struktur und Rückenkissen in allen Versionen (Stoff und Leder) komplett abziehbar. Sitzkissen: Abziehbarkeit nicht explizit genannt; Sitzkissenbezug mit Steppnaht."
+    },
+    "farbmuster_hinweis": "Stoff- und Lederfarben/-kategorien laut Minotti \"The World of Materials\"; Originalmuster im Showroom Platzhirsch Home Living (Lochau) ansehen – Bildschirmfarben sind nicht verbindlich.",
+    "keder": {
+      "material": [
+        "Eco-Leder",
+        "Eco-Nubuk (chemisch reinigbar)"
+      ],
+      "farben_eco_leder": [
+        "White",
+        "Cloud",
+        "Sand",
+        "Havana",
+        "Ice",
+        "Chestnut",
+        "Peat",
+        "Baltic",
+        "Burgundy",
+        "Smoke",
+        "Cast-Iron",
+        "Black",
+        "Mustard",
+        "Cognac",
+        "Corten"
+      ],
+      "farben_eco_nubuk": [
+        "Cloud",
+        "Mink",
+        "Ice",
+        "Moka",
+        "Baltic",
+        "Burgundy",
+        "Moss",
+        "Charcoal",
+        "Green",
+        "Cognac",
+        "Corten",
+        "Granite",
+        "Curry"
+      ],
+      "regel": "Ohne Angabe wählt Minotti: Vollstoff → Keder kontrastierend in gleicher Farbfamilie; Volleder → Keder im gewählten Leder. Sonst immer Eco-Leder/Eco-Nubuk."
+    }
+  },
+  "kissenoptionen": [
+    {
+      "name": "Optionales Rückenkissen",
+      "masse_cm": "55×55"
+    },
+    {
+      "name": "Optionales Kissen",
+      "masse_cm": "45×45"
+    }
+  ],
+  "polsterung": {
+    "struktur": "Sitz Sperrholz verschiedener Stärken mit HR-PU-Schaum variabler Dichte; Rücken Metall mit HR-PU-Schaum, Faservlies mit Baumwolle kaschiert",
+    "kissen": "Rückenkissen Gänsedaunen in Kanälen (Assopiuma Gold Label), Kern HR-PU-Schaum"
+  },
+  "besonderheiten": [
+    "Abgeleitet vom Torii-Design (Nendo); Rückenform identisch, Volumen kompakter.",
+    "Nicht modular: Sofas und Hocker frei platzieren; die geschwungenen \"Angled ottoman\" ergänzen das Sofa optisch.",
+    "Jede Ottomane wahlweise fix oder mit Rollen.",
+    "Keder-Farbe in der Bestellung angeben (sonst Werkswahl).",
+    "Arrangements nennen z. B. \"ANGLED OPEN-END SOFA SX CM 240X106 H82\"."
+  ],
+  "fehlend": [
+    "Sitztiefe aller Elemente",
+    "Sitzhöhe Angled sofa 212 und Open-end 204 (in Zeichnung nicht bemaßt; bei 247/240 = 41)",
+    "Bedeutung der Zwischenhöhe 66 in den Zeichnungen nicht beschriftet",
+    "Abziehbarkeit des Sitzkissenbezugs nicht explizit",
+    "Minotti-Artikelnummern/Codes (nicht öffentlich)",
+    "Stoff-/Lederkategorien und Preisgruppen (nur in Händler-Preisliste)",
+    "Technisches Datenblatt/PDF, DWG, BIM nur nach Login",
+    "Gewichte",
+    "Liefer-/Produktionszeiten"
+  ],
+  "vollstaendigkeit": {
+    "felder_gesamt": 110,
+    "felder_belegt": 86,
+    "prozent": 78,
+    "basis": "Maßfelder breite/tiefe/hoehe/sitzhoehe/sitztiefe aller Sitz-/Hocker-Elemente (ohne Kissen/Zubehör)"
+  },
+  "vollstaendigkeit_prozent": 78
+}

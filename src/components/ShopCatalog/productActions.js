@@ -1,73 +1,48 @@
 "use client";
-import { PHONE_HREF } from "@/lib/site";
-import { Heart, ChevronDown, Phone } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { Heart, Phone } from "lucide-react";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
+import Button from "@/components/ui/Button";
 import { useWishlistToggle } from "@/components/ShopCatalog/wishlistHeart";
+import { glueDash } from "@/components/ShopCatalog/copy";
 
-// Action row on the product detail page: "Beratung anfragen", a heart that
-// toggles the product on the Merkliste (CartContext, localStorage), and a
-// "Mehr Details anzeigen" link that scrolls down to the product info tabs.
-// `wishlistItem` is the Merkliste entry: { id, name, image, category (brand),
-// kategories, url_slug, href, produkte_id } — `href`/`image` are complete
-// paths (/produkte/…, /cmx/…) so the Merkliste page doesn't have to rebuild
-// them for "Produkte New" products.
-export default function ProductActions({ locale, consultationHref, detailsAnchor, wishlistItem, labels }) {
-  const { saved, toggle: toggleSaved } = useWishlistToggle(wishlistItem);
+// Action block of the "Atelier" product page (Bibel §10): ONE primary action
+// – the appointment, with the product handed over (?produkt=) – then
+// "Merken" ("Ihre Auswahl", CartContext, localStorage) as the secondary, and
+// the direct phone line as a quiet link.
+// QA Runde 1: the primary takes the full column width on its own line so its
+// label stays on one line from 1024 px (P2-2); "Merken" is a quiet text
+// button below it whose accessible name IS the visible label, the state is
+// aria-pressed (P2-4, WCAG 2.5.3).
+// `wishlistItem` is the Merkliste entry (toWishlistItem()).
+export default function ProductActions({ consultationHref, wishlistItem, labels }) {
+  const { saved, toggle } = useWishlistToggle(wishlistItem);
 
   return (
-    <div className="mt-6">
-      <div className="flex flex-wrap items-stretch gap-3">
-        <Link
-          href={consultationHref}
-          locale={locale}
-          className="inline-flex items-center gap-2 bg-[#d1b250] rounded-[3px] px-6 py-3 text-sm font-medium uppercase tracking-wide text-[#30373e] transition-colors duration-300 hover:bg-[#bfa047]"
-        >
-          {labels.requestConsultation}
-          <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </Link>
-
+    <div className="sm:mt-stack-m lg:mt-stack-m">
+      <Button href={consultationHref} arrow fullWidth className="text-balance text-center">
+        {glueDash(labels.requestConsultation)}
+      </Button>
+      {labels.note && <p className="mt-4 max-w-measure text-small text-text-soft">{glueDash(labels.note)}</p>}
+      <div className="mt-2 flex flex-wrap items-center gap-x-8">
         <button
           type="button"
-          onClick={toggleSaved}
+          onClick={toggle}
           aria-pressed={saved}
-          aria-label={saved ? labels.removeFromWishlist : labels.addToWishlist}
-          title={saved ? labels.removeFromWishlist : labels.addToWishlist}
-          className={`group inline-flex items-center gap-2 rounded-[3px] border px-4 py-3 text-sm font-medium uppercase tracking-wide transition-colors duration-300 ${
-            saved
-              ? "border-[#d1b250] bg-[#d1b250]/10 text-[#30373e]"
-              : "border-[#30373e]/20 text-[#30373e] hover:border-[#d1b250]"
-          }`}
+          className="inline-flex min-h-11 items-center gap-2 text-ui text-text underline decoration-line-strong underline-offset-4 transition-colors duration-(--duration-micro) hover:decoration-current"
         >
-          <Heart
-            size={18}
-            strokeWidth={1.75}
-            className={`transition-all duration-300 ${
-              saved ? "fill-[#d1b250] text-[#d1b250] scale-110" : "text-[#30373e] group-hover:text-[#d1b250]"
-            }`}
-          />
-          <span>{saved ? labels.saved : labels.save}</span>
+          <Heart aria-hidden="true" className={`ph-heart size-4 ${saved ? "fill-current" : "fill-current/0"}`} strokeWidth={1.5} />
+          {saved ? labels.saved : labels.save}
         </button>
-
-        {/* Direct phone line — the showroom sells through conversation, so a
-            call is the shortest path from product interest to an appointment. */}
         <a
           href={PHONE_HREF}
-          className="inline-flex items-center gap-2 rounded-[3px] border border-[#30373e]/20 px-4 py-3 text-sm font-medium uppercase tracking-wide text-[#30373e] transition-colors duration-300 hover:border-[#d1b250]"
+          className="inline-flex min-h-11 items-center gap-2 text-ui text-text underline decoration-line-strong underline-offset-4 transition-colors duration-(--duration-micro) hover:decoration-current"
         >
-          <Phone size={16} aria-hidden="true" />
-          <span>{labels.callUs}</span>
+          <Phone aria-hidden="true" className="size-4" strokeWidth={1.5} />
+          <span>
+            {labels.callUs} <span className="tabular">{PHONE_DISPLAY}</span>
+          </span>
         </a>
       </div>
-
-      <a
-        href={`#${detailsAnchor}`}
-        className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#30373e] underline decoration-[#d1b250] decoration-2 underline-offset-4 transition-colors hover:text-[#d1b250]"
-      >
-        {labels.showMoreDetails}
-        <ChevronDown size={16} />
-      </a>
     </div>
   );
 }

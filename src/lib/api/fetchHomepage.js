@@ -1,11 +1,14 @@
 import "server-only"; // Ensures this only runs on server
 import { API_BASE_URL } from "@/lib/apiBaseUrl";
+import { backofficeFetch } from "@/lib/api/http";
 
 export async function fetchHomepage() {
     try {
-        const response = await fetch(`${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.homepage.api.homepage_data`, {
+        const response = await backofficeFetch(`${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.homepage.api.homepage_data`, {
             next: { revalidate: 3600 }, // 3600 seconds = 1 hour
-            signal: AbortSignal.timeout(15000),
+            // 2 x 7 s inside a 15 s budget: a retry, but never longer than the old single 15 s limit.
+            timeoutMs: 7000,
+            budgetMs: 15000,
         });
 
         if (!response.ok) {

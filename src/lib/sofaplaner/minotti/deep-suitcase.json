@@ -1,0 +1,217 @@
+{
+  "name": "Deep Suitcase",
+  "slug": "deep-suitcase",
+  "hersteller": "Minotti",
+  "designer": "Rodolfo Dordoni",
+  "jahr": 1999,
+  "kollektion": "1999 Collection",
+  "typ": "Sofaprogramm, 98 cm tief, mit weichen Rückenkissen auf Metallfüßchen: 2- und 3-Sitzer, Endelemente SX/DX mit 1 Armlehne (zu 280 cm kombinierbar), Schlafsofas und Pouf",
+  "quellen": [
+    "https://www.minotti.com/en/deep-suitcase",
+    "https://www.minotti.com/downloads/462/1664/DEEP_SUITCASE_TECHNICAL_SHEET.pdf"
+  ],
+  "abrufdatum": "2026-10-27",
+  "masse_hinweis": "Maße in cm laut Technical Sheet. Sitzhöhe 45 und Armlehnenhöhe 64 aus den Koten der Seitenansicht (45 / 64 / 78) abgeleitet, konsistent für alle Sofaelemente. Schlafsofa: Maße nur für geöffneten Zustand (Tiefe 235) publiziert.",
+  "modular": true,
+  "elemente": [
+    {
+      "code": "DS-SOFA-152",
+      "name": "Sofa cm 152",
+      "name_de": "Sofa 152 cm (2-Sitzer)",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 152,
+      "tiefe_cm": 98,
+      "hoehe_cm": 78,
+      "sitzhoehe_cm": 45,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 64,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": "Maße laut Technical Sheet (Okt. 2025) und Elementbildern der Produktseite."
+    },
+    {
+      "code": "DS-SOFA-216",
+      "name": "Sofa cm 216",
+      "name_de": "Sofa 216 cm (3-Sitzer)",
+      "art": "sofa",
+      "ausrichtung": null,
+      "breite_cm": 216,
+      "tiefe_cm": 98,
+      "hoehe_cm": 78,
+      "sitzhoehe_cm": 45,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 64,
+      "anschluesse": "freistehend, 2 Armlehnen",
+      "hinweis": "Maße laut Technical Sheet (Okt. 2025) und Elementbildern der Produktseite."
+    },
+    {
+      "code": "DS-END-140-SX",
+      "name": "Element with 1 armrest cm 140 SX",
+      "name_de": "Endelement 140 cm, Armlehne links",
+      "art": "anbau-links",
+      "ausrichtung": "sx",
+      "breite_cm": 140,
+      "tiefe_cm": 98,
+      "hoehe_cm": 78,
+      "sitzhoehe_cm": 45,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 64,
+      "anschluesse": "Nur mit Endelement 140 DX zum Sofa 280 cm; Verbindung über „Cremagliera“-(Zahnstangen-)Kupplung",
+      "hinweis": "Maße laut Technical Sheet (Okt. 2025) und Elementbildern der Produktseite."
+    },
+    {
+      "code": "DS-END-140-DX",
+      "name": "Element with 1 armrest cm 140 DX",
+      "name_de": "Endelement 140 cm, Armlehne rechts",
+      "art": "anbau-rechts",
+      "ausrichtung": "dx",
+      "breite_cm": 140,
+      "tiefe_cm": 98,
+      "hoehe_cm": 78,
+      "sitzhoehe_cm": 45,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": 64,
+      "anschluesse": "Nur mit Endelement 140 SX zum Sofa 280 cm; Verbindung über „Cremagliera“-(Zahnstangen-)Kupplung",
+      "hinweis": "Maße laut Technical Sheet (Okt. 2025) und Elementbildern der Produktseite."
+    },
+    {
+      "code": "DS-BED-152",
+      "name": "Sofa bed cm 152",
+      "name_de": "Schlafsofa 152 cm",
+      "art": "schlafsofa",
+      "ausrichtung": null,
+      "breite_cm": 152,
+      "tiefe_cm": 235,
+      "hoehe_cm": 64,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Technical Sheet (Okt. 2025) und Elementbildern der Produktseite. Tiefe 235 = geöffnet; Höhe 64 laut Bildbezeichnung „152X235_H64“, Zeichnung zeigt zusätzlich unbeschriftete Kote 50. Matratze 105 × 190 cm, H 12 cm. Geschlossene Maße nicht publiziert."
+    },
+    {
+      "code": "DS-BED-216",
+      "name": "Sofa bed cm 216",
+      "name_de": "Schlafsofa 216 cm",
+      "art": "schlafsofa",
+      "ausrichtung": null,
+      "breite_cm": 216,
+      "tiefe_cm": 235,
+      "hoehe_cm": 64,
+      "sitzhoehe_cm": null,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Technical Sheet (Okt. 2025) und Elementbildern der Produktseite. Tiefe 235 = geöffnet; Höhe 64 laut Bildbezeichnung „216X235_H64“, Zeichnung zeigt zusätzlich unbeschriftete Kote 50. Matratze 160 × 190 cm, H 12 cm. Geschlossene Maße nicht publiziert."
+    },
+    {
+      "code": "DS-POUF-120",
+      "name": "Ottoman / Bench cm 120x120",
+      "name_de": "Pouf 120 × 120 cm",
+      "art": "hocker",
+      "ausrichtung": null,
+      "breite_cm": 120,
+      "tiefe_cm": 120,
+      "hoehe_cm": 33,
+      "sitzhoehe_cm": 33,
+      "sitztiefe_cm": null,
+      "armlehnenhoehe_cm": null,
+      "anschluesse": "freistehend",
+      "hinweis": "Maße laut Technical Sheet (Okt. 2025) und Elementbildern der Produktseite. Zwei Ausführungen gezeichnet: Stoffbezug sowie Bezug Leder/Coccodrillo/Pony Look/Zebra Look/Pony Cenere. Sitzhöhe = Gesamthöhe."
+    }
+  ],
+  "rueckenoptionen": [
+    {
+      "name": "Lose, weiche Rückenkissen (kanalisierte Gänsedaune)",
+      "hoehe_cm": 78,
+      "hinweis": "Keine alternativen Rückenhöhen publiziert."
+    }
+  ],
+  "armlehnenoptionen": [
+    {
+      "name": "Gepolsterte Armlehne",
+      "hoehe_cm": 64,
+      "hinweis": "Höhe aus Kote abgeleitet; Armlehnenbreite nicht beschriftet. Keine alternativen Armlehnenformen."
+    }
+  ],
+  "fuesse_sockel": [
+    {
+      "teil": "Füße",
+      "material": "Metall",
+      "finish": "Chrom glänzend oder Bronze glänzend"
+    },
+    {
+      "teil": "Struktur",
+      "material": "Massivholz mit PU-Schaum unterschiedlicher Dichte, Gummigurte",
+      "finish": null
+    }
+  ],
+  "bezuege": {
+    "kategorien": [
+      "Stoff",
+      "Leder",
+      "Alcantara®"
+    ],
+    "bezugsarten": [
+      "abnehmbar",
+      "fest"
+    ],
+    "abnehmbar_hinweis": "Stoffversion komplett abnehmbar, Lederversion fest.",
+    "varianten": [
+      "Sofaelemente: Stoff, Leder oder Alcantara® – Leder Coccodrillo und Pony Look ausgenommen",
+      "Pouf: zusätzlich in Leder Coccodrillo, Pony Look / Zebra Look, Pony Cenere gezeichnet"
+    ],
+    "preisgruppen": null,
+    "hinweis": "Farb- und Materialmuster (Stoffe, Leder, Metall-/Holzoberflächen) bitte im Showroom Platzhirsch in Lochau ansehen; gedruckte/digitale Farben sind laut Minotti nur indikativ."
+  },
+  "kissenoptionen": [
+    {
+      "name": "„Milano“ optional cushion",
+      "masse": "46 × 46 cm",
+      "hinweis": "100 % kanalisierte Gänsedaune, Bezug komplett abnehmbar."
+    },
+    {
+      "name": "Sitzkissen",
+      "hinweis": "Gänsedaune mit zentralem PU-Kern „Performance“."
+    },
+    {
+      "name": "Rückenkissen",
+      "hinweis": "Gänsedaune in Kammern."
+    }
+  ],
+  "polsterung": "Massivholzstruktur, PU-Schaum hoher Resilienz unterschiedlicher Dichte, Erstbezug aus selbstbindender Faser auf weißem Baumwolltuch, Gummigurte mit kontrollierter Elastizität. Bettelement: elektrogeschweißter Gitterrost mit Gurten, gesteppter Matratzenschoner, PU-Matratze H 12 cm.",
+  "outdoor": false,
+  "besonderheiten": [
+    "98 cm Sitztiefe (Gesamttiefe) als namensgebendes Merkmal „Deep“",
+    "Markante Metallfüßchen Chrom oder Bronze",
+    "Schlafsofa-Varianten 152 und 216 cm",
+    "280-cm-Sofa aus zwei Endelementen mit Zahnstangen-Kupplung"
+  ],
+  "beispiel_kompositionen": [
+    {
+      "name": "Composed sofa cm 280",
+      "elemente": [
+        "DS-END-140-SX",
+        "DS-END-140-DX"
+      ],
+      "gesamtbreite_cm": 280,
+      "gesamttiefe_cm": 98,
+      "hoehe_cm": 78
+    }
+  ],
+  "rechte": "Daten aus öffentlich zugänglichen Minotti-Quellen (Produktseite + Technical Sheet) für internen Labs-Planer erfasst. Minotti-Nutzungsbedingungen untersagen u. a. die Übernahme von Website-Inhalten in Datenbanken ohne schriftliche Zustimmung – vor öffentlicher Nutzung Freigabe durch Minotti/Inhaber klären. Minotti-Bilder dürfen nicht verändert werden.",
+  "fehlend": [
+    "Sitztiefe (nicht beschriftet)",
+    "Innere Sitzbreite und Armlehnenbreite",
+    "Geschlossene Maße und Sitzhöhe der Schlafsofas (nur geöffnet publiziert; Kote 50 unbeschriftet)",
+    "Weitere Kombinationsregeln (nur 280 = 140 SX + 140 DX dokumentiert)",
+    "Arrangement-PDFs, 3D-Dateien (nur DWG)",
+    "Herstellerartikelnummern",
+    "Stoff-/Lederkollektionen und Preisgruppen",
+    "Gewichte"
+  ],
+  "vollstaendigkeit": {
+    "masse_prozent": 74,
+    "methode": "Anteil befüllter Felder breite/tiefe/hoehe/sitzhoehe/sitztiefe über alle Elemente (bei Rücken-/Armlehnen-/Tischelementen nur breite/tiefe/hoehe); Options-/Materialfelder separat in fehlend[] bewertet."
+  }
+}

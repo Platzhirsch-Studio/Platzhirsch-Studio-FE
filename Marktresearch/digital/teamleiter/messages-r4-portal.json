@@ -1,0 +1,84 @@
+{
+  "_uebernommen": "R5-i18n, 26.10.2026: per merge.mjs übernommen (Portal.docs.*, Labs.net.*; 40 Blätter, 0 Konflikte). IT Labs.net danach per Patch tools/i18n/patches/r5-it-tu.json auf tu-Form.",
+  "_hinweis": "R4-portal-labs, 26.10.2026. Neue Texte aus Runde 4. Portal, Upload und Labs sind heute nur Deutsch (Texte stehen im Code); die Schlüssel dienen der späteren Übernahme durch R4-i18n bzw. Runde 5. EN/FR/IT sind Übersetzungsvorschläge, bitte durch Muttersprachler prüfen.",
+  "de": {
+    "Portal": {
+      "docs": {
+        "moreFilters": "Weitere Filter",
+        "payment": "Zahlung",
+        "paymentAll": "Alle Zahlungen",
+        "paymentOpen": "Offen",
+        "paymentPaid": "Bezahlt",
+        "project": "Projekt",
+        "projectAll": "Alle Projekte",
+        "apply": "Anwenden"
+      }
+    },
+    "Labs": {
+      "net": {
+        "timeout": "Die Antwort hat zu lange gedauert. Bitte versuchen Sie es noch einmal.",
+        "offline": "Keine Internetverbindung. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+      }
+    }
+  },
+  "en": {
+    "Portal": {
+      "docs": {
+        "moreFilters": "More filters",
+        "payment": "Payment",
+        "paymentAll": "All payments",
+        "paymentOpen": "Open",
+        "paymentPaid": "Paid",
+        "project": "Project",
+        "projectAll": "All projects",
+        "apply": "Apply"
+      }
+    },
+    "Labs": {
+      "net": {
+        "timeout": "The response took too long. Please try again.",
+        "offline": "No internet connection. Please check your connection and try again."
+      }
+    }
+  },
+  "fr": {
+    "Portal": {
+      "docs": {
+        "moreFilters": "Autres filtres",
+        "payment": "Paiement",
+        "paymentAll": "Tous les paiements",
+        "paymentOpen": "En attente",
+        "paymentPaid": "Payé",
+        "project": "Projet",
+        "projectAll": "Tous les projets",
+        "apply": "Appliquer"
+      }
+    },
+    "Labs": {
+      "net": {
+        "timeout": "La réponse a pris trop de temps. Veuillez réessayer.",
+        "offline": "Pas de connexion Internet. Veuillez vérifier votre connexion et réessayer."
+      }
+    }
+  },
+  "it": {
+    "Portal": {
+      "docs": {
+        "moreFilters": "Altri filtri",
+        "payment": "Pagamento",
+        "paymentAll": "Tutti i pagamenti",
+        "paymentOpen": "Aperto",
+        "paymentPaid": "Pagato",
+        "project": "Progetto",
+        "projectAll": "Tutti i progetti",
+        "apply": "Applica"
+      }
+    },
+    "Labs": {
+      "net": {
+        "timeout": "La risposta ha richiesto troppo tempo. Riprova.",
+        "offline": "Nessuna connessione Internet. Controlla la connessione e riprova."
+      }
+    }
+  }
+}

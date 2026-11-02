@@ -50,3 +50,21 @@ CLAUDE.md
 
 # local server logs
 *.log
+
+# Hersteller-Kataloge und -Bilder (lokal, gross, Nutzungsrechte je Hersteller)
+/Herstellermaterial/
+
+# Lokale Uploads (Kunden-Fotos/Videos/Pläne) und QA-Screenshots
+/.data/
+/qa-screenshots/
+
+# Ezarri-Welt: Bilder, Videos, PDFs von ezarri.com (~560 MB, Nutzung laut
+# Inhaber-Entscheidung Nr. 7). Nicht im Repo; der Deploy verlinkt die Kopie
+# shared/public-ezarri (scripts/deploy.sh, Marktresearch/digital/teamleiter/integration.md).
+/public/ezarri/
+
+# Pinterest-Kanal-Vorschau (Inhaber-Entscheidung Nr. 14): erzeugte Pin-Bilder
+# (~7 MB, Marktresearch/digital/marketing/pinterest/werkzeug/render-pins.mjs).
+# Nur lokal für /de/preview/pinterest – nicht ins Repo, damit nichts davon
+# mit scripts/deploy.sh (Release aus Git) ausgeliefert wird. QA Recht P2-7.
+/public/preview/pinterest/

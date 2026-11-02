@@ -1,0 +1,499 @@
+{
+  "_hinweis": "Vorschlag Team Arbeitsweise (28.10.2026) für src/messages/*.json, Namespace \"Arbeitsweise\". DE = Abbild von src/lib/arbeitsweise/copy.js. EN/FR/IT: Übersetzungsvorschlag, vor Freischaltung muttersprachlich prüfen. Slugs: en /approach, fr /demarche, it /metodo. [Inhaber]-Stellen wie in DE (Dauer/kostenlos, Haralds Titel, FAQ 1/3/4). Runde fix1 (feedback-1 P2-4): „eine Ansprechperson“, „bevor Kosten entstehen“ und „oft mehrere Varianten“ ersetzt, FAQ 1 an „baut ein Modell“ angeglichen; neu: Platzhalter hero und kette.placeholder. Runde fix2 (feedback-2): FAQ 8 mit Links (links[].label muss wörtlich in a stehen), neu handwerkLabels (nur sichtbar, wenn Harald Werkzeug/Maßstab/Material/Dauer geliefert hat) und harald.quoteLabel (Zitat nur mit Haralds wörtlichem Satz). Share-Bild /de/arbeitsweise/teilen.png nutzt hero.overline, hero.title, closing.line.",
+  "de": {
+    "Arbeitsweise": {
+      "meta": {
+        "title": "Von der Handzeichnung zum Rendering · Platzhirsch",
+        "description": "Wir sehen uns Ihre Räume vor Ort an, Harald Menghin zeichnet von Hand und baut ein Modell. Dann 3D-Planung und Rendering. Showroom in Lochau am Bodensee."
+      },
+      "hero": {
+        "overline": "Unsere Arbeitsweise",
+        "title": "Von der Handzeichnung zum Rendering.",
+        "lead": "Wir lernen Ihre Räume kennen, bevor wir planen. Harald Menghin zeichnet Ihr Konzept von Hand und baut ein Modell. Danach planen wir in 3D, und Sie sehen Ihren Raum fotorealistisch, bevor etwas bestellt wird.",
+        "stepsLink": "Die sieben Schritte ansehen",
+        "cta": "Termin wählen",
+        "ctaNote": "60 Minuten · kostenlos · im Showroom mit Café oder bei Ihnen"
+      },
+      "haltung": {
+        "overline": "Was uns ausmacht",
+        "title": "Wir sind Designer. Wir nehmen uns Zeit.",
+        "p1": "Eine Einrichtung beginnt bei uns nicht im Katalog, sondern bei Ihnen: bei Ihren Räumen, Ihrem Licht und Ihrem Alltag.",
+        "p2": "Darum kommen wir zu Ihnen. Wenn Ihr Projekt es braucht, bleiben wir auch ein, zwei Tage vor Ort.",
+        "p3": "Was wir dort sehen, zeichnet Harald Menghin von Hand. Aus der Zeichnung wird ein Modell, aus dem Modell eine exakte 3D-Planung. So bleibt der erste Gedanke bis zum fertigen Raum erhalten."
+      },
+      "steps": {
+        "s1": "Kennenlernen",
+        "s2": "Vor Ort",
+        "s3": "Handzeichnung",
+        "s4": "Modell",
+        "s5": "3D-Planung",
+        "s6": "Rendering",
+        "s7": "Umsetzung"
+      },
+      "stepTexts": {
+        "s1": "Wir sprechen im Showroom in Lochau, gern bei einem Kaffee im Café, oder bei Ihnen zu Hause. Sie erzählen, wie Sie wohnen und was sich ändern soll. Grundrisse, Fotos und Maße helfen, sind aber keine Voraussetzung.",
+        "s2": "Ein Raum ist mehr als sein Grundriss. Wir sehen uns an, wie das Licht im Laufe des Tages wandert, wie sich der Raum im Sommer und im Winter anfühlt und welche Wege Sie täglich gehen. Wenn Ihr Projekt es braucht, bleiben wir auch ein, zwei Tage.",
+        "s3": "Harald Menghin skizziert Grundriss, Perspektiven und Stimmungen von Hand. Auf Papier lassen sich Varianten schnell vergleichen, und Sie sehen früh, wohin die Reise geht. Die Zeichnung zeigt nicht jedes Detail, aber die Idee.",
+        "s4": "Dann baut Harald ein Raummodell im Maßstab, so wie man es von Architekten und Bauträgern kennt. Sie können es anfassen, von allen Seiten ansehen und gemeinsam mit uns umstellen. Viele Fragen klären sich am Tisch schneller als am Bildschirm.",
+        "s5": "Wir übertragen Zeichnung und Modell in eine digitale Planung mit exakten Maßen, den ausgewählten Produkten und Materialien. Jetzt zeigt sich, ob jede Tür aufgeht, jede Schublade Platz hat und jedes Sofa durch das Treppenhaus passt.",
+        "s6": "Aus der Planung entsteht ein fotorealistisches Bild Ihres Raums. So sehen Sie, wie Stoffe, Holz und Licht zusammenwirken, bevor etwas bestellt wird. Ihre Rückmeldung geben Sie im Gespräch oder im Kundenportal, auch per Sprachnachricht.",
+        "s7": "Wir bestellen, koordinieren die Lieferung und auf Wunsch die Montage. Wenn mehrere Gewerke beteiligt sind, stimmen wir die Termine ab. Und wir begleiten Ihr Projekt, bis alles steht, wie es gezeichnet war."
+      },
+      "chapters": {
+        "vorOrt": "Zuerst schauen wir uns um.",
+        "vonHand": "Der erste Entwurf entsteht auf Papier.",
+        "strichZumRaum": "Dann wird es genau.",
+        "wirklichkeit": "Bis Sie eingezogen sind.",
+        "overview": "Sieben Schritte, vom Gespräch bis zum Einzug.",
+        "harald": "Harald Menghin",
+        "kette": "Ein Projekt, Schritt für Schritt.",
+        "online": "Online starten. Harald zeichnet weiter.",
+        "faq": "Fragen zur Arbeitsweise"
+      },
+      "station": "Schritt {n} von {total}",
+      "schema": "Schema",
+      "placeholder": "Bild folgt",
+      "renderingLabel": "Visualisierung aus der Planung, kein Foto.",
+      "harald": {
+        "role": "Designer & Zeichner",
+        "text": "Harald denkt mit dem Stift. Bevor er am Bildschirm plant, zeichnet er. Dann baut er das Modell, an dem Sie mit uns gemeinsam weiterarbeiten. Bei uns begleitet er Ihr Projekt von der ersten Skizze bis zur Planung.",
+        "quoteLabel": "Harald Menghin"
+      },
+      "faq": {
+        "q1": {
+          "q": "Zeichnet Harald wirklich jedes Konzept von Hand?",
+          "a": "Ja, die Einrichtungskonzepte beginnen bei uns mit einer Handzeichnung, danach baut Harald ein Modell. Wie viele Skizzen und wie detailliert das Modell wird, hängt vom Projekt ab. Das besprechen wir im ersten Termin."
+        },
+        "q2": {
+          "q": "Wozu ein Modell, wenn es 3D-Renderings gibt?",
+          "a": "Ein Modell kann man in die Hand nehmen und gemeinsam umstellen. Viele Fragen zu Proportionen und Wegen lassen sich so schneller klären. Die 3D-Planung folgt danach und macht alles maßgenau."
+        },
+        "q3": {
+          "q": "Kommen Sie zu mir nach Hause?",
+          "a": "Ja. Wir sehen uns Ihre Räume vor Ort an, in Vorarlberg, am Bodensee und in den Nachbarregionen. Wenn Ihr Projekt es braucht, bleiben wir auch ein, zwei Tage, um Licht, Klima und Abläufe kennenzulernen."
+        },
+        "q4": {
+          "q": "Was kostet die Planung mit Handzeichnung und Modell?",
+          "a": "Das hängt vom Umfang ab. Im ersten Termin klären wir, was Ihr Projekt braucht. Die Kosten besprechen wir mit Ihnen, bevor wir weiterplanen."
+        },
+        "q5": {
+          "q": "Wann sehe ich, wie mein Raum aussehen wird?",
+          "a": "Schon die Handzeichnung zeigt die Idee. Mit dem fotorealistischen Rendering sehen Sie Ihren Raum mit Materialien und Licht, bevor etwas bestellt wird."
+        },
+        "q6": {
+          "q": "Kann ich Änderungen einbringen?",
+          "a": "Ja, in jedem Schritt. Am Modell, im Gespräch oder im Kundenportal, auch per Sprachnachricht."
+        },
+        "q7": {
+          "q": "Ich habe schon im Küchen- oder Sofaplaner geplant. Fange ich dann von vorne an?",
+          "a": "Nein. Bringen Sie Ihr Ergebnis mit oder senden Sie uns den Link. Wir planen von dort aus weiter, und Harald zeichnet Ihr Konzept von Hand weiter."
+        },
+        "q8": {
+          "q": "Planen Sie auch Hotels, Ferienwohnungen oder Boote?",
+          "a": "Ja. Der Ablauf ist derselbe, vom Termin vor Ort bis zur Umsetzung. Für die Besonderheiten gibt es eigene Seiten: Yacht-Interieur, Outdoor.",
+          "links": [
+            {
+              "label": "Yacht-Interieur",
+              "href": "/yacht-interior"
+            },
+            {
+              "label": "Outdoor",
+              "href": "/outdoor-gartenplanung"
+            }
+          ]
+        }
+      },
+      "closing": {
+        "line": "Designs, die leben.",
+        "title": "Erzählen Sie uns von Ihren Räumen.",
+        "text": "Wir hören zu, sehen sie uns an und beginnen mit dem ersten Strich."
+      },
+      "ui": {
+        "placeholderKind": {
+          "hero": "Harald am Zeichentisch"
+        }
+      },
+      "kette": {
+        "placeholder": "Projekt-Kette folgt: Vorher · Skizze · Modell · Rendering · Heute"
+      },
+      "handwerkLabels": {
+        "werkzeug": "Werkzeug",
+        "massstab": "Maßstab",
+        "material": "Material",
+        "modellDauer": "Dauer"
+      }
+    }
+  },
+  "en": {
+    "Arbeitsweise": {
+      "meta": {
+        "title": "From hand drawing to rendering · Platzhirsch",
+        "description": "We visit your rooms, Harald Menghin draws by hand and builds a model. Then 3D planning and rendering. Showroom in Lochau on Lake Constance."
+      },
+      "hero": {
+        "overline": "How we work",
+        "title": "From hand drawing to rendering.",
+        "lead": "We get to know your rooms before we plan. Harald Menghin draws your concept by hand and builds a model. Then we plan in 3D, and you see your room photorealistically before anything is ordered.",
+        "stepsLink": "See the seven steps",
+        "cta": "Book an appointment",
+        "ctaNote": "60 minutes · free of charge · in the showroom with café or at your home"
+      },
+      "haltung": {
+        "overline": "What defines us",
+        "title": "We are designers. We take our time.",
+        "p1": "With us, a furnishing project does not start in a catalogue but with you: your rooms, your light and your everyday life.",
+        "p2": "That is why we come to you. If your project needs it, we also stay on site for a day or two.",
+        "p3": "What we see there, Harald Menghin draws by hand. The drawing becomes a model, the model an exact 3D plan. So the first idea stays intact until the finished room."
+      },
+      "steps": {
+        "s1": "Getting to know you",
+        "s2": "On site",
+        "s3": "Hand drawing",
+        "s4": "Model",
+        "s5": "3D planning",
+        "s6": "Rendering",
+        "s7": "Realisation"
+      },
+      "stepTexts": {
+        "s1": "We talk in the showroom in Lochau, over a coffee in the café, or at your home. You tell us how you live and what should change. Floor plans, photos and measurements help but are not required.",
+        "s2": "A room is more than its floor plan. We look at how the light moves during the day, how the room feels in summer and in winter and which paths you take every day. If your project needs it, we stay for a day or two.",
+        "s3": "Harald Menghin sketches floor plans, perspectives and moods by hand. On paper, variants can be compared quickly, and you see early where things are heading. The drawing does not show every detail, but the idea.",
+        "s4": "Then Harald builds a scale model of the room, as architects and developers do. You can touch it, look at it from all sides and rearrange it together with us. Many questions are settled faster at the table than on a screen.",
+        "s5": "We transfer drawing and model into a digital plan with exact dimensions and the selected products and materials. Now it shows whether every door opens, every drawer fits and every sofa passes through the stairwell.",
+        "s6": "The plan becomes a photorealistic image of your room. You see how fabrics, wood and light work together before anything is ordered. You give feedback in conversation or in the customer portal, also by voice message.",
+        "s7": "We order, coordinate delivery and, on request, installation. If several trades are involved, we coordinate the dates. And we stay with your project until everything stands as it was drawn."
+      },
+      "chapters": {
+        "vorOrt": "First, we look around.",
+        "vonHand": "The first design is made on paper.",
+        "strichZumRaum": "Then it gets precise.",
+        "wirklichkeit": "Until you have moved in.",
+        "overview": "Seven steps, from the first conversation to moving in.",
+        "harald": "Harald Menghin",
+        "kette": "One project, step by step.",
+        "online": "Start online. Harald keeps drawing.",
+        "faq": "Questions about how we work"
+      },
+      "station": "Step {n} of {total}",
+      "schema": "Diagram",
+      "placeholder": "Image to follow",
+      "renderingLabel": "Visualisation from the plan, not a photo.",
+      "harald": {
+        "role": "Designer & draughtsman",
+        "text": "Harald thinks with a pencil. Before he plans on screen, he draws. Then he builds the model you keep working on with us. He accompanies your project from the first sketch to the plan.",
+        "quoteLabel": "Harald Menghin"
+      },
+      "faq": {
+        "q1": {
+          "q": "Does Harald really draw every concept by hand?",
+          "a": "Yes, our furnishing concepts start with a hand drawing, and then Harald builds a model. How many sketches and how detailed the model becomes depends on the project. We discuss this in the first appointment."
+        },
+        "q2": {
+          "q": "Why a model when there are 3D renderings?",
+          "a": "You can pick up a model and rearrange it together. Many questions about proportions and paths are settled faster this way. The 3D plan follows and makes everything exact."
+        },
+        "q3": {
+          "q": "Do you come to my home?",
+          "a": "Yes. We look at your rooms on site, in Vorarlberg, around Lake Constance and in the neighbouring regions. If your project needs it, we stay a day or two to understand light, climate and routines."
+        },
+        "q4": {
+          "q": "What does planning with hand drawing and model cost?",
+          "a": "That depends on the scope. In the first appointment we clarify what your project needs. We discuss the costs with you before we continue planning."
+        },
+        "q5": {
+          "q": "When will I see what my room will look like?",
+          "a": "The hand drawing already shows the idea. With the photorealistic rendering you see your room with materials and light before anything is ordered."
+        },
+        "q6": {
+          "q": "Can I bring in changes?",
+          "a": "Yes, at every step. At the model, in conversation or in the customer portal, also by voice message."
+        },
+        "q7": {
+          "q": "I have already planned in the kitchen or sofa planner. Do I start from scratch?",
+          "a": "No. Bring your result or send us the link. We continue from there, and Harald continues your concept by hand."
+        },
+        "q8": {
+          "q": "Do you also plan hotels, holiday apartments or boats?",
+          "a": "Yes. The process is the same, from the on-site appointment to realisation. The specifics have their own pages: Yacht interiors, Outdoor.",
+          "links": [
+            {
+              "label": "Yacht interiors",
+              "href": "/yacht-interior"
+            },
+            {
+              "label": "Outdoor",
+              "href": "/outdoor-gartenplanung"
+            }
+          ]
+        }
+      },
+      "closing": {
+        "line": "Designs that live.",
+        "title": "Tell us about your rooms.",
+        "text": "We listen, look at them and start with the first line."
+      },
+      "ui": {
+        "placeholderKind": {
+          "hero": "Harald at the drawing table"
+        }
+      },
+      "kette": {
+        "placeholder": "Project sequence to follow: before · sketch · model · rendering · today"
+      },
+      "handwerkLabels": {
+        "werkzeug": "Tools",
+        "massstab": "Scale",
+        "material": "Material",
+        "modellDauer": "Duration"
+      }
+    }
+  },
+  "fr": {
+    "Arbeitsweise": {
+      "meta": {
+        "title": "Du dessin à la main au rendu · Platzhirsch",
+        "description": "Nous visitons vos pièces, Harald Menghin dessine à la main et construit une maquette. Puis plan 3D et rendu. Showroom à Lochau, lac de Constance."
+      },
+      "hero": {
+        "overline": "Notre démarche",
+        "title": "Du dessin à la main au rendu.",
+        "lead": "Nous apprenons à connaître vos pièces avant de planifier. Harald Menghin dessine votre concept à la main et construit une maquette. Ensuite nous planifions en 3D, et vous voyez votre pièce de façon photoréaliste avant toute commande.",
+        "stepsLink": "Voir les sept étapes",
+        "cta": "Prendre rendez-vous",
+        "ctaNote": "60 minutes · gratuit · au showroom avec café ou chez vous"
+      },
+      "haltung": {
+        "overline": "Ce qui nous définit",
+        "title": "Nous sommes designers. Nous prenons le temps.",
+        "p1": "Chez nous, un projet d’aménagement ne commence pas dans un catalogue, mais chez vous : vos pièces, votre lumière, votre quotidien.",
+        "p2": "C’est pourquoi nous venons chez vous. Si votre projet le demande, nous restons aussi un ou deux jours sur place.",
+        "p3": "Ce que nous y voyons, Harald Menghin le dessine à la main. Le dessin devient une maquette, la maquette un plan 3D exact. L’idée première reste ainsi intacte jusqu’à la pièce terminée."
+      },
+      "steps": {
+        "s1": "Faire connaissance",
+        "s2": "Sur place",
+        "s3": "Dessin à la main",
+        "s4": "Maquette",
+        "s5": "Plan 3D",
+        "s6": "Rendu",
+        "s7": "Réalisation"
+      },
+      "stepTexts": {
+        "s1": "Nous échangeons au showroom de Lochau, autour d’un café, ou chez vous. Vous nous racontez comment vous vivez et ce qui doit changer. Plans, photos et mesures aident, mais ne sont pas indispensables.",
+        "s2": "Une pièce est plus que son plan. Nous observons comment la lumière se déplace au fil de la journée, comment la pièce se ressent en été et en hiver, et quels chemins vous empruntez chaque jour. Si votre projet le demande, nous restons un ou deux jours.",
+        "s3": "Harald Menghin esquisse à la main plans, perspectives et ambiances. Sur papier, les variantes se comparent vite et vous voyez tôt la direction. Le dessin ne montre pas chaque détail, mais l’idée.",
+        "s4": "Harald construit ensuite une maquette à l’échelle, comme le font architectes et promoteurs. Vous pouvez la toucher, la regarder sous tous les angles et la réorganiser avec nous. Beaucoup de questions se règlent plus vite à la table qu’à l’écran.",
+        "s5": "Nous transposons dessin et maquette dans un plan numérique aux dimensions exactes, avec les produits et matériaux choisis. On voit alors si chaque porte s’ouvre, si chaque tiroir trouve sa place et si chaque canapé passe par la cage d’escalier.",
+        "s6": "Du plan naît une image photoréaliste de votre pièce. Vous voyez comment tissus, bois et lumière s’accordent avant toute commande. Vous donnez votre avis lors d’un échange ou dans l’espace client, aussi par message vocal.",
+        "s7": "Nous commandons, coordonnons la livraison et, sur demande, le montage. Si plusieurs corps de métier interviennent, nous coordonnons les dates. Et nous accompagnons votre projet jusqu’à ce que tout soit en place, comme dessiné."
+      },
+      "chapters": {
+        "vorOrt": "D’abord, nous regardons autour de nous.",
+        "vonHand": "Le premier projet naît sur papier.",
+        "strichZumRaum": "Ensuite, tout devient précis.",
+        "wirklichkeit": "Jusqu’à votre emménagement.",
+        "overview": "Sept étapes, du premier échange à l’emménagement.",
+        "harald": "Harald Menghin",
+        "kette": "Un projet, étape par étape.",
+        "online": "Commencer en ligne. Harald continue de dessiner.",
+        "faq": "Questions sur notre démarche"
+      },
+      "station": "Étape {n} sur {total}",
+      "schema": "Schéma",
+      "placeholder": "Image à venir",
+      "renderingLabel": "Visualisation issue du plan, pas une photo.",
+      "harald": {
+        "role": "Designer & dessinateur",
+        "text": "Harald pense avec le crayon. Avant de planifier à l’écran, il dessine. Puis il construit la maquette sur laquelle vous continuez à travailler avec nous. Il accompagne votre projet de la première esquisse jusqu’au plan.",
+        "quoteLabel": "Harald Menghin"
+      },
+      "faq": {
+        "q1": {
+          "q": "Harald dessine-t-il vraiment chaque concept à la main ?",
+          "a": "Oui, nos concepts d’aménagement commencent par un dessin à la main, puis Harald construit une maquette. Le nombre d’esquisses et le niveau de détail de la maquette dépendent du projet. Nous en parlons lors du premier rendez-vous."
+        },
+        "q2": {
+          "q": "Pourquoi une maquette alors qu’il existe des rendus 3D ?",
+          "a": "Une maquette se prend en main et se réorganise ensemble. Beaucoup de questions de proportions et de circulation se règlent ainsi plus vite. Le plan 3D suit et rend tout exact."
+        },
+        "q3": {
+          "q": "Venez-vous chez moi ?",
+          "a": "Oui. Nous visitons vos pièces sur place, au Vorarlberg, autour du lac de Constance et dans les régions voisines. Si votre projet le demande, nous restons un ou deux jours pour comprendre lumière, climat et habitudes."
+        },
+        "q4": {
+          "q": "Combien coûte la planification avec dessin et maquette ?",
+          "a": "Cela dépend de l’ampleur. Lors du premier rendez-vous, nous clarifions ce dont votre projet a besoin. Nous discutons des coûts avec vous avant de poursuivre la planification."
+        },
+        "q5": {
+          "q": "Quand verrai-je à quoi ressemblera ma pièce ?",
+          "a": "Le dessin à la main montre déjà l’idée. Avec le rendu photoréaliste, vous voyez votre pièce avec matériaux et lumière avant toute commande."
+        },
+        "q6": {
+          "q": "Puis-je apporter des modifications ?",
+          "a": "Oui, à chaque étape. Sur la maquette, lors d’un échange ou dans l’espace client, aussi par message vocal."
+        },
+        "q7": {
+          "q": "J’ai déjà planifié avec le configurateur cuisine ou canapé. Dois-je tout recommencer ?",
+          "a": "Non. Apportez votre résultat ou envoyez-nous le lien. Nous continuons à partir de là, et Harald poursuit votre concept à la main."
+        },
+        "q8": {
+          "q": "Planifiez-vous aussi des hôtels, des appartements de vacances ou des bateaux ?",
+          "a": "Oui. Le déroulement est le même, du rendez-vous sur place à la réalisation. Les particularités ont leurs propres pages : Aménagement de yachts, Extérieur.",
+          "links": [
+            {
+              "label": "Aménagement de yachts",
+              "href": "/yacht-interior"
+            },
+            {
+              "label": "Extérieur",
+              "href": "/outdoor-gartenplanung"
+            }
+          ]
+        }
+      },
+      "closing": {
+        "line": "Des designs qui vivent.",
+        "title": "Parlez-nous de vos pièces.",
+        "text": "Nous écoutons, nous les regardons et commençons par le premier trait."
+      },
+      "ui": {
+        "placeholderKind": {
+          "hero": "Harald à sa table à dessin"
+        }
+      },
+      "kette": {
+        "placeholder": "Séquence du projet à venir : avant · esquisse · maquette · rendu · aujourd’hui"
+      },
+      "handwerkLabels": {
+        "werkzeug": "Outils",
+        "massstab": "Échelle",
+        "material": "Matériau",
+        "modellDauer": "Durée"
+      }
+    }
+  },
+  "it": {
+    "Arbeitsweise": {
+      "meta": {
+        "title": "Dal disegno a mano al rendering · Platzhirsch",
+        "description": "Visitiamo i vostri spazi, Harald Menghin disegna a mano e costruisce un modello. Poi progetto 3D e rendering. Showroom a Lochau sul lago di Costanza."
+      },
+      "hero": {
+        "overline": "Il nostro metodo",
+        "title": "Dal disegno a mano al rendering.",
+        "lead": "Conosciamo i vostri spazi prima di progettare. Harald Menghin disegna il vostro concept a mano e costruisce un modello. Poi progettiamo in 3D e vedete il vostro ambiente in modo fotorealistico prima di ordinare qualsiasi cosa.",
+        "stepsLink": "Vedere i sette passi",
+        "cta": "Prenotare un appuntamento",
+        "ctaNote": "60 minuti · gratuito · nello showroom con caffè o da voi"
+      },
+      "haltung": {
+        "overline": "Cosa ci contraddistingue",
+        "title": "Siamo designer. Ci prendiamo il tempo.",
+        "p1": "Da noi un progetto d’arredo non comincia in un catalogo, ma da voi: dai vostri spazi, dalla vostra luce, dalla vostra quotidianità.",
+        "p2": "Per questo veniamo da voi. Se il progetto lo richiede, restiamo sul posto anche uno o due giorni.",
+        "p3": "Ciò che vediamo lì, Harald Menghin lo disegna a mano. Il disegno diventa un modello, il modello un progetto 3D esatto. Così l’idea iniziale resta intatta fino all’ambiente finito."
+      },
+      "steps": {
+        "s1": "Conoscenza",
+        "s2": "Sul posto",
+        "s3": "Disegno a mano",
+        "s4": "Modello",
+        "s5": "Progetto 3D",
+        "s6": "Rendering",
+        "s7": "Realizzazione"
+      },
+      "stepTexts": {
+        "s1": "Parliamo nello showroom di Lochau, magari con un caffè, oppure a casa vostra. Ci raccontate come vivete e cosa deve cambiare. Piante, foto e misure aiutano, ma non sono indispensabili.",
+        "s2": "Un ambiente è più della sua pianta. Osserviamo come si muove la luce durante la giornata, come si vive lo spazio d’estate e d’inverno e quali percorsi fate ogni giorno. Se il progetto lo richiede, restiamo uno o due giorni.",
+        "s3": "Harald Menghin schizza a mano piante, prospettive e atmosfere. Su carta le varianti si confrontano in fretta e vedete presto la direzione. Il disegno non mostra ogni dettaglio, ma l’idea.",
+        "s4": "Poi Harald costruisce un modello in scala dell’ambiente, come fanno architetti e costruttori. Potete toccarlo, guardarlo da ogni lato e riorganizzarlo con noi. Molte domande si chiariscono più in fretta al tavolo che sullo schermo.",
+        "s5": "Trasferiamo disegno e modello in un progetto digitale con misure esatte, prodotti e materiali scelti. Si vede allora se ogni porta si apre, ogni cassetto trova posto e ogni divano passa per le scale.",
+        "s6": "Dal progetto nasce un’immagine fotorealistica del vostro ambiente. Vedete come tessuti, legno e luce si accordano prima di ordinare. Il vostro riscontro lo date a voce o nel portale clienti, anche con un messaggio vocale.",
+        "s7": "Ordiniamo, coordiniamo la consegna e, su richiesta, il montaggio. Se intervengono più imprese, coordiniamo le date. E seguiamo il vostro progetto finché tutto è come disegnato."
+      },
+      "chapters": {
+        "vorOrt": "Prima ci guardiamo intorno.",
+        "vonHand": "Il primo progetto nasce su carta.",
+        "strichZumRaum": "Poi diventa preciso.",
+        "wirklichkeit": "Fino al trasloco.",
+        "overview": "Sette passi, dal primo colloquio al trasloco.",
+        "harald": "Harald Menghin",
+        "kette": "Un progetto, passo dopo passo.",
+        "online": "Iniziare online. Harald continua a disegnare.",
+        "faq": "Domande sul nostro metodo"
+      },
+      "station": "Passo {n} di {total}",
+      "schema": "Schema",
+      "placeholder": "Immagine in arrivo",
+      "renderingLabel": "Visualizzazione dal progetto, non una foto.",
+      "harald": {
+        "role": "Designer & disegnatore",
+        "text": "Harald pensa con la matita. Prima di progettare allo schermo, disegna. Poi costruisce il modello su cui continuate a lavorare con noi. Accompagna il vostro progetto dal primo schizzo al progetto.",
+        "quoteLabel": "Harald Menghin"
+      },
+      "faq": {
+        "q1": {
+          "q": "Harald disegna davvero ogni concept a mano?",
+          "a": "Sì, i nostri concept d’arredo iniziano con un disegno a mano, poi Harald costruisce un modello. Quanti schizzi e quanto dettagliato sarà il modello dipende dal progetto. Ne parliamo al primo appuntamento."
+        },
+        "q2": {
+          "q": "Perché un modello se esistono i rendering 3D?",
+          "a": "Un modello si prende in mano e si riorganizza insieme. Molte domande su proporzioni e percorsi si chiariscono così più in fretta. Il progetto 3D segue e rende tutto esatto."
+        },
+        "q3": {
+          "q": "Venite a casa mia?",
+          "a": "Sì. Visitiamo i vostri spazi sul posto, in Vorarlberg, sul lago di Costanza e nelle regioni vicine. Se il progetto lo richiede, restiamo uno o due giorni per conoscere luce, clima e abitudini."
+        },
+        "q4": {
+          "q": "Quanto costa la progettazione con disegno a mano e modello?",
+          "a": "Dipende dall’entità. Al primo appuntamento chiariamo di cosa ha bisogno il progetto. Discutiamo i costi con voi prima di proseguire la progettazione."
+        },
+        "q5": {
+          "q": "Quando vedrò come sarà il mio ambiente?",
+          "a": "Il disegno a mano mostra già l’idea. Con il rendering fotorealistico vedete l’ambiente con materiali e luce prima di ordinare."
+        },
+        "q6": {
+          "q": "Posso apportare modifiche?",
+          "a": "Sì, a ogni passo. Sul modello, a voce o nel portale clienti, anche con un messaggio vocale."
+        },
+        "q7": {
+          "q": "Ho già progettato con il configuratore cucina o divano. Devo ricominciare da capo?",
+          "a": "No. Portate il risultato o inviateci il link. Proseguiamo da lì e Harald continua il vostro concept a mano."
+        },
+        "q8": {
+          "q": "Progettate anche hotel, case vacanza o barche?",
+          "a": "Sì. Il processo è lo stesso, dal sopralluogo alla realizzazione. Per le particolarità ci sono pagine dedicate: Interni yacht, Outdoor.",
+          "links": [
+            {
+              "label": "Interni yacht",
+              "href": "/yacht-interior"
+            },
+            {
+              "label": "Outdoor",
+              "href": "/outdoor-gartenplanung"
+            }
+          ]
+        }
+      },
+      "closing": {
+        "line": "Design che vivono.",
+        "title": "Raccontateci dei vostri spazi.",
+        "text": "Ascoltiamo, li osserviamo e iniziamo dal primo tratto."
+      },
+      "ui": {
+        "placeholderKind": {
+          "hero": "Harald al tavolo da disegno"
+        }
+      },
+      "kette": {
+        "placeholder": "Sequenza del progetto in arrivo: prima · schizzo · modello · rendering · oggi"
+      },
+      "handwerkLabels": {
+        "werkzeug": "Strumenti",
+        "massstab": "Scala",
+        "material": "Materiale",
+        "modellDauer": "Durata"
+      }
+    }
+  }
+}
