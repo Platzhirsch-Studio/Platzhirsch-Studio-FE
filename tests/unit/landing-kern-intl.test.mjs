@@ -44,8 +44,11 @@ function shape(value) {
 }
 const count = (src, re) => (src.match(re) || []).length;
 
-test("fünf Seiten, drei neue Sprachen, Slugs unverändert", () => {
-  assert.deepEqual([...KERN_PATHS].sort(), ["/interior-design-vorarlberg", "/kuechen-vorarlberg", "/leistungen", "/outdoor-gartenplanung", "/wohnzimmer-einrichten-vorarlberg"]);
+// 02.11.2026: sechste Seite /outdoor-kueche (landingKern/outdoorKueche.js);
+// dazu die Kaufwörter-Seiten /whirlpool-kaufen, /swim-spa, /sauna-kaufen
+// (landingKern/whirlpool.js, swimspa.js, sauna.js).
+test("neun Seiten, drei neue Sprachen, Slugs unverändert", () => {
+  assert.deepEqual([...KERN_PATHS].sort(), ["/interior-design-vorarlberg", "/kuechen-vorarlberg", "/leistungen", "/outdoor-gartenplanung", "/outdoor-kueche", "/sauna-kaufen", "/swim-spa", "/whirlpool-kaufen", "/wohnzimmer-einrichten-vorarlberg"]);
   assert.deepEqual([...INTL_LOCALES], ["en", "fr", "it"]);
   for (const p of LANDINGS) for (const l of INTL_LOCALES) assert.ok(kernIntl(p, l), `${p} ${l}`);
   assert.equal(kernIntl("/kuechen-vorarlberg", "de"), null);

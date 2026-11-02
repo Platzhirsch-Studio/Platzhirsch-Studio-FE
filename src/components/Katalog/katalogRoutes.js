@@ -18,6 +18,11 @@ import { buildPageMetadata } from "@/lib/seo/pageMetadata";
 import { KATALOG_LOCALES, kategorieKey, textOf } from "@/lib/katalog/schema";
 import { WELTEN, WELT_IDS, kategoriePath, markePath, produktPath, produktePath, seitePath } from "@/lib/katalog/welten";
 import { letzterSatz, produktBeschreibung, weltTitel } from "./katalogMeta";
+import { kachelBild } from "./kachelBild";
+// Kaufwort-Seiten der Gerätemarken (02.11.2026): Titel/Description je Marke aus
+// markenSeo.js; das Händlerwort im Titel kommt nur aus dem Claim-Guard.
+import { dealerTitleWord } from "@/lib/legal/claims";
+import { markenSeo, markenSeoTitel } from "@/lib/kueche/markenSeo";
 import {
   kategorienMitProdukten,
   markeBySlug,
@@ -39,9 +44,12 @@ const markeMehrfach = (welt, slug) => andereWelten(welt).some((w) => produkteByM
 const kategorieMehrfach = (welt, kategorie) => andereWelten(welt).some((w) => produkteByKategorie(w, kategorie).length > 0);
 const seiteNr = (s) => (s == null ? 1 : /^[2-9]\d*$|^1\d+$/.test(String(s)) ? Number(s) : NaN);
 
+// QM Inhaber-Entscheidung Nr. 6, 02.11.: og:image der Listen = Kachelbild (kachelBild.js:
+// Dornbracht-Freisteller statt Farbverlauf), nicht starr bilder[0].
 function bildMeta(list, locale) {
   const first = list.find((p) => p.bilder.length);
-  return first ? { image: first.bilder[0].src, imageAlt: textOf(first.bilder[0].alt, locale) } : {};
+  const bild = first ? kachelBild(first) || first.bilder[0] : null;
+  return bild ? { image: bild.src, imageAlt: textOf(bild.alt, locale) } : {};
 }
 
 // ------------------------------------------------------------------ Übersicht
@@ -94,6 +102,18 @@ export async function markeMetadata(welt, { params }) {
   if (!r) return nf;
   const t = await getTranslations({ locale: r.locale, namespace: "katalog" });
   const seitenText = r.seite > 1 ? ` – ${t("seiten.seite")} ${r.seite}` : "";
+  // Gerätemarken mit Kaufwort-Texten (Seite 1 der Welt kuechengeraete): eigener
+  // Titel („Quooker kaufen in Vorarlberg – Händler in Lochau“) und Description.
+  const seo = welt === "kuechengeraete" && r.seite === 1 ? markenSeo(r.m.slug, r.locale) : null;
+  if (seo) {
+    return buildPageMetadata({
+      locale: r.locale,
+      pathByLocale: markePath(welt, r.m.slug),
+      title: markenSeoTitel(r.m.slug, r.locale, r.m.dealer ? dealerTitleWord(r.m.slug, r.locale) : "") + SUFFIX,
+      description: seo.description,
+      ...bildMeta(produkteByMarke(r.m.slug, welt), r.locale),
+    });
+  }
   return buildPageMetadata({
     locale: r.locale,
     pathByLocale: seitePath(markePath(welt, r.m.slug), r.seite),

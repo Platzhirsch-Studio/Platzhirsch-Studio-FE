@@ -534,56 +534,22 @@ export default async function BrandPage({ marke, locale = "de", kategorien = [],
           </Section>
         )}
 
-        {/* ------------------------------------------------------------ */}
-        {/* MINOTTI AM BODENSEE (nur Minotti, nur DE)                      */}
-        {/* ------------------------------------------------------------ */}
-        {bodensee && (
-          <Section tone="raised" spacing="none" className="py-12 md:py-16" labelledBy="brand-bodensee" data-brand-bodensee="">
-            <div className="grid grid-cols-1 gap-8 md:gap-12 @5xl/page:grid-cols-12 @5xl/page:gap-grid">
-              <div className="@5xl/page:col-span-7">
-                <Heading id="brand-bodensee" level={2}>
-                  {bodensee.title}
-                </Heading>
-                <div className="mt-stack-m flex flex-col gap-4 text-body text-text-soft">
-                  {withoutRepeatedParagraphs(bodensee.paragraphs, guide?.sections?.flatMap((s) => s.paragraphs)).map((p, k) => (
-                    <p key={k} className="max-w-measure">
-                      {glueDash(p)}
-                    </p>
-                  ))}
-                </div>
-                <dl className="mt-stack-m border-t border-line pt-4 text-body">
-                  <dt className="text-overline uppercase text-text-soft">{bodensee.address.label}</dt>
-                  {bodensee.address.lines.map((line) => (
-                    <dd key={line} className="mt-1 text-text">
-                      {line}
-                    </dd>
-                  ))}
-                </dl>
-              </div>
-              <nav aria-label={bodensee.title} className="@5xl/page:col-span-4 @5xl/page:col-start-9 @5xl/page:self-start">
-                <ul className="border-t border-line">
-                  {bodensee.links.map((link) => (
-                    <li key={link.id} className="border-b border-line" data-bodensee-link={link.id}>
-                      <a
-                        href={link.href}
-                        className="flex min-h-12 items-center py-2 text-ui text-text underline decoration-transparent underline-offset-4 transition-colors duration-(--duration-micro) hover:decoration-current"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-          </Section>
-        )}
+        {/* QM Inhaber-Entscheidung Nr. 8, 02.11. (Minotti-Seite textlastig): Der
+            Abschnitt „Minotti am Bodensee“ steht nicht mehr als eigener Block
+            zwischen „Gut zu wissen“ und „Die Marke“, sondern als Unterabschnitt
+            im Band „Im Showroom“ (unten) – alles zum Besuch in Lochau an einer
+            Stelle. Wortlaut, Adresse und Links unverändert. */}
 
         {/* ------------------------------------------------------------ */}
         {/* DIE MARKE                                                      */}
         {/* ------------------------------------------------------------ */}
         {(story.length > 0 || approach) && (
-          <Section spacing="none" className={storyImage ? SECTION_Y : "py-12 md:py-16"} labelledBy="brand-story">
-            <div className="grid grid-cols-1 gap-8 md:gap-12 @5xl/page:grid-cols-12 @5xl/page:gap-grid">
+          <Section spacing="none" className={guide ? "pb-12 md:pb-16" : storyImage ? SECTION_Y : "py-12 md:py-16"} labelledBy="brand-story">
+            {/* QM Inhaber-Entscheidung Nr. 8, 02.11.: folgt der Abschnitt direkt auf
+                „Gut zu wissen“ (gleicher Hintergrund), trennt eine Haarlinie im
+                Raster die beiden Textkapitel; der obere Abstand sitzt dann unter
+                der Linie (kein doppelter Abstand). */}
+            <div className={`grid grid-cols-1 gap-8 md:gap-12 @5xl/page:grid-cols-12 @5xl/page:gap-grid ${guide ? "border-t border-line pt-12 md:pt-16" : ""}`}>
               <div className={storyImage ? "@5xl/page:col-span-6 xl:@5xl/page:col-span-5" : story.length > 0 ? "@5xl/page:col-span-7" : "@5xl/page:col-span-12"}>
                 <Eyebrow className="mb-stack-s">{tr("storyEyebrow")}</Eyebrow>
                 <Heading id="brand-story" level={2}>
@@ -803,6 +769,55 @@ export default async function BrandPage({ marke, locale = "de", kategorien = [],
               )}
             </aside>
           </div>
+
+          {/* ------------------------------------------------------------ */}
+          {/* MINOTTI AM BODENSEE (nur Minotti, nur DE)                      */}
+          {/* ------------------------------------------------------------ */}
+          {/* QM Inhaber-Entscheidung Nr. 8, 02.11.: Unterabschnitt des Showroom-
+              Bands (H3 statt eigener H2-Sektion), Text | Links wie das Raster
+              darüber. Absätze, Adresse und Linkliste wie bisher (Daten aus
+              src/lib/marken/minottiBodensee.js, unverändert). */}
+          {bodensee && (
+            <div
+              className="mt-12 grid grid-cols-1 gap-8 border-t border-line-strong pt-10 md:gap-12 lg:mt-16 @5xl/page:grid-cols-12 @5xl/page:gap-grid"
+              data-brand-bodensee=""
+            >
+              <div className="@5xl/page:col-span-6">
+                <Heading id="brand-bodensee" level={3} size="title">
+                  {bodensee.title}
+                </Heading>
+                <div className="mt-stack-s flex flex-col gap-4 text-body text-text-soft">
+                  {withoutRepeatedParagraphs(bodensee.paragraphs, guide?.sections?.flatMap((s) => s.paragraphs)).map((p, k) => (
+                    <p key={k} className="max-w-measure">
+                      {glueDash(p)}
+                    </p>
+                  ))}
+                </div>
+                <dl className="mt-stack-m border-t border-line pt-4 text-body">
+                  <dt className="text-overline uppercase text-text-soft">{bodensee.address.label}</dt>
+                  {bodensee.address.lines.map((line) => (
+                    <dd key={line} className="mt-1 text-text">
+                      {line}
+                    </dd>
+                  ))}
+                </dl>
+              </div>
+              <nav aria-labelledby="brand-bodensee" className="@5xl/page:col-span-5 @5xl/page:col-start-8 @5xl/page:self-start">
+                <ul className="border-t border-line">
+                  {bodensee.links.map((link) => (
+                    <li key={link.id} className="border-b border-line" data-bodensee-link={link.id}>
+                      <a
+                        href={link.href}
+                        className="flex min-h-12 items-center py-2 text-ui text-text underline decoration-transparent underline-offset-4 transition-colors duration-(--duration-micro) hover:decoration-current"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          )}
         </Section>
 
         {/* ------------------------------------------------------------ */}

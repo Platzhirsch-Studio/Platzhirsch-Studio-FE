@@ -32,3 +32,42 @@ test("kein Code verlinkt die Testszene direkt (nur das Manifest für die Vorscha
     assert.doesNotMatch(readFileSync(p, "utf8"), /\/showroom\/_testszene/, p);
   }
 });
+
+// QM Inhaber-Entscheidung Nr. 7, 02.11.: Showroom-Testszene erst mit echtem Material
+// verlinken – EINE Bedingung (showroomSichtbar) für Menü, Startseite/Leistungen,
+// Footer und Sitemap; die Seite bleibt in der Vorschau erreichbar (noindex).
+test("showroomSichtbar: nur mit echtem Material, nie allein wegen Modus preview", async () => {
+  const C = await import("../../src/lib/showroom/config.js");
+  assert.equal(C.showroomSichtbar({ mode: "preview", ready: false }), false, "Testszene (dev) nicht verlinken");
+  assert.equal(C.showroomSichtbar({ mode: "off", ready: false }), false);
+  assert.equal(C.showroomSichtbar({ mode: "off", ready: true }), false, "Schalter aus → kein Link");
+  assert.equal(C.showroomSichtbar({ mode: "public", ready: true }), true);
+  assert.equal(C.showroomSichtbar({ mode: "preview", ready: true }), true, "echtes Material in der Vorschau → Link");
+  const onlyTest = (C.MANIFEST.zonen || []).every((z) => String(z.id).startsWith("_"));
+  if (onlyTest) {
+    assert.equal(C.showroomSichtbar(), false);
+    assert.equal(C.showroomSichtbar({ mode: "preview" }), false, "Dev-Server: Testszene aktiv → keine Links");
+    assert.deepEqual(C.showroomSitemapPaths(), []);
+  }
+});
+
+test("Nr. 7: Menü, Hub, Footer und Sitemap hängen an showroomSichtbar()", async () => {
+  const nav = readFileSync(join(root, "src/components/Navbar/shellNav.js"), "utf8");
+  assert.match(nav, /showroom = showroomSichtbar\(\)/);
+  assert.doesNotMatch(nav, /showroomMode\(\) !== "off"/);
+  const feat = readFileSync(join(root, "src/lib/features.js"), "utf8");
+  assert.match(feat, /recording = showroomSichtbar\(\)/);
+  const footer = readFileSync(join(root, "src/lib/seo/footerLinks.js"), "utf8");
+  assert.match(footer, /return showroomSichtbar\(\)/);
+  const cfg = readFileSync(join(root, "src/lib/showroom/config.js"), "utf8");
+  assert.match(cfg, /showroomSitemapPaths\(isPublic = showroomSichtbar\(\)\)/);
+  // Vorschauen verlinken die Seite ebenfalls nur über den Helfer
+  for (const p of ["src/app/[locale]/preview/kino-zeichnung/page.js", "src/components/Preview/pinterest/data.js"]) {
+    const src = readFileSync(join(root, p), "utf8");
+    assert.doesNotMatch(src.replace(/showroomSichtbar\(\) \? "\/de\/showroom"/g, ""), /"\/de\/showroom"/, p);
+  }
+  // Footer im Zustand "Testszene": /showroom nicht erlaubt
+  const { footerLinkAllowed } = await import("../../src/lib/seo/footerLinks.js");
+  const C = await import("../../src/lib/showroom/config.js");
+  assert.equal(footerLinkAllowed("/de/showroom"), C.showroomSichtbar());
+});

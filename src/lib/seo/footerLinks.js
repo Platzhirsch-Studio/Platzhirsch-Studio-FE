@@ -13,6 +13,8 @@
 // Pure module (relative imports only).
 import { isRegionPath, passesDoorwayAudit } from "./sitemap/doorwayAudit.js";
 import { referralTermsReleased } from "../kundenbetreuung/empfehlung.js";
+// QM Inhaber-Entscheidung Nr. 7, 02.11.: /showroom nur mit echtem Material (eine Bedingung).
+import { showroomSichtbar } from "../showroom/config.js";
 
 /**
  * German paths (without locale) that answer noindex on purpose. A path
@@ -57,6 +59,8 @@ export function footerLinkAllowed(href, { conciergeIndexable = false } = {}) {
   const path = footerPath(href);
   if (isRegionPath(path)) return passesDoorwayAudit(path);
   if (path === "/concierge") return conciergeIndexable;
+  // QM Inhaber-Entscheidung Nr. 7, 02.11.: Showroom-Testszene nie verlinken; mit echter Aufnahme automatisch wieder erlaubt.
+  if (path === "/showroom" || path.startsWith("/showroom/")) return showroomSichtbar();
   if (path.startsWith("/ratgeber/")) return false;
   if (path === "/empfehlen" || path.startsWith("/empfehlen/")) return referralTermsReleased();
   return !FOOTER_NOINDEX_PATHS.some((p) => path === p || path.startsWith(`${p}/`));

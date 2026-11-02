@@ -445,6 +445,7 @@ export const LISTEN = Object.freeze({
   fotoLicht: { morgen: "Mattina", abend: "Sera" },
   fotoLichtAlt: { morgen: "del mattino", abend: "della sera" },
   fotoCaption: "Visualizzazione (rendering), verificate l’effetto dei colori sul campione",
+  fotoDekorHinweis: "Solo colore di fondo del motivo, senza il disegno.",
   fotoHinweis: "Vista foto disponibile come vasca di esempio di 8 × 4 m per i colori singoli",
   credit: { bild: "Immagine: Ezarri, ezarri.com", daten: "Dati: Ezarri, ezarri.com" },
   farbfamilien: { weiss: "Bianco", grau: "Grigio", schwarz: "Nero", blau: "Blu", gruen: "Verde", gelb: "Giallo", braun: "Marrone", rosa: "Rosa", rot: "Rosso" },

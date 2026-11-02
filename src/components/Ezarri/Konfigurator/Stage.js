@@ -319,7 +319,9 @@ export default function Stage({ state, index, vorher, split, onSplit, onKamera, 
         {/* 3D starten / Status – QM r4: eine Leiste unten (links Zoom bzw. „Ansicht bewegen“, Mitte
             „In 3D ansehen“ bzw. Ladehinweis, rechts der Verlauf). Sie bricht bei großer Schrift nach oben
             um, statt dass Knöpfe übereinanderliegen („In 3D ansehen“ verdeckte den Verlauf). */}
-        <div className="pointer-events-none absolute inset-x-2 bottom-2 flex flex-wrap items-end gap-2" data-ezk-leiste-unten="">
+        {/* 02.11.: in der Fotoansicht rückt die Leiste um die Höhe der Bildunterschrift nach oben
+            (--ezk-caption-h setzt FotoAnsicht.js), damit Unterschrift und Knöpfe sich den Platz nicht teilen. */}
+        <div className="pointer-events-none absolute inset-x-2 bottom-[calc(var(--ezk-caption-h,0px)+0.5rem)] flex flex-wrap items-end gap-2" data-ezk-leiste-unten="">
         {gl === false && (
           <p className="pointer-events-auto basis-full bg-paper/95 px-3 py-2 text-small text-text sm:basis-auto sm:max-w-[calc(100%-10rem)]">
             {t(

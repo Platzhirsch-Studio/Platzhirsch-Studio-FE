@@ -85,10 +85,10 @@ export const STATIC = [
   "/hotel-objekt", "/ideenboard", "/impressum", "/interior-design-vorarlberg", "/ki-assistenten",
   "/ki-assistenten/bestaetigen", "/kontakt", "/kuechen-vorarlberg", "/kuechengeraete", "/kuechengeraete/produkte", "/kuechenplaner", "/kuechenplaner/druck",
   "/leistungen", "/merkliste", "/moebel-bodensee", "/news", "/newsletter", "/newsletter/archiv",
-  "/outdoor-gartenplanung", "/outdoor-winterservice", "/pflege-service", "/produkte", "/projekte", "/ratgeber", "/regionen",
-  "/showroom", "/sofaplaner", "/stil-finder", "/termin", "/termin/bestaetigen", "/termin/verwalten",
+  "/outdoor-gartenplanung", "/outdoor-kueche", "/outdoor-winterservice", "/pflege-service", "/produkte", "/projekte", "/ratgeber", "/regionen",
+  "/sauna-kaufen", "/showroom", "/sofaplaner", "/stil-finder", "/swim-spa", "/termin", "/termin/bestaetigen", "/termin/verwalten",
   "/ueber-uns/karriere", "/ueber-uns/marken", "/ueber-uns/partner", "/ueber-uns/platzhirsch", "/ueber-uns/presse",
-  "/ueber-uns/team", "/ueber-uns/team/harald-menghin", "/wohnzimmer-einrichten-vorarlberg", "/wunschliste", "/wunschliste/verwalten", "/yacht-interior",
+  "/ueber-uns/team", "/ueber-uns/team/harald-menghin", "/whirlpool-kaufen", "/wohnzimmer-einrichten-vorarlberg", "/wunschliste", "/wunschliste/verwalten", "/yacht-interior",
 ];
 const KNOWN = new Set([...STATIC, ...Object.values(ROUTES).flatMap((t) => Object.values(t))]);
 

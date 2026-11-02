@@ -1,6 +1,7 @@
 // src/lib/content/landingKern/index.js – Gruppe „landing-kern“ in EN/FR/IT:
 // /outdoor-gartenplanung, /kuechen-vorarlberg, /interior-design-vorarlberg,
-// /wohnzimmer-einrichten-vorarlberg, /leistungen. Slugs in allen Sprachen gleich.
+// /wohnzimmer-einrichten-vorarlberg, /outdoor-kueche (02.11.2026), /leistungen.
+// Slugs in allen Sprachen gleich.
 //
 // Muster wie Hotel & Objekt (src/lib/hotel/content-intl.js, seo.js): Deutsch
 // ist der Mastertext (bleibt in den page.js-Dateien bzw. LabsHub), die
@@ -25,6 +26,11 @@ import * as kueche from "./kueche.js";
 import * as interior from "./interior.js";
 import * as wohnzimmer from "./wohnzimmer.js";
 import * as outdoor from "./outdoor.js";
+import * as outdoorKueche from "./outdoorKueche.js";
+// Kaufwörter-Seiten Bad & Wellness (02.11.2026): Whirlpool, Swim Spa, Sauna.
+import * as whirlpool from "./whirlpool.js";
+import * as swimspa from "./swimspa.js";
+import * as sauna from "./sauna.js";
 import * as leistungen from "./leistungen.js";
 
 export { localeLink, pageLocales, hasLocale, sharedCopy };
@@ -32,12 +38,18 @@ export { localeLink, pageLocales, hasLocale, sharedCopy };
 export const KERN_LOCALES = Object.freeze(["de", "en", "fr", "it"]);
 export const INTL_LOCALES = Object.freeze(["en", "fr", "it"]);
 
-/** Die fünf Seiten der Gruppe: Pfad → Textmodul. */
+/** Die sechs Seiten der Gruppe: Pfad → Textmodul. */
 export const KERN_PAGES = Object.freeze({
   "/kuechen-vorarlberg": kueche,
   "/interior-design-vorarlberg": interior,
   "/wohnzimmer-einrichten-vorarlberg": wohnzimmer,
   "/outdoor-gartenplanung": outdoor,
+  // SEO-Landingpage Outdoor-Küche (02.11.2026), Muster wie kueche.js.
+  "/outdoor-kueche": outdoorKueche,
+  // Kaufwörter-Seiten Bad & Wellness (02.11.2026), Muster wie kueche.js.
+  "/whirlpool-kaufen": whirlpool,
+  "/swim-spa": swimspa,
+  "/sauna-kaufen": sauna,
   "/leistungen": leistungen,
 });
 export const KERN_PATHS = Object.freeze(Object.keys(KERN_PAGES));

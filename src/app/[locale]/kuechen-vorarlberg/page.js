@@ -104,6 +104,8 @@ const CONTENT = {
       { href: "/ratgeber/was-kostet-eine-designerkueche", label: "Ratgeber: Was kostet eine Designerküche?" },
       // Bad & Wellness (Inhaber-Entscheidungen Nr. 20/21): Dornbracht auch für die Küche.
       { href: "/bad-wellness#marke-dornbracht", label: "Armaturen von Dornbracht" },
+      // Outdoor-Küche (02.11.2026): eigene Landingpage /outdoor-kueche.
+      { href: "/outdoor-kueche", label: "Outdoor-Küche für Garten und Terrasse planen" },
     ],
   },
   gallery: [

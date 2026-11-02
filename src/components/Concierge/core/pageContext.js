@@ -6,7 +6,7 @@
 import { ROUTES } from "@/utils/routing";
 import { FILTER_PARAM_LIST, SLUG_RE } from "@/lib/concierge/actionKinds";
 
-const LANDING = /^(yacht-interior|outdoor-gartenplanung|einkaufen-aus-der-schweiz|kuechen-vorarlberg|interior-design-vorarlberg|moebel-bodensee|wohnzimmer-einrichten-vorarlberg|designermoebel-[a-z-]+|gutscheine|atelierverkauf|adventsabend)$/;
+const LANDING = /^(yacht-interior|outdoor-gartenplanung|outdoor-kueche|whirlpool-kaufen|swim-spa|sauna-kaufen|einkaufen-aus-der-schweiz|kuechen-vorarlberg|interior-design-vorarlberg|moebel-bodensee|wohnzimmer-einrichten-vorarlberg|designermoebel-[a-z-]+|gutscheine|atelierverkauf|adventsabend)$/;
 
 const strip = (p) => String(p || "").replace(/^\//, "");
 

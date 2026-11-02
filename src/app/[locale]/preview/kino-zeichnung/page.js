@@ -14,6 +14,7 @@ import { zeichnungFuer } from "@/components/Preview/kino-zeichnung/drawings";
 import s from "@/components/Preview/kino-zeichnung/kino.module.css";
 import { ADDRESS, DIRECTIONS_URL, OPENING_HOURS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 import { CAFE_PROFILE } from "@/lib/seo/siteSchema";
+import { showroomSichtbar } from "@/lib/showroom/config";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -110,7 +111,8 @@ const SZENEN = [
       </>
     ),
     text: "Zum Platzhirsch in Lochau gehört ein Café. Nehmen Sie sich Zeit für einen Kaffee – vor oder nach dem Gang durch die Ausstellung.",
-    link: { href: "/de/showroom", label: "Showroom & Café" },
+    // QM Inhaber-Entscheidung Nr. 7, 02.11.: Showroom-Seite erst mit echtem Material verlinken, sonst Kontakt (Anfahrt, Öffnungszeiten).
+    link: { href: showroomSichtbar() ? "/de/showroom" : "/de/kontakt", label: "Showroom & Café" },
     // Inhaber 31.10.2026: echtes Platzhirsch-Café-Foto statt Herstellerbild
     // (Ablage public/Images/Cafe/cafe.jpg); bis dahin das eigene Showroom-Foto.
     bild: CAFE_BILD,

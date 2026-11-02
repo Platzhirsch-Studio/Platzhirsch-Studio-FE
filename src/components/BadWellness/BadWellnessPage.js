@@ -42,7 +42,7 @@ import {
 } from "@/lib/wellness/marken";
 import { bwText } from "./badWellnessCopy";
 // Lokal-SEO (31.10.2026): H1, Whirlpool-/Außensauna-Abschnitt und FAQ.
-import { hubText } from "./badWellnessHub";
+import { HUB_LANDING, hubText } from "./badWellnessHub";
 import { markePath } from "@/lib/katalog/welten";
 import SeoFaq from "@/components/Reusable/SeoFaq";
 // Herstellerkatalog (31.10.2026): Link je Markenkarte + „Ausgewählte Produkte“.
@@ -72,7 +72,13 @@ const LINKS = {
 
 /** Abschnitte „Whirlpool in Vorarlberg“ (Aquavia Spa) und „Außensauna“ (Starpool, Soleum). */
 export const HUB_ABSCHNITTE = Object.freeze([
-  Object.freeze({ id: "whirlpool", marken: Object.freeze([{ slug: "aquavia-spa", label: "markeLink" }]), ratgeber: "whirlpoolRatgeber" }),
+  // `landing` (02.11.2026): Themen-Landingpages Whirlpool, Swim Spa, Sauna (HUB_LANDING in badWellnessHub.js, alle vier Sprachen).
+  Object.freeze({
+    id: "whirlpool",
+    marken: Object.freeze([{ slug: "aquavia-spa", label: "markeLink" }]),
+    ratgeber: "whirlpoolRatgeber",
+    landing: HUB_LANDING.whirlpool,
+  }),
   Object.freeze({
     id: "sauna",
     marken: Object.freeze([
@@ -80,6 +86,7 @@ export const HUB_ABSCHNITTE = Object.freeze([
       { slug: "soleum", label: "soleumLink" },
     ]),
     ratgeber: "saunaRatgeber",
+    landing: HUB_LANDING.sauna,
   }),
 ]);
 
@@ -421,6 +428,12 @@ export default function BadWellnessPage({ locale }) {
                   </LinkArrow>
                 ))}
                 <TargetLink name={a.ratgeber} locale={locale} tx={tx} label={hubText(locale, `${a.id}.ratgeberLink`)} className={ARROW_INLINE} />
+                {/* Themen-Landingpages (02.11.2026): viersprachig, Ziele und Linktexte in badWellnessHub.js. */}
+                {a.landing.map((l) => (
+                  <LinkArrow key={l.href} href={l.href} className={ARROW_INLINE} data-bw-hub-landing={l.href}>
+                    {hubText(locale, `${a.id}.${l.label}`)}
+                  </LinkArrow>
+                ))}
               </div>
             </div>
           ))}

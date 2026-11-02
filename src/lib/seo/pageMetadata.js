@@ -234,6 +234,11 @@ export const OG_CARDS = Object.freeze({
   "/yacht-interior": { eyebrow: "Boote · Yachten · Bootshäuser", title: "Yacht-Interieur am Bodensee", line: "Nehmen Sie Platz – an Bord." },
   "/outdoor-gartenplanung": { eyebrow: "Garten · Terrasse · Pool", title: "Gartenplanung und Outdoor am Bodensee" },
   "/kuechen-vorarlberg": { eyebrow: "Küchenplanung", title: "Designerküchen in Vorarlberg" },
+  "/outdoor-kueche": { eyebrow: "Outdoor-Küche", title: "Außenküchen nach Maß am Bodensee" },
+  // Kaufwörter-Seiten Bad & Wellness (02.11.2026).
+  "/whirlpool-kaufen": { eyebrow: "Whirlpool · Privat-Spa", title: "Whirlpool kaufen in Vorarlberg" },
+  "/swim-spa": { eyebrow: "Swim Spa", title: "Swim Spa kaufen in Vorarlberg" },
+  "/sauna-kaufen": { eyebrow: "Sauna · Privat-Spa", title: "Sauna kaufen in Vorarlberg" },
   "/interior-design-vorarlberg": { eyebrow: "Interior Design", title: "Interior Design in Vorarlberg" },
   "/wohnzimmer-einrichten-vorarlberg": { eyebrow: "Wohnen", title: "Wohnzimmer einrichten in Vorarlberg" },
   "/moebel-bodensee": { eyebrow: "Designermöbel", title: "Designermöbel am Bodensee" },

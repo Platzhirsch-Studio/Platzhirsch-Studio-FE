@@ -30,7 +30,8 @@ import { PAGE_HY, bindAbbreviations, fitHeading } from "./typoLanding";
  * Seiten mit gezeigtem Foto bekommen keine Grafik.
  */
 export function schemaKindFor(path) {
-  if (path === "/kuechen-vorarlberg") return "kueche";
+  // Outdoor-Küche (02.11.2026): dieselbe Küchen-Grafik, solange kein eigenes Foto da ist.
+  if (path === "/kuechen-vorarlberg" || path === "/outdoor-kueche") return "kueche";
   if (CITY_COORDS[path]) return "stadt";
   return null;
 }

@@ -22,7 +22,8 @@ export const LANDING_PAGES = [
   { slug: "designermoebel-lindau", label: "Designermöbel Lindau", teaser: "Wenige Kilometer von Lindau, direkt hinter der Grenze.", lastModified: "2026-10-31" },
   { slug: "designermoebel-friedrichshafen", label: "Designermöbel Friedrichshafen", teaser: "Am Bodenseeufer entlang in unseren Showroom in Lochau.", lastModified: "2026-10-31" },
   { slug: "designermoebel-st-gallen", label: "Designermöbel St. Gallen", teaser: "Für St. Gallen und die Ostschweiz – mit Infos zur Einfuhr.", lastModified: "2026-10-31" },
-  { slug: "kuechen-vorarlberg", label: "Küchen Vorarlberg", teaser: "Küchenplanung in Lochau, u. a. mit Poliform und next125.", lastModified: "2026-10-31" },
+  // 02.11.2026: Querverweis auf /outdoor-kueche in den Schritten → lastModified angehoben.
+  { slug: "kuechen-vorarlberg", label: "Küchen Vorarlberg", teaser: "Küchenplanung in Lochau, u. a. mit Poliform und next125.", lastModified: "2026-11-02" },
   { slug: "wohnzimmer-einrichten-vorarlberg", label: "Wohnzimmer einrichten", teaser: "Sofas, Sessel und Tische von Minotti bis ClassiCon.", lastModified: "2026-10-31" },
   { slug: "interior-design-vorarlberg", label: "Interior Design Vorarlberg", teaser: "Einrichtungskonzepte für Haus, Wohnung und Objekt.", lastModified: "2026-10-31" },
   { slug: "moebel-bodensee", label: "Möbel Bodensee", teaser: "Beratung für das gesamte Bodenseeufer – Österreich, Deutschland, Schweiz.", lastModified: "2026-10-31" },

@@ -22,6 +22,16 @@
 //   - Lieferung „auf Anfrage“ wie AREA_SERVED (src/lib/site.js).
 // Server-only (nur BadWellnessPage.js liest sie). Keine "@/..."-Importe (node --test).
 
+// Themen-Landingpages (02.11.2026): Ziel je Abschnitt + Schlüssel des Linktexts
+// in BW_HUB (<abschnitt>.<label>). Die Seiten gibt es in allen vier Sprachen.
+export const HUB_LANDING = Object.freeze({
+  whirlpool: Object.freeze([
+    Object.freeze({ href: "/whirlpool-kaufen", label: "landingLink" }),
+    Object.freeze({ href: "/swim-spa", label: "swimspaLink" }),
+  ]),
+  sauna: Object.freeze([Object.freeze({ href: "/sauna-kaufen", label: "landingLink" })]),
+});
+
 export const BW_HUB = {
   de: {
     meta: {
@@ -36,6 +46,9 @@ export const BW_HUB = {
       planung: "Mit Ihnen wählen wir Größe, Platzzahl und Aufstellung und planen Untergrund, Stromanschluss und Abdeckung gleich mit.",
       markeLink: "Aquavia Spa: Modelle ansehen",
       ratgeberLink: "Ratgeber: Whirlpool oder Swimspa im Garten planen",
+      // Kaufwörter-Seiten (02.11.2026): /whirlpool-kaufen, /swim-spa.
+      landingLink: "Whirlpool kaufen: Outdoor-Whirlpool und Privat-Spa",
+      swimspaLink: "Swim Spa: Schwimmen und Entspannen auf wenigen Metern",
     },
     sauna: {
       title: "Außensauna für Garten und Haus",
@@ -44,6 +57,8 @@ export const BW_HUB = {
       starpoolLink: "Starpool: Modelle ansehen",
       soleumLink: "Soleum: Modelle ansehen",
       ratgeberLink: "Ratgeber: Sauna fürs Zuhause planen",
+      // Kaufwörter-Seite (02.11.2026): /sauna-kaufen.
+      landingLink: "Sauna kaufen: Sauna für zuhause und Außensauna",
     },
     faq: {
       title: "Häufige Fragen zu Whirlpool und Sauna",
@@ -80,6 +95,8 @@ export const BW_HUB = {
       planung: "Together with you we choose size, number of seats and placement, and plan the base, power supply and cover at the same time.",
       markeLink: "Aquavia Spa: view models",
       ratgeberLink: "Guide: planning a hot tub or swim spa in the garden",
+      landingLink: "Buy a hot tub: outdoor hot tub and private spa",
+      swimspaLink: "Swim spa: swimming and relaxing in a few metres",
     },
     sauna: {
       title: "Outdoor sauna for garden and home",
@@ -88,6 +105,7 @@ export const BW_HUB = {
       starpoolLink: "Starpool: view models",
       soleumLink: "Soleum: view models",
       ratgeberLink: "Guide: planning a sauna at home",
+      landingLink: "Buy a sauna: sauna for the home and outdoor sauna",
     },
     faq: {
       title: "Frequently asked questions about hot tubs and saunas",
@@ -124,6 +142,8 @@ export const BW_HUB = {
       planung: "Avec vous, nous choisissons la taille, le nombre de places et l’implantation, et prévoyons d’emblée le support, le raccordement électrique et la couverture.",
       markeLink: "Aquavia Spa : voir les modèles",
       ratgeberLink: "Guide : planifier un spa ou un swim spa au jardin",
+      landingLink: "Acheter un spa : spa extérieur et spa privé",
+      swimspaLink: "Swim spa : nager et se détendre sur quelques mètres",
     },
     sauna: {
       title: "Sauna d’extérieur pour le jardin et la maison",
@@ -132,6 +152,7 @@ export const BW_HUB = {
       starpoolLink: "Starpool : voir les modèles",
       soleumLink: "Soleum : voir les modèles",
       ratgeberLink: "Guide : planifier un sauna à la maison",
+      landingLink: "Acheter un sauna : sauna pour la maison et sauna d’extérieur",
     },
     faq: {
       title: "Questions fréquentes sur le spa et le sauna",
@@ -168,6 +189,8 @@ export const BW_HUB = {
       planung: "Insieme a voi scegliamo dimensioni, numero di posti e collocazione, e progettiamo subito anche base, allacciamento elettrico e copertura.",
       markeLink: "Aquavia Spa: vedere i modelli",
       ratgeberLink: "Guida: progettare idromassaggio o swim spa in giardino",
+      landingLink: "Acquistare un idromassaggio: vasca da esterno e spa privata",
+      swimspaLink: "Swim spa: nuotare e rilassarsi in pochi metri",
     },
     sauna: {
       title: "Sauna da esterno per giardino e casa",
@@ -176,6 +199,7 @@ export const BW_HUB = {
       starpoolLink: "Starpool: vedere i modelli",
       soleumLink: "Soleum: vedere i modelli",
       ratgeberLink: "Guida: progettare una sauna in casa",
+      landingLink: "Acquistare una sauna: sauna per la casa e sauna da esterno",
     },
     faq: {
       title: "Domande frequenti su idromassaggio e sauna",

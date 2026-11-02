@@ -265,9 +265,11 @@ export default function StilResult({ profileKey, result, moodboard, code, calend
       {/* 4 – Brands + tip */}
       <section className="py-16 lg:py-24" aria-labelledby="sf-brands">
         <div className="mx-auto grid max-w-page grid-cols-1 px-gutter gap-12 md:grid-cols-12">
-          <Reveal className="min-w-0 md:col-span-7">
+          {/* QM Zoom 02.11. (WCAG 1.4.4): unter 20 rem Spaltenbreite (nur bei vergrößertem Text) darf die
+              Überschrift silbentrennen – „Handschrift“ war bei 200 % breiter als die Spalte. */}
+          <Reveal className="@container min-w-0 md:col-span-7">
             <p className="text-xs uppercase tracking-[0.14em] text-gold-text">{t.brandsEyebrow}</p>
-            <h2 id="sf-brands" className="font-display mt-3 text-3xl sm:text-4xl">
+            <h2 id="sf-brands" className="font-display mt-3 text-3xl sm:text-4xl [overflow-wrap:break-word] @max-[20rem]:hyphens-auto">
               {kernW(t.brandsTitle)}
             </h2>
             <ul className="mt-8 divide-y divide-ink/10 border-y border-ink/10">

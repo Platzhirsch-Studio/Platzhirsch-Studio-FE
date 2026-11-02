@@ -27,8 +27,12 @@ function mitLuecken(text) {
   return teile.map((t, i) =>
     LUECKE.test(t) ? (
       <mark key={i} className="border border-dashed border-line-strong bg-stone px-1 text-small text-text" data-shop-recht-luecke="">
-        {/* Optik-QA r3: ohne „Offen (vor Livegang)“ – neutral „wird ergänzt“; live gehen ohnehin nur freigegebene Slots. */}
-        {t.slice(14, -1)} ({LUECKE_TEXT})
+        {/* Optik-QA r3: ohne „Offen (vor Livegang)“ – neutral „wird ergänzt“; live gehen ohnehin nur freigegebene Slots.
+            QM Inhaber-Entscheidung Nr. 5, 02.11.: der Wortlaut des Platzhalters („… für PH-S-Bestellungen noch nicht
+            gebaut“, „laut Auftragsverarbeitungsvertrag“) ist eine interne Redaktionsanweisung und erschien als interner
+            Anmerkungskasten auf /de/shop/recht/agb. Sichtbar nur noch die neutrale Lücke; die Anweisungen bleiben in
+            src/lib/shop/legalTexte.js (PLATZHALTER) und in Platzhirsch-Status/berichte/RECHT-PLATZHALTER-2026-11-02.md. */}
+        {LUECKE_TEXT}
       </mark>
     ) : (
       rechtUmbruch(t)
@@ -85,7 +89,9 @@ export default async function ShopRechtPage({ params }) {
         {entwurf && (
           <p className="mt-4 text-small text-text-soft" data-shop-recht-entwurf={s.id}>
             <span className="mr-2 border border-line-strong px-1">{c.draftMark}</span>
-            {s.hinweis} · Stand {formatDatum(s.stand, "de")}
+            {/* QM Inhaber-Entscheidung Nr. 5, 02.11.: s.hinweis („Entwurf von KI-Agenten, Kanzlei-Durchsicht
+                empfohlen“) ist eine interne Notiz (bleibt in legalTexte.js) – sichtbar nur Marker und Stand. */}
+            Stand {formatDatum(s.stand, "de")}
           </p>
         )}
         {lang && (

@@ -235,3 +235,15 @@ test("Seite: alle vier Sprachen, buildPageMetadata (Canonical + hreflang)", () =
   assert.match(page, /buildPageMetadata\(/);
   assert.match(page, /BAD_WELLNESS_LOCALES\.includes\(locale\)/);
 });
+
+// QM Inhaber-Entscheidung Nr. 6, 02.11.: Dornbracht-Markenkachel ohne Farbverlauf-Render –
+// stattdessen ein Herstellerbild aus dem Katalog (Raumbild TARA, Bild 3), Quelle in QUELLEN.md.
+test("Dornbracht-Markenkachel: Katalog-Raumbild statt Farbverlauf (Nr. 6)", () => {
+  const d = M.markeById("dornbracht");
+  assert.equal(d.image.src, "/Images/Wellness/produkte/dornbracht/dornbracht-tara-3.webp");
+  assert.notEqual(d.image.src, "/Images/Wellness/dornbracht-tara.webp", "Render vor Farbverlauf nicht mehr auf der Kachel");
+  assert.ok(fs.existsSync(path.join(ROOT, "public", d.image.src)));
+  assert.match(d.image.source, /dornbracht\.com\/de-at\/designserien\/badserien\/tara/);
+  assert.match(QUELLEN, /Markenkachel \/bad-wellness seit 02\.11\.2026/);
+  for (const l of ["de", "en", "fr", "it"]) assert.match(BW_TEXT[l].alt.dornbracht, /TARA/, `${l}: Alt-Text zum neuen Motiv`);
+});

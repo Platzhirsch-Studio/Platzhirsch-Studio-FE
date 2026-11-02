@@ -10,6 +10,10 @@
 // erlaubt, Quelle „Ezarri“), eigene Fotos mit geklärten Rechten und Haralds
 // echtes Material (kommt am 30.10. → bis dahin markierte Slots). Keine
 // Minotti-, Poliform- oder Custom-Line-Bilder, keine KI-Räume.
+//
+// QM Inhaber-Entscheidung Nr. 7, 02.11.: Pin-Ziel /de/showroom nur mit echtem
+// Material (showroomSichtbar(); config.js ist rein, relativer Import bleibt node-tauglich).
+import { showroomSichtbar } from "../../../lib/showroom/config.js";
 
 export const PROFIL = {
   name: "Platzhirsch Home Living",
@@ -263,7 +267,8 @@ export const PINS = [
     beschreibung: "Unser Showroom mit Café in Lochau am Bodensee, Landstraße 11: Sofas probesitzen, Materialien anfassen, mit Harald Menghin planen.",
     quelle: "/Images/Home/aboutHome.jpg", basis: "p16-showroom-lochau",
     fokus: "62% 50%", credit: "Platzhirsch", bearbeitung: "Zuschnitt 2:3, KI-gestützte Hochskalierung 2× (Real-ESRGAN, lokal, keine hinzugefügten Motive), Typo-Overlay",
-    ziel: "/de/showroom",
+    // QM Inhaber-Entscheidung Nr. 7, 02.11.: /de/showroom erst mit echtem Material als Pin-Ziel, bis dahin Kontakt (Anfahrt, Öffnungszeiten).
+    ziel: showroomSichtbar() ? "/de/showroom" : "/de/kontakt",
     hinweis: "Gesperrt bis zur Freigabe (Bildregister: offen). Eigenes Foto laut Inhaber-Entscheidung Nr. 11, vor Veröffentlichung bestätigen: Freigabe gilt auch für Pinterest; die gezeigten Möbel sind Teil des eigenen Fotos, keine Herstellerbilder.",
     alt: "Showroom mit hellen Sofas und Sesseln, Leuchten und großer Fensterfront",
   },

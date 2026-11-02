@@ -62,7 +62,7 @@ export const EXTRA_PAGES = [
     path: "/arbeitsweise",
     kind: "leistung",
     label: "Arbeitsweise: von der Handzeichnung zum Rendering",
-    lastModified: "2026-10-30", // Rat 9,5 A15: Titel/Description über fitTitle/clampDescription (vorher 29.10. Auftakt neu)
+    lastModified: "2026-11-02", // QM-Endabnahme 02.11.: page.js angepasst (vorher 30.10. Rat 9,5 A15 fitTitle/clampDescription)
     rule: "arbeitsweise",
     // Rat 9,5 A1 (T6): die Seite ist in allen vier Sprachen index,follow mit
     // eigener Canonical → einmal je Sprache in sitemap-static mit hreflang.
@@ -91,14 +91,14 @@ export const EXTRA_PAGES = [
     path: "/regionen",
     kind: "hub",
     label: "Regionen: Einrichten im Dreiländereck",
-    lastModified: "2026-10-30",
+    lastModified: "2026-11-02", // QM-Endabnahme 02.11.: page.js angepasst
     llms: "Übersicht der Regionsseiten für Vorarlberg, den deutschen Bodensee, die Ostschweiz und Liechtenstein, mit Anfahrt nach Lochau.",
   },
   {
     path: "/leistungen",
     kind: "werkzeug",
     label: "Leistungen und Planer online",
-    lastModified: "2026-11-01", // Sprach-Integration: EN/FR/IT (landingKern/leistungen.js)
+    lastModified: "2026-11-02", // Sprach-Integration: EN/FR/IT (landingKern/leistungen.js)
     locales: ["de", "en", "fr", "it"],
     en: {
       label: "Services and online planners",
@@ -107,10 +107,66 @@ export const EXTRA_PAGES = [
     llms: "Überblick: Beratung, Arbeitsweise von der Handzeichnung zum Rendering, Online-Planer, 3D-Ansichten und Services.",
   },
   {
+    // SEO-Landingpage Outdoor-Küche (02.11.2026): DE Master in page.js, EN/FR/IT
+    // über landingKern/outdoorKueche.js – index, follow, eigene Canonical je
+    // Sprache, hreflang reziprok (kein Eintrag in deOnlyRedirects.cjs).
+    // Markenneutral, kein Händlersatz, keine Preise.
+    path: "/outdoor-kueche",
+    kind: "leistung",
+    label: "Outdoor-Küche planen in Vorarlberg",
+    lastModified: "2026-11-02",
+    locales: ["de", "en", "fr", "it"],
+    en: {
+      label: "Outdoor kitchens in Vorarlberg",
+      llms: "Outdoor kitchens made to measure for garden and terrace, drawn by hand in Lochau and planned in 3D; grill, hob, sink and cooling planned in; delivery and installation on request, Switzerland with export and customs clearance.",
+    },
+    llms: "Outdoor-Küchen nach Maß für Garten und Terrasse, in Lochau von Hand gezeichnet und in 3D geplant; Grill, Kochfeld, Spüle und Kühlung eingeplant; Lieferung und Montage auf Wunsch, Schweiz mit Ausfuhr und Verzollung.",
+  },
+  // Kaufwörter-Seiten Bad & Wellness (02.11.2026): DE Master in page.js, EN/FR/IT
+  // über landingKern/whirlpool.js, swimspa.js, sauna.js – index, follow, eigene
+  // Canonical je Sprache, hreflang reziprok (kein Eintrag in deOnlyRedirects.cjs).
+  // Händlersatz nur über den Claim-Guard auf der Seite, hier markenneutral; keine Preise.
+  {
+    path: "/whirlpool-kaufen",
+    kind: "leistung",
+    label: "Whirlpool kaufen in Vorarlberg",
+    lastModified: "2026-11-02",
+    locales: ["de", "en", "fr", "it"],
+    en: {
+      label: "Buy a hot tub in Vorarlberg",
+      llms: "Outdoor hot tub and private spa with Aquavia Spa and Starpool, drawn by hand in Lochau and planned in 3D with base and connections; delivery and installation on request in Austria, Germany, Switzerland and Liechtenstein, Switzerland with export and customs clearance.",
+    },
+    llms: "Outdoor-Whirlpool und Privat-Spa mit Aquavia Spa und Starpool, in Lochau von Hand gezeichnet und in 3D mit Untergrund und Anschlüssen geplant; Lieferung und Montage auf Anfrage in Österreich, Deutschland, der Schweiz und Liechtenstein, Schweiz mit Ausfuhr und Verzollung.",
+  },
+  {
+    path: "/swim-spa",
+    kind: "leistung",
+    label: "Swim Spa kaufen in Vorarlberg",
+    lastModified: "2026-11-02",
+    locales: ["de", "en", "fr", "it"],
+    en: {
+      label: "Buy a swim spa in Vorarlberg",
+      llms: "Swim spas by Aquavia Spa with counter-current system, 400 to 600 cm long, for garden and home, drawn by hand in Lochau and planned in 3D; delivery and installation on request in Austria, Germany, Switzerland and Liechtenstein, Switzerland with export and customs clearance.",
+    },
+    llms: "Swimspas von Aquavia Spa mit Gegenstromanlage, 400 bis 600 cm lang, für Garten und Haus, in Lochau von Hand gezeichnet und in 3D geplant; Lieferung und Montage auf Anfrage in Österreich, Deutschland, der Schweiz und Liechtenstein, Schweiz mit Ausfuhr und Verzollung.",
+  },
+  {
+    path: "/sauna-kaufen",
+    kind: "leistung",
+    label: "Sauna kaufen in Vorarlberg",
+    lastModified: "2026-11-02",
+    locales: ["de", "en", "fr", "it"],
+    en: {
+      label: "Buy a sauna in Vorarlberg",
+      llms: "Saunas for the home and outdoor saunas by Starpool, infrared cabins and steam rooms, heated loungers by Soleum and Fabio Alemanno, drawn by hand in Lochau and planned in 3D; delivery and installation on request in Austria, Germany, Switzerland and Liechtenstein, Switzerland with export and customs clearance.",
+    },
+    llms: "Sauna für zuhause und Außensauna von Starpool, Infrarotkabinen und Dampfbäder, beheizte Liegen von Soleum und Fabio Alemanno, in Lochau von Hand gezeichnet und in 3D geplant; Lieferung und Montage auf Anfrage in Österreich, Deutschland, der Schweiz und Liechtenstein, Schweiz mit Ausfuhr und Verzollung.",
+  },
+  {
     path: "/kuechenplaner",
     kind: "werkzeug",
     label: "Küchenplaner online",
-    lastModified: "2026-11-01", // Sprach-Integration EN/FR/IT; Optik/Motion-QA 01.11.; vorher 31.10. SEO Küchenplaner
+    lastModified: "2026-11-02", // Sprach-Integration EN/FR/IT; Optik/Motion-QA 01.11.; vorher 31.10. SEO Küchenplaner
     locales: ["de", "en", "fr", "it"], // wie kpLanguages() (src/lib/kuechenplaner/seo.js); /druck bleibt noindex, nicht gelistet
     en: {
       label: "Online kitchen planner",
@@ -122,7 +178,7 @@ export const EXTRA_PAGES = [
     path: "/sofaplaner",
     kind: "werkzeug",
     label: SOURCE_COPY.seoName,
-    lastModified: "2026-11-01", // Sprach-Integration FR/IT; Optik/Motion-QA 01.11.; vorher 31.10. SEO Sofaplaner
+    lastModified: "2026-11-02", // Sprach-Integration FR/IT; Optik/Motion-QA 01.11.; vorher 31.10. SEO Sofaplaner
     locales: ["de", "en", "fr", "it"], // Welle 2 EN, seit 01.11.2026 auch FR/IT (sofaLanguages())
     // Brand name only with the manufacturer's consent (sourceCopyFor, R8 recht P0-1).
     en: { label: sourceCopyFor("en").seoName, llms: `${sourceCopyFor("en").leadShort.replace(/.$/, "")}; prices on request.` },
@@ -132,7 +188,7 @@ export const EXTRA_PAGES = [
     path: "/stil-finder",
     kind: "werkzeug",
     label: "Stil-Finder",
-    lastModified: "2026-11-01", // Sprach-Integration EN/FR/IT; vorher 31.10. Wording sechs Bildfragen
+    lastModified: "2026-11-02", // Sprach-Integration EN/FR/IT; vorher 31.10. Wording sechs Bildfragen
     // Nur das Quiz; die Ergebnisseiten /stil-finder/ergebnis/<profil> bleiben noindex.
     locales: ["de", "en", "fr", "it"],
     en: {
@@ -145,21 +201,21 @@ export const EXTRA_PAGES = [
     path: "/3d-ansicht",
     kind: "werkzeug",
     label: "Möbel in 3D und AR ansehen",
-    lastModified: "2026-10-29",
+    lastModified: "2026-11-02",
     llms: "Ausgewählte Möbel in 3D drehen, Maße einblenden und per Handy in Originalgröße in den eigenen Raum stellen.",
   },
   {
     path: "/bodensee-licht",
     kind: "werkzeug",
     label: "Bodensee-Licht",
-    lastModified: "2026-10-29",
+    lastModified: "2026-11-02",
     llms: "Sonnenstand nach Ort, Fensterrichtung, Datum und Uhrzeit, berechnet nach NOAA, in Küche und am Pool.",
   },
   {
     path: "/dreilaender-rechner",
     kind: "werkzeug",
     label: "Dreiländer-Rechner",
-    lastModified: "2026-11-01", // Sprach-Integration EN/FR/IT (dreilaender/copy-intl.js)
+    lastModified: "2026-11-02", // Sprach-Integration EN/FR/IT (dreilaender/copy-intl.js)
     locales: ["de", "en", "fr", "it"],
     en: {
       label: "Three-country calculator",
@@ -171,7 +227,7 @@ export const EXTRA_PAGES = [
     path: "/concierge",
     kind: "werkzeug",
     label: "KI-Concierge",
-    lastModified: "2026-10-29",
+    lastModified: "2026-11-02",
     rule: "concierge",
     llms: "Fragen zu Sortiment, Marken und Showroom an ein gekennzeichnetes KI-System, mit Übergabe an das Team.",
   },
@@ -179,7 +235,7 @@ export const EXTRA_PAGES = [
     path: "/ki-assistenten",
     kind: "werkzeug",
     label: "Platzhirsch für KI-Assistenten (MCP-Server)",
-    lastModified: "2026-10-28",
+    lastModified: "2026-11-02",
     rule: "appointment",
     llms: kiAssistentenLlms(false),
   },
@@ -187,7 +243,7 @@ export const EXTRA_PAGES = [
     path: "/designermoebel-liechtenstein",
     kind: "region",
     label: "Designermöbel Liechtenstein",
-    lastModified: "2026-10-31",
+    lastModified: "2026-11-02",
     llms: "Für Vaduz, Schaan und das Unterland: Anfahrt rund 40 Minuten, Schweizer Zoll- und Mehrwertsteuergebiet (8,1 %), Ausfuhr und Zollstelle Tisis/Schaanwald.",
     facts: [
       "Fahrzeit Vaduz/Schaan rund 40 Minuten, Route A14 oder A13",
@@ -201,7 +257,7 @@ export const EXTRA_PAGES = [
     path: "/designermoebel-rheintal",
     kind: "region",
     label: "Designermöbel Rheintal",
-    lastModified: "2026-10-31",
+    lastModified: "2026-11-02",
     llms: "Für Widnau, Heerbrugg, Altstätten, Au und St. Margrethen: Anfahrt rund 30 Minuten, Rückerstattung der österreichischen Umsatzsteuer, Einfuhr in die Schweiz und Zollstellen.",
     facts: [
       "Fahrzeit rund 30 Minuten über Au–Lustenau oder St. Margrethen–Höchst",
@@ -215,7 +271,7 @@ export const EXTRA_PAGES = [
     path: "/designermoebel-arlberg",
     kind: "region",
     label: "Designermöbel Arlberg",
-    lastModified: "2026-10-31", // Welle 2: Querverweis Hotel & Objekt
+    lastModified: "2026-11-02", // Welle 2: Querverweis Hotel & Objekt
     llms: "Einrichtung für Chalets, Ferienwohnungen und Hotels in Lech, Zürs, Warth und St. Anton: Anfahrt von Lech rund 75 bis 90 Minuten, Planung vor der Wintersaison.",
     facts: [
       "Fahrzeit von Lech rund 75 Minuten bis eineinhalb Stunden",
@@ -229,7 +285,7 @@ export const EXTRA_PAGES = [
     path: "/designermoebel-konstanz",
     kind: "region",
     label: "Designermöbel Konstanz",
-    lastModified: "2026-10-31",
+    lastModified: "2026-11-02",
     llms: "Für Konstanz und den westlichen Bodensee: Anreise rund eine Stunde um den See oder mit der Fähre Konstanz–Meersburg, Umsatzsteuer für Kundinnen und Kunden aus Deutschland.",
     facts: [
       "Fahrzeit rund eine Stunde",
@@ -242,7 +298,7 @@ export const EXTRA_PAGES = [
     path: "/designermoebel-feldkirch",
     kind: "region",
     label: "Designermöbel Feldkirch",
-    lastModified: "2026-10-31",
+    lastModified: "2026-11-02",
     llms: "Für Feldkirch, Rankweil, Götzis und das Vorarlberger Oberland: rund 35 Kilometer über die A14, Einkauf innerhalb Österreichs.",
     facts: [
       "Entfernung rund 35 km über die Rheintalautobahn A14",
@@ -255,7 +311,7 @@ export const EXTRA_PAGES = [
     path: "/designermoebel-appenzell",
     kind: "region",
     label: "Designermöbel Appenzell",
-    lastModified: "2026-10-31",
+    lastModified: "2026-11-02",
     llms: "Für Appenzell Ausserrhoden und Innerrhoden: Anfahrt rund 30 bis 45 Minuten, Selbstausfuhr mit Rückerstattung und Einfuhr in die Schweiz.",
     facts: [
       "Fahrzeit rund 30 bis 45 Minuten je nach Ort",
@@ -281,7 +337,7 @@ export const MULTILINGUAL_PAGES = [
     kind: "leistung",
     label: "Hotel & Objekt: Hotels, Chalets und Gastronomie einrichten",
     // FR/IT seit 01.11.2026 (Inhaber): eigene übersetzte Seiten, hreflang reziprok.
-    lastModified: "2026-11-01",
+    lastModified: "2026-11-02",
     locales: ["de", "en", "fr", "it"],
     llms: "Einrichtung von Hotels, Chalets, Ferienwohnungen und Gastronomie: Handzeichnung, Modell, 3D, Musterzimmer im eigenen Haus, Montage im Saisonfenster; Projektanfrage direkt auf der Seite.",
     en: {
@@ -293,7 +349,7 @@ export const MULTILINGUAL_PAGES = [
     path: "/architekten",
     kind: "leistung",
     label: "Für Architekten und Bauträger",
-    lastModified: "2026-11-01", // Sprach-Integration: FR/IT (architekten/copy-intl.js)
+    lastModified: "2026-11-02", // Sprach-Integration: FR/IT (architekten/copy-intl.js)
     locales: ["de", "en", "fr", "it"],
     llms: "Für Architekturbüros und Bauträger: Planungsdaten über die Hersteller anfragen, Material- und Ezarri-Muster bestellen, Projektanfrage an das Team in Lochau.",
     en: {
@@ -308,7 +364,7 @@ export const MULTILINGUAL_PAGES = [
     path: "/kuechengeraete",
     kind: "leistung",
     label: "Küchengeräte, die wir einplanen",
-    lastModified: "2026-10-31",
+    lastModified: "2026-11-02",
     locales: ["de", "en", "fr", "it"],
     llms: "Geräte von Gaggenau, Miele, V-ZUG, BORA, Liebherr und Quooker in der Küchenplanung: eingeplant, geliefert und montiert über das Studio in Lochau; keine Preise online.",
     en: {
@@ -324,7 +380,7 @@ export const MULTILINGUAL_PAGES = [
     path: "/bad-wellness",
     kind: "leistung",
     label: "Bad & Wellness – geplant wie ein Raum",
-    lastModified: "2026-10-31",
+    lastModified: "2026-11-02",
     locales: ["de", "en", "fr", "it"],
     llms: "Planung von Bad, Private Spa, Whirlpool und Wärmeliegen von Hand und in 3D, Lieferung und Montage mit den Gewerken; Marken Agape, Dornbracht, antoniolupi, Starpool, Soleum, Fabio Alemanno, Aquavia Spa, Naggura; keine Preise online.",
     en: {

@@ -17,7 +17,7 @@ import { DIRECTIONS_URL } from "@/lib/site";
 import { findActiveRoom, isCurrent, isGermanOnlyPath, translatePathWith } from "./navMatch";
 import { enabledFeatures, featuresFor } from "@/lib/features";
 import { ezarriInNavigation, ezarriPath } from "@/lib/ezarri/config";
-import { showroomMode } from "@/lib/showroom/config";
+import { showroomSichtbar } from "@/lib/showroom/config";
 import { withContext } from "@/lib/forms/beratungContext";
 import { referralPagePublic } from "@/lib/kundenbetreuung/empfehlung";
 // Shop-Texte server-only (nicht im Client-Messages-Budget); kein Katalog-Import.
@@ -633,6 +633,8 @@ export const NAV_NOINDEX = new Set(["/showroom"]);
  * is delivered – Ezarri only with EZARRI_PUBLIC, the showroom tour only when
  * its page is not "off" (production without a real recording → 404, no link).
  */
-export function navFeatures({ raw, nodeEnv, ezarri = ezarriInNavigation(), showroom = showroomMode() !== "off" } = {}) {
+// QM Inhaber-Entscheidung Nr. 7, 02.11.: Showroom nur mit echtem Material verlinken
+// (showroomSichtbar(), src/lib/showroom/config.js) – nicht mehr schon im Modus "preview" (Testszene).
+export function navFeatures({ raw, nodeEnv, ezarri = ezarriInNavigation(), showroom = showroomSichtbar() } = {}) {
   return enabledFeatures({ ...(raw ? { raw } : {}), ...(nodeEnv ? { nodeEnv } : {}), available: { ezarri, showroom } });
 }

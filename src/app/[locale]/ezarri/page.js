@@ -252,7 +252,9 @@ export default async function EzarriHubPage({ params }) {
         <div className="reveal-group mt-stack-m grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-12 lg:gap-x-grid">
           {linien.map(({ linie, kollektionen, items }) => (
             <section key={linie} aria-labelledby={`ez-linie-${linie}`} className={`@container/linie min-w-0 ${styles.fitNamen} ${LINIE_LAYOUT[linie]?.section ?? ""}`}>
-              <h3 id={`ez-linie-${linie}`} className="text-overline uppercase text-text-accent">
+              {/* QM Zoom 02.11. (WCAG 1.4.4): „Sonderanfertigungen“ lief bei 200 % Text (Block < 20 rem) über
+                  den Rand – dann Silbentrennung, in der Normalansicht unverändert. */}
+              <h3 id={`ez-linie-${linie}`} className="text-overline uppercase text-text-accent [overflow-wrap:break-word] @max-[20rem]/linie:hyphens-auto">
                 {LINIE_LABEL[linie]} · {kollektionen}
                 {items.length > kollektionen && ` + ${KOLLEKTIONEN.sonderN(items.length - kollektionen)}`}
               </h3>

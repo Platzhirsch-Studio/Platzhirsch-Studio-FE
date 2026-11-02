@@ -82,6 +82,7 @@ const EN = {
       { label: "See the light in your kitchen" },
       { label: "Guide: what does a designer kitchen cost?" },
       { label: "Taps and fittings by Dornbracht" },
+      { label: "Plan an outdoor kitchen for garden and terrace" },
     ],
   },
   gallery: [
@@ -169,6 +170,7 @@ const FR = {
       { label: "Voir la lumière dans votre cuisine" },
       { label: "Guide : combien coûte une cuisine design ?" },
       { label: "Robinetterie Dornbracht" },
+      { label: "Concevoir une cuisine d’extérieur pour jardin et terrasse" },
     ],
   },
   gallery: [
@@ -256,6 +258,7 @@ const IT = {
       { label: "Guardate la luce nella vostra cucina" },
       { label: "Guida: quanto costa una cucina di design?" },
       { label: "Rubinetteria Dornbracht" },
+      { label: "Progettare una cucina outdoor per giardino e terrazza" },
     ],
   },
   gallery: [

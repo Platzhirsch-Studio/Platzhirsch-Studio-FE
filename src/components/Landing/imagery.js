@@ -44,6 +44,23 @@ const OVERRIDES = {
       alt: "Designerküche mit weißer Kochinsel und dunklen Hochschränken",
     },
   },
+  // Outdoor-Küche (02.11.2026): kein eigenes Foto einer Außenküche – Hero
+  // typografisch (src nur für JSON-LD). Intro-Bild = Liebherr-Raumszene aus dem
+  // Katalog (src/lib/katalog/marken/liebherr.js, Bildfreigabe laut Inhaber,
+  // Entscheidung Nr. 24), im eigenen Seitenverhältnis 1200 × 677 ohne Zuschnitt.
+  "/outdoor-kueche": {
+    hero: {
+      released: false,
+      src: "/Images/Wellness/produkte/liebherr/liebherr-outdoor-kuehlschrank-2.webp",
+      alt: "Außenküche aus Holz auf einer Dachterrasse mit geöffnetem Outdoor-Kühlschrank",
+    },
+    intro: {
+      src: "/Images/Wellness/produkte/liebherr/liebherr-outdoor-kuehlschrank-2.webp",
+      alt: "Außenküche aus Holz auf einer Dachterrasse mit geöffnetem Outdoor-Kühlschrank von Liebherr",
+      width: 1200,
+      height: 677,
+    },
+  },
   "/designermoebel-kempten": {
     hero: {
       released: false,

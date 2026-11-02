@@ -10,7 +10,7 @@ Normal (OpenGL) und Rauheit auf 512 px verkleinert. Jede Datei < 300 KB.
 | Ordner      | Verwendung              | ambientCG-Asset |
 |-------------|-------------------------|-----------------|
 | marmor/     | Arbeitsplatte Marmor    | Marble021       |
-| keramik/    | Arbeitsplatte Keramik, Front Beton hell | Concrete034, 2× gestapelt auf 1:1 (ersetzt am 01.11.2026 das zu dunkle Marble006) |
+| keramik/    | Arbeitsplatte Keramik, Front Beton hell | Concrete034, 2× gestapelt auf 1:1 (ersetzt am 01.11.2026 das zu dunkle Marble006; die Fotoansicht-Renderings Beton hell/Keramik wurden am 02.11.2026 mit denselben Dateien neu gerendert) |
 | quarz/      | Arbeitsplatte Quarz     | Granite002A     |
 | holz/       | Arbeitsplatte Holz, Front Eiche | Wood049 |
 | front-nuss/ | Front Nussbaum          | Wood051         |

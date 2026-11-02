@@ -31,6 +31,30 @@ const field =
   "mt-2 block min-h-12 w-full border border-[#8a8174] bg-white px-4 py-3 text-base text-ink outline-offset-2 placeholder:text-ink-soft focus:border-ink focus-visible:outline-2 focus-visible:outline-ink aria-[invalid=true]:border-[#9b2c2c]";
 const labelCls = "block text-sm font-medium text-ink";
 
+// QM Zoom 02.11. (WCAG 1.4.4): die DE-Überschrift hält „Präsentation – über“ per Wortverbinder
+// (U+2060, QM r3: Strich nie allein am Zeilenende) zusammen – bei 200 % Text war die Kette breiter als
+// die Spalte und wurde abgeschnitten bzw. nackt mitten im Wort gebrochen. Die Kette (Wort vor und nach
+// dem Verbinder) wird zu einem nowrap-Span, der unter 20 rem Containerbreite (nur bei vergrößertem
+// Text) normal umbrechen darf; der Verbinder plus geschütztes Leerzeichen dahinter wird im Span zum
+// normalen Leerzeichen. Die Span-Grenzen liegen an regulären Leerzeichen – ein Span direkt neben dem
+// geschützten Leerzeichen änderte in Chromium (text-wrap: balance) den Umbruch der Normalansicht.
+// Titel ohne Verbinder (EN/FR/IT) bleiben unverändert.
+function zoomBreakable(text) {
+  if (typeof text !== "string" || !text.includes("\u2060")) return text;
+  const [head, tail] = text.split("\u2060");
+  const rest = tail.replace(/^\u00a0/, "");
+  const i = head.lastIndexOf(" ") + 1;
+  const j = rest.indexOf(" ");
+  const chunk = head.slice(i) + " " + (j < 0 ? rest : rest.slice(0, j));
+  return (
+    <>
+      {head.slice(0, i)}
+      <span className="whitespace-nowrap @max-[20rem]:whitespace-normal">{chunk}</span>
+      {j < 0 ? "" : rest.slice(j)}
+    </>
+  );
+}
+
 export default function MoodboardPdfForm({ profile, code, calendar = false }) {
   const { locale, t: all, projectTypes, regions } = useStilCopy();
   const t = all.pdf;
@@ -117,10 +141,15 @@ export default function MoodboardPdfForm({ profile, code, calendar = false }) {
       {/* QM r5: grid-cols-1 = minmax(0,1fr) – bei 200 % Text lief das Formular sonst über den Rand (WCAG 1.4.10) */}
       <div className="mx-auto grid max-w-page grid-cols-1 px-gutter gap-12 md:grid-cols-12 md:gap-12">
         {/* Left: what you get */}
-        <div className="reveal min-w-0 md:col-span-5">
+        {/* QM Zoom 02.11. (WCAG 1.4.4): die Spalte ist Container – ist sie schmaler als 20 rem (393 px
+            bei 200 % Text ≈ 11 rem, normal ≈ 22 rem; 1440 px bei 200 % ≈ 17 rem), darf die Display-
+            Überschrift silbentrennen: „Präsentation – über“ ist bewusst unbrechbar (QM r3, Strich nie
+            allein am Zeilenende) und ragte bei 200 % Text über den Rand; in der Normalansicht ändert
+            sich nichts. */}
+        <div className="reveal @container min-w-0 md:col-span-5">
           <p className="text-xs uppercase tracking-[0.14em] text-gold-text">{t.eyebrow}</p>
-          <h2 id={`${id}-title`} className="font-display mt-3 text-3xl leading-tight sm:text-4xl">
-            {t.title}
+          <h2 id={`${id}-title`} className="font-display mt-3 text-3xl leading-tight sm:text-4xl [overflow-wrap:break-word] @max-[20rem]:hyphens-auto">
+            {zoomBreakable(t.title)}
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-ink/80">{t.text}</p>
           {t.langNote && (
@@ -142,7 +171,9 @@ export default function MoodboardPdfForm({ profile, code, calendar = false }) {
         </div>
 
         {/* Right: form or confirmation */}
-        <div className="min-w-0 md:col-span-7 md:pl-6 lg:pl-10">
+        {/* QM Zoom 02.11.: Formularspalte als Container – unter 20 rem (nur bei vergrößertem Text) trennt
+            das Newsletter-Label mit Trennstrich statt nackt mitten im Wort. */}
+        <div className="@container min-w-0 md:col-span-7 md:pl-6 lg:pl-10">
           {state.phase === "done" ? (
             <div className="ph-arrive border border-ink/15 bg-white p-6 sm:p-10">
               <p className="text-xs uppercase tracking-[0.14em] text-gold-text">{t.sentEyebrow}</p>
@@ -290,7 +321,9 @@ export default function MoodboardPdfForm({ profile, code, calendar = false }) {
                     className="mt-0.5 size-6 shrink-0 accent-[#30373e]"
                     aria-describedby={`${id}-newsletter-hint`}
                   />
-                  <label htmlFor={`${id}-newsletter`} className="text-sm leading-relaxed text-ink">
+                  {/* QM Zoom 02.11. (WCAG 1.4.10): min-w-0 – als Flex-Kind wuchs das Label sonst auf die Breite
+                      seines längsten Worts („Einrichtungsideen,“) und ragte bei 200 % Text aus dem Formular. */}
+                  <label htmlFor={`${id}-newsletter`} className="min-w-0 text-sm leading-relaxed text-ink [overflow-wrap:break-word] @max-[20rem]:hyphens-auto">
                     {t.newsletter}
                   </label>
                 </div>

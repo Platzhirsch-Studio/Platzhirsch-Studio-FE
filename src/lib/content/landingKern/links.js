@@ -24,6 +24,10 @@ const PROXY_LOCALES = Object.freeze({
   ratgeber: ["de"],
   upload: ["de"],
   portal: ["de"],
+  // Winterservice gibt es nur in DE/EN (WINTERLAGER_LOCALES in
+  // src/lib/service/winterlager/copy.js, FR/IT → notFound): Links von FR/IT-
+  // Seiten führen auf /en/… mit Hinweis im Linktext (Outdoor-Küche, 02.11.2026).
+  "outdoor-winterservice": ["de", "en"],
 });
 
 const firstSegment = (href) => String(href || "").replace(/^\//, "").split(/[/?#]/)[0];

@@ -104,7 +104,8 @@ export const BW_TEXT = {
     },
     alt: {
       hero: "Starpool: Finnische Sauna aus Holz mit großem Fenster und Blick in die Berge",
-      dornbracht: "Dornbracht: Armatur Tara in heller Messing-Oberfläche auf einer Arbeitsfläche",
+      // QM Inhaber-Entscheidung Nr. 6, 02.11.: Markenkachel zeigt das Katalog-Raumbild TARA (Bild 3) statt des Renders vor Farbverlauf.
+      dornbracht: "Dornbracht TARA im Bad: Dreilochbatterie in Champagne an einem Steinwaschtisch vor grüner Wand",
       dornbracht2: "Dornbracht: Duschsystem Aquahalo in Nahaufnahme mit fallendem Wasser",
       agape: "Agape: freistehende Badewanne Vieques mit dunkler Außenseite vor hohen Fenstern",
       antoniolupi: "antoniolupi: Waschtisch Ilbagno mit weißem Becken auf einem filigranen Holzgestell vor heller Wand",
@@ -230,7 +231,7 @@ export const BW_TEXT = {
     },
     alt: {
       hero: "Starpool: Finnish wooden sauna with a large window and a view of the mountains",
-      dornbracht: "Dornbracht: Tara tap in a light brass finish on a worktop",
+      dornbracht: "Dornbracht TARA in the bathroom: three-hole mixer in Champagne at a stone washbasin against a green wall",
       dornbracht2: "Dornbracht: close-up of the Aquahalo shower system with falling water",
       agape: "Agape: freestanding Vieques bathtub with a dark exterior in front of tall windows",
       antoniolupi: "antoniolupi: Ilbagno washbasin with a white basin on a slender wooden frame against a light wall",
@@ -356,7 +357,7 @@ export const BW_TEXT = {
     },
     alt: {
       hero: "Starpool : sauna finlandais en bois avec grande fenêtre et vue sur les montagnes",
-      dornbracht: "Dornbracht : mitigeur Tara en finition laiton clair sur un plan de travail",
+      dornbracht: "Dornbracht TARA dans la salle de bains : mélangeur trois trous Champagne sur un lavabo en pierre devant un mur vert",
       dornbracht2: "Dornbracht : système de douche Aquahalo en gros plan, l’eau qui tombe",
       agape: "Agape : baignoire îlot Vieques à l’extérieur sombre devant de hautes fenêtres",
       antoniolupi: "antoniolupi : lavabo Ilbagno à vasque blanche sur un fin piètement en bois devant un mur clair",
@@ -482,7 +483,7 @@ export const BW_TEXT = {
     },
     alt: {
       hero: "Starpool: sauna finlandese in legno con grande finestra e vista sulle montagne",
-      dornbracht: "Dornbracht: rubinetto Tara in finitura ottone chiaro su un piano di lavoro",
+      dornbracht: "Dornbracht TARA in bagno: miscelatore a tre fori in Champagne su un lavabo in pietra davanti a una parete verde",
       dornbracht2: "Dornbracht: sistema doccia Aquahalo in primo piano con acqua che scende",
       agape: "Agape: vasca freestanding Vieques con esterno scuro davanti a finestre alte",
       antoniolupi: "antoniolupi: lavabo Ilbagno con vasca bianca su una sottile struttura in legno davanti a una parete chiara",

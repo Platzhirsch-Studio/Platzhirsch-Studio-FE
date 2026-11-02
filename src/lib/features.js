@@ -26,8 +26,9 @@
 // Minotti-Zustimmung kein Markenname, keine „echten Elemente“.
 import { SOURCE_COPY } from "./sofaplaner/consent.js";
 // Showroom-Rundgang: nur mit echter, freigegebener Aufnahme verlinkt (ux P0-1,
-// Runde 4) – auch im Dev-Server, die Testszene wird nirgends verlinkt.
-import { SHOWROOM_PUBLIC } from "./showroom/config.js";
+// Runde 4; QM Inhaber-Entscheidung Nr. 7, 02.11.: eine Bedingung showroomSichtbar())
+// – auch im Dev-Server, die Testszene wird nirgends verlinkt.
+import { showroomSichtbar } from "./showroom/config.js";
 
 /** Rohwerte der Schalter, je Feature wörtlich gelesen (siehe oben). */
 const RAW = {
@@ -162,8 +163,8 @@ export const FEATURES = [
     title: "Showroom-Rundgang",
     nav: "Showroom-Rundgang",
     href: "/showroom",
-    // Nur verlinkt, wenn die Seite ausgeliefert wird (showroomMode() ≠ "off":
-    // Produktion erst mit echter, freigegebener Aufnahme), siehe shellNav.js.
+    // Nur verlinkt, wenn echtes Material da ist (showroomSichtbar(), QM Inhaber-
+    // Entscheidung Nr. 7, 02.11. – nie die Testszene), siehe shellNav.js.
     requires: "showroom",
     locales: ["de", "en", "fr", "it"],
     status: "vorschau",
@@ -362,7 +363,8 @@ export function desktopSpan(n, i) {
  * @param {{recording?: boolean, concierge?: boolean}} [opts]
  */
 export const HUB_ALSO = Object.freeze(["outdoor", "upload", "portal", "pflege"]);
-export function hubFeatures(list, { recording = SHOWROOM_PUBLIC, concierge = false } = {}) {
+// QM Inhaber-Entscheidung Nr. 7, 02.11.: `recording` = showroomSichtbar() (eine Bedingung für alle Showroom-Links).
+export function hubFeatures(list, { recording = showroomSichtbar(), concierge = false } = {}) {
   return list
     .filter((f) => {
       if (f.id === "showroom") return recording;

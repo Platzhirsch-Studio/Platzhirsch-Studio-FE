@@ -202,7 +202,10 @@ export default function ShopStartseite({ locale, service, mode = "off", cafeBild
               </Heading>
               <p className="mt-stack-s text-body text-text-soft">{editLead[e.id]}</p>
             </div>
-            <LinkArrow href={e.href} className="shrink-0">
+            {/* QM Zoom 02.11. (iPhone 15, 200 % Textzoom): `shrink-0` ließ „Alle 83 Geschenksets ansehen“ breiter als die
+                Spalte werden – der Link lief rechts aus dem Bild (WCAG 1.4.10). max-w-full begrenzt ihn auf die
+                Zeilenbreite, der Text bricht dann um; in der Normalansicht steht er unverändert in einer Zeile. */}
+            <LinkArrow href={e.href} className="max-w-full shrink-0 [&>span]:min-w-0 [&>span]:[overflow-wrap:anywhere]">
               {editLink(e)}
             </LinkArrow>
           </div>

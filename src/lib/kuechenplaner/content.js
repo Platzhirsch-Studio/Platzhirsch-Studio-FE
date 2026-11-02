@@ -24,8 +24,8 @@ const MARKEN = "Gaggenau, Miele, V-ZUG, BORA, Liebherr und Quooker";
 
 const DE = {
   meta: {
-    title: "Küchenplaner online: Küche in 3D planen | Platzhirsch Home Living",
-    description: "Küche online in 3D planen: Raum mit Dachschräge, Module per Drag & Drop, Ergonomie-Prüfung und Stückliste. Danach von Hand weitergeplant in Lochau.",
+    title: "Küchenplaner online – Küche planen, kostenlos | Platzhirsch Home Living",
+    description: "Küche online planen – kostenlos, ohne Anmeldung: Kochinsel oder L-Form, Fronten in 3D, Fotoansicht als Rendering. Danach von Hand in Lochau.",
     ogTitle: "Küchenplaner online in 3D",
     imageAlt: "Küchenplaner: L-Küche im Grundriss mit Modulen und Maßen",
     appName: "Küchenplaner",
@@ -41,7 +41,7 @@ const DE = {
   },
   header: {
     eyebrow: "Küchenplaner",
-    title: "Ihre Küche, in 3D geplant.",
+    title: "Küchenplaner online: Ihre Küche, in 3D geplant.",
     lead: "Raum zeichnen, Module an die Wand ziehen, Material wählen – der Planer prüft Abstände und Laufwege.",
     leadMore: "Die Feinplanung machen wir persönlich mit Ihnen.",
     hand: "Online starten – Harald Menghin zeichnet Ihr Konzept danach von Hand.",
@@ -65,11 +65,11 @@ const DE = {
   },
   guide: {
     title: "So planen Sie Ihre Küche online",
-    intro: "Der Küchenplaner führt in fünf Schritten von der Raumform zur Stückliste. Er ersetzt kein Aufmaß, zeigt Ihnen aber früh, was in Ihren Raum passt und wo es eng wird.",
+    intro: "Der Küchenplaner führt kostenlos und ohne Anmeldung in fünf Schritten von der Raumform zur Stückliste: Grundriss zeichnen, Möbel setzen, Fronten und Material wählen, prüfen lassen und das Ergebnis in der Fotoansicht als Rendering sehen. Er ersetzt kein Aufmaß, zeigt Ihnen aber früh, was in Ihren Raum passt und wo es eng wird – auch bei einer Küche mit Kochinsel.",
     steps: [
-      { t: "Raum", d: `Grundform wählen – Zeile, L-Form, U-Form, zweizeilig, Zeile mit Insel oder Halbinsel – oder eine freie Raumform mit bis zu ${MAX_FREE_WALLS} Wänden zeichnen. Fenster, Türen, Heizkörper, Wasser-, Abluft- und Herdanschluss sowie eine Dachschräge mit Kniestock und Neigung eintragen.` },
+      { t: "Raum", d: `Grundform wählen – Zeile, L-Form, U-Form, zweizeilig, Zeile mit Kochinsel oder Halbinsel – oder eine freie Raumform mit bis zu ${MAX_FREE_WALLS} Wänden zeichnen. Fenster, Türen, Heizkörper, Wasser-, Abluft- und Herdanschluss sowie eine Dachschräge mit Kniestock und Neigung eintragen.` },
       { t: "Möbel", d: "Unterschränke, Hochschränke, Hängeschränke, Insel und Gerätemodule per Drag & Drop an die Wand ziehen – wahlweise im 60-cm-Raster (EU) oder im 55-cm-Raster nach Schweizer SMS-Norm." },
-      { t: "Material", d: "Fronten, Farben, Arbeitsplatte und Kante wählen; die 3D-Ansicht zeigt die Wirkung im Raum." },
+      { t: "Material", d: "Fronten, Farben, Arbeitsplatte und Kante wählen; die 3D-Ansicht zeigt die Wirkung im Raum. Die Fotoansicht zeigt dazu für Zeile, L-Küche und Kochinsel ein vorgerendertes Bild zu Grundform, Front und Arbeitsplatte – Visualisierungen aus Blender, keine Fotos und keine KI-Bilder." },
       { t: "Prüfen", d: `Der Planer prüft Laufwege (${A1} cm für eine, ${A2} cm für zwei Personen), das Arbeitsdreieck, die Arbeitshöhe nach Körpergröße, den Abstand der Dunstabzugshaube und Kollisionen mit Türen und Dachschräge. Jeder Richtwert nennt seine Quelle; Planungsannahmen ohne Quelle sind als solche markiert.` },
       { t: "Ergebnis", d: "Stückliste, Grundriss mit Maßketten und Wandansichten als Druckansicht oder PDF; zwei Varianten nebeneinander vergleichen und die Planung per Link teilen." },
     ],
@@ -83,7 +83,7 @@ const DE = {
     ],
     faqTitle: "Häufige Fragen zum Küchenplaner",
     faq: [
-      { q: "Brauche ich für den Küchenplaner eine Anmeldung?", a: "Nein. Der Küchenplaner läuft im Browser, ohne Anmeldung und ohne Installation. Die Planung wird nur in Ihrem Browser berechnet." },
+      { q: "Brauche ich für den Küchenplaner eine Anmeldung?", a: "Nein. Der Küchenplaner ist kostenlos und läuft im Browser, ohne Anmeldung und ohne Installation. Die Planung wird nur in Ihrem Browser berechnet." },
       { q: "Kann ich eine Küche mit Dachschräge planen?", a: "Ja. Im Schritt „Raum“ legen Sie für eine Wand Kniestockhöhe und Neigung der Dachschräge fest. Ragt ein Hoch- oder Hängeschrank in die Schräge, meldet die Prüfung eine Kollision." },
       { q: "Wie genau ist die Online-Planung?", a: "Der Planer rechnet mit Rastermaßen und Richtwerten aus Herstellerunterlagen und Fachquellen. Er ersetzt kein Aufmaß: Wände, Anschlüsse und Gerätenischen prüfen wir vor Ort, bevor etwas bestellt wird." },
       { q: "Wie geht es nach der Online-Planung weiter?", a: "Geben Sie uns den Link zu Ihrer Planung oder bringen Sie die Druckansicht zum Termin mit. Im Studio in Lochau zeichnet Harald Menghin Ihre Küche von Hand weiter; danach folgen die Planung in 3D, die Auswahl der Materialien anhand von Mustern und auf Wunsch Lieferung und Montage." },
@@ -94,8 +94,8 @@ const DE = {
 
 const EN = {
   meta: {
-    title: "3D kitchen planner: design your kitchen online",
-    description: "Design your kitchen online in 3D: room with sloped ceiling, units by drag & drop, ergonomics check and parts list. Then refined by hand in Lochau.",
+    title: "Online kitchen planner: plan your kitchen free",
+    description: "Plan your kitchen online, free, no registration: island or L-shape, fronts in 3D, photo view as a rendering. Then refined by hand in Lochau.",
     ogTitle: "Online 3D kitchen planner",
     imageAlt: "Kitchen planner: L-shaped kitchen in the floor plan with units and dimensions",
     appName: "Kitchen planner",
@@ -111,7 +111,7 @@ const EN = {
   },
   header: {
     eyebrow: "Kitchen planner",
-    title: "Your kitchen, planned in 3D.",
+    title: "Online kitchen planner: your kitchen, planned in 3D.",
     lead: "Draw the room, drag units to the wall, choose materials – the planner checks clearances and aisles.",
     leadMore: "We do the detailed planning with you in person.",
     hand: "Start online – Harald Menghin then draws your concept by hand.",
@@ -135,11 +135,11 @@ const EN = {
   },
   guide: {
     title: "How to plan your kitchen online",
-    intro: "The kitchen planner takes you in five steps from the room shape to the parts list. It does not replace a site survey, but it shows you early on what fits in your room and where space gets tight.",
+    intro: "The kitchen planner takes you, free and without registration, in five steps from the room shape to the parts list: draw the floor plan, place units, choose fronts and materials, run the check and see the result in the photo view as a rendering. It does not replace a site survey, but it shows you early on what fits in your room and where space gets tight – also for a kitchen with an island.",
     steps: [
       { t: "Room", d: `Choose a layout – single wall, L-shape, U-shape, galley, single wall with island or peninsula – or draw a custom room shape with up to ${MAX_FREE_WALLS} walls. Add windows, doors, radiators, water, exhaust and cooker connections, as well as a sloped ceiling with knee wall and pitch.` },
       { t: "Units", d: "Drag base units, tall units, wall units, island and appliance units to the wall – on a 60 cm grid (EU) or a 55 cm grid to the Swiss SMS standard." },
-      { t: "Materials", d: "Choose fronts, colours, worktop and edge; the 3D view shows the effect in the room." },
+      { t: "Materials", d: "Choose fronts, colours, worktop and edge; the 3D view shows the effect in the room. For single-wall, L-shaped and island kitchens the photo view adds a pre-rendered image of layout, front and worktop – visualisations made in Blender, not photos and not AI images." },
       { t: "Check", d: `The planner checks aisles (${A1} cm for one person, ${A2} cm for two), the work triangle, the worktop height for your height, the extractor hood clearance and collisions with doors and the sloped ceiling. Every guide value names its source; planning assumptions without a source are marked as such.` },
       { t: "Result", d: "Parts list, dimensioned floor plan and wall elevations as a print view or PDF; compare two variants side by side and share the plan via a link." },
     ],
@@ -152,7 +152,7 @@ const EN = {
     ],
     faqTitle: "Frequently asked questions about the kitchen planner",
     faq: [
-      { q: "Do I need to register to use the kitchen planner?", a: "No. The kitchen planner runs in your browser, without registration or installation. Your plan is calculated only in your browser." },
+      { q: "Do I need to register to use the kitchen planner?", a: "No. The kitchen planner is free and runs in your browser, without registration or installation. Your plan is calculated only in your browser." },
       { q: "Can I plan a kitchen with a sloped ceiling?", a: "Yes. In the “Room” step you set the knee wall height and pitch of the slope for one wall. If a tall or wall unit extends into the slope, the check reports a collision." },
       { q: "How accurate is the online plan?", a: "The planner works with grid dimensions and guide values from manufacturer documents and specialist sources. It does not replace a site survey: we check walls, connections and appliance niches on site before anything is ordered." },
       { q: "What happens after the online plan?", a: "Send us the link to your plan or bring the print view to your appointment. At the studio in Lochau, Harald Menghin continues drawing your kitchen by hand; this is followed by planning in 3D, choosing materials from samples and, if you wish, delivery and installation." },
@@ -163,8 +163,8 @@ const EN = {
 
 const FR = {
   meta: {
-    title: "Planificateur de cuisine 3D en ligne",
-    description: "Concevez votre cuisine en 3D en ligne : sous-pente, modules en glisser-déposer, contrôle ergonomique et nomenclature, puis dessin à la main à Lochau.",
+    title: "Planificateur de cuisine en ligne, gratuit",
+    description: "Concevez votre cuisine en ligne, gratuitement : îlot ou plan en L, façades en 3D, vue photo en rendu. Puis dessin à la main à Lochau.",
     ogTitle: "Planificateur de cuisine 3D",
     imageAlt: "Planificateur de cuisine : cuisine en L sur le plan, avec modules et cotes",
     appName: "Planificateur de cuisine",
@@ -180,7 +180,7 @@ const FR = {
   },
   header: {
     eyebrow: "Planificateur de cuisine",
-    title: "Votre cuisine, conçue en 3D.",
+    title: "Planificateur de cuisine en ligne : votre cuisine, conçue en 3D.",
     lead: "Dessinez la pièce, placez les modules contre le mur, choisissez les matériaux – le planificateur vérifie distances et passages.",
     leadMore: "Nous réalisons la conception détaillée avec vous, en personne.",
     hand: "Commencez en ligne – Harald Menghin dessine ensuite votre concept à la main.",
@@ -204,11 +204,11 @@ const FR = {
   },
   guide: {
     title: "Concevoir sa cuisine en ligne, étape par étape",
-    intro: "Le planificateur vous mène en cinq étapes de la forme de la pièce à la nomenclature. Il ne remplace pas un relevé sur place, mais il vous montre tôt ce qui tient dans votre pièce et où l’espace devient juste.",
+    intro: "Le planificateur vous mène, gratuitement et sans inscription, en cinq étapes de la forme de la pièce à la nomenclature : dessiner le plan, placer les meubles, choisir façades et matériaux, lancer la vérification et voir le résultat en rendu dans la vue photo. Il ne remplace pas un relevé sur place, mais il vous montre tôt ce qui tient dans votre pièce et où l’espace devient juste – aussi pour une cuisine avec îlot.",
     steps: [
       { t: "Pièce", d: `Choisissez une forme – linéaire, en L, en U, parallèle, linéaire avec îlot ou péninsule – ou dessinez une pièce libre jusqu’à ${MAX_FREE_WALLS} murs. Ajoutez fenêtres, portes, radiateurs, arrivée d’eau, évacuation et raccordement de cuisson, ainsi qu’une sous-pente avec jambette et inclinaison.` },
       { t: "Meubles", d: "Faites glisser éléments bas, colonnes, éléments hauts, îlot et modules d’appareils contre le mur – sur une trame de 60 cm (UE) ou de 55 cm selon la norme suisse SMS." },
-      { t: "Matériaux", d: "Choisissez façades, couleurs, plan de travail et chant ; la vue 3D montre l’effet dans la pièce." },
+      { t: "Matériaux", d: "Choisissez façades, couleurs, plan de travail et chant ; la vue 3D montre l’effet dans la pièce. Pour les cuisines linéaires, en L et avec îlot, la vue photo ajoute une image prérendue de la forme, de la façade et du plan de travail – des visualisations réalisées dans Blender, ni photos ni images d’IA." },
       { t: "Vérifier", d: `Le planificateur vérifie les passages (${A1} cm pour une personne, ${A2} cm pour deux), le triangle d’activité, la hauteur de travail selon votre taille, la distance de la hotte et les collisions avec les portes et la sous-pente. Chaque valeur indicative cite sa source ; les hypothèses de conception sans source sont signalées comme telles.` },
       { t: "Résultat", d: "Nomenclature, plan coté et élévations en version imprimable ou en PDF ; comparez deux variantes côte à côte et partagez le projet par lien." },
     ],
@@ -221,7 +221,7 @@ const FR = {
     ],
     faqTitle: "Questions fréquentes sur le planificateur de cuisine",
     faq: [
-      { q: "Faut-il s’inscrire pour utiliser le planificateur de cuisine ?", a: "Non. Le planificateur fonctionne dans le navigateur, sans inscription ni installation. Le projet est calculé uniquement dans votre navigateur." },
+      { q: "Faut-il s’inscrire pour utiliser le planificateur de cuisine ?", a: "Non. Le planificateur est gratuit et fonctionne dans le navigateur, sans inscription ni installation. Le projet est calculé uniquement dans votre navigateur." },
       { q: "Puis-je concevoir une cuisine sous pente ?", a: "Oui. À l’étape « Pièce », vous définissez pour un mur la hauteur de la jambette et l’inclinaison de la pente. Si une colonne ou un élément haut empiète sur la pente, la vérification signale une collision." },
       { q: "Quelle est la précision du projet en ligne ?", a: "Le planificateur calcule avec des cotes de trame et des valeurs indicatives tirées de documents de fabricants et de sources spécialisées. Il ne remplace pas un relevé : nous vérifions murs, raccordements et niches d’appareils sur place avant toute commande." },
       { q: "Que se passe-t-il après le projet en ligne ?", a: "Envoyez-nous le lien de votre projet ou apportez la version imprimable au rendez-vous. Au studio de Lochau, Harald Menghin poursuit le dessin de votre cuisine à la main ; suivent la conception en 3D, le choix des matériaux sur échantillons et, sur demande, la livraison et le montage." },
@@ -232,8 +232,8 @@ const FR = {
 
 const IT = {
   meta: {
-    title: "Configuratore cucina 3D online",
-    description: "Progettate la vostra cucina online in 3D: stanza in mansarda, moduli con drag & drop, verifica ergonomica e distinta. Poi disegno a mano a Lochau.",
+    title: "Configuratore cucina online gratuito, in 3D",
+    description: "Progettate la cucina online, gratis e senza registrazione: isola o a L, frontali in 3D, vista foto come rendering. Poi disegno a mano a Lochau.",
     ogTitle: "Configuratore di cucine 3D",
     imageAlt: "Configuratore di cucine: cucina a L in pianta con moduli e misure",
     appName: "Configuratore di cucine",
@@ -249,7 +249,7 @@ const IT = {
   },
   header: {
     eyebrow: "Configuratore di cucine",
-    title: "La vostra cucina, progettata in 3D.",
+    title: "Configuratore cucina online: la vostra cucina, progettata in 3D.",
     lead: "Disegnate la stanza, trascinate i moduli sulla parete, scegliete i materiali – il configuratore verifica distanze e passaggi.",
     leadMore: "La progettazione di dettaglio la facciamo di persona con voi.",
     hand: "Iniziate online – poi Harald Menghin disegna il vostro concept a mano.",
@@ -273,11 +273,11 @@ const IT = {
   },
   guide: {
     title: "Come progettare la cucina online",
-    intro: "Il configuratore vi guida in cinque fasi dalla forma della stanza alla distinta. Non sostituisce il rilievo in loco, ma vi mostra subito che cosa entra nella vostra stanza e dove lo spazio si stringe.",
+    intro: "Il configuratore vi guida, gratis e senza registrazione, in cinque fasi dalla forma della stanza alla distinta: disegnare la pianta, posizionare i mobili, scegliere frontali e materiali, eseguire la verifica e vedere il risultato come rendering nella vista foto. Non sostituisce il rilievo in loco, ma vi mostra subito che cosa entra nella vostra stanza e dove lo spazio si stringe – anche per una cucina con isola.",
     steps: [
       { t: "Stanza", d: `Scegliete una forma – lineare, a L, a U, parallela, lineare con isola o con penisola – oppure disegnate una stanza di forma libera fino a ${MAX_FREE_WALLS} pareti. Inserite finestre, porte, termosifoni, attacco acqua, scarico aria e allacciamento del piano cottura, oltre a un soffitto inclinato con muretto e inclinazione.` },
       { t: "Mobili", d: "Trascinate sulla parete basi, colonne, pensili, isola e moduli per elettrodomestici – su modulo da 60 cm (UE) o da 55 cm secondo la norma svizzera SMS." },
-      { t: "Materiali", d: "Scegliete frontali, colori, piano di lavoro e bordo; la vista 3D mostra l’effetto nello spazio." },
+      { t: "Materiali", d: "Scegliete frontali, colori, piano di lavoro e bordo; la vista 3D mostra l’effetto nello spazio. Per cucine lineari, a L e con isola la vista foto aggiunge un’immagine prerenderizzata di forma, frontale e piano di lavoro – visualizzazioni realizzate in Blender, non foto e non immagini generate da IA." },
       { t: "Verifica", d: `Il configuratore verifica i passaggi (${A1} cm per una persona, ${A2} cm per due), il triangolo di lavoro, l’altezza di lavoro in base alla statura, la distanza della cappa e le collisioni con porte e soffitto inclinato. Ogni valore indicativo cita la sua fonte; le ipotesi progettuali senza fonte sono contrassegnate come tali.` },
       { t: "Risultato", d: "Distinta, pianta quotata e prospetti in versione stampabile o PDF; confrontate due varianti affiancate e condividete il progetto con un link." },
     ],
@@ -290,7 +290,7 @@ const IT = {
     ],
     faqTitle: "Domande frequenti sul configuratore di cucine",
     faq: [
-      { q: "Serve una registrazione per usare il configuratore di cucine?", a: "No. Il configuratore funziona nel browser, senza registrazione e senza installazione. Il progetto viene calcolato solo nel vostro browser." },
+      { q: "Serve una registrazione per usare il configuratore di cucine?", a: "No. Il configuratore è gratuito e funziona nel browser, senza registrazione e senza installazione. Il progetto viene calcolato solo nel vostro browser." },
       { q: "Posso progettare una cucina in mansarda?", a: "Sì. Nella fase «Stanza» stabilite per una parete l’altezza del muretto e l’inclinazione del soffitto. Se una colonna o un pensile sporge nell’inclinazione, la verifica segnala una collisione." },
       { q: "Quanto è preciso il progetto online?", a: "Il configuratore calcola con misure modulari e valori indicativi tratti da documentazione dei produttori e fonti specialistiche. Non sostituisce il rilievo: pareti, allacciamenti e nicchie degli elettrodomestici li verifichiamo in loco prima di ordinare." },
       { q: "Che cosa succede dopo il progetto online?", a: "Inviateci il link al vostro progetto o portate la versione stampabile all’appuntamento. Nello studio di Lochau, Harald Menghin continua a disegnare la vostra cucina a mano; seguono la progettazione in 3D, la scelta dei materiali su campioni e, su richiesta, consegna e montaggio." },

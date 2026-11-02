@@ -25,6 +25,10 @@ export const MULTILINGUAL_LANDINGS = Object.freeze([
   "/interior-design-vorarlberg",
   "/wohnzimmer-einrichten-vorarlberg",
   "/outdoor-gartenplanung",
+  "/outdoor-kueche", // 02.11.2026, landingKern/outdoorKueche.js
+  "/whirlpool-kaufen", // 02.11.2026, landingKern/whirlpool.js
+  "/swim-spa", // 02.11.2026, landingKern/swimspa.js
+  "/sauna-kaufen", // 02.11.2026, landingKern/sauna.js
   "/yacht-interior",
 ]);
 

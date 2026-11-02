@@ -75,7 +75,11 @@ export const BAD_MARKEN = Object.freeze([
     origin: "DE",
     dealer: true,
     groups: Object.freeze(["armaturenBad", "duschsysteme", "armaturenKueche"]),
-    image: img("/Images/Wellness/dornbracht-tara.webp", 1235, 1600, "https://www.dornbracht.com/de-de/"),
+    // QM Inhaber-Entscheidung Nr. 6, 02.11. („andere Herstellerbilder freigeben“): statt des
+    // Dornbracht-Renders vor Farbverlauf (dornbracht-tara.webp, TARA Durabrass) das Raumbild
+    // TARA Champagne am Steinwaschtisch aus dem Herstellerkatalog (Serie TARA, Bild 3, unverändert;
+    // Quelle: docs/bildquellen/QUELLEN.md, Abschnitt „Katalog Dornbracht“). Alt-Text: alt.dornbracht.
+    image: img("/Images/Wellness/produkte/dornbracht/dornbracht-tara-3.webp", 1600, 1162, "https://www.dornbracht.com/de-at/designserien/badserien/tara"),
     // Zweites Motiv (Spa-Serie Aquahalo); Alt-Text-Schlüssel alt.dornbracht2.
     moreImages: Object.freeze([img("/Images/Wellness/dornbracht-aquahalo.webp", 1600, 1199, "https://www.dornbracht.com/de-de/")]),
   }),

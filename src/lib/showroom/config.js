@@ -96,10 +96,24 @@ export function showroomRobots(mode) {
 }
 
 /**
- * Sitemap-Einträge für das Integrationsteam (src/lib/seo/sitemapEntries.js):
- * leer, solange die Seite nicht öffentlich ist.
+ * QM Inhaber-Entscheidung Nr. 7, 02.11.: Die Showroom-Testszene (Low-Poly) wird
+ * erst mit echtem Material verlinkt. DIE eine Bedingung für alle Links und Teaser
+ * auf /showroom (Menü: shellNav.js navFeatures, Startseite/Leistungen: features.js
+ * hubFeatures, Footer: seo/footerLinks.js, Sitemap/llms.txt: showroomSitemapPaths,
+ * Vorschauen kino-zeichnung/pinterest). Die Seite selbst bleibt im Modus
+ * "preview" erreichbar (noindex, showroomRobots); mit echter Aufnahme im Manifest
+ * (manifestReady().ok) kommen alle Links automatisch zurück.
+ * @param {{ mode?: string, ready?: boolean }} [opts] für Tests
  */
-export function showroomSitemapPaths(isPublic = SHOWROOM_PUBLIC) {
+export function showroomSichtbar({ mode = showroomMode(), ready = manifestReady().ok } = {}) {
+  return mode !== "off" && ready === true;
+}
+
+/**
+ * Sitemap-Einträge für das Integrationsteam (src/lib/seo/sitemapEntries.js):
+ * leer, solange die Seite nicht öffentlich ist (QM Nr. 7: showroomSichtbar()).
+ */
+export function showroomSitemapPaths(isPublic = showroomSichtbar()) {
   return isPublic ? [SHOWROOM_PATH] : [];
 }
 

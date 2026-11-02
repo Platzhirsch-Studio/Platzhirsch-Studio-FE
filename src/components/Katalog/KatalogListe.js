@@ -39,6 +39,13 @@ import { produktListeSchema } from "./katalogSchema";
 import { uebersichtSichtbar } from "./uebersichtRaster";
 import { ARROW_INLINE, splitFirstSentence } from "@/components/Landing/typoLanding";
 import { ArrowRight } from "@/components/ui/icons";
+// Kaufwort-Seiten der Gerätemarken (02.11.2026): Intro mit Nutzen, Weg in den
+// Küchenplaner (?geraet=<marke>, GeraeteWahl.js) und FAQ (FAQPage-JSON-LD über
+// SeoFaq) – nur Seite 1 der Welt kuechengeraete, Texte aus markenSeo.js.
+import SeoFaq from "@/components/Reusable/SeoFaq";
+import { SITE_URL } from "@/lib/seo/pageMetadata";
+import { planerHref } from "@/lib/kueche/geraete";
+import { chRatgeberLink, markenSeo } from "@/lib/kueche/markenSeo";
 
 // Optik-QA 01.11.2026: am Handy zwei Spalten wie im Shop-Raster – einspaltig wurde die
 // Übersicht Bad & Wellness auf dem iPhone rund 80 000 px lang (je Kachel ein Bildschirm).
@@ -99,6 +106,9 @@ export default function KatalogListe({ locale, welt, modus, marke = null, katego
     ...(modus === "uebersicht" ? [{ label: t(`${wk}.produkteCrumb`) }] : [{ label: t(`${wk}.produkteCrumb`), href: produktePath(welt) }, { label: modus === "marke" ? marke.name : katLabel(kategorie) }]),
   ];
   const dealerLine = marke?.dealer ? dealerStatement(marke.name, locale) : "";
+  // Markenspezifische Kaufwort-Texte (nur Seite 1, Welt kuechengeraete; sonst null).
+  const seo = modus === "marke" && welt === "kuechengeraete" && seite === 1 ? markenSeo(marke.slug, locale) : null;
+  const chLink = seo ? chRatgeberLink(marke.slug, locale) : null;
   const thema = modus === "marke" || welt !== "bad-wellness" ? beratungThema(alle[0]?.bereich) : "bad,wellness";
   const beratung = schreibenHref(locale, { context: modus === "marke" ? { thema, produkt: marke.name } : { thema } });
 
@@ -162,6 +172,23 @@ export default function KatalogListe({ locale, welt, modus, marke = null, katego
             <p className="mt-stack-s max-w-measure text-body text-text" data-kat-dealer={marke.slug}>
               {dealerLine}
             </p>
+          )}
+          {seo && (
+            <div className="mt-stack-s max-w-measure" data-kat-marke-seo={marke.slug}>
+              <p className="text-body text-text">{seo.intro}</p>
+              {chLink && (
+                <p className="mt-2 text-body text-text">
+                  {chLink.text}{" "}
+                  <Link href={chLink.href} className="underline decoration-line-strong underline-offset-4 hover:decoration-current" data-kat-ch-ratgeber="">
+                    {chLink.label}
+                  </Link>
+                </p>
+              )}
+              <p className="mt-2 text-body text-text-soft">{seo.planer}</p>
+              <LinkArrow href={planerHref(marke.slug)} className="mt-2" data-kat-planer={marke.slug}>
+                {seo.planerLabel}
+              </LinkArrow>
+            </div>
           )}
           {marke && (
             <LinkArrow href={marke.herstellerUrl} target="_blank" className="mt-2" data-kat-hersteller-marke={marke.slug}>
@@ -268,6 +295,9 @@ export default function KatalogListe({ locale, welt, modus, marke = null, katego
 
       {/* Raumszenen der Marke (MARKE.looks) – nur auf Seite 1 der Markenseite. */}
       {modus === "marke" && seite === 1 && <LooksBlock looks={looksVon(marke.slug, welt)} locale={locale} t={t} markeName={marke.name} />}
+
+      {/* FAQ der Gerätemarke (sichtbar + FAQPage-JSON-LD aus denselben Einträgen). */}
+      {seo && <SeoFaq locale={locale} page={`marke-${marke.slug}`} pageUrl={`${SITE_URL}/${locale}${path}`} title={seo.faqTitle} items={seo.faq} flush />}
 
       <CTABand id="kat-cta-title" title={t("produkt.beratung")} text={<span className="block pt-2">{ctaText}</span>} primary={{ href: beratung, label: t("produkt.beratung") }} />
     </>

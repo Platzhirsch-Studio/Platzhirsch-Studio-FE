@@ -75,7 +75,12 @@ export const REGION_TOPICS = Object.freeze([
   // AP-11 (SEO-Team A, 31.10.2026): Ankertexte mit Suchbegriff; Minotti Studio und Bad & Wellness dazu.
   { href: "/ueber-uns/marken/minotti", label: "Minotti Studio in Lochau", text: "Sofas, Sessel und Tische von Minotti ansehen und mit uns planen." },
   { href: "/kuechen-vorarlberg", label: "Küchenstudio in Vorarlberg", text: "Küchenplanung im Studio in Lochau." },
+  // Outdoor-Küche (02.11.2026): eigene Landingpage, in allen vier Sprachen index, follow.
+  { href: "/outdoor-kueche", label: "Outdoor-Küche planen", text: "Außenküchen nach Maß für Garten und Terrasse." },
   { href: "/bad-wellness", label: "Bad & Wellness planen", text: "Bad, Sauna und Spa, geplant wie ein Raum." },
+  // Kaufwörter-Seiten Bad & Wellness (02.11.2026): in allen vier Sprachen index, follow.
+  { href: "/whirlpool-kaufen", label: "Whirlpool kaufen", text: "Outdoor-Whirlpool und Privat-Spa, geplant am Bodensee." },
+  { href: "/sauna-kaufen", label: "Sauna kaufen", text: "Sauna für zuhause und Außensauna, geplant am Bodensee." },
   { href: "/interior-design-vorarlberg", label: "Interior Design", text: "Einrichtungskonzepte für Haus, Wohnung und Objekt." },
   { href: "/wohnzimmer-einrichten-vorarlberg", label: "Wohnzimmer einrichten", text: "Sofas, Sessel und Tische für das Wohnzimmer." },
   { href: "/hotel-objekt", label: "Hotel & Objekt", text: "Hotels, Chalets und Ferienwohnungen, zum Beispiel am Arlberg." },

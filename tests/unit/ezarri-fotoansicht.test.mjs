@@ -1,4 +1,4 @@
-// Ezarri-Konfigurator „Fotoansicht“: Render-Manifest (48 Visualisierungen) → Zustand.
+// Ezarri-Konfigurator „Fotoansicht“: Render-Manifest (618 Visualisierungen, 205 Farben) → Zustand.
 // Prüft Zuordnung Referenz → Render, Bedingungen (Einzelfarbe, 25 mm, Standardfuge, Pool),
 // Rückfälle bei Ansicht/Licht, Dateien in public/ und Pflicht-Bildunterschrift.
 import { test, before } from "node:test";
@@ -31,16 +31,45 @@ before(async () => {
 const refFuer = (state) => index.resolveRef(state.mix[0].id, state.format, { ref: state.mix[0].ref });
 const mitMix = (mix, patch = {}) => ({ ...S.DEFAULT_STATE, mix, ...patch });
 
-test("Manifest: 48 Renders, 15 Farben, Dateien liegen in public/Images/Ezarri/renders", () => {
-  assert.equal(R.RENDERS.length, 48);
-  assert.equal(new Set(R.RENDERS.map((r) => r.farbe)).size, 15);
+// 02.11.2026: Rest-Satz – 618 Renders, 205 Farben (48 + 531 + 18 Nachtrag + 21 Dekor-Motive nach Freigabe; Moss nur 50 mm)
+const ANZAHL = 618;
+const FARBEN = 205;
+// Dekor-/Druckmotive: Rendering zeigt nur die Grundfarbe → Zusatz in der Bildunterschrift
+const DEKOR_FARBEN = ["dolphin-family", "happy-dolphins", "sea-view", "border-1-2545-a-2543-d", "border-6-2545-a-2543-d", "d-2", "d-9"];
+
+test(`Manifest: ${ANZAHL} Renders, ${FARBEN} Farben, Dateien liegen in public/Images/Ezarri/renders, keine Duplikate`, () => {
+  assert.equal(R.RENDERS.length, ANZAHL);
+  assert.equal(new Set(R.RENDERS.map((r) => r.farbe)).size, FARBEN);
+  assert.equal(R.RENDER_STAND, "2026-11-02");
   for (const r of R.RENDERS) {
     assert.ok(R.FOTO_VIEWS.includes(r.view), r.file);
     assert.ok(R.FOTO_LICHTER.includes(r.licht), r.file);
     assert.equal(r.file, `ezarri-${r.serie}-${r.farbe}-${r.view}-${r.licht}.webp`);
     assert.ok(fs.existsSync(path.join(ROOT, "public", R.renderSrc(r))), r.file);
   }
-  assert.equal(new Set(R.RENDERS.map((r) => r.file)).size, 48);
+  assert.equal(new Set(R.RENDERS.map((r) => r.file)).size, ANZAHL);
+  // jede Farbe hat alle drei Ansichten mit Licht „morgen“
+  for (const farbe of new Set(R.RENDERS.map((r) => r.farbe))) {
+    const views = new Set(R.rendersFuer(farbe).filter((r) => r.licht === "morgen").map((r) => r.view));
+    assert.deepEqual([...views].sort(), ["draufsicht", "hero", "wasserlinie"], farbe);
+  }
+  // keine Datei im Ordner, die das Manifest nicht kennt (und umgekehrt)
+  const imOrdner = fs.readdirSync(path.join(ROOT, "public", R.RENDER_DIR)).filter((f) => f.endsWith(".webp")).sort();
+  assert.deepEqual(imOrdner, R.RENDERS.map((r) => r.file).sort());
+});
+
+test("Dateien: jedes WebP hat 1600 × 1066 px (VP8-Header)", () => {
+  // WebP: RIFF…WEBP, dann Chunk „VP8 “ (lossy): Breite/Höhe 14 Bit ab Byte 26
+  for (const r of R.RENDERS) {
+    const fd = fs.openSync(path.join(ROOT, "public", R.renderSrc(r)), "r");
+    const b = Buffer.alloc(32);
+    fs.readSync(fd, b, 0, 32, 0);
+    fs.closeSync(fd);
+    assert.equal(b.toString("ascii", 0, 4), "RIFF", r.file);
+    assert.equal(b.toString("ascii", 8, 16), "WEBPVP8 ", r.file);
+    assert.equal(b.readUInt16LE(26) & 0x3fff, R.RENDER_BREITE, r.file);
+    assert.equal(b.readUInt16LE(28) & 0x3fff, R.RENDER_HOEHE, r.file);
+  }
 });
 
 test("Manifest: jede Render-Farbe ist eine 25-mm-Referenz derselben Serie im Konfigurator-Katalog", () => {
@@ -88,7 +117,9 @@ test("Nicht verfügbar: Mischung, Kanäle, Pattern, 50 mm, andere Fuge, andere S
   assert.equal(grund({ szene: "bad" }), "szene");
   assert.equal(grund({}, { ...ref, safe: true, id: "2508-a-safe" }), "farbe");
   assert.equal(grund({}, null), "farbe");
-  const ohne = index.byId.get("2510-a") || [...index.byId.values()].find((r) => r.fmt === "25" && !r.safe && !R.rendersFuer(r.id).length);
+  // 02.11.2026: 2510-A hat jetzt ein Rendering; Dune (Gea) ist im Rest-Satz nicht gerendert
+  const ohne = [index.byId.get("dune"), ...index.byId.values()].find((r) => r && r.fmt === "25" && !r.safe && !R.rendersFuer(r.id).length);
+  assert.ok(ohne, "eine 25-mm-Referenz ohne Rendering");
   assert.equal(grund({}, ohne), "farbe");
   assert.equal(R.fotoansicht(null, ref).ok, false);
   // Über den Zustand: Safe-Wahl löst auf die Safe-Referenz auf → keine Fotoansicht
@@ -107,4 +138,30 @@ test("Texte: Bildunterschrift und Hinweis wie vorgegeben, Komponente zeigt die B
   assert.match(comp, /motion-reduce:transition-none/);
   const quellen = fs.readFileSync(path.join(ROOT, "docs/bildquellen/QUELLEN-ezarri-renders.md"), "utf8");
   for (const a of ["kloofendal_48d_partly_cloudy_puresky", "qwantani_sunset_puresky", "Travertine009", "wood_floor_deck"]) assert.ok(quellen.includes(a), a);
+});
+
+test("Dekor-Motive (02.11.): istDekor greift für die 7 Druck-/Pixel-Motive, nicht für Einzelfarben; Hinweis in Komponente und FR/IT", async () => {
+  assert.deepEqual([...R.DEKOR_SERIEN].sort(), ["standard-pixel", "standard-printed"]);
+  const dekorImManifest = new Set(R.RENDERS.filter((r) => R.istDekor(r)).map((r) => r.farbe));
+  assert.deepEqual([...dekorImManifest].sort(), [...DEKOR_FARBEN].sort());
+  for (const farbe of DEKOR_FARBEN) {
+    const list = R.rendersFuer(farbe);
+    assert.equal(list.length, 3, farbe);
+    assert.ok(list.every((r) => R.istDekor(r)), farbe);
+    assert.ok(index.byId.get(farbe).kol.startsWith("standard-"), farbe);
+  }
+  for (const farbe of ["blots", "2508-a", "azur", "aurum"]) assert.equal(R.istDekor(R.renderFuer(farbe)), false, farbe);
+  assert.equal(R.istDekor(null), false);
+  // Texte: nüchtern, kein „KI“, Pflicht-Unterschrift bleibt davor
+  assert.equal(R.FOTO_DEKOR_HINWEIS.de, "Nur Grundfarbe des Motivs, Zeichnung nicht abgebildet.");
+  assert.doesNotMatch(R.FOTO_DEKOR_HINWEIS.de + R.FOTO_DEKOR_HINWEIS.en, /\bKI\b|\bAI\b/);
+  const comp = fs.readFileSync(path.join(SRC, "components/Ezarri/Konfigurator/FotoAnsicht.js"), "utf8");
+  assert.match(comp, /istDekor\(render\) \? \(X\?\.fotoDekorHinweis \?\? \(en \? FOTO_DEKOR_HINWEIS\.en : FOTO_DEKOR_HINWEIS\.de\)\)/);
+  assert.match(comp, /data-ezk-foto-dekor=""/);
+  assert.ok(comp.indexOf("X?.fotoCaption") < comp.indexOf("{dekorHinweis && <span"), "Zusatz steht nach der Pflicht-Unterschrift");
+  const imp = (p) => import(pathToFileURL(path.join(SRC, p)).href);
+  const FR = await imp("lib/ezarri/konfigurator/copy.fr.js");
+  const IT = await imp("lib/ezarri/konfigurator/copy.it.js");
+  assert.match(FR.LISTEN.fotoDekorHinweis, /couleur de fond/i);
+  assert.match(IT.LISTEN.fotoDekorHinweis, /colore di fondo/i);
 });
