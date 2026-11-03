@@ -1,20 +1,26 @@
-// Barrierefreiheit – Anwalts-Vorschau.
-// There is NO text draft yet (Rechtspaket 00, "Was noch fehlt"). This page
-// only arranges the mandatory content that 04-impressum-pflichtangaben.md,
-// Abschnitt 3 lists (§ 14 Abs 2 BaFG iVm Anlage 3) and the voluntary sentence
-// the draft allows ("Wir arbeiten nach WCAG 2.2 AA; Barriere melden: …").
-// Everything else is an open point – no test results, no deadlines invented.
+// Barrierefreiheit – Kanzlei-Fassung.
+// Gliederung nach den Pflichtinhalten aus 04-impressum-pflichtangaben.md,
+// Abschnitt 3 (§ 14 Abs 2 BaFG iVm Anlage 3). Seit 02.11.2026 mit den
+// belegten Inhalten der Live-Seite /barrierefreiheit (src/lib/legal/
+// barrierefreiheit.js: Prüfergebnis, Einschränkungen, Marktüberwachung).
+// Offen bleiben nur Angaben, die das Unternehmen (Kleinstunternehmen-Prüfung,
+// online abschließbare Dienstleistungen, Antwortfrist) oder die Kanzlei
+// (Norm, Schlichtungsstelle) liefert. Nichts ist erfunden.
 import { EMAIL, EMAIL_HREF, PHONE_DISPLAY, PHONE_HREF, REGISTER, DOMAIN } from "../company";
+import { EINSCHRAENKUNGEN, MARKTUEBERWACHUNG, PRUEFUNG, PRUEFUNG_QM, STAND, UMGESETZT } from "@/lib/legal/barrierefreiheit";
+
+const de = (iso) => iso.split("-").reverse().join(".");
+const ergebnis = PRUEFUNG.verstoesse === 0 ? "keine gemeldeten Verstöße" : `${PRUEFUNG.verstoesse} gemeldete Verstöße`;
 
 const BARRIEREFREIHEIT = {
   slug: "barrierefreiheit",
   title: "Barrierefreiheit",
   heading: "Barriere­freiheit",
   navLabel: "Barrierefreiheit",
-  livePath: null,
-  lead: "Gerüst für die Information zur Barrierefreiheit nach § 14 Barrierefreiheitsgesetz (BaFG). Einen Textentwurf gibt es noch nicht; die Gliederung folgt den Pflichtinhalten aus dem Impressum-Entwurf.",
-  sources: ["Marktresearch/recht/04-impressum-pflichtangaben.md, Abschnitt 3 (BaFG)", "Marktresearch/recht/00-rechtspaket-uebersicht.md, Abschnitt 1 („Was noch fehlt“) und 4.1", "Marktresearch/digital/expertenrat/00-design-bibel.md, § 14"],
-  version: "Stand: [Datum der Erstellung und der letzten Überprüfung – vom Unternehmen auszufüllen]",
+  livePath: "/barrierefreiheit",
+  lead: "Information zur Barrierefreiheit nach § 14 Barrierefreiheitsgesetz (BaFG) in der Gliederung der Pflichtinhalte. Prüfergebnis, bekannte Einschränkungen und Kontaktweg entsprechen der Live-Seite /barrierefreiheit (Stand 02.11.2026).",
+  sources: ["Marktresearch/recht/04-impressum-pflichtangaben.md, Abschnitt 3 (BaFG)", "Marktresearch/recht/00-rechtspaket-uebersicht.md, Abschnitt 1 („Was noch fehlt“) und 4.1", "Marktresearch/digital/expertenrat/00-design-bibel.md, § 14", "src/lib/legal/barrierefreiheit.js (Prüfung 30.10.2026, QM 02.11.2026)"],
+  version: `Stand: ${de(STAND)} (erstellt 30.10.2026, zuletzt überprüft ${de(PRUEFUNG_QM.datum)})`,
   intro: {
     label: "Muss diese Seite sein?",
     note: [
@@ -41,7 +47,8 @@ const BARRIEREFREIHEIT = {
       source: "04, Abschn. 3; Design-Bibel § 14",
       blocks: [
         "Wir gestalten diese Website nach den Web Content Accessibility Guidelines (WCAG) 2.2, Stufe AA. [Norm laut Entwurf: EN 301 549 (≈ WCAG 2.1 AA), empfohlen WCAG 2.2 AA – anwaltlich prüfen, welche Norm genannt wird]",
-        "[Ergebnis der Prüfung einfügen: Prüfmethode (z. B. automatische Prüfung und Prüfung von Hand), Datum, geprüfte Seiten und Abläufe – vom Unternehmen auszufüllen. Nicht mehr behaupten als getestet (UWG).]",
+        `**Prüfung:** Letzte automatische Prüfung am ${de(PRUEFUNG.datum)} mit ${PRUEFUNG.werkzeug} ${PRUEFUNG.version} nach den Regeln für ${PRUEFUNG.regeln}, auf ${PRUEFUNG.geraete}; geprüft wurden ${PRUEFUNG.seiten.length} Seiten (Startseite, Produktübersicht, Kontakt, Beratung, Über uns, Datenschutz, Impressum, Ratgeber). Ergebnis: ${ergebnis} (Beleg: ${PRUEFUNG.beleg}). Am ${de(PRUEFUNG_QM.datum)} zusätzlich ${PRUEFUNG_QM.was}, automatisiert in ${PRUEFUNG_QM.browser}; noch nicht geprüft: ${PRUEFUNG_QM.nichtGeprueft} (Beleg: ${PRUEFUNG_QM.beleg}). Eine Prüfung von Hand mit Tastatur oder Screenreader ist nicht dokumentiert und wird nicht behauptet.`,
+        { ul: UMGESETZT.map((u) => `Umgesetzt: ${u}`) },
       ],
     },
     {
@@ -50,7 +57,8 @@ const BARRIEREFREIHEIT = {
       title: "Was noch nicht barrierefrei ist",
       source: "04, Abschn. 3",
       blocks: [
-        "[Nicht erfüllte Teile mit Begründung – vom Unternehmen auszufüllen. Beruft sich das Unternehmen auf eine unverhältnismäßige Belastung, ist das zu dokumentieren und alle 5 Jahre neu zu bewerten.]",
+        { ul: [...EINSCHRAENKUNGEN] },
+        { note: "Beruft sich das Unternehmen auf eine unverhältnismäßige Belastung (§ 14 BaFG), ist das zu dokumentieren und alle 5 Jahre neu zu bewerten. Die Einschränkungen oben sind Tatsachen aus den Prüfungen, keine Berufung auf eine Belastung." },
       ],
     },
     {
@@ -71,7 +79,7 @@ const BARRIEREFREIHEIT = {
       title: "Marktüberwachung",
       source: "04, Abschn. 3",
       blocks: [
-        "Für die Marktüberwachung nach dem Barrierefreiheitsgesetz ist in Österreich das **Sozialministeriumservice** zuständig. [Anschrift und Website der zuständigen Stelle – prüfen] [anwaltlich prüfen: ob auch eine Schlichtungs- oder Beschwerdestelle genannt werden muss]",
+        `Für die Marktüberwachung nach dem Barrierefreiheitsgesetz ist in Österreich das **${MARKTUEBERWACHUNG.name}** zuständig (<${MARKTUEBERWACHUNG.url}>). [anwaltlich prüfen: ob auch eine Schlichtungs- oder Beschwerdestelle genannt werden muss]`,
         { note: "Nichtkonformität ist dem Sozialministeriumservice zu melden (§ 14 Abs 4 BaFG). Die Information muss in den AGB oder auf andere deutlich wahrnehmbare Weise bereitgestellt werden, barrierefrei, solange die Dienstleistung angeboten wird. Bauvorgabe: eigene Seite `/barrierefreiheit`, Footer-Link neben Impressum und Datenschutz." },
       ],
     },

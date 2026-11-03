@@ -41,7 +41,7 @@ export function DruckenKnopf() {
   );
 }
 
-export default function BlattBild({ k, state, katalog }) {
+export default function BlattBild({ k, state, katalog, foto = null }) {
   const { t } = useKonfCopy();
   const index = useMemo(() => buildIndex(katalog), [katalog]);
   const [snap, setSnap] = useState(null);
@@ -98,12 +98,26 @@ export default function BlattBild({ k, state, katalog }) {
     setPlan2d(true);
   };
 
+  // Druck 02.11.: Pflichtunterschrift „Visualisierung (Rendering)“ bei jedem Renderbild; mit Fotoansicht (Einzelfarbe)
+  // drei Bilder nebeneinander (Render, eigenes Becken, Nahansicht), sonst wie bisher zwei. Im Druck werden die
+  // Szenenbilder auf 2:1 bzw. 4:3 beschnitten, damit das Blatt auf eine Seite passt.
+  const bildKlasse = foto ? "block aspect-[4/3] w-full object-cover" : "block w-full print:aspect-[2/1] print:object-cover";
+  const unterschrift = snap
+    ? t("Visualisierung (Rendering) · Farben angenähert, kein Foto", "Visualisation (rendering) · colours approximated, not a photo")
+    : t("Draufsicht (Visualisierung, Farben angenähert)", "Top view (visualisation, colours approximated)");
   return (
-    <div className="mt-6 grid gap-4 md:grid-cols-[1fr_12rem] print:grid-cols-[1fr_12rem]">
+    <div className={foto ? "mt-6 grid gap-4 md:grid-cols-[1fr_1fr_10rem] print:mt-4 print:grid-cols-[1fr_1fr_10rem]" : "mt-6 grid gap-4 md:grid-cols-[1fr_12rem] print:mt-4 print:grid-cols-[1fr_12rem]"}>
+      {foto ? (
+        <figure className="m-0" data-ezk-blatt-foto="">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={foto.src} alt={foto.alt} className="block aspect-[4/3] w-full object-cover" />
+          <figcaption className="mt-1 text-small text-text-soft">{foto.caption}</figcaption>
+        </figure>
+      ) : null}
       <figure className="m-0">
         {snap ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={snap} alt={t("Visualisierung des Beckens aus dem 3D-Konfigurator", "Visualisation of the pool from the 3D configurator")} className="block w-full" data-ezk-blatt-bild="3d" />
+          <img src={snap} alt={t("Visualisierung des Beckens aus dem 3D-Konfigurator", "Visualisation of the pool from the 3D configurator")} className={bildKlasse} data-ezk-blatt-bild="3d" />
         ) : plan2d ? (
           <canvas ref={plan} className="block aspect-[900/520] w-full bg-linen" role="img" aria-label={t("Draufsicht des Beckens mit dem gewählten Mosaik", "Top view of the pool with the chosen mosaic")} data-ezk-blatt-bild="2d" />
         ) : (
@@ -111,7 +125,7 @@ export default function BlattBild({ k, state, katalog }) {
             {t("Visualisierung wird erstellt …", "Creating visualisation …")}
           </div>
         )}
-        <figcaption className="mt-1 text-small text-text-soft">{snap ? t("Visualisierung, Farben angenähert", "Visualisation, colours approximated") : t("Draufsicht (Visualisierung, Farben angenähert)", "Top view (visualisation, colours approximated)")}</figcaption>
+        <figcaption className="mt-1 text-small text-text-soft">{foto ? `${t("Ihr Becken", "Your pool")}: ${unterschrift}` : unterschrift}</figcaption>
       </figure>
       <figure className="m-0">
         <canvas ref={nah} className="block aspect-square w-full" role="img" aria-label={t("Nahansicht des Mosaiks, vergrößert", "Close-up of the mosaic, enlarged")} />

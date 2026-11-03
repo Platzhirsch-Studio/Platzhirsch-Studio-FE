@@ -17,7 +17,8 @@ const LAGER = ["glas-a", "kerze-b"];
 
 test("Entwurf: Status ehrlich, nichts freigegeben, konservative Vorschläge", () => {
   assert.equal(LIEFERZEIT_META.status, LIEFERZEIT_STATUS.ENTWURF);
-  assert.match(LIEFERZEIT_META.hinweis, /Entwurf von KI-Agenten, Kanzlei-Durchsicht empfohlen/);
+  assert.match(LIEFERZEIT_META.hinweis, /^Entwurf, Stand 31.10.2026 – Prüfung durch Kanzlei offen$/);
+  assert.doesNotMatch(LIEFERZEIT_META.hinweis, /KI|Agent/i);
   assert.deepEqual(lieferzeitOffen(), ["versand.AT.lager", "versand.AT.bestellware", "versand.DE.lager", "versand.DE.bestellware", "abholung.lager", "abholung.bestellware"]);
   assert.deepEqual([LIEFERZEIT.versand.AT.lager.min, LIEFERZEIT.versand.AT.lager.max], [3, 5]);
   assert.deepEqual([LIEFERZEIT.versand.DE.lager.min, LIEFERZEIT.versand.DE.lager.max], [4, 7]);

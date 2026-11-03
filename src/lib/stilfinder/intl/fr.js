@@ -68,7 +68,7 @@ export const UI = {
     copyLink: "Copier le lien",
     linkCopied: "Lien copié.",
     restart: "Recommencer le test de style",
-    howRules: "Comment naît votre résultat : vos réponses sont pondérées selon des règles fixes (sans IA, sans enregistrement sur nos serveurs).",
+    howRules: "Comment naît votre résultat : vos réponses sont pondérées selon des règles fixes et rien n’est enregistré sur nos serveurs.",
     howLink: "Le lien contient uniquement les réponses choisies.",
     imagesNote: "Les images des produits proviennent de notre catalogue en ligne ou des fabricants. Les teintes peuvent varier à l’écran.",
     privacyLink: "Politique de confidentialité",
@@ -133,7 +133,7 @@ export const UI = {
     optional: "(facultatif)",
     choose: "Veuillez choisir",
     consent:
-      "Lorsque vous cliquez sur « Envoyer le moodboard », nous envoyons une seule fois la présentation PDF à cette adresse. Nous utilisons vos données uniquement pour cet envoi et ne les conservons pas ensuite. Les textes de la présentation sont rédigés avec l’aide de l’IA et signalés comme tels.",
+      "Lorsque vous cliquez sur « Envoyer le moodboard », nous envoyons une seule fois la présentation PDF à cette adresse. Nous utilisons vos données uniquement pour cet envoi et ne les conservons pas ensuite.",
     consentDev: " Mode test : au lieu d’être envoyé, le message reste jusqu’à 7 jours dans une boîte de test interne.",
     privacyLink: "Politique de confidentialité",
     newsletter: "Facultatif : je souhaite en outre recevoir la newsletter de Platzhirsch Home Living avec des idées d’aménagement, des nouveautés et des invitations.",
@@ -191,7 +191,7 @@ export const PAGE = {
       },
       {
         q: "Comment le résultat est-il établi ?",
-        a: "Vos réponses sont pondérées selon des règles fixes – sans IA. La part la plus forte détermine votre profil ; si un deuxième style obtient des points, le résultat le mentionne comme « touche » supplémentaire.",
+        a: "Vos réponses sont pondérées selon des règles fixes. La part la plus forte détermine votre profil ; si un deuxième style obtient des points, le résultat le mentionne comme « touche » supplémentaire.",
       },
       {
         q: "Mes réponses sont-elles enregistrées ?",

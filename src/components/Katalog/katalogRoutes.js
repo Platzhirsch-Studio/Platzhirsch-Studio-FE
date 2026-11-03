@@ -18,7 +18,7 @@ import { buildPageMetadata } from "@/lib/seo/pageMetadata";
 import { KATALOG_LOCALES, kategorieKey, textOf } from "@/lib/katalog/schema";
 import { WELTEN, WELT_IDS, kategoriePath, markePath, produktPath, produktePath, seitePath } from "@/lib/katalog/welten";
 import { letzterSatz, produktBeschreibung, weltTitel } from "./katalogMeta";
-import { kachelBild } from "./kachelBild";
+import { detailBild, leitbild } from "./kachelBild";
 // Kaufwort-Seiten der Gerätemarken (02.11.2026): Titel/Description je Marke aus
 // markenSeo.js; das Händlerwort im Titel kommt nur aus dem Claim-Guard.
 import { dealerTitleWord } from "@/lib/legal/claims";
@@ -45,10 +45,11 @@ const kategorieMehrfach = (welt, kategorie) => andereWelten(welt).some((w) => pr
 const seiteNr = (s) => (s == null ? 1 : /^[2-9]\d*$|^1\d+$/.test(String(s)) ? Number(s) : NaN);
 
 // QM Inhaber-Entscheidung Nr. 6, 02.11.: og:image der Listen = Kachelbild (kachelBild.js:
-// Dornbracht-Freisteller statt Farbverlauf), nicht starr bilder[0].
-function bildMeta(list, locale) {
+// Dornbracht-Freisteller statt Farbverlauf), nicht starr bilder[0]. 03.11.: Listen = Kachelbild
+// (leitbild), Produktseite = ihr Hero (detailBild: Raumbild > Freisteller > bilder[0]).
+function bildMeta(list, locale, wahl = leitbild) {
   const first = list.find((p) => p.bilder.length);
-  const bild = first ? kachelBild(first) || first.bilder[0] : null;
+  const bild = first ? wahl(first) : null;
   return bild ? { image: bild.src, imageAlt: textOf(bild.alt, locale) } : {};
 }
 
@@ -220,7 +221,7 @@ export async function produktMetadata(welt, { params }) {
     title: `${m.name} ${p.name} – ${kat}${SUFFIX}`,
     // Qualität 01.11.2026: Kurztext < 70 Zeichen → vorhandener Planungssatz der Welt dazu (katalogMeta.js).
     description: produktBeschreibung(textOf(p.kurz, locale), produktZusatz(welt, t, kat, m.name)),
-    ...bildMeta([p], locale),
+    ...bildMeta([p], locale, detailBild),
   });
 }
 

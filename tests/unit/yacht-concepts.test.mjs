@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
-import { buildConcepts, islandConcepts, KI_LABEL, RENDER_LABEL, OPEN_ZONES, OPEN_ZONE_EXCEPTIONS, placeProduct } from "../../src/lib/yacht/model.js";
+import { buildConcepts, islandConcepts, renderView, KI_LABEL, RENDER_LABEL, OPEN_ZONES, OPEN_ZONE_EXCEPTIONS, placeProduct } from "../../src/lib/yacht/model.js";
 import { HULLS, MODEL_KEYS, buildHull, buildModel, cameraFor, triangleEstimate } from "../../src/lib/yacht/hull.js";
 import { findClaims } from "../../src/lib/legal/claims.js";
 
@@ -58,14 +58,18 @@ test("every product has a catalogue link and an image; no Baobab (open flame)", 
   for (const c of concepts) for (const p of c.products) assert.ok(!p.path.startsWith("/de/"), "locale-free path for next-intl links");
 });
 
-test("every AI image is labelled and exists as AVIF + WebP in two sizes", () => {
+test("only Blender renderings are shown (03.11.2026: no AI images), captioned and present as AVIF + WebP in two sizes", () => {
   const all = concepts.flatMap((c) => c.images);
-  assert.equal(all.length, renders.renders.length);
+  const shown = renders.renders.filter((r) => r.kiGeneriert === false);
+  assert.equal(all.length, shown.length);
+  assert.ok(shown.length > 0);
   const byId = Object.fromEntries(renders.renders.map((r) => [r.id, r]));
+  for (const r of renders.renders.filter((x) => x.kiGeneriert === true)) assert.ok(!all.some((img) => img.id === r.id), `${r.id}: AI image must not be shown`);
   for (const img of all) {
-    // 02.11.2026: Blender renderings carry the caption, AI images keep the AI label (AI Act)
-    assert.equal(img.label, byId[img.id].kiGeneriert ? KI_LABEL : RENDER_LABEL, img.id);
-    assert.equal(img.kiGenerated, byId[img.id].kiGeneriert, img.id);
+    // 03.11.2026 (Inhaber): only renderings, every one with the caption – no AI label on the page
+    assert.equal(byId[img.id].kiGeneriert, false, img.id);
+    assert.equal(img.label, RENDER_LABEL, img.id);
+    assert.equal(img.kiGenerated, false, img.id);
     for (const fmt of ["avif", "webp"]) for (const w of [1200, 2400]) assert.ok(readFileSync(path.join(ROOT, "public", img[fmt][w])).length > 1000, img[fmt][w]);
   }
   assert.match(read("src/components/Yacht/ConceptImage.js"), /<KiLabel/);
@@ -73,7 +77,7 @@ test("every AI image is labelled and exists as AVIF + WebP in two sizes", () => 
   assert.equal(RENDER_LABEL, "Visualisierung (Rendering)");
 });
 
-test("Renderings (02.11.2026) only where the boat type fits; runabout, sailing yacht and boathouse stay AI images", () => {
+test("Renderings (02.11.2026) only where the boat type fits; runabout, sailing yacht and boathouse have only AI entries (not shown since 03.11.2026)", () => {
   const byId = Object.fromEntries(renders.renders.map((r) => [r.id, r]));
   const rendered = ["motoryacht-riviera-flybridge", "motoryacht-riviera-salon", "motoryacht-riviera-kabine", "daycruiser-seelicht-cockpit", "daycruiser-seelicht-kabine", "daycruiser-seelicht-salon", "superyacht-sonnendeck-nacht"];
   for (const id of rendered) {
@@ -173,10 +177,14 @@ test("QA round 1: re-rendered images replace the honest-but-unfinished captions,
   const byId = Object.fromEntries(concepts.flatMap((c) => c.images).map((img) => [img.id, img]));
   // 02.11.2026: the Riviera flybridge is now a Blender rendering (v3, see the rendering test)
   assert.match(byId["motoryacht-riviera-flybridge"].avif[1200], /-v3-1200\.avif$/);
+  // 03.11.2026: the runabout AI image is no longer shown (not in `concepts`); its file entry in
+  // renders.json keeps the C2PA/IPTC marks – checked on the raw entry via renderView.
+  const raw = Object.fromEntries(renders.renders.map((r) => [r.id, renderView(r)]));
   for (const id of ["runabout-mahagoni-deck"]) {
-    assert.equal(byId[id].note, null, id);
-    assert.match(byId[id].avif[1200], /-v2-1200\.avif$/);
-    const bytes = readFileSync(path.join(ROOT, "public", byId[id].webp[1200]));
+    assert.equal(byId[id], undefined, `${id}: AI image not shown`);
+    assert.equal(raw[id].note, null, id);
+    assert.match(raw[id].avif[1200], /-v2-1200\.avif$/);
+    const bytes = readFileSync(path.join(ROOT, "public", raw[id].webp[1200]));
     assert.ok(bytes.includes(Buffer.from("c2pa")), `${id}: C2PA manifest embedded`);
     assert.ok(bytes.includes(Buffer.from("trainedAlgorithmicMedia")), `${id}: IPTC source type`);
   }

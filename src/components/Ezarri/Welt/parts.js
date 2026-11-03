@@ -111,7 +111,8 @@ export function Schluss({ refIds = [], tone = "band" }) {
   return (
     // QM r4 (ipad, desktop): volle Inhaltsbreite statt schmalem, zentriertem Textcontainer – der Block
     // fluchtet jetzt mit der Seitenkante und den Abschnitten darüber (vorher x ≈ 75/143/440 px).
-    <Section tone={tone} labelledBy="ez-schluss" spacing="compact">
+    // Druck 02.11.: Werbeband mit Knöpfen – nicht im Ausdruck.
+    <Section tone={tone} labelledBy="ez-schluss" spacing="compact" className="print:hidden">
       <div className={`flex flex-col items-start ${styles.fitHead}`}>
         <Heading id="ez-schluss" level={2} size="display-m" tone={dark ? "inverse" : "text"}>
           {SCHLUSS.title}

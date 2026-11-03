@@ -12,11 +12,13 @@ const AGB = {
   title: "Allgemeine Geschäftsbedingungen",
   heading: "Allgemeine Geschäfts­bedingungen",
   navLabel: "AGB",
-  livePath: null,
-  lead: "AGB-Entwurf für Verbraucher in Österreich, Deutschland, der Schweiz und Liechtenstein (Teil I) und Unternehmer (Teil II). Heute gibt es auf der Website keine AGB.",
-  sources: ["Marktresearch/recht/01-agb-entwurf.md, Teil B und Teil C", "Marktresearch/recht/00-rechtspaket-uebersicht.md, Abschnitt 2 (W3–W8, W14)"],
-  version: "Allgemeine Geschäftsbedingungen der [Firma der Handels-GmbH – vom Unternehmen auszufüllen] („Platzhirsch Home Living“) · Fassung vom [Datum – vom Unternehmen auszufüllen]",
-  intro: { label: "Rechtspaket 00, W14", note: "Bis zur Eintragung der Handels-GmbH ist die MW Immobilienverwaltungs GmbH Vertragspartnerin (Gutscheine, Atelierverkauf, Aufträge). Der Entwurf ist auf die Handels-GmbH zugeschnitten; eine Übergangsfassung für die MW GmbH fehlt noch. [anwaltlich prüfen]" },
+  livePath: "/agb",
+  lead: "Vorfassung des AGB-Entwurfs (Teil I Verbraucher, Teil II Unternehmer, Kurzfassung) mit allen Anmerkungen der Kanzlei. Die öffentliche Fassung je Geschäftsbereich steht unter /agb (src/lib/legal/agb.js).",
+  sources: ["Marktresearch/recht/01-agb-entwurf.md, Teil B und Teil C", "Marktresearch/recht/00-rechtspaket-uebersicht.md, Abschnitt 2 (W3–W8, W14)", "Platzhirsch-Status/berichte/AGB-KANZLEI-2026-11-02.md"],
+  version: "Allgemeine Geschäftsbedingungen der MW Immobilienverwaltungs GmbH („Platzhirsch Home Living“) · Vorfassung; Stand der öffentlichen Fassung: 02.11.2026",
+  // Inhaber-Entscheidung Nr. 37 (02.11.2026): Vertragspartnerin ist die MW
+  // Immobilienverwaltungs GmbH; keine Übergangsfassung auf eine künftige Gesellschaft.
+  intro: { label: "Inhaber-Entscheidung Nr. 37, 02.11.2026", note: "Vertragspartnerin ist die MW Immobilienverwaltungs GmbH (FN 443753 d, Impressum Variante A). Die AGB sind auf diese Gesellschaft ausgelegt. Wird der Betrieb später übertragen, gehen laufende Verträge auf die Rechtsnachfolgerin über, der Kunde wird informiert (Rechtsnachfolgeklausel /agb Teil I § 1.5) [anwaltlich prüfen: § 38 UGB Widerspruchsrecht]." },
   sections: [
     {
       id: "p1",

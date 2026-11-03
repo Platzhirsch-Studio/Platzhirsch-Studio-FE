@@ -208,7 +208,9 @@ export default function CustomMixApp({ palette, rezepte = [], feste = [], fugen,
     try {
       const bild = mosaikCanvas(zustand(), 1200).toDataURL("image/png");
       const qr = await qrDataUrl(teilenUrl());
-      setDruck({ bild, qr, rezept: rezeptZeilen(), angaben: angabenZeile(), url: teilenUrl() });
+      // Druck 02.11.: Datum des Ausdrucks aufs Blatt
+      const stand = new Intl.DateTimeFormat(zahlLoc, { dateStyle: "long", timeZone: "Europe/Vienna" }).format(new Date());
+      setDruck({ bild, qr, rezept: rezeptZeilen(), angaben: angabenZeile(), url: teilenUrl(), stand: en ? `Printed on ${stand}` : `Stand ${stand}` });
     } catch {
       setExportStatus(C.export.fehler);
     }
@@ -495,8 +497,9 @@ function Druckblatt({ daten }) {
   const C = useCM();
   return (
     <div data-cm-druck className="hidden bg-white text-black print:block">
-      <style>{`@media print{@page{size:A4;margin:14mm}body>*:not([data-cm-druck]){display:none!important}[data-cm-druck]{display:block!important}}`}</style>
-      <p className="text-small">{SITE_NAME}</p>
+      {/* Druck 02.11.: body ohne Papierton und ohne Cookie-Polster (vorher leere beige Fläche unter dem Blatt) */}
+      <style>{`@media print{@page{size:A4;margin:14mm}body>*:not([data-cm-druck]){display:none!important}[data-cm-druck]{display:block!important}body{background:#fff!important;padding:0!important;margin:0!important;min-height:0!important}}`}</style>
+      <p className="text-small">{SITE_NAME} · {daten.stand}</p>
       <h1 className="mt-1 font-display text-display-m">{C.export.titel}</h1>
       <img src={daten.bild} alt="" width="600" height="600" className="mt-4 block aspect-square w-[120mm]" />
       <ul className="mt-4 space-y-1 text-body">

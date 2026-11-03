@@ -125,8 +125,9 @@ test("/beratung: Kopf (Titel, Lead, Bildtext) je Kontext in allen Sprachen; KI-B
     assert.ok(c.imageSource, l);
   }
   const head = read("src/components/Beratung/advice.js");
-  assert.match(head, /yacht: \{ src: "\/labs\/yacht\/[^"]+", ai: true \}/);
-  assert.match(head, /picture\?\.ai && <KiLabel/);
+  // 03.11.2026 (Inhaber): the yacht picture is a Blender rendering (v2) with the caption, no AI image
+  assert.match(head, /yacht: \{ src: "\/labs\/yacht\/[^"]+-v2-[^"]+", render: true \}/);
+  assert.match(head, /picture\?\.render && <KiLabel ki=\{false\}/);
   // No Minotti / Custom-Line yacht photos (no written permission yet).
   assert.doesNotMatch(head, /navetta|minotti|custom-line/i);
   const page = read("src/app/[locale]/beratung/page.js");

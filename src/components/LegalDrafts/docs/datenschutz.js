@@ -7,10 +7,18 @@
 //  - 5.10 note "Stand der Umsetzung" (Labs code differs from the draft)
 //  - NEW 5.18 Kundenportal, 5.19 Uploads, 5.20 Online-Planer from the feature
 //    docs (digital/features/*.md) and the values in the feature code.
+//  - 02.11.2026 (Inhaber: „Rechtstexte fertig machen“): Platzhalter geschlossen,
+//    die der Code belegt (Anbieter: Anthropic/Claude API, Resend, eigener
+//    Kalender und Videoraum im Backoffice, kein Cal.com/Brevo/Redis/Turnstile;
+//    Fristen aus Konstanten; Rechtsgrundlagen wie von der Kanzlei am 29.10.
+//    freigegeben). Offen bleiben nur Angaben des Unternehmens (Hoster, AVV,
+//    GA4-Einstellung, Entscheidungen) und Rechtsfragen der Kanzlei. Liste:
+//    Platzhirsch-Status/berichte/RECHT-PLATZHALTER-2026-11-02.md.
 import { ACCOUNT_RETENTION, FEEDBACK_RETENTION, MAGIC_LINK_MINUTES, OWNER_CONFIRMED, RECIPIENTS, SESSION_DAYS, VOICE_RETENTION } from "@/lib/portal/privacy";
 import { CONSENT_VERSION as UPLOAD_CONSENT_VERSION, UPLOAD_CONFIG } from "@/lib/upload/config";
 import { RETENTION_DAYS as CONCIERGE_RETENTION_DAYS } from "@/lib/concierge/config";
-import { EMAIL, PHONE_DISPLAY, REGISTER, SITE_NAME, STREET_LINE } from "../company";
+import { EMAIL, PHONE_DISPLAY, REGISTER, SITE_NAME, SOCIAL_LINE, STREET_LINE } from "../company";
+import { RETENTION_MONTHS as IDEENBOARD_RETENTION_MONTHS } from "@/lib/ideenboard/config";
 import { dseServiceRows } from "@/lib/legal/services";
 
 // Section "Eingesetzte Dienste" (R4-recht-consent): generated from the
@@ -55,13 +63,13 @@ const DATENSCHUTZ = {
   heading: "Datenschutz­erklärung",
   navLabel: "Datenschutz",
   livePath: "/datenschutz",
-  lead: "Neue Datenschutzerklärung in Modulen, ergänzt um Kundenportal, Uploads, Online-Planer und KI-Concierge. Abschnitte mit „Modul“ erscheinen nur, wenn die Funktion live ist.",
+  lead: "Datenschutzerklärung in Modulen, ergänzt um Kundenportal, Uploads, Online-Planer und KI-Concierge. Abschnitte mit „Modul“ erscheinen nur, wenn die Funktion live ist. Grundtext von der Kanzlei freigegeben (29.10.2026); Stand 02.11.2026 sind alle im Code belegten Angaben eingetragen.",
   sources: [
     "Marktresearch/recht/02-datenschutzerklaerung-entwurf.md, Abschnitt 2",
     "Marktresearch/recht/00-rechtspaket-uebersicht.md, Abschnitt 2 (W1, W9, W10, W12)",
     "Marktresearch/digital/features/kundenportal.md, handy-upload.md, kuechenplaner.md, sofaplaner.md, concierge.md",
   ],
-  version: "Stand: [Datum der Veröffentlichung – vom Unternehmen auszufüllen] · Version [x.y – vom Unternehmen auszufüllen]",
+  version: "Stand: 02.11.2026 · Grundtext von der Kanzlei freigegeben am 29.10.2026 (Inhaber-Entscheidung Nr. 11); veröffentlichte Fassung: /datenschutz",
   // The five errors of today's live page (02, Befund 1 und Tabelle 1.1).
   knownErrors: [
     { id: "D2", title: "Privacy Shield", text: "Die heutige Erklärung stützt US-Übermittlungen auf den „Privacy Shield“. Der Beschluss 2016/1250 ist seit EuGH C-311/18 (16.07.2020) ungültig. Richtig: EU-US Data Privacy Framework (Durchführungsbeschluss (EU) 2023/1795) und Einwilligung." },
@@ -83,7 +91,7 @@ const DATENSCHUTZ = {
             `**${REGISTER.legalName}**, Marke „${SITE_NAME}“`,
             STREET_LINE,
             `Firmenbuch: ${REGISTER.fn}, ${REGISTER.court}`,
-            `Telefon: ${PHONE_DISPLAY} · E-Mail für Datenschutzanliegen: **datenschutz@platzhirsch.studio** [vom Unternehmen anzulegen]`,
+            `Telefon: ${PHONE_DISPLAY} · E-Mail für Datenschutzanliegen: **${EMAIL}** (freigegebener Wortlaut: Datenschutzanliegen über die allgemeine Adresse, kein eigenes Postfach)`,
           ],
         },
         { label: "Hinweis zur Vorschau", note: "Anschrift und Telefon kommen aus src/lib/site.js (Landstraße 11 laut Firmenbuch, Rechtspaket 00, W1). Der Entwurf hatte hier einen Platzhalter für die Hausnummer (9 oder 11); die Angabe muss mit dem Impressum identisch sein – das ist durch die gemeinsame Quelle gesichert." },
@@ -116,10 +124,10 @@ const DATENSCHUTZ = {
       title: "Besuch der Website",
       source: "02, Abschn. 2.3",
       blocks: [
-        "**3.1 Hosting und Server-Protokolle.** Die Website läuft auf einem Server von [Hosting-Anbieter, Sitz, Rechenzentrumsstandort – vom Unternehmen auszufüllen]. Bei jedem Aufruf verarbeitet der Server technisch notwendig: IP-Adresse, Datum und Uhrzeit, aufgerufene Adresse, Referrer, Browser und Betriebssystem, Statuscode und Datenmenge. Zweck: Auslieferung der Seite, Sicherheit, Fehlersuche. Rechtsgrundlage: Art. 6 Abs 1 lit f DSGVO (berechtigtes Interesse an einem sicheren, funktionsfähigen Angebot). Speicherdauer der Protokolle: [14] Tage [vom Unternehmen festzulegen und technisch umzusetzen, Logs unter `/var/log`], danach Löschung, außer ein Sicherheitsvorfall erfordert längere Aufbewahrung. Der Hosting-Anbieter ist unser Auftragsverarbeiter.",
+        "**3.1 Hosting und Server-Protokolle.** Die Website läuft auf einem Server eines Hosting-Dienstleisters, der die Daten in unserem Auftrag verarbeitet [Hosting-Anbieter, Sitz, Rechenzentrumsstandort – vom Unternehmen auszufüllen; im Repo nicht belegt, öffentlich neutral „Hosting-Dienstleister“ (freigegeben)]. Bei jedem Aufruf verarbeitet der Server technisch notwendig: IP-Adresse, Datum und Uhrzeit, aufgerufene Adresse, Referrer, Browser und Betriebssystem, Statuscode und Datenmenge. Zweck: Auslieferung der Seite, Sicherheit, Fehlersuche. Rechtsgrundlage: Art. 6 Abs 1 lit f DSGVO (berechtigtes Interesse an einem sicheren, funktionsfähigen Angebot). Speicherdauer der Protokolle: nur so lange, wie es für Sicherheit und Fehlersuche nötig ist (freigegebener Wortlaut) [feste Frist in Tagen – vom Unternehmen festzulegen und technisch umzusetzen, Logs unter `/var/log`], außer ein Sicherheitsvorfall erfordert längere Aufbewahrung. Der Hosting-Anbieter ist unser Auftragsverarbeiter.",
         "**3.2 Produktdaten und Bilder.** Produktdaten und Bilder laden wir serverseitig aus unserem eigenen Verwaltungssystem. Dabei werden keine Daten Ihres Browsers an Dritte übermittelt.",
         "**3.3 Schriften.** Wir binden Schriften lokal ein. Es wird keine Verbindung zu Google Fonts oder anderen Schriftdiensten aufgebaut.",
-        "**3.4 [MODUL, nur wenn eingesetzt] Spam-Schutz.** Unsere Formulare enthalten ein für Menschen unsichtbares Feld, das automatisierte Eingaben erkennt. Dabei werden keine zusätzlichen Daten erhoben. *[Falls Cloudflare Turnstile o. ä. eingesetzt wird (Bericht 06): Anbieter, Daten (IP, Browsermerkmale), Rechtsgrundlage und Drittland ergänzen; ob Einwilligung nötig ist – anwaltlich prüfen. Datensparsamere Alternative: Honeypot + Rate-Limit ohne Drittanbieter.]*",
+        "**3.4 Spam-Schutz.** Unsere Formulare enthalten ein für Menschen unsichtbares Feld, das automatisierte Eingaben erkennt, und wir zählen Formularsendungen kurzzeitig je IP-Adresse im Arbeitsspeicher unseres Servers (Art. 6 Abs 1 lit f DSGVO). Einen externen Dienst wie Cloudflare Turnstile setzen wir nicht ein (Code: src/lib/forms/guard.js, src/lib/forms/rateLimit.js; freigegebener Wortlaut in 5.1 „Zum Schutz vor Missbrauch …“).",
       ],
     },
     {
@@ -129,10 +137,9 @@ const DATENSCHUTZ = {
       source: "02, Abschn. 2.4",
       blocks: [
         "Wir setzen Cookies und vergleichbare Techniken (Local Storage, Pixel) nur ein, wenn sie für den von Ihnen gewünschten Dienst unbedingt erforderlich sind oder Sie eingewilligt haben (§ 165 Abs 3 TKG 2021). Beim ersten Besuch fragen wir Sie in einem Banner. „Weiter ohne Einwilligung“ ist genauso einfach wie „Alle akzeptieren“. Ohne Einwilligung laden wir keine Analyse-, Werbe- oder Kartendienste.",
-        "**Unbedingt erforderlich:** Cookie `cookieConsent` (speichert Ihre Auswahl, 12 Monate, Erstanbieter). *[Bei Shop: Warenkorb-/Session-Cookie ergänzen; bei Sprachwahl ggf. `NEXT_LOCALE`.]* Nach 12 Monaten oder wenn wir neue Dienste einsetzen, fragen wir erneut.",
-        "**Einwilligungsnachweis:** [MODUL] Um nachweisen zu können, dass Sie eingewilligt haben (Art. 7 Abs 1 DSGVO), speichern wir auf unserem Server eine zufällige Kennung, Zeitpunkt, Version des Banners und Ihre Auswahl, ohne IP-Adresse, für [3 Jahre] nach Ende der Einwilligung [anwaltlich prüfen: Frist].",
+        "**Unbedingt erforderlich:** Cookie `cookieConsent` (speichert Ihre Auswahl, 12 Monate, Erstanbieter); `NEXT_LOCALE` (Cookie, 12 Monate) und `preferredLocale` (Speicher des Browsers) nur, wenn Sie aktiv die Sprache wechseln; im Kundenportal das Sitzungs-Cookie `ph_portal_session` (5.18); der Sofa-Modulplaner legt Entwurf und Merkliste im Local Storage ab, der KI-Concierge Ihre Chat-Einwilligung für 12 Stunden im sessionStorage, die Besucher-Einblicke eine Sitzungskennung `ph_eb` für 30 Minuten (jeweils von Ihnen ausgelöst, § 165 Abs 3 TKG 2021). Der Onlineshop setzt im Testmodus ein Warenkorb-Cookie; der Text dazu folgt mit der Freischaltung des Shops. Nach 12 Monaten oder wenn wir neue Dienste einsetzen, fragen wir erneut.",
+        "**Einwilligungsnachweis:** Einen serverseitigen Nachweis Ihrer Banner-Auswahl speichern wir derzeit nicht; die Auswahl liegt nur im Cookie `cookieConsent` in Ihrem Browser (Code: src/components/Cookies/cookiecomponent.js). Sollten wir einen Nachweis einführen (zufällige Kennung, Zeitpunkt, Banner-Version, Auswahl, ohne IP-Adresse), nennen wir ihn hier mit Frist.",
         "Die einzelnen Dienste, Cookie-Namen und Laufzeiten finden Sie jederzeit unter **„Privatsphäre-Einstellungen“ → „Details anzeigen“**.",
-        { label: "Ergänzung aus den Feature-Dokus", note: "Kundenportal: Session-Cookie `ph_portal_session` (5.18). Sofa-Modulplaner: Entwurf und Merkliste im Local Storage des Browsers, vom Nutzer ausgelöst, nach § 165 Abs 3 TKG 2021 „unbedingt erforderlich“ (sofaplaner.md, „Rechtliches“). KI-Concierge: Einwilligungs-Token im sessionStorage (concierge.md). [anwaltlich prüfen: in der Liste „Unbedingt erforderlich“ nennen]" },
       ],
     },
     {
@@ -140,7 +147,9 @@ const DATENSCHUTZ = {
       num: "5",
       title: "Die einzelnen Verarbeitungen",
       source: "02, Abschn. 2.5",
-      blocks: [],
+      blocks: [
+        { label: "Ergänzungen 02.11.2026", note: "Für die neuen Funktionen Online-Termin und Videoberatung, WhatsApp, Besucher-Einblicke, Ideenboard teilen, teilbare Wunschliste, Empfehlungsprogramm, Service-Anfragen (Hotel & Objekt, Architekten, Winterservice, Pflege), 3D-/AR-Ansicht und Projekt-Tagebuch steht der Wortlaut in src/components/LegalDrafts/dseErgaenzungen.js und erscheint auf /de/datenschutz (Status je Abschnitt: src/lib/legal/dseSections.js). Die Abschnitte 5.7 bis 5.9 unten sind damit abgeglichen. [anwaltlich prüfen: Freigabe je Ergänzungsabschnitt]" },
+      ],
       sub: [
         {
           id: "anfragen",
@@ -152,8 +161,8 @@ const DATENSCHUTZ = {
                 "**Daten:** Name, E-Mail, Telefon (soweit angegeben), Wohnort/Land/Adresse (bei Produktanfragen für Lieferung und Angebot), Inhalt Ihrer Nachricht, Thema, Zeitrahmen und gemerkte Produkte.",
                 "**Zweck:** Beantwortung Ihrer Anfrage, Erstellung eines Angebots, Rückfragen.",
                 "**Rechtsgrundlage:** Art. 6 Abs 1 lit b DSGVO (vorvertragliche Maßnahme auf Ihre Anfrage). Pflichtfelder sind markiert; ohne sie können wir die Anfrage nicht bearbeiten.",
-                "**Empfänger:** Ihre Angaben werden über unseren Server an unser Kunden- und Warenwirtschaftssystem (Frappe/ERPNext) übermittelt, das [von uns selbst auf Servern von … / von … als Auftragsverarbeiter – vom Unternehmen auszufüllen] betrieben wird. Intern erhalten nur die zuständigen Beraterinnen und Berater Zugriff. Bei Küchen- und Möbelprojekten geben wir notwendige Angaben (Maße, Lieferort, ggf. Name) an den jeweiligen Hersteller oder Planungspartner weiter, wenn das für das Angebot erforderlich ist (Art. 6 Abs 1 lit b). *[Hersteller in Drittländern, z. B. Manufakturpartner Binni im Kosovo (kein Angemessenheitsbeschluss): nur Maße und Projektdaten ohne Namen übermitteln oder SCC abschließen – anwaltlich prüfen; siehe Bericht 26.]*",
-                "**Speicherdauer:** Kommt kein Auftrag zustande, löschen wir die Anfrage **[12] Monate nach dem letzten Kontakt** [vom Unternehmen festzulegen; Küchenprojekte haben lange Entscheidungszeiten, die alte Frist „6 Monate“ ist nur zu halten, wenn das Backoffice das auch tut]. Wird ein Auftrag daraus, gelten die Fristen in 5.12.",
+                "**Empfänger:** Ihre Angaben werden über unseren Server an unser Kunden- und Warenwirtschaftssystem (Frappe/ERPNext auf backoffice.platzhirsch.studio) übermittelt, das in unserem Auftrag betrieben wird [Betreiber/Hoster des Backoffice und AV-Vertrag – vom Unternehmen auszufüllen]. Intern erhalten nur die zuständigen Beraterinnen und Berater Zugriff. Bei Küchen- und Möbelprojekten geben wir notwendige Angaben (Maße, Lieferort, ggf. Name) an den jeweiligen Hersteller oder Planungspartner weiter, wenn das für das Angebot erforderlich ist (Art. 6 Abs 1 lit b). *[Hersteller in Drittländern, z. B. Manufakturpartner Binni im Kosovo (kein Angemessenheitsbeschluss): nur Maße und Projektdaten ohne Namen übermitteln oder SCC abschließen – anwaltlich prüfen; siehe Bericht 26.]*",
+                "**Speicherdauer:** Kommt kein Auftrag zustande, bewahren wir die Anfrage auf, bis sie erledigt ist und danach, solange mit Rückfragen zu rechnen ist (freigegebener Wortlaut; eine feste Frist in Monaten kann das Unternehmen nachtragen, sobald das Backoffice sie technisch hält). Wird ein Auftrag daraus, gelten die Fristen in 5.12.",
                 "**Herkunft der Anfrage (Werbeerfolg):** [MODUL] Wenn Sie in Marketing-Dienste eingewilligt haben, speichern wir zusammen mit der Anfrage, über welche Anzeige oder Kampagne Sie gekommen sind (z. B. `gclid`, `fbclid`, UTM-Parameter). Ohne Einwilligung speichern wir das nicht. Speicherdauer wie die Anfrage.",
               ],
             },
@@ -171,7 +180,7 @@ const DATENSCHUTZ = {
                 "**Cookies:** `_ga`, `_ga_<ID>` (bis 24 Monate).",
                 "**Zweck:** Reichweitenmessung, Verbesserung der Website, Messung, welche Seiten zu Anfragen führen.",
                 "**Rechtsgrundlage:** Einwilligung, Art. 6 Abs 1 lit a DSGVO, § 165 Abs 3 TKG 2021.",
-                "**Speicherdauer bei Google:** [14] Monate [vom Unternehmen in GA4 → Datenaufbewahrung prüfen und eintragen]. Google Signals und Datenfreigabe an Google zu Produktzwecken: [deaktiviert – vom Unternehmen zu bestätigen].",
+                "**Speicherdauer bei Google:** höchstens 14 Monate (freigegebener Wortlaut) [Einstellung „Datenaufbewahrung“ in der GA4-Verwaltung – vom Unternehmen zu bestätigen]. Google Signals und Datenfreigabe an Google zu Produktzwecken: [deaktiviert – vom Unternehmen zu bestätigen].",
                 "**Drittland:** Übermittlung an Google LLC in die USA möglich; Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert (Angemessenheitsbeschluss der EU-Kommission vom 10.07.2023, Art. 45 DSGVO); für die Schweiz Swiss-US DPF (seit 15.09.2024 im Anhang 1 der DSV). Ergänzend Standardvertragsklauseln.",
                 "**Widerruf:** „Privatsphäre-Einstellungen“; dabei löschen wir die `_ga`-Cookies in Ihrem Browser.",
               ],
@@ -235,18 +244,18 @@ const DATENSCHUTZ = {
         {
           id: "newsletter",
           num: "5.6",
-          title: "Newsletter (Double-Opt-in, Anbieter Brevo)",
+          title: "Newsletter (Double-Opt-in)",
           blocks: [
             {
               ul: [
-                "**Daten:** E-Mail-Adresse (Pflicht); freiwillig: Sprache, Interessen (z. B. Wohnen, Küche, Outdoor, Licht, Atelierverkauf, Events), „Ich bin Privatkunde/Architekt/Hotel/Bauträger“, Land. *[Nur aufnehmen, was das Formular tatsächlich abfragt. Geburtstag und PLZ nicht erheben, solange sie nicht genutzt werden (Datenminimierung).]*",
-                "**Anmeldung:** Nach dem Absenden erhalten Sie eine E-Mail mit Bestätigungslink. Erst nach Klick sind Sie angemeldet (Double-Opt-in). Wir speichern Zeitpunkt der Anmeldung und Bestätigung, IP-Adresse zu beiden Zeitpunkten, Quelle (Seite) und den Wortlaut der Einwilligung, um die Einwilligung nachzuweisen.",
-                "**Inhalt und Frequenz:** Neuheiten aus dem Showroom, Einladungen zu Veranstaltungen, Atelierverkauf und Angebote von Platzhirsch Home Living, etwa [1–2] Mal im Monat [vom Unternehmen festzulegen].",
-                "**Erfolgsmessung:** [Entscheidung nötig] Wir messen, ob ein Newsletter geöffnet und welche Links angeklickt wurden (Zählpixel und personalisierte Links), um Inhalte zu verbessern. Diese Messung ist Teil Ihrer Einwilligung; sie endet mit der Abmeldung. *[Alternative datensparsam: Öffnungsmessung in Brevo deaktivieren, nur Klicks anonym zählen. Ob die Messung gesondert eingewilligt werden muss – anwaltlich prüfen.]*",
+                "**Daten:** nur Ihre E-Mail-Adresse – das Formular fragt nichts anderes ab (Code: src/app/api/newsletter_subscribe/route.js; freigegebener Wortlaut #newsletter).",
+                "**Anmeldung:** Nach dem Absenden erhalten Sie eine E-Mail mit Bestätigungslink. Erst nach Klick sind Sie angemeldet (Double-Opt-in). Die Anmeldung speichern wir in unserem Backoffice; dazu Zeitpunkt von Anmeldung und Bestätigung und den Wortlaut der Einwilligung, um die Einwilligung nachzuweisen [welche Nachweisfelder das Backoffice speichert (IP-Adresse, Quelle) – vom Unternehmen zu bestätigen].",
+                "**Inhalt:** Neuheiten aus dem Showroom, Einladungen zu Veranstaltungen, Atelierverkauf und Angebote von Platzhirsch Home Living. Eine feste Frequenz nennen wir nicht [Entscheidung des Unternehmens, falls eine Zusage gewünscht ist].",
+                "**Erfolgsmessung:** [Entscheidung des Unternehmens: Öffnungs- und Klickmessung im Newsletter-Versand des Backoffice ja oder nein; die Website selbst misst nichts – anwaltlich prüfen, ob die Messung gesondert einzuwilligen ist]",
                 "**Rechtsgrundlage:** Einwilligung, Art. 6 Abs 1 lit a DSGVO, § 174 Abs 3 TKG 2021 (für DE: § 7 Abs 2 Nr. 2 UWG). Nachweis-Protokoll: Art. 6 Abs 1 lit c i. V. m. Art. 7 Abs 1 DSGVO.",
                 "**Bestandskunden [MODUL, anwaltlich prüfen]:** Wenn Sie bei uns gekauft haben, dürfen wir Ihnen ohne gesonderte Einwilligung Informationen zu ähnlichen eigenen Produkten an die beim Kauf angegebene E-Mail senden, wenn wir Sie beim Kauf und in jeder E-Mail auf Ihr Widerspruchsrecht hinweisen (§ 174 Abs 4 TKG 2021; DE: § 7 Abs 3 UWG). Rechtsgrundlage dann Art. 6 Abs 1 lit f.",
-                "**Dienstleister:** Brevo (Sendinblue SAS, 106 Boulevard Haussmann, 75008 Paris, Frankreich) als Auftragsverarbeiter [prüfen: Vertragspartner für AT-Kunden ggf. Sendinblue GmbH, Berlin]; die Anmeldung wird zusätzlich in unserem Backoffice (Frappe) gespeichert. Brevo gibt an, Daten in der EU zu speichern [prüfen in der aktuellen Unterauftragsverarbeiterliste].",
-                "**Abmeldung:** jederzeit über den Link in jeder E-Mail oder an datenschutz@platzhirsch.studio. Wir löschen Ihre Adresse dann aus dem Verteiler; den Nachweis der früheren Einwilligung und die Abmeldung bewahren wir [3 Jahre] auf (Abwehr von Ansprüchen, Art. 17 Abs 3 lit e) [anwaltlich prüfen]. Ihre Adresse kommt auf eine Sperrliste, damit Sie nicht erneut angeschrieben werden.",
+                "**Dienstleister:** Die Anmeldung speichern wir in unserem Backoffice (Frappe); der Versand erfolgt aus der Newsletter-App des Backoffice (Inhaber-Entscheidung Nr. 13). Ein externer Newsletter-Dienst (z. B. Brevo) ist nicht angebunden (Code-Inventur 02.11.2026) [Mail-Weg des Backoffice (eigener Mailserver oder Versanddienst) – vom Unternehmen zu bestätigen; bei einem Versanddienst Anbieter, Drittland und AV-Vertrag ergänzen].",
+                "**Abmeldung:** jederzeit über den Link in jeder E-Mail oder an marketing@platzhirsch.studio (freigegebener Wortlaut). Wir löschen Ihre Adresse dann aus dem Verteiler; den Nachweis der früheren Einwilligung und der Abmeldung bewahren wir auf, solange wir ihn zur Abwehr von Ansprüchen brauchen (Art. 17 Abs 3 lit e DSGVO) [feste Frist – anwaltlich prüfen]. Ihre Adresse kommt auf eine Sperrliste, damit Sie nicht erneut angeschrieben werden.",
               ],
             },
             { label: "Rechtspaket 00, W13", note: "Für heutige Altkunden steht die Bestandskunden-Ausnahme in der Regel nicht zur Verfügung, weil Formulare und Aufträge bisher keinen Widerspruchshinweis enthalten haben [anwaltlich prüfen je Kanal]." },
@@ -256,20 +265,19 @@ const DATENSCHUTZ = {
           id: "terminbuchung",
           num: "5.7",
           module: true,
-          title: "Online-Terminbuchung",
+          title: "Online-Terminbuchung (eigener Kalender)",
           blocks: [
             {
               ul: [
-                "**Anbieter:** [Cal.com, Inc., 3500 South DuPont Highway, Dover, Delaware 19901, USA – prüfen] *oder* [Alternative – vom Unternehmen zu entscheiden].",
-                "**Daten:** Name, E-Mail, Telefon (optional), gewählter Termin und Termintyp (Showroom, Video, Hausbesuch, Küchenplanung), Ihre Notiz, Zeitzone; Bestätigungs- und Erinnerungsmails.",
-                "**Zweck:** Vereinbarung und Durchführung des Termins. Die Buchung wird automatisch als Anfrage in unser Backoffice übernommen (siehe 5.1).",
-                "**Rechtsgrundlage:** Art. 6 Abs 1 lit b DSGVO. Das Laden des Buchungskalenders setzt Daten des Anbieters ein; wir laden ihn daher erst nach Ihrem Klick bzw. Ihrer Einwilligung (§ 165 Abs 3 TKG 2021).",
-                "**Speicherdauer:** beim Anbieter [6] Monate nach dem Termin [vom Unternehmen festzulegen, Löschung im Konto einrichten]; im Backoffice wie 5.1.",
-                "**Drittland:** [USA: DPF-Zertifizierung prüfen; sonst SCC] – *Achtung: Laut Drittquellen wird die EU-Instanz cal.eu zum 01.11.2026 eingestellt; vor Vertragsschluss schriftlich bestätigen lassen.*",
-                "Erinnerungen per E-Mail/SMS sind **reine Terminhinweise**, keine Werbung.",
+                "**Anbieter:** kein externer Kalenderdienst. Der Kalender läuft auf unserem eigenen Server (src/lib/booking), die Termine verwaltet unser Backoffice (Frappe; Inhaber-Entscheidung Nr. 12). Cal.com wird nicht eingesetzt.",
+                "**Daten:** Terminart und Zeitpunkt, Vorname, Nachname, E-Mail-Adresse, freiwillig Telefonnummer und Anliegen; bei Terminen vor Ort zusätzlich Telefonnummer, Postleitzahl und Ort; bei Videoberatung die Einwilligung mit Zeitpunkt und Textversion.",
+                "**Bestätigung:** Bestätigungslink per E-Mail (Double-Opt-in); bis zum Klick ist die Uhrzeit 30 Minuten vorgemerkt, danach verfällt die Vormerkung und die Angaben werden spätestens einen Tag später gelöscht. Gespeichert wird nur ein Prüfwert des Links. Ändern und Absagen über einen signierten Link, der bis zum Terminende gilt; der Schlüssel steht hinter dem „#“ der Adresse und erreicht die Server-Protokolle nicht.",
+                "**Zweck und Rechtsgrundlage:** Vereinbarung und Durchführung des Termins (Art. 6 Abs 1 lit b DSGVO). Termin-Mails (Bestätigung, Änderung, Absage) sind reine Terminhinweise, keine Werbung. Missbrauchsschutz: kurzfristige Begrenzung je IP- und E-Mail-Adresse, nur im Arbeitsspeicher (Art. 6 Abs 1 lit f).",
+                "**Empfänger:** Backoffice (Frappe) als Auftragsverarbeiter; Termin-Mails über Resend (5.18/E-Mail-Versand).",
+                "**Speicherdauer:** bis der Termin stattgefunden hat und solange mit Rückfragen zu rechnen ist; bei Auftrag gesetzliche Fristen (7 Jahre, § 132 BAO). Dieselbe Formel wie in 5.1 (freigegeben); eine feste Frist in Monaten kann das Unternehmen nachtragen, sobald das Backoffice sie technisch hält.",
               ],
             },
-            { label: "Rechtspaket 00, W9", note: "Nicht mit der EU-Region von Cal.com planen, bis Cal.com schriftlich etwas anderes bestätigt [prüfen]. Der Abschnitt bleibt anbieterneutral, bis entschieden ist." },
+            { label: "Umsetzung", note: "Wortlaut identisch mit dem Ergänzungsabschnitt #termin (dseErgaenzungen.js, TerminAbschnitt). In Produktion erscheint der Kalender erst mit freigegebenem Abschnitt (src/lib/booking/config.js, DSE-Sperre)." },
           ],
         },
         {
@@ -280,12 +288,12 @@ const DATENSCHUTZ = {
           blocks: [
             {
               ul: [
-                "**Dienst:** [Microsoft Teams / Google Meet / Cal Video (Daily.co, USA) / Whereby (Norwegen) – vom Unternehmen zu entscheiden].",
-                "**Daten:** Name, E-Mail, Bild und Ton während des Gesprächs, gezeigte Räume, Chat, technische Verbindungsdaten (IP, Gerät).",
-                "**Rechtsgrundlage:** Art. 6 Abs 1 lit b DSGVO.",
+                "**Dienst:** der Videoraum unseres Backoffice-Systems (Frappe; Inhaber-Entscheidung Nr. 12 „Frappe Webconference“; der Raum-Link kommt aus dem Backoffice, src/lib/booking/adapters/frappe.js). Kein externer Videodienst, keine App, kein Konto. Der Link steht ab 15 Minuten vor Beginn nur auf der Terminseite, nie in E-Mails oder Kalendereinträgen.",
+                "**Daten:** der Name, den Sie eingeben, Bild und Ton während des Gesprächs, gezeigte Räume, technische Verbindungsdaten (IP-Adresse, Browser, Gerät).",
+                "**Rechtsgrundlage:** Art. 6 Abs 1 lit b DSGVO (gebuchte Beratung) und Ihre ausdrückliche Einwilligung zur Live-Übertragung (Art. 6 Abs 1 lit a), freiwillig; ohne sie Termin im Studio oder am Telefon. Widerruf per E-Mail, Absage oder Wechsel ins Studio.",
                 "**Keine Aufzeichnung.** Wir zeichnen Gespräche nicht auf. Screenshots von Räumen machen wir nur, wenn Sie das im Gespräch ausdrücklich erlauben, und behandeln sie wie Raumfotos (5.11).",
                 "**Tipp:** Sie können die Kamera ausschalten oder einen Hintergrund verwenden; zeigen Sie keine Dokumente oder Personen, die nicht teilnehmen.",
-                "**Drittland/Auftragsverarbeitung:** [je nach Dienst ergänzen].",
+                "**Drittland/Auftragsverarbeitung:** keine Übermittlung an einen Videodienst-Anbieter; es gilt der Betreiber des Backoffice als Auftragsverarbeiter (5.1). Verbindungsdaten des Videoraums bewahren wir nur so lange auf, wie es für Sicherheit und Fehlersuche nötig ist.",
               ],
             },
           ],
@@ -298,8 +306,8 @@ const DATENSCHUTZ = {
           blocks: [
             {
               ul: [
-                "Wenn Sie uns über den WhatsApp-Link schreiben, nutzen Sie den Dienst von **WhatsApp Ireland Limited**, Merrion Road, Dublin 4, Irland (Teil von Meta). WhatsApp verarbeitet Ihre Nummer, Ihr Profil und Metadaten als eigener Verantwortlicher nach seinen Bedingungen; Inhalte sind Ende-zu-Ende-verschlüsselt [gilt nicht für die WhatsApp Business Platform/Cloud API – dort ergänzen, dass Meta als Auftragsverarbeiter Nachrichten verarbeitet; anwaltlich prüfen].",
-                "**Wir** verarbeiten Ihre Nummer und Ihre Nachrichten, um Ihre Anfrage zu beantworten (Art. 6 Abs 1 lit b). Wir nutzen WhatsApp auf einem eigenen Geschäftsgerät **ohne Abgleich des Adressbuchs** mit anderen Kundendaten. Relevante Inhalte übernehmen wir in unser Backoffice (5.1); den Chat löschen wir nach [12 Monaten] [vom Unternehmen festzulegen].",
+                "Wenn Sie uns über WhatsApp schreiben, nutzen wir die **WhatsApp Business Platform („Cloud API“)** von WhatsApp Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland, und beantworten Nachrichten in unserem Backoffice, nicht über private Handys (Code: src/lib/whatsapp). Für Übermittlung und Zustellung unserer Nachrichten handelt WhatsApp in unserem Auftrag (Art. 28 DSGVO); für Ihr eigenes Konto ist WhatsApp selbst verantwortlich. Eine Ende-zu-Ende-Verschlüsselung bis in unser Backoffice besteht bei der Business Platform nicht; die Schlüssel verwaltet Meta. [anwaltlich prüfen: Rollenverteilung bei der Cloud API]",
+                "**Wir** verarbeiten Ihre Nummer, Ihren Profilnamen, Nachrichten, Anhänge, Zeitpunkte und Zustellstatus, um Ihre Anfrage zu beantworten und sie im Kundensystem abzulegen (Art. 6 Abs 1 lit b). Chats ohne Auftrag bewahren wir auf, bis Ihr Anliegen erledigt ist und nicht mehr mit Rückfragen zu rechnen ist; mit Auftrag wie Geschäftsbriefe (§ 132 BAO, § 212 UGB); technische Protokolle 30 Tage; den Nachweis Ihrer Kanalwahl, solange wir ihn nach Art. 7 Abs 1 DSGVO führen müssen (Wortlaut #whatsapp).",
                 "Werbung per WhatsApp senden wir nur mit Ihrer ausdrücklichen Einwilligung.",
                 "Der Link selbst überträgt beim Anzeigen der Seite keine Daten an WhatsApp. Klicken Sie ihn an, wird (mit Ihrer Statistik-Einwilligung) nur das Ereignis „WhatsApp-Klick“ an Google Analytics gemeldet (5.2).",
                 "Wenn Sie WhatsApp nicht nutzen möchten: Telefon, E-Mail oder Formular.",
@@ -316,24 +324,20 @@ const DATENSCHUTZ = {
             {
               ul: [
                 "**Hinweis:** Sie sprechen mit einem **KI-System**, nicht mit einem Menschen (Art. 50 Abs 1 KI-Verordnung (EU) 2024/1689). Antworten können Fehler enthalten. Verbindlich sind nur Angebote unserer Beraterinnen und Berater.",
-                "**Anbieter des Sprachmodells:** Anthropic [PBC, 548 Market Street, PMB 90375, San Francisco, CA 94104, USA, bzw. Anthropic Ireland, Limited – Vertragspartner laut Commercial Terms prüfen] über die Claude API, *oder* [Amazon Web Services EMEA SARL, Luxemburg, über Amazon Bedrock in der Region Frankfurt (eu-central-1) – Entscheidung nötig, siehe Arbeitspapier 3.3].",
+                "**Anbieter des Sprachmodells:** Anthropic PBC, 548 Market Street, San Francisco, CA 94104, USA, über die Claude API (Code: src/lib/concierge/run.js, Anthropic-SDK; Amazon Bedrock wird nicht eingesetzt) [Vertragspartner laut abgeschlossenem AVV (Anthropic PBC oder Anthropic Ireland, Limited) – vom Unternehmen zu bestätigen].",
                 "**Daten:** Ihre Eingaben, die Antworten, Zeitpunkt, Sprache und die Seite, auf der Sie den Chat geöffnet haben. Wir verlangen keinen Namen. Wenn Sie im Chat um Rückruf oder Angebot bitten, fragen wir nach Name und Kontaktdaten und übergeben das Gespräch als Anfrage an unser Backoffice (5.1).",
                 "**Zweck:** Beantwortung Ihrer Fragen zu Sortiment, Marken, Lieferung, Schweiz-Service und Terminen; Weitergabe an einen Menschen auf Ihren Wunsch.",
-                "**Rechtsgrundlage:** Art. 6 Abs 1 lit b DSGVO (Ihre Anfrage), für die Auswertung zur Qualitätsverbesserung Art. 6 Abs 1 lit f (berechtigtes Interesse an richtigen Antworten), für die Übergabe an das Backoffice Ihre Bitte darum.",
-                "**Cookies:** Der Chat wird von unserem eigenen Server ausgeliefert und setzt keine Cookies [technisch sicherstellen; sonst Consent-Eintrag].",
-                "**Kein Training:** Der Anbieter verwendet Ihre Eingaben nach unserem Vertrag nicht zum Training seiner Modelle. Speicherung beim Anbieter: [laut Anbieter-Dokumentation keine bzw. bis 30 Tage, u. a. zur Missbrauchserkennung – im Vertrag prüfen und konkrete Zahl eintragen].",
-                "**Speicherdauer bei uns:** Chatprotokolle [30 Tage], danach automatische Löschung; übergebene Anfragen wie 5.1.",
+                "**Rechtsgrundlage:** Ihre Einwilligung vor der ersten Nachricht (Art. 6 Abs 1 lit a DSGVO), gespeichert als signiertes Token mit Textversion; Missbrauchsschutz je IP-Adresse Art. 6 Abs 1 lit f. So im Code umgesetzt und von der Kanzlei am 29.10.2026 freigegeben (#ki-concierge); der frühere Entwurf mit lit b/lit f gilt nicht mehr.",
+                "**Cookies:** Der Chat wird von unserem eigenen Server ausgeliefert und setzt keine Cookies; die Einwilligung merkt sich Ihr Browser 12 Stunden im sessionStorage (CONSENT_TTL_MS).",
+                `**Speicherdauer bei uns:** Ohne Ihre eigene Zustimmung speichern wir den Verlauf nicht; mit Zustimmung ohne IP-Adresse, Löschung nach ${CONCIERGE_RETENTION_DAYS} Tagen (RETENTION_DAYS); „Einwilligung widerrufen“ im Chat löscht sofort. Übergebene Anfragen wie 5.1.`,
+                "**Kein Training, Speicherung beim Anbieter:** [laut AVV/Commercial Terms mit Anthropic – vom Unternehmen: Vertrag ablegen, Zusage „kein Training“ und Speicherfrist beim Anbieter eintragen, bevor ANTHROPIC_API_KEY in Produktion gesetzt wird]",
                 "**Bitte keine sensiblen Daten** (Gesundheit, Ausweis- oder Kontonummern) in den Chat eingeben.",
-                "**Drittland:** [Claude API: Übermittlung in die USA; Grundlage Standardvertragsklauseln im Data Processing Addendum von Anthropic; DPF-Zertifizierung nicht verifiziert – prüfen] / [Bedrock EU: Verarbeitung in der EU; Zugriff aus den USA im Supportfall möglich, AWS ist DPF-zertifiziert – prüfen].",
-                "**Widerspruch:** gegen die Auswertung zur Qualitätsverbesserung jederzeit (Abschnitt 6).",
+                "**Drittland:** Übermittlung an die Anthropic PBC in die USA; freigegebener Wortlaut: „In den USA besteht nicht in jedem Fall ein Datenschutzniveau wie in der EU“, Grundlage Ihre Einwilligung (Art. 49 Abs 1 lit a) [DPF-Eintrag von Anthropic und Standardvertragsklauseln im DPA – vom Unternehmen zu prüfen und abzulegen].",
               ],
             },
             {
-              label: "Stand der Umsetzung (Labs) – weicht vom Entwurf ab",
-              note: [
-                `Der Labs-Prototyp (concierge.md, „Rechtliches“) fragt vor der ersten Übermittlung eine **Einwilligung** ab (Art. 6 Abs 1 lit a, signiertes Token mit Version), nennt als Empfänger **Anthropic PBC, USA**, als Auftragsverarbeiter, mit Drittlandübermittlung auf Grundlage des EU-US Data Privacy Framework bzw. von Standardvertragsklauseln. Ein Verlauf wird nur mit eigener Checkbox gespeichert, **ohne IP-Adresse**, und nach **${CONCIERGE_RETENTION_DAYS} Tagen** gelöscht (src/lib/concierge/config.js). „Einwilligung widerrufen“ im Chat löscht den gespeicherten Verlauf der Sitzung sofort.`,
-                "Der Entwurf oben nennt dagegen lit b/lit f, Chatprotokolle 30 Tage (auch Rechtspaket 00, Abschn. 4.6) und empfiehlt für die Produktion Amazon Bedrock mit EU-Inferenzprofil (00, W12). [anwaltlich prüfen: Rechtsgrundlage, Löschfrist und Anbieter vereinheitlichen, bevor der Concierge außerhalb von Labs läuft; AVV/DPA mit dem Anbieter inkl. Zero-Data-Retention prüfen]",
-              ],
+              label: "Umsetzung",
+              note: "Der Abschnitt entspricht seit 02.11.2026 dem Code (src/lib/concierge/config.js, retention.js) und dem freigegebenen Live-Text #ki-concierge. Kunden sehen den Concierge nur, wenn ANTHROPIC_API_KEY gesetzt ist (conciergeLive); Inhaber-Entscheidung Nr. 11: Schlüssel erst nach abgelegtem AVV.",
             },
           ],
         },
@@ -363,6 +367,7 @@ const DATENSCHUTZ = {
           module: true,
           title: "Bestellungen, Gutscheine, Outlet, Anzahlungen und Zahlung",
           blocks: [
+            { label: "Gilt ab Freischaltung des Onlineshops", note: "Online-Zahlung und Versand laufen nur im Shop-Testmodus (SHOP_MODE=test, Stripe-Testschlüssel, LetMeShip-Test-API). Der dafür vorbereitete Datenschutz-Wortlaut steht in src/lib/shop/legalTexte.js (/de/shop/recht/datenschutz) und wird mit der Freischaltung hierher übernommen. PayPal, TWINT und Klarna sind im Code nicht angebunden." },
             {
               ul: [
                 "**Daten:** Name, Rechnungs- und Lieferadresse, E-Mail, Telefon, Bestellinhalt, Preis, Zahlungsart und -status, bei Gutscheinen ggf. Name und E-Mail des Beschenkten und Ihr Grußtext; Gutscheincode und Restwert.",
@@ -432,7 +437,7 @@ const DATENSCHUTZ = {
           num: "5.16",
           title: "Unsere Auftritte in sozialen Netzwerken",
           blocks: [
-            "Wir betreiben Seiten auf Instagram und Facebook [weitere: Pinterest, LinkedIn – vom Unternehmen auszufüllen]. Für die Seiten-Statistiken („Insights“) sind wir mit Meta gemeinsam verantwortlich (EuGH C-210/16 *Wirtschaftsakademie*; Page Insights Controller Addendum von Meta). Wenn Sie uns dort Nachrichten schreiben, verarbeiten wir diese zur Beantwortung (Art. 6 Abs 1 lit b bzw. f). Für alles Weitere gilt die Datenschutzerklärung des jeweiligen Netzwerks.",
+            `Wir betreiben Profile auf ${SOCIAL_LINE} (Quelle: src/lib/site.js; die Website verlinkt sie nur, ohne Plugins). Für die Seiten-Statistiken („Insights“) sind wir mit Meta gemeinsam verantwortlich (EuGH C-210/16 *Wirtschaftsakademie*; Page Insights Controller Addendum von Meta). Wenn Sie uns dort Nachrichten schreiben, verarbeiten wir diese zur Beantwortung (Art. 6 Abs 1 lit b bzw. f). Für alles Weitere gilt die Datenschutzerklärung des jeweiligen Netzwerks.`,
           ],
         },
         {
@@ -467,7 +472,7 @@ const DATENSCHUTZ = {
                 `**Anmeldung per E-Mail-Link:** Sie melden sich ohne Passwort an. Wir senden einen Anmeldelink an die E-Mail-Adresse, die Sie bei uns hinterlegt haben. Der Link ist ${MAGIC_LINK_MINUTES} Minuten gültig und funktioniert nur einmal. Gespeichert werden dafür nur ein Prüfwert des Links (kein Klartext), Ihre Kundennummer und der Ablaufzeitpunkt. Ist eine Adresse nicht bei uns hinterlegt, wird kein Link erzeugt.`,
                 `**Cookie:** Nach der Anmeldung setzen wir das Cookie \`ph_portal_session\`. Es enthält eine signierte Sitzungskennung und Ihre Kundennummer, ist für Skripte nicht lesbar (HttpOnly), wird nur über HTTPS übertragen und läuft nach ${SESSION_DAYS} Tagen ab oder wenn Sie sich abmelden. Es ist technisch notwendig; dafür ist keine Einwilligung erforderlich (§ 165 Abs 3 TKG 2021, § 25 Abs 2 TDDDG). Im Portal setzen wir keine Analyse- oder Marketing-Cookies.`,
                 "**Rechtsgrundlagen:** Vertrag und vorvertragliche Maßnahmen (Art. 6 Abs 1 lit b DSGVO) für Anmeldung, Anzeige Ihrer Projektdaten, Rückmeldungen, Nachrichten und Anfragen; Einwilligung (Art. 6 Abs 1 lit a) für Sprachnachrichten, jederzeit mit Wirkung für die Zukunft widerrufbar; berechtigtes Interesse (Art. 6 Abs 1 lit f) für den Schutz vor Missbrauch, z. B. eine kurzzeitige Begrenzung der Anmeldeversuche pro IP-Adresse und E-Mail-Adresse (nur im Arbeitsspeicher des Servers, nicht dauerhaft gespeichert).",
-                `**Empfänger:** ${RECIPIENTS.join("; ")}. [Hosting-Anbieter und E-Mail-Versanddienstleister – vom Unternehmen auszufüllen]`,
+                `**Empfänger:** ${RECIPIENTS.join("; ")}. E-Mail-Versanddienstleister ist Resend, USA (freigegebener Abschnitt E-Mail-Versand). [Hosting-Anbieter von Website und Backoffice – vom Unternehmen auszufüllen]`,
                 `**Speicherdauer:** Portalkonto und Projektdaten ${ACCOUNT_RETENTION}. Kommentare, Markierungen, Bewertungen, Freigaben und Nachrichten ${FEEDBACK_RETENTION}. Sprachnachrichten: Löschung ${VOICE_RETENTION}, früher auf Ihren Wunsch oder bei Widerruf der Einwilligung. Rechnungen: 7 Jahre (§ 132 BAO).${ownerNote}`,
                 "**Visualisierungen mit KI:** Einzelne Planungsbilder erstellen oder bearbeiten wir mit KI. Sie sind im Portal als „KI-generiert“ gekennzeichnet (Art. 50 KI-Verordnung) und nicht maßstäblich.",
                 "**Ihre Rechte:** wie Abschnitt 6. Die Daten Ihrer Produktpässe können Sie im Portal maschinenlesbar herunterladen (JSON).",
@@ -475,7 +480,7 @@ const DATENSCHUTZ = {
             },
             {
               label: "Hinweis zur Vorschau",
-              note: "Das Portal hat schon eine eigene Seite /de/portal/datenschutz mit denselben Werten (kundenportal.md, P1-4). Der Text hier folgt ihr. [anwaltlich prüfen: Portal-Seite und allgemeine Erklärung zusammenführen oder hier nur kurz fassen und verlinken; die Portal-Seite nennt als Datenschutzkontakt info@ statt datenschutz@ (Entwurf D13)]",
+              note: "Das Portal hat schon eine eigene Seite /de/portal/datenschutz mit denselben Werten (kundenportal.md, P1-4). Der Text hier folgt ihr; Datenschutzkontakt ist durchgängig die allgemeine Adresse (freigegeben). [anwaltlich prüfen: Portal-Seite und allgemeine Erklärung zusammenführen oder hier nur kurz fassen und verlinken]",
             },
           ],
         },
@@ -497,7 +502,7 @@ const DATENSCHUTZ = {
                 "**Bitte beachten:** Nehmen Sie keine Personen ohne deren Einverständnis auf. Eine KI-Auswertung der Uploads findet nicht statt.",
               ],
             },
-            { label: "Hinweis zur Vorschau", note: "Die Einwilligung im Upload ist heute als Kurzsatz mit aufklappbarem Volltext umgesetzt (src/components/Upload/ConsentText.js, Version " + UPLOAD_CONSENT_VERSION + "). [anwaltlich prüfen: Einwilligung oder Art. 6 Abs 1 lit b wie beim Raumplaner (5.11)]" },
+            { label: "Hinweis zur Vorschau", note: "Die Einwilligung im Upload ist als Kurzsatz mit aufklappbarem Volltext umgesetzt (src/components/Upload/ConsentText.js, Version " + UPLOAD_CONSENT_VERSION + "). Rechtsgrundlage Einwilligung (lit a) von der Kanzlei am 29.10.2026 mit dem Live-Text #upload freigegeben." },
           ],
         },
         {
@@ -512,7 +517,7 @@ const DATENSCHUTZ = {
                 "**Daten:** Ihre Planung (Raummaße, Module, Materialien), bei der Küche auf Wunsch ein Bild der 3D-Ansicht, beim Sofa ein frei wählbarer Planname. Bei einer Anfrage zusätzlich Name, E-Mail, Telefon und Ihre Nachricht. Zur Missbrauchsabwehr verarbeiten wir Ihre IP-Adresse kurzzeitig, und zwar nur als verkürzten Hashwert für höchstens 10 Minuten.",
                 "**Zweck:** die Planung berechnen und anzeigen, einen Teilen-Link erzeugen und Ihre Anfrage bearbeiten.",
                 "**Rechtsgrundlage:** Art. 6 Abs 1 lit b DSGVO (Anfrage, vorvertragliche Maßnahme). Für die Missbrauchsabwehr Art. 6 Abs 1 lit f (berechtigtes Interesse an einem stabilen Betrieb).",
-                "**Speicherort und Empfänger:** Die Planung wird im Browser berechnet. Gespeicherte Planungen und Teilen-Links liegen auf unserem Server [Hoster – vom Unternehmen auszufüllen]. Kontaktdaten gehen wie in 5.1 an das Backoffice (Frappe/ERPNext). Die Drosselzähler liegen bei [Redis-Anbieter, Region – vom Unternehmen auszufüllen, Auftragsverarbeitung].",
+                "**Speicherort und Empfänger:** Die Planung wird im Browser berechnet. Gespeicherte Planungen und Teilen-Links liegen auf unserem Server [Hoster – vom Unternehmen auszufüllen]. Kontaktdaten gehen wie in 5.1 an das Backoffice (Frappe/ERPNext). Die Drosselzähler liegen nur im Arbeitsspeicher unseres Servers (src/lib/forms/rateLimit.js); ein externer Zwischenspeicher (Redis) ist nicht konfiguriert.",
                 "**Speicherdauer:** Gespeicherte Planungen, Bilder und Teilen-Links löschen wir nach 180 Tagen automatisch. Für die Anfrage selbst gilt die Frist aus 5.1.",
                 "**Teilen-Links:** Wer den Link kennt, kann die Planung sehen. Bitte tragen Sie keine persönlichen Daten als Plannamen ein.",
                 "**Im Browser:** Der Sofa-Modulplaner speichert Ihren Entwurf und Ihre Merkliste im Local Storage Ihres Browsers. Das ist eine von Ihnen ausgelöste Funktion (§ 165 Abs 3 TKG 2021).",
@@ -533,7 +538,7 @@ const DATENSCHUTZ = {
       source: "02, Abschn. 2.6",
       blocks: [
         "Sie haben das Recht auf **Auskunft** (Art. 15), **Berichtigung** (Art. 16), **Löschung** (Art. 17), **Einschränkung** (Art. 18), **Datenübertragbarkeit** (Art. 20) und **Widerruf** erteilter Einwilligungen (Art. 7 Abs 3). Sie können der Verarbeitung auf Grundlage berechtigter Interessen aus Gründen Ihrer besonderen Situation **widersprechen** (Art. 21 Abs 1) und der Verarbeitung für Direktwerbung **jederzeit ohne Begründung** (Art. 21 Abs 2).",
-        "Schreiben Sie an datenschutz@platzhirsch.studio oder an die Postadresse oben. Wir antworten innerhalb eines Monats (Art. 12 Abs 3) und prüfen ggf. Ihre Identität.",
+        "Schreiben Sie an " + EMAIL + " oder an die Postadresse oben. Wir antworten innerhalb eines Monats (Art. 12 Abs 3) und prüfen ggf. Ihre Identität.",
         "**Beschwerde bei einer Aufsichtsbehörde** (Art. 77 DSGVO), insbesondere in Ihrem Wohnsitzland:",
         {
           ul: [
@@ -554,7 +559,7 @@ const DATENSCHUTZ = {
         {
           ul: [
             "Wir bearbeiten Ihre Personendaten nach der DSGVO und, soweit anwendbar, nach dem Bundesgesetz über den Datenschutz (DSG, SR 235.1).",
-            "**Länder, in die Daten bekanntgegeben werden** (Art. 19 Abs 4 DSG): EU/EWR (insbesondere Österreich, Irland, Frankreich, Deutschland, Luxemburg) und die USA [ergänzen je nach aktiven Diensten: Google, Meta, Cal.com, Anthropic/AWS, Stripe]. Für die EU/den EWR besteht nach Anhang 1 der Datenschutzverordnung (DSV) ein angemessenes Schutzniveau; für die USA nur bei Empfängern, die nach dem Swiss-US Data Privacy Framework zertifiziert sind (seit 15.09.2024); im Übrigen stützen wir uns auf die vom EDÖB anerkannten Standardvertragsklauseln der EU-Kommission mit Schweizer Anpassungen (Art. 16 Abs 2 lit d DSG) oder Ihre Einwilligung (Art. 17 Abs 1 lit a DSG).",
+            "**Länder, in die Daten bekanntgegeben werden** (Art. 19 Abs 4 DSG): EU/EWR (insbesondere Österreich und Irland) und die USA – nach den heute angebundenen Diensten: Google (Maps, Analytics), Anthropic (KI-Concierge), Resend (E-Mail-Versand); mit WhatsApp-Beratung zusätzlich Meta, mit Onlineshop zusätzlich Stripe. Für die EU/den EWR besteht nach Anhang 1 der Datenschutzverordnung (DSV) ein angemessenes Schutzniveau; für die USA nur bei Empfängern, die nach dem Swiss-US Data Privacy Framework zertifiziert sind (seit 15.09.2024); im Übrigen stützen wir uns auf die vom EDÖB anerkannten Standardvertragsklauseln der EU-Kommission mit Schweizer Anpassungen (Art. 16 Abs 2 lit d DSG) oder Ihre Einwilligung (Art. 17 Abs 1 lit a DSG).",
             "Ihre Rechte nach Art. 25–29 und 32 DSG (Auskunft, Datenherausgabe, Berichtigung, Löschung, Widerspruch) können Sie bei uns geltend machen; Beschwerde/Anzeige beim EDÖB.",
           ],
         },

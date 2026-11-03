@@ -51,7 +51,8 @@ export default function RatgeberArticle({ article }) {
   const brands = relatedBrandLinks(article.relatedBrands);
 
   return (
-    <article className="bg-surface text-text">
+    // Druck 02.11.: Papier bleibt weiß.
+    <article className="bg-surface text-text print:bg-white">
       {/* QM r3 (1920 px): gutter inside max-w-page like ui/Container (logo line). */}
       <header className="pt-10 pb-10 md:pt-14 lg:pt-16 lg:pb-14">
         <div className="mx-auto max-w-page px-gutter">
@@ -166,7 +167,7 @@ export default function RatgeberArticle({ article }) {
               </TerminCta>
             </div>
 
-            <p className="mt-10 text-small text-text-soft">
+            <p className="mt-10 text-small text-text-soft print:hidden">
               <Link href="/ratgeber" className={linkClass}>
                 Alle Ratgeber
               </Link>

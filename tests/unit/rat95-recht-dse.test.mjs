@@ -8,7 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { DSE_FREIGEGEBEN, DSE_SECTIONS, DSE_SECTION_IDS, dseApproved, dseGateOpen, dseOpenSections, dseRenderMode } from "../../src/lib/legal/dseSections.js";
+import { DSE_FREIGEGEBEN, DSE_SECTIONS, DSE_SECTION_IDS, dseApproved, dseGateOpen, dseOpenSections, dsePublicSections, dseRenderMode } from "../../src/lib/legal/dseSections.js";
 import { DSE_FEATURES, anchorsInHtml, missingDseSections } from "../../src/lib/legal/dseFeatures.js";
 import { terminMode } from "../../src/lib/booking/config.js";
 import { ideenboardShareAvailable } from "../../src/lib/ideenboard/mode.js";
@@ -45,7 +45,9 @@ test("Sperre: Produktion nur freigegeben, Entwicklung immer; Darstellung live/en
     assert.equal(dseGateOpen(id, DEV), true, id);
     assert.equal(dseGateOpen(id, PROD), dseApproved(id), id);
     assert.equal(dseGateOpen(id, PROD, ok), true, id);
-    assert.equal(dseRenderMode(id, PROD), dseApproved(id) ? "live" : null, id);
+    // 02.11.2026: Abschnitte mit `oeffentlich` (Funktion ohne Schalter) erscheinen
+    // auch in Produktion ohne Freigabe – nur mit „Stand“, ohne Entwurfsvermerk.
+    assert.equal(dseRenderMode(id, PROD), dseApproved(id) ? "live" : DSE_SECTIONS[id].oeffentlich ? "entwurf" : null, id);
     assert.equal(dseRenderMode(id, DEV), dseApproved(id) ? "live" : "entwurf", id);
   }
   assert.throws(() => dseGateOpen("gibtsnicht", PROD));
@@ -109,12 +111,17 @@ test("Release-Test: Anker der freigegebenen Fassung decken die Grundfunktionen",
   for (const f of DSE_FEATURES.filter((x) => !x.section)) assert.ok(ids.has(f.anchor), `#${f.anchor} (${f.feature})`);
 });
 
-test("Release-Test: Produktion heute – gesperrte Funktionen aus, offen nur die ohne Schalter", () => {
+test("Release-Test: Produktion heute – gesperrte Funktionen aus, Funktionen ohne Schalter mit Abschnitt", () => {
   const ids = LIVE_ANCHORS();
+  // Ohne eigenen Schalter immer aktiv: ohne ihre Abschnitte meldet der prod-check sie …
   const missing = missingDseSections(PROD, ids).map((m) => m.anchor);
-  // Ohne eigenen Schalter immer aktiv → prod-check schlägt fehl, bis die Kanzlei
-  // die Abschnitte freigibt (bewusst: Abnahme T5, Release-Gate).
   assert.deepEqual(missing.sort(), ["ar-ansicht", "service-anfragen"]);
+  // … deshalb rendert /datenschutz sie seit 02.11.2026 auch in Produktion (oeffentlich).
+  const pub = dsePublicSections();
+  assert.deepEqual(pub.sort(), ["ar", "serviceAnfragen"]);
+  for (const id of pub) assert.equal(dseRenderMode(id, PROD), "entwurf", id);
+  const rendered = new Set([...ids, ...pub.map((id) => DSE_SECTIONS[id].anchor)]);
+  assert.deepEqual(missingDseSections(PROD, rendered), []);
   // Mit Freigabe und gerendertem Anker: nichts offen
   const all = new Set([...ids, ...DSE_SECTION_IDS.map((id) => DSE_SECTIONS[id].anchor)]);
   assert.deepEqual(missingDseSections(PROD, all), []);

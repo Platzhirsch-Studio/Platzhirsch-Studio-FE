@@ -42,6 +42,7 @@ import { UploadHandoff, handoffAfterSend, prefetchHandoff } from "@/components/F
 import SelfReportField from "@/components/Forms/SelfReportField";
 import FormField, { RadioCards } from "@/components/Forms/FormField";
 import FormPrivacyNote from "@/components/Forms/FormPrivacyNote";
+import { WIDERRUF_PATH, widerrufHinweis } from "@/lib/legal/widerruf";
 import Honeypot from "@/components/Forms/Honeypot";
 import { FormAlert } from "@/components/Forms/FormAlert";
 import Confirmation from "@/components/Beratung/Confirmation";
@@ -704,6 +705,15 @@ export function BeratungForm({ context = null, produkt = null, boardCount = null
             </Button>
           </div>
           {step === TOTAL && <FormPrivacyNote />}
+          {/* Inhaber 03.11.2026: Hinweis auf die Widerrufsbelehrung (FAGG) – ein Satz mit Link, Ablauf unverändert. */}
+          {step === TOTAL && (
+            <p className="mt-2 max-w-measure text-small text-text-soft" data-beratung-widerruf="">
+              {widerrufHinweis(locale).text}{" "}
+              <a href={`/${locale}${WIDERRUF_PATH}`} className="underline underline-offset-4 text-text">
+                {widerrufHinweis(locale).link}
+              </a>
+            </p>
+          )}
         </form>
       </div>
       {/* QM r3 (iPad quer): the aside starts one column earlier below 90 rem (100 px gap

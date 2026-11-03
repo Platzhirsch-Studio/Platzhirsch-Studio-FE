@@ -6,8 +6,9 @@ export const DRUCK_ROWS = [
   ["Zurück zum Planer", "Back to the planner", "Retour au planificateur", "Tornare al configuratore"],
   ["Drucken / als PDF speichern", "Print / save as PDF", "Imprimer / enregistrer en PDF", "Stampare / salvare come PDF"],
   ["Küchenplanung · Platzhirsch Home Living", "Kitchen planning · Platzhirsch Home Living", "Projet de cuisine · Platzhirsch Home Living", "Progettazione cucina · Platzhirsch Home Living"],
-  ["Ihre Küche – Planungsübersicht", "Your kitchen – plan overview", "Votre cuisine – vue d’ensemble du projet", "La vostra cucina – panoramica del progetto"],
-  ["Stand {v} · Vorplanung im Browser, kein Angebot. Maße prüfen wir beim Aufmaß.", "As of {v} · preliminary plan made in the browser, not a quote. We check all dimensions during the site survey.", "État au {v} · avant-projet réalisé dans le navigateur, sans valeur d’offre. Nous vérifions les cotes lors du relevé.", "Aggiornato al {v} · progetto preliminare nel browser, non è un’offerta. Le misure le verifichiamo durante il rilievo."],
+  // Druck 03.11.: FR/IT knapper, damit Titel und Stand im Ausdruck einzeilig bleiben (FR/IT liefen auf 4 Seiten)
+  ["Ihre Küche – Planungsübersicht", "Your kitchen – plan overview", "Votre cuisine – vue d’ensemble", "La vostra cucina – panoramica"],
+  ["Stand {v} · Vorplanung im Browser, kein Angebot. Maße prüfen wir beim Aufmaß.", "As of {v} · preliminary plan made in the browser, not a quote. We check all dimensions during the site survey.", "État au {v} · avant-projet dans le navigateur, pas une offre. Cotes vérifiées lors du relevé.", "Aggiornato al {v} · progetto preliminare nel browser, non un’offerta. Misure verificate al rilievo."],
   ["Beispielplanung", "Sample plan", "Projet d’exemple", "Progetto di esempio"],
   ["Zusammenfassung", "Summary", "Récapitulatif", "Riepilogo"],
   ["Grundriss mit Maßen", "Floor plan with dimensions", "Plan coté", "Pianta con misure"],
@@ -23,4 +24,8 @@ export const DRUCK_ROWS = [
   ["Wir prüfen Ihre Planung, messen auf Wunsch vor Ort auf, und Harald Menghin zeichnet Ihr Konzept von Hand.", "We check your plan, measure on site if you wish, and Harald Menghin draws your concept by hand.", "Nous vérifions votre projet, effectuons sur demande un relevé sur place, et Harald Menghin dessine votre concept à la main.", "Verifichiamo il vostro progetto, su richiesta facciamo il rilievo in loco e Harald Menghin disegna il vostro concept a mano."],
   ["Diese Planung online öffnen", "Open this plan online", "Ouvrir ce projet en ligne", "Aprire questo progetto online"],
   ["Planung öffnen:", "Open plan:", "Ouvrir le projet :", "Aprire il progetto:"],
+  // Druck 02.11.: Fußzeile „Seite x / y“ und Fotoansicht im Ausdruck
+  ["Seite", "Page", "Page", "Pagina"],
+  ["von", "of", "sur", "di"],
+  ["Beispielbild, nicht Ihr Raum: Nischen, Fenster und Geräte können abweichen.", "Example image, not your room: niches, windows and appliances may differ.", "Image d’exemple, pas votre pièce : niches, fenêtres et appareils peuvent différer.", "Immagine di esempio, non la vostra stanza: nicchie, finestre ed elettrodomestici possono differire."],
 ];

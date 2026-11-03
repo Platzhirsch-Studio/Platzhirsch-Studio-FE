@@ -314,6 +314,156 @@ main:has([data-upload-scroll], nav[aria-label="Rechtliches"]) ~ [data-shell-lega
   }
 }
 
+/* =========================================================================
+   Druck 02.11. – globales Druck-Stylesheet (PDF-Muster 02.11.2026, Hülle).
+   Gilt für jede Seite ohne eigene Druckvorlage (Ratgeber, Rechner, Vergleich,
+   Newsletter-Archiv, Rechtstexte, Merkliste, Ideenboard …): die Seitenhülle
+   fällt weg, der Inhalt bekommt A4-Ränder, Lesegröße und saubere Umbrüche.
+   Seiten mit eigener Druckvorlage (Ezarri-Blatt, Küchenplaner, Lichtblatt)
+   bringen ihr eigenes @page/@media print mit; die Regeln hier sind so
+   gewählt, dass sie dort nichts kaputt machen (nur Hülle, Typografie, Umbruch).
+   Die Normalansicht bleibt pixelgleich – alles steht unter @media print.
+   ========================================================================= */
+@media print {
+  /* Seite: A4, 18 mm oben, 16 mm seitlich, 20 mm unten (Platz für die Fußzeile).
+     Randboxen (Chromium ≥ 131): Titel und Datum oben, Adresse und Seitenzahl unten.
+     --ph-print-title/-url/-date setzt die Hülle (client-layout.js) beim Seitenwechsel
+     und vor dem Drucken; ohne JS bleiben die Felder leer, der Rest druckt trotzdem. */
+  @page {
+    size: A4;
+    margin: 18mm 16mm 20mm;
+    @top-left {
+      content: var(--ph-print-title, "");
+      font: 8pt var(--font-sans), sans-serif;
+      color: #666;
+      vertical-align: bottom;
+      padding-bottom: 4mm;
+    }
+    @top-right {
+      content: var(--ph-print-date, "");
+      font: 8pt var(--font-sans), sans-serif;
+      color: #666;
+      vertical-align: bottom;
+      padding-bottom: 4mm;
+    }
+    @bottom-left {
+      content: var(--ph-print-url, "platzhirsch.studio");
+      font: 8pt var(--font-sans), sans-serif;
+      color: #666;
+      vertical-align: top;
+      padding-top: 4mm;
+    }
+    @bottom-right {
+      content: "Seite " counter(page) " von " counter(pages);
+      font: 8pt var(--font-sans), sans-serif;
+      color: #666;
+      vertical-align: top;
+      padding-top: 4mm;
+    }
+  }
+
+  /* Hülle: Kopfzeile (HeaderFrame), schlanke Hülle, Fußzeile, jede Navigation
+     (Hauptmenü, Brotkrumen, Ezarri-Leiste, Inhaltsverzeichnisse, Seitenblätter,
+     mobile CTA-Leiste, Sprachumschalter), Cookie-Leiste, Concierge, Next-Dev-Overlay. */
+  header[data-nav-start],
+  header[data-shell="bare"],
+  [data-shell-legal],
+  #site-footer,
+  nav,
+  [data-concierge-launcher],
+  [data-concierge-tab],
+  [data-concierge-gap],
+  [data-consent-bar],
+  nextjs-portal,
+  /* Bedienelemente: primäre Handlungsknöpfe (ui/Button primary, data-cta),
+     Absende-Knöpfe. Formularfelder mit Werten bleiben (Rechner-Eingaben). */
+  main a.bg-action,
+  main button.bg-action,
+  main [data-cta="primary"],
+  main button[type="submit"] {
+    display: none !important;
+  }
+
+  /* Papier: weiß, Fließtext ≈ 11 pt (Body-Token 1,125 rem bei 10 pt Wurzel),
+     kein Platzhalter mehr für die Cookie-Leiste unter dem Inhalt. */
+  html {
+    font-size: 10pt;
+  }
+  body,
+  body:has(#site-footer) {
+    background: #fff !important;
+    padding-bottom: 0 !important;
+    color: #111;
+  }
+  main {
+    overflow: visible !important;
+  }
+  /* Der große Abschnittsabstand am Seitenende (pb-section, 11 rem) erzeugte
+     hinter dem letzten Absatz ein fast leeres Blatt – im Druck entfällt er. */
+  .pb-section {
+    padding-bottom: 0 !important;
+  }
+  /* Schmale Textcontainer (Rechtstexte-Kopf) stehen auf dem Blatt linksbündig
+     zum Fließtext statt zentriert (sonst springt die Textkante um ~1 cm). */
+  main .max-w-text {
+    margin-inline: 0 !important;
+  }
+
+  /* Umbrüche: Überschriften bleiben bei ihrem Absatz, Bilder/Tabellenzeilen/
+     Kästen werden nicht zerschnitten, keine Hurenkinder/Schusterjungen. */
+  /* Druck 02.11.: ohne dt – bei langen Definitionslisten (Produktpass) kettete
+     break-after:avoid alle Zeilen aneinander und ließ Seite 1 leer. */
+  h1, h2, h3, h4, h5, h6, legend {
+    break-after: avoid;
+    break-inside: avoid;
+  }
+  dt {
+    break-inside: avoid;
+  }
+  p, li, dd, blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+  figure, img, svg, picture, video, canvas, table, pre, blockquote, aside, tr, th, td, dl > div, fieldset {
+    break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tfoot {
+    display: table-footer-group;
+  }
+  /* Bilder nie höher als zwei Drittel der Seite. */
+  main img, main video, main canvas, main picture {
+    max-height: 160mm;
+  }
+
+  /* Klebende Leisten/Spalten laufen im Druck einfach mit (sonst Überdeckung). */
+  .sticky, [class*=":sticky"] {
+    position: static !important;
+  }
+  /* Scroll-Reveal: im Druck gibt es keinen Scroll – alles sichtbar, nichts verschoben. */
+  .reveal, .ph-reveal, .ph-horizon__line {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  /* Links: externe Ziele bekommen ihre Adresse (Quellenangabe), interne nicht;
+     Unterstreichung bleibt, Farbe wie Text. */
+  a {
+    color: inherit;
+  }
+  main a[href^="http"]:not([href*="platzhirsch.studio"])::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    font-weight: 400;
+    color: #555;
+    word-break: break-all;
+  }
+}
+
 @layer components {
   /* Display type. Weight comes from the text-display-* token when used
      together; on its own (legacy markup) Bodoni gets 500 so it holds up on

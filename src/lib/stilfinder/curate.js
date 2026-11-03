@@ -106,6 +106,8 @@ const identity = (x) => x;
 export function typoQuotes(name) {
   return String(name ?? "")
     .replace(/["“”]([^"“”]+)["“”]/g, "„$1“")
+    // Druck 02.11.: Bindestrich mit Leerzeichen ("Calum - Home") → Gedankenstrich
+    .replace(/\s-\s/g, " – ")
     .replace(/\s{2,}/g, " ")
     .trim();
 }

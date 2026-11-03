@@ -4,13 +4,25 @@
 // Address, phone, e-mail and social profiles from src/lib/site.js; register
 // data from the same draft (see ../company.js).
 import { DOMAIN, EMAIL, EMAIL_HREF, PHONE_DISPLAY, PHONE_HREF, REGISTER, SITE_NAME, SOCIAL_LINE, STREET_LINE } from "../company";
+import { LEGAL_NAME } from "@/lib/site";
+
+// Belegte Unternehmensangaben (02.11.2026), wörtlich wie auf der Live-Seite
+// src/components/Impressum/impressum.js (CHAMBER, SHAREHOLDERS, REGISTER.purpose).
+// Die Komponente lässt sich in node --test nicht laden (JSX), deshalb stehen die
+// Werte hier noch einmal; Änderungen zuerst dort, dann hier nachziehen.
+const BELEGT = {
+  kammer: "Mitglied der Wirtschaftskammer Vorarlberg: Fachgruppe Gastronomie, Landesgruppe Elektro- und Einrichtungsfachhandel",
+  kammerQuelle: "WKO Firmen A–Z, Eintrag MW Immobilienverwaltungs GmbH, abgerufen am 30.10.2026",
+  beteiligungen: "Beteiligungsverhältnisse: Susanne Messmer 50 %, Andreas Wegscheider 50 %",
+  beteiligungenQuelle: "firmenabc.at (Creditreform/Firmenbuch), vom Inhaber übermittelt am 30.10.2026",
+};
 
 const IMPRESSUM = {
   slug: "impressum",
   title: "Impressum",
   navLabel: "Impressum",
   livePath: "/impressum",
-  lead: "Neues Impressum mit allen Pflichtangaben nach ECG, UGB und Offenlegung nach MedienG – Variante A für den heutigen Rechtsträger.",
+  lead: "Impressum mit allen Pflichtangaben nach ECG, UGB und Offenlegung nach MedienG – Variante A für den heutigen Rechtsträger. Stand 02.11.2026: belegte Unternehmensangaben (Kammer, Beteiligungen, Gegenstand) eingetragen; offen sind nur noch Angaben, die das Unternehmen oder die Kanzlei liefert.",
   sources: ["Marktresearch/recht/04-impressum-pflichtangaben.md, Abschnitt 5 (Variante A) und Abschnitt 1 (Ist-Analyse)", "Marktresearch/recht/00-rechtspaket-uebersicht.md, W1 (Hausnummer), W14 (Vertragspartner)"],
   version: "Informationen nach § 5 E-Commerce-Gesetz (ECG), § 14 Unternehmensgesetzbuch (UGB) und Offenlegung nach § 25 Mediengesetz (MedienG)",
   knownErrors: [
@@ -59,7 +71,7 @@ const IMPRESSUM = {
       num: "4",
       title: "Unternehmensgegenstand",
       source: "04, Abschn. 5, Variante A",
-      blocks: ["Handel mit Möbeln, Küchen, Leuchten und Wohnaccessoires, Einrichtungsplanung; Betrieb eines Cafés; Immobilienverwaltung [vom Unternehmen auszufüllen: laut GISA/Gesellschaftsvertrag]"],
+      blocks: ["Einrichtungsfachhandel, Gastgewerbe (Café), Immobilienverwaltung (laut Firmenbuchauszug; so auch auf der Live-Seite /impressum)."],
     },
     {
       id: "gewerberecht",
@@ -69,8 +81,8 @@ const IMPRESSUM = {
       blocks: [
         {
           ul: [
-            "Gewerbeberechtigungen: [vom Unternehmen auszufüllen: z. B. Handelsgewerbe; Gastgewerbe in der Betriebsart …; ggf. Immobilientreuhänder (Immobilienverwalter)], Standort 6911 Lochau",
-            "Mitglied der Wirtschaftskammer Vorarlberg, [vom Unternehmen auszufüllen: Sparte Handel – Landesgremium …; Sparte Tourismus und Freizeitwirtschaft – Fachgruppe Gastronomie; ggf. Sparte Information und Consulting – Fachgruppe Immobilien- und Vermögenstreuhänder]",
+            "Gewerbeberechtigungen laut WKO Firmen A–Z (30.10.2026): Einrichtungsfachhandel (Berufszweig Einrichtungsfachhandel) und Gastgewerbe (Berufszweig Kaffeehäuser), Standort 6911 Lochau",
+            `${BELEGT.kammer} (Quelle: ${BELEGT.kammerQuelle})`,
             "Anwendbare Rechtsvorschriften: Gewerbeordnung 1994, abrufbar unter [www.ris.bka.gv.at](https://www.ris.bka.gv.at)",
             `Gewerbebehörde/Aufsichtsbehörde: ${REGISTER.authority}`,
             "[Nur falls zutreffend: Berufsbezeichnung … , verliehen in Österreich]",
@@ -87,8 +99,8 @@ const IMPRESSUM = {
       blocks: [
         {
           ul: [
-            `Medieninhaber: ${REGISTER.legalName}, Sitz ${REGISTER.seat} (Angaben siehe oben)`,
-            "Gesellschafter: Susanne Messmer (50 %), Andreas Wegscheider (50 %) [vom Unternehmen auszufüllen: Anteile laut Firmenbuch bestätigen; Treuhandverhältnisse/stille Beteiligungen: keine bzw. …]",
+            `Medieninhaber: ${LEGAL_NAME}, Sitz ${REGISTER.seat} (Angaben siehe oben)`,
+            `${BELEGT.beteiligungen} (Quelle: ${BELEGT.beteiligungenQuelle}) [vom Unternehmen zu bestätigen: Treuhandverhältnisse oder stille Beteiligungen – keine bzw. welche]`,
             "Grundlegende Richtung (Blattlinie): Information über die Produkte, Marken, Planungs- und Serviceleistungen von Platzhirsch Home Living sowie Einrichtungs- und Kaufratgeber für Kundinnen und Kunden in Österreich, Deutschland, der Schweiz und Liechtenstein.",
           ],
         },

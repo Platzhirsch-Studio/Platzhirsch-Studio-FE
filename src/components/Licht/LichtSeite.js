@@ -410,9 +410,12 @@ function Lichtblatt({ z, sonne, tag, bahn, fensterZeiten, standbild, pool }) {
         [data-lichtblatt] { display: none; }
         @media print {
           @page { size: A4; margin: 16mm; }
-          body * { visibility: hidden !important; }
-          [data-lichtblatt], [data-lichtblatt] * { visibility: visible !important; }
-          [data-lichtblatt] { display: block; position: absolute; left: 0; top: 0; width: 100%; background: #fff; color: #30373e; }
+          /* PDF-Muster 02.11.2026: Vorher „visibility: hidden“ für den Rest der Seite – die unsichtbare
+             Seite nahm aber weiter Platz ein, das Lichtblatt (absolut oben) wurde von 7 leeren Seiten
+             gefolgt. Jetzt verschwindet alles außer dem Blatt und seinen Vorfahren aus dem Fluss. */
+          body *:not([data-lichtblatt]):not([data-lichtblatt] *):not(:has([data-lichtblatt])) { display: none !important; }
+          body, body :has([data-lichtblatt]) { margin: 0 !important; padding: 0 !important; background: #fff !important; min-height: 0 !important; }
+          [data-lichtblatt] { display: block; width: 100%; background: #fff; color: #30373e; }
         }
       `}</style>
       <article data-lichtblatt="" aria-hidden="true">
@@ -420,22 +423,42 @@ function Lichtblatt({ z, sonne, tag, bahn, fensterZeiten, standbild, pool }) {
         <p style={{ font: "400 26pt var(--font-display)", margin: "6mm 0 2mm" }}>Lichtstudie {pool ? "Pool" : "Küche"}</p>
         <p style={{ font: "400 12pt var(--font-sans)" }}>{kurzText(z)}</p>
         <p style={{ font: "400 12pt var(--font-sans)", marginTop: "2mm" }}>{werttext(sonne, z.minuten)} (Azimut {Math.round(sonne.azimut)}°).</p>
-        {standbild ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={standbild} alt="" style={{ width: "100%", marginTop: "6mm", aspectRatio: "4 / 3", objectFit: "cover" }} />
-        ) : null}
-        <div style={{ marginTop: "6mm" }}>
+        {/* Druck 02.11.: Standbild (16:10, 60 % Breite) und Sonnen-Kennzahlen nebeneinander statt Bild in
+            voller Breite + Kennzahlzeile darunter – vorher rutschten die Schlusszeilen allein auf Seite 2. */}
+        <div style={{ display: "flex", gap: "6mm", alignItems: "flex-start", marginTop: "5mm" }}>
+          {standbild ? (
+            <figure style={{ margin: 0, flex: "0 0 60%" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={standbild} alt="" style={{ display: "block", width: "100%", aspectRatio: "16 / 10", objectFit: "cover" }} />
+              {/* Pflichtunterschrift bei Renderings (wie „Visualisierung · berechnet“ am Bildschirm) */}
+              <figcaption style={{ font: "400 9pt var(--font-sans)", marginTop: "2mm", color: "#5b6168" }}>Visualisierung (Rendering) · schematisches Raummodell, berechnetes Licht – kein Foto.</figcaption>
+            </figure>
+          ) : null}
+          <dl style={{ margin: 0, flex: "1 1 auto", font: "400 11pt var(--font-sans)", lineHeight: 1.4 }}>
+            <dt style={{ color: "#5b6168", fontSize: "9pt" }}>Aufgang</dt>
+            <dd style={{ margin: "0 0 2mm" }}>{tag.aufgang != null ? `${uhrzeit(tag.aufgang)} Uhr` : "–"}</dd>
+            <dt style={{ color: "#5b6168", fontSize: "9pt" }}>Höchster Stand</dt>
+            <dd style={{ margin: "0 0 2mm" }}>{Math.round(tag.hoeheMittag)}° um {uhrzeit(tag.mittag)} Uhr</dd>
+            <dt style={{ color: "#5b6168", fontSize: "9pt" }}>Untergang</dt>
+            <dd style={{ margin: "0 0 2mm" }}>{tag.untergang != null ? `${uhrzeit(tag.untergang)} Uhr` : "–"}</dd>
+            {!pool ? (
+              <>
+                <dt style={{ color: "#5b6168", fontSize: "9pt" }}>Sonne durchs Fenster</dt>
+                <dd style={{ margin: 0 }}>{fensterZeiten.summe ? fensterZeiten.bereiche.map((b) => `${uhrzeit(b.von)}–${uhrzeit(b.bis)}`).join(", ") + " Uhr" : "keine"}</dd>
+              </>
+            ) : null}
+          </dl>
+        </div>
+        <div style={{ marginTop: "4mm" }}>
           <SonnenBahn id="blatt-bahn" bahn={bahn} tag={tag} aktuell={{ minuten: z.minuten, hoehe: sonne.hoehe }} fensterZeiten={pool ? null : fensterZeiten} ortName={ort.name} datumLabel={datumText(z.datum)} />
         </div>
-        <p style={{ font: "400 11pt var(--font-sans)", marginTop: "4mm" }}>
-          Aufgang {tag.aufgang != null ? `${uhrzeit(tag.aufgang)} Uhr` : "–"} · höchster Stand {Math.round(tag.hoeheMittag)}° um {uhrzeit(tag.mittag)} Uhr · Untergang {tag.untergang != null ? `${uhrzeit(tag.untergang)} Uhr` : "–"}
-          {!pool ? ` · Sonne durchs Fenster: ${fensterZeiten.summe ? fensterZeiten.bereiche.map((b) => `${uhrzeit(b.von)}–${uhrzeit(b.bis)}`).join(", ") + " Uhr" : "keine"}` : ""}
-        </p>
-        <p style={{ font: "400 10pt var(--font-sans)", marginTop: "6mm" }}>
+        <p style={{ font: "400 10pt var(--font-sans)", marginTop: "5mm" }}>
           Berechnet nach dem NOAA-Sonnenstandsverfahren für {ort.name}. Berge, Bäume, Nachbarhäuser und Spiegelungen vom See sind nicht enthalten. Das Licht vor Ort sehen wir uns bei Ihnen an. Schematisches Raummodell, keine Planung.
         </p>
         <p style={{ font: "400 10pt var(--font-sans)", marginTop: "3mm" }}>Diese Lichtstimmung öffnen: {url}</p>
-        <p style={{ font: "400 10pt var(--font-sans)", marginTop: "3mm" }}>Platzhirsch Home Living · Landstraße 11 · 6911 Lochau am Bodensee · +43 5574 46255 · info@platzhirsch.studio</p>
+        <p style={{ font: "400 10pt var(--font-sans)", marginTop: "3mm" }} suppressHydrationWarning>
+          Platzhirsch Home Living · Landstraße 11 · 6911 Lochau am Bodensee · +43 5574 46255 · info@platzhirsch.studio · Blatt erstellt am {new Intl.DateTimeFormat("de-AT", { dateStyle: "medium", timeZone: "Europe/Vienna" }).format(new Date())}
+        </p>
       </article>
     </>
   );

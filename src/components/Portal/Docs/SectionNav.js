@@ -14,7 +14,7 @@ export function DocsPageHeader({ overline, title, intro, back, children }) {
       {(back || overline) && (
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           {back && (
-            <Link href={back.href} className={`-ml-1 inline-flex min-h-11 items-center gap-1.5 px-1 text-sm text-ink/80 hover:text-ink ${focusRing}`}>
+            <Link href={back.href} className={`-ml-1 inline-flex min-h-11 items-center gap-1.5 px-1 text-sm text-ink/80 hover:text-ink print:hidden ${focusRing}`}>
               <ArrowLeft size={16} aria-hidden="true" /> {back.label}
             </Link>
           )}

@@ -22,7 +22,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import sharp from "sharp";
 import { BUDGET, IMG_CACHE_DIR, IMG_CACHE_MAX_FILES, IMG_CACHE_TTL_MS, PUBLIC_DIR } from "./config.js";
-import { analyseImage } from "./imageStats.js";
+import { analyseImage, STATS_VERSION } from "./imageStats.js";
 
 const CMX_PATH = /^\/cmx\/files\/[^?#\\]+\.(?:jpe?g|png|webp|avif|gif)$/i;
 const PUBLIC_PATH = /^\/Images\/[A-Za-z0-9_./-]+\.(?:jpe?g|png|webp|avif)$/;
@@ -62,7 +62,14 @@ export function createDiskCache({ dir = IMG_CACHE_DIR, ttlMs = IMG_CACHE_TTL_MS,
         const meta = JSON.parse(await fs.readFile(path.join(/*turbopackIgnore: true*/ dir, `${k}.json`), "utf8"));
         if (meta.cmx !== cmxPath || now() - meta.at > ttlMs) return null;
         const data = await fs.readFile(path.join(/*turbopackIgnore: true*/ dir, `${k}.jpg`));
-        return { data, width: meta.width, height: meta.height, cutout: Boolean(meta.cutout), stats: meta.stats || null };
+        let stats = meta.stats || null;
+        // Druck 03.11.: older analyses (without subject box) are redone from the
+        // cached JPEG (~2 ms) instead of downloading the file again
+        if (stats && stats.v !== STATS_VERSION) {
+          stats = (await analyseImage(data).catch(() => null)) || stats;
+          fs.writeFile(path.join(/*turbopackIgnore: true*/ dir, `${k}.json`), JSON.stringify({ ...meta, stats })).catch(() => {});
+        }
+        return { data, width: meta.width, height: meta.height, cutout: Boolean(meta.cutout), stats };
       } catch {
         return null;
       }

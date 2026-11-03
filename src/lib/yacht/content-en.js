@@ -54,8 +54,8 @@ export const CONTENT_EN = {
     eyebrow: "Example concepts",
     heading: "From runabout to boathouse",
     text: "Each concept has a guiding line, a colour world, materials and products from our range, zone by zone. They are examples – not client projects.",
-    aiNote:
-      "The images in the example concepts are concept visualisations. Some are rendered in Blender and captioned “Visualisation (rendering)”; the others are AI-generated (Art. 50 EU AI Act): created on our own computer in Lochau and marked as AI images on the image and in their image data. They show a mood – no real boats, no client projects and no products from our range. The product images come from the makers.",
+    imageNote:
+      "The images in the example concepts are concept visualisations, rendered in Blender and captioned “Visualisation (rendering)”. They show a mood – no real boats, no client projects and no products from our range. The product images come from the makers.",
   },
   materials: {
     eyebrow: "Samples and materials",
@@ -218,7 +218,7 @@ export const CONTENT_EN = {
       },
       {
         q: "Are the images of the example concepts real projects?",
-        a: "No. They are concept visualisations – some rendered in Blender (captioned “Visualisation (rendering)”), some AI-generated and labelled as such. They show a mood – no real boats, no client projects and no products from our range. We only show real photos once the owners have given written consent.",
+        a: "No. They are concept visualisations, rendered in Blender and captioned “Visualisation (rendering)”. They show a mood – no real boats, no client projects and no products from our range. We only show real photos once the owners have given written consent.",
       },
       {
         q: "Do you also plan the boathouse, jetty and lakeside garden?",

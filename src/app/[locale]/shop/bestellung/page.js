@@ -23,6 +23,8 @@ import { shopMode } from "@/lib/shop/mode";
 import { SHOP_LEGAL, legalSlotDraft, legalSlotReleased } from "@/lib/shop/legal";
 import { shopOrder } from "@/lib/shop/server";
 import { UST_NORMALSATZ_AT } from "@/lib/shop/ust";
+// Druck 02.11.: Beleg-Kopf mit Vertragspartnerin (Impressumsdaten) und Links als Text.
+import { ADDRESS, EMAIL, LEGAL_NAME, PHONE_DISPLAY, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -50,14 +52,22 @@ export default async function BestellungPage({ params, searchParams }) {
     <div className="bg-surface-raised pt-6 pb-section text-text md:pt-10">
       <Container size="text">
         {(mode === "test" || o?.testmodus) && <TestBanner text={c.testBanner} />}
-        <Heading level={1} size="display-m" className="mt-8">
+        {/* Druck 02.11.: als Beleg druckbar – Vertragspartnerin mit Impressumsdaten (src/lib/site.js) nur im Ausdruck;
+            kein eigenes PDF, die Seite selbst ist die Druckvorlage. */}
+        {o && (
+          <p className="hidden text-small text-text-soft print:block" data-shop-beleg-kopf="">
+            {c.seller}: {LEGAL_NAME} ({SITE_NAME}) · {ADDRESS.street}, {ADDRESS.postalCode} {ADDRESS.city}, {ADDRESS.country} · {PHONE_DISPLAY} · {EMAIL} ·{" "}
+            {SITE_URL.replace(/^https?:\/\//, "")}
+          </p>
+        )}
+        <Heading level={1} size="display-m" className="mt-8 print:mt-4">
           {title}
         </Heading>
         {o && (
           <>
             {DONE.includes(o.status) && <ClearCartOnMount orderId={o.id} />}
             {["offen", "zahlung_ausstehend"].includes(o.status) && <AutoRefresh />}
-            <dl className="mt-8 grid grid-cols-[auto_minmax(0,1fr)] gap-x-6 gap-y-2 text-body" data-shop-bestellung={o.id}>
+            <dl className="mt-8 grid grid-cols-[auto_minmax(0,1fr)] gap-x-6 gap-y-2 text-body print:mt-4" data-shop-bestellung={o.id}>
               <dt className="text-text-soft">{c.orderNo}</dt>
               <dd className="tabular">{o.id}</dd>
               {o.angelegt && (
@@ -140,6 +150,12 @@ export default async function BestellungPage({ params, searchParams }) {
                         <Link href={s.path} prefetch={false} className="underline underline-offset-4">
                           {s.titel}
                         </Link>
+                        {/* Druck 02.11.: Adresse des Rechtstexts als Text im Ausdruck. */}
+                        <span className="hidden text-text-soft print:inline">
+                          {" "}
+                          – {SITE_URL}/{locale}
+                          {s.path}
+                        </span>
                         {!legalSlotReleased(s) && (
                           <span className="ml-2 border border-line-strong px-1 text-text-soft" data-shop-recht-entwurf="">
                             {c.legalPending}
@@ -155,10 +171,22 @@ export default async function BestellungPage({ params, searchParams }) {
                 ))}
               </ul>
             </div>
+            {/* § 13a FAGG: Online-Rücktrittsfunktion mit vorbelegter Bestellnummer (nur Nummer, kein Token). */}
+            {DONE.includes(o.status) && (
+              <p className="mt-4 text-small">
+                <Link href={{ pathname: "/shop/recht/widerruf-formular", query: { bestellung: o.id } }} prefetch={false} className="underline underline-offset-4" data-shop-widerruf-link="">
+                  Vertrag widerrufen
+                </Link>
+                <span className="hidden text-text-soft print:inline">
+                  {" "}
+                  – {SITE_URL}/{locale}/shop/recht/widerruf-formular?bestellung={o.id}
+                </span>
+              </p>
+            )}
             {o.testmodus && <p className="mt-8 text-small text-text-soft">{c.noMail}</p>}
           </>
         )}
-        <Link href="/accessoires/produkte" prefetch={false} className="ph-press mt-10 inline-flex min-h-12 items-center justify-center border border-ink px-6 text-ui text-text hover:bg-action hover:text-paper">
+        <Link href="/accessoires/produkte" prefetch={false} className="ph-press mt-10 inline-flex min-h-12 items-center justify-center border border-ink px-6 text-ui text-text hover:bg-action hover:text-paper print:hidden">
           {c.continueShopping}
         </Link>
       </Container>

@@ -1,27 +1,42 @@
 import React from "react";
 import { EMAIL, EMAIL_HREF, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
-import { DSE_SECTIONS, dseRenderMode } from "@/lib/legal/dseSections";
+import { DSE_ERGAENZUNG_STAND, DSE_SECTIONS, dseRenderMode } from "@/lib/legal/dseSections";
+import { RETENTION_MONTHS as IDEENBOARD_RETENTION_MONTHS } from "@/lib/ideenboard/config";
+import { retentionMonths as wunschlisteRetentionMonths } from "@/lib/wunschliste/config";
+import { VERIFY_TTL_MIN, MEET_OPEN_MIN } from "@/lib/booking/constants";
+import { SERVER as EINBLICKE_SERVER, SESSION_MS as EINBLICKE_SESSION_MS } from "@/lib/einblicke/config";
 
 // Ergänzungen der Datenschutzerklärung für neue Funktionen (Rat 9,5, B4).
 //
-// Jeder Abschnitt ist einzeln abschaltbar: Er erscheint nur, wenn er im
+// Jeder Abschnitt ist einzeln schaltbar: Er erscheint regulär, sobald er im
 // Register src/lib/legal/dseSections.js freigegeben ist ("live"). In der
-// Entwicklung erscheinen die Entwürfe mit sichtbarem Vermerk, damit Anker,
-// Links und Aufbau geprüft werden können; im Produktions-Build nie.
-// Die zugehörige Funktion läuft in Produktion erst mit freigegebenem
-// Abschnitt (dseGateOpen in booking/config, ideenboard/mode, einblicke/config,
-// whatsapp/config; Release-Test tools/qa/prod-check.mjs Schritt „dse“).
+// Entwicklung erscheinen alle Abschnitte, damit Anker, Links und Aufbau
+// geprüft werden können. In Produktion erscheinen ohne Freigabe nur die
+// Abschnitte mit `oeffentlich` (Funktion ohne Schalter: Service-Formulare,
+// 3D-/AR-Ansicht) – diese Funktionen sind live erreichbar, also gehört die
+// Information nach Art. 13 DSGVO auf die Seite. Alle anderen Funktionen sind
+// in Produktion gesperrt, bis ihr Abschnitt freigegeben ist (dseGateOpen in
+// booking/config, ideenboard/mode, einblicke/config, whatsapp/config;
+// Release-Test tools/qa/prod-check.mjs Schritt „dse“).
+//
+// Sichtbar ist bei nicht freigegebenen Abschnitten nur „Stand: <Datum>“
+// (Inhaber 02.11.2026: keine Entwurfs-, Prüf- oder Verfasserhinweise im
+// Besuchertext). Der Status „entwurf“ bleibt in den Daten (data-dse-status).
 //
 // Wortlaut: aus den Vorschlägen der Feature-Teams (Pfad je Abschnitt im
-// Register) und Marktresearch/recht/07-dse-ergaenzungen-rat95.md, ohne neue
-// Tatsachen. [Eckige Klammern] = offen für Kanzlei/Inhaber. Vor dem Umstellen
-// auf "freigegeben" müssen alle Klammern zwischen den Markierungen
-// <dse:id> … </dse:id> durch den freigegebenen Wortlaut ersetzt sein
-// (tests/unit/rat95-recht-dse.test.mjs).
+// Register) und Marktresearch/recht/07-dse-ergaenzungen-rat95.md. Fristen und
+// Anbieter stehen nur, wo der Code sie belegt (Konstanten importiert); wo der
+// Code keine Frist hat, steht die gesetzliche Formulierung („solange …“).
+// Offene Fakten (Hoster, AVV, Zahlenfristen) führt
+// Platzhirsch-Status/berichte/RECHT-PLATZHALTER-2026-11-02.md. Vor dem
+// Umstellen auf "freigegeben" dürfen zwischen <dse:id> … </dse:id> keine
+// eckigen Klammern stehen (tests/unit/rat95-recht-dse.test.mjs).
 
 const ul = "mt-3 list-disc space-y-2 pl-5 marker:text-text-soft";
 
-/** Rahmen eines Abschnitts: H2 mit Anker, im Testbetrieb mit Entwurfsvermerk. */
+const standDe = (iso) => iso.split("-").reverse().join(".");
+
+/** Rahmen eines Abschnitts: H2 mit Anker; ohne Freigabe nur die Zeile „Stand“. */
 export function Ergaenzung({ id, children, env = process.env }) {
   const mode = dseRenderMode(id, env);
   if (!mode) return null;
@@ -30,9 +45,8 @@ export function Ergaenzung({ id, children, env = process.env }) {
     <div data-dse-section={id} data-dse-status={mode === "live" ? "freigegeben" : "entwurf"}>
       <h2 id={section.anchor}>{section.title}</h2>
       {mode === "entwurf" && (
-        <p className="border-l-2 border-line-strong pl-4 text-small text-text-soft" data-dse-draft="">
-          Entwurf, nur im Testbetrieb sichtbar. Dieser Abschnitt wartet auf die Freigabe der Kanzlei und erscheint auf der
-          veröffentlichten Website erst danach.
+        <p className="text-small text-text-soft" data-dse-draft="">
+          Stand: {standDe(DSE_ERGAENZUNG_STAND)}
         </p>
       )}
       {children}
@@ -46,7 +60,8 @@ export function TerminAbschnitt() {
     <Ergaenzung id="termin">
       <p>
         Auf unserer Website können Sie einen Beratungstermin buchen: im Studio in Lochau, per Video, bei Ihnen vor Ort oder als
-        Planungstermin zu einem Thema. Einen externen Kalenderdienst binden wir dafür nicht ein.
+        Planungstermin zu einem Thema. Einen externen Kalenderdienst binden wir dafür nicht ein; der Kalender läuft auf unserem
+        eigenen Server, die Termine verwaltet unser Backoffice.
       </p>
       <ul className={ul}>
         <li>
@@ -56,8 +71,8 @@ export function TerminAbschnitt() {
         </li>
         <li>
           <strong>Bestätigung:</strong> Wir senden einen Bestätigungslink an Ihre E-Mail-Adresse. Erst mit dem Klick wird der Termin
-          verbindlich; bis dahin halten wir die Uhrzeit 30 Minuten frei. Ohne Bestätigung verfällt die Vormerkung, die Angaben
-          löschen wir spätestens einen Tag danach. Gespeichert wird nur ein Prüfwert des Links.
+          verbindlich; bis dahin halten wir die Uhrzeit {VERIFY_TTL_MIN} Minuten frei. Ohne Bestätigung verfällt die Vormerkung, die
+          Angaben löschen wir spätestens einen Tag danach. Gespeichert wird nur ein Prüfwert des Links.
         </li>
         <li>
           <strong>Ändern oder absagen:</strong> Nach der Bestätigung erhalten Sie einen persönlichen, signierten Link. Er gilt bis
@@ -71,23 +86,25 @@ export function TerminAbschnitt() {
           Arbeitsspeicher des Servers (Art. 6 Abs. 1 lit. f DSGVO).
         </li>
         <li>
-          <strong>Empfänger:</strong> unser Backoffice (Frappe, [Server/Hoster, EU-Standort]) als Auftragsverarbeiter; die E-Mails
-          zum Termin versenden wir über den Dienst aus dem Abschnitt „E-Mail-Versand“.
+          <strong>Empfänger:</strong> unser Backoffice (Verwaltungssystem auf Basis von Frappe), betrieben in unserem Auftrag; die
+          E-Mails zum Termin versenden wir über den Dienst aus dem Abschnitt „E-Mail-Versand“.
         </li>
         <li>
-          <strong>Speicherdauer:</strong> Termindaten löschen wir [6 Monate] nach dem Termin, sofern daraus kein Auftrag entsteht.
-          Bei einem Auftrag gelten die gesetzlichen Aufbewahrungsfristen.
+          <strong>Speicherdauer:</strong> Termindaten bewahren wir auf, bis der Termin stattgefunden hat und danach, solange mit
+          Rückfragen zu rechnen ist. Wird ein Auftrag daraus, gelten die gesetzlichen Aufbewahrungsfristen (in Österreich 7 Jahre,
+          § 132 BAO).
         </li>
       </ul>
       <p>
-        <strong>Videoberatung:</strong> Wir nutzen [Name des Videodienstes – nach Einrichtung prüfen] auf einem eigenen Server
-        ([Adresse und Hoster, EU-Standort]). Sie brauchen keine App und kein Konto. Den Link zum Videoraum finden Sie ab 15 Minuten
-        vor Beginn auf Ihrer Terminseite. Bild und Ton werden live übertragen; verarbeitet werden dabei IP-Adresse, Angaben zu
-        Browser und Gerät und der Name, den Sie eingeben. Wir zeichnen weder Bild noch Ton auf. Rechtsgrundlage ist die gebuchte
-        Beratung (Art. 6 Abs. 1 lit. b DSGVO) und Ihre ausdrückliche Einwilligung zur Live-Übertragung (Art. 6 Abs. 1 lit. a
-        DSGVO). Sie ist freiwillig; ohne sie bieten wir den Termin im Studio oder am Telefon an. Widerrufen können Sie per E-Mail
-        an <a href={EMAIL_HREF}>{EMAIL}</a>, mit der Absage des Termins oder mit dem Wechsel ins Studio. Speicherdauer der
-        Protokolle des Videodienstes: [nach Einrichtung prüfen].
+        <strong>Videoberatung:</strong> Der Videoraum gehört zu unserem Backoffice-System; einen externen Videodienst binden wir
+        nicht ein. Sie brauchen keine App und kein Konto. Den Link zum Videoraum finden Sie ab {MEET_OPEN_MIN} Minuten vor Beginn auf
+        Ihrer Terminseite; in E-Mails und Kalendereinträgen steht er nicht. Bild und Ton werden live übertragen; verarbeitet werden
+        dabei IP-Adresse, Angaben zu Browser und Gerät und der Name, den Sie eingeben. Wir zeichnen weder Bild noch Ton auf;
+        Verbindungsdaten des Videoraums bewahren wir nur so lange auf, wie es für Sicherheit und Fehlersuche nötig ist.
+        Rechtsgrundlage ist die gebuchte Beratung (Art. 6 Abs. 1 lit. b DSGVO) und Ihre ausdrückliche Einwilligung zur
+        Live-Übertragung (Art. 6 Abs. 1 lit. a DSGVO). Sie ist freiwillig; ohne sie bieten wir den Termin im Studio oder am Telefon
+        an. Widerrufen können Sie per E-Mail an <a href={EMAIL_HREF}>{EMAIL}</a>, mit der Absage des Termins oder mit dem Wechsel
+        ins Studio.
       </p>
     </Ergaenzung>
   );
@@ -142,8 +159,9 @@ export function WhatsappAbschnitt() {
         <li>
           <strong>Speicherung:</strong> bei WhatsApp für die Zustellung höchstens 30 Tage; die Schlüssel auf Seiten der Business
           Platform verwaltet Meta, eine Ende-zu-Ende-Verschlüsselung bis in unser Backoffice besteht nicht. Bei uns: Gespräche ohne
-          Auftrag [12 Monate] nach dem letzten Kontakt, mit Auftrag wie Geschäftsbriefe (§ 132 BAO, § 212 UGB), technische
-          Protokolle 30 Tage, Nachweise Ihrer Kanalwahl [3 Jahre].
+          Auftrag, bis Ihr Anliegen erledigt ist und nicht mehr mit Rückfragen zu rechnen ist; mit Auftrag wie Geschäftsbriefe
+          (§ 132 BAO, § 212 UGB); technische Protokolle 30 Tage; den Nachweis Ihrer Kanalwahl und Einwilligung, solange wir ihn
+          nach Art. 7 Abs. 1 DSGVO führen müssen.
         </li>
         <li>
           <strong>Ohne WhatsApp:</strong> Telefon <a href={PHONE_HREF}>{PHONE_DISPLAY}</a>, E-Mail oder Kontaktformular.
@@ -171,13 +189,14 @@ export function ServiceAnfragenAbschnitt() {
         <li>
           <strong>Outdoor-Winterservice:</strong> Name, Kontaktdaten, Abholadresse und Zugangshinweise, die Möbelliste und
           freiwillig hochgeladene Fotos, um Abholung, Lagerung und Rückbringung anzubieten und durchzuführen (Art. 6 Abs. 1 lit. b
-          DSGVO). Übernahmelisten und Fotos des Zustands bewahren wir bis [6] Monate nach der Rückbringung auf.
+          DSGVO). Übernahmelisten und Fotos des Zustands bewahren wir bis zur Rückbringung auf und danach so lange, wie Ansprüche
+          aus der Einlagerung geltend gemacht werden können (gesetzliche Verjährungsfristen).
         </li>
         <li>
           <strong>Pflege-Service:</strong> Name, Kontaktdaten, Postleitzahl und Ort der Möbel, Angaben zu Möbeln und Material sowie
           freiwillig hochgeladene Fotos (Art. 6 Abs. 1 lit. b DSGVO). Erinnerungen an Pflegemittel senden wir nur mit Ihrer
           Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 174 TKG 2021), die Sie jederzeit widerrufen können. Fotos ohne Auftrag löschen
-          wir [6 Monate] nach dem Angebot.
+          wir, sobald Ihre Anfrage erledigt ist und nicht mehr mit Rückfragen zu rechnen ist.
         </li>
       </ul>
     </Ergaenzung>
@@ -206,12 +225,13 @@ export function EinblickeAbschnitt() {
           messen wir auch mit Einwilligung nicht.
         </li>
         <li>
-          <strong>Im Browser:</strong> eine zufällige Sitzungskennung <code>ph_eb</code> im sessionStorage, 30 Minuten; Cookies
-          setzt die Funktion keine.
+          <strong>Im Browser:</strong> eine zufällige Sitzungskennung <code>ph_eb</code> im sessionStorage,{" "}
+          {Math.round(EINBLICKE_SESSION_MS / 60000)} Minuten; Cookies setzt die Funktion keine.
         </li>
         <li>
-          <strong>Speicherdauer:</strong> pseudonyme Rohdaten höchstens 14 Tage, danach nur anonyme Tageswerte (mindestens 5
-          Besuche je Wert) in unserem Backoffice, gelöscht nach [395 Tagen].
+          <strong>Speicherdauer:</strong> pseudonyme Rohdaten höchstens {EINBLICKE_SERVER.rawMaxDays} Tage, danach nur anonyme
+          Tageswerte (mindestens {EINBLICKE_SERVER.k} Besuche je Wert) ohne Personenbezug in unserem Backoffice. Sie dienen dem
+          Vergleich über die Zeit und werden gelöscht, sobald wir sie dafür nicht mehr brauchen.
         </li>
         <li>
           <strong>Widerruf:</strong> jederzeit über „Privatsphäre-Einstellungen“ im Fuß jeder Seite; danach wird nichts mehr
@@ -241,8 +261,8 @@ export function IdeenboardAbschnitt() {
           lit. b DSGVO). Wer den Link kennt, kann das Board sehen; die Seite erscheint nicht in Suchmaschinen.
         </li>
         <li>
-          <strong>Speicherdauer:</strong> Sie können den Link jederzeit widerrufen. Sonst löschen wir das geteilte Board
-          [12 Monate] nach der letzten Änderung.
+          <strong>Speicherdauer:</strong> Sie können den Link jederzeit widerrufen. Sonst löschen wir das geteilte Board{" "}
+          {IDEENBOARD_RETENTION_MONTHS} Monate nach der letzten Änderung.
         </li>
       </ul>
     </Ergaenzung>
@@ -270,7 +290,8 @@ export function WunschlisteAbschnitt() {
           <strong>Statistik:</strong> Für die Statistik ersetzen wir den Schlüssel im Link, Google Analytics erhält ihn nicht.
         </li>
         <li>
-          <strong>Speicherdauer:</strong> [12] Monate nach dem Anlass bzw. nach dem Erstellen, auf Wunsch sofort.
+          <strong>Speicherdauer:</strong> {wunschlisteRetentionMonths()} Monate nach dem Anlass bzw. nach dem Erstellen, auf Wunsch
+          sofort.
         </li>
       </ul>
     </Ergaenzung>
@@ -290,8 +311,9 @@ export function ArAbschnitt() {
       </p>
       <ul className={ul}>
         <li>
-          <strong>Empfänger:</strong> bei Android Google Ireland Limited nach den Bedingungen der Google-App [anwaltlich prüfen:
-          Rolle und Drittlandbezug], bei Apple die Verarbeitung auf dem Gerät [anwaltlich prüfen].
+          <strong>Empfänger:</strong> bei Android die Google-App (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4,
+          Irland) nach den Datenschutzbestimmungen von Google; bei Apple verarbeitet Ihr Gerät das Modell selbst nach den Bedingungen
+          von Apple. Für diese Verarbeitung in der App ist der jeweilige Anbieter verantwortlich.
         </li>
         <li>
           <strong>Rechtsgrundlage:</strong> die von Ihnen ausgelöste Funktion (Art. 6 Abs. 1 lit. b DSGVO). Ohne Ihren Klick geht
@@ -311,7 +333,8 @@ export function TagebuchAbschnitt() {
         Im Kundenportal können Sie und unser Team Fotos Ihres Projekts hochladen, etwa zu Lieferung und Montage. Wir speichern die
         Bilder, den Bildtitel, wer sie hochgeladen hat und wann. Beim Hochladen entfernen wir alle Metadaten, insbesondere
         Standortdaten; das Original speichern wir nicht. Die Fotos sehen nur Sie und unser Team (Art. 6 Abs. 1 lit. b DSGVO).
-        Speicherdauer: [Kanzlei/Inhaber].
+        Speicherdauer: wie Ihre Projektunterlagen im Kundenportal (Abschnitt „Kundenportal und 3D-Raum“); eigene Fotos können
+        Sie jederzeit im Portal löschen.
       </p>
       <p>
         <strong>Referenzprojekt:</strong> Nur mit Ihrer ausdrücklichen Einwilligung zeigen wir ausgewählte Fotos mit einer kurzen
@@ -332,7 +355,8 @@ export function EmpfehlungAbschnitt() {
         Code und den Nachweis Ihres Auftrags, um Ihnen Code und Gutschein zu senden (Art. 6 Abs. 1 lit. b DSGVO). Wenn Sie uns auf
         Empfehlung kontaktieren und eingewilligt haben, ordnen wir Ihre Anfrage dem Code zu und teilen der empfehlenden Person nach
         Ihrem ersten Auftrag nur mit, dass ein Gutschein fällig ist (Art. 6 Abs. 1 lit. a DSGVO). Sie können die Einwilligung
-        jederzeit widerrufen. Kontaktdaten Dritter nehmen wir nicht entgegen. Speicherdauer: [3] Jahre nach Ausgabe des Gutscheins.
+        jederzeit widerrufen. Kontaktdaten Dritter nehmen wir nicht entgegen. Speicherdauer: solange der Gutschein eingelöst werden
+        kann, und danach, solange gesetzliche Aufbewahrungspflichten bestehen (§ 132 BAO, § 212 UGB).
       </p>
     </Ergaenzung>
   );

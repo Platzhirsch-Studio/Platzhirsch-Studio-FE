@@ -218,7 +218,12 @@ test("Komponente: next/image mit Manifest-Maßen, 3:2-Platzhalter, aria-pressed,
   assert.match(src, /data-kp-foto-none/);
   assert.match(src, /MAX_ABWEICHUNGEN = 3/);
   assert.doesNotMatch(src, /onMouseEnter|onMouseOver|hover:(?!border)/);
-  // Eingebunden im Reiter Material, nicht in der Druckansicht
+  // Eingebunden im Reiter Material; Druck 02.11.: die Druckansicht zeigt das passendste Rendering
+  // serverseitig (waehleFotoansicht) mit der Pflichtunterschrift – nicht die Client-Komponente.
   assert.match(read("src/components/Labs/Kuechenplaner/KuechenplanerApp.js"), /<Fotoansicht plan=\{plan\} \/>/);
-  assert.doesNotMatch(read("src/app/[locale]/kuechenplaner/druck/page.js"), /Fotoansicht|fotoansicht/);
+  const druck = read("src/app/[locale]/kuechenplaner/druck/page.js");
+  assert.doesNotMatch(druck, /<Fotoansicht/);
+  assert.match(druck, /waehleFotoansicht\(plan\)/);
+  assert.match(druck, /data-kp-print-foto=""/);
+  assert.match(druck, /t\("Visualisierung \(Rendering\)"\)/);
 });

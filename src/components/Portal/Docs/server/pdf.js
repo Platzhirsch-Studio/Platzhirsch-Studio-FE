@@ -35,15 +35,21 @@ function wrap(text, size, maxWidth) {
 }
 
 /**
- * @param {{title:string, lines:{text:string, size?:number, bold?:boolean, gap?:number, color?:number[]}[]}} doc
+ * @param {{title:string, lines:{text:string, size?:number, bold?:boolean, gap?:number, color?:number[]}[], footer?: string[]}} doc
+ *   footer – Druck 02.11.: Fußzeilen (Aussteller, Adresse) unten auf der Seite,
+ *   über einer Haarlinie; gleiche Kopf-/Fußgestaltung wie der Gutschein.
  * @returns {Buffer}
  */
-export function renderSimplePdf({ title, lines }) {
+export function renderSimplePdf({ title, lines, footer = [] }) {
   const W = 595.28;
   const H = 841.89;
   const left = 64;
   let y = H - 80;
   const ops = [];
+  if (footer.length) {
+    ops.push(`0.85 0.82 0.78 RG 0.5 w ${left} 78 m ${W - left} 78 l S`);
+    footer.forEach((t, i) => ops.push(`BT /F1 8 Tf 0.36 0.39 0.42 rg ${left} ${(64 - i * 11).toFixed(2)} Td (${encode(t)}) Tj ET`));
+  }
   for (const l of lines) {
     const size = l.size || 11;
     y -= l.gap ?? 6;

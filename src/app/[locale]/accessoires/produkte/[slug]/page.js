@@ -6,6 +6,7 @@
 import { getTranslations } from "next-intl/server";
 import ShopProduktDetail from "@/components/Katalog/ShopProduktDetail";
 import { produktMetadata, produktParams, produktProps } from "@/components/Katalog/katalogRoutes";
+import { detailBild } from "@/components/Katalog/kachelBild";
 import { markeBySlug, produktBySlug, produkteByWelt } from "@/lib/katalog";
 import { KATALOG_LOCALES, kategorieKey, textOf } from "@/lib/katalog/schema";
 import { produktPath } from "@/lib/katalog/welten";
@@ -34,7 +35,8 @@ export async function generateMetadata(props) {
     const katLabel = (x) => t(`kategorie.${kategorieKey(x.kategorie)}`);
     TITEL.set(locale, shopTitel(produkteByWelt(WELT), { markeName: (x) => markeBySlug(x.marke)?.name || "", kategorie: katLabel }));
   }
-  const bild = p.bilder[0];
+  // og:image = Hero der Produktseite (Inhaber 03.11.2026, kachelBild.js detailBild; Shop-Welt: Freisteller zuerst).
+  const bild = detailBild(p);
   return buildPageMetadata({
     locale,
     pathByLocale: produktPath(WELT, slug),

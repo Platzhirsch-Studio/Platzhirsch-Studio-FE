@@ -9,7 +9,7 @@
 // No "@/..." imports: tested with node --test.
 import { createHmac } from "node:crypto";
 import { SITE_ORIGIN, resultUrl, terminUrl } from "./config.js";
-import { KI_NOTE } from "./content.js";
+import { HINWEIS_NOTE } from "./content.js";
 
 // Same wording as the form and the PDF (QA Runde 1, P2.4; marked for the
 // lawyer in Marktresearch/digital/features/stilfinder.md).
@@ -51,7 +51,7 @@ export function buildMoodboardMail({ profile, name, newsletter = false, labs = t
     `Ihr Ergebnis online, zum Weiterleiten und als barrierearme Fassung: ${online}`,
     "",
     ...(nl ? [nl, ""] : []),
-    `Hinweis: ${KI_NOTE}`,
+    `Hinweis: ${HINWEIS_NOTE}`,
     ...(labs ? ["Labs-Prototyp: Die Produktabbildungen stammen von den Herstellern; die Bildrechte für eine öffentliche Nutzung sind noch zu klären."] : []),
     "",
     `${PRIVACY_MAIL} Datenschutz: ${SITE_ORIGIN}/de/datenschutz`,
@@ -81,7 +81,7 @@ ${p(`Ihr Ergebnis online, zum Weiterleiten und als barrierearme Fassung: <a href
 ${nl ? p(esc(nl), "font-size:14px;color:#5c636a") : ""}
 </td></tr>
 <tr><td style="padding:0 32px 28px;font-size:12px;line-height:1.6;color:#5c636a;border-top:1px solid #e6e1d8">
-<p style="margin:18px 0 8px">${esc(KI_NOTE)}</p>
+<p style="margin:18px 0 8px">${esc(HINWEIS_NOTE)}</p>
 ${labs ? '<p style="margin:0 0 8px">Labs-Prototyp: Die Produktabbildungen stammen von den Herstellern; die Bildrechte für eine öffentliche Nutzung sind noch zu klären.</p>' : ""}
 <p style="margin:0 0 8px">${esc(PRIVACY_MAIL)} <a href="${SITE_ORIGIN}/de/datenschutz" style="color:#30373e">Datenschutz</a></p>
 <p style="margin:0">${esc(LEGAL_LINE)} · <a href="${SITE_ORIGIN}/de/impressum" style="color:#30373e">Impressum</a></p>

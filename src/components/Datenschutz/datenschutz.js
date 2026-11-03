@@ -79,6 +79,17 @@ import {
 //   - Neuer Abschnitt „Bewerbungen“ (Art. 13 ab Eingang der Bewerbung):
 //     Zweck, Art. 6 Abs. 1 lit. b, Speicherdauer als Vorschlag
 //     (APPLICATION_RETENTION.ownerConfirmed: false, Inhaber bestätigt).
+// 02.11.2026 (Inhaber: „Rechtstexte fertig machen“):
+//   - Ergänzungsblöcke (LegalDrafts/dseErgaenzungen.js): Platzhalter aus dem
+//     Code geschlossen, kein Entwurfs-/Verfasserhinweis mehr im Besuchertext,
+//     nur „Stand: 02.11.2026“. Status in den Daten bleibt „entwurf“.
+//   - Live erreichbare Funktionen ohne Schalter (Service-Formulare Hotel/
+//     Architekten/Winterservice/Pflege, 3D-/AR-Ansicht) erscheinen jetzt auch
+//     in Produktion (dseSections.js `oeffentlich`). Termin, WhatsApp,
+//     Einblicke, Ideenboard-Teilen, Wunschliste, Empfehlung, Tagebuch bleiben
+//     in Produktion gesperrt und ohne Abschnitt, bis sie freigegeben sind.
+//   - Online-Zahlung/Versand (Stripe, LetMeShip): weiter nur im Shop-Testmodus,
+//     Text in src/lib/shop/legalTexte.js, gilt ab Freischaltung des Onlineshops.
 export const MAIL_SERVICE = Object.freeze({
   provider: "resend",
   name: "Resend",
@@ -97,7 +108,7 @@ export const MAIL_SERVICE = Object.freeze({
 export const APPLICATION_RETENTION = Object.freeze({ months: 7, ownerConfirmed: false });
 
 export const DATENSCHUTZ_LIVE_STATUS = Object.freeze({
-  stand: "2026-10-29",
+  stand: "2026-11-02",
   lawyerApproved: true,
   approvedAt: "2026-10-29",
   approvedBy: "Kanzlei (Inhaber-Entscheidung Nr. 11)",
@@ -123,7 +134,7 @@ export const DATENSCHUTZ_LIVE_STATUS = Object.freeze({
   hosterInRepo: false,
 });
 
-const STAND = "29. Oktober 2026";
+const STAND = "2. November 2026";
 
 const ul = "mt-3 list-disc space-y-2 pl-5 marker:text-text-soft";
 const h3 = "mt-8 text-lead font-medium text-text";

@@ -129,10 +129,10 @@ test("Konzepte FR/IT: alle sichtbaren Felder übersetzt, Produkte wie DE, KI-Lab
   assert.equal(productPathFor("/produkte/decor/x", "it"), "/prodotti/decor/x");
 });
 
-test("KI-Kennzeichnung (AI Act Art. 50) in jeder Sprache", () => {
+test("Bildhinweis (03.11.2026: nur Renderings, kein KI-Vermerk) und KiLabel-Texte in jeder Sprache", () => {
   for (const l of NEW) {
-    assert.match(YACHT_INTL[l].content.concepts.aiNote, /art\. 50/i);
-    assert.match(YACHT_INTL[l].content.concepts.aiNote, /IA/);
+    assert.match(YACHT_INTL[l].content.concepts.imageNote, /Blender/);
+    assert.doesNotMatch(YACHT_INTL[l].content.concepts.imageNote, /\bIA\b|art\. 50/i);
     assert.equal(YACHT_UI[l].ki, "IA");
     assert.match(YACHT_UI[l].kiLabel, /IA/);
   }

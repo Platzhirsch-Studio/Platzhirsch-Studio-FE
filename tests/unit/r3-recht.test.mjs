@@ -146,7 +146,14 @@ test("counting rule: outermost brackets count, nested ones are parts (QM P2)", (
   // datenschutz 130 → 134 (Rat 9,5 B3, bewusst): Register-Eintrag "booking" beschreibt
   // jetzt den gebauten Kalender /termin (vorher "nicht eingesetzt" mit 1 offenen Punkt)
   // mit 5 offenen Punkten (Videodienst, Rechtsgrundlage Video, AV-Vertrag, Drittland, Frist).
-  const expected = { datenschutz: [134, 0], impressum: [28, 0], agb: [112, 6], barrierefreiheit: [11, 0] };
+  // 02.11.2026 (Inhaber: Rechtstexte fertig machen): im Code belegte Angaben
+  // eingetragen (Anbieter, Fristen, Kammer, Beteiligungen, Prüfergebnis) –
+  // Datenschutz 134 → 89, Impressum 28 → 25, Barrierefreiheit 11 → 7.
+  // AGB 112 → 110 (02.11.2026, Inhaber-Entscheidung Nr. 37/38, bewusst): Kopfzeile und
+  // Vorbemerkung der Kanzlei-Vorschau nennen jetzt die MW Immobilienverwaltungs GmbH
+  // (zwei Platzhalter „Firma/Datum – vom Unternehmen auszufüllen“ entfallen, ein
+  // Prüfpunkt zur Rechtsnachfolge kommt dazu); öffentliche Fassung: src/lib/legal/agb.js.
+  const expected = { datenschutz: [89, 0], impressum: [25, 0], agb: [110, 6], barrierefreiheit: [7, 0] };
   for (const [slug, [total, parts]] of Object.entries(expected)) {
     const c = L.docCounts(L.DOCS[slug]);
     assert.deepEqual([c.total, c.parts], [total, parts], slug);

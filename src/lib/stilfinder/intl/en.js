@@ -67,7 +67,7 @@ export const UI = {
     copyLink: "Copy link",
     linkCopied: "Link copied.",
     restart: "Restart the Style Finder",
-    howRules: "How your result is created: your answers are weighted according to fixed rules (no AI, nothing stored on our servers).",
+    howRules: "How your result is created: your answers are weighted according to fixed rules and nothing is stored on our servers.",
     howLink: "The link only contains your selected answers.",
     imagesNote: "Product images come from our online catalogue or from the manufacturers. Colours may look different on screen.",
     privacyLink: "Privacy policy",
@@ -132,7 +132,7 @@ export const UI = {
     optional: "(optional)",
     choose: "Please choose",
     consent:
-      "When you click “Send moodboard”, we send the PDF presentation to this address once. We use your details only for this delivery and do not store them afterwards. The texts of the presentation are created with the help of AI and labelled as such.",
+      "When you click “Send moodboard”, we send the PDF presentation to this address once. We use your details only for this delivery and do not store them afterwards.",
     consentDev: " Test mode: instead of being sent, the mail stays in an internal test mailbox for up to 7 days.",
     privacyLink: "Privacy policy",
     newsletter: "Optional: I would also like to receive the Platzhirsch Home Living newsletter with interior ideas, new arrivals and invitations.",
@@ -190,7 +190,7 @@ export const PAGE = {
       },
       {
         q: "How is the result worked out?",
-        a: "Your answers are weighted according to fixed rules – no AI. The strongest share determines your profile; if a second style has points, the result names it as a “hint” alongside.",
+        a: "Your answers are weighted according to fixed rules. The strongest share determines your profile; if a second style has points, the result names it as a “hint” alongside.",
       },
       {
         q: "Are my answers stored?",

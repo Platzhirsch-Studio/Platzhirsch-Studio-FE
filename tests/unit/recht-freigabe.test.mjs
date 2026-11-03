@@ -32,7 +32,9 @@ test("Kanzlei-Freigabe: zentrale Liste, Impressum und Datenschutz freigegeben", 
     LEGAL_TEXTS.filter((t) => t.state === "live").map((t) => t.id),
     // Portal-Datenschutz ist öffentlich und verlinkt (Prüfung recht P1-3) und gehört daher in die Liste.
     // Rat 9,5 B13 (bewusst): Barrierefreiheit hat eine eigene Seite.
-    ["impressum", "datenschutz", "portal-datenschutz", "cookies", "barrierefreiheit"]
+    // Inhaber 02.11.2026: AGB je Geschäftsbereich haben eine eigene Seite /agb.
+    // Inhaber 03.11.2026 (Nr. 39/40): AGB von der Kanzlei freigegeben; Widerrufsbelehrung außerhalb des Shops unter /widerruf.
+    ["impressum", "datenschutz", "portal-datenschutz", "cookies", "agb", "widerrufsbelehrung", "barrierefreiheit"]
   );
   assert.match(LEGAL_TEXTS.find((t) => t.id === "portal-datenschutz").ownerFills, /OWNER_CONFIRMED = true/);
   // Rat 9,5 B13 (bewusst): Barrierefreiheit ist live, aber nicht Teil der Freigabe Nr. 11.
@@ -84,12 +86,19 @@ test("Widerruf, AGB, Barrierefreiheit: Wortlaut freigegeben, ohne Angaben nicht 
   for (const id of ["widerruf", "gutscheinbedingungen"]) assert.equal(LEGAL_TEXTS.find((t) => t.id === id).state, "wartet", id);
   // Erwartung bewusst geändert (Rat 9,5 B13, QA Recht −0,2): Barrierefreiheit hat jetzt
   // eine eigene Seite mit nur geprüften Aussagen (src/lib/legal/barrierefreiheit.js);
-  // geprüft in rat95-recht-barrierefreiheit.test.mjs. Die AGB bleiben ohne Seite.
-  for (const id of ["agb"]) {
-    const t = LEGAL_TEXTS.find((x) => x.id === id);
-    assert.equal(t.state, "ohne-seite", id);
-    assert.equal(t.livePath, null, id);
-    assert.equal(fs.existsSync(path.join(ROOT, "src/app/[locale]", id)), false, `${id}: keine Route`);
+  // geprüft in rat95-recht-barrierefreiheit.test.mjs. Die AGB haben seit 02.11.2026 die
+  // Seite /agb (Inhaber-Auftrag AGB je Geschäftsbereich; geprüft in agb-bereiche.test.mjs).
+  {
+    const t = LEGAL_TEXTS.find((x) => x.id === "agb");
+    assert.equal(t.state, "live");
+    assert.equal(t.livePath, "/agb");
+    assert.equal(fs.existsSync(path.join(ROOT, "src/app/[locale]/agb/page.js")), true, "agb: Route");
+  }
+  {
+    const t = LEGAL_TEXTS.find((x) => x.id === "widerrufsbelehrung");
+    assert.equal(t.state, "live");
+    assert.equal(t.livePath, "/widerruf");
+    assert.equal(fs.existsSync(path.join(ROOT, "src/app/[locale]/widerruf/page.js")), true, "widerruf: Route");
   }
   const bf = LEGAL_TEXTS.find((x) => x.id === "barrierefreiheit");
   assert.equal(bf.state, "live");

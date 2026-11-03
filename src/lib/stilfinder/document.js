@@ -20,7 +20,7 @@ import { createElement as h } from "react";
 import { Document, Font, Image, Link, Page, Path, Svg, Text, View } from "@react-pdf/renderer";
 import path from "node:path";
 import { FONT_DIR } from "./config.js";
-import { KI_NOTE, KI_SHORT, ROOM_META, ROOM_ORDER, ROOM_TIPS, CARE, PLANNING, LIGHT_LAYERS, colorRoles, colorUseText, personalLine } from "./content.js";
+import { HINWEIS_NOTE, ROOM_META, ROOM_ORDER, ROOM_TIPS, CARE, PLANNING, LIGHT_LAYERS, colorRoles, colorUseText, personalLine } from "./content.js";
 import { codes, textOn } from "./palette.js";
 import { lightFits } from "./rooms.js";
 import { WORDMARK, TAGLINE } from "../../components/Brand/brandPaths.js";
@@ -89,7 +89,11 @@ const T = {
   italic: { fontFamily: "Bodoni", fontStyle: "italic", fontWeight: 400, fontSize: 17, lineHeight: 1.3, color: C.ink },
 };
 
-const tx = (style, children, extra) => h(Text, { style: extra ? [style, extra] : style }, children);
+// Druck 02.11.: geschütztes Leerzeichen zwischen Zahl und Einheit ("120 cm",
+// "2.700 K", "77 %"), damit die Einheit nie allein in die nächste Zeile fällt.
+const UNIT_RE = /(\d)\s(cm|mm|m|K|%|Uhr|€)(?=[\s.,;:)]|$)/g;
+export const nbspUnits = (s) => String(s).replace(UNIT_RE, "$1 $2");
+const tx = (style, children, extra) => h(Text, { style: extra ? [style, extra] : style }, typeof children === "string" ? nbspUnits(children) : children);
 const box = (style, ...children) => h(View, { style }, ...children);
 const hair = (color = C.stoneDeep, extra) => h(View, { style: [{ height: 0.6, backgroundColor: color }, extra || {}] });
 const pad2 = (n) => String(n).padStart(2, "0");
@@ -151,7 +155,7 @@ function Frame({ ctx, n, dark = false, credits = [], creditText = null, ki = fal
           View,
           { style: { position: "absolute", left: footLeft, right: footRight, bottom: 48 } },
           creditLine ? tx([T.small, { fontSize: 6.4, color: fg }], creditLine) : null,
-          ki ? tx([T.small, { fontSize: 6.4, color: fg }], `${KI_SHORT} · Hinweise auf Seite ${ctx.notesPage}`) : null
+          null
         )
       : null,
     bare
@@ -169,7 +173,7 @@ function Frame({ ctx, n, dark = false, credits = [], creditText = null, ki = fal
             View,
             { style: { flex: 1, paddingHorizontal: 16 } },
             narrow ? null : creditLine ? tx([T.small, { fontSize: 6.4, color: fg, textAlign: "center" }], creditLine) : null,
-            narrow ? null : ki ? tx([T.small, { fontSize: 6.4, color: fg, textAlign: "center" }], `${KI_SHORT} · Hinweise auf Seite ${ctx.notesPage}`) : null
+            null
           ),
           tx([T.small, { fontSize: 7.5, width: 54, textAlign: "right", color: fg, fontWeight: 500 }], `${pad2(n)} / ${pad2(ctx.total)}`)
         )
@@ -206,13 +210,43 @@ export function cutoutPad(img, width, height) {
   return CUTOUT_PADS[CUTOUT_PADS.length - 1];
 }
 
+// Druck 03.11. (Inhaber): a landscape or square studio shot must never be
+// cropped so that the piece is missing (101 Copenhagen Arc Dining Table lost
+// both ends in the upright half-page frame). imageStats.js marks studio shots
+// (uniform or gradient ground) with the box of the piece; here the "cover"
+// crop is moved so the box stays in view, and when the frame cannot hold the
+// box at all the picture is contained on the tone plate instead (the same
+// passepartout protected scenes get). Room scenes (no box) crop as before.
+export const FOCUS_MARGIN = 0.03;
+/**
+ * coverFocus(img, width, height) → { fit: "cover", position } | { fit: "contain" } | null
+ *   null when the image carries no subject box (scene, cut-out): default rules.
+ *   position = objectPosition ("x% y%") that keeps the box inside the visible window.
+ */
+export function coverFocus(img, width, height, margin = FOCUS_MARGIN) {
+  const s = img?.stats?.subject;
+  if (!s || !img.width || !img.height || !width || !height) return null;
+  const scale = Math.max(width / img.width, height / img.height);
+  const visW = Math.min(1, width / (scale * img.width));
+  const visH = Math.min(1, height / (scale * img.height));
+  const bw = Math.min(1, s.x1 - s.x0 + 2 * margin);
+  const bh = Math.min(1, s.y1 - s.y0 + 2 * margin);
+  if (bw > visW + 1e-6 || bh > visH + 1e-6) return { fit: "contain" };
+  const pos = (c, vis) => (vis >= 1 ? 50 : Math.round((Math.min(Math.max(c - vis / 2, 0), 1 - vis) / (1 - vis)) * 100));
+  return { fit: "cover", position: `${pos((s.x0 + s.x1) / 2, visW)}% ${pos((s.y0 + s.y1) / 2, visH)}%` };
+}
+
 function Pic({ img, width, height, item, kind = "auto", style, plate }) {
   const frame = { width, height, overflow: "hidden", ...(style || {}) };
   if (!img) return box([frame, { backgroundColor: plate || C.plate }]);
   const src = { data: img.data, format: "jpg" };
   const isProtected = Boolean(item?.protected);
   if (kind === "cover" || (!isProtected && !img.cutout)) {
-    return box(frame, h(Image, { src, style: { width, height, objectFit: "cover" } }));
+    const focus = kind === "cover" ? null : coverFocus(img, width, height);
+    if (focus?.fit === "contain") {
+      return box([frame, { backgroundColor: plate || C.plate, justifyContent: "center" }], h(Image, { src, style: { width: "100%", height: "100%", objectFit: "contain" } }));
+    }
+    return box(frame, h(Image, { src, style: { width, height, objectFit: "cover", ...(focus ? { objectPosition: focus.position } : {}) } }));
   }
   if (img.cutout) {
     // cut-out: 12 % air; protected cut-outs keep their white ground → white
@@ -289,13 +323,14 @@ function Cover({ ctx, n }) {
         ctx.images.hero ? h(Pic, { img: ctx.images.hero, width: W * 0.54, height: H, kind: "cover" }) : null
       ),
       box(
-        { flex: 1, paddingHorizontal: 44, paddingTop: 50, paddingBottom: 30, justifyContent: "space-between" },
+        // Druck 02.11.: rechts 30 pt Rand und Tagline 15 pt, damit kein Einzelwort umbricht
+        { flex: 1, paddingLeft: 44, paddingRight: 30, paddingTop: 50, paddingBottom: 30, justifyContent: "space-between" },
         box(
           {},
           h(Monogram, { height: 38 }),
           tx([T.overline, { marginTop: 34 }], "Persönliches Moodboard · Stil-Finder"),
           tx([T.display, { fontSize: 50, marginTop: 14 }], profile.name),
-          tx([T.italic, { marginTop: 14, color: C.inkSoft }], profile.tagline),
+          tx([T.italic, { marginTop: 14, fontSize: 15, color: C.inkSoft }], profile.tagline),
           box({ marginTop: 24 }, h(PaletteStrip, { palette: profile.palette, height: 5, width: 180 }))
         ),
         box(
@@ -437,7 +472,7 @@ function Analysis({ ctx, n }) {
                   )
                 )
               ),
-              tx([T.small, { marginTop: 10 }], "Regelbasierte Auswertung, keine KI. Die Antworten werden nicht gespeichert.")
+              tx([T.small, { marginTop: 10 }], "Auswertung nach festen Regeln. Die Antworten werden nicht gespeichert.")
             )
           : // P3.1: without an answer code the right column shows the palette large
             box(
@@ -449,7 +484,7 @@ function Analysis({ ctx, n }) {
                   box({ flex: 1, marginLeft: i ? 4 : 0, backgroundColor: c.hex, justifyContent: "flex-end", padding: 8 }, tx([T.small, { color: textOn(c.hex), fontWeight: 500 }], c.name))
                 )
               ),
-              tx([T.small, { marginTop: 10 }], "So entsteht Ihr Profil: Ihre Antworten im Stil-Finder werden nach festen Regeln gewichtet (keine KI). Das Profil mit den meisten Punkten bestimmt diese Präsentation.")
+              tx([T.small, { marginTop: 10 }], "So entsteht Ihr Profil: Ihre Antworten im Stil-Finder werden nach festen Regeln gewichtet. Das Profil mit den meisten Punkten bestimmt diese Präsentation.")
             )
       )
     )
@@ -507,7 +542,7 @@ function MoodboardB({ ctx, n }) {
         ...profile.keywords.slice(0, 3).map((k, i) => tx([T.italic, { fontSize: 30, lineHeight: 1.18, color: i === 1 ? C.brass700 : C.ink }], k))
       ),
       // QA Runde 2, P2.5: a material line of this profile instead of the tagline
-      ctx.materialLine ? box({ marginTop: 22, borderLeftWidth: 1, borderLeftColor: C.brass500, paddingLeft: 14, width: 380 }, tx([T.overline, { color: C.inkSoft }], "Ihre Materialien"), tx([T.italic, { fontSize: 14, marginTop: 5, color: C.inkSoft }], ctx.materialLine)) : null,
+      ctx.materialLine ? box({ marginTop: 22, borderLeftWidth: 1, borderLeftColor: C.brass500, paddingLeft: 14, width: 440 }, tx([T.overline, { color: C.inkSoft }], "Ihre Materialien"), tx([T.italic, { fontSize: 14, marginTop: 5, color: C.inkSoft }], ctx.materialLine)) : null,
       box({ marginTop: 28 }, h(Dots, { palette: profile.palette, size: 40, gap: 16 }))
     )
   );
@@ -1118,7 +1153,7 @@ function ListPage({ ctx, n, overline, title, intro, rows, ki = true, img, id, bo
     { ctx, n, ki, creditText: img ? ctx.images.materialCreditShort : null, id, bookmark },
     box(
       { paddingHorizontal: MX, paddingTop: MT },
-      h(Header, { overline, title, sub: intro, width: 560 }),
+      h(Header, { overline, title, sub: intro, width: 660 }),
       box({ flexDirection: "row", marginTop: 18 }, col(rows.slice(0, half), 0), col(rows.slice(half), half))
     ),
     img ? box({ position: "absolute", left: MX, right: MX, bottom: 52, height: bandH }, h(Pic, { img, width: W - 2 * MX, height: bandH, kind: "cover" })) : null
@@ -1270,7 +1305,7 @@ function Notes({ ctx, n }) {
     { ctx, n, id: "hinweise", bookmark: "Hinweise und Impressum" },
     box(
       { paddingHorizontal: MX, paddingTop: MT },
-      h(Header, { overline: "Hinweise", title: "Bildnachweis, KI und Datenschutz", width: 620 }),
+      h(Header, { overline: "Hinweise", title: "Bildnachweis und Datenschutz", width: 620 }),
       box(
         { flexDirection: "row", marginTop: 22 },
         box(
@@ -1291,9 +1326,8 @@ function Notes({ ctx, n }) {
           ctx.delivery !== "live" ? tx(nt, "Testbetrieb (Labs): Statt eines Versands liegt die Mail bis zu 7 Tage in einem internen Testpostfach und wird dann gelöscht.") : null,
           tx(nt, "Die QR-Codes enthalten nur Links auf platzhirsch.studio, ohne Nachverfolgung."),
           link(f.datenschutz, [T.body, { fontSize: 8.4, marginTop: 4, textDecoration: "underline" }], "platzhirsch.studio/de/datenschutz"),
-          tx([T.label, { marginTop: 12 }], "Kennzeichnung KI-Inhalte"),
-          tx(nt, KI_NOTE),
-          tx(nt, `Seiten mit solchen Texten tragen unten den Vermerk „${KI_SHORT}“. Bilder, Produktdaten und die Auswertung Ihrer Antworten stammen nicht aus KI.`)
+          tx([T.label, { marginTop: 12 }], "Hinweis zu den Texten"),
+          tx(nt, HINWEIS_NOTE)
         ),
         box(
           { flex: 1, paddingLeft: 22, borderLeftWidth: 0.6, borderLeftColor: C.stoneDeep },
@@ -1394,7 +1428,7 @@ function introPicture(input, exclude = new Set()) {
 export function archiveCreditLine(pages) {
   const list = [...new Set(pages)].filter(Boolean).sort((a, b) => a - b);
   if (!list.length) return null;
-  return `Einleitungsbild und Raumszenen S. ${list.join(", ")}: Website-Archiv Platzhirsch, Herstellerbilder; Hersteller vor öffentlicher Nutzung bestätigen.`;
+  return `Einleitungsbild und Raumszenen S. ${list.join(", ")}: Website-Archiv Platzhirsch, Herstellerbilder.`;
 }
 
 /** "Nussbaum poliert, Marmor mit Zeichnung, Samt Bordeaux und Messing" from the profile's material photos. */
@@ -1437,7 +1471,7 @@ export function buildDocument(input) {
   add("dark", (c, n) => h(DarkDivider, { ctx: c, n }), "Showroom & Café", "showroom");
   add("showroom", (c, n) => h(ShowroomPage, { ctx: c, n }));
   add("next", (c, n) => h(NextStep, { ctx: c, n }), "Nächster Schritt: Termin", "termin");
-  add("notes", (c, n) => h(Notes, { ctx: c, n }), "Bildnachweis, KI-Hinweis, Datenschutz, Impressum", "hinweise");
+  add("notes", (c, n) => h(Notes, { ctx: c, n }), "Bildnachweis, Datenschutz, Impressum", "hinweise");
   add("back", (c, n) => h(BackCover, { ctx: c, n }));
 
   const pageOf = (key) => plan.findIndex((p) => p.key === key) + 1;

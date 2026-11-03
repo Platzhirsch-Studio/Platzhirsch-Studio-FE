@@ -1,7 +1,7 @@
 // src/lib/shop/legal.js
 // Rechtliche Pflicht-Slots des Onlineshops (Accessoire-Welt, Nr. 29).
 // Bis 31.10.2026 waren alle Slots "kanzlei-offen" (text null). Jetzt trägt
-// jeder Slot einen Agenten-ENTWURF (siehe unten). Im Testmodus verlinkt der
+// jeder Slot einen ENTWURF (siehe unten). Im Testmodus verlinkt der
 // Warenkorb den Entwurf mit Marker „Entwurf“; in Produktion ist der Shop
 // wegen SHOP_MODE off ohnehin unsichtbar. SHOP_MODE=live verlangt
 // zusätzlich, dass alle Slots "freigegeben" sind (mode.js).
@@ -21,14 +21,14 @@
 //       vom 28.05.2022 entfallen, § 5 Abs 1 PAngV, https://www.gesetze-im-internet.de/pangv_2022/__5.html –,
 //       Liefer-/Versandkosten neben dem Preis § 6 PAngV).
 //
-// STAND 31.10.2026 (Inhaber-Entscheidung: Agenten entwerfen alles): Jeder
-// Slot hat jetzt einen ENTWURF (Wortlaut: ./legalTexte.js, Quellen dort je
-// Regel). status "entwurf" ≠ "freigegeben" → legalOpen() listet weiter alle
-// Slots, liveBlockers (mode.js) bleibt "recht:*", der Shop kann NICHT live
-// gehen. Freigabe erst nach Kanzlei-Durchsicht: status "freigegeben" +
-// freigabe { datum, durch, beleg } setzen und alle [PLATZHALTER: …] ersetzen.
+// STAND 02.11.2026: Jeder Slot trägt einen inhaltlich fertigen ENTWURF
+// (Wortlaut: ./legalTexte.js, Quellen dort je Regel). status "entwurf" ≠
+// "freigegeben" → legalOpen() listet weiter alle Slots, liveBlockers (mode.js)
+// bleibt "recht:*", der Shop kann NICHT live gehen. Freigabe erst durch
+// Kanzlei/Inhaber: status "freigegeben" + freigabe { datum, durch, beleg }
+// setzen und die verbliebenen [PLATZHALTER: …] ersetzen.
 // Rein, ohne "@/"-Importe.
-import { LEGAL_TEXT_HINWEIS, LEGAL_TEXT_STAND, LANG_HINWEIS, platzhalterIn, slotTexte } from "./legalTexte.js";
+import { LEGAL_TEXT_STAND, LANG_HINWEIS, platzhalterIn, slotTexte } from "./legalTexte.js";
 
 export const LEGAL_SLOT_STATUS = Object.freeze({ OFFEN: "kanzlei-offen", ENTWURF: "entwurf", FREI: "freigegeben" });
 
@@ -40,7 +40,6 @@ const slot = (id, titel, braucht, quellen) =>
     titel,
     braucht,
     status: LEGAL_SLOT_STATUS.ENTWURF,
-    hinweis: LEGAL_TEXT_HINWEIS,
     path: `/shop/recht/${id}`,
     text: Object.freeze(TEXTE[id]),
     sprache: "de",
@@ -54,7 +53,7 @@ const slot = (id, titel, braucht, quellen) =>
 
 export const SHOP_LEGAL = Object.freeze([
   slot("agb", "AGB (Onlinekauf Accessoires)", "Vertragsschluss, Zahlung, Lieferung, Eigentumsvorbehalt, Gewährleistung, Streitbeilegung", ["FAGG §§ 4, 7, 8, 13a", "ECG §§ 9, 10", "KSchG §§ 6, 7a, 7b, 14", "VGG idF BGBl. I Nr. 60/2026", "Rom-I-VO Art. 6", "EuGVVO Art. 18", "VO (EU) 2024/3228"]),
-  slot("widerruf", "Widerrufsbelehrung", "Wortlaut nach Anhang I Teil A FAGG, Ausnahmen (versiegelte Waren § 18 Abs 1 Z 5)", ["FAGG Anhang I Teil A idF BGBl. I Nr. 59/2026", "FAGG §§ 11–18"]),
+  slot("widerruf", "Widerrufsbelehrung", "Wortlaut nach Anhang I Teil A FAGG, Ausnahmen (§ 18 Abs 1 Z 3 und Z 5), Online-Rücktrittsfunktion § 13a FAGG (/shop/recht/widerruf-formular)", ["FAGG Anhang I Teil A idF BGBl. I Nr. 59/2026", "FAGG §§ 11–18", "FAGG § 13a"]),
   slot("widerrufsformular", "Muster-Widerrufsformular", "Anhang I Teil B FAGG, mit Firmenwortlaut und Anschrift", ["FAGG Anhang I Teil B idF BGBl. I Nr. 59/2026"]),
   slot("versand", "Versand- und Lieferbedingungen", "Lieferländer, Lieferzeit (lieferzeit.js), Versandkosten-Hinweis, Bruch/Transportschaden, Abholung", ["FAGG §§ 4 Abs 1 Z 7, 8 Abs 3", "KSchG §§ 7a, 7b"]),
   slot("datenschutz", "Datenschutz-Ergänzung (Stripe, Versanddienst, Bestelldaten)", "Zwecke, Rechtsgrundlagen, Empfänger (Stripe, LetMeShip + Carrier), Speicherdauer (BAO/UGB 7 Jahre)", ["DSGVO Art. 6, 13, 45, 46", "BAO § 132", "UGB § 212"]),

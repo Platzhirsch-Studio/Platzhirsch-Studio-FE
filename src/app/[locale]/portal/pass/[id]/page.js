@@ -12,6 +12,7 @@ import { ITEM_STATUS, PASS_REQUESTS, focusRing } from "@/components/Portal/Docs/
 import { addMonths, getPassEntry } from "@/components/Portal/Docs/server/passes";
 import PassVisual from "@/components/Portal/Docs/PassVisual";
 import { portalMetadata } from "@/lib/portal/metadata";
+import { ADDRESS, PHONE_DISPLAY, SITE_NAME } from "@/lib/site";
 
 export const generateMetadata = portalMetadata({
   title: "Produktpass",
@@ -21,9 +22,12 @@ export const generateMetadata = portalMetadata({
 const FOLGT = <span className="text-ink/75">folgt bei Übergabe</span>;
 
 function Row({ label, children }) {
+  // Druck 02.11.: im Ausdruck Flex statt Grid (Beschriftung 180 px, Wert daneben) und `break-after: auto` auf dem dt –
+  // die globale Druckregel „dt bleibt bei seinem Wert“ (break-after: avoid) kettete in Chromium alle Zeilen aneinander,
+  // die Stammdaten-Karte wurde unteilbar und rutschte komplett auf Seite 2 (Seite 1 blieb fast leer).
   return (
-    <div className="grid gap-0.5 py-3 sm:grid-cols-[180px_1fr] sm:gap-4">
-      <dt className="text-[13px] font-semibold text-ink/70">{label}</dt>
+    <div className="grid gap-0.5 py-3 sm:grid-cols-[180px_1fr] sm:gap-4 print:flex print:gap-4">
+      <dt className="text-[13px] font-semibold text-ink/70 print:w-[180px] print:shrink-0 print:break-after-auto!">{label}</dt>
       <dd className="text-[15px] text-ink">{children}</dd>
     </div>
   );
@@ -45,6 +49,11 @@ export default async function PassDetailPage({ params, searchParams }) {
 
   return (
     <>
+      {/* Druck 02.11.: Kopfzeile des Ausdrucks – Studio, Pass-Nr., Druckdatum, Adresse des Passes. Der Demo-Hinweis
+          bleibt klein stehen, solange die Daten Demo-Daten sind (Mock-Adapter). */}
+      <p className="hidden border-b border-ink/10 pb-3 text-[13px] text-ink/70 print:block" data-pass-print-head="">
+        {SITE_NAME} · {ADDRESS.street}, {ADDRESS.postalCode} {ADDRESS.city} · {PHONE_DISPLAY} · Produktpass {pass.id} · Stand {formatDate(new Date().toISOString().slice(0, 10))} · {passUrl}
+      </p>
       <DevDataNotice show={adapterName() === "mock"} />
       <DocsPageHeader back={{ href: "/de/portal/pass", label: "Alle Produktpässe" }} overline={pass.brand} title={pass.product} intro={item.variant}>
         <div className="mt-4 flex flex-wrap gap-2">
@@ -55,8 +64,10 @@ export default async function PassDetailPage({ params, searchParams }) {
 
       <PassVisual pass={pass} item={item} hero className="mb-5 border border-ink/10 sm:aspect-[16/7] lg:mb-6" />
 
-      <div className="grid gap-5 lg:grid-cols-3 lg:gap-6">
-        <div className="space-y-5 lg:col-span-2 lg:space-y-6">
+      {/* Druck 02.11.: Karten untereinander, Zeilen und Überschriften nicht über den Seitenumbruch (ganze Karten zu
+          meiden schob die Stammdaten auf Seite 2); Formular, Platzhalter und Download bleiben am Bildschirm. */}
+      <div className="grid gap-5 lg:grid-cols-3 lg:gap-6 print:block [&>div>section]:print:mb-4 [&_dl>div]:print:break-inside-avoid [&_h2]:print:break-after-avoid">
+        <div className="space-y-5 lg:col-span-2 lg:space-y-6 print:block print:space-y-0">
           <Card aria-labelledby="pass-daten">
             <h2 id="pass-daten" className="font-display text-xl text-ink sm:text-2xl">
               Stammdaten
@@ -116,7 +127,7 @@ export default async function PassDetailPage({ params, searchParams }) {
             )}
           </Card>
 
-          <Card aria-labelledby="pass-anfrage" id="anfrage" className="scroll-mt-32">
+          <Card aria-labelledby="pass-anfrage" id="anfrage" className="scroll-mt-32 print:hidden">
             <h2 id="pass-anfrage" className="font-display text-xl text-ink sm:text-2xl">
               Service, Neubezug oder Inzahlungnahme
             </h2>
@@ -125,8 +136,8 @@ export default async function PassDetailPage({ params, searchParams }) {
           </Card>
         </div>
 
-        <div className="space-y-5 lg:space-y-6">
-          <Card aria-labelledby="pass-fotos">
+        <div className="space-y-5 lg:space-y-6 print:block print:space-y-0">
+          <Card aria-labelledby="pass-fotos" className={photos.length ? "" : "print:hidden"}>
             <h2 id="pass-fotos" className="font-display text-xl text-ink">
               Fotos und Unterlagen
             </h2>
@@ -172,17 +183,18 @@ export default async function PassDetailPage({ params, searchParams }) {
             </div>
             <a
               href={`/api/portal/dokumente/pass/${encodeURIComponent(pass.id)}?download=1`}
-              className={`mt-4 inline-flex min-h-11 items-center gap-2 border border-ink/20 px-4 text-sm text-ink hover:border-ink ${focusRing}`}
+              className={`mt-4 inline-flex min-h-11 items-center gap-2 border border-ink/20 px-4 text-sm text-ink hover:border-ink print:hidden ${focusRing}`}
             >
               <Download size={16} aria-hidden="true" /> Daten herunterladen (JSON)
             </a>
           </Card>
 
-          <Card tone="dark" aria-labelledby="pass-kontakt">
+          {/* Druck 02.11.: Kontaktkarte im Ausdruck hell (dunkle Fläche spart Toner, Text bleibt lesbar). */}
+          <Card tone="dark" aria-labelledby="pass-kontakt" className="print:border-ink/10 print:bg-white print:text-ink">
             <h2 id="pass-kontakt" className="font-display text-xl">
               Fragen zu diesem Stück?
             </h2>
-            <p className="mt-1 text-sm text-white/80">{portal.customer.advisor?.name}</p>
+            <p className="mt-1 text-sm text-white/80 print:text-ink/70">{portal.customer.advisor?.name}</p>
             <p className="mt-3 text-sm">
               <a href={`tel:${portal.customer.advisor?.phone?.replace(/\s/g, "")}`} className={`inline-flex min-h-11 items-center hover:underline ${focusRing}`}>
                 {portal.customer.advisor?.phone}

@@ -32,8 +32,8 @@ const IMAGE_SIZES_DESKTOP =
 // request (?thema=yacht → yacht interior …, lib/forms/beratungContext.js
 // headerTopic). Pictures: only images the site already shows on its own
 // pages (own showroom/kitchen/outdoor photos, the Ezarri reference image under
-// the Ezarri dealer permission with source line, the yacht concept image WITH
-// its visible AI label – AI Act Art. 50). Objekt and Architektur keep the
+// the Ezarri dealer permission with source line, the yacht concept rendering
+// WITH its caption "Visualisierung (Rendering)" – no AI image, 03.11.2026). Objekt and Architektur keep the
 // general picture: there is no own hotel or office project to show.
 // Runde 4 (ux P1): the core USP in one line for phones (Inhaber-Entscheidung Nr. 8).
 const PHONE_USP = {
@@ -48,7 +48,9 @@ const TOPIC_IMAGES = {
   sofa: { src: "/Images/Wohnen/bannerImage4.jpg" },
   outdoor: { src: "/Images/Outdoor/bannerImage1.jpg" },
   ezarri: { src: "/ezarri/allgemein/anw-azur-50-iris-mosaic-ezarri-pool-1-1600.webp", source: true },
-  yacht: { src: "/labs/yacht/daycruiser-seelicht-kabine-1200.webp", ai: true },
+  // 03.11.2026 (Inhaber, KI-Bilder raus): the Blender rendering (v2, renders.json kiGeneriert: false)
+  // with the caption "Visualisierung (Rendering)" – the former v1 file was an AI image.
+  yacht: { src: "/labs/yacht/daycruiser-seelicht-kabine-v2-1200.webp", render: true },
 };
 
 /**
@@ -114,7 +116,7 @@ export function BeratungHeader({ heroImage, formId = "anfrage", topic = null }) 
             preload
             fetchPriority="high"
           >
-            {picture?.ai && <KiLabel className="absolute bottom-3 left-3" />}
+            {picture?.render && <KiLabel ki={false} className="absolute bottom-3 left-3" />}
             {picture?.source && (
               <span className="absolute bottom-0 right-0 bg-ink-deep/80 px-2 py-1 text-small text-paper">{t("context.imageSource")}</span>
             )}

@@ -31,5 +31,6 @@ test("Zalto Gravitas Omega: erstes Galeriebild ist der Freisteller", () => {
 test("Shop-Produktseite nutzt shopGalerie", async () => {
   const fs = await import("node:fs");
   const src = fs.readFileSync(new URL("../../src/components/Katalog/ShopProduktDetail.js", import.meta.url), "utf8");
-  assert.match(src, /const bilder = shopGalerie\(g\)/);
+  // 03.11.2026: Hero zuerst (kachelBild.js mitDetailBild; Shop-Welt = Freisteller), Rest in shopGalerie-Reihenfolge.
+  assert.match(src, /const bilder = mitDetailBild\(p, shopGalerie\(g\)\)/);
 });

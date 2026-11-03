@@ -40,6 +40,7 @@ import MerkenButton from "./MerkenButton";
 import ShopKachel, { RASTER_4 } from "./ShopKachel";
 import { kategoriePlural } from "@/lib/shop/startCopy";
 import { shopGalerie } from "./shopGalerie";
+import { leitbild, mitDetailBild } from "./kachelBild";
 import { SHOP_CRUMBS } from "./shopCrumbs";
 import { studioFassung } from "./studioFond";
 import { massText } from "./kaufAuswahl";
@@ -93,7 +94,10 @@ export default function ShopProduktDetail({ locale, p, marke }) {
   // sonst eröffnet z. B. Zalto Gravitas Omega mit einem 16:7-Szenenfoto und die Bühne wird flach.
   // Zalto: Hauptbild als seitlich verlängerte 5:4-Fassung (studioFond.js) – füllt die Bühne statt als
   // schmales graues 2:3-Rechteck zwischen hellen Seitenbalken zu stehen (Optik-QA r1).
-  const bilder = shopGalerie(g).map((b, i) => {
+  // Inhaber 03.11.2026: Hero = detailBild (kachelBild.js; Shop-Welt: Freisteller zuerst wie Kachel), der Rest
+  // folgt in der shopGalerie-Reihenfolge ohne Doppelung. Merkliste/„Zuletzt angesehen“: Kachelbild (leitbild).
+  const leit = leitbild(p);
+  const bilder = mitDetailBild(p, shopGalerie(g)).map((b, i) => {
     const studio = i === 0 ? studioFassung(b.src, p.marke, "5x4") : null;
     return studio ? { ...b, src: studio, width: Math.round(b.height * 1.25), height: b.height } : b;
   });
@@ -118,7 +122,7 @@ export default function ShopProduktDetail({ locale, p, marke }) {
   const merkItem = {
     id: `katalog-${p.slug}`,
     name: `${marke.name} ${p.name}`,
-    image: studioFassung((g.freisteller[0] || p.bilder[0])?.src, p.marke, "frei") || (g.freisteller[0] || p.bilder[0])?.src || null,
+    image: studioFassung(leit?.src, p.marke, "frei") || leit?.src || null,
     category: kat,
     href: produktPath(p.welt, p.slug),
     slug: p.slug,

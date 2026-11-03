@@ -46,9 +46,11 @@ export default async function NewsletterAusgabePage({ params, searchParams }) {
   if (!a) notFound();
 
   return (
-    <div className="bg-surface pt-10 pb-section text-text md:pt-14">
+    // Druck 02.11.: Papier bleibt weiß.
+    <div className="bg-surface pt-10 pb-section text-text md:pt-14 print:bg-white">
       {vorschau && (
-        <div role="note" className="-mt-10 mb-10 border-b border-line-strong bg-stone md:-mt-14">
+        // Druck 02.11.: Vorschau-Banner ist Entwicklungsstand – nicht im Ausdruck.
+        <div role="note" className="-mt-10 mb-10 border-b border-line-strong bg-stone md:-mt-14 print:hidden">
           <Container className="py-4">
             <p className="text-ui text-text">Vorschau im Entwicklungsserver</p>
             <p className="mt-1 max-w-measure text-small text-text">
@@ -69,7 +71,7 @@ export default async function NewsletterAusgabePage({ params, searchParams }) {
         <div className="mt-stack-m grid gap-x-grid lg:grid-cols-12">
           <div className="lg:col-span-8 lg:col-start-2">
             <NewsletterAusgabe ausgabe={a} vorschau={vorschau} />
-            <div className="mt-12 border-t border-line pt-8">
+            <div className="mt-12 border-t border-line pt-8 print:hidden">
               <p className="text-body">Möchten Sie die nächste Ausgabe per E-Mail bekommen?</p>
               <p className="mt-3 flex flex-col gap-3 sm:flex-row sm:gap-8">
                 <Link href="/newsletter" className="inline-flex min-h-11 items-center underline decoration-line-strong underline-offset-4 hover:decoration-current">

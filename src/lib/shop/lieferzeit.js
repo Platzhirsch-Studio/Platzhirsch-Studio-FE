@@ -1,10 +1,9 @@
 // src/lib/shop/lieferzeit.js
 // Lieferzeit-Angabe des Onlineshops (Accessoire-Welt, Inhaber-Entscheidung
-// Nr. 29; Owner-Entscheidung 31.10.2026: Agenten entwerfen, Inhaber/Kanzlei
-// geben frei). Eine Quelle für die Zeile „Lieferzeit“ in der Zusammenfassung
+// Nr. 29; Entwurf vom 31.10.2026, Inhaber/Kanzlei geben frei). Eine Quelle für die Zeile „Lieferzeit“ in der Zusammenfassung
 // vor dem Bestell-Button (ShopCart) und das Badge „Sofort lieferbar“ (KaufBox).
 //
-// STATUS: ENTWURF – von KI-Agenten vorgeschlagen, Kanzlei-Durchsicht empfohlen.
+// STATUS: ENTWURF, Stand 31.10.2026 – Prüfung durch Kanzlei offen.
 // Kein Wert ist freigegeben. Die Zahlen sind bewusst KONSERVATIVE Vorschläge
 // (Versand ab Lochau mit Paketdienst AT/DE plus Puffer für Verpackung Glas/
 // Kerzen), keine Herstellerangaben. Herstellerlieferzeiten für Bestellware
@@ -59,7 +58,7 @@ export const LIEFERZEIT_STATUS = Object.freeze({ ENTWURF: "entwurf", FREI: "frei
 
 export const LIEFERZEIT_META = Object.freeze({
   status: LIEFERZEIT_STATUS.ENTWURF,
-  hinweis: "Entwurf von KI-Agenten, Kanzlei-Durchsicht empfohlen",
+  hinweis: "Entwurf, Stand 31.10.2026 – Prüfung durch Kanzlei offen",
   stand: "2026-10-31",
   zustaendig: "Inhaber (Werte) + Kanzlei (Wortlaut, Fristbeginn, Werktag-Definition)",
 });

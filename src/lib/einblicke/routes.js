@@ -72,7 +72,7 @@ export const TABLE = [
 // Statische Seiten (Pfad nach der Sprache), Stand 29.10.2026 – aus den
 // Ordnern unter src/app/[locale] ohne dynamische Segmente und ohne EXCLUDED.
 export const STATIC = [
-  "/3d-ansicht", "/accessoires", "/accessoires/produkte", "/accessoires/suche", "/adventsabend", "/arbeitsweise", "/architekten", "/atelierverkauf", "/bad-wellness", "/bad-wellness/produkte", "/barrierefreiheit", "/beratung", "/bewerten",
+  "/3d-ansicht", "/accessoires", "/accessoires/produkte", "/accessoires/suche", "/adventsabend", "/agb", "/arbeitsweise", "/architekten", "/atelierverkauf", "/bad-wellness", "/bad-wellness/produkte", "/barrierefreiheit", "/beratung", "/bewerten",
   "/bodensee-licht", "/concierge", "/datenschutz", "/designermoebel-appenzell", "/designermoebel-arlberg",
   "/designermoebel-bregenz", "/designermoebel-dornbirn", "/designermoebel-feldkirch", "/designermoebel-friedrichshafen",
   "/designermoebel-kempten", "/designermoebel-konstanz", "/designermoebel-liechtenstein", "/designermoebel-lindau",
@@ -88,7 +88,7 @@ export const STATIC = [
   "/outdoor-gartenplanung", "/outdoor-kueche", "/outdoor-winterservice", "/pflege-service", "/produkte", "/projekte", "/ratgeber", "/regionen",
   "/sauna-kaufen", "/showroom", "/sofaplaner", "/stil-finder", "/swim-spa", "/termin", "/termin/bestaetigen", "/termin/verwalten",
   "/ueber-uns/karriere", "/ueber-uns/marken", "/ueber-uns/partner", "/ueber-uns/platzhirsch", "/ueber-uns/presse",
-  "/ueber-uns/team", "/ueber-uns/team/harald-menghin", "/whirlpool-kaufen", "/wohnzimmer-einrichten-vorarlberg", "/wunschliste", "/wunschliste/verwalten", "/yacht-interior",
+  "/ueber-uns/team", "/ueber-uns/team/harald-menghin", "/whirlpool-kaufen", "/widerruf", "/wohnzimmer-einrichten-vorarlberg", "/wunschliste", "/wunschliste/verwalten", "/yacht-interior",
 ];
 const KNOWN = new Set([...STATIC, ...Object.values(ROUTES).flatMap((t) => Object.values(t))]);
 

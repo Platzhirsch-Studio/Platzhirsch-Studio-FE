@@ -8,7 +8,10 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { LEGAL_SLOT_STATUS, SHOP_LEGAL, legalOpen, legalPlatzhalter, legalSlot, legalSlotDraft, legalSlotReleased } from "../../src/lib/shop/legal.js";
-import { AGB, ANBIETER, PLATZHALTER, WIDERRUFSFORMULAR, ausnahmenFuer, blocksText, lieferzeitZeilen, platzhalterIn, slotTexte, versandbedingungen, widerrufsbelehrung } from "../../src/lib/shop/legalTexte.js";
+import { AGB, ANBIETER, PLATZHALTER, WIDERRUFSFORMULAR, WIDERRUF_PATH, WIDERRUF_URL, ausnahmenFuer, blocksText, lieferzeitZeilen, platzhalterIn, slotTexte, versandbedingungen, widerrufsbelehrung } from "../../src/lib/shop/legalTexte.js";
+import { BESTELLNUMMER_RE, erklaerungText, recordShopWithdrawal, shopWiderrufHandler, shopWiderrufSchema } from "../../src/lib/shop/widerruf.js";
+import { createMemoryOrderAdapter } from "../../src/lib/shop/orderStore.js";
+import { createRateLimiter } from "../../src/lib/forms/rateLimit.js";
 import { vertragsbestaetigungEntwurf } from "../../src/lib/shop/orderMail.js";
 import { liveBlockers } from "../../src/lib/shop/mode.js";
 import { SHOP_RELEASE } from "../../src/lib/shop/release.js";
@@ -22,7 +25,7 @@ test("alle fünf Slots haben einen Entwurf, keiner ist freigegeben", () => {
   assert.deepEqual(SHOP_LEGAL.map((s) => s.id), ["agb", "widerruf", "widerrufsformular", "versand", "datenschutz"]);
   for (const s of SHOP_LEGAL) {
     assert.equal(s.status, LEGAL_SLOT_STATUS.ENTWURF, s.id);
-    assert.equal(s.hinweis, "Entwurf von KI-Agenten, Kanzlei-Durchsicht empfohlen");
+    assert.equal(s.hinweis, undefined, "kein Herkunftshinweis in den Slot-Daten (Inhaber 02.11.)");
     assert.ok(legalSlotDraft(s), s.id);
     assert.equal(legalSlotReleased(s), false, s.id);
     assert.equal(s.path, `/shop/recht/${s.id}`);
@@ -86,7 +89,9 @@ test("Varianten: Teillieferung (lit c), Rücksendekosten wir, Widerrufs-URL", ()
   assert.ok(c.includes("Wir tragen die Kosten der Rücksendung der Waren."));
   assert.ok(c.includes("online unter https://platzhirsch.studio/de/shop/widerruf ausüben"));
   assert.equal(platzhalterIn(widerrufsbelehrung({ widerrufsUrl: "https://x.example/w" })).length, 0);
-  assert.deepEqual(platzhalterIn(widerrufsbelehrung()), [PLATZHALTER.widerrufsfunktion]);
+  assert.deepEqual(platzhalterIn(widerrufsbelehrung()), [], "Widerrufsfunktion gebaut – kein Platzhalter mehr");
+  assert.ok(all(widerrufsbelehrung()).includes(`online unter ${WIDERRUF_URL} ausüben`));
+  assert.equal(WIDERRUF_URL, `https://platzhirsch.studio/de${WIDERRUF_PATH}`);
 });
 
 test("Muster-Widerrufsformular wörtlich nach Anhang I Teil B FAGG", () => {
@@ -105,12 +110,13 @@ test("Muster-Widerrufsformular wörtlich nach Anhang I Teil B FAGG", () => {
     assert.ok(t.includes(satz), satz);
 });
 
-test("Ausnahme § 18 Abs 1 Z 5 FAGG nur für Parfum, keine Personalisierung (Z 3)", () => {
+test("Ausnahmen § 18 Abs 1 Z 5 (Parfum) und Z 3 (Sonderanfertigung, Inhaber 02.11.)", () => {
   assert.equal(ausnahmenFuer(["parfum", "glas"]).length, 1);
   assert.equal(ausnahmenFuer(["duftkerze", "glas", "raumduft", "bildband"]).length, 0);
+  assert.equal(ausnahmenFuer(["sonderanfertigung"]).length, 1);
   const t = all(slotTexte().widerruf);
   assert.match(t, /versiegelt geliefert/);
-  assert.doesNotMatch(t, /Kundenspezifikation|personalisiert/);
+  assert.match(t, /nach Kundenspezifikationen angefertigt/);
 });
 
 test("AGB: KSchG-konform, kein OS-Link, Button-Wortlaut, Rom I, VGG 2026", () => {
@@ -127,7 +133,21 @@ test("AGB: KSchG-konform, kein OS-Link, Button-Wortlaut, Rom I, VGG 2026", () =>
   // verbotene/überholte Klauseln
   assert.doesNotMatch(t, /ec\.europa\.eu\/consumers\/odr|OS-Plattform/i, "kein Link zur EU-OS-Plattform (VO 2024/3228)");
   assert.doesNotMatch(t, /Schriftform/, "keine Schriftformklausel (§ 10 Abs 3 KSchG)");
-  assert.doesNotMatch(t, /haften nicht|Haftung .*ausgeschlossen/, "kein Haftungsausschluss (§ 6 Abs 1 Z 9 KSchG)");
+  // Haftungsbeschränkung (Inhaber 02.11.) nur in den Grenzen des § 6 Abs 1 Z 9 KSchG, DE-Rückausnahme Kardinalpflichten.
+  assert.match(t, /leichter Fahrlässigkeit haften wir nicht/);
+  assert.match(t, /gilt nicht für Personenschäden, für Ansprüche nach dem Produkthaftungsgesetz/);
+  assert.match(t, /grob fahrlässig/);
+  assert.match(t, /wesentlicher Vertragspflichten/);
+  // Gerichtsstand (Inhaber 02.11.): Verbraucher § 14 KSchG, Unternehmer Wien.
+  assert.match(t, /Gericht in Wien ausschließlich zuständig/);
+  assert.match(t, /13\.2 Für Verbraucherinnen und Verbraucher gelten die gesetzlichen Gerichtsstände/);
+  // Weitere Inhaber-Vorgaben 02.11.: Rücksendekosten vorab, Wertersatz, Zurückbehaltung, Fixtermin-Vorbehalt, Eigentumsvorbehalt.
+  assert.match(t, /7\.3 Widerrufen Sie den Vertrag, tragen Sie die unmittelbaren Kosten der Rücksendung/);
+  assert.match(t, /§ 14 Abs 2 FAGG/);
+  assert.match(t, /keine Fixtermine/);
+  assert.match(t, /vollständigen Bezahlung unser Eigentum/);
+  assert.ok(t.includes(`„Vertrag widerrufen“ erklären (${WIDERRUF_URL})`));
+  assert.doesNotMatch(t, /KI|Agent/, "kein Herkunftshinweis im Text");
   assert.doesNotMatch(t, /möglichst nahe/, "keine Ersetzungsklausel");
   assert.doesNotMatch(t, /Schlichtung für Verbrauchergeschäfte/, "Schlichtung nur, wenn Impressum Bereitschaft erklärt");
 });
@@ -157,7 +177,10 @@ test("Datenschutz Shop: Stripe, LetMeShip, Rechtsgrundlagen, 7 Jahre § 132 BAO"
 
 test("Platzhalter sind sichtbar und gelistet", () => {
   const p = legalPlatzhalter();
-  for (const v of [PLATZHALTER.widerrufsfunktion, PLATZHALTER.zahlungsartenOnline, PLATZHALTER.letmeship, PLATZHALTER.gewaehrleistungsMitteilung]) assert.ok(p.includes(v), v);
+  for (const v of [PLATZHALTER.zahlungsartenOnline, PLATZHALTER.zahlungsartenShowroom, PLATZHALTER.letmeship, PLATZHALTER.gewaehrleistungsMitteilung]) assert.ok(p.includes(v), v);
+  assert.equal(p.length, 4, "nur noch die vier Inhaber-Angaben offen (Zahlungsarten online/Showroom, LetMeShip-Anschrift, Anhang II)");
+  assert.equal(PLATZHALTER.widerrufsfunktion, undefined);
+  assert.equal(PLATZHALTER.versanddienste, undefined);
   for (const v of p) assert.match(v, /^\[PLATZHALTER: /);
 });
 
@@ -181,7 +204,9 @@ test("Vertragsbestätigung (Entwurf): AGB + Widerruf + Formular, nichts versende
   assert.match(m.betreff, /PH-S-261031-ABC123/);
   for (const x of ["WIDERRUFSBELEHRUNG", "Muster-Widerrufsformular".toUpperCase(), "ALLGEMEINE GESCHÄFTSBEDINGUNGEN", "239,90 €", "1 × Cire Trudon Eau de Parfum (100 ml)", "Ausschluss des Widerrufsrechts", ANBIETER.uid]) assert.ok(m.text.includes(x), x);
   assert.deepEqual(m.enthaelt.filter((x) => ["agb", "widerrufsbelehrung", "widerrufsformular"].includes(x)), ["widerrufsbelehrung", "widerrufsformular", "agb"]);
-  assert.ok(m.platzhalter.includes(PLATZHALTER.widerrufsfunktion));
+  assert.ok(m.text.includes(WIDERRUF_URL), "Rücktrittsfunktion in der Vertragsbestätigung");
+  assert.ok(m.platzhalter.includes(PLATZHALTER.zahlungsartenOnline));
+  assert.equal(m.hinweis, undefined);
   assert.doesNotMatch(m.text, /Anmerkung|Kanzlei prüfen/, "keine internen Notizen in der Mail");
   const ohne = vertragsbestaetigungEntwurf({ ...order, zeilen: [order.zeilen[1]], lieferart: "abholung", zahlung: "vorort" }, { teillieferung: true });
   assert.doesNotMatch(ohne.text, /Ausschluss des Widerrufsrechts/);
@@ -193,4 +218,101 @@ test("Button bei Abholung + Zahlung vor Ort: „Zahlungspflichtig bestellen“ (
   for (const l of ["de", "en", "fr", "it"]) assert.equal(SHOP_COPY[l].reserveSubmit, SHOP_COPY[l].buy, l);
   assert.equal(SHOP_COPY.de.reserveSubmit, "Zahlungspflichtig bestellen");
   assert.doesNotMatch(SHOP_COPY.de.legalNote, /\[Wortlaut/);
+});
+
+// ---------- Online-Rücktrittsfunktion § 13a FAGG (widerruf.js) ----------
+
+const ORDER_ID = "PH-S-261102-ABC123";
+const ERKLAERUNG = { bestellung: ORDER_ID, bestelltAm: "2026-11-02", erhaltenAm: "", name: "Test Kundin", anschrift: "Teststraße 1, 6900 Bregenz", email: "kundin@example.invalid", artikel: "2 × Riedel Glas", bestaetigt: true };
+
+async function widerrufCtx({ mode = "test", mailer } = {}) {
+  const store = createMemoryOrderAdapter();
+  await store.put("bestellungen", ORDER_ID, { id: ORDER_ID, status: "bezahlt", kunde: { name: "Test Kundin", email: "Kundin@example.invalid" }, verlauf: [] });
+  return { store, now: () => Date.parse("2026-11-02T10:00:00Z"), env: { NODE_ENV: "test" }, mode, mailer };
+}
+
+test("Widerruf: Schema = Felder des Muster-Formulars, Bestellnummer-Muster", () => {
+  assert.ok(BESTELLNUMMER_RE.test(ORDER_ID));
+  assert.equal(shopWiderrufSchema.safeParse(ERKLAERUNG).success, true);
+  assert.equal(shopWiderrufSchema.safeParse({ ...ERKLAERUNG, bestaetigt: false }).success, false);
+  assert.equal(shopWiderrufSchema.safeParse({ ...ERKLAERUNG, bestelltAm: "02.11.2026" }).success, false);
+  assert.equal(shopWiderrufSchema.safeParse({ ...ERKLAERUNG, anschrift: "" }).success, false);
+  // Inhaber 03.11.2026: Bestellnummer optional – die Funktion gilt auch für Verträge außerhalb des Onlineshops (/widerruf)
+  const ohne = shopWiderrufSchema.safeParse({ ...ERKLAERUNG, bestellung: "" });
+  assert.equal(ohne.success, true);
+  assert.equal(ohne.data.bestellung, "");
+  assert.equal(shopWiderrufSchema.safeParse({ ...ERKLAERUNG, bestellung: undefined }).success, true);
+});
+
+test("Widerruf ohne Bestellnummer (Vertrag außerhalb des Shops): abgelegt, nicht zugeordnet, Erklärung ohne Nummer", async () => {
+  const ctx = await widerrufCtx({ mode: "test" });
+  const r = await recordShopWithdrawal(ctx, { ...ERKLAERUNG, bestellung: "" });
+  assert.equal(r.zugeordnet, false);
+  const w = await ctx.store.get("widerrufe", r.id);
+  assert.equal(w.bestellung, null);
+  assert.equal(w.angabe, null);
+  assert.match(erklaerungText({ ...ERKLAERUNG, bestellung: "" }), /Bestellnummer: – \(Vertrag außerhalb des Onlineshops\)/);
+  const o = await ctx.store.get("bestellungen", ORDER_ID);
+  assert.equal(o.widerruf, undefined, "fremde Bestellung bleibt unberührt");
+});
+
+test("Widerruf im Testmodus: abgelegt, Bestellung markiert, KEINE Mail", async () => {
+  let gesendet = 0;
+  const ctx = await widerrufCtx({ mode: "test", mailer: { send: async () => { gesendet++; return { ok: true }; } } });
+  const r = await recordShopWithdrawal(ctx, ERKLAERUNG);
+  assert.match(r.id, /^WS-[A-Z0-9]{4}-[A-Z0-9]{4}$/);
+  assert.equal(r.zugeordnet, true);
+  assert.equal(r.mail, "testmodus");
+  assert.equal(gesendet, 0);
+  const o = await ctx.store.get("bestellungen", ORDER_ID);
+  assert.equal(o.widerruf.id, r.id);
+  assert.equal(o.verlauf.at(-1).status, "widerruf_eingegangen");
+  const w = await ctx.store.get("widerrufe", r.id);
+  assert.equal(w.bestellung, ORDER_ID);
+  assert.equal(w.mail, "testmodus");
+});
+
+test("Widerruf live: Eingangsbestätigung mit Inhalt, Datum, Uhrzeit; Unbekanntes ohne Freitext", async () => {
+  const mails = [];
+  const mailer = { send: async (m) => { mails.push(m); return { ok: true }; } };
+  const ctx = await widerrufCtx({ mode: "live", mailer });
+  const r = await recordShopWithdrawal(ctx, ERKLAERUNG);
+  assert.equal(r.mail, "gesendet");
+  assert.equal(mails[0].to, ERKLAERUNG.email);
+  for (const x of [r.id, "2. November 2026", "11:00", "2 × Riedel Glas", "Teststraße 1", "Bestellnummer: " + ORDER_ID, "ursprüngliche Zahlungsmittel"]) assert.ok(mails[0].text.includes(x), x);
+  const fremd = await recordShopWithdrawal(ctx, { ...ERKLAERUNG, email: "andere@example.invalid" });
+  assert.equal(fremd.zugeordnet, false);
+  assert.equal(fremd.mail, "gesendet");
+  assert.doesNotMatch(mails[1].text, /Riedel|Teststraße/, "kein Freitext an nicht zugeordnete Adressen");
+  const o = await ctx.store.get("bestellungen", ORDER_ID);
+  assert.equal(o.widerruf.id, r.id, "fremde Erklärung ändert die Bestellung nicht");
+});
+
+test("POST /api/shop/widerruf: 404 bei SHOP_MODE off, sonst Eingangsnummer", async () => {
+  const req = (body) => new Request("https://platzhirsch.studio/api/shop/widerruf", { method: "POST", headers: { "content-type": "application/json", host: "platzhirsch.studio", origin: "https://platzhirsch.studio" }, body: JSON.stringify(body) });
+  const base = await widerrufCtx();
+  const off = shopWiderrufHandler({ ...base, env: { SHOP_MODE: "off" } }, { limiter: createRateLimiter() });
+  assert.equal((await off(req(ERKLAERUNG))).status, 404);
+  const on = shopWiderrufHandler({ ...base, env: { SHOP_MODE: "test", NODE_ENV: "test" }, payments: { mailer: { send: async () => ({ ok: true }) } } }, { limiter: createRateLimiter() });
+  const res = await on(req({ ...ERKLAERUNG, _t: 10_000 }));
+  assert.equal(res.status, 200);
+  const j = await res.json();
+  assert.equal(j.success, true);
+  assert.match(j.id, /^WS-/);
+  const bad = await on(req({ ...ERKLAERUNG, email: "x", _t: 10_000 }));
+  assert.equal(bad.status, 400);
+});
+
+test("Seiten: Rücktrittsfunktion verlinkt (Belehrung, Bestellseite), Route vorhanden, keine Herkunftshinweise", () => {
+  const read = (p) => readFileSync(new URL("../../" + p, import.meta.url), "utf8");
+  const slotPage = read("src/app/[locale]/shop/recht/[slot]/page.js");
+  assert.ok(slotPage.includes("data-shop-recht-widerruf-button"));
+  assert.ok(slotPage.includes("WIDERRUF_URL"));
+  assert.ok(read("src/app/[locale]/shop/bestellung/page.js").includes('pathname: "/shop/recht/widerruf-formular"'));
+  assert.ok(read("src/app/api/shop/widerruf/route.js").includes("shopRoutes.widerruf"));
+  assert.ok(read("src/app/[locale]/shop/recht/widerruf-formular/page.js").includes("WiderrufForm"));
+  assert.ok(read("src/app/[locale]/shop/recht/widerruf-formular/bestaetigung/page.js").includes("data-shop-widerruf-bestaetigung"));
+  for (const p of ["src/lib/shop/legalTexte.js", "src/lib/shop/legal.js", "src/lib/shop/orderMail.js", "src/lib/shop/release.js", "src/lib/shop/widerruf.js", "src/app/[locale]/shop/recht/[slot]/page.js"]) {
+    assert.doesNotMatch(read(p), /KI-Agent|LEGAL_TEXT_HINWEIS|Claude/, p);
+  }
 });

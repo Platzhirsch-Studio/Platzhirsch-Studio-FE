@@ -124,7 +124,8 @@ export default function ShareFromMerkliste({ retentionMonths }) {
   const manageHref = (token) => `/${locale}/wunschliste/verwalten#${token}`;
 
   return (
-    <section aria-labelledby={id("heading")} className="bg-surface-band py-section" data-wunschliste-teilen>
+    // print:hidden (PDF-Muster 02.11.2026): die Merkliste hat „Drucken oder als PDF sichern“ – der Teilen-Block gehört nicht aufs Papier
+    <section aria-labelledby={id("heading")} className="bg-surface-band py-section print:hidden" data-wunschliste-teilen>
       <Container>
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">

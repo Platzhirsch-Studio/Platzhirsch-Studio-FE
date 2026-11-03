@@ -7,6 +7,7 @@
 // aggregateRating/review nie. Rein, ohne "@/"-Importe (tests/unit/wellness-produkte.test.mjs).
 import { produktPath, produktePath, markePath } from "../../lib/katalog/welten.js";
 import { textOf } from "../../lib/katalog/schema.js";
+import { mitDetailBild } from "./kachelBild.js";
 
 const SITE = "https://platzhirsch.studio";
 const abs = (locale, path) => `${SITE}/${locale}${path}`;
@@ -34,7 +35,8 @@ export function produktSchema(p, marke, locale, kategorieLabel, offer = null) {
     description: textOf(p.kurz, locale),
     category: kategorieLabel,
   };
-  if (p.bilder.length) node.image = p.bilder.map((b) => `${SITE}${b.src}`);
+  // Inhaber 03.11.2026: Hero der Produktseite zuerst (detailBild, wie og:image), dann die übrigen Bilder.
+  if (p.bilder.length) node.image = mitDetailBild(p).map((b) => `${SITE}${b.src}`);
   if (offer) node.offers = offer;
   return node;
 }

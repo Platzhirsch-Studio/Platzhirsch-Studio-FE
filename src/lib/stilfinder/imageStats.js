@@ -181,7 +181,62 @@ export async function analyseImage(input) {
     .filter((b) => content && b.n / content >= 0.01)
     .slice(0, 24)
     .map((b) => [rgbToHex([b.r / b.n, b.g / b.n, b.b / b.n]), Math.round((b.n / content) * 1000) / 1000]);
-  return { dominant, colors, coverage: content / n, contrast, cutout, bg: rgbToHex(bg), plainGround };
+  const { studio, subject } = subjectBox((x, y) => px(y * S + x), S);
+  return { v: STATS_VERSION, dominant, colors, coverage: content / n, contrast, cutout, bg: rgbToHex(bg), plainGround, studio, subject };
+}
+
+// Druck 03.11.: a studio shot on a grey GRADIENT (101 Copenhagen Arc Dining
+// Table) is neither a cut-out (ground not white) nor a plain ground (the ring
+// varies top to bottom), so the layout cropped it like a room scene and the
+// table lost both ends in an upright frame. Here the ground is recognised by
+// its smoothness (the border has almost no edges) and the piece by its
+// distance from the ground predicted between the borders of its row/column,
+// which follows a gradient. The layout (document.js, coverFocus) keeps the
+// subject box in view or falls back to "contain" when the frame cannot hold it.
+export const STATS_VERSION = 2;
+export const STUDIO_MAX_EDGE_SHARE = 0.06; // share of border steps > 10 (RGB distance)
+export const SUBJECT_MAX_AREA = 0.75; // a box covering more is a scene, not a piece
+/**
+ * subjectBox(px, S) → { studio, subject }
+ *   px(x, y) → [r, g, b] of the S × S thumbnail
+ *   studio   true when the border runs smooth (uniform or gradient ground)
+ *   subject  { x0, y0, x1, y1 } as shares of width/height, only for studio shots
+ *            whose piece covers at most SUBJECT_MAX_AREA of the image; else null
+ */
+export function subjectBox(px, S) {
+  const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+  const ring = [];
+  for (let x = 0; x < S; x++) ring.push(px(x, 0));
+  for (let y = 1; y < S; y++) ring.push(px(S - 1, y));
+  for (let x = S - 2; x >= 0; x--) ring.push(px(x, S - 1));
+  for (let y = S - 2; y >= 1; y--) ring.push(px(0, y));
+  let edges = 0;
+  for (let i = 0; i < ring.length; i++) if (dist(ring[i], ring[(i + 1) % ring.length]) > 10) edges++;
+  const studio = edges / ring.length < STUDIO_MAX_EDGE_SHARE;
+  if (!studio) return { studio, subject: null };
+  const lerp = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  const rows = new Array(S).fill(0);
+  const cols = new Array(S).fill(0);
+  for (let y = 1; y < S - 1; y++) {
+    const l = px(0, y);
+    const r = px(S - 1, y);
+    for (let x = 1; x < S - 1; x++) {
+      const p = px(x, y);
+      const d = Math.min(dist(p, lerp(l, r, x / (S - 1))), dist(p, lerp(px(x, 0), px(x, S - 1), y / (S - 1))));
+      if (d > 22) {
+        rows[y]++;
+        cols[x]++;
+      }
+    }
+  }
+  const first = (arr) => arr.findIndex((v) => v >= 2);
+  const last = (arr) => arr.length - 1 - [...arr].reverse().findIndex((v) => v >= 2);
+  const x0 = first(cols);
+  const y0 = first(rows);
+  if (x0 < 0 || y0 < 0) return { studio, subject: null };
+  const box = { x0: x0 / S, y0: y0 / S, x1: (last(cols) + 1) / S, y1: (last(rows) + 1) / S };
+  const area = (box.x1 - box.x0) * (box.y1 - box.y0);
+  return { studio, subject: area <= SUBJECT_MAX_AREA ? box : null };
 }
 
 /**

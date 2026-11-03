@@ -487,6 +487,18 @@ export default function Footer({ activeCategoryKeys = null }) {
                   {t("privacy")}
                 </a>
               </li>
+              {/* AGB (Inhaber 02.11.2026): Rechtslink, nicht durch footerLinks gefiltert (noindex wie Impressum). */}
+              <li>
+                <a href={localizeHref("/agb", locale)} className={legalLink}>
+                  {t("terms")}
+                </a>
+              </li>
+              {/* Widerrufsbelehrung außerhalb des Onlineshops (Inhaber 03.11.2026): Rechtslink wie AGB, noindex. */}
+              <li>
+                <a href={localizeHref("/widerruf", locale)} className={legalLink}>
+                  {t("withdrawal")}
+                </a>
+              </li>
               <li>
                 <PrivacySettingsButton label={t("privacySettings")} className={legalLink} />
               </li>

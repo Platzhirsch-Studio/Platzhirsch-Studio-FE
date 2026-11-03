@@ -4,7 +4,7 @@
 // Warenkorb, Bestellbestätigung, Stripe-Zeilen, Versand). Rein, ohne
 // "@/"-Importe und ohne Node-APIs (läuft auch im Browser und unter node --test).
 //
-// STATUS: Entwurf von KI-Agenten (31.10.2026), Steuerberater-Durchsicht
+// STATUS: Entwurf, Stand 31.10.2026, Steuerberater-Durchsicht
 // empfohlen. Der Freigabepunkt release.js "ust" bleibt offen, bis der
 // Steuerberater die Regeln schriftlich bestätigt hat.
 //
@@ -64,7 +64,7 @@ export const OSS_AKTIV = false;
 /** Status der Regeln (wie Rechtstext-Slots: nie "freigegeben" ohne Beleg des Steuerberaters). */
 export const UST_REGELN = Object.freeze({
   status: "entwurf",
-  hinweis: "Entwurf von KI-Agenten, Kanzlei-/Steuerberater-Durchsicht empfohlen",
+  hinweis: "Entwurf, Stand 31.10.2026 – Prüfung durch Kanzlei/Steuerberater offen",
   stand: "2026-10-31",
 });
 

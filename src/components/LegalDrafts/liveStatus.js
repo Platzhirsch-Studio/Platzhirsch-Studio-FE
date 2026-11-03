@@ -74,12 +74,27 @@ export const LEGAL_TEXTS = Object.freeze([
     ownerFills: "7 Felder in TERMS_OWNER_FIELDS; bis dahin bleibt TERMS_STATUS „entwurf“ und die Seite 404",
   },
   {
+    // Inhaber 02.11.2026: AGB je Geschäftsbereich mit eigener Seite /agb
+    // (Teil I Allgemein, II Verbraucher, III Unternehmer, IV Bereiche).
+    // Inhaber 03.11.2026 (Entscheidung Nr. 40): „AGB zur Kanzlei – alle geprüft
+    // und freigegeben“ → AGB_STATUS „freigegeben“, die 15 Lücken mit
+    // Standardformulierungen geschlossen (Bestätigung der Kanzlei ausständig).
     id: "agb",
     title: "Allgemeine Geschäftsbedingungen",
-    livePath: null,
-    state: "ohne-seite",
-    file: "src/components/LegalDrafts/docs/agb.js",
-    ownerFills: "Firma der Handels-GmbH, Fristen, Anzahlung, Lieferzeiten u. a. ([vom Unternehmen auszufüllen] in der Vorschau); heute verkauft die Website nichts online",
+    livePath: "/agb",
+    state: "live",
+    file: "src/lib/legal/agb.js (Seite src/app/[locale]/agb/page.js; Kanzlei-Vorschau der Vorfassung: LegalDrafts/docs/agb.js)",
+    ownerFills: "15 Standardformulierungen (Stand 03.11.2026) in Platzhirsch-Status/berichte/AGB-KANZLEI-2026-11-02.md von der Kanzlei bestätigen lassen; Werte „höchstens die Hälfte“ (Anzahlung), „ein Zehntel“ (Preisanpassung) und Verbraucherschlichtung „nein“ sind Annahmen",
+  },
+  {
+    // Inhaber 03.11.2026 (Entscheidung Nr. 39): Widerrufsbelehrung für Verträge
+    // außerhalb des Onlineshops (Fernabsatz und Außergeschäftsraum, FAGG).
+    id: "widerrufsbelehrung",
+    title: "Widerrufsbelehrung (außerhalb des Onlineshops)",
+    livePath: "/widerruf",
+    state: "live",
+    file: "src/lib/legal/widerruf.js (Seite src/app/[locale]/widerruf/page.js; Online-Formular /shop/recht/widerruf-formular bei SHOP_MODE test/live)",
+    ownerFills: "Keine offenen Angaben; Wortlaut neu (03.11.2026), Prüfpunkt Rücksendekosten nicht paketfähiger Ware (Schätzung = Lieferkosten laut Angebot) in AGB-KANZLEI-2026-11-02.md",
   },
   {
     // Rat 9,5 B13: freiwillige Information mit nur geprüften Aussagen (Prüfergebnis,

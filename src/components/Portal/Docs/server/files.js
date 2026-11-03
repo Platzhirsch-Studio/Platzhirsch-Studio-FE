@@ -5,6 +5,7 @@ import { adapterName, DATA_DIR } from "@/lib/portal/config";
 import { amountLabel } from "@/lib/portal/constants";
 import { demoPdfNoticeText } from "@/lib/portal/demoNotice";
 import { formatDate } from "@/lib/portal/format";
+import { ADDRESS, LEGAL_NAME, PHONE_DISPLAY, SITE_NAME } from "@/lib/site";
 import { documentStatus, documentTypeLabel } from "../labels";
 import { renderSimplePdf } from "./pdf";
 
@@ -32,9 +33,12 @@ async function readLocal(storageKey) {
   }
 }
 
-function demoPdf(doc, project, customer) {
+/** Demo-PDF (Mock-Adapter); exportiert für die Druckmuster (Druck 02.11.). */
+export function demoPdf(doc, project, customer) {
   const st = documentStatus(doc);
   return renderSimplePdf({
+    // Druck 02.11.: Fußzeile mit Aussteller und Adresse wie auf dem Gutschein
+    footer: [`${SITE_NAME} · ${LEGAL_NAME} · ${ADDRESS.street}, ${ADDRESS.postalCode} ${ADDRESS.city}, ${ADDRESS.country}`, `${PHONE_DISPLAY} · platzhirsch.studio/de/portal`],
     title: `${documentTypeLabel(doc.type)} ${doc.number}`,
     lines: [
       { text: "PLATZHIRSCH HOME LIVING", size: 10, bold: true, color: [0.48, 0.37, 0.09], gap: 0 },

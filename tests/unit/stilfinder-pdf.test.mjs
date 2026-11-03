@@ -20,8 +20,8 @@ const { PROFILES, PROFILE_ORDER } = await import("../../src/components/Labs/Stil
 const { ROOM_SLOTS, selectRooms, roomCandidates, brandsFor, PER_ROOM, HERO_CATEGORIES, isAccessory } = await import("../../src/lib/stilfinder/rooms.js");
 const { buildMoodboardPdf, countPdfPages, toItem, typoQuotes, ImageGateError } = await import("../../src/lib/stilfinder/build.js");
 const { toPdfJpeg, isCatalogImagePath, loadAll, createCatalogImageLoader } = await import("../../src/lib/stilfinder/images.js");
-const { analyseImage, rejectReason } = await import("../../src/lib/stilfinder/imageStats.js");
-const { PRIVACY_PDF } = await import("../../src/lib/stilfinder/document.js");
+const { analyseImage, rejectReason, STATS_VERSION } = await import("../../src/lib/stilfinder/imageStats.js");
+const { PRIVACY_PDF, coverFocus } = await import("../../src/lib/stilfinder/document.js");
 const { moodboardRequestSchema } = await import("../../src/lib/stilfinder/schema.js");
 const { mailMode, LIMITS } = await import("../../src/lib/stilfinder/config.js");
 const { buildMoodboardMail } = await import("../../src/lib/stilfinder/mail.js");
@@ -212,6 +212,64 @@ test("Bild-Cache auf Platte: zweiter Loader liest ohne Download", async () => {
   }
 });
 
+// Druck 03.11. (Inhaber): Querformat-/quadratische Studiofotos (Arc Dining Table auf
+// Grauverlauf) dürfen nie so beschnitten werden, dass das Hauptobjekt fehlt.
+test("Studiofoto auf Verlauf: Motivbox erkannt, Hochformat-Rahmen → contain, Querformat → Fokus", async () => {
+  // quadratisches Studiofoto: Grauverlauf (hell oben, dunkler unten), breiter dunkler Tisch unten
+  const grad = Buffer.from(
+    '<svg width="1200" height="1200"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9d9d9"/><stop offset="1" stop-color="#a9a9a9"/></linearGradient></defs>' +
+      '<rect width="1200" height="1200" fill="url(#g)"/><rect x="70" y="720" width="1060" height="40" fill="#1e1e1e"/><rect x="300" y="760" width="140" height="300" fill="#262626"/><rect x="780" y="760" width="140" height="300" fill="#262626"/></svg>'
+  );
+  const studio = await sharp(grad).jpeg().toBuffer();
+  const s = await analyseImage(studio);
+  assert.equal(s.cutout, false, "kein weißer Freisteller");
+  assert.equal(s.studio, true, "ruhiger Rand = Studio-Grund");
+  assert.ok(s.subject && s.subject.x0 < 0.1 && s.subject.x1 > 0.9 && s.subject.y0 > 0.5 && s.subject.y1 > 0.85, JSON.stringify(s.subject));
+  const img = { width: 1200, height: 1200, stats: s };
+  // halbe A4-Querseite (421 × 595 pt): das Fenster zeigt nur 71 % der Breite → Tisch würde abgeschnitten
+  assert.deepEqual(coverFocus(img, 421, 595), { fit: "contain" });
+  // Querformat-Kachel: Fenster hält die Box, Ausschnitt rutscht zum Tisch (unten)
+  const wide = coverFocus(img, 300, 150);
+  assert.equal(wide.fit, "cover");
+  assert.match(wide.position, /^50% (9\d|100)%$/);
+  // Raumszene (unruhiger Rand: Regale, Fenster, Boden bis zum Bildrand): keine Box, Zuschnitt wie bisher
+  const bars = Array.from({ length: 24 }, (_, i) => `<rect x="${i * 70}" y="0" width="35" height="1200" fill="${i % 2 ? "#3a2f28" : "#d8cfc2"}"/>`).join("");
+  const sceneImg = await sharp(Buffer.from(`<svg width="1600" height="1200"><rect width="1600" height="1200" fill="#b4b0aa"/>${bars}<rect x="0" y="800" width="1600" height="400" fill="#6b5a4a"/></svg>`)).jpeg().toBuffer();
+  const scene = await analyseImage(sceneImg);
+  assert.equal(scene.studio, false);
+  assert.equal(scene.subject, null);
+  assert.equal(coverFocus({ width: 1600, height: 1200, stats: scene }, 421, 595), null);
+  // ohne Box (Altbestand im Cache) keine Änderung
+  assert.equal(coverFocus({ width: 1200, height: 1200, stats: { coverage: 1 } }, 421, 595), null);
+});
+
+test("Bild-Cache: alte Analyse ohne Motivbox wird aus dem JPEG nachgerechnet, kein Download", async () => {
+  const dir = mkdtempSync(path.join(os.tmpdir(), "sf-imgcache-v-"));
+  try {
+    let downloads = 0;
+    const fetchImpl = async () => {
+      downloads++;
+      return new Response(photo, { status: 200 });
+    };
+    const a = createCatalogImageLoader({ server: "http://backoffice.test", fetchImpl, cacheDir: dir });
+    const img1 = await a("/cmx/files/test-cache-v.webp");
+    assert.equal(img1.stats.v, STATS_VERSION);
+    // Altbestand simulieren: Stats ohne Version
+    const meta = readdirSync(dir).find((n) => n.endsWith(".json"));
+    const json = JSON.parse(readFileSync(path.join(dir, meta), "utf8"));
+    delete json.stats.v;
+    delete json.stats.subject;
+    writeFileSync(path.join(dir, meta), JSON.stringify(json));
+    const b = createCatalogImageLoader({ server: "http://backoffice.test", fetchImpl, cacheDir: dir });
+    const img2 = await b("/cmx/files/test-cache-v.webp");
+    assert.equal(downloads, 1, "kein zweiter Download");
+    assert.equal(img2.stats.v, STATS_VERSION);
+    assert.equal("subject" in img2.stats, true);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 test("Typografie: gerade Anführungszeichen in Produktnamen → „…“", () => {
   assert.equal(typoQuotes('Reeves "Semi-round Lounge Sofa"'), "Reeves „Semi-round Lounge Sofa“");
   assert.equal(typoQuotes("Aston “Lounge”"), "Aston „Lounge“");
@@ -281,13 +339,14 @@ test("Mail-Modus: ohne STILFINDER_MAIL_ENABLED=1 immer Postausgang", () => {
   assert.equal(mailMode({ STILFINDER_MAIL_ENABLED: "1", STILFINDER_MAIL_PROVIDER: "resend", STILFINDER_MAIL_API_KEY: "x", STILFINDER_MAIL_FROM: "a@b" }).mode, "live");
 });
 
-test("Mail: HTML ohne externe Bilder/Tracking, KI- und Labs-Hinweis, escaped", () => {
+test("Mail: HTML ohne externe Bilder/Tracking, Text-Hinweis ohne KI-Vermerk (Inhaber 02.11.), Labs-Hinweis, escaped", () => {
   const m = buildMoodboardMail({ profile: PROFILES.salon, name: "<b>Eva</b>", newsletter: true, labs: true, pages: 28 });
   assert.match(m.subject, /Pariser Salon/);
   assert.doesNotMatch(m.html, /<img/i);
   assert.doesNotMatch(m.html, /<b>Eva<\/b>/);
   assert.match(m.html, /&lt;b&gt;Eva/);
-  assert.match(m.text, /KI/);
+  assert.doesNotMatch(m.text, /KI/);
+  assert.match(m.text, /keine Zusagen zu Ausführung, Lieferung oder Preis/);
   assert.match(m.text, /Bestätigungslink|bestätigen/);
 });
 

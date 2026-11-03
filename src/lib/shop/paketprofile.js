@@ -1,6 +1,6 @@
 // src/lib/shop/paketprofile.js
 // Paketprofile für den Versand über LetMeShip (K3, 31.10.2026; Schätzungen
-// ergänzt am 31.10.2026 nach Inhaber-Entscheidung „Agenten entwerfen alles“).
+// ergänzt am 31.10.2026, Schätzungen bis zur Messung durch den Inhaber).
 //
 // Reihenfolge je Warenkorbzeile (profilOf in src/lib/commerce/shipping/config.js):
 //   1. Herstellerangabe der Variante (preis.varianten[].versandGewichtG + versandMasseCm),
@@ -74,8 +74,8 @@
 // Minotti/Möbel: nie Teil des Shops (VERKAUF_MARKEN), hier nicht berührt.
 // Rein, ohne "@/"-Importe (node --test).
 
-export const PROFIL_QUELLE_SCHAETZUNG = "Schätzung aus Produktdaten (Agent, 31.10.2026)";
-export const PROFIL_HINWEIS = "Schätzung von KI-Agenten – bitte Karton messen und geprueft: true setzen";
+export const PROFIL_QUELLE_SCHAETZUNG = "Schätzung aus Produktdaten (31.10.2026), zu prüfen";
+export const PROFIL_HINWEIS = "Schätzung, zu prüfen – bitte Karton messen und geprueft: true setzen";
 
 /** Polster je Seite in cm (siehe Kopfkommentar). */
 export const POLSTER_CM = Object.freeze({ zerbrechlich: 8, kerze: 5, duft: 5, buch: 3, akku: 5 });

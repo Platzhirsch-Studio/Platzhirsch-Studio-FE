@@ -14,6 +14,8 @@ const PROSE = [
   "max-w-[56ch] text-body text-text wrap-break-word",
   "[&_p]:mt-4 [&_p:first-child]:mt-0",
   "[&_h2]:mt-12 [&_h2]:border-t [&_h2]:border-line [&_h2]:pt-8 [&_h2]:text-title [&_h2]:text-text",
+  // Druck 02.11.: Paragraphenabstand auf Papier etwas enger (AGB: Schlusszeile rutschte allein auf ein 23. Blatt).
+  "print:[&_h2]:mt-8 print:[&_h2]:pt-5",
   "[&_h2+p]:mt-3",
   "[&_strong]:font-medium",
   "[&_a]:underline [&_a]:decoration-line-strong [&_a]:underline-offset-4 [&_a:hover]:decoration-current [&_a]:break-words",
@@ -21,7 +23,8 @@ const PROSE = [
 
 export default function LegalProse({ children }) {
   return (
-    <section className="bg-surface pb-section">
+    // Druck 02.11.: Papier bleibt weiß.
+    <section className="bg-surface pb-section print:bg-white">
       {/* QM content-legal r2 (iPad quer): page container, the text column (max. 68
           characters) starts on the grid line of logo and breadcrumb instead of centred. */}
       <Container size="page">

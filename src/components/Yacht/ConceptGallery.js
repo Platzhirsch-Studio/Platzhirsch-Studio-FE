@@ -3,7 +3,7 @@
 // other panels as a small chunk when their tab is chosen (R5 technik P1-3:
 // page weight). Products per zone live in the Werfthalle and the brand shelf.
 // Labels: "Beispielkonzept – kein Kundenprojekt" on every concept,
-// "KI-generierte Konzeptvisualisierung" on every image.
+// "Visualisierung (Rendering)" on every image (03.11.2026: only Blender renderings).
 import ConceptTabs from "./ConceptTabs";
 import { useLocale } from "next-intl";
 import { yachtUi } from "@/lib/yacht/ui";

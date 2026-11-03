@@ -78,7 +78,8 @@ export function DateLine({ article, className = "" }) {
 
 export function TerminCta({ headingId = "ratgeber-termin", heading = "Lieber persönlich besprechen?", children }) {
   return (
-    <section aria-labelledby={headingId} className="bg-surface-band px-[20px] py-10 sm:px-10 sm:py-12">
+    // Druck 02.11.: Terminband mit Knopf – nicht im Ausdruck.
+    <section aria-labelledby={headingId} className="bg-surface-band px-[20px] py-10 sm:px-10 sm:py-12 print:hidden">
       <h2 id={headingId} className="font-display text-display-m text-text">
         {heading}
       </h2>

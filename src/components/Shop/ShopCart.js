@@ -367,7 +367,7 @@ export default function ShopCart({ locale, copy: c, legal, start = {}, test = fa
 
   return (
     <form onSubmit={bestellen} className={`grid grid-cols-1 gap-6 pb-24 sm:gap-10 lg:grid-cols-12 lg:pb-0 [@media(max-height:500px)]:pb-0${leisteAus ? " max-lg:pb-0" : ""}`} data-shop-cart="" noValidate={false}>
-      <nav aria-label={c.stepsLabel} className="lg:col-span-12">
+      <nav aria-label={c.stepsLabel} className="lg:col-span-12 print:hidden">
         {/* Telefon (Optik-QA r2, iPhone SE): nur der aktuelle Schritt mit Namen, die übrigen als Ziffer – eine Zeile statt zwei. */}
         <ol className="flex flex-wrap gap-x-4 gap-y-2 text-small sm:gap-x-6" data-shop-schritte={schritt}>
           {c.steps.map((s, i) => (
@@ -411,7 +411,54 @@ export default function ShopCart({ locale, copy: c, legal, start = {}, test = fa
             </button>
           </p>
         )}
-        <ul className={`divide-y divide-line border-y border-line transition-opacity duration-(--duration-swap) ease-quiet ${fresh ? "" : "opacity-60"}`} aria-busy={!fresh} data-shop-zeilen="">
+        {/* Druck 02.11.: Positionsliste als Tabelle (Artikel, Menge, Einzel-, Gesamtpreis) statt der Zeilen mit
+            Stepper, Auswahlfeld und „Entfernen“; darunter Lieferart und Zahlung als Text. Nur im Ausdruck. */}
+        {hatZeilen && (
+          <div className="hidden print:block" data-shop-druck="">
+            <table className="w-full border-collapse text-small">
+              <thead>
+                <tr className="border-b border-line-strong text-left text-text-soft">
+                  <th scope="col" className="py-2 pr-3 font-normal">
+                    {c.goods}
+                  </th>
+                  <th scope="col" className="py-2 pr-3 text-right font-normal">
+                    {c.qty}
+                  </th>
+                  <th scope="col" className="py-2 pr-3 text-right font-normal">
+                    {c.unitPrice}
+                  </th>
+                  <th scope="col" className="py-2 text-right font-normal">
+                    {c.lineTotal}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {zeilen.map((z) => (
+                  <tr key={`${z.slug}-${z.variante}-druck`} className="border-b border-line align-top">
+                    <td className="py-2 pr-3 text-text">
+                      <span className="block text-text-soft">{z.markeName}</span>
+                      {shopTitel(z.name)}
+                      {z.varianteName ? ` (${shopTitel(varianteZeile(z.varianteName))})` : ""}
+                    </td>
+                    <td className="py-2 pr-3 text-right tabular">{z.menge}</td>
+                    <td className="py-2 pr-3 text-right whitespace-nowrap tabular">
+                      {euro(z.einzelCent, locale)}
+                      <span className="block text-text-soft">{satzText(z.ustKlasse)}</span>
+                    </td>
+                    <td className="py-2 text-right whitespace-nowrap tabular">{euro(z.summeCent, locale)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <dl className="mt-4 grid grid-cols-[auto_minmax(0,1fr)] gap-x-6 gap-y-1 text-small">
+              <dt className="text-text-soft">{c.delivery}</dt>
+              <dd>{lieferart === "abholung" ? c.pickup : adresse.land && c.countries[adresse.land] ? `${c.shipping} (${c.countries[adresse.land]})` : c.shipping}</dd>
+              <dt className="text-text-soft">{c.payment}</dt>
+              <dd>{effZahlung === "vorort" ? c.payOnSite : c.payOnline}</dd>
+            </dl>
+          </div>
+        )}
+        <ul className={`divide-y divide-line border-y border-line transition-opacity duration-(--duration-swap) ease-quiet print:hidden ${fresh ? "" : "opacity-60"}`} aria-busy={!fresh} data-shop-zeilen="">
           {/* Platzhalter-Zeilen, bis die Server-Preise da sind (vor dem Mounten eine):
               hält die Höhe der echten Zeilen frei – kein Layoutsprung (CLS). */}
           {!priced && !pricingFailed && (!mounted || cart.length > 0) &&
@@ -504,11 +551,11 @@ export default function ShopCart({ locale, copy: c, legal, start = {}, test = fa
             </li>
           ))}
         </ul>
-        <Link href="/accessoires/produkte" prefetch={false} className="inline-flex min-h-11 items-center self-start text-small text-text underline underline-offset-4">
+        <Link href="/accessoires/produkte" prefetch={false} className="inline-flex min-h-11 items-center self-start text-small text-text underline underline-offset-4 print:hidden">
           {c.continueShopping}
         </Link>
 
-        <fieldset className="flex flex-col gap-3">
+        <fieldset className="flex flex-col gap-3 print:hidden">
           <legend className="mb-2 text-title text-text">{c.delivery}</legend>
           {["versand", "abholung"].map((v) => (
             <label key={v} className="flex min-h-11 items-center gap-3 text-body text-text">
@@ -519,7 +566,7 @@ export default function ShopCart({ locale, copy: c, legal, start = {}, test = fa
         </fieldset>
 
         {lieferart === "versand" && (
-          <fieldset className="grid grid-cols-1 gap-4 sm:grid-cols-6">
+          <fieldset className="grid grid-cols-1 gap-4 sm:grid-cols-6 print:hidden">
             <legend className="mb-2 text-title text-text">{c.shipping}</legend>
             <label className={`${label} sm:col-span-6`}>
               {c.country}
@@ -592,7 +639,7 @@ export default function ShopCart({ locale, copy: c, legal, start = {}, test = fa
           </fieldset>
         )}
 
-        <fieldset className="flex flex-col gap-3">
+        <fieldset className="flex flex-col gap-3 print:hidden">
           <legend className="mb-2 text-title text-text">{lieferart === "abholung" ? c.payment : c.paymentInfo}</legend>
           {lieferart === "abholung" ? (
             ["online", "vorort"].map((v) => (
@@ -610,7 +657,7 @@ export default function ShopCart({ locale, copy: c, legal, start = {}, test = fa
           {test && effZahlung === "online" && <p className="text-small text-text">{c.payStripeTest}</p>}
         </fieldset>
 
-        <fieldset className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <fieldset className="grid grid-cols-1 gap-4 sm:grid-cols-2 print:hidden">
           <legend className="mb-2 text-title text-text">{c.contact}</legend>
           <p className="text-small text-text-soft sm:col-span-2">{c.guest}</p>
           <label className={`${label} sm:col-span-2`}>
@@ -631,13 +678,14 @@ export default function ShopCart({ locale, copy: c, legal, start = {}, test = fa
       <aside className="lg:col-span-5" aria-labelledby={`${id}-sum`}>
         {/* Innenabstand max. 6vw und Umbruch in langen Wörtern (Optik-QA r3, 200 % Textzoom: „ahlungspflichti“,
             „Versandbedingungen“ ragten über den Rand). */}
-        <div className="border border-line bg-surface p-[min(1.25rem,6vw)] break-words hyphens-auto lg:sticky lg:top-24" data-shop-summary="">
+        {/* Druck 02.11.: Übersicht ohne Rahmen und ohne die Positionszeilen (die stehen in der Tabelle), Bestell-Knopf nicht im Ausdruck. */}
+        <div className="border border-line bg-surface p-[min(1.25rem,6vw)] break-words hyphens-auto lg:sticky lg:top-24 print:static print:border-0 print:p-0" data-shop-summary="">
           <h2 id={`${id}-sum`} ref={summaryRef} tabIndex={-1} className="text-title text-text focus:outline-none">
             {c.summary}
           </h2>
           <dl className="mt-4 divide-y divide-line text-body">
             {zeilen.map((z) => (
-              <div key={`${z.slug}-${z.variante}`} className="flex flex-wrap justify-between gap-x-4 py-2">
+              <div key={`${z.slug}-${z.variante}`} className="flex flex-wrap justify-between gap-x-4 py-2 print:hidden">
                 {/* min-w-0 + Preis ohne Umbruch: der Preis bleibt bündig an der Innenkante (Optik-QA r3, iPhone SE: „€ 54,10“
                     ragte hinaus); Zusatz des Namens in eigener Zeile statt „–“ am Zeilenende. */}
                 <dt className="min-w-0 text-text-soft">
@@ -723,18 +771,18 @@ export default function ShopCart({ locale, copy: c, legal, start = {}, test = fa
             type="submit"
             disabled={blockiert}
             aria-describedby={warum ? `${id}-warum` : undefined}
-            className={`ph-press mt-5 inline-flex min-h-12 w-full items-center justify-center bg-action px-[min(1.5rem,4vw)] py-2 text-center text-ui text-paper hover:bg-action-hover disabled:cursor-not-allowed disabled:opacity-50 ${BTN_FARBE}`}
+            className={`ph-press mt-5 inline-flex min-h-12 w-full items-center justify-center bg-action px-[min(1.5rem,4vw)] py-2 text-center text-ui text-paper hover:bg-action-hover disabled:cursor-not-allowed disabled:opacity-50 print:hidden ${BTN_FARBE}`}
             data-shop-bestellen={effZahlung}
             data-cta="primary"
           >
             {busy ? c.sending : effZahlung === "vorort" ? c.reserveSubmit : c.buy}
           </button>
           {warum && (
-            <p id={`${id}-warum`} className="mt-2 text-small text-text-soft">
+            <p id={`${id}-warum`} className="mt-2 text-small text-text-soft print:hidden">
               {wartetAuto ? c.shippingCalculating : c.whyDisabled}
             </p>
           )}
-          <p aria-live="assertive" className="mt-3 min-h-6 text-small text-text" data-shop-meldung="">
+          <p aria-live="assertive" className="mt-3 min-h-6 text-small text-text print:hidden" data-shop-meldung="">
             {msg}
           </p>
         </div>
@@ -743,7 +791,7 @@ export default function ShopCart({ locale, copy: c, legal, start = {}, test = fa
       {/* Mobile: Gesamtpreis immer sichtbar, springt zur Übersicht (kein Bestell-Button hier, s. Kopf). */}
       {zeilen.length > 0 && (
         // Telefon quer (≤ 500 px hoch): keine klebende Leiste – sie verdeckte dort rund 75 von 390 px (Optik-QA r2).
-        <div ref={leisteRef} hidden={leisteAus || undefined} className="fixed inset-x-0 bottom-0 z-(--z-sticky) flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-line bg-surface px-gutter py-3 lg:hidden [@media(max-height:500px)]:hidden" data-shop-mobilleiste="">
+        <div ref={leisteRef} hidden={leisteAus || undefined} className="fixed inset-x-0 bottom-0 z-(--z-sticky) flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-line bg-surface px-gutter py-3 lg:hidden [@media(max-height:500px)]:hidden print:hidden" data-shop-mobilleiste="">
           <p className="text-small text-text-soft">
             {gesamtCent == null ? c.subtotal : c.stickyTotal} <span className="tabular">({stueck})</span>
             <span key={priced ? gesamtCent ?? warenCent : "-"} className={`block text-body font-medium text-text tabular${priced ? " ph-arrive" : ""}`} data-shop-mobil-summe="">

@@ -153,7 +153,8 @@ export default function NewsletterAusgabe({ ausgabe, vorschau = false }) {
         )}
       </header>
       {offen.map((typ) => (
-        <div key={typ} role="note" className="border border-dashed border-line-strong bg-surface-raised p-6">
+        // Druck 02.11.: Platzhalter sind Entwicklungsstand – nicht im Ausdruck.
+        <div key={typ} role="note" className="border border-dashed border-line-strong bg-surface-raised p-6 print:hidden">
           <p className="text-ui text-text">Platzhalter (nur Vorschau): {SLOT_NAMEN[typ]}</p>
           <p className="mt-1 text-small text-text-soft">
             Material folgt. Ohne echtes Material erscheint dieser Block nicht in Mail und Archiv.

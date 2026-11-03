@@ -80,7 +80,8 @@ export default function PageHeader({
   return (
     // Own "page" container (QM wm-r4): the header is also used outside the
     // Über-uns/Produkte wrappers (Kontakt, Beratung, News …).
-    <div className={cx(PAGE_CONTAINER, "bg-surface pb-16 md:pb-20 lg:pb-24", HEADER_OFFSET, className)}>
+    // Druck 02.11.: Papier bleibt weiß (print:bg-white), sonst steht der Kopf als beige Fläche auf dem Blatt.
+    <div className={cx(PAGE_CONTAINER, "bg-surface pb-16 md:pb-20 lg:pb-24 print:bg-white", HEADER_OFFSET, className)}>
       <Container size={width === "text" ? "text" : "page"}>
         {breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} schema={breadcrumbSchema} />}
         <div

@@ -8,36 +8,43 @@
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Container, Heading } from "@/components/ui";
 import TestBanner from "@/components/Shop/TestBanner";
 import { rechtUmbruch } from "@/components/Shop/keinUmbruch";
 import { NOINDEX } from "@/lib/commerce/mode";
 import { shopCopy } from "@/lib/shop/copy";
 import { LANG_HINWEIS, legalSlot, legalSlotDraft, legalSlotReleased } from "@/lib/shop/legal";
+import { WIDERRUF_PATH, WIDERRUF_URL } from "@/lib/shop/legalTexte";
 import { shopMode } from "@/lib/shop/mode";
 import { formatDatum } from "@/components/Katalog/preis";
 
-// Offene Stellen im Entwurf („[PLATZHALTER: …]“) als deutlich markierte interne Lücke statt Fließtext
-// (Optik-QA r2). Der Inhalt bleibt sichtbar – live gehen nur freigegebene Slots (legalSlotReleased).
+// Offene Stellen im Entwurf („[PLATZHALTER: …]“) als deutlich markierte Lücke statt Fließtext (Optik-QA r2);
+// sichtbar nur die neutrale Lücke „wird ergänzt“ (Inhaber-Entscheidung 02.11.), die Liste der offenen Angaben
+// steht in Platzhirsch-Status/berichte/RECHT-PLATZHALTER-2026-11-02.md. Live gehen nur freigegebene Slots.
+// Die Adresse der Online-Rücktrittsfunktion (WIDERRUF_URL, § 13a FAGG) wird als Link gesetzt.
 const LUECKE = /(\[PLATZHALTER: [^\]]*\])/;
 const LUECKE_TEXT = "wird ergänzt";
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const TEIL = new RegExp(`(\\[PLATZHALTER: [^\\]]*\\]|${escapeRe(WIDERRUF_URL)})`);
 function mitLuecken(text) {
-  const teile = String(text).split(LUECKE);
+  const teile = String(text).split(TEIL);
   if (teile.length === 1) return rechtUmbruch(text);
-  return teile.map((t, i) =>
-    LUECKE.test(t) ? (
-      <mark key={i} className="border border-dashed border-line-strong bg-stone px-1 text-small text-text" data-shop-recht-luecke="">
-        {/* Optik-QA r3: ohne „Offen (vor Livegang)“ – neutral „wird ergänzt“; live gehen ohnehin nur freigegebene Slots.
-            QM Inhaber-Entscheidung Nr. 5, 02.11.: der Wortlaut des Platzhalters („… für PH-S-Bestellungen noch nicht
-            gebaut“, „laut Auftragsverarbeitungsvertrag“) ist eine interne Redaktionsanweisung und erschien als interner
-            Anmerkungskasten auf /de/shop/recht/agb. Sichtbar nur noch die neutrale Lücke; die Anweisungen bleiben in
-            src/lib/shop/legalTexte.js (PLATZHALTER) und in Platzhirsch-Status/berichte/RECHT-PLATZHALTER-2026-11-02.md. */}
-        {LUECKE_TEXT}
-      </mark>
-    ) : (
-      rechtUmbruch(t)
-    )
-  );
+  return teile.map((t, i) => {
+    if (LUECKE.test(t))
+      return (
+        <mark key={i} className="border border-dashed border-line-strong bg-stone px-1 text-small text-text" data-shop-recht-luecke="">
+          {LUECKE_TEXT}
+        </mark>
+      );
+    if (t === WIDERRUF_URL)
+      return (
+        <Link key={i} href={WIDERRUF_PATH} prefetch={false} className="underline underline-offset-4 break-all" data-shop-recht-widerruf-link="">
+          {WIDERRUF_URL}
+        </Link>
+      );
+    return rechtUmbruch(t);
+  });
 }
 
 export async function generateMetadata({ params }) {
@@ -89,8 +96,7 @@ export default async function ShopRechtPage({ params }) {
         {entwurf && (
           <p className="mt-4 text-small text-text-soft" data-shop-recht-entwurf={s.id}>
             <span className="mr-2 border border-line-strong px-1">{c.draftMark}</span>
-            {/* QM Inhaber-Entscheidung Nr. 5, 02.11.: s.hinweis („Entwurf von KI-Agenten, Kanzlei-Durchsicht
-                empfohlen“) ist eine interne Notiz (bleibt in legalTexte.js) – sichtbar nur Marker und Stand. */}
+            {/* Marker nur, solange legal.js status "entwurf" führt (Freigabe setzt Kanzlei/Inhaber); daneben der Stand. */}
             Stand {formatDatum(s.stand, "de")}
           </p>
         )}
@@ -108,6 +114,14 @@ export default async function ShopRechtPage({ params }) {
               <Block key={`f${i}`} b={b} titel={s.titel} />
             ))}
         </div>
+        {/* § 13a FAGG: Schaltfläche „Vertrag widerrufen“ leicht zugänglich neben der Belehrung. */}
+        {(slot === "widerruf" || slot === "widerrufsformular") && (
+          <p className="mt-8">
+            <Link href={WIDERRUF_PATH} prefetch={false} className="ph-press inline-flex min-h-12 items-center justify-center border border-ink px-6 text-ui text-text hover:bg-action hover:text-paper" data-shop-recht-widerruf-button="">
+              Vertrag widerrufen
+            </Link>
+          </p>
+        )}
       </Container>
     </div>
   );

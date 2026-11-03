@@ -206,7 +206,8 @@ export const MELDUNG_ROWS = [
   ["lfm", "lin. m", "m lin.", "m lin."],
   ["{n} Stk", "{n} pcs", "{n} pce", "{n} pz"],
   ["{wall}, ab {n} cm", "{wall}, from {n} cm", "{wall}, à partir de {n} cm", "{wall}, da {n} cm"],
-  ["{wall}, Unterkante {n} cm", "{wall}, underside {n} cm", "{wall}, bord inférieur {n} cm", "{wall}, bordo inferiore {n} cm"],
+  // Druck 03.11.: FR/IT kurz, sonst bricht die Spalte „Ort“ der Stückliste bei jedem Hängeschrank um
+  ["{wall}, Unterkante {n} cm", "{wall}, underside {n} cm", "{wall}, dessous à {n} cm", "{wall}, base a {n} cm"],
   ["{x} (automatisch)", "{x} (automatic)", "{x} (automatique)", "{x} (automatico)"],
   ["Eck-Hängeschrank", "Corner wall unit", "Élément haut d’angle", "Pensile angolare"],
   ["Blindecke {n} cm", "blind corner {n} cm", "angle aveugle {n} cm", "angolo cieco {n} cm"],
@@ -236,7 +237,8 @@ export const MELDUNG_ROWS = [
   ["Kochfeld {x} + Abzug {y}", "Hob {x} + extraction {y}", "Plaque {x} + hotte {y}", "Piano cottura {x} + aspirazione {y}"],
   ["Spüle ({x}) + Armatur", "Sink ({x}) + tap", "Évier ({x}) + robinet", "Lavello ({x}) + rubinetto"],
   ["Geräte (Modell nach Wahl)", "Appliances (model of your choice)", "Appareils (modèle au choix)", "Elettrodomestici (modello a scelta)"],
-  ["Gerätemodell im Gespräch", "appliance model in person", "modèle d’appareil en entretien", "modello di elettrodomestico nel colloquio"],
+  // Druck 02.11.: EN „appliance model in person“ war missverständlich
+  ["Gerätemodell im Gespräch", "appliance model to be agreed in consultation", "modèle d’appareil à définir en entretien", "modello da definire nel colloquio"],
   ["Geräte (Katalogauswahl)", "Appliances (catalogue selection)", "Appareils (sélection du catalogue)", "Elettrodomestici (scelta dal catalogo)"],
   ["Gerät {n} cm (laut Hersteller)", "Appliance {n} cm (per manufacturer)", "Appareil {n} cm (selon le fabricant)", "Apparecchio {n} cm (secondo il produttore)"],
   ["Nische laut Katalog: {v}", "niche per catalogue: {v}", "niche selon catalogue : {v}", "nicchia secondo catalogo: {v}"],

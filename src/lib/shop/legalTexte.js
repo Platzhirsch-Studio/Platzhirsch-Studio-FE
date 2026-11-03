@@ -4,11 +4,10 @@
 // Datenschutz-Abschnitt Shop. Dazu der Textbaustein für die
 // Vertragsbestätigung per E-Mail (orderMail.js).
 //
-// STATUS: ENTWURF von KI-Agenten (31.10.2026, Inhaber-Entscheidung vom
-// 31.10.2026: Agenten entwerfen alles). Kanzlei-Durchsicht empfohlen. Kein
-// Text ist "freigegeben" – legal.js setzt status "entwurf", damit
-// liveBlockers (mode.js) und die Freigabe-Checkliste (release.js) ehrlich
-// bleiben. SHOP_MODE bleibt unverändert.
+// STATUS: ENTWURF (Stand 02.11.2026). Inhaltlich fertig; die Kanzlei-Freigabe
+// steht aus. Kein Text ist "freigegeben" – legal.js setzt status "entwurf",
+// damit liveBlockers (mode.js) und die Freigabe-Checkliste (release.js)
+// ehrlich bleiben. SHOP_MODE bleibt unverändert.
 //
 // Regeln:
 //   - Firmendaten NUR aus vorhandenen Quellen: src/lib/site.js (Name,
@@ -16,6 +15,10 @@
 //     impressum.js (REGISTER: FN, Gericht, UID). Der Test
 //     tests/unit/shop-rechtstexte.test.mjs prüft, dass FN/UID hier und im
 //     Impressum gleich sind. Fehlendes = sichtbarer PLATZHALTER (unten).
+//   - Online-Rücktrittsfunktion (§ 13a FAGG): /de/shop/recht/widerruf-formular
+//     (WIDERRUF_URL), Verarbeitung in ./widerruf.js (Eingangsbestätigung).
+//   - Gerichtsstand (Inhaber-Entscheidung 02.11.2026): Verbraucher → gesetzliche
+//     Gerichtsstände (§ 14 KSchG, Art. 18 EuGVVO); Unternehmer → Wien.
 //   - Widerrufsbelehrung und Muster-Widerrufsformular WÖRTLICH nach
 //     FAGG Anhang I Teil A und B in der Fassung BGBl. I Nr. 59/2026
 //     (Verbraucherrechts-Änderungsgesetz 2026, für Verträge nach dem
@@ -35,8 +38,12 @@
 import { ADDRESS, EMAIL, LEGAL_NAME, PHONE_DISPLAY, SITE_NAME, SITE_URL } from "../site.js";
 import { LIEFERZEIT, lieferzeitFreigegeben } from "./lieferzeit.js";
 
-export const LEGAL_TEXT_STAND = "2026-10-31";
-export const LEGAL_TEXT_HINWEIS = "Entwurf von KI-Agenten, Kanzlei-Durchsicht empfohlen";
+export const LEGAL_TEXT_STAND = "2026-11-02";
+/** Lesbares Datum für die Kopfzeile der Texte (gleiche Quelle wie LEGAL_TEXT_STAND). */
+const STAND_LESBAR = LEGAL_TEXT_STAND.split("-").reverse().join(".");
+/** Pfad (ohne Sprache) und absolute Adresse der Online-Rücktrittsfunktion „Vertrag widerrufen“ (§ 13a FAGG). */
+export const WIDERRUF_PATH = "/shop/recht/widerruf-formular";
+export const WIDERRUF_URL = `${SITE_URL}/de${WIDERRUF_PATH}`;
 
 // Registerdaten wörtlich aus src/components/Impressum/impressum.js (REGISTER),
 // dort aus Firmenbuch/Impressum-Entwurf Marktresearch/recht/04 Variante A.
@@ -63,23 +70,25 @@ export const ANSCHRIFT = `${A.strasse}, ${A.plz} ${A.ort}, ${A.land}`;
 export const ANBIETER_ZEILE = `${A.firma}, „${A.marke}“, ${ANSCHRIFT}, Telefon ${A.telefon}, E-Mail ${A.email}`;
 
 /**
- * Offene Angaben, die NICHT aus den Quellen hervorgehen. Der Inhaber (bzw.
- * Technik/Kanzlei) ersetzt sie; solange einer im Text steht, darf der Slot
- * nicht freigegeben werden (Test: platzhalterIn).
+ * Offene Angaben, die NICHT aus belegten Quellen hervorgehen (Stand 02.11.2026,
+ * Liste: Platzhirsch-Status/berichte/RECHT-PLATZHALTER-2026-11-02.md). Der
+ * Inhaber (bzw. die Kanzlei) ersetzt sie; solange einer im Text steht, darf
+ * der Slot nicht freigegeben werden (Test: platzhalterIn).
+ * Geschlossen am 02.11.2026: Widerrufsfunktion (gebaut, WIDERRUF_URL) und
+ * Versanddienst (Dienst wird je Sendung gewählt und mit der Versandbestätigung
+ * genannt – shipping/config.js DIENST_WAHL, webhook.js sendung.carrier).
  */
 export const PLATZHALTER = Object.freeze({
-  widerrufsfunktion: "[PLATZHALTER: Internetadresse der Online-Rücktrittsfunktion „Vertrag widerrufen“ für Shop-Bestellungen nach § 13a FAGG – für PH-S-Bestellungen noch nicht gebaut]",
   zahlungsartenOnline: "[PLATZHALTER: im Stripe-Konto aktivierte Zahlungsarten, z. B. Kredit-/Debitkarte, Apple Pay, Google Pay, eps]",
   zahlungsartenShowroom: "[PLATZHALTER: im Showroom bei Abholung akzeptierte Zahlungsarten, z. B. Bankomatkarte, Kreditkarte, bar]",
-  versanddienste: "[PLATZHALTER: über LetMeShip tatsächlich gebuchte Paketdienste, z. B. Österreichische Post, DHL, DPD, GLS, UPS]",
   letmeship: "[PLATZHALTER: Firma und Anschrift des Versandvermittlers LetMeShip laut Vertrag bzw. Auftragsverarbeitungsvertrag]",
   gewaehrleistungsMitteilung: "[PLATZHALTER: harmonisierte Mitteilung zum gesetzlichen Gewährleistungsrecht laut Anhang II FAGG (grafisches Muster, im RIS nur als PDF) – vor Livegang einbinden]",
 });
 
 /**
- * Vorschläge der Agenten für Inhaber-Entscheidungen. Rechtlich zulässig
- * gewählt, aber geschäftliche Entscheidung des Inhabers – im Text stehen sie
- * ohne Platzhalter, damit der Entwurf lesbar ist; Liste im Bericht.
+ * Vorschläge für Inhaber-Entscheidungen. Rechtlich zulässig gewählt, aber
+ * geschäftliche Entscheidung des Inhabers – im Text stehen sie ohne
+ * Platzhalter, damit der Entwurf lesbar ist; Liste im Bericht.
  */
 export const VORSCHLAEGE = Object.freeze({
   // § 6 Abs 1 Z 1 KSchG: Annahmefrist darf nicht unangemessen lang/unbestimmt sein.
@@ -135,7 +144,7 @@ const RUECKSENDEKOSTEN_TEXT = Object.freeze({
  *   variante c nur, wenn mehrere Waren einer Bestellung getrennt geliefert werden.
  */
 export function widerrufsbelehrung({ variante = "b", ruecksendekosten = VORSCHLAEGE.ruecksendekosten, widerrufsUrl = null } = {}) {
-  const url = widerrufsUrl || PLATZHALTER.widerrufsfunktion;
+  const url = widerrufsUrl || WIDERRUF_URL;
   return [
     { h: "Widerrufsrecht" },
     "Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.",
@@ -158,9 +167,10 @@ export function widerrufsbelehrung({ variante = "b", ruecksendekosten = VORSCHLA
  * (§ 18 Abs 1 FAGG; § 4 Abs 1 Z 11 FAGG verlangt die Information).
  *   Z 5 versiegelte Hygiene-/Gesundheitswaren nach Entsiegelung → Parfum
  *       (Kategorie "parfum", z. B. Trudon Eau de Parfum). DE: § 312g Abs 2 Nr 3 BGB.
- *   Z 3 Waren nach Kundenspezifikation/personalisiert → derzeit NICHT
- *       angeboten (kein Gravur-/Personalisierungsartikel im Katalog), daher
- *       nicht in den Text aufgenommen. Kommt das, hier ergänzen.
+ *   Z 3 Waren nach Kundenspezifikation/personalisiert → Inhaber-Entscheidung
+ *       02.11.2026: Ausschluss aufnehmen (gilt, sobald solche Artikel bestellt
+ *       werden; derzeit kein Gravur-/Personalisierungsartikel im Katalog, die
+ *       Kategorie "sonderanfertigung" ist noch keinem Produkt zugeordnet).
  * Kerzen, Raumduft, Glas und Bücher fallen NICHT unter Z 5.
  */
 export const WIDERRUF_AUSNAHMEN = Object.freeze([
@@ -170,6 +180,12 @@ export const WIDERRUF_AUSNAHMEN = Object.freeze([
     kategorien: Object.freeze(["parfum"]),
     text: "Das Widerrufsrecht besteht nicht bei Verträgen über Waren, die versiegelt geliefert werden und aus Gründen des Gesundheitsschutzes oder aus Hygienegründen nicht zur Rückgabe geeignet sind, sofern deren Versiegelung nach der Lieferung entfernt wurde. In unserem Shop betrifft das Parfums (z. B. Eau de Parfum), die in versiegelter Verpackung geliefert werden. Solange die Versiegelung unversehrt ist, können Sie auch diese Waren widerrufen.",
   }),
+  Object.freeze({
+    id: "sonderanfertigung",
+    fundstelle: "§ 18 Abs 1 Z 3 FAGG; DE § 312g Abs 2 Nr 1 BGB",
+    kategorien: Object.freeze(["sonderanfertigung"]),
+    text: "Das Widerrufsrecht besteht außerdem nicht bei Verträgen über Waren, die nach Kundenspezifikationen angefertigt werden oder eindeutig auf die persönlichen Bedürfnisse zugeschnitten sind (z. B. Sonderanfertigungen, Gravuren oder andere Personalisierungen nach Ihren Vorgaben). Ob ein Artikel eine solche Anfertigung ist, sehen Sie auf der Produktseite und in der Zusammenfassung vor der Bestellung.",
+  }),
 ]);
 
 export const ausnahmenFuer = (kategorien = []) => WIDERRUF_AUSNAHMEN.filter((x) => x.kategorien.some((k) => kategorien.includes(k)));
@@ -177,8 +193,8 @@ export const ausnahmenFuer = (kategorien = []) => WIDERRUF_AUSNAHMEN.filter((x) 
 const AUSNAHMEN_BLOCKS = [
   { h: "Ausschluss des Widerrufsrechts" },
   ...WIDERRUF_AUSNAHMEN.map((x) => x.text),
-  { note: "§ 18 Abs 1 Z 5 FAGG nur für Parfum angewendet. Kanzlei prüfen: ob die Cellophan-Folie der Hersteller als „Versiegelung“ gilt (EuGH 27.3.2019, C-681/17 slewo: Kriterium Gesundheits-/Hygienegrund) und ob einzelne Raumdüfte erfasst sein sollen. Z 3 (personalisierte Waren) entfällt mangels solcher Artikel." },
-  { note: "Review 31.10.2026 – Kanzlei prüfen: Die Belehrung vor der Bestellung nutzt Gestaltungshinweis [1] lit b, die Versandbedingungen (Punkt 4) erlauben aber Teillieferungen; erst die Vertragsbestätigung wählt lit c. Da die Belehrung vor Vertragsschluss den Fristbeginn richtig nennen muss (§ 4 Abs 1 Z 8 FAGG), entweder Teillieferungen ausschließen oder lit c bei mehreren Waren schon im Warenkorb verwenden." },
+  { note: "§ 18 Abs 1 Z 5 FAGG nur für Parfum angewendet. Kanzlei prüfen: ob die Cellophan-Folie der Hersteller als „Versiegelung“ gilt (EuGH 27.3.2019, C-681/17 slewo: Kriterium Gesundheits-/Hygienegrund) und ob einzelne Raumdüfte erfasst sein sollen. Z 3 (Sonderanfertigungen) auf Wunsch des Inhabers (02.11.2026) aufgenommen; sie greift erst, wenn ein Artikel die Kategorie „sonderanfertigung“ trägt." },
+  { note: "Kanzlei prüfen: Die Belehrung vor der Bestellung nutzt Gestaltungshinweis [1] lit b, die Versandbedingungen (Punkt 4) erlauben aber Teillieferungen; erst die Vertragsbestätigung wählt lit c. Da die Belehrung vor Vertragsschluss den Fristbeginn richtig nennen muss (§ 4 Abs 1 Z 8 FAGG), entweder Teillieferungen ausschließen oder lit c bei mehreren Waren schon im Warenkorb verwenden." },
 ];
 
 /** Muster-Widerrufsformular, Anhang I Teil B FAGG, wörtlich und ausgefüllt. */
@@ -211,7 +227,7 @@ const V = VORSCHLAEGE;
  * klausel), § 14 KSchG (Gerichtsstand), Art. 6 Rom-I-VO.
  */
 export const AGB = Object.freeze([
-  `Allgemeine Geschäftsbedingungen für den Onlineshop von ${A.marke} · Fassung vom 31.10.2026 (Entwurf)`,
+  `Allgemeine Geschäftsbedingungen für den Onlineshop von ${A.marke} · Fassung vom ${STAND_LESBAR}`,
 
   { h: "1. Vertragspartner und Geltungsbereich" },
   `1.1 Vertragspartner ist die ${A.firma} („wir“, „${A.marke}“), ${ANSCHRIFT}, ${A.fn}, ${A.gericht}, UID ${A.uid}, Telefon ${A.telefon}, E-Mail ${A.email}.`,
@@ -225,7 +241,7 @@ export const AGB = Object.freeze([
   "2.3 Mit Klick auf die Schaltfläche „Zahlungspflichtig bestellen“ geben Sie ein verbindliches Angebot zum Kauf der Artikel im Warenkorb ab (§ 8 Abs 2 FAGG; DE § 312j Abs 3 BGB). Das gilt auch, wenn Sie „bezahlen bei Abholung“ gewählt haben: Auch dann ist Ihre Bestellung ein verbindlicher Kauf; nur die Zahlung erfolgt erst im Showroom.",
   "2.4 Den Eingang Ihrer Bestellung bestätigen wir unverzüglich auf der Bestätigungsseite und per E-Mail (Eingangsbestätigung, § 10 Abs 2 ECG). Die Eingangsbestätigung ist noch keine Annahme Ihres Angebots.",
   `2.5 Der Vertrag kommt zustande, wenn wir Ihr Angebot mit einer Auftragsbestätigung per E-Mail annehmen. Wir nehmen an oder lehnen ab spätestens ${V.annahmefristWerktage} Werktage nach Eingang Ihrer Bestellung. Lehnen wir ab oder melden wir uns in dieser Frist nicht, sind Sie nicht mehr gebunden; eine bereits geleistete Zahlung erstatten wir unverzüglich, spätestens binnen 14 Tagen, über dasselbe Zahlungsmittel.`,
-  { note: `Annahmefrist ${V.annahmefristWerktage} Werktage = Vorschlag (§ 6 Abs 1 Z 1 KSchG: nicht unangemessen lang, bestimmt). Werktage = Montag bis Freitag außer gesetzliche Feiertage in Österreich. Bei Stripe wird die Zahlung schon bei der Bestellung eingezogen; deshalb die Erstattungszusage. Review 31.10.2026 – Kanzlei prüfen: Zieht Stripe sofort ein (capture), kann das Einziehen selbst als Annahme gelten (konkludent, § 864 Abs 1 ABGB); dann ist Punkt 2.5 widersprüchlich. Alternativen: Stripe nur autorisieren (capture_method manual) und erst mit der Auftragsbestätigung einziehen, oder Annahme ausdrücklich mit Zahlungsabschluss.` },
+  { note: `Annahmefrist ${V.annahmefristWerktage} Werktage = Vorschlag (§ 6 Abs 1 Z 1 KSchG: nicht unangemessen lang, bestimmt). Werktage = Montag bis Freitag außer gesetzliche Feiertage in Österreich. Bei Stripe wird die Zahlung schon bei der Bestellung eingezogen; deshalb die Erstattungszusage. Kanzlei prüfen: Zieht Stripe sofort ein (capture), kann das Einziehen selbst als Annahme gelten (konkludent, § 864 Abs 1 ABGB); dann ist Punkt 2.5 widersprüchlich. Alternativen: Stripe nur autorisieren (capture_method manual) und erst mit der Auftragsbestätigung einziehen, oder Annahme ausdrücklich mit Zahlungsabschluss.` },
   "2.6 Vertragssprache ist Deutsch. Wir speichern den Vertragstext (Bestelldaten und diese AGB) und senden ihn Ihnen mit der Auftragsbestätigung auf einem dauerhaften Datenträger (E-Mail) zu (§ 7 Abs 3 FAGG). Ihre Bestellung können Sie außerdem über den Link auf der Bestätigungsseite einsehen.",
 
   { h: "3. Abholung im Showroom" },
@@ -248,13 +264,16 @@ export const AGB = Object.freeze([
 
   { h: "6. Lieferung" },
   "6.1 Wir liefern an Adressen in Österreich und Deutschland. In die Schweiz und in andere Länder liefern wir derzeit nicht; Abholung im Showroom ist möglich.",
-  "6.2 Die Lieferzeit geben wir je Lieferland in der Zusammenfassung vor der Bestellung an. Ist keine Lieferzeit vereinbart, liefern wir ohne unnötigen Aufschub, spätestens 30 Tage nach Vertragsschluss (§ 7a KSchG).",
+  "6.2 Die Lieferzeit geben wir je Lieferland in der Zusammenfassung vor der Bestellung an. Angegebene Lieferzeiten sind voraussichtliche Lieferzeiten und keine Fixtermine, es sei denn, wir haben Ihnen einen Termin ausdrücklich als verbindlich zugesagt. Ist keine Lieferzeit vereinbart, liefern wir ohne unnötigen Aufschub, spätestens 30 Tage nach Vertragsschluss (§ 7a KSchG). Ihre gesetzlichen Rechte bei verspäteter Lieferung (Nachfrist, Rücktritt und Erstattung, § 7a KSchG, § 918 ABGB) bleiben unberührt.",
   "6.3 Ist ein Artikel nach Vertragsschluss nicht lieferbar, informieren wir Sie unverzüglich. Ihre Rechte nach dem Gesetz (etwa Rücktritt nach Setzung einer angemessenen Nachfrist und Erstattung bereits bezahlter Beträge) bleiben unberührt.",
   "6.4 Einzelheiten zu Versand, Teillieferungen und Transportschäden regeln die Versand- und Lieferbedingungen.",
 
   { h: "7. Widerrufsrecht" },
   "7.1 Als Verbraucherin oder Verbraucher haben Sie bei Bestellungen im Onlineshop ein gesetzliches Widerrufsrecht von 14 Tagen. Belehrung, Ausnahmen und Muster-Widerrufsformular finden Sie in der Widerrufsbelehrung, die Sie auch mit der Auftragsbestätigung erhalten.",
-  `7.2 Sie können den Widerruf per Brief, per E-Mail an ${A.email}, mit dem Muster-Widerrufsformular oder über die Schaltfläche „Vertrag widerrufen“ erklären (${PLATZHALTER.widerrufsfunktion}).`,
+  `7.2 Sie können den Widerruf per Brief, per E-Mail an ${A.email}, mit dem Muster-Widerrufsformular oder online über die Schaltfläche „Vertrag widerrufen“ erklären (${WIDERRUF_URL}). Nutzen Sie die Online-Funktion, bestätigen wir Ihnen den Eingang unverzüglich per E-Mail mit Inhalt, Datum und Uhrzeit Ihrer Erklärung (§ 13a FAGG).`,
+  // § 4 Abs 1 Z 10 FAGG: Rücksendekosten trägt der Kunde nur, wenn er vorab informiert wurde – daher ausdrücklich in den AGB.
+  "7.3 Widerrufen Sie den Vertrag, tragen Sie die unmittelbaren Kosten der Rücksendung der Waren (§ 15 Abs 2 FAGG). Bitte senden Sie die Waren möglichst in der Originalverpackung und ausreichend geschützt zurück. Für einen Wertverlust müssen Sie nur aufkommen, wenn er auf einen zur Prüfung von Beschaffenheit, Eigenschaften und Funktionsweise nicht notwendigen Umgang mit den Waren zurückgeht (§ 15 Abs 4 FAGG). Die Rückzahlung können wir verweigern, bis wir die Waren zurückerhalten haben oder Sie den Nachweis der Rücksendung erbracht haben (§ 14 Abs 2 FAGG).",
+  "7.4 Kein Widerrufsrecht besteht bei den in der Widerrufsbelehrung genannten Ausnahmen (§ 18 FAGG), insbesondere bei versiegelten Waren nach Entfernen der Versiegelung und bei Waren, die nach Ihren Vorgaben angefertigt oder personalisiert werden.",
 
   { h: "8. Gefahrübergang" },
   "8.1 Bei Versand geht die Gefahr des Verlusts oder der Beschädigung der Ware erst auf Sie über, wenn die Ware an Sie oder an eine von Ihnen bestimmte, vom Beförderer verschiedene Person abgeliefert wird (§ 7b KSchG; DE § 475 Abs 2 BGB). Bei Abholung geht die Gefahr mit der Übergabe im Showroom über.",
@@ -277,16 +296,19 @@ export const AGB = Object.freeze([
   { note: "Haltbarkeitsgarantie > 2 Jahre: harmonisierte Kennzeichnung nach Anhang III FAGG (§ 4 Abs 1 Z 12a). Derzeit keine solche Garantie im Shop bekannt." },
 
   { h: "12. Haftung" },
-  "12.1 Wir haften nach den gesetzlichen Bestimmungen. Die Haftung nach dem Produkthaftungsgesetz bleibt unberührt.",
-  { note: "Bewusst keine Haftungsbeschränkung: § 6 Abs 1 Z 9 KSchG (Personenschäden, grobe Fahrlässigkeit) und für DE-Verbraucher § 309 Nr 7 BGB/Kardinalpflichten – eine Klausel, die beide Rechtsordnungen besteht, bringt bei Accessoires kaum Nutzen." },
+  "12.1 Wir haften für Schäden, die wir oder unsere Erfüllungsgehilfen vorsätzlich oder grob fahrlässig verursachen. Für Schäden aus leichter Fahrlässigkeit haften wir nicht. Dieser Ausschluss gilt nicht für Personenschäden, für Ansprüche nach dem Produkthaftungsgesetz und für Schäden an Sachen, die wir zur Bearbeitung übernommen haben (§ 6 Abs 1 Z 9 KSchG, § 9 PHG).",
+  "12.2 Haben Sie Ihren gewöhnlichen Aufenthalt in Deutschland, bleibt unsere Haftung für die leicht fahrlässige Verletzung wesentlicher Vertragspflichten (Pflichten, deren Erfüllung die ordnungsgemäße Durchführung des Vertrags erst ermöglicht und auf deren Einhaltung Sie regelmäßig vertrauen dürfen) bestehen; sie ist in diesem Fall auf den vertragstypischen, vorhersehbaren Schaden begrenzt (§ 309 Nr 7 BGB).",
+  { note: "Haftungsbeschränkung auf Wunsch des Inhabers (02.11.2026) in den Grenzen des § 6 Abs 1 Z 9 KSchG (Personenschäden und grobe Fahrlässigkeit nie ausgeschlossen; § 9 PHG zwingend). Für DE-Verbraucher verlangt § 309 Nr 7 BGB bzw. die BGH-Rechtsprechung zu Kardinalpflichten die Rückausnahme in 12.2 – Kanzlei prüfen, ob die Formulierung für beide Rechtsordnungen trägt." },
 
   { h: "13. Anwendbares Recht und Gerichtsstand" },
   "13.1 Es gilt österreichisches Recht unter Ausschluss des UN-Kaufrechts. Haben Sie als Verbraucherin oder Verbraucher Ihren gewöhnlichen Aufenthalt in einem anderen Staat, bleibt Ihnen der Schutz der zwingenden Bestimmungen des Rechts dieses Staates erhalten (Art. 6 Abs 2 Rom-I-VO).",
-  "13.2 Haben Sie Ihren Wohnsitz, gewöhnlichen Aufenthalt oder Ort der Beschäftigung in Österreich, können wir Sie nur bei dem dort zuständigen Gericht klagen (§ 14 KSchG). Wohnen Sie in einem anderen EU-Staat, können Sie uns in Österreich oder an Ihrem Wohnsitz klagen; wir können Sie nur an Ihrem Wohnsitz klagen (Art. 18 EuGVVO).",
+  "13.2 Für Verbraucherinnen und Verbraucher gelten die gesetzlichen Gerichtsstände: Haben Sie Ihren Wohnsitz, gewöhnlichen Aufenthalt oder Ort der Beschäftigung in Österreich, können wir Sie nur bei dem dort zuständigen Gericht klagen (§ 14 KSchG). Wohnen Sie in einem anderen EU-Staat, können Sie uns in Österreich oder an Ihrem Wohnsitz klagen; wir können Sie nur an Ihrem Wohnsitz klagen (Art. 18 EuGVVO).",
+  "13.3 Sind Sie Unternehmerin oder Unternehmer im Sinne des § 1 KSchG, ist für alle Streitigkeiten aus diesem Vertrag das sachlich zuständige Gericht in Wien ausschließlich zuständig.",
+  { note: "Gerichtsstand Wien für Unternehmer: Inhaber-Entscheidung 02.11.2026 (gilt auch für die allgemeinen AGB). Für Verbraucher bleibt § 14 KSchG zwingend; die Klausel 13.3 greift nur, wenn ausnahmsweise ein Unternehmer über den Shop kauft (Punkt 1.3)." },
 
   { h: "14. Beschwerden und Streitbeilegung" },
   `14.1 Bei Fragen oder Beschwerden wenden Sie sich bitte an ${A.email} oder ${A.telefon}. Wir bemühen uns, jedes Anliegen direkt mit Ihnen zu lösen.`,
-  { note: `Neutral formuliert: Das Impressum enthält bewusst keine Angabe zur Teilnahme an einer Verbraucherschlichtung (§ 19 AStG, Entscheidung Inhaber; impressum.js). Erklärt der Inhaber die Bereitschaft, hier Schlichtungsstelle ergänzen (AStG ${QUELLEN.AStG}). Kein Link zur EU-OS-Plattform: ODR-VO aufgehoben mit Wirkung 20.07.2025 durch VO (EU) 2024/3228 (${QUELLEN.ODR_Aufhebung}). DE: Hinweispflicht § 36 VSBG erst ab mehr als 10 Beschäftigten – prüfen. Review 31.10.2026: Unabhängig davon verlangt § 19 Abs 3 AStG nach einer ungelösten Beschwerde eine Mitteilung auf dauerhaftem Datenträger, ob wir an einem AS-Verfahren teilnehmen (Kanzlei: Prozess/Textbaustein für den Kundendienst).` },
+  { note: `Neutral formuliert: Das Impressum enthält bewusst keine Angabe zur Teilnahme an einer Verbraucherschlichtung (§ 19 AStG, Entscheidung Inhaber; impressum.js). Erklärt der Inhaber die Bereitschaft, hier Schlichtungsstelle ergänzen (AStG ${QUELLEN.AStG}). Kein Link zur EU-OS-Plattform: ODR-VO aufgehoben mit Wirkung 20.07.2025 durch VO (EU) 2024/3228 (${QUELLEN.ODR_Aufhebung}). DE: Hinweispflicht § 36 VSBG erst ab mehr als 10 Beschäftigten – prüfen. Unabhängig davon verlangt § 19 Abs 3 AStG nach einer ungelösten Beschwerde eine Mitteilung auf dauerhaftem Datenträger, ob wir an einem AS-Verfahren teilnehmen (Kanzlei: Prozess/Textbaustein für den Kundendienst).` },
 
   { h: "15. Schlussbestimmungen" },
   "15.1 Ist eine Bestimmung dieser AGB unwirksam, bleiben die übrigen wirksam. An die Stelle der unwirksamen Bestimmung tritt die gesetzliche Regelung.",
@@ -304,7 +326,8 @@ export function lieferzeitZeilen(config = LIEFERZEIT) {
     const e = z.lager;
     const frei = lieferzeitFreigegeben(e);
     const wert = Number.isInteger(e?.min) && Number.isInteger(e?.max) ? `${e.min}–${e.max} Werktage` : "wird vor der Bestellung im Warenkorb angegeben";
-    out.push(`${land[code] || code}, sofort lieferbare Artikel: ${wert}${frei ? "" : " [Entwurf – Wert aus lieferzeit.js, noch nicht freigegeben]"}`);
+    // Nicht freigegebene Werte (lieferzeit.js) tragen den Marker „Entwurf“ – ohne internen Dateiverweis.
+    out.push(`${land[code] || code}, sofort lieferbare Artikel: ${wert}${frei ? "" : " (Entwurf)"}`);
   }
   out.push("Artikel, die wir beim Hersteller bestellen: Die Lieferzeit nennen wir Ihnen im Warenkorb vor Abgabe der Bestellung; ohne Angabe gilt Punkt 3.2.");
   return out;
@@ -312,7 +335,7 @@ export function lieferzeitZeilen(config = LIEFERZEIT) {
 
 export function versandbedingungen(config = LIEFERZEIT) {
   return [
-    `Versand- und Lieferbedingungen des Onlineshops von ${A.marke} · Stand 31.10.2026 (Entwurf)`,
+    `Versand- und Lieferbedingungen des Onlineshops von ${A.marke} · Stand ${STAND_LESBAR}`,
     { h: "1. Liefergebiet" },
     "1.1 Wir versenden an Lieferadressen in Österreich und Deutschland.",
     "1.2 In die Schweiz und in andere Länder versenden wir derzeit nicht (Zoll- und Umsatzsteuerfragen sind noch offen). Sie können Ihre Bestellung aber im Showroom abholen – auch mit Wohnsitz in der Schweiz.",
@@ -320,13 +343,15 @@ export function versandbedingungen(config = LIEFERZEIT) {
     { note: "§ 8 Abs 3 FAGG / § 312j Abs 1 BGB: Lieferbeschränkungen spätestens bei Beginn des Bestellvorgangs angeben – im Warenkorb steht „Schweiz – derzeit nicht verfügbar“ (copy.js countries.CH)." },
 
     { h: "2. Versandkosten und Versanddienst" },
-    `2.1 Wir versenden über den Versandvermittler LetMeShip mit ${PLATZHALTER.versanddienste}.`,
+    // Dienstwahl je Sendung: shipping/config.js (DIENST_WAHL, Tarife live über LetMeShip); Carrier und Sendungsnummer
+    // stehen nach dem Anlegen der Sendung in der Bestellung (webhook.js sendung.carrier/awb, Bestellseite).
+    "2.1 Wir versenden als Paket über den Versandvermittler LetMeShip. Den Paketdienst wählen wir je Sendung nach Lieferland, Größe und Gewicht der Pakete sowie der Versicherung aus. Welcher Paketdienst Ihre Sendung befördert, teilen wir Ihnen mit der Versandbestätigung samt Sendungsnummer mit; die Sendungsverfolgung sehen Sie auch auf Ihrer Bestellseite.",
     "2.2 Die Versandkosten berechnen wir im Warenkorb live anhand von Lieferland, Lieferadresse, Gewicht und Maßen der Pakete. Sie sehen den Betrag vor Abgabe der Bestellung; er ist im angezeigten Gesamtpreis enthalten (inklusive Umsatzsteuer). Weitere Versandkosten fallen nicht an.",
     "2.3 Jede Sendung ist versichert; Versicherungswert ist der Warenwert. Zerbrechliche Artikel (z. B. Glas) verpacken wir besonders geschützt.",
     "2.4 Bei Abholung im Showroom fallen keine Versandkosten an.",
 
     { h: "3. Lieferzeit" },
-    "3.1 Die Lieferzeit wird in der Zusammenfassung unmittelbar vor der Bestellung angezeigt. Sie beginnt mit dem Vertragsschluss (Auftragsbestätigung); Werktage sind Montag bis Freitag außer gesetzliche Feiertage in Österreich. Derzeit gelten:",
+    "3.1 Die Lieferzeit wird in der Zusammenfassung unmittelbar vor der Bestellung angezeigt. Sie beginnt mit dem Vertragsschluss (Auftragsbestätigung); Werktage sind Montag bis Freitag außer gesetzliche Feiertage in Österreich. Angegebene Lieferzeiten sind voraussichtliche Lieferzeiten und keine Fixtermine, sofern wir einen Termin nicht ausdrücklich als verbindlich zugesagt haben; Ihre gesetzlichen Rechte bei verspäteter Lieferung bleiben unberührt (AGB Punkt 6.2). Derzeit gelten:",
     { ul: lieferzeitZeilen(config) },
     "3.2 Ist keine Lieferzeit angegeben, liefern wir ohne unnötigen Aufschub, spätestens 30 Tage nach Vertragsschluss (§ 7a KSchG).",
     "3.3 Duftkerzen versenden wir bei großer Hitze unter Umständen einige Tage später, damit sie nicht schmelzen. Die angegebene Lieferzeit bleibt davon unberührt; können wir sie nicht einhalten, melden wir uns vorher bei Ihnen.",
@@ -338,7 +363,7 @@ export function versandbedingungen(config = LIEFERZEIT) {
 
     { h: "5. Transportschäden" },
     `5.1 Ist ein Paket bei der Zustellung sichtbar beschädigt, lassen Sie den Schaden bitte vom Zusteller bestätigen oder notieren Sie ihn bei der Übernahme. Bemerken Sie einen Schaden (z. B. Glasbruch) erst beim Auspacken, melden Sie ihn bitte möglichst innerhalb von ${V.schadenMeldungTage} Tagen an ${A.email}, am besten mit Fotos von Ware, Verpackung und Versandetikett, und bewahren Sie die Verpackung bis zur Klärung auf.`,
-    "5.2 Das ist eine Bitte, damit wir den Schaden beim Versanddienst und der Versicherung schnell geltend machen können. Ihre gesetzlichen Rechte (Gewährleistung, Gefahrübergang erst bei Ablieferung an Sie) hängen davon nicht ab. Wir liefern Ersatz oder erstatten den Kaufpreis.",
+    "5.2 Die Anzeige hilft uns, den Schaden beim Versanddienst und der Versicherung geltend zu machen; wir bitten Sie deshalb ausdrücklich darum. Ihre gesetzlichen Rechte (Gewährleistung, Gefahrübergang erst bei Ablieferung an Sie) hängen davon nicht ab. Wir liefern Ersatz oder erstatten den Kaufpreis.",
     { note: "Keine Rügefrist für Verbraucher (§ 7b KSchG, VGG zwingend; DE § 475 Abs 2 BGB). Meldefrist nur als Bitte formuliert." },
   ];
 }
@@ -364,7 +389,7 @@ export const DATENSCHUTZ_SHOP = Object.freeze([
   {
     ul: [
       "Stripe Payments Europe, Limited, 1 Grand Canal Street Lower, Dublin 2, Irland – Abwicklung der Online-Zahlung. Kartendaten und andere Zahlungsdaten geben Sie direkt bei Stripe ein; sie erreichen unseren Server nicht. Stripe verarbeitet Daten teils als eigener Verantwortlicher (z. B. Betrugs- und Geldwäscheprävention). Eine Übermittlung an Stripe, Inc. (USA) stützt sich auf den Angemessenheitsbeschluss zum EU-US Data Privacy Framework bzw. Standardvertragsklauseln (Art. 45, 46 DSGVO).",
-      `Versandvermittler LetMeShip (${PLATZHALTER.letmeship}) und der von uns gewählte Paketdienst (${PLATZHALTER.versanddienste}) – Name, Lieferadresse, E-Mail und Telefonnummer, Paketgewicht und -maße zur Erstellung und Zustellung der Sendung.`,
+      `Versandvermittler LetMeShip (${PLATZHALTER.letmeship}) und der je Sendung beauftragte Paketdienst (Kategorie Empfänger: Paket- und Kurierdienste; den konkreten Dienst nennen wir Ihnen mit der Versandbestätigung) – Name, Lieferadresse, E-Mail und Telefonnummer, Paketgewicht und -maße zur Erstellung und Zustellung der Sendung.`,
       "Unser E-Mail-Versanddienst für Eingangs- und Auftragsbestätigung (siehe Abschnitt E-Mail-Versand dieser Datenschutzerklärung), unser Hosting-Anbieter sowie unsere Steuerberatung im Rahmen der Buchhaltung.",
     ],
   },
@@ -373,6 +398,8 @@ export const DATENSCHUTZ_SHOP = Object.freeze([
   "Bestell-, Rechnungs- und Zahlungsdaten bewahren wir sieben Jahre auf, gerechnet ab dem Ende des Kalenderjahres der Bestellung (§ 132 Abs 1 BAO, § 212 UGB), bei laufenden Verfahren auch länger. Daten, die wir nur für Versand und Kommunikation benötigen (z. B. Telefonnummer, Sendungsdaten), löschen wir nach Ablauf der Gewährleistungsfrist und der Verjährung (zwei Jahre plus drei Monate ab Übergabe, gegebenenfalls ein Jahr länger nach einer Verbesserung; §§ 10, 28 VGG), soweit sie nicht Teil der Buchhaltungsunterlagen sind.",
   { h: "Pflicht zur Angabe" },
   "Name, E-Mail-Adresse und – bei Versand – die Lieferadresse brauchen wir für den Vertrag. Ohne sie können wir Ihre Bestellung nicht annehmen. Die Telefonnummer ist freiwillig.",
+  { h: "Online-Widerruf" },
+  `Nutzen Sie die Online-Funktion „Vertrag widerrufen“ (${WIDERRUF_URL}), verarbeiten wir Name, E-Mail-Adresse, Anschrift, Bestellnummer, Datum und die genannten Artikel, um den Widerruf Ihrer Bestellung zuzuordnen, Ihnen die gesetzlich vorgesehene Eingangsbestätigung zu senden und den Widerruf abzuwickeln (Art. 6 Abs 1 lit b und lit c DSGVO iVm § 13a FAGG). Diese Angaben bewahren wir zusammen mit den Bestelldaten auf (siehe Speicherdauer).`,
   { h: "Ihre Rechte" },
   "Sie haben die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO) sowie das Recht auf Beschwerde bei einer Aufsichtsbehörde, insbesondere bei der Österreichischen Datenschutzbehörde oder der Aufsichtsbehörde des EU-Staats, in dem Sie wohnen (Art. 77 DSGVO). Einzelheiten und Kontakt: übrige Abschnitte dieser Datenschutzerklärung.",
 ]);

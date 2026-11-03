@@ -2,7 +2,8 @@
 // Hooks und ohne Server-Code: ConceptGallery rendert das erste Konzept auf dem
 // Server, ConceptTabs die übrigen erst nach Wahl des Reiters im Browser
 // (R5 technik P1-3, Seitengewicht). Labels: „Beispielkonzept – kein
-// Kundenprojekt“, „KI-generierte Konzeptvisualisierung“ auf jedem Bild.
+// Kundenprojekt“, „Visualisierung (Rendering)“ auf jedem Bild (03.11.2026: nur
+// noch Blender-Renderings; Konzepte ohne Rendering zeigen kein Bild).
 import { useLocale } from "next-intl";
 import { yachtUi } from "@/lib/yacht/ui";
 import { Fragment } from "react";
@@ -21,7 +22,7 @@ export const KICKER = {
 export default function Concept({ c }) {
   const locale = useLocale();
   const t = yachtUi(locale);
-  // R7-P4 (R2 gesamtwerk P1-6): KI-Bilder nur noch kartengroß – ein Bild je Konzept,
+  // R7-P4 (R2 gesamtwerk P1-6): Konzeptbilder nur noch kartengroß – ein Bild je Konzept,
   // nie bildschirmbreit; Produkte je Konzept begrenzt (weniger Wiederholung).
   const [lead] = c.images;
   const rest = [];
@@ -29,10 +30,10 @@ export default function Concept({ c }) {
     <article aria-labelledby={`k-${c.id}-title`} className="pt-stack-m">
       {/* QM r4: Kopf und Bild nach Containerbreite in rem – auf dem Tablet hoch (≥ 42 rem) nebeneinander
           (7 + 5), statt eines halbbreiten Bildes mit leerer rechter Hälfte; bei großer Schrift untereinander
-          mit breiterem Bild, damit der KI-Hinweis darauf ganz lesbar bleibt. */}
+          mit breiterem Bild, damit die Bildunterschrift darauf ganz lesbar bleibt. */}
       <div className="@container/kp">
       <div className="grid grid-cols-1 gap-y-8 @2xl/kp:grid-cols-12 @2xl/kp:gap-x-8">
-        <header className="min-w-0 @2xl/kp:col-span-7">
+        <header className={lead ? "min-w-0 @2xl/kp:col-span-7" : "min-w-0 @2xl/kp:col-span-12"}>
           <p className="text-overline uppercase text-text-accent">
             {/* QM r2: Trenner hängt mit geschütztem Leerzeichen am Wort davor – keine Zeile beginnt mit „· “ */}
             {/* QM r4: die Länge („8–10 m“) bricht nicht zwischen Zahl und Einheit, „m“ bleibt klein (Laenge) */}

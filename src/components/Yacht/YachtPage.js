@@ -1,9 +1,10 @@
 // Layout for /de/yacht-interior (R7-P4, Release-Rat R2: gesamtwerk P1-6, ux P2-4,
 // technik P1-5). Abgeleitet aus src/components/Landing/Yacht/YachtLanding.js, aber
 // kürzer und mit klarer Bildhierarchie „echtes Material vor eigener Grafik vor KI“:
-//   - kein bildschirmbreites KI-Kapitel „Sechs Boote, sechs Welten“ mehr; die
-//     KI-Bilder stehen nur noch kartengroß in den Beispielkonzepten, jedes mit
-//     „KI-Visualisierung“ (ConceptImage/KiLabel);
+//   - kein bildschirmbreites Bildkapitel „Sechs Boote, sechs Welten“ mehr; die
+//     Konzeptbilder stehen nur noch kartengroß in den Beispielkonzepten, jedes mit
+//     „Visualisierung (Rendering)“ (ConceptImage/KiLabel). 03.11.2026 (Inhaber):
+//     nur noch Blender-Renderings, keine KI-generierten Bilder (model.js);
 //   - „Beach Club / Superyacht (Inspiration)“ entfällt (page.js filtert das Konzept);
 //   - „Wer macht was“ steht genau einmal (Kurs durchs Winterlager); weniger
 //     Produktlinks (Konzept: höchstens 4, Markenregal: 1 je Marke);
@@ -314,8 +315,8 @@ export default function YachtPage({ content, path, concepts, brandConcepts, loca
   const mailHref = `mailto:${EMAIL}?subject=${encodeURIComponent(cta.mailSubject)}&body=${encodeURIComponent(t.mailBody)}`;
   const allImages = concepts.flatMap((c) => c.images);
   const filmImage = allImages[0];
-  // JSON-LD primaryImageOfPage: the register's hero (unchanged) – the AI
-  // image is a visualisation, not the page's photo.
+  // JSON-LD primaryImageOfPage: the register's hero (unchanged) – the concept
+  // image is a visualisation (rendering), not the page's photo.
   const heroImg = heroImage(path, filmImage?.webp[2400], hero.title);
   const island = islandConcepts(concepts);
   // Rat 9,5 A6: Hero mit dem freigegebenen Navetta-Foto (unverändert, mit Bildnachweis und
@@ -382,7 +383,7 @@ export default function YachtPage({ content, path, concepts, brandConcepts, loca
       </Section>
 
       {/* visual-design 31.10.2026 (Bildfolge): echtes Material zuerst – der Kinosaal folgt direkt auf den Prolog,
-          vor Werfthalle (eigene Grafik) und Beispielkonzepten (KI), wie es der Kopf dieser Datei verlangt. */}
+          vor Werfthalle (eigene Grafik) und Beispielkonzepten (Renderings), wie es der Kopf dieser Datei verlangt. */}
       {/* Reference: Minotti on a yacht – real photos, unchanged, credited, no AI
           label. Written release of Minotti and Custom Line by mail 28.10.2026
           (Inhaber-Entscheidung Nr. 11; NAVETTA_RELEASED, src/lib/yacht/navetta.js). */}
@@ -404,13 +405,13 @@ export default function YachtPage({ content, path, concepts, brandConcepts, loca
 
       {/* Six concepts */}
       <Section tone="surface" labelledBy="konzepte-title" id="konzepte" spacing="none" className={SECTION_Y}>
-        {/* QM r2 (200 % Text): zweispaltig nur, wenn der Container ≥ 64 rem ist – sonst stand der KI-Hinweis
+        {/* QM r2 (200 % Text): zweispaltig nur, wenn der Container ≥ 64 rem ist – sonst stand der Bildhinweis
             in einer 18-zeiligen Schmalspalte. */}
         <div className="@container/konz">
         <div className="grid grid-cols-1 gap-y-6 @5xl/konz:grid-cols-12 @5xl/konz:gap-x-8">
           <SectionHead id="konzepte-title" eyebrow={content.concepts.eyebrow} title={content.concepts.heading} text={content.concepts.text} className={`@5xl/konz:col-span-7 ${styles.fitHead}`} />
           <p className="min-w-0 max-w-measure border-l-2 border-see pl-4 text-small text-text-soft [overflow-wrap:break-word] @5xl/konz:col-span-4 @5xl/konz:col-start-9 @5xl/konz:self-end" data-ki-hinweis="">
-            {content.concepts.aiNote}
+            {content.concepts.imageNote}
           </p>
         </div>
         </div>

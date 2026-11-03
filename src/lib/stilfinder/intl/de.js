@@ -73,7 +73,7 @@ export const UI = {
     copyLink: "Link kopieren",
     linkCopied: "Link kopiert.",
     restart: "Stil-Finder neu starten",
-    howRules: "So entsteht Ihr Ergebnis: Ihre Antworten werden nach festen Regeln gewichtet (keine KI, keine Speicherung auf unseren Servern).",
+    howRules: "So entsteht Ihr Ergebnis: Ihre Antworten werden nach festen Regeln gewichtet und nicht auf unseren Servern gespeichert.",
     howLink: "Der Link enthält nur Ihre Antwort-Auswahl.",
     imagesNote: "Produktabbildungen stammen aus unserem Online-Katalog bzw. von den Herstellern. Farbtöne können am Bildschirm abweichen.",
     privacyLink: "Datenschutzerklärung",
@@ -139,7 +139,7 @@ export const UI = {
     optional: "(optional)",
     choose: "Bitte wählen",
     consent:
-      "Mit „Moodboard senden“ schicken wir Ihnen die PDF-Präsentation einmalig an diese Adresse. Ihre Angaben verwenden wir nur für diesen Versand und speichern sie danach nicht. Die Texte der Präsentation sind KI-gestützt erstellt und gekennzeichnet.",
+      "Mit „Moodboard senden“ schicken wir Ihnen die PDF-Präsentation einmalig an diese Adresse. Ihre Angaben verwenden wir nur für diesen Versand und speichern sie danach nicht.",
     consentDev: " Testbetrieb: Statt eines Versands liegt die Mail bis zu 7 Tage in einem internen Testpostfach.",
     privacyLink: "Datenschutzerklärung",
     newsletter: "Freiwillig: Ich möchte zusätzlich den Newsletter von Platzhirsch Home Living mit Einrichtungsideen, Neuheiten und Einladungen erhalten.",
@@ -206,7 +206,7 @@ export const PAGE = {
       },
       {
         q: "Wie entsteht das Ergebnis?",
-        a: "Ihre Antworten werden nach festen Regeln gewichtet – keine KI. Der stärkste Anteil bestimmt Ihr Profil; hat ein zweiter Stil Punkte, nennt das Ergebnis ihn als „Hauch“ dazu.",
+        a: "Ihre Antworten werden nach festen Regeln gewichtet. Der stärkste Anteil bestimmt Ihr Profil; hat ein zweiter Stil Punkte, nennt das Ergebnis ihn als „Hauch“ dazu.",
       },
       {
         q: "Werden meine Antworten gespeichert?",

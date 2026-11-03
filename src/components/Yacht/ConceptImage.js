@@ -1,4 +1,4 @@
-// Concept image (AI image or Blender rendering, 02.11.2026) with art direction-free <picture> (AVIF + WebP, 1200/2400 w,
+// Concept image (Blender rendering; AI images are no longer shown, 03.11.2026) with art direction-free <picture> (AVIF + WebP, 1200/2400 w,
 // pre-built in public/labs/yacht – no re-encoding by the image optimizer),
 // the visible KI label ON the image and a caption with the honest note where
 // the result differs from the concept. Server component.

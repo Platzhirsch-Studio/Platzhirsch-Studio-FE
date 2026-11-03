@@ -239,8 +239,8 @@ export default function RechnerApp({ initialEingabe = {}, initialMix = [], mixNa
           </div>
         </Gruppe>
 
-        {/* Kurzleiste mobil */}
-        <div ref={leisteRef} className="sticky bottom-0 z-(--z-sticky) -mx-gutter flex items-center justify-between gap-4 border-t border-line bg-surface px-gutter py-3 @5xl/rr:hidden">
+        {/* Kurzleiste mobil (Druck 02.11.: nicht im Ausdruck) */}
+        <div ref={leisteRef} className="sticky bottom-0 z-(--z-sticky) -mx-gutter flex items-center justify-between gap-4 border-t border-line bg-surface px-gutter py-3 @5xl/rr:hidden print:hidden">
           <p className="text-ui tabular-nums text-text" aria-hidden="true">
             {fehlerAnzahl ? C.ergebnis.leer : `${formatZahl(q.m2)} m² · ${q.kartons} ${C.ergebnis.kartons}`}
           </p>
@@ -320,7 +320,8 @@ export default function RechnerApp({ initialEingabe = {}, initialMix = [], mixNa
 
           <p className="mt-6 text-small text-text-soft">{C.ergebnis.preis}</p>
 
-          <div className="mt-6 flex flex-col gap-3">
+          {/* Druck 02.11.: Anfrage, Link kopieren, Custom Mix sind Bedienung – nicht im Ausdruck */}
+          <div className="mt-6 flex flex-col gap-3 print:hidden">
             {/* QM r1 (iphone-se): zweizeiliger CTA bekommt Luft oben/unten, Text mittig; Hinweis mit Abstand darunter */}
             <div className="flex flex-col gap-2">
               <Button href={anfrage} arrow fullWidth className="py-3 text-center leading-snug [&>span]:text-balance">

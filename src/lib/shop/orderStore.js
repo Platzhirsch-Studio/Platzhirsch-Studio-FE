@@ -7,13 +7,13 @@
 //   createMemoryOrderAdapter()    Tests.
 //   frappeOrderAdapter()          Platzhalter für den späteren Doctype
 //                                 „Shop Bestellung“ (README) – wirft absichtlich.
-// Sammlungen: bestellungen, tarife (Versand-Quotes mit Ablaufzeit).
+// Sammlungen: bestellungen, tarife (Versand-Quotes mit Ablaufzeit), widerrufe (§ 13a FAGG, widerruf.js).
 // Keine "@/"-Importe.
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { writeAtomic } from "../payments/store.js";
 
-export const SHOP_COLLECTIONS = Object.freeze(["bestellungen", "tarife"]);
+export const SHOP_COLLECTIONS = Object.freeze(["bestellungen", "tarife", "widerrufe"]);
 const clone = (v) => (v == null ? v ?? null : JSON.parse(JSON.stringify(v)));
 const check = (n) => {
   if (!SHOP_COLLECTIONS.includes(n)) throw new Error(`Unbekannte Sammlung: ${n}`);

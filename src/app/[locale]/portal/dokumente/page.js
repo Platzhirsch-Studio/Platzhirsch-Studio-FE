@@ -11,6 +11,7 @@ import PdfPreview from "@/components/Portal/Docs/PdfPreview";
 import FilterSelects from "@/components/Portal/Docs/FilterSelects";
 import { documentStatus, documentTypeLabel, focusRing } from "@/components/Portal/Docs/labels";
 import { portalMetadata } from "@/lib/portal/metadata";
+import { SITE_NAME } from "@/lib/site";
 
 export const generateMetadata = portalMetadata({
   title: "Dokumente",
@@ -62,6 +63,12 @@ export default async function DokumentePage({ searchParams }) {
 
   return (
     <>
+      {/* Druck 02.11.: Kopfzeile des Ausdrucks (Studio, Kundin, Stand); Filter und Knöpfe bleiben am Bildschirm,
+          die Liste wird zur Tabelle Dokument / Nummer / Datum / Projekt / Betrag / Status. */}
+      <p className="hidden border-b border-ink/10 pb-3 text-[13px] text-ink/70 print:block" data-dok-print-head="">
+        {SITE_NAME} · Dokumente · {portal.customer.displayName} · Stand {formatDate(new Date().toISOString().slice(0, 10))}
+        {projekt && projectTitle[projekt] ? ` · Projekt ${projectTitle[projekt]}` : ""}
+      </p>
       <DevDataNotice show={demo} />
       <DocsPageHeader
         overline="Ihre Unterlagen"
@@ -69,7 +76,49 @@ export default async function DokumentePage({ searchParams }) {
         intro="Angebote, Auftragsbestätigungen, Lieferscheine und Rechnungen zu Ihren Projekten – jederzeit abrufbar und als PDF zum Herunterladen."
       />
 
-      <Card aria-labelledby="dok-liste" className="overflow-hidden p-0! sm:p-0!">
+      {docs.length > 0 && (
+        <table className="hidden w-full border-collapse text-[13px] text-ink print:table" data-dok-print-tabelle="">
+          <thead>
+            <tr className="border-b border-ink/30 text-left text-ink/70">
+              <th scope="col" className="py-2 pr-3 font-semibold">
+                Dokument
+              </th>
+              <th scope="col" className="py-2 pr-3 font-semibold">
+                Nummer
+              </th>
+              <th scope="col" className="py-2 pr-3 font-semibold">
+                Datum
+              </th>
+              <th scope="col" className="py-2 pr-3 font-semibold">
+                Projekt
+              </th>
+              <th scope="col" className="py-2 pr-3 font-semibold">
+                Betrag
+              </th>
+              <th scope="col" className="py-2 font-semibold">
+                Status
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {docs.map((d) => (
+              <tr key={`${d.id}-druck`} className="border-b border-ink/10 align-top">
+                <td className="py-2 pr-3">
+                  <span className="block font-semibold">{documentTypeLabel(d.type)}</span>
+                  {d.title}
+                </td>
+                <td className="py-2 pr-3 whitespace-nowrap">{d.number}</td>
+                <td className="py-2 pr-3 whitespace-nowrap">{formatDate(d.date)}</td>
+                <td className="py-2 pr-3">{projectTitle[d.projectId] || "–"}</td>
+                <td className="py-2 pr-3 whitespace-nowrap">{d.amount != null ? d.amount : demo ? amountLabel(d) : "siehe PDF"}</td>
+                <td className="py-2 whitespace-nowrap">{documentStatus(d).label}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+
+      <Card aria-labelledby="dok-liste" className="overflow-hidden p-0! sm:p-0! print:hidden">
         <div className="space-y-4 border-b border-ink/10 p-5 sm:p-7">
           <h2 id="dok-liste" className="sr-only">
             Dokumentenliste

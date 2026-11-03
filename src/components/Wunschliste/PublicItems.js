@@ -71,7 +71,7 @@ function ReserveForm({ shareId, item, onDone, onCancel }) {
   }
 
   return (
-    <form ref={formRef} method="post" noValidate onSubmit={submit} className="relative mt-4 space-y-4 border-t border-line pt-4">
+    <form ref={formRef} method="post" noValidate onSubmit={submit} className="relative mt-4 space-y-4 border-t border-line pt-4 print:hidden">
       <Honeypot id={`${uid}-hp`} />
       <p ref={headingRef} tabIndex={-1} className="text-ui text-text focus-visible:outline-none">
         {c("public.reserveHeading", { name: item.name })}
@@ -126,15 +126,17 @@ export default function PublicItems({ shareId, items: initial }) {
         </Heading>
         <p className="tabular text-small text-text-soft">{c("public.count", { count: items.length })}</p>
       </div>
-      <p role="status" aria-live="polite" className="mt-4 min-h-6 text-ui text-text">
+      <p role="status" aria-live="polite" className="mt-4 min-h-6 text-ui text-text print:hidden">
         {notice}
       </p>
-      <ul className="mt-6 grid grid-cols-1 gap-x-grid gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Druck 02.11.: drei Stücke je Reihe, keine Karte über den Seitenumbruch; Knöpfe und Formular
+          bleiben am Bildschirm, der Reservierungsstatus steht als Text. */}
+      <ul className="mt-6 grid grid-cols-1 gap-x-grid gap-y-12 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-y-6">
         {items.map((item, index) => {
           const isMine = Boolean(own[item.key]);
           const href = item.href ? localizeProductsHref(item.href, locale) : null;
           return (
-            <li key={item.key} className="flex flex-col">
+            <li key={item.key} className="flex flex-col print:break-inside-avoid">
               <div className="relative aspect-[3/2] overflow-hidden bg-surface-raised">
                 {item.image && (
                   <Image
@@ -150,9 +152,9 @@ export default function PublicItems({ shareId, items: initial }) {
               <div className="mt-3 flex flex-1 flex-col gap-1">
                 {item.brand && <p className="text-overline uppercase text-text-soft">{item.brand}</p>}
                 <h3 className="text-ui text-text">{item.name}</h3>
-                <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+                <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 print:mt-1">
                   {item.reserved ? (
-                    <p className="inline-flex min-h-11 items-center gap-2 text-ui text-text">
+                    <p className="inline-flex min-h-11 items-center gap-2 text-ui text-text print:min-h-0">
                       <Check aria-hidden="true" className="size-4" strokeWidth={1.75} />
                       {isMine ? c("public.reservedByYou") : c("public.reserved")}
                     </p>
@@ -165,18 +167,19 @@ export default function PublicItems({ shareId, items: initial }) {
                           setOpenKey(item.key);
                         }}
                         aria-label={c("public.reserveLabel", { name: item.name })}
+                        className="print:hidden"
                       >
                         {c("public.reserve")}
                       </Button>
                     )
                   )}
                   {item.reserved && isMine && (
-                    <Button variant="link" onClick={() => release(item)}>
+                    <Button variant="link" onClick={() => release(item)} className="print:hidden">
                       {c("public.release")}
                     </Button>
                   )}
                   {href && (
-                    <Link href={href} className="inline-flex min-h-11 items-center text-ui text-text underline decoration-line-strong underline-offset-4 hover:decoration-current" aria-label={c("public.viewLabel", { name: item.name })}>
+                    <Link href={href} className="inline-flex min-h-11 items-center text-ui text-text underline decoration-line-strong underline-offset-4 hover:decoration-current print:hidden" aria-label={c("public.viewLabel", { name: item.name })}>
                       {c("public.view")}
                     </Link>
                   )}

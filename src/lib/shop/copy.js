@@ -409,6 +409,9 @@ const ui = {
     confirmPickup: "Wir melden uns, sobald Ihre Artikel im Showroom Lochau abholbereit sind.",
     confirmPending: "Die Zahlung wird noch bestätigt – diese Seite aktualisiert sich automatisch.",
     confirmKeep: "Bitte bewahren Sie den Link zu dieser Seite auf – darüber sehen Sie jederzeit den Stand Ihrer Bestellung.",
+    // Druck 02.11.: Druckvorlage (Warenkorb-Tabelle, Bestellbeleg).
+    unitPrice: "Einzelpreis",
+    seller: "Vertragspartnerin",
   },
   en: {
     cartLink: "Basket",
@@ -454,6 +457,8 @@ const ui = {
     confirmPickup: "We will get in touch as soon as your items are ready for collection in the Lochau showroom.",
     confirmPending: "The payment is still being confirmed – this page refreshes automatically.",
     confirmKeep: "Please keep the link to this page – it always shows the status of your order.",
+    unitPrice: "Unit price",
+    seller: "Contracting party",
   },
   fr: {
     cartLink: "Panier",
@@ -499,6 +504,8 @@ const ui = {
     confirmPickup: "Nous vous contactons dès que vos articles sont prêts au showroom de Lochau.",
     confirmPending: "Le paiement est en cours de confirmation – cette page s'actualise automatiquement.",
     confirmKeep: "Conservez le lien vers cette page – il indique à tout moment l'état de votre commande.",
+    unitPrice: "Prix unitaire",
+    seller: "Partenaire contractuel",
   },
   it: {
     cartLink: "Carrello",
@@ -544,6 +551,8 @@ const ui = {
     confirmPickup: "La contatteremo appena gli articoli saranno pronti nello showroom di Lochau.",
     confirmPending: "Il pagamento è in fase di conferma – questa pagina si aggiorna automaticamente.",
     confirmKeep: "Conservi il link a questa pagina – mostra sempre lo stato del suo ordine.",
+    unitPrice: "Prezzo unitario",
+    seller: "Controparte contrattuale",
   },
 };
 

@@ -251,13 +251,20 @@ export default function IdeenboardPage({ copy, locale = "de", terminPath, termin
         <Heading level={1} className="mt-stack-s max-w-[20ch] text-balance">
           {t.title}
         </Heading>
-        <Lead className="mt-stack-m max-w-measure">{t.lead}</Lead>
-        <p className="mt-4 max-w-measure text-small text-text-soft">{t.privacyLocal}</p>
+        <Lead className="mt-stack-m max-w-measure print:hidden">{t.lead}</Lead>
+        <p className="mt-4 max-w-measure text-small text-text-soft print:hidden">{t.privacyLocal}</p>
+        {/* Druck 02.11.: Stand (Druckdatum) und – falls ein Teilen-Link besteht – seine Adresse; nur im Ausdruck. */}
+        {total > 0 && (
+          <p className="hidden mt-4 text-small text-text-soft tabular-nums print:block" data-ideenboard-print-head="">
+            {fmt(t.shared?.updated || "{date}", { date: dateFmt(new Date().toISOString()) })}
+            {share ? ` · ${shareUrl}` : ""}
+          </p>
+        )}
       </Container>
 
       <Container className="pb-section">
         {/* Werkzeugleiste: Merkliste holen, Notiz-Karte */}
-        <div className="flex flex-col gap-4 border-y border-line py-4 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-4 border-y border-line py-4 md:flex-row md:items-end md:justify-between print:hidden">
           <p className="text-ui tabular-nums" data-ideenboard-count="" tabIndex={-1}>
             {total === 1 ? t.countOne : fmt(t.count, { n: total })}
           </p>
@@ -283,7 +290,7 @@ export default function IdeenboardPage({ copy, locale = "de", terminPath, termin
         </div>
 
         {undo && (
-          <div className="mt-4 flex flex-wrap items-center gap-3 bg-surface-band px-4 py-2 text-small">
+          <div className="mt-4 flex flex-wrap items-center gap-3 bg-surface-band px-4 py-2 text-small print:hidden">
             <span>{fmt(t.card.removed, { title: undo.card.title })}</span>
             <button type="button" onClick={undoRemove} className={cx(CTRL, "underline underline-offset-4")} data-ideenboard-undo="">
               {t.card.undo}
@@ -326,10 +333,12 @@ export default function IdeenboardPage({ copy, locale = "de", terminPath, termin
           </section>
         ) : (
           <>
-            <p className="mt-6 text-small text-text-soft" id="ib-drag-hint">
+            <p className="mt-6 text-small text-text-soft print:hidden" id="ib-drag-hint">
               {t.card.dragHint}
             </p>
-            <ol className="mt-4 grid grid-cols-1 gap-x-grid gap-y-10 sm:grid-cols-2 lg:grid-cols-3" aria-describedby="ib-drag-hint" data-ideenboard-cards="">
+            {/* Druck 02.11.: Raster drei je Reihe, keine Karte über den Seitenumbruch (Zähler steht im Ausdruck über dem Raster). */}
+            <p className="hidden border-t border-line pt-3 text-ui tabular-nums print:block">{total === 1 ? t.countOne : fmt(t.count, { n: total })}</p>
+            <ol className="mt-4 grid grid-cols-1 gap-x-grid gap-y-10 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-y-6" aria-describedby="ib-drag-hint" data-ideenboard-cards="">
               {cards.map((c, i) => (
                 <li
                   key={c.id}
@@ -355,7 +364,7 @@ export default function IdeenboardPage({ copy, locale = "de", terminPath, termin
                     setDragOver(-1);
                   }}
                   className={cx(
-                    "flex flex-col transition-opacity duration-(--duration-micro)",
+                    "flex flex-col transition-opacity duration-(--duration-micro) print:break-inside-avoid",
                     dragFrom === i && "opacity-50",
                     dragOver === i && dragFrom !== i && "outline-2 outline-offset-4 outline-ink"
                   )}
@@ -386,7 +395,8 @@ export default function IdeenboardPage({ copy, locale = "de", terminPath, termin
         )}
 
         {total > 0 && (
-          <div className="mt-section grid gap-12 border-t border-line pt-10 lg:grid-cols-3 lg:gap-grid">
+          // Druck 02.11.: Termin, Teilen und Pinterest sind Bedienung – nicht im Ausdruck.
+          <div className="mt-section grid gap-12 border-t border-line pt-10 lg:grid-cols-3 lg:gap-grid print:hidden">
             {/* Termin */}
             <section aria-labelledby="ib-termin" data-ideenboard-termin="">
               <Heading id="ib-termin" level={2} size="title">
@@ -487,7 +497,7 @@ export default function IdeenboardPage({ copy, locale = "de", terminPath, termin
             </section>
           </div>
         )}
-        <p className="mt-10 max-w-measure text-small text-text-soft">{t.pinterestPrivacy}</p>
+        <p className="mt-10 max-w-measure text-small text-text-soft print:hidden">{t.pinterestPrivacy}</p>
       </Container>
     </div>
   );
@@ -518,7 +528,7 @@ function CardBody({ c, i, n, t, onMove, onRemove, onDragStart, onDragEnd }) {
         title={t.card.dragHandle}
         aria-hidden="true"
         data-drag-handle=""
-        className="absolute top-2 left-2 z-10 hidden size-11 cursor-grab items-center justify-center bg-paper/90 text-text active:cursor-grabbing pointer-fine:inline-flex"
+        className="absolute top-2 left-2 z-10 hidden size-11 cursor-grab items-center justify-center bg-paper/90 text-text active:cursor-grabbing pointer-fine:inline-flex print:hidden!"
       >
         <GripVertical className="size-5" strokeWidth={1.5} />
       </span>
@@ -538,8 +548,10 @@ function CardBody({ c, i, n, t, onMove, onRemove, onDragStart, onDragEnd }) {
       </h2>
       {c.subtitle && <p className="mt-1 text-small text-text-soft">{c.subtitle}</p>}
       {source && <p className="mt-1 text-small text-text-soft">{fmt(t.card.source, { quelle: source })}</p>}
+      {/* Druck 02.11.: die Notiz steht im Ausdruck als Text, das Eingabefeld und die Knöpfe nicht. */}
+      {c.type !== "notiz" && draft.trim() && <p className="hidden mt-2 border-l-2 border-line-strong pl-3 text-small whitespace-pre-line print:block">{draft}</p>}
       {c.type === "notiz" ? null : (
-        <div className="mt-3">
+        <div className="mt-3 print:hidden">
           <label htmlFor={noteId} className="text-small text-text-soft">
             {t.card.note}
           </label>
@@ -555,7 +567,7 @@ function CardBody({ c, i, n, t, onMove, onRemove, onDragStart, onDragEnd }) {
           />
         </div>
       )}
-      <div className="-ml-3 mt-2 flex flex-wrap items-center">
+      <div className="-ml-3 mt-2 flex flex-wrap items-center print:hidden">
         <button type="button" data-move="up" onClick={() => onMove(i, i - 1, "up")} disabled={i === 0} className={CTRL} aria-label={fmt(t.card.upAria, { title: c.title })}>
           <ArrowUp aria-hidden="true" className="size-4" strokeWidth={1.5} />
           <span className="max-sm:sr-only">{t.card.up}</span>
@@ -580,7 +592,7 @@ function CardBody({ c, i, n, t, onMove, onRemove, onDragStart, onDragEnd }) {
         )}
       </div>
       {c.image && !pinnable(c) && (
-        <p className="text-small text-text-soft" data-card-nopin="">
+        <p className="text-small text-text-soft print:hidden" data-card-nopin="">
           {maker ? t.card.noPin : t.card.noPinOther}
         </p>
       )}

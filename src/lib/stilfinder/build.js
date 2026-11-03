@@ -43,15 +43,19 @@ export const SHOWROOM_DARK_IMAGE = {
 // Abnahme Runde 3: the Tom Dixon covers (Warme Moderne, Pariser Salon) are
 // replaced by calmer archive pictures until the owner has cleared their
 // origin (Inhaber-Frage in the feature doc).
+// Druck 02.11.: der interne Vermerk "Hersteller vor öffentlicher Nutzung
+// bestätigen" steht nicht mehr im Kundentext – im Labs-Betrieb trägt jede
+// Seite ohnehin "Labs: Bildrechte vor öffentlicher Nutzung klären"; mit
+// STILFINDER_PDF_PUBLIC=1 (Freigabe der Hersteller) wäre er falsch.
 export const HERO_CREDITS = {
   ruhe: "Platzhirsch-Bildarchiv, Showroom Lochau",
-  warm: "Herstellerbild Küche und Essen (Website-Archiv); Hersteller vor öffentlicher Nutzung bestätigen",
-  see: "Herstellerbild Outdoor (Website-Archiv); Hersteller vor öffentlicher Nutzung bestätigen",
-  salon: "Herstellerbild Essen (Website-Archiv); Hersteller vor öffentlicher Nutzung bestätigen",
-  klar: "Herstellerbild Wohnen (Website-Archiv); Hersteller vor öffentlicher Nutzung bestätigen",
+  warm: "Herstellerbild Küche und Essen (Website-Archiv)",
+  see: "Herstellerbild Outdoor (Website-Archiv)",
+  salon: "Herstellerbild Essen (Website-Archiv)",
+  klar: "Herstellerbild Wohnen (Website-Archiv)",
 };
 
-const ARCHIVE_CREDIT = "Website-Archiv Platzhirsch, Herstellerbild; Hersteller vor öffentlicher Nutzung bestätigen";
+const ARCHIVE_CREDIT = "Website-Archiv Platzhirsch, Herstellerbild";
 const ARCHIVE = (file) => ({ credit: ARCHIVE_CREDIT, file });
 
 // Introduction picture per profile (QA Runde 2, P1.2 b + P2.4 c): fixed per

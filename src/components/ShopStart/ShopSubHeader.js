@@ -35,7 +35,8 @@ export default function ShopSubHeader({ locale, katLabel = (k) => kategorieKey(k
   const gruppen = abteilungen();
   const sucheId = "shop-suche-q";
   return (
-    <nav aria-label={c.subLabel} className="border-b border-line bg-surface text-text" data-shop-nav="">
+    // Druck 02.11.: Shop-Kopfleiste (Abteilungen, Suche) nicht im Ausdruck von Warenkorb und Bestellbestätigung.
+    <nav aria-label={c.subLabel} className="border-b border-line bg-surface text-text print:hidden" data-shop-nav="">
       {/* Kompakt (Titel + Lupe, darunter die Abteilungen mit „Alle Produkte“ vorn) auch, wenn die Leiste in rem
           schmal ist – @container/shopnav: Optik-QA r3, Desktop mit 200 % Textzoom: Suchfeld und Kopfzeile belegten
           41 % der Höhe. Telefon quer (≤ 500 px hoch): alles in EINER Zeile (Titel · Abteilungen · Lupe). */}

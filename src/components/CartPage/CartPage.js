@@ -21,6 +21,17 @@ import Container from "@/components/ui/Container";
 import Heading from "@/components/ui/Heading";
 import LinkArrow from "@/components/ui/LinkArrow";
 import { withFallback } from "@/components/ShopCatalog/copy";
+// Druck 02.11.: Kopf- und Fußzeile des Ausdrucks (Datum, Adresse der Seite, Studio-Kontakt).
+import { ADDRESS, EMAIL, PHONE_DISPLAY, SITE_NAME, SITE_URL } from "@/lib/site";
+
+// Druck 02.11.: „2. November 2026“ in der Sprache der Seite – nur im Ausdruck sichtbar.
+const printDate = (locale) => {
+  try {
+    return new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(new Date());
+  } catch {
+    return new Date().toISOString().slice(0, 10);
+  }
+};
 
 // Empty selection: three ways in (labels = menu labels, Shell.nav.*; own photos).
 const EMPTY_WAYS = [
@@ -135,8 +146,15 @@ export default function CartPage({ shop = false, shopLabel } = {}) {
         </section>
       )}
       {count > 0 && (
-      <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pt-6 pb-8">
-        <p className="max-w-measure text-body text-text-soft">{tc("selection.lead")}</p>
+        // Druck 02.11.: Datum und Adresse der Seite nur im Ausdruck (Druckvorlage statt Bildschirmdruck).
+        <p className="hidden pt-6 text-small text-text-soft print:block" data-selection-print-head="">
+          {printDate(locale)} · {SITE_URL.replace(/^https?:\/\//, "")}
+          {pathname}
+        </p>
+      )}
+      {count > 0 && (
+      <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pt-6 pb-8 print:pt-2 print:pb-4">
+        <p className="max-w-measure text-body text-text-soft print:hidden">{tc("selection.lead")}</p>
         {count > 0 && (
           <div className="flex items-center gap-4">
             <p className="tabular text-small text-text-soft" aria-live="polite">
@@ -188,14 +206,15 @@ export default function CartPage({ shop = false, shopLabel } = {}) {
         </div>
       ) : (
         <>
-          <ul className="mt-12 grid grid-cols-1 gap-x-grid gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {/* Druck 02.11.: zwei Stücke je Reihe, kompakter, keine Karte über den Seitenumbruch. */}
+          <ul className="mt-12 grid grid-cols-1 gap-x-grid gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 print:mt-6 print:grid-cols-2 print:gap-y-6">
             {cartItems.map((item) => {
               const href = localizeProductsHref(item.href || productsPath("de", generateSlug(item?.kategories), item.url_slug), locale);
               const src = wishlistImageSrc(item?.image);
               return (
-                <li key={itemKey(item)}>
+                <li key={itemKey(item)} className="print:break-inside-avoid">
                   <article className="group relative flex flex-col">
-                    <div className="relative aspect-[3/2] overflow-hidden bg-surface-raised">
+                    <div className="relative aspect-[3/2] overflow-hidden bg-surface-raised print:aspect-[2/1]">
                       {src && (
                         <Image
                           src={src}
@@ -273,6 +292,10 @@ export default function CartPage({ shop = false, shopLabel } = {}) {
               </span>
             </Button>
           </section>
+          {/* Druck 02.11.: Fußzeile des Ausdrucks – Studio-Kontakt statt der Website-Fußzeile. */}
+          <p className="hidden border-t border-line pt-3 text-small text-text-soft print:mt-8 print:block" data-selection-print-foot="">
+            {SITE_NAME} · {ADDRESS.street}, {ADDRESS.postalCode} {ADDRESS.city} · {PHONE_DISPLAY} · {EMAIL}
+          </p>
         </>
       )}
     </Container>

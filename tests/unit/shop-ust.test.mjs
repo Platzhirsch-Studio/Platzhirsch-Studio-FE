@@ -38,7 +38,8 @@ test("Grundregeln: Sätze, Klassen, Status Entwurf, OSS standardmäßig aus", ()
   assert.equal(ustSatz({ klasse: "normal", steuerland: "DE" }), 19);
   assert.throws(() => ustSatz({ klasse: "normal", steuerland: "CH" }));
   assert.equal(UST_REGELN.status, "entwurf");
-  assert.match(UST_REGELN.hinweis, /Entwurf von KI-Agenten/);
+  assert.match(UST_REGELN.hinweis, /^Entwurf, Stand 31.10.2026/);
+  assert.doesNotMatch(UST_REGELN.hinweis, /KI|Agent/i);
   assert.equal(MWST_SATZ, 20, "Alias bleibt AT-Normalsatz");
   assert.equal(VERSAND_UST_SATZ, 20, "Netto→Brutto-Umrechnung LetMeShip mit AT-Normalsatz");
 });
@@ -162,7 +163,8 @@ test("Freigabe: Punkt ust bleibt offen und verweist auf den Entwurf", () => {
   const u = SHOP_RELEASE.find((r) => r.id === "ust");
   assert.equal(u.erledigt, false);
   assert.match(u.hinweis, /ust\.js/);
-  assert.match(u.hinweis, /Entwurf von KI-Agenten/);
+  assert.match(u.hinweis, /Status entwurf/);
+  assert.doesNotMatch(u.hinweis, /KI|Agent/i);
 });
 
 // ------------------------------------------------------------------ Handler (Mock-Gateway)

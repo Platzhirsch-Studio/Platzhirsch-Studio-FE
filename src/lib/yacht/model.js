@@ -1,7 +1,9 @@
 // src/lib/yacht/model.js
 // View model of /de/yacht-interior, built from src/lib/yacht/concepts.json
-// (concepts, zones, products, roles) and src/lib/yacht/renders.json (AI
-// concept images). Pure functions (data in, data out) so node --test can
+// (concepts, zones, products, roles) and src/lib/yacht/renders.json (concept
+// images; since 03.11.2026 only the Blender renderings, kiGeneriert: false –
+// Inhaber-Entscheidung „KI-Bilder raus“, the AI entries stay in the file but
+// are not shown). Pure functions (data in, data out) so node --test can
 // check the rules without Next: no imports, no '@/' alias.
 //
 // Rules enforced here (Marktresearch/digital/features/yacht-signature-konzept.md §5/§9):
@@ -12,9 +14,9 @@
 //   outdoor product, or is left out (indoor textiles on deck).
 // - Houseboat terraces count as terrace (outdoor catalogue products allowed).
 // - Indoor products ("innen-lose") only below deck / in the saloon.
-// - Every AI image carries the visible label (renderView → label).
-// - Blender renderings (renders.json kiGeneriert: false, art "rendering",
-//   02.11.2026) carry the caption "Visualisierung (Rendering)" instead.
+// - Only Blender renderings (renders.json kiGeneriert: false, art "rendering")
+//   are shown; they carry the caption "Visualisierung (Rendering)". AI images
+//   (kiGeneriert: true) are filtered out in buildConcepts (03.11.2026).
 
 export const KI_LABEL = "KI-generierte Konzeptvisualisierung";
 /** Caption of the Blender renderings (no AI image, no photo). */
@@ -32,9 +34,8 @@ export const OPEN_ZONE_EXCEPTIONS = {
   "In Vitro Unplugged": "Lose Akkuleuchte am Liegeplatz – nicht während der Fahrt.",
 };
 
-/** Notes on AI images whose result differs from the concept (honest captions).
- * Runabout cockpit and Riviera flybridge were re-rendered on 27.10.2026 (v2,
- * C2PA embedded) and match their concepts – no note needed any more. */
+/** Notes on images whose result differs from the concept (honest captions).
+ * Currently only an AI image is listed, which is no longer shown (03.11.2026). */
 export const RENDER_NOTES = {
   "segelyacht-nordwind-deck": "Das Rigg ist im Bild vereinfacht dargestellt.",
 };
@@ -124,9 +125,9 @@ export function buildConcepts(data, renders) {
   const zoneMeta = Object.fromEntries(data.zonen.map((z) => [z.id, z]));
   const byConcept = new Map();
   for (const r of renders?.renders || []) {
-    // every entry is shown: AI images (kiGeneriert: true) with the AI label,
-    // renderings (kiGeneriert: false) with the caption "Visualisierung (Rendering)"
-    if (typeof r.kiGeneriert !== "boolean") continue;
+    // 03.11.2026 (Inhaber): only Blender renderings (kiGeneriert: false) are shown,
+    // with the caption "Visualisierung (Rendering)"; AI images stay out of the page
+    if (r.kiGeneriert !== false) continue;
     if (!byConcept.has(r.konzept)) byConcept.set(r.konzept, []);
     byConcept.get(r.konzept).push(renderView(r));
   }

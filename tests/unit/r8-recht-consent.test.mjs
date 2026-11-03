@@ -117,9 +117,10 @@ test("Datenschutz: E-Mail-Versand nach dem Code (nur Resend, USA), Kanzlei-Verme
   assert.match(read("src/lib/portal/mailer.js"), /api\.resend\.com[\s\S]*api\.postmarkapp\.com/);
   assert.match(read("src/lib/stilfinder/mail.js"), /api\.resend\.com[\s\S]*api\.postmarkapp\.com/);
   assert.doesNotMatch(read("src/lib/forms/forward.js"), /resend|postmark/i, "Formulare gehen nur ans Backoffice");
-  // [Kanzlei prüfen] lives in the register and the internal status, not on the page
+  // Register: Rechtsgrundlage seit 29.10.2026 freigegeben (02.11.: Vermerk statt Klammer)
   const mail = S.getService("mailDelivery");
-  assert.match(mail.legalBasis, /\[Kanzlei prüfen\]/);
+  assert.match(mail.legalBasis, /Kanzlei freigegeben/);
+  assert.doesNotMatch(mail.legalBasis, /\[/);
   assert.match(mail.thirdCountry, /USA/);
   // internal status: no brackets (f4-kundentext-waechter scans the strings)
   // Bewusst geändert (Inhaber-Entscheidung Nr. 11): von der Kanzlei freigegeben.

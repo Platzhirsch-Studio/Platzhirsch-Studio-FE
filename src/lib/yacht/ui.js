@@ -77,7 +77,7 @@ const DE = Object.freeze({
   navettaText:
     "Wie wirken Möbel einer Marke aus unserem Sortiment auf einer Yacht? Minotti zeigt es an der Custom Line Navetta 42 (2018, 41,8 m): Werft Custom Line, Exterior Zuccon International Project, Interior Custom Line Atelier, Möbel und Styling Luca Bombassei Studio.",
   // Benchmark fix-03: the written release is a fact (Inhaber-Entscheidung Nr. 11) and the strongest proof we may name.
-  navettaReal: "Echte Fotos der Werft, unverändert und mit schriftlicher Freigabe von Minotti und Custom Line gezeigt – keine KI-Bilder.",
+  navettaReal: "Echte Fotos der Werft, unverändert und mit schriftlicher Freigabe von Minotti und Custom Line gezeigt.",
   navettaProducts: (out, inn) => `Minotti an Bord laut Hersteller – außen: ${out}; innen: ${inn}.`,
   carousel: "Karussell",
   slide: "Folie",
@@ -149,7 +149,7 @@ const EN = Object.freeze({
   navettaTitle: "Minotti at sea – Custom Line Navetta 42",
   navettaText:
     "How does furniture from a brand in our range look on a yacht? Minotti shows it on the Custom Line Navetta 42 (2018, 41.8 m): shipyard Custom Line, exterior Zuccon International Project, interior Custom Line Atelier, furniture and styling Luca Bombassei Studio.",
-  navettaReal: "Real photographs from the shipyard, shown unaltered with the written consent of Minotti and Custom Line – no AI images.",
+  navettaReal: "Real photographs from the shipyard, shown unaltered with the written consent of Minotti and Custom Line.",
   navettaProducts: (out, inn) => `Minotti on board, as listed by the maker – outdoors: ${out}; indoors: ${inn}.`,
   carousel: "carousel",
   slide: "slide",
@@ -223,7 +223,7 @@ const FR = Object.freeze(
     navettaTitle: "Minotti en mer – Custom Line Navetta 42",
     navettaText:
       "Quel effet ont les meubles d’une marque de notre assortiment sur un yacht ? Minotti le montre sur la Custom Line Navetta 42 (2018, 41,8 m) : chantier Custom Line, extérieur Zuccon International Project, intérieur Custom Line Atelier, mobilier et stylisme Luca Bombassei Studio.",
-    navettaReal: "De vraies photos du chantier, montrées sans modification avec l’autorisation écrite de Minotti et de Custom Line – aucune image IA.",
+    navettaReal: "De vraies photos du chantier, montrées sans modification avec l’autorisation écrite de Minotti et de Custom Line.",
     navettaProducts: (out, inn) => fr(`Minotti à bord selon le fabricant – extérieur : ${out} ; intérieur : ${inn}.`),
     carousel: "carrousel",
     slide: "diapositive",
@@ -294,7 +294,7 @@ const IT = Object.freeze({
   navettaTitle: "Minotti in mare – Custom Line Navetta 42",
   navettaText:
     "Che effetto fanno su uno yacht i mobili di un marchio del nostro assortimento? Minotti lo mostra sulla Custom Line Navetta 42 (2018, 41,8 m): cantiere Custom Line, esterni Zuccon International Project, interni Custom Line Atelier, arredi e styling Luca Bombassei Studio.",
-  navettaReal: "Foto reali del cantiere, mostrate senza modifiche e con il consenso scritto di Minotti e Custom Line – nessuna immagine IA.",
+  navettaReal: "Foto reali del cantiere, mostrate senza modifiche e con il consenso scritto di Minotti e Custom Line.",
   navettaProducts: (out, inn) => `Minotti a bordo secondo il produttore – esterni: ${out}; interni: ${inn}.`,
   carousel: "carosello",
   slide: "slide",

@@ -72,7 +72,7 @@ test("USt: Live bleibt gesperrt, solange Fernverkaufszahlen fehlen oder die Schw
 test("Rechtstexte: alle Entwurf, kein Link zur OS-Plattform, Beschwerderecht nicht nur AT-Behörde", () => {
   for (const s of SHOP_LEGAL) {
     assert.equal(s.status, "entwurf", s.id);
-    assert.match(s.hinweis, /Entwurf von KI-Agenten, Kanzlei-Durchsicht empfohlen/);
+    assert.equal(s.hinweis, undefined, "kein Herkunftshinweis in den Slot-Daten");
     const txt = blocksText(s.text);
     assert.doesNotMatch(txt, /ec\.europa\.eu\/consumers\/odr|OS-Plattform/i, s.id);
   }

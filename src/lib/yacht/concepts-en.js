@@ -266,7 +266,7 @@ export const CONCEPTS_EN = Object.freeze({
   },
 });
 
-/** Concept images (AI images and, since 02.11.2026, Blender renderings): [title, alt] by render id (renders.json). */
+/** Concept images: [title, alt] by render id (renders.json; since 03.11.2026 only the Blender renderings are shown). */
 export const RENDERS_EN = Object.freeze({
   "runabout-mahagoni-deck": [
     "Mahogany and linen – cockpit",

@@ -136,7 +136,7 @@ test("P1: Hinweise-Seite – kein Textblock reicht in die Fußzeile (alle 5 Prof
   }
 });
 
-test("P1: keine Dateinamen im PDF-Bildnachweis, KI-Block unter Datenschutz", () => {
+test("P1: keine Dateinamen im PDF-Bildnachweis, Text-Hinweis unter Datenschutz (kein KI-Vermerk, Inhaber 02.11.)", () => {
   for (const c of Object.values(HERO_CREDITS)) assert.doesNotMatch(c, /\.(jpe?g|webp|png)\b/i, c);
   for (const d of [...Object.values(INTRO_IMAGES), ...Object.values(ROOM_SCENES).flatMap((r) => Object.values(r))]) {
     assert.doesNotMatch(d.credit, /\.(jpe?g|webp|png)\b/i, d.credit);
@@ -147,8 +147,9 @@ test("P1: keine Dateinamen im PDF-Bildnachweis, KI-Block unter Datenschutz", () 
   assert.doesNotMatch(line, /\.(jpe?g|webp)/);
   const doc = src("lib/stilfinder/document.js");
   const notes = doc.slice(doc.indexOf("function Notes("), doc.indexOf("function BackCover("));
-  assert.ok(notes.indexOf('"Datenschutz"') < notes.indexOf('"Kennzeichnung KI-Inhalte"'), "KI-Block nach Datenschutz");
-  assert.ok(notes.indexOf('"Kennzeichnung KI-Inhalte"') < notes.indexOf('"Impressum"'), "KI-Block in der mittleren Spalte");
+  assert.ok(notes.indexOf('"Datenschutz"') < notes.indexOf('"Hinweis zu den Texten"'), "Text-Hinweis nach Datenschutz");
+  assert.ok(notes.indexOf('"Hinweis zu den Texten"') < notes.indexOf('"Impressum"'), "Text-Hinweis in der mittleren Spalte");
+  assert.doesNotMatch(notes, /Kennzeichnung KI|KI-gestützt|KI_SHORT/);
 });
 
 test("P2.1/2.2: jede Raum-Leitseite blutet mit einem Bild, Einschub nur ab 35 %", { timeout: 180_000 }, async () => {

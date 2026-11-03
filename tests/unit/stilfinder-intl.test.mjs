@@ -159,16 +159,21 @@ test("Claim-Wächter: keine Händler-/Partner-Aussagen, Preise, Superlative oder
   assert.match(stilfinderCopy("it").ui.result.brandsNote, /catalogo online/);
 });
 
-test("Pflichthinweise in jeder Sprache: KI-Kennzeichnung, keine KI im Ergebnis, Double-Opt-in, Speicherung", () => {
+test("Pflichthinweise in jeder Sprache: keine KI-Vermerke (Inhaber 02.11.), kein „keine KI“-Rechtfertigungssatz (Inhaber 03.11.), Double-Opt-in, Speicherung", () => {
   const ai = { de: /KI-gestützt/, en: /help of AI/, fr: /l’aide de l’IA/, it: /supporto dell’IA/ };
   const noAi = { de: /keine KI/, en: /no AI/, fr: /sans IA/, it: /senza IA/ };
+  const rules = { de: /festen Regeln/, en: /fixed rules/, fr: /règles fixes/, it: /regole fisse/ };
+  const stored = { de: /nicht auf unseren Servern gespeichert/, en: /nothing is stored on our servers/, fr: /rien n’est enregistré sur nos serveurs/, it: /nulla viene salvato sui nostri server/ };
   const doi = /Double-Opt-in|double opt-in/i;
   for (const l of STILFINDER_LOCALES) {
     const t = stilfinderCopy(l).ui;
-    assert.match(t.pdf.consent, ai[l], l);
-    assert.match(t.result.howRules, noAi[l], l);
+    assert.doesNotMatch(t.pdf.consent, ai[l], l);
+    assert.match(t.result.howRules, rules[l], l);
+    assert.match(t.result.howRules, stored[l], l);
+    assert.doesNotMatch(t.result.howRules, noAi[l], l);
     assert.match(t.pdf.newsletterHint, doi, l);
-    assert.match(stilfinderFaq(l)[1].a, noAi[l], l);
+    assert.match(stilfinderFaq(l)[1].a, rules[l], l);
+    assert.doesNotMatch(stilfinderFaq(l)[1].a, noAi[l], l);
   }
 });
 

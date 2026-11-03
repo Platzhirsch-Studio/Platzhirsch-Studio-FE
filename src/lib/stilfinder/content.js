@@ -1,18 +1,16 @@
 // src/lib/stilfinder/content.js
 // Editorial texts of the Moodboard PDF, per style profile plus shared chapters.
 //
-// AI Act Art. 50: these texts were drafted with the help of an AI system and
-// are assigned to a profile by fixed rules (no AI at request time). The PDF
-// labels them on every text page and in the notes chapter (KI_NOTE).
+// Redaktionelle Texte, einem Profil nach festen Regeln zugeordnet (keine KI zur
+// Laufzeit, keine Auswertung der Person). 02.11.2026 (Inhaber): keine KI-Vermerke
+// mehr in Präsentation und Mail – HINWEIS_NOTE bleibt als sachlicher Vorbehalt.
 // Rules (Rechtspaket, Design-Bibel §1/§14): no superlatives, no dealer or
 // partner claims, no prices, no promises on delivery or stock. Measures are
 // marked as guide values ("Richtwerte").
 // Plain module, no imports: node --test loads it directly.
 
-export const KI_NOTE =
-  "Die Texte dieser Präsentation wurden mit Unterstützung eines KI-Systems verfasst und Ihrem Stilprofil nach festen Regeln zugeordnet (keine KI-Auswertung Ihrer Person). Sie sind Anregungen für Ihr Gespräch mit uns, keine Zusagen zu Ausführung, Lieferung oder Preis.";
-
-export const KI_SHORT = "Texte KI-gestützt";
+export const HINWEIS_NOTE =
+  "Die Texte dieser Präsentation sind Ihrem Stilprofil nach festen Regeln zugeordnet. Sie sind Anregungen für Ihr Gespräch mit uns, keine Zusagen zu Ausführung, Lieferung oder Preis.";
 
 export const ROOM_ORDER = ["wohnen", "essen", "kueche", "schlafen", "outdoor"];
 

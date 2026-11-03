@@ -68,7 +68,8 @@ test("Quelltext: Abstände, Raster und Spaltenbelegung der Fixes", () => {
   }
   const detail = src("src/components/Katalog/ProduktDetail.js");
   // R3: Ansichten ohne Konfigurator-Doppel (galerieDoppel.js) – Zählung über Hauptbild + Rest.
-  assert.ok(detail.includes("const detailsLinks = Boolean(konfig) && g.ambiente.length + (erstes ? 1 : 0) + rest.length <= 3;"));
+  // 03.11.2026: Zählung Leitbild + Raumbilder + Rest (Leitbild = Kachelbild, kachelBild.js).
+  assert.ok(detail.includes("const detailsLinks = Boolean(konfig) && (leit ? 1 : 0) + raumRest.length + rest.length <= 3;"));
   assert.match(detail, /\{!detailsLinks && details\}/);
   assert.match(detail, /size=\{produktTitelGroesse\(p\.name\)\}/);
 });

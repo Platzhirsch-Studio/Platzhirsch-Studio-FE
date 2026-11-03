@@ -21,6 +21,8 @@ import { getKonfiguratorKatalog, isKnownMosaic, katalogFuer } from "@/lib/ezarri
 import { buildIndex } from "@/lib/ezarri/konfigurator/katalog-index";
 import { quantities, formatZahl } from "@/lib/ezarri/rechner/core";
 import { facetsFor } from "@/lib/ezarri/facets";
+// Druck 02.11.: Fotoansicht (vorgerendertes Beispielbecken) kommt bei Einzelfarben mit aufs Blatt
+import { FOTO_CAPTION, FOTO_DEKOR_HINWEIS, fotoansicht, istDekor, renderFuer, renderSrc } from "@/lib/ezarri/konfigurator/renders";
 import { ADDRESS, EMAIL, PHONE_DISPLAY, SITE_URL } from "@/lib/site";
 import BlattBild, { DruckenKnopf } from "@/components/Ezarri/Konfigurator/BlattBild";
 
@@ -75,6 +77,22 @@ export default async function BlattPage({ params, searchParams }) {
   const datum = new Intl.DateTimeFormat(X?.datum ?? (en ? "en-GB" : "de-AT"), { dateStyle: "long", timeZone: "Europe/Vienna" }).format(new Date());
   const corner = state.spezial.cornerId ? index.byId.get(state.spezial.cornerId) : index.spezialFuer(state.mix[0]?.id, "corner");
   const cove = state.spezial.coveId ? index.byId.get(state.spezial.coveId) : index.spezialFuer(state.mix[0]?.id, "cove");
+  // Druck 02.11.: Fotoansicht (Einzelfarbe, 25 mm, Standardfuge, Pool) als großes Bild mit Pflichtunterschrift;
+  // das Standbild des eigenen Beckens rückt dann klein daneben. Licht wie im Entwurf (Abend → Abend-Render).
+  const fotoRef = state.mix.length === 1 ? index.resolveRef(state.mix[0].id, state.format, { ref: state.mix[0].ref }) : null;
+  const fotoInfo = fotoansicht(state, fotoRef);
+  const fotoRender = fotoInfo.ok ? renderFuer(fotoInfo.refId, "hero", state.zeit === "abend" || state.zeit === "nacht" ? "abend" : "morgen", fotoRef?.kol) : null;
+  const foto = fotoRender
+    ? {
+        src: renderSrc(fotoRender),
+        caption: `${X?.fotoCaption ?? (en ? FOTO_CAPTION.en : FOTO_CAPTION.de)} · ${t("Beispielbecken 8 × 4 m, nicht Ihre Maße", "8 × 4 m example pool, not your dimensions")}${istDekor(fotoRender) ? ` · ${X?.fotoDekorHinweis ?? (en ? FOTO_DEKOR_HINWEIS.en : FOTO_DEKOR_HINWEIS.de)}` : ""}`,
+        alt: t(`Visualisierung: Beispielbecken 8 × 4 m mit ${fotoRef?.name || ""}`, `Visualisation: 8 × 4 m example pool with ${fotoRef?.name || ""}`, "blatt.fotoAlt", { name: fotoRef?.name || "" }),
+      }
+    : null;
+  // Druck 02.11.: Fußzeile „Seite x / y“ über @page-Randfelder (Chromium ab 131, Safari/Firefox ignorieren sie).
+  const fuss = `Platzhirsch Home Living · ${t("Becken-Entwurf", "Pool design")} · ${t("Stand", "As of")} ${datum}`.replace(/["\\]/g, "");
+  const seite = t("Seite", "Page");
+  const von = t("von", "of");
 
   const beckenRows = [
     [t("Szene", "Scene"), SZENEN_LABEL[state.szene]],
@@ -90,7 +108,21 @@ export default async function BlattPage({ params, searchParams }) {
   return (
     <div className="bg-surface text-text print:bg-white" data-ezk-blatt="" lang={lang}>
     <ToolCopyProvider value={intl ? { lang: intl.lang, KONF: intl.KONF } : null}>
-      <style>{`@media print { @page { size: A4; margin: 14mm; } body header, body footer, body nav, [data-print-hide], [data-concierge-launcher], [data-concierge-tab], [data-consent-bar] { display: none !important; } [data-ezk-blatt] { font-size: 11pt; } }`}</style>
+      {/* Druck 02.11.: 10 pt statt 11 pt und engere Zeilen, damit der übliche Entwurf auf EINE Seite passt;
+          Fußzeile mit Seite x/y; body ohne Cookie-Polster und ohne Papierton (vorher leere beige Fläche am Ende). */}
+      <style>{`@media print {
+        @page { size: A4; margin: 14mm 14mm 16mm;
+          @bottom-left { content: "${fuss}"; font: 8pt var(--font-sans), sans-serif; color: #666; vertical-align: top; padding-top: 3mm; }
+          @bottom-right { content: "${seite} " counter(page) " ${von} " counter(pages); font: 8pt var(--font-sans), sans-serif; color: #666; vertical-align: top; padding-top: 3mm; } }
+        body header, body footer, body nav, [data-print-hide], [data-concierge-launcher], [data-concierge-tab], [data-consent-bar] { display: none !important; }
+        body, main { background: #fff !important; padding: 0 !important; margin: 0 !important; min-height: 0 !important; }
+        [data-ezk-blatt] { font-size: 10pt; line-height: 1.35; }
+        [data-ezk-blatt] h2 { font-size: 12pt; }
+        [data-ezk-blatt] .text-ui { font-size: 10pt; line-height: 1.3; }
+        [data-ezk-blatt] .text-small { font-size: 8pt; line-height: 1.3; }
+        [data-ezk-blatt] dl > div, [data-ezk-blatt] td, [data-ezk-blatt] th { padding-top: 2.5pt; padding-bottom: 2.5pt; }
+        [data-ezk-blatt] section, [data-ezk-blatt] figure, [data-ezk-blatt] tr { break-inside: avoid; }
+      }`}</style>
       <Container className="py-8 print:max-w-none print:px-0 print:py-0">
         <div className="mb-6 flex flex-wrap items-center gap-3 print:hidden" data-print-hide="">
           <DruckenKnopf />
@@ -111,9 +143,9 @@ export default async function BlattPage({ params, searchParams }) {
           </figure>
         </div>
 
-        <BlattBild k={typeof k === "string" ? k : ""} state={state} katalog={katalogFuer(state)} />
+        <BlattBild k={typeof k === "string" ? k : ""} state={state} katalog={katalogFuer(state)} foto={foto} />
 
-        <div className="mt-6 grid gap-8 md:grid-cols-2 print:grid-cols-2">
+        <div className="mt-6 grid gap-8 md:grid-cols-2 print:mt-4 print:grid-cols-2 print:gap-6">
           <section aria-labelledby="bl-becken">
             <h2 id="bl-becken" className="text-title">
               {t("Fläche", "Area")}
@@ -136,8 +168,9 @@ export default async function BlattPage({ params, searchParams }) {
               <thead>
                 <tr className="border-b border-line text-left text-small text-text-soft">
                   <th className="py-1.5 font-normal">{t("Mosaik", "Mosaic")}</th>
-                  <th className="py-1.5 font-normal">{t("Kollektion", "Collection")}</th>
-                  <th className="py-1.5 text-right font-normal">{t("Anteil", "Share")}</th>
+                  {/* PDF-Muster 02.11.2026: Spaltenabstand – „KollektionAnteil“ stand im Druck zusammengeschoben */}
+                  <th className="py-1.5 pl-3 font-normal">{t("Kollektion", "Collection")}</th>
+                  <th className="py-1.5 pl-3 text-right font-normal">{t("Anteil", "Share")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -151,8 +184,8 @@ export default async function BlattPage({ params, searchParams }) {
                         {fotoRezept ? <span className="block text-small text-text-soft">{t("Darstellung nach Produktfoto", "Shown from the product photo")} ({fotoRezept.fehlend?.[0] === "Anteile" ? t("Rezeptangaben von Ezarri widersprüchlich", "Ezarri's recipe details contradictory") : t("Rezept unvollständig", "recipe incomplete")})</span> : null}
                         {r?.wf?.length ? <span className="block text-small text-text-soft">{t("Wasserwirkung laut Ezarri", "Water effect according to Ezarri")}: {wfText(r.wf)}</span> : null}
                       </td>
-                      <td className="py-1.5">{index.kollektion(r?.kol)}</td>
-                      <td className="py-1.5 text-right tabular-nums">{e.anteil != null ? `${e.anteil} %` : `${t("Kanal", "Channel")} ${i + 1}`}</td>
+                      <td className="py-1.5 pl-3">{index.kollektion(r?.kol)}</td>
+                      <td className="py-1.5 pl-3 text-right tabular-nums">{e.anteil != null ? `${e.anteil} %` : `${t("Kanal", "Channel")} ${i + 1}`}</td>
                     </tr>
                   );
                 })}
@@ -191,13 +224,13 @@ export default async function BlattPage({ params, searchParams }) {
           </section>
         </div>
 
-        <section aria-labelledby="bl-mengen" className="mt-8 break-inside-avoid">
+        <section aria-labelledby="bl-mengen" className="mt-8 break-inside-avoid print:mt-5">
           <h2 id="bl-mengen" className="text-title">
             {t("Mengen (Schätzung)", "Quantities (estimate)")}
           </h2>
-          <table className="mt-2 w-full border-collapse text-ui">
-            <tbody>
-              {[
+          {/* Druck 02.11.: Mengen im Druck zweispaltig (zwei Tabellen; am Bildschirm untereinander = eine Tabelle) */}
+          {(() => {
+            const rows = [
                 [t("Fläche netto", "Net area"), qm(mengen.netto)],
                 [t(`mit ${mengen.margeProzent} % Reserve`, `with ${mengen.margeProzent} % reserve`, "reserve", { p: mengen.margeProzent }), qm(mengen.mitMarge)],
                 [t("Bestellmenge (volle Kartons)", "Order quantity (full boxes)"), t(`${qm(mengen.m2)} · ${mengen.kartons} Kartons · ${mengen.blaetter} Blätter`, `${qm(mengen.m2)} · ${mengen.kartons} boxes · ${mengen.blaetter} sheets`, "blatt.menge", { m2: qm(mengen.m2), k: mengen.kartons, b: mengen.blaetter })],
@@ -207,19 +240,32 @@ export default async function BlattPage({ params, searchParams }) {
                 ...(state.spezial.corner ? [["Corner", `${zahl(mengen.lfmCorner, 1)} ${t("lfm", "running m")}`]] : []),
                 ...(state.spezial.cove ? [["Cove", `${zahl(mengen.lfmCove, 1)} ${t("lfm", "running m")}`]] : []),
                 ...(mengen.mischung.length > 1 ? mengen.mischung.map((x) => [t(`davon ${index.label(x.id)} (${x.anteil} %)`, `of which ${index.label(x.id)} (${x.anteil} %)`, "blatt.davon", { name: index.label(x.id), p: x.anteil }), `${x.kartons} ${t("Kartons", "boxes")}`]) : []),
-              ].map(([k2, v]) => (
-                <tr key={k2} className="border-b border-line">
-                  <th scope="row" className="py-1.5 pr-3 text-left font-normal text-text-soft">
-                    {k2}
-                  </th>
-                  <td className="py-1.5 text-right tabular-nums">{v}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+            ];
+            const half = Math.ceil(rows.length / 2);
+            const tabelle = (teil) => (
+              <table className="w-full border-collapse text-ui">
+                <tbody>
+                  {teil.map(([k2, v]) => (
+                    <tr key={k2} className="border-b border-line">
+                      <th scope="row" className="py-1.5 pr-3 text-left font-normal text-text-soft">
+                        {k2}
+                      </th>
+                      <td className="py-1.5 text-right tabular-nums">{v}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            );
+            return (
+              <div className="mt-2 grid print:grid-cols-2 print:gap-x-6">
+                {tabelle(rows.slice(0, half))}
+                {tabelle(rows.slice(half))}
+              </div>
+            );
+          })()}
         </section>
 
-        <div className="mt-8 grid gap-4 border-t border-line pt-4 text-small text-text-soft md:grid-cols-2 print:grid-cols-2">
+        <div className="mt-8 grid gap-4 border-t border-line pt-4 text-small text-text-soft md:grid-cols-2 print:mt-5 print:grid-cols-2 print:pt-3">
           <p>
             {SEITE.hinweisFarbe} {SEITE.hinweisVerlegung} {t("Preise nennen wir auf Anfrage.", "Prices on request.")}
           </p>

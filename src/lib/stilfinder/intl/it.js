@@ -66,7 +66,7 @@ export const UI = {
     copyLink: "Copia il link",
     linkCopied: "Link copiato.",
     restart: "Ricomincia il test di stile",
-    howRules: "Come nasce il vostro risultato: le vostre risposte vengono ponderate secondo regole fisse (senza IA, senza salvataggio sui nostri server).",
+    howRules: "Come nasce il vostro risultato: le vostre risposte vengono ponderate secondo regole fisse e nulla viene salvato sui nostri server.",
     howLink: "Il link contiene solo le risposte scelte.",
     imagesNote: "Le immagini dei prodotti provengono dal nostro catalogo online o dai produttori. I colori possono apparire diversi sullo schermo.",
     privacyLink: "Informativa sulla privacy",
@@ -131,7 +131,7 @@ export const UI = {
     optional: "(facoltativo)",
     choose: "Seleziona",
     consent:
-      "Con «Invia moodboard» vi inviamo una sola volta la presentazione in PDF a questo indirizzo. Utilizziamo i vostri dati solo per questo invio e non li conserviamo in seguito. I testi della presentazione sono realizzati con il supporto dell’IA e contrassegnati come tali.",
+      "Con «Invia moodboard» vi inviamo una sola volta la presentazione in PDF a questo indirizzo. Utilizziamo i vostri dati solo per questo invio e non li conserviamo in seguito.",
     consentDev: " Modalità test: invece dell’invio, il messaggio resta fino a 7 giorni in una casella di test interna.",
     privacyLink: "Informativa sulla privacy",
     newsletter: "Facoltativo: desidero ricevere anche la newsletter di Platzhirsch Home Living con idee d’arredo, novità e inviti.",
@@ -189,7 +189,7 @@ export const PAGE = {
       },
       {
         q: "Come nasce il risultato?",
-        a: "Le vostre risposte vengono ponderate secondo regole fisse – senza IA. La quota più forte determina il vostro profilo; se un secondo stile ottiene punti, il risultato lo indica come «tocco» aggiuntivo.",
+        a: "Le vostre risposte vengono ponderate secondo regole fisse. La quota più forte determina il vostro profilo; se un secondo stile ottiene punti, il risultato lo indica come «tocco» aggiuntivo.",
       },
       {
         q: "Le mie risposte vengono salvate?",

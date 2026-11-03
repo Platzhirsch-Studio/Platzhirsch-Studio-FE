@@ -27,6 +27,20 @@ import { buildGeraeteIndex, geraetHref, gewaehlteGeraete, preisTexteDe } from "@
 import { dealerStatementList } from "@/lib/legal/claims";
 import { kpPageCopy } from "@/lib/kuechenplaner/content";
 import { kpServerT } from "@/lib/kuechenplaner/copy";
+// Druck 02.11.: Fotoansicht (vorgerendertes Bild) mit Pflichtunterschrift auch im Ausdruck
+import { fotoSrc, waehleFotoansicht } from "@/lib/kuechenplaner/fotoansicht";
+import { FRONT_COLORS, FRONT_FINISHES, GRIPS, GRIP_COLORS, SHAPES, WORKTOPS } from "@/components/Labs/Kuechenplaner/catalog";
+
+const WAS = { finish: "Front", color: "Farbe", top: "Arbeitsplatte", grip: "Griff", gripColor: "Griff-Farbe" };
+const farbLabel = (finish, color) => FRONT_COLORS[finish]?.[color]?.label || FRONT_COLORS[Object.keys(FRONT_COLORS).find((f) => FRONT_COLORS[f][color])]?.[color]?.label || color;
+function optionLabel(key, value, finish) {
+  if (key === "finish") return FRONT_FINISHES[value]?.label || value;
+  if (key === "color") return farbLabel(finish, value);
+  if (key === "top") return WORKTOPS[value]?.label || value;
+  if (key === "grip") return GRIPS[value]?.label || value;
+  if (key === "gripColor") return GRIP_COLORS[value]?.label || value;
+  return value;
+}
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -65,9 +79,36 @@ export default async function KuechenplanerDruck({ params, searchParams }) {
   // Nur eine echte Planung geht mit (nicht die Beispielplanung ohne gültiges ?k=).
   const planUrl = decoded ? `${SITE_URL}${back}` : "";
   const termin = decoded ? handoffHref({ locale, lines, shareUrl: planUrl, calendar: ownCalendarActive(), t }) : null;
+  // Druck 02.11.: passendstes Rendering zur Planung (wie Reiter Material → Fotoansicht), mit Abweichungen
+  const foto = waehleFotoansicht(plan);
+  const fotoAbw = foto ? foto.abweichungen.slice(0, 3).map((a) => t("{vWas} {vBild} statt {vPlan}", { vWas: t(WAS[a.key]), vBild: t(optionLabel(a.key, a.bild, foto.bild.options.front)), vPlan: t(optionLabel(a.key, a.plan, plan.finish)) })) : [];
+  const fotoAlt = foto ? t("{vShape}, Front {vFront} {vColor}, Arbeitsplatte {vTop}, Visualisierung (Rendering)", { vShape: t(SHAPES[plan.shape]?.label || plan.shape), vFront: t(FRONT_FINISHES[foto.bild.options.front]?.label || foto.bild.options.front), vColor: t(farbLabel(foto.bild.options.front, foto.bild.options.color)), vTop: t(WORKTOPS[foto.bild.options.worktop]?.label || foto.bild.options.worktop) }) : "";
+  // Druck 02.11.: Seitenränder gehören dem Blatt (vorher ohne @page → im PDF randlos, Logo rechts angeschnitten);
+  // Fußzeile „Seite x / y“ über @page-Randfelder (Chromium ab 131); body ohne Papierton/Cookie-Polster.
+  const sauber = (x) => String(x).replace(/["\\]/g, "");
+  const fuss = sauber(`${t("Küchenplanung · Platzhirsch Home Living")} · ${date}`);
+  const printCss = `@media print {
+    @page { size: A4; margin: 14mm 14mm 16mm;
+      @bottom-left { content: "${fuss}"; font: 8pt var(--font-sans), sans-serif; color: #666; vertical-align: top; padding-top: 3mm; }
+      @bottom-right { content: "${sauber(t("Seite"))} " counter(page) " ${sauber(t("von"))} " counter(pages); font: 8pt var(--font-sans), sans-serif; color: #666; vertical-align: top; padding-top: 3mm; } }
+    body, main { background: #fff !important; padding: 0 !important; margin: 0 !important; min-height: 0 !important; }
+    /* globals.css (Druck 02.11.) setzt html auf 10 pt und table auf break-inside: avoid – hier sind die
+       Schriftgrade in rem gesetzt (Stückliste 0,6875 rem) und die Stückliste ist länger als eine Seite. */
+    html:has([data-kp-print]) { font-size: 16px; }
+    [data-kp-print] table { break-inside: auto; }
+    [data-kp-print] thead { display: table-header-group; }
+    [data-kp-print] tr, [data-kp-print] figure { break-inside: avoid; }
+    /* Ansichten höchstens 46 mm hoch (Modul-Regel .print svg {max-height:120mm} hat sonst Vorrang) – so bleibt
+       unter den Ansichten Platz für die Fotoansicht auf Seite 1 */
+    [data-kp-print] figure svg { max-height: 46mm; }
+    /* Stücklistenzeilen etwas enger (py-1.5 → 2 px): 28 Positionen sparen so rund eine Drittelseite.
+       Druck 03.11.: 3 → 2 px und Abschnittsabstände print:mt-4 – FR/IT (längere Texte) passen so wie DE/EN auf 3 Seiten. */
+    [data-kp-print] td, [data-kp-print] th { padding-top: 2px; padding-bottom: 2px; }
+  }`;
 
   return (
-    <div data-kp-print="" className={`${styles.print} bg-paper text-ink`}>
+    <div data-kp-print="" className={`${styles.print} bg-paper text-ink print:bg-white`}>
+      <style>{printCss}</style>
       {/* QM r3: Raster wie der Seitenkopf (vorher bei 1920 px schmaler, Start x=430 statt 320) */}
       <div className="mx-auto max-w-page px-gutter py-8 print:max-w-none print:p-0">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3 print:hidden">
@@ -97,7 +138,7 @@ export default async function KuechenplanerDruck({ params, searchParams }) {
         <section className="mt-6 grid items-start gap-6 md:grid-cols-[1fr_1.2fr] print:grid-cols-[1fr_1.2fr]">
           <div>
             <h2 className="text-title">{t("Zusammenfassung")}</h2>
-            <ul className="mt-2 space-y-1 text-[0.8125rem] leading-snug">
+            <ul className="mt-2 space-y-1 text-[0.8125rem] leading-snug print:text-[0.75rem]">
               {/* Trennpunkt nie am Zeilenanfang (QM planer-tools) */}
               {lines.map((l) => <li key={l}>{kt(t(l))}</li>)}
             </ul>
@@ -109,7 +150,7 @@ export default async function KuechenplanerDruck({ params, searchParams }) {
         </section>
 
         {walls.length > 0 && (
-          <section className="mt-8 break-inside-avoid">
+          <section className="mt-8 break-inside-avoid print:mt-4">
             <h2 className="text-title">{t("Ansichten")}</h2>
             {/* QM r4: am Bildschirm untereinander bis lg (iPad hoch: nebeneinander abgeschnitten), ab lg zwei Spalten in voller Kartenbreite */}
             <div className="mt-2 flex flex-col gap-4">
@@ -132,9 +173,32 @@ export default async function KuechenplanerDruck({ params, searchParams }) {
           </section>
         )}
 
-        <section className="mt-8 break-inside-avoid">
+        {foto && (
+          <section className="mt-8 break-inside-avoid print:mt-4" data-kp-print-foto="">
+            <h2 className="text-title print:hidden">{t("Fotoansicht")}</h2>
+            {/* Bild im Druck 34 mm hoch (≈ 51 mm breit), Unterschrift daneben, Überschrift nur am Bildschirm –
+                so passt der Block meist noch unter die Ansichten auf Seite 1 */}
+            <figure className="m-0 mt-2 flex flex-col items-start gap-4 sm:flex-row print:mt-0 print:flex-row">
+              {/* eslint-disable-next-line @next/next/no-img-element -- Server-Druckseite, fertige WebP-Datei */}
+              <img src={fotoSrc(foto.bild)} alt={fotoAlt} width={foto.bild.w} height={foto.bild.h} className="block h-auto w-full max-w-[26rem] shrink-0 border border-ink/10 print:h-[34mm] print:w-auto print:max-w-none" />
+              <figcaption className="space-y-1 text-[0.75rem] leading-snug text-ink">
+                <p className="font-medium">{t("Fotoansicht")} · {t("Visualisierung (Rendering)")}</p>
+                <p className="text-ink-soft">{t("Farben und Materialien sind nur annähernd dargestellt. Gezeigt wird die nächstliegende von 66 vorgerenderten Varianten – nicht zwingend genau Ihre Kombination.")}</p>
+                {fotoAbw.length > 0 && (
+                  <p className="text-ink-soft">
+                    {t("Bild zeigt: {vList}", { vList: fotoAbw.join(" · ") })}
+                    {foto.abweichungen.length > fotoAbw.length ? ` ${t("und {n} weitere", { n: foto.abweichungen.length - fotoAbw.length })}` : ""}
+                  </p>
+                )}
+                <p className="text-ink-soft">{t("Beispielbild, nicht Ihr Raum: Nischen, Fenster und Geräte können abweichen.")}</p>
+              </figcaption>
+            </figure>
+          </section>
+        )}
+
+        <section className="mt-8 break-inside-avoid print:mt-4">
           <h2 className="text-title">{t("Prüfung")}</h2>
-          <ul className="mt-2 grid gap-x-6 gap-y-1 text-[0.75rem] leading-snug md:grid-cols-2 print:grid-cols-2">
+          <ul className="mt-2 grid gap-x-6 gap-y-1 text-[0.75rem] leading-snug md:grid-cols-2 print:mt-1 print:grid-cols-2 print:gap-y-0.5">
             {checks.items.map((i) => (
               <li key={i.text}>
                 <strong className={i.level === "error" ? "text-error" : i.level === "warn" ? "text-notice" : ""}>{t(LEVEL[i.level])}:</strong> {kt(t(i.text))}
@@ -143,12 +207,12 @@ export default async function KuechenplanerDruck({ params, searchParams }) {
           </ul>
         </section>
 
-        <section className="mt-8">
+        <section className="mt-8 print:mt-4">
           <h2 className="text-title">{t("Stückliste")}</h2>
-          <div className="mt-2">
+          <div className="mt-2 print:mt-1">
             <BomTable plan={plan} kitchen={kitchen} compact geraete={geraeteIndex} t={t} />
           </div>
-          <p className="mt-3 text-[0.75rem] text-ink-soft">
+          <p className="mt-3 text-[0.75rem] text-ink-soft print:mt-2">
             {t("Preise nennen wir persönlich nach Beratung und Aufmaß. Geräte nach Wahl; Nischenmaße laut Herstellerangaben, Geräte ohne Quelle sind als „Maß fehlt“ markiert.")}{" "}
             {t("„Italienische Premiumküche“ ist eine Gestaltungsrichtung, keine Planung eines Herstellers.")}
           </p>
@@ -175,23 +239,26 @@ export default async function KuechenplanerDruck({ params, searchParams }) {
           </section>
         )}
 
-        {/* UX-Benchmark P1-6: Ausdruck endet mit dem nächsten Schritt statt nur mit der Adresse */}
-        <section className="mt-8 break-inside-avoid border border-ink/25 p-4" data-kp-print-next="">
+        {/* UX-Benchmark P1-6: Ausdruck endet mit dem nächsten Schritt statt nur mit der Adresse.
+            Druck 02.11.: Kasten und Fußzeile bleiben zusammen (die Fußzeile stand sonst allein auf einer 4. Seite). */}
+        <div className="break-inside-avoid">
+        <section className="mt-8 break-inside-avoid border border-ink/25 p-4 print:mt-3 print:p-3" data-kp-print-next="">
           <h2 className="text-title">{t("So geht es weiter")}</h2>
-          <ol className="mt-2 list-decimal space-y-1 pl-5 text-[0.8125rem] leading-snug">
+          <ol className="mt-2 list-decimal space-y-1 pl-5 text-[0.8125rem] leading-snug print:mt-1 print:space-y-0 print:text-[0.75rem]">
             <li>{t("Termin im Studio in Lochau vereinbaren – telefonisch unter +43 5574 46255 oder online auf platzhirsch.studio.")}</li>
             <li>{t("Diese Übersicht mitbringen, dazu – wenn vorhanden – Grundriss und Fotos des Raums.")}</li>
             <li>{t("Wir prüfen Ihre Planung, messen auf Wunsch vor Ort auf, und Harald Menghin zeichnet Ihr Konzept von Hand.")}</li>
           </ol>
         </section>
 
-        <div className="mt-10 border-t border-ink/25 pt-3 text-[0.75rem] text-ink-soft">
+        <div className="mt-10 border-t border-ink/25 pt-3 text-[0.75rem] text-ink-soft print:mt-3 print:pt-2">
           Platzhirsch Home Living · Landstraße 11 · 6911 Lochau · +43 5574 46255 ·{" "}
           {planUrl ? (
             <a href={planUrl} className="underline underline-offset-2" data-kp-print-plan="">{t("Diese Planung online öffnen")}</a>
           ) : (
             `${t("Planung öffnen:")} platzhirsch.studio/${locale}/kuechenplaner`
           )}
+        </div>
         </div>
       </div>
     </div>

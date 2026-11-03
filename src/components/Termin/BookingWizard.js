@@ -21,6 +21,7 @@ import { UploadHandoff, handoffAfterSend, prefetchHandoff } from "@/components/F
 import { fill, formatDate, formatTime } from "@/lib/booking/format";
 import { TERMINARTEN } from "@/lib/booking/types";
 import { EMAIL_RE, PHONE_RE } from "@/lib/booking/patterns";
+import { WIDERRUF_PATH, widerrufHinweis } from "@/lib/legal/widerruf";
 import SlotPicker from "./SlotPicker";
 import { ConfirmedView, Facts } from "./parts";
 import { revealConfirmation } from "@/lib/forms/reveal";
@@ -442,6 +443,13 @@ export default function BookingWizard({ locale, copy, phone, initial = {}, test 
             {c.daten.privacy}{" "}
             <a href={`/${locale}/datenschutz`} className="underline underline-offset-2">
               {c.daten.privacyLink}
+            </a>
+          </p>
+          {/* Inhaber 03.11.2026: Hinweis auf die Widerrufsbelehrung (FAGG) – nur ein Satz mit Link, der Ablauf bleibt gleich. */}
+          <p className="mt-2 text-small text-text-soft" data-termin-widerruf>
+            {widerrufHinweis(locale).text}{" "}
+            <a href={`/${locale}${WIDERRUF_PATH}`} className="underline underline-offset-2">
+              {widerrufHinweis(locale).link}
             </a>
           </p>
 

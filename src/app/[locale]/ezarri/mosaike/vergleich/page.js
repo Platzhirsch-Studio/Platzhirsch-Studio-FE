@@ -94,7 +94,8 @@ export default async function VergleichPage({ params, searchParams }) {
           </div>
         ) : (
           <div className={styles.vergleich}>
-            <label className="inline-flex min-h-11 cursor-pointer items-center gap-3 text-ui text-text">
+            {/* Druck 02.11.: Schalter, „Entfernen“ und Knöpfe sind Bedienung – nicht im Ausdruck */}
+            <label className="inline-flex min-h-11 cursor-pointer items-center gap-3 text-ui text-text print:hidden">
               <input type="checkbox" name="nur-unterschiede" className="size-5 accent-ink" />
               {VERGLEICH.nurUnterschiede}
             </label>
@@ -112,7 +113,7 @@ export default async function VergleichPage({ params, searchParams }) {
                     <Link href={`/ezarri/mosaike/${c.id}`} className="mt-1 inline-flex min-h-6 max-w-full items-center truncate text-small text-text underline underline-offset-4">
                       {c.name}
                     </Link>
-                    <Link href={without(c.id)} className="inline-flex min-h-6 items-center gap-1 text-small text-text-soft hover:text-text">
+                    <Link href={without(c.id)} className="inline-flex min-h-6 items-center gap-1 text-small text-text-soft hover:text-text print:hidden">
                       <X aria-hidden="true" className="size-3.5" strokeWidth={1.5} />
                       {t("Entfernen", "Remove", "Retirer", "Rimuovere")}
                       <span className="sr-only">: {c.name}</span>
@@ -166,7 +167,7 @@ export default async function VergleichPage({ params, searchParams }) {
                         <Link href={`/ezarri/mosaike/${c.id}`} className="mt-2 inline-flex min-h-11 items-center text-ui text-text underline underline-offset-4">
                           {c.name}
                         </Link>
-                        <Link href={without(c.id)} className="inline-flex min-h-11 items-center gap-1 text-small text-text-soft hover:text-text">
+                        <Link href={without(c.id)} className="inline-flex min-h-11 items-center gap-1 text-small text-text-soft hover:text-text print:hidden">
                           <X aria-hidden="true" className="size-3.5" strokeWidth={1.5} />
                           {t("Entfernen", "Remove", "Retirer", "Rimuovere")}
                           <span className="sr-only">: {c.name}</span>
@@ -202,7 +203,7 @@ export default async function VergleichPage({ params, searchParams }) {
               </table>
             </div>
             <p className="mt-4 text-small text-text-soft">{t("Daten: Ezarri, ezarri.com · Bild: Ezarri, ezarri.com · Stand 28.10.2026", "Data: Ezarri, ezarri.com · Image: Ezarri, ezarri.com · as of 28.10.2026", "Données : Ezarri, ezarri.com · Image : Ezarri, ezarri.com · état au 28.10.2026", "Dati: Ezarri, ezarri.com · Immagine: Ezarri, ezarri.com · aggiornato al 28.10.2026")}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap print:hidden">
               <Button href={anfrageHref({ art: "muster", refs: refs.map((r) => r.id), quelle: "katalog" })} {...ezLinkProps(locale, "/ezarri/anfrage")} arrow>
                 {VERGLEICH.muster}
               </Button>

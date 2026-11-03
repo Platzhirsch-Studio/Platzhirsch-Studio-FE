@@ -19,7 +19,7 @@
 //   DE: § 312f Abs 2 BGB iVm Art. 246a EGBGB (gleicher Inhalt).
 //     https://www.gesetze-im-internet.de/bgb/__312f.html
 // Rein, ohne "@/"-Importe (node --test).
-import { AGB, ANBIETER, ANSCHRIFT, LEGAL_TEXT_HINWEIS, WIDERRUFSFORMULAR, ausnahmenFuer, blocksText, platzhalterIn, widerrufsbelehrung } from "./legalTexte.js";
+import { AGB, ANBIETER, ANSCHRIFT, WIDERRUFSFORMULAR, ausnahmenFuer, blocksText, platzhalterIn, widerrufsbelehrung } from "./legalTexte.js";
 
 const euro = (cent) => `${(Math.round(Number(cent) || 0) / 100).toLocaleString("de-AT", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`;
 const nameOf = (v) => (typeof v === "string" ? v : v && typeof v === "object" ? v.de || Object.values(v)[0] || "" : "");
@@ -33,7 +33,7 @@ const datum = (iso) => {
  * @param {object} order  Bestellung aus orderStore (handlers.js checkoutHandler)
  * @param {{ widerrufsUrl?: string|null, teillieferung?: boolean }} [o]
  *   teillieferung: mehrere Waren getrennt geliefert → Gestaltungshinweis [1] lit c
- * @returns {{ status: "entwurf", hinweis: string, betreff: string, text: string, platzhalter: string[], enthaelt: string[] }}
+ * @returns {{ status: "entwurf", betreff: string, text: string, platzhalter: string[], enthaelt: string[] }}
  */
 export function vertragsbestaetigungEntwurf(order, { widerrufsUrl = null, teillieferung = false } = {}) {
   const o = order || {};
@@ -87,7 +87,6 @@ export function vertragsbestaetigungEntwurf(order, { widerrufsUrl = null, teilli
   const text = teile.join("\n");
   return {
     status: "entwurf",
-    hinweis: LEGAL_TEXT_HINWEIS,
     betreff: `Auftragsbestätigung ${o.id || ""} – ${ANBIETER.marke}`.trim(),
     text,
     platzhalter: [...new Set([...platzhalterIn(belehrung), ...platzhalterIn(AGB)])].filter((p) => text.includes(p)),

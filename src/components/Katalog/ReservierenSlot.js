@@ -15,7 +15,8 @@ import { studioFassung } from "./studioFond";
 import { startVariante } from "./kaufAuswahl";
 import { schreibenHref } from "@/lib/forms/terminLink";
 import { heuteIso } from "@/lib/katalog/config";
-import { galerie, standardAuswahl } from "@/lib/katalog/ausfuehrung";
+import { standardAuswahl } from "@/lib/katalog/ausfuehrung";
+import { leitbild } from "./kachelBild";
 import { variantenAnzeige } from "@/lib/katalog/shopIndex";
 import { pickListeCopy } from "@/lib/katalog/shopListeCopy";
 import { VERKAUF_MARKEN, ausfuehrungZuVariante, sellableOf, varianteZurAuswahl } from "@/lib/shop/catalog";
@@ -47,7 +48,8 @@ export default function ReservierenSlot({ p, marke, preis, locale, hinweis = nul
   // hängt er vom Lieferland ab → dann nur „inkl. MwSt.“ ohne Zahl.
   const liste = pickListeCopy(locale, ["menge", "weniger", "mehrMenge", "ausfuehrung", "inklMwst", "grundpreis"]);
   const satz = anzeigeSatz({ kategorie: p.kategorie });
-  const roh = galerie(p).freisteller[0]?.src || p.bilder?.[0]?.src || null;
+  // Leitbild (Inhaber 03.11.2026): dasselbe Bild wie Kachel und Produktseite (kachelBild.js).
+  const roh = leitbild(p)?.src || null;
   // Zalto: helle „-frei“-Fassung wie Kachel und Warenkorb (studioFond.js).
   const bild = studioFassung(roh, p.marke, "frei") || roh;
   const inklMwst = satz == null ? liste.inklMwst.replace(/\s?\{satz\}\s?%/, "") : liste.inklMwst.replace("{satz}", String(satz));

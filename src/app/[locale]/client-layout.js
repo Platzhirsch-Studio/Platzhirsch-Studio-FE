@@ -156,6 +156,32 @@ export default function ClientLayout({ children, header = null, footer = null })
   const segments = pathname.split('/');
   const bare = BARE_ROUTES.includes(segments[2]) && Boolean(segments[3]);
 
+  // Druck 02.11.: Kopf- und Fußzeile des Ausdrucks (globals.css @page-Randboxen)
+  // lesen Seitentitel, Adresse und Datum aus CSS-Variablen auf <html>. Gesetzt
+  // nach jedem Seitenwechsel und noch einmal unmittelbar vor dem Drucken
+  // (beforeprint), damit ein später geänderter Titel mitkommt. Nur ein Inline-
+  // Style auf <html>, keine Auswirkung auf die Bildschirmansicht.
+  useEffect(() => {
+    const setPrintMeta = () => {
+      const root = document.documentElement;
+      const quote = (s) => JSON.stringify(String(s || ''));
+      const lang = root.lang || 'de';
+      const url = window.location.href.replace(/^https?:\/\//, '').replace(/#.*$/, '');
+      root.style.setProperty('--ph-print-title', quote(document.title));
+      root.style.setProperty('--ph-print-url', quote(url.length > 90 ? `${url.slice(0, 88)}…` : url));
+      root.style.setProperty(
+        '--ph-print-date',
+        quote(new Date().toLocaleDateString(lang === 'de' ? 'de-AT' : lang, { day: '2-digit', month: '2-digit', year: 'numeric' }))
+      );
+    };
+    const timer = window.setTimeout(setPrintMeta, 0);
+    window.addEventListener('beforeprint', setPrintMeta);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('beforeprint', setPrintMeta);
+    };
+  }, [pathname]);
+
   if (bare) {
     return (
       <CartProvider>

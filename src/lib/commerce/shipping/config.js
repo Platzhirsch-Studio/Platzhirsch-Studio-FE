@@ -63,7 +63,7 @@ export const QUOTE_TTL_MS = 15 * 60 * 1000;
  * Kategorie in src/lib/shop/paketprofile.js (Inhaber füllt
  * qa-screenshots/shop/PAKETPROFILE.md aus). Reihenfolge je Zeile:
  * Varianten-Versanddaten → Pakettyp-Profil → sonst nur Abholung.
- * Pakettyp-Profile sind Agenten-Schätzungen (geprueft: false) und gelten nur
+ * Pakettyp-Profile sind Schätzungen (geprueft: false) und gelten nur
  * im Testmodus; live erst nach Messung durch den Inhaber (geprueft: true).
  * Gefahrgut (Parfum UN 1266, Akku-Leuchten UN 3481) bleibt nur abholbar.
  * Zerbrechlich aus dem Varianten-Feld, sonst aus der Kategorie; zerbrechliche

@@ -255,7 +255,7 @@ export default function YachtLanding({ content, path, concepts }) {
         <div className="grid grid-cols-1 gap-y-6 lg:grid-cols-12 lg:gap-x-8">
           <SectionHead id="konzepte-title" eyebrow={content.concepts.eyebrow} title={content.concepts.heading} text={content.concepts.text} className="lg:col-span-7" />
           <p className="max-w-measure border-l-2 border-see pl-4 text-small text-text-soft lg:col-span-4 lg:col-start-9 lg:self-end" data-ki-hinweis="">
-            {content.concepts.aiNote}
+            {content.concepts.imageNote}
           </p>
         </div>
         <div className="mt-stack-m">

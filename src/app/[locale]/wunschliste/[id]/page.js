@@ -16,7 +16,7 @@ import { contributionChannel, wunschlisteAvailable } from "@/lib/wunschliste/mod
 import { REPORT_EMAIL, WUNSCHLISTE_INHABER } from "@/lib/wunschliste/config";
 import { formatDate, localeOf, wlCopyFrom } from "@/lib/wunschliste/copy";
 import { voucherMode } from "@/lib/commerce/mode";
-import { ADDRESS, EMAIL, EMAIL_HREF, PHONE_DISPLAY, PHONE_HREF, SITE_NAME, openingHoursLine } from "@/lib/site";
+import { ADDRESS, EMAIL, EMAIL_HREF, PHONE_DISPLAY, PHONE_HREF, SITE_NAME, SITE_URL, openingHoursLine } from "@/lib/site";
 import { ROUTES } from "@/utils/routing";
 
 export const dynamic = "force-dynamic";
@@ -75,14 +75,18 @@ export default async function WunschlistePage({ params }) {
           </Heading>
           {date && <p className="mt-4 text-ui text-text-soft">{c("public.dateLine", { date })}</p>}
           {list.message && <Lead className="mt-stack-m whitespace-pre-line wrap-break-word">{list.message}</Lead>}
-          <p className="mt-stack-m max-w-measure text-body text-text-soft text-pretty">{c("public.intro")}</p>
+          {/* Druck 02.11.: die Anleitung (Reservieren, Gutschein) gilt nur am Bildschirm; im Ausdruck steht stattdessen der Link. */}
+          <p className="mt-stack-m max-w-measure text-body text-text-soft text-pretty print:hidden">{c("public.intro")}</p>
+          <p className="hidden mt-4 text-small text-text-soft print:block" data-wunschliste-print-link="">
+            {SITE_URL}/{locale}/wunschliste/{id}
+          </p>
         </header>
 
         <PublicItems shareId={id} items={list.items} />
 
-        <div className="mt-section grid gap-section lg:grid-cols-12 lg:gap-x-grid">
+        <div className="mt-section grid gap-section lg:grid-cols-12 lg:gap-x-grid print:mt-10 print:gap-8">
           {channel !== "aus" && (
-            <section aria-labelledby="wl-voucher" className="lg:col-span-7">
+            <section aria-labelledby="wl-voucher" className="lg:col-span-7 print:hidden">
               <Heading level={2} id="wl-voucher">
                 {c("public.voucherHeading")}
               </Heading>
@@ -130,20 +134,22 @@ export default async function WunschlistePage({ params }) {
                 <span className="text-small text-text-soft">{openingHoursLine(locale)}</span>
               </address>
               {contact && <p className="mt-4 text-small text-text-soft">{c("public.contactPerson", { name: contact })}</p>}
-              <Button variant="secondary" href={beratung} className="mt-6 w-full sm:w-auto">
+              <Button variant="secondary" href={beratung} className="mt-6 w-full sm:w-auto print:hidden">
                 {c("public.togetherCta")}
               </Button>
+              {/* Druck 02.11.: Telefon statt Knopf. */}
+              <p className="hidden mt-3 text-small text-text-soft print:block">{PHONE_DISPLAY}</p>
             </div>
           </section>
         </div>
 
-        <footer className="mt-section border-t border-line pt-6">
+        <footer className="mt-section border-t border-line pt-6 print:mt-10">
           <p className="max-w-measure text-small text-text-soft">{c("public.privacyNote")}</p>
           <p className="mt-2 text-small text-text-soft">
             {c("public.refLabel")}: <span className="tabular text-text">{list.ref}</span>
           </p>
           {/* Missbrauch melden (QA Technik P2-3): freie Texte stehen auf unserer Domain. */}
-          <p className="mt-2 max-w-measure text-small text-text-soft">
+          <p className="mt-2 max-w-measure text-small text-text-soft print:hidden">
             {c("public.reportText")}{" "}
             <a className="underline underline-offset-4 hover:text-text" href={`mailto:${REPORT_EMAIL}?subject=${encodeURIComponent(c("public.reportSubject", { ref: list.ref }))}`}>
               {c("public.reportLink")}

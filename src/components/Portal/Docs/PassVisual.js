@@ -23,9 +23,10 @@ export default function PassVisual({ pass, item, hero = false, className = "" })
   // Calm placeholder (QA R2, N5): flat surface, the brand alone in the centre,
   // a short brass rule BELOW the category (never through the wordmark) and the
   // line drawing small in the corner, so nothing crosses the text.
+  // Druck 02.11.: der Platzhalter ist Entwicklungsstand – er kommt nicht auf den Ausdruck (ein echtes Herstellerbild schon).
   return (
     <div
-      className={`relative aspect-[4/3] overflow-hidden border border-ink/10 bg-bone ${className}`}
+      className={`relative aspect-[4/3] overflow-hidden border border-ink/10 bg-bone print:hidden ${className}`}
       role="img"
       aria-label={`Platzhalter-Grafik für ${pass.brand} ${pass.product} – Herstellerbild folgt`}
     >

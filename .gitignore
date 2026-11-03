@@ -68,3 +68,6 @@ CLAUDE.md
 # Nur lokal für /de/preview/pinterest – nicht ins Repo, damit nichts davon
 # mit scripts/deploy.sh (Release aus Git) ausgeliefert wird. QA Recht P2-7.
 /public/preview/pinterest/
+
+# Druck-/PDF-Muster für den Inhaber (Kopie von Platzhirsch-Status/pdf-muster-*), nicht Teil der Website
+/Druck/

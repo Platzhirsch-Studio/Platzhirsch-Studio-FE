@@ -1,7 +1,7 @@
 // /de/yacht-interior and /en/yacht-interior — Yacht- und Boots-Interior,
 // Signature "Die Werfthalle". Welle 2 (team EN-Yacht-Sofa, 29.10.2026): German
 // and English. English copy: src/lib/yacht/content-en.js (page texts),
-// src/lib/yacht/concepts-en.js (concepts, zones, products, AI image alts),
+// src/lib/yacht/concepts-en.js (concepts, zones, products, image alts),
 // src/lib/yacht/ui.js (component strings). 01.11.2026: French and Italian
 // (src/lib/yacht/content-intl.js, concepts-fr.js, concepts-it.js) – the 308
 // FR/IT → /de (src/lib/seo/deOnlyRedirects.cjs, FR_IT_ONLY_EXACT) is removed by
@@ -11,7 +11,7 @@
 // 3D island: src/components/Yacht/Werfthalle.js (lazy, three.js only after
 // visibility/click). Concepts and products: src/lib/yacht/concepts.json,
 // checked live against the backoffice (src/lib/yacht/catalog.js); AI concept
-// images: src/lib/yacht/renders.json (every image visibly labelled).
+// images: src/lib/yacht/renders.json (only Blender renderings since 03.11.2026, captioned).
 // Robots: index, follow again since the integration (Inhaber-Entscheidung
 // Nr. 9, 28.10.2026: what is legally missing is solved inside the page, not by
 // hiding it). The Minotti × Custom Line Navetta 42 photos are released in
@@ -106,8 +106,8 @@ const CONTENT = {
     eyebrow: "Beispielkonzepte",
     heading: "Vom Runabout bis zum Bootshaus",
     text: "Jedes Konzept hat einen Leitsatz, eine Farbwelt, Materialien und Produkte aus unserem Sortiment, Zone für Zone. Es sind Beispiele – keine Kundenprojekte.",
-    aiNote:
-      "Die Bilder in den Beispielkonzepten sind Konzeptvisualisierungen. Ein Teil ist mit Blender gerendert und als „Visualisierung (Rendering)“ beschriftet; die übrigen sind KI-generiert (Art. 50 KI-Verordnung): erzeugt auf unserem eigenen Rechner in Lochau, auf dem Bild und in den Bilddaten als KI-Bild gekennzeichnet. Sie zeigen Stimmungen – keine realen Boote, keine Kundenprojekte und keine Produkte aus unserem Sortiment. Die Produktbilder stammen von den Herstellern.",
+    imageNote:
+      "Die Bilder in den Beispielkonzepten sind Konzeptvisualisierungen, mit Blender gerendert und als „Visualisierung (Rendering)“ beschriftet. Sie zeigen Stimmungen – keine realen Boote, keine Kundenprojekte und keine Produkte aus unserem Sortiment. Die Produktbilder stammen von den Herstellern.",
   },
   materials: {
     eyebrow: "Muster und Materialien",
@@ -274,7 +274,7 @@ const CONTENT = {
       },
       {
         q: "Sind die Bilder der Beispielkonzepte echte Projekte?",
-        a: "Nein. Es sind Konzeptvisualisierungen – teils mit Blender gerendert (beschriftet als „Visualisierung (Rendering)“), teils KI-generiert und als solche gekennzeichnet. Sie zeigen eine Stimmung – keine realen Boote, keine Kundenprojekte und keine Produkte aus unserem Sortiment. Echte Fotos zeigen wir erst mit schriftlicher Freigabe der Eigner.",
+        a: "Nein. Es sind Konzeptvisualisierungen, mit Blender gerendert und als „Visualisierung (Rendering)“ beschriftet. Sie zeigen eine Stimmung – keine realen Boote, keine Kundenprojekte und keine Produkte aus unserem Sortiment. Echte Fotos zeigen wir erst mit schriftlicher Freigabe der Eigner.",
       },
       {
         q: "Planen Sie auch Bootshaus, Steg und Garten am See?",

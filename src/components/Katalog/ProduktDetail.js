@@ -5,7 +5,8 @@
 // `ausfuehrungen` – Konfigurator (Vorschau + Auswahl + „Beratung anfragen“ mit Ausführung).
 // Galerie (Inhaber-Auftrag 31.10.2026): Raumbilder (typ "ambiente") zuerst und groß
 // („So wirkt es im Raum“), danach Freisteller und Details; nur das erste Bild wird
-// vorgeladen, alle anderen lazy. Darunter „Passend dazu“ (zubehoer + verwandt) und
+// vorgeladen, alle anderen lazy. Inhaber 03.11.2026: Hero = detailBild (kachelBild.js:
+// Raumbild > Freisteller > bilder[0]); og:image/JSON-LD/Sitemap der Seite folgen ihm. Darunter „Passend dazu“ (zubehoer + verwandt) und
 // „Ganze Räume ansehen“ (MARKE.looks mit diesem Produkt).
 // Regeln: Herstellerbilder unverändert (object-contain, Rahmen folgt dem
 // Bildformat, data-pin-nopin, „Bild: <Marke>“), keine Preise, Händlersatz nur
@@ -17,7 +18,7 @@ import JsonLd from "@/components/Reusable/JsonLd";
 import { Breadcrumbs, Button, Eyebrow, Heading, LinkArrow, Section } from "@/components/ui";
 import { schreibenHref } from "@/lib/forms/terminLink";
 import { dealerStatement } from "@/lib/legal/claims";
-import { kategorieKey, textOf } from "@/lib/katalog/schema";
+import { bildTyp, kategorieKey, textOf } from "@/lib/katalog/schema";
 import { WELTEN, beratungThema, kategoriePath, markePath, produktPath, produktePath } from "@/lib/katalog/welten";
 import { looksMitProdukt, markeBySlug, produkteByMarke, querverweiseVon, verwandteVon, zubehoerVon } from "@/lib/katalog";
 import { galerie, konfiguratorDaten } from "@/lib/katalog/ausfuehrung";
@@ -32,6 +33,7 @@ import { anzeigePreis, preisOffer, preisTexte } from "./preis";
 import ReservierenSlot from "./ReservierenSlot";
 import { planerLinkFuer } from "./planerLink";
 import { ohneKonfigDoppel } from "./galerieDoppel";
+import { detailBild, leitbild } from "./kachelBild";
 import { anzeigeName, produktTitel, produktTitelGroesse } from "./produktTitel";
 import { fitHeading } from "@/components/Landing/typoLanding";
 import { softHyphenate } from "@/components/Landing/silben";
@@ -144,27 +146,38 @@ export default function ProduktDetail({ locale, p, marke }) {
   const pt = preisTexte(preis, t, locale);
   const offer = preisOffer(preis, `https://platzhirsch.studio/${locale}${produktPath(p.welt, p.slug)}`);
   const g = galerie(p);
-  const ansichten = [...g.freisteller, ...g.detail];
-  // Hero: erstes Raumbild, sonst erster Freisteller (nur dieses Bild wird vorgeladen).
-  const [raumErstes, ...raumRest] = g.ambiente;
-  const [erstes, ...restAlle] = raumErstes ? [null, ...ansichten] : ansichten;
+  // Hero (Inhaber 03.11.2026, kachelBild.js detailBild): Raumbild > Freisteller > bilder[0] – das
+  // Raum-Motiv eröffnet die Seite (Dornbracht TARA: tara-3) und wird als einziges vorgeladen;
+  // og:image, JSON-LD und Sitemap der Produktseite zeigen dasselbe Bild. Ist der Hero ein Raumbild,
+  // bleibt der Aufbau wie bisher („So wirkt es im Raum“ zuerst, groß); sonst folgen die Raumbilder
+  // als eigener Block nach dem Hero, danach die übrigen Ansichten – ohne Doppelung.
+  const leit = detailBild(p);
+  const leitIstRaum = Boolean(leit) && bildTyp(leit) === "ambiente";
+  const raumRest = g.ambiente.filter((b) => b.src !== leit?.src);
+  const ansichten = [...g.freisteller, ...g.detail].filter((b) => b.src !== leit?.src);
+  const raumErstes = leitIstRaum ? leit : null;
+  const erstes = leitIstRaum ? null : leit;
+  const restAlle = ansichten;
   const raumTitel = t(p.bereich === "objekt" ? "produkt.raumObjekt" : "produkt.raumTitel");
   const konfig = p.ausfuehrungen?.length ? konfiguratorDaten(p, locale) : null;
   // Optik-QA R3: Ausführungsbilder zeigt die Konfigurator-Vorschau – nicht noch einmal als Ansicht.
   // QM R1: das Startbild bleibt als Ansicht, wenn die Vorschau es nicht zeigt (Vorschau nur mit
   // eigenem Optionsbild, das nicht schon das Hauptbild ist – Konfigurator hauptSrc).
   const rest = konfig ? ohneKonfigDoppel(restAlle, p) : restAlle;
-  const hauptSrc = (raumErstes || erstes)?.src || null;
+  const hauptSrc = leit?.src || null;
+  // Raumbilder als eigener Block unter dem Hero (nur wenn das Leitbild kein Raumbild ist).
+  const raumBlock = !raumErstes && raumRest.length > 0;
   // Küchengeräte im Planer-Sortiment: „In meine Küchenplanung aufnehmen“ (?geraet=<slug>, planerLink.js).
   const planer = planerLinkFuer(p, locale);
   // Optik-QA: Geräte mit Konfigurator haben eine lange rechte Spalte, die Galerie
   // ist kurz – Merkmale und Maße stehen dann ab lg unter der Galerie (links), statt
   // links ein leeres Feld zu lassen. Mobil bleibt die Reihenfolge gleich.
-  const detailsLinks = Boolean(konfig) && g.ambiente.length + (erstes ? 1 : 0) + rest.length <= 3;
+  const detailsLinks = Boolean(konfig) && (leit ? 1 : 0) + raumRest.length + rest.length <= 3;
   const merkItem = {
     id: `katalog-${p.slug}`,
     name: `${marke.name} ${p.name}`,
-    image: (g.freisteller[0] || p.bilder[0])?.src || null,
+    // Merkliste: Kachelbild (leitbild) wie in den Listen.
+    image: leitbild(p)?.src || null,
     category: kat,
     href: produktPath(p.welt, p.slug),
     slug: p.slug,
@@ -215,6 +228,19 @@ export default function ProduktDetail({ locale, p, marke }) {
         <Breadcrumbs items={crumbs} schema className="[&_a]:min-h-11" />
         <div className={`mt-4 grid grid-cols-1 gap-y-8 lg:mt-stack-m lg:grid-cols-12 lg:gap-x-8 ${detailsLinks ? "lg:grid-rows-[auto_1fr]" : ""}`}>
           <div className="lg:col-span-7 lg:col-start-1 lg:row-start-1">
+            {erstes && <Bild b={erstes} locale={locale} caption={caption} sizes="(min-width: 1024px) 55vw, 100vw" preload maxH="min(40rem,80svh)" zoom={zoom()} />}
+            {raumBlock && (
+              <div data-kat-raum={p.slug}>
+                <p className="mt-stack-m mb-3 border-t border-line pt-4 text-ui text-text">{raumTitel}</p>
+                <ul className={`grid ${raumRest.length > 1 ? "grid-cols-2" : "grid-cols-1"} gap-4 sm:gap-6`}>
+                  {raumRest.map((b, i) => (
+                    <li key={b.src} className="reveal" style={staggerStyle(i, 2)}>
+                      <Bild b={b} locale={locale} caption={caption} sizes={raumRest.length > 1 ? "(min-width: 1024px) 27vw, 50vw" : "(min-width: 1024px) 55vw, 100vw"} kachel={raumRest.length > 1} kachelAr={kachelFormat(raumRest)} zoom={zoom()} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {raumErstes && (
               <div data-kat-raum={p.slug}>
                 <p className="mb-3 text-ui text-text">{raumTitel}</p>
@@ -230,17 +256,13 @@ export default function ProduktDetail({ locale, p, marke }) {
                 )}
               </div>
             )}
-            {raumErstes && rest.length > 0 && <p className="mt-stack-m mb-3 border-t border-line pt-4 text-ui text-text">{t("produkt.ansichten")}</p>}
-            {erstes ? (
-              <Bild b={erstes} locale={locale} caption={caption} sizes="(min-width: 1024px) 55vw, 100vw" preload maxH="min(40rem,80svh)" zoom={zoom()} />
-            ) : (
-              !raumErstes && <div className="flex aspect-[4/3] w-full items-center justify-center bg-linen text-small text-text-soft">{t("produkt.keinBild")}</div>
-            )}
+            {(raumErstes || raumBlock) && rest.length > 0 && <p className="mt-stack-m mb-3 border-t border-line pt-4 text-ui text-text">{t("produkt.ansichten")}</p>}
+            {!leit && <div className="flex aspect-[4/3] w-full items-center justify-center bg-linen text-small text-text-soft">{t("produkt.keinBild")}</div>}
             {rest.length > 0 && (
               // Optik-QA 01.11.2026: auch am Handy zweispaltig – sonst stehen zwei fast gleiche
               // Freisteller untereinander und schieben Titel und Preis aus dem ersten Bildschirm.
               // QM R1: eine einzelne Ansicht in voller Breite statt halb (rechts blieb eine Lücke).
-              <ul className={`${erstes ? "mt-4 sm:mt-6" : ""} grid ${rest.length > 1 ? "grid-cols-2" : "grid-cols-1"} gap-4 sm:gap-6`} data-kat-ansichten={p.slug}>
+              <ul className={`${erstes && !raumBlock ? "mt-4 sm:mt-6" : ""} grid ${rest.length > 1 ? "grid-cols-2" : "grid-cols-1"} gap-4 sm:gap-6`} data-kat-ansichten={p.slug}>
                 {rest.map((b, i) => (
                   <li key={b.src} className="reveal" style={staggerStyle(i, 2)}>
                     <Bild b={b} locale={locale} caption={caption} sizes={rest.length > 1 ? "(min-width: 1024px) 27vw, 50vw" : "(min-width: 1024px) 55vw, 100vw"} kachel={rest.length > 1} kachelAr={kachelFormat(rest)} zoom={zoom()} />

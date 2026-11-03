@@ -5,6 +5,7 @@
 import "server-only";
 import { defaultContext } from "../payments/context.js";
 import { checkoutHandler, orderView, versandHandler } from "./handlers.js";
+import { shopWiderrufHandler } from "./widerruf.js";
 
 function ctx() {
   const payments = defaultContext();
@@ -14,6 +15,8 @@ function ctx() {
 export const shopRoutes = {
   versand: () => versandHandler(ctx()),
   checkout: () => checkoutHandler(ctx()),
+  // Online-Rücktrittsfunktion § 13a FAGG (widerruf.js); Mail nur live über den Payments-Mailer.
+  widerruf: (o = {}) => shopWiderrufHandler(ctx(), o),
 };
 
 /** Bestätigungsseite: öffentliche Sicht (Token nötig) oder null. */

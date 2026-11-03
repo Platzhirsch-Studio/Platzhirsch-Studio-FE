@@ -13,7 +13,8 @@ export default async function PortalHeader() {
   const unread = messages.filter((m) => !m.read && m.from === "studio").length;
 
   return (
-    <header className="mb-4 md:mb-10">
+    // Druck 02.11.: Portal-Kopf (Menü, Abmelden, mobile Leiste) nicht im Ausdruck – jede Portalseite druckt nur ihren Inhalt.
+    <header className="mb-4 md:mb-10 print:hidden">
       <div className="flex items-center justify-between gap-4 md:pb-3">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-text">Mein Platzhirsch</p>
         <div className="flex items-center gap-3 text-sm text-ink/70">

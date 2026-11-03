@@ -7,7 +7,7 @@
 import LegalProse from "@/components/Impressum/LegalProse";
 import PageHeader from "@/components/UberUns/PageHeader";
 import GermanOnlyNotice, { germanText } from "@/components/Legal/GermanOnlyNotice";
-import { EINSCHRAENKUNGEN, MARKTUEBERWACHUNG, PRUEFUNG, STAND, UMGESETZT } from "@/lib/legal/barrierefreiheit";
+import { EINSCHRAENKUNGEN, MARKTUEBERWACHUNG, PRUEFUNG, PRUEFUNG_QM, STAND, UMGESETZT } from "@/lib/legal/barrierefreiheit";
 import { DEFAULT_OG_IMAGE, hreflangLanguages, ogLocale } from "@/lib/seo/pageMetadata";
 import { homeCrumbLabel } from "@/lib/seo/breadcrumbs";
 import { EMAIL, EMAIL_HREF, PHONE_DISPLAY, PHONE_HREF, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -77,6 +77,10 @@ export default async function BarrierefreiheitPage({ params }) {
           {p.verstoesse === 0
             ? "Ergebnis: Das Werkzeug hat keine Verstöße gemeldet."
             : `Ergebnis: Das Werkzeug hat ${p.verstoesse} Verstöße gemeldet; wir beheben sie.`}
+        </p>
+        <p>
+          Am {dateDe(PRUEFUNG_QM.datum)} haben wir zusätzlich {PRUEFUNG_QM.was} geprüft, automatisiert in {PRUEFUNG_QM.browser}. Noch
+          nicht geprüft ist {PRUEFUNG_QM.nichtGeprueft} (siehe „Was noch nicht barrierefrei ist“).
         </p>
         <p>
           Eine automatische Prüfung findet nicht jede Barriere. Deshalb ist uns Ihre Rückmeldung wichtig (Abschnitt „Barriere

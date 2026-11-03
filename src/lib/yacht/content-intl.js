@@ -62,8 +62,8 @@ const FR = {
     eyebrow: "Exemples de concepts",
     heading: "Du runabout au hangar à bateaux",
     text: "Chaque concept : une ligne directrice, un univers de couleurs, des matériaux et des produits de notre assortiment, zone par zone. Des exemples – pas des projets clients.",
-    aiNote:
-      "Les images des exemples de concepts sont des visualisations de concept. Une partie est calculée avec Blender et légendée « Visualisation (rendu 3D) » ; les autres sont générées par IA (art. 50 du règlement européen sur l’IA) : créées sur notre propre ordinateur à Lochau et signalées comme images IA sur l’image et dans leurs métadonnées. Elles montrent une ambiance – pas de bateaux réels, pas de projets clients, pas de produits de notre assortiment. Les images de produits proviennent des fabricants.",
+    imageNote:
+      "Les images des exemples de concepts sont des visualisations de concept, calculées avec Blender et légendées « Visualisation (rendu 3D) ». Elles montrent une ambiance – pas de bateaux réels, pas de projets clients, pas de produits de notre assortiment. Les images de produits proviennent des fabricants.",
   },
   materials: {
     eyebrow: "Échantillons et matériaux",
@@ -223,7 +223,7 @@ const FR = {
       },
       {
         q: "Les images des exemples de concepts sont-elles de vrais projets ?",
-        a: "Non. Ce sont des visualisations de concept – en partie calculées avec Blender (légende « Visualisation (rendu 3D) »), en partie générées par IA et signalées comme telles. Elles montrent une ambiance – pas de bateaux réels, pas de projets clients, pas de produits de notre assortiment. Nous ne montrons de vraies photos qu’avec l’accord écrit des propriétaires.",
+        a: "Non. Ce sont des visualisations de concept, calculées avec Blender et légendées « Visualisation (rendu 3D) ». Elles montrent une ambiance – pas de bateaux réels, pas de projets clients, pas de produits de notre assortiment. Nous ne montrons de vraies photos qu’avec l’accord écrit des propriétaires.",
       },
       {
         q: "Concevez-vous aussi le hangar à bateaux, le ponton et le jardin au bord du lac ?",
@@ -271,8 +271,8 @@ const IT = {
     eyebrow: "Concept di esempio",
     heading: "Dal runabout alla rimessa",
     text: "Ogni concept ha un motto, una palette di colori, materiali e prodotti del nostro assortimento, zona per zona. Sono esempi – non progetti di clienti.",
-    aiNote:
-      "Le immagini dei concept di esempio sono visualizzazioni concettuali. Una parte è realizzata in rendering con Blender e porta la didascalia «Visualizzazione (rendering)»; le altre sono generate con l’IA (art. 50 del Regolamento UE sull’IA): create sul nostro computer a Lochau e contrassegnate come immagini IA sull’immagine e nei dati dell’immagine. Mostrano un’atmosfera – non barche reali, non progetti di clienti e non prodotti del nostro assortimento. Le immagini dei prodotti provengono dai produttori.",
+    imageNote:
+      "Le immagini dei concept di esempio sono visualizzazioni concettuali, realizzate in rendering con Blender e con la didascalia «Visualizzazione (rendering)». Mostrano un’atmosfera – non barche reali, non progetti di clienti e non prodotti del nostro assortimento. Le immagini dei prodotti provengono dai produttori.",
   },
   materials: {
     eyebrow: "Campioni e materiali",
@@ -432,7 +432,7 @@ const IT = {
       },
       {
         q: "Le immagini dei concept di esempio sono progetti reali?",
-        a: "No. Sono visualizzazioni concettuali – in parte realizzate in rendering con Blender (didascalia «Visualizzazione (rendering)»), in parte generate con l’IA e contrassegnate come tali. Mostrano un’atmosfera – non barche reali, non progetti di clienti e non prodotti del nostro assortimento. Foto reali le mostriamo solo con il consenso scritto degli armatori.",
+        a: "No. Sono visualizzazioni concettuali, realizzate in rendering con Blender e con la didascalia «Visualizzazione (rendering)». Mostrano un’atmosfera – non barche reali, non progetti di clienti e non prodotti del nostro assortimento. Foto reali le mostriamo solo con il consenso scritto degli armatori.",
       },
       {
         q: "Progettate anche rimessa, pontile e giardino sul lago?",

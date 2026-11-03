@@ -41,7 +41,7 @@ import { HERO_IMAGE as BW_HERO, ALLE_MARKEN as BW_MARKEN, BAD_WELLNESS_PATH } fr
 import { GERAETE_MARKEN, GERAETE_PATH } from "../../kueche/geraete.js";
 import { MEDIA, KETTE, WERKZEUG_BEISPIEL } from "../../arbeitsweise/media.js";
 import { STATIC_IMAGE_RIGHTS } from "../imageRights.js";
-import { kachelBild } from "../../../components/Katalog/kachelBild.js";
+import { leitbild, mitDetailBild } from "../../../components/Katalog/kachelBild.js";
 import { BASE_URL, IMAGE_NS, MAX_IMAGES_PER_URL } from "./xml.js";
 
 /** Sitemaps-Protokoll: höchstens 50 000 URLs je Datei. */
@@ -76,16 +76,18 @@ export function cleanImages(list) {
 }
 
 // QM R1: Listen und Teaser zeigen das Kachelbild (kachelBild.js – z. B. Dornbracht-Freisteller), nicht immer bilder[0].
-const firstImage = (p) => kachelBild(p)?.src;
+// Inhaber 03.11.2026: Listen = Kachelbild (leitbild); Produktseite = ihr Hero zuerst (detailBild: Raumbild >
+// Freisteller > bilder[0], wie og:image und JSON-LD), danach die übrigen Bilder (mitDetailBild).
+const firstImage = (p) => leitbild(p)?.src;
 
 /** Bilder einer Katalogseite (Eintrag aus katalogPfade()). */
 export function katalogImages(entry) {
   const seite = entry.seite || 1;
-  if (entry.typ === "produkt") return (produktBySlug(entry.slug)?.bilder || []).map((b) => b.src);
+  if (entry.typ === "produkt") return mitDetailBild(produktBySlug(entry.slug)).map((b) => b.src);
   if (entry.typ === "kategorie") return seiteVon(produkteByKategorie(entry.welt, entry.kategorie), seite).map(firstImage);
   if (entry.typ === "marke") return seiteVon(produkteByMarke(entry.marke, entry.welt), seite).map(firstImage);
-  // /kuechengeraete/produkte ist die Shop-Liste (KatalogShopListe, bilder[0]); die übrigen Übersichten zeigen das Kachelbild.
-  if (entry.typ === "uebersicht") return nachKategorie(produkteByWelt(entry.welt)).flatMap((g) => g.produkte.slice(0, UEBERSICHT_JE_KATEGORIE).map(entry.welt === "kuechengeraete" ? (p) => p?.bilder?.[0]?.src : firstImage));
+  // Übersichten (auch die Shop-Liste /kuechengeraete/produkte, KatalogShopListe: kachelBild) zeigen das Leitbild.
+  if (entry.typ === "uebersicht") return nachKategorie(produkteByWelt(entry.welt)).flatMap((g) => g.produkte.slice(0, UEBERSICHT_JE_KATEGORIE).map(firstImage));
   return [];
 }
 
