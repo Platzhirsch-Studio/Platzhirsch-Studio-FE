@@ -1,0 +1,457 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Monats-/Quartalsauswertung als Zuarbeit zur UVA (keine Abgabe): Kennzahlen aus Rechnungen, Gutschriften, Anzahlungen (Ist) und Eingangsrechnungen, OSS je Land/Satz.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "zeitraum_art",
+  "jahr",
+  "periode",
+  "cb_kopf",
+  "zeitraum_von",
+  "zeitraum_bis",
+  "berechnet_am",
+  "methode",
+  "tab_kennzahlen",
+  "kz000_cent",
+  "kz011_cent",
+  "kz017_cent",
+  "kz021_cent",
+  "kz022_cent",
+  "kz022_ust_cent",
+  "kz029_cent",
+  "kz029_ust_cent",
+  "kz006_cent",
+  "kz006_ust_cent",
+  "cb_kennzahlen",
+  "kz070_cent",
+  "kz072_cent",
+  "kz057_cent",
+  "kz060_cent",
+  "kz065_cent",
+  "kz066_cent",
+  "anzahlungen_vereinnahmt_cent",
+  "anzahlungen_ust_cent",
+  "oss_umsatz_cent",
+  "oss_ust_cent",
+  "zahllast_cent",
+  "kennzahlen_html",
+  "tab_zeilen",
+  "zeilen",
+  "belegliste",
+  "pdf",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "UVA-.YYYY.-.###",
+   "default": "UVA-.YYYY.-.###",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nBerechnet\nUebergeben",
+   "default": "Entwurf",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "zeitraum_art",
+   "fieldtype": "Select",
+   "label": "Zeitraum",
+   "options": "Monat\nQuartal",
+   "default": "Monat",
+   "reqd": 1
+  },
+  {
+   "fieldname": "jahr",
+   "fieldtype": "Int",
+   "label": "Jahr",
+   "reqd": 1
+  },
+  {
+   "fieldname": "periode",
+   "fieldtype": "Int",
+   "label": "Monat (1–12) bzw. Quartal (1–4)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zeitraum_von",
+   "fieldtype": "Date",
+   "label": "Von",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "zeitraum_bis",
+   "fieldtype": "Date",
+   "label": "Bis",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "berechnet_am",
+   "fieldtype": "Datetime",
+   "label": "Berechnet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "methode",
+   "fieldtype": "Small Text",
+   "label": "Methode",
+   "read_only": 1,
+   "default": "Soll-Versteuerung für Rechnungen (Rechnungsdatum), Ist-Versteuerung für Anzahlungen (Vereinnahmung). Vom Steuerberater bestätigen lassen."
+  },
+  {
+   "fieldname": "tab_kennzahlen",
+   "fieldtype": "Tab Break",
+   "label": "Kennzahlen"
+  },
+  {
+   "fieldname": "kz000_cent",
+   "fieldtype": "Int",
+   "label": "KZ 000 Lieferungen/Leistungen gesamt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz011_cent",
+   "fieldtype": "Int",
+   "label": "KZ 011 Ausfuhrlieferungen (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz017_cent",
+   "fieldtype": "Int",
+   "label": "KZ 017 Innergemeinschaftliche Lieferungen (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz021_cent",
+   "fieldtype": "Int",
+   "label": "KZ 021 Reverse Charge (Leistungsort Ausland) (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz022_cent",
+   "fieldtype": "Int",
+   "label": "KZ 022 Bemessung 20 % (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz022_ust_cent",
+   "fieldtype": "Int",
+   "label": "USt 20 % (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz029_cent",
+   "fieldtype": "Int",
+   "label": "KZ 029 Bemessung 10 % (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz029_ust_cent",
+   "fieldtype": "Int",
+   "label": "USt 10 % (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz006_cent",
+   "fieldtype": "Int",
+   "label": "KZ 006 Bemessung 13 % (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz006_ust_cent",
+   "fieldtype": "Int",
+   "label": "USt 13 % (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_kennzahlen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "kz070_cent",
+   "fieldtype": "Int",
+   "label": "KZ 070 Innergemeinschaftliche Erwerbe (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz072_cent",
+   "fieldtype": "Int",
+   "label": "Erwerbsteuer 20 % (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz057_cent",
+   "fieldtype": "Int",
+   "label": "KZ 057 Steuerschuld als Empfänger (RC) (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz060_cent",
+   "fieldtype": "Int",
+   "label": "KZ 060 Vorsteuer (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz065_cent",
+   "fieldtype": "Int",
+   "label": "KZ 065 Vorsteuer igE (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "kz066_cent",
+   "fieldtype": "Int",
+   "label": "KZ 066 Vorsteuer RC (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "anzahlungen_vereinnahmt_cent",
+   "fieldtype": "Int",
+   "label": "Anzahlungen vereinnahmt (brutto, Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "anzahlungen_ust_cent",
+   "fieldtype": "Int",
+   "label": "USt aus Anzahlungen (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "oss_umsatz_cent",
+   "fieldtype": "Int",
+   "label": "OSS-Umsätze gesamt netto (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "oss_ust_cent",
+   "fieldtype": "Int",
+   "label": "OSS-Steuer gesamt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "zahllast_cent",
+   "fieldtype": "Int",
+   "label": "Zahllast / Gutschrift (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "bold": 1
+  },
+  {
+   "fieldname": "kennzahlen_html",
+   "fieldtype": "HTML",
+   "label": "Übersicht"
+  },
+  {
+   "fieldname": "tab_zeilen",
+   "fieldtype": "Tab Break",
+   "label": "Zeilen und Belege"
+  },
+  {
+   "fieldname": "zeilen",
+   "fieldtype": "Table",
+   "label": "Zeilen (Kennzahlen, OSS je Land/Satz)",
+   "options": "PH UVA Zeile",
+   "read_only": 1
+  },
+  {
+   "fieldname": "belegliste",
+   "fieldtype": "Long Text",
+   "label": "Belegliste",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pdf",
+   "fieldtype": "Attach",
+   "label": "PDF",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH UVA Auswertung",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "zeitraum_von",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Gray"
+  },
+  {
+   "title": "Berechnet",
+   "color": "Blue"
+  },
+  {
+   "title": "Uebergeben",
+   "color": "Green"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "jahr,periode"
+}

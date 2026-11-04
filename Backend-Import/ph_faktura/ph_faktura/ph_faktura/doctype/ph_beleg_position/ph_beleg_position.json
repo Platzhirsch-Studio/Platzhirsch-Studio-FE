@@ -1,0 +1,256 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Gemeinsame Positions-Kindtabelle für Angebot, Auftragsbestätigung, Rechnung, Gutschrift und Eingangsrechnung (gehört ph_faktura; ph_kassa nutzt eine eigene).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "pos",
+  "art",
+  "alternativ",
+  "produkt",
+  "ausfuehrung",
+  "bezeichnung",
+  "marke",
+  "ausfuehrung_text",
+  "beschreibung",
+  "sb_mengen",
+  "menge",
+  "einheit",
+  "einzel_netto_cent",
+  "rabatt_promille",
+  "cb_mengen",
+  "ust_satz_promille",
+  "netto_cent",
+  "ust_cent",
+  "brutto_cent",
+  "sb_lieferung",
+  "lieferzeit_text",
+  "raum",
+  "lieferant",
+  "herstellerbestellung_position",
+  "cb_lieferung",
+  "lieferschein_menge",
+  "rechnung_menge",
+  "ab_position",
+  "einkauf_cent"
+ ],
+ "fields": [
+  {
+   "fieldname": "pos",
+   "fieldtype": "Int",
+   "label": "Pos.",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Produkt\nLeistung\nPlanungsleistung\nText\nZwischensumme\nRabatt",
+   "default": "Produkt",
+   "in_list_view": 1,
+   "columns": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "alternativ",
+   "fieldtype": "Check",
+   "label": "Alternativ",
+   "default": "0",
+   "description": "Alternativposition: wird angezeigt, aber nicht in die Summe gerechnet.",
+   "columns": 1
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt (Sortiment)",
+   "options": "PH Produkt",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "ausfuehrung",
+   "fieldtype": "Link",
+   "label": "Ausführung",
+   "options": "PH Produkt Ausfuehrung"
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1,
+   "columns": 3,
+   "reqd": 0
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke"
+  },
+  {
+   "fieldname": "ausfuehrung_text",
+   "fieldtype": "Data",
+   "label": "Ausführung (Text)",
+   "description": "Stoff, Leder, Holzart, Farbe, Maße – erscheint auf dem Beleg unter der Bezeichnung."
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Text Editor",
+   "label": "Beschreibung"
+  },
+  {
+   "fieldname": "sb_mengen",
+   "fieldtype": "Section Break",
+   "label": "Menge und Preis"
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Float",
+   "label": "Menge",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "einheit",
+   "fieldtype": "Select",
+   "label": "Einheit",
+   "options": "Stk\nStd\nPausch\nm\nm²\nlfm\nSet\nTag",
+   "default": "Stk"
+  },
+  {
+   "fieldname": "einzel_netto_cent",
+   "fieldtype": "Int",
+   "label": "Einzelpreis netto (Cent)",
+   "in_list_view": 1,
+   "columns": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "rabatt_promille",
+   "fieldtype": "Int",
+   "label": "Rabatt (‰)",
+   "default": "0",
+   "description": "Promille: 100 = 10 %, 25 = 2,5 % (Zeilenrabatt)."
+  },
+  {
+   "fieldname": "cb_mengen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ust_satz_promille",
+   "fieldtype": "Int",
+   "label": "USt-Satz (‰)",
+   "default": "2000",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "2000 = 20 %, 1300 = 13 %, 1000 = 10 %, 0 = steuerfrei (Promille, CONVENTIONS 2)."
+  },
+  {
+   "fieldname": "netto_cent",
+   "fieldtype": "Int",
+   "label": "Netto (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ust_cent",
+   "fieldtype": "Int",
+   "label": "USt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "brutto_cent",
+   "fieldtype": "Int",
+   "label": "Brutto (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "sb_lieferung",
+   "fieldtype": "Section Break",
+   "label": "Lieferung und Herkunft",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "lieferzeit_text",
+   "fieldtype": "Data",
+   "label": "Lieferzeit"
+  },
+  {
+   "fieldname": "raum",
+   "fieldtype": "Data",
+   "label": "Raum / Bereich"
+  },
+  {
+   "fieldname": "lieferant",
+   "fieldtype": "Link",
+   "label": "Lieferant",
+   "options": "PH Lieferant"
+  },
+  {
+   "fieldname": "herstellerbestellung_position",
+   "fieldtype": "Data",
+   "label": "Herstellerbestellung (Position)",
+   "read_only": 1,
+   "description": "Wird von ph_sortiment gesetzt (PH Herstellerbestellung)."
+  },
+  {
+   "fieldname": "cb_lieferung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lieferschein_menge",
+   "fieldtype": "Float",
+   "label": "Geliefert (Menge)",
+   "read_only": 1,
+   "default": "0",
+   "precision": "2",
+   "description": "Wird von ph_logistik (PH Lieferschein) fortgeschrieben."
+  },
+  {
+   "fieldname": "rechnung_menge",
+   "fieldtype": "Float",
+   "label": "Abgerechnet (Menge)",
+   "read_only": 1,
+   "default": "0",
+   "precision": "2"
+  },
+  {
+   "fieldname": "ab_position",
+   "fieldtype": "Data",
+   "label": "AB-Position (Zeilen-ID)",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "einkauf_cent",
+   "fieldtype": "Int",
+   "label": "Einkaufspreis netto (Cent)",
+   "permlevel": 1,
+   "default": "0",
+   "description": "Nur Leitung/Geschäftsführung (Marge)."
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Beleg Position",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

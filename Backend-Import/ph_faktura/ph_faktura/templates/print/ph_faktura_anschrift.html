@@ -1,0 +1,10 @@
+{#- Anschriftenfeld mit Absenderzeile (Kontext: doc, firma). -#}
+<div class="ph-anschrift">
+  <div class="ph-absender">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }}</div><br>
+  {% if doc.firma %}{{ doc.firma }}<br>{% endif %}
+  {{ doc.kunde_name or "" }}<br>
+  {% if doc.strasse %}{{ doc.strasse }}<br>{% endif %}
+  {% if doc.plz or doc.ort %}{{ doc.plz or "" }} {{ doc.ort or "" }}<br>{% endif %}
+  {% if doc.land and doc.land != "AT" %}{{ {"DE": "Deutschland", "CH": "Schweiz", "IT": "Italien", "FR": "Frankreich", "LI": "Liechtenstein"}.get(doc.land, doc.land) }}<br>{% endif %}
+  {% if doc.uid_empfaenger %}<span class="ph-grau ph-klein">UID {{ doc.uid_empfaenger }}</span>{% endif %}
+</div>

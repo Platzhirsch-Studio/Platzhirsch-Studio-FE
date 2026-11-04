@@ -1,0 +1,140 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Übergabeprotokoll je Beleg eines Export-Laufs (BMD/DATEV).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "beleg_doctype",
+  "beleg",
+  "nummer",
+  "datum",
+  "kontakt_name",
+  "konto",
+  "gegenkonto",
+  "steuercode",
+  "netto_cent",
+  "ust_cent",
+  "brutto_cent",
+  "status",
+  "pruefsumme"
+ ],
+ "fields": [
+  {
+   "fieldname": "beleg_doctype",
+   "fieldtype": "Link",
+   "label": "Belegart",
+   "options": "DocType",
+   "in_list_view": 1,
+   "columns": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "beleg",
+   "fieldtype": "Dynamic Link",
+   "label": "Beleg",
+   "options": "beleg_doctype",
+   "in_list_view": 1,
+   "columns": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "nummer",
+   "fieldtype": "Data",
+   "label": "Belegnummer",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Datum",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "kontakt_name",
+   "fieldtype": "Data",
+   "label": "Kunde/Lieferant",
+   "read_only": 1
+  },
+  {
+   "fieldname": "konto",
+   "fieldtype": "Data",
+   "label": "Konto",
+   "read_only": 1,
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "gegenkonto",
+   "fieldtype": "Data",
+   "label": "Gegenkonto",
+   "read_only": 1
+  },
+  {
+   "fieldname": "steuercode",
+   "fieldtype": "Data",
+   "label": "Steuercode",
+   "read_only": 1
+  },
+  {
+   "fieldname": "netto_cent",
+   "fieldtype": "Int",
+   "label": "Netto (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "ust_cent",
+   "fieldtype": "Int",
+   "label": "USt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "brutto_cent",
+   "fieldtype": "Int",
+   "label": "Brutto (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "uebergeben\nkorrigiert\nstorniert",
+   "default": "uebergeben",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "pruefsumme",
+   "fieldtype": "Data",
+   "label": "Prüfsumme (SHA-256, gekürzt)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Export Protokoll",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

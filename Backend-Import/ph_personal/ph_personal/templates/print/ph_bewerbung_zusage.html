@@ -1,0 +1,29 @@
+{% extends "templates/print/ph_basis.html" %}
+{% set einst = frappe.get_cached_doc("PH Personal Einstellungen") %}
+{% set stelle = frappe.get_cached_doc("PH Stelle", doc.stelle) if doc.stelle else None %}
+{% block titel %}Zusage {{ doc.name }}{% endblock %}
+{% block kopfrechts %}{{ firma.ort }}, {{ ph_datum(doc.zusage_gesendet_am or frappe.utils.nowdate()) }}{% endblock %}
+{% block css %} .ph-brief p { margin: 0 0 3mm; } .ph-anschrift { margin: 6mm 0 12mm; line-height: 1.4; } {% endblock %}
+{% block inhalt %}
+<div class="ph-brief">
+  <div class="ph-absender">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }}</div>
+  <div class="ph-anschrift">{{ doc.anrede or "" }}<br>{{ doc.vorname or "" }} {{ doc.nachname }}<br>{{ doc.plz_ort or "" }}</div>
+  <h1>Zusage{% if doc.stelle_titel %}: {{ doc.stelle_titel }}{% endif %}</h1>
+  <p>{% if doc.anrede == "Frau" %}Sehr geehrte Frau {{ doc.nachname }},{% elif doc.anrede == "Herr" %}Sehr geehrter Herr {{ doc.nachname }},{% else %}Guten Tag {{ doc.vorname or "" }} {{ doc.nachname }},{% endif %}</p>
+  {{ einst.zusage_text }}
+  {% if stelle %}
+  <table class="ph-tabelle" style="margin:4mm 0">
+    <tbody>
+      <tr><td>Position</td><td>{{ stelle.titel }}</td></tr>
+      <tr><td>Beschäftigungsausmaß</td><td>{{ _(stelle.beschaeftigungsart) }}</td></tr>
+      <tr><td>Arbeitsort</td><td>{{ stelle.standort or einst.standort }}</td></tr>
+      {% if stelle.entgelt_text %}<tr><td>Entgelt (Kollektivvertrag)</td><td>{{ stelle.entgelt_text }}</td></tr>{% endif %}
+      {% if doc.mitarbeiter %}<tr><td>Eintritt</td><td>{{ ph_datum(frappe.db.get_value("PH Mitarbeiter", doc.mitarbeiter, "eintritt")) }}</td></tr>{% endif %}
+    </tbody>
+  </table>
+  {% endif %}
+  <p>Mit freundlichen Grüßen</p>
+  <p style="margin-top:10mm">{{ firma.geschaeftsfuehrung or firma.marke }}<br><span style="color:#6b7280">{{ firma.kurzname or firma.firmenname }}</span></p>
+  <p style="font-size:8pt;color:#6b7280;margin-top:8mm">Dienstzettel (§ 2 AVRAG) bzw. Dienstvertrag folgen gesondert; dieser Brief begründet kein Dienstverhältnis.</p>
+</div>
+{% endblock %}

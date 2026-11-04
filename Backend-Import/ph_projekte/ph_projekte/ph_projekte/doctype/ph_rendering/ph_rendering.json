@@ -1,0 +1,370 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Visualisierung (Variante/Version) für das Kundenfeedback im Portal; Pins, Votes, Freigabe und Sprachnotizen in PH Rendering Feedback.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "projekt",
+  "planung",
+  "status",
+  "cb_kopf",
+  "bezeichnung",
+  "variante",
+  "version",
+  "ki_generiert",
+  "sb_bild",
+  "bild",
+  "beschreibung",
+  "cb_bild",
+  "vorschau_html",
+  "sb_portal",
+  "kunde_sichtbar",
+  "vorgelegt_am",
+  "freigegeben_am",
+  "freigabe_feedback",
+  "cb_portal",
+  "feedback_anzahl",
+  "feedback_offen",
+  "letztes_feedback_am",
+  "votes_up",
+  "votes_down",
+  "notiz_intern",
+  "sb_system",
+  "quelle",
+  "ip_hash"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-REN-.YYYY.-.####",
+   "default": "PH-REN-.YYYY.-.####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "planung",
+   "fieldtype": "Link",
+   "label": "Planung",
+   "options": "PH Planung"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nVorgelegt\nFeedback offen\nFreigegeben\nVerworfen",
+   "default": "Entwurf",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Workflow „PH Rendering“: Entwurf → Vorgelegt → Feedback offen → Freigegeben / Verworfen."
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "description": "z. B. „Küche – Planung V2, Stimmungsbild“"
+  },
+  {
+   "fieldname": "variante",
+   "fieldtype": "Select",
+   "label": "Variante",
+   "options": "A\nB\nC\nD\nE\nF",
+   "default": "A",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "version",
+   "fieldtype": "Int",
+   "label": "Version",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ki_generiert",
+   "fieldtype": "Check",
+   "label": "KI-generiert (Kennzeichnung im Portal, AI Act Art. 50)",
+   "default": "0",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_bild",
+   "fieldtype": "Section Break",
+   "label": "Bild"
+  },
+  {
+   "fieldname": "bild",
+   "fieldtype": "Attach Image",
+   "label": "Rendering (privat)",
+   "description": "Wird als private Datei gespeichert; Portal lädt es über die API."
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Small Text",
+   "label": "Beschreibung für den Kunden"
+  },
+  {
+   "fieldname": "cb_bild",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vorschau_html",
+   "fieldtype": "HTML",
+   "label": "Vorschau mit Markierungen"
+  },
+  {
+   "fieldname": "sb_portal",
+   "fieldtype": "Section Break",
+   "label": "Kundenportal und Feedback"
+  },
+  {
+   "fieldname": "kunde_sichtbar",
+   "fieldtype": "Check",
+   "label": "Im Portal sichtbar",
+   "default": "0",
+   "read_only": 1,
+   "description": "Setzt „Kunden vorlegen“."
+  },
+  {
+   "fieldname": "vorgelegt_am",
+   "fieldtype": "Datetime",
+   "label": "Vorgelegt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "freigegeben_am",
+   "fieldtype": "Datetime",
+   "label": "Freigegeben am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "freigabe_feedback",
+   "fieldtype": "Link",
+   "label": "Freigabe-Eintrag",
+   "options": "PH Rendering Feedback",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_portal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "feedback_anzahl",
+   "fieldtype": "Int",
+   "label": "Rückmeldungen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "feedback_offen",
+   "fieldtype": "Int",
+   "label": "Offene Rückmeldungen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "letztes_feedback_am",
+   "fieldtype": "Datetime",
+   "label": "Letzte Rückmeldung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "votes_up",
+   "fieldtype": "Int",
+   "label": "Daumen hoch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "votes_down",
+   "fieldtype": "Int",
+   "label": "Daumen runter",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz_intern",
+   "fieldtype": "Small Text",
+   "label": "Interne Notiz",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nsystem",
+   "default": "backoffice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Rendering Feedback",
+   "link_fieldname": "rendering",
+   "group": "Feedback"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Rendering",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Gray"
+  },
+  {
+   "title": "Vorgelegt",
+   "color": "Blue"
+  },
+  {
+   "title": "Feedback offen",
+   "color": "Orange"
+  },
+  {
+   "title": "Freigegeben",
+   "color": "Green"
+  },
+  {
+   "title": "Verworfen",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "bezeichnung,projekt"
+}

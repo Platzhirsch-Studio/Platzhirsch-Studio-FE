@@ -1,0 +1,287 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "code",
+  "titel",
+  "status",
+  "empfehler_name",
+  "empfehler_email",
+  "empfehler_kontakt",
+  "empfehler_auftrag",
+  "cb_1",
+  "empfohlen_name",
+  "empfohlen_email",
+  "einwilligung_empfohlen",
+  "einwilligung_zeit",
+  "anfrage",
+  "sb_auftrag",
+  "auftrag",
+  "auftrag_datum",
+  "ruecktritt_ende",
+  "cb_2",
+  "gutschein_code_letzte4",
+  "gutschein_ausgegeben_am",
+  "code_gesendet_am",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "label": "Code",
+   "unique": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Wird beim Speichern erzeugt (EMP-XXXXXX)."
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Code ausgegeben\nAnfrage eingegangen\nAuftrag erteilt\nGutschein faellig\nGutschein ausgegeben\nVerfallen\nAbgelehnt",
+   "default": "Code ausgegeben",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "empfehler_name",
+   "fieldtype": "Data",
+   "label": "Empfehlende Person",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "empfehler_email",
+   "fieldtype": "Data",
+   "label": "E-Mail empfehlende Person",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "empfehler_kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "empfehler_auftrag",
+   "fieldtype": "Data",
+   "label": "Eigener Auftrag der empfehlenden Person (Nachweis)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "empfohlen_name",
+   "fieldtype": "Data",
+   "label": "Empfohlene Person"
+  },
+  {
+   "fieldname": "empfohlen_email",
+   "fieldtype": "Data",
+   "label": "E-Mail empfohlene Person",
+   "options": "Email"
+  },
+  {
+   "fieldname": "einwilligung_empfohlen",
+   "fieldtype": "Check",
+   "label": "Empfohlene Person hat in die Zuordnung eingewilligt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "einwilligung_zeit",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt der Einwilligung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "anfrage",
+   "fieldtype": "Link",
+   "label": "Anfrage",
+   "options": "PH Anfrage"
+  },
+  {
+   "fieldname": "sb_auftrag",
+   "fieldtype": "Section Break",
+   "label": "Auftrag und Gutschein"
+  },
+  {
+   "fieldname": "auftrag",
+   "fieldtype": "Data",
+   "label": "Erster Auftrag der empfohlenen Person"
+  },
+  {
+   "fieldname": "auftrag_datum",
+   "fieldtype": "Date",
+   "label": "Auftragsdatum"
+  },
+  {
+   "fieldname": "ruecktritt_ende",
+   "fieldtype": "Date",
+   "label": "Rücktrittsfrist endet",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gutschein_code_letzte4",
+   "fieldtype": "Data",
+   "label": "Gutschein (letzte 4 Zeichen)"
+  },
+  {
+   "fieldname": "gutschein_ausgegeben_am",
+   "fieldtype": "Date",
+   "label": "Gutschein ausgegeben am"
+  },
+  {
+   "fieldname": "code_gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Code gesendet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Empfehlung",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Code ausgegeben",
+   "color": "Blue"
+  },
+  {
+   "title": "Anfrage eingegangen",
+   "color": "Cyan"
+  },
+  {
+   "title": "Auftrag erteilt",
+   "color": "Purple"
+  },
+  {
+   "title": "Gutschein faellig",
+   "color": "Orange"
+  },
+  {
+   "title": "Gutschein ausgegeben",
+   "color": "Green"
+  },
+  {
+   "title": "Verfallen",
+   "color": "Gray"
+  },
+  {
+   "title": "Abgelehnt",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "description": "Empfehlungsprogramm „Unter Freunden“: ein Code je empfehlender Person (EMP-XXXXXX). Platzhirsch schreibt nie eine Person an, die nur genannt wurde.",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "autoname": "field:code",
+ "naming_rule": "By fieldname",
+ "title_field": "titel",
+ "search_fields": "code,empfehler_name,empfehler_email",
+ "track_seen": 1,
+ "track_views": 0
+}

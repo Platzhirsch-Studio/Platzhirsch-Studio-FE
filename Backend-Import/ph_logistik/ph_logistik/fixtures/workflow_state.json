@@ -1,0 +1,51 @@
+[
+ {
+  "doctype": "Workflow State",
+  "name": "PH Gepackt",
+  "workflow_state_name": "PH Gepackt",
+  "style": "Warning",
+  "icon": "gift"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Uebergeben",
+  "workflow_state_name": "PH Uebergeben",
+  "style": "Info",
+  "icon": "truck"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Zugestellt",
+  "workflow_state_name": "PH Zugestellt",
+  "style": "Success",
+  "icon": "ok"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Angelegt",
+  "workflow_state_name": "PH Angelegt",
+  "style": "Primary",
+  "icon": "file"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Etikett",
+  "workflow_state_name": "PH Etikett",
+  "style": "Info",
+  "icon": "tag"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Problem",
+  "workflow_state_name": "PH Problem",
+  "style": "Danger",
+  "icon": "warning-sign"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Laufend",
+  "workflow_state_name": "PH Laufend",
+  "style": "Warning",
+  "icon": "time"
+ }
+]

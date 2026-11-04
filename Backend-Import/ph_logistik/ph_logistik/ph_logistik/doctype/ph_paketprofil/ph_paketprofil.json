@@ -1,0 +1,307 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Verpackungsprofil (Karton-Außenmaße, Gewicht, Zerbrechlich/Glas) je Pakettyp; Quelle src/lib/shop/paketprofile.js.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "key",
+  "bezeichnung",
+  "familie",
+  "kategorie",
+  "aktiv",
+  "standard",
+  "cb_kopf",
+  "laenge_cm",
+  "breite_cm",
+  "hoehe_cm",
+  "gewicht_g",
+  "tara_g",
+  "max_artikel_gewicht_g",
+  "max_stueck",
+  "sb_eigenschaften",
+  "zerbrechlich",
+  "glas",
+  "kerze",
+  "polster_cm",
+  "cb_eig",
+  "geprueft",
+  "quelle",
+  "versand_gesperrt",
+  "gefahrgut_un",
+  "gefahrgut_pruefen",
+  "sdb_geprueft",
+  "sb_weiteres",
+  "hinweis",
+  "beispiel"
+ ],
+ "fields": [
+  {
+   "fieldname": "key",
+   "fieldtype": "Data",
+   "label": "Kennung",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Wie in src/lib/shop/paketprofile.js (z. B. glas-1, karaffe, bildband-mittel)."
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "familie",
+   "fieldtype": "Select",
+   "label": "Familie",
+   "options": "glas\nkaraffe\nkerze\nduft\nparfum\nbildband\nvase\ngeschirr\nwohnaccessoire\ngeschenkset\nleuchte\nmoebel\nsonstige",
+   "default": "sonstige",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kategorie",
+   "fieldtype": "Link",
+   "label": "Kategorie (Sortiment)",
+   "options": "PH Kategorie"
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "1",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "standard",
+   "fieldtype": "Check",
+   "label": "Standard der Familie"
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "laenge_cm",
+   "fieldtype": "Int",
+   "label": "Länge außen (cm)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "breite_cm",
+   "fieldtype": "Int",
+   "label": "Breite außen (cm)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "hoehe_cm",
+   "fieldtype": "Int",
+   "label": "Höhe außen (cm)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "gewicht_g",
+   "fieldtype": "Int",
+   "label": "Gewicht inkl. Verpackung (g)",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Schwerster Artikel der Klasse + Tara."
+  },
+  {
+   "fieldname": "tara_g",
+   "fieldtype": "Int",
+   "label": "Tara Karton + Einlage (g)"
+  },
+  {
+   "fieldname": "max_artikel_gewicht_g",
+   "fieldtype": "Int",
+   "label": "Max. Artikelgewicht (g)"
+  },
+  {
+   "fieldname": "max_stueck",
+   "fieldtype": "Int",
+   "label": "Max. Stück je Paket",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_eigenschaften",
+   "fieldtype": "Section Break",
+   "label": "Eigenschaften"
+  },
+  {
+   "fieldname": "zerbrechlich",
+   "fieldtype": "Check",
+   "label": "Zerbrechlich (Polster, Einlage)"
+  },
+  {
+   "fieldname": "glas",
+   "fieldtype": "Check",
+   "label": "Glas → Versicherung",
+   "description": "K17 (31.10.2026): zerbrechliche/Glas-Sendungen werden versichert (Versicherungswert = Warenwert)."
+  },
+  {
+   "fieldname": "kerze",
+   "fieldtype": "Check",
+   "label": "Kerze (Hitzehinweis)"
+  },
+  {
+   "fieldname": "polster_cm",
+   "fieldtype": "Int",
+   "label": "Polster je Seite (cm)"
+  },
+  {
+   "fieldname": "cb_eig",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "geprueft",
+   "fieldtype": "Check",
+   "label": "Geprüft (Karton gemessen)",
+   "description": "Nur geprüfte Profile gelten im Live-Modus (paketprofile.js GATE)."
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Data",
+   "label": "Quelle",
+   "default": "Schätzung aus Produktdaten (31.10.2026), zu prüfen"
+  },
+  {
+   "fieldname": "versand_gesperrt",
+   "fieldtype": "Data",
+   "label": "Versand gesperrt (Grund)",
+   "description": "Gefahrgut: Parfum UN 1266, Akku-Leuchte UN 3481, Streichhölzer UN 1944/1945 – nur Abholung."
+  },
+  {
+   "fieldname": "gefahrgut_un",
+   "fieldtype": "Data",
+   "label": "Gefahrgut UN-Nr."
+  },
+  {
+   "fieldname": "gefahrgut_pruefen",
+   "fieldtype": "Check",
+   "label": "SDB Abschnitt 14 prüfen (Diffuser/Raumspray)"
+  },
+  {
+   "fieldname": "sdb_geprueft",
+   "fieldtype": "Check",
+   "label": "Sicherheitsdatenblatt geprüft"
+  },
+  {
+   "fieldname": "sb_weiteres",
+   "fieldtype": "Section Break",
+   "label": "Weiteres",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis"
+  },
+  {
+   "fieldname": "beispiel",
+   "fieldtype": "Check",
+   "label": "Beispieldatensatz (Installation)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Paketprofil",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "familie,key",
+ "title_field": "bezeichnung",
+ "track_seen": 0,
+ "autoname": "field:key",
+ "naming_rule": "By fieldname"
+}

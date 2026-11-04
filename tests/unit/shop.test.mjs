@@ -9,7 +9,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { shopMode, shopModeRequested, liveBlockers } from "../../src/lib/shop/mode.js";
-import { SHOP_RELEASE, releaseComplete, releaseItemDone } from "../../src/lib/shop/release.js";
+import { SHOP_RELEASE, releaseComplete, releaseDone, releaseItemDone, releaseOpen } from "../../src/lib/shop/release.js";
 import { SHOP_LEGAL, legalOpen } from "../../src/lib/shop/legal.js";
 import { LIEFERZEIT } from "../../src/lib/shop/lieferzeit.js";
 
@@ -40,7 +40,8 @@ const DEV = { NODE_ENV: "development" };
 const PROD = { NODE_ENV: "production" };
 
 const done = (x) => ({ ...x, erledigt: true, beleg: "Ordner Freigaben/Shop, Dokument 1", datum: "2026-11-01", durch: "Inhaber" });
-const legalFrei = SHOP_LEGAL.map((s) => ({ ...s, status: "freigegeben", text: "Kanzleitext", stand: "2026-11-01" }));
+// Alle Slots wirksam frei: ohne Platzhalter (legalSlotReleased verlangt seit 03.11.2026 platzhalter.length === 0).
+const legalFrei = SHOP_LEGAL.map((s) => ({ ...s, status: "freigegeben", text: "Kanzleitext", stand: "2026-11-01", platzhalter: [] }));
 const LIVE_ENV = { NODE_ENV: "production", SHOP_MODE: "live", STRIPE_SECRET_KEY: "sk_live_abcdefghijk", STRIPE_WEBHOOK_SECRET: "whsec_abcdefghijk", PAYMENTS_MAIL_PROVIDER: "resend", PAYMENTS_MAIL_API_KEY: "re_x", PAYMENTS_MAIL_FROM: "shop@platzhirsch.studio" };
 
 // Katalog-Fixtures (nur Test): gleiche Struktur wie src/lib/katalog/schema.js
@@ -72,7 +73,12 @@ test("SHOP_MODE=test nie auf Produktion (außer ausdrücklicher Vorschau, nie Ve
 });
 
 test("SHOP_MODE=live ohne vollständige Freigabe fällt auf off zurück", () => {
-  assert.equal(releaseComplete(SHOP_RELEASE), false, "heute ist nichts freigegeben");
+  // 03.11.2026 (Nr. 46): Rechtstexte, Widerrufsfunktion, Vertragsbestätigung, Mitteilung, Inhaber-OK belegt;
+  // offen bleiben Inhaber-/Steuerberater-Punkte (Stripe-Live, Mail, LetMeShip, Verpackung, USt, Preise, Lieferzeiten).
+  assert.equal(releaseComplete(SHOP_RELEASE), false, "Inhaber-/Steuerberater-Punkte offen");
+  assert.deepEqual(releaseOpen(SHOP_RELEASE), ["versandbedingungen", "stripe-live", "mail", "versand", "verpackung", "ust", "preise"]);
+  assert.deepEqual(releaseDone(SHOP_RELEASE), ["agb", "widerrufsbelehrung", "widerrufsformular", "datenschutz", "widerrufsfunktion", "gewaehrleistung-mitteilung", "vertragsbestaetigung", "insolvenzrecht", "inhaber-ok"]);
+  for (const x of SHOP_RELEASE.filter((r) => r.erledigt)) assert.equal(x.datum, "2026-11-03", x.id);
   assert.equal(shopMode(LIVE_ENV), "off");
   // Auch mit allen Belegen, aber Kanzlei-Slots offen → off
   assert.equal(shopMode(LIVE_ENV, { release: SHOP_RELEASE.map(done) }), "off");
@@ -90,18 +96,25 @@ test("SHOP_MODE=live ohne vollständige Freigabe fällt auf off zurück", () => 
   // Testschlüssel statt Live → off; Mail fehlt → off
   assert.equal(shopMode({ ...LIVE_ENV, STRIPE_SECRET_KEY: "sk_test_abcdefghijk" }, { release: SHOP_RELEASE.map(done), legal: legalFrei }), "off");
   assert.equal(shopMode({ ...LIVE_ENV, PAYMENTS_MAIL_PROVIDER: "" }, { release: SHOP_RELEASE.map(done), legal: legalFrei }), "off");
-  assert.ok(liveBlockers(LIVE_ENV).includes("freigabe:inhaber-ok"));
+  const b = liveBlockers(LIVE_ENV);
+  assert.ok(b.includes("freigabe:stripe-live") && b.includes("freigabe:ust"));
+  assert.ok(!b.includes("freigabe:inhaber-ok"), "Inhaber-OK liegt vor (Nr. 46)");
 });
 
 test("Freigabe-Punkt zählt nur mit Beleg, Datum und Person", () => {
-  const x = SHOP_RELEASE[0];
+  const x = SHOP_RELEASE.find((r) => r.id === "stripe-live");
   assert.equal(releaseItemDone({ ...x, erledigt: true }), false);
   assert.equal(releaseItemDone({ ...x, erledigt: true, beleg: "Mail", datum: "2026-11-01", durch: "Kanzlei" }), true);
   assert.equal(releaseItemDone({ ...x, erledigt: true, beleg: "Mail", datum: "1.11.", durch: "Kanzlei" }), false);
   for (const id of ["agb", "widerrufsbelehrung", "widerrufsformular", "versandbedingungen", "datenschutz", "stripe-live", "mail", "versand", "verpackung", "ust", "insolvenzrecht", "inhaber-ok"]) assert.ok(SHOP_RELEASE.some((r) => r.id === id), id);
-  assert.deepEqual(legalOpen(), SHOP_LEGAL.map((s) => s.id), "Entwürfe sind nicht freigegeben");
-  // Seit 31.10.2026: Agenten-Entwürfe (status "entwurf"), nie "freigegeben" – Details: shop-rechtstexte.test.mjs
-  assert.ok(SHOP_LEGAL.every((s) => s.status === "entwurf" && s.freigabe === null));
+  // Jeder erledigte Punkt trägt Beleg mit Entscheidungsnummer, Datum und Person.
+  for (const r of SHOP_RELEASE.filter((r) => r.erledigt)) {
+    assert.ok(releaseItemDone(r), r.id);
+    assert.match(r.beleg, /Nr\. \d+/, r.id);
+  }
+  // Seit 03.11.2026: alle Slots "freigegeben" mit Beleg; wirksam offen nur datenschutz (LetMeShip-Anschrift) – Details: shop-rechtstexte.test.mjs
+  assert.deepEqual(legalOpen(), ["datenschutz"]);
+  assert.ok(SHOP_LEGAL.every((s) => s.status === "freigegeben" && s.freigabe?.datum === "2026-11-03"));
 });
 
 // ------------------------------------------------------------------ Katalog
@@ -268,6 +281,8 @@ function ctxOf({ env = DEV, shipping = createMockShippingAdapter(), now = NOW } 
   const payStore = createMemoryStore();
   const gw = createMockGateway(env, { store: payStore, now: () => now });
   const gatewayCalls = [];
+  // Mock-Mailer (wie outbox): im Testmodus darf nur er senden (orderMail.js mailerErlaubt).
+  const mails = [];
   const ctx = {
     env,
     store: createMemoryOrderAdapter(),
@@ -278,13 +293,14 @@ function ctxOf({ env = DEV, shipping = createMockShippingAdapter(), now = NOW } 
     limiter: createRateLimiter(),
     payments: {
       store: payStore,
+      mailer: { kind: "memory", send: async (m) => (mails.push(m), { ok: true }) },
       gatewayFor: (signal, opts) => {
         gatewayCalls.push(opts);
         return gw;
       },
     },
   };
-  return { ctx, payStore, gatewayCalls };
+  return { ctx, payStore, gatewayCalls, mails };
 }
 const req = (url, body) => new Request(`http://localhost${url}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
 const KUNDE = { name: "Test Kundin", email: "kundin@example.invalid", telefon: "" };
@@ -346,7 +362,7 @@ test("Checkout: abgelaufene Tarif-ID oder geänderte Adresse → neuer Tarif, ni
 });
 
 test("Checkout: CH nicht verfügbar; Zahlung vor Ort nur bei Abholung; Reservierung ohne Zahlung", async () => {
-  const { ctx, gatewayCalls } = ctxOf();
+  const { ctx, gatewayCalls, mails } = ctxOf();
   const ch = await versandHandler(ctx)(req("/api/shop/versand", { cart: CART, ziel: { land: "CH", plz: "9000" } }));
   assert.equal(ch.status, 422);
   assert.equal((await ch.json()).code, "land_ch");
@@ -360,7 +376,12 @@ test("Checkout: CH nicht verfügbar; Zahlung vor Ort nur bei Abholung; Reservier
   const o = (await ctx.store.list("bestellungen"))[0];
   assert.equal(o.status, "reserviert");
   assert.equal(o.versand, null);
-  assert.equal(o.mail.status, "nicht_gesendet");
+  // Vertragsbestätigung (§ 7 Abs 3 FAGG) sofort bei „bezahlen bei Abholung“ – im Test nur über den Mock-Mailer, Betreff [TEST].
+  assert.equal(o.mail.status, "gesendet");
+  assert.equal(o.mail.test, true);
+  assert.equal(mails.length, 1);
+  assert.match(mails[0].subject, /^\[TEST\] Auftragsbestätigung PH-S-/);
+  assert.ok(mails[0].text.includes("ALLGEMEINE GESCHÄFTSBEDINGUNGEN") && mails[0].text.includes("WIDERRUFSBELEHRUNG") && mails[0].text.includes("GESETZLICHE GEWÄHRLEISTUNG"));
   const [, q] = body.redirect.split("?");
   const sp = new URLSearchParams(q);
   assert.equal((await orderView(ctx, sp.get("b"), sp.get("k"))).status, "reserviert");
@@ -380,24 +401,32 @@ test("checkoutParams: Versand als eigene Zeile, Metadaten für Webhook und Ersta
 // ------------------------------------------------------------------ Webhook → Sendung
 
 test("Webhook: bezahlt → Sendung + Etikett + Tracking (Mock); Abholung → kein LetMeShip-Aufruf; über payments/webhook weitergeleitet", async () => {
-  const { ctx } = ctxOf();
+  const { ctx, mails } = ctxOf();
   const v = await (await versandHandler(ctx)(req("/api/shop/versand", { cart: CART, ziel: ADR }))).json();
   await checkoutHandler(ctx)(req("/api/shop/checkout", { cart: CART, lieferart: "versand", zahlung: "online", kunde: KUNDE, adresse: ADR, tarifId: v.versand.tarifId, angezeigt: { versandCent: v.versand.cent, gesamtCent: v.summen.gesamtCent } }));
+  assert.equal(mails.length, 0, "Online-Zahlung: Bestätigung erst mit „bezahlt“");
+  assert.equal((await ctx.store.list("bestellungen"))[0].mail.status, "ausstehend");
   let shipments = 0;
   const mock = createMockShippingAdapter({ now: () => NOW });
   const counting = { ...mock, createShipment: async (a) => (shipments++, mock.createShipment(a)) };
-  const hooks = createShopHooks({ env: DEV, store: ctx.store, shipping: counting, now: () => NOW });
+  const hooks = createShopHooks({ env: DEV, store: ctx.store, shipping: counting, mailer: ctx.payments.mailer, now: () => NOW });
   const order = (await ctx.store.list("bestellungen"))[0];
   const event = { id: "evt_1", type: "checkout.session.completed", livemode: false, data: { object: { id: order.session, payment_status: "paid", amount_total: order.summen.gesamtCent, metadata: { art: "shop", order_id: order.id } } } };
   assert.equal(await processEvent({ shop: hooks }, event), "bezahlt");
   const after = await ctx.store.get("bestellungen", order.id);
   assert.equal(after.status, "versandbereit");
+  // Vertragsbestätigung genau einmal, mit AGB, Belehrung, Formular, Versandbedingungen (Anhänge)
+  assert.equal(after.mail.status, "gesendet");
+  assert.equal(mails.length, 1);
+  assert.match(mails[0].subject, /^\[TEST\] Auftragsbestätigung/);
+  assert.deepEqual(mails[0].attachments.map((a) => a.filename), ["AGB-Onlineshop.txt", "Widerrufsbelehrung-und-Formular.txt", "Versandbedingungen.txt"]);
   assert.match(after.sendung.awb, /^MOCK/);
   assert.ok(ctx.store.labels[order.id].length > 100, "Etikett (PDF) abgelegt");
   assert.equal(Buffer.from(ctx.store.labels[order.id], "base64").subarray(0, 5).toString(), "%PDF-");
-  // Doppelte Zustellung: keine zweite Sendung
+  // Doppelte Zustellung: keine zweite Sendung, keine zweite Mail
   await hooks.onEvent(event);
   assert.equal(shipments, 1);
+  assert.equal(mails.length, 1);
 
   // Abholung, online bezahlt → kein Versandaufruf
   const pick = await checkoutHandler(ctx)(req("/api/shop/checkout", { cart: CART, lieferart: "abholung", zahlung: "online", kunde: KUNDE, angezeigt: { versandCent: 0, gesamtCent: 7980 } }));

@@ -1,0 +1,332 @@
+[
+ {
+  "doctype": "Workspace",
+  "name": "PH Shop",
+  "title": "PH Shop",
+  "label": "PH Shop",
+  "module": "PH Shop",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "retail",
+  "indicator_color": "green",
+  "sequence_id": 5.0,
+  "for_user": "",
+  "parent_page": "",
+  "content": "[{\"id\": \"ph_shop_h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shop, Gutscheine und Zahlungen</b></span>\", \"col\": 12}}, {\"id\": \"ph_shop_nc1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Bestellungen heute\", \"col\": 3}}, {\"id\": \"ph_shop_nc2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Zahlung ausstehend\", \"col\": 3}}, {\"id\": \"ph_shop_nc3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Abholbereit\", \"col\": 3}}, {\"id\": \"ph_shop_nc4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Offene Widerrufe\", \"col\": 3}}, {\"id\": \"ph_shop_nc5\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Umsatz Shop Monat\", \"col\": 4}}, {\"id\": \"ph_shop_nc6\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Gutschein-Restwert\", \"col\": 4}}, {\"id\": \"ph_shop_nc7\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Stripe-Ereignisse Fehler\", \"col\": 4}}, {\"id\": \"ph_shop_c1\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Shop Umsatz je Woche\", \"col\": 8}}, {\"id\": \"ph_shop_c2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Bestellungen nach Lieferart\", \"col\": 4}}, {\"id\": \"ph_shop_c3\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Gutscheinverkauf je Monat\", \"col\": 4}}, {\"id\": \"ph_shop_c4\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Zahlungen nach Kanal\", \"col\": 4}}, {\"id\": \"ph_shop_c5\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Erstattungen je Monat\", \"col\": 4}}, {\"id\": \"ph_shop_h2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\", \"col\": 12}}, {\"id\": \"ph_shop_s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Bestellungen (Kanban)\", \"col\": 3}}, {\"id\": \"ph_shop_s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Neuer Gutschein\", \"col\": 3}}, {\"id\": \"ph_shop_s3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Stripe-Abgleich\", \"col\": 3}}, {\"id\": \"ph_shop_s4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Widerrufe (Kanban)\", \"col\": 3}}, {\"id\": \"ph_shop_h3\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Bereiche</b></span>\", \"col\": 12}}, {\"id\": \"ph_shop_card1\", \"type\": \"card\", \"data\": {\"card_name\": \"Bestellungen\", \"col\": 4}}, {\"id\": \"ph_shop_card2\", \"type\": \"card\", \"data\": {\"card_name\": \"Gutscheine und Anzahlungen\", \"col\": 4}}, {\"id\": \"ph_shop_card3\", \"type\": \"card\", \"data\": {\"card_name\": \"Zahlungen und Stripe\", \"col\": 4}}, {\"id\": \"ph_shop_card4\", \"type\": \"card\", \"data\": {\"card_name\": \"Rücktritt\", \"col\": 4}}, {\"id\": \"ph_shop_card5\", \"type\": \"card\", \"data\": {\"card_name\": \"Berichte\", \"col\": 4}}, {\"id\": \"ph_shop_card6\", \"type\": \"card\", \"data\": {\"card_name\": \"Einstellungen\", \"col\": 4}}]",
+  "shortcuts": [
+   {
+    "label": "Bestellungen (Kanban)",
+    "link_to": "PH Bestellung",
+    "type": "DocType",
+    "doc_view": "Kanban",
+    "kanban_board": "PH Bestellungen",
+    "color": "Green"
+   },
+   {
+    "label": "Neuer Gutschein",
+    "link_to": "PH Gutschein",
+    "type": "DocType",
+    "doc_view": "New",
+    "color": "Grey"
+   },
+   {
+    "label": "Stripe-Abgleich",
+    "link_to": "PH Stripe Abgleich",
+    "type": "Report",
+    "color": "Blue"
+   },
+   {
+    "label": "Widerrufe (Kanban)",
+    "link_to": "PH Widerruf",
+    "type": "DocType",
+    "doc_view": "Kanban",
+    "kanban_board": "PH Widerrufe",
+    "color": "Red"
+   }
+  ],
+  "charts": [
+   {
+    "chart_name": "PH Shop Umsatz je Woche",
+    "label": "Shop Umsatz je Woche"
+   },
+   {
+    "chart_name": "PH Bestellungen nach Lieferart",
+    "label": "Bestellungen nach Lieferart"
+   },
+   {
+    "chart_name": "PH Gutscheinverkauf je Monat",
+    "label": "Gutscheinverkauf je Monat"
+   },
+   {
+    "chart_name": "PH Zahlungen nach Kanal",
+    "label": "Zahlungen nach Kanal"
+   },
+   {
+    "chart_name": "PH Erstattungen je Monat",
+    "label": "Erstattungen je Monat"
+   }
+  ],
+  "number_cards": [
+   {
+    "number_card_name": "PH Bestellungen heute",
+    "label": "Bestellungen heute"
+   },
+   {
+    "number_card_name": "PH Zahlung ausstehend",
+    "label": "Zahlung ausstehend"
+   },
+   {
+    "number_card_name": "PH Abholbereit",
+    "label": "Abholbereit"
+   },
+   {
+    "number_card_name": "PH Offene Widerrufe",
+    "label": "Offene Widerrufe"
+   },
+   {
+    "number_card_name": "PH Umsatz Shop Monat",
+    "label": "Umsatz Shop (Monat)"
+   },
+   {
+    "number_card_name": "PH Gutschein-Restwert",
+    "label": "Gutschein-Restwert"
+   },
+   {
+    "number_card_name": "PH Stripe-Ereignisse Fehler",
+    "label": "Stripe-Fehler (7 Tage)"
+   }
+  ],
+  "links": [
+   {
+    "type": "Card Break",
+    "label": "Bestellungen",
+    "link_count": 3,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Bestellung",
+    "link_to": "PH Bestellung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 1,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Kanban Bestellungen",
+    "link_to": "PH Bestellung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Retoure",
+    "link_to": "PH Retoure",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Gutscheine und Anzahlungen",
+    "link_count": 3,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Gutschein",
+    "link_to": "PH Gutschein",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Gutschein Bestellung",
+    "link_to": "PH Gutschein Bestellung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Anzahlung",
+    "link_to": "PH Anzahlung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Zahlungen und Stripe",
+    "link_count": 3,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Zahlung",
+    "link_to": "PH Zahlung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Stripe Ereignis",
+    "link_to": "PH Stripe Ereignis",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Stripe Auszahlung",
+    "link_to": "PH Stripe Auszahlung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Rücktritt",
+    "link_count": 2,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Widerruf",
+    "link_to": "PH Widerruf",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Retoure",
+    "link_to": "PH Retoure",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Berichte",
+    "link_count": 6,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Shop Umsatz",
+    "link_to": "PH Shop Umsatz",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Umsatz nach USt-Satz",
+    "link_to": "PH Shop Umsatz nach USt-Satz",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Gutschein-Bestand",
+    "link_to": "PH Gutschein Bestand",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Rückerstattungen",
+    "link_to": "PH Rueckerstattungen",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Stripe-Abgleich",
+    "link_to": "PH Stripe Abgleich",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Bestellungen ohne Rechnung",
+    "link_to": "PH Bestellungen ohne Rechnung",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Card Break",
+    "label": "Einstellungen",
+    "link_count": 2,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Shop Einstellungen",
+    "link_to": "PH Shop Einstellungen",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Stripe Einstellungen",
+    "link_to": "PH Stripe Einstellungen",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   }
+  ],
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ }
+]

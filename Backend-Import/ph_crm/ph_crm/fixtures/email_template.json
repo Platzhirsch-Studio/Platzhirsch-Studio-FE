@@ -1,0 +1,26 @@
+[
+ {
+  "doctype": "Email Template",
+  "name": "PH Termin Bestätigung",
+  "subject": "Ihr Termin {{ doc.referenz }} bei Platzhirsch am {{ frappe.utils.formatdate(doc.start, 'dd.MM.yyyy') }}",
+  "use_html": 1,
+  "response_html": "<p>{% if doc.anrede == 'Frau' %}Sehr geehrte Frau {{ doc.nachname }},{% elif doc.anrede == 'Herr' %}Sehr geehrter Herr {{ doc.nachname }},{% else %}Guten Tag {{ doc.vorname }} {{ doc.nachname }},{% endif %}</p>\n<p>wir freuen uns auf Ihren Termin:</p>\n<table cellpadding=\"4\"><tr><td><b>Was</b></td><td>{{ terminart.titel_de }}</td></tr><tr><td><b>Wann</b></td><td>{{ frappe.utils.format_datetime(doc.start, 'EEEE, dd.MM.yyyy HH:mm') }} Uhr (Dauer ca. {{ doc.dauer_min }} Minuten)</td></tr><tr><td><b>Wo</b></td><td>{% if doc.modus == 'Showroom' %}Platzhirsch Home Living, Landstraße 11, 6911 Lochau{% elif doc.modus == 'Video' %}Videoberatung – den Link erhalten Sie kurz vor dem Termin{% elif doc.modus == 'Vor Ort' %}Bei Ihnen vor Ort: {{ doc.plz_ort }}{% else %}Telefonisch{% endif %}</td></tr><tr><td><b>Referenz</b></td><td>{{ doc.referenz }}</td></tr></table>\n{% if terminart.hinweis_kunde %}<p>{{ terminart.hinweis_kunde }}</p>{% endif %}\n<p>Sollte Ihnen etwas dazwischenkommen, genügt eine kurze Antwort auf diese E-Mail oder ein Anruf.</p>\n<p>Herzliche Grüße<br>Ihr Platzhirsch-Team</p>",
+  "response": "Ihr Termin {{ doc.referenz }} am {{ frappe.utils.format_datetime(doc.start, 'dd.MM.yyyy HH:mm') }} Uhr ist bestätigt."
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Termin Absage",
+  "subject": "Ihr Termin {{ doc.referenz }} bei Platzhirsch – Absage",
+  "use_html": 1,
+  "response_html": "<p>Guten Tag {{ doc.vorname }} {{ doc.nachname }},</p>\n<p>leider müssen wir den Termin am {{ frappe.utils.format_datetime(doc.start, 'EEEE, dd.MM.yyyy HH:mm') }} Uhr absagen{% if doc.storno_grund and doc.storno_grund != 'ohne Angabe' %} ({{ doc.storno_grund }}){% endif %}.</p>\n<p>Gerne finden wir einen neuen Termin – antworten Sie einfach auf diese E-Mail oder buchen Sie online unter platzhirsch.studio/termin.</p>\n<p>Wir bitten um Verständnis.<br>Ihr Platzhirsch-Team</p>",
+  "response": "Ihr Termin {{ doc.referenz }} am {{ frappe.utils.format_datetime(doc.start, 'dd.MM.yyyy HH:mm') }} Uhr wurde abgesagt."
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Termin Erinnerung",
+  "subject": "Erinnerung: Ihr Termin {{ doc.referenz }} bei Platzhirsch morgen um {{ frappe.utils.format_datetime(doc.start, 'HH:mm') }} Uhr",
+  "use_html": 1,
+  "response_html": "<p>Guten Tag {{ doc.vorname }} {{ doc.nachname }},</p>\n<p>wir erinnern an Ihren Termin <b>{{ terminart.titel_de }}</b> am {{ frappe.utils.format_datetime(doc.start, 'EEEE, dd.MM.yyyy HH:mm') }} Uhr{% if doc.modus == 'Showroom' %} in unserem Studio in Lochau, Landstraße 11{% elif doc.modus == 'Video' %} per Video – der Zugang wird 15 Minuten vor Beginn auf Ihrer Terminseite freigeschaltet{% elif doc.modus == 'Vor Ort' %} bei Ihnen vor Ort ({{ doc.plz_ort }}){% endif %}.</p>\n<p>Referenz: {{ doc.referenz }}</p>\n<p>Bis bald!<br>Ihr Platzhirsch-Team</p>",
+  "response": "Erinnerung an Ihren Termin {{ doc.referenz }} am {{ frappe.utils.format_datetime(doc.start, 'dd.MM.yyyy HH:mm') }} Uhr."
+ }
+]

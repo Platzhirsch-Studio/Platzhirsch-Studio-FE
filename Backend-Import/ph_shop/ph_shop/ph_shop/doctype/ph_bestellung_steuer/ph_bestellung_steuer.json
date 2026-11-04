@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Kindtabelle von PH Bestellung: enthaltene USt je Satz (ust.js ustAufteilung → posten[]).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "satz_promille",
+  "brutto_cent",
+  "waren_cent",
+  "versand_cent",
+  "netto_cent",
+  "ust_cent"
+ ],
+ "fields": [
+  {
+   "fieldname": "satz_promille",
+   "fieldtype": "Int",
+   "label": "Satz (Promille)",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "brutto_cent",
+   "fieldtype": "Int",
+   "label": "Brutto (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "waren_cent",
+   "fieldtype": "Int",
+   "label": "Waren (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "versand_cent",
+   "fieldtype": "Int",
+   "label": "Versand (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "netto_cent",
+   "fieldtype": "Int",
+   "label": "Netto (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ust_cent",
+   "fieldtype": "Int",
+   "label": "USt (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Bestellung Steuer",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

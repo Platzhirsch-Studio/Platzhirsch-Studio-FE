@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "USt-Aufteilung je Steuersatz (Zeile des Summenblocks).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bezeichnung",
+  "ust_satz_promille",
+  "netto_cent",
+  "ust_cent",
+  "brutto_cent"
+ ],
+ "fields": [
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1,
+   "columns": 3,
+   "read_only": 1
+  },
+  {
+   "fieldname": "ust_satz_promille",
+   "fieldtype": "Int",
+   "label": "USt-Satz (‰)",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "netto_cent",
+   "fieldtype": "Int",
+   "label": "Bemessung netto (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "ust_cent",
+   "fieldtype": "Int",
+   "label": "USt (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "brutto_cent",
+   "fieldtype": "Int",
+   "label": "Brutto (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 2
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Beleg Steuer",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

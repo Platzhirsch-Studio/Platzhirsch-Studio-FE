@@ -1,0 +1,70 @@
+[
+ {
+  "doctype": "Workspace",
+  "name": "PH Projekte",
+  "title": "PH Projekte",
+  "label": "PH Projekte",
+  "module": "PH Projekte",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "project",
+  "indicator_color": "orange",
+  "sequence_id": 4.0,
+  "for_user": "",
+  "parent_page": "",
+  "content": "[{\"id\":\"ph_prj_h1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Projekte und Auftragsmappen</b></span>\",\"col\":12}},{\"id\":\"ph_prj_nc1\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Aktive Projekte\",\"col\":4}},{\"id\":\"ph_prj_nc2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Offene Feedbacks\",\"col\":4}},{\"id\":\"ph_prj_nc3\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Montagen diese Woche\",\"col\":4}},{\"id\":\"ph_prj_nc4\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Offene Mängel\",\"col\":4}},{\"id\":\"ph_prj_nc5\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Renderings ohne Antwort\",\"col\":4}},{\"id\":\"ph_prj_nc6\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Ungelesene Kundennachrichten\",\"col\":4}},{\"id\":\"ph_prj_c1\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Projekte je Phase\",\"col\":8}},{\"id\":\"ph_prj_c2\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Projekte je Projektart\",\"col\":4}},{\"id\":\"ph_prj_c3\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Montagen je Woche\",\"col\":6}},{\"id\":\"ph_prj_c4\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Kundenfeedback je Woche\",\"col\":6}},{\"id\":\"ph_prj_h2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\",\"col\":12}},{\"id\":\"ph_prj_s1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Projekte (Kanban)\",\"col\":3}},{\"id\":\"ph_prj_s2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Auftragsmappe\",\"col\":3}},{\"id\":\"ph_prj_s3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Montagen (Kanban)\",\"col\":3}},{\"id\":\"ph_prj_s4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Renderings (Kanban)\",\"col\":3}},{\"id\":\"ph_prj_s5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Neues Projekt\",\"col\":3}},{\"id\":\"ph_prj_s6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Projektstatus\",\"col\":3}},{\"id\":\"ph_prj_s7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Offene Mängel\",\"col\":3}},{\"id\":\"ph_prj_s8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Zeit buchen\",\"col\":3}},{\"id\":\"ph_prj_h3\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Bereiche</b></span>\",\"col\":12}},{\"id\":\"ph_prj_card1\",\"type\":\"card\",\"data\":{\"card_name\":\"Projekt und Planung\",\"col\":4}},{\"id\":\"ph_prj_card2\",\"type\":\"card\",\"data\":{\"card_name\":\"Umsetzung\",\"col\":4}},{\"id\":\"ph_prj_card3\",\"type\":\"card\",\"data\":{\"card_name\":\"Kunde und Unterlagen\",\"col\":4}},{\"id\":\"ph_prj_card4\",\"type\":\"card\",\"data\":{\"card_name\":\"Arbeit und Zeiten\",\"col\":4}},{\"id\":\"ph_prj_card5\",\"type\":\"card\",\"data\":{\"card_name\":\"Berichte\",\"col\":4}},{\"id\":\"ph_prj_card6\",\"type\":\"card\",\"data\":{\"card_name\":\"Einstellungen\",\"col\":4}}]",
+  "shortcuts": [
+   {"label": "Projekte (Kanban)", "link_to": "PH Projekt", "type": "DocType", "doc_view": "Kanban", "kanban_board": "PH Projekte", "color": "Orange"},
+   {"label": "Auftragsmappe", "link_to": "ph-auftragsmappe", "type": "Page", "color": "Grey"},
+   {"label": "Montagen (Kanban)", "link_to": "PH Montageauftrag", "type": "DocType", "doc_view": "Kanban", "kanban_board": "PH Montageaufträge", "color": "Blue"},
+   {"label": "Renderings (Kanban)", "link_to": "PH Rendering", "type": "DocType", "doc_view": "Kanban", "kanban_board": "PH Renderings", "color": "Grey"},
+   {"label": "Neues Projekt", "link_to": "PH Projekt", "type": "DocType", "doc_view": "New", "color": "Grey"},
+   {"label": "Projektstatus", "link_to": "PH Projektstatus", "type": "Report", "color": "Grey"},
+   {"label": "Offene Mängel", "link_to": "PH Offene Maengel", "type": "Report", "color": "Red"},
+   {"label": "Zeit buchen", "link_to": "PH Projektzeit", "type": "DocType", "doc_view": "New", "color": "Grey"}
+  ],
+  "charts": [
+   {"chart_name": "PH Projekte je Phase", "label": "Projekte je Phase"},
+   {"chart_name": "PH Projekte je Projektart", "label": "Projekte je Projektart"},
+   {"chart_name": "PH Montagen je Woche", "label": "Montagen je Woche"},
+   {"chart_name": "PH Kundenfeedback je Woche", "label": "Kundenfeedback je Woche"}
+  ],
+  "number_cards": [
+   {"number_card_name": "PH Aktive Projekte", "label": "Aktive Projekte"},
+   {"number_card_name": "PH Offene Feedbacks", "label": "Offene Kundenrückmeldungen"},
+   {"number_card_name": "PH Montagen diese Woche", "label": "Montagen diese Woche"},
+   {"number_card_name": "PH Offene Mängel", "label": "Offene Mängel"},
+   {"number_card_name": "PH Renderings ohne Antwort", "label": "Renderings ohne Antwort > 3 Tage"},
+   {"number_card_name": "PH Ungelesene Kundennachrichten", "label": "Ungelesene Kundennachrichten"}
+  ],
+  "links": [
+   {"type": "Card Break", "label": "Projekt und Planung", "link_count": 4, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Projekt", "link_to": "PH Projekt", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
+   {"type": "Link", "label": "PH Planung", "link_to": "PH Planung", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Rendering", "link_to": "PH Rendering", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Rendering Feedback", "link_to": "PH Rendering Feedback", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Umsetzung", "link_count": 3, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Montageauftrag", "link_to": "PH Montageauftrag", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Fremdgewerk", "link_to": "PH Fremdgewerk", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Abnahme", "link_to": "PH Abnahme", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Kunde und Unterlagen", "link_count": 5, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Projekt Dokument", "link_to": "PH Projekt Dokument", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Tagebuch Foto", "link_to": "PH Tagebuch Foto", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Referenz", "link_to": "PH Referenz", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Produktpass", "link_to": "PH Produktpass", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Projekt Nachricht", "link_to": "PH Projekt Nachricht", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Arbeit und Zeiten", "link_count": 2, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Projekt Aufgabe", "link_to": "PH Projekt Aufgabe", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Projektzeit", "link_to": "PH Projektzeit", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Berichte", "link_count": 5, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "Projektstatus", "link_to": "PH Projektstatus", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Offene Mängel", "link_to": "PH Offene Maengel", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Montagekapazität je Woche", "link_to": "PH Montagekapazitaet je Woche", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Zeiten je Projekt", "link_to": "PH Zeiten je Projekt", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Liefertermine nächste 30 Tage", "link_to": "PH Liefertermine naechste 30 Tage", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Card Break", "label": "Einstellungen", "link_count": 1, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Projekte Einstellungen", "link_to": "PH Projekte Einstellungen", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""}
+  ],
+  "roles": [{"role": "PH Projekte Mitarbeiter"}, {"role": "PH Projekte Leitung"}, {"role": "PH Geschäftsführung"}]
+ }
+]

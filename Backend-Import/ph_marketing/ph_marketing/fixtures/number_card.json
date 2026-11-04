@@ -1,0 +1,147 @@
+[
+ {
+  "doctype": "Number Card",
+  "name": "PH Aktive Abos",
+  "label": "Aktive Abos",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#15803d",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "type": "Document Type",
+  "document_type": "PH Newsletter Abo",
+  "function": "Count",
+  "filters_json": "[[\"PH Newsletter Abo\", \"status\", \"=\", \"Aktiv\", false]]",
+  "show_percentage_stats": 1,
+  "stats_time_interval": "Monthly"
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Unbestätigte Abos über 48 h",
+  "label": "Unbestätigt > 48 h",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#b45309",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "type": "Custom",
+  "method": "ph_marketing.ph_marketing.kennzahlen.unbestaetigte_48h",
+  "show_percentage_stats": 0
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH DOI-Quote 30 Tage",
+  "label": "DOI-Quote (30 Tage)",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#30373e",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "type": "Custom",
+  "method": "ph_marketing.ph_marketing.kennzahlen.doi_quote_30_tage",
+  "show_percentage_stats": 0
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Beiträge diese Woche",
+  "label": "Beiträge diese Woche",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#1d4ed8",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "type": "Document Type",
+  "document_type": "PH Social Beitrag",
+  "function": "Count",
+  "filters_json": "[[\"PH Social Beitrag\", \"datum_geplant\", \"Timespan\", \"this week\", false], [\"PH Social Beitrag\", \"status\", \"in\", [\"Freigegeben\", \"Geplant\", \"Veroeffentlicht\"], false]]",
+  "show_percentage_stats": 0
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Event-Anmeldungen",
+  "label": "Event-Anmeldungen (Personen)",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#8a7a66",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "type": "Custom",
+  "method": "ph_marketing.ph_marketing.kennzahlen.event_anmeldungen_offen",
+  "show_percentage_stats": 0
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Aktive Kampagnen",
+  "label": "Aktive Kampagnen",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#30373e",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "type": "Document Type",
+  "document_type": "PH Kampagne",
+  "function": "Count",
+  "filters_json": "[[\"PH Kampagne\", \"status\", \"=\", \"Aktiv\", false]]",
+  "show_percentage_stats": 0
+ }
+]

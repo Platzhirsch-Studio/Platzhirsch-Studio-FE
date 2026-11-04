@@ -1,0 +1,188 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Stripe-Anbindung: nur Schlüssel-NAMEN (Werte in site_config.json), Testmodus-/Simulations-Schalter, Webhook-Pfad, zu verarbeitende Ereignistypen.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sb_modus",
+  "testmodus",
+  "simulation",
+  "livemode_konfiguriert",
+  "cb_modus",
+  "webhook_pfad",
+  "webhook_toleranz_s",
+  "payload_max_zeichen",
+  "sb_schluessel",
+  "schluesselnamen",
+  "schluessel_vorhanden",
+  "webhook_secret_vorhanden",
+  "sb_ereignisse",
+  "ereignistypen",
+  "cb_ereignisse",
+  "vier_augen_ab_cent",
+  "auszahlung_abgleich_tage",
+  "letzter_abgleich"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_modus",
+   "fieldtype": "Section Break",
+   "label": "Modus"
+  },
+  {
+   "fieldname": "testmodus",
+   "fieldtype": "Check",
+   "label": "Testmodus (Testschlüssel erwartet)",
+   "default": "1",
+   "description": "Im Testmodus werden Live-Ereignisse (livemode=1) abgewiesen und Belege als TEST markiert."
+  },
+  {
+   "fieldname": "simulation",
+   "fieldtype": "Check",
+   "label": "Stripe-Aufrufe simulieren (kein Netz)",
+   "default": "1",
+   "description": "Staging: Refunds/Abgleich ohne API-Aufruf, Ergebnisse werden als simuliert gekennzeichnet. Produktiv ausschalten."
+  },
+  {
+   "fieldname": "livemode_konfiguriert",
+   "fieldtype": "Check",
+   "label": "Livemodus laut site_config (ph_stripe_livemode)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_modus",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "webhook_pfad",
+   "fieldtype": "Data",
+   "label": "Webhook-Pfad",
+   "default": "/api/method/ph_shop.api.stripe.webhook",
+   "read_only": 1
+  },
+  {
+   "fieldname": "webhook_toleranz_s",
+   "fieldtype": "Int",
+   "label": "Signatur-Toleranz (Sekunden)",
+   "default": "300"
+  },
+  {
+   "fieldname": "payload_max_zeichen",
+   "fieldtype": "Int",
+   "label": "Roh-Ereignis speichern bis (Zeichen)",
+   "default": "20000"
+  },
+  {
+   "fieldname": "sb_schluessel",
+   "fieldtype": "Section Break",
+   "label": "Schlüsselnamen (site_config.json)"
+  },
+  {
+   "fieldname": "schluesselnamen",
+   "fieldtype": "HTML",
+   "label": "Schlüsselnamen",
+   "options": "<p>Nur Namen, nie Werte. In <code>sites/&lt;site&gt;/site_config.json</code>:</p><ul><li><code>ph_stripe_secret_key</code> – geheimer Schlüssel (sk_live_/sk_test_ oder rk_)</li><li><code>ph_stripe_webhook_secret</code> – Signaturgeheimnis des Endpunkts (whsec_)</li><li><code>ph_stripe_livemode</code> – 1/0</li><li><code>ph_stripe_terminal_location</code> – Terminal-Standort (ph_kassa)</li></ul><p>Webhook-URL im Stripe-Dashboard: <code>https://&lt;site&gt;/api/method/ph_shop.api.stripe.webhook</code></p>"
+  },
+  {
+   "fieldname": "schluessel_vorhanden",
+   "fieldtype": "Check",
+   "label": "Schlüssel in site_config vorhanden",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "webhook_secret_vorhanden",
+   "fieldtype": "Check",
+   "label": "Webhook-Geheimnis vorhanden",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "sb_ereignisse",
+   "fieldtype": "Section Break",
+   "label": "Verarbeitete Ereignistypen"
+  },
+  {
+   "fieldname": "ereignistypen",
+   "fieldtype": "Small Text",
+   "label": "Ereignistypen (eine je Zeile)",
+   "default": "checkout.session.completed\ncheckout.session.async_payment_succeeded\ncheckout.session.async_payment_failed\ncheckout.session.expired\ncharge.refunded\npayment_intent.succeeded\npayment_intent.payment_failed\npayout.created\npayout.paid\npayout.failed\ncharge.dispute.created"
+  },
+  {
+   "fieldname": "cb_ereignisse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vier_augen_ab_cent",
+   "fieldtype": "Int",
+   "label": "Vier-Augen-Freigabe für Erstattungen ab (Cent)",
+   "non_negative": 1,
+   "default": "100000"
+  },
+  {
+   "fieldname": "auszahlung_abgleich_tage",
+   "fieldtype": "Int",
+   "label": "Abgleich-Zeitraum täglich (Tage)",
+   "default": "1"
+  },
+  {
+   "fieldname": "letzter_abgleich",
+   "fieldtype": "Datetime",
+   "label": "Letzter Abgleich",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Stripe Einstellungen",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Mitarbeiter",
+   "read": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "issingle": 1
+}

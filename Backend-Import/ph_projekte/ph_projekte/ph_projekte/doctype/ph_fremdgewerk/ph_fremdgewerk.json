@@ -1,0 +1,357 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Koordination eines Fremdgewerks (Partnerbetrieb, Leistung, Termin) ohne Bauleitungs-Haftung – nur Terminkoordination.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "projekt",
+  "gewerk",
+  "cb_kopf",
+  "status",
+  "kunde_sichtbar",
+  "vertrag_direkt_kunde",
+  "sb_partner",
+  "partnerbetrieb",
+  "partner_text",
+  "ansprechpartner",
+  "cb_partner",
+  "telefon",
+  "email",
+  "sb_leistung",
+  "leistung",
+  "termin_von",
+  "termin_bis",
+  "cb_leistung",
+  "termin",
+  "abhaengig_von",
+  "kosten_cent",
+  "sb_haftung",
+  "haftungshinweis",
+  "notiz",
+  "sb_system",
+  "quelle",
+  "ip_hash"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-GEW-.YYYY.-.####",
+   "default": "PH-GEW-.YYYY.-.####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "gewerk",
+   "fieldtype": "Select",
+   "label": "Gewerk",
+   "options": "Tischler\nElektriker\nInstallateur\nSteinmetz\nMaler\nBodenleger\nSonstige",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Offen\nAngefragt\nGeplant\nIn Arbeit\nErledigt\nAbgesagt",
+   "default": "Offen",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Button „Status setzen“ (nur Koordination, kein Freigabeworkflow)."
+  },
+  {
+   "fieldname": "kunde_sichtbar",
+   "fieldtype": "Check",
+   "label": "Im Portal sichtbar",
+   "default": "1"
+  },
+  {
+   "fieldname": "vertrag_direkt_kunde",
+   "fieldtype": "Check",
+   "label": "Beauftragung direkt durch den Kunden",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_partner",
+   "fieldtype": "Section Break",
+   "label": "Partnerbetrieb"
+  },
+  {
+   "fieldname": "partnerbetrieb",
+   "fieldtype": "Link",
+   "label": "Partnerbetrieb (PH Lieferant)",
+   "options": "PH Lieferant"
+  },
+  {
+   "fieldname": "partner_text",
+   "fieldtype": "Data",
+   "label": "Partnerbetrieb (Anzeige)",
+   "description": "Portal zeigt „Partnerbetrieb (Name folgt)“, solange leer."
+  },
+  {
+   "fieldname": "ansprechpartner",
+   "fieldtype": "Data",
+   "label": "Ansprechpartner"
+  },
+  {
+   "fieldname": "cb_partner",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "telefon",
+   "fieldtype": "Data",
+   "label": "Telefon",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email"
+  },
+  {
+   "fieldname": "sb_leistung",
+   "fieldtype": "Section Break",
+   "label": "Leistung und Termin"
+  },
+  {
+   "fieldname": "leistung",
+   "fieldtype": "Small Text",
+   "label": "Leistungsumfang (scope)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "termin_von",
+   "fieldtype": "Datetime",
+   "label": "Termin von",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "termin_bis",
+   "fieldtype": "Datetime",
+   "label": "Termin bis"
+  },
+  {
+   "fieldname": "cb_leistung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "termin",
+   "fieldtype": "Link",
+   "label": "Termin (PH Termin)",
+   "options": "PH Termin"
+  },
+  {
+   "fieldname": "abhaengig_von",
+   "fieldtype": "Link",
+   "label": "Abhängig von Gewerk",
+   "options": "PH Fremdgewerk",
+   "description": "z. B. Steinmetz-Aufmaß erst nach Korpusmontage."
+  },
+  {
+   "fieldname": "kosten_cent",
+   "fieldtype": "Int",
+   "label": "Kosten lt. Partnerangebot (Cent, intern)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_haftung",
+   "fieldtype": "Section Break",
+   "label": "Koordination"
+  },
+  {
+   "fieldname": "haftungshinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis",
+   "read_only": 1,
+   "default": "Platzhirsch koordiniert Termine und Schnittstellen. Der Vertrag über die Gewerksleistung besteht direkt zwischen Kunde und Partnerbetrieb; Platzhirsch übernimmt keine Bauleitung und keine Haftung für die Leistung des Partnerbetriebs."
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nsystem",
+   "default": "backoffice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Fremdgewerk",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "termin_von",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Offen",
+   "color": "Gray"
+  },
+  {
+   "title": "Angefragt",
+   "color": "Blue"
+  },
+  {
+   "title": "Geplant",
+   "color": "Cyan"
+  },
+  {
+   "title": "In Arbeit",
+   "color": "Orange"
+  },
+  {
+   "title": "Erledigt",
+   "color": "Green"
+  },
+  {
+   "title": "Abgesagt",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "projekt,gewerk,partner_text"
+}

@@ -1,7 +1,8 @@
-// Gutscheinbedingungen (ENTWURF) als Text. Offene Stellen [ … ] sind
-// sichtbar hervorgehoben. Server-Komponente. Quelle: src/lib/commerce/voucherTerms.js.
+// Gutscheinbedingungen als Text (freigegeben, Stand in voucherTerms.js).
+// Sollte je wieder eine Markierung [ … ] im Text stehen, wird sie sichtbar
+// hervorgehoben und gezählt. Server-Komponente. Quelle: src/lib/commerce/voucherTerms.js.
 import { Badge, Heading } from "@/components/ui";
-import { TERMS_SECTIONS, TERMS_STAND, splitMarks, termsOpenCounts } from "@/lib/commerce/voucherTerms";
+import { TERMS_SECTIONS, splitMarks, termsOpenCounts, termsStandDe } from "@/lib/commerce/voucherTerms";
 
 export default function VoucherTerms({ headingLevel = 2 }) {
   const counts = termsOpenCounts();
@@ -9,8 +10,8 @@ export default function VoucherTerms({ headingLevel = 2 }) {
   return (
     <div>
       <p className="flex flex-wrap items-center gap-3 text-small text-text-soft">
-        <span>{TERMS_STAND}</span>
-        <Badge tone="band">{total} offene Stellen</Badge>
+        <span>{termsStandDe()}</span>
+        {total > 0 && <Badge tone="band">{total} offene Stellen</Badge>}
       </p>
       <div className="mt-stack-m space-y-10">
         {TERMS_SECTIONS.map((section) => (

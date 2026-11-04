@@ -1,0 +1,44 @@
+{% extends "templates/print/ph_basis.html" %}
+{% block titel %}Stellenanzeige {{ doc.titel }}{% endblock %}
+{% block kopfrechts %}Stellenanzeige<br>{% if doc.veroeffentlicht %}ab {{ ph_datum(doc.veroeffentlicht) }}{% endif %}{% if doc.gueltig_bis %}<br>gültig bis {{ ph_datum(doc.gueltig_bis) }}{% endif %}{% endblock %}
+{% block css %}
+  .ph-aushang h1 { font-size: 20pt; margin-bottom: 1mm; }
+  .ph-aushang .ph-meta { color: var(--ph-grau); font-size: 9.5pt; margin-bottom: 6mm; }
+  .ph-aushang ul { margin: 1mm 0 4mm 5mm; padding: 0; }
+  .ph-aushang li { margin-bottom: 1mm; }
+  .ph-entgelt { border: 1px solid var(--ph-linie); padding: 3mm 4mm; margin: 5mm 0; background: var(--ph-sand); }
+  .ph-bewerben { margin-top: 6mm; font-size: 10pt; }
+{% endblock %}
+{% block inhalt %}
+{% set einst = frappe.get_cached_doc("PH Personal Einstellungen") %}
+<div class="ph-aushang">
+  <h1>{{ doc.titel }}</h1>
+  <div class="ph-meta">
+    {{ _(doc.kategorie) }} · {{ _(doc.beschaeftigungsart) }} · Beginn {{ doc.start or "ab sofort" }}
+    {% if (doc.positionen_anzahl or 1) > 1 %} · {{ doc.positionen_anzahl }} Stellen{% endif %}
+    · {{ doc.standort or einst.standort }}
+  </div>
+  {% if doc.status != "Aktiv" %}<p class="ph-hinweis"><b>Entwurf</b> – Status {{ _(doc.status) }}. Nicht veröffentlicht.</p>{% endif %}
+  {% if not doc.entgelt_vollstaendig %}<p class="ph-hinweis" style="color:#b91c1c"><b>Entgeltangabe fehlt</b> – nach § 9 Abs 2 GlBG nicht veröffentlichbar.</p>{% endif %}
+
+  {% if doc.stellenbeschreibung %}<p>{{ doc.stellenbeschreibung | e | replace("\n", "<br>") }}</p>{% endif %}
+
+  {% if doc.aufgaben_de %}<h2>Ihre Aufgaben</h2><ul>{% for z in doc.aufgaben_de %}<li>{{ z.responsibility }}</li>{% endfor %}</ul>{% endif %}
+  {% if doc.anforderungen_de %}<h2>Ihr Profil</h2><ul>{% for z in doc.anforderungen_de %}<li>{{ z.anforderungen }}</li>{% endfor %}</ul>{% endif %}
+  {% if doc.arbeitszeit_de %}<h2>Arbeitszeit</h2><ul>{% for z in doc.arbeitszeit_de.splitlines() if z.strip() %}<li>{{ z }}</li>{% endfor %}</ul>{% endif %}
+  {% if doc.leistungen_de %}<h2>Wir bieten</h2><ul>{% for z in doc.leistungen_de %}<li>{{ z.benefit }}</li>{% endfor %}</ul>{% endif %}
+
+  <div class="ph-entgelt">
+    <h2 style="margin-top:0">Entgelt</h2>
+    {% if doc.entgelt_text %}<p style="margin:0">{{ doc.entgelt_text }}</p>{% else %}<p style="margin:0;color:#b91c1c">Kollektivvertragliches Mindestentgelt und Überzahlungsbereitschaft noch nicht erfasst.</p>{% endif %}
+  </div>
+
+  <div class="ph-bewerben">
+    <h2>Bewerbung</h2>
+    <p>Wir freuen uns auf Ihre Bewerbung mit Lebenslauf an <b>{{ doc.bewerbung_email or einst.bewerbung_email }}</b>
+    {% if doc.ansprechpartner %} – Ansprechperson: {{ frappe.db.get_value("User", doc.ansprechpartner, "full_name") }}{% endif %}.<br>
+    Online: {{ doc.website_url }}</p>
+    <p style="font-size:8.5pt;color:#6b7280">Wie wir Bewerbungsdaten verarbeiten, erklärt unsere Datenschutzerklärung unter platzhirsch.studio/datenschutz. Unterlagen werden nach Abschluss des Verfahrens innerhalb der gesetzlichen Fristen gelöscht.</p>
+  </div>
+</div>
+{% endblock %}

@@ -8,11 +8,21 @@
 // Export fürs Backoffice: qa-screenshots/karriere/frappe-import.json
 // (toFrappeDoc unten).
 //
-// GlBG § 9 Abs 2: Das kollektivvertragliche Mindestentgelt und der Hinweis
-// auf die Überzahlungsbereitschaft fehlen noch (Inhaber liefert). Solange
-// `entgelt` unvollständig ist, gilt die Stelle als NICHT veröffentlichbar
-// (src/components/Karriere/glbg.js): in Produktion unsichtbar, in der
-// Vorschau mit Sperr-Markierung. Keine Werte schätzen.
+// GlBG § 9 Abs 2: Jede Stelle nennt das kollektivvertragliche Mindestentgelt
+// und die Überzahlungsbereitschaft (Inhaber-Entscheidung Nr. 47, 03.11.2026).
+// Solange `entgelt` unvollständig wäre, gälte die Stelle als NICHT
+// veröffentlichbar (src/components/Karriere/glbg.js). Keine Werte schätzen.
+//
+// Einstufung (Einrichtungshaus = Handelsbetrieb, alle direkt angestellt):
+//   Angestellte: KV Handel Angestellte, Gehaltssystem NEU, Gehaltstafel
+//     gültig ab 1.1.2026, Stufe 1 (1.–3. Jahr), 38,5 h/Woche
+//     https://www.wko.at/kollektivvertrag/gehaltstafeln-angestellte-handel-2026
+//   Arbeiter:innen: KV Handel Arbeiter:innen, Lohntafel A, gültig ab
+//     1.1.2026, Stufe „bis 1 Jahr Betriebszugehörigkeit“
+//     https://www.wko.at/kollektivvertrag/lohntafeln-arbeiter-handel-2026
+// Begründung je Stelle und Alternativ-KV bei eigener Gewerbeberechtigung:
+// Platzhirsch-Status/berichte/KARRIERE-KV-2026-11-03.md (Einstufung vom
+// Steuerberater / der Lohnverrechnung bestätigen lassen).
 //
 // Rein: keine Pakete, keine "@/"-Aliase (tests/unit/karriere-stellen.test.mjs).
 import { generateSlug } from "../slugify.js";
@@ -25,24 +35,31 @@ const TEXTE = { de: DE, en: EN, fr: FR, it: IT };
 export const STELLEN_LOCALES = Object.freeze(["de", "en", "fr", "it"]);
 
 /** Ausschreibungsdatum und Gültigkeit (+60 Tage) für JobPosting. */
-export const VEROEFFENTLICHT = "2026-10-31";
-export const GUELTIG_BIS = "2026-12-30";
+export const VEROEFFENTLICHT = "2026-11-03";
+export const GUELTIG_BIS = "2027-01-02";
 
-/** Leeres Entgelt: Pflichtangabe nach § 9 Abs 2 GlBG, vom Inhaber auszufüllen. */
-const OFFEN = (zeitraum = "Monat") => ({ kvMindestBrutto: null, zeitraum, ueberzahlung: null, kollektivvertrag: null });
+/** KV-Mindestentgelt (brutto pro Monat, Vollzeit) mit Überzahlungsbereitschaft. */
+const KV = (kvMindestBrutto, kollektivvertrag) => ({ kvMindestBrutto, zeitraum: "Monat", ueberzahlung: true, kollektivvertrag });
+const ANG = (bg, betrag) => KV(betrag, `KV Handel Angestellte, Beschäftigungsgruppe ${bg}, Stufe 1`);
+const ARB = (gruppe, betrag) => KV(betrag, `KV Handel Arbeiter:innen, Lohntafel A, Gruppe ${gruppe}, bis 1 Jahr Betriebszugehörigkeit`);
 
 // Je Stelle: Schlüssel der Texte, Entgelt, Beschäftigungsausmaß
-// ("Vollzeit" | "Teilzeit" | "Vollzeit oder Teilzeit" …), Start, Anzahl.
-// null = vom Inhaber noch nicht angegeben (keine Annahmen).
+// (Schlüssel aus AUSMASS der Sprachdateien), Start (Schlüssel aus START), Anzahl.
 export const STELLEN_META = [
-  { key: "cad-planer", entgelt: OFFEN(), ausmass: null, start: null, positions: null },
-  { key: "innenarchitekt", entgelt: OFFEN(), ausmass: null, start: null, positions: null },
-  { key: "verkaeufer", entgelt: OFFEN(), ausmass: null, start: null, positions: null },
-  { key: "monteur-tischler", entgelt: OFFEN(), ausmass: null, start: null, positions: null },
-  { key: "monteur", entgelt: OFFEN(), ausmass: null, start: null, positions: null },
-  { key: "fliesenleger", entgelt: OFFEN(), ausmass: null, start: null, positions: null },
-  { key: "installateur", entgelt: OFFEN(), ausmass: null, start: null, positions: null },
-  { key: "elektroplaner", entgelt: OFFEN(), ausmass: null, start: null, positions: null },
+  // Technischer Dienst, eigenständige nicht-standardisierte Planungsaufgaben (BG E, 2.535 €).
+  { key: "cad-planer", entgelt: ANG("E", 2535), ausmass: "Vollzeit", start: "ab sofort", positions: 1 },
+  // Studium, eigenständige Konzept-/Beratungsarbeit, Referenz „Bautechnik/Planung“ (BG F, 2.879 €).
+  { key: "innenarchitekt", entgelt: ANG("F", 2879), ausmass: "Vollzeit", start: "ab sofort", positions: 1 },
+  // Verkauf & Vertrieb, Kundenberatung mit vertieften Warenkenntnissen (BG D, 2.362 €).
+  { key: "verkaeufer", entgelt: ANG("D", 2362), ausmass: "Vollzeit", start: "ab sofort", positions: 1 },
+  // Professionist:in mit Lehrabschluss, für den Betrieb relevant (Gruppe 5 Fachkräfte, 2.358 €).
+  { key: "monteur-tischler", entgelt: ARB("5 (Fachkräfte)", 2358), ausmass: "Vollzeit", start: "ab sofort", positions: 1 },
+  // Möbelmonteur:in ohne passenden Lehrabschluss (Gruppe 2, 2.178 €).
+  { key: "monteur", entgelt: ARB("2", 2178), ausmass: "Vollzeit", start: "ab sofort", positions: 1 },
+  { key: "fliesenleger", entgelt: ARB("5 (Fachkräfte)", 2358), ausmass: "Vollzeit", start: "ab sofort", positions: 1 },
+  { key: "installateur", entgelt: ARB("5 (Fachkräfte)", 2358), ausmass: "Vollzeit", start: "ab sofort", positions: 1 },
+  // Technischer Dienst wie CAD-Planung (BG E, 2.535 €).
+  { key: "elektroplaner", entgelt: ANG("E", 2535), ausmass: "Vollzeit", start: "ab sofort", positions: 1 },
 ];
 
 // Feldnamen des Backoffice (abgeleitet aus JobDetail.js und structuredData.js).
@@ -82,6 +99,9 @@ export function buildStelle(meta) {
   for (const l of STELLEN_LOCALES) {
     const t = TEXTE[l].STELLEN[meta.key];
     if (l !== "de") job[`title_${l}`] = t.title;
+    // Ausmaß und Beginn in der Seitensprache (JobDetail liest job_status_*, start_*).
+    if (meta.ausmass) job[`job_status_${l}`] = TEXTE[l].AUSMASS?.[meta.ausmass] || meta.ausmass;
+    if (meta.start) job[`start_${l}`] = TEXTE[l].START?.[meta.start] || meta.start;
     job[DESCRIPTION_FIELD[l]] = t.beschreibung;
     job[`category_${l}`] = t.bereich;
     job[`responsibilities_${l}`] = t.aufgaben.map((responsibility) => ({ responsibility }));
@@ -113,7 +133,7 @@ export function localizedTitle(job, locale) {
  * Datensatz für den Frappe-Datenimport (Doctype „Karriere“). Kindtabellen
  * als Zeilenlisten mit den Feldnamen, die die Website liest; die Doctype-
  * Namen der Kindtabellen kennt nur das Backoffice (vor dem Import prüfen).
- * `salary` bleibt leer, bis der Inhaber das Entgelt nennt.
+ * `salary` = KV-Mindestbrutto pro Monat (leer nur ohne Entgeltangabe).
  */
 export function toFrappeDoc(job) {
   const { slug, statisch, entgelt, ausmass, start, salary_unit, valid_through, ...felder } = job;

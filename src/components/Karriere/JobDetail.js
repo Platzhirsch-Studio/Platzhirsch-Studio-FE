@@ -114,7 +114,7 @@ export default function JobDetail({ job, blocked = false }) {
       label: t("employment"),
       value: localizedString(job, "job_status", locale) || job.type || (blocked && job.statisch ? k.platzhalter : null),
     },
-    ...(job.statisch ? [{ label: k.start, value: job.start || (blocked ? k.platzhalter : null) }] : []),
+    ...(job.statisch ? [{ label: k.start, value: localizedString(job, "start", locale) || job.start || (blocked ? k.platzhalter : null) }] : []),
     { label: t("category"), value: localizedString(job, "category", locale) },
     { label: t("positions"), value: job.positions, tabular: true },
     job.entgelt

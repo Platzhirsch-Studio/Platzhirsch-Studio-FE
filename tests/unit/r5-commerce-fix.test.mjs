@@ -46,11 +46,12 @@ const post = (body) =>
     body: JSON.stringify(body),
   });
 
-test("P2: Bedingungen sind heute Entwurf, VOUCHER_MODE=anfrage zählt als off", () => {
-  assert.notEqual(TERMS_STATUS, TERMS_RELEASED, "Freigabe erst nach Kanzlei, dann diesen Test anpassen");
-  assert.equal(voucherTermsReleased(), false);
-  assert.equal(voucherMode({ VOUCHER_MODE: "anfrage" }), "off");
-  assert.equal(voucherEnabled({ VOUCHER_MODE: "anfrage" }), false);
+test("P2: Bedingungen seit 03.11.2026 freigegeben (Nr. 46) – Entwurfs-Bedingungen würden weiter sperren", () => {
+  assert.equal(TERMS_STATUS, TERMS_RELEASED);
+  assert.equal(voucherTermsReleased(), true);
+  assert.equal(voucherMode({ VOUCHER_MODE: "anfrage" }), "anfrage");
+  assert.equal(voucherEnabled({ VOUCHER_MODE: "anfrage" }), true);
+  assert.equal(voucherMode({}), "off", "ohne VOUCHER_MODE bleibt alles 404");
   assert.equal(voucherMode({ VOUCHER_MODE: "anfrage" }, "entwurf"), "off");
   assert.equal(voucherMode({ VOUCHER_MODE: "anfrage" }, ""), "off");
   // Erst mit Freigabe greift der Schalter.
@@ -60,9 +61,9 @@ test("P2: Bedingungen sind heute Entwurf, VOUCHER_MODE=anfrage zählt als off", 
   assert.equal(voucherModeRequested({ VOUCHER_MODE: "anfrage" }), "anfrage");
 });
 
-test("P2: API liefert mit VOUCHER_MODE=anfrage und Entwurfs-Bedingungen 404, ohne Backoffice-Aufruf", async () => {
+test("P2: API liefert mit Entwurfs-Bedingungen 404, ohne Backoffice-Aufruf; ohne VOUCHER_MODE 404", async () => {
   const backoffice = mockFetch();
-  const POST = voucherHandler({ env: { VOUCHER_MODE: "anfrage" }, fetchImpl: backoffice, limiter: createRateLimiter(), now: () => 1_800_000_000_000 });
+  const POST = voucherHandler({ env: {}, fetchImpl: backoffice, limiter: createRateLimiter(), now: () => 1_800_000_000_000 });
   const res = await POST(post(VOUCHER));
   assert.equal(res.status, 404);
   assert.equal(backoffice.calls.length, 0);

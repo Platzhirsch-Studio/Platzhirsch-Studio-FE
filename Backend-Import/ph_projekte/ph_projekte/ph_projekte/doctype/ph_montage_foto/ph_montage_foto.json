@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "art",
+  "bild",
+  "hinweis",
+  "aufgenommen_am",
+  "kunde_sichtbar"
+ ],
+ "fields": [
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "vorher\nnachher\ndetail\nmangel",
+   "default": "nachher",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bild",
+   "fieldtype": "Attach Image",
+   "label": "Bild",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "aufgenommen_am",
+   "fieldtype": "Datetime",
+   "label": "Aufgenommen",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "kunde_sichtbar",
+   "fieldtype": "Check",
+   "label": "Portal",
+   "default": "0"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Montage Foto",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

@@ -1,0 +1,125 @@
+[
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Angebote",
+  "kanban_board_name": "PH Angebote",
+  "reference_doctype": "PH Angebot",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Angebot\", \"status\", \"not in\", [\"Abgelaufen\", \"Ersetzt\"]]]",
+  "fields": "[\"titel\", \"brutto_cent\", \"gueltig_bis\", \"zugewiesen_an\"]",
+  "columns": [
+   {
+    "column_name": "Entwurf",
+    "indicator": "Gray",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Gesendet",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Angenommen",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Abgelehnt",
+    "indicator": "Red",
+    "status": "Active",
+    "order": "[]"
+   }
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Rechnungen",
+  "kanban_board_name": "PH Rechnungen",
+  "reference_doctype": "PH Rechnung",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Rechnung\", \"status\", \"not in\", [\"Storniert\", \"Uneinbringlich\"]]]",
+  "fields": "[\"titel\", \"art\", \"zahlbar_cent\", \"offen_cent\", \"faellig\"]",
+  "columns": [
+   {
+    "column_name": "Entwurf",
+    "indicator": "Gray",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Gestellt",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Teilbezahlt",
+    "indicator": "Cyan",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Ueberfaellig",
+    "indicator": "Orange",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Gemahnt",
+    "indicator": "Red",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Bezahlt",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   }
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Eingangsrechnungen",
+  "kanban_board_name": "PH Eingangsrechnungen",
+  "reference_doctype": "PH Eingangsrechnung",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Eingangsrechnung\", \"status\", \"!=\", \"Abgelehnt\"]]",
+  "fields": "[\"titel\", \"brutto_cent\", \"faellig\", \"skonto_bis\"]",
+  "columns": [
+   {
+    "column_name": "Erfasst",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Sachlich geprueft",
+    "indicator": "Cyan",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Freigegeben",
+    "indicator": "Orange",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Bezahlt",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   }
+  ]
+ }
+]

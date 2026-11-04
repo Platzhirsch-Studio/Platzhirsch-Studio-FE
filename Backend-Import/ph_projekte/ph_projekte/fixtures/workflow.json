@@ -1,0 +1,157 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "PH Projekt",
+  "workflow_name": "PH Projekt",
+  "document_type": "PH Projekt",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Phase Anfrage", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Anfrage", "is_optional_state": 0},
+   {"state": "PH Phase Planung", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Planung", "is_optional_state": 0},
+   {"state": "PH Phase Angebot", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Angebot", "is_optional_state": 0},
+   {"state": "PH Phase Auftrag", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Auftrag", "is_optional_state": 0},
+   {"state": "PH Phase Bestellung", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Bestellung", "is_optional_state": 0},
+   {"state": "PH Phase Lieferung", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Lieferung", "is_optional_state": 0},
+   {"state": "PH Phase Montage", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Montage", "is_optional_state": 0},
+   {"state": "PH Phase Uebergabe", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Uebergabe", "is_optional_state": 0},
+   {"state": "PH Abgeschlossen", "doc_status": "0", "allow_edit": "PH Projekte Leitung", "update_field": "status", "update_value": "Abgeschlossen", "is_optional_state": 0},
+   {"state": "PH Abgebrochen", "doc_status": "0", "allow_edit": "PH Projekte Leitung", "update_field": "status", "update_value": "Abgebrochen", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Phase Anfrage", "action": "Planung starten", "next_state": "PH Phase Planung", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Phase Planung", "action": "Angebot erstellen", "next_state": "PH Phase Angebot", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Phase Angebot", "action": "Beauftragen", "next_state": "PH Phase Auftrag", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Auftrag", "action": "Bestellen", "next_state": "PH Phase Bestellung", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Phase Bestellung", "action": "Liefern", "next_state": "PH Phase Lieferung", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Phase Lieferung", "action": "Montieren", "next_state": "PH Phase Montage", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Phase Montage", "action": "Übergeben", "next_state": "PH Phase Uebergabe", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Phase Uebergabe", "action": "Abschließen", "next_state": "PH Abgeschlossen", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Anfrage", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Planung", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Angebot", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Auftrag", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Bestellung", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Lieferung", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Montage", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Angebot", "action": "Zurück", "next_state": "PH Phase Planung", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Auftrag", "action": "Zurück", "next_state": "PH Phase Angebot", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Bestellung", "action": "Zurück", "next_state": "PH Phase Auftrag", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Lieferung", "action": "Zurück", "next_state": "PH Phase Bestellung", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Montage", "action": "Zurück", "next_state": "PH Phase Lieferung", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Phase Uebergabe", "action": "Zurück", "next_state": "PH Phase Montage", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Abgebrochen", "action": "Zurück auf Neu", "next_state": "PH Phase Anfrage", "allowed": "PH Projekte Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Rendering",
+  "workflow_name": "PH Rendering",
+  "document_type": "PH Rendering",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Entwurf", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Entwurf", "is_optional_state": 0},
+   {"state": "PH Vorgelegt", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Vorgelegt", "is_optional_state": 0},
+   {"state": "PH Feedback offen", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Feedback offen", "is_optional_state": 0},
+   {"state": "PH Freigegeben", "doc_status": "0", "allow_edit": "PH Projekte Leitung", "update_field": "status", "update_value": "Freigegeben", "is_optional_state": 0},
+   {"state": "PH Verworfen", "doc_status": "0", "allow_edit": "PH Projekte Leitung", "update_field": "status", "update_value": "Verworfen", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Entwurf", "action": "Kunden vorlegen", "next_state": "PH Vorgelegt", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1, "condition": "doc.bild"},
+   {"state": "PH Vorgelegt", "action": "Feedback erhalten", "next_state": "PH Feedback offen", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Feedback offen", "action": "Beantwortet", "next_state": "PH Vorgelegt", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Vorgelegt", "action": "Freigeben", "next_state": "PH Freigegeben", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1, "condition": "doc.freigabe_feedback"},
+   {"state": "PH Feedback offen", "action": "Freigeben", "next_state": "PH Freigegeben", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1, "condition": "doc.freigabe_feedback"},
+   {"state": "PH Vorgelegt", "action": "Freigeben", "next_state": "PH Freigegeben", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Feedback offen", "action": "Freigeben", "next_state": "PH Freigegeben", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Entwurf", "action": "Verwerfen", "next_state": "PH Verworfen", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Vorgelegt", "action": "Verwerfen", "next_state": "PH Verworfen", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Feedback offen", "action": "Verwerfen", "next_state": "PH Verworfen", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Verworfen", "action": "Zurück", "next_state": "PH Entwurf", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Freigegeben", "action": "Zurück", "next_state": "PH Vorgelegt", "allowed": "PH Projekte Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Montageauftrag",
+  "workflow_name": "PH Montageauftrag",
+  "document_type": "PH Montageauftrag",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Geplant", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Geplant", "is_optional_state": 0},
+   {"state": "PH Unterwegs", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Unterwegs", "is_optional_state": 0},
+   {"state": "PH In Arbeit", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "In Arbeit", "is_optional_state": 0},
+   {"state": "PH Erledigt", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Erledigt", "is_optional_state": 0},
+   {"state": "PH Abgenommen", "doc_status": "0", "allow_edit": "PH Projekte Leitung", "update_field": "status", "update_value": "Abgenommen", "is_optional_state": 0},
+   {"state": "PH Abgebrochen", "doc_status": "0", "allow_edit": "PH Projekte Leitung", "update_field": "status", "update_value": "Abgebrochen", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Geplant", "action": "Losfahren", "next_state": "PH Unterwegs", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Geplant", "action": "Beginnen", "next_state": "PH In Arbeit", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Unterwegs", "action": "Beginnen", "next_state": "PH In Arbeit", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH In Arbeit", "action": "Erledigt melden", "next_state": "PH Erledigt", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Erledigt", "action": "Abnehmen", "next_state": "PH Abgenommen", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1, "condition": "doc.unterschrift_kunde"},
+   {"state": "PH Geplant", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Unterwegs", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH In Arbeit", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Unterwegs", "action": "Zurück", "next_state": "PH Geplant", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Erledigt", "action": "Zurück", "next_state": "PH In Arbeit", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Abgebrochen", "action": "Zurück", "next_state": "PH Geplant", "allowed": "PH Projekte Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Abnahme",
+  "workflow_name": "PH Abnahme",
+  "document_type": "PH Abnahme",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Entwurf", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Entwurf", "is_optional_state": 0},
+   {"state": "PH Unterzeichnet", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Unterzeichnet", "is_optional_state": 0},
+   {"state": "PH Mit Maengeln", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Mit Maengeln", "is_optional_state": 0},
+   {"state": "PH Abgeschlossen", "doc_status": "0", "allow_edit": "PH Projekte Leitung", "update_field": "status", "update_value": "Abgeschlossen", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Entwurf", "action": "Unterzeichnen", "next_state": "PH Unterzeichnet", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1, "condition": "doc.unterschrift_kunde and not doc.maengel_offen"},
+   {"state": "PH Entwurf", "action": "Mängel feststellen", "next_state": "PH Mit Maengeln", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1, "condition": "doc.unterschrift_kunde and doc.maengel_offen"},
+   {"state": "PH Unterzeichnet", "action": "Abschließen", "next_state": "PH Abgeschlossen", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Mit Maengeln", "action": "Abschließen", "next_state": "PH Abgeschlossen", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1, "condition": "not doc.maengel_offen"},
+   {"state": "PH Mit Maengeln", "action": "Zurück", "next_state": "PH Entwurf", "allowed": "PH Projekte Leitung", "allow_self_approval": 1},
+   {"state": "PH Unterzeichnet", "action": "Zurück", "next_state": "PH Entwurf", "allowed": "PH Projekte Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Referenz",
+  "workflow_name": "PH Referenz",
+  "document_type": "PH Referenz",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Eingereicht", "doc_status": "0", "allow_edit": "PH Projekte Mitarbeiter", "update_field": "status", "update_value": "Eingereicht", "is_optional_state": 0},
+   {"state": "PH Veroeffentlicht", "doc_status": "0", "allow_edit": "PH Projekte Leitung", "update_field": "status", "update_value": "Veroeffentlicht", "is_optional_state": 0},
+   {"state": "PH Abgelehnt", "doc_status": "0", "allow_edit": "PH Projekte Leitung", "update_field": "status", "update_value": "Abgelehnt", "is_optional_state": 0},
+   {"state": "PH Widerrufen", "doc_status": "0", "allow_edit": "PH Projekte Leitung", "update_field": "status", "update_value": "Widerrufen", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Eingereicht", "action": "Veröffentlichen", "next_state": "PH Veroeffentlicht", "allowed": "PH Projekte Leitung", "allow_self_approval": 1, "condition": "not doc.beispiel"},
+   {"state": "PH Eingereicht", "action": "Ablehnen", "next_state": "PH Abgelehnt", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Veroeffentlicht", "action": "Zurückziehen", "next_state": "PH Eingereicht", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Eingereicht", "action": "Widerrufen", "next_state": "PH Widerrufen", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Veroeffentlicht", "action": "Widerrufen", "next_state": "PH Widerrufen", "allowed": "PH Projekte Mitarbeiter", "allow_self_approval": 1}
+  ]
+ }
+]

@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Zuordnung eines Bankumsatzes zu Rechnung, Gutschrift oder Eingangsrechnung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "beleg_doctype",
+  "beleg",
+  "betrag_cent",
+  "zahlung",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "beleg_doctype",
+   "fieldtype": "Link",
+   "label": "Belegart",
+   "options": "DocType",
+   "in_list_view": 1,
+   "columns": 2,
+   "reqd": 1
+  },
+  {
+   "fieldname": "beleg",
+   "fieldtype": "Dynamic Link",
+   "label": "Beleg",
+   "options": "beleg_doctype",
+   "in_list_view": 1,
+   "columns": 3,
+   "reqd": 1
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "in_list_view": 1,
+   "columns": 2,
+   "default": "0"
+  },
+  {
+   "fieldname": "zahlung",
+   "fieldtype": "Link",
+   "label": "Zahlung (PH Zahlung)",
+   "options": "PH Zahlung",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis",
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Bankumsatz Zuordnung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

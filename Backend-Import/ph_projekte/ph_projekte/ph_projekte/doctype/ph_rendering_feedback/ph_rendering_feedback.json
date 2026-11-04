@@ -1,0 +1,421 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Kundenfeedback zu Renderings/Projekt: Kommentar, Vorschlag, Markierung (Pin 0–100 %), Vote, Freigabe, Sprachnotiz (privater Anhang). Studio antwortet im selben DocType (von=studio).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "projekt",
+  "rendering",
+  "kontakt",
+  "cb_kopf",
+  "art",
+  "von",
+  "status",
+  "erstellt_am",
+  "sb_inhalt",
+  "text",
+  "autor",
+  "antwort_auf",
+  "cb_inhalt",
+  "punkt_x",
+  "punkt_y",
+  "vote",
+  "freigabe_bestaetigt",
+  "sb_audio",
+  "audio",
+  "audio_mime",
+  "cb_audio",
+  "audio_groesse",
+  "audio_dauer_s",
+  "einwilligung_audio_am",
+  "sb_status",
+  "gelesen_studio",
+  "gelesen_kunde",
+  "beantwortet_am",
+  "cb_status",
+  "erledigt_am",
+  "erledigt_von",
+  "website_id",
+  "sb_system",
+  "idempotency_key",
+  "quelle",
+  "ip_hash"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-FB-.YYYY.-.#####",
+   "default": "PH-FB-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "rendering",
+   "fieldtype": "Link",
+   "label": "Rendering",
+   "options": "PH Rendering",
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kunde",
+   "options": "PH Kontakt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "kommentar\nvorschlag\nannotation\nvote\nfreigabe\nsprachnachricht",
+   "reqd": 1,
+   "default": "kommentar",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Website feedbackEntrySchema (src/components/Portal/Planung/schemas.js)."
+  },
+  {
+   "fieldname": "von",
+   "fieldtype": "Select",
+   "label": "Von",
+   "options": "kunde\nstudio",
+   "reqd": 1,
+   "default": "kunde",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Offen\nBeantwortet\nErledigt",
+   "default": "Offen",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "erstellt_am",
+   "fieldtype": "Datetime",
+   "label": "Erstellt am",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_inhalt",
+   "fieldtype": "Section Break",
+   "label": "Inhalt"
+  },
+  {
+   "fieldname": "text",
+   "fieldtype": "Long Text",
+   "label": "Text"
+  },
+  {
+   "fieldname": "autor",
+   "fieldtype": "Data",
+   "label": "Autor (Anzeige)"
+  },
+  {
+   "fieldname": "antwort_auf",
+   "fieldtype": "Link",
+   "label": "Antwort auf",
+   "options": "PH Rendering Feedback"
+  },
+  {
+   "fieldname": "cb_inhalt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "punkt_x",
+   "fieldtype": "Float",
+   "label": "Pin X (%)",
+   "precision": "2",
+   "depends_on": "eval:doc.art=='annotation'"
+  },
+  {
+   "fieldname": "punkt_y",
+   "fieldtype": "Float",
+   "label": "Pin Y (%)",
+   "precision": "2",
+   "depends_on": "eval:doc.art=='annotation'"
+  },
+  {
+   "fieldname": "vote",
+   "fieldtype": "Select",
+   "label": "Bewertung",
+   "options": "\nup\ndown\nnone",
+   "depends_on": "eval:doc.art=='vote'"
+  },
+  {
+   "fieldname": "freigabe_bestaetigt",
+   "fieldtype": "Check",
+   "label": "Freigabe bestätigt (confirm)",
+   "depends_on": "eval:doc.art=='freigabe'"
+  },
+  {
+   "fieldname": "sb_audio",
+   "fieldtype": "Section Break",
+   "label": "Sprachnotiz",
+   "depends_on": "eval:doc.art=='sprachnachricht'"
+  },
+  {
+   "fieldname": "audio",
+   "fieldtype": "Attach",
+   "label": "Audiodatei (privat)"
+  },
+  {
+   "fieldname": "audio_mime",
+   "fieldtype": "Data",
+   "label": "MIME",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_audio",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "audio_groesse",
+   "fieldtype": "Int",
+   "label": "Größe (Bytes)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "audio_dauer_s",
+   "fieldtype": "Float",
+   "label": "Dauer (s)",
+   "precision": "1"
+  },
+  {
+   "fieldname": "einwilligung_audio_am",
+   "fieldtype": "Datetime",
+   "label": "Einwilligung Verarbeitung am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_status",
+   "fieldtype": "Section Break",
+   "label": "Bearbeitung"
+  },
+  {
+   "fieldname": "gelesen_studio",
+   "fieldtype": "Check",
+   "label": "Vom Studio gelesen",
+   "default": "0"
+  },
+  {
+   "fieldname": "gelesen_kunde",
+   "fieldtype": "Check",
+   "label": "Vom Kunden gelesen",
+   "default": "0"
+  },
+  {
+   "fieldname": "beantwortet_am",
+   "fieldtype": "Datetime",
+   "label": "Beantwortet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "erledigt_am",
+   "fieldtype": "Datetime",
+   "label": "Erledigt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "erledigt_von",
+   "fieldtype": "Link",
+   "label": "Erledigt von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "website_id",
+   "fieldtype": "Data",
+   "label": "Website-ID (PF-…)",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nsystem",
+   "default": "backoffice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Rendering Feedback",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "erstellt_am",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Offen",
+   "color": "Orange"
+  },
+  {
+   "title": "Beantwortet",
+   "color": "Blue"
+  },
+  {
+   "title": "Erledigt",
+   "color": "Green"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "projekt,rendering,art,autor",
+ "track_seen": 1
+}

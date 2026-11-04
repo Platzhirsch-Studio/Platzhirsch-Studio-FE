@@ -1,0 +1,568 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Gutschrift oder Storno-Rechnung mit Bezug auf die Ursprungsrechnung (§ 11 Abs 1 Z 3 UStG, § 16 UStG). Gebucht = submitted; Nummer lückenlos je Jahr.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "nummer",
+  "art",
+  "status",
+  "rechnung",
+  "kontakt",
+  "kunde_name",
+  "cb_kopf",
+  "datum",
+  "grund",
+  "auftrag",
+  "sb_adresse",
+  "firma",
+  "strasse",
+  "plz",
+  "ort",
+  "cb_adresse",
+  "land",
+  "uid_empfaenger",
+  "uid_geprueft_am",
+  "tab_positionen",
+  "positionen",
+  "sb_summen",
+  "netto_cent",
+  "rabatt_gesamt_cent",
+  "ust_cent",
+  "brutto_cent",
+  "cb_summen",
+  "ust_aufteilung",
+  "summen_html",
+  "tab_erstattung",
+  "erstattung_art",
+  "erstattung",
+  "erstattet_cent",
+  "cb_erstattung",
+  "ust_fall",
+  "ust_hinweistext",
+  "uva_monat",
+  "sprache",
+  "waehrung",
+  "sb_versand",
+  "gestellt_am",
+  "gesendet_am",
+  "pdf",
+  "cb_versand",
+  "export_status",
+  "export_lauf",
+  "tab_system",
+  "idempotency_key",
+  "quelle",
+  "ip_hash",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis (bei Stellen)",
+   "options": "GU-.YYYY.-.#####",
+   "default": "GU-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "nummer",
+   "fieldtype": "Data",
+   "label": "Gutschriftnummer",
+   "read_only": 1,
+   "in_global_search": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Storno\nTeilgutschrift\nWertminderung\nKulanz",
+   "default": "Storno",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nGestellt\nVerrechnet\nErstattet",
+   "default": "Entwurf",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "rechnung",
+   "fieldtype": "Link",
+   "label": "Zu Rechnung",
+   "options": "PH Rechnung",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kunde (Kontakt)",
+   "options": "PH Kontakt",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "kunde_name",
+   "fieldtype": "Data",
+   "label": "Kundenname (Beleg)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Datum",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Small Text",
+   "label": "Grund",
+   "reqd": 1
+  },
+  {
+   "fieldname": "auftrag",
+   "fieldtype": "Link",
+   "label": "Auftragsbestätigung",
+   "options": "PH Auftragsbestaetigung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_adresse",
+   "fieldtype": "Section Break",
+   "label": "Rechnungsadresse (Snapshot)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "firma",
+   "fieldtype": "Data",
+   "label": "Firma"
+  },
+  {
+   "fieldname": "strasse",
+   "fieldtype": "Data",
+   "label": "Straße und Nummer"
+  },
+  {
+   "fieldname": "plz",
+   "fieldtype": "Data",
+   "label": "PLZ"
+  },
+  {
+   "fieldname": "ort",
+   "fieldtype": "Data",
+   "label": "Ort"
+  },
+  {
+   "fieldname": "cb_adresse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "land",
+   "fieldtype": "Data",
+   "label": "Land (ISO-2)",
+   "default": "AT",
+   "description": "ISO-Code: AT, DE, CH, IT, FR … bestimmt den USt-Fall."
+  },
+  {
+   "fieldname": "uid_empfaenger",
+   "fieldtype": "Data",
+   "label": "UID des Empfängers",
+   "description": "Pflicht ab 10.000 € Gesamtbetrag (§ 11 Abs 1 Z 2 UStG); Grundlage für igL/Reverse Charge."
+  },
+  {
+   "fieldname": "uid_geprueft_am",
+   "fieldtype": "Date",
+   "label": "UID geprüft am (MIAS)",
+   "description": "Platzhalter für die Bestätigungsabfrage (FinanzOnline/MIAS Stufe 2)."
+  },
+  {
+   "fieldname": "tab_positionen",
+   "fieldtype": "Tab Break",
+   "label": "Positionen"
+  },
+  {
+   "fieldname": "positionen",
+   "fieldtype": "Table",
+   "label": "Positionen",
+   "options": "PH Beleg Position",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sb_summen",
+   "fieldtype": "Section Break",
+   "label": "Summen"
+  },
+  {
+   "fieldname": "netto_cent",
+   "fieldtype": "Int",
+   "label": "Netto (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "rabatt_gesamt_cent",
+   "fieldtype": "Int",
+   "label": "Rabatt gesamt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "ust_cent",
+   "fieldtype": "Int",
+   "label": "USt gesamt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "brutto_cent",
+   "fieldtype": "Int",
+   "label": "Brutto (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "cb_summen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ust_aufteilung",
+   "fieldtype": "Table",
+   "label": "USt-Aufteilung je Satz",
+   "options": "PH Beleg Steuer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "summen_html",
+   "fieldtype": "HTML",
+   "label": "Summenblock"
+  },
+  {
+   "fieldname": "tab_erstattung",
+   "fieldtype": "Tab Break",
+   "label": "Erstattung"
+  },
+  {
+   "fieldname": "erstattung_art",
+   "fieldtype": "Select",
+   "label": "Erstattung",
+   "options": "Verrechnung mit offener Rechnung\nRückzahlung\nKeine (Kulanz ohne Zahlung)",
+   "default": "Verrechnung mit offener Rechnung"
+  },
+  {
+   "fieldname": "erstattung",
+   "fieldtype": "Link",
+   "label": "Rückzahlung (PH Zahlung)",
+   "options": "PH Zahlung",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "erstattet_cent",
+   "fieldtype": "Int",
+   "label": "Erstattet (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "cb_erstattung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ust_fall",
+   "fieldtype": "Select",
+   "label": "USt-Fall",
+   "options": "Steuerpflichtig AT\nOSS\nInnergemeinschaftlich steuerfrei\nReverse Charge\nAusfuhr\nKleinunternehmer",
+   "default": "Steuerpflichtig AT",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ust_hinweistext",
+   "fieldtype": "Small Text",
+   "label": "USt-Hinweis (Beleg)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "uva_monat",
+   "fieldtype": "Data",
+   "label": "UVA-Monat (JJJJ-MM)",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "sprache",
+   "fieldtype": "Select",
+   "label": "Sprache des Belegs",
+   "options": "de\nen\nfr\nit",
+   "default": "de"
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "sb_versand",
+   "fieldtype": "Section Break",
+   "label": "Versand und Export"
+  },
+  {
+   "fieldname": "gestellt_am",
+   "fieldtype": "Datetime",
+   "label": "Gestellt am",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Gesendet am",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "pdf",
+   "fieldtype": "Attach",
+   "label": "PDF (final)",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "cb_versand",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "export_status",
+   "fieldtype": "Select",
+   "label": "Export",
+   "options": "offen\nexportiert\nkorrigiert",
+   "default": "offen",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "export_lauf",
+   "fieldtype": "Link",
+   "label": "Export-Lauf",
+   "options": "PH Export Lauf",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "tab_system",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nkassa\nshop\nimport",
+   "default": "backoffice",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Geändert von",
+   "options": "PH Gutschrift",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1,
+   "hidden": 1,
+   "description": "Nicht verwendet: gebuchte Belege werden nie geändert, nur per Gutschrift storniert."
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Gutschrift",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 1,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Gray"
+  },
+  {
+   "title": "Gestellt",
+   "color": "Blue"
+  },
+  {
+   "title": "Verrechnet",
+   "color": "Green"
+  },
+  {
+   "title": "Erstattet",
+   "color": "Green"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "format:ENTW-GU-{YYYY}-{#####}",
+ "naming_rule": "Expression",
+ "title_field": "titel",
+ "search_fields": "nummer,rechnung,kunde_name",
+ "is_submittable": 1
+}

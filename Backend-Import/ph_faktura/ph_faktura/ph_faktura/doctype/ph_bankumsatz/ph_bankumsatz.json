@@ -1,0 +1,368 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Einzelner Bankumsatz aus dem CAMT.053-Import mit Zuordnungsvorschlag und Zuordnung zu Rechnungen, Gutschriften oder Eingangsrechnungen.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "konto",
+  "richtung",
+  "import",
+  "cb_kopf",
+  "buchungsdatum",
+  "valuta",
+  "betrag_cent",
+  "waehrung",
+  "sb_gegen",
+  "auftraggeber",
+  "iban_gegen",
+  "bic_gegen",
+  "cb_gegen",
+  "verwendungszweck",
+  "end_to_end_id",
+  "mandatsreferenz",
+  "camt_ref",
+  "sb_zuordnung",
+  "vorschlag_doctype",
+  "vorschlag_beleg",
+  "vorschlag_grund",
+  "vorschlag_sicherheit",
+  "cb_zuordnung",
+  "zuordnungen",
+  "zugeordnet_cent",
+  "ignoriert_grund"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "BU-.YYYY.-.######",
+   "default": "BU-.YYYY.-.######",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Offen\nZugeordnet\nTeilweise\nIgnoriert",
+   "default": "Offen",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "konto",
+   "fieldtype": "Link",
+   "label": "Bankkonto",
+   "options": "PH Bankkonto",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "richtung",
+   "fieldtype": "Select",
+   "label": "Richtung",
+   "options": "Eingang\nAusgang",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "import",
+   "fieldtype": "Link",
+   "label": "Import",
+   "options": "PH Bankimport",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "buchungsdatum",
+   "fieldtype": "Date",
+   "label": "Buchungsdatum",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "valuta",
+   "fieldtype": "Date",
+   "label": "Valuta"
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent, Ausgang negativ)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "sb_gegen",
+   "fieldtype": "Section Break",
+   "label": "Gegenseite"
+  },
+  {
+   "fieldname": "auftraggeber",
+   "fieldtype": "Data",
+   "label": "Auftraggeber / Empfänger",
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "iban_gegen",
+   "fieldtype": "Data",
+   "label": "IBAN Gegenseite"
+  },
+  {
+   "fieldname": "bic_gegen",
+   "fieldtype": "Data",
+   "label": "BIC Gegenseite"
+  },
+  {
+   "fieldname": "cb_gegen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "verwendungszweck",
+   "fieldtype": "Small Text",
+   "label": "Verwendungszweck",
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "end_to_end_id",
+   "fieldtype": "Data",
+   "label": "End-to-End-ID"
+  },
+  {
+   "fieldname": "mandatsreferenz",
+   "fieldtype": "Data",
+   "label": "Mandatsreferenz"
+  },
+  {
+   "fieldname": "camt_ref",
+   "fieldtype": "Data",
+   "label": "Bank-Referenz (eindeutig)",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1,
+   "description": "AcctSvcrRef/TxId aus CAMT.053 oder Hash aus Datum, Betrag, Zweck – verhindert Doppelimport."
+  },
+  {
+   "fieldname": "sb_zuordnung",
+   "fieldtype": "Section Break",
+   "label": "Zuordnung"
+  },
+  {
+   "fieldname": "vorschlag_doctype",
+   "fieldtype": "Link",
+   "label": "Vorschlag (Belegart)",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vorschlag_beleg",
+   "fieldtype": "Dynamic Link",
+   "label": "Vorschlag (Beleg)",
+   "options": "vorschlag_doctype",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vorschlag_grund",
+   "fieldtype": "Data",
+   "label": "Vorschlagsgrund",
+   "read_only": 1,
+   "description": "Zahlungsreferenz im Zweck / Betrag + Name / nur Betrag"
+  },
+  {
+   "fieldname": "vorschlag_sicherheit",
+   "fieldtype": "Int",
+   "label": "Trefferqualität (0–100)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_zuordnung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zuordnungen",
+   "fieldtype": "Table",
+   "label": "Zuordnungen",
+   "options": "PH Bankumsatz Zuordnung"
+  },
+  {
+   "fieldname": "zugeordnet_cent",
+   "fieldtype": "Int",
+   "label": "Zugeordnet (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "ignoriert_grund",
+   "fieldtype": "Data",
+   "label": "Grund (Ignoriert)",
+   "depends_on": "eval:doc.status=='Ignoriert'"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Bankumsatz",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "buchungsdatum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Offen",
+   "color": "Orange"
+  },
+  {
+   "title": "Zugeordnet",
+   "color": "Green"
+  },
+  {
+   "title": "Teilweise",
+   "color": "Cyan"
+  },
+  {
+   "title": "Ignoriert",
+   "color": "Gray"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "auftraggeber,verwendungszweck,betrag_cent"
+}

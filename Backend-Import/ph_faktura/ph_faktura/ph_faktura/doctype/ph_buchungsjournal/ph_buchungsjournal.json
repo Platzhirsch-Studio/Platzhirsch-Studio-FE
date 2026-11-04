@@ -1,0 +1,212 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Buchungsjournal: unveränderliche Protokollzeile je buchungsrelevantem Vorgang (Stellen, Storno, Zahlung, Export). Nur lesen; wird vom Server geschrieben.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "zeitpunkt",
+  "vorgang",
+  "cb_1",
+  "beleg_doctype",
+  "beleg",
+  "nummer",
+  "betrag_cent",
+  "benutzer",
+  "sb_2",
+  "details",
+  "pruefsumme"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "zeitpunkt",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vorgang",
+   "fieldtype": "Select",
+   "label": "Vorgang",
+   "options": "Gestellt\nStorniert\nZahlung\nGutschrift\nMahnung\nExport\nEingangsrechnung\nAnzahlung\nKorrektur",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "beleg_doctype",
+   "fieldtype": "Link",
+   "label": "Belegart",
+   "options": "DocType",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "beleg",
+   "fieldtype": "Dynamic Link",
+   "label": "Beleg",
+   "options": "beleg_doctype",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "nummer",
+   "fieldtype": "Data",
+   "label": "Belegnummer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "benutzer",
+   "fieldtype": "Link",
+   "label": "Benutzer",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "details",
+   "fieldtype": "Small Text",
+   "label": "Details",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pruefsumme",
+   "fieldtype": "Data",
+   "label": "Prüfsumme (verkettet)",
+   "read_only": 1,
+   "description": "SHA-256 über Vorgang + Vorgänger-Prüfsumme (Kette, Nachweis der Unveränderlichkeit)."
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Buchungsjournal",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  }
+ ],
+ "sort_field": "zeitpunkt",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "hash",
+ "naming_rule": "Random",
+ "title_field": "titel",
+ "search_fields": "beleg,nummer",
+ "in_create": 1
+}

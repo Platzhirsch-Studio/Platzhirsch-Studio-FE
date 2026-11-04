@@ -6,7 +6,8 @@
 // SHOP_MODE off → jede Anfrage 404. Preise und Versand IMMER vom Server; der
 // Browser schickt nur slug/variante/menge und die ANGEZEIGTEN Summen, die hier
 // gegengeprüft werden (Abweichung → 409, nie still ein anderer Betrag).
-// Keine Mails, kein Backoffice. Keine "@/"-Importe (node --test).
+// Mail: nur die Vertragsbestätigung (orderMail.js; live jeder Mailer, test nur
+// Mock-Mailer). Kein Backoffice. Keine "@/"-Importe (node --test).
 import { randomBytes } from "node:crypto";
 import { z } from "zod";
 import { errorResponse, guardForm, readCapped } from "../forms/guard.js";
@@ -21,6 +22,7 @@ import { cartHash, normalizeCart, priceCart, totals } from "./cart.js";
 import { shopMode } from "./mode.js";
 import { fillCopy, shopCopy } from "./copy.js";
 import { ustKlasse, ustSatz } from "./ust.js";
+import { sendeVertragsbestaetigung } from "./orderMail.js";
 
 export const MAX_BYTES = 16 * 1024;
 const notFound = () => Response.json({ success: false, code: "not_found" }, { status: 404 });
@@ -241,13 +243,16 @@ export function checkoutHandler(ctx) {
         locale,
         angelegt: new Date(t).toISOString(),
         verlauf: [{ zeit: new Date(t).toISOString(), status: d.zahlung === "vorort" ? "reserviert" : "offen" }],
-        mail: { status: "nicht_gesendet", grund: mode === "test" ? "testmodus" : "mail-text-fehlt" },
+        // Vertragsbestätigung (§ 7 Abs 3 FAGG, orderMail.js): bei „bezahlen bei Abholung“ sofort,
+        // bei Online-Zahlung erst mit „bezahlt“ (webhook.js). Bis dahin: ausstehend.
+        mail: { status: "ausstehend", art: "vertragsbestaetigung" },
       };
       await ctx.store.put("bestellungen", order.id, order);
       if (versand) await ctx.store.update("tarife", versand.id, (x) => ({ ...x, ablauf: 0, verwendet: order.id }));
       const confirm = `/${locale}/shop/bestellung?b=${order.id}&k=${order.token}`;
       if (d.zahlung === "vorort") {
         console.info(`[shop] ${order.id}: reservierung (${mode})`);
+        await sendeVertragsbestaetigung({ store: ctx.store, mailer: ctx.payments?.mailer || null, now: ctx.now }, order, mode);
         return Response.json({ success: true, redirect: confirm, bestellung: order.id });
       }
 

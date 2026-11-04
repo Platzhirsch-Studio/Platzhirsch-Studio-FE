@@ -1,0 +1,101 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Paket eines Lieferscheins (Maße, Gewicht, Inhalt).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "paket_nr",
+  "paketprofil",
+  "laenge_cm",
+  "breite_cm",
+  "hoehe_cm",
+  "gewicht_g",
+  "zerbrechlich",
+  "inhalt",
+  "sendung"
+ ],
+ "fields": [
+  {
+   "fieldname": "paket_nr",
+   "fieldtype": "Int",
+   "label": "Paket Nr.",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "paketprofil",
+   "fieldtype": "Link",
+   "label": "Paketprofil",
+   "options": "PH Paketprofil",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "laenge_cm",
+   "fieldtype": "Int",
+   "label": "Länge (cm)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "breite_cm",
+   "fieldtype": "Int",
+   "label": "Breite (cm)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "hoehe_cm",
+   "fieldtype": "Int",
+   "label": "Höhe (cm)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "gewicht_g",
+   "fieldtype": "Int",
+   "label": "Gewicht (g)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "zerbrechlich",
+   "fieldtype": "Check",
+   "label": "Zerbrechlich",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "inhalt",
+   "fieldtype": "Data",
+   "label": "Inhalt",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "sendung",
+   "fieldtype": "Link",
+   "label": "Sendung",
+   "options": "PH Sendung",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Lieferschein Paket",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

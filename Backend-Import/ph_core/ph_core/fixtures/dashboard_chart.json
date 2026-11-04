@@ -1,0 +1,21 @@
+[
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH API Aufrufe je Tag",
+  "chart_name": "PH API Aufrufe je Tag",
+  "chart_type": "Count",
+  "document_type": "PH API Protokoll",
+  "based_on": "zeitpunkt",
+  "group_by_type": "Count",
+  "timespan": "Last Month",
+  "time_interval": "Daily",
+  "timeseries": 1,
+  "type": "Bar",
+  "filters_json": "[]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Core",
+  "color": "#30373e",
+  "roles": [{"role": "PH Backoffice-Admin"}, {"role": "PH Geschäftsführung"}]
+ }
+]

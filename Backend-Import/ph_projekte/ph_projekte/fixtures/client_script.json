@@ -1,0 +1,11 @@
+[
+ {
+  "doctype": "Client Script",
+  "name": "PH Anfrage-Projekt anlegen",
+  "dt": "PH Anfrage",
+  "module": "PH Projekte",
+  "view": "Form",
+  "enabled": 1,
+  "script": "// ph_projekte: Button „Projekt anlegen“ in PH Anfrage (PLAN.md WP2/WP4). Server: ph_projekte.api.projekt_aus_anfrage\nfrappe.ui.form.on(\"PH Anfrage\", {\n\trefresh(frm) {\n\t\tif (frm.is_new()) return;\n\t\tif (frm.doc.folgedokument_doctype === \"PH Projekt\" && frm.doc.folgedokument) {\n\t\t\tfrm.add_custom_button(__(\"Projekt öffnen\"), () => frappe.set_route(\"Form\", \"PH Projekt\", frm.doc.folgedokument), __(\"Aktionen\"));\n\t\t\treturn;\n\t\t}\n\t\tif ([\"Spam\", \"Verloren\"].includes(frm.doc.status)) return;\n\t\tfrm.add_custom_button(__(\"Projekt anlegen\"), () => {\n\t\t\tconst d = new frappe.ui.Dialog({\n\t\t\t\ttitle: __(\"Projekt aus Anfrage\"),\n\t\t\t\tfields: [\n\t\t\t\t\t{ fieldname: \"projektart\", fieldtype: \"Select\", label: __(\"Projektart\"), options: [\"Wohnung\", \"Haus\", \"Kueche\", \"Bad\", \"Hotel\", \"Objekt\", \"Yacht\", \"Outdoor\", \"Sonstiges\"], default: \"Wohnung\", reqd: 1 },\n\t\t\t\t\t{ fieldname: \"titel\", fieldtype: \"Data\", label: __(\"Projekttitel\"), default: frm.doc.objektart || frm.doc.projektart || \"\" },\n\t\t\t\t],\n\t\t\t\tprimary_action_label: __(\"Anlegen\"),\n\t\t\t\tprimary_action(values) {\n\t\t\t\t\tfrappe.call({ method: \"ph_projekte.api.projekt_aus_anfrage\", args: { anfrage: frm.doc.name, ...values }, freeze: true, freeze_message: __(\"Projekt wird angelegt …\") }).then((r) => {\n\t\t\t\t\t\td.hide();\n\t\t\t\t\t\tif (r.message) frappe.set_route(\"Form\", \"PH Projekt\", r.message);\n\t\t\t\t\t});\n\t\t\t\t},\n\t\t\t});\n\t\t\td.show();\n\t\t}, __(\"Aktionen\"));\n\t},\n});\n"
+ }
+]

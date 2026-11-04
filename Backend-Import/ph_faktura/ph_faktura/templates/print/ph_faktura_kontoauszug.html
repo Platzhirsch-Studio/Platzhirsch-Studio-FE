@@ -1,0 +1,22 @@
+{#- Kontoauszug Kunde: Druckformat auf PH Kontakt (ph_crm). Listet alle gestellten Rechnungen mit Zahlungen und offenen Posten. -#}
+{% extends "templates/print/ph_basis.html" %}
+{% set k = ph_kontoauszug(doc.name) %}
+{% block titel %}Kontoauszug {{ doc.name }}{% endblock %}
+{% block css %}{% include "templates/print/ph_faktura_css.html" %}{% endblock %}
+{% block kopfrechts %}Kontoauszug<br>Stichtag {{ ph_datum(k.stichtag) }}<br>Kundennummer {{ doc.name }}{% endblock %}
+{% block inhalt %}
+<div class="ph-anschrift"><div class="ph-absender">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }}</div><br>
+{% if doc.get("firma") %}{{ doc.firma }}<br>{% endif %}{{ doc.get("vorname") or "" }} {{ doc.get("nachname") or doc.name }}<br>{% if doc.get("strasse") %}{{ doc.strasse }}<br>{% endif %}{{ doc.get("plz") or "" }} {{ doc.get("ort") or "" }}</div>
+<h1>Kontoauszug</h1>
+<p>Übersicht Ihrer Rechnungen und Zahlungen zum {{ ph_datum(k.stichtag) }}.</p>
+<table class="ph-tabelle"><thead><tr><th>Beleg</th><th>Art</th><th>Datum</th><th>Fällig</th><th class="zahl">Betrag</th><th class="zahl">Bezahlt</th><th class="zahl">Offen</th><th>Status</th></tr></thead><tbody>
+{% for r in k.rechnungen %}<tr{% if r.ueberfaellig_tage > 0 %} style="color:#b91c1c"{% endif %}><td>{{ r.name }}</td><td>{{ r.art }}</td><td>{{ ph_datum(r.datum) }}</td><td>{{ ph_datum(r.faellig) }}{% if r.ueberfaellig_tage > 0 %} (+{{ r.ueberfaellig_tage }} T){% endif %}</td><td class="zahl">{{ ph_betrag(r.zahlbar_cent) }}</td><td class="zahl">{{ ph_betrag(r.bezahlt_cent) }}</td><td class="zahl">{{ ph_betrag(r.offen_cent) }}</td><td>{{ r.status|replace("Ueberfaellig", "Überfällig") }}</td></tr>{% endfor %}
+{% for g in k.gutschriften %}<tr><td>{{ g.name }}</td><td>Gutschrift ({{ g.art }})</td><td>{{ ph_datum(g.datum) }}</td><td>zu {{ g.rechnung }}</td><td class="zahl">− {{ ph_betrag(g.brutto_cent) }}</td><td></td><td></td><td>{{ g.status }}</td></tr>{% endfor %}
+{% if not k.rechnungen and not k.gutschriften %}<tr><td colspan="8" class="ph-grau">Keine Belege.</td></tr>{% endif %}
+</tbody></table>
+<table class="ph-summen">
+  <tr class="ph-summe"><td>Offen gesamt</td><td class="zahl">{{ ph_betrag(k.summe_offen_cent) }}</td></tr>
+  {% if k.summe_ueberfaellig_cent %}<tr><td style="color:#b91c1c">davon überfällig</td><td class="zahl" style="color:#b91c1c">{{ ph_betrag(k.summe_ueberfaellig_cent) }}</td></tr>{% endif %}
+</table>
+{% if k.summe_offen_cent > 0 %}{% set konto = ph_bankkonto() %}<div class="ph-zahlung"><div>{{ konto.kontoinhaber or firma.firmenname }} · IBAN {{ konto.iban or "–" }}{% if konto.bic %} · BIC {{ konto.bic }}{% endif %}<br>Bitte geben Sie bei Überweisungen die Rechnungsnummer als Zahlungsreferenz an.</div></div>{% endif %}
+{% endblock %}

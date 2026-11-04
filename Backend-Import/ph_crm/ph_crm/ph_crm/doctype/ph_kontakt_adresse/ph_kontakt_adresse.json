@@ -1,0 +1,30 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 08:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["art", "bezeichnung", "strasse", "plz", "ort", "land", "hinweis", "standard"],
+ "fields": [
+  {"fieldname": "art", "fieldtype": "Select", "label": "Art", "options": "Liefer\nRechnung\nObjekt\nSonstige", "reqd": 1, "default": "Liefer", "in_list_view": 1, "columns": 1},
+  {"fieldname": "bezeichnung", "fieldtype": "Data", "label": "Bezeichnung (z. B. Ferienhaus)", "in_list_view": 1, "columns": 2},
+  {"fieldname": "strasse", "fieldtype": "Data", "label": "Straße / Nr.", "reqd": 1, "in_list_view": 1, "columns": 3},
+  {"fieldname": "plz", "fieldtype": "Data", "label": "PLZ", "reqd": 1, "in_list_view": 1, "columns": 1},
+  {"fieldname": "ort", "fieldtype": "Data", "label": "Ort", "reqd": 1, "in_list_view": 1, "columns": 2},
+  {"fieldname": "land", "fieldtype": "Link", "label": "Land", "options": "Country", "in_list_view": 1, "columns": 1},
+  {"fieldname": "hinweis", "fieldtype": "Small Text", "label": "Hinweis (Zufahrt, Etage, Lift, Parken)"},
+  {"fieldname": "standard", "fieldtype": "Check", "label": "Standard für diese Art", "default": "0"}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH CRM",
+ "name": "PH Kontakt Adresse",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

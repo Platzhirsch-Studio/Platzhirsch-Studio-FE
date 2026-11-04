@@ -1,0 +1,463 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_allgemein",
+  "sb_schalter",
+  "automatik_aktiv",
+  "test_empfaenger",
+  "kanzlei_fusszeilen_freigegeben",
+  "kanzlei_b_einladung_bestaetigt",
+  "ecg_abgleich_gueltig_bis",
+  "cb_a1",
+  "website_url",
+  "absender_name",
+  "absender_gastgeberin_name",
+  "absender_gastgeberin",
+  "antwort_an",
+  "sb_versand",
+  "versandweg",
+  "versand_stapel",
+  "cb_a2",
+  "schluesselnamen",
+  "tab_newsletter",
+  "sb_doi",
+  "doi_gueltig_stunden",
+  "doi_erinnerung_nach_stunden",
+  "unbestaetigt_loeschen_tage",
+  "ip_hash_speichern",
+  "cb_n1",
+  "einwilligung_textversion",
+  "newsletter_email_group",
+  "einladungen_email_group",
+  "bestaetigen_pfad",
+  "abmelden_pfad",
+  "sb_regeln",
+  "werbung_pro_30_tage",
+  "werbung_wochentage",
+  "sperrtage",
+  "tab_quelle",
+  "sb_quelle",
+  "auftrags_doctype",
+  "feld_email",
+  "feld_name",
+  "feld_anrede",
+  "feld_lieferdatum",
+  "feld_berater",
+  "feld_produkt",
+  "cb_q1",
+  "feld_storniert",
+  "wert_storniert",
+  "positionen_tabelle",
+  "feld_pflegekategorie",
+  "feld_outdoor",
+  "feld_kontakt",
+  "tab_empfehlung",
+  "sb_empfehlung",
+  "empfehlung_gutschein_cent",
+  "empfehlung_ruecktritt_tage",
+  "empfehlung_bedingungen_url",
+  "cb_e1",
+  "event_erinnerung_tage",
+  "event_loeschfrist_monate"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_allgemein",
+   "fieldtype": "Tab Break",
+   "label": "Allgemein"
+  },
+  {
+   "fieldname": "sb_schalter",
+   "fieldtype": "Section Break",
+   "label": "Automatik"
+  },
+  {
+   "fieldname": "automatik_aktiv",
+   "fieldtype": "Check",
+   "label": "Kundenreisen aktiv",
+   "default": "0",
+   "description": "Erst einschalten, wenn Mail-Dienst, SPF/DKIM/DMARC und die Kanzlei-Freigabe der Fußzeilen vorliegen. Testmodus von PH Einstellungen gilt zusätzlich (alle Mails an das Team-Postfach)."
+  },
+  {
+   "fieldname": "test_empfaenger",
+   "fieldtype": "Data",
+   "label": "Testadresse für Testmails",
+   "options": "Email"
+  },
+  {
+   "fieldname": "kanzlei_fusszeilen_freigegeben",
+   "fieldtype": "Check",
+   "label": "Fußzeilen A/B von der Kanzlei freigegeben",
+   "default": "0"
+  },
+  {
+   "fieldname": "kanzlei_b_einladung_bestaetigt",
+   "fieldtype": "Check",
+   "label": "Kanzlei: Einladung an Bestandskunden ohne Einwilligung zulässig (B)",
+   "default": "0"
+  },
+  {
+   "fieldname": "ecg_abgleich_gueltig_bis",
+   "fieldtype": "Date",
+   "label": "ECG-Liste abgeglichen, gültig bis",
+   "description": "Ohne gültigen Abgleich keine Mails mit Grundlage B. Gesperrte Adressen als Email Unsubscribe (global) importieren."
+  },
+  {
+   "fieldname": "cb_a1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "website_url",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL",
+   "default": "https://platzhirsch.studio"
+  },
+  {
+   "fieldname": "absender_name",
+   "fieldtype": "Data",
+   "label": "Absender (Name)",
+   "default": "Platzhirsch Home Living"
+  },
+  {
+   "fieldname": "absender_gastgeberin_name",
+   "fieldtype": "Data",
+   "label": "Absender Gastgeberin (Name)",
+   "default": "Susanne Messmer · Platzhirsch"
+  },
+  {
+   "fieldname": "absender_gastgeberin",
+   "fieldtype": "Data",
+   "label": "Absender Gastgeberin (E-Mail)",
+   "options": "Email"
+  },
+  {
+   "fieldname": "antwort_an",
+   "fieldtype": "Data",
+   "label": "Antwort an",
+   "options": "Email",
+   "default": "info@platzhirsch.studio"
+  },
+  {
+   "fieldname": "sb_versand",
+   "fieldtype": "Section Break",
+   "label": "Versandweg"
+  },
+  {
+   "fieldname": "versandweg",
+   "fieldtype": "Select",
+   "label": "Versandweg",
+   "options": "Frappe Email Queue\nResend",
+   "default": "Frappe Email Queue",
+   "description": "Frappe Email Queue = Standard-Email-Account der Site. Resend = HTTPS-Webhook an api.resend.com mit dem Schlüssel ph_resend_api_key aus site_config.json."
+  },
+  {
+   "fieldname": "versand_stapel",
+   "fieldtype": "Int",
+   "label": "Empfänger je Scheduler-Lauf",
+   "default": "200"
+  },
+  {
+   "fieldname": "cb_a2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "schluesselnamen",
+   "fieldtype": "HTML",
+   "label": "Schlüsselnamen",
+   "options": "<p>Geheimnisse nur in <code>sites/&lt;site&gt;/site_config.json</code>: <code>ph_resend_api_key</code> (Resend), <code>ph_mail_from</code> (Absenderadresse). Gelesen mit <code>frappe.conf.get(...)</code>. Hier stehen nur die Namen.</p>"
+  },
+  {
+   "fieldname": "tab_newsletter",
+   "fieldtype": "Tab Break",
+   "label": "Newsletter / DOI"
+  },
+  {
+   "fieldname": "sb_doi",
+   "fieldtype": "Section Break",
+   "label": "Double-Opt-in"
+  },
+  {
+   "fieldname": "doi_gueltig_stunden",
+   "fieldtype": "Int",
+   "label": "DOI-Link gültig (Stunden)",
+   "default": "48"
+  },
+  {
+   "fieldname": "doi_erinnerung_nach_stunden",
+   "fieldtype": "Int",
+   "label": "DOI-Erinnerung nach (Stunden, 0 = keine)",
+   "default": "24"
+  },
+  {
+   "fieldname": "unbestaetigt_loeschen_tage",
+   "fieldtype": "Int",
+   "label": "Unbestätigte Abos löschen nach (Tagen)",
+   "default": "30",
+   "description": "DSGVO Datensparsamkeit: unbestätigte Anmeldungen samt Einwilligungs-Eintrag werden gelöscht."
+  },
+  {
+   "fieldname": "ip_hash_speichern",
+   "fieldtype": "Check",
+   "label": "IP-Hash bei Einwilligungen speichern",
+   "default": "0",
+   "description": "Aus = IP-frei. Ein = SHA-256 gekürzt als zusätzlicher Nachweis."
+  },
+  {
+   "fieldname": "cb_n1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "einwilligung_textversion",
+   "fieldtype": "Data",
+   "label": "Aktuelle Textversion Newsletter-Einwilligung",
+   "default": "nl-2026-10-29"
+  },
+  {
+   "fieldname": "newsletter_email_group",
+   "fieldtype": "Link",
+   "label": "Email Group Newsletter (optional)",
+   "options": "Email Group"
+  },
+  {
+   "fieldname": "einladungen_email_group",
+   "fieldtype": "Link",
+   "label": "Email Group Einladungen (optional)",
+   "options": "Email Group"
+  },
+  {
+   "fieldname": "bestaetigen_pfad",
+   "fieldtype": "Data",
+   "label": "Website-Pfad Bestätigung",
+   "default": "/de/newsletter/bestaetigen",
+   "description": "Die Website ruft dort ph_marketing.api.confirm_newsletter(token) auf."
+  },
+  {
+   "fieldname": "abmelden_pfad",
+   "fieldtype": "Data",
+   "label": "Website-Pfad Abmeldung",
+   "default": "/de/newsletter/abmelden"
+  },
+  {
+   "fieldname": "sb_regeln",
+   "fieldtype": "Section Break",
+   "label": "Versandregeln Werbung"
+  },
+  {
+   "fieldname": "werbung_pro_30_tage",
+   "fieldtype": "Int",
+   "label": "Höchstens werbliche Mails je 30 Tage",
+   "default": "2"
+  },
+  {
+   "fieldname": "werbung_wochentage",
+   "fieldtype": "Data",
+   "label": "Werbung nur an Wochentagen (ISO, Komma)",
+   "default": "2,3,4",
+   "description": "2 = Dienstag … 4 = Donnerstag"
+  },
+  {
+   "fieldname": "sperrtage",
+   "fieldtype": "Data",
+   "label": "Sperrtage (MM-TT, Komma)",
+   "default": "12-24,12-25,12-26,12-31,01-01"
+  },
+  {
+   "fieldname": "tab_quelle",
+   "fieldtype": "Tab Break",
+   "label": "Datenquelle Aufträge"
+  },
+  {
+   "fieldname": "sb_quelle",
+   "fieldtype": "Section Break",
+   "label": "Auftrags-Doctype für Kundenreisen"
+  },
+  {
+   "fieldname": "auftrags_doctype",
+   "fieldtype": "Link",
+   "label": "Auftrags-Doctype",
+   "options": "DocType",
+   "default": "PH Auftragsbestaetigung",
+   "description": "PH Auftragsbestaetigung (ph_faktura) oder PH Bestellung (ph_shop). Felder unten zuordnen. Fehlt die App, laufen nur Reisen über Einwilligungen und Events."
+  },
+  {
+   "fieldname": "feld_email",
+   "fieldtype": "Data",
+   "label": "Feld E-Mail",
+   "description": "Leer lassen: E-Mail kommt über feld_kontakt aus PH Kontakt.email (PH Auftragsbestaetigung hat kein E-Mail-Feld)."
+  },
+  {
+   "fieldname": "feld_name",
+   "fieldtype": "Data",
+   "label": "Feld Name",
+   "default": "kunde_name"
+  },
+  {
+   "fieldname": "feld_anrede",
+   "fieldtype": "Data",
+   "label": "Feld Anrede (optional)",
+   "description": "Leer lassen: Anrede aus PH Kontakt.anrede über feld_kontakt."
+  },
+  {
+   "fieldname": "feld_lieferdatum",
+   "fieldtype": "Data",
+   "label": "Feld Lieferdatum",
+   "default": "liefertermin_bestaetigt",
+   "description": "PH Auftragsbestaetigung: liefertermin_bestaetigt (Date). PH Bestellung: versendet_am/abgeholt_am (Datetime)."
+  },
+  {
+   "fieldname": "feld_berater",
+   "fieldtype": "Data",
+   "label": "Feld Berater (User)",
+   "default": "zugewiesen_an",
+   "description": "PH Auftragsbestaetigung.zugewiesen_an (User)."
+  },
+  {
+   "fieldname": "feld_produkt",
+   "fieldtype": "Data",
+   "label": "Feld Produktbezeichnung",
+   "default": "titel"
+  },
+  {
+   "fieldname": "cb_q1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "feld_storniert",
+   "fieldtype": "Data",
+   "label": "Feld storniert (Status)",
+   "default": "status"
+  },
+  {
+   "fieldname": "wert_storniert",
+   "fieldtype": "Data",
+   "label": "Wert für storniert",
+   "default": "Storniert"
+  },
+  {
+   "fieldname": "positionen_tabelle",
+   "fieldtype": "Data",
+   "label": "Positions-Tabelle",
+   "default": "positionen"
+  },
+  {
+   "fieldname": "feld_pflegekategorie",
+   "fieldtype": "Data",
+   "label": "Feld Pflegekategorie (Position)",
+   "description": "PH Beleg Position hat keine Pflegekategorie; sie liegt am PH Produktpass (ph_projekte, pflegekategorie). Leer = Reisen ohne Pflege-Segment."
+  },
+  {
+   "fieldname": "feld_outdoor",
+   "fieldtype": "Data",
+   "label": "Feld Outdoor (Position, Check)",
+   "description": "PH Beleg Position hat kein Outdoor-Kennzeichen; PH Produktpass.outdoor (ph_projekte). Leer = kein Outdoor-Segment."
+  },
+  {
+   "fieldname": "feld_kontakt",
+   "fieldtype": "Data",
+   "label": "Feld Kontakt (Link PH Kontakt)",
+   "default": "kontakt",
+   "description": "Über PH Kontakt werden nicht_kontaktieren, widerspruchshinweis_am und widerspruchshinweis_quelle gelesen (§ 174 Abs. 4 Z 3 TKG)."
+  },
+  {
+   "fieldname": "tab_empfehlung",
+   "fieldtype": "Tab Break",
+   "label": "Empfehlungen und Events"
+  },
+  {
+   "fieldname": "sb_empfehlung",
+   "fieldtype": "Section Break",
+   "label": "Empfehlungsprogramm „Unter Freunden“"
+  },
+  {
+   "fieldname": "empfehlung_gutschein_cent",
+   "fieldtype": "Int",
+   "label": "Gutscheinwert je erfolgreicher Empfehlung (Cent)",
+   "description": "Legt der Inhaber fest. Leer = Mail nennt keinen Betrag."
+  },
+  {
+   "fieldname": "empfehlung_ruecktritt_tage",
+   "fieldtype": "Int",
+   "label": "Rücktrittsfrist in Tagen bis zur Gutscheinausgabe",
+   "default": "14"
+  },
+  {
+   "fieldname": "empfehlung_bedingungen_url",
+   "fieldtype": "Data",
+   "label": "Link Teilnahmebedingungen (nach Freigabe)",
+   "options": "URL"
+  },
+  {
+   "fieldname": "cb_e1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "event_erinnerung_tage",
+   "fieldtype": "Int",
+   "label": "Event-Erinnerung Tage vorher (Standard)",
+   "default": "2"
+  },
+  {
+   "fieldname": "event_loeschfrist_monate",
+   "fieldtype": "Int",
+   "label": "Anmeldedaten löschen nach (Monate nach Event)",
+   "default": "3",
+   "description": "src/app/[locale]/adventsabend/event.js LOESCHFRIST_MONATE"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Marketing Einstellungen",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "description": "Schalter, Versandweg, Datenquelle und Fristen des Marketings. Geheimnisse (Resend-Schlüssel) stehen NIE hier, sondern in site_config.json unter ph_resend_api_key / ph_mail_from.",
+ "issingle": 1,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:code",
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Oberste Ebene des Fehlerkatalogs (Oberfläche, Mechanik, Elektro, Polster, Stein …). Fehlercodes hängen an einem Bereich.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "code",
+  "bezeichnung",
+  "aktiv",
+  "cb_1",
+  "sortierung",
+  "farbe",
+  "sb_text",
+  "beschreibung",
+  "sb_stat",
+  "anzahl_codes"
+ ],
+ "fields": [
+  {"fieldname": "code", "fieldtype": "Data", "label": "Kürzel", "reqd": 1, "unique": 1, "in_list_view": 1, "description": "Drei Großbuchstaben, z. B. OBF, MEC, ELE."},
+  {"fieldname": "bezeichnung", "fieldtype": "Data", "label": "Bereich", "reqd": 1, "in_list_view": 1, "in_global_search": 1},
+  {"fieldname": "aktiv", "fieldtype": "Check", "label": "Aktiv", "default": "1", "in_list_view": 1, "in_standard_filter": 1},
+  {"fieldname": "cb_1", "fieldtype": "Column Break"},
+  {"fieldname": "sortierung", "fieldtype": "Int", "label": "Sortierung", "default": "100"},
+  {"fieldname": "farbe", "fieldtype": "Color", "label": "Farbe (Auswertungen)"},
+  {"fieldname": "sb_text", "fieldtype": "Section Break", "label": "Beschreibung"},
+  {"fieldname": "beschreibung", "fieldtype": "Small Text", "label": "Beschreibung"},
+  {"fieldname": "sb_stat", "fieldtype": "Section Break", "label": "Kennzahlen", "collapsible": 1},
+  {"fieldname": "anzahl_codes", "fieldtype": "Int", "label": "Fehlercodes im Bereich", "read_only": 1}
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {"link_doctype": "PH Fehlercode", "link_fieldname": "bereich", "group": "Katalog"},
+  {"link_doctype": "PH Servicefall", "link_fieldname": "fehlerbereich", "group": "Fälle"}
+ ],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Service",
+ "name": "PH Fehlerbereich",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Backoffice-Admin", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Geschäftsführung", "read": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Service Leitung", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Service Mitarbeiter", "read": 1, "print": 1, "email": 1, "report": 1, "share": 1},
+  {"role": "PH Techniker", "read": 1},
+  {"role": "PH Website Integration", "read": 1}
+ ],
+ "search_fields": "bezeichnung",
+ "sort_field": "sortierung",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "bezeichnung",
+ "track_changes": 1
+}

@@ -1,0 +1,531 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Kaufvorgang eines oder mehrerer Gutscheine über die Website (src/lib/payments/voucherOrder.js, Bestellnummer G-XXXX-XXXX). Nach bestätigter Zahlung entstehen die PH Gutscheine.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tb_bestellung",
+  "bestellnummer",
+  "titel",
+  "status",
+  "livemode",
+  "cb_kopf",
+  "erstellt",
+  "betrag_cent",
+  "anzahl",
+  "summe_cent",
+  "waehrung",
+  "sb_gestaltung",
+  "motiv",
+  "empfaenger",
+  "cb_gestaltung",
+  "grusstext",
+  "tb_kaeufer",
+  "kontakt",
+  "kaeufer_name",
+  "kaeufer_email",
+  "kaeufer_firma",
+  "cb_kaeufer",
+  "rechnung_name",
+  "rechnung_firma",
+  "rechnung_adresse",
+  "rechnung_uid",
+  "tb_zahlung",
+  "bezahlt_am",
+  "zahlung",
+  "erstattet_cent",
+  "cb_zahlung",
+  "stripe_session",
+  "payment_intent",
+  "sb_gutscheine",
+  "gutscheine",
+  "mail_gesendet_am",
+  "widerruf",
+  "tb_recht",
+  "zustimmung_bedingungen_stand",
+  "zustimmung_widerruf_stand",
+  "zustimmung_zeit",
+  "verlauf",
+  "tb_system",
+  "idempotency_key",
+  "ip_hash",
+  "quelle",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "tb_bestellung",
+   "fieldtype": "Tab Break",
+   "label": "Bestellung"
+  },
+  {
+   "fieldname": "bestellnummer",
+   "fieldtype": "Data",
+   "label": "Bestellnummer",
+   "reqd": 1,
+   "unique": 1,
+   "description": "G-XXXX-XXXX (Website) – wird zum Dokumentnamen."
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "offen\nzahlung_ausstehend\nbezahlt\nfehlgeschlagen\nabgelaufen\nerstattet\nteilerstattet\nwiderrufen\npruefen",
+   "default": "offen",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Setzt der Workflow bzw. der Server (Webhook, Buttons)."
+  },
+  {
+   "fieldname": "livemode",
+   "fieldtype": "Check",
+   "label": "Livemodus (Stripe)",
+   "default": "0",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "erstellt",
+   "fieldtype": "Datetime",
+   "label": "Erstellt",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Wert je Gutschein (Cent)",
+   "non_negative": 1,
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "anzahl",
+   "fieldtype": "Int",
+   "label": "Anzahl",
+   "default": "1",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "summe_cent",
+   "fieldtype": "Int",
+   "label": "Summe (Cent)",
+   "non_negative": 1,
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sb_gestaltung",
+   "fieldtype": "Section Break",
+   "label": "Gestaltung"
+  },
+  {
+   "fieldname": "motiv",
+   "fieldtype": "Select",
+   "label": "Motiv",
+   "options": "schlicht\nseelicht\ngeweih",
+   "default": "schlicht"
+  },
+  {
+   "fieldname": "empfaenger",
+   "fieldtype": "Data",
+   "label": "Empfänger"
+  },
+  {
+   "fieldname": "cb_gestaltung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grusstext",
+   "fieldtype": "Small Text",
+   "label": "Grußtext"
+  },
+  {
+   "fieldname": "tb_kaeufer",
+   "fieldtype": "Tab Break",
+   "label": "Käufer"
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "kaeufer_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "reqd": 1,
+   "in_global_search": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kaeufer_email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email",
+   "reqd": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "kaeufer_firma",
+   "fieldtype": "Data",
+   "label": "Firma"
+  },
+  {
+   "fieldname": "cb_kaeufer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rechnung_name",
+   "fieldtype": "Data",
+   "label": "Rechnung: Name"
+  },
+  {
+   "fieldname": "rechnung_firma",
+   "fieldtype": "Data",
+   "label": "Rechnung: Firma"
+  },
+  {
+   "fieldname": "rechnung_adresse",
+   "fieldtype": "Small Text",
+   "label": "Rechnung: Adresse"
+  },
+  {
+   "fieldname": "rechnung_uid",
+   "fieldtype": "Data",
+   "label": "Rechnung: UID"
+  },
+  {
+   "fieldname": "tb_zahlung",
+   "fieldtype": "Tab Break",
+   "label": "Zahlung und Gutscheine"
+  },
+  {
+   "fieldname": "bezahlt_am",
+   "fieldtype": "Datetime",
+   "label": "Bezahlt am",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "zahlung",
+   "fieldtype": "Link",
+   "label": "Zahlung",
+   "options": "PH Zahlung",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "erstattet_cent",
+   "fieldtype": "Int",
+   "label": "Erstattet (Cent)",
+   "non_negative": 1,
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "cb_zahlung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stripe_session",
+   "fieldtype": "Data",
+   "label": "Checkout Session",
+   "read_only": 1,
+   "no_copy": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "payment_intent",
+   "fieldtype": "Data",
+   "label": "Payment Intent",
+   "read_only": 1,
+   "no_copy": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "sb_gutscheine",
+   "fieldtype": "Section Break",
+   "label": "Ausgestellte Gutscheine"
+  },
+  {
+   "fieldname": "gutscheine",
+   "fieldtype": "Table",
+   "label": "Gutscheine",
+   "options": "PH Gutschein Bestellung Code",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "mail_gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Gutschein-Mail gesendet am",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "widerruf",
+   "fieldtype": "Link",
+   "label": "Widerruf",
+   "options": "PH Widerruf",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "tb_recht",
+   "fieldtype": "Tab Break",
+   "label": "Nachweis"
+  },
+  {
+   "fieldname": "zustimmung_bedingungen_stand",
+   "fieldtype": "Date",
+   "label": "Gutscheinbedingungen (Stand)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "zustimmung_widerruf_stand",
+   "fieldtype": "Date",
+   "label": "Widerrufsbelehrung (Stand)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "zustimmung_zeit",
+   "fieldtype": "Datetime",
+   "label": "Zustimmung am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verlauf",
+   "fieldtype": "Table",
+   "label": "Verlauf",
+   "options": "PH Bestellung Verlauf",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "tb_system",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "website\nbackoffice\nstripe\nkassa\nimport",
+   "default": "backoffice",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Geändert von",
+   "options": "PH Gutschein Bestellung",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Gutschein",
+   "link_fieldname": "gutschein_bestellung",
+   "group": "Gutscheine"
+  },
+  {
+   "link_doctype": "PH Zahlung",
+   "link_fieldname": "bezug",
+   "group": "Zahlung"
+  },
+  {
+   "link_doctype": "PH Widerruf",
+   "link_fieldname": "gutschein_bestellung",
+   "group": "Rücktritt"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Gutschein Bestellung",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "erstellt",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "offen",
+   "color": "Blue"
+  },
+  {
+   "title": "zahlung_ausstehend",
+   "color": "Orange"
+  },
+  {
+   "title": "bezahlt",
+   "color": "Green"
+  },
+  {
+   "title": "fehlgeschlagen",
+   "color": "Red"
+  },
+  {
+   "title": "abgelaufen",
+   "color": "Gray"
+  },
+  {
+   "title": "erstattet",
+   "color": "Gray"
+  },
+  {
+   "title": "teilerstattet",
+   "color": "Orange"
+  },
+  {
+   "title": "widerrufen",
+   "color": "Red"
+  },
+  {
+   "title": "pruefen",
+   "color": "Pink"
+  }
+ ],
+ "track_changes": 1,
+ "title_field": "titel",
+ "search_fields": "kaeufer_name,kaeufer_email,payment_intent",
+ "autoname": "field:bestellnummer",
+ "naming_rule": "By fieldname",
+ "track_seen": 1
+}

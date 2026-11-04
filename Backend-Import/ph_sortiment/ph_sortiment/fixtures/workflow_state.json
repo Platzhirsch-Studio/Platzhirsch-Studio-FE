@@ -1,0 +1,58 @@
+[
+ {
+  "doctype": "Workflow State",
+  "name": "PH Geprueft",
+  "workflow_state_name": "PH Geprueft",
+  "style": "Info",
+  "icon": "check"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Ausgelaufen",
+  "workflow_state_name": "PH Ausgelaufen",
+  "style": "Danger",
+  "icon": "remove"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH AB erhalten",
+  "workflow_state_name": "PH AB erhalten",
+  "style": "Info",
+  "icon": "file"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH AB geprueft",
+  "workflow_state_name": "PH AB geprueft",
+  "style": "Info",
+  "icon": "ok-sign"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Teilgeliefert",
+  "workflow_state_name": "PH Teilgeliefert",
+  "style": "Warning",
+  "icon": "truck"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Geliefert",
+  "workflow_state_name": "PH Geliefert",
+  "style": "Success",
+  "icon": "truck"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Hochgeladen",
+  "workflow_state_name": "PH Hochgeladen",
+  "style": "Primary",
+  "icon": "upload"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Uebernommen",
+  "workflow_state_name": "PH Uebernommen",
+  "style": "Success",
+  "icon": "ok"
+ }
+]

@@ -1,0 +1,51 @@
+[
+ {
+  "doctype": "Workflow State",
+  "name": "PH Besetzt",
+  "workflow_state_name": "PH Besetzt",
+  "style": "Primary",
+  "icon": "user"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Eingegangen",
+  "workflow_state_name": "PH Eingegangen",
+  "style": "Primary",
+  "icon": "inbox"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Gesichtet",
+  "workflow_state_name": "PH Gesichtet",
+  "style": "Info",
+  "icon": "eye-open"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Gespraech",
+  "workflow_state_name": "PH Gespraech",
+  "style": "Info",
+  "icon": "comments"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Eingestellt",
+  "workflow_state_name": "PH Eingestellt",
+  "style": "Success",
+  "icon": "ok"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Abgesagt",
+  "workflow_state_name": "PH Abgesagt",
+  "style": "Inverse",
+  "icon": "remove"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Zurueckgezogen",
+  "workflow_state_name": "PH Zurueckgezogen",
+  "style": "Danger",
+  "icon": "share-alt"
+ }
+]

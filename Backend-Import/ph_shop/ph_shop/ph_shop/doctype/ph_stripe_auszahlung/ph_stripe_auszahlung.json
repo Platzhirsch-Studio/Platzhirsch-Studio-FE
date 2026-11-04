@@ -1,0 +1,283 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Stripe-Payout auf das Bankkonto: Betrag, Gebühren, enthaltene Zahlungen (Abgleich gegen PH Zahlung; Bankumsatz verknüpft ph_faktura per Custom Field).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "payout_id",
+  "titel",
+  "status",
+  "livemode",
+  "cb_kopf",
+  "betrag_cent",
+  "brutto_cent",
+  "gebuehren_cent",
+  "waehrung",
+  "sb_datum",
+  "datum_erwartet",
+  "datum_bank",
+  "cb_datum",
+  "abgeglichen_am",
+  "differenz_cent",
+  "sb_zahlungen",
+  "zahlungen",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "payout_id",
+   "fieldtype": "Data",
+   "label": "Payout-ID",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "angekuendigt\nunterwegs\nbezahlt\nfehlgeschlagen\nstorniert\nabgeglichen",
+   "default": "angekuendigt",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "livemode",
+   "fieldtype": "Check",
+   "label": "Livemodus",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Auszahlung (Cent)",
+   "non_negative": 1,
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "brutto_cent",
+   "fieldtype": "Int",
+   "label": "Brutto der Zahlungen (Cent)",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "gebuehren_cent",
+   "fieldtype": "Int",
+   "label": "Gebühren (Cent)",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "sb_datum",
+   "fieldtype": "Section Break",
+   "label": "Termine"
+  },
+  {
+   "fieldname": "datum_erwartet",
+   "fieldtype": "Date",
+   "label": "Erwartet am",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "datum_bank",
+   "fieldtype": "Date",
+   "label": "Am Konto"
+  },
+  {
+   "fieldname": "cb_datum",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abgeglichen_am",
+   "fieldtype": "Datetime",
+   "label": "Abgeglichen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "differenz_cent",
+   "fieldtype": "Int",
+   "label": "Differenz (Cent)",
+   "read_only": 1,
+   "description": "Auszahlung − Summe (Zahlungen − Gebühren − Erstattungen). 0 = stimmig."
+  },
+  {
+   "fieldname": "sb_zahlungen",
+   "fieldtype": "Section Break",
+   "label": "Enthaltene Zahlungen"
+  },
+  {
+   "fieldname": "zahlungen",
+   "fieldtype": "Table",
+   "label": "Zahlungen",
+   "options": "PH Stripe Auszahlung Zahlung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Zahlung",
+   "link_fieldname": "stripe_auszahlung",
+   "group": "Zahlungen"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Stripe Auszahlung",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  }
+ ],
+ "sort_field": "datum_erwartet",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "angekuendigt",
+   "color": "Blue"
+  },
+  {
+   "title": "unterwegs",
+   "color": "Orange"
+  },
+  {
+   "title": "bezahlt",
+   "color": "Green"
+  },
+  {
+   "title": "fehlgeschlagen",
+   "color": "Red"
+  },
+  {
+   "title": "storniert",
+   "color": "Gray"
+  },
+  {
+   "title": "abgeglichen",
+   "color": "Green"
+  }
+ ],
+ "track_changes": 1,
+ "title_field": "titel",
+ "search_fields": "payout_id",
+ "autoname": "field:payout_id",
+ "naming_rule": "By fieldname"
+}

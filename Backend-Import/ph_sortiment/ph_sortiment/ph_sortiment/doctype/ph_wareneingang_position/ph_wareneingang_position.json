@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Position eines Wareneingangs (erwartet/erhalten, Zustand, Foto).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "position",
+  "produkt",
+  "bezeichnung",
+  "menge_erwartet",
+  "menge_erhalten",
+  "zustand",
+  "foto",
+  "seriennummer",
+  "lagerort_text",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "position",
+   "fieldtype": "Int",
+   "label": "Pos. Bestellung",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "menge_erwartet",
+   "fieldtype": "Int",
+   "label": "Erwartet",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "menge_erhalten",
+   "fieldtype": "Int",
+   "label": "Erhalten",
+   "in_list_view": 1,
+   "columns": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "zustand",
+   "fieldtype": "Select",
+   "label": "Zustand",
+   "options": "ok\nTransportschaden\nbeschaedigt\nfalsch\nfehlt",
+   "default": "ok",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "foto",
+   "fieldtype": "Attach Image",
+   "label": "Foto",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "seriennummer",
+   "fieldtype": "Data",
+   "label": "Seriennummer"
+  },
+  {
+   "fieldname": "lagerort_text",
+   "fieldtype": "Data",
+   "label": "Lagerort (Text)",
+   "description": "Link auf PH Lagerort ergänzt ph_logistik per Custom Field."
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis",
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Wareneingang Position",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

@@ -1,0 +1,16 @@
+{% extends "templates/print/ph_basis.html" %}
+{% set einst = frappe.get_cached_doc("PH Personal Einstellungen") %}
+{% block titel %}Absage {{ doc.name }}{% endblock %}
+{% block kopfrechts %}{{ firma.ort }}, {{ ph_datum(doc.absage_gesendet_am or frappe.utils.nowdate()) }}{% endblock %}
+{% block css %} .ph-brief p { margin: 0 0 3mm; } .ph-anschrift { margin: 6mm 0 12mm; line-height: 1.4; } {% endblock %}
+{% block inhalt %}
+<div class="ph-brief">
+  <div class="ph-absender">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }}</div>
+  <div class="ph-anschrift">{{ doc.anrede or "" }}<br>{{ doc.vorname or "" }} {{ doc.nachname }}<br>{{ doc.plz_ort or "" }}</div>
+  <h1>Ihre Bewerbung{% if doc.stelle_titel %} als {{ doc.stelle_titel }}{% endif %}</h1>
+  <p>{% if doc.anrede == "Frau" %}Sehr geehrte Frau {{ doc.nachname }},{% elif doc.anrede == "Herr" %}Sehr geehrter Herr {{ doc.nachname }},{% else %}Guten Tag {{ doc.vorname or "" }} {{ doc.nachname }},{% endif %}</p>
+  {{ einst.absage_text }}
+  <p>Mit freundlichen Grüßen</p>
+  <p style="margin-top:10mm">{{ firma.geschaeftsfuehrung or firma.marke }}<br><span style="color:#6b7280">{{ firma.kurzname or firma.firmenname }}</span></p>
+</div>
+{% endblock %}

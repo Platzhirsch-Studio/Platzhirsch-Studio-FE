@@ -1,0 +1,200 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "vorlage_id",
+  "betreff",
+  "preheader",
+  "art",
+  "cb_1",
+  "sprache",
+  "fusszeile",
+  "rechtsgrundlage",
+  "quelle",
+  "stand",
+  "sb_html",
+  "html",
+  "variablen_hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "vorlage_id",
+   "fieldtype": "Data",
+   "label": "Kennung",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "betreff",
+   "fieldtype": "Data",
+   "label": "Betreff (Jinja erlaubt)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "preheader",
+   "fieldtype": "Data",
+   "label": "Preheader"
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Kundenreise\nSystem\nEvent\nNewsletter",
+   "default": "Kundenreise",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sprache",
+   "fieldtype": "Select",
+   "label": "Sprache",
+   "options": "de\nen\nfr\nit",
+   "default": "de"
+  },
+  {
+   "fieldname": "fusszeile",
+   "fieldtype": "Select",
+   "label": "Fußzeile",
+   "options": "V\nS\nA\nB\nje Empfänger",
+   "default": "S"
+  },
+  {
+   "fieldname": "rechtsgrundlage",
+   "fieldtype": "Small Text",
+   "label": "Rechtsgrundlage (Doku)"
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Data",
+   "label": "Textquelle"
+  },
+  {
+   "fieldname": "stand",
+   "fieldtype": "Date",
+   "label": "Stand"
+  },
+  {
+   "fieldname": "sb_html",
+   "fieldtype": "Section Break",
+   "label": "Inhalt"
+  },
+  {
+   "fieldname": "html",
+   "fieldtype": "Code",
+   "label": "HTML (Jinja)",
+   "options": "HTML",
+   "reqd": 1
+  },
+  {
+   "fieldname": "variablen_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Verfügbare Variablen",
+   "read_only": 1,
+   "default": "anrede, produkt, berater_name, berater_telefon, pflege_module, portal_url, bewerten_url, event_titel, event_datum, event_uhrzeit, event_programm, event_url, gemerkte_stuecke, abmelde_url, bestaetigen_url, einwilligung_datum, fusszeile_html"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Mail Vorlage",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "description": "Jinja-Mailvorlage für Kundenreisen, DOI, Events und Newsletter (Texte aus src/lib/kundenbetreuung). Fußzeile A = Einwilligung, B = Bestandskunde, V = Service, S = System.",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "autoname": "field:vorlage_id",
+ "naming_rule": "By fieldname",
+ "title_field": "betreff",
+ "search_fields": "vorlage_id,betreff",
+ "track_views": 0
+}

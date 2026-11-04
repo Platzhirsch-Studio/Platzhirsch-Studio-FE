@@ -1,0 +1,292 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Inventur je Lagerort: Zählliste aus dem Bestand, Ist-Zählung, Freigabe durch Leitung erzeugt Inventur-Bewegungen.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "lagerort",
+  "datum",
+  "cb_kopf",
+  "nur_ausstellungsstuecke",
+  "gezaehlt_von",
+  "freigegeben_von",
+  "freigegeben_am",
+  "sb_positionen",
+  "positionen",
+  "sb_summen",
+  "anzahl_positionen",
+  "anzahl_gezaehlt",
+  "cb_summen",
+  "differenz_positionen",
+  "differenz_summe",
+  "bemerkung",
+  "sb_system",
+  "idempotency_key",
+  "quelle"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-INV-.YYYY.-.####",
+   "default": "PH-INV-.YYYY.-.####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Geplant\nLaufend\nAbgeschlossen\nVerworfen",
+   "default": "Geplant",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "lagerort",
+   "fieldtype": "Link",
+   "label": "Lagerort",
+   "options": "PH Lagerort",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Stichtag",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "nur_ausstellungsstuecke",
+   "fieldtype": "Check",
+   "label": "Nur Ausstellungsstücke"
+  },
+  {
+   "fieldname": "gezaehlt_von",
+   "fieldtype": "Link",
+   "label": "Gezählt von",
+   "options": "User"
+  },
+  {
+   "fieldname": "freigegeben_von",
+   "fieldtype": "Link",
+   "label": "Freigegeben von (Leitung)",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "freigegeben_am",
+   "fieldtype": "Datetime",
+   "label": "Freigegeben am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_positionen",
+   "fieldtype": "Section Break",
+   "label": "Zählliste"
+  },
+  {
+   "fieldname": "positionen",
+   "fieldtype": "Table",
+   "label": "Positionen",
+   "options": "PH Inventur Position"
+  },
+  {
+   "fieldname": "sb_summen",
+   "fieldtype": "Section Break",
+   "label": "Ergebnis"
+  },
+  {
+   "fieldname": "anzahl_positionen",
+   "fieldtype": "Int",
+   "label": "Positionen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "anzahl_gezaehlt",
+   "fieldtype": "Int",
+   "label": "Gezählt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_summen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "differenz_positionen",
+   "fieldtype": "Int",
+   "label": "Positionen mit Differenz",
+   "read_only": 1
+  },
+  {
+   "fieldname": "differenz_summe",
+   "fieldtype": "Int",
+   "label": "Summe Differenz (Stück)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bemerkung",
+   "fieldtype": "Small Text",
+   "label": "Bemerkung"
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\npacktisch\nmobil\nscheduler",
+   "default": "backoffice"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Lagerbewegung",
+   "link_fieldname": "bezug",
+   "group": "Bewegungen"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Inventur",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Geplant",
+   "color": "Blue"
+  },
+  {
+   "title": "Laufend",
+   "color": "Orange"
+  },
+  {
+   "title": "Abgeschlossen",
+   "color": "Green"
+  },
+  {
+   "title": "Verworfen",
+   "color": "Gray"
+  }
+ ],
+ "track_changes": 1,
+ "search_fields": "lagerort",
+ "title_field": "titel",
+ "track_seen": 0,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field"
+}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Wie wohnt es sich mit {{ produkt }}?</title></head>
+<body style="margin:0;padding:0;background:#faf8f4">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0">Ihre ehrliche Meinung hilft anderen bei der Entscheidung.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f4"><tr><td align="center" style="padding:32px 16px">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff"><tr><td style="padding:32px 28px">
+<p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7a5e17">Platzhirsch Home Living · Lochau</p>
+<p style="margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e">{{ anrede }},</p>
+<p style="margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e">seit einigen Wochen steht {{ produkt }} bei Ihnen. Wir hoffen, Sie fühlen sich damit so wohl, wie wir es bei der Planung mit Ihnen gehofft haben.</p>
+<p style="margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e">Wie war es mit uns, von der Beratung bis zur Lieferung? Wenn Sie mögen, teilen Sie Ihre Erfahrung auf Google. Ehrliche Bewertungen helfen anderen, die vor derselben Entscheidung stehen. Das dauert etwa zwei Minuten.</p>
+<p style="margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e">Und falls etwas nicht passt: Antworten Sie einfach auf diese Mail. Ich kümmere mich persönlich darum.</p>
+<table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 24px"><tr><td style="background:#30373e"><a href="{{ bewerten_url }}" style="display:inline-block;padding:14px 28px;font-family:Helvetica,Arial,sans-serif;font-size:16px;color:#faf8f4;text-decoration:none">Bewertung schreiben</a></td></tr></table>
+<p style="margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e">Herzliche Grüße<br>{{ berater_name }}<br>{% if berater_telefon %}{{ berater_telefon }}{% endif %}</p>
+<hr style="border:0;border-top:1px solid #e0ddd7;margin:28px 0">
+<p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#4a5158">Sie erhalten diese Nachricht, weil Sie sich am {{ einwilligung_datum }} dafür angemeldet und die Anmeldung bestätigt haben. <a href="{{ abmelde_url }}" style="color:#30373e">Abmelden</a> · <a href="https://platzhirsch.studio/de/datenschutz" style="color:#30373e">Datenschutz</a></p>
+<p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#4a5158">Platzhirsch Home Living · MW Immobilienverwaltungs GmbH · Landstraße 11 · 6911 Lochau · Österreich · FN 443753 d · UID ATU70035339 · +43 5574 46255 · info@platzhirsch.studio</p>
+</td></tr></table>
+</td></tr></table>
+</body></html>

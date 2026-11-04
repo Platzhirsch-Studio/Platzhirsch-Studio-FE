@@ -4,6 +4,9 @@
 // zusätzlichen Angaben gegenüber dem deutschen Original.
 // Rein: keine Pakete, keine "@/"-Aliase.
 
+export const AUSMASS = { Vollzeit: "Full-time", Teilzeit: "Part-time" };
+export const START = { "ab sofort": "immediately" };
+
 export const BIETEN = [
   "Workplace at the interior design studio in Lochau, Landstraße 11, on Lake Constance",
   "Working with the international design brands in our showroom",

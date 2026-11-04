@@ -1,0 +1,56 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "rolle",
+  "stunden_ist"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "Monteur",
+   "options": "User",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 5
+  },
+  {
+   "fieldname": "rolle",
+   "fieldtype": "Select",
+   "label": "Rolle",
+   "options": "Montageleiter\nMonteur\nFahrer\nLehrling",
+   "default": "Monteur",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "stunden_ist",
+   "fieldtype": "Float",
+   "label": "Stunden ist",
+   "in_list_view": 1,
+   "columns": 2,
+   "precision": "2"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Montage Team",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

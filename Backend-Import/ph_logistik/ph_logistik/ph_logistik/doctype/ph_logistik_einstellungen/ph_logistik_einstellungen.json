@@ -1,0 +1,355 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Fachliche Schalter der Logistik. Geheimnisse (LetMeShip-Zugang) stehen ausschließlich in site_config.json.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sb_lms",
+  "letmeship_testmodus",
+  "letmeship_env",
+  "letmeship_konfiguriert",
+  "cb_lms",
+  "dienst_wahl",
+  "bevorzugte_carrier",
+  "aufschlag_cent",
+  "versand_ust_promille",
+  "quote_gueltig_min",
+  "tracking_intervall_stunden",
+  "sb_vers",
+  "glas_immer_versichern",
+  "versicherung_ab_cent",
+  "abholung_tage",
+  "cb_vers",
+  "pauschale_at_cent",
+  "pauschale_de_cent",
+  "laender_versand",
+  "sb_absender",
+  "absender_firma",
+  "absender_strasse",
+  "absender_hausnr",
+  "absender_plz",
+  "cb_absender",
+  "absender_ort",
+  "absender_land",
+  "absender_email",
+  "absender_telefon",
+  "sb_lager",
+  "standard_lagerort",
+  "showroom_lagerort",
+  "packtisch_lagerort",
+  "cb_lager",
+  "lieferbestaetigung_vorlage",
+  "abholbereit_vorlage",
+  "packtisch_hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_lms",
+   "fieldtype": "Section Break",
+   "label": "LetMeShip"
+  },
+  {
+   "fieldname": "letmeship_testmodus",
+   "fieldtype": "Check",
+   "label": "Testmodus (Mock-Client, keine echten Aufrufe)",
+   "default": "1",
+   "description": "Solange gesetzt, bucht ph_logistik nur im Mock. Live erst nach Freigabe des Inhabers und LetMeShip-Testzugang (PLAN.md Frage 9)."
+  },
+  {
+   "fieldname": "letmeship_env",
+   "fieldtype": "Data",
+   "label": "Umgebung laut site_config (ph_letmeship_env)",
+   "read_only": 1,
+   "description": "Anzeige. Schlüssel liegen NUR in site_config.json: ph_letmeship_api_id, ph_letmeship_api_password, ph_letmeship_env."
+  },
+  {
+   "fieldname": "letmeship_konfiguriert",
+   "fieldtype": "Check",
+   "label": "Zugangsdaten vorhanden (ja/nein)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_lms",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dienst_wahl",
+   "fieldtype": "Select",
+   "label": "Dienstwahl",
+   "options": "guenstigster\nschnellster\nbevorzugt",
+   "default": "guenstigster"
+  },
+  {
+   "fieldname": "bevorzugte_carrier",
+   "fieldtype": "Small Text",
+   "label": "Bevorzugte Carrier (einer je Zeile)",
+   "description": "Nur bei Dienstwahl „bevorzugt“; Reihenfolge = Priorität."
+  },
+  {
+   "fieldname": "aufschlag_cent",
+   "fieldtype": "Int",
+   "label": "Aufschlag auf Tarif (Cent)",
+   "default": "0"
+  },
+  {
+   "fieldname": "versand_ust_promille",
+   "fieldtype": "Int",
+   "label": "USt für Netto→Brutto (Promille)",
+   "default": "200",
+   "description": "200 = 20 % (AT-Normalsatz), wie VERSAND_UST_SATZ in shipping/config.js."
+  },
+  {
+   "fieldname": "quote_gueltig_min",
+   "fieldtype": "Int",
+   "label": "Tarif gültig (Minuten)",
+   "default": "30"
+  },
+  {
+   "fieldname": "tracking_intervall_stunden",
+   "fieldtype": "Int",
+   "label": "Tracking-Abgleich alle (Stunden)",
+   "default": "2"
+  },
+  {
+   "fieldname": "sb_vers",
+   "fieldtype": "Section Break",
+   "label": "Versicherung und Pauschalen"
+  },
+  {
+   "fieldname": "glas_immer_versichern",
+   "fieldtype": "Check",
+   "label": "Glas/Zerbrechlich immer versichern (K17)",
+   "default": "1"
+  },
+  {
+   "fieldname": "versicherung_ab_cent",
+   "fieldtype": "Int",
+   "label": "Sonst versichern ab Warenwert (Cent)",
+   "default": "50000"
+  },
+  {
+   "fieldname": "abholung_tage",
+   "fieldtype": "Int",
+   "label": "Abholung durch Carrier in (Werktagen)",
+   "default": "1"
+  },
+  {
+   "fieldname": "cb_vers",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pauschale_at_cent",
+   "fieldtype": "Int",
+   "label": "Rückfall-Pauschale AT (Cent)",
+   "description": "Nur wenn LetMeShip nicht antwortet UND der Inhaber eine Pauschale freigibt (config.js PAUSCHALE_CENT, heute null = keine)."
+  },
+  {
+   "fieldname": "pauschale_de_cent",
+   "fieldtype": "Int",
+   "label": "Rückfall-Pauschale DE (Cent)"
+  },
+  {
+   "fieldname": "laender_versand",
+   "fieldtype": "Small Text",
+   "label": "Versandländer (ISO, je Zeile)",
+   "default": "AT\nDE",
+   "description": "CH erst nach Klärung USt/Zoll (config.js LAENDER)."
+  },
+  {
+   "fieldname": "sb_absender",
+   "fieldtype": "Section Break",
+   "label": "Absender (Abholadresse)"
+  },
+  {
+   "fieldname": "absender_firma",
+   "fieldtype": "Data",
+   "label": "Firma",
+   "default": "Platzhirsch Home Living"
+  },
+  {
+   "fieldname": "absender_strasse",
+   "fieldtype": "Data",
+   "label": "Straße",
+   "default": "Landstraße"
+  },
+  {
+   "fieldname": "absender_hausnr",
+   "fieldtype": "Data",
+   "label": "Hausnummer",
+   "default": "11"
+  },
+  {
+   "fieldname": "absender_plz",
+   "fieldtype": "Data",
+   "label": "PLZ",
+   "default": "6911"
+  },
+  {
+   "fieldname": "cb_absender",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "absender_ort",
+   "fieldtype": "Data",
+   "label": "Ort",
+   "default": "Lochau"
+  },
+  {
+   "fieldname": "absender_land",
+   "fieldtype": "Data",
+   "label": "Land (ISO)",
+   "default": "AT"
+  },
+  {
+   "fieldname": "absender_email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email",
+   "default": "info@platzhirsch.studio"
+  },
+  {
+   "fieldname": "absender_telefon",
+   "fieldtype": "Data",
+   "label": "Telefon",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "sb_lager",
+   "fieldtype": "Section Break",
+   "label": "Lager und Packtisch"
+  },
+  {
+   "fieldname": "standard_lagerort",
+   "fieldtype": "Link",
+   "label": "Standard-Lagerort (Wareneingang)",
+   "options": "PH Lagerort"
+  },
+  {
+   "fieldname": "showroom_lagerort",
+   "fieldtype": "Link",
+   "label": "Showroom (Ausstellungsstücke)",
+   "options": "PH Lagerort"
+  },
+  {
+   "fieldname": "packtisch_lagerort",
+   "fieldtype": "Link",
+   "label": "Packtisch entnimmt aus",
+   "options": "PH Lagerort"
+  },
+  {
+   "fieldname": "cb_lager",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lieferbestaetigung_vorlage",
+   "fieldtype": "Link",
+   "label": "E-Mail-Vorlage Lieferbestätigung",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "abholbereit_vorlage",
+   "fieldtype": "Link",
+   "label": "E-Mail-Vorlage Abholbereit",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "packtisch_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis am Packtisch (z. B. Druckername)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Logistik Einstellungen",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "",
+ "track_seen": 0,
+ "issingle": 1
+}

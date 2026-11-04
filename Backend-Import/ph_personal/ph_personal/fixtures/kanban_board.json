@@ -1,0 +1,37 @@
+[
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Bewerbungen",
+  "kanban_board_name": "PH Bewerbungen",
+  "reference_doctype": "PH Bewerbung",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Bewerbung\",\"status\",\"not in\",[\"Abgesagt\",\"Zurueckgezogen\"]],[\"PH Bewerbung\",\"pseudonymisiert\",\"=\",0]]",
+  "fields": "[\"titel\",\"stelle_titel\",\"eingang\",\"quelle\",\"zugewiesen_an\"]",
+  "columns": [
+   {"column_name": "Eingegangen", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Gesichtet", "indicator": "Cyan", "status": "Active", "order": "[]"},
+   {"column_name": "Gespraech", "indicator": "Purple", "status": "Active", "order": "[]"},
+   {"column_name": "Angebot", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Eingestellt", "indicator": "Green", "status": "Active", "order": "[]"}
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Stellen",
+  "kanban_board_name": "PH Stellen",
+  "reference_doctype": "PH Stelle",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Stelle\",\"status\",\"!=\",\"Archiviert\"]]",
+  "fields": "[\"titel\",\"kategorie\",\"beschaeftigungsart\",\"entgelt_vollstaendig\",\"gueltig_bis\"]",
+  "columns": [
+   {"column_name": "Entwurf", "indicator": "Gray", "status": "Active", "order": "[]"},
+   {"column_name": "Aktiv", "indicator": "Green", "status": "Active", "order": "[]"},
+   {"column_name": "Pausiert", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Besetzt", "indicator": "Blue", "status": "Active", "order": "[]"}
+  ]
+ }
+]

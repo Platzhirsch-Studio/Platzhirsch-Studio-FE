@@ -1,0 +1,100 @@
+[
+ {
+  "doctype": "Workflow State",
+  "name": "PH Zahlung ausstehend",
+  "workflow_state_name": "PH Zahlung ausstehend",
+  "style": "Warning",
+  "icon": "time"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Versandbereit",
+  "workflow_state_name": "PH Versandbereit",
+  "style": "Info",
+  "icon": "gift"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Reserviert",
+  "workflow_state_name": "PH Reserviert",
+  "style": "Warning",
+  "icon": "bookmark"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Abholbereit",
+  "workflow_state_name": "PH Abholbereit",
+  "style": "Info",
+  "icon": "flag"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Abgeholt",
+  "workflow_state_name": "PH Abgeholt",
+  "style": "Success",
+  "icon": "ok-sign"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Fehlgeschlagen",
+  "workflow_state_name": "PH Fehlgeschlagen",
+  "style": "Danger",
+  "icon": "remove"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Abgelaufen",
+  "workflow_state_name": "PH Abgelaufen",
+  "style": "Inverse",
+  "icon": "time"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Erstattet",
+  "workflow_state_name": "PH Erstattet",
+  "style": "Inverse",
+  "icon": "repeat"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Teilerstattet",
+  "workflow_state_name": "PH Teilerstattet",
+  "style": "Warning",
+  "icon": "repeat"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Checkout-Fehler",
+  "workflow_state_name": "PH Checkout-Fehler",
+  "style": "Danger",
+  "icon": "warning-sign"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Pruefen",
+  "workflow_state_name": "PH Pruefen",
+  "style": "Danger",
+  "icon": "eye-open"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Erstellt",
+  "workflow_state_name": "PH Erstellt",
+  "style": "Primary",
+  "icon": "file"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Teilweise eingeloest",
+  "workflow_state_name": "PH Teilweise eingeloest",
+  "style": "Warning",
+  "icon": "adjust"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Eingeloest",
+  "workflow_state_name": "PH Eingeloest",
+  "style": "Inverse",
+  "icon": "ok-circle"
+ }
+]

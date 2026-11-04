@@ -1,0 +1,119 @@
+[
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Social Beiträge",
+  "kanban_board_name": "PH Social Beiträge",
+  "reference_doctype": "PH Social Beitrag",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Social Beitrag\", \"status\", \"!=\", \"Verworfen\"]]",
+  "fields": "[\"titel\", \"kanal\", \"datum_geplant\", \"bildquelle_freigabe\", \"zustaendig\"]",
+  "columns": [
+   {
+    "column_name": "Idee",
+    "indicator": "Gray",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Entwurf",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Freigegeben",
+    "indicator": "Cyan",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Geplant",
+    "indicator": "Purple",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Veroeffentlicht",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   }
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Kampagnen",
+  "kanban_board_name": "PH Kampagnen",
+  "reference_doctype": "PH Kampagne",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[]",
+  "fields": "[\"titel\", \"kanal\", \"zeitraum_von\", \"zeitraum_bis\", \"ausgaben_cent\", \"anfragen_gesamt\"]",
+  "columns": [
+   {
+    "column_name": "Entwurf",
+    "indicator": "Gray",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Aktiv",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Pausiert",
+    "indicator": "Orange",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Beendet",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   }
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Events",
+  "kanban_board_name": "PH Events",
+  "reference_doctype": "PH Event",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Event\", \"status\", \"!=\", \"Abgesagt\"]]",
+  "fields": "[\"titel\", \"datum\", \"plaetze_belegt\", \"kapazitaet\"]",
+  "columns": [
+   {
+    "column_name": "Geplant",
+    "indicator": "Gray",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Offen",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Ausgebucht",
+    "indicator": "Orange",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Durchgefuehrt",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   }
+  ]
+ }
+]

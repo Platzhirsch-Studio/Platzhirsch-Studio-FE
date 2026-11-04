@@ -1,0 +1,66 @@
+{#- ph_core/templates/print/ph_basis.html – Basis aller PH-Druckformate.
+    Verwendung in einem Print Format (Jinja):
+      {% extends "templates/print/ph_basis.html" %}
+      {% block titel %}Anfrage {{ doc.name }}{% endblock %}
+      {% block inhalt %} … {% endblock %}
+    Blöcke: titel, kopfrechts (z. B. Datum/Nummer), inhalt, fuss (Zusatztext).
+    Firma aus PH Firma (Standard), Schriften: Bodoni Moda (Überschriften) und Instrument Sans
+    (Text) als Google-Web-Fonts, mit Rückfall auf Georgia/Arial, wenn der PDF-Renderer (wkhtmltopdf)
+    keinen Netzzugriff hat. -#}
+{%- set firma = ph_firma() -%}
+{%- set einst = ph_einstellungen() -%}
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>{% block titel %}{{ doc.name }}{% endblock %}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+  :root { --ph-tinte: #30373e; --ph-grau: #6b7280; --ph-linie: #d9d4cc; --ph-sand: #faf8f4; }
+  body { font-family: "Instrument Sans", Arial, Helvetica, sans-serif; color: var(--ph-tinte); font-size: 10pt; line-height: 1.45; margin: 0; }
+  .ph-kopf { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--ph-linie); padding-bottom: 6mm; margin-bottom: 8mm; }
+  .ph-wortmarke { font-family: "Bodoni Moda", Georgia, "Times New Roman", serif; font-size: 22pt; letter-spacing: 0.18em; font-weight: 500; }
+  .ph-untertitel { font-size: 8pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ph-grau); margin-top: 1mm; }
+  .ph-kopf-rechts { text-align: right; font-size: 9pt; color: var(--ph-grau); }
+  .ph-absender { font-size: 7pt; color: var(--ph-grau); margin-bottom: 2mm; }
+  h1, h2, h3 { font-family: "Bodoni Moda", Georgia, serif; font-weight: 500; margin: 0 0 3mm; }
+  h1 { font-size: 16pt; } h2 { font-size: 12pt; margin-top: 6mm; }
+  table.ph-tabelle { width: 100%; border-collapse: collapse; margin: 3mm 0; }
+  table.ph-tabelle th { text-align: left; font-weight: 600; font-size: 8.5pt; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ph-grau); border-bottom: 1px solid var(--ph-tinte); padding: 2mm 1.5mm; }
+  table.ph-tabelle td { padding: 2mm 1.5mm; border-bottom: 1px solid var(--ph-linie); vertical-align: top; }
+  table.ph-tabelle td.zahl, table.ph-tabelle th.zahl { text-align: right; white-space: nowrap; }
+  .ph-summe td { font-weight: 600; border-top: 1px solid var(--ph-tinte); border-bottom: none; }
+  .ph-feld { margin-bottom: 2mm; } .ph-feld b { display: inline-block; min-width: 38mm; color: var(--ph-grau); font-weight: 500; }
+  .ph-hinweis { background: var(--ph-sand); padding: 3mm 4mm; font-size: 9pt; margin: 4mm 0; }
+  .ph-test { color: #b91c1c; font-weight: 600; letter-spacing: 0.1em; }
+  .ph-fuss { margin-top: 10mm; padding-top: 4mm; border-top: 1px solid var(--ph-linie); font-size: 7.5pt; color: var(--ph-grau); display: flex; gap: 8mm; }
+  .ph-fuss div { flex: 1; }
+  {% block css %}{% endblock %}
+</style>
+</head>
+<body>
+<header class="ph-kopf">
+  <div>
+    <div class="ph-wortmarke">PLATZHIRSCH</div>
+    <div class="ph-untertitel">{{ firma.kurzname or "Home Living" }} · {{ firma.ort }}</div>
+  </div>
+  <div class="ph-kopf-rechts">
+    {% if einst.testmodus %}<div class="ph-test">TEST</div>{% endif %}
+    {% block kopfrechts %}{{ doc.name }}<br>{{ ph_datum(doc.get("datum") or doc.creation) }}{% endblock %}
+  </div>
+</header>
+
+<main>
+  {% block inhalt %}{% endblock %}
+</main>
+
+<footer class="ph-fuss">
+  <div><b>{{ firma.firmenname }}</b><br>{{ firma.strasse }}<br>{{ firma.plz }} {{ firma.ort }}, {{ firma.land }}</div>
+  <div>{{ firma.telefon or "" }}<br>{{ firma.email or "" }}<br>{{ firma.website or "" }}</div>
+  <div>{% if firma.uid %}UID {{ firma.uid }}<br>{% endif %}{% if firma.firmenbuchnummer %}FN {{ firma.firmenbuchnummer }}{% if firma.firmenbuchgericht %}, {{ firma.firmenbuchgericht }}{% endif %}<br>{% endif %}{% if firma.geschaeftsfuehrung %}GF {{ firma.geschaeftsfuehrung }}{% endif %}</div>
+  <div>{% if firma.iban %}{{ firma.bank or "" }}<br>IBAN {{ firma.iban }}<br>BIC {{ firma.bic or "" }}{% endif %}</div>
+  {% block fuss %}{% endblock %}
+</footer>
+{% if firma.fusszeile %}<p style="font-size:7pt;color:#6b7280;margin-top:2mm">{{ firma.fusszeile }}</p>{% endif %}
+</body>
+</html>

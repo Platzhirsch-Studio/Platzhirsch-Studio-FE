@@ -28,6 +28,7 @@ import { Link } from "@/i18n/navigation";
 import { Minus, Plus } from "@/components/ui/icons";
 // euroKurz: „€ 119“ wie auf Produktseite und Kachel (Cent nur, wenn vorhanden).
 import { euroKurz as euro } from "@/lib/shop/format";
+import { GEWAEHRLEISTUNG_ABSAETZE, GEWAEHRLEISTUNG_ID, GEWAEHRLEISTUNG_TITEL } from "@/lib/shop/gewaehrleistung";
 import { lieferzeitFuer, lieferzeitText } from "@/lib/shop/lieferzeit";
 import { PENDING_ORDER_KEY, pendingValue } from "@/lib/shop/pendingOrder";
 import { anzeigeSatz, steuerLand, ustAufteilung } from "@/lib/shop/ust";
@@ -766,6 +767,33 @@ export default function ShopCart({ locale, copy: c, legal, start = {}, test = fa
             </ul>
             <p className="mt-3 text-small text-text-soft">{c.legalNote}</p>
           </div>
+
+          {/* Harmonisierte Mitteilung zur gesetzlichen Gewährleistung (§ 4 Abs 1 Z 12 FAGG, Anhang II): „in hervorgehobener
+              Weise“ unmittelbar vor dem Bestellknopf – eigener Block mit Rahmen und Zeichen, Text aus lib/shop/gewaehrleistung.js
+              (kein fremdes PDF). Deutsch ist verbindlich; EN/FR/IT mit Sprachhinweis. */}
+          <section aria-labelledby={`${id}-gw`} lang="de" className="mt-5 border-2 border-ink bg-surface-raised p-4" data-shop-gewaehrleistung={GEWAEHRLEISTUNG_ID}>
+            <div className="flex items-start gap-3">
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="mt-0.5 size-6 shrink-0 text-text" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3 4.5 6v5.2c0 4.6 3.1 8.6 7.5 9.8 4.4-1.2 7.5-5.2 7.5-9.8V6L12 3Z" />
+                <path d="m8.8 12.2 2.2 2.2 4.3-4.6" />
+              </svg>
+              <div className="min-w-0">
+                <h3 id={`${id}-gw`} className="text-ui font-medium text-text">
+                  {GEWAEHRLEISTUNG_TITEL}
+                </h3>
+                {c.warrantyLang && (
+                  <p className="mt-1 text-small text-text-soft" lang={locale}>
+                    {c.warrantyLang}
+                  </p>
+                )}
+                {GEWAEHRLEISTUNG_ABSAETZE.map((t, i) => (
+                  <p key={i} className="mt-2 text-small text-text">
+                    {t}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </section>
 
           <button
             type="submit"

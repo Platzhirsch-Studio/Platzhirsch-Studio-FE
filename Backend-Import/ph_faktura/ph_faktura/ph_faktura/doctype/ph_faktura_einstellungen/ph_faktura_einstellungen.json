@@ -1,0 +1,392 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Einstellungen der Faktura: Zahlungsziel, USt-Fälle und Hinweistexte, OSS, Konten für BMD/DATEV, Textvorlagen. Keine Geheimnisse.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_allgemein",
+  "zahlungsziel_tage",
+  "angebot_gueltig_tage",
+  "standard_zahlungsbedingung",
+  "standard_bankkonto",
+  "anzahlung_automatisch",
+  "cb_allgemein",
+  "kleinbetragsgrenze_cent",
+  "uid_pflicht_ab_cent",
+  "epc_qr_aktiv",
+  "pdf_bei_stellen",
+  "portal_betraege_anzeigen",
+  "tab_ust",
+  "oss_aktiv",
+  "oss_registrierung",
+  "lieferschwelle_eu_netto_cent",
+  "fernverkaeufe_eu_laufend_cent",
+  "ist_versteuerung",
+  "cb_ust",
+  "ust_text_ig",
+  "ust_text_rc",
+  "ust_text_ausfuhr",
+  "ust_text_oss",
+  "ust_text_anzahlung",
+  "tab_konten",
+  "export_format_standard",
+  "berater_nr",
+  "mandanten_nr",
+  "sachkontenlaenge",
+  "wirtschaftsjahr_beginn",
+  "cb_konten",
+  "erloeskonto_20",
+  "erloeskonto_10",
+  "erloeskonto_13",
+  "erloeskonto_oss",
+  "erloeskonto_ig",
+  "erloeskonto_rc",
+  "erloeskonto_ausfuhr",
+  "konto_anzahlungen_erhalten",
+  "aufwandskonto_standard",
+  "debitoren_ab",
+  "kreditoren_ab",
+  "konten_hinweis",
+  "tab_texte",
+  "angebot_einleitung",
+  "angebot_schluss",
+  "rechnung_schluss",
+  "ab_schluss"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_allgemein",
+   "fieldtype": "Tab Break",
+   "label": "Allgemein"
+  },
+  {
+   "fieldname": "zahlungsziel_tage",
+   "fieldtype": "Int",
+   "label": "Zahlungsziel Standard (Tage)",
+   "default": "14"
+  },
+  {
+   "fieldname": "angebot_gueltig_tage",
+   "fieldtype": "Int",
+   "label": "Angebot gültig (Tage)",
+   "default": "30"
+  },
+  {
+   "fieldname": "standard_zahlungsbedingung",
+   "fieldtype": "Link",
+   "label": "Standard-Zahlungsbedingung",
+   "options": "PH Zahlungsbedingung"
+  },
+  {
+   "fieldname": "standard_bankkonto",
+   "fieldtype": "Link",
+   "label": "Standard-Bankkonto (EPC-QR, Belege)",
+   "options": "PH Bankkonto"
+  },
+  {
+   "fieldname": "anzahlung_automatisch",
+   "fieldtype": "Check",
+   "label": "Anzahlungsrechnung automatisch bei AB-Freigabe",
+   "default": "1"
+  },
+  {
+   "fieldname": "cb_allgemein",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "kleinbetragsgrenze_cent",
+   "fieldtype": "Int",
+   "label": "Kleinbetragsrechnung bis (Cent)",
+   "default": "40000",
+   "description": "§ 11 Abs 6 UStG: 400 €"
+  },
+  {
+   "fieldname": "uid_pflicht_ab_cent",
+   "fieldtype": "Int",
+   "label": "UID des Empfängers Pflicht ab (Cent)",
+   "default": "1000000",
+   "description": "§ 11 Abs 1 Z 2 UStG: 10.000 €"
+  },
+  {
+   "fieldname": "epc_qr_aktiv",
+   "fieldtype": "Check",
+   "label": "EPC-QR (GiroCode) auf Rechnungen",
+   "default": "1"
+  },
+  {
+   "fieldname": "pdf_bei_stellen",
+   "fieldtype": "Check",
+   "label": "PDF beim Stellen fixieren",
+   "default": "1"
+  },
+  {
+   "fieldname": "portal_betraege_anzeigen",
+   "fieldtype": "Check",
+   "label": "Kundenportal: Beträge anzeigen",
+   "default": "0",
+   "description": "Aus = Portal zeigt „auf Anfrage“ (Inhaber-Frage 10, PLAN.md)."
+  },
+  {
+   "fieldname": "tab_ust",
+   "fieldtype": "Tab Break",
+   "label": "Umsatzsteuer"
+  },
+  {
+   "fieldname": "oss_aktiv",
+   "fieldtype": "Check",
+   "label": "OSS (EU-One-Stop-Shop) aktiv",
+   "default": "0",
+   "description": "Nur einschalten, wenn die OSS-Registrierung vorliegt. Sonst gilt bis zur Lieferschwelle österreichische USt."
+  },
+  {
+   "fieldname": "oss_registrierung",
+   "fieldtype": "Data",
+   "label": "OSS-Registrierung (Datum/Kennung)"
+  },
+  {
+   "fieldname": "lieferschwelle_eu_netto_cent",
+   "fieldtype": "Int",
+   "label": "EU-Lieferschwelle netto (Cent)",
+   "default": "1000000",
+   "description": "10.000 € je Kalenderjahr (Art 59c MwStSystRL)."
+  },
+  {
+   "fieldname": "fernverkaeufe_eu_laufend_cent",
+   "fieldtype": "Int",
+   "label": "Fernverkäufe EU laufendes Jahr (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "ist_versteuerung",
+   "fieldtype": "Check",
+   "label": "Ist-Versteuerung (statt Soll)",
+   "default": "0",
+   "description": "Vom Steuerberater bestätigen. Anzahlungen sind immer Ist (Vereinnahmung)."
+  },
+  {
+   "fieldname": "cb_ust",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ust_text_ig",
+   "fieldtype": "Small Text",
+   "label": "Hinweis innergemeinschaftliche Lieferung",
+   "default": "Steuerfreie innergemeinschaftliche Lieferung (Art 6 Abs 1 UStG)."
+  },
+  {
+   "fieldname": "ust_text_rc",
+   "fieldtype": "Small Text",
+   "label": "Hinweis Reverse Charge",
+   "default": "Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge, Art 196 MwStSystRL)."
+  },
+  {
+   "fieldname": "ust_text_ausfuhr",
+   "fieldtype": "Small Text",
+   "label": "Hinweis Ausfuhr",
+   "default": "Steuerfreie Ausfuhrlieferung (§ 6 Abs 1 Z 1 UStG)."
+  },
+  {
+   "fieldname": "ust_text_oss",
+   "fieldtype": "Small Text",
+   "label": "Hinweis OSS",
+   "default": "Umsatzsteuer des Bestimmungslandes (EU-OSS)."
+  },
+  {
+   "fieldname": "ust_text_anzahlung",
+   "fieldtype": "Small Text",
+   "label": "Hinweis Anzahlungsrechnung",
+   "default": "Anzahlungsrechnung gemäß § 11 Abs 1 UStG. Die Umsatzsteuer wird mit Vereinnahmung geschuldet."
+  },
+  {
+   "fieldname": "tab_konten",
+   "fieldtype": "Tab Break",
+   "label": "Konten für den Export"
+  },
+  {
+   "fieldname": "export_format_standard",
+   "fieldtype": "Select",
+   "label": "Exportformat Standard",
+   "options": "BMD CSV\nDATEV Buchungsstapel\nCSV generisch",
+   "default": "BMD CSV"
+  },
+  {
+   "fieldname": "berater_nr",
+   "fieldtype": "Data",
+   "label": "Beraternummer (DATEV)"
+  },
+  {
+   "fieldname": "mandanten_nr",
+   "fieldtype": "Data",
+   "label": "Mandantennummer (DATEV/BMD)"
+  },
+  {
+   "fieldname": "sachkontenlaenge",
+   "fieldtype": "Int",
+   "label": "Sachkontenlänge (DATEV)",
+   "default": "4"
+  },
+  {
+   "fieldname": "wirtschaftsjahr_beginn",
+   "fieldtype": "Data",
+   "label": "Wirtschaftsjahr-Beginn (MMTT)",
+   "default": "0101"
+  },
+  {
+   "fieldname": "cb_konten",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "erloeskonto_20",
+   "fieldtype": "Data",
+   "label": "Erlöskonto 20 %",
+   "default": "4000"
+  },
+  {
+   "fieldname": "erloeskonto_10",
+   "fieldtype": "Data",
+   "label": "Erlöskonto 10 %",
+   "default": "4010"
+  },
+  {
+   "fieldname": "erloeskonto_13",
+   "fieldtype": "Data",
+   "label": "Erlöskonto 13 %",
+   "default": "4013"
+  },
+  {
+   "fieldname": "erloeskonto_oss",
+   "fieldtype": "Data",
+   "label": "Erlöskonto OSS",
+   "default": "4050"
+  },
+  {
+   "fieldname": "erloeskonto_ig",
+   "fieldtype": "Data",
+   "label": "Erlöskonto igL",
+   "default": "4100"
+  },
+  {
+   "fieldname": "erloeskonto_rc",
+   "fieldtype": "Data",
+   "label": "Erlöskonto Reverse Charge",
+   "default": "4110"
+  },
+  {
+   "fieldname": "erloeskonto_ausfuhr",
+   "fieldtype": "Data",
+   "label": "Erlöskonto Ausfuhr",
+   "default": "4120"
+  },
+  {
+   "fieldname": "konto_anzahlungen_erhalten",
+   "fieldtype": "Data",
+   "label": "Erhaltene Anzahlungen",
+   "default": "3700"
+  },
+  {
+   "fieldname": "aufwandskonto_standard",
+   "fieldtype": "Data",
+   "label": "Wareneinsatz/Aufwand Standard",
+   "default": "5000"
+  },
+  {
+   "fieldname": "debitoren_ab",
+   "fieldtype": "Int",
+   "label": "Debitorenkonten ab",
+   "default": "200000"
+  },
+  {
+   "fieldname": "kreditoren_ab",
+   "fieldtype": "Int",
+   "label": "Kreditorenkonten ab",
+   "default": "330000"
+  },
+  {
+   "fieldname": "konten_hinweis",
+   "fieldtype": "HTML",
+   "label": "Hinweis",
+   "options": "<p>Kontenrahmen (Einheitskontenrahmen AT) und Steuercodes <b>mit der Kanzlei abstimmen</b>, bevor der erste Export übergeben wird. Debitoren-/Kreditorennummern werden je Kontakt/Lieferant fortlaufend ab den Startwerten vergeben.</p>"
+  },
+  {
+   "fieldname": "tab_texte",
+   "fieldtype": "Tab Break",
+   "label": "Textvorlagen"
+  },
+  {
+   "fieldname": "angebot_einleitung",
+   "fieldtype": "Text Editor",
+   "label": "Angebot – Einleitung",
+   "default": "<p>vielen Dank für Ihr Interesse und das angenehme Gespräch. Gerne unterbreiten wir Ihnen folgendes Angebot:</p>"
+  },
+  {
+   "fieldname": "angebot_schluss",
+   "fieldtype": "Text Editor",
+   "label": "Angebot – Schluss",
+   "default": "<p>Wir freuen uns auf Ihre Rückmeldung und stehen für Fragen jederzeit zur Verfügung.</p>"
+  },
+  {
+   "fieldname": "rechnung_schluss",
+   "fieldtype": "Text Editor",
+   "label": "Rechnung – Schluss",
+   "default": "<p>Wir danken für Ihren Auftrag und Ihr Vertrauen.</p>"
+  },
+  {
+   "fieldname": "ab_schluss",
+   "fieldtype": "Text Editor",
+   "label": "Auftragsbestätigung – Schluss",
+   "default": "<p>Wir bestätigen Ihren Auftrag mit den oben genannten Positionen und Konditionen und freuen uns auf die Umsetzung.</p>"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Faktura Einstellungen",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "issingle": 1
+}

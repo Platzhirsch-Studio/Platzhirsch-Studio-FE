@@ -1,0 +1,38 @@
+[
+ {
+  "doctype": "Client Script",
+  "name": "PH Service: Servicefall aus Montageauftrag",
+  "dt": "PH Montageauftrag",
+  "module": "PH Service",
+  "view": "Form",
+  "enabled": 1,
+  "script": "frappe.ui.form.on(\"PH Montageauftrag\", {\n\trefresh(frm) {\n\t\tif (frm.is_new()) return;\n\t\tfrm.add_custom_button(__(\"Servicefall anlegen\"), () => {\n\t\t\tfrappe.prompt([\n\t\t\t\t{ fieldname: \"art\", fieldtype: \"Select\", label: __(\"Art\"), options: [\"Montagefehler\", \"Mangel\", \"Transportschaden\"], default: \"Montagefehler\", reqd: 1 },\n\t\t\t\t{ fieldname: \"fehlercode\", fieldtype: \"Link\", options: \"PH Fehlercode\", label: __(\"Fehlercode\") },\n\t\t\t\t{ fieldname: \"beschreibung\", fieldtype: \"Small Text\", label: __(\"Beschreibung\"), reqd: 1 },\n\t\t\t], (v) => {\n\t\t\t\tfrappe.call({ method: \"ph_service.ph_service.doctype.ph_servicefall.ph_servicefall.aus_dokument\", args: { doctype: frm.doctype, name: frm.doc.name, ...v }, freeze: true }).then((r) => {\n\t\t\t\t\tif (!r.message) return;\n\t\t\t\t\tconst alt = frm.doc.ph_service_servicefaelle || \"\";\n\t\t\t\t\tfrm.set_value(\"ph_service_servicefaelle\", alt ? alt + \", \" + r.message : r.message);\n\t\t\t\t\tfrm.save().then(() => frappe.set_route(\"Form\", \"PH Servicefall\", r.message));\n\t\t\t\t});\n\t\t\t}, __(\"Servicefall aus Montage\"));\n\t\t}, __(\"Aktionen\"));\n\t},\n});"
+ },
+ {
+  "doctype": "Client Script",
+  "name": "PH Service: Servicefall aus Abnahme",
+  "dt": "PH Abnahme",
+  "module": "PH Service",
+  "view": "Form",
+  "enabled": 1,
+  "script": "frappe.ui.form.on(\"PH Abnahme\", {\n\trefresh(frm) {\n\t\tif (frm.is_new()) return;\n\t\tfrm.add_custom_button(__(\"Servicefall anlegen\"), () => {\n\t\t\tfrappe.prompt([\n\t\t\t\t{ fieldname: \"art\", fieldtype: \"Select\", label: __(\"Art\"), options: [\"Mangel\", \"Montagefehler\", \"Transportschaden\"], default: \"Mangel\", reqd: 1 },\n\t\t\t\t{ fieldname: \"fehlercode\", fieldtype: \"Link\", options: \"PH Fehlercode\", label: __(\"Fehlercode\") },\n\t\t\t\t{ fieldname: \"beschreibung\", fieldtype: \"Small Text\", label: __(\"Mangel laut Abnahmeprotokoll\"), reqd: 1 },\n\t\t\t], (v) => {\n\t\t\t\tfrappe.call({ method: \"ph_service.ph_service.doctype.ph_servicefall.ph_servicefall.aus_dokument\", args: { doctype: frm.doctype, name: frm.doc.name, ...v }, freeze: true }).then((r) => r.message && frappe.set_route(\"Form\", \"PH Servicefall\", r.message));\n\t\t\t}, __(\"Servicefall aus Abnahme\"));\n\t\t}, __(\"Aktionen\"));\n\t},\n});"
+ },
+ {
+  "doctype": "Client Script",
+  "name": "PH Service: Servicefall aus Wareneingang",
+  "dt": "PH Wareneingang",
+  "module": "PH Service",
+  "view": "Form",
+  "enabled": 1,
+  "script": "frappe.ui.form.on(\"PH Wareneingang\", {\n\trefresh(frm) {\n\t\tif (frm.is_new() || frm.doc.ph_service_servicefall) {\n\t\t\tif (frm.doc.ph_service_servicefall) frm.add_custom_button(__(\"Servicefall öffnen\"), () => frappe.set_route(\"Form\", \"PH Servicefall\", frm.doc.ph_service_servicefall));\n\t\t\treturn;\n\t\t}\n\t\tfrm.add_custom_button(__(\"Servicefall anlegen (Transportschaden)\"), () => {\n\t\t\tfrappe.prompt([\n\t\t\t\t{ fieldname: \"produkt\", fieldtype: \"Link\", options: \"PH Produkt\", label: __(\"Produkt\") },\n\t\t\t\t{ fieldname: \"fehlercode\", fieldtype: \"Link\", options: \"PH Fehlercode\", label: __(\"Fehlercode\"), default: \"TRA-01\" },\n\t\t\t\t{ fieldname: \"beschreibung\", fieldtype: \"Small Text\", label: __(\"Schaden / Abweichung\"), reqd: 1 },\n\t\t\t], (v) => {\n\t\t\t\tfrappe.call({ method: \"ph_service.ph_service.doctype.ph_servicefall.ph_servicefall.aus_dokument\", args: { doctype: frm.doctype, name: frm.doc.name, art: \"Transportschaden\", ...v }, freeze: true }).then((r) => {\n\t\t\t\t\tif (!r.message) return;\n\t\t\t\t\tfrappe.db.set_value(frm.doctype, frm.doc.name, \"ph_service_servicefall\", r.message).then(() => frappe.set_route(\"Form\", \"PH Servicefall\", r.message));\n\t\t\t\t});\n\t\t\t}, __(\"Servicefall aus Wareneingang\"));\n\t\t}, __(\"Aktionen\"));\n\t},\n});"
+ },
+ {
+  "doctype": "Client Script",
+  "name": "PH Service: Servicefall aus Lieferschein",
+  "dt": "PH Lieferschein",
+  "module": "PH Service",
+  "view": "Form",
+  "enabled": 1,
+  "script": "frappe.ui.form.on(\"PH Lieferschein\", {\n\trefresh(frm) {\n\t\tif (frm.is_new()) return;\n\t\tfrm.add_custom_button(__(\"Servicefall anlegen\"), () => {\n\t\t\tfrappe.prompt([\n\t\t\t\t{ fieldname: \"art\", fieldtype: \"Select\", label: __(\"Art\"), options: [\"Transportschaden\", \"Mangel\"], default: \"Transportschaden\", reqd: 1 },\n\t\t\t\t{ fieldname: \"produkt\", fieldtype: \"Link\", options: \"PH Produkt\", label: __(\"Produkt\") },\n\t\t\t\t{ fieldname: \"beschreibung\", fieldtype: \"Small Text\", label: __(\"Beschreibung\"), reqd: 1 },\n\t\t\t], (v) => {\n\t\t\t\tfrappe.call({ method: \"ph_service.ph_service.doctype.ph_servicefall.ph_servicefall.aus_dokument\", args: { doctype: frm.doctype, name: frm.doc.name, ...v }, freeze: true }).then((r) => r.message && frappe.set_route(\"Form\", \"PH Servicefall\", r.message));\n\t\t\t}, __(\"Servicefall aus Lieferschein\"));\n\t\t}, __(\"Aktionen\"));\n\t},\n});"
+ }
+]

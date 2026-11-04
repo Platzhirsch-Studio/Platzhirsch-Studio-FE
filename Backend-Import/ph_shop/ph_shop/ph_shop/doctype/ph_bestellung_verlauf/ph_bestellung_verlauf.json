@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Kindtabelle von PH Bestellung, PH Gutschein Bestellung und PH Anzahlung: Statusverlauf (verlauf[] der Website).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "zeit",
+  "status",
+  "von",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "zeit",
+   "fieldtype": "Datetime",
+   "label": "Zeit",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "von",
+   "fieldtype": "Data",
+   "label": "Von",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis",
+   "in_list_view": 1,
+   "columns": 3
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Bestellung Verlauf",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

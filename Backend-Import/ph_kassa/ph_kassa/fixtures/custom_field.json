@@ -1,0 +1,16 @@
+[
+ {
+  "doctype": "Custom Field",
+  "name": "PH Zahlung-kassenbeleg",
+  "dt": "PH Zahlung",
+  "module": "PH Kassa",
+  "fieldname": "kassenbeleg",
+  "label": "Kassenbeleg",
+  "fieldtype": "Link",
+  "options": "PH Kassenbeleg",
+  "insert_after": "bezug",
+  "read_only": 1,
+  "no_copy": 1,
+  "description": "Rückwärts-Verknüpfung aus ph_kassa (CONVENTIONS 10): gesetzt in PH Kassenbeleg.on_submit."
+ }
+]

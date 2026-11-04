@@ -1,0 +1,761 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Auftrag/Kaufvertrag – zentraler Beleg der Auftragsmappe: Positionen, Zahlungsplan (Anzahlung, Teilzahlung bei Lieferung, Rest nach Montage), Liefertermin, Projektverknüpfung, Anzahlungs- und Abrechnungsstand.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "kontakt",
+  "kunde_name",
+  "projekt",
+  "angebot",
+  "bestellung",
+  "cb_kopf",
+  "datum",
+  "zugewiesen_an",
+  "vertragsort",
+  "fagg_frist_ende",
+  "fagg_belehrung_beigelegt",
+  "sb_adresse",
+  "firma",
+  "strasse",
+  "plz",
+  "ort",
+  "cb_adresse",
+  "land",
+  "uid_empfaenger",
+  "uid_geprueft_am",
+  "sb_lieferadresse",
+  "lieferadresse",
+  "cb_lieferadresse",
+  "lieferhinweis",
+  "tab_positionen",
+  "positionen",
+  "sb_summen",
+  "netto_cent",
+  "rabatt_gesamt_cent",
+  "ust_cent",
+  "brutto_cent",
+  "cb_summen",
+  "ust_aufteilung",
+  "summen_html",
+  "tab_zahlung",
+  "zahlungsbedingung",
+  "anzahlung_prozent",
+  "zahlungsplan",
+  "sb_termine",
+  "liefertermin_geplant",
+  "liefertermin_bestaetigt",
+  "liefer_kw",
+  "cb_termine",
+  "montage",
+  "montage_termin",
+  "lieferbedingung_text",
+  "tab_kennzahlen",
+  "auftragswert_cent",
+  "anzahlung_soll_cent",
+  "anzahlung_ist_cent",
+  "geliefert_cent",
+  "cb_kennzahlen",
+  "abgerechnet_cent",
+  "bezahlt_cent",
+  "offen_cent",
+  "stand_html",
+  "sb_ust",
+  "ust_fall",
+  "ust_hinweistext",
+  "cb_ust",
+  "sprache",
+  "waehrung",
+  "tab_texte",
+  "einleitung",
+  "schluss",
+  "unterschrift_kunde",
+  "tab_storno",
+  "storno_grund",
+  "storniert_am",
+  "storniert_von",
+  "notiz_intern",
+  "tab_system",
+  "idempotency_key",
+  "quelle",
+  "ip_hash",
+  "workflow_state"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "AB-.YYYY.-.#####",
+   "default": "AB-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Offen\nIn Bestellung\nTeilgeliefert\nGeliefert\nAbgerechnet\nStorniert",
+   "default": "Offen",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kunde (Kontakt)",
+   "options": "PH Kontakt",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kunde_name",
+   "fieldtype": "Data",
+   "label": "Kundenname (Beleg)",
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "angebot",
+   "fieldtype": "Link",
+   "label": "Angebot",
+   "options": "PH Angebot",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bestellung",
+   "fieldtype": "Link",
+   "label": "Shop-Bestellung",
+   "options": "PH Bestellung"
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Auftragsdatum",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "zugewiesen_an",
+   "fieldtype": "Link",
+   "label": "Berater/in",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "vertragsort",
+   "fieldtype": "Select",
+   "label": "Vertragsort",
+   "options": "Showroom\nBeim Kunden\nFernabsatz",
+   "default": "Showroom"
+  },
+  {
+   "fieldname": "fagg_frist_ende",
+   "fieldtype": "Date",
+   "label": "Rücktrittsfrist bis (FAGG)",
+   "read_only": 1,
+   "description": "14 Tage ab Vertragsabschluss bei Auswärts-/Fernabsatzgeschäft; Storno in dieser Frist ohne Grund."
+  },
+  {
+   "fieldname": "fagg_belehrung_beigelegt",
+   "fieldtype": "Check",
+   "label": "FAGG-Belehrung beigelegt",
+   "default": "0",
+   "depends_on": "eval:doc.vertragsort!='Showroom'"
+  },
+  {
+   "fieldname": "sb_adresse",
+   "fieldtype": "Section Break",
+   "label": "Rechnungsadresse (Snapshot)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "firma",
+   "fieldtype": "Data",
+   "label": "Firma"
+  },
+  {
+   "fieldname": "strasse",
+   "fieldtype": "Data",
+   "label": "Straße und Nummer"
+  },
+  {
+   "fieldname": "plz",
+   "fieldtype": "Data",
+   "label": "PLZ"
+  },
+  {
+   "fieldname": "ort",
+   "fieldtype": "Data",
+   "label": "Ort"
+  },
+  {
+   "fieldname": "cb_adresse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "land",
+   "fieldtype": "Data",
+   "label": "Land (ISO-2)",
+   "default": "AT",
+   "description": "ISO-Code: AT, DE, CH, IT, FR … bestimmt den USt-Fall."
+  },
+  {
+   "fieldname": "uid_empfaenger",
+   "fieldtype": "Data",
+   "label": "UID des Empfängers",
+   "description": "Pflicht ab 10.000 € Gesamtbetrag (§ 11 Abs 1 Z 2 UStG); Grundlage für igL/Reverse Charge."
+  },
+  {
+   "fieldname": "uid_geprueft_am",
+   "fieldtype": "Date",
+   "label": "UID geprüft am (MIAS)",
+   "description": "Platzhalter für die Bestätigungsabfrage (FinanzOnline/MIAS Stufe 2)."
+  },
+  {
+   "fieldname": "sb_lieferadresse",
+   "fieldtype": "Section Break",
+   "label": "Lieferadresse",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "lieferadresse",
+   "fieldtype": "Small Text",
+   "label": "Lieferadresse (falls abweichend)"
+  },
+  {
+   "fieldname": "cb_lieferadresse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lieferhinweis",
+   "fieldtype": "Small Text",
+   "label": "Lieferhinweis (Stockwerk, Parken, Aufzug)"
+  },
+  {
+   "fieldname": "tab_positionen",
+   "fieldtype": "Tab Break",
+   "label": "Positionen"
+  },
+  {
+   "fieldname": "positionen",
+   "fieldtype": "Table",
+   "label": "Positionen",
+   "options": "PH Beleg Position",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sb_summen",
+   "fieldtype": "Section Break",
+   "label": "Summen"
+  },
+  {
+   "fieldname": "netto_cent",
+   "fieldtype": "Int",
+   "label": "Netto (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "rabatt_gesamt_cent",
+   "fieldtype": "Int",
+   "label": "Rabatt gesamt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "ust_cent",
+   "fieldtype": "Int",
+   "label": "USt gesamt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "brutto_cent",
+   "fieldtype": "Int",
+   "label": "Brutto (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "cb_summen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ust_aufteilung",
+   "fieldtype": "Table",
+   "label": "USt-Aufteilung je Satz",
+   "options": "PH Beleg Steuer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "summen_html",
+   "fieldtype": "HTML",
+   "label": "Summenblock"
+  },
+  {
+   "fieldname": "tab_zahlung",
+   "fieldtype": "Tab Break",
+   "label": "Zahlungsplan und Termine"
+  },
+  {
+   "fieldname": "zahlungsbedingung",
+   "fieldtype": "Link",
+   "label": "Zahlungsbedingung",
+   "options": "PH Zahlungsbedingung"
+  },
+  {
+   "fieldname": "anzahlung_prozent",
+   "fieldtype": "Int",
+   "label": "Anzahlung (%)",
+   "default": "0"
+  },
+  {
+   "fieldname": "zahlungsplan",
+   "fieldtype": "Table",
+   "label": "Zahlungsplan",
+   "options": "PH Zahlungsplan"
+  },
+  {
+   "fieldname": "sb_termine",
+   "fieldtype": "Section Break",
+   "label": "Liefertermin und Montage"
+  },
+  {
+   "fieldname": "liefertermin_geplant",
+   "fieldtype": "Date",
+   "label": "Liefertermin geplant",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "liefertermin_bestaetigt",
+   "fieldtype": "Date",
+   "label": "Liefertermin bestätigt"
+  },
+  {
+   "fieldname": "liefer_kw",
+   "fieldtype": "Data",
+   "label": "Liefer-KW (Kundeninfo)"
+  },
+  {
+   "fieldname": "cb_termine",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "montage",
+   "fieldtype": "Check",
+   "label": "Mit Montage",
+   "default": "1"
+  },
+  {
+   "fieldname": "montage_termin",
+   "fieldtype": "Date",
+   "label": "Montagetermin"
+  },
+  {
+   "fieldname": "lieferbedingung_text",
+   "fieldtype": "Data",
+   "label": "Lieferbedingung"
+  },
+  {
+   "fieldname": "tab_kennzahlen",
+   "fieldtype": "Tab Break",
+   "label": "Stand"
+  },
+  {
+   "fieldname": "auftragswert_cent",
+   "fieldtype": "Int",
+   "label": "Auftragswert brutto (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "anzahlung_soll_cent",
+   "fieldtype": "Int",
+   "label": "Anzahlung Soll (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "anzahlung_ist_cent",
+   "fieldtype": "Int",
+   "label": "Anzahlung Ist (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "geliefert_cent",
+   "fieldtype": "Int",
+   "label": "Geliefert (Cent, nach Wert)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_kennzahlen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abgerechnet_cent",
+   "fieldtype": "Int",
+   "label": "Abgerechnet (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "bezahlt_cent",
+   "fieldtype": "Int",
+   "label": "Bezahlt gesamt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "offen_cent",
+   "fieldtype": "Int",
+   "label": "Offen (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "stand_html",
+   "fieldtype": "HTML",
+   "label": "Auftragsstand"
+  },
+  {
+   "fieldname": "sb_ust",
+   "fieldtype": "Section Break",
+   "label": "Steuer und Sprache",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "ust_fall",
+   "fieldtype": "Select",
+   "label": "USt-Fall",
+   "options": "Steuerpflichtig AT\nOSS\nInnergemeinschaftlich steuerfrei\nReverse Charge\nAusfuhr\nKleinunternehmer",
+   "default": "Steuerpflichtig AT",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ust_hinweistext",
+   "fieldtype": "Small Text",
+   "label": "USt-Hinweis (Beleg)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_ust",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sprache",
+   "fieldtype": "Select",
+   "label": "Sprache des Belegs",
+   "options": "de\nen\nfr\nit",
+   "default": "de"
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "tab_texte",
+   "fieldtype": "Tab Break",
+   "label": "Texte"
+  },
+  {
+   "fieldname": "einleitung",
+   "fieldtype": "Text Editor",
+   "label": "Einleitung"
+  },
+  {
+   "fieldname": "schluss",
+   "fieldtype": "Text Editor",
+   "label": "Schlusstext"
+  },
+  {
+   "fieldname": "unterschrift_kunde",
+   "fieldtype": "Signature",
+   "label": "Unterschrift Kunde"
+  },
+  {
+   "fieldname": "tab_storno",
+   "fieldtype": "Tab Break",
+   "label": "Storno"
+  },
+  {
+   "fieldname": "storno_grund",
+   "fieldtype": "Small Text",
+   "label": "Stornogrund",
+   "read_only": 1
+  },
+  {
+   "fieldname": "storniert_am",
+   "fieldtype": "Datetime",
+   "label": "Storniert am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "storniert_von",
+   "fieldtype": "Link",
+   "label": "Storniert von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz_intern",
+   "fieldtype": "Small Text",
+   "label": "Interne Notiz",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "tab_system",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nkassa\nshop\nimport",
+   "default": "backoffice",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "label": "Workflow-Zustand",
+   "options": "Workflow State",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "allow_on_submit": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Rechnung",
+   "link_fieldname": "auftrag",
+   "group": "Abrechnung"
+  },
+  {
+   "link_doctype": "PH Eingangsrechnung",
+   "link_fieldname": "auftrag",
+   "group": "Einkauf"
+  }
+ ],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Auftragsbestaetigung",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 0
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Offen",
+   "color": "Blue"
+  },
+  {
+   "title": "In Bestellung",
+   "color": "Purple"
+  },
+  {
+   "title": "Teilgeliefert",
+   "color": "Cyan"
+  },
+  {
+   "title": "Geliefert",
+   "color": "Orange"
+  },
+  {
+   "title": "Abgerechnet",
+   "color": "Green"
+  },
+  {
+   "title": "Storniert",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "kunde_name,projekt,status",
+ "track_seen": 1
+}

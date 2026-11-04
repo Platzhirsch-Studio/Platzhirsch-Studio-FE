@@ -1,0 +1,19 @@
+{#- ph_marketing/templates/emails/ph_mail_basis.html – Gerüst aller Marketing-Mails (Spiegel von src/lib/kundenbetreuung/mail.js mailHtml).
+    Tabellen-Layout, Inline-Styles, max. 600 px, Farben der Design-Bibel, Systemschriften, kein Tracking-Pixel.
+    Verwendung in einer PH Mail Vorlage:  {% extends "templates/emails/ph_mail_basis.html" %}
+    Blöcke: preheader, inhalt, fusszeile (Standard: Fußzeile S = System). Variablen: website_url, impressum_zeile. -#}
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>{% block titel %}{{ betreff or "Platzhirsch Home Living" }}{% endblock %}</title></head>
+<body style="margin:0;padding:0;background:#faf8f4">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0">{% block preheader %}{{ preheader or "" }}{% endblock %}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f4"><tr><td align="center" style="padding:32px 16px">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff"><tr><td style="padding:32px 28px">
+<p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7a5e17">{% block kopf %}Platzhirsch Home Living · Lochau{% endblock %}</p>
+{% block inhalt %}{% endblock %}
+<hr style="border:0;border-top:1px solid #e0ddd7;margin:28px 0">
+<p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#4a5158">{% block fusszeile %}Diese Nachricht ist eine Antwort auf Ihre Anfrage oder Anmeldung bei Platzhirsch Home Living.{% endblock %}</p>
+<p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#4a5158">{{ impressum_zeile or "Platzhirsch Home Living · MW Immobilienverwaltungs GmbH · Landstraße 11 · 6911 Lochau · Österreich · +43 5574 46255 · info@platzhirsch.studio" }}</p>
+</td></tr></table>
+</td></tr></table>
+</body></html>

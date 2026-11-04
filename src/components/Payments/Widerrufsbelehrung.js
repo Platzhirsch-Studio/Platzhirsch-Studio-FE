@@ -4,18 +4,16 @@
 // ohnehin nur in Vorschau und Entwicklungs-Mock zu sehen).
 import { Badge, Heading, SmartLink } from "@/components/ui";
 import { splitMarks } from "@/lib/commerce/voucherTerms";
-import { WITHDRAWAL_SECTIONS, WITHDRAWAL_STAND, WITHDRAWAL_STATUS } from "@/lib/commerce/withdrawalText";
+import { WITHDRAWAL_SECTIONS, WITHDRAWAL_STATUS, withdrawalStandDe } from "@/lib/commerce/withdrawalText";
 
 export default function Widerrufsbelehrung({ headingLevel = 3, withdrawHref = "/zahlung/widerruf" }) {
   const draft = WITHDRAWAL_STATUS !== "freigegeben";
   return (
     <div>
-      {draft && (
-        <p className="flex flex-wrap items-center gap-3 text-small text-text-soft">
-          <span>{WITHDRAWAL_STAND}</span>
-          <Badge tone="band">Entwurf</Badge>
-        </p>
-      )}
+      <p className="flex flex-wrap items-center gap-3 text-small text-text-soft">
+        <span>{withdrawalStandDe()}</span>
+        {draft && <Badge tone="band">Entwurf</Badge>}
+      </p>
       <div className="mt-6 space-y-8">
         {WITHDRAWAL_SECTIONS.map((section) => (
           <section key={section.id} aria-labelledby={`wb-${section.id}`}>

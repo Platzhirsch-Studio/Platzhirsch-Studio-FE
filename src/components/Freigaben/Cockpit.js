@@ -303,10 +303,10 @@ function Recht({ rows, live, legalPreview, where }) {
 
 function Commerce({ c, where }) {
   return (
-    <SectionShell id="commerce" eyebrow="Kundengeld" title="Gutschein und Atelierverkauf" owner="Insolvenzrechtler und Steuerberater zuerst, dann Kanzlei, dann Inhaber" raised>
+    <SectionShell id="commerce" eyebrow="Kundengeld" title="Gutschein und Atelierverkauf" owner="Inhaber (Entscheidung Nr. 46, 03.11.2026); Steuerberater bestätigt Mehrzweckgutschein" raised>
       <p className="max-w-measure text-body">
-        Beide Strecken nehmen kein Geld an. Solange die Gutscheinbedingungen Entwurf sind, bleibt VOUCHER_MODE wirksam aus, auch wenn die Variable
-        gesetzt ist.
+        Gutscheinverkauf online ist seit 03.11.2026 vom Inhaber freigegeben (Bedingungen und Widerrufsbelehrung „freigegeben“). VOUCHER_MODE=stripe
+        wirkt erst mit Stripe-Schlüsseln und Mail-Dienst auf dem Server; der Atelierverkauf nimmt weiter kein Geld an.
       </p>
       <dl className="mt-8 max-w-text border-t border-line text-small">
         <div className="grid gap-1 border-b border-line py-3 sm:grid-cols-3">

@@ -1,0 +1,120 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "typ",
+  "titel",
+  "text",
+  "absender",
+  "bild",
+  "bild_alt",
+  "bildquelle",
+  "marke",
+  "url",
+  "link_label",
+  "event",
+  "quelle",
+  "sichtbar"
+ ],
+ "fields": [
+  {
+   "fieldname": "typ",
+   "fieldtype": "Select",
+   "label": "Typ",
+   "options": "brief\nneueStuecke\nskizze\ntermine\ngutZuWissen\narbeitsweise",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "text",
+   "fieldtype": "Text Editor",
+   "label": "Text"
+  },
+  {
+   "fieldname": "absender",
+   "fieldtype": "Data",
+   "label": "Absender (Brief)",
+   "default": "Susanne Messmer"
+  },
+  {
+   "fieldname": "bild",
+   "fieldtype": "Attach Image",
+   "label": "Bild (nur eigene Fotos)"
+  },
+  {
+   "fieldname": "bild_alt",
+   "fieldtype": "Data",
+   "label": "Alt-Text"
+  },
+  {
+   "fieldname": "bildquelle",
+   "fieldtype": "Select",
+   "label": "Bildquelle",
+   "options": "\neigen\nHersteller freigegeben\noffen",
+   "in_list_view": 1,
+   "columns": 2,
+   "description": "Newsletter: nur eigene Fotos (Design-Bibel §7)."
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke (nur „im Showroom“)"
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "Link"
+  },
+  {
+   "fieldname": "link_label",
+   "fieldtype": "Data",
+   "label": "Link-Text"
+  },
+  {
+   "fieldname": "event",
+   "fieldtype": "Link",
+   "label": "Event (Termine)",
+   "options": "PH Event",
+   "columns": 2
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Data",
+   "label": "Textquelle"
+  },
+  {
+   "fieldname": "sichtbar",
+   "fieldtype": "Check",
+   "label": "Sichtbar (berechnet)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Newsletter Block",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

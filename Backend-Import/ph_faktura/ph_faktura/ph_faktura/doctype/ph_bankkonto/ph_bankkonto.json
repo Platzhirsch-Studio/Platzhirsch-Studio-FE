@@ -1,0 +1,212 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Eigenes Bankkonto für CAMT.053-Import, Zahlungsabgleich und Zahlungsangaben auf Belegen.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bezeichnung",
+  "iban",
+  "bic",
+  "bank",
+  "cb_1",
+  "kontoinhaber",
+  "waehrung",
+  "export_konto",
+  "standard",
+  "aktiv",
+  "sb_stand",
+  "letzter_import",
+  "saldo_cent"
+ ],
+ "fields": [
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "iban",
+   "fieldtype": "Data",
+   "label": "IBAN",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "bic",
+   "fieldtype": "Data",
+   "label": "BIC"
+  },
+  {
+   "fieldname": "bank",
+   "fieldtype": "Data",
+   "label": "Bank"
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "kontoinhaber",
+   "fieldtype": "Data",
+   "label": "Kontoinhaber",
+   "default": "MW Immobilienverwaltungs GmbH"
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "export_konto",
+   "fieldtype": "Data",
+   "label": "Konto im Export (Kontenrahmen)",
+   "default": "2800",
+   "description": "Bankkonto laut Kontenplan der Kanzlei (BMD/DATEV); mit Steuerberater abstimmen."
+  },
+  {
+   "fieldname": "standard",
+   "fieldtype": "Check",
+   "label": "Standardkonto (Belege, EPC-QR)",
+   "default": "0"
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_stand",
+   "fieldtype": "Section Break",
+   "label": "Stand"
+  },
+  {
+   "fieldname": "letzter_import",
+   "fieldtype": "Date",
+   "label": "Letzter Import",
+   "read_only": 1
+  },
+  {
+   "fieldname": "saldo_cent",
+   "fieldtype": "Int",
+   "label": "Saldo laut letztem Auszug (Cent)",
+   "read_only": 1,
+   "default": "0"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Bankkonto",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:bezeichnung",
+ "naming_rule": "By fieldname",
+ "title_field": "bezeichnung",
+ "search_fields": "iban,bank"
+}

@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Kindtabelle von PH Retoure: zurückgegebene Artikel mit Zustand.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "slug",
+  "bezeichnung",
+  "menge",
+  "zustand",
+  "wiedereinlagern",
+  "wertminderung_cent"
+ ],
+ "fields": [
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Artikel",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Int",
+   "label": "Menge",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "zustand",
+   "fieldtype": "Select",
+   "label": "Zustand",
+   "options": "neu\ngeoeffnet\nbeschaedigt",
+   "default": "neu",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "wiedereinlagern",
+   "fieldtype": "Check",
+   "label": "Wieder einlagern",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "wertminderung_cent",
+   "fieldtype": "Int",
+   "label": "Wertminderung (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Retoure Position",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

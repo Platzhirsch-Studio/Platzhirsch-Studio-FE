@@ -1,0 +1,626 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Hersteller/Marke mit Händlerstatus, Vertrag, Bildfreigabe, Ansprechpartnern und Bestellweg (Migration aus „Marken“).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_allgemein",
+  "marke",
+  "slug",
+  "status",
+  "welt",
+  "sortierung",
+  "cb_allgemein",
+  "logo",
+  "website",
+  "land",
+  "gruendungsjahr",
+  "stand",
+  "tab_texte",
+  "kurz_de",
+  "kurz_en",
+  "kurz_fr",
+  "kurz_it",
+  "sb_story",
+  "story_de",
+  "story_en",
+  "story_fr",
+  "story_it",
+  "sb_produkte_text",
+  "produkte_text_de",
+  "produkte_text_en",
+  "produkte_text_fr",
+  "produkte_text_it",
+  "tab_bilder",
+  "bild_anhagen",
+  "bildfreigabe_status",
+  "cb_bilder",
+  "bildfreigabe_beleg",
+  "bildfreigabe_datum",
+  "sb_bilder",
+  "bilder",
+  "tab_haendler",
+  "haendlerstatus",
+  "haendler_wortlaut",
+  "haendler_beleg_url",
+  "haendler_geprueft_am",
+  "cb_haendler",
+  "haendlervertrag",
+  "vertrag_gueltig_von",
+  "vertrag_gueltig_bis",
+  "haendler_notiz",
+  "sb_claims",
+  "claims_erlaubt",
+  "tab_lieferant",
+  "lieferant",
+  "bestellweg",
+  "bestell_email",
+  "cb_lieferant",
+  "kundennummer_bei_lieferant",
+  "lieferzeit_wochen_standard",
+  "preisart",
+  "sb_ansprechpartner",
+  "ansprechpartner",
+  "tab_website",
+  "website_sichtbar",
+  "es_gibt_produkte",
+  "produkte_anzahl",
+  "cb_website",
+  "preise_pausiert_grund",
+  "querverweise",
+  "tab_system",
+  "sync_quelle",
+  "import_stand",
+  "notizen"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_allgemein",
+   "fieldtype": "Tab Break",
+   "label": "Allgemein"
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke (Herstellername)",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug (Website)",
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "Wird aus dem Namen gebildet, z. B. baobab-collection. Muss zu src/lib/katalog/marken/<slug>.js passen."
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aktiv\nPausiert\nInaktiv",
+   "default": "Aktiv",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "welt",
+   "fieldtype": "Select",
+   "label": "Welt",
+   "options": "\nWohnen\nKueche\nBad-Wellness\nAccessoires\nOutdoor\nLicht\nYacht",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sortierung",
+   "fieldtype": "Int",
+   "label": "Sortierung",
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_allgemein",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "logo",
+   "fieldtype": "Attach Image",
+   "label": "Logo"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website des Herstellers",
+   "options": "URL"
+  },
+  {
+   "fieldname": "land",
+   "fieldtype": "Data",
+   "label": "Herkunftsland"
+  },
+  {
+   "fieldname": "gruendungsjahr",
+   "fieldtype": "Int",
+   "label": "Gründungsjahr"
+  },
+  {
+   "fieldname": "stand",
+   "fieldtype": "Date",
+   "label": "Datenstand (Prüfdatum)"
+  },
+  {
+   "fieldname": "tab_texte",
+   "fieldtype": "Tab Break",
+   "label": "Texte"
+  },
+  {
+   "fieldname": "kurz_de",
+   "fieldtype": "Small Text",
+   "label": "Kurzbeschreibung (DE)"
+  },
+  {
+   "fieldname": "kurz_en",
+   "fieldtype": "Small Text",
+   "label": "Kurzbeschreibung (EN)"
+  },
+  {
+   "fieldname": "kurz_fr",
+   "fieldtype": "Small Text",
+   "label": "Kurzbeschreibung (FR)"
+  },
+  {
+   "fieldname": "kurz_it",
+   "fieldtype": "Small Text",
+   "label": "Kurzbeschreibung (IT)"
+  },
+  {
+   "fieldname": "sb_story",
+   "fieldtype": "Section Break",
+   "label": "Markenstory"
+  },
+  {
+   "fieldname": "story_de",
+   "fieldtype": "Text Editor",
+   "label": "Story (DE)"
+  },
+  {
+   "fieldname": "story_en",
+   "fieldtype": "Text Editor",
+   "label": "Story (EN)"
+  },
+  {
+   "fieldname": "story_fr",
+   "fieldtype": "Text Editor",
+   "label": "Story (FR)"
+  },
+  {
+   "fieldname": "story_it",
+   "fieldtype": "Text Editor",
+   "label": "Story (IT)"
+  },
+  {
+   "fieldname": "sb_produkte_text",
+   "fieldtype": "Section Break",
+   "label": "Text „Produkte“ der Markenseite (heute Marken.produkte)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "produkte_text_de",
+   "fieldtype": "Text Editor",
+   "label": "Produkte-Text (DE)"
+  },
+  {
+   "fieldname": "produkte_text_en",
+   "fieldtype": "Text Editor",
+   "label": "Produkte-Text (EN)"
+  },
+  {
+   "fieldname": "produkte_text_fr",
+   "fieldtype": "Text Editor",
+   "label": "Produkte-Text (FR)"
+  },
+  {
+   "fieldname": "produkte_text_it",
+   "fieldtype": "Text Editor",
+   "label": "Produkte-Text (IT)"
+  },
+  {
+   "fieldname": "tab_bilder",
+   "fieldtype": "Tab Break",
+   "label": "Bilder"
+  },
+  {
+   "fieldname": "bild_anhagen",
+   "fieldtype": "Attach Image",
+   "label": "Hero-Bild (heute Marken.bild_anhagen)"
+  },
+  {
+   "fieldname": "bildfreigabe_status",
+   "fieldtype": "Select",
+   "label": "Bildfreigabe des Herstellers",
+   "options": "offen\nschriftlich erteilt\nabgelehnt",
+   "default": "offen",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_bilder",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bildfreigabe_beleg",
+   "fieldtype": "Attach",
+   "label": "Bildfreigabe-Beleg"
+  },
+  {
+   "fieldname": "bildfreigabe_datum",
+   "fieldtype": "Date",
+   "label": "Bildfreigabe am"
+  },
+  {
+   "fieldname": "sb_bilder",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "bilder",
+   "fieldtype": "Table",
+   "label": "Markenbilder",
+   "options": "PH Marke Bild"
+  },
+  {
+   "fieldname": "tab_haendler",
+   "fieldtype": "Tab Break",
+   "label": "Händlerstatus"
+  },
+  {
+   "fieldname": "haendlerstatus",
+   "fieldtype": "Select",
+   "label": "Händlerstatus",
+   "options": "Keiner\nHaendler\nVertragshaendler\nExklusiv\nPartner\nAnfrage laeuft",
+   "default": "Keiner",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Nur mit Beleg setzen (Claim-Guard src/lib/legal/claims.js VERIFIED_DEALER_BRANDS)."
+  },
+  {
+   "fieldname": "haendler_wortlaut",
+   "fieldtype": "Select",
+   "label": "Wortlaut auf der Website",
+   "options": "\ndealer\ncontract\nstudio",
+   "description": "dealer = „Händler von …“, contract = „Vertragshändler“, studio = eigener Wortlaut (Minotti)."
+  },
+  {
+   "fieldname": "haendler_beleg_url",
+   "fieldtype": "Data",
+   "label": "Öffentlicher Beleg (URL)",
+   "options": "URL"
+  },
+  {
+   "fieldname": "haendler_geprueft_am",
+   "fieldtype": "Date",
+   "label": "Geprüft am"
+  },
+  {
+   "fieldname": "cb_haendler",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "haendlervertrag",
+   "fieldtype": "Attach",
+   "label": "Händlervertrag / Liefervereinbarung",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "vertrag_gueltig_von",
+   "fieldtype": "Date",
+   "label": "Vertrag gültig von"
+  },
+  {
+   "fieldname": "vertrag_gueltig_bis",
+   "fieldtype": "Date",
+   "label": "Vertrag gültig bis"
+  },
+  {
+   "fieldname": "haendler_notiz",
+   "fieldtype": "Small Text",
+   "label": "Hinweis (Inhaber-Entscheidung, Akte)"
+  },
+  {
+   "fieldname": "sb_claims",
+   "fieldtype": "Section Break",
+   "label": "Freigegebene Claims"
+  },
+  {
+   "fieldname": "claims_erlaubt",
+   "fieldtype": "Table",
+   "label": "Freigegebene Formulierungen",
+   "options": "PH Marke Claim"
+  },
+  {
+   "fieldname": "tab_lieferant",
+   "fieldtype": "Tab Break",
+   "label": "Lieferant und Bestellung"
+  },
+  {
+   "fieldname": "lieferant",
+   "fieldtype": "Link",
+   "label": "Lieferant (Bezugsquelle)",
+   "options": "PH Lieferant"
+  },
+  {
+   "fieldname": "bestellweg",
+   "fieldtype": "Select",
+   "label": "Bestellweg",
+   "options": "\nE-Mail\nPortal\nIWOfurn\npCon\nEDI\nFax"
+  },
+  {
+   "fieldname": "bestell_email",
+   "fieldtype": "Data",
+   "label": "Bestell-E-Mail",
+   "options": "Email"
+  },
+  {
+   "fieldname": "cb_lieferant",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "kundennummer_bei_lieferant",
+   "fieldtype": "Data",
+   "label": "Unsere Kundennummer"
+  },
+  {
+   "fieldname": "lieferzeit_wochen_standard",
+   "fieldtype": "Int",
+   "label": "Lieferzeit Standard (Wochen)"
+  },
+  {
+   "fieldname": "preisart",
+   "fieldtype": "Select",
+   "label": "Preisart auf der Website",
+   "options": "Auf Anfrage\nVerkaufspreis\nUVP",
+   "default": "Auf Anfrage",
+   "description": "Verkaufspreis nur für Marken laut schema.js PREIS_ARTEN.verkaufspreis.nurMarken; UVP nur Küche."
+  },
+  {
+   "fieldname": "sb_ansprechpartner",
+   "fieldtype": "Section Break",
+   "label": "Ansprechpartner"
+  },
+  {
+   "fieldname": "ansprechpartner",
+   "fieldtype": "Table",
+   "label": "Ansprechpartner",
+   "options": "PH Sortiment Ansprechpartner"
+  },
+  {
+   "fieldname": "tab_website",
+   "fieldtype": "Tab Break",
+   "label": "Website"
+  },
+  {
+   "fieldname": "website_sichtbar",
+   "fieldtype": "Check",
+   "label": "Auf der Website sichtbar",
+   "default": "1"
+  },
+  {
+   "fieldname": "es_gibt_produkte",
+   "fieldtype": "Check",
+   "label": "Hat aktive Produkte (heute Marken.es_gibt_produkte)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "produkte_anzahl",
+   "fieldtype": "Int",
+   "label": "Aktive Produkte",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_website",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "preise_pausiert_grund",
+   "fieldtype": "Data",
+   "label": "Preise pausiert (Grund)",
+   "description": "Wie schema.js PREISE_PAUSIERT: gesetzt = keine Preise auf Website/Shop."
+  },
+  {
+   "fieldname": "querverweise",
+   "fieldtype": "Small Text",
+   "label": "Querverweise (welt/kategorie je Zeile)"
+  },
+  {
+   "fieldname": "tab_system",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "sync_quelle",
+   "fieldtype": "Data",
+   "label": "Name im alten DocType „Marken“",
+   "read_only": 1
+  },
+  {
+   "fieldname": "import_stand",
+   "fieldtype": "Datetime",
+   "label": "Letzter Import",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notizen",
+   "fieldtype": "Text Editor",
+   "label": "Interne Notizen",
+   "permlevel": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Produkt",
+   "link_fieldname": "marke",
+   "group": "Sortiment"
+  },
+  {
+   "link_doctype": "PH Lieferant",
+   "link_fieldname": "marke",
+   "group": "Einkauf"
+  },
+  {
+   "link_doctype": "PH Herstellerbestellung",
+   "link_fieldname": "marke",
+   "group": "Einkauf"
+  },
+  {
+   "link_doctype": "PH Preisliste Import",
+   "link_fieldname": "marke",
+   "group": "Einkauf"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Marke",
+ "owner": "Administrator",
+ "sort_field": "sortierung",
+ "sort_order": "ASC",
+ "states": [
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Pausiert",
+   "color": "Orange"
+  },
+  {
+   "title": "Inaktiv",
+   "color": "Gray"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Sortiment Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Sortiment Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1
+  },
+  {
+   "role": "PH Sortiment Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "track_changes": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:marke",
+ "naming_rule": "By fieldname",
+ "title_field": "marke",
+ "search_fields": "slug,land,welt",
+ "image_field": "logo"
+}

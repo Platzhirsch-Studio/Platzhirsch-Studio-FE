@@ -1,0 +1,181 @@
+[
+ {
+  "doctype": "Number Card",
+  "name": "PH Bestellungen heute",
+  "label": "Bestellungen heute",
+  "type": "Document Type",
+  "document_type": "PH Bestellung",
+  "function": "Count",
+  "filters_json": "[[\"PH Bestellung\", \"angelegt\", \"Timespan\", \"today\", false], [\"PH Bestellung\", \"status\", \"not in\", [\"checkout_fehler\", \"abgelaufen\"], false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "show_percentage_stats": 1,
+  "color": "#30373e",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "stats_time_interval": "Daily"
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Zahlung ausstehend",
+  "label": "Zahlung ausstehend",
+  "type": "Document Type",
+  "document_type": "PH Bestellung",
+  "function": "Count",
+  "filters_json": "[[\"PH Bestellung\", \"status\", \"in\", [\"offen\", \"zahlung_ausstehend\"], false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "show_percentage_stats": 0,
+  "color": "#b45309",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Abholbereit",
+  "label": "Abholbereit",
+  "type": "Document Type",
+  "document_type": "PH Bestellung",
+  "function": "Count",
+  "filters_json": "[[\"PH Bestellung\", \"status\", \"=\", \"abholbereit\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "show_percentage_stats": 0,
+  "color": "#1d4ed8",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Offene Widerrufe",
+  "label": "Offene Widerrufe",
+  "type": "Document Type",
+  "document_type": "PH Widerruf",
+  "function": "Count",
+  "filters_json": "[[\"PH Widerruf\", \"status\", \"in\", [\"Eingegangen\", \"Bestaetigt\", \"Ware erwartet\", \"Ware erhalten\"], false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "show_percentage_stats": 0,
+  "color": "#b91c1c",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Gutschein-Restwert",
+  "label": "Gutschein-Restwert (€)",
+  "type": "Document Type",
+  "document_type": "PH Gutschein",
+  "function": "Sum",
+  "filters_json": "[[\"PH Gutschein\", \"status\", \"in\", [\"Aktiv\", \"Teilweise eingeloest\"], false], [\"PH Gutschein\", \"test\", \"=\", 0, false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "show_percentage_stats": 0,
+  "color": "#8a7a66",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "aggregate_function_based_on": "rest_eur"
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Umsatz Shop Monat",
+  "label": "Umsatz Shop (Monat, €)",
+  "type": "Document Type",
+  "document_type": "PH Bestellung",
+  "function": "Sum",
+  "filters_json": "[[\"PH Bestellung\", \"bezahlt_am\", \"Timespan\", \"this month\", false], [\"PH Bestellung\", \"modus\", \"=\", \"live\", false], [\"PH Bestellung\", \"status\", \"in\", [\"bezahlt\", \"versandbereit\", \"versendet\", \"abholbereit\", \"abgeholt\", \"abgeschlossen\", \"teilerstattet\"], false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "show_percentage_stats": 1,
+  "color": "#15803d",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "aggregate_function_based_on": "gesamt_eur",
+  "stats_time_interval": "Monthly"
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Stripe-Ereignisse Fehler",
+  "label": "Stripe-Fehler (7 Tage)",
+  "type": "Document Type",
+  "document_type": "PH Stripe Ereignis",
+  "function": "Count",
+  "filters_json": "[[\"PH Stripe Ereignis\", \"status\", \"=\", \"fehler\", false], [\"PH Stripe Ereignis\", \"empfangen_am\", \"Timespan\", \"last 7 days\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "show_percentage_stats": 0,
+  "color": "#b91c1c",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ }
+]

@@ -21,16 +21,16 @@ import Widerrufsbelehrung from "@/components/Payments/Widerrufsbelehrung";
 import { PRICE_NOTES } from "@/lib/commerce/priceRules";
 
 export const metadata = {
-  title: "Commerce-Vorschau – Entwurf",
+  title: "Commerce-Vorschau – Stand 03.11.2026",
   robots: NOINDEX,
 };
 
+// Stand 03.11.2026 (Inhaber-Entscheidung Nr. 46): Gutscheinverkauf online erlaubt, Aussteller MW Immobilienverwaltungs
+// GmbH (Nr. 38), Café ausgenommen (Nr. 17), Widerrufsbelehrung freigegeben. Erledigte Fragen sind hier gestrichen.
 const OPEN_POINTS = [
-  "Insolvenz-/Gesellschaftsrechtler: Dürfen Gutscheine verkauft und Anzahlungen angenommen werden (Rechtspaket 0.1)?",
-  "Kanzlei: Wer gibt die Gutscheine aus und wer verkauft die Ausstellungsstücke bis zur Eintragung der Handels-GmbH (W14)?",
-  "Kanzlei: Widerrufsbelehrung, Muster-Formular und Seite „Vertrag widerrufen“ für Angebot und Rechnung (W5).",
-  "Steuerberater: Einzweck- oder Mehrzweckgutschein, Café getrennt oder ausgenommen (W15).",
-  "Team: PDF-Vorlage der drei Motive, Gutscheinregister mit Codes ab 12 Zeichen, Antwortzeit auf Anfragen.",
+  "Steuerberater: Einstufung als Mehrzweckgutschein bestätigen (Umsatzsteuer bei Einlösung; Inhaber-Checkliste SHOP-LIVE-2026-11-03.md).",
+  "Inhaber/Server: Stripe-Live-Schlüssel, Webhook-Geheimnis und Mail-Dienst setzen; erst dann wirkt VOUCHER_MODE=stripe in Produktion.",
+  "Team: Antwortzeit auf Gutschein-Anfragen (Firmengeschenke), Gutscheinregister pflegen.",
   "Team: Inventur, Veröffentlichungs-Tab des Atelier-Sheets, eigene Fotos und Zustandsbeschreibungen (E5).",
 ];
 
@@ -43,7 +43,7 @@ function Switch({ name, value, requested = value }) {
       <span className="text-small text-text-soft">
         {blocked
           ? value === "off"
-            ? "(Gutscheinbedingungen sind Entwurf: Seiten und API liefern 404)"
+            ? "(Gutscheinbedingungen nicht freigegeben: Seiten und API liefern 404)"
             : "(Online-Zahlung noch nicht bereit: Rückfall auf Anfrage)"
           : value === "off"
             ? "(Seiten und API liefern 404)"
@@ -67,7 +67,7 @@ export default async function CommercePreviewPage({ params }) {
       <div role="note" aria-labelledby="cp-banner" className="border-b border-line-strong bg-stone">
         <Container className="py-5">
           <p id="cp-banner" className="text-ui text-text">
-            Entwurf, Freigabe Insolvenzrechtler/Steuerberater offen
+            Vorschau – Gutscheinverkauf vom Inhaber freigegeben (Entscheidung Nr. 46, 03.11.2026); Steuerberater bestätigt Mehrzweckgutschein noch
           </p>
           <p className="mt-1 max-w-measure text-small text-text">
             Vorschau zur Abnahme, nicht öffentlich und nicht indexiert. Die Formulare senden hier nichts. Es wird kein Geld angenommen.
@@ -112,7 +112,7 @@ export default async function CommercePreviewPage({ params }) {
 
       <section id="bedingungen" aria-labelledby="cp-bedingungen" className="mt-16 scroll-mt-24 border-t border-line bg-surface-raised py-12">
         <Container size="text">
-          <p className="text-overline uppercase text-text-accent">Entwurf · vor Verwendung anwaltlich prüfen</p>
+          <p className="text-overline uppercase text-text-accent">Freigegeben · Stand 03.11.2026</p>
           <Heading level={2} id="cp-bedingungen" className="mt-stack-s">
             Gutscheinbedingungen
           </Heading>

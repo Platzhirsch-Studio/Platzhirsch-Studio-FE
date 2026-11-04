@@ -1,0 +1,113 @@
+"""Erstinstallation ph_service: Fehlerkatalog (Bereich → Fehlercode), Einstellungen. Idempotent, ohne Geheimnisse."""
+
+import frappe
+
+# Fehlerkatalog nach Vorbild SHD resy, angepasst auf Designmöbel, Küche, Bad/Wellness.
+# gruppe: Material/Verarbeitung/Transport/Montage/Bedienung/Funktion/Sonstiges · lr = lieferantenrelevant
+FEHLERBEREICHE = [
+    ("OBF", "Oberfläche", "Lack, Furnier, Beschichtung, Holz- und Metalloberflächen", 10),
+    ("MEC", "Mechanik", "Scharniere, Auszüge, Verstellmechaniken, Beschläge", 20),
+    ("ELE", "Elektro", "Motoren, Beleuchtung, Steuerungen, Netzteile", 30),
+    ("POL", "Polster", "Bezüge, Nähte, Schaum, Federung, Leder", 40),
+    ("STN", "Stein / Keramik", "Marmor, Granit, Keramikplatten, Mosaik", 50),
+    ("GLS", "Glas / Spiegel", "Glasplatten, Vitrinen, Spiegel", 60),
+    ("HOL", "Holz / Konstruktion", "Verzug, Fugen, Stabilität, Geräusche", 70),
+    ("TRA", "Transport", "Schäden und Abweichungen bei Anlieferung", 80),
+    ("MON", "Montage", "Fehler bei Aufbau und Anschluss", 90),
+    ("MAS", "Maß / Ausführung", "Maß-, Farb- und Ausführungsabweichungen", 100),
+    ("WEL", "Wellness-Technik", "Whirlpool, Sauna, Pooltechnik", 110),
+    ("PFL", "Pflegefrage", "Reinigung, Pflege, Gebrauchsspuren ohne Mangel", 120),
+]
+
+FEHLERCODES = [
+    # code, bereich, bezeichnung, gruppe, lr, typische_ursache, standardloesung
+    ("OBF-01", "OBF", "Kratzer", "Verarbeitung", 1, "Transport, Montage, Gebrauch", "Prüfung Entstehungszeitpunkt; Politur/Ausbesserung vor Ort, sonst Austausch Bauteil"),
+    ("OBF-02", "OBF", "Delle / Druckstelle", "Transport", 1, "Transport oder Verpackung", "Fotodoku, Meldung Lieferant, Austausch Front/Platte"),
+    ("OBF-03", "OBF", "Lackfehler / Abplatzung", "Material", 1, "Lackhaftung, Produktionsfehler", "Reklamation Hersteller, Austausch"),
+    ("OBF-04", "OBF", "Verfärbung / Fleck", "Material", 0, "UV, Reinigungsmittel, Feuchtigkeit", "Ursache klären (Pflegehinweise), ggf. Kulanz"),
+    ("OBF-05", "OBF", "Riss im Furnier", "Material", 1, "Raumklima, Materialspannung", "Hersteller melden, Austausch Bauteil"),
+    ("OBF-06", "OBF", "Blasenbildung", "Material", 1, "Verleimung, Feuchtigkeit", "Reklamation Hersteller"),
+    ("MEC-01", "MEC", "Scharnier defekt / schwergängig", "Funktion", 1, "Einstellung, Materialermüdung", "Nachjustieren vor Ort, Ersatzteil Scharnier"),
+    ("MEC-02", "MEC", "Auszug / Schublade klemmt", "Funktion", 1, "Führung verstellt, Schiene defekt", "Einstellen, Schiene tauschen"),
+    ("MEC-03", "MEC", "Verstellmechanik (Relax, Kopfstütze)", "Funktion", 1, "Beschlag, Raster", "Ersatzteil Beschlag, Techniker"),
+    ("MEC-04", "MEC", "Klappbeschlag / Lift", "Funktion", 1, "Federkraft, Dämpfer", "Einstellen, Ersatzteil"),
+    ("MEC-05", "MEC", "Griff / Schloss lose", "Montage", 0, "Verschraubung", "Nachziehen, Ersatz"),
+    ("MEC-06", "MEC", "Rollen / Gleiter", "Funktion", 1, "Verschleiß, Bodenbelag", "Ersatzteil Rollen/Gleiter"),
+    ("ELE-01", "ELE", "Motor / Antrieb ohne Funktion", "Funktion", 1, "Motor, Steuerung, Kabel", "Fehlersuche Techniker, Austausch Motor"),
+    ("ELE-02", "ELE", "Beleuchtung defekt", "Funktion", 1, "LED-Band, Trafo", "Ersatzteil Leuchtmittel/Trafo"),
+    ("ELE-03", "ELE", "Netzteil / Trafo", "Funktion", 1, "Überlast, Defekt", "Austausch Netzteil"),
+    ("ELE-04", "ELE", "Steuerung / Fernbedienung", "Funktion", 1, "Pairing, Batterie, Platine", "Neu koppeln, Ersatz"),
+    ("ELE-05", "ELE", "Kabelbruch", "Verarbeitung", 1, "Montage, Bewegung", "Kabelsatz tauschen"),
+    ("ELE-06", "ELE", "USB / Ladefunktion", "Funktion", 1, "Modul defekt", "Modul tauschen"),
+    ("POL-01", "POL", "Faltenbildung Bezug", "Material", 0, "Materialeigenschaft (Gebrauchsfalten) oder Verarbeitung", "Abgrenzung Gebrauchsfalte/Mangel mit Herstellerrichtlinie; ggf. Nachspannen"),
+    ("POL-02", "POL", "Sitzkomfortverlust / Kissen weich", "Material", 1, "Schaum, Daune, Verarbeitung", "Herstellerprüfung, Austausch Innenkissen"),
+    ("POL-03", "POL", "Naht offen", "Verarbeitung", 1, "Nahtfehler", "Nachnähen Polsterer, Austausch Bezug"),
+    ("POL-04", "POL", "Pilling / Abrieb Stoff", "Material", 0, "Gebrauch, Mischgewebe", "Pflegehinweis, Fusselrasierer; bei Frühverschleiß Hersteller"),
+    ("POL-05", "POL", "Leder Farbabrieb / Risse", "Material", 1, "Pflege, Materialfehler", "Lederpflege/Nachfärben, Herstellerprüfung"),
+    ("POL-06", "POL", "Federung / Geräusche", "Funktion", 1, "Federkern, Gurte, Rahmen", "Techniker, Ersatzteil"),
+    ("POL-07", "POL", "Bezug Farbabweichung", "Material", 1, "Chargenunterschied", "Reklamation Hersteller, Austausch"),
+    ("STN-01", "STN", "Riss in Stein / Keramik", "Material", 1, "Materialspannung, Transport, Montage", "Fotodoku, Hersteller, Austausch Platte"),
+    ("STN-02", "STN", "Fleck / Säureschaden", "Bedienung", 0, "Reinigungsmittel, Lebensmittel", "Pflegehinweis, Aufarbeitung Steinmetz (Kulanz prüfen)"),
+    ("STN-03", "STN", "Kantenabplatzung", "Transport", 1, "Transport, Montage", "Reparatur Steinmetz oder Austausch"),
+    ("STN-04", "STN", "Fugenfehler", "Montage", 0, "Verarbeitung Montage", "Nacharbeit Montage"),
+    ("STN-05", "STN", "Verfärbung Marmor", "Material", 0, "Feuchtigkeit, fehlende Imprägnierung", "Imprägnierung, Pflegehinweis"),
+    ("GLS-01", "GLS", "Glasbruch", "Transport", 1, "Transport, Spannung", "Austausch, Meldung Transportversicherung"),
+    ("GLS-02", "GLS", "Kratzer Glas", "Verarbeitung", 1, "Transport, Reinigung", "Prüfung, Austausch"),
+    ("GLS-03", "GLS", "Einschluss / Blase", "Material", 1, "Produktionsfehler", "Reklamation Hersteller"),
+    ("HOL-01", "HOL", "Verzug", "Material", 1, "Raumklima, Holzfeuchte", "Raumklima prüfen, Hersteller"),
+    ("HOL-02", "HOL", "Spalt / Fuge offen", "Verarbeitung", 1, "Verleimung, Schwund", "Nacharbeit, Austausch"),
+    ("HOL-03", "HOL", "Wackeln / Instabil", "Montage", 0, "Verschraubung, Boden uneben", "Nachziehen, Ausrichten"),
+    ("HOL-04", "HOL", "Knarren / Geräusche", "Verarbeitung", 1, "Verbindung, Spannung", "Techniker, Nacharbeit"),
+    ("TRA-01", "TRA", "Transportschaden (Verpackung beschädigt)", "Transport", 1, "Spedition", "Sofortmeldung Spedition/Lieferant innerhalb Fristen, Fotos vor Auspacken"),
+    ("TRA-02", "TRA", "Stoß- / Druckschaden", "Transport", 1, "Spedition, Verpackung", "Fotodoku, Meldung, Austausch"),
+    ("TRA-03", "TRA", "Falsche Ware geliefert", "Sonstiges", 1, "Kommissionierung Hersteller", "AB-Abgleich, Rücksendung, Neulieferung"),
+    ("TRA-04", "TRA", "Fehlmenge / fehlendes Teil", "Sonstiges", 1, "Kommissionierung", "Nachlieferung anfordern"),
+    ("MON-01", "MON", "Falsch montiert", "Montage", 0, "Montagefehler", "Nacharbeit Montage, Montageauftrag"),
+    ("MON-02", "MON", "Nicht ausgerichtet / nivelliert", "Montage", 0, "Montage, Boden", "Nacharbeit Montage"),
+    ("MON-03", "MON", "Beschädigung bei Montage", "Montage", 0, "Montageteam", "Reparatur/Austausch, interne Kosten"),
+    ("MON-04", "MON", "Anschluss fehlerhaft (Wasser/Strom)", "Montage", 0, "Installateur/Elektriker", "Gewerk nachbessern lassen"),
+    ("MAS-01", "MAS", "Maßabweichung", "Verarbeitung", 1, "Fertigung, Aufmaß", "Abgleich AB/Aufmaß, Hersteller oder intern"),
+    ("MAS-02", "MAS", "Falsche Ausführung / Farbe", "Sonstiges", 1, "Bestellung, Fertigung", "AB-Abgleich; Hersteller oder intern"),
+    ("MAS-03", "MAS", "Farbabweichung zum Muster", "Material", 1, "Charge, Naturmaterial", "Toleranz prüfen, Hersteller"),
+    ("WEL-01", "WEL", "Pumpe / Filter", "Funktion", 1, "Verschleiß, Verkalkung", "Wartung, Ersatzteil"),
+    ("WEL-02", "WEL", "Heizung ohne Funktion", "Funktion", 1, "Heizelement, Sensor", "Techniker, Ersatzteil"),
+    ("WEL-03", "WEL", "Steuerung / Display", "Funktion", 1, "Platine, Software", "Hersteller-Service"),
+    ("WEL-04", "WEL", "Undichtigkeit", "Verarbeitung", 1, "Dichtung, Verschraubung", "Techniker, Dichtung tauschen"),
+    ("WEL-05", "WEL", "Saunaofen / Steuerung", "Funktion", 1, "Heizstab, Fühler", "Ersatzteil, Elektriker"),
+    ("WEL-06", "WEL", "Düsen / Luftsystem", "Funktion", 1, "Verstopfung, Ventil", "Wartung, Ersatzteil"),
+    ("PFL-01", "PFL", "Reinigungsfrage", "Bedienung", 0, "", "Pflegehinweis senden, ggf. Pflegetermin anbieten"),
+    ("PFL-02", "PFL", "Pflegemittel-Anfrage", "Bedienung", 0, "", "Produktempfehlung (nur mit Einwilligung bewerben)"),
+    ("PFL-03", "PFL", "Gebrauchsspur (kein Mangel)", "Bedienung", 0, "Normaler Gebrauch", "Erklärung an Kunden, Pflegeangebot"),
+]
+
+
+def after_install():
+    fehlerkatalog_anlegen()
+    einstellungen_anlegen()
+    frappe.db.commit()
+
+
+def fehlerkatalog_anlegen():
+    for code, bez, beschr, sort in FEHLERBEREICHE:
+        if not frappe.db.exists("PH Fehlerbereich", code):
+            frappe.get_doc({"doctype": "PH Fehlerbereich", "code": code, "bezeichnung": bez, "beschreibung": beschr, "sortierung": sort, "aktiv": 1}).insert(ignore_permissions=True)
+    for code, bereich, bez, gruppe, lr, ursache, loesung in FEHLERCODES:
+        if not frappe.db.exists("PH Fehlercode", code):
+            frappe.get_doc(
+                {
+                    "doctype": "PH Fehlercode",
+                    "code": code,
+                    "bereich": bereich,
+                    "bezeichnung": bez,
+                    "gruppe": gruppe,
+                    "lieferantenrelevant": lr,
+                    "typische_ursache": ursache,
+                    "standardloesung": loesung,
+                    "aktiv": 1,
+                }
+            ).insert(ignore_permissions=True)
+
+
+def einstellungen_anlegen():
+    doc = frappe.get_single("PH Service Einstellungen")
+    doc.save(ignore_permissions=True)

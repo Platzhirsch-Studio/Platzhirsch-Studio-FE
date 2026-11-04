@@ -1,0 +1,320 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Rücksendung oder Rückgabe im Showroom zu einer Bestellung: Eingang, Prüfung, Wertminderung, Erstattungsbetrag.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "bestellung",
+  "widerruf",
+  "cb_kopf",
+  "angekuendigt_am",
+  "eingegangen_am",
+  "weg",
+  "sb_positionen",
+  "positionen",
+  "sb_pruefung",
+  "geprueft_von",
+  "geprueft_am",
+  "wertminderung_cent",
+  "cb_pruefung",
+  "erstattungsbetrag_cent",
+  "erstattung",
+  "hinweis",
+  "tb_system",
+  "idempotency_key",
+  "ip_hash",
+  "quelle",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-RET-.YYYY.-.#####",
+   "default": "PH-RET-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Angekuendigt\nLabel gesendet\nUnterwegs\nEingegangen\nGeprueft\nErstattet\nAbgelehnt",
+   "default": "Angekuendigt",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Setzt der Workflow bzw. der Server (Webhook, Buttons)."
+  },
+  {
+   "fieldname": "bestellung",
+   "fieldtype": "Link",
+   "label": "Bestellung",
+   "options": "PH Bestellung",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "widerruf",
+   "fieldtype": "Link",
+   "label": "Widerruf",
+   "options": "PH Widerruf"
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "angekuendigt_am",
+   "fieldtype": "Datetime",
+   "label": "Angekündigt am",
+   "reqd": 1
+  },
+  {
+   "fieldname": "eingegangen_am",
+   "fieldtype": "Datetime",
+   "label": "Eingegangen am",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "weg",
+   "fieldtype": "Select",
+   "label": "Weg",
+   "options": "Ruecksendung\nShowroom",
+   "default": "Ruecksendung"
+  },
+  {
+   "fieldname": "sb_positionen",
+   "fieldtype": "Section Break",
+   "label": "Positionen"
+  },
+  {
+   "fieldname": "positionen",
+   "fieldtype": "Table",
+   "label": "Positionen",
+   "options": "PH Retoure Position"
+  },
+  {
+   "fieldname": "sb_pruefung",
+   "fieldtype": "Section Break",
+   "label": "Prüfung"
+  },
+  {
+   "fieldname": "geprueft_von",
+   "fieldtype": "Link",
+   "label": "Geprüft von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geprueft_am",
+   "fieldtype": "Datetime",
+   "label": "Geprüft am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "wertminderung_cent",
+   "fieldtype": "Int",
+   "label": "Wertminderung (Cent)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "cb_pruefung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "erstattungsbetrag_cent",
+   "fieldtype": "Int",
+   "label": "Erstattungsbetrag (Cent)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "erstattung",
+   "fieldtype": "Link",
+   "label": "Erstattung (PH Zahlung)",
+   "options": "PH Zahlung",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis"
+  },
+  {
+   "fieldname": "tb_system",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "website\nbackoffice\nstripe\nkassa\nimport",
+   "default": "backoffice",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Geändert von",
+   "options": "PH Retoure",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Retoure",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "angekuendigt_am",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Angekuendigt",
+   "color": "Blue"
+  },
+  {
+   "title": "Label gesendet",
+   "color": "Cyan"
+  },
+  {
+   "title": "Unterwegs",
+   "color": "Orange"
+  },
+  {
+   "title": "Eingegangen",
+   "color": "Purple"
+  },
+  {
+   "title": "Geprueft",
+   "color": "Yellow"
+  },
+  {
+   "title": "Erstattet",
+   "color": "Green"
+  },
+  {
+   "title": "Abgelehnt",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "title_field": "titel",
+ "search_fields": "bestellung",
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field"
+}

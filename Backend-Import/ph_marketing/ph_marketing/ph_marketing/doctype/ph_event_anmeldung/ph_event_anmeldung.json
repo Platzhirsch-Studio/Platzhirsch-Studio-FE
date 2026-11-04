@@ -1,0 +1,151 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "name_person",
+  "email",
+  "telefon",
+  "personen",
+  "status",
+  "quelle",
+  "angemeldet_am",
+  "kontakt",
+  "einwilligung",
+  "textversion",
+  "nachricht",
+  "bestaetigung_gesendet_am",
+  "erinnerung_gesendet_am",
+  "anmelde_token_hash",
+  "anfrage",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "name_person",
+   "fieldtype": "Data",
+   "label": "Name",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "telefon",
+   "fieldtype": "Data",
+   "label": "Telefon",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "personen",
+   "fieldtype": "Int",
+   "label": "Personen",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "angemeldet\nbestaetigt\nwarteliste\nabgesagt\nerschienen\nnicht erschienen",
+   "default": "angemeldet",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "website\ntelefon\nshowroom\nemail\nbackoffice",
+   "default": "website",
+   "columns": 1
+  },
+  {
+   "fieldname": "angemeldet_am",
+   "fieldtype": "Datetime",
+   "label": "Angemeldet am",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "einwilligung",
+   "fieldtype": "Link",
+   "label": "Einwilligung",
+   "options": "PH Einwilligung"
+  },
+  {
+   "fieldname": "textversion",
+   "fieldtype": "Data",
+   "label": "Textversion Datenschutzhinweis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "nachricht",
+   "fieldtype": "Small Text",
+   "label": "Nachricht"
+  },
+  {
+   "fieldname": "bestaetigung_gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Bestätigung gesendet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "erinnerung_gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Erinnerung gesendet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "anmelde_token_hash",
+   "fieldtype": "Data",
+   "label": "Absage-Token (Hash)",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "anfrage",
+   "fieldtype": "Link",
+   "label": "Anfrage (Website)",
+   "options": "PH Anfrage"
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Data",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Event Anmeldung",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

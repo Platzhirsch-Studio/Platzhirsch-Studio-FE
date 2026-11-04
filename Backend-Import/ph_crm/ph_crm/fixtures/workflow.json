@@ -1,0 +1,87 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "PH Anfrage",
+  "workflow_name": "PH Anfrage",
+  "document_type": "PH Anfrage",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Neu", "doc_status": "0", "allow_edit": "PH CRM Mitarbeiter", "update_field": "status", "update_value": "Neu", "is_optional_state": 0},
+   {"state": "PH Qualifiziert", "doc_status": "0", "allow_edit": "PH CRM Mitarbeiter", "update_field": "status", "update_value": "Qualifiziert", "is_optional_state": 0},
+   {"state": "PH Termin vereinbart", "doc_status": "0", "allow_edit": "PH CRM Mitarbeiter", "update_field": "status", "update_value": "Termin vereinbart", "is_optional_state": 0},
+   {"state": "PH Angebot", "doc_status": "0", "allow_edit": "PH CRM Mitarbeiter", "update_field": "status", "update_value": "Angebot", "is_optional_state": 0},
+   {"state": "PH Gewonnen", "doc_status": "0", "allow_edit": "PH CRM Leitung", "update_field": "status", "update_value": "Gewonnen", "is_optional_state": 0},
+   {"state": "PH Verloren", "doc_status": "0", "allow_edit": "PH CRM Leitung", "update_field": "status", "update_value": "Verloren", "is_optional_state": 0},
+   {"state": "PH Spam", "doc_status": "0", "allow_edit": "PH CRM Leitung", "update_field": "status", "update_value": "Spam", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Neu", "action": "Qualifizieren", "next_state": "PH Qualifiziert", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1, "condition": "doc.email or doc.telefon"},
+   {"state": "PH Neu", "action": "Als Spam markieren", "next_state": "PH Spam", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Qualifiziert", "action": "Termin vereinbaren", "next_state": "PH Termin vereinbart", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Qualifiziert", "action": "Angebot erstellen", "next_state": "PH Angebot", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Qualifiziert", "action": "Verloren", "next_state": "PH Verloren", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Termin vereinbart", "action": "Angebot erstellen", "next_state": "PH Angebot", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Termin vereinbart", "action": "Verloren", "next_state": "PH Verloren", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Angebot", "action": "Gewonnen", "next_state": "PH Gewonnen", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Angebot", "action": "Verloren", "next_state": "PH Verloren", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Verloren", "action": "Zurück auf Neu", "next_state": "PH Neu", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
+   {"state": "PH Spam", "action": "Zurück auf Neu", "next_state": "PH Neu", "allowed": "PH CRM Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Termin",
+  "workflow_name": "PH Termin",
+  "document_type": "PH Termin",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Unbestaetigt", "doc_status": "0", "allow_edit": "PH CRM Mitarbeiter", "update_field": "status", "update_value": "Unbestaetigt", "is_optional_state": 0},
+   {"state": "PH Bestaetigt", "doc_status": "0", "allow_edit": "PH CRM Mitarbeiter", "update_field": "status", "update_value": "Bestaetigt", "is_optional_state": 0},
+   {"state": "PH Erledigt", "doc_status": "0", "allow_edit": "PH CRM Leitung", "update_field": "status", "update_value": "Erledigt", "is_optional_state": 0},
+   {"state": "PH Nicht erschienen", "doc_status": "0", "allow_edit": "PH CRM Leitung", "update_field": "status", "update_value": "Nicht erschienen", "is_optional_state": 0},
+   {"state": "PH Storniert", "doc_status": "0", "allow_edit": "PH CRM Leitung", "update_field": "status", "update_value": "Storniert", "is_optional_state": 0},
+   {"state": "PH Abgelehnt", "doc_status": "0", "allow_edit": "PH CRM Leitung", "update_field": "status", "update_value": "Abgelehnt", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Unbestaetigt", "action": "Bestätigen", "next_state": "PH Bestaetigt", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1, "condition": "doc.start and doc.terminart"},
+   {"state": "PH Unbestaetigt", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Unbestaetigt", "action": "Ablehnen", "next_state": "PH Abgelehnt", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
+   {"state": "PH Bestaetigt", "action": "Erledigt", "next_state": "PH Erledigt", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Bestaetigt", "action": "Nicht erschienen", "next_state": "PH Nicht erschienen", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Bestaetigt", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Storniert", "action": "Zurück auf Neu", "next_state": "PH Unbestaetigt", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
+   {"state": "PH Abgelehnt", "action": "Zurück auf Neu", "next_state": "PH Unbestaetigt", "allowed": "PH CRM Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Kontakt",
+  "workflow_name": "PH Kontakt",
+  "document_type": "PH Kontakt",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Interessent", "doc_status": "0", "allow_edit": "PH CRM Mitarbeiter", "update_field": "status", "update_value": "Interessent", "is_optional_state": 0},
+   {"state": "PH Kunde", "doc_status": "0", "allow_edit": "PH CRM Mitarbeiter", "update_field": "status", "update_value": "Kunde", "is_optional_state": 0},
+   {"state": "PH Inaktiv", "doc_status": "0", "allow_edit": "PH CRM Leitung", "update_field": "status", "update_value": "Inaktiv", "is_optional_state": 0},
+   {"state": "PH Gesperrt", "doc_status": "0", "allow_edit": "PH CRM Leitung", "update_field": "status", "update_value": "Gesperrt", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Interessent", "action": "Als Kunde markieren", "next_state": "PH Kunde", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Interessent", "action": "Deaktivieren", "next_state": "PH Inaktiv", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
+   {"state": "PH Kunde", "action": "Deaktivieren", "next_state": "PH Inaktiv", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
+   {"state": "PH Interessent", "action": "Sperren", "next_state": "PH Gesperrt", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
+   {"state": "PH Kunde", "action": "Sperren", "next_state": "PH Gesperrt", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
+   {"state": "PH Inaktiv", "action": "Reaktivieren", "next_state": "PH Interessent", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
+   {"state": "PH Gesperrt", "action": "Reaktivieren", "next_state": "PH Interessent", "allowed": "PH CRM Leitung", "allow_self_approval": 1}
+  ]
+ }
+]

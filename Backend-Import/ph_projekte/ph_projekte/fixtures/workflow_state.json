@@ -1,0 +1,107 @@
+[
+ {
+  "doctype": "Workflow State",
+  "name": "PH Phase Anfrage",
+  "workflow_state_name": "PH Phase Anfrage",
+  "style": "Primary",
+  "icon": "inbox"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Phase Planung",
+  "workflow_state_name": "PH Phase Planung",
+  "style": "Info",
+  "icon": "pencil"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Phase Angebot",
+  "workflow_state_name": "PH Phase Angebot",
+  "style": "Warning",
+  "icon": "file"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Phase Auftrag",
+  "workflow_state_name": "PH Phase Auftrag",
+  "style": "Info",
+  "icon": "ok"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Phase Bestellung",
+  "workflow_state_name": "PH Phase Bestellung",
+  "style": "Warning",
+  "icon": "shopping-cart"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Phase Lieferung",
+  "workflow_state_name": "PH Phase Lieferung",
+  "style": "Info",
+  "icon": "truck"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Phase Montage",
+  "workflow_state_name": "PH Phase Montage",
+  "style": "Warning",
+  "icon": "wrench"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Phase Uebergabe",
+  "workflow_state_name": "PH Phase Uebergabe",
+  "style": "Success",
+  "icon": "gift"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Vorgelegt",
+  "workflow_state_name": "PH Vorgelegt",
+  "style": "Primary",
+  "icon": "eye-open"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Feedback offen",
+  "workflow_state_name": "PH Feedback offen",
+  "style": "Warning",
+  "icon": "comment"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Unterwegs",
+  "workflow_state_name": "PH Unterwegs",
+  "style": "Info",
+  "icon": "road"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Abgenommen",
+  "workflow_state_name": "PH Abgenommen",
+  "style": "Success",
+  "icon": "ok-sign"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Unterzeichnet",
+  "workflow_state_name": "PH Unterzeichnet",
+  "style": "Primary",
+  "icon": "pencil"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Mit Maengeln",
+  "workflow_state_name": "PH Mit Maengeln",
+  "style": "Warning",
+  "icon": "warning-sign"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Eingereicht",
+  "workflow_state_name": "PH Eingereicht",
+  "style": "Warning",
+  "icon": "inbox"
+ }
+]

@@ -1,0 +1,277 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Jedes vom Stripe-Webhook empfangene Ereignis: Idempotenz über die Event-ID, Verarbeitungsergebnis, Fehler und (gekürztes) Roh-Ereignis.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "event_id",
+  "titel",
+  "typ",
+  "status",
+  "livemode",
+  "cb_kopf",
+  "empfangen_am",
+  "verarbeitet_am",
+  "versuche",
+  "api_version",
+  "sb_bezug",
+  "art",
+  "bezug_doctype",
+  "bezug",
+  "cb_bezug",
+  "ergebnis",
+  "fehler",
+  "sb_roh",
+  "payload_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "event_id",
+   "fieldtype": "Data",
+   "label": "Event-ID",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "typ",
+   "fieldtype": "Data",
+   "label": "Typ",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Ergebnis",
+   "options": "empfangen\nverarbeitet\nignoriert\nfehler\nwiederholt",
+   "default": "empfangen",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "livemode",
+   "fieldtype": "Check",
+   "label": "Livemodus",
+   "default": "0",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "empfangen_am",
+   "fieldtype": "Datetime",
+   "label": "Empfangen",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "verarbeitet_am",
+   "fieldtype": "Datetime",
+   "label": "Verarbeitet",
+   "read_only": 1
+  },
+  {
+   "fieldname": "versuche",
+   "fieldtype": "Int",
+   "label": "Zustellversuche",
+   "default": "1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "api_version",
+   "fieldtype": "Data",
+   "label": "API-Version",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_bezug",
+   "fieldtype": "Section Break",
+   "label": "Zuordnung"
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Data",
+   "label": "metadata.art",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "description": "shop, gutschein, anzahlung, kassa …"
+  },
+  {
+   "fieldname": "bezug_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug (Typ)",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bezug",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "bezug_doctype",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_bezug",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ergebnis",
+   "fieldtype": "Data",
+   "label": "Ergebnis (Detail)",
+   "read_only": 1,
+   "description": "z. B. erfuellt, bereits_erfuellt, ausstehend, teilerstattet:2_gesperrt"
+  },
+  {
+   "fieldname": "fehler",
+   "fieldtype": "Small Text",
+   "label": "Fehler",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_roh",
+   "fieldtype": "Section Break",
+   "label": "Roh-Ereignis",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "payload_json",
+   "fieldtype": "Code",
+   "label": "Payload (JSON, gekürzt)",
+   "options": "JSON",
+   "read_only": 1,
+   "description": "Nur bis zur Länge aus PH Stripe Einstellungen (Datensparsamkeit)."
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Stripe Ereignis",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "empfangen_am",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "empfangen",
+   "color": "Blue"
+  },
+  {
+   "title": "verarbeitet",
+   "color": "Green"
+  },
+  {
+   "title": "ignoriert",
+   "color": "Gray"
+  },
+  {
+   "title": "fehler",
+   "color": "Red"
+  },
+  {
+   "title": "wiederholt",
+   "color": "Orange"
+  }
+ ],
+ "track_changes": 1,
+ "title_field": "titel",
+ "search_fields": "typ,bezug,art",
+ "autoname": "field:event_id",
+ "naming_rule": "By fieldname",
+ "in_create": 1
+}

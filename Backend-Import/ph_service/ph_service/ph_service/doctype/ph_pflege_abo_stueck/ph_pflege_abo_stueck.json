@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Ein Möbelstück oder eine Anlage im Pflege-/Wartungsvertrag",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["bezeichnung", "marke", "material", "produkt", "produktpass", "seriennummer", "portal_item_id", "hinweis"],
+ "fields": [
+  {"fieldname": "bezeichnung", "fieldtype": "Data", "label": "Stück / Anlage", "reqd": 1, "in_list_view": 1, "columns": 3},
+  {"fieldname": "marke", "fieldtype": "Link", "label": "Marke", "options": "PH Marke", "in_list_view": 1, "columns": 2},
+  {"fieldname": "material", "fieldtype": "Select", "label": "Material / Typ", "options": "\nLeder\nStoff\nHolz/Furnier\nMarmor/Stein\nWhirlpool\nSauna\nPooltechnik\nSonstiges", "in_list_view": 1, "columns": 2},
+  {"fieldname": "produkt", "fieldtype": "Link", "label": "Produkt", "options": "PH Produkt", "in_list_view": 1, "columns": 2},
+  {"fieldname": "produktpass", "fieldtype": "Link", "label": "Produktpass", "options": "PH Produktpass"},
+  {"fieldname": "seriennummer", "fieldtype": "Data", "label": "Seriennummer"},
+  {"fieldname": "portal_item_id", "fieldtype": "Data", "label": "Portal-Position", "description": "Project.items[].id im Kundenportal (src/lib/service/pflege/portal.js)"},
+  {"fieldname": "hinweis", "fieldtype": "Small Text", "label": "Hinweis (Herstelleranleitung, Besonderheiten)", "in_list_view": 1, "columns": 1}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Service",
+ "name": "PH Pflege Abo Stueck",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

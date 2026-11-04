@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Zeile einer Herstellerpreisliste (Alt/Neu, Abweichung, Übernahme).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "hersteller_artikelnr",
+  "produkt",
+  "bezeichnung",
+  "alt_cent",
+  "neu_cent",
+  "abweichung_prozent",
+  "uebernehmen",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "hersteller_artikelnr",
+   "fieldtype": "Data",
+   "label": "Hersteller-Artikelnr.",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "alt_cent",
+   "fieldtype": "Int",
+   "label": "Alt (Cent)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "neu_cent",
+   "fieldtype": "Int",
+   "label": "Neu (Cent)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "abweichung_prozent",
+   "fieldtype": "Percent",
+   "label": "Abweichung %",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "uebernehmen",
+   "fieldtype": "Check",
+   "label": "Übernehmen",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Preisliste Import Zeile",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

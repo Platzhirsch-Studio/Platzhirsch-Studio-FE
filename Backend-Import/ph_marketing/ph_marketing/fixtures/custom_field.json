@@ -1,0 +1,18 @@
+[
+ {
+  "doctype": "Custom Field",
+  "name": "PH Anfrage-ph_marketing_kampagne",
+  "dt": "PH Anfrage",
+  "module": "PH Marketing",
+  "fieldname": "ph_marketing_kampagne",
+  "label": "Kampagne",
+  "fieldtype": "Link",
+  "options": "PH Kampagne",
+  "insert_after": "referenz_website",
+  "in_standard_filter": 1,
+  "allow_on_submit": 0,
+  "read_only": 0,
+  "no_copy": 1,
+  "description": "Wird aus utm_campaign im Herkunftsblock automatisch gesetzt (ph_marketing.ereignisse), sonst von Hand."
+ }
+]

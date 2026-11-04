@@ -1,0 +1,92 @@
+[
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Projekte",
+  "kanban_board_name": "PH Projekte",
+  "reference_doctype": "PH Projekt",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Projekt\",\"status\",\"not in\",[\"Abgeschlossen\",\"Abgebrochen\"]]]",
+  "fields": "[\"titel\",\"kunde_name\",\"projektart\",\"berater\",\"liefertermin_geplant\"]",
+  "columns": [
+   {"column_name": "Anfrage", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Planung", "indicator": "Cyan", "status": "Active", "order": "[]"},
+   {"column_name": "Angebot", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Auftrag", "indicator": "Purple", "status": "Active", "order": "[]"},
+   {"column_name": "Bestellung", "indicator": "Yellow", "status": "Active", "order": "[]"},
+   {"column_name": "Lieferung", "indicator": "Light Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Montage", "indicator": "Pink", "status": "Active", "order": "[]"},
+   {"column_name": "Uebergabe", "indicator": "Green", "status": "Active", "order": "[]"}
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Renderings",
+  "kanban_board_name": "PH Renderings",
+  "reference_doctype": "PH Rendering",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Rendering\",\"status\",\"!=\",\"Verworfen\"]]",
+  "fields": "[\"titel\",\"projekt\",\"feedback_offen\",\"ki_generiert\",\"bild\"]",
+  "columns": [
+   {"column_name": "Entwurf", "indicator": "Gray", "status": "Active", "order": "[]"},
+   {"column_name": "Vorgelegt", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Feedback offen", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Freigegeben", "indicator": "Green", "status": "Active", "order": "[]"}
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Montageaufträge",
+  "kanban_board_name": "PH Montageaufträge",
+  "reference_doctype": "PH Montageauftrag",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Montageauftrag\",\"status\",\"!=\",\"Abgebrochen\"]]",
+  "fields": "[\"titel\",\"start\",\"montageleiter\",\"ort\"]",
+  "columns": [
+   {"column_name": "Geplant", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Unterwegs", "indicator": "Cyan", "status": "Active", "order": "[]"},
+   {"column_name": "In Arbeit", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Erledigt", "indicator": "Green", "status": "Active", "order": "[]"},
+   {"column_name": "Abgenommen", "indicator": "Green", "status": "Active", "order": "[]"}
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Fremdgewerke",
+  "kanban_board_name": "PH Fremdgewerke",
+  "reference_doctype": "PH Fremdgewerk",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Fremdgewerk\",\"status\",\"!=\",\"Abgesagt\"]]",
+  "fields": "[\"titel\",\"projekt\",\"termin_von\",\"leistung\"]",
+  "columns": [
+   {"column_name": "Offen", "indicator": "Gray", "status": "Active", "order": "[]"},
+   {"column_name": "Angefragt", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Geplant", "indicator": "Cyan", "status": "Active", "order": "[]"},
+   {"column_name": "In Arbeit", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Erledigt", "indicator": "Green", "status": "Active", "order": "[]"}
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Projektaufgaben",
+  "kanban_board_name": "PH Projektaufgaben",
+  "reference_doctype": "PH Projekt Aufgabe",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Projekt Aufgabe\",\"status\",\"!=\",\"Verworfen\"]]",
+  "fields": "[\"titel\",\"projekt\",\"faellig\",\"zugewiesen_an\",\"prioritaet\"]",
+  "columns": [
+   {"column_name": "Offen", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "In Arbeit", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Erledigt", "indicator": "Green", "status": "Active", "order": "[]"}
+  ]
+ }
+]

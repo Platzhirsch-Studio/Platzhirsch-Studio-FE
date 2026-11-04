@@ -7,6 +7,10 @@
 // Teamaufbau). Weitere Leistungen ergänzt der Inhaber.
 // Rein: keine Pakete, keine "@/"-Aliase.
 
+// Beschäftigungsausmaß und Arbeitsbeginn (Schlüssel = deutscher Wortlaut in stellen.js).
+export const AUSMASS = { Vollzeit: "Vollzeit", Teilzeit: "Teilzeit" };
+export const START = { "ab sofort": "ab sofort" };
+
 export const BIETEN = [
   "Arbeitsort im Einrichtungsstudio in Lochau, Landstraße 11, am Bodensee",
   "Arbeit mit den internationalen Designmarken unserer Ausstellung",

@@ -1,0 +1,33 @@
+/* ph_projekte: Desk-Stile für Galerien, Auftragsmappe und Kanban-Karten (Farben laut CONVENTIONS 12). */
+.ph-mappe { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+.ph-mappe-karte { grid-column: span 12; background: var(--card-bg, #fff); border: 1px solid var(--border-color, #d9d4cc); border-radius: 10px; padding: 14px 16px; }
+@media (min-width: 992px) { .ph-mappe-karte.halb { grid-column: span 6; } .ph-mappe-karte.drittel { grid-column: span 4; } }
+.ph-mappe-karte h4 { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #6b7280; margin: 0 0 10px; display: flex; justify-content: space-between; align-items: center; }
+.ph-mappe-karte h4 .ph-zahl { font-size: 18px; letter-spacing: 0; text-transform: none; color: #30373e; font-weight: 600; }
+.ph-mappe-kopf { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-end; }
+.ph-mappe-kopf .ph-titel { font-family: "Bodoni Moda", Georgia, serif; font-size: 26px; letter-spacing: .02em; color: #30373e; }
+.ph-mappe-kopf .ph-meta { font-size: 12px; color: #6b7280; }
+.ph-phasen { display: flex; gap: 4px; margin: 10px 0 0; flex-wrap: wrap; }
+.ph-phase { flex: 1 1 60px; text-align: center; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; padding: 6px 4px; border-radius: 4px; background: #f3f1ec; color: #8a7a66; }
+.ph-phase.erledigt { background: #30373e; color: #fff; }
+.ph-phase.aktiv { background: #8a7a66; color: #fff; font-weight: 600; }
+.ph-tabelle { width: 100%; font-size: 12px; border-collapse: collapse; }
+.ph-tabelle td, .ph-tabelle th { padding: 5px 6px; border-bottom: 1px solid #ece8e1; text-align: left; vertical-align: top; }
+.ph-tabelle th { font-weight: 500; color: #6b7280; font-size: 11px; }
+.ph-tabelle td.zahl, .ph-tabelle th.zahl { text-align: right; white-space: nowrap; }
+.ph-tabelle a { color: #30373e; }
+.ph-pill { display: inline-block; font-size: 10px; letter-spacing: .04em; padding: 1px 7px; border-radius: 10px; background: #f3f1ec; color: #30373e; white-space: nowrap; }
+.ph-pill.gruen { background: #dcfce7; color: #15803d; }
+.ph-pill.orange { background: #ffedd5; color: #b45309; }
+.ph-pill.rot { background: #fee2e2; color: #b91c1c; }
+.ph-pill.blau { background: #dbeafe; color: #1d4ed8; }
+.ph-galerie { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+.ph-galerie a { display: block; aspect-ratio: 4/3; border-radius: 6px; overflow: hidden; background: #f3f1ec; position: relative; }
+.ph-galerie img { width: 100%; height: 100%; object-fit: cover; }
+.ph-galerie .ph-tag { position: absolute; left: 4px; top: 4px; font-size: 9px; padding: 1px 5px; border-radius: 3px; background: rgba(48,55,62,.85); color: #fff; letter-spacing: .04em; }
+.ph-leer { color: #9ca3af; font-size: 12px; font-style: italic; }
+.ph-summen { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+.ph-summe { background: #faf8f4; border-radius: 8px; padding: 8px 10px; }
+.ph-summe .l { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: #8a7a66; }
+.ph-summe .w { font-size: 16px; font-weight: 600; color: #30373e; }
+.kanban .kanban-card[data-doctype="PH Projekt"] .kanban-card-title { font-weight: 600; }

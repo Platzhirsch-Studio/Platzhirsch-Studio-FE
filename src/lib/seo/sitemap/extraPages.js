@@ -77,7 +77,7 @@ export const EXTRA_PAGES = [
     path: "/yacht-interior",
     kind: "leistung",
     label: "Yacht-Interieur am Bodensee", // Schreibweise wie H1 und Navigation
-    lastModified: "2026-11-02", // QM-Endabnahme (page.js 02.11.); vorher 01.11. Sprach-Integration FR/IT, 31.10. texte-seo-ki
+    lastModified: "2026-11-03", // 03.11.: KI-Bilder entfernt (Inhaber-Entscheidung Nr. 42); vorher 02.11. QM-Endabnahme, 01.11. FR/IT, 31.10. texte-seo-ki
     locales: ["de", "en", "fr", "it"], // Welle 2 EN, seit 01.11.2026 auch FR/IT (yachtLanguages())
     // English line for /llms.txt (same facts as the German page, en-yacht-sofa-bau.md).
     en: {

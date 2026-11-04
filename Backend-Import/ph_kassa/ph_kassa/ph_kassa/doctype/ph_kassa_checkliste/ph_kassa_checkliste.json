@@ -1,0 +1,27 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["schritt", "erledigt", "datum", "nachweis", "hinweis"],
+ "fields": [
+  {"fieldname": "schritt", "fieldtype": "Select", "label": "Schritt", "options": "AES-Schluessel erzeugt\nSEE bestellt\nSEE registriert FinanzOnline\nKasse registriert FinanzOnline\nStartbeleg erzeugt\nStartbeleg geprueft BMF-App\nJahresbeleg geprueft", "reqd": 1, "in_list_view": 1, "columns": 4},
+  {"fieldname": "erledigt", "fieldtype": "Check", "label": "Erledigt", "default": "0", "in_list_view": 1, "columns": 1},
+  {"fieldname": "datum", "fieldtype": "Date", "label": "Datum", "in_list_view": 1, "columns": 2},
+  {"fieldname": "nachweis", "fieldtype": "Attach", "label": "Nachweis (Screenshot/PDF)", "in_list_view": 1, "columns": 2},
+  {"fieldname": "hinweis", "fieldtype": "Data", "label": "Hinweis", "in_list_view": 1, "columns": 1}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Kassa",
+ "name": "PH Kassa Checkliste",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

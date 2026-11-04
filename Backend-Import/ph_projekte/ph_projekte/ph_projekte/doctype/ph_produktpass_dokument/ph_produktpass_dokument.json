@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "art",
+  "datei",
+  "kunde_sichtbar"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Garantie\nPflegeanleitung\nDatenblatt\nFoto\nZertifikat\nSonstiges",
+   "default": "Sonstiges",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "datei",
+   "fieldtype": "Attach",
+   "label": "Datei",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "kunde_sichtbar",
+   "fieldtype": "Check",
+   "label": "Portal",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Produktpass Dokument",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

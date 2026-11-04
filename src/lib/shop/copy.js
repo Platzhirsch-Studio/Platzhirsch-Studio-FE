@@ -7,7 +7,7 @@
 // Rein, ohne "@/"-Importe.
 
 const de = {
-  testBanner: "TESTMODUS – keine echte Bestellung, keine echte Zahlung, keine E-Mails. Die Rechtstexte sind Entwürfe; die Kanzlei-Durchsicht steht noch aus.",
+  testBanner: "TESTMODUS – keine echte Bestellung, keine echte Zahlung. Bestätigungen gehen nur in den Test-Postausgang, keine echte E-Mail.",
   inCart: "In den Warenkorb",
   added: "Im Warenkorb",
   reserve: "Reservieren & im Showroom abholen",
@@ -73,7 +73,9 @@ const de = {
   draftMarkTitle: "Vorschlag, noch nicht vom Inhaber/der Kanzlei freigegeben",
   inStock: "Sofort lieferbar",
   legalTitle: "Rechtliche Informationen",
-  legalPending: "Entwurf – Kanzlei-Durchsicht ausstehend",
+  legalPending: "Angabe wird ergänzt",
+  // Harmonisierte Mitteilung zur Gewährleistung (§ 4 Abs 1 Z 12 FAGG, Anhang II): Text aus gewaehrleistung.js, hier nur der Sprachhinweis.
+  warrantyLang: null,
   legalNote: "Mit dem Klick auf „Zahlungspflichtig bestellen“ geben Sie eine verbindliche Bestellung ab – auch wenn Sie erst bei der Abholung bezahlen. Es gelten unsere AGB. Widerrufsbelehrung, Muster-Widerrufsformular, Versandbedingungen und Datenschutzhinweise finden Sie oben.",
   buy: "Zahlungspflichtig bestellen",
   // § 8 Abs 2 FAGG / § 312j Abs 3 BGB: auch die Abholung mit Zahlung vor Ort ist ein Kauf → gleicher Button-Wortlaut.
@@ -94,14 +96,14 @@ const de = {
   tracking: "Sendungsverfolgung",
   trackingMock: "MOCK-Sendung, keine echte Sendungsnummer",
   notFound: "Diese Bestellung wurde nicht gefunden.",
-  noMail: "Im Testmodus wird keine E-Mail versendet.",
+  noMail: "Im Testmodus geht die Auftragsbestätigung nur in den Test-Postausgang, keine echte E-Mail.",
   testItems: "Testartikel (nur Testmodus)",
   testItemsLead: "Diese Artikel gibt es nur im Testmodus, damit der Ablauf ohne echte Katalogdaten geprüft werden kann. Keine echten Produkte, keine echten Preise.",
 };
 
 const en = {
   ...de,
-  testBanner: "TEST MODE – no real order, no real payment, no e-mails. The legal texts are drafts; legal review is still pending.",
+  testBanner: "TEST MODE – no real order, no real payment. Confirmations only go to the test outbox, no real e-mail.",
   inCart: "Add to basket",
   added: "In your basket",
   reserve: "Reserve & collect in the showroom",
@@ -165,7 +167,8 @@ const en = {
   draftMarkTitle: "Proposal, not yet approved by the owner/law firm",
   inStock: "In stock",
   legalTitle: "Legal information",
-  legalPending: "Draft – legal review pending",
+  legalPending: "Detail to be added",
+  warrantyLang: "German text applies; translation to follow.",
   legalNote: "By clicking “Order with obligation to pay” you place a binding order – even if you pay on collection. Our terms apply. Cancellation policy, model withdrawal form, delivery terms and privacy notice are linked above (German; translation to follow).",
   buy: "Order with obligation to pay",
   reserveSubmit: "Order with obligation to pay",
@@ -183,14 +186,14 @@ const en = {
   tracking: "Tracking",
   trackingMock: "MOCK shipment, not a real tracking number",
   notFound: "This order was not found.",
-  noMail: "No e-mail is sent in test mode.",
+  noMail: "In test mode the order confirmation only goes to the test outbox, no real e-mail.",
   testItems: "Test items (test mode only)",
   testItemsLead: "These items exist only in test mode so the flow can be checked without real catalogue data. Not real products, not real prices.",
 };
 
 const fr = {
   ...en,
-  testBanner: "MODE TEST – aucune vraie commande, aucun vrai paiement, aucun e-mail. Les textes juridiques sont des projets ; la relecture juridique est en attente.",
+  testBanner: "MODE TEST – aucune vraie commande, aucun vrai paiement. Les confirmations ne vont que dans la boîte d'envoi de test, aucun e-mail réel.",
   inCart: "Ajouter au panier",
   added: "Dans le panier",
   reserve: "Réserver et retirer au showroom",
@@ -252,7 +255,8 @@ const fr = {
   draftMarkTitle: "Proposition, pas encore validée par le propriétaire/le cabinet",
   inStock: "Disponible immédiatement",
   legalTitle: "Informations juridiques",
-  legalPending: "Projet – relecture juridique en attente",
+  legalPending: "Mention à compléter",
+  warrantyLang: "Le texte allemand fait foi ; traduction à venir.",
   legalNote: "En cliquant sur « Commander avec obligation de paiement », vous passez une commande ferme – même si vous payez au retrait. Nos CGV s’appliquent. Droit de rétractation, formulaire type, conditions de livraison et protection des données sont liés ci-dessus (en allemand ; traduction à venir).",
   buy: "Commander avec obligation de paiement",
   reserveSubmit: "Commander avec obligation de paiement",
@@ -269,14 +273,14 @@ const fr = {
   tracking: "Suivi",
   trackingMock: "Envoi MOCK, pas un vrai numéro de suivi",
   notFound: "Commande introuvable.",
-  noMail: "Aucun e-mail n'est envoyé en mode test.",
+  noMail: "En mode test, la confirmation de commande ne va que dans la boîte d'envoi de test, aucun e-mail réel.",
   testItems: "Articles de test (mode test uniquement)",
   testItemsLead: "Ces articles n'existent qu'en mode test. Pas de vrais produits, pas de vrais prix.",
 };
 
 const it = {
   ...en,
-  testBanner: "MODALITÀ TEST – nessun ordine reale, nessun pagamento reale, nessuna e-mail. I testi legali sono bozze; la revisione legale è in attesa.",
+  testBanner: "MODALITÀ TEST – nessun ordine reale, nessun pagamento reale. Le conferme vanno solo nella casella di prova, nessuna e-mail reale.",
   inCart: "Aggiungi al carrello",
   added: "Nel carrello",
   reserve: "Prenota e ritira nello showroom",
@@ -338,7 +342,8 @@ const it = {
   draftMarkTitle: "Proposta, non ancora approvata dal titolare/dallo studio",
   inStock: "Disponibile subito",
   legalTitle: "Informazioni legali",
-  legalPending: "Bozza – revisione legale in attesa",
+  legalPending: "Indicazione da completare",
+  warrantyLang: "Fa fede il testo tedesco; traduzione in arrivo.",
   legalNote: "Cliccando «Ordine con obbligo di pagamento» effettua un ordine vincolante – anche se paga al ritiro. Valgono le nostre condizioni. Recesso, modulo tipo, condizioni di consegna e privacy sono collegati sopra (in tedesco; traduzione in arrivo).",
   buy: "Ordine con obbligo di pagamento",
   reserveSubmit: "Ordine con obbligo di pagamento",
@@ -355,7 +360,7 @@ const it = {
   tracking: "Tracciamento",
   trackingMock: "Spedizione MOCK, nessun numero reale",
   notFound: "Ordine non trovato.",
-  noMail: "In modalità test non viene inviata alcuna e-mail.",
+  noMail: "In modalità test la conferma d'ordine va solo nella casella di prova, nessuna e-mail reale.",
   testItems: "Articoli di test (solo modalità test)",
   testItemsLead: "Questi articoli esistono solo in modalità test. Nessun prodotto reale, nessun prezzo reale.",
 };

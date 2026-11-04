@@ -27,8 +27,9 @@ export function createContext(o = {}) {
     dir,
     mailer: o.mailer || mailerFromEnv(env, dir, { fetchImpl: o.fetchImpl }),
     backoffice: o.backoffice || backofficeFromEnv(env, dir, { fetchImpl: o.fetchImpl }),
-    // Shop (Nr. 29): Bestellungen in .data/shop, nie im Backoffice.
-    shop: o.shop || createShopHooks({ env, now }),
+    // Shop (Nr. 29): Bestellungen in .data/shop, nie im Backoffice. Mailer für die
+    // Vertragsbestätigung (orderMail.js), verzögert gelesen, damit Tests ihn tauschen können.
+    shop: o.shop || createShopHooks({ env, now, mailer: () => ctx.mailer }),
     /** Mock hat Vorrang, wenn aktiv (nie in Produktion); sonst Stripe mit Schlüsseln; sonst null. */
     gatewayFor(signal = {}, { forceMock = false } = {}) {
       if (o.gateway) return o.gateway;
@@ -40,8 +41,15 @@ export function createContext(o = {}) {
   return ctx;
 }
 
+// Bei Änderungen an den Adaptern erhöhen: der Entwicklungsserver behält globalThis
+// über Modul-Neuladungen hinweg, ein alter Kontext würde sonst alte Hooks nutzen.
+export const CONTEXT_VERSION = 2;
+
 /** Ein Kontext je Serverprozess. */
 export function defaultContext() {
   const g = globalThis;
-  return (g.__phPaymentsContext ||= createContext());
+  if (!g.__phPaymentsContext || g.__phPaymentsContext.version !== CONTEXT_VERSION) {
+    g.__phPaymentsContext = Object.assign(createContext(), { version: CONTEXT_VERSION });
+  }
+  return g.__phPaymentsContext;
 }

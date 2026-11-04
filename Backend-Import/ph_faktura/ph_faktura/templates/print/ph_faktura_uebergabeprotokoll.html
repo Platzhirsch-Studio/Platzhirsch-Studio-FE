@@ -1,0 +1,18 @@
+{% extends "templates/print/ph_basis.html" %}
+{% block titel %}Übergabeprotokoll {{ doc.name }}{% endblock %}
+{% block css %}{% include "templates/print/ph_faktura_css.html" %}{% endblock %}
+{% block kopfrechts %}Export <b>{{ doc.name }}</b><br>{{ doc.format }}<br>{{ ph_datum(doc.zeitraum_von) }} – {{ ph_datum(doc.zeitraum_bis) }}{% endblock %}
+{% block inhalt %}
+<h1>Übergabeprotokoll Buchhaltungsexport</h1>
+<table class="ph-meta">
+  <tr><td class="k">Format</td><td>{{ doc.format }}</td><td class="k">Belegarten</td><td>{{ doc.belegarten }}</td></tr>
+  <tr><td class="k">Erzeugt</td><td>{{ doc.erzeugt_am }} von {{ frappe.db.get_value("User", doc.erstellt_von, "full_name") if doc.erstellt_von else "" }}</td><td class="k">Status</td><td>{{ doc.status }}{% if doc.uebergeben_am %} · übergeben {{ doc.uebergeben_am }}{% if doc.uebergeben_an %} an {{ doc.uebergeben_an }}{% endif %}{% endif %}</td></tr>
+  <tr><td class="k">Belege</td><td>{{ doc.anzahl }}</td><td class="k">Summe brutto</td><td>{{ ph_betrag(doc.summe_brutto_cent) }}</td></tr>
+  <tr><td class="k">Prüfsumme Datei (SHA-256)</td><td colspan="3" style="font-family:monospace;font-size:8pt">{{ doc.pruefsumme_gesamt }}</td></tr>
+</table>
+<table class="ph-tabelle"><thead><tr><th>Belegart</th><th>Beleg</th><th>Nummer</th><th>Datum</th><th>Kunde/Lieferant</th><th>Konto</th><th>Gegenkonto</th><th class="zahl">Netto</th><th class="zahl">USt</th><th class="zahl">Brutto</th><th>Prüfsumme</th></tr></thead><tbody>
+{% for b in doc.belege %}<tr><td>{{ b.beleg_doctype|replace("PH ", "") }}</td><td>{{ b.beleg }}</td><td>{{ b.nummer }}</td><td>{{ ph_datum(b.datum) }}</td><td>{{ b.kontakt_name or "" }}</td><td>{{ b.konto }}</td><td>{{ b.gegenkonto }}</td><td class="zahl">{{ ph_betrag(b.netto_cent) }}</td><td class="zahl">{{ ph_betrag(b.ust_cent) }}</td><td class="zahl">{{ ph_betrag(b.brutto_cent) }}</td><td style="font-family:monospace;font-size:7.5pt">{{ b.pruefsumme }}</td></tr>{% endfor %}
+</tbody></table>
+<p class="ph-hinweis-klein">Jede Zeile der Exportdatei trägt eine Prüfsumme über Beleg, Konten, Steuersatz und Beträge; die Datei-Prüfsumme sichert die Vollständigkeit der Übergabe. Übergebene Belege sind im System gesperrt und werden nur per Gutschrift korrigiert.</p>
+<div class="ph-unterschrift"><div>Übergeben: {{ firma.kurzname or firma.firmenname }}</div><div>Übernommen: Steuerberatung (Datum, Unterschrift)</div></div>
+{% endblock %}

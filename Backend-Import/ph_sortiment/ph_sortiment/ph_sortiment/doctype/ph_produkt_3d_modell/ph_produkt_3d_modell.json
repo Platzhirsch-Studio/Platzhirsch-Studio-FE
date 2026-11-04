@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "3D-Modelle für den AR-Viewer (src/lib/arviewer/catalog.js).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "glb",
+  "usdz",
+  "massstab",
+  "quelle",
+  "abgerufen"
+ ],
+ "fields": [
+  {
+   "fieldname": "glb",
+   "fieldtype": "Attach",
+   "label": "GLB (Android/Web)",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "usdz",
+   "fieldtype": "Attach",
+   "label": "USDZ (iOS Quick Look)",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "massstab",
+   "fieldtype": "Data",
+   "label": "Maßstab / Einheit",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Data",
+   "label": "Quelle",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "abgerufen",
+   "fieldtype": "Date",
+   "label": "Abgerufen am"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Produkt 3D Modell",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

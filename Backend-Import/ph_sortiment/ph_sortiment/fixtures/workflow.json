@@ -1,0 +1,87 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "PH Produkt",
+  "workflow_name": "PH Produkt",
+  "document_type": "PH Produkt",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Entwurf", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "Entwurf", "is_optional_state": 0},
+   {"state": "PH Geprueft", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "Geprueft", "is_optional_state": 0},
+   {"state": "PH Aktiv", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "Aktiv", "is_optional_state": 0},
+   {"state": "PH Pausiert", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "Pausiert", "is_optional_state": 0},
+   {"state": "PH Ausgelaufen", "doc_status": "0", "allow_edit": "PH Sortiment Leitung", "update_field": "status", "update_value": "Ausgelaufen", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Entwurf", "action": "Prüfen", "next_state": "PH Geprueft", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1, "condition": "doc.kategorie and doc.marke and (doc.kurz_de or doc.beschreibung_de)"},
+   {"state": "PH Geprueft", "action": "Veröffentlichen", "next_state": "PH Aktiv", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1, "condition": "doc.bild_freigegeben == 1 and doc.kategorie and frappe.db.get_value('PH Marke', doc.marke, 'status') == 'Aktiv'"},
+   {"state": "PH Geprueft", "action": "Zurück auf Entwurf", "next_state": "PH Entwurf", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Aktiv", "action": "Pausieren", "next_state": "PH Pausiert", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Aktiv", "action": "Auslaufen lassen", "next_state": "PH Ausgelaufen", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1},
+   {"state": "PH Pausiert", "action": "Reaktivieren", "next_state": "PH Aktiv", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1, "condition": "doc.bild_freigegeben == 1"},
+   {"state": "PH Pausiert", "action": "Auslaufen lassen", "next_state": "PH Ausgelaufen", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1},
+   {"state": "PH Pausiert", "action": "Zurück auf Entwurf", "next_state": "PH Entwurf", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1},
+   {"state": "PH Ausgelaufen", "action": "Zurück auf Entwurf", "next_state": "PH Entwurf", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Herstellerbestellung",
+  "workflow_name": "PH Herstellerbestellung",
+  "document_type": "PH Herstellerbestellung",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Entwurf", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "Entwurf", "is_optional_state": 0},
+   {"state": "PH Gesendet", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "Gesendet", "is_optional_state": 0},
+   {"state": "PH AB erhalten", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "AB erhalten", "is_optional_state": 0},
+   {"state": "PH AB geprueft", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "AB geprueft", "is_optional_state": 0},
+   {"state": "PH Teilgeliefert", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "Teilgeliefert", "is_optional_state": 0},
+   {"state": "PH Geliefert", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "Geliefert", "is_optional_state": 0},
+   {"state": "PH Abgeschlossen", "doc_status": "0", "allow_edit": "PH Sortiment Leitung", "update_field": "status", "update_value": "Abgeschlossen", "is_optional_state": 0},
+   {"state": "PH Storniert", "doc_status": "0", "allow_edit": "PH Sortiment Leitung", "update_field": "status", "update_value": "Storniert", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Entwurf", "action": "Senden", "next_state": "PH Gesendet", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1, "condition": "doc.positionen and doc.lieferant"},
+   {"state": "PH Entwurf", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Gesendet", "action": "AB erfassen", "next_state": "PH AB erhalten", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1, "condition": "doc.ab_nummer"},
+   {"state": "PH Gesendet", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1},
+   {"state": "PH AB erhalten", "action": "AB freigeben", "next_state": "PH AB geprueft", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1, "condition": "doc.abweichungen_anzahl == 0"},
+   {"state": "PH AB erhalten", "action": "AB freigeben", "next_state": "PH AB geprueft", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1, "condition": "doc.abweichungen_offen == 0"},
+   {"state": "PH AB erhalten", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1},
+   {"state": "PH AB geprueft", "action": "Teillieferung buchen", "next_state": "PH Teilgeliefert", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH AB geprueft", "action": "Lieferung buchen", "next_state": "PH Geliefert", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH AB geprueft", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1},
+   {"state": "PH Teilgeliefert", "action": "Lieferung buchen", "next_state": "PH Geliefert", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Geliefert", "action": "Abschließen", "next_state": "PH Abgeschlossen", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1, "condition": "doc.abweichungen_offen == 0"},
+   {"state": "PH Storniert", "action": "Zurück auf Entwurf", "next_state": "PH Entwurf", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Preisliste Import",
+  "workflow_name": "PH Preisliste Import",
+  "document_type": "PH Preisliste Import",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Hochgeladen", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "Hochgeladen", "is_optional_state": 0},
+   {"state": "PH Geprueft", "doc_status": "0", "allow_edit": "PH Sortiment Mitarbeiter", "update_field": "status", "update_value": "Geprueft", "is_optional_state": 0},
+   {"state": "PH Uebernommen", "doc_status": "0", "allow_edit": "PH Sortiment Leitung", "update_field": "status", "update_value": "Uebernommen", "is_optional_state": 0},
+   {"state": "PH Verworfen", "doc_status": "0", "allow_edit": "PH Sortiment Leitung", "update_field": "status", "update_value": "Verworfen", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Hochgeladen", "action": "Prüfen", "next_state": "PH Geprueft", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1, "condition": "doc.zeilen"},
+   {"state": "PH Hochgeladen", "action": "Verwerfen", "next_state": "PH Verworfen", "allowed": "PH Sortiment Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Geprueft", "action": "Übernehmen", "next_state": "PH Uebernommen", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1},
+   {"state": "PH Geprueft", "action": "Verwerfen", "next_state": "PH Verworfen", "allowed": "PH Sortiment Leitung", "allow_self_approval": 1}
+  ]
+ }
+]

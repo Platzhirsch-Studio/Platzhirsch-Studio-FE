@@ -1,0 +1,33 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 00:30:00.000000",
+ "description": "Leistungszeile einer Stelle (nur belegbare, vom Inhaber bestätigte Punkte). Feldname benefit = Website (benefits_<sprache>[].benefit).",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "benefit"
+ ],
+ "fields": [
+  {
+   "fieldname": "benefit",
+   "fieldtype": "Small Text",
+   "label": "Wir bieten",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 10
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 00:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Stelle Leistung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

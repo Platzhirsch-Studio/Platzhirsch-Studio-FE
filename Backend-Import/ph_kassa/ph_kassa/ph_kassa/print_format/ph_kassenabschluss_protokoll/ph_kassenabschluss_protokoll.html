@@ -1,0 +1,64 @@
+{% extends "templates/print/ph_basis.html" %}
+{#- PH Kassenabschluss Protokoll – Tagesabschluss mit Soll/Ist, Zählprotokoll, Steuersätzen, Unterschrift. -#}
+{% block titel %}Tagesabschluss {{ doc.kasse }} {{ ph_datum(doc.datum) }}{% endblock %}
+{% block kopfrechts %}{{ doc.name }}<br>Kasse {{ doc.kasse }}<br>{{ ph_datum(doc.datum) }} · {{ _(doc.status) }}{% endblock %}
+{% block css %}
+  .ph-zwei { display: flex; gap: 10mm; } .ph-zwei > div { flex: 1; }
+  .ph-gross { font-family: "Bodoni Moda", Georgia, serif; font-size: 16pt; }
+  .ph-diff-rot { color: #b91c1c; } .ph-diff-gruen { color: #15803d; }
+  .ph-unterschrift { margin-top: 12mm; display: flex; gap: 12mm; } .ph-unterschrift > div { flex: 1; border-top: 1px solid var(--ph-tinte); padding-top: 2mm; font-size: 8pt; color: var(--ph-grau); }
+  .ph-unterschrift img { max-height: 22mm; display: block; margin-bottom: 2mm; }
+{% endblock %}
+{% block inhalt %}
+<h1>Tagesabschluss</h1>
+<div class="ph-feld"><b>Kasse</b> {{ doc.kasse }}{% if frappe.db.exists("PH Kasse", doc.kasse) %} · {{ frappe.db.get_value("PH Kasse", doc.kasse, "bezeichnung") or "" }}{% endif %}</div>
+<div class="ph-feld"><b>Abschlusstag</b> {{ ph_datum(doc.datum) }}</div>
+<div class="ph-feld"><b>Eröffnet</b> {{ frappe.utils.format_datetime(doc.eroeffnet_am, "dd.MM.yyyy HH:mm") if doc.eroeffnet_am else "–" }}</div>
+<div class="ph-feld"><b>Abgeschlossen</b> {{ frappe.utils.format_datetime(doc.geschlossen_am, "dd.MM.yyyy HH:mm") if doc.geschlossen_am else "–" }}{% if doc.freigegeben_von %} von {{ frappe.db.get_value("User", doc.freigegeben_von, "full_name") or doc.freigegeben_von }}{% endif %}</div>
+<div class="ph-feld"><b>Gezählt von</b> {{ frappe.db.get_value("User", doc.von_user, "full_name") if doc.von_user else "–" }}</div>
+
+<div class="ph-zwei">
+  <div>
+    <h2>Bargeld</h2>
+    <table class="ph-tabelle">
+      <tr><td>Bargeld Anfang (Wechselgeld)</td><td class="zahl">{{ ph_betrag(doc.bargeld_anfang_cent) }}</td></tr>
+      <tr><td>+ Bareinnahmen aus Belegen</td><td class="zahl">{{ ph_betrag(doc.bar_einnahmen_cent) }}</td></tr>
+      <tr><td>− Barausgaben (Stornos, Rückzahlungen)</td><td class="zahl">{{ ph_betrag(doc.bar_ausgaben_cent) }}</td></tr>
+      <tr><td>+ Einlagen (Kassenbuch)</td><td class="zahl">{{ ph_betrag(doc.einlagen_cent) }}</td></tr>
+      <tr><td>− Entnahmen (Kassenbuch)</td><td class="zahl">{{ ph_betrag(doc.entnahmen_cent) }}</td></tr>
+      <tr class="ph-summe"><td>Bargeld Soll</td><td class="zahl">{{ ph_betrag(doc.bargeld_soll_cent) }}</td></tr>
+      <tr class="ph-summe"><td>Bargeld Ist (gezählt)</td><td class="zahl">{{ ph_betrag(doc.bargeld_ist_cent) }}</td></tr>
+      <tr class="ph-summe"><td>Differenz (Ist − Soll)</td><td class="zahl ph-gross {{ 'ph-diff-rot' if doc.differenz_cent else 'ph-diff-gruen' }}">{{ ph_betrag(doc.differenz_cent) }}</td></tr>
+    </table>
+    {% if doc.differenz_cent %}<p class="ph-hinweis"><b>Grund:</b> {{ doc.differenz_grund or "–" }}{% if doc.differenz_buchung %}<br>Kassenbuch: {{ doc.differenz_buchung }}{% endif %}</p>{% endif %}
+    <h2>Unbare Zahlarten</h2>
+    <table class="ph-tabelle">
+      <tr><td>Karte (Terminal und extern)</td><td class="zahl">{{ ph_betrag(doc.karten_cent) }}</td></tr>
+      <tr><td>Gutschein-Einlösungen</td><td class="zahl">{{ ph_betrag(doc.gutschein_cent) }}</td></tr>
+      <tr><td>Überweisung</td><td class="zahl">{{ ph_betrag(doc.ueberweisung_cent) }}</td></tr>
+      <tr class="ph-summe"><td>Belegsumme gesamt</td><td class="zahl">{{ ph_betrag(doc.umsatz_cent) }}</td></tr>
+      <tr><td>davon Anzahlungen / Teil- / Schlusszahlungen</td><td class="zahl">{{ ph_betrag(doc.anzahlungen_cent) }}</td></tr>
+      <tr><td>davon Gutscheinverkauf</td><td class="zahl">{{ ph_betrag(doc.gutschein_verkauf_cent) }}</td></tr>
+    </table>
+    <div class="ph-feld"><b>Belege</b> {{ doc.belege_anzahl }} (davon {{ doc.stornos_anzahl }} Storno), {{ doc.trainings_anzahl }} Trainingsbelege{% if doc.nullbeleg %}, Nullbeleg {{ doc.nullbeleg }}{% endif %}</div>
+  </div>
+  <div>
+    <h2>Zählprotokoll</h2>
+    <table class="ph-tabelle">
+      <thead><tr><th>Stückelung</th><th class="zahl">Anzahl</th><th class="zahl">Summe</th></tr></thead>
+      <tbody>{% for z in doc.zaehlprotokoll %}<tr><td>{{ z.bezeichnung }}</td><td class="zahl">{{ z.anzahl }}</td><td class="zahl">{{ ph_betrag(z.summe_cent) }}</td></tr>{% endfor %}</tbody>
+      <tfoot><tr class="ph-summe"><td colspan="2">Gezählt</td><td class="zahl">{{ ph_betrag(doc.bargeld_ist_cent) }}</td></tr></tfoot>
+    </table>
+    <h2>Umsatz je Steuersatz</h2>
+    <table class="ph-tabelle">
+      <thead><tr><th>Satz</th><th class="zahl">Netto</th><th class="zahl">USt</th><th class="zahl">Brutto</th></tr></thead>
+      <tbody>{% for s in doc.umsatz_je_satz %}<tr><td>{{ s.steuersatz }}</td><td class="zahl">{{ ph_betrag(s.netto_cent) }}</td><td class="zahl">{{ ph_betrag(s.ust_cent) }}</td><td class="zahl">{{ ph_betrag(s.brutto_cent) }}</td></tr>{% else %}<tr><td colspan="4">–</td></tr>{% endfor %}</tbody>
+    </table>
+  </div>
+</div>
+<div class="ph-unterschrift">
+  <div>{% if doc.unterschrift %}<img src="{{ doc.unterschrift }}" alt="Unterschrift">{% endif %}Unterschrift Zähler/in{% if doc.unterschrift_name %} · {{ doc.unterschrift_name }}{% endif %}</div>
+  <div>Freigabe Leitung{% if doc.freigegeben_von %} · {{ frappe.db.get_value("User", doc.freigegeben_von, "full_name") or doc.freigegeben_von }}{% endif %}</div>
+</div>
+{% if doc.notiz %}<p class="ph-hinweis">{{ doc.notiz|replace("\n", "<br>") }}</p>{% endif %}
+{% endblock %}

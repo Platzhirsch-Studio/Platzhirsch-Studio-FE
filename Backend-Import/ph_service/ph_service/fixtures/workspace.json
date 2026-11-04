@@ -1,0 +1,69 @@
+[
+ {
+  "doctype": "Workspace",
+  "name": "PH Service",
+  "title": "PH Service",
+  "label": "PH Service",
+  "module": "PH Service",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "tool",
+  "indicator_color": "orange",
+  "sequence_id": 11.0,
+  "for_user": "",
+  "parent_page": "",
+  "content": "[{\"id\":\"ph_srv_h1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reklamation und Service</b></span>\",\"col\":12}},{\"id\":\"ph_srv_nc1\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Offene Servicefälle\",\"col\":3}},{\"id\":\"ph_srv_nc2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Reaktion überfällig\",\"col\":3}},{\"id\":\"ph_srv_nc3\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Fristen laufen ab\",\"col\":3}},{\"id\":\"ph_srv_nc4\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Einsätze diese Woche\",\"col\":3}},{\"id\":\"ph_srv_nc5\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Regress offen\",\"col\":3}},{\"id\":\"ph_srv_nc6\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Ersatzteile unter Mindestbestand\",\"col\":3}},{\"id\":\"ph_srv_nc7\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Wartungen überfällig\",\"col\":3}},{\"id\":\"ph_srv_nc8\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Durchlaufzeit Quartal\",\"col\":3}},{\"id\":\"ph_srv_c1\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Servicefälle je Monat\",\"col\":8}},{\"id\":\"ph_srv_c2\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Servicefälle nach Art\",\"col\":4}},{\"id\":\"ph_srv_c3\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Servicefälle nach Fehlerbereich\",\"col\":6}},{\"id\":\"ph_srv_c4\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Regress nach Status\",\"col\":6}},{\"id\":\"ph_srv_h2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\",\"col\":12}},{\"id\":\"ph_srv_s1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Servicefälle (Kanban)\",\"col\":3}},{\"id\":\"ph_srv_s2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Neuer Servicefall\",\"col\":3}},{\"id\":\"ph_srv_s3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Einsätze (Kanban)\",\"col\":3}},{\"id\":\"ph_srv_s4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Gewährleistungsfristen\",\"col\":3}},{\"id\":\"ph_srv_s5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Reklamationsquote\",\"col\":3}},{\"id\":\"ph_srv_s6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Regressstatus\",\"col\":3}},{\"id\":\"ph_srv_s7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Wartungen fällig\",\"col\":3}},{\"id\":\"ph_srv_s8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Meine Aufgaben\",\"col\":3}},{\"id\":\"ph_srv_h3\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Bereiche</b></span>\",\"col\":12}},{\"id\":\"ph_srv_card1\",\"type\":\"card\",\"data\":{\"card_name\":\"Servicefälle\",\"col\":4}},{\"id\":\"ph_srv_card2\",\"type\":\"card\",\"data\":{\"card_name\":\"Ersatzteile und Regress\",\"col\":4}},{\"id\":\"ph_srv_card3\",\"type\":\"card\",\"data\":{\"card_name\":\"Pflege und Wartung\",\"col\":4}},{\"id\":\"ph_srv_card4\",\"type\":\"card\",\"data\":{\"card_name\":\"Berichte\",\"col\":4}},{\"id\":\"ph_srv_card5\",\"type\":\"card\",\"data\":{\"card_name\":\"Stammdaten\",\"col\":4}}]",
+  "shortcuts": [
+   {"label": "Servicefälle (Kanban)", "link_to": "PH Servicefall", "type": "DocType", "doc_view": "Kanban", "kanban_board": "PH Servicefälle", "color": "Orange"},
+   {"label": "Neuer Servicefall", "link_to": "PH Servicefall", "type": "DocType", "doc_view": "New", "color": "Grey"},
+   {"label": "Einsätze (Kanban)", "link_to": "PH Serviceeinsatz", "type": "DocType", "doc_view": "Kanban", "kanban_board": "PH Serviceeinsätze", "color": "Blue"},
+   {"label": "Gewährleistungsfristen", "link_to": "PH Gewährleistungsfristen", "type": "Report", "color": "Grey"},
+   {"label": "Reklamationsquote", "link_to": "PH Reklamationsquote je Marke", "type": "Report", "color": "Grey"},
+   {"label": "Regressstatus", "link_to": "PH Regressstatus", "type": "Report", "color": "Grey"},
+   {"label": "Wartungen fällig", "link_to": "PH Pflege Abo", "type": "DocType", "doc_view": "List", "color": "Green", "stats_filter": "{\"status\": \"Aktiv\"}"},
+   {"label": "Meine Aufgaben", "link_to": "ToDo", "type": "DocType", "doc_view": "List", "color": "Grey"}
+  ],
+  "charts": [
+   {"chart_name": "PH Servicefälle je Monat", "label": "Servicefälle je Monat"},
+   {"chart_name": "PH Servicefälle nach Art", "label": "Servicefälle nach Art"},
+   {"chart_name": "PH Servicefälle nach Fehlerbereich", "label": "Nach Fehlerbereich"},
+   {"chart_name": "PH Regress nach Status", "label": "Regress nach Status"}
+  ],
+  "number_cards": [
+   {"number_card_name": "PH Offene Servicefälle", "label": "Offene Servicefälle"},
+   {"number_card_name": "PH Reaktion überfällig", "label": "Reaktion überfällig"},
+   {"number_card_name": "PH Fristen laufen ab", "label": "Gewährleistung läuft ab"},
+   {"number_card_name": "PH Einsätze diese Woche", "label": "Einsätze diese Woche"},
+   {"number_card_name": "PH Regress offen", "label": "Regress offen (€)"},
+   {"number_card_name": "PH Ersatzteile unter Mindestbestand", "label": "Ersatzteile unter Mindestbestand"},
+   {"number_card_name": "PH Wartungen überfällig", "label": "Wartungen überfällig"},
+   {"number_card_name": "PH Durchlaufzeit Quartal", "label": "Ø Durchlaufzeit"}
+  ],
+  "links": [
+   {"type": "Card Break", "label": "Servicefälle", "link_count": 4, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Servicefall", "link_to": "PH Servicefall", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
+   {"type": "Link", "label": "PH Serviceeinsatz", "link_to": "PH Serviceeinsatz", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Serviceauftrag (Winterlager, Pflege)", "link_to": "PH Serviceauftrag", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "Kanban Servicefälle", "link_to": "PH Servicefall", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Ersatzteile und Regress", "link_count": 3, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Ersatzteil", "link_to": "PH Ersatzteil", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Ersatzteilbestellung", "link_to": "PH Ersatzteilbestellung", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Lieferantenregress", "link_to": "PH Lieferantenregress", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Pflege und Wartung", "link_count": 2, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Pflege-/Wartungsvertrag", "link_to": "PH Pflege Abo", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Serviceeinsatz (Wartung)", "link_to": "PH Serviceeinsatz", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Berichte", "link_count": 5, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "Reklamationsquote je Marke/Lieferant", "link_to": "PH Reklamationsquote je Marke", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Fehlercode-Statistik", "link_to": "PH Fehlercode-Statistik", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Regressstatus", "link_to": "PH Regressstatus", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Servicekosten", "link_to": "PH Servicekosten", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Gewährleistungsfristen", "link_to": "PH Gewährleistungsfristen", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Card Break", "label": "Stammdaten", "link_count": 4, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Fehlerbereich", "link_to": "PH Fehlerbereich", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Fehlercode", "link_to": "PH Fehlercode", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Service Einstellungen", "link_to": "PH Service Einstellungen", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "E-Mail-Vorlagen", "link_to": "Email Template", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""}
+  ],
+  "roles": [{"role": "PH Service Mitarbeiter"}, {"role": "PH Service Leitung"}, {"role": "PH Techniker"}, {"role": "PH Geschäftsführung"}]
+ }
+]

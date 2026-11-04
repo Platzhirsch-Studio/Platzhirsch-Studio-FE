@@ -55,7 +55,10 @@ test("Warenkorb → Versand (LetMeShip-Mock, versichert) → Stripe-Mock → Bes
 
   await page.getByRole("textbox", { name: "Vor- und Nachname", exact: true }).fill("Test Kundin");
   await page.getByRole("textbox", { name: "E-Mail", exact: true }).fill("kundin@example.invalid");
-  await expect(page.locator('[data-shop-recht-slot="agb"]')).toContainText("Entwurf – Kanzlei-Durchsicht ausstehend");
+  // 03.11.2026 (Nr. 46): Rechtstexte freigegeben → AGB als Link ohne Marker; Gewährleistungs-Mitteilung vor dem Bestellknopf.
+  await expect(page.locator('[data-shop-recht-slot="agb"] a')).toBeVisible();
+  await expect(page.locator('[data-shop-recht-slot="agb"]')).not.toContainText(/Entwurf|Angabe wird ergänzt/);
+  await expect(page.locator("[data-shop-gewaehrleistung]")).toContainText("Gesetzliche Gewährleistung");
   await page.screenshot({ path: SHOT("02-warenkorb-versand"), fullPage: true });
   await page.waitForTimeout(3_200); // Zeitfalle des Formular-Schutzes (≥ 3 s)
   const buy = page.getByRole("button", { name: "Zahlungspflichtig bestellen" });

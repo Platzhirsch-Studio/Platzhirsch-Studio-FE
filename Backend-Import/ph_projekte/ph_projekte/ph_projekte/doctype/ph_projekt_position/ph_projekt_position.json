@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bezeichnung",
+  "marke",
+  "kategorie",
+  "menge",
+  "status",
+  "raum",
+  "produkt",
+  "ausfuehrung_text",
+  "produktpass",
+  "preis_cent"
+ ],
+ "fields": [
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "kategorie",
+   "fieldtype": "Data",
+   "label": "Kategorie",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Sofa, Teppich, Leuchte, Küche …"
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Int",
+   "label": "Menge",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "geplant\nangeboten\nbestellt\ngeliefert\nmontiert",
+   "default": "geplant",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "raum",
+   "fieldtype": "Data",
+   "label": "Raum",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "PH Produkt",
+   "options": "PH Produkt"
+  },
+  {
+   "fieldname": "ausfuehrung_text",
+   "fieldtype": "Small Text",
+   "label": "Ausführung (Bezug, Maß, Farbe)"
+  },
+  {
+   "fieldname": "produktpass",
+   "fieldtype": "Link",
+   "label": "Produktpass",
+   "options": "PH Produktpass",
+   "read_only": 1
+  },
+  {
+   "fieldname": "preis_cent",
+   "fieldtype": "Int",
+   "label": "Preis (Cent, intern)",
+   "permlevel": 1,
+   "description": "Nur Leitung; Portal zeigt Preise erst nach Freigabe (PH Projekt.portal_positionen_preise)."
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Projekt Position",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

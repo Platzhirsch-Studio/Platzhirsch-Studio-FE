@@ -1,0 +1,29 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 08:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["zeit", "art", "menge", "bezug_doctype", "bezug", "hinweis", "von_user"],
+ "fields": [
+  {"fieldname": "zeit", "fieldtype": "Datetime", "label": "Zeit", "reqd": 1, "in_list_view": 1, "columns": 2},
+  {"fieldname": "art", "fieldtype": "Select", "label": "Art", "options": "Zugang\nVerbrauch\nKorrektur\nRetoure", "reqd": 1, "in_list_view": 1, "columns": 2},
+  {"fieldname": "menge", "fieldtype": "Int", "label": "Menge (Korrektur mit Vorzeichen)", "reqd": 1, "in_list_view": 1, "columns": 1},
+  {"fieldname": "bezug_doctype", "fieldtype": "Link", "label": "Bezug (Typ)", "options": "DocType"},
+  {"fieldname": "bezug", "fieldtype": "Dynamic Link", "label": "Bezug", "options": "bezug_doctype", "in_list_view": 1, "columns": 3},
+  {"fieldname": "hinweis", "fieldtype": "Data", "label": "Hinweis", "in_list_view": 1, "columns": 2},
+  {"fieldname": "von_user", "fieldtype": "Link", "label": "Von", "options": "User"}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Service",
+ "name": "PH Ersatzteil Bewegung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

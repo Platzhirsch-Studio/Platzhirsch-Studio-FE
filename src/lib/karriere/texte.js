@@ -30,7 +30,7 @@ const T = {
     telefon: "Telefon",
     ansprechperson: "Ansprechperson",
     zeitraum: { Monat: "Monat", Jahr: "Jahr" },
-    entgeltSatz: (kv, betrag, zeitraum) => `Mindestentgelt laut Kollektivvertrag ${kv}: ${betrag} brutto pro ${zeitraum}.`,
+    entgeltSatz: (kv, betrag, zeitraum) => `Das kollektivvertragliche Mindestentgelt beträgt ${betrag} brutto pro ${zeitraum} (${kv}).`,
     ueberzahlung: "Bereitschaft zur Überzahlung je nach Qualifikation und Erfahrung.",
   },
   en: {
@@ -53,7 +53,7 @@ const T = {
     telefon: "Phone",
     ansprechperson: "Contact person",
     zeitraum: { Monat: "month", Jahr: "year" },
-    entgeltSatz: (kv, betrag, zeitraum) => `Minimum pay under the collective agreement ${kv}: ${betrag} gross per ${zeitraum}.`,
+    entgeltSatz: (kv, betrag, zeitraum) => `The minimum pay under the collective agreement is ${betrag} gross per ${zeitraum} (${kv}).`,
     ueberzahlung: "We are willing to pay above this, depending on qualifications and experience.",
   },
   fr: {
@@ -76,7 +76,7 @@ const T = {
     telefon: "Téléphone",
     ansprechperson: "Interlocuteur",
     zeitraum: { Monat: "mois", Jahr: "an" },
-    entgeltSatz: (kv, betrag, zeitraum) => `Salaire minimum selon la convention collective ${kv} : ${betrag} brut par ${zeitraum}.`,
+    entgeltSatz: (kv, betrag, zeitraum) => `Le salaire minimum conventionnel s’élève à ${betrag} brut par ${zeitraum} (${kv}).`,
     ueberzahlung: "Rémunération supérieure possible selon qualification et expérience.",
   },
   it: {
@@ -99,7 +99,7 @@ const T = {
     telefon: "Telefono",
     ansprechperson: "Referente",
     zeitraum: { Monat: "mese", Jahr: "anno" },
-    entgeltSatz: (kv, betrag, zeitraum) => `Retribuzione minima secondo il contratto collettivo ${kv}: ${betrag} lordi al ${zeitraum}.`,
+    entgeltSatz: (kv, betrag, zeitraum) => `La retribuzione minima da contratto collettivo è di ${betrag} lordi al ${zeitraum} (${kv}).`,
     ueberzahlung: "Disponibilità a una retribuzione superiore in base a qualifica ed esperienza.",
   },
 };

@@ -1,0 +1,603 @@
+[
+ {
+  "doctype": "Workspace",
+  "name": "PH Faktura",
+  "title": "PH Faktura",
+  "label": "PH Faktura",
+  "module": "PH Faktura",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "accounting",
+  "indicator_color": "blue",
+  "sequence_id": 6.0,
+  "for_user": "",
+  "parent_page": "",
+  "content": "[{\"id\": \"f_h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Platzhirsch Faktura</b></span>\", \"col\": 12}}, {\"id\": \"f_p1\", \"type\": \"paragraph\", \"data\": {\"text\": \"Angebot → Auftragsbestätigung → Anzahlungsrechnung → Teil-/Schlussrechnung → Zahlung → Mahnung → Export Steuerberater. Beträge in Euro, Belege nach § 11 UStG.\", \"col\": 12}}, {\"id\": \"f_nc1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH OP gesamt\", \"col\": 3}}, {\"id\": \"f_nc2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH OP ueberfaellig\", \"col\": 3}}, {\"id\": \"f_nc3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Anzahlungen offen\", \"col\": 3}}, {\"id\": \"f_nc4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Umsatz Monat\", \"col\": 3}}, {\"id\": \"f_nc5\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Eingangsrechnungen offen\", \"col\": 3}}, {\"id\": \"f_nc6\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Bankumsaetze offen\", \"col\": 3}}, {\"id\": \"f_nc7\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Nicht exportierte Belege\", \"col\": 3}}, {\"id\": \"f_nc8\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Mahnstufe 2 plus\", \"col\": 3}}, {\"id\": \"f_c1\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Umsatz je Monat\", \"col\": 6}}, {\"id\": \"f_c2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Offene Posten nach Alter\", \"col\": 6}}, {\"id\": \"f_c3\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Rechnungen nach Status\", \"col\": 6}}, {\"id\": \"f_c4\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Mahnstufen\", \"col\": 6}}, {\"id\": \"f_h2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\", \"col\": 12}}, {\"id\": \"f_s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Rechnungen\", \"col\": 3}}, {\"id\": \"f_s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Rechnung anlegen\", \"col\": 3}}, {\"id\": \"f_s3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Kanban Rechnungen\", \"col\": 3}}, {\"id\": \"f_s4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Offene Posten\", \"col\": 3}}, {\"id\": \"f_s5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Bankimport\", \"col\": 3}}, {\"id\": \"f_s6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Eingangsrechnungen (Kanban)\", \"col\": 3}}, {\"id\": \"f_s7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Export Lauf\", \"col\": 3}}, {\"id\": \"f_s8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"UVA Auswertung\", \"col\": 3}}, {\"id\": \"f_h3\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Bereiche</b></span>\", \"col\": 12}}, {\"id\": \"f_card1\", \"type\": \"card\", \"data\": {\"card_name\": \"Verkauf\", \"col\": 4}}, {\"id\": \"f_card2\", \"type\": \"card\", \"data\": {\"card_name\": \"Rechnungswesen\", \"col\": 4}}, {\"id\": \"f_card3\", \"type\": \"card\", \"data\": {\"card_name\": \"Zahlungen und Bank\", \"col\": 4}}, {\"id\": \"f_card4\", \"type\": \"card\", \"data\": {\"card_name\": \"Einkauf\", \"col\": 4}}, {\"id\": \"f_card5\", \"type\": \"card\", \"data\": {\"card_name\": \"Steuerberater\", \"col\": 4}}, {\"id\": \"f_card6\", \"type\": \"card\", \"data\": {\"card_name\": \"Einstellungen\", \"col\": 4}}]",
+  "shortcuts": [
+   {
+    "label": "Rechnungen",
+    "link_to": "PH Rechnung",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Blue",
+    "stats_filter": "{\"status\": [\"in\", [\"Gestellt\", \"Teilbezahlt\", \"Ueberfaellig\", \"Gemahnt\"]]}"
+   },
+   {
+    "label": "Rechnung anlegen",
+    "link_to": "PH Rechnung",
+    "type": "DocType",
+    "doc_view": "New",
+    "color": "Grey"
+   },
+   {
+    "label": "Kanban Rechnungen",
+    "link_to": "PH Rechnung",
+    "type": "DocType",
+    "doc_view": "Kanban",
+    "color": "Blue",
+    "kanban_board": "PH Rechnungen"
+   },
+   {
+    "label": "Offene Posten",
+    "link_to": "PH Offene Posten",
+    "type": "Report",
+    "doc_view": "",
+    "color": "Orange"
+   },
+   {
+    "label": "Bankimport",
+    "link_to": "PH Bankimport",
+    "type": "DocType",
+    "doc_view": "New",
+    "color": "Grey"
+   },
+   {
+    "label": "Eingangsrechnungen (Kanban)",
+    "link_to": "PH Eingangsrechnung",
+    "type": "DocType",
+    "doc_view": "Kanban",
+    "color": "Orange",
+    "kanban_board": "PH Eingangsrechnungen"
+   },
+   {
+    "label": "Export Lauf",
+    "link_to": "PH Export Lauf",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Grey"
+   },
+   {
+    "label": "UVA Auswertung",
+    "link_to": "PH UVA Auswertung",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Grey"
+   }
+  ],
+  "charts": [
+   {
+    "chart_name": "PH Umsatz je Monat",
+    "label": "Umsatz je Monat"
+   },
+   {
+    "chart_name": "PH Offene Posten nach Alter",
+    "label": "Offene Posten nach Alter"
+   },
+   {
+    "chart_name": "PH Rechnungen nach Status",
+    "label": "Rechnungen nach Status"
+   },
+   {
+    "chart_name": "PH Mahnstufen",
+    "label": "Mahnstufen"
+   }
+  ],
+  "number_cards": [
+   {
+    "number_card_name": "PH OP gesamt",
+    "label": "OP gesamt"
+   },
+   {
+    "number_card_name": "PH OP ueberfaellig",
+    "label": "OP ueberfaellig"
+   },
+   {
+    "number_card_name": "PH Anzahlungen offen",
+    "label": "Anzahlungen offen"
+   },
+   {
+    "number_card_name": "PH Umsatz Monat",
+    "label": "Umsatz Monat"
+   },
+   {
+    "number_card_name": "PH Eingangsrechnungen offen",
+    "label": "Eingangsrechnungen offen"
+   },
+   {
+    "number_card_name": "PH Bankumsaetze offen",
+    "label": "Bankumsaetze offen"
+   },
+   {
+    "number_card_name": "PH Nicht exportierte Belege",
+    "label": "Nicht exportierte Belege"
+   },
+   {
+    "number_card_name": "PH Mahnstufe 2 plus",
+    "label": "Mahnstufe 2 plus"
+   }
+  ],
+  "links": [
+   {
+    "type": "Card Break",
+    "label": "Verkauf",
+    "link_count": 4,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Angebote",
+    "link_to": "PH Angebot",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Auftragsbestätigungen",
+    "link_to": "PH Auftragsbestaetigung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Zahlungsbedingungen",
+    "link_to": "PH Zahlungsbedingung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Anzahlungsstand",
+    "link_to": "PH Anzahlungsstand",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Rechnungswesen",
+    "link_count": 7,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Rechnungen",
+    "link_to": "PH Rechnung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Gutschriften",
+    "link_to": "PH Gutschrift",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Mahnungen",
+    "link_to": "PH Mahnung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Offene Posten",
+    "link_to": "PH Offene Posten",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Mahnvorschlag",
+    "link_to": "PH Mahnvorschlag",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Nummernlücken",
+    "link_to": "PH Nummernluecken",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Buchungsjournal",
+    "link_to": "PH Buchungsjournal",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Zahlungen und Bank",
+    "link_count": 4,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Bankkonten",
+    "link_to": "PH Bankkonto",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Bankimport (CAMT.053)",
+    "link_to": "PH Bankimport",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Bankumsätze",
+    "link_to": "PH Bankumsatz",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Zahlungen (ph_shop)",
+    "link_to": "PH Zahlung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Einkauf",
+    "link_count": 2,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Eingangsrechnungen",
+    "link_to": "PH Eingangsrechnung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Zahllauf-Vorschlag",
+    "link_to": "PH Zahllauf Vorschlag",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Steuerberater",
+    "link_count": 5,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Export-Läufe",
+    "link_to": "PH Export Lauf",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "UVA-Auswertungen",
+    "link_to": "PH UVA Auswertung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "UVA Zuarbeit",
+    "link_to": "PH UVA Zuarbeit",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "OSS Umsätze je Land",
+    "link_to": "PH OSS Umsaetze je Land",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Export-Abgleich",
+    "link_to": "PH Export-Abgleich",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Einstellungen",
+    "link_count": 2,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Faktura-Einstellungen",
+    "link_to": "PH Faktura Einstellungen",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Mahnwesen",
+    "link_to": "PH Mahnwesen Einstellungen",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   }
+  ],
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   },
+   {
+    "role": "System Manager"
+   },
+   {
+    "role": "PH Backoffice-Admin"
+   }
+  ]
+ },
+ {
+  "doctype": "Workspace",
+  "name": "PH Vertriebscockpit",
+  "title": "PH Vertriebscockpit",
+  "label": "PH Vertriebscockpit",
+  "module": "PH Faktura",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "dashboard",
+  "indicator_color": "green",
+  "sequence_id": 6.5,
+  "for_user": "",
+  "parent_page": "PH Faktura",
+  "content": "[{\"id\": \"v_h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Vertriebscockpit</b></span>\", \"col\": 12}}, {\"id\": \"v_p1\", \"type\": \"paragraph\", \"data\": {\"text\": \"Umsatz, Auftragseingang, offene Angebote, Anzahlungen und Liefertermine auf einen Blick (Vorbild SHD marahobjekt Vertriebscockpit).\", \"col\": 12}}, {\"id\": \"v_nc1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Offene Angebote\", \"col\": 3}}, {\"id\": \"v_nc2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Auftragsbestand\", \"col\": 3}}, {\"id\": \"v_nc3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Umsatz Monat\", \"col\": 3}}, {\"id\": \"v_nc4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Faellig 7 Tage\", \"col\": 3}}, {\"id\": \"v_c1\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Auftragseingang je Monat\", \"col\": 6}}, {\"id\": \"v_c2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Umsatz je Monat\", \"col\": 6}}, {\"id\": \"v_c3\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Angebote nach Status\", \"col\": 6}}, {\"id\": \"v_c4\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Anzahlungsstand\", \"col\": 6}}, {\"id\": \"v_h2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\", \"col\": 12}}, {\"id\": \"v_s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Kanban Angebote\", \"col\": 3}}, {\"id\": \"v_s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Angebot anlegen\", \"col\": 3}}, {\"id\": \"v_s3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Aufträge\", \"col\": 3}}, {\"id\": \"v_s4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vertriebscockpit (Report)\", \"col\": 3}}, {\"id\": \"v_s5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Umsatz nach Marke\", \"col\": 3}}, {\"id\": \"v_s6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Anzahlungsstand\", \"col\": 3}}, {\"id\": \"v_h3\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Vertrieb</b></span>\", \"col\": 12}}, {\"id\": \"v_card1\", \"type\": \"card\", \"data\": {\"card_name\": \"Belege\", \"col\": 4}}, {\"id\": \"v_card2\", \"type\": \"card\", \"data\": {\"card_name\": \"Auswertungen\", \"col\": 4}}]",
+  "shortcuts": [
+   {
+    "label": "Kanban Angebote",
+    "link_to": "PH Angebot",
+    "type": "DocType",
+    "doc_view": "Kanban",
+    "color": "Blue",
+    "kanban_board": "PH Angebote"
+   },
+   {
+    "label": "Angebot anlegen",
+    "link_to": "PH Angebot",
+    "type": "DocType",
+    "doc_view": "New",
+    "color": "Grey"
+   },
+   {
+    "label": "Aufträge",
+    "link_to": "PH Auftragsbestaetigung",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Blue",
+    "stats_filter": "{\"status\": [\"in\", [\"Offen\", \"In Bestellung\", \"Teilgeliefert\", \"Geliefert\"]]}"
+   },
+   {
+    "label": "Vertriebscockpit (Report)",
+    "link_to": "PH Vertriebscockpit Faktura",
+    "type": "Report",
+    "doc_view": "",
+    "color": "Green"
+   },
+   {
+    "label": "Umsatz nach Marke",
+    "link_to": "PH Umsatz nach Marke",
+    "type": "Report",
+    "doc_view": "",
+    "color": "Grey"
+   },
+   {
+    "label": "Anzahlungsstand",
+    "link_to": "PH Anzahlungsstand",
+    "type": "Report",
+    "doc_view": "",
+    "color": "Orange"
+   }
+  ],
+  "charts": [
+   {
+    "chart_name": "PH Auftragseingang je Monat",
+    "label": "Auftragseingang je Monat"
+   },
+   {
+    "chart_name": "PH Umsatz je Monat",
+    "label": "Umsatz je Monat"
+   },
+   {
+    "chart_name": "PH Angebote nach Status",
+    "label": "Angebote nach Status"
+   },
+   {
+    "chart_name": "PH Anzahlungsstand",
+    "label": "Anzahlungsstand"
+   }
+  ],
+  "number_cards": [
+   {
+    "number_card_name": "PH Offene Angebote",
+    "label": "Offene Angebote"
+   },
+   {
+    "number_card_name": "PH Auftragsbestand",
+    "label": "Auftragsbestand"
+   },
+   {
+    "number_card_name": "PH Umsatz Monat",
+    "label": "Umsatz Monat"
+   },
+   {
+    "number_card_name": "PH Faellig 7 Tage",
+    "label": "Faellig 7 Tage"
+   }
+  ],
+  "links": [
+   {
+    "type": "Card Break",
+    "label": "Belege",
+    "link_count": 3,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Angebote",
+    "link_to": "PH Angebot",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Auftragsbestätigungen",
+    "link_to": "PH Auftragsbestaetigung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Rechnungen",
+    "link_to": "PH Rechnung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Auswertungen",
+    "link_count": 4,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Vertriebscockpit Faktura",
+    "link_to": "PH Vertriebscockpit Faktura",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Umsatz nach Marke",
+    "link_to": "PH Umsatz nach Marke",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Anzahlungsstand",
+    "link_to": "PH Anzahlungsstand",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Offene Posten",
+    "link_to": "PH Offene Posten",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   }
+  ],
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "System Manager"
+   },
+   {
+    "role": "PH Backoffice-Admin"
+   }
+  ]
+ }
+]

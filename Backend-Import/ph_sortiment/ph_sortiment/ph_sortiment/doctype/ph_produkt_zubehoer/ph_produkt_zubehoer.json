@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Kombinierbares Zubehör („Passend dazu“).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "produkt",
+  "hinweis_de",
+  "hinweis_en",
+  "hinweis_fr",
+  "hinweis_it"
+ ],
+ "fields": [
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "hinweis_de",
+   "fieldtype": "Data",
+   "label": "Hinweis (DE)"
+  },
+  {
+   "fieldname": "hinweis_en",
+   "fieldtype": "Data",
+   "label": "Hinweis (EN)"
+  },
+  {
+   "fieldname": "hinweis_fr",
+   "fieldtype": "Data",
+   "label": "Hinweis (FR)"
+  },
+  {
+   "fieldname": "hinweis_it",
+   "fieldtype": "Data",
+   "label": "Hinweis (IT)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Produkt Zubehoer",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

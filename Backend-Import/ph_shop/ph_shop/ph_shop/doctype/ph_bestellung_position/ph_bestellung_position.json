@@ -1,0 +1,149 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Kindtabelle von PH Bestellung: eine Warenkorbzeile der Website (zeilen[]).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "produkt",
+  "slug",
+  "variante",
+  "variante_name",
+  "bezeichnung",
+  "marke",
+  "kategorie",
+  "menge",
+  "einzel_cent",
+  "summe_cent",
+  "preis_stand",
+  "ust_klasse",
+  "ust_satz_promille",
+  "zerbrechlich",
+  "test",
+  "bild"
+ ],
+ "fields": [
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "PH Produkt",
+   "options": "PH Produkt",
+   "description": "Verknüpfung zum Sortiment (ph_sortiment); Zuordnung über slug."
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug (Website)",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "variante",
+   "fieldtype": "Data",
+   "label": "Variante (ID)"
+  },
+  {
+   "fieldname": "variante_name",
+   "fieldtype": "Data",
+   "label": "Variante"
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Artikel",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "kategorie",
+   "fieldtype": "Data",
+   "label": "Kategorie"
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Int",
+   "label": "Menge",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1,
+   "non_negative": 1
+  },
+  {
+   "fieldname": "einzel_cent",
+   "fieldtype": "Int",
+   "label": "Einzelpreis (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "summe_cent",
+   "fieldtype": "Int",
+   "label": "Summe (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "preis_stand",
+   "fieldtype": "Date",
+   "label": "Preisstand"
+  },
+  {
+   "fieldname": "ust_klasse",
+   "fieldtype": "Select",
+   "label": "USt-Klasse",
+   "options": "normal\nermaessigt",
+   "default": "normal",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ust_satz_promille",
+   "fieldtype": "Int",
+   "label": "USt-Satz (Promille)",
+   "read_only": 1,
+   "description": "2000 = 20 %, 1000 = 10 %, 1900 = 19 %, 700 = 7 %."
+  },
+  {
+   "fieldname": "zerbrechlich",
+   "fieldtype": "Check",
+   "label": "Zerbrechlich",
+   "default": "0"
+  },
+  {
+   "fieldname": "test",
+   "fieldtype": "Check",
+   "label": "Testartikel",
+   "default": "0"
+  },
+  {
+   "fieldname": "bild",
+   "fieldtype": "Data",
+   "label": "Bild (Katalogpfad)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Bestellung Position",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

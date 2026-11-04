@@ -1,0 +1,74 @@
+[
+ {
+  "doctype": "Email Template",
+  "name": "PH Shop Bestellbestätigung",
+  "subject": "Auftragsbestätigung {{ doc.name }} – Platzhirsch",
+  "use_html": 1,
+  "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}<p>Guten Tag {{ doc.kunde_name }},</p><p>vielen Dank für Ihre Bestellung. Hiermit nehmen wir sie an und bestätigen den Vertrag (Bestellnummer <b>{{ doc.name }}</b>, bestellt am {{ ph_datum(doc.angelegt) }}).</p><p><b>IHRE BESTELLUNG</b><br>{% for p in doc.positionen %}– {{ p.menge }} × {{ p.marke or '' }} {{ p.bezeichnung }}{% if p.variante_name %} ({{ p.variante_name }}){% endif %}: {{ ph_betrag(p.summe_cent) }}<br>{% endfor %}Versandkosten: {{ ph_betrag(doc.versand_cent) }}<br><b>Gesamtpreis: {{ ph_betrag(doc.gesamt_cent) }}</b> (inkl. {{ ph_betrag(doc.ust_cent) }} Umsatzsteuer)</p><p><b>Lieferung:</b> {% if doc.lieferart == 'abholung' %}Abholung im Showroom {{ firma.marke }}, {{ firma.strasse }}, {{ firma.plz }} {{ firma.ort }}. Wir melden uns per E-Mail, sobald Ihre Artikel abholbereit sind.{% else %}Versand nach {{ doc.adresse_strasse }} {{ doc.adresse_hausnr }}, {{ doc.adresse_plz }} {{ doc.adresse_ort }}, {{ doc.adresse_land }}{% if doc.versichert %} (versichert){% endif %}.{% endif %}<br><b>Zahlung:</b> {% if doc.zahlung == 'vorort' %}Zahlung bei Abholung im Showroom.{% else %}Online bezahlt über Stripe.{% endif %}</p><p><b>VERKÄUFER</b><br>{{ firma.firmenname }} („{{ firma.marke }}“), {{ firma.strasse }}, {{ firma.plz }} {{ firma.ort }}<br>Telefon {{ firma.telefon or '' }} · E-Mail {{ firma.email }}{% if firma.firmenbuchnummer %} · {{ firma.firmenbuchnummer }}{% endif %}{% if firma.uid %} · UID {{ firma.uid }}{% endif %}</p>{% if einst.gewaehrleistung_text %}<p>{{ einst.gewaehrleistung_text }}</p>{% endif %}<p>Widerrufsbelehrung, Muster-Widerrufsformular und AGB finden Sie unten in dieser E-Mail und als Anhang. Online widerrufen: {{ einst.widerruf_url }}</p><h3>WIDERRUFSBELEHRUNG</h3>{{ einst.widerrufsbelehrung_text or '<p>[Text in PH Shop Einstellungen hinterlegen]</p>' }}<h3>ALLGEMEINE GESCHÄFTSBEDINGUNGEN</h3>{{ einst.agb_text or '<p>[Text in PH Shop Einstellungen hinterlegen]</p>' }}{% if doc.lieferart == 'versand' and einst.versandbedingungen_text %}<h3>VERSAND- UND LIEFERBEDINGUNGEN</h3>{{ einst.versandbedingungen_text }}{% endif %}<p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
+  "response": ""
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Shop Abholbereit",
+  "subject": "Ihre Bestellung {{ doc.name }} ist abholbereit",
+  "use_html": 1,
+  "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}<p>Guten Tag {{ doc.kunde_name }},</p><p>Ihre Bestellung <b>{{ doc.name }}</b> liegt im Showroom {{ firma.marke }} ({{ firma.strasse }}, {{ firma.plz }} {{ firma.ort }}) für Sie bereit.</p><p>Abholcode: <b style=\"font-size:18px;letter-spacing:.1em\">{{ abholcode }}</b><br>Bitte bis <b>{{ ph_datum(abholung_bis) }}</b> abholen.{% if doc.zahlung == 'vorort' %} Der Betrag von {{ ph_betrag(doc.gesamt_cent) }} ist bei Abholung zu zahlen (bar oder Karte).{% endif %}</p><p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
+  "response": ""
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Shop Zahlung fehlgeschlagen",
+  "subject": "Zahlung nicht erfolgreich – {{ doc.name }}",
+  "use_html": 1,
+  "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}<p>Guten Tag,</p><p>die Zahlung für {{ was }} über {{ ph_betrag(betrag_cent) }} ist leider nicht durchgegangen, zum Beispiel weil eine Lastschrift zurückgegeben wurde. Es ist nichts abgebucht bzw. der Betrag wird zurückgebucht.</p><p>Gerne können Sie erneut bestellen oder uns anrufen: {{ firma.telefon or '' }}.</p><p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
+  "response": ""
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Shop Reservierung abgelaufen",
+  "subject": "Ihre Reservierung {{ doc.name }} ist abgelaufen",
+  "use_html": 1,
+  "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}<p>Guten Tag {{ doc.kunde_name }},</p><p>die Reservierung <b>{{ doc.name }}</b> ist am {{ ph_datum(doc.abholung_bis) }} abgelaufen; wir haben sie aufgelöst. Wenn Sie die Artikel weiterhin möchten, bestellen Sie gerne erneut oder melden Sie sich bei uns: {{ firma.telefon or '' }}.</p><p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
+  "response": ""
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Gutschein Versand",
+  "subject": "Ihr Gutschein von Platzhirsch Home Living{% if bestellung %} ({{ bestellung.name }}){% endif %}",
+  "use_html": 1,
+  "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}<p>Guten Tag{% if bestellung %} {{ bestellung.kaeufer_name }}{% elif doc and doc.kaeufer_name %} {{ doc.kaeufer_name }}{% endif %},</p><p>{% if bestellung %}danke für Ihre Bestellung {{ bestellung.name }}. Ihre Zahlung ist bestätigt. {% endif %}Im Anhang {% if gutscheine|length > 1 %}finden Sie {{ gutscheine|length }} Gutscheine{% else %}finden Sie Ihren Gutschein{% endif %} über je {{ ph_betrag(gutscheine[0].wert_cent) }} als PDF zum Ausdrucken oder Weiterschicken.</p>{% if codes %}<p><b>{% if codes|length > 1 %}Gutscheincodes{% else %}Gutscheincode{% endif %}:</b><br>{% for c in codes %}<span style=\"font-family:monospace;font-size:16px\">{{ c }}</span><br>{% endfor %}</p>{% endif %}<p>Einlösbar im Showroom in {{ firma.ort }} und für Bestellungen im Onlineshop (Code vor der Bestellung an uns), auch in Teilbeträgen; nicht im Café. {% if gutscheine[0].gueltig_bis %}Gültig bis {{ ph_datum(gutscheine[0].gueltig_bis) }}.{% else %}Unbefristet gültig.{% endif %} Bitte behandeln Sie den Code wie Bargeld.</p><p>Rechnung: Die Rechnung senden wir Ihnen gesondert per E-Mail. Die Zahlungsbestätigung von Stripe ist kein Ersatz dafür.</p><p>Gutscheinbedingungen: {{ einst.gutschein_bedingungen_url }}<br>Widerruf innerhalb von 14 Tagen, solange der Gutschein nicht eingelöst ist: {{ website }}/de/zahlung/widerruf</p><p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
+  "response": ""
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Widerruf Eingangsbestätigung",
+  "subject": "Eingangsbestätigung Ihres Widerrufs ({{ doc.eingangsnummer or doc.name }})",
+  "use_html": 1,
+  "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}{% if zugeordnet %}<p>Guten Tag {{ doc.kunde_name }},</p><p>wir bestätigen den Eingang Ihres Widerrufs am {{ frappe.format(doc.eingegangen_am, {'fieldtype': 'Datetime'}) }} (Eingangsnummer {{ doc.eingangsnummer or doc.name }}).</p><p><b>Inhalt Ihrer Erklärung:</b><br><span style=\"white-space:pre-line\">{{ erklaerung }}</span></p>{% if doc.bestellung %}<p>Bitte senden Sie die Waren binnen 14 Tagen an uns zurück oder übergeben Sie sie im Showroom. Wir erstatten alle Zahlungen einschließlich der Lieferkosten (Standardlieferung) spätestens binnen 14 Tagen über das ursprüngliche Zahlungsmittel, sobald wir die Waren zurückerhalten oder Ihren Nachweis der Rücksendung haben.</p>{% else %}<p>Wir prüfen den Widerruf und zahlen den Betrag spätestens binnen 14 Tagen über das ursprüngliche Zahlungsmittel zurück. Noch nicht eingelöste Gutscheincodes dieser Bestellung sind gesperrt.</p>{% endif %}{% else %}<p>Guten Tag,</p><p>wir bestätigen den Eingang eines Widerrufs, der am {{ frappe.format(doc.eingegangen_am, {'fieldtype': 'Datetime'}) }} mit dieser E-Mail-Adresse abgegeben wurde (Eingangsnummer {{ doc.eingangsnummer or doc.name }}).</p><p>Wir ordnen ihn der Bestellung zu und melden uns, falls wir dafür noch etwas von Ihnen brauchen. Falls Sie keinen Widerruf abgegeben haben, können Sie diese Nachricht ignorieren.</p>{% endif %}<p>Bei Fragen erreichen Sie uns unter {{ firma.telefon or '' }} oder {{ firma.email }}.</p><p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
+  "response": ""
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Anzahlung erhalten",
+  "subject": "Anzahlung erhalten: Auftrag {{ doc.auftrag_referenz }}",
+  "use_html": 1,
+  "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}<p>Guten Tag,</p><p>Ihre Anzahlung zu Auftrag {{ doc.auftrag_referenz }} über {{ ph_betrag(doc.betrag_cent) }} ist bei uns eingegangen. Danke.</p><p>Wir weisen sie auf der Rechnung zu Ihrem Auftrag aus. Die Zahlungsbestätigung von Stripe ersetzt die Rechnung nicht.</p><p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
+  "response": ""
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Anzahlung Zahlungslink",
+  "subject": "Anzahlung zu Auftrag {{ doc.auftrag_referenz }}",
+  "use_html": 1,
+  "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}<p>Guten Tag,</p><p>wie besprochen senden wir Ihnen den Link für die Anzahlung zu Auftrag {{ doc.auftrag_referenz }} über {{ ph_betrag(doc.betrag_cent) }} (inkl. USt).{% if doc.beschreibung %}<br>{{ doc.beschreibung }}{% endif %}</p><p><a href=\"{{ link }}\" style=\"display:inline-block;padding:10px 18px;background:#30373e;color:#fff;text-decoration:none\">Anzahlung bezahlen</a><br><span style=\"font-size:12px;color:#6b7280\">{{ link }}</span></p><p>Der Link gilt bis {{ ph_datum(doc.link_gueltig_bis) }}. Die Zahlung läuft über Stripe; Kartendaten erhalten wir nicht. Die Anzahlung weisen wir auf der Rechnung zu Ihrem Auftrag aus.</p><p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
+  "response": ""
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Shop Teamhinweis",
+  "subject": "[Shop] {{ betreff }}",
+  "use_html": 1,
+  "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}<p>Hinweis für das Team ({{ frappe.format(jetzt, {'fieldtype': 'Datetime'}) }}):</p>{% for z in zeilen %}<p>{{ z }}</p>{% endfor %}<p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
+  "response": ""
+ }
+]

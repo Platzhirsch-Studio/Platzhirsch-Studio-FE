@@ -1,0 +1,192 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Stopp einer Tour (Lieferung, Montage, Abholung, Retoure, Service).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "reihenfolge",
+  "art",
+  "lieferschein",
+  "montage_referenz",
+  "kontakt",
+  "kunde_name",
+  "adresse",
+  "plz",
+  "ort",
+  "land",
+  "telefon",
+  "zeitfenster_von",
+  "zeitfenster_bis",
+  "dauer_min",
+  "status",
+  "ankunft",
+  "abfahrt",
+  "unterschrift",
+  "unterschrift_name",
+  "navigation_url",
+  "bestaetigung_gesendet_am",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "reihenfolge",
+   "fieldtype": "Int",
+   "label": "Nr.",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Lieferung\nMontage\nAbholung\nRetoure\nService",
+   "default": "Lieferung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "lieferschein",
+   "fieldtype": "Link",
+   "label": "Lieferschein",
+   "options": "PH Lieferschein",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "montage_referenz",
+   "fieldtype": "Data",
+   "label": "Montage/Service-Referenz",
+   "description": "PH Montageauftrag (ph_projekte) oder PH Servicefall (ph_service) – als Text, bis die Apps Custom-Links liefern."
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "kunde_name",
+   "fieldtype": "Data",
+   "label": "Kunde",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "adresse",
+   "fieldtype": "Small Text",
+   "label": "Adresse"
+  },
+  {
+   "fieldname": "plz",
+   "fieldtype": "Data",
+   "label": "PLZ",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ort",
+   "fieldtype": "Data",
+   "label": "Ort",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "land",
+   "fieldtype": "Data",
+   "label": "Land",
+   "default": "AT"
+  },
+  {
+   "fieldname": "telefon",
+   "fieldtype": "Data",
+   "label": "Telefon",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "zeitfenster_von",
+   "fieldtype": "Time",
+   "label": "Zeitfenster von",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "zeitfenster_bis",
+   "fieldtype": "Time",
+   "label": "Zeitfenster bis"
+  },
+  {
+   "fieldname": "dauer_min",
+   "fieldtype": "Int",
+   "label": "Dauer (min)",
+   "default": "30"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "offen\nunterwegs\nerledigt\nnicht angetroffen\nverschoben",
+   "default": "offen",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ankunft",
+   "fieldtype": "Datetime",
+   "label": "Ankunft",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abfahrt",
+   "fieldtype": "Datetime",
+   "label": "Abfahrt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unterschrift",
+   "fieldtype": "Signature",
+   "label": "Unterschrift Kunde"
+  },
+  {
+   "fieldname": "unterschrift_name",
+   "fieldtype": "Data",
+   "label": "Unterschrieben von"
+  },
+  {
+   "fieldname": "navigation_url",
+   "fieldtype": "Data",
+   "label": "Navigation (Link)",
+   "read_only": 1,
+   "options": "URL"
+  },
+  {
+   "fieldname": "bestaetigung_gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Lieferbestätigung gesendet",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Tour Stopp",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

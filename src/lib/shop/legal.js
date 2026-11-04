@@ -1,10 +1,8 @@
 // src/lib/shop/legal.js
 // Rechtliche Pflicht-Slots des Onlineshops (Accessoire-Welt, Nr. 29).
-// Bis 31.10.2026 waren alle Slots "kanzlei-offen" (text null). Jetzt trägt
-// jeder Slot einen ENTWURF (siehe unten). Im Testmodus verlinkt der
-// Warenkorb den Entwurf mit Marker „Entwurf“; in Produktion ist der Shop
-// wegen SHOP_MODE off ohnehin unsichtbar. SHOP_MODE=live verlangt
-// zusätzlich, dass alle Slots "freigegeben" sind (mode.js).
+// 31.10.2026: alle Slots "kanzlei-offen"; 02.11.2026: ENTWURF je Slot;
+// 03.11.2026: FREIGEGEBEN (Kanzlei laut Inhaber, Entscheidungen Nr. 40/45;
+// Onlineshop mit echter Zahlung erlaubt, Nr. 46). Wortlaut: ./legalTexte.js.
 //
 // Kurzrecherche der Pflichten (Belege und Kanzlei-Bedarf: qa-screenshots/shop/README.md):
 //   AT  FAGG §§ 4, 5, 7, 8, 11–13 (Informationspflichten, Bestätigung,
@@ -21,16 +19,23 @@
 //       vom 28.05.2022 entfallen, § 5 Abs 1 PAngV, https://www.gesetze-im-internet.de/pangv_2022/__5.html –,
 //       Liefer-/Versandkosten neben dem Preis § 6 PAngV).
 //
-// STAND 02.11.2026: Jeder Slot trägt einen inhaltlich fertigen ENTWURF
-// (Wortlaut: ./legalTexte.js, Quellen dort je Regel). status "entwurf" ≠
-// "freigegeben" → legalOpen() listet weiter alle Slots, liveBlockers (mode.js)
-// bleibt "recht:*", der Shop kann NICHT live gehen. Freigabe erst durch
-// Kanzlei/Inhaber: status "freigegeben" + freigabe { datum, durch, beleg }
-// setzen und die verbliebenen [PLATZHALTER: …] ersetzen.
+// Wirksam freigegeben (legalSlotReleased) ist ein Slot nur mit Status
+// "freigegeben", Text, Stand UND ohne Platzhalter "[PLATZHALTER: …]" im Text.
+// Heute (03.11.2026) trägt nur der Datenschutz-Slot noch einen Platzhalter
+// (Firma/Anschrift LetMeShip, Inhaber laut Nr. 41) → liveBlockers meldet
+// recht:datenschutz, bis der Inhaber die Angabe einträgt. Im Testmodus zeigt
+// der Shop einen solchen Slot mit der Lücke „wird ergänzt“ (legalSlotDraft).
 // Rein, ohne "@/"-Importe.
 import { LEGAL_TEXT_STAND, LANG_HINWEIS, platzhalterIn, slotTexte } from "./legalTexte.js";
 
 export const LEGAL_SLOT_STATUS = Object.freeze({ OFFEN: "kanzlei-offen", ENTWURF: "entwurf", FREI: "freigegeben" });
+
+/** Kanzlei-Freigabe (03.11.2026) für alle fünf Slots, Beleg je Slot. */
+export const LEGAL_FREIGABE = Object.freeze({
+  datum: "2026-11-03",
+  durch: "Kanzlei laut Inhaber (Chat 03.11.2026)",
+  beleg: "Inhaber-Entscheidungen Nr. 40, 45 und 46 (Marktresearch/digital/teamleiter/inhaber-entscheidungen.md); Platzhirsch-Status/berichte/SHOP-LIVE-2026-11-03.md",
+});
 
 const TEXTE = slotTexte();
 
@@ -39,14 +44,14 @@ const slot = (id, titel, braucht, quellen) =>
     id,
     titel,
     braucht,
-    status: LEGAL_SLOT_STATUS.ENTWURF,
+    status: LEGAL_SLOT_STATUS.FREI,
     path: `/shop/recht/${id}`,
     text: Object.freeze(TEXTE[id]),
     sprache: "de",
     // EN/FR/IT: Übersetzung folgt; Anzeige DE mit LANG_HINWEIS.
     uebersetzung: Object.freeze({ en: null, fr: null, it: null }),
     stand: LEGAL_TEXT_STAND,
-    freigabe: null,
+    freigabe: LEGAL_FREIGABE,
     platzhalter: Object.freeze(platzhalterIn(TEXTE[id])),
     quellen: Object.freeze(quellen),
   });
@@ -60,12 +65,13 @@ export const SHOP_LEGAL = Object.freeze([
 ]);
 
 const hasText = (t) => (typeof t === "string" ? t.trim().length > 0 : Array.isArray(t) && t.length > 0);
+const ohnePlatzhalter = (s) => !Array.isArray(s?.platzhalter) || s.platzhalter.length === 0;
 
 export const legalSlot = (id, list = SHOP_LEGAL) => list.find((s) => s.id === id) || null;
-/** Freigegeben nur mit Status "freigegeben", Text und Stand – ein Entwurf zählt nie. */
-export const legalSlotReleased = (s) => s?.status === LEGAL_SLOT_STATUS.FREI && hasText(s.text) && Boolean(s.stand);
-/** Entwurf vorhanden (anzeigbar mit Entwurfsmarker), aber nicht freigegeben. */
-export const legalSlotDraft = (s) => s?.status === LEGAL_SLOT_STATUS.ENTWURF && hasText(s.text);
+/** Wirksam freigegeben: Status "freigegeben", Text, Stand und kein Platzhalter – ein Entwurf zählt nie. */
+export const legalSlotReleased = (s) => s?.status === LEGAL_SLOT_STATUS.FREI && hasText(s.text) && Boolean(s.stand) && ohnePlatzhalter(s);
+/** Anzeigbar mit Marker (Entwurf oder freigegeben mit offener Angabe), aber nicht wirksam freigegeben. */
+export const legalSlotDraft = (s) => hasText(s?.text) && (s.status === LEGAL_SLOT_STATUS.ENTWURF || (s.status === LEGAL_SLOT_STATUS.FREI && !ohnePlatzhalter(s)));
 export const legalOpen = (list = SHOP_LEGAL) => list.filter((s) => !legalSlotReleased(s)).map((s) => s.id);
 /** Alle Platzhalter über alle Slots (eindeutig). */
 export const legalPlatzhalter = (list = SHOP_LEGAL) => [...new Set(list.flatMap((s) => s.platzhalter || []))];

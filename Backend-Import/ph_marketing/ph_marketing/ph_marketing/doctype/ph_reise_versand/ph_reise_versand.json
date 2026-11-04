@@ -1,0 +1,198 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "schluessel",
+  "reise",
+  "empfaenger",
+  "status",
+  "cb_1",
+  "grundlage",
+  "werbung",
+  "grund",
+  "einwilligung",
+  "sb_ref",
+  "referenz_doctype",
+  "referenz_name",
+  "cb_2",
+  "geplant_am",
+  "gesendet_am",
+  "kontext_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "schluessel",
+   "fieldtype": "Data",
+   "label": "Schlüssel",
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "reise",
+   "fieldtype": "Link",
+   "label": "Kundenreise",
+   "options": "PH Kundenreise",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "empfaenger",
+   "fieldtype": "Data",
+   "label": "Empfänger",
+   "options": "Email",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "geplant\ngesendet\nuebersprungen\nfehler",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grundlage",
+   "fieldtype": "Select",
+   "label": "Grundlage",
+   "options": "\nV\nB\nE"
+  },
+  {
+   "fieldname": "werbung",
+   "fieldtype": "Check",
+   "label": "Werbung"
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Data",
+   "label": "Grund (übersprungen/fehler)"
+  },
+  {
+   "fieldname": "einwilligung",
+   "fieldtype": "Link",
+   "label": "Einwilligung",
+   "options": "PH Einwilligung"
+  },
+  {
+   "fieldname": "sb_ref",
+   "fieldtype": "Section Break",
+   "label": "Bezug"
+  },
+  {
+   "fieldname": "referenz_doctype",
+   "fieldtype": "Link",
+   "label": "Referenz-Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "referenz_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Referenz",
+   "options": "referenz_doctype"
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "geplant_am",
+   "fieldtype": "Date",
+   "label": "Geplant für",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Gesendet am"
+  },
+  {
+   "fieldname": "kontext_json",
+   "fieldtype": "Code",
+   "label": "Kontext",
+   "options": "JSON"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Reise Versand",
+ "owner": "Administrator",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "geplant",
+   "color": "Blue"
+  },
+  {
+   "title": "gesendet",
+   "color": "Green"
+  },
+  {
+   "title": "uebersprungen",
+   "color": "Gray"
+  },
+  {
+   "title": "fehler",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 0,
+ "description": "Protokoll jeder geplanten, gesendeten oder übersprungenen Reise-Mail (verhindert Doppelversand, Nachweis der Grundlage).",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  }
+ ],
+ "autoname": "hash",
+ "naming_rule": "Random",
+ "title_field": "empfaenger",
+ "search_fields": "empfaenger,reise,status",
+ "in_create": 1,
+ "track_views": 0
+}

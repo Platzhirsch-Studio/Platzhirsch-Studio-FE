@@ -1,0 +1,38 @@
+{% extends "templates/print/ph_basis.html" %}
+{% block titel %}Bewerbung {{ doc.name }}{% endblock %}
+{% block kopfrechts %}Bewerbung {{ doc.name }}<br>Eingang {{ ph_datum(doc.eingang) }}<br>Status {{ _(doc.status) }}{% endblock %}
+{% block inhalt %}
+<h1>{{ doc.titel }}</h1>
+<div class="ph-feld"><b>Stelle</b> {{ doc.stelle_titel or "Initiativbewerbung" }}</div>
+<div class="ph-feld"><b>Name</b> {{ doc.anrede or "" }} {{ doc.vorname or "" }} {{ doc.nachname }}</div>
+<div class="ph-feld"><b>E-Mail</b> {{ doc.email or "–" }}</div>
+<div class="ph-feld"><b>Telefon</b> {{ doc.telefon or "–" }}</div>
+{% if doc.plz_ort %}<div class="ph-feld"><b>Ort</b> {{ doc.plz_ort }}</div>{% endif %}
+{% if doc.verfuegbar_ab %}<div class="ph-feld"><b>Verfügbar ab</b> {{ ph_datum(doc.verfuegbar_ab) }}</div>{% endif %}
+<div class="ph-feld"><b>Quelle</b> {{ doc.quelle }}{% if doc.sprache %} · {{ doc.sprache }}{% endif %}</div>
+<div class="ph-feld"><b>Zuständig</b> {{ frappe.db.get_value("User", doc.zugewiesen_an, "full_name") if doc.zugewiesen_an else "–" }}</div>
+
+{% if doc.anschreiben %}<h2>Anschreiben</h2><div>{{ doc.anschreiben }}</div>{% endif %}
+
+<h2>Unterlagen</h2>
+{% if doc.unterlagen %}
+<table class="ph-tabelle"><thead><tr><th>Art</th><th>Bezeichnung</th><th class="zahl">Hochgeladen</th><th class="zahl">KB</th></tr></thead><tbody>
+{% for u in doc.unterlagen %}<tr><td>{{ u.art }}</td><td>{{ u.bezeichnung or u.datei }}</td><td class="zahl">{{ ph_datum(u.hochgeladen_am) }}</td><td class="zahl">{{ u.groesse_kb or "" }}</td></tr>{% endfor %}
+</tbody></table>
+{% else %}<p>Keine Unterlagen.</p>{% endif %}
+
+<h2>Verlauf</h2>
+<table class="ph-tabelle"><tbody>
+<tr><td>Eingang</td><td class="zahl">{{ ph_datum(doc.eingang) }}</td></tr>
+{% if doc.gesichtet_am %}<tr><td>Gesichtet</td><td class="zahl">{{ ph_datum(doc.gesichtet_am) }}</td></tr>{% endif %}
+{% if doc.gespraech_am %}<tr><td>Erstes Gespräch</td><td class="zahl">{{ ph_datum(doc.gespraech_am) }}</td></tr>{% endif %}
+{% if doc.angebot_am %}<tr><td>Angebot</td><td class="zahl">{{ ph_datum(doc.angebot_am) }}</td></tr>{% endif %}
+{% if doc.entschieden_am %}<tr><td>Entscheidung ({{ _(doc.status) }})</td><td class="zahl">{{ ph_datum(doc.entschieden_am) }} · {{ doc.durchlauf_tage }} Tage</td></tr>{% endif %}
+{% if doc.loeschfrist %}<tr><td>Löschfrist</td><td class="zahl">{{ ph_datum(doc.loeschfrist) }}</td></tr>{% endif %}
+</tbody></table>
+
+<div style="margin-top:8mm;border:1px solid var(--ph-linie);padding:3mm 4mm;min-height:30mm">
+  <b style="font-size:8.5pt;color:#6b7280;text-transform:uppercase;letter-spacing:.04em">Notizen (handschriftlich, nach dem Gespräch in die Bewertung übertragen und vernichten)</b>
+</div>
+<p class="ph-hinweis">Interner Ausdruck. Enthält personenbezogene Daten – nach Gebrauch vernichten (Aufbewahrung nur im Backoffice, Löschfrist läuft automatisch).</p>
+{% endblock %}

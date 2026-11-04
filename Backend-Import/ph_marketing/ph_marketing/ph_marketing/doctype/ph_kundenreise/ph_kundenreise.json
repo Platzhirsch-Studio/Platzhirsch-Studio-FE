@@ -1,0 +1,342 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "reise_id",
+  "titel",
+  "status",
+  "aktiv",
+  "ziel",
+  "cb_1",
+  "vorlage",
+  "absender",
+  "werbung",
+  "sb_recht",
+  "grundlage_v",
+  "grundlage_b",
+  "grundlage_e",
+  "cb_2",
+  "zweck",
+  "aehnliche_produkte",
+  "b_nur_mit_kanzlei",
+  "sb_ablauf",
+  "trigger",
+  "sb_regeln",
+  "segment_outdoor",
+  "segment_pflege",
+  "einmalig",
+  "max_je_kontakt",
+  "cb_3",
+  "stopp_regeln",
+  "quelle",
+  "hinweis",
+  "sb_stat",
+  "gesendet_gesamt",
+  "uebersprungen_gesamt",
+  "letzter_versand"
+ ],
+ "fields": [
+  {
+   "fieldname": "reise_id",
+   "fieldtype": "Data",
+   "label": "Kennung",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nAktiv\nPausiert",
+   "default": "Entwurf",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "0",
+   "description": "Nur ohne Regelfehler möglich (Button „Aktivieren“). Dazu müssen Automatik und ggf. Kanzlei-Freigaben in PH Marketing Einstellungen gesetzt sein."
+  },
+  {
+   "fieldname": "ziel",
+   "fieldtype": "Small Text",
+   "label": "Ziel"
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vorlage",
+   "fieldtype": "Link",
+   "label": "Mail-Vorlage",
+   "options": "PH Mail Vorlage",
+   "reqd": 1
+  },
+  {
+   "fieldname": "absender",
+   "fieldtype": "Select",
+   "label": "Absender",
+   "options": "berater\ngastgeberin",
+   "default": "gastgeberin"
+  },
+  {
+   "fieldname": "werbung",
+   "fieldtype": "Check",
+   "label": "Werbung (B/E nötig, Abmeldelink)",
+   "default": "0"
+  },
+  {
+   "fieldname": "sb_recht",
+   "fieldtype": "Section Break",
+   "label": "Rechtsgrundlage"
+  },
+  {
+   "fieldname": "grundlage_v",
+   "fieldtype": "Check",
+   "label": "Grundlage V: Vertrag/Service"
+  },
+  {
+   "fieldname": "grundlage_b",
+   "fieldtype": "Check",
+   "label": "Grundlage B: Bestandskunde ohne Widerspruch"
+  },
+  {
+   "fieldname": "grundlage_e",
+   "fieldtype": "Check",
+   "label": "Grundlage E: Einwilligung (DOI)"
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zweck",
+   "fieldtype": "Select",
+   "label": "Zweck der Einwilligung (bei E)",
+   "options": "\nnewsletter\neinladungen\nmerkliste_erinnerung\nplaner_erinnerung\nrueckmeldung\npflege_nachkauf\nwhatsapp\nfoto_referenz"
+  },
+  {
+   "fieldname": "aehnliche_produkte",
+   "fieldtype": "Small Text",
+   "label": "Begründung eigene, ähnliche Produkte (bei B)"
+  },
+  {
+   "fieldname": "b_nur_mit_kanzlei",
+   "fieldtype": "Check",
+   "label": "B erst nach Kanzlei-Bestätigung"
+  },
+  {
+   "fieldname": "sb_ablauf",
+   "fieldtype": "Section Break",
+   "label": "Auslöser und Wartezeit"
+  },
+  {
+   "fieldname": "trigger",
+   "fieldtype": "Table",
+   "label": "Auslöser",
+   "options": "PH Reise Trigger"
+  },
+  {
+   "fieldname": "sb_regeln",
+   "fieldtype": "Section Break",
+   "label": "Regeln"
+  },
+  {
+   "fieldname": "segment_outdoor",
+   "fieldtype": "Check",
+   "label": "Nur Aufträge mit Outdoor-Position (oder Einwilligung mit Interesse Outdoor)"
+  },
+  {
+   "fieldname": "segment_pflege",
+   "fieldtype": "Check",
+   "label": "Nur Aufträge mit Pflegekategorie"
+  },
+  {
+   "fieldname": "einmalig",
+   "fieldtype": "Check",
+   "label": "Höchstens einmal je Kontakt"
+  },
+  {
+   "fieldname": "max_je_kontakt",
+   "fieldtype": "Int",
+   "label": "Höchstzahl je Kontakt (0 = ohne)"
+  },
+  {
+   "fieldname": "cb_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stopp_regeln",
+   "fieldtype": "Small Text",
+   "label": "Stopp-Regeln (Doku)"
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Data",
+   "label": "Textquelle"
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis"
+  },
+  {
+   "fieldname": "sb_stat",
+   "fieldtype": "Section Break",
+   "label": "Kennzahlen",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "gesendet_gesamt",
+   "fieldtype": "Int",
+   "label": "Gesendet gesamt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "uebersprungen_gesamt",
+   "fieldtype": "Int",
+   "label": "Übersprungen gesamt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "letzter_versand",
+   "fieldtype": "Datetime",
+   "label": "Letzter Versand",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Reise Versand",
+   "link_fieldname": "reise",
+   "group": "Protokoll"
+  },
+  {
+   "link_doctype": "PH Event",
+   "link_fieldname": "einladungs_reise",
+   "group": "Events"
+  }
+ ],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Kundenreise",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Gray"
+  },
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Pausiert",
+   "color": "Orange"
+  }
+ ],
+ "track_changes": 1,
+ "description": "Einfache Automation: Auslöser → Wartezeit → Mail-Vorlage, mit Rechtsgrundlage (V/B/E) und Versandprotokoll. Aktiv erst nach Freigaben (Generator-Regel aktiv = 0).",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "autoname": "field:reise_id",
+ "naming_rule": "By fieldname",
+ "title_field": "titel",
+ "search_fields": "reise_id,titel",
+ "track_views": 0
+}

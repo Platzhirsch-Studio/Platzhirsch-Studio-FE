@@ -1,0 +1,107 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "PH Lieferschein",
+  "workflow_name": "PH Lieferschein",
+  "document_type": "PH Lieferschein",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Entwurf", "doc_status": "0", "allow_edit": "PH Logistik Mitarbeiter", "update_field": "status", "update_value": "Entwurf", "is_optional_state": 0},
+   {"state": "PH Gepackt", "doc_status": "0", "allow_edit": "PH Logistik Mitarbeiter", "update_field": "status", "update_value": "Gepackt", "is_optional_state": 0},
+   {"state": "PH Uebergeben", "doc_status": "0", "allow_edit": "PH Logistik Mitarbeiter", "update_field": "status", "update_value": "Uebergeben", "is_optional_state": 0},
+   {"state": "PH Zugestellt", "doc_status": "0", "allow_edit": "PH Logistik Leitung", "update_field": "status", "update_value": "Zugestellt", "is_optional_state": 0},
+   {"state": "PH Storniert", "doc_status": "0", "allow_edit": "PH Logistik Leitung", "update_field": "status", "update_value": "Storniert", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Entwurf", "action": "Packen", "next_state": "PH Gepackt", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1, "condition": "all(p.gepackt for p in doc.positionen)"},
+   {"state": "PH Gepackt", "action": "Übergeben", "next_state": "PH Uebergeben", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Gepackt", "action": "Zustellen", "next_state": "PH Zugestellt", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1, "condition": "doc.lieferart == 'Abholung'"},
+   {"state": "PH Uebergeben", "action": "Zustellen", "next_state": "PH Zugestellt", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Entwurf", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Logistik Leitung", "allow_self_approval": 1},
+   {"state": "PH Gepackt", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Logistik Leitung", "allow_self_approval": 1},
+   {"state": "PH Uebergeben", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Logistik Leitung", "allow_self_approval": 1},
+   {"state": "PH Gepackt", "action": "Zurück auf Entwurf", "next_state": "PH Entwurf", "allowed": "PH Logistik Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Sendung",
+  "workflow_name": "PH Sendung",
+  "document_type": "PH Sendung",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Angelegt", "doc_status": "0", "allow_edit": "PH Logistik Mitarbeiter", "update_field": "status", "update_value": "Angelegt", "is_optional_state": 0},
+   {"state": "PH Etikett", "doc_status": "0", "allow_edit": "PH Logistik Mitarbeiter", "update_field": "status", "update_value": "Etikett", "is_optional_state": 0},
+   {"state": "PH Unterwegs", "doc_status": "0", "allow_edit": "PH Logistik Mitarbeiter", "update_field": "status", "update_value": "Unterwegs", "is_optional_state": 0},
+   {"state": "PH Zugestellt", "doc_status": "0", "allow_edit": "PH Logistik Leitung", "update_field": "status", "update_value": "Zugestellt", "is_optional_state": 0},
+   {"state": "PH Problem", "doc_status": "0", "allow_edit": "PH Logistik Mitarbeiter", "update_field": "status", "update_value": "Problem", "is_optional_state": 0},
+   {"state": "PH Storniert", "doc_status": "0", "allow_edit": "PH Logistik Leitung", "update_field": "status", "update_value": "Storniert", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Angelegt", "action": "Etikett erzeugen", "next_state": "PH Etikett", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1, "condition": "doc.dienstleister != 'LetMeShip' or doc.shipment_id"},
+   {"state": "PH Etikett", "action": "Versenden", "next_state": "PH Unterwegs", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Unterwegs", "action": "Zustellen", "next_state": "PH Zugestellt", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Etikett", "action": "Problem melden", "next_state": "PH Problem", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Unterwegs", "action": "Problem melden", "next_state": "PH Problem", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Problem", "action": "Zustellen", "next_state": "PH Zugestellt", "allowed": "PH Logistik Leitung", "allow_self_approval": 1},
+   {"state": "PH Angelegt", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Etikett", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Logistik Leitung", "allow_self_approval": 1},
+   {"state": "PH Problem", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Logistik Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Tour",
+  "workflow_name": "PH Tour",
+  "document_type": "PH Tour",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Geplant", "doc_status": "0", "allow_edit": "PH Logistik Mitarbeiter", "update_field": "status", "update_value": "Geplant", "is_optional_state": 0},
+   {"state": "PH Freigegeben", "doc_status": "0", "allow_edit": "PH Logistik Mitarbeiter", "update_field": "status", "update_value": "Freigegeben", "is_optional_state": 0},
+   {"state": "PH Unterwegs", "doc_status": "0", "allow_edit": "PH Montage", "update_field": "status", "update_value": "Unterwegs", "is_optional_state": 0},
+   {"state": "PH Abgeschlossen", "doc_status": "0", "allow_edit": "PH Logistik Leitung", "update_field": "status", "update_value": "Abgeschlossen", "is_optional_state": 0},
+   {"state": "PH Abgebrochen", "doc_status": "0", "allow_edit": "PH Logistik Leitung", "update_field": "status", "update_value": "Abgebrochen", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Geplant", "action": "Freigeben", "next_state": "PH Freigegeben", "allowed": "PH Logistik Leitung", "allow_self_approval": 1, "condition": "doc.fahrer and doc.stopps"},
+   {"state": "PH Freigegeben", "action": "Starten", "next_state": "PH Unterwegs", "allowed": "PH Montage", "allow_self_approval": 1},
+   {"state": "PH Freigegeben", "action": "Starten", "next_state": "PH Unterwegs", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Unterwegs", "action": "Abschließen", "next_state": "PH Abgeschlossen", "allowed": "PH Montage", "allow_self_approval": 1, "condition": "all(s.status in ('erledigt', 'nicht angetroffen', 'verschoben') for s in doc.stopps)"},
+   {"state": "PH Unterwegs", "action": "Abschließen", "next_state": "PH Abgeschlossen", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1, "condition": "all(s.status in ('erledigt', 'nicht angetroffen', 'verschoben') for s in doc.stopps)"},
+   {"state": "PH Geplant", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Logistik Leitung", "allow_self_approval": 1},
+   {"state": "PH Freigegeben", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Logistik Leitung", "allow_self_approval": 1},
+   {"state": "PH Unterwegs", "action": "Abbrechen", "next_state": "PH Abgebrochen", "allowed": "PH Logistik Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Inventur",
+  "workflow_name": "PH Inventur",
+  "document_type": "PH Inventur",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Geplant", "doc_status": "0", "allow_edit": "PH Logistik Mitarbeiter", "update_field": "status", "update_value": "Geplant", "is_optional_state": 0},
+   {"state": "PH Laufend", "doc_status": "0", "allow_edit": "PH Logistik Mitarbeiter", "update_field": "status", "update_value": "Laufend", "is_optional_state": 0},
+   {"state": "PH Abgeschlossen", "doc_status": "0", "allow_edit": "PH Logistik Leitung", "update_field": "status", "update_value": "Abgeschlossen", "is_optional_state": 0},
+   {"state": "PH Verworfen", "doc_status": "0", "allow_edit": "PH Logistik Leitung", "update_field": "status", "update_value": "Verworfen", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Geplant", "action": "Zählung starten", "next_state": "PH Laufend", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1, "condition": "doc.positionen"},
+   {"state": "PH Laufend", "action": "Freigeben", "next_state": "PH Abgeschlossen", "allowed": "PH Logistik Leitung", "allow_self_approval": 1},
+   {"state": "PH Geplant", "action": "Verwerfen", "next_state": "PH Verworfen", "allowed": "PH Logistik Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Laufend", "action": "Verwerfen", "next_state": "PH Verworfen", "allowed": "PH Logistik Leitung", "allow_self_approval": 1}
+  ]
+ }
+]

@@ -1,0 +1,27 @@
+{% extends "templates/print/ph_basis.html" %}
+{% block titel %}Auftragsbestätigung {{ doc.name }}{% endblock %}
+{% block css %}{% include "templates/print/ph_faktura_css.html" %}{% endblock %}
+{% block kopfrechts %}Auftragsbestätigung <b>{{ doc.name }}</b><br>{{ ph_datum(doc.datum) }}{% if doc.angebot %}<br>zu Angebot {{ doc.angebot }}{% endif %}{% if doc.projekt %}<br>Projekt {{ doc.projekt }}{% endif %}{% endblock %}
+{% block inhalt %}
+{% include "templates/print/ph_faktura_anschrift.html" %}
+<table class="ph-meta"><tr>
+  <td class="k">Liefertermin</td><td>{% if doc.liefertermin_bestaetigt %}{{ ph_datum(doc.liefertermin_bestaetigt) }} (bestätigt){% elif doc.liefer_kw %}{{ doc.liefer_kw }}{% elif doc.liefertermin_geplant %}voraussichtlich {{ ph_datum(doc.liefertermin_geplant) }}{% else %}wird bekannt gegeben{% endif %}</td>
+  <td class="k">Montage</td><td>{{ "inklusive" if doc.montage else "ohne" }}{% if doc.montage_termin %} · {{ ph_datum(doc.montage_termin) }}{% endif %}</td>
+  <td class="k">Kundennummer</td><td>{{ doc.kontakt }}</td>
+</tr></table>
+<h1>Auftragsbestätigung{% if doc.status == "Storniert" %} <span class="ph-stempel">STORNIERT</span>{% endif %}</h1>
+{% if doc.einleitung %}<div>{{ doc.einleitung }}</div>{% else %}<p>wir danken für Ihren Auftrag und bestätigen folgende Positionen und Konditionen:</p>{% endif %}
+{% include "templates/print/ph_faktura_positionen.html" %}
+{% if doc.zahlungsplan %}
+<h2>Zahlungsplan</h2>
+<table class="ph-tabelle ph-zahlungsplan"><thead><tr><th>Rate</th><th>Fällig</th><th class="zahl">Anteil</th><th class="zahl">Betrag</th></tr></thead><tbody>
+{% for z in ph_zahlungsplan_text(doc) %}<tr><td>{{ z.art }}</td><td>{{ z.wann }}</td><td class="zahl">{% if z.prozent %}{{ z.prozent }} %{% endif %}</td><td class="zahl">{{ ph_betrag(z.betrag_cent, doc.waehrung) }}</td></tr>{% endfor %}
+</tbody></table>
+<p class="ph-hinweis-klein">Zu jeder Rate erhalten Sie eine gesonderte Rechnung (Anzahlungsrechnung bzw. Teil-/Schlussrechnung mit Anzahlungsverrechnung).</p>
+{% endif %}
+{% if doc.lieferadresse %}<h2>Lieferadresse</h2><div>{{ doc.lieferadresse|replace("\n", "<br>") }}</div>{% if doc.lieferhinweis %}<div class="ph-grau ph-klein">{{ doc.lieferhinweis }}</div>{% endif %}{% endif %}
+<div class="ph-feld" style="margin-top:4mm"><b>Lieferung</b> {{ doc.lieferbedingung_text or "frei Haus" }}</div>
+{% if doc.vertragsort != "Showroom" %}<p class="ph-hinweis">Rücktrittsrecht (FAGG): Sie können diesen Vertrag binnen 14 Tagen ab Vertragsabschluss ({{ ph_datum(doc.fagg_frist_ende) }}) ohne Angabe von Gründen widerrufen. Die Belehrung samt Muster-Widerrufsformular liegt bei. Bei Sonderanfertigungen nach Kundenspezifikation besteht kein Rücktrittsrecht (§ 18 Abs 1 Z 3 FAGG).</p>{% endif %}
+{% if doc.schluss %}<div style="margin-top:6mm">{{ doc.schluss }}</div>{% endif %}
+<div class="ph-unterschrift"><div>{{ firma.kurzname or firma.firmenname }}</div><div>Ort, Datum, Unterschrift Kunde{% if doc.unterschrift_kunde %}<br><img src="{{ doc.unterschrift_kunde }}" style="height:14mm">{% endif %}</div></div>
+{% endblock %}

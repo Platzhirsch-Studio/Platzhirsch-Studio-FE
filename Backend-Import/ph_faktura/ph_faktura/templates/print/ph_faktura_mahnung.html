@@ -1,0 +1,24 @@
+{% extends "templates/print/ph_basis.html" %}
+{% set re = frappe.get_doc("PH Rechnung", doc.rechnung) %}
+{% set titel = {1: "Zahlungserinnerung", 2: "Mahnung", 3: "Letzte Mahnung"}.get(doc.stufe, "Mahnung") %}
+{% block titel %}{{ titel }} {{ doc.name }}{% endblock %}
+{% block css %}{% include "templates/print/ph_faktura_css.html" %}{% endblock %}
+{% block kopfrechts %}{{ titel }} <b>{{ doc.name }}</b><br>{{ ph_datum(doc.datum) }}<br>zu Rechnung {{ doc.rechnung }}{% endblock %}
+{% block inhalt %}
+{% with doc=re %}{% include "templates/print/ph_faktura_anschrift.html" %}{% endwith %}
+<h1>{{ titel }}{% if doc.stufe == 3 %} vor Übergabe an Inkasso{% endif %}</h1>
+<p>Sehr geehrte Damen und Herren,</p>
+<div>{{ doc.text }}</div>
+<table class="ph-tabelle" style="margin-top:4mm"><thead><tr><th>Rechnung</th><th>Rechnungsdatum</th><th>Fällig seit</th><th class="zahl">Rechnungsbetrag</th><th class="zahl">Bezahlt</th><th class="zahl">Offen</th></tr></thead><tbody>
+<tr><td>{{ re.nummer or re.name }}</td><td>{{ ph_datum(re.datum) }}</td><td>{{ ph_datum(re.faellig) }} ({{ doc.verzugstage }} Tage)</td><td class="zahl">{{ ph_betrag(re.zahlbar_cent, re.waehrung) }}</td><td class="zahl">{{ ph_betrag(re.bezahlt_cent, re.waehrung) }}</td><td class="zahl">{{ ph_betrag(doc.offen_cent, re.waehrung) }}</td></tr>
+</tbody></table>
+<table class="ph-summen">
+  <tr><td>Offener Rechnungsbetrag</td><td class="zahl">{{ ph_betrag(doc.offen_cent) }}</td></tr>
+  {% if doc.mahngebuehr_cent %}<tr><td>Mahnspesen</td><td class="zahl">{{ ph_betrag(doc.mahngebuehr_cent) }}</td></tr>{% endif %}
+  {% if doc.verzugszinsen_cent %}<tr><td>Verzugszinsen ({{ (doc.zinssatz_promille / 10)|round(2) }} % p. a., {{ doc.verzugstage }} Tage)</td><td class="zahl">{{ ph_betrag(doc.verzugszinsen_cent) }}</td></tr>{% endif %}
+  <tr class="ph-summe ph-zahlbar"><td>Gesamt zahlbar bis {{ ph_datum(doc.frist) }}</td><td class="zahl">{{ ph_betrag(doc.gesamt_cent) }}</td></tr>
+</table>
+{% set konto = ph_bankkonto() %}
+<div class="ph-zahlung"><div>{{ konto.kontoinhaber or firma.firmenname }} · IBAN {{ konto.iban or "–" }}{% if konto.bic %} · BIC {{ konto.bic }}{% endif %}<br>Zahlungsreferenz <b>{{ re.zahlungsreferenz or re.name }}</b></div></div>
+<p style="margin-top:6mm">Mit freundlichen Grüßen<br>{{ firma.kurzname or firma.firmenname }}</p>
+{% endblock %}

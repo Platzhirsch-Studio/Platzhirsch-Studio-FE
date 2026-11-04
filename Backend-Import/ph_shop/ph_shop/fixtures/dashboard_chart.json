@@ -1,0 +1,148 @@
+[
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Shop Umsatz je Woche",
+  "chart_name": "PH Shop Umsatz je Woche",
+  "chart_type": "Sum",
+  "document_type": "PH Bestellung",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "filters_json": "[[\"PH Bestellung\", \"status\", \"in\", [\"bezahlt\", \"versandbereit\", \"versendet\", \"abholbereit\", \"abgeholt\", \"abgeschlossen\", \"teilerstattet\"], false], [\"PH Bestellung\", \"modus\", \"=\", \"live\", false]]",
+  "timeseries": 1,
+  "based_on": "bezahlt_am",
+  "value_based_on": "gesamt_eur",
+  "timespan": "Last Quarter",
+  "time_interval": "Weekly",
+  "type": "Bar",
+  "color": "#15803d"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Bestellungen nach Lieferart",
+  "chart_name": "PH Bestellungen nach Lieferart",
+  "chart_type": "Group By",
+  "document_type": "PH Bestellung",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "filters_json": "[[\"PH Bestellung\", \"status\", \"not in\", [\"abgelaufen\", \"checkout_fehler\", \"fehlgeschlagen\"], false]]",
+  "timeseries": 0,
+  "group_by_type": "Count",
+  "group_by_based_on": "lieferart",
+  "number_of_groups": 2,
+  "timespan": "Last Quarter",
+  "type": "Donut",
+  "color": "#8a7a66"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Gutscheinverkauf je Monat",
+  "chart_name": "PH Gutscheinverkauf je Monat",
+  "chart_type": "Sum",
+  "document_type": "PH Gutschein",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "filters_json": "[[\"PH Gutschein\", \"test\", \"=\", 0, false], [\"PH Gutschein\", \"status\", \"!=\", \"Erstattet\", false]]",
+  "timeseries": 1,
+  "based_on": "ausgegeben_am",
+  "value_based_on": "wert_eur",
+  "timespan": "Last Year",
+  "time_interval": "Monthly",
+  "type": "Bar",
+  "color": "#8a7a66"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Erstattungen je Monat",
+  "chart_name": "PH Erstattungen je Monat",
+  "chart_type": "Sum",
+  "document_type": "PH Zahlung",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "filters_json": "[[\"PH Zahlung\", \"art\", \"=\", \"Erstattung\", false], [\"PH Zahlung\", \"docstatus\", \"=\", 1, false], [\"PH Zahlung\", \"livemode\", \"=\", 1, false]]",
+  "timeseries": 1,
+  "based_on": "zeitpunkt",
+  "value_based_on": "betrag_eur",
+  "timespan": "Last Year",
+  "time_interval": "Monthly",
+  "type": "Line",
+  "color": "#b91c1c"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Zahlungen nach Kanal",
+  "chart_name": "PH Zahlungen nach Kanal",
+  "chart_type": "Group By",
+  "document_type": "PH Zahlung",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Shop",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "filters_json": "[[\"PH Zahlung\", \"art\", \"=\", \"Eingang\", false], [\"PH Zahlung\", \"docstatus\", \"=\", 1, false]]",
+  "timeseries": 0,
+  "group_by_type": "Sum",
+  "group_by_based_on": "kanal",
+  "aggregate_function_based_on": "betrag_eur",
+  "number_of_groups": 8,
+  "timespan": "Last Quarter",
+  "type": "Donut",
+  "color": "#1d4ed8"
+ }
+]

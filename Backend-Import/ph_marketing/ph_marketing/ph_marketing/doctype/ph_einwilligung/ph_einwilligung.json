@@ -1,0 +1,407 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "email",
+  "kontakt",
+  "zweck",
+  "status",
+  "cb_1",
+  "zeitpunkt",
+  "kanal",
+  "quelle",
+  "textversion",
+  "sprache",
+  "sb_doi",
+  "doi_noetig",
+  "doi_token_hash",
+  "doi_gesendet_am",
+  "doi_erinnert_am",
+  "cb_2",
+  "doi_bestaetigt_am",
+  "doi_bestaetigt_kanal",
+  "sb_widerruf",
+  "widerrufen_am",
+  "widerruf_kanal",
+  "cb_3",
+  "widerruf_grund",
+  "widerruf_beleg",
+  "sb_daten",
+  "interessen",
+  "daten_json",
+  "referenz_doctype",
+  "referenz_name",
+  "sb_system",
+  "idempotency_key",
+  "ip_hash",
+  "quelle_system"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "zweck",
+   "fieldtype": "Select",
+   "label": "Zweck",
+   "options": "newsletter\neinladungen\nmerkliste_erinnerung\nplaner_erinnerung\nrueckmeldung\npflege_nachkauf\nwhatsapp\nfoto_referenz",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "newsletter = Newsletter „Post aus Lochau“ · einladungen = Einladungen zu Events · rueckmeldung = Bewertungsbitte · whatsapp = Kontakt per WhatsApp · foto_referenz = Referenzfotos aus dem Projekt · merkliste_/planer_erinnerung = Erinnerung an gesicherte Auswahl · pflege_nachkauf = Pflegehinweise mit Nachkauf (ph_service)"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Offen\nBestaetigt\nWiderrufen\nAbgelaufen",
+   "default": "Offen",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Offen = DOI ausstehend; Bestaetigt = wirksam; Widerrufen; Abgelaufen = DOI nicht bestätigt."
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zeitpunkt",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt der Einwilligung",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kanal",
+   "fieldtype": "Select",
+   "label": "Kanal",
+   "options": "website\nshowroom\ntelefon\nemail\nwhatsapp\npapier\nbackoffice",
+   "default": "website",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Data",
+   "label": "Quelle (Seite/Formular)"
+  },
+  {
+   "fieldname": "textversion",
+   "fieldtype": "Data",
+   "label": "Textversion",
+   "reqd": 1,
+   "description": "Kennung des Einwilligungstextes, z. B. nl-2026-10-29. Der Wortlaut liegt im Website-Repo (src/lib/einblicke/consentCopy.js, Formulare)."
+  },
+  {
+   "fieldname": "sprache",
+   "fieldtype": "Select",
+   "label": "Sprache",
+   "options": "de\nen\nfr\nit",
+   "default": "de"
+  },
+  {
+   "fieldname": "sb_doi",
+   "fieldtype": "Section Break",
+   "label": "Double-Opt-in"
+  },
+  {
+   "fieldname": "doi_noetig",
+   "fieldtype": "Check",
+   "label": "DOI nötig",
+   "default": "1"
+  },
+  {
+   "fieldname": "doi_token_hash",
+   "fieldtype": "Data",
+   "label": "DOI-Token (SHA-256)",
+   "read_only": 1,
+   "hidden": 1,
+   "no_copy": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "doi_gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "DOI-Mail gesendet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "doi_erinnert_am",
+   "fieldtype": "Datetime",
+   "label": "DOI-Erinnerung gesendet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "doi_bestaetigt_am",
+   "fieldtype": "Datetime",
+   "label": "Bestätigt am",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "doi_bestaetigt_kanal",
+   "fieldtype": "Data",
+   "label": "Bestätigt über",
+   "read_only": 1,
+   "description": "website (Link), backoffice (Mitarbeiter mit Beleg)"
+  },
+  {
+   "fieldname": "sb_widerruf",
+   "fieldtype": "Section Break",
+   "label": "Widerruf"
+  },
+  {
+   "fieldname": "widerrufen_am",
+   "fieldtype": "Datetime",
+   "label": "Widerrufen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "widerruf_kanal",
+   "fieldtype": "Select",
+   "label": "Widerruf über",
+   "options": "\nlink\nantwort_mail\ntelefon\nshowroom\nbackoffice\nbounce\nbeschwerde",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "widerruf_grund",
+   "fieldtype": "Data",
+   "label": "Grund (optional)"
+  },
+  {
+   "fieldname": "widerruf_beleg",
+   "fieldtype": "Attach",
+   "label": "Beleg (z. B. E-Mail)"
+  },
+  {
+   "fieldname": "sb_daten",
+   "fieldtype": "Section Break",
+   "label": "Zusatzdaten",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "interessen",
+   "fieldtype": "Small Text",
+   "label": "Interessen (Komma)"
+  },
+  {
+   "fieldname": "daten_json",
+   "fieldtype": "Code",
+   "label": "Zusatzdaten (JSON)",
+   "options": "JSON",
+   "description": "z. B. gemerkte Stücke, Projektbezug bei foto_referenz, Telefonnummer-Hash bei whatsapp"
+  },
+  {
+   "fieldname": "referenz_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug (Typ)",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "referenz_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "referenz_doctype"
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash, gekürzt)",
+   "read_only": 1,
+   "no_copy": 1,
+   "description": "Nur, wenn in PH Marketing Einstellungen „IP-Hash speichern“ aktiv ist (Datensparsamkeit)."
+  },
+  {
+   "fieldname": "quelle_system",
+   "fieldtype": "Data",
+   "label": "Quelle (technisch)",
+   "read_only": 1,
+   "no_copy": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Newsletter Abo",
+   "link_fieldname": "einwilligung",
+   "group": "Folge"
+  },
+  {
+   "link_doctype": "PH Reise Versand",
+   "link_fieldname": "einwilligung",
+   "group": "Versand"
+  }
+ ],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Einwilligung",
+ "owner": "Administrator",
+ "sort_field": "zeitpunkt",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Offen",
+   "color": "Orange"
+  },
+  {
+   "title": "Bestaetigt",
+   "color": "Green"
+  },
+  {
+   "title": "Widerrufen",
+   "color": "Gray"
+  },
+  {
+   "title": "Abgelaufen",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "description": "Consent-Protokoll je Zweck (Art. 7 Abs. 1 DSGVO): wer hat wann, über welchen Kanal, mit welcher Textversion wozu eingewilligt – und wann widerrufen. Einträge werden nie überschrieben, nur ergänzt (Widerruf).",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "autoname": "hash",
+ "naming_rule": "Random",
+ "title_field": "titel",
+ "search_fields": "email,zweck,textversion",
+ "track_seen": 1,
+ "track_views": 0
+}

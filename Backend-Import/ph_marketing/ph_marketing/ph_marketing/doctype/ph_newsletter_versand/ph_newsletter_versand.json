@@ -1,0 +1,155 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "ausgabe",
+  "abo",
+  "email",
+  "status",
+  "cb_1",
+  "versandweg",
+  "nachricht_id",
+  "gesendet_am",
+  "grund"
+ ],
+ "fields": [
+  {
+   "fieldname": "ausgabe",
+   "fieldtype": "Link",
+   "label": "Ausgabe",
+   "options": "PH Newsletter Ausgabe",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "abo",
+   "fieldtype": "Link",
+   "label": "Abo",
+   "options": "PH Newsletter Abo",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "geplant\ngesendet\nfehler\nuebersprungen\nbounce",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "versandweg",
+   "fieldtype": "Data",
+   "label": "Versandweg"
+  },
+  {
+   "fieldname": "nachricht_id",
+   "fieldtype": "Data",
+   "label": "Nachrichten-ID (Anbieter)"
+  },
+  {
+   "fieldname": "gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Gesendet am",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Data",
+   "label": "Grund (Fehler/übersprungen)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Newsletter Versand",
+ "owner": "Administrator",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "geplant",
+   "color": "Blue"
+  },
+  {
+   "title": "gesendet",
+   "color": "Green"
+  },
+  {
+   "title": "fehler",
+   "color": "Red"
+  },
+  {
+   "title": "uebersprungen",
+   "color": "Gray"
+  },
+  {
+   "title": "bounce",
+   "color": "Orange"
+  }
+ ],
+ "track_changes": 0,
+ "description": "Versandprotokoll je Empfänger einer Newsletter-Ausgabe (Zustellung, Fehler, Bounce). Keine Öffnungs- oder Klick-Messung (kein Tracking-Pixel).",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "autoname": "hash",
+ "naming_rule": "Random",
+ "title_field": "email",
+ "search_fields": "email,ausgabe,status",
+ "in_create": 1,
+ "track_views": 0
+}

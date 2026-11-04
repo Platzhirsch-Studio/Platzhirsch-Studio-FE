@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Belegte Merkmale eines Produkts (4 Sprachen oder sprachneutral).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "text_de",
+  "text_en",
+  "text_fr",
+  "text_it",
+  "merkmal",
+  "gruppe"
+ ],
+ "fields": [
+  {
+   "fieldname": "text_de",
+   "fieldtype": "Data",
+   "label": "Merkmal (DE)",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "text_en",
+   "fieldtype": "Data",
+   "label": "Merkmal (EN)",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "text_fr",
+   "fieldtype": "Data",
+   "label": "Merkmal (FR)"
+  },
+  {
+   "fieldname": "text_it",
+   "fieldtype": "Data",
+   "label": "Merkmal (IT)"
+  },
+  {
+   "fieldname": "merkmal",
+   "fieldtype": "Link",
+   "label": "Merkmal-Stamm (Farbe/Material)",
+   "options": "PH Merkmal",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "gruppe",
+   "fieldtype": "Data",
+   "label": "Gruppe (z. B. Duftfamilie, Material)",
+   "columns": 1,
+   "description": "Facette für Shop-Filter (src/lib/katalog/shopIndex.js FACETTEN_PRAEFIX)."
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Produkt Merkmal",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

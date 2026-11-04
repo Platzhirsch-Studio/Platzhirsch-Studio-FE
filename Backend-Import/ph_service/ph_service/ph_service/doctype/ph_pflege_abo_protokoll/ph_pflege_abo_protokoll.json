@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Ein durchgeführter Pflege-/Wartungstermin",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["datum", "einsatz", "durchgefuehrt_von", "leistungen", "messwerte", "empfohlene_produkte", "fotos_intern", "im_portal"],
+ "fields": [
+  {"fieldname": "datum", "fieldtype": "Date", "label": "Datum", "reqd": 1, "in_list_view": 1, "columns": 2},
+  {"fieldname": "einsatz", "fieldtype": "Link", "label": "Serviceeinsatz", "options": "PH Serviceeinsatz", "in_list_view": 1, "columns": 2},
+  {"fieldname": "durchgefuehrt_von", "fieldtype": "Data", "label": "Durchgeführt von", "in_list_view": 1, "columns": 2},
+  {"fieldname": "leistungen", "fieldtype": "Small Text", "label": "Leistungen", "in_list_view": 1, "columns": 3},
+  {"fieldname": "messwerte", "fieldtype": "Small Text", "label": "Messwerte / Befund", "description": "z. B. pH-Wert, Chlor, Heizleistung; Zustand Leder/Holz."},
+  {"fieldname": "empfohlene_produkte", "fieldtype": "Small Text", "label": "Empfohlene Pflegemittel", "description": "Grundlage des Nachkauf-Hinweises (nur mit Einwilligung)"},
+  {"fieldname": "fotos_intern", "fieldtype": "Attach", "label": "Fotos (intern, privat)"},
+  {"fieldname": "im_portal", "fieldtype": "Check", "label": "Im Kundenportal zeigen", "default": "1", "in_list_view": 1, "columns": 1}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Service",
+ "name": "PH Pflege Abo Protokoll",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

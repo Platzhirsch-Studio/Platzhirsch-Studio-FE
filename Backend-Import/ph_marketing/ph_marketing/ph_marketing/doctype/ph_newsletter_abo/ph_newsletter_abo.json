@@ -1,0 +1,396 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "email",
+  "status",
+  "sprache",
+  "kontakt",
+  "cb_1",
+  "quelle",
+  "quelle_detail",
+  "interessen",
+  "anrede_name",
+  "sb_zeit",
+  "angemeldet_am",
+  "doi_gesendet_am",
+  "doi_erinnert_am",
+  "doi_bestaetigt_am",
+  "cb_2",
+  "abgemeldet_am",
+  "abmelde_kanal",
+  "abmelde_grund",
+  "letzte_zustellung",
+  "bounce_count",
+  "sb_nachweis",
+  "einwilligung",
+  "textversion",
+  "altbestand_ohne_doi",
+  "cb_3",
+  "email_group",
+  "doi_token_hash",
+  "abmelde_token_hash",
+  "sb_system",
+  "idempotency_key",
+  "quelle_system"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email",
+   "reqd": 1,
+   "unique": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Angemeldet unbestaetigt\nAktiv\nAbgemeldet\nBounce\nBeschwerde",
+   "default": "Angemeldet unbestaetigt",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sprache",
+   "fieldtype": "Select",
+   "label": "Sprache",
+   "options": "de\nen\nfr\nit",
+   "default": "de",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "website\nshowroom\nevent\nshop\nportal\nimport\nbackoffice\nsonstige",
+   "default": "website",
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "quelle_detail",
+   "fieldtype": "Data",
+   "label": "Quelle (Detail)",
+   "description": "Seite oder Formular, z. B. /de/newsletter, Footer, Adventsabend"
+  },
+  {
+   "fieldname": "interessen",
+   "fieldtype": "Table MultiSelect",
+   "label": "Interessen",
+   "options": "PH Newsletter Abo Interesse"
+  },
+  {
+   "fieldname": "anrede_name",
+   "fieldtype": "Data",
+   "label": "Name für Anrede (optional)"
+  },
+  {
+   "fieldname": "sb_zeit",
+   "fieldtype": "Section Break",
+   "label": "Verlauf"
+  },
+  {
+   "fieldname": "angemeldet_am",
+   "fieldtype": "Datetime",
+   "label": "Angemeldet am",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "doi_gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "DOI-Mail gesendet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "doi_erinnert_am",
+   "fieldtype": "Datetime",
+   "label": "DOI-Erinnerung am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "doi_bestaetigt_am",
+   "fieldtype": "Datetime",
+   "label": "Bestätigt am (DOI)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abgemeldet_am",
+   "fieldtype": "Datetime",
+   "label": "Abgemeldet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abmelde_kanal",
+   "fieldtype": "Select",
+   "label": "Abmeldung über",
+   "options": "\nlink\nantwort_mail\nbackoffice\nbounce\nbeschwerde\nimport",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abmelde_grund",
+   "fieldtype": "Data",
+   "label": "Grund (optional)"
+  },
+  {
+   "fieldname": "letzte_zustellung",
+   "fieldtype": "Datetime",
+   "label": "Letzte Zustellung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bounce_count",
+   "fieldtype": "Int",
+   "label": "Bounces",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "sb_nachweis",
+   "fieldtype": "Section Break",
+   "label": "Nachweis"
+  },
+  {
+   "fieldname": "einwilligung",
+   "fieldtype": "Link",
+   "label": "Einwilligung (Protokoll)",
+   "options": "PH Einwilligung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "textversion",
+   "fieldtype": "Data",
+   "label": "Textversion",
+   "read_only": 1
+  },
+  {
+   "fieldname": "altbestand_ohne_doi",
+   "fieldtype": "Check",
+   "label": "Altbestand ohne DOI",
+   "read_only": 1,
+   "description": "Import aus „Newsletter Website“: kein Versand bis Kanzlei-Entscheid (PLAN.md M4)."
+  },
+  {
+   "fieldname": "cb_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email_group",
+   "fieldtype": "Link",
+   "label": "Email Group (Frappe Newsletter)",
+   "options": "Email Group",
+   "read_only": 1
+  },
+  {
+   "fieldname": "doi_token_hash",
+   "fieldtype": "Data",
+   "label": "DOI-Token (Hash)",
+   "read_only": 1,
+   "hidden": 1,
+   "no_copy": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "abmelde_token_hash",
+   "fieldtype": "Data",
+   "label": "Abmelde-Token (Hash)",
+   "read_only": 1,
+   "hidden": 1,
+   "no_copy": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle_system",
+   "fieldtype": "Data",
+   "label": "Quelle (technisch)",
+   "read_only": 1,
+   "no_copy": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Einwilligung",
+   "link_fieldname": "email",
+   "group": "Nachweis"
+  },
+  {
+   "link_doctype": "PH Newsletter Versand",
+   "link_fieldname": "abo",
+   "group": "Versand"
+  }
+ ],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Newsletter Abo",
+ "owner": "Administrator",
+ "sort_field": "angemeldet_am",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Angemeldet unbestaetigt",
+   "color": "Orange"
+  },
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Abgemeldet",
+   "color": "Gray"
+  },
+  {
+   "title": "Bounce",
+   "color": "Red"
+  },
+  {
+   "title": "Beschwerde",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "description": "Abo-Zustand je E-Mail-Adresse (ersetzt „Newsletter Website“). Status wird nur über Server-Methoden gesetzt: Aktiv erst nach Double-Opt-in (API confirm_newsletter), Abgemeldet über Token-Link oder Mitarbeiter mit Protokoll.",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "autoname": "field:email",
+ "naming_rule": "By fieldname",
+ "title_field": "titel",
+ "search_fields": "email,quelle,sprache",
+ "track_seen": 1,
+ "track_views": 0
+}

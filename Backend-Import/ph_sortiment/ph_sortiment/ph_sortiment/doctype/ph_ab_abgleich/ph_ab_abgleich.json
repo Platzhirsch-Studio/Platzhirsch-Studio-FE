@@ -1,0 +1,114 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Prüfprotokoll Auftragsbestätigung gegen Bestellung (wie SHD/kiwi): je Abweichung eine Zeile mit Bewertung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "position",
+  "produkt",
+  "bezeichnung",
+  "feld",
+  "bestellt",
+  "bestaetigt",
+  "abweichung_text",
+  "bewertung",
+  "kommentar",
+  "geprueft_von",
+  "geprueft_am"
+ ],
+ "fields": [
+  {
+   "fieldname": "position",
+   "fieldtype": "Int",
+   "label": "Pos.",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt"
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "feld",
+   "fieldtype": "Select",
+   "label": "Feld",
+   "options": "Preis\nMenge\nTermin\nArtikel",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "bestellt",
+   "fieldtype": "Data",
+   "label": "Bestellt",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bestaetigt",
+   "fieldtype": "Data",
+   "label": "Bestätigt",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "abweichung_text",
+   "fieldtype": "Data",
+   "label": "Abweichung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bewertung",
+   "fieldtype": "Select",
+   "label": "Bewertung",
+   "options": "offen\nok\npruefen\nabgelehnt",
+   "default": "offen",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "kommentar",
+   "fieldtype": "Data",
+   "label": "Kommentar",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "geprueft_von",
+   "fieldtype": "Link",
+   "label": "Geprüft von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geprueft_am",
+   "fieldtype": "Datetime",
+   "label": "Geprüft am",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH AB Abgleich",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

@@ -1,0 +1,100 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Kindtabelle von PH Gutschein: eine Einlösung (Showroom, Online, Kassa) mit Beleg.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "datum",
+  "betrag_cent",
+  "rest_danach_cent",
+  "kanal",
+  "beleg_doctype",
+  "beleg",
+  "mitarbeiter",
+  "zahlung",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "datum",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "rest_danach_cent",
+   "fieldtype": "Int",
+   "label": "Rest danach (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "kanal",
+   "fieldtype": "Select",
+   "label": "Kanal",
+   "options": "Showroom\nOnline\nKassa",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "beleg_doctype",
+   "fieldtype": "Link",
+   "label": "Beleg (Typ)",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "beleg",
+   "fieldtype": "Dynamic Link",
+   "label": "Beleg",
+   "options": "beleg_doctype",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "mitarbeiter",
+   "fieldtype": "Link",
+   "label": "Mitarbeiter",
+   "options": "User"
+  },
+  {
+   "fieldname": "zahlung",
+   "fieldtype": "Link",
+   "label": "Zahlung (Kanal Gutschein)",
+   "options": "PH Zahlung"
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis",
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Gutschein Einloesung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

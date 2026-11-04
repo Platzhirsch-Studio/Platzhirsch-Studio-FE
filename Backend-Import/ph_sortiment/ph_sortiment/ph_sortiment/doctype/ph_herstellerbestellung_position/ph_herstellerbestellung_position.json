@@ -1,0 +1,174 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Position einer Herstellerbestellung mit AB-Soll/Ist.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "produkt",
+  "bezeichnung",
+  "ausfuehrung",
+  "ausfuehrung_text",
+  "hersteller_artikelnr",
+  "menge",
+  "einheit",
+  "ek_cent",
+  "vk_cent",
+  "wunschtermin",
+  "kommission",
+  "sb_ab",
+  "ab_menge",
+  "ab_ek_cent",
+  "bestaetigter_termin",
+  "ab_artikelnr",
+  "abweichung",
+  "status",
+  "menge_erhalten",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "ausfuehrung",
+   "fieldtype": "Link",
+   "label": "Ausführung",
+   "options": "PH Produkt Ausfuehrung"
+  },
+  {
+   "fieldname": "ausfuehrung_text",
+   "fieldtype": "Data",
+   "label": "Ausführung (Text)",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "hersteller_artikelnr",
+   "fieldtype": "Data",
+   "label": "Hersteller-Artikelnr.",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Int",
+   "label": "Menge",
+   "reqd": 1,
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "einheit",
+   "fieldtype": "Data",
+   "label": "Einheit",
+   "default": "Stk"
+  },
+  {
+   "fieldname": "ek_cent",
+   "fieldtype": "Int",
+   "label": "EK netto (Cent)",
+   "permlevel": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "vk_cent",
+   "fieldtype": "Int",
+   "label": "VK brutto (Cent)"
+  },
+  {
+   "fieldname": "wunschtermin",
+   "fieldtype": "Date",
+   "label": "Wunschtermin"
+  },
+  {
+   "fieldname": "kommission",
+   "fieldtype": "Data",
+   "label": "Kommission"
+  },
+  {
+   "fieldname": "sb_ab",
+   "fieldtype": "Section Break",
+   "label": "Auftragsbestätigung"
+  },
+  {
+   "fieldname": "ab_menge",
+   "fieldtype": "Int",
+   "label": "AB Menge"
+  },
+  {
+   "fieldname": "ab_ek_cent",
+   "fieldtype": "Int",
+   "label": "AB EK (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "bestaetigter_termin",
+   "fieldtype": "Date",
+   "label": "AB Termin"
+  },
+  {
+   "fieldname": "ab_artikelnr",
+   "fieldtype": "Data",
+   "label": "AB Artikelnr."
+  },
+  {
+   "fieldname": "abweichung",
+   "fieldtype": "Select",
+   "label": "Abweichung",
+   "options": "keine\nPreis\nMenge\nTermin\nArtikel\nMehrfach",
+   "default": "keine",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Offen\nBestaetigt\nTeilgeliefert\nGeliefert\nStorniert",
+   "default": "Offen"
+  },
+  {
+   "fieldname": "menge_erhalten",
+   "fieldtype": "Int",
+   "label": "Erhalten",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Herstellerbestellung Position",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

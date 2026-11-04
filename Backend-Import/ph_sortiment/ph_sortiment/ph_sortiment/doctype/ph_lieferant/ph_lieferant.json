@@ -1,0 +1,364 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Bezugsquelle (oft = Marke): Bestellweg, Konditionen, Ansprechpartner.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sb_firma",
+  "firmenname",
+  "marke",
+  "status",
+  "uid",
+  "cb_firma",
+  "strasse",
+  "plz",
+  "ort",
+  "land",
+  "sb_bestellung",
+  "bestellweg",
+  "bestell_email",
+  "portal_url",
+  "cb_bestellung",
+  "kundennummer_bei_lieferant",
+  "lieferzeit_wochen_standard",
+  "ab_erwartet_tage",
+  "sb_konditionen",
+  "waehrung",
+  "zahlungsziel_tage",
+  "skonto_promille",
+  "cb_konditionen",
+  "skonto_tage",
+  "incoterm",
+  "mindestbestellwert_cent",
+  "sb_konditionen_text",
+  "konditionen",
+  "sb_ansprechpartner",
+  "ansprechpartner",
+  "sb_system",
+  "notizen"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_firma",
+   "fieldtype": "Section Break",
+   "label": "Firma"
+  },
+  {
+   "fieldname": "firmenname",
+   "fieldtype": "Data",
+   "label": "Firmenname",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Link",
+   "label": "Marke (wenn Hersteller = Lieferant)",
+   "options": "PH Marke",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aktiv\nInaktiv",
+   "default": "Aktiv",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "uid",
+   "fieldtype": "Data",
+   "label": "UID-Nummer"
+  },
+  {
+   "fieldname": "cb_firma",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "strasse",
+   "fieldtype": "Data",
+   "label": "Straße und Nummer"
+  },
+  {
+   "fieldname": "plz",
+   "fieldtype": "Data",
+   "label": "PLZ"
+  },
+  {
+   "fieldname": "ort",
+   "fieldtype": "Data",
+   "label": "Ort"
+  },
+  {
+   "fieldname": "land",
+   "fieldtype": "Data",
+   "label": "Land"
+  },
+  {
+   "fieldname": "sb_bestellung",
+   "fieldtype": "Section Break",
+   "label": "Bestellweg"
+  },
+  {
+   "fieldname": "bestellweg",
+   "fieldtype": "Select",
+   "label": "Bestellweg",
+   "options": "\nE-Mail\nPortal\nIWOfurn\npCon\nEDI\nFax",
+   "default": "E-Mail",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "bestell_email",
+   "fieldtype": "Data",
+   "label": "Bestell-E-Mail",
+   "options": "Email"
+  },
+  {
+   "fieldname": "portal_url",
+   "fieldtype": "Data",
+   "label": "Bestellportal (URL)",
+   "options": "URL"
+  },
+  {
+   "fieldname": "cb_bestellung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "kundennummer_bei_lieferant",
+   "fieldtype": "Data",
+   "label": "Unsere Kundennummer"
+  },
+  {
+   "fieldname": "lieferzeit_wochen_standard",
+   "fieldtype": "Int",
+   "label": "Lieferzeit Standard (Wochen)"
+  },
+  {
+   "fieldname": "ab_erwartet_tage",
+   "fieldtype": "Int",
+   "label": "AB erwartet binnen (Tage)",
+   "default": "5"
+  },
+  {
+   "fieldname": "sb_konditionen",
+   "fieldtype": "Section Break",
+   "label": "Konditionen"
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "zahlungsziel_tage",
+   "fieldtype": "Int",
+   "label": "Zahlungsziel (Tage)",
+   "default": "30"
+  },
+  {
+   "fieldname": "skonto_promille",
+   "fieldtype": "Int",
+   "label": "Skonto (Promille, 20 = 2 %)",
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_konditionen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "skonto_tage",
+   "fieldtype": "Int",
+   "label": "Skonto-Frist (Tage)"
+  },
+  {
+   "fieldname": "incoterm",
+   "fieldtype": "Select",
+   "label": "Incoterm",
+   "options": "\nEXW\nFCA\nCPT\nDAP\nDDP"
+  },
+  {
+   "fieldname": "mindestbestellwert_cent",
+   "fieldtype": "Int",
+   "label": "Mindestbestellwert (Cent)"
+  },
+  {
+   "fieldname": "sb_konditionen_text",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "konditionen",
+   "fieldtype": "Text Editor",
+   "label": "Konditionen (intern)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_ansprechpartner",
+   "fieldtype": "Section Break",
+   "label": "Ansprechpartner"
+  },
+  {
+   "fieldname": "ansprechpartner",
+   "fieldtype": "Table",
+   "label": "Ansprechpartner",
+   "options": "PH Sortiment Ansprechpartner"
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "notizen",
+   "fieldtype": "Text Editor",
+   "label": "Interne Notizen",
+   "permlevel": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Herstellerbestellung",
+   "link_fieldname": "lieferant",
+   "group": "Einkauf"
+  },
+  {
+   "link_doctype": "PH Wareneingang",
+   "link_fieldname": "lieferant",
+   "group": "Einkauf"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Lieferant",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Inaktiv",
+   "color": "Gray"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Sortiment Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Sortiment Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1
+  },
+  {
+   "role": "PH Sortiment Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "track_changes": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:firmenname",
+ "naming_rule": "By fieldname",
+ "title_field": "firmenname",
+ "search_fields": "marke,ort,bestellweg"
+}

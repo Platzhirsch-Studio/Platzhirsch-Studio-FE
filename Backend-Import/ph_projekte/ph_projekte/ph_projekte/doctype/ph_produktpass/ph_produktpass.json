@@ -1,0 +1,395 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Digitaler Produktpass je geliefertem Stück: verbaute Produkte, Materialien, Pflege, Garantie, Dokumente; Portal /portal/pass/<id>.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "kontakt",
+  "projekt",
+  "position",
+  "cb_kopf",
+  "status",
+  "lieferdatum",
+  "montageauftrag",
+  "sb_produkt",
+  "produkt",
+  "produkt_name",
+  "marke",
+  "kategorie",
+  "cb_produkt",
+  "ausfuehrung_text",
+  "seriennummer",
+  "pflegekategorie",
+  "outdoor",
+  "sb_garantie",
+  "garantie_monate",
+  "garantie_bis",
+  "cb_garantie",
+  "garantie_hinweis",
+  "hersteller_garantiebeleg",
+  "sb_material",
+  "materialien",
+  "pflege",
+  "sb_dokumente",
+  "dokumente",
+  "sb_qr",
+  "kunde_sichtbar",
+  "qr_html",
+  "notiz_intern",
+  "sb_system",
+  "quelle",
+  "ip_hash"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-PP-.YYYY.-.#####",
+   "default": "PH-PP-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kunde",
+   "options": "PH Kontakt",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Data",
+   "label": "Projektposition (Zeile)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aktiv\nGarantie abgelaufen\nVerkauft\nEntsorgt",
+   "default": "Aktiv",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "lieferdatum",
+   "fieldtype": "Date",
+   "label": "Lieferdatum",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "montageauftrag",
+   "fieldtype": "Link",
+   "label": "Montageauftrag",
+   "options": "PH Montageauftrag"
+  },
+  {
+   "fieldname": "sb_produkt",
+   "fieldtype": "Section Break",
+   "label": "Produkt"
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "PH Produkt",
+   "options": "PH Produkt"
+  },
+  {
+   "fieldname": "produkt_name",
+   "fieldtype": "Data",
+   "label": "Produkt",
+   "reqd": 1
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke"
+  },
+  {
+   "fieldname": "kategorie",
+   "fieldtype": "Data",
+   "label": "Kategorie"
+  },
+  {
+   "fieldname": "cb_produkt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ausfuehrung_text",
+   "fieldtype": "Small Text",
+   "label": "Ausführung (Bezug, Maß, Farbe)"
+  },
+  {
+   "fieldname": "seriennummer",
+   "fieldtype": "Data",
+   "label": "Seriennummer"
+  },
+  {
+   "fieldname": "pflegekategorie",
+   "fieldtype": "Select",
+   "label": "Pflegekategorie",
+   "options": "\nLeder\nStoff\nHolz\nStein\nMetall\nGlas\nKunststoff\nSonstige",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "outdoor",
+   "fieldtype": "Check",
+   "label": "Outdoor-Stück",
+   "default": "0"
+  },
+  {
+   "fieldname": "sb_garantie",
+   "fieldtype": "Section Break",
+   "label": "Garantie"
+  },
+  {
+   "fieldname": "garantie_monate",
+   "fieldtype": "Int",
+   "label": "Garantie (Monate)"
+  },
+  {
+   "fieldname": "garantie_bis",
+   "fieldtype": "Date",
+   "label": "Garantie bis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_garantie",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "garantie_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Garantiehinweis (Kunde sieht ihn)",
+   "default": "Garantiebedingungen lt. Hersteller – werden bei Übergabe ergänzt."
+  },
+  {
+   "fieldname": "hersteller_garantiebeleg",
+   "fieldtype": "Attach",
+   "label": "Garantiebeleg Hersteller"
+  },
+  {
+   "fieldname": "sb_material",
+   "fieldtype": "Section Break",
+   "label": "Materialien und Pflege"
+  },
+  {
+   "fieldname": "materialien",
+   "fieldtype": "Table",
+   "label": "Materialien",
+   "options": "PH Produktpass Material"
+  },
+  {
+   "fieldname": "pflege",
+   "fieldtype": "Table",
+   "label": "Pflegehinweise",
+   "options": "PH Produktpass Pflege"
+  },
+  {
+   "fieldname": "sb_dokumente",
+   "fieldtype": "Section Break",
+   "label": "Dokumente"
+  },
+  {
+   "fieldname": "dokumente",
+   "fieldtype": "Table",
+   "label": "Dokumente",
+   "options": "PH Produktpass Dokument"
+  },
+  {
+   "fieldname": "sb_qr",
+   "fieldtype": "Section Break",
+   "label": "Portal"
+  },
+  {
+   "fieldname": "kunde_sichtbar",
+   "fieldtype": "Check",
+   "label": "Im Portal sichtbar",
+   "default": "1"
+  },
+  {
+   "fieldname": "qr_html",
+   "fieldtype": "HTML",
+   "label": "QR-Code Portal"
+  },
+  {
+   "fieldname": "notiz_intern",
+   "fieldtype": "Small Text",
+   "label": "Interne Notiz",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nsystem",
+   "default": "backoffice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Produktpass",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Garantie abgelaufen",
+   "color": "Orange"
+  },
+  {
+   "title": "Verkauft",
+   "color": "Gray"
+  },
+  {
+   "title": "Entsorgt",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "produkt_name,marke,seriennummer,kontakt"
+}

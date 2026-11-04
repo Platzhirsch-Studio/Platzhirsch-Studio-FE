@@ -1,0 +1,68 @@
+[
+ {
+  "doctype": "Custom Field",
+  "name": "PH Bestellung-ph_logistik_lieferschein",
+  "dt": "PH Bestellung",
+  "module": "PH Logistik",
+  "fieldname": "ph_logistik_lieferschein",
+  "label": "Lieferschein (Logistik)",
+  "fieldtype": "Link",
+  "options": "PH Lieferschein",
+  "read_only": 1,
+  "no_copy": 1,
+  "insert_after": "status",
+  "description": "Rückwärts-Link aus ph_logistik (CONVENTIONS 10). Gesetzt beim Packen."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Retoure-ph_logistik_retourenlabel",
+  "dt": "PH Retoure",
+  "module": "PH Logistik",
+  "fieldname": "ph_logistik_retourenlabel",
+  "label": "Retourenlabel (Sendung)",
+  "fieldtype": "Link",
+  "options": "PH Sendung",
+  "read_only": 1,
+  "no_copy": 1,
+  "insert_after": "status",
+  "description": "Retourenlabel aus ph_logistik (Button „Retourenlabel erzeugen“)."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Produkt-ph_logistik_paketprofil",
+  "dt": "PH Produkt",
+  "module": "PH Logistik",
+  "fieldname": "ph_logistik_paketprofil",
+  "label": "Paketprofil (Versand)",
+  "fieldtype": "Link",
+  "options": "PH Paketprofil",
+  "insert_after": "zerbrechlich",
+  "description": "Karton/Gewicht für LetMeShip (PLAN WP3 paketprofil). Ohne Profil ist der Artikel nur abholbar."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Wareneingang Position-ph_logistik_lagerort",
+  "dt": "PH Wareneingang Position",
+  "module": "PH Logistik",
+  "fieldname": "ph_logistik_lagerort",
+  "label": "Lagerort",
+  "fieldtype": "Link",
+  "options": "PH Lagerort",
+  "insert_after": "zustand",
+  "description": "Ziel-Lagerort des Wareneingangs (sonst Standard-Lagerort der Logistik-Einstellungen)."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Auftragsbestaetigung-ph_logistik_letzter_lieferschein",
+  "dt": "PH Auftragsbestaetigung",
+  "module": "PH Logistik",
+  "fieldname": "ph_logistik_letzter_lieferschein",
+  "label": "Letzter Lieferschein",
+  "fieldtype": "Link",
+  "options": "PH Lieferschein",
+  "read_only": 1,
+  "no_copy": 1,
+  "insert_after": "status",
+  "description": "Rückwärts-Link aus ph_logistik; alle Lieferscheine über die Verknüpfungen."
+ }
+]

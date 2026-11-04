@@ -1,0 +1,44 @@
+[
+ {
+  "doctype": "Workflow State",
+  "name": "PH Freigabe",
+  "workflow_state_name": "PH Freigabe",
+  "style": "Warning",
+  "icon": "eye-open"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Wird versendet",
+  "workflow_state_name": "PH Wird versendet",
+  "style": "Primary",
+  "icon": "envelope"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Ausgebucht",
+  "workflow_state_name": "PH Ausgebucht",
+  "style": "Warning",
+  "icon": "lock"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Durchgefuehrt",
+  "workflow_state_name": "PH Durchgefuehrt",
+  "style": "Info",
+  "icon": "flag"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Beendet",
+  "workflow_state_name": "PH Beendet",
+  "style": "Info",
+  "icon": "stop"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Idee",
+  "workflow_state_name": "PH Idee",
+  "style": "Inverse",
+  "icon": "star-empty"
+ }
+]

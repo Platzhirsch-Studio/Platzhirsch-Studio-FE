@@ -1,9 +1,8 @@
 // /de/gutscheinbedingungen — Gutscheinbedingungen (R5-commerce). Wortlaut von der
-// Kanzlei freigegeben (Inhaber-Entscheidung Nr. 11), aber 7 Unternehmensangaben
-// offen (voucherTerms.js TERMS_OWNER_FIELDS) → TERMS_STATUS bleibt "entwurf".
+// Kanzlei freigegeben (Inhaber-Entscheidung Nr. 11), 7 Unternehmensangaben seit
+// 03.11.2026 eingetragen (Nr. 46) → TERMS_STATUS "freigegeben", Seite öffentlich
+// und indexierbar, sobald VOUCHER_MODE (anfrage|stripe) gesetzt ist.
 // Gleicher Schalter wie die Gutscheine (VOUCHER_MODE, Standard off → 404).
-// Solange TERMS_STATUS Entwurf ist, zählt VOUCHER_MODE als off (mode.js):
-// die Seite liefert dann 404, auch mit VOUCHER_MODE=anfrage.
 // Text: src/lib/commerce/voucherTerms.js (Rechtspaket 06 1.2, W3/W4/W5/W14/W15).
 import { notFound } from "next/navigation";
 import { connection } from "next/server";

@@ -1,0 +1,353 @@
+[
+ {
+  "doctype": "Workspace",
+  "name": "PH Marketing",
+  "title": "PH Marketing",
+  "label": "PH Marketing",
+  "module": "PH Marketing",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "mail",
+  "indicator_color": "green",
+  "sequence_id": 9.0,
+  "for_user": "",
+  "parent_page": "",
+  "content": "[{\"id\": \"ph_mkt_h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Newsletter und Einwilligungen</b></span>\", \"col\": 12}}, {\"id\": \"ph_mkt_nc1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Aktive Abos\", \"col\": 4}}, {\"id\": \"ph_mkt_nc2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Unbestätigte Abos über 48 h\", \"col\": 4}}, {\"id\": \"ph_mkt_nc3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH DOI-Quote 30 Tage\", \"col\": 4}}, {\"id\": \"ph_mkt_c1\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Abos je Woche\", \"col\": 8}}, {\"id\": \"ph_mkt_c2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Abos nach Quelle\", \"col\": 4}}, {\"id\": \"ph_mkt_h2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Kampagnen, Events, Social</b></span>\", \"col\": 12}}, {\"id\": \"ph_mkt_nc4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Aktive Kampagnen\", \"col\": 4}}, {\"id\": \"ph_mkt_nc5\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Event-Anmeldungen\", \"col\": 4}}, {\"id\": \"ph_mkt_nc6\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Beiträge diese Woche\", \"col\": 4}}, {\"id\": \"ph_mkt_c3\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Einwilligungen nach Zweck\", \"col\": 6}}, {\"id\": \"ph_mkt_c4\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Beiträge je Kanal\", \"col\": 6}}, {\"id\": \"ph_mkt_h3\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\", \"col\": 12}}, {\"id\": \"ph_mkt_s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Social-Beiträge (Kanban)\", \"col\": 3}}, {\"id\": \"ph_mkt_s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Kampagnen (Kanban)\", \"col\": 3}}, {\"id\": \"ph_mkt_s3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Events (Kanban)\", \"col\": 3}}, {\"id\": \"ph_mkt_s4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Newsletter-Entwicklung\", \"col\": 3}}, {\"id\": \"ph_mkt_s5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Neue Newsletter-Ausgabe\", \"col\": 3}}, {\"id\": \"ph_mkt_s6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Social-Kalender\", \"col\": 3}}, {\"id\": \"ph_mkt_s7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Kampagnen-ROI\", \"col\": 3}}, {\"id\": \"ph_mkt_s8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Einstellungen\", \"col\": 3}}, {\"id\": \"ph_mkt_h4\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Bereiche</b></span>\", \"col\": 12}}, {\"id\": \"ph_mkt_card1\", \"type\": \"card\", \"data\": {\"card_name\": \"Newsletter\", \"col\": 4}}, {\"id\": \"ph_mkt_card2\", \"type\": \"card\", \"data\": {\"card_name\": \"Kundenreisen und Empfehlungen\", \"col\": 4}}, {\"id\": \"ph_mkt_card3\", \"type\": \"card\", \"data\": {\"card_name\": \"Kampagnen, Events, Social\", \"col\": 4}}, {\"id\": \"ph_mkt_card4\", \"type\": \"card\", \"data\": {\"card_name\": \"Berichte\", \"col\": 4}}, {\"id\": \"ph_mkt_card5\", \"type\": \"card\", \"data\": {\"card_name\": \"Einblicke und Einstellungen\", \"col\": 4}}]",
+  "shortcuts": [
+   {
+    "label": "Social-Beiträge (Kanban)",
+    "link_to": "PH Social Beitrag",
+    "type": "DocType",
+    "doc_view": "Kanban",
+    "kanban_board": "PH Social Beiträge",
+    "color": "Blue"
+   },
+   {
+    "label": "Kampagnen (Kanban)",
+    "link_to": "PH Kampagne",
+    "type": "DocType",
+    "doc_view": "Kanban",
+    "kanban_board": "PH Kampagnen",
+    "color": "Grey"
+   },
+   {
+    "label": "Events (Kanban)",
+    "link_to": "PH Event",
+    "type": "DocType",
+    "doc_view": "Kanban",
+    "kanban_board": "PH Events",
+    "color": "Green"
+   },
+   {
+    "label": "Newsletter-Entwicklung",
+    "link_to": "PH Newsletter-Entwicklung",
+    "type": "Report",
+    "color": "Grey"
+   },
+   {
+    "label": "Neue Newsletter-Ausgabe",
+    "link_to": "PH Newsletter Ausgabe",
+    "type": "DocType",
+    "doc_view": "New",
+    "color": "Grey"
+   },
+   {
+    "label": "Social-Kalender",
+    "link_to": "PH Social Beitrag",
+    "type": "DocType",
+    "doc_view": "Calendar",
+    "color": "Grey"
+   },
+   {
+    "label": "Kampagnen-ROI",
+    "link_to": "PH Kampagnen-ROI",
+    "type": "Report",
+    "color": "Grey"
+   },
+   {
+    "label": "Einstellungen",
+    "link_to": "PH Marketing Einstellungen",
+    "type": "DocType",
+    "color": "Grey"
+   }
+  ],
+  "charts": [
+   {
+    "chart_name": "PH Abos je Woche",
+    "label": "Abos je Woche"
+   },
+   {
+    "chart_name": "PH Abos nach Quelle",
+    "label": "Abos nach Quelle"
+   },
+   {
+    "chart_name": "PH Einwilligungen nach Zweck",
+    "label": "Einwilligungen nach Zweck"
+   },
+   {
+    "chart_name": "PH Beiträge je Kanal",
+    "label": "Beiträge je Kanal"
+   }
+  ],
+  "number_cards": [
+   {
+    "number_card_name": "PH Aktive Abos",
+    "label": "Aktive Abos"
+   },
+   {
+    "number_card_name": "PH Unbestätigte Abos über 48 h",
+    "label": "Unbestätigt > 48 h"
+   },
+   {
+    "number_card_name": "PH DOI-Quote 30 Tage",
+    "label": "DOI-Quote (30 Tage)"
+   },
+   {
+    "number_card_name": "PH Aktive Kampagnen",
+    "label": "Aktive Kampagnen"
+   },
+   {
+    "number_card_name": "PH Event-Anmeldungen",
+    "label": "Event-Anmeldungen"
+   },
+   {
+    "number_card_name": "PH Beiträge diese Woche",
+    "label": "Beiträge diese Woche"
+   }
+  ],
+  "links": [
+   {
+    "type": "Card Break",
+    "label": "Newsletter",
+    "link_count": 5,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Newsletter Abo",
+    "link_to": "PH Newsletter Abo",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Newsletter Ausgabe",
+    "link_to": "PH Newsletter Ausgabe",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Einwilligung",
+    "link_to": "PH Einwilligung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Interesse",
+    "link_to": "PH Interesse",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Versandprotokoll",
+    "link_to": "PH Newsletter Versand",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Kundenreisen und Empfehlungen",
+    "link_count": 4,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Kundenreise",
+    "link_to": "PH Kundenreise",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Mail Vorlage",
+    "link_to": "PH Mail Vorlage",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Reise-Versandprotokoll",
+    "link_to": "PH Reise Versand",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Empfehlung",
+    "link_to": "PH Empfehlung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Kampagnen, Events, Social",
+    "link_count": 3,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Kampagne",
+    "link_to": "PH Kampagne",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Event",
+    "link_to": "PH Event",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Social Beitrag",
+    "link_to": "PH Social Beitrag",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Berichte",
+    "link_count": 6,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Newsletter-Entwicklung",
+    "link_to": "PH Newsletter-Entwicklung",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Kampagnen-ROI",
+    "link_to": "PH Kampagnen-ROI",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Einwilligungen nach Zweck",
+    "link_to": "PH Einwilligungen nach Zweck",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Event-Auslastung",
+    "link_to": "PH Event-Auslastung",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Social Redaktionsplan",
+    "link_to": "PH Social Redaktionsplan",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Top-Seiten (Einblicke)",
+    "link_to": "PH Top-Seiten (Einblicke)",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Card Break",
+    "label": "Einblicke und Einstellungen",
+    "link_count": 2,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Einblick Tag",
+    "link_to": "PH Einblick Tag",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Marketing Einstellungen",
+    "link_to": "PH Marketing Einstellungen",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   }
+  ],
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ }
+]

@@ -165,7 +165,7 @@ export function voucherMail(order, vouchers, { env, now, validity = VOUCHER_VALI
     `Guten Tag ${order.kaeufer.name},`,
     `danke für Ihre Bestellung ${order.id}. Ihre Zahlung ist bestätigt. Im Anhang ${many ? `finden Sie ${vouchers.length} Gutscheine` : "finden Sie Ihren Gutschein"} über je ${formatEuro(order.betrag_cent / 100)} als PDF zum Ausdrucken oder Weiterschicken.`,
     `${many ? "Gutscheincodes" : "Gutscheincode"}:\n${vouchers.map((v) => v.code).join("\n")}`,
-    `Einlösbar im Showroom in Lochau, auch in Teilbeträgen. ${validityText}. Bitte behandeln Sie den Code wie Bargeld.`,
+    `Einlösbar im Showroom in Lochau und für Bestellungen im Onlineshop (Code vor der Bestellung an uns), auch in Teilbeträgen; nicht im Café. ${validityText}. Bitte behandeln Sie den Code wie Bargeld.`,
     `Rechnung: Die Rechnung senden wir Ihnen gesondert per E-Mail. Die Zahlungsbestätigung von Stripe ist kein Ersatz dafür.`,
     `Gutscheinbedingungen: ${base}/de/gutscheinbedingungen\nWiderruf innerhalb von 14 Tagen, solange der Gutschein nicht eingelöst ist: ${base}/de/zahlung/widerruf`,
     "Wir freuen uns auf den Besuch im Showroom.\nIhr Team von Platzhirsch Home Living",

@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "beschreibung",
+  "foto",
+  "frist",
+  "status",
+  "servicefall_ref",
+  "behoben_am"
+ ],
+ "fields": [
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Data",
+   "label": "Mangel",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "foto",
+   "fieldtype": "Attach Image",
+   "label": "Foto",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "frist",
+   "fieldtype": "Date",
+   "label": "Frist",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "offen\nin Arbeit\nbehoben",
+   "default": "offen",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "servicefall_ref",
+   "fieldtype": "Data",
+   "label": "Servicefall (ph_service)",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Name des PH Servicefall, sobald ph_service installiert ist."
+  },
+  {
+   "fieldname": "behoben_am",
+   "fieldtype": "Date",
+   "label": "Behoben am"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Montage Mangel",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

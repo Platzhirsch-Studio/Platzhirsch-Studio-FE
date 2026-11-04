@@ -1,0 +1,27 @@
+[
+ {
+  "doctype": "Custom Field",
+  "name": "PH Termin-ph_projekte_projekt",
+  "dt": "PH Termin",
+  "module": "PH Projekte",
+  "fieldname": "ph_projekte_projekt",
+  "label": "Projekt",
+  "fieldtype": "Link",
+  "options": "PH Projekt",
+  "insert_after": "kontakt",
+  "in_standard_filter": 1,
+  "description": "Rückwärts-Verknüpfung aus ph_projekte (Montage-/Beratungstermine je Projekt)."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Beratungsgespraech-ph_projekte_projekt",
+  "dt": "PH Beratungsgespraech",
+  "module": "PH Projekte",
+  "fieldname": "ph_projekte_projekt",
+  "label": "Projekt",
+  "fieldtype": "Link",
+  "options": "PH Projekt",
+  "insert_after": "kontakt",
+  "description": "Rückwärts-Verknüpfung aus ph_projekte."
+ }
+]

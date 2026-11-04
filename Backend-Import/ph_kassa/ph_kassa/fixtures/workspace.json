@@ -1,0 +1,61 @@
+[
+ {
+  "doctype": "Workspace",
+  "name": "PH Kassa",
+  "title": "PH Kassa",
+  "label": "PH Kassa",
+  "module": "PH Kassa",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "retail",
+  "indicator_color": "green",
+  "sequence_id": 10.0,
+  "for_user": "",
+  "parent_page": "",
+  "content": "[{\"id\":\"ph_kassa_h1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Registrierkasse Showroom</b></span>\",\"col\":12}},{\"id\":\"ph_kassa_p1\",\"type\":\"paragraph\",\"data\":{\"text\":\"RKSV-Kasse: Belege signieren, Tagesabschluss mit Zählprotokoll, Kassenbuch, Stripe Terminal. Vor dem ersten echten Beleg: Kasse und Signatureinheit bei FinanzOnline registrieren, Startbeleg mit der BMF-App prüfen.\",\"col\":12}},{\"id\":\"ph_kassa_nc1\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Heute kassiert\",\"col\":3}},{\"id\":\"ph_kassa_nc2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Belege heute\",\"col\":3}},{\"id\":\"ph_kassa_nc3\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Offener Abschluss\",\"col\":3}},{\"id\":\"ph_kassa_nc4\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Kassendifferenz Monat\",\"col\":3}},{\"id\":\"ph_kassa_c1\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Kassenumsatz je Tag\",\"col\":8}},{\"id\":\"ph_kassa_c2\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Belege nach Belegart\",\"col\":4}},{\"id\":\"ph_kassa_h2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\",\"col\":12}},{\"id\":\"ph_kassa_s1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Kassa öffnen\",\"col\":3}},{\"id\":\"ph_kassa_s2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tagesabschlüsse\",\"col\":3}},{\"id\":\"ph_kassa_s3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Kassenbuch\",\"col\":3}},{\"id\":\"ph_kassa_s4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tagesumsatz je Zahlart\",\"col\":3}},{\"id\":\"ph_kassa_c3\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Kassendifferenzen je Monat\",\"col\":6}},{\"id\":\"ph_kassa_c4\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Kassenbuch Bewegungen je Woche\",\"col\":6}},{\"id\":\"ph_kassa_h3\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Bereiche</b></span>\",\"col\":12}},{\"id\":\"ph_kassa_card1\",\"type\":\"card\",\"data\":{\"card_name\":\"Kassa\",\"col\":4}},{\"id\":\"ph_kassa_card2\",\"type\":\"card\",\"data\":{\"card_name\":\"Abschluss und Kassenbuch\",\"col\":4}},{\"id\":\"ph_kassa_card3\",\"type\":\"card\",\"data\":{\"card_name\":\"Berichte\",\"col\":4}},{\"id\":\"ph_kassa_card4\",\"type\":\"card\",\"data\":{\"card_name\":\"RKSV und Stammdaten\",\"col\":4}},{\"id\":\"ph_kassa_card5\",\"type\":\"card\",\"data\":{\"card_name\":\"Einstellungen\",\"col\":4}}]",
+  "shortcuts": [
+   {"label": "Kassa öffnen", "link_to": "ph-kassa", "type": "Page", "color": "Green"},
+   {"label": "Tagesabschlüsse", "link_to": "PH Kassenabschluss", "type": "DocType", "doc_view": "List", "color": "Grey", "stats_filter": "{\"status\": [\"in\", [\"Offen\", \"Gezaehlt\", \"Korrigiert\"]]}"},
+   {"label": "Kassenbuch", "link_to": "PH Kassenbuch", "type": "DocType", "doc_view": "List", "color": "Grey"},
+   {"label": "Tagesumsatz je Zahlart", "link_to": "PH Tagesumsatz je Zahlart", "type": "Report", "color": "Grey"}
+  ],
+  "charts": [
+   {"chart_name": "PH Kassenumsatz je Tag", "label": "Kassenumsatz je Tag"},
+   {"chart_name": "PH Belege nach Belegart", "label": "Belege nach Belegart"},
+   {"chart_name": "PH Kassendifferenzen je Monat", "label": "Kassendifferenzen je Monat"},
+   {"chart_name": "PH Kassenbuch Bewegungen je Woche", "label": "Kassenbuch je Woche"}
+  ],
+  "number_cards": [
+   {"number_card_name": "PH Heute kassiert", "label": "Heute kassiert"},
+   {"number_card_name": "PH Belege heute", "label": "Belege heute"},
+   {"number_card_name": "PH Offener Abschluss", "label": "Offene Abschlüsse"},
+   {"number_card_name": "PH Kassendifferenz Monat", "label": "Differenz Monat"},
+   {"number_card_name": "PH Terminals offline", "label": "Terminals offline"}
+  ],
+  "links": [
+   {"type": "Card Break", "label": "Kassa", "link_count": 3, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "Kassa (Oberfläche)", "link_to": "ph-kassa", "link_type": "Page", "hidden": 0, "onboard": 1, "dependencies": ""},
+   {"type": "Link", "label": "PH Kassenbeleg", "link_to": "PH Kassenbeleg", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Terminal", "link_to": "PH Terminal", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Abschluss und Kassenbuch", "link_count": 2, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Kassenabschluss", "link_to": "PH Kassenabschluss", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Kassenbuch", "link_to": "PH Kassenbuch", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Berichte", "link_count": 7, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "Kassenbuch (Bericht)", "link_to": "PH Kassenbuch", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Tagesumsatz je Zahlart", "link_to": "PH Tagesumsatz je Zahlart", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Kassenumsatz nach Steuersatz", "link_to": "PH Kassenumsatz nach Steuersatz", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Anzahlungen Kassa", "link_to": "PH Anzahlungen Kassa", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Gutscheinbewegungen Kassa", "link_to": "PH Gutscheinbewegungen Kassa", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Kassendifferenzen", "link_to": "PH Kassendifferenzen", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Belege je Mitarbeiter", "link_to": "PH Belege je Mitarbeiter", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Card Break", "label": "RKSV und Stammdaten", "link_count": 4, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Kasse", "link_to": "PH Kasse", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Signatureinheit", "link_to": "PH Signatureinheit", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH DEP Export", "link_to": "PH DEP Export", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Kassa Ereignis", "link_to": "PH Kassa Ereignis", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Einstellungen", "link_count": 1, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Kassa Einstellungen", "link_to": "PH Kassa Einstellungen", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""}
+  ],
+  "roles": [{"role": "PH Kassa Mitarbeiter"}, {"role": "PH Kassa Leitung"}, {"role": "PH Geschäftsführung"}, {"role": "PH Buchhaltung extern"}]
+ }
+]

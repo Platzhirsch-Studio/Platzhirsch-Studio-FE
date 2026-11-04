@@ -1,0 +1,11 @@
+{% extends "templates/emails/ph_mail_basis.html" %}
+{% set P = "margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e" %}
+{% block preheader %}Ihre Anmeldung wartet noch auf einen Klick.{% endblock %}
+{% block inhalt %}
+<p style="{{ P }}">{{ anrede or "Guten Tag" }},</p>
+<p style="{{ P }}">vor Kurzem haben Sie sich auf platzhirsch.studio für {{ zweck_text }} angemeldet, die Bestätigung fehlt noch. Wenn Sie Post aus Lochau bekommen möchten, genügt ein Klick.</p>
+<p style="{{ P }}">Der Link ist noch bis zum Ablauf von {{ gueltig_stunden }} Stunden nach der Anmeldung gültig. Danach löschen wir die Anmeldung wieder.</p>
+<table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 24px"><tr><td style="background:#30373e"><a href="{{ bestaetigen_url }}" style="display:inline-block;padding:14px 28px;font-family:Helvetica,Arial,sans-serif;font-size:16px;color:#faf8f4;text-decoration:none">Anmeldung bestätigen</a></td></tr></table>
+<p style="{{ P }}">Falls Sie sich nicht angemeldet haben, ignorieren Sie diese Mail einfach. Dann hören Sie nichts mehr von uns.</p>
+<p style="{{ P }}">Platzhirsch Home Living</p>
+{% endblock %}

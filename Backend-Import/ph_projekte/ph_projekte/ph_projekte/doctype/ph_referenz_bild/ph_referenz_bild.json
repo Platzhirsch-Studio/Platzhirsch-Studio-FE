@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "foto",
+  "phase",
+  "titel",
+  "alt",
+  "von",
+  "breite",
+  "hoehe",
+  "varianten",
+  "datei"
+ ],
+ "fields": [
+  {
+   "fieldname": "foto",
+   "fieldtype": "Link",
+   "label": "Tagebuch-Foto",
+   "options": "PH Tagebuch Foto",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "phase",
+   "fieldtype": "Data",
+   "label": "Phase",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "alt",
+   "fieldtype": "Data",
+   "label": "Alt-Text (öffentlich)",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "von",
+   "fieldtype": "Data",
+   "label": "Von (kunde/team)"
+  },
+  {
+   "fieldname": "breite",
+   "fieldtype": "Int",
+   "label": "Breite"
+  },
+  {
+   "fieldname": "hoehe",
+   "fieldtype": "Int",
+   "label": "Höhe"
+  },
+  {
+   "fieldname": "varianten",
+   "fieldtype": "JSON",
+   "label": "Varianten"
+  },
+  {
+   "fieldname": "datei",
+   "fieldtype": "Attach",
+   "label": "Kopie (privat)",
+   "description": "Kopie der größten Variante; wird beim Widerruf gelöscht."
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Referenz Bild",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

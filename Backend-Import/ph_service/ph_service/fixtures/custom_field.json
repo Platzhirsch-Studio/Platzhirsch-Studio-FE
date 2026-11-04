@@ -1,0 +1,64 @@
+[
+ {
+  "doctype": "Custom Field",
+  "name": "PH Wareneingang-ph_service_servicefall",
+  "dt": "PH Wareneingang",
+  "module": "PH Service",
+  "fieldname": "ph_service_servicefall",
+  "label": "Servicefall (Transportschaden/Fehlmenge)",
+  "fieldtype": "Link",
+  "options": "PH Servicefall",
+  "insert_after": "status",
+  "read_only": 1,
+  "allow_on_submit": 1,
+  "description": "Wird vom Button „Servicefall anlegen“ (ph_service) gesetzt."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Tour Stopp-ph_service_servicefall",
+  "dt": "PH Tour Stopp",
+  "module": "PH Service",
+  "fieldname": "ph_service_servicefall",
+  "label": "Servicefall",
+  "fieldtype": "Link",
+  "options": "PH Servicefall",
+  "insert_after": "montage_referenz",
+  "in_list_view": 0,
+  "description": "Stopp-Art „Service“: zugehöriger Servicefall (ph_service)."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Tour Stopp-ph_service_einsatz",
+  "dt": "PH Tour Stopp",
+  "module": "PH Service",
+  "fieldname": "ph_service_einsatz",
+  "label": "Serviceeinsatz",
+  "fieldtype": "Link",
+  "options": "PH Serviceeinsatz",
+  "insert_after": "ph_service_servicefall"
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Produktpass-ph_service_pflege_abo",
+  "dt": "PH Produktpass",
+  "module": "PH Service",
+  "fieldname": "ph_service_pflege_abo",
+  "label": "Pflege-/Wartungsvertrag",
+  "fieldtype": "Link",
+  "options": "PH Pflege Abo",
+  "insert_after": "status",
+  "description": "Aktiver Pflege-/Wartungsvertrag zu diesem Stück (ph_service)."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Montageauftrag-ph_service_servicefaelle",
+  "dt": "PH Montageauftrag",
+  "module": "PH Service",
+  "fieldname": "ph_service_servicefaelle",
+  "label": "Servicefälle aus Montage",
+  "fieldtype": "Small Text",
+  "read_only": 1,
+  "insert_after": "status",
+  "description": "Vom Button „Servicefall anlegen“ (ph_service) ergänzte Fallnummern."
+ }
+]

@@ -1,0 +1,555 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Gemeinsame Zahlungs-DocType für ph_shop, ph_faktura und ph_kassa: jede Geldbewegung (Eingang, Ausgang, Erstattung) über Stripe, Terminal, Bar, Überweisung, Gutschein oder Verrechnung. Anlegen über ph_shop.zahlung.buche(...). Bezahlt = submitted; Storno nur per Gegenbuchung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tb_zahlung",
+  "naming_series",
+  "titel",
+  "art",
+  "kanal",
+  "status",
+  "cb_kopf",
+  "betrag_cent",
+  "waehrung",
+  "betrag_eur",
+  "zeitpunkt",
+  "livemode",
+  "sb_bezug",
+  "bezug_doctype",
+  "bezug",
+  "kontakt",
+  "ursprung",
+  "cb_bezug",
+  "zahlungsreferenz",
+  "bank_referenz",
+  "gutschein",
+  "notiz",
+  "tb_stripe",
+  "stripe_payment_intent",
+  "stripe_charge",
+  "stripe_session",
+  "stripe_refund",
+  "cb_stripe",
+  "stripe_balance_transaction",
+  "stripe_gebuehr_cent",
+  "stripe_auszahlung",
+  "stripe_ereignis",
+  "tb_erstattung",
+  "erstattet_cent",
+  "erstattungen",
+  "sb_freigabe",
+  "erstattung_angefordert_cent",
+  "erstattung_grund",
+  "cb_freigabe",
+  "erstattung_angefordert_von",
+  "erstattung_angefordert_am",
+  "tb_system",
+  "idempotency_key",
+  "ip_hash",
+  "quelle",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "tb_zahlung",
+   "fieldtype": "Tab Break",
+   "label": "Zahlung"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-ZAH-.YYYY.-.#####",
+   "default": "PH-ZAH-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Eingang\nAusgang\nErstattung",
+   "default": "Eingang",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kanal",
+   "fieldtype": "Select",
+   "label": "Kanal",
+   "options": "Stripe Checkout\nStripe Terminal\nStripe Link\nBar\nKarte extern\nUeberweisung\nGutschein\nVerrechnung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Angekuendigt\nBezahlt\nFehlgeschlagen\nErstattet\nTeilerstattet\nStorniert\nErstattung angefordert",
+   "default": "Angekuendigt",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Setzt der Server (buche, Webhook, Rückerstattung). Bezahlt = Beleg gebucht (submitted)."
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "non_negative": 1,
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR",
+   "reqd": 1
+  },
+  {
+   "fieldname": "betrag_eur",
+   "fieldtype": "Currency",
+   "label": "Betrag (EUR, Auswertung)",
+   "options": "waehrung",
+   "read_only": 1,
+   "description": "Nur für Auswertungen (Charts, Number Cards); Rechenbasis sind die Cent-Felder.",
+   "no_copy": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "zeitpunkt",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "livemode",
+   "fieldtype": "Check",
+   "label": "Livemodus (Stripe)",
+   "default": "0",
+   "read_only": 1,
+   "description": "0 = Testzahlung. Testzahlungen fließen nicht in Umsatzauswertungen."
+  },
+  {
+   "fieldname": "sb_bezug",
+   "fieldtype": "Section Break",
+   "label": "Bezug"
+  },
+  {
+   "fieldname": "bezug_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug (Typ)",
+   "options": "DocType",
+   "in_standard_filter": 1,
+   "description": "PH Bestellung, PH Gutschein Bestellung, PH Anzahlung, PH Rechnung, PH Kassenbeleg …"
+  },
+  {
+   "fieldname": "bezug",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "bezug_doctype",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "ursprung",
+   "fieldtype": "Link",
+   "label": "Ursprungszahlung (bei Erstattung)",
+   "options": "PH Zahlung",
+   "read_only": 1,
+   "depends_on": "eval:doc.art=='Erstattung'"
+  },
+  {
+   "fieldname": "cb_bezug",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zahlungsreferenz",
+   "fieldtype": "Data",
+   "label": "Zahlungsreferenz",
+   "description": "Z. B. Rechnungsnummer im Überweisungstext oder Bon-Nummer."
+  },
+  {
+   "fieldname": "bank_referenz",
+   "fieldtype": "Data",
+   "label": "Bankreferenz (Umsatz-ID)"
+  },
+  {
+   "fieldname": "gutschein",
+   "fieldtype": "Link",
+   "label": "Gutschein (bei Kanal Gutschein)",
+   "options": "PH Gutschein",
+   "depends_on": "eval:doc.kanal=='Gutschein'"
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  },
+  {
+   "fieldname": "tb_stripe",
+   "fieldtype": "Tab Break",
+   "label": "Stripe"
+  },
+  {
+   "fieldname": "stripe_payment_intent",
+   "fieldtype": "Data",
+   "label": "Payment Intent",
+   "read_only": 1,
+   "unique": 1,
+   "search_index": 1,
+   "no_copy": 1,
+   "description": "Eindeutig je Eingang (Idempotenz des Webhooks)."
+  },
+  {
+   "fieldname": "stripe_charge",
+   "fieldtype": "Data",
+   "label": "Charge",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "stripe_session",
+   "fieldtype": "Data",
+   "label": "Checkout Session",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "stripe_refund",
+   "fieldtype": "Data",
+   "label": "Refund (bei Erstattung)",
+   "read_only": 1,
+   "no_copy": 1,
+   "depends_on": "eval:doc.art=='Erstattung'"
+  },
+  {
+   "fieldname": "cb_stripe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stripe_balance_transaction",
+   "fieldtype": "Data",
+   "label": "Balance Transaction",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "stripe_gebuehr_cent",
+   "fieldtype": "Int",
+   "label": "Stripe-Gebühr (Cent)",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "stripe_auszahlung",
+   "fieldtype": "Link",
+   "label": "Auszahlung (Payout)",
+   "options": "PH Stripe Auszahlung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stripe_ereignis",
+   "fieldtype": "Link",
+   "label": "Auslösendes Stripe-Ereignis",
+   "options": "PH Stripe Ereignis",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "tb_erstattung",
+   "fieldtype": "Tab Break",
+   "label": "Erstattung"
+  },
+  {
+   "fieldname": "erstattet_cent",
+   "fieldtype": "Int",
+   "label": "Bisher erstattet (Cent)",
+   "non_negative": 1,
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "erstattungen",
+   "fieldtype": "Table",
+   "label": "Erstattungen",
+   "options": "PH Zahlung Erstattung",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "sb_freigabe",
+   "fieldtype": "Section Break",
+   "label": "Vier-Augen-Freigabe (über 1.000 €)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "erstattung_angefordert_cent",
+   "fieldtype": "Int",
+   "label": "Angeforderter Betrag (Cent)",
+   "non_negative": 1,
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "erstattung_grund",
+   "fieldtype": "Data",
+   "label": "Grund",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "cb_freigabe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "erstattung_angefordert_von",
+   "fieldtype": "Link",
+   "label": "Angefordert von",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "erstattung_angefordert_am",
+   "fieldtype": "Datetime",
+   "label": "Angefordert am",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "tb_system",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "website\nbackoffice\nstripe\nkassa\nimport",
+   "default": "backoffice",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Geändert von",
+   "options": "PH Zahlung",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Zahlung",
+   "link_fieldname": "ursprung",
+   "group": "Erstattungen"
+  },
+  {
+   "link_doctype": "PH Stripe Ereignis",
+   "link_fieldname": "bezug",
+   "group": "Stripe"
+  },
+  {
+   "link_doctype": "ToDo",
+   "link_fieldname": "reference_name",
+   "group": "Aufgaben"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Zahlung",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 1,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  }
+ ],
+ "sort_field": "zeitpunkt",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Angekuendigt",
+   "color": "Blue"
+  },
+  {
+   "title": "Bezahlt",
+   "color": "Green"
+  },
+  {
+   "title": "Fehlgeschlagen",
+   "color": "Red"
+  },
+  {
+   "title": "Erstattet",
+   "color": "Gray"
+  },
+  {
+   "title": "Teilerstattet",
+   "color": "Orange"
+  },
+  {
+   "title": "Storniert",
+   "color": "Gray"
+  },
+  {
+   "title": "Erstattung angefordert",
+   "color": "Purple"
+  }
+ ],
+ "track_changes": 1,
+ "title_field": "titel",
+ "search_fields": "bezug,stripe_payment_intent,zahlungsreferenz,kanal",
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "is_submittable": 1
+}

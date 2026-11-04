@@ -1,0 +1,46 @@
+{% extends "templates/print/ph_basis.html" %}
+{#- PH Kassenbeleg A4 – Kundenbeleg (E-Mail-Anhang, Rückfall ohne Bondrucker). Gleiche Pflichtangaben wie der Bon. -#}
+{% set kurz = {"Normal 20": "20 %", "Ermaessigt-1 10": "10 %", "Ermaessigt-2 13": "13 %", "Null 0": "0 %", "Besonders 19": "19 %", "Steuerfrei": "steuerfrei"} %}
+{% set trainings = doc.trainings or doc.belegart == "Trainingsbeleg" %}
+{% set storno = doc.belegart == "Stornobeleg" or doc.storno_von %}
+{% block titel %}Kassenbeleg {{ doc.belegnummer or doc.name }}{% endblock %}
+{% block kopfrechts %}Kassenbeleg Nr. {{ doc.belegnummer or doc.name }}<br>{{ frappe.utils.format_datetime(doc.datum_uhrzeit, "dd.MM.yyyy HH:mm") }}<br>Kassen-ID {{ doc.kasse }}{% endblock %}
+{% block css %}
+  .ph-qr { display: flex; gap: 8mm; align-items: flex-start; margin-top: 8mm; padding-top: 4mm; border-top: 1px solid var(--ph-linie); }
+  .ph-qr .code { font-size: 6.5pt; color: var(--ph-grau); word-break: break-all; }
+  .ph-gesamt { font-family: "Bodoni Moda", Georgia, serif; font-size: 18pt; }
+  .ph-stempel { display: inline-block; border: 2px solid #b91c1c; color: #b91c1c; padding: 1mm 3mm; font-weight: 600; letter-spacing: .1em; margin-bottom: 3mm; }
+{% endblock %}
+{% block inhalt %}
+{% if trainings %}<div class="ph-stempel">TRAINING – KEIN GÜLTIGER BELEG</div>{% endif %}
+{% if storno %}<div class="ph-stempel">STORNOBELEG{% if doc.storno_von %} zu {{ doc.storno_von }}{% endif %}</div>{% endif %}
+<h1>{{ {"Standard": "Kassenbeleg", "Nullbeleg": "Nullbeleg", "Startbeleg": "Startbeleg", "Monatsbeleg": "Monatsbeleg", "Jahresbeleg": "Jahresbeleg", "Schlussbeleg": "Schlussbeleg", "Sammelbeleg": "Sammelbeleg", "Stornobeleg": "Stornobeleg", "Trainingsbeleg": "Trainingsbeleg"}.get(doc.belegart or "Standard", "Kassenbeleg") }}</h1>
+{% if doc.kontakt %}<div class="ph-feld"><b>Kunde</b> {{ frappe.db.get_value("PH Kontakt", doc.kontakt, "titel") or doc.kontakt }}</div>{% endif %}
+{% if doc.auftrag %}<div class="ph-feld"><b>Auftrag</b> {{ doc.auftrag }}</div>{% endif %}
+{% if doc.rechnung %}<div class="ph-feld"><b>Rechnung</b> {{ doc.rechnung }}</div>{% endif %}
+<table class="ph-tabelle">
+  <thead><tr><th>Menge</th><th>Bezeichnung</th><th class="zahl">Einzelpreis</th><th class="zahl">USt</th><th class="zahl">Betrag</th></tr></thead>
+  <tbody>
+  {% for p in doc.positionen %}
+    <tr><td>{{ p.menge|int if p.menge == p.menge|int else p.menge }}</td><td>{{ p.bezeichnung }}{% if p.art and p.art not in ("Artikel", "Freitext") %}<br><span style="color:#6b7280;font-size:8pt">{{ _(p.art) }}</span>{% endif %}</td><td class="zahl">{{ ph_betrag(p.einzel_brutto_cent) }}</td><td class="zahl">{{ kurz.get(p.steuersatz, p.steuersatz) }}</td><td class="zahl">{{ ph_betrag(p.brutto_cent) }}</td></tr>
+  {% endfor %}
+  </tbody>
+  <tfoot><tr class="ph-summe"><td colspan="4">Gesamtbetrag (brutto)</td><td class="zahl ph-gesamt">{{ ph_betrag(doc.gesamt_cent) }}</td></tr></tfoot>
+</table>
+{% set ns = namespace(s={}) %}
+{% for p in doc.positionen %}{% set k = p.steuersatz or "Normal 20" %}{% set alt = ns.s.get(k, {"netto": 0, "ust": 0, "brutto": 0}) %}{% set _ = ns.s.update({k: {"netto": alt.netto + (p.netto_cent or 0), "ust": alt.ust + (p.ust_cent or 0), "brutto": alt.brutto + (p.brutto_cent or 0)}}) %}{% endfor %}
+<h2>Steuersätze</h2>
+<table class="ph-tabelle" style="width:60%">
+  <thead><tr><th>Satz</th><th class="zahl">Netto</th><th class="zahl">USt</th><th class="zahl">Brutto</th></tr></thead>
+  <tbody>{% for k, w in ns.s.items() %}<tr><td>{{ kurz.get(k, k) }}</td><td class="zahl">{{ ph_betrag(w.netto) }}</td><td class="zahl">{{ ph_betrag(w.ust) }}</td><td class="zahl">{{ ph_betrag(w.brutto) }}</td></tr>{% endfor %}</tbody>
+</table>
+<h2>Zahlung</h2>
+{% for z in doc.zahlarten %}
+<div class="ph-feld"><b>{{ {"Bar": "Bar", "Karte Stripe Terminal": "Karte (Terminal)", "Karte extern": "Karte", "Gutschein": "Gutschein", "Ueberweisung": "Überweisung"}.get(z.zahlart, z.zahlart) }}</b> {{ ph_betrag(z.betrag_cent) }}{% if z.zahlart == "Bar" and z.retour_cent %} · gegeben {{ ph_betrag(z.gegeben_cent) }}, Rückgeld {{ ph_betrag(z.retour_cent) }}{% endif %}</div>
+{% endfor %}
+{% if doc.zahlarten|selectattr("zahlart", "equalto", "Ueberweisung")|list %}<p class="ph-hinweis">Zahlbar per Überweisung an die unten genannte Bankverbindung, Verwendungszweck: Beleg {{ doc.belegnummer or doc.name }}.</p>{% endif %}
+<div class="ph-qr">
+  {% if doc.maschinenlesbarer_code %}<div>{{ ph_kassa_qr_svg(doc.maschinenlesbarer_code, 26) }}</div><div><b>Maschinenlesbarer Code (RKSV)</b><div class="code">{{ doc.maschinenlesbarer_code }}</div>{% if doc.see_ausgefallen %}<p><b>Sicherheitseinrichtung ausgefallen</b> – Beleg wird nachsigniert.</p>{% endif %}</div>{% else %}<div class="ph-hinweis">Beleg ohne Signatur (Entwurf).</div>{% endif %}
+</div>
+<p class="ph-hinweis">Dieser Beleg ist keine Rechnung im Sinne des § 11 UStG, sofern nicht gesondert eine Rechnung ausgestellt wurde. Gutscheine gelten als Mehrzweckgutscheine, soweit nichts anderes vermerkt ist.</p>
+{% endblock %}

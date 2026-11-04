@@ -1,0 +1,1761 @@
+{
+ "_hinweis": "Export der 8 statischen Stellen (src/lib/karriere/stellen.js) für den Frappe-Doctype „Karriere“. Feldnamen aus dem Website-Code abgeleitet (fetchKarrierData.js, JobDetail.js, structuredData.js). Vor dem Import im Backoffice prüfen: Doctype-Namen der Kindtabellen, Feld title_en/_fr/_it, job_status_*/start_* existieren evtl. nicht. `salary` = kollektivvertragliches Mindestbrutto pro Monat (Vollzeit) laut Inhaber-Entscheidung Nr. 47 vom 03.11.2026; Kollektivvertrag/Beschäftigungsgruppe und Überzahlungsbereitschaft stehen in `_hinweise.entgelt` (Website-Satz: src/lib/karriere/texte.js entgeltText). `_hinweise` ist nur Information, nicht importieren. Stand 03.11.2026.",
+ "docs": [
+  {
+   "doctype": "Karriere",
+   "title": "CAD-Planer/in (m/w/d)",
+   "status": "Aktiv",
+   "posted": "2026-11-03",
+   "type": "Vollzeit",
+   "positions": 1,
+   "salary": 2535,
+   "job_status_de": "Vollzeit",
+   "start_de": "ab sofort",
+   "stellenbeschreibung": "Sie setzen Einrichtungs-, Küchen- und Badkonzepte in genaue Pläne um – vom Aufmaß bis zur Werk- und Montageplanung. Dabei arbeiten Sie eng mit Interior Design, Verkauf und Montage zusammen.",
+   "category_de": "Planung",
+   "responsibilities_de": [
+    {
+     "responsibility": "Grundrisse, Ansichten und Detailpläne für Küchen, Bäder und Möbel erstellen"
+    },
+    {
+     "responsibility": "Entwürfe aus Handskizze und Modell in CAD-Pläne und 3D-Ansichten übertragen"
+    },
+    {
+     "responsibility": "Aufmaß bei Kundinnen und Kunden vor Ort und Prüfung der Einbausituation"
+    },
+    {
+     "responsibility": "Werk- und Montagepläne für Montage und beteiligte Gewerke ausarbeiten"
+    },
+    {
+     "responsibility": "Abstimmung mit Herstellern, Lieferanten und dem Montageteam"
+    }
+   ],
+   "requirement_de": [
+    {
+     "anforderungen": "Abgeschlossene Ausbildung oder abgeschlossenes Studium in Bautechnik, Innenausbau, Tischlerei oder Innenarchitektur bzw. eine vergleichbare Qualifikation"
+    },
+    {
+     "anforderungen": "Kenntnisse in Archicad und/oder AutoCAD"
+    },
+    {
+     "anforderungen": "Räumliches Vorstellungsvermögen und genaue Arbeitsweise"
+    },
+    {
+     "anforderungen": "Verständnis für Materialien, Konstruktionen und Einbausituationen"
+    },
+    {
+     "anforderungen": "Freude an der Zusammenarbeit mit Planung, Verkauf und Montage"
+    }
+   ],
+   "benefits_de": [
+    {
+     "benefit": "Arbeitsort im Einrichtungsstudio in Lochau, Landstraße 11, am Bodensee"
+    },
+    {
+     "benefit": "Arbeit mit den internationalen Designmarken unserer Ausstellung"
+    },
+    {
+     "benefit": "Zusammenarbeit in einem Team aus Interior Design, Planung, Beratung und Montage – Projekte aus einer Hand"
+    }
+   ],
+   "title_en": "CAD Designer (m/f/d)",
+   "job_status_en": "Full-time",
+   "start_en": "immediately",
+   "job_description_en": "You turn furnishing, kitchen and bathroom concepts into precise plans – from on-site measurement to workshop and installation drawings. In doing so, you work closely with interior design, sales and installation.",
+   "category_en": "Planning",
+   "responsibilities_en": [
+    {
+     "responsibility": "Preparing floor plans, elevations and detail drawings for kitchens, bathrooms and furniture"
+    },
+    {
+     "responsibility": "Transferring designs from hand sketches and models into CAD drawings and 3D views"
+    },
+    {
+     "responsibility": "Taking measurements at customers’ premises and checking the installation situation"
+    },
+    {
+     "responsibility": "Preparing workshop and installation drawings for the installation team and the trades involved"
+    },
+    {
+     "responsibility": "Coordinating with manufacturers, suppliers and the installation team"
+    }
+   ],
+   "requirement_en": [
+    {
+     "anforderungen": "Completed vocational training or degree in building technology, interior fit-out, joinery or interior architecture, or a comparable qualification"
+    },
+    {
+     "anforderungen": "Knowledge of Archicad and/or AutoCAD"
+    },
+    {
+     "anforderungen": "Spatial awareness and a precise way of working"
+    },
+    {
+     "anforderungen": "Understanding of materials, constructions and installation situations"
+    },
+    {
+     "anforderungen": "Enjoyment of working together with planning, sales and installation"
+    }
+   ],
+   "benefits_en": [
+    {
+     "benefit": "Workplace at the interior design studio in Lochau, Landstraße 11, on Lake Constance"
+    },
+    {
+     "benefit": "Working with the international design brands in our showroom"
+    },
+    {
+     "benefit": "Collaboration in a team of interior design, planning, consulting and installation – projects from a single source"
+    }
+   ],
+   "title_fr": "Dessinateur·rice CAO (h/f/d)",
+   "job_status_fr": "Temps plein",
+   "start_fr": "dès que possible",
+   "description_de_lemploi": "Vous transformez des concepts d’aménagement, de cuisine et de salle de bains en plans précis – du relevé de mesures jusqu’aux plans d’exécution et de montage. Vous travaillez en étroite collaboration avec le design d’intérieur, la vente et le montage.",
+   "category_fr": "Conception",
+   "responsibilities_fr": [
+    {
+     "responsibility": "Établir des plans, des élévations et des plans de détail pour cuisines, salles de bains et meubles"
+    },
+    {
+     "responsibility": "Transposer des projets issus de croquis et de maquettes en plans CAO et en vues 3D"
+    },
+    {
+     "responsibility": "Effectuer les relevés de mesures sur place chez la clientèle et vérifier les conditions d’installation"
+    },
+    {
+     "responsibility": "Élaborer les plans d’exécution et de montage pour le montage et les corps de métier concernés"
+    },
+    {
+     "responsibility": "Assurer la coordination avec les fabricants, les fournisseurs et l’équipe de montage"
+    }
+   ],
+   "requirement_fr": [
+    {
+     "anforderungen": "Formation ou études achevées en technique du bâtiment, aménagement intérieur, menuiserie ou architecture d’intérieur, ou qualification équivalente"
+    },
+    {
+     "anforderungen": "Connaissances d’Archicad et/ou d’AutoCAD"
+    },
+    {
+     "anforderungen": "Vision dans l’espace et méthode de travail précise"
+    },
+    {
+     "anforderungen": "Compréhension des matériaux, des constructions et des conditions d’installation"
+    },
+    {
+     "anforderungen": "Plaisir à collaborer avec la conception, la vente et le montage"
+    }
+   ],
+   "benefits_fr": [
+    {
+     "benefit": "Lieu de travail au studio d’aménagement intérieur de Lochau, Landstraße 11, au bord du lac de Constance"
+    },
+    {
+     "benefit": "Travail avec les marques de design internationales de notre showroom"
+    },
+    {
+     "benefit": "Collaboration au sein d’une équipe réunissant design d’intérieur, conception, conseil et montage – des projets d’un seul interlocuteur"
+    }
+   ],
+   "title_it": "Progettista CAD (m/f/d)",
+   "job_status_it": "Tempo pieno",
+   "start_it": "da subito",
+   "jobs_description_it": "Trasforma concetti di arredamento, cucine e bagni in piani precisi – dal rilievo delle misure fino ai disegni esecutivi e di montaggio. Lavora a stretto contatto con interior design, vendita e montaggio.",
+   "category_it": "Progettazione",
+   "responsibilities_it": [
+    {
+     "responsibility": "Redigere piante, prospetti e disegni di dettaglio per cucine, bagni e mobili"
+    },
+    {
+     "responsibility": "Trasferire progetti da schizzi a mano e modelli in disegni CAD e viste 3D"
+    },
+    {
+     "responsibility": "Rilevare le misure presso i clienti e verificare la situazione di installazione"
+    },
+    {
+     "responsibility": "Elaborare disegni esecutivi e di montaggio per il montaggio e le imprese coinvolte"
+    },
+    {
+     "responsibility": "Coordinarsi con produttori, fornitori e il team di montaggio"
+    }
+   ],
+   "requirement_it": [
+    {
+     "anforderungen": "Formazione professionale o studi conclusi in tecnica edilizia, finiture d’interni, falegnameria o architettura d’interni, oppure qualifica equivalente"
+    },
+    {
+     "anforderungen": "Conoscenza di Archicad e/o AutoCAD"
+    },
+    {
+     "anforderungen": "Capacità di visione spaziale e metodo di lavoro preciso"
+    },
+    {
+     "anforderungen": "Comprensione di materiali, costruzioni e situazioni di installazione"
+    },
+    {
+     "anforderungen": "Piacere di collaborare con progettazione, vendita e montaggio"
+    }
+   ],
+   "benefits_it": [
+    {
+     "benefit": "Luogo di lavoro presso lo studio di arredamento a Lochau, Landstraße 11, sul Lago di Costanza"
+    },
+    {
+     "benefit": "Lavoro con i marchi di design internazionali del nostro showroom"
+    },
+    {
+     "benefit": "Collaborazione in un team di interior design, progettazione, consulenza e montaggio – progetti seguiti dallo stesso team dall’inizio alla fine"
+    }
+   ],
+   "_hinweise": {
+    "slug": "cad-planer-in-m-w-d",
+    "entgelt": {
+     "kvMindestBrutto": 2535,
+     "zeitraum": "Monat",
+     "ueberzahlung": true,
+     "kollektivvertrag": "KV Handel Angestellte, Beschäftigungsgruppe E, Stufe 1"
+    },
+    "ausmass": "Vollzeit",
+    "start": "ab sofort",
+    "valid_through": "2027-01-02",
+    "salary_unit": "MONTH"
+   }
+  },
+  {
+   "doctype": "Karriere",
+   "title": "Innenarchitekt/in (m/w/d)",
+   "status": "Aktiv",
+   "posted": "2026-11-03",
+   "type": "Vollzeit",
+   "positions": 1,
+   "salary": 2879,
+   "job_status_de": "Vollzeit",
+   "start_de": "ab sofort",
+   "stellenbeschreibung": "Sie entwickeln mit unseren Kundinnen und Kunden Konzepte für Wohnräume, Küchen und Bäder und begleiten die Projekte von der ersten Idee bis zur Übergabe.",
+   "category_de": "Interior Design",
+   "responsibilities_de": [
+    {
+     "responsibility": "Beratung zu Raum, Material, Licht und Möbeln"
+    },
+    {
+     "responsibility": "Einrichtungskonzepte mit Skizze, Modell und 3D-Visualisierung entwerfen"
+    },
+    {
+     "responsibility": "Möbel, Materialien und Oberflächen aus dem Sortiment unserer Marken auswählen"
+    },
+    {
+     "responsibility": "Präsentationen, Pläne und Angebote gemeinsam mit dem Verkauf erstellen"
+    },
+    {
+     "responsibility": "Koordination mit CAD-Planung, Montage und beteiligten Gewerken"
+    }
+   ],
+   "requirement_de": [
+    {
+     "anforderungen": "Abgeschlossenes Studium oder abgeschlossene Ausbildung in Innenarchitektur oder Interior Design bzw. eine vergleichbare Qualifikation"
+    },
+    {
+     "anforderungen": "Erfahrung in der Planung von Wohnräumen, Küchen oder Bädern"
+    },
+    {
+     "anforderungen": "Gespür für Proportion, Material und Farbe"
+    },
+    {
+     "anforderungen": "Sicherer Umgang mit CAD- und Visualisierungsprogrammen"
+    },
+    {
+     "anforderungen": "Freude an der Beratung und am Kontakt mit Kundinnen und Kunden"
+    }
+   ],
+   "benefits_de": [
+    {
+     "benefit": "Arbeitsort im Einrichtungsstudio in Lochau, Landstraße 11, am Bodensee"
+    },
+    {
+     "benefit": "Arbeit mit den internationalen Designmarken unserer Ausstellung"
+    },
+    {
+     "benefit": "Zusammenarbeit in einem Team aus Interior Design, Planung, Beratung und Montage – Projekte aus einer Hand"
+    }
+   ],
+   "title_en": "Interior Architect (m/f/d)",
+   "job_status_en": "Full-time",
+   "start_en": "immediately",
+   "job_description_en": "Together with our customers, you develop concepts for living spaces, kitchens and bathrooms and accompany the projects from the first idea through to handover.",
+   "category_en": "Interior Design",
+   "responsibilities_en": [
+    {
+     "responsibility": "Advising on space, materials, lighting and furniture"
+    },
+    {
+     "responsibility": "Designing furnishing concepts with sketches, models and 3D visualisation"
+    },
+    {
+     "responsibility": "Selecting furniture, materials and surfaces from the range of our brands"
+    },
+    {
+     "responsibility": "Preparing presentations, plans and quotations together with sales"
+    },
+    {
+     "responsibility": "Coordinating with CAD planning, installation and the trades involved"
+    }
+   ],
+   "requirement_en": [
+    {
+     "anforderungen": "Completed degree or vocational training in interior architecture or interior design, or a comparable qualification"
+    },
+    {
+     "anforderungen": "Experience in planning living spaces, kitchens or bathrooms"
+    },
+    {
+     "anforderungen": "A feel for proportion, material and colour"
+    },
+    {
+     "anforderungen": "Confident use of CAD and visualisation software"
+    },
+    {
+     "anforderungen": "Enjoyment of advising and of contact with customers"
+    }
+   ],
+   "benefits_en": [
+    {
+     "benefit": "Workplace at the interior design studio in Lochau, Landstraße 11, on Lake Constance"
+    },
+    {
+     "benefit": "Working with the international design brands in our showroom"
+    },
+    {
+     "benefit": "Collaboration in a team of interior design, planning, consulting and installation – projects from a single source"
+    }
+   ],
+   "title_fr": "Architecte d’intérieur (h/f/d)",
+   "job_status_fr": "Temps plein",
+   "start_fr": "dès que possible",
+   "description_de_lemploi": "Avec nos clientes et clients, vous développez des concepts pour des espaces de vie, des cuisines et des salles de bains, et vous accompagnez les projets de la première idée jusqu’à la remise.",
+   "category_fr": "Design d’intérieur",
+   "responsibilities_fr": [
+    {
+     "responsibility": "Conseiller sur l’espace, les matériaux, la lumière et le mobilier"
+    },
+    {
+     "responsibility": "Concevoir des concepts d’aménagement à l’aide de croquis, de maquettes et de visualisations 3D"
+    },
+    {
+     "responsibility": "Sélectionner meubles, matériaux et surfaces dans l’assortiment de nos marques"
+    },
+    {
+     "responsibility": "Préparer présentations, plans et offres en collaboration avec la vente"
+    },
+    {
+     "responsibility": "Assurer la coordination avec la conception CAO, le montage et les corps de métier concernés"
+    }
+   ],
+   "requirement_fr": [
+    {
+     "anforderungen": "Études ou formation achevées en architecture d’intérieur ou en design d’intérieur, ou qualification équivalente"
+    },
+    {
+     "anforderungen": "Expérience dans la conception d’espaces de vie, de cuisines ou de salles de bains"
+    },
+    {
+     "anforderungen": "Sens des proportions, des matériaux et des couleurs"
+    },
+    {
+     "anforderungen": "Maîtrise des logiciels de CAO et de visualisation"
+    },
+    {
+     "anforderungen": "Plaisir à conseiller et à échanger avec la clientèle"
+    }
+   ],
+   "benefits_fr": [
+    {
+     "benefit": "Lieu de travail au studio d’aménagement intérieur de Lochau, Landstraße 11, au bord du lac de Constance"
+    },
+    {
+     "benefit": "Travail avec les marques de design internationales de notre showroom"
+    },
+    {
+     "benefit": "Collaboration au sein d’une équipe réunissant design d’intérieur, conception, conseil et montage – des projets d’un seul interlocuteur"
+    }
+   ],
+   "title_it": "Architetto/a d’interni (m/f/d)",
+   "job_status_it": "Tempo pieno",
+   "start_it": "da subito",
+   "jobs_description_it": "Insieme ai nostri clienti sviluppa concetti per spazi abitativi, cucine e bagni e accompagna i progetti dalla prima idea fino alla consegna.",
+   "category_it": "Interior design",
+   "responsibilities_it": [
+    {
+     "responsibility": "Consulenza su spazio, materiali, luce e mobili"
+    },
+    {
+     "responsibility": "Ideare concetti di arredamento con schizzi, modelli e visualizzazioni 3D"
+    },
+    {
+     "responsibility": "Scegliere mobili, materiali e superfici dall’assortimento dei nostri marchi"
+    },
+    {
+     "responsibility": "Preparare presentazioni, piani e offerte insieme alla vendita"
+    },
+    {
+     "responsibility": "Coordinamento con la progettazione CAD, il montaggio e le imprese coinvolte"
+    }
+   ],
+   "requirement_it": [
+    {
+     "anforderungen": "Studi o formazione conclusi in architettura d’interni o interior design, oppure qualifica equivalente"
+    },
+    {
+     "anforderungen": "Esperienza nella progettazione di spazi abitativi, cucine o bagni"
+    },
+    {
+     "anforderungen": "Sensibilità per proporzioni, materiali e colori"
+    },
+    {
+     "anforderungen": "Buona padronanza di programmi CAD e di visualizzazione"
+    },
+    {
+     "anforderungen": "Piacere per la consulenza e per il contatto con i clienti"
+    }
+   ],
+   "benefits_it": [
+    {
+     "benefit": "Luogo di lavoro presso lo studio di arredamento a Lochau, Landstraße 11, sul Lago di Costanza"
+    },
+    {
+     "benefit": "Lavoro con i marchi di design internazionali del nostro showroom"
+    },
+    {
+     "benefit": "Collaborazione in un team di interior design, progettazione, consulenza e montaggio – progetti seguiti dallo stesso team dall’inizio alla fine"
+    }
+   ],
+   "_hinweise": {
+    "slug": "innenarchitekt-in-m-w-d",
+    "entgelt": {
+     "kvMindestBrutto": 2879,
+     "zeitraum": "Monat",
+     "ueberzahlung": true,
+     "kollektivvertrag": "KV Handel Angestellte, Beschäftigungsgruppe F, Stufe 1"
+    },
+    "ausmass": "Vollzeit",
+    "start": "ab sofort",
+    "valid_through": "2027-01-02",
+    "salary_unit": "MONTH"
+   }
+  },
+  {
+   "doctype": "Karriere",
+   "title": "Verkäufer/in Einrichtungsberatung (m/w/d)",
+   "status": "Aktiv",
+   "posted": "2026-11-03",
+   "type": "Vollzeit",
+   "positions": 1,
+   "salary": 2362,
+   "job_status_de": "Vollzeit",
+   "start_de": "ab sofort",
+   "stellenbeschreibung": "Sie beraten Besucherinnen und Besucher in unserer Ausstellung in Lochau und begleiten sie von der ersten Frage bis zum Auftrag.",
+   "category_de": "Verkauf und Beratung",
+   "responsibilities_de": [
+    {
+     "responsibility": "Empfang und Beratung von Kundinnen und Kunden in der Ausstellung"
+    },
+    {
+     "responsibility": "Möbel, Leuchten und Accessoires unserer Designmarken vorstellen"
+    },
+    {
+     "responsibility": "Angebote und Auftragsbestätigungen erstellen"
+    },
+    {
+     "responsibility": "Abstimmung mit Interior Design, Planung und Montage zu Lieferung und Aufbau"
+    },
+    {
+     "responsibility": "Pflege der Ausstellung und Betreuung von Kundinnen und Kunden nach dem Kauf"
+    }
+   ],
+   "requirement_de": [
+    {
+     "anforderungen": "Abgeschlossene kaufmännische Ausbildung oder Erfahrung im Verkauf, gern im Möbel- oder Einrichtungsbereich"
+    },
+    {
+     "anforderungen": "Interesse an Design, Materialien und Wohnen"
+    },
+    {
+     "anforderungen": "Freundliches Auftreten und Freude am Kundenkontakt"
+    },
+    {
+     "anforderungen": "Strukturierte und zuverlässige Arbeitsweise"
+    },
+    {
+     "anforderungen": "Sicherer Umgang mit gängigen Office-Programmen"
+    }
+   ],
+   "benefits_de": [
+    {
+     "benefit": "Arbeitsort im Einrichtungsstudio in Lochau, Landstraße 11, am Bodensee"
+    },
+    {
+     "benefit": "Arbeit mit den internationalen Designmarken unserer Ausstellung"
+    },
+    {
+     "benefit": "Zusammenarbeit in einem Team aus Interior Design, Planung, Beratung und Montage – Projekte aus einer Hand"
+    }
+   ],
+   "title_en": "Sales Consultant Interior Furnishing (m/f/d)",
+   "job_status_en": "Full-time",
+   "start_en": "immediately",
+   "job_description_en": "You advise visitors in our showroom in Lochau and accompany them from the first question through to the order.",
+   "category_en": "Sales and Consulting",
+   "responsibilities_en": [
+    {
+     "responsibility": "Welcoming and advising customers in the showroom"
+    },
+    {
+     "responsibility": "Presenting furniture, lighting and accessories from our design brands"
+    },
+    {
+     "responsibility": "Preparing quotations and order confirmations"
+    },
+    {
+     "responsibility": "Coordinating delivery and assembly with interior design, planning and installation"
+    },
+    {
+     "responsibility": "Looking after the showroom and supporting customers after their purchase"
+    }
+   ],
+   "requirement_en": [
+    {
+     "anforderungen": "Completed commercial training or experience in sales, ideally in the furniture or interior sector"
+    },
+    {
+     "anforderungen": "Interest in design, materials and living"
+    },
+    {
+     "anforderungen": "A friendly manner and enjoyment of customer contact"
+    },
+    {
+     "anforderungen": "A structured and reliable way of working"
+    },
+    {
+     "anforderungen": "Confident use of common office software"
+    }
+   ],
+   "benefits_en": [
+    {
+     "benefit": "Workplace at the interior design studio in Lochau, Landstraße 11, on Lake Constance"
+    },
+    {
+     "benefit": "Working with the international design brands in our showroom"
+    },
+    {
+     "benefit": "Collaboration in a team of interior design, planning, consulting and installation – projects from a single source"
+    }
+   ],
+   "title_fr": "Conseiller·ère de vente en aménagement intérieur (h/f/d)",
+   "job_status_fr": "Temps plein",
+   "start_fr": "dès que possible",
+   "description_de_lemploi": "Vous conseillez les visiteuses et visiteurs de notre showroom à Lochau et les accompagnez de la première question jusqu’à la commande.",
+   "category_fr": "Vente et conseil",
+   "responsibilities_fr": [
+    {
+     "responsibility": "Accueillir et conseiller la clientèle dans le showroom"
+    },
+    {
+     "responsibility": "Présenter les meubles, luminaires et accessoires de nos marques de design"
+    },
+    {
+     "responsibility": "Établir des offres et des confirmations de commande"
+    },
+    {
+     "responsibility": "Assurer la coordination avec le design d’intérieur, la conception et le montage pour la livraison et l’installation"
+    },
+    {
+     "responsibility": "Entretenir le showroom et suivre la clientèle après l’achat"
+    }
+   ],
+   "requirement_fr": [
+    {
+     "anforderungen": "Formation commerciale achevée ou expérience dans la vente, de préférence dans le secteur du meuble ou de l’aménagement intérieur"
+    },
+    {
+     "anforderungen": "Intérêt pour le design, les matériaux et l’habitat"
+    },
+    {
+     "anforderungen": "Présentation aimable et plaisir au contact avec la clientèle"
+    },
+    {
+     "anforderungen": "Méthode de travail structurée et fiable"
+    },
+    {
+     "anforderungen": "Maîtrise des logiciels de bureautique courants"
+    }
+   ],
+   "benefits_fr": [
+    {
+     "benefit": "Lieu de travail au studio d’aménagement intérieur de Lochau, Landstraße 11, au bord du lac de Constance"
+    },
+    {
+     "benefit": "Travail avec les marques de design internationales de notre showroom"
+    },
+    {
+     "benefit": "Collaboration au sein d’une équipe réunissant design d’intérieur, conception, conseil et montage – des projets d’un seul interlocuteur"
+    }
+   ],
+   "title_it": "Addetto/a alla vendita e consulenza d’arredamento (m/f/d)",
+   "job_status_it": "Tempo pieno",
+   "start_it": "da subito",
+   "jobs_description_it": "Offre consulenza ai visitatori del nostro showroom a Lochau e li accompagna dalla prima domanda fino all’ordine.",
+   "category_it": "Vendita e consulenza",
+   "responsibilities_it": [
+    {
+     "responsibility": "Accoglienza e consulenza dei clienti nello showroom"
+    },
+    {
+     "responsibility": "Presentare mobili, lampade e accessori dei nostri marchi di design"
+    },
+    {
+     "responsibility": "Redigere offerte e conferme d’ordine"
+    },
+    {
+     "responsibility": "Coordinamento con interior design, progettazione e montaggio per consegna e installazione"
+    },
+    {
+     "responsibility": "Cura dello showroom e assistenza ai clienti dopo l’acquisto"
+    }
+   ],
+   "requirement_it": [
+    {
+     "anforderungen": "Formazione commerciale conclusa o esperienza nella vendita, preferibilmente nel settore del mobile o dell’arredamento"
+    },
+    {
+     "anforderungen": "Interesse per design, materiali e abitare"
+    },
+    {
+     "anforderungen": "Modi cordiali e piacere per il contatto con i clienti"
+    },
+    {
+     "anforderungen": "Metodo di lavoro strutturato e affidabile"
+    },
+    {
+     "anforderungen": "Buona padronanza dei comuni programmi Office"
+    }
+   ],
+   "benefits_it": [
+    {
+     "benefit": "Luogo di lavoro presso lo studio di arredamento a Lochau, Landstraße 11, sul Lago di Costanza"
+    },
+    {
+     "benefit": "Lavoro con i marchi di design internazionali del nostro showroom"
+    },
+    {
+     "benefit": "Collaborazione in un team di interior design, progettazione, consulenza e montaggio – progetti seguiti dallo stesso team dall’inizio alla fine"
+    }
+   ],
+   "_hinweise": {
+    "slug": "verkaeufer-in-einrichtungsberatung-m-w-d",
+    "entgelt": {
+     "kvMindestBrutto": 2362,
+     "zeitraum": "Monat",
+     "ueberzahlung": true,
+     "kollektivvertrag": "KV Handel Angestellte, Beschäftigungsgruppe D, Stufe 1"
+    },
+    "ausmass": "Vollzeit",
+    "start": "ab sofort",
+    "valid_through": "2027-01-02",
+    "salary_unit": "MONTH"
+   }
+  },
+  {
+   "doctype": "Karriere",
+   "title": "Monteur/in mit Tischlerlehre (m/w/d)",
+   "status": "Aktiv",
+   "posted": "2026-11-03",
+   "type": "Vollzeit",
+   "positions": 1,
+   "salary": 2358,
+   "job_status_de": "Vollzeit",
+   "start_de": "ab sofort",
+   "stellenbeschreibung": "Sie montieren Küchen, Einbaumöbel und Designmöbel bei unseren Kundinnen und Kunden und sorgen mit Ihrer Tischlerausbildung für eine saubere, passgenaue Ausführung.",
+   "category_de": "Montage",
+   "responsibilities_de": [
+    {
+     "responsibility": "Montage von Küchen, Einbau- und Designmöbeln bei Kundinnen und Kunden"
+    },
+    {
+     "responsibility": "Anpassungsarbeiten an Möbeln und Einbauteilen vor Ort"
+    },
+    {
+     "responsibility": "Montage- und Werkpläne lesen und umsetzen"
+    },
+    {
+     "responsibility": "Lieferungen prüfen und die Montage dokumentieren"
+    },
+    {
+     "responsibility": "Abstimmung mit Planung und weiteren Gewerken auf der Baustelle"
+    }
+   ],
+   "requirement_de": [
+    {
+     "anforderungen": "Abgeschlossene Lehre als Tischler/in"
+    },
+    {
+     "anforderungen": "Erfahrung in der Möbel- oder Küchenmontage"
+    },
+    {
+     "anforderungen": "Sorgfältige Arbeitsweise und Verständnis für Werkpläne"
+    },
+    {
+     "anforderungen": "Freundlicher Umgang mit Kundinnen und Kunden vor Ort"
+    },
+    {
+     "anforderungen": "Teamfähigkeit und Zuverlässigkeit"
+    },
+    {
+     "anforderungen": "Führerschein B (Voraussetzung), Führerschein C von Vorteil"
+    }
+   ],
+   "benefits_de": [
+    {
+     "benefit": "Arbeitsort im Einrichtungsstudio in Lochau, Landstraße 11, am Bodensee"
+    },
+    {
+     "benefit": "Arbeit mit den internationalen Designmarken unserer Ausstellung"
+    },
+    {
+     "benefit": "Zusammenarbeit in einem Team aus Interior Design, Planung, Beratung und Montage – Projekte aus einer Hand"
+    }
+   ],
+   "title_en": "Installer with Joinery Apprenticeship (m/f/d)",
+   "job_status_en": "Full-time",
+   "start_en": "immediately",
+   "job_description_en": "You install kitchens, built-in furniture and design furniture at our customers’ premises and, with your joinery training, ensure a clean, precisely fitting finish.",
+   "category_en": "Installation",
+   "responsibilities_en": [
+    {
+     "responsibility": "Installing kitchens, built-in furniture and design furniture at customers’ premises"
+    },
+    {
+     "responsibility": "Carrying out on-site adjustments to furniture and built-in components"
+    },
+    {
+     "responsibility": "Reading and implementing installation and workshop drawings"
+    },
+    {
+     "responsibility": "Checking deliveries and documenting the installation"
+    },
+    {
+     "responsibility": "Coordinating with planning and other trades on site"
+    }
+   ],
+   "requirement_en": [
+    {
+     "anforderungen": "Completed apprenticeship as a joiner/carpenter"
+    },
+    {
+     "anforderungen": "Experience in furniture or kitchen installation"
+    },
+    {
+     "anforderungen": "A careful way of working and an understanding of workshop drawings"
+    },
+    {
+     "anforderungen": "Friendly dealings with customers on site"
+    },
+    {
+     "anforderungen": "Team spirit and reliability"
+    },
+    {
+     "anforderungen": "Driving licence category B (required), category C an advantage"
+    }
+   ],
+   "benefits_en": [
+    {
+     "benefit": "Workplace at the interior design studio in Lochau, Landstraße 11, on Lake Constance"
+    },
+    {
+     "benefit": "Working with the international design brands in our showroom"
+    },
+    {
+     "benefit": "Collaboration in a team of interior design, planning, consulting and installation – projects from a single source"
+    }
+   ],
+   "title_fr": "Monteur·euse avec apprentissage de menuisier·ère (h/f/d)",
+   "job_status_fr": "Temps plein",
+   "start_fr": "dès que possible",
+   "description_de_lemploi": "Vous montez des cuisines, des meubles encastrés et des meubles design chez nos clientes et clients et, grâce à votre formation de menuisier·ère, vous garantissez une exécution soignée et ajustée avec précision.",
+   "category_fr": "Montage",
+   "responsibilities_fr": [
+    {
+     "responsibility": "Montage de cuisines, de meubles encastrés et de meubles design chez la clientèle"
+    },
+    {
+     "responsibility": "Travaux d’ajustement sur place sur les meubles et les éléments encastrés"
+    },
+    {
+     "responsibility": "Lire et mettre en œuvre les plans de montage et d’exécution"
+    },
+    {
+     "responsibility": "Contrôler les livraisons et documenter le montage"
+    },
+    {
+     "responsibility": "Assurer la coordination avec la conception et les autres corps de métier sur le chantier"
+    }
+   ],
+   "requirement_fr": [
+    {
+     "anforderungen": "Apprentissage de menuisier·ère achevé"
+    },
+    {
+     "anforderungen": "Expérience dans le montage de meubles ou de cuisines"
+    },
+    {
+     "anforderungen": "Méthode de travail soignée et compréhension des plans d’exécution"
+    },
+    {
+     "anforderungen": "Contact aimable avec la clientèle sur place"
+    },
+    {
+     "anforderungen": "Esprit d’équipe et fiabilité"
+    },
+    {
+     "anforderungen": "Permis B (obligatoire), permis C apprécié"
+    }
+   ],
+   "benefits_fr": [
+    {
+     "benefit": "Lieu de travail au studio d’aménagement intérieur de Lochau, Landstraße 11, au bord du lac de Constance"
+    },
+    {
+     "benefit": "Travail avec les marques de design internationales de notre showroom"
+    },
+    {
+     "benefit": "Collaboration au sein d’une équipe réunissant design d’intérieur, conception, conseil et montage – des projets d’un seul interlocuteur"
+    }
+   ],
+   "title_it": "Montatore/trice con apprendistato da falegname (m/f/d)",
+   "job_status_it": "Tempo pieno",
+   "start_it": "da subito",
+   "jobs_description_it": "Monta cucine, mobili su misura e mobili di design presso i nostri clienti e, grazie alla formazione da falegname, garantisce un’esecuzione pulita e precisa.",
+   "category_it": "Montaggio",
+   "responsibilities_it": [
+    {
+     "responsibility": "Montaggio di cucine, mobili su misura e mobili di design presso i clienti"
+    },
+    {
+     "responsibility": "Lavori di adattamento su mobili ed elementi a incasso in loco"
+    },
+    {
+     "responsibility": "Leggere e attuare disegni di montaggio ed esecutivi"
+    },
+    {
+     "responsibility": "Controllare le consegne e documentare il montaggio"
+    },
+    {
+     "responsibility": "Coordinamento con la progettazione e le altre imprese in cantiere"
+    }
+   ],
+   "requirement_it": [
+    {
+     "anforderungen": "Apprendistato concluso come falegname"
+    },
+    {
+     "anforderungen": "Esperienza nel montaggio di mobili o cucine"
+    },
+    {
+     "anforderungen": "Metodo di lavoro accurato e comprensione dei disegni esecutivi"
+    },
+    {
+     "anforderungen": "Modi cordiali con i clienti in loco"
+    },
+    {
+     "anforderungen": "Spirito di squadra e affidabilità"
+    },
+    {
+     "anforderungen": "Patente B (requisito), patente C costituisce un vantaggio"
+    }
+   ],
+   "benefits_it": [
+    {
+     "benefit": "Luogo di lavoro presso lo studio di arredamento a Lochau, Landstraße 11, sul Lago di Costanza"
+    },
+    {
+     "benefit": "Lavoro con i marchi di design internazionali del nostro showroom"
+    },
+    {
+     "benefit": "Collaborazione in un team di interior design, progettazione, consulenza e montaggio – progetti seguiti dallo stesso team dall’inizio alla fine"
+    }
+   ],
+   "_hinweise": {
+    "slug": "monteur-in-mit-tischlerlehre-m-w-d",
+    "entgelt": {
+     "kvMindestBrutto": 2358,
+     "zeitraum": "Monat",
+     "ueberzahlung": true,
+     "kollektivvertrag": "KV Handel Arbeiter:innen, Lohntafel A, Gruppe 5 (Fachkräfte), bis 1 Jahr Betriebszugehörigkeit"
+    },
+    "ausmass": "Vollzeit",
+    "start": "ab sofort",
+    "valid_through": "2027-01-02",
+    "salary_unit": "MONTH"
+   }
+  },
+  {
+   "doctype": "Karriere",
+   "title": "Monteur/in (m/w/d)",
+   "status": "Aktiv",
+   "posted": "2026-11-03",
+   "type": "Vollzeit",
+   "positions": 1,
+   "salary": 2178,
+   "job_status_de": "Vollzeit",
+   "start_de": "ab sofort",
+   "stellenbeschreibung": "Sie liefern und montieren Möbel, Leuchten und Küchenelemente bei unseren Kundinnen und Kunden und arbeiten dabei im Montageteam.",
+   "category_de": "Montage",
+   "responsibilities_de": [
+    {
+     "responsibility": "Lieferung und Aufbau von Möbeln, Leuchten und Küchenelementen"
+    },
+    {
+     "responsibility": "Mitarbeit bei der Montage von Küchen und Einbaumöbeln"
+    },
+    {
+     "responsibility": "Schutz der Räume bei Kundinnen und Kunden und Entsorgung der Verpackung"
+    },
+    {
+     "responsibility": "Ware prüfen und Schäden oder fehlende Teile melden"
+    },
+    {
+     "responsibility": "Zusammenarbeit mit Tischlerinnen und Tischlern, Planung und Verkauf"
+    }
+   ],
+   "requirement_de": [
+    {
+     "anforderungen": "Handwerkliches Geschick und Erfahrung in der Montage; eine handwerkliche Ausbildung ist von Vorteil"
+    },
+    {
+     "anforderungen": "Sorgfältiger Umgang mit Möbeln und empfindlichen Oberflächen"
+    },
+    {
+     "anforderungen": "Freundliches Auftreten bei Kundinnen und Kunden"
+    },
+    {
+     "anforderungen": "Teamfähigkeit und Zuverlässigkeit"
+    },
+    {
+     "anforderungen": "Führerschein B (Voraussetzung), Führerschein C von Vorteil"
+    }
+   ],
+   "benefits_de": [
+    {
+     "benefit": "Arbeitsort im Einrichtungsstudio in Lochau, Landstraße 11, am Bodensee"
+    },
+    {
+     "benefit": "Arbeit mit den internationalen Designmarken unserer Ausstellung"
+    },
+    {
+     "benefit": "Zusammenarbeit in einem Team aus Interior Design, Planung, Beratung und Montage – Projekte aus einer Hand"
+    }
+   ],
+   "title_en": "Installer (m/f/d)",
+   "job_status_en": "Full-time",
+   "start_en": "immediately",
+   "job_description_en": "You deliver and install furniture, lighting and kitchen elements at our customers’ premises, working as part of the installation team.",
+   "category_en": "Installation",
+   "responsibilities_en": [
+    {
+     "responsibility": "Delivering and assembling furniture, lighting and kitchen elements"
+    },
+    {
+     "responsibility": "Assisting with the installation of kitchens and built-in furniture"
+    },
+    {
+     "responsibility": "Protecting rooms at customers’ premises and disposing of packaging"
+    },
+    {
+     "responsibility": "Checking goods and reporting damage or missing parts"
+    },
+    {
+     "responsibility": "Working together with joiners, planning and sales"
+    }
+   ],
+   "requirement_en": [
+    {
+     "anforderungen": "Manual skills and experience in installation; vocational training in a trade is an advantage"
+    },
+    {
+     "anforderungen": "Careful handling of furniture and delicate surfaces"
+    },
+    {
+     "anforderungen": "A friendly manner with customers"
+    },
+    {
+     "anforderungen": "Team spirit and reliability"
+    },
+    {
+     "anforderungen": "Driving licence category B (required), category C an advantage"
+    }
+   ],
+   "benefits_en": [
+    {
+     "benefit": "Workplace at the interior design studio in Lochau, Landstraße 11, on Lake Constance"
+    },
+    {
+     "benefit": "Working with the international design brands in our showroom"
+    },
+    {
+     "benefit": "Collaboration in a team of interior design, planning, consulting and installation – projects from a single source"
+    }
+   ],
+   "title_fr": "Monteur·euse (h/f/d)",
+   "job_status_fr": "Temps plein",
+   "start_fr": "dès que possible",
+   "description_de_lemploi": "Vous livrez et montez des meubles, des luminaires et des éléments de cuisine chez nos clientes et clients, au sein de l’équipe de montage.",
+   "category_fr": "Montage",
+   "responsibilities_fr": [
+    {
+     "responsibility": "Livraison et montage de meubles, de luminaires et d’éléments de cuisine"
+    },
+    {
+     "responsibility": "Participation au montage de cuisines et de meubles encastrés"
+    },
+    {
+     "responsibility": "Protection des pièces chez la clientèle et élimination des emballages"
+    },
+    {
+     "responsibility": "Contrôler la marchandise et signaler les dommages ou les pièces manquantes"
+    },
+    {
+     "responsibility": "Collaboration avec les menuisières et menuisiers, la conception et la vente"
+    }
+   ],
+   "requirement_fr": [
+    {
+     "anforderungen": "Habileté manuelle et expérience dans le montage ; une formation dans un métier manuel est un atout"
+    },
+    {
+     "anforderungen": "Manipulation soigneuse des meubles et des surfaces délicates"
+    },
+    {
+     "anforderungen": "Présentation aimable auprès de la clientèle"
+    },
+    {
+     "anforderungen": "Esprit d’équipe et fiabilité"
+    },
+    {
+     "anforderungen": "Permis B (obligatoire), permis C apprécié"
+    }
+   ],
+   "benefits_fr": [
+    {
+     "benefit": "Lieu de travail au studio d’aménagement intérieur de Lochau, Landstraße 11, au bord du lac de Constance"
+    },
+    {
+     "benefit": "Travail avec les marques de design internationales de notre showroom"
+    },
+    {
+     "benefit": "Collaboration au sein d’une équipe réunissant design d’intérieur, conception, conseil et montage – des projets d’un seul interlocuteur"
+    }
+   ],
+   "title_it": "Montatore/trice (m/f/d)",
+   "job_status_it": "Tempo pieno",
+   "start_it": "da subito",
+   "jobs_description_it": "Consegna e monta mobili, lampade ed elementi da cucina presso i nostri clienti, lavorando nel team di montaggio.",
+   "category_it": "Montaggio",
+   "responsibilities_it": [
+    {
+     "responsibility": "Consegna e montaggio di mobili, lampade ed elementi da cucina"
+    },
+    {
+     "responsibility": "Collaborazione al montaggio di cucine e mobili su misura"
+    },
+    {
+     "responsibility": "Protezione degli ambienti presso i clienti e smaltimento degli imballaggi"
+    },
+    {
+     "responsibility": "Controllare la merce e segnalare danni o parti mancanti"
+    },
+    {
+     "responsibility": "Collaborazione con falegnami, progettazione e vendita"
+    }
+   ],
+   "requirement_it": [
+    {
+     "anforderungen": "Manualità ed esperienza nel montaggio; una formazione in un mestiere artigianale costituisce un vantaggio"
+    },
+    {
+     "anforderungen": "Cura nel maneggiare mobili e superfici delicate"
+    },
+    {
+     "anforderungen": "Modi cordiali con i clienti"
+    },
+    {
+     "anforderungen": "Spirito di squadra e affidabilità"
+    },
+    {
+     "anforderungen": "Patente B (requisito), patente C costituisce un vantaggio"
+    }
+   ],
+   "benefits_it": [
+    {
+     "benefit": "Luogo di lavoro presso lo studio di arredamento a Lochau, Landstraße 11, sul Lago di Costanza"
+    },
+    {
+     "benefit": "Lavoro con i marchi di design internazionali del nostro showroom"
+    },
+    {
+     "benefit": "Collaborazione in un team di interior design, progettazione, consulenza e montaggio – progetti seguiti dallo stesso team dall’inizio alla fine"
+    }
+   ],
+   "_hinweise": {
+    "slug": "monteur-in-m-w-d",
+    "entgelt": {
+     "kvMindestBrutto": 2178,
+     "zeitraum": "Monat",
+     "ueberzahlung": true,
+     "kollektivvertrag": "KV Handel Arbeiter:innen, Lohntafel A, Gruppe 2, bis 1 Jahr Betriebszugehörigkeit"
+    },
+    "ausmass": "Vollzeit",
+    "start": "ab sofort",
+    "valid_through": "2027-01-02",
+    "salary_unit": "MONTH"
+   }
+  },
+  {
+   "doctype": "Karriere",
+   "title": "Fliesenleger/in (m/w/d)",
+   "status": "Aktiv",
+   "posted": "2026-11-03",
+   "type": "Vollzeit",
+   "positions": 1,
+   "salary": 2358,
+   "job_status_de": "Vollzeit",
+   "start_de": "ab sofort",
+   "stellenbeschreibung": "Sie verlegen in unserem Montageteam Fliesen und Platten in Bädern, Küchen und Wellnessbereichen, die wir gemeinsam mit unseren Kundinnen und Kunden planen.",
+   "category_de": "Bad und Wellness",
+   "responsibilities_de": [
+    {
+     "responsibility": "Wand- und Bodenfliesen, Platten und Mosaike verlegen"
+    },
+    {
+     "responsibility": "Untergründe vorbereiten, abdichten und verfugen"
+    },
+    {
+     "responsibility": "Verlegepläne in Bad, Küche und Wellnessbereich umsetzen"
+    },
+    {
+     "responsibility": "Abstimmung mit Planung, Installation und Montage auf der Baustelle"
+    },
+    {
+     "responsibility": "Anschlüsse und Details sorgfältig ausführen"
+    }
+   ],
+   "requirement_de": [
+    {
+     "anforderungen": "Abgeschlossene Lehre als Platten- und Fliesenleger/in oder eine vergleichbare Qualifikation"
+    },
+    {
+     "anforderungen": "Erfahrung im Verlegen von Fliesen und Platten"
+    },
+    {
+     "anforderungen": "Genaue Arbeitsweise und Sinn für saubere Details"
+    },
+    {
+     "anforderungen": "Teamfähigkeit und Zuverlässigkeit"
+    }
+   ],
+   "benefits_de": [
+    {
+     "benefit": "Arbeitsort im Einrichtungsstudio in Lochau, Landstraße 11, am Bodensee"
+    },
+    {
+     "benefit": "Arbeit mit den internationalen Designmarken unserer Ausstellung"
+    },
+    {
+     "benefit": "Zusammenarbeit in einem Team aus Interior Design, Planung, Beratung und Montage – Projekte aus einer Hand"
+    }
+   ],
+   "title_en": "Tiler (m/f/d)",
+   "job_status_en": "Full-time",
+   "start_en": "immediately",
+   "job_description_en": "As part of our installation team, you lay tiles and slabs in bathrooms, kitchens and wellness areas that we plan together with our customers.",
+   "category_en": "Bathroom and Wellness",
+   "responsibilities_en": [
+    {
+     "responsibility": "Laying wall and floor tiles, slabs and mosaics"
+    },
+    {
+     "responsibility": "Preparing substrates, waterproofing and grouting"
+    },
+    {
+     "responsibility": "Implementing tiling plans in bathrooms, kitchens and wellness areas"
+    },
+    {
+     "responsibility": "Coordinating with planning, plumbing and installation on site"
+    },
+    {
+     "responsibility": "Carefully executing joints and details"
+    }
+   ],
+   "requirement_en": [
+    {
+     "anforderungen": "Completed apprenticeship as a tile and slab layer, or a comparable qualification"
+    },
+    {
+     "anforderungen": "Experience in laying tiles and slabs"
+    },
+    {
+     "anforderungen": "A precise way of working and an eye for clean details"
+    },
+    {
+     "anforderungen": "Team spirit and reliability"
+    }
+   ],
+   "benefits_en": [
+    {
+     "benefit": "Workplace at the interior design studio in Lochau, Landstraße 11, on Lake Constance"
+    },
+    {
+     "benefit": "Working with the international design brands in our showroom"
+    },
+    {
+     "benefit": "Collaboration in a team of interior design, planning, consulting and installation – projects from a single source"
+    }
+   ],
+   "title_fr": "Carreleur·euse (h/f/d)",
+   "job_status_fr": "Temps plein",
+   "start_fr": "dès que possible",
+   "description_de_lemploi": "Au sein de notre équipe de montage, vous posez des carreaux et des dalles dans des salles de bains, des cuisines et des espaces bien-être que nous concevons avec nos clientes et clients.",
+   "category_fr": "Salle de bains et bien-être",
+   "responsibilities_fr": [
+    {
+     "responsibility": "Poser des carreaux muraux et de sol, des dalles et des mosaïques"
+    },
+    {
+     "responsibility": "Préparer les supports, réaliser l’étanchéité et les joints"
+    },
+    {
+     "responsibility": "Mettre en œuvre les plans de pose en salle de bains, en cuisine et dans les espaces bien-être"
+    },
+    {
+     "responsibility": "Assurer la coordination avec la conception, l’installation sanitaire et le montage sur le chantier"
+    },
+    {
+     "responsibility": "Exécuter avec soin les raccords et les détails"
+    }
+   ],
+   "requirement_fr": [
+    {
+     "anforderungen": "Apprentissage de carreleur·euse achevé ou qualification équivalente"
+    },
+    {
+     "anforderungen": "Expérience dans la pose de carreaux et de dalles"
+    },
+    {
+     "anforderungen": "Méthode de travail précise et sens des finitions soignées"
+    },
+    {
+     "anforderungen": "Esprit d’équipe et fiabilité"
+    }
+   ],
+   "benefits_fr": [
+    {
+     "benefit": "Lieu de travail au studio d’aménagement intérieur de Lochau, Landstraße 11, au bord du lac de Constance"
+    },
+    {
+     "benefit": "Travail avec les marques de design internationales de notre showroom"
+    },
+    {
+     "benefit": "Collaboration au sein d’une équipe réunissant design d’intérieur, conception, conseil et montage – des projets d’un seul interlocuteur"
+    }
+   ],
+   "title_it": "Piastrellista (m/f/d)",
+   "job_status_it": "Tempo pieno",
+   "start_it": "da subito",
+   "jobs_description_it": "Nel nostro team di montaggio posa piastrelle e lastre in bagni, cucine e aree wellness che progettiamo insieme ai nostri clienti.",
+   "category_it": "Bagno e wellness",
+   "responsibilities_it": [
+    {
+     "responsibility": "Posare piastrelle per pareti e pavimenti, lastre e mosaici"
+    },
+    {
+     "responsibility": "Preparare i sottofondi, impermeabilizzare e stuccare le fughe"
+    },
+    {
+     "responsibility": "Attuare i piani di posa in bagno, cucina e area wellness"
+    },
+    {
+     "responsibility": "Coordinamento con progettazione, impiantistica e montaggio in cantiere"
+    },
+    {
+     "responsibility": "Eseguire con cura raccordi e dettagli"
+    }
+   ],
+   "requirement_it": [
+    {
+     "anforderungen": "Apprendistato concluso come piastrellista o qualifica equivalente"
+    },
+    {
+     "anforderungen": "Esperienza nella posa di piastrelle e lastre"
+    },
+    {
+     "anforderungen": "Metodo di lavoro preciso e cura per i dettagli"
+    },
+    {
+     "anforderungen": "Spirito di squadra e affidabilità"
+    }
+   ],
+   "benefits_it": [
+    {
+     "benefit": "Luogo di lavoro presso lo studio di arredamento a Lochau, Landstraße 11, sul Lago di Costanza"
+    },
+    {
+     "benefit": "Lavoro con i marchi di design internazionali del nostro showroom"
+    },
+    {
+     "benefit": "Collaborazione in un team di interior design, progettazione, consulenza e montaggio – progetti seguiti dallo stesso team dall’inizio alla fine"
+    }
+   ],
+   "_hinweise": {
+    "slug": "fliesenleger-in-m-w-d",
+    "entgelt": {
+     "kvMindestBrutto": 2358,
+     "zeitraum": "Monat",
+     "ueberzahlung": true,
+     "kollektivvertrag": "KV Handel Arbeiter:innen, Lohntafel A, Gruppe 5 (Fachkräfte), bis 1 Jahr Betriebszugehörigkeit"
+    },
+    "ausmass": "Vollzeit",
+    "start": "ab sofort",
+    "valid_through": "2027-01-02",
+    "salary_unit": "MONTH"
+   }
+  },
+  {
+   "doctype": "Karriere",
+   "title": "Installateur/in Sanitär/Heizung (m/w/d)",
+   "status": "Aktiv",
+   "posted": "2026-11-03",
+   "type": "Vollzeit",
+   "positions": 1,
+   "salary": 2358,
+   "job_status_de": "Vollzeit",
+   "start_de": "ab sofort",
+   "stellenbeschreibung": "Sie installieren in unserem Montageteam Sanitär- und Heizungstechnik in den Bädern, Küchen und Wellnessbereichen, die wir planen und umsetzen.",
+   "category_de": "Haustechnik",
+   "responsibilities_de": [
+    {
+     "responsibility": "Sanitärobjekte, Armaturen und Leitungen installieren"
+    },
+    {
+     "responsibility": "Heizungskomponenten montieren und anschließen"
+    },
+    {
+     "responsibility": "Küchengeräte an Wasser und Abwasser anschließen"
+    },
+    {
+     "responsibility": "Installationspläne in Abstimmung mit Planung und Fliesenlegerinnen und Fliesenlegern umsetzen"
+    },
+    {
+     "responsibility": "Inbetriebnahme, Funktionsprüfung und Dokumentation"
+    }
+   ],
+   "requirement_de": [
+    {
+     "anforderungen": "Abgeschlossene Lehre in Installations- und Gebäudetechnik (Sanitär- und Heizungstechnik) oder eine vergleichbare Qualifikation"
+    },
+    {
+     "anforderungen": "Erfahrung in der Sanitär- und Heizungsinstallation"
+    },
+    {
+     "anforderungen": "Sorgfältige und selbstständige Arbeitsweise"
+    },
+    {
+     "anforderungen": "Teamfähigkeit und freundlicher Umgang mit Kundinnen und Kunden"
+    }
+   ],
+   "benefits_de": [
+    {
+     "benefit": "Arbeitsort im Einrichtungsstudio in Lochau, Landstraße 11, am Bodensee"
+    },
+    {
+     "benefit": "Arbeit mit den internationalen Designmarken unserer Ausstellung"
+    },
+    {
+     "benefit": "Zusammenarbeit in einem Team aus Interior Design, Planung, Beratung und Montage – Projekte aus einer Hand"
+    }
+   ],
+   "title_en": "Plumbing and Heating Installer (m/f/d)",
+   "job_status_en": "Full-time",
+   "start_en": "immediately",
+   "job_description_en": "As part of our installation team, you install plumbing and heating systems in the bathrooms, kitchens and wellness areas that we plan and implement.",
+   "category_en": "Building Services",
+   "responsibilities_en": [
+    {
+     "responsibility": "Installing sanitary fixtures, fittings and pipework"
+    },
+    {
+     "responsibility": "Mounting and connecting heating components"
+    },
+    {
+     "responsibility": "Connecting kitchen appliances to water supply and drainage"
+    },
+    {
+     "responsibility": "Implementing installation plans in coordination with planning and tilers"
+    },
+    {
+     "responsibility": "Commissioning, function testing and documentation"
+    }
+   ],
+   "requirement_en": [
+    {
+     "anforderungen": "Completed apprenticeship in installation and building services engineering (plumbing and heating technology), or a comparable qualification"
+    },
+    {
+     "anforderungen": "Experience in plumbing and heating installation"
+    },
+    {
+     "anforderungen": "A careful and independent way of working"
+    },
+    {
+     "anforderungen": "Team spirit and friendly dealings with customers"
+    }
+   ],
+   "benefits_en": [
+    {
+     "benefit": "Workplace at the interior design studio in Lochau, Landstraße 11, on Lake Constance"
+    },
+    {
+     "benefit": "Working with the international design brands in our showroom"
+    },
+    {
+     "benefit": "Collaboration in a team of interior design, planning, consulting and installation – projects from a single source"
+    }
+   ],
+   "title_fr": "Installateur·rice sanitaire et chauffage (h/f/d)",
+   "job_status_fr": "Temps plein",
+   "start_fr": "dès que possible",
+   "description_de_lemploi": "Au sein de notre équipe de montage, vous installez les équipements sanitaires et de chauffage dans les salles de bains, les cuisines et les espaces bien-être que nous concevons et réalisons.",
+   "category_fr": "Technique du bâtiment",
+   "responsibilities_fr": [
+    {
+     "responsibility": "Installer des appareils sanitaires, de la robinetterie et des conduites"
+    },
+    {
+     "responsibility": "Monter et raccorder des composants de chauffage"
+    },
+    {
+     "responsibility": "Raccorder les appareils de cuisine à l’eau et aux eaux usées"
+    },
+    {
+     "responsibility": "Mettre en œuvre les plans d’installation en coordination avec la conception et les carreleuses et carreleurs"
+    },
+    {
+     "responsibility": "Mise en service, contrôle de fonctionnement et documentation"
+    }
+   ],
+   "requirement_fr": [
+    {
+     "anforderungen": "Apprentissage achevé en technique d’installation et du bâtiment (sanitaire et chauffage) ou qualification équivalente"
+    },
+    {
+     "anforderungen": "Expérience dans l’installation sanitaire et de chauffage"
+    },
+    {
+     "anforderungen": "Méthode de travail soignée et autonome"
+    },
+    {
+     "anforderungen": "Esprit d’équipe et contact aimable avec la clientèle"
+    }
+   ],
+   "benefits_fr": [
+    {
+     "benefit": "Lieu de travail au studio d’aménagement intérieur de Lochau, Landstraße 11, au bord du lac de Constance"
+    },
+    {
+     "benefit": "Travail avec les marques de design internationales de notre showroom"
+    },
+    {
+     "benefit": "Collaboration au sein d’une équipe réunissant design d’intérieur, conception, conseil et montage – des projets d’un seul interlocuteur"
+    }
+   ],
+   "title_it": "Installatore/trice idraulico/a e termotecnico/a (m/f/d)",
+   "job_status_it": "Tempo pieno",
+   "start_it": "da subito",
+   "jobs_description_it": "Nel nostro team di montaggio installa impianti sanitari e di riscaldamento nei bagni, nelle cucine e nelle aree wellness che progettiamo e realizziamo.",
+   "category_it": "Impiantistica",
+   "responsibilities_it": [
+    {
+     "responsibility": "Installare sanitari, rubinetteria e tubazioni"
+    },
+    {
+     "responsibility": "Montare e collegare componenti di riscaldamento"
+    },
+    {
+     "responsibility": "Collegare gli elettrodomestici da cucina all’acqua e agli scarichi"
+    },
+    {
+     "responsibility": "Attuare i piani di installazione in coordinamento con la progettazione e i piastrellisti"
+    },
+    {
+     "responsibility": "Messa in funzione, verifica di funzionamento e documentazione"
+    }
+   ],
+   "requirement_it": [
+    {
+     "anforderungen": "Apprendistato concluso in tecnica degli impianti e degli edifici (impianti sanitari e di riscaldamento) o qualifica equivalente"
+    },
+    {
+     "anforderungen": "Esperienza nell’installazione di impianti sanitari e di riscaldamento"
+    },
+    {
+     "anforderungen": "Metodo di lavoro accurato e autonomo"
+    },
+    {
+     "anforderungen": "Spirito di squadra e modi cordiali con i clienti"
+    }
+   ],
+   "benefits_it": [
+    {
+     "benefit": "Luogo di lavoro presso lo studio di arredamento a Lochau, Landstraße 11, sul Lago di Costanza"
+    },
+    {
+     "benefit": "Lavoro con i marchi di design internazionali del nostro showroom"
+    },
+    {
+     "benefit": "Collaborazione in un team di interior design, progettazione, consulenza e montaggio – progetti seguiti dallo stesso team dall’inizio alla fine"
+    }
+   ],
+   "_hinweise": {
+    "slug": "installateur-in-sanitaer-heizung-m-w-d",
+    "entgelt": {
+     "kvMindestBrutto": 2358,
+     "zeitraum": "Monat",
+     "ueberzahlung": true,
+     "kollektivvertrag": "KV Handel Arbeiter:innen, Lohntafel A, Gruppe 5 (Fachkräfte), bis 1 Jahr Betriebszugehörigkeit"
+    },
+    "ausmass": "Vollzeit",
+    "start": "ab sofort",
+    "valid_through": "2027-01-02",
+    "salary_unit": "MONTH"
+   }
+  },
+  {
+   "doctype": "Karriere",
+   "title": "Elektroplaner/in (m/w/d)",
+   "status": "Aktiv",
+   "posted": "2026-11-03",
+   "type": "Vollzeit",
+   "positions": 1,
+   "salary": 2535,
+   "job_status_de": "Vollzeit",
+   "start_de": "ab sofort",
+   "stellenbeschreibung": "Sie planen in unserem Planungsteam die Elektro- und Lichtinstallation für Küchen, Bäder und Wohnräume und stimmen sie mit Interior Design und Montage ab.",
+   "category_de": "Planung",
+   "responsibilities_de": [
+    {
+     "responsibility": "Elektroinstallationen, Anschlüsse und Lichtlösungen für Küche, Bad und Wohnraum planen"
+    },
+    {
+     "responsibility": "Elektro- und Beleuchtungspläne erstellen"
+    },
+    {
+     "responsibility": "Abstimmung mit Interior Design, CAD-Planung und unserem Montageteam"
+    },
+    {
+     "responsibility": "Geräteanschlüsse und technische Vorgaben der Hersteller prüfen"
+    },
+    {
+     "responsibility": "Die Umsetzung auf der Baustelle begleiten"
+    }
+   ],
+   "requirement_de": [
+    {
+     "anforderungen": "Abgeschlossene Ausbildung in Elektrotechnik (z. B. HTL oder Lehre mit Weiterbildung) oder eine vergleichbare Qualifikation"
+    },
+    {
+     "anforderungen": "Erfahrung in der Elektroplanung im Wohnbau oder Innenausbau"
+    },
+    {
+     "anforderungen": "Kenntnis der einschlägigen Normen und Vorschriften (ÖVE/ÖNORM)"
+    },
+    {
+     "anforderungen": "Kenntnisse in Archicad und/oder AutoCAD"
+    },
+    {
+     "anforderungen": "Genaue Arbeitsweise und Freude an der Zusammenarbeit im Team"
+    }
+   ],
+   "benefits_de": [
+    {
+     "benefit": "Arbeitsort im Einrichtungsstudio in Lochau, Landstraße 11, am Bodensee"
+    },
+    {
+     "benefit": "Arbeit mit den internationalen Designmarken unserer Ausstellung"
+    },
+    {
+     "benefit": "Zusammenarbeit in einem Team aus Interior Design, Planung, Beratung und Montage – Projekte aus einer Hand"
+    }
+   ],
+   "title_en": "Electrical Designer (m/f/d)",
+   "job_status_en": "Full-time",
+   "start_en": "immediately",
+   "job_description_en": "As part of our planning team, you plan the electrical and lighting installation for kitchens, bathrooms and living spaces and coordinate it with interior design and installation.",
+   "category_en": "Planning",
+   "responsibilities_en": [
+    {
+     "responsibility": "Planning electrical installations, connections and lighting solutions for kitchens, bathrooms and living spaces"
+    },
+    {
+     "responsibility": "Preparing electrical and lighting plans"
+    },
+    {
+     "responsibility": "Coordinating with interior design, CAD planning and our installation team"
+    },
+    {
+     "responsibility": "Checking appliance connections and manufacturers’ technical specifications"
+    },
+    {
+     "responsibility": "Supervising implementation on site"
+    }
+   ],
+   "requirement_en": [
+    {
+     "anforderungen": "Completed training in electrical engineering (e.g. HTL (higher technical college) or apprenticeship with further training), or a comparable qualification"
+    },
+    {
+     "anforderungen": "Experience in electrical planning in residential construction or interior fit-out"
+    },
+    {
+     "anforderungen": "Knowledge of the relevant standards and regulations (ÖVE/ÖNORM)"
+    },
+    {
+     "anforderungen": "Knowledge of Archicad and/or AutoCAD"
+    },
+    {
+     "anforderungen": "A precise way of working and enjoyment of teamwork"
+    }
+   ],
+   "benefits_en": [
+    {
+     "benefit": "Workplace at the interior design studio in Lochau, Landstraße 11, on Lake Constance"
+    },
+    {
+     "benefit": "Working with the international design brands in our showroom"
+    },
+    {
+     "benefit": "Collaboration in a team of interior design, planning, consulting and installation – projects from a single source"
+    }
+   ],
+   "title_fr": "Concepteur·rice en installations électriques (h/f/d)",
+   "job_status_fr": "Temps plein",
+   "start_fr": "dès que possible",
+   "description_de_lemploi": "Au sein de notre équipe de conception, vous concevez l’installation électrique et l’éclairage pour cuisines, salles de bains et espaces de vie, et les coordonnez avec le design d’intérieur et le montage.",
+   "category_fr": "Conception",
+   "responsibilities_fr": [
+    {
+     "responsibility": "Concevoir les installations électriques, les raccordements et les solutions d’éclairage pour la cuisine, la salle de bains et l’espace de vie"
+    },
+    {
+     "responsibility": "Établir les plans électriques et d’éclairage"
+    },
+    {
+     "responsibility": "Assurer la coordination avec le design d’intérieur, la conception CAO et notre équipe de montage"
+    },
+    {
+     "responsibility": "Vérifier les raccordements des appareils et les prescriptions techniques des fabricants"
+    },
+    {
+     "responsibility": "Accompagner la mise en œuvre sur le chantier"
+    }
+   ],
+   "requirement_fr": [
+    {
+     "anforderungen": "Formation achevée en électrotechnique (p. ex. HTL, lycée technique supérieur autrichien, ou apprentissage complété par une formation continue) ou qualification équivalente"
+    },
+    {
+     "anforderungen": "Expérience dans la conception électrique en construction résidentielle ou en aménagement intérieur"
+    },
+    {
+     "anforderungen": "Connaissance des normes et prescriptions en vigueur (ÖVE/ÖNORM)"
+    },
+    {
+     "anforderungen": "Connaissances d’Archicad et/ou d’AutoCAD"
+    },
+    {
+     "anforderungen": "Méthode de travail précise et plaisir à travailler en équipe"
+    }
+   ],
+   "benefits_fr": [
+    {
+     "benefit": "Lieu de travail au studio d’aménagement intérieur de Lochau, Landstraße 11, au bord du lac de Constance"
+    },
+    {
+     "benefit": "Travail avec les marques de design internationales de notre showroom"
+    },
+    {
+     "benefit": "Collaboration au sein d’une équipe réunissant design d’intérieur, conception, conseil et montage – des projets d’un seul interlocuteur"
+    }
+   ],
+   "title_it": "Progettista di impianti elettrici (m/f/d)",
+   "job_status_it": "Tempo pieno",
+   "start_it": "da subito",
+   "jobs_description_it": "Nel nostro team di progettazione progetta l’impianto elettrico e l’illuminazione per cucine, bagni e spazi abitativi e li coordina con l’interior design e il montaggio.",
+   "category_it": "Progettazione",
+   "responsibilities_it": [
+    {
+     "responsibility": "Progettare impianti elettrici, allacciamenti e soluzioni di illuminazione per cucina, bagno e spazi abitativi"
+    },
+    {
+     "responsibility": "Redigere piani elettrici e di illuminazione"
+    },
+    {
+     "responsibility": "Coordinamento con interior design, progettazione CAD e il nostro team di montaggio"
+    },
+    {
+     "responsibility": "Verificare gli allacciamenti degli apparecchi e le specifiche tecniche dei produttori"
+    },
+    {
+     "responsibility": "Seguire la realizzazione in cantiere"
+    }
+   ],
+   "requirement_it": [
+    {
+     "anforderungen": "Formazione conclusa in elettrotecnica (ad es. HTL, istituto tecnico superiore austriaco, o apprendistato con formazione continua) o qualifica equivalente"
+    },
+    {
+     "anforderungen": "Esperienza nella progettazione elettrica in edilizia residenziale o finiture d’interni"
+    },
+    {
+     "anforderungen": "Conoscenza delle norme e prescrizioni pertinenti (ÖVE/ÖNORM)"
+    },
+    {
+     "anforderungen": "Conoscenza di Archicad e/o AutoCAD"
+    },
+    {
+     "anforderungen": "Metodo di lavoro preciso e piacere di lavorare in team"
+    }
+   ],
+   "benefits_it": [
+    {
+     "benefit": "Luogo di lavoro presso lo studio di arredamento a Lochau, Landstraße 11, sul Lago di Costanza"
+    },
+    {
+     "benefit": "Lavoro con i marchi di design internazionali del nostro showroom"
+    },
+    {
+     "benefit": "Collaborazione in un team di interior design, progettazione, consulenza e montaggio – progetti seguiti dallo stesso team dall’inizio alla fine"
+    }
+   ],
+   "_hinweise": {
+    "slug": "elektroplaner-in-m-w-d",
+    "entgelt": {
+     "kvMindestBrutto": 2535,
+     "zeitraum": "Monat",
+     "ueberzahlung": true,
+     "kollektivvertrag": "KV Handel Angestellte, Beschäftigungsgruppe E, Stufe 1"
+    },
+    "ausmass": "Vollzeit",
+    "start": "ab sofort",
+    "valid_through": "2027-01-02",
+    "salary_unit": "MONTH"
+   }
+  }
+ ]
+}

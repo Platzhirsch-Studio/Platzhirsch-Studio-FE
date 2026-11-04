@@ -1,0 +1,16 @@
+{% extends "templates/emails/ph_mail_basis.html" %}
+{% set P = "margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e" %}
+{% block preheader %}{% if warteliste %}Sie stehen auf der Warteliste.{% else %}Wir freuen uns auf Sie in Lochau.{% endif %}{% endblock %}
+{% block inhalt %}
+<p style="{{ P }}">{{ anrede or "Guten Tag" }},</p>
+{% if warteliste %}
+<p style="{{ P }}">danke für Ihre Anmeldung zu „{{ event_titel }}“ am {{ event_datum }}. Der Abend ist derzeit ausgebucht; wir haben Sie mit {{ personen }} {% if personen == 1 %}Person{% else %}Personen{% endif %} auf die Warteliste gesetzt und melden uns, sobald ein Platz frei wird.</p>
+{% else %}
+<p style="{{ P }}">danke für Ihre Anmeldung zu „{{ event_titel }}“ am {{ event_datum }}{% if event_uhrzeit %} ab {{ event_uhrzeit }}{% endif %}. Wir haben {{ personen }} {% if personen == 1 %}Platz{% else %}Plätze{% endif %} für Sie notiert.</p>
+{% endif %}
+<p style="{{ P }}">Ort: {{ event_ort or "Showroom und Café, Landstraße 11, 6911 Lochau" }}</p>
+{% if event_programm %}<div style="{{ P }}">{{ event_programm }}</div>{% endif %}
+<p style="{{ P }}">Falls Sie doch nicht kommen können, geben Sie uns bitte kurz Bescheid{% if absagen_url %}: <a href="{{ absagen_url }}" style="color:#30373e">Anmeldung absagen</a>{% endif %}. Dann freut sich jemand anderes über den Platz.</p>
+<p style="{{ P }}">Herzlich<br>Susanne Messmer</p>
+{% endblock %}
+{% block fusszeile %}Diese Nachricht bestätigt Ihre Anmeldung bei Platzhirsch Home Living. Ihre Anmeldedaten löschen wir drei Monate nach der Veranstaltung.{% endblock %}

@@ -243,13 +243,14 @@ test("P2-2: Widerruf ohne Zuordnung → Bestätigung ohne Namen, Freitext und An
 
 // ---------- P2-3 ----------
 
-test("P2-3: USt- und Gültigkeitstexte hängen an den offenen Inhaberfragen", () => {
-  // Stand heute offen → "stripe" wirkt nicht, Texte neutral
-  assert.equal(VOUCHER_TAX, null);
-  assert.equal(VOUCHER_VALIDITY, null);
-  assert.equal(voucherDecisionsOpen().length, 2);
+test("P2-3: USt- und Gültigkeitstexte hängen an den Inhaberfragen (entschieden 03.11.2026, Nr. 46)", () => {
+  // Stand 03.11.2026: Mehrzweckgutschein (Steuerberater bestätigt noch), unbefristet → "stripe" darf wirken
+  assert.equal(VOUCHER_TAX, "mehrzweck");
+  assert.equal(VOUCHER_VALIDITY, "unbefristet");
+  assert.equal(voucherDecisionsOpen().length, 0);
   const env = { VOUCHER_MODE: "stripe", ...KEYS };
-  assert.equal(voucherMode(env, "freigegeben", { withdrawalStatus: "freigegeben" }), "anfrage", "Entscheidungen offen");
+  assert.equal(voucherMode(env, "freigegeben", { withdrawalStatus: "freigegeben" }), "stripe");
+  assert.equal(voucherMode(env, "freigegeben", { withdrawalStatus: "freigegeben", decisions: { tax: null, validity: null } }), "anfrage", "offene Entscheidungen sperren weiter");
   assert.equal(voucherMode(env, "freigegeben", { withdrawalStatus: "freigegeben", decisions: { tax: "einzweck", validity: null } }), "anfrage");
   assert.equal(voucherMode(env, "freigegeben", { withdrawalStatus: "freigegeben", decisions: { tax: "mehrzweck", validity: "30_jahre" } }), "stripe");
   assert.equal(voucherMode({ VOUCHER_MODE: "anfrage" }, "freigegeben"), "anfrage", "anfrage unverändert");

@@ -1,0 +1,212 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Vorlage für Zahlungsplan und Zahlungsziel (Angebot/AB/Rechnung).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "aktiv",
+  "standard",
+  "cb_1",
+  "anzahlung_prozent",
+  "teilzahlung_prozent",
+  "rest_prozent",
+  "sb_2",
+  "zieltage",
+  "skonto_promille",
+  "skonto_tage",
+  "cb_2",
+  "text"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "1"
+  },
+  {
+   "fieldname": "standard",
+   "fieldtype": "Check",
+   "label": "Standard",
+   "default": "0",
+   "description": "Genau eine Bedingung ist Standard für neue Angebote."
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "anzahlung_prozent",
+   "fieldtype": "Int",
+   "label": "Anzahlung bei Auftrag (%)",
+   "default": "40",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "teilzahlung_prozent",
+   "fieldtype": "Int",
+   "label": "Teilzahlung bei Lieferung (%)",
+   "default": "50",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "rest_prozent",
+   "fieldtype": "Int",
+   "label": "Rest nach Montage (%)",
+   "read_only": 1,
+   "default": "10"
+  },
+  {
+   "fieldname": "sb_2",
+   "fieldtype": "Section Break",
+   "label": "Zahlungsziel und Skonto"
+  },
+  {
+   "fieldname": "zieltage",
+   "fieldtype": "Int",
+   "label": "Zahlungsziel (Tage)",
+   "default": "14"
+  },
+  {
+   "fieldname": "skonto_promille",
+   "fieldtype": "Int",
+   "label": "Skonto (‰)",
+   "default": "0",
+   "description": "20 = 2 %"
+  },
+  {
+   "fieldname": "skonto_tage",
+   "fieldtype": "Int",
+   "label": "Skontofrist (Tage)",
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "text",
+   "fieldtype": "Small Text",
+   "label": "Text auf dem Beleg",
+   "description": "z. B. „40 % Anzahlung bei Auftrag, 50 % bei Lieferung, 10 % nach Montage, jeweils 14 Tage netto.“"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Zahlungsbedingung",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:titel",
+ "naming_rule": "By fieldname",
+ "title_field": "titel",
+ "search_fields": "titel"
+}

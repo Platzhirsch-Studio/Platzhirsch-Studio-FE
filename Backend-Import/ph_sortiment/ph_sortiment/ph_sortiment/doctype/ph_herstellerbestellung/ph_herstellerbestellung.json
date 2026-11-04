@@ -1,0 +1,547 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Bestellung beim Lieferanten mit Positionen, AB-Abgleich (Prüfprotokoll wie SHD/kiwi) und Lieferverfolgung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "tab_bestellung",
+  "titel",
+  "lieferant",
+  "marke",
+  "status",
+  "kommission",
+  "bezug_doctype",
+  "bezug_name",
+  "cb_bestellung",
+  "datum",
+  "bestellweg",
+  "gesendet_an",
+  "gesendet_am",
+  "gesendet_von",
+  "wunschtermin",
+  "bestaetigter_termin",
+  "waehrung",
+  "tab_positionen",
+  "positionen",
+  "sb_summen",
+  "summe_ek_cent",
+  "menge_bestellt",
+  "cb_summen",
+  "summe_vk_cent",
+  "menge_erhalten",
+  "sb_notizen",
+  "notizen_lieferant",
+  "notizen_intern",
+  "tab_ab",
+  "ab_nummer",
+  "ab_datum",
+  "ab_eingang",
+  "cb_ab",
+  "ab_datei",
+  "abweichungen_anzahl",
+  "abweichungen_offen",
+  "ab_geprueft_von",
+  "ab_geprueft_am",
+  "sb_abgleich",
+  "ab_abgleich",
+  "ab_hinweis",
+  "tab_lieferung",
+  "lieferadresse",
+  "lieferadresse_text",
+  "cb_lieferung",
+  "liefertermin_ist",
+  "geliefert_am",
+  "tab_system",
+  "idempotency_key",
+  "quelle",
+  "export_am",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "HB-.YYYY.-.#####",
+   "default": "HB-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "tab_bestellung",
+   "fieldtype": "Tab Break",
+   "label": "Bestellung"
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lieferant",
+   "fieldtype": "Link",
+   "label": "Lieferant",
+   "options": "PH Lieferant",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Link",
+   "label": "Marke",
+   "options": "PH Marke",
+   "fetch_from": "lieferant.marke",
+   "fetch_if_empty": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nGesendet\nAB erhalten\nAB geprueft\nTeilgeliefert\nGeliefert\nAbgeschlossen\nStorniert",
+   "default": "Entwurf",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Setzt der Workflow „PH Herstellerbestellung“."
+  },
+  {
+   "fieldname": "kommission",
+   "fieldtype": "Data",
+   "label": "Kommission (Kunde / Projekt)",
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "bezug_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug (Typ)",
+   "options": "DocType",
+   "description": "PH Auftragsbestaetigung, PH Projekt oder PH Bestellung – Apps ph_faktura/ph_projekte/ph_shop ergänzen eigene Link-Felder per Custom Field."
+  },
+  {
+   "fieldname": "bezug_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "bezug_doctype"
+  },
+  {
+   "fieldname": "cb_bestellung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Bestelldatum",
+   "default": "Today",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "bestellweg",
+   "fieldtype": "Select",
+   "label": "Bestellweg",
+   "options": "\nE-Mail\nPortal\nIWOfurn\npCon\nEDI\nFax",
+   "fetch_from": "lieferant.bestellweg",
+   "fetch_if_empty": 1
+  },
+  {
+   "fieldname": "gesendet_an",
+   "fieldtype": "Data",
+   "label": "Gesendet an (E-Mail/Portal)"
+  },
+  {
+   "fieldname": "gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Gesendet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gesendet_von",
+   "fieldtype": "Link",
+   "label": "Gesendet von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "wunschtermin",
+   "fieldtype": "Date",
+   "label": "Wunschtermin"
+  },
+  {
+   "fieldname": "bestaetigter_termin",
+   "fieldtype": "Date",
+   "label": "Bestätigter Termin (spätester)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "tab_positionen",
+   "fieldtype": "Tab Break",
+   "label": "Positionen"
+  },
+  {
+   "fieldname": "positionen",
+   "fieldtype": "Table",
+   "label": "Positionen",
+   "options": "PH Herstellerbestellung Position",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sb_summen",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "summe_ek_cent",
+   "fieldtype": "Int",
+   "label": "Summe EK netto (Cent)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "menge_bestellt",
+   "fieldtype": "Int",
+   "label": "Menge bestellt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_summen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "summe_vk_cent",
+   "fieldtype": "Int",
+   "label": "Summe VK brutto (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menge_erhalten",
+   "fieldtype": "Int",
+   "label": "Menge erhalten",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_notizen",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notizen_lieferant",
+   "fieldtype": "Small Text",
+   "label": "Hinweis an den Lieferanten (Druck)"
+  },
+  {
+   "fieldname": "notizen_intern",
+   "fieldtype": "Text Editor",
+   "label": "Interne Notizen",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "tab_ab",
+   "fieldtype": "Tab Break",
+   "label": "Auftragsbestätigung"
+  },
+  {
+   "fieldname": "ab_nummer",
+   "fieldtype": "Data",
+   "label": "AB-Nummer",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ab_datum",
+   "fieldtype": "Date",
+   "label": "AB-Datum"
+  },
+  {
+   "fieldname": "ab_eingang",
+   "fieldtype": "Datetime",
+   "label": "AB eingegangen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_ab",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ab_datei",
+   "fieldtype": "Attach",
+   "label": "AB-Datei (PDF)"
+  },
+  {
+   "fieldname": "abweichungen_anzahl",
+   "fieldtype": "Int",
+   "label": "Abweichungen",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "abweichungen_offen",
+   "fieldtype": "Int",
+   "label": "Abweichungen offen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ab_geprueft_von",
+   "fieldtype": "Link",
+   "label": "AB geprüft von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ab_geprueft_am",
+   "fieldtype": "Datetime",
+   "label": "AB geprüft am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_abgleich",
+   "fieldtype": "Section Break",
+   "label": "Prüfprotokoll (Soll/Ist)"
+  },
+  {
+   "fieldname": "ab_abgleich",
+   "fieldtype": "Table",
+   "label": "AB-Abgleich",
+   "options": "PH AB Abgleich"
+  },
+  {
+   "fieldname": "ab_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis zur AB"
+  },
+  {
+   "fieldname": "tab_lieferung",
+   "fieldtype": "Tab Break",
+   "label": "Lieferung"
+  },
+  {
+   "fieldname": "lieferadresse",
+   "fieldtype": "Select",
+   "label": "Lieferadresse",
+   "options": "Showroom\nLager\nKunde direkt",
+   "default": "Showroom",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lieferadresse_text",
+   "fieldtype": "Small Text",
+   "label": "Lieferadresse (Text)"
+  },
+  {
+   "fieldname": "cb_lieferung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "liefertermin_ist",
+   "fieldtype": "Date",
+   "label": "Erste Lieferung am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geliefert_am",
+   "fieldtype": "Date",
+   "label": "Vollständig geliefert am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_system",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Data",
+   "label": "Quelle",
+   "read_only": 1
+  },
+  {
+   "fieldname": "export_am",
+   "fieldtype": "Datetime",
+   "label": "Export IWOfurn/pCon am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Geändert von",
+   "options": "PH Herstellerbestellung",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Wareneingang",
+   "link_fieldname": "herstellerbestellung",
+   "group": "Lieferung"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Herstellerbestellung",
+ "owner": "Administrator",
+ "sort_field": "datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Gray"
+  },
+  {
+   "title": "Gesendet",
+   "color": "Blue"
+  },
+  {
+   "title": "AB erhalten",
+   "color": "Cyan"
+  },
+  {
+   "title": "AB geprueft",
+   "color": "Purple"
+  },
+  {
+   "title": "Teilgeliefert",
+   "color": "Orange"
+  },
+  {
+   "title": "Geliefert",
+   "color": "Green"
+  },
+  {
+   "title": "Abgeschlossen",
+   "color": "Green"
+  },
+  {
+   "title": "Storniert",
+   "color": "Red"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Sortiment Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Sortiment Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1
+  },
+  {
+   "role": "PH Sortiment Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "track_changes": 1,
+ "allow_import": 1,
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "lieferant,kommission,ab_nummer"
+}

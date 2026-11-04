@@ -1,0 +1,16 @@
+// Listenansicht PH Projekt: Phasenfarben, Standardfilter „laufend“.
+frappe.listview_settings["PH Projekt"] = {
+	add_fields: ["status", "projektart", "kunde_name", "liefertermin_geplant", "prioritaet"],
+	filters: [["status", "not in", ["Abgeschlossen", "Abgebrochen"]]],
+	get_indicator(doc) {
+		const farben = { Anfrage: "blue", Planung: "cyan", Angebot: "orange", Auftrag: "purple", Bestellung: "yellow", Lieferung: "light-blue", Montage: "pink", Uebergabe: "green", Abgeschlossen: "gray", Abgebrochen: "red" };
+		return [__(doc.status), farben[doc.status] || "gray", `status,=,${doc.status}`];
+	},
+	onload(listview) {
+		listview.page.add_inner_button(__("Auftragsmappe"), () => {
+			const sel = listview.get_checked_items();
+			if (sel.length !== 1) return frappe.msgprint(__("Bitte genau ein Projekt wählen."));
+			frappe.set_route("ph-auftragsmappe", { projekt: sel[0].name });
+		});
+	},
+};

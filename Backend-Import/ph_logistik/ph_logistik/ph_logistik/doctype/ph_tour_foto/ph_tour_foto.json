@@ -1,0 +1,69 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Foto an einem Tour-Stopp (vorher/nachher/Übergabe/Schaden).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "stopp_nr",
+  "foto",
+  "art",
+  "zeit",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "stopp_nr",
+   "fieldtype": "Int",
+   "label": "Stopp Nr.",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "foto",
+   "fieldtype": "Attach Image",
+   "label": "Foto",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "vorher\nnachher\nuebergabe\nschaden",
+   "default": "nachher",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "zeit",
+   "fieldtype": "Datetime",
+   "label": "Zeit",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Tour Foto",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

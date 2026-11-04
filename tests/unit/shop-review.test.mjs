@@ -69,9 +69,11 @@ test("USt: Live bleibt gesperrt, solange Fernverkaufszahlen fehlen oder die Schw
   assert.ok(b.includes("ust:regeln") && b.includes("ust:fernverkaeufe"));
 });
 
-test("Rechtstexte: alle Entwurf, kein Link zur OS-Plattform, Beschwerderecht nicht nur AT-Behörde", () => {
+test("Rechtstexte: alle freigegeben (03.11.2026), kein Link zur OS-Plattform, Beschwerderecht nicht nur AT-Behörde", () => {
   for (const s of SHOP_LEGAL) {
-    assert.equal(s.status, "entwurf", s.id);
+    // Inhaber-Entscheidungen Nr. 40/45/46 (03.11.2026): Kanzlei-Freigabe, status "freigegeben" mit Beleg.
+    assert.equal(s.status, "freigegeben", s.id);
+    assert.equal(s.freigabe?.datum, "2026-11-03", s.id);
     assert.equal(s.hinweis, undefined, "kein Herkunftshinweis in den Slot-Daten");
     const txt = blocksText(s.text);
     assert.doesNotMatch(txt, /ec\.europa\.eu\/consumers\/odr|OS-Plattform/i, s.id);

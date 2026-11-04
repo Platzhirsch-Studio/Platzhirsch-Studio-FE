@@ -1,0 +1,86 @@
+[
+ {
+  "doctype": "Workflow State",
+  "name": "PH Qualifiziert",
+  "workflow_state_name": "PH Qualifiziert",
+  "style": "Info",
+  "icon": "check"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Termin vereinbart",
+  "workflow_state_name": "PH Termin vereinbart",
+  "style": "Info",
+  "icon": "calendar"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Angebot",
+  "workflow_state_name": "PH Angebot",
+  "style": "Warning",
+  "icon": "file"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Gewonnen",
+  "workflow_state_name": "PH Gewonnen",
+  "style": "Success",
+  "icon": "star"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Verloren",
+  "workflow_state_name": "PH Verloren",
+  "style": "Inverse",
+  "icon": "remove"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Spam",
+  "workflow_state_name": "PH Spam",
+  "style": "Danger",
+  "icon": "ban-circle"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Unbestaetigt",
+  "workflow_state_name": "PH Unbestaetigt",
+  "style": "Warning",
+  "icon": "time"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Bestaetigt",
+  "workflow_state_name": "PH Bestaetigt",
+  "style": "Success",
+  "icon": "ok"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Nicht erschienen",
+  "workflow_state_name": "PH Nicht erschienen",
+  "style": "Inverse",
+  "icon": "eye-close"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Interessent",
+  "workflow_state_name": "PH Interessent",
+  "style": "Primary",
+  "icon": "user"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Kunde",
+  "workflow_state_name": "PH Kunde",
+  "style": "Success",
+  "icon": "star"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Inaktiv",
+  "workflow_state_name": "PH Inaktiv",
+  "style": "Inverse",
+  "icon": "pause"
+ }
+]

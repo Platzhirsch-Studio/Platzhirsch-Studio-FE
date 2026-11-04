@@ -1,0 +1,310 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Journal aller Bestandsänderungen (Wareneingang, Verkauf, Umlagerung, Inventur, Retoure, Ausbuchung, Reservierung). Nicht löschen – Storno per Gegenbuchung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "art",
+  "status",
+  "datum",
+  "cb_kopf",
+  "produkt",
+  "ausfuehrung",
+  "lagerbestand",
+  "menge",
+  "sb_orte",
+  "lagerort_von",
+  "platz_von",
+  "cb_orte",
+  "lagerort_nach",
+  "platz_nach",
+  "sb_bezug",
+  "bezug_doctype",
+  "bezug",
+  "von_user",
+  "cb_bezug",
+  "grund",
+  "storno_von",
+  "sb_system",
+  "idempotency_key",
+  "quelle"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-LBW-.YYYY.-.#####",
+   "default": "PH-LBW-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Wareneingang\nVerkauf\nUmlagerung\nInventur\nRetoure\nAusbuchung\nReservierung\nFreigabe",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Gebucht\nStorniert",
+   "default": "Gebucht",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Datetime",
+   "label": "Datum",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "ausfuehrung",
+   "fieldtype": "Link",
+   "label": "Ausführung",
+   "options": "PH Produkt Ausfuehrung"
+  },
+  {
+   "fieldname": "lagerbestand",
+   "fieldtype": "Link",
+   "label": "Bestand",
+   "options": "PH Lagerbestand",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Int",
+   "label": "Menge",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Positiv. Richtung ergibt sich aus der Art."
+  },
+  {
+   "fieldname": "sb_orte",
+   "fieldtype": "Section Break",
+   "label": "Lagerorte"
+  },
+  {
+   "fieldname": "lagerort_von",
+   "fieldtype": "Link",
+   "label": "Von Lagerort",
+   "options": "PH Lagerort",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "platz_von",
+   "fieldtype": "Data",
+   "label": "Von Platz"
+  },
+  {
+   "fieldname": "cb_orte",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lagerort_nach",
+   "fieldtype": "Link",
+   "label": "Nach Lagerort",
+   "options": "PH Lagerort",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "platz_nach",
+   "fieldtype": "Data",
+   "label": "Nach Platz"
+  },
+  {
+   "fieldname": "sb_bezug",
+   "fieldtype": "Section Break",
+   "label": "Bezug"
+  },
+  {
+   "fieldname": "bezug_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug (Typ)",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "bezug",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "bezug_doctype"
+  },
+  {
+   "fieldname": "von_user",
+   "fieldtype": "Link",
+   "label": "Gebucht von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_bezug",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Small Text",
+   "label": "Grund / Hinweis"
+  },
+  {
+   "fieldname": "storno_von",
+   "fieldtype": "Link",
+   "label": "Storno von",
+   "options": "PH Lagerbewegung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\npacktisch\nmobil\nscheduler",
+   "default": "backoffice"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Lagerbewegung",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Gebucht",
+   "color": "Green"
+  },
+  {
+   "title": "Storniert",
+   "color": "Gray"
+  }
+ ],
+ "track_changes": 1,
+ "search_fields": "produkt,art,bezug",
+ "title_field": "titel",
+ "track_seen": 0,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field"
+}

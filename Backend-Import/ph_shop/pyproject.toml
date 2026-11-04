@@ -1,0 +1,23 @@
+[project]
+name = "ph_shop"
+authors = [{ name = "MW Immobilienverwaltungs GmbH" }]
+description = "Website-Bestellungen, Reservierung/Abholung, Gutscheine, Zahlungen, Stripe, Widerruf, Retoure"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    # Stripe-SDK für Refunds, Session-Nachlese und Abgleich. Die Webhook-Signatur prüft ph_shop/stripe_signatur.py
+    # selbst (HMAC-SHA256), damit Tests ohne Netz und ohne Paket laufen. Keine Geheimnisse hier.
+    "stripe>=10,<13",
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0,<17.0.0"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"

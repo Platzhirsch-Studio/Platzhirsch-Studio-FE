@@ -1,0 +1,681 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Auftrag/Vorhaben eines Kunden – die digitale Auftragsmappe. Phase = Website PROJECT_STEPS; Workflow „PH Projekt“.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "projektart",
+  "status",
+  "prioritaet",
+  "cb_kopf",
+  "eingang",
+  "raum",
+  "kurzbeschreibung",
+  "berater",
+  "sb_kunde",
+  "kontakt",
+  "kunde_name",
+  "anfrage",
+  "cb_kunde",
+  "planer",
+  "montageleiter",
+  "team",
+  "sb_objekt",
+  "objekt_strasse",
+  "objekt_plz",
+  "objekt_ort",
+  "objekt_land",
+  "cb_objekt",
+  "objekt_hinweis",
+  "baustelle_kontakt",
+  "baustelle_telefon",
+  "sb_termine",
+  "liefertermin_geplant",
+  "montage_von",
+  "montage_bis",
+  "cb_termine",
+  "uebergabe_am",
+  "abgeschlossen_am",
+  "abgebrochen_grund",
+  "sb_raeume",
+  "raeume",
+  "positionen",
+  "sb_galerie",
+  "galerie_html",
+  "sb_phasen",
+  "phasen_verlauf",
+  "sb_budget",
+  "budget_cent",
+  "waehrung",
+  "cb_budget",
+  "auftragswert_cent",
+  "anzahlung_cent",
+  "bezahlt_cent",
+  "offen_cent",
+  "zeit_min_gesamt",
+  "sb_portal",
+  "portal_sichtbar",
+  "portal_positionen_preise",
+  "ki_generiert_hinweis",
+  "cb_portal",
+  "portal_hinweis",
+  "abnahme",
+  "notiz_intern",
+  "sb_system",
+  "idempotency_key",
+  "quelle",
+  "ip_hash"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-PRJ-.YYYY.-.####",
+   "default": "PH-PRJ-.YYYY.-.####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Projekttitel",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1,
+   "description": "z. B. „Wohnzimmer am See“ – so sieht es der Kunde im Portal."
+  },
+  {
+   "fieldname": "projektart",
+   "fieldtype": "Select",
+   "label": "Projektart",
+   "options": "Wohnung\nHaus\nKueche\nBad\nHotel\nObjekt\nYacht\nOutdoor\nSonstiges",
+   "reqd": 1,
+   "default": "Wohnung",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Phase",
+   "options": "Anfrage\nPlanung\nAngebot\nAuftrag\nBestellung\nLieferung\nMontage\nUebergabe\nAbgeschlossen\nAbgebrochen",
+   "default": "Anfrage",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Setzt der Workflow „PH Projekt“ (Website PROJECT_STEPS). Kanban-Spalten = diese Werte."
+  },
+  {
+   "fieldname": "prioritaet",
+   "fieldtype": "Select",
+   "label": "Priorität",
+   "options": "Normal\nHoch\nNiedrig",
+   "default": "Normal"
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "eingang",
+   "fieldtype": "Datetime",
+   "label": "Projektbeginn",
+   "reqd": 1
+  },
+  {
+   "fieldname": "raum",
+   "fieldtype": "Data",
+   "label": "Hauptraum / Bereich",
+   "description": "Wohnzimmer, Küche, Terrasse … (Portal: room)"
+  },
+  {
+   "fieldname": "kurzbeschreibung",
+   "fieldtype": "Small Text",
+   "label": "Kurzbeschreibung (Kunde sieht sie)"
+  },
+  {
+   "fieldname": "berater",
+   "fieldtype": "Link",
+   "label": "Berater",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_kunde",
+   "fieldtype": "Section Break",
+   "label": "Kunde"
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kunde (PH Kontakt)",
+   "options": "PH Kontakt",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "kunde_name",
+   "fieldtype": "Data",
+   "label": "Kundenname",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "anfrage",
+   "fieldtype": "Link",
+   "label": "Anfrage",
+   "options": "PH Anfrage"
+  },
+  {
+   "fieldname": "cb_kunde",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "planer",
+   "fieldtype": "Link",
+   "label": "Planer",
+   "options": "User"
+  },
+  {
+   "fieldname": "montageleiter",
+   "fieldtype": "Link",
+   "label": "Montageleiter",
+   "options": "User"
+  },
+  {
+   "fieldname": "team",
+   "fieldtype": "Table",
+   "label": "Team",
+   "options": "PH Projekt Team"
+  },
+  {
+   "fieldname": "sb_objekt",
+   "fieldtype": "Section Break",
+   "label": "Objekt / Baustelle"
+  },
+  {
+   "fieldname": "objekt_strasse",
+   "fieldtype": "Data",
+   "label": "Straße und Nummer"
+  },
+  {
+   "fieldname": "objekt_plz",
+   "fieldtype": "Data",
+   "label": "PLZ"
+  },
+  {
+   "fieldname": "objekt_ort",
+   "fieldtype": "Data",
+   "label": "Ort"
+  },
+  {
+   "fieldname": "objekt_land",
+   "fieldtype": "Data",
+   "label": "Land",
+   "default": "Österreich"
+  },
+  {
+   "fieldname": "cb_objekt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "objekt_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Zufahrt / Stockwerk / Lift / Parken"
+  },
+  {
+   "fieldname": "baustelle_kontakt",
+   "fieldtype": "Data",
+   "label": "Ansprechpartner vor Ort"
+  },
+  {
+   "fieldname": "baustelle_telefon",
+   "fieldtype": "Data",
+   "label": "Telefon vor Ort",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "sb_termine",
+   "fieldtype": "Section Break",
+   "label": "Termine"
+  },
+  {
+   "fieldname": "liefertermin_geplant",
+   "fieldtype": "Date",
+   "label": "Liefertermin geplant",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "montage_von",
+   "fieldtype": "Date",
+   "label": "Montage von"
+  },
+  {
+   "fieldname": "montage_bis",
+   "fieldtype": "Date",
+   "label": "Montage bis"
+  },
+  {
+   "fieldname": "cb_termine",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "uebergabe_am",
+   "fieldtype": "Date",
+   "label": "Übergabe am"
+  },
+  {
+   "fieldname": "abgeschlossen_am",
+   "fieldtype": "Date",
+   "label": "Abgeschlossen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abgebrochen_grund",
+   "fieldtype": "Small Text",
+   "label": "Grund des Abbruchs",
+   "depends_on": "eval:doc.status=='Abgebrochen'",
+   "mandatory_depends_on": "eval:doc.status=='Abgebrochen'"
+  },
+  {
+   "fieldname": "sb_raeume",
+   "fieldtype": "Section Break",
+   "label": "Räume und Positionen",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "raeume",
+   "fieldtype": "Table",
+   "label": "Räume",
+   "options": "PH Projekt Raum"
+  },
+  {
+   "fieldname": "positionen",
+   "fieldtype": "Table",
+   "label": "Positionen (Produkte)",
+   "options": "PH Projekt Position"
+  },
+  {
+   "fieldname": "sb_galerie",
+   "fieldtype": "Section Break",
+   "label": "Galerie"
+  },
+  {
+   "fieldname": "galerie_html",
+   "fieldtype": "HTML",
+   "label": "Galerie",
+   "description": "Renderings, Tagebuch-Fotos und Bild-Dokumente des Projekts (wird vom Formular geladen)."
+  },
+  {
+   "fieldname": "sb_phasen",
+   "fieldtype": "Section Break",
+   "label": "Phasenverlauf",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "phasen_verlauf",
+   "fieldtype": "Table",
+   "label": "Phasenverlauf",
+   "options": "PH Projekt Phase",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_budget",
+   "fieldtype": "Section Break",
+   "label": "Budget und Summen (intern)",
+   "collapsible": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "budget_cent",
+   "fieldtype": "Int",
+   "label": "Budget Kunde (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "cb_budget",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auftragswert_cent",
+   "fieldtype": "Int",
+   "label": "Auftragswert (Cent)",
+   "read_only": 1,
+   "permlevel": 1,
+   "description": "Aus ph_faktura (Auftragsbestätigungen), sobald installiert."
+  },
+  {
+   "fieldname": "anzahlung_cent",
+   "fieldtype": "Int",
+   "label": "Anzahlung erhalten (Cent)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "bezahlt_cent",
+   "fieldtype": "Int",
+   "label": "Bezahlt gesamt (Cent)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "offen_cent",
+   "fieldtype": "Int",
+   "label": "Offen (Cent)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "zeit_min_gesamt",
+   "fieldtype": "Int",
+   "label": "Erfasste Zeit (Minuten)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_portal",
+   "fieldtype": "Section Break",
+   "label": "Kundenportal"
+  },
+  {
+   "fieldname": "portal_sichtbar",
+   "fieldtype": "Check",
+   "label": "Im Kundenportal sichtbar",
+   "default": "1"
+  },
+  {
+   "fieldname": "portal_positionen_preise",
+   "fieldtype": "Check",
+   "label": "Positionen mit Preisen zeigen",
+   "default": "0",
+   "description": "Inhaber-Frage Nr. 10: Preise im Portal erst nach Freigabe."
+  },
+  {
+   "fieldname": "ki_generiert_hinweis",
+   "fieldtype": "Check",
+   "label": "Renderings teilweise KI-generiert (Hinweis AI Act Art. 50)",
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_portal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "portal_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis für den Kunden (Portal)"
+  },
+  {
+   "fieldname": "abnahme",
+   "fieldtype": "Link",
+   "label": "Abnahmeprotokoll",
+   "options": "PH Abnahme",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz_intern",
+   "fieldtype": "Text Editor",
+   "label": "Interne Notizen",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nsystem",
+   "default": "backoffice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Planung",
+   "link_fieldname": "projekt",
+   "group": "Planung"
+  },
+  {
+   "link_doctype": "PH Rendering",
+   "link_fieldname": "projekt",
+   "group": "Planung"
+  },
+  {
+   "link_doctype": "PH Rendering Feedback",
+   "link_fieldname": "projekt",
+   "group": "Planung"
+  },
+  {
+   "link_doctype": "PH Projekt Dokument",
+   "link_fieldname": "projekt",
+   "group": "Unterlagen"
+  },
+  {
+   "link_doctype": "PH Tagebuch Foto",
+   "link_fieldname": "projekt",
+   "group": "Unterlagen"
+  },
+  {
+   "link_doctype": "PH Referenz",
+   "link_fieldname": "projekt",
+   "group": "Unterlagen"
+  },
+  {
+   "link_doctype": "PH Produktpass",
+   "link_fieldname": "projekt",
+   "group": "Unterlagen"
+  },
+  {
+   "link_doctype": "PH Montageauftrag",
+   "link_fieldname": "projekt",
+   "group": "Umsetzung"
+  },
+  {
+   "link_doctype": "PH Fremdgewerk",
+   "link_fieldname": "projekt",
+   "group": "Umsetzung"
+  },
+  {
+   "link_doctype": "PH Abnahme",
+   "link_fieldname": "projekt",
+   "group": "Umsetzung"
+  },
+  {
+   "link_doctype": "PH Projekt Aufgabe",
+   "link_fieldname": "projekt",
+   "group": "Arbeit"
+  },
+  {
+   "link_doctype": "PH Projektzeit",
+   "link_fieldname": "projekt",
+   "group": "Arbeit"
+  },
+  {
+   "link_doctype": "PH Projekt Nachricht",
+   "link_fieldname": "projekt",
+   "group": "Kunde"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Projekt",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "eingang",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Anfrage",
+   "color": "Blue"
+  },
+  {
+   "title": "Planung",
+   "color": "Cyan"
+  },
+  {
+   "title": "Angebot",
+   "color": "Orange"
+  },
+  {
+   "title": "Auftrag",
+   "color": "Purple"
+  },
+  {
+   "title": "Bestellung",
+   "color": "Yellow"
+  },
+  {
+   "title": "Lieferung",
+   "color": "Light Blue"
+  },
+  {
+   "title": "Montage",
+   "color": "Pink"
+  },
+  {
+   "title": "Uebergabe",
+   "color": "Green"
+  },
+  {
+   "title": "Abgeschlossen",
+   "color": "Gray"
+  },
+  {
+   "title": "Abgebrochen",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "titel,kunde_name,objekt_ort,projektart",
+ "track_seen": 1
+}

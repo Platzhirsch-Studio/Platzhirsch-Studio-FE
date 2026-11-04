@@ -9,16 +9,18 @@
 //   async_payment_failed        → "fehlgeschlagen"
 //   checkout.session.expired    → "abgelaufen" (nur aus "offen")
 //   charge.refunded             → "erstattet" / "teilerstattet"
-// Keine Mails im Test, kein Backoffice. Logs ohne Personendaten.
+// Mail: nach „bezahlt“ die Vertragsbestätigung (§ 7 Abs 3 FAGG, orderMail.js;
+// live jeder Mailer, test nur Mock-Mailer). Kein Backoffice. Logs ohne Personendaten.
 // Keine "@/"-Importe.
 import { shippingAdapterFor } from "../commerce/shipping/index.js";
 import { createLocalOrderAdapter, shopDataDir } from "./orderStore.js";
 import { shopMode } from "./mode.js";
+import { sendeVertragsbestaetigung } from "./orderMail.js";
 
 const push = (o, status, now, extra = {}) => ({ ...o, ...extra, status, verlauf: [...(o.verlauf || []), { zeit: new Date(now).toISOString(), status }] });
 
 /**
- * @param {{ env?: object, store?: object, shipping?: object|null, now?: () => number }} [o]
+ * @param {{ env?: object, store?: object, shipping?: object|null, mailer?: object|null, now?: () => number }} [o]
  */
 export function createShopHooks(o = {}) {
   const env = o.env || process.env;
@@ -26,6 +28,14 @@ export function createShopHooks(o = {}) {
   let store = o.store || null;
   const st = () => (store ||= createLocalOrderAdapter(shopDataDir(env)));
   const shippingOf = () => (o.shipping !== undefined ? o.shipping : shippingAdapterFor(env, shopMode(env)));
+  const mailerOf = () => (typeof o.mailer === "function" ? o.mailer() : o.mailer || null);
+
+  /** Vertragsbestätigung genau einmal je Bestellung (Webhook-Zustellungen wiederholen sich). */
+  async function bestaetigen(order) {
+    if (order.mail?.status === "gesendet") return order;
+    await sendeVertragsbestaetigung({ store: st(), mailer: mailerOf(), now }, order, order.modus || shopMode(env));
+    return st().get("bestellungen", order.id);
+  }
 
   async function versenden(order) {
     if (order.lieferart !== "versand" || order.sendung?.awb) return order;
@@ -69,6 +79,7 @@ export function createShopHooks(o = {}) {
         if ((obj.amount_total ?? cur.summen.gesamtCent) !== cur.summen.gesamtCent) console.error(`[shop] ${id}: Betrag weicht ab`);
         let order = cur;
         if (!cur.bezahlt) order = await st().update("bestellungen", id, (x) => push(x, "bezahlt", t, { bezahlt: new Date(t).toISOString(), payment_intent: obj.payment_intent || null, livemode: Boolean(event.livemode), betrag_bezahlt_cent: obj.amount_total ?? null }));
+        order = await bestaetigen(order);
         await versenden(order);
         return "bezahlt";
       }

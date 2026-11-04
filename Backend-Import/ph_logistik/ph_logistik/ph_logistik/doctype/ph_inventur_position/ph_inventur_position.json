@@ -1,0 +1,113 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Zählposition einer Inventur (Soll aus Bestand, Ist gezählt).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "lagerbestand",
+  "produkt",
+  "produkt_name",
+  "platz",
+  "seriennummer",
+  "soll",
+  "ist",
+  "gezaehlt",
+  "differenz",
+  "grund",
+  "bemerkung"
+ ],
+ "fields": [
+  {
+   "fieldname": "lagerbestand",
+   "fieldtype": "Link",
+   "label": "Bestand",
+   "options": "PH Lagerbestand",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "produkt_name",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "platz",
+   "fieldtype": "Data",
+   "label": "Platz",
+   "columns": 1
+  },
+  {
+   "fieldname": "seriennummer",
+   "fieldtype": "Data",
+   "label": "Seriennummer"
+  },
+  {
+   "fieldname": "soll",
+   "fieldtype": "Int",
+   "label": "Soll",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "ist",
+   "fieldtype": "Int",
+   "label": "Ist (gezählt)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "gezaehlt",
+   "fieldtype": "Check",
+   "label": "Gezählt",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "differenz",
+   "fieldtype": "Int",
+   "label": "Differenz",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Select",
+   "label": "Grund",
+   "options": "\nSchwund\nVerkauf nicht gebucht\nUmlagerung nicht gebucht\nBeschaedigt\nZaehlfehler\nSonstiges"
+  },
+  {
+   "fieldname": "bemerkung",
+   "fieldtype": "Data",
+   "label": "Bemerkung"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Inventur Position",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

@@ -1,0 +1,25 @@
+{#- Zusatz-CSS der Faktura-Druckformate (im Block css von ph_basis.html eingebunden). -#}
+.ph-anschrift { min-height: 30mm; margin: 2mm 0 8mm; font-size: 10.5pt; line-height: 1.4; }
+.ph-anschrift .ph-absender { border-bottom: 1px solid var(--ph-linie); display: inline-block; padding-bottom: 1mm; margin-bottom: 2mm; }
+.ph-meta { width: 100%; font-size: 9pt; margin-bottom: 6mm; }
+.ph-meta td { padding: 0.5mm 4mm 0.5mm 0; vertical-align: top; }
+.ph-meta td.k { color: var(--ph-grau); white-space: nowrap; }
+.ph-positionen td.zahl { font-variant-numeric: tabular-nums; }
+.ph-ausfuehrung { color: var(--ph-grau); font-size: 9pt; }
+.ph-beschreibung { font-size: 9pt; margin-top: 1mm; }
+.ph-grau { color: var(--ph-grau); } .ph-klein { font-size: 8pt; }
+.ph-tag { font-size: 7pt; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--ph-grau); padding: 0 1.5mm; border-radius: 2px; color: var(--ph-grau); }
+tr.ph-alternativ td { color: var(--ph-grau); }
+tr.ph-text td, tr.ph-zwischensumme td { background: var(--ph-sand); }
+table.ph-summen { margin: 4mm 0 2mm auto; width: 95mm; border-collapse: collapse; font-size: 10pt; }
+table.ph-summen td { padding: 1.2mm 1.5mm; border-bottom: 1px solid var(--ph-linie); }
+table.ph-summen tr.ph-summe td { font-weight: 600; border-top: 1px solid var(--ph-tinte); border-bottom: none; font-size: 11pt; }
+table.ph-summen tr.ph-zahlbar td { border-bottom: 3px double var(--ph-tinte); }
+table.ph-summen tr.ph-anzahlung td { font-size: 9pt; }
+.ph-zahlung { display: flex; gap: 8mm; align-items: flex-start; margin-top: 6mm; padding: 4mm; background: var(--ph-sand); font-size: 9.5pt; }
+.ph-zahlung img { width: 32mm; height: 32mm; }
+.ph-zahlungsplan td.zahl { white-space: nowrap; }
+.ph-unterschrift { margin-top: 14mm; display: flex; gap: 20mm; }
+.ph-unterschrift div { flex: 1; border-top: 1px solid var(--ph-tinte); padding-top: 2mm; font-size: 8.5pt; color: var(--ph-grau); }
+.ph-stempel { display: inline-block; border: 2px solid #b91c1c; color: #b91c1c; font-weight: 600; letter-spacing: 0.1em; padding: 1mm 3mm; transform: rotate(-4deg); }
+.ph-hinweis-klein { font-size: 8.5pt; color: var(--ph-grau); margin-top: 4mm; }

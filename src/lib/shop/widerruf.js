@@ -15,8 +15,9 @@
 //
 // Mail: über den Payments-Mailer (src/lib/payments/mailer.js: Standard
 // „outbox“ = Ordner auf der Platte, Produktion ohne Mail-Anbieter „gesperrt“).
-// Im SHOP_MODE "test" wird KEINE Mail erzeugt (gleiche Regel wie handlers.js:
-// mail.status "nicht_gesendet", grund "testmodus"); nur "live" sendet.
+// Regel wie bei der Vertragsbestätigung (orderMail.js mailerErlaubt): "live"
+// sendet über jeden Mailer, "test" NUR über einen Mock-Mailer (outbox/memory,
+// Betreff [TEST]) – nie über resend; sonst mail "testmodus".
 // Nicht zugeordnete Erklärungen bekommen – wie withdrawal.js – eine
 // Bestätigung ohne Freitext (kein Mail-Relay), höchstens RECIPIENT_LIMIT je
 // Adresse in RECIPIENT_WINDOW_MS.
@@ -29,6 +30,7 @@ import { logRef, newOrderId } from "../payments/codes.js";
 import { mailHtml } from "../payments/mailer.js";
 import { ANBIETER, ANSCHRIFT } from "./legalTexte.js";
 import { shopMode } from "./mode.js";
+import { mailerErlaubt } from "./orderMail.js";
 
 export const MAX_BYTES = 8 * 1024;
 export const RECIPIENT_LIMIT = 3;
@@ -121,12 +123,11 @@ export async function recordShopWithdrawal(ctx, data) {
         `${ANBIETER.firma} („${ANBIETER.marke}“), ${ANSCHRIFT} · Telefon ${ANBIETER.telefon} · ${ANBIETER.email}`,
       ];
   let mail = "nicht_gesendet";
-  if (mode !== "live") mail = "testmodus";
+  if (!mailerErlaubt(ctx.mailer, mode)) mail = mode === "test" ? "testmodus" : "kein_mailer";
   else if (!zugeordnet && prior >= RECIPIENT_LIMIT) mail = "limit";
-  else if (!ctx.mailer) mail = "kein_mailer";
   else {
     try {
-      const r = await ctx.mailer.send({ to: data.email, subject: `Eingangsbestätigung Ihres Widerrufs (${id})`, text: lines.join("\n\n"), html: mailHtml(lines), tag: "shop-widerruf" });
+      const r = await ctx.mailer.send({ to: data.email, subject: `${mode === "test" ? "[TEST] " : ""}Eingangsbestätigung Ihres Widerrufs (${id})`, text: lines.join("\n\n"), html: mailHtml(lines), tag: "shop-widerruf" });
       mail = r?.ok === false ? "fehlgeschlagen" : "gesendet";
     } catch (err) {
       console.error(`[shop] widerruf ${id}: mail ${err?.message || err}`);

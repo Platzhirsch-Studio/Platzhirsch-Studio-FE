@@ -1,0 +1,16 @@
+[
+ {
+  "doctype": "Custom Field",
+  "name": "PH Anfrage Produkt-ph_sortiment_produkt",
+  "dt": "PH Anfrage Produkt",
+  "module": "PH Sortiment",
+  "fieldname": "ph_sortiment_produkt",
+  "label": "PH Produkt",
+  "fieldtype": "Link",
+  "options": "PH Produkt",
+  "insert_after": "produkt_slug",
+  "in_list_view": 0,
+  "read_only": 1,
+  "description": "Verknüpfung zum Sortiment (aus produkt_slug, ph_sortiment.ereignisse.anfrage_produkt_verknuepfen)."
+ }
+]

@@ -1,0 +1,416 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "event_id",
+  "titel",
+  "status",
+  "art",
+  "cb_1",
+  "datum",
+  "uhrzeit_von",
+  "uhrzeit_bis",
+  "ort",
+  "url",
+  "sb_plaetze",
+  "kapazitaet",
+  "plaetze_belegt",
+  "plaetze_frei",
+  "cb_2",
+  "warteliste",
+  "max_personen_je_anmeldung",
+  "kostenlos",
+  "sb_programm",
+  "programm",
+  "beschreibung",
+  "sb_anmeldungen",
+  "anmeldungen",
+  "sb_mail",
+  "bestaetigung_vorlage",
+  "erinnerung_vorlage",
+  "erinnerung_tage_vorher",
+  "cb_3",
+  "erinnerung_gesendet_am",
+  "einladungs_reise",
+  "kampagne",
+  "sb_dsgvo",
+  "loeschfrist_monate",
+  "anmeldungen_geloescht_am",
+  "cb_4",
+  "einwilligung_textversion",
+  "fotos_hinweis",
+  "sb_system",
+  "quelle_system"
+ ],
+ "fields": [
+  {
+   "fieldname": "event_id",
+   "fieldtype": "Data",
+   "label": "Kennung",
+   "reqd": 1,
+   "unique": 1,
+   "description": "z. B. adventsabend-2026 (Website src/app/[locale]/adventsabend/event.js)"
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Geplant\nOffen\nAusgebucht\nDurchgefuehrt\nAbgesagt",
+   "default": "Geplant",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Abend im Showroom\nWorkshop\nMarkenpräsentation\nMesse\nSonstige",
+   "default": "Abend im Showroom",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Datum",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "uhrzeit_von",
+   "fieldtype": "Time",
+   "label": "Beginn (erst nach Bestätigung)"
+  },
+  {
+   "fieldname": "uhrzeit_bis",
+   "fieldtype": "Time",
+   "label": "Ende (optional)"
+  },
+  {
+   "fieldname": "ort",
+   "fieldtype": "Data",
+   "label": "Ort",
+   "default": "Showroom und Café, Landstraße 11, 6911 Lochau"
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "Anmeldeseite",
+   "options": "URL"
+  },
+  {
+   "fieldname": "sb_plaetze",
+   "fieldtype": "Section Break",
+   "label": "Plätze"
+  },
+  {
+   "fieldname": "kapazitaet",
+   "fieldtype": "Int",
+   "label": "Plätze (nur echte Angabe)",
+   "description": "Leer = unbegrenzt"
+  },
+  {
+   "fieldname": "plaetze_belegt",
+   "fieldtype": "Int",
+   "label": "Belegt (Personen, angemeldet + bestätigt)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "plaetze_frei",
+   "fieldtype": "Int",
+   "label": "Frei",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "warteliste",
+   "fieldtype": "Check",
+   "label": "Warteliste erlauben",
+   "default": "0"
+  },
+  {
+   "fieldname": "max_personen_je_anmeldung",
+   "fieldtype": "Int",
+   "label": "Max. Personen je Anmeldung",
+   "default": "10"
+  },
+  {
+   "fieldname": "kostenlos",
+   "fieldtype": "Check",
+   "label": "Kostenlos",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_programm",
+   "fieldtype": "Section Break",
+   "label": "Programm"
+  },
+  {
+   "fieldname": "programm",
+   "fieldtype": "Text Editor",
+   "label": "Programm (nur fest Zugesagtes)"
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Small Text",
+   "label": "Beschreibung (intern)"
+  },
+  {
+   "fieldname": "sb_anmeldungen",
+   "fieldtype": "Section Break",
+   "label": "Anmeldungen"
+  },
+  {
+   "fieldname": "anmeldungen",
+   "fieldtype": "Table",
+   "label": "Anmeldungen",
+   "options": "PH Event Anmeldung"
+  },
+  {
+   "fieldname": "sb_mail",
+   "fieldtype": "Section Break",
+   "label": "Mails"
+  },
+  {
+   "fieldname": "bestaetigung_vorlage",
+   "fieldtype": "Link",
+   "label": "Vorlage Anmeldebestätigung",
+   "options": "PH Mail Vorlage"
+  },
+  {
+   "fieldname": "erinnerung_vorlage",
+   "fieldtype": "Link",
+   "label": "Vorlage Erinnerung",
+   "options": "PH Mail Vorlage"
+  },
+  {
+   "fieldname": "erinnerung_tage_vorher",
+   "fieldtype": "Int",
+   "label": "Erinnerung Tage vorher",
+   "default": "2"
+  },
+  {
+   "fieldname": "cb_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "erinnerung_gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Erinnerung gesendet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "einladungs_reise",
+   "fieldtype": "Link",
+   "label": "Einladungs-Kundenreise",
+   "options": "PH Kundenreise"
+  },
+  {
+   "fieldname": "kampagne",
+   "fieldtype": "Link",
+   "label": "Kampagne",
+   "options": "PH Kampagne"
+  },
+  {
+   "fieldname": "sb_dsgvo",
+   "fieldtype": "Section Break",
+   "label": "Datenschutz"
+  },
+  {
+   "fieldname": "loeschfrist_monate",
+   "fieldtype": "Int",
+   "label": "Anmeldedaten löschen nach (Monate nach Event)",
+   "default": "3"
+  },
+  {
+   "fieldname": "anmeldungen_geloescht_am",
+   "fieldtype": "Datetime",
+   "label": "Anmeldedaten gelöscht am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "einwilligung_textversion",
+   "fieldtype": "Data",
+   "label": "Textversion Datenschutzhinweis Anmeldung",
+   "default": "event-2026-10"
+  },
+  {
+   "fieldname": "fotos_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Foto-Hinweis (Einwilligung vor Ort)"
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "quelle_system",
+   "fieldtype": "Data",
+   "label": "Quelle (technisch)",
+   "read_only": 1,
+   "no_copy": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Reise Trigger",
+   "link_fieldname": "event",
+   "group": "Einladungen"
+  }
+ ],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Event",
+ "owner": "Administrator",
+ "sort_field": "datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Geplant",
+   "color": "Gray"
+  },
+  {
+   "title": "Offen",
+   "color": "Green"
+  },
+  {
+   "title": "Ausgebucht",
+   "color": "Orange"
+  },
+  {
+   "title": "Durchgefuehrt",
+   "color": "Blue"
+  },
+  {
+   "title": "Abgesagt",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "description": "Veranstaltung im Showroom (Adventsabend 26.11.2026 …): Datum, Plätze, Anmeldungen als Kindtabelle, Erinnerungsmail, Teilnehmerliste. Nur bestätigte Angaben (Uhrzeit erst nach Freigabe des Inhabers).",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "autoname": "field:event_id",
+ "naming_rule": "By fieldname",
+ "title_field": "titel",
+ "search_fields": "event_id,titel,datum",
+ "track_seen": 1,
+ "track_views": 0
+}

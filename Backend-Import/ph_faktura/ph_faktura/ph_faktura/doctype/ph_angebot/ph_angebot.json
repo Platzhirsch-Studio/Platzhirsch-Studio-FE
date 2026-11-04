@@ -1,0 +1,666 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Angebot mit Positionen aus dem Sortiment oder Freitext, Alternativpositionen, Rabatten, Planungsleistung, Gültigkeit und Zahlungsbedingung. Status setzt der Workflow „PH Angebot“.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "kontakt",
+  "kunde_name",
+  "projekt",
+  "anfrage",
+  "cb_kopf",
+  "datum",
+  "gueltig_bis",
+  "version",
+  "vorgaenger",
+  "zugewiesen_an",
+  "vertragsort",
+  "sb_adresse",
+  "firma",
+  "strasse",
+  "plz",
+  "ort",
+  "cb_adresse",
+  "land",
+  "uid_empfaenger",
+  "uid_geprueft_am",
+  "tab_positionen",
+  "positionen",
+  "sb_summen",
+  "netto_cent",
+  "rabatt_gesamt_cent",
+  "ust_cent",
+  "brutto_cent",
+  "alternativ_cent",
+  "cb_summen",
+  "ust_aufteilung",
+  "summen_html",
+  "tab_konditionen",
+  "zahlungsbedingung",
+  "anzahlung_prozent",
+  "zahlungstext",
+  "lieferbedingung_text",
+  "lieferzeit_text",
+  "cb_konditionen",
+  "ust_fall",
+  "ust_hinweistext",
+  "sprache",
+  "waehrung",
+  "fagg_belehrung_beigelegt",
+  "tab_texte",
+  "einleitung",
+  "schluss",
+  "tab_verlauf",
+  "gesendet_am",
+  "angenommen_am",
+  "abgelehnt_grund",
+  "unterschrift_kunde",
+  "cb_verlauf",
+  "auftragsbestaetigung",
+  "nachfolger",
+  "pdf",
+  "notiz_intern",
+  "tab_system",
+  "idempotency_key",
+  "quelle",
+  "ip_hash",
+  "workflow_state"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "AN-.YYYY.-.#####",
+   "default": "AN-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nGesendet\nAngenommen\nAbgelehnt\nAbgelaufen\nErsetzt",
+   "default": "Entwurf",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kunde (Kontakt)",
+   "options": "PH Kontakt",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kunde_name",
+   "fieldtype": "Data",
+   "label": "Kundenname (Beleg)",
+   "in_list_view": 1,
+   "in_global_search": 1,
+   "description": "Wird aus dem Kontakt übernommen, kann je Beleg angepasst werden."
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "anfrage",
+   "fieldtype": "Link",
+   "label": "Anfrage",
+   "options": "PH Anfrage"
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Angebotsdatum",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "gueltig_bis",
+   "fieldtype": "Date",
+   "label": "Gültig bis",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "version",
+   "fieldtype": "Int",
+   "label": "Version",
+   "default": "1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vorgaenger",
+   "fieldtype": "Link",
+   "label": "Ersetzt Angebot",
+   "options": "PH Angebot",
+   "read_only": 1
+  },
+  {
+   "fieldname": "zugewiesen_an",
+   "fieldtype": "Link",
+   "label": "Berater/in",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "vertragsort",
+   "fieldtype": "Select",
+   "label": "Vertragsort",
+   "options": "Showroom\nBeim Kunden\nFernabsatz",
+   "default": "Showroom",
+   "description": "Beim Kunden/Fernabsatz: FAGG-Belehrung und 14 Tage Rücktrittsrecht (§ 11 FAGG)."
+  },
+  {
+   "fieldname": "sb_adresse",
+   "fieldtype": "Section Break",
+   "label": "Rechnungsadresse (Snapshot)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "firma",
+   "fieldtype": "Data",
+   "label": "Firma"
+  },
+  {
+   "fieldname": "strasse",
+   "fieldtype": "Data",
+   "label": "Straße und Nummer"
+  },
+  {
+   "fieldname": "plz",
+   "fieldtype": "Data",
+   "label": "PLZ"
+  },
+  {
+   "fieldname": "ort",
+   "fieldtype": "Data",
+   "label": "Ort"
+  },
+  {
+   "fieldname": "cb_adresse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "land",
+   "fieldtype": "Data",
+   "label": "Land (ISO-2)",
+   "default": "AT",
+   "description": "ISO-Code: AT, DE, CH, IT, FR … bestimmt den USt-Fall."
+  },
+  {
+   "fieldname": "uid_empfaenger",
+   "fieldtype": "Data",
+   "label": "UID des Empfängers",
+   "description": "Pflicht ab 10.000 € Gesamtbetrag (§ 11 Abs 1 Z 2 UStG); Grundlage für igL/Reverse Charge."
+  },
+  {
+   "fieldname": "uid_geprueft_am",
+   "fieldtype": "Date",
+   "label": "UID geprüft am (MIAS)",
+   "description": "Platzhalter für die Bestätigungsabfrage (FinanzOnline/MIAS Stufe 2)."
+  },
+  {
+   "fieldname": "tab_positionen",
+   "fieldtype": "Tab Break",
+   "label": "Positionen"
+  },
+  {
+   "fieldname": "positionen",
+   "fieldtype": "Table",
+   "label": "Positionen",
+   "options": "PH Beleg Position",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sb_summen",
+   "fieldtype": "Section Break",
+   "label": "Summen"
+  },
+  {
+   "fieldname": "netto_cent",
+   "fieldtype": "Int",
+   "label": "Netto (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "rabatt_gesamt_cent",
+   "fieldtype": "Int",
+   "label": "Rabatt gesamt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "ust_cent",
+   "fieldtype": "Int",
+   "label": "USt gesamt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "brutto_cent",
+   "fieldtype": "Int",
+   "label": "Brutto (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "alternativ_cent",
+   "fieldtype": "Int",
+   "label": "Alternativpositionen (Cent, nicht in Summe)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_summen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ust_aufteilung",
+   "fieldtype": "Table",
+   "label": "USt-Aufteilung je Satz",
+   "options": "PH Beleg Steuer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "summen_html",
+   "fieldtype": "HTML",
+   "label": "Summenblock"
+  },
+  {
+   "fieldname": "tab_konditionen",
+   "fieldtype": "Tab Break",
+   "label": "Konditionen"
+  },
+  {
+   "fieldname": "zahlungsbedingung",
+   "fieldtype": "Link",
+   "label": "Zahlungsbedingung",
+   "options": "PH Zahlungsbedingung"
+  },
+  {
+   "fieldname": "anzahlung_prozent",
+   "fieldtype": "Int",
+   "label": "Anzahlung (%)",
+   "default": "0"
+  },
+  {
+   "fieldname": "zahlungstext",
+   "fieldtype": "Small Text",
+   "label": "Zahlungstext (Beleg)"
+  },
+  {
+   "fieldname": "lieferbedingung_text",
+   "fieldtype": "Data",
+   "label": "Lieferbedingung",
+   "default": "frei Haus inkl. Montage, Vorarlberg/Bodenseeraum"
+  },
+  {
+   "fieldname": "lieferzeit_text",
+   "fieldtype": "Data",
+   "label": "Lieferzeit (gesamt)",
+   "description": "z. B. „ca. 10–12 Wochen ab Auftrag“"
+  },
+  {
+   "fieldname": "cb_konditionen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ust_fall",
+   "fieldtype": "Select",
+   "label": "USt-Fall",
+   "options": "Steuerpflichtig AT\nOSS\nInnergemeinschaftlich steuerfrei\nReverse Charge\nAusfuhr\nKleinunternehmer",
+   "default": "Steuerpflichtig AT",
+   "read_only": 1,
+   "description": "Wird aus Land/UID bestimmt; Hinweistext erscheint auf dem Beleg."
+  },
+  {
+   "fieldname": "ust_hinweistext",
+   "fieldtype": "Small Text",
+   "label": "USt-Hinweis (Beleg)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sprache",
+   "fieldtype": "Select",
+   "label": "Sprache des Belegs",
+   "options": "de\nen\nfr\nit",
+   "default": "de"
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "fagg_belehrung_beigelegt",
+   "fieldtype": "Check",
+   "label": "FAGG-Belehrung beigelegt",
+   "default": "0",
+   "depends_on": "eval:doc.vertragsort!='Showroom'"
+  },
+  {
+   "fieldname": "tab_texte",
+   "fieldtype": "Tab Break",
+   "label": "Texte"
+  },
+  {
+   "fieldname": "einleitung",
+   "fieldtype": "Text Editor",
+   "label": "Einleitung"
+  },
+  {
+   "fieldname": "schluss",
+   "fieldtype": "Text Editor",
+   "label": "Schlusstext"
+  },
+  {
+   "fieldname": "tab_verlauf",
+   "fieldtype": "Tab Break",
+   "label": "Verlauf"
+  },
+  {
+   "fieldname": "gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Gesendet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "angenommen_am",
+   "fieldtype": "Datetime",
+   "label": "Angenommen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abgelehnt_grund",
+   "fieldtype": "Select",
+   "label": "Ablehnungsgrund",
+   "options": "\nPreis\nMitbewerber\nKein Bedarf\nZeitplan\nKeine Rückmeldung\nSonstiges",
+   "depends_on": "eval:doc.status=='Abgelehnt'"
+  },
+  {
+   "fieldname": "unterschrift_kunde",
+   "fieldtype": "Signature",
+   "label": "Unterschrift Kunde (Annahme im Showroom)"
+  },
+  {
+   "fieldname": "cb_verlauf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auftragsbestaetigung",
+   "fieldtype": "Link",
+   "label": "Auftragsbestätigung",
+   "options": "PH Auftragsbestaetigung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "nachfolger",
+   "fieldtype": "Link",
+   "label": "Neue Version",
+   "options": "PH Angebot",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pdf",
+   "fieldtype": "Attach",
+   "label": "PDF (gesendete Fassung)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz_intern",
+   "fieldtype": "Small Text",
+   "label": "Interne Notiz",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "tab_system",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nkassa\nshop\nimport",
+   "default": "backoffice",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "label": "Workflow-Zustand",
+   "options": "Workflow State",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "allow_on_submit": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Auftragsbestaetigung",
+   "link_fieldname": "angebot",
+   "group": "Folge"
+  },
+  {
+   "link_doctype": "PH Angebot",
+   "link_fieldname": "vorgaenger",
+   "group": "Versionen"
+  }
+ ],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Angebot",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 0
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Gray"
+  },
+  {
+   "title": "Gesendet",
+   "color": "Blue"
+  },
+  {
+   "title": "Angenommen",
+   "color": "Green"
+  },
+  {
+   "title": "Abgelehnt",
+   "color": "Red"
+  },
+  {
+   "title": "Abgelaufen",
+   "color": "Orange"
+  },
+  {
+   "title": "Ersetzt",
+   "color": "Gray"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "kunde_name,projekt,status",
+ "track_seen": 1
+}

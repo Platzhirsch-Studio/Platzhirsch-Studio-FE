@@ -1,0 +1,150 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Position eines Lieferscheins.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "produkt",
+  "beschreibung",
+  "ausfuehrung_text",
+  "marke",
+  "menge",
+  "menge_gepackt",
+  "gepackt",
+  "paket_nr",
+  "paketprofil",
+  "zerbrechlich",
+  "seriennummer",
+  "ean",
+  "slug",
+  "lagerbestand",
+  "beleg_position",
+  "einzel_cent"
+ ],
+ "fields": [
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "ausfuehrung_text",
+   "fieldtype": "Data",
+   "label": "Ausführung"
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke"
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Int",
+   "label": "Menge",
+   "reqd": 1,
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "menge_gepackt",
+   "fieldtype": "Int",
+   "label": "Gepackt",
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "gepackt",
+   "fieldtype": "Check",
+   "label": "Vollständig gepackt",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "paket_nr",
+   "fieldtype": "Int",
+   "label": "Paket Nr.",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "paketprofil",
+   "fieldtype": "Link",
+   "label": "Paketprofil",
+   "options": "PH Paketprofil"
+  },
+  {
+   "fieldname": "zerbrechlich",
+   "fieldtype": "Check",
+   "label": "Zerbrechlich"
+  },
+  {
+   "fieldname": "seriennummer",
+   "fieldtype": "Data",
+   "label": "Seriennummer"
+  },
+  {
+   "fieldname": "ean",
+   "fieldtype": "Data",
+   "label": "EAN",
+   "description": "Für den Scan am Packtisch."
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Website-Slug",
+   "description": "Für den Scan am Packtisch (QR mit Slug)."
+  },
+  {
+   "fieldname": "lagerbestand",
+   "fieldtype": "Link",
+   "label": "Lagerbestand",
+   "options": "PH Lagerbestand",
+   "description": "Gesetzt bei Ausstellungsstücken/Lagerware; beim Übergeben wird der Bestand ausgebucht."
+  },
+  {
+   "fieldname": "beleg_position",
+   "fieldtype": "Data",
+   "label": "Quellzeile",
+   "read_only": 1,
+   "description": "Name der Positionszeile in PH Bestellung / PH Auftragsbestaetigung."
+  },
+  {
+   "fieldname": "einzel_cent",
+   "fieldtype": "Int",
+   "label": "Einzelpreis (Cent)",
+   "print_hide": 1,
+   "description": "Nur für Versicherungswert; wird nicht gedruckt."
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Lieferschein Position",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

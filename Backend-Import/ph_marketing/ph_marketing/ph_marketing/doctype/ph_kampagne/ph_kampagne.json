@@ -1,0 +1,396 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "kanal",
+  "status",
+  "zustaendig",
+  "cb_1",
+  "zeitraum_von",
+  "zeitraum_bis",
+  "budget_cent",
+  "ausgaben_cent",
+  "waehrung",
+  "sb_ziel",
+  "ziel",
+  "ziel_kennzahl",
+  "ziel_wert",
+  "landingpage",
+  "cb_2",
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "beschreibung",
+  "sb_kennzahlen",
+  "kennzahlen",
+  "sb_auswertung",
+  "impressionen_gesamt",
+  "klicks_gesamt",
+  "klickrate_promille",
+  "cb_3",
+  "anfragen_gesamt",
+  "kosten_je_anfrage_cent",
+  "kosten_je_klick_cent",
+  "auswertung_notiz",
+  "notiz_intern",
+  "sb_system",
+  "idempotency_key",
+  "quelle_system"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-KAM-.YYYY.-.####",
+   "default": "PH-KAM-.YYYY.-.####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "kanal",
+   "fieldtype": "Select",
+   "label": "Kanal",
+   "options": "Meta\nPinterest\nGoogle\nNewsletter\nPrint\nEvent\nSocial organisch\nEmpfehlung\nSonstige",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nAktiv\nPausiert\nBeendet",
+   "default": "Entwurf",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "zustaendig",
+   "fieldtype": "Link",
+   "label": "Zuständig",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zeitraum_von",
+   "fieldtype": "Date",
+   "label": "Zeitraum von",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "zeitraum_bis",
+   "fieldtype": "Date",
+   "label": "Zeitraum bis"
+  },
+  {
+   "fieldname": "budget_cent",
+   "fieldtype": "Int",
+   "label": "Budget (Cent)",
+   "description": "Beträge immer in Cent."
+  },
+  {
+   "fieldname": "ausgaben_cent",
+   "fieldtype": "Int",
+   "label": "Ausgaben bisher (Cent)",
+   "read_only": 1,
+   "description": "Summe der Kennzahlen-Zeilen."
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "sb_ziel",
+   "fieldtype": "Section Break",
+   "label": "Ziel und Zuordnung"
+  },
+  {
+   "fieldname": "ziel",
+   "fieldtype": "Small Text",
+   "label": "Ziel (Text)"
+  },
+  {
+   "fieldname": "ziel_kennzahl",
+   "fieldtype": "Select",
+   "label": "Zielkennzahl",
+   "options": "\nAnfragen\nTermine\nAbos\nEvent-Anmeldungen\nKlicks\nReichweite"
+  },
+  {
+   "fieldname": "ziel_wert",
+   "fieldtype": "Int",
+   "label": "Zielwert"
+  },
+  {
+   "fieldname": "landingpage",
+   "fieldtype": "Data",
+   "label": "Landingpage",
+   "options": "URL"
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "utm_source",
+   "fieldtype": "Data",
+   "label": "utm_source"
+  },
+  {
+   "fieldname": "utm_medium",
+   "fieldtype": "Data",
+   "label": "utm_medium"
+  },
+  {
+   "fieldname": "utm_campaign",
+   "fieldtype": "Data",
+   "label": "utm_campaign",
+   "unique": 1,
+   "description": "Anfragen mit dieser utm_campaign im Herkunftsblock werden automatisch zugeordnet (Custom Field PH Anfrage.ph_marketing_kampagne)."
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Text Editor",
+   "label": "Beschreibung / Briefing"
+  },
+  {
+   "fieldname": "sb_kennzahlen",
+   "fieldtype": "Section Break",
+   "label": "Kennzahlen (Erfassung)"
+  },
+  {
+   "fieldname": "kennzahlen",
+   "fieldtype": "Table",
+   "label": "Kennzahlen",
+   "options": "PH Kampagne Kennzahl"
+  },
+  {
+   "fieldname": "sb_auswertung",
+   "fieldtype": "Section Break",
+   "label": "Auswertung"
+  },
+  {
+   "fieldname": "impressionen_gesamt",
+   "fieldtype": "Int",
+   "label": "Impressionen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "klicks_gesamt",
+   "fieldtype": "Int",
+   "label": "Klicks",
+   "read_only": 1
+  },
+  {
+   "fieldname": "klickrate_promille",
+   "fieldtype": "Int",
+   "label": "Klickrate (‰)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "anfragen_gesamt",
+   "fieldtype": "Int",
+   "label": "Anfragen (PH Anfrage)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kosten_je_anfrage_cent",
+   "fieldtype": "Int",
+   "label": "Kosten je Anfrage (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kosten_je_klick_cent",
+   "fieldtype": "Int",
+   "label": "Kosten je Klick (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "auswertung_notiz",
+   "fieldtype": "Text Editor",
+   "label": "Fazit"
+  },
+  {
+   "fieldname": "notiz_intern",
+   "fieldtype": "Small Text",
+   "label": "Interne Notiz",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle_system",
+   "fieldtype": "Data",
+   "label": "Quelle (technisch)",
+   "read_only": 1,
+   "no_copy": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Social Beitrag",
+   "link_fieldname": "kampagne",
+   "group": "Inhalte"
+  },
+  {
+   "link_doctype": "PH Newsletter Ausgabe",
+   "link_fieldname": "kampagne",
+   "group": "Inhalte"
+  },
+  {
+   "link_doctype": "PH Event",
+   "link_fieldname": "kampagne",
+   "group": "Inhalte"
+  }
+ ],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Kampagne",
+ "owner": "Administrator",
+ "sort_field": "zeitraum_von",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Gray"
+  },
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Pausiert",
+   "color": "Orange"
+  },
+  {
+   "title": "Beendet",
+   "color": "Blue"
+  }
+ ],
+ "track_changes": 1,
+ "description": "Marketing-Kampagne (Meta, Pinterest, Google, Newsletter, Print, Event) mit Zeitraum, Budget, Ziel, UTM-Zuordnung und Auswertung aus PH Anfrage.",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "titel,kanal,utm_campaign",
+ "track_views": 0
+}

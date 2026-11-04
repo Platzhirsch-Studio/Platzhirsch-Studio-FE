@@ -93,11 +93,62 @@ test("Keine verbotenen Wörter, Alters- oder Herkunftsangaben", () => {
   }
 });
 
-test("Entgelt-Pflicht (§ 9 Abs 2 GlBG) blockiert die Veröffentlichung", () => {
+// Inhaber-Entscheidung Nr. 47 (03.11.2026): KV-Mindestentgelt je Stelle
+// (KV Handel Angestellte Gehaltstafel 1.1.2026 bzw. KV Handel Arbeiter:innen
+// Lohntafel A 1.1.2026), Überzahlungsbereitschaft, Vollzeit, ab sofort.
+const KV_ERWARTET = {
+  "cad-planer": [2535, /Angestellte, Beschäftigungsgruppe E, Stufe 1/],
+  innenarchitekt: [2879, /Angestellte, Beschäftigungsgruppe F, Stufe 1/],
+  verkaeufer: [2362, /Angestellte, Beschäftigungsgruppe D, Stufe 1/],
+  "monteur-tischler": [2358, /Arbeiter:innen, Lohntafel A, Gruppe 5 \(Fachkräfte\)/],
+  monteur: [2178, /Arbeiter:innen, Lohntafel A, Gruppe 2,/],
+  fliesenleger: [2358, /Arbeiter:innen, Lohntafel A, Gruppe 5 \(Fachkräfte\)/],
+  installateur: [2358, /Arbeiter:innen, Lohntafel A, Gruppe 5 \(Fachkräfte\)/],
+  elektroplaner: [2535, /Angestellte, Beschäftigungsgruppe E, Stufe 1/],
+};
+
+test("Nr. 47: alle 8 Stellen mit KV-Mindestentgelt, Überzahlung, Vollzeit, ab sofort → veröffentlichbar", () => {
   const jobs = statischeStellen();
-  // Heute: keine Werte bekannt → keine Stelle veröffentlichbar, keine geschätzt.
+  assert.equal(VEROEFFENTLICHT, "2026-11-03");
+  for (const [i, j] of jobs.entries()) {
+    const [betrag, kv] = KV_ERWARTET[STELLEN_META[i].key];
+    assert.equal(j.entgelt.kvMindestBrutto, betrag, j.title);
+    assert.equal(j.entgelt.zeitraum, "Monat");
+    assert.equal(j.entgelt.ueberzahlung, true);
+    assert.match(j.entgelt.kollektivvertrag, /^KV Handel /);
+    assert.match(j.entgelt.kollektivvertrag, kv, j.title);
+    assert.equal(j.salary, betrag);
+    assert.equal(j.salary_unit, "MONTH");
+    assert.equal(j.type, "Vollzeit");
+    assert.equal(j.positions, 1);
+    assert.equal(j.start, "ab sofort");
+    assert.equal(j.job_status_en, "Full-time");
+    assert.equal(j.job_status_fr, "Temps plein");
+    assert.equal(j.job_status_it, "Tempo pieno");
+    assert.equal(j.start_en, "immediately");
+    assert.equal(publishableJob(j), true, j.title);
+    assert.deepEqual(fehlendeAngaben(j), ["leistungen"]);
+    for (const l of STELLEN_LOCALES) {
+      const text = entgeltText(j.entgelt, l);
+      assert.ok(text.includes(j.entgelt.kollektivvertrag), `${l}: ${text}`);
+      assert.match(text, /2[\s.,]?\d{3}/, `${l}: Betrag fehlt`); // FR: schmales Leerzeichen als Tausendertrenner
+    }
+  }
+  assert.equal(publishableJobs(jobs).length, 8);
+  assert.equal(visibleJobs(jobs, false).length, 8);
+  // Satz nach Vorgabe (DE): „Das kollektivvertragliche Mindestentgelt beträgt € … brutto pro Monat (KV …). Bereitschaft zur Überzahlung …“
+  assert.match(
+    entgeltText(jobs[2].entgelt, "de"),
+    /^Das kollektivvertragliche Mindestentgelt beträgt €\s2\.362,00 brutto pro Monat \(KV Handel Angestellte, Beschäftigungsgruppe D, Stufe 1\)\. Bereitschaft zur Überzahlung je nach Qualifikation und Erfahrung\.$/
+  );
+  assert.match(entgeltText(jobs[2].entgelt, "en"), /^The minimum pay under the collective agreement is €2,362\.00 gross per month \(KV Handel/);
+});
+
+test("Entgelt-Pflicht (§ 9 Abs 2 GlBG) blockiert die Veröffentlichung", () => {
+  // Ohne Entgelt: nicht veröffentlichbar, keine Schätzung.
+  const offen = { kvMindestBrutto: null, zeitraum: "Monat", ueberzahlung: null, kollektivvertrag: null };
+  const jobs = STELLEN_META.map((m) => buildStelle({ ...m, entgelt: offen }));
   for (const j of jobs) {
-    assert.deepEqual(j.entgelt, { kvMindestBrutto: null, zeitraum: "Monat", ueberzahlung: null, kollektivvertrag: null });
     assert.equal(j.salary, null);
     assert.equal(publishableJob(j), false, j.title);
     assert.ok(fehlendeAngaben(j).includes("entgelt"));
@@ -133,7 +184,7 @@ test("Entgelt-Pflicht (§ 9 Abs 2 GlBG) blockiert die Veröffentlichung", () => 
   assert.equal(buildStelle({ ...STELLEN_META[0], entgelt: { ...VOLL, zeitraum: "Jahr" } }).salary_unit, "YEAR");
   assert.equal(visibleJobs([ok], false).length, 1);
   assert.equal(publishableJob(buildStelle({ ...STELLEN_META[0], entgelt: { ...VOLL, ueberzahlung: false } })), true);
-  assert.match(entgeltText(VOLL, "de"), /^Mindestentgelt laut Kollektivvertrag Handel: €\s2\.400,00 brutto pro Monat\. Bereitschaft zur Überzahlung/);
+  assert.match(entgeltText(VOLL, "de"), /^Das kollektivvertragliche Mindestentgelt beträgt €\s2\.400,00 brutto pro Monat \(Handel\)\. Bereitschaft zur Überzahlung/);
 });
 
 test("Backoffice hat Vorrang bei gleichem Slug, ohne Backoffice statische Stellen", () => {
@@ -159,7 +210,8 @@ test("Seitentitel ≤ 60 Zeichen, JobPosting-Daten, Frappe-Export", () => {
     assert.equal(j.valid_through, GUELTIG_BIS);
     const doc = toFrappeDoc(j);
     assert.equal(doc.doctype, "Karriere");
-    assert.equal(doc.salary, "");
+    assert.equal(doc.salary, j.salary);
+    assert.ok(doc.salary > 0);
     assert.ok(Array.isArray(doc.responsibilities_de) && doc.responsibilities_de[0].responsibility);
   }
   const days = (Date.parse(GUELTIG_BIS) - Date.parse(VEROEFFENTLICHT)) / 86400000;

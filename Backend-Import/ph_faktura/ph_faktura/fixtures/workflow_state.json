@@ -1,0 +1,79 @@
+[
+ {
+  "doctype": "Workflow State",
+  "name": "PH Angenommen",
+  "workflow_state_name": "PH Angenommen",
+  "style": "Success",
+  "icon": "ok"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Ersetzt",
+  "workflow_state_name": "PH Ersetzt",
+  "style": "Inverse",
+  "icon": "repeat"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH In Bestellung",
+  "workflow_state_name": "PH In Bestellung",
+  "style": "Info",
+  "icon": "shopping-cart"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Abgerechnet",
+  "workflow_state_name": "PH Abgerechnet",
+  "style": "Success",
+  "icon": "ok"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Gestellt",
+  "workflow_state_name": "PH Gestellt",
+  "style": "Primary",
+  "icon": "file"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Teilbezahlt",
+  "workflow_state_name": "PH Teilbezahlt",
+  "style": "Info",
+  "icon": "adjust"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Ueberfaellig",
+  "workflow_state_name": "PH Ueberfaellig",
+  "style": "Warning",
+  "icon": "warning-sign"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Gemahnt",
+  "workflow_state_name": "PH Gemahnt",
+  "style": "Danger",
+  "icon": "bell"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Uneinbringlich",
+  "workflow_state_name": "PH Uneinbringlich",
+  "style": "Danger",
+  "icon": "remove"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Erfasst",
+  "workflow_state_name": "PH Erfasst",
+  "style": "Primary",
+  "icon": "inbox"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Sachlich geprueft",
+  "workflow_state_name": "PH Sachlich geprueft",
+  "style": "Info",
+  "icon": "check"
+ }
+]

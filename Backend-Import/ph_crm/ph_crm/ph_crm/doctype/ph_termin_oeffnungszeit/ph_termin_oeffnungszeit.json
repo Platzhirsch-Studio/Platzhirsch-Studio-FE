@@ -1,0 +1,25 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 08:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["wochentag", "von", "bis"],
+ "fields": [
+  {"fieldname": "wochentag", "fieldtype": "Select", "label": "Wochentag", "options": "0 Montag\n1 Dienstag\n2 Mittwoch\n3 Donnerstag\n4 Freitag\n5 Samstag\n6 Sonntag", "reqd": 1, "in_list_view": 1, "columns": 4},
+  {"fieldname": "von", "fieldtype": "Time", "label": "Von", "reqd": 1, "in_list_view": 1, "columns": 3},
+  {"fieldname": "bis", "fieldtype": "Time", "label": "Bis", "reqd": 1, "in_list_view": 1, "columns": 3}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH CRM",
+ "name": "PH Termin Oeffnungszeit",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

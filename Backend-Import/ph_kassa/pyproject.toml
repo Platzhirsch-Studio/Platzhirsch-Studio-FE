@@ -1,0 +1,26 @@
+[project]
+name = "ph_kassa"
+authors = [{ name = "MW Immobilienverwaltungs GmbH" }]
+description = "Registrierkasse Showroom nach RKSV 2016 / BAO § 131b: Belegkette, Signatur (A-Trust), DEP7-Export, Kassen-Oberfläche, Tagesabschluss, Stripe Terminal"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    # WP10a RKSV-Kern: ES256/AES-256-CTR und QR-Code
+    "cryptography>=41",
+    "qrcode>=7.4",
+    # Stripe Terminal (terminal.py StripeTerminalDienst) – gleiche Version wie ph_shop
+    "stripe>=10,<13",
+    # Python-Pakete nur hier eintragen (z. B. "stripe>=10,<13" in ph_shop). Keine Geheimnisse.
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0,<17.0.0"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"

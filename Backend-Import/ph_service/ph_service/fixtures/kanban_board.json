@@ -1,0 +1,59 @@
+[
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Servicefälle",
+  "kanban_board_name": "PH Servicefälle",
+  "reference_doctype": "PH Servicefall",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Servicefall\",\"status\",\"not in\",[\"Geschlossen\",\"Abgelehnt\"]]]",
+  "fields": "[\"titel\",\"art\",\"prioritaet\",\"fehlercode\",\"verantwortlich\",\"gewaehrleistung_bis\",\"fristen_status\"]",
+  "columns": [
+   {"column_name": "Gemeldet", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Geprueft", "indicator": "Cyan", "status": "Active", "order": "[]"},
+   {"column_name": "Entscheidung", "indicator": "Purple", "status": "Active", "order": "[]"},
+   {"column_name": "In Bearbeitung", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Einsatz geplant", "indicator": "Yellow", "status": "Active", "order": "[]"},
+   {"column_name": "Erledigt", "indicator": "Green", "status": "Active", "order": "[]"}
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Serviceeinsätze",
+  "kanban_board_name": "PH Serviceeinsätze",
+  "reference_doctype": "PH Serviceeinsatz",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Serviceeinsatz\",\"status\",\"not in\",[\"Erledigt\",\"Abgebrochen\"]]]",
+  "fields": "[\"titel\",\"techniker\",\"datum\",\"zeit_von\",\"art\",\"ort\"]",
+  "columns": [
+   {"column_name": "Geplant", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Bestaetigt", "indicator": "Cyan", "status": "Active", "order": "[]"},
+   {"column_name": "Unterwegs", "indicator": "Purple", "status": "Active", "order": "[]"},
+   {"column_name": "In Arbeit", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Nicht angetroffen", "indicator": "Red", "status": "Active", "order": "[]"}
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Serviceaufträge",
+  "kanban_board_name": "PH Serviceaufträge",
+  "reference_doctype": "PH Serviceauftrag",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Serviceauftrag\",\"status\",\"not in\",[\"Abgerechnet\",\"Storniert\"]]]",
+  "fields": "[\"titel\",\"art\",\"abholung_am\",\"rueckgabe_am\",\"lagerort\"]",
+  "columns": [
+   {"column_name": "Angefragt", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Angeboten", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Beauftragt", "indicator": "Cyan", "status": "Active", "order": "[]"},
+   {"column_name": "Abgeholt", "indicator": "Purple", "status": "Active", "order": "[]"},
+   {"column_name": "Eingelagert", "indicator": "Yellow", "status": "Active", "order": "[]"},
+   {"column_name": "In Arbeit", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Zurueckgebracht", "indicator": "Green", "status": "Active", "order": "[]"}
+  ]
+ }
+]

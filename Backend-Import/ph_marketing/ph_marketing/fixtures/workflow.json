@@ -1,0 +1,443 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "PH Newsletter Ausgabe",
+  "workflow_name": "PH Newsletter Ausgabe",
+  "document_type": "PH Newsletter Ausgabe",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {
+    "state": "PH Entwurf",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Entwurf",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Freigabe",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Freigabe",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Geplant",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Leitung",
+    "update_field": "status",
+    "update_value": "Geplant",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Wird versendet",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Leitung",
+    "update_field": "status",
+    "update_value": "Wird versendet",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Versendet",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Leitung",
+    "update_field": "status",
+    "update_value": "Versendet",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgebrochen",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Leitung",
+    "update_field": "status",
+    "update_value": "Abgebrochen",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "PH Entwurf",
+    "action": "Zur Freigabe",
+    "next_state": "PH Freigabe",
+    "allowed": "PH Marketing Mitarbeiter",
+    "allow_self_approval": 1,
+    "condition": "doc.versandbereit"
+   },
+   {
+    "state": "PH Freigabe",
+    "action": "Freigeben",
+    "next_state": "PH Geplant",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1,
+    "condition": "doc.versandbereit and doc.versand_geplant"
+   },
+   {
+    "state": "PH Freigabe",
+    "action": "Zurück auf Entwurf",
+    "next_state": "PH Entwurf",
+    "allowed": "PH Marketing Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Geplant",
+    "action": "Versenden",
+    "next_state": "PH Wird versendet",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1,
+    "condition": "doc.versandbereit"
+   },
+   {
+    "state": "PH Geplant",
+    "action": "Zurück auf Entwurf",
+    "next_state": "PH Entwurf",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Geplant",
+    "action": "Abbrechen",
+    "next_state": "PH Abgebrochen",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Wird versendet",
+    "action": "Abbrechen",
+    "next_state": "PH Abgebrochen",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Event",
+  "workflow_name": "PH Event",
+  "document_type": "PH Event",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {
+    "state": "PH Geplant",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Geplant",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Offen",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Offen",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Ausgebucht",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Ausgebucht",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Durchgefuehrt",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Leitung",
+    "update_field": "status",
+    "update_value": "Durchgefuehrt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgesagt",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Leitung",
+    "update_field": "status",
+    "update_value": "Abgesagt",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "PH Geplant",
+    "action": "Veröffentlichen",
+    "next_state": "PH Offen",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1,
+    "condition": "doc.uhrzeit_von"
+   },
+   {
+    "state": "PH Geplant",
+    "action": "Absagen",
+    "next_state": "PH Abgesagt",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Offen",
+    "action": "Als ausgebucht markieren",
+    "next_state": "PH Ausgebucht",
+    "allowed": "PH Marketing Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Offen",
+    "action": "Durchgeführt",
+    "next_state": "PH Durchgefuehrt",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Offen",
+    "action": "Absagen",
+    "next_state": "PH Abgesagt",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Ausgebucht",
+    "action": "Wieder öffnen",
+    "next_state": "PH Offen",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Ausgebucht",
+    "action": "Durchgeführt",
+    "next_state": "PH Durchgefuehrt",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Ausgebucht",
+    "action": "Absagen",
+    "next_state": "PH Abgesagt",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Kampagne",
+  "workflow_name": "PH Kampagne",
+  "document_type": "PH Kampagne",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {
+    "state": "PH Entwurf",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Entwurf",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Aktiv",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Aktiv",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Pausiert",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Pausiert",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Beendet",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Leitung",
+    "update_field": "status",
+    "update_value": "Beendet",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "PH Entwurf",
+    "action": "Aktivieren",
+    "next_state": "PH Aktiv",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1,
+    "condition": "doc.zeitraum_von"
+   },
+   {
+    "state": "PH Aktiv",
+    "action": "Pausieren",
+    "next_state": "PH Pausiert",
+    "allowed": "PH Marketing Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Pausiert",
+    "action": "Fortsetzen",
+    "next_state": "PH Aktiv",
+    "allowed": "PH Marketing Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Aktiv",
+    "action": "Beenden",
+    "next_state": "PH Beendet",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Pausiert",
+    "action": "Beenden",
+    "next_state": "PH Beendet",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Beendet",
+    "action": "Fortsetzen",
+    "next_state": "PH Aktiv",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Social Beitrag",
+  "workflow_name": "PH Social Beitrag",
+  "document_type": "PH Social Beitrag",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {
+    "state": "PH Idee",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Idee",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Entwurf",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Entwurf",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Freigegeben",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Freigegeben",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Geplant",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Geplant",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Veroeffentlicht",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Leitung",
+    "update_field": "status",
+    "update_value": "Veroeffentlicht",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Verworfen",
+    "doc_status": "0",
+    "allow_edit": "PH Marketing Leitung",
+    "update_field": "status",
+    "update_value": "Verworfen",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "PH Idee",
+    "action": "Ausarbeiten",
+    "next_state": "PH Entwurf",
+    "allowed": "PH Marketing Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Idee",
+    "action": "Verwerfen",
+    "next_state": "PH Verworfen",
+    "allowed": "PH Marketing Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Entwurf",
+    "action": "Freigeben",
+    "next_state": "PH Freigegeben",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1,
+    "condition": "doc.bildquelle_freigabe != 'offen' and doc.bild"
+   },
+   {
+    "state": "PH Entwurf",
+    "action": "Verwerfen",
+    "next_state": "PH Verworfen",
+    "allowed": "PH Marketing Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Freigegeben",
+    "action": "Planen",
+    "next_state": "PH Geplant",
+    "allowed": "PH Marketing Mitarbeiter",
+    "allow_self_approval": 1,
+    "condition": "doc.datum_geplant"
+   },
+   {
+    "state": "PH Freigegeben",
+    "action": "Zurück auf Entwurf",
+    "next_state": "PH Entwurf",
+    "allowed": "PH Marketing Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Geplant",
+    "action": "Veröffentlichen",
+    "next_state": "PH Veroeffentlicht",
+    "allowed": "PH Marketing Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Geplant",
+    "action": "Zurück auf Entwurf",
+    "next_state": "PH Entwurf",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Verworfen",
+    "action": "Zurück auf Entwurf",
+    "next_state": "PH Entwurf",
+    "allowed": "PH Marketing Leitung",
+    "allow_self_approval": 1
+   }
+  ]
+ }
+]

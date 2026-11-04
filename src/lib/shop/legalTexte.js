@@ -4,10 +4,13 @@
 // Datenschutz-Abschnitt Shop. Dazu der Textbaustein für die
 // Vertragsbestätigung per E-Mail (orderMail.js).
 //
-// STATUS: ENTWURF (Stand 02.11.2026). Inhaltlich fertig; die Kanzlei-Freigabe
-// steht aus. Kein Text ist "freigegeben" – legal.js setzt status "entwurf",
-// damit liveBlockers (mode.js) und die Freigabe-Checkliste (release.js)
-// ehrlich bleiben. SHOP_MODE bleibt unverändert.
+// STATUS: FREIGEGEBEN (Stand 03.11.2026). Kanzlei-Freigabe der AGB und der
+// Widerrufsbelehrung laut Inhaber-Entscheidungen Nr. 40/45 (03.11.2026);
+// Onlineshop mit echter Zahlung erlaubt laut Nr. 46. legal.js führt jeden
+// Slot mit status "freigegeben" + freigabe { datum, durch, beleg }. Einzige
+// offene Unternehmensangabe: Firma/Anschrift von LetMeShip (PLATZHALTER.letmeship,
+// Inhaber laut Nr. 41) – solange sie im Datenschutz-Slot steht, bleibt
+// recht:datenschutz in liveBlockers (legalSlotReleased verlangt 0 Platzhalter).
 //
 // Regeln:
 //   - Firmendaten NUR aus vorhandenen Quellen: src/lib/site.js (Name,
@@ -37,8 +40,9 @@
 // Rein, ohne "@/"-Importe (node --test).
 import { ADDRESS, EMAIL, LEGAL_NAME, PHONE_DISPLAY, SITE_NAME, SITE_URL } from "../site.js";
 import { LIEFERZEIT, lieferzeitFreigegeben } from "./lieferzeit.js";
+import { GEWAEHRLEISTUNG_BLOCKS } from "./gewaehrleistung.js";
 
-export const LEGAL_TEXT_STAND = "2026-11-02";
+export const LEGAL_TEXT_STAND = "2026-11-03";
 /** Lesbares Datum für die Kopfzeile der Texte (gleiche Quelle wie LEGAL_TEXT_STAND). */
 const STAND_LESBAR = LEGAL_TEXT_STAND.split("-").reverse().join(".");
 /** Pfad (ohne Sprache) und absolute Adresse der Online-Rücktrittsfunktion „Vertrag widerrufen“ (§ 13a FAGG). */
@@ -70,19 +74,31 @@ export const ANSCHRIFT = `${A.strasse}, ${A.plz} ${A.ort}, ${A.land}`;
 export const ANBIETER_ZEILE = `${A.firma}, „${A.marke}“, ${ANSCHRIFT}, Telefon ${A.telefon}, E-Mail ${A.email}`;
 
 /**
- * Offene Angaben, die NICHT aus belegten Quellen hervorgehen (Stand 02.11.2026,
- * Liste: Platzhirsch-Status/berichte/RECHT-PLATZHALTER-2026-11-02.md). Der
- * Inhaber (bzw. die Kanzlei) ersetzt sie; solange einer im Text steht, darf
- * der Slot nicht freigegeben werden (Test: platzhalterIn).
- * Geschlossen am 02.11.2026: Widerrufsfunktion (gebaut, WIDERRUF_URL) und
- * Versanddienst (Dienst wird je Sendung gewählt und mit der Versandbestätigung
- * genannt – shipping/config.js DIENST_WAHL, webhook.js sendung.carrier).
+ * Offene Angaben, die NICHT aus belegten Quellen hervorgehen (Liste:
+ * Platzhirsch-Status/berichte/RECHT-PLATZHALTER-2026-11-02.md). Solange einer
+ * im Text steht, zählt der Slot nicht als wirksam freigegeben (legal.js
+ * legalSlotReleased, Test: platzhalterIn).
+ * Geschlossen am 02.11.2026: Widerrufsfunktion (WIDERRUF_URL), Versanddienst
+ * (je Sendung, shipping/config.js DIENST_WAHL). Geschlossen am 03.11.2026
+ * (Inhaber-Entscheidung Nr. 46): Zahlungsarten online/Showroom (ZAHLUNGSARTEN,
+ * aus dem gebauten Checkout) und die Gewährleistungs-Mitteilung
+ * (gewaehrleistung.js, eigener Textblock statt fremdem PDF).
  */
 export const PLATZHALTER = Object.freeze({
-  zahlungsartenOnline: "[PLATZHALTER: im Stripe-Konto aktivierte Zahlungsarten, z. B. Kredit-/Debitkarte, Apple Pay, Google Pay, eps]",
-  zahlungsartenShowroom: "[PLATZHALTER: im Showroom bei Abholung akzeptierte Zahlungsarten, z. B. Bankomatkarte, Kreditkarte, bar]",
   letmeship: "[PLATZHALTER: Firma und Anschrift des Versandvermittlers LetMeShip laut Vertrag bzw. Auftragsverarbeitungsvertrag]",
-  gewaehrleistungsMitteilung: "[PLATZHALTER: harmonisierte Mitteilung zum gesetzlichen Gewährleistungsrecht laut Anhang II FAGG (grafisches Muster, im RIS nur als PDF) – vor Livegang einbinden]",
+});
+
+/**
+ * Zahlungsarten, wie sie der Checkout tatsächlich anbietet (handlers.js,
+ * payments/config.js): Online über Stripe Checkout – welche Zahlungsarten dort
+ * erscheinen, legt die Zahlungsarten-Konfiguration des Stripe-Kontos fest
+ * (STRIPE_PAYMENT_METHOD_CONFIGURATION bzw. Dashboard-Standard; Karte ist
+ * immer dabei); bei Abholung wahlweise online oder Zahlung vor Ort im
+ * Showroom. Keine weiteren Zahlungsarten (kein Kauf auf Rechnung, kein PayPal).
+ */
+export const ZAHLUNGSARTEN = Object.freeze({
+  online: "Kredit- oder Debitkarte sowie den weiteren auf der Bezahlseite von Stripe angebotenen Zahlungsarten (je nach Freischaltung in unserem Stripe-Konto zum Beispiel Apple Pay, Google Pay oder eps-Überweisung); die zur Auswahl stehenden Zahlungsarten sehen Sie vor dem Absenden der Bestellung und auf der Bezahlseite",
+  showroom: "Zahlung vor Ort im Showroom bei der Übergabe; die im Showroom möglichen Zahlungsarten (Karte oder bar) nennen wir Ihnen in der Nachricht, dass Ihre Artikel abholbereit sind",
 });
 
 /**
@@ -246,7 +262,7 @@ export const AGB = Object.freeze([
 
   { h: "3. Abholung im Showroom" },
   `3.1 Statt Versand können Sie „Abholung im Showroom“ wählen (${A.marke}, ${ANSCHRIFT}). Das ist auch für Kundinnen und Kunden aus der Schweiz möglich; einen Versand in die Schweiz bieten wir derzeit nicht an.`,
-  `3.2 Bei Abholung können Sie online bezahlen oder „bezahlen bei Abholung“ wählen. Im zweiten Fall halten wir die Artikel nach unserer Auftragsbestätigung für Sie bereit und informieren Sie per E-Mail, sobald sie abholbereit sind. Sie bezahlen bei der Abholung mit ${PLATZHALTER.zahlungsartenShowroom}.`,
+  `3.2 Bei Abholung können Sie online bezahlen oder „bezahlen bei Abholung“ wählen. Im zweiten Fall halten wir die Artikel nach unserer Auftragsbestätigung für Sie bereit und informieren Sie per E-Mail, sobald sie abholbereit sind. Die Zahlung erfolgt dann als ${ZAHLUNGSARTEN.showroom}.`,
   `3.3 Bitte holen Sie die Artikel innerhalb von ${V.abholfristTage} Tagen nach unserer Mitteilung „abholbereit“ während der Öffnungszeiten ab. Holen Sie nicht ab, können wir Ihnen eine Nachfrist von ${V.nachfristTage} Tagen setzen und nach deren Ablauf vom Vertrag zurücktreten (§ 918 ABGB). Weitere Kosten berechnen wir Ihnen dafür nicht.`,
   { note: `Abholfrist ${V.abholfristTage} + Nachfrist ${V.nachfristTage} Tage = Vorschlag. Rücktritt nur über die gesetzliche Nachfristsetzung – kein vertragliches Rücktrittsrecht ohne sachlichen Grund (§ 6 Abs 2 Z 1 KSchG), keine Stornogebühr oder Vertragsstrafe vorgesehen. Auch bei Abholung bleibt es ein Fernabsatzvertrag (Abschluss ausschließlich online): Widerrufsrecht ab Besitzübernahme im Showroom.` },
   "3.4 Ihr Widerrufsrecht (Punkt 7) gilt auch bei Abholung; die Frist beginnt mit dem Tag, an dem Sie die Ware im Showroom übernehmen.",
@@ -257,10 +273,10 @@ export const AGB = Object.freeze([
   "4.3 Es gilt der Preis zum Zeitpunkt Ihrer Bestellung. Ändern sich Preis oder Versandkosten, bevor Sie bestellen, zeigen wir Ihnen die neue Summe an und Sie bestätigen neu.",
 
   { h: "5. Zahlung" },
-  `5.1 Online bezahlen Sie über den Zahlungsdienstleister Stripe (Stripe Payments Europe, Limited, Irland) mit ${PLATZHALTER.zahlungsartenOnline}. Welche Zahlungsarten möglich sind, sehen Sie spätestens zu Beginn des Bestellvorgangs (§ 8 Abs 3 FAGG; DE § 312j Abs 1 BGB). Ihre Zahlungsdaten gibt Stripe nicht an uns weiter.`,
+  `5.1 Online bezahlen Sie über den Zahlungsdienstleister Stripe (Stripe Payments Europe, Limited, Irland) mit ${ZAHLUNGSARTEN.online}. Welche Zahlungsarten möglich sind, sehen Sie spätestens zu Beginn des Bestellvorgangs (§ 8 Abs 3 FAGG; DE § 312j Abs 1 BGB). Ihre Zahlungsdaten gibt Stripe nicht an uns weiter.`,
   "5.2 Bei Online-Zahlung ist der Gesamtpreis mit Abschluss des Bezahlvorgangs fällig. Bei „bezahlen bei Abholung“ ist er bei Übergabe im Showroom fällig.",
   "5.3 Für die Nutzung einer Zahlungsart verlangen wir kein zusätzliches Entgelt.",
-  { note: "Kein Zahlungsmittelentgelt: § 27 Abs 6 ZaDiG 2018 / DE § 270a BGB. Zahlungsarten müssen vor dem Bestellvorgang genannt werden – Platzhalter aus dem Stripe-Dashboard füllen." },
+  { note: "Kein Zahlungsmittelentgelt: § 27 Abs 6 ZaDiG 2018 / DE § 270a BGB. Zahlungsarten vor dem Bestellvorgang genannt (ZAHLUNGSARTEN, Stand 03.11.2026): Stripe-Checkout mit Karte + Dashboard-Konfiguration, Showroom vor Ort." },
 
   { h: "6. Lieferung" },
   "6.1 Wir liefern an Adressen in Österreich und Deutschland. In die Schweiz und in andere Länder liefern wir derzeit nicht; Abholung im Showroom ist möglich.",
@@ -288,8 +304,9 @@ export const AGB = Object.freeze([
   "10.4 Preisminderung oder Vertragsauflösung können Sie unter den Voraussetzungen des § 12 Abs 4 VGG verlangen; bei einem geringfügigen Mangel ist die Vertragsauflösung ausgeschlossen (§ 12 Abs 5 VGG).",
   "10.5 Bitte melden Sie Mängel an " + A.email + " oder telefonisch unter " + A.telefon + ". Gewährleistungsrechte sind nicht davon abhängig, dass Sie den Mangel innerhalb einer bestimmten Frist melden.",
   "10.6 Wohnen Sie in Deutschland, gelten zusätzlich die zwingenden Vorschriften des deutschen Kaufrechts (§§ 434 ff., 474 ff. BGB), soweit sie für Sie günstiger sind (Punkt 13).",
-  PLATZHALTER.gewaehrleistungsMitteilung,
-  { note: `VGG-Novelle BGBl. I Nr. 60/2026 (Warenreparaturrichtlinie-Umsetzungsgesetz): § 10 Abs 2a, § 12 Abs 2a, § 13 Abs 1a in Kraft 1.10.2026, für Verträge nach dem 30.9.2026 (§ 29 Abs 4 VGG), RIS ${QUELLEN.VGG}; deckt sich mit src/content/ratgeber (WKO Stand 30.09.2026). Keine Rügeobliegenheit für Verbraucher. § 4 Abs 1 Z 12 FAGG verlangt die harmonisierte Mitteilung laut Anhang II „in hervorgehobener Weise“ → Grafik einbinden (Platzhalter).` },
+  // Harmonisierte Mitteilung (§ 4 Abs 1 Z 12 FAGG, Anhang II) als eigener Block – gewaehrleistung.js; im Warenkorb zusätzlich hervorgehoben vor dem Bestellknopf.
+  ...GEWAEHRLEISTUNG_BLOCKS,
+  { note: `VGG-Novelle BGBl. I Nr. 60/2026 (Warenreparaturrichtlinie-Umsetzungsgesetz): § 10 Abs 2a, § 12 Abs 2a, § 13 Abs 1a in Kraft 1.10.2026, für Verträge nach dem 30.9.2026 (§ 29 Abs 4 VGG), RIS ${QUELLEN.VGG}; deckt sich mit src/content/ratgeber (WKO Stand 30.09.2026). Keine Rügeobliegenheit für Verbraucher. § 4 Abs 1 Z 12 FAGG: harmonisierte Mitteilung laut Anhang II „in hervorgehobener Weise“ → Textblock gewaehrleistung.js (Eigenbau, Wortlaut-Abgleich mit dem amtlichen Muster durch die Kanzlei).` },
 
   { h: "11. Herstellergarantien" },
   "11.1 Gibt ein Hersteller eine Garantie, gilt sie zusätzlich zur Gewährleistung und schränkt Ihre gesetzlichen Rechte nicht ein. Inhalt, Dauer und Garantiegeber nennen wir Ihnen, wenn uns der Hersteller die Garantie schriftlich bestätigt hat.",

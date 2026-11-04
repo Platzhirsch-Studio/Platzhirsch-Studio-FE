@@ -1,0 +1,71 @@
+{#- PH Kassenbeleg Bon 80 mm – eigenständige Vorlage ohne ph_basis.html (CONVENTIONS 9).
+    Pflichtangaben § 132a BAO / RKSV § 11: Unternehmer, Belegnummer, Datum/Uhrzeit, Menge/Bezeichnung,
+    Betrag je Steuersatz, Kassen-ID, maschinenlesbarer Code. Felder laut PLAN.md WP10a (PH Kassenbeleg). -#}
+{%- set firma = ph_firma() -%}
+{%- set einst = ph_einstellungen() -%}
+{%- set ke = ph_kassa_einstellungen() -%}
+{%- set kurz = {"Normal 20": "A 20 %", "Ermaessigt-1 10": "B 10 %", "Ermaessigt-2 13": "C 13 %", "Null 0": "D 0 %", "Besonders 19": "E 19 %", "Steuerfrei": "F 0 %"} -%}
+{%- set trainings = doc.trainings or doc.belegart == "Trainingsbeleg" -%}
+{%- set storno = doc.belegart == "Stornobeleg" or doc.storno_von -%}
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<style>
+  @page { size: 80mm auto; margin: 3mm; }
+  body { width: 72mm; margin: 0; font-family: "Instrument Sans", Arial, Helvetica, sans-serif; font-size: 8.5pt; line-height: 1.3; color: #000; }
+  .m { text-align: center; } .wm { font-family: "Bodoni Moda", Georgia, serif; font-size: 15pt; letter-spacing: .2em; margin: 1mm 0; }
+  .k { font-size: 7.5pt; } .t { font-weight: 700; letter-spacing: .08em; margin: 2mm 0 1mm; text-align: center; }
+  .lr { display: flex; justify-content: space-between; gap: 2mm; } .lr span:last-child { white-space: nowrap; }
+  hr { border: 0; border-top: 1px dashed #000; margin: 1.5mm 0; }
+  .sum { display: flex; justify-content: space-between; font-size: 13pt; font-weight: 700; margin: 1.5mm 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; } td { padding: 0; } td.z { text-align: right; white-space: nowrap; }
+  .hin { border: 1px solid #000; padding: 1mm; text-align: center; font-weight: 700; margin: 1.5mm 0; }
+  .qr { text-align: center; margin: 2mm 0; } .code { font-size: 5.5pt; word-break: break-all; color: #444; }
+  .test { color: #b91c1c; font-weight: 700; letter-spacing: .1em; text-align: center; }
+</style></head><body>
+<div class="m wm">PLATZHIRSCH</div>
+<div class="m k">{{ firma.kurzname or "Home Living" }}</div>
+<div class="m k">{{ firma.firmenname }}</div>
+<div class="m k">{{ firma.strasse }}, {{ firma.plz }} {{ firma.ort }}</div>
+{% if firma.uid %}<div class="m k">UID {{ firma.uid }}</div>{% endif %}
+{% if ke.bon_kopfzeile %}<div class="m k">{{ ke.bon_kopfzeile }}</div>{% endif %}
+{% if einst.testmodus %}<div class="test">TEST</div>{% endif %}
+{% if trainings %}<div class="hin">TRAINING – KEIN GÜLTIGER BELEG</div>{% endif %}
+{% if storno %}<div class="hin">STORNO{% if doc.storno_von %} zu Beleg {{ doc.storno_von }}{% endif %}</div>{% endif %}
+<div class="t">{{ {"Standard": "KASSENBELEG", "Nullbeleg": "NULLBELEG", "Startbeleg": "STARTBELEG", "Monatsbeleg": "MONATSBELEG", "Jahresbeleg": "JAHRESBELEG", "Schlussbeleg": "SCHLUSSBELEG", "Sammelbeleg": "SAMMELBELEG", "Stornobeleg": "STORNOBELEG", "Trainingsbeleg": "TRAININGSBELEG"}.get(doc.belegart or "Standard", "KASSENBELEG") }}</div>
+<div class="lr"><span>Beleg-Nr.</span><span>{{ doc.belegnummer or doc.name }}</span></div>
+<div class="lr"><span>Datum</span><span>{{ frappe.utils.format_datetime(doc.datum_uhrzeit, "dd.MM.yyyy HH:mm") }}</span></div>
+<div class="lr"><span>Kassen-ID</span><span>{{ doc.kasse }}</span></div>
+{% if doc.bediener %}<div class="lr"><span>Bedienung</span><span>{{ frappe.db.get_value("User", doc.bediener, "full_name") or doc.bediener }}</span></div>{% endif %}
+{% if doc.kontakt %}<div class="lr"><span>Kunde</span><span>{{ frappe.db.get_value("PH Kontakt", doc.kontakt, "titel") or doc.kontakt }}</span></div>{% endif %}
+<hr>
+{% for p in doc.positionen %}
+  {% if p.menge and p.menge != 1 %}
+    <div>{{ p.bezeichnung }}</div>
+    <div class="lr"><span>&nbsp;&nbsp;{{ p.menge|int if p.menge == p.menge|int else p.menge }} × {{ ph_betrag(p.einzel_brutto_cent) }}</span><span>{{ ph_betrag(p.brutto_cent) }} {{ kurz.get(p.steuersatz, "")[:1] }}</span></div>
+  {% else %}
+    <div class="lr"><span>{{ p.bezeichnung }}</span><span>{{ ph_betrag(p.brutto_cent) }} {{ kurz.get(p.steuersatz, "")[:1] }}</span></div>
+  {% endif %}
+{% endfor %}
+<hr>
+<div class="sum"><span>SUMME</span><span>{{ ph_betrag(doc.gesamt_cent) }}</span></div>
+{%- set ns = namespace(s={}) -%}
+{%- for p in doc.positionen -%}
+  {%- set k = p.steuersatz or "Normal 20" -%}
+  {%- set alt = ns.s.get(k, {"netto": 0, "ust": 0, "brutto": 0}) -%}
+  {%- set _ = ns.s.update({k: {"netto": alt.netto + (p.netto_cent or 0), "ust": alt.ust + (p.ust_cent or 0), "brutto": alt.brutto + (p.brutto_cent or 0)}}) -%}
+{%- endfor -%}
+<table><tr><td>Satz</td><td class="z">Netto</td><td class="z">USt</td><td class="z">Brutto</td></tr>
+{% for k, w in ns.s.items() %}<tr><td>{{ kurz.get(k, k) }}</td><td class="z">{{ ph_betrag(w.netto) }}</td><td class="z">{{ ph_betrag(w.ust) }}</td><td class="z">{{ ph_betrag(w.brutto) }}</td></tr>{% endfor %}
+</table>
+<hr>
+{% for z in doc.zahlarten %}
+  <div class="lr"><span>{{ {"Bar": "Bar", "Karte Stripe Terminal": "Karte", "Karte extern": "Karte", "Gutschein": "Gutschein", "Ueberweisung": "Überweisung"}.get(z.zahlart, z.zahlart) }}</span><span>{{ ph_betrag(z.betrag_cent) }}</span></div>
+  {% if z.zahlart == "Bar" and z.retour_cent %}<div class="lr k"><span>&nbsp;&nbsp;Gegeben</span><span>{{ ph_betrag(z.gegeben_cent) }}</span></div><div class="lr k"><span>&nbsp;&nbsp;Rückgeld</span><span>{{ ph_betrag(z.retour_cent) }}</span></div>{% endif %}
+{% endfor %}
+<div class="qr">
+  {% if doc.maschinenlesbarer_code %}{{ ph_kassa_qr_svg(doc.maschinenlesbarer_code, 30) }}<div class="code">{{ doc.maschinenlesbarer_code }}</div>{% else %}<div class="hin">Beleg ohne Signatur (Entwurf)</div>{% endif %}
+  {% if doc.see_ausgefallen %}<div class="hin">Sicherheitseinrichtung ausgefallen</div>{% endif %}
+</div>
+{% for zeile in (ke.bon_fusstext or "Vielen Dank für Ihren Besuch.").splitlines() %}<div class="m k">{{ zeile }}</div>{% endfor %}
+{% if firma.website %}<div class="m k">{{ firma.website }}</div>{% endif %}
+</body></html>

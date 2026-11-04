@@ -1,0 +1,131 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "PH Servicefall",
+  "workflow_name": "PH Servicefall",
+  "document_type": "PH Servicefall",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Gemeldet", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Gemeldet", "is_optional_state": 0},
+   {"state": "PH Geprueft", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Geprueft", "is_optional_state": 0},
+   {"state": "PH Entscheidung", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Entscheidung", "is_optional_state": 0},
+   {"state": "PH In Bearbeitung", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "In Bearbeitung", "is_optional_state": 0},
+   {"state": "PH Einsatz geplant", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Einsatz geplant", "is_optional_state": 0},
+   {"state": "PH Erledigt", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Erledigt", "is_optional_state": 0},
+   {"state": "PH Geschlossen", "doc_status": "0", "allow_edit": "PH Service Leitung", "update_field": "status", "update_value": "Geschlossen", "is_optional_state": 0},
+   {"state": "PH Abgelehnt", "doc_status": "0", "allow_edit": "PH Service Leitung", "update_field": "status", "update_value": "Abgelehnt", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Gemeldet", "action": "Prüfung abschließen", "next_state": "PH Geprueft", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1, "condition": "doc.fehlercode and doc.mangel_bestaetigt != 'Offen'"},
+   {"state": "PH Geprueft", "action": "Entscheidung treffen", "next_state": "PH Entscheidung", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1, "condition": "doc.entscheidung and doc.entscheidung_begruendung and (not doc.kulanz_freigabe_noetig)"},
+   {"state": "PH Geprueft", "action": "Entscheidung treffen", "next_state": "PH Entscheidung", "allowed": "PH Service Leitung", "allow_self_approval": 1, "condition": "doc.entscheidung and doc.entscheidung_begruendung"},
+   {"state": "PH Geprueft", "action": "Ablehnen", "next_state": "PH Abgelehnt", "allowed": "PH Service Leitung", "allow_self_approval": 1, "condition": "doc.entscheidung_begruendung and doc.abschlussbericht"},
+   {"state": "PH Entscheidung", "action": "In Bearbeitung nehmen", "next_state": "PH In Bearbeitung", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1, "condition": "doc.entscheidung != 'Abgelehnt' and (not doc.kulanz_freigabe_noetig or doc.kulanz_freigegeben_von)"},
+   {"state": "PH Entscheidung", "action": "In Bearbeitung nehmen", "next_state": "PH In Bearbeitung", "allowed": "PH Service Leitung", "allow_self_approval": 1, "condition": "doc.entscheidung != 'Abgelehnt'"},
+   {"state": "PH Entscheidung", "action": "Ablehnen", "next_state": "PH Abgelehnt", "allowed": "PH Service Leitung", "allow_self_approval": 1, "condition": "doc.entscheidung_begruendung and doc.abschlussbericht"},
+   {"state": "PH In Bearbeitung", "action": "Einsatz planen", "next_state": "PH Einsatz geplant", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH In Bearbeitung", "action": "Erledigt melden", "next_state": "PH Erledigt", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1, "condition": "doc.abschlussbericht"},
+   {"state": "PH Einsatz geplant", "action": "In Bearbeitung nehmen", "next_state": "PH In Bearbeitung", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Einsatz geplant", "action": "Erledigt melden", "next_state": "PH Erledigt", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1, "condition": "doc.abschlussbericht"},
+   {"state": "PH Erledigt", "action": "Schließen", "next_state": "PH Geschlossen", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1, "condition": "doc.kunde_informiert_am or doc.abnahme_bestaetigt"},
+   {"state": "PH Erledigt", "action": "Schließen", "next_state": "PH Geschlossen", "allowed": "PH Service Leitung", "allow_self_approval": 1},
+   {"state": "PH Erledigt", "action": "Wieder öffnen", "next_state": "PH In Bearbeitung", "allowed": "PH Service Leitung", "allow_self_approval": 1},
+   {"state": "PH Geschlossen", "action": "Wieder öffnen", "next_state": "PH In Bearbeitung", "allowed": "PH Service Leitung", "allow_self_approval": 1},
+   {"state": "PH Abgelehnt", "action": "Wieder öffnen", "next_state": "PH Geprueft", "allowed": "PH Service Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Lieferantenregress",
+  "workflow_name": "PH Lieferantenregress",
+  "document_type": "PH Lieferantenregress",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Regress offen", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Offen", "is_optional_state": 0},
+   {"state": "PH Regress gemeldet", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Gemeldet", "is_optional_state": 0},
+   {"state": "PH Regress anerkannt", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Anerkannt", "is_optional_state": 0},
+   {"state": "PH Regress abgelehnt", "doc_status": "0", "allow_edit": "PH Service Leitung", "update_field": "status", "update_value": "Abgelehnt", "is_optional_state": 0},
+   {"state": "PH Regress verrechnet", "doc_status": "0", "allow_edit": "PH Service Leitung", "update_field": "status", "update_value": "Verrechnet", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Regress offen", "action": "Beim Lieferanten melden", "next_state": "PH Regress gemeldet", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1, "condition": "doc.betrag_gefordert_cent and doc.beschreibung"},
+   {"state": "PH Regress gemeldet", "action": "Regress anerkannt", "next_state": "PH Regress anerkannt", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1, "condition": "doc.betrag_anerkannt_cent"},
+   {"state": "PH Regress gemeldet", "action": "Regress abgelehnt", "next_state": "PH Regress abgelehnt", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Regress anerkannt", "action": "Regress verrechnet", "next_state": "PH Regress verrechnet", "allowed": "PH Service Leitung", "allow_self_approval": 1, "condition": "doc.gutschrift_nummer or doc.gutschrift_beleg or doc.eingangsrechnung or doc.form != 'Gutschrift'"},
+   {"state": "PH Regress abgelehnt", "action": "Wieder öffnen", "next_state": "PH Regress gemeldet", "allowed": "PH Service Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Pflege Abo",
+  "workflow_name": "PH Pflege Abo",
+  "document_type": "PH Pflege Abo",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Angefragt", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Angefragt", "is_optional_state": 0},
+   {"state": "PH Angeboten", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Angeboten", "is_optional_state": 0},
+   {"state": "PH Aktiv", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Aktiv", "is_optional_state": 0},
+   {"state": "PH Pausiert", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Pausiert", "is_optional_state": 0},
+   {"state": "PH Gekuendigt", "doc_status": "0", "allow_edit": "PH Service Leitung", "update_field": "status", "update_value": "Gekuendigt", "is_optional_state": 0},
+   {"state": "PH Beendet", "doc_status": "0", "allow_edit": "PH Service Leitung", "update_field": "status", "update_value": "Beendet", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Angefragt", "action": "Anbieten", "next_state": "PH Angeboten", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Angefragt", "action": "Beenden", "next_state": "PH Beendet", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Angeboten", "action": "Aktivieren", "next_state": "PH Aktiv", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1, "condition": "doc.intervall_monate and doc.bedingungen_version"},
+   {"state": "PH Angeboten", "action": "Aktivieren", "next_state": "PH Aktiv", "allowed": "PH Service Leitung", "allow_self_approval": 1},
+   {"state": "PH Angeboten", "action": "Beenden", "next_state": "PH Beendet", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Aktiv", "action": "Pausieren", "next_state": "PH Pausiert", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Aktiv", "action": "Kündigen", "next_state": "PH Gekuendigt", "allowed": "PH Service Leitung", "allow_self_approval": 1, "condition": "doc.kuendigung_zum"},
+   {"state": "PH Pausiert", "action": "Fortsetzen", "next_state": "PH Aktiv", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Pausiert", "action": "Kündigen", "next_state": "PH Gekuendigt", "allowed": "PH Service Leitung", "allow_self_approval": 1, "condition": "doc.kuendigung_zum"},
+   {"state": "PH Gekuendigt", "action": "Beenden", "next_state": "PH Beendet", "allowed": "PH Service Leitung", "allow_self_approval": 1},
+   {"state": "PH Beendet", "action": "Wieder öffnen", "next_state": "PH Angefragt", "allowed": "PH Service Leitung", "allow_self_approval": 1}
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Serviceauftrag",
+  "workflow_name": "PH Serviceauftrag",
+  "document_type": "PH Serviceauftrag",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {"state": "PH Angefragt", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Angefragt", "is_optional_state": 0},
+   {"state": "PH Angeboten", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Angeboten", "is_optional_state": 0},
+   {"state": "PH Beauftragt", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Beauftragt", "is_optional_state": 0},
+   {"state": "PH Abgeholt", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Abgeholt", "is_optional_state": 0},
+   {"state": "PH Eingelagert", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Eingelagert", "is_optional_state": 0},
+   {"state": "PH In Arbeit", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "In Arbeit", "is_optional_state": 0},
+   {"state": "PH Zurueckgebracht", "doc_status": "0", "allow_edit": "PH Service Mitarbeiter", "update_field": "status", "update_value": "Zurueckgebracht", "is_optional_state": 0},
+   {"state": "PH Abgerechnet", "doc_status": "0", "allow_edit": "PH Service Leitung", "update_field": "status", "update_value": "Abgerechnet", "is_optional_state": 0},
+   {"state": "PH Storniert", "doc_status": "0", "allow_edit": "PH Service Leitung", "update_field": "status", "update_value": "Storniert", "is_optional_state": 0}
+  ],
+  "transitions": [
+   {"state": "PH Angefragt", "action": "Anbieten", "next_state": "PH Angeboten", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Angeboten", "action": "Beauftragen", "next_state": "PH Beauftragt", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1, "condition": "doc.preis_cent or doc.angebot"},
+   {"state": "PH Beauftragt", "action": "Abholen", "next_state": "PH Abgeholt", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1, "condition": "doc.positionen"},
+   {"state": "PH Beauftragt", "action": "In Arbeit nehmen", "next_state": "PH In Arbeit", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Abgeholt", "action": "Einlagern", "next_state": "PH Eingelagert", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Abgeholt", "action": "In Arbeit nehmen", "next_state": "PH In Arbeit", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Eingelagert", "action": "In Arbeit nehmen", "next_state": "PH In Arbeit", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Eingelagert", "action": "Zurückbringen", "next_state": "PH Zurueckgebracht", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH In Arbeit", "action": "Zurückbringen", "next_state": "PH Zurueckgebracht", "allowed": "PH Service Mitarbeiter", "allow_self_approval": 1},
+   {"state": "PH Zurueckgebracht", "action": "Abrechnen", "next_state": "PH Abgerechnet", "allowed": "PH Service Leitung", "allow_self_approval": 1},
+   {"state": "PH Angefragt", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Service Leitung", "allow_self_approval": 1},
+   {"state": "PH Angeboten", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Service Leitung", "allow_self_approval": 1},
+   {"state": "PH Beauftragt", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Service Leitung", "allow_self_approval": 1}
+  ]
+ }
+]

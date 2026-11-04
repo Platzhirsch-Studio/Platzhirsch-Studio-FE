@@ -1,0 +1,27 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 08:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["zeit", "ereignis", "status", "von", "hinweis"],
+ "fields": [
+  {"fieldname": "zeit", "fieldtype": "Datetime", "label": "Zeit", "reqd": 1, "in_list_view": 1, "columns": 2},
+  {"fieldname": "ereignis", "fieldtype": "Select", "label": "Ereignis", "options": "Status\nKommunikation\nEinsatz\nErsatzteil\nRegress\nEskalation\nFrist\nNotiz", "default": "Status", "in_list_view": 1, "columns": 2},
+  {"fieldname": "status", "fieldtype": "Data", "label": "Status", "in_list_view": 1, "columns": 2},
+  {"fieldname": "von", "fieldtype": "Data", "label": "Von", "in_list_view": 1, "columns": 2},
+  {"fieldname": "hinweis", "fieldtype": "Small Text", "label": "Hinweis", "in_list_view": 1, "columns": 2}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Service",
+ "name": "PH Servicefall Verlauf",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

@@ -129,7 +129,10 @@ test("Seiten und Routen: Schalter vor allem anderen, keine Einträge in Navigati
   }
   const preview = fs.readFileSync(path.join(ROOT, "src/app/[locale]/preview/commerce/page.js"), "utf8");
   assert.match(preview, /robots: NOINDEX/);
-  assert.match(preview, /Entwurf, Freigabe Insolvenzrechtler\/Steuerberater offen/);
+  // 03.11.2026 (Nr. 46): Gutscheinverkauf freigegeben, Banner nennt den Beleg und den offenen Steuerberater-Punkt.
+  assert.match(preview, /Gutscheinverkauf vom Inhaber freigegeben \(Entscheidung Nr\. 46, 03\.11\.2026\)/);
+  assert.match(preview, /Steuerberater bestätigt Mehrzweckgutschein noch/);
+  assert.doesNotMatch(preview, /Insolvenzrechtler\/Steuerberater offen|anwaltlich prüfen/);
   assert.match(preview, /commercePreviewEnabled\(\)/);
   // Kein Link in Navigation, Sitemap oder llms (Integrator nach Freigabe).
   const scan = ["src/lib/seo", "src/components/Navbar", "src/app/llms.txt", "src/app/sitemap.xml"];
@@ -357,13 +360,21 @@ test("Reservierung Modus anfrage: Stück aus dem Sheet, Preis vom Server, keine 
 
 // ---------- Gutscheinbedingungen-Entwurf ----------
 
-test("Gutscheinbedingungen: unbefristet, Teileinlösung, keine Barablöse, offen markiert, kein OS-Link", () => {
+test("Gutscheinbedingungen: unbefristet, Teileinlösung, keine Barablöse, keine Marker mehr (03.11.2026), kein OS-Link", () => {
   const text = TERMS_SECTIONS.flatMap((s) => s.paragraphs).join("\n");
   assert.match(text, /unbefristet gültig/);
+  assert.match(text, /30 Jahren \(§ 1478 ABGB\)/);
   assert.match(text, /Teilbeträgen eingelöst/);
   assert.match(text, /Auszahlung des Gutscheinwerts in bar oder per Überweisung ist ausgeschlossen/);
   assert.match(text, /14 Tagen/);
-  assert.ok(termsOpenCounts()["[anwaltlich prüfen]"] >= 5);
+  // Inhaber-Entscheidungen Nr. 17 (Café), 38 (Aussteller), 40/45 (Schlichtung), 46 (online, Mehrzweck)
+  assert.match(text, /MW Immobilienverwaltungs GmbH, FN 443753 d, Landesgericht Feldkirch, UID ATU70035339/);
+  assert.match(text, /Mehrzweckgutschein/);
+  assert.match(text, /Bestellungen in unserem Onlineshop/);
+  assert.match(text, /Café, Restaurant & Bar können sie nicht eingelöst werden/);
+  assert.match(text, /Verbraucherschlichtungsstelle nehmen wir nicht teil/);
+  assert.doesNotMatch(text, /\[[^\]]+\]/, "keine eckigen Klammern im freigegebenen Text");
+  assert.deepEqual(Object.values(termsOpenCounts()), [0, 0, 0]);
   assert.doesNotMatch(text, /Online-Streitbeilegung|ec\.europa\.eu\/consumers\/odr|abgesichert/i);
   assert.doesNotMatch(text, /gültig (1|ein|3|drei) Jahr/i);
 });

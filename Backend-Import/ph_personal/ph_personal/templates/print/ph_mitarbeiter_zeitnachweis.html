@@ -1,0 +1,34 @@
+{% extends "templates/print/ph_basis.html" %}
+{% set heute = frappe.utils.getdate(doc.zeitnachweis_monat or frappe.utils.nowdate()) %}
+{% set m = frappe.call("ph_personal.api.monatsuebersicht", mitarbeiter=doc.name, jahr=heute.year, monat=heute.month) %}
+{% block titel %}Zeitnachweis {{ doc.titel }} {{ "%02d" % m.monat }}/{{ m.jahr }}{% endblock %}
+{% block kopfrechts %}Zeitnachweis<br>{{ "%02d" % m.monat }}/{{ m.jahr }}<br>{{ doc.name }}{% endblock %}
+{% block css %} .ph-summen td { padding: 1.5mm 3mm; } .ph-summen b { font-size: 12pt; } {% endblock %}
+{% block inhalt %}
+<h1>Zeitnachweis {{ doc.titel }}</h1>
+<div class="ph-feld"><b>Zeitraum</b> {{ ph_datum(m.von) }} – {{ ph_datum(m.bis) }} · {{ m.arbeitstage|int }} Arbeitstage · {{ m.wochenstunden }} h/Woche</div>
+<div class="ph-feld"><b>Rolle</b> {{ _(doc.rolle_intern) }}{% if doc.beschaeftigungsart %} · {{ _(doc.beschaeftigungsart) }}{% endif %}</div>
+
+<table class="ph-tabelle ph-summen" style="width:auto;margin:4mm 0 6mm">
+  <tr><td>Soll</td><td class="zahl"><b>{{ m.soll_text }}</b></td><td>Ist (gebucht)</td><td class="zahl"><b>{{ m.ist_text }}</b></td><td>Gutschrift Abwesenheit</td><td class="zahl"><b>{{ m.gutschrift_text }}</b></td><td>Saldo</td><td class="zahl"><b style="color:{{ '#15803d' if m.saldo_min >= 0 else '#b91c1c' }}">{{ m.saldo_text }}</b></td></tr>
+</table>
+<p style="font-size:9pt;color:#6b7280">Abwesenheiten (Arbeitstage): Urlaub {{ m.urlaub_tage }} · Krankenstand {{ m.krank_tage }} · Sonstige {{ m.sonstige_tage }}{% if m.offen %} · <span style="color:#b91c1c">{{ m.offen }} offene Buchung(en) ohne „Gehen“</span>{% endif %}</p>
+
+<table class="ph-tabelle">
+  <thead><tr><th>Datum</th><th>Art</th><th class="zahl">Kommen</th><th class="zahl">Gehen</th><th class="zahl">Pause</th><th class="zahl">Netto</th><th>Projekt / Notiz</th></tr></thead>
+  <tbody>
+  {% for t in m.tage %}
+    <tr><td>{{ ph_datum(t.datum) }}</td><td>{{ _(t.art) }}</td><td class="zahl">{{ t.kommen }}</td><td class="zahl">{{ t.gehen or "–" }}</td><td class="zahl">{{ t.pause_min or 0 }}</td><td class="zahl">{{ t.dauer_text or "" }}</td><td>{{ t.projekt_referenz or "" }}</td></tr>
+  {% else %}
+    <tr><td colspan="7">Keine Buchungen in diesem Monat.</td></tr>
+  {% endfor %}
+  </tbody>
+  <tfoot><tr class="ph-summe"><td colspan="5">Summe</td><td class="zahl">{{ m.ist_text }}</td><td></td></tr></tfoot>
+</table>
+
+<table style="width:100%;margin-top:14mm;font-size:9pt"><tr>
+  <td style="width:50%;padding-right:10mm"><div style="border-top:1px solid #30373e;padding-top:2mm">Datum, Unterschrift Mitarbeiter/in</div></td>
+  <td style="width:50%"><div style="border-top:1px solid #30373e;padding-top:2mm">Datum, Unterschrift Leitung</div></td>
+</tr></table>
+<p class="ph-hinweis" style="margin-top:8mm">Aufzeichnung nach § 26 AZG. Erfassung ohne Prüfung von Höchstgrenzen, Ruhezeiten und Zuschlägen – diese prüft die Lohnverrechnung.</p>
+{% endblock %}

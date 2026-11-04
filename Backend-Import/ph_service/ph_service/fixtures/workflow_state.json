@@ -1,0 +1,114 @@
+[
+ {
+  "doctype": "Workflow State",
+  "name": "PH Gemeldet",
+  "workflow_state_name": "PH Gemeldet",
+  "style": "Primary",
+  "icon": "inbox"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Entscheidung",
+  "workflow_state_name": "PH Entscheidung",
+  "style": "Info",
+  "icon": "question-sign"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH In Bearbeitung",
+  "workflow_state_name": "PH In Bearbeitung",
+  "style": "Warning",
+  "icon": "wrench"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Einsatz geplant",
+  "workflow_state_name": "PH Einsatz geplant",
+  "style": "Warning",
+  "icon": "calendar"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Geschlossen",
+  "workflow_state_name": "PH Geschlossen",
+  "style": "Inverse",
+  "icon": "lock"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Regress offen",
+  "workflow_state_name": "PH Regress offen",
+  "style": "Primary",
+  "icon": "inbox"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Regress gemeldet",
+  "workflow_state_name": "PH Regress gemeldet",
+  "style": "Warning",
+  "icon": "envelope"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Regress anerkannt",
+  "workflow_state_name": "PH Regress anerkannt",
+  "style": "Info",
+  "icon": "thumbs-up"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Regress abgelehnt",
+  "workflow_state_name": "PH Regress abgelehnt",
+  "style": "Danger",
+  "icon": "thumbs-down"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Regress verrechnet",
+  "workflow_state_name": "PH Regress verrechnet",
+  "style": "Success",
+  "icon": "ok"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Angefragt",
+  "workflow_state_name": "PH Angefragt",
+  "style": "Primary",
+  "icon": "inbox"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Angeboten",
+  "workflow_state_name": "PH Angeboten",
+  "style": "Warning",
+  "icon": "file"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Gekuendigt",
+  "workflow_state_name": "PH Gekuendigt",
+  "style": "Danger",
+  "icon": "remove"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Beauftragt",
+  "workflow_state_name": "PH Beauftragt",
+  "style": "Info",
+  "icon": "ok-sign"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Eingelagert",
+  "workflow_state_name": "PH Eingelagert",
+  "style": "Warning",
+  "icon": "home"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "PH Zurueckgebracht",
+  "workflow_state_name": "PH Zurueckgebracht",
+  "style": "Success",
+  "icon": "ok"
+ }
+]

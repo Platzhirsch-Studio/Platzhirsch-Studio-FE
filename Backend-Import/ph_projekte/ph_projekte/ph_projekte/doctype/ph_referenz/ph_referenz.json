@@ -1,0 +1,412 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Freigabe eines Projekts als öffentliches Referenzprojekt (Einwilligung, Prüfung durch das Studio, Widerruf löscht Bildkopien).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "freigabe_id",
+  "titel",
+  "projekt",
+  "kontakt",
+  "cb_kopf",
+  "status",
+  "beispiel",
+  "eingereicht_am",
+  "sb_anzeige",
+  "anzeige_art",
+  "anzeige_vorname",
+  "anzeige_ort",
+  "sb_einwilligung",
+  "einwilligung_version",
+  "einwilligung_textstatus",
+  "einwilligung_zeitpunkt",
+  "einwilligung_kanal",
+  "cb_einwilligung",
+  "einwilligung_text",
+  "widerruf_zeitpunkt",
+  "widerruf_kanal",
+  "sb_bilder",
+  "bilder",
+  "sb_seite",
+  "slug",
+  "typologie",
+  "leistungen",
+  "zeitraum_von",
+  "zeitraum_bis",
+  "cb_seite",
+  "ausgangslage",
+  "loesung",
+  "geprueft_von",
+  "geprueft_am",
+  "notiz",
+  "verlauf",
+  "sb_system",
+  "quelle",
+  "ip_hash"
+ ],
+ "fields": [
+  {
+   "fieldname": "freigabe_id",
+   "fieldtype": "Data",
+   "label": "Freigabe-ID",
+   "reqd": 1,
+   "unique": 1,
+   "description": "fg- + 10 Zeichen."
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel (öffentlich, ohne Adresse)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kunde",
+   "options": "PH Kontakt",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Eingereicht\nVeroeffentlicht\nAbgelehnt\nWiderrufen",
+   "default": "Eingereicht",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Website: eingereicht / veroeffentlicht / abgelehnt / widerrufen."
+  },
+  {
+   "fieldname": "beispiel",
+   "fieldtype": "Check",
+   "label": "Beispiel/Demo (nie öffentlich)",
+   "default": "0"
+  },
+  {
+   "fieldname": "eingereicht_am",
+   "fieldtype": "Datetime",
+   "label": "Eingereicht am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_anzeige",
+   "fieldtype": "Section Break",
+   "label": "Nennung"
+  },
+  {
+   "fieldname": "anzeige_art",
+   "fieldtype": "Select",
+   "label": "Nennung",
+   "options": "anonym\nvorname_ort",
+   "default": "anonym",
+   "reqd": 1
+  },
+  {
+   "fieldname": "anzeige_vorname",
+   "fieldtype": "Data",
+   "label": "Vorname",
+   "depends_on": "eval:doc.anzeige_art=='vorname_ort'"
+  },
+  {
+   "fieldname": "anzeige_ort",
+   "fieldtype": "Data",
+   "label": "Gemeinde / Region (keine Adresse)",
+   "depends_on": "eval:doc.anzeige_art=='vorname_ort'"
+  },
+  {
+   "fieldname": "sb_einwilligung",
+   "fieldtype": "Section Break",
+   "label": "Einwilligung (Nachweis Art. 7 DSGVO)"
+  },
+  {
+   "fieldname": "einwilligung_version",
+   "fieldtype": "Data",
+   "label": "Textversion",
+   "read_only": 1
+  },
+  {
+   "fieldname": "einwilligung_textstatus",
+   "fieldtype": "Select",
+   "label": "Textstatus",
+   "options": "entwurf\nfreigegeben",
+   "read_only": 1
+  },
+  {
+   "fieldname": "einwilligung_zeitpunkt",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "einwilligung_kanal",
+   "fieldtype": "Data",
+   "label": "Kanal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_einwilligung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "einwilligung_text",
+   "fieldtype": "Long Text",
+   "label": "Wortlaut (wie vom Kunden gesehen)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "widerruf_zeitpunkt",
+   "fieldtype": "Datetime",
+   "label": "Widerruf am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "widerruf_kanal",
+   "fieldtype": "Data",
+   "label": "Widerruf Kanal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_bilder",
+   "fieldtype": "Section Break",
+   "label": "Bilder"
+  },
+  {
+   "fieldname": "bilder",
+   "fieldtype": "Table",
+   "label": "Bilder (Auswahl des Kunden)",
+   "options": "PH Referenz Bild"
+  },
+  {
+   "fieldname": "sb_seite",
+   "fieldtype": "Section Break",
+   "label": "Öffentliche Seite (Prüfung Studio)"
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug (/de/projekte/<slug>)",
+   "unique": 1
+  },
+  {
+   "fieldname": "typologie",
+   "fieldtype": "Data",
+   "label": "Typologie"
+  },
+  {
+   "fieldname": "leistungen",
+   "fieldtype": "Small Text",
+   "label": "Leistungen (JSON-Liste)"
+  },
+  {
+   "fieldname": "zeitraum_von",
+   "fieldtype": "Data",
+   "label": "Zeitraum von (JJJJ-MM)"
+  },
+  {
+   "fieldname": "zeitraum_bis",
+   "fieldtype": "Data",
+   "label": "Zeitraum bis (JJJJ-MM)"
+  },
+  {
+   "fieldname": "cb_seite",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ausgangslage",
+   "fieldtype": "Small Text",
+   "label": "Ausgangslage"
+  },
+  {
+   "fieldname": "loesung",
+   "fieldtype": "JSON",
+   "label": "Lösung [{raum, text}]"
+  },
+  {
+   "fieldname": "geprueft_von",
+   "fieldtype": "Link",
+   "label": "Geprüft von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geprueft_am",
+   "fieldtype": "Datetime",
+   "label": "Geprüft am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz an die Bauherren (Ablehnung)"
+  },
+  {
+   "fieldname": "verlauf",
+   "fieldtype": "JSON",
+   "label": "Verlauf [{am, was, von}]",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nsystem",
+   "default": "backoffice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Referenz",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Eingereicht",
+   "color": "Orange"
+  },
+  {
+   "title": "Veroeffentlicht",
+   "color": "Green"
+  },
+  {
+   "title": "Abgelehnt",
+   "color": "Gray"
+  },
+  {
+   "title": "Widerrufen",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "field:freigabe_id",
+ "naming_rule": "By fieldname",
+ "title_field": "titel",
+ "search_fields": "titel,slug,projekt",
+ "track_seen": 1
+}

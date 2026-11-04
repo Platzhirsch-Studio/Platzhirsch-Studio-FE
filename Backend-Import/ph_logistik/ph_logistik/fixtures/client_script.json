@@ -1,0 +1,29 @@
+[
+ {
+  "doctype": "Client Script",
+  "name": "PH Bestellung – Packen (ph_logistik)",
+  "dt": "PH Bestellung",
+  "module": "PH Logistik",
+  "view": "Form",
+  "enabled": 1,
+  "script": "// ph_logistik: Button „Packen“ → PH Lieferschein (Packtisch). Nur bei bezahlten/versandbereiten Bestellungen.\nfrappe.ui.form.on(\"PH Bestellung\", {\n\trefresh(frm) {\n\t\tif (frm.is_new()) return;\n\t\tif (frm.doc.ph_logistik_lieferschein) {\n\t\t\tfrm.add_custom_button(__(\"Lieferschein öffnen\"), () => frappe.set_route(\"Form\", \"PH Lieferschein\", frm.doc.ph_logistik_lieferschein), __(\"Logistik\"));\n\t\t\tfrm.add_custom_button(__(\"Packtisch\"), () => frappe.set_route(\"ph-packtisch\", { lieferschein: frm.doc.ph_logistik_lieferschein }), __(\"Logistik\"));\n\t\t\treturn;\n\t\t}\n\t\tif ([\"bezahlt\", \"versandbereit\", \"reserviert\", \"abholbereit\"].includes(frm.doc.status)) {\n\t\t\tfrm.add_custom_button(__(\"Packen (Lieferschein)\"), () => {\n\t\t\t\tfrappe.call({ method: \"ph_logistik.api.lieferschein_aus_bestellung\", args: { bestellung: frm.doc.name }, freeze: true }).then((r) => {\n\t\t\t\t\tif (r.message) frappe.set_route(\"ph-packtisch\", { lieferschein: r.message });\n\t\t\t\t});\n\t\t\t}, __(\"Logistik\"));\n\t\t}\n\t},\n});\n"
+ },
+ {
+  "doctype": "Client Script",
+  "name": "PH Auftragsbestaetigung – Lieferschein (ph_logistik)",
+  "dt": "PH Auftragsbestaetigung",
+  "module": "PH Logistik",
+  "view": "Form",
+  "enabled": 1,
+  "script": "// ph_logistik: Button „Lieferschein erzeugen“ (Teillieferung möglich) aus der Auftragsbestätigung.\nfrappe.ui.form.on(\"PH Auftragsbestaetigung\", {\n\trefresh(frm) {\n\t\tif (frm.is_new() || [\"Storniert\", \"Abgerechnet\"].includes(frm.doc.status)) return;\n\t\tfrm.add_custom_button(__(\"Lieferschein erzeugen\"), () => {\n\t\t\tconst zeilen = (frm.doc.positionen || []).filter((p) => !p.art || [\"Produkt\", \"Leistung\"].includes(p.art));\n\t\t\tconst d = new frappe.ui.Dialog({\n\t\t\t\ttitle: __(\"Lieferschein aus Auftrag\"),\n\t\t\t\tfields: [\n\t\t\t\t\t{ fieldname: \"lieferart\", fieldtype: \"Select\", label: __(\"Lieferart\"), options: [\"Eigenlieferung\", \"Spedition\", \"Versand\", \"Abholung\"], default: \"Eigenlieferung\", reqd: 1 },\n\t\t\t\t\t{ fieldname: \"positionen\", fieldtype: \"Table\", label: __(\"Mengen (0 = nicht liefern)\"), cannot_add_rows: true, in_place_edit: true, data: zeilen.map((p) => ({ zeile: p.name, beschreibung: p.beschreibung || p.produkt, menge: (p.menge || 0) - (p.lieferschein_menge || 0) })), fields: [\n\t\t\t\t\t\t{ fieldname: \"zeile\", fieldtype: \"Data\", label: __(\"Zeile\"), read_only: 1, in_list_view: 1 },\n\t\t\t\t\t\t{ fieldname: \"beschreibung\", fieldtype: \"Data\", label: __(\"Position\"), read_only: 1, in_list_view: 1 },\n\t\t\t\t\t\t{ fieldname: \"menge\", fieldtype: \"Int\", label: __(\"Menge\"), in_list_view: 1 },\n\t\t\t\t\t] },\n\t\t\t\t],\n\t\t\t\tprimary_action_label: __(\"Anlegen\"),\n\t\t\t\tprimary_action(v) {\n\t\t\t\t\tconst pos = {};\n\t\t\t\t\t(v.positionen || []).forEach((p) => { pos[p.zeile] = p.menge || 0; });\n\t\t\t\t\td.hide();\n\t\t\t\t\tfrappe.call({ method: \"ph_logistik.api.lieferschein_aus_auftrag\", args: { auftrag: frm.doc.name, positionen: pos, lieferart: v.lieferart }, freeze: true }).then((r) => r.message && frappe.set_route(\"Form\", \"PH Lieferschein\", r.message));\n\t\t\t\t},\n\t\t\t});\n\t\t\td.show();\n\t\t}, __(\"Logistik\"));\n\t},\n});\n"
+ },
+ {
+  "doctype": "Client Script",
+  "name": "PH Retoure – Retourenlabel (ph_logistik)",
+  "dt": "PH Retoure",
+  "module": "PH Logistik",
+  "view": "Form",
+  "enabled": 1,
+  "script": "// ph_logistik: Button „Retourenlabel erzeugen“ (LetMeShip, Adressen getauscht) an der Retoure.\nfrappe.ui.form.on(\"PH Retoure\", {\n\trefresh(frm) {\n\t\tif (frm.is_new()) return;\n\t\tif (frm.doc.ph_logistik_retourenlabel) {\n\t\t\tfrm.add_custom_button(__(\"Retourenlabel öffnen\"), () => frappe.set_route(\"Form\", \"PH Sendung\", frm.doc.ph_logistik_retourenlabel), __(\"Logistik\"));\n\t\t\treturn;\n\t\t}\n\t\tfrm.add_custom_button(__(\"Retourenlabel erzeugen\"), () => {\n\t\t\tfrappe.confirm(__(\"Retourenlabel über LetMeShip buchen und an die Retoure hängen?\"), () => {\n\t\t\t\tfrappe.call({ method: \"ph_logistik.api.retourenlabel\", args: { retoure: frm.doc.name }, freeze: true }).then((r) => { if (r.message) { frappe.show_alert({ message: __(\"Sendung {0}\", [r.message]), indicator: \"green\" }); frm.reload_doc(); } });\n\t\t\t});\n\t\t}, __(\"Logistik\"));\n\t},\n});\n"
+ }
+]

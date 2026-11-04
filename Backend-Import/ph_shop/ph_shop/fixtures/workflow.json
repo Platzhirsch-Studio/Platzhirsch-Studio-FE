@@ -1,0 +1,409 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "PH Bestellung",
+  "workflow_name": "PH Bestellung",
+  "document_type": "PH Bestellung",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {
+    "state": "PH Offen",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "offen",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Zahlung ausstehend",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "zahlung_ausstehend",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Bezahlt",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "bezahlt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Versandbereit",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "versandbereit",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Versendet",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "versendet",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Reserviert",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "reserviert",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abholbereit",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "abholbereit",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgeholt",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "abgeholt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgeschlossen",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Leitung",
+    "update_field": "status",
+    "update_value": "abgeschlossen",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Fehlgeschlagen",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "fehlgeschlagen",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgelaufen",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Leitung",
+    "update_field": "status",
+    "update_value": "abgelaufen",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Storniert",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Leitung",
+    "update_field": "status",
+    "update_value": "storniert",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Widerrufen",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Leitung",
+    "update_field": "status",
+    "update_value": "widerrufen",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Erstattet",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Leitung",
+    "update_field": "status",
+    "update_value": "erstattet",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Teilerstattet",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Leitung",
+    "update_field": "status",
+    "update_value": "teilerstattet",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Checkout-Fehler",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "checkout_fehler",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Pruefen",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Leitung",
+    "update_field": "status",
+    "update_value": "pruefen",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "PH Bezahlt",
+    "action": "Packen",
+    "next_state": "PH Versandbereit",
+    "allowed": "PH Shop Mitarbeiter",
+    "allow_self_approval": 1,
+    "condition": "doc.lieferart == 'versand'"
+   },
+   {
+    "state": "PH Versandbereit",
+    "action": "Versenden",
+    "next_state": "PH Versendet",
+    "allowed": "PH Shop Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Bezahlt",
+    "action": "Abholbereit melden",
+    "next_state": "PH Abholbereit",
+    "allowed": "PH Shop Mitarbeiter",
+    "allow_self_approval": 1,
+    "condition": "doc.lieferart == 'abholung'"
+   },
+   {
+    "state": "PH Reserviert",
+    "action": "Abholbereit melden",
+    "next_state": "PH Abholbereit",
+    "allowed": "PH Shop Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Abholbereit",
+    "action": "Abgeholt",
+    "next_state": "PH Abgeholt",
+    "allowed": "PH Shop Mitarbeiter",
+    "allow_self_approval": 1,
+    "condition": "doc.bezahlt_am"
+   },
+   {
+    "state": "PH Versendet",
+    "action": "Abschließen",
+    "next_state": "PH Abgeschlossen",
+    "allowed": "PH Shop Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Abgeholt",
+    "action": "Abschließen",
+    "next_state": "PH Abgeschlossen",
+    "allowed": "PH Shop Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Pruefen",
+    "action": "Als geprüft übernehmen",
+    "next_state": "PH Bezahlt",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Offen",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Zahlung ausstehend",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Reserviert",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Bezahlt",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Versandbereit",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Abholbereit",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Checkout-Fehler",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Fehlgeschlagen",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Versendet",
+    "action": "Widerruf erfassen",
+    "next_state": "PH Widerrufen",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Abgeholt",
+    "action": "Widerruf erfassen",
+    "next_state": "PH Widerrufen",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Abgeschlossen",
+    "action": "Widerruf erfassen",
+    "next_state": "PH Widerrufen",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Abgelaufen",
+    "action": "Zurück auf Offen",
+    "next_state": "PH Offen",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Fehlgeschlagen",
+    "action": "Zurück auf Offen",
+    "next_state": "PH Offen",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Checkout-Fehler",
+    "action": "Zurück auf Offen",
+    "next_state": "PH Offen",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Gutschein",
+  "workflow_name": "PH Gutschein",
+  "document_type": "PH Gutschein",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {
+    "state": "PH Erstellt",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Erstellt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Aktiv",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Aktiv",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Teilweise eingeloest",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Teilweise eingeloest",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Eingeloest",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Leitung",
+    "update_field": "status",
+    "update_value": "Eingeloest",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Gesperrt",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Leitung",
+    "update_field": "status",
+    "update_value": "Gesperrt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgelaufen",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Leitung",
+    "update_field": "status",
+    "update_value": "Abgelaufen",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Erstattet",
+    "doc_status": "0",
+    "allow_edit": "PH Shop Leitung",
+    "update_field": "status",
+    "update_value": "Erstattet",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "PH Aktiv",
+    "action": "Sperren",
+    "next_state": "PH Gesperrt",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Teilweise eingeloest",
+    "action": "Sperren",
+    "next_state": "PH Gesperrt",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gesperrt",
+    "action": "Entsperren",
+    "next_state": "PH Aktiv",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1,
+    "condition": "doc.rest_cent == doc.wert_cent"
+   },
+   {
+    "state": "PH Gesperrt",
+    "action": "Entsperren",
+    "next_state": "PH Teilweise eingeloest",
+    "allowed": "PH Shop Leitung",
+    "allow_self_approval": 1,
+    "condition": "doc.rest_cent and doc.rest_cent < doc.wert_cent"
+   }
+  ]
+ }
+]

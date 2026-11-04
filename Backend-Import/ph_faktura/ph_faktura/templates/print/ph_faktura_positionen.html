@@ -1,0 +1,47 @@
+{#- Positions-Tabelle und Summenblock für Angebot/AB/Rechnung/Gutschrift (eingebunden mit include, Kontext: doc). -#}
+{%- set alle_kleinbetrag = doc.get("kleinbetragsrechnung") -%}
+<table class="ph-tabelle ph-positionen">
+  <thead><tr><th style="width:8mm">Pos.</th><th>Bezeichnung</th><th class="zahl" style="width:18mm">Menge</th><th class="zahl" style="width:24mm">Einzelpreis</th>{% if not alle_kleinbetrag %}<th class="zahl" style="width:14mm">USt</th>{% endif %}<th class="zahl" style="width:26mm">Betrag netto</th></tr></thead>
+  <tbody>
+  {%- for p in doc.positionen -%}
+    {%- if p.art == "Text" -%}
+      <tr class="ph-text"><td></td><td colspan="5"><b>{{ p.bezeichnung or "" }}</b>{% if p.beschreibung %}<div class="ph-beschreibung">{{ p.beschreibung }}</div>{% endif %}</td></tr>
+    {%- elif p.art == "Zwischensumme" -%}
+      <tr class="ph-zwischensumme"><td></td><td colspan="4" class="zahl"><b>{{ p.bezeichnung or "Zwischensumme" }}</b></td><td class="zahl"><b>{{ ph_betrag(p.netto_cent, doc.waehrung) }}</b></td></tr>
+    {%- else -%}
+      <tr class="{% if p.alternativ %}ph-alternativ{% endif %}">
+        <td>{{ p.pos or loop.index }}</td>
+        <td>
+          {% if p.alternativ %}<span class="ph-tag">Alternativ</span> {% endif %}<b>{{ p.bezeichnung or p.produkt }}</b>{% if p.marke %} <span class="ph-grau">· {{ p.marke }}</span>{% endif %}
+          {% if p.ausfuehrung_text %}<div class="ph-ausfuehrung">{{ p.ausfuehrung_text }}</div>{% endif %}
+          {% if p.beschreibung %}<div class="ph-beschreibung">{{ p.beschreibung }}</div>{% endif %}
+          {% if p.raum or p.lieferzeit_text %}<div class="ph-grau ph-klein">{% if p.raum %}{{ p.raum }}{% endif %}{% if p.raum and p.lieferzeit_text %} · {% endif %}{% if p.lieferzeit_text %}Lieferzeit {{ p.lieferzeit_text }}{% endif %}</div>{% endif %}
+        </td>
+        <td class="zahl">{{ "%g"|format(p.menge) }} {{ p.einheit or "" }}</td>
+        <td class="zahl">{{ ph_betrag(p.einzel_netto_cent, doc.waehrung) }}{% if p.rabatt_promille %}<div class="ph-grau ph-klein">− {{ (p.rabatt_promille / 10)|round(1) }} %</div>{% endif %}</td>
+        {% if not alle_kleinbetrag %}<td class="zahl">{{ ph_satz(p.ust_satz_promille) }}</td>{% endif %}
+        <td class="zahl">{% if p.alternativ %}<span class="ph-grau">({{ ph_betrag(p.netto_cent, doc.waehrung) }})</span>{% else %}{{ ph_betrag(p.netto_cent, doc.waehrung) }}{% endif %}</td>
+      </tr>
+    {%- endif -%}
+  {%- endfor -%}
+  </tbody>
+</table>
+
+<table class="ph-summen">
+  <tr><td>Summe netto</td><td class="zahl">{{ ph_betrag(doc.netto_cent, doc.waehrung) }}</td></tr>
+  {%- for a in doc.ust_aufteilung -%}
+  <tr><td>{{ ph_satz(a.ust_satz_promille) }} USt auf {{ ph_betrag(a.netto_cent, doc.waehrung) }}</td><td class="zahl">{{ ph_betrag(a.ust_cent, doc.waehrung) }}</td></tr>
+  {%- endfor -%}
+  <tr class="ph-summe"><td>Gesamtbetrag brutto</td><td class="zahl">{{ ph_betrag(doc.brutto_cent, doc.waehrung) }}</td></tr>
+  {%- if doc.get("anzahlungen_verrechnet") -%}
+    {%- for a in doc.anzahlungen_verrechnet -%}
+    <tr class="ph-anzahlung"><td>abzüglich Anzahlung {{ a.anzahlungsrechnung }}{% if a.datum %} vom {{ ph_datum(a.datum) }}{% endif %} (netto {{ ph_betrag(a.netto_cent, doc.waehrung) }} + {{ ph_satz(a.ust_satz_promille) }} USt {{ ph_betrag(a.ust_cent, doc.waehrung) }})</td><td class="zahl">− {{ ph_betrag(a.brutto_cent, doc.waehrung) }}</td></tr>
+    {%- endfor -%}
+    <tr class="ph-summe ph-zahlbar"><td>Zahlbetrag</td><td class="zahl">{{ ph_betrag(doc.zahlbar_cent, doc.waehrung) }}</td></tr>
+    <tr><td class="ph-grau ph-klein" colspan="2">Verbleibende Umsatzsteuer dieser Rechnung: {{ ph_betrag(doc.ust_cent - doc.anzahlung_ust_cent, doc.waehrung) }} (Gesamt-USt {{ ph_betrag(doc.ust_cent, doc.waehrung) }} abzüglich bereits mit den Anzahlungen geschuldeter USt {{ ph_betrag(doc.anzahlung_ust_cent, doc.waehrung) }}).</td></tr>
+  {%- endif -%}
+  {%- if doc.get("alternativ_cent") -%}
+  <tr><td class="ph-grau">Alternativpositionen (nicht enthalten)</td><td class="zahl ph-grau">{{ ph_betrag(doc.alternativ_cent, doc.waehrung) }}</td></tr>
+  {%- endif -%}
+</table>
+{% if doc.ust_hinweistext %}<p class="ph-hinweis">{{ doc.ust_hinweistext }}</p>{% endif %}

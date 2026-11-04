@@ -1,0 +1,308 @@
+[
+ {
+  "doctype": "Number Card",
+  "name": "PH Offene Angebote",
+  "label": "Offene Angebote (€)",
+  "type": "Custom",
+  "method": "ph_faktura.ph_faktura.kennzahlen.offene_angebote",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#1d4ed8",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Auftragsbestand",
+  "label": "Auftragsbestand offen (€)",
+  "type": "Custom",
+  "method": "ph_faktura.ph_faktura.kennzahlen.auftragsbestand",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#8a7a66",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH OP gesamt",
+  "label": "Offene Posten (€)",
+  "type": "Custom",
+  "method": "ph_faktura.ph_faktura.kennzahlen.op_gesamt",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#30373e",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH OP ueberfaellig",
+  "label": "Überfällig (€)",
+  "type": "Custom",
+  "method": "ph_faktura.ph_faktura.kennzahlen.op_ueberfaellig",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#b91c1c",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Anzahlungen offen",
+  "label": "Anzahlungen offen (€)",
+  "type": "Custom",
+  "method": "ph_faktura.ph_faktura.kennzahlen.anzahlungen_offen",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#b45309",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Umsatz Monat",
+  "label": "Umsatz laufender Monat (€)",
+  "type": "Custom",
+  "method": "ph_faktura.ph_faktura.kennzahlen.umsatz_monat",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#15803d",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Faellig 7 Tage",
+  "label": "Fällig in 7 Tagen (€)",
+  "type": "Custom",
+  "method": "ph_faktura.ph_faktura.kennzahlen.faellig_7_tage",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#b45309",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Eingangsrechnungen offen",
+  "label": "Eingangsrechnungen zu zahlen (€)",
+  "type": "Custom",
+  "method": "ph_faktura.ph_faktura.kennzahlen.eingangsrechnungen_offen",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#b45309",
+  "roles": [
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Nicht exportierte Belege",
+  "label": "Nicht exportierte Belege",
+  "type": "Custom",
+  "method": "ph_faktura.ph_faktura.kennzahlen.nicht_exportiert",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#30373e",
+  "roles": [
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Eingangsrechnungen zur Freigabe",
+  "label": "Eingangsrechnungen zur Freigabe",
+  "type": "Document Type",
+  "document_type": "PH Eingangsrechnung",
+  "function": "Count",
+  "filters_json": "[[\"PH Eingangsrechnung\", \"status\", \"in\", [\"Erfasst\", \"Sachlich geprueft\"], false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#1d4ed8",
+  "roles": [
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Bankumsaetze offen",
+  "label": "Bankumsätze ohne Zuordnung",
+  "type": "Document Type",
+  "document_type": "PH Bankumsatz",
+  "function": "Count",
+  "filters_json": "[[\"PH Bankumsatz\", \"status\", \"in\", [\"Offen\", \"Teilweise\"], false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#b45309",
+  "roles": [
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Mahnstufe 2 plus",
+  "label": "Rechnungen Mahnstufe ≥ 2",
+  "type": "Document Type",
+  "document_type": "PH Rechnung",
+  "function": "Count",
+  "filters_json": "[[\"PH Rechnung\", \"docstatus\", \"=\", 1, false], [\"PH Rechnung\", \"mahnstufe\", \">=\", 2, false], [\"PH Rechnung\", \"offen_cent\", \">\", 0, false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "show_percentage_stats": 0,
+  "color": "#b91c1c",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
+ }
+]

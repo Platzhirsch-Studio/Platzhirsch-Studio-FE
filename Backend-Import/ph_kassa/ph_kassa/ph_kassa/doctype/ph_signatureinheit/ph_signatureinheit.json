@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:bezeichnung",
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Signaturerstellungseinheit (SEE) nach RKSV § 2 Z 5: A-Trust a.sign RK Online (REST), A-Trust Karte oder Test-Signer (nur Staging). Zugänge stehen nur in site_config.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sb_stamm", "bezeichnung", "art", "env", "status", "vda_id",
+  "cb_stamm", "zugang_schluesselname", "test_schluessel_name", "ausgefallen_seit", "finanzonline_registriert_am",
+  "sb_zert", "zertifikat_seriennummer", "zertifikat_seriennummer_dezimal", "zertifikat_gueltig_bis", "zertifikat_fingerprint", "cb_zert", "zertifikat_pem", "zertifikatskette_json",
+  "sb_pruefung", "letzte_pruefung", "letzte_pruefung_ergebnis", "notiz"
+ ],
+ "fields": [
+  {"fieldname": "sb_stamm", "fieldtype": "Section Break", "label": "Signaturerstellungseinheit"},
+  {"fieldname": "bezeichnung", "fieldtype": "Data", "label": "Bezeichnung", "reqd": 1, "unique": 1, "in_list_view": 1, "description": "z. B. A-Trust RK Online Showroom"},
+  {"fieldname": "art", "fieldtype": "Select", "label": "Art", "options": "A-Trust a.sign RK Online\nA-Trust Karte (lokal)\nTest", "reqd": 1, "default": "A-Trust a.sign RK Online", "in_list_view": 1, "in_standard_filter": 1},
+  {"fieldname": "env", "fieldtype": "Select", "label": "Umgebung", "options": "test\nproduktiv", "default": "test", "description": "A-Trust Testumgebung (hs-abnahme) oder Produktiv. Zusätzlich gilt site_config ph_atrust_env, wenn gesetzt."},
+  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Angelegt\nRegistriert\nAktiv\nAusgefallen", "default": "Angelegt", "read_only": 1, "in_list_view": 1, "in_standard_filter": 1},
+  {"fieldname": "vda_id", "fieldtype": "Data", "label": "VDA-Kennung (ZDA-ID)", "default": "AT1", "description": "A-Trust = AT1; AT0 nur für geschlossene Gesamtsysteme/Test. Erscheint im Code als _R1-AT1_."},
+  {"fieldname": "cb_stamm", "fieldtype": "Column Break"},
+  {"fieldname": "zugang_schluesselname", "fieldtype": "Data", "label": "Zugang (Schlüsselnamen site_config)", "default": "ph_atrust_user / ph_atrust_password / ph_atrust_env", "read_only": 1},
+  {"fieldname": "test_schluessel_name", "fieldtype": "Data", "label": "Testschlüssel (Name in site_config)", "read_only": 1, "depends_on": "eval:doc.art=='Test'", "description": "PEM des EC-P-256-Testschlüssels unter diesem Namen in site_config; Button „Testschlüssel erzeugen“."},
+  {"fieldname": "ausgefallen_seit", "fieldtype": "Datetime", "label": "Ausgefallen seit", "read_only": 1, "no_copy": 1},
+  {"fieldname": "finanzonline_registriert_am", "fieldtype": "Date", "label": "In FinanzOnline registriert am"},
+  {"fieldname": "sb_zert", "fieldtype": "Section Break", "label": "Signaturzertifikat"},
+  {"fieldname": "zertifikat_seriennummer", "fieldtype": "Data", "label": "Seriennummer (hex)", "read_only": 1, "description": "Pflichtbestandteil jedes Belegcodes; FinanzOnline erwartet sie bei der SEE-Registrierung."},
+  {"fieldname": "zertifikat_seriennummer_dezimal", "fieldtype": "Data", "label": "Seriennummer (dezimal)", "read_only": 1},
+  {"fieldname": "zertifikat_gueltig_bis", "fieldtype": "Date", "label": "Gültig bis", "read_only": 1},
+  {"fieldname": "zertifikat_fingerprint", "fieldtype": "Data", "label": "Fingerprint SHA-256", "read_only": 1},
+  {"fieldname": "cb_zert", "fieldtype": "Column Break"},
+  {"fieldname": "zertifikat_pem", "fieldtype": "Code", "label": "Zertifikat (PEM, öffentlich)", "read_only": 1, "options": "Text"},
+  {"fieldname": "zertifikatskette_json", "fieldtype": "Code", "label": "Zertifizierungsstellen (JSON, Base64-DER)", "read_only": 1, "options": "JSON"},
+  {"fieldname": "sb_pruefung", "fieldtype": "Section Break", "label": "Prüfung", "collapsible": 1},
+  {"fieldname": "letzte_pruefung", "fieldtype": "Datetime", "label": "Letzte Verbindungsprüfung", "read_only": 1},
+  {"fieldname": "letzte_pruefung_ergebnis", "fieldtype": "Small Text", "label": "Ergebnis", "read_only": 1},
+  {"fieldname": "notiz", "fieldtype": "Small Text", "label": "Notiz (intern)"}
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {"link_doctype": "PH Kasse", "link_fieldname": "see", "group": "Kassen"},
+  {"link_doctype": "PH Kassa Ereignis", "link_fieldname": "see", "group": "Ereignisse"}
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Kassa",
+ "name": "PH Signatureinheit",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Backoffice-Admin", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Geschäftsführung", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Kassa Leitung", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Kassa Mitarbeiter", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 0, "email": 0, "export": 0, "report": 1, "share": 0},
+  {"role": "PH Buchhaltung extern", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 1, "email": 0, "export": 1, "report": 1, "share": 0}
+ ],
+ "search_fields": "art,status,zertifikat_seriennummer",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {"title": "Angelegt", "color": "Gray"},
+  {"title": "Registriert", "color": "Blue"},
+  {"title": "Aktiv", "color": "Green"},
+  {"title": "Ausgefallen", "color": "Red"}
+ ],
+ "title_field": "bezeichnung",
+ "track_changes": 1
+}

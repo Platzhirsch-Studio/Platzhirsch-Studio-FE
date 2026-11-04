@@ -4,6 +4,9 @@
 // zusätzlichen Angaben gegenüber dem deutschen Original.
 // Rein: keine Pakete, keine "@/"-Aliase.
 
+export const AUSMASS = { Vollzeit: "Tempo pieno", Teilzeit: "Part-time" };
+export const START = { "ab sofort": "da subito" };
+
 export const BIETEN = [
   "Luogo di lavoro presso lo studio di arredamento a Lochau, Landstraße 11, sul Lago di Costanza",
   "Lavoro con i marchi di design internazionali del nostro showroom",

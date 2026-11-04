@@ -2,9 +2,10 @@
 // Hinter dem Schalter VOUCHER_MODE: "off" (Standard) → 404, "anfrage" → Seite
 // mit Anfrageformular. Nur Deutsch (andere Sprachen 404). Kein Geld, kein
 // Online-Vertrag; nicht in Navigation, Sitemap oder llms.txt (das verdrahtet
-// erst der Integrator nach Freigabe durch Insolvenzrechtler und Steuerberater).
+// der Integrator mit dem Livegang des Gutscheinverkaufs).
 // VOUCHER_MODE=stripe (wirksam, siehe mode.js): Online-Kauf über Stripe
-// Checkout, die Anfrage bleibt für Firmengeschenke darunter.
+// Checkout, die Anfrage bleibt für Firmengeschenke darunter. Freigabe des
+// Online-Verkaufs: Inhaber-Entscheidung Nr. 46 (03.11.2026).
 // Entwicklung: /de/gutscheine?zahlung=mock zeigt die Kaufstrecke mit
 // simulierter Bezahlseite, auch solange die Bedingungen Entwurf sind (nur
 // NODE_ENV=development, nie in Produktion; noindex, Banner).
@@ -54,7 +55,7 @@ export default async function GutscheinePage({ params, searchParams }) {
           <Container className="py-4">
             <p className="text-ui text-text">Entwicklungs-Mock der Kaufstrecke</p>
             <p className="mt-1 max-w-measure text-small text-text">
-              Simulierte Bezahlseite, es fließt kein Geld. Gutscheinbedingungen und Widerrufsbelehrung sind Entwurf. Nur im Entwicklungsserver sichtbar.
+              Simulierte Bezahlseite, es fließt kein Geld. Gutscheinbedingungen und Widerrufsbelehrung sind freigegeben (Stand 03.11.2026). Nur im Entwicklungsserver sichtbar.
             </p>
           </Container>
         </div>

@@ -1,0 +1,458 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Zahlungslink für eine Anzahlung zu Auftrag/Angebot (src/lib/payments/deposit.js, AZ-XXXX-XXXX). Der Link gilt bis link_gueltig_bis; die Checkout-Session entsteht beim Klick auf der Website.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tb_anzahlung",
+  "anzahlung_id",
+  "titel",
+  "status",
+  "livemode",
+  "cb_kopf",
+  "auftrag_referenz",
+  "betrag_cent",
+  "waehrung",
+  "beschreibung",
+  "sb_kunde",
+  "kontakt",
+  "kunde_email",
+  "kunde_id",
+  "cb_kunde",
+  "erstellt",
+  "erstellt_von",
+  "sb_link",
+  "link_gueltig_bis",
+  "link_token_hash",
+  "cb_link",
+  "link_gesendet_am",
+  "tb_zahlung",
+  "bezahlt_am",
+  "zahlung",
+  "erstattet_cent",
+  "cb_zahlung",
+  "stripe_session",
+  "bezahlt_session",
+  "payment_intent",
+  "sb_doppelt",
+  "doppelt",
+  "verlauf",
+  "tb_system",
+  "idempotency_key",
+  "ip_hash",
+  "quelle",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "tb_anzahlung",
+   "fieldtype": "Tab Break",
+   "label": "Anzahlung"
+  },
+  {
+   "fieldname": "anzahlung_id",
+   "fieldtype": "Data",
+   "label": "Anzahlungs-ID",
+   "reqd": 1,
+   "unique": 1,
+   "description": "AZ-XXXX-XXXX – wird zum Dokumentnamen."
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "offen\nzahlung_ausstehend\nbezahlt\nfehlgeschlagen\nabgelaufen\ndoppelt\nerstattet\nteilerstattet\npruefen",
+   "default": "offen",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Setzt der Workflow bzw. der Server (Webhook, Buttons)."
+  },
+  {
+   "fieldname": "livemode",
+   "fieldtype": "Check",
+   "label": "Livemodus (Stripe)",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auftrag_referenz",
+   "fieldtype": "Data",
+   "label": "Auftrag / Angebot (Nummer)",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1,
+   "description": "Freitext; ph_faktura verknüpft per Custom Field auf PH Auftragsbestaetigung."
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "non_negative": 1,
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR",
+   "reqd": 1
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Data",
+   "label": "Beschreibung (für den Kunden)"
+  },
+  {
+   "fieldname": "sb_kunde",
+   "fieldtype": "Section Break",
+   "label": "Kunde"
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "kunde_email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email"
+  },
+  {
+   "fieldname": "kunde_id",
+   "fieldtype": "Data",
+   "label": "Kunden-ID (Website/Portal)"
+  },
+  {
+   "fieldname": "cb_kunde",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "erstellt",
+   "fieldtype": "Datetime",
+   "label": "Erstellt",
+   "reqd": 1
+  },
+  {
+   "fieldname": "erstellt_von",
+   "fieldtype": "Link",
+   "label": "Erstellt von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_link",
+   "fieldtype": "Section Break",
+   "label": "Zahlungslink"
+  },
+  {
+   "fieldname": "link_gueltig_bis",
+   "fieldtype": "Datetime",
+   "label": "Link gültig bis",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "link_token_hash",
+   "fieldtype": "Data",
+   "label": "Link-Token (Hash)",
+   "read_only": 1,
+   "no_copy": 1,
+   "description": "Der Link selbst wird aus ID + PAYMENTS_LINK_SECRET der Website gebildet (nicht hier gespeichert)."
+  },
+  {
+   "fieldname": "cb_link",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "link_gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Link gesendet am",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "tb_zahlung",
+   "fieldtype": "Tab Break",
+   "label": "Zahlung"
+  },
+  {
+   "fieldname": "bezahlt_am",
+   "fieldtype": "Datetime",
+   "label": "Bezahlt am",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "zahlung",
+   "fieldtype": "Link",
+   "label": "Zahlung",
+   "options": "PH Zahlung",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "erstattet_cent",
+   "fieldtype": "Int",
+   "label": "Erstattet (Cent)",
+   "non_negative": 1,
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "cb_zahlung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stripe_session",
+   "fieldtype": "Data",
+   "label": "Checkout Session",
+   "read_only": 1,
+   "no_copy": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "bezahlt_session",
+   "fieldtype": "Data",
+   "label": "Bezahlte Session",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "payment_intent",
+   "fieldtype": "Data",
+   "label": "Payment Intent",
+   "read_only": 1,
+   "no_copy": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "sb_doppelt",
+   "fieldtype": "Section Break",
+   "label": "Doppelte Zahlungen"
+  },
+  {
+   "fieldname": "doppelt",
+   "fieldtype": "Table",
+   "label": "Doppelte Zahlungen",
+   "options": "PH Anzahlung Doppelt",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "verlauf",
+   "fieldtype": "Table",
+   "label": "Verlauf",
+   "options": "PH Bestellung Verlauf",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "tb_system",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "website\nbackoffice\nstripe\nkassa\nimport",
+   "default": "backoffice",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Geändert von",
+   "options": "PH Anzahlung",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Zahlung",
+   "link_fieldname": "bezug",
+   "group": "Zahlung"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Anzahlung",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "erstellt",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "offen",
+   "color": "Blue"
+  },
+  {
+   "title": "zahlung_ausstehend",
+   "color": "Orange"
+  },
+  {
+   "title": "bezahlt",
+   "color": "Green"
+  },
+  {
+   "title": "fehlgeschlagen",
+   "color": "Red"
+  },
+  {
+   "title": "abgelaufen",
+   "color": "Gray"
+  },
+  {
+   "title": "doppelt",
+   "color": "Pink"
+  },
+  {
+   "title": "erstattet",
+   "color": "Gray"
+  },
+  {
+   "title": "teilerstattet",
+   "color": "Orange"
+  },
+  {
+   "title": "pruefen",
+   "color": "Pink"
+  }
+ ],
+ "track_changes": 1,
+ "title_field": "titel",
+ "search_fields": "auftrag_referenz,kunde_email,payment_intent",
+ "autoname": "field:anzahlung_id",
+ "naming_rule": "By fieldname"
+}

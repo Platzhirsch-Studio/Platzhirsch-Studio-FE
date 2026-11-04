@@ -1,0 +1,68 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Zahlungseingang (oder Verrechnung/Gutschrift), der einer Rechnung zugeordnet ist – OP-Verlauf je Beleg.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "zahlung",
+  "datum",
+  "kanal",
+  "betrag_cent",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "zahlung",
+   "fieldtype": "Link",
+   "label": "Zahlung",
+   "options": "PH Zahlung",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Datum",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "kanal",
+   "fieldtype": "Data",
+   "label": "Kanal",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "in_list_view": 1,
+   "columns": 2,
+   "default": "0"
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis",
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Rechnung Zahlung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

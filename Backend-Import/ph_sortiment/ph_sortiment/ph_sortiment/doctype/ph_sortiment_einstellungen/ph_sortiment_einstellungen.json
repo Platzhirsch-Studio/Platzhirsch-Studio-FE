@@ -1,0 +1,224 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Fachliche Schalter von ph_sortiment. Geheimnisse (Revalidate-Secret) nur in site_config.json.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sb_website",
+  "website_revalidate_aktiv",
+  "revalidate_drossel_sekunden",
+  "website_basis_url",
+  "cb_website",
+  "api_cache_sekunden",
+  "bild_max_px",
+  "claim_guard_aktiv",
+  "sb_preise",
+  "preis_max_monate_verkaufspreis",
+  "preis_max_monate_uvp",
+  "cb_preise",
+  "preisliste_schwelle_prozent",
+  "sb_lieferzeit",
+  "standard_lieferzeit_text_de",
+  "standard_lieferzeit_text_en",
+  "standard_lieferzeit_text_fr",
+  "standard_lieferzeit_text_it",
+  "sb_bestellung",
+  "ab_toleranz_preis_prozent",
+  "ab_toleranz_termin_tage",
+  "bestell_email_vorlage",
+  "cb_bestellung",
+  "standard_lieferadresse",
+  "bestell_druckformat"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_website",
+   "fieldtype": "Section Break",
+   "label": "Website"
+  },
+  {
+   "fieldname": "website_revalidate_aktiv",
+   "fieldtype": "Check",
+   "label": "Website-Cache nach Änderungen erneuern",
+   "default": "1",
+   "description": "POST an ph_website_revalidate_url (site_config) mit Tag products/marken/kategorien."
+  },
+  {
+   "fieldname": "revalidate_drossel_sekunden",
+   "fieldtype": "Int",
+   "label": "Drosselung (Sekunden je Tag)",
+   "default": "60"
+  },
+  {
+   "fieldname": "website_basis_url",
+   "fieldtype": "Data",
+   "label": "Website-Basis-URL",
+   "options": "URL",
+   "default": "https://platzhirsch.studio"
+  },
+  {
+   "fieldname": "cb_website",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "api_cache_sekunden",
+   "fieldtype": "Int",
+   "label": "API-Cache (Sekunden)",
+   "default": "3600"
+  },
+  {
+   "fieldname": "bild_max_px",
+   "fieldtype": "Int",
+   "label": "Bilder max. lange Kante (px)",
+   "default": "1600"
+  },
+  {
+   "fieldname": "claim_guard_aktiv",
+   "fieldtype": "Check",
+   "label": "Claim-Guard aktiv (Händlerwörter nur mit Status)",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_preise",
+   "fieldtype": "Section Break",
+   "label": "Preise"
+  },
+  {
+   "fieldname": "preis_max_monate_verkaufspreis",
+   "fieldtype": "Int",
+   "label": "Höchstalter Verkaufspreis (Monate)",
+   "default": "3"
+  },
+  {
+   "fieldname": "preis_max_monate_uvp",
+   "fieldtype": "Int",
+   "label": "Höchstalter UVP/Herstellerpreis (Monate)",
+   "default": "6"
+  },
+  {
+   "fieldname": "cb_preise",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "preisliste_schwelle_prozent",
+   "fieldtype": "Int",
+   "label": "Preisliste: Prüfschwelle (%)",
+   "default": "15"
+  },
+  {
+   "fieldname": "sb_lieferzeit",
+   "fieldtype": "Section Break",
+   "label": "Lieferzeit (Entwurf, Kanzlei prüft – src/lib/shop/lieferzeit.js)"
+  },
+  {
+   "fieldname": "standard_lieferzeit_text_de",
+   "fieldtype": "Data",
+   "label": "Standardtext Lieferzeit (DE)"
+  },
+  {
+   "fieldname": "standard_lieferzeit_text_en",
+   "fieldtype": "Data",
+   "label": "Standardtext Lieferzeit (EN)"
+  },
+  {
+   "fieldname": "standard_lieferzeit_text_fr",
+   "fieldtype": "Data",
+   "label": "Standardtext Lieferzeit (FR)"
+  },
+  {
+   "fieldname": "standard_lieferzeit_text_it",
+   "fieldtype": "Data",
+   "label": "Standardtext Lieferzeit (IT)"
+  },
+  {
+   "fieldname": "sb_bestellung",
+   "fieldtype": "Section Break",
+   "label": "Herstellerbestellung"
+  },
+  {
+   "fieldname": "ab_toleranz_preis_prozent",
+   "fieldtype": "Int",
+   "label": "AB-Toleranz Preis (%)",
+   "default": "0"
+  },
+  {
+   "fieldname": "ab_toleranz_termin_tage",
+   "fieldtype": "Int",
+   "label": "AB-Toleranz Termin (Tage)",
+   "default": "0"
+  },
+  {
+   "fieldname": "bestell_email_vorlage",
+   "fieldtype": "Link",
+   "label": "E-Mail-Vorlage Bestellung",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "cb_bestellung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "standard_lieferadresse",
+   "fieldtype": "Small Text",
+   "label": "Standard-Lieferadresse (Showroom)",
+   "default": "Platzhirsch Home Living\nLandstraße 11\n6911 Lochau, Österreich"
+  },
+  {
+   "fieldname": "bestell_druckformat",
+   "fieldtype": "Link",
+   "label": "Druckformat Bestellung",
+   "options": "Print Format",
+   "default": "PH Herstellerbestellung Standard"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Sortiment Einstellungen",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "issingle": 1,
+ "track_changes": 1,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Sortiment Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Sortiment Mitarbeiter",
+   "read": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  }
+ ]
+}

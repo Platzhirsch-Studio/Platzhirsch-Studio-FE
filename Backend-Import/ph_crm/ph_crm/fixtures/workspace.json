@@ -1,0 +1,73 @@
+[
+ {
+  "doctype": "Workspace",
+  "name": "PH CRM",
+  "title": "PH CRM",
+  "label": "PH CRM",
+  "module": "PH CRM",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "users",
+  "indicator_color": "blue",
+  "sequence_id": 2.0,
+  "for_user": "",
+  "parent_page": "",
+  "content": "[{\"id\":\"ph_crm_h1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Heute</b></span>\",\"col\":12}},{\"id\":\"ph_crm_nc1\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Offene Anfragen\",\"col\":3}},{\"id\":\"ph_crm_nc2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Neue Anfragen ohne Reaktion\",\"col\":3}},{\"id\":\"ph_crm_nc4\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Termine heute\",\"col\":3}},{\"id\":\"ph_crm_nc5\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Unbestaetigte Termine\",\"col\":3}},{\"id\":\"ph_crm_nc6\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Offene Aufgaben\",\"col\":3}},{\"id\":\"ph_crm_nc7\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Ueberfaellige Aufgaben\",\"col\":3}},{\"id\":\"ph_crm_nc3\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Gewonnen dieses Quartal\",\"col\":3}},{\"id\":\"ph_crm_nc8\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Neue Kunden dieser Monat\",\"col\":3}},{\"id\":\"ph_crm_h2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\",\"col\":12}},{\"id\":\"ph_crm_s1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Anfragen (Kanban)\",\"col\":3}},{\"id\":\"ph_crm_s5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Termine (Kanban)\",\"col\":3}},{\"id\":\"ph_crm_s6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Terminkalender\",\"col\":3}},{\"id\":\"ph_crm_s7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Aufgaben (Kanban)\",\"col\":3}},{\"id\":\"ph_crm_s2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Neue Anfrage\",\"col\":3}},{\"id\":\"ph_crm_s8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Neuer Termin\",\"col\":3}},{\"id\":\"ph_crm_s9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Kontakte\",\"col\":3}},{\"id\":\"ph_crm_s3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vertriebscockpit\",\"col\":3}},{\"id\":\"ph_crm_h3\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Auswertung</b></span>\",\"col\":12}},{\"id\":\"ph_crm_c1\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Anfragen je Woche\",\"col\":8}},{\"id\":\"ph_crm_c2\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Anfragen nach Art\",\"col\":4}},{\"id\":\"ph_crm_c3\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Termine je Woche\",\"col\":8}},{\"id\":\"ph_crm_c4\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Termine nach Modus\",\"col\":4}},{\"id\":\"ph_crm_c5\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Reaktionszeit je Woche\",\"col\":6}},{\"id\":\"ph_crm_c6\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH No-Show-Quote je Berater\",\"col\":6}},{\"id\":\"ph_crm_h4\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Bereiche</b></span>\",\"col\":12}},{\"id\":\"ph_crm_card1\",\"type\":\"card\",\"data\":{\"card_name\":\"Anfragen und Kontakte\",\"col\":4}},{\"id\":\"ph_crm_card2\",\"type\":\"card\",\"data\":{\"card_name\":\"Termine\",\"col\":4}},{\"id\":\"ph_crm_card3\",\"type\":\"card\",\"data\":{\"card_name\":\"Berichte\",\"col\":4}},{\"id\":\"ph_crm_card4\",\"type\":\"card\",\"data\":{\"card_name\":\"Aufgaben und Kommunikation\",\"col\":4}},{\"id\":\"ph_crm_card5\",\"type\":\"card\",\"data\":{\"card_name\":\"Einstellungen\",\"col\":4}}]",
+  "shortcuts": [
+   {"label": "Anfragen (Kanban)", "link_to": "PH Anfrage", "type": "DocType", "doc_view": "Kanban", "kanban_board": "PH Anfragen", "color": "Blue"},
+   {"label": "Termine (Kanban)", "link_to": "PH Termin", "type": "DocType", "doc_view": "Kanban", "kanban_board": "PH Termine", "color": "Green"},
+   {"label": "Terminkalender", "link_to": "PH Termin", "type": "DocType", "doc_view": "Calendar", "color": "Green"},
+   {"label": "Aufgaben (Kanban)", "link_to": "PH Aufgabe", "type": "DocType", "doc_view": "Kanban", "kanban_board": "PH Aufgaben", "color": "Orange"},
+   {"label": "Neue Anfrage", "link_to": "PH Anfrage", "type": "DocType", "doc_view": "New", "color": "Grey"},
+   {"label": "Neuer Termin", "link_to": "PH Termin", "type": "DocType", "doc_view": "New", "color": "Grey"},
+   {"label": "Kontakte", "link_to": "PH Kontakt", "type": "DocType", "doc_view": "List", "color": "Grey", "stats_filter": "{\"status\": \"Kunde\"}"},
+   {"label": "Vertriebscockpit", "link_to": "PH Vertriebscockpit", "type": "Report", "color": "Grey"},
+   {"label": "Anfragen nach Quelle", "link_to": "PH Anfragen nach Quelle", "type": "Report", "color": "Grey"}
+  ],
+  "charts": [
+   {"chart_name": "PH Anfragen je Woche", "label": "Anfragen je Woche"},
+   {"chart_name": "PH Anfragen nach Art", "label": "Anfragen nach Art"},
+   {"chart_name": "PH Termine je Woche", "label": "Termine je Woche"},
+   {"chart_name": "PH Termine nach Modus", "label": "Termine nach Modus"},
+   {"chart_name": "PH Reaktionszeit je Woche", "label": "Reaktionszeit je Woche"},
+   {"chart_name": "PH No-Show-Quote je Berater", "label": "No-Show-Quote je Berater"}
+  ],
+  "number_cards": [
+   {"number_card_name": "PH Offene Anfragen", "label": "Offene Anfragen"},
+   {"number_card_name": "PH Neue Anfragen ohne Reaktion", "label": "Neu, ohne Reaktion"},
+   {"number_card_name": "PH Termine heute", "label": "Termine heute"},
+   {"number_card_name": "PH Unbestaetigte Termine", "label": "Unbestätigte Termine"},
+   {"number_card_name": "PH Offene Aufgaben", "label": "Offene Aufgaben"},
+   {"number_card_name": "PH Ueberfaellige Aufgaben", "label": "Überfällige Aufgaben"},
+   {"number_card_name": "PH Gewonnen dieses Quartal", "label": "Gewonnen (Quartal)"},
+   {"number_card_name": "PH Neue Kunden dieser Monat", "label": "Neue Kunden (Monat)"}
+  ],
+  "links": [
+   {"type": "Card Break", "label": "Anfragen und Kontakte", "link_count": 4, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Anfrage", "link_to": "PH Anfrage", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
+   {"type": "Link", "label": "PH Kontakt", "link_to": "PH Kontakt", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
+   {"type": "Link", "label": "PH Beratungsgespräch", "link_to": "PH Beratungsgespraech", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "Kanban Anfragen", "link_to": "PH Anfrage", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Termine", "link_count": 4, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Termin", "link_to": "PH Termin", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
+   {"type": "Link", "label": "PH Terminart", "link_to": "PH Terminart", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Verfügbarkeit", "link_to": "PH Verfuegbarkeit", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "Kalender-Events", "link_to": "Event", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Berichte", "link_count": 5, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "Vertriebscockpit", "link_to": "PH Vertriebscockpit", "link_type": "Report", "hidden": 0, "onboard": 1, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Anfragen nach Quelle", "link_to": "PH Anfragen nach Quelle", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Reaktionszeiten", "link_to": "PH Reaktionszeiten", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Termine je Berater", "link_to": "PH Termine je Berater", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Kontakt-Datenauskunft (DSGVO)", "link_to": "PH Kontakt Datenauskunft", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Card Break", "label": "Aufgaben und Kommunikation", "link_count": 4, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Aufgabe", "link_to": "PH Aufgabe", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "ToDo (Zuweisungen)", "link_to": "ToDo", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "E-Mails (Communication)", "link_to": "Communication", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "E-Mail-Vorlagen", "link_to": "Email Template", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Einstellungen", "link_count": 2, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Termin Einstellungen", "link_to": "PH Termin Einstellungen", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "E-Mail-Konto (info@)", "link_to": "Email Account", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""}
+  ],
+  "roles": [{"role": "PH CRM Mitarbeiter"}, {"role": "PH CRM Leitung"}, {"role": "PH Geschäftsführung"}]
+ }
+]

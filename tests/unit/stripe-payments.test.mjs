@@ -116,9 +116,12 @@ test("Modus: stripe nur mit Schlüsseln UND freigegebenen Texten, sonst Rückfal
   assert.equal(voucherMode({ VOUCHER_MODE: "stripe" }, "freigegeben", { withdrawalStatus: "freigegeben", decisions: DECIDED }), "anfrage");
   assert.equal(voucherMode({ VOUCHER_MODE: "stripe", STRIPE_SECRET_KEY: KEYS.STRIPE_SECRET_KEY }, "freigegeben", { withdrawalStatus: "freigegeben", decisions: DECIDED }), "anfrage", "ohne Webhook-Geheimnis");
   assert.equal(voucherMode({ VOUCHER_MODE: "stripe", STRIPE_WEBHOOK_SECRET: KEYS.STRIPE_WEBHOOK_SECRET }, "freigegeben", { withdrawalStatus: "freigegeben", decisions: DECIDED }), "anfrage", "ohne Secret Key");
-  // Heute (Repo-Stand): Entwurf → off, auch mit Schlüsseln
-  assert.equal(voucherMode(env), "off");
-  assert.equal(voucherEnabled(env), false);
+  // Repo-Stand seit 03.11.2026 (Inhaber-Entscheidung Nr. 46): Bedingungen + Belehrung freigegeben, Inhaberfragen entschieden
+  // → mit Schlüsseln außerhalb der Produktion "stripe"; in Produktion ohne Mail-Anbieter Rückfall "anfrage".
+  assert.equal(voucherMode(env), "stripe");
+  assert.equal(voucherEnabled(env), true);
+  assert.equal(voucherMode({ ...env, NODE_ENV: "production" }), "anfrage");
+  assert.equal(voucherMode({}), "off", "ohne VOUCHER_MODE weiter off");
   // Altes stripe_link bleibt off, anfrage unverändert
   assert.equal(voucherMode({ VOUCHER_MODE: "stripe_link", ...KEYS }, "freigegeben"), "off");
   assert.equal(voucherMode({ VOUCHER_MODE: "anfrage" }, "freigegeben"), "anfrage");
@@ -212,10 +215,13 @@ test("Kauf: off/anfrage → 404, kein Checkout", async () => {
     const res = await voucherCheckoutHandler({ ctx, ...OK, limiter: createRateLimiter() })(post("http://localhost/x", ORDER));
     assert.equal(res.status, 404, JSON.stringify(env));
   }
-  // Repo-Stand (Entwurf) mit Schlüsseln: 404
+  // Repo-Stand seit 03.11.2026 (freigegeben) mit Schlüsseln: Checkout läuft (Nr. 46); ohne VOUCHER_MODE weiter 404
   const ctx = makeCtx({ VOUCHER_MODE: "stripe", ...KEYS }, { gateway: gw });
-  assert.equal((await voucherCheckoutHandler({ ctx, limiter: createRateLimiter() })(post("http://localhost/x", ORDER))).status, 404);
-  assert.equal(gw.calls.length, 0);
+  assert.equal((await voucherCheckoutHandler({ ctx, limiter: createRateLimiter() })(post("http://localhost/x", ORDER))).status, 200);
+  assert.equal(gw.calls.length, 1);
+  const off = makeCtx({ ...KEYS }, { gateway: gw });
+  assert.equal((await voucherCheckoutHandler({ ctx: off, limiter: createRateLimiter() })(post("http://localhost/x", ORDER))).status, 404);
+  assert.equal(gw.calls.length, 1);
 });
 
 test("Kauf: Checkout-Parameter – Preis vom Server, Zahlungsarten aus dem Dashboard, Rücksprung, Metadaten", async () => {

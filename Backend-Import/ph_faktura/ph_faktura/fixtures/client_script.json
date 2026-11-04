@@ -1,0 +1,29 @@
+[
+ {
+  "doctype": "Client Script",
+  "name": "PH Bestellung-Form-ph_faktura",
+  "dt": "PH Bestellung",
+  "view": "Form",
+  "module": "PH Faktura",
+  "enabled": 1,
+  "script": "// ph_faktura: Button „Rechnung erstellen“ (Barverkauf-Rechnung aus bezahlter Shop-Bestellung)\nfrappe.ui.form.on(\"PH Bestellung\", {\n\trefresh(frm) {\n\t\tif (frm.is_new()) return;\n\t\tif (frm.doc.ph_faktura_rechnung) {\n\t\t\tfrm.add_custom_button(__(\"Rechnung öffnen\"), () => frappe.set_route(\"Form\", \"PH Rechnung\", frm.doc.ph_faktura_rechnung), __(\"Faktura\"));\n\t\t\treturn;\n\t\t}\n\t\tif ([\"bezahlt\", \"versandbereit\", \"versendet\", \"abgeholt\", \"abholbereit\"].includes(frm.doc.status)) {\n\t\t\tfrm.add_custom_button(__(\"Rechnung erstellen\"), () => {\n\t\t\t\tfrappe.call({ method: \"ph_faktura.api.create_cash_invoice\", args: { bestellung: frm.doc.name, idempotency_key: \"bestellung:\" + frm.doc.name }, freeze: true }).then((r) => {\n\t\t\t\t\tif (r.message && r.message.rechnung) frappe.set_route(\"Form\", \"PH Rechnung\", r.message.rechnung);\n\t\t\t\t});\n\t\t\t}, __(\"Faktura\"));\n\t\t}\n\t},\n});\n"
+ },
+ {
+  "doctype": "Client Script",
+  "name": "PH Projekt-Form-ph_faktura",
+  "dt": "PH Projekt",
+  "view": "Form",
+  "module": "PH Faktura",
+  "enabled": 1,
+  "script": "// ph_faktura: Button „Angebot erstellen“ aus dem Projekt\nfrappe.ui.form.on(\"PH Projekt\", {\n\trefresh(frm) {\n\t\tif (frm.is_new()) return;\n\t\tfrm.add_custom_button(__(\"Angebot erstellen\"), () => {\n\t\t\tfrappe.new_doc(\"PH Angebot\", { projekt: frm.doc.name, kontakt: frm.doc.kontakt, anfrage: frm.doc.anfrage });\n\t\t}, __(\"Faktura\"));\n\t\tif (frm.doc.ph_faktura_angebot) frm.add_custom_button(__(\"Angebot öffnen\"), () => frappe.set_route(\"Form\", \"PH Angebot\", frm.doc.ph_faktura_angebot), __(\"Faktura\"));\n\t},\n});\n"
+ },
+ {
+  "doctype": "Client Script",
+  "name": "PH Zahlung-Form-ph_faktura",
+  "dt": "PH Zahlung",
+  "view": "Form",
+  "module": "PH Faktura",
+  "enabled": 1,
+  "script": "// ph_faktura: Button „Mit Rechnung verknüpfen“ auf PH Zahlung (Eingang ohne Rechnungsbezug)\nfrappe.ui.form.on(\"PH Zahlung\", {\n\trefresh(frm) {\n\t\tif (frm.is_new() || frm.doc.docstatus !== 1 || frm.doc.art !== \"Eingang\") return;\n\t\tif (frm.doc.ph_faktura_rechnung) {\n\t\t\tfrm.add_custom_button(__(\"Rechnung öffnen\"), () => frappe.set_route(\"Form\", \"PH Rechnung\", frm.doc.ph_faktura_rechnung), __(\"Faktura\"));\n\t\t\treturn;\n\t\t}\n\t\tfrm.add_custom_button(__(\"Mit Rechnung verknüpfen\"), () => {\n\t\t\tfrappe.prompt([{ fieldname: \"rechnung\", fieldtype: \"Link\", options: \"PH Rechnung\", label: __(\"Rechnung\"), reqd: 1, get_query: () => ({ filters: { docstatus: 1, offen_cent: [\">\", 0] } }) }], (v) => {\n\t\t\t\tfrappe.call({ method: \"ph_faktura.api.register_payment\", args: { rechnung: v.rechnung, betrag_cent: frm.doc.betrag_cent, kanal: frm.doc.kanal, zahlung: frm.doc.name, datum: frm.doc.zeitpunkt, idempotency_key: \"zahlung:\" + frm.doc.name }, freeze: true })\n\t\t\t\t\t.then(() => { frappe.db.set_value(\"PH Zahlung\", frm.doc.name, \"ph_faktura_rechnung\", v.rechnung).then(() => frm.reload_doc()); });\n\t\t\t}, __(\"Zahlung zuordnen\"), __(\"Verknüpfen\"));\n\t\t}, __(\"Faktura\"));\n\t},\n});\n"
+ }
+]

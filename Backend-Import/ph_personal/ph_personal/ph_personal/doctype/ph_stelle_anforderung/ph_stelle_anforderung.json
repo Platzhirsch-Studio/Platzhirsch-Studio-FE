@@ -1,0 +1,33 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 00:30:00.000000",
+ "description": "Anforderungszeile einer Stelle. Feldname anforderungen = Website (requirement_<sprache>[].anforderungen).",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "anforderungen"
+ ],
+ "fields": [
+  {
+   "fieldname": "anforderungen",
+   "fieldtype": "Small Text",
+   "label": "Anforderung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 10
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 00:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Stelle Anforderung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

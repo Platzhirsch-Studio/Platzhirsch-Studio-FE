@@ -1,0 +1,164 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Fachliche Schalter von ph_projekte (keine Geheimnisse).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sb_portal",
+  "portal_basis_url",
+  "feedback_erinnerung_tage",
+  "max_audio_mb",
+  "max_fotos_je_projekt",
+  "cb_portal",
+  "tagebuch_aktiv",
+  "referenz_freigabe_aktiv",
+  "portal_token_tage",
+  "sb_montage",
+  "montage_tagesstunden",
+  "haftungshinweis_fremdgewerke",
+  "cb_montage",
+  "montagebericht_fusstext",
+  "abnahme_fusstext"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_portal",
+   "fieldtype": "Section Break",
+   "label": "Kundenportal"
+  },
+  {
+   "fieldname": "portal_basis_url",
+   "fieldtype": "Data",
+   "label": "Portal-Basis-URL",
+   "default": "https://platzhirsch.studio/de/portal",
+   "options": "URL"
+  },
+  {
+   "fieldname": "feedback_erinnerung_tage",
+   "fieldtype": "Int",
+   "label": "Rendering ohne Antwort: Erinnerung nach (Tagen)",
+   "default": "3"
+  },
+  {
+   "fieldname": "max_audio_mb",
+   "fieldtype": "Int",
+   "label": "Sprachnotiz max. (MB)",
+   "default": "5"
+  },
+  {
+   "fieldname": "max_fotos_je_projekt",
+   "fieldtype": "Int",
+   "label": "Tagebuch: max. Fotos je Projekt",
+   "default": "120"
+  },
+  {
+   "fieldname": "cb_portal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tagebuch_aktiv",
+   "fieldtype": "Check",
+   "label": "Bautagebuch im Portal aktiv",
+   "default": "1"
+  },
+  {
+   "fieldname": "referenz_freigabe_aktiv",
+   "fieldtype": "Check",
+   "label": "Referenz-Freigabe aktiv (nach Kanzlei-OK)",
+   "default": "0",
+   "description": "Website prüft zusätzlich EINWILLIGUNG.status (src/lib/portal/tagebuch/config.js)."
+  },
+  {
+   "fieldname": "portal_token_tage",
+   "fieldtype": "Int",
+   "label": "Kunden-Token gültig (Tage)",
+   "default": "30"
+  },
+  {
+   "fieldname": "sb_montage",
+   "fieldtype": "Section Break",
+   "label": "Montage und Abnahme"
+  },
+  {
+   "fieldname": "montage_tagesstunden",
+   "fieldtype": "Float",
+   "label": "Kapazität je Monteur und Tag (Stunden)",
+   "default": "8",
+   "precision": "1"
+  },
+  {
+   "fieldname": "haftungshinweis_fremdgewerke",
+   "fieldtype": "Small Text",
+   "label": "Hinweis Fremdgewerke (Druck/Portal)",
+   "default": "Platzhirsch koordiniert Termine und Schnittstellen. Der Vertrag über die Gewerksleistung besteht direkt zwischen Kunde und Partnerbetrieb; Platzhirsch übernimmt keine Bauleitung und keine Haftung für die Leistung des Partnerbetriebs."
+  },
+  {
+   "fieldname": "cb_montage",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "montagebericht_fusstext",
+   "fieldtype": "Small Text",
+   "label": "Fußtext Montagebericht (de)",
+   "default": "Vielen Dank für Ihr Vertrauen. Bei Fragen zur Montage erreichen Sie uns unter info@platzhirsch.studio."
+  },
+  {
+   "fieldname": "abnahme_fusstext",
+   "fieldtype": "Small Text",
+   "label": "Fußtext Abnahmeprotokoll (de)",
+   "default": "Festgestellte Mängel werden innerhalb der genannten Fristen behoben. Gewährleistungsrechte bleiben unberührt."
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Projekte Einstellungen",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "issingle": 1
+}

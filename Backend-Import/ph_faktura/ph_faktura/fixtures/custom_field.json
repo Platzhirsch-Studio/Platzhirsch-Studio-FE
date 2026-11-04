@@ -1,0 +1,85 @@
+[
+ {
+  "doctype": "Custom Field",
+  "name": "PH Zahlung-ph_faktura_rechnung",
+  "dt": "PH Zahlung",
+  "module": "PH Faktura",
+  "fieldname": "ph_faktura_rechnung",
+  "label": "Rechnung (Faktura)",
+  "fieldtype": "Link",
+  "options": "PH Rechnung",
+  "insert_after": "bezug",
+  "read_only": 0,
+  "allow_on_submit": 1,
+  "description": "Rechnung, auf die diese Zahlung angerechnet wird (setzt ph_faktura oder der Button „Mit Rechnung verknüpfen“)."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Bestellung-ph_faktura_rechnung",
+  "dt": "PH Bestellung",
+  "module": "PH Faktura",
+  "fieldname": "ph_faktura_rechnung",
+  "label": "Rechnung (Faktura)",
+  "fieldtype": "Link",
+  "options": "PH Rechnung",
+  "insert_after": "zahlung_ref",
+  "read_only": 1
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Anzahlung-ph_faktura_auftrag",
+  "dt": "PH Anzahlung",
+  "module": "PH Faktura",
+  "fieldname": "ph_faktura_auftrag",
+  "label": "Auftragsbestätigung (Faktura)",
+  "fieldtype": "Link",
+  "options": "PH Auftragsbestaetigung",
+  "insert_after": "auftrag_referenz"
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Stripe Auszahlung-ph_faktura_bankumsatz",
+  "dt": "PH Stripe Auszahlung",
+  "module": "PH Faktura",
+  "fieldname": "ph_faktura_bankumsatz",
+  "label": "Bankumsatz (Faktura)",
+  "fieldtype": "Link",
+  "options": "PH Bankumsatz",
+  "insert_after": "status"
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Kontakt-ph_faktura_debitor_nr",
+  "dt": "PH Kontakt",
+  "module": "PH Faktura",
+  "fieldname": "ph_faktura_debitor_nr",
+  "label": "Debitorenkonto (Export)",
+  "fieldtype": "Data",
+  "insert_after": "email",
+  "read_only": 1,
+  "description": "Vergibt der erste Export-Lauf fortlaufend ab PH Faktura Einstellungen.debitoren_ab."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Lieferant-ph_faktura_kreditor_nr",
+  "dt": "PH Lieferant",
+  "module": "PH Faktura",
+  "fieldname": "ph_faktura_kreditor_nr",
+  "label": "Kreditorenkonto (Export)",
+  "fieldtype": "Data",
+  "insert_after": "name",
+  "read_only": 1
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Projekt-ph_faktura_angebot",
+  "dt": "PH Projekt",
+  "module": "PH Faktura",
+  "fieldname": "ph_faktura_angebot",
+  "label": "Aktuelles Angebot",
+  "fieldtype": "Link",
+  "options": "PH Angebot",
+  "insert_after": "status",
+  "read_only": 1
+ }
+]

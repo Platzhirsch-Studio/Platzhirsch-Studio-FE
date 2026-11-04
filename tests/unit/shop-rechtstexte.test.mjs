@@ -1,18 +1,21 @@
-// tests/unit/shop-rechtstexte.test.mjs — Rechtstext-Entwürfe des Shops:
-// Status bleibt "entwurf" (Live gesperrt), Widerrufsbelehrung/-formular
-// wörtlich nach FAGG Anhang I, Firmendaten nur aus site.js/Impressum,
-// Platzhalter sichtbar, Lieferzeit aus lieferzeit.js, Vertragsbestätigung
-// enthält AGB + Widerruf + Formular (§ 7 Abs 3 FAGG), Button-Wortlaut.
+// tests/unit/shop-rechtstexte.test.mjs — Rechtstexte des Shops (freigegeben
+// 03.11.2026, Inhaber-Entscheidungen Nr. 40/45/46): Status + Beleg je Slot,
+// Widerrufsbelehrung/-formular wörtlich nach FAGG Anhang I, Firmendaten nur aus
+// site.js/Impressum, einziger Platzhalter LetMeShip-Anschrift, Lieferzeit aus
+// lieferzeit.js, Gewährleistungs-Mitteilung (Anhang II) vor dem Bestellknopf,
+// Vertragsbestätigung mit AGB + Widerruf + Formular + Mitteilung (§ 7 Abs 3
+// FAGG) und ihr Versand (live jeder Mailer, test nur Mock), Button-Wortlaut.
 // Run: node --test --test-reporter=tap tests/unit/shop-rechtstexte.test.mjs
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { LEGAL_SLOT_STATUS, SHOP_LEGAL, legalOpen, legalPlatzhalter, legalSlot, legalSlotDraft, legalSlotReleased } from "../../src/lib/shop/legal.js";
-import { AGB, ANBIETER, PLATZHALTER, WIDERRUFSFORMULAR, WIDERRUF_PATH, WIDERRUF_URL, ausnahmenFuer, blocksText, lieferzeitZeilen, platzhalterIn, slotTexte, versandbedingungen, widerrufsbelehrung } from "../../src/lib/shop/legalTexte.js";
+import { AGB, ANBIETER, PLATZHALTER, WIDERRUFSFORMULAR, WIDERRUF_PATH, WIDERRUF_URL, ZAHLUNGSARTEN, ausnahmenFuer, blocksText, lieferzeitZeilen, platzhalterIn, slotTexte, versandbedingungen, widerrufsbelehrung } from "../../src/lib/shop/legalTexte.js";
+import { GEWAEHRLEISTUNG_ABSAETZE, GEWAEHRLEISTUNG_BLOCKS, GEWAEHRLEISTUNG_TITEL } from "../../src/lib/shop/gewaehrleistung.js";
 import { BESTELLNUMMER_RE, erklaerungText, recordShopWithdrawal, shopWiderrufHandler, shopWiderrufSchema } from "../../src/lib/shop/widerruf.js";
 import { createMemoryOrderAdapter } from "../../src/lib/shop/orderStore.js";
 import { createRateLimiter } from "../../src/lib/forms/rateLimit.js";
-import { vertragsbestaetigungEntwurf } from "../../src/lib/shop/orderMail.js";
+import { mailerErlaubt, sendeVertragsbestaetigung, vertragsbestaetigung, vertragsbestaetigungEntwurf, vertragsbestaetigungStatus } from "../../src/lib/shop/orderMail.js";
 import { liveBlockers } from "../../src/lib/shop/mode.js";
 import { SHOP_RELEASE } from "../../src/lib/shop/release.js";
 import { SHOP_COPY } from "../../src/lib/shop/copy.js";
@@ -21,34 +24,55 @@ import { ADDRESS, EMAIL, LEGAL_NAME, PHONE_DISPLAY } from "../../src/lib/site.js
 
 const all = (blocks) => blocksText(blocks);
 
-test("alle fünf Slots haben einen Entwurf, keiner ist freigegeben", () => {
+test("alle fünf Slots freigegeben (Kanzlei laut Inhaber 03.11.2026); nur Datenschutz wartet auf die LetMeShip-Anschrift", () => {
   assert.deepEqual(SHOP_LEGAL.map((s) => s.id), ["agb", "widerruf", "widerrufsformular", "versand", "datenschutz"]);
   for (const s of SHOP_LEGAL) {
-    assert.equal(s.status, LEGAL_SLOT_STATUS.ENTWURF, s.id);
+    assert.equal(s.status, LEGAL_SLOT_STATUS.FREI, s.id);
+    assert.equal(s.stand, "2026-11-03", s.id);
+    assert.equal(s.freigabe.datum, "2026-11-03", s.id);
+    assert.match(s.freigabe.beleg, /Nr\. 40, 45 und 46/, s.id);
+    assert.match(s.freigabe.durch, /Kanzlei laut Inhaber/, s.id);
     assert.equal(s.hinweis, undefined, "kein Herkunftshinweis in den Slot-Daten (Inhaber 02.11.)");
-    assert.ok(legalSlotDraft(s), s.id);
-    assert.equal(legalSlotReleased(s), false, s.id);
     assert.equal(s.path, `/shop/recht/${s.id}`);
     assert.equal(s.sprache, "de");
   }
-  assert.deepEqual(legalOpen(), SHOP_LEGAL.map((s) => s.id));
+  for (const id of ["agb", "widerruf", "widerrufsformular", "versand"]) {
+    assert.equal(legalSlotReleased(legalSlot(id)), true, id);
+    assert.equal(legalSlotDraft(legalSlot(id)), false, id);
+  }
+  // Datenschutz: freigegeben, aber Firma/Anschrift LetMeShip trägt der Inhaber ein (Nr. 41) → nicht wirksam, anzeigbar mit Lücke.
+  const ds = legalSlot("datenschutz");
+  assert.equal(legalSlotReleased(ds), false);
+  assert.equal(legalSlotDraft(ds), true);
+  assert.deepEqual(ds.platzhalter, [PLATZHALTER.letmeship]);
+  assert.deepEqual(legalOpen(), ["datenschutz"]);
 });
 
-test("Live bleibt gesperrt: recht:* in liveBlockers, Freigabe-Punkte offen", () => {
+test("Live: nur noch recht:datenschutz (LetMeShip) sowie Inhaber-/Steuerberater-Punkte offen", () => {
   const b = liveBlockers({ SHOP_MODE: "live", NODE_ENV: "production" });
-  for (const s of SHOP_LEGAL) assert.ok(b.includes(`recht:${s.id}`), s.id);
-  for (const id of ["agb", "widerrufsbelehrung", "widerrufsformular", "versandbedingungen", "datenschutz", "widerrufsfunktion", "gewaehrleistung-mitteilung", "vertragsbestaetigung"]) {
+  assert.deepEqual(b.filter((x) => x.startsWith("recht:")), ["recht:datenschutz"]);
+  for (const id of ["agb", "widerrufsbelehrung", "widerrufsformular", "datenschutz", "widerrufsfunktion", "gewaehrleistung-mitteilung", "vertragsbestaetigung", "insolvenzrecht", "inhaber-ok"]) {
     const x = SHOP_RELEASE.find((r) => r.id === id);
     assert.ok(x, id);
-    assert.equal(x.erledigt, false, id);
+    assert.equal(x.erledigt, true, id);
+    assert.equal(x.datum, "2026-11-03", id);
+    assert.ok(!b.includes(`freigabe:${id}`), id);
   }
+  for (const id of ["versandbedingungen", "stripe-live", "mail", "versand", "verpackung", "ust", "preise"]) {
+    assert.equal(SHOP_RELEASE.find((r) => r.id === id).erledigt, false, id);
+    assert.ok(b.includes(`freigabe:${id}`), id);
+  }
+  assert.ok(b.includes("technik:stripe-live-schluessel") && b.includes("technik:mail-dienst"));
 });
 
-test("Freigabe wirkt nur mit Status freigegeben (auch für Block-Texte)", () => {
+test("Freigabe wirkt nur mit Status freigegeben, Text, Stand und ohne Platzhalter", () => {
   const s = legalSlot("agb");
   assert.equal(legalSlotReleased({ ...s, status: "freigegeben" }), true);
+  assert.equal(legalSlotReleased({ ...s, status: "entwurf" }), false);
   assert.equal(legalSlotReleased({ ...s, status: "freigegeben", text: [] }), false);
   assert.equal(legalSlotReleased({ ...s, status: "freigegeben", stand: null }), false);
+  assert.equal(legalSlotReleased({ ...s, status: "freigegeben", platzhalter: ["[PLATZHALTER: x]"] }), false, "Platzhalter sperrt");
+  assert.equal(legalSlotDraft({ ...s, status: "freigegeben", platzhalter: ["[PLATZHALTER: x]"] }), true);
 });
 
 test("Firmendaten nur aus site.js und Impressum (FN/UID gleich)", () => {
@@ -175,16 +199,45 @@ test("Datenschutz Shop: Stripe, LetMeShip, Rechtsgrundlagen, 7 Jahre § 132 BAO"
   for (const x of ["Stripe Payments Europe", "LetMeShip", "Art. 6 Abs 1 lit b", "Art. 6 Abs 1 lit c", "Art. 6 Abs 1 lit f", "§ 132 Abs 1 BAO", "sieben Jahre"]) assert.ok(t.includes(x), x);
 });
 
-test("Platzhalter sind sichtbar und gelistet", () => {
+test("Platzhalter: nur noch LetMeShip-Anschrift (Inhaber, Nr. 41); Zahlungsarten und Anhang II eingetragen (03.11.2026)", () => {
   const p = legalPlatzhalter();
-  for (const v of [PLATZHALTER.zahlungsartenOnline, PLATZHALTER.zahlungsartenShowroom, PLATZHALTER.letmeship, PLATZHALTER.gewaehrleistungsMitteilung]) assert.ok(p.includes(v), v);
-  assert.equal(p.length, 4, "nur noch die vier Inhaber-Angaben offen (Zahlungsarten online/Showroom, LetMeShip-Anschrift, Anhang II)");
+  assert.deepEqual(p, [PLATZHALTER.letmeship]);
+  assert.equal(PLATZHALTER.zahlungsartenOnline, undefined);
+  assert.equal(PLATZHALTER.zahlungsartenShowroom, undefined);
+  assert.equal(PLATZHALTER.gewaehrleistungsMitteilung, undefined);
   assert.equal(PLATZHALTER.widerrufsfunktion, undefined);
   assert.equal(PLATZHALTER.versanddienste, undefined);
   for (const v of p) assert.match(v, /^\[PLATZHALTER: /);
+  // Zahlungsarten aus dem gebauten Checkout (Stripe Checkout, Showroom vor Ort), keine erfundene Liste.
+  const agb = all(AGB);
+  assert.match(agb, /5\.1 Online bezahlen Sie über den Zahlungsdienstleister Stripe .* mit Kredit- oder Debitkarte sowie den weiteren auf der Bezahlseite von Stripe angebotenen Zahlungsarten/);
+  assert.match(agb, /3\.2 .*Zahlung vor Ort im Showroom bei der Übergabe/);
+  assert.doesNotMatch(agb, /PayPal|Rechnungskauf|Klarna/);
+  assert.match(ZAHLUNGSARTEN.online, /Stripe/);
+  // Harmonisierte Mitteilung (§ 4 Abs 1 Z 12 FAGG, Anhang II) als eigener Block in AGB Punkt 10.
+  assert.match(agb, /GESETZLICHE GEWÄHRLEISTUNG/);
+  assert.match(agb, /mindestens zwei Jahre ab Übergabe/);
+  assert.match(agb, /unabhängig von einer Herstellergarantie/);
+  assert.deepEqual(GEWAEHRLEISTUNG_BLOCKS[0], { h: GEWAEHRLEISTUNG_TITEL });
+  assert.equal(GEWAEHRLEISTUNG_ABSAETZE.length, 3);
+  assert.doesNotMatch(all(AGB), /\[PLATZHALTER/);
+  assert.doesNotMatch(all(slotTexte().widerruf), /\[PLATZHALTER/);
+  assert.doesNotMatch(all(versandbedingungen()), /\[PLATZHALTER/);
 });
 
-test("Vertragsbestätigung (Entwurf): AGB + Widerruf + Formular, nichts versendet", () => {
+test("Gewährleistungs-Mitteilung im Warenkorb vor dem Bestellknopf hervorgehoben (kein fremdes PDF)", () => {
+  const cart = readFileSync(new URL("../../src/components/Shop/ShopCart.js", import.meta.url), "utf8");
+  assert.match(cart, /data-shop-gewaehrleistung=\{GEWAEHRLEISTUNG_ID\}/);
+  assert.match(cart, /@\/lib\/shop\/gewaehrleistung/);
+  assert.ok(cart.indexOf("data-shop-gewaehrleistung") < cart.indexOf("data-shop-bestellen"), "Block steht vor dem Bestellknopf");
+  assert.doesNotMatch(cart, /\.pdf|ris\.bka\.gv\.at/i, "kein eingebettetes fremdes PDF");
+  assert.match(cart, /<svg aria-hidden="true"/);
+  for (const l of ["de", "en", "fr", "it"]) assert.equal(SHOP_COPY[l].legalPending.length > 0 && !/Entwurf|Draft|Projet|Bozza/.test(SHOP_COPY[l].legalPending), true, l);
+  assert.equal(SHOP_COPY.de.warrantyLang, null);
+  for (const l of ["en", "fr", "it"]) assert.ok(SHOP_COPY[l].warrantyLang, l);
+});
+
+test("Vertragsbestätigung: AGB + Widerruf + Formular + Gewährleistungs-Mitteilung, Anhänge, Status freigegeben nur ohne Platzhalter", () => {
   const order = {
     id: "PH-S-261031-ABC123",
     lieferart: "versand",
@@ -199,19 +252,68 @@ test("Vertragsbestätigung (Entwurf): AGB + Widerruf + Formular, nichts versende
     versand: { versichert: true },
     angelegt: "2026-10-31T10:00:00.000Z",
   };
-  const m = vertragsbestaetigungEntwurf(order);
-  assert.equal(m.status, "entwurf");
-  assert.match(m.betreff, /PH-S-261031-ABC123/);
-  for (const x of ["WIDERRUFSBELEHRUNG", "Muster-Widerrufsformular".toUpperCase(), "ALLGEMEINE GESCHÄFTSBEDINGUNGEN", "239,90 €", "1 × Cire Trudon Eau de Parfum (100 ml)", "Ausschluss des Widerrufsrechts", ANBIETER.uid]) assert.ok(m.text.includes(x), x);
-  assert.deepEqual(m.enthaelt.filter((x) => ["agb", "widerrufsbelehrung", "widerrufsformular"].includes(x)), ["widerrufsbelehrung", "widerrufsformular", "agb"]);
+  const m = vertragsbestaetigung(order);
+  // Status "freigegeben" erst, wenn alle Slots wirksam freigegeben sind – der Datenschutz-Slot wartet auf die LetMeShip-Anschrift.
+  assert.equal(m.status, legalOpen().length === 0 ? "freigegeben" : "entwurf");
+  assert.equal(vertragsbestaetigungStatus(SHOP_LEGAL.filter((s) => s.id !== "datenschutz")), "freigegeben");
+  assert.match(m.betreff, /^Auftragsbestätigung PH-S-261031-ABC123 – /);
+  for (const x of ["WIDERRUFSBELEHRUNG", "Muster-Widerrufsformular".toUpperCase(), "ALLGEMEINE GESCHÄFTSBEDINGUNGEN", "VERSAND- UND LIEFERBEDINGUNGEN", "GESETZLICHE GEWÄHRLEISTUNG", "239,90 €", "1 × Cire Trudon Eau de Parfum (100 ml)", "AUSSCHLUSS DES WIDERRUFSRECHTS", ANBIETER.uid]) assert.ok(m.text.includes(x), x);
+  assert.deepEqual(m.enthaelt.filter((x) => ["agb", "widerrufsbelehrung", "widerrufsformular", "gewaehrleistung-mitteilung"].includes(x)), ["gewaehrleistung-mitteilung", "widerrufsbelehrung", "widerrufsformular", "agb"]);
   assert.ok(m.text.includes(WIDERRUF_URL), "Rücktrittsfunktion in der Vertragsbestätigung");
-  assert.ok(m.platzhalter.includes(PLATZHALTER.zahlungsartenOnline));
+  assert.deepEqual(m.platzhalter, [], "keine Platzhalter in AGB/Belehrung");
   assert.equal(m.hinweis, undefined);
-  assert.doesNotMatch(m.text, /Anmerkung|Kanzlei prüfen/, "keine internen Notizen in der Mail");
-  const ohne = vertragsbestaetigungEntwurf({ ...order, zeilen: [order.zeilen[1]], lieferart: "abholung", zahlung: "vorort" }, { teillieferung: true });
-  assert.doesNotMatch(ohne.text, /Ausschluss des Widerrufsrechts/);
+  assert.doesNotMatch(m.text, /Anmerkung|Kanzlei prüfen|\[PLATZHALTER/, "keine internen Notizen in der Mail");
+  assert.deepEqual(m.anhaenge.map((a) => a.filename), ["AGB-Onlineshop.txt", "Widerrufsbelehrung-und-Formular.txt", "Versandbedingungen.txt"]);
+  assert.ok(m.anhaenge[1].content.toString("utf8").includes("Muster-Widerrufsformular".toUpperCase()));
+  assert.match(m.html, /<html/);
+  assert.match(m.html, /Widerrufsbelehrung, Muster-Widerrufsformular und AGB/);
+  const ohne = vertragsbestaetigung({ ...order, zeilen: [order.zeilen[1]], lieferart: "abholung", zahlung: "vorort" }, { teillieferung: true, test: true });
+  assert.doesNotMatch(ohne.text, /Ausschluss des Widerrufsrechts/i);
   assert.match(ohne.text, /Zahlung bei Abholung/);
   assert.match(ohne.text, /die letzte Ware in Besitz genommen/);
+  assert.match(ohne.betreff, /^\[TEST\] Auftragsbestätigung/);
+  assert.match(ohne.text, /^TESTMODUS/);
+  assert.deepEqual(ohne.anhaenge.map((a) => a.filename), ["AGB-Onlineshop.txt", "Widerrufsbelehrung-und-Formular.txt"], "Abholung ohne Versandbedingungen");
+  assert.equal(vertragsbestaetigungEntwurf, vertragsbestaetigung, "alter Name bleibt");
+});
+
+test("Vertragsbestätigung senden: live jeder Mailer, test nur Mock-Mailer (nie resend), Status in der Bestellung", async () => {
+  const store = createMemoryOrderAdapter();
+  const order = { id: "PH-S-261103-AAAAAA", lieferart: "abholung", zahlung: "vorort", kunde: { name: "Test Kundin", email: "kundin@example.invalid" }, zeilen: [{ markeName: "Riedel", name: "Glas", menge: 1, einzelCent: 2500, summeCent: 2500, kategorie: "glas" }], summen: { warenCent: 2500, versandCent: 0, gesamtCent: 2500, mwstCent: 417 }, angelegt: "2026-11-03T10:00:00.000Z", mail: { status: "ausstehend" } };
+  await store.put("bestellungen", order.id, order);
+  const sent = [];
+  const outbox = { kind: "outbox", send: async (m) => (sent.push(m), { ok: true }) };
+  const resend = { kind: "resend", send: async (m) => (sent.push(m), { ok: true }) };
+  const now = () => Date.parse("2026-11-03T10:05:00Z");
+  assert.equal(mailerErlaubt(outbox, "test"), true);
+  assert.equal(mailerErlaubt(resend, "test"), false, "im Test nie ein echter Anbieter");
+  assert.equal(mailerErlaubt(resend, "live"), true);
+  assert.equal(mailerErlaubt(outbox, "off"), false);
+  assert.equal(mailerErlaubt(null, "live"), false);
+  // test + resend → nicht gesendet
+  let r = await sendeVertragsbestaetigung({ store, mailer: resend, now }, order, "test");
+  assert.equal(r.status, "nicht_gesendet");
+  assert.equal(sent.length, 0);
+  // test + outbox → gesendet mit [TEST]
+  r = await sendeVertragsbestaetigung({ store, mailer: outbox, now }, order, "test");
+  assert.equal(r.status, "gesendet");
+  assert.equal(sent.length, 1);
+  assert.match(sent[0].subject, /^\[TEST\] Auftragsbestätigung PH-S-261103-AAAAAA/);
+  assert.equal(sent[0].to, "kundin@example.invalid");
+  assert.equal(sent[0].tag, "shop-vertragsbestaetigung");
+  assert.equal(sent[0].attachments.length, 2);
+  assert.ok(sent[0].text.includes("ALLGEMEINE GESCHÄFTSBEDINGUNGEN") && sent[0].text.includes("MUSTER-WIDERRUFSFORMULAR"));
+  const saved = await store.get("bestellungen", order.id);
+  assert.equal(saved.mail.status, "gesendet");
+  assert.equal(saved.mail.test, true);
+  assert.equal(saved.mail.art, "vertragsbestaetigung");
+  // live + resend → gesendet ohne [TEST]
+  r = await sendeVertragsbestaetigung({ store, mailer: resend, now }, order, "live");
+  assert.equal(r.status, "gesendet");
+  assert.match(sent[1].subject, /^Auftragsbestätigung PH-S-261103-AAAAAA/);
+  // Fehler des Mailers → fehlgeschlagen, kein Wurf
+  r = await sendeVertragsbestaetigung({ store, mailer: { kind: "outbox", send: async () => ({ ok: false }) }, now }, order, "live");
+  assert.equal(r.status, "fehlgeschlagen");
 });
 
 test("Button bei Abholung + Zahlung vor Ort: „Zahlungspflichtig bestellen“ (§ 8 Abs 2 FAGG)", () => {
@@ -256,20 +358,29 @@ test("Widerruf ohne Bestellnummer (Vertrag außerhalb des Shops): abgelegt, nich
   assert.equal(o.widerruf, undefined, "fremde Bestellung bleibt unberührt");
 });
 
-test("Widerruf im Testmodus: abgelegt, Bestellung markiert, KEINE Mail", async () => {
+test("Widerruf im Testmodus: abgelegt, Bestellung markiert, Mail nur über Mock-Mailer ([TEST]), nie über resend", async () => {
   let gesendet = 0;
-  const ctx = await widerrufCtx({ mode: "test", mailer: { send: async () => { gesendet++; return { ok: true }; } } });
+  const ctx = await widerrufCtx({ mode: "test", mailer: { kind: "resend", send: async () => { gesendet++; return { ok: true }; } } });
   const r = await recordShopWithdrawal(ctx, ERKLAERUNG);
   assert.match(r.id, /^WS-[A-Z0-9]{4}-[A-Z0-9]{4}$/);
   assert.equal(r.zugeordnet, true);
   assert.equal(r.mail, "testmodus");
-  assert.equal(gesendet, 0);
+  assert.equal(gesendet, 0, "echter Anbieter im Test nie");
   const o = await ctx.store.get("bestellungen", ORDER_ID);
   assert.equal(o.widerruf.id, r.id);
   assert.equal(o.verlauf.at(-1).status, "widerruf_eingegangen");
   const w = await ctx.store.get("widerrufe", r.id);
   assert.equal(w.bestellung, ORDER_ID);
   assert.equal(w.mail, "testmodus");
+  // Mock-Mailer (outbox) darf im Test senden – Betreff [TEST]
+  const mails = [];
+  const ctx2 = await widerrufCtx({ mode: "test", mailer: { kind: "outbox", send: async (m) => (mails.push(m), { ok: true }) } });
+  const r2 = await recordShopWithdrawal(ctx2, ERKLAERUNG);
+  assert.equal(r2.mail, "gesendet");
+  assert.match(mails[0].subject, /^\[TEST\] Eingangsbestätigung/);
+  // ohne Mailer im Test: testmodus
+  const ctx3 = await widerrufCtx({ mode: "test" });
+  assert.equal((await recordShopWithdrawal(ctx3, ERKLAERUNG)).mail, "testmodus");
 });
 
 test("Widerruf live: Eingangsbestätigung mit Inhalt, Datum, Uhrzeit; Unbekanntes ohne Freitext", async () => {

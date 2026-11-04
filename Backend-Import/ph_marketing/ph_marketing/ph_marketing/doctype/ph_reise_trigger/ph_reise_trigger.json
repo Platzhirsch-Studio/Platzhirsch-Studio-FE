@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "ausloeser_typ",
+  "feld",
+  "versatz_tage",
+  "tag_monat",
+  "event",
+  "zwecke"
+ ],
+ "fields": [
+  {
+   "fieldname": "ausloeser_typ",
+   "fieldtype": "Select",
+   "label": "Auslöser",
+   "options": "datum\njahrestag\njaehrlich\nevent\neinwilligung\nabo_bestaetigt",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "feld",
+   "fieldtype": "Data",
+   "label": "Datumsfeld (Auftrag)",
+   "in_list_view": 1,
+   "columns": 2,
+   "description": "z. B. lieferdatum = Feld laut Einstellungen"
+  },
+  {
+   "fieldname": "versatz_tage",
+   "fieldtype": "Int",
+   "label": "Wartezeit in Tagen",
+   "in_list_view": 1,
+   "columns": 2,
+   "description": "Negativ = vor dem Event"
+  },
+  {
+   "fieldname": "tag_monat",
+   "fieldtype": "Data",
+   "label": "Tag-Monat (MM-TT) bei jährlich",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "event",
+   "fieldtype": "Link",
+   "label": "Event",
+   "options": "PH Event",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "zwecke",
+   "fieldtype": "Data",
+   "label": "Einwilligungs-Zwecke (Komma) bei einwilligung"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Reise Trigger",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

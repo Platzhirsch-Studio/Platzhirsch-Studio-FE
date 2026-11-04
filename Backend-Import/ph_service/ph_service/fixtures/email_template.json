@@ -1,0 +1,42 @@
+[
+ {
+  "doctype": "Email Template",
+  "name": "PH Service Eingangsbestätigung",
+  "subject": "Ihre Servicemeldung {{ doc.name }} ist eingegangen",
+  "use_html": 1,
+  "response_html": "<p>Guten Tag {{ doc.kunde_name }},</p><p>vielen Dank für Ihre Meldung. Wir haben Ihren Servicefall unter der Nummer <b>{{ doc.name }}</b> aufgenommen{% if doc.produkt_name %} ({{ doc.produkt_name }}){% endif %}.</p><p>So geht es weiter: Wir prüfen Ihre Angaben und Fotos und melden uns innerhalb von zwei Werktagen mit einer Rückmeldung oder einem Terminvorschlag.{% if doc.fristen_status in (\"Gewaehrleistung (Vermutung)\", \"Gewaehrleistung\") %} Ihr Anliegen liegt innerhalb der gesetzlichen Gewährleistungsfrist.{% endif %}</p>{% if zusatz %}<p>{{ zusatz }}</p>{% endif %}<p>Bitte geben Sie bei Rückfragen die Nummer {{ doc.name }} an.</p><p>Mit freundlichen Grüßen<br>{{ firma.kurzname or firma.firmenname or \"Platzhirsch Home Living\" }} · Service<br>{{ firma.telefon or \"\" }} · {{ firma.email or \"\" }}</p>",
+  "response": "Guten Tag {{ doc.kunde_name }}, vielen Dank für Ihre Meldung. Wir haben Ihren Servicefall unter der Nummer {{ doc.name }} aufgenommen und melden uns innerhalb von zwei Werktagen."
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Service Terminvorschlag",
+  "subject": "Terminvorschlag zu Ihrem Servicefall {{ doc.name }}",
+  "use_html": 1,
+  "response_html": "{% set einsatz = frappe.get_all(\"PH Serviceeinsatz\", filters={\"servicefall\": doc.name, \"status\": [\"in\", [\"Geplant\", \"Bestaetigt\"]]}, fields=[\"datum\", \"zeit_von\", \"zeit_bis\", \"art\"], order_by=\"datum asc\", limit=1) %}<p>Guten Tag {{ doc.kunde_name }},</p><p>zu Ihrem Servicefall <b>{{ doc.name }}</b>{% if doc.produkt_name %} ({{ doc.produkt_name }}){% endif %} schlagen wir folgenden Termin vor:</p>{% if einsatz %}<p style=\"font-size:16px\"><b>{{ frappe.utils.formatdate(einsatz[0].datum, \"dd.MM.yyyy\") }}</b>{% if einsatz[0].zeit_von %}, {{ einsatz[0].zeit_von|string|truncate(5, True, \"\") }}{% if einsatz[0].zeit_bis %} – {{ einsatz[0].zeit_bis|string|truncate(5, True, \"\") }} Uhr{% endif %}{% endif %} ({{ einsatz[0].art }})</p>{% else %}<p>{{ zusatz or \"Bitte nennen Sie uns zwei Wunschtermine.\" }}</p>{% endif %}<p>Bitte bestätigen Sie den Termin mit einer kurzen Antwort auf diese E-Mail oder nennen Sie uns einen Alternativtermin. Unser Techniker benötigt freien Zugang zum Möbelstück.</p>{% if zusatz and einsatz %}<p>{{ zusatz }}</p>{% endif %}<p>Mit freundlichen Grüßen<br>{{ firma.kurzname or firma.firmenname or \"Platzhirsch Home Living\" }} · Service<br>{{ firma.telefon or \"\" }}</p>",
+  "response": "Guten Tag {{ doc.kunde_name }}, zu Ihrem Servicefall {{ doc.name }} schlagen wir einen Termin vor. Bitte bestätigen Sie ihn per Antwort auf diese E-Mail."
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Service Abschluss",
+  "subject": "Ihr Servicefall {{ doc.name }} ist abgeschlossen",
+  "use_html": 1,
+  "response_html": "<p>Guten Tag {{ doc.kunde_name }},</p><p>Ihr Servicefall <b>{{ doc.name }}</b>{% if doc.produkt_name %} ({{ doc.produkt_name }}){% endif %} ist abgeschlossen.</p>{% if doc.status == \"Abgelehnt\" %}<p>Nach Prüfung können wir Ihr Anliegen leider nicht als Gewährleistungs- oder Garantiefall anerkennen. Begründung: {{ doc.entscheidung_begruendung }}</p><p>Diese Entscheidung lässt Ihre gesetzlichen Rechte unberührt. Gern unterbreiten wir Ihnen ein Angebot für eine kostenpflichtige Reparatur oder Pflege.</p>{% else %}<p><b>Maßnahme:</b> {{ doc.entscheidung or \"Service\" }}</p><div>{{ doc.abschlussbericht or \"\" }}</div>{% endif %}{% if zusatz %}<p>{{ zusatz }}</p>{% endif %}<p>Die Abnahmebestätigung finden Sie im Anhang. Wir freuen uns über eine kurze Rückmeldung, wie zufrieden Sie mit der Abwicklung waren.</p><p>Mit freundlichen Grüßen<br>{{ firma.kurzname or firma.firmenname or \"Platzhirsch Home Living\" }} · Service</p>",
+  "response": "Guten Tag {{ doc.kunde_name }}, Ihr Servicefall {{ doc.name }} ist abgeschlossen. Die Abnahmebestätigung finden Sie im Anhang."
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Service Wartungserinnerung",
+  "subject": "Erinnerung: {{ 'Wartung' if doc.art == 'Wartungsvertrag' else 'Pflegetermin' }} {{ doc.bereich }} wird fällig",
+  "use_html": 1,
+  "response_html": "<p>Guten Tag {{ doc.kunde_name }},</p><p>laut Ihrem {{ 'Wartungsvertrag' if doc.art == 'Wartungsvertrag' else 'Pflege-Abo' }} <b>{{ doc.name }}</b> ist der nächste Termin am <b>{{ frappe.utils.formatdate(doc.naechster_termin, \"dd.MM.yyyy\") if doc.naechster_termin else termin }}</b> fällig{% if doc.stuecke %} ({{ doc.stuecke | map(attribute=\"bezeichnung\") | join(\", \") }}){% endif %}.</p><p>Wir melden uns in den nächsten Tagen mit einem Terminvorschlag – oder Sie antworten auf diese E-Mail mit Ihren Wunschterminen.</p><p>Diese Erinnerung erhalten Sie, weil sie Teil Ihres Vertrags ist. Hinweise zu Pflegeprodukten senden wir nur mit Ihrer gesonderten Einwilligung.</p><p>Mit freundlichen Grüßen<br>{{ firma.kurzname or firma.firmenname or \"Platzhirsch Home Living\" }} · Service</p>",
+  "response": "Guten Tag {{ doc.kunde_name }}, laut Vertrag {{ doc.name }} ist der nächste Wartungs-/Pflegetermin fällig. Wir melden uns mit einem Terminvorschlag."
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Service Regressmeldung",
+  "subject": "Reklamation {{ doc.name }} – {{ doc.produkt_name or doc.produkt or doc.marke }}{% if doc.seriennummer %} (SN {{ doc.seriennummer }}){% endif %}",
+  "use_html": 1,
+  "response_html": "<p>Sehr geehrte Damen und Herren,</p><p>anbei unsere Reklamationsmeldung <b>{{ doc.name }}</b> zu <b>{{ doc.produkt_name or doc.produkt or \"–\" }}</b>{% if doc.marke %} ({{ doc.marke }}){% endif %}{% if doc.seriennummer %}, Seriennummer {{ doc.seriennummer }}{% endif %}.</p><ul><li>Fehler: {{ doc.fehlercode or \"\" }} {{ doc.fehlercode_bezeichnung or \"\" }}</li><li>Kauf/Übergabe an Endkunden: {{ frappe.utils.formatdate(doc.kaufdatum, \"dd.MM.yyyy\") if doc.kaufdatum else \"–\" }} / {{ frappe.utils.formatdate(doc.uebergabe_datum, \"dd.MM.yyyy\") if doc.uebergabe_datum else \"–\" }}</li>{% if regress %}<li>Regressvorgang: {{ regress }}</li>{% endif %}</ul><p>{{ frappe.utils.strip_html(doc.beschreibung or \"\") }}</p>{% if zusatz %}<p>{{ zusatz }}</p>{% endif %}<p>Wir bitten um Stellungnahme innerhalb von 10 Werktagen sowie um Ersatzteil, Austausch oder Gutschrift im Rahmen von Gewährleistung/Garantie bzw. Regress nach § 933b ABGB. Fotos und die Meldung als PDF liegen bei.</p><p>Mit freundlichen Grüßen<br>{{ firma.firmenname or \"MW Immobilienverwaltungs GmbH\" }} · Platzhirsch Service<br>{{ firma.telefon or \"\" }} · {{ firma.email or \"\" }}</p>",
+  "response": "Reklamationsmeldung {{ doc.name }} – Details und Fotos im Anhang. Wir bitten um Stellungnahme innerhalb von 10 Werktagen."
+ }
+]

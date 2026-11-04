@@ -1,0 +1,28 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 08:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["raum", "wunsch", "budget_cent", "prioritaet", "marken", "masse"],
+ "fields": [
+  {"fieldname": "raum", "fieldtype": "Select", "label": "Raum", "options": "Wohnen\nEssen\nKueche\nSchlafen\nBad\nKind\nBuero\nFlur\nOutdoor\nPool\nLicht\nGesamt\nSonstiges", "reqd": 1, "in_list_view": 1, "columns": 2},
+  {"fieldname": "wunsch", "fieldtype": "Small Text", "label": "Wunsch / Anforderung", "reqd": 1, "in_list_view": 1, "columns": 4},
+  {"fieldname": "budget_cent", "fieldtype": "Int", "label": "Budget (Cent)", "in_list_view": 1, "columns": 2, "non_negative": 1},
+  {"fieldname": "prioritaet", "fieldtype": "Select", "label": "Priorität", "options": "Hoch\nNormal\nNiedrig", "default": "Normal", "in_list_view": 1, "columns": 1},
+  {"fieldname": "marken", "fieldtype": "Data", "label": "Marken-Wunsch", "in_list_view": 1, "columns": 1},
+  {"fieldname": "masse", "fieldtype": "Data", "label": "Maße / Besonderheiten"}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH CRM",
+ "name": "PH Beratungsgespraech Raum",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

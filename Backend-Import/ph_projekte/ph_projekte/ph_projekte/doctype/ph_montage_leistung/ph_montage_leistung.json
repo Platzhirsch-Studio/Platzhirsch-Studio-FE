@@ -1,0 +1,68 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "beschreibung",
+  "dauer_h_geplant",
+  "dauer_h_ist",
+  "erledigt",
+  "position"
+ ],
+ "fields": [
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Data",
+   "label": "Leistung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 5
+  },
+  {
+   "fieldname": "dauer_h_geplant",
+   "fieldtype": "Float",
+   "label": "Std. geplant",
+   "in_list_view": 1,
+   "columns": 2,
+   "precision": "2"
+  },
+  {
+   "fieldname": "dauer_h_ist",
+   "fieldtype": "Float",
+   "label": "Std. ist",
+   "in_list_view": 1,
+   "columns": 2,
+   "precision": "2"
+  },
+  {
+   "fieldname": "erledigt",
+   "fieldtype": "Check",
+   "label": "Erledigt",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Data",
+   "label": "Projektposition (Zeile)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Montage Leistung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

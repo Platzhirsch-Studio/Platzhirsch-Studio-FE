@@ -1,0 +1,18 @@
+{% extends "templates/print/ph_basis.html" %}
+{% set nummer = doc.nummer or doc.name %}
+{% block titel %}Gutschrift {{ nummer }}{% endblock %}
+{% block css %}{% include "templates/print/ph_faktura_css.html" %}{% endblock %}
+{% block kopfrechts %}Gutschrift <b>{{ nummer }}</b><br>{{ ph_datum(doc.datum) }}<br>zu Rechnung {{ doc.rechnung }}{% endblock %}
+{% block inhalt %}
+{% include "templates/print/ph_faktura_anschrift.html" %}
+<table class="ph-meta"><tr><td class="k">Art</td><td>{{ doc.art }}</td><td class="k">Ursprungsrechnung</td><td>{{ doc.rechnung }} vom {{ ph_datum(frappe.db.get_value("PH Rechnung", doc.rechnung, "datum")) }}</td><td class="k">Kundennummer</td><td>{{ doc.kontakt }}</td></tr></table>
+<h1>Gutschrift{% if doc.docstatus == 0 %} <span class="ph-stempel">ENTWURF</span>{% endif %}</h1>
+<p>{% if doc.art == "Storno" %}Wir stornieren die Rechnung {{ doc.rechnung }} vollständig.{% else %}Wir schreiben Ihnen zur Rechnung {{ doc.rechnung }} folgende Beträge gut.{% endif %} Grund: {{ doc.grund }}</p>
+<p class="ph-hinweis-klein">Berichtigung der Rechnung {{ doc.rechnung }} gemäß § 16 UStG; die ausgewiesene Umsatzsteuer wird entsprechend berichtigt. Gutschrift im Sinne einer Rechnungskorrektur, kein Abrechnungsdokument des Leistungsempfängers.</p>
+{% include "templates/print/ph_faktura_positionen.html" %}
+<div class="ph-zahlung"><div>
+  {% if doc.erstattung_art == "Rückzahlung" %}<b>Gutschriftsbetrag {{ ph_betrag(doc.brutto_cent, doc.waehrung) }} wird{% if doc.erstattet_cent %} erstattet (bereits {{ ph_betrag(doc.erstattet_cent, doc.waehrung) }}){% else %} auf Ihr Konto überwiesen{% endif %}.</b>
+  {% elif doc.erstattung_art == "Verrechnung mit offener Rechnung" %}<b>Der Gutschriftsbetrag {{ ph_betrag(doc.brutto_cent, doc.waehrung) }} wird mit dem offenen Rechnungsbetrag verrechnet.</b>
+  {% else %}<b>Gutschrift ohne Zahlungsfluss.</b>{% endif %}
+</div></div>
+{% endblock %}

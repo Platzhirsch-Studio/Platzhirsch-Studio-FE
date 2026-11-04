@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 08:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["ersatzteil", "bezeichnung", "hersteller_nr", "menge", "menge_erhalten", "ek_cent", "wunschtermin", "bestaetigter_termin", "eingetroffen_am", "servicefall_zeile"],
+ "fields": [
+  {"fieldname": "ersatzteil", "fieldtype": "Link", "label": "Ersatzteil", "options": "PH Ersatzteil", "in_list_view": 1, "columns": 2},
+  {"fieldname": "bezeichnung", "fieldtype": "Data", "label": "Bezeichnung", "fetch_from": "ersatzteil.bezeichnung", "fetch_if_empty": 1, "reqd": 1, "in_list_view": 1, "columns": 3},
+  {"fieldname": "hersteller_nr", "fieldtype": "Data", "label": "Hersteller-Nr.", "fetch_from": "ersatzteil.hersteller_nr", "fetch_if_empty": 1, "in_list_view": 1, "columns": 2},
+  {"fieldname": "menge", "fieldtype": "Int", "label": "Menge", "default": "1", "reqd": 1, "in_list_view": 1, "columns": 1},
+  {"fieldname": "menge_erhalten", "fieldtype": "Int", "label": "Erhalten", "default": "0", "read_only": 1, "in_list_view": 1, "columns": 1},
+  {"fieldname": "ek_cent", "fieldtype": "Int", "label": "EK (Cent)", "fetch_from": "ersatzteil.ek_cent", "fetch_if_empty": 1, "permlevel": 1},
+  {"fieldname": "wunschtermin", "fieldtype": "Date", "label": "Wunschtermin"},
+  {"fieldname": "bestaetigter_termin", "fieldtype": "Date", "label": "Bestätigter Termin", "in_list_view": 1, "columns": 1},
+  {"fieldname": "eingetroffen_am", "fieldtype": "Date", "label": "Eingetroffen am", "read_only": 1},
+  {"fieldname": "servicefall_zeile", "fieldtype": "Data", "label": "Servicefall-Zeile", "read_only": 1, "hidden": 1}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Service",
+ "name": "PH Ersatzteilbestellung Position",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

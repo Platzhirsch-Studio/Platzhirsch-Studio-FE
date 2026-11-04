@@ -1,0 +1,249 @@
+[
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Umsatz je Monat",
+  "chart_name": "PH Umsatz je Monat",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "filters_json": "[[\"PH Rechnung\", \"docstatus\", \"=\", 1, false], [\"PH Rechnung\", \"status\", \"!=\", \"Storniert\", false], [\"PH Rechnung\", \"art\", \"!=\", \"Anzahlungsrechnung\", false]]",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ],
+  "chart_type": "Sum",
+  "document_type": "PH Rechnung",
+  "based_on": "datum",
+  "value_based_on": "zahlbar_cent",
+  "timespan": "Last Year",
+  "time_interval": "Monthly",
+  "timeseries": 1,
+  "type": "Bar",
+  "color": "#30373e"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Auftragseingang je Monat",
+  "chart_name": "PH Auftragseingang je Monat",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "filters_json": "[[\"PH Auftragsbestaetigung\", \"status\", \"!=\", \"Storniert\", false]]",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ],
+  "chart_type": "Sum",
+  "document_type": "PH Auftragsbestaetigung",
+  "based_on": "datum",
+  "value_based_on": "auftragswert_cent",
+  "timespan": "Last Year",
+  "time_interval": "Monthly",
+  "timeseries": 1,
+  "type": "Bar",
+  "color": "#8a7a66"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Angebote nach Status",
+  "chart_name": "PH Angebote nach Status",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "filters_json": "[]",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ],
+  "chart_type": "Group By",
+  "document_type": "PH Angebot",
+  "group_by_type": "Sum",
+  "group_by_based_on": "status",
+  "aggregate_function_based_on": "brutto_cent",
+  "number_of_groups": 6,
+  "timespan": "Last Quarter",
+  "timeseries": 0,
+  "type": "Donut",
+  "color": "#1d4ed8"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Rechnungen nach Status",
+  "chart_name": "PH Rechnungen nach Status",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "filters_json": "[[\"PH Rechnung\", \"docstatus\", \"=\", 1, false]]",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ],
+  "chart_type": "Group By",
+  "document_type": "PH Rechnung",
+  "group_by_type": "Sum",
+  "group_by_based_on": "status",
+  "aggregate_function_based_on": "offen_cent",
+  "number_of_groups": 8,
+  "timespan": "Last Year",
+  "timeseries": 0,
+  "type": "Donut",
+  "color": "#b45309"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Offene Posten nach Alter",
+  "chart_name": "PH Offene Posten nach Alter",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "filters_json": "{\"stichtag\": null}",
+  "roles": [
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ],
+  "chart_type": "Report",
+  "report_name": "PH Offene Posten",
+  "use_report_chart": 1,
+  "type": "Bar",
+  "color": "#b91c1c",
+  "timeseries": 0
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Anzahlungsstand",
+  "chart_name": "PH Anzahlungsstand",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "filters_json": "{}",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ],
+  "chart_type": "Report",
+  "report_name": "PH Anzahlungsstand",
+  "use_report_chart": 1,
+  "type": "Bar",
+  "color": "#15803d",
+  "timeseries": 0
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Mahnstufen",
+  "chart_name": "PH Mahnstufen",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "filters_json": "[[\"PH Rechnung\", \"docstatus\", \"=\", 1, false], [\"PH Rechnung\", \"offen_cent\", \">\", 0, false]]",
+  "roles": [
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ],
+  "chart_type": "Group By",
+  "document_type": "PH Rechnung",
+  "group_by_type": "Count",
+  "group_by_based_on": "mahnstufe",
+  "number_of_groups": 4,
+  "timespan": "Last Year",
+  "timeseries": 0,
+  "type": "Pie",
+  "color": "#b91c1c"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Eingangsrechnungen nach Status",
+  "chart_name": "PH Eingangsrechnungen nach Status",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Faktura",
+  "filters_json": "[]",
+  "roles": [
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ],
+  "chart_type": "Group By",
+  "document_type": "PH Eingangsrechnung",
+  "group_by_type": "Sum",
+  "group_by_based_on": "status",
+  "aggregate_function_based_on": "brutto_cent",
+  "number_of_groups": 5,
+  "timespan": "Last Quarter",
+  "timeseries": 0,
+  "type": "Donut",
+  "color": "#8a7a66"
+ }
+]

@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Ansprechpartner bei Marke oder Lieferant (Kindtabelle von PH Marke und PH Lieferant).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "ansprechpartner",
+  "rolle",
+  "email",
+  "telefon",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "ansprechpartner",
+   "fieldtype": "Data",
+   "label": "Name",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "rolle",
+   "fieldtype": "Data",
+   "label": "Rolle / Bereich",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "telefon",
+   "fieldtype": "Data",
+   "label": "Telefon",
+   "options": "Phone",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Sortiment Ansprechpartner",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

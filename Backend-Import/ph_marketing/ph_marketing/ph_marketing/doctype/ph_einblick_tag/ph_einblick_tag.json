@@ -1,0 +1,239 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "datum",
+  "titel",
+  "schema",
+  "status",
+  "cb_1",
+  "empfangen_am",
+  "teile_empfangen",
+  "besuche",
+  "sb_daten",
+  "meta_json",
+  "seiten_json",
+  "heatmaps_json",
+  "pfade_json",
+  "signale_json",
+  "planer_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Datum",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "schema",
+   "fieldtype": "Data",
+   "label": "Schema-Version",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Teilweise\nVollstaendig",
+   "default": "Vollstaendig",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "empfangen_am",
+   "fieldtype": "Datetime",
+   "label": "Zuletzt empfangen",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "teile_empfangen",
+   "fieldtype": "Data",
+   "label": "Empfangene Teile",
+   "read_only": 1
+  },
+  {
+   "fieldname": "besuche",
+   "fieldtype": "Int",
+   "label": "Besuche (aus meta)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_daten",
+   "fieldtype": "Section Break",
+   "label": "Daten (JSON, je Teil ≤ 1 MB)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "meta_json",
+   "fieldtype": "Code",
+   "label": "meta",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "seiten_json",
+   "fieldtype": "Code",
+   "label": "seiten",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "heatmaps_json",
+   "fieldtype": "Code",
+   "label": "heatmaps",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "pfade_json",
+   "fieldtype": "Code",
+   "label": "pfade",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "signale_json",
+   "fieldtype": "Code",
+   "label": "signale",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "planer_json",
+   "fieldtype": "Code",
+   "label": "planer",
+   "options": "JSON"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Einblick Tag",
+ "owner": "Administrator",
+ "sort_field": "datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Teilweise",
+   "color": "Orange"
+  },
+  {
+   "title": "Vollstaendig",
+   "color": "Green"
+  }
+ ],
+ "track_changes": 1,
+ "description": "Tagesaggregat der Besucher-Einblicke (eigene Heatmap, src/lib/einblicke/frappe.server.js): nur zusammengefasste Werte, keine IP, keine Sitzungen. Upsert über Datum und Teil.",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "autoname": "field:datum",
+ "naming_rule": "By fieldname",
+ "title_field": "titel",
+ "search_fields": "datum,schema",
+ "track_views": 0
+}

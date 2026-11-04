@@ -1,0 +1,22 @@
+{% extends "templates/print/ph_basis.html" %}
+{% block titel %}Angebot {{ doc.name }}{% endblock %}
+{% block css %}{% include "templates/print/ph_faktura_css.html" %}{% endblock %}
+{% block kopfrechts %}Angebot <b>{{ doc.name }}</b>{% if doc.version and doc.version > 1 %} · Version {{ doc.version }}{% endif %}<br>{{ ph_datum(doc.datum) }}{% if doc.projekt %}<br>Projekt {{ doc.projekt }}{% endif %}{% endblock %}
+{% block inhalt %}
+{% include "templates/print/ph_faktura_anschrift.html" %}
+<table class="ph-meta"><tr>
+  <td class="k">Gültig bis</td><td>{{ ph_datum(doc.gueltig_bis) }}</td>
+  <td class="k">Ihr/e Berater/in</td><td>{{ frappe.db.get_value("User", doc.zugewiesen_an, "full_name") if doc.zugewiesen_an else firma.kurzname }}</td>
+  <td class="k">Kundennummer</td><td>{{ doc.kontakt }}</td>
+</tr></table>
+<h1>Angebot</h1>
+{% if doc.einleitung %}<div>{{ doc.einleitung }}</div>{% endif %}
+{% include "templates/print/ph_faktura_positionen.html" %}
+<h2>Konditionen</h2>
+<div class="ph-feld"><b>Zahlung</b> {{ doc.zahlungstext or "laut Vereinbarung" }}</div>
+<div class="ph-feld"><b>Lieferung</b> {{ doc.lieferbedingung_text or "" }}{% if doc.lieferzeit_text %} · Lieferzeit {{ doc.lieferzeit_text }}{% endif %}</div>
+<div class="ph-feld"><b>Preise</b> in {{ doc.waehrung or "EUR" }}{% if doc.ust_fall == "Steuerpflichtig AT" %} inkl. gesetzlicher Umsatzsteuer, wie ausgewiesen{% endif %}; Stand {{ ph_datum(doc.datum) }}, freibleibend bis zum Ablauf der Gültigkeit.</div>
+{% if doc.vertragsort != "Showroom" %}<p class="ph-hinweis">Hinweis Fern- und Auswärtsgeschäft (FAGG): Bei Vertragsabschluss außerhalb unserer Geschäftsräume steht Ihnen ein 14-tägiges Rücktrittsrecht zu. Die Belehrung samt Muster-Widerrufsformular liegt diesem Angebot bei.</p>{% endif %}
+{% if doc.schluss %}<div style="margin-top:6mm">{{ doc.schluss }}</div>{% endif %}
+<div class="ph-unterschrift"><div>{{ firma.kurzname or firma.firmenname }}</div><div>Auftrag erteilt – Ort, Datum, Unterschrift Kunde{% if doc.unterschrift_kunde %}<br><img src="{{ doc.unterschrift_kunde }}" style="height:14mm">{% endif %}</div></div>
+{% endblock %}

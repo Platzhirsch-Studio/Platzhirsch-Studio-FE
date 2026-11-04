@@ -1,0 +1,38 @@
+[
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Produkte",
+  "kanban_board_name": "PH Produkte",
+  "reference_doctype": "PH Produkt",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Produkt\",\"status\",\"!=\",\"Ausgelaufen\"]]",
+  "fields": "[\"titel\",\"marke\",\"kategorie\",\"bild_freigegeben\",\"aktueller_preis_cent\",\"bild_hauptbild\"]",
+  "columns": [
+   {"column_name": "Entwurf", "indicator": "Gray", "status": "Active", "order": "[]"},
+   {"column_name": "Geprueft", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Aktiv", "indicator": "Green", "status": "Active", "order": "[]"},
+   {"column_name": "Pausiert", "indicator": "Orange", "status": "Active", "order": "[]"}
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Herstellerbestellungen",
+  "kanban_board_name": "PH Herstellerbestellungen",
+  "reference_doctype": "PH Herstellerbestellung",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Herstellerbestellung\",\"status\",\"not in\",[\"Abgeschlossen\",\"Storniert\"]]]",
+  "fields": "[\"titel\",\"lieferant\",\"kommission\",\"datum\",\"bestaetigter_termin\",\"abweichungen_offen\"]",
+  "columns": [
+   {"column_name": "Entwurf", "indicator": "Gray", "status": "Active", "order": "[]"},
+   {"column_name": "Gesendet", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "AB erhalten", "indicator": "Cyan", "status": "Active", "order": "[]"},
+   {"column_name": "AB geprueft", "indicator": "Purple", "status": "Active", "order": "[]"},
+   {"column_name": "Teilgeliefert", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Geliefert", "indicator": "Green", "status": "Active", "order": "[]"}
+  ]
+ }
+]

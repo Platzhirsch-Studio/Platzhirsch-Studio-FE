@@ -1,0 +1,38 @@
+{#- Newsletter „Post aus Lochau“ – Blöcke aus PH Newsletter Ausgabe (Spiegel von newsletter.js blockHtml). Fußzeile A (Einwilligung). -#}
+{% extends "templates/emails/ph_mail_basis.html" %}
+{% set P = "margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e" %}
+{% set H1 = "margin:0 0 12px;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:1.25;color:#30373e" %}
+{% set H3 = "margin:0 0 12px;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:22px;line-height:1.25;color:#30373e" %}
+{% set OVER = "margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7a5e17" %}
+{% set HR = "border:0;border-top:1px solid #e0ddd7;margin:28px 0" %}
+{% set LINK = "color:#30373e;text-decoration:underline" %}
+{% macro utm(url, cta) -%}{{ url if url.startswith("http") else website_url ~ url }}{{ "&" if "?" in url else "?" }}utm_source=newsletter&utm_medium=email&utm_campaign=newsletter-{{ slug|replace("-", "") }}&utm_content={{ cta }}{%- endmacro %}
+{% block kopf %}Post aus Lochau{% endblock %}
+{% block inhalt %}
+{% for b in bloecke %}
+  {% if b.typ == "brief" %}
+    <h1 style="{{ H1 }}">{{ b.titel }}</h1>
+    <p style="{{ P }}">{{ anrede }},</p>
+    <div style="{{ P }}">{{ b.text }}</div>
+    {% if inhalt_zeile %}<p style="{{ P }}">{{ inhalt_zeile }}</p>{% endif %}
+    <p style="{{ P }}">Herzlich<br>{{ b.absender or "Susanne Messmer" }}</p>
+  {% elif b.typ in ("neueStuecke", "skizze") %}
+    <hr style="{{ HR }}"><p style="{{ OVER }}">{{ b.titel }}</p>
+    {% if b.bild_abs %}<img src="{{ b.bild_abs }}" alt="{{ b.bild_alt }}" width="544" style="display:block;width:100%;max-width:544px;height:auto;margin:0 0 12px;border:0">{% endif %}
+    {% if b.typ == "neueStuecke" and b.marke %}<h3 style="{{ H3 }}">{{ b.marke }} · im Showroom</h3>{% endif %}
+    <div style="{{ P }}">{{ b.text }}</div>
+    {% if b.url %}<p style="{{ P }}"><a href="{{ utm(b.url, b.typ) }}" style="{{ LINK }}">{{ b.link_label or "Im Showroom ansehen" }}</a></p>{% endif %}
+  {% elif b.typ == "termine" %}
+    <hr style="{{ HR }}"><p style="{{ OVER }}">{{ b.titel or "Termine" }}</p>
+    {% if b.event_titel %}<h3 style="{{ H3 }}">{{ b.event_titel }}</h3><p style="{{ P }}">{{ b.event_datum }}{% if b.event_uhrzeit %} · ab {{ b.event_uhrzeit }} Uhr{% endif %}</p>{% endif %}
+    {% if b.text %}<div style="{{ P }}">{{ b.text }}</div>{% endif %}
+    {% set ziel = b.url or b.event_url %}{% if ziel %}<p style="{{ P }}"><a href="{{ utm(ziel, "termin") }}" style="{{ LINK }}">{{ b.link_label or "Platz reservieren" }}</a></p>{% endif %}
+  {% elif b.typ in ("gutZuWissen", "arbeitsweise") %}
+    <hr style="{{ HR }}"><p style="{{ OVER }}">{{ "Gut zu wissen" if b.typ == "gutZuWissen" else "Arbeitsweise" }}</p>
+    <h3 style="{{ H3 }}">{{ b.titel }}</h3>
+    <div style="{{ P }}">{{ b.text }}</div>
+    {% if b.url %}<p style="{{ P }}"><a href="{{ utm(b.url, b.typ) }}" style="{{ LINK }}">{{ b.link_label or "Mehr lesen" }}</a></p>{% endif %}
+  {% endif %}
+{% endfor %}
+{% endblock %}
+{% block fusszeile %}{{ fusszeile_html }}{% endblock %}

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><title>Ihr persönlicher Empfehlungscode</title></head>
+<body style="margin:0;padding:0;background:#faf8f4">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0">Code und Link zum Weitergeben.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f4"><tr><td align="center" style="padding:32px 16px">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff"><tr><td style="padding:32px 28px">
+<p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7a5e17">Platzhirsch Home Living · Lochau</p>
+<p style="margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e">{{ anrede }},</p>
+<p style="margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e">danke, dass Sie uns weiterempfehlen möchten. Ihr persönlicher Code lautet <strong>{{ code }}</strong>.</p>
+<p style="margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e">Am einfachsten geben Sie diesen Link weiter: <a href="{{ teilen_url }}" style="color:#30373e">{{ teilen_url }}</a>. Sie entscheiden, wem Sie ihn geben. Wir schreiben niemanden an.</p>
+<p style="margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e">Wenn eine Person, die Sie empfohlen haben, bei uns zum ersten Mal einen Auftrag erteilt und der Einbeziehung Ihres Codes zugestimmt hat, erhalten Sie nach Ablauf der Rücktrittsfrist einen Gutschein{% if gutschein_wert %} über {{ gutschein_wert }}{% endif %}. Über den Auftrag selbst erfahren Sie nichts.</p>
+{% if bedingungen_url %}<p style="margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e">Die Teilnahmebedingungen finden Sie hier: <a href="{{ bedingungen_url }}" style="color:#30373e">Teilnahmebedingungen</a>.</p>{% endif %}
+<table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 24px"><tr><td style="background:#30373e"><a href="{{ teilen_url }}" style="display:inline-block;padding:14px 28px;font-family:Helvetica,Arial,sans-serif;font-size:16px;color:#faf8f4;text-decoration:none">Link öffnen</a></td></tr></table>
+<p style="margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e">Herzliche Grüße<br>{{ berater_name }}</p>
+<hr style="border:0;border-top:1px solid #e0ddd7;margin:28px 0">
+<p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#4a5158">Diese Nachricht ist eine Antwort auf Ihre Anfrage oder Anmeldung bei Platzhirsch Home Living.</p>
+<p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#4a5158">Platzhirsch Home Living · MW Immobilienverwaltungs GmbH · Landstraße 11 · 6911 Lochau · Österreich · FN 443753 d · UID ATU70035339 · +43 5574 46255 · info@platzhirsch.studio</p>
+</td></tr></table>
+</td></tr></table>
+</body></html>

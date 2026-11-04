@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bezeichnung",
+  "zustand",
+  "beschreibung",
+  "foto",
+  "frist",
+  "erledigt",
+  "erledigt_am",
+  "servicefall_ref"
+ ],
+ "fields": [
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Produkt / Leistung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "zustand",
+   "fieldtype": "Select",
+   "label": "Zustand",
+   "options": "ok\nMangel\nNacharbeit",
+   "default": "ok",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Small Text",
+   "label": "Beschreibung",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "foto",
+   "fieldtype": "Attach Image",
+   "label": "Foto",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "frist",
+   "fieldtype": "Date",
+   "label": "Frist",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "erledigt",
+   "fieldtype": "Check",
+   "label": "Erledigt",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "erledigt_am",
+   "fieldtype": "Date",
+   "label": "Erledigt am"
+  },
+  {
+   "fieldname": "servicefall_ref",
+   "fieldtype": "Data",
+   "label": "Servicefall (ph_service)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Abnahme Position",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

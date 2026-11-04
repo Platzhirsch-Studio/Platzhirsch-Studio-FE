@@ -5,7 +5,7 @@ import { EMAIL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 import { publishableJob, visibleJobs } from "./glbg";
 import SmartLink from "@/components/ui/SmartLink";
 import { localizedTitle } from "@/lib/karriere/stellen";
-import { BEWERBUNG_ANSPRECHPERSON, karriereTexte } from "@/lib/karriere/texte";
+import { BEWERBUNG_ANSPRECHPERSON, entgeltText, karriereTexte } from "@/lib/karriere/texte";
 
 const hasText = (value) => typeof value === "string" && value.trim() !== "";
 function localizedField(job, field, locale) {
@@ -135,6 +135,12 @@ const KarrierePosition = ({ karriere }) => {
                       </div>
                     )}
                   </dl>
+                  {/* § 9 Abs 2 GlBG: Mindestentgelt und Überzahlung schon in der Liste (Nr. 47). */}
+                  {job.entgelt && entgeltText(job.entgelt, locale) && (
+                    <p className="mt-3 text-small text-text-soft" data-testid="job-entgelt">
+                      {entgeltText(job.entgelt, locale)}
+                    </p>
+                  )}
                   <p className="mt-4 text-small font-medium text-text" aria-hidden="true">
                     {t("viewJob")} →
                   </p>

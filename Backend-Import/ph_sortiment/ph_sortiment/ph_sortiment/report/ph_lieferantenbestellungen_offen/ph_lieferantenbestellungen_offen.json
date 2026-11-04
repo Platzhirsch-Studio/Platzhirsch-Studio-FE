@@ -1,0 +1,33 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "PLATZHIRSCH",
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Lieferantenbestellungen offen",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "PH Herstellerbestellung",
+ "report_name": "PH Lieferantenbestellungen offen",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "PH Sortiment Mitarbeiter"
+  },
+  {
+   "role": "PH Sortiment Leitung"
+  },
+  {
+   "role": "PH Geschäftsführung"
+  }
+ ],
+ "query": "select hb.name as `Bestellung:Link/PH Herstellerbestellung:150`, hb.lieferant as `Lieferant:Link/PH Lieferant:160`, hb.status as `Status:Data:110`, hb.datum as `Bestellt am:Date:100`, hb.gesendet_am as `Gesendet:Datetime:140`, hb.kommission as `Kommission:Data:160`, hb.ab_nummer as `AB-Nr.:Data:110`, hb.bestaetigter_termin as `Bestätigter Termin:Date:120`, hb.menge_bestellt as `Menge:Int:70`, hb.menge_erhalten as `Erhalten:Int:80`, hb.abweichungen_offen as `Abw. offen:Int:90`, datediff(curdate(), coalesce(hb.gesendet_am, hb.datum)) as `Tage offen:Int:90` from `tabPH Herstellerbestellung` hb where hb.status in ('Gesendet','AB erhalten','AB geprueft','Teilgeliefert') and (%(lieferant)s is null or %(lieferant)s = '' or hb.lieferant = %(lieferant)s) order by hb.lieferant, hb.datum"
+}

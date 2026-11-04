@@ -1,0 +1,445 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "PH Angebot",
+  "workflow_name": "PH Angebot",
+  "document_type": "PH Angebot",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {
+    "state": "PH Entwurf",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Entwurf",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Gesendet",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Gesendet",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Angenommen",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Angenommen",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgelehnt",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Abgelehnt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgelaufen",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Abgelaufen",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Ersetzt",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Ersetzt",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "PH Entwurf",
+    "action": "Senden",
+    "next_state": "PH Gesendet",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1,
+    "condition": "doc.brutto_cent > 0"
+   },
+   {
+    "state": "PH Entwurf",
+    "action": "Annehmen",
+    "next_state": "PH Angenommen",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1,
+    "condition": "doc.brutto_cent > 0"
+   },
+   {
+    "state": "PH Gesendet",
+    "action": "Annehmen",
+    "next_state": "PH Angenommen",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gesendet",
+    "action": "Ablehnen",
+    "next_state": "PH Abgelehnt",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gesendet",
+    "action": "Ablaufen lassen",
+    "next_state": "PH Abgelaufen",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gesendet",
+    "action": "Neue Version",
+    "next_state": "PH Ersetzt",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Abgelehnt",
+    "action": "Neue Version",
+    "next_state": "PH Ersetzt",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Abgelaufen",
+    "action": "Neue Version",
+    "next_state": "PH Ersetzt",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Auftragsbestaetigung",
+  "workflow_name": "PH Auftragsbestaetigung",
+  "document_type": "PH Auftragsbestaetigung",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {
+    "state": "PH Offen",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Offen",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH In Bestellung",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Mitarbeiter",
+    "update_field": "status",
+    "update_value": "In Bestellung",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Teilgeliefert",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Teilgeliefert",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Geliefert",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Geliefert",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgerechnet",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Abgerechnet",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Storniert",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Storniert",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "PH Offen",
+    "action": "In Bestellung geben",
+    "next_state": "PH In Bestellung",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Offen",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH In Bestellung",
+    "action": "Teillieferung melden",
+    "next_state": "PH Teilgeliefert",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH In Bestellung",
+    "action": "Lieferung melden",
+    "next_state": "PH Geliefert",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH In Bestellung",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Teilgeliefert",
+    "action": "Lieferung melden",
+    "next_state": "PH Geliefert",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Geliefert",
+    "action": "Abrechnen",
+    "next_state": "PH Abgerechnet",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1,
+    "condition": "doc.abgerechnet_cent >= doc.auftragswert_cent"
+   },
+   {
+    "state": "PH Teilgeliefert",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Rechnung",
+  "workflow_name": "PH Rechnung",
+  "document_type": "PH Rechnung",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {
+    "state": "PH Entwurf",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Entwurf",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Gestellt",
+    "doc_status": "1",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Gestellt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Teilbezahlt",
+    "doc_status": "1",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Teilbezahlt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Bezahlt",
+    "doc_status": "1",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Bezahlt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Ueberfaellig",
+    "doc_status": "1",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Ueberfaellig",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Gemahnt",
+    "doc_status": "1",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Gemahnt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Storniert",
+    "doc_status": "1",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Storniert",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Uneinbringlich",
+    "doc_status": "1",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Uneinbringlich",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "PH Entwurf",
+    "action": "Stellen",
+    "next_state": "PH Gestellt",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1,
+    "condition": "doc.brutto_cent > 0"
+   },
+   {
+    "state": "PH Ueberfaellig",
+    "action": "Als uneinbringlich buchen",
+    "next_state": "PH Uneinbringlich",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gemahnt",
+    "action": "Als uneinbringlich buchen",
+    "next_state": "PH Uneinbringlich",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "PH Eingangsrechnung",
+  "workflow_name": "PH Eingangsrechnung",
+  "document_type": "PH Eingangsrechnung",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "workflow_state",
+  "states": [
+   {
+    "state": "PH Erfasst",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Erfasst",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Sachlich geprueft",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Sachlich geprueft",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Freigegeben",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Freigegeben",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Bezahlt",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Bezahlt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgelehnt",
+    "doc_status": "0",
+    "allow_edit": "PH Faktura Leitung",
+    "update_field": "status",
+    "update_value": "Abgelehnt",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "PH Erfasst",
+    "action": "Sachlich pruefen",
+    "next_state": "PH Sachlich geprueft",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1,
+    "condition": "doc.brutto_cent > 0"
+   },
+   {
+    "state": "PH Erfasst",
+    "action": "Ablehnen",
+    "next_state": "PH Abgelehnt",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Sachlich geprueft",
+    "action": "Freigeben",
+    "next_state": "PH Freigegeben",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Sachlich geprueft",
+    "action": "Ablehnen",
+    "next_state": "PH Abgelehnt",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Sachlich geprueft",
+    "action": "Zurueck an Erfassung",
+    "next_state": "PH Erfasst",
+    "allowed": "PH Faktura Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Freigegeben",
+    "action": "Als bezahlt buchen",
+    "next_state": "PH Bezahlt",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Freigegeben",
+    "action": "Zurueck an Erfassung",
+    "next_state": "PH Erfasst",
+    "allowed": "PH Faktura Leitung",
+    "allow_self_approval": 1
+   }
+  ]
+ }
+]

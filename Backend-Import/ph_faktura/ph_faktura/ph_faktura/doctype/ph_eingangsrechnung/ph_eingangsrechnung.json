@@ -1,0 +1,630 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Lieferantenrechnung: Erfassung, sachliche Prüfung, Freigabe durch Leitung, Zahllauf-Vorschlag, Zuordnung zu Herstellerbestellung/Projekt, Vorsteuer/Reverse Charge für die UVA.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "lieferant",
+  "lieferant_name",
+  "rechnungsnummer_lieferant",
+  "cb_kopf",
+  "datum",
+  "eingang",
+  "faellig",
+  "leistungsdatum",
+  "datei",
+  "sb_bezug",
+  "herstellerbestellung",
+  "auftrag",
+  "cb_bezug",
+  "projekt",
+  "abweichung_zur_ab",
+  "tab_positionen",
+  "positionen",
+  "sb_betraege",
+  "netto_cent",
+  "ust_cent",
+  "brutto_cent",
+  "ust_aufteilung",
+  "cb_betraege",
+  "ust_fall",
+  "land_lieferant",
+  "uid_lieferant",
+  "vorsteuer_cent",
+  "rc_steuer_cent",
+  "konto_aufwand",
+  "tab_zahlung",
+  "skonto_promille",
+  "skonto_bis",
+  "skonto_cent",
+  "zahlbetrag_cent",
+  "cb_zahlung",
+  "iban_lieferant",
+  "bic_lieferant",
+  "zahlungsreferenz",
+  "zahllauf",
+  "sb_bezahlt",
+  "bezahlt_am",
+  "bezahlt_cent",
+  "zahlung",
+  "cb_bezahlt",
+  "bankumsatz",
+  "tab_freigabe",
+  "geprueft_von",
+  "geprueft_am",
+  "pruefvermerk",
+  "cb_freigabe",
+  "freigegeben_von",
+  "freigegeben_am",
+  "ablehnungsgrund",
+  "sb_export",
+  "export_status",
+  "export_lauf",
+  "notiz",
+  "tab_system",
+  "idempotency_key",
+  "quelle",
+  "ip_hash",
+  "workflow_state"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "ER-.YYYY.-.#####",
+   "default": "ER-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Erfasst\nSachlich geprueft\nFreigegeben\nBezahlt\nAbgelehnt",
+   "default": "Erfasst",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "lieferant",
+   "fieldtype": "Link",
+   "label": "Lieferant",
+   "options": "PH Lieferant",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "lieferant_name",
+   "fieldtype": "Data",
+   "label": "Lieferant (Name)",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "rechnungsnummer_lieferant",
+   "fieldtype": "Data",
+   "label": "Rechnungsnummer des Lieferanten",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Rechnungsdatum",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "eingang",
+   "fieldtype": "Date",
+   "label": "Eingang am",
+   "default": "Today"
+  },
+  {
+   "fieldname": "faellig",
+   "fieldtype": "Date",
+   "label": "Fällig am",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "leistungsdatum",
+   "fieldtype": "Date",
+   "label": "Leistungsdatum"
+  },
+  {
+   "fieldname": "datei",
+   "fieldtype": "Attach",
+   "label": "Rechnung (PDF/Scan)"
+  },
+  {
+   "fieldname": "sb_bezug",
+   "fieldtype": "Section Break",
+   "label": "Bezug"
+  },
+  {
+   "fieldname": "herstellerbestellung",
+   "fieldtype": "Link",
+   "label": "Herstellerbestellung",
+   "options": "PH Herstellerbestellung"
+  },
+  {
+   "fieldname": "auftrag",
+   "fieldtype": "Link",
+   "label": "Kundenauftrag (AB)",
+   "options": "PH Auftragsbestaetigung"
+  },
+  {
+   "fieldname": "cb_bezug",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt"
+  },
+  {
+   "fieldname": "abweichung_zur_ab",
+   "fieldtype": "Small Text",
+   "label": "Abweichung zur Bestellung/AB",
+   "description": "Abgleich Menge/Preis gegen Herstellerbestellung (Prüfschritt)."
+  },
+  {
+   "fieldname": "tab_positionen",
+   "fieldtype": "Tab Break",
+   "label": "Positionen und Beträge"
+  },
+  {
+   "fieldname": "positionen",
+   "fieldtype": "Table",
+   "label": "Positionen (optional)",
+   "options": "PH Beleg Position"
+  },
+  {
+   "fieldname": "sb_betraege",
+   "fieldtype": "Section Break",
+   "label": "Beträge"
+  },
+  {
+   "fieldname": "netto_cent",
+   "fieldtype": "Int",
+   "label": "Netto (Cent)",
+   "default": "0",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ust_cent",
+   "fieldtype": "Int",
+   "label": "USt (Cent)",
+   "default": "0"
+  },
+  {
+   "fieldname": "brutto_cent",
+   "fieldtype": "Int",
+   "label": "Brutto (Cent)",
+   "default": "0",
+   "in_list_view": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "ust_aufteilung",
+   "fieldtype": "Table",
+   "label": "USt-Aufteilung",
+   "options": "PH Beleg Steuer"
+  },
+  {
+   "fieldname": "cb_betraege",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ust_fall",
+   "fieldtype": "Select",
+   "label": "USt-Fall",
+   "options": "Vorsteuer AT\nReverse Charge EU\nInnergemeinschaftlicher Erwerb\nEinfuhr Drittland\nKeine Vorsteuer",
+   "default": "Vorsteuer AT",
+   "in_standard_filter": 1,
+   "description": "EU-Lieferant mit UID: Reverse Charge / igE – Steuer selbst berechnen (KZ 057/065/066)."
+  },
+  {
+   "fieldname": "land_lieferant",
+   "fieldtype": "Data",
+   "label": "Land Lieferant (ISO-2)",
+   "default": "AT"
+  },
+  {
+   "fieldname": "uid_lieferant",
+   "fieldtype": "Data",
+   "label": "UID Lieferant"
+  },
+  {
+   "fieldname": "vorsteuer_cent",
+   "fieldtype": "Int",
+   "label": "Abziehbare Vorsteuer (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "rc_steuer_cent",
+   "fieldtype": "Int",
+   "label": "RC/igE-Steuer selbst berechnet (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "konto_aufwand",
+   "fieldtype": "Data",
+   "label": "Aufwands-/Wareneinsatzkonto",
+   "default": "5000",
+   "description": "Kontenrahmen Kanzlei; Standard aus PH Faktura Einstellungen."
+  },
+  {
+   "fieldname": "tab_zahlung",
+   "fieldtype": "Tab Break",
+   "label": "Zahlung"
+  },
+  {
+   "fieldname": "skonto_promille",
+   "fieldtype": "Int",
+   "label": "Skonto (‰)",
+   "default": "0"
+  },
+  {
+   "fieldname": "skonto_bis",
+   "fieldtype": "Date",
+   "label": "Skonto bis"
+  },
+  {
+   "fieldname": "skonto_cent",
+   "fieldtype": "Int",
+   "label": "Skontobetrag (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "zahlbetrag_cent",
+   "fieldtype": "Int",
+   "label": "Zahlbetrag (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_zahlung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "iban_lieferant",
+   "fieldtype": "Data",
+   "label": "IBAN Lieferant"
+  },
+  {
+   "fieldname": "bic_lieferant",
+   "fieldtype": "Data",
+   "label": "BIC Lieferant"
+  },
+  {
+   "fieldname": "zahlungsreferenz",
+   "fieldtype": "Data",
+   "label": "Zahlungsreferenz / Verwendungszweck"
+  },
+  {
+   "fieldname": "zahllauf",
+   "fieldtype": "Check",
+   "label": "Für Zahllauf vorgemerkt",
+   "default": "0",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_bezahlt",
+   "fieldtype": "Section Break",
+   "label": "Bezahlt"
+  },
+  {
+   "fieldname": "bezahlt_am",
+   "fieldtype": "Date",
+   "label": "Bezahlt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bezahlt_cent",
+   "fieldtype": "Int",
+   "label": "Bezahlt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "zahlung",
+   "fieldtype": "Link",
+   "label": "Zahlung (PH Zahlung, Ausgang)",
+   "options": "PH Zahlung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_bezahlt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bankumsatz",
+   "fieldtype": "Link",
+   "label": "Bankumsatz",
+   "options": "PH Bankumsatz",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_freigabe",
+   "fieldtype": "Tab Break",
+   "label": "Prüfung und Freigabe"
+  },
+  {
+   "fieldname": "geprueft_von",
+   "fieldtype": "Link",
+   "label": "Sachlich geprüft von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geprueft_am",
+   "fieldtype": "Datetime",
+   "label": "Geprüft am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pruefvermerk",
+   "fieldtype": "Small Text",
+   "label": "Prüfvermerk"
+  },
+  {
+   "fieldname": "cb_freigabe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "freigegeben_von",
+   "fieldtype": "Link",
+   "label": "Freigegeben von (Leitung)",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "freigegeben_am",
+   "fieldtype": "Datetime",
+   "label": "Freigegeben am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ablehnungsgrund",
+   "fieldtype": "Small Text",
+   "label": "Ablehnungsgrund",
+   "depends_on": "eval:doc.status=='Abgelehnt'"
+  },
+  {
+   "fieldname": "sb_export",
+   "fieldtype": "Section Break",
+   "label": "Export"
+  },
+  {
+   "fieldname": "export_status",
+   "fieldtype": "Select",
+   "label": "Export",
+   "options": "offen\nexportiert\nkorrigiert",
+   "default": "offen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "export_lauf",
+   "fieldtype": "Link",
+   "label": "Export-Lauf",
+   "options": "PH Export Lauf",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  },
+  {
+   "fieldname": "tab_system",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nkassa\nshop\nimport",
+   "default": "backoffice",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "label": "Workflow-Zustand",
+   "options": "Workflow State",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "allow_on_submit": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Eingangsrechnung",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Erfasst",
+   "color": "Blue"
+  },
+  {
+   "title": "Sachlich geprueft",
+   "color": "Cyan"
+  },
+  {
+   "title": "Freigegeben",
+   "color": "Orange"
+  },
+  {
+   "title": "Bezahlt",
+   "color": "Green"
+  },
+  {
+   "title": "Abgelehnt",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "lieferant_name,rechnungsnummer_lieferant,status",
+ "track_seen": 1
+}

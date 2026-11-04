@@ -1,0 +1,219 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Mahnwesen: Stufen, Fristen, Gebühren, Zinssätze und Texte; Mahnlauf als Scheduler oder Button.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "aktiv",
+  "automatisch",
+  "entwurf_statt_senden",
+  "karenz_tage",
+  "mindestbetrag_cent",
+  "cb_1",
+  "stufe1_tage",
+  "stufe2_tage",
+  "stufe3_tage",
+  "abstand_tage",
+  "frist_tage",
+  "sb_kosten",
+  "gebuehr1_cent",
+  "gebuehr2_cent",
+  "gebuehr3_cent",
+  "cb_kosten",
+  "zinsen_ab_stufe",
+  "zinssatz_verbraucher_promille",
+  "zinssatz_unternehmer_promille",
+  "sb_texte",
+  "text1",
+  "text2",
+  "text3"
+ ],
+ "fields": [
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Mahnwesen aktiv",
+   "default": "1"
+  },
+  {
+   "fieldname": "automatisch",
+   "fieldtype": "Check",
+   "label": "Mahnlauf automatisch (täglich 06:30)",
+   "default": "0",
+   "description": "Aus: der Mahnlauf wird nur per Button ausgelöst und legt Entwürfe an."
+  },
+  {
+   "fieldname": "entwurf_statt_senden",
+   "fieldtype": "Check",
+   "label": "Mahnungen als Entwurf anlegen (nicht automatisch senden)",
+   "default": "1"
+  },
+  {
+   "fieldname": "karenz_tage",
+   "fieldtype": "Int",
+   "label": "Karenztage nach Fälligkeit",
+   "default": "3"
+  },
+  {
+   "fieldname": "mindestbetrag_cent",
+   "fieldtype": "Int",
+   "label": "Mindestbetrag offen (Cent)",
+   "default": "500"
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stufe1_tage",
+   "fieldtype": "Int",
+   "label": "Stufe 1 ab Tagen überfällig",
+   "default": "7"
+  },
+  {
+   "fieldname": "stufe2_tage",
+   "fieldtype": "Int",
+   "label": "Stufe 2 ab Tagen überfällig",
+   "default": "14"
+  },
+  {
+   "fieldname": "stufe3_tage",
+   "fieldtype": "Int",
+   "label": "Stufe 3 ab Tagen überfällig",
+   "default": "21"
+  },
+  {
+   "fieldname": "abstand_tage",
+   "fieldtype": "Int",
+   "label": "Mindestabstand zwischen Mahnungen (Tage)",
+   "default": "7"
+  },
+  {
+   "fieldname": "frist_tage",
+   "fieldtype": "Int",
+   "label": "Zahlungsfrist in der Mahnung (Tage)",
+   "default": "7"
+  },
+  {
+   "fieldname": "sb_kosten",
+   "fieldtype": "Section Break",
+   "label": "Gebühren und Zinsen"
+  },
+  {
+   "fieldname": "gebuehr1_cent",
+   "fieldtype": "Int",
+   "label": "Mahngebühr Stufe 1 (Cent)",
+   "default": "0"
+  },
+  {
+   "fieldname": "gebuehr2_cent",
+   "fieldtype": "Int",
+   "label": "Mahngebühr Stufe 2 (Cent)",
+   "default": "500"
+  },
+  {
+   "fieldname": "gebuehr3_cent",
+   "fieldtype": "Int",
+   "label": "Mahngebühr Stufe 3 (Cent)",
+   "default": "1000"
+  },
+  {
+   "fieldname": "cb_kosten",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zinsen_ab_stufe",
+   "fieldtype": "Int",
+   "label": "Verzugszinsen ab Stufe",
+   "default": "2"
+  },
+  {
+   "fieldname": "zinssatz_verbraucher_promille",
+   "fieldtype": "Int",
+   "label": "Zinssatz Verbraucher p. a. (‰)",
+   "default": "40",
+   "description": "§ 1000 ABGB: 4 % p. a."
+  },
+  {
+   "fieldname": "zinssatz_unternehmer_promille",
+   "fieldtype": "Int",
+   "label": "Zinssatz Unternehmer p. a. (‰)",
+   "default": "122",
+   "description": "§ 456 UGB: 9,2 Prozentpunkte über Basiszinssatz – Wert pflegen."
+  },
+  {
+   "fieldname": "sb_texte",
+   "fieldtype": "Section Break",
+   "label": "Texte"
+  },
+  {
+   "fieldname": "text1",
+   "fieldtype": "Text Editor",
+   "label": "Stufe 1 – Zahlungserinnerung",
+   "default": "<p>sicher ist es Ihrer Aufmerksamkeit entgangen, dass die unten genannte Rechnung noch offen ist. Wir bitten um Überweisung bis zum angegebenen Datum. Sollte sich Ihre Zahlung mit diesem Schreiben überschnitten haben, betrachten Sie es bitte als gegenstandslos.</p>"
+  },
+  {
+   "fieldname": "text2",
+   "fieldtype": "Text Editor",
+   "label": "Stufe 2 – Mahnung",
+   "default": "<p>trotz unserer Zahlungserinnerung ist die unten genannte Rechnung weiterhin offen. Wir bitten um Zahlung des Gesamtbetrags einschließlich Mahnspesen bis zum angegebenen Datum.</p>"
+  },
+  {
+   "fieldname": "text3",
+   "fieldtype": "Text Editor",
+   "label": "Stufe 3 – Letzte Mahnung",
+   "default": "<p>leider ist die unten genannte Rechnung trotz zweimaliger Erinnerung offen. Wir fordern Sie letztmalig auf, den Gesamtbetrag bis zum angegebenen Datum zu begleichen. Danach übergeben wir die Forderung ohne weitere Ankündigung an ein Inkassobüro bzw. unsere Rechtsvertretung.</p>"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Mahnwesen Einstellungen",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "issingle": 1
+}

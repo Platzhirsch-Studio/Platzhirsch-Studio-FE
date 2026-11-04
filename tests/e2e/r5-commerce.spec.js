@@ -48,10 +48,12 @@ test.describe("Vorschau /de/preview/commerce", () => {
     expect(res.status()).toBe(200);
     const text = await res.text();
     expect(robotsDirectives({ text, headers: res.headers() })).toContain("noindex");
-    expect(text).toContain("Entwurf, Freigabe Insolvenzrechtler/Steuerberater offen");
+    // 03.11.2026 (Nr. 46): Gutscheinverkauf freigegeben, Bedingungen ohne Prüfmarker, Aussteller eingetragen.
+    expect(text).toContain("Gutscheinverkauf vom Inhaber freigegeben (Entscheidung Nr. 46, 03.11.2026)");
     expect(text).toContain("Gutschein anfragen");
     expect(text).toContain("Gutscheinbedingungen");
-    expect(text).toContain("[anwaltlich prüfen");
+    expect(text).toContain("MW Immobilienverwaltungs GmbH, FN 443753 d");
+    expect(text).not.toContain("[anwaltlich prüfen");
     expect(text).toContain("Ausstellungsstücke aus unserem Showroom");
     expect(text).not.toMatch(/abgesichert|statt\s+\d|bis zu \d+\s*%/i);
     expect(text).not.toMatch(/Testsofa|Testmarke/);

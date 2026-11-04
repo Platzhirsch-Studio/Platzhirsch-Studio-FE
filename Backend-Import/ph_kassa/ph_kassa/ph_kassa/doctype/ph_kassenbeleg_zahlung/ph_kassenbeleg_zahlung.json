@@ -1,0 +1,30 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 09:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["zahlart", "betrag_cent", "gegeben_cent", "retour_cent", "barumsatz", "zahlung", "gutschein", "terminal_payment_intent"],
+ "fields": [
+  {"fieldname": "zahlart", "fieldtype": "Select", "label": "Zahlart", "options": "Bar\nKarte Stripe Terminal\nKarte extern\nGutschein\nUeberweisung", "reqd": 1, "in_list_view": 1, "columns": 2},
+  {"fieldname": "betrag_cent", "fieldtype": "Int", "label": "Betrag (Cent)", "reqd": 1, "in_list_view": 1, "columns": 2},
+  {"fieldname": "gegeben_cent", "fieldtype": "Int", "label": "Gegeben (Cent)", "in_list_view": 1, "columns": 2},
+  {"fieldname": "retour_cent", "fieldtype": "Int", "label": "Rückgeld (Cent)", "in_list_view": 1, "columns": 2},
+  {"fieldname": "barumsatz", "fieldtype": "Check", "label": "Barumsatz (RKSV)", "read_only": 1, "default": "1", "in_list_view": 1, "columns": 1, "description": "Bar, Karte, Gutschein = 1; Überweisung = 0 (§ 131b Abs 1 Z 3 BAO)."},
+  {"fieldname": "zahlung", "fieldtype": "Link", "label": "PH Zahlung", "options": "PH Zahlung", "read_only": 1},
+  {"fieldname": "gutschein", "fieldtype": "Link", "label": "Gutschein", "options": "PH Gutschein"},
+  {"fieldname": "terminal_payment_intent", "fieldtype": "Data", "label": "Terminal PaymentIntent (pi_…)"}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Kassa",
+ "name": "PH Kassenbeleg Zahlung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

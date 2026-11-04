@@ -1,0 +1,145 @@
+[
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Abos je Woche",
+  "chart_name": "PH Abos je Woche",
+  "document_type": "PH Newsletter Abo",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#30373e",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "chart_type": "Count",
+  "based_on": "angemeldet_am",
+  "timespan": "Last Quarter",
+  "time_interval": "Weekly",
+  "timeseries": 1,
+  "type": "Bar",
+  "filters_json": "[[\"PH Newsletter Abo\", \"status\", \"in\", [\"Angemeldet unbestaetigt\", \"Aktiv\"], false]]"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Abos nach Quelle",
+  "chart_name": "PH Abos nach Quelle",
+  "document_type": "PH Newsletter Abo",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#8a7a66",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "chart_type": "Group By",
+  "group_by_type": "Count",
+  "group_by_based_on": "quelle",
+  "number_of_groups": 8,
+  "timespan": "Last Year",
+  "timeseries": 0,
+  "type": "Donut",
+  "filters_json": "[[\"PH Newsletter Abo\", \"status\", \"=\", \"Aktiv\", false]]"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Einwilligungen nach Zweck",
+  "chart_name": "PH Einwilligungen nach Zweck",
+  "document_type": "PH Einwilligung",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#15803d",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "chart_type": "Group By",
+  "group_by_type": "Count",
+  "group_by_based_on": "zweck",
+  "number_of_groups": 8,
+  "timespan": "Last Year",
+  "timeseries": 0,
+  "type": "Bar",
+  "filters_json": "[[\"PH Einwilligung\", \"status\", \"=\", \"Bestaetigt\", false]]"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Beiträge je Kanal",
+  "chart_name": "PH Beiträge je Kanal",
+  "document_type": "PH Social Beitrag",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#1d4ed8",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "chart_type": "Group By",
+  "group_by_type": "Count",
+  "group_by_based_on": "kanal",
+  "number_of_groups": 5,
+  "timespan": "Last Quarter",
+  "timeseries": 0,
+  "type": "Donut",
+  "filters_json": "[[\"PH Social Beitrag\", \"status\", \"!=\", \"Verworfen\", false]]"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Abmeldungen je Monat",
+  "chart_name": "PH Abmeldungen je Monat",
+  "document_type": "PH Newsletter Abo",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#b91c1c",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "chart_type": "Count",
+  "based_on": "abgemeldet_am",
+  "timespan": "Last Year",
+  "time_interval": "Monthly",
+  "timeseries": 1,
+  "type": "Line",
+  "filters_json": "[[\"PH Newsletter Abo\", \"status\", \"in\", [\"Abgemeldet\", \"Bounce\", \"Beschwerde\"], false]]"
+ }
+]

@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Kindtabelle von PH Anzahlung: zweite bezahlte Session (QA P2-1), zu erstatten.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "session",
+  "payment_intent",
+  "betrag_cent",
+  "zeit",
+  "erstattet_cent",
+  "erstattet_am",
+  "zahlung"
+ ],
+ "fields": [
+  {
+   "fieldname": "session",
+   "fieldtype": "Data",
+   "label": "Session",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "payment_intent",
+   "fieldtype": "Data",
+   "label": "Payment Intent",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "zeit",
+   "fieldtype": "Datetime",
+   "label": "Eingang",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "erstattet_cent",
+   "fieldtype": "Int",
+   "label": "Erstattet (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "erstattet_am",
+   "fieldtype": "Datetime",
+   "label": "Erstattet am",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "zahlung",
+   "fieldtype": "Link",
+   "label": "Zahlung",
+   "options": "PH Zahlung"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Anzahlung Doppelt",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

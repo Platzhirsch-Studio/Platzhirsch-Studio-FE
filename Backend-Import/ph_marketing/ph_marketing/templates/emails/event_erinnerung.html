@@ -1,0 +1,12 @@
+{% extends "templates/emails/ph_mail_basis.html" %}
+{% set P = "margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e" %}
+{% block preheader %}{{ event_titel }} am {{ event_datum }}.{% endblock %}
+{% block inhalt %}
+<p style="{{ P }}">{{ anrede or "Guten Tag" }},</p>
+<p style="{{ P }}">eine kurze Erinnerung: „{{ event_titel }}“ findet am {{ event_datum }}{% if event_uhrzeit %} ab {{ event_uhrzeit }}{% endif %} statt. Wir haben {{ personen }} {% if personen == 1 %}Platz{% else %}Plätze{% endif %} für Sie reserviert.</p>
+<p style="{{ P }}">Ort: {{ event_ort or "Showroom und Café, Landstraße 11, 6911 Lochau" }}. Parkplätze finden Sie direkt vor dem Haus.</p>
+{% if event_programm %}<div style="{{ P }}">{{ event_programm }}</div>{% endif %}
+<p style="{{ P }}">Sollte etwas dazwischenkommen, genügt eine kurze Antwort auf diese Mail.</p>
+<p style="{{ P }}">Bis bald in Lochau<br>Susanne Messmer</p>
+{% endblock %}
+{% block fusszeile %}Diese Nachricht gehört zu Ihrer Anmeldung bei Platzhirsch Home Living.{% endblock %}

@@ -1,0 +1,53 @@
+[
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Anfragen",
+  "kanban_board_name": "PH Anfragen",
+  "reference_doctype": "PH Anfrage",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Anfrage\",\"status\",\"not in\",[\"Spam\",\"Verloren\"]]]",
+  "fields": "[\"titel\",\"art\",\"eingang\",\"zugewiesen_an\",\"prioritaet\"]",
+  "columns": [
+   {"column_name": "Neu", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Qualifiziert", "indicator": "Cyan", "status": "Active", "order": "[]"},
+   {"column_name": "Termin vereinbart", "indicator": "Purple", "status": "Active", "order": "[]"},
+   {"column_name": "Angebot", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Gewonnen", "indicator": "Green", "status": "Active", "order": "[]"}
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Termine",
+  "kanban_board_name": "PH Termine",
+  "reference_doctype": "PH Termin",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Termin\",\"status\",\"not in\",[\"Storniert\",\"Abgelehnt\"]],[\"PH Termin\",\"start\",\">=\",\"Today\"]]",
+  "fields": "[\"titel\",\"referenz\",\"modus\",\"start\",\"berater\",\"email_verifiziert\"]",
+  "columns": [
+   {"column_name": "Unbestaetigt", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "Bestaetigt", "indicator": "Green", "status": "Active", "order": "[]"},
+   {"column_name": "Erledigt", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Nicht erschienen", "indicator": "Purple", "status": "Active", "order": "[]"}
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Aufgaben",
+  "kanban_board_name": "PH Aufgaben",
+  "reference_doctype": "PH Aufgabe",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Aufgabe\",\"status\",\"!=\",\"Verworfen\"]]",
+  "fields": "[\"titel\",\"faellig\",\"zugewiesen_an\",\"prioritaet\",\"referenz_name\"]",
+  "columns": [
+   {"column_name": "Offen", "indicator": "Orange", "status": "Active", "order": "[]"},
+   {"column_name": "In Arbeit", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Erledigt", "indicator": "Green", "status": "Active", "order": "[]"}
+  ]
+ }
+]

@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Zeile der UVA-Auswertung (Kennzahl, OSS-Land/Satz, Anzahlungen).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kennzahl",
+  "bezeichnung",
+  "land",
+  "satz_promille",
+  "bemessung_cent",
+  "steuer_cent",
+  "anzahl_belege"
+ ],
+ "fields": [
+  {
+   "fieldname": "kennzahl",
+   "fieldtype": "Data",
+   "label": "Kennzahl",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1,
+   "columns": 3,
+   "read_only": 1
+  },
+  {
+   "fieldname": "land",
+   "fieldtype": "Data",
+   "label": "Land",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "satz_promille",
+   "fieldtype": "Int",
+   "label": "Satz (‰)",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "bemessung_cent",
+   "fieldtype": "Int",
+   "label": "Bemessung (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "steuer_cent",
+   "fieldtype": "Int",
+   "label": "Steuer (Cent)",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "anzahl_belege",
+   "fieldtype": "Int",
+   "label": "Belege",
+   "read_only": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH UVA Zeile",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

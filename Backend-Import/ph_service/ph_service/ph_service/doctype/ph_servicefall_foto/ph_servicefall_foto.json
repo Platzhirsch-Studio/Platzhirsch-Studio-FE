@@ -1,0 +1,28 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 08:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["bild", "hinweis", "quelle", "datum", "aufgenommen_von", "an_lieferant"],
+ "fields": [
+  {"fieldname": "bild", "fieldtype": "Attach Image", "label": "Foto / Datei", "reqd": 1, "in_list_view": 1, "columns": 3},
+  {"fieldname": "hinweis", "fieldtype": "Data", "label": "Hinweis", "in_list_view": 1, "columns": 3},
+  {"fieldname": "quelle", "fieldtype": "Select", "label": "Quelle", "options": "Kunde\nTechniker\nIntern\nLieferant", "default": "Intern", "in_list_view": 1, "columns": 2},
+  {"fieldname": "datum", "fieldtype": "Date", "label": "Datum", "in_list_view": 1, "columns": 2},
+  {"fieldname": "aufgenommen_von", "fieldtype": "Data", "label": "Aufgenommen von"},
+  {"fieldname": "an_lieferant", "fieldtype": "Check", "label": "An Lieferant senden", "default": "1", "in_list_view": 1, "columns": 2}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Service",
+ "name": "PH Servicefall Foto",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

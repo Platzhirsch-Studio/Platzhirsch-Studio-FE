@@ -1,0 +1,69 @@
+/* ph_logistik – Desk-Pages Packtisch und Tour heute: große Touch-Schaltflächen, Statusfarben, Dashboard-Kacheln.
+   Farben laut CONVENTIONS 12: Tinte #30373e, Sand #8a7a66, Grün #15803d, Orange #b45309, Rot #b91c1c, Blau #1d4ed8. */
+.ph-packtisch, .ph-tour-mobil { --ph-tinte: #30373e; --ph-sand: #8a7a66; --ph-gruen: #15803d; --ph-orange: #b45309; --ph-rot: #b91c1c; --ph-blau: #1d4ed8; --ph-cyan: #0e7490; --ph-lila: #6d28d9; --ph-grau: #6b7280; font-size: 15px; }
+.ph-st-blau { --ph-farbe: var(--ph-blau); } .ph-st-orange { --ph-farbe: var(--ph-orange); } .ph-st-gruen { --ph-farbe: var(--ph-gruen); }
+.ph-st-rot { --ph-farbe: var(--ph-rot); } .ph-st-cyan { --ph-farbe: var(--ph-cyan); } .ph-st-lila { --ph-farbe: var(--ph-lila); } .ph-st-grau { --ph-farbe: var(--ph-grau); }
+
+.ph-dash { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 8px 0 20px; }
+.ph-kachel { border-radius: 12px; padding: 14px 16px; background: var(--card-bg, #fff); border: 1px solid var(--border-color, #e5e7eb); border-left: 6px solid var(--ph-farbe, var(--ph-tinte)); }
+.ph-kachel .ph-zahl { font-size: 32px; font-weight: 600; line-height: 1.1; color: var(--ph-farbe, var(--ph-tinte)); }
+.ph-kachel .ph-label { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+
+.ph-h { font-size: 15px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin: 22px 0 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.ph-badge { display: inline-block; min-width: 28px; text-align: center; border-radius: 999px; padding: 2px 10px; background: var(--ph-farbe, var(--ph-tinte)); color: #fff; font-size: 13px; }
+.ph-pill { display: inline-block; border-radius: 999px; padding: 2px 10px; font-size: 12px; background: var(--ph-farbe, var(--ph-grau)); color: #fff; }
+.ph-pill-art { background: var(--ph-sand); }
+.ph-hinweis { background: var(--bg-light-gray, #f6f4ef); border-left: 4px solid var(--ph-farbe, var(--ph-sand)); padding: 8px 12px; border-radius: 6px; margin: 8px 0; }
+.ph-klein { font-size: 12px; font-weight: 400; text-transform: none; letter-spacing: 0; }
+.ph-leer { color: var(--text-muted); padding: 16px; }
+.ph-rot { color: var(--ph-rot); font-weight: 600; }
+.ph-code { font-size: 22px; letter-spacing: .2em; }
+
+.ph-liste { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+.ph-karte { text-align: left; display: block; width: 100%; border: 1px solid var(--border-color, #e5e7eb); border-left: 6px solid var(--ph-farbe, var(--ph-grau)); border-radius: 10px; padding: 12px 14px; background: var(--card-bg, #fff); color: inherit; cursor: pointer; min-height: 64px; text-decoration: none; }
+.ph-karte:hover { box-shadow: 0 2px 10px rgba(0,0,0,.08); text-decoration: none; }
+.ph-karte-kopf { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 4px; }
+.ph-karte-zeile { font-size: 13px; }
+
+.ph-zurueck { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; flex-wrap: wrap; }
+.ph-kopf { display: flex; justify-content: space-between; gap: 12px; flex: 1; flex-wrap: wrap; align-items: center; }
+.ph-btn { min-height: 48px; padding: 10px 18px; font-size: 15px; border-radius: 10px; }
+.ph-btn-gross { min-height: 64px; font-size: 18px; padding: 14px 26px; }
+.ph-aktionen { display: flex; gap: 10px; flex-wrap: wrap; margin: 18px 0; align-items: center; }
+
+.ph-scan { display: flex; gap: 10px; margin: 8px 0 14px; }
+.ph-scan-input { flex: 1; font-size: 20px; padding: 12px 16px; border: 2px solid var(--ph-blau); border-radius: 10px; }
+.ph-pos-liste { display: flex; flex-direction: column; gap: 8px; }
+.ph-pos { display: flex; gap: 14px; align-items: center; border: 1px solid var(--border-color, #e5e7eb); border-radius: 10px; padding: 10px 12px; background: var(--card-bg, #fff); }
+.ph-pos-ok { background: #ecfdf5; border-color: #a7f3d0; }
+.ph-check { width: 64px; height: 64px; border-radius: 12px; border: 2px solid var(--ph-blau); background: #fff; color: var(--ph-blau); font-size: 18px; font-weight: 600; flex: 0 0 64px; }
+.ph-check-ok { background: var(--ph-gruen); border-color: var(--ph-gruen); color: #fff; font-size: 28px; }
+.ph-check:disabled { opacity: .6; }
+.ph-pos-text { flex: 1; line-height: 1.4; }
+.ph-pos-menge { font-size: 20px; font-weight: 600; text-align: right; min-width: 56px; }
+.ph-select-profil { max-width: 320px; font-size: 13px; }
+.ph-pakete input.form-control, .ph-pakete select.form-control { min-width: 64px; }
+.ph-versich { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin: 6px 0 10px; }
+.ph-versich input[type=number] { width: 120px; display: inline-block; }
+
+/* Tour mobil */
+.ph-tour-mobil .ph-datum { display: flex; gap: 12px; align-items: center; justify-content: center; margin: 6px 0 10px; font-size: 18px; }
+.ph-stopps { display: flex; flex-direction: column; gap: 12px; }
+.ph-stopp { border: 1px solid var(--border-color, #e5e7eb); border-left: 8px solid var(--ph-farbe, var(--ph-grau)); border-radius: 12px; padding: 12px 14px; background: var(--card-bg, #fff); }
+.ph-stopp-kopf { display: flex; gap: 12px; align-items: flex-start; }
+.ph-stopp-nr { width: 40px; height: 40px; border-radius: 50%; background: var(--ph-farbe, var(--ph-grau)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; flex: 0 0 40px; }
+.ph-stopp-titel { flex: 1; line-height: 1.4; }
+.ph-stopp-aktionen { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.ph-pos-kurz { margin: 8px 0 0 52px; padding-left: 16px; font-size: 13px; color: var(--text-muted); }
+.ph-fotos { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.ph-fotos a { display: flex; flex-direction: column; align-items: center; font-size: 11px; }
+.ph-fotos img { width: 84px; height: 84px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border-color, #e5e7eb); }
+.ph-unterschrift { margin-top: 10px; display: flex; align-items: center; gap: 10px; }
+.ph-unterschrift img { height: 56px; background: #fff; border: 1px solid var(--border-color, #e5e7eb); border-radius: 6px; }
+
+@media (max-width: 640px) {
+	.ph-packtisch, .ph-tour-mobil { font-size: 16px; }
+	.ph-btn { width: 100%; }
+	.ph-aktionen .ph-btn, .ph-stopp-aktionen .ph-btn { flex: 1 1 100%; }
+	.ph-pos-kurz { margin-left: 0; }
+}

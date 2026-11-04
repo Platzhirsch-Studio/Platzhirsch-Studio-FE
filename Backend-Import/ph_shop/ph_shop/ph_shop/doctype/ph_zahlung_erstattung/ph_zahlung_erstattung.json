@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Kindtabelle von PH Zahlung: jede (Teil-)Erstattung mit Stripe-Refund und Gegenbuchung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "zeitpunkt",
+  "betrag_cent",
+  "grund",
+  "stripe_refund",
+  "gegenbuchung",
+  "von"
+ ],
+ "fields": [
+  {
+   "fieldname": "zeitpunkt",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "non_negative": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Data",
+   "label": "Grund",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "stripe_refund",
+   "fieldtype": "Data",
+   "label": "Stripe Refund",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "gegenbuchung",
+   "fieldtype": "Link",
+   "label": "Gegenbuchung (PH Zahlung)",
+   "options": "PH Zahlung",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "von",
+   "fieldtype": "Link",
+   "label": "Ausgelöst von",
+   "options": "User"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Zahlung Erstattung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

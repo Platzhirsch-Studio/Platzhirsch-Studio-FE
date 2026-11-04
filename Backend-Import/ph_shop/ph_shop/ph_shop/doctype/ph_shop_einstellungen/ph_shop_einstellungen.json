@@ -1,0 +1,312 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Fachliche Schalter des Shops (Modus, Fristen, Versandpauschalen, Gutschein-Vorgaben, Rechtstexte für die Bestellbestätigung). Keine Geheimnisse.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tb_shop",
+  "shop_modus",
+  "gutschein_modus",
+  "testmodus_mail_an",
+  "cb_shop",
+  "abholung_frist_tage",
+  "reservierung_frist_tage",
+  "session_frist_stunden",
+  "sb_versand",
+  "versand_pauschale_at_cent",
+  "versand_pauschale_de_cent",
+  "versand_frei_ab_cent",
+  "cb_versand",
+  "oss_aktiv",
+  "ermaessigt_kategorien",
+  "tb_gutschein",
+  "gutschein_art_standard",
+  "gutschein_gueltig_jahre",
+  "gutschein_bedingungen_stand",
+  "cb_gutschein",
+  "gutschein_min_cent",
+  "gutschein_max_cent",
+  "gutschein_bedingungen_url",
+  "tb_recht",
+  "agb_stand",
+  "widerrufsbelehrung_stand",
+  "widerruf_url",
+  "agb_text",
+  "widerrufsbelehrung_text",
+  "gewaehrleistung_text",
+  "versandbedingungen_text",
+  "rechtstexte_status",
+  "widerrufsformular_text",
+  "versandbedingungen_stand",
+  "datenschutz_text",
+  "datenschutz_stand"
+ ],
+ "fields": [
+  {
+   "fieldname": "tb_shop",
+   "fieldtype": "Tab Break",
+   "label": "Shop"
+  },
+  {
+   "fieldname": "shop_modus",
+   "fieldtype": "Select",
+   "label": "Shop-Modus",
+   "options": "aus\ntest\nlive",
+   "default": "test",
+   "description": "Spiegel von SHOP_MODE der Website; im Modus test gehen Kundenmails nur an „Testmails an“."
+  },
+  {
+   "fieldname": "gutschein_modus",
+   "fieldtype": "Select",
+   "label": "Gutschein-Verkauf",
+   "options": "off\nanfrage\nstripe",
+   "default": "anfrage"
+  },
+  {
+   "fieldname": "testmodus_mail_an",
+   "fieldtype": "Data",
+   "label": "Testmails an",
+   "options": "Email",
+   "default": "info@platzhirsch.studio"
+  },
+  {
+   "fieldname": "cb_shop",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abholung_frist_tage",
+   "fieldtype": "Int",
+   "label": "Abholfrist nach „abholbereit“ (Tage)",
+   "default": "7"
+  },
+  {
+   "fieldname": "reservierung_frist_tage",
+   "fieldtype": "Int",
+   "label": "Reservierungsfrist (Tage)",
+   "default": "7"
+  },
+  {
+   "fieldname": "session_frist_stunden",
+   "fieldtype": "Int",
+   "label": "Offene Checkouts ablaufen lassen nach (Stunden)",
+   "default": "24"
+  },
+  {
+   "fieldname": "sb_versand",
+   "fieldtype": "Section Break",
+   "label": "Versand"
+  },
+  {
+   "fieldname": "versand_pauschale_at_cent",
+   "fieldtype": "Int",
+   "label": "Pauschale AT (Cent)",
+   "non_negative": 1,
+   "default": "990"
+  },
+  {
+   "fieldname": "versand_pauschale_de_cent",
+   "fieldtype": "Int",
+   "label": "Pauschale DE (Cent)",
+   "non_negative": 1,
+   "default": "1490"
+  },
+  {
+   "fieldname": "versand_frei_ab_cent",
+   "fieldtype": "Int",
+   "label": "Versandkostenfrei ab (Cent)",
+   "non_negative": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_versand",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "oss_aktiv",
+   "fieldtype": "Check",
+   "label": "OSS aktiv (DE-Sätze bei Versand nach DE)",
+   "default": "0",
+   "description": "Nur einschalten, wenn die OSS-Registrierung (FinanzOnline) vorliegt – src/lib/shop/ust.js OSS_AKTIV."
+  },
+  {
+   "fieldname": "ermaessigt_kategorien",
+   "fieldtype": "Data",
+   "label": "Kategorien mit ermäßigtem Satz",
+   "default": "bildband"
+  },
+  {
+   "fieldname": "tb_gutschein",
+   "fieldtype": "Tab Break",
+   "label": "Gutscheine"
+  },
+  {
+   "fieldname": "gutschein_art_standard",
+   "fieldtype": "Select",
+   "label": "Standard-Art",
+   "options": "Mehrzweck\nEinzweck",
+   "default": "Mehrzweck"
+  },
+  {
+   "fieldname": "gutschein_gueltig_jahre",
+   "fieldtype": "Int",
+   "label": "Gültigkeit (Jahre, 0 = unbefristet)",
+   "default": "0"
+  },
+  {
+   "fieldname": "gutschein_bedingungen_stand",
+   "fieldtype": "Date",
+   "label": "Gutscheinbedingungen Stand",
+   "default": "2026-11-03"
+  },
+  {
+   "fieldname": "cb_gutschein",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gutschein_min_cent",
+   "fieldtype": "Int",
+   "label": "Mindestwert (Cent)",
+   "non_negative": 1,
+   "default": "2500"
+  },
+  {
+   "fieldname": "gutschein_max_cent",
+   "fieldtype": "Int",
+   "label": "Höchstwert (Cent)",
+   "non_negative": 1,
+   "default": "500000"
+  },
+  {
+   "fieldname": "gutschein_bedingungen_url",
+   "fieldtype": "Data",
+   "label": "URL Gutscheinbedingungen",
+   "default": "https://platzhirsch.studio/de/gutscheinbedingungen"
+  },
+  {
+   "fieldname": "tb_recht",
+   "fieldtype": "Tab Break",
+   "label": "Rechtstexte (Bestellbestätigung)"
+  },
+  {
+   "fieldname": "agb_stand",
+   "fieldtype": "Date",
+   "label": "AGB Stand",
+   "default": "2026-11-03"
+  },
+  {
+   "fieldname": "widerrufsbelehrung_stand",
+   "fieldtype": "Date",
+   "label": "Widerrufsbelehrung Stand",
+   "default": "2026-11-03"
+  },
+  {
+   "fieldname": "widerruf_url",
+   "fieldtype": "Data",
+   "label": "URL Widerrufsformular",
+   "default": "https://platzhirsch.studio/de/shop/recht/widerruf-formular"
+  },
+  {
+   "fieldname": "agb_text",
+   "fieldtype": "Text Editor",
+   "label": "AGB (Klartext für Mail und Anhang)",
+   "description": "Freigegebener Text aus src/lib/shop/legalTexte.js hier einfügen (Pflege durch Leitung)."
+  },
+  {
+   "fieldname": "widerrufsbelehrung_text",
+   "fieldtype": "Text Editor",
+   "label": "Widerrufsbelehrung samt Muster-Formular"
+  },
+  {
+   "fieldname": "gewaehrleistung_text",
+   "fieldtype": "Small Text",
+   "label": "Gewährleistungs-Mitteilung (Anhang II)"
+  },
+  {
+   "fieldname": "versandbedingungen_text",
+   "fieldtype": "Text Editor",
+   "label": "Versand- und Lieferbedingungen"
+  },
+  {
+   "fieldname": "rechtstexte_status",
+   "fieldtype": "Select",
+   "label": "Rechtstexte Status",
+   "options": "kanzlei-offen\nentwurf\nfreigegeben",
+   "default": "kanzlei-offen",
+   "description": "Spiegel von LEGAL_SLOT_STATUS in src/lib/shop/legal.js. Nur bei 'freigegeben' werden AGB/Widerrufsbelehrung/Versandbedingungen an die Bestellbestätigung angehängt."
+  },
+  {
+   "fieldname": "widerrufsformular_text",
+   "fieldtype": "Text Editor",
+   "label": "Muster-Widerrufsformular (Anhang I Teil B FAGG)",
+   "description": "Website-Slot 'widerrufsformular' (src/lib/shop/legal.js)."
+  },
+  {
+   "fieldname": "versandbedingungen_stand",
+   "fieldtype": "Date",
+   "label": "Versandbedingungen Stand"
+  },
+  {
+   "fieldname": "datenschutz_text",
+   "fieldtype": "Text Editor",
+   "label": "Datenschutz-Ergänzung Shop (Stripe, Versanddienst)",
+   "description": "Website-Slot 'datenschutz' (src/lib/shop/legal.js)."
+  },
+  {
+   "fieldname": "datenschutz_stand",
+   "fieldtype": "Date",
+   "label": "Datenschutz-Ergänzung Stand"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Shop Einstellungen",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Shop Mitarbeiter",
+   "read": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "issingle": 1
+}

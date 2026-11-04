@@ -1,0 +1,219 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Liefer-/Montagefahrzeug für Touren.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kennzeichen",
+  "bezeichnung",
+  "art",
+  "aktiv",
+  "cb_kopf",
+  "ladevolumen_m3",
+  "zuladung_kg",
+  "laderaum_laenge_cm",
+  "laderaum_breite_cm",
+  "laderaum_hoehe_cm",
+  "sb_weiteres",
+  "lagerort",
+  "standard_fahrer",
+  "naechster_service",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "kennzeichen",
+   "fieldtype": "Data",
+   "label": "Kennzeichen",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Transporter\nLKW\nPKW\nAnhaenger",
+   "default": "Transporter",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "1",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ladevolumen_m3",
+   "fieldtype": "Float",
+   "label": "Ladevolumen (m³)",
+   "precision": "1"
+  },
+  {
+   "fieldname": "zuladung_kg",
+   "fieldtype": "Int",
+   "label": "Zuladung (kg)"
+  },
+  {
+   "fieldname": "laderaum_laenge_cm",
+   "fieldtype": "Int",
+   "label": "Laderaum Länge (cm)"
+  },
+  {
+   "fieldname": "laderaum_breite_cm",
+   "fieldtype": "Int",
+   "label": "Laderaum Breite (cm)"
+  },
+  {
+   "fieldname": "laderaum_hoehe_cm",
+   "fieldtype": "Int",
+   "label": "Laderaum Höhe (cm)"
+  },
+  {
+   "fieldname": "sb_weiteres",
+   "fieldtype": "Section Break",
+   "label": "Weiteres",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "lagerort",
+   "fieldtype": "Link",
+   "label": "Lagerort (Fahrzeug als Bestandsort)",
+   "options": "PH Lagerort",
+   "read_only": 1,
+   "description": "Wird beim Anlegen automatisch erzeugt (Art Fahrzeug)."
+  },
+  {
+   "fieldname": "standard_fahrer",
+   "fieldtype": "Link",
+   "label": "Standard-Fahrer",
+   "options": "User"
+  },
+  {
+   "fieldname": "naechster_service",
+   "fieldtype": "Date",
+   "label": "Nächster Service"
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Tour",
+   "link_fieldname": "fahrzeug",
+   "group": "Touren"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Fahrzeug",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "bezeichnung",
+ "title_field": "bezeichnung",
+ "track_seen": 0,
+ "autoname": "field:kennzeichen",
+ "naming_rule": "By fieldname"
+}

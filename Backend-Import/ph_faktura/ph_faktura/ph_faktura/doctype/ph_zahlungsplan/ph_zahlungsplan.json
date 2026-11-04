@@ -1,0 +1,101 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 08:00:00.000000",
+ "description": "Zahlungsplan einer Auftragsbestätigung: Anzahlung, Teilzahlung bei Lieferung, Rest nach Montage.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "art",
+  "prozent",
+  "betrag_cent",
+  "faellig_bei",
+  "faellig",
+  "rechnung",
+  "bezahlt_cent",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Anzahlung\nTeilzahlung\nSchlusszahlung",
+   "in_list_view": 1,
+   "columns": 2,
+   "reqd": 1
+  },
+  {
+   "fieldname": "prozent",
+   "fieldtype": "Int",
+   "label": "Prozent",
+   "in_list_view": 1,
+   "columns": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag brutto (Cent)",
+   "in_list_view": 1,
+   "columns": 2,
+   "default": "0"
+  },
+  {
+   "fieldname": "faellig_bei",
+   "fieldtype": "Select",
+   "label": "Fällig bei",
+   "options": "Auftrag\nLieferung\nMontage\nDatum",
+   "default": "Auftrag",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "faellig",
+   "fieldtype": "Date",
+   "label": "Fällig am",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "rechnung",
+   "fieldtype": "Link",
+   "label": "Rechnung",
+   "options": "PH Rechnung",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bezahlt_cent",
+   "fieldtype": "Int",
+   "label": "Bezahlt (Cent)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Offen\nIn Rechnung\nBezahlt\nVerrechnet",
+   "default": "Offen",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 08:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Zahlungsplan",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

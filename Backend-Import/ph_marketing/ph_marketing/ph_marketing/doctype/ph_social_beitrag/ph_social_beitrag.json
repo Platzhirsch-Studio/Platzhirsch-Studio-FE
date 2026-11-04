@@ -1,0 +1,456 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "kanal",
+  "format",
+  "status",
+  "cb_1",
+  "datum_geplant",
+  "uhrzeit_geplant",
+  "zustaendig",
+  "kampagne",
+  "board",
+  "sb_inhalt",
+  "overline",
+  "text",
+  "hashtags",
+  "cb_2",
+  "link",
+  "sprache",
+  "alt_text",
+  "sb_bild",
+  "bild",
+  "bild_layout",
+  "bildquelle_freigabe",
+  "bild_credit",
+  "bild_bearbeitung",
+  "cb_3",
+  "marke_name",
+  "bildfreigabe_doctype",
+  "bildfreigabe_referenz",
+  "bildfreigabe_status",
+  "bildfreigabe_geprueft_am",
+  "produkt_slug",
+  "sb_freigabe",
+  "freigegeben_von",
+  "freigegeben_am",
+  "cb_4",
+  "veroeffentlicht_am",
+  "veroeffentlicht_url",
+  "sb_kennzahlen",
+  "reichweite",
+  "likes",
+  "saves",
+  "cb_5",
+  "klicks",
+  "kommentare",
+  "kennzahlen_stand",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-SOC-.YYYY.-.####",
+   "default": "PH-SOC-.YYYY.-.####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "kanal",
+   "fieldtype": "Select",
+   "label": "Kanal",
+   "options": "Pinterest\nInstagram\nLinkedIn\nYouTube\nFacebook",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "format",
+   "fieldtype": "Select",
+   "label": "Format",
+   "options": "Pin\nBoard\nPost\nReel\nStory\nKarussell\nVideo",
+   "default": "Pin"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Idee\nEntwurf\nFreigegeben\nGeplant\nVeroeffentlicht\nVerworfen",
+   "default": "Idee",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "datum_geplant",
+   "fieldtype": "Date",
+   "label": "Plandatum",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "uhrzeit_geplant",
+   "fieldtype": "Time",
+   "label": "Uhrzeit"
+  },
+  {
+   "fieldname": "zustaendig",
+   "fieldtype": "Link",
+   "label": "Zuständig",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kampagne",
+   "fieldtype": "Link",
+   "label": "Kampagne",
+   "options": "PH Kampagne"
+  },
+  {
+   "fieldname": "board",
+   "fieldtype": "Data",
+   "label": "Board / Rubrik",
+   "description": "Pinterest-Boards: bodensee, chalet, pool-spa, kueche, outdoor, yacht, hotel, skizze (src/components/Preview/pinterest/data.js)"
+  },
+  {
+   "fieldname": "sb_inhalt",
+   "fieldtype": "Section Break",
+   "label": "Inhalt"
+  },
+  {
+   "fieldname": "overline",
+   "fieldtype": "Data",
+   "label": "Overline"
+  },
+  {
+   "fieldname": "text",
+   "fieldtype": "Text Editor",
+   "label": "Text / Beschreibung"
+  },
+  {
+   "fieldname": "hashtags",
+   "fieldtype": "Small Text",
+   "label": "Hashtags"
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "link",
+   "fieldtype": "Data",
+   "label": "Ziel-Link",
+   "options": "URL"
+  },
+  {
+   "fieldname": "sprache",
+   "fieldtype": "Select",
+   "label": "Sprache",
+   "options": "de\nen",
+   "default": "de"
+  },
+  {
+   "fieldname": "alt_text",
+   "fieldtype": "Data",
+   "label": "Alt-Text"
+  },
+  {
+   "fieldname": "sb_bild",
+   "fieldtype": "Section Break",
+   "label": "Bild und Bildrechte"
+  },
+  {
+   "fieldname": "bild",
+   "fieldtype": "Attach Image",
+   "label": "Bild"
+  },
+  {
+   "fieldname": "bild_layout",
+   "fieldtype": "Select",
+   "label": "Layout",
+   "options": "\nband\nvoll\nslot"
+  },
+  {
+   "fieldname": "bildquelle_freigabe",
+   "fieldtype": "Select",
+   "label": "Bildquelle",
+   "options": "offen\neigen\nHersteller freigegeben",
+   "default": "offen",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "description": "Claim-Guard: Freigabe des Beitrags nur mit „eigen“ oder „Hersteller freigegeben“ (schriftliche Freigabe in PH Marke)."
+  },
+  {
+   "fieldname": "bild_credit",
+   "fieldtype": "Data",
+   "label": "Bildnachweis"
+  },
+  {
+   "fieldname": "bild_bearbeitung",
+   "fieldtype": "Data",
+   "label": "Bearbeitung (Doku)"
+  },
+  {
+   "fieldname": "cb_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "marke_name",
+   "fieldtype": "Data",
+   "label": "Marke (Name)"
+  },
+  {
+   "fieldname": "bildfreigabe_doctype",
+   "fieldtype": "Link",
+   "label": "Freigabe-Doctype",
+   "options": "DocType",
+   "default": "PH Marke",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "bildfreigabe_referenz",
+   "fieldtype": "Dynamic Link",
+   "label": "Bildfreigabe (PH Marke in ph_sortiment)",
+   "options": "bildfreigabe_doctype",
+   "description": "Verweis auf die Marke mit bildfreigabe_status/bildfreigabe_beleg. Link erst nutzbar, wenn ph_sortiment installiert ist."
+  },
+  {
+   "fieldname": "bildfreigabe_status",
+   "fieldtype": "Data",
+   "label": "Bildfreigabe-Status (aus PH Marke)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bildfreigabe_geprueft_am",
+   "fieldtype": "Datetime",
+   "label": "Geprüft am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "produkt_slug",
+   "fieldtype": "Data",
+   "label": "Produkt (Website-Slug)"
+  },
+  {
+   "fieldname": "sb_freigabe",
+   "fieldtype": "Section Break",
+   "label": "Freigabe und Veröffentlichung"
+  },
+  {
+   "fieldname": "freigegeben_von",
+   "fieldtype": "Link",
+   "label": "Freigegeben von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "freigegeben_am",
+   "fieldtype": "Datetime",
+   "label": "Freigegeben am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "veroeffentlicht_am",
+   "fieldtype": "Datetime",
+   "label": "Veröffentlicht am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "veroeffentlicht_url",
+   "fieldtype": "Data",
+   "label": "URL des Beitrags",
+   "options": "URL"
+  },
+  {
+   "fieldname": "sb_kennzahlen",
+   "fieldtype": "Section Break",
+   "label": "Kennzahlen",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "reichweite",
+   "fieldtype": "Int",
+   "label": "Reichweite / Impressionen"
+  },
+  {
+   "fieldname": "likes",
+   "fieldtype": "Int",
+   "label": "Likes"
+  },
+  {
+   "fieldname": "saves",
+   "fieldtype": "Int",
+   "label": "Merken (Saves)"
+  },
+  {
+   "fieldname": "cb_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "klicks",
+   "fieldtype": "Int",
+   "label": "Klicks"
+  },
+  {
+   "fieldname": "kommentare",
+   "fieldtype": "Int",
+   "label": "Kommentare"
+  },
+  {
+   "fieldname": "kennzahlen_stand",
+   "fieldtype": "Date",
+   "label": "Stand"
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Social Beitrag",
+ "owner": "Administrator",
+ "sort_field": "datum_geplant",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Idee",
+   "color": "Gray"
+  },
+  {
+   "title": "Entwurf",
+   "color": "Blue"
+  },
+  {
+   "title": "Freigegeben",
+   "color": "Cyan"
+  },
+  {
+   "title": "Geplant",
+   "color": "Purple"
+  },
+  {
+   "title": "Veroeffentlicht",
+   "color": "Green"
+  },
+  {
+   "title": "Verworfen",
+   "color": "Red"
+  }
+ ],
+ "track_changes": 1,
+ "description": "Pinterest-/Instagram-Planung: Beitrag, Bild mit Bildrechte-Prüfung (Claim-Guard: nur eigene oder schriftlich freigegebene Herstellerbilder), Plandatum, Status. Freigabe prüft die Bildfreigabe in PH Marke (ph_sortiment), falls installiert.",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "titel,kanal,board,marke_name",
+ "track_views": 0
+}

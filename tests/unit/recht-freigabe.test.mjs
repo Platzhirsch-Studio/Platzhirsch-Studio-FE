@@ -34,7 +34,8 @@ test("Kanzlei-Freigabe: zentrale Liste, Impressum und Datenschutz freigegeben", 
     // Rat 9,5 B13 (bewusst): Barrierefreiheit hat eine eigene Seite.
     // Inhaber 02.11.2026: AGB je Geschäftsbereich haben eine eigene Seite /agb.
     // Inhaber 03.11.2026 (Nr. 39/40): AGB von der Kanzlei freigegeben; Widerrufsbelehrung außerhalb des Shops unter /widerruf.
-    ["impressum", "datenschutz", "portal-datenschutz", "cookies", "agb", "widerrufsbelehrung", "barrierefreiheit"]
+    // Inhaber 03.11.2026 (Nr. 46): Gutscheinverkauf online erlaubt → Gutscheinbedingungen und Gutschein-Widerruf live (hinter VOUCHER_MODE).
+    ["impressum", "datenschutz", "portal-datenschutz", "cookies", "widerruf", "gutscheinbedingungen", "agb", "widerrufsbelehrung", "barrierefreiheit"]
   );
   assert.match(LEGAL_TEXTS.find((t) => t.id === "portal-datenschutz").ownerFills, /OWNER_CONFIRMED = true/);
   // Rat 9,5 B13 (bewusst): Barrierefreiheit ist live, aber nicht Teil der Freigabe Nr. 11.
@@ -63,27 +64,37 @@ test("Impressum: CHAMBER und BLATTLINIE vorbereitet, leer → keine Zeile, kein 
 });
 
 // ------------------------------------------------------------ 3 Gutscheinbedingungen
-test("Gutscheinbedingungen: 7 offene Felder → TERMS_STATUS bleibt Entwurf, Gutschein bleibt aus", () => {
+test("Gutscheinbedingungen: 7 Felder eingetragen (03.11.2026, Nr. 46) → TERMS_STATUS freigegeben, Schalter wirkt", () => {
   assert.equal(TERMS_OWNER_FIELDS.length, 7);
   assert.equal(FIELDS.TERMS_OWNER_FIELDS, TERMS_OWNER_FIELDS, "voucherTerms.js reicht die Felder aus voucherTermsFields.js durch");
-  const open = termsFieldsOpen();
-  assert.equal(open.length, 7, "kein Feld geschätzt");
-  for (const f of TERMS_OWNER_FIELDS) assert.equal(f.value, null, f.id);
-  // Gate: solange Felder leer sind oder der Text eckige Klammern hat, nicht freigeben.
+  assert.deepEqual(termsFieldsOpen(), [], "alle Felder eingetragen");
+  // Jedes Feld mit Beleg (Entscheidungsnummer) – nichts geschätzt.
+  for (const f of TERMS_OWNER_FIELDS) assert.match(f.beleg || "", /Nr\. \d+|Standardformulierung/, f.id);
+  assert.match(TERMS_OWNER_FIELDS.find((f) => f.id === "aussteller").value, /^MW Immobilienverwaltungs GmbH, FN 443753 d, Landesgericht Feldkirch, UID ATU70035339$/);
+  assert.match(TERMS_OWNER_FIELDS.find((f) => f.id === "steuerart").value, /^Mehrzweckgutschein/);
+  assert.match(TERMS_OWNER_FIELDS.find((f) => f.id === "gueltigkeit").value, /^unbefristet/);
+  assert.match(TERMS_OWNER_FIELDS.find((f) => f.id === "cafe").value, /gilt nicht im Platzhirsch Café/);
+  assert.match(TERMS_OWNER_FIELDS.find((f) => f.id === "schlichtung").value, /^nein/);
+  // Gate: keine eckigen Klammern mehr im Text, Status freigegeben, Stand 03.11.2026.
   const hasBrackets = TERMS_SECTIONS.some((s) => s.paragraphs.some((p) => /\[[^\]]+\]/.test(p)));
-  if (open.length || hasBrackets) assert.notEqual(TERMS_STATUS, TERMS_RELEASED);
-  assert.equal(voucherMode({ VOUCHER_MODE: "anfrage" }), "off");
+  assert.equal(hasBrackets, false);
+  assert.equal(TERMS_STATUS, TERMS_RELEASED);
+  assert.equal(voucherMode({ VOUCHER_MODE: "anfrage" }), "anfrage");
+  assert.equal(voucherMode({}), "off", "ohne VOUCHER_MODE weiter 404");
   const c = commerceStatus({});
-  assert.equal(c.termsFieldsOpen, 7);
-  assert.equal(c.termsFields.filter((f) => !f.filled).length, 7);
+  assert.equal(c.termsFieldsOpen, 0);
+  assert.equal(c.termsReleased, true);
+  assert.equal(c.termsStand, "2026-11-03");
   assert.equal(termsFieldsOpen([{ id: "x", value: "  " }]).length, 1, "Leerzeichen zählt als leer");
   assert.equal(termsFieldsOpen([{ id: "x", value: "eingetragen" }]).length, 0);
 });
 
 // ------------------------------------------------------------ 4 nicht öffentlich
-test("Widerruf, AGB, Barrierefreiheit: Wortlaut freigegeben, ohne Angaben nicht öffentlich", () => {
-  assert.equal(WITHDRAWAL_STATUS, "entwurf", "Firmenwortlaut offen");
-  for (const id of ["widerruf", "gutscheinbedingungen"]) assert.equal(LEGAL_TEXTS.find((t) => t.id === id).state, "wartet", id);
+test("Widerruf, AGB, Barrierefreiheit: Wortlaut freigegeben, Gutschein-Texte seit 03.11.2026 live", () => {
+  // Inhaber 03.11.2026 (Nr. 46): Firmenwortlaut (Nr. 38) eingetragen, Gutscheinverkauf erlaubt.
+  assert.equal(WITHDRAWAL_STATUS, "freigegeben");
+  for (const id of ["widerruf", "gutscheinbedingungen"]) assert.equal(LEGAL_TEXTS.find((t) => t.id === id).state, "live", id);
+  assert.equal(LEGAL_TEXTS.find((t) => t.id === "gutscheinbedingungen").livePath, "/gutscheinbedingungen");
   // Erwartung bewusst geändert (Rat 9,5 B13, QA Recht −0,2): Barrierefreiheit hat jetzt
   // eine eigene Seite mit nur geprüften Aussagen (src/lib/legal/barrierefreiheit.js);
   // geprüft in rat95-recht-barrierefreiheit.test.mjs. Die AGB haben seit 02.11.2026 die

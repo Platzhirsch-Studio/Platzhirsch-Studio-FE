@@ -1,0 +1,155 @@
+[
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Bestellungen",
+  "kanban_board_name": "PH Bestellungen",
+  "reference_doctype": "PH Bestellung",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Bestellung\",\"status\",\"not in\",[\"abgeschlossen\",\"storniert\",\"abgelaufen\",\"erstattet\",\"fehlgeschlagen\",\"checkout_fehler\",\"widerrufen\"]]]",
+  "fields": "[\"titel\",\"lieferart\",\"zahlung\",\"gesamt_cent\",\"angelegt\",\"zugewiesen_an\"]",
+  "columns": [
+   {
+    "column_name": "offen",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "zahlung_ausstehend",
+    "indicator": "Orange",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "bezahlt",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "versandbereit",
+    "indicator": "Cyan",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "versendet",
+    "indicator": "Purple",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "reserviert",
+    "indicator": "Yellow",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "abholbereit",
+    "indicator": "Cyan",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "abgeholt",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "pruefen",
+    "indicator": "Pink",
+    "status": "Active",
+    "order": "[]"
+   }
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Widerrufe",
+  "kanban_board_name": "PH Widerrufe",
+  "reference_doctype": "PH Widerruf",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Widerruf\",\"status\",\"not in\",[\"Abgelehnt\"]]]",
+  "fields": "[\"titel\",\"kunde_name\",\"erstattung_bis\",\"zugeordnet\"]",
+  "columns": [
+   {
+    "column_name": "Eingegangen",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Bestaetigt",
+    "indicator": "Cyan",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Ware erwartet",
+    "indicator": "Orange",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Ware erhalten",
+    "indicator": "Purple",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Erstattet",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   }
+  ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Retouren",
+  "kanban_board_name": "PH Retouren",
+  "reference_doctype": "PH Retoure",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Retoure\",\"status\",\"not in\",[\"Abgelehnt\",\"Erstattet\"]]]",
+  "fields": "[\"titel\",\"bestellung\",\"eingegangen_am\",\"erstattungsbetrag_cent\"]",
+  "columns": [
+   {
+    "column_name": "Angekuendigt",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Label gesendet",
+    "indicator": "Cyan",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Unterwegs",
+    "indicator": "Orange",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Eingegangen",
+    "indicator": "Purple",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Geprueft",
+    "indicator": "Yellow",
+    "status": "Active",
+    "order": "[]"
+   }
+  ]
+ }
+]

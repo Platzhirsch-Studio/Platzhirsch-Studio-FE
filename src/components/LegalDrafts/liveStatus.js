@@ -58,20 +58,24 @@ export const LEGAL_TEXTS = Object.freeze([
     ownerFills: "Google-Ads-Abschnitt erst mit Ads-Kennung und Marketing-Schalter",
   },
   {
+    // Inhaber 03.11.2026 (Entscheidung Nr. 46): Gutscheinverkauf online erlaubt; Firmenwortlaut
+    // MW Immobilienverwaltungs GmbH (Nr. 38) eingetragen → WITHDRAWAL_STATUS „freigegeben“.
     id: "widerruf",
     title: "Widerrufsbelehrung für Gutscheine",
-    livePath: null,
-    state: "wartet",
+    livePath: "/gutscheine#widerrufsbelehrung",
+    state: "live",
     file: "src/lib/commerce/withdrawalText.js (WITHDRAWAL_STATUS)",
-    ownerFills: "Firmenwortlaut der ausgebenden Gesellschaft (wie Gutscheinbedingungen Feld 1); Kaufstrecke ist ohnehin aus",
+    ownerFills: "Keine offenen Angaben; sichtbar, sobald VOUCHER_MODE=stripe auf dem Server wirkt (Stripe-Schlüssel + Mail-Dienst)",
   },
   {
+    // Inhaber 03.11.2026 (Entscheidung Nr. 46): 7 Felder eingetragen (voucherTermsFields.js, Belege je Feld)
+    // → TERMS_STATUS „freigegeben“; Steuerberater bestätigt „Mehrzweckgutschein“ noch (SHOP-LIVE-2026-11-03.md).
     id: "gutscheinbedingungen",
     title: "Gutscheinbedingungen",
     livePath: "/gutscheinbedingungen",
-    state: "wartet",
+    state: "live",
     file: "src/lib/commerce/voucherTerms.js (TERMS_STATUS), Felder in voucherTermsFields.js",
-    ownerFills: "7 Felder in TERMS_OWNER_FIELDS; bis dahin bleibt TERMS_STATUS „entwurf“ und die Seite 404",
+    ownerFills: "Keine offenen Felder; Seite öffentlich, sobald VOUCHER_MODE (anfrage|stripe) auf dem Server gesetzt ist; Steuerberater bestätigt Mehrzweckgutschein",
   },
   {
     // Inhaber 02.11.2026: AGB je Geschäftsbereich mit eigener Seite /agb

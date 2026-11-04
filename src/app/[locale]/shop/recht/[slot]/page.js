@@ -95,8 +95,14 @@ export default async function ShopRechtPage({ params }) {
         </Heading>
         {entwurf && (
           <p className="mt-4 text-small text-text-soft" data-shop-recht-entwurf={s.id}>
-            <span className="mr-2 border border-line-strong px-1">{c.draftMark}</span>
-            {/* Marker nur, solange legal.js status "entwurf" führt (Freigabe setzt Kanzlei/Inhaber); daneben der Stand. */}
+            {/* Marker „Entwurf“, solange legal.js status "entwurf" führt; bei freigegebenem Text mit offener
+                Unternehmensangabe (Platzhalter, z. B. LetMeShip-Anschrift) stattdessen „Angabe wird ergänzt“. */}
+            <span className="mr-2 border border-line-strong px-1">{s.status === "freigegeben" ? c.legalPending : c.draftMark}</span>
+            Stand {formatDatum(s.stand, "de")}
+          </p>
+        )}
+        {frei && (
+          <p className="mt-4 text-small text-text-soft" data-shop-recht-stand={s.id}>
             Stand {formatDatum(s.stand, "de")}
           </p>
         )}

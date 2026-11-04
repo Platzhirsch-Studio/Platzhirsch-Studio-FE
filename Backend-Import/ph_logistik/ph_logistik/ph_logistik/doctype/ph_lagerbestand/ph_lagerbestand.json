@@ -1,0 +1,413 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 09:00:00.000000",
+ "description": "Bestand je Produkt/Ausführung/Lagerort – Ausstellungsstücke mit Standort, Accessoires mit Menge. Mengen ändern sich nur über PH Lagerbewegung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "produkt",
+  "ausfuehrung",
+  "produkt_name",
+  "marke",
+  "cb_kopf",
+  "lagerort",
+  "platz",
+  "menge",
+  "reserviert",
+  "verfuegbar",
+  "sb_stueck",
+  "ausstellungsstueck",
+  "zustand",
+  "seriennummer",
+  "ean",
+  "cb_stueck",
+  "eingang_am",
+  "inventur_am",
+  "ausgeschieden_am",
+  "sb_preise",
+  "ek_cent",
+  "vk_cent_ausstellung",
+  "waehrung",
+  "cb_preise",
+  "reserviert_fuer_doctype",
+  "reserviert_fuer",
+  "sb_herkunft",
+  "bezug_doctype",
+  "bezug",
+  "notiz",
+  "notiz_intern",
+  "sb_system",
+  "idempotency_key",
+  "quelle"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-LB-.#####",
+   "default": "PH-LB-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Verfuegbar\nReserviert\nVerkauft\nAusgeschieden",
+   "default": "Verfuegbar",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Berechnet aus Menge/Reserviert; Verkauft/Ausgeschieden durch Bewegungen."
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "ausfuehrung",
+   "fieldtype": "Link",
+   "label": "Ausführung",
+   "options": "PH Produkt Ausfuehrung"
+  },
+  {
+   "fieldname": "produkt_name",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lagerort",
+   "fieldtype": "Link",
+   "label": "Lagerort",
+   "options": "PH Lagerort",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "platz",
+   "fieldtype": "Data",
+   "label": "Platz",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Int",
+   "label": "Menge",
+   "default": "1",
+   "in_list_view": 1,
+   "read_only": 1,
+   "description": "Nur über Lagerbewegungen ändern (Button „Bewegung buchen“)."
+  },
+  {
+   "fieldname": "reserviert",
+   "fieldtype": "Int",
+   "label": "Reserviert",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verfuegbar",
+   "fieldtype": "Int",
+   "label": "Verfügbar",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_stueck",
+   "fieldtype": "Section Break",
+   "label": "Stück"
+  },
+  {
+   "fieldname": "ausstellungsstueck",
+   "fieldtype": "Check",
+   "label": "Ausstellungsstück",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "zustand",
+   "fieldtype": "Select",
+   "label": "Zustand",
+   "options": "Neu\nAusstellung\nB-Ware",
+   "default": "Neu"
+  },
+  {
+   "fieldname": "seriennummer",
+   "fieldtype": "Data",
+   "label": "Seriennummer",
+   "search_index": 1
+  },
+  {
+   "fieldname": "ean",
+   "fieldtype": "Data",
+   "label": "EAN",
+   "search_index": 1
+  },
+  {
+   "fieldname": "cb_stueck",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "eingang_am",
+   "fieldtype": "Date",
+   "label": "Eingang am"
+  },
+  {
+   "fieldname": "inventur_am",
+   "fieldtype": "Date",
+   "label": "Letzte Inventur",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ausgeschieden_am",
+   "fieldtype": "Date",
+   "label": "Ausgeschieden am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_preise",
+   "fieldtype": "Section Break",
+   "label": "Preise"
+  },
+  {
+   "fieldname": "ek_cent",
+   "fieldtype": "Int",
+   "label": "Einkaufspreis (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "vk_cent_ausstellung",
+   "fieldtype": "Int",
+   "label": "Verkaufspreis Ausstellungsstück (Cent)"
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "cb_preise",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reserviert_fuer_doctype",
+   "fieldtype": "Link",
+   "label": "Reserviert für (Typ)",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reserviert_fuer",
+   "fieldtype": "Dynamic Link",
+   "label": "Reserviert für",
+   "options": "reserviert_fuer_doctype",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_herkunft",
+   "fieldtype": "Section Break",
+   "label": "Herkunft",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "bezug_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug (Typ)",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bezug",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "bezug_doctype",
+   "read_only": 1,
+   "description": "Wareneingang (ph_sortiment) oder Retoure (ph_shop)."
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  },
+  {
+   "fieldname": "notiz_intern",
+   "fieldtype": "Small Text",
+   "label": "Notiz intern",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\npacktisch\nmobil\nscheduler",
+   "default": "backoffice"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Lagerbewegung",
+   "link_fieldname": "lagerbestand",
+   "group": "Bewegungen"
+  },
+  {
+   "link_doctype": "PH Lieferschein Position",
+   "link_fieldname": "lagerbestand",
+   "group": "Lieferungen"
+  }
+ ],
+ "modified": "2026-11-04 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Lagerbestand",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Verfuegbar",
+   "color": "Green"
+  },
+  {
+   "title": "Reserviert",
+   "color": "Orange"
+  },
+  {
+   "title": "Verkauft",
+   "color": "Blue"
+  },
+  {
+   "title": "Ausgeschieden",
+   "color": "Gray"
+  }
+ ],
+ "track_changes": 1,
+ "search_fields": "produkt_name,seriennummer,ean,lagerort",
+ "title_field": "titel",
+ "track_seen": 0,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field"
+}
