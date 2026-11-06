@@ -13,12 +13,17 @@ Rechtsrahmen Österreich (Stand 2026, vom Rechtsanwalt bestätigen lassen, bevor
   Regress gegen den Vormann (Hersteller/Lieferant):
     § 933b ABGB  Rückersatz der eigenen Gewährleistungsleistung; Frist 2 Monate ab Erfüllung der eigenen
                  Gewährleistungspflicht, absolut 5 Jahre ab Lieferung an den Händler.
+  Unbewegliche Sachen (fest mit dem Gebäude verbunden, z. B. eingemauerte Einbauten – Abgrenzung Kanzlei):
+    § 933 Abs 1 ABGB  3 Jahre ab Übergabe; VGG gilt nur für bewegliche Sachen, Vermutung dann § 924 ABGB (6 Monate).
   Garantie: freiwillige Zusage des Herstellers (§ 9b KSchG), läuft getrennt ab Übergabe/Kaufdatum.
 """
 
 from datetime import date, timedelta
 
 GEWAEHRLEISTUNG_MONATE = 24
+GEWAEHRLEISTUNG_UNBEWEGLICH_MONATE = 36
+VERMUTUNG_UNBEWEGLICH_MONATE = 6
+SACHARTEN = ("Beweglich", "Unbeweglich")
 VERJAEHRUNG_MONATE = 3
 VERMUTUNG_MONATE = {"Verbraucher": 12, "Unternehmer": 6}
 REGRESS_MONATE = 2
@@ -82,6 +87,7 @@ def fristen(
     vermutung_monate=None,
     erledigt_am=None,
     lieferung_an_haendler=None,
+    sachart="Beweglich",
 ):
     """Alle Fristen eines Servicefalls.
 
@@ -94,6 +100,10 @@ def fristen(
     ueber = _datum(uebergabe)
     basis = ueber or kauf
     kundentyp = kundentyp if kundentyp in VERMUTUNG_MONATE else "Verbraucher"
+    if sachart == "Unbeweglich":
+        # § 933 Abs 1 ABGB: 3 Jahre; VGG (§ 11 Vermutung 1 Jahr) gilt nicht → § 924 ABGB 6 Monate.
+        gewaehrleistung_monate = max(int(gewaehrleistung_monate or 0), GEWAEHRLEISTUNG_UNBEWEGLICH_MONATE)
+        vermutung_monate = VERMUTUNG_UNBEWEGLICH_MONATE if vermutung_monate is None else min(int(vermutung_monate), VERMUTUNG_UNBEWEGLICH_MONATE)
     if vermutung_monate is None:
         vermutung_monate = VERMUTUNG_MONATE[kundentyp]
 
@@ -180,14 +190,15 @@ def durchlaufzeit_tage(gemeldet_am, erledigt_am, heute=None):
     return max(0, (ende - start).days)
 
 
-def reaktionsfrist(gemeldet_am, werktage=2):
-    """Reaktionsfrist = gemeldet + n Werktage (Sa/So übersprungen; Feiertage über Holiday List in Frappe)."""
+def reaktionsfrist(gemeldet_am, werktage=2, feiertage=()):
+    """Reaktionsfrist = gemeldet + n Werktage (Sa/So und Feiertage übersprungen; Feiertage als Menge von date)."""
     d = _datum(gemeldet_am)
     if not d:
         return None
+    feiertage = set(feiertage or ())
     rest = int(werktage)
     while rest > 0:
         d = d + timedelta(days=1)
-        if d.weekday() < 5:
+        if d.weekday() < 5 and d not in feiertage:
             rest -= 1
     return d

@@ -1,0 +1,212 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Kostenarten-Katalog der Projektnachkalkulation mit Zuordnung zur DB-Stufe (Budget, Eingangsrechnungs-Zuordnung, Auswertungen).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kostenart",
+  "bezeichnung",
+  "db_stufe",
+  "cb_1",
+  "reihenfolge",
+  "aktiv",
+  "zeitbasiert",
+  "beschreibung"
+ ],
+ "fields": [
+  {
+   "fieldname": "kostenart",
+   "fieldtype": "Data",
+   "label": "Kostenart",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "Kurzname, z. B. „Ware“, „Fracht“ (Schlüssel für Budget und Zuordnung)."
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "db_stufe",
+   "fieldtype": "Select",
+   "label": "DB-Stufe",
+   "options": "DB1\nDB2\nDB3",
+   "default": "DB2",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "DB1 = Wareneinsatz (Ware + Fracht der Ware) · DB2 = Montage, Fremdgewerke, Material · DB3 = Planung/Beratung/Projektleitung, Nachlauf"
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reihenfolge",
+   "fieldtype": "Int",
+   "label": "Reihenfolge",
+   "default": "10"
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "1",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "zeitbasiert",
+   "fieldtype": "Check",
+   "label": "Aus Projektzeiten",
+   "description": "Wird aus PH Projektzeit × Kostensatz gerechnet (nicht über Eingangsrechnungen)."
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Small Text",
+   "label": "Beschreibung"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Kostenart",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  }
+ ],
+ "sort_field": "reihenfolge",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:kostenart",
+ "naming_rule": "By fieldname",
+ "title_field": "bezeichnung",
+ "search_fields": "bezeichnung,db_stufe"
+}

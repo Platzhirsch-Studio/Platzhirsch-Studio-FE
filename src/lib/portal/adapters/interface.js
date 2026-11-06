@@ -136,6 +136,10 @@
  *            marks studio messages as read (only own ids), returns how many changed
  * @property {(customerId:string, input:{body:string, projectId?:string}) => Promise<Message>} sendMessage
  *            customer reply in the mailbox (/de/portal/nachrichten)
+ * @property {(customerId:string) => Promise<import("../../kundenkarte/adapters/interface").PortalCard|null>} getCustomerCard
+ *            Kundenkarte (04.11.2026): Stufe, Vorteile mit genutzt/verfügbar, Einlösungen,
+ *            Wallet-Flags – Frappe später über ph_kundenkarte.api.portal_card(kontakt, kunde_token);
+ *            null, wenn der Kunde keine Karte hat.
  */
 
 export const ADAPTER_METHODS = [
@@ -152,6 +156,7 @@ export const ADAPTER_METHODS = [
   "requestPlanning",
   "markMessagesRead",
   "sendMessage",
+  "getCustomerCard",
 ];
 
 /** Throws early if an adapter misses a method of the contract. */

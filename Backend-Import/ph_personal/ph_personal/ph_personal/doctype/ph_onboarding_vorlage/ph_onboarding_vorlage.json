@@ -1,0 +1,141 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Vorlage für Onboarding-/Offboarding-Checklisten (ÖGK-Anmeldung, Dienstzettel, Unterweisung, Zugang …).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "art",
+  "standard",
+  "aktiv",
+  "sb_aufgaben",
+  "aufgaben",
+  "beschreibung"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Onboarding\nOffboarding",
+   "default": "Onboarding",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "standard",
+   "fieldtype": "Check",
+   "label": "Standard für neue Mitarbeiter",
+   "description": "Wird beim Anlegen (Onboarding) bzw. beim Erfassen des Austritts (Offboarding) automatisch übernommen."
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_aufgaben",
+   "fieldtype": "Section Break",
+   "label": "Aufgaben"
+  },
+  {
+   "fieldname": "aufgaben",
+   "fieldtype": "Table",
+   "label": "Aufgaben",
+   "options": "PH Onboarding Vorlage Aufgabe"
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Small Text",
+   "label": "Beschreibung"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Onboarding Vorlage",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:titel",
+ "naming_rule": "By fieldname",
+ "title_field": "titel",
+ "search_fields": "art"
+}

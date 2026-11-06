@@ -20,9 +20,11 @@
 // Keine "@/..."-Importe.
 import path from "node:path";
 import { writeAtomic } from "./store.js";
+import { resolveBackend } from "../backend/config.js";
 
 export const EVENT_VERSION = 1;
 export const DEFAULT_METHOD = "platzhirsch_studio.api.payment_event";
+export const PH_METHOD = "ph_shop.api.payment_event";
 
 async function writeEvent(dir, event, extra = {}) {
   const name = `${event.zeit.replace(/[:.]/g, "-")}-${event.typ.replace(/[^\w.-]/g, "_")}-${event.referenz}.json`;
@@ -43,9 +45,19 @@ export function createOutboxBackoffice(dir) {
 
 /** Frappe-Adapter: live nur mit allen Schaltern, sonst Probelauf in die outbox. */
 export function createFrappeBackoffice({ env, dir, fetchImpl = fetch }) {
-  const live = env.PAYMENTS_BACKOFFICE_LIVE === "1" && env.FRAPPE_URL && env.FRAPPE_API_KEY && env.FRAPPE_API_SECRET;
-  const method = env.PAYMENTS_BACKOFFICE_METHOD || DEFAULT_METHOD;
-  const url = `${String(env.FRAPPE_URL || "https://backoffice.example.invalid").replace(/\/+$/, "")}/api/method/${method}`;
+  // BACKEND_GENERATION (src/lib/backend/config.js) Gruppe "zahlung" auf ph:
+  // ph_shop.api.payment_event mit BACKEND_PH_URL/BACKEND_PH_TOKEN (Schema v1
+  // unverändert, Body { event }). PAYMENTS_BACKOFFICE_LIVE=1 bleibt der Schalter.
+  const backend = resolveBackend("zahlung", env);
+  const ph = backend.generation === "ph" ? backend.ph || { url: "https://backoffice.example.invalid", key: "", secret: "" } : null;
+  const live = ph
+    ? env.PAYMENTS_BACKOFFICE_LIVE === "1" && Boolean(backend.ph)
+    : env.PAYMENTS_BACKOFFICE_LIVE === "1" && env.FRAPPE_URL && env.FRAPPE_API_KEY && env.FRAPPE_API_SECRET;
+  const method = ph ? PH_METHOD : env.PAYMENTS_BACKOFFICE_METHOD || DEFAULT_METHOD;
+  const url = ph ? `${ph.url}/api/method/${method}` : `${String(env.FRAPPE_URL || "https://backoffice.example.invalid").replace(/\/+$/, "")}/api/method/${method}`;
+  const authorization = ph ? `token ${ph.key}:${ph.secret}` : `token ${env.FRAPPE_API_KEY}:${env.FRAPPE_API_SECRET}`;
+  // ph_api(idempotent): Wiederholungen derselben Meldung werden im Backend nicht doppelt gebucht.
+  const bodyOf = (event) => (ph ? { event, idempotency_key: `pe:${event.typ}:${event.referenz}:${event.zeit}`.slice(0, 80) } : { event });
   return {
     kind: live ? "frappe" : "frappe-probelauf",
     async emit(event) {
@@ -60,8 +72,8 @@ export function createFrappeBackoffice({ env, dir, fetchImpl = fetch }) {
         const res = await fetchImpl(url, {
           method: "POST",
           signal: ctrl.signal,
-          headers: { Authorization: `token ${env.FRAPPE_API_KEY}:${env.FRAPPE_API_SECRET}`, "Content-Type": "application/json" },
-          body: JSON.stringify({ event }),
+          headers: { Authorization: authorization, "Content-Type": "application/json" },
+          body: JSON.stringify(bodyOf(event)),
         });
         if (!res.ok) throw new Error(`status ${res.status}`);
         return { ok: true };

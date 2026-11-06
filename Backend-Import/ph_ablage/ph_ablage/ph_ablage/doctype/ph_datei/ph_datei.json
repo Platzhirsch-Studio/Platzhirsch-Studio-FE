@@ -1,0 +1,587 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Datei der Ablage (Word, Excel, PDF, CAD, Bilder …): Name und Ordner nur in der Datenbank, Inhalt versioniert im austauschbaren Speicher.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "dateiname",
+  "ordner",
+  "status",
+  "bezug_doctype",
+  "bezug_name",
+  "bezug_titel",
+  "cb_kopf",
+  "endung",
+  "mime",
+  "groesse",
+  "groesse_text",
+  "aktuelle_version",
+  "sha256",
+  "vorschau_art",
+  "vorschau_status",
+  "sb_beschreibung",
+  "tags",
+  "cb_beschreibung",
+  "beschreibung",
+  "sb_versionen",
+  "versionen",
+  "sb_freigabe",
+  "portal_freigabe",
+  "portal_ablauf",
+  "portal_dokument",
+  "portal_version",
+  "freigabelinks_aktiv",
+  "cb_freigabe",
+  "gesperrt_von",
+  "gesperrt_bis",
+  "gesperrt_hinweis",
+  "sb_aufbewahrung",
+  "aufbewahrungsklasse",
+  "belegdatum",
+  "aufbewahren_bis",
+  "loeschsperre",
+  "cb_papierkorb",
+  "geloescht",
+  "geloescht_am",
+  "geloescht_von",
+  "papierkorb_bis",
+  "sb_inhalt",
+  "metadaten_json",
+  "volltext_status",
+  "volltext",
+  "sb_system",
+  "effektiver_modus",
+  "hochgeladen_von",
+  "hochgeladen_am",
+  "quelle",
+  "cb_system",
+  "quelle_doctype",
+  "quelle_name",
+  "idempotency_key",
+  "ip_hash"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-DAT-.YYYY.-.######",
+   "default": "PH-DAT-.YYYY.-.######",
+   "hidden": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "dateiname",
+   "fieldtype": "Data",
+   "label": "Dateiname",
+   "reqd": 1,
+   "in_list_view": 1,
+   "bold": 1,
+   "length": 200
+  },
+  {
+   "fieldname": "ordner",
+   "fieldtype": "Link",
+   "label": "Ordner",
+   "options": "PH Ordner",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Hochladen\nAktiv\nPapierkorb",
+   "default": "Hochladen",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "bezug_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug (Art)",
+   "options": "DocType",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "bezug_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "bezug_doctype",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "bezug_titel",
+   "fieldtype": "Data",
+   "label": "Bezug (Titel)",
+   "read_only": 1,
+   "length": 200
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "endung",
+   "fieldtype": "Data",
+   "label": "Endung",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "mime",
+   "fieldtype": "Data",
+   "label": "MIME-Typ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "groesse",
+   "fieldtype": "Int",
+   "label": "Größe (Bytes)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "groesse_text",
+   "fieldtype": "Data",
+   "label": "Größe",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "aktuelle_version",
+   "fieldtype": "Int",
+   "label": "Aktuelle Version",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "sha256",
+   "fieldtype": "Data",
+   "label": "Prüfsumme SHA-256 (aktuelle Version)",
+   "read_only": 1,
+   "length": 64,
+   "search_index": 1
+  },
+  {
+   "fieldname": "vorschau_art",
+   "fieldtype": "Select",
+   "label": "Vorschau-Art",
+   "options": "keine\nbild\npdf\noffice\ncad\nvideo\naudio\ntext",
+   "default": "keine",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vorschau_status",
+   "fieldtype": "Select",
+   "label": "Vorschau",
+   "options": "Keine\nAusstehend\nFertig\nBrowser\nNicht moeglich\nFehler",
+   "default": "Keine",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_beschreibung",
+   "fieldtype": "Section Break",
+   "label": "Beschreibung und Tags"
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Small Text",
+   "label": "Tags",
+   "description": "Kommagetrennt, höchstens 20"
+  },
+  {
+   "fieldname": "cb_beschreibung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Small Text",
+   "label": "Beschreibung"
+  },
+  {
+   "fieldname": "sb_versionen",
+   "fieldtype": "Section Break",
+   "label": "Versionen"
+  },
+  {
+   "fieldname": "versionen",
+   "fieldtype": "Table",
+   "label": "Versionen",
+   "options": "PH Datei Version",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_freigabe",
+   "fieldtype": "Section Break",
+   "label": "Freigabe und Bearbeitung"
+  },
+  {
+   "fieldname": "portal_freigabe",
+   "fieldtype": "Check",
+   "label": "Im Kundenportal freigegeben",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "portal_ablauf",
+   "fieldtype": "Date",
+   "label": "Portal-Freigabe bis"
+  },
+  {
+   "fieldname": "portal_dokument",
+   "fieldtype": "Data",
+   "label": "PH Projekt Dokument (Portal)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "portal_version",
+   "fieldtype": "Int",
+   "label": "Version im Portal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "freigabelinks_aktiv",
+   "fieldtype": "Int",
+   "label": "Aktive Freigabelinks",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_freigabe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gesperrt_von",
+   "fieldtype": "Link",
+   "label": "Ausgecheckt von",
+   "options": "User",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "gesperrt_bis",
+   "fieldtype": "Datetime",
+   "label": "Ausgecheckt bis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gesperrt_hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis zur Bearbeitung",
+   "read_only": 1,
+   "length": 200
+  },
+  {
+   "fieldname": "sb_aufbewahrung",
+   "fieldtype": "Section Break",
+   "label": "Aufbewahrung und Papierkorb"
+  },
+  {
+   "fieldname": "aufbewahrungsklasse",
+   "fieldtype": "Select",
+   "label": "Aufbewahrungsklasse",
+   "options": "Allgemein\nBeleg\nPersonal\nProjekt\nMarketing",
+   "default": "Allgemein",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "belegdatum",
+   "fieldtype": "Date",
+   "label": "Belegdatum",
+   "description": "Beginn der Aufbewahrungsfrist (Standard: Hochladedatum)"
+  },
+  {
+   "fieldname": "aufbewahren_bis",
+   "fieldtype": "Date",
+   "label": "Aufbewahren bis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "loeschsperre",
+   "fieldtype": "Check",
+   "label": "Löschsperre",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_papierkorb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "geloescht",
+   "fieldtype": "Check",
+   "label": "Im Papierkorb",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geloescht_am",
+   "fieldtype": "Datetime",
+   "label": "Gelöscht am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geloescht_von",
+   "fieldtype": "Link",
+   "label": "Gelöscht von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "papierkorb_bis",
+   "fieldtype": "Date",
+   "label": "Endgültig gelöscht ab",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_inhalt",
+   "fieldtype": "Section Break",
+   "label": "Inhalt (automatisch)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "metadaten_json",
+   "fieldtype": "Code",
+   "label": "Metadaten (CAD/Bild)",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "volltext_status",
+   "fieldtype": "Select",
+   "label": "Volltext",
+   "options": "\nAusstehend\nok\nleer\nnicht_unterstuetzt\nbibliothek_fehlt\nfehler\naus",
+   "read_only": 1
+  },
+  {
+   "fieldname": "volltext",
+   "fieldtype": "Long Text",
+   "label": "Volltext",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "effektiver_modus",
+   "fieldtype": "Data",
+   "label": "Wirksamer Rechte-Modus",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hochgeladen_von",
+   "fieldtype": "Link",
+   "label": "Hochgeladen von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hochgeladen_am",
+   "fieldtype": "Datetime",
+   "label": "Hochgeladen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\ndesk\nbestand\nsystem",
+   "default": "backoffice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_system",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quelle_doctype",
+   "fieldtype": "Data",
+   "label": "Quelle (Art)",
+   "read_only": 1,
+   "description": "Bestandsdatei (File-Name bzw. PH Projekt Dokument) – Text, damit das Original löschbar bleibt"
+  },
+  {
+   "fieldname": "quelle_name",
+   "fieldtype": "Data",
+   "label": "Quelle",
+   "read_only": 1,
+   "description": "Bestandsdatei (File-Name bzw. PH Projekt Dokument) – Text, damit das Original löschbar bleibt"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP-Hash",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Datei Freigabelink",
+   "link_fieldname": "datei",
+   "group": "Freigaben"
+  }
+ ],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Ablage",
+ "name": "PH Datei",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Ablage Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Ablage Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "report": 1
+  },
+  {
+   "role": "PH CRM Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH CRM Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Sortiment Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Sortiment Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Service Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Service Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Hochladen",
+   "color": "Orange"
+  },
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Papierkorb",
+   "color": "Gray"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "dateiname",
+ "show_title_field_in_link": 1,
+ "search_fields": "dateiname,tags,bezug_name,endung",
+ "track_seen": 1,
+ "max_attachments": 0
+}

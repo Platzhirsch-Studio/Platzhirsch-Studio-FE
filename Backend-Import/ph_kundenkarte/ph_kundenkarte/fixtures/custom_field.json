@@ -1,0 +1,54 @@
+[
+ {
+  "doctype": "Custom Field",
+  "name": "PH Kontakt-ph_kundenkarte_karte",
+  "dt": "PH Kontakt",
+  "module": "PH Kundenkarte",
+  "fieldname": "ph_kundenkarte_karte",
+  "label": "Kundenkarte",
+  "fieldtype": "Link",
+  "options": "PH Kundenkarte",
+  "insert_after": "kunde_seit",
+  "read_only": 1,
+  "in_standard_filter": 1,
+  "description": "Wird von ph_kundenkarte gesetzt (aktive, gesperrte oder beantragte Karte)."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Kontakt-ph_kundenkarte_stufe",
+  "dt": "PH Kontakt",
+  "module": "PH Kundenkarte",
+  "fieldname": "ph_kundenkarte_stufe",
+  "label": "Kundenkarten-Stufe",
+  "fieldtype": "Link",
+  "options": "PH Kundenkarte Stufe",
+  "insert_after": "ph_kundenkarte_karte",
+  "read_only": 1,
+  "in_standard_filter": 1,
+  "description": "Spiegel der Stufe der Kundenkarte (ph_kundenkarte)."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Kassenbeleg-ph_kundenkarte_kartennummer",
+  "dt": "PH Kassenbeleg",
+  "module": "PH Kundenkarte",
+  "fieldname": "ph_kundenkarte_kartennummer",
+  "label": "Kundenkarte (Nummer)",
+  "fieldtype": "Data",
+  "insert_after": "kunde_name",
+  "in_standard_filter": 1,
+  "description": "An der Kassa gescannt oder eingegeben (KK-XXXXXX). Löst die Umsatz-Neuberechnung der Karte aus (ph_kundenkarte)."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Bestellung-ph_kundenkarte_kartennummer",
+  "dt": "PH Bestellung",
+  "module": "PH Kundenkarte",
+  "fieldname": "ph_kundenkarte_kartennummer",
+  "label": "Kundenkarte (Nummer)",
+  "fieldtype": "Data",
+  "insert_after": "kontakt",
+  "in_standard_filter": 1,
+  "description": "Von der Website übergeben oder am Packtisch erfasst (KK-XXXXXX) – ph_kundenkarte."
+ }
+]

@@ -1,0 +1,247 @@
+/* Bereich Kundenkarte im Lounge-Stil (art-direction/lounge.md §3–§9, §6 „Kundenkarte“: Stufe + Leistungen,
+   Bodoni-Monogramm in Materialfarbe, keine Punkte/Prozente). Gliederung über Fläche + Schatten + Abstand,
+   keine Rahmen. Nur Token aus globals.css; Stufenfarbe kommt als Datenwert (--kk-farbe) aus PH Kundenkarte Stufe.
+   Präfix bo-kk-. */
+
+/* ---------------------------------------------------------------- Stufe */
+.bo-kk-stufe {
+  display: inline-flex; align-items: center; gap: 8px; max-width: 100%;
+  height: 32px; padding: 0 12px 0 4px; border-radius: 999px;
+  background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn);
+  font-size: 13px; font-weight: 600; line-height: 1; color: var(--color-bo-text); white-space: nowrap;
+}
+.bo-kk-stufe[data-groesse="s"] { height: 26px; gap: 6px; padding: 0 10px 0 3px; font-size: 12px; font-weight: 500; box-shadow: inset 0 0 0 var(--bo-hair) var(--color-bo-line); background: var(--color-bo-surface-2); }
+.bo-kk-stufe[data-groesse="l"] { height: 44px; gap: 10px; padding: 0 16px 0 6px; font-size: 14px; }
+.bo-kk-stufe__mono {
+  flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%;
+  font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.02em;
+  color: var(--kk-schrift, var(--color-bo-ink-inverse));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--kk-farbe, var(--color-bo-cognac)) 86%, white), color-mix(in srgb, var(--kk-farbe, var(--color-bo-cognac)) 88%, black));
+  box-shadow: inset 0 0.5px 0 rgb(255 255 255 / 0.35);
+}
+.bo-kk-stufe[data-ring] .bo-kk-stufe__mono { box-shadow: inset 0 0.5px 0 rgb(255 255 255 / 0.35), 0 0 0 1px var(--color-bo-line-strong); }
+.bo-kk-stufe[data-groesse="s"] .bo-kk-stufe__mono { width: 20px; height: 20px; font-size: 9px; }
+.bo-kk-stufe[data-groesse="l"] .bo-kk-stufe__mono { width: 32px; height: 32px; font-size: 13px; }
+.bo-kk-stufe__zusatz { font-weight: 400; color: var(--color-bo-text-soft); }
+button.bo-kk-stufe { cursor: pointer; transition: transform var(--bo-dauer-weich) var(--ease-feder), box-shadow 200ms ease; }
+button.bo-kk-stufe:active { transform: scale(0.97); transition-duration: var(--bo-dauer-druck); }
+
+/* ----------------------------------------------------------- Mini-Karte */
+.bo-kk-mini { display: inline-block; position: relative; perspective: 900px; flex: none; width: 120px; height: 76px; border-radius: 12px; padding: 0; background: none; cursor: pointer; }
+.bo-kk-mini[data-gross] { width: 240px; height: 152px; border-radius: 20px; }
+.bo-kk-mini__innen { display: block; border-radius: inherit; position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 240ms var(--bo-ease-inout, ease-in-out); }
+.bo-kk-mini[data-gedreht="true"] .bo-kk-mini__innen { transform: rotateY(180deg); }
+.bo-kk-mini__seite {
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between;
+  padding: 10px 12px; border-radius: inherit; backface-visibility: hidden; overflow: hidden;
+  color: var(--kk-schrift, var(--color-bo-ink-inverse));
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgb(255 255 255 / 0.22), transparent 55%),
+    linear-gradient(140deg, color-mix(in srgb, var(--kk-farbe, var(--color-bo-cognac)) 92%, white), color-mix(in srgb, var(--kk-farbe, var(--color-bo-cognac)) 80%, black));
+  box-shadow: inset 0 0.5px 0 rgb(255 255 255 / 0.35), var(--bo-sh-card);
+}
+.bo-kk-mini[data-gross] .bo-kk-mini__seite { padding: 18px 20px; }
+.bo-kk-mini__rueck { transform: rotateY(180deg); background: var(--color-bo-surface); color: var(--color-bo-text); align-items: center; justify-content: center; gap: 6px; text-align: center; }
+.bo-kk-mini__marke { font-family: var(--font-display); font-size: 9px; font-weight: 500; letter-spacing: 0.3em; }
+.bo-kk-mini[data-gross] .bo-kk-mini__marke { font-size: 14px; }
+.bo-kk-mini__nr { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; font-variant-numeric: tabular-nums; }
+.bo-kk-mini[data-gross] .bo-kk-mini__nr { font-size: 18px; }
+.bo-kk-mini__stufe { font-size: 9px; opacity: 0.85; }
+.bo-kk-mini[data-gross] .bo-kk-mini__stufe { font-size: 12px; }
+.bo-kk-mini__qr { width: 44px; height: 44px; }
+.bo-kk-mini[data-gross] .bo-kk-mini__qr { width: 88px; height: 88px; }
+.bo-kk-mini__daten { font-size: 7px; line-height: 9px; color: var(--color-bo-text-soft); max-width: 92%; }
+@media (prefers-reduced-motion: reduce) { .bo-kk-mini__innen { transition: none; } }
+
+/* -------------------------------------------------------------- Kopf */
+.bo-kk-kopf { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 24px; }
+.bo-kk-kopf__mitte { flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.bo-kk-kopf__name { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.bo-kk-kopf__titel { font-size: 34px; line-height: 40px; font-weight: 600; letter-spacing: -0.022em; color: var(--color-bo-text); }
+.bo-kk-kopf__zeile { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; font-size: 13px; color: var(--color-bo-text-soft); }
+.bo-kk-kopf__aktionen { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+.bo-kk-nr { display: inline-flex; align-items: center; gap: 4px; font-variant-numeric: tabular-nums; font-weight: 600; letter-spacing: 0.04em; color: var(--color-bo-text); }
+@media (max-width: 640px) { .bo-kk-kopf__titel { font-size: 26px; line-height: 32px; } }
+
+/* ------------------------------------------------------------ Stufenblock */
+.bo-kk-leiter { display: flex; align-items: center; gap: 0; list-style: none; margin: 0; padding: 0; min-width: 0; }
+.bo-kk-leiter__schritt { white-space: nowrap; display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 13px; color: var(--color-bo-text-soft); }
+.bo-kk-leiter__schritt[aria-current="step"] { color: var(--color-bo-text); font-weight: 600; }
+.bo-kk-leiter__punkt { flex: none; width: 14px; height: 14px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--color-bo-line-strong); background: var(--color-bo-surface); }
+.bo-kk-leiter__schritt[data-erreicht] .bo-kk-leiter__punkt { background: var(--kk-farbe, var(--color-bo-ink)); box-shadow: none; }
+.bo-kk-leiter__schritt[aria-current="step"] .bo-kk-leiter__punkt { box-shadow: 0 0 0 3px var(--color-bo-surface), 0 0 0 5px var(--kk-farbe, var(--color-bo-ink)); }
+.bo-kk-leiter__linie { flex: 1 1 24px; min-width: 12px; max-width: 120px; height: 2px; margin: 0 10px; border-radius: 2px; background: var(--color-bo-line); position: relative; overflow: hidden; }
+.bo-kk-leiter__linie[data-erreicht]::after { content: ""; position: absolute; inset: 0; background: var(--color-bo-ink); transform-origin: left; }
+.bo-kk-leiter__linie[data-fuellen]::after { animation: bo-kk-fuellen 400ms var(--bo-ease-out, ease-out) both; }
+@keyframes bo-kk-fuellen { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .bo-kk-leiter__linie[data-fuellen]::after { animation: none; } }
+.bo-kk-fusszeile { font-size: 12px; line-height: 16px; color: var(--color-bo-text-faint); }
+
+/* ------------------------------------------------------------- Vorteile */
+.bo-kk-vorteile { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+@media (min-width: 720px) { .bo-kk-vorteile { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1280px) { .bo-kk-vorteile { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.bo-kk-vorteil {
+  position: relative; display: flex; flex-direction: column; gap: 10px; min-height: 168px; padding: 20px;
+  border-radius: 20px; background: var(--color-bo-surface-2); box-shadow: inset 0 0 0 var(--bo-hair) var(--color-bo-line);
+  transition: background-color 1200ms ease, transform var(--bo-dauer-weich) var(--ease-feder);
+}
+.bo-kk-vorteil[data-frisch] { background: var(--color-bo-salbei-soft); transition-duration: 0ms; }
+.bo-kk-vorteil[data-aus] { opacity: 0.86; }
+.bo-kk-vorteil__kopf { display: flex; align-items: flex-start; gap: 12px; }
+.bo-kk-vorteil__icon { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--color-bo-surface); color: var(--color-bo-text); box-shadow: var(--bo-sh-btn); }
+.bo-kk-vorteil__titel { font-size: 15px; line-height: 20px; font-weight: 600; color: var(--color-bo-text); outline-offset: 4px; border-radius: 6px; }
+.bo-kk-vorteil__limit { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+.bo-kk-vorteil__text { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.bo-kk-vorteil__balken { height: 4px; border-radius: 4px; background: var(--color-bo-line); overflow: hidden; }
+.bo-kk-vorteil__balken > span { display: block; height: 100%; border-radius: inherit; background: var(--color-bo-cognac); transition: width 400ms var(--bo-ease-out, ease-out); }
+.bo-kk-vorteil__fuss { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.bo-kk-vorteil__grund { font-size: 13px; color: var(--color-bo-text-soft); }
+.bo-kk-gesperrt-liste { margin-top: 24px; display: flex; flex-direction: column; gap: 6px; }
+.bo-kk-gesperrt-liste li { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--color-bo-text-soft); }
+.bo-kk-shake { animation: bo-kk-shake 240ms ease both; }
+@keyframes bo-kk-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 50% { transform: translateX(4px); } 75% { transform: translateX(-4px); } }
+@media (prefers-reduced-motion: reduce) { .bo-kk-shake { animation: none; box-shadow: 0 0 0 2px var(--color-bo-danger); } }
+
+/* --------------------------------------------------------------- Listen */
+.bo-kk-zeilen { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.bo-kk-zeile { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 10px 12px; border-radius: 16px; transition: background-color 160ms ease; position: relative; }
+.bo-kk-zeile + .bo-kk-zeile::before { content: ""; position: absolute; left: 12px; right: 12px; top: 0; height: var(--bo-hair); background: var(--color-bo-line); }
+.bo-kk-zeile:hover, .bo-kk-zeile:focus-within, .bo-kk-zeile[data-aktiv="true"] { background: var(--color-bo-surface-2); }
+.bo-kk-zeile:hover::before, .bo-kk-zeile:hover + .bo-kk-zeile::before, .bo-kk-zeile[data-aktiv="true"]::before, .bo-kk-zeile[data-aktiv="true"] + .bo-kk-zeile::before { background: transparent; }
+.bo-kk-zeile__icon { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--color-bo-fill); color: var(--color-bo-text); }
+.bo-kk-zeile__icon[data-ton="cognac"] { background: var(--color-bo-cognac-soft); color: var(--color-bo-cognac-text); }
+.bo-kk-zeile__icon[data-ton="salbei"] { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+.bo-kk-zeile__icon[data-ton="eiche"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-kk-zeile__icon[data-ton="see"] { background: var(--color-bo-see-soft); color: var(--color-bo-see-text); }
+.bo-kk-zeile__icon[data-ton="ziegel"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.bo-kk-zeile__text { min-width: 0; flex: 1; }
+.bo-kk-zeile__titel { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--color-bo-text); }
+.bo-kk-zeile__unter { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-kk-zeile__zeit { flex: none; font-size: 12px; color: var(--color-bo-text-faint); font-variant-numeric: tabular-nums; }
+a.bo-kk-zeile__link::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
+.bo-kk-unter { display: block; font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-kk-warn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-bo-eiche-text); }
+.bo-kk-warn::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--color-bo-eiche); }
+.bo-kk-mono { font-variant-numeric: tabular-nums; letter-spacing: 0.03em; font-weight: 600; }
+.bo-kk-durch { text-decoration: line-through; color: var(--color-bo-text-soft); }
+.bo-kk-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* Suche / Scanfeld */
+.bo-kk-scan { position: relative; display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1 1 320px; max-width: 520px; }
+.bo-kk-scan__feld {
+  width: 100%; height: 44px; padding: 0 16px 0 44px; border: 0; border-radius: 999px;
+  background: var(--color-bo-surface); color: var(--color-bo-text); font: inherit; font-size: 15px;
+  box-shadow: var(--bo-sh-btn); transition: box-shadow 200ms ease;
+}
+.bo-kk-scan__feld::placeholder { color: var(--color-bo-text-faint); }
+.bo-kk-scan__feld:focus { outline: none; box-shadow: 0 0 0 2px var(--color-bo-focus), var(--bo-sh-btn); }
+.bo-kk-scan__lupe { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--color-bo-text-soft); pointer-events: none; }
+.bo-kk-scan__liste { position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 30; padding: 6px; border-radius: 20px; background: var(--color-bo-mat-strong); -webkit-backdrop-filter: blur(40px) saturate(180%); backdrop-filter: blur(40px) saturate(180%); box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float); }
+.bo-kk-scan__treffer { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 0 12px; border-radius: 14px; text-align: left; font-size: 14px; color: var(--color-bo-text); }
+.bo-kk-scan__treffer[aria-selected="true"], .bo-kk-scan__treffer:hover { background: var(--color-bo-fill-2); }
+.bo-kk-scan__meldung { margin-top: 6px; font-size: 13px; color: var(--color-bo-ziegel-text); }
+
+/* Werkzeugleiste über Listen */
+.bo-kk-werkzeuge { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; min-width: 0; }
+.bo-kk-auswahl {
+  height: 40px; padding: 0 36px 0 16px; border: 0; border-radius: 999px; font: inherit; font-size: 14px; font-weight: 500;
+  color: var(--color-bo-text); background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 18px) 18px, calc(100% - 13px) 18px; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat;
+}
+.bo-kk-auswahl:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--color-bo-focus), var(--bo-sh-btn); }
+.bo-kk-auswahl--klein { height: 32px; padding-left: 10px; padding-right: 28px; font-size: 13px; background-position: calc(100% - 14px) 14px, calc(100% - 9px) 14px; box-shadow: none; background-color: transparent; }
+.bo-kk-auswahl--klein:hover { background-color: var(--color-bo-fill); }
+
+/* Formularfelder (eingelassen) */
+.bo-kk-feld {
+  display: block; width: 100%; min-height: 44px; padding: 10px 14px; border: 0; border-radius: 14px;
+  font: inherit; font-size: 15px; color: var(--color-bo-text);
+  background: var(--color-bo-surface-2); box-shadow: inset 0 0 0 var(--bo-hair) var(--color-bo-line-strong);
+  transition: box-shadow 200ms ease;
+}
+textarea.bo-kk-feld { min-height: 88px; resize: vertical; line-height: 22px; }
+.bo-kk-feld::placeholder { color: var(--color-bo-text-faint); }
+.bo-kk-feld:focus { outline: none; box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-kk-feld[aria-invalid="true"] { box-shadow: inset 0 0 0 1.5px var(--color-bo-danger); }
+.bo-kk-feld[data-konflikt] { box-shadow: inset 0 0 0 1.5px var(--color-bo-eiche); }
+.bo-kk-label { display: block; margin-bottom: 6px; font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-kk-hilfe { margin-top: 6px; font-size: 12px; line-height: 16px; color: var(--color-bo-text-faint); }
+.bo-kk-fehler { margin-top: 6px; font-size: 13px; line-height: 18px; color: var(--color-bo-ziegel-text); }
+.bo-kk-raster { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+@media (min-width: 640px) { .bo-kk-raster[data-spalten="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Chips (Auswahl als Pillen) */
+.bo-kk-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.bo-kk-chip {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 14px; border-radius: 999px;
+  font-size: 14px; font-weight: 500; color: var(--color-bo-text-soft); background: var(--color-bo-fill);
+  transition: background-color 160ms ease, color 160ms ease, transform var(--bo-dauer-weich) var(--ease-feder);
+}
+.bo-kk-chip:hover { color: var(--color-bo-text); background: var(--color-bo-fill-2); }
+.bo-kk-chip[aria-checked="true"], .bo-kk-chip[aria-pressed="true"], .bo-kk-chip[aria-current="true"] { background: var(--color-bo-action); color: var(--color-bo-action-text); }
+.bo-kk-chip:active { transform: scale(0.97); transition-duration: var(--bo-dauer-druck); }
+.bo-kk-chip[aria-disabled="true"] { opacity: 0.55; pointer-events: none; }
+.bo-kk-chip__n { font-variant-numeric: tabular-nums; opacity: 0.7; }
+
+/* Häkchen-Zeilen (Einwilligungen) */
+.bo-kk-haken { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border-radius: 16px; background: var(--color-bo-surface-2); font-size: 14px; line-height: 20px; color: var(--color-bo-text); cursor: pointer; }
+.bo-kk-haken input { flex: none; margin-top: 2px; width: 20px; height: 20px; accent-color: var(--color-bo-action); }
+.bo-kk-haken__pflicht { margin-left: auto; flex: none; font-size: 12px; color: var(--color-bo-text-faint); }
+
+/* Fakten 2-spaltig */
+.bo-kk-fakten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; }
+.bo-kk-fakten dt { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-kk-fakten dd { margin: 2px 0 0; font-size: 15px; line-height: 22px; color: var(--color-bo-text); overflow-wrap: anywhere; }
+
+/* Heute-Leiste (Arbeitszähler als Pillen) */
+.bo-kk-heute { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.bo-kk-heute__chip { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 6px 0 16px; border-radius: 999px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); font-size: 14px; font-weight: 500; color: var(--color-bo-text); transition: transform var(--bo-dauer-weich) var(--ease-feder); }
+.bo-kk-heute__chip:hover { transform: translateY(-1px); }
+.bo-kk-heute__chip[aria-disabled="true"] { color: var(--color-bo-text-faint); box-shadow: inset 0 0 0 var(--bo-hair) var(--color-bo-line); background: transparent; pointer-events: none; }
+.bo-kk-heute__n { display: grid; place-items: center; min-width: 28px; height: 28px; padding: 0 8px; border-radius: 999px; background: var(--color-bo-action); color: var(--color-bo-action-text); font-size: 13px; font-variant-numeric: tabular-nums; }
+.bo-kk-heute__chip[aria-disabled="true"] .bo-kk-heute__n { background: var(--color-bo-fill); color: var(--color-bo-text-faint); }
+
+/* Stufen-Balken (Karten je Stufe) */
+.bo-kk-stufenbalken { display: flex; flex-direction: column; gap: 14px; }
+.bo-kk-stufenbalken__zeile { display: grid; grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) 48px; align-items: center; gap: 12px; font-size: 13px; }
+.bo-kk-stufenbalken__spur { height: 12px; border-radius: 999px; background: var(--color-bo-fill); overflow: hidden; }
+.bo-kk-stufenbalken__wert { display: block; height: 100%; border-radius: 999px; background: var(--kk-farbe, var(--color-bo-ink)); transform-origin: left; animation: bo-kk-wachsen 900ms var(--ease-feder-weich, ease-out) both; animation-delay: calc(var(--i, 0) * 40ms + 200ms); }
+@keyframes bo-kk-wachsen { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .bo-kk-stufenbalken__wert { animation: none; } }
+.bo-kk-stufenbalken__n { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* Stufenplan */
+.bo-kk-plan { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+@media (min-width: 1100px) { .bo-kk-plan { grid-template-columns: repeat(var(--kk-spalten, 3), minmax(0, 1fr)) minmax(260px, 320px); } }
+.bo-kk-plan__spalte { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.bo-kk-plan__kopf { display: flex; flex-direction: column; gap: 8px; width: 100%; padding: 4px; border-radius: 16px; text-align: left; }
+.bo-kk-plan__kopf:focus-visible { outline: 2px solid var(--color-bo-focus); outline-offset: 2px; }
+.bo-kk-plan__zuordnung { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 8px 8px 8px 12px; border-radius: 14px; background: var(--color-bo-surface-2); font-size: 14px; }
+.bo-kk-plan__zuordnung[draggable="true"] { cursor: grab; }
+.bo-kk-plan__zuordnung[data-zieht] { opacity: 0.5; }
+.bo-kk-plan__ziel[data-ueber] { box-shadow: inset 0 0 0 1.5px var(--color-bo-ink); border-radius: 20px; }
+.bo-kk-plan__erbt { font-size: 12px; color: var(--color-bo-text-faint); }
+
+/* Ergebnis (nach Ausstellen) */
+.bo-kk-ergebnis { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; padding: 8px 0; }
+
+/* Kundenmodus (Vollbild, Sie-Form, 18 px) */
+.bo-kk-km { min-height: 100dvh; padding: 32px 24px 48px; background: var(--color-bo-bg); color: var(--color-bo-text); font-size: 18px; line-height: 28px; }
+.bo-kk-km__innen { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+.bo-kk-km__marke { font-family: var(--font-display); letter-spacing: 0.3em; font-size: 18px; text-align: center; padding: 8px 16px; border-radius: 999px; user-select: none; touch-action: none; position: relative; align-self: center; }
+.bo-kk-km__ring { position: absolute; inset: -4px; border-radius: 999px; box-shadow: 0 0 0 2px var(--color-bo-cognac); opacity: 0; transform: scale(0.9); transition: opacity 120ms ease, transform 800ms linear; }
+.bo-kk-km__marke[data-drueckt] .bo-kk-km__ring { opacity: 1; transform: scale(1); }
+
+/* Leitung bitten / gesperrte Hinweise */
+.bo-kk-satz { font-size: 12px; line-height: 16px; color: var(--color-bo-text-faint); }
+
+@supports (corner-shape: superellipse(1.4)) {
+  .bo-kk-vorteil, .bo-kk-mini__seite, .bo-kk-scan__liste { corner-shape: superellipse(1.35); }
+}
+@media print {
+  .bo-kk-werkzeuge, .bo-kk-kopf__aktionen { display: none; }
+}
+
+@media (max-width: 640px) { .bo-kk-leiter { flex-direction: column; align-items: flex-start; gap: 8px; } .bo-kk-leiter__linie { display: none; } .bo-kk-mini[data-gross] { width: 100%; max-width: 320px; height: auto; aspect-ratio: 85.6 / 54; } }

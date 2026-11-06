@@ -29,6 +29,7 @@
   "bestell_email_vorlage",
   "cb_bestellung",
   "standard_lieferadresse",
+  "eigene_gln",
   "bestell_druckformat"
  ],
  "fields": [
@@ -165,6 +166,12 @@
    "default": "Platzhirsch Home Living\nLandstraße 11\n6911 Lochau, Österreich"
   },
   {
+   "fieldname": "eigene_gln",
+   "fieldtype": "Data",
+   "label": "Eigene GLN (Platzhirsch)",
+   "description": "Für EDI/IWOfurn-Export; ohne GLN sind diese Exporte gesperrt."
+  },
+  {
    "fieldname": "bestell_druckformat",
    "fieldtype": "Link",
    "label": "Druckformat Bestellung",
@@ -174,7 +181,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 20:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Sortiment",
  "name": "PH Sortiment Einstellungen",

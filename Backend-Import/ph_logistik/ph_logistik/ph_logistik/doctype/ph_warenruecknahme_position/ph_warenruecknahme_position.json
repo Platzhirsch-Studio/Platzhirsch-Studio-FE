@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Zurückgenommener Artikel mit Zustand, Entscheidung und Buchung.",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "produkt",
+  "beschreibung",
+  "ausfuehrung_text",
+  "seriennummer",
+  "menge",
+  "lieferschein_position",
+  "zustand",
+  "entscheidung",
+  "platz",
+  "foto",
+  "hinweis",
+  "gebucht",
+  "lagerbewegung"
+ ],
+ "fields": [
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "ausfuehrung_text",
+   "fieldtype": "Data",
+   "label": "Ausführung"
+  },
+  {
+   "fieldname": "seriennummer",
+   "fieldtype": "Data",
+   "label": "Seriennummer"
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Int",
+   "label": "Menge",
+   "default": "1",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "lieferschein_position",
+   "fieldtype": "Data",
+   "label": "Lieferschein-Position",
+   "read_only": 1
+  },
+  {
+   "fieldname": "zustand",
+   "fieldtype": "Select",
+   "label": "Zustand",
+   "options": "\nNeuwertig\nB-Ware\nDefekt",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "entscheidung",
+   "fieldtype": "Select",
+   "label": "Entscheidung",
+   "options": "\nWiedereinlagern\nB-Ware\nAusbuchen\nAn Lieferant",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "platz",
+   "fieldtype": "Data",
+   "label": "Lagerplatz"
+  },
+  {
+   "fieldname": "foto",
+   "fieldtype": "Attach Image",
+   "label": "Foto"
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis"
+  },
+  {
+   "fieldname": "gebucht",
+   "fieldtype": "Check",
+   "label": "Gebucht",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lagerbewegung",
+   "fieldtype": "Link",
+   "label": "Lagerbewegung",
+   "options": "PH Lagerbewegung",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Warenruecknahme Position",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

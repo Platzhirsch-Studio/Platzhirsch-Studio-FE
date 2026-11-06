@@ -8,7 +8,7 @@
   "private": 0,
   "show_labels": 1,
   "filters": "[[\"PH Projekt\",\"status\",\"not in\",[\"Abgeschlossen\",\"Abgebrochen\"]]]",
-  "fields": "[\"titel\",\"kunde_name\",\"projektart\",\"berater\",\"liefertermin_geplant\"]",
+  "fields": "[\"titel\",\"kunde_name\",\"projektart\",\"berater\",\"planer\",\"liefertermin_geplant\"]",
   "columns": [
    {"column_name": "Anfrage", "indicator": "Blue", "status": "Active", "order": "[]"},
    {"column_name": "Planung", "indicator": "Cyan", "status": "Active", "order": "[]"},

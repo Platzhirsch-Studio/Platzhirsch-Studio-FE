@@ -75,3 +75,9 @@ CLAUDE.md
 # Python (Backend-Import)
 __pycache__/
 *.pyc
+
+# Backoffice (eigene Next-App unter backoffice/)
+/backoffice/.next/
+/backoffice/test-results/
+/backoffice/playwright-report/
+/backoffice/qa-screenshots/

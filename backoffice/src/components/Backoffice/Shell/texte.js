@@ -1,0 +1,131 @@
+// Texte der Shell v2 (Team P0-7, G-15 · G-20 · G-26 · G-27). Deutsch, kurz, ohne Technikbegriffe,
+// keine Superlative, keine erfundenen Zahlen. Satzschreibung (Lounge: nie VERSALIEN).
+
+export const TEXTE = {
+  zumInhalt: "Zum Inhalt springen",
+  marke: "PLATZHIRSCH",
+  markeUnter: "Home Living · Lochau",
+  markeLabel: "Platzhirsch Home Living, Zentrale",
+  leiste: "Bereiche",
+  leisteBeschriften: "Bereichsnamen zeigen",
+  leisteKompakt: "Nur Symbole zeigen",
+  mehrBereiche: "Alle Bereiche",
+  reiter: "Unterbereiche",
+  reiterMehr: "Mehr",
+
+  // Werkzeuge in der Kopfzeile
+  suche: "Suchen",
+  sucheKuerzel: "Strg K",
+  neu: "Neu anlegen",
+  neuLeer: "Für deine Rollen gibt es hier nichts anzulegen.",
+  hilfe: "Hilfe",
+  themaWechsel: "Hell oder dunkel",
+
+  // Testband (QA-Befund 10: steht im Fluss, überdeckt nichts)
+  testmodus: "Testmodus",
+  testsystem: "Testsystem",
+  testmodusLang: "Beispieldaten im Speicher, ohne Frappe. Änderungen gehen beim Neustart verloren.",
+  testmodusKurz: "Beispieldaten",
+  testsystemLang: (host) => `Verbunden mit ${host}.`,
+
+  // Befehlspalette v2
+  palette: "Suche und Befehle",
+  paletteLabel: "Suchbegriff",
+  palettePlatzhalter: "Bereich, Aktion, Nummer oder Name …",
+  paletteSucht: "Suche läuft …",
+  paletteLeer: "Keine Treffer.",
+  paletteFehler: "Die Suche ist gerade nicht erreichbar.",
+  paletteHinweis: "Präfixe: > Aktionen · / Bereiche · # Nummer · @ Person · ? Hilfe",
+  paletteBetrag: (b) => `Betrag ${b} erkannt – Treffer in Belegen erscheinen, sobald die Betragssuche im Backend bereitsteht.`,
+  praefixe: {
+    ">": "Aktionen",
+    "/": "Bereiche",
+    "#": "Nummer",
+    "@": "Person",
+    "?": "Hilfe",
+  },
+  praefixEntfernen: (p) => `Filter „${p}“ entfernen`,
+  gruppeDieserDatensatz: "Dieser Datensatz",
+  gruppeHilfe: "Hilfe",
+  zurListe: "Zurück zur Liste",
+  nummerKopieren: (n) => `Nummer ${n} kopieren`,
+  nummerKopiert: "Nummer kopiert.",
+  esc: "Esc",
+
+  // Glocke v2
+  glocke: "Mitteilungen",
+  glockeLabel: (n) => (n > 0 ? `Mitteilungen, ${n} neu` : "Mitteilungen"),
+  glockeTabs: { "fuer-mich": "Für mich", team: "Team", system: "System" },
+  glockeLeer: { "fuer-mich": "Nichts offen für dich.", team: "Im Team ist nichts offen.", system: "Keine Systemmeldungen." },
+  glockeGruppen: { heute: "Heute", gestern: "Gestern", aelter: "Älter" },
+  alleGelesen: "Alle als gelesen markieren",
+  alleAufgaben: "Alle Aufgaben anzeigen",
+  gelesen: "Als gelesen markieren",
+  glockeTasten: "↑↓ wählen · Enter öffnen · ←→ Reiter · R gelesen · F Freigabe",
+  glockeFehler: "Mitteilungen konnten nicht geladen werden.",
+  neuPunkt: "neu",
+
+  // Freigaben (G-15, Q-C7)
+  freigeben: "Freigeben",
+  ablehnen: "Ablehnen",
+  eigenerAntrag: "Eigener Antrag – zweite Person nötig",
+  ablehnGrund: "Grund der Ablehnung",
+  ablehnGrundHinweis: "Pflichtfeld, geht an die antragstellende Person.",
+  ablehnSenden: "Ablehnung senden",
+  ablehnWird: (s) => `Ablehnung wird in ${s} s gesendet`,
+  rueckgaengig: "Rückgängig",
+  abbrechen: "Abbrechen",
+  freigabeFrage: (titel, betrag) => (betrag ? `${titel} über ${betrag} freigeben?` : `${titel} freigeben?`),
+  freigabeFolgeStandard: "Die Freigabe wird sofort wirksam und im Verlauf vermerkt.",
+  freigegeben: "Freigegeben.",
+  abgelehnt: "Abgelehnt.",
+  antragVon: (n) => `Antrag von ${n}`,
+
+  // Benutzermenü
+  benutzermenu: (n) => `Benutzermenü ${n}`,
+  rollen: "Rollen",
+  arbeitsplatz: "Arbeitsplatz",
+  arbeitsplatzAktiv: "aktiv",
+  dieserGeraet: "Dieses Gerät",
+  pinAendern: "PIN ändern",
+  darstellung: "Darstellung",
+  thema: { light: "Hell", dark: "Dunkel", system: "System" },
+  dichte: "Dichte",
+  dichteWerte: { auto: "Automatisch", kompakt: "Kompakt", komfortabel: "Komfortabel" },
+  einzeltasten: "Einzeltasten-Kürzel",
+  einzeltastenHinweis: "Aus: nur Kürzel mit Strg oder F-Taste.",
+  tastenkuerzel: "Tastenkürzel",
+  abmelden: "Abmelden",
+
+  // PIN
+  pinTitel: "PIN ändern",
+  pinText: "Die PIN gilt für den Bedienerwechsel an Kassa und Packtisch. 4 bis 6 Ziffern.",
+  pinNeu: "Neue PIN",
+  pinWiederholen: "PIN wiederholen",
+  pinSpeichern: "PIN speichern",
+  pinUngleich: "Die beiden Eingaben stimmen nicht überein.",
+  pinFormat: "PIN muss aus 4 bis 6 Ziffern bestehen.",
+  pinGespeichert: "PIN gespeichert.",
+
+  // Hilfe-Panel (K-24)
+  hilfeTitel: "Hilfe zu dieser Seite",
+  hilfeKeinArtikel: "Für diese Seite gibt es noch keinen Hilfe-Artikel.",
+  hilfeAlle: "Alle Hilfe-Artikel",
+  hilfeWasTun: "Was kann ich hier tun?",
+  hilfeKuerzel: "Kürzel auf dieser Seite",
+  hilfeAlleKuerzel: "Alle Tastenkürzel",
+  hilfeLaedt: "Hilfe wird geladen …",
+  hilfeFehler: "Die Hilfe ist gerade nicht erreichbar.",
+  schliessen: "Schließen",
+
+  // Sitzung (Q-E5)
+  sitzungBald: "Deine Sitzung endet in 2 Minuten.",
+  sitzungNeuAnmelden: "Neu anmelden",
+  sitzungAbgelaufen: "Sitzung abgelaufen",
+  sitzungText: "Deine Eingaben auf dieser Seite bleiben erhalten. Melde dich in einem neuen Fenster an und arbeite dann hier weiter.",
+  sitzungFenster: "In neuem Fenster anmelden",
+  sitzungWeiter: "Ich bin wieder angemeldet",
+  sitzungNochNicht: "Noch keine gültige Anmeldung gefunden.",
+};
+
+export default TEXTE;

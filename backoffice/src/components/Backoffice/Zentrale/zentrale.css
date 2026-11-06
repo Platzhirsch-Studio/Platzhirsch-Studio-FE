@@ -1,0 +1,270 @@
+/* Zentrale im Lounge-Stil (art-direction/lounge.md § 6/7.1/8/12; Entwurf src/app/entwurf/lounge/lounge.css).
+   Nur Token aus globals.css (--color-bo-*, --bo-sh-*, Radien, Federn) – keine Rahmen als Gliederung,
+   Fläche + Schatten + Abstand. Präfix zb- (Zentrale Bento). Team B-ZEN. */
+
+/* ------------------------------------------------------------ Bento-Plan (12 Spalten, Heute über zwei Reihen) */
+.zb-raster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--bo-bento-gap, 24px); }
+.zb-raster > * { min-width: 0; grid-column: span 2; }
+/* iPhone (Lounge § 12): Akzentkacheln paarweise nebeneinander */
+.zb-raster > [data-b="2"] { grid-column: span 1; }
+@media (min-width: 768px) {
+  .zb-raster { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-flow: row dense; }
+  .zb-raster > * { grid-column: span 6; }
+  .zb-raster > [data-b="2"], .zb-raster > [data-b="4"] { grid-column: span 3; }
+}
+@media (min-width: 1200px) {
+  .zb-raster { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-flow: row dense; }
+  .zb-raster > [data-b="2"] { grid-column: span 2; }
+  .zb-raster > [data-b="3"] { grid-column: span 3; }
+  .zb-raster > [data-b="4"] { grid-column: span 4; }
+  .zb-raster > [data-b="5"] { grid-column: span 5; }
+  .zb-raster > [data-b="6"] { grid-column: span 6; }
+  .zb-raster > [data-b="7"] { grid-column: span 7; }
+  .zb-raster > [data-b="8"] { grid-column: span 8; }
+  .zb-raster > [data-b="9"] { grid-column: span 9; }
+  .zb-raster > [data-b="12"] { grid-column: span 12; }
+  .zb-raster > [data-hoch] { grid-row: span 2; }
+}
+.zb-raster > * > .bo-kachel, .zb-raster > * > .bo-akzent { height: 100%; }
+/* Erscheinen mit sanfter Feder, gestaffelt 30 ms (Lounge § 8) – Raster steht vor dem Inhalt, kein Springen. */
+@media (prefers-reduced-motion: no-preference) {
+  .zb-raster > * { animation: zb-ein 700ms var(--ease-feder-weich, cubic-bezier(.2,.8,.2,1)) both; animation-delay: calc(var(--i, 0) * 30ms); }
+}
+@keyframes zb-ein { from { opacity: 0; transform: translateY(12px) scale(.985); } }
+
+/* ------------------------------------------------------------ Kopf: Begrüßung 56/300 + drei Zahlen + Aktionen */
+.zb-gruss { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 8px 0 32px; }
+@media (min-width: 1200px) { .zb-gruss { grid-template-columns: minmax(0, 1fr) auto auto; align-items: end; gap: 40px; padding-bottom: 40px; } }
+.zb-gruss__ueber { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.zb-gruss__titel { margin-top: 8px; font-size: 38px; line-height: 42px; font-weight: 300; letter-spacing: -0.03em; color: var(--color-bo-text-soft); font-optical-sizing: auto; }
+@media (min-width: 768px) { .zb-gruss__titel { font-size: 56px; line-height: 60px; letter-spacing: -0.035em; } }
+.zb-gruss__titel > span { display: block; color: var(--color-bo-text); font-weight: 400; }
+.zb-zahlen { display: flex; flex-wrap: wrap; align-items: stretch; row-gap: 16px; padding-bottom: 6px; }
+.zb-zahl { display: flex; flex-direction: column; gap: 8px; padding: 0 16px; min-width: 0; }
+@media (min-width: 768px) { .zb-zahl { padding: 0 28px; } }
+.zb-zahl:first-child { padding-left: 0; }
+.zb-zahl + .zb-zahl { border-left: var(--bo-hair, 1px) solid var(--color-bo-line-strong); }
+.zb-zahl dt { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); white-space: nowrap; }
+.zb-zahl dd { font-size: 28px; line-height: 32px; font-weight: 400; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: var(--color-bo-text); white-space: nowrap; }
+@media (min-width: 768px) { .zb-zahl dd { font-size: 34px; line-height: 36px; } }
+.zb-zahl dd small { font-size: 17px; letter-spacing: -0.01em; color: var(--color-bo-text-soft); margin-left: 3px; }
+.zb-zahl a { border-radius: 12px; outline-offset: 4px; }
+.zb-gruss__akt { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-bottom: 6px; }
+
+/* Heute-Leiste: weiche Chips (Material, nie Ampel-Kästen) */
+.zb-chips { display: flex; gap: 8px; margin: -16px 0 28px; overflow-x: auto; scrollbar-width: none; padding: 2px; }
+.zb-chips::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) { .zb-chips { flex-wrap: wrap; overflow: visible; } }
+.zb-chip { display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 999px; font-size: 13px; font-weight: 500; white-space: nowrap; flex: none;
+  background: var(--color-bo-surface); color: var(--color-bo-text); box-shadow: var(--bo-sh-btn); transition: transform 160ms ease, box-shadow 200ms ease; }
+.zb-chip:hover { box-shadow: var(--bo-sh-card); }
+.zb-chip:active { transform: scale(.97); }
+.zb-chip__punkt { width: 7px; height: 7px; border-radius: 999px; background: var(--color-bo-stein); flex: none; }
+.zb-chip[data-ton="rot"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.zb-chip[data-ton="rot"] .zb-chip__punkt { background: var(--color-bo-ziegel); }
+.zb-chip[data-ton="sand"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.zb-chip[data-ton="sand"] .zb-chip__punkt { background: var(--color-bo-eiche); }
+.zb-chips__leer { font-size: 13px; color: var(--color-bo-text-soft); height: 32px; display: inline-flex; align-items: center; }
+
+/* ------------------------------------------------------------ Heute-Spalte */
+.zb-heute { padding: 20px; }
+.zb-heute .bo-kachel__kopf { padding: 4px 4px 0; margin-bottom: 16px; }
+.zb-cap { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.zb-h3 { font-size: 17px; line-height: 24px; font-weight: 600; letter-spacing: -0.012em; color: var(--color-bo-text); }
+.zb-now { border-radius: calc(var(--radius-bo-kachel, 28px) - 8px); background: var(--color-bo-surface-2); padding: 20px; display: flex; flex-direction: column; gap: 16px;
+  box-shadow: inset 0 0 0 var(--bo-hair, 1px) var(--color-bo-line); }
+.zb-now__wer { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.zb-now__name { font-size: 17px; line-height: 22px; font-weight: 600; letter-spacing: -0.012em; }
+.zb-now__art { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-cognac-text); }
+.zb-now__fakten { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.zb-now__fakten dt { font-size: 12px; color: var(--color-bo-text-soft); }
+.zb-now__fakten dd { font-size: 15px; font-weight: 600; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.zb-now__notiz { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.zb-now__akt { display: flex; gap: 8px; align-items: center; }
+.zb-now__akt > :first-child { flex: 1; min-width: 0; justify-content: center; }
+.zb-laeuft { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--color-bo-salbei-text); }
+.zb-laeuft::before { content: ""; width: 7px; height: 7px; border-radius: 999px; background: var(--color-bo-salbei); box-shadow: 0 0 0 3px var(--color-bo-salbei-soft); }
+.zb-next { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.zb-next__i { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; border-radius: 16px; background: var(--color-bo-surface-2);
+  transition: background-color 200ms ease, transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease); color: inherit; }
+.zb-next__i:hover { background: var(--color-bo-surface-3); }
+.zb-next__i:active { transform: scale(.98); }
+.zb-next__name { font-size: 15px; font-weight: 500; line-height: 20px; }
+.zb-next__art { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.zb-next__art[data-ton="cognac"] { color: var(--color-bo-cognac-text); }
+.zb-next__art[data-ton="see"] { color: var(--color-bo-see-text); }
+.zb-next__art[data-ton="salbei"] { color: var(--color-bo-salbei-text); }
+.zb-next__zeit { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; flex: none; }
+
+/* ------------------------------------------------------------ Braucht deine Antwort */
+.zb-wartet__q { margin-top: 12px; padding-left: 16px; border-left: 2px solid var(--color-bo-text); font-size: 20px; line-height: 28px; font-weight: 400; letter-spacing: -0.016em; max-width: 34ch; color: var(--color-bo-text); }
+.zb-wartet__von { margin: 12px 0 0 18px; font-size: 13px; color: var(--color-bo-text-soft); }
+.zb-wartet__von b { color: var(--color-bo-cognac-text); font-weight: 500; }
+
+/* ------------------------------------------------------------ Pipeline */
+.zb-pipe__sum { display: flex; flex-wrap: wrap; row-gap: 12px; margin: -4px 0 24px; }
+.zb-pipe__sum > div { display: flex; flex-direction: column; gap: 2px; padding-right: 24px; min-width: 0; }
+.zb-pipe__sum > div + div { padding-left: 24px; border-left: var(--bo-hair, 1px) solid var(--color-bo-line-strong); }
+.zb-gross { font-size: 34px; line-height: 36px; font-weight: 400; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: var(--color-bo-text); }
+.zb-gross small { font-size: 15px; color: var(--color-bo-text-soft); letter-spacing: -0.01em; }
+.zb-leise { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.zb-pipe__reihen { display: flex; flex-direction: column; gap: 14px; margin-top: auto; }
+.zb-pipe__reihe { display: grid; grid-template-columns: 84px minmax(0, 1fr) 32px 76px; align-items: center; gap: 12px; font-size: 13px; }
+.zb-pipe__label { color: var(--color-bo-text-soft); font-weight: 500; }
+.zb-pipe__spur { height: 12px; border-radius: 999px; background: var(--color-bo-fill); overflow: hidden; }
+.zb-pipe__balken { display: block; height: 100%; width: var(--w); border-radius: 999px; background: var(--color-chart-soft); transform-origin: left; }
+.zb-pipe__balken[data-hi] { background: var(--color-chart-1); }
+.zb-pipe__n { font-weight: 600; text-align: right; font-size: 15px; font-variant-numeric: tabular-nums; }
+.zb-pipe__wert { text-align: right; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (prefers-reduced-motion: no-preference) {
+  .zb-pipe__balken { animation: zb-wachsen-x 900ms var(--ease-feder-weich, ease) both; animation-delay: calc(var(--i, 0) * 40ms + 200ms); }
+  .zb-balken__bar { animation: zb-wachsen-y 900ms var(--ease-feder-weich, ease) both; animation-delay: calc(var(--i, 0) * 40ms + 200ms); }
+}
+@keyframes zb-wachsen-x { from { transform: scaleX(0); } }
+@keyframes zb-wachsen-y { from { transform: scaleY(0); } }
+
+/* ------------------------------------------------------------ Umsatz-Balken */
+.zb-trend { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; font-size: 13px; font-weight: 500; white-space: nowrap; background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+.zb-trend[data-ton="ab"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.zb-balken { flex: 1; min-height: 148px; display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); gap: 12px; margin-top: 20px; align-items: end; }
+.zb-balken__spalte { position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; border-radius: 12px; outline-offset: 4px; }
+.zb-balken__bar { width: 100%; max-width: 36px; height: max(var(--h), 4px); border-radius: 10px 10px 4px 4px; background: var(--color-chart-soft); transform-origin: bottom; transition: background-color 200ms ease; }
+.zb-balken__bar[data-hi] { background: var(--color-chart-1); }
+.zb-balken__bar[data-lauf] { background: repeating-linear-gradient(135deg, var(--color-chart-soft) 0 4px, transparent 4px 8px); box-shadow: inset 0 0 0 1px var(--color-chart-soft); }
+.zb-balken__m { font-size: 12px; color: var(--color-bo-text-soft); }
+.zb-balken__m[data-hi] { color: var(--color-bo-text); font-weight: 600; }
+.zb-balken__tip { position: absolute; bottom: calc(var(--h) + 32px); padding: 4px 8px; border-radius: 8px; font-size: 12px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums;
+  background: var(--color-bo-action); color: var(--color-bo-action-text); opacity: 0; translate: 0 4px; pointer-events: none; transition: opacity 160ms ease, translate 300ms var(--ease-feder-weich, ease); }
+.zb-balken__spalte:hover .zb-balken__tip, .zb-balken__spalte:focus-visible .zb-balken__tip { opacity: 1; translate: 0 0; }
+
+/* ------------------------------------------------------------ Tabelle in Kachel (Projekte, Aufgaben) */
+.zb-tabelle { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 14px; }
+.zb-tabelle th { text-align: left; font-size: 12px; font-weight: 500; color: var(--color-bo-text-soft); padding: 0 12px 12px; white-space: nowrap; }
+.zb-tabelle td { padding: 12px; vertical-align: middle; border-top: var(--bo-hair, 1px) solid var(--color-bo-line); }
+.zb-tabelle tbody tr { transition: background-color 160ms ease; }
+.zb-tabelle tbody tr:hover td { background: var(--color-bo-surface-2); border-top-color: transparent; }
+.zb-tabelle tbody tr:hover + tr td { border-top-color: transparent; }
+.zb-tabelle tbody tr td:first-child { border-radius: 16px 0 0 16px; }
+.zb-tabelle tbody tr td:last-child { border-radius: 0 16px 16px 0; }
+.zb-tabelle .r { text-align: right; white-space: nowrap; }
+.zb-proj { padding: 24px 20px 12px; }
+.zb-proj .bo-kachel__kopf { padding: 0 4px; }
+.zb-zelle-proj { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.zb-thumb { position: relative; width: 56px; height: 56px; border-radius: 16px; overflow: hidden; flex: none; background: var(--color-bo-surface-3); }
+.zb-thumb img { object-fit: cover; }
+.zb-stark { font-weight: 600; color: var(--color-bo-text); }
+.zb-zelle-next { font-size: 14px; margin-bottom: 8px; white-space: nowrap; }
+.zb-fortschritt { display: block; width: 140px; max-width: 100%; height: 4px; border-radius: 999px; background: var(--color-bo-fill-2); overflow: hidden; }
+.zb-fortschritt > span { display: block; height: 100%; width: var(--w); background: var(--color-chart-1); border-radius: inherit; }
+.zb-proj__karten { display: grid; gap: 12px; }
+@media (min-width: 768px) { .zb-proj__karten { display: none; } }
+@media (max-width: 767.98px) { .zb-proj__tabelle { display: none; } }
+.zb-proj__karte { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: center; padding: 12px; border-radius: 20px; background: var(--color-bo-surface-2); color: inherit; }
+
+/* ------------------------------------------------------------ Aktivität */
+.zb-akt { display: flex; flex-direction: column; gap: 20px; }
+.zb-akt__i { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: start; }
+.zb-akt__txt { font-size: 14px; line-height: 20px; color: var(--color-bo-text); }
+.zb-akt__txt b { font-weight: 600; }
+.zb-akt__txt a { color: inherit; text-decoration: none; }
+.zb-akt__txt a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ------------------------------------------------------------ Aufgaben-Zeilen (Häkchen-Ziel 24/44) */
+.zb-auf { display: flex; flex-direction: column; gap: 4px; }
+.zb-auf__i { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 8px 12px 8px 8px; border-radius: 16px; transition: background-color 160ms ease, opacity 200ms ease; }
+.zb-auf__i:hover { background: var(--color-bo-surface-2); }
+.zb-auf__i[data-erledigt] .zb-auf__titel { text-decoration: line-through; color: var(--color-bo-text-soft); }
+.zb-haken { position: relative; display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; flex: none; color: var(--color-bo-text-soft);
+  background: transparent; box-shadow: inset 0 0 0 1.5px var(--color-bo-line-control); transition: background-color 160ms ease, box-shadow 160ms ease, transform 80ms ease; }
+.zb-haken::after { content: ""; position: absolute; inset: -8px; }
+@media (pointer: coarse) { .zb-haken { width: 32px; height: 32px; } .zb-haken::after { inset: -6px; } }
+.zb-haken:hover { box-shadow: inset 0 0 0 1.5px var(--color-bo-text); color: var(--color-bo-text); }
+.zb-haken:active { transform: scale(.92); }
+.zb-haken[aria-pressed="true"] { background: var(--color-bo-salbei); box-shadow: none; color: var(--color-bo-surface); }
+.zb-haken svg { opacity: 0; transition: opacity 120ms ease; }
+.zb-haken:hover svg, .zb-haken[aria-pressed="true"] svg { opacity: 1; }
+.zb-auf__titel { font-size: 15px; line-height: 20px; font-weight: 500; color: var(--color-bo-text); min-width: 0; }
+.zb-auf__unter { margin-top: 2px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); min-width: 0; }
+.zb-faellig { font-size: 13px; font-weight: 500; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--color-bo-text-soft); }
+.zb-faellig[data-ton="rot"] { color: var(--color-bo-ziegel-text); }
+.zb-faellig[data-ton="sand"] { color: var(--color-bo-eiche-text); }
+.zb-kennz { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 999px; font-size: 11px; font-weight: 500; background: var(--color-bo-stein-soft); color: var(--color-bo-stein-text); }
+.zb-neu { margin-top: 12px; }
+.zb-neu__feld { display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 8px 0 14px; border-radius: 16px; background: var(--color-bo-fill); transition: background-color 200ms ease, box-shadow 200ms ease; }
+.zb-neu__feld:focus-within { background: var(--color-bo-surface); box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.zb-neu__feld input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; font-size: 14px; color: var(--color-bo-text); }
+.zb-neu__feld input::placeholder { color: var(--color-bo-text-faint); }
+.zb-token { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+
+/* ------------------------------------------------------------ Kennzahlen 2×2, Prüfpunkte, Hub-Karten */
+.zb-kz { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (min-width: 1200px) { [data-b="12"] .zb-kz { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.zb-kz__i { display: flex; flex-direction: column; gap: 6px; padding: 16px; border-radius: 20px; background: var(--color-bo-surface-2); color: inherit; min-width: 0; transition: background-color 200ms ease; }
+a.zb-kz__i:hover { background: var(--color-bo-surface-3); }
+.zb-kz__t { font-size: 13px; color: var(--color-bo-text-soft); font-weight: 500; }
+.zb-kz__w { font-size: 28px; line-height: 32px; font-weight: 400; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.zb-pruef { display: flex; flex-direction: column; gap: 4px; }
+.zb-pruef__i { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 12px 10px 8px; border-radius: 16px; color: inherit; transition: background-color 160ms ease; }
+a.zb-pruef__i:hover { background: var(--color-bo-surface-2); }
+.zb-pruef__sym { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: var(--color-bo-stein-soft); color: var(--color-bo-stein-text); }
+.zb-pruef__sym[data-ok="ja"] { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+.zb-pruef__sym[data-ok="nein"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.zb-pruef__titel { font-size: 14px; font-weight: 500; }
+.zb-pruef__text { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+
+/* Hub-Karten (Verwaltung) und Reiter-Inhalte */
+.zb-hub { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--bo-bento-gap, 24px); }
+@media (min-width: 768px) { .zb-hub { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .zb-hub { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.zb-hub__sym { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 999px; background: var(--color-bo-surface-2); color: var(--color-bo-text); margin-bottom: 20px; }
+.zb-hub__zahl { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); margin-top: 4px; }
+
+/* Formfelder der Einstellungen (Lounge: eingelassene Flächen, Label 13/500 in Satzschreibung) */
+.zb-form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px 24px; }
+@media (min-width: 900px) { .zb-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.zb-feld { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.zb-feld--voll { grid-column: 1 / -1; }
+.zb-feld > label, .zb-feld__label { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.zb-eingabe { height: 44px; padding: 0 14px; border: 0; border-radius: 14px; background: var(--color-bo-fill); color: var(--color-bo-text); font: inherit; font-size: 15px; min-width: 0; width: 100%;
+  transition: background-color 200ms ease, box-shadow 200ms ease; font-variant-numeric: tabular-nums; }
+textarea.zb-eingabe { height: auto; min-height: 88px; padding: 12px 14px; resize: vertical; line-height: 22px; }
+select.zb-eingabe { appearance: none; padding-right: 36px; background-image: linear-gradient(45deg, transparent 50%, var(--color-bo-text-soft) 50%), linear-gradient(135deg, var(--color-bo-text-soft) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 19px, calc(100% - 13px) 19px; background-size: 5px 5px; background-repeat: no-repeat; }
+.zb-eingabe:focus { outline: 0; background: var(--color-bo-surface); box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.zb-eingabe[readonly], .zb-eingabe:disabled { background: var(--color-bo-surface-2); color: var(--color-bo-text-soft); }
+.zb-eingabe[aria-invalid="true"] { box-shadow: 0 0 0 2px var(--color-bo-danger); }
+.zb-feld__hilfe { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.zb-feld__fehler { font-size: 12px; line-height: 16px; color: var(--color-bo-danger); font-weight: 500; }
+.zb-band { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 20px; font-size: 14px; line-height: 20px; background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.zb-band[data-ton="info"] { background: var(--color-bo-fill); color: var(--color-bo-text-soft); }
+.zb-band[data-ton="ok"] { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+.zb-band[data-ton="rot"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.zb-zeilen { display: flex; flex-direction: column; gap: 8px; }
+.zb-zeile { display: grid; gap: 8px 12px; align-items: end; padding: 12px; border-radius: 20px; background: var(--color-bo-surface-2); }
+.zb-zeile--tab { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { .zb-zeile--tab { grid-template-columns: var(--spalten); } }
+.zb-schalterzeile { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 16px; border-radius: 20px; background: var(--color-bo-surface-2); }
+.zb-schalterzeile__titel { font-size: 15px; font-weight: 600; }
+.zb-schalterzeile__text { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); margin-top: 2px; }
+.zb-speicher { position: sticky; bottom: 12px; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 24px; padding: 12px 12px 12px 20px; border-radius: 999px;
+  background: var(--color-bo-mat-strong); -webkit-backdrop-filter: blur(40px) saturate(180%); backdrop-filter: blur(40px) saturate(180%); box-shadow: var(--bo-sh-float); }
+.zb-speicher__text { font-size: 14px; font-weight: 500; color: var(--color-bo-text-soft); }
+.zb-def { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+@media (min-width: 640px) { .zb-def { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .zb-def--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.zb-def > div { padding: 14px 16px; border-radius: 16px; background: var(--color-bo-surface-2); min-width: 0; }
+.zb-def dt { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.zb-def dd { margin-top: 4px; font-size: 15px; line-height: 20px; font-weight: 500; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.zb-scroll { overflow-x: auto; margin: 0 -4px; padding: 0 4px; }
+.zb-liste { display: flex; flex-direction: column; gap: 4px; }
+.zb-liste__i { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 16px; color: inherit; transition: background-color 160ms ease; }
+a.zb-liste__i:hover { background: var(--color-bo-surface-2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .zb-raster > *, .zb-pipe__balken, .zb-balken__bar { animation: none; }
+  .zb-chip, .zb-next__i, .zb-haken { transition-duration: 1ms; }
+}
+@media print {
+  .zb-chips, .zb-gruss__akt, .zb-neu, .zb-speicher { display: none; }
+  .zb-raster > * { animation: none; }
+}

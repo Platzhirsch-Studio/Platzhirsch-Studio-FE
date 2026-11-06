@@ -277,7 +277,9 @@
     "wishlist": "Wish list",
     "allRegions": "All regions",
     "kitchenAppliances": "Kitchen appliances",
-    "badWellness": "Bath & wellness"
+    "badWellness": "Bath & wellness",
+    "customerCard": "Customer card",
+    "complaint": "Report a complaint"
   },
   "MultiStepForm": {
     "formTitle": "Inquiry",
@@ -2103,7 +2105,8 @@
       "moreTitle": "More in the customer portal",
       "closeMenu": "Close menu",
       "room": "Your room",
-      "care": "Care"
+      "care": "Care",
+      "card": "Customer card"
     },
     "demo": {
       "dev": "Demo data from the local development environment – no real customer data, no prices.",
@@ -3282,6 +3285,7 @@
       "amount": "Please enter an amount in whole euros up to 5,000 or leave the field empty.",
       "consent": "Please confirm that your name and greeting may be shown.",
       "already_reserved": "Someone else has just reserved this piece.",
+      "conflict": "The list has just been changed elsewhere. We have loaded the current version. Please check it and try again.",
       "rate_limited": "Too many attempts in a short time. Please try again in a few minutes.",
       "unavailable": "Sharing is not possible right now. Please try again later.",
       "not_found": "This gift list is no longer available.",

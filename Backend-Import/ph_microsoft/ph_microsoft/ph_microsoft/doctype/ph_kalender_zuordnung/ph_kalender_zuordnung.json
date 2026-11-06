@@ -1,0 +1,166 @@
+{
+ "actions": [],
+ "autoname": "field:user",
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Frappe-Benutzer ↔ Outlook-Kalender (Standardkalender des Postfachs) für Termine, Montagen und Serviceeinsätze.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "outlook_adresse",
+  "aktiv",
+  "cb_1",
+  "status",
+  "richtung",
+  "belegt_spiegeln",
+  "sb_status",
+  "letzte_sync",
+  "letzter_fehler",
+  "delta_link"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "Benutzer",
+   "options": "User",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "outlook_adresse",
+   "fieldtype": "Data",
+   "label": "Outlook-Postfach (UPN)",
+   "options": "Email",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aktiv\nPausiert\nFehler",
+   "default": "Aktiv",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "richtung",
+   "fieldtype": "Select",
+   "label": "Richtung",
+   "options": "Zwei-Wege\nNur Backoffice nach Outlook",
+   "default": "Zwei-Wege"
+  },
+  {
+   "fieldname": "belegt_spiegeln",
+   "fieldtype": "Check",
+   "label": "Fremde Termine als belegt spiegeln",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_status",
+   "fieldtype": "Section Break",
+   "label": "Abgleich",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "letzte_sync",
+   "fieldtype": "Datetime",
+   "label": "Letzter Abgleich",
+   "read_only": 1
+  },
+  {
+   "fieldname": "letzter_fehler",
+   "fieldtype": "Small Text",
+   "label": "Letzter Fehler",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delta_link",
+   "fieldtype": "Long Text",
+   "label": "Delta-Link",
+   "read_only": 1,
+   "hidden": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Graph Abo",
+   "link_fieldname": "kalender_zuordnung",
+   "group": "Microsoft"
+  }
+ ],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Microsoft",
+ "name": "PH Kalender Zuordnung",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ],
+ "search_fields": "outlook_adresse,status",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Pausiert",
+   "color": "Gray"
+  },
+  {
+   "title": "Fehler",
+   "color": "Red"
+  }
+ ],
+ "title_field": "outlook_adresse",
+ "track_changes": 1
+}

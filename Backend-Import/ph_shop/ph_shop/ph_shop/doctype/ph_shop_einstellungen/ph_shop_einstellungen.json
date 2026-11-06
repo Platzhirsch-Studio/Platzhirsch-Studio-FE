@@ -15,6 +15,10 @@
   "abholung_frist_tage",
   "reservierung_frist_tage",
   "session_frist_stunden",
+  "auto_abschliessen_tage",
+  "zahlungslink_gueltig_stunden",
+  "zahlungslink_erfolg_url",
+  "zahlungslink_abbruch_url",
   "sb_versand",
   "versand_pauschale_at_cent",
   "versand_pauschale_de_cent",
@@ -42,7 +46,9 @@
   "widerrufsformular_text",
   "versandbedingungen_stand",
   "datenschutz_text",
-  "datenschutz_stand"
+  "datenschutz_stand",
+  "tb_migration",
+  "import_local_store_aktiv"
  ],
  "fields": [
   {
@@ -93,6 +99,33 @@
    "fieldtype": "Int",
    "label": "Offene Checkouts ablaufen lassen nach (Stunden)",
    "default": "24"
+  },
+  {
+   "fieldname": "auto_abschliessen_tage",
+   "fieldtype": "Int",
+   "label": "Automatisch abschließen nach (Tagen)",
+   "default": "30",
+   "description": "Versendet/abgeholt ohne offenen Widerruf → abgeschlossen. 0 = aus. Widerrufsfrist 14 Tage + Rücksendung."
+  },
+  {
+   "fieldname": "zahlungslink_gueltig_stunden",
+   "fieldtype": "Int",
+   "label": "Zahlungslink gültig (Stunden)",
+   "default": "24",
+   "description": "Stripe Checkout: höchstens 24 Stunden."
+  },
+  {
+   "fieldname": "zahlungslink_erfolg_url",
+   "fieldtype": "Data",
+   "label": "Rücksprung nach Zahlung",
+   "default": "https://platzhirsch.studio/shop/bestellung/{referenz}?bezahlt=1",
+   "description": "{referenz} wird ersetzt."
+  },
+  {
+   "fieldname": "zahlungslink_abbruch_url",
+   "fieldtype": "Data",
+   "label": "Rücksprung bei Abbruch",
+   "default": "https://platzhirsch.studio/shop/bestellung/{referenz}"
   },
   {
    "fieldname": "sb_versand",
@@ -146,8 +179,9 @@
    "fieldname": "gutschein_art_standard",
    "fieldtype": "Select",
    "label": "Standard-Art",
-   "options": "Mehrzweck\nEinzweck",
-   "default": "Mehrzweck"
+   "options": "Mehrzweck\nEinzweck\nRabatt",
+   "default": "Mehrzweck",
+   "description": "Mehrzweck: Zahlungsmittel, kein Umsatz beim Verkauf. Einzweck: USt beim Verkauf (Satz Pflicht). Rabatt: mindert das Entgelt beim Einlösen (kein Zahlungsmittel, nicht verkäuflich)."
   },
   {
    "fieldname": "gutschein_gueltig_jahre",
@@ -258,11 +292,23 @@
    "fieldname": "datenschutz_stand",
    "fieldtype": "Date",
    "label": "Datenschutz-Ergänzung Stand"
+  },
+  {
+   "fieldname": "tb_migration",
+   "fieldtype": "Tab Break",
+   "label": "Migration"
+  },
+  {
+   "fieldname": "import_local_store_aktiv",
+   "fieldtype": "Check",
+   "label": "Import aus dem lokalen Website-Speicher erlauben (M6)",
+   "default": "0",
+   "description": "Schaltet ph_shop.api.import_local_store frei (Bestellungen, Gutschein-Bestellungen, Gutscheinregister, Anzahlungen, Widerrufe aus .data/ der Website). Nur für den Migrationslauf M6 setzen und danach wieder abschalten – der Import legt einlösbare Gutscheine an."
   }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Shop",
  "name": "PH Shop Einstellungen",

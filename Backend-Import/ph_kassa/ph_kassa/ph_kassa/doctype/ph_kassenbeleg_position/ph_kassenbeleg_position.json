@@ -4,26 +4,178 @@
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
- "field_order": ["art", "produkt", "bezeichnung", "zusatz", "menge", "einzel_brutto_cent", "brutto_cent", "steuersatz", "netto_cent", "ust_cent", "gutschein", "bezug_doctype", "bezug", "lagerbestand_ref"],
+ "field_order": [
+  "art",
+  "produkt",
+  "bezeichnung",
+  "zusatz",
+  "menge",
+  "einzel_brutto_cent",
+  "listenpreis_cent",
+  "rabatt_promille",
+  "rabatt_cent",
+  "rabatt_gesamt_cent",
+  "rabatt_grund",
+  "brutto_cent",
+  "steuersatz",
+  "netto_cent",
+  "ust_cent",
+  "gutschein",
+  "bezug_doctype",
+  "bezug",
+  "bezug_zeile",
+  "ursprungsart",
+  "lagerbestand_ref"
+ ],
  "fields": [
-  {"fieldname": "art", "fieldtype": "Select", "label": "Art", "options": "Artikel\nFreitext\nAnzahlung\nTeilzahlung\nSchlusszahlung\nGutschein Verkauf\nGutschein Einloesung\nStorno", "default": "Artikel", "reqd": 1, "in_list_view": 1, "columns": 1},
-  {"fieldname": "produkt", "fieldtype": "Link", "label": "Produkt", "options": "PH Produkt", "columns": 2},
-  {"fieldname": "bezeichnung", "fieldtype": "Data", "label": "Bezeichnung", "reqd": 1, "in_list_view": 1, "columns": 3},
-  {"fieldname": "zusatz", "fieldtype": "Data", "label": "Zusatz (Ausführung, Hinweis)"},
-  {"fieldname": "menge", "fieldtype": "Float", "label": "Menge", "default": "1", "in_list_view": 1, "columns": 1, "precision": "2"},
-  {"fieldname": "einzel_brutto_cent", "fieldtype": "Int", "label": "Einzelpreis brutto (Cent)", "in_list_view": 1, "columns": 1},
-  {"fieldname": "brutto_cent", "fieldtype": "Int", "label": "Brutto (Cent)", "read_only": 1, "in_list_view": 1, "columns": 1},
-  {"fieldname": "steuersatz", "fieldtype": "Select", "label": "Steuersatz (RKSV-Gruppe)", "options": "Normal 20\nErmaessigt-1 10\nErmaessigt-2 13\nNull 0\nBesonders 19\nSteuerfrei", "default": "Normal 20", "reqd": 1, "in_list_view": 1, "columns": 1},
-  {"fieldname": "netto_cent", "fieldtype": "Int", "label": "Netto (Cent)", "read_only": 1},
-  {"fieldname": "ust_cent", "fieldtype": "Int", "label": "USt (Cent)", "read_only": 1},
-  {"fieldname": "gutschein", "fieldtype": "Link", "label": "Gutschein (Verkauf/Einlösung)", "options": "PH Gutschein"},
-  {"fieldname": "bezug_doctype", "fieldtype": "Link", "label": "Bezug (Typ)", "options": "DocType"},
-  {"fieldname": "bezug", "fieldtype": "Dynamic Link", "label": "Bezug", "options": "bezug_doctype", "description": "AB-Zahlungsplanzeile, Rechnung, Bestellung, Stornoposition"},
-  {"fieldname": "lagerbestand_ref", "fieldtype": "Data", "label": "Lagerbestand (ph_logistik, Referenz)", "description": "Kein Link: ph_logistik ist nicht Voraussetzung von ph_kassa."}
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Artikel\nFreitext\nAnzahlung\nTeilzahlung\nSchlusszahlung\nGutschein Verkauf\nGutschein Einloesung\nStorno\nRetoure\nRabatt",
+   "default": "Artikel",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt",
+   "columns": 2
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "zusatz",
+   "fieldtype": "Data",
+   "label": "Zusatz (Ausführung, Hinweis)"
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Float",
+   "label": "Menge",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "einzel_brutto_cent",
+   "fieldtype": "Int",
+   "label": "Einzelpreis brutto (Cent)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "listenpreis_cent",
+   "fieldtype": "Int",
+   "label": "Listenpreis brutto (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rabatt_promille",
+   "fieldtype": "Int",
+   "label": "Rabatt ‰",
+   "read_only": 1,
+   "description": "Echte Promille: 100 = 10 %."
+  },
+  {
+   "fieldname": "rabatt_cent",
+   "fieldtype": "Int",
+   "label": "Rabatt je Stück (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rabatt_gesamt_cent",
+   "fieldtype": "Int",
+   "label": "Rabatt gesamt (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rabatt_grund",
+   "fieldtype": "Data",
+   "label": "Rabattgrund",
+   "read_only": 1
+  },
+  {
+   "fieldname": "brutto_cent",
+   "fieldtype": "Int",
+   "label": "Brutto (Cent)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "steuersatz",
+   "fieldtype": "Select",
+   "label": "Steuersatz (RKSV-Gruppe)",
+   "options": "Normal 20\nErmaessigt-1 10\nErmaessigt-2 13\nNull 0\nBesonders 19\nSteuerfrei",
+   "default": "Normal 20",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "netto_cent",
+   "fieldtype": "Int",
+   "label": "Netto (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ust_cent",
+   "fieldtype": "Int",
+   "label": "USt (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gutschein",
+   "fieldtype": "Link",
+   "label": "Gutschein (Verkauf/Einlösung)",
+   "options": "PH Gutschein"
+  },
+  {
+   "fieldname": "bezug_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug (Typ)",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "bezug",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "bezug_doctype",
+   "description": "AB-Zahlungsplanzeile, Rechnung, Bestellung, Stornoposition"
+  },
+  {
+   "fieldname": "bezug_zeile",
+   "fieldtype": "Data",
+   "label": "Bezug Zeile (Originalbeleg)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ursprungsart",
+   "fieldtype": "Data",
+   "label": "Ursprungsart (bei Storno)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lagerbestand_ref",
+   "fieldtype": "Data",
+   "label": "Lagerbestand (ph_logistik, Referenz)",
+   "description": "Kein Link: ph_logistik ist nicht Voraussetzung von ph_kassa."
+  }
  ],
  "istable": 1,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Kassa",
  "name": "PH Kassenbeleg Position",

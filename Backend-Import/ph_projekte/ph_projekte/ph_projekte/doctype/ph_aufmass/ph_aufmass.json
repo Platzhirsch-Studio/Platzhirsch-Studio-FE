@@ -1,0 +1,380 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Aufmaß vor Ort: Räume mit Maßen, Anschlüsse (Wasser/Strom/Abluft/Gas), Skizze und Fotos – Grundlage der Planung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "projekt",
+  "termin",
+  "cb_kopf",
+  "status",
+  "datum",
+  "aufgenommen_von",
+  "sb_objekt",
+  "objekt_text",
+  "etage",
+  "aufzug",
+  "cb_objekt",
+  "raumhoehe_standard_mm",
+  "zugang_hinweis",
+  "sb_raeume",
+  "raeume",
+  "sb_masse",
+  "masse",
+  "sb_anschluesse",
+  "anschluesse",
+  "sb_fotos",
+  "skizze",
+  "fotos",
+  "sb_pruefung",
+  "plausibilitaet",
+  "geprueft_von",
+  "geprueft_am",
+  "cb_pruefung",
+  "notiz",
+  "sb_system",
+  "idempotency_key",
+  "quelle",
+  "ip_hash"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-AFM-.YYYY.-.####",
+   "default": "PH-AFM-.YYYY.-.####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "termin",
+   "fieldtype": "Link",
+   "label": "Termin (Aufmaß)",
+   "options": "PH Termin"
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nErfasst\nGeprueft",
+   "default": "Entwurf",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Datum",
+   "default": "Today",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "aufgenommen_von",
+   "fieldtype": "Link",
+   "label": "Aufgenommen von",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_objekt",
+   "fieldtype": "Section Break",
+   "label": "Objekt"
+  },
+  {
+   "fieldname": "objekt_text",
+   "fieldtype": "Small Text",
+   "label": "Adresse/Objekt"
+  },
+  {
+   "fieldname": "etage",
+   "fieldtype": "Data",
+   "label": "Etage"
+  },
+  {
+   "fieldname": "aufzug",
+   "fieldtype": "Check",
+   "label": "Aufzug vorhanden"
+  },
+  {
+   "fieldname": "cb_objekt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "raumhoehe_standard_mm",
+   "fieldtype": "Int",
+   "label": "Raumhöhe Standard (mm)"
+  },
+  {
+   "fieldname": "zugang_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Zugang/Transportweg",
+   "description": "Treppenhaus, Türbreiten, Parkmöglichkeit"
+  },
+  {
+   "fieldname": "sb_raeume",
+   "fieldtype": "Section Break",
+   "label": "Räume"
+  },
+  {
+   "fieldname": "raeume",
+   "fieldtype": "Table",
+   "label": "Räume",
+   "options": "PH Aufmass Raum"
+  },
+  {
+   "fieldname": "sb_masse",
+   "fieldtype": "Section Break",
+   "label": "Maße"
+  },
+  {
+   "fieldname": "masse",
+   "fieldtype": "Table",
+   "label": "Maße",
+   "options": "PH Aufmass Mass"
+  },
+  {
+   "fieldname": "sb_anschluesse",
+   "fieldtype": "Section Break",
+   "label": "Anschlüsse (Wasser, Strom, Abluft, Gas)"
+  },
+  {
+   "fieldname": "anschluesse",
+   "fieldtype": "Table",
+   "label": "Anschlüsse",
+   "options": "PH Aufmass Anschluss"
+  },
+  {
+   "fieldname": "sb_fotos",
+   "fieldtype": "Section Break",
+   "label": "Skizze und Fotos"
+  },
+  {
+   "fieldname": "skizze",
+   "fieldtype": "Attach",
+   "label": "Gesamtskizze (Handzeichnung/PDF)"
+  },
+  {
+   "fieldname": "fotos",
+   "fieldtype": "Table",
+   "label": "Fotos",
+   "options": "PH Aufmass Foto"
+  },
+  {
+   "fieldname": "sb_pruefung",
+   "fieldtype": "Section Break",
+   "label": "Prüfung"
+  },
+  {
+   "fieldname": "plausibilitaet",
+   "fieldtype": "Small Text",
+   "label": "Plausibilitätshinweise",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geprueft_von",
+   "fieldtype": "Link",
+   "label": "Geprüft von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geprueft_am",
+   "fieldtype": "Datetime",
+   "label": "Geprüft am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_pruefung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Text",
+   "label": "Notiz"
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "unique": 1,
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nsystem",
+   "default": "backoffice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Planung",
+   "link_fieldname": "aufmass",
+   "group": "Planung"
+  }
+ ],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Aufmass",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Montage",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Gray"
+  },
+  {
+   "title": "Erfasst",
+   "color": "Blue"
+  },
+  {
+   "title": "Geprueft",
+   "color": "Green"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "projekt,datum,aufgenommen_von",
+ "track_seen": 1
+}

@@ -12,5 +12,29 @@
   "read_only": 1,
   "no_copy": 1,
   "description": "Rückwärts-Verknüpfung aus ph_kassa (CONVENTIONS 10): gesetzt in PH Kassenbeleg.on_submit."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Geraet-ph_kassa_offline_erlaubt",
+  "dt": "PH Geraet",
+  "module": "PH Kassa",
+  "fieldname": "ph_kassa_offline_erlaubt",
+  "label": "Kassa: Offline-Notbelege erlaubt",
+  "fieldtype": "Check",
+  "insert_after": "kasse",
+  "default": "0",
+  "description": "Nur bei Kassenausfall (RKSV § 17): Gerät darf Notbelege puffern; Nacherfassung über ph_kassa Page „notbelege_einspielen“."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Geraet-ph_kassa_offline_limit_cent",
+  "dt": "PH Geraet",
+  "module": "PH Kassa",
+  "fieldname": "ph_kassa_offline_limit_cent",
+  "label": "Kassa: Offline-Limit je Beleg (Cent)",
+  "fieldtype": "Int",
+  "insert_after": "ph_kassa_offline_erlaubt",
+  "default": "0",
+  "description": "0 = ohne Limit."
  }
 ]

@@ -1,0 +1,119 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Eine Schicht im Wochendienstplan.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "datum",
+  "wochentag",
+  "mitarbeiter",
+  "mitarbeiter_name",
+  "schicht",
+  "beginn",
+  "ende",
+  "pause_min",
+  "netto_min",
+  "bereich",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Datum",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "wochentag",
+   "fieldtype": "Data",
+   "label": "Tag",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "mitarbeiter",
+   "fieldtype": "Link",
+   "label": "Mitarbeiter",
+   "options": "PH Mitarbeiter",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "mitarbeiter_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "fetch_from": "mitarbeiter.titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "schicht",
+   "fieldtype": "Link",
+   "label": "Schicht",
+   "options": "PH Schicht",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "beginn",
+   "fieldtype": "Time",
+   "label": "Beginn",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ende",
+   "fieldtype": "Time",
+   "label": "Ende",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "pause_min",
+   "fieldtype": "Int",
+   "label": "Pause (min)",
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "netto_min",
+   "fieldtype": "Int",
+   "label": "Netto (min)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bereich",
+   "fieldtype": "Select",
+   "label": "Bereich",
+   "options": "Showroom\nPlanung\nMontage\nLager\nVerwaltung",
+   "default": "Showroom",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Data",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Dienstplan Schicht",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

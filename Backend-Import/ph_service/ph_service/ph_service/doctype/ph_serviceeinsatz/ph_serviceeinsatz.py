@@ -4,10 +4,11 @@ Ersatzteil-Abgang beim Abschluss, Rückmeldung an den Servicefall (ereignisse.py
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import cint, get_datetime, now_datetime, time_diff_in_seconds
+from frappe.utils import cint, get_datetime, now_datetime
 
 from ph_service.ph_service import kommunikation as kom
 from ph_service.ph_service.doctype.ph_service_einstellungen.ph_service_einstellungen import einstellungen
+from ph_service.utils import einsatz as ez
 
 AKTIV = ("Geplant", "Bestaetigt", "Unterwegs", "In Arbeit")
 
@@ -23,11 +24,14 @@ class PHServiceeinsatz(Document):
         self._quelle_uebernehmen()
         if self.zeit_von and self.zeit_bis and str(self.zeit_bis) <= str(self.zeit_von):
             frappe.throw(_("Zeitfenster: „bis“ muss nach „von“ liegen."))
-        if self.ankunft and self.abfahrt:
-            if get_datetime(self.abfahrt) < get_datetime(self.ankunft):
-                frappe.throw(_("Abfahrt liegt vor Ankunft."))
-            if not self.zeit_arbeit_min:
-                self.zeit_arbeit_min = int(time_diff_in_seconds(self.abfahrt, self.ankunft) // 60)
+        if self.ankunft and self.abfahrt and get_datetime(self.abfahrt) < get_datetime(self.ankunft):
+            frappe.throw(_("Abfahrt liegt vor Ankunft."))
+        if self.ankunft and self.abfahrt and (not self.zeit_arbeit_min or self.has_value_changed("zeit_pause_min")):
+            # Arbeit = Abfahrt − Ankunft − Pause (utils/einsatz.py)
+            try:
+                self.zeit_arbeit_min = ez.zeiten(get_datetime(self.ankunft), get_datetime(self.abfahrt), cint(self.zeit_pause_min))["arbeit_min"]
+            except ValueError as e:
+                frappe.throw(_(str(e)))
         if not self.zeit_anfahrt_min and self.anfahrt_min:
             self.zeit_anfahrt_min = cint(self.anfahrt_min) * 2
         self._kosten_berechnen()
@@ -59,8 +63,11 @@ class PHServiceeinsatz(Document):
                     self.strasse, self.plz, self.ort, self.land = quelle.strasse, quelle.plz, quelle.ort, quelle.land or self.land
 
     def _kosten_berechnen(self):
-        minuten = cint(self.zeit_arbeit_min) + cint(self.zeit_anfahrt_min)
-        self.kosten_cent = int(round(minuten / 60 * cint(self.stundensatz_cent))) + cint(self.anfahrtspauschale_cent)
+        """Arbeit + Anfahrt (Hin/Rück), aufgerundet auf den Abrechnungstakt (Einstellung, Standard 15 min)."""
+        summe = cint(self.zeit_arbeit_min) + cint(self.zeit_anfahrt_min)
+        takt = cint(einstellungen()["einsatz_takt_min"]) or 15
+        self.zeit_abrechenbar_min = ez.zeiten(arbeit_min=summe, takt_min=takt)["abrechenbar_min"] if summe else 0
+        self.kosten_cent = ez.kosten_cent(self.zeit_abrechenbar_min, self.stundensatz_cent, self.anfahrtspauschale_cent)
 
     # ── Buttons (Techniker, mobil) ──────────────────────────────────────────
 
@@ -94,9 +101,23 @@ class PHServiceeinsatz(Document):
         return self.status
 
     @frappe.whitelist()
-    def abschliessen(self, ergebnis, bericht=None, unterschrift=None, unterschrift_name=None, zufriedenheit=None):
-        """Button „Einsatz abschließen“: Bericht, Ergebnis, Unterschrift; Ersatzteile abbuchen; Kosten in den Servicefall."""
+    def abschliessen(self, ergebnis, bericht=None, unterschrift=None, unterschrift_name=None, zufriedenheit=None, pause_min=None, unterschrift_art=None, bericht_senden=0):
+        """Button „Einsatz abschließen“: Bericht, Ergebnis, Zeiten (Pause), Unterschrift oder Tastatur-Alternative
+        („Name bestätigt“, „Verweigert“, „Kunde abwesend“); Ersatzteile abbuchen; Kosten in den Servicefall;
+        optional Servicebericht per Mail (bericht_senden=1)."""
         self.check_permission("write")
+        if unterschrift_art and unterschrift_art not in ("Unterschrift", "Name bestätigt", "Verweigert", "Kunde abwesend"):
+            frappe.throw(_("Unbekannte Bestätigungsart."))
+        if unterschrift_art == "Name bestätigt" and not (unterschrift_name or "").strip():
+            frappe.throw(_("Für „Name bestätigt“ den Namen des Kunden eintragen."))
+        if pause_min not in (None, ""):
+            self.zeit_pause_min = cint(pause_min)
+            if self.ankunft:
+                self.zeit_arbeit_min = 0  # aus Ankunft/Abfahrt − Pause neu berechnen
+        self.unterschrift_art = unterschrift_art or ("Unterschrift" if unterschrift else self.unterschrift_art)
+        if self.unterschrift_art in ("Name bestätigt", "Verweigert", "Kunde abwesend"):
+            self.unterschrift_name = (unterschrift_name or self.unterschrift_name or self.kunde_name or "")[:140]
+            self.unterschrift_am = now_datetime()
         self.ergebnis = ergebnis
         if bericht:
             self.bericht = bericht
@@ -119,7 +140,83 @@ class PHServiceeinsatz(Document):
             kom.verlauf(sf, "Einsatz", hinweis=_("Einsatz {0} erledigt: {1}").format(self.name, _(ergebnis)), speichern=True)
         if self.pflege_abo:
             self._protokoll_im_vertrag()
+        if cint(bericht_senden):
+            try:
+                self.bericht_senden()
+            except Exception:  # noqa: BLE001 – Abschluss bleibt; Versand einzeln wiederholbar (Kritik P17)
+                frappe.log_error(title=f"PH Serviceeinsatz {self.name}: Bericht senden")
         return self.status
+
+    @frappe.whitelist()
+    def bericht_senden(self, empfaenger=None, zusatz=None):
+        """Servicebericht (Druckformat PH Servicebericht) als PDF an den Kunden; setzt bericht_gesendet_am."""
+        self.check_permission("write")
+        if self.status != "Erledigt":
+            frappe.throw(_("Bericht erst nach Abschluss senden."))
+        if not empfaenger and self.kontakt and frappe.db.exists("DocType", "PH Kontakt"):
+            empfaenger = frappe.db.get_value("PH Kontakt", self.kontakt, "email")
+        if not empfaenger and self.servicefall:
+            empfaenger = frappe.db.get_value("PH Servicefall", self.servicefall, "kunde_email")
+        pdf = kom.pdf_anhang(self.doctype, self.name, "PH Servicebericht", f"Servicebericht-{self.name}")
+        betreff = kom.sende_vorlage(self, "servicebericht", empfaenger, anhaenge=[pdf] if pdf else [], zusatz=zusatz or "")
+        self.db_set("bericht_gesendet_am", now_datetime())
+        if self.servicefall:
+            sf = frappe.get_doc("PH Servicefall", self.servicefall)
+            kom.verlauf(sf, "Kommunikation", hinweis=_("Servicebericht {0} gesendet").format(self.name), speichern=True)
+        return betreff
+
+    @frappe.whitelist()
+    def umplanen(self, datum, zeit_von=None, zeit_bis=None, techniker=None, grund=None):
+        """Datum/Zeit/Techniker ändern: Kundenbestätigung zurücksetzen, Kalendertermin nachziehen, Verlauf schreiben."""
+        self.check_permission("write")
+        if self.status not in ("Geplant", "Bestaetigt"):
+            frappe.throw(_("Umplanen nur vor Abfahrt (Status Geplant/Bestätigt)."))
+        alt = " ".join(x for x in (str(self.datum or ""), str(self.zeit_von or "")[:5], self.techniker or "") if x)
+        self.datum = datum
+        self.zeit_von = zeit_von or self.zeit_von
+        self.zeit_bis = zeit_bis or self.zeit_bis
+        if techniker:
+            self.techniker = techniker
+        self.status = "Geplant"
+        self.bestaetigt_kunde_am = None
+        self.umgeplant_am = now_datetime()
+        self.save()
+        if self.termin and frappe.db.exists("PH Termin", self.termin):
+            try:
+                start = get_datetime(f"{self.datum} {self.zeit_von or '08:00:00'}")
+                ende = get_datetime(f"{self.datum} {self.zeit_bis or '12:00:00'}")
+                frappe.db.set_value("PH Termin", self.termin, {"start": start, "ende": ende, "berater": self.techniker, "dauer_min": int((ende - start).total_seconds() // 60)})
+            except Exception:  # noqa: BLE001
+                frappe.log_error(title=f"PH Serviceeinsatz {self.name}: Termin umplanen")
+        text = _("Umgeplant von {0} auf {1} {2}").format(alt, self.datum, str(self.zeit_von or "")[:5])
+        if grund:
+            text += " – " + grund
+        self.add_comment("Info", text)
+        if self.servicefall:
+            sf = frappe.get_doc("PH Servicefall", self.servicefall)
+            kom.verlauf(sf, "Einsatz", hinweis=(self.name + ": " + text)[:500], speichern=True)
+        return self.status
+
+    @frappe.whitelist()
+    def abbrechen(self, grund):
+        """Einsatz absagen (Kunde sagt ab, Teil fehlt): Status Abgebrochen mit Grund; Kalendertermin storniert;
+        Servicefall springt zurück auf In Bearbeitung, wenn kein Einsatz mehr offen ist."""
+        self.check_permission("write")
+        if self.status in ("Erledigt", "Abgebrochen"):
+            frappe.throw(_("Einsatz ist bereits abgeschlossen."))
+        if not (grund or "").strip():
+            frappe.throw(_("Grund angeben."))
+        self.abbruch_grund = grund[:500]
+        self.status = "Abgebrochen"
+        self.save()
+        self.add_comment("Info", _("Abgebrochen: {0}").format(grund))
+        if self.termin and frappe.db.exists("PH Termin", self.termin):
+            try:
+                frappe.db.set_value("PH Termin", self.termin, "status", "Storniert")
+            except Exception:  # noqa: BLE001
+                frappe.log_error(title=f"PH Serviceeinsatz {self.name}: Termin stornieren")
+        return self.status
+
 
     @frappe.whitelist()
     def folgeeinsatz_anlegen(self, datum, zeit_von=None, zeit_bis=None):

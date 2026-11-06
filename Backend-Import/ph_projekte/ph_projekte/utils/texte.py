@@ -6,6 +6,13 @@ Verwendung in Druckformaten über die Jinja-Methode ph_projekte.utils.texte.mont
 SPRACHEN = ("de", "en", "fr", "it")
 
 TEXTE = {
+    "vorschaeden": {"de": "Vorschäden beim Kunden", "en": "Pre-existing damage", "fr": "Dommages préexistants", "it": "Danni preesistenti"},
+    "keine_vorschaeden": {"de": "Keine Vorschäden festgestellt.", "en": "No pre-existing damage found.", "fr": "Aucun dommage préexistant constaté.", "it": "Nessun danno preesistente rilevato."},
+    "vom_kunden_bestaetigt": {"de": "vom Kunden bestätigt", "en": "confirmed by the customer", "fr": "confirmé par le client", "it": "confermato dal cliente"},
+    "geraete": {"de": "Eingebaute Elektrogeräte", "en": "Installed appliances", "fr": "Appareils installés", "it": "Elettrodomestici installati"},
+    "geraet": {"de": "Gerät", "en": "Appliance", "fr": "Appareil", "it": "Apparecchio"},
+    "eingebaut": {"de": "eingebaut", "en": "installed", "fr": "installé", "it": "installato"},
+    "funktion": {"de": "Funktion geprüft", "en": "Function tested", "fr": "Fonction testée", "it": "Funzione verificata"},
     "montagebericht": {"de": "Montagebericht", "en": "Installation report", "fr": "Rapport de montage", "it": "Rapporto di montaggio"},
     "abnahmeprotokoll": {"de": "Abnahmeprotokoll", "en": "Acceptance report", "fr": "Procès-verbal de réception", "it": "Verbale di collaudo"},
     "projekt": {"de": "Projekt", "en": "Project", "fr": "Projet", "it": "Progetto"},

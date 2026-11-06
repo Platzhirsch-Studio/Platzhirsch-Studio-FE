@@ -1,0 +1,136 @@
+// Synthetische DocType-Definitionen für den Mock, solange keine JSON-Datei
+// existiert: Frappe-"User" (Benutzerverwaltung) und die Kundenkarte (App im Bau).
+// Sobald die echte Datei unter Backend-Import liegt, gewinnt sie (meta.js).
+// Gleiche Form wie Frappe-DocType-JSON, damit normalisiereMeta() sie versteht.
+
+const PERM_ADMIN = [
+  { role: "System Manager", read: 1, write: 1, create: 1, delete: 1, export: 1, report: 1, print: 1 },
+  { role: "PH Backoffice-Admin", read: 1, write: 1, create: 1, delete: 1, export: 1, report: 1, print: 1 },
+  { role: "PH Geschäftsführung", read: 1, report: 1 },
+];
+
+function bereichPerms(bereich) {
+  return [
+    ...PERM_ADMIN,
+    { role: `PH ${bereich} Leitung`, read: 1, write: 1, create: 1, delete: 1, submit: 1, cancel: 1, amend: 1, export: 1, report: 1, print: 1 },
+    { role: `PH ${bereich} Mitarbeiter`, read: 1, write: 1, create: 1, submit: 1, report: 1, print: 1 },
+  ];
+}
+
+export const ZUSATZ_DOCTYPES = [
+  {
+    doctype: "DocType",
+    name: "User",
+    module: "Core",
+    autoname: "field:email",
+    title_field: "full_name",
+    search_fields: "full_name,email",
+    sort_field: "full_name",
+    sort_order: "ASC",
+    states: [],
+    field_order: ["email", "full_name", "enabled", "cb1", "first_name", "last_name", "user_type", "sb_rollen", "roles"],
+    fields: [
+      { fieldname: "email", fieldtype: "Data", label: "E-Mail", options: "Email", reqd: 1, in_list_view: 1 },
+      { fieldname: "full_name", fieldtype: "Data", label: "Anzeigename", read_only: 1, in_list_view: 1 },
+      { fieldname: "enabled", fieldtype: "Check", label: "Aktiv", default: "1", in_list_view: 1 },
+      { fieldname: "cb1", fieldtype: "Column Break" },
+      { fieldname: "first_name", fieldtype: "Data", label: "Vorname", reqd: 1 },
+      { fieldname: "last_name", fieldtype: "Data", label: "Nachname" },
+      { fieldname: "user_type", fieldtype: "Select", label: "Benutzertyp", options: "System User\nWebsite User", default: "System User", read_only: 1 },
+      { fieldname: "sb_rollen", fieldtype: "Section Break", label: "Rollen" },
+      { fieldname: "roles", fieldtype: "Table", label: "Rollen", options: "Has Role" },
+    ],
+    permissions: [
+      { role: "System Manager", read: 1, write: 1, create: 1, delete: 1 },
+      { role: "PH Backoffice-Admin", read: 1, write: 1, create: 1 },
+      { role: "PH Geschäftsführung", read: 1 },
+    ],
+  },
+  {
+    doctype: "DocType",
+    name: "Has Role",
+    module: "Core",
+    istable: 1,
+    field_order: ["role"],
+    fields: [{ fieldname: "role", fieldtype: "Link", label: "Rolle", options: "Role", reqd: 1, in_list_view: 1 }],
+    permissions: [],
+  },
+  {
+    doctype: "DocType",
+    name: "PH Kundenkarte Antrag",
+    module: "PH Kundenkarte",
+    description: "Antrag auf eine Platzhirsch-Kundenkarte (Website oder Studio). Platzhalter-Definition, bis ph_kundenkarte seine DocType-JSON liefert.",
+    autoname: "naming_series:",
+    naming_rule: 'By "Naming Series" field',
+    title_field: "titel",
+    search_fields: "nachname,email",
+    sort_field: "eingang",
+    sort_order: "DESC",
+    states: [
+      { title: "Eingegangen", color: "Blue" },
+      { title: "Geprueft", color: "Cyan" },
+      { title: "Genehmigt", color: "Green" },
+      { title: "Karte ausgestellt", color: "Green" },
+      { title: "Abgelehnt", color: "Red" },
+      { title: "Zurueckgezogen", color: "Gray" },
+    ],
+    field_order: [
+      "naming_series", "titel", "status", "cb_kopf", "eingang", "quelle", "sb_person", "anrede", "vorname", "nachname", "cb_person",
+      "email", "telefon", "plz_ort", "kontakt", "sb_karte", "gewuenschte_stufe", "einwilligung_zeitpunkt", "cb_karte", "kundenkarte", "notiz",
+    ],
+    fields: [
+      { fieldname: "naming_series", fieldtype: "Select", label: "Nummernkreis", options: "PH-KKA-.YYYY.-.#####", default: "PH-KKA-.YYYY.-.#####", reqd: 1 },
+      { fieldname: "titel", fieldtype: "Data", label: "Titel", read_only: 1, in_list_view: 1 },
+      { fieldname: "status", fieldtype: "Select", label: "Status", options: "Eingegangen\nGeprueft\nGenehmigt\nKarte ausgestellt\nAbgelehnt\nZurueckgezogen", default: "Eingegangen", reqd: 1, read_only: 1, in_list_view: 1 },
+      { fieldname: "cb_kopf", fieldtype: "Column Break" },
+      { fieldname: "eingang", fieldtype: "Datetime", label: "Eingang", reqd: 1, in_list_view: 1 },
+      { fieldname: "quelle", fieldtype: "Select", label: "Quelle", options: "website\nstudio\nevent", default: "website" },
+      { fieldname: "sb_person", fieldtype: "Section Break", label: "Person" },
+      { fieldname: "anrede", fieldtype: "Select", label: "Anrede", options: "\nFrau\nHerr\nDivers" },
+      { fieldname: "vorname", fieldtype: "Data", label: "Vorname" },
+      { fieldname: "nachname", fieldtype: "Data", label: "Nachname", reqd: 1 },
+      { fieldname: "cb_person", fieldtype: "Column Break" },
+      { fieldname: "email", fieldtype: "Data", label: "E-Mail", options: "Email", reqd: 1, in_list_view: 1 },
+      { fieldname: "telefon", fieldtype: "Data", label: "Telefon", options: "Phone" },
+      { fieldname: "plz_ort", fieldtype: "Data", label: "PLZ / Ort" },
+      { fieldname: "kontakt", fieldtype: "Link", label: "Kontakt", options: "PH Kontakt" },
+      { fieldname: "sb_karte", fieldtype: "Section Break", label: "Karte" },
+      { fieldname: "gewuenschte_stufe", fieldtype: "Select", label: "Gewünschte Stufe", options: "Classic\nSelect\nPrivé", default: "Classic", in_list_view: 1 },
+      { fieldname: "einwilligung_zeitpunkt", fieldtype: "Datetime", label: "Einwilligung am", read_only: 1 },
+      { fieldname: "cb_karte", fieldtype: "Column Break" },
+      { fieldname: "kundenkarte", fieldtype: "Link", label: "Ausgestellte Karte", options: "PH Kundenkarte", read_only: 1 },
+      { fieldname: "notiz", fieldtype: "Small Text", label: "Notiz (intern)" },
+    ],
+    permissions: bereichPerms("Kundenkarte"),
+  },
+  {
+    doctype: "DocType",
+    name: "PH Kundenkarte",
+    module: "PH Kundenkarte",
+    description: "Ausgestellte Kundenkarte (Platzhalter-Definition).",
+    autoname: "naming_series:",
+    title_field: "titel",
+    search_fields: "kunde_name,kartennummer",
+    sort_field: "modified",
+    sort_order: "DESC",
+    states: [
+      { title: "Aktiv", color: "Green" },
+      { title: "Gesperrt", color: "Red" },
+      { title: "Abgelaufen", color: "Gray" },
+    ],
+    field_order: ["naming_series", "titel", "kartennummer", "status", "cb1", "kontakt", "kunde_name", "stufe", "gueltig_bis", "kundenwert_cent"],
+    fields: [
+      { fieldname: "naming_series", fieldtype: "Select", label: "Nummernkreis", options: "PH-KK-.#####", default: "PH-KK-.#####", reqd: 1 },
+      { fieldname: "titel", fieldtype: "Data", label: "Titel", read_only: 1, in_list_view: 1 },
+      { fieldname: "kartennummer", fieldtype: "Data", label: "Kartennummer", reqd: 1, in_list_view: 1 },
+      { fieldname: "status", fieldtype: "Select", label: "Status", options: "Aktiv\nGesperrt\nAbgelaufen", default: "Aktiv", reqd: 1, in_list_view: 1 },
+      { fieldname: "cb1", fieldtype: "Column Break" },
+      { fieldname: "kontakt", fieldtype: "Link", label: "Kontakt", options: "PH Kontakt", reqd: 1 },
+      { fieldname: "kunde_name", fieldtype: "Data", label: "Kunde", in_list_view: 1 },
+      { fieldname: "stufe", fieldtype: "Select", label: "Stufe", options: "Classic\nSelect\nPrivé", default: "Classic", in_list_view: 1 },
+      { fieldname: "gueltig_bis", fieldtype: "Date", label: "Gültig bis" },
+      { fieldname: "kundenwert_cent", fieldtype: "Int", label: "Kundenwert (Cent)", read_only: 1, default: "0" },
+    ],
+    permissions: bereichPerms("Kundenkarte"),
+  },
+];

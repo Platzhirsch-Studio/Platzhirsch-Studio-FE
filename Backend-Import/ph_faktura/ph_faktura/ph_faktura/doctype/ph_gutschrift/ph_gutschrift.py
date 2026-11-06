@@ -129,6 +129,14 @@ class PHGutschrift(BelegMixin, Document):
         return name
 
     @frappe.whitelist()
+    def als_gesendet_markieren(self, kanal="Post"):
+        """Versand außerhalb des Systems (Post, persönlich, Portal) dokumentieren (Konzept 10-faktura §12 Nr. 5)."""
+        self.check_permission("write")
+        self.db_set({"gesendet_am": now_datetime(), "versandkanal": kanal})
+        self.add_comment("Info", _("Als gesendet markiert ({0})").format(kanal))
+        return True
+
+    @frappe.whitelist()
     def senden(self, empfaenger, betreff=None, nachricht=None):
         self.check_permission("email")
         if self.docstatus != 1:

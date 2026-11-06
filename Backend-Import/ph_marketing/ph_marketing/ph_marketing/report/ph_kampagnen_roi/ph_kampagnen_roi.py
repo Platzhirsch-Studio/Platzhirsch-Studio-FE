@@ -20,6 +20,12 @@ def execute(filters=None):
     # Anfragebezug: PH Auftragsbestaetigung.angebot → PH Angebot.anfrage (ph_faktura, geprüft 04.11.); Umsatz = brutto_cent
     hat_ab = frappe.db.exists("DocType", "PH Auftragsbestaetigung") and frappe.db.exists("DocType", "PH Angebot")
 
+    # Attribution über Kontaktpunkte (Website-UTM) und Aufträge/Bestellungen – Modell wählbar (First/Last/Linear)
+    from ph_marketing.ph_marketing import kampagnen as kam
+
+    modell = filters.get("modell") or None
+    attribuiert = kam.auswerten(modell=modell, fenster_tage=filters.get("fenster_tage"), kampagnen=[k.name for k in kampagnen])
+
     data = []
     for k in kampagnen:
         anfragen = gewonnen = auftraege = umsatz = 0
@@ -39,6 +45,10 @@ def execute(filters=None):
             "anfragen": anfragen, "cpl": round(cint(k.ausgaben_cent) / anfragen / 100, 2) if anfragen else None,
             "gewonnen": gewonnen, "auftraege": auftraege, "umsatz": umsatz / 100,
             "roi": round(100 * (umsatz - cint(k.ausgaben_cent)) / cint(k.ausgaben_cent), 1) if k.ausgaben_cent and umsatz else None,
+            "kontaktpunkte": attribuiert.get(k.name, {}).get("kontaktpunkte", 0),
+            "abschluesse_attr": attribuiert.get(k.name, {}).get("abschluesse", 0),
+            "umsatz_attr": attribuiert.get(k.name, {}).get("umsatz_cent", 0) / 100,
+            "roi_attr": round(100 * (attribuiert.get(k.name, {}).get("umsatz_cent", 0) - cint(k.ausgaben_cent)) / cint(k.ausgaben_cent), 1) if k.ausgaben_cent and attribuiert.get(k.name, {}).get("umsatz_cent") else None,
         })
     data.sort(key=lambda d: -d["ausgaben"])
     columns = [
@@ -58,6 +68,10 @@ def execute(filters=None):
         {"fieldname": "auftraege", "label": _("Aufträge (AB)"), "fieldtype": "Int", "width": 100},
         {"fieldname": "umsatz", "label": _("Umsatz €"), "fieldtype": "Currency", "options": "EUR", "width": 110},
         {"fieldname": "roi", "label": _("ROI %"), "fieldtype": "Percent", "width": 80},
+        {"fieldname": "kontaktpunkte", "label": _("Kontaktpunkte"), "fieldtype": "Int", "width": 100},
+        {"fieldname": "abschluesse_attr", "label": _("Abschlüsse (attribuiert)"), "fieldtype": "Int", "width": 120},
+        {"fieldname": "umsatz_attr", "label": _("Umsatz attribuiert €"), "fieldtype": "Currency", "options": "EUR", "width": 130},
+        {"fieldname": "roi_attr", "label": _("ROI attribuiert %"), "fieldtype": "Percent", "width": 110},
     ]
     chart = {"data": {"labels": [d["titel"][:24] for d in data[:10]], "datasets": [{"name": _("Ausgaben €"), "values": [d["ausgaben"] for d in data[:10]]}, {"name": _("Anfragen"), "values": [d["anfragen"] for d in data[:10]]}]}, "type": "bar", "colors": ["#8a7a66", "#30373e"]}
     ausg = sum(d["ausgaben"] for d in data)
@@ -67,6 +81,7 @@ def execute(filters=None):
         {"value": anf, "label": _("Anfragen"), "datatype": "Int"},
         {"value": round(ausg / anf, 2) if anf else 0, "label": _("€ je Anfrage"), "datatype": "Currency", "currency": "EUR"},
         {"value": sum(d["gewonnen"] for d in data), "label": _("Gewonnen"), "datatype": "Int", "indicator": "Green"},
+        {"value": sum(d["umsatz_attr"] for d in data), "label": _("Umsatz attribuiert €"), "datatype": "Currency", "currency": "EUR"},
     ]
     hinweis = None if hat_feld else _("Hinweis: Custom Field PH Anfrage.ph_marketing_kampagne noch nicht installiert – Anfragen werden erst nach bench migrate zugeordnet.")
     return columns, data, hinweis, chart, summary

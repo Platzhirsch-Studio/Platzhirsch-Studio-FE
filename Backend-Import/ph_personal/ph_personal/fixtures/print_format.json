@@ -93,5 +93,43 @@
   "page_number": "Bottom Right",
   "html": "{% extends \"templates/print/ph_basis.html\" %}\n{% set heute = frappe.utils.getdate(doc.zeitnachweis_monat or frappe.utils.nowdate()) %}\n{% set m = frappe.call(\"ph_personal.api.monatsuebersicht\", mitarbeiter=doc.name, jahr=heute.year, monat=heute.month) %}\n{% block titel %}Zeitnachweis {{ doc.titel }} {{ \"%02d\" % m.monat }}/{{ m.jahr }}{% endblock %}\n{% block kopfrechts %}Zeitnachweis<br>{{ \"%02d\" % m.monat }}/{{ m.jahr }}<br>{{ doc.name }}{% endblock %}\n{% block css %} .ph-summen td { padding: 1.5mm 3mm; } .ph-summen b { font-size: 12pt; } {% endblock %}\n{% block inhalt %}\n<h1>Zeitnachweis {{ doc.titel }}</h1>\n<div class=\"ph-feld\"><b>Zeitraum</b> {{ ph_datum(m.von) }} – {{ ph_datum(m.bis) }} · {{ m.arbeitstage|int }} Arbeitstage · {{ m.wochenstunden }} h/Woche</div>\n<div class=\"ph-feld\"><b>Rolle</b> {{ _(doc.rolle_intern) }}{% if doc.beschaeftigungsart %} · {{ _(doc.beschaeftigungsart) }}{% endif %}</div>\n\n<table class=\"ph-tabelle ph-summen\" style=\"width:auto;margin:4mm 0 6mm\">\n  <tr><td>Soll</td><td class=\"zahl\"><b>{{ m.soll_text }}</b></td><td>Ist (gebucht)</td><td class=\"zahl\"><b>{{ m.ist_text }}</b></td><td>Gutschrift Abwesenheit</td><td class=\"zahl\"><b>{{ m.gutschrift_text }}</b></td><td>Saldo</td><td class=\"zahl\"><b style=\"color:{{ '#15803d' if m.saldo_min >= 0 else '#b91c1c' }}\">{{ m.saldo_text }}</b></td></tr>\n</table>\n<p style=\"font-size:9pt;color:#6b7280\">Abwesenheiten (Arbeitstage): Urlaub {{ m.urlaub_tage }} · Krankenstand {{ m.krank_tage }} · Sonstige {{ m.sonstige_tage }}{% if m.offen %} · <span style=\"color:#b91c1c\">{{ m.offen }} offene Buchung(en) ohne „Gehen“</span>{% endif %}</p>\n\n<table class=\"ph-tabelle\">\n  <thead><tr><th>Datum</th><th>Art</th><th class=\"zahl\">Kommen</th><th class=\"zahl\">Gehen</th><th class=\"zahl\">Pause</th><th class=\"zahl\">Netto</th><th>Projekt / Notiz</th></tr></thead>\n  <tbody>\n  {% for t in m.tage %}\n    <tr><td>{{ ph_datum(t.datum) }}</td><td>{{ _(t.art) }}</td><td class=\"zahl\">{{ t.kommen }}</td><td class=\"zahl\">{{ t.gehen or \"–\" }}</td><td class=\"zahl\">{{ t.pause_min or 0 }}</td><td class=\"zahl\">{{ t.dauer_text or \"\" }}</td><td>{{ t.projekt_referenz or \"\" }}</td></tr>\n  {% else %}\n    <tr><td colspan=\"7\">Keine Buchungen in diesem Monat.</td></tr>\n  {% endfor %}\n  </tbody>\n  <tfoot><tr class=\"ph-summe\"><td colspan=\"5\">Summe</td><td class=\"zahl\">{{ m.ist_text }}</td><td></td></tr></tfoot>\n</table>\n\n<table style=\"width:100%;margin-top:14mm;font-size:9pt\"><tr>\n  <td style=\"width:50%;padding-right:10mm\"><div style=\"border-top:1px solid #30373e;padding-top:2mm\">Datum, Unterschrift Mitarbeiter/in</div></td>\n  <td style=\"width:50%\"><div style=\"border-top:1px solid #30373e;padding-top:2mm\">Datum, Unterschrift Leitung</div></td>\n</tr></table>\n<p class=\"ph-hinweis\" style=\"margin-top:8mm\">Aufzeichnung nach § 26 AZG. Erfassung ohne Prüfung von Höchstgrenzen, Ruhezeiten und Zuschlägen – diese prüft die Lohnverrechnung.</p>\n{% endblock %}\n",
   "css": ""
+ },
+ {
+  "doctype": "Print Format",
+  "name": "PH Abwesenheit Bestaetigung",
+  "doc_type": "PH Abwesenheit",
+  "module": "PH Personal",
+  "standard": "Yes",
+  "custom_format": 1,
+  "print_format_type": "Jinja",
+  "disabled": 0,
+  "default_print_language": "de",
+  "font_size": 10,
+  "margin_top": 12,
+  "margin_bottom": 12,
+  "margin_left": 15,
+  "margin_right": 15,
+  "page_number": "Bottom Right",
+  "css": "",
+  "html": "{% extends \"templates/print/ph_basis.html\" %}\n{% block titel %}Abwesenheit {{ doc.name }}{% endblock %}\n{% block kopfrechts %}{{ firma.ort }}, {{ ph_datum(doc.genehmigt_am or frappe.utils.nowdate()) }}<br>{{ doc.name }}{% endblock %}\n{% block css %} .ph-tab td { padding: 1.5mm 2mm; border-bottom: 0.2mm solid #e5e7eb; } .ph-tab td:first-child { color: #6b7280; width: 45mm; } {% endblock %}\n{% block inhalt %}\n<h1>{% if doc.status == \"Genehmigt\" %}Bestätigung{% else %}Antrag{% endif %} {{ doc.art }}</h1>\n<table class=\"ph-tab\">\n  <tr><td>Mitarbeiter:in</td><td>{{ doc.mitarbeiter_name }}</td></tr>\n  <tr><td>Zeitraum</td><td>{{ ph_datum(doc.von) }}{% if doc.bis != doc.von %} – {{ ph_datum(doc.bis) }}{% endif %}{% if doc.halbtags %} (halber Tag){% endif %}</td></tr>\n  <tr><td>Arbeitstage</td><td>{{ doc.tage }}{% if doc.stunden %} · {{ doc.stunden }} Stunden{% endif %}</td></tr>\n  {% if doc.unterbrechung_von %}<tr><td>Unterbrochen</td><td>{{ ph_datum(doc.unterbrechung_von) }} – {{ ph_datum(doc.unterbrechung_bis) }} (Krankenstand, § 5 UrlG – nicht als Urlaub gezählt)</td></tr>{% endif %}\n  <tr><td>Status</td><td>{{ doc.status }}{% if doc.genehmigt_am %} am {{ ph_datum(doc.genehmigt_am) }}{% endif %}</td></tr>\n  {% if doc.vertretung %}<tr><td>Vertretung</td><td>{{ frappe.db.get_value(\"PH Mitarbeiter\", doc.vertretung, \"titel\") }}</td></tr>{% endif %}\n  {% if doc.art == \"Urlaub\" %}\n  <tr><td>Urlaubskonto</td><td>Anspruch Urlaubsjahr {{ doc.urlaub_anspruch }} Tage · Rest nach diesem Urlaub {{ doc.urlaub_rest }} Tage{% if doc.urlaub_verjaehrung %} · ältester Rest verjährt am {{ ph_datum(doc.urlaub_verjaehrung) }} (§ 4 Abs 5 UrlG){% endif %}</td></tr>\n  {% if doc.tage_je_urlaubsjahr %}<tr><td>Tage je Urlaubsjahr</td><td>{{ doc.tage_je_urlaubsjahr | replace(\"\\n\", \"<br>\") }}</td></tr>{% endif %}\n  {% endif %}\n  {% if doc.status == \"Abgelehnt\" and doc.ablehnungsgrund %}<tr><td>Begründung</td><td>{{ doc.ablehnungsgrund }}</td></tr>{% endif %}\n</table>\n<p style=\"margin-top:12mm\">Für {{ firma.kurzname or firma.firmenname }}: ______________________ &nbsp;&nbsp; Mitarbeiter:in: ______________________</p>\n{% endblock %}\n"
+ },
+ {
+  "doctype": "Print Format",
+  "name": "PH Dienstplan Woche",
+  "doc_type": "PH Dienstplan",
+  "module": "PH Personal",
+  "standard": "Yes",
+  "custom_format": 1,
+  "print_format_type": "Jinja",
+  "disabled": 0,
+  "default_print_language": "de",
+  "font_size": 10,
+  "margin_top": 12,
+  "margin_bottom": 12,
+  "margin_left": 15,
+  "margin_right": 15,
+  "page_number": "Bottom Right",
+  "css": "",
+  "html": "{% extends \"templates/print/ph_basis.html\" %}\n{% block titel %}Dienstplan KW {{ doc.kalenderwoche }}/{{ doc.jahr }}{% endblock %}\n{% block kopfrechts %}KW {{ doc.kalenderwoche }}/{{ doc.jahr }}<br>{{ ph_datum(doc.woche_von) }} – {{ ph_datum(doc.woche_bis) }}<br>{{ \"Veröffentlicht\" if doc.status == \"Veroeffentlicht\" else \"Entwurf\" }}{% endblock %}\n{% block css %} .ph-plan { width: 100%; border-collapse: collapse; font-size: 8.5pt; } .ph-plan th, .ph-plan td { border: 0.2mm solid #d1d5db; padding: 1.2mm; vertical-align: top; } .ph-plan th { background: #f5f3f0; } .ph-plan .frei { color: #9ca3af; } {% endblock %}\n{% block inhalt %}\n{% set tage = [\"Mo\", \"Di\", \"Mi\", \"Do\", \"Fr\", \"Sa\", \"So\"] %}\n{% set personen = [] %}\n{% for z in doc.schichten %}{% if z.mitarbeiter_name not in personen %}{% set _ = personen.append(z.mitarbeiter_name) %}{% endif %}{% endfor %}\n<h1>Dienstplan</h1>\n<table class=\"ph-plan\">\n  <thead><tr><th>Person</th>{% for i in range(7) %}<th>{{ tage[i] }} {{ frappe.utils.formatdate(frappe.utils.add_days(doc.woche_von, i), \"dd.MM.\") }}</th>{% endfor %}<th>Stunden</th></tr></thead>\n  <tbody>\n  {% for p in personen %}\n    {% set ns = namespace(summe=0) %}\n    <tr><td>{{ p }}</td>\n    {% for i in range(7) %}\n      {% set tag = frappe.utils.getdate(frappe.utils.add_days(doc.woche_von, i)) %}\n      <td>{% for z in doc.schichten if z.mitarbeiter_name == p and frappe.utils.getdate(z.datum) == tag %}{{ (z.beginn|string)[:5] }}–{{ (z.ende|string)[:5] }}<br><span class=\"frei\">{{ z.bereich or \"\" }}</span>{% set ns.summe = ns.summe + (z.netto_min or 0) %}{% if not loop.last %}<br>{% endif %}{% else %}<span class=\"frei\">–</span>{% endfor %}</td>\n    {% endfor %}\n    <td>{{ \"%.1f\" % (ns.summe / 60) }}</td></tr>\n  {% endfor %}\n  </tbody>\n</table>\n{% if doc.pruefergebnis and doc.status != \"Veroeffentlicht\" %}<h2 style=\"margin-top:6mm\">Prüfung</h2><p style=\"white-space:pre-line;font-size:8.5pt\">{{ doc.pruefergebnis }}</p>{% endif %}\n<p style=\"margin-top:6mm;font-size:8pt;color:#6b7280\">Ruhezeit mindestens 11 Stunden (AZG § 12), Wochenend-/Wochenruhe 36 Stunden (ARG § 3/§ 4). Änderungen bitte mit der Leitung abstimmen.</p>\n{% endblock %}\n"
  }
 ]

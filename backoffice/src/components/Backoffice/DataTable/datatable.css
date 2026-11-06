@@ -1,0 +1,107 @@
+/* Liste im Lounge-Stil (Team P0-5b; art-direction/lounge.md §6 „Tabelle in Kachel“, §7.2 Anfragen,
+   Referenz FlowERP/Inventory). Tabelle in einer schwebenden Kachel ohne Rahmen; Zeilen 72–80 hoch mit
+   Haarlinie oben, Hover = ganze Zeile als gerundete Fläche, Auswahl = Fläche + 3-px-Tinte-Kante links.
+   Telefon: Karten statt Tabelle. Nur Token aus globals.css. Präfix bo-dt-. */
+
+.bo-dt {
+  position: relative;
+  min-width: 0;
+  padding: 20px 16px 12px;
+  border-radius: var(--radius-bo-kachel, 28px);
+  background: var(--color-bo-surface);
+  box-shadow: var(--bo-sh-tile);
+}
+.bo-dt__kopf { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-width: 0; padding: 0 8px 12px; }
+.bo-dt__zahl { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+
+.bo-dt__tabelle { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 14px; }
+.bo-dt__tabelle th {
+  text-align: left; white-space: nowrap;
+  padding: 0 12px 12px;
+  font-size: 12px; line-height: 16px; font-weight: 500; color: var(--color-bo-text-soft);
+}
+.bo-dt__tabelle th[data-rechts] { text-align: right; }
+.bo-dt__tabelle td {
+  padding: 12px; vertical-align: middle;
+  border-top: var(--bo-hair, 1px) solid var(--color-bo-line);
+  transition: background-color 160ms ease;
+}
+.bo-dt__tabelle tbody tr { height: 72px; }
+.bo-dt__tabelle[data-dicht] tbody tr { height: 56px; }
+.bo-dt__tabelle tbody tr:first-child td { border-top-color: transparent; }
+.bo-dt__tabelle tbody tr td:first-child { border-radius: 16px 0 0 16px; }
+.bo-dt__tabelle tbody tr td:last-child { border-radius: 0 16px 16px 0; }
+.bo-dt__tabelle tbody tr:hover td,
+.bo-dt__tabelle tbody tr:focus-within td,
+.bo-dt__tabelle tbody tr[data-aktiv="true"] td { background: var(--color-bo-surface-2); border-top-color: transparent; }
+.bo-dt__tabelle tbody tr:hover + tr td,
+.bo-dt__tabelle tbody tr:focus-within + tr td,
+.bo-dt__tabelle tbody tr[data-aktiv="true"] + tr td,
+.bo-dt__tabelle tbody tr[data-gewaehlt="true"] + tr td { border-top-color: transparent; }
+.bo-dt__tabelle tbody tr[data-gewaehlt="true"] td { background: var(--color-bo-surface-2); border-top-color: transparent; }
+.bo-dt__tabelle tbody tr[data-gewaehlt="true"] td:first-child { box-shadow: inset 3px 0 0 var(--color-bo-action); }
+.bo-dt__tabelle input[type="checkbox"],
+.bo-dt-karten input[type="checkbox"],
+.bo-dt-menue input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--color-bo-action); }
+
+/* Kopfzelle der Zeile: Bild/Avatar + Titel 15/600 + Unterzeile 13 */
+.bo-dt-objekt { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.bo-dt-bild { position: relative; flex: none; width: 48px; height: 48px; overflow: hidden; border-radius: 14px; background: var(--color-bo-surface-3); }
+.bo-dt-bild img { width: 100%; height: 100%; object-fit: cover; }
+.bo-dt-objekt__titel { font-size: 15px; line-height: 20px; font-weight: 600; color: var(--color-bo-text); }
+.bo-dt-objekt__unter { display: block; margin-top: 2px; font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+a.bo-dt-objekt__link { border-radius: 8px; }
+a.bo-dt-objekt__link::after { content: ""; position: absolute; inset: 0; }
+.bo-dt__tabelle td.bo-dt__kopfzelle { position: relative; }
+
+/* Kopfzeilen-Sortierlink */
+.bo-dt-sort { display: inline-flex; align-items: center; gap: 4px; border-radius: 6px; transition: color 160ms ease; }
+.bo-dt-sort:hover, .bo-dt-sort[data-aktiv] { color: var(--color-bo-text); }
+
+/* Fuß: Bereich + Blättern */
+.bo-dt__fuss { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 16px 8px 4px; font-size: 13px; color: var(--color-bo-text-soft); }
+
+/* Massenaktionen: schwebende Material-Kapsel unten (Q-C10, 160 ms) */
+.bo-dt-massen {
+  position: sticky; bottom: 16px; z-index: 25;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px; width: fit-content; max-width: 100%;
+  margin: 12px auto 0; padding: 8px 8px 8px 20px;
+  border-radius: 999px;
+  background: var(--color-bo-mat-strong);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  backdrop-filter: blur(32px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float);
+  animation: bo-dt-massen-ein 160ms var(--ease-feder-weich, ease-out) both;
+}
+@keyframes bo-dt-massen-ein { from { transform: translateY(12px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* Spaltenmenü: schwebende Karte */
+.bo-dt-menue {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 30;
+  width: 256px; max-height: 360px; overflow-y: auto; padding: 6px;
+  border-radius: 20px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-float);
+}
+.bo-dt-menue label { display: flex; min-height: 40px; align-items: center; gap: 12px; padding: 0 12px; border-radius: 12px; font-size: 14px; cursor: pointer; }
+.bo-dt-menue label:hover { background: var(--color-bo-fill); }
+
+/* Telefon: Karten */
+.bo-dt-karten { display: flex; flex-direction: column; gap: 8px; }
+@media (min-width: 768px) { .bo-dt-karten { display: none; } }
+.bo-dt-karte {
+  position: relative; display: flex; min-width: 0; gap: 12px; align-items: flex-start;
+  padding: 12px; border-radius: 20px; background: var(--color-bo-surface-2);
+  transition: transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease), background-color 160ms ease;
+}
+.bo-dt-karte:active { transform: scale(0.985); transition-duration: var(--bo-dauer-druck, 80ms); }
+.bo-dt-karte[data-gewaehlt="true"] { box-shadow: inset 3px 0 0 var(--color-bo-action); }
+
+@supports (corner-shape: superellipse(1.4)) {
+  .bo-dt, .bo-dt-karte, .bo-dt-menue { corner-shape: superellipse(1.35); }
+}
+@media (max-width: 767px) {
+  .bo-dt { padding: 16px 12px 8px; border-radius: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bo-dt-massen { animation: none; }
+  .bo-dt-karte { transition-duration: 1ms; }
+}

@@ -33,6 +33,9 @@ frappe.ui.form.on("PH Ersatzteilbestellung", {
 				if (!fields.length) return frappe.msgprint(__("Alle Positionen sind geliefert."));
 				frappe.prompt(fields, (v) => frm.call({ method: "wareneingang", doc: frm.doc, args: { mengen: v }, freeze: true }).then(reload), __("Erhaltene Mengen"));
 			}, __("Aktionen"));
+			frm.add_custom_button(__("Alles erhalten"), () => frappe.confirm(__("Alle offenen Mengen als erhalten buchen?"), () => frm.call({ method: "wareneingang", doc: frm.doc, args: { alles: 1 }, freeze: true }).then(reload)), __("Aktionen"));
+			if (frm.doc.ueberfaellig) frm.dashboard.add_comment(__("Lieferung überfällig (erwartet {0}).", [frappe.datetime.str_to_user(frm.doc.erwartet_am)]), "orange", true);
+
 			frm.add_custom_button(__("Stornieren"), () => frappe.prompt({ fieldname: "grund", fieldtype: "Small Text", label: __("Grund"), reqd: 1 }, (v) => frappe.confirm(__("Bestellung stornieren?"), () => frm.call({ method: "stornieren", doc: frm.doc, args: v }).then(reload)), __("Stornieren")), __("Aktionen"));
 		}
 		if (frm.doc.servicefall) frm.add_custom_button(__("Servicefall öffnen"), () => frappe.set_route("Form", "PH Servicefall", frm.doc.servicefall));

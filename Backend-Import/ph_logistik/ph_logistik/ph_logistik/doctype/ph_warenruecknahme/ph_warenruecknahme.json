@@ -1,0 +1,424 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Warenrücknahme außerhalb des Shop-Widerrufs (Projekt, Falschlieferung, Abholung beim Kunden): Zustand, Entscheidung, Bestandsbuchung, Fotos, Unterschrift.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "anlass",
+  "grund",
+  "cb_kopf",
+  "kontakt",
+  "kunde_name",
+  "projekt",
+  "lieferschein",
+  "auftrag",
+  "sb_ablauf",
+  "abhol_datum",
+  "tour",
+  "lagerort",
+  "cb_ablauf",
+  "eingegangen_am",
+  "geprueft_von",
+  "geprueft_am",
+  "abgeschlossen_am",
+  "sb_positionen",
+  "positionen",
+  "alle_gebucht",
+  "sb_fotos",
+  "fotos",
+  "unterschrift_kunde",
+  "unterschrift_name",
+  "sb_folge",
+  "gutschrift_hinweis",
+  "gutschrift",
+  "retourenlabel",
+  "servicefall_ref",
+  "notiz_intern",
+  "storno_grund",
+  "sb_system",
+  "idempotency_key",
+  "quelle"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-WR-.YYYY.-.####",
+   "default": "PH-WR-.YYYY.-.####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Angemeldet\nAngenommen\nGeprueft\nAbgeschlossen\nStorniert",
+   "default": "Angemeldet",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "anlass",
+   "fieldtype": "Select",
+   "label": "Anlass",
+   "options": "Kundenrueckgabe\nFalschlieferung\nProjekt-Ruecknahme\nAbholung beim Kunden\nAusstellungsstueck zurueck\nSonstiges",
+   "default": "Kundenrueckgabe",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Small Text",
+   "label": "Grund"
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kunde",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "kunde_name",
+   "fieldtype": "Data",
+   "label": "Kundenname",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Data",
+   "label": "Projekt",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "lieferschein",
+   "fieldtype": "Link",
+   "label": "Lieferschein",
+   "options": "PH Lieferschein"
+  },
+  {
+   "fieldname": "auftrag",
+   "fieldtype": "Link",
+   "label": "Auftragsbestätigung",
+   "options": "PH Auftragsbestaetigung"
+  },
+  {
+   "fieldname": "sb_ablauf",
+   "fieldtype": "Section Break",
+   "label": "Abholung und Eingang"
+  },
+  {
+   "fieldname": "abhol_datum",
+   "fieldtype": "Date",
+   "label": "Abholung/Anlieferung am"
+  },
+  {
+   "fieldname": "tour",
+   "fieldtype": "Link",
+   "label": "Tour",
+   "options": "PH Tour"
+  },
+  {
+   "fieldname": "lagerort",
+   "fieldtype": "Link",
+   "label": "Ziel-Lagerort",
+   "options": "PH Lagerort",
+   "description": "Leer = Standard-Lagerort"
+  },
+  {
+   "fieldname": "cb_ablauf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "eingegangen_am",
+   "fieldtype": "Datetime",
+   "label": "Angenommen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geprueft_von",
+   "fieldtype": "Link",
+   "label": "Geprüft von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geprueft_am",
+   "fieldtype": "Datetime",
+   "label": "Geprüft am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abgeschlossen_am",
+   "fieldtype": "Datetime",
+   "label": "Abgeschlossen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_positionen",
+   "fieldtype": "Section Break",
+   "label": "Positionen"
+  },
+  {
+   "fieldname": "positionen",
+   "fieldtype": "Table",
+   "label": "Positionen",
+   "options": "PH Warenruecknahme Position"
+  },
+  {
+   "fieldname": "alle_gebucht",
+   "fieldtype": "Check",
+   "label": "Alle Positionen gebucht",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_fotos",
+   "fieldtype": "Section Break",
+   "label": "Fotos und Quittung"
+  },
+  {
+   "fieldname": "fotos",
+   "fieldtype": "Table",
+   "label": "Fotos",
+   "options": "PH Lieferschein Foto"
+  },
+  {
+   "fieldname": "unterschrift_kunde",
+   "fieldtype": "Signature",
+   "label": "Unterschrift Kunde (Übergabe)"
+  },
+  {
+   "fieldname": "unterschrift_name",
+   "fieldtype": "Data",
+   "label": "Name Unterzeichner"
+  },
+  {
+   "fieldname": "sb_folge",
+   "fieldtype": "Section Break",
+   "label": "Folgen"
+  },
+  {
+   "fieldname": "gutschrift_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis Gutschrift/Wertminderung (für Faktura)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "gutschrift",
+   "fieldtype": "Link",
+   "label": "Gutschrift (ph_faktura)",
+   "options": "PH Gutschrift",
+   "read_only": 1,
+   "description": "Button „Gutschrift erstellen“: Entwurf zur Rechnung des Auftrags/Lieferscheins, die Faktura-Leitung stellt."
+  },
+  {
+   "fieldname": "retourenlabel",
+   "fieldtype": "Link",
+   "label": "Retourenetikett",
+   "options": "PH Sendung",
+   "read_only": 1,
+   "description": "Button „Retourenetikett“: LetMeShip-Rücksendung (Abholung beim Kunden, Mock ohne Netz im Testmodus)."
+  },
+  {
+   "fieldname": "servicefall_ref",
+   "fieldtype": "Data",
+   "label": "Servicefall",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz_intern",
+   "fieldtype": "Text",
+   "label": "Interne Notiz",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "storno_grund",
+   "fieldtype": "Small Text",
+   "label": "Stornogrund",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\npacktisch\nmobil\nscheduler",
+   "default": "backoffice"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Lagerbewegung",
+   "link_fieldname": "bezug",
+   "group": "Bewegungen"
+  }
+ ],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Warenruecknahme",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "kunde_name,projekt,lieferschein",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Angemeldet",
+   "color": "Gray"
+  },
+  {
+   "title": "Angenommen",
+   "color": "Blue"
+  },
+  {
+   "title": "Geprueft",
+   "color": "Orange"
+  },
+  {
+   "title": "Abgeschlossen",
+   "color": "Green"
+  },
+  {
+   "title": "Storniert",
+   "color": "Red"
+  }
+ ],
+ "title_field": "titel",
+ "track_changes": 1,
+ "track_seen": 1
+}

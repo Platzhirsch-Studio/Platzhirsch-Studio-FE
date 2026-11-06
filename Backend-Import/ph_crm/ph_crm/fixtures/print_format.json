@@ -74,5 +74,24 @@
   "page_number": "Bottom Right",
   "html": "{% extends \"templates/print/ph_basis.html\" %}\n{%- set a = doc.datenauskunft() -%}\n{% block titel %}Datenauskunft {{ doc.name }}{% endblock %}\n{% block kopfrechts %}Auskunft nach Art. 15 DSGVO<br>Stand {{ frappe.utils.format_datetime(a.erstellt, \"dd.MM.yyyy HH:mm\") }}<br>Kontakt {{ doc.name }}{% endblock %}\n{% block inhalt %}\n<h1>Auskunft über gespeicherte personenbezogene Daten</h1>\n<p>Betroffene Person: <b>{{ doc.titel }}</b>. Verantwortlicher: {{ firma.firmenname }}, {{ firma.strasse }}, {{ firma.plz }} {{ firma.ort }}. Zwecke: Beratung, Vertragsanbahnung und -abwicklung, Kundenservice (Art. 6 Abs. 1 lit. b DSGVO); Werbung nur mit Einwilligung (ph_marketing).</p>\n<h2>Stammdaten</h2>\n<table class=\"ph-tabelle\"><tbody>\n{% for k, v in a.stamm.items() %}<tr><td style=\"width:50mm\">{{ _(k) }}</td><td>{{ v }}</td></tr>{% endfor %}\n</tbody></table>\n{% if a.adressen %}<h2>Weitere Adressen</h2>\n<table class=\"ph-tabelle\"><thead><tr><th>Art</th><th>Adresse</th><th>Hinweis</th></tr></thead><tbody>\n{% for ad in a.adressen %}<tr><td>{{ ad.art }}</td><td>{{ ad.strasse }}, {{ ad.plz }} {{ ad.ort }}{% if ad.land %}, {{ ad.land }}{% endif %}</td><td>{{ ad.hinweis or \"\" }}</td></tr>{% endfor %}\n</tbody></table>{% endif %}\n<h2>Vorgänge</h2>\n{% if not a.vorgaenge %}<p>Keine Vorgänge gespeichert.</p>{% endif %}\n{% for v in a.vorgaenge %}\n<h3>{{ _(v.doctype) }} ({{ v.anzahl }})</h3>\n<table class=\"ph-tabelle\"><thead><tr>{% for f in v.felder %}<th>{{ f }}</th>{% endfor %}</tr></thead><tbody>\n{% for z in v.zeilen %}<tr>{% for f in v.felder %}<td>{{ z[f] if z[f] is not none else \"\" }}</td>{% endfor %}</tr>{% endfor %}\n</tbody></table>\n{% endfor %}\n{% if a.kommunikation %}<h2>Kommunikation</h2>\n<table class=\"ph-tabelle\"><thead><tr><th>Datum</th><th>Richtung</th><th>Betreff</th></tr></thead><tbody>\n{% for k in a.kommunikation %}<tr><td>{{ frappe.utils.format_datetime(k.communication_date, \"dd.MM.yyyy HH:mm\") }}</td><td>{{ k.sent_or_received }}</td><td>{{ k.subject }}</td></tr>{% endfor %}\n</tbody></table>{% endif %}\n<h2>Empfänger, Speicherdauer, Rechte</h2>\n<p>Empfänger: Auftragsverarbeiter für Hosting, E-Mail-Versand und Zahlungsabwicklung laut Datenschutzerklärung (platzhirsch.studio/datenschutz). Speicherdauer: Anfragen ohne Auftrag bis zu 3 Jahre, Vertragsdaten 7 Jahre (§ 132 BAO). Rechte: Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch (Art. 16–21 DSGVO), Beschwerde bei der Datenschutzbehörde (dsb.gv.at).</p>\n<p class=\"ph-hinweis\">Interne Notizen (Feldebene 1) sind nicht Teil dieser Auskunft, soweit sie keine personenbezogenen Daten der betroffenen Person enthalten – vor Versand durch die Leitung prüfen.</p>\n{% endblock %}",
   "css": ""
+ },
+ {
+  "doctype": "Print Format",
+  "name": "PH Kontakt Etikett",
+  "doc_type": "PH Kontakt",
+  "module": "PH CRM",
+  "standard": "Yes",
+  "custom_format": 1,
+  "print_format_type": "Jinja",
+  "disabled": 0,
+  "default_print_language": "de",
+  "font_size": 10,
+  "margin_top": 0,
+  "margin_bottom": 0,
+  "margin_left": 0,
+  "margin_right": 0,
+  "page_number": "Hide",
+  "html": "<style>\n@page { size: 99mm 38mm; margin: 0; }\nbody { margin: 0; }\n.ph-etikett { width: 99mm; height: 38mm; box-sizing: border-box; padding: 4mm 5mm; font-family: \"Instrument Sans\", Arial, sans-serif; font-size: 10.5pt; line-height: 1.3; overflow: hidden; }\n.ph-etikett .absender { font-size: 6.5pt; color: #8a7a66; border-bottom: 0.2mm solid #8a7a66; margin-bottom: 1.5mm; white-space: nowrap; overflow: hidden; }\n</style>\n{%- set adr = namespace(z=None) -%}\n{%- for a in doc.adressen or [] -%}{%- if not adr.z and a.art == \"Liefer\" -%}{%- set adr.z = a -%}{%- endif -%}{%- endfor -%}\n{%- set firma = ph_firma() -%}\n<div class=\"ph-etikett\">\n<div class=\"absender\">{{ ((firma.marke or firma.firmenname) if firma else \"Platzhirsch Home Living\") }} · {{ (firma.strasse if firma else \"Landstraße 11\") }} · {{ (firma.plz if firma else \"6911\") }} {{ (firma.ort if firma else \"Lochau\") }}</div>\n{% if doc.firma and doc.kontaktart != \"Privat\" %}<div><b>{{ doc.firma }}</b></div>{% endif %}\n<div>{{ doc.anrede if doc.anrede and doc.anrede != \"Firma\" else \"\" }} {{ doc.titel_akad or \"\" }} {{ doc.vorname or \"\" }} {{ doc.nachname }}</div>\n{% if adr.z %}<div>{{ adr.z.strasse }}</div><div>{{ adr.z.plz }} {{ adr.z.ort }}</div>{% if adr.z.land and adr.z.land != \"Austria\" and adr.z.land != \"Österreich\" %}<div>{{ adr.z.land | upper }}</div>{% endif %}\n{% else %}<div>{{ doc.strasse or \"\" }}</div><div>{{ doc.plz or \"\" }} {{ doc.ort or \"\" }}</div>{% if doc.land and doc.land != \"Austria\" and doc.land != \"Österreich\" %}<div>{{ doc.land | upper }}</div>{% endif %}{% endif %}\n</div>",
+  "css": ""
  }
 ]

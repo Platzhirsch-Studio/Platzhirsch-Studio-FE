@@ -1,9 +1,8 @@
 // Adapter-Schicht für 3D-Modelldaten (nur auf dem Server verwenden: nutzt fs).
 //
 // Reihenfolge der Quellen:
-//   1. Frappe/ERPNext (backoffice.platzhirsch.studio) – NOCH NICHT ANGEBUNDEN,
-//      siehe fetchFromFrappe() unten. Wir haben derzeit keinen Schreibzugang und
-//      kein 3D-Feld im Backoffice.
+//   1. ph_sortiment (nur Gruppe „katalog“ auf ph): Dateien bekannter Modelle,
+//      siehe fetchFromFrappe() unten. Im alten Backoffice gibt es kein 3D-Feld.
 //   2. Lokaler Entwicklungs-Speicher .data/ar-viewer/models.json (gitignored):
 //      Einträge mit gleicher `id` überschreiben den Beispielkatalog, neue `id`s
 //      werden angehängt. So lassen sich Herstellermodelle lokal testen, ohne
@@ -15,6 +14,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
 import { AR_MODELS } from "./catalog";
+import { fetchPhModelle3d, mapPhModelle3d } from "@/lib/backend/labs";
 
 const DEV_STORE = path.join(process.cwd(), ".data", "ar-viewer", "models.json");
 
@@ -75,21 +75,30 @@ export const ArModelSchema = z.object({
 });
 
 /**
- * Später: 3D-Daten aus dem Backoffice. Vorgesehene Anbindung (nur lesen):
- *   GET /api/method/get_produkt_by_path_field_api?path_field=<slug>
- *     → Felder `pdf_produkte` (Anhänge) um Einträge mit Typ "3d" erweitern
- *       (GLB/USDZ als File-Doctype-Anhang am Produkt), oder
- *   GET /api/resource/Produkt 3D Modell?filters=[["produkt","=",<name>]]
- *     → eigener Child-/Doctype „Produkt 3D Modell“ mit: glb (Attach), usdz (Attach),
- *       poster (Attach Image), ar_placement (Select floor/wall), freigabe_hersteller
- *       (Check + Datum, Pflicht!), varianten (Table: variant, label, swatch, note),
- *       hotspots (Table: title, text, position, normal).
- * Dateien laufen dann über den bestehenden /cmx-Proxy (Endungen .glb/.usdz
- * müssen dort freigeschaltet werden) oder ein CDN.
- * @returns {Promise<null>} solange nicht angebunden
+ * 3D-Daten aus dem Backoffice: nur im ph-Modus der Gruppe „katalog“
+ * (BACKEND_GENERATION / BACKEND_PH_GRUPPEN, src/lib/backend/config.js) über die
+ * Gast-Methode ph_sortiment.api.get_produkt_modelle_3d (src/lib/backend/labs.js).
+ * ph liefert je Modell nur Dateien (glb/usdz/Poster); Maße, Bildtext, Hotspots
+ * und Varianten bleiben auf der Website. Ein ph-Eintrag ersetzt deshalb die
+ * Dateien eines bekannten Modells (gleiche id bzw. path_field), unbekannte
+ * fallen weg (Warnung). Dateien laufen über den /cmx-Proxy – dort sind .glb/.usdz
+ * noch nicht freigeschaltet (offener Punkt, 60-website-backend-umstellung.md).
+ * Alt, ohne Zugang, bei Fehlern oder leerer Liste: null → heutiger Weg.
+ * @returns {Promise<object[]|null>}
  */
-async function fetchFromFrappe() {
-  return null;
+async function fetchFromFrappe(localModels) {
+  const list = await fetchPhModelle3d();
+  if (!list || !list.length) return null;
+  const { models, ohneGegenstueck, ungueltig } = mapPhModelle3d(list, localModels);
+  if (ohneGegenstueck.length || ungueltig.length) {
+    console.warn(`[ar-viewer] ph: ${ohneGegenstueck.length} Modelle ohne Website-Datensatz, ${ungueltig.length} mit ungültiger Datei – übersprungen.`);
+  }
+  const ok = [];
+  for (const m of models) {
+    const r = ArModelSchema.safeParse(m);
+    if (r.success) ok.push(r.data);
+  }
+  return ok.length ? ok : null;
 }
 
 async function readDevStore() {
@@ -125,12 +134,12 @@ async function readDevStore() {
 
 /** Alle Modelle für die Galerie (validiert). */
 export async function getArModels() {
-  const fromFrappe = await fetchFromFrappe();
-  if (fromFrappe) return fromFrappe;
-
   const base = AR_MODELS.map((m) => ArModelSchema.parse(m));
   const local = await readDevStore();
   const byId = new Map(base.map((m) => [m.id, m]));
   for (const m of local) byId.set(m.id, m);
-  return [...byId.values()];
+  const models = [...byId.values()];
+
+  const fromFrappe = await fetchFromFrappe(models);
+  return fromFrappe || models;
 }

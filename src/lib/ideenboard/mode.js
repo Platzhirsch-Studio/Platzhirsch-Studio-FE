@@ -6,14 +6,36 @@
 // DSE-Sperre (Rat 9,5 B3, QA Recht −0,3): In Produktion zusätzlich erst, wenn
 // der Abschnitt „Ideenboard teilen“ (#ideenboard) freigegeben ist
 // (src/lib/legal/dseSections.js). Das Board im Browser bleibt immer.
+//
+// Speicher (storageKind): IDEENBOARD_STORAGE=ph UND Gruppe "ideenboard" auf ph
+// mit Zugang (src/lib/backend/config.js) → "ph" (./phAdapter.js, ph_marketing).
+// Ist ph gewünscht, aber BACKEND_PH_* unvollständig → null (Teilen aus, nichts
+// landet still lokal). Sonst "local" wie bisher.
 import { DSE_SECTIONS, dseGateOpen } from "../legal/dseSections.js";
+import { resolveBackend } from "../backend/config.js";
 
 export const isProd = (env = process.env) => env.NODE_ENV === "production" || env.VERCEL_ENV === "production";
+
+/** ph-Zugang ({url,key,secret}) oder null; undefined = ph nicht gewünscht. */
+export function phIdeenboardTarget(env = process.env) {
+  if (String(env.IDEENBOARD_STORAGE || "").trim().toLowerCase() !== "ph") return undefined;
+  const target = resolveBackend("ideenboard", env);
+  if (target.generation !== "ph") return undefined;
+  return target.ph || null;
+}
+
+/** "ph" | "local" | null */
+export function storageKind(env = process.env) {
+  const ph = phIdeenboardTarget(env);
+  if (ph) return "ph";
+  if (ph === null) return null;
+  return !isProd(env) || Boolean(env.IDEENBOARD_LOCAL_DIR) ? "local" : null;
+}
 
 export function ideenboardShareAvailable(env = process.env, sections = DSE_SECTIONS) {
   if (String(env.IDEENBOARD_MODE || "").trim().toLowerCase() === "off") return false;
   if (!dseGateOpen("ideenboard", env, sections)) return false;
-  return !isProd(env) || Boolean(env.IDEENBOARD_LOCAL_DIR);
+  return storageKind(env) !== null;
 }
 
 /**

@@ -69,10 +69,12 @@ export const TABLE = [
   [re(`/accessoires/kategorie/${SEG}`), "/accessoires/kategorie/[kategorie]"],
 ];
 
-// Statische Seiten (Pfad nach der Sprache), Stand 29.10.2026 – aus den
+// Statische Seiten (Pfad nach der Sprache), Stand 29.10.2026; 04.11.2026: Link-Seiten
+// /newsletter/bestaetigen, /newsletter/abmelden, /adventsabend/absagen (noindex) und
+// /service/reklamation (index) – aus den
 // Ordnern unter src/app/[locale] ohne dynamische Segmente und ohne EXCLUDED.
 export const STATIC = [
-  "/3d-ansicht", "/accessoires", "/accessoires/produkte", "/accessoires/suche", "/adventsabend", "/agb", "/arbeitsweise", "/architekten", "/atelierverkauf", "/bad-wellness", "/bad-wellness/produkte", "/barrierefreiheit", "/beratung", "/bewerten",
+  "/3d-ansicht", "/accessoires", "/accessoires/produkte", "/accessoires/suche", "/adventsabend", "/adventsabend/absagen", "/agb", "/arbeitsweise", "/architekten", "/atelierverkauf", "/bad-wellness", "/bad-wellness/produkte", "/barrierefreiheit", "/beratung", "/bewerten",
   "/bodensee-licht", "/concierge", "/datenschutz", "/designermoebel-appenzell", "/designermoebel-arlberg",
   "/designermoebel-bregenz", "/designermoebel-dornbirn", "/designermoebel-feldkirch", "/designermoebel-friedrichshafen",
   "/designermoebel-kempten", "/designermoebel-konstanz", "/designermoebel-liechtenstein", "/designermoebel-lindau",
@@ -83,9 +85,9 @@ export const STATIC = [
   "/ezarri/technik/downloads", "/ezarri/technik/fragen", "/ezarri/technik/jointpoint", "/ezarri/technik/pflege",
   "/ezarri/technik/verlegung", "/ezarri/wasser", "/ezarri/wellness", "/gutscheinbedingungen", "/gutscheine",
   "/hotel-objekt", "/ideenboard", "/impressum", "/interior-design-vorarlberg", "/ki-assistenten",
-  "/ki-assistenten/bestaetigen", "/kontakt", "/kuechen-vorarlberg", "/kuechengeraete", "/kuechengeraete/produkte", "/kuechenplaner", "/kuechenplaner/druck",
-  "/leistungen", "/merkliste", "/moebel-bodensee", "/news", "/newsletter", "/newsletter/archiv",
-  "/outdoor-gartenplanung", "/outdoor-kueche", "/outdoor-winterservice", "/pflege-service", "/produkte", "/projekte", "/ratgeber", "/regionen",
+  "/ki-assistenten/bestaetigen", "/kontakt", "/kuechen-vorarlberg", "/kuechengeraete", "/kuechengeraete/produkte", "/kuechenplaner", "/kuechenplaner/druck", "/kundenkarte", "/kundenkarte/bedingungen", "/kundenkarte/bestaetigen",
+  "/leistungen", "/merkliste", "/moebel-bodensee", "/news", "/newsletter", "/newsletter/abmelden", "/newsletter/archiv", "/newsletter/bestaetigen",
+  "/outdoor-gartenplanung", "/outdoor-kueche", "/outdoor-winterservice", "/pflege-service", "/produkte", "/projekte", "/ratgeber", "/regionen", "/service/reklamation",
   "/sauna-kaufen", "/showroom", "/sofaplaner", "/stil-finder", "/swim-spa", "/termin", "/termin/bestaetigen", "/termin/verwalten",
   "/ueber-uns/karriere", "/ueber-uns/marken", "/ueber-uns/partner", "/ueber-uns/platzhirsch", "/ueber-uns/presse",
   "/ueber-uns/team", "/ueber-uns/team/harald-menghin", "/whirlpool-kaufen", "/widerruf", "/wohnzimmer-einrichten-vorarlberg", "/wunschliste", "/wunschliste/verwalten", "/yacht-interior",

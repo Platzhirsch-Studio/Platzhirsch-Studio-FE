@@ -1,11 +1,12 @@
 // src/lib/api/markenApi.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { katalogMethod } from "@/lib/backend/katalog";
 import { backofficeFetch } from "@/lib/api/http";
 
 // Base fetch function (private - not exported)
 export async function fetchRawMarkenData() {
-  const response = await backofficeFetch(`${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.marken.api.marken_data`, {
+  const response = await backofficeFetch(katalogMethod("marken.api", "marken_data", NEW_API_BASE_URL), {
     next: { revalidate: 3600, tags: ["marken"] },
     // 2 x 7 s inside a 15 s budget: a retry, but never longer than the old single 15 s limit.
     timeoutMs: 7000,

@@ -1,0 +1,33 @@
+{#- ph_kundenkarte/templates/print/ph_kundenkarte_vorteilsuebersicht.html – A4-Übersicht aller Stufen und Leistungen
+    für den Showroom (Druck aus PH Kundenkarte Stufe; zeigt immer alle aktiven Stufen). Keine Beträge, keine Superlative. -#}
+{% extends "templates/print/ph_basis.html" %}
+{% set einst_kk = frappe.get_single("PH Kundenkarte Einstellungen") %}
+{% set stufen = frappe.get_all("PH Kundenkarte Stufe", filters={"aktiv": 1}, fields=["name", "reihenfolge", "farbe", "beschreibung_kunde"], order_by="reihenfolge asc") %}
+{% block titel %}Platzhirsch Kundenkarte – Übersicht der Leistungen{% endblock %}
+{% block kopfrechts %}Stand {{ ph_datum(frappe.utils.nowdate()) }}{% endblock %}
+{% block css %}
+  .vk-stufe { border: 1px solid #d9d4cc; border-radius: 2mm; padding: 4mm 5mm; margin-bottom: 5mm; page-break-inside: avoid; }
+  .vk-kopf { display: flex; align-items: center; gap: 3mm; margin-bottom: 2mm; }
+  .vk-punkt { width: 5mm; height: 5mm; border-radius: 50%; display: inline-block; }
+  .vk-stufe h2 { margin: 0; }
+  .vk-stufe ul { margin: 2mm 0 0; padding-left: 5mm; }
+  .vk-stufe li { margin-bottom: 1.2mm; }
+{% endblock %}
+{% block inhalt %}
+<h1>Ihre Kundenkarte – Leistungen je Stufe</h1>
+<p>Die Platzhirsch Kundenkarte ist personengebunden und hat keinen Geldwert. Jede Stufe umfasst die Leistungen der vorhergehenden Stufen.</p>
+{% for s in stufen %}
+  {% set st = frappe.get_cached_doc("PH Kundenkarte Stufe", s.name) %}
+  <div class="vk-stufe">
+    <div class="vk-kopf"><span class="vk-punkt" style="background:{{ s.farbe or '#30373e' }}"></span><h2>{{ s.name }}</h2></div>
+    {% if s.beschreibung_kunde %}<p style="margin:0 0 1mm">{{ s.beschreibung_kunde }}</p>{% endif %}
+    <ul>
+    {% for z in st.vorteile %}
+      {% set v = frappe.get_cached_doc("PH Kundenkarte Vorteil", z.vorteil) %}
+      {% if v.aktiv %}<li><b>{{ v.titel }}</b>{% if v.beschreibung_kunde %} – {{ v.beschreibung_kunde }}{% endif %}{% if v.einloesbar_pro_jahr %} <span style="color:#6b7280">({{ v.einloesbar_pro_jahr }}× je Kalenderjahr)</span>{% endif %}</li>{% endif %}
+    {% endfor %}
+    </ul>
+  </div>
+{% endfor %}
+<p style="font-size:9pt;color:#6b7280">Es gelten die Teilnahmebedingungen der Kundenkarte{% if einst_kk.bedingungen_version %} (Stand {{ einst_kk.bedingungen_version }}){% endif %}. Die Einstufung erfolgt nur mit Ihrer gesonderten Einwilligung zur Auswertung Ihrer Einkäufe; ohne Einwilligung bleibt die Karte auf der Startstufe. Datenschutz: {{ firma.website or "platzhirsch.studio" }}/datenschutz.</p>
+{% endblock %}

@@ -1,0 +1,50 @@
+# syntax=docker/dockerfile:1.7
+# deploy/produktion/backoffice/Containerfile – eigenes Backoffice (Next.js 16, Port 3100),
+# Host backoffice.platzhirsch.studio.
+#
+# Build-Kontext = REPO-ROOT: backoffice/ hat kein eigenes node_modules, die Abhängigkeiten
+# (next, react, zod, lucide-react, tailwind …) kommen aus dem Root-package.json, und
+# backoffice/next.config.js setzt turbopack.root auf das Repo. Darum: npm ci im Root, dann
+# `next build` IN backoffice/ (PLAN-NEXT-BACKOFFICE.md §7).
+#   docker build -f deploy/produktion/backoffice/Containerfile -t platzhirsch/backoffice:<sha> .
+#
+# Kein `output: "standalone"` in backoffice/next.config.js → ausgeliefert werden Root-node_modules
+# (ohne devDependencies) + backoffice/ mit .next; Start mit `next start -p 3100` in backoffice/.
+# Backoffice-Variablen sind reine Laufzeit-Variablen (kein NEXT_PUBLIC_*), daher kein Build-Secret.
+
+ARG NODE_VERSION=24
+
+FROM node:${NODE_VERSION}-bookworm-slim AS deps
+WORKDIR /repo
+ENV NEXT_TELEMETRY_DISABLED=1
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci --no-audit --no-fund
+
+FROM deps AS build
+COPY backoffice/ backoffice/
+ARG NEXT_DEPLOYMENT_ID
+ENV NODE_ENV=production \
+    NEXT_DEPLOYMENT_ID=${NEXT_DEPLOYMENT_ID}
+WORKDIR /repo/backoffice
+RUN ../node_modules/.bin/next build \
+ && rm -rf .next/cache tests test-results playwright-report qa-screenshots
+WORKDIR /repo
+RUN npm prune --omit=dev --no-audit --no-fund
+
+FROM node:${NODE_VERSION}-bookworm-slim AS runtime
+ENV NODE_ENV=production \
+    NEXT_TELEMETRY_DISABLED=1 \
+    PORT=3100 \
+    HOSTNAME=0.0.0.0
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates tini \
+ && rm -rf /var/lib/apt/lists/*
+COPY --from=build --chown=node:node /repo/package.json /repo/package-lock.json /repo/
+COPY --from=build --chown=node:node /repo/node_modules /repo/node_modules
+COPY --from=build --chown=node:node /repo/backoffice /repo/backoffice
+WORKDIR /repo/backoffice
+USER node
+EXPOSE 3100
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD curl -fsS -o /dev/null http://127.0.0.1:3100/api/ping || exit 1
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["../node_modules/.bin/next", "start", "-H", "0.0.0.0", "-p", "3100"]

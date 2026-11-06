@@ -123,7 +123,15 @@ def _fremd_handler(art):
     return None
 
 
+RADAR_TYPEN = ("charge.succeeded", "charge.updated", "review.opened", "review.closed", "radar.early_fraud_warning.created")
+
+
 def _dispatch(typ, obj, art, livemode, ereignis):
+    if typ in RADAR_TYPEN:
+        # Betrugsprüfung nur als Anzeige – unabhängig von metadata.art (Charges tragen die PI-Metadaten nicht)
+        return _radar(typ, obj, ereignis)
+    if typ in ("charge.dispute.updated", "charge.dispute.closed"):
+        return _dispute(obj, ereignis, neu=False)
     fremd = _fremd_handler(art) if art else None
     if fremd:
         r = fremd(typ=typ, obj=obj, livemode=livemode, ereignis=ereignis.name)
@@ -222,15 +230,73 @@ def _auszahlung(typ, obj, livemode, ereignis):
     return werte["status"]
 
 
-def _dispute(obj, ereignis):
+def _dispute(obj, ereignis, neu=True):
+    """Zahlungsstreit: Felder an PH Zahlung (dispute_*), Aufgabe an Leitung bei Eingang und bei Verlust."""
+    import datetime
+
     from ph_shop import zahlung as z
     from ph_shop.ph_shop.mails import aufgabe
 
     pi = obj.get("payment_intent")
     name = z.finde(stripe_payment_intent=pi) if pi else None
-    text = _("Stripe-Rückbuchung (Dispute) {0} über {1} Cent – Grund: {2}. Im Stripe-Dashboard reagieren.").format(obj.get("id"), cint(obj.get("amount")), obj.get("reason") or "–")
+    due = ((obj.get("evidence_details") or {}).get("due_by"))
+    werte = {
+        "dispute_id": str(obj.get("id") or "")[:140],
+        "dispute_status": obj.get("status") if obj.get("status") in ("warning_needs_response", "warning_under_review", "warning_closed", "needs_response", "under_review", "won", "lost") else None,
+        "dispute_betrag_cent": cint(obj.get("amount")),
+        "dispute_grund": str(obj.get("reason") or "")[:140],
+        "dispute_frist": datetime.datetime.fromtimestamp(cint(due)) if due else None,
+    }
     if name:
-        frappe.get_doc("PH Zahlung", name).add_comment("Info", text)
+        frappe.db.set_value("PH Zahlung", name, werte, update_modified=False)
         ereignis.db_set({"bezug_doctype": "PH Zahlung", "bezug": name}, update_modified=False)
-    aufgabe(text, "PH Zahlung" if name else "PH Stripe Ereignis", name or ereignis.name)
-    return "dispute"
+    if neu:
+        text = _("Stripe-Rückbuchung (Dispute) {0} über {1} Cent – Grund: {2}. Antwort bis {3} im Stripe-Dashboard.").format(obj.get("id"), cint(obj.get("amount")), obj.get("reason") or "–", werte["dispute_frist"] or "–")
+    elif werte["dispute_status"] == "lost":
+        text = _("Dispute {0} verloren: {1} Cent zurückgebucht – Bestellung/Gutschein prüfen (ggf. sperren).").format(obj.get("id"), cint(obj.get("amount")))
+    else:
+        text = None
+    if name and text:
+        frappe.get_doc("PH Zahlung", name).add_comment("Info", text)
+    if text:
+        aufgabe(text, "PH Zahlung" if name else "PH Stripe Ereignis", name or ereignis.name)
+    return f"dispute:{werte['dispute_status'] or 'neu'}"
+
+
+def _radar(typ, obj, ereignis):
+    """Stripe Radar → Felder radar_* an PH Zahlung und PH Bestellung (über Payment Intent). Nur Anzeige."""
+    from ph_shop import radar, zahlung as z
+    from ph_shop.ph_shop.mails import aufgabe
+
+    pi = obj.get("payment_intent")
+    if not pi:
+        return "ignoriert"
+    if typ.startswith("charge."):
+        werte = radar.aus_charge(obj)
+    elif typ.startswith("review."):
+        werte = {"radar_review": "offen" if typ == "review.opened" or obj.get("open") else "geschlossen"}
+    else:
+        werte = {"radar_warnung": 1}
+    if not werte:
+        return "ignoriert"
+    ziele = []
+    zname = z.finde(stripe_payment_intent=pi)
+    if zname:
+        ziele.append(("PH Zahlung", zname))
+    ziel = _ziel_nach_payment_intent(pi)
+    if ziel and ziel[0] == "PH Bestellung":
+        ziele.append((ziel[0], ziel[1]))
+    if not ziele:
+        return "unbekannt"
+    neu_markiert = False
+    for dt, name in ziele:
+        alt = frappe.db.get_value(dt, name, ["radar_risk_level", "radar_risk_score", "radar_outcome", "radar_warnung", "radar_review", "radar_markiert"], as_dict=True) or {}
+        stand = {**alt, **werte}
+        markiert = radar.markiert(stand.get("radar_risk_level"), stand.get("radar_risk_score"), stand.get("radar_outcome"), bool(cint(stand.get("radar_warnung"))), stand.get("radar_review") == "offen")
+        werte_dt = {**werte, "radar_markiert": 1 if markiert else 0}
+        frappe.db.set_value(dt, name, werte_dt, update_modified=False)
+        if markiert and not cint(alt.get("radar_markiert")) and (dt == "PH Bestellung" or len(ziele) == 1):
+            neu_markiert = True
+            aufgabe(_("{0} {1}: Stripe Radar meldet erhöhtes Risiko ({2}) – vor Versand/Ausgabe prüfen.").format(dt, name, stand.get("radar_risk_level") or typ), dt, name)
+    ereignis.db_set({"bezug_doctype": ziele[-1][0], "bezug": ziele[-1][1]}, update_modified=False)
+    return "radar:markiert" if neu_markiert else "radar"

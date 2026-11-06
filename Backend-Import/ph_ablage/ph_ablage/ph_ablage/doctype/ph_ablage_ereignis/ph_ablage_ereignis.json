@@ -1,0 +1,168 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Protokoll der Ablage: Upload, Download, Freigabe, Löschen, Wiederherstellen – nur Metadaten, nie Inhalte. Nur anlegen, nicht ändern.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "art",
+  "zeitpunkt",
+  "benutzer",
+  "cb_1",
+  "datei",
+  "ordner",
+  "version",
+  "freigabelink",
+  "sb_details",
+  "bezug_doctype",
+  "bezug_name",
+  "cb_2",
+  "hinweis",
+  "ip_hash",
+  "automatisch"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1,
+   "length": 200
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Upload\nNeue Version\nDownload\nVorschau\nUmbenannt\nVerschoben\nTags\nGesperrt\nEntsperrt\nVersion wiederhergestellt\nGeloescht\nWiederhergestellt\nEndgueltig geloescht\nFreigabe erstellt\nFreigabe widerrufen\nFreigabe genutzt\nPortal freigegeben\nPortal zurueckgezogen\nOrdner angelegt\nOrdner verschoben\nOrdner umbenannt\nOrdner geloescht\nBestand verlinkt\nSpeicher umgezogen\nPruefsumme abweichend\nAnonymisiert\nAbgelehnt",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "zeitpunkt",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "benutzer",
+   "fieldtype": "Link",
+   "label": "Benutzer",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "datei",
+   "fieldtype": "Data",
+   "label": "Datei",
+   "in_standard_filter": 1,
+   "description": "Name der PH Datei (Text, bleibt nach endgültigem Löschen erhalten)"
+  },
+  {
+   "fieldname": "ordner",
+   "fieldtype": "Data",
+   "label": "Ordner"
+  },
+  {
+   "fieldname": "version",
+   "fieldtype": "Int",
+   "label": "Version"
+  },
+  {
+   "fieldname": "freigabelink",
+   "fieldtype": "Data",
+   "label": "Freigabelink"
+  },
+  {
+   "fieldname": "sb_details",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "bezug_doctype",
+   "fieldtype": "Data",
+   "label": "Bezug (Art)"
+  },
+  {
+   "fieldname": "bezug_name",
+   "fieldtype": "Data",
+   "label": "Bezug"
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis (ohne Inhalte)"
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP-Hash"
+  },
+  {
+   "fieldname": "automatisch",
+   "fieldtype": "Check",
+   "label": "Automatisch (Scheduler/Ereignis)",
+   "default": "0"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Ablage",
+ "name": "PH Ablage Ereignis",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Ablage Leitung",
+   "read": 1,
+   "export": 1,
+   "report": 1
+  }
+ ],
+ "sort_field": "zeitpunkt",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "autoname": "hash",
+ "naming_rule": "Random",
+ "in_create": 1,
+ "title_field": "titel",
+ "search_fields": "datei,art,benutzer"
+}

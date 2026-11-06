@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Projektbudget je Kostenart: eingefroren bei Auftrag, aktuell = bei Auftrag + Nachträge + Anpassung; Restkosten optional manuell.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kostenart",
+  "budget_auftrag_cent",
+  "nachtraege_cent",
+  "anpassung_cent",
+  "budget_aktuell_cent",
+  "prognose_manuell",
+  "prognose_rest_cent",
+  "prognose_begruendung",
+  "quelle"
+ ],
+ "fields": [
+  {
+   "fieldname": "kostenart",
+   "fieldtype": "Link",
+   "label": "Kostenart",
+   "options": "PH Kostenart",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "budget_auftrag_cent",
+   "fieldtype": "Int",
+   "label": "Budget bei Auftrag (Cent)",
+   "in_list_view": 1,
+   "columns": 2,
+   "description": "Wird bei Auftrag eingefroren."
+  },
+  {
+   "fieldname": "nachtraege_cent",
+   "fieldtype": "Int",
+   "label": "aus Nachträgen (Cent)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "anpassung_cent",
+   "fieldtype": "Int",
+   "label": "Anpassung Leitung (Cent)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "budget_aktuell_cent",
+   "fieldtype": "Int",
+   "label": "Aktuelles Budget (Cent)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "prognose_manuell",
+   "fieldtype": "Check",
+   "label": "Restkosten manuell",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "prognose_rest_cent",
+   "fieldtype": "Int",
+   "label": "Restkosten manuell (Cent)",
+   "depends_on": "eval:doc.prognose_manuell",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "prognose_begruendung",
+   "fieldtype": "Small Text",
+   "label": "Begründung Restkosten",
+   "depends_on": "eval:doc.prognose_manuell",
+   "mandatory_depends_on": "eval:doc.prognose_manuell"
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Data",
+   "label": "Vorbelegt aus",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Projekt Budget",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

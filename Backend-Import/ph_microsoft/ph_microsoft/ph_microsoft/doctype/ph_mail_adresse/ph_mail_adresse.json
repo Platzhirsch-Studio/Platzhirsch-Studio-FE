@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Weitere E-Mail-Adressen eines Kontakts/Lieferanten (automatische Zuordnung) oder Sperrliste („nie zuordnen“).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "adresse",
+  "art",
+  "cb_1",
+  "kontakt_doctype",
+  "kontakt_name",
+  "sb_notiz",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "adresse",
+   "fieldtype": "Data",
+   "label": "E-Mail-Adresse",
+   "options": "Email",
+   "reqd": 1,
+   "in_list_view": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Zuordnung\nSperre",
+   "default": "Zuordnung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "kontakt_doctype",
+   "fieldtype": "Link",
+   "label": "Kontakt-Art",
+   "options": "DocType",
+   "depends_on": "eval:doc.art=='Zuordnung'",
+   "description": "PH Kontakt oder PH Lieferant"
+  },
+  {
+   "fieldname": "kontakt_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Kontakt",
+   "options": "kontakt_doctype",
+   "depends_on": "eval:doc.art=='Zuordnung'",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_notiz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Microsoft",
+ "name": "PH Mail Adresse",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH CRM Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH CRM Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "report": 1
+  }
+ ],
+ "search_fields": "art,kontakt_name",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "adresse",
+ "track_changes": 1,
+ "track_seen": 1
+}

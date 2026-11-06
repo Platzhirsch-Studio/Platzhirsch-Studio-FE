@@ -48,15 +48,27 @@ def tour(name):
 
 
 @frappe.whitelist()
-def stopp_status(tour, stopp, status, notiz=None, unterschrift=None, unterschrift_name=None):
+def stopp_status(tour, stopp, status, notiz=None, unterschrift=None, unterschrift_name=None, idempotency_key=None):
+    """idempotency_key: Offline-Puffer – wiederholte Übertragung liefert die erste Antwort."""
     _pruefen()
-    return frappe.get_doc("PH Tour", tour).stopp_status(stopp, status, notiz, unterschrift, unterschrift_name)
+    return frappe.get_doc("PH Tour", tour).stopp_status(stopp, status, notiz, unterschrift, unterschrift_name, idempotency_key)
 
 
 @frappe.whitelist()
-def foto(tour, stopp_nr, file_url, art="nachher", hinweis=None):
+def foto(tour, stopp_nr, file_url, art="nachher", hinweis=None, idempotency_key=None):
+    """Doppelte Fotos (gleicher Stopp + Datei) werden ignoriert; idempotency_key zusätzlich für den Puffer."""
     _pruefen()
-    return frappe.get_doc("PH Tour", tour).foto_hinzufuegen(stopp_nr, file_url, art, hinweis)
+    from ph_logistik.ph_logistik.helfer import idempotent
+
+    t = frappe.get_doc("PH Tour", tour)
+    return idempotent(f"foto:{tour}:{idempotency_key}" if idempotency_key else None, lambda: t.foto_hinzufuegen(stopp_nr, file_url, art, hinweis))
+
+
+@frappe.whitelist()
+def avis(tour, kanal="mail", stopps=None):
+    """Kundeninfo für die Tour (Avis) aus der mobilen Ansicht."""
+    _pruefen()
+    return frappe.get_doc("PH Tour", tour).avis_senden(kanal, stopps)
 
 
 @frappe.whitelist()

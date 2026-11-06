@@ -10,6 +10,7 @@
 // No "@/..." imports: tested directly with `node --test`.
 import { z } from "zod";
 import { HERKUNFT_MAX, isLeadRef, stripHerkunft } from "./leadPayload.js";
+import { attributionShape } from "./attributionFields.js";
 
 // R6-leads: CSP without 'unsafe-eval'. zod 4.6 compiles a fast path for every
 // z.object() with `new Function` and probes eval with `new Function("")` when
@@ -53,6 +54,7 @@ export const MAX_BYTES = {
   beratung_anfrage: 32 * 1024,
   anfrage_produkt: 24 * 1024,
   newsletter_subscribe: 2 * 1024,
+  adventsabend: 4 * 1024,
 };
 
 // /api/kontakt — Kontakt (kontakt.js) and Adventsabend (AdventsabendForm.js):
@@ -67,6 +69,16 @@ export const kontaktSchema = z.object({
     "Message must be at least 10 characters"
   ),
   lead_ref: leadRef,
+});
+
+// /api/adventsabend/anmelden — AdventsabendForm.js im ph-Modus
+// (src/lib/backend/adventsabend.js → ph_marketing.api.register_event).
+export const adventSchema = z.object({
+  name: required("name", 140).refine((v) => v.trim().length >= 2, "Name must be at least 2 characters"),
+  email_address: email("email_address"),
+  telefon: optional("telefon", 40).refine((v) => !v || !v.trim() || PHONE_RE.test(v), "Invalid phone number format"),
+  personen: z.coerce.number({ error: missing("personen") }).int("Invalid number of persons").min(1, "Invalid number of persons").max(10, "Invalid number of persons"),
+  nachricht: optional("nachricht", 500),
 });
 
 // /api/beratung_anfrage — BeratungClient.js and Labs/Kuechenplaner/ResultPanel.js
@@ -86,6 +98,11 @@ export const beratungSchema = z.object({
   // Runde 4 (recht P2, Datenminimierung): Telefon freiwillig wie im Kontaktformular.
   telefon: optional("telefon", 40).refine((v) => !v || !v.trim() || PHONE_RE.test(v), "Invalid phone number format"),
   lead_ref: leadRef,
+  // Planer-Beilage (Sofaplaner, Dreiländer-Rechner; src/lib/forms/planerFields.js):
+  // nur an ph_crm weitergegeben (backend/forms.js), das alte System bekommt sie nie.
+  planer: optional("planer", 40),
+  planer_konfiguration: optional("planer_konfiguration", 64 * 1024),
+  planer_link: optional("planer_link", 500),
 });
 
 // /api/anfrage_produkt — AnfrageFormProduct.js (Merkliste → Anfrage).
@@ -124,4 +141,7 @@ export const newsletterSchema = z.object({
       const e = v.trim();
       return e.length > 0 && e.length <= 254 && EMAIL_RE.test(e);
     }, "Invalid email format"),
+  // utm_* / klick_id (nur mit Ads-Einwilligung vom Browser, attributionFields.js);
+  // weitergegeben nur an das ph-Backend (route.js extraFields), nie an das alte System.
+  ...attributionShape(z),
 });

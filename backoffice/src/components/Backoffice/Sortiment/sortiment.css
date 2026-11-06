@@ -1,0 +1,217 @@
+/* Bereich Sortiment – Lounge-Stil (art-direction/lounge.md §3–§9, Inhaber-Freigabe Nr. 51/53).
+   Präfix bo-sor-, nur Token aus globals.css. Gliederung über Fläche, Schatten und Abstand – keine Rahmen,
+   keine Kästen-Raster, keine Versalien. Radien nach Hierarchie: Kachel 28 · Karte 20 · Zeile 16 · Bild 14. */
+
+/* ---------------------------------------------------------------- Tabelle in Kachel (Lounge §6) */
+.bo-sor-tabelle { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 14px; line-height: 20px; }
+.bo-sor-tabelle th { text-align: left; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--color-bo-text-soft); padding: 0 12px 12px; white-space: nowrap; }
+.bo-sor-tabelle th.r, .bo-sor-tabelle td.r { text-align: right; }
+.bo-sor-tabelle td { padding: 12px; vertical-align: middle; border-top: var(--bo-hair) solid var(--color-bo-line); }
+.bo-sor-tabelle tbody tr { position: relative; transition: background-color 160ms ease; }
+.bo-sor-tabelle tbody tr:hover td, .bo-sor-tabelle tbody tr:focus-within td { background: var(--color-bo-surface-2); }
+.bo-sor-tabelle tbody tr:hover td, .bo-sor-tabelle tbody tr:hover + tr td,
+.bo-sor-tabelle tbody tr:focus-within td, .bo-sor-tabelle tbody tr:focus-within + tr td { border-top-color: transparent; }
+.bo-sor-tabelle tbody td:first-child { border-radius: 16px 0 0 16px; }
+.bo-sor-tabelle tbody td:last-child { border-radius: 0 16px 16px 0; }
+.bo-sor-tabelle tbody tr[data-gewaehlt="true"] td { background: var(--color-bo-surface-2); border-top-color: transparent; }
+.bo-sor-tabelle tbody tr[data-gewaehlt="true"] td:first-child { box-shadow: inset 3px 0 0 var(--color-bo-text); }
+.bo-sor-tabelle tbody tr[data-gewaehlt="true"] + tr td { border-top-color: transparent; }
+.bo-sor-tabelle tbody tr[data-warn="true"] td:first-child { box-shadow: inset 3px 0 0 var(--color-bo-eiche); }
+.bo-sor-tabelle .bo-sor-nr { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bo-sor-tabelle .bo-sor-zahl { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+.bo-sor-link { border-radius: 6px; }
+.bo-sor-link--zeile::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
+.bo-sor-tabelle tbody tr :is(button, input, select, a:not(.bo-sor-link--zeile), label) { position: relative; z-index: 1; }
+.bo-sor-titel { font-size: 15px; line-height: 20px; font-weight: 600; letter-spacing: -0.01em; color: var(--color-bo-text); }
+.bo-sor-unter { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-sor-klein { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-sor-warn { color: var(--color-bo-eiche-text); }
+.bo-sor-gefahr { color: var(--color-bo-ziegel-text); }
+.bo-sor-ok { color: var(--color-bo-salbei-text); }
+
+/* ---------------------------------------------------------------- Bilder (Freisteller auf Leinen, Lounge §7.4) */
+.bo-sor-bild { position: relative; display: block; flex-shrink: 0; overflow: hidden; border-radius: 14px; background: var(--color-bo-surface-3); }
+.bo-sor-bild img { width: 100%; height: 100%; object-fit: cover; }
+.bo-sor-bild[data-art="freisteller"] { background: var(--color-bo-surface-2); }
+.bo-sor-bild[data-art="freisteller"] img { object-fit: contain; padding: 8%; mix-blend-mode: multiply; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bo-sor-bild img { filter: brightness(0.92); } :root:not([data-theme="light"]) .bo-sor-bild[data-art="freisteller"] img { mix-blend-mode: normal; } }
+:root[data-theme="dark"] .bo-sor-bild img { filter: brightness(0.92); }
+:root[data-theme="dark"] .bo-sor-bild[data-art="freisteller"] img { mix-blend-mode: normal; }
+.bo-sor-bild__leer { position: absolute; inset: 0; display: grid; place-items: center; color: var(--color-bo-text-faint); }
+.bo-sor-bild__marke { position: absolute; right: 4px; bottom: 4px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 999px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); }
+
+/* ---------------------------------------------------------------- Werkzeugzeile (Segment · Suche · Filter) */
+.bo-sor-werkzeuge { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; margin-bottom: 24px; min-width: 0; }
+.bo-sor-werkzeuge__rechts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-width: 0; }
+.bo-sor-suche { background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); width: 260px; max-width: 100%; }
+.bo-sor-auswahlpille { position: relative; display: inline-flex; align-items: center; height: 40px; border-radius: 999px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); color: var(--color-bo-text); font-size: 14px; font-weight: 500; }
+.bo-sor-auswahlpille select { appearance: none; height: 100%; padding: 0 36px 0 16px; border: 0; border-radius: 999px; background: transparent; color: inherit; font: inherit; cursor: pointer; max-width: 220px; }
+.bo-sor-auswahlpille select:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-sor-auswahlpille svg { position: absolute; right: 14px; pointer-events: none; color: var(--color-bo-text-soft); }
+@media (max-width: 640px) { .bo-sor-suche { width: 100%; } .bo-sor-werkzeuge__rechts { width: 100%; } .bo-sor-werkzeuge__rechts > * { flex: 1 1 auto; } }
+
+/* ---------------------------------------------------------------- Listenkachel */
+.bo-sor-liste { padding: 20px 16px 12px; }
+.bo-sor-liste__fuss { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 12px 4px; font-size: 13px; color: var(--color-bo-text-soft); }
+.bo-sor-liste__kopf { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 12px 12px; font-size: 13px; color: var(--color-bo-text-soft); }
+.bo-sor-karten { display: none; }
+@media (max-width: 767px) {
+  .bo-sor-tabelle-huelle { display: none; }
+  .bo-sor-karten { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .bo-sor-liste { padding: 12px 8px 8px; }
+}
+.bo-sor-karte-zeile { position: relative; display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 16px; transition: background-color 160ms ease; min-width: 0; }
+.bo-sor-karte-zeile:hover, .bo-sor-karte-zeile:focus-within { background: var(--color-bo-surface-2); }
+.bo-sor-karte-zeile + .bo-sor-karte-zeile { box-shadow: inset 0 var(--bo-hair) 0 var(--color-bo-line); }
+
+/* ---------------------------------------------------------------- Produktkacheln (Lounge Kassa-Produktkarte) */
+.bo-sor-raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+@media (max-width: 520px) { .bo-sor-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
+.bo-sor-produktkarte { position: relative; display: flex; flex-direction: column; min-width: 0; border-radius: 28px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-tile); padding: 8px; transition: transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease), box-shadow 240ms ease; corner-shape: superellipse(1.35); }
+.bo-sor-produktkarte:hover { transform: translateY(-2px); box-shadow: var(--bo-sh-lift); }
+.bo-sor-produktkarte .bo-sor-bild { aspect-ratio: 4 / 3; width: 100%; border-radius: 20px; }
+.bo-sor-produktkarte__text { display: flex; flex-direction: column; gap: 2px; padding: 12px 12px 8px; min-width: 0; }
+.bo-sor-produktkarte__fuss { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 4px 12px 8px; margin-top: auto; min-width: 0; }
+.bo-sor-produktkarte__fuss > * { min-width: 0; }
+.bo-sor-produktkarte__chips { position: absolute; left: 16px; top: 16px; display: flex; gap: 6px; }
+.bo-sor-glaschip { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--color-bo-text); background: var(--color-bo-mat-strong); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); box-shadow: var(--bo-sh-btn); }
+@media (prefers-reduced-motion: reduce) { .bo-sor-produktkarte:hover { transform: none; } }
+
+/* ---------------------------------------------------------------- Kanban (Weg zur Veröffentlichung) */
+.bo-sor-kanban { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(280px, 1fr); gap: 16px; overflow-x: auto; padding: 4px 4px 16px; scroll-snap-type: x proximity; }
+.bo-sor-kanban__spalte { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding: 12px; border-radius: 24px; background: var(--color-bo-fill); scroll-snap-align: start; }
+.bo-sor-kanban__spalte[data-ziel="true"] { box-shadow: inset 0 0 0 1.5px var(--color-bo-text); }
+.bo-sor-kanban__kopf { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 6px 6px; }
+.bo-sor-kanban__karte { position: relative; display: flex; gap: 12px; align-items: center; padding: 10px; border-radius: 20px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); transition: transform 420ms var(--ease-feder, ease), box-shadow 200ms ease; min-width: 0; }
+.bo-sor-kanban__karte:hover { transform: translateY(-2px); box-shadow: var(--bo-sh-lift); }
+.bo-sor-kanban__karte[data-laeuft="true"] { opacity: 0.6; }
+.bo-sor-kanban__karte[draggable="true"] { cursor: grab; }
+.bo-sor-kanban__leer { display: grid; place-items: center; min-height: 72px; border-radius: 20px; box-shadow: inset 0 0 0 1px var(--color-bo-line-strong); color: var(--color-bo-text-faint); font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { .bo-sor-kanban__karte:hover { transform: none; } }
+
+/* ---------------------------------------------------------------- Auswahl-Leiste (Massenaktionen, Material-Kapsel unten) */
+.bo-sor-auswahl { position: sticky; bottom: 16px; z-index: 20; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 16px auto 0; padding: 8px 8px 8px 20px; width: fit-content; max-width: 100%; border-radius: 999px; box-shadow: var(--bo-sh-float); }
+.bo-sor-auswahl__zahl { font-size: 14px; font-weight: 600; margin-right: 8px; font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------------- Zu tun (Bereichsstart) */
+.bo-sor-zutun { display: flex; flex-direction: column; gap: 4px; }
+.bo-sor-zutun__gruppe + .bo-sor-zutun__gruppe { margin-top: 16px; }
+.bo-sor-zutun__gkopf { display: flex; align-items: center; gap: 10px; padding: 0 12px 6px; }
+.bo-sor-zutun__zahl { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 7px; border-radius: 999px; background: var(--color-bo-fill-2); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.bo-sor-zutun__zeile { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 56px; padding: 8px 8px 8px 16px; border-radius: 16px; transition: background-color 160ms ease; }
+.bo-sor-zutun__zeile:hover, .bo-sor-zutun__zeile:focus-within { background: var(--color-bo-surface-2); }
+.bo-sor-zutun__zeile[data-warn="true"]::before { content: ""; position: absolute; left: 4px; top: 14px; bottom: 14px; width: 3px; border-radius: 3px; background: var(--color-bo-eiche); }
+.bo-sor-zutun__alle { padding: 4px 16px; font-size: 13px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-sor-zutun__alle:hover { color: var(--color-bo-text); }
+
+/* ---------------------------------------------------------------- Einkaufskette (verbundene Stufen, Lounge Kundenreise) */
+.bo-sor-kette { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; padding: 8px 0 0; }
+.bo-sor-kette__stufe { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 0 8px 0 0; min-width: 0; }
+.bo-sor-kette__knoten { position: relative; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 999px; background: var(--color-bo-surface-2); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--color-bo-text); box-shadow: var(--bo-sh-btn); transition: transform 420ms var(--ease-feder, ease); }
+.bo-sor-kette__stufe[data-aktiv="true"] .bo-sor-kette__knoten { background: var(--color-bo-text); color: var(--color-bo-surface); box-shadow: var(--bo-sh-ink); }
+.bo-sor-kette__stufe:not(:last-child)::after { content: ""; position: absolute; left: 40px; right: 0; top: 19px; height: 2px; background: var(--color-bo-line-strong); }
+.bo-sor-kette__name { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+a.bo-sor-kette__stufe:hover .bo-sor-kette__knoten { transform: translateY(-2px); }
+@media (max-width: 640px) { .bo-sor-kette { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 16px; } .bo-sor-kette__stufe:nth-child(3)::after { display: none; } }
+
+/* ---------------------------------------------------------------- Vorgangsschritte in Akten (kompakt) */
+.bo-sor-schritte { display: flex; align-items: center; gap: 0; overflow-x: auto; padding: 4px 2px; }
+.bo-sor-schritt { display: flex; align-items: center; gap: 10px; flex: 1 1 0; min-width: 120px; }
+.bo-sor-schritt__punkt { position: relative; z-index: 1; display: grid; place-items: center; flex-shrink: 0; width: 28px; height: 28px; border-radius: 999px; background: var(--color-bo-surface-2); color: var(--color-bo-text-soft); box-shadow: inset 0 0 0 1.5px var(--color-bo-line-strong); }
+.bo-sor-schritt[data-zustand="erledigt"] .bo-sor-schritt__punkt { background: var(--color-bo-text); color: var(--color-bo-surface); box-shadow: none; }
+.bo-sor-schritt[data-zustand="aktuell"] .bo-sor-schritt__punkt { background: var(--color-bo-cognac); color: var(--color-bo-surface); box-shadow: 0 0 0 4px var(--color-bo-cognac-soft); }
+.bo-sor-schritt__text { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); white-space: nowrap; }
+.bo-sor-schritt[data-zustand="aktuell"] .bo-sor-schritt__text { color: var(--color-bo-text); font-weight: 600; }
+.bo-sor-schritt__linie { flex: 1; height: 2px; margin: 0 10px; background: var(--color-bo-line-strong); min-width: 16px; }
+.bo-sor-schritt[data-zustand="erledigt"] .bo-sor-schritt__linie { background: var(--color-bo-text); }
+.bo-sor-schritt:last-child .bo-sor-schritt__linie { display: none; }
+
+/* ---------------------------------------------------------------- Fakten, Checkliste, Code */
+.bo-sor-fakten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 20px; }
+.bo-sor-fakten dt { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-sor-fakten dd { margin-top: 2px; font-size: 15px; line-height: 22px; font-weight: 500; min-width: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.bo-sor-check { display: flex; flex-direction: column; gap: 2px; }
+.bo-sor-check li { display: flex; align-items: center; gap: 10px; min-height: 36px; padding: 0 8px; border-radius: 12px; font-size: 14px; }
+.bo-sor-check__ico { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 999px; flex-shrink: 0; }
+.bo-sor-check li[data-ok="true"] .bo-sor-check__ico { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+.bo-sor-check li[data-ok="false"] .bo-sor-check__ico { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-sor-check li[data-ok="false"][data-sperrt="true"] { background: var(--color-bo-fill); }
+.bo-sor-code { margin: 0; max-height: 360px; overflow: auto; padding: 16px; border-radius: 16px; background: var(--color-bo-surface-2); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; line-height: 18px; white-space: pre; color: var(--color-bo-text); }
+.bo-sor-feld { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.bo-sor-feld > span:first-child, .bo-sor-feld > label:first-child { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-sor-feld__fehler { font-size: 12px; line-height: 16px; color: var(--color-bo-ziegel-text); }
+.bo-sor-feld__hinweis { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-sor-eingabe { width: 100%; min-height: 44px; padding: 0 14px; border: 0; border-radius: 14px; background: var(--color-bo-fill); color: var(--color-bo-text); font: inherit; font-size: 15px; transition: box-shadow 160ms ease, background-color 160ms ease; }
+textarea.bo-sor-eingabe { padding: 12px 14px; min-height: 96px; resize: vertical; line-height: 22px; }
+select.bo-sor-eingabe { appearance: none; padding-right: 36px; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+.bo-sor-eingabe:focus-visible { outline: none; background: var(--color-bo-surface); box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-sor-eingabe[aria-invalid="true"] { box-shadow: 0 0 0 1.5px var(--color-bo-ziegel); }
+.bo-sor-eingabe--klein { min-height: 36px; font-size: 14px; border-radius: 12px; padding: 0 10px; }
+.bo-sor-eingabe:disabled { opacity: 0.6; }
+
+/* ---------------------------------------------------------------- Abgleich-Raster und Bewertung (1 · 2 · 3) */
+.bo-sor-grid:focus-within { outline: none; }
+.bo-sor-grid tbody tr[aria-selected="true"] td { background: var(--color-bo-surface-2); }
+.bo-sor-grid tbody tr[aria-selected="true"] td:first-child { box-shadow: inset 3px 0 0 var(--color-bo-text); }
+.bo-sor-bewertung { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--color-bo-fill-2); gap: 2px; }
+.bo-sor-bewertung button { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--color-bo-text-soft); transition: background-color 160ms ease, color 160ms ease, transform 420ms var(--ease-feder, ease); }
+.bo-sor-bewertung button:hover:not(:disabled) { color: var(--color-bo-text); }
+.bo-sor-bewertung button:active:not(:disabled) { transform: scale(0.96); transition-duration: 80ms; }
+.bo-sor-bewertung button[aria-checked="true"] { background: var(--color-bo-surface); color: var(--color-bo-text); box-shadow: var(--bo-sh-btn); }
+.bo-sor-bewertung button[aria-checked="true"][data-wert="ok"] { color: var(--color-bo-salbei-text); }
+.bo-sor-bewertung button[aria-checked="true"][data-wert="pruefen"] { color: var(--color-bo-eiche-text); }
+.bo-sor-bewertung button[aria-checked="true"][data-wert="abgelehnt"] { color: var(--color-bo-ziegel-text); }
+.bo-sor-bewertung button:disabled { opacity: 0.45; cursor: not-allowed; }
+.bo-sor-bewertung kbd { font: inherit; font-size: 11px; opacity: 0.6; font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------------- Stepper (Wareneingang, Kiosk 64) */
+.bo-sor-stepper { display: inline-flex; align-items: center; gap: 4px; padding: 4px; border-radius: 999px; background: var(--color-bo-fill-2); }
+.bo-sor-stepper button { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 999px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); color: var(--color-bo-text); transition: transform 420ms var(--ease-feder, ease); }
+.bo-sor-stepper button:active { transform: scale(0.92); transition-duration: 80ms; }
+.bo-sor-stepper input { width: 52px; height: 36px; border: 0; background: transparent; text-align: center; font: inherit; font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--color-bo-text); }
+.bo-sor-stepper input:focus-visible { outline: none; border-radius: 10px; box-shadow: 0 0 0 2px var(--color-bo-focus); }
+[data-dichte="kiosk"] .bo-sor-stepper button { width: 56px; height: 56px; }
+[data-dichte="kiosk"] .bo-sor-stepper input { width: 72px; height: 56px; font-size: 22px; }
+.bo-sor-zustand { display: flex; flex-wrap: wrap; gap: 6px; }
+.bo-sor-zustand button { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 0; min-height: 40px; padding: 6px 12px; border-radius: 14px; background: var(--color-bo-fill); color: var(--color-bo-text-soft); font-size: 13px; font-weight: 500; text-align: left; transition: background-color 160ms ease, transform 420ms var(--ease-feder, ease); }
+.bo-sor-zustand button small { font-size: 11px; font-weight: 400; opacity: 0.8; }
+.bo-sor-zustand button[aria-pressed="true"] { background: var(--color-bo-text); color: var(--color-bo-surface); }
+.bo-sor-zustand button[aria-pressed="true"][data-schaden="true"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); box-shadow: inset 0 0 0 1.5px var(--color-bo-ziegel); }
+.bo-sor-zustand button:active { transform: scale(0.97); transition-duration: 80ms; }
+[data-dichte="kiosk"] .bo-sor-zustand button { min-height: 56px; font-size: 15px; padding: 8px 16px; }
+
+/* ---------------------------------------------------------------- Freigabe-Raster */
+.bo-sor-freigabe-raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.bo-sor-freigabe-karte { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 8px 8px 12px; border-radius: 24px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); transition: box-shadow 200ms ease, transform 420ms var(--ease-feder, ease); outline: none; }
+.bo-sor-freigabe-karte:focus-visible { box-shadow: 0 0 0 2px var(--color-bo-focus), var(--bo-sh-card); }
+.bo-sor-freigabe-karte[aria-selected="true"] { box-shadow: inset 0 0 0 2px var(--color-bo-text), var(--bo-sh-card); }
+.bo-sor-freigabe-karte .bo-sor-bild { aspect-ratio: 1 / 1; width: 100%; border-radius: 18px; }
+.bo-sor-freigabe-karte__haken { position: absolute; top: 16px; left: 16px; z-index: 1; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: var(--color-bo-mat-strong); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: var(--bo-sh-btn); }
+.bo-sor-freigabe-karte[aria-selected="true"] .bo-sor-freigabe-karte__haken { background: var(--color-bo-text); color: var(--color-bo-surface); }
+.bo-sor-markenspalte { display: flex; flex-direction: column; gap: 2px; }
+.bo-sor-markenspalte a { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 40px; padding: 0 12px; border-radius: 12px; font-size: 14px; color: var(--color-bo-text-soft); }
+.bo-sor-markenspalte a:hover { background: var(--color-bo-fill); color: var(--color-bo-text); }
+.bo-sor-markenspalte a[aria-current="true"] { background: var(--color-bo-text); color: var(--color-bo-surface); }
+
+/* ---------------------------------------------------------------- Akte: Hero ohne Foto, Galerie */
+.bo-sor-galerie { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 12px; }
+.bo-sor-galerie figure { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.bo-sor-galerie .bo-sor-bild { aspect-ratio: 4 / 3; width: 100%; border-radius: 16px; }
+.bo-sor-preiszahl { font-size: 40px; line-height: 44px; font-weight: 400; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; }
+.bo-sor-farbe { display: inline-block; width: 16px; height: 16px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--color-bo-line-strong); flex-shrink: 0; }
+
+/* ---------------------------------------------------------------- Kiosk Wareneingang */
+.bo-sor-kiosk { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 0 16px 16px; }
+@media (min-width: 1100px) { .bo-sor-kiosk { grid-template-columns: 360px minmax(0, 1fr); } }
+.bo-sor-kiosk__kachel { display: flex; align-items: center; gap: 14px; min-height: 72px; padding: 12px 16px; border-radius: 20px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); text-align: left; transition: transform 420ms var(--ease-feder, ease); width: 100%; }
+.bo-sor-kiosk__kachel:active { transform: scale(0.98); transition-duration: 80ms; }
+.bo-sor-kiosk__kachel[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--color-bo-text), var(--bo-sh-card); }
+
+@media print {
+  .bo-sor-auswahl, .bo-sor-werkzeuge { display: none !important; }
+}
+
+/* AkteKopf: Betrag und Aktionen dürfen am Telefon umbrechen (Befund an P0-5a: .bo-akte-kopf__titel ohne flex-wrap). */
+.bo-sor-kopf .bo-akte-kopf__titel > div:last-child { flex-wrap: wrap; row-gap: 12px; min-width: 0; }
+.bo-sor-kopf .bo-akte-kopf__aktionen { min-width: 0; max-width: 100%; }
+.bo-sor-suche input:focus-visible { outline: none; box-shadow: none; }

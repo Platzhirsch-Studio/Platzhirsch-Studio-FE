@@ -15,7 +15,12 @@
 {% if trainings %}<div class="ph-stempel">TRAINING – KEIN GÜLTIGER BELEG</div>{% endif %}
 {% if storno %}<div class="ph-stempel">STORNOBELEG{% if doc.storno_von %} zu {{ doc.storno_von }}{% endif %}</div>{% endif %}
 <h1>{{ {"Standard": "Kassenbeleg", "Nullbeleg": "Nullbeleg", "Startbeleg": "Startbeleg", "Monatsbeleg": "Monatsbeleg", "Jahresbeleg": "Jahresbeleg", "Schlussbeleg": "Schlussbeleg", "Sammelbeleg": "Sammelbeleg", "Stornobeleg": "Stornobeleg", "Trainingsbeleg": "Trainingsbeleg"}.get(doc.belegart or "Standard", "Kassenbeleg") }}</h1>
-{% if doc.kontakt %}<div class="ph-feld"><b>Kunde</b> {{ frappe.db.get_value("PH Kontakt", doc.kontakt, "titel") or doc.kontakt }}</div>{% endif %}
+{% if doc.kontakt %}{% set k = frappe.db.get_value("PH Kontakt", doc.kontakt, ["titel", "firma", "strasse", "plz", "ort", "land", "uid"], as_dict=True) or {} %}
+<div class="ph-feld"><b>Leistungsempfänger</b> {{ k.firma or k.titel or doc.kunde_name or doc.kontakt }}{% if k.firma and k.titel and k.titel != k.firma %}, {{ k.titel }}{% endif %}<br>{{ k.strasse or "" }}, {{ k.plz or "" }} {{ k.ort or "" }}{% if k.land and k.land not in ("AT", "Austria", "Österreich") %}, {{ k.land }}{% endif %}{% if k.uid %}<br>UID {{ k.uid }}{% endif %}</div>
+{% elif doc.kunde_name %}<div class="ph-feld"><b>Kunde</b> {{ doc.kunde_name }}</div>{% endif %}
+<div class="ph-feld"><b>Leistungsdatum</b> {{ frappe.utils.formatdate(doc.datum_uhrzeit) }} · Barverkauf</div>
+{% if doc.barverkauf_rechnung %}<div class="ph-feld"><b>Rechnung</b> {{ doc.barverkauf_rechnung }} (Rechnung nach § 11 UStG mit allen Angaben)</div>{% endif %}
+{% if doc.notbeleg_nr %}<div class="ph-feld"><b>Nacherfassung</b> Notbeleg {{ doc.notbeleg_nr }} vom {{ frappe.utils.format_datetime(doc.notbeleg_zeitpunkt, "dd.MM.yyyy HH:mm") }}</div>{% endif %}
 {% if doc.auftrag %}<div class="ph-feld"><b>Auftrag</b> {{ doc.auftrag }}</div>{% endif %}
 {% if doc.rechnung %}<div class="ph-feld"><b>Rechnung</b> {{ doc.rechnung }}</div>{% endif %}
 <table class="ph-tabelle">
@@ -36,7 +41,7 @@
 </table>
 <h2>Zahlung</h2>
 {% for z in doc.zahlarten %}
-<div class="ph-feld"><b>{{ {"Bar": "Bar", "Karte Stripe Terminal": "Karte (Terminal)", "Karte extern": "Karte", "Gutschein": "Gutschein", "Ueberweisung": "Überweisung"}.get(z.zahlart, z.zahlart) }}</b> {{ ph_betrag(z.betrag_cent) }}{% if z.zahlart == "Bar" and z.retour_cent %} · gegeben {{ ph_betrag(z.gegeben_cent) }}, Rückgeld {{ ph_betrag(z.retour_cent) }}{% endif %}</div>
+<div class="ph-feld"><b>{{ {"Bar": "Bar", "Karte Stripe Terminal": "Karte (Terminal)", "Karte extern": "Karte", "Gutschein": "Gutschein", "Ueberweisung": "Überweisung"}.get(z.zahlart, z.zahlart) }}</b> {{ ph_betrag(z.betrag_cent) }}{% if z.fremdwaehrung %} · gegeben {{ "%.2f"|format((z.fremd_gegeben_cent or 0) / 100) }} {{ z.fremdwaehrung }} (Kurs {{ "%.6f"|format((z.kurs_mikro or 0) / 1000000) }}){% endif %}{% if z.zahlart == "Bar" and z.retour_cent %} · gegeben {{ ph_betrag(z.gegeben_cent) }}, Rückgeld {{ ph_betrag(z.retour_cent) }}{% endif %}{% if z.terminal_refund %} · Rückerstattung auf Karte {{ z.terminal_refund }}{% endif %}</div>
 {% endfor %}
 {% if doc.zahlarten|selectattr("zahlart", "equalto", "Ueberweisung")|list %}<p class="ph-hinweis">Zahlbar per Überweisung an die unten genannte Bankverbindung, Verwendungszweck: Beleg {{ doc.belegnummer or doc.name }}.</p>{% endif %}
 <div class="ph-qr">

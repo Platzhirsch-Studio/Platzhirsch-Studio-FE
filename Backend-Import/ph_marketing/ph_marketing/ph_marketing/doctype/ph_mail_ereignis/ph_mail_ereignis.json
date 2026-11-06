@@ -1,0 +1,153 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "ereignis_id",
+  "typ",
+  "art",
+  "bounce_typ",
+  "cb_1",
+  "email",
+  "nachricht_id",
+  "empfangen_am",
+  "ergebnis",
+  "versand",
+  "grund"
+ ],
+ "fields": [
+  {
+   "fieldname": "ereignis_id",
+   "fieldtype": "Data",
+   "label": "Ereignis-ID (svix-id)",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "typ",
+   "fieldtype": "Data",
+   "label": "Typ",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "gesendet\nzugestellt\nverzoegert\nbounce\nbeschwerde\nfehler\nabgemeldet\nignoriert\nunbekannt",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "bounce_typ",
+   "fieldtype": "Select",
+   "label": "Bounce-Typ",
+   "options": "\nhart\nweich",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "nachricht_id",
+   "fieldtype": "Data",
+   "label": "Nachrichten-ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "empfangen_am",
+   "fieldtype": "Datetime",
+   "label": "Empfangen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ergebnis",
+   "fieldtype": "Data",
+   "label": "Ergebnis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "versand",
+   "fieldtype": "Link",
+   "label": "Versandzeile",
+   "options": "PH Newsletter Versand",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Data",
+   "label": "Grund (Anbieter)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Mail Ereignis",
+ "owner": "Administrator",
+ "sort_field": "empfangen_am",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "autoname": "hash",
+ "naming_rule": "Random",
+ "title_field": "typ",
+ "search_fields": "email,typ,nachricht_id",
+ "in_create": 1,
+ "description": "Zustell-/Bounce-/Beschwerde-Ereignis des Mailanbieters (Resend-Webhook), Idempotenz über die Ereignis-ID; Löschung nach 180 Tagen."
+}

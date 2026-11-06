@@ -1,0 +1,515 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Monatsabschluss je Person: friert Soll/Ist/Saldo und Lohnvorbereitungsdaten ein und sperrt Zeitbuchungen/Abwesenheiten des Monats (AZG § 26, Periodenprinzip).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "mitarbeiter",
+  "mitarbeiter_name",
+  "status",
+  "cb_kopf",
+  "jahr",
+  "monat",
+  "periode",
+  "abgeschlossen_von",
+  "abgeschlossen_am",
+  "sb_saldo",
+  "soll_min",
+  "ist_min",
+  "gutschrift_min",
+  "za_verbrauch_min",
+  "cb_saldo",
+  "saldo_min",
+  "saldo_vortrag_min",
+  "saldo_kumuliert_min",
+  "saldo_text",
+  "sb_lohn",
+  "mehrarbeit_min",
+  "kv_mehrstunden_min",
+  "ueberstunden_min",
+  "za_gutschrift_min",
+  "ueberstunden_abgeltung",
+  "cb_lohn",
+  "samstag_ab_13_min",
+  "sonntag_min",
+  "feiertag_arbeit_min",
+  "nacht_min",
+  "feiertag_min",
+  "unbezahlt_min",
+  "sb_tage",
+  "urlaub_tage",
+  "krank_tage",
+  "arbeitsunfall_tage",
+  "za_tage",
+  "cb_tage",
+  "pflege_tage",
+  "sonder_tage",
+  "fortbildung_tage",
+  "berufsschule_tage",
+  "unbezahlt_tage",
+  "ruhend_tage",
+  "sb_azg",
+  "azg_verstoesse",
+  "azg_hinweise",
+  "azg_befunde",
+  "cb_azg",
+  "zeitnachweis_uebermittelt_am",
+  "zeitnachweis_uebermittelt_per",
+  "sb_oeffnen",
+  "wieder_geoeffnet_grund",
+  "wieder_geoeffnet_von",
+  "wieder_geoeffnet_am",
+  "details"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "mitarbeiter",
+   "fieldtype": "Link",
+   "label": "Mitarbeiter",
+   "options": "PH Mitarbeiter",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "mitarbeiter_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "fetch_from": "mitarbeiter.titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Abgeschlossen\nWieder geoeffnet",
+   "default": "Abgeschlossen",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "jahr",
+   "fieldtype": "Int",
+   "label": "Jahr",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "monat",
+   "fieldtype": "Int",
+   "label": "Monat",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "periode",
+   "fieldtype": "Data",
+   "label": "Periode",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "abgeschlossen_von",
+   "fieldtype": "Link",
+   "label": "Abgeschlossen von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abgeschlossen_am",
+   "fieldtype": "Datetime",
+   "label": "Abgeschlossen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_saldo",
+   "fieldtype": "Section Break",
+   "label": "Stunden (Minuten)"
+  },
+  {
+   "fieldname": "soll_min",
+   "fieldtype": "Int",
+   "label": "Soll",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ist_min",
+   "fieldtype": "Int",
+   "label": "Ist",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gutschrift_min",
+   "fieldtype": "Int",
+   "label": "Gutschrift bezahlte Abwesenheit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "za_verbrauch_min",
+   "fieldtype": "Int",
+   "label": "Zeitausgleich verbraucht",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_saldo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "saldo_min",
+   "fieldtype": "Int",
+   "label": "Saldo Monat",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "saldo_vortrag_min",
+   "fieldtype": "Int",
+   "label": "Vortrag Vormonat",
+   "read_only": 1
+  },
+  {
+   "fieldname": "saldo_kumuliert_min",
+   "fieldtype": "Int",
+   "label": "Saldo kumuliert",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "saldo_text",
+   "fieldtype": "Data",
+   "label": "Saldo kumuliert (h:mm)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_lohn",
+   "fieldtype": "Section Break",
+   "label": "Für die Lohnverrechnung"
+  },
+  {
+   "fieldname": "mehrarbeit_min",
+   "fieldtype": "Int",
+   "label": "Mehrarbeit Teilzeit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kv_mehrstunden_min",
+   "fieldtype": "Int",
+   "label": "Mehrstunden über KV-Normalarbeitszeit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ueberstunden_min",
+   "fieldtype": "Int",
+   "label": "Überstunden (über 40 h)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "za_gutschrift_min",
+   "fieldtype": "Int",
+   "label": "ZA-Wert (lt. Abgeltung)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ueberstunden_abgeltung",
+   "fieldtype": "Data",
+   "label": "Abgeltung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_lohn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "samstag_ab_13_min",
+   "fieldtype": "Int",
+   "label": "Samstag ab 13 Uhr",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sonntag_min",
+   "fieldtype": "Int",
+   "label": "Sonntag",
+   "read_only": 1
+  },
+  {
+   "fieldname": "feiertag_arbeit_min",
+   "fieldtype": "Int",
+   "label": "Arbeit am Feiertag",
+   "read_only": 1
+  },
+  {
+   "fieldname": "nacht_min",
+   "fieldtype": "Int",
+   "label": "Nacht 22–6 Uhr",
+   "read_only": 1
+  },
+  {
+   "fieldname": "feiertag_min",
+   "fieldtype": "Int",
+   "label": "Feiertagsentgelt (ohne Arbeit)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unbezahlt_min",
+   "fieldtype": "Int",
+   "label": "Unbezahlt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_tage",
+   "fieldtype": "Section Break",
+   "label": "Tage"
+  },
+  {
+   "fieldname": "urlaub_tage",
+   "fieldtype": "Float",
+   "label": "Urlaub",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "krank_tage",
+   "fieldtype": "Float",
+   "label": "Krankenstand",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "arbeitsunfall_tage",
+   "fieldtype": "Float",
+   "label": "davon Arbeitsunfall",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "za_tage",
+   "fieldtype": "Float",
+   "label": "Zeitausgleich",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "cb_tage",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pflege_tage",
+   "fieldtype": "Float",
+   "label": "Pflegefreistellung",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "sonder_tage",
+   "fieldtype": "Float",
+   "label": "Sonderurlaub",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "fortbildung_tage",
+   "fieldtype": "Float",
+   "label": "Fortbildung",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "berufsschule_tage",
+   "fieldtype": "Float",
+   "label": "Berufsschule",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "unbezahlt_tage",
+   "fieldtype": "Float",
+   "label": "Unbezahlt",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "ruhend_tage",
+   "fieldtype": "Float",
+   "label": "Karenz/Mutterschutz/Dienst",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "sb_azg",
+   "fieldtype": "Section Break",
+   "label": "AZG/ARG-Prüfung (Monat)"
+  },
+  {
+   "fieldname": "azg_verstoesse",
+   "fieldtype": "Int",
+   "label": "Verstöße",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "azg_hinweise",
+   "fieldtype": "Int",
+   "label": "Hinweise",
+   "read_only": 1
+  },
+  {
+   "fieldname": "azg_befunde",
+   "fieldtype": "Long Text",
+   "label": "Befunde",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_azg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zeitnachweis_uebermittelt_am",
+   "fieldtype": "Datetime",
+   "label": "Zeitnachweis übermittelt am",
+   "read_only": 1,
+   "description": "Monatliche Übermittlung auf Verlangen (§ 26 Abs 8 AZG)."
+  },
+  {
+   "fieldname": "zeitnachweis_uebermittelt_per",
+   "fieldtype": "Data",
+   "label": "Übermittelt per",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_oeffnen",
+   "fieldtype": "Section Break",
+   "label": "Wieder öffnen",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "wieder_geoeffnet_grund",
+   "fieldtype": "Small Text",
+   "label": "Grund",
+   "read_only": 1
+  },
+  {
+   "fieldname": "wieder_geoeffnet_von",
+   "fieldtype": "Link",
+   "label": "Geöffnet von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "wieder_geoeffnet_am",
+   "fieldtype": "Datetime",
+   "label": "Geöffnet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "details",
+   "fieldtype": "Long Text",
+   "label": "Details (JSON)",
+   "read_only": 1,
+   "hidden": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Zeitabschluss",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Personal Selbstservice",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "periode",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Abgeschlossen",
+   "color": "Green"
+  },
+  {
+   "title": "Wieder geoeffnet",
+   "color": "Orange"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "format:ZAB-{mitarbeiter}-{periode}",
+ "naming_rule": "Expression",
+ "title_field": "titel",
+ "search_fields": "mitarbeiter_name,periode",
+ "track_seen": 1
+}

@@ -30,6 +30,16 @@
   "termin",
   "abhaengig_von",
   "kosten_cent",
+  "sb_termine",
+  "termine",
+  "abhaengigkeit_hinweis",
+  "sb_abnahme",
+  "abnahme_status",
+  "abgenommen_am",
+  "abgenommen_von",
+  "cb_abnahme",
+  "abnahme_notiz",
+  "maengel",
   "sb_haftung",
   "haftungshinweis",
   "notiz",
@@ -185,6 +195,64 @@
    "permlevel": 1
   },
   {
+   "fieldname": "sb_termine",
+   "fieldtype": "Section Break",
+   "label": "Termine"
+  },
+  {
+   "fieldname": "termine",
+   "fieldtype": "Table",
+   "label": "Termine",
+   "options": "PH Fremdgewerk Termin",
+   "description": "Mehrere Termine je Gewerk; Termin von/bis werden daraus gebildet."
+  },
+  {
+   "fieldname": "abhaengigkeit_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis Abhängigkeit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_abnahme",
+   "fieldtype": "Section Break",
+   "label": "Abnahme der Leistung"
+  },
+  {
+   "fieldname": "abnahme_status",
+   "fieldtype": "Select",
+   "label": "Abnahme",
+   "options": "\noffen\nabgenommen\nmit Maengeln\nverweigert",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "abgenommen_am",
+   "fieldtype": "Datetime",
+   "label": "Abgenommen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abgenommen_von",
+   "fieldtype": "Link",
+   "label": "Abgenommen von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_abnahme",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abnahme_notiz",
+   "fieldtype": "Small Text",
+   "label": "Abnahme-Notiz"
+  },
+  {
+   "fieldname": "maengel",
+   "fieldtype": "Table",
+   "label": "Mängel",
+   "options": "PH Montage Mangel"
+  },
+  {
    "fieldname": "sb_haftung",
    "fieldtype": "Section Break",
    "label": "Koordination"
@@ -224,7 +292,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Projekte",
  "name": "PH Fremdgewerk",
@@ -319,6 +387,85 @@
    "export": 0,
    "report": 0,
    "share": 0
+  },
+  {
+   "role": "PH Montage",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
   }
  ],
  "sort_field": "termin_von",

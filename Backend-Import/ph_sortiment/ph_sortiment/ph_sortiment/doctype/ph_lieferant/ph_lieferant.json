@@ -21,8 +21,13 @@
   "portal_url",
   "cb_bestellung",
   "kundennummer_bei_lieferant",
+  "gln",
+  "iwofurn_kennung",
   "lieferzeit_wochen_standard",
   "ab_erwartet_tage",
+  "sb_lieferzeiten",
+  "lieferzeiten",
+  "betriebsurlaub",
   "sb_konditionen",
   "waehrung",
   "zahlungsziel_tage",
@@ -31,10 +36,20 @@
   "skonto_tage",
   "incoterm",
   "mindestbestellwert_cent",
+  "mindermengenzuschlag_cent",
+  "fracht_pauschale_cent",
+  "frachtfrei_ab_cent",
+  "standard_rabatt_promille",
+  "rabattstaffeln",
   "sb_konditionen_text",
   "konditionen",
   "sb_ansprechpartner",
   "ansprechpartner",
+  "sb_preisliste",
+  "preisliste_format",
+  "preisliste_trennzeichen",
+  "preisliste_kodierung",
+  "preisliste_mapping_json",
   "sb_system",
   "notizen"
  ],
@@ -136,6 +151,17 @@
    "label": "Unsere Kundennummer"
   },
   {
+   "fieldname": "gln",
+   "fieldtype": "Data",
+   "label": "GLN des Lieferanten (13-stellig)",
+   "description": "Für EDI/IWOfurn (GS1 Global Location Number)"
+  },
+  {
+   "fieldname": "iwofurn_kennung",
+   "fieldtype": "Data",
+   "label": "IWOfurn-Kennung"
+  },
+  {
    "fieldname": "lieferzeit_wochen_standard",
    "fieldtype": "Int",
    "label": "Lieferzeit Standard (Wochen)"
@@ -145,6 +171,24 @@
    "fieldtype": "Int",
    "label": "AB erwartet binnen (Tage)",
    "default": "5"
+  },
+  {
+   "fieldname": "sb_lieferzeiten",
+   "fieldtype": "Section Break",
+   "label": "Lieferzeiten und Betriebsurlaub",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "lieferzeiten",
+   "fieldtype": "Table",
+   "label": "Lieferzeit je Marke/Kategorie",
+   "options": "PH Lieferant Lieferzeit"
+  },
+  {
+   "fieldname": "betriebsurlaub",
+   "fieldtype": "Table",
+   "label": "Betriebsurlaub",
+   "options": "PH Lieferant Betriebsurlaub"
   },
   {
    "fieldname": "sb_konditionen",
@@ -191,6 +235,38 @@
    "label": "Mindestbestellwert (Cent)"
   },
   {
+   "fieldname": "mindermengenzuschlag_cent",
+   "fieldtype": "Int",
+   "label": "Mindermengenzuschlag (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fracht_pauschale_cent",
+   "fieldtype": "Int",
+   "label": "Frachtpauschale (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "frachtfrei_ab_cent",
+   "fieldtype": "Int",
+   "label": "Frachtfrei ab (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "standard_rabatt_promille",
+   "fieldtype": "Int",
+   "label": "Standardrabatt (Promille, Standard 0)",
+   "default": "0",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "rabattstaffeln",
+   "fieldtype": "Table",
+   "label": "Rabattstaffeln",
+   "options": "PH Lieferant Rabattstaffel",
+   "permlevel": 1
+  },
+  {
    "fieldname": "sb_konditionen_text",
    "fieldtype": "Section Break"
   },
@@ -210,6 +286,38 @@
    "fieldtype": "Table",
    "label": "Ansprechpartner",
    "options": "PH Sortiment Ansprechpartner"
+  },
+  {
+   "fieldname": "sb_preisliste",
+   "fieldtype": "Section Break",
+   "label": "Preislisten-Import (Vorlage)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "preisliste_format",
+   "fieldtype": "Select",
+   "label": "Format",
+   "options": "Auto\nCSV\nDataNorm\nIDM-XML\nXML",
+   "default": "Auto"
+  },
+  {
+   "fieldname": "preisliste_trennzeichen",
+   "fieldtype": "Data",
+   "label": "Trennzeichen (leer = erkennen)"
+  },
+  {
+   "fieldname": "preisliste_kodierung",
+   "fieldtype": "Select",
+   "label": "Kodierung",
+   "options": "Auto\nutf-8\ncp1252\ncp850\ncp437",
+   "default": "Auto"
+  },
+  {
+   "fieldname": "preisliste_mapping_json",
+   "fieldtype": "Code",
+   "label": "Mapping (JSON)",
+   "options": "JSON",
+   "description": "CSV: {\"artikelnr\": \"Spalte\", \"preis\": \"Spalte\"}; XML: {\"artikel\": \"ITEM\", \"artikelnr\": \"@TYPE_NO\", \"preis\": \"PRICE/@VALUE\"}"
   },
   {
    "fieldname": "sb_system",
@@ -237,7 +345,7 @@
    "group": "Einkauf"
   }
  ],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 20:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Sortiment",
  "name": "PH Lieferant",
@@ -352,6 +460,81 @@
    "permlevel": 1,
    "read": 1,
    "write": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Service Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
   }
  ],
  "track_changes": 1,

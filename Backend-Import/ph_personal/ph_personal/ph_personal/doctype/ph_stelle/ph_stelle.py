@@ -47,6 +47,17 @@ class PHStelle(Document):
         self._entgelt_berechnen()
         self._veroeffentlichung_pruefen()
         self._website_url()
+        if self.status == "Aktiv" and self.hinweise():
+            frappe.msgprint("<br>".join(self.hinweise()), title=_("Hinweis GlBG"), indicator="orange")
+
+    def hinweise(self):
+        """Warnungen ohne Sperre (Fachkritik P13): geschlechtsneutraler Titel nach § 9 Abs 1 GlBG."""
+        from ph_personal.utils.datenschutz import titel_geschlechtsneutral
+
+        out = []
+        if self.titel and not titel_geschlechtsneutral(self.titel):
+            out.append(_("Titel „{0}“ ist nicht erkennbar geschlechtsneutral (z. B. „:in“, „(m/w/d)“) – § 9 Abs 1 GlBG.").format(self.titel))
+        return out
 
     def _entgelt_berechnen(self):
         self.entgelt_vollstaendig = int(
@@ -84,7 +95,10 @@ class PHStelle(Document):
         """Liste fehlender Angaben für die Veröffentlichung (Website: glbg.js fehlendeAngaben)."""
         fehlt = []
         if not self.entgelt_vollstaendig:
-            fehlt.append(_("Entgeltangabe nach § 9 Abs 2 GlBG (Betrag, Zeitraum, Kollektivvertrag, Überzahlung)"))
+            from ph_personal.utils.glbg import entgelt_fehlt
+
+            teile = entgelt_fehlt(self.kv_mindest_brutto_cent, self.entgelt_zeitraum, self.kollektivvertrag, self.ueberzahlung, self.ueberzahlung_text)
+            fehlt.append(_("Entgeltangabe nach § 9 Abs 2 GlBG: {0}").format(", ".join(_(t) for t in teile) or _("unvollständig")))
         if not (self.stellenbeschreibung or "").strip():
             fehlt.append(_("Stellenbeschreibung (Deutsch)"))
         if not self.aufgaben_de:
@@ -113,6 +127,8 @@ class PHStelle(Document):
         return False
 
     def on_trash(self):
+        if frappe.db.count("PH Bewerbung", {"stelle": self.name}):
+            frappe.throw(_("Zu dieser Stelle gibt es Bewerbungen – bitte archivieren statt löschen."))
         if self.status in OEFFENTLICH:
             self._website_erneuern()
 
@@ -171,6 +187,12 @@ class PHStelle(Document):
         """Button „Veröffentlichung prüfen“: fehlende Angaben als Liste."""
         self.check_permission("read")
         return self.fehlende_angaben()
+
+    @frappe.whitelist()
+    def glbg_hinweise(self):
+        """Ampel gelb: Warnungen ohne Sperre (Titel geschlechtsneutral, § 9 Abs 1 GlBG)."""
+        self.check_permission("read")
+        return self.hinweise()
 
 
 def _zeilentext(zeile):

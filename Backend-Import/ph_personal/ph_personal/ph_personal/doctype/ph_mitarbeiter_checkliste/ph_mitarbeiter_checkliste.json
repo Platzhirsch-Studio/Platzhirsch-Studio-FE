@@ -1,0 +1,113 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Onboarding-/Offboarding-Aufgabe je Mitarbeiter (aus PH Onboarding Vorlage).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "art",
+  "aufgabe",
+  "faellig_am",
+  "verantwortlich",
+  "pflicht",
+  "rechtsgrundlage",
+  "nachweis_feld",
+  "erledigt",
+  "erledigt_am",
+  "erledigt_von",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Onboarding\nOffboarding",
+   "default": "Onboarding",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "aufgabe",
+   "fieldtype": "Data",
+   "label": "Aufgabe",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "faellig_am",
+   "fieldtype": "Date",
+   "label": "Fällig am",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "verantwortlich",
+   "fieldtype": "Select",
+   "label": "Verantwortlich",
+   "options": "Leitung\nSachbearbeitung\nMitarbeiter:in\nTechnik\nLohnverrechnung",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "pflicht",
+   "fieldtype": "Check",
+   "label": "Pflicht (Gesetz)"
+  },
+  {
+   "fieldname": "rechtsgrundlage",
+   "fieldtype": "Data",
+   "label": "Rechtsgrundlage"
+  },
+  {
+   "fieldname": "nachweis_feld",
+   "fieldtype": "Data",
+   "label": "Nachweisfeld am Mitarbeiter",
+   "read_only": 1,
+   "description": "Wird beim Erledigen mit dem Datum befüllt (z. B. oegk_anmeldung_am)."
+  },
+  {
+   "fieldname": "erledigt",
+   "fieldtype": "Check",
+   "label": "Erledigt",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "erledigt_am",
+   "fieldtype": "Date",
+   "label": "Erledigt am",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "erledigt_von",
+   "fieldtype": "Link",
+   "label": "Erledigt von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Mitarbeiter Checkliste",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

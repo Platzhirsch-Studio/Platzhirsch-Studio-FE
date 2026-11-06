@@ -9,7 +9,9 @@
  "field_order": [
   "platz",
   "hinweis",
-  "aktiv"
+  "aktiv",
+  "zuletzt_gezaehlt",
+  "zuletzt_inventur"
  ],
  "fields": [
   {
@@ -34,11 +36,25 @@
    "default": "1",
    "in_list_view": 1,
    "columns": 1
+  },
+  {
+   "fieldname": "zuletzt_gezaehlt",
+   "fieldtype": "Date",
+   "label": "Zuletzt gezählt",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "zuletzt_inventur",
+   "fieldtype": "Link",
+   "label": "Letzte Inventur",
+   "options": "PH Inventur",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 15:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Logistik",
  "name": "PH Lagerort Platz",

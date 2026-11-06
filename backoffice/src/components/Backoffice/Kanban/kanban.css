@@ -1,0 +1,63 @@
+/* Kanban im Lounge-Stil (Team P0-5b; art-direction/lounge.md §6 Kundenreise: Stufen-Spalten auf
+   eingelassener Fläche, Karten schweben, aktuelle Stufe mit 1,5-px-Tinte-Kontur). Nur Token. Präfix bo-kb-. */
+
+.bo-kb__spalte {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 4px 8px 8px;
+  border-radius: 24px;
+  background: var(--color-bo-fill);
+  transition: box-shadow 200ms ease, background-color 200ms ease, opacity 200ms ease;
+}
+.bo-kb__spalte.is-ziel { background: var(--color-bo-fill-2); box-shadow: inset 0 0 0 1.5px var(--color-bo-action); }
+.bo-kb__spalte.is-gesperrt { opacity: 0.55; }
+
+.bo-kb__karte {
+  position: relative;
+  padding: 16px;
+  border-radius: 20px;
+  background: var(--color-bo-surface);
+  box-shadow: var(--bo-sh-card);
+  cursor: grab;
+  transition: transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease), box-shadow 240ms ease, opacity 160ms ease;
+}
+.bo-kb__karte:active { cursor: grabbing; }
+@media (hover: hover) {
+  .bo-kb__karte:hover { transform: translateY(-2px); box-shadow: var(--bo-sh-lift); }
+}
+.bo-kb__karte.is-gezogen { opacity: 0.35; }
+.bo-kb__karte.is-laeuft { opacity: 0.7; }
+
+.bo-kb__leer {
+  display: flex; align-items: center; justify-content: center;
+  height: 88px; border-radius: 20px;
+  font-size: 13px; color: var(--color-bo-text-soft);
+  box-shadow: inset 0 0 0 1px var(--color-bo-line);
+}
+
+.bo-kb__menue {
+  position: absolute; right: 0; top: calc(100% + 6px); z-index: 30;
+  width: 240px; padding: 6px;
+  border-radius: 20px;
+  background: var(--color-bo-mat-strong);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float);
+}
+
+.bo-kb__geist {
+  pointer-events: none; position: fixed; z-index: 70;
+  width: 256px; padding: 16px;
+  border-radius: 20px;
+  background: var(--color-bo-surface);
+  box-shadow: var(--bo-sh-drag);
+  font-size: 15px; font-weight: 600;
+  rotate: 1.5deg;
+}
+
+@supports (corner-shape: superellipse(1.4)) {
+  .bo-kb__spalte, .bo-kb__karte, .bo-kb__menue { corner-shape: superellipse(1.35); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bo-kb__karte { transition-duration: 1ms; }
+  .bo-kb__karte:hover { transform: none; }
+}

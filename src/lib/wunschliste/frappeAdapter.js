@@ -1,5 +1,8 @@
 // src/lib/wunschliste/frappeAdapter.js — NICHT AKTIV. Anbindung an den
 // Frappe-Doctype „Wunschliste“ (backoffice.platzhirsch.studio).
+// Abgelöst durch ./phAdapter.js (ph_shop, Gruppe "wunschliste" auf ph +
+// WUNSCHLISTE_STORAGE=frappe|ph, siehe ./mode.js). Dieser Weg bleibt nur für
+// die alte Generation stehen und wirft weiter.
 // Das Backoffice ist PRODUKTIV: von hier wird heute nichts gelesen oder
 // geschrieben. Die Spezifikation für den Frappe-Entwickler steht in
 // ../platzhirsch-frappe-service/wunschliste/README.md (Doctypes, Felder,

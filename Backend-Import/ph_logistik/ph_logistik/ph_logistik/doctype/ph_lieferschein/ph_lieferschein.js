@@ -19,6 +19,13 @@ frappe.ui.form.on("PH Lieferschein", {
 		if (["Entwurf", "Gepackt"].includes(st) && ["Versand", "Spedition"].includes(frm.doc.lieferart)) {
 			frm.add_custom_button(__("Etikett erzeugen"), () => ph_logistik_tarif_dialog(frm), __("Aktionen"));
 		}
+		if (["Uebergeben", "Zugestellt"].includes(frm.doc.status) && ["Versand", "Spedition"].includes(frm.doc.lieferart)) {
+			// Integration Runde 3: Retourenlabel (LetMeShip, Mock ohne Netz im Testmodus)
+			frm.add_custom_button(__("Retourenetikett"), () => frappe.confirm(__("Retourenetikett (Abholung beim Kunden) buchen?"), () =>
+				frm.call({ method: "retourenetikett", doc: frm.doc, freeze: true, freeze_message: __("Retoure wird gebucht …") }).then((r) => {
+					if (r.message) frappe.set_route("Form", "PH Sendung", r.message);
+				})), __("Aktionen"));
+		}
 		if (st === "Gepackt") {
 			frm.add_custom_button(__("Übergeben (Dienstleister/Fahrer)"), () => {
 				frappe.prompt({ fieldname: "an", fieldtype: "Select", label: __("Übergeben an"), options: ["Dienstleister", "Fahrer", "Spedition"], default: "Dienstleister", reqd: 1 }, (v) => {
@@ -44,6 +51,37 @@ frappe.ui.form.on("PH Lieferschein", {
 					frappe.confirm(__("Lieferschein stornieren? Offene Sendungen werden beim Dienstleister storniert."), () => frm.call({ method: "stornieren", doc: frm.doc, args: { grund: v.grund } }).then(() => frm.reload_doc()));
 				}, __("Storno"));
 			}, __("Aktionen"));
+		}
+		if (["Entwurf", "Gepackt", "Uebergeben"].includes(st)) {
+			frm.add_custom_button(__("Problem melden"), () => {
+				const d = new frappe.ui.Dialog({
+					title: __("Problem am Lieferschein"),
+					fields: [
+						{ fieldname: "grund", fieldtype: "Select", label: __("Grund"), options: ["Beschaedigt", "Fehlt", "Falscher Artikel", "Adresse unklar", "Sonstiges"], reqd: 1 },
+						{ fieldname: "text", fieldtype: "Small Text", label: __("Beschreibung") },
+						{ fieldname: "foto", fieldtype: "Attach Image", label: __("Foto") },
+					],
+					primary_action_label: __("Melden"),
+					primary_action(v) {
+						d.hide();
+						frm.call({ method: "problem_melden", doc: frm.doc, args: { grund: v.grund, text: v.text, fotos: v.foto ? [v.foto] : [] } }).then((r) => {
+							frm.reload_doc();
+							if (r.message && r.message.servicefall) frappe.show_alert({ message: __("Servicefall {0} angelegt", [r.message.servicefall]), indicator: "orange" });
+						});
+					},
+				});
+				d.show();
+			}, __("Aktionen"));
+			if (st === "Entwurf" && new Set((frm.doc.positionen || []).map((p) => p.erfuellung).filter(Boolean)).size > 1) {
+				frm.add_custom_button(__("Nach Erfüllung aufteilen"), () => frappe.confirm(__("Positionen mit abweichender Erfüllung (Paket/Spedition/Abholung/Montage) in eigene Lieferscheine verschieben?"), () =>
+					frm.call({ method: "nach_erfuellung_aufteilen", doc: frm.doc }).then((r) => { frappe.show_alert({ message: __("Neu: {0}", [(r.message || []).join(", ")]), indicator: "green" }); frm.reload_doc(); })), __("Aktionen"));
+			}
+			if (["Spedition", "Eigenlieferung"].includes(frm.doc.lieferart)) {
+				frm.add_custom_button(__("Speditionsauftrag"), () => frm.call({ method: "speditionsauftrag_anlegen", doc: frm.doc }).then((r) => r.message && frappe.set_route("Form", "PH Speditionsauftrag", r.message)), __("Aktionen"));
+			}
+		}
+		if (st === "Zugestellt") {
+			frm.add_custom_button(__("Warenrücknahme"), () => frm.call({ method: "warenruecknahme_anlegen", doc: frm.doc }).then((r) => r.message && frappe.set_route("Form", "PH Warenruecknahme", r.message)), __("Aktionen"));
 		}
 		frm.add_custom_button(__("Packliste drucken"), () => frappe.utils.print(frm.doctype, frm.docname, "PH Lieferschein Packliste", frm.doc.letter_head, "de"), __("Drucken"));
 		frm.add_custom_button(__("Lieferschein drucken"), () => frappe.utils.print(frm.doctype, frm.docname, "PH Lieferschein Standard", frm.doc.letter_head, "de"), __("Drucken"));
@@ -84,6 +122,7 @@ function ph_logistik_unterschrift_dialog(frm) {
 		title: __("Übergabe bestätigen"),
 		fields: [
 			{ fieldname: "empfaenger_name", fieldtype: "Data", label: __("Empfangen von"), default: frm.doc.kunde_name, reqd: 1 },
+			{ fieldname: "abholcode", fieldtype: "Data", label: __("Abholcode des Kunden"), depends_on: () => frm.doc.lieferart === "Abholung" },
 			{ fieldname: "unterschrift", fieldtype: "Signature", label: __("Unterschrift") },
 		],
 		primary_action_label: __("Buchen"),

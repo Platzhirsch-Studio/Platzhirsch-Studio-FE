@@ -10,6 +10,9 @@
 // "not_configured" and sends nothing (src/lib/apiBaseUrl.js
 // formsBackendBaseUrl / backofficeNotConfigured).
 import { backofficeNotConfigured, formsBackendBaseUrl } from "@/lib/apiBaseUrl";
+import { phClientHeaders } from "@/lib/backend/config";
+import { newsletterPhTarget } from "@/lib/backend/forms";
+import { pickAttribution } from "@/lib/forms/attributionFields";
 import { newsletterHandler } from "@/lib/forms/newsletter";
 import { originalRequestHeaders } from "@/lib/forms/requestHeaders";
 
@@ -18,7 +21,14 @@ const METHOD = "platzhirsch_studio.platzhirsch_studio.doctype.newsletter_website
 const base = formsBackendBaseUrl();
 const handler = base ? newsletterHandler({ url: `${base}${METHOD}`, resolveHeaders: originalRequestHeaders }) : null;
 
+// BACKEND_GENERATION (src/lib/backend/config.js): Gruppe "newsletter" auf ph →
+// ph_marketing.api.subscribe_newsletter mit Token (DOI-Mail schickt das Backend).
+// Ohne BACKEND_PH_URL/TOKEN: 503 not_configured, nichts geht an das alte System.
+const ph = newsletterPhTarget();
+const phHandler = ph.url ? newsletterHandler({ url: ph.url, headers: async () => ({ ...ph.headers, ...(await phClientHeaders()) }), resolveHeaders: originalRequestHeaders, extraFields: (data) => pickAttribution(data) }) : null;
+
 export async function POST(request) {
+  if (ph.generation === "ph") return phHandler ? phHandler(request) : backofficeNotConfigured("newsletter_subscribe");
   if (!handler) return backofficeNotConfigured("newsletter_subscribe");
   return handler(request);
 }

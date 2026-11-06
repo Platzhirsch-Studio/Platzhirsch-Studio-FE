@@ -1,0 +1,52 @@
+# deploy/produktion/caddy/Caddyfile – Reverse-Proxy mit automatischem TLS (Let's Encrypt) für die drei Hosts.
+#
+# Einsatz: auf JEDEM Host dieselbe Caddyfile nach /etc/caddy/Caddyfile, dazu NUR die eigene Site-Datei:
+#   Website-Host:    ln -s /srv/platzhirsch/repo/deploy/produktion/caddy/website.caddy    /etc/caddy/aktiv/
+#   Backoffice-Host: ln -s …/caddy/backoffice.caddy /etc/caddy/aktiv/
+#   Frappe-Host:     ln -s …/caddy/backend.caddy    /etc/caddy/aktiv/
+# Umgebung in /etc/default/caddy (systemd: EnvironmentFile), Namen siehe caddy.env.example.
+# Prüfen: caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
+# Ein Host für alles (kleiner Start): alle drei Dateien verlinken, Upstreams bleiben 127.0.0.1.
+
+{
+	email {$ACME_EMAIL}
+	# Caddy steht direkt im Internet: KEINE trusted_proxies → X-Forwarded-For vom Client wird ersetzt,
+	# nicht verlängert. Steht ein CDN davor, hier trusted_proxies für dessen Adressbereiche eintragen.
+	servers {
+		protocols h1 h2 h3
+	}
+}
+
+# Gemeinsame Sicherheits-Header. Die Website setzt dieselben selbst (next.config.js) – identische Werte,
+# damit sich nichts widerspricht. CSP liefert die jeweilige App (Website: Report-Only).
+(sicherheit) {
+	header {
+		Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=(self), interest-cohort=()"
+		-Server
+		-X-Powered-By
+	}
+}
+
+# Proxy-Header wie tools/ci/nginx-platzhirsch.conf.example: Client-Adresse ÜBERSCHREIBT den Header
+# des Clients (Rate-Limit der Website/des Backoffice nutzt den letzten Eintrag).
+(proxy_header) {
+	header_up X-Forwarded-For {remote_host}
+	header_up X-Real-IP {remote_host}
+	header_up X-Forwarded-Proto {scheme}
+	header_up X-Forwarded-Host {host}
+}
+
+(zugriffslog) {
+	log {
+		output file /var/log/caddy/{args[0]}.log {
+			roll_size 50MiB
+			roll_keep 10
+		}
+		format json
+	}
+}
+
+import /etc/caddy/aktiv/*.caddy

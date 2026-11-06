@@ -70,6 +70,9 @@ frappe.ui.form.on("PH Bewerbung", {
 						{ fieldname: "eintritt", fieldtype: "Date", label: __("Eintritt"), reqd: 1, default: frm.doc.verfuegbar_ab || frappe.datetime.get_today() },
 						{ fieldname: "rolle_intern", fieldtype: "Select", label: __("Rolle"), options: ["Geschaeftsfuehrung", "Verkauf", "Planung", "Montage", "Verwaltung", "Lehrling"], default: "Verkauf", reqd: 1 },
 						{ fieldname: "stelle_schliessen", fieldtype: "Check", label: __("Stelle als besetzt schließen"), default: frm.doc.stelle ? 1 : 0 },
+						{ fieldname: "beschaeftigungsart", fieldtype: "Select", label: __("Beschäftigungsart"), options: ["", "Vollzeit", "Teilzeit", "Geringfuegig", "Lehre", "Praktikum"] },
+						{ fieldname: "wochenstunden", fieldtype: "Float", label: __("Wochenstunden") },
+						{ fieldname: "user", fieldtype: "Link", options: "User", label: __("Benutzer (Selbstservice)") },
 					],
 					primary_action_label: __("Einstellen"),
 					primary_action(values) {
@@ -84,6 +87,32 @@ frappe.ui.form.on("PH Bewerbung", {
 		}
 
 		if (frm.doc.mitarbeiter) frm.add_custom_button(__("Mitarbeiter öffnen"), () => frappe.set_route("Form", "PH Mitarbeiter", frm.doc.mitarbeiter));
+		if (frm.doc.status === "Eingestellt" && frappe.user.has_role("PH Personal Leitung")) {
+			frm.add_custom_button(__("Nicht angetreten"), () => {
+				frappe.prompt({ fieldname: "grund", fieldtype: "Small Text", label: __("Grund") },
+					(v) => frm.call({ method: "nichtantritt", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Nicht angetreten"));
+			}, __("Aktionen"));
+		}
+		if (frm.doc.status === "Abgesagt" && !frm.doc.absage_versand_am) {
+			frm.dashboard.set_headline_alert(__("Übermittlung der Absage noch nicht dokumentiert – die Löschfrist läuft ab Zugang (§ 15 GlBG)."), "orange");
+			frm.add_custom_button(__("Absage dokumentieren"), () => {
+				new frappe.ui.Dialog({
+					title: __("Absage übermittelt"),
+					fields: [
+						{ fieldname: "versand", fieldtype: "Select", label: __("Per"), options: ["Post", "Telefon", "Persönlich", "E-Mail"], default: "Post", reqd: 1 },
+						{ fieldname: "am", fieldtype: "Datetime", label: __("Am"), default: frappe.datetime.now_datetime(), reqd: 1 },
+					],
+					primary_action_label: __("Speichern"),
+					primary_action(v) { this.hide(); frm.call({ method: "absage_dokumentieren", doc: frm.doc, args: v }).then(() => frm.reload_doc()); },
+				}).show();
+			}, __("Aktionen"));
+		}
+		if (!frm.doc.eingang_bestaetigt_am && !frm.doc.pseudonymisiert && ["Eingegangen", "Gesichtet"].includes(frm.doc.status)) {
+			frm.add_custom_button(__("Eingang bestätigen"), () => {
+				frappe.confirm(frm.doc.email ? __("Eingangsbestätigung mit Datenschutzinformation per E-Mail senden?") : __("Keine E-Mail – Bestätigung als per Post versendet vermerken?"),
+					() => frm.call({ method: "eingang_bestaetigen", doc: frm.doc, args: { per_mail: frm.doc.email ? 1 : 0 } }).then(() => frm.reload_doc()));
+			}, __("Aktionen"));
+		}
 
 		if (!offen && !frm.doc.pseudonymisiert && frappe.user.has_role(["PH Personal Leitung", "System Manager"])) {
 			frm.add_custom_button(__("Unterlagen jetzt löschen"), () => {

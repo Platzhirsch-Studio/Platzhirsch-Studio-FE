@@ -37,62 +37,420 @@
   "abschluss_nullbeleg_automatisch",
   "sb_terminal",
   "terminal_testmodus",
+  "sb_regeln",
+  "storno_mitarbeiter_bis_cent",
+  "rabatt_freigabe_ab_promille",
+  "retoure_bar_nur_leitung",
+  "retoure_standard",
+  "bar_identitaet_ab_cent",
+  "uid_empfaenger_ab_cent",
+  "anzahlungsrechnung_automatisch",
+  "cb_regeln",
+  "tageswechsel_uhrzeit",
+  "karte_automatisch_buchen",
+  "terminal_warnung_s",
+  "terminal_timeout_s",
+  "differenz_warnung_cent",
+  "kundendisplay_anrede",
+  "sb_chf",
+  "chf_annahme_aktiv",
+  "chf_kurs_mikro",
+  "chf_kurs_datum",
+  "chf_kurs_max_alter_tage",
   "terminal_schluesselnamen",
   "sb_rksv",
   "rksv_hinweis"
  ],
  "fields": [
-  {"fieldname": "sb_allgemein", "fieldtype": "Section Break", "label": "Allgemein"},
-  {"fieldname": "standard_kasse", "fieldtype": "Link", "label": "Standardkasse", "options": "PH Kasse", "description": "Wird in der Kassa-Page vorausgewählt (DocType PH Kasse: WP10a)."},
-  {"fieldname": "standard_steuersatz", "fieldtype": "Select", "label": "Standard-Steuersatz Artikel/Freitext", "options": "Normal 20\nErmaessigt-1 10\nErmaessigt-2 13\nNull 0\nBesonders 19\nSteuerfrei", "default": "Normal 20"},
-  {"fieldname": "steuersatz_anzahlung", "fieldtype": "Select", "label": "Steuersatz Anzahlung (falls Auftrag keinen liefert)", "options": "Normal 20\nErmaessigt-1 10\nErmaessigt-2 13\nNull 0\nBesonders 19\nSteuerfrei", "default": "Normal 20", "description": "Anzahlungen übernehmen den Satz der Auftragspositionen; dies ist nur der Rückfall."},
-  {"fieldname": "gutschein_art", "fieldtype": "Select", "label": "Gutscheinart beim Verkauf", "options": "Mehrzweck\nEinzweck", "default": "Mehrzweck", "description": "Mehrzweck: Verkauf mit Satz „Null 0“ (kein Umsatz, aber Barumsatz nach RKSV); Einlösung mit Satz der Ware. Vom Steuerberater bestätigen lassen (PLAN.md Frage 5)."},
-  {"fieldname": "cb_1", "fieldtype": "Column Break"},
-  {"fieldname": "trainings_banner_text", "fieldtype": "Data", "label": "Banner im Trainingsmodus", "default": "TRAININGSMODUS – Belege sind nicht gültig"},
-  {"fieldname": "trinkgeld_erfassen", "fieldtype": "Check", "label": "Trinkgeld erfassen", "default": "0"},
-  {"fieldname": "barverkauf_rechnung_ab_cent", "fieldtype": "Int", "label": "Barverkaufsrechnung anbieten ab (Cent)", "default": "40000", "description": "Ab diesem Bruttobetrag bietet die Page „Rechnung erstellen“ an (§ 11 Abs 6 UStG Kleinbetragsgrenze 400 €)."},
-  {"fieldname": "sb_druck", "fieldtype": "Section Break", "label": "Bondruck"},
-  {"fieldname": "bondrucker_modus", "fieldtype": "Select", "label": "Bondrucker", "options": "PDF 80 mm\nPDF A4\nESC-POS Druckserver\nQZ Tray", "default": "PDF 80 mm", "reqd": 1, "description": "ESC-POS Druckserver: Rohbytes per HTTP POST an die URL (LAN). QZ Tray: Browser-Dienst am Kassenrechner. PDF: Druckformate dieser App."},
-  {"fieldname": "druckserver_url", "fieldtype": "Data", "label": "Druckserver-URL", "options": "URL", "depends_on": "eval:doc.bondrucker_modus=='ESC-POS Druckserver'", "description": "z. B. http://192.168.1.50:9100/print – nur LAN, kein Geheimnis."},
-  {"fieldname": "qz_drucker_name", "fieldtype": "Data", "label": "Druckername in QZ Tray", "depends_on": "eval:doc.bondrucker_modus=='QZ Tray'"},
-  {"fieldname": "bon_breite_zeichen", "fieldtype": "Select", "label": "Bonbreite (Zeichen je Zeile)", "options": "42\n48\n32", "default": "42", "description": "80-mm-Drucker: 42 (Font A) oder 48 (Font B); 58-mm-Drucker: 32."},
-  {"fieldname": "cb_2", "fieldtype": "Column Break"},
-  {"fieldname": "automatisch_drucken", "fieldtype": "Check", "label": "Nach dem Buchen sofort drucken", "default": "1"},
-  {"fieldname": "schublade_oeffnen", "fieldtype": "Check", "label": "Kassenlade bei Barzahlung öffnen (ESC/POS)", "default": "1"},
-  {"fieldname": "bon_kopfzeile", "fieldtype": "Data", "label": "Zusatzzeile im Bonkopf", "description": "z. B. Showroom Lochau am Bodensee"},
-  {"fieldname": "bon_fusstext", "fieldtype": "Small Text", "label": "Fußtext auf dem Bon", "default": "Vielen Dank für Ihren Besuch.\nUmtausch und Rückgabe nach unseren AGB."},
-  {"fieldname": "sb_display", "fieldtype": "Section Break", "label": "Kundendisplay und Belegversand"},
-  {"fieldname": "kundendisplay_aktiv", "fieldtype": "Check", "label": "Kundendisplay aktiv", "default": "0", "description": "Zweites Browserfenster: /app/ph-kassa?display=1&kasse=<Kassen-ID>. Zeigt Positionen und Summe live (frappe.realtime)."},
-  {"fieldname": "kundendisplay_text", "fieldtype": "Data", "label": "Ruhetext Kundendisplay", "default": "Willkommen bei Platzhirsch"},
-  {"fieldname": "cb_3", "fieldtype": "Column Break"},
-  {"fieldname": "beleg_email_betreff", "fieldtype": "Data", "label": "Betreff „Beleg per E-Mail“", "default": "Ihr Beleg von Platzhirsch"},
-  {"fieldname": "beleg_email_kopie_an", "fieldtype": "Data", "label": "Kopie an (intern)", "options": "Email"},
-  {"fieldname": "sb_abschluss", "fieldtype": "Section Break", "label": "Tagesabschluss"},
-  {"fieldname": "differenz_toleranz_cent", "fieldtype": "Int", "label": "Differenz ohne Begründung bis (Cent)", "default": "0", "description": "0 = jede Differenz braucht einen Grund."},
-  {"fieldname": "abschluss_unterschrift_pflicht", "fieldtype": "Check", "label": "Unterschrift beim Abschluss Pflicht", "default": "1"},
-  {"fieldname": "cb_4", "fieldtype": "Column Break"},
-  {"fieldname": "abschluss_nullbeleg_automatisch", "fieldtype": "Check", "label": "Nullbeleg beim Abschluss automatisch erzeugen", "default": "1", "description": "Empfehlung BMF: Nullbeleg zur Prüfung der Signatureinheit (WP10a-Funktion)."},
-  {"fieldname": "sb_terminal", "fieldtype": "Section Break", "label": "Stripe Terminal"},
-  {"fieldname": "terminal_testmodus", "fieldtype": "Check", "label": "Terminal im Testmodus (Mock oder Stripe-Testschlüssel)", "default": "1", "description": "Aus = echte Kartenzahlungen, sobald ph_stripe_secret_key (live) in site_config steht."},
-  {"fieldname": "terminal_schluesselnamen", "fieldtype": "HTML", "label": "Schlüsselnamen", "options": "<p>Nur in <code>site_config.json</code>: <code>ph_stripe_secret_key</code>, <code>ph_stripe_livemode</code>, <code>ph_stripe_terminal_location</code> (Stripe Location <code>tml_…</code>). Reader werden als <b>PH Terminal</b> (Reader-ID <code>tmr_…</code>) angelegt. Ohne Schlüssel läuft der Mock (Staging).</p>"},
-  {"fieldname": "sb_rksv", "fieldtype": "Section Break", "label": "Hinweise RKSV", "collapsible": 1},
-  {"fieldname": "rksv_hinweis", "fieldtype": "HTML", "label": "Risikohinweise", "options": "<ul><li>Die RKSV-Konformität verantwortet der Unternehmer. Vor dem ersten echten Beleg: Kasse und Signatureinheit bei FinanzOnline registrieren, Startbeleg mit der BMF Belegcheck-App prüfen (Checkliste in PH Kasse, WP10a).</li><li>Bis zur erfolgreichen Prüfung bleibt die bestehende Registrierkasse in Betrieb; hier nur Trainingsmodus.</li><li>Kartenzahlungen sind Barumsätze im Sinne der RKSV und werden signiert.</li><li>Gutscheinart (Mehrzweck/Einzweck) und Steuersätze mit dem Steuerberater abstimmen.</li></ul>"}
+  {
+   "fieldname": "sb_allgemein",
+   "fieldtype": "Section Break",
+   "label": "Allgemein"
+  },
+  {
+   "fieldname": "standard_kasse",
+   "fieldtype": "Link",
+   "label": "Standardkasse",
+   "options": "PH Kasse",
+   "description": "Wird in der Kassa-Page vorausgewählt (DocType PH Kasse: WP10a)."
+  },
+  {
+   "fieldname": "standard_steuersatz",
+   "fieldtype": "Select",
+   "label": "Standard-Steuersatz Artikel/Freitext",
+   "options": "Normal 20\nErmaessigt-1 10\nErmaessigt-2 13\nNull 0\nBesonders 19\nSteuerfrei",
+   "default": "Normal 20"
+  },
+  {
+   "fieldname": "steuersatz_anzahlung",
+   "fieldtype": "Select",
+   "label": "Steuersatz Anzahlung (falls Auftrag keinen liefert)",
+   "options": "Normal 20\nErmaessigt-1 10\nErmaessigt-2 13\nNull 0\nBesonders 19\nSteuerfrei",
+   "default": "Normal 20",
+   "description": "Anzahlungen übernehmen den Satz der Auftragspositionen; dies ist nur der Rückfall."
+  },
+  {
+   "fieldname": "gutschein_art",
+   "fieldtype": "Select",
+   "label": "Gutscheinart beim Verkauf",
+   "options": "Mehrzweck\nEinzweck",
+   "default": "Mehrzweck",
+   "description": "Mehrzweck: Verkauf mit Satz „Null 0“ (kein Umsatz, aber Barumsatz nach RKSV); Einlösung mit Satz der Ware. Vom Steuerberater bestätigen lassen (PLAN.md Frage 5)."
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trainings_banner_text",
+   "fieldtype": "Data",
+   "label": "Banner im Trainingsmodus",
+   "default": "TRAININGSMODUS – Belege sind nicht gültig"
+  },
+  {
+   "fieldname": "trinkgeld_erfassen",
+   "fieldtype": "Check",
+   "label": "Trinkgeld erfassen",
+   "default": "0",
+   "description": "Nicht verwendet: Trinkgeld an Mitarbeiter ist kein Umsatz des Unternehmers und läuft nicht über die Registrierkasse (§ 3 Abs 1 Z 16a EStG; Fachkritik 21 §5). Steuerberater-Frage, falls doch gewünscht.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "barverkauf_rechnung_ab_cent",
+   "fieldtype": "Int",
+   "label": "Barverkaufsrechnung anbieten ab (Cent)",
+   "default": "40000",
+   "description": "Ab diesem Bruttobetrag bietet die Page „Rechnung erstellen“ an (§ 11 Abs 6 UStG Kleinbetragsgrenze 400 €)."
+  },
+  {
+   "fieldname": "sb_druck",
+   "fieldtype": "Section Break",
+   "label": "Bondruck"
+  },
+  {
+   "fieldname": "bondrucker_modus",
+   "fieldtype": "Select",
+   "label": "Bondrucker",
+   "options": "PDF 80 mm\nPDF A4\nESC-POS Druckserver\nQZ Tray",
+   "default": "PDF 80 mm",
+   "reqd": 1,
+   "description": "ESC-POS Druckserver: Rohbytes per HTTP POST an die URL (LAN). QZ Tray: Browser-Dienst am Kassenrechner. PDF: Druckformate dieser App."
+  },
+  {
+   "fieldname": "druckserver_url",
+   "fieldtype": "Data",
+   "label": "Druckserver-URL",
+   "options": "URL",
+   "depends_on": "eval:doc.bondrucker_modus=='ESC-POS Druckserver'",
+   "description": "z. B. http://192.168.1.50:9100/print – nur LAN, kein Geheimnis."
+  },
+  {
+   "fieldname": "qz_drucker_name",
+   "fieldtype": "Data",
+   "label": "Druckername in QZ Tray",
+   "depends_on": "eval:doc.bondrucker_modus=='QZ Tray'"
+  },
+  {
+   "fieldname": "bon_breite_zeichen",
+   "fieldtype": "Select",
+   "label": "Bonbreite (Zeichen je Zeile)",
+   "options": "42\n48\n32",
+   "default": "42",
+   "description": "80-mm-Drucker: 42 (Font A) oder 48 (Font B); 58-mm-Drucker: 32."
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "automatisch_drucken",
+   "fieldtype": "Check",
+   "label": "Nach dem Buchen sofort drucken",
+   "default": "1"
+  },
+  {
+   "fieldname": "schublade_oeffnen",
+   "fieldtype": "Check",
+   "label": "Kassenlade bei Barzahlung öffnen (ESC/POS)",
+   "default": "1"
+  },
+  {
+   "fieldname": "bon_kopfzeile",
+   "fieldtype": "Data",
+   "label": "Zusatzzeile im Bonkopf",
+   "description": "z. B. Showroom Lochau am Bodensee"
+  },
+  {
+   "fieldname": "bon_fusstext",
+   "fieldtype": "Small Text",
+   "label": "Fußtext auf dem Bon",
+   "default": "Vielen Dank für Ihren Besuch.\nUmtausch und Rückgabe nach unseren AGB."
+  },
+  {
+   "fieldname": "sb_display",
+   "fieldtype": "Section Break",
+   "label": "Kundendisplay und Belegversand"
+  },
+  {
+   "fieldname": "kundendisplay_aktiv",
+   "fieldtype": "Check",
+   "label": "Kundendisplay aktiv",
+   "default": "0",
+   "description": "Zweites Browserfenster: /app/ph-kassa?display=1&kasse=<Kassen-ID>. Zeigt Positionen und Summe live (frappe.realtime)."
+  },
+  {
+   "fieldname": "kundendisplay_text",
+   "fieldtype": "Data",
+   "label": "Ruhetext Kundendisplay",
+   "default": "Willkommen bei Platzhirsch"
+  },
+  {
+   "fieldname": "cb_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "beleg_email_betreff",
+   "fieldtype": "Data",
+   "label": "Betreff „Beleg per E-Mail“",
+   "default": "Ihr Beleg von Platzhirsch"
+  },
+  {
+   "fieldname": "beleg_email_kopie_an",
+   "fieldtype": "Data",
+   "label": "Kopie an (intern)",
+   "options": "Email"
+  },
+  {
+   "fieldname": "sb_abschluss",
+   "fieldtype": "Section Break",
+   "label": "Tagesabschluss"
+  },
+  {
+   "fieldname": "differenz_toleranz_cent",
+   "fieldtype": "Int",
+   "label": "Differenz ohne Begründung bis (Cent)",
+   "default": "0",
+   "description": "0 = jede Differenz braucht einen Grund."
+  },
+  {
+   "fieldname": "abschluss_unterschrift_pflicht",
+   "fieldtype": "Check",
+   "label": "Unterschrift beim Abschluss Pflicht",
+   "default": "1"
+  },
+  {
+   "fieldname": "cb_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abschluss_nullbeleg_automatisch",
+   "fieldtype": "Check",
+   "label": "Nullbeleg beim Abschluss automatisch erzeugen",
+   "default": "1",
+   "description": "Empfehlung BMF: Nullbeleg zur Prüfung der Signatureinheit (WP10a-Funktion)."
+  },
+  {
+   "fieldname": "sb_terminal",
+   "fieldtype": "Section Break",
+   "label": "Stripe Terminal"
+  },
+  {
+   "fieldname": "terminal_testmodus",
+   "fieldtype": "Check",
+   "label": "Terminal im Testmodus (Mock oder Stripe-Testschlüssel)",
+   "default": "1",
+   "description": "Aus = echte Kartenzahlungen, sobald ph_stripe_secret_key (live) in site_config steht."
+  },
+  {
+   "fieldname": "sb_regeln",
+   "fieldtype": "Section Break",
+   "label": "Regeln, Freigaben, Grenzen (50-backend-luecken-kassa-faktura.md)"
+  },
+  {
+   "fieldname": "storno_mitarbeiter_bis_cent",
+   "fieldtype": "Int",
+   "label": "Mitarbeiter-Storno eigener Belege von heute bis (Cent)",
+   "default": "0",
+   "description": "0 = nur Leitung storniert. Darüber oder fremde/ältere Belege: Leitungsfreigabe (PIN)."
+  },
+  {
+   "fieldname": "rabatt_freigabe_ab_promille",
+   "fieldtype": "Int",
+   "label": "Rabatt-Freigabe durch Leitung ab ‰",
+   "default": "100",
+   "description": "Echte Promille: 100 = 10 %. 0 = keine Freigabe nötig."
+  },
+  {
+   "fieldname": "retoure_bar_nur_leitung",
+   "fieldtype": "Check",
+   "label": "Bar-Auszahlung bei Retoure nur mit Leitungsfreigabe",
+   "default": "1"
+  },
+  {
+   "fieldname": "retoure_standard",
+   "fieldtype": "Select",
+   "label": "Standard-Auszahlung bei Retoure",
+   "options": "Gutschein\nOriginal-Zahlart\nBar",
+   "default": "Gutschein"
+  },
+  {
+   "fieldname": "bar_identitaet_ab_cent",
+   "fieldtype": "Int",
+   "label": "Identitätsfeststellung ab Barbetrag (Cent)",
+   "default": "1000000",
+   "description": "§ 365m ff. GewO: Barzahlung ab 10.000 € – Ausweis erfassen."
+  },
+  {
+   "fieldname": "uid_empfaenger_ab_cent",
+   "fieldtype": "Int",
+   "label": "UID des Empfängers ab (Cent)",
+   "default": "1000000",
+   "description": "§ 11 Abs 1 Z 3 lit i UStG: über 10.000 € brutto UID des Leistungsempfängers."
+  },
+  {
+   "fieldname": "anzahlungsrechnung_automatisch",
+   "fieldtype": "Check",
+   "label": "Anzahlungsrechnung bei Kassa-Anzahlung automatisch stellen",
+   "default": "1",
+   "description": "Ohne Anzahlungsrechnung würde die Schlussrechnung die Anzahlung nicht abziehen (USt doppelt)."
+  },
+  {
+   "fieldname": "cb_regeln",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tageswechsel_uhrzeit",
+   "fieldtype": "Time",
+   "label": "Tageswechsel (Geschäftstag beginnt um)",
+   "default": "00:00:00",
+   "description": "Belege vor dieser Uhrzeit zählen zum Vortag (Abendveranstaltung)."
+  },
+  {
+   "fieldname": "karte_automatisch_buchen",
+   "fieldtype": "Check",
+   "label": "Nach erfolgreicher Terminalzahlung automatisch buchen",
+   "default": "1"
+  },
+  {
+   "fieldname": "terminal_warnung_s",
+   "fieldtype": "Int",
+   "label": "Terminal: Hinweis nach Sekunden",
+   "default": "60"
+  },
+  {
+   "fieldname": "terminal_timeout_s",
+   "fieldtype": "Int",
+   "label": "Terminal: automatischer Abbruch nach Sekunden",
+   "default": "180"
+  },
+  {
+   "fieldname": "differenz_warnung_cent",
+   "fieldtype": "Int",
+   "label": "Kassendifferenz rot ab (Cent)",
+   "default": "5000"
+  },
+  {
+   "fieldname": "kundendisplay_anrede",
+   "fieldtype": "Check",
+   "label": "Kundendisplay mit Vornamen (Kundenkarte/Kontakt)",
+   "default": "0"
+  },
+  {
+   "fieldname": "sb_chf",
+   "fieldtype": "Section Break",
+   "label": "Fremdwährung CHF (nur bar, Rückgeld in Euro)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "chf_annahme_aktiv",
+   "fieldtype": "Check",
+   "label": "CHF-Bargeld annehmen",
+   "default": "0"
+  },
+  {
+   "fieldname": "chf_kurs_mikro",
+   "fieldtype": "Int",
+   "label": "Kurs: EUR je 1 CHF × 1 000 000",
+   "description": "Beispiel 1,045 EUR = 1045000. Täglich pflegen; Kassa verweigert CHF bei veraltetem Kurs."
+  },
+  {
+   "fieldname": "chf_kurs_datum",
+   "fieldtype": "Date",
+   "label": "Kurs gültig am"
+  },
+  {
+   "fieldname": "chf_kurs_max_alter_tage",
+   "fieldtype": "Int",
+   "label": "Kurs höchstens so viele Tage alt",
+   "default": "1"
+  },
+  {
+   "fieldname": "terminal_schluesselnamen",
+   "fieldtype": "HTML",
+   "label": "Schlüsselnamen",
+   "options": "<p>Nur in <code>site_config.json</code>: <code>ph_stripe_secret_key</code>, <code>ph_stripe_livemode</code>, <code>ph_stripe_terminal_location</code> (Stripe Location <code>tml_…</code>). Reader werden als <b>PH Terminal</b> (Reader-ID <code>tmr_…</code>) angelegt. Ohne Schlüssel läuft der Mock (Staging).</p>"
+  },
+  {
+   "fieldname": "sb_rksv",
+   "fieldtype": "Section Break",
+   "label": "Hinweise RKSV",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "rksv_hinweis",
+   "fieldtype": "HTML",
+   "label": "Risikohinweise",
+   "options": "<ul><li>Die RKSV-Konformität verantwortet der Unternehmer. Vor dem ersten echten Beleg: Kasse und Signatureinheit bei FinanzOnline registrieren, Startbeleg mit der BMF Belegcheck-App prüfen (Checkliste in PH Kasse, WP10a).</li><li>Bis zur erfolgreichen Prüfung bleibt die bestehende Registrierkasse in Betrieb; hier nur Trainingsmodus.</li><li>Kartenzahlungen sind Barumsätze im Sinne der RKSV und werden signiert.</li><li>Gutscheinart (Mehrzweck/Einzweck) und Steuersätze mit dem Steuerberater abstimmen.</li></ul>"
+  }
  ],
  "index_web_pages_for_search": 0,
  "issingle": 1,
  "links": [],
- "modified": "2026-11-04 01:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Kassa",
  "name": "PH Kassa Einstellungen",
  "owner": "Administrator",
  "permissions": [
-  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "print": 1, "email": 1, "share": 1},
-  {"role": "PH Backoffice-Admin", "read": 1, "write": 1, "create": 1, "print": 1, "email": 1, "share": 1},
-  {"role": "PH Kassa Leitung", "read": 1, "write": 1, "create": 1, "print": 1, "email": 1, "share": 1},
-  {"role": "PH Kassa Mitarbeiter", "read": 1},
-  {"role": "PH Geschäftsführung", "read": 1},
-  {"role": "PH Buchhaltung extern", "read": 1}
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kassa Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kassa Mitarbeiter",
+   "read": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1
+  }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",

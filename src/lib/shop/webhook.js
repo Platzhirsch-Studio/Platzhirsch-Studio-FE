@@ -14,6 +14,7 @@
 // Keine "@/"-Importe.
 import { shippingAdapterFor } from "../commerce/shipping/index.js";
 import { createLocalOrderAdapter, shopDataDir } from "./orderStore.js";
+import { withPhMirror } from "./phMirror.js";
 import { shopMode } from "./mode.js";
 import { sendeVertragsbestaetigung } from "./orderMail.js";
 
@@ -26,7 +27,9 @@ export function createShopHooks(o = {}) {
   const env = o.env || process.env;
   const now = o.now || (() => Date.now());
   let store = o.store || null;
-  const st = () => (store ||= createLocalOrderAdapter(shopDataDir(env)));
+  // BACKEND_GENERATION Gruppe "shop" auf ph: lokaler Store + Spiegel nach ph_shop
+  // (phMirror.js); sonst – und bei übergebenem o.store – unverändert.
+  const st = () => (store ||= withPhMirror(createLocalOrderAdapter(shopDataDir(env)), { env }));
   const shippingOf = () => (o.shipping !== undefined ? o.shipping : shippingAdapterFor(env, shopMode(env)));
   const mailerOf = () => (typeof o.mailer === "function" ? o.mailer() : o.mailer || null);
 

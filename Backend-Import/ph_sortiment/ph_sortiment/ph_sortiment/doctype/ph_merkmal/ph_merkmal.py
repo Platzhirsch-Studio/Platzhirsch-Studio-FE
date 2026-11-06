@@ -24,3 +24,12 @@ class PHMerkmal(Document):
         for loc in ("en", "fr", "it"):
             if not self.get(f"label_{loc}"):
                 self.set(f"label_{loc}", self.label_de)
+
+    def on_update(self):
+        # Filterlisten und colorKeys/materialKeys der Karten hängen an Status/website_sichtbar → Katalog-Cache leeren
+        try:
+            from ph_sortiment.ph_sortiment.ereignisse import website_aktualisieren
+
+            website_aktualisieren("products")
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title="PH Merkmal: Website-Aktualisierung fehlgeschlagen")

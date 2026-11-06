@@ -1,0 +1,278 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2026-11-04 15:00:00.000000",
+ "description": "Packplatz-Profil je Gerät (Gerätename als Text): Drucker je Dokumentart, Töne, Mengenbestätigung, Gewichtsprüfung, Schnellversand, Packmittel-Lagerort.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "geraet",
+  "bezeichnung",
+  "aktiv",
+  "standard",
+  "cb_kopf",
+  "lagerort",
+  "hinweis",
+  "sb_drucker",
+  "drucker_lieferschein",
+  "drucker_packliste",
+  "drucker_rechnung",
+  "cb_drucker",
+  "drucker_etikett",
+  "drucker_packstueck",
+  "drucker_sonstige",
+  "sb_ablauf",
+  "ton_erfolg",
+  "ton_fehler",
+  "mengen_bestaetigen",
+  "hand_bestaetigung_erlaubt",
+  "cb_ablauf",
+  "gewicht_pflicht",
+  "gewicht_toleranz_promille",
+  "gewicht_toleranz_min_g",
+  "schnellversand",
+  "etikett_empfehlung"
+ ],
+ "fields": [
+  {
+   "fieldname": "geraet",
+   "fieldtype": "Data",
+   "label": "Gerätename",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "Name des Geräts/Browsers am Packtisch (wie PH Geraet in ph_core, ohne Abhängigkeit)."
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "standard",
+   "fieldtype": "Check",
+   "label": "Standard-Packplatz"
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lagerort",
+   "fieldtype": "Link",
+   "label": "Lagerort (Packmittel-Entnahme)",
+   "options": "PH Lagerort"
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis am Packplatz"
+  },
+  {
+   "fieldname": "sb_drucker",
+   "fieldtype": "Section Break",
+   "label": "Drucker je Dokumentart"
+  },
+  {
+   "fieldname": "drucker_lieferschein",
+   "fieldtype": "Data",
+   "label": "Drucker Lieferschein"
+  },
+  {
+   "fieldname": "drucker_packliste",
+   "fieldtype": "Data",
+   "label": "Drucker Packliste"
+  },
+  {
+   "fieldname": "drucker_rechnung",
+   "fieldtype": "Data",
+   "label": "Drucker Rechnung/Proforma"
+  },
+  {
+   "fieldname": "cb_drucker",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "drucker_etikett",
+   "fieldtype": "Data",
+   "label": "Drucker Versandetikett"
+  },
+  {
+   "fieldname": "drucker_packstueck",
+   "fieldtype": "Data",
+   "label": "Drucker Packstück-Etikett"
+  },
+  {
+   "fieldname": "drucker_sonstige",
+   "fieldtype": "Data",
+   "label": "Drucker sonstige Dokumente"
+  },
+  {
+   "fieldname": "sb_ablauf",
+   "fieldtype": "Section Break",
+   "label": "Ablauf"
+  },
+  {
+   "fieldname": "ton_erfolg",
+   "fieldtype": "Check",
+   "label": "Erfolgston",
+   "default": "1"
+  },
+  {
+   "fieldname": "ton_fehler",
+   "fieldtype": "Check",
+   "label": "Fehlerton",
+   "default": "1"
+  },
+  {
+   "fieldname": "mengen_bestaetigen",
+   "fieldtype": "Check",
+   "label": "Mengen > 1 bestätigen",
+   "default": "1"
+  },
+  {
+   "fieldname": "hand_bestaetigung_erlaubt",
+   "fieldtype": "Check",
+   "label": "Handbestätigung ohne Barcode erlaubt",
+   "default": "1"
+  },
+  {
+   "fieldname": "cb_ablauf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gewicht_pflicht",
+   "fieldtype": "Check",
+   "label": "Gewicht vor Label Pflicht",
+   "default": "1"
+  },
+  {
+   "fieldname": "gewicht_toleranz_promille",
+   "fieldtype": "Int",
+   "label": "Gewichtstoleranz (Promille)",
+   "default": "250",
+   "description": "Abweichung manuelles Gewicht zum Vorschlag; 250 = 25 %."
+  },
+  {
+   "fieldname": "gewicht_toleranz_min_g",
+   "fieldtype": "Int",
+   "label": "Mindesttoleranz (g)",
+   "default": "300"
+  },
+  {
+   "fieldname": "schnellversand",
+   "fieldtype": "Check",
+   "label": "Einartikel-Schnellversand",
+   "default": "0",
+   "description": "Scan eines Einzelartikel-Auftrags (1 Position, Menge 1, festes Paketprofil) → Label sofort."
+  },
+  {
+   "fieldname": "etikett_empfehlung",
+   "fieldtype": "Check",
+   "label": "Tarif-Empfehlung automatisch buchen",
+   "default": "1"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 15:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Packplatz",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "geraet,bezeichnung",
+ "title_field": "bezeichnung",
+ "track_seen": 0,
+ "autoname": "field:geraet",
+ "naming_rule": "By fieldname"
+}

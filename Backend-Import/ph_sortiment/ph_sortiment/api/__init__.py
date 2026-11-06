@@ -17,7 +17,14 @@ fetchKategorien.js, fetchSubKategorien.js, fetchFarben.js, fetchMaterialien.js, 
          …sub_kategorie.api.get_all_sub_kategorien_api            → ph_sortiment.api.get_all_sub_kategorien_api
          …produkte_farbe.api.get_all_farben_api                   → ph_sortiment.api.get_all_farben_api
          …produkte_material.api.get_all_materialien_api           → ph_sortiment.api.get_all_materialien_api
-  neu    get_preise(slugs) (Shop: Preise mit Stand, nur freigegeben/aktuell), get_katalog_version()
+  neu    get_preise(slugs) (Shop: Preise mit Stand, nur freigegeben/aktuell), get_katalog_version(),
+         get_produkt_modelle_3d(marke=None) (AR-Viewer), get_wechselkurs_einstellungen() (Dreiländer-Rechner)
+
+Kartenform zusätzlich (Website-Filter, src/lib/shop/shopProducts.js): subCategoryKeys[], colorKeys[],
+materialKeys[], indoor_and_outdoor ("Indoor"/"Outdoor") – Regeln in logik/filterfelder.py.
+Detail: additional_information[0].material/farbe (Freitext aus den Merkmalen, wie der alte Endpunkt).
+Unterkategorien, Kategorien je Marke, Farben/Materialien: nur Aktiv + website_sichtbar.
+Alle Gast-Methoden: Ratenbegrenzung je IP über ph_core.api.gast_rate_limit (PH Einstellungen).
 
 Feldnamen der Antworten sind die alten: name, produkt_name, path_field, url_slug, marken, kategories,
 status ("Aktiv"), collection, designer, modified, bild_anhangen[{bild_anhangen}], pdf_produkte[{pdf}],
@@ -38,6 +45,8 @@ import json
 import frappe
 from frappe.utils import cint, nowdate
 
+from ph_core.api import gast_rate_limit
+from ph_sortiment.logik.filterfelder import MATERIAL_GRUPPEN, filterfelder, material_farbe_text, wechselkurs_konfiguration
 from ph_sortiment.logik.preise import ab_preis_cent, gueltiger_preis
 
 L = ("de", "en", "fr", "it")
@@ -107,6 +116,38 @@ def _karte(p):
     }
 
 
+def _sub_keys():
+    """Sichtbare Unterkategorien (Name = Key)."""
+    return set(frappe.get_all("PH Kategorie", filters={"status": "Aktiv", "website_sichtbar": 1, "uebergeordnet": ("is", "set")}, pluck="name"))
+
+
+def _merkmal_info(namen):
+    if not namen:
+        return {}
+    rows = frappe.get_all("PH Merkmal", filters={"name": ("in", list(namen)), "status": "Aktiv", "website_sichtbar": 1}, fields=["name", "key", "gruppe"])
+    return {r.name: {"key": r.key or r.name, "gruppe": r.gruppe} for r in rows}
+
+
+def _karten(produkte):
+    """Kartenform + Filterfelder für eine Liste PH Produkt-Zeilen (gebündelt: vier Abfragen je Liste)."""
+    if not produkte:
+        return []
+    namen = [p["name"] for p in produkte]
+    weitere, merkmale = {}, {}
+    for r in frappe.get_all("PH Produkt Kategorie", filters={"parenttype": "PH Produkt", "parentfield": "kategorien_weitere", "parent": ("in", namen)}, fields=["parent", "kategorie"], order_by="idx asc"):
+        weitere.setdefault(r.parent, []).append(r.kategorie)
+    for r in frappe.get_all("PH Produkt Merkmal", filters={"parenttype": "PH Produkt", "parent": ("in", namen), "merkmal": ("is", "set")}, fields=["parent", "merkmal", "gruppe"], order_by="idx asc"):
+        merkmale.setdefault(r.parent, []).append({"merkmal": r.merkmal, "gruppe": r.gruppe})
+    subs = _sub_keys()
+    info = _merkmal_info({m["merkmal"] for zeilen in merkmale.values() for m in zeilen})
+    out = []
+    for p in produkte:
+        k = _karte(p)
+        k.update(filterfelder(weitere.get(p["name"]), merkmale.get(p["name"]), subs, info, p.get("bereich"), p.get("welt")))
+        out.append(k)
+    return out
+
+
 def _preis_kurz(p):
     if not p.get("aktueller_preis_cent"):
         return None
@@ -129,6 +170,17 @@ def _detail(doc, lang="de"):
         d[f"metadata_title_{loc}"] = doc.get(f"seo_title_{loc}") or f"{doc.marke} {doc.name_herstellerbezeichnung}"
         d[f"metadata_description_{loc}"] = doc.get(f"seo_description_{loc}") or doc.get(f"kurz_{loc}") or ""
     d["merkmale"] = [{"de": m.text_de, "en": m.text_en or m.text_de, "fr": m.text_fr or m.text_de, "it": m.text_it or m.text_de, "gruppe": m.gruppe} for m in doc.merkmale]
+    # Material/Farbe als Freitext wie der alte Endpunkt (Website shopProducts.js materialRaw/colorRaw)
+    material, farbe = material_farbe_text(d["merkmale"])
+    if material or farbe:
+        erste = dict(d["additional_information"][0]) if d["additional_information"] else {}
+        if material:
+            erste["material"] = material
+        if farbe:
+            erste["farbe"] = farbe
+        d["additional_information"] = [erste] + d["additional_information"][1:]
+    info = _merkmal_info({m.merkmal for m in doc.merkmale if m.merkmal})
+    d.update(filterfelder([k.kategorie for k in doc.kategorien_weitere], [{"merkmal": m.merkmal, "gruppe": m.gruppe} for m in doc.merkmale], _sub_keys(), info, doc.bereich, doc.welt))
     d["masse"] = [{"key": m.key, "wert": m.wert} for m in doc.masse]
     d["serie"], d["hersteller_url"], d["welt"], d["bereich"], d["stand"] = doc.serie, doc.hersteller_url, doc.welt, doc.bereich, str(doc.stand or "")
     d["kategorien_weitere"] = [k.kategorie for k in doc.kategorien_weitere]
@@ -191,6 +243,7 @@ def _kategorie(k, count=None):
 # ── Produkte ────────────────────────────────────────────────────────────────
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_produkte_by_kategorie(kategories=None, limit=500):
     if not kategories:
         return []
@@ -201,19 +254,21 @@ def get_produkte_by_kategorie(kategories=None, limit=500):
         namen = {p["name"] for p in direkt}
         if weitere:
             direkt += frappe.get_all("PH Produkt", filters={**AKTIV, "name": ("in", [w for w in weitere if w not in namen])}, fields=PRODUKT_FELDER)
-        return [_karte(p) for p in direkt]
+        return _karten(direkt)
 
     return _gecacht(f"kat:{kategories}:{limit}", laden)
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_produkte_by_marke_api(marken=None, limit=1000):
     if not marken:
         return []
-    return _gecacht(f"marke:{marken}:{limit}", lambda: [_karte(p) for p in frappe.get_all("PH Produkt", filters={**AKTIV, "marke": marken}, fields=PRODUKT_FELDER, order_by="modified desc", limit=cint(limit))])
+    return _gecacht(f"marke:{marken}:{limit}", lambda: _karten(frappe.get_all("PH Produkt", filters={**AKTIV, "marke": marken}, fields=PRODUKT_FELDER, order_by="modified desc", limit=cint(limit))))
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def search_produkte(q=None, limit=6):
     q = (q or "").strip()
     if len(q) < 2:
@@ -226,20 +281,21 @@ def search_produkte(q=None, limit=6):
         rest = []
         if len(starts) < limit:
             rest = frappe.get_all("PH Produkt", filters=AKTIV, or_filters=[["name_herstellerbezeichnung", "like", like], ["marke", "like", like], ["titel", "like", like], ["collection", "like", like]], fields=PRODUKT_FELDER, order_by="modified desc", limit=limit * 2)
-        gesehen, out = set(), []
+        gesehen, auswahl = set(), []
         for p in starts + rest:
             if p["name"] in gesehen:
                 continue
             gesehen.add(p["name"])
-            out.append(_karte(p))
-            if len(out) >= limit:
+            auswahl.append(p)
+            if len(auswahl) >= limit:
                 break
-        return out
+        return _karten(auswahl)
 
     return _gecacht(f"such:{q.lower()}:{limit}", laden)
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_produkt_by_path_field_api(path_field=None, lang="de"):
     if not path_field:
         return {}
@@ -255,17 +311,20 @@ def get_produkt_by_path_field_api(path_field=None, lang="de"):
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_produkte_paths():
     return _gecacht("paths", lambda: [{"path_field": p["slug"], "kategories": p["kategorie"], "modified": str(p["modified"]), "marken": p["marke"], "welt": p["welt"]} for p in frappe.get_all("PH Produkt", filters={**AKTIV, "kategorie": ("!=", "")}, fields=["slug", "kategorie", "modified", "marke", "welt"], order_by="modified desc", limit=10000)])
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_produkt_paths():
     """Alias (PLAN.md nennt get_produkt_paths)."""
     return get_produkte_paths()
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def related_products(marken=None, kategories=None, currentProductPath=None, limit=3):
     if not marken:
         return []
@@ -293,6 +352,7 @@ def _zaehlung(filters=None):
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_all_kategorien():
     """Kategorien mit mindestens einem aktiven Produkt, inkl. produkt_count (Produkte-Hub)."""
 
@@ -307,6 +367,7 @@ def get_all_kategorien():
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_kategorien_by_marke(marken=None):
     if not marken:
         return []
@@ -314,7 +375,7 @@ def get_kategorien_by_marke(marken=None):
     def laden():
         z = _zaehlung({"marke": marken})
         out = []
-        for k in frappe.get_all("PH Kategorie", filters={"status": "Aktiv", "name": ("in", list(z) or [""])}, fields=["*"], order_by="sortierung asc, label_de asc"):
+        for k in frappe.get_all("PH Kategorie", filters={"status": "Aktiv", "website_sichtbar": 1, "name": ("in", list(z) or [""])}, fields=["*"], order_by="sortierung asc, label_de asc"):
             d = _kategorie(k, z.get(k["name"], 0))
             bild = frappe.db.get_value("PH Produkt", {**AKTIV, "marke": marken, "kategorie": k["name"], "bild_hauptbild": ("!=", "")}, "bild_hauptbild", order_by="modified desc")
             d["image"] = bild or d["image"]
@@ -325,16 +386,18 @@ def get_kategorien_by_marke(marken=None):
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_all_kategorien_api():
     """Alle Hauptkategorien (CMS-Kacheln, auch ohne Produkte) – heute produkte_kategorie.api."""
     return _gecacht("kategorien:alle", lambda: [_kategorie(k) for k in frappe.get_all("PH Kategorie", filters={"status": "Aktiv", "website_sichtbar": 1, "uebergeordnet": ("in", ["", None])}, fields=["*"], order_by="sortierung asc, label_de asc")])
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_all_sub_kategorien_api():
     def laden():
         out = []
-        for k in frappe.get_all("PH Kategorie", filters={"status": "Aktiv", "uebergeordnet": ("!=", "")}, fields=["*"], order_by="sortierung asc, label_de asc"):
+        for k in frappe.get_all("PH Kategorie", filters={"status": "Aktiv", "website_sichtbar": 1, "uebergeordnet": ("is", "set")}, fields=["*"], order_by="sortierung asc, label_de asc"):
             d = _kategorie(k)
             d["kategorie"] = frappe.db.get_value("PH Kategorie", k["uebergeordnet"], "key") or k["uebergeordnet"]
             out.append(d)
@@ -344,6 +407,7 @@ def get_all_sub_kategorien_api():
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_collections(marken=None):
     if not marken:
         return []
@@ -358,6 +422,7 @@ def get_collections(marken=None):
 # ── Marken, Merkmale ──────────────────────────────────────────────────────
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def marken_data():
     def laden():
         out = []
@@ -381,12 +446,13 @@ def marken_data():
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_marken():
     return marken_data()
 
 
 def _merkmale(gruppen, key_feld, extra=None):
-    rows = frappe.get_all("PH Merkmal", filters={"status": "Aktiv", "gruppe": ("in", gruppen)}, fields=["name", "merkmal", "key", "gruppe", "farbe_hex", "bild", "label_de", "label_en", "label_fr", "label_it"], order_by="label_de asc")
+    rows = frappe.get_all("PH Merkmal", filters={"status": "Aktiv", "website_sichtbar": 1, "gruppe": ("in", gruppen)}, fields=["name", "merkmal", "key", "gruppe", "farbe_hex", "bild", "label_de", "label_en", "label_fr", "label_it"], order_by="label_de asc")
     out = []
     for r in rows:
         d = {"name": r.name, key_feld: r.key or r.name, "gruppe": r.gruppe, "image": r.bild or ""}
@@ -399,18 +465,21 @@ def _merkmale(gruppen, key_feld, extra=None):
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_all_farben_api():
     return _gecacht("farben", lambda: _merkmale(["Farbe"], "color_key", lambda r: {"hex_code": r.farbe_hex or ""}))
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_all_materialien_api():
-    return _gecacht("materialien", lambda: _merkmale(["Material", "Oberflaeche", "Stoff", "Leder", "Holz"], "material_key"))
+    return _gecacht("materialien", lambda: _merkmale(list(MATERIAL_GRUPPEN), "material_key"))
 
 
 # ── Neu: Preise mit Stand für den Shop, Version ───────────────────────────
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_preise(slugs=None):
     """Shop (src/lib/shop/catalog.js): gültige Verkaufspreise je Slug – nur freigegeben, nicht veraltet, nicht pausiert."""
     if isinstance(slugs, str):
@@ -440,6 +509,173 @@ def _preises_fuer_shop(doc):
 
 
 @frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
 def get_katalog_version():
     """Versionsstempel des Katalogs (ändert sich bei jeder Produkt-/Marken-/Kategorieänderung) für Website-Cache und ETag."""
     return _mit_etag({"version": katalog_version(), "produkte_aktiv": frappe.db.count("PH Produkt", AKTIV), "marken_aktiv": frappe.db.count("PH Marke", {"status": "Aktiv", "website_sichtbar": 1})})
+
+
+# ── Labs: AR-Viewer und Dreiländer-Rechner ────────────────────────────────
+
+@frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
+def get_produkt_modelle_3d(marke=None):
+    """3D-Modelle aktiver, sichtbarer Produkte für den AR-Viewer (src/components/Labs/ArViewer/data/source.js).
+
+    → [{path_field, glb, usdz, massstab, id, name, category, src, iosSrc, poster, marken}] – ein Eintrag je
+    Modellzeile (PH Produkt.modell_3d). id/name/category/src/iosSrc/poster entsprechen ArModelSchema; Maße,
+    Hotspots und Varianten pflegt die Website weiter selbst. Optional nach Marke (Name oder Slug) gefiltert.
+    """
+    marke = (marke or "").strip()[:140]
+
+    def laden():
+        filters = dict(AKTIV)
+        if marke:
+            filters["marke"] = frappe.db.get_value("PH Marke", {"slug": marke}, "name") or marke
+        produkte = {p["name"]: p for p in frappe.get_all("PH Produkt", filters=filters, fields=["name", "slug", "marke", "kategorie", "name_herstellerbezeichnung", "bild_hauptbild"], limit=10000)}
+        if not produkte:
+            return []
+        out = []
+        for m in frappe.get_all("PH Produkt 3D Modell", filters={"parenttype": "PH Produkt", "parent": ("in", list(produkte)), "glb": ("is", "set")}, fields=["parent", "glb", "usdz", "massstab", "idx"], order_by="parent asc, idx asc"):
+            p = produkte[m.parent]
+            ident = p["slug"] if m.idx == 1 else "{0}-{1}".format(p["slug"], m.idx)
+            out.append({
+                "path_field": p["slug"], "glb": m.glb, "usdz": m.usdz or None, "massstab": m.massstab or None,
+                "id": ident[:64], "name": p["name_herstellerbezeichnung"], "category": p["kategorie"] or "",
+                "src": m.glb, "iosSrc": m.usdz or None, "poster": p["bild_hauptbild"] or "", "marken": p["marke"],
+            })
+        return out
+
+    return _gecacht(f"modelle3d:{marke}", laden)
+
+
+@frappe.whitelist(allow_guest=True, methods=["GET"])
+@gast_rate_limit
+def get_wechselkurs_einstellungen():
+    """Konfiguration des Dreiländer-Rechners (src/components/Labs/Dreilaender/store.server.js getConfig) aus
+    PH Wechselkurs Einstellungen – Schema wie pricing.js configSchema (version 1, deliveryEur{CH,FL,DE,AT},
+    customsFeeChf, selfTransportChf, ossActive, fallbackRate{rate,date}). Nur gesetzte Posten; die Website
+    mischt mit ihrer DEFAULT_CONFIG (mergeConfig). Ohne aktive Einstellungen: {} (Website nimmt die Vorgaben)."""
+
+    def laden():
+        if not frappe.db.exists("DocType", "PH Wechselkurs Einstellungen"):
+            return {}
+        doc = frappe.get_cached_doc("PH Wechselkurs Einstellungen")
+        if not cint(doc.get("aktiv")):
+            return {}
+        posten = [{"posten": z.posten, "min_cent": z.min_cent, "max_cent": z.max_cent, "freigegeben": z.freigegeben, "quelle": z.quelle} for z in doc.get("posten") or []]
+        return wechselkurs_konfiguration(posten, doc.get("oss_aktiv"), doc.get("kurs_eur_chf"), doc.get("kurs_datum"))
+
+    return _gecacht("wechselkurs", laden)
+
+
+# ── Intern (Desk/Backoffice, kein Guest): Bestellungen sammeln, Variantenpreis, Liefertermin ─────────
+
+
+@frappe.whitelist(methods=["POST"])
+def bestellungen_sammeln(positionen, bezug_doctype=None, bezug_name=None, kommission=None, idempotency_key=None):
+    """Herstellerbestellungen (Entwurf) aus Positionen sammeln, je Lieferant eine Bestellung (ph_projekte: Projektpositionen).
+
+    positionen: Liste/JSON von {produkt, ausfuehrung, ausfuehrung_text, bezeichnung, hersteller_artikelnr, lieferant, menge,
+    vk_cent, wunschtermin, kommission, raum, bezug_zeile}. Lieferant = Position, sonst Produkt → Marke.lieferant. Gibt es
+    zum selben Bezug schon einen Entwurf beim Lieferanten, wird angehängt. Idempotent je bezug_zeile (bereits bestellte
+    Zeilen werden übersprungen) und je idempotency_key (Wiederholung liefert dieselben Bestellungen).
+    Antwort {bestellungen:[{name, lieferant, anzahl}], ohne_lieferant:[…], uebersprungen:[…], ungueltig:[…]}.
+    """
+    from ph_sortiment.logik.bestellung import fruehester_wunschtermin, gruppieren
+    from ph_sortiment.logik.kalkulation import gueltiger_ek
+
+    if frappe.session.user == "Guest":
+        frappe.throw(frappe._("Anmeldung nötig."), frappe.PermissionError)
+    frappe.has_permission("PH Herstellerbestellung", "create", throw=True)
+    if isinstance(positionen, str):
+        positionen = json.loads(positionen)
+    if not isinstance(positionen, list) or not positionen:
+        frappe.throw(frappe._("Keine Positionen übergeben."))
+    if bezug_doctype and not frappe.db.exists("DocType", bezug_doctype):
+        frappe.throw(frappe._("Bezug {0} unbekannt.").format(bezug_doctype))
+    key = (idempotency_key or "").strip()[:100] or None
+    if key:
+        frueher = frappe.get_all("PH Herstellerbestellung", filters={"idempotency_key": ("like", f"{key}:%")}, fields=["name", "lieferant"])
+        if frueher:
+            return {"bestellungen": [{"name": b.name, "lieferant": b.lieferant, "anzahl": frappe.db.count("PH Herstellerbestellung Position", {"parent": b.name})} for b in frueher], "ohne_lieferant": [], "uebersprungen": [], "ungueltig": [], "wiederholt": 1}
+
+    schon = set()
+    if bezug_doctype and bezug_name:
+        for hb in frappe.get_all("PH Herstellerbestellung", filters={"bezug_doctype": bezug_doctype, "bezug_name": bezug_name, "status": ("!=", "Storniert")}, pluck="name"):
+            schon.update(z for z in frappe.get_all("PH Herstellerbestellung Position", filters={"parent": hb, "parenttype": "PH Herstellerbestellung", "status": ("!=", "Storniert")}, pluck="bezug_zeile") if z)
+
+    def lieferant_von(p):
+        if not p.get("produkt"):
+            return None
+        marke = frappe.db.get_value("PH Produkt", p["produkt"], "marke")
+        return frappe.db.get_value("PH Marke", marke, "lieferant") if marke else None
+
+    gruppen, ohne, ueber, ungueltig = gruppieren(positionen, lieferant_von, schon)
+    ergebnis = []
+    for lieferant, zeilen in gruppen.items():
+        if not frappe.db.exists("PH Lieferant", lieferant):
+            ohne.extend(z.get("bezug_zeile") or z.get("bezeichnung") for z in zeilen)
+            continue
+        filt = {"lieferant": lieferant, "status": "Entwurf"}
+        if bezug_doctype and bezug_name:
+            filt.update(bezug_doctype=bezug_doctype, bezug_name=bezug_name)
+        else:
+            filt["kommission"] = kommission or ""
+        vorhanden = frappe.get_all("PH Herstellerbestellung", filters=filt, pluck="name", limit=1)
+        if vorhanden:
+            hb = frappe.get_doc("PH Herstellerbestellung", vorhanden[0])
+        else:
+            marke = frappe.db.get_value("PH Lieferant", lieferant, "marke")
+            hb = frappe.get_doc({"doctype": "PH Herstellerbestellung", "lieferant": lieferant, "marke": marke, "status": "Entwurf", "datum": nowdate(), "kommission": kommission or bezug_name, "bezug_doctype": bezug_doctype, "bezug_name": bezug_name, "quelle": "sammeln", "idempotency_key": f"{key}:{lieferant}"[:140] if key else None, "positionen": []})
+        for z in zeilen:
+            ek = None
+            if z.get("produkt"):
+                prod = frappe.get_doc("PH Produkt", z["produkt"])
+                zeile = gueltiger_ek([e.as_dict() for e in prod.einkaufspreise if not e.ausfuehrung or e.ausfuehrung == z.get("ausfuehrung")], nowdate(), lieferant)
+                ek = zeile.get("netto_ek_cent") if zeile else prod.einkaufspreis_cent
+                if ek is not None and z.get("ausfuehrung"):
+                    ek += cint(frappe.db.get_value("PH Produkt Ausfuehrung", z["ausfuehrung"], "ek_aufpreis_cent"))
+            hb.append("positionen", {"produkt": z.get("produkt"), "bezeichnung": z.get("bezeichnung"), "ausfuehrung": z.get("ausfuehrung"), "ausfuehrung_text": z.get("ausfuehrung_text"), "hersteller_artikelnr": z.get("hersteller_artikelnr"), "menge": z["menge"], "einheit": "Stk", "ek_cent": ek, "vk_cent": z.get("vk_cent"), "wunschtermin": z.get("wunschtermin"), "kommission": z.get("kommission") or kommission or bezug_name, "raum": z.get("raum"), "bezug_zeile": z.get("bezug_zeile"), "status": "Offen"})
+        frueh = fruehester_wunschtermin(zeilen)
+        if frueh and (not hb.wunschtermin or str(frueh) < str(hb.wunschtermin)):
+            hb.wunschtermin = frueh
+        hb.save() if not hb.is_new() else hb.insert()
+        ergebnis.append({"name": hb.name, "lieferant": lieferant, "anzahl": len(zeilen)})
+    return {"bestellungen": ergebnis, "ohne_lieferant": ohne, "uebersprungen": ueber, "ungueltig": ungueltig}
+
+
+@frappe.whitelist()
+def variante_berechnen(produkt, auswahl):
+    """Variantenpreis (Matrix vor Basis + Aufpreise, Ausschlüsse) für Desk, Kassa, Faktura; EK nur Leitung."""
+    from ph_sortiment.ph_sortiment.doctype.ph_produkt.ph_produkt import variante_fuer
+
+    if frappe.session.user == "Guest":
+        frappe.throw(frappe._("Anmeldung nötig."), frappe.PermissionError)
+    doc = frappe.get_doc("PH Produkt", produkt)
+    doc.check_permission("read")
+    return variante_fuer(doc, auswahl)
+
+
+@frappe.whitelist()
+def liefertermin_schaetzen(lieferant, marke=None, kategorie=None, bestelldatum=None):
+    """Geschätzter Liefertermin beim Lieferanten (Lieferzeit je Marke/Kategorie + Betriebsurlaub)."""
+    from ph_sortiment.ph_sortiment.doctype.ph_lieferant.ph_lieferant import liefertermin_fuer
+
+    if frappe.session.user == "Guest":
+        frappe.throw(frappe._("Anmeldung nötig."), frappe.PermissionError)
+    frappe.has_permission("PH Lieferant", "read", throw=True)
+    t = liefertermin_fuer(lieferant, marke, kategorie, bestelldatum)
+    return {k: (str(v) if v else None) if k.startswith("termin") else v for k, v in t.items()}
+
+
+@frappe.whitelist()
+def reklamationsstatistik(lieferant=None, von=None, bis=None):
+    """Reklamationsstatistik je Lieferant (Schäden im Wareneingang, AB-Abweichungen, Termintreue, Servicefälle/Regresse
+    wenn ph_service installiert). Quoten in Promille. Datenbasis für ph_service und Lieferantengespräche."""
+    from ph_sortiment.ph_sortiment.statistik import daten
+
+    if frappe.session.user == "Guest":
+        frappe.throw(frappe._("Anmeldung nötig."), frappe.PermissionError)
+    frappe.has_permission("PH Lieferant", "read", throw=True)
+    return daten(lieferant, von, bis)

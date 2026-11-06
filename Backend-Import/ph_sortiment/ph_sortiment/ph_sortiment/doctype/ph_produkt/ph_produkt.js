@@ -140,3 +140,34 @@ function zeige_hinweise(frm) {
 	if (hinweise.length) frm.dashboard.set_headline_alert(hinweise.join(" "), frm.doc.status === "Aktiv" ? "red" : "orange");
 	if (frm.doc.aktueller_preis_cent) frm.dashboard.add_indicator(__("ab {0}", [format_currency(frm.doc.aktueller_preis_cent / 100, frm.doc.waehrung || "EUR")]), "green");
 }
+
+// ── Ergänzung 04.11. (Backend-Lücken 51)
+frappe.ui.form.on("PH Produkt", {
+	refresh(frm) {
+		if (frm.is_new()) return;
+		if (frappe.user.has_role(["PH Sortiment Leitung", "PH Geschäftsführung", "System Manager"])) {
+			frm.add_custom_button(__("VK aus EK vorschlagen"), () => {
+				frm.call({ method: "vk_vorschlag", doc: frm.doc }).then((r) => {
+					const v = r.message || {};
+					if (!v.vk_cent) return frappe.msgprint(__("Kein Vorschlag: EK oder Kalkulationsfaktor der Marke fehlt."));
+					frappe.confirm(__("EK {0} × Faktor {1} ({2}) = VK {3}. Als unfreigegebenen Verkaufspreis anlegen?", [format_currency(v.ek_cent / 100, "EUR"), (v.faktor_promille / 1000).toFixed(2), v.rundung || __("keine Rundung"), format_currency(v.vk_cent / 100, "EUR")]), () => {
+						frm.call({ method: "vk_vorschlag", doc: frm.doc, args: { anlegen: 1 } }).then(() => frm.reload_doc());
+					});
+				});
+			}, __("Aktionen"));
+		}
+		if ((frm.doc.ausfuehrungen || []).length) {
+			frm.add_custom_button(__("Variante berechnen"), () => {
+				frappe.db.get_list("PH Produkt Ausfuehrung", { filters: { produkt: frm.doc.name, status: "Aktiv" }, fields: ["gruppe_key", "option_id", "name_de"], limit: 500 }).then((opts) => {
+					const felder = (frm.doc.ausfuehrungen || []).map((g) => ({ fieldname: g.gruppe_key, fieldtype: "Select", label: g.gruppe_de || g.gruppe_key, reqd: g.pflicht, options: [""].concat(opts.filter((o) => o.gruppe_key === g.gruppe_key).map((o) => ({ value: o.option_id, label: o.name_de || o.option_id }))) }));
+					frappe.prompt(felder, (v) => {
+						frm.call({ method: "variante_berechnen", doc: frm.doc, args: { auswahl: v } }).then((r) => {
+							const p = r.message || {};
+							frappe.msgprint(__("VK: {0} ({1}){2}", [p.vk_cent != null ? format_currency(p.vk_cent / 100, "EUR") : "–", p.quelle === "matrix" ? __("Matrix {0}", [p.matrix_kombination]) : __("Basis + Aufpreise"), (p.fehler || []).length ? "<br>" + p.fehler.map(frappe.utils.escape_html).join("<br>") : ""]));
+						});
+					}, __("Variante wählen"), __("Berechnen"));
+				});
+			}, __("Aktionen"));
+		}
+	},
+});

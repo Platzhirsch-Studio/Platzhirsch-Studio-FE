@@ -9,12 +9,20 @@
  "field_order": [
   "paket_nr",
   "paketprofil",
+  "art",
+  "stapelbar",
+  "hubwagen",
   "laenge_cm",
   "breite_cm",
   "hoehe_cm",
   "gewicht_g",
   "zerbrechlich",
   "inhalt",
+  "inhalt_json",
+  "gewicht_vorschlag_g",
+  "gewicht_manuell",
+  "gewicht_plausibel",
+  "packmittel_gebucht",
   "sendung"
  ],
  "fields": [
@@ -33,6 +41,24 @@
    "options": "PH Paketprofil",
    "in_list_view": 1,
    "columns": 2
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Paket\nPalette\nSperrgut",
+   "default": "Paket",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "stapelbar",
+   "fieldtype": "Check",
+   "label": "Stapelbar"
+  },
+  {
+   "fieldname": "hubwagen",
+   "fieldtype": "Check",
+   "label": "Hubwagen/Hebebühne nötig"
   },
   {
    "fieldname": "laenge_cm",
@@ -77,6 +103,37 @@
    "columns": 2
   },
   {
+   "fieldname": "inhalt_json",
+   "fieldtype": "Code",
+   "label": "Inhalt je Position (JSON)",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gewicht_vorschlag_g",
+   "fieldtype": "Int",
+   "label": "Gewichtsvorschlag (g)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gewicht_manuell",
+   "fieldtype": "Check",
+   "label": "Gewicht manuell",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gewicht_plausibel",
+   "fieldtype": "Check",
+   "label": "Gewicht plausibel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "packmittel_gebucht",
+   "fieldtype": "Check",
+   "label": "Packmittel gebucht",
+   "read_only": 1
+  },
+  {
    "fieldname": "sendung",
    "fieldtype": "Link",
    "label": "Sendung",
@@ -86,7 +143,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 15:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Logistik",
  "name": "PH Lieferschein Paket",

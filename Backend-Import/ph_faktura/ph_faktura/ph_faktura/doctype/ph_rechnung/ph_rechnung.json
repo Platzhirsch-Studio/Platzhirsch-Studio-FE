@@ -26,6 +26,9 @@
   "projekt",
   "cb_bezug",
   "bestellung",
+  "kassenbeleg",
+  "korrektur_von",
+  "korrigiert_durch",
   "anzahlungsplan_zeile",
   "anzahlung_prozent",
   "teillieferung_hinweis",
@@ -60,6 +63,9 @@
   "sb_zahlungen",
   "zahlungen",
   "zahlungsreferenz",
+  "skonto_promille",
+  "skonto_bis",
+  "skonto_cent",
   "qr_code_girocode",
   "bezahlt_am",
   "tab_steuer",
@@ -67,6 +73,10 @@
   "ust_hinweistext",
   "kleinbetragsrechnung",
   "oss_land",
+  "ausfuhr_mrn",
+  "ausfuhr_nachweis",
+  "gelangensbestaetigung",
+  "nachweis_status",
   "cb_steuer",
   "ust_faelligkeit",
   "ust_faellig_am",
@@ -89,6 +99,13 @@
   "sb_versand",
   "gestellt_am",
   "gesendet_am",
+  "versandkanal",
+  "erechnung_format",
+  "erechnung_bund",
+  "lieferantennummer",
+  "bestellreferenz",
+  "leitweg_id",
+  "erechnung_datei",
   "pdf",
   "cb_versand",
   "export_status",
@@ -242,6 +259,28 @@
    "fieldtype": "Link",
    "label": "Shop-Bestellung",
    "options": "PH Bestellung"
+  },
+  {
+   "fieldname": "kassenbeleg",
+   "fieldtype": "Data",
+   "label": "Kassenbeleg (ph_kassa)",
+   "read_only": 1,
+   "description": "Barverkaufsrechnung zu einem Kassenbeleg: Umsatz steht bereits in der Kassa (UVA nicht doppelt)."
+  },
+  {
+   "fieldname": "korrektur_von",
+   "fieldtype": "Link",
+   "options": "PH Rechnung",
+   "label": "Korrektur von",
+   "read_only": 1
+  },
+  {
+   "fieldname": "korrigiert_durch",
+   "fieldtype": "Link",
+   "options": "PH Rechnung",
+   "label": "Korrigiert durch",
+   "read_only": 1,
+   "allow_on_submit": 1
   },
   {
    "fieldname": "anzahlungsplan_zeile",
@@ -461,6 +500,24 @@
    "allow_on_submit": 1
   },
   {
+   "fieldname": "skonto_promille",
+   "fieldtype": "Int",
+   "label": "Skonto ‰",
+   "description": "Aus der Zahlungsbedingung (20 = 2 %)."
+  },
+  {
+   "fieldname": "skonto_bis",
+   "fieldtype": "Date",
+   "label": "Skonto bis"
+  },
+  {
+   "fieldname": "skonto_cent",
+   "fieldtype": "Int",
+   "label": "Gewährtes Skonto (Cent)",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
    "fieldname": "qr_code_girocode",
    "fieldtype": "Check",
    "label": "EPC-QR (GiroCode) auf Rechnung",
@@ -507,6 +564,38 @@
    "label": "OSS-Bestimmungsland",
    "read_only": 1,
    "depends_on": "eval:doc.ust_fall=='OSS'"
+  },
+  {
+   "fieldname": "ausfuhr_mrn",
+   "fieldtype": "Data",
+   "label": "Ausfuhr: MRN / Ausgangsvermerk",
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.ust_fall=='Ausfuhr'",
+   "description": "§ 7 UStG: Ausfuhrnachweis (Ausgangsvermerk e-zoll) – ohne Nachweis keine Steuerfreiheit."
+  },
+  {
+   "fieldname": "ausfuhr_nachweis",
+   "fieldtype": "Attach",
+   "label": "Ausfuhrnachweis (Datei)",
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.ust_fall=='Ausfuhr'"
+  },
+  {
+   "fieldname": "gelangensbestaetigung",
+   "fieldtype": "Attach",
+   "label": "Gelangensnachweis igL",
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.ust_fall=='Innergemeinschaftlich steuerfrei'",
+   "description": "Art. 7 UStG / VO (EU) 282/2011 Art. 45a: Beförderungs-/Versendungsnachweis + UID-Bestätigung Stufe 2."
+  },
+  {
+   "fieldname": "nachweis_status",
+   "fieldtype": "Select",
+   "label": "Steuerfreiheit-Nachweis",
+   "options": "\nnicht noetig\nfehlt\nvorhanden",
+   "read_only": 1,
+   "allow_on_submit": 1,
+   "in_standard_filter": 1
   },
   {
    "fieldname": "cb_steuer",
@@ -654,6 +743,51 @@
    "allow_on_submit": 1
   },
   {
+   "fieldname": "versandkanal",
+   "fieldtype": "Select",
+   "label": "Versandkanal",
+   "options": "\nE-Mail\nPost\nPersoenlich\nPortal\nE-Rechnung",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "erechnung_format",
+   "fieldtype": "Select",
+   "label": "E-Rechnung Format",
+   "options": "\nebInterface 6.1\nZUGFeRD EN16931\nXRechnung",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "erechnung_bund",
+   "fieldtype": "Check",
+   "label": "Rechnung an den Bund (e-rechnung.gv.at / PEPPOL)",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "lieferantennummer",
+   "fieldtype": "Data",
+   "label": "Lieferantennummer beim Empfänger",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "bestellreferenz",
+   "fieldtype": "Data",
+   "label": "Auftrags-/Bestellreferenz des Empfängers",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "leitweg_id",
+   "fieldtype": "Data",
+   "label": "Leitweg-ID (XRechnung)",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "erechnung_datei",
+   "fieldtype": "Attach",
+   "label": "E-Rechnung (XML)",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
    "fieldname": "pdf",
    "fieldtype": "Attach",
    "label": "PDF (final, unveränderlich)",
@@ -759,7 +893,7 @@
    "group": "Verrechnet in"
   }
  ],
- "modified": "2026-11-04 08:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Faktura",
  "name": "PH Rechnung",

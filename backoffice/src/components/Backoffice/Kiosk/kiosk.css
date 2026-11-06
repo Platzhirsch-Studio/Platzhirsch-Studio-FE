@@ -1,0 +1,205 @@
+/* Kiosk-Kern v2 im Lounge-Kiosk-Stil (Team P0-6, G-24; lounge.md §7.4/§7.5/§12):
+   schwebende Statuszeile als Material-Kapsel (64 hoch, 12 vom Rand), große runde Ziele ≥ 44 px,
+   Bänder als weiche Flächen, Sperrbild aus Material. Keine Hover-Abhängigkeit, keine Seitenübergänge.
+   Nur Rollen-Token, Radien aus der Skala, Präfix bo-ki-. */
+
+.bo-ki {
+  min-height: 100dvh; display: flex; flex-direction: column; color: var(--color-bo-text);
+}
+
+/* ---- Statuszeile -------------------------------------------------------------------------- */
+.bo-ki-kopf {
+  position: sticky; top: 12px; z-index: 40; flex: none;
+  height: 64px; margin: 12px 12px 0; padding: 0 10px 0 10px; border-radius: 999px;
+  display: flex; align-items: center; gap: 12px; min-width: 0;
+  corner-shape: superellipse(1.35);
+}
+.bo-ki-kopf__l { display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1 1 0; }
+.bo-ki-kopf__slot { display: flex; align-items: center; gap: 8px; flex: none; }
+.bo-ki-kopf__r { display: flex; align-items: center; gap: 8px; flex: none; }
+.bo-ki-kopf .bo-rund { width: 44px; height: 44px; }
+.bo-ki-wort { font-size: 15px; color: var(--color-bo-text); white-space: nowrap; }
+.bo-ki-mono {
+  display: none; width: 36px; height: 36px; border-radius: 50%; place-items: center;
+  font-family: var(--font-display); font-size: 17px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn);
+}
+.bo-ki-sep { width: 1px; height: 24px; background: var(--color-bo-line); flex: none; }
+.bo-ki-ctx { font-size: 14px; color: var(--color-bo-text-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.bo-ki-ctx b { color: var(--color-bo-text); font-weight: 600; }
+.bo-ki-status {
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 999px;
+  font-size: 13px; font-weight: 500; white-space: nowrap;
+  background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text);
+}
+.bo-ki-status i { width: 8px; height: 8px; border-radius: 50%; background: var(--color-bo-salbei); flex: none; }
+.bo-ki-status[data-ton="warnung"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-ki-status[data-ton="warnung"] i { background: var(--color-bo-eiche); }
+.bo-ki-status[data-ton="gefahr"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.bo-ki-status[data-ton="gefahr"] i { background: var(--color-bo-ziegel); }
+.bo-ki-status[data-ton="info"] { background: var(--color-bo-fill-2); color: var(--color-bo-text); }
+.bo-ki-status[data-ton="info"] i { background: var(--color-bo-text-soft); }
+.bo-ki-uhr { font-size: 15px; font-weight: 600; padding: 0 4px; min-width: 3.2em; text-align: center; }
+.bo-ki-op {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px 0 6px; border-radius: 999px;
+  font-size: 14px; font-weight: 500; white-space: nowrap; color: var(--color-bo-text);
+  transition: background-color var(--bo-dur-fast) var(--bo-ease-out), transform var(--bo-dur-feder-kurz) var(--bo-feder);
+}
+.bo-ki-op:active { transform: scale(0.96); transition-duration: var(--bo-dur-druck); }
+@media (hover: hover) { .bo-ki-op:hover { background: var(--color-bo-fill); } }
+.bo-ki-op:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-ki-sperren { min-height: 44px; }
+
+.bo-ki-ctx { display: flex; align-items: baseline; gap: 0; }
+.bo-ki-ctx b { flex: none; }
+.bo-ki-ctx__rest { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Mittlere Breiten: Wortmarke wird zum Monogramm, Sperren nur Symbol (mit Slot früher). */
+@media (max-width: 1099px) {
+  .bo-ki-wort { display: none; }
+  .bo-ki-mono { display: inline-grid; }
+  .bo-ki-sperren__text { display: none; }
+}
+@media (max-width: 1279px) {
+  .bo-ki-kopf[data-slot] .bo-ki-wort { display: none; }
+  .bo-ki-kopf[data-slot] .bo-ki-mono { display: inline-grid; }
+  .bo-ki-kopf[data-slot] .bo-ki-sperren__text { display: none; }
+}
+/* Schmal (iPhone, Hochkant-Telefon): Kurzform, Ziele bleiben 44 */
+@media (max-width: 639px) {
+  .bo-ki-kopf { height: 56px; margin: 8px 8px 0; top: 8px; gap: 6px; padding: 0 6px; }
+  .bo-ki-wort, .bo-ki-sep, .bo-ki-op__name, .bo-ki-status__text, .bo-ki-nur-breit { display: none; }
+  .bo-ki-op { padding: 0 6px; }
+  .bo-ki-mono { display: none !important; }
+  .bo-ki-kopf[data-slot] { height: auto; min-height: 56px; flex-wrap: wrap; border-radius: 28px; padding: 6px; }
+  .bo-ki-kopf__slot { order: 3; flex-basis: 100%; justify-content: center; overflow-x: auto; }
+  .bo-ki-status { width: 32px; padding: 0; justify-content: center; }
+  .bo-ki-kopf__r { gap: 4px; }
+}
+@media (max-width: 1023px) { .bo-ki-ctx__geraet { display: none; } }
+
+/* ---- Bänder (Q-J4) ------------------------------------------------------------------------ */
+.bo-ki-baender { display: flex; flex-direction: column; gap: 8px; margin: 10px 12px 0; }
+.bo-ki-band {
+  display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 6px 8px 6px 14px; border-radius: 20px;
+  font-size: 14px; font-weight: 500; line-height: 20px;
+  background: var(--color-bo-fill-2); color: var(--color-bo-text);
+  animation: bo-fade var(--bo-dur-base) var(--bo-ease-out) both;
+}
+.bo-ki-band__ico { flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--color-bo-surface); }
+.bo-ki-band__text { flex: 1; min-width: 0; }
+.bo-ki-band[data-ton="warnung"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-ki-band[data-ton="gefahr"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.bo-ki-band__mehr { flex: none; font-size: 13px; font-weight: 600; padding: 0 10px; height: 28px; border-radius: 999px; display: inline-flex; align-items: center; background: var(--color-bo-surface); color: var(--color-bo-text); }
+
+/* ---- Inhalt ------------------------------------------------------------------------------- */
+.bo-ki-inhalt { flex: 1; min-width: 0; padding: 16px 12px 12px 16px; }
+@media (max-width: 639px) { .bo-ki-inhalt { padding: 12px 8px 8px; } }
+
+/* ---- Warteschlange ------------------------------------------------------------------------ */
+.bo-ki-warte {
+  position: fixed; left: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 45;
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 6px 8px 6px 14px; border-radius: 999px;
+  font-size: 13px; font-weight: 500; color: var(--color-bo-text);
+  animation: bo-fade var(--bo-dur-base) var(--bo-ease-out) both;
+}
+.bo-ki-warte[data-fehler="true"] { color: var(--color-bo-ziegel-text); }
+.bo-ki-dreht { animation: bo-ki-drehen 1.1s linear infinite; }
+@keyframes bo-ki-drehen { to { rotate: 360deg; } }
+
+/* ---- Sperrbild (Idle / Sperren) ----------------------------------------------------------- */
+.bo-ki-sperre {
+  position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: 24px; text-align: center;
+  animation: bo-fade var(--bo-dur-slow) var(--bo-ease-out) both;
+}
+.bo-ki-sperre__karte { display: grid; justify-items: center; gap: 12px; max-width: 420px; }
+.bo-ki-sperre__wort { font-size: 15px; color: var(--color-bo-text-soft); }
+.bo-ki-sperre__uhr { font-size: 96px; line-height: 1; font-weight: 300; letter-spacing: -0.035em; }
+.bo-ki-sperre__titel { font-size: 22px; line-height: 28px; font-weight: 600; margin-top: 8px; }
+.bo-ki-sperre__text { font-size: 15px; line-height: 22px; color: var(--color-bo-text-soft); }
+
+/* ---- Hilfe / Tastenhinweise --------------------------------------------------------------- */
+.bo-ki-kbd { display: none; }
+[data-tastatur="ja"] .bo-ki-kbd { display: inline-flex; }
+.bo-ki-taste {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 24px; padding: 0 6px;
+  border-radius: 8px; background: var(--color-bo-fill-2); font: 500 12px/1 var(--font-sans); color: var(--color-bo-text);
+}
+.bo-ki-hilfe-liste { display: grid; grid-template-columns: auto 1fr; gap: 10px 16px; align-items: center; font-size: 15px; }
+.bo-ki-fuss { display: none; gap: 16px; flex-wrap: wrap; padding: 0 16px 12px; font-size: 12px; color: var(--color-bo-text-soft); }
+[data-tastatur="ja"] .bo-ki-fuss { display: flex; }
+
+/* ---- Zahlentastatur ----------------------------------------------------------------------- */
+.bo-ki-zt { display: grid; gap: 12px; min-width: 0; }
+.bo-ki-zt__anzeige {
+  display: flex; align-items: center; gap: 8px; min-height: 72px; padding: 0 8px 0 20px; border-radius: 20px;
+  background: var(--color-bo-surface-2);
+}
+.bo-ki-zt__wert { flex: 1; min-width: 0; text-align: right; font-size: 34px; line-height: 40px; font-weight: 400; letter-spacing: -0.022em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bo-ki-zt__wert[data-leer="true"] { color: var(--color-bo-text-faint); }
+.bo-ki-zt__einheit { font-size: 20px; color: var(--color-bo-text-soft); }
+.bo-ki-zt__tasten { display: grid; grid-template-columns: repeat(var(--bo-ki-zt-spalten, 3), minmax(0, 1fr)); gap: 8px; }
+.bo-ki-zt__taste {
+  height: var(--bo-key-h, 64px); border-radius: 18px; display: grid; place-items: center;
+  font-size: 24px; font-weight: 500; font-variant-numeric: tabular-nums; color: var(--color-bo-text);
+  background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); touch-action: manipulation; user-select: none;
+  transition: transform var(--bo-dur-feder-kurz) var(--bo-feder), background-color var(--bo-dur-fast) var(--bo-ease-out);
+  corner-shape: superellipse(1.35);
+}
+.bo-ki-zt__taste:active, .bo-ki-zt__taste[data-gedrueckt="true"] { transform: scale(0.94); background: var(--color-bo-surface-2); transition-duration: var(--bo-dur-druck); }
+.bo-ki-zt__taste:focus-visible { outline: none; box-shadow: var(--bo-sh-btn), 0 0 0 2px var(--color-bo-focus); }
+.bo-ki-zt__taste--neben { background: var(--color-bo-fill-2); box-shadow: none; font-size: 17px; }
+.bo-ki-zt__taste--primaer { background: var(--color-bo-action); color: var(--color-bo-action-text); font-size: 17px; font-weight: 600; box-shadow: var(--bo-sh-ink); }
+.bo-ki-zt__taste--primaer:active { background: var(--color-bo-action-hover); }
+.bo-ki-zt__taste:disabled { opacity: 0.45; }
+
+/* ---- Stepper48 ---------------------------------------------------------------------------- */
+.bo-ki-stepper { display: inline-flex; align-items: center; height: 48px; border-radius: 999px; background: var(--color-bo-surface-2); }
+.bo-ki-stepper button {
+  width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; color: var(--color-bo-text-soft);
+  transition: transform var(--bo-dur-feder-kurz) var(--bo-feder), color var(--bo-dur-fast) var(--bo-ease-out);
+}
+.bo-ki-stepper button:active:not(:disabled) { transform: scale(0.85); color: var(--color-bo-text); transition-duration: var(--bo-dur-druck); }
+.bo-ki-stepper button:disabled { opacity: 0.35; }
+.bo-ki-stepper button:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-ki-stepper output { min-width: 32px; text-align: center; font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.bo-ki-stepper output[data-puls="true"] { animation: bo-pop var(--bo-dur-feder-kurz) var(--bo-feder); }
+
+/* ---- Wischaktion -------------------------------------------------------------------------- */
+.bo-ki-wisch { position: relative; border-radius: 20px; overflow: hidden; isolation: isolate; }
+.bo-ki-wisch__hinten { position: absolute; inset: 0; display: flex; justify-content: space-between; align-items: stretch; z-index: 0; }
+.bo-ki-wisch__ziel {
+  display: flex; align-items: center; gap: 8px; padding: 0 20px; font-size: 15px; font-weight: 600; flex: 1;
+}
+.bo-ki-wisch__ziel--rechts { justify-content: flex-end; }
+.bo-ki-wisch__ziel[data-ton="salbei"] { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+.bo-ki-wisch__ziel[data-ton="ziegel"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.bo-ki-wisch__ziel[data-ton="eiche"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-ki-wisch__ziel[data-ton="tinte"] { background: var(--color-bo-fill-2); color: var(--color-bo-text); }
+.bo-ki-wisch__vorne {
+  position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; min-height: 72px; padding: 12px 12px 12px 16px;
+  background: var(--color-bo-surface); border-radius: inherit; touch-action: pan-y; will-change: transform;
+}
+.bo-ki-wisch__vorne[data-zieht="false"] { transition: transform var(--bo-dur-feder) var(--bo-feder); }
+.bo-ki-wisch__inhalt { flex: 1; min-width: 0; }
+.bo-ki-wisch__knoepfe { display: flex; gap: 8px; flex: none; }
+
+/* ---- Positionsgrid ------------------------------------------------------------------------ */
+.bo-ki-grid { display: grid; gap: 8px; min-width: 0; }
+.bo-ki-grid__kopf { display: grid; grid-template-columns: var(--bo-ki-grid-spalten); gap: 12px; padding: 0 16px; font-size: 13px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-ki-grid__zeile {
+  display: grid; grid-template-columns: var(--bo-ki-grid-spalten); gap: 12px; align-items: center;
+  min-height: 72px; padding: 8px 12px 8px 8px; border-radius: 16px; background: var(--color-bo-surface-2);
+  transition: background-color var(--bo-dur-fast) var(--bo-ease-out), box-shadow var(--bo-dur-fast) var(--bo-ease-out);
+}
+.bo-ki-grid__zeile[data-ton="erledigt"] { background: var(--color-bo-salbei-soft); }
+.bo-ki-grid__zeile[data-ton="warnung"] { background: var(--color-bo-messing-soft); }
+.bo-ki-grid__zeile[data-ton="aktiv"] { background: var(--color-bo-surface); box-shadow: inset 0 0 0 1.5px var(--color-bo-salbei), var(--bo-sh-card); }
+.bo-ki-grid__zeile[data-ton="fehler"] { background: var(--color-bo-ziegel-soft); }
+.bo-ki-grid__zelle { min-width: 0; border-radius: 12px; outline: none; }
+.bo-ki-grid__zelle:focus-visible { box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-ki-grid__zelle[data-ausrichtung="rechts"] { text-align: right; justify-self: end; }
+.bo-ki-grid__zelle[data-ausrichtung="mitte"] { text-align: center; justify-self: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bo-ki-dreht, .bo-ki-stepper output[data-puls="true"] { animation: none; }
+  .bo-ki-wisch__vorne[data-zieht="false"] { transition-duration: 1ms; }
+}

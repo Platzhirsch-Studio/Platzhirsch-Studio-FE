@@ -15,10 +15,21 @@
   "status",
   "cb_kopf",
   "datei",
+  "lieferant",
+  "format",
+  "trennzeichen",
+  "kodierung",
+  "dezimal",
+  "mapping_json",
+  "vk_vorschlag",
   "quelle",
   "schwelle_prozent",
   "zeilen_anzahl",
   "zeilen_auffaellig",
+  "zeilen_ohne_produkt",
+  "hinweise",
+  "sb_vorschau",
+  "vorschau_html",
   "sb_zeilen",
   "zeilen",
   "sb_protokoll",
@@ -71,7 +82,7 @@
    "fieldname": "preisart",
    "fieldtype": "Select",
    "label": "Preisart",
-   "options": "Verkaufspreis\nUVP\nHerstellerpreis",
+   "options": "Verkaufspreis\nUVP\nHerstellerpreis\nEinkaufspreis",
    "default": "UVP",
    "reqd": 1
   },
@@ -103,6 +114,50 @@
    "label": "Datei (CSV: hersteller_artikelnr;neu_cent[;bezeichnung])"
   },
   {
+   "fieldname": "lieferant",
+   "fieldtype": "Link",
+   "label": "Lieferant (Mapping-Vorlage)",
+   "options": "PH Lieferant"
+  },
+  {
+   "fieldname": "format",
+   "fieldtype": "Select",
+   "label": "Format",
+   "options": "Auto\nCSV\nDataNorm\nIDM-XML\nXML",
+   "default": "Auto"
+  },
+  {
+   "fieldname": "trennzeichen",
+   "fieldtype": "Data",
+   "label": "Trennzeichen (leer = erkennen)"
+  },
+  {
+   "fieldname": "kodierung",
+   "fieldtype": "Select",
+   "label": "Kodierung",
+   "options": "Auto\nutf-8\ncp1252\ncp850\ncp437",
+   "default": "Auto"
+  },
+  {
+   "fieldname": "dezimal",
+   "fieldtype": "Select",
+   "label": "Dezimaltrenner",
+   "options": "Auto\n,\n.",
+   "default": "Auto"
+  },
+  {
+   "fieldname": "mapping_json",
+   "fieldtype": "Code",
+   "label": "Mapping (JSON)",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "vk_vorschlag",
+   "fieldtype": "Check",
+   "label": "VK-Vorschlag aus Kalkulationsfaktor (unfreigegeben)",
+   "depends_on": "eval:doc.preisart=='Einkaufspreis'"
+  },
+  {
    "fieldname": "quelle",
    "fieldtype": "Data",
    "label": "Quelle (URL oder Bezeichnung der Liste)"
@@ -124,6 +179,29 @@
    "fieldtype": "Int",
    "label": "Über Schwelle",
    "read_only": 1
+  },
+  {
+   "fieldname": "zeilen_ohne_produkt",
+   "fieldtype": "Int",
+   "label": "Zeilen ohne Produkt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hinweise",
+   "fieldtype": "Small Text",
+   "label": "Hinweise zum Format",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_vorschau",
+   "fieldtype": "Section Break",
+   "label": "Vorschau",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "vorschau_html",
+   "fieldtype": "HTML",
+   "label": "Vorschau"
   },
   {
    "fieldname": "sb_zeilen",
@@ -177,7 +255,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Sortiment",
  "name": "PH Preisliste Import",

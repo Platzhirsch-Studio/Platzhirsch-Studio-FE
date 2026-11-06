@@ -17,8 +17,10 @@
   "angelegt",
   "lieferart",
   "zahlung",
+  "bestellart",
   "sprache",
   "zugewiesen_an",
+  "bestaetigung_unterdruecken",
   "sb_positionen",
   "positionen",
   "sb_summen",
@@ -26,6 +28,8 @@
   "versand_cent",
   "gesamt_cent",
   "gesamt_eur",
+  "offen_cent",
+  "storniert_cent",
   "waehrung",
   "cb_summen",
   "ust_cent",
@@ -59,6 +63,26 @@
   "stripe_session",
   "payment_intent",
   "livemode",
+  "sb_zahlungslink",
+  "zahlungslink_url",
+  "zahlungslink_gueltig_bis",
+  "cb_zahlungslink",
+  "zahlungslink_erstellt_am",
+  "zahlungslink_gesendet_am",
+  "zahlungslink_simuliert",
+  "sb_erstattungen",
+  "erstattungen",
+  "sb_radar",
+  "radar_markiert",
+  "radar_risk_level",
+  "radar_risk_score",
+  "radar_outcome",
+  "cb_sb_radar",
+  "radar_hinweis",
+  "radar_warnung",
+  "radar_review",
+  "radar_geprueft_von",
+  "radar_geprueft_am",
   "tb_versand",
   "tarif_id",
   "quelle_tarif",
@@ -82,12 +106,19 @@
   "cb_abholung",
   "abholbereit_am",
   "abgeholt_am",
+  "sb_ersatz",
+  "ersatz_fuer",
+  "ersatz_grund",
+  "cb_ersatz",
+  "ersatz_bezug_doctype",
+  "ersatz_bezug",
   "tb_verlauf",
   "verlauf",
   "mail_status",
   "mail_gesendet_am",
   "cb_verlauf",
   "notiz_intern",
+  "notiz_kunde",
   "widerruf",
   "retoure",
   "tb_recht",
@@ -187,6 +218,15 @@
    "in_standard_filter": 1
   },
   {
+   "fieldname": "bestellart",
+   "fieldtype": "Select",
+   "label": "Bestellart",
+   "options": "Online\nTelefon\nShowroom\nErsatz",
+   "default": "Online",
+   "in_standard_filter": 1,
+   "description": "Telefon = manuelle Bestellung im Backoffice (Zahlungslink); Ersatz = Ersatzlieferung 0 €."
+  },
+  {
    "fieldname": "sprache",
    "fieldtype": "Select",
    "label": "Sprache",
@@ -199,6 +239,13 @@
    "label": "Zuständig",
    "options": "User",
    "in_standard_filter": 1
+  },
+  {
+   "fieldname": "bestaetigung_unterdruecken",
+   "fieldtype": "Check",
+   "label": "Keine automatische Bestätigung",
+   "no_copy": 1,
+   "description": "Nur bei Anlage im Backoffice: Reservierungs-/Bestellbestätigung nicht sofort senden (später per Button)."
   },
   {
    "fieldname": "sb_positionen",
@@ -248,6 +295,22 @@
    "description": "Nur für Auswertungen (Charts, Number Cards); Rechenbasis sind die Cent-Felder.",
    "no_copy": 1,
    "print_hide": 1
+  },
+  {
+   "fieldname": "offen_cent",
+   "fieldtype": "Int",
+   "label": "Offen (Cent)",
+   "read_only": 1,
+   "no_copy": 1,
+   "description": "Gesamt − bezahlt (Teilzahlungen addiert)."
+  },
+  {
+   "fieldname": "storniert_cent",
+   "fieldtype": "Int",
+   "label": "Teilstorniert (Cent)",
+   "read_only": 1,
+   "no_copy": 1,
+   "description": "Summe der vor Zahlung stornierten Positionen (mindert Gesamt)."
   },
   {
    "fieldname": "waehrung",
@@ -462,6 +525,145 @@
    "no_copy": 1
   },
   {
+   "fieldname": "sb_zahlungslink",
+   "fieldtype": "Section Break",
+   "label": "Zahlungslink (Telefonbestellung)",
+   "collapsible": 1,
+   "depends_on": "eval:doc.bestellart=='Telefon' || doc.zahlungslink_url"
+  },
+  {
+   "fieldname": "zahlungslink_url",
+   "fieldtype": "Data",
+   "label": "Zahlungslink",
+   "options": "URL",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "zahlungslink_gueltig_bis",
+   "fieldtype": "Datetime",
+   "label": "Gültig bis",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "cb_zahlungslink",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zahlungslink_erstellt_am",
+   "fieldtype": "Datetime",
+   "label": "Erstellt am",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "zahlungslink_gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Gesendet am",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "zahlungslink_simuliert",
+   "fieldtype": "Check",
+   "label": "Simuliert (kein Stripe-Aufruf)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "sb_erstattungen",
+   "fieldtype": "Section Break",
+   "label": "Teilstorno und Teilerstattungen"
+  },
+  {
+   "fieldname": "erstattungen",
+   "fieldtype": "Table",
+   "label": "Erstattungen",
+   "options": "PH Bestellung Erstattung",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "sb_radar",
+   "fieldtype": "Section Break",
+   "label": "Betrugsprüfung (Stripe Radar)",
+   "collapsible": 1,
+   "description": "Nur Anzeige aus Stripe – das Backoffice sperrt nichts automatisch."
+  },
+  {
+   "fieldname": "radar_markiert",
+   "fieldtype": "Check",
+   "label": "Risiko prüfen",
+   "read_only": 1,
+   "no_copy": 1,
+   "in_standard_filter": 1,
+   "description": "Gesetzt bei risk_level elevated/highest, Score ab 65, offenem Review oder Frühwarnung."
+  },
+  {
+   "fieldname": "radar_risk_level",
+   "fieldtype": "Select",
+   "label": "Risikostufe",
+   "options": "\nnormal\nelevated\nhighest\nnot_assessed\nunknown",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_risk_score",
+   "fieldtype": "Int",
+   "label": "Risikowert (0–99)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_outcome",
+   "fieldtype": "Data",
+   "label": "Ergebnis",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "cb_sb_radar",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "radar_hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis Stripe",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_warnung",
+   "fieldtype": "Check",
+   "label": "Frühwarnung (Early Fraud Warning)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_review",
+   "fieldtype": "Select",
+   "label": "Review",
+   "options": "\noffen\ngeschlossen",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_geprueft_von",
+   "fieldtype": "Link",
+   "label": "Geprüft von",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_geprueft_am",
+   "fieldtype": "Datetime",
+   "label": "Geprüft am",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
    "fieldname": "tb_versand",
    "fieldtype": "Tab Break",
    "label": "Versand und Abholung"
@@ -594,6 +796,46 @@
    "no_copy": 1
   },
   {
+   "fieldname": "sb_ersatz",
+   "fieldtype": "Section Break",
+   "label": "Ersatzlieferung",
+   "collapsible": 1,
+   "depends_on": "eval:doc.bestellart=='Ersatz' || doc.ersatz_fuer"
+  },
+  {
+   "fieldname": "ersatz_fuer",
+   "fieldtype": "Link",
+   "label": "Ersatz für Bestellung",
+   "options": "PH Bestellung",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "ersatz_grund",
+   "fieldtype": "Data",
+   "label": "Grund",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_ersatz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ersatz_bezug_doctype",
+   "fieldtype": "Link",
+   "label": "Auslöser (Art)",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ersatz_bezug",
+   "fieldtype": "Dynamic Link",
+   "label": "Auslöser",
+   "options": "ersatz_bezug_doctype",
+   "read_only": 1,
+   "description": "z. B. PH Servicefall, PH Retoure, PH Widerruf"
+  },
+  {
    "fieldname": "tb_verlauf",
    "fieldtype": "Tab Break",
    "label": "Verlauf und Mail"
@@ -630,7 +872,14 @@
    "fieldname": "notiz_intern",
    "fieldtype": "Small Text",
    "label": "Interne Notiz",
-   "permlevel": 1
+   "permlevel": 1,
+   "description": "Nur Shop-Leitung und Geschäftsführung (permlevel 1)."
+  },
+  {
+   "fieldname": "notiz_kunde",
+   "fieldtype": "Small Text",
+   "label": "Kundennotiz",
+   "description": "Anmerkung der Kundin/des Kunden (Checkout, Telefon). Sichtbar für alle Shop-Rollen."
   },
   {
    "fieldname": "widerruf",
@@ -747,9 +996,14 @@
    "link_doctype": "ToDo",
    "link_fieldname": "reference_name",
    "group": "Aufgaben"
+  },
+  {
+   "link_doctype": "PH Bestellung",
+   "link_fieldname": "ersatz_fuer",
+   "group": "Ersatz"
   }
  ],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Shop",
  "name": "PH Bestellung",
@@ -931,7 +1185,7 @@
  ],
  "track_changes": 1,
  "title_field": "titel",
- "search_fields": "kunde_name,kunde_email,bestellnummer,payment_intent",
+ "search_fields": "kunde_name,kunde_email,bestellnummer,payment_intent,abholcode,awb",
  "autoname": "naming_series:",
  "naming_rule": "By \"Naming Series\" field",
  "track_seen": 1

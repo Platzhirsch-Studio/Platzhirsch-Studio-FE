@@ -12,3 +12,22 @@ frappe.ui.form.on("PH Lieferant", {
 		});
 	},
 });
+
+// ── Ergänzung 04.11. (Backend-Lücken 51)
+frappe.ui.form.on("PH Lieferant", {
+	refresh(frm) {
+		if (frm.is_new()) return;
+		frm.add_custom_button(__("Liefertermin schätzen"), () => {
+			frappe.prompt([
+				{ fieldname: "marke", fieldtype: "Link", options: "PH Marke", label: __("Marke"), default: frm.doc.marke },
+				{ fieldname: "kategorie", fieldtype: "Link", options: "PH Kategorie", label: __("Kategorie") },
+				{ fieldname: "bestelldatum", fieldtype: "Date", label: __("Bestelldatum"), default: frappe.datetime.get_today() },
+			], (v) => {
+				frm.call({ method: "liefertermin", doc: frm.doc, args: v }).then((r) => {
+					const t = r.message || {};
+					frappe.msgprint(t.wochen_von ? __("{0}–{1} Wochen → {2} bis {3} (Betriebsurlaub berücksichtigt)", [t.wochen_von, t.wochen_bis, frappe.datetime.str_to_user(t.termin_frueh), frappe.datetime.str_to_user(t.termin_spaet)]) : __("Keine Lieferzeit hinterlegt."));
+				});
+			}, __("Liefertermin schätzen"), __("Schätzen"));
+		});
+	},
+});

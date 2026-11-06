@@ -17,6 +17,9 @@ VORLAGEN = {
     "abschluss": "vorlage_abschluss",
     "wartung": "vorlage_wartung",
     "regress": "vorlage_regress",
+    "ablehnung": "vorlage_ablehnung",
+    "frei": "vorlage_frei",
+    "servicebericht": "vorlage_servicebericht",
 }
 
 
@@ -66,14 +69,17 @@ def datei_anhaenge(urls):
     return out
 
 
-def sende_vorlage(doc, schluessel, empfaenger, anhaenge=None, ereignis="Kommunikation", **kontext):
-    """Mail nach Vorlage senden, Verlauf schreiben. Rückgabe: Betreff. Wirft bei fehlendem Empfänger."""
+def sende_vorlage(doc, schluessel, empfaenger, anhaenge=None, ereignis="Kommunikation", betreff_frei=None, **kontext):
+    """Mail nach Vorlage senden, Verlauf schreiben. Rückgabe: Betreff. Wirft bei fehlendem Empfänger.
+    betreff_frei ersetzt den Betreff der Vorlage (Vorlage „frei“)."""
     if not empfaenger:
         frappe.throw(_("Keine E-Mail-Adresse hinterlegt."))
     from ph_core.utils.mail import sende
 
     vorlage = vorlage_name(schluessel)
     betreff, html = rendern(vorlage, doc, **kontext)
+    if betreff_frei:
+        betreff = str(betreff_frei)[:140]
     sende(empfaenger, betreff, html, anhaenge=anhaenge or [], referenz_doctype=doc.doctype, referenz_name=doc.name)
     verlauf(doc, ereignis, hinweis=_("Mail „{0}“ an {1}").format(betreff, _maskiert(empfaenger)), speichern=True)
     doc.add_comment("Info", _("E-Mail gesendet: {0}").format(betreff))

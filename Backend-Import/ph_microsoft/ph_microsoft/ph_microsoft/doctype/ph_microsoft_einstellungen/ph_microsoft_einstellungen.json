@@ -1,0 +1,332 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Microsoft 365: Entra-ID-Anmeldung, Gruppen→Rollen, Exchange-Mail, Outlook-Kalender, Kontakte. Geheimnisse nur in site_config.json (ph_ms_*).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_sso",
+  "sso_aktiv",
+  "tenant_id",
+  "backoffice_client_id",
+  "cb_sso",
+  "toleranz_sekunden",
+  "sso_rate_limit_pro_minute",
+  "auto_benutzer_anlegen",
+  "rollen_aus_gruppen",
+  "sb_gruppen",
+  "gruppen_rollen",
+  "tab_graph",
+  "graph_hinweis",
+  "webhook_basis_url",
+  "interne_domains",
+  "cb_mail",
+  "mail_sync_aktiv",
+  "anhaenge_uebernehmen",
+  "anhang_max_mb",
+  "unzugeordnet_tage",
+  "kundenmails_ueber_exchange",
+  "tab_kalender",
+  "kalender_sync_aktiv",
+  "kalender_termin",
+  "kalender_montage",
+  "kalender_service",
+  "cb_kal",
+  "teams_fuer_video",
+  "belegt_als_event",
+  "aufgabe_bei_verschiebung",
+  "sync_tage_vergangenheit",
+  "sync_tage_zukunft",
+  "tab_kontakte",
+  "kontakte_sync_aktiv",
+  "kontakte_postfach",
+  "kontakte_ordner",
+  "tab_status",
+  "protokoll_aufbewahrung_tage",
+  "letzte_mail_sync",
+  "letzte_kalender_sync",
+  "letzte_abo_pruefung",
+  "letzter_fehler"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_sso",
+   "fieldtype": "Tab Break",
+   "label": "Anmeldung (Entra ID)"
+  },
+  {
+   "fieldname": "sso_aktiv",
+   "fieldtype": "Check",
+   "label": "Microsoft-Anmeldung aktiv",
+   "default": "0"
+  },
+  {
+   "fieldname": "tenant_id",
+   "fieldtype": "Data",
+   "label": "Tenant-ID (Verzeichnis-ID)",
+   "description": "GUID, Entra Admin Center → Übersicht. Kein Geheimnis."
+  },
+  {
+   "fieldname": "backoffice_client_id",
+   "fieldtype": "Data",
+   "label": "Client-ID der App „Platzhirsch Backoffice“",
+   "description": "Anwendungs-ID (aud des ID-Tokens). Kein Geheimnis."
+  },
+  {
+   "fieldname": "cb_sso",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "toleranz_sekunden",
+   "fieldtype": "Int",
+   "label": "Uhrzeit-Toleranz (s)",
+   "default": "300"
+  },
+  {
+   "fieldname": "sso_rate_limit_pro_minute",
+   "fieldtype": "Int",
+   "label": "Rate-Limit je IP und Minute",
+   "default": "10"
+  },
+  {
+   "fieldname": "auto_benutzer_anlegen",
+   "fieldtype": "Check",
+   "label": "Benutzer automatisch anlegen",
+   "default": "0",
+   "description": "Nur wenn mindestens eine Gruppe des Tokens unten zugeordnet ist."
+  },
+  {
+   "fieldname": "rollen_aus_gruppen",
+   "fieldtype": "Check",
+   "label": "Rollen bei jeder Anmeldung aus Gruppen abgleichen",
+   "default": "0",
+   "description": "Fügt nur zugeordnete PH-Rollen hinzu bzw. entfernt sie; nie System Manager."
+  },
+  {
+   "fieldname": "sb_gruppen",
+   "fieldtype": "Section Break",
+   "label": "Gruppen und Rollen"
+  },
+  {
+   "fieldname": "gruppen_rollen",
+   "fieldtype": "Table",
+   "label": "Entra-Gruppen → PH-Rollen",
+   "options": "PH Microsoft Gruppe Rolle"
+  },
+  {
+   "fieldname": "tab_graph",
+   "fieldtype": "Tab Break",
+   "label": "Graph und Mail"
+  },
+  {
+   "fieldname": "graph_hinweis",
+   "fieldtype": "HTML",
+   "label": "Hinweis",
+   "options": "<p class='text-muted'>App-Only-Zugang (Client Credentials) aus site_config.json: <code>ph_ms_tenant_id</code>, <code>ph_ms_client_id</code>, <code>ph_ms_client_secret</code> oder <code>ph_ms_cert_pem</code> + <code>ph_ms_cert_thumbprint</code>. Postfächer: <b>PH Postfach</b>; Mitarbeiter-Kalender: <b>PH Kalender Zuordnung</b>.</p>"
+  },
+  {
+   "fieldname": "webhook_basis_url",
+   "fieldtype": "Data",
+   "label": "Öffentliche HTTPS-Adresse des Frappe-Servers",
+   "options": "URL",
+   "description": "z. B. https://backend.platzhirsch.studio – für Graph-Webhooks. Leer = nur Delta alle 5 min."
+  },
+  {
+   "fieldname": "interne_domains",
+   "fieldtype": "Small Text",
+   "label": "Interne Domains",
+   "default": "platzhirsch.studio",
+   "description": "Komma/Zeile; Mails nur zwischen diesen Domains werden nie übernommen."
+  },
+  {
+   "fieldname": "cb_mail",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mail_sync_aktiv",
+   "fieldtype": "Check",
+   "label": "Mail-Abgleich aktiv",
+   "default": "0"
+  },
+  {
+   "fieldname": "anhaenge_uebernehmen",
+   "fieldtype": "Check",
+   "label": "Anhänge zugeordneter Mails speichern",
+   "default": "0"
+  },
+  {
+   "fieldname": "anhang_max_mb",
+   "fieldtype": "Int",
+   "label": "Anhang höchstens (MB)",
+   "default": "10"
+  },
+  {
+   "fieldname": "unzugeordnet_tage",
+   "fieldtype": "Int",
+   "label": "Liste „nicht zugeordnet“: Tage",
+   "default": "14"
+  },
+  {
+   "fieldname": "kundenmails_ueber_exchange",
+   "fieldtype": "Check",
+   "label": "1:1-Kundenmails über Exchange",
+   "default": "0",
+   "description": "Hook ph_mail_einzelversand: Apps senden persönliche Kundenmails aus dem Postfach des Mitarbeiters. Transaktions-/Newsletter-Mails bleiben bei Resend."
+  },
+  {
+   "fieldname": "tab_kalender",
+   "fieldtype": "Tab Break",
+   "label": "Kalender"
+  },
+  {
+   "fieldname": "kalender_sync_aktiv",
+   "fieldtype": "Check",
+   "label": "Kalender-Abgleich aktiv",
+   "default": "0"
+  },
+  {
+   "fieldname": "kalender_termin",
+   "fieldtype": "Check",
+   "label": "PH Termin (ph_crm)",
+   "default": "1"
+  },
+  {
+   "fieldname": "kalender_montage",
+   "fieldtype": "Check",
+   "label": "PH Montageauftrag (ph_projekte)",
+   "default": "1"
+  },
+  {
+   "fieldname": "kalender_service",
+   "fieldtype": "Check",
+   "label": "PH Serviceeinsatz (ph_service)",
+   "default": "1"
+  },
+  {
+   "fieldname": "cb_kal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "teams_fuer_video",
+   "fieldtype": "Check",
+   "label": "Teams-Besprechung für Videotermine",
+   "default": "1"
+  },
+  {
+   "fieldname": "belegt_als_event",
+   "fieldtype": "Check",
+   "label": "Fremde Outlook-Termine als „Belegt“ spiegeln",
+   "default": "1",
+   "description": "Private Frappe-Events ohne Betreff – ph_crm berücksichtigt sie bei freien Slots."
+  },
+  {
+   "fieldname": "aufgabe_bei_verschiebung",
+   "fieldtype": "Check",
+   "label": "Aufgabe bei Verschiebung in Outlook",
+   "default": "1"
+  },
+  {
+   "fieldname": "sync_tage_vergangenheit",
+   "fieldtype": "Int",
+   "label": "Abgleich Tage zurück",
+   "default": "7"
+  },
+  {
+   "fieldname": "sync_tage_zukunft",
+   "fieldtype": "Int",
+   "label": "Abgleich Tage voraus",
+   "default": "90"
+  },
+  {
+   "fieldname": "tab_kontakte",
+   "fieldtype": "Tab Break",
+   "label": "Kontakte"
+  },
+  {
+   "fieldname": "kontakte_sync_aktiv",
+   "fieldtype": "Check",
+   "label": "PH Kontakt → Outlook-Kontakte (einseitig)",
+   "default": "0"
+  },
+  {
+   "fieldname": "kontakte_postfach",
+   "fieldtype": "Data",
+   "label": "Team-Postfach für den Kontaktordner",
+   "options": "Email"
+  },
+  {
+   "fieldname": "kontakte_ordner",
+   "fieldtype": "Data",
+   "label": "Kontaktordner",
+   "default": "Platzhirsch Kunden"
+  },
+  {
+   "fieldname": "tab_status",
+   "fieldtype": "Tab Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "protokoll_aufbewahrung_tage",
+   "fieldtype": "Int",
+   "label": "PH Sync Protokoll aufbewahren (Tage)",
+   "default": "90"
+  },
+  {
+   "fieldname": "letzte_mail_sync",
+   "fieldtype": "Datetime",
+   "label": "Letzter Mail-Lauf",
+   "read_only": 1
+  },
+  {
+   "fieldname": "letzte_kalender_sync",
+   "fieldtype": "Datetime",
+   "label": "Letzter Kalender-Lauf",
+   "read_only": 1
+  },
+  {
+   "fieldname": "letzte_abo_pruefung",
+   "fieldtype": "Datetime",
+   "label": "Letzte Abo-Prüfung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "letzter_fehler",
+   "fieldtype": "Small Text",
+   "label": "Letzter Fehler",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Microsoft",
+ "name": "PH Microsoft Einstellungen",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  }
+ ],
+ "states": []
+}

@@ -43,3 +43,20 @@ frappe.ui.form.on("PH Newsletter Ausgabe", {
 		if (frm.doc.gesendet || frm.doc.fehler) frm.add_custom_button(__("Versandprotokoll"), () => frappe.set_route("List", "PH Newsletter Versand", { ausgabe: frm.doc.name }));
 	},
 });
+
+// Lücken 04.11.: Empfängerliste (L2) und Zustellstatistik
+frappe.ui.form.on("PH Newsletter Ausgabe", {
+	refresh(frm) {
+		if (frm.is_new()) return;
+		frm.add_custom_button(__("Empfänger anzeigen"), () => frm.call({ method: "empfaenger_liste", doc: frm.doc, args: { limit: 200 } }).then((r) => {
+			const m = r.message || {};
+			frappe.msgprint({ title: __("{0} Empfänger", [m.gesamt]), message: (m.zeilen || []).map((z) => frappe.utils.escape_html(z.email)).join("<br>") });
+		}), __("Aktionen"));
+		if (["Wird versendet", "Versendet"].includes(frm.doc.status)) {
+			frm.add_custom_button(__("Zustellung"), () => frm.call({ method: "zustellung", doc: frm.doc }).then((r) => {
+				const z = r.message || {};
+				frappe.msgprint({ title: __("Zustellung"), message: Object.keys(z).map((k) => `${frappe.utils.escape_html(k)}: ${z[k]}`).join("<br>") });
+			}), __("Aktionen"));
+		}
+	},
+});

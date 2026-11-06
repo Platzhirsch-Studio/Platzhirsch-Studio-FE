@@ -1,5 +1,5 @@
 # ph_personal/hooks.py – Platzhirsch Personal (WP8): Stellen (Karriere), Bewerbungen, Gespräche,
-# Mitarbeiter, Zeiterfassung, Abwesenheiten.
+# Mitarbeiter, Zeiterfassung, Abwesenheiten, Krankmeldungen, Urlaubsansprüche (UrlG), Monatsabschluss, Dienstplan.
 # Konventionen: Backend-Import/CONVENTIONS.md · Arbeitspaket: Backend-Import/PLAN.md, WP8
 app_name = "ph_personal"
 app_title = "Platzhirsch Personal"
@@ -34,7 +34,7 @@ fixtures = [
                 "in",
                 [
                     "Wieder aktivieren", "Als besetzt schließen", "Sichten", "Einstellen", "Zurück auf Gesichtet",
-                    "Erneut beantragen",
+                    "Erneut beantragen", "Zurück auf Eingegangen", "Zurück auf Gespräch", "Nicht angetreten",
                 ],
             ]
         ],
@@ -67,6 +67,15 @@ scheduler_events = {
         "0 4 * * *": ["ph_personal.ph_personal.tasks.abgelaufene_stellen"],         # gueltig_bis überschritten → Pausiert
         "0 7 * * 1": ["ph_personal.ph_personal.tasks.loeschfrist_vorwarnung"],      # montags: Vorwarnung 14 Tage
         "30 23 * * *": ["ph_personal.ph_personal.tasks.offene_zeitbuchungen_hinweis"],
+        "10 0 * * *": [
+            "ph_personal.ph_personal.tasks.austritte_vollziehen",          # Austrittstag: Zugang entziehen (P10)
+            "ph_personal.ph_personal.tasks.urlaubsansprueche_pflegen",     # neue Urlaubsjahre anlegen, Verjährung (UrlG)
+        ],
+        "30 2 * * *": ["ph_personal.ph_personal.tasks.beschaeftigtendaten_bereinigen"],  # DSGVO Beschäftigte (P16)
+        "0 7 * * *": [
+            "ph_personal.ph_personal.tasks.checkliste_faellig",            # Onboarding/Offboarding-Pflichten (P14)
+            "ph_personal.ph_personal.tasks.krank_bestaetigung_hinweis",    # AU-Bestätigung noch offen
+        ],
     },
 }
 

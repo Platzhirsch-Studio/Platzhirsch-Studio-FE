@@ -1,0 +1,100 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 14:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "kostenart",
+  "beschreibung",
+  "menge",
+  "einheit",
+  "satz_cent",
+  "betrag_cent",
+  "quelle_zeile",
+  "einsatz",
+  "beleg"
+ ],
+ "fields": [
+  {
+   "fieldname": "kostenart",
+   "fieldtype": "Select",
+   "label": "Kostenart",
+   "options": "Arbeitszeit\nAnfahrt\nErsatzteil\nFremdleistung\nTransport\nPauschale",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Data",
+   "label": "Beschreibung",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Float",
+   "label": "Menge",
+   "default": "1",
+   "precision": "2",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Stunden, Kilometer oder Stück"
+  },
+  {
+   "fieldname": "einheit",
+   "fieldtype": "Select",
+   "label": "Einheit",
+   "options": "Stk\nh\nkm\npauschal",
+   "default": "Stk"
+  },
+  {
+   "fieldname": "satz_cent",
+   "fieldtype": "Int",
+   "label": "Satz (Cent je Einheit)",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "description": "Menge × Satz, gerundet auf ganze Cent"
+  },
+  {
+   "fieldname": "quelle_zeile",
+   "fieldtype": "Data",
+   "label": "Übernommen aus (Zeile)",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "einsatz",
+   "fieldtype": "Link",
+   "label": "Serviceeinsatz",
+   "options": "PH Serviceeinsatz"
+  },
+  {
+   "fieldname": "beleg",
+   "fieldtype": "Attach",
+   "label": "Beleg"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Service",
+ "name": "PH Lieferantenregress Kosten",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "description": "Kostenaufstellung der Belastungsanzeige an den Hersteller (Arbeitszeit, Anfahrt, Ersatzteile, Fremdleistung, Pauschale)."
+}

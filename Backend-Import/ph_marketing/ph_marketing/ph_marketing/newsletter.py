@@ -153,8 +153,8 @@ def doi_erneut_senden(abo):
 
 
 # ── Abmeldung ───────────────────────────────────────────────────────────────
-def abmelden_mit_token(token):
-    """→ {"status": "abgemeldet"|"bereits_abgemeldet"|"ungueltig"}."""
+def abmelden_mit_token(token, kanal="link"):
+    """→ {"status": "abgemeldet"|"bereits_abgemeldet"|"ungueltig"}. kanal one_click = RFC 8058 aus dem Mail-Client."""
     if not token_plausibel(token):
         return {"status": "ungueltig"}
     name = frappe.db.get_value(ABO, {"abmelde_token_hash": hash_token(token)}, "name")
@@ -163,8 +163,16 @@ def abmelden_mit_token(token):
     abo = frappe.get_doc(ABO, name)
     if abo.status == "Abgemeldet":
         return {"status": "bereits_abgemeldet", "sprache": abo.sprache}
-    abmelden(abo, kanal="link")
+    abmelden(abo, kanal=kanal if kanal in ("link", "one_click") else "link")
+    _versand_abgemeldet(abo.email)
     return {"status": "abgemeldet", "sprache": abo.sprache}
+
+
+def _versand_abgemeldet(email):
+    """Letzte Versandzeile der Adresse als „abgemeldet“ markieren (Abmeldequote je Ausgabe)."""
+    zeile = frappe.db.get_value("PH Newsletter Versand", {"email": email, "status": ("in", ("gesendet", "zugestellt"))}, "name", order_by="gesendet_am desc")
+    if zeile:
+        frappe.db.set_value("PH Newsletter Versand", zeile, {"status": "abgemeldet", "abgemeldet_am": now_datetime()}, update_modified=False)
 
 
 def abmelden(abo, kanal="backoffice", grund=None):
@@ -247,6 +255,12 @@ def empfaenger_fuer(ausgabe):
     if ausgabe.zielgruppe == "Sprache":
         filters["sprache"] = ausgabe.sprache
     abos = frappe.get_all(ABO, filters=filters, fields=["name", "email", "anrede_name", "sprache", "abmelde_token_hash"], order_by="angemeldet_am asc")
+    if ausgabe.zielgruppe == "Segment" and ausgabe.get("segment"):
+        # Segment-Builder: Einwilligungsprüfung (Abo Aktiv + Einwilligung newsletter) in utils/segment.py
+        from ph_marketing.ph_marketing import segmente
+
+        erlaubt = {p["email"] for p in segmente.empfaenger(ausgabe.segment, "newsletter")}
+        abos = [a for a in abos if a.email in erlaubt]
     if ausgabe.zielgruppe == "Interesse" and ausgabe.zielgruppe_interesse:
         mit = set(frappe.get_all("PH Newsletter Abo Interesse", filters={"interesse": ausgabe.zielgruppe_interesse, "parenttype": ABO}, pluck="parent"))
         abos = [a for a in abos if a.name in mit]
@@ -321,7 +335,7 @@ def versand_stapel(ausgabe, limit=None):
             link = versand.abmelde_url(token) if token else versand.website_url(e["abmelden_pfad"])
             datum = frappe.utils.formatdate(abo.doi_bestaetigt_am, "dd.MM.yyyy") if abo and abo.doi_bestaetigt_am else ""
             betreff, html = ausgabe_html(ausgabe, abmelde_link=link, anrede=versand.anrede_fuer(abo.anrede_name if abo else ""), einwilligung_datum=datum)
-            erg = versand.sende(z.email, betreff, html, referenz_doctype="PH Newsletter Ausgabe", referenz_name=ausgabe.name)
+            erg = versand.sende(z.email, betreff, html, referenz_doctype="PH Newsletter Ausgabe", referenz_name=ausgabe.name, kopfzeilen=versand.abmelde_kopfzeilen(token) if token else None)
             frappe.db.set_value("PH Newsletter Versand", z.name, {"status": "gesendet", "gesendet_am": now_datetime(), "versandweg": erg["versandweg"], "nachricht_id": erg.get("nachricht_id")})
             if abo:
                 abo.db_set("letzte_zustellung", now_datetime(), update_modified=False)
@@ -331,6 +345,8 @@ def versand_stapel(ausgabe, limit=None):
             frappe.log_error(title=f"PH Newsletter Versand {ausgabe.name} → {z.email}")
         frappe.db.commit()
     _zaehler(ausgabe)
+    # Fortschritt für das Backoffice (Konzept L17) – nur Zähler, keine Adressen
+    frappe.publish_realtime("ph_marketing_versand", {"ausgabe": ausgabe.name, "gesendet": ausgabe.gesendet, "fehler": ausgabe.fehler, "uebersprungen": ausgabe.uebersprungen, "empfaenger": ausgabe.empfaenger_anzahl}, doctype="PH Newsletter Ausgabe", docname=ausgabe.name)
     if not frappe.db.exists("PH Newsletter Versand", {"ausgabe": ausgabe.name, "status": "geplant"}):
         ausgabe.db_set({"status": "Versendet", "versendet_am": now_datetime(), "workflow_state": "PH Versendet"}, update_modified=True)
         if ausgabe.kampagne:
@@ -342,22 +358,34 @@ def _zaehler(ausgabe):
     def n(status):
         return frappe.db.count("PH Newsletter Versand", {"ausgabe": ausgabe.name, "status": status})
 
-    ausgabe.db_set({"gesendet": n("gesendet"), "fehler": n("fehler"), "uebersprungen": n("uebersprungen")}, update_modified=False)
+    def m(*status):
+        return frappe.db.count("PH Newsletter Versand", {"ausgabe": ausgabe.name, "status": ("in", status)})
+
+    # „gesendet“ zählt alles, was den Anbieter verlassen hat (auch später zugestellt/bounced/abgemeldet)
+    ausgabe.db_set({"gesendet": m("gesendet", "verzoegert", "zugestellt", "bounce", "bounce_weich", "bounce_hart", "beschwerde", "abgemeldet"), "fehler": n("fehler"), "uebersprungen": n("uebersprungen")}, update_modified=False)
 
 
-def bounce_verarbeiten(email, art="bounce"):
-    """Aus Email Queue/Resend-Webhook: Bounce zählt hoch, ab 3 → Status Bounce; Beschwerde sofort."""
+def bounce_verarbeiten(email, art="bounce", bounce_typ=None, grund=None):
+    """Aus Resend-Webhook (mail_ereignisse.py) oder von Hand: Hard-Bounce/Beschwerde sperren sofort,
+    weiche Bounces ab `soft_bounce_grenze` (Standard 3). → neuer Abo-Status oder None."""
+    from ph_marketing.utils.mail_ereignis import abo_folge
+
     email = email_normalisieren(email)
     if not frappe.db.exists(ABO, email):
-        return
+        return None
     abo = frappe.get_doc(ABO, email)
     if art == "beschwerde":
-        abmelden(abo, kanal="beschwerde")
-        return
-    abo.db_set("bounce_count", cint(abo.bounce_count) + 1, update_modified=False)
-    if cint(abo.bounce_count) + 1 >= 3 and abo.status == "Aktiv":
-        abmelden(abo, kanal="bounce", grund="3 Bounces")
-    frappe.db.set_value("PH Newsletter Versand", {"email": email, "status": "gesendet", "gesendet_am": (">", add_days(now_datetime(), -7))}, "status", "bounce")
+        if abo.status != "Beschwerde":
+            abmelden(abo, kanal="beschwerde", grund=grund or "Spam-Meldung beim Empfänger")
+        return "Beschwerde"
+    typ = bounce_typ or "weich"
+    zaehler = cint(abo.bounce_count) + 1
+    abo.db_set({"bounce_count": zaehler, "letzter_bounce_am": now_datetime(), "letzter_bounce_typ": typ}, update_modified=False)
+    folge = abo_folge("bounce", typ, zaehler, einstellungen()["soft_bounce_grenze"])
+    if folge == "bounce" and abo.status in ("Aktiv", UNBESTAETIGT):
+        abmelden(abo, kanal="bounce", grund=(grund or ("Hard-Bounce" if typ == "hart" else f"{zaehler} weiche Bounces"))[:140])
+        return "Bounce"
+    return None
 
 
 def escape(s):

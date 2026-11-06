@@ -24,6 +24,8 @@
   "cb_produkt",
   "ausfuehrung_text",
   "seriennummer",
+  "e_nummer",
+  "fd_nummer",
   "pflegekategorie",
   "outdoor",
   "sb_garantie",
@@ -152,6 +154,18 @@
    "fieldname": "seriennummer",
    "fieldtype": "Data",
    "label": "Seriennummer"
+  },
+  {
+   "fieldname": "e_nummer",
+   "fieldtype": "Data",
+   "label": "E-Nummer / Typnummer",
+   "description": "Gerätetyp des Herstellers (z. B. E-Nr. am Typenschild von Einbaugeräten). Wird beim Servicefall übernommen (ph_service)."
+  },
+  {
+   "fieldname": "fd_nummer",
+   "fieldtype": "Data",
+   "label": "FD / Fertigungsdatum",
+   "description": "Fertigungsdatum/-code am Typenschild (für Garantie und Ersatzteile beim Hersteller)."
   },
   {
    "fieldname": "pflegekategorie",
@@ -365,6 +379,70 @@
    "export": 0,
    "report": 0,
    "share": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
   }
  ],
  "sort_field": "modified",

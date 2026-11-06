@@ -1,46 +1,271 @@
 [
  {
-  "doctype": "Role Profile", "name": "PH Verkauf", "role_profile": "PH Verkauf",
-  "roles": [{"role": "PH CRM Mitarbeiter"}, {"role": "PH Faktura Mitarbeiter"}, {"role": "PH Sortiment Mitarbeiter"}, {"role": "PH Projekte Mitarbeiter"}, {"role": "PH Personal Selbstservice"}]
+  "doctype": "Role Profile",
+  "name": "PH Verkauf",
+  "role_profile": "PH Verkauf",
+  "roles": [
+   {
+    "role": "PH CRM Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Sortiment Mitarbeiter"
+   },
+   {
+    "role": "PH Projekte Mitarbeiter"
+   },
+   {
+    "role": "PH Personal Selbstservice"
+   },
+   {
+    "role": "PH Ablage Mitarbeiter"
+   },
+   {
+    "role": "PH Kundenkarte Mitarbeiter"
+   }
+  ]
  },
  {
-  "doctype": "Role Profile", "name": "PH Verkaufsleitung", "role_profile": "PH Verkaufsleitung",
-  "roles": [{"role": "PH CRM Leitung"}, {"role": "PH Faktura Leitung"}, {"role": "PH Sortiment Mitarbeiter"}, {"role": "PH Projekte Leitung"}, {"role": "PH Shop Leitung"}, {"role": "PH Marketing Mitarbeiter"}, {"role": "PH Personal Selbstservice"}]
+  "doctype": "Role Profile",
+  "name": "PH Verkaufsleitung",
+  "role_profile": "PH Verkaufsleitung",
+  "roles": [
+   {
+    "role": "PH CRM Leitung"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Sortiment Mitarbeiter"
+   },
+   {
+    "role": "PH Projekte Leitung"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Personal Selbstservice"
+   },
+   {
+    "role": "PH Ablage Leitung"
+   },
+   {
+    "role": "PH Kundenkarte Leitung"
+   }
+  ]
  },
  {
-  "doctype": "Role Profile", "name": "PH Einkauf", "role_profile": "PH Einkauf",
-  "roles": [{"role": "PH Sortiment Leitung"}, {"role": "PH Logistik Mitarbeiter"}, {"role": "PH Faktura Mitarbeiter"}, {"role": "PH Personal Selbstservice"}]
+  "doctype": "Role Profile",
+  "name": "PH Einkauf",
+  "role_profile": "PH Einkauf",
+  "roles": [
+   {
+    "role": "PH Sortiment Leitung"
+   },
+   {
+    "role": "PH Logistik Mitarbeiter"
+   },
+   {
+    "role": "PH Faktura Mitarbeiter"
+   },
+   {
+    "role": "PH Personal Selbstservice"
+   },
+   {
+    "role": "PH Ablage Mitarbeiter"
+   }
+  ]
  },
  {
-  "doctype": "Role Profile", "name": "PH Shop und Kassa", "role_profile": "PH Shop und Kassa",
-  "roles": [{"role": "PH Shop Mitarbeiter"}, {"role": "PH Kassa Mitarbeiter"}, {"role": "PH CRM Mitarbeiter"}, {"role": "PH Sortiment Mitarbeiter"}, {"role": "PH Personal Selbstservice"}]
+  "doctype": "Role Profile",
+  "name": "PH Shop und Kassa",
+  "role_profile": "PH Shop und Kassa",
+  "roles": [
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Kassa Mitarbeiter"
+   },
+   {
+    "role": "PH CRM Mitarbeiter"
+   },
+   {
+    "role": "PH Sortiment Mitarbeiter"
+   },
+   {
+    "role": "PH Personal Selbstservice"
+   },
+   {
+    "role": "PH Ablage Mitarbeiter"
+   },
+   {
+    "role": "PH Kundenkarte Mitarbeiter"
+   }
+  ]
  },
  {
-  "doctype": "Role Profile", "name": "PH Lager und Montage", "role_profile": "PH Lager und Montage",
-  "roles": [{"role": "PH Logistik Mitarbeiter"}, {"role": "PH Montage"}, {"role": "PH Personal Selbstservice"}]
+  "doctype": "Role Profile",
+  "name": "PH Lager und Montage",
+  "role_profile": "PH Lager und Montage",
+  "roles": [
+   {
+    "role": "PH Logistik Mitarbeiter"
+   },
+   {
+    "role": "PH Montage"
+   },
+   {
+    "role": "PH Personal Selbstservice"
+   },
+   {
+    "role": "PH Ablage Mitarbeiter"
+   }
+  ]
  },
  {
-  "doctype": "Role Profile", "name": "PH Servicetechnik", "role_profile": "PH Servicetechnik",
-  "roles": [{"role": "PH Service Mitarbeiter"}, {"role": "PH Techniker"}, {"role": "PH Logistik Mitarbeiter"}, {"role": "PH Personal Selbstservice"}]
+  "doctype": "Role Profile",
+  "name": "PH Servicetechnik",
+  "role_profile": "PH Servicetechnik",
+  "roles": [
+   {
+    "role": "PH Service Mitarbeiter"
+   },
+   {
+    "role": "PH Techniker"
+   },
+   {
+    "role": "PH Logistik Mitarbeiter"
+   },
+   {
+    "role": "PH Personal Selbstservice"
+   },
+   {
+    "role": "PH Kundenkarte Mitarbeiter"
+   },
+   {
+    "role": "PH Ablage Mitarbeiter"
+   }
+  ]
  },
  {
-  "doctype": "Role Profile", "name": "PH Marketing", "role_profile": "PH Marketing",
-  "roles": [{"role": "PH Marketing Mitarbeiter"}, {"role": "PH CRM Mitarbeiter"}, {"role": "PH Sortiment Mitarbeiter"}, {"role": "PH Personal Selbstservice"}]
+  "doctype": "Role Profile",
+  "name": "PH Marketing",
+  "role_profile": "PH Marketing",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH CRM Mitarbeiter"
+   },
+   {
+    "role": "PH Sortiment Mitarbeiter"
+   },
+   {
+    "role": "PH Personal Selbstservice"
+   },
+   {
+    "role": "PH Ablage Mitarbeiter"
+   }
+  ]
  },
  {
-  "doctype": "Role Profile", "name": "PH Buchhaltung", "role_profile": "PH Buchhaltung",
-  "roles": [{"role": "PH Faktura Leitung"}, {"role": "PH Kassa Leitung"}, {"role": "PH Shop Mitarbeiter"}, {"role": "PH Personal Selbstservice"}]
+  "doctype": "Role Profile",
+  "name": "PH Buchhaltung",
+  "role_profile": "PH Buchhaltung",
+  "roles": [
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Kassa Leitung"
+   },
+   {
+    "role": "PH Shop Mitarbeiter"
+   },
+   {
+    "role": "PH Personal Selbstservice"
+   },
+   {
+    "role": "PH Ablage Mitarbeiter"
+   }
+  ]
  },
  {
-  "doctype": "Role Profile", "name": "PH Steuerberatung", "role_profile": "PH Steuerberatung",
-  "roles": [{"role": "PH Buchhaltung extern"}]
+  "doctype": "Role Profile",
+  "name": "PH Steuerberatung",
+  "role_profile": "PH Steuerberatung",
+  "roles": [
+   {
+    "role": "PH Buchhaltung extern"
+   }
+  ]
  },
  {
-  "doctype": "Role Profile", "name": "PH Geschäftsführung", "role_profile": "PH Geschäftsführung",
-  "roles": [{"role": "PH Geschäftsführung"}, {"role": "PH CRM Leitung"}, {"role": "PH Sortiment Leitung"}, {"role": "PH Projekte Leitung"}, {"role": "PH Shop Leitung"}, {"role": "PH Faktura Leitung"}, {"role": "PH Logistik Leitung"}, {"role": "PH Personal Leitung"}, {"role": "PH Marketing Leitung"}, {"role": "PH Kassa Leitung"}, {"role": "PH Service Leitung"}]
+  "doctype": "Role Profile",
+  "name": "PH Geschäftsführung",
+  "role_profile": "PH Geschäftsführung",
+  "roles": [
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH CRM Leitung"
+   },
+   {
+    "role": "PH Sortiment Leitung"
+   },
+   {
+    "role": "PH Projekte Leitung"
+   },
+   {
+    "role": "PH Shop Leitung"
+   },
+   {
+    "role": "PH Faktura Leitung"
+   },
+   {
+    "role": "PH Logistik Leitung"
+   },
+   {
+    "role": "PH Personal Leitung"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Kassa Leitung"
+   },
+   {
+    "role": "PH Service Leitung"
+   },
+   {
+    "role": "PH Kundenkarte Leitung"
+   },
+   {
+    "role": "PH Ablage Leitung"
+   }
+  ]
  },
  {
-  "doctype": "Role Profile", "name": "PH Backoffice-Admin", "role_profile": "PH Backoffice-Admin",
-  "roles": [{"role": "PH Backoffice-Admin"}, {"role": "System Manager"}]
+  "doctype": "Role Profile",
+  "name": "PH Backoffice-Admin",
+  "role_profile": "PH Backoffice-Admin",
+  "roles": [
+   {
+    "role": "PH Backoffice-Admin"
+   },
+   {
+    "role": "System Manager"
+   }
+  ]
  }
 ]

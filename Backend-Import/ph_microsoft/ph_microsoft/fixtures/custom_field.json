@@ -1,0 +1,92 @@
+[
+ {
+  "doctype": "Custom Field",
+  "name": "User-ph_microsoft_oid",
+  "dt": "User",
+  "module": "PH Microsoft",
+  "fieldname": "ph_microsoft_oid",
+  "label": "Microsoft-Objekt-ID (Entra)",
+  "fieldtype": "Data",
+  "insert_after": "ph_core_kurzname",
+  "read_only": 1,
+  "unique": 1,
+  "no_copy": 1,
+  "description": "Stabile Zuordnung für die Microsoft-Anmeldung (oid). Wird bei der ersten Anmeldung gesetzt."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "User-ph_microsoft_sso_gesperrt",
+  "dt": "User",
+  "module": "PH Microsoft",
+  "fieldname": "ph_microsoft_sso_gesperrt",
+  "label": "Microsoft-Anmeldung gesperrt",
+  "fieldtype": "Check",
+  "insert_after": "ph_microsoft_oid",
+  "default": "0"
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "User-ph_microsoft_letzte_anmeldung",
+  "dt": "User",
+  "module": "PH Microsoft",
+  "fieldname": "ph_microsoft_letzte_anmeldung",
+  "label": "Letzte Microsoft-Anmeldung",
+  "fieldtype": "Datetime",
+  "insert_after": "ph_microsoft_sso_gesperrt",
+  "read_only": 1,
+  "no_copy": 1
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Communication-ph_microsoft_postfach",
+  "dt": "Communication",
+  "module": "PH Microsoft",
+  "fieldname": "ph_microsoft_postfach",
+  "label": "Exchange-Postfach",
+  "fieldtype": "Data",
+  "insert_after": "message_id",
+  "read_only": 1,
+  "no_copy": 1,
+  "in_standard_filter": 1
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Communication-ph_microsoft_zuordnung",
+  "dt": "Communication",
+  "module": "PH Microsoft",
+  "fieldname": "ph_microsoft_zuordnung",
+  "label": "Zuordnung (Exchange)",
+  "fieldtype": "Select",
+  "insert_after": "ph_microsoft_postfach",
+  "options": "\nautomatisch\nmanuell",
+  "read_only": 1,
+  "no_copy": 1,
+  "in_standard_filter": 1
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Communication-ph_microsoft_zugeordnet_von",
+  "dt": "Communication",
+  "module": "PH Microsoft",
+  "fieldname": "ph_microsoft_zugeordnet_von",
+  "label": "Zugeordnet von",
+  "fieldtype": "Link",
+  "insert_after": "ph_microsoft_zuordnung",
+  "options": "User",
+  "read_only": 1,
+  "no_copy": 1
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Communication-ph_microsoft_graph_id",
+  "dt": "Communication",
+  "module": "PH Microsoft",
+  "fieldname": "ph_microsoft_graph_id",
+  "label": "Graph-Nachrichten-ID",
+  "fieldtype": "Small Text",
+  "insert_after": "ph_microsoft_zugeordnet_von",
+  "read_only": 1,
+  "hidden": 1,
+  "no_copy": 1
+ }
+]

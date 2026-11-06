@@ -1,0 +1,202 @@
+[
+ {
+  "doctype": "Workspace",
+  "name": "PH Ablage",
+  "title": "PH Ablage",
+  "label": "PH Ablage",
+  "module": "PH Ablage",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "folder-normal",
+  "indicator_color": "gray",
+  "sequence_id": 13.0,
+  "for_user": "",
+  "parent_page": "",
+  "content": "[{\"id\":\"ph_abl_h1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Ablage</b></span>\",\"col\":12}},{\"id\":\"ph_abl_nc1\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Dateien in der Ablage\",\"col\":3}},{\"id\":\"ph_abl_nc2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Ausgecheckte Dateien\",\"col\":3}},{\"id\":\"ph_abl_nc3\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Aktive Freigabelinks\",\"col\":3}},{\"id\":\"ph_abl_nc4\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Dateien im Papierkorb\",\"col\":3}},{\"id\":\"ph_abl_c1\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Uploads je Woche\",\"col\":12}},{\"id\":\"ph_abl_c2\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Dateien je Bezug\",\"col\":6}},{\"id\":\"ph_abl_c3\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Dateien je Endung\",\"col\":6}},{\"id\":\"ph_abl_h2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\",\"col\":12}},{\"id\":\"ph_abl_s1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ordnerbaum\",\"col\":3}},{\"id\":\"ph_abl_s2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dateien\",\"col\":3}},{\"id\":\"ph_abl_s3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ausgecheckt\",\"col\":3}},{\"id\":\"ph_abl_s4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Papierkorb\",\"col\":3}},{\"id\":\"ph_abl_s5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Freigaben aktiv\",\"col\":3}},{\"id\":\"ph_abl_s6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Speicherbelegung\",\"col\":3}},{\"id\":\"ph_abl_s7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Einstellungen\",\"col\":3}},{\"id\":\"ph_abl_h3\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Bereiche</b></span>\",\"col\":12}},{\"id\":\"ph_abl_card1\",\"type\":\"card\",\"data\":{\"card_name\":\"Ablage\",\"col\":4}},{\"id\":\"ph_abl_card2\",\"type\":\"card\",\"data\":{\"card_name\":\"Freigaben und Protokoll\",\"col\":4}},{\"id\":\"ph_abl_card3\",\"type\":\"card\",\"data\":{\"card_name\":\"Berichte und Einstellungen\",\"col\":4}}]",
+  "shortcuts": [
+   {
+    "label": "Ordnerbaum",
+    "link_to": "PH Ordner",
+    "type": "DocType",
+    "doc_view": "Tree",
+    "color": "Grey"
+   },
+   {
+    "label": "Dateien",
+    "link_to": "PH Datei",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Grey",
+    "stats_filter": "{\"status\": \"Aktiv\"}"
+   },
+   {
+    "label": "Ausgecheckt",
+    "link_to": "PH Datei",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Orange",
+    "stats_filter": "{\"gesperrt_von\": [\"is\", \"set\"]}"
+   },
+   {
+    "label": "Papierkorb",
+    "link_to": "PH Datei",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Grey",
+    "stats_filter": "{\"status\": \"Papierkorb\"}"
+   },
+   {
+    "label": "Freigaben aktiv",
+    "link_to": "PH Freigaben aktiv",
+    "type": "Report",
+    "color": "Blue"
+   },
+   {
+    "label": "Speicherbelegung",
+    "link_to": "PH Speicherbelegung",
+    "type": "Report",
+    "color": "Grey"
+   },
+   {
+    "label": "Einstellungen",
+    "link_to": "PH Ablage Einstellungen",
+    "type": "DocType",
+    "color": "Grey"
+   }
+  ],
+  "charts": [
+   {
+    "chart_name": "PH Uploads je Woche",
+    "label": "Uploads je Woche"
+   },
+   {
+    "chart_name": "PH Dateien je Bezug",
+    "label": "Dateien je Bezug"
+   },
+   {
+    "chart_name": "PH Dateien je Endung",
+    "label": "Dateien je Endung"
+   }
+  ],
+  "number_cards": [
+   {
+    "number_card_name": "PH Dateien in der Ablage",
+    "label": "Dateien in der Ablage"
+   },
+   {
+    "number_card_name": "PH Dateien im Papierkorb",
+    "label": "Dateien im Papierkorb"
+   },
+   {
+    "number_card_name": "PH Aktive Freigabelinks",
+    "label": "Aktive Freigabelinks"
+   },
+   {
+    "number_card_name": "PH Ausgecheckte Dateien",
+    "label": "Ausgecheckt (in Bearbeitung)"
+   }
+  ],
+  "links": [
+   {
+    "type": "Card Break",
+    "label": "Ablage",
+    "link_count": 2,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Ordner",
+    "link_to": "PH Ordner",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 1,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Datei",
+    "link_to": "PH Datei",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 1,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Freigaben und Protokoll",
+    "link_count": 2,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Datei Freigabelink",
+    "link_to": "PH Datei Freigabelink",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Ablage Ereignis (Protokoll)",
+    "link_to": "PH Ablage Ereignis",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Berichte und Einstellungen",
+    "link_count": 3,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Speicherbelegung",
+    "link_to": "PH Speicherbelegung",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Freigaben aktiv",
+    "link_to": "PH Freigaben aktiv",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "PH Ablage Einstellungen",
+    "link_to": "PH Ablage Einstellungen",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   }
+  ],
+  "roles": [
+   {
+    "role": "PH Ablage Mitarbeiter"
+   },
+   {
+    "role": "PH Ablage Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   },
+   {
+    "role": "PH Backoffice-Admin"
+   }
+  ]
+ }
+]

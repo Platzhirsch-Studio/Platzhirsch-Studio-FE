@@ -1,0 +1,35 @@
+# /etc/systemd/system/platzhirsch-website.service – Website ohne Docker (Alternative zu compose.yml / PM2).
+# Release-Ordner wie scripts/deploy.sh: /var/www/platzhirsch/current (Symlink), darin npm ci && npm run build.
+# Node 24 aus NodeSource oder nvm (Pfad unten anpassen). Aktivieren:
+#   systemctl daemon-reload && systemctl enable --now platzhirsch-website
+#   journalctl -u platzhirsch-website -f
+[Unit]
+Description=Platzhirsch Website (Next.js, Port 3000)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=platzhirsch
+Group=platzhirsch
+WorkingDirectory=/var/www/platzhirsch/current
+EnvironmentFile=/var/www/platzhirsch/shared/.env.production
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=NEXT_TELEMETRY_DISABLED=1
+# Nur 127.0.0.1 – Rate-Limit vertraut X-Forwarded-For nur hinter dem lokalen Proxy.
+ExecStart=/usr/bin/node node_modules/next/dist/bin/next start -H 127.0.0.1 -p 3000
+Restart=always
+RestartSec=2
+TimeoutStopSec=20
+MemoryMax=2G
+LimitNOFILE=65536
+# Härtung
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/www/platzhirsch/shared/.data /var/www/platzhirsch/current/.next
+
+[Install]
+WantedBy=multi-user.target

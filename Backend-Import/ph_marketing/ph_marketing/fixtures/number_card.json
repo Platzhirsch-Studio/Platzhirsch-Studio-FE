@@ -143,5 +143,31 @@
   "function": "Count",
   "filters_json": "[[\"PH Kampagne\", \"status\", \"=\", \"Aktiv\", false]]",
   "show_percentage_stats": 0
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Neue Rückmeldungen",
+  "label": "Neue Rückmeldungen",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Marketing",
+  "color": "#1d4ed8",
+  "roles": [
+   {
+    "role": "PH Marketing Mitarbeiter"
+   },
+   {
+    "role": "PH Marketing Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "type": "Document Type",
+  "document_type": "PH Bewertung",
+  "function": "Count",
+  "filters_json": "[[\"PH Bewertung\", \"status\", \"=\", \"Neu\", false]]",
+  "show_percentage_stats": 1,
+  "stats_time_interval": "Monthly"
  }
 ]

@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kriterium",
+  "operator",
+  "wert",
+  "wert_bis",
+  "negieren",
+  "deaktiviert"
+ ],
+ "fields": [
+  {
+   "fieldname": "kriterium",
+   "fieldtype": "Select",
+   "label": "Kriterium",
+   "options": "interesse\nsprache\nplz\nland\nkontaktart\nkontakt_status\nkundenkarte_stufe\nkauf_in_tagen\nkein_kauf_seit_tagen\numsatz_12m_cent\numsatz_gesamt_cent\nkaeufe_anzahl\nevent\nabo_quelle",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "operator",
+   "fieldtype": "Select",
+   "label": "Operator",
+   "options": "ist\nist nicht\nbeginnt mit\nzwischen\nmindestens\nhoechstens\nenthaelt\nvorhanden\nfehlt",
+   "default": "ist",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "wert",
+   "fieldtype": "Data",
+   "label": "Wert",
+   "in_list_view": 1,
+   "columns": 3,
+   "description": "Mehrere Werte mit Komma (ODER innerhalb der Regel). Beträge in Cent, Tage als Zahl."
+  },
+  {
+   "fieldname": "wert_bis",
+   "fieldtype": "Data",
+   "label": "Wert bis",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "negieren",
+   "fieldtype": "Check",
+   "label": "Nicht (umkehren)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "deaktiviert",
+   "fieldtype": "Check",
+   "label": "Deaktiviert"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Segment Regel",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "description": "Eine Regel eines Segments (Kriterium, Operator, Wert)."
+}

@@ -16,6 +16,7 @@ Website-Bestellungen, Reservierung/Abholung, Gutscheine, **gemeinsame Zahlungs-D
 | **PH Widerruf** (41) | § 11/13a FAGG, Fristen 14 Tage | Kind **Position**; Eingangsbestätigung, Retoure, Erstattung |
 | **PH Retoure** (24) | Rücksendung/Rückgabe, Prüfung, Wertminderung | Kind **Position** |
 | **PH Shop Einstellungen** (31, Single) | Modus, Fristen, Versandpauschalen, OSS-Schalter, Gutschein-Vorgaben, **Rechtstexte** (AGB, Widerrufsbelehrung, Gewährleistungs-Mitteilung) für die Bestellbestätigung | |
+| **PH Wunschliste** (Serie `PH-WL-.YYYY.-.#####`) | teilbare Wunschliste der Website (`src/lib/wunschliste`, Datensatz `model.js` v1), an PH Kontakt oder anonym (nur Verwaltungsschlüssel) | Kinder **Position** (Stück, Reservierung mit Storno-Hash) und **Beitrag** (Gemeinschafts-Gutschein); `list_id`/`share_hash`/`admin_hash` nur als Hash; Button „Sperren (Missbrauch)“; täglich Löschen nach `laeuft_ab_am` |
 | **PH Stripe Einstellungen** (18, Single) | nur Schlüssel-**Namen**, Testmodus, **Simulation** (kein Netz), Webhook-Pfad, Ereignistypen, Vier-Augen-Grenze | |
 
 ## Zahlungen buchen – `ph_shop.zahlung` (für ph_faktura, ph_kassa)
@@ -112,6 +113,12 @@ Charts: Shop Umsatz je Woche, Bestellungen nach Lieferart, Gutscheinverkauf je M
 | `create_deposit(record)`, `get_deposit(id|auftrag|kunde)` | `deposit.js` | |
 | `payment_event(event)` | `backoffice.js` Schema v1 | `{v, typ, zeit, referenz, art, betrag_cent, waehrung, zahlungsstatus, stripe{}, beleg?}` – alle heutigen Typen (`gutschein.bezahlt/pruefen/fehlgeschlagen/erstattet/teilerstattet/widerruf`, `anzahlung.bezahlt/pruefen/fehlgeschlagen/doppelt/doppelt_erstattet/…`) |
 | `request_withdrawal(…)` | `api/shop/widerruf`, `api/payments/widerruf` | Felder beider Formulare; Zuordnung nur bei passender E-Mail |
+| `create_wishlist(record)` → `{referenz, list_id, ref, share_hash, modified[, bereits_vorhanden]}` | `wunschliste` Speicher `create` (`localStore.js`) | ganzer Datensatz aus `model.js createRecord` (camelCase); idempotent (`idempotency_key`, sonst gleiche `listId` + `adminHash`); fremder `adminHash` → 409 |
+| `get_wishlist(list_id, admin_hash?)` → `{found, record, modified, referenz}` | Speicher `get` | `found:false` = null; `admin_hash` (sha256) optional, falsch → `found:false` |
+| `get_wishlist_by_share(share_hash)` → wie oben | Speicher `getByShare` | `share_hash` = sha256(shareId) – der Adapter hasht, der Link erreicht das Backend nie |
+| `update_wishlist(list_id, record, expected_modified?, admin_hash?)` → `{found, record, modified, referenz}` | Speicher `update(listId, fn)` | optimistische Sperre: `expected_modified` ≠ Stand → **409 conflict** (+ `modified`), Adapter liest neu und wiederholt; `adminHash` unveränderlich |
+| `remove_wishlist(list_id, admin_hash?)` → `{deleted}` | Speicher `remove` | hartes Löschen (DSGVO), nur über diese Methode |
+| `import_local_store(bestellungen[], gutschein_bestellungen[], gutscheine[], anzahlungen[], widerrufe[], probelauf=0)` → `{probelauf, angelegt{}, uebersprungen{}, fehler[]}` | Migration M6: Sammlungen aus `.data/` (`shop` bestellungen/widerrufe, `payments` orders/register/deposits/withdrawals) | idempotent je Website-Kennung (vorhanden → übersprungen), ≤ 500 Einträge je Aufruf, Savepoint je Eintrag, keine Kundenmails, keine PH Zahlung (Stripe-Backfill); Register-Hash = `code_hash`; Schalter `PH Shop Einstellungen.import_local_store_aktiv` (Standard 0) |
 
 Website-Umstellung: `PAYMENTS_BACKOFFICE=frappe`, `PAYMENTS_BACKOFFICE_METHOD=ph_shop.api.payment_event`, `FRAPPE_URL/FRAPPE_API_KEY/FRAPPE_API_SECRET`; Stripe-Dashboard: zweiten Webhook-Endpunkt auf Frappe mit eigenem Signaturgeheimnis (`ph_stripe_webhook_secret`). Beide Webhooks laufen parallel bis M6.
 
@@ -129,6 +136,28 @@ python ../tools/check.py
 
 Site-Tests laufen mit `frappe.flags.in_test` → Stripe-Simulation (kein Netz); Testschlüssel nur `whsec_mock_platzhirsch_*`.
 
+## Backoffice-Lücken v0.2 (04.11.2026, `Marktresearch/digital/backoffice/52-backend-luecken-…`)
+
+| Funktion | Wo |
+|---|---|
+| **Teilstorno** (unbezahlt: Mengen/Positionen heraus, Summen + USt neu, Status bleibt; bezahlt → Teilerstattung) | `PH Bestellung.positionen_stornieren(zeilen, grund)` |
+| **Teilerstattung** positionsweise + Versandanteil + Kulanz, USt je Satz (`erstattungen[]`, Kind **PH Bestellung Erstattung**, `satz_json`), nie mehr als bezahlt; Verteilung Karte/Bar zuerst, Gutschein zuletzt (Restwert zurück auf den Gutschein); Vorschau | `teilerstatten(zeilen, versand_cent, kulanz_cent, grund)`, `erstattung_vorschau(…)`; Logik `ph_shop/teilerstattung.py`; Hook `ph_shop_gutschrift_erstellen` (ph_faktura) |
+| Storno erstattet jetzt **alle** Eingänge inkl. Gutschein-Anrechnung | `stornieren` → `_geld_zurueck` |
+| **Teilzahlungen** addiert, Status erst bei Vollzahlung (`offen_cent`) | `zahlung_erfassen`, Webhook `zahlung_eingegangen` (Soll = offen) |
+| **Ersatzlieferung** 0 € mit Bezug (`ersatz_fuer`, `ersatz_bezug_doctype/ersatz_bezug`, Bestellart „Ersatz“) | `ersatzlieferung_anlegen(zeilen, grund, bezug_doctype, bezug, lieferart)` |
+| **Telefonbestellung** + Zahlungslink (Stripe Checkout, simuliert auf Staging), Mail „PH Shop Zahlungslink“ mit Rechtstexten | `ph_shop.api.backoffice.create_phone_order`, `zahlungslink_erstellen(senden)`, `zahlungslink_senden`, `stripe_client.checkout_session_erstellen` |
+| **Bestellnotizen**: `notiz_intern` (permlevel 1) + `notiz_kunde` (Website `record.notiz`, Telefon) | Felder |
+| **Gutschein**: Sperrgrund-Katalog `sperrgrund_art`, Entsperren nur Leitung mit Grund, Teil-Gutschrift `gutschreiben`, Ausdruck mit QR/Restwert/GESPERRT | `PH Gutschein.sperren(grund, sperrgrund_art)`, `entsperren(grund)`, `gutschreiben(…)`; Print Format „PH Gutschein“ |
+| **Showroom-Verkauf (ph_kassa)**: ausstellen je Kassenbeleg-Position (idempotent), Storno, `pruefen` liefert `art`, `steuersatz` (Kassa-Satzname), `steuersatz_promille` | `ph_shop.gutschein.ausstellen_verkauf / verkauf_stornieren / gutschreiben`; whitelisted `ph_shop.api.backoffice.sell_voucher / cancel_voucher_sale / check_voucher / credit_voucher / cancel_voucher_redemption / issue_voucher` |
+| **Stripe Radar** (nur Anzeige): `radar_*` an PH Bestellung + PH Zahlung, Listenindikator „Risiko prüfen“, Aufgabe an Leitung, „Risiko geprüft“ | Webhook `charge.succeeded/updated`, `review.*`, `radar.early_fraud_warning.created`; `ph_shop/radar.py` |
+| **Zahlungsstreit**: `dispute_*` an PH Zahlung, Frist, Aufgabe bei Eingang/Verlust | `charge.dispute.created/updated/closed` |
+| Abholung: Übergabe zurücknehmen (Leitung), Abholcode erneut senden ohne Fristreset; Abholcode-Normalisierung (L wird nicht mehr zu 1) | `abholung_zuruecknehmen(grund)`, `abholcode_erneut_senden()` |
+| Versandbenachrichtigung (Mail „PH Shop Versendet“), automatisches Abschließen nach `auto_abschliessen_tage` | `versendet_melden(…, benachrichtigen=1)`, `tasks.automatisch_abschliessen` |
+| Angekündigte Zahlung stornieren (Leitung) | `PH Zahlung.ankuendigung_stornieren(grund)` |
+| Kundenakte (Hook-Vertrag ph_crm): Zeitleiste, Datenauskunft, Anonymisieren (§ 132 BAO 7 Jahre, Gutschein mit Restwert aufbewahren), Nachziehen nach Zusammenführung per E-Mail | `ph_shop/ph_shop/kontakt.py`; reine Fristlogik `ph_shop/aufbewahrung.py` |
+
+Patch `ph_shop.patches.v0_2.backoffice_luecken` ergänzt Ereignistypen und Einstellungen auf bestehenden Sites. Im Stripe-Dashboard die neuen Ereignistypen am Frappe-Webhook abonnieren.
+
 ## Offen
 
-Wunschliste (PLAN) nicht gebaut; Checkout-Session-Erzeugung bleibt auf der Website; Lieferschein/Rechnung über Hooks von ph_logistik/ph_faktura; online verkaufte Gutscheine bleiben bis M6 im Website-Register (hier nur Bestellung + Zahlung); USt-Regeln Entwurf (Steuerberater); Rechtstexte in PH Shop Einstellungen eintragen.
+Wunschliste: Website-Adapter `src/lib/wunschliste/frappeAdapter.js` auf die fünf Methoden oben umstellen (E-Mails der Beitragenden kommen maskiert zurück; beim Speichern bleibt die gespeicherte Adresse); Checkout-Session-Erzeugung bleibt auf der Website; Lieferschein/Rechnung über Hooks von ph_logistik/ph_faktura; online verkaufte Gutscheine bleiben bis M6 im Website-Register (hier nur Bestellung + Zahlung); USt-Regeln Entwurf (Steuerberater); Rechtstexte in PH Shop Einstellungen eintragen.

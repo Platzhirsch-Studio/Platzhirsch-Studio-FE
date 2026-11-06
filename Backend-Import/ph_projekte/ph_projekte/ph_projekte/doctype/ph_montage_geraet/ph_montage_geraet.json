@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "E-Gerät im Montageprotokoll (E-Nummer aus der Stückliste, Seriennummer vor Ort).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bezeichnung",
+  "marke",
+  "e_nummer",
+  "fd_nummer",
+  "seriennummer",
+  "projekt_zeile",
+  "eingebaut",
+  "funktion_geprueft"
+ ],
+ "fields": [
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Gerät",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "e_nummer",
+   "fieldtype": "Data",
+   "label": "E-Nummer",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "fd_nummer",
+   "fieldtype": "Data",
+   "label": "FD-/Fertigungsnummer",
+   "columns": 1
+  },
+  {
+   "fieldname": "seriennummer",
+   "fieldtype": "Data",
+   "label": "Seriennummer",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "projekt_zeile",
+   "fieldtype": "Data",
+   "label": "Projektposition (Zeile)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "eingebaut",
+   "fieldtype": "Check",
+   "label": "eingebaut",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "funktion_geprueft",
+   "fieldtype": "Check",
+   "label": "Funktion geprüft",
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Montage Geraet",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

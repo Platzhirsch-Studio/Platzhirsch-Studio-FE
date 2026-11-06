@@ -16,6 +16,7 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.utils import getdate, now_datetime, nowdate, strip_html
 
+from ph_sortiment.logik.kalkulation import faktor_fuer, gueltiger_ek, netto_ek_cent, variante_preis, vk_aus_ek
 from ph_sortiment.logik.preise import ab_preis_cent, gueltig_bis, gueltiger_preis, veraltet
 from ph_sortiment.logik.slug import ist_slug, produkt_slug, slug as mk_slug
 
@@ -49,6 +50,8 @@ class PHProdukt(Document):
         self.pruefe_texte()
         self.bilder_auswerten()
         self.preise_auswerten()
+        self.einkauf_auswerten()
+        self.abverkauf_pruefen()
         self.lieferzeit_pruefen()
         self.ausfuehrungen_zaehlen()
         if self.status == VEROEFFENTLICHT:
@@ -114,6 +117,60 @@ class PHProdukt(Document):
             self.preisart = "UVP" if all(z.preisart in ("UVP", "Herstellerpreis") for z in freigegeben) else "Verkaufspreis"
         if self.verkauf_online and not self.aktueller_preis_cent:
             frappe.msgprint(_("Online-Verkauf ohne gültigen Verkaufspreis – der Shop zeigt den Artikel nicht an."), indicator="orange", alert=True)
+
+    def einkauf_auswerten(self):
+        """Netto-EK je Zeile (Rabattkette), Gültigkeit prüfen, einkaufspreis_cent = gültiger EK heute (logik/kalkulation)."""
+        for z in self.einkaufspreise:
+            if z.bis and z.ab and getdate(z.bis) < getdate(z.ab):
+                frappe.throw(_("Einkaufspreis Zeile {0}: „bis“ liegt vor „ab“.").format(z.idx))
+            try:
+                z.netto_ek_cent = netto_ek_cent(z.listen_cent, z.rabatt_promille, z.rabatt2_promille)
+            except ValueError as e:
+                frappe.throw(_("Einkaufspreis Zeile {0}: {1}").format(z.idx, str(e)))
+        if self.einkaufspreise:
+            ek = gueltiger_ek([z.as_dict() for z in self.einkaufspreise if not z.ausfuehrung], nowdate())
+            if ek:
+                self.einkaufspreis_cent = ek.get("netto_ek_cent")
+        for z in self.variantenpreise:
+            if "=" not in (z.kombination or ""):
+                frappe.throw(_("Variantenpreis Zeile {0}: Kombination im Format gruppe=option|gruppe=option.").format(z.idx))
+            z.kombination = "|".join(sorted(t.strip() for t in z.kombination.split("|") if t.strip()))
+
+    def abverkauf_pruefen(self):
+        if self.abverkauf and self.typ != "Ausstellungsstueck":
+            frappe.throw(_("Abverkauf nur für Ausstellungsstücke (Typ)."))
+        if self.abverkauf and not self.abverkauf_seit:
+            self.abverkauf_seit = nowdate()
+        if self.abverkauf and not self.abverkauf_preis_cent:
+            frappe.msgprint(_("Abverkauf ohne Preis – Preis bitte als freigegebenen Verkaufspreis mit Quelle „Eigen“ erfassen."), indicator="orange", alert=True)
+
+    @frappe.whitelist()
+    def vk_vorschlag(self, anlegen=0, lieferant=None):
+        """Button „VK aus EK vorschlagen“: gültiger Netto-EK × Kalkulationsfaktor (Marke/Kategorie), gerundet.
+        anlegen=1 legt einen unfreigegebenen Verkaufspreis (Quelle Eigen) an – Freigabe durch die Leitung."""
+        self.check_permission("read")
+        if not ({"PH Sortiment Leitung", "PH Geschäftsführung", "System Manager", "PH Backoffice-Admin"} & set(frappe.get_roles())):
+            frappe.throw(_("Kalkulation sieht nur die Leitung."))
+        ek = gueltiger_ek([z.as_dict() for z in self.einkaufspreise if not z.ausfuehrung], nowdate(), lieferant)
+        ek_cent = ek.get("netto_ek_cent") if ek else self.einkaufspreis_cent
+        marke = frappe.get_doc("PH Marke", self.marke)
+        faktor, rundung = faktor_fuer(marke.kalkulationsfaktor_promille, self.kategorie, [o.as_dict() for o in marke.kalkulation_kategorien])
+        try:
+            vk = vk_aus_ek(ek_cent, faktor, rundung or marke.vk_rundung or "keine")
+        except ValueError as e:
+            frappe.throw(str(e))
+        if vk and frappe.utils.cint(anlegen):
+            self.check_permission("write")
+            if not any(str(z.ab) == nowdate() and z.preisart == "Verkaufspreis" and not z.ausfuehrung for z in self.preise):
+                self.append("preise", {"ab": nowdate(), "stand": nowdate(), "brutto_cent": vk, "preisart": "Verkaufspreis", "waehrung": self.waehrung or "EUR", "quelle": "Eigen", "freigegeben": 0})
+                self.save()
+        return {"ek_cent": ek_cent, "faktor_promille": faktor, "rundung": rundung or marke.vk_rundung, "vk_cent": vk}
+
+    @frappe.whitelist()
+    def variante_berechnen(self, auswahl):
+        """Preis einer Variante: auswahl = {gruppe_key: option_id}. EK nur für die Leitung."""
+        self.check_permission("read")
+        return variante_fuer(self, auswahl)
 
     def lieferzeit_pruefen(self):
         if self.lieferzeit_wochen_von and self.lieferzeit_wochen_bis and self.lieferzeit_wochen_bis < self.lieferzeit_wochen_von:
@@ -255,3 +312,24 @@ class PHProdukt(Document):
 
 def aktive_produkte_anzahl():
     return frappe.db.count("PH Produkt", {"status": "Aktiv"})
+
+
+def variante_fuer(doc, auswahl):
+    """Gemeinsame Logik für Dokumentmethode und ph_sortiment.api.variante_berechnen."""
+    if isinstance(auswahl, str):
+        auswahl = frappe.parse_json(auswahl)
+    auswahl = {str(k): str(v) for k, v in (auswahl or {}).items() if v not in (None, "")}
+    gewaehlt, unbekannt = {}, []
+    for g, opt in auswahl.items():
+        a = frappe.db.get_value("PH Produkt Ausfuehrung", {"produkt": doc.name, "gruppe_key": g, "option_id": opt, "status": "Aktiv"}, ["option_id", "preisgruppe", "aufpreis_cent", "ek_aufpreis_cent", "nicht_kombinierbar_mit"], as_dict=True)
+        if a:
+            gewaehlt[g] = a
+        else:
+            unbekannt.append(f"{g}={opt}")
+    pflicht = [x.gruppe_key for x in doc.ausfuehrungen if x.pflicht]
+    r = variante_preis(doc.aktueller_preis_cent, gewaehlt, [z.as_dict() for z in doc.variantenpreise], doc.einkaufspreis_cent, nowdate(), pflicht)
+    r["fehler"] += [_("Option unbekannt: {0}").format(u) for u in unbekannt]
+    if not ({"PH Sortiment Leitung", "PH Geschäftsführung", "System Manager", "PH Backoffice-Admin"} & set(frappe.get_roles())):
+        r.pop("ek_cent", None)
+    r["auswahl"] = auswahl
+    return r

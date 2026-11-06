@@ -68,6 +68,8 @@ def bmd_csv(zeilen, buchsymbol_ar="AR", buchsymbol_er="ER"):
         betrag = int(z.get("brutto_cent") or 0)
         if z.get("soll_haben") == "H" and not ist_er:
             betrag = -betrag  # Gutschrift mindert Debitor
+        if z.get("soll_haben") == "S" and ist_er:
+            betrag = -betrag  # Lieferanten-Gutschrift mindert Kreditor/Vorsteuer (Integration Runde 3)
         rows.append([
             "0",
             z.get("konto") or "",
@@ -90,13 +92,21 @@ def bmd_csv(zeilen, buchsymbol_ar="AR", buchsymbol_er="ER"):
     return text, gesamt_pruefsumme(text)
 
 
-def datev_buchungsstapel(zeilen, berater_nr, mandanten_nr, von, bis, wj_beginn, sachkontenlaenge=4, bezeichnung="PH Faktura", erzeugt=None):
-    """DATEV-Format EXTF (Version 700). Rückgabe (text, pruefsumme). Umsatz immer positiv mit S/H."""
+DATEV_FORMATVERSIONEN = ("12", "13")
+
+
+def datev_buchungsstapel(zeilen, berater_nr, mandanten_nr, von, bis, wj_beginn, sachkontenlaenge=4, bezeichnung="PH Faktura", erzeugt=None, formatversion="12"):
+    """DATEV-Format EXTF (Version 700). Rückgabe (text, pruefsumme). Umsatz immer positiv mit S/H.
+    formatversion: Version der Formatkategorie 21 Buchungsstapel (12 oder 13 – Kanzlei fragt nach, welche ihr
+    Rechnungswesen importiert; 32-marktfunktionen-nachtrag.md, DATEV-Format)."""
+    formatversion = str(formatversion or "12")
+    if formatversion not in DATEV_FORMATVERSIONEN:
+        raise ValueError(f"DATEV-Formatversion {formatversion} nicht unterstützt (12 oder 13).")
     import datetime as _dt
 
     erzeugt = erzeugt or _dt.datetime.now()
     header = [
-        "EXTF", "700", "21", "Buchungsstapel", "12", erzeugt.strftime("%Y%m%d%H%M%S000"), "", "PH", "", "",
+        "EXTF", "700", "21", "Buchungsstapel", formatversion, erzeugt.strftime("%Y%m%d%H%M%S000"), "", "PH", "", "",
         str(berater_nr or ""), str(mandanten_nr or ""), wj_beginn.strftime("%Y%m%d"), str(sachkontenlaenge),
         von.strftime("%Y%m%d"), bis.strftime("%Y%m%d"), bezeichnung[:30], "", "1", "0", "0", "EUR", "", "", "", "", "", "", "", "", "", "",
     ]
@@ -154,7 +164,25 @@ def protokoll_csv(zeilen):
     return _csv(rows), protokoll
 
 
+def rzl_csv(zeilen):
+    """RZL-Buchungsimport als CSV (Semikolon, Dezimalkomma). Spaltenfolge nach RZL „Buchungen importieren –
+    Textdatei“: Belegdatum;Belegnummer;Konto;Gegenkonto;Betrag brutto;Soll/Haben;Steuercode;Steuerprozent;
+    Steuerbetrag;Buchungstext;Leistungsdatum;UID. Steuercodes wie BMD (Kanzlei bestätigt die Zuordnung –
+    50-backend-luecken-kassa-faktura.md, offene Rechtsfrage Kontenrahmen)."""
+    rows = [["Belegdatum", "Belegnummer", "Konto", "Gegenkonto", "Betrag", "SH", "Steuercode", "Steuerprozent", "Steuer", "Text", "Leistungsdatum", "UID"]]
+    for z in zeilen:
+        rows.append([
+            datum_ddmmyyyy(z.get("datum")), z.get("nummer") or "", z.get("konto") or "", z.get("gegenkonto") or "",
+            euro(z.get("brutto_cent")), z.get("soll_haben") or "S", STEUERCODES_BMD.get(int(z.get("satz_promille") or 0), "0"),
+            euro(int(z.get("satz_promille") or 0)), euro(z.get("ust_cent")), (z.get("text") or "")[:60],
+            datum_ddmmyyyy(z.get("leistungsdatum")), z.get("uid") or "",
+        ])
+    return _csv(rows)
+
+
 def erzeuge(format_name, zeilen, **kw):
+    if format_name == "RZL CSV":
+        return rzl_csv(zeilen)
     if format_name == "BMD CSV":
         return bmd_csv(zeilen)
     if format_name == "DATEV Buchungsstapel":

@@ -1,0 +1,400 @@
+/* Overlays im Lounge-Stil (Team P0-4, MASTER G-06 · G-07 · G-08; art-direction/lounge.md §6, §8, §9).
+   Nur Token aus globals.css (hell/dunkel kommen von dort). Bewegung: Öffnen/Schließen von
+   dialog.bo-dialog / dialog.bo-sheet und .bo-menue liefert bo-motion.css (Team Q2) – hier nur
+   Form, Material, Lage und die Teile, die Q2 nicht kennt (Griff, Ziehen, Tooltip, Lightbox).
+   Präfix bo-ov- (Overlay). Keine Hex-Werte. */
+
+/* ------------------------------------------------------------------ Material */
+.bo-ov-material {
+  background: var(--color-bo-mat-strong);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float);
+  color: var(--color-bo-text);
+}
+
+/* Griff (Sheet von unten, Bottom-Sheet am Telefon): 40 × 5, Fläche = starke Linie */
+.bo-ov-griff {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 4px;
+  touch-action: none;
+  cursor: grab;
+}
+.bo-ov-griff::before {
+  content: "";
+  width: 40px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--color-bo-line-strong);
+}
+.bo-ov-griff:active { cursor: grabbing; }
+
+/* ------------------------------------------------------------------ Popover / Menü (Top-Layer) */
+/* Das [popover]-Element ist das Panel selbst (Desktop) bzw. eine Hülle mit Scrim (schmal). */
+.bo-ov-pop[popover] {
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: visible;
+  background: transparent;
+  color: var(--color-bo-text);
+}
+.bo-ov-pop__panel {
+  min-width: 200px;
+  max-width: min(360px, calc(100vw - 16px));
+  overflow: auto;
+  overscroll-behavior: contain;
+  border-radius: 20px;
+  corner-shape: superellipse(1.35);
+}
+.bo-ov-pop__panel[data-rolle="menu"] { padding: 6px; }
+.bo-ov-pop__panel[data-rolle="dialog"] { padding: 16px; }
+.bo-ov-pop__panel:focus { outline: none; }
+dialog.bo-ov-sheet:focus, dialog.bo-ov-lightbox:focus { outline: none; }
+
+/* Schmal (< 640 px): Bottom-Sheet mit Griff über einem Scrim. */
+.bo-ov-pop[data-schmal="true"][popover] {
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 8px 8px max(8px, env(safe-area-inset-bottom));
+  background: var(--color-bo-overlay-leicht);
+}
+.bo-ov-pop[data-schmal="true"]:not(:popover-open) { display: none; }
+.bo-ov-pop[data-schmal="true"] .bo-ov-pop__panel {
+  width: 100%;
+  max-width: 560px;
+  max-height: 80dvh;
+  border-radius: 32px;
+  padding: 0 8px 12px;
+}
+.bo-ov-pop[data-schmal="true"] .bo-ov-pop__panel[data-rolle="dialog"] { padding: 0 20px 20px; }
+
+/* Menü-Einträge: Zeile 40 (Touch 44), Radius 14 = 20 − 6, Fläche statt Linie beim Überfahren. */
+.bo-ov-menue { display: flex; flex-direction: column; gap: 1px; }
+.bo-ov-punkt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 450;
+  text-align: left;
+  color: var(--color-bo-text);
+  cursor: default;
+  user-select: none;
+  transition: background-color 120ms var(--bo-ease-out, ease-out);
+}
+@media (pointer: coarse) { .bo-ov-punkt { min-height: 44px; } }
+.bo-ov-punkt:hover:not([aria-disabled="true"]),
+.bo-ov-punkt:focus-visible,
+.bo-ov-punkt[data-fokus="true"] { background: var(--color-bo-fill-2); outline: none; }
+.bo-ov-punkt:active:not([aria-disabled="true"]) { background: var(--color-bo-line-strong); }
+.bo-ov-punkt__icon { flex: none; width: 18px; height: 18px; color: var(--color-bo-text-soft); }
+.bo-ov-punkt__text { display: flex; min-width: 0; flex: 1; flex-direction: column; }
+.bo-ov-punkt__grund { font-size: 12px; line-height: 16px; color: var(--color-bo-text-faint); }
+.bo-ov-punkt__kbd { margin-left: auto; padding-left: 16px; font-size: 13px; color: var(--color-bo-text-faint); font-variant-numeric: tabular-nums; }
+.bo-ov-punkt__haken { margin-left: auto; width: 16px; height: 16px; color: var(--color-bo-text); }
+.bo-ov-punkt[data-gefaehrlich="true"] { color: var(--color-bo-danger-text); }
+.bo-ov-punkt[data-gefaehrlich="true"] .bo-ov-punkt__icon { color: var(--color-bo-danger-text); }
+.bo-ov-punkt[aria-disabled="true"] { color: var(--color-bo-text-faint); }
+.bo-ov-punkt[aria-disabled="true"] .bo-ov-punkt__icon { opacity: 0.6; }
+.bo-ov-trenner { height: var(--bo-hair); margin: 5px 12px; background: var(--color-bo-line); border: 0; }
+.bo-ov-gruppe__titel { padding: 8px 12px 4px; font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-faint); }
+
+/* ------------------------------------------------------------------ Tooltip (Tinte-Pille, nie interaktiv) */
+.bo-ov-tip[popover] {
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  border: 0;
+  overflow: visible;
+  max-width: 240px;
+  width: max-content;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: var(--color-bo-action);
+  color: var(--color-bo-action-text);
+  box-shadow: var(--bo-sh-ink);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  letter-spacing: -0.006em;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 120ms var(--bo-ease-out, ease-out), translate var(--bo-dauer-weich, 420ms) var(--ease-feder-weich, ease-out), overlay 120ms allow-discrete, display 120ms allow-discrete;
+}
+.bo-ov-tip[popover]:not(:popover-open) { opacity: 0; }
+@starting-style {
+  .bo-ov-tip[popover]:popover-open { opacity: 0; translate: 0 var(--bo-ov-tip-von, -4px); }
+}
+
+/* ------------------------------------------------------------------ Dialog */
+dialog.bo-ov-dialog {
+  margin: auto;
+  padding: 0;
+  border: 0;
+  width: min(calc(100vw - 32px), var(--bo-ov-breite, 400px));
+  max-width: none;
+  max-height: calc(100dvh - 48px);
+  overflow: hidden;
+  border-radius: 32px;
+  corner-shape: superellipse(1.35);
+  background: var(--color-bo-mat-strong);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float);
+  color: var(--color-bo-text);
+}
+dialog.bo-ov-dialog[open] { display: flex; flex-direction: column; }
+dialog.bo-ov-dialog::backdrop,
+dialog.bo-ov-sheet::backdrop {
+  background: var(--color-bo-overlay);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+}
+.bo-ov-dialog__innen { display: flex; min-height: 0; flex: 1; flex-direction: column; }
+.bo-ov-dialog__kopf { padding: 24px 24px 0; }
+.bo-ov-dialog__koerper { min-height: 0; flex: 1; overflow: auto; overscroll-behavior: contain; padding: 0 24px; }
+.bo-ov-dialog__fuss { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; padding: 20px 24px 24px; }
+.bo-ov-titel { font-size: 20px; line-height: 26px; font-weight: 600; letter-spacing: -0.016em; text-wrap: balance; }
+.bo-ov-text { margin-top: 6px; font-size: 15px; line-height: 22px; color: var(--color-bo-text-soft); text-wrap: pretty; }
+
+/* Bestätigen: zentriert wie ein iOS-Hinweis, zwei gleich breite Knöpfe. */
+.bo-ov-dialog[data-art="bestaetigen"] .bo-ov-dialog__kopf { padding-top: 28px; text-align: center; }
+.bo-ov-dialog[data-art="bestaetigen"] .bo-ov-dialog__fuss { display: grid; grid-template-columns: 1fr 1fr; }
+.bo-ov-dialog[data-art="bestaetigen"] .bo-ov-dialog__fuss > * { width: 100%; }
+.bo-ov-symbol {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  border-radius: 999px;
+  background: var(--color-bo-fill-2);
+  color: var(--color-bo-text);
+}
+.bo-ov-symbol[data-ton="gefahr"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-danger-text); }
+.bo-ov-symbol[data-ton="ok"] { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+
+/* Fakten: eingelassene Karte (Kachel-Fläche, Radius 16), Zeilen mit Haarlinie dazwischen. */
+.bo-ov-fakten {
+  margin-top: 16px;
+  border-radius: 16px;
+  background: var(--color-bo-surface);
+  box-shadow: var(--bo-sh-card);
+  text-align: left;
+}
+.bo-ov-fakten > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; min-height: 44px; padding: 11px 16px; font-size: 15px; line-height: 22px; }
+.bo-ov-fakten > div + div { box-shadow: inset 0 var(--bo-hair) 0 var(--color-bo-line); }
+.bo-ov-fakten dt { color: var(--color-bo-text-soft); }
+.bo-ov-fakten dd { margin: 0; font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Unten (schmal): Sheet mit Griff, 8 px vom Rand, voll gerundet; Knöpfe untereinander, Primär oben. */
+dialog.bo-ov-dialog[data-seite="unten"] {
+  margin: auto auto max(8px, env(safe-area-inset-bottom));
+  width: calc(100vw - 16px);
+  max-height: 92dvh;
+}
+dialog.bo-ov-dialog[data-seite="unten"] .bo-ov-dialog__kopf { padding-top: 8px; }
+dialog.bo-ov-dialog[data-seite="unten"] .bo-ov-dialog__fuss { display: flex; flex-direction: column-reverse; padding-bottom: 20px; }
+dialog.bo-ov-dialog[data-seite="unten"] .bo-ov-dialog__fuss > * { width: 100%; min-height: 48px; }
+
+/* ------------------------------------------------------------------ Sheet (rechts schwebend / unten) */
+dialog.bo-ov-sheet {
+  position: fixed;
+  inset: 12px 12px 12px auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: min(calc(100vw - 24px), var(--bo-ov-breite, 480px));
+  height: auto;
+  max-width: none;
+  max-height: none;
+  overflow: hidden;
+  border-radius: 28px;
+  corner-shape: superellipse(1.35);
+  background: var(--color-bo-mat-strong);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float);
+  color: var(--color-bo-text);
+}
+dialog.bo-ov-sheet[open] { display: flex; flex-direction: column; }
+dialog.bo-ov-sheet::backdrop {
+  background: var(--color-bo-overlay-leicht);
+  -webkit-backdrop-filter: blur(4px) saturate(120%);
+  backdrop-filter: blur(4px) saturate(120%);
+}
+/* Peek: nicht modal, ohne Scrim, unter der Kopfzeile der Shell (Liste bleibt bedienbar). */
+dialog.bo-ov-sheet[data-peek="true"] { z-index: 60; inset: var(--bo-ov-peek-oben, 12px) 12px 12px auto; }
+dialog.bo-ov-sheet[data-seite="unten"] {
+  inset: auto 8px max(8px, env(safe-area-inset-bottom)) 8px;
+  width: auto;
+  max-height: 92dvh;
+  border-radius: 32px;
+}
+dialog.bo-ov-sheet[data-ziehen="true"],
+dialog.bo-ov-dialog[data-ziehen="true"] { transition: none !important; }
+
+.bo-ov-sheet__kopf {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 8px 10px 8px 24px;
+}
+dialog.bo-ov-sheet[data-seite="unten"] .bo-ov-sheet__kopf { padding-top: 0; min-height: 52px; }
+.bo-ov-sheet__titel { min-width: 0; flex: 1; }
+.bo-ov-sheet__titel h2 { font-size: 17px; line-height: 24px; font-weight: 600; letter-spacing: -0.012em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bo-ov-sheet__titel p { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bo-ov-sheet__werkzeuge { display: flex; flex: none; align-items: center; gap: 4px; }
+.bo-ov-sheet__koerper { min-height: 0; flex: 1; overflow: auto; overscroll-behavior: contain; padding: 4px 24px 24px; }
+.bo-ov-sheet__fuss {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px 16px;
+  box-shadow: inset 0 var(--bo-hair) 0 var(--color-bo-line);
+}
+@media (max-width: 639px) { .bo-ov-sheet__position { display: none; } }
+.bo-ov-sheet__position { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; white-space: nowrap; padding: 0 4px; }
+
+/* Runde Werkzeugknöpfe im Material (40, flach, Fläche beim Überfahren). */
+.bo-ov-rund {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  color: var(--color-bo-text-soft);
+  transition: background-color 160ms, color 160ms, scale var(--bo-dauer-weich, 420ms) var(--ease-feder, ease-out);
+}
+.bo-ov-rund:hover:not(:disabled) { background: var(--color-bo-fill-2); color: var(--color-bo-text); }
+.bo-ov-rund:active:not(:disabled) { scale: 0.92; transition-duration: 80ms; }
+.bo-ov-rund:disabled { opacity: 0.35; }
+.bo-ov-rund svg { width: 20px; height: 20px; }
+@media (pointer: coarse) { .bo-ov-rund { width: 44px; height: 44px; } }
+
+/* Peek-Zeile in der Liste: Fläche + 3-px-Tinte-Kante links (Lounge „Auswahl“). */
+[data-peek-aktiv="true"] { background: var(--color-bo-selected); box-shadow: inset 3px 0 0 var(--color-bo-text); }
+
+/* ------------------------------------------------------------------ Lightbox (dunkel in beiden Schemata) */
+dialog.bo-ov-lightbox {
+  --lb-text: rgb(244 241 236);
+  --lb-text-2: rgb(244 241 236 / 0.68);
+  --lb-glas: rgb(40 43 46 / 0.56);
+  --lb-glas-hover: rgb(64 68 72 / 0.7);
+  --lb-kante: rgb(255 255 255 / 0.1);
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  overflow: hidden;
+  border-radius: 0;
+  background: rgb(14 15 16 / 0.9);
+  color: var(--lb-text);
+}
+dialog.bo-ov-lightbox[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+dialog.bo-dialog.bo-ov-lightbox::backdrop {
+  background: rgb(8 9 10 / 0.6);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+}
+.bo-ov-lb__glas {
+  background: var(--lb-glas);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--lb-kante);
+}
+.bo-ov-lb__leiste { display: flex; align-items: center; gap: 8px; padding: 16px; }
+.bo-ov-lb__titel { min-width: 0; flex: 1; padding: 0 8px; }
+.bo-ov-lb__titel h2 { font-size: 17px; line-height: 24px; font-weight: 600; letter-spacing: -0.012em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bo-ov-lb__titel p { font-size: 13px; line-height: 18px; color: var(--lb-text-2); font-variant-numeric: tabular-nums; }
+.bo-ov-lb__rund {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 999px;
+  color: var(--lb-text);
+  transition: background-color 160ms, scale var(--bo-dauer-weich, 420ms) var(--ease-feder, ease-out);
+}
+.bo-ov-lb__rund:hover:not(:disabled) { background: var(--lb-glas-hover); }
+.bo-ov-lb__rund:active:not(:disabled) { scale: 0.92; transition-duration: 80ms; }
+.bo-ov-lb__rund:disabled { opacity: 0.3; }
+.bo-ov-lb__rund svg { width: 20px; height: 20px; }
+.bo-ov-lb__rund:focus-visible, .bo-ov-lb__zoom button:focus-visible, .bo-ov-lb__mini:focus-visible, .bo-ov-lb__link:focus-visible { outline: 2px solid rgb(226 167 127); outline-offset: 2px; }
+.bo-ov-lb__zoom { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; }
+.bo-ov-lb__zoom button { min-width: 44px; height: 38px; padding: 0 12px; border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--lb-text-2); font-variant-numeric: tabular-nums; transition: background-color 200ms, color 200ms; }
+.bo-ov-lb__zoom button[aria-pressed="true"] { background: rgb(244 241 236); color: rgb(26 29 32); }
+.bo-ov-lb__buehne { position: relative; display: grid; place-items: center; min-height: 0; padding: 0 72px; overflow: hidden; }
+.bo-ov-lb__bild {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 24px 64px rgb(0 0 0 / 0.4);
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
+  transition: transform var(--bo-dauer-feder, 620ms) var(--ease-feder, ease-out), opacity 160ms;
+  cursor: zoom-in;
+}
+.bo-ov-lb__bild[data-zoom="2"] { cursor: grab; border-radius: 0; }
+.bo-ov-lb__bild[data-ziehen="true"] { transition: none; cursor: grabbing; }
+.bo-ov-lb__pdf { width: min(100%, 960px); height: 100%; border: 0; border-radius: 20px; background: rgb(250 248 245); }
+.bo-ov-lb__pfeil { position: absolute; top: 50%; translate: 0 -50%; }
+.bo-ov-lb__pfeil[data-richtung="zurueck"] { left: 16px; }
+.bo-ov-lb__pfeil[data-richtung="weiter"] { right: 16px; }
+.bo-ov-lb__hinweis { display: grid; justify-items: center; gap: 12px; max-width: 360px; padding: 24px; border-radius: 28px; text-align: center; font-size: 15px; line-height: 22px; color: var(--lb-text-2); }
+.bo-ov-lb__fuss { display: grid; gap: 12px; justify-items: center; padding: 12px 16px 16px; }
+.bo-ov-lb__zeile { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 16px; min-height: 36px; padding: 6px 16px; border-radius: 999px; font-size: 13px; line-height: 18px; color: var(--lb-text-2); }
+.bo-ov-lb__zeile strong { font-weight: 500; color: var(--lb-text); }
+.bo-ov-lb__punkt { display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 999px; background: currentColor; vertical-align: 1px; }
+.bo-ov-lb__punkt[data-ton="ok"] { background: rgb(150 180 140); }
+.bo-ov-lb__punkt[data-ton="warn"] { background: rgb(214 176 112); }
+.bo-ov-lb__punkt[data-ton="aus"] { background: rgb(190 194 198); }
+.bo-ov-lb__minis { display: flex; gap: 8px; max-width: 100%; padding: 4px; overflow-x: auto; scrollbar-width: none; }
+.bo-ov-lb__mini { position: relative; flex: none; width: 56px; height: 42px; overflow: hidden; border-radius: 10px; opacity: 0.55; transition: opacity 200ms, scale var(--bo-dauer-weich, 420ms) var(--ease-feder, ease-out); }
+.bo-ov-lb__mini img { width: 100%; height: 100%; object-fit: cover; }
+.bo-ov-lb__mini:hover { opacity: 0.85; }
+.bo-ov-lb__mini[aria-current="true"] { opacity: 1; box-shadow: 0 0 0 2px rgb(244 241 236); }
+.bo-ov-lb__mini-pdf { display: grid; place-items: center; width: 100%; height: 100%; background: rgb(64 68 72); color: var(--lb-text); }
+.bo-ov-lb__link { color: var(--lb-text); text-decoration: underline; text-underline-offset: 3px; }
+.bo-ov-lb__tasten { font-size: 12px; line-height: 16px; color: var(--lb-text-2); }
+@media (max-width: 639px) {
+  .bo-ov-lb__buehne { padding: 0 8px; }
+  .bo-ov-lb__pfeil { display: none; }
+  .bo-ov-lb__tasten { display: none; }
+  .bo-ov-lb__leiste { padding: 12px 8px; gap: 4px; }
+}
+
+/* ------------------------------------------------------------------ Reduzierte Bewegung, Druck */
+@media (prefers-reduced-motion: reduce) {
+  .bo-ov-tip[popover], .bo-ov-lb__bild, .bo-ov-rund, .bo-ov-lb__rund, .bo-ov-lb__mini { transition-duration: 1ms; }
+  @starting-style { .bo-ov-tip[popover]:popover-open { translate: 0 0; } }
+}
+@media print {
+  .bo-ov-pop, .bo-ov-tip, dialog.bo-ov-sheet, dialog.bo-ov-lightbox { display: none !important; }
+}

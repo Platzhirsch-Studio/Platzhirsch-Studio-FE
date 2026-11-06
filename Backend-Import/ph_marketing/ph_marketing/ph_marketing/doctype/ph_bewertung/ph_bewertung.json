@@ -1,0 +1,395 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 18:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Bewertung",
+ "owner": "Administrator",
+ "index_web_pages_for_search": 0,
+ "autoname": "naming_series:",
+ "allow_import": 1,
+ "allow_rename": 0,
+ "title_field": "titel",
+ "search_fields": "status,quelle,sterne,autor_anzeige",
+ "sort_field": "eingang",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "description": "Bewertung bzw. direkte Rückmeldung (/de/bewerten, QR-Karte, Google-Import): ohne Gating, ohne Anreiz, öffentlich nur maskiert und bei direkten Rückmeldungen nur mit Einwilligung.",
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Serie",
+   "options": "PH-BWT-.YYYY.-.#####",
+   "default": "PH-BWT-.YYYY.-.#####",
+   "hidden": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Neu\nVeroeffentlicht\nAusgeblendet",
+   "default": "Neu",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "Direkt\nQR-Karte\nGoogle\nMail",
+   "default": "Direkt",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "anlass",
+   "fieldtype": "Select",
+   "label": "Anlass",
+   "options": "\nLieferung\nMontage\nAbholung\nBeratung\nService\nSonstiges",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sterne",
+   "fieldtype": "Int",
+   "label": "Sterne (0 = ohne)",
+   "in_list_view": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "eingang",
+   "fieldtype": "Datetime",
+   "label": "Eingang",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bewertet_am",
+   "fieldtype": "Date",
+   "label": "Bewertet am (Google)"
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "zugewiesen_an",
+   "fieldtype": "Link",
+   "label": "Zugewiesen an",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_inhalt",
+   "fieldtype": "Section Break",
+   "label": "Rückmeldung"
+  },
+  {
+   "fieldname": "text",
+   "fieldtype": "Text",
+   "label": "Text"
+  },
+  {
+   "fieldname": "sb_person",
+   "fieldtype": "Section Break",
+   "label": "Person"
+  },
+  {
+   "fieldname": "autor_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "length": 140
+  },
+  {
+   "fieldname": "autor_anzeige",
+   "fieldtype": "Data",
+   "label": "Anzeige (maskiert)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email"
+  },
+  {
+   "fieldname": "sb_veroeff",
+   "fieldtype": "Section Break",
+   "label": "Veröffentlichung"
+  },
+  {
+   "fieldname": "einwilligung_veroeffentlichung",
+   "fieldtype": "Check",
+   "label": "Einwilligung zur Veröffentlichung",
+   "default": "0",
+   "description": "Nur für direkte Rückmeldungen nötig; Google-Bewertungen sind dort bereits öffentlich."
+  },
+  {
+   "fieldname": "textversion",
+   "fieldtype": "Data",
+   "label": "Textversion der Einwilligung",
+   "length": 80
+  },
+  {
+   "fieldname": "veroeffentlicht_am",
+   "fieldtype": "Datetime",
+   "label": "Veröffentlicht am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ausgeblendet_grund",
+   "fieldtype": "Select",
+   "label": "Grund für Ausblenden",
+   "options": "\nRechtsverletzung\nSpam\nKein Kundenbezug\nWiderruf der Einwilligung",
+   "read_only": 1,
+   "description": "Nur diese Gründe, nie wegen weniger Sterne (Google-Richtlinie, UWG)."
+  },
+  {
+   "fieldname": "sb_antwort",
+   "fieldtype": "Section Break",
+   "label": "Antwort des Teams"
+  },
+  {
+   "fieldname": "antwort",
+   "fieldtype": "Text",
+   "label": "Antwort (öffentlich)"
+  },
+  {
+   "fieldname": "beantwortet_am",
+   "fieldtype": "Datetime",
+   "label": "Beantwortet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "interne_notiz",
+   "fieldtype": "Text",
+   "label": "Interne Notiz",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "externe_id",
+   "fieldtype": "Data",
+   "label": "Externe ID (Google)",
+   "length": 140,
+   "unique": 1
+  },
+  {
+   "fieldname": "seite",
+   "fieldtype": "Data",
+   "label": "Seite",
+   "length": 140,
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotency-Key",
+   "length": 80,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP-Hash",
+   "length": 16,
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "states": [
+  {
+   "title": "Neu",
+   "color": "Blue"
+  },
+  {
+   "title": "Veroeffentlicht",
+   "color": "Green"
+  },
+  {
+   "title": "Ausgeblendet",
+   "color": "Gray"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "quelle",
+  "anlass",
+  "sterne",
+  "cb_1",
+  "eingang",
+  "bewertet_am",
+  "kontakt",
+  "zugewiesen_an",
+  "sb_inhalt",
+  "text",
+  "sb_person",
+  "autor_name",
+  "autor_anzeige",
+  "cb_2",
+  "email",
+  "sb_veroeff",
+  "einwilligung_veroeffentlichung",
+  "textversion",
+  "veroeffentlicht_am",
+  "cb_3",
+  "ausgeblendet_grund",
+  "sb_antwort",
+  "antwort",
+  "beantwortet_am",
+  "interne_notiz",
+  "sb_system",
+  "externe_id",
+  "seite",
+  "cb_4",
+  "idempotency_key",
+  "ip_hash"
+ ]
+}

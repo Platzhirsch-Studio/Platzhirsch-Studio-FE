@@ -20,7 +20,8 @@
      portal_file(kontakt, kunde_token, file_url)    → {name, mime, size, content_base64}  (nur eigene, private Dateien)
    Tagebuch/Referenz: ph_projekte.api.tagebuch (hier re-exportiert).
 
-2. Desk: auftragsmappe(projekt) für die Page „ph-auftragsmappe“, projekt_aus_anfrage(anfrage),
+2. Desk: projekt_kalkulation_v2(projekt), kalkulation_einstellungen(), kalkulation_einstellungen_speichern(...) (api/kalkulation.py),
+   auftragsmappe(projekt) für die Page „ph-auftragsmappe“, projekt_aus_anfrage(anfrage),
    Number-Card-Methoden anzahl_offene_maengel / anzahl_renderings_ohne_antwort.
 
 Fehlercodes wie die Website (CONVENTIONS 11): invalid 400, forbidden 403, not_found/invalid_token 404,
@@ -36,6 +37,22 @@ from frappe.utils import add_days, cint, get_datetime, now_datetime
 
 from ph_core.api import ApiFehler, ip_hash, pflicht, ph_api, text
 from ph_projekte.api.basis import customer, kontakt_meta_ok, kunde, projekt_des_kunden
+from ph_projekte.api.auftrag import (  # noqa: F401 – re-export: ph_projekte.api.<methode>
+    auftragsmappe_pdf,
+    montage_kollisionen,
+    montage_plantafel,
+    portal_change_order_decide,
+    portal_change_orders,
+    portal_planning_decide,
+    portal_plannings,
+    projekt_kalkulation,
+)
+from ph_projekte.api.kalkulation import (  # noqa: F401 – re-export: Projektnachkalkulation (Leitung/GF)
+    kalkulation_einstellungen,
+    kalkulation_einstellungen_speichern,
+    projekt_kalkulation_v2,
+)
+from ph_projekte.api.tagebuch import tagebuch_list_alle  # noqa: F401,E402 – Teamliste (Integration Runde 3)
 from ph_projekte.api.tagebuch import (  # noqa: F401 – re-export für ph_projekte.api.tagebuch_*
     referenz_create,
     referenz_file,
@@ -87,12 +104,33 @@ def portal_login_token(email):
     if meta.has_field("portal_aktiv") and not cint(frappe.db.get_value("PH Kontakt", name, "portal_aktiv")):
         return {"found": False}
     token = neuer_token()
-    werte = {"portal_token_hash": token_hash(token)}
-    if meta.has_field("portal_letzter_login"):
-        werte["portal_letzter_login"] = now_datetime()
-    frappe.db.set_value("PH Kontakt", name, werte, update_modified=False)
-    k = _kunde(name, token)
+    from ph_projekte.api.basis import sitzung_anlegen
+
+    if frappe.db.exists("DocType", "PH Portal Sitzung"):
+        # Mehrere gültige Tokens je Kontakt: neue Sitzung „Angefordert“, bestehende Sitzungen bleiben (60-…, Lücke 1)
+        sitzung_anlegen(name, token)  # portal_token_hash folgt bei der ersten Nutzung (Aktivierung)
+    else:
+        werte = {"portal_token_hash": token_hash(token)}
+        if meta.has_field("portal_letzter_login"):
+            werte["portal_letzter_login"] = now_datetime()
+        frappe.db.set_value("PH Kontakt", name, werte, update_modified=False)
+    felder = ["name"] + [f for f in ("email", "anrede", "vorname", "nachname", "firma", "telefon", "strasse", "plz", "ort", "land", "berater") if meta.has_field(f)]
+    k = frappe.db.get_value("PH Kontakt", name, felder, as_dict=True)
     return {"found": True, "kontakt": name, "kunde_token": token, "customer": _customer(k)}
+
+
+@frappe.whitelist(allow_guest=False, methods=["POST"])
+@ph_api(limit_pro_minute=30)
+def portal_logout(kontakt, kunde_token):
+    """Logout der Website: widerruft nur die Sitzung dieses Tokens; andere Geräte bleiben angemeldet.
+    Antwort immer {ok: true} (kein Rückschluss auf gültige Tokens)."""
+    from ph_projekte.api.basis import sitzung_widerrufen
+
+    kontakt = text(kontakt, 80)
+    pflicht({"kontakt": kontakt, "kunde_token": kunde_token}, "kontakt", "kunde_token")
+    kontakt_meta_ok()
+    sitzung_widerrufen(kontakt, kunde_token)
+    return {"ok": True}
 
 
 @frappe.whitelist(allow_guest=False, methods=["POST", "GET"])
@@ -272,6 +310,8 @@ def _pass_payload(name):
         "brand": pp.marke or "",
         "variant": pp.ausfuehrung_text or "",
         "serialNumber": pp.seriennummer or None,
+        "eNumber": pp.get("e_nummer") or None,  # Geräte (E-Nr./FD am Typenschild) – gleiche Felder wie PH Servicefall
+        "fdNumber": pp.get("fd_nummer") or None,
         "materials": [m.material + (f" ({m.anteil})" if m.anteil else "") for m in pp.materialien],
         "care": [c.hinweis for c in pp.pflege],
         "careCategory": pp.pflegekategorie or "",
@@ -603,7 +643,7 @@ def auftragsmappe(projekt):
         "projekt": {f: p.get(f) for f in ("name", "titel", "projektart", "status", "kunde_name", "kontakt", "berater", "planer", "montageleiter", "eingang", "raum", "kurzbeschreibung", "objekt_strasse", "objekt_plz", "objekt_ort", "objekt_hinweis", "liefertermin_geplant", "montage_von", "montage_bis", "uebergabe_am", "portal_sichtbar", "abnahme", "prioritaet")},
         "kontakt": kontakt,
         "phasen": [{"phase": z.phase, "datum": z.datum, "von": z.von, "notiz": z.notiz} for z in p.phasen_verlauf],
-        "positionen": [{"name": z.name, "bezeichnung": z.bezeichnung, "marke": z.marke, "menge": z.menge, "status": z.status, "raum": z.raum, "produktpass": z.produktpass} for z in p.positionen],
+        "positionen": [{"name": z.name, "bezeichnung": z.bezeichnung, "marke": z.marke, "menge": z.menge, "status": z.status, "raum": z.raum, "produktpass": z.produktpass, "lieferant": z.lieferant, "lieferstatus": z.lieferstatus, "menge_geliefert": z.menge_geliefert, "liefertermin": z.liefertermin, "herstellerbestellung": z.herstellerbestellung, "nachlieferung_noetig": z.nachlieferung_noetig, "montage_art": z.montage_art} for z in p.positionen],
         "team": [{"user": z.user, "rolle": z.rolle} for z in p.team],
         "summen": {f: p.get(f) for f in ("budget_cent", "auftragswert_cent", "anzahlung_cent", "bezahlt_cent", "offen_cent", "zeit_min_gesamt")} if leitung else None,
         "planungen": frappe.get_all("PH Planung", filters={"projekt": projekt}, fields=["name", "titel", "version", "status", "quelle_planung", "datei", "vorschau", "modified"], order_by="version desc"),
@@ -618,6 +658,8 @@ def auftragsmappe(projekt):
         "aufgaben": frappe.get_all("PH Projekt Aufgabe", filters={"projekt": projekt, "status": ("in", ("Offen", "In Arbeit"))}, fields=["name", "titel", "status", "faellig", "zugewiesen_an", "prioritaet"], order_by="faellig asc"),
         "zeiten": frappe.get_all("PH Projektzeit", filters={"projekt": projekt}, fields=["name", "datum", "user", "taetigkeit", "dauer_min", "status", "abrechenbar"], order_by="datum desc", limit=30),
         "nachrichten": frappe.get_all("PH Projekt Nachricht", filters={"projekt": projekt}, fields=["name", "richtung", "autor", "text", "gesendet_am", "status"], order_by="gesendet_am desc", limit=20),
+        "aufmasse": frappe.get_all("PH Aufmass", filters={"projekt": projekt}, fields=["name", "titel", "status", "datum", "aufgenommen_von", "plausibilitaet"], order_by="datum desc"),
+        "nachtraege": [{k: v for k, v in n.items() if leitung or not k.endswith("_cent") or k == "differenz_cent"} for n in frappe.get_all("PH Nachtrag", filters={"projekt": projekt}, fields=["name", "titel", "status", "datum", "differenz_cent", "vorgelegt_am", "entscheidung_am"], order_by="nummer_im_projekt asc")],
         "referenzen": frappe.get_all("PH Referenz", filters={"projekt": projekt}, fields=["name", "titel", "status", "slug", "eingereicht_am"]),
         "apps": {},
     }
@@ -627,14 +669,18 @@ def auftragsmappe(projekt):
         "auftraege": ("PH Auftragsbestaetigung", ["name", "datum", "status", "auftragswert_cent", "anzahlung_soll_cent", "anzahlung_ist_cent", "offen_cent", "liefertermin_bestaetigt", "docstatus"]),
         "rechnungen": ("PH Rechnung", ["name", "art", "datum", "status", "brutto_cent", "bezahlt_cent", "offen_cent", "faellig", "docstatus"]),
         "lieferscheine": ("PH Lieferschein", ["name", "datum", "status", "docstatus"]),
-        "herstellerbestellungen": ("PH Herstellerbestellung", ["name", "lieferant", "datum", "status", "liefertermin_bestaetigt", "docstatus"]),
         "sendungen": ("PH Sendung", ["name", "status", "carrier", "tracking_nummer", "modified"]),
         "servicefaelle": ("PH Servicefall", ["name", "titel", "status", "modified"]),
         "zahlungen": ("PH Zahlung", ["name", "art", "betrag_cent", "status", "bezahlt_am"]),
         "termine": ("PH Termin", ["name", "terminart", "start", "ende", "status", "modus"]),
     }
+    # Herstellerbestellungen hängen über bezug_doctype/bezug_name (ph_sortiment) am Projekt, nicht über ein Feld „projekt“
+    fremd_filter = {}
+    if frappe.db.exists("DocType", "PH Herstellerbestellung"):
+        fremd["herstellerbestellungen"] = ("PH Herstellerbestellung", ["name", "lieferant", "datum", "status", "bestaetigter_termin", "liefertermin_ist", "abweichungen_offen", "summe_ek_cent", "docstatus"])
+        fremd_filter["herstellerbestellungen"] = {"bezug_doctype": "PH Projekt", "bezug_name": projekt, "docstatus": ("<", 2)}
     for key, (dt, felder) in fremd.items():
-        rows = _optional(dt, {"projekt": projekt, "docstatus": ("<", 2)}, felder)
+        rows = _optional(dt, fremd_filter.get(key) or {"projekt": projekt, "docstatus": ("<", 2)}, felder)
         daten["apps"][dt] = rows is not None
         if rows is not None and not leitung:
             for r in rows:

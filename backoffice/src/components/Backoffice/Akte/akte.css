@@ -1,0 +1,347 @@
+/* Akte-Gerüst, Hero mit Glas-Kacheln, Vorgangsleiste (Kundenreise), Bezüge, Slots, ErgebnisKarte,
+   PersonZelle – Team P0-5a (MASTER G-12 · G-14 · G-16 · G-28).
+   Maßstab: art-direction/lounge.md §4/§6/§8/§9/§12 und Entwurf src/app/entwurf/lounge/lounge-akte.css.
+   Nur Token aus globals.css (hell/dunkel kommen von dort). Ausnahme: Text und Glas-Pillen AUF dem
+   Hero-Foto sind in beiden Schemata hell (Bildlicht) und stehen deshalb als feste rgb-Werte hier.
+   Präfix bo-akte-, bo-reise-, bo-ergebnis-, bo-person-. Keine Hex-Werte. */
+
+/* ------------------------------------------------------------------ Gerüst */
+.bo-akte { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.bo-akte__reiter { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; min-width: 0; }
+.bo-akte__reiter-l { display: flex; align-items: center; gap: 12px; min-width: 0; max-width: 100%; overflow-x: auto; scrollbar-width: none; padding: 4px; margin: -4px; }
+.bo-akte__reiter-l::-webkit-scrollbar { display: none; }
+.bo-akte__reiter-l > * { flex-shrink: 0; }
+.bo-akte__reiter-l > .bo-seg { max-width: none; }
+.bo-akte__reiter-l > .bo-seg > .bo-seg__i { flex-shrink: 0; }
+.bo-akte__koerper { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+.bo-akte__haupt { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.bo-akte__rechts { display: none; flex-direction: column; gap: 24px; min-width: 0; }
+.bo-akte__nur-schmal { display: inline-flex; }
+@media (min-width: 1280px) {
+  .bo-akte__koerper[data-mit-spalte] { grid-template-columns: minmax(0, 1fr) minmax(320px, 400px); }
+  .bo-akte__rechts { display: flex; position: sticky; top: 104px; }
+  .bo-akte__nur-schmal { display: none; }
+}
+/* Unter 1280 px: rechte Spalte ist ein eigener Reiter (?tab=seite) und ersetzt dann den Hauptinhalt. */
+@media (max-width: 1279.98px) {
+  .bo-akte__koerper[data-seite="an"] .bo-akte__rechts { display: flex; }
+  .bo-akte__koerper[data-seite="an"] .bo-akte__haupt { display: none; }
+}
+
+/* ------------------------------------------------------------------ Kopf (Zurück · Pfad · rechts) */
+.bo-akte-kopf { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.bo-akte-kopf__zeile { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-width: 0; }
+.bo-akte-kopf__l { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.bo-akte-kopf__r { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.bo-akte-pfad { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 15px; line-height: 20px; color: var(--color-bo-text-soft); }
+.bo-akte-pfad ol { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.bo-akte-pfad li { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.bo-akte-pfad li > a, .bo-akte-pfad li > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bo-akte-pfad a { border-radius: 8px; transition: color 160ms ease; }
+.bo-akte-pfad a:hover { color: var(--color-bo-text); }
+.bo-akte-pfad [aria-current="page"] { color: var(--color-bo-text); font-weight: 600; }
+.bo-akte-pfad svg { flex-shrink: 0; color: var(--color-bo-text-faint); }
+.bo-akte-kopf__titel { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; min-width: 0; flex-wrap: wrap; }
+.bo-akte-kopf__h1 { font-size: 34px; line-height: 40px; font-weight: 600; letter-spacing: -0.022em; text-wrap: balance; }
+.bo-akte-kopf__nr { margin-top: 4px; font-size: 15px; line-height: 20px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.bo-akte-kopf__betrag { text-align: right; }
+.bo-akte-kopf__betrag-zahl { font-size: 34px; line-height: 36px; font-weight: 400; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bo-akte-kopf__betrag-unter { margin-top: 4px; font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-akte-kopf__aktionen { display: flex; align-items: center; gap: 8px; }
+@media (max-width: 639.98px) {
+  .bo-akte-kopf__zeile { flex-wrap: wrap; }
+  .bo-akte-kopf__l { flex: 1 1 200px; }
+  .bo-akte-kopf__h1 { font-size: 28px; line-height: 34px; }
+  .bo-akte-kopf__betrag { text-align: left; }
+  .bo-akte-pfad li:not(:last-child) { display: none; }
+}
+
+/* ------------------------------------------------------------------ Hero mit Glas-Kacheln (AeroLink) */
+.bo-akte-hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  height: 440px; border-radius: var(--radius-bo-fenster);
+  corner-shape: superellipse(1.35);
+  box-shadow: var(--bo-sh-tile);
+  background: linear-gradient(135deg, var(--color-bo-travertin-soft), var(--color-bo-surface-3));
+}
+.bo-akte-hero__bild { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.bo-akte-hero__scrim {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgb(18 16 14 / 0.62) 0%, rgb(18 16 14 / 0.18) 42%, rgb(18 16 14 / 0) 60%),
+    linear-gradient(0deg, rgb(18 16 14 / 0.42) 0%, rgb(18 16 14 / 0) 45%),
+    linear-gradient(180deg, rgb(18 16 14 / 0.28) 0%, rgb(18 16 14 / 0) 22%);
+}
+.bo-akte-hero__oben { position: absolute; left: 24px; right: 24px; top: 24px; display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.bo-akte-hero__chips, .bo-akte-hero__aktionen { display: flex; gap: 8px; flex-wrap: wrap; min-width: 0; }
+.bo-akte-hero__aktionen { justify-content: flex-end; }
+.bo-akte-hero__titel { position: absolute; left: 32px; bottom: 32px; max-width: min(480px, calc(100% - 520px)); min-width: 280px; color: rgb(255 255 255); }
+.bo-akte-hero__ueber { font-size: 15px; line-height: 20px; font-weight: 500; opacity: 0.9; }
+.bo-akte-hero__h1 { margin: 4px 0 8px; font-size: 48px; line-height: 52px; font-weight: 600; letter-spacing: -0.03em; text-wrap: balance; }
+.bo-akte-hero__unter { font-size: 14px; line-height: 20px; opacity: 0.88; }
+
+/* Glas-Chip (Nummer, Ort) und Glas-Pille (Aktion) direkt auf dem Bild */
+.bo-glas-chip, .bo-glas-pille {
+  display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; border-radius: 999px;
+  font-size: 13px; font-weight: 600; white-space: nowrap; color: rgb(255 255 255);
+  background: rgb(28 26 24 / 0.34); box-shadow: inset 0 0.5px 0 rgb(255 255 255 / 0.35);
+  -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+}
+.bo-glas-pille { height: 40px; padding: 0 16px; font-size: 14px; cursor: pointer; transition: transform var(--bo-dauer-weich) var(--ease-feder), background-color 200ms ease; }
+.bo-glas-pille:hover { background: rgb(28 26 24 / 0.5); }
+.bo-glas-pille:active { transform: scale(0.96); transition-duration: var(--bo-dauer-druck); }
+.bo-glas-pille[data-hell] { background: rgb(255 255 255 / 0.94); color: rgb(48 55 62); }
+.bo-glas-pille[data-hell]:hover { background: rgb(255 255 255); }
+.bo-glas-pille[aria-disabled="true"], .bo-glas-pille:disabled { opacity: 0.55; cursor: not-allowed; }
+.bo-glas-pille:focus-visible { outline: 2px solid rgb(255 255 255); outline-offset: 2px; }
+
+/* Glasplatte mit 2 × 2 Glas-Kacheln */
+.bo-akte-hero__glas {
+  position: absolute; right: 24px; bottom: 24px; width: 432px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 8px;
+  border-radius: 28px; corner-shape: superellipse(1.35);
+  background: rgb(255 255 255 / 0.16);
+  box-shadow: inset 0 0.5px 0 rgb(255 255 255 / 0.4), 0 24px 64px rgb(0 0 0 / 0.18);
+  -webkit-backdrop-filter: blur(12px) saturate(160%); backdrop-filter: blur(12px) saturate(160%);
+}
+.bo-akte-hero__glas[data-anzahl="1"], .bo-akte-hero__glas[data-anzahl="2"] { width: auto; }
+.bo-akte-hero__glas[data-anzahl="1"] { grid-template-columns: minmax(200px, 1fr); }
+.bo-akte-hero__glas[data-anzahl="2"] { grid-template-columns: repeat(2, minmax(196px, 1fr)); }
+.bo-akte-hero__glas[data-anzahl="3"] > :last-child { grid-column: span 2; }
+.bo-glas-kachel {
+  position: relative; display: flex; flex-direction: column; min-width: 0; min-height: 104px;
+  padding: 14px 16px; border-radius: 20px; text-align: left; color: var(--color-bo-text);
+  background: var(--color-bo-glass);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-glass-edge), 0 1px 2px rgb(0 0 0 / 0.06);
+  -webkit-backdrop-filter: blur(28px) saturate(180%); backdrop-filter: blur(28px) saturate(180%);
+}
+a.bo-glas-kachel { transition: transform var(--bo-dauer-weich) var(--ease-feder); }
+a.bo-glas-kachel:active { transform: scale(0.98); transition-duration: var(--bo-dauer-druck); }
+.bo-glas-kachel__kopf { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: -4px 0; min-height: 24px; }
+.bo-glas-kachel__cap { font-size: 12px; line-height: 16px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-glas-kachel__wert { margin-top: auto; font-size: 24px; line-height: 30px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bo-glas-kachel__wert[data-mittel] { font-size: 17px; line-height: 22px; letter-spacing: -0.012em; }
+.bo-glas-kachel__unter { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bo-glas-kachel__balken { display: block; margin-top: 8px; height: 6px; border-radius: 999px; background: var(--color-bo-fill-2); overflow: hidden; }
+.bo-glas-kachel__balken > span { display: block; height: 100%; border-radius: inherit; background: var(--color-bo-salbei); transform-origin: left; }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-glas-kachel__balken > span { animation: bo-wachsen-x var(--bo-dauer-feder) var(--ease-feder-weich) 240ms both; }
+}
+
+/* Ohne Bild: ruhige Travertin-Fläche, Text in Tinte */
+.bo-akte-hero[data-ohne-bild] { height: auto; min-height: 280px; }
+.bo-akte-hero[data-ohne-bild] .bo-akte-hero__titel { color: var(--color-bo-text); }
+.bo-akte-hero[data-ohne-bild] .bo-glas-chip, .bo-akte-hero[data-ohne-bild] .bo-glas-pille:not([data-hell]) { color: var(--color-bo-text); background: var(--color-bo-glass); box-shadow: inset 0 0.5px 0 var(--color-bo-glass-edge), var(--bo-sh-btn); }
+.bo-akte-hero[data-ohne-bild] .bo-akte-hero__glas { background: var(--color-bo-fill); box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .bo-akte-hero { animation: bo-erscheinen 700ms var(--ease-feder-weich) both; }
+}
+/* iPad hoch / schmal: Glasplatte unter den Titel, Hero wächst mit */
+@media (max-width: 1099.98px) {
+  .bo-akte-hero { height: auto; min-height: 440px; display: flex; flex-direction: column; justify-content: flex-end; padding: 96px 24px 24px; gap: 24px; }
+  .bo-akte-hero__titel { position: static; max-width: 100%; min-width: 0; padding: 0 8px; }
+  .bo-akte-hero__glas { position: static; width: 100%; }
+  .bo-akte-hero__glas[data-anzahl="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .bo-akte-hero__glas[data-anzahl="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bo-akte-hero__glas[data-anzahl="3"] > :last-child { grid-column: auto; }
+}
+@media (max-width: 767.98px) {
+  .bo-akte-hero__glas[data-anzahl="4"], .bo-akte-hero__glas[data-anzahl="3"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bo-akte-hero__glas[data-anzahl="3"] > :last-child { grid-column: span 2; }
+}
+@media (max-width: 639.98px) {
+  .bo-akte-hero { padding: 16px; border-radius: 28px; justify-content: space-between; min-height: 520px; }
+  .bo-akte-hero__oben { position: static; flex-direction: column; margin-bottom: auto; }
+  .bo-akte-hero__aktionen { justify-content: flex-start; }
+  .bo-akte-hero__h1 { font-size: 34px; line-height: 40px; }
+  .bo-akte-hero__titel { padding: 0 4px; }
+}
+
+/* ------------------------------------------------------------------ Band (höchstens eines) */
+.bo-akte-band { display: flex; align-items: center; gap: 14px; min-width: 0; padding: 12px 16px 12px 12px; border-radius: 20px; font-size: 14px; line-height: 20px; }
+.bo-akte-band__ico { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--color-bo-surface); }
+.bo-akte-band__text { min-width: 0; flex: 1; }
+.bo-akte-band__titel { font-weight: 600; }
+.bo-akte-band[data-ton="gefahr"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.bo-akte-band[data-ton="warnung"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-akte-band[data-ton="info"] { background: var(--color-bo-see-soft); color: var(--color-bo-see-text); }
+.bo-akte-band[data-ton="neutral"] { background: var(--color-bo-fill); color: var(--color-bo-text); }
+
+/* ------------------------------------------------------------------ Vorgangsleiste: Kundenreise (Sugar CRM) */
+.bo-reise { padding: 24px 24px 20px; }
+.bo-reise__kopf { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; min-width: 0; }
+.bo-reise__kopf-l { display: flex; align-items: center; gap: 20px; min-width: 0; flex-wrap: wrap; }
+.bo-reise__titel { font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: -0.016em; }
+.bo-reise__stand { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+.bo-reise__stand b { color: var(--color-bo-text); font-weight: 600; }
+.bo-reise__werkzeuge { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+.bo-reise__flaeche { position: relative; margin: 0 -8px; padding: 16px; border-radius: 24px; background: var(--color-bo-surface-2); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: thin; }
+.bo-reise__innen { position: relative; min-width: calc(var(--bo-reise-n, 7) * 132px + (var(--bo-reise-n, 7) - 1) * 28px); }
+.bo-reise__svg { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; z-index: 1; }
+.bo-reise__linie { fill: none; stroke: var(--color-bo-text); stroke-width: 1.5; opacity: 0.55; }
+.bo-reise__knoten { fill: var(--color-bo-surface); stroke: var(--color-bo-text); stroke-width: 1.5; }
+.bo-reise__svg .is-offen .bo-reise__linie { stroke-dasharray: 3 5; opacity: 0.4; }
+.bo-reise__svg .is-offen .bo-reise__knoten { stroke: var(--color-bo-text-faint); }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-reise__svg g:not(.is-offen) .bo-reise__linie[data-zeichnen] { stroke-dasharray: 1; stroke-dashoffset: 1; animation: bo-reise-zeichnen 400ms var(--ease-quiet) 180ms forwards; }
+  .bo-reise__svg .bo-reise__knoten { animation: bo-pop var(--bo-dauer-weich) var(--ease-feder) 200ms both; transform-box: fill-box; transform-origin: center; }
+}
+@keyframes bo-reise-zeichnen { to { stroke-dashoffset: 0; } }
+
+.bo-reise__spalten { position: relative; display: grid; grid-template-columns: repeat(var(--bo-reise-n, 7), minmax(0, 1fr)); gap: 28px; }
+.bo-reise__spalte { display: flex; flex-direction: column; gap: 12px; min-width: 0; scroll-snap-align: start; }
+.bo-reise__stufe {
+  flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 6px;
+  border-radius: 20px; corner-shape: superellipse(1.35);
+  background: var(--color-bo-surface); box-shadow: var(--bo-sh-card);
+}
+.bo-reise__spalte[aria-current="step"] .bo-reise__stufe { box-shadow: 0 0 0 1.5px var(--color-bo-text), var(--bo-sh-lift); }
+.bo-reise__karte { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 10px 10px 12px; border-radius: 14px; color: inherit; transition: background-color 200ms ease, transform var(--bo-dauer-weich) var(--ease-feder); }
+.bo-reise__karte + .bo-reise__karte { box-shadow: 0 calc(-1 * var(--bo-hair) - 2px) 0 -2px var(--color-bo-line); }
+a.bo-reise__karte:hover { background: var(--color-bo-surface-2); }
+a.bo-reise__karte:active { transform: scale(0.98); transition-duration: var(--bo-dauer-druck); }
+.bo-reise__karte-kopf { display: flex; align-items: center; justify-content: space-between; min-height: 32px; }
+.bo-reise__plus { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; color: var(--color-bo-text-soft); box-shadow: inset 0 0 0 1px var(--color-bo-line-strong); }
+.bo-reise__st { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; color: var(--color-bo-text-soft); }
+.bo-reise__karte[data-z="erledigt"] .bo-reise__st { color: var(--color-bo-salbei-text); }
+.bo-reise__karte-t { font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: -0.005em; overflow-wrap: anywhere; }
+.bo-reise__karte-d { margin-top: -6px; font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+.bo-reise__karte[data-z="offen"] .bo-reise__karte-t, .bo-reise__karte[data-z="uebersprungen"] .bo-reise__karte-t { font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-reise__karte[data-z="uebersprungen"] .bo-reise__karte-t { text-decoration: line-through; text-decoration-color: var(--color-bo-line-strong); }
+.bo-reise__karte[data-leer] .bo-reise__karte-t { font-style: normal; }
+.bo-reise__karte[data-z="aktuell"] { background: var(--color-bo-action); color: var(--color-bo-action-text); box-shadow: var(--bo-sh-ink); }
+.bo-reise__karte[data-z="aktuell"] .bo-reise__karte-d { color: var(--color-bo-action-text); opacity: 0.78; }
+.bo-reise__karte[data-z="aktuell"] .bo-reise__st { background: color-mix(in srgb, var(--color-bo-action-text) 14%, transparent); color: var(--color-bo-action-text); }
+.bo-reise__karte[data-z="aktuell"] .bo-reise__plus { color: var(--color-bo-action-text); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-bo-action-text) 35%, transparent); }
+a.bo-reise__karte[data-z="aktuell"]:hover { background: var(--color-bo-action); }
+.bo-reise__karte[data-z="aktuell"] .bo-av--ring { box-shadow: 0 0 0 2px var(--color-bo-action); }
+
+.bo-reise__name { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 28px; padding: 0 8px; border-radius: 999px; font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); text-align: center; }
+button.bo-reise__name { cursor: pointer; transition: background-color 160ms ease, color 160ms ease; }
+button.bo-reise__name:hover { background: var(--color-bo-fill); color: var(--color-bo-text); }
+.bo-reise__name svg { flex-shrink: 0; color: var(--color-bo-salbei-text); }
+.bo-reise__spalte[aria-current="step"] .bo-reise__name { color: var(--color-bo-text); font-weight: 600; }
+.bo-reise__name-zahl { min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; font-size: 11px; line-height: 18px; font-weight: 600; background: var(--color-bo-fill-2); color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+
+/* Popover-Inhalt (Objekte einer Stufe) */
+.bo-reise-objekte { display: flex; flex-direction: column; gap: 2px; min-width: 240px; }
+.bo-reise-objekte__kopf { padding: 4px 8px 8px; font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-reise-objekte__kopf b { display: block; font-size: 15px; line-height: 20px; color: var(--color-bo-text); font-weight: 600; }
+.bo-reise-objekte a, .bo-reise-objekte__zeile { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 40px; padding: 8px; border-radius: 14px; font-size: 14px; }
+.bo-reise-objekte a:hover { background: var(--color-bo-fill); }
+.bo-reise-objekte__info { font-size: 12px; color: var(--color-bo-text-soft); }
+
+/* Nächster Schritt */
+.bo-reise__naechster { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; padding: 12px 12px 12px 16px; border-radius: 20px; background: var(--color-bo-surface-2); flex-wrap: wrap; }
+.bo-reise__naechster-t { min-width: 0; font-size: 14px; line-height: 20px; }
+.bo-reise__naechster-t > span:first-child { display: block; font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-reise__naechster-t b { font-weight: 600; }
+.bo-reise__blocker { color: var(--color-bo-eiche-text); }
+
+/* Ohne Kachel (in Peek/Sheet eingebettet) */
+.bo-reise[data-ohne-kachel] { padding: 0; }
+
+/* Telefon (Lounge §12): senkrechte Stufenliste mit Knotenlinie links */
+.bo-reise__liste { display: none; }
+@media (max-width: 767.98px) {
+  .bo-reise { padding: 20px 16px 16px; }
+  .bo-reise__flaeche { display: none; }
+  .bo-reise__liste { display: flex; flex-direction: column; position: relative; padding-left: 8px; }
+  .bo-reise__kopf { flex-direction: column; align-items: flex-start; }
+}
+.bo-reise__l-stufe { position: relative; display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 14px; padding-bottom: 16px; }
+.bo-reise__l-stufe::before { content: ""; position: absolute; left: 11px; top: 26px; bottom: -2px; width: 2px; border-radius: 1px; background: var(--color-bo-text); opacity: 0.45; }
+.bo-reise__l-stufe[data-z="offen"]::before, .bo-reise__l-stufe[data-z="uebersprungen"]::before { background: none; border-left: 2px dashed var(--color-bo-line-strong); opacity: 1; width: 0; }
+.bo-reise__l-stufe:last-child::before { display: none; }
+.bo-reise__l-punkt { position: relative; z-index: 1; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--color-bo-surface); box-shadow: inset 0 0 0 1.5px var(--color-bo-text); color: var(--color-bo-text); margin-top: 2px; }
+.bo-reise__l-stufe[data-z="erledigt"] .bo-reise__l-punkt { background: var(--color-bo-text); color: var(--color-bo-surface); }
+.bo-reise__l-stufe[data-z="offen"] .bo-reise__l-punkt, .bo-reise__l-stufe[data-z="uebersprungen"] .bo-reise__l-punkt { box-shadow: inset 0 0 0 1.5px var(--color-bo-line-strong); color: var(--color-bo-text-faint); }
+.bo-reise__l-stufe[data-z="aktuell"] .bo-reise__l-punkt, .bo-reise__l-stufe[data-z="teilweise"] .bo-reise__l-punkt { background: var(--color-bo-action); color: var(--color-bo-action-text); box-shadow: 0 0 0 4px var(--color-bo-fill-2); }
+.bo-reise__l-titel { font-size: 15px; line-height: 22px; font-weight: 600; }
+.bo-reise__l-unter { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-reise__l-stufe[data-z="offen"] .bo-reise__l-titel { font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-reise__l-karten { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.bo-reise__l-karten .bo-reise__karte { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "t k" "d k"; column-gap: 12px; row-gap: 2px; align-items: center; padding: 8px 8px 8px 12px; }
+.bo-reise__l-karten .bo-reise__karte:not([data-z="aktuell"]) { background: var(--color-bo-surface-2); }
+.bo-reise__l-karten .bo-reise__karte + .bo-reise__karte { box-shadow: none; }
+.bo-reise__l-karten .bo-reise__karte-t { grid-area: t; }
+.bo-reise__l-karten .bo-reise__karte-d { grid-area: d; margin-top: 0; }
+.bo-reise__l-karten .bo-reise__karte-kopf { grid-area: k; gap: 4px; min-height: 0; }
+
+/* Kompakt (Liste/Karte): Punkte 6 px, ohne Text */
+.bo-reise-kompakt { display: inline-flex; align-items: center; gap: 4px; }
+.bo-reise-kompakt__p { width: 6px; height: 6px; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--color-bo-line-strong); }
+.bo-reise-kompakt__p[data-z="erledigt"] { background: var(--color-bo-text); box-shadow: none; }
+.bo-reise-kompakt__p[data-z="aktuell"], .bo-reise-kompakt__p[data-z="teilweise"] { width: 14px; border-radius: 999px; background: var(--color-bo-cognac); box-shadow: none; }
+.bo-reise-kompakt__p[data-z="uebersprungen"] { opacity: 0.4; }
+.bo-reise-kompakt__t { margin-left: 6px; font-size: 12px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------------------ Bezüge */
+.bo-bezuege { display: flex; flex-direction: column; gap: 16px; }
+.bo-bezuege__gruppe-t { margin: 0 0 4px; font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-bezuege__liste { display: flex; flex-direction: column; gap: 2px; margin: 0 -12px; }
+.bo-bezuege__zeile { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: 14px; min-height: 60px; padding: 8px 12px; border-radius: 16px; color: var(--color-bo-text); }
+a.bo-bezuege__zeile { transition: background-color 200ms ease, transform var(--bo-dauer-weich) var(--ease-feder); }
+a.bo-bezuege__zeile:hover { background: var(--color-bo-surface-2); }
+a.bo-bezuege__zeile:active { transform: scale(0.99); transition-duration: var(--bo-dauer-druck); }
+.bo-bezuege__ico { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--color-bo-surface-2); color: var(--color-bo-text); }
+.bo-bezuege__txt { min-width: 0; }
+.bo-bezuege__t { display: block; font-size: 15px; line-height: 20px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bo-bezuege__i { display: block; font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
+.bo-bezuege__r { display: flex; align-items: center; gap: 8px; color: var(--color-bo-text-faint); }
+.bo-bezuege__zahl { min-width: 24px; height: 24px; padding: 0 8px; border-radius: 999px; display: grid; place-items: center; font-size: 12px; font-weight: 600; background: var(--color-bo-fill-2); color: var(--color-bo-text); font-variant-numeric: tabular-nums; }
+.bo-bezuege__zahl[data-null] { color: var(--color-bo-text-faint); background: var(--color-bo-fill); }
+.bo-bezuege__zeile[data-still] .bo-bezuege__t { font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-bezuege__zeile-wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px; }
+
+/* ------------------------------------------------------------------ Slots */
+.bo-akte-slots { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--bo-bento-gap); }
+.bo-akte-slots > * { grid-column: span 12; min-width: 0; }
+@media (min-width: 1024px) { .bo-akte-slots > [data-breite="halb"] { grid-column: span 6; } }
+.bo-akte-slot__ruhe { padding: 16px; border-radius: 16px; background: var(--color-bo-surface-2); font-size: 14px; line-height: 20px; color: var(--color-bo-text-soft); }
+.bo-akte-slot__skelett { height: 160px; border-radius: 20px; }
+
+/* ------------------------------------------------------------------ ErgebnisKarte (Erfolgsmoment) */
+.bo-ergebnis { display: flex; flex-direction: column; gap: 20px; }
+.bo-ergebnis__kopf { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.bo-ergebnis__haken { flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+.bo-ergebnis[data-kompakt] .bo-ergebnis__haken { width: 44px; height: 44px; }
+.bo-ergebnis__titel { font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: -0.016em; text-wrap: balance; }
+.bo-ergebnis__unter { margin-top: 2px; font-size: 14px; line-height: 20px; color: var(--color-bo-text-soft); }
+.bo-ergebnis__zahl { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; border-radius: 20px; background: var(--color-bo-surface-2); }
+.bo-ergebnis__zahl-cap { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-ergebnis__zahl-wert { font-size: 40px; line-height: 44px; font-weight: 400; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bo-ergebnis[data-kompakt] .bo-ergebnis__zahl-wert { font-size: 28px; line-height: 32px; }
+/* Telefon: Zahl darf unter die Bezeichnung rutschen und wird etwas kleiner (Q3 G0: 89.160,00 € ragte bei 390 px heraus). */
+@media (max-width: 480px) { .bo-ergebnis__zahl { flex-wrap: wrap; gap: 4px 16px; } .bo-ergebnis__zahl-wert { font-size: 32px; line-height: 36px; } }
+.bo-ergebnis__doks-t { margin-bottom: 4px; font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-ergebnis__doks { display: flex; flex-direction: column; gap: 4px; margin: 0 -10px; }
+.bo-ergebnis__dok { display: grid; grid-template-columns: 40px minmax(0, 1fr) 16px; align-items: center; gap: 12px; min-height: 56px; padding: 8px 10px; border-radius: 16px; color: var(--color-bo-text); }
+a.bo-ergebnis__dok { transition: background-color 200ms ease, transform var(--bo-dauer-weich) var(--ease-feder); }
+a.bo-ergebnis__dok:hover { background: var(--color-bo-surface-2); }
+a.bo-ergebnis__dok:active { transform: scale(0.99); transition-duration: var(--bo-dauer-druck); }
+.bo-ergebnis__dok-ico { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--color-bo-cognac-soft); color: var(--color-bo-cognac-text); }
+.bo-ergebnis__dok-t { display: block; font-size: 14px; line-height: 20px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
+.bo-ergebnis__dok-i { display: block; font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bo-ergebnis__dok > svg { color: var(--color-bo-text-faint); }
+.bo-ergebnis__fuss { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-ergebnis__haken { animation: bo-pop var(--bo-dauer-weich) var(--ease-feder) both; }
+}
+
+/* ------------------------------------------------------------------ PersonZelle */
+.bo-person { display: inline-flex; align-items: center; gap: 10px; min-width: 0; max-width: 100%; color: var(--color-bo-text); vertical-align: middle; }
+.bo-person[data-g="24"] { gap: 8px; }
+a.bo-person { border-radius: 999px; padding-right: 8px; margin-right: -8px; transition: background-color 160ms ease; }
+a.bo-person:hover { background: var(--color-bo-fill); }
+.bo-person__txt { display: flex; flex-direction: column; min-width: 0; }
+.bo-person__name { font-size: 14px; line-height: 20px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bo-person[data-g="24"] .bo-person__name { font-size: 13px; line-height: 18px; }
+.bo-person__rolle { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bo-person__ab { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; line-height: 16px; color: var(--color-bo-eiche-text); }
+.bo-person__ab::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--color-bo-eiche); }
+.bo-person[data-leer] .bo-person__name { color: var(--color-bo-text-soft); font-weight: 400; }
+.bo-person[data-abwesend] .bo-av { opacity: 0.6; }
+.bo-person__leer-av { flex-shrink: 0; width: var(--av); height: var(--av); border-radius: 50%; box-shadow: inset 0 0 0 1px var(--color-bo-line-strong); display: grid; place-items: center; color: var(--color-bo-text-faint); }

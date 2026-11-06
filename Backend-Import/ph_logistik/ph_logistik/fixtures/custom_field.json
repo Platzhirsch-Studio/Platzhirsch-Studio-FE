@@ -64,5 +64,27 @@
   "no_copy": 1,
   "insert_after": "status",
   "description": "Rückwärts-Link aus ph_logistik; alle Lieferscheine über die Verknüpfungen."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Wareneingang Position-ph_logistik_platz",
+  "dt": "PH Wareneingang Position",
+  "module": "PH Logistik",
+  "fieldname": "ph_logistik_platz",
+  "label": "Lagerplatz",
+  "fieldtype": "Data",
+  "insert_after": "ph_logistik_lagerort",
+  "description": "Platz am Ziel-Lagerort (Platzetikett-Code „Lagerort/Platz“ wird beim Scan zerlegt)."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "PH Wareneingang Position-ph_logistik_kommission",
+  "dt": "PH Wareneingang Position",
+  "module": "PH Logistik",
+  "fieldname": "ph_logistik_kommission",
+  "label": "Kommission",
+  "fieldtype": "Data",
+  "insert_after": "ph_logistik_platz",
+  "description": "Projekt-/AB-Nummer dieser Position; leer = Kommission des Wareneingangs."
  }
 ]

@@ -5,6 +5,7 @@
 import { z } from "zod";
 import { ART_KEYS, THEMEN, modusOf } from "./types.js";
 import { TERMIN_LOCALES } from "./copy.js";
+import { attributionShape } from "../forms/attributionFields.js";
 
 import { EMAIL_RE, PHONE_RE } from "./patterns.js";
 
@@ -31,6 +32,8 @@ export const bookSchema = z
     website: z.string().max(500).optional().default(""),
     t: z.number().int().nonnegative().optional(),
     idem: z.string().regex(/^[A-Za-z0-9_-]{8,64}$/).optional(),
+    // utm_* / klick_id: nur mit Ads-Einwilligung vom Browser (forms/attributionFields.js).
+    ...attributionShape(z),
   })
   .superRefine((v, ctx) => {
     const add = (path) => ctx.addIssue({ code: "custom", path: [path], message: path });

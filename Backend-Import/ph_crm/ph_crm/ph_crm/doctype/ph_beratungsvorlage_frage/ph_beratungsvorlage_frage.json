@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 14:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "raum",
+  "frage",
+  "hinweis",
+  "pflicht"
+ ],
+ "fields": [
+  {"fieldname": "raum", "fieldtype": "Select", "options": "Wohnen\nEssen\nKueche\nSchlafen\nBad\nKind\nBuero\nFlur\nOutdoor\nPool\nLicht\nHotelzimmer\nLobby\nRestaurant\nGesamt\nSonstiges", "reqd": 1, "in_list_view": 1, "columns": 2, "label": "Raum"},
+  {"fieldname": "frage", "fieldtype": "Data", "reqd": 1, "in_list_view": 1, "columns": 5, "label": "Frage / Prüfpunkt"},
+  {"fieldname": "hinweis", "fieldtype": "Small Text", "in_list_view": 1, "columns": 2, "label": "Hinweis für Berater"},
+  {"fieldname": "pflicht", "fieldtype": "Check", "in_list_view": 1, "columns": 1, "label": "Pflicht"}
+ ],
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH CRM",
+ "name": "PH Beratungsvorlage Frage",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

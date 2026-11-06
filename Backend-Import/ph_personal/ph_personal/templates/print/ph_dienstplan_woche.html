@@ -1,0 +1,26 @@
+{% extends "templates/print/ph_basis.html" %}
+{% block titel %}Dienstplan KW {{ doc.kalenderwoche }}/{{ doc.jahr }}{% endblock %}
+{% block kopfrechts %}KW {{ doc.kalenderwoche }}/{{ doc.jahr }}<br>{{ ph_datum(doc.woche_von) }} – {{ ph_datum(doc.woche_bis) }}<br>{{ "Veröffentlicht" if doc.status == "Veroeffentlicht" else "Entwurf" }}{% endblock %}
+{% block css %} .ph-plan { width: 100%; border-collapse: collapse; font-size: 8.5pt; } .ph-plan th, .ph-plan td { border: 0.2mm solid #d1d5db; padding: 1.2mm; vertical-align: top; } .ph-plan th { background: #f5f3f0; } .ph-plan .frei { color: #9ca3af; } {% endblock %}
+{% block inhalt %}
+{% set tage = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"] %}
+{% set personen = [] %}
+{% for z in doc.schichten %}{% if z.mitarbeiter_name not in personen %}{% set _ = personen.append(z.mitarbeiter_name) %}{% endif %}{% endfor %}
+<h1>Dienstplan</h1>
+<table class="ph-plan">
+  <thead><tr><th>Person</th>{% for i in range(7) %}<th>{{ tage[i] }} {{ frappe.utils.formatdate(frappe.utils.add_days(doc.woche_von, i), "dd.MM.") }}</th>{% endfor %}<th>Stunden</th></tr></thead>
+  <tbody>
+  {% for p in personen %}
+    {% set ns = namespace(summe=0) %}
+    <tr><td>{{ p }}</td>
+    {% for i in range(7) %}
+      {% set tag = frappe.utils.getdate(frappe.utils.add_days(doc.woche_von, i)) %}
+      <td>{% for z in doc.schichten if z.mitarbeiter_name == p and frappe.utils.getdate(z.datum) == tag %}{{ (z.beginn|string)[:5] }}–{{ (z.ende|string)[:5] }}<br><span class="frei">{{ z.bereich or "" }}</span>{% set ns.summe = ns.summe + (z.netto_min or 0) %}{% if not loop.last %}<br>{% endif %}{% else %}<span class="frei">–</span>{% endfor %}</td>
+    {% endfor %}
+    <td>{{ "%.1f" % (ns.summe / 60) }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% if doc.pruefergebnis and doc.status != "Veroeffentlicht" %}<h2 style="margin-top:6mm">Prüfung</h2><p style="white-space:pre-line;font-size:8.5pt">{{ doc.pruefergebnis }}</p>{% endif %}
+<p style="margin-top:6mm;font-size:8pt;color:#6b7280">Ruhezeit mindestens 11 Stunden (AZG § 12), Wochenend-/Wochenruhe 36 Stunden (ARG § 3/§ 4). Änderungen bitte mit der Leitung abstimmen.</p>
+{% endblock %}

@@ -28,20 +28,30 @@ test("tx: ohne Schlüssel bleibt der bisherige DE-Text (vor der Übernahme)", ()
   assert.equal(tx(undefined, "Portal.nav.more", "Mehr"), "Mehr");
 });
 
+// Nav-Einträge, die nach dem R5-Vorschlag dazukamen (Kundenkarte 04.11.2026: key
+// "card"), stehen nur in src/messages/*.json – dort werden sie geprüft.
+const inProposal = (item) => item.key in proposal.de.Portal.nav;
+const live = Object.fromEntries(LOCALES.map((l) => [l, json(`src/messages/${l}.json`)]));
+
 test("tx: mit Schlüssel kommt der Text aus den Messages (nach der Übernahme), alle 4 Sprachen", () => {
   for (const l of LOCALES) {
     const t = translator(l, proposal[l]);
     assert.equal(tx(t, "Portal.nav.overview", "Übersicht"), proposal[l].Portal.nav.overview);
     assert.equal(tx(t, "Upload.problem.mail", "E-Mail an {email}", { email: "info@x.at" }).includes("info@x.at"), true);
-    for (const item of [...PORTAL_NAV, PORTAL_CTA]) {
+    for (const item of [...PORTAL_NAV, PORTAL_CTA].filter(inProposal)) {
       assert.equal(navLabel(t, item), proposal[l].Portal.nav[item.key], `${l} ${item.key}`);
+    }
+    const tl = translator(l, live[l]);
+    for (const item of [...PORTAL_NAV, PORTAL_CTA].filter((i) => !inProposal(i))) {
+      assert.equal(navLabel(tl, item), live[l].Portal.nav[item.key], `${l} ${item.key} (src/messages)`);
+      assert.ok(live[l].Portal.nav[item.key], `${l} ${item.key} fehlt in src/messages`);
     }
   }
 });
 
 test("DE-Vorschlag = bisheriger DE-Text im Code (Übernahme ändert auf Deutsch nichts)", () => {
   const de = proposal.de;
-  for (const item of [...PORTAL_NAV, PORTAL_CTA]) assert.equal(de.Portal.nav[item.key], item.label, item.key);
+  for (const item of [...PORTAL_NAV, PORTAL_CTA]) assert.equal((inProposal(item) ? de : live.de).Portal.nav[item.key], item.label, item.key);
   const frame = read("src/components/Upload/UploadFrame.js");
   for (const k of ["expired", "invalid"]) {
     assert.ok(frame.includes(de.Upload.problem[k].title), k);

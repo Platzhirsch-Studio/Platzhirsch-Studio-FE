@@ -14,6 +14,7 @@ from frappe import _
 
 from ph_core.api import ApiFehler, pflicht, ph_api, text
 from ph_marketing.ph_marketing import einblicke, einwilligung, events, newsletter
+from ph_marketing.utils.attribution import utm_bereinigen
 from ph_marketing.utils.regeln import DOI_ZWECKE, ZWECKE
 from ph_marketing.utils.token import email_maskieren, email_normalisieren, email_plausibel
 
@@ -36,8 +37,22 @@ def subscribe_newsletter(**d):
         anrede_name=text(d.get("name"), 140),
         idempotency_key=None,
     )
+    _kontaktpunkt(d, "Newsletter-Anmeldung", email, ("PH Newsletter Abo", email))
     # „abo“ nur fürs Protokoll (Referenz); die Website bekommt keine Adresse zurück.
     return {"success": True, "doi": r["doi"], "abo": email}
+
+
+def _kontaktpunkt(d, art, email, referenz):
+    """UTM aus den Formularparametern (utm_source/medium/campaign/content/term) → PH Kampagne Kontaktpunkt."""
+    utm = utm_bereinigen(d)
+    if not utm.get("utm_campaign"):
+        return
+    try:
+        from ph_marketing.ph_marketing import kampagnen
+
+        kampagnen.kontaktpunkt(utm, art, email=email, referenz=referenz)
+    except Exception:  # noqa: BLE001 – Attribution darf die Anmeldung nie verhindern
+        frappe.log_error(title=f"PH Marketing Kontaktpunkt {art}")
 
 
 @frappe.whitelist(allow_guest=False, methods=["POST"])
@@ -85,9 +100,26 @@ def register_event(**d):
         nachricht=text(d.get("nachricht") or d.get("ihre_nachricht"), 500),
         quelle="website",
         textversion=text(d.get("textversion") or d.get("einwilligung_text_version"), 80),
+        begleitung=text(d.get("begleitung"), 140),
+        utm=utm_bereinigen(d),
     )
     r["email"] = email_maskieren(d.get("email"))
     return r
+
+
+@frappe.whitelist(allow_guest=False, methods=["POST"])
+@ph_api(limit_pro_minute=120)
+def unsubscribe_one_click(token=None, body=None, **_d):
+    """RFC 8058 One-Click aus dem Mail-Client: Website-Route (One-Click-Pfad) nimmt den POST an und reicht
+    {token, body} weiter. body muss „List-Unsubscribe=One-Click“ sein (sonst 400). Antwort ohne Personendaten."""
+    from ph_marketing.utils.mail_ereignis import one_click_gueltig
+
+    if not one_click_gueltig(body or ""):
+        raise ApiFehler("invalid", 400, _("Kein One-Click-Abmeldeaufruf."))
+    r = newsletter.abmelden_mit_token(text(token, 128), kanal="one_click")
+    if r["status"] == "ungueltig":
+        raise ApiFehler("invalid_token", 404, _("Link ungültig."))
+    return {"status": r["status"]}
 
 
 @frappe.whitelist(allow_guest=False, methods=["POST"])
@@ -179,3 +211,102 @@ def tag_speichern(datum=None, schema=None, meta=None, teil=None, seiten=None, he
     """Besucher-Einblicke Tagesaggregat (Upsert), src/lib/einblicke/frappe.server.js – heute platzhirsch_einblicke.api.tag_speichern."""
     pflicht({"datum": datum}, "datum")
     return einblicke.tag_speichern(datum, schema=schema, meta=meta, teil=teil, seiten=seiten, heatmaps=heatmaps, pfade=pfade, signale=signale, planer=planer)
+
+
+# ── Ideenboard teilen (src/lib/ideenboard, Speicher-Schnittstelle localStore.js) ────────────────────────────────
+# Die Website erzeugt boardId/shareId/adminSecret (ids.js) und prüft den Verwaltungsschlüssel selbst
+# (service.js manageShared → matchesHash). Hier liegen nur boardId und die SHA-256-Hashes. Antworten enthalten die
+# Hashes – nur für den Website-Server (Token), nie an den Browser weiterreichen (publicView/ownerView bildet die Website).
+
+
+def _json_param(wert):
+    if isinstance(wert, str):
+        import json
+
+        try:
+            return json.loads(wert)
+        except ValueError:
+            raise ApiFehler("invalid", 400, _("JSON ungültig."), {"field": "record"})
+    return wert
+
+
+@frappe.whitelist(allow_guest=False, methods=["POST"])
+@ph_api(idempotent=True, limit_pro_minute=60, referenz=lambda r: ("PH Ideenboard", r["record"]["boardId"]))
+def create_ideenboard(record=None, **_d):
+    """localStore.create(record): {record} (model.js createRecord) → {record}; 409 conflict bei vorhandener boardId."""
+    from ph_marketing.ph_marketing import ideenboard
+
+    return {"record": ideenboard.anlegen(_json_param(record) or {})}
+
+
+@frappe.whitelist(allow_guest=False, methods=["GET", "POST"])
+@ph_api(limit_pro_minute=240)
+def get_ideenboard(board_id=None, **_d):
+    """localStore.get(boardId) → {record} oder {record: null} (unbekannt/abgelaufen)."""
+    from ph_marketing.ph_marketing import ideenboard
+
+    return {"record": ideenboard.lesen(text(board_id, 40))}
+
+
+@frappe.whitelist(allow_guest=False, methods=["GET", "POST"])
+@ph_api(limit_pro_minute=240)
+def get_ideenboard_by_share(share_hash=None, share_id=None, **_d):
+    """localStore.getByShare(): share_hash = sha256(shareId) (bevorzugt) oder share_id → {record} oder {record: null}."""
+    from ph_marketing.ph_marketing import ideenboard
+
+    return {"record": ideenboard.lesen_per_share(share_hash=text(share_hash, 64), share_id=text(share_id, 40))}
+
+
+@frappe.whitelist(allow_guest=False, methods=["POST"])
+@ph_api(limit_pro_minute=120, referenz=lambda r: ("PH Ideenboard", r["record"]["boardId"]))
+def update_ideenboard(board_id=None, record=None, expected_updated_at=None, expected_modified=None, **_d):
+    """localStore.update(): ganzer Datensatz nach sync/revoke/renew → {record}.
+    expected_updated_at (= gelesenes updatedAt) → 409 conflict bei paralleler Änderung; 404 not_found."""
+    from ph_marketing.ph_marketing import ideenboard
+
+    pflicht({"board_id": board_id}, "board_id")
+    return {"record": ideenboard.aendern(text(board_id, 40), _json_param(record) or {}, erwartet=text(expected_updated_at or expected_modified, 40) or None)}
+
+
+@frappe.whitelist(allow_guest=False, methods=["POST"])
+@ph_api(limit_pro_minute=60)
+def remove_ideenboard(board_id=None, **_d):
+    """localStore.remove(boardId) → {removed: bool}."""
+    from ph_marketing.ph_marketing import ideenboard
+
+    return {"removed": ideenboard.entfernen(text(board_id, 40))}
+
+
+@frappe.whitelist(allow_guest=False, methods=["POST"])
+@ph_api(limit_pro_minute=10)
+def sweep_ideenboards(**_d):
+    """localStore.sweep(): abgelaufene löschen → {checked, removed, orphans}. Läuft zusätzlich täglich (03:45)."""
+    from ph_marketing.ph_marketing import ideenboard
+
+    return ideenboard.abgelaufene_loeschen()
+
+
+# ── Bewertungen (/de/bewerten, QR-Karte; ReviewSummary) ─────────────────────────────────────────────────────────
+
+
+@frappe.whitelist(allow_guest=False, methods=["POST"])
+@ph_api(idempotent=True, limit_pro_minute=20, referenz=lambda r: ("PH Bewertung", r["referenz"]))
+def create_bewertung(**d):
+    """Direkte Rückmeldung: {sterne? 1–5, text?, name?, email?, anlass? (lieferung|montage|abholung|beratung|service),
+    quelle? (direkt|qr|mail), einwilligung_veroeffentlichung?, textversion?, seite?} → {referenz, status, email (maskiert)}.
+    Sterne oder Text Pflicht. Kein Gating: alle Rückmeldungen gleich, unabhängig von der Sternezahl."""
+    from ph_marketing.ph_marketing import bewertung
+
+    if bewertung.bw.quelle_normalisieren(d.get("quelle")) == "Google":
+        raise ApiFehler("invalid", 400, _("Google-Bewertungen werden im Backoffice importiert."), {"field": "quelle"})
+    return bewertung.anlegen(d)
+
+
+@frappe.whitelist(allow_guest=False, methods=["GET", "POST"])
+@ph_api(limit_pro_minute=120)
+def get_bewertungen(limit=20, quelle=None, **_d):
+    """Öffentliche Liste: {count, average, reviews:[{id, author (maskiert), rating, text, date, source, occasion, reply}]}.
+    Nur veröffentlichte, nie nach Sternen gefiltert; E-Mail/Telefon im Text entfernt."""
+    from ph_marketing.ph_marketing import bewertung
+
+    return bewertung.oeffentlich(limit=limit, quelle=text(quelle, 20) or None)

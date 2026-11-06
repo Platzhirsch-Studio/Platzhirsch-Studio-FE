@@ -1,0 +1,18 @@
+# Build-Kontext = Repo-Root. Nur die 12 PH-Apps gehen in das Frappe-Image.
+*
+!Backend-Import/ph_core
+!Backend-Import/ph_crm
+!Backend-Import/ph_sortiment
+!Backend-Import/ph_projekte
+!Backend-Import/ph_shop
+!Backend-Import/ph_faktura
+!Backend-Import/ph_logistik
+!Backend-Import/ph_personal
+!Backend-Import/ph_marketing
+!Backend-Import/ph_kassa
+!Backend-Import/ph_service
+!Backend-Import/ph_kundenkarte
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/node_modules

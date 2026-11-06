@@ -1,0 +1,78 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Aufgabe einer Onboarding-/Offboarding-Vorlage.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "aufgabe",
+  "tage_relativ",
+  "verantwortlich",
+  "pflicht",
+  "rechtsgrundlage",
+  "nachweis_feld"
+ ],
+ "fields": [
+  {
+   "fieldname": "aufgabe",
+   "fieldtype": "Data",
+   "label": "Aufgabe",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "tage_relativ",
+   "fieldtype": "Int",
+   "label": "Tage relativ",
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Zum Eintritt (Onboarding) bzw. Austritt (Offboarding); negativ = vorher."
+  },
+  {
+   "fieldname": "verantwortlich",
+   "fieldtype": "Select",
+   "label": "Verantwortlich",
+   "options": "Leitung\nSachbearbeitung\nMitarbeiter:in\nTechnik\nLohnverrechnung",
+   "default": "Leitung",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "pflicht",
+   "fieldtype": "Check",
+   "label": "Pflicht (Gesetz)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "rechtsgrundlage",
+   "fieldtype": "Data",
+   "label": "Rechtsgrundlage",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "nachweis_feld",
+   "fieldtype": "Select",
+   "label": "Nachweisfeld",
+   "options": "\noegk_anmeldung_am\ndienstzettel_am\ndatenschutzinfo_am\nunterweisung_am\noegk_abmeldung_am\nzugang_entzogen_am\ndienstzeugnis_am"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Onboarding Vorlage Aufgabe",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

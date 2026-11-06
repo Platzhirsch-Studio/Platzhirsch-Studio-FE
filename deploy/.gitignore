@@ -1,0 +1,7 @@
+# Root-.gitignore ignoriert ".env*" – die Vorlagen hier gehören ins Repo, echte Werte nie.
+!.env.example
+.env
+.env.production
+.env.local
+# Staging-Ergebnisse (Logs, JUnit, tokens.env mit Staging-Token)
+staging/ergebnisse/

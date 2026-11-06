@@ -32,6 +32,18 @@ export async function GET(request, ctx) {
   const name = path.basename(String(rendering.image));
   const type = TYPES[path.extname(name).toLowerCase()];
   if (!type) return notFound();
+  // ph-Backend (BACKEND_GENERATION, Gruppe portal): image = private file_url → portal_file.
+  if (portal.readFile) {
+    try {
+      const file = await portal.readFile(String(rendering.image));
+      if (!file?.content_base64) return notFound();
+      return new NextResponse(Buffer.from(file.content_base64, "base64"), {
+        headers: { "Content-Type": type, "Cache-Control": "private, max-age=3600", "X-Content-Type-Options": "nosniff" },
+      });
+    } catch {
+      return notFound();
+    }
+  }
   try {
     const buffer = await readFile(path.join(DATA_DIR, "renderings", name));
     return new NextResponse(buffer, {

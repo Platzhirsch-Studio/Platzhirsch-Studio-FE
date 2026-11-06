@@ -70,6 +70,39 @@ def tagebuch_list(projekt, rolle="kunde", kontakt=None, kunde_token=None):
     return {"projektId": projekt, "kundeId": kontakt, "titel": p.titel, "raum": p.raum or "", "erstellt": iso(p.creation), "fotos": [_foto_payload(f) for f in fotos]}
 
 
+TEAM_ROLLEN = ("PH Projekte Mitarbeiter", "PH Projekte Leitung", "System Manager", "PH Website Integration")
+
+
+@frappe.whitelist(allow_guest=False, methods=["POST", "GET"])
+@ph_api(intern=True)
+def tagebuch_list_alle(rolle="team", seite=1, groesse=20, suche=None, nur_mit_fotos=0):
+    """Teamansicht Bautagebuch über alle Projekte (Website `listeTagebuecher`, 60-…, Lücke ph_projekte 2).
+    Nur Team: PH Projekte Mitarbeiter/Leitung (Desk/Backoffice) bzw. Website-Teamsitzung (API-Token). Paginiert, jüngste
+    Aktivität zuerst. → {items: [{projektId, kundeId, titel, raum, erstellt, fotos, letztesFoto}], seite, groesse, gesamt}"""
+    from ph_projekte.utils.portal_sitzung import seite as seite_fn
+
+    if str(rolle or "").lower() != "team":
+        raise ApiFehler("forbidden", 403, _("Nur für das Team."))
+    if frappe.session.user != "Administrator" and not set(TEAM_ROLLEN) & set(frappe.get_roles()):
+        raise ApiFehler("forbidden", 403, _("Keine Berechtigung."))
+    start, limit = seite_fn(seite, groesse)
+    zaehler = {r.projekt: r for r in frappe.get_all("PH Tagebuch Foto", fields=["projekt", "count(name) as anzahl", "max(hochgeladen_am) as letztes"], group_by="projekt")}
+    filters = {}
+    if cint(nur_mit_fotos):
+        filters["name"] = ("in", list(zaehler) or [""])
+    or_filters = None
+    q = text(suche, 80)
+    if q:
+        or_filters = [["titel", "like", f"%{q}%"], ["kunde_name", "like", f"%{q}%"], ["name", "like", f"%{q}%"]]
+    gesamt = len(frappe.get_all("PH Projekt", filters=filters, or_filters=or_filters, pluck="name"))
+    rows = frappe.get_all("PH Projekt", filters=filters, or_filters=or_filters, fields=["name", "kontakt", "titel", "raum", "creation", "modified"], order_by="modified desc", start=start, page_length=limit)
+    items = []
+    for p in rows:
+        z = zaehler.get(p.name)
+        items.append({"projektId": p.name, "kundeId": p.kontakt, "titel": p.titel, "raum": p.raum or "", "erstellt": iso(p.creation), "fotos": cint(z.anzahl) if z else 0, "letztesFoto": iso(z.letztes) if z and z.letztes else None})
+    return {"items": items, "seite": start // limit + 1, "groesse": limit, "gesamt": gesamt}
+
+
 @frappe.whitelist(allow_guest=False, methods=["POST"])
 @ph_api(idempotent=True, limit_pro_minute=30, referenz=lambda r: ("PH Tagebuch Foto", r["id"]))
 def tagebuch_add(projekt, foto, dateien=None, rolle="kunde", kontakt=None, kunde_token=None):

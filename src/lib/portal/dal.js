@@ -55,6 +55,10 @@ function bind(customerId, customer) {
     requestPlanning: (input) => a.requestPlanning(customerId, input),
     markMessagesRead: (ids) => a.markMessagesRead(customerId, ids),
     sendMessage: (input) => a.sendMessage(customerId, input),
+    // Kundenkarte (04.11.2026): /de/portal/kundenkarte – Stufe, Vorteile, Wallet-Flags.
+    getCustomerCard: () => a.getCustomerCard(customerId),
+    // Nur ph-Adapter (adapters/ph.js): private Datei über ph_projekte.api.portal_file.
+    readFile: typeof a.readFile === "function" ? (fileUrl) => a.readFile(customerId, fileUrl) : null,
   };
 }
 

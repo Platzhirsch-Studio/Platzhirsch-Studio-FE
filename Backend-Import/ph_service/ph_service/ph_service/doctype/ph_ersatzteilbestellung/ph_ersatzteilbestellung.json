@@ -27,6 +27,7 @@
   "lieferant_referenz",
   "erwartet_am",
   "geliefert_am",
+  "ueberfaellig",
   "sb_text",
   "notizen",
   "lieferadresse"
@@ -53,6 +54,7 @@
   {"fieldname": "lieferant_referenz", "fieldtype": "Data", "label": "AB-/Referenznummer Lieferant"},
   {"fieldname": "erwartet_am", "fieldtype": "Date", "label": "Erwartete Lieferung", "in_list_view": 1},
   {"fieldname": "geliefert_am", "fieldtype": "Date", "label": "Vollständig geliefert am", "read_only": 1},
+  {"fieldname": "ueberfaellig", "fieldtype": "Check", "label": "Lieferung überfällig", "read_only": 1, "in_standard_filter": 1},
   {"fieldname": "sb_text", "fieldtype": "Section Break", "label": "Notizen", "collapsible": 1},
   {"fieldname": "notizen", "fieldtype": "Small Text", "label": "Notizen / Text an Lieferant"},
   {"fieldname": "lieferadresse", "fieldtype": "Select", "label": "Lieferadresse", "options": "Showroom\nLager\nKunde direkt", "default": "Showroom"}

@@ -18,6 +18,7 @@ STANDARD = {
     "ab_toleranz_termin_tage": 0,
     "standard_lieferadresse": "Platzhirsch Home Living\nLandstraße 11\n6911 Lochau, Österreich",
     "bestell_druckformat": "PH Herstellerbestellung Standard",
+    "eigene_gln": "",
 }
 
 

@@ -16,12 +16,32 @@ frappe.ui.form.on("PH Beratungsgespraech", {
 		}
 		const setze = (status) => frm.call({ method: "status_setzen", doc: frm.doc, args: { status } }).then(() => frm.reload_doc());
 
+		if (frm.doc.__onload && frm.doc.__onload.aufgabe_vorschlagen) {
+			frm.dashboard.set_headline_alert(__("Nächster Schritt eingetragen – als Aufgabe übernehmen? (Aktionen → Aufgabe: nächster Schritt)"), "blue");
+		}
+		frm.add_custom_button(__("Vorlage übernehmen"), () => {
+			frappe.prompt({ fieldname: "vorlage", fieldtype: "Link", options: "PH Beratungsvorlage", label: __("Vorlage"), reqd: 1, default: frm.doc.vorlage, get_query: () => ({ filters: { aktiv: 1 } }) }, (v) => frm.call({ method: "vorlage_anwenden", doc: frm.doc, args: v, freeze: true }).then((r) => {
+				frappe.show_alert({ message: __("{0} Fragen übernommen", [r.message || 0]), indicator: "green" });
+				frm.reload_doc();
+			}), __("Gesprächsleitfaden"));
+		}, __("Aktionen"));
+		frm.add_custom_button(__("Protokoll an Kunden senden"), () => {
+			frappe.db.get_value("PH Kontakt", frm.doc.kontakt, "email").then((r) => {
+				frappe.prompt([
+					{ fieldname: "empfaenger", fieldtype: "Data", options: "Email", label: __("An"), reqd: 1, default: (r.message || {}).email },
+					{ fieldname: "nachricht", fieldtype: "Text Editor", label: __("Nachricht (leer = Standardtext)") },
+				], (v) => frm.call({ method: "protokoll_senden", doc: frm.doc, args: v, freeze: true }).then(() => {
+					frappe.show_alert({ message: __("Protokoll gesendet an {0}", [v.empfaenger]), indicator: "green" });
+					frm.reload_doc();
+				}), __("Protokoll senden"));
+			});
+		}, __("Aktionen"));
 		frm.add_custom_button(__("Aufgabe: nächster Schritt"), () => {
 			frm.call({ method: "aufgabe_anlegen", doc: frm.doc }).then((r) => r.message && frappe.set_route("Form", "PH Aufgabe", r.message));
 		}, __("Aktionen"));
 		if (frm.doc.status === "Offen") {
 			frm.add_custom_button(__("Planung beauftragen"), () => {
-				frappe.confirm(__("Planung beauftragen und Projekt anlegen?"), () => frm.call({ method: "planung_beauftragen", doc: frm.doc, freeze: true }).then((r) => (r.message ? frappe.set_route("Form", "PH Projekt", r.message) : frm.reload_doc())));
+				frappe.prompt({ fieldname: "planer", fieldtype: "Link", options: "User", label: __("Planer (optional)") }, (v) => frm.call({ method: "planung_beauftragen", doc: frm.doc, args: v, freeze: true }).then((r) => (r.message ? frappe.set_route("Form", "PH Projekt", r.message) : frm.reload_doc())), __("Planung beauftragen und Projekt anlegen"));
 			}, __("Aktionen"));
 		}
 		if (["Offen", "Planung beauftragt"].includes(frm.doc.status)) {

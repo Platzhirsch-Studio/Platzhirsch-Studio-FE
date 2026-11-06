@@ -28,7 +28,8 @@
    {"state": "PH Angebot", "action": "Gewonnen", "next_state": "PH Gewonnen", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
    {"state": "PH Angebot", "action": "Verloren", "next_state": "PH Verloren", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
    {"state": "PH Verloren", "action": "Zurück auf Neu", "next_state": "PH Neu", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
-   {"state": "PH Spam", "action": "Zurück auf Neu", "next_state": "PH Neu", "allowed": "PH CRM Leitung", "allow_self_approval": 1}
+   {"state": "PH Spam", "action": "Zurück auf Neu", "next_state": "PH Neu", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
+   {"state": "PH Qualifiziert", "action": "Zurück auf Neu", "next_state": "PH Neu", "allowed": "PH CRM Leitung", "allow_self_approval": 1}
   ]
  },
  {
@@ -56,7 +57,8 @@
    {"state": "PH Bestaetigt", "action": "Nicht erschienen", "next_state": "PH Nicht erschienen", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
    {"state": "PH Bestaetigt", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH CRM Mitarbeiter", "allow_self_approval": 1},
    {"state": "PH Storniert", "action": "Zurück auf Neu", "next_state": "PH Unbestaetigt", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
-   {"state": "PH Abgelehnt", "action": "Zurück auf Neu", "next_state": "PH Unbestaetigt", "allowed": "PH CRM Leitung", "allow_self_approval": 1}
+   {"state": "PH Abgelehnt", "action": "Zurück auf Neu", "next_state": "PH Unbestaetigt", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
+   {"state": "PH Nicht erschienen", "action": "Bestätigen", "next_state": "PH Bestaetigt", "allowed": "PH CRM Leitung", "allow_self_approval": 1}
   ]
  },
  {
@@ -81,7 +83,8 @@
    {"state": "PH Interessent", "action": "Sperren", "next_state": "PH Gesperrt", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
    {"state": "PH Kunde", "action": "Sperren", "next_state": "PH Gesperrt", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
    {"state": "PH Inaktiv", "action": "Reaktivieren", "next_state": "PH Interessent", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
-   {"state": "PH Gesperrt", "action": "Reaktivieren", "next_state": "PH Interessent", "allowed": "PH CRM Leitung", "allow_self_approval": 1}
+   {"state": "PH Gesperrt", "action": "Reaktivieren", "next_state": "PH Interessent", "allowed": "PH CRM Leitung", "allow_self_approval": 1},
+   {"state": "PH Inaktiv", "action": "Als Kunde markieren", "next_state": "PH Kunde", "allowed": "PH CRM Leitung", "allow_self_approval": 1, "condition": "doc.kunde_seit"}
   ]
  }
 ]

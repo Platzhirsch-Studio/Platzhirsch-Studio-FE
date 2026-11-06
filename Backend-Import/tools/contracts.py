@@ -29,7 +29,8 @@ from dataclasses import dataclass, field
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 INSTALL_ORDER = [
     "ph_core", "ph_crm", "ph_sortiment", "ph_projekte", "ph_shop", "ph_faktura",
-    "ph_logistik", "ph_personal", "ph_marketing", "ph_kassa", "ph_service",
+    "ph_logistik", "ph_personal", "ph_marketing", "ph_kassa", "ph_service", "ph_kundenkarte",
+    "ph_ablage", "ph_microsoft",
 ]
 
 # Frappe-Standard-DocTypes, auf die PH-Apps verlinken dürfen (ohne ERPNext).

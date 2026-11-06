@@ -1,0 +1,136 @@
+[
+ {
+  "doctype": "Number Card",
+  "name": "PH Sync Fehler heute",
+  "label": "Sync-Fehler (heute)",
+  "type": "Document Type",
+  "document_type": "PH Sync Protokoll",
+  "function": "Count",
+  "filters_json": "[[\"PH Sync Protokoll\", \"ergebnis\", \"=\", \"Fehler\", false], [\"PH Sync Protokoll\", \"zeitpunkt\", \"Timespan\", \"today\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Microsoft",
+  "show_percentage_stats": 1,
+  "color": "#b91c1c",
+  "roles": [
+   {
+    "role": "PH Backoffice-Admin"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "stats_time_interval": "Daily"
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Kalender Konflikte offen",
+  "label": "Kalender-Konflikte",
+  "type": "Document Type",
+  "document_type": "PH Graph Verknuepfung",
+  "function": "Count",
+  "filters_json": "[[\"PH Graph Verknuepfung\", \"status\", \"=\", \"Konflikt\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Microsoft",
+  "show_percentage_stats": 0,
+  "color": "#b45309",
+  "roles": [
+   {
+    "role": "PH Backoffice-Admin"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Graph Abos gestoert",
+  "label": "Abos abgelaufen/Fehler",
+  "type": "Document Type",
+  "document_type": "PH Graph Abo",
+  "function": "Count",
+  "filters_json": "[[\"PH Graph Abo\", \"status\", \"in\", [\"Fehler\", \"Abgelaufen\"], false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Microsoft",
+  "show_percentage_stats": 0,
+  "color": "#b45309",
+  "roles": [
+   {
+    "role": "PH Backoffice-Admin"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Graph Abos aktiv",
+  "label": "Aktive Webhook-Abos",
+  "type": "Document Type",
+  "document_type": "PH Graph Abo",
+  "function": "Count",
+  "filters_json": "[[\"PH Graph Abo\", \"status\", \"=\", \"Aktiv\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Microsoft",
+  "show_percentage_stats": 0,
+  "color": "#15803d",
+  "roles": [
+   {
+    "role": "PH Backoffice-Admin"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Postfaecher mit Fehler",
+  "label": "Postfächer mit Fehler",
+  "type": "Document Type",
+  "document_type": "PH Postfach",
+  "function": "Count",
+  "filters_json": "[[\"PH Postfach\", \"status\", \"=\", \"Fehler\", false], [\"PH Postfach\", \"aktiv\", \"=\", 1, false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Microsoft",
+  "show_percentage_stats": 0,
+  "color": "#b91c1c",
+  "roles": [
+   {
+    "role": "PH Backoffice-Admin"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Zugeordnete Mails heute",
+  "label": "Zugeordnete Mails (heute)",
+  "type": "Document Type",
+  "document_type": "PH Sync Protokoll",
+  "function": "Count",
+  "filters_json": "[[\"PH Sync Protokoll\", \"bereich\", \"=\", \"Mail\", false], [\"PH Sync Protokoll\", \"aktion\", \"like\", \"Zuordnung %\", false], [\"PH Sync Protokoll\", \"zeitpunkt\", \"Timespan\", \"today\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Microsoft",
+  "show_percentage_stats": 1,
+  "color": "#1d4ed8",
+  "roles": [
+   {
+    "role": "PH Backoffice-Admin"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "stats_time_interval": "Daily"
+ }
+]

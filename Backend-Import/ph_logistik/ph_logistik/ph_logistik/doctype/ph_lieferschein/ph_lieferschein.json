@@ -24,6 +24,7 @@
   "auftrag",
   "cb_bezug",
   "projekt",
+  "kommission",
   "teillieferung",
   "teilrechnung",
   "sb_adresse",
@@ -65,6 +66,21 @@
   "fotos",
   "sb_intern",
   "storno_grund",
+  "problem_grund",
+  "problem_text",
+  "problem_am",
+  "sb_packtisch",
+  "packplatz",
+  "geschenk",
+  "packhinweise_bestaetigt",
+  "dokumente_beigelegt",
+  "teillieferung_von",
+  "cb_packtisch",
+  "zurueckgestellt",
+  "zurueckgestellt_grund",
+  "zurueckgestellt_text",
+  "zurueckgestellt_am",
+  "zurueckgestellt_von",
   "notiz_intern",
   "sb_system",
   "idempotency_key",
@@ -185,6 +201,13 @@
    "fieldtype": "Data",
    "label": "Projekt (Referenz)",
    "description": "PH Projekt (ph_projekte) – als Referenz; ph_projekte ergänzt bei Bedarf ein Custom-Link-Feld."
+  },
+  {
+   "fieldname": "kommission",
+   "fieldtype": "Data",
+   "label": "Kommission",
+   "in_standard_filter": 1,
+   "description": "Aus Kommissionsware erzeugt (Projekt-/AB-Nummer)."
   },
   {
    "fieldname": "teillieferung",
@@ -418,6 +441,101 @@
    "label": "Storno-Grund"
   },
   {
+   "fieldname": "problem_grund",
+   "fieldtype": "Select",
+   "label": "Problem",
+   "options": "\nBeschaedigt\nFehlt\nFalscher Artikel\nAdresse unklar\nSonstiges",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "problem_text",
+   "fieldtype": "Small Text",
+   "label": "Problembeschreibung",
+   "read_only": 1,
+   "depends_on": "problem_grund"
+  },
+  {
+   "fieldname": "problem_am",
+   "fieldtype": "Datetime",
+   "label": "Problem gemeldet am",
+   "read_only": 1,
+   "depends_on": "problem_grund"
+  },
+  {
+   "fieldname": "sb_packtisch",
+   "fieldtype": "Section Break",
+   "label": "Packtisch",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "packplatz",
+   "fieldtype": "Link",
+   "label": "Packplatz",
+   "options": "PH Packplatz"
+  },
+  {
+   "fieldname": "geschenk",
+   "fieldtype": "Check",
+   "label": "Geschenk (keine Preise/Rechnung beilegen)"
+  },
+  {
+   "fieldname": "packhinweise_bestaetigt",
+   "fieldtype": "Check",
+   "label": "Packhinweise bestätigt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dokumente_beigelegt",
+   "fieldtype": "Small Text",
+   "label": "Beigelegte Dokumente",
+   "read_only": 1
+  },
+  {
+   "fieldname": "teillieferung_von",
+   "fieldtype": "Link",
+   "label": "Rest aus Lieferschein",
+   "options": "PH Lieferschein",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_packtisch",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zurueckgestellt",
+   "fieldtype": "Check",
+   "label": "Zurückgestellt",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "zurueckgestellt_grund",
+   "fieldtype": "Select",
+   "label": "Grund Zurückstellen",
+   "options": "\nFehlt\nBeschaedigt\nFalscher Artikel\nKunde Rueckfrage\nSonstiges",
+   "read_only": 1
+  },
+  {
+   "fieldname": "zurueckgestellt_text",
+   "fieldtype": "Small Text",
+   "label": "Zurückgestellt – Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "zurueckgestellt_am",
+   "fieldtype": "Datetime",
+   "label": "Zurückgestellt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "zurueckgestellt_von",
+   "fieldtype": "Link",
+   "label": "Zurückgestellt von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
    "fieldname": "notiz_intern",
    "fieldtype": "Text",
    "label": "Notiz intern",
@@ -461,9 +579,19 @@
    "link_doctype": "PH Lagerbewegung",
    "link_fieldname": "bezug",
    "group": "Bestand"
+  },
+  {
+   "link_doctype": "PH Speditionsauftrag",
+   "link_fieldname": "lieferschein",
+   "group": "Versand"
+  },
+  {
+   "link_doctype": "PH Warenruecknahme",
+   "link_fieldname": "lieferschein",
+   "group": "Rücknahme"
   }
  ],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 15:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Logistik",
  "name": "PH Lieferschein",
@@ -573,6 +701,29 @@
    "export": 0,
    "report": 0,
    "share": 0
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
   }
  ],
  "sort_field": "datum",

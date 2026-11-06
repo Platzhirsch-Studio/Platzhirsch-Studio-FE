@@ -1,0 +1,162 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Protokoll der Microsoft-365-Abgleiche (SSO, Mail, Kalender, Kontakte, Abos) – nie Token, Mailinhalt oder Betreff.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "zeitpunkt",
+  "bereich",
+  "aktion",
+  "ergebnis",
+  "cb_1",
+  "benutzer",
+  "postfach",
+  "kontakt",
+  "referenz_doctype",
+  "referenz_name",
+  "sb_details",
+  "meldung",
+  "anzahl",
+  "dauer_ms"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "zeitpunkt",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "bereich",
+   "fieldtype": "Select",
+   "label": "Bereich",
+   "options": "SSO\nMail\nKalender\nKontakte\nAbo",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "aktion",
+   "fieldtype": "Data",
+   "label": "Aktion",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ergebnis",
+   "fieldtype": "Select",
+   "label": "Ergebnis",
+   "options": "OK\nFehler\nKonflikt\nUebersprungen\nAbgelehnt",
+   "default": "OK",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "benutzer",
+   "fieldtype": "Link",
+   "label": "Benutzer",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "postfach",
+   "fieldtype": "Data",
+   "label": "Postfach"
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Data",
+   "label": "PH Kontakt",
+   "description": "Name des Kontakts (ohne Link – ph_crm ist optional)"
+  },
+  {
+   "fieldname": "referenz_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug (DocType)",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "referenz_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "referenz_doctype"
+  },
+  {
+   "fieldname": "sb_details",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "meldung",
+   "fieldtype": "Small Text",
+   "label": "Meldung (ohne Inhalte)"
+  },
+  {
+   "fieldname": "anzahl",
+   "fieldtype": "Int",
+   "label": "Anzahl"
+  },
+  {
+   "fieldname": "dauer_ms",
+   "fieldtype": "Int",
+   "label": "Dauer (ms)"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Microsoft",
+ "name": "PH Sync Protokoll",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ],
+ "search_fields": "bereich,ergebnis,aktion",
+ "sort_field": "zeitpunkt",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "titel",
+ "track_changes": 0
+}

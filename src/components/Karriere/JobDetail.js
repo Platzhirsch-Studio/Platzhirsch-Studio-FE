@@ -7,6 +7,7 @@ import { localizedJobDescription } from "@/lib/seo/structuredData";
 import { localeUrl } from "@/lib/seo/pageMetadata";
 import { ROUTES } from "@/utils/routing";
 import ShareJob from "./ShareJob";
+import BewerbungForm from "./BewerbungForm";
 import { APPLICATION_EMAIL } from "./karriereposition";
 import { fehlendeAngaben } from "./glbg";
 import { localizedTitle } from "@/lib/karriere/stellen";
@@ -80,7 +81,9 @@ function RowList({ rows, field }) {
 // messages-r3-inhalt.json until merged).
 // `blocked` (Vorschau, glbg.js): Stelle ohne Entgeltangabe – sichtbare
 // Sperr-Markierung, fehlende Angaben als „[vom Inhaber ergänzen]“.
-export default function JobDetail({ job, blocked = false }) {
+// bewerbungOnline: Gruppe "bewerbung" auf ph mit Zugang (src/lib/karriere/bewerbungSend.js) →
+// Online-Formular (ph_personal.api.create_bewerbung); sonst nur der bisherige Weg per E-Mail.
+export default function JobDetail({ job, blocked = false, bewerbungOnline = false }) {
   const { t, locale } = useInhalt("job");
   const career = useInhalt("career");
   const share = useInhalt("share");
@@ -241,6 +244,7 @@ export default function JobDetail({ job, blocked = false }) {
             {t("applyTitle")}
           </Heading>
           <p className="mt-stack-m max-w-measure text-body text-text-soft">{t("applyText")}</p>
+          {bewerbungOnline && !blocked && <BewerbungForm locale={locale} slug={job.slug} titel={title} email={APPLICATION_EMAIL} />}
           <div className="mt-stack-m">
             <Button href={mailto} variant="secondary" arrow>
               {t("applyMail")}

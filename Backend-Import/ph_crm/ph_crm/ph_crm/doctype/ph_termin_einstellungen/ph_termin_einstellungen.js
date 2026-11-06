@@ -8,6 +8,13 @@ frappe.ui.form.on("PH Termin Einstellungen", {
 				});
 			}, __("Feiertage"));
 		}, __("Aktionen"));
+		frm.add_custom_button(__("Meet-Verbindung prüfen"), () => {
+			frm.call({ method: "meet_verbindung_pruefen", doc: frm.doc, freeze: true }).then((r) => {
+				const m = r.message || {};
+				frappe.msgprint({ title: __("Videoberatung"), message: frappe.utils.escape_html(m.meldung || ""), indicator: m.ok ? "green" : "red" });
+			});
+		}, __("Aktionen"));
+		frm.add_custom_button(__("Beratungsvorlagen"), () => frappe.set_route("List", "PH Beratungsvorlage"), __("Aktionen"));
 		frm.add_custom_button(__("Terminarten"), () => frappe.set_route("List", "PH Terminart"), __("Aktionen"));
 		frm.add_custom_button(__("Verfügbarkeiten"), () => frappe.set_route("List", "PH Verfuegbarkeit"), __("Aktionen"));
 	},

@@ -1,0 +1,50 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Wer ein angebundenes Postfach im Backoffice lesen/zuordnen bzw. daraus senden darf.",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "lesen",
+  "senden"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "Benutzer",
+   "options": "User",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "lesen",
+   "fieldtype": "Check",
+   "label": "Lesen/Zuordnen",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "senden",
+   "fieldtype": "Check",
+   "label": "Senden als",
+   "default": "0",
+   "in_list_view": 1,
+   "columns": 2
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Microsoft",
+ "name": "PH Postfach Benutzer",
+ "owner": "Administrator",
+ "permissions": [],
+ "states": []
+}

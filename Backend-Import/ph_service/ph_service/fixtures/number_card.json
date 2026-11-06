@@ -13,7 +13,17 @@
   "show_percentage_stats": 1,
   "stats_time_interval": "Weekly",
   "color": "#30373e",
-  "roles": [{"role": "PH Service Mitarbeiter"}, {"role": "PH Service Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Service Mitarbeiter"
+   },
+   {
+    "role": "PH Service Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -27,7 +37,17 @@
   "module": "PH Service",
   "show_percentage_stats": 0,
   "color": "#b91c1c",
-  "roles": [{"role": "PH Service Mitarbeiter"}, {"role": "PH Service Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Service Mitarbeiter"
+   },
+   {
+    "role": "PH Service Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -41,7 +61,17 @@
   "module": "PH Service",
   "show_percentage_stats": 0,
   "color": "#b45309",
-  "roles": [{"role": "PH Service Mitarbeiter"}, {"role": "PH Service Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Service Mitarbeiter"
+   },
+   {
+    "role": "PH Service Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -55,7 +85,20 @@
   "module": "PH Service",
   "show_percentage_stats": 0,
   "color": "#1d4ed8",
-  "roles": [{"role": "PH Service Mitarbeiter"}, {"role": "PH Service Leitung"}, {"role": "PH Techniker"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Service Mitarbeiter"
+   },
+   {
+    "role": "PH Service Leitung"
+   },
+   {
+    "role": "PH Techniker"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -69,7 +112,14 @@
   "module": "PH Service",
   "show_percentage_stats": 0,
   "color": "#15803d",
-  "roles": [{"role": "PH Service Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Service Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -83,7 +133,14 @@
   "module": "PH Service",
   "show_percentage_stats": 0,
   "color": "#8a7a66",
-  "roles": [{"role": "PH Service Mitarbeiter"}, {"role": "PH Service Leitung"}]
+  "roles": [
+   {
+    "role": "PH Service Mitarbeiter"
+   },
+   {
+    "role": "PH Service Leitung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -97,7 +154,14 @@
   "module": "PH Service",
   "show_percentage_stats": 0,
   "color": "#b91c1c",
-  "roles": [{"role": "PH Service Mitarbeiter"}, {"role": "PH Service Leitung"}]
+  "roles": [
+   {
+    "role": "PH Service Mitarbeiter"
+   },
+   {
+    "role": "PH Service Leitung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -111,6 +175,65 @@
   "module": "PH Service",
   "show_percentage_stats": 0,
   "color": "#30373e",
-  "roles": [{"role": "PH Service Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Service Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH SLA verletzt",
+  "label": "SLA verletzt (offen)",
+  "type": "Document Type",
+  "document_type": "PH Servicefall",
+  "function": "Count",
+  "filters_json": "[[\"PH Servicefall\", \"status\", \"in\", [\"Gemeldet\", \"Geprueft\", \"Entscheidung\", \"In Bearbeitung\", \"Einsatz geplant\"], false], [\"PH Servicefall\", \"sla_status\", \"=\", \"Verletzt\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Service",
+  "show_percentage_stats": 1,
+  "stats_time_interval": "Weekly",
+  "color": "#b91c1c",
+  "roles": [
+   {
+    "role": "PH Service Mitarbeiter"
+   },
+   {
+    "role": "PH Service Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Kulanz wartet auf Freigabe",
+  "label": "Kulanz wartet auf Freigabe",
+  "type": "Document Type",
+  "document_type": "PH Servicefall",
+  "function": "Count",
+  "filters_json": "[[\"PH Servicefall\", \"kulanz_freigabe_status\", \"=\", \"Angefordert\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Service",
+  "show_percentage_stats": 1,
+  "stats_time_interval": "Weekly",
+  "color": "#b45309",
+  "roles": [
+   {
+    "role": "PH Service Mitarbeiter"
+   },
+   {
+    "role": "PH Service Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  }
 ]

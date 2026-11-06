@@ -17,6 +17,8 @@
 // (nie an den Browser: publicBooking maskiert sie).
 // Keine "@/..."-Importe; fetch wird für Tests übergeben.
 import { verifyHashOf } from "../token.js";
+import { pickAttribution } from "../../forms/attributionFields.js";
+import { phClientHeaders } from "../../backend/config.js";
 
 const TIMEOUT_MS = 10_000;
 const STATUS = { Unbestaetigt: "angefragt", Bestaetigt: "bestaetigt", Erledigt: "bestaetigt", Storniert: "storniert", Abgelehnt: "abgelehnt" };
@@ -48,7 +50,9 @@ export function fromFrappe(m = {}) {
   };
 }
 
-export function createFrappeAdapter({ url, key, secret, methodBase }, { fetchImpl = fetch } = {}) {
+export function createFrappeAdapter({ url, key, secret, methodBase }, { fetchImpl = fetch, env = process.env } = {}) {
+  // X-PH-Client nur an die ph-App-Familie (Methodenbasis ph_*), ohne BACKEND_PH_CLIENT_SALT nie.
+  const clientHeaders = () => (String(methodBase || "").startsWith("ph_") ? phClientHeaders({ env }) : {});
   async function call(method, { get = false, params = {} } = {}) {
     const endpoint = `${url}/api/method/${methodBase}.${method}`;
     const qs = get ? `?${new URLSearchParams(Object.entries(params).filter(([, v]) => v != null && v !== "")).toString()}` : "";
@@ -56,7 +60,7 @@ export function createFrappeAdapter({ url, key, secret, methodBase }, { fetchImp
     try {
       res = await fetchImpl(endpoint + qs, {
         method: get ? "GET" : "POST",
-        headers: { Authorization: `token ${key}:${secret}`, Accept: "application/json", ...(get ? {} : { "Content-Type": "application/json" }) },
+        headers: { Authorization: `token ${key}:${secret}`, Accept: "application/json", ...(get ? {} : { "Content-Type": "application/json" }), ...(await clientHeaders()) },
         body: get ? undefined : JSON.stringify(params),
         signal: AbortSignal.timeout(TIMEOUT_MS),
         cache: "no-store",
@@ -118,6 +122,8 @@ export function createFrappeAdapter({ url, key, secret, methodBase }, { fetchImp
           kundenmail: "website",
           quelle: "website",
           idempotency_key: input.idem,
+          // utm_* / klick_id (mit Ads-Einwilligung) nur an die neue App-Familie (ph_crm.api).
+          ...(String(methodBase).startsWith("ph_") ? pickAttribution(input) : {}),
         },
       });
       if (!r.ok) return r;

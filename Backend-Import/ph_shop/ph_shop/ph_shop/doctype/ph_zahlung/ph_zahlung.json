@@ -39,6 +39,24 @@
   "stripe_gebuehr_cent",
   "stripe_auszahlung",
   "stripe_ereignis",
+  "sb_radar",
+  "radar_markiert",
+  "radar_risk_level",
+  "radar_risk_score",
+  "radar_outcome",
+  "cb_sb_radar",
+  "radar_hinweis",
+  "radar_warnung",
+  "radar_review",
+  "radar_geprueft_von",
+  "radar_geprueft_am",
+  "sb_dispute",
+  "dispute_id",
+  "dispute_status",
+  "dispute_betrag_cent",
+  "cb_dispute",
+  "dispute_grund",
+  "dispute_frist",
   "tb_erstattung",
   "erstattet_cent",
   "erstattungen",
@@ -286,6 +304,133 @@
    "no_copy": 1
   },
   {
+   "fieldname": "sb_radar",
+   "fieldtype": "Section Break",
+   "label": "Betrugsprüfung (Stripe Radar)",
+   "collapsible": 1,
+   "description": "Nur Anzeige aus Stripe – das Backoffice sperrt nichts automatisch."
+  },
+  {
+   "fieldname": "radar_markiert",
+   "fieldtype": "Check",
+   "label": "Risiko prüfen",
+   "read_only": 1,
+   "no_copy": 1,
+   "in_standard_filter": 1,
+   "description": "Gesetzt bei risk_level elevated/highest, Score ab 65, offenem Review oder Frühwarnung."
+  },
+  {
+   "fieldname": "radar_risk_level",
+   "fieldtype": "Select",
+   "label": "Risikostufe",
+   "options": "\nnormal\nelevated\nhighest\nnot_assessed\nunknown",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_risk_score",
+   "fieldtype": "Int",
+   "label": "Risikowert (0–99)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_outcome",
+   "fieldtype": "Data",
+   "label": "Ergebnis",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "cb_sb_radar",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "radar_hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis Stripe",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_warnung",
+   "fieldtype": "Check",
+   "label": "Frühwarnung (Early Fraud Warning)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_review",
+   "fieldtype": "Select",
+   "label": "Review",
+   "options": "\noffen\ngeschlossen",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_geprueft_von",
+   "fieldtype": "Link",
+   "label": "Geprüft von",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "radar_geprueft_am",
+   "fieldtype": "Datetime",
+   "label": "Geprüft am",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "sb_dispute",
+   "fieldtype": "Section Break",
+   "label": "Zahlungsstreit (Chargeback)",
+   "collapsible": 1,
+   "depends_on": "eval:doc.dispute_id"
+  },
+  {
+   "fieldname": "dispute_id",
+   "fieldtype": "Data",
+   "label": "Dispute-ID",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "dispute_status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nwarning_needs_response\nwarning_under_review\nwarning_closed\nneeds_response\nunder_review\nwon\nlost",
+   "read_only": 1,
+   "no_copy": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "dispute_betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "cb_dispute",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dispute_grund",
+   "fieldtype": "Data",
+   "label": "Grund",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "dispute_frist",
+   "fieldtype": "Datetime",
+   "label": "Antwort bis (Stripe)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
    "fieldname": "tb_erstattung",
    "fieldtype": "Tab Break",
    "label": "Erstattung"
@@ -402,7 +547,7 @@
    "group": "Aufgaben"
   }
  ],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Shop",
  "name": "PH Zahlung",

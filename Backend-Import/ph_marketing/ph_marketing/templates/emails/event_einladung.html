@@ -1,0 +1,12 @@
+{% extends "templates/emails/ph_mail_basis.html" %}
+{% set P = "margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e" %}
+{% block preheader %}Eine Einladung aus Lochau.{% endblock %}
+{% block inhalt %}
+<p style="{{ P }}">{{ anrede or "Guten Tag" }},</p>
+<p style="{{ P }}">wir laden Sie herzlich ein: „{{ event_titel }}“ am {{ event_datum }}{% if event_uhrzeit %} ab {{ event_uhrzeit }}{% endif %} im {{ event_ort or "Showroom und Café, Landstraße 11, 6911 Lochau" }}.</p>
+{% if event_programm %}<div style="{{ P }}">{{ event_programm }}</div>{% endif %}
+{% if kontingent_bis %}<p style="{{ P }}">Für Sie halten wir bis {{ kontingent_bis }} Plätze frei.</p>{% endif %}
+<p style="{{ P }}"><a href="{{ anmelden_url }}" style="color:#30373e">Jetzt anmelden</a></p>
+<p style="{{ P }}">Herzlich<br>Susanne Messmer</p>
+{% endblock %}
+{% block fusszeile %}{{ fusszeile_html or ("Sie erhalten diese Einladung, weil Sie Einladungen zu Abenden im Showroom zugestimmt haben. <a href=\"" ~ abmelde_url ~ "\" style=\"color:#30373e\">Keine Einladungen mehr</a>") }}{% endblock %}

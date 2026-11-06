@@ -1,0 +1,144 @@
+{
+  "produkt": "RZL Software",
+  "url": "https://rzlsoftware.at/",
+  "stand": "2026-11-04",
+  "zeichen": 15000,
+  "funktionen": [
+    {
+      "name": "Parallele Buchungsstapel",
+      "beschreibung": "Mehrere Buchungsstapel werden parallel bearbeitet und später finalisiert (Voraussetzung für die UVA-Abgabe).",
+      "bereich": "faktura",
+      "nutzen": "Shop- und Showroom-Buchungen getrennt vorbereiten.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/buchhaltung/rzl-finanzbuchhaltung-next"
+    },
+    {
+      "name": "OP-Liste zum Stichtag",
+      "beschreibung": "Die OP-Liste zeigt offene Posten, auch nur die zu einem Stichtag fälligen.",
+      "bereich": "faktura",
+      "nutzen": "Fällige Kundenforderungen auf einen Blick.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/buchhaltung/rzl-finanzbuchhaltung-next"
+    },
+    {
+      "name": "Auswertungen KER/Saldenliste",
+      "beschreibung": "Kurzfristige Erfolgsrechnung, Saldenliste und jahresübergreifende Auswertungen werden erstellt.",
+      "bereich": "faktura",
+      "nutzen": "Monatsergebnis prüfen.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/buchhaltung/rzl-finanzbuchhaltung-next"
+    },
+    {
+      "name": "Datenimport Personenkonten",
+      "beschreibung": "Personenkonten und weitere Daten werden importiert.",
+      "bereich": "faktura",
+      "nutzen": "Kundenstamm aus dem Backoffice übernehmen.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/buchhaltung/rzl-finanzbuchhaltung-next"
+    },
+    {
+      "name": "SEPA-Zahlungen via EBICS oder Datei",
+      "beschreibung": "Überweisungen an Lieferanten werden über das RZL EBICS Modul an die Bank übermittelt oder als Datei ausgegeben.",
+      "bereich": "faktura",
+      "nutzen": "Lieferantenzahlungen gebündelt.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/buchhaltung/rzl-finanzbuchhaltung-next"
+    },
+    {
+      "name": "Kontoauszüge per EBICS abrufen",
+      "beschreibung": "Kontoauszugsdaten einzelner oder aller Banken werden direkt abgerufen, auch für frühere Zeiträume; ungebuchte Dateien sind sichtbar.",
+      "bereich": "faktura",
+      "nutzen": "Bankdaten ohne Download-Umweg.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/buchhaltung/rzl-ebics-schnittstelle"
+    },
+    {
+      "name": "Automatischer CAMT-Abruf & Verbuchung",
+      "beschreibung": "CAMT-Dateien werden automatisch abgerufen und für die automatisierte Verbuchung von Kontoauszügen genutzt.",
+      "bereich": "faktura",
+      "nutzen": "Zahlungseingänge automatisch.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/buchhaltung/rzl-ebics-schnittstelle"
+    },
+    {
+      "name": "Zahlungsdateien versenden/importieren",
+      "beschreibung": "Offene Zahlungsdateien werden über EBICS-Teilnehmer versendet, eingesehen, exportiert oder manuell importiert.",
+      "bereich": "faktura",
+      "nutzen": "Lohn- und Lieferantenzahlungen.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/buchhaltung/rzl-ebics-schnittstelle"
+    },
+    {
+      "name": "Beleg-Buchungs-Verknüpfung",
+      "beschreibung": "Digitale Belege werden mit Buchungen verknüpft und über Konten wieder aufgerufen und durchsucht.",
+      "bereich": "faktura",
+      "nutzen": "Beleg zur Buchung mit einem Klick.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/buchhaltung/rzl-fibu/ea-modul-belegverarbeitung"
+    },
+    {
+      "name": "OCR mit Buchungsvorschlag & Regeln",
+      "beschreibung": "OCR liest Belegdaten aus, daraus entsteht ein Buchungsvorschlag, ergänzt um definierbare Verbuchungsregeln.",
+      "bereich": "faktura",
+      "nutzen": "Wiederkehrende Herstellerrechnungen automatisch kontiert.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/buchhaltung/rzl-fibu/ea-modul-belegverarbeitung"
+    },
+    {
+      "name": "Revisionssichere Belegarchivierung",
+      "beschreibung": "Belege werden in der RZL-Datenbank gespeichert, der Initialstand bleibt erhalten, Versionierung und Seitenergänzung sind möglich (zertifiziert).",
+      "bereich": "faktura",
+      "nutzen": "Papierbelege dürfen bei sicherem Verfahren vernichtet werden.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/buchhaltung/rzl-belegverwaltung-plus"
+    },
+    {
+      "name": "Lohnarten & Lohnformeln",
+      "beschreibung": "Vordefinierte/freie Lohnarten und Lohnformeln berechnen z. B. Sonderzahlungen automatisch; die Abrechnung wird sofort angezeigt.",
+      "bereich": "personal",
+      "nutzen": "Urlaubs- und Weihnachtsgeld korrekt.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/personalverrechnung"
+    },
+    {
+      "name": "Elektronische Übermittlung ÖGK/Finanz/BUAK",
+      "beschreibung": "Daten werden über integrierte Schnittstellen an ÖGK, Finanz und BUAK übermittelt.",
+      "bereich": "personal",
+      "nutzen": "Meldungen fristgerecht.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/personalverrechnung"
+    },
+    {
+      "name": "Urlaub/Zeitausgleich/Krankenstand verwalten",
+      "beschreibung": "Urlaubs-, Zeitausgleichs- und Krankenstandstage werden verwaltet.",
+      "bereich": "personal",
+      "nutzen": "Abwesenheiten direkt im Lohn.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/personalverrechnung"
+    },
+    {
+      "name": "Personalrückstellungen & Kommunalsteuer",
+      "beschreibung": "Personalrückstellungen werden berechnet und die Kommunalsteuererklärung erstellt.",
+      "bereich": "personal",
+      "nutzen": "Jahresabschluss und Kommunalsteuer an die Gemeinde.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/personalverrechnung"
+    },
+    {
+      "name": "Lohnzahlung per E-Banking",
+      "beschreibung": "Löhne, Gehälter und Abgaben werden per E-Banking überwiesen.",
+      "bereich": "personal",
+      "nutzen": "Lohnlauf inkl. Zahlung.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/unternehmen/personalverrechnung"
+    },
+    {
+      "name": "Schnittstellen WWS/Kassa/Zeiterfassung",
+      "beschreibung": "Import/Export-Schnittstellen zu Warenwirtschaft (ERP/CRM), Registrierkassen und Zeiterfassung/Dienstplan über Partner.",
+      "bereich": "zentrale",
+      "nutzen": "Kassa und Backoffice liefern direkt an die Steuerberater-Software.",
+      "quelle": "RZL Software",
+      "url": "https://rzlsoftware.at/partner/partner-1/schnittstellenpartner"
+    }
+  ]
+}

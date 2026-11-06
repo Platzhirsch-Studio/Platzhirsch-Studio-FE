@@ -1,0 +1,110 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "art",
+  "bezug_zeile",
+  "raum",
+  "bezeichnung",
+  "produkt",
+  "ausfuehrung_text",
+  "menge",
+  "einzel_cent",
+  "betrag_cent",
+  "ek_cent"
+ ],
+ "fields": [
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "neu\nentfall\naenderung",
+   "default": "neu",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "bezug_zeile",
+   "fieldtype": "Data",
+   "label": "Projektposition (Zeile)",
+   "in_list_view": 0,
+   "description": "name der PH Projekt Position bei Entfall/Änderung"
+  },
+  {
+   "fieldname": "raum",
+   "fieldtype": "Data",
+   "label": "Raum",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt"
+  },
+  {
+   "fieldname": "ausfuehrung_text",
+   "fieldtype": "Small Text",
+   "label": "Ausführung"
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Int",
+   "label": "Menge",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "einzel_cent",
+   "fieldtype": "Int",
+   "label": "Einzelpreis brutto (Cent)",
+   "in_list_view": 1,
+   "columns": 2,
+   "description": "Bei Änderung: Mehr-/Minderpreis je Stück (darf negativ sein)"
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "ek_cent",
+   "fieldtype": "Int",
+   "label": "EK je Stück (Cent)",
+   "permlevel": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Nachtrag Position",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

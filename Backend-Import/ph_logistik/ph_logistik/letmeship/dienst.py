@@ -168,7 +168,7 @@ def buchen(sendung, service_roh=None):
         frappe.throw(_("Nur LetMeShip-Sendungen werden automatisch gebucht."))
     client = get_client()
     ls = frappe.get_doc("PH Lieferschein", sendung.lieferschein) if sendung.lieferschein else None
-    pakete = pakete_aus_lieferschein(ls) if ls else [{"laenge_cm": 30, "breite_cm": 20, "hoehe_cm": 15, "gewicht_g": sendung.gewicht_g or 1000, "menge": sendung.anzahl_pakete or 1, "inhalt": sendung.inhalt}]
+    pakete = getattr(sendung.flags, "pakete", None) or (pakete_aus_lieferschein(ls) if ls else None) or [{"laenge_cm": 30, "breite_cm": 20, "hoehe_cm": 15, "gewicht_g": sendung.gewicht_g or 1000, "menge": sendung.anzahl_pakete or 1, "inhalt": sendung.inhalt}]
     ziel = {
         "name": sendung.empf_name, "firma": sendung.empf_firma, "strasse": sendung.empf_strasse, "hausnr": sendung.empf_hausnr, "zusatz": sendung.empf_zusatz,
         "plz": sendung.empf_plz, "ort": sendung.empf_ort, "land": sendung.empf_land or "AT", "email": sendung.empf_email, "telefon": sendung.empf_telefon,
@@ -277,3 +277,60 @@ def stornieren(sendung, grund=None):
         for p in frappe.get_all("PH Lieferschein Paket", {"parent": sendung.lieferschein, "sendung": sendung.name}, pluck="name"):
             frappe.db.set_value("PH Lieferschein Paket", p, "sendung", None, update_modified=False)
     return sendung
+
+
+# ── Retourenlabel zu Lieferschein / Warenrücknahme (Integration Runde 3) ─────
+
+def tarife_fuer_retoure(ls, pakete):
+    """Tarife für die Rücksendung: Abholung beim Kunden → Absender. → {"tarife", "roh", "empfehlung", "env"}"""
+    from .retoure import retoure_plan
+
+    e = einstellungen()
+    laender = [x.strip().upper() for x in str(e.get("laender_versand") or "AT\nDE").splitlines() if x.strip()]
+    plan = retoure_plan(ziel_aus_lieferschein(ls), absender(), pakete, laender, ls.name)
+    client = get_client()
+    roh = client.verfuegbar(plan["von"], plan["nach"], plan["pakete"], False, 0, str(naechster_werktag(e.get("abholung_tage") or 1)))
+    tarife = tarife_normalisieren(roh.get("serviceList"), int(e.get("aufschlag_cent") or 0), int(e.get("versand_ust_promille") or 200))
+    if not tarife:
+        raise ShippingError("keine_tarife")
+    bevorzugt = [x for x in str(e.get("bevorzugte_carrier") or "").splitlines() if x.strip()]
+    empf = waehle_dienst(tarife, e.get("dienst_wahl") or "guenstigster", bevorzugt)
+    return {"tarife": [{k: v for k, v in t.items() if k != "raw"} for t in tarife], "roh": {t["id"]: t["raw"] for t in tarife}, "empfehlung": empf["id"] if empf else None, "env": client.umgebung, "plan": plan}
+
+
+def retourenlabel_erzeugen(ls, warenruecknahme=None, menge_zurueck=None, tarif_id=None):
+    """PH Sendung (richtung Retoure) zum Lieferschein anlegen und buchen – Etikett als privater Anhang (Mock ohne Netz,
+    solange Testmodus/keine Zugangsdaten). Idempotent: offene Retoure-Sendung zu Lieferschein/Warenrücknahme wird
+    zurückgegeben. → PH Sendung"""
+    from .retoure import retoure_pakete
+
+    filt = {"lieferschein": ls.name, "richtung": "Retoure", "status": ("not in", ("Storniert",))}
+    if warenruecknahme and frappe.get_meta("PH Sendung").has_field("warenruecknahme"):
+        filt["warenruecknahme"] = warenruecknahme
+    vorhanden = frappe.db.get_value("PH Sendung", filt, "name")
+    if vorhanden:
+        s = frappe.get_doc("PH Sendung", vorhanden)
+        if s.status in ("Angelegt", "Problem"):
+            buchen(s)
+            s.reload()
+        return s
+    menge_gesamt = sum(int(p.menge or 0) for p in ls.positionen) or None
+    pakete = retoure_pakete(pakete_aus_lieferschein(ls), menge_gesamt, menge_zurueck)
+    t = tarife_fuer_retoure(ls, pakete)
+    tarif = next((x for x in t["tarife"] if x["id"] == (tarif_id or t["empfehlung"])), None)
+    plan = t["plan"]
+    s = frappe.get_doc({
+        "doctype": "PH Sendung", "richtung": "Retoure", "dienstleister": "LetMeShip", "lieferschein": ls.name, "bestellung": ls.bestellung, "kontakt": ls.kontakt,
+        "warenruecknahme": warenruecknahme, "carrier": tarif["carrier"] if tarif else None, "service_id": tarif["id"] if tarif else None, "service_name": tarif["name"] if tarif else None,
+        "laufzeit_tage": tarif.get("tage") if tarif else None, "preis_netto_cent": tarif.get("netto_cent") if tarif else None, "preis_brutto_cent": tarif["cent"] if tarif else None,
+        "anzahl_pakete": len(pakete), "gewicht_g": sum(int(p.get("gewicht_g") or 0) for p in pakete), "inhalt": "Retoure", "abholdatum": naechster_werktag(einstellungen().get("abholung_tage") or 1),
+        "referenz": plan["referenz"], "env": t["env"], "tarife_json": json.dumps(t["tarife"], ensure_ascii=False, default=str), "quelle": "backoffice",
+        **{f"empf_{k}": v for k, v in plan["nach"].items() if k != "name"}, "empf_name": plan["nach"].get("name"),
+    })
+    s.flags.service_roh = t["roh"].get(tarif["id"]) if tarif else None
+    s.insert()
+    s.flags.pakete = pakete
+    s.flags.service_roh = t["roh"].get(tarif["id"]) if tarif else None
+    buchen(s, s.flags.service_roh)
+    s.reload()
+    return s

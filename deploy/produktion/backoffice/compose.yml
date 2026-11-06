@@ -1,0 +1,32 @@
+# deploy/produktion/backoffice/compose.yml – Backoffice-Host (backoffice.platzhirsch.studio → 127.0.0.1:3100).
+#   GIT_SHA=$(git rev-parse --short=12 HEAD) docker compose build && GIT_SHA=$(git rev-parse --short=12 HEAD) docker compose up -d
+# Rollback: BACKOFFICE_TAG=<älterer SHA> docker compose up -d
+#
+# Hinweis: Sitzungen und Geräte liegen heute im Server-Store IN-MEMORY (backoffice/src/lib/backoffice/auth/store.js).
+# Ein Neustart meldet alle ab; deshalb genau EINE Instanz (keine Replikas), bis der Store auf Redis/Frappe umgestellt ist.
+
+name: ph-backoffice
+
+services:
+  backoffice:
+    image: platzhirsch/backoffice:${BACKOFFICE_TAG:-${GIT_SHA:-latest}}
+    build:
+      context: ../../..
+      dockerfile: deploy/produktion/backoffice/Containerfile
+      args:
+        NEXT_DEPLOYMENT_ID: ${GIT_SHA:-}
+    restart: unless-stopped
+    env_file:
+      - ${BACKOFFICE_ENV_FILE:-/srv/platzhirsch/backoffice/.env.production}
+    environment:
+      NODE_ENV: production
+      PORT: "3100"
+    ports:
+      - "127.0.0.1:3100:3100"
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "5" }
+    deploy:
+      resources:
+        limits:
+          memory: 1g

@@ -5,6 +5,8 @@
   unbeantwortete_anfragen       07:30 Mo–Fr: PH Anfrage „Neu“ älter als n Stunden → PH Aufgabe an Leitung
   aufgaben_erinnerungen         07:00 täglich: fällige/überfällige PH Aufgaben → Benachrichtigung
   meet_raum_anlegen / loeschen  Frappe Meet (optional, Schalter in PH Termin Einstellungen)
+  Automationen (Konzept CRM §8.2, Schalter in PH Termin Einstellungen): wiedervorlagen_faellig (R1),
+  ruhende_anfragen (R2), termine_ohne_abschluss (R3), vortagesuebersicht (R6), dsgvo_fristen (DSGVO/BAO)
 """
 
 import frappe
@@ -164,3 +166,142 @@ def meet_raeume_aufraeumen():
     grenze = add_to_date(now_datetime(), hours=-2)
     for name in frappe.get_all("PH Termin", filters={"meet_raum_id": ("is", "set"), "ende": ("<", grenze)}, pluck="name"):
         meet_raum_loeschen(name)
+
+
+# ── Automationen R1–R8 (Konzept CRM §8.2) ───────────────────────────────────
+
+
+def _melden(user, doctype, name, betreff):
+    from frappe.desk.doctype.notification_log.notification_log import enqueue_create_notification
+
+    if user:
+        enqueue_create_notification([user], {"type": "Alert", "document_type": doctype, "document_name": name, "subject": betreff, "from_user": "Administrator"})
+
+
+def wiedervorlagen_faellig():
+    """R1: Wiedervorlagen an PH Anfrage (offen) und PH Kontakt → Benachrichtigung (einmal je Tag)."""
+    e = einstellungen()
+    if not e.get("auto_wiedervorlage", 1):
+        return 0
+    n = 0
+    for a in frappe.get_all("PH Anfrage", filters={"wiedervorlage": ("<=", nowdate()), "status": ("in", ["Neu", "Qualifiziert", "Termin vereinbart", "Angebot"])}, fields=["name", "titel", "zugewiesen_an", "wiedervorlage_notiz", "wiedervorlage_erinnert_am"]):
+        if str(a.wiedervorlage_erinnert_am or "") == nowdate():
+            continue
+        try:
+            zusatz = f" – {a.wiedervorlage_notiz}" if a.wiedervorlage_notiz else ""
+            _melden(a.zugewiesen_an or e["leitung_user"], "PH Anfrage", a.name, _("Wiedervorlage: {0}").format(a.titel) + zusatz)
+            frappe.db.set_value("PH Anfrage", a.name, "wiedervorlage_erinnert_am", nowdate(), update_modified=False)
+            frappe.db.commit()
+            n += 1
+        except Exception:  # noqa: BLE001
+            frappe.db.rollback()
+            frappe.log_error(title=f"PH Anfrage {a.name}: Wiedervorlage fehlgeschlagen")
+    for k in frappe.get_all("PH Kontakt", filters={"wiedervorlage": nowdate()}, fields=["name", "titel", "berater", "wiedervorlage_notiz"]):
+        try:
+            zusatz = f" – {k.wiedervorlage_notiz}" if k.wiedervorlage_notiz else ""
+            _melden(k.berater or e["leitung_user"], "PH Kontakt", k.name, _("Wiedervorlage: {0}").format(k.titel) + zusatz)
+            frappe.db.commit()
+            n += 1
+        except Exception:  # noqa: BLE001
+            frappe.db.rollback()
+            frappe.log_error(title=f"PH Kontakt {k.name}: Wiedervorlage fehlgeschlagen")
+    return n
+
+
+def ruhende_anfragen():
+    """R2: Anfrage länger als Schwelle im selben Status → Aufgabe „Nachfassen“ (Neu deckt
+    unbeantwortete_anfragen ab). Merker `ruhend_erinnert` = Status, für den schon erinnert wurde."""
+    from frappe.utils import date_diff
+
+    from ph_crm.utils.pipeline import ruhend
+
+    e = einstellungen()
+    if not e.get("auto_ruhend", 1):
+        return 0
+    n = 0
+    for a in frappe.get_all("PH Anfrage", filters={"status": ("in", ["Qualifiziert", "Termin vereinbart", "Angebot"])}, fields=["name", "titel", "status", "modified", "zugewiesen_an", "ruhend_erinnert", "kontakt"]):
+        if a.ruhend_erinnert == a.status or not ruhend(a.status, date_diff(nowdate(), a.modified), e["ruhe_schwellen"]):
+            continue
+        try:
+            frappe.get_doc({"doctype": "PH Aufgabe", "titel": _("Nachfassen ({0}): {1}").format(_(a.status), a.titel)[:140], "faellig": nowdate(), "prioritaet": "Normal", "zugewiesen_an": a.zugewiesen_an or e["leitung_user"], "referenz_doctype": "PH Anfrage", "referenz_name": a.name, "kontakt": a.kontakt, "quelle": "scheduler"}).insert(ignore_permissions=True)
+            frappe.db.set_value("PH Anfrage", a.name, "ruhend_erinnert", a.status, update_modified=False)
+            frappe.db.commit()
+            n += 1
+        except Exception:  # noqa: BLE001
+            frappe.db.rollback()
+            frappe.log_error(title=f"PH Anfrage {a.name}: Nachfassen fehlgeschlagen")
+    return n
+
+
+def termine_ohne_abschluss():
+    """R3: bestätigt, Ende seit > 2 h vorbei, kein Abschluss → Benachrichtigung (einmal je Termin)."""
+    e = einstellungen()
+    if not e.get("auto_termin_abschluss", 1):
+        return 0
+    grenze = add_to_date(now_datetime(), hours=-2)
+    namen = frappe.get_all("PH Termin", filters={"status": "Bestaetigt", "ende": ("<", grenze), "abschluss_erinnert": ("is", "not set")}, fields=["name", "titel", "berater"])
+    for t in namen:
+        try:
+            _melden(t.berater or e["leitung_user"], "PH Termin", t.name, _("Termin erledigt? Protokoll anlegen: {0}").format(t.titel))
+            frappe.db.set_value("PH Termin", t.name, "abschluss_erinnert", now_datetime(), update_modified=False)
+            frappe.db.commit()
+        except Exception:  # noqa: BLE001
+            frappe.db.rollback()
+            frappe.log_error(title=f"PH Termin {t.name}: Abschluss-Erinnerung fehlgeschlagen")
+    return len(namen)
+
+
+def vortagesuebersicht():
+    """R6: je Berater eine Benachrichtigung über die Termine des nächsten Tages."""
+    from frappe.utils import add_days, getdate
+
+    e = einstellungen()
+    if not e.get("auto_vortag", 1):
+        return 0
+    morgen = getdate(add_days(nowdate(), 1))
+    termine = frappe.get_all("PH Termin", filters={"status": ("in", ["Unbestaetigt", "Bestaetigt"]), "start": ("between", [f"{morgen} 00:00:00", f"{morgen} 23:59:59"])}, fields=["name", "berater", "modus", "telefon", "plz_ort", "start"], order_by="start asc")
+    je = {}
+    for t in termine:
+        je.setdefault(t.berater or e["leitung_user"], []).append(t)
+    for user, liste in je.items():
+        if not user:
+            continue
+        ohne_tel = sum(1 for t in liste if not t.telefon)
+        orte = sorted({t.plz_ort for t in liste if t.modus == "Vor Ort" and t.plz_ort})
+        teile = [_("Morgen {0} Termine").format(len(liste))]
+        if ohne_tel:
+            teile.append(_("{0} ohne Telefon").format(ohne_tel))
+        if orte:
+            teile.append(_("Vor Ort: {0}").format(", ".join(orte)[:80]))
+        try:
+            _melden(user, "PH Termin", liste[0].name, " – ".join(teile))
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title=f"PH CRM Vortagesübersicht {user} fehlgeschlagen")
+    frappe.db.commit()
+    return len(je)
+
+
+def dsgvo_fristen():
+    """Datenschutzanfragen mit Frist ≤ 7 Tage → Leitung; nach Ende der BAO-Aufbewahrung Rest anonymisieren."""
+    from frappe.utils import add_days
+
+    from ph_crm.ph_crm.dsgvo import BESTAETIGUNG, ausfuehren
+
+    e = einstellungen()
+    for a in frappe.get_all("PH Datenschutzanfrage", filters={"status": ("in", ["Offen", "In Arbeit"]), "frist": ("<=", add_days(nowdate(), 7))}, fields=["name", "titel", "frist", "zugewiesen_an"]):
+        try:
+            _melden(a.zugewiesen_an or e["leitung_user"], "PH Datenschutzanfrage", a.name, _("DSGVO-Frist {0}: {1}").format(a.frist, a.titel))
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title=f"PH Datenschutzanfrage {a.name}: Fristhinweis fehlgeschlagen")
+    n = 0
+    for k in frappe.get_all("PH Kontakt", filters={"anonymisiert_am": ("is", "set"), "aufbewahren_bis": ("<", nowdate())}, pluck="name"):
+        try:
+            frappe.set_user("Administrator")
+            ausfuehren(k, BESTAETIGUNG)
+            frappe.db.commit()
+            n += 1
+        except Exception:  # noqa: BLE001
+            frappe.db.rollback()
+            frappe.log_error(title=f"PH Kontakt {k}: Nach-Anonymisierung fehlgeschlagen")
+    frappe.db.commit()
+    return n

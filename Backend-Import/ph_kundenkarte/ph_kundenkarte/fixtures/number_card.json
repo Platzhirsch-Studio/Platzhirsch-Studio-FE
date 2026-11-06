@@ -1,0 +1,48 @@
+[
+ {
+  "doctype": "Number Card",
+  "name": "PH Aktive Kundenkarten",
+  "label": "Aktive Kundenkarten",
+  "type": "Document Type",
+  "document_type": "PH Kundenkarte",
+  "function": "Count",
+  "filters_json": "[[\"PH Kundenkarte\",\"status\",\"=\",\"Aktiv\",false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Kundenkarte",
+  "show_percentage_stats": 1,
+  "stats_time_interval": "Monthly",
+  "color": "#15803d",
+  "roles": [{"role": "PH Kundenkarte Mitarbeiter"}, {"role": "PH Kundenkarte Leitung"}, {"role": "PH Geschäftsführung"}]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Offene Antraege",
+  "label": "Offene Anträge",
+  "type": "Document Type",
+  "document_type": "PH Kundenkarte Antrag",
+  "function": "Count",
+  "filters_json": "[[\"PH Kundenkarte Antrag\",\"status\",\"in\",[\"Neu\",\"Bestaetigt\"],false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Kundenkarte",
+  "show_percentage_stats": 1,
+  "stats_time_interval": "Weekly",
+  "color": "#b45309",
+  "roles": [{"role": "PH Kundenkarte Mitarbeiter"}, {"role": "PH Kundenkarte Leitung"}, {"role": "PH Geschäftsführung"}]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Einloesungen 30 Tage",
+  "label": "Einlösungen (30 Tage)",
+  "type": "Custom",
+  "method": "ph_kundenkarte.ph_kundenkarte.kennzahlen.einloesungen_30_tage",
+  "filters_json": "[[\"PH Kundenkarte Einloesung\", \"status\", \"=\", \"Eingeloest\", false], [\"PH Kundenkarte Einloesung\", \"eingeloest_am\", \"Timespan\", \"last month\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Kundenkarte",
+  "show_percentage_stats": 0,
+  "color": "#30373e",
+  "roles": [{"role": "PH Kundenkarte Mitarbeiter"}, {"role": "PH Kundenkarte Leitung"}, {"role": "PH Geschäftsführung"}]
+ }
+]

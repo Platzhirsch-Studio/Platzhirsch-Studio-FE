@@ -41,7 +41,8 @@ class PHKassenbuch(Document):
                     if (alt.get(f) or 0) != (self.get(f) or 0):
                         frappe.throw(_("Kassenbuch-Buchungen sind unveränderlich – bitte Gegenbuchung („Stornieren“)."))
         else:
-            self.bestand_danach_cent = letzter_bestand(self.kasse) + int(self.bewegung_cent)
+            self.waehrung = self.waehrung or "EUR"
+            self.bestand_danach_cent = letzter_bestand(self.kasse, self.waehrung) + int(self.bewegung_cent)
         self.titel = f"{_(self.art)} {format_betrag(self.betrag_cent)} · {self.kasse}"[:140]
 
     def on_trash(self):
@@ -57,19 +58,32 @@ class PHKassenbuch(Document):
             frappe.throw(_("Bereits storniert."))
         gegen_art = {"Einlage": "Entnahme", "Entnahme": "Einlage", "Bareinnahme": "Barausgabe", "Barausgabe": "Bareinnahme", "Anfangsbestand": "Entnahme", "Differenz": "Differenz"}[self.art]
         betrag = -int(self.betrag_cent) if self.art == "Differenz" else int(self.betrag_cent)
-        gegen = buchen(self.kasse, gegen_art, betrag, _("Storno {0}: {1}").format(self.name, grund), quelle="manuell", storno_von=self.name)
+        gegen = buchen(self.kasse, gegen_art, betrag, _("Storno {0}: {1}").format(self.name, grund), quelle="manuell", storno_von=self.name, waehrung=self.waehrung or "EUR")
         self.db_set({"status": "Storniert", "storniert_durch": gegen.name})
         self.add_comment("Info", _("Storniert durch {0}").format(gegen.name))
         return gegen.name
 
 
-def letzter_bestand(kasse: str) -> int:
-    row = frappe.get_all("PH Kassenbuch", filters={"kasse": kasse}, fields=["bestand_danach_cent"], order_by="zeitpunkt desc, creation desc", limit=1)
+def _waehrung_filter(waehrung):
+    # Altdaten ohne Währung zählen als EUR
+    return ["waehrung", "in", ["EUR", "", None]] if (waehrung or "EUR") == "EUR" else ["waehrung", "=", waehrung]
+
+
+def letzter_bestand(kasse: str, waehrung: str = "EUR") -> int:
+    """Bestand laut Kassenbuch = Bargeld in der Lade (seit P2 enthält das Kassenbuch jeden Bar-Beleg)."""
+    row = frappe.get_all("PH Kassenbuch", filters=[["kasse", "=", kasse], _waehrung_filter(waehrung)], fields=["bestand_danach_cent"], order_by="creation desc", limit=1)
     return int(row[0].bestand_danach_cent or 0) if row else 0
 
 
-def buchen(kasse, art, betrag_cent, grund=None, quelle="kassa", beleg=None, kassenabschluss=None, storno_von=None, idempotency_key=None, zeitpunkt=None):
-    """Zentrale Buchungsfunktion (Page, Tagesabschluss, Belegsummen)."""
+def bestand_vor(kasse: str, zeitpunkt, waehrung: str = "EUR") -> int:
+    """Bestand unmittelbar vor einem Zeitpunkt (Beginn des Geschäftstags) – Grundlage des Anfangsbestands (P3)."""
+    row = frappe.get_all("PH Kassenbuch", filters=[["kasse", "=", kasse], ["zeitpunkt", "<", zeitpunkt], _waehrung_filter(waehrung)], fields=["bestand_danach_cent"], order_by="zeitpunkt desc, creation desc", limit=1)
+    return int(row[0].bestand_danach_cent or 0) if row else 0
+
+
+def buchen(kasse, art, betrag_cent, grund=None, quelle="kassa", beleg=None, kassenabschluss=None, storno_von=None, idempotency_key=None, zeitpunkt=None, waehrung="EUR", ignore_permissions=False):
+    """Zentrale Buchungsfunktion (Page, Tagesabschluss, Belegsummen). ignore_permissions nur für Systembuchungen
+    (Bar-Beleg aus PH Kassenbeleg.on_submit, Differenz aus dem Abschluss)."""
     if idempotency_key:
         alt = frappe.db.get_value("PH Kassenbuch", {"idempotency_key": idempotency_key}, "name")
         if alt:
@@ -87,10 +101,11 @@ def buchen(kasse, art, betrag_cent, grund=None, quelle="kassa", beleg=None, kass
             "storno_von": storno_von,
             "idempotency_key": idempotency_key,
             "zeitpunkt": zeitpunkt or now_datetime(),
+            "waehrung": waehrung or "EUR",
         }
     )
-    doc.insert()
-    if art in ("Einlage", "Entnahme"):
+    doc.insert(ignore_permissions=ignore_permissions)
+    if art in ("Einlage", "Entnahme") and (waehrung or "EUR") == "EUR":
         # Nebenbuchung in ph_shop PH Zahlung (Verrechnung), falls die Funktion schon vorhanden ist.
         from ph_kassa.schnittstellen import zahlung_buchen
 
@@ -100,9 +115,14 @@ def buchen(kasse, art, betrag_cent, grund=None, quelle="kassa", beleg=None, kass
     return doc
 
 
-def tagesbewegungen(kasse: str, datum) -> dict:
-    """Einlagen/Entnahmen/Differenz eines Tages (für den Tagesabschluss)."""
-    rows = frappe.get_all("PH Kassenbuch", filters={"kasse": kasse, "datum": getdate(datum), "status": "Gebucht"}, fields=["art", "betrag_cent", "bewegung_cent"])
+def tagesbewegungen(kasse: str, datum, waehrung: str = "EUR", von=None, bis=None) -> dict:
+    """Einlagen/Entnahmen/Differenz eines Tages (für den Tagesabschluss); von/bis = Geschäftstag (Tageswechsel)."""
+    filters = [["kasse", "=", kasse], ["status", "=", "Gebucht"], _waehrung_filter(waehrung)]
+    if von and bis:
+        filters.append(["zeitpunkt", "between", [von, bis]])
+    else:
+        filters.append(["datum", "=", getdate(datum)])
+    rows = frappe.get_all("PH Kassenbuch", filters=filters, fields=["art", "betrag_cent", "bewegung_cent", "kassenabschluss"])
     out = {"einlagen_cent": 0, "entnahmen_cent": 0, "differenz_cent": 0, "anfangsbestand_cent": 0}
     for r in rows:
         if r.art == "Einlage":
@@ -113,4 +133,7 @@ def tagesbewegungen(kasse: str, datum) -> dict:
             out["differenz_cent"] += int(r.bewegung_cent)
         elif r.art == "Anfangsbestand":
             out["anfangsbestand_cent"] += int(r.betrag_cent)
+        if r.art == "Differenz" and r.kassenabschluss:
+            out.setdefault("differenz_je_abschluss", {})
+            out["differenz_je_abschluss"][r.kassenabschluss] = out["differenz_je_abschluss"].get(r.kassenabschluss, 0) + int(r.bewegung_cent)
     return out

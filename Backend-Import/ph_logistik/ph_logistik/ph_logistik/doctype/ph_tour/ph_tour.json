@@ -347,6 +347,29 @@
    "export": 0,
    "report": 1,
    "share": 0
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
   }
  ],
  "sort_field": "datum",

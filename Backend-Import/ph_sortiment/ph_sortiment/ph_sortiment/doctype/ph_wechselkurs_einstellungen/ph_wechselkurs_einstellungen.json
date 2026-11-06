@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 18:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "description": "Richtwerte und Rückfall-Kurs des Dreiländer-Rechners (Website /dreilaender-rechner, CHF). Lesend über ph_sortiment.api.get_wechselkurs_einstellungen.",
+ "field_order": [
+  "sb_allgemein",
+  "aktiv",
+  "oss_aktiv",
+  "cb_kurs",
+  "kurs_eur_chf",
+  "kurs_datum",
+  "sb_posten",
+  "posten"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_allgemein",
+   "fieldtype": "Section Break",
+   "label": "Dreiländer-Rechner"
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Website liest diese Werte",
+   "default": "0",
+   "description": "Aus = ph_sortiment.api.get_wechselkurs_einstellungen liefert {} und die Website nutzt ihre eingebauten Richtwerte (src/components/Labs/Dreilaender/pricing.js)."
+  },
+  {
+   "fieldname": "oss_aktiv",
+   "fieldtype": "Check",
+   "label": "EU-OSS aktiv (DE mit 19 % USt)",
+   "default": "0",
+   "description": "Erst einschalten, wenn bestätigt ist, dass DE-Fernverkäufe über die OSS abgerechnet werden."
+  },
+  {
+   "fieldname": "cb_kurs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "kurs_eur_chf",
+   "fieldtype": "Float",
+   "label": "Rückfall-Kurs EUR → CHF",
+   "precision": "6",
+   "description": "Kein Geldbetrag, sondern Kurs (1 EUR = x CHF). Nur Rückfall, wenn EZB und letzter gespeicherter Kurs fehlen."
+  },
+  {
+   "fieldname": "kurs_datum",
+   "fieldtype": "Date",
+   "label": "Kurs vom"
+  },
+  {
+   "fieldname": "sb_posten",
+   "fieldtype": "Section Break",
+   "label": "Kostenposten (Richtwerte)"
+  },
+  {
+   "fieldname": "posten",
+   "fieldtype": "Table",
+   "label": "Posten",
+   "options": "PH Wechselkurs Einstellungen Posten"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Wechselkurs Einstellungen",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Sortiment Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1
+  },
+  {
+   "role": "PH Sortiment Mitarbeiter",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

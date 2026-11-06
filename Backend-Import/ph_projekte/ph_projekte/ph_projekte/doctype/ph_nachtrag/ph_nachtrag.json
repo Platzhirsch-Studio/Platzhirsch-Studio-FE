@@ -1,0 +1,495 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Nachtrag/Änderungsauftrag zum Projekt: Mehr-/Minderpositionen mit Preis, Freigabe durch den Kunden (Unterschrift oder Portal), danach Übernahme ins Projekt.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "projekt",
+  "kontakt",
+  "bezeichnung",
+  "cb_kopf",
+  "status",
+  "nummer_im_projekt",
+  "datum",
+  "grund",
+  "sb_inhalt",
+  "beschreibung",
+  "positionen",
+  "auswirkung_termin",
+  "sb_summen",
+  "summe_neu_cent",
+  "summe_entfall_cent",
+  "summe_aenderung_cent",
+  "cb_summen",
+  "differenz_cent",
+  "waehrung",
+  "ek_differenz_cent",
+  "sb_freigabe",
+  "vorgelegt_am",
+  "freigabe_frist",
+  "entscheidung_am",
+  "entscheidung_quelle",
+  "kunde_kommentar",
+  "ablehnung_grund",
+  "cb_freigabe",
+  "unterschrift_kunde",
+  "unterschrift_name",
+  "freigabe_ip_hash",
+  "uebernommen",
+  "sb_intern",
+  "notiz_intern",
+  "sb_system",
+  "idempotency_key",
+  "quelle",
+  "ip_hash"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-NT-.YYYY.-.####",
+   "default": "PH-NT-.YYYY.-.####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kunde",
+   "options": "PH Kontakt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nVorgelegt\nFreigegeben\nAbgelehnt\nStorniert",
+   "default": "Entwurf",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "nummer_im_projekt",
+   "fieldtype": "Int",
+   "label": "Nachtrag Nr.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Datum",
+   "default": "Today"
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Select",
+   "label": "Grund",
+   "options": "Kundenwunsch\nPlanungsaenderung\nBaustelle\nLieferant\nSonstiges",
+   "default": "Kundenwunsch",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_inhalt",
+   "fieldtype": "Section Break",
+   "label": "Inhalt"
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Text Editor",
+   "label": "Beschreibung"
+  },
+  {
+   "fieldname": "positionen",
+   "fieldtype": "Table",
+   "label": "Positionen",
+   "options": "PH Nachtrag Position",
+   "reqd": 1
+  },
+  {
+   "fieldname": "auswirkung_termin",
+   "fieldtype": "Small Text",
+   "label": "Auswirkung auf Termine"
+  },
+  {
+   "fieldname": "sb_summen",
+   "fieldtype": "Section Break",
+   "label": "Summen (brutto)"
+  },
+  {
+   "fieldname": "summe_neu_cent",
+   "fieldtype": "Int",
+   "label": "Mehrpreis (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "summe_entfall_cent",
+   "fieldtype": "Int",
+   "label": "Minderpreis (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "summe_aenderung_cent",
+   "fieldtype": "Int",
+   "label": "Änderungen (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_summen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "differenz_cent",
+   "fieldtype": "Int",
+   "label": "Differenz gesamt (Cent)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "ek_differenz_cent",
+   "fieldtype": "Int",
+   "label": "EK-Differenz (Cent)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_freigabe",
+   "fieldtype": "Section Break",
+   "label": "Kundenfreigabe"
+  },
+  {
+   "fieldname": "vorgelegt_am",
+   "fieldtype": "Datetime",
+   "label": "Vorgelegt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "freigabe_frist",
+   "fieldtype": "Date",
+   "label": "Freigabe bis"
+  },
+  {
+   "fieldname": "entscheidung_am",
+   "fieldtype": "Datetime",
+   "label": "Entschieden am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "entscheidung_quelle",
+   "fieldtype": "Select",
+   "label": "Entschieden über",
+   "options": "\nportal\nbackoffice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kunde_kommentar",
+   "fieldtype": "Small Text",
+   "label": "Kommentar des Kunden",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ablehnung_grund",
+   "fieldtype": "Small Text",
+   "label": "Ablehnungsgrund"
+  },
+  {
+   "fieldname": "cb_freigabe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "unterschrift_kunde",
+   "fieldtype": "Signature",
+   "label": "Unterschrift Kunde"
+  },
+  {
+   "fieldname": "unterschrift_name",
+   "fieldtype": "Data",
+   "label": "Name Unterzeichner"
+  },
+  {
+   "fieldname": "freigabe_ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash) Freigabe",
+   "read_only": 1
+  },
+  {
+   "fieldname": "uebernommen",
+   "fieldtype": "Check",
+   "label": "Ins Projekt übernommen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_intern",
+   "fieldtype": "Section Break",
+   "label": "Intern",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "notiz_intern",
+   "fieldtype": "Small Text",
+   "label": "Notiz intern",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "unique": 1,
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\nsystem",
+   "default": "backoffice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Nachtrag",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  }
+ ],
+ "sort_field": "datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Gray"
+  },
+  {
+   "title": "Vorgelegt",
+   "color": "Blue"
+  },
+  {
+   "title": "Freigegeben",
+   "color": "Green"
+  },
+  {
+   "title": "Abgelehnt",
+   "color": "Red"
+  },
+  {
+   "title": "Storniert",
+   "color": "Gray"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "projekt,bezeichnung,status",
+ "track_seen": 1
+}

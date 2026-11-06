@@ -1,0 +1,370 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Ordner der Dateiablage (Baum) mit Bezug auf Kontakt/Projekt/Lieferant/Mitarbeiter/Servicefall und Rechte-Modus intern/team/leitung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "parent_ph_ordner",
+  "pfad",
+  "is_group",
+  "cb_kopf",
+  "bezug_doctype",
+  "bezug_name",
+  "bezug_titel",
+  "ist_bezugswurzel",
+  "sb_rechte",
+  "rechte_modus",
+  "effektiver_modus",
+  "mitglieder",
+  "cb_rechte",
+  "farbe",
+  "icon",
+  "aufbewahrungsklasse",
+  "geschuetzt",
+  "vorlage",
+  "sb_beschreibung",
+  "beschreibung",
+  "sb_system",
+  "lft",
+  "rgt",
+  "old_parent",
+  "idempotency_key",
+  "quelle"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-ORD-.######",
+   "default": "PH-ORD-.######",
+   "hidden": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "reqd": 1,
+   "in_list_view": 1,
+   "bold": 1,
+   "length": 140
+  },
+  {
+   "fieldname": "parent_ph_ordner",
+   "fieldtype": "Link",
+   "label": "Übergeordneter Ordner",
+   "options": "PH Ordner",
+   "in_standard_filter": 1,
+   "ignore_user_permissions": 1
+  },
+  {
+   "fieldname": "pfad",
+   "fieldtype": "Data",
+   "label": "Pfad",
+   "read_only": 1,
+   "length": 500
+  },
+  {
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Gruppe",
+   "default": "1",
+   "hidden": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bezug_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug (Art)",
+   "options": "DocType",
+   "in_standard_filter": 1,
+   "description": "PH Kontakt, PH Projekt, PH Lieferant, PH Mitarbeiter, PH Servicefall oder leer (allgemeine Ablage). Unterordner erben den Bezug."
+  },
+  {
+   "fieldname": "bezug_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "bezug_doctype",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "bezug_titel",
+   "fieldtype": "Data",
+   "label": "Bezug (Titel)",
+   "read_only": 1,
+   "length": 200
+  },
+  {
+   "fieldname": "ist_bezugswurzel",
+   "fieldtype": "Check",
+   "label": "Stammordner des Bezugs",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_rechte",
+   "fieldtype": "Section Break",
+   "label": "Rechte und Darstellung"
+  },
+  {
+   "fieldname": "rechte_modus",
+   "fieldtype": "Select",
+   "label": "Rechte-Modus",
+   "options": "\nintern\nteam\nleitung",
+   "description": "leer = vom übergeordneten Ordner erben. intern: alle mit Zugriff auf den Bezug · team: Mitglieder, Ersteller und Team des Bezugs · leitung: nur Leitung. Ein Unterordner ist nie lockerer als sein Elternordner."
+  },
+  {
+   "fieldname": "effektiver_modus",
+   "fieldtype": "Data",
+   "label": "Wirksamer Modus",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "mitglieder",
+   "fieldtype": "Table MultiSelect",
+   "label": "Mitglieder (Team)",
+   "options": "PH Ordner Mitglied"
+  },
+  {
+   "fieldname": "cb_rechte",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "farbe",
+   "fieldtype": "Color",
+   "label": "Farbe"
+  },
+  {
+   "fieldname": "icon",
+   "fieldtype": "Data",
+   "label": "Symbol",
+   "description": "Frappe-Icon-Name, z. B. folder-normal, image, file"
+  },
+  {
+   "fieldname": "aufbewahrungsklasse",
+   "fieldtype": "Select",
+   "label": "Aufbewahrungsklasse für neue Dateien",
+   "options": "\nAllgemein\nBeleg\nPersonal\nProjekt\nMarketing"
+  },
+  {
+   "fieldname": "geschuetzt",
+   "fieldtype": "Check",
+   "label": "Geschützt (Vorlagenordner)",
+   "read_only": 1,
+   "description": "Aus einer Ordnervorlage angelegt: Umbenennen/Löschen nur durch Leitung."
+  },
+  {
+   "fieldname": "vorlage",
+   "fieldtype": "Data",
+   "label": "Vorlage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_beschreibung",
+   "fieldtype": "Section Break",
+   "label": "Beschreibung",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Small Text",
+   "label": "Beschreibung"
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "label": "Links",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "label": "Rechts",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "label": "Alter Elternordner",
+   "options": "PH Ordner",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\ndesk\nvorlage\nbestand\nsystem",
+   "default": "desk",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Datei",
+   "link_fieldname": "ordner",
+   "group": "Inhalt"
+  }
+ ],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Ablage",
+ "name": "PH Ordner",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Ablage Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Ablage Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "report": 1
+  },
+  {
+   "role": "PH CRM Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH CRM Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Sortiment Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Sortiment Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Service Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Service Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1
+  }
+ ],
+ "sort_field": "lft",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "is_tree": 1,
+ "nsm_parent_field": "parent_ph_ordner",
+ "title_field": "titel",
+ "show_title_field_in_link": 1,
+ "search_fields": "titel,bezug_name,pfad"
+}

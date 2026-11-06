@@ -14,6 +14,9 @@ Feldnamen und Ereignistypen sind die der Website, damit sie ohne Umbau anbinden 
   create_deposit(record) / get_deposit(id|auftrag|kunde)   src/lib/payments/deposit.js
   payment_event(event)            Ereignisschema v1 aus src/lib/payments/backoffice.js
   request_withdrawal(…)           Widerrufsformulare api/shop/widerruf und api/payments/widerruf
+  create_wishlist / get_wishlist / get_wishlist_by_share / update_wishlist / remove_wishlist
+                                  Wunschliste (src/lib/wunschliste, Datensatz model.js) – ph_shop/api/wunschliste.py
+  import_local_store(…)           Migration M6 aus dem lokalen Website-Speicher – ph_shop/api/migration.py
 Fehlercodes (body.code): invalid 400, forbidden 403, not_found 404, conflict 409, expired 410, unavailable 503.
 """
 
@@ -129,6 +132,8 @@ def _bestellung_aus_record(r):
         "pakete_json": pakete_json(versand.get("pakete")),
         "stripe_session": text(r.get("session"), 120) or None,
         "kunden_token_hash": token_hash(r.get("token")),
+        "notiz_kunde": text(r.get("notiz") or kunde.get("notiz") or r.get("anmerkung"), 1000) or None,
+        "bestellart": "Online",
         "quelle": "website",
         "ip_hash": ip_hash(),
     }
@@ -531,3 +536,9 @@ def request_withdrawal(name, email, bestellung=None, nachricht=None, anschrift=N
     doc.insert()
     return {"referenz": doc.name, "id": doc.eingangsnummer, "zeit": get_datetime(doc.eingegangen_am).isoformat(), "zugeordnet": bool(doc.zugeordnet)}
 
+
+# ─────────────────────────────── Wunschliste, Migration (eigene Module) ───────────────────────────────
+# Re-Export, damit die Website-Pfade ph_shop.api.<methode> lauten (CONVENTIONS 2). Am Ende importiert,
+# weil migration.py Hilfen dieses Moduls nutzt.
+from ph_shop.api.migration import import_local_store  # noqa: E402,F401
+from ph_shop.api.wunschliste import create_wishlist, get_wishlist, get_wishlist_by_share, remove_wishlist, update_wishlist  # noqa: E402,F401

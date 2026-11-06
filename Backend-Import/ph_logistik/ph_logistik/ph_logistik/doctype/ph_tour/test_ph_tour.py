@@ -74,3 +74,85 @@ class TestPHTour(FrappeTestCase):
         t = frappe.get_doc({"doctype": "PH Tour", "datum": nowdate(), "stopps": [{"reihenfolge": 1, "art": "Montage", "kunde_name": "X", "plz": "6900", "ort": "Bregenz"}]}).insert()
         with self.assertRaises(frappe.ValidationError):
             t.freigeben()
+
+
+class TestPHTourErweitert(FrappeTestCase):
+    def setUp(self):
+        frappe.set_user("Administrator")
+        paketprofile()
+        testmodus()
+
+    def test_eta_konflikt_stopp_entfernen_avis(self):
+        ls1 = lieferschein(lieferart="Eigenlieferung", liefer_plz="6900")
+        ls2 = lieferschein(lieferart="Eigenlieferung", liefer_plz="6911")
+        t = frappe.get_doc({"doctype": "PH Tour", "datum": nowdate(), "start_zeit": "08:00", "stopps": [
+            {"reihenfolge": 1, "art": "Lieferung", "lieferschein": ls1.name, "fahrt_min": 20, "dauer_min": 60},
+            {"reihenfolge": 2, "art": "Lieferung", "lieferschein": ls2.name, "fahrt_min": 30, "dauer_min": 30, "zeitfenster_von": "08:00", "zeitfenster_bis": "09:00"},
+        ]})
+        t.insert()
+        self.assertEqual(str(t.stopps[0].eta)[:5], "08:20")
+        self.assertEqual(t.stopps[1].zeitfenster_konflikt, 1)
+        r = t.avis_senden("sms")
+        self.assertFalse(r[0]["ok"])  # SMS nicht aktiviert → nur Protokoll
+        r = t.avis_senden("mail")
+        self.assertTrue(all(x["kanal"] == "mail" for x in r))
+        t.reload()
+        if r and r[0]["ok"]:
+            self.assertTrue(t.stopps[0].avis_gesendet_am)
+        self.assertEqual(frappe.db.get_value("PH Lieferschein", ls2.name, "tour"), t.name)
+        t.stopp_entfernen(2)
+        t.reload()
+        self.assertEqual(len(t.stopps), 1)
+        self.assertFalse(frappe.db.get_value("PH Lieferschein", ls2.name, "tour"))
+        from ph_logistik.ph_logistik.doctype.ph_tour.ph_tour import plantafel
+
+        p = plantafel(nowdate(), nowdate())
+        self.assertTrue(any(x.name == t.name for x in p["touren"]))
+        self.assertTrue(any(x.name == ls2.name for x in p["ungeplant"]))
+
+    def test_stopp_status_idempotent(self):
+        ls = lieferschein(lieferart="Eigenlieferung")
+        t = frappe.get_doc({"doctype": "PH Tour", "datum": nowdate(), "stopps": [{"reihenfolge": 1, "art": "Lieferung", "lieferschein": ls.name}]})
+        t.insert()
+        a = t.stopp_status(1, "unterwegs", notiz="los", idempotency_key="t-st-1")
+        t.reload()
+        b = t.stopp_status(1, "unterwegs", notiz="los", idempotency_key="t-st-1")
+        t.reload()
+        self.assertEqual(a, b)
+        self.assertEqual(t.stopps[0].notiz.count("los"), 1)
+
+
+class TestPHTourLiefertermin(FrappeTestCase):
+    def setUp(self):
+        frappe.set_user("Administrator")
+        paketprofile()
+        testmodus()
+        if not frappe.db.exists("PH Fahrzeug", "T-TEST1"):
+            frappe.get_doc({"doctype": "PH Fahrzeug", "kennzeichen": "T-TEST1", "bezeichnung": "Test-Transporter", "zuladung_kg": 1200}).insert()
+
+    def test_vorschlagen_und_einplanen(self):
+        from frappe.utils import add_days
+
+        from ph_logistik.ph_logistik.doctype.ph_tour.ph_tour import liefertermine_vorschlagen, stopp_einplanen
+
+        ab = add_days(nowdate(), 7)
+        v = liefertermine_vorschlagen(dauer_min=30, montage_min=120, plz="6900", ab=ab, monteure=2, anzahl=3)
+        self.assertTrue(v)
+        self.assertTrue(all(x["datum"] >= str(ab) for x in v))
+        ls = lieferschein(lieferart="Eigenlieferung")
+        r = stopp_einplanen(v[0], lieferschein=ls.name, dauer_min=30, montage_min=120)
+        t = frappe.get_doc("PH Tour", r["tour"])
+        s = next(x for x in t.stopps if x.lieferschein == ls.name)
+        self.assertEqual((s.montage_min, s.dauer_min), (120, 30))
+        with self.assertRaises(frappe.ValidationError):
+            stopp_einplanen({"tour": t.name, "datum": str(t.datum)}, lieferschein=ls.name)
+
+    def test_verschiebung_meldet_aenderung(self):
+        ls = lieferschein(lieferart="Eigenlieferung")
+        t = frappe.get_doc({"doctype": "PH Tour", "datum": nowdate(), "stopps": [{"reihenfolge": 1, "art": "Lieferung", "lieferschein": ls.name, "zeitfenster_von": "09:00", "zeitfenster_bis": "11:00"}]})
+        t.insert()
+        t.stopps[0].db_set("avis_gesendet_am", frappe.utils.now_datetime())
+        t.reload()
+        t.stopps[0].zeitfenster_von, t.stopps[0].zeitfenster_bis = "13:00", "15:00"
+        t.save()
+        self.assertTrue(frappe.db.exists("Comment", {"reference_doctype": "PH Tour", "reference_name": t.name, "content": ("like", "%Terminänderung%")}))

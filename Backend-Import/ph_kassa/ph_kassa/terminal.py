@@ -44,6 +44,7 @@ class TerminalMock:
     def __init__(self, reader_ids: list[str] | None = None):
         self._reader = {r: {"id": r, "status": "online", "label": f"Mock-Reader {r}", "action": None, "device_type": "simulated_wisepos_e", "serial_number": "SIM-0001"} for r in (reader_ids or ["tmr_mock_1"])}
         self._pi: dict[str, dict] = {}
+        self._refunds: dict[str, dict] = {}
         self._n = itertools.count(1)
         self.aufrufe: list[tuple] = []  # für Tests: (methode, args)
 
@@ -117,6 +118,23 @@ class TerminalMock:
             pi["status"] = "failed"
         return self.status(pi["id"])
 
+    def erstatten(self, payment_intent_id: str, betrag_cent: int, grund: str = "requested_by_customer", idempotency_key: str | None = None) -> dict:
+        """Rückerstattung (Teil/voll) auf die Karte der Originalzahlung (Fachkritik 21 P9)."""
+        self.aufrufe.append(("erstatten", payment_intent_id, int(betrag_cent)))
+        pi = self._pi.get(payment_intent_id)
+        if not pi:
+            raise TerminalFehler("not_found", "PaymentIntent unbekannt.")
+        if pi["status"] != "succeeded":
+            raise TerminalFehler("conflict", "Nur erfolgreiche Kartenzahlungen können erstattet werden.")
+        if idempotency_key and idempotency_key in self._refunds:
+            return self._refunds[idempotency_key]
+        bisher = sum(r["betrag_cent"] for r in self._refunds.values() if r["payment_intent"] == payment_intent_id)
+        if int(betrag_cent) <= 0 or bisher + int(betrag_cent) > pi["amount"]:
+            raise TerminalFehler("invalid", "Erstattung übersteigt die Kartenzahlung.")
+        r = {"refund": f"re_mock_{len(self._refunds) + 1:06d}", "payment_intent": payment_intent_id, "betrag_cent": int(betrag_cent), "status": "succeeded"}
+        self._refunds[idempotency_key or r["refund"]] = r
+        return r
+
     def reader_offline_setzen(self, reader_id: str, offline: bool = True):
         self._reader[reader_id]["status"] = "offline" if offline else "online"
 
@@ -173,11 +191,33 @@ class StripeTerminalDienst:
             self._stripe.PaymentIntent.cancel(payment_intent_id)
         return self.status(payment_intent_id)
 
+    def erstatten(self, payment_intent_id: str, betrag_cent: int, grund: str = "requested_by_customer", idempotency_key: str | None = None) -> dict:
+        """Stripe Refund auf den PaymentIntent (card_present-Zahlungen werden auf dieselbe Karte erstattet)."""
+        if int(betrag_cent) <= 0:
+            raise TerminalFehler("invalid", "Erstattungsbetrag muss größer 0 sein.")
+        try:
+            r = self._stripe.Refund.create(payment_intent=payment_intent_id, amount=int(betrag_cent), reason=grund, idempotency_key=idempotency_key)
+        except Exception as e:  # noqa: BLE001
+            raise TerminalFehler("refund_failed", str(e)[:200]) from e
+        return {"refund": r.id, "payment_intent": payment_intent_id, "betrag_cent": int(r.amount), "status": r.status}
+
     def simuliere_zahlung(self, reader_id: str, erfolgreich: bool = True) -> dict:
         if self.livemode:
             raise TerminalFehler("forbidden", "Simulation nur im Testmodus.")
         r = self._stripe.terminal.Reader.TestHelpers.present_payment_method(reader_id)
         return self.status(r.action.process_payment_intent.payment_intent)
+
+
+def zeitueberschreitung(gestartet_am, jetzt, warnung_s: int = 60, abbruch_s: int = 180) -> str:
+    """Terminal-Timeout (UX-Kritik 20 Z2/E3): "ok" | "warnung" (Kunde findet die Karte nicht) | "abbruch"."""
+    if not gestartet_am:
+        return "ok"
+    sek = (jetzt - gestartet_am).total_seconds()
+    if abbruch_s and sek >= abbruch_s:
+        return "abbruch"
+    if warnung_s and sek >= warnung_s:
+        return "warnung"
+    return "ok"
 
 
 def _dict(x):

@@ -46,7 +46,8 @@ def garantie_pruefen():
 
 
 def pass_anlegen(*, kontakt, projekt=None, position=None, produkt=None, produkt_name=None, marke=None, kategorie=None,
-                 ausfuehrung_text=None, seriennummer=None, lieferdatum=None, montageauftrag=None, quelle="backoffice", idempotency_key=None):
+                 ausfuehrung_text=None, seriennummer=None, lieferdatum=None, montageauftrag=None, quelle="backoffice", idempotency_key=None,
+                 e_nummer=None, fd_nummer=None):
     """Gemeinsame Anlage eines PH Produktpasses (PH Projekt.produktpaesse_erzeugen, ph_projekte.api.create_product_passes,
     ph_logistik-Lieferschein). Idempotent: vorhandener Pass zu (projekt, position) bzw. (produkt, seriennummer) bzw.
     wird zurückgegeben (name, neu=False). Garantie rechnet validate() (garantie_bis)."""
@@ -70,6 +71,8 @@ def pass_anlegen(*, kontakt, projekt=None, position=None, produkt=None, produkt_
         "kategorie": kategorie,
         "ausfuehrung_text": ausfuehrung_text,
         "seriennummer": seriennummer,
+        "e_nummer": e_nummer,
+        "fd_nummer": fd_nummer,
         "lieferdatum": lieferdatum,
         "montageauftrag": montageauftrag,
         "quelle": quelle if quelle in ("backoffice", "website", "system") else "system",
@@ -79,5 +82,13 @@ def pass_anlegen(*, kontakt, projekt=None, position=None, produkt=None, produkt_
         werte["produkt_name"] = werte["produkt_name"] or pr.get("titel")
         werte["marke"] = werte["marke"] or pr.get("marke")
         werte["kategorie"] = werte["kategorie"] or pr.get("kategorie")
+    if montageauftrag and not (e_nummer and fd_nummer):
+        # Gerät aus dem Montageprotokoll (PH Montage Geraet: projekt_zeile = Projektposition, seriennummer) übernehmen
+        for g in frappe.get_all("PH Montage Geraet", filters={"parent": montageauftrag, "parenttype": "PH Montageauftrag"}, fields=["projekt_zeile", "seriennummer", "e_nummer", "fd_nummer"]):
+            if (position and g.projekt_zeile == position) or (seriennummer and g.seriennummer == seriennummer):
+                werte["e_nummer"] = werte["e_nummer"] or g.e_nummer
+                werte["fd_nummer"] = werte["fd_nummer"] or g.fd_nummer
+                werte["seriennummer"] = werte["seriennummer"] or g.seriennummer
+                break
     doc = frappe.get_doc(werte).insert(ignore_permissions=True)
     return doc.name, True

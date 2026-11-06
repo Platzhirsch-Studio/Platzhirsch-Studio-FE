@@ -46,3 +46,31 @@ frappe.ui.form.on("PH Kampagne", {
 		frm.add_custom_button(__("Kampagnenbericht drucken"), () => frappe.set_route("print", frm.doctype, frm.doc.name), __("Aktionen"));
 	},
 });
+
+// Lücken 04.11.: Attribution (Umsatz/ROI) und CSV-Import der Plattform-Kennzahlen
+frappe.ui.form.on("PH Kampagne", {
+	refresh(frm) {
+		if (frm.is_new()) return;
+		frm.add_custom_button(__("Attribution berechnen"), () => frm.call({ method: "attribution_berechnen", doc: frm.doc }).then(() => frm.reload_doc()), __("Aktionen"));
+		frm.add_custom_button(__("Kennzahlen aus CSV"), () => {
+			const d = new frappe.ui.Dialog({
+				title: __("CSV-Export (Meta, Google, Pinterest)"),
+				fields: [{ fieldname: "csv_text", fieldtype: "Code", label: __("CSV-Inhalt einfügen"), reqd: 1 }, { fieldname: "vorschau", fieldtype: "HTML" }],
+				primary_action_label: __("Prüfen"),
+				primary_action(v) {
+					frm.call({ method: "kennzahlen_import", doc: frm.doc, args: { csv_text: v.csv_text, vorschau: 1 } }).then((r) => {
+						const m = r.message || {};
+						if (m.fehler && m.fehler.length) {
+							d.fields_dict.vorschau.$wrapper.html(m.fehler.map((f) => frappe.utils.escape_html(f)).join("<br>"));
+							return;
+						}
+						frappe.confirm(__("{0} Zeilen, Kosten {1} € übernehmen?", [m.anzahl, (m.kosten_cent / 100).toFixed(2)]), () => {
+							frm.call({ method: "kennzahlen_import", doc: frm.doc, args: { csv_text: v.csv_text, vorschau: 0 } }).then(() => { d.hide(); frm.reload_doc(); });
+						});
+					});
+				},
+			});
+			d.show();
+		}, __("Aktionen"));
+	},
+});

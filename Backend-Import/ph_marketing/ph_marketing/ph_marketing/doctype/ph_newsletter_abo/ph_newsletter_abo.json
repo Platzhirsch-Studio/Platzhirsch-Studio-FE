@@ -27,6 +27,8 @@
   "abmelde_grund",
   "letzte_zustellung",
   "bounce_count",
+  "letzter_bounce_am",
+  "letzter_bounce_typ",
   "sb_nachweis",
   "einwilligung",
   "textversion",
@@ -154,7 +156,7 @@
    "fieldname": "abmelde_kanal",
    "fieldtype": "Select",
    "label": "Abmeldung über",
-   "options": "\nlink\nantwort_mail\nbackoffice\nbounce\nbeschwerde\nimport",
+   "options": "\nlink\none_click\nantwort_mail\nbackoffice\nbounce\nbeschwerde\nimport",
    "read_only": 1
   },
   {
@@ -174,6 +176,19 @@
    "label": "Bounces",
    "read_only": 1,
    "default": "0"
+  },
+  {
+   "fieldname": "letzter_bounce_am",
+   "fieldtype": "Datetime",
+   "label": "Letzter Bounce am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "letzter_bounce_typ",
+   "fieldtype": "Select",
+   "label": "Letzter Bounce-Typ",
+   "options": "\nhart\nweich",
+   "read_only": 1
   },
   {
    "fieldname": "sb_nachweis",
@@ -264,7 +279,7 @@
    "group": "Versand"
   }
  ],
- "modified": "2026-11-04 10:00:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Marketing",
  "name": "PH Newsletter Abo",

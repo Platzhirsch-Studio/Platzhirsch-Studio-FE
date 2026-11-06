@@ -99,6 +99,13 @@ class TestPHTermin(FrappeTestCase):
         slots = get_freie_slots(terminart=ART, modus="studio", von=str(self.start.date()), bis=str(self.start.date()))
         self.assertNotIn(iso(self.start), [s["start"] for s in slots])
 
+    def test_create_speichert_kampagnenfelder(self):
+        """utm_*/klick_id (Website withAttributionFields, nur mit Einwilligung) landen am PH Termin."""
+        r = self.buchung(utm_source="google", utm_medium="cpc", utm_campaign="kueche-herbst", utm_term="kueche lochau", utm_content="anzeige-a", klick_id="gclid=abc123")
+        doc = frappe.get_doc("PH Termin", {"referenz": r["referenz"]})
+        self.assertEqual((doc.utm_source, doc.utm_medium, doc.utm_campaign), ("google", "cpc", "kueche-herbst"))
+        self.assertEqual((doc.utm_term, doc.utm_content, doc.klick_id), ("kueche lochau", "anzeige-a", "gclid=abc123"))
+
     def test_kollision_409(self):
         self.buchung(email="eins" + EMAIL_DOMAIN)
         r = self.buchung(email="zwei" + EMAIL_DOMAIN)
@@ -250,3 +257,23 @@ class TestPHTermin(FrappeTestCase):
         reservierungen_freigeben()
         self.assertEqual(frappe.db.get_value("PH Termin", {"referenz": r["referenz"]}, "status"), "Abgelehnt")
         self.assertEqual(verify_termin(referenz=r["referenz"], verify_hash=sha("verify-a" + EMAIL_DOMAIN)).get("code"), "cancelled")
+
+    def test_no_show_aufgabe_und_wieder_bestaetigen(self):
+        a = frappe.get_doc({"doctype": "PH Termin", "terminart": ART, "start": self.start + timedelta(days=1, hours=4), "nachname": "NoShow2", "email": "noshow2" + EMAIL_DOMAIN, "status": "Bestaetigt", "berater": "Administrator"}).insert()
+        a.nicht_erschienen("kein Anruf")
+        self.assertTrue(frappe.db.exists("PH Aufgabe", {"referenz_doctype": "PH Termin", "referenz_name": a.name, "quelle": "scheduler"}))
+        a.reload()
+        a.wieder_bestaetigen("Fehlbedienung")
+        a.reload()
+        self.assertEqual(a.status, "Bestaetigt")
+
+    def test_serie_mit_konflikt(self):
+        a = frappe.get_doc({"doctype": "PH Termin", "terminart": ART, "start": self.start + timedelta(hours=2), "nachname": "Serie", "email": "serie" + EMAIL_DOMAIN, "status": "Bestaetigt", "berater": "Administrator", "quelle": "backoffice", "kundenmail": "backoffice"}).insert()
+        frappe.get_doc({"doctype": "PH Termin", "terminart": ART, "start": self.start + timedelta(days=7, hours=2), "nachname": "Blocker", "email": "blocker" + EMAIL_DOMAIN, "status": "Bestaetigt", "berater": "Administrator"}).insert()
+        r = a.serie_anlegen("woechentlich", anzahl=3)
+        self.assertEqual(len(r["angelegt"]), 1)
+        self.assertEqual(len(r["konflikte"]), 1)
+        self.assertEqual(frappe.db.count("PH Termin", {"serie": r["serie"]}), 2)
+        a.reload()
+        a.serie_stornieren("Projekt fertig")
+        self.assertEqual(frappe.db.count("PH Termin", {"serie": r["serie"], "status": "Storniert"}), 2)

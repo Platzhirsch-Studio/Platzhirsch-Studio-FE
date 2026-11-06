@@ -26,6 +26,55 @@ frappe.ui.form.on("PH Servicefall", {
 		const offen = ["Gemeldet", "Geprueft", "Entscheidung", "In Bearbeitung", "Einsatz geplant"].includes(frm.doc.status);
 		const leitung = frappe.user.has_role(["PH Service Leitung", "PH Geschäftsführung", "System Manager"]);
 
+		// SLA-Hinweis im Kopf
+		if (offen && frm.doc.sla_status && frm.doc.sla_status !== "Im Plan") {
+			const farbe = { Gefaehrdet: "orange", Verletzt: "red", Erfuellt: "green" }[frm.doc.sla_status] || "blue";
+			frm.dashboard.add_comment(__("SLA {0} – Lösungsfrist {1}", [__(frm.doc.sla_status), frappe.datetime.str_to_user(frm.doc.frist_loesung || "")]), farbe, true);
+		}
+		// SLA pausieren („wartet auf Hersteller/Ersatzteil/Kunde“) / fortsetzen
+		if (offen && !frm.doc.sla_pausiert_seit) {
+			frm.add_custom_button(__("SLA pausieren"), () => frappe.prompt([{ fieldname: "grund", fieldtype: "Select", label: __("Wartet auf"), options: ["Hersteller", "Ersatzteil", "Kunde"], reqd: 1 }, { fieldname: "hinweis", fieldtype: "Data", label: __("Hinweis") }], (v) => frm.call({ method: "sla_pausieren", doc: frm.doc, args: v, freeze: true }).then(() => frm.reload_doc()), __("SLA pausieren")), __("Aktionen"));
+		}
+		if (frm.doc.sla_pausiert_seit) {
+			frm.dashboard.add_comment(__("SLA pausiert seit {0} – wartet auf {1}.", [frappe.datetime.str_to_user(frm.doc.sla_pausiert_seit), __(frm.doc.sla_pause_grund || "")]), "blue", true);
+			frm.add_custom_button(__("SLA fortsetzen"), () => frm.call({ method: "sla_fortsetzen", doc: frm.doc, freeze: true }).then(() => frm.reload_doc()), __("Aktionen"));
+		}
+		// Erstreaktion ohne Mail (Telefon/vor Ort)
+
+		if (frm.doc.status === "Gemeldet" && !frm.doc.erstreaktion_am) {
+			frm.add_custom_button(__("Erstreaktion erfassen"), () => {
+				const d = new frappe.ui.Dialog({
+					title: __("Erstreaktion erfassen"),
+					fields: [
+						{ fieldname: "kanal", fieldtype: "Select", label: __("Kanal"), options: ["Telefon", "Vor Ort", "Rückruf"], default: "Telefon", reqd: 1 },
+						{ fieldname: "notiz", fieldtype: "Data", label: __("Notiz") },
+					],
+					primary_action_label: __("Erfassen"),
+					primary_action(v) {
+						frm.call({ method: "erstreaktion_erfassen", doc: frm.doc, args: v, freeze: true }).then(() => { d.hide(); frm.reload_doc(); });
+					},
+				});
+				d.show();
+			}, __("Aktionen"));
+		}
+		// Kulanz-Freigabe (Leitung) – Betrag wird mitgeschickt, damit eine zwischenzeitliche Änderung auffällt
+		if (frm.doc.kulanz_freigabe_status === "Angefordert") {
+			frm.dashboard.add_comment(__("Kulanz {0} € wartet auf Freigabe der Leitung.", [format_currency((frm.doc.kulanz_cent || 0) / 100, "EUR")]), "orange", true);
+			if (leitung) {
+				frm.add_custom_button(__("Kulanz freigeben"), () => {
+					frappe.prompt({ fieldname: "kommentar", fieldtype: "Small Text", label: __("Kommentar (optional)") }, (v) => {
+						frm.call({ method: "kulanz_freigeben", doc: frm.doc, args: { kommentar: v.kommentar, betrag_cent: frm.doc.kulanz_cent }, freeze: true }).then(() => frm.reload_doc());
+					}, __("{0} € freigeben", [((frm.doc.kulanz_cent || 0) / 100).toFixed(2)]), __("Freigeben"));
+				}, __("Aktionen"));
+				frm.add_custom_button(__("Kulanz ablehnen"), () => {
+					frappe.prompt({ fieldname: "grund", fieldtype: "Small Text", label: __("Grund"), reqd: 1 }, (v) => {
+						frm.call({ method: "kulanz_ablehnen", doc: frm.doc, args: v, freeze: true }).then(() => frm.reload_doc());
+					}, __("Kulanz ablehnen"), __("Ablehnen"));
+				}, __("Aktionen"));
+			} else {
+				frm.add_custom_button(__("Freigabe erneut anfordern"), () => frm.call({ method: "kulanz_anfordern", doc: frm.doc }).then(() => frappe.show_alert(__("Leitung benachrichtigt"))), __("Aktionen"));
+			}
+		}
 		// Einsatz planen
 		if (offen) {
 			frm.add_custom_button(__("Einsatz planen"), () => dialogEinsatz(frm), __("Aktionen"));
@@ -35,15 +84,25 @@ frappe.ui.form.on("PH Servicefall", {
 			frm.add_custom_button(__("Ersatzteile bestellen"), () => {
 				const d = new frappe.ui.Dialog({
 					title: __("Ersatzteilbestellung beim Hersteller"),
-					fields: [{ fieldname: "lieferant", fieldtype: "Link", options: "PH Lieferant", label: __("Lieferant"), default: frm.doc.lieferant, reqd: 1 }],
+					fields: [
+						{ fieldname: "lieferant", fieldtype: "Link", options: "PH Lieferant", label: __("Lieferant"), default: frm.doc.lieferant, reqd: 1 },
+						{ fieldname: "lieferadresse", fieldtype: "Select", label: __("Lieferung an"), options: ["Lager", "Showroom", "Kunde direkt"], default: "Lager" },
+						{ fieldname: "wunschtermin", fieldtype: "Date", label: __("Wunschtermin") },
+						{ fieldname: "zeilen_html", fieldtype: "HTML" },
+					],
 					primary_action_label: __("Bestellung anlegen"),
 					primary_action(v) {
+						const zeilen = [...d.$wrapper.find("input.ph-et-zeile:checked")].map((x) => x.value);
+						v.zeilen = zeilen;
+						delete v.zeilen_html;
 						frm.call({ method: "ersatzteile_bestellen", doc: frm.doc, args: v, freeze: true }).then((r) => {
 							d.hide();
 							if (r.message) frappe.set_route("Form", "PH Ersatzteilbestellung", r.message);
 						});
 					},
 				});
+				const offeneZeilen = (frm.doc.ersatzteile || []).filter((z) => z.status === "Benoetigt" && !z.bestellung);
+				d.fields_dict.zeilen_html.$wrapper.html(offeneZeilen.map((z) => `<label style="display:block"><input type="checkbox" class="ph-et-zeile" value="${frappe.utils.escape_html(z.name)}" checked> ${frappe.utils.escape_html(z.bezeichnung || z.ersatzteil || "")} × ${z.menge || 1}</label>`).join(""));
 				d.show();
 			}, __("Aktionen"));
 		}
@@ -106,6 +165,7 @@ frappe.ui.form.on("PH Servicefall", {
 
 	kaufdatum: fristenAmpel,
 	uebergabe_datum: fristenAmpel,
+	sachart: fristenAmpel,
 	kundentyp: fristenAmpel,
 	garantie_monate: fristenAmpel,
 	fehlerbereich(frm) {
@@ -143,9 +203,10 @@ function fristenAmpel(frm) {
 	if (!basis) { w.$wrapper.html(ampelHtml("grau", null, [])); return; }
 	// Berechnung im Client spiegelt ph_service/fristen.py (Server bleibt maßgeblich beim Speichern).
 	const heute = frappe.datetime.str_to_obj(frappe.datetime.get_today());
-	const vermutung = frm.doc.kundentyp === "Unternehmer" ? 6 : 12;
+	const unbeweglich = frm.doc.sachart === "Unbeweglich";
+	const vermutung = unbeweglich || frm.doc.kundentyp === "Unternehmer" ? 6 : 12;
 	const plus = (d, m) => { const x = frappe.datetime.str_to_obj(d); const t = x.getDate(); x.setDate(1); x.setMonth(x.getMonth() + m); const last = new Date(x.getFullYear(), x.getMonth() + 1, 0).getDate(); x.setDate(Math.min(t, last)); return x; };
-	const gwl = plus(basis, 24), verm = plus(basis, vermutung), verj = plus(frappe.datetime.obj_to_str(gwl), 3);
+	const gwl = plus(basis, unbeweglich ? 36 : 24), verm = plus(basis, vermutung), verj = plus(frappe.datetime.obj_to_str(gwl), 3);
 	const gar = frm.doc.garantie_monate > 0 ? plus(basis, frm.doc.garantie_monate) : null;
 	let stufe = "rot";
 	if (heute <= verm) stufe = "gruen"; else if (heute <= gwl) stufe = "gelb"; else if (heute <= verj || (gar && heute <= gar)) stufe = "orange";
@@ -213,8 +274,9 @@ function dialogKunde(frm) {
 	const d = new frappe.ui.Dialog({
 		title: __("Kunde informieren"),
 		fields: [
-			{ fieldname: "vorlage", fieldtype: "Select", label: __("Vorlage"), options: [{ value: "eingang", label: __("Eingangsbestätigung") }, { value: "termin", label: __("Terminvorschlag") }, { value: "abschluss", label: __("Abschluss / Abnahmebestätigung") }], default: frm.doc.status === "Gemeldet" ? "eingang" : frm.doc.status === "Erledigt" ? "abschluss" : "termin", reqd: 1 },
-			{ fieldname: "zusatz", fieldtype: "Small Text", label: __("Persönlicher Zusatz (optional)") },
+			{ fieldname: "vorlage", fieldtype: "Select", label: __("Vorlage"), options: [{ value: "eingang", label: __("Eingangsbestätigung") }, { value: "termin", label: __("Terminvorschlag") }, { value: "abschluss", label: __("Abschluss / Abnahmebestätigung") }, { value: "ablehnung", label: __("Ablehnung") }, { value: "frei", label: __("Freie Nachricht") }], default: frm.doc.status === "Gemeldet" ? "eingang" : frm.doc.status === "Erledigt" ? "abschluss" : "termin", reqd: 1 },
+			{ fieldname: "betreff", fieldtype: "Data", label: __("Betreff"), depends_on: "eval:doc.vorlage=='frei'" },
+			{ fieldname: "zusatz", fieldtype: "Small Text", label: __("Persönlicher Zusatz / Nachricht") },
 			{ fieldtype: "HTML", options: `<p class="text-muted" style="font-size:12px">${__("Empfänger")}: ${frappe.utils.escape_html(frm.doc.kunde_email || "")}. ${__("Im Testmodus geht die Mail an das Team-Postfach.")}</p>` },
 		],
 		primary_action_label: __("Senden"),
@@ -268,7 +330,8 @@ function dialogAblehnen(frm) {
 		title: __("Servicefall ablehnen"),
 		fields: [
 			{ fieldname: "grund", fieldtype: "Select", label: __("Grund"), options: ["Kein Mangel (Gebrauchsspur)", "Bedienungsfehler", "Frist abgelaufen", "Fremdeinwirkung", "Nicht reproduzierbar", "Sonstiges"], reqd: 1 },
-			{ fieldname: "begruendung", fieldtype: "Text", label: __("Begründung (geht an den Kunden)"), reqd: 1 },
+			{ fieldname: "begruendung", fieldtype: "Text", label: __("Begründung"), reqd: 1 },
+			{ fieldname: "kunde_informieren", fieldtype: "Check", label: __("Kunden per Mail informieren (Vorlage „Ablehnung“)"), default: frm.doc.kunde_email ? 1 : 0, read_only: frm.doc.kunde_email ? 0 : 1 },
 		],
 		primary_action_label: __("Ablehnen"),
 		primary_action(v) {

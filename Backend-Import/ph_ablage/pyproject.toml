@@ -1,0 +1,25 @@
+[project]
+name = "ph_ablage"
+authors = [{ name = "MW Immobilienverwaltungs GmbH" }]
+description = "Dateiablage (Word, Excel, PDF, CAD, Bilder) mit Ordnerbaum, Versionen, Check-out, Freigabelinks und austauschbarem, unsichtbarem Speicher (lokal, S3-kompatibel EU, Google Drive, OneDrive)"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    # Keine Pflichtpakete: requests, Pillow, pypdf und cryptography bringt Frappe mit. Keine Geheimnisse.
+]
+
+[project.optional-dependencies]
+# boto3 nur für Multipart-Uploads > 5 GB über den Server (site_config ph_ablage_s3_boto3 = 1); SigV4 ist eingebaut.
+s3_multipart = ["boto3>=1.28"]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0,<17.0.0"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"

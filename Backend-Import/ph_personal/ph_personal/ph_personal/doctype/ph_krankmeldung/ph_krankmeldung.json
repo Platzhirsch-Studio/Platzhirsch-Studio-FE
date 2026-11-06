@@ -1,0 +1,292 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Krankmeldung (Gesundheitsdatum, Art. 9 DSGVO): Meldung, AU-Bestätigung, Gesundmeldung; Urlaubsunterbrechung nach § 5 UrlG. Keine Genehmigung, kein Ablehnen.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "mitarbeiter",
+  "mitarbeiter_name",
+  "status",
+  "cb_kopf",
+  "von",
+  "bis_offen",
+  "bis_voraussichtlich",
+  "bis",
+  "tage",
+  "kalendertage",
+  "sb_meldung",
+  "meldeweg",
+  "gemeldet_am",
+  "gemeldet_von",
+  "arbeitsunfall",
+  "cb_meldung",
+  "bestaetigung_angefordert_am",
+  "bestaetigung_eingelangt_am",
+  "bestaetigung",
+  "sb_urlaub",
+  "urlaub_unterbrochen",
+  "sb_notiz",
+  "notiz",
+  "hinweis_dsgvo"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-KRANK-.YYYY.-.#####",
+   "default": "PH-KRANK-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "mitarbeiter",
+   "fieldtype": "Link",
+   "label": "Mitarbeiter",
+   "options": "PH Mitarbeiter",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "mitarbeiter_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "fetch_from": "mitarbeiter.titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Gemeldet\nBestaetigt\nBeendet\nStorniert",
+   "default": "Gemeldet",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Krankenstand wird gemeldet, nicht genehmigt (AngG § 8 Abs 8, EFZG § 4). Gemeldet → Bestätigt (AU-Bestätigung eingelangt) → Beendet."
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "von",
+   "fieldtype": "Date",
+   "label": "Erster Krankenstandstag",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "bis_offen",
+   "fieldtype": "Check",
+   "label": "Bis auf Weiteres",
+   "default": "1"
+  },
+  {
+   "fieldname": "bis_voraussichtlich",
+   "fieldtype": "Date",
+   "label": "Voraussichtlich bis",
+   "depends_on": "eval:!doc.bis_offen"
+  },
+  {
+   "fieldname": "bis",
+   "fieldtype": "Date",
+   "label": "Letzter Krankenstandstag",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Wird mit „Gesundmeldung“ gesetzt."
+  },
+  {
+   "fieldname": "tage",
+   "fieldtype": "Float",
+   "label": "Arbeitstage",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "kalendertage",
+   "fieldtype": "Int",
+   "label": "Kalendertage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_meldung",
+   "fieldtype": "Section Break",
+   "label": "Meldung"
+  },
+  {
+   "fieldname": "meldeweg",
+   "fieldtype": "Select",
+   "label": "Gemeldet über",
+   "options": "Telefon\nPersönlich\nE-Mail\nSMS/Messenger\nSelbstservice\nSonstiges",
+   "default": "Telefon"
+  },
+  {
+   "fieldname": "gemeldet_am",
+   "fieldtype": "Datetime",
+   "label": "Gemeldet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gemeldet_von",
+   "fieldtype": "Link",
+   "label": "Erfasst von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "arbeitsunfall",
+   "fieldtype": "Check",
+   "label": "Arbeitsunfall / Berufskrankheit",
+   "description": "Entgeltfortzahlung nach § 2 Abs 5 EFZG bzw. AngG – Lohnverrechnung; Unfallmeldung an AUVA prüfen."
+  },
+  {
+   "fieldname": "cb_meldung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bestaetigung_angefordert_am",
+   "fieldtype": "Date",
+   "label": "Bestätigung verlangt am"
+  },
+  {
+   "fieldname": "bestaetigung_eingelangt_am",
+   "fieldtype": "Date",
+   "label": "Bestätigung eingelangt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bestaetigung",
+   "fieldtype": "Attach",
+   "label": "Arbeitsunfähigkeitsbestätigung (privat)",
+   "description": "Nur die Bestätigung, keine Diagnose. Datei wird automatisch privat gespeichert."
+  },
+  {
+   "fieldname": "sb_urlaub",
+   "fieldtype": "Section Break",
+   "label": "Urlaub",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "urlaub_unterbrochen",
+   "fieldtype": "Link",
+   "label": "Unterbrochener Urlaub",
+   "options": "PH Abwesenheit",
+   "read_only": 1,
+   "description": "§ 5 UrlG: Krankenstand über 3 Kalendertage während des Urlaubs wird nicht als Urlaub gezählt."
+  },
+  {
+   "fieldname": "sb_notiz",
+   "fieldtype": "Section Break",
+   "label": "Notiz"
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz (ohne Diagnose)",
+   "description": "Keine Diagnose, keine Gesundheitsangaben eintragen (Art. 9 DSGVO)."
+  },
+  {
+   "fieldname": "hinweis_dsgvo",
+   "fieldtype": "HTML",
+   "options": "<p class=\"text-muted\" style=\"font-size:12px\">Krankenstände sind Gesundheitsdaten (Art. 9 DSGVO). Sichtbar nur für Personal-Leitung, Geschäftsführung und die betroffene Person. Kolleginnen und Kollegen sehen im Teamkalender nur „abwesend“.</p>"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Krankmeldung",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Selbstservice",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "von",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Gemeldet",
+   "color": "Orange"
+  },
+  {
+   "title": "Bestaetigt",
+   "color": "Blue"
+  },
+  {
+   "title": "Beendet",
+   "color": "Green"
+  },
+  {
+   "title": "Storniert",
+   "color": "Gray"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "mitarbeiter_name,status",
+ "track_seen": 1
+}

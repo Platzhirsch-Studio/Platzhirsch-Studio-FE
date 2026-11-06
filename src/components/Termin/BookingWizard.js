@@ -25,6 +25,7 @@ import { WIDERRUF_PATH, widerrufHinweis } from "@/lib/legal/widerruf";
 import SlotPicker from "./SlotPicker";
 import { ConfirmedView, Facts } from "./parts";
 import { revealConfirmation } from "@/lib/forms/reveal";
+import { withAttributionFields } from "@/lib/forms/client";
 
 const ICONS = { studio: Coffee, video: Video, vor_ort: House, planung: PencilRuler };
 const STEPS = ["art", "zeit", "daten", "fertig"];
@@ -193,7 +194,7 @@ export default function BookingWizard({ locale, copy, phone, initial = {}, test 
     let status = 0;
     let body = {};
     try {
-      const res = await fetch("/api/termin/book", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
+      const res = await fetch("/api/termin/book", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(withAttributionFields("/api/termin/book", payload)) });
       status = res.status;
       body = await res.json().catch(() => ({}));
     } catch {

@@ -50,7 +50,11 @@ def pruefen(code_or_name):
         "gueltig_bis": str(doc.gueltig_bis) if doc.gueltig_bis else None,
         "test": bool(doc.test),
         "letzte4": doc.code_letzte4,
-        "art": doc.art,
+        "art": doc.art or "Mehrzweck",
+        # Kassa (10-konzept-kassa §5): Steuer beim Einlösen/Verkauf – Mehrzweck: Satz Null, Einzweck: Satz der Leistung
+        **doc.steuer(),
+        "gesperrt": doc.status == "Gesperrt",
+        "sperrgrund_art": doc.sperrgrund_art,
     }
 
 
@@ -110,3 +114,68 @@ def storniere_einloesung(*, gutschein, beleg_doctype, beleg, grund=None):
     doc.flags.ignore_permissions = True
     st.setzen(doc, neu, _("Einlösung {0} Cent zurückgebucht ({1})").format(betrag, beleg), None, {"rest_cent": rest, "rest_eur": rest / 100})
     return {"gutschein": doc.name, "rest_cent": rest, "status": neu}
+
+
+# ─────────────────── Verkauf im Showroom (ph_kassa) und Gutschriften ───────────────────
+
+def ausstellen_verkauf(*, wert_cent, beleg_doctype, beleg, idempotency_key, position=None, kanal="Kassa", zahlung=None, kontakt=None, kaeufer_name=None, kaeufer_email=None, motiv="schlicht", empfaenger=None, grusstext=None, art=None, ust_satz_promille=None, test=False, pdf=True):
+    """Gutschein aus einem Kassenbeleg (Position „Gutschein Verkauf“) ausstellen – idempotent je idempotency_key
+    (z. B. "kassa:<beleg>:<position>"). Der Klartext-Code kommt GENAU EINMAL zurück (Bon/PDF); bei Wiederholung
+    nur Name/letzte 4 (bereits_ausgestellt=True) – Nachdruck dann über „Ersetzen“.
+    → {"gutschein", "code"|None, "letzte4", "wert_cent", "art", "steuersatz", "steuersatz_promille", "pdf", "bereits_ausgestellt"}"""
+    from ph_shop.ph_shop.doctype.ph_gutschein.ph_gutschein import ausstellen
+
+    if not idempotency_key:
+        frappe.throw(_("idempotency_key fehlt (z. B. kassa:<beleg>:<position>)."))
+    if art == "Rabatt":
+        frappe.throw(_("Rabattgutscheine sind nicht verkäuflich (mindern das Entgelt beim Einlösen)."))
+    vorhanden = frappe.db.get_value("PH Gutschein", {"idempotency_key": idempotency_key}, "name")
+    if vorhanden:
+        doc = frappe.get_doc("PH Gutschein", vorhanden)
+        return {"gutschein": doc.name, "code": None, "letzte4": doc.code_letzte4, "wert_cent": cint(doc.wert_cent), "art": doc.art, **doc.steuer(), "pdf": doc.pdf, "bereits_ausgestellt": True}
+    einst = frappe.get_cached_doc("PH Shop Einstellungen")
+    wert_cent = cint(wert_cent)
+    if wert_cent <= 0:
+        frappe.throw(_("Gutscheinwert muss größer als 0 Cent sein."))
+    if cint(einst.gutschein_max_cent) and wert_cent > cint(einst.gutschein_max_cent):
+        frappe.throw(_("Gutscheinwert übersteigt das Maximum ({0} Cent).").format(einst.gutschein_max_cent))
+    doc, code = ausstellen(
+        wert_cent, test=bool(test), kanal="Kassa" if kanal == "Kassa" else "Showroom", motiv=motiv, empfaenger=empfaenger, grusstext=grusstext,
+        kaeufer={"name": kaeufer_name, "email": kaeufer_email, "kontakt": kontakt}, zahlung=zahlung, quelle="kassa", art=art,
+        idempotency_key=idempotency_key, ausgabe_beleg_doctype=beleg_doctype, ausgabe_beleg=beleg, ust_satz_promille=ust_satz_promille,
+    )
+    if position:
+        doc.add_comment("Info", _("Verkauft mit {0} {1}, Position {2}").format(beleg_doctype, beleg, position))
+    datei = doc.pdf_erzeugen(code) if pdf else None
+    return {"gutschein": doc.name, "code": code, "letzte4": doc.code_letzte4, "wert_cent": wert_cent, "art": doc.art, **doc.steuer(), "pdf": datei, "bereits_ausgestellt": False}
+
+
+def verkauf_stornieren(*, beleg_doctype, beleg, grund=None):
+    """Kassa-Storno eines Gutscheinverkaufs: unbenutzte Gutscheine des Belegs sperren (Rest 0, Sperrgrund
+    „Verkauf storniert“). Teilweise eingelöste bleiben aktiv und werden gemeldet (Rückzahlung nur Restwert).
+    → [{"gutschein", "ergebnis": "gesperrt"|"teilweise_eingeloest"|"bereits_gesperrt", "rest_cent"}]"""
+    out = []
+    for name in frappe.get_all("PH Gutschein", {"ausgabe_beleg_doctype": beleg_doctype, "ausgabe_beleg": beleg}, pluck="name"):
+        doc = frappe.get_doc("PH Gutschein", name)
+        doc.flags.ignore_permissions = True
+        if doc.status in ("Gesperrt", "Erstattet"):
+            out.append({"gutschein": name, "ergebnis": "bereits_gesperrt", "rest_cent": cint(doc.rest_cent)})
+        elif cint(doc.rest_cent) < cint(doc.wert_cent):
+            out.append({"gutschein": name, "ergebnis": "teilweise_eingeloest", "rest_cent": cint(doc.rest_cent)})
+        else:
+            doc.sperren(_("Kassa-Storno {0}: {1}").format(beleg, grund or "–"), sperrgrund_art="Verkauf storniert")
+            doc.db_set({"rest_cent": 0, "rest_eur": 0})
+            out.append({"gutschein": name, "ergebnis": "gesperrt", "rest_cent": 0})
+    return out
+
+
+def gutschreiben(*, gutschein, betrag_cent, beleg_doctype=None, beleg=None, grund=None, idempotency_key=None):
+    """Restwert-Gutschrift (Kassa-Retoure auf Gutschein, Teilerstattung). Idempotent über idempotency_key."""
+    doc = _laden(gutschein=gutschein, code=gutschein)
+    if idempotency_key and any((z.hinweis or "").endswith(f"[{idempotency_key}]") for z in doc.einloesungen):
+        return {"gutschein": doc.name, "rest_cent": cint(doc.rest_cent), "status": doc.status, "bereits_gebucht": True}
+    doc.flags.ignore_permissions = True
+    text = f"{grund or ''} [{idempotency_key}]".strip() if idempotency_key else grund
+    r = doc.gutschreiben(betrag_cent, text, beleg_doctype, beleg)
+    r["bereits_gebucht"] = False
+    return r

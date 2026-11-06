@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "email",
+  "name_person",
+  "kontakt",
+  "status",
+  "gesendet_am",
+  "einwilligung",
+  "grund"
+ ],
+ "fields": [
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "name_person",
+   "fieldtype": "Data",
+   "label": "Name",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "geplant\ngesendet\nangemeldet\nabgesagt\nfehler\nuebersprungen",
+   "default": "geplant",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Gesendet am",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "einwilligung",
+   "fieldtype": "Link",
+   "label": "Einwilligung",
+   "options": "PH Einwilligung"
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Data",
+   "label": "Grund"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Event Einladung",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "description": "Einladung zu einem Event an eine Adresse aus einem Segment (Zweck einladungen)."
+}

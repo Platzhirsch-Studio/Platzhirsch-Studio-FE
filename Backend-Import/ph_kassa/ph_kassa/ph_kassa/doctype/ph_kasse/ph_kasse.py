@@ -147,6 +147,62 @@ class PHKasse(Document):
         return buchung.see_ausfall_beenden(self.see, notiz=notiz)
 
     @frappe.whitelist()
+    def startbeleg_geprueft(self, datum=None, nachweis=None):
+        """Startbeleg mit BMF Belegcheck-App geprüft (RKSV § 6 Abs 4): Checkliste, Ereignis erledigt, Kasse Aktiv."""
+        return self._pruefung_bestaetigen("Startbeleg geprueft BMF-App", "Startbeleg Pruefung", "startbeleg_geprueft_am", datum, nachweis)
+
+    @frappe.whitelist()
+    def jahresbeleg_geprueft(self, datum=None, nachweis=None):
+        """Jahresbeleg bis 15.02. geprüft (RKSV § 8, Fachkritik 21 P12)."""
+        return self._pruefung_bestaetigen("Jahresbeleg geprueft", "Jahresbeleg Pruefung", "jahresbeleg_geprueft_am", datum, nachweis)
+
+    def _pruefung_bestaetigen(self, schritt, ereignis_art, feld, datum, nachweis):
+        self.check_permission("write")
+        if not set(frappe.get_roles()) & {"PH Kassa Leitung", "System Manager", "PH Backoffice-Admin"}:
+            frappe.throw(_("Nur Kassa-Leitung oder Admin bestätigen die BMF-Prüfung."))
+        if feld == "startbeleg_geprueft_am" and not self.startbeleg:
+            frappe.throw(_("Kein Startbeleg vorhanden."))
+        datum = getdate(datum) if datum else getdate()
+        zeile = next((z for z in self.registrierung if z.schritt == schritt), None) or self.append("registrierung", {"schritt": schritt})
+        zeile.erledigt, zeile.datum = 1, datum
+        if nachweis:
+            zeile.nachweis = nachweis
+        self.set(feld, datum)
+        self.save()
+        for ev in frappe.get_all("PH Kassa Ereignis", {"kasse": self.name, "art": ereignis_art, "status": "Offen"}, pluck="name"):
+            frappe.db.set_value("PH Kassa Ereignis", ev, {"status": "Erledigt", "ende": now_datetime(), "nachweis": nachweis}, update_modified=False)
+        return {"status": self.status, feld: str(datum)}
+
+    @frappe.whitelist()
+    def kassenausfall_melden(self, notiz=None):
+        """Ausfall der Registrierkasse selbst (Server/Netz, nicht nur SEE) – Beginn des Notbetriebs (RKSV § 17)."""
+        self.check_permission("write")
+        if frappe.db.exists("PH Kassa Ereignis", {"kasse": self.name, "art": "Kasse Ausfall Beginn", "status": "Offen"}):
+            frappe.throw(_("Kassenausfall ist bereits gemeldet."))
+        return buchung._ereignis(self.name, "Kasse Ausfall Beginn", notiz=notiz or _("Kasse ausgefallen – Notbelege (Papier, fortlaufend nummeriert) ausstellen."), automatisch=False).name
+
+    @frappe.whitelist()
+    def kassenausfall_beenden(self, notiz=None):
+        """Ende des Kassenausfalls: Dauer, Meldepflicht > 48 h (FinanzOnline binnen einer Woche), danach Notbelege nacherfassen."""
+        self.check_permission("write")
+        from frappe.utils import time_diff_in_hours
+
+        from ph_kassa.rksv.finanzonline import ausfall_meldepflichtig
+
+        offen = frappe.get_all("PH Kassa Ereignis", {"kasse": self.name, "art": "Kasse Ausfall Beginn", "status": "Offen"}, ["name", "zeitpunkt"], order_by="zeitpunkt asc")
+        if not offen:
+            frappe.throw(_("Kein offener Kassenausfall."))
+        jetzt = now_datetime()
+        dauer = time_diff_in_hours(jetzt, offen[0].zeitpunkt)
+        melde = ausfall_meldepflichtig(dauer)
+        for ev in offen:
+            frappe.db.set_value("PH Kassa Ereignis", ev.name, {"status": "Beendet", "ende": jetzt, "dauer_h": dauer, "meldung_finanzonline_noetig": 1 if melde else 0}, update_modified=False)
+        buchung._ereignis(self.name, "Kasse Ausfall Ende", notiz=notiz, status="Beendet", automatisch=False)
+        if melde:
+            buchung.aufgabe(self.name, _("Kassenausfall {0} h: Ausfall und Wiederinbetriebnahme in FinanzOnline melden (RKSV § 17).").format(round(dauer, 1)))
+        return {"dauer_h": round(dauer, 2), "meldepflicht": melde}
+
+    @frappe.whitelist()
     def kette_pruefen(self, von_belegnummer=None, bis_belegnummer=None):
         """Belegkette (Signaturen, Verkettung, Zähler) verifizieren – Simulation Belegcheck."""
         self.check_permission("read")

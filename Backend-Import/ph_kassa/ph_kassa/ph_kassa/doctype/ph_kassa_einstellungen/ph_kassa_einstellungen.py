@@ -13,9 +13,18 @@ class PHKassaEinstellungen(Document):
             frappe.throw(_("Toleranz darf nicht negativ sein."))
         if (self.barverkauf_rechnung_ab_cent or 0) < 0:
             frappe.throw(_("Betragsgrenze darf nicht negativ sein."))
+        if (self.barverkauf_rechnung_ab_cent or 0) > 40000:
+            frappe.throw(_("Über 400 € brutto ist eine Kleinbetragsrechnung nicht zulässig (§ 11 Abs 6 UStG) – Grenze höchstens 40000 Cent."))
+        if self.chf_annahme_aktiv and not (self.chf_kurs_mikro and self.chf_kurs_datum):
+            frappe.throw(_("CHF-Annahme braucht Kurs und Kursdatum."))
 
     def on_update(self):
         frappe.cache().delete_value(CACHE)
+
+
+def _int(doc, feld, standard):
+    wert = doc.get(feld)
+    return int(standard if wert in (None, "") else wert)
 
 
 def einstellungen() -> dict:
@@ -47,6 +56,24 @@ def einstellungen() -> dict:
             "abschluss_unterschrift_pflicht": int(doc.abschluss_unterschrift_pflicht or 0),
             "abschluss_nullbeleg_automatisch": int(doc.abschluss_nullbeleg_automatisch or 0),
             "terminal_testmodus": int(doc.terminal_testmodus if doc.terminal_testmodus is not None else 1),
+            # Regeln/Grenzen (50-backend-luecken-kassa-faktura.md)
+            "storno_mitarbeiter_bis_cent": _int(doc, "storno_mitarbeiter_bis_cent", 0),
+            "rabatt_freigabe_ab_promille": _int(doc, "rabatt_freigabe_ab_promille", 100),
+            "retoure_bar_nur_leitung": _int(doc, "retoure_bar_nur_leitung", 1),
+            "retoure_standard": doc.get("retoure_standard") or "Gutschein",
+            "bar_identitaet_ab_cent": _int(doc, "bar_identitaet_ab_cent", 1000000),
+            "uid_empfaenger_ab_cent": _int(doc, "uid_empfaenger_ab_cent", 1000000),
+            "anzahlungsrechnung_automatisch": _int(doc, "anzahlungsrechnung_automatisch", 1),
+            "tageswechsel_uhrzeit": str(doc.get("tageswechsel_uhrzeit") or "00:00:00"),
+            "karte_automatisch_buchen": _int(doc, "karte_automatisch_buchen", 1),
+            "terminal_warnung_s": _int(doc, "terminal_warnung_s", 60),
+            "terminal_timeout_s": _int(doc, "terminal_timeout_s", 180),
+            "differenz_warnung_cent": _int(doc, "differenz_warnung_cent", 5000),
+            "kundendisplay_anrede": _int(doc, "kundendisplay_anrede", 0),
+            "chf_annahme_aktiv": _int(doc, "chf_annahme_aktiv", 0),
+            "chf_kurs_mikro": _int(doc, "chf_kurs_mikro", 0),
+            "chf_kurs_datum": str(doc.get("chf_kurs_datum") or "") or None,
+            "chf_kurs_max_alter_tage": _int(doc, "chf_kurs_max_alter_tage", 1),
         }
         frappe.cache().set_value(CACHE, data)
     return data

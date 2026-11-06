@@ -1,0 +1,86 @@
+[
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Uploads je Woche",
+  "chart_name": "PH Uploads je Woche",
+  "chart_type": "Count",
+  "document_type": "PH Datei",
+  "based_on": "hochgeladen_am",
+  "timespan": "Last Quarter",
+  "time_interval": "Weekly",
+  "timeseries": 1,
+  "type": "Bar",
+  "filters_json": "[[\"PH Datei\", \"status\", \"!=\", \"Hochladen\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Ablage",
+  "color": "#30373e",
+  "roles": [
+   {
+    "role": "PH Ablage Mitarbeiter"
+   },
+   {
+    "role": "PH Ablage Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Dateien je Bezug",
+  "chart_name": "PH Dateien je Bezug",
+  "chart_type": "Group By",
+  "document_type": "PH Datei",
+  "group_by_type": "Count",
+  "group_by_based_on": "bezug_doctype",
+  "number_of_groups": 6,
+  "timeseries": 0,
+  "type": "Donut",
+  "filters_json": "[[\"PH Datei\", \"status\", \"=\", \"Aktiv\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Ablage",
+  "color": "#8a7a66",
+  "roles": [
+   {
+    "role": "PH Ablage Mitarbeiter"
+   },
+   {
+    "role": "PH Ablage Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Dateien je Endung",
+  "chart_name": "PH Dateien je Endung",
+  "chart_type": "Group By",
+  "document_type": "PH Datei",
+  "group_by_type": "Count",
+  "group_by_based_on": "endung",
+  "number_of_groups": 8,
+  "timeseries": 0,
+  "type": "Bar",
+  "filters_json": "[[\"PH Datei\", \"status\", \"=\", \"Aktiv\", false]]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Ablage",
+  "color": "#15803d",
+  "roles": [
+   {
+    "role": "PH Ablage Mitarbeiter"
+   },
+   {
+    "role": "PH Ablage Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ }
+]

@@ -70,5 +70,21 @@
   "use_html": 1,
   "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}<p>Hinweis für das Team ({{ frappe.format(jetzt, {'fieldtype': 'Datetime'}) }}):</p>{% for z in zeilen %}<p>{{ z }}</p>{% endfor %}<p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
   "response": ""
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Shop Zahlungslink",
+  "subject": "Ihre Bestellung {{ doc.name }} – Zahlungslink",
+  "use_html": 1,
+  "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}<p>Guten Tag {{ doc.kunde_name }},</p><p>vielen Dank für Ihre Bestellung <b>{{ doc.name }}</b>. Über den folgenden sicheren Link (Stripe) können Sie den Betrag von <b>{{ ph_betrag(betrag_cent) }}</b> bezahlen:</p><p><a href=\"{{ url }}\" style=\"display:inline-block;padding:10px 18px;background:#30373e;color:#fff;text-decoration:none\">Jetzt bezahlen</a></p><p>Der Link ist gültig bis {{ frappe.utils.format_datetime(gueltig_bis, \"dd.MM.yyyy HH:mm\") if gueltig_bis else \"–\" }}. Der Vertrag kommt mit Ihrer Zahlung zustande; danach erhalten Sie die Bestellbestätigung.</p><p><b>Positionen</b><br>{% for p in doc.positionen %}{{ p.menge }} × {{ p.bezeichnung }} – {{ ph_betrag(p.summe_cent) }}<br>{% endfor %}{% if doc.versand_cent %}Versand – {{ ph_betrag(doc.versand_cent) }}<br>{% endif %}<b>Gesamt {{ ph_betrag(doc.gesamt_cent) }}</b> (inkl. USt)</p><p style=\"font-size:12px;color:#6b7280\">Sie haben bei diesem Fernabsatzvertrag ein Rücktrittsrecht von 14 Tagen (§ 11 FAGG). Widerrufsbelehrung und AGB finden Sie im Anhang bzw. unter {{ einst.widerruf_url or website }}.</p><p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
+  "response": ""
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Shop Versendet",
+  "subject": "Ihre Bestellung {{ doc.name }} ist unterwegs",
+  "use_html": 1,
+  "response_html": "{% if test %}<p style=\"color:#b91c1c\"><b>TESTMODUS:</b> Diese Nachricht stammt aus einem Testlauf. Es besteht kein Vertrag, es wurde nichts bezahlt.</p>{% endif %}<p>Guten Tag {{ doc.kunde_name }},</p><p>Ihre Bestellung <b>{{ doc.name }}</b> wurde heute an {{ doc.adresse_strasse }} {{ doc.adresse_hausnr or \"\" }}, {{ doc.adresse_plz }} {{ doc.adresse_ort }} versendet.</p>{% if awb %}<p>Versanddienst: {{ carrier or doc.dienst or \"–\" }}<br>Sendungsnummer: <b>{{ awb }}</b></p>{% endif %}{% if doc.bestellart == \"Ersatz\" %}<p>Es handelt sich um eine kostenlose Ersatzlieferung.</p>{% endif %}<p>Bitte prüfen Sie die Ware bei Erhalt und melden Sie sichtbare Transportschäden möglichst gleich (Foto genügt).</p><p>Herzliche Grüße<br>Ihr Team von {{ firma.kurzname or 'Platzhirsch Home Living' }}<br><span style=\"color:#6b7280;font-size:12px\">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or '' }} · {{ firma.email }}</span></p>",
+  "response": ""
  }
 ]

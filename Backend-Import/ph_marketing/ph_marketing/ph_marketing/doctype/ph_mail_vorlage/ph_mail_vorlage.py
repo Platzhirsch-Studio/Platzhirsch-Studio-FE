@@ -10,7 +10,7 @@ BEISPIEL = {
     "abmelde_url": "https://platzhirsch.studio/de/newsletter/abmelden", "bestaetigen_url": "https://platzhirsch.studio/de/newsletter/bestaetigen",
     "absagen_url": "", "einwilligung_datum": "01.11.2026", "fusszeile_html": "", "zweck_text": "unseren Newsletter", "gueltig_stunden": 48, "code": "EMP-ABC234",
     "teilen_url": "https://platzhirsch.studio/de/empfehlen?code=EMP-ABC234", "gutschein_wert": "", "bedingungen_url": "", "gutschein_code": "PH-TEST", "personen": 2,
-    "warteliste": False, "website_url": "https://platzhirsch.studio", "impressum_zeile": "", "bloecke": [], "betreff": "", "preheader": "", "inhalt_zeile": "", "slug": "", "neuheiten": "",
+    "warteliste": False, "checkin_code": "PHE1.adventsabend-2026.abc123.BEISPIELSIGNATUR", "hinweis": "", "anmelden_url": "https://platzhirsch.studio/de/adventsabend", "kontingent_bis": "Freitag, 13. November 2026", "website_url": "https://platzhirsch.studio", "impressum_zeile": "", "bloecke": [], "betreff": "", "preheader": "", "inhalt_zeile": "", "slug": "", "neuheiten": "",
 }
 
 
@@ -30,3 +30,18 @@ class PHMailVorlage(Document):
     def vorschau(self):
         self.check_permission("read")
         return {"betreff": frappe.render_template(self.betreff, BEISPIEL), "html": frappe.render_template(self.html, BEISPIEL)}
+
+    @frappe.whitelist()
+    def testmail(self, empfaenger=None):
+        """Konzept L14: Vorlage mit Beispieldaten an die Testadresse (oder eine angegebene) senden."""
+        self.check_permission("write")
+        from ph_marketing.ph_marketing import versand
+        from ph_marketing.ph_marketing.einstellungen import einstellungen
+
+        ziel = empfaenger or einstellungen()["test_empfaenger"]
+        if not ziel:
+            frappe.throw(_("Keine Testadresse hinterlegt."))
+        betreff, html = versand.rendern(self.name, BEISPIEL)
+        versand.sende(ziel, f"[Testmail {self.name}] {betreff}", html, referenz_doctype=self.doctype, referenz_name=self.name)
+        self.add_comment("Info", _("Testmail an {0}").format(ziel))
+        return ziel

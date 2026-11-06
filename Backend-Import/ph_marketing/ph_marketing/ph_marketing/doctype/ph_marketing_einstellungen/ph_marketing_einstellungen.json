@@ -63,7 +63,19 @@
   "empfehlung_bedingungen_url",
   "cb_e1",
   "event_erinnerung_tage",
-  "event_loeschfrist_monate"
+  "event_loeschfrist_monate",
+  "tab_luecken",
+  "sb_zustellung",
+  "resend_webhook_aktiv",
+  "soft_bounce_grenze",
+  "abmelde_mailto",
+  "one_click_pfad",
+  "cb_z1",
+  "mail_ereignis_aufbewahren_tage",
+  "sb_attr",
+  "attribution_modell",
+  "attribution_fenster_tage",
+  "kampagne_nachlauf_tage"
  ],
  "fields": [
   {
@@ -408,11 +420,79 @@
    "label": "Anmeldedaten löschen nach (Monate nach Event)",
    "default": "3",
    "description": "src/app/[locale]/adventsabend/event.js LOESCHFRIST_MONATE"
+  },
+  {
+   "fieldname": "tab_luecken",
+   "fieldtype": "Tab Break",
+   "label": "Zustellung & Attribution"
+  },
+  {
+   "fieldname": "sb_zustellung",
+   "fieldtype": "Section Break",
+   "label": "Zustellung"
+  },
+  {
+   "fieldname": "resend_webhook_aktiv",
+   "fieldtype": "Check",
+   "label": "Resend-Webhook annehmen",
+   "description": "Signaturgeheimnis nur in site_config.json: ph_resend_webhook_secret."
+  },
+  {
+   "fieldname": "soft_bounce_grenze",
+   "fieldtype": "Int",
+   "label": "Weiche Bounces bis Sperre",
+   "default": "3"
+  },
+  {
+   "fieldname": "abmelde_mailto",
+   "fieldtype": "Data",
+   "label": "Abmelde-Adresse (List-Unsubscribe mailto)",
+   "options": "Email"
+  },
+  {
+   "fieldname": "one_click_pfad",
+   "fieldtype": "Data",
+   "label": "Pfad One-Click-Abmeldung (Website)",
+   "default": "/api/newsletter/abmelden-1klick"
+  },
+  {
+   "fieldname": "cb_z1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mail_ereignis_aufbewahren_tage",
+   "fieldtype": "Int",
+   "label": "Mail-Ereignisse aufbewahren (Tage)",
+   "default": "180"
+  },
+  {
+   "fieldname": "sb_attr",
+   "fieldtype": "Section Break",
+   "label": "Attribution"
+  },
+  {
+   "fieldname": "attribution_modell",
+   "fieldtype": "Select",
+   "label": "Standardmodell",
+   "options": "last\nfirst\nlinear",
+   "default": "last"
+  },
+  {
+   "fieldname": "attribution_fenster_tage",
+   "fieldtype": "Int",
+   "label": "Fenster (Tage vor Abschluss)",
+   "default": "180"
+  },
+  {
+   "fieldname": "kampagne_nachlauf_tage",
+   "fieldtype": "Int",
+   "label": "Nachlauf beendeter Kampagnen (Tage)",
+   "default": "30"
   }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 10:00:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Marketing",
  "name": "PH Marketing Einstellungen",

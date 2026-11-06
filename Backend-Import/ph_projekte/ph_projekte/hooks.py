@@ -11,7 +11,7 @@ required_apps = ["frappe", "ph_core", "ph_crm", "ph_sortiment"]
 # Fixtures: nur eigene Datensätze, immer mit Filter. Export: bench --site <site> export-fixtures --app ph_projekte
 fixtures = [
     {"dt": "Workspace", "filters": [["module", "=", "PH Projekte"]]},
-    {"dt": "Workflow", "filters": [["document_type", "in", ["PH Projekt", "PH Rendering", "PH Montageauftrag", "PH Abnahme", "PH Referenz"]]]},
+    {"dt": "Workflow", "filters": [["document_type", "in", ["PH Projekt", "PH Rendering", "PH Montageauftrag", "PH Abnahme", "PH Referenz", "PH Nachtrag"]]]},
     {
         "dt": "Workflow State",
         "filters": [["name", "in", [
@@ -42,17 +42,28 @@ jinja = {
     "methods": [
         "ph_projekte.utils.texte.montage_text",
         "ph_projekte.ph_projekte.helfer.ph_einstellungen_projekte",
+        "ph_projekte.ph_projekte.nachkalkulation.ph_nachkalkulation_daten",
     ]
 }
 
-doc_events = {}
+# Herstellerbestellung/Wareneingang (ph_sortiment, required_app) → Lieferstatus der Projektpositionen, Liefertermin-Info
+# Portal-Sitzungen (PH Portal Sitzung) für alle Apps, die ph_core.api.portal_kontakt_pruefen nutzen.
+ph_portal_token_pruefen = ["ph_projekte.api.basis.sitzung_pruefen"]
+
+doc_events = {
+    "PH Herstellerbestellung": {"on_update": "ph_projekte.ph_projekte.lieferung.herstellerbestellung_aktualisiert"},
+    "PH Wareneingang": {"on_update": "ph_projekte.ph_projekte.lieferung.wareneingang_aktualisiert"},
+}
 
 # Europe/Vienna laut System Settings
 scheduler_events = {
     "cron": {
         "0 7 * * 1-6": ["ph_projekte.ph_projekte.tasks.montage_erinnerung"],
+        "15 7 * * 1-5": ["ph_projekte.ph_projekte.tasks.maengel_fristen_pruefen"],
         "0 8 * * 1-5": ["ph_projekte.ph_projekte.tasks.feedback_erinnerung"],
         "30 2 * * *": ["ph_projekte.ph_projekte.tasks.garantien_pruefen", "ph_projekte.ph_projekte.tasks.summen_aktualisieren"],
+        # Projektnachkalkulation: Cache (Number Cards), Ampel rot → Aufgabe an Projektleitung + Glocke
+        "45 5 * * *": ["ph_projekte.ph_projekte.tasks.kalkulation_pruefen"],
     },
 }
 

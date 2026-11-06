@@ -28,6 +28,20 @@ frappe.ui.form.on("PH Tour", {
 			}, __("Aktionen"));
 			frm.add_custom_button(__("Reihenfolge optimieren (PLZ)"), () => frm.call({ method: "reihenfolge_optimieren", doc: frm.doc }).then(() => frm.reload_doc()), __("Aktionen"));
 		}
+		if (["Geplant", "Freigegeben", "Unterwegs"].includes(st)) {
+			frm.add_custom_button(__("Kundeninfo (Avis) senden"), () => {
+				frappe.prompt([
+					{ fieldname: "kanal", fieldtype: "Select", label: __("Kanal"), options: ["mail", "sms", "beide"], default: "mail", reqd: 1 },
+					{ fieldname: "nur_neu", fieldtype: "Check", label: __("Nur Stopps ohne Avis"), default: 1 },
+				], (v) => frm.call({ method: "avis_senden", doc: frm.doc, args: v, freeze: true }).then((r) => {
+					const ok = (r.message || []).filter((x) => x.ok).length;
+					const nok = (r.message || []).filter((x) => !x.ok);
+					frappe.msgprint(__("{0} gesendet", [ok]) + (nok.length ? "<br>" + nok.map((x) => __("Stopp {0} ({1}): {2}", [x.stopp, x.kanal, x.grund || ""])).join("<br>") : ""));
+					frm.reload_doc();
+				}), __("Avis"));
+			}, __("Aktionen"));
+			frm.add_custom_button(__("Stopp entfernen"), () => frappe.prompt({ fieldname: "stopp", fieldtype: "Int", label: __("Stopp Nr."), reqd: 1 }, (v) => frm.call({ method: "stopp_entfernen", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Stopp entfernen")), __("Aktionen"));
+		}
 		if (st === "Geplant") frm.add_custom_button(__("Freigeben"), () => frm.call({ method: "freigeben", doc: frm.doc }).then(() => frm.reload_doc()), __("Aktionen"));
 		if (["Geplant", "Freigegeben"].includes(st)) {
 			frm.add_custom_button(__("Tour starten"), () => frappe.prompt({ fieldname: "km_start", fieldtype: "Int", label: __("km-Stand Start") }, (v) => frm.call({ method: "starten", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Start")), __("Aktionen"));

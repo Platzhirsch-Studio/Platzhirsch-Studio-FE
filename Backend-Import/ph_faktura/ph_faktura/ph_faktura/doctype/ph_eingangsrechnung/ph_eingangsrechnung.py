@@ -16,6 +16,7 @@ from frappe.utils import add_days, cint, now_datetime, nowdate
 from ph_faktura import einstellungen, journal, zahlung
 from ph_faktura.beleg import BelegMixin
 from ph_faktura.rechenwerk import steuer as S
+from ph_faktura.rechenwerk import kostenzuordnung as KZ
 from ph_faktura.rechenwerk.steuer import rund
 
 LEITUNG = ("PH Faktura Leitung", "PH Geschäftsführung", "System Manager")
@@ -53,7 +54,16 @@ class PHEingangsrechnung(BelegMixin, Document):
         self.zahlbetrag_cent = cint(self.brutto_cent) - (self.skonto_cent if self.skonto_bis and nowdate() <= str(self.skonto_bis) else 0)
         if not self.konto_aufwand:
             self.konto_aufwand = e.get("aufwandskonto_standard") or "5000"
-        self.titel = f"{self.lieferant_name}: {self.rechnungsnummer_lieferant} ({cint(self.brutto_cent) / 100:,.2f} €)"[:140]
+        from ph_faktura.ph_faktura.integration import regress_pruefen
+
+        regress_pruefen(self)
+        if self.belegart == "Gutschrift":
+            self.zahllauf = 0
+            if self.bezug_eingangsrechnung == self.name:
+                frappe.throw(_("Gutschrift kann sich nicht auf sich selbst beziehen."))
+        self.zuordnung_berechnen()
+        art = _("Gutschrift") + " " if self.belegart == "Gutschrift" else ""
+        self.titel = f"{self.lieferant_name}: {art}{self.rechnungsnummer_lieferant} ({cint(self.brutto_cent) / 100:,.2f} €)"[:140]
 
     def steuer_berechnen(self):
         netto = cint(self.netto_cent)
@@ -98,8 +108,195 @@ class PHEingangsrechnung(BelegMixin, Document):
             frappe.throw(_("Freigabe nur durch Leitung."))
         if self.status not in ("Erfasst", "Sachlich geprueft"):
             frappe.throw(_("Status {0} erlaubt keine Freigabe.").format(self.status))
-        self.status_setzen("Freigegeben", freigegeben_von=frappe.session.user, freigegeben_am=now_datetime(), zahllauf=1)
-        journal.schreibe("Eingangsrechnung", self, self.brutto_cent, f"Freigegeben: {self.lieferant_name} {self.rechnungsnummer_lieferant}")
+        self.zuordnung_fuer_freigabe()
+        gutschrift = self.belegart == "Gutschrift"
+        self.status_setzen("Freigegeben", freigegeben_von=frappe.session.user, freigegeben_am=now_datetime(), zahllauf=0 if gutschrift else 1)
+        journal.schreibe("Eingangsrechnung", self, -cint(self.brutto_cent) if gutschrift else self.brutto_cent, f"Freigegeben: {'Gutschrift ' if gutschrift else ''}{self.lieferant_name} {self.rechnungsnummer_lieferant}")
+        if gutschrift:
+            from ph_faktura.ph_faktura.integration import regress_gutschrift_buchen
+
+            self.reload()
+            regress_gutschrift_buchen(self)
+        self.budget_hinweis_setzen()
+        return True
+
+    # ── Kostenzuordnung (Projektnachkalkulation; Logik: rechenwerk/kostenzuordnung.py) ──────────────────
+
+    def _zuordnung_liste(self):
+        return [{k: z.get(k) for k in ("projekt", "kostenart", "prozent", "betrag_cent", "belegposition", "bezug_doctype", "bezug_name", "bemerkung")} for z in self.get("zuordnung") or []]
+
+    def zuordnung_berechnen(self):
+        """validate: Zeilen je Modus bilden/aufteilen, Summen und Status setzen; nach Freigabe nur über „Umbuchen“."""
+        if not self.meta.has_field("zuordnung"):
+            return
+        vorher = self.get_doc_before_save()
+        if vorher and vorher.status in ("Freigegeben", "Bezahlt") and not self.flags.ph_umbuchung and not self.flags.ph_system:
+            alt = [(z.projekt, z.kostenart, cint(z.betrag_cent)) for z in vorher.get("zuordnung") or []]
+            if (vorher.zuordnung_modus or "") != (self.zuordnung_modus or "") or alt != [(z.projekt, z.kostenart, cint(z.betrag_cent)) for z in self.get("zuordnung") or []]:
+                frappe.throw(_("Kostenzuordnung einer freigegebenen Rechnung nur über „Umbuchen“ (mit Begründung und Protokoll)."))
+        if not self.zuordnung_modus and self.projekt:
+            self.zuordnung_modus = "Ganz einem Projekt"
+        netto, modus = cint(self.netto_cent), self.zuordnung_modus
+        if modus == "Ganz einem Projekt":
+            if not self.kostenart and self.herstellerbestellung and frappe.db.exists("PH Kostenart", "Ware"):
+                self.kostenart = "Ware"
+            alt = (self.get("zuordnung") or [None])[0]
+            bezug = (alt.bezug_doctype, alt.bezug_name) if alt and alt.bezug_name else (("PH Herstellerbestellung", self.herstellerbestellung) if self.herstellerbestellung else (None, None))
+            self.set("zuordnung", [{"projekt": self.projekt, "kostenart": self.kostenart, "prozent": 100, "betrag_cent": netto, "bezug_doctype": bezug[0], "bezug_name": bezug[1],
+                                    "bemerkung": alt.bemerkung if alt else None}] if self.projekt else [])
+        elif modus == "Nach Positionen":
+            vorhanden = self._zuordnung_liste()
+            if self.positionen:
+                self.set("zuordnung", KZ.aus_positionen([p.as_dict() for p in self.positionen], vorhanden, self.projekt, self.kostenart))
+        elif modus == "Aliquot":
+            betraege, _diff = KZ.aufteilen(netto, self.get("zuordnung") or [])
+            for z, b in zip(self.get("zuordnung") or [], betraege):
+                z.betrag_cent = b
+        elif modus == "Gemeinkosten":
+            self.set("zuordnung", [])
+        if self.belegart == "Gutschrift" and not self.get("zuordnung") and not modus and self.bezug_eingangsrechnung:
+            self.zuordnung_aus_ursprung()
+        zeilen = self._zuordnung_liste()
+        if modus in ("Aliquot", "Nach Positionen") and zeilen:
+            groesste = max(zeilen, key=lambda z: abs(cint(z["betrag_cent"])))
+            if groesste.get("projekt"):
+                self.projekt = groesste["projekt"]  # Kopf-Projekt = größter Anteil (Listen, Zahllauf, Altauswertungen)
+        self.zuordnung_summe_cent = sum(cint(z["betrag_cent"]) for z in zeilen)
+        self.zuordnung_differenz_cent = netto - self.zuordnung_summe_cent if modus != "Gemeinkosten" else 0
+        self.zuordnung_status = KZ.status(modus, netto, zeilen)
+        if self.flags.ph_umbuchung:
+            fehler = KZ.pruefen(modus, netto, zeilen)
+            if fehler:
+                frappe.throw("<br>".join(frappe.utils.escape_html(f) for f in fehler), title=_("Umbuchung unvollständig"))
+
+    def zuordnung_aus_ursprung(self):
+        """Lieferanten-Gutschrift: Zuordnung im Verhältnis der Ursprungsrechnung vorschlagen."""
+        urs = frappe.get_all("PH Eingangsrechnung Zuordnung", filters={"parent": self.bezug_eingangsrechnung, "parenttype": "PH Eingangsrechnung"},
+                             fields=["projekt", "kostenart", "betrag_cent", "bezug_doctype", "bezug_name", "bemerkung"], order_by="idx asc")
+        zeilen = KZ.anteilig(cint(self.netto_cent), urs)
+        if zeilen:
+            self.zuordnung_modus = "Aliquot" if len(zeilen) > 1 else "Ganz einem Projekt"
+            if len(zeilen) == 1:
+                self.projekt, self.kostenart = zeilen[0]["projekt"], zeilen[0]["kostenart"]
+            self.set("zuordnung", [{**z, "vorschlag": 1} for z in zeilen])
+        return zeilen
+
+    def zuordnung_fuer_freigabe(self):
+        """Pflicht bei Freigabe. Lieferanten-Gutschrift ohne Projektbezug → Gemeinkosten (mit Hinweis)."""
+        if not self.meta.has_field("zuordnung"):
+            return
+        if self.belegart == "Gutschrift" and not self.zuordnung_modus and not self.get("zuordnung"):
+            self.zuordnung_modus = "Gemeinkosten"
+            self.flags.ph_system = True
+            self.save()
+            frappe.msgprint(_("Lieferanten-Gutschrift ohne Projektbezug als Gemeinkosten zugeordnet."), indicator="blue")
+        fehler = KZ.pruefen(self.zuordnung_modus, cint(self.netto_cent), self._zuordnung_liste())
+        if fehler:
+            frappe.throw(_("Kostenzuordnung unvollständig – bitte vor der Freigabe zuordnen:") + "<br>" + "<br>".join(frappe.utils.escape_html(f) for f in fehler))
+
+    def budget_hinweis_setzen(self):
+        """Hinweis an den Freigebenden, wenn die Rechnung ein Projektbudget überschreitet (ph_projekte, nie werfen)."""
+        paare = {(z.projekt, z.kostenart) for z in self.get("zuordnung") or [] if z.projekt}
+        if not paare:
+            return
+        try:
+            from ph_projekte.ph_projekte.nachkalkulation import budget_pruefen
+
+            meldungen = budget_pruefen(paare)
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title=f"PH Eingangsrechnung {self.name}: Budgetprüfung")
+            return
+        self.db_set("budget_hinweis", "\n".join(meldungen)[:1000] if meldungen else None, update_modified=False)
+        if meldungen:
+            frappe.msgprint("<br>".join(frappe.utils.escape_html(m) for m in meldungen), title=_("Budget überschritten"), indicator="orange")
+
+    @frappe.whitelist()
+    def zuordnung_vorschlagen(self):
+        """Vorschlag aus Herstellerbestellung (Ware), Speditionsauftrag des Spediteurs (Fracht) oder Fremdgewerk des
+        Partnerbetriebs (Fremdgewerk); Gutschrift: Verhältnis der Ursprungsrechnung. Setzt Zeilen, speichert nicht."""
+        self.check_permission("write")
+        if self.status in ("Freigegeben", "Bezahlt"):
+            frappe.throw(_("Nach Freigabe nur „Umbuchen“."))
+        netto = cint(self.netto_cent)
+        if self.belegart == "Gutschrift" and self.bezug_eingangsrechnung and self.zuordnung_aus_ursprung():
+            return self._zuordnung_liste()
+        kandidaten = []
+        if self.herstellerbestellung and frappe.db.exists("DocType", "PH Herstellerbestellung"):
+            hb = frappe.db.get_value("PH Herstellerbestellung", self.herstellerbestellung, ["bezug_doctype", "bezug_name", "kommission"], as_dict=True) or {}
+            projekt = hb.get("bezug_name") if hb.get("bezug_doctype") == "PH Projekt" else (hb.get("kommission") if hb.get("kommission") and frappe.db.exists("PH Projekt", hb.get("kommission")) else None)
+            if projekt:
+                kandidaten.append({"projekt": projekt, "kostenart": "Ware", "betrag_cent": netto, "bezug_doctype": "PH Herstellerbestellung", "bezug_name": self.herstellerbestellung})
+        if not kandidaten and self.lieferant and frappe.db.exists("DocType", "PH Speditionsauftrag"):
+            for s in frappe.get_all("PH Speditionsauftrag", filters={"spediteur": self.lieferant, "status": ("!=", "Storniert")}, fields=["name", "projekt", "kommission", "preis_bestaetigt_cent", "preis_angefragt_cent"], order_by="creation desc", limit=20):
+                projekt = s.projekt or s.kommission
+                if projekt and frappe.db.exists("PH Projekt", projekt) and not frappe.db.exists("PH Eingangsrechnung Zuordnung", {"bezug_doctype": "PH Speditionsauftrag", "bezug_name": s.name}):
+                    kandidaten.append({"projekt": projekt, "kostenart": "Fracht", "betrag_cent": cint(s.preis_bestaetigt_cent) or cint(s.preis_angefragt_cent) or 1, "bezug_doctype": "PH Speditionsauftrag", "bezug_name": s.name})
+        if not kandidaten and self.lieferant:
+            for g in frappe.get_all("PH Fremdgewerk", filters={"partnerbetrieb": self.lieferant, "vertrag_direkt_kunde": 0, "status": ("not in", ("Abgesagt", "Offen"))}, fields=["name", "projekt", "kosten_cent"], order_by="creation desc", limit=20):
+                if g.projekt and not frappe.db.exists("PH Eingangsrechnung Zuordnung", {"bezug_doctype": "PH Fremdgewerk", "bezug_name": g.name}):
+                    kandidaten.append({"projekt": g.projekt, "kostenart": "Fremdgewerk", "betrag_cent": cint(g.kosten_cent) or 1, "bezug_doctype": "PH Fremdgewerk", "bezug_name": g.name})
+        if not kandidaten and self.projekt:
+            kandidaten.append({"projekt": self.projekt, "kostenart": self.kostenart or "Sonstiges", "betrag_cent": netto})
+        if not kandidaten:
+            frappe.throw(_("Kein Vorschlag gefunden (keine Herstellerbestellung, kein Speditionsauftrag/Fremdgewerk dieses Lieferanten) – bitte manuell zuordnen."))
+        zeilen = KZ.anteilig(netto, kandidaten)
+        self.zuordnung_modus = "Ganz einem Projekt" if len(zeilen) == 1 else "Aliquot"
+        if len(zeilen) == 1:
+            self.projekt, self.kostenart = zeilen[0]["projekt"], zeilen[0]["kostenart"]
+        self.set("zuordnung", [{**z, "vorschlag": 1} for z in zeilen])
+        return self._zuordnung_liste()
+
+    @frappe.whitelist()
+    def zuordnung_umbuchen(self, modus, zeilen=None, grund=None, projekt=None, kostenart=None):
+        """Nachträgliche Umbuchung (auch nach Freigabe/Zahlung): neue Zuordnung, Begründung Pflicht, Protokoll alt → neu."""
+        self.check_permission("write")
+        if not set(frappe.get_roles()) & (set(LEITUNG) | {"PH Projekte Leitung", "PH Backoffice-Admin"}):
+            frappe.throw(_("Umbuchen nur durch Leitung."))
+        if not (grund or "").strip():
+            frappe.throw(_("Bitte den Grund der Umbuchung angeben."))
+        alt = self._zuordnung_liste()
+        alt_modus = self.zuordnung_modus
+        zeilen = frappe.parse_json(zeilen) if isinstance(zeilen, str) else (zeilen or [])
+        self.zuordnung_modus = modus
+        if modus == "Ganz einem Projekt":
+            self.projekt, self.kostenart = projekt or self.projekt, kostenart or self.kostenart
+        else:
+            self.set("zuordnung", [{k: z.get(k) for k in ("projekt", "kostenart", "prozent", "betrag_cent", "belegposition", "bezug_doctype", "bezug_name", "bemerkung")} for z in zeilen])
+        self.flags.ph_umbuchung = True
+        self.flags.ph_system = True  # Betragssperre (bezahlt) betrifft nur Beträge, nicht die Zuordnung
+        self.save()
+        text = KZ.unterschied(alt, self._zuordnung_liste())
+        self.add_comment("Info", _("Kostenzuordnung umgebucht ({0} → {1}): {2}. Grund: {3}").format(alt_modus or "–", modus, text, grund))
+        try:
+            from ph_projekte.ph_projekte.nachkalkulation import protokoll
+
+            for pr in {z.get("projekt") for z in alt + self._zuordnung_liste() if z.get("projekt")} or {None}:
+                protokoll("Eingangsrechnung", self.doctype, self.name, "zuordnung", {"modus": alt_modus, "zeilen": alt}, {"modus": modus, "zeilen": self._zuordnung_liste()}, grund, projekt=pr)
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title=f"PH Eingangsrechnung {self.name}: Umbuchungsprotokoll")
+        if self.status in ("Freigegeben", "Bezahlt"):
+            self.budget_hinweis_setzen()
+        return text
+
+    @frappe.whitelist()
+    def regress_erfassen(self):
+        """Button „Im Regress erfassen“ (Wiederholung, falls die Freigabe den Regress nicht erreichte)."""
+        self.check_permission("write")
+        if self.status not in ("Freigegeben", "Bezahlt"):
+            frappe.throw(_("Erst freigeben."))
+        from ph_faktura.ph_faktura.integration import regress_gutschrift_buchen
+
+        return regress_gutschrift_buchen(self)
+
+    @frappe.whitelist()
+    def als_verrechnet_buchen(self, datum=None):
+        """Lieferanten-Gutschrift: mit offener Lieferantenrechnung verrechnet bzw. Betrag erhalten → Status Bezahlt
+        (Geldeingang selbst kommt über den Bankabgleich)."""
+        self.check_permission("write")
+        if self.belegart != "Gutschrift" or self.status != "Freigegeben":
+            frappe.throw(_("Nur freigegebene Lieferanten-Gutschriften."))
+        self.status_setzen("Bezahlt", bezahlt_am=datum or nowdate(), bezahlt_cent=cint(self.brutto_cent))
+        journal.schreibe("Zahlung", self, -cint(self.brutto_cent), f"Gutschrift verrechnet {self.lieferant_name} {self.rechnungsnummer_lieferant}")
         return True
 
     @frappe.whitelist()
@@ -123,6 +320,8 @@ class PHEingangsrechnung(BelegMixin, Document):
         self.check_permission("write")
         if self.status != "Freigegeben":
             frappe.throw(_("Nur freigegebene Rechnungen können bezahlt werden."))
+        if self.belegart == "Gutschrift":
+            frappe.throw(_("Lieferanten-Gutschrift wird nicht bezahlt – „Als verrechnet buchen“."))
         betrag = cint(betrag_cent) or cint(self.zahlbetrag_cent) or cint(self.brutto_cent)
         name = zahlung.buche("Ausgang", kanal, betrag, "PH Eingangsrechnung", self.name, zeitpunkt=datum, zahlungsreferenz=self.zahlungsreferenz, notiz=f"{self.lieferant_name} {self.rechnungsnummer_lieferant}")
         zahlung.zahlung_auf_eingangsrechnung(self, betrag, datum, zahlung_name=name)
@@ -132,7 +331,7 @@ class PHEingangsrechnung(BelegMixin, Document):
 def zahllauf_vorschlag(stichtag=None):
     """Freigegebene Rechnungen, fällig bis Stichtag (oder Skonto nutzbar), sortiert nach Fälligkeit."""
     stichtag = stichtag or add_days(nowdate(), 7)
-    rows = frappe.get_all("PH Eingangsrechnung", filters={"status": "Freigegeben"}, fields=["name", "lieferant_name", "rechnungsnummer_lieferant", "datum", "faellig", "skonto_bis", "skonto_cent", "brutto_cent", "zahlbetrag_cent", "iban_lieferant", "bic_lieferant", "zahlungsreferenz", "zahllauf", "projekt"], order_by="faellig asc")
+    rows = frappe.get_all("PH Eingangsrechnung", filters={"status": "Freigegeben", "belegart": ("!=", "Gutschrift")}, fields=["name", "lieferant_name", "rechnungsnummer_lieferant", "datum", "faellig", "skonto_bis", "skonto_cent", "brutto_cent", "zahlbetrag_cent", "iban_lieferant", "bic_lieferant", "zahlungsreferenz", "zahllauf", "projekt"], order_by="faellig asc")
     out = []
     for r in rows:
         skonto_nutzbar = bool(r.skonto_bis and str(r.skonto_bis) >= nowdate() and cint(r.skonto_cent))

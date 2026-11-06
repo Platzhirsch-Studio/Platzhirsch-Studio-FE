@@ -13,6 +13,7 @@ import { planTerminHref } from "../kuechenplaner/planTermin.js";
 import { SOURCE_COPY } from "./consent.js";
 import { sourceCopy } from "./copy/source.js";
 import { dictFor } from "./copy/t.js";
+import { CLIENT_KONFIG_MAX, konfigurationOf } from "../forms/planerFields.js";
 
 // Sprachen-Welle FR/IT (01.11.2026): FR/IT-Texte aus dem geladenen Wörterbuch
 // (HANDOFF in copy/ui-fr.js / ui-it.js, vorher loadDict(locale)); sonst wie bisher.
@@ -80,9 +81,13 @@ export function handoffSummary({ text = "", shareUrl = "", locale = "de" } = {})
 }
 
 /** Legt die Zusammenfassung für die Beratungsseite ab (Speicher kann gesperrt sein). */
-export function storeHandoff(storage, { text = "", shareUrl = "", locale = "de" } = {}) {
+// config (optional): der Plan (planSchema) für die Beratungsanfrage – nur an
+// ph_crm als planer_konfiguration (src/lib/forms/planerFields.js), höchstens
+// CLIENT_KONFIG_MAX groß, sonst bleibt es beim Link.
+export function storeHandoff(storage, { text = "", shareUrl = "", locale = "de", config = null } = {}) {
   try {
-    storage?.setItem(HANDOFF_KEY, JSON.stringify({ planer: HANDOFF_PLANER, text: handoffSummary({ text, shareUrl, locale }), url: shareUrl, at: Date.now() }));
+    const cfg = config && typeof config === "object" ? konfigurationOf(config, CLIENT_KONFIG_MAX) : null;
+    storage?.setItem(HANDOFF_KEY, JSON.stringify({ planer: HANDOFF_PLANER, text: handoffSummary({ text, shareUrl, locale }), url: shareUrl, at: Date.now(), ...(cfg ? { config: cfg } : {}) }));
     return true;
   } catch {
     return false;

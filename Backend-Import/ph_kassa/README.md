@@ -122,3 +122,42 @@ bench --site <site> run-tests --app ph_kassa --doctype "PH Terminal"          # 
 ```
 
 Offen (WP10b): QZ-Tray-Zertifikat am Kassenrechner (Admin); Druckserver im Showroom-LAN (kleiner HTTP→USB-Dienst); echter Terminal-Lauf erst mit Stripe-Testschlüssel auf Staging; Kundendisplay-Fenster braucht Desk-Login (Mitarbeiterrolle).
+
+## Backend-Lücken geschlossen (04.11.2026, Mandat Nr. 50)
+
+Vollständige Liste mit Entscheidung und Test: `Marktresearch/digital/backoffice/50-backend-luecken-kassa-faktura.md`.
+
+| Bereich | Umsetzung |
+|---|---|
+| Regeln vor dem Buchen | `logik/regeln.py` (Rechnung ab 400 €, Anzahlung nur mit Auftrag, Überzahlung, Einzweck/Mehrzweck, Retoure, Bar ab 10.000 € Identität, Storno-Freigabe) |
+| Leitungsfreigabe | `dienste.freigabe_pruefen` – PIN gegen `User.ph_core_pin_hash` (ph_core), Gerät aktiv; Felder `freigabe_von/freigabe_gruende` am Beleg |
+| Storno durch Mitarbeiter | `storniere_beleg(erlaube_mitarbeiter, freigabe_von)`; Grenze `storno_mitarbeiter_bis_cent` |
+| Kassenbuch = Lade | Jeder Bar-Beleg bucht `Bareinnahme/Barausgabe` (idempotent `beleg:<name>`), CHF getrennt; Anfangsbestand automatisch aus dem Vortag (`PH Kassenabschluss.anfang_ermitteln`) |
+| Retoure | Positionsart `Retoure` (negativ, Satz der Originalzeile, `bezug_zeile`), `retoure_vorbereiten`, Rückzahlung Karte/Bar/Überweisung oder Gutschein |
+| Gutscheine | Verkauf erzeugt den PH Gutschein (Code nur im Ergebnis `gutschein_codes`), Einzweck als Position, Storno bucht Einlösung zurück bzw. sperrt den verkauften Gutschein |
+| Terminal | `TerminalMock/StripeTerminalDienst.erstatten` (Refund auf die Originalkarte), Zeitüberschreitung 60/180 s, DocType **PH Terminal Vorgang** |
+| Rabatt | Positionsfelder `listenpreis_cent, rabatt_promille, rabatt_cent, rabatt_gesamt_cent, rabatt_grund`; Freigabe ab `rabatt_freigabe_ab_promille` |
+| CHF | Bar mit `fremdwaehrung, fremd_gegeben_cent, kurs_mikro` (Kurs nur vom Server), Rückgeld EUR, CHF-Lade im Abschluss |
+| Notbetrieb | `logik/notbetrieb.py`, `notbelege_einspielen` (je Notbeleg ein Standardbeleg, `notbeleg_nr`), `PH Kasse.kassenausfall_melden/_beenden`; Custom Fields `PH Geraet.ph_kassa_offline_erlaubt/_limit_cent` |
+| RKSV | `PH Kasse.startbeleg_geprueft/jahresbeleg_geprueft`; Geschäftstag mit `tageswechsel_uhrzeit` |
+| Page-Endpunkte neu | `code_erkennen`, `kunde_anlegen`, `retoure_vorbereiten`, `kassensturz`, `lade_oeffnen`, `schnelltasten`, `kassen_katalog`, `kassen_kunden`, `notbelege_einspielen`, `leitung_freigabe_pruefen`, `zahlungsplan`; `beleg_buchen` und `storno` erweitert (s. Docstring) |
+| DocTypes neu | PH Terminal Vorgang, PH Kassa Schnelltaste (autoname hash, keine Nummernkreise) |
+| Reports | PH Kassenumsatz nach Steuersatz (UVA-Abgrenzung aus `ph_faktura.rechenwerk.uva`), **PH Kassa Klaerfaelle**, **PH Kassa Tageslosung** |
+| DSGVO | `ph_kassa.dienste.kontakt_anonymisieren(kontakt)` (Aufruf aus ph_crm) |
+| Bon | Bediener als Kürzel (`ph_core_kurzname`/Vorname); A4 mit Empfängeranschrift, UID, Leistungsdatum, Barverkaufsrechnung |
+
+Tests ohne Site: `ph_kassa/tests/test_luecken.py` (23 Tests).
+
+
+## Integration Runde 3 (04.11.2026)
+
+| Bedarf | Umsetzung | Test |
+|---|---|---|
+| Kundenkarte direkt aus Python | `page._kundenkarte_buchen` → `ph_kundenkarte.ph_kundenkarte.kassa.einloesen` (kein commit/rollback im Request), `code_erkennen` → `karte_pruefen`, neu `kundenkarte_uebergeben` → `karte_uebergeben`; `ApiFehler` → Kassa-Fehlerform `{code, meldung, vorteil, http_status}` (`logik/integration.karten_fehler`), `card_*`-Codes in `kundenkarte.codes` bzw. `code` | test_integration.TestKartenFehler, Site |
+| Storno mit Einlösungen | `page.storno` → `_kundenkarte_zuruecknehmen` → `einloesung_zuruecknehmen(bezug_doctype="PH Kassenbeleg", bezug=<Original>)` (idempotent neben dem doc_event der Kundenkarte) | Site |
+| Gutschein-Verkauf/-Storno | `PH Kassenbeleg._gutscheine_ausstellen` → `ph_shop.gutschein.ausstellen_verkauf` (ausgabe_beleg, Einzweck mit Satz der Position), Storno → `verkauf_stornieren` (teilweise eingelöst → Klärfall), Einlösung zurück → `storniere_einloesung` | Site |
+| Rabattgutschein | `pruefen()["mindert_entgelt"]` → Positionsart **Rabatt** (negativ, je Steuersatz der Ware, `logik/integration.rabatt_aufteilen`), keine Gutschein-Zahlung; Einlösung bucht den Restwert ab, Storno bucht zurück | test_integration.TestRabattAufteilung/TestGutscheineUmstellen |
+| Einzweck ohne Satz | klare Meldung (`EINZWECK_OHNE_SATZ`) in `gutschein_pruefen` und beim Buchen; Einlösung mit dem Satz der Ausgabe | test_integration |
+| Terminal-Erstattung | nach `StripeTerminalDienst.erstatten` → `ph_shop.zahlung.erstattung_erfassen(payment_intent, betrag_cent, grund, stripe_refund, idempotency_key, quelle="kassa")`; ohne Eingangszahlung Rückfall `buche` | Site (Mock) |
+| Rechnungsempfänger | `dienste.kunde_anlegen` → `ph_crm.api.create_kontakt` (Dublettenschutz); ohne Anlegerecht `ph_crm.ph_crm.dubletten.kandidaten` + Anlage; Land ISO → Country | Site |
+| Ausstellungsstück | `page.ausstellungsstueck(lagerbestand, vk_cent)` → Position „Ausstellungsstück: …“ (Art Artikel, Bezug PH Lagerbestand, `lagerbestand_ref`); beim Buchen Verkauf im Bestand (`ph_logistik.bestand.buche`, Bezug Kassenbeleg, idempotent); doppelt kassieren gesperrt; Storno → Klärfall Warenrücknahme; Lagerbestand-Button öffnet die Kassa | test_integration.TestAusstellungsstueck, Site |

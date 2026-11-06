@@ -1,0 +1,31 @@
+# /etc/systemd/system/platzhirsch-backoffice.service – Backoffice ohne Docker.
+# Release-Ordner = ganzes Repo (Abhängigkeiten im Root-node_modules):
+#   cd /var/www/platzhirsch-backoffice/current && npm ci && (cd backoffice && ../node_modules/.bin/next build)
+#   systemctl enable --now platzhirsch-backoffice
+[Unit]
+Description=Platzhirsch Backoffice (Next.js, Port 3100)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=platzhirsch
+Group=platzhirsch
+WorkingDirectory=/var/www/platzhirsch-backoffice/current/backoffice
+EnvironmentFile=/var/www/platzhirsch-backoffice/shared/.env.production
+Environment=NODE_ENV=production
+Environment=PORT=3100
+Environment=NEXT_TELEMETRY_DISABLED=1
+ExecStart=/usr/bin/node ../node_modules/next/dist/bin/next start -H 127.0.0.1 -p 3100
+Restart=always
+RestartSec=2
+TimeoutStopSec=20
+MemoryMax=1G
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/www/platzhirsch-backoffice/current/backoffice/.next
+
+[Install]
+WantedBy=multi-user.target

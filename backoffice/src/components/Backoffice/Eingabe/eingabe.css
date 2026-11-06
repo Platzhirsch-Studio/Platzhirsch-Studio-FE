@@ -1,0 +1,111 @@
+/* Eingabe-Bausteine im Lounge-Stil (Team P0-6): BetragFeld, ScanFeld, KameraScan, Unterschrift, FotoAufnahme.
+   Nur Rollen-Token (--color-bo-*), Radien aus der Skala (Feld 14–16, Karte 20, Kachel 28, rund),
+   Schatten über --bo-sh-*, Bewegung mit Feder auf transform/opacity. Präfix bo-ein-. */
+
+/* ---- BetragFeld -------------------------------------------------------------------------- */
+.bo-ein-betrag { position: relative; display: block; min-width: 0; }
+.bo-ein-betrag > input { padding-right: 2.25rem; text-align: right; font-variant-numeric: tabular-nums; }
+.bo-ein-betrag__w {
+  position: absolute; right: 0.875rem; top: 50%; translate: 0 -50%;
+  color: var(--color-bo-text-faint); font-size: 0.875em; pointer-events: none;
+}
+.bo-ein-fehler { margin-top: 6px; font-size: 13px; line-height: 18px; color: var(--color-bo-danger-text); display: flex; gap: 6px; align-items: flex-start; }
+
+/* ---- ScanFeld (Packtisch/Kassa: großes Pillenfeld, Ring = Zustand) ------------------------ */
+.bo-ein-scan {
+  --bo-scan-grund: var(--bo-sh-card);
+  display: flex; align-items: center; gap: 12px; min-width: 0;
+  height: 64px; padding: 0 8px 0 20px; border-radius: 999px;
+  background: var(--color-bo-surface); box-shadow: var(--bo-sh-card);
+  corner-shape: superellipse(1.35);
+}
+.bo-ein-scan--m { height: 52px; padding-left: 16px; }
+.bo-ein-scan:focus-within { box-shadow: var(--bo-sh-card), 0 0 0 2px var(--color-bo-focus); }
+.bo-ein-scan > svg { flex: none; color: var(--color-bo-text-soft); }
+.bo-ein-scan input {
+  flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--color-bo-text);
+  font: inherit; font-size: 19px; font-weight: 500; letter-spacing: -0.01em;
+}
+.bo-ein-scan--m input { font-size: 16px; }
+.bo-ein-scan input::placeholder { color: var(--color-bo-text-faint); font-weight: 400; }
+.bo-ein-scan__zuletzt { flex: none; font-size: 13px; color: var(--color-bo-text-soft); white-space: nowrap; max-width: 40%; overflow: hidden; text-overflow: ellipsis; }
+.bo-ein-scan__zuletzt b { font-weight: 600; color: var(--color-bo-salbei-text); }
+.bo-ein-scan[data-ergebnis="unbekannt"] .bo-ein-scan__zuletzt b { color: var(--color-bo-danger-text); }
+.bo-ein-scan[data-ergebnis="doppelt"] .bo-ein-scan__zuletzt b { color: var(--color-bo-warning-text); }
+.bo-ein-scan[data-wackeln="true"] { animation: bo-shake 420ms var(--bo-feder) both; }
+@media (prefers-reduced-motion: reduce) { .bo-ein-scan[data-wackeln="true"] { animation: none; } }
+
+/* ---- KameraScan --------------------------------------------------------------------------- */
+.bo-ein-kamera { position: relative; overflow: hidden; border-radius: var(--radius-bo-karte); background: var(--color-bo-surface-inverse); aspect-ratio: 4 / 3; }
+.bo-ein-kamera video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.bo-ein-kamera__rahmen {
+  position: absolute; left: 50%; top: 50%; width: min(72%, 360px); aspect-ratio: 16 / 10; translate: -50% -50%;
+  border-radius: 20px; box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--color-bo-surface-inverse) 45%, transparent);
+  pointer-events: none;
+}
+.bo-ein-kamera__rahmen { border: 2.5px solid var(--color-bo-ink-inverse); transition: border-color var(--bo-dur-fast) var(--bo-ease-out), scale var(--bo-dur-feder-kurz) var(--bo-feder); }
+.bo-ein-kamera[data-gelesen="true"] .bo-ein-kamera__rahmen { border-color: var(--color-bo-salbei); scale: 0.97; }
+.bo-ein-kamera__hinweis {
+  position: absolute; left: 50%; bottom: 16px; translate: -50% 0; padding: 8px 14px; border-radius: 999px;
+  font-size: 13px; font-weight: 500; white-space: nowrap; color: var(--color-bo-text);
+}
+.bo-ein-kamera__werkzeuge { position: absolute; top: 12px; right: 12px; display: flex; gap: 8px; }
+.bo-ein-kamera__leer {
+  position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center;
+  color: var(--color-bo-ink-inverse); font-size: 15px; font-weight: 500;
+}
+
+/* ---- Unterschrift ------------------------------------------------------------------------- */
+.bo-ein-us { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; min-width: 0; }
+.bo-ein-us__art { min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.bo-ein-us__erklaerung { font-size: 15px; line-height: 22px; color: var(--color-bo-text); max-width: 64ch; }
+.bo-ein-us__flaeche {
+  position: relative; width: 100%; height: 200px; border-radius: var(--radius-bo-karte);
+  background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); touch-action: none; overflow: hidden;
+  corner-shape: superellipse(1.35);
+}
+.bo-ein-us__flaeche:focus-visible { outline: none; box-shadow: var(--bo-sh-card), 0 0 0 2px var(--color-bo-focus); }
+.bo-ein-us__flaeche canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
+.bo-ein-us__linie {
+  position: absolute; left: 24px; right: 24px; bottom: 52px; height: 0; border-top: 1.5px dashed var(--color-bo-line-strong); pointer-events: none;
+}
+.bo-ein-us__x { position: absolute; left: 24px; bottom: 58px; font-size: 20px; line-height: 1; color: var(--color-bo-text-faint); pointer-events: none; }
+.bo-ein-us__leer { position: absolute; left: 0; right: 0; top: 50%; translate: 0 -70%; text-align: center; font-size: 15px; color: var(--color-bo-text-faint); pointer-events: none; transition: opacity var(--bo-dur-fast) var(--bo-ease-out); }
+.bo-ein-us__flaeche[data-leer="false"] .bo-ein-us__leer { opacity: 0; }
+.bo-ein-us__name { position: absolute; left: 24px; bottom: 24px; font-size: 12px; color: var(--color-bo-text-soft); pointer-events: none; }
+.bo-ein-us__fuss { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.bo-ein-us__fuss .bo-knopf--primary { min-height: 48px; padding-inline: 28px; font-size: 16px; }
+.bo-ein-us__gesetzt {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center;
+  padding: 16px 20px; border-radius: var(--radius-bo-karte); background: var(--color-bo-surface-2);
+}
+.bo-ein-us__gesetzt img { max-height: 96px; width: auto; max-width: 100%; }
+[data-theme="dark"] .bo-ein-us__gesetzt img { filter: invert(1) hue-rotate(180deg); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bo-ein-us__gesetzt img { filter: invert(1) hue-rotate(180deg); } }
+.bo-ein-us__meta { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-ein-us__meta b { color: var(--color-bo-text); font-weight: 600; }
+.bo-ein-us__alt { display: grid; gap: 12px; padding: 16px; border-radius: var(--radius-bo-karte); background: var(--color-bo-surface-2); }
+
+/* ---- FotoAufnahme ------------------------------------------------------------------------- */
+.bo-ein-foto { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; min-width: 0; }
+.bo-ein-foto__knoepfe { display: flex; flex-wrap: wrap; gap: 8px; }
+.bo-ein-foto__knoepfe input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.bo-ein-foto__liste { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.bo-ein-foto__bild {
+  position: relative; width: 96px; display: grid; gap: 6px;
+  animation: bo-neu var(--bo-dur-feder-kurz) var(--bo-feder) both;
+}
+@media (prefers-reduced-motion: reduce) { .bo-ein-foto__bild { animation: bo-fade 120ms linear both; } }
+.bo-ein-foto__bild img, .bo-ein-foto__ph {
+  width: 96px; height: 96px; object-fit: cover; border-radius: 16px; background: var(--color-bo-surface-2); box-shadow: var(--bo-sh-btn);
+}
+.bo-ein-foto__bild[data-zustand="sendet"] img { opacity: 0.7; }
+.bo-ein-foto__weg { position: absolute; top: -8px; right: -8px; }
+.bo-ein-foto__status { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-ein-foto__status[data-zustand="gesendet"] { color: var(--color-bo-salbei-text); }
+.bo-ein-foto__status[data-zustand="fehler"] { color: var(--color-bo-danger-text); }
+.bo-ein-foto__erneut { font: inherit; font-size: 12px; font-weight: 600; color: var(--color-bo-danger-text); text-align: left; text-decoration: underline; text-underline-offset: 2px; min-height: 24px; }
+.bo-ein-foto__zeit { font-size: 12px; color: var(--color-bo-text-faint); }
+.bo-ein-dreht { animation: bo-ein-drehen 1.1s linear infinite; }
+@keyframes bo-ein-drehen { to { rotate: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .bo-ein-dreht { animation: none; } }

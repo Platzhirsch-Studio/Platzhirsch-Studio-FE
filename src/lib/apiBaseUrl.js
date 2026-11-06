@@ -1,4 +1,5 @@
 // lib/apiBaseUrl.js
+import { katalogFileServer } from "./backend/katalog.js";
 
 // API Configuration from environment variables
 const SERVER = process.env.SERVER;
@@ -23,12 +24,17 @@ export const API_BASE_URL = `${SERVER}/api/method/`;
 // request is ever sent to the production backoffice by accident.
 // A different instance (e.g. the dev backoffice) is set explicitly via SERVER.
 export const DEFAULT_BACKOFFICE = "https://backoffice.platzhirsch.studio";
-export const NEW_API_SERVER = (SERVER || DEFAULT_BACKOFFICE).replace(/\/+$/, "");
+// Alt-Server des Katalogs (heute). NEW_API_BASE_URL bleibt immer darauf –
+// die ph-Methodenpfade baut src/lib/backend/katalog.js selbst.
+const ALT_API_SERVER = (SERVER || DEFAULT_BACKOFFICE).replace(/\/+$/, "");
+// Dateien (/cmx-Proxy, Bildgrößen): bei BACKEND_GENERATION=ph für die Gruppe
+// "katalog" vom ph-Server (BACKEND_PH_URL), sonst unverändert ALT_API_SERVER.
+export const NEW_API_SERVER = katalogFileServer(ALT_API_SERVER);
 if (!SERVER && process.env.NODE_ENV === "production" && process.env.NEXT_PHASE === "phase-production-build") {
   // Loud, once per build worker – not silent.
   console.warn(`[apiBaseUrl] SERVER is not set: product/brand data is read from the documented default ${DEFAULT_BACKOFFICE}. Set SERVER for any other backoffice.`);
 }
-export const NEW_API_BASE_URL = `${NEW_API_SERVER}/api/method/`;
+export const NEW_API_BASE_URL = `${ALT_API_SERVER}/api/method/`;
 
 // WRITING endpoints (R5, r5-technik P1-1): never the documented default above.
 // The newsletter used NEW_API_BASE_URL, so a dev server or a test without

@@ -388,6 +388,37 @@ export const MULTILINGUAL_PAGES = [
       llms: "Planning of bathrooms, private spas, hot tubs and heated loungers by hand and in 3D, delivery and installation with the trades; brands Agape, Dornbracht, antoniolupi, Starpool, Soleum, Fabio Alemanno, Aquavia Spa, Naggura; no prices online.",
     },
   },
+  // Kundenkarte (Inhaber 04.11.2026, Stufe 1 ohne Geldwert): alle vier Sprachen
+  // unter demselben Pfad, index,follow, hreflang reziprok. /kundenkarte/bedingungen
+  // (Entwurf, noindex) und /kundenkarte/bestaetigen (noindex) bleiben draußen.
+  // Keine Nachlässe, kein Guthaben, keine Schwellen in Euro (src/lib/kundenkarte/copy.js).
+  {
+    path: "/kundenkarte",
+    kind: "leistung",
+    label: "Kundenkarte: Leistungen statt Punkte",
+    lastModified: "2026-11-04",
+    locales: ["de", "en", "fr", "it"],
+    llms: "Die Platzhirsch Kundenkarte ohne Guthaben und Punkte: persönlicher Berater, Produktpass und Garantiefristen im Portal, Pflege-Service, Lieferung und Montage je nach Stufe, Einladungen vor der öffentlichen Ankündigung; Anmeldung mit Bestätigung per E-Mail.",
+    en: {
+      label: "Customer card: services instead of points",
+      llms: "The Platzhirsch customer card without credit or points: personal advisor, product passport and warranty periods in the portal, care service, delivery and installation depending on the tier, invitations before the public announcement; sign-up with e-mail confirmation.",
+    },
+  },
+  // Reklamation melden (04.11.2026): alle vier Sprachen unter demselben Pfad, index,follow.
+  // Die Link-Seiten /newsletter/bestaetigen, /newsletter/abmelden und
+  // /adventsabend/absagen sind noindex und bleiben draußen.
+  {
+    path: "/service/reklamation",
+    kind: "leistung",
+    label: "Reklamation melden",
+    lastModified: "2026-11-04",
+    locales: ["de", "en", "fr", "it"],
+    llms: "Formular für Reklamationen zu Produkten von Platzhirsch Home Living: Mangel, Transportschaden, Montagefehler, Garantiefall oder Pflegefrage melden, mit Bestell- oder Projektnummer; das Team prüft den Fall und meldet sich.",
+    en: {
+      label: "Report a complaint",
+      llms: "Form for complaints about products from Platzhirsch Home Living: report a defect, transport damage, installation fault, warranty case or care question, with order or project number; the team reviews the case and gets back to you.",
+    },
+  },
 ];
 
 /**

@@ -1,0 +1,232 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Protokoll je Stripe-Terminal-Zahlung (PaymentIntent): Start, Status, Abbruch/Zeitüberschreitung, Beleg, Rückerstattung. Grundlage für den Klärfall „Kartenzahlung ohne Beleg“ (UX-Kritik 20 Z3).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "payment_intent",
+  "status",
+  "kasse",
+  "terminal",
+  "betrag_cent",
+  "bediener",
+  "gestartet_am",
+  "beendet_am",
+  "stripe_status",
+  "beleg",
+  "refund",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "payment_intent",
+   "fieldtype": "Data",
+   "label": "PaymentIntent",
+   "read_only": 1,
+   "unique": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Gestartet\nBezahlt\nAbgebrochen\nZeitueberschreitung\nFehlgeschlagen\nVerbucht\nErstattet",
+   "default": "Gestartet",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kasse",
+   "fieldtype": "Link",
+   "options": "PH Kasse",
+   "label": "Kasse",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "terminal",
+   "fieldtype": "Link",
+   "options": "PH Terminal",
+   "label": "Terminal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag (Cent)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "bediener",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Bediener",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gestartet_am",
+   "fieldtype": "Datetime",
+   "label": "Gestartet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "beendet_am",
+   "fieldtype": "Datetime",
+   "label": "Beendet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stripe_status",
+   "fieldtype": "Data",
+   "label": "Stripe-Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "beleg",
+   "fieldtype": "Link",
+   "options": "PH Kassenbeleg",
+   "label": "Kassenbeleg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "refund",
+   "fieldtype": "Data",
+   "label": "Stripe Refund",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Kassa",
+ "name": "PH Terminal Vorgang",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "hash",
+ "in_create": 1,
+ "title_field": "titel",
+ "search_fields": "payment_intent,kasse,status",
+ "states": [
+  {
+   "title": "Gestartet",
+   "color": "Blue"
+  },
+  {
+   "title": "Bezahlt",
+   "color": "Orange"
+  },
+  {
+   "title": "Abgebrochen",
+   "color": "Gray"
+  },
+  {
+   "title": "Zeitueberschreitung",
+   "color": "Gray"
+  },
+  {
+   "title": "Fehlgeschlagen",
+   "color": "Red"
+  },
+  {
+   "title": "Verbucht",
+   "color": "Green"
+  },
+  {
+   "title": "Erstattet",
+   "color": "Purple"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kassa Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kassa Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ]
+}

@@ -5,7 +5,8 @@ Status-Lebenslauf (Workflow „PH Termin“ + Website-API ph_crm.api.termin):
   Unbestaetigt | Bestaetigt → Storniert (Kunde über API, Mitarbeiter)
   Unbestaetigt → Abgelehnt (Leitung, oder Scheduler nach abgelaufener Reservierung)
 Buttons (ph_termin.js): Bestätigen, Absagen (Mail), Umbuchen (Dialog), Meet-Link erzeugen,
-Erledigt + Gesprächsprotokoll, Nicht erschienen, Kontakt anlegen.
+Erledigt + Gesprächsprotokoll, Nicht erschienen (→ Aufgabe R4), Wieder bestätigen (Leitung), Kontakt anlegen,
+Terminserie anlegen/stornieren (Wartung, Folgetermine Planung, wöchentliche Baubesprechung).
 """
 
 import hashlib
@@ -233,6 +234,10 @@ class PHTermin(Document):
         self.add_comment("Info", _("Umgebucht von {0} auf {1}").format(frappe.format(alt, {"fieldtype": "Datetime"}), frappe.format(self.start, {"fieldtype": "Datetime"})))
         if self.kundenmail == "backoffice":
             self.mail_senden(einstellungen()["vorlage_bestaetigung"])
+        elif self.kundenmail == "website":
+            # Website verschickt ihre Mails selbst: Frappe-Webhook (Bedingung doc.website_benachrichtigen) stößt sie an
+            self.db_set("website_benachrichtigen", 1, update_modified=False)
+            self.add_comment("Info", _("Website-Mail zur Umbuchung angefordert."))
         return self.antwort()
 
     @frappe.whitelist()
@@ -255,6 +260,9 @@ class PHTermin(Document):
             frappe.throw(_("Nur bestätigte Termine können erledigt werden."))
         status_setzen(self, "Erledigt", _("Termin erledigt"), erledigt_am=now_datetime())
         self.event_setzen(status="Completed")
+        from ph_crm.ph_crm.kontakt360 import letzter_kontakt_setzen
+
+        letzter_kontakt_setzen(self.kontakt, self.start or now_datetime(), "Termin")
         if not int(protokoll or 0):
             return None
         if not self.kontakt:
@@ -279,7 +287,84 @@ class PHTermin(Document):
             frappe.throw(_("Nur bestätigte Termine können als „Nicht erschienen“ markiert werden."))
         status_setzen(self, "Nicht erschienen", _("Kunde nicht erschienen"), storno_grund=grund or _("nicht erschienen"))
         self.event_setzen(status="Closed")
+        self.no_show_aufgabe()
         return "Nicht erschienen"
+
+    def no_show_aufgabe(self):
+        """R4: Aufgabe „anrufen, neuen Termin anbieten“ (+1 Tag) an Berater; einmal je Termin."""
+        try:
+            if not einstellungen().get("auto_no_show", 1):
+                return None
+            if frappe.db.exists("PH Aufgabe", {"referenz_doctype": self.doctype, "referenz_name": self.name, "quelle": "scheduler"}):
+                return None
+            from frappe.utils import add_days, nowdate
+
+            name = " ".join(x for x in (self.vorname, self.nachname) if x) or self.referenz
+            return frappe.get_doc({"doctype": "PH Aufgabe", "titel": _("No-Show {0}: anrufen, neuen Termin anbieten").format(name)[:140], "faellig": add_days(nowdate(), 1), "prioritaet": "Hoch", "zugewiesen_an": self.berater or einstellungen()["leitung_user"], "referenz_doctype": self.doctype, "referenz_name": self.name, "kontakt": self.kontakt, "quelle": "scheduler"}).insert(ignore_permissions=True).name
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title=f"PH Termin {self.name}: No-Show-Aufgabe fehlgeschlagen")
+            return None
+
+    @frappe.whitelist()
+    def wieder_bestaetigen(self, grund=None):
+        """Rückweg „Nicht erschienen → Bestätigt“ (Fehlbedienung; Leitung)."""
+        frappe.only_for(("System Manager", "PH CRM Leitung", "PH Backoffice-Admin"))
+        if self.status != "Nicht erschienen":
+            frappe.throw(_("Nur „Nicht erschienen“ kann zurückgesetzt werden."))
+        status_setzen(self, "Bestaetigt", _("Zurück auf Bestätigt: {0}").format(grund or _("Fehlbedienung")), storno_grund=None)
+        self.event_setzen(status="Open")
+        return "Bestaetigt"
+
+    # ── Terminserie ─────────────────────────────────────────────────────────
+
+    @frappe.whitelist()
+    def serie_anlegen(self, intervall, anzahl=None, bis=None):
+        """Folgetermine im Intervall anlegen (gleicher Kunde, Berater, Modus, Dauer). Kollisionen werden
+        übersprungen und gemeldet; Termine sind Backoffice-Termine (keine Website-Links)."""
+        self.check_permission("write")
+        from ph_crm.utils.pipeline import serien_starts
+
+        if self.status not in AKTIV:
+            frappe.throw(_("Serie nur aus offenen Terminen."))
+        try:
+            starts = serien_starts(get_datetime(self.start), intervall, anzahl=int(anzahl) if anzahl else None, bis=bis)
+        except ValueError as e:
+            frappe.throw(_("Serie ungültig: {0}").format(e))
+        serie = self.serie or ("S-" + frappe.generate_hash(length=8).upper())
+        regel = f"{intervall}" + (f" ×{anzahl}" if anzahl else f" bis {bis}")
+        if not self.serie:
+            self.db_set({"serie": serie, "serie_regel": regel, "serie_nummer": 1}, update_modified=False)
+        nummer = int(frappe.db.count("PH Termin", {"serie": serie}) or 1)
+        angelegt, konflikte = [], []
+        for start in starts[1:]:
+            grund = kollision_pruefen(self.terminart, start, int(self.dauer_min or 60), self.berater)
+            if grund:
+                konflikte.append({"start": iso(start), "grund": grund})
+                continue
+            nummer += 1
+            neu = frappe.get_doc({
+                "doctype": "PH Termin", "terminart": self.terminart, "modus": self.modus, "thema": self.thema,
+                "start": start, "dauer_min": self.dauer_min, "berater": self.berater, "kontakt": self.kontakt,
+                "anfrage": self.anfrage, "anrede": self.anrede, "vorname": self.vorname, "nachname": self.nachname,
+                "email": self.email, "telefon": self.telefon, "plz_ort": self.plz_ort, "sprache": self.sprache,
+                "anliegen": self.anliegen, "quelle": "backoffice", "kundenmail": "backoffice",
+                "status": self.status, "email_verifiziert": 1, "einwilligung_video": self.einwilligung_video,
+                "serie": serie, "serie_regel": regel, "serie_nummer": nummer,
+            }).insert()
+            angelegt.append(neu.name)
+        self.add_comment("Info", _("Terminserie {0}: {1} Folgetermine angelegt, {2} Konflikte.").format(serie, len(angelegt), len(konflikte)))
+        return {"serie": serie, "angelegt": angelegt, "konflikte": konflikte}
+
+    @frappe.whitelist()
+    def serie_stornieren(self, grund=None, mail=0):
+        """Alle offenen Termine der Serie ab diesem Termin stornieren."""
+        self.check_permission("write")
+        if not self.serie:
+            frappe.throw(_("Termin gehört zu keiner Serie."))
+        namen = frappe.get_all("PH Termin", filters={"serie": self.serie, "status": ("in", list(AKTIV)), "start": (">=", self.start)}, pluck="name", order_by="start asc")
+        for name in namen:
+            frappe.get_doc("PH Termin", name).absagen(grund=grund or _("Serie beendet"), mail=mail)
+        return namen
 
     @frappe.whitelist()
     def kontakt_anlegen(self):
@@ -294,6 +379,24 @@ class PHTermin(Document):
         if self.anfrage and not frappe.db.get_value("PH Anfrage", self.anfrage, "kontakt"):
             frappe.db.set_value("PH Anfrage", self.anfrage, "kontakt", name)
         return name
+
+
+def kollision_pruefen(terminart, start, dauer_min, berater=None, ausser=None):
+    """Nur Belegung/Schließtage prüfen (ohne Horizont/Vorlauf/Verfügbarkeit – für Backoffice-Serien und
+    Leitungs-Termine). → Grund (str) oder None. Sperrt die Zeilen bis zum Commit."""
+    from ph_crm.ph_crm.doctype.ph_termin_einstellungen.ph_termin_einstellungen import ist_geschlossen
+    from ph_crm.ph_crm.kalender import _belegt_fuer, belegungen, event_belegungen, terminart_laden
+    from ph_crm.utils.slots import ueberlappt
+
+    if ist_geschlossen(start.date()):
+        return _("Studio geschlossen / Feiertag")
+    art = terminart_laden(terminart, aktiv_pflicht=False)
+    regel = art.regel()
+    block = (start - timedelta(minutes=int(regel.anfahrt_min or 0)), start + timedelta(minutes=int(dauer_min or regel.dauer_min or 60)) + timedelta(minutes=int(regel.puffer_min or 0)))
+    alle = belegungen(block[0], block[1], ausser=ausser, for_update=True) + event_belegungen(block[0], block[1], [berater] if berater else [])
+    if any(ueberlappt(block, x) for x in _belegt_fuer(berater, alle)):
+        return _("Zeit bereits belegt")
+    return None
 
 
 def maskiere_email(email):

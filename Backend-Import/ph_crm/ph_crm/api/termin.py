@@ -5,7 +5,8 @@ src/lib/booking/adapters/frappe.js und Spec Marktresearch/digital/features/onlin
   GET  get_freie_slots(terminart, modus, von, bis, berater?, zeitzone)      → [{start, ende, berater:[…]}]
   POST create_termin(terminart, modus, thema, start, zeitzone, vorname, nachname, email, telefon,
                      plz_ort, anliegen, sprache, einwilligung_video, einwilligung_text_version,
-                     verify_hash, link_version, kundenmail, quelle, idempotency_key)
+                     verify_hash, link_version, kundenmail, quelle, idempotency_key,
+                     utm_source, utm_medium, utm_campaign, utm_term, utm_content, klick_id)
                                                                             → Termin (Unbestaetigt, reserviert_bis)
   POST verify_termin(referenz, verify_hash)                                 → Termin (+ bereits_bestaetigt)
   GET  get_termin(referenz)                                                 → Termin (mit E-Mail: Server-Aufrufer)
@@ -129,6 +130,10 @@ def create_termin(**d):
     _email_rate_limit(email)
     start = _start_parsen(d.get("start"))
     e = einstellungen()
+    from ph_crm.utils.pipeline import utm_aus_herkunft
+
+    # Kampagnenfelder nur, wenn die Website sie mit Einwilligung mitschickt (src/lib/forms/client.js withAttributionFields)
+    utm = {k: v or None for k, v in utm_aus_herkunft({}, d).items()}
 
     # Sperre + Kollisionsprüfung in einer Transaktion (SELECT … FOR UPDATE auf überlappende Termine).
     berater = slot_pruefen(art, modus, start, berater=d.get("berater") or None, for_update=True)
@@ -163,6 +168,7 @@ def create_termin(**d):
             "quelle": d.get("quelle") if d.get("quelle") in ("website", "agent") else "website",
             "zeitzone": text(d.get("zeitzone"), 40) or e["zeitzone"],
             "ip_hash": ip_hash(),
+            **utm,
         }
     )
     if not doc.verify_hash:

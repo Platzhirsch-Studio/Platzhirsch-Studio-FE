@@ -162,7 +162,7 @@ def create_order(**d): ...
 
 ## 14. Geheimnisse und Konfiguration
 
-Nur `frappe.conf.get("ph_…")` aus `site_config.json`. Schlüsselnamen: `ph_stripe_secret_key`, `ph_stripe_webhook_secret`, `ph_stripe_livemode`, `ph_stripe_terminal_location`, `ph_letmeship_api_id`, `ph_letmeship_api_password`, `ph_letmeship_env`, `ph_resend_api_key`, `ph_mail_from`, `ph_website_revalidate_url`, `ph_website_revalidate_secret`, `ph_kassa_aes_key_<kassen_id>`, `ph_atrust_user`, `ph_atrust_password`, `ph_atrust_env`. Fachliche Schalter in `PH <Bereich> Einstellungen` (Single). Testdaten in Fixtures sind als solche markiert (`beispiel: 1`) und nie Geld- oder Personendaten echter Personen.
+Nur `frappe.conf.get("ph_…")` aus `site_config.json`. Schlüsselnamen: `ph_stripe_secret_key`, `ph_stripe_webhook_secret`, `ph_stripe_livemode`, `ph_stripe_terminal_location`, `ph_letmeship_api_id`, `ph_letmeship_api_password`, `ph_letmeship_env`, `ph_resend_api_key`, `ph_resend_webhook_secret`, `ph_mail_from`, `ph_website_revalidate_url`, `ph_website_revalidate_secret`, `ph_kassa_aes_key_<kassen_id>`, `ph_atrust_user`, `ph_atrust_password`, `ph_atrust_env`. Fachliche Schalter in `PH <Bereich> Einstellungen` (Single). Testdaten in Fixtures sind als solche markiert (`beispiel: 1`) und nie Geld- oder Personendaten echter Personen.
 
 ## 15. Tests
 

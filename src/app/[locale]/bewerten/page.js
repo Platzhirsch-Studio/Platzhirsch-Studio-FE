@@ -9,12 +9,23 @@
 // Design-Bibel: role tokens only (surface, text, action, line), no radius, no
 // shadow, sentence-case buttons (text-ui, no uppercase tracking), exactly one
 // filled button per view; the second path is `secondary` (1 px ink frame).
+//
+// Runde 2 (Bericht 60, „Website-Anbindung Runde 2“): Übersicht veröffentlichter
+// Bewertungen (ph_marketing.api.get_bewertungen, kurz gecacht; alt/ohne Zugang:
+// Leerzustand, nichts Erfundenes) und – nur mit Gruppe "bewertung" auf ph und
+// Zugang – das direkte Bewertungsformular (create_bewertung über
+// /de/bewerten/senden). Beides steht NACH dem Google-Link; alle sehen dieselben
+// Wege, unabhängig von der Sternezahl.
 import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { EMAIL, EMAIL_HREF, GBP, PHONE_DISPLAY, PHONE_HREF, SITE_NAME, SITE_URL } from "@/lib/site";
 import ReviewNotice from "@/components/Legal/ReviewNotice";
 import ReviewLink from "./ReviewLink";
 import { ogLocale } from "@/lib/seo/pageMetadata";
+import BewertungForm from "@/components/Bewerten/BewertungForm";
+import BewertungListe from "@/components/Bewerten/BewertungListe";
+import { bewertungFormAvailable, loadBewertungen } from "@/lib/bewertungen/backend";
+import { bewertungCopy } from "@/lib/bewertungen/copy";
 
 // Review link from src/lib/site.js (GBP.reviewUrl, one source for page, QR
 // card and mails). Until the Place-ID is entered there, it is the profile cid
@@ -53,9 +64,17 @@ const btnPrimary = `${btnBase} bg-action text-text-inverse hover:bg-action-hover
 const btnSecondary = `${btnBase} border border-action text-text hover:bg-action hover:text-text-inverse`;
 const inlineLink = "underline underline-offset-4 decoration-line-strong hover:decoration-text";
 
-export default async function BewertenPage({ params }) {
+export default async function BewertenPage({ params, searchParams }) {
   const { locale } = await params;
+  // Quelle der Bewertung: Mail-Links tragen utm_source=email (src/lib/kundenbetreuung/reisen.js),
+  // die QR-Karte im Showroom zeigt auf die nackte URL /de/bewerten.
+  const sp = (await searchParams) || {};
+  const utm = String(sp.utm_source || "").toLowerCase();
+  const quelle = utm === "email" ? "mail" : utm ? "direkt" : "qr";
   if (locale !== "de") notFound();
+  const c = bewertungCopy(locale);
+  const formular = bewertungFormAvailable();
+  const liste = await loadBewertungen();
 
   return (
     <div className="bg-surface text-text">
@@ -95,6 +114,32 @@ export default async function BewertenPage({ params }) {
       <div className="px-gutter" aria-hidden="true">
         <div className="mx-auto h-px max-w-page bg-line-strong" />
       </div>
+
+      <section aria-labelledby="bw-liste" className="px-gutter py-section">
+        <div className="mx-auto grid max-w-page gap-x-grid lg:grid-cols-12">
+          <div className="lg:col-span-7 lg:col-start-2">
+            <BewertungListe data={liste} locale={locale} headingId="bw-liste" />
+          </div>
+        </div>
+      </section>
+
+      <div className="px-gutter" aria-hidden="true">
+        <div className="mx-auto h-px max-w-page bg-line-strong" />
+      </div>
+
+      {formular && (
+        <section aria-labelledby="bw-formular" className="px-gutter py-section" data-bewertung-bereich>
+          <div className="mx-auto grid max-w-page gap-x-grid lg:grid-cols-12">
+            <div className="lg:col-span-7 lg:col-start-2">
+              <h2 id="bw-formular" className="font-display text-display-m">
+                {c.formTitle}
+              </h2>
+              <p className="mt-stack-m mb-stack-m max-w-measure text-body">{c.formIntro}</p>
+              <BewertungForm locale={locale} copy={c} phone={PHONE_DISPLAY} email={EMAIL} quelle={quelle} />
+            </div>
+          </div>
+        </section>
+      )}
 
       <section aria-labelledby="bw-direkt" className="px-gutter py-section">
         <div className="mx-auto grid max-w-page gap-x-grid lg:grid-cols-12">

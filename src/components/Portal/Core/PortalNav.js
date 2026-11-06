@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Box, CalendarDays, Droplet, FileText, Hammer, House, Menu, MessageCircle, PencilRuler, Ruler, ShieldCheck, X } from "lucide-react";
+import { Box, CalendarDays, CreditCard, Droplet, FileText, Hammer, House, Menu, MessageCircle, PencilRuler, Ruler, ShieldCheck, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { tx } from "@/lib/portal/i18n";
 import { PORTAL_CTA, PORTAL_NAV, isActive, navLabel } from "./navItems";
 
-const ICONS = { home: House, projects: Ruler, documents: FileText, calendar: CalendarDays, messages: MessageCircle, pass: ShieldCheck, trades: Hammer, plan: PencilRuler, room: Box, care: Droplet };
+const ICONS = { home: House, projects: Ruler, documents: FileText, calendar: CalendarDays, messages: MessageCircle, pass: ShieldCheck, trades: Hammer, plan: PencilRuler, room: Box, care: Droplet, card: CreditCard };
 const focus = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold";
 
 // R6: Is the consent bar open? Cookies/cookiecomponent.js publishes its height

@@ -7,8 +7,15 @@ frappe.ui.form.on("PH Zahlung", {
 		frm.page.clear_indicator();
 		if (frm.doc.status) frm.page.set_indicator(__(frm.doc.status), FARBEN_ZAHLUNG[frm.doc.status] || "gray");
 		if (!frm.doc.livemode && frm.doc.kanal && frm.doc.kanal.startsWith("Stripe")) frm.dashboard.set_headline_alert(__("Stripe-Testzahlung (livemode = 0)."), "orange");
+		if (frm.doc.radar_markiert) frm.dashboard.set_headline_alert(__("Stripe Radar: erhöhtes Risiko ({0}, Wert {1}).", [frappe.utils.escape_html(frm.doc.radar_risk_level || "–"), frm.doc.radar_risk_score ?? "–"]), "red");
+		if (frm.doc.dispute_id) frm.dashboard.set_headline_alert(__("Zahlungsstreit {0}: {1} · {2} · Antwort bis {3}", [frappe.utils.escape_html(frm.doc.dispute_id), frappe.utils.escape_html(frm.doc.dispute_status || "–"), euroZ(frm.doc.dispute_betrag_cent), frm.doc.dispute_frist ? frappe.datetime.str_to_user(frm.doc.dispute_frist) : "–"]), "red");
+		const leitungAnk = frappe.user.has_role(["PH Shop Leitung", "PH Geschäftsführung", "System Manager", "PH Faktura Leitung", "PH Kassa Leitung"]);
+		if (!frm.is_new() && frm.doc.docstatus === 0 && frm.doc.status === "Angekuendigt" && leitungAnk) {
+			frm.add_custom_button(__("Ankündigung stornieren"), () => frappe.prompt({ fieldname: "grund", fieldtype: "Data", label: __("Grund"), reqd: 1 }, (v) => frm.call({ method: "ankuendigung_stornieren", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Stornieren")), __("Aktionen"));
+		}
+		if (!frm.is_new() && frm.doc.radar_markiert && !frm.doc.radar_geprueft_von) frm.add_custom_button(__("Risiko geprüft"), () => frm.call({ method: "radar_geprueft", doc: frm.doc }).then(() => frm.reload_doc()), __("Aktionen"));
 		if (frm.is_new() || frm.doc.docstatus !== 1) return;
-		const offen = (frm.doc.betrag_cent || 0) - (frm.doc.erstattet_cent || 0);
+		const offen =(frm.doc.betrag_cent || 0) - (frm.doc.erstattet_cent || 0);
 		const leitung = frappe.user.has_role(["PH Shop Leitung", "PH Geschäftsführung", "System Manager", "PH Faktura Leitung", "PH Kassa Leitung"]);
 		const gf = frappe.user.has_role(["PH Geschäftsführung", "System Manager"]);
 

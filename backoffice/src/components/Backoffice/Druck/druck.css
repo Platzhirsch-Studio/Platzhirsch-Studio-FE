@@ -1,0 +1,107 @@
+/* Druckpanel (G-17, Team P0-5c) im Lounge-Stil: Leuchttisch (eingelassene Fläche) mit Papier darauf.
+   Nur Token aus globals.css. Papier bleibt in beiden Schemata weiß – es ist Papier (wie Vorschau am Mac). */
+
+dialog.bo-ov-sheet.bo-druck-sheet { --bo-ov-breite: 800px !important; }
+
+.bo-druck-tisch {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border-radius: 20px;
+  corner-shape: superellipse(1.35);
+  background: var(--color-bo-surface-2);
+  box-shadow: inset 0 0 0 0.5px var(--color-bo-line);
+  padding: 24px;
+  scrollbar-gutter: stable;
+}
+.bo-druck-tisch:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--color-bo-focus); }
+
+.bo-druck-papier {
+  position: relative;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 4px;
+  background: white; /* Papierweiß in beiden Schemata – es ist Papier */
+  box-shadow: 0 0 0 0.5px rgb(60 46 30 / 0.12), 0 2px 6px rgb(60 46 30 / 0.08), 0 18px 40px rgb(60 46 30 / 0.12);
+  transition: width var(--bo-dauer-weich, 420ms) var(--ease-feder-weich, cubic-bezier(0.22, 1, 0.36, 1)),
+    height var(--bo-dauer-weich, 420ms) var(--ease-feder-weich, cubic-bezier(0.22, 1, 0.36, 1));
+}
+.bo-druck-papier iframe {
+  display: block;
+  border: 0;
+  transform-origin: 0 0;
+  background: white;
+}
+.bo-druck-papier[data-pdf="true"] { width: 100% !important; height: 100% !important; min-height: 70dvh; border-radius: 12px; }
+.bo-druck-papier[data-pdf="true"] iframe { width: 100%; height: 100%; min-height: 70dvh; transform: none; }
+
+/* Skeleton in Papierform (erst nach 300 ms sichtbar, Q-E3), Schimmer 1,2 s, bei reduzierter Bewegung statisch. */
+.bo-druck-skelett {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 9% 9%;
+  background: white;
+  opacity: 0;
+  animation: bo-druck-sichtbar 1ms linear 300ms forwards;
+}
+.bo-druck-skelett span {
+  display: block;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgb(48 55 62 / 0.07) 0%, rgb(48 55 62 / 0.03) 50%, rgb(48 55 62 / 0.07) 100%);
+  background-size: 200% 100%;
+  animation: bo-druck-schimmer 1.2s linear infinite;
+}
+.bo-druck-skelett span:nth-child(1) { width: 34%; height: 14px; }
+.bo-druck-skelett span:nth-child(2) { width: 22%; margin-bottom: 18px; }
+.bo-druck-skelett span:nth-child(3n) { width: 86%; }
+.bo-druck-skelett span:nth-child(3n + 1) { width: 72%; }
+@keyframes bo-druck-sichtbar { to { opacity: 1; } }
+@keyframes bo-druck-schimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+/* Format-Chips für den Sammeldruck: Fläche statt Rahmen, gewählt = Tinte-Häkchen. */
+.bo-druck-chip {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 0 14px 0 10px;
+  background: var(--color-bo-fill);
+  color: var(--color-bo-text-soft);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 160ms ease, color 160ms ease, transform 80ms ease;
+}
+.bo-druck-chip:hover { background: var(--color-bo-fill-2); color: var(--color-bo-text); }
+.bo-druck-chip:active { transform: scale(0.97); }
+.bo-druck-chip:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-druck-chip[aria-pressed="true"] { background: var(--color-bo-surface); color: var(--color-bo-text); box-shadow: var(--bo-sh-btn); }
+.bo-druck-chip__haken {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px var(--color-bo-line-strong);
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+.bo-druck-chip[aria-pressed="true"] .bo-druck-chip__haken { background: var(--color-bo-text); box-shadow: none; color: var(--color-bo-surface); }
+
+@media (pointer: coarse) {
+  .bo-druck-chip { min-height: 44px; }
+}
+@media (max-width: 639px) {
+  .bo-druck-tisch { padding: 12px; border-radius: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bo-druck-papier { transition: none; }
+  .bo-druck-skelett { animation: none; opacity: 1; }
+  .bo-druck-skelett span { animation: none; }
+}

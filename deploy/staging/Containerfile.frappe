@@ -1,0 +1,106 @@
+# deploy/staging/Containerfile.frappe – Frappe v15 (ohne ERPNext) mit den 12 PH-Apps als lokale Apps.
+#
+# Muster: frappe_docker "layered" (images/layered/Containerfile): Builder = frappe/build, Laufzeit = frappe/base.
+# Build-Kontext ist das REPO-ROOT, damit Backend-Import/ph_* kopiert werden kann:
+#   docker build -f deploy/staging/Containerfile.frappe -t platzhirsch/frappe-ph:staging .
+# Die Datei Containerfile.frappe.dockerignore (gleicher Ordner) begrenzt den Kontext auf Backend-Import/ph_*
+# (BuildKit sucht "<Dockerfile>.dockerignore" neben dem Dockerfile).
+#
+# Build-Argumente:
+#   FRAPPE_BRANCH   version-15 (Pflicht laut Backend-Import/CONVENTIONS.md, kein v16-only)
+#   PH_DEV_TOOLS    1 = Testwerkzeuge (JUnit-Ausgabe von run-tests usw.) – Staging; 0 = Produktion
+#   PH_WALLET       1 = optionale Abhängigkeit ph_kundenkarte[wallet] (cryptography) mitinstallieren
+
+ARG FRAPPE_BRANCH=version-15
+
+# ---------------------------------------------------------------- Builder
+FROM frappe/build:${FRAPPE_BRANCH} AS builder
+
+ARG FRAPPE_BRANCH=version-15
+ARG FRAPPE_PATH=https://github.com/frappe/frappe
+ARG PH_DEV_TOOLS=1
+ARG PH_WALLET=1
+
+USER frappe
+WORKDIR /home/frappe
+
+# 1) Bench mit Frappe v15 (kein ERPNext).
+RUN bench init \
+      --frappe-branch=${FRAPPE_BRANCH} \
+      --frappe-path=${FRAPPE_PATH} \
+      --no-procfile \
+      --no-backups \
+      --skip-redis-config-generation \
+      --verbose \
+      /home/frappe/frappe-bench \
+ && cd /home/frappe/frappe-bench \
+ && echo "{}" > sites/common_site_config.json
+
+WORKDIR /home/frappe/frappe-bench
+
+# 2) Unsere Apps als lokale Apps. Reihenfolge = Installationsreihenfolge (Backend-Import/README.md §2).
+#    Statt "bench get-app <pfad>" (braucht ein Git-Repo bzw. kopiert je nach Bench-Version unterschiedlich)
+#    machen wir dasselbe von Hand: Ordner nach apps/, pip install -e (liest pyproject.toml inkl.
+#    dependencies: stripe, cryptography, qrcode …), Eintrag in sites/apps.txt.
+COPY --chown=frappe:frappe Backend-Import/ph_core        apps/ph_core
+COPY --chown=frappe:frappe Backend-Import/ph_crm         apps/ph_crm
+COPY --chown=frappe:frappe Backend-Import/ph_sortiment   apps/ph_sortiment
+COPY --chown=frappe:frappe Backend-Import/ph_projekte    apps/ph_projekte
+COPY --chown=frappe:frappe Backend-Import/ph_shop        apps/ph_shop
+COPY --chown=frappe:frappe Backend-Import/ph_faktura     apps/ph_faktura
+COPY --chown=frappe:frappe Backend-Import/ph_logistik    apps/ph_logistik
+COPY --chown=frappe:frappe Backend-Import/ph_personal    apps/ph_personal
+COPY --chown=frappe:frappe Backend-Import/ph_marketing   apps/ph_marketing
+COPY --chown=frappe:frappe Backend-Import/ph_kassa       apps/ph_kassa
+COPY --chown=frappe:frappe Backend-Import/ph_service     apps/ph_service
+COPY --chown=frappe:frappe Backend-Import/ph_kundenkarte apps/ph_kundenkarte
+
+ENV PH_APPS="ph_core ph_crm ph_sortiment ph_projekte ph_shop ph_faktura ph_logistik ph_personal ph_marketing ph_kassa ph_service ph_kundenkarte"
+
+RUN set -eux; \
+    for app in $PH_APPS; do \
+      test -f "apps/$app/pyproject.toml"; \
+      if [ "$app" = "ph_kundenkarte" ] && [ "$PH_WALLET" = "1" ]; then \
+        env/bin/pip install --no-cache-dir -e "apps/$app[wallet]"; \
+      else \
+        env/bin/pip install --no-cache-dir -e "apps/$app"; \
+      fi; \
+    done; \
+    # Abhängigkeiten aus Backend-Import/README.md §1 ausdrücklich prüfen (pyqrcode kommt mit Frappe).
+    env/bin/python -c "import stripe, cryptography, qrcode, pyqrcode, requests; print('Python-Abhaengigkeiten ok')"; \
+    if [ "$PH_DEV_TOOLS" = "1" ]; then \
+      # bench run-tests --junit-xml-output braucht xmlrunner (unittest-xml-reporting), in v15 nur dev-dependency.
+      env/bin/pip install --no-cache-dir unittest-xml-reporting coverage Faker freezegun responses hypothesis; \
+    fi; \
+    # apps.txt: frappe zuerst, dann unsere Apps in Installationsreihenfolge.
+    printf '%s\n' frappe $PH_APPS > sites/apps.txt; \
+    cat sites/apps.txt
+
+# 3) Assets (ph_core: ph_desk.css; weitere Apps nur, falls public/ vorhanden).
+RUN bench build --production \
+ && find apps -mindepth 1 -path "*/.git" -prune -exec rm -rf {} + \
+ && find apps -name "__pycache__" -type d -prune -exec rm -rf {} +
+
+# ---------------------------------------------------------------- Laufzeit
+FROM frappe/base:${FRAPPE_BRANCH} AS backend
+
+USER frappe
+COPY --from=builder --chown=frappe:frappe /home/frappe/frappe-bench /home/frappe/frappe-bench
+WORKDIR /home/frappe/frappe-bench
+
+ENV PH_APPS="ph_core ph_crm ph_sortiment ph_projekte ph_shop ph_faktura ph_logistik ph_personal ph_marketing ph_kassa ph_service ph_kundenkarte"
+
+# sites/assets als eigenes (anonymes) Volume wie frappe_docker: nach einem neuen Image mit
+# "docker compose up -d --renew-anon-volumes" frische Assets.
+VOLUME ["/home/frappe/frappe-bench/sites", "/home/frappe/frappe-bench/sites/assets", "/home/frappe/frappe-bench/logs"]
+
+CMD ["/home/frappe/frappe-bench/env/bin/gunicorn", \
+     "--chdir=/home/frappe/frappe-bench/sites", \
+     "--bind=0.0.0.0:8000", \
+     "--threads=4", \
+     "--workers=2", \
+     "--worker-class=gthread", \
+     "--worker-tmp-dir=/dev/shm", \
+     "--timeout=120", \
+     "--preload", \
+     "frappe.app:application"]

@@ -1,0 +1,120 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Einkaufspreis eines Produkts beim Lieferanten mit Gültigkeit (Listen-EK, Rabatte, Netto-EK).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "lieferant",
+  "listen_cent",
+  "rabatt_promille",
+  "rabatt2_promille",
+  "netto_ek_cent",
+  "waehrung",
+  "ab",
+  "bis",
+  "quelle",
+  "preisliste",
+  "ausfuehrung",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "lieferant",
+   "fieldtype": "Link",
+   "label": "Lieferant",
+   "options": "PH Lieferant",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "listen_cent",
+   "fieldtype": "Int",
+   "label": "Listen-EK (Cent)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "rabatt_promille",
+   "fieldtype": "Int",
+   "label": "Rabatt 1 (Promille, 400 = 40 %)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "rabatt2_promille",
+   "fieldtype": "Int",
+   "label": "Rabatt 2 (Promille)"
+  },
+  {
+   "fieldname": "netto_ek_cent",
+   "fieldtype": "Int",
+   "label": "Netto-EK (Cent)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "ab",
+   "fieldtype": "Date",
+   "label": "Gültig ab",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "bis",
+   "fieldtype": "Date",
+   "label": "Gültig bis",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "Herstellerliste\nDataNorm\nIDM\nAngebot Lieferant\nManuell",
+   "default": "Manuell",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "preisliste",
+   "fieldtype": "Link",
+   "label": "Preisliste Import",
+   "options": "PH Preisliste Import"
+  },
+  {
+   "fieldname": "ausfuehrung",
+   "fieldtype": "Link",
+   "label": "Nur für Ausführung",
+   "options": "PH Produkt Ausfuehrung"
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Produkt Einkaufspreis",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

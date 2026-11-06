@@ -3,13 +3,14 @@
 // Heute: lokaler Entwicklungs-Speicher unter .data/dreilaender/ (gitignored)
 //   - config.json    optionale Freigabe/Überschreibung der Richtwerte (Schema: pricing.js)
 //   - ecb-last.json  zuletzt erfolgreich geladener EZB-Kurs (Fallback bei EZB-Ausfall)
-// Später: Frappe (backoffice.platzhirsch.studio), siehe
+// ph (Gruppe katalog): getConfig() aus ph_sortiment, siehe unten. Altes Backoffice:
 //   Marktresearch/digital/features/dreilaender-rechner.md → "Anbindung Frappe".
 //   getConfig()  → GET /api/resource/Dreilaender Rechner Einstellungen/Dreilaender Rechner Einstellungen
 //   saveLastRate → Doctype "Currency Exchange" (ERPNext-Standard, EUR→CHF)
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { DEFAULT_CONFIG, mergeConfig } from "./pricing";
+import { fetchPhWechselkurs } from "@/lib/backend/labs";
 
 const DIR = path.join(process.cwd(), ".data", "dreilaender");
 const CONFIG_FILE = path.join(DIR, "config.json");
@@ -32,7 +33,12 @@ async function writeJson(file, data) {
   }
 }
 
+// ph-Modus der Gruppe „katalog“: PH Wechselkurs Einstellungen über die Gast-Methode
+// ph_sortiment.api.get_wechselkurs_einstellungen (src/lib/backend/labs.js).
+// Nicht aktiv ({}), alt, ohne Zugang oder Fehler → heutiger Weg (config.json bzw. Vorgaben).
 export async function getConfig() {
+  const ph = await fetchPhWechselkurs(DEFAULT_CONFIG);
+  if (ph) return mergeConfig(DEFAULT_CONFIG, ph);
   const override = await readJson(CONFIG_FILE);
   return override ? mergeConfig(DEFAULT_CONFIG, override) : DEFAULT_CONFIG;
 }

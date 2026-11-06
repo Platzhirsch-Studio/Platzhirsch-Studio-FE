@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "@/lib/apiBaseUrl";
+import { karriereUrl } from "@/lib/backend/katalog";
 import { backofficeFetch } from "@/lib/api/http";
 import { mergeStellen } from "@/lib/karriere/stellen";
 import { generateSlug } from "../slugify";
@@ -10,7 +11,8 @@ import { generateSlug } from "../slugify";
 async function fetchBackofficeKarriere() {
   try {
     const response = await backofficeFetch(
-      `${API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.karriere.api.karriere_data`,
+      // alt: karriere.api.karriere_data, ph: ph_personal.api.karriere_data (gleiche Form).
+      karriereUrl(API_BASE_URL),
       {
         next: { revalidate: 3600, tags: ["career"] },
       }

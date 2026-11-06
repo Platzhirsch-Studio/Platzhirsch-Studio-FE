@@ -8,10 +8,10 @@ app_email = "info@platzhirsch.studio"
 app_license = "proprietary"
 required_apps = ["frappe", "ph_core", "ph_crm", "ph_sortiment", "ph_shop", "ph_faktura"]
 
-WORKFLOW_DOCTYPES = ["PH Lieferschein", "PH Sendung", "PH Tour", "PH Inventur"]
+WORKFLOW_DOCTYPES = ["PH Lieferschein", "PH Sendung", "PH Tour", "PH Inventur", "PH Speditionsauftrag", "PH Warenruecknahme"]
 WORKFLOW_STATES = [
     "PH Gepackt", "PH Uebergeben", "PH Zugestellt", "PH Angelegt", "PH Etikett", "PH Problem",
-    "PH Laufend", ]
+    "PH Laufend", "PH Angemeldet", ]
 WORKFLOW_ACTIONS = ["Zustellen", "Etikett erzeugen", "Problem melden", "Starten", "Zählung starten"]
 
 # Fixtures: nur eigene Datensätze, immer mit Filter. Export: bench --site <site> export-fixtures --app ph_logistik
@@ -20,7 +20,7 @@ fixtures = [
     {"dt": "Workflow", "filters": [["document_type", "in", WORKFLOW_DOCTYPES]]},
     {"dt": "Workflow State", "filters": [["name", "in", WORKFLOW_STATES]]},
     {"dt": "Workflow Action Master", "filters": [["name", "in", WORKFLOW_ACTIONS]]},
-    {"dt": "Kanban Board", "filters": [["reference_doctype", "in", ["PH Lieferschein", "PH Sendung", "PH Tour"]]]},
+    {"dt": "Kanban Board", "filters": [["reference_doctype", "in", ["PH Lieferschein", "PH Sendung", "PH Tour", "PH Speditionsauftrag"]]]},
     {"dt": "Print Format", "filters": [["module", "=", "PH Logistik"]]},
     {"dt": "Dashboard Chart", "filters": [["module", "=", "PH Logistik"]]},
     {"dt": "Number Card", "filters": [["module", "=", "PH Logistik"]]},
@@ -46,6 +46,9 @@ scheduler_events = {
         "15 */2 * * *": ["ph_logistik.ph_logistik.tasks.tracking_aktualisieren"],   # Tracking offener Sendungen alle 2 h
         "0 7 * * *": ["ph_logistik.ph_logistik.tasks.haengende_sendungen_melden"],   # 07:00 hängende Sendungen → Problem/Aufgabe
         "0 16 * * 1-5": ["ph_logistik.ph_logistik.tasks.touren_morgen_pruefen"],     # 16:00 Mo–Fr Touren für morgen prüfen
+        "30 6 * * *": ["ph_logistik.ph_logistik.lager.reservierungen_freigeben"],     # 06:30 abgelaufene Reservierungen freigeben
+        "45 5 * * *": ["ph_logistik.ph_logistik.nachbestellung.vorschlaege_erzeugen"],  # 05:45 Meldebestand → Nachbestellvorschläge
+        "15 7 * * 1": ["ph_logistik.ph_logistik.inventur_plan.abdeckung_pruefen"],     # Mo 07:15 Teilinventur-Plan prüfen (wenn aktiv)
     }
 }
 

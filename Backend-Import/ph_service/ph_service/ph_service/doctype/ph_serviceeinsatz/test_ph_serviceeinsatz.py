@@ -2,7 +2,7 @@
 
 import frappe
 from frappe.tests.utils import FrappeTestCase
-from frappe.utils import nowdate
+from frappe.utils import add_days, nowdate
 
 from ph_service.ph_service.doctype.ph_ersatzteil.ph_ersatzteil import buchen
 from ph_service.tests.helfer import einstellungen_fuer_tests, testfall
@@ -54,6 +54,45 @@ class TestPHServiceeinsatz(FrappeTestCase):
         einsatz = frappe.get_doc({"doctype": "PH Serviceeinsatz", "techniker": "Administrator", "datum": nowdate()})
         with self.assertRaises(frappe.ValidationError):
             einsatz.insert()
+
+    def test_umplanen_setzt_bestaetigung_zurueck(self):
+        fall = testfall()
+        einsatz = frappe.get_doc({"doctype": "PH Serviceeinsatz", "servicefall": fall.name, "techniker": "Administrator", "datum": nowdate(), "zeit_von": "09:00:00", "zeit_bis": "11:00:00"}).insert()
+        einsatz.bestaetigen()
+        einsatz.reload()
+        self.assertTrue(einsatz.bestaetigt_kunde_am)
+        einsatz.umplanen(datum=add_days(nowdate(), 3), zeit_von="13:00:00", zeit_bis="15:00:00", grund="Kunde verhindert")
+        einsatz.reload()
+        self.assertEqual(einsatz.status, "Geplant")
+        self.assertFalse(einsatz.bestaetigt_kunde_am)
+        self.assertTrue(einsatz.umgeplant_am)
+
+    def test_abbrechen_und_bestaetigung_ohne_unterschrift(self):
+        fall = testfall()
+        einsatz = frappe.get_doc({"doctype": "PH Serviceeinsatz", "servicefall": fall.name, "techniker": "Administrator", "datum": nowdate()}).insert()
+        with self.assertRaises(frappe.ValidationError):
+            einsatz.abbrechen(grund="")
+        einsatz.abbrechen(grund="Kunde sagt ab")
+        einsatz.reload()
+        self.assertEqual(einsatz.status, "Abgebrochen")
+        zweiter = frappe.get_doc({"doctype": "PH Serviceeinsatz", "servicefall": fall.name, "techniker": "Administrator", "datum": nowdate()}).insert()
+        with self.assertRaises(frappe.ValidationError):
+            zweiter.abschliessen(ergebnis="Behoben", bericht="ok", unterschrift_art="Name bestätigt", unterschrift_name="")
+        zweiter.reload()
+        zweiter.abschliessen(ergebnis="Behoben", bericht="ok", unterschrift_art="Name bestätigt", unterschrift_name="Anna Servicetest")
+        zweiter.reload()
+        self.assertEqual(zweiter.unterschrift_art, "Name bestätigt")
+        self.assertTrue(zweiter.unterschrift_am)
+
+    def test_freie_fenster_api(self):
+        from ph_service.api import get_technician_slots
+
+        fall = testfall()
+        frappe.get_doc({"doctype": "PH Serviceeinsatz", "servicefall": fall.name, "techniker": "Administrator", "datum": add_days(nowdate(), 30), "zeit_von": "08:00:00", "zeit_bis": "12:00:00"}).insert()
+        r = get_technician_slots(datum=add_days(nowdate(), 30), techniker="Administrator")
+        starts = [f["von"] for f in r["techniker"]["Administrator"]]
+        self.assertNotIn("09:00", starts)
+        self.assertIn("13:00", starts)
 
     def tearDown(self):
         frappe.db.rollback()

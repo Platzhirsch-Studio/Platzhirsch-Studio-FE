@@ -5,7 +5,7 @@ import { createHmac } from "node:crypto";
 import { brandOverview, listBrands, listCategories, productsInCategory, searchProducts } from "@/lib/concierge/catalog";
 import { fetchProduktNewByPathField } from "@/lib/api/fetchAllProdukte";
 import { dimensionsSummaryMap, parseDimensionTable } from "@/lib/shop/dimensions";
-import { forwardJson } from "@/lib/forms/forward";
+import { forwardInquiry } from "@/lib/backend/forms";
 import { createAdapter } from "./adapter";
 import { appointmentMode, secretFrom } from "./config";
 import { BACKOFFICE_URL, createUsedSet, createWebhookMailer } from "./appointment";
@@ -83,6 +83,7 @@ export function confirmContext() {
   return {
     secret: secretFrom(process.env),
     live,
-    forward: live ? (payload) => forwardJson(BACKOFFICE_URL, payload) : async () => ({ kind: "blocked" }),
+    // alt: BACKOFFICE_URL wie bisher; ph (BACKEND_GENERATION): ph_crm.api.create_anfrage, quelle agent.
+    forward: live ? (payload) => forwardInquiry("agent", payload, { altUrl: BACKOFFICE_URL }) : async () => ({ kind: "blocked" }),
   };
 }

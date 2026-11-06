@@ -41,16 +41,24 @@ doc_events = {
 
 # Zeiten Europe/Vienna (Site-Zeitzone). Funktionen: ph_crm/ph_crm/tasks.py
 scheduler_events = {
-    "hourly": ["ph_crm.ph_crm.tasks.termin_erinnerungen"],
-    "daily": ["ph_crm.ph_crm.tasks.meet_raeume_aufraeumen"],
+    "hourly": ["ph_crm.ph_crm.tasks.termin_erinnerungen", "ph_crm.ph_crm.tasks.termine_ohne_abschluss"],
+    "daily": ["ph_crm.ph_crm.tasks.meet_raeume_aufraeumen", "ph_crm.ph_crm.tasks.dsgvo_fristen"],
     "cron": {
         "*/10 * * * *": ["ph_crm.ph_crm.tasks.reservierungen_freigeben"],
-        "30 7 * * 1-5": ["ph_crm.ph_crm.tasks.unbeantwortete_anfragen"],
-        "0 7 * * *": ["ph_crm.ph_crm.tasks.aufgaben_erinnerungen"],
+        "30 7 * * 1-5": ["ph_crm.ph_crm.tasks.unbeantwortete_anfragen", "ph_crm.ph_crm.tasks.ruhende_anfragen"],
+        "0 7 * * *": ["ph_crm.ph_crm.tasks.aufgaben_erinnerungen", "ph_crm.ph_crm.tasks.wiedervorlagen_faellig"],
+        "0 17 * * 1-5": ["ph_crm.ph_crm.tasks.vortagesuebersicht"],
     },
 }
 
 # Kalenderansicht: PH Termin erscheint im Desk-Kalender (Liste → Kalender) mit Status-Farben
 calendars = ["PH Termin"]
+
+# Hook-Vertrag Kundenakte (README „Hook-Vertrag Kundenakte“): andere Apps registrieren in IHRER hooks.py
+#   ph_kontakt_zeitleiste = ["<app>.<modul>.fn"]          fn(kontakt, vor=None, limit=30) -> [ereignis]
+#   ph_kontakt_zeitleiste_ersetzt = ["PH <DocType>"]      generische Ereignisse dieser DocTypes weglassen
+#   ph_kontakt_datenauskunft = ["…"]                      fn(kontakt) -> [{abschnitt, doctype, name, daten}]
+#   ph_kontakt_anonymisieren = ["…"]                      fn(kontakt, ausfuehren=False) -> [{doctype, name, aktion, grund, frist_bis}]
+#   ph_kontakt_zusammengefuehrt = ["…"]                   fn(alt, neu) -> None
 
 website_route_rules = []

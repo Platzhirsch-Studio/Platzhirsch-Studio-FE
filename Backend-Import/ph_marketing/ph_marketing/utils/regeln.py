@@ -6,7 +6,7 @@ und src/lib/kundenbetreuung/newsletter/newsletter.js (blockSichtbar, versandbere
 
 from datetime import date
 
-ZWECKE = ("newsletter", "einladungen", "merkliste_erinnerung", "planer_erinnerung", "rueckmeldung", "pflege_nachkauf", "whatsapp", "foto_referenz")
+ZWECKE = ("newsletter", "einladungen", "merkliste_erinnerung", "planer_erinnerung", "rueckmeldung", "pflege_nachkauf", "whatsapp", "foto_referenz", "kundenkarte_auswertung")
 ZWECK_TEXT = {
     "newsletter": "unseren Newsletter „Post aus Lochau“",
     "einladungen": "Einladungen zu Abenden im Showroom",
@@ -16,6 +16,7 @@ ZWECK_TEXT = {
     "pflege_nachkauf": "Pflegehinweise zu Ihren Stücken",
     "whatsapp": "den Kontakt per WhatsApp",
     "foto_referenz": "die Verwendung von Fotos aus Ihrem Projekt als Referenz",
+    "kundenkarte_auswertung": "die Auswertung Ihrer Einkäufe für Kundenkarten-Stufe und persönliche Vorteile",
 }
 # Zwecke, die per Mail-Link bestätigt werden (E-Mail-Werbung). whatsapp/foto_referenz werden
 # schriftlich bzw. im Portal/Showroom eingeholt und ohne DOI protokolliert (kanal ≠ website).

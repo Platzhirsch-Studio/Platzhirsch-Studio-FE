@@ -73,15 +73,22 @@ def anwenden(bestaende, b, negativ_erlaubt=False):
     return neu
 
 
-def verfuegbar(menge, reserviert):
+def verfuegbar(menge, reserviert, gesperrt=False, kommission=None):
+    """Frei verkäuflich: gesperrte Ware (Schaden, an Lieferant) und Kommissionsware (gehört einem Projekt/Auftrag) zählen nicht."""
+    if gesperrt or kommission:
+        return 0
     return max(int(menge or 0) - int(reserviert or 0), 0)
 
 
-def status_aus(menge, reserviert, ausgeschieden=False, verkauft=False):
+def status_aus(menge, reserviert, ausgeschieden=False, verkauft=False, gesperrt=False, kommission=None):
     if ausgeschieden:
         return "Ausgeschieden"
     if verkauft or int(menge or 0) <= 0:
         return "Verkauft" if verkauft or int(menge or 0) <= 0 else "Verfuegbar"
+    if gesperrt:
+        return "Gesperrt"
+    if kommission:
+        return "Kommission"
     if int(reserviert or 0) >= int(menge or 0):
         return "Reserviert"
     return "Verfuegbar"
@@ -103,3 +110,69 @@ def inventur_differenzen(positionen):
             summe += d
             bew.append({"art": "Inventur", "menge": d, "lagerbestand": p.get("lagerbestand"), "produkt": p.get("produkt"), "grund": p.get("grund")})
     return len(positionen), gez, mit_diff, summe, bew
+
+
+# ── Wareneingang, Reservierung, Kommission, Platz-Codes ───────────────────
+
+SCHADEN = ("Transportschaden", "beschaedigt")
+
+
+def einlagerung_aus_wareneingang(zustand):
+    """Zustand einer PH Wareneingang Position → (buchen?, bestand_zustand, gesperrt).
+    falsch/fehlt: nichts einlagern; Schaden: B-Ware gesperrt (bis Servicefall/Regress entschieden)."""
+    if zustand in ("falsch", "fehlt"):
+        return False, None, 0
+    if zustand in SCHADEN:
+        return True, "B-Ware", 1
+    return True, "Neu", 0
+
+
+def reservierung_abgelaufen(bis, heute):
+    """bis/heute als date oder 'YYYY-MM-DD'; ohne Ablaufdatum nie abgelaufen."""
+    if not bis:
+        return False
+    return str(bis)[:10] < str(heute)[:10]
+
+
+PLATZ_TRENNER = "/"
+
+
+def platz_code(lagerort, platz):
+    """QR-Inhalt eines Platzetiketts: '<Lagerort>/<Platz>'."""
+    return f"{lagerort}{PLATZ_TRENNER}{platz}" if platz else str(lagerort)
+
+
+def platz_aus_code(code):
+    """'Lager Lochau/R1-03' → ('Lager Lochau', 'R1-03'); ohne Trenner → (code, None). Letzter Trenner zählt (Lagerorte ohne '/')."""
+    c = str(code or "").strip()
+    if not c:
+        return None, None
+    if PLATZ_TRENNER not in c:
+        return c, None
+    ort, platz = c.split(PLATZ_TRENNER, 1)
+    return ort.strip() or None, platz.strip() or None
+
+
+def kommission_offen(bestaende, erwartet):
+    """Kommissionsübersicht: bestaende [{produkt, menge, gesperrt}] (im Lager), erwartet [{produkt, menge, menge_erhalten}]
+    (Herstellerbestellungen) → {im_lager, gesperrt, erwartet_offen, vollstaendig}."""
+    im_lager = sum(int(b.get("menge") or 0) for b in bestaende if not b.get("gesperrt"))
+    gesperrt = sum(int(b.get("menge") or 0) for b in bestaende if b.get("gesperrt"))
+    offen = sum(max(int(e.get("menge") or 0) - int(e.get("menge_erhalten") or 0), 0) for e in erwartet)
+    return {"im_lager": im_lager, "gesperrt": gesperrt, "erwartet_offen": offen, "vollstaendig": offen == 0 and gesperrt == 0 and im_lager > 0}
+
+
+def zaehlen_plus(positionen, schluessel, anzahl=1):
+    """Stückscan in der Inventur: erste Position, deren lagerbestand/seriennummer/ean zum Schlüssel passt, um anzahl erhöhen.
+    → (position_name, neues_ist) oder (None, None)."""
+    k = str(schluessel or "").strip().lower()
+    if not k:
+        return None, None
+    for feld in ("lagerbestand", "seriennummer", "ean"):
+        for p in positionen:
+            if str(p.get(feld) or "").strip().lower() == k:
+                neu = int(p.get("ist") or 0) + int(anzahl)
+                if neu < 0:
+                    neu = 0
+                return p.get("name"), neu
+    return None, None

@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Preisgruppen-/Variantenmatrix: Preis für eine Kombination von Ausführungen (z. B. bezug=PG3|breite=200).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kombination",
+  "vk_cent",
+  "ek_cent",
+  "ab",
+  "bis",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "kombination",
+   "fieldtype": "Data",
+   "label": "Kombination (gruppe=option|…)",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4,
+   "description": "Je Teil gruppe_key=option_id oder gruppe_key=preisgruppe, getrennt mit |"
+  },
+  {
+   "fieldname": "vk_cent",
+   "fieldtype": "Int",
+   "label": "VK brutto (Cent)",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "ek_cent",
+   "fieldtype": "Int",
+   "label": "EK netto (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "ab",
+   "fieldtype": "Date",
+   "label": "Gültig ab",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bis",
+   "fieldtype": "Date",
+   "label": "Gültig bis",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Produkt Variantenpreis",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

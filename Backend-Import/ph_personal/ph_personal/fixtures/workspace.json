@@ -14,45 +14,317 @@
   "parent_page": "",
   "content": "[{\"id\":\"ph_personal_h1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Personal – Stellen, Bewerbungen, Team</b></span>\",\"col\":12}},{\"id\":\"ph_personal_nc1\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Aktive Stellen\",\"col\":4}},{\"id\":\"ph_personal_nc2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Neue Bewerbungen\",\"col\":4}},{\"id\":\"ph_personal_nc3\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Gespraeche diese Woche\",\"col\":4}},{\"id\":\"ph_personal_nc4\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Loeschfrist faellig\",\"col\":4}},{\"id\":\"ph_personal_nc5\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Offene Abwesenheitsantraege\",\"col\":4}},{\"id\":\"ph_personal_nc6\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Heute abwesend\",\"col\":4}},{\"id\":\"ph_personal_c1\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Bewerbungen je Stelle\",\"col\":8}},{\"id\":\"ph_personal_c2\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Bewerbungen nach Quelle\",\"col\":4}},{\"id\":\"ph_personal_c3\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Bewerbungen je Woche\",\"col\":6}},{\"id\":\"ph_personal_c4\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Abwesenheiten je Monat\",\"col\":6}},{\"id\":\"ph_personal_h2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\",\"col\":12}},{\"id\":\"ph_personal_s1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Bewerbungen (Kanban)\",\"col\":3}},{\"id\":\"ph_personal_s2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Stellen (Kanban)\",\"col\":3}},{\"id\":\"ph_personal_s3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Kommen / Gehen\",\"col\":3}},{\"id\":\"ph_personal_s4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Abwesenheit beantragen\",\"col\":3}},{\"id\":\"ph_personal_s5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Teamkalender\",\"col\":3}},{\"id\":\"ph_personal_s6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Bewerbungsstatistik\",\"col\":3}},{\"id\":\"ph_personal_s7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Monatsstunden\",\"col\":3}},{\"id\":\"ph_personal_s8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Löschfristen (DSGVO)\",\"col\":3}},{\"id\":\"ph_personal_h3\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Bereiche</b></span>\",\"col\":12}},{\"id\":\"ph_personal_card1\",\"type\":\"card\",\"data\":{\"card_name\":\"Karriere\",\"col\":4}},{\"id\":\"ph_personal_card2\",\"type\":\"card\",\"data\":{\"card_name\":\"Team\",\"col\":4}},{\"id\":\"ph_personal_card3\",\"type\":\"card\",\"data\":{\"card_name\":\"Berichte und Einstellungen\",\"col\":4}}]",
   "shortcuts": [
-   {"label": "Bewerbungen (Kanban)", "link_to": "PH Bewerbung", "type": "DocType", "doc_view": "Kanban", "kanban_board": "PH Bewerbungen", "color": "Blue"},
-   {"label": "Stellen (Kanban)", "link_to": "PH Stelle", "type": "DocType", "doc_view": "Kanban", "kanban_board": "PH Stellen", "color": "Green"},
-   {"label": "Kommen / Gehen", "link_to": "PH Zeiterfassung", "type": "DocType", "doc_view": "List", "color": "Grey"},
-   {"label": "Abwesenheit beantragen", "link_to": "PH Abwesenheit", "type": "DocType", "doc_view": "New", "color": "Grey"},
-   {"label": "Teamkalender", "link_to": "PH Abwesenheit", "type": "DocType", "doc_view": "Calendar", "color": "Grey"},
-   {"label": "Bewerbungsstatistik", "link_to": "PH Bewerbungsstatistik", "type": "Report", "color": "Grey"},
-   {"label": "Monatsstunden", "link_to": "PH Monatsstunden", "type": "Report", "color": "Grey"},
-   {"label": "Löschfristen (DSGVO)", "link_to": "PH Loeschfristen", "type": "Report", "color": "Red"}
+   {
+    "label": "Bewerbungen (Kanban)",
+    "link_to": "PH Bewerbung",
+    "type": "DocType",
+    "doc_view": "Kanban",
+    "kanban_board": "PH Bewerbungen",
+    "color": "Blue"
+   },
+   {
+    "label": "Stellen (Kanban)",
+    "link_to": "PH Stelle",
+    "type": "DocType",
+    "doc_view": "Kanban",
+    "kanban_board": "PH Stellen",
+    "color": "Green"
+   },
+   {
+    "label": "Kommen / Gehen",
+    "link_to": "PH Zeiterfassung",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Grey"
+   },
+   {
+    "label": "Abwesenheit beantragen",
+    "link_to": "PH Abwesenheit",
+    "type": "DocType",
+    "doc_view": "New",
+    "color": "Grey"
+   },
+   {
+    "label": "Teamkalender",
+    "link_to": "PH Abwesenheit",
+    "type": "DocType",
+    "doc_view": "Calendar",
+    "color": "Grey"
+   },
+   {
+    "label": "Bewerbungsstatistik",
+    "link_to": "PH Bewerbungsstatistik",
+    "type": "Report",
+    "color": "Grey"
+   },
+   {
+    "label": "Monatsstunden",
+    "link_to": "PH Monatsstunden",
+    "type": "Report",
+    "color": "Grey"
+   },
+   {
+    "label": "Löschfristen (DSGVO)",
+    "link_to": "PH Loeschfristen",
+    "type": "Report",
+    "color": "Red"
+   }
   ],
   "charts": [
-   {"chart_name": "PH Bewerbungen je Stelle", "label": "Bewerbungen je Stelle"},
-   {"chart_name": "PH Bewerbungen nach Quelle", "label": "Bewerbungen nach Quelle"},
-   {"chart_name": "PH Bewerbungen je Woche", "label": "Bewerbungen je Woche"},
-   {"chart_name": "PH Abwesenheiten je Monat", "label": "Abwesenheiten je Monat"}
+   {
+    "chart_name": "PH Bewerbungen je Stelle",
+    "label": "Bewerbungen je Stelle"
+   },
+   {
+    "chart_name": "PH Bewerbungen nach Quelle",
+    "label": "Bewerbungen nach Quelle"
+   },
+   {
+    "chart_name": "PH Bewerbungen je Woche",
+    "label": "Bewerbungen je Woche"
+   },
+   {
+    "chart_name": "PH Abwesenheiten je Monat",
+    "label": "Abwesenheiten je Monat"
+   }
   ],
   "number_cards": [
-   {"number_card_name": "PH Aktive Stellen", "label": "Aktive Stellen (Website)"},
-   {"number_card_name": "PH Neue Bewerbungen", "label": "Neue Bewerbungen"},
-   {"number_card_name": "PH Gespraeche diese Woche", "label": "Gespräche diese Woche"},
-   {"number_card_name": "PH Loeschfrist faellig", "label": "Löschfrist fällig (DSGVO)"},
-   {"number_card_name": "PH Offene Abwesenheitsantraege", "label": "Offene Abwesenheitsanträge"},
-   {"number_card_name": "PH Heute abwesend", "label": "Heute abwesend"}
+   {
+    "number_card_name": "PH Aktive Stellen",
+    "label": "Aktive Stellen (Website)"
+   },
+   {
+    "number_card_name": "PH Neue Bewerbungen",
+    "label": "Neue Bewerbungen"
+   },
+   {
+    "number_card_name": "PH Gespraeche diese Woche",
+    "label": "Gespräche diese Woche"
+   },
+   {
+    "number_card_name": "PH Loeschfrist faellig",
+    "label": "Löschfrist fällig (DSGVO)"
+   },
+   {
+    "number_card_name": "PH Offene Abwesenheitsantraege",
+    "label": "Offene Abwesenheitsanträge"
+   },
+   {
+    "number_card_name": "PH Heute abwesend",
+    "label": "Heute abwesend"
+   }
   ],
   "links": [
-   {"type": "Card Break", "label": "Karriere", "link_count": 3, "hidden": 0, "onboard": 0},
-   {"type": "Link", "label": "PH Stelle", "link_to": "PH Stelle", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
-   {"type": "Link", "label": "PH Bewerbung", "link_to": "PH Bewerbung", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
-   {"type": "Link", "label": "PH Bewerbungsgespräch", "link_to": "PH Bewerbungsgespraech", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
-   {"type": "Card Break", "label": "Team", "link_count": 3, "hidden": 0, "onboard": 0},
-   {"type": "Link", "label": "PH Mitarbeiter", "link_to": "PH Mitarbeiter", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
-   {"type": "Link", "label": "PH Zeiterfassung", "link_to": "PH Zeiterfassung", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
-   {"type": "Link", "label": "PH Abwesenheit", "link_to": "PH Abwesenheit", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
-   {"type": "Card Break", "label": "Berichte und Einstellungen", "link_count": 5, "hidden": 0, "onboard": 0},
-   {"type": "Link", "label": "Bewerbungsstatistik", "link_to": "PH Bewerbungsstatistik", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
-   {"type": "Link", "label": "Löschfristen (DSGVO)", "link_to": "PH Loeschfristen", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
-   {"type": "Link", "label": "Monatsstunden", "link_to": "PH Monatsstunden", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
-   {"type": "Link", "label": "Abwesenheiten und Urlaubskonto", "link_to": "PH Abwesenheiten", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
-   {"type": "Link", "label": "PH Personal Einstellungen", "link_to": "PH Personal Einstellungen", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""}
+   {
+    "type": "Card Break",
+    "label": "Karriere",
+    "link_count": 3,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Stelle",
+    "link_to": "PH Stelle",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 1,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Bewerbung",
+    "link_to": "PH Bewerbung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 1,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Bewerbungsgespräch",
+    "link_to": "PH Bewerbungsgespraech",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Team",
+    "link_count": 9,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Mitarbeiter",
+    "link_to": "PH Mitarbeiter",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 1,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Zeiterfassung",
+    "link_to": "PH Zeiterfassung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Abwesenheit",
+    "link_to": "PH Abwesenheit",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Krankmeldungen",
+    "link_to": "PH Krankmeldung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Urlaubsansprüche (UrlG)",
+    "link_to": "PH Urlaubsanspruch",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Monatsabschlüsse",
+    "link_to": "PH Zeitabschluss",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Dienstplan",
+    "link_to": "PH Dienstplan",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Schichtvorlagen",
+    "link_to": "PH Schicht",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Onboarding-Vorlagen",
+    "link_to": "PH Onboarding Vorlage",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Berichte und Einstellungen",
+    "link_count": 6,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "Bewerbungsstatistik",
+    "link_to": "PH Bewerbungsstatistik",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Löschfristen (DSGVO)",
+    "link_to": "PH Loeschfristen",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Monatsstunden",
+    "link_to": "PH Monatsstunden",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "Abwesenheiten und Urlaubskonto",
+    "link_to": "PH Abwesenheiten",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": "",
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "label": "PH Personal Einstellungen",
+    "link_to": "PH Personal Einstellungen",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Lohnvorbereitung",
+    "link_to": "PH Lohnvorbereitung",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "Projektstunden",
+    "link_to": "PH Projektstunden",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   }
   ],
-  "roles": [{"role": "PH Personal Mitarbeiter"}, {"role": "PH Personal Leitung"}, {"role": "PH Personal Selbstservice"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Personal Mitarbeiter"
+   },
+   {
+    "role": "PH Personal Leitung"
+   },
+   {
+    "role": "PH Personal Selbstservice"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  }
 ]

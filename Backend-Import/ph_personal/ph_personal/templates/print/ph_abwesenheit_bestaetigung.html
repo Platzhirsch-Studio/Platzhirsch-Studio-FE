@@ -1,0 +1,21 @@
+{% extends "templates/print/ph_basis.html" %}
+{% block titel %}Abwesenheit {{ doc.name }}{% endblock %}
+{% block kopfrechts %}{{ firma.ort }}, {{ ph_datum(doc.genehmigt_am or frappe.utils.nowdate()) }}<br>{{ doc.name }}{% endblock %}
+{% block css %} .ph-tab td { padding: 1.5mm 2mm; border-bottom: 0.2mm solid #e5e7eb; } .ph-tab td:first-child { color: #6b7280; width: 45mm; } {% endblock %}
+{% block inhalt %}
+<h1>{% if doc.status == "Genehmigt" %}Bestätigung{% else %}Antrag{% endif %} {{ doc.art }}</h1>
+<table class="ph-tab">
+  <tr><td>Mitarbeiter:in</td><td>{{ doc.mitarbeiter_name }}</td></tr>
+  <tr><td>Zeitraum</td><td>{{ ph_datum(doc.von) }}{% if doc.bis != doc.von %} – {{ ph_datum(doc.bis) }}{% endif %}{% if doc.halbtags %} (halber Tag){% endif %}</td></tr>
+  <tr><td>Arbeitstage</td><td>{{ doc.tage }}{% if doc.stunden %} · {{ doc.stunden }} Stunden{% endif %}</td></tr>
+  {% if doc.unterbrechung_von %}<tr><td>Unterbrochen</td><td>{{ ph_datum(doc.unterbrechung_von) }} – {{ ph_datum(doc.unterbrechung_bis) }} (Krankenstand, § 5 UrlG – nicht als Urlaub gezählt)</td></tr>{% endif %}
+  <tr><td>Status</td><td>{{ doc.status }}{% if doc.genehmigt_am %} am {{ ph_datum(doc.genehmigt_am) }}{% endif %}</td></tr>
+  {% if doc.vertretung %}<tr><td>Vertretung</td><td>{{ frappe.db.get_value("PH Mitarbeiter", doc.vertretung, "titel") }}</td></tr>{% endif %}
+  {% if doc.art == "Urlaub" %}
+  <tr><td>Urlaubskonto</td><td>Anspruch Urlaubsjahr {{ doc.urlaub_anspruch }} Tage · Rest nach diesem Urlaub {{ doc.urlaub_rest }} Tage{% if doc.urlaub_verjaehrung %} · ältester Rest verjährt am {{ ph_datum(doc.urlaub_verjaehrung) }} (§ 4 Abs 5 UrlG){% endif %}</td></tr>
+  {% if doc.tage_je_urlaubsjahr %}<tr><td>Tage je Urlaubsjahr</td><td>{{ doc.tage_je_urlaubsjahr | replace("\n", "<br>") }}</td></tr>{% endif %}
+  {% endif %}
+  {% if doc.status == "Abgelehnt" and doc.ablehnungsgrund %}<tr><td>Begründung</td><td>{{ doc.ablehnungsgrund }}</td></tr>{% endif %}
+</table>
+<p style="margin-top:12mm">Für {{ firma.kurzname or firma.firmenname }}: ______________________ &nbsp;&nbsp; Mitarbeiter:in: ______________________</p>
+{% endblock %}

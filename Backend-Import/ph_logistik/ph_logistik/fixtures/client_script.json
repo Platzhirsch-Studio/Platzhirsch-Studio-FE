@@ -25,5 +25,14 @@
   "view": "Form",
   "enabled": 1,
   "script": "// ph_logistik: Button „Retourenlabel erzeugen“ (LetMeShip, Adressen getauscht) an der Retoure.\nfrappe.ui.form.on(\"PH Retoure\", {\n\trefresh(frm) {\n\t\tif (frm.is_new()) return;\n\t\tif (frm.doc.ph_logistik_retourenlabel) {\n\t\t\tfrm.add_custom_button(__(\"Retourenlabel öffnen\"), () => frappe.set_route(\"Form\", \"PH Sendung\", frm.doc.ph_logistik_retourenlabel), __(\"Logistik\"));\n\t\t\treturn;\n\t\t}\n\t\tfrm.add_custom_button(__(\"Retourenlabel erzeugen\"), () => {\n\t\t\tfrappe.confirm(__(\"Retourenlabel über LetMeShip buchen und an die Retoure hängen?\"), () => {\n\t\t\t\tfrappe.call({ method: \"ph_logistik.api.retourenlabel\", args: { retoure: frm.doc.name }, freeze: true }).then((r) => { if (r.message) { frappe.show_alert({ message: __(\"Sendung {0}\", [r.message]), indicator: \"green\" }); frm.reload_doc(); } });\n\t\t\t});\n\t\t}, __(\"Logistik\"));\n\t},\n});\n"
+ },
+ {
+  "doctype": "Client Script",
+  "name": "PH Herstellerbestellung – Spedition (ph_logistik)",
+  "dt": "PH Herstellerbestellung",
+  "module": "PH Logistik",
+  "view": "Form",
+  "enabled": 1,
+  "script": "// ph_logistik: Abholung beim Hersteller per Spedition (Großmöbel) und Kommissionsware ansehen.\nfrappe.ui.form.on(\"PH Herstellerbestellung\", {\n\trefresh(frm) {\n\t\tif (frm.is_new() || [\"Entwurf\", \"Storniert\"].includes(frm.doc.status)) return;\n\t\tfrm.add_custom_button(__(\"Spedition beauftragen\"), () => {\n\t\t\tfrappe.prompt({ fieldname: \"richtung\", fieldtype: \"Select\", label: __(\"Richtung\"), options: [\"Hersteller an Lager\", \"Hersteller an Kunde\"], default: \"Hersteller an Lager\", reqd: 1 }, (v) =>\n\t\t\t\tfrappe.call({ method: \"ph_logistik.api.speditionsauftrag_aus_herstellerbestellung\", args: { herstellerbestellung: frm.doc.name, richtung: v.richtung } }).then((r) => r.message && frappe.set_route(\"Form\", \"PH Speditionsauftrag\", r.message)), __(\"Speditionsauftrag\"));\n\t\t}, __(\"Logistik\"));\n\t\tif (frm.doc.kommission) {\n\t\t\tfrm.add_custom_button(__(\"Kommissionsware\"), () => frappe.set_route(\"query-report\", \"PH Kommissionsware\", { kommission: frm.doc.kommission }), __(\"Logistik\"));\n\t\t}\n\t},\n});\n"
  }
 ]

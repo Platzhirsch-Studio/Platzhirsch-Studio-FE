@@ -14,6 +14,7 @@ from frappe.utils import cint, getdate, now_datetime
 
 from ph_faktura import einstellungen, journal
 from ph_faktura.rechenwerk import export as E
+from ph_faktura.rechenwerk import integration as IR
 
 
 class PHExportLauf(Document):
@@ -45,15 +46,25 @@ class PHExportLauf(Document):
                 for a in frappe.get_all("PH Beleg Steuer", filters={"parent": g.name, "parenttype": "PH Gutschrift", "parentfield": "ust_aufteilung"}, fields=["ust_satz_promille", "netto_cent", "ust_cent", "brutto_cent"]):
                     zeilen.append(_zeile("PH Gutschrift", g, debitor, erloeskonto(g.ust_fall, a.ust_satz_promille, konten, e), a, "H", f"Gutschrift {g.nummer} zu {g.rechnung} {g.kunde_name}", None, g.uid_empfaenger))
         if self.belegarten in ("Eingangsrechnungen", "Alle"):
-            for er in frappe.get_all("PH Eingangsrechnung", filters={"status": ("in", ("Freigegeben", "Bezahlt")), "datum": ("between", [self.zeitraum_von, self.zeitraum_bis]), **filt_export}, fields=["name", "rechnungsnummer_lieferant", "datum", "lieferant", "lieferant_name", "netto_cent", "ust_cent", "brutto_cent", "ust_fall", "uid_lieferant", "konto_aufwand", "leistungsdatum"]):
+            for er in frappe.get_all("PH Eingangsrechnung", filters={"status": ("in", ("Freigegeben", "Bezahlt")), "datum": ("between", [self.zeitraum_von, self.zeitraum_bis]), **filt_export}, fields=["name", "rechnungsnummer_lieferant", "datum", "lieferant", "lieferant_name", "netto_cent", "ust_cent", "brutto_cent", "ust_fall", "uid_lieferant", "konto_aufwand", "leistungsdatum", "belegart"]):
                 satz = 2000 if er.ust_fall in ("Vorsteuer AT", "Reverse Charge EU", "Innergemeinschaftlicher Erwerb") and cint(er.netto_cent) else 0
                 if er.ust_fall == "Vorsteuer AT" and cint(er.netto_cent) and cint(er.ust_cent):
                     satz = round(cint(er.ust_cent) * 10000 / cint(er.netto_cent) / 100) * 100
                 a = frappe._dict(ust_satz_promille=satz, netto_cent=er.netto_cent, ust_cent=er.ust_cent, brutto_cent=er.brutto_cent)
-                z = _zeile("PH Eingangsrechnung", frappe._dict(name=er.name, nummer=er.rechnungsnummer_lieferant, datum=er.datum, kunde_name=er.lieferant_name), kreditor_nr(er.lieferant, e), er.konto_aufwand, a, "H", f"ER {er.lieferant_name} {er.rechnungsnummer_lieferant}", er.leistungsdatum, er.uid_lieferant)
+                gs = IR.er_vorzeichen(er.belegart) < 0  # Lieferanten-Gutschrift: Kreditor im Soll (Integration Runde 3)
+                z = _zeile("PH Eingangsrechnung", frappe._dict(name=er.name, nummer=er.rechnungsnummer_lieferant, datum=er.datum, kunde_name=er.lieferant_name), kreditor_nr(er.lieferant, e), er.konto_aufwand, a, "S" if gs else "H", f"{'ER-Gutschrift' if gs else 'ER'} {er.lieferant_name} {er.rechnungsnummer_lieferant}", er.leistungsdatum, er.uid_lieferant)
                 z["steuercode"] = {"Reverse Charge EU": "RC", "Innergemeinschaftlicher Erwerb": "IGE", "Einfuhr Drittland": "EUST", "Keine Vorsteuer": "0"}.get(er.ust_fall)
                 z["extbelegnr"] = er.rechnungsnummer_lieferant
                 zeilen.append(z)
+            # Ausgebuchte Regress-Differenzen (ph_service, Leitung mit Grund) – Journal „Ausbuchung“
+            from ph_faktura.ph_faktura.integration import ausbuchung_zeilen
+
+            zeilen += ausbuchung_zeilen(self.zeitraum_von, self.zeitraum_bis, self.nur_neue, e, kreditor_nr)
+        if self.belegarten == "Alle":
+            # Bestandsveränderung aus festgeschriebenen Inventurbewertungen (ph_logistik, Buchungsvorschlag)
+            from ph_faktura.ph_faktura.integration import inventurbewertung_zeilen
+
+            zeilen += inventurbewertung_zeilen(self.zeitraum_von, self.zeitraum_bis, self.nur_neue)
         return zeilen
 
     @frappe.whitelist()
@@ -68,7 +79,11 @@ class PHExportLauf(Document):
         e = einstellungen.faktura()
         if self.format == "DATEV Buchungsstapel":
             wj = getdate(f"{getdate(self.zeitraum_von).year}-{(e.get('wirtschaftsjahr_beginn') or '0101')[:2]}-{(e.get('wirtschaftsjahr_beginn') or '0101')[2:4]}")
-            text, ps = E.datev_buchungsstapel(zeilen, e.get("berater_nr"), e.get("mandanten_nr"), getdate(self.zeitraum_von), getdate(self.zeitraum_bis), wj, e.get("sachkontenlaenge") or 4)
+            text, ps = E.datev_buchungsstapel(zeilen, e.get("berater_nr"), e.get("mandanten_nr"), getdate(self.zeitraum_von), getdate(self.zeitraum_bis), wj, e.get("sachkontenlaenge") or 4, formatversion=e.get("datev_formatversion") or "12")
+            endung = "csv"
+        elif self.format == "RZL CSV":
+            text = E.rzl_csv(zeilen)
+            ps = E.gesamt_pruefsumme(text)
             endung = "csv"
         elif self.format == "BMD CSV":
             text, ps = E.bmd_csv(zeilen)
@@ -85,7 +100,8 @@ class PHExportLauf(Document):
             self.append("belege", {"beleg_doctype": p["beleg_doctype"], "beleg": p["beleg"], "nummer": p["nummer"], "datum": p["datum"], "kontakt_name": p["kontakt_name"], "konto": z["konto"], "gegenkonto": z["gegenkonto"],
                                    "steuercode": z.get("steuercode"), "netto_cent": p["netto_cent"], "ust_cent": p["ust_cent"], "brutto_cent": p["brutto_cent"], "status": "uebergeben", "pruefsumme": p["pruefsumme"]})
         self.anzahl = len(protokoll)
-        self.summe_brutto_cent = sum(p["brutto_cent"] * (-1 if p["beleg_doctype"] == "PH Gutschrift" else 1) for p in protokoll)
+        gutschrift_er = {z["beleg"] for z in zeilen if z["beleg_doctype"] == "PH Eingangsrechnung" and z.get("soll_haben") == "S"}
+        self.summe_brutto_cent = sum(p["brutto_cent"] * (-1 if p["beleg_doctype"] == "PH Gutschrift" or p["beleg"] in gutschrift_er else 1) for p in protokoll)
         self.pruefsumme_gesamt = ps
         self.datei = datei
         self.datei_protokoll = datei_protokoll
@@ -93,7 +109,8 @@ class PHExportLauf(Document):
         self.status = "Erzeugt"
         self.save()
         for p in protokoll:
-            frappe.db.set_value(p["beleg_doctype"], p["beleg"], {"export_status": "exportiert", "export_lauf": self.name}, update_modified=False)
+            if frappe.get_meta(p["beleg_doctype"]).has_field("export_status"):  # Regress-Ausbuchung: Status nur im Protokoll
+                frappe.db.set_value(p["beleg_doctype"], p["beleg"], {"export_status": "exportiert", "export_lauf": self.name}, update_modified=False)
         journal.schreibe("Export", self, self.summe_brutto_cent, f"{self.format}: {self.anzahl} Belege, Prüfsumme {ps[:16]}")
         return {"anzahl": self.anzahl, "datei": self.datei}
 
@@ -124,7 +141,8 @@ class PHExportLauf(Document):
         if self.status != "Erzeugt":
             frappe.throw(_("Nur erzeugte, nicht übergebene Läufe können verworfen werden."))
         for b in self.belege:
-            frappe.db.set_value(b.beleg_doctype, b.beleg, {"export_status": "offen", "export_lauf": None}, update_modified=False)
+            if frappe.get_meta(b.beleg_doctype).has_field("export_status"):
+                frappe.db.set_value(b.beleg_doctype, b.beleg, {"export_status": "offen", "export_lauf": None}, update_modified=False)
         self.db_set({"status": "Entwurf", "anzahl": 0, "pruefsumme_gesamt": None}, update_modified=True)
         self.set("belege", [])
         self.save()

@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Qualifikation – je Monteur (Einstellungen) oder benötigt je Montageauftrag.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "qualifikation",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "Monteur",
+   "options": "User",
+   "in_list_view": 1,
+   "columns": 3,
+   "description": "nur in den Einstellungen (Qualifikation je Monteur)"
+  },
+  {
+   "fieldname": "qualifikation",
+   "fieldtype": "Select",
+   "label": "Qualifikation",
+   "options": "Kueche\nBad\nElektro-Anschluss\nWasser-Anschluss\nGas-Anschluss\nNaturstein\nPolster\nOutdoor\nMoebelmontage\nLeuchten\nYacht",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Data",
+   "label": "Notiz",
+   "in_list_view": 1,
+   "columns": 4
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Montage Qualifikation",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

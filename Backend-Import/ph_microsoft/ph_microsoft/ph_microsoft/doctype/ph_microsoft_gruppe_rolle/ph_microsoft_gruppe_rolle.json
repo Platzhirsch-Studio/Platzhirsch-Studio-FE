@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Zuordnung Entra-ID-Gruppe (Objekt-ID) → PH-Rolle; nur diese Rollen verwaltet die Anmeldung.",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "gruppe_id",
+  "gruppe_name",
+  "rolle",
+  "standort"
+ ],
+ "fields": [
+  {
+   "fieldname": "gruppe_id",
+   "fieldtype": "Data",
+   "label": "Gruppen-Objekt-ID (Entra ID)",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3,
+   "description": "GUID aus Entra Admin Center → Gruppen → Objekt-ID"
+  },
+  {
+   "fieldname": "gruppe_name",
+   "fieldtype": "Data",
+   "label": "Gruppenname (Info)",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "rolle",
+   "fieldtype": "Link",
+   "label": "PH-Rolle",
+   "options": "Role",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "standort",
+   "fieldtype": "Data",
+   "label": "Standort (optional)",
+   "in_list_view": 1,
+   "columns": 2,
+   "description": "Setzt ph_core_standort, wenn am Benutzer leer"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Microsoft",
+ "name": "PH Microsoft Gruppe Rolle",
+ "owner": "Administrator",
+ "permissions": [],
+ "states": []
+}

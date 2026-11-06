@@ -28,6 +28,8 @@ import {
 } from "@/lib/site";
 import { Link } from "@/i18n/navigation";
 import AdventsabendForm from "./AdventsabendForm";
+// alt: /api/kontakt wie bisher; ph (formulare + ADVENTSABEND_EVENT_ID): register_event mit Absage-Link.
+import { adventSubmitUrl } from "@/lib/backend/adventsabend";
 import { ogLocale } from "@/lib/seo/pageMetadata";
 import {
   CALENDAR_FILE,
@@ -268,7 +270,7 @@ export default async function AdventsabendPage({ params }) {
             </p>
           </div>
           <div className="lg:col-span-5 lg:col-start-7 lg:row-span-2">
-            <AdventsabendForm dateLabel={EVENT.shortDateLabel} calendarHref={withTime ? CALENDAR_PATH : null} />
+            <AdventsabendForm dateLabel={EVENT.shortDateLabel} calendarHref={withTime ? CALENDAR_PATH : null} submitUrl={adventSubmitUrl()} />
           </div>
 
           {/* Pflichtinfos zum kostenlosen Abend (recht/06 §2.1): Foto-Hinweis,

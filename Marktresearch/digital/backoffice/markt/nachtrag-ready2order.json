@@ -1,0 +1,224 @@
+{
+  "produkt": "ready2order",
+  "url": "https://ready2order.com/at/funktionen/",
+  "stand": "2026-11-04",
+  "zeichen": 9000,
+  "funktionen": [
+    {
+      "name": "RKSV-Signaturzertifikat",
+      "beschreibung": "Der Benutzer aktiviert das Signaturpflicht-Zertifikat, das jeden Beleg ohne Zusatzhardware signiert.",
+      "bereich": "kassa",
+      "nutzen": "Showroom-Kassa erfüllt die RKSV ohne eigene Signaturkarte.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Produktverwaltung mit Variationen",
+      "beschreibung": "Der Benutzer legt Produkte an und pflegt Varianten, auch per Barcode-Scanner.",
+      "bereich": "sortiment",
+      "nutzen": "Möbel in Farb-/Größenvarianten sauber an der Kassa verkaufen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Gutscheine & Rabatte an der Kassa",
+      "beschreibung": "Der Benutzer gibt Gutscheine aus und gewährt Rabatte direkt im Kassiervorgang.",
+      "bereich": "kassa",
+      "nutzen": "Verhandlungsrabatte und Geschenkgutscheine im Showroom buchen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Bestehende Gutscheine erfassen",
+      "beschreibung": "Der Benutzer hinterlegt bereits ausgegebene Gutscheine mit eigener Nummerierung, mit oder ohne Strichcode.",
+      "bereich": "kassa",
+      "nutzen": "Alt-Gutscheine aus Papierbeständen bei Systemumstieg übernehmen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/gutscheine/"
+    },
+    {
+      "name": "Gutschein erstellen und verkaufen",
+      "beschreibung": "Der Benutzer legt einen Gutschein mit Produktart, Warengruppe und Preis an und verkauft ihn.",
+      "bereich": "kassa",
+      "nutzen": "Wertgutscheine für Küchen/Möbel schnell im Showroom verkaufen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/gutscheine/"
+    },
+    {
+      "name": "Gutscheincode als Ziffern oder Barcode",
+      "beschreibung": "Der Benutzer wählt, ob der Gutscheincode auf der Rechnung als Ziffernfolge oder Barcode erscheint, und kann Gutscheine exportieren.",
+      "bereich": "kassa",
+      "nutzen": "Einlösung per Scan statt Abtippen; Export für Abgleich mit Onlineshop-Gutscheinen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/gutscheine/"
+    },
+    {
+      "name": "Einzweckgutschein",
+      "beschreibung": "Der Benutzer legt einen Gutschein mit vorab festgelegter Art, Menge, Steuersatz und Erbringungsort an.",
+      "bereich": "kassa",
+      "nutzen": "Z. B. Gutschein für ein bestimmtes Küchengerät korrekt versteuert ausgeben.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/gutscheine/"
+    },
+    {
+      "name": "Mehrzweckgutschein mit Teileinlösung",
+      "beschreibung": "Der Benutzer gibt einen Wertgutschein aus, der frei, teilweise und auch filialübergreifend einlösbar ist.",
+      "bereich": "kassa",
+      "nutzen": "Geldwertgutscheine, die über mehrere Einkäufe verbraucht werden.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/gutscheine/"
+    },
+    {
+      "name": "Gratisgutschein über 100 % Rabatt",
+      "beschreibung": "Der Benutzer bucht einen Gratisgutschein als 100-%-Rabatt ein.",
+      "bereich": "marketing",
+      "nutzen": "Aktions-/Kulanzgutscheine ohne Umsatz sauber dokumentieren.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/gutscheine/"
+    },
+    {
+      "name": "Wechselgeldrechner",
+      "beschreibung": "Die Kassa berechnet bei Barzahlung das Rückgeld.",
+      "bereich": "kassa",
+      "nutzen": "Weniger Fehler bei Barzahlungen von Anzahlungen/Mitnahmeartikeln.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Kartenzahlung",
+      "beschreibung": "Der Benutzer kassiert bargeldlos per Karte.",
+      "bereich": "kassa",
+      "nutzen": "Hohe Möbelbeträge bargeldlos im Showroom kassieren.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Storno & Retoure",
+      "beschreibung": "Der Benutzer storniert Bestellungen oder bucht Retouren finanzamtkonform.",
+      "bereich": "kassa",
+      "nutzen": "Rücknahmen von Mitnahmeware RKSV-konform abwickeln.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Umsatzstatistik in Echtzeit",
+      "beschreibung": "Der Benutzer sieht Umsatzdaten in Echtzeit und erkennt saisonale Trends.",
+      "bereich": "zentrale",
+      "nutzen": "Showroom-Umsatz und Saisoneffekte (z. B. Küchenaktionen) verfolgen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Kundenmanagement",
+      "beschreibung": "Der Benutzer führt eine Kundendatenbank und ordnet Einkäufe und Gutscheine Kunden zu.",
+      "bereich": "crm",
+      "nutzen": "Kaufhistorie pro Haushalt für Folgeaufträge und Reklamationen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Lieferantenmanagement",
+      "beschreibung": "Der Benutzer verwaltet Lieferanten und Geschäftspartner.",
+      "bereich": "logistik",
+      "nutzen": "Hersteller/Lieferanten zentral zur Ware pflegen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Angebote, Rechnungen & Lieferscheine",
+      "beschreibung": "Der Benutzer erstellt Angebote, Rechnungen und Lieferscheine aus der Kassa.",
+      "bereich": "faktura",
+      "nutzen": "Möbelangebot im Showroom direkt in Lieferschein/Rechnung überführen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Mitarbeiter-Multi-Login mit PIN",
+      "beschreibung": "Mehrere Mitarbeiter melden sich per PIN an einer Kassa an und wechseln schnell.",
+      "bereich": "personal",
+      "nutzen": "Jeder Verkauf ist einem Berater zuordenbar.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Mitarbeiter-Report",
+      "beschreibung": "Der Benutzer wertet Arbeitsstunden und Schichtpläne der Mitarbeiter aus.",
+      "bereich": "personal",
+      "nutzen": "Showroom-Besetzung und Verkäuferleistung nachvollziehen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "API-Schnittstelle",
+      "beschreibung": "Der Benutzer bindet externe Systeme über eine Programmierschnittstelle an.",
+      "bereich": "zentrale",
+      "nutzen": "Kassa mit Backoffice/Onlineshop verbinden.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Kassenladen-Anschluss",
+      "beschreibung": "Der Benutzer schließt eine Kassenlade an die Kassa an.",
+      "bereich": "kassa",
+      "nutzen": "Bargeld sicher im Showroom verwahren.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Automatischer Kassenabschluss",
+      "beschreibung": "Die Kassa erstellt den Tagesabschluss automatisch.",
+      "bereich": "kassa",
+      "nutzen": "Täglicher Kassasturz ohne vergessenen Abschluss.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Buchhaltungsexport RZL/BMD",
+      "beschreibung": "Der Benutzer exportiert Kassadaten für RZL oder BMD und übermittelt sie an Steuerberater.",
+      "bereich": "faktura",
+      "nutzen": "Kein händisches Übertragen in die österreichische Buchhaltung.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Steuerberaterzugang",
+      "beschreibung": "Der Benutzer gibt der Steuerberatung direkten Zugang.",
+      "bereich": "faktura",
+      "nutzen": "Steuerberater holt Daten selbst, weniger Rückfragen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "E-Rechnung",
+      "beschreibung": "Der Benutzer erstellt elektronische Rechnungen.",
+      "bereich": "faktura",
+      "nutzen": "E-Rechnung an Firmen-/Objektkunden.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Lagerverwaltung / Warenwirtschaft",
+      "beschreibung": "Der Benutzer überwacht Lagerbestand, Einkauf und Verkauf und importiert Produkte.",
+      "bereich": "logistik",
+      "nutzen": "Mitnahmesortiment und Accessoires bestandsgenau führen.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Digitaler Beleg",
+      "beschreibung": "Der Benutzer gibt den Kassenbon digital statt auf Papier aus.",
+      "bereich": "kassa",
+      "nutzen": "Beleg per E-Mail, weniger Papier, Beleg auffindbar bei Reklamation.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    },
+    {
+      "name": "Digitales Kassenbuch",
+      "beschreibung": "Der Benutzer führt das Kassenbuch digital.",
+      "bereich": "kassa",
+      "nutzen": "Bareinlagen/-entnahmen (z. B. Anzahlungen in bar) nachvollziehbar.",
+      "quelle": "ready2order",
+      "url": "https://ready2order.com/at/funktionen/"
+    }
+  ]
+}

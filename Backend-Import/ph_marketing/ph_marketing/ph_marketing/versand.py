@@ -41,6 +41,19 @@ def abmelde_url(token):
     return f"{e['website_url']}{e['abmelden_pfad']}?token={token}"
 
 
+def abmelde_kopfzeilen(token):
+    """List-Unsubscribe (RFC 2369) + One-Click (RFC 8058) für Newsletter/Werbung. Website-Route nimmt den POST an
+    und ruft ph_marketing.api.unsubscribe_one_click(token) auf. Ohne HTTPS-Website-URL → None (kein Header)."""
+    from ph_marketing.utils.mail_ereignis import list_unsubscribe_header
+
+    e = einstellungen()
+    url = f"{e['website_url']}{e['one_click_pfad']}?token={token}"
+    try:
+        return list_unsubscribe_header(url, e.get("abmelde_mailto"))
+    except ValueError:
+        return None
+
+
 def fusszeile_html(grundlage, abmelde_link, einwilligung_datum=""):
     """Fußzeile A (Einwilligung) oder B (Bestandskunde) – Wortlaut: src/lib/kundenbetreuung/mail.js FUSSZEILEN."""
     if grundlage == "B":
@@ -70,7 +83,7 @@ def absender(art="standard"):
     return None
 
 
-def sende(empfaenger, betreff, html, referenz_doctype=None, referenz_name=None, absender_art="standard", versandweg=None, antwort_an=None):
+def sende(empfaenger, betreff, html, referenz_doctype=None, referenz_name=None, absender_art="standard", versandweg=None, antwort_an=None, kopfzeilen=None):
     """Eine Mail über den konfigurierten Weg. → {"versandweg": ..., "nachricht_id": ...}. Wirft bei Fehlern."""
     e = einstellungen()
     weg = versandweg or e["versandweg"]
@@ -81,8 +94,9 @@ def sende(empfaenger, betreff, html, referenz_doctype=None, referenz_name=None, 
             frappe.throw(_("Testmodus ohne Testadresse (PH Marketing Einstellungen / PH Einstellungen team_email)."))
         betreff = f"[TEST → {empfaenger_echt}] {betreff}"
     if weg == "Resend":
-        return _sende_resend(empfaenger, betreff, html, antwort_an or e["antwort_an"], absender_art)
-    # Frappe-Queue über den Core-Helfer (gemeinsamer Testmodus, reply_to, Absendername); Resend bleibt hier.
+        return _sende_resend(empfaenger, betreff, html, antwort_an or e["antwort_an"], absender_art, kopfzeilen)
+    # Frappe-Queue über den Core-Helfer – eigene Kopfzeilen (List-Unsubscribe) kann ph_core.utils.mail.sende noch nicht
+    # durchreichen (Bedarf an ph_core); Frappe setzt bei Email Queue einen eigenen List-Unsubscribe nur mit Frappe-Abmeldung. (gemeinsamer Testmodus, reply_to, Absendername); Resend bleibt hier.
     from ph_core.utils.mail import sende as core_sende
 
     absender_name = e["absender_gastgeberin_name"] if absender_art == "gastgeberin" and e["absender_gastgeberin_name"] else e["absender_name"]
@@ -98,7 +112,7 @@ def sende(empfaenger, betreff, html, referenz_doctype=None, referenz_name=None, 
     return {"versandweg": "Frappe Email Queue", "nachricht_id": None}
 
 
-def _sende_resend(empfaenger, betreff, html, antwort_an, absender_art):
+def _sende_resend(empfaenger, betreff, html, antwort_an, absender_art, kopfzeilen=None):
     schluessel = frappe.conf.get("ph_resend_api_key")
     von = absender(absender_art) or frappe.conf.get("ph_mail_from")
     if not schluessel or not von:
@@ -108,7 +122,7 @@ def _sende_resend(empfaenger, betreff, html, antwort_an, absender_art):
     r = requests.post(
         RESEND_URL,
         headers={"Authorization": f"Bearer {schluessel}", "Content-Type": "application/json"},
-        data=json.dumps({"from": von, "to": [empfaenger], "subject": betreff, "html": html, "reply_to": antwort_an or None}),
+        data=json.dumps({"from": von, "to": [empfaenger], "subject": betreff, "html": html, "reply_to": antwort_an or None, **({"headers": kopfzeilen} if kopfzeilen else {})}),
         timeout=15,
     )
     if r.status_code >= 300:

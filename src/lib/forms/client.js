@@ -14,6 +14,7 @@
 // pass to trackLead() as `transaction_id`.
 import { getAttribution, rememberLeadRef } from "../attribution.js";
 import { deviceOf, leadKindOf, newLeadRef, withLead } from "./leadPayload.js";
+import { attributionFields } from "./attributionFields.js";
 import { selfReportLabel } from "./selfReport.js";
 
 /** ms since `renderedAt` (a performance.now() value), rounded; undefined if unknown. */
@@ -100,6 +101,23 @@ export function prepareLead(url, payload, lead) {
 }
 
 /**
+ * Formulare OHNE Herkunftsblock, deren Backend (ph_*) Kampagnenfelder liest:
+ * utm_* / klick_id als eigene Felder – nur mit Ads-Einwilligung
+ * (attributionFields.js, getAttribution). Anfrageformulare tragen sie schon
+ * im Herkunftsblock (der Server liest sie dort aus).
+ */
+export const ATTRIBUTION_URLS = Object.freeze(["/api/kundenkarte/apply", "/api/newsletter_subscribe", "/api/termin/book"]);
+
+/** body + utm_* und klick_id für ATTRIBUTION_URLS (attribution: Tests; im Browser automatisch). */
+export function withAttributionFields(url, body, attribution) {
+  const path = String(url || "").split("?")[0];
+  if (!ATTRIBUTION_URLS.includes(path) || !body || typeof body !== "object") return body;
+  const attr = attribution ?? (typeof window !== "undefined" ? getAttribution(window) : null);
+  const fields = attributionFields(attr);
+  return Object.keys(fields).length ? { ...body, ...fields } : body;
+}
+
+/**
  * POST JSON to a form route, then readFormResponse(). A network failure
  * (offline, aborted) comes back as { ok: false, code: "network" }.
  * Inquiry routes get the Herkunft block and `lead_ref` (prepareLead); the
@@ -107,7 +125,9 @@ export function prepareLead(url, payload, lead) {
  */
 export async function postForm(url, payload, { fetchImpl, lead } = {}) {
   const doFetch = fetchImpl || fetch;
-  const { body, leadRef } = prepareLead(url, payload, lead);
+  const prepared = prepareLead(url, payload, lead);
+  const body = withAttributionFields(url, prepared.body);
+  const { leadRef } = prepared;
   // The reference is remembered only for a lead that actually arrived (QM r4
   // P3-1): a failed send clears it, so a later lead (e.g. the Küchenplaner)
   // never inherits its transaction_id through trackLead's fallback.

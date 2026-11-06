@@ -30,9 +30,13 @@
   "beschaeftigungsart",
   "wochenstunden",
   "urlaubsanspruch_tage",
+  "vordienstzeiten_jahre",
+  "ueberstunden_abgeltung",
   "cb_arbeitszeit",
   "email_dienst",
   "telefon_dienst",
+  "sb_modell",
+  "arbeitszeiten",
   "tab_vertraulich",
   "geburtsdatum",
   "privatadresse",
@@ -43,87 +47,567 @@
   "notfallkontakt_telefon",
   "notfallkontakt_beziehung",
   "hinweise_vertraulich",
+  "lohnverrechnung_personalnummer",
   "tab_zeitnachweis",
   "zeitnachweis_monat",
   "hinweis_zeitnachweis",
+  "tab_eintritt",
+  "sb_nachweise",
+  "oegk_anmeldung_am",
+  "dienstzettel_am",
+  "cb_nachweise",
+  "datenschutzinfo_am",
+  "unterweisung_am",
+  "sb_austritt",
+  "oegk_abmeldung_am",
+  "zugang_entzogen_am",
+  "cb_austritt",
+  "dienstzeugnis_am",
+  "notfallkontakt_geloescht_am",
+  "sb_checkliste",
+  "onboarding_vorlage",
+  "checkliste",
+  "sb_arbeitsmittel",
+  "arbeitsmittel",
+  "tab_dokumente",
+  "dokumente",
   "tab_system",
   "bewerbung",
   "beispiel"
  ],
  "fields": [
-  {"fieldname": "tab_stammdaten", "fieldtype": "Tab Break", "label": "Stammdaten"},
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Nummernkreis", "options": "PH-MA-.####", "default": "PH-MA-.####", "reqd": 1, "hidden": 1, "print_hide": 1},
-  {"fieldname": "titel", "fieldtype": "Data", "label": "Name", "read_only": 1, "in_list_view": 1, "in_global_search": 1},
-  {"fieldname": "vorname", "fieldtype": "Data", "label": "Vorname", "reqd": 1},
-  {"fieldname": "nachname", "fieldtype": "Data", "label": "Nachname", "reqd": 1},
-  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Aktiv\nKarenz\nAusgetreten", "default": "Aktiv", "reqd": 1, "in_list_view": 1, "in_standard_filter": 1},
-  {"fieldname": "foto", "fieldtype": "Attach Image", "label": "Foto"},
-  {"fieldname": "cb_kopf", "fieldtype": "Column Break"},
-  {"fieldname": "user", "fieldtype": "Link", "label": "Benutzer (Desk-Login)", "options": "User", "unique": 1, "description": "Verknüpfung schaltet den Selbstservice frei: eigene Zeiterfassung und Abwesenheitsanträge (Rolle PH Personal Selbstservice, User Permission auf diesen Datensatz)."},
-  {"fieldname": "rolle_intern", "fieldtype": "Select", "label": "Rolle", "options": "Geschaeftsfuehrung\nVerkauf\nPlanung\nMontage\nVerwaltung\nLehrling", "reqd": 1, "in_list_view": 1, "in_standard_filter": 1},
-  {"fieldname": "eintritt", "fieldtype": "Date", "label": "Eintritt", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "austritt", "fieldtype": "Date", "label": "Austritt"},
-  {"fieldname": "sb_teams", "fieldtype": "Section Break", "label": "Teams und Berechtigungen"},
-  {"fieldname": "team_verkauf", "fieldtype": "Check", "label": "Team Verkauf", "in_standard_filter": 1},
-  {"fieldname": "team_planung", "fieldtype": "Check", "label": "Team Planung", "in_standard_filter": 1},
-  {"fieldname": "team_montage", "fieldtype": "Check", "label": "Team Montage", "in_standard_filter": 1},
-  {"fieldname": "cb_teams", "fieldtype": "Column Break"},
-  {"fieldname": "fahrzeugberechtigung", "fieldtype": "Check", "label": "Fahrzeugberechtigung (Firmenfahrzeuge)", "description": "Vor Freigabe Führerschein prüfen (Halterpflicht § 103 KFG)."},
-  {"fieldname": "fuehrerschein_klassen", "fieldtype": "Data", "label": "Führerscheinklassen", "depends_on": "fahrzeugberechtigung", "description": "z. B. B, BE, C1"},
-  {"fieldname": "sb_arbeitszeit", "fieldtype": "Section Break", "label": "Arbeitszeit und Kontakt"},
-  {"fieldname": "beschaeftigungsart", "fieldtype": "Select", "label": "Beschäftigungsausmaß", "options": "Vollzeit\nTeilzeit\nGeringfuegig\nLehre\nPraktikum", "default": "Vollzeit"},
-  {"fieldname": "wochenstunden", "fieldtype": "Float", "label": "Wochenstunden", "precision": "2", "description": "Leer = Normalarbeitszeit aus PH Personal Einstellungen (38,5)."},
-  {"fieldname": "urlaubsanspruch_tage", "fieldtype": "Int", "label": "Urlaubsanspruch (Arbeitstage/Jahr)", "description": "Leer = Standard aus PH Personal Einstellungen (25)."},
-  {"fieldname": "cb_arbeitszeit", "fieldtype": "Column Break"},
-  {"fieldname": "email_dienst", "fieldtype": "Data", "label": "E-Mail (dienstlich)", "options": "Email"},
-  {"fieldname": "telefon_dienst", "fieldtype": "Data", "label": "Telefon (dienstlich)", "options": "Phone"},
-  {"fieldname": "tab_vertraulich", "fieldtype": "Tab Break", "label": "Vertraulich (Leitung)", "permlevel": 1},
-  {"fieldname": "geburtsdatum", "fieldtype": "Date", "label": "Geburtsdatum", "permlevel": 1},
-  {"fieldname": "privatadresse", "fieldtype": "Small Text", "label": "Privatadresse", "permlevel": 1},
-  {"fieldname": "telefon_privat", "fieldtype": "Data", "label": "Telefon (privat)", "options": "Phone", "permlevel": 1},
-  {"fieldname": "email_privat", "fieldtype": "Data", "label": "E-Mail (privat)", "options": "Email", "permlevel": 1},
-  {"fieldname": "cb_vertraulich", "fieldtype": "Column Break", "permlevel": 1},
-  {"fieldname": "notfallkontakt_name", "fieldtype": "Data", "label": "Notfallkontakt – Name", "permlevel": 1},
-  {"fieldname": "notfallkontakt_telefon", "fieldtype": "Data", "label": "Notfallkontakt – Telefon", "options": "Phone", "permlevel": 1},
-  {"fieldname": "notfallkontakt_beziehung", "fieldtype": "Data", "label": "Notfallkontakt – Beziehung", "permlevel": 1},
-  {"fieldname": "hinweise_vertraulich", "fieldtype": "Text", "label": "Vertrauliche Hinweise", "permlevel": 1, "description": "Keine Gesundheitsdaten ohne Erfordernis (Art 9 DSGVO)."},
-  {"fieldname": "tab_zeitnachweis", "fieldtype": "Tab Break", "label": "Zeitnachweis"},
-  {"fieldname": "zeitnachweis_monat", "fieldtype": "Date", "label": "Monat für Zeitnachweis-Druck", "description": "Beliebiger Tag des Monats; Druckformat „PH Mitarbeiter Zeitnachweis“ druckt diesen Monat (leer = aktueller Monat)."},
-  {"fieldname": "hinweis_zeitnachweis", "fieldtype": "HTML", "label": "Hinweis", "options": "<p style=\"font-size:12px\" class=\"text-muted\">Button „Monatsübersicht“ zeigt Soll/Ist; Bericht „PH Monatsstunden“ für alle Mitarbeiter. Keine Prüfung nach Arbeitszeitgesetz – nur Erfassung und Summen.</p>"},
-  {"fieldname": "tab_system", "fieldtype": "Tab Break", "label": "System"},
-  {"fieldname": "bewerbung", "fieldtype": "Link", "label": "Aus Bewerbung", "options": "PH Bewerbung", "read_only": 1},
-  {"fieldname": "beispiel", "fieldtype": "Check", "label": "Beispiel-/Testdatensatz", "default": "0"}
+  {
+   "fieldname": "tab_stammdaten",
+   "fieldtype": "Tab Break",
+   "label": "Stammdaten"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-MA-.####",
+   "default": "PH-MA-.####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Name",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "vorname",
+   "fieldtype": "Data",
+   "label": "Vorname",
+   "reqd": 1
+  },
+  {
+   "fieldname": "nachname",
+   "fieldtype": "Data",
+   "label": "Nachname",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aktiv\nKarenz\nAusgetreten",
+   "default": "Aktiv",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "foto",
+   "fieldtype": "Attach Image",
+   "label": "Foto"
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "Benutzer (Desk-Login)",
+   "options": "User",
+   "unique": 1,
+   "description": "Verknüpfung schaltet den Selbstservice frei: eigene Zeiterfassung und Abwesenheitsanträge (Rolle PH Personal Selbstservice, User Permission auf diesen Datensatz)."
+  },
+  {
+   "fieldname": "rolle_intern",
+   "fieldtype": "Select",
+   "label": "Rolle",
+   "options": "Geschaeftsfuehrung\nVerkauf\nPlanung\nMontage\nVerwaltung\nLehrling",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "eintritt",
+   "fieldtype": "Date",
+   "label": "Eintritt",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "austritt",
+   "fieldtype": "Date",
+   "label": "Austritt"
+  },
+  {
+   "fieldname": "sb_teams",
+   "fieldtype": "Section Break",
+   "label": "Teams und Berechtigungen"
+  },
+  {
+   "fieldname": "team_verkauf",
+   "fieldtype": "Check",
+   "label": "Team Verkauf",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "team_planung",
+   "fieldtype": "Check",
+   "label": "Team Planung",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "team_montage",
+   "fieldtype": "Check",
+   "label": "Team Montage",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_teams",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fahrzeugberechtigung",
+   "fieldtype": "Check",
+   "label": "Fahrzeugberechtigung (Firmenfahrzeuge)",
+   "description": "Vor Freigabe Führerschein prüfen (Halterpflicht § 103 KFG)."
+  },
+  {
+   "fieldname": "fuehrerschein_klassen",
+   "fieldtype": "Data",
+   "label": "Führerscheinklassen",
+   "depends_on": "fahrzeugberechtigung",
+   "description": "z. B. B, BE, C1"
+  },
+  {
+   "fieldname": "sb_arbeitszeit",
+   "fieldtype": "Section Break",
+   "label": "Arbeitszeit und Kontakt"
+  },
+  {
+   "fieldname": "beschaeftigungsart",
+   "fieldtype": "Select",
+   "label": "Beschäftigungsausmaß",
+   "options": "Vollzeit\nTeilzeit\nGeringfuegig\nLehre\nPraktikum",
+   "default": "Vollzeit"
+  },
+  {
+   "fieldname": "wochenstunden",
+   "fieldtype": "Float",
+   "label": "Wochenstunden",
+   "precision": "2",
+   "description": "Leer = Normalarbeitszeit aus PH Personal Einstellungen (38,5)."
+  },
+  {
+   "fieldname": "urlaubsanspruch_tage",
+   "fieldtype": "Int",
+   "label": "Abweichender Urlaubsanspruch (Arbeitstage/Jahr)",
+   "description": "Leer = gesetzlich nach UrlG (5 bzw. 6 Wochen × Arbeitstage je Woche laut Arbeitszeitmodell). Nur bei vertraglich höherem Anspruch befüllen."
+  },
+  {
+   "fieldname": "vordienstzeiten_jahre",
+   "fieldtype": "Int",
+   "label": "Angerechnete Vordienstzeiten (Jahre)",
+   "description": "Für den 6-Wochen-Anspruch nach 25 Dienstjahren (§ 3 UrlG, max. 5 Jahre bei anderen Arbeitgebern)."
+  },
+  {
+   "fieldname": "ueberstunden_abgeltung",
+   "fieldtype": "Select",
+   "label": "Abgeltung Mehr-/Überstunden",
+   "options": "Zeitausgleich\nAuszahlung\nGleitzeit",
+   "default": "Zeitausgleich",
+   "description": "Zeitausgleich: Überstunden 1 : 1,5 (§ 10 AZG); Gleitzeit 1 : 1 nur mit Gleitzeitvereinbarung (§ 4b AZG); Auszahlung: Rohdaten an die Lohnverrechnung."
+  },
+  {
+   "fieldname": "cb_arbeitszeit",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email_dienst",
+   "fieldtype": "Data",
+   "label": "E-Mail (dienstlich)",
+   "options": "Email"
+  },
+  {
+   "fieldname": "telefon_dienst",
+   "fieldtype": "Data",
+   "label": "Telefon (dienstlich)",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "sb_modell",
+   "fieldtype": "Section Break",
+   "label": "Arbeitszeitmodell (mit Gültigkeit)",
+   "description": "Minuten je Wochentag; das am jeweiligen Tag gültige Modell bestimmt Soll, Urlaubstage und Feiertagsgutschrift. Ohne Zeile: Wochenstunden gleich auf Mo–Fr."
+  },
+  {
+   "fieldname": "arbeitszeiten",
+   "fieldtype": "Table",
+   "label": "Arbeitszeitmodelle",
+   "options": "PH Mitarbeiter Arbeitszeit"
+  },
+  {
+   "fieldname": "tab_vertraulich",
+   "fieldtype": "Tab Break",
+   "label": "Vertraulich (Leitung)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "geburtsdatum",
+   "fieldtype": "Date",
+   "label": "Geburtsdatum",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "privatadresse",
+   "fieldtype": "Small Text",
+   "label": "Privatadresse",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "telefon_privat",
+   "fieldtype": "Data",
+   "label": "Telefon (privat)",
+   "options": "Phone",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "email_privat",
+   "fieldtype": "Data",
+   "label": "E-Mail (privat)",
+   "options": "Email",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "cb_vertraulich",
+   "fieldtype": "Column Break",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "notfallkontakt_name",
+   "fieldtype": "Data",
+   "label": "Notfallkontakt – Name",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "notfallkontakt_telefon",
+   "fieldtype": "Data",
+   "label": "Notfallkontakt – Telefon",
+   "options": "Phone",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "notfallkontakt_beziehung",
+   "fieldtype": "Data",
+   "label": "Notfallkontakt – Beziehung",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "hinweise_vertraulich",
+   "fieldtype": "Text",
+   "label": "Vertrauliche Hinweise",
+   "permlevel": 1,
+   "description": "Keine Gesundheitsdaten ohne Erfordernis (Art 9 DSGVO)."
+  },
+  {
+   "fieldname": "lohnverrechnung_personalnummer",
+   "fieldtype": "Data",
+   "label": "Personalnummer Lohnverrechnung",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "tab_zeitnachweis",
+   "fieldtype": "Tab Break",
+   "label": "Zeitnachweis"
+  },
+  {
+   "fieldname": "zeitnachweis_monat",
+   "fieldtype": "Date",
+   "label": "Monat für Zeitnachweis-Druck",
+   "description": "Veraltet: Druck über ph_personal.api.zeitnachweis_pdf (ändert den Datensatz nicht). Bleibt als Rückfall für den Desk-Druck."
+  },
+  {
+   "fieldname": "hinweis_zeitnachweis",
+   "fieldtype": "HTML",
+   "label": "Hinweis",
+   "options": "<p style=\"font-size:12px\" class=\"text-muted\">Button „Monatsübersicht“ zeigt Soll/Ist; Bericht „PH Monatsstunden“ für alle Mitarbeiter. Keine Prüfung nach Arbeitszeitgesetz – nur Erfassung und Summen.</p>"
+  },
+  {
+   "fieldname": "tab_eintritt",
+   "fieldtype": "Tab Break",
+   "label": "Ein-/Austritt"
+  },
+  {
+   "fieldname": "sb_nachweise",
+   "fieldtype": "Section Break",
+   "label": "Nachweise Eintritt",
+   "description": "ÖGK-Anmeldung vor Arbeitsantritt (§ 33 ASVG), Dienstzettel unverzüglich (§ 2 AVRAG), Datenschutzinformation (Art. 13 DSGVO), Unterweisung (§ 14 ASchG)."
+  },
+  {
+   "fieldname": "oegk_anmeldung_am",
+   "fieldtype": "Date",
+   "label": "ÖGK-Anmeldung am"
+  },
+  {
+   "fieldname": "dienstzettel_am",
+   "fieldtype": "Date",
+   "label": "Dienstzettel/Dienstvertrag übergeben am"
+  },
+  {
+   "fieldname": "cb_nachweise",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "datenschutzinfo_am",
+   "fieldtype": "Date",
+   "label": "Datenschutzinformation Beschäftigte am"
+  },
+  {
+   "fieldname": "unterweisung_am",
+   "fieldtype": "Date",
+   "label": "Sicherheitsunterweisung am"
+  },
+  {
+   "fieldname": "sb_austritt",
+   "fieldtype": "Section Break",
+   "label": "Nachweise Austritt"
+  },
+  {
+   "fieldname": "oegk_abmeldung_am",
+   "fieldtype": "Date",
+   "label": "ÖGK-Abmeldung am",
+   "description": "Binnen 7 Tagen nach Ende (§ 33 ASVG)."
+  },
+  {
+   "fieldname": "zugang_entzogen_am",
+   "fieldtype": "Datetime",
+   "label": "Zugang entzogen am",
+   "read_only": 1,
+   "description": "Benutzer deaktiviert, Kassa-PIN gelöscht, Sitzungen beendet (Scheduler am Austrittstag)."
+  },
+  {
+   "fieldname": "cb_austritt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dienstzeugnis_am",
+   "fieldtype": "Date",
+   "label": "Dienstzeugnis ausgestellt am"
+  },
+  {
+   "fieldname": "notfallkontakt_geloescht_am",
+   "fieldtype": "Datetime",
+   "label": "Vertrauliche Kontaktdaten gelöscht am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_checkliste",
+   "fieldtype": "Section Break",
+   "label": "Checkliste"
+  },
+  {
+   "fieldname": "onboarding_vorlage",
+   "fieldtype": "Link",
+   "label": "Vorlage",
+   "options": "PH Onboarding Vorlage"
+  },
+  {
+   "fieldname": "checkliste",
+   "fieldtype": "Table",
+   "label": "Aufgaben",
+   "options": "PH Mitarbeiter Checkliste"
+  },
+  {
+   "fieldname": "sb_arbeitsmittel",
+   "fieldtype": "Section Break",
+   "label": "Arbeitsmittel"
+  },
+  {
+   "fieldname": "arbeitsmittel",
+   "fieldtype": "Table",
+   "label": "Ausgegebene Arbeitsmittel",
+   "options": "PH Mitarbeiter Arbeitsmittel"
+  },
+  {
+   "fieldname": "tab_dokumente",
+   "fieldtype": "Tab Break",
+   "label": "Dokumente",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "dokumente",
+   "fieldtype": "Table",
+   "label": "Personalakt-Dokumente (privat)",
+   "options": "PH Mitarbeiter Dokument",
+   "permlevel": 1,
+   "description": "Dienstvertrag, Dienstzettel, Zeugnisse … – Dateien werden immer privat gespeichert; sichtbar nur für Personal-Leitung und Geschäftsführung."
+  },
+  {
+   "fieldname": "tab_system",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "bewerbung",
+   "fieldtype": "Link",
+   "label": "Aus Bewerbung",
+   "options": "PH Bewerbung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "beispiel",
+   "fieldtype": "Check",
+   "label": "Beispiel-/Testdatensatz",
+   "default": "0"
+  }
  ],
  "image_field": "foto",
  "index_web_pages_for_search": 0,
  "links": [
-  {"link_doctype": "PH Zeiterfassung", "link_fieldname": "mitarbeiter", "group": "Zeit"},
-  {"link_doctype": "PH Abwesenheit", "link_fieldname": "mitarbeiter", "group": "Zeit"}
+  {
+   "link_doctype": "PH Zeiterfassung",
+   "link_fieldname": "mitarbeiter",
+   "group": "Zeit"
+  },
+  {
+   "link_doctype": "PH Abwesenheit",
+   "link_fieldname": "mitarbeiter",
+   "group": "Zeit"
+  }
  ],
- "modified": "2026-11-04 00:30:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Personal",
  "name": "PH Mitarbeiter",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
-  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Backoffice-Admin", "read": 1, "write": 1, "create": 1, "delete": 0, "print": 0, "email": 0, "export": 0, "report": 1, "share": 1},
-  {"role": "PH Geschäftsführung", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 1, "email": 0, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Personal Leitung", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Personal Mitarbeiter", "read": 1, "write": 1, "create": 1, "delete": 0, "print": 1, "email": 0, "export": 0, "report": 1, "share": 0},
-  {"role": "PH Personal Selbstservice", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 1, "email": 0, "export": 0, "report": 0, "share": 0},
-  {"role": "System Manager", "permlevel": 1, "read": 1, "write": 1},
-  {"role": "PH Personal Leitung", "permlevel": 1, "read": 1, "write": 1},
-  {"role": "PH Geschäftsführung", "permlevel": 1, "read": 1}
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Personal Selbstservice",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1
+  }
  ],
  "search_fields": "vorname,nachname,rolle_intern,email_dienst",
  "sort_field": "nachname",
  "sort_order": "ASC",
  "states": [
-  {"title": "Aktiv", "color": "Green"},
-  {"title": "Karenz", "color": "Orange"},
-  {"title": "Ausgetreten", "color": "Gray"}
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Karenz",
+   "color": "Orange"
+  },
+  {
+   "title": "Ausgetreten",
+   "color": "Gray"
+  }
  ],
  "title_field": "titel",
  "track_changes": 1,

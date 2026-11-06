@@ -58,6 +58,11 @@ frappe.ui.form.on("PH Kasse", {
 				if (r.message) frappe.set_route("Form", "PH Kassenbeleg", r.message);
 			});
 			frm.add_custom_button(__("Nullbeleg"), () => nullbeleg("Nullbeleg"), __("Aktionen"));
+			const pruefung = (methode, titel) => frappe.prompt([{ fieldname: "datum", fieldtype: "Date", label: __("Geprüft am"), default: frappe.datetime.get_today(), reqd: 1 }, { fieldname: "nachweis", fieldtype: "Attach", label: __("Nachweis (Screenshot BMF-App)") }], (v) => frm.call({ method: methode, doc: frm.doc, args: v }).then(() => frm.reload_doc()), titel);
+			if (frm.doc.startbeleg && !frm.doc.startbeleg_geprueft_am) frm.add_custom_button(__("Startbeleg geprüft (BMF-App)"), () => pruefung("startbeleg_geprueft", __("Startbeleg geprüft")), __("FinanzOnline"));
+			frm.add_custom_button(__("Jahresbeleg geprüft (BMF-App)"), () => pruefung("jahresbeleg_geprueft", __("Jahresbeleg geprüft")), __("FinanzOnline"));
+			frm.add_custom_button(__("Kassenausfall melden"), () => frappe.prompt({ fieldname: "notiz", fieldtype: "Small Text", label: __("Notiz") }, (v) => frm.call({ method: "kassenausfall_melden", doc: frm.doc, args: v }).then(() => frm.reload_doc())), __("Ausfall"));
+			frm.add_custom_button(__("Kassenausfall beenden"), () => frm.call({ method: "kassenausfall_beenden", doc: frm.doc }).then((r) => { frm.reload_doc(); if (r.message && r.message.meldepflicht) frappe.msgprint(__("Ausfall über 48 h: binnen einer Woche in FinanzOnline melden.")); }), __("Ausfall"));
 			if (leitung) {
 				frm.add_custom_button(__("Monatsbeleg"), () => frappe.confirm(__("Monatsbeleg manuell erzeugen? (Automatisch am Monatsletzten 23:50.)"), () => nullbeleg("Monatsbeleg")), __("Aktionen"));
 				frm.add_custom_button(__("Jahresbeleg"), () => frappe.confirm(__("Jahresbeleg erzeugen? Nur am 31.12. bzw. als letzter Beleg des Jahres; danach bis 15.02. mit der BMF-App prüfen."), () => nullbeleg("Jahresbeleg")), __("Aktionen"));

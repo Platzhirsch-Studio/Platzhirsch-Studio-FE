@@ -1,0 +1,24 @@
+# Website: platzhirsch.studio → Next.js :3000 (Container oder systemd/PM2, nur 127.0.0.1).
+# Kanonisch ist heute die Apex-Domain (www → Apex, wie die bestehende nginx-Konfiguration und
+# PH Einstellungen.website_url). Soll www kanonisch werden: die beiden Blöcke tauschen UND
+# BASE_URL/NEXT_PUBLIC_SITE_URL, Sitemaps, Canonicals prüfen.
+
+www.platzhirsch.studio {
+	redir https://platzhirsch.studio{uri} permanent
+}
+
+platzhirsch.studio {
+	import sicherheit
+	import zugriffslog website
+	request_body {
+		max_size 25MB
+	}
+	# /cmx: die Route setzt "immutable" nur auf 200 und "no-store" auf 429/502/504 selbst;
+	# ein 404 kommt ohne Cache-Control (nicht langzeit-gecacht). Kein Zusatz nötig.
+	reverse_proxy 127.0.0.1:3000 {
+		import proxy_header
+		transport http {
+			read_timeout 120s
+		}
+	}
+}

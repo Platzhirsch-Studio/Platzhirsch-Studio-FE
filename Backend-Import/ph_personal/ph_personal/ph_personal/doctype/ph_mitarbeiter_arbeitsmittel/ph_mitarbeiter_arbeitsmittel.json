@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Ausgegebene Arbeitsmittel (Rückgabe bei Austritt).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "art",
+  "bezeichnung",
+  "kennung",
+  "geraet",
+  "ausgegeben_am",
+  "zurueck_am",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Schlüssel\nFahrzeug\nTablet\nTelefon\nLaptop\nWerkzeug\nArbeitskleidung\nZutrittskarte\nSonstiges",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "kennung",
+   "fieldtype": "Data",
+   "label": "Kennung / Seriennr. / Kennzeichen",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "geraet",
+   "fieldtype": "Link",
+   "label": "Registriertes Gerät",
+   "options": "PH Geraet"
+  },
+  {
+   "fieldname": "ausgegeben_am",
+   "fieldtype": "Date",
+   "label": "Ausgegeben am",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "zurueck_am",
+   "fieldtype": "Date",
+   "label": "Zurück am",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Mitarbeiter Arbeitsmittel",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

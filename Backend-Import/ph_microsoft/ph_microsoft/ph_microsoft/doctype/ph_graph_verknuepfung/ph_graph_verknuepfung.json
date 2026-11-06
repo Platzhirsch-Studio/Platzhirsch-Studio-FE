@@ -1,0 +1,213 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Zuordnung Backoffice-Vorgang ↔ Outlook-Objekt (Ereignis, Belegt-Spiegel, Kontakt) für den Abgleich.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "art",
+  "status",
+  "referenz_doctype",
+  "referenz_name",
+  "user",
+  "cb_1",
+  "outlook_adresse",
+  "graph_id",
+  "ical_uid",
+  "change_key",
+  "inhalt_hash",
+  "sb_zeit",
+  "start",
+  "ende",
+  "teams_link",
+  "cb_2",
+  "frappe_event",
+  "letzte_sync",
+  "letzter_fehler"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Kalender\nBelegt\nKontakt",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aktiv\nKonflikt\nFehler\nGeloescht",
+   "default": "Aktiv",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "referenz_doctype",
+   "fieldtype": "Link",
+   "label": "Vorgang (DocType)",
+   "options": "DocType",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "referenz_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Vorgang",
+   "options": "referenz_doctype"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "Mitarbeiter",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "outlook_adresse",
+   "fieldtype": "Data",
+   "label": "Outlook-Postfach"
+  },
+  {
+   "fieldname": "graph_id",
+   "fieldtype": "Data",
+   "label": "Graph-ID",
+   "length": 255,
+   "search_index": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "ical_uid",
+   "fieldtype": "Small Text",
+   "label": "iCalUId",
+   "read_only": 1
+  },
+  {
+   "fieldname": "change_key",
+   "fieldtype": "Data",
+   "label": "changeKey",
+   "read_only": 1
+  },
+  {
+   "fieldname": "inhalt_hash",
+   "fieldtype": "Data",
+   "label": "Inhalt (Hash)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_zeit",
+   "fieldtype": "Section Break",
+   "label": "Abgleich"
+  },
+  {
+   "fieldname": "start",
+   "fieldtype": "Datetime",
+   "label": "Beginn (zuletzt abgeglichen)"
+  },
+  {
+   "fieldname": "ende",
+   "fieldtype": "Datetime",
+   "label": "Ende (zuletzt abgeglichen)"
+  },
+  {
+   "fieldname": "teams_link",
+   "fieldtype": "Small Text",
+   "label": "Teams-Link"
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "frappe_event",
+   "fieldtype": "Link",
+   "label": "Frappe-Event (Belegt)",
+   "options": "Event"
+  },
+  {
+   "fieldname": "letzte_sync",
+   "fieldtype": "Datetime",
+   "label": "Letzter Abgleich"
+  },
+  {
+   "fieldname": "letzter_fehler",
+   "fieldtype": "Small Text",
+   "label": "Letzter Fehler"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Microsoft",
+ "name": "PH Graph Verknuepfung",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ],
+ "search_fields": "art,user,status",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Konflikt",
+   "color": "Orange"
+  },
+  {
+   "title": "Fehler",
+   "color": "Red"
+  },
+  {
+   "title": "Geloescht",
+   "color": "Gray"
+  }
+ ],
+ "title_field": "titel",
+ "track_changes": 0
+}

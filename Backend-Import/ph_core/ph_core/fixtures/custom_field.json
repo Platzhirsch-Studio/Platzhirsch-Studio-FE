@@ -1,0 +1,78 @@
+[
+ {
+  "doctype": "Custom Field",
+  "name": "User-ph_core_sb_bediener",
+  "dt": "User",
+  "module": "PH Core",
+  "fieldname": "ph_core_sb_bediener",
+  "label": "Platzhirsch Bediener (Kassa/Packtisch)",
+  "fieldtype": "Section Break",
+  "insert_after": "user_type",
+  "collapsible": 1,
+  "description": "PIN für den Bedienerwechsel am Kiosk (ph_core.api.bediener.set_pin) – hier liegt nur der Hash."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "User-ph_core_kurzname",
+  "dt": "User",
+  "module": "PH Core",
+  "fieldname": "ph_core_kurzname",
+  "label": "Kurzname (Bon/Bedieneranzeige)",
+  "fieldtype": "Data",
+  "insert_after": "ph_core_sb_bediener",
+  "length": 40,
+  "description": "Erscheint auf Kassenbon und im Kiosk-Kopf, z. B. „Anna“."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "User-ph_core_standort",
+  "dt": "User",
+  "module": "PH Core",
+  "fieldname": "ph_core_standort",
+  "label": "Standort (Bediener)",
+  "fieldtype": "Data",
+  "insert_after": "ph_core_kurzname",
+  "length": 140,
+  "description": "Leer = an allen Standorten wählbar; sonst nur an Geräten dieses Standorts (PH Geraet.standort)."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "User-ph_core_cb_bediener",
+  "dt": "User",
+  "module": "PH Core",
+  "fieldname": "ph_core_cb_bediener",
+  "fieldtype": "Column Break",
+  "insert_after": "ph_core_standort"
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "User-ph_core_pin_gesetzt_am",
+  "dt": "User",
+  "module": "PH Core",
+  "fieldname": "ph_core_pin_gesetzt_am",
+  "label": "PIN gesetzt am",
+  "fieldtype": "Datetime",
+  "insert_after": "ph_core_cb_bediener",
+  "read_only": 1,
+  "no_copy": 1,
+  "description": "Leer = keine PIN; setzen über das Backoffice oder ph_core.api.bediener.set_pin."
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "User-ph_core_pin_hash",
+  "dt": "User",
+  "module": "PH Core",
+  "fieldname": "ph_core_pin_hash",
+  "label": "PIN-Hash (PBKDF2)",
+  "fieldtype": "Data",
+  "insert_after": "ph_core_pin_gesetzt_am",
+  "hidden": 1,
+  "read_only": 1,
+  "no_copy": 1,
+  "print_hide": 1,
+  "report_hide": 1,
+  "length": 140,
+  "permlevel": 1,
+  "description": "PBKDF2-Hash der Bediener-PIN. permlevel 1 ohne Leserecht für Rollen → wird nie über /api/resource ausgeliefert; nur Servercode (ph_core.api.bediener) liest ihn per frappe.db."
+ }
+]

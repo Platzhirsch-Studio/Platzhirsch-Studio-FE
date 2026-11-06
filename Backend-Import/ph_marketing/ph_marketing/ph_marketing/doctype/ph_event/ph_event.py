@@ -44,6 +44,12 @@ class PHEvent(Document):
     def on_update(self):
         # Offen ↔ Ausgebucht automatisch nach Plätzen – per db_set am Workflow vorbei (Website-Benutzer/Scheduler haben keine Transition).
         events.status_nach_plaetzen(self)
+        # Warteliste automatisch nachrücken, wenn Plätze frei wurden (Absage, Kapazität erhöht)
+        if not self.flags.kein_nachruecken:
+            try:
+                events.nachruecken(self)
+            except Exception:  # noqa: BLE001
+                frappe.log_error(title=f"PH Event Nachrücken {self.name}")
         # neue Zeilen aus dem Desk: Bestätigung senden (Website-Anmeldungen senden in events.anmelden)
         for a in self.anmeldungen:
             if a.quelle != "website" and not a.bestaetigung_gesendet_am and a.status in ("angemeldet", "bestaetigt", "warteliste") and a.email and not str(a.email).endswith(".invalid"):
@@ -69,12 +75,86 @@ class PHEvent(Document):
     def teilnehmer_status(self, zeile, status):
         """Check-in am Abend: erschienen / nicht erschienen."""
         self.check_permission("write")
-        if status not in ("erschienen", "nicht erschienen", "bestaetigt", "abgesagt"):
+        if status not in ("erschienen", "nicht erschienen", "bestaetigt", "abgesagt", "angemeldet"):
             frappe.throw(_("Ungültiger Status."))
-        frappe.db.set_value("PH Event Anmeldung", zeile, "status", status)
+        a = next((x for x in self.anmeldungen if x.name == zeile), None)
+        if not a:
+            frappe.throw(_("Anmeldung nicht gefunden."))
+        if status == "erschienen":
+            from ph_marketing.ph_marketing import checkin
+
+            return checkin.einchecken(event=self.name, zeile=zeile)["status"]
+        if status == "angemeldet" and a.status == "warteliste":
+            # Nachrücken von Hand (Konzept L19) – Kapazität/Kontingent prüfen
+            if events.ist_ausgebucht(self, a.personen, eingeladen=bool(a.get("eingeladen"))):
+                frappe.throw(_("Nicht genug freie Plätze für {0} Personen.").format(a.personen))
+            frappe.db.set_value("PH Event Anmeldung", zeile, {"status": "angemeldet", "nachgerueckt_am": now_datetime()})
+        elif status == "angemeldet":
+            frappe.throw(_("„angemeldet“ nur von der Warteliste aus."))
+        else:
+            frappe.db.set_value("PH Event Anmeldung", zeile, "status", status)
         self.reload()
         events.status_nach_plaetzen(self)
+        if status == "abgesagt":
+            events.nachruecken(self)
         return status
+
+    @frappe.whitelist()
+    def check_in(self, code=None, zeile=None, personen=None):
+        """Einlass: QR-Code scannen (code) oder Zeile wählen. Doppel-Check-in → status „bereits“."""
+        self.check_permission("write")
+        from ph_marketing.ph_marketing import checkin
+
+        if code:
+            r = checkin.einchecken(code=code, personen=personen)
+            if r.get("event") and r["event"] != self.name:
+                return {"status": "anderes_event", "event": r["event"]}
+            return r
+        return checkin.einchecken(event=self.name, zeile=zeile, personen=personen)
+
+    @frappe.whitelist()
+    def checkin_stand(self):
+        from ph_marketing.ph_marketing import checkin
+
+        return checkin.stand(self.name)
+
+    @frappe.whitelist()
+    def ticket_qr(self, zeile):
+        """QR-Code (SVG) einer Anmeldung für Ticket-Druck/Anzeige."""
+        self.check_permission("read")
+        from ph_marketing.ph_marketing import checkin
+
+        if not any(a.name == zeile for a in self.anmeldungen):
+            frappe.throw(_("Anmeldung nicht gefunden."))
+        return {"code": checkin.code_fuer(self.name, zeile), "svg": checkin.qr_svg(self.name, zeile)}
+
+    @frappe.whitelist()
+    def einladungen_senden(self, trockenlauf=1, limit=500):
+        """Einladung an das Segment (Zweck einladungen); trockenlauf=1 zählt nur. Senden nur Leitung."""
+        self.check_permission("write")
+        if not cint(trockenlauf) and not ({"PH Marketing Leitung", "System Manager"} & set(frappe.get_roles())):
+            frappe.throw(_("Nur die Leitung versendet Einladungen."))
+        r = events.einladungen_senden(self, trockenlauf=cint(trockenlauf), limit=limit)
+        if not cint(trockenlauf):
+            self.add_comment("Info", _("Einladungen gesendet: {0}").format(r["gesendet"]))
+        return r
+
+    @frappe.whitelist()
+    def nachruecken_jetzt(self):
+        self.check_permission("write")
+        return events.nachruecken(self)
+
+    @frappe.whitelist()
+    def absage_senden(self, hinweis=None):
+        """Nach Workflow „Absagen“: Teilnehmer per Mail informieren (Leitung)."""
+        self.check_permission("write")
+        if self.status != "Abgesagt":
+            frappe.throw(_("Absage-Mail erst, wenn das Event abgesagt ist."))
+        if not ({"PH Marketing Leitung", "System Manager"} & set(frappe.get_roles())):
+            frappe.throw(_("Nur die Leitung informiert über die Absage."))
+        n = events.absage_an_teilnehmer(self, hinweis)
+        self.add_comment("Info", _("Absage an {0} Teilnehmer gesendet").format(n))
+        return n
 
     @frappe.whitelist()
     def als_durchgefuehrt(self):

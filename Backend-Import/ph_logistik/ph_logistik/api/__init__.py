@@ -239,3 +239,43 @@ def retourenlabel(retoure):
 
     frappe.has_permission("PH Sendung", "create", throw=True)
     return retourenlabel_fuer_retoure(retoure).name
+
+
+@frappe.whitelist(allow_guest=False, methods=["GET", "POST"])
+@ph_api(limit_pro_minute=60)
+def get_ausstellungsstuecke(lagerort=None, marke=None, **_rest):
+    """Website „Abverkauf/Ausstellungsstücke“: verfügbare Ausstellungsstücke ohne EK, Preis nur als Abverkaufspreis
+    (vk_cent_ausstellung; 0 → amount null, „auf Anfrage“). Reservierte Stücke erscheinen mit reserviert=true."""
+    filt = {"ausstellungsstueck": 1, "status": ("in", ["Verfuegbar", "Reserviert"]), "gesperrt": 0}
+    if lagerort:
+        filt["lagerort"] = lagerort
+    if marke:
+        filt["marke"] = marke
+    rows = frappe.get_all("PH Lagerbestand", filt, ["name", "produkt", "produkt_name", "marke", "zustand", "lagerort", "vk_cent_ausstellung", "waehrung", "status", "eingang_am"], order_by="eingang_am desc", limit=500)
+    from ph_logistik.ph_logistik.helfer import produkt_info
+
+    aus = []
+    for r in rows:
+        info = produkt_info(r.produkt)
+        cent = int(r.vk_cent_ausstellung or 0)
+        aus.append({
+            "id": r.name, "produkt": r.produkt, "slug": info.get("slug") or r.produkt, "name": r.produkt_name, "marke": r.marke, "zustand": r.zustand,
+            "standort": r.lagerort, "bild": info.get("bild"), "amount": cent or None, "currency": r.waehrung or "EUR", "amountNote": None if cent else "auf Anfrage",
+            "reserviert": r.status == "Reserviert",
+        })
+    return {"ausstellungsstuecke": aus, "anzahl": len(aus)}
+
+
+@frappe.whitelist()
+def speditionsauftrag_aus_herstellerbestellung(herstellerbestellung, richtung="Hersteller an Lager"):
+    """Button an PH Herstellerbestellung (ph_sortiment, Client-Script dort oder hier): Abholung beim Hersteller beauftragen."""
+    from ph_logistik.ph_logistik.doctype.ph_speditionsauftrag.ph_speditionsauftrag import aus_herstellerbestellung
+
+    return aus_herstellerbestellung(herstellerbestellung, richtung)
+
+
+@frappe.whitelist()
+def warenruecknahme_aus_lieferschein(lieferschein):
+    from ph_logistik.ph_logistik.doctype.ph_warenruecknahme.ph_warenruecknahme import aus_lieferschein
+
+    return aus_lieferschein(lieferschein)

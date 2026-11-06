@@ -1,0 +1,180 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kampagne",
+  "art",
+  "zeit",
+  "email",
+  "kontakt",
+  "cb_1",
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "klick_id",
+  "sb_ref",
+  "referenz_doctype",
+  "referenz_name",
+  "idempotency_key"
+ ],
+ "fields": [
+  {
+   "fieldname": "kampagne",
+   "fieldtype": "Link",
+   "label": "Kampagne",
+   "options": "PH Kampagne",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Anfrage\nNewsletter-Anmeldung\nEvent-Anmeldung\nTermin\nBestellung\nSonstige",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "zeit",
+   "fieldtype": "Datetime",
+   "label": "Zeit",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email"
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "utm_source",
+   "fieldtype": "Data",
+   "label": "utm_source"
+  },
+  {
+   "fieldname": "utm_medium",
+   "fieldtype": "Data",
+   "label": "utm_medium"
+  },
+  {
+   "fieldname": "utm_campaign",
+   "fieldtype": "Data",
+   "label": "utm_campaign",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "utm_content",
+   "fieldtype": "Data",
+   "label": "utm_content"
+  },
+  {
+   "fieldname": "utm_term",
+   "fieldtype": "Data",
+   "label": "utm_term"
+  },
+  {
+   "fieldname": "klick_id",
+   "fieldtype": "Data",
+   "label": "Klick-ID (gclid/fbclid/msclkid)",
+   "description": "Aus PH Anfrage.klick_id (ph_crm); nur für Abgleich mit Werbeplattform, wird nach 25 Monaten anonymisiert."
+  },
+  {
+   "fieldname": "sb_ref",
+   "fieldtype": "Section Break",
+   "label": "Bezug"
+  },
+  {
+   "fieldname": "referenz_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug (Typ)",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "referenz_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "referenz_doctype"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "unique": 1,
+   "read_only": 1,
+   "hidden": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Kampagne Kontaktpunkt",
+ "owner": "Administrator",
+ "sort_field": "zeit",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "autoname": "hash",
+ "naming_rule": "Random",
+ "title_field": "utm_campaign",
+ "search_fields": "kampagne,utm_campaign,email",
+ "in_create": 1,
+ "track_seen": 0,
+ "description": "Kontaktpunkt einer Person mit einer Kampagne (UTM aus Website-Formular) – Grundlage der Attribution First/Last/Linear."
+}

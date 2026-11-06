@@ -8,6 +8,21 @@
  "engine": "InnoDB",
  "field_order": [
   "bezeichnung",
+  "pos_nr",
+  "hersteller_artikelnr",
+  "marke",
+  "lieferant",
+  "kategorie",
+  "breite_mm",
+  "hoehe_mm",
+  "tiefe_mm",
+  "ek_cent",
+  "storniert",
+  "storno_grund",
+  "projekt_zeile",
+  "lieferstatus",
+  "herstellerbestellung",
+  "liefertermin",
   "produkt",
   "ausfuehrung_text",
   "menge",
@@ -22,6 +37,95 @@
    "reqd": 1,
    "in_list_view": 1,
    "columns": 4
+  },
+  {
+   "fieldname": "pos_nr",
+   "fieldtype": "Data",
+   "label": "Pos.",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "hersteller_artikelnr",
+   "fieldtype": "Data",
+   "label": "Artikel-/Typnr.",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke"
+  },
+  {
+   "fieldname": "lieferant",
+   "fieldtype": "Link",
+   "label": "Lieferant",
+   "options": "PH Lieferant"
+  },
+  {
+   "fieldname": "kategorie",
+   "fieldtype": "Data",
+   "label": "Kategorie",
+   "description": "Korpus, Front, Arbeitsplatte, Gerät, Zubehör …"
+  },
+  {
+   "fieldname": "breite_mm",
+   "fieldtype": "Int",
+   "label": "Breite (mm)"
+  },
+  {
+   "fieldname": "hoehe_mm",
+   "fieldtype": "Int",
+   "label": "Höhe (mm)"
+  },
+  {
+   "fieldname": "tiefe_mm",
+   "fieldtype": "Int",
+   "label": "Tiefe (mm)"
+  },
+  {
+   "fieldname": "ek_cent",
+   "fieldtype": "Int",
+   "label": "EK (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "storniert",
+   "fieldtype": "Check",
+   "label": "storniert",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "storno_grund",
+   "fieldtype": "Data",
+   "label": "Storno-Grund"
+  },
+  {
+   "fieldname": "projekt_zeile",
+   "fieldtype": "Data",
+   "label": "Projektposition (Zeile)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lieferstatus",
+   "fieldtype": "Select",
+   "label": "Bestellstatus (aus Projekt)",
+   "options": "\noffen\nbestellt\nbestaetigt\nteilgeliefert\ngeliefert\nmontiert\nstorniert",
+   "read_only": 1
+  },
+  {
+   "fieldname": "herstellerbestellung",
+   "fieldtype": "Link",
+   "label": "Herstellerbestellung",
+   "options": "PH Herstellerbestellung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "liefertermin",
+   "fieldtype": "Date",
+   "label": "Liefertermin",
+   "read_only": 1
   },
   {
    "fieldname": "produkt",
@@ -62,7 +166,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Projekte",
  "name": "PH Planung Position",

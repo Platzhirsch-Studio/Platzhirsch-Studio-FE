@@ -105,3 +105,17 @@ def mail_senden(empfaenger, betreff, html, referenz_doctype=None, referenz_name=
     except Exception:  # noqa: BLE001
         frappe.log_error(title="ph_logistik: Mailversand fehlgeschlagen")
         return False
+
+
+def idempotent(schluessel, fn, ttl_sekunden=172800):
+    """Wiederholte Aufrufe mit gleichem Schlüssel (Offline-Puffer, Doppelklick) liefern das erste Ergebnis, ohne erneut auszuführen.
+    Ohne Schlüssel: direkt ausführen. Speicher: Redis-Cache (48 h) – reicht für Puffer, ist kein Journal."""
+    if not schluessel:
+        return fn()
+    key = f"ph_logistik:idem:{schluessel}"
+    alt = frappe.cache().get_value(key)
+    if alt is not None:
+        return alt
+    ergebnis = fn()
+    frappe.cache().set_value(key, ergebnis if ergebnis is not None else True, expires_in_sec=ttl_sekunden)
+    return ergebnis

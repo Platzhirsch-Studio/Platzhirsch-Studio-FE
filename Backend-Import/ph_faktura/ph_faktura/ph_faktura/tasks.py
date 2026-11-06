@@ -39,7 +39,7 @@ def mahnlauf_automatisch():
     return mahnlauf()
 
 
-def mahnlauf(stichtag=None, nur_vorschlag=False):
+def mahnlauf(stichtag=None, nur_vorschlag=False, rechnungen=None):
     """Mahnlauf: überfällige Rechnungen → nächste Mahnstufe (Entwurf oder gesendet laut Einstellung).
     → Liste {rechnung, stufe, offen_cent, mahnung}"""
     einst = einstellungen.mahnwesen()
@@ -50,6 +50,8 @@ def mahnlauf(stichtag=None, nur_vorschlag=False):
     ergebnis = []
     rows = frappe.get_all("PH Rechnung", filters={"docstatus": 1, "offen_cent": (">", cint(einst.get("mindestbetrag_cent") or 0)), "status": ("in", ("Gestellt", "Teilbezahlt", "Ueberfaellig", "Gemahnt")), "mahnsperre": 0, "faellig": ("<", stichtag)},
                           fields=["name", "faellig", "offen_cent", "mahnstufe", "letzte_mahnung", "kontakt"])
+    if rechnungen:
+        rows = [r for r in rows if r.name in set(rechnungen)]
     for r in rows:
         tage = M.verzugstage(getdate(r.faellig), stichtag, cint(einst.get("karenz_tage") or 0))
         seit = (stichtag - getdate(r.letzte_mahnung)).days if r.letzte_mahnung else None
@@ -127,3 +129,32 @@ def _aufgabe(text):
         frappe.get_doc({"doctype": "ToDo", "description": text, "reference_type": "PH Faktura Einstellungen", "reference_name": "PH Faktura Einstellungen", "priority": "High", "assigned_by": "Administrator"}).insert(ignore_permissions=True)
     except Exception:  # noqa: BLE001
         frappe.log_error(title="ph_faktura.tasks: Aufgabe")
+
+
+def zahlungsplan_erinnern(stichtag=None):
+    """Täglich: Zahlungsplan-Zeilen (Fälligkeit „Datum“) in N Tagen fällig oder überfällig und nicht bezahlt →
+    ToDo an den Auftragsverantwortlichen (32-marktfunktionen-nachtrag.md: Zahlungsplan mit Erinnerung).
+    Lieferung/Montage-Zeilen erinnert ph_logistik über den Termin; hier nur feste Daten."""
+    from frappe.utils import add_days
+
+    tage = cint(einstellungen.faktura().get("zahlungsplan_erinnerung_tage") or 3)
+    stichtag = getdate(stichtag or nowdate())
+    n = 0
+    zeilen = frappe.get_all("PH Zahlungsplan", filters={"parenttype": "PH Auftragsbestaetigung", "faellig": ("<=", add_days(stichtag, tage)), "status": ("in", ("Offen", "In Rechnung"))}, fields=["name", "parent", "art", "betrag_cent", "bezahlt_cent", "faellig"])
+    for z in zeilen:
+        if cint(z.bezahlt_cent) >= cint(z.betrag_cent):
+            continue
+        text = _("Zahlungsplan {0} {1}: {2} € fällig am {3}").format(z.parent, z.art, f"{(cint(z.betrag_cent) - cint(z.bezahlt_cent)) / 100:.2f}", frappe.utils.formatdate(z.faellig))
+        if frappe.db.exists("ToDo", {"reference_type": "PH Auftragsbestaetigung", "reference_name": z.parent, "description": text, "status": "Open"}):
+            continue
+        try:
+            ab = frappe.db.get_value("PH Auftragsbestaetigung", z.parent, ["zugewiesen_an", "status"], as_dict=True)
+            if not ab or ab.status == "Storniert":
+                continue
+            frappe.get_doc({"doctype": "ToDo", "description": text, "reference_type": "PH Auftragsbestaetigung", "reference_name": z.parent, "allocated_to": ab.zugewiesen_an or None, "role": None if ab.zugewiesen_an else "PH Faktura Leitung", "date": z.faellig, "priority": "High" if getdate(z.faellig) < stichtag else "Medium"}).insert(ignore_permissions=True)
+            n += 1
+            frappe.db.commit()
+        except Exception:  # noqa: BLE001
+            frappe.db.rollback()
+            frappe.log_error(title=f"ph_faktura.tasks.zahlungsplan_erinnern {z.parent}")
+    return n

@@ -1,0 +1,178 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Schichtvorlage für den Dienstplan (Beginn, Ende, Pause, Bereich).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kurzname",
+  "bezeichnung",
+  "bereich",
+  "aktiv",
+  "cb_1",
+  "beginn",
+  "ende",
+  "pause_min",
+  "netto_min",
+  "farbe"
+ ],
+ "fields": [
+  {
+   "fieldname": "kurzname",
+   "fieldtype": "Data",
+   "label": "Kurzname",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "z. B. FR (Früh), SP (Spät), SA (Samstag)."
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "bereich",
+   "fieldtype": "Select",
+   "label": "Bereich",
+   "options": "Showroom\nPlanung\nMontage\nLager\nVerwaltung",
+   "default": "Showroom",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "1",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "beginn",
+   "fieldtype": "Time",
+   "label": "Beginn",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ende",
+   "fieldtype": "Time",
+   "label": "Ende",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "pause_min",
+   "fieldtype": "Int",
+   "label": "Pause (min)",
+   "default": "30"
+  },
+  {
+   "fieldname": "netto_min",
+   "fieldtype": "Int",
+   "label": "Netto (min)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "farbe",
+   "fieldtype": "Color",
+   "label": "Farbe"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Schicht",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Personal Selbstservice",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "beginn",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:kurzname",
+ "naming_rule": "By fieldname",
+ "title_field": "bezeichnung",
+ "search_fields": "bezeichnung,bereich"
+}

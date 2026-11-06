@@ -81,7 +81,7 @@ export default function ContributionForm({ shareId }) {
       const fe = Object.fromEntries(res.fields.filter((f) => ORDER.includes(f)).map((f) => [f, f]));
       setErrors(fe);
     }
-    setStatus({ type: "error", text: c(`errors.${["rate_limited", "network", "not_found", "unavailable"].includes(res.error) ? res.error : "generic"}`) });
+    setStatus({ type: "error", text: c(`errors.${["rate_limited", "network", "not_found", "unavailable", "conflict"].includes(res.error) ? res.error : "generic"}`) });
   }
 
   if (done) {

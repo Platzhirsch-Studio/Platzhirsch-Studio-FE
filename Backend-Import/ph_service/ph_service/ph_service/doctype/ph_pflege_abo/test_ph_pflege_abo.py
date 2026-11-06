@@ -70,5 +70,24 @@ class TestPHPflegeAbo(FrappeTestCase):
         self.assertEqual(einsatz.pflege_abo, abo.name)
         self.assertEqual(einsatz.kunde_name, abo.kunde_name)
 
+    def test_automatische_wartungseinsaetze_idempotent(self):
+        from ph_service.ph_service import tasks
+
+        abo = self._abo(status="Aktiv", naechster_termin=add_days(nowdate(), 10), techniker="Administrator")
+        tasks.wartungseinsaetze_erzeugen()
+        einsaetze = frappe.get_all("PH Serviceeinsatz", filters={"pflege_abo": abo.name}, pluck="name")
+        self.assertEqual(len(einsaetze), 1)
+        tasks.wartungseinsaetze_erzeugen()  # zweiter Lauf legt nichts an
+        self.assertEqual(len(frappe.get_all("PH Serviceeinsatz", filters={"pflege_abo": abo.name})), 1)
+        self.assertEqual(frappe.db.get_value("PH Pflege Abo", abo.name, "naechster_einsatz"), einsaetze[0])
+        self.assertTrue(frappe.db.get_value("PH Serviceeinsatz", einsaetze[0], "planschluessel").startswith("wartung:"))
+
+    def test_kein_automatischer_einsatz_ohne_schalter(self):
+        from ph_service.ph_service import tasks
+
+        abo = self._abo(status="Aktiv", naechster_termin=add_days(nowdate(), 10), automatisch_einplanen=0)
+        tasks.wartungseinsaetze_erzeugen()
+        self.assertFalse(frappe.get_all("PH Serviceeinsatz", filters={"pflege_abo": abo.name}))
+
     def tearDown(self):
         frappe.db.rollback()

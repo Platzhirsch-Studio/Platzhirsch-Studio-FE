@@ -1,0 +1,201 @@
+{
+  "produkt": "Personio",
+  "url": "https://www.personio.de/",
+  "stand": "2026-11-04",
+  "zeichen": 9000,
+  "hinweis": "personio.de/personio.com lieferten bei WebFetch HTTP 429, support.personio.de HTTP 403 (Rate-Limit/Bot-Schutz); Inhalte stammen aus den Suchindex-Auszügen der angegebenen Personio-Seiten (WebSearch, allowed_domains personio.de/com). Zeichenzahl geschätzt.",
+  "funktionen": [
+    {
+      "name": "Abwesenheit per Klick beantragen",
+      "beschreibung": "Mitarbeitende beantragen Urlaub/Abwesenheit im Self Service oder in der App und wählen bei Bedarf eine Urlaubsvertretung.",
+      "bereich": "personal",
+      "nutzen": "Monteure und Showroom-Personal beantragen Urlaub vom Handy, ohne Zettel im Büro.",
+      "quelle": "Personio",
+      "url": "https://www.personio.de/funktionen/abwesenheiten/urlaubsverwaltung/"
+    },
+    {
+      "name": "Freigabe durch Führungskraft",
+      "beschreibung": "Die Führungskraft bestätigt den Abwesenheitsantrag auf Knopfdruck.",
+      "bereich": "personal",
+      "nutzen": "Inhaber/Teamleitung gibt Urlaub schnell frei, Montageplanung sieht es sofort.",
+      "quelle": "Personio",
+      "url": "https://www.personio.de/funktionen/abwesenheiten/urlaubsverwaltung/"
+    },
+    {
+      "name": "Resturlaub & Kontingente automatisch",
+      "beschreibung": "Urlaubsansprüche und Resturlaub werden automatisch berechnet und sind für Mitarbeitende selbst einsehbar.",
+      "bereich": "personal",
+      "nutzen": "Keine Excel-Urlaubsliste, weniger Rückfragen ans Büro.",
+      "quelle": "Personio",
+      "url": "https://www.personio.de/funktionen/abwesenheiten/urlaubsverwaltung/"
+    },
+    {
+      "name": "Genehmigungsregeln je Abwesenheitsart",
+      "beschreibung": "Admin legt unter Einstellungen/Genehmigungen fest, wer welche Abwesenheitsart freigibt, inkl. Sondergenehmigungen für Gruppen und Pflicht-Vertretung.",
+      "bereich": "personal",
+      "nutzen": "Montage-Urlaub gibt der Montageleiter frei, Verkauf die Verkaufsleitung.",
+      "quelle": "Personio",
+      "url": "https://community.personio.de/an-und-abwesenheit-163/genehmigung-urlaub-1081"
+    },
+    {
+      "name": "Online-Zeiterfassung im Self Service",
+      "beschreibung": "Mitarbeitende erfassen ihre Arbeitsstunden selbst, Führungskräfte bestätigen nur bei Bedarf.",
+      "bereich": "personal",
+      "nutzen": "Erfüllt Aufzeichnungspflicht ohne Stundenzettel.",
+      "quelle": "Personio",
+      "url": "https://www.personio.de/funktionen/arbeitszeiterfassung/zeiterfassung-online/"
+    },
+    {
+      "name": "Erfassung per Desktop, App, QR-Code oder Terminal",
+      "beschreibung": "Arbeitszeit wird wahlweise am PC, in der App, per QR-Code oder an einem Terminal erfasst.",
+      "bereich": "personal",
+      "nutzen": "Showroom stempelt am Tablet, Montage per App auf der Baustelle.",
+      "quelle": "Personio",
+      "url": "https://www.personio.de/personio-vs-factorial/"
+    },
+    {
+      "name": "Digitale Stempeluhr",
+      "beschreibung": "Mitarbeitende stempeln über eine mit dem Mitarbeiterkonto verknüpfte digitale Stempeluhr am Desktop oder in der App ein und aus.",
+      "bereich": "personal",
+      "nutzen": "Ein- und Ausstempeln ohne Hardware-Investition.",
+      "quelle": "Personio",
+      "url": "https://www.personio.de/funktionen/arbeitszeiterfassung/digitale-stempeluhr/"
+    },
+    {
+      "name": "Gemeinsames Stempelgerät (Shared Device)",
+      "beschreibung": "Auf einem geteilten Gerät stempeln Mitarbeitende ein, machen Pause, setzen fort und stempeln aus; der Eintrag wird beim Ausstempeln gespeichert.",
+      "bereich": "personal",
+      "nutzen": "Ein Tablet im Lager/Showroom-Eingang für alle.",
+      "quelle": "Personio",
+      "url": "https://support.personio.de/hc/en-us/articles/360007584818-Track-your-working-hours"
+    },
+    {
+      "name": "Synchronisierte Erfassung über Kanäle",
+      "beschreibung": "Browser-, App- und Shared-Device-Einträge werden synchronisiert, ein Wechsel ist jederzeit möglich.",
+      "bereich": "personal",
+      "nutzen": "Monteur startet in der App, beendet am Lager-Tablet.",
+      "quelle": "Personio",
+      "url": "https://support.personio.de/hc/en-us/articles/360007584818-Track-your-working-hours"
+    },
+    {
+      "name": "Über-Mitternacht-Schichten",
+      "beschreibung": "Schichten über Mitternacht werden als ein durchgehender Zeiteintrag erfasst.",
+      "bereich": "personal",
+      "nutzen": "Nachtmontagen/Inventur sauber in einem Eintrag.",
+      "quelle": "Personio",
+      "url": "https://support.personio.de/hc/en-us/articles/360007584818-Track-your-working-hours"
+    },
+    {
+      "name": "Automatische Überstundenberechnung mit Lohnübergabe",
+      "beschreibung": "Die Software errechnet Arbeitszeit inkl. Überstunden und überführt sie bei Bedarf ins Lohnprogramm.",
+      "bereich": "personal",
+      "nutzen": "Überstunden der Montage landen ohne Abtippen in der Lohnverrechnung.",
+      "quelle": "Personio",
+      "url": "https://www.personio.de/funktionen/arbeitszeiterfassung/digitale-stempeluhr/"
+    },
+    {
+      "name": "Projektzeiterfassung",
+      "beschreibung": "Admin legt Projekte/Unterprojekte an und weist sie Mitarbeitenden zu, die beim Zeiteintrag ein Projekt wählen; Auswertung über Bericht 'Anwesenheitszeiträume' mit CSV-Export.",
+      "bereich": "personal",
+      "nutzen": "Montagestunden je Küchenprojekt nachkalkulieren.",
+      "quelle": "Personio",
+      "url": "https://support.personio.de/hc/en-us/articles/360001981757-Set-up-project-based-time-tracking"
+    },
+    {
+      "name": "Änderungsprotokoll je Zeiteintrag",
+      "beschreibung": "Über 'View activity' wird jede Änderung an einem Zeiteintrag mit Datum nachvollzogen.",
+      "bereich": "personal",
+      "nutzen": "Nachweis gegenüber Arbeitsinspektorat oder bei Streit um Stunden.",
+      "quelle": "Personio",
+      "url": "https://support.personio.de/hc/en-us/articles/360007584818-Track-your-working-hours"
+    },
+    {
+      "name": "Standortbasierte Zeiterfassung",
+      "beschreibung": "Zeiterfassung mit Standort-Check (im Q2/2025-Update angekündigt).",
+      "bereich": "personal",
+      "nutzen": "Plausibilisierung von Baustellen-Stempelungen.",
+      "quelle": "Personio",
+      "url": "https://community.personio.de/product-spotlight-209/das-sind-die-neuen-personio-funktionen-in-q2-25-webinar-recording-q-a-11929"
+    },
+    {
+      "name": "Schichtplan mit Autovergabe",
+      "beschreibung": "Schichten werden angelegt und manuell oder per Autovergabe unter Beachtung von Ruhezeiten und Höchststunden zugewiesen (Online-Schichtplaner/Vorlage; Vollfunktion über Partner wie shyftplan).",
+      "bereich": "personal",
+      "nutzen": "Samstagsdienste im Showroom fair verteilen.",
+      "quelle": "Personio",
+      "url": "https://www.personio.de/hr-lexikon/schichtplaner/"
+    },
+    {
+      "name": "Onboarding-Workflows & Vorlagen",
+      "beschreibung": "HR erstellt anpassbare Onboarding-Workflows mit Vorlagen und Aufgabenverfolgung für neue Mitarbeitende.",
+      "bereich": "personal",
+      "nutzen": "Neuer Monteur: Werkzeug, Schlüssel, Unterweisung als Checkliste.",
+      "quelle": "Personio",
+      "url": "https://www.personio.com/product/onboarding/"
+    },
+    {
+      "name": "Personalisierte Onboarding-Pläne",
+      "beschreibung": "HR-Teams erstellen personalisierte Onboarding-Pläne je Person.",
+      "bereich": "personal",
+      "nutzen": "Unterschiedliche Einarbeitung Verkauf vs. Montage.",
+      "quelle": "Personio",
+      "url": "https://community.personio.de/product-spotlight-209/das-sind-die-neuen-personio-funktionen-in-q2-25-webinar-recording-q-a-11929"
+    },
+    {
+      "name": "Zentraler Dokumenten-Hub mit Massenaktionen",
+      "beschreibung": "Alle Mitarbeitendendokumente liegen an einem Ort; Massenaktionen und DocuSign-Integration sind möglich.",
+      "bereich": "personal",
+      "nutzen": "Dienstverträge, Unterweisungen und Lohnzettel zentral statt Ordner.",
+      "quelle": "Personio",
+      "url": "https://community.personio.de/product-spotlight-209/das-sind-die-neuen-personio-funktionen-in-q2-25-webinar-recording-q-a-11929"
+    },
+    {
+      "name": "Elektronische Signatur (inkl. QES-Add-on)",
+      "beschreibung": "Dokumente werden per eSignature-Workflow unterschrieben; qualifizierte elektronische Signatur als Zusatz.",
+      "bereich": "personal",
+      "nutzen": "Dienstvertrag digital unterschreiben lassen.",
+      "quelle": "Personio",
+      "url": "https://www.personio.de/personio-vs-factorial/"
+    },
+    {
+      "name": "Workflow-Automatisierung & Zugriffsrechte",
+      "beschreibung": "Abläufe werden automatisiert und Zugriffsrechte granular vergeben.",
+      "bereich": "zentrale",
+      "nutzen": "Lohndaten nur für Inhaber/Buchhaltung sichtbar.",
+      "quelle": "Personio",
+      "url": "https://www.personio.de/personio-vs-factorial/"
+    },
+    {
+      "name": "Karriereseite",
+      "beschreibung": "Veröffentlichte Stellen erscheinen sofort auf der Personio-Karriereseite, einbindbar per Link, iFrame, XML oder API.",
+      "bereich": "personal",
+      "nutzen": "Stellen auf der eigenen Website automatisch aktuell.",
+      "quelle": "Personio",
+      "url": "https://support.personio.de/hc/en-us/articles/115003425845-Options-to-promote-jobs"
+    },
+    {
+      "name": "Multiposting auf Jobbörsen",
+      "beschreibung": "Eine Stellenanzeige wird über Partner GoHiring auf viele bezahlte und kostenlose Jobbörsen gleichzeitig ausgespielt; Rahmenverträge mit Börsen können hinterlegt werden.",
+      "bereich": "personal",
+      "nutzen": "Monteur-Stelle gleichzeitig auf mehreren Jobbörsen.",
+      "quelle": "Personio",
+      "url": "https://support.personio.de/hc/en-us/articles/115005416109-Promote-jobs-on-external-job-boards-via-multiposting"
+    },
+    {
+      "name": "Auto-Posting (kostenlos)",
+      "beschreibung": "Auf Kontoebene aktiviert, werden Stellen automatisch auf kostenlose Börsen gestellt (Karriereseite muss aktiv sein).",
+      "bereich": "personal",
+      "nutzen": "Reichweite ohne Zusatzkosten.",
+      "quelle": "Personio",
+      "url": "https://support.personio.de/hc/en-us/articles/115003425845-Options-to-promote-jobs"
+    },
+    {
+      "name": "Bewerbermanagement mit Bewertungsbögen",
+      "beschreibung": "Bewerbungen werden mit strukturierten Bewertungsbögen, Kalender-Sync und KI-Screening bearbeitet; eine Zusage wird mit einem Klick zum Onboarding.",
+      "bereich": "personal",
+      "nutzen": "Bewerber für Verkauf vergleichbar bewerten, kein Datenbruch bei Einstellung.",
+      "quelle": "Personio",
+      "url": "https://www.personio.de/personio-vs-factorial/"
+    }
+  ]
+}

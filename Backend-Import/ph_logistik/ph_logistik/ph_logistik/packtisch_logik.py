@@ -119,3 +119,36 @@ def versandfaehig(pakete, profile_by_key):
     if not pakete_vollstaendig(pakete):
         return False, "Paketmaße oder Gewicht fehlen."
     return True, None
+
+
+def stand_anwenden(positionen, stand):
+    """Offline-Puffer: absoluter Pack-Stand {position_name: menge_gepackt} (statt Inkrement → wiederholbar).
+    → {position_name: (neu, vollstaendig)} nur für bekannte Positionen, Werte auf 0…menge begrenzt."""
+    aus = {}
+    namen = {p.get("name"): p for p in positionen}
+    for name, wert in (stand or {}).items():
+        p = namen.get(name)
+        if not p:
+            continue
+        menge = int(p.get("menge") or 0)
+        try:
+            neu = int(wert or 0)
+        except (TypeError, ValueError):
+            continue
+        neu = min(max(neu, 0), menge)
+        aus[name] = (neu, neu >= menge)
+    return aus
+
+
+def abholcode_passt(soll, ist):
+    """Abholcode-Vergleich ohne Groß-/Kleinschreibung, Leer- und Bindestriche; zeitkonstant."""
+    import hmac
+
+    def n(x):
+        return "".join(ch for ch in str(x or "") if ch.isalnum()).upper()
+
+    a, b = n(soll), n(ist)
+    return bool(a) and hmac.compare_digest(a, b)
+
+
+PROBLEM_GRUENDE = ("Beschaedigt", "Fehlt", "Falscher Artikel", "Adresse unklar", "Sonstiges")

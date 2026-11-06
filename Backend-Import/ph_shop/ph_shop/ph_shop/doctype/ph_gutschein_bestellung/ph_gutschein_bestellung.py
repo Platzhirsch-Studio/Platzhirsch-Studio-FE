@@ -125,7 +125,7 @@ class PHGutscheinBestellung(Document):
             g = frappe.get_doc("PH Gutschein", zeile.gutschein)
             if g.status == "Aktiv" and cint(g.rest_cent) == cint(g.wert_cent):
                 g.flags.ignore_permissions = True
-                g.sperren(_("Widerruf {0}").format(widerruf))
+                g.sperren(_("Widerruf {0}").format(widerruf), sperrgrund_art="Verkauf storniert")
                 gesperrt += 1
                 frappe.db.set_value("PH Gutschein Bestellung Code", zeile.name, "status", "Gesperrt", update_modified=False)
         st.setzen(self, "widerrufen", _("Widerruf {0}, {1} Gutschein(e) gesperrt").format(widerruf, gesperrt), None, {"widerruf": widerruf})

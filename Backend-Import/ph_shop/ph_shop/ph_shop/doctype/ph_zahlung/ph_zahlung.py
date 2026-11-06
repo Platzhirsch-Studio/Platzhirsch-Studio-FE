@@ -105,6 +105,28 @@ class PHZahlung(Document):
             doc.erstattung_vermerken(self.stripe_payment_intent, cint(self.erstattet_cent), voll)
 
     @frappe.whitelist()
+    def ankuendigung_stornieren(self, grund):
+        """Angekündigte (nicht gebuchte, docstatus 0) Zahlung zurücknehmen – Leitung, Grund Pflicht
+        (10-konzept-shop §10: ph_shop.zahlung.storniere war nicht whitelisted)."""
+        from ph_shop.zahlung import storniere
+
+        self.check_permission("write")
+        if not (set(frappe.get_roles()) & ROLLEN_ERSTATTEN) and frappe.session.user != "Administrator":
+            frappe.throw(_("Nur die Leitung kann angekündigte Zahlungen stornieren."), frappe.PermissionError)
+        if not (grund or "").strip():
+            frappe.throw(_("Bitte einen Grund angeben."))
+        storniere(self, grund)
+        self.add_comment("Info", _("Angekündigte Zahlung storniert: {0}").format(grund))
+        return "Storniert"
+
+    @frappe.whitelist()
+    def radar_geprueft(self, notiz=None):
+        self.check_permission("write")
+        self.db_set({"radar_geprueft_von": frappe.session.user, "radar_geprueft_am": now_datetime()})
+        self.add_comment("Info", _("Risiko geprüft: {0}").format(notiz or "–"))
+        return True
+
+    @frappe.whitelist()
     def auszahlung_zuordnen(self, auszahlung):
         self.check_permission("write")
         if not frappe.db.exists("PH Stripe Auszahlung", auszahlung):

@@ -61,7 +61,8 @@ class PHRendering(Document):
             frappe.throw(_("Bitte zuerst ein Bild hochladen."))
         self.db_set({"kunde_sichtbar": 1, "vorgelegt_am": self.vorgelegt_am or now_datetime()})
         if self.status == "Entwurf":
-            self.db_set("status", "Vorgelegt")
+            # status UND workflow_state, sonst bietet der Workflow weiter „Kunden vorlegen“ an (Konzept 10-projekte §Rendering)
+            self.db_set({"status": "Vorgelegt", "workflow_state": "PH Vorgelegt"})
         kontakt = frappe.db.get_value("PH Projekt", self.projekt, "kontakt")
         text = (nachricht or "").strip() or _("Ein neues Rendering „{0}“ wartet im Kundenportal auf Ihre Rückmeldung.").format(self.bezeichnung)
         frappe.get_doc({"doctype": "PH Projekt Nachricht", "kontakt": kontakt, "projekt": self.projekt, "richtung": "ausgehend", "text": text}).insert(ignore_permissions=True)

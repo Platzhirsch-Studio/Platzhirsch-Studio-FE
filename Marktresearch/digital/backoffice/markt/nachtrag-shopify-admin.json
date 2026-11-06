@@ -1,0 +1,328 @@
+{
+  "produkt": "Shopify Admin",
+  "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders",
+  "stand": "2026-11-04",
+  "zeichen": 14000,
+  "funktionen": [
+    {
+      "name": "Produkte zur Bestellung hinzufügen/entfernen",
+      "beschreibung": "Der Mitarbeiter ergänzt oder entfernt nachträglich Artikel in einer bestehenden Bestellung.",
+      "bereich": "shop",
+      "nutzen": "Kunde ändert nach Bestellung Stoff/Farbe oder ergänzt Zubehör, ohne Neubestellung.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/editing-orders"
+    },
+    {
+      "name": "Mengen ändern",
+      "beschreibung": "Der Mitarbeiter passt die Stückzahl einzelner Positionen in der Bestellung an.",
+      "bereich": "shop",
+      "nutzen": "Stuhlanzahl zum Esstisch nachträglich korrigieren.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/editing-orders"
+    },
+    {
+      "name": "Versandkosten anpassen",
+      "beschreibung": "Der Mitarbeiter ändert die Versandgebühr einer bestehenden Bestellung.",
+      "bereich": "logistik",
+      "nutzen": "Lieferpauschale nach Klärung von Stockwerk/Sperrgut korrigieren.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/editing-orders"
+    },
+    {
+      "name": "Manuelle Rabatte in Bestellung",
+      "beschreibung": "Der Mitarbeiter vergibt einen Rabatt auf einzelne Positionen oder die ganze Bestellung bzw. entfernt ihn.",
+      "bereich": "shop",
+      "nutzen": "Kulanz bei Lieferverzug direkt an der Bestellung abbilden.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/editing-orders"
+    },
+    {
+      "name": "Aktualisierte Rechnung senden",
+      "beschreibung": "Bei Mehrbetrag nach einer Änderung schickt der Mitarbeiter eine neue Rechnung zur Nachzahlung.",
+      "bereich": "faktura",
+      "nutzen": "Aufpreis für ein Upgrade (z. B. anderer Bezug) online nachkassieren.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/editing-orders"
+    },
+    {
+      "name": "Kundendaten in Bestellung bearbeiten",
+      "beschreibung": "Der Mitarbeiter korrigiert Kundendaten direkt an der Bestellung.",
+      "bereich": "crm",
+      "nutzen": "Lieferadresse/Telefon für die Montage korrigieren.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/editing-orders"
+    },
+    {
+      "name": "Entwurfsbestellung anlegen",
+      "beschreibung": "Der Mitarbeiter erstellt für Telefon-, E-Mail- oder Ladenkunden eine Bestellung im Admin.",
+      "bereich": "shop",
+      "nutzen": "Beratung im Studio direkt in eine Shop-Bestellung überführen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/create-orders"
+    },
+    {
+      "name": "Individuelle Preise im Entwurf",
+      "beschreibung": "Der Mitarbeiter setzt eigene Preise, Aufschläge oder verhandelte Großhandelskonditionen.",
+      "bereich": "shop",
+      "nutzen": "Projekt-/Hotelpreise und Sonderanfertigungen abbilden.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/create-orders"
+    },
+    {
+      "name": "Rechnung mit Checkout-Link",
+      "beschreibung": "Der Mitarbeiter versendet den Entwurf als Rechnung mit sicherem Zahlungslink.",
+      "bereich": "faktura",
+      "nutzen": "Anzahlung für einen Küchenauftrag online bezahlen lassen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/create-orders"
+    },
+    {
+      "name": "Zahlung manuell erfassen / als bezahlt markieren",
+      "beschreibung": "Der Mitarbeiter bucht eine Kartenzahlung manuell oder markiert eine anderweitig erhaltene Zahlung.",
+      "bereich": "kassa",
+      "nutzen": "Banküberweisung oder Ladenzahlung im Shop-Auftrag nachvollziehen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/create-orders"
+    },
+    {
+      "name": "Entwurf in Bestellung umwandeln",
+      "beschreibung": "Nach der Zahlung wird der Entwurf zur regulären Bestellung.",
+      "bereich": "shop",
+      "nutzen": "Sauberer Übergang Angebot zu Auftrag.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/create-orders"
+    },
+    {
+      "name": "Automatisches Löschen inaktiver Entwürfe",
+      "beschreibung": "Entwürfe ohne Aktivität werden nach einem Jahr gelöscht; jede Bearbeitung setzt die Frist zurück.",
+      "bereich": "zentrale",
+      "nutzen": "Alte Angebotsleichen verschwinden automatisch.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/create-orders"
+    },
+    {
+      "name": "Voll- und Teilerstattung",
+      "beschreibung": "Der Mitarbeiter erstattet die ganze Bestellung oder einzelne Positionen/Beträge, auch in mehreren Schritten.",
+      "bereich": "faktura",
+      "nutzen": "Teilrückgabe einzelner Deko-Artikel sauber abrechnen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/refunding-orders"
+    },
+    {
+      "name": "Versandkosten erstatten",
+      "beschreibung": "Der Mitarbeiter erstattet Versandgebühren bis zum berechneten Betrag.",
+      "bereich": "faktura",
+      "nutzen": "Lieferpauschale bei Stornierung zurückgeben.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/refunding-orders"
+    },
+    {
+      "name": "Wiedereinlagern bei Erstattung",
+      "beschreibung": "Erstattete Artikel werden automatisch oder manuell wieder in den Bestand gebucht.",
+      "bereich": "sortiment",
+      "nutzen": "Lagerbestand bleibt nach einer Retoure korrekt.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/refunding-orders"
+    },
+    {
+      "name": "Erstattungsbetrag anpassen",
+      "beschreibung": "Der Mitarbeiter reduziert den Erstattungsbetrag, z. B. um eine Wiedereinlagerungsgebühr.",
+      "bereich": "faktura",
+      "nutzen": "Rücknahmegebühr bei Sperrgut abziehen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/refunding-orders"
+    },
+    {
+      "name": "Erstattung als Guthaben (Store Credit)",
+      "beschreibung": "Die Erstattung geht ans ursprüngliche Zahlungsmittel, als Guthaben mit optionalem Ablaufdatum oder gemischt.",
+      "bereich": "kundenkarte",
+      "nutzen": "Kunden mit Guthaben im Haus halten.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/refunding-orders"
+    },
+    {
+      "name": "Geschenkkarte zuerst erstatten",
+      "beschreibung": "Bei teilweiser Gutscheinzahlung fließt die Erstattung zuerst auf die Geschenkkarte; die Aufteilung ist anpassbar.",
+      "bereich": "kundenkarte",
+      "nutzen": "Gutscheinwert korrekt zurückbuchen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/refunding-orders"
+    },
+    {
+      "name": "Interner Erstattungsgrund",
+      "beschreibung": "Der Mitarbeiter hinterlegt eine für den Kunden unsichtbare Begründung.",
+      "bereich": "faktura",
+      "nutzen": "Nachvollziehbarkeit für Buchhaltung und Reklamationsauswertung.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/refunding-orders"
+    },
+    {
+      "name": "Erstattungsbenachrichtigung abschaltbar",
+      "beschreibung": "Der Mitarbeiter kann die Kunden-E-Mail zur Erstattung deaktivieren.",
+      "bereich": "service",
+      "nutzen": "Kulanzfälle zuerst persönlich besprechen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/refunding-orders"
+    },
+    {
+      "name": "Retoure und Umtausch anlegen",
+      "beschreibung": "Der Mitarbeiter startet aus der Bestellung eine Retoure oder einen Umtausch (andere Größe/Farbe).",
+      "bereich": "service",
+      "nutzen": "Kissen oder Teppich in anderer Farbe tauschen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/returns"
+    },
+    {
+      "name": "Retourenetiketten",
+      "beschreibung": "Der Mitarbeiter fügt optional Rücksendeetiketten und Tracking hinzu.",
+      "bereich": "logistik",
+      "nutzen": "Paketfähige Ware einfach zurückholen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/returns"
+    },
+    {
+      "name": "Self-Service-Retouren und -Stornos",
+      "beschreibung": "Kunden beantragen auf der Bestellstatusseite die Rückgabe gelieferter bzw. das Storno unversandter Artikel.",
+      "bereich": "service",
+      "nutzen": "Entlastet Telefon und Service bei Kleinwaren.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/returns"
+    },
+    {
+      "name": "Retouren-/Stornoregeln",
+      "beschreibung": "Der Händler legt fest, welche Artikel wie lange rückgabefähig sind.",
+      "bereich": "service",
+      "nutzen": "Maßanfertigungen von der Rückgabe ausschließen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders/returns"
+    },
+    {
+      "name": "Rabattcodes",
+      "beschreibung": "Der Händler erstellt Betrags-, Prozent-, Kauf-X-erhalte-Y- und Gratisversand-Codes für Online-Checkout und POS.",
+      "bereich": "marketing",
+      "nutzen": "Aktionscodes für Newsletter oder Messe.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/discounts"
+    },
+    {
+      "name": "Automatische Rabatte",
+      "beschreibung": "Rabatte greifen ohne Code automatisch.",
+      "bereich": "marketing",
+      "nutzen": "Saisonaktion ohne Codeverteilung.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/discounts"
+    },
+    {
+      "name": "Rabatte kombinieren, planen, testen",
+      "beschreibung": "Der Händler steuert Kombinierbarkeit, Start/Ende und testet neue Rabatte gegen bestehende.",
+      "bereich": "marketing",
+      "nutzen": "Verhindert ungewollte Rabattstapelung.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/discounts"
+    },
+    {
+      "name": "Rabatt in Warenkorbabbruch-Mails",
+      "beschreibung": "Rabatte werden in Wiederherstellungs-E-Mails für abgebrochene Checkouts eingebunden.",
+      "bereich": "marketing",
+      "nutzen": "Unentschlossene Online-Kunden zurückholen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/discounts"
+    },
+    {
+      "name": "Geschenkkarten erstellen und verkaufen",
+      "beschreibung": "Der Händler verkauft Geschenkkarten-Produkte oder erstellt Karten direkt im Admin.",
+      "bereich": "kundenkarte",
+      "nutzen": "Gutscheinverkauf online und Ausgabe im Laden.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/products/gift-card-products"
+    },
+    {
+      "name": "Geschenkkarten verwalten und gestalten",
+      "beschreibung": "Der Händler verwaltet ausgestellte Karten und passt Gutscheinseiten und Benachrichtigungen an.",
+      "bereich": "kundenkarte",
+      "nutzen": "Gebrandete Gutscheine als Geschenkidee.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/products/gift-card-products"
+    },
+    {
+      "name": "Physische Geschenkkarten für POS",
+      "beschreibung": "Der Händler bestellt physische Karten zur Nutzung mit Shopify POS.",
+      "bereich": "kassa",
+      "nutzen": "Gutscheinkarte an der Ladenkassa.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/products/gift-card-products"
+    },
+    {
+      "name": "Sammel- und Batch-Erfüllung",
+      "beschreibung": "Bestellungen werden einzeln, in Bulk oder in Batches mit Pick-/Packlisten und Dokumentendruck erfüllt.",
+      "bereich": "logistik",
+      "nutzen": "Effizienter Versandtag für Kleinwaren.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/fulfilling-orders/fulfill-orders"
+    },
+    {
+      "name": "Bestellung zurückhalten (Hold)",
+      "beschreibung": "Der Mitarbeiter setzt eine Bestellung auf Halt.",
+      "bereich": "logistik",
+      "nutzen": "Lieferung erst nach Aufmaß/Anzahlung freigeben.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/fulfilling-orders/fulfill-orders"
+    },
+    {
+      "name": "Unterschiedliche Erfüllungsmethoden je Position",
+      "beschreibung": "Positionen derselben Bestellung werden auf verschiedene Weise erfüllt.",
+      "bereich": "logistik",
+      "nutzen": "Deko per Paket, Sofa per Spedition/Montage.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/fulfilling-orders/fulfill-orders"
+    },
+    {
+      "name": "Versandetiketten, Abholung, Manifeste",
+      "beschreibung": "Der Mitarbeiter kauft/druckt Labels, plant Abholungen, erstellt Manifeste und verfolgt Sendungen.",
+      "bereich": "logistik",
+      "nutzen": "Versand ohne separates Tool.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/fulfilling-orders/fulfill-orders"
+    },
+    {
+      "name": "Lokale Lieferung",
+      "beschreibung": "Der Händler erfüllt Bestellungen per eigener lokaler Zustellung.",
+      "bereich": "logistik",
+      "nutzen": "Eigene Lieferung im Raum Bregenz/Lindau.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/fulfilling-orders/fulfill-orders"
+    },
+    {
+      "name": "Bestellungen filtern und stornieren",
+      "beschreibung": "Der Mitarbeiter filtert nach Erfüllungsstatus, Zahlart, Datum und storniert Bestellungen.",
+      "bereich": "shop",
+      "nutzen": "Offene Aufträge schnell finden.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders"
+    },
+    {
+      "name": "Packzettel und Rechnungen drucken",
+      "beschreibung": "Der Mitarbeiter druckt Packzettel und Rechnungen zur Sendung.",
+      "bereich": "logistik",
+      "nutzen": "Lieferschein für das Montageteam.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders"
+    },
+    {
+      "name": "Betrugsrisiko prüfen",
+      "beschreibung": "Hochrisikobestellungen werden vor der Erfüllung per Betrugsanalyse geprüft.",
+      "bereich": "shop",
+      "nutzen": "Schutz bei teuren Online-Bestellungen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders"
+    },
+    {
+      "name": "Zahlung manuell/automatisch einziehen (Capture)",
+      "beschreibung": "Der Händler wählt, ob Zahlungen manuell oder automatisch eingezogen werden.",
+      "bereich": "faktura",
+      "nutzen": "Erst bei Lieferfreigabe einziehen.",
+      "quelle": "Shopify Admin",
+      "url": "https://help.shopify.com/en/manual/fulfillment/managing-orders"
+    }
+  ]
+}

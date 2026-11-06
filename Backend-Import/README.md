@@ -15,6 +15,9 @@ Installierbare Frappe-Apps (v15, v16-kompatibel) für das Backoffice `backoffice
 | 9 | `ph_marketing` | Newsletter mit DOI, Einwilligungen, Kundenreisen, Kampagnen, Events, Social | gebaut |
 | 10 | `ph_kassa` | Registrierkasse RKSV (Belegkette, Signatur, DEP7, Oberfläche, Abschluss, Terminal) | gebaut |
 | 11 | `ph_service` | Servicefall, Fehlercodes, Ersatzteile, Regress, Pflege-Abo, Serviceauftrag | gebaut |
+| 12 | `ph_kundenkarte` | Kundenkarte Stufe 1: Karte, Wallet-Pass, Stufen, Service-Vorteile, Antrag von der Website, Kundenwert (kein Geldguthaben – Stufe 2 nach Freigabe Anwalt/Steuerberater) | im Bau |
+| 13 | `ph_ablage` | Dateiablage wie ein Drive (Word, Excel, PDF, CAD, Bilder): Ordnerbaum je Kontakt/Projekt/Lieferant/Mitarbeiter/Servicefall mit Vorlagen, Rechte-Modus intern/team/leitung, Versionen, Check-out, Papierkorb, Aufbewahrung (BAO), Freigabelinks, Portal über PH Projekt Dokument, Vorschau/Volltext; Speicher austauschbar und unsichtbar (lokal, S3-kompatibel EU mit eigener SigV4, Google Drive, OneDrive) | gebaut (nicht installiert) |
+| 14 | `ph_microsoft` | Microsoft 365 (Entscheidung Nr. 52): Entra-ID-Anmeldung fürs Backoffice (SSO-Brücke `sso_sitzung`), Gruppen → PH-Rollen, Exchange-Mail in der Kundenakte (nur eindeutig zugeordnete Mails, sonst bleibt alles in Outlook), Senden über Graph, Outlook-Kalender zwei Wege (Termin/Montage/Serviceeinsatz) mit Teams-Links, Frei/Belegt, Outlook-Kontakte, Graph-Token für ph_ablage | gebaut (nicht installiert) |
 
 Dokumente: **`PLAN.md`** (Architektur, Arbeitspakete, Migration M1–M10, Status) · **`CONVENTIONS.md`** (Regeln) · `ANFRAGEN-AN-CORE.md` (Wünsche an ph_core mit Status) · `INTEGRATION-BEFUNDE-CORE.md` (offene Befunde zwischen den Apps) · `referenz/` · `tools/check.py`.
 
@@ -47,13 +50,13 @@ Dokumente: **`PLAN.md`** (Architektur, Arbeitspakete, Migration M1–M10, Status
 ```bash
 cd /pfad/zur/bench
 # 1) Apps holen (lokaler Ordner; jede App hat pyproject.toml mit flit-Backend)
-for app in ph_core ph_crm ph_sortiment ph_projekte ph_shop ph_faktura ph_logistik ph_personal ph_marketing ph_kassa ph_service; do
+for app in ph_core ph_crm ph_sortiment ph_projekte ph_shop ph_faktura ph_logistik ph_personal ph_marketing ph_kassa ph_service ph_kundenkarte ph_ablage ph_microsoft; do
   bench get-app /pfad/zu/Backend-Import/$app
 done
 
 # 2) Installieren – in dieser Reihenfolge (required_apps, PLAN.md Abschnitt 2)
 SITE=staging.platzhirsch.local
-for app in ph_core ph_crm ph_sortiment ph_projekte ph_shop ph_faktura ph_logistik ph_personal ph_marketing ph_kassa ph_service; do
+for app in ph_core ph_crm ph_sortiment ph_projekte ph_shop ph_faktura ph_logistik ph_personal ph_marketing ph_kassa ph_service ph_kundenkarte ph_ablage ph_microsoft; do
   bench --site $SITE install-app $app || break
 done
 
@@ -63,7 +66,7 @@ bench build --app ph_core          # Desk-CSS (ph_desk.css); weitere Apps nur, w
 bench --site $SITE clear-cache
 ```
 
-Warum diese Reihenfolge: ph_core (Rollen, Workflow-Zustände, Nummernkreise) → ph_crm (PH Kontakt) → ph_sortiment (PH Produkt) → ph_projekte → ph_shop (PH Zahlung) → ph_faktura (PH Beleg Position) → ph_logistik → ph_personal → ph_marketing → ph_kassa → ph_service. Rückwärts-Verknüpfungen liefern die späteren Apps als `Custom Field`-Fixtures.
+Warum diese Reihenfolge: ph_core (Rollen, Workflow-Zustände, Nummernkreise) → ph_crm (PH Kontakt) → ph_sortiment (PH Produkt) → ph_projekte → ph_shop (PH Zahlung) → ph_faktura (PH Beleg Position) → ph_logistik → ph_personal → ph_marketing → ph_kassa → ph_service → ph_kundenkarte → ph_ablage → ph_microsoft (nur ph_core Pflicht, alle Fach-Apps optional). Rückwärts-Verknüpfungen liefern die späteren Apps als `Custom Field`-Fixtures.
 
 ## 3. `site_config.json` – Schlüsselregister (nur Namen im Repo)
 
@@ -76,6 +79,7 @@ Alle Geheimnisse ausschließlich in `sites/<site>/site_config.json`, gelesen mit
 | `ph_stripe_livemode` | ph_shop, ph_kassa | `1` = Live |
 | `ph_stripe_terminal_location` | ph_kassa | Terminal-Standort `tml_…` |
 | `ph_resend_api_key` | ph_marketing | Newsletter-Versand (Resend) |
+| `ph_resend_webhook_secret` | ph_marketing | Signaturprüfung Resend-Webhook (Bounces, Beschwerden) |
 | `ph_mail_from` | ph_core | Absenderadresse aller Mails (optional) |
 | `ph_letmeship_api_id`, `ph_letmeship_api_password`, `ph_letmeship_env` | ph_logistik | Versandlabels |
 | `ph_website_revalidate_url` | ph_core | Basis-URL der Website (ohne `/revalidate`) |
@@ -85,6 +89,17 @@ Alle Geheimnisse ausschließlich in `sites/<site>/site_config.json`, gelesen mit
 | `ph_atrust_user`, `ph_atrust_password`, `ph_atrust_env` | ph_kassa | A-Trust a.sign RK Online |
 | `ph_meet_api_token` | ph_crm | Frappe-Meet-Site, Format `key:secret` |
 | `ph_payments_link_secret` | ph_shop | = `PAYMENTS_LINK_SECRET` der Website (HMAC Anzahlungs-Links) |
+| `ph_ablage_s3_endpoint`, `ph_ablage_s3_region`, `ph_ablage_s3_bucket`, `ph_ablage_s3_key`, `ph_ablage_s3_secret` | ph_ablage | S3-kompatibler Objektspeicher (EU), Endpoint https, `{bucket}` = virtueller Host |
+| `ph_ablage_s3_boto3` | ph_ablage | optional `1`: Server-Uploads über boto3 (Multipart > 5 GB), nur wenn installiert |
+| `ph_ablage_gdrive_service_account`, `ph_ablage_gdrive_root_id` | ph_ablage | Google Drive: Dienstkonto-JSON, versteckter Stammordner |
+| `ph_ablage_ms_tenant`, `ph_ablage_ms_client_id`, `ph_ablage_ms_client_secret`, `ph_ablage_ms_drive_id` | ph_ablage | OneDrive/SharePoint App-Only (Graph) |
+| `ph_ablage_ms_root_path`, `ph_ablage_ms_token_von_ph_microsoft` | ph_ablage | optional: Stammordner im Drive (Standard `ph-ablage`); `1` = Token von ph_microsoft `graph_token()` statt eigener App |
+| `ph_ablage_lokal_pfad` | ph_ablage | optional: anderer Ordner für den Adapter „lokal“ (Standard `sites/<site>/private/files/ph_ablage`) |
+| `ph_ms_tenant_id` | ph_microsoft | Entra-Tenant (GUID) der Graph-App (App-Only) |
+| `ph_ms_client_id` | ph_microsoft | Anwendungs-ID der App „Platzhirsch Graph (App-Only)“ |
+| `ph_ms_client_secret` | ph_microsoft | Client-Secret dieser App (oder Zertifikat, nächste Zeile) |
+| `ph_ms_cert_pem`, `ph_ms_cert_thumbprint` | ph_microsoft | Zertifikat statt Secret (empfohlen): privater Schlüssel PEM + SHA-1-Fingerabdruck (Hex) |
+| `ph_ms_sso_bridge_secret` | ph_microsoft | optional: Header `X-PH-Backoffice-Key` für `sso_sitzung` (Standard aus) |
 
 Beispiel (Staging, Testwerte):
 ```bash
@@ -109,7 +124,7 @@ API-Schlüssel des Website-Benutzers `website@platzhirsch.studio` (Rolle `PH Web
 
 ```bash
 # Je App auf der Staging-Site (FrappeTestCase; legt Testdaten an, danach Rollback)
-for app in ph_core ph_crm ph_sortiment ph_projekte ph_shop ph_faktura ph_logistik ph_personal ph_marketing ph_kassa ph_service; do
+for app in ph_core ph_crm ph_sortiment ph_projekte ph_shop ph_faktura ph_logistik ph_personal ph_marketing ph_kassa ph_service ph_kundenkarte ph_ablage ph_microsoft; do
   bench --site $SITE run-tests --app $app || break
 done
 
@@ -160,6 +175,10 @@ Eine App, die eine Erweiterung anbietet, deklariert in ihrer `hooks.py` eine lee
 | `ph_stripe_art_handler` | ph_shop | `fn(event: dict) -> None` je Stripe-Ereignisart | ph_kassa (Terminal) |
 | `ph_shop_rechnung_erstellen` | ph_shop | `fn(bestellung) -> str` (Name PH Rechnung) | ph_faktura |
 | `ph_shop_lieferschein_erstellen` | ph_shop | `fn(bestellung) -> str` (Name PH Lieferschein) | ph_logistik |
+| `ph_microsoft_anhang_ablegen` | ph_microsoft | `fn(datei, bezug_doctype, bezug_name, kontakt, quelle)` – Mail-Anhang (File) weitergeben | ph_ablage (`ph_ablage.ph_ablage.mail.anhang_ablegen`, eingetragen) |
+| `ph_kontakt_datenauskunft` / `ph_kontakt_anonymisieren` / `ph_kontakt_zusammengefuehrt` | ph_crm | Hook-Vertrag Kundenakte | u. a. ph_ablage (Dateien des Kontakts, seiner Projekte und Servicefälle; Belege mit BAO-Frist bleiben) |
+| `ph_crm_belegungen` | ph_crm (liest ihn noch nicht – Anfrage) | `fn(von, bis, berater_liste) -> [(user, (start, ende))]` Outlook-Belegt | ph_microsoft |
+| `ph_mail_einzelversand` | Apps mit 1:1-Kundenmails (lesen ihn noch nicht – Anfrage) | `fn(empfaenger, betreff, html, anhaenge=None, bezug_doctype=None, bezug_name=None, von=None, cc=None) -> dict \| None` | ph_microsoft |
 
 ## 9. Gemeinsame Helfer aus ph_core (Kurzreferenz)
 

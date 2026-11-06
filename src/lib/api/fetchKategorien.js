@@ -1,6 +1,7 @@
 // src/lib/api/fetchKategorien.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { katalogApi, katalogMethod } from "@/lib/backend/katalog";
 import { backofficeFetch } from "@/lib/api/http";
 
 // CMS-managed category tiles (Produkte Kategorie doctype) for the
@@ -8,7 +9,7 @@ import { backofficeFetch } from "@/lib/api/http";
 // data. Not yet deployed to the production SERVER, so this calls
 // NEW_API_BASE_URL instead (see src/lib/apiBaseUrl.js).
 export async function fetchKategorien() {
-  const API_URL = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.produkte_kategorie.api.get_all_kategorien_api`;
+  const API_URL = katalogMethod("produkte_kategorie.api", "get_all_kategorien_api", NEW_API_BASE_URL);
 
   try {
     const response = await backofficeFetch(API_URL, {
@@ -29,7 +30,7 @@ export async function fetchKategorien() {
   }
 }
 
-const PRODUKTE_NEW_API = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.produkte_new.api`;
+const PRODUKTE_NEW_API = katalogApi("produkte_new.api", NEW_API_BASE_URL);
 
 // One representative product image per category for a brand: the first gallery
 // image of the brand's most recently modified active product in that category

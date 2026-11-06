@@ -40,8 +40,13 @@ def sende(
     bcc=None,
     reply_to=None,
     absender_name=None,
+    kopfzeilen=None,
 ):
-    """Sendet eine Mail (Queue). Rückgabe: dict mit den tatsächlich verwendeten Empfängern und dem Betreff."""
+    """Sendet eine Mail (Queue). Rückgabe: dict mit den tatsächlich verwendeten Empfängern und dem Betreff.
+
+    kopfzeilen: optionale zusätzliche Mail-Header als dict, z. B. {"List-Unsubscribe": "<https://…>",
+    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click"} (RFC 8058, ph_marketing). Nur übergeben, wenn die
+    installierte Frappe-Version frappe.sendmail(headers=…) kennt; sonst stillschweigend weggelassen."""
     from ph_core.ph_core.doctype.ph_einstellungen.ph_einstellungen import einstellungen
 
     einst = einstellungen()
@@ -66,6 +71,16 @@ def sende(
     if absender and absender_name and "<" not in absender:
         absender = f"{absender_name} <{absender}>"
 
+    extra = {}
+    if kopfzeilen:
+        import inspect
+
+        try:
+            if "headers" in inspect.signature(frappe.sendmail).parameters:
+                extra["headers"] = {str(k): str(v) for k, v in dict(kopfzeilen).items() if v}
+        except (TypeError, ValueError):
+            pass
+
     frappe.sendmail(
         recipients=empfaenger,
         cc=cc or None,
@@ -81,6 +96,7 @@ def sende(
         now=False,
         with_container=False,
         add_unsubscribe_link=0,
+        **extra,
     )
     return {"empfaenger": empfaenger, "cc": cc, "bcc": bcc, "betreff": betreff, "testmodus": int(einst["testmodus"])}
 

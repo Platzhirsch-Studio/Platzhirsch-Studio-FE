@@ -8,6 +8,11 @@
   "hersteller_artikelnr",
   "produkt",
   "bezeichnung",
+  "ean",
+  "ausfuehrung",
+  "zuordnung",
+  "preiskennzeichen",
+  "vk_vorschlag_cent",
   "alt_cent",
   "neu_cent",
   "abweichung_prozent",
@@ -36,6 +41,35 @@
    "label": "Bezeichnung",
    "in_list_view": 1,
    "columns": 2
+  },
+  {
+   "fieldname": "ean",
+   "fieldtype": "Data",
+   "label": "EAN"
+  },
+  {
+   "fieldname": "ausfuehrung",
+   "fieldtype": "Link",
+   "label": "Ausführung",
+   "options": "PH Produkt Ausfuehrung"
+  },
+  {
+   "fieldname": "zuordnung",
+   "fieldtype": "Data",
+   "label": "Zuordnung über",
+   "read_only": 1
+  },
+  {
+   "fieldname": "preiskennzeichen",
+   "fieldtype": "Data",
+   "label": "Preiskennzeichen (Datei)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vk_vorschlag_cent",
+   "fieldtype": "Int",
+   "label": "VK-Vorschlag (Cent)",
+   "read_only": 1
   },
   {
    "fieldname": "alt_cent",
@@ -76,7 +110,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Sortiment",
  "name": "PH Preisliste Import Zeile",

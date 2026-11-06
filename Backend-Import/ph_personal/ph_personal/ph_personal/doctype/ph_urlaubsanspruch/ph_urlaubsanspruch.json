@@ -1,0 +1,303 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Urlaubsanspruch eines Urlaubsjahres (UrlG): Anspruch, Aliquotierung, Verjährung, Verbrauch FIFO, Pflegefreistellungs-Kontingent.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "mitarbeiter",
+  "mitarbeiter_name",
+  "status",
+  "quelle",
+  "cb_kopf",
+  "urlaubsjahr_von",
+  "urlaubsjahr_bis",
+  "verjaehrt_am",
+  "sb_anspruch",
+  "wochen",
+  "arbeitstage_pro_woche",
+  "anspruch_tage",
+  "aliquot_bis",
+  "cb_anspruch",
+  "korrektur_tage",
+  "korrektur_grund",
+  "sb_stand",
+  "verbraucht_tage",
+  "rest_tage",
+  "vorgriff_tage",
+  "cb_stand",
+  "pflegefreistellung_std",
+  "pflegefreistellung_genommen_std"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "mitarbeiter",
+   "fieldtype": "Link",
+   "label": "Mitarbeiter",
+   "options": "PH Mitarbeiter",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "mitarbeiter_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "fetch_from": "mitarbeiter.titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Offen\nVerbraucht\nVerjaehrt\nAbgegolten",
+   "default": "Offen",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "Automatisch\nVertrag\nKorrektur\nAltdaten",
+   "default": "Automatisch"
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "urlaubsjahr_von",
+   "fieldtype": "Date",
+   "label": "Urlaubsjahr von",
+   "reqd": 1,
+   "in_list_view": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "urlaubsjahr_bis",
+   "fieldtype": "Date",
+   "label": "Urlaubsjahr bis",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "verjaehrt_am",
+   "fieldtype": "Date",
+   "label": "Verjährt am",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Ende des Urlaubsjahres + 2 Jahre (§ 4 Abs 5 UrlG)."
+  },
+  {
+   "fieldname": "sb_anspruch",
+   "fieldtype": "Section Break",
+   "label": "Anspruch"
+  },
+  {
+   "fieldname": "wochen",
+   "fieldtype": "Int",
+   "label": "Wochen",
+   "read_only": 1,
+   "description": "5 Wochen; 6 Wochen nach Vollendung des 25. Dienstjahres (§ 2 Abs 1 UrlG)."
+  },
+  {
+   "fieldname": "arbeitstage_pro_woche",
+   "fieldtype": "Float",
+   "label": "Arbeitstage je Woche",
+   "read_only": 1
+  },
+  {
+   "fieldname": "anspruch_tage",
+   "fieldtype": "Float",
+   "label": "Anspruch (Arbeitstage)",
+   "precision": "2",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "aliquot_bis",
+   "fieldtype": "Date",
+   "label": "Aliquot bis",
+   "read_only": 1,
+   "description": "Erstes Arbeitsjahr: bis hier entsteht der Anspruch aliquot (§ 2 Abs 2 UrlG)."
+  },
+  {
+   "fieldname": "cb_anspruch",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "korrektur_tage",
+   "fieldtype": "Float",
+   "label": "Korrektur (+/−)",
+   "precision": "2",
+   "permlevel": 0
+  },
+  {
+   "fieldname": "korrektur_grund",
+   "fieldtype": "Small Text",
+   "label": "Korrekturgrund",
+   "depends_on": "eval:doc.korrektur_tage"
+  },
+  {
+   "fieldname": "sb_stand",
+   "fieldtype": "Section Break",
+   "label": "Stand"
+  },
+  {
+   "fieldname": "verbraucht_tage",
+   "fieldtype": "Float",
+   "label": "Verbraucht (genehmigt)",
+   "read_only": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "rest_tage",
+   "fieldtype": "Float",
+   "label": "Rest",
+   "read_only": 1,
+   "precision": "2",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vorgriff_tage",
+   "fieldtype": "Float",
+   "label": "Vorgriff",
+   "read_only": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "cb_stand",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pflegefreistellung_std",
+   "fieldtype": "Float",
+   "label": "Pflegefreistellung Kontingent (Std.)",
+   "precision": "2",
+   "description": "Eine Woche Normalarbeitszeit je Arbeitsjahr (§ 16 UrlG); zweite Woche unter den Voraussetzungen des § 16 Abs 2."
+  },
+  {
+   "fieldname": "pflegefreistellung_genommen_std",
+   "fieldtype": "Float",
+   "label": "Pflegefreistellung genommen (Std.)",
+   "read_only": 1,
+   "precision": "2"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Urlaubsanspruch",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Personal Selbstservice",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "urlaubsjahr_von",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Offen",
+   "color": "Blue"
+  },
+  {
+   "title": "Verbraucht",
+   "color": "Green"
+  },
+  {
+   "title": "Verjaehrt",
+   "color": "Gray"
+  },
+  {
+   "title": "Abgegolten",
+   "color": "Gray"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "format:UA-{mitarbeiter}-{urlaubsjahr_von}",
+ "naming_rule": "Expression",
+ "title_field": "titel",
+ "search_fields": "mitarbeiter_name,status"
+}

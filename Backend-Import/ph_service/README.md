@@ -94,6 +94,7 @@ Bewegung = Speichern, Kommentar, Einsatz-Status, Regress-Status (`letzte_bewegun
 | `portal_care_subscriptions(kontakt, kunde_token)` | Pflege-/Wartungsverträge (`itemIds`, `passIds`, `naechsterTermin`, Protokolle) | `src/lib/service/pflege/portal.js` |
 | `create_service_case(nachname, email, beschreibung, …, fotos[])` | Reklamationsformular ohne Portal; findet/erzeugt PH Kontakt per E-Mail; idempotent | `/[locale]/service/reklamation` (neu) |
 | `get_service_status(referenz, email)` | Status abfragen (Referenz + E-Mail) | Website |
+| `add_service_photo(referenz, email, foto_base64, mime?, dateiname?, hinweis?)` (POST, idempotent) | Foto/Video/PDF zur Website-Reklamation ohne Portal-Login nachreichen: Referenz + E-Mail (sha256, konstanter Vergleich; falsche E-Mail = unbekannte Referenz = 404 `not_found`), Typ am Dateikopf (`utils/medien.py`, `mime` darf nicht widersprechen → 400 `field: mime`), privat, ≤ 10 Dateien je Fall (und `portal_fotos_max`), nur ≤ 14 Tage nach `gemeldet_am` (410 `expired`), abgeschlossen 409, Rate-Limit je Client (20/min) und je Fall (10 je 10 min) → `{referenz, fotos, medientyp, datei}`; Regeln `utils/reklamation_foto.py` | Website `/service/reklamation` |
 | `get_fehlerkatalog()` | Bereiche/Codes/Arten für Formulare | Website, Portal |
 
 Portal-Token: `sha256(kunde_token)` wird mit `PH Kontakt.portal_token_hash` verglichen (gleiche Konvention wie ph_projekte/ph_faktura erwartet; mit dem ph_crm-Agenten abgestimmt halten). Zugriff immer über `kontakt` gefiltert; Bestellung/Projekt/Produktpass/Rechnung werden nur übernommen, wenn sie dem Kontakt gehören. Antworten ohne Klartext-E-Mail (maskiert).
@@ -121,6 +122,28 @@ Site-Tests setzen voraus, dass `PH Kontakt` (ph_crm) installiert ist; Regress-Te
 1. Portal-Adapter (`src/lib/portal/adapters/frappe.js`): Service-Methoden auf `ph_service.api.portal_*` zeigen lassen; Pflege-Abos (`listCareSubscriptions`) auf `portal_care_subscriptions` (Antwort `vertraege[]`, Felder wie bisher plus `bereich`, `ueberfaellig`).
 2. Reklamationsformular (neu, `/[locale]/service/reklamation`) → `ph_service.api.create_service_case`; Statusseite → `get_service_status`; Fehlerkatalog für Auswahlfelder → `get_fehlerkatalog`.
 3. Header `Authorization: token <key>:<secret>` wie bei ph_crm; Fehlercodes `body.code`.
+
+## Ergänzungen 04.11.2026 (Backend-Lücken, Inhaber-Entscheid Nr. 50)
+
+| Bereich | Umsetzung |
+|---|---|
+| Fristen automatisch | Übergabedatum aus Lieferschein `zugestellt_am` → Montageauftrag `abgenommen_am` → Produktpass `lieferdatum` → Projekt `uebergabe_am` (`uebergabe_quelle`); Garantie/Seriennummer/Marke aus Produktpass. Neues Feld `sachart` (Unbeweglich = 3 Jahre § 933 ABGB, Vermutung 6 Monate § 924). |
+| SLA | `utils/sla.py`: Reaktions-/Lösungsfrist je Priorität in Werktagen ohne Feiertage (PH Termin Einstellungen / AT-Feiertage), `frist_loesung`, `sla_status`, Prioritätswechsel rechnet neu; Scheduler `tasks.sla_pruefen` eskaliert nach Lösungsfrist (Stufe 1 Leitung, ab Stufe 2 Geschäftsführung, ToDo + Notification Log). Report **PH SLA Erfuellung**, Number Card **PH SLA verletzt**. |
+| Erstreaktion | `erstreaktion_erfassen(kanal, notiz)`; Telefon/Showroom-Meldung zählt beim Anlegen als Erstreaktion (Einstellung `telefon_ist_erstreaktion`). |
+| Kulanz | `utils/kulanz.py`: Freigabe deckt nur den freigegebenen Betrag; `kulanz_freigeben(kommentar, betrag_cent)`, `kulanz_ablehnen(grund)`, `kulanz_anfordern()`; Anforderung → ToDo + Glocke an Leitung. Number Card **PH Kulanz wartet auf Freigabe**. |
+| Kundenupload | Portal/Website: Dateityp per Dateikopf (`utils/medien.py`), Bilder/PDF ≤ `portal_foto_max_mb`, Videos (MP4/MOV/WEBM) ≤ `portal_video_max_mb`, max. `portal_videos_max`; privat; `medientyp` je Zeile. |
+| Regress | `gutschrift_erfassen(betrag_cent, nummer, datum, beleg, eingangsrechnung)` (Teilgutschriften), Abgleich Soll/Ist (`utils/regress.py`, Toleranz), `differenz_ausbuchen(grund)` (Leitung). |
+| Ersatzteile | `ersatzteile_bestellen(lieferant, zeilen[], lieferadresse, wunschtermin)`, `wareneingang(mengen | alles=1)`; Fall-Zeile „Eingetroffen“ erst bei voller Menge, danach ToDo „Einsatz planen“; `tasks.ersatzteile_ueberfaellig`; Report **PH Ersatzteile unter Mindestbestand**. |
+| Einsatzbericht | Pause, abrechenbare Minuten im Takt (`utils/einsatz.py`), Bestätigung `unterschrift_art` (Unterschrift/Name bestätigt/Verweigert/Kunde abwesend), `bericht_senden()`, `umplanen()`, `abbrechen(grund)`; Druckformat zeigt Zeiten und Bestätigungsart. |
+| Wartungsvertrag | `tasks.wartungseinsaetze_erzeugen`: legt Einsätze `wartung_vorlauf_tage` vor Fälligkeit an (nächster Werktag, idempotent über `planschluessel`, manuell geplante zählen), Schalter je Vertrag `automatisch_einplanen`. |
+| Serviceauftrag | `uebernahme_erfassen` / `rueckgabe_erfassen` (Zustand je Stück, Unterschrift oder Name, neue Schäden als Hinweis). |
+| Kommunikation | Vorlagen **PH Service Ablehnung**, **PH Service Nachricht** (frei), **PH Service Servicebericht**; `ablehnen(..., kunde_informieren=1)`. |
+| Fehlerkatalog | `<BER>-99 Sonstiges` je Bereich (after_insert + Patch `v0_2.service_luecken`). |
+| Backoffice-API | `ph_service.api.get_next_steps(names)`, `get_service_case_file(name)`, `get_technician_slots(datum, dauer_min, techniker)`. |
+| Hersteller-Belastung (Nachtrag Nr. 52, S12) | Kindtabelle **PH Lieferantenregress Kosten** (Arbeitszeit/Anfahrt/Ersatzteil/Fremdleistung/Transport/Pauschale, Menge × Satz); `kosten_uebernehmen()` aus regressfähigen Fallkosten + Einsätzen; `belastung_senden()` mit Druckformat **PH Lieferantenregress Belastungsanzeige** (ph_basis.html) und Gutschriftfrist; `mahnen()` (Stufen, `tasks.regress_mahnungen` meldet fällige Mahnungen); Rücksendung `abholung_anfordern()` / `abholung_bestaetigen()`. Statistik je Lieferant: Report PH Reklamationsquote je Marke (Gruppierung Lieferant). |
+| SLA-Pause (Nr. 54) | `sla_pausieren(grund Hersteller/Ersatzteil/Kunde)`, `sla_fortsetzen()`; pausierte Werktage verlängern die Lösungsfrist (`utils/sla.pause_werktage`, `frist_verschieben`), Status „Pausiert“, keine Eskalation; automatisch bei Ersatzteilbestellung bis zum vollständigen Wareneingang (Einstellung). |
+| Geräte (Nr. 56) | `e_nummer`, `fd_nummer` am Servicefall (neben `seriennummer`), auf der Belastungsanzeige. |
+| Kontakt-Hooks | `ph_service/ph_service/kontakt_daten.py`: Zeitleiste, Auskunft, Anonymisieren (Aufbewahrung bis Verjährung/Garantie/Regress, `utils/aufbewahrung.py`), Zusammenführen. |
 
 ## Offene Punkte
 

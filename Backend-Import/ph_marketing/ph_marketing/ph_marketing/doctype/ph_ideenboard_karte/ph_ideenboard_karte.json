@@ -1,0 +1,125 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 18:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Ideenboard Karte",
+ "owner": "Administrator",
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "editable_grid": 1,
+ "track_changes": 0,
+ "description": "Karte eines geteilten Ideenboards (src/lib/ideenboard/model.js sanitizeCard).",
+ "fields": [
+  {
+   "fieldname": "position",
+   "fieldtype": "Int",
+   "label": "Position",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "typ",
+   "fieldtype": "Select",
+   "label": "Typ",
+   "options": "moebel\nraumbild\nezarri\nezarriMix\nstil\nprojekt\nnotiz",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "length": 140,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "untertitel",
+   "fieldtype": "Data",
+   "label": "Untertitel",
+   "length": 140,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "link",
+   "fieldtype": "Small Text",
+   "label": "Link (intern)"
+  },
+  {
+   "fieldname": "bild",
+   "fieldtype": "Data",
+   "label": "Bild (intern)",
+   "length": 400,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "karte_id",
+   "fieldtype": "Data",
+   "label": "Karten-ID",
+   "length": 40,
+   "read_only": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Data",
+   "label": "Bildquelle",
+   "length": 60
+  },
+  {
+   "fieldname": "raum",
+   "fieldtype": "Data",
+   "label": "Raum",
+   "length": 60
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "hinzugefuegt_am",
+   "fieldtype": "Data",
+   "label": "Hinzugefügt (ISO)",
+   "length": 40,
+   "read_only": 1
+  },
+  {
+   "fieldname": "nopin",
+   "fieldtype": "Check",
+   "label": "Kein Pinterest-Link",
+   "default": "0"
+  }
+ ],
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "field_order": [
+  "position",
+  "typ",
+  "titel",
+  "untertitel",
+  "link",
+  "bild",
+  "cb_1",
+  "karte_id",
+  "quelle",
+  "raum",
+  "notiz",
+  "hinzugefuegt_am",
+  "nopin"
+ ]
+}

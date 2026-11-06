@@ -82,6 +82,43 @@ def refund_erstellen(payment_intent, betrag_cent, grund, metadata=None, idempote
     return {"id": r["id"], "status": r["status"], "amount": cint(r["amount"]), "simuliert": False}
 
 
+def checkout_session_erstellen(*, referenz, betrag_cent, waehrung="eur", beschreibung, email=None, stunden=24, metadata=None, erfolg_url=None, abbruch_url=None, sprache="de", idempotency_key=None):
+    """Zahlungslink für eine Backoffice-/Telefonbestellung: Stripe Checkout Session (mode=payment, eine Zeile
+    über den offenen Bruttobetrag). Der Webhook checkout.session.completed bucht wie bei Online-Bestellungen.
+    → {"id", "url", "gueltig_bis" (naive Datetime Site-Zeit), "simuliert"}. Simulation/Tests: kein Netz."""
+    from frappe.utils import add_to_date
+
+    betrag_cent = cint(betrag_cent)
+    if betrag_cent <= 0:
+        frappe.throw(_("Betrag muss größer als 0 Cent sein."))
+    stunden = min(max(cint(stunden) or 24, 1), 24)  # Stripe: expires_at 30 min … 24 h
+    gueltig_bis = add_to_date(now_datetime(), hours=stunden)
+    meta = {str(k): str(v)[:450] for k, v in (metadata or {}).items()}
+    if simulation():
+        sid = f"cs_sim_{frappe.generate_hash(length=16)}"
+        return {"id": sid, "url": f"https://checkout.stripe.com/c/pay/{sid}#simuliert", "gueltig_bis": gueltig_bis, "simuliert": True}
+    import time
+
+    s = api()
+    params = {
+        "mode": "payment",
+        "line_items": [{"quantity": 1, "price_data": {"currency": (waehrung or "eur").lower(), "unit_amount": betrag_cent, "product_data": {"name": (beschreibung or referenz)[:250]}}}],
+        "client_reference_id": referenz,
+        "metadata": meta,
+        "payment_intent_data": {"metadata": meta, "description": (beschreibung or referenz)[:250]},
+        "expires_at": int(time.time()) + stunden * 3600 - 60,
+        "locale": sprache if sprache in ("de", "en", "fr", "it") else "auto",
+    }
+    if email:
+        params["customer_email"] = email
+    if erfolg_url:
+        params["success_url"] = erfolg_url
+    if abbruch_url:
+        params["cancel_url"] = abbruch_url
+    r = s.checkout.Session.create(**params, idempotency_key=idempotency_key or f"ph-link-{referenz}-{betrag_cent}-{frappe.generate_hash(length=8)}")
+    return {"id": r["id"], "url": r["url"], "gueltig_bis": gueltig_bis, "simuliert": False}
+
+
 def session_abrufen(session_id):
     """Checkout-Session nachlesen (Scheduler: offene Checkouts). Simulation → None (unbekannt)."""
     if simulation() or not session_id:

@@ -65,12 +65,19 @@ export const STELLEN_META = [
 // Feldnamen des Backoffice (abgeleitet aus JobDetail.js und structuredData.js).
 const DESCRIPTION_FIELD = { de: "stellenbeschreibung", en: "job_description_en", fr: "description_de_lemploi", it: "jobs_description_it" };
 
+/**
+ * Zeiträume des Entgelts → schema.org unitText (JobPosting baseSalary).
+ * „Stunde“ liefert ph_personal (PH Stelle entgelt_zeitraum, utils/glbg.py
+ * SALARY_UNIT) z. B. für Aushilfen nach Stundenlohn.
+ */
+export const SALARY_UNIT = Object.freeze({ Monat: "MONTH", Jahr: "YEAR", Stunde: "HOUR" });
+
 /** Ist das Entgelt vollständig (Betrag, Zeitraum, KV, Überzahlungs-Hinweis)? */
 export function entgeltVollstaendig(entgelt) {
   if (!entgelt || typeof entgelt !== "object") return false;
   const betrag = entgelt.kvMindestBrutto;
   const hatBetrag = typeof betrag === "number" && Number.isFinite(betrag) && betrag > 0;
-  const hatZeitraum = entgelt.zeitraum === "Monat" || entgelt.zeitraum === "Jahr";
+  const hatZeitraum = Object.hasOwn(SALARY_UNIT, entgelt.zeitraum);
   const hatKv = typeof entgelt.kollektivvertrag === "string" && entgelt.kollektivvertrag.trim() !== "";
   // Überzahlung: true/false (Inhaber hat entschieden) oder eigener Wortlaut.
   const u = entgelt.ueberzahlung;
@@ -94,7 +101,7 @@ export function buildStelle(meta) {
     start: meta.start || null,
     entgelt: { ...meta.entgelt },
     salary: entgeltVollstaendig(meta.entgelt) ? meta.entgelt.kvMindestBrutto : null,
-    salary_unit: meta.entgelt?.zeitraum === "Jahr" ? "YEAR" : "MONTH",
+    salary_unit: SALARY_UNIT[meta.entgelt?.zeitraum] || "MONTH",
   };
   for (const l of STELLEN_LOCALES) {
     const t = TEXTE[l].STELLEN[meta.key];

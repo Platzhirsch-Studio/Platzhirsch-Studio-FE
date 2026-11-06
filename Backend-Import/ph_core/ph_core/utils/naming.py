@@ -31,12 +31,15 @@ def normalisiere_code(wert):
 # Nummernkreise je DocType (Stand 04.11.2026, abgeglichen mit allen DocType-JSONs der 11 Apps).
 # Sortiert nach App in Installationsreihenfolge.
 NUMMERNKREISE = {
+    # ph_core (Backoffice-Fundament Nr. 48/49: registrierte Arbeitsplatz-Geräte)
+    "PH Geraet": "PH-GER-.####",
     # ph_crm
     "PH Anfrage": "PH-ANF-.YYYY.-.#####",
     "PH Kontakt": "PH-KON-.#####",
     "PH Termin": "PH-TER-.YYYY.-.#####",
     "PH Beratungsgespraech": "PH-BG-.YYYY.-.#####",
     "PH Aufgabe": "PH-AUF-.YYYY.-.#####",
+    "PH Datenschutzanfrage": "PH-DSA-.YYYY.-.#####",
     # ph_sortiment
     "PH Herstellerbestellung": "HB-.YYYY.-.#####",
     "PH Wareneingang": "WE-.YYYY.-.#####",
@@ -54,12 +57,16 @@ NUMMERNKREISE = {
     "PH Abnahme": "PH-ABN-.YYYY.-.####",
     "PH Projekt Aufgabe": "PH-PAU-.YYYY.-.#####",
     "PH Projektzeit": "PH-PZT-.YYYY.-.#####",
+    "PH Aufmass": "PH-AFM-.YYYY.-.####",
+    "PH Nachtrag": "PH-NT-.YYYY.-.####",
+    "PH Projekt Nachkalkulation": "PH-NK-.YYYY.-.####",  # Projektnachkalkulation bei Abschluss (04.11.)
     # ph_shop
     "PH Bestellung": "PH-S-.YY.MM.DD.-.#####",
     "PH Gutschein": "PH-GS-.YYYY.-.#####",
     "PH Zahlung": "PH-ZAH-.YYYY.-.#####",
     "PH Widerruf": "PH-WID-.YYYY.-.#####",
     "PH Retoure": "PH-RET-.YYYY.-.#####",
+    "PH Wunschliste": "PH-WL-.YYYY.-.#####",
     # ph_faktura (PH Rechnung/PH Gutschrift: Entwurf = format:ENTW-…, Serie erst beim Stellen)
     "PH Angebot": "AN-.YYYY.-.#####",
     "PH Auftragsbestaetigung": "AB-.YYYY.-.#####",
@@ -78,16 +85,24 @@ NUMMERNKREISE = {
     "PH Lagerbewegung": "PH-LBW-.YYYY.-.#####",
     "PH Inventur": "PH-INV-.YYYY.-.####",
     "PH Tour": "PH-TOUR-.YYYY.-.####",
+    "PH Speditionsauftrag": "PH-SPA-.YYYY.-.####",
+    "PH Warenruecknahme": "PH-WR-.YYYY.-.####",
+    # ph_logistik Lager & Inventur Ergänzung (04.11.)
+    "PH Meldebestand": "PH-MB-.#####",
+    "PH Bestellvorschlag": "PH-BV-.YYYY.-.#####",
+    "PH Inventurbewertung": "PH-IB-.YYYY.-.####",
     # ph_personal (PH Zeiterfassung gehört laut PLAN WP8 zu ph_personal)
     "PH Bewerbung": "PH-BEW-.YYYY.-.#####",
     "PH Bewerbungsgespraech": "PH-GSP-.YYYY.-.#####",
     "PH Mitarbeiter": "PH-MA-.####",
     "PH Zeiterfassung": "PH-ZEIT-.YYYY.-.######",
     "PH Abwesenheit": "PH-ABW-.YYYY.-.#####",
+    "PH Krankmeldung": "PH-KRANK-.YYYY.-.#####",
     # ph_marketing
     "PH Kampagne": "PH-KAM-.YYYY.-.####",
     "PH Newsletter Ausgabe": "PH-NL-.YYYY.-.###",
     "PH Social Beitrag": "PH-SOC-.YYYY.-.####",
+    "PH Bewertung": "PH-BWT-.YYYY.-.#####",  # Rückmeldungen/Bewertungen (/de/bewerten); PH Ideenboard = field:board_id
     # ph_kassa (PH Kassenbeleg: kein Nummernkreis, Name = <Kassen-ID>-<Belegnummer>, Controller)
     "PH DEP Export": "PH-DEP-.YYYY.-.####",
     "PH Kassa Ereignis": "PH-KEV-.YYYY.-.#####",
@@ -101,6 +116,13 @@ NUMMERNKREISE = {
     "PH Lieferantenregress": "PH-REG-.YYYY.-.#####",
     "PH Pflege Abo": "PFL-.YYYY.-.#####",
     "PH Serviceauftrag": "PH-SA-.YYYY.-.#####",
+    # ph_kundenkarte (PH Kundenkarte: autoname field:kartennummer, Format KK-XXXXXX aus referenz("KK"))
+    "PH Kundenkarte Vorteil": "PH-KKV-.YYYY.-.#####",
+    "PH Kundenkarte Einloesung": "PH-KKE-.YYYY.-.#####",
+    "PH Kundenkarte Antrag": "PH-KKA-.YYYY.-.#####",
+    # ph_ablage (PH Datei Freigabelink/PH Ablage Ereignis: autoname hash)
+    "PH Ordner": "PH-ORD-.######",
+    "PH Datei": "PH-DAT-.YYYY.-.######",
 }
 
 # Bekannte Kollisionen (gleiche Serie in zwei DocTypes → gemeinsamer Zähler in `tabSeries`,

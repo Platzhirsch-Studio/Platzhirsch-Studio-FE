@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Abweichungsanalyse je Kostenart in der Nachkalkulation.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kostenart",
+  "db_stufe",
+  "budget_auftrag_cent",
+  "budget_aktuell_cent",
+  "ist_cent",
+  "abweichung_cent",
+  "abweichung_prozent",
+  "kommentar_pflicht",
+  "kommentar"
+ ],
+ "fields": [
+  {
+   "fieldname": "kostenart",
+   "fieldtype": "Link",
+   "label": "Kostenart",
+   "options": "PH Kostenart",
+   "in_list_view": 1,
+   "columns": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "db_stufe",
+   "fieldtype": "Data",
+   "label": "Stufe",
+   "read_only": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "budget_auftrag_cent",
+   "fieldtype": "Int",
+   "label": "Budget bei Auftrag",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "budget_aktuell_cent",
+   "fieldtype": "Int",
+   "label": "Budget aktuell",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "ist_cent",
+   "fieldtype": "Int",
+   "label": "Ist",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "abweichung_cent",
+   "fieldtype": "Int",
+   "label": "Abweichung",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "abweichung_prozent",
+   "fieldtype": "Float",
+   "label": "Abweichung %",
+   "precision": "1",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "kommentar_pflicht",
+   "fieldtype": "Check",
+   "label": "Kommentar Pflicht",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "kommentar",
+   "fieldtype": "Small Text",
+   "label": "Kommentar (Ursache)",
+   "in_list_view": 1,
+   "columns": 2
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Projekt Nachkalkulation Zeile",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

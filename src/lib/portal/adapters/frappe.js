@@ -79,4 +79,7 @@ export const frappeAdapter = {
   requestPlanning: notConnected("requestPlanning"),
   markMessagesRead: notConnected("markMessagesRead"),
   sendMessage: notConnected("sendMessage"),
+  // Kundenkarte: ph_kundenkarte.api.portal_card(kontakt, kunde_token) → PortalCard
+  // (src/lib/kundenkarte/adapters/frappe.js createFrappeAdapter().portalCard).
+  getCustomerCard: notConnected("getCustomerCard"),
 };

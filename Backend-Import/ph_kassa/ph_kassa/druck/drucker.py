@@ -44,7 +44,7 @@ def beleg_dict(beleg) -> dict:
     kunde_name = None
     if d.get("kontakt") and frappe.db.exists("DocType", "PH Kontakt"):
         kunde_name = frappe.db.get_value("PH Kontakt", d["kontakt"], "titel") or d["kontakt"]
-    bediener_name = frappe.db.get_value("User", d.get("bediener") or frappe.session.user, "full_name")
+    bediener_name = bediener_kurz(d.get("bediener") or frappe.session.user)
     positionen = []
     for p in d.get("positionen") or []:
         p = dict(p)
@@ -72,6 +72,29 @@ def beleg_dict(beleg) -> dict:
         "bediener_name": bediener_name,
         "kunde_name": kunde_name,
     }
+
+
+def bediener_kurz(user):
+    """Bon zeigt nur Kürzel/Vornamen (Fachkritik 21 R2/P10, DSGVO Datenminimierung) – ph_core_kurzname oder Vorname."""
+    meta = frappe.get_meta("User")
+    felder = ["first_name", "full_name"] + (["ph_core_kurzname"] if meta.has_field("ph_core_kurzname") else [])
+    u = frappe.db.get_value("User", user, felder, as_dict=True) or {}
+    return u.get("ph_core_kurzname") or u.get("first_name") or (u.get("full_name") or "").split(" ")[0] or None
+
+
+def schublade_auftrag(kasse) -> dict:
+    """Nur Kassenlade öffnen (ESC p), ohne Beleg – Wechselgeld (Ereignis protokolliert die Page)."""
+    from ph_kassa.druck.escpos import EscPos
+
+    einst = einstellungen()
+    modus = _modus_normalisieren(frappe.db.get_value("PH Kasse", kasse, "bon_drucker") if frappe.db.exists("DocType", "PH Kasse") else None) or einst["bondrucker_modus"]
+    roh = EscPos().init().schublade().bytes()
+    if modus == "ESC-POS Druckserver":
+        url = (frappe.db.get_value("PH Kasse", kasse, "drucker_adresse") if frappe.db.exists("DocType", "PH Kasse") else None) or einst["druckserver_url"]
+        return {"modus": modus, "gesendet": _an_druckserver(roh, url)}
+    if modus == "QZ Tray":
+        return {"modus": modus, "escpos_base64": base64.b64encode(roh).decode("ascii"), "qz_drucker_name": einst["qz_drucker_name"]}
+    return {"modus": modus, "hinweis": _("Kein ESC/POS-Drucker – Lade manuell öffnen.")}
 
 
 def druckauftrag(beleg, modus: str | None = None, schublade: bool = False) -> dict:

@@ -20,7 +20,9 @@
   "plaetze",
   "sb_weiteres",
   "fahrzeug",
-  "beschreibung"
+  "beschreibung",
+  "zuletzt_gezaehlt",
+  "zuletzt_inventur"
  ],
  "fields": [
   {
@@ -109,6 +111,19 @@
    "fieldname": "beschreibung",
    "fieldtype": "Small Text",
    "label": "Beschreibung"
+  },
+  {
+   "fieldname": "zuletzt_gezaehlt",
+   "fieldtype": "Date",
+   "label": "Zuletzt gezählt (ohne Platz)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "zuletzt_inventur",
+   "fieldtype": "Link",
+   "label": "Letzte Inventur",
+   "options": "PH Inventur",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 0,
@@ -124,7 +139,7 @@
    "group": "Bestand"
   }
  ],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 15:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Logistik",
  "name": "PH Lagerort",

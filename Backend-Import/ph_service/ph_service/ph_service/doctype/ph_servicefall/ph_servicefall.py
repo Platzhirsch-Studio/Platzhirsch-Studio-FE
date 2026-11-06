@@ -5,7 +5,9 @@ validate()      Kundendaten übernehmen, Fehlercode/Bereich abgleichen, Fristen 
 before_insert() Eingang, Reaktionsfrist, Standardwerte.
 on_update()     Zuweisung spiegeln, Produktpass/Projekt-Hinweis – nie Fehler werfen.
 Dokument-Methoden (Buttons in ph_servicefall.js): einsatz_anlegen, ersatzteile_bestellen, regress_anlegen,
-kunde_informieren, lieferant_informieren, gutschrift_erstellen, erledigt_melden, ablehnen, abnahme_erfassen.
+kunde_informieren, lieferant_informieren, gutschrift_erstellen, erledigt_melden, ablehnen, abnahme_erfassen,
+erstreaktion_erfassen, kulanz_anfordern, kulanz_freigeben, kulanz_ablehnen, sla_info.
+SLA (Reaktion/Lösung je Priorität, Werktage ohne Feiertage): ph_service/utils/sla.py; Kulanzfreigabe: utils/kulanz.py.
 """
 
 import frappe
@@ -15,13 +17,16 @@ from frappe.utils import add_days, cint, get_datetime, getdate, now_datetime, no
 
 from ph_service.ph_service import fristen as fr
 from ph_service.ph_service import kommunikation as kom
-from ph_service.ph_service.doctype.ph_service_einstellungen.ph_service_einstellungen import einstellungen
+from ph_service.ph_service.doctype.ph_service_einstellungen.ph_service_einstellungen import einstellungen, feiertage, sla_tabellen
+from ph_service.utils import kulanz as kul
+from ph_service.utils import sla
 
 OFFEN = ("Gemeldet", "Geprueft", "Entscheidung", "In Bearbeitung", "Einsatz geplant")
 ABGESCHLOSSEN = ("Erledigt", "Geschlossen", "Abgelehnt")
 LEITUNG = ("PH Service Leitung", "PH Geschäftsführung", "System Manager", "Administrator")
 ENTSCHEIDUNG_PFLICHT_AB = ("In Bearbeitung", "Einsatz geplant", "Erledigt", "Geschlossen")
 UNTERNEHMER_KONTAKTARTEN = ("Geschaeft", "Architekt", "Partner", "Lieferant")
+ERSTREAKTION_KANAELE = ("Telefon", "Showroom")  # Kunde wurde bei der Meldung bereits beraten (Kritik 20-ux-service P1)
 
 KOSTEN_INTERN = ("Intern Arbeitszeit", "Intern Anfahrt", "Sonstiges")
 KOSTEN_EXTERN = ("Ersatzteil", "Extern Fremdleistung", "Extern Transport")
@@ -44,8 +49,10 @@ class PHServicefall(Document):
             self.status = "Gemeldet"
         if not self.prioritaet:
             self.prioritaet = einst["standard_prioritaet"]
-        if not self.frist_reaktion:
-            self.frist_reaktion = fr.reaktionsfrist(getdate(self.gemeldet_am), einst["reaktion_werktage"])
+        self._sla_fristen_setzen(neu=True)
+        if self.kanal in ERSTREAKTION_KANAELE and cint(einst["telefon_ist_erstreaktion"]) and not self.erstreaktion_am and self.quelle in (None, "", "backoffice"):
+            self.erstreaktion_am = self.gemeldet_am
+            self.erstreaktion_kanal = "Telefon" if self.kanal == "Telefon" else "Vor Ort"
         if self.portal_sichtbar is None:
             self.portal_sichtbar = cint(einst["portal_sichtbar_standard"])
         if not self.verantwortlich and frappe.session.user not in ("Administrator", "Guest") and "PH Service Mitarbeiter" in frappe.get_roles():
@@ -62,11 +69,14 @@ class PHServicefall(Document):
         self._kosten_summieren()
         self._entscheidung_pruefen()
         self._status_pruefen()
+        self._sla_pruefen()
         self.titel = self.bilde_titel()
         if not self.is_new():
             self.letzte_bewegung = now_datetime()
 
     def on_update(self):
+        if self.kulanz_freigabe_status == kul.ANGEFORDERT and self.has_value_changed("kulanz_freigabe_status"):
+            self._kulanz_benachrichtigen()
         if self.verantwortlich and self.has_value_changed("verantwortlich"):
             try:
                 from frappe.desk.form.assign_to import add, clear
@@ -120,7 +130,13 @@ class PHServicefall(Document):
                         self.kaufdatum = getdate(wert)
                         break
         if not self.uebergabe_datum:
-            for dt, feld, spalte in (("PH Lieferschein", "lieferschein", "zugestellt_am"), ("PH Produktpass", "produktpass", "lieferdatum")):
+            # Gewährleistung beginnt mit der Übergabe (§ 933 ABGB): Zustellung, Montage-Abnahme, Projektübergabe, Produktpass.
+            for dt, feld, spalte in (
+                ("PH Lieferschein", "lieferschein", "zugestellt_am"),
+                ("PH Montageauftrag", "montageauftrag", "abgenommen_am"),
+                ("PH Produktpass", "produktpass", "lieferdatum"),
+                ("PH Projekt", "projekt", "uebergabe_am"),
+            ):
                 if self.get(feld) and frappe.db.exists("DocType", dt):
                     try:
                         wert = frappe.db.get_value(dt, self.get(feld), spalte)
@@ -128,7 +144,17 @@ class PHServicefall(Document):
                         wert = None
                     if wert:
                         self.uebergabe_datum = getdate(wert)
+                        self.uebergabe_quelle = f"{dt} {self.get(feld)} ({spalte})"[:140]
                         break
+        if self.produktpass and not cint(self.garantie_monate) and frappe.db.exists("DocType", "PH Produktpass"):
+            try:
+                pp = frappe.db.get_value("PH Produktpass", self.produktpass, ["garantie_monate", "seriennummer", "marke"], as_dict=True)
+            except Exception:  # noqa: BLE001
+                pp = None
+            if pp:
+                self.garantie_monate = cint(pp.garantie_monate) or self.garantie_monate
+                self.seriennummer = self.seriennummer or pp.seriennummer
+                self.marke = self.marke or pp.marke
         if self.produkt and not self.produkt_name and frappe.db.exists("DocType", "PH Produkt"):
             try:
                 self.produkt_name = frappe.db.get_value("PH Produkt", self.produkt, "name_herstellerbezeichnung") or self.produkt
@@ -159,6 +185,7 @@ class PHServicefall(Document):
             vermutung_monate=vermutung,
             erledigt_am=getdate(self.erledigt_am) if self.erledigt_am else None,
             lieferung_an_haendler=self.lieferung_an_haendler,
+            sachart=self.sachart or "Beweglich",
         )
         self.gewaehrleistung_bis = f["gewaehrleistung_bis"]
         self.beweislast_bis = f["beweislast_bis"]
@@ -195,7 +222,16 @@ class PHServicefall(Document):
 
     def _entscheidung_pruefen(self):
         einst = einstellungen()
-        self.kulanz_freigabe_noetig = int(cint(self.kulanz_cent) > cint(einst["kulanz_schwelle_cent"]))
+        # Freigabe deckt nur den freigegebenen Betrag; Erhöhung → neue Anforderung (utils/kulanz.py).
+        alt_status = self.kulanz_freigabe_status
+        status = kul.freigabe_status(self.kulanz_cent, einst["kulanz_schwelle_cent"], self.kulanz_freigegeben_cent, self.kulanz_abgelehnt_cent)
+        if status == kul.ANGEFORDERT and self.kulanz_freigegeben_von:
+            self.kulanz_freigegeben_von = None  # alte Freigabe galt für einen kleineren Betrag
+            self.kulanz_freigegeben_am = None
+        if status == kul.ANGEFORDERT and alt_status != kul.ANGEFORDERT:
+            self.kulanz_angefordert_am = now_datetime()
+        self.kulanz_freigabe_status = status
+        self.kulanz_freigabe_noetig = int(status != kul.NICHT_NOETIG)  # Schwelle überschritten (Workflow-Bedingung)
         if self.has_value_changed("entscheidung") and self.entscheidung:
             if not strip_html(self.entscheidung_begruendung or "").strip():
                 frappe.throw(_("Jede Entscheidung braucht eine Begründung."))
@@ -203,8 +239,8 @@ class PHServicefall(Document):
             self.entschieden_am = now_datetime()
             if self.entscheidung in ("Preisminderung", "Wandlung") and self.kundentyp == "Verbraucher" and self.mangel_bestaetigt == "Ja" and not self.flags.vorrang_bestaetigt:
                 frappe.msgprint(_("Hinweis VGG § 12: Preisminderung/Vertragsauflösung erst, wenn Verbesserung/Austausch unmöglich, unverhältnismäßig oder gescheitert ist. Bitte in der Begründung festhalten."), indicator="orange")
-        if self.kulanz_freigabe_noetig and not self.kulanz_freigegeben_von and ist_leitung() and self.entscheidung:
-            self.kulanz_freigegeben_von = frappe.session.user
+        if self.kulanz_freigabe_status == kul.ANGEFORDERT and ist_leitung() and self.entscheidung and not self.flags.ohne_selbstfreigabe:
+            self._kulanz_freigabe_setzen(_("Freigabe durch Leitung beim Entscheiden"))
         if self.kulanz_freigabe_noetig and not self.kulanz_freigegeben_von and self.status in ENTSCHEIDUNG_PFLICHT_AB:
             frappe.throw(_("Kulanz über {0} € braucht die Freigabe der Service-Leitung.").format(cint(einst["kulanz_schwelle_cent"]) // 100))
 
@@ -244,6 +280,184 @@ class PHServicefall(Document):
             self.geschlossen_am = None
             self.dauer_tage = None
         kom.verlauf(self, "Status", status=neu, hinweis=_("{0} → {1}").format(alt or "–", neu))
+
+    # ── SLA ─────────────────────────────────────────────────────────────────
+
+    def _sla_fristen_setzen(self, neu=False):
+        """Reaktions-/Lösungsfrist aus der Priorität (Werktage ohne Wochenende/Feiertage, utils/sla.py).
+        Beim Anlegen bleibt eine mitgegebene Frist (Import); die Reaktionsfrist ändert sich nach der Erstreaktion nicht mehr."""
+        reaktion, loesung = sla_tabellen()
+        f = sla.fristen(getdate(self.gemeldet_am or now_datetime()), self.prioritaet or "Normal", reaktion, loesung, feiertage())
+        if not (neu and self.frist_reaktion) and not self.erstreaktion_am:
+            self.frist_reaktion = f["frist_reaktion"]
+        if not (neu and self.frist_loesung):
+            # bereits pausierte Werktage („wartet auf Hersteller/Ersatzteil/Kunde“) bleiben hinzugerechnet
+            self.frist_loesung = sla.frist_verschieben(f["frist_loesung"], cint(self.sla_pause_werktage), feiertage())
+
+    def _sla_pruefen(self):
+        if not self.is_new() and self.has_value_changed("prioritaet"):
+            self._sla_fristen_setzen()
+            kom.verlauf(self, "SLA", status=self.status, hinweis=_("Priorität {0}: Reaktion bis {1}, Lösung bis {2}").format(_(self.prioritaet), self.frist_reaktion, self.frist_loesung))
+        einst = einstellungen()
+        erledigt = getdate(self.erledigt_am) if self.erledigt_am else None
+        if self.status == "Abgelehnt" and not erledigt:
+            erledigt = getdate(nowdate())
+        if erledigt and self.sla_pausiert_seit:
+            self._sla_pause_beenden(automatisch=True)
+        st = sla.status(getdate(nowdate()), self.frist_reaktion, self.frist_loesung, getdate(self.erstreaktion_am) if self.erstreaktion_am else None, erledigt, cint(einst["sla_warn_werktage"]), feiertage(), pausiert_seit=getdate(self.sla_pausiert_seit) if self.sla_pausiert_seit else None)
+        self.sla_status = st["status"]
+        self.sla_reaktion_verletzt = int(st["reaktion_verletzt"])
+        self.sla_loesung_verletzt = int(st["loesung_verletzt"])
+
+    @frappe.whitelist()
+    def sla_info(self):
+        """Für das SLA-Band im Formular: Fristen, Zustand, Rest-Werktage, Eskalationsstufe."""
+        einst = einstellungen()
+        heute = getdate(nowdate())
+        ft = feiertage()
+        erledigt = getdate(self.erledigt_am) if self.erledigt_am else None
+        st = sla.status(heute, self.frist_reaktion, self.frist_loesung, getdate(self.erstreaktion_am) if self.erstreaktion_am else None, erledigt, cint(einst["sla_warn_werktage"]), ft, pausiert_seit=getdate(self.sla_pausiert_seit) if self.sla_pausiert_seit else None)
+        st.update(
+            pause_grund=self.sla_pause_grund or None,
+            pausiert_seit=str(self.sla_pausiert_seit) if self.sla_pausiert_seit else None,
+            pause_werktage=cint(self.sla_pause_werktage),
+            frist_reaktion=str(self.frist_reaktion) if self.frist_reaktion else None,
+            frist_loesung=str(self.frist_loesung) if self.frist_loesung else None,
+            prioritaet=self.prioritaet,
+            eskalationsstufe=sla.eskalationsstufe(heute, self.frist_loesung, erledigt, feiertage=ft),
+        )
+        return st
+
+    def _sla_pause_beenden(self, automatisch=False):
+        """Pause beenden: pausierte Werktage zur Lösungsfrist addieren (utils/sla.py)."""
+        if not self.sla_pausiert_seit:
+            return 0
+        ft = feiertage()
+        tage = sla.pause_werktage(getdate(self.sla_pausiert_seit), getdate(nowdate()), ft)
+        self.sla_pause_werktage = cint(self.sla_pause_werktage) + tage
+        self.frist_loesung = sla.frist_verschieben(self.frist_loesung, tage, ft)
+        kom.verlauf(self, "SLA", status=self.status, hinweis=_("SLA fortgesetzt{0} nach Warten auf {1}: +{2} Werktage, Lösung bis {3}").format(_(" (automatisch)") if automatisch else "", _(self.sla_pause_grund or "–"), tage, self.frist_loesung))
+        self.sla_pause_grund = None
+        self.sla_pausiert_seit = None
+        return tage
+
+    @frappe.whitelist()
+    def sla_pausieren(self, grund="Hersteller", hinweis=None):
+        """SLA-Lösungsfrist anhalten, solange der Fall auf Hersteller, Ersatzteil oder Kunde wartet (Nr. 54, Zendesk „On-hold“).
+        Die Reaktionsfrist wird nicht pausiert."""
+        self._pruefen_schreibrecht()
+        if grund not in ("Hersteller", "Ersatzteil", "Kunde"):
+            frappe.throw(_("Grund: Hersteller, Ersatzteil oder Kunde."))
+        if self.status not in OFFEN:
+            frappe.throw(_("Nur offene Fälle können pausiert werden."))
+        if self.sla_pausiert_seit:
+            return str(self.sla_pausiert_seit)
+        self.sla_pause_grund = grund
+        self.sla_pausiert_seit = now_datetime()
+        kom.verlauf(self, "SLA", status=self.status, hinweis=_("SLA pausiert – wartet auf {0}{1}").format(_(grund), f": {hinweis}" if hinweis else ""))
+        self.save()
+        return str(self.sla_pausiert_seit)
+
+    @frappe.whitelist()
+    def sla_fortsetzen(self):
+        """Pause beenden; die pausierten Werktage verlängern die Lösungsfrist."""
+        self._pruefen_schreibrecht()
+        tage = self._sla_pause_beenden()
+        self.save()
+        return {"pause_werktage": tage, "frist_loesung": str(self.frist_loesung) if self.frist_loesung else None}
+
+    @frappe.whitelist()
+    def erstreaktion_erfassen(self, kanal="Telefon", notiz=None):
+        """Erstreaktion ohne Mail (Telefonat, Rückruf, vor Ort): stoppt die Reaktionsfrist, schließt Reaktions-ToDos.
+        Konzept 10-konzept-service.md §12 Priorität 1, Kritik 20-ux-service P1."""
+        self._pruefen_schreibrecht()
+        if kanal not in ("Telefon", "Vor Ort", "Rückruf", "E-Mail", "Portal"):
+            frappe.throw(_("Unbekannter Kanal."))
+        if self.erstreaktion_am:
+            return str(self.erstreaktion_am)
+        self.erstreaktion_am = now_datetime()
+        self.erstreaktion_kanal = kanal
+        self.erstreaktion_notiz = (notiz or "")[:140] or None
+        kom.verlauf(self, "Kommunikation", status=self.status, hinweis=_("Erstreaktion per {0}{1}").format(_(kanal), f": {notiz}" if notiz else ""))
+        self.save()
+        self._todos_schliessen("Reaktionsfrist")
+        return str(self.erstreaktion_am)
+
+    def _todos_schliessen(self, schluessel):
+        for todo in frappe.get_all("ToDo", filters={"reference_type": self.doctype, "reference_name": self.name, "status": "Open", "description": ("like", f"%{schluessel}%")}, pluck="name"):
+            frappe.db.set_value("ToDo", todo, "status", "Closed")
+
+    # ── Kulanz ──────────────────────────────────────────────────────────────
+
+    def _kulanz_freigabe_setzen(self, kommentar=None):
+        self.kulanz_freigegeben_von = frappe.session.user
+        self.kulanz_freigegeben_am = now_datetime()
+        self.kulanz_freigegeben_cent = cint(self.kulanz_cent)
+        self.kulanz_abgelehnt_cent = 0
+        self.kulanz_freigabe_kommentar = (kommentar or "")[:500] or None
+        self.kulanz_freigabe_status = kul.FREIGEGEBEN
+        kom.verlauf(self, "Kulanz", status=self.status, hinweis=_("Kulanz {0} € freigegeben{1}").format(f"{cint(self.kulanz_cent) / 100:.2f}", f": {kommentar}" if kommentar else ""))
+
+    def _kulanz_benachrichtigen(self):
+        """ToDo + Benachrichtigung (Glocke) an die Leitung; nie Fehler werfen."""
+        try:
+            from ph_service.ph_service.tasks import _leitung_benutzer, _todo, benachrichtigen
+
+            text = _("Kulanz-Freigabe: {0} € – {1} ({2})").format(f"{cint(self.kulanz_cent) / 100:.2f}", self.titel, _(self.entscheidung or "–"))
+            for u in _leitung_benutzer():
+                _todo(u, self.doctype, self.name, text, prioritaet="High", schluessel="Kulanz-Freigabe")
+                benachrichtigen(u, self.doctype, self.name, text)
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title="PH Servicefall: Kulanz-Benachrichtigung")
+
+    @frappe.whitelist()
+    def kulanz_anfordern(self):
+        """Freigabe erneut an die Leitung senden (z. B. nach Urlaub)."""
+        self._pruefen_schreibrecht()
+        if self.kulanz_freigabe_status != kul.ANGEFORDERT:
+            frappe.throw(_("Für diesen Betrag ist keine Freigabe nötig oder sie liegt bereits vor."))
+        self._kulanz_benachrichtigen()
+        return self.kulanz_freigabe_status
+
+    @frappe.whitelist()
+    def kulanz_freigeben(self, kommentar=None, betrag_cent=None):
+        """Leitung gibt den Kulanzbetrag frei (Glocke, ohne das ganze Formular zu speichern).
+        betrag_cent = im Client angezeigter Betrag; weicht er ab, wurde inzwischen geändert → Fehler statt Blindfreigabe."""
+        self._pruefen_schreibrecht()
+        if not ist_leitung():
+            frappe.throw(_("Kulanz freigeben darf nur die Service-Leitung."), frappe.PermissionError)
+        if betrag_cent not in (None, "") and cint(betrag_cent) != cint(self.kulanz_cent):
+            frappe.throw(_("Der Kulanzbetrag wurde inzwischen auf {0} € geändert – bitte neu prüfen.").format(f"{cint(self.kulanz_cent) / 100:.2f}"))
+        if self.kulanz_freigabe_status == kul.NICHT_NOETIG:
+            return self.kulanz_freigabe_status
+        self._kulanz_freigabe_setzen(kommentar)
+        self.flags.ohne_selbstfreigabe = True
+        self.save()
+        self._todos_schliessen("Kulanz-Freigabe")
+        return self.kulanz_freigabe_status
+
+    @frappe.whitelist()
+    def kulanz_ablehnen(self, grund):
+        """Leitung lehnt den Kulanzbetrag ab; neuer Betrag → neue Anforderung."""
+        self._pruefen_schreibrecht()
+        if not ist_leitung():
+            frappe.throw(_("Kulanz ablehnen darf nur die Service-Leitung."), frappe.PermissionError)
+        if not (grund or "").strip():
+            frappe.throw(_("Grund angeben."))
+        self.kulanz_abgelehnt_cent = cint(self.kulanz_cent)
+        self.kulanz_freigabe_kommentar = grund[:500]
+        kom.verlauf(self, "Kulanz", status=self.status, hinweis=_("Kulanz {0} € abgelehnt: {1}").format(f"{cint(self.kulanz_cent) / 100:.2f}", grund))
+        self.flags.ohne_selbstfreigabe = True
+        self.save()
+        self._todos_schliessen("Kulanz-Freigabe")
+        if self.verantwortlich:
+            try:
+                from ph_service.ph_service.tasks import _todo
+
+                _todo(self.verantwortlich, self.doctype, self.name, _("Kulanz abgelehnt: {0} – {1}").format(grund, self.titel), prioritaet="High", schluessel="Kulanz abgelehnt")
+            except Exception:  # noqa: BLE001
+                frappe.log_error(title="PH Servicefall: Kulanz abgelehnt ToDo")
+        return self.kulanz_freigabe_status
 
     # ── interne Helfer ──────────────────────────────────────────────────────
 
@@ -294,10 +508,12 @@ class PHServicefall(Document):
         return einsatz.name
 
     @frappe.whitelist()
-    def ersatzteile_bestellen(self, lieferant=None):
-        """Button „Ersatzteile bestellen“: PH Ersatzteilbestellung aus allen benötigten Zeilen ohne Bestellung."""
+    def ersatzteile_bestellen(self, lieferant=None, zeilen=None, lieferadresse=None, wunschtermin=None):
+        """Button „Ersatzteile bestellen“: PH Ersatzteilbestellung aus benötigten Zeilen ohne Bestellung
+        (zeilen = Namen der Kindzeilen; leer = alle benötigten)."""
         self._pruefen_schreibrecht()
-        zeilen = [z for z in self.ersatzteile or [] if z.status == "Benoetigt" and not z.bestellung]
+        auswahl = frappe.parse_json(zeilen) if isinstance(zeilen, str) else zeilen
+        zeilen = [z for z in self.ersatzteile or [] if z.status == "Benoetigt" and not z.bestellung and (not auswahl or z.name in auswahl)]
         if not zeilen:
             frappe.throw(_("Keine Ersatzteil-Zeile mit Status „Benoetigt“ ohne Bestellung."))
         lieferant = lieferant or self.lieferant
@@ -311,14 +527,21 @@ class PHServicefall(Document):
                 "servicefall": self.name,
                 "kostentraeger": zeilen[0].kostentraeger or "Gewaehrleistung",
                 "kommission": f"{self.name} / {self.kunde_name or ''}"[:140],
+                "lieferadresse": lieferadresse or "Lager",
                 "positionen": [
-                    {"ersatzteil": z.ersatzteil, "bezeichnung": z.bezeichnung, "hersteller_nr": z.hersteller_nr, "menge": z.menge, "servicefall_zeile": z.name}
+                    {"ersatzteil": z.ersatzteil, "bezeichnung": z.bezeichnung, "hersteller_nr": z.hersteller_nr, "menge": z.menge, "servicefall_zeile": z.name, "wunschtermin": wunschtermin, "ek_cent": z.ek_cent}
                     for z in zeilen
                 ],
             }
         ).insert()
         for z in zeilen:
             z.db_set({"status": "Bestellt", "bestellung": best.name})
+        if cint(einstellungen()["sla_pause_bei_ersatzteil"]) and not self.sla_pausiert_seit and self.status in OFFEN:
+            self.sla_pause_grund = "Ersatzteil"
+            self.sla_pausiert_seit = now_datetime()
+            kom.verlauf(self, "SLA", status=self.status, hinweis=_("SLA pausiert – wartet auf Ersatzteil ({0})").format(best.name))
+            self.save()
+
         kom.verlauf(self, "Ersatzteil", hinweis=_("Ersatzteilbestellung {0} ({1} Positionen)").format(best.name, len(zeilen)), speichern=True)
         return best.name
 
@@ -331,6 +554,7 @@ class PHServicefall(Document):
         vorhanden = frappe.db.get_value("PH Lieferantenregress", {"servicefall": self.name, "status": ("not in", ["Abgelehnt", "Verrechnet"])}, "name")
         if vorhanden:
             return vorhanden
+        aus_kosten = betrag_cent is None
         if betrag_cent is None:
             betrag_cent = sum(cint(z.betrag_cent) for z in self.kosten or [] if z.regressfaehig) or self.kosten_gesamt_cent
         regress = frappe.get_doc(
@@ -343,24 +567,33 @@ class PHServicefall(Document):
                 "beschreibung": strip_html(self.beschreibung or "")[:2000],
             }
         ).insert()
+        if aus_kosten and any(z.regressfaehig for z in self.kosten or []):
+            try:
+                regress.kosten_uebernehmen()  # Kostenaufstellung für die Belastungsanzeige
+            except Exception:  # noqa: BLE001
+                frappe.log_error(title=f"PH Servicefall {self.name}: Kosten in Regress")
         kom.verlauf(self, "Regress", hinweis=_("Regress {0} angelegt ({1} Cent)").format(regress.name, cint(betrag_cent)), speichern=True)
         return regress.name
 
     @frappe.whitelist()
-    def kunde_informieren(self, vorlage="eingang", zusatz=""):
-        """Button „Kunde informieren“: Email Template (Eingang/Termin/Abschluss) an die Kundenadresse."""
+    def kunde_informieren(self, vorlage="eingang", zusatz="", betreff=None):
+        """Button „Kunde informieren“: Email Template (Eingang/Termin/Abschluss/Ablehnung/frei) an die Kundenadresse.
+        „frei“ = Vorlage „PH Service Nachricht“ mit eigenem Text (zusatz) und optionalem Betreff."""
         self._pruefen_schreibrecht()
-        if vorlage not in ("eingang", "termin", "abschluss"):
+        if vorlage not in ("eingang", "termin", "abschluss", "ablehnung", "frei"):
             frappe.throw(_("Unbekannte Vorlage."))
+        if vorlage == "frei" and not strip_html(zusatz or "").strip():
+            frappe.throw(_("Nachricht eingeben."))
         anhaenge = []
         if vorlage == "abschluss":
             pdf = kom.pdf_anhang(self.doctype, self.name, "PH Servicefall Abnahmebestätigung", f"Abnahme-{self.name}")
             if pdf:
                 anhaenge.append(pdf)
-        betreff = kom.sende_vorlage(self, vorlage, self.kunde_email, anhaenge=anhaenge, zusatz=zusatz)
+        betreff = kom.sende_vorlage(self, vorlage, self.kunde_email, anhaenge=anhaenge, zusatz=zusatz, betreff_frei=betreff)
         werte = {"kunde_informiert_am": now_datetime()}
         if not self.erstreaktion_am:
             werte["erstreaktion_am"] = now_datetime()
+            werte["erstreaktion_kanal"] = "E-Mail"
         self.db_set(werte)
         return betreff
 
@@ -430,8 +663,8 @@ class PHServicefall(Document):
         return self.status
 
     @frappe.whitelist()
-    def ablehnen(self, grund, begruendung):
-        """Button „Ablehnen“ (Leitung): Begründung an Kunden, Status Abgelehnt."""
+    def ablehnen(self, grund, begruendung, kunde_informieren=0):
+        """Button „Ablehnen“ (Leitung): Status Abgelehnt; kunde_informieren=1 sendet „PH Service Ablehnung“ mit Begründung."""
         self._pruefen_schreibrecht()
         if not ist_leitung():
             frappe.throw(_("Ablehnen darf nur die Service-Leitung."))
@@ -441,6 +674,8 @@ class PHServicefall(Document):
         if not strip_html(self.abschlussbericht or "").strip():
             self.abschlussbericht = begruendung
         self._status_setzen("Abgelehnt")
+        if cint(kunde_informieren) and self.kunde_email:
+            self.kunde_informieren("ablehnung", zusatz=begruendung)
         return self.status
 
     @frappe.whitelist()
@@ -471,8 +706,8 @@ class PHServicefall(Document):
 
 @frappe.whitelist()
 def aus_dokument(doctype, name, beschreibung=None, art=None, produkt=None, fehlercode=None):
-    """„Servicefall anlegen“ aus PH Montageauftrag, PH Abnahme, PH Wareneingang, PH Lieferschein, PH Bestellung, PH Rechnung
-    (Client-Script-Fixtures). Liest nur Felder, die laut PLAN dort heißen; fehlende werden übersprungen."""
+    """„Servicefall anlegen“ aus PH Montageauftrag, PH Abnahme, PH Wareneingang, PH Lieferschein, PH Bestellung, PH Rechnung,
+    PH Produktpass (Scan), PH Projekt (Client-Script-Fixtures). Liest nur Felder, die laut PLAN dort heißen; fehlende werden übersprungen."""
     frappe.has_permission("PH Servicefall", "create", throw=True)
     quelle = frappe.get_doc(doctype, name)
     werte = {"doctype": "PH Servicefall", "kanal": "Intern", "quelle": "backoffice", "beschreibung": beschreibung or _("Aus {0} {1}").format(doctype, name)}
@@ -512,6 +747,15 @@ def aus_dokument(doctype, name, beschreibung=None, art=None, produkt=None, fehle
         werte.update(bestellung=name, art=art or "Mangel")
     elif doctype == "PH Rechnung":
         werte.update(rechnung=name, art=art or "Mangel")
+    elif doctype == "PH Produktpass":
+        # Scan am Stück: Produkt, Marke, Seriennummer; Lieferdatum/Garantie übernimmt validate() aus dem Pass.
+        werte.update(produktpass=name, art=art or "Mangel", kanal="Showroom")
+        for feld in ("produkt_name", "marke", "seriennummer", "montageauftrag", "ausfuehrung_text"):
+            nimm(feld)
+    elif doctype == "PH Projekt":
+        werte.update(projekt=name, art=art or "Mangel")
+        if quelle.get("objekt_ort"):
+            werte.update(einsatz_strasse=quelle.get("objekt_strasse"), einsatz_plz=quelle.get("objekt_plz"), einsatz_ort=quelle.get("objekt_ort"), einsatz_land=quelle.get("objekt_land"))
     if not werte.get("kontakt"):
         frappe.throw(_("Kein Kontakt ermittelbar – bitte den Servicefall manuell anlegen."))
     doc = frappe.get_doc(werte).insert()

@@ -8,17 +8,45 @@ frappe.ui.form.on("PH Mitarbeiter", {
 
 		frm.add_custom_button(__("Monatsübersicht"), () => zeigeMonat(frm), __("Zeit"));
 		frm.add_custom_button(__("Urlaubskonto"), () => {
-			frm.call({ method: "urlaubskonto", doc: frm.doc }).then((r) => {
+			frm.call({ method: "urlaubskonto_uebersicht", doc: frm.doc }).then((r) => {
 				const k = r.message || {};
+				const zeilen = (k.jahre || []).map((j) => `<tr><td>${frappe.datetime.str_to_user(j.von)} – ${frappe.datetime.str_to_user(j.bis)}</td><td class="text-right">${j.anspruch}</td><td class="text-right">${j.verbraucht}</td><td class="text-right">${j.rest}</td><td>${j.verjaehrt_am ? frappe.datetime.str_to_user(j.verjaehrt_am) : ""}</td></tr>`).join("");
 				frappe.msgprint({
-					title: __("Urlaubskonto {0}", [k.jahr]),
-					message: `<table class="table table-sm"><tr><td>${__("Anspruch")}</td><td class="text-right">${k.anspruch}</td></tr><tr><td>${__("Genommen")}</td><td class="text-right">${k.genommen}</td></tr><tr><td>${__("Beantragt")}</td><td class="text-right">${k.beantragt}</td></tr><tr><th>${__("Rest")}</th><th class="text-right">${k.rest}</th></tr></table>`,
+					title: __("Urlaubskonto (Stand {0})", [frappe.datetime.str_to_user(k.stichtag)]),
+					message: `<table class="table table-sm"><thead><tr><th>${__("Urlaubsjahr")}</th><th class="text-right">${__("Anspruch")}</th><th class="text-right">${__("Verbraucht")}</th><th class="text-right">${__("Rest")}</th><th>${__("Verjährt am")}</th></tr></thead><tbody>${zeilen}</tbody></table>
+						<p>${__("Rest gesamt")}: <b>${k.rest}</b> · ${__("nach offenen Anträgen")}: ${k.rest_nach_antraegen} · ${__("Beantragt")}: ${k.beantragt}${k.vorgriff ? " · " + __("Vorgriff") + ": " + k.vorgriff : ""}</p><p class="text-muted small">${frappe.utils.escape_html(k.hinweis || "")}</p>`,
 				});
 			});
 		}, __("Zeit"));
+		frm.add_custom_button(__("Monat abschließen"), () => {
+			const heute = frappe.datetime.str_to_obj(frappe.datetime.get_today());
+			const vm = new Date(heute.getFullYear(), heute.getMonth() - 1, 1);
+			frappe.prompt([{ fieldname: "jahr", fieldtype: "Int", label: __("Jahr"), default: vm.getFullYear(), reqd: 1 }, { fieldname: "monat", fieldtype: "Int", label: __("Monat"), default: vm.getMonth() + 1, reqd: 1 }],
+				(v) => frappe.call({ method: "ph_personal.api.monat_abschliessen", args: { mitarbeiter: frm.doc.name, jahr: v.jahr, monat: v.monat } }).then((r) => r.message && frappe.set_route("Form", "PH Zeitabschluss", r.message.name)),
+				__("Monat abschließen"));
+		}, __("Zeit"));
 		frm.add_custom_button(__("Zeiterfassung"), () => { frappe.route_options = { mitarbeiter: frm.doc.name }; frappe.set_route("List", "PH Zeiterfassung"); }, __("Zeit"));
 		frm.add_custom_button(__("Abwesenheit beantragen"), () => frappe.new_doc("PH Abwesenheit", { mitarbeiter: frm.doc.name }), __("Zeit"));
-		frm.add_custom_button(__("Zeitnachweis drucken"), () => frappe.utils.print(frm.doctype, frm.docname, "PH Mitarbeiter Zeitnachweis", frm.doc.letter_head, "de"), __("Zeit"));
+		frm.add_custom_button(__("Zeitnachweis (PDF)"), () => {
+			const heute = frappe.datetime.str_to_obj(frappe.datetime.get_today());
+			frappe.prompt([{ fieldname: "jahr", fieldtype: "Int", label: __("Jahr"), default: heute.getFullYear(), reqd: 1 }, { fieldname: "monat", fieldtype: "Int", label: __("Monat"), default: heute.getMonth() + 1, reqd: 1 }],
+				(v) => window.open(`/api/method/ph_personal.api.zeitnachweis_pdf?mitarbeiter=${encodeURIComponent(frm.doc.name)}&jahr=${v.jahr}&monat=${v.monat}`), __("Zeitnachweis"));
+		}, __("Zeit"));
+		frm.add_custom_button(__("Krank melden"), () => frappe.new_doc("PH Krankmeldung", { mitarbeiter: frm.doc.name }), __("Zeit"));
+		if (frappe.user.has_role("PH Personal Leitung")) {
+			frm.add_custom_button(__("Checkliste aus Vorlage"), () => {
+				frappe.prompt({ fieldname: "vorlage", fieldtype: "Link", options: "PH Onboarding Vorlage", label: __("Vorlage"), reqd: 1 },
+					(v) => frm.call({ method: "checkliste_anlegen", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Checkliste"));
+			}, __("Aktionen"));
+			frm.add_custom_button(__("Austritt: Konto"), () => {
+				frappe.prompt({ fieldname: "datum", fieldtype: "Date", label: __("Austrittsdatum"), default: frm.doc.austritt, reqd: 1 }, (v) => {
+					frm.call({ method: "austritt_konto", doc: frm.doc, args: v }).then((r) => {
+						const k = r.message || {};
+						frappe.msgprint({ title: __("Stand zum Austritt"), message: `<p>${__("Urlaubsersatzleistung (Tage)")}: <b>${k.ersatzleistung_tage}</b></p><p>${__("Stundensaldo kumuliert")}: <b>${k.saldo_kumuliert_text}</b></p><p>${__("Offene Buchungen")}: ${k.offene_buchungen} · ${__("Offene Arbeitsmittel")}: ${(k.offene_arbeitsmittel || []).length}</p><p class="text-muted small">${__("Berechnung der Ersatzleistung und Zuschläge durch die Lohnverrechnung (§ 10 UrlG, § 19e AZG).")}</p>` });
+					});
+				}, __("Austritt"));
+			}, __("Aktionen"));
+		}
 
 		if (frm.doc.status !== "Ausgetreten") {
 			frm.add_custom_button(__("Austritt erfassen"), () => {
@@ -67,3 +95,10 @@ function zeigeMonat(frm) {
 	});
 	d.show();
 }
+
+frappe.ui.form.on("PH Mitarbeiter Checkliste", {
+	erledigt(frm, cdt, cdn) {
+		const z = locals[cdt][cdn];
+		frappe.model.set_value(cdt, cdn, { erledigt_am: z.erledigt ? frappe.datetime.get_today() : null, erledigt_von: z.erledigt ? frappe.session.user : null });
+	},
+});

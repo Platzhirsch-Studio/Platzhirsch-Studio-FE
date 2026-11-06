@@ -1,5 +1,6 @@
-"""Script Report: Monatsstunden je Mitarbeiter – Soll (Wochenstunden × Werktage), Ist (Buchungen),
-Gutschrift (genehmigte Abwesenheiten), Saldo, Abwesenheitstage, offene Buchungen. Selbstservice sieht
+"""Script Report: Monatsstunden je Mitarbeiter – Soll (Arbeitszeitmodell, ohne Feiertage), Ist (Buchungen),
+Gutschrift (bezahlte Abwesenheiten; Zeitausgleich ohne Gutschrift), Saldo Monat und kumuliert (Vortrag aus
+PH Zeitabschluss), Überstunden, Abwesenheitstage (Krankenstand nur Leitung/GF), offene Buchungen. Selbstservice sieht
 über die User Permission nur den eigenen Datensatz."""
 
 import frappe
@@ -21,6 +22,9 @@ def execute(filters=None):
         bedingungen["name"] = filters["mitarbeiter"]
     mitarbeiter = frappe.get_list("PH Mitarbeiter", filters=bedingungen, fields=["name", "titel", "rolle_intern"], order_by="nachname asc")
 
+    from ph_personal.ph_personal.doctype.ph_abwesenheit.ph_abwesenheit import darf_art_sehen
+
+    voll = darf_art_sehen()  # Krankenstandstage nur für Leitung/GF (Art. 9 DSGVO)
     data = []
     for ma in mitarbeiter:
         m = monatsuebersicht(ma.name, jahr, monat)
@@ -37,8 +41,12 @@ def execute(filters=None):
                 "saldo_h": round(m["saldo_min"] / 60, 2),
                 "saldo_text": minuten_text(m["saldo_min"]),
                 "urlaub": m["urlaub_tage"],
-                "krank": m["krank_tage"],
-                "sonstige": m["sonstige_tage"],
+                "krank": m["krank_tage"] if voll else None,
+                "sonstige": m["sonstige_tage"] + (0 if voll else m["krank_tage"]),
+                "za_h": round(m["za_verbrauch_min"] / 60, 2),
+                "saldo_kumuliert_text": m["saldo_kumuliert_text"],
+                "ueberstunden_h": round(m["ueberstunden_min"] / 60, 2),
+                "gesperrt": 1 if m["gesperrt"] else 0,
                 "offen": m["offen"],
                 "buchungen": len(m["tage"]),
             }
@@ -60,6 +68,10 @@ def execute(filters=None):
         {"fieldname": "sonstige", "label": _("Sonstige (Tage)"), "fieldtype": "Float", "width": 120},
         {"fieldname": "buchungen", "label": _("Buchungen"), "fieldtype": "Int", "width": 90},
         {"fieldname": "offen", "label": _("Offen"), "fieldtype": "Int", "width": 70},
+        {"fieldname": "saldo_kumuliert_text", "label": _("Saldo kumuliert"), "fieldtype": "Data", "width": 120},
+        {"fieldname": "za_h", "label": _("Zeitausgleich (h)"), "fieldtype": "Float", "width": 110},
+        {"fieldname": "ueberstunden_h", "label": _("Überstunden > 40 h (h)"), "fieldtype": "Float", "width": 130},
+        {"fieldname": "gesperrt", "label": _("Abgeschlossen"), "fieldtype": "Check", "width": 100},
     ]
     chart = {
         "data": {
@@ -75,5 +87,5 @@ def execute(filters=None):
         {"value": round(sum(d["saldo_h"] for d in data), 1), "label": _("Saldo (h)"), "datatype": "Float", "indicator": "Green" if sum(d["saldo_h"] for d in data) >= 0 else "Red"},
         {"value": sum(d["offen"] for d in data), "label": _("Offene Buchungen"), "datatype": "Int", "indicator": "Orange" if any(d["offen"] for d in data) else "Green"},
     ]
-    message = _("Soll = Wochenstunden / 5 × Werktage (Mo–Fr) des Monats, begrenzt auf Ein-/Austritt. Feiertage werden noch nicht abgezogen (offener Punkt). Keine Prüfung nach Arbeitszeitgesetz.")
+    message = _("Soll nach Arbeitszeitmodell der Person (gültig am jeweiligen Tag), ohne gesetzliche Feiertage und bezahlt freie Betriebsruhe, begrenzt auf Ein-/Austritt. Zeitausgleich erzeugt keine Gutschrift. Stundensaldo ohne Zuschläge.")
     return columns, data, message, chart, summary

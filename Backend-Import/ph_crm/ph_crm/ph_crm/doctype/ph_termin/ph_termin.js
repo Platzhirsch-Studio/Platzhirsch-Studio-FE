@@ -75,6 +75,31 @@ frappe.ui.form.on("PH Termin", {
 			}, __("Aktionen"));
 		}
 
+		if (frm.doc.status === "Nicht erschienen" && frappe.user.has_role("PH CRM Leitung")) {
+			frm.add_custom_button(__("Wieder bestätigen"), () => {
+				frappe.prompt({ fieldname: "grund", fieldtype: "Data", label: __("Grund"), default: __("Fehlbedienung") }, (v) => frm.call({ method: "wieder_bestaetigen", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Zurück auf Bestätigt"));
+			}, __("Aktionen"));
+		}
+		if (offen) {
+			frm.add_custom_button(__("Serie anlegen"), () => {
+				frappe.prompt([
+					{ fieldname: "intervall", fieldtype: "Select", label: __("Intervall"), options: "woechentlich\nzweiwoechentlich\nvierwoechentlich\nmonatlich", default: "woechentlich", reqd: 1 },
+					{ fieldname: "anzahl", fieldtype: "Int", label: __("Anzahl Termine (inkl. diesem)"), default: 4 },
+					{ fieldname: "bis", fieldtype: "Date", label: __("oder bis") },
+				], (v) => frm.call({ method: "serie_anlegen", doc: frm.doc, args: v, freeze: true }).then((r) => {
+					const m = r.message || {};
+					const k = (m.konflikte || []).map((x) => `<li>${frappe.utils.escape_html(x.start.slice(0, 16).replace("T", " "))}: ${frappe.utils.escape_html(x.grund)}</li>`).join("");
+					frappe.msgprint({ title: __("Serie {0}", [m.serie]), message: __("{0} Folgetermine angelegt.", [(m.angelegt || []).length]) + (k ? `<br>${__("Übersprungen")}:<ul>${k}</ul>` : ""), indicator: k ? "orange" : "green" });
+					frm.reload_doc();
+				}), __("Terminserie"));
+			}, __("Aktionen"));
+			if (frm.doc.serie) {
+				frm.add_custom_button(__("Serie ab hier stornieren"), () => {
+					frappe.prompt({ fieldname: "grund", fieldtype: "Data", label: __("Grund"), reqd: 1 }, (v) => frm.call({ method: "serie_stornieren", doc: frm.doc, args: v, freeze: true }).then(() => frm.reload_doc()), __("Serie stornieren"));
+				}, __("Aktionen"));
+			}
+		}
+
 		if (frm.doc.modus === "Video" && offen && !frm.doc.meet_url) {
 			frm.add_custom_button(__("Meet-Link erzeugen"), () => {
 				frm.call({ method: "meet_link_erzeugen", doc: frm.doc, freeze: true }).then(() => frm.reload_doc());

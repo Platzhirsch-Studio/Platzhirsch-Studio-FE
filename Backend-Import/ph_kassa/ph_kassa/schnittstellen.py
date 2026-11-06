@@ -48,10 +48,11 @@ def erzeuge_beleg(**args):
     return _mock_beleg(**args)
 
 
-def storniere_beleg(beleg: str, grund: str, bediener: str | None = None):
+def storniere_beleg(beleg: str, grund: str, bediener: str | None = None, **kw):
+    """kw: erlaube_mitarbeiter, freigabe_von (Fachkritik 21 P1) – an den Kern durchgereicht."""
     kern = _kern()
     if kern and hasattr(kern, "storniere_beleg"):
-        return kern.storniere_beleg(beleg, grund, bediener=bediener)
+        return kern.storniere_beleg(beleg, grund, bediener=bediener, **kw)
     if not mock_erlaubt():
         frappe.throw(_("RKSV-Kern (WP10a) ist nicht installiert – Storno nicht möglich."))
     alt = frappe.get_doc("PH Kassenbeleg", beleg)
@@ -69,7 +70,7 @@ def nullbeleg(kasse: str, bediener: str | None = None):
     return _mock_beleg(kasse=kasse, positionen=[], zahlarten=[], belegart="Nullbeleg", bediener=bediener)
 
 
-def _mock_beleg(kasse, positionen, zahlarten, belegart="Standard", kontakt=None, auftrag=None, rechnung=None, bestellung=None, trainings=False, bediener=None, storno_von=None, storno_grund=None, kundenbeleg_email=None):
+def _mock_beleg(kasse, positionen, zahlarten, belegart="Standard", kontakt=None, auftrag=None, rechnung=None, bestellung=None, trainings=False, bediener=None, storno_von=None, storno_grund=None, kundenbeleg_email=None, **_weitere):
     """Mock: legt einen PH Kassenbeleg ohne echte Signatur an (Kennzeichen MOCK im Code). Nur Staging/Tests."""
     from .logik.betraege import summen
 
@@ -131,9 +132,22 @@ def gutschein_pruefen(code: str) -> dict:
         frappe.throw(_("DocType PH Gutschein (ph_shop) fehlt."))
     from ph_shop.gutschein import pruefen
 
-    r = pruefen(code)
+    try:
+        r = pruefen(code)
+    except frappe.DoesNotExistError:
+        raise
+    except frappe.ValidationError as e:
+        # ph_shop: Einzweck ohne Satz der Ausgabe bricht ab (52-…, Abschnitt 8) → klare Kassa-Meldung
+        if "Einzweck" in str(e):
+            from ph_kassa.logik.integration import EINZWECK_OHNE_SATZ
+
+            frappe.throw(_(EINZWECK_OHNE_SATZ).format(code[-4:] if len(code) > 8 else code), title=_("Gutschein nicht einlösbar"))
+        raise
     if r.get("abgelaufen"):
         frappe.throw(_("Gutschein ist abgelaufen."))
     if not r.get("einloesbar"):
         frappe.throw(_("Gutschein ist {0}.").format(_(r.get("status") or "nicht einlösbar")))
-    return {"gutschein": r["gutschein"], "rest_cent": int(r["rest_cent"]), "status": r["status"], "letzte4": r.get("letzte4"), "test": r.get("test")}
+    # art/mindert_entgelt/steuersatz: Oberfläche wählt Zahlart (Mehrzweck), Position mit Satz (Einzweck) oder Rabatt;
+    # der Server stellt beim Buchen ohnehin nach Art um (page._gutscheine_nach_art)
+    return {"gutschein": r["gutschein"], "rest_cent": int(r["rest_cent"]), "status": r["status"], "letzte4": r.get("letzte4"), "test": r.get("test"),
+            "art": r.get("art") or "Mehrzweck", "mindert_entgelt": bool(r.get("mindert_entgelt")), "steuersatz": r.get("steuersatz"), "zahlungsmittel": bool(r.get("zahlungsmittel", True))}

@@ -1,0 +1,250 @@
+/* Bereich Service im Lounge-Stil (art-direction/lounge.md §3–§9). Nur Token aus globals.css, Präfix bo-svc-.
+   Gliederung über Fläche + Schatten + Abstand; Status immer Punkt/Symbol + Wort; Zahlen tabellarisch. */
+
+/* ---------------------------------------------------------------- Heute-Leiste -- */
+.bo-svc-heute { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-width: 0; }
+.bo-svc-chip {
+  display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px 0 10px;
+  border-radius: 999px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn);
+  font-size: 14px; font-weight: 500; color: var(--color-bo-text); white-space: nowrap;
+  transition: transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease), box-shadow 200ms ease;
+}
+a.bo-svc-chip:hover { box-shadow: var(--bo-sh-card); transform: translateY(-1px); }
+.bo-svc-chip__ico { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 999px; }
+.bo-svc-chip[data-ton="gefahr"] .bo-svc-chip__ico { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.bo-svc-chip[data-ton="warn"] .bo-svc-chip__ico { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-svc-chip[data-ton="info"] .bo-svc-chip__ico { background: var(--color-bo-cognac-soft); color: var(--color-bo-cognac-text); }
+.bo-svc-chip[data-ton="ruhig"] .bo-svc-chip__ico { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+
+/* ---------------------------------------------------------------- Zeilen (Jetzt dran, Listen in Kacheln) -- */
+.bo-svc-zeilen { display: flex; flex-direction: column; min-width: 0; }
+.bo-svc-zeile {
+  position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; align-items: center; gap: 14px;
+  min-height: 76px; padding: 12px 12px; border-radius: 16px;
+  border-top: var(--bo-hair, 1px) solid var(--color-bo-line);
+  transition: background-color 160ms ease;
+}
+.bo-svc-zeile:first-child { border-top-color: transparent; }
+.bo-svc-zeile:hover, .bo-svc-zeile:focus-within { background: var(--color-bo-surface-2); border-top-color: transparent; }
+.bo-svc-zeile:hover + .bo-svc-zeile, .bo-svc-zeile:focus-within + .bo-svc-zeile { border-top-color: transparent; }
+.bo-svc-zeile[data-markiert="gefahr"] { box-shadow: inset 3px 0 0 var(--color-bo-ziegel); }
+.bo-svc-zeile--ohne-bild { grid-template-columns: minmax(0, 1fr) auto; }
+.bo-svc-zeile__titel { display: block; font-size: 15px; line-height: 20px; font-weight: 600; color: var(--color-bo-text); }
+.bo-svc-zeile__unter { display: block; margin-top: 2px; font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bo-svc-zeile__link { border-radius: 8px; }
+.bo-svc-zeile__link::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
+.bo-svc-zeile__rechts { position: relative; z-index: 1; display: flex; align-items: center; gap: 8px; }
+.bo-svc-zeile__zeit { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--color-bo-text); white-space: nowrap; }
+
+.bo-svc-bild { position: relative; flex: none; width: 48px; height: 48px; overflow: hidden; border-radius: 14px; background: var(--color-bo-surface-3); }
+.bo-svc-bild img { width: 100%; height: 100%; object-fit: cover; }
+.bo-svc-bild--leer { display: inline-flex; align-items: center; justify-content: center; color: var(--color-bo-text-faint); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bo-svc-bild img { filter: brightness(0.88); } }
+:root[data-theme="dark"] .bo-svc-bild img { filter: brightness(0.88); }
+
+/* Nächster Schritt mit Fälligkeit */
+.bo-svc-schritt { display: block; font-size: 14px; line-height: 20px; color: var(--color-bo-text); }
+.bo-svc-faellig { display: inline-flex; align-items: center; gap: 4px; margin-top: 2px; font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bo-svc-faellig[data-ton="gefahr"] { color: var(--color-bo-ziegel-text); font-weight: 500; }
+.bo-svc-faellig[data-ton="bald"] { color: var(--color-bo-eiche-text); font-weight: 500; }
+
+/* Gewährleistung kompakt: Punkt + Text, nie Farbe allein */
+.bo-svc-gwl { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.bo-svc-gwl::before { content: ""; width: 8px; height: 8px; border-radius: 999px; background: var(--color-bo-salbei); box-shadow: 0 0 0 1px var(--color-bo-line-control); flex: none; }
+.bo-svc-gwl[data-ton="warn"]::before { background: var(--color-bo-eiche); }
+.bo-svc-gwl[data-ton="abgelaufen"] { color: var(--color-bo-ziegel-text); }
+.bo-svc-gwl[data-ton="abgelaufen"]::before { background: var(--color-bo-ziegel); border-radius: 2px; }
+.bo-svc-gwl[data-ton="leer"]::before { background: transparent; }
+
+/* Rotes Signal (höchstens eines je Zeile) */
+.bo-svc-signal { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--color-bo-ziegel-text); white-space: nowrap; }
+
+/* ---------------------------------------------------------------- Phasenleiste (Akte) -- */
+.bo-svc-phasen { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; min-width: 0; }
+.bo-svc-phase { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; padding-right: 8px; }
+.bo-svc-phase__linie { position: absolute; left: 22px; right: 0; top: 11px; height: 2px; border-radius: 2px; background: var(--color-bo-line-strong); }
+.bo-svc-phase[data-zustand="erledigt"] .bo-svc-phase__linie { background: var(--color-bo-action); }
+.bo-svc-phase:last-child .bo-svc-phase__linie { display: none; }
+.bo-svc-phase__punkt {
+  position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 999px; background: var(--color-bo-surface); box-shadow: inset 0 0 0 1.5px var(--color-bo-line-control);
+  color: var(--color-bo-ink-inverse);
+}
+.bo-svc-phase[data-zustand="erledigt"] .bo-svc-phase__punkt { background: var(--color-bo-action); box-shadow: none; }
+.bo-svc-phase[data-zustand="aktuell"] .bo-svc-phase__punkt { background: var(--color-bo-surface); box-shadow: inset 0 0 0 2px var(--color-bo-action), 0 0 0 4px var(--color-bo-fill-2); }
+.bo-svc-phase[data-zustand="aktuell"] .bo-svc-phase__punkt::after { content: ""; width: 10px; height: 10px; border-radius: 999px; background: var(--color-bo-action); }
+.bo-svc-phase__text { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-svc-phase[data-zustand="aktuell"] .bo-svc-phase__text { color: var(--color-bo-text); font-weight: 600; }
+.bo-svc-phase__datum { display: block; font-size: 12px; line-height: 16px; font-weight: 400; color: var(--color-bo-text-faint); font-variant-numeric: tabular-nums; }
+@media (max-width: 639px) {
+  .bo-svc-phasen { display: none; }
+}
+
+/* ---------------------------------------------------------------- Fristband -- */
+.bo-svc-frist { min-width: 0; }
+.bo-svc-frist svg { display: block; width: 100%; height: auto; overflow: visible; }
+.bo-svc-frist__strahl { fill: var(--color-bo-fill-2); }
+.bo-svc-frist__vermutung { fill: var(--color-bo-salbei-soft); }
+.bo-svc-frist__gwl { fill: var(--color-bo-salbei); opacity: 0.55; }
+.bo-svc-frist__verj { fill: url(#bo-svc-schraffur); }
+.bo-svc-frist__garantie { fill: var(--color-bo-messing-soft); }
+.bo-svc-frist__grenze { stroke: var(--color-bo-line-control); stroke-width: 1; }
+.bo-svc-frist__heute { stroke: var(--color-bo-action); stroke-width: 2; }
+.bo-svc-frist__meldung { fill: var(--color-bo-action); }
+.bo-svc-frist__label { font-size: 11px; fill: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+.bo-svc-frist__label--stark { fill: var(--color-bo-text); font-weight: 600; }
+.bo-svc-frist__schraffur { stroke: var(--color-bo-ink-soft); stroke-width: 1; opacity: 0.35; }
+.bo-svc-frist__satz { margin-top: 12px; font-size: 14px; line-height: 20px; color: var(--color-bo-text); }
+.bo-svc-frist__satz[data-ton="gefahr"] { color: var(--color-bo-ziegel-text); font-weight: 500; }
+.bo-svc-frist__satz2 { margin-top: 2px; font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-svc-frist__satz2[data-ton="warn"] { color: var(--color-bo-eiche-text); }
+.bo-svc-frist details { margin-top: 12px; }
+.bo-svc-frist summary { cursor: pointer; font-size: 13px; color: var(--color-bo-text-soft); border-radius: 8px; width: fit-content; }
+.bo-svc-frist table { width: 100%; margin-top: 8px; font-size: 13px; border-collapse: collapse; }
+.bo-svc-frist td, .bo-svc-frist th { padding: 6px 8px; text-align: left; border-top: var(--bo-hair, 1px) solid var(--color-bo-line); font-variant-numeric: tabular-nums; }
+.bo-svc-frist th { font-weight: 500; color: var(--color-bo-text-soft); border-top: 0; }
+
+/* ---------------------------------------------------------------- Fakten, Karten -- */
+.bo-svc-fakten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 20px; min-width: 0; }
+.bo-svc-fakten--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 639px) { .bo-svc-fakten, .bo-svc-fakten--3 { grid-template-columns: minmax(0, 1fr); } }
+.bo-svc-fakten dt { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-svc-fakten dd { margin-top: 2px; font-size: 15px; line-height: 22px; color: var(--color-bo-text); min-width: 0; overflow-wrap: anywhere; }
+.bo-svc-karte { padding: 16px 18px; border-radius: 20px; background: var(--color-bo-surface-2); min-width: 0; }
+.bo-svc-zitat { padding-left: 14px; border-left: 2px solid var(--color-bo-cognac); font-size: 15px; line-height: 22px; color: var(--color-bo-text); }
+.bo-svc-wissen { display: grid; gap: 10px; }
+.bo-svc-wissen p { font-size: 14px; line-height: 20px; color: var(--color-bo-text); }
+.bo-svc-wissen b { display: block; font-size: 13px; font-weight: 500; color: var(--color-bo-text-soft); }
+
+/* Galerie */
+.bo-svc-galerie { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.bo-svc-foto { position: relative; overflow: hidden; border-radius: 16px; background: var(--color-bo-surface-3); aspect-ratio: 4 / 3; }
+.bo-svc-foto img { width: 100%; height: 100%; object-fit: cover; }
+.bo-svc-foto__fuss { position: absolute; inset: auto 8px 8px 8px; display: flex; justify-content: space-between; gap: 6px; }
+
+/* Zeitleiste */
+.bo-svc-zeit { position: relative; display: flex; flex-direction: column; gap: 4px; }
+.bo-svc-zeit__eintrag { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 12px; padding: 10px 0; }
+.bo-svc-zeit__ico { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 999px; background: var(--color-bo-fill-2); color: var(--color-bo-text-soft); }
+.bo-svc-zeit__ico[data-art="Kommunikation"] { background: var(--color-bo-cognac-soft); color: var(--color-bo-cognac-text); }
+.bo-svc-zeit__ico[data-art="Einsatz"] { background: var(--color-bo-see-soft); color: var(--color-bo-see-text); }
+.bo-svc-zeit__ico[data-art="Kulanz"], .bo-svc-zeit__ico[data-art="Regress"] { background: var(--color-bo-messing-soft); color: var(--color-bo-messing-text); }
+.bo-svc-zeit__ico[data-art="Status"] { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+.bo-svc-zeit__ico[data-art="Kommentar"] { background: var(--color-bo-travertin-soft); color: var(--color-bo-travertin-text); }
+.bo-svc-zeit__titel { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--color-bo-text); }
+.bo-svc-zeit__text { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); overflow-wrap: anywhere; }
+.bo-svc-zeit__uhr { font-size: 12px; line-height: 20px; color: var(--color-bo-text-faint); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bo-svc-tag { margin: 14px 0 2px 44px; font-size: 13px; font-weight: 500; color: var(--color-bo-text-soft); }
+
+/* Formular-Bausteine in Dialogen/Sheets */
+.bo-svc-feld { display: grid; gap: 6px; min-width: 0; }
+.bo-svc-feld > span:first-child, .bo-svc-label { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-svc-feld input:not([type="checkbox"]):not([type="radio"]), .bo-svc-feld select, .bo-svc-feld textarea {
+  width: 100%; min-width: 0; min-height: 44px; padding: 10px 14px; border: 0; border-radius: 14px;
+  background: var(--color-bo-fill); color: var(--color-bo-text); font: inherit; font-size: 15px; line-height: 22px;
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+.bo-svc-feld textarea { min-height: 88px; resize: vertical; }
+.bo-svc-feld input:focus, .bo-svc-feld select:focus, .bo-svc-feld textarea:focus { outline: 0; background: var(--color-bo-surface); box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-svc-feld[data-fehler] input, .bo-svc-feld[data-fehler] select, .bo-svc-feld[data-fehler] textarea { box-shadow: inset 0 0 0 1.5px var(--color-bo-ziegel); }
+.bo-svc-fehler { font-size: 13px; line-height: 18px; color: var(--color-bo-ziegel-text); }
+.bo-svc-hinweis { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-svc-hinweis[data-ton="warn"] { color: var(--color-bo-eiche-text); }
+.bo-svc-hinweis[data-ton="ok"] { color: var(--color-bo-salbei-text); }
+
+/* Auswahl-Chips (Art, Kanal, Dauer, Ergebnis) – Pillen, gewählt in Tinte */
+.bo-svc-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.bo-svc-wahl {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 14px; border: 0; border-radius: 999px;
+  background: var(--color-bo-fill); color: var(--color-bo-text); font: inherit; font-size: 14px; font-weight: 500; cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease);
+}
+.bo-svc-wahl:hover { background: var(--color-bo-fill-2); }
+.bo-svc-wahl:active { transform: scale(0.97); transition-duration: var(--bo-dauer-druck, 80ms); }
+.bo-svc-wahl[aria-checked="true"], .bo-svc-wahl[aria-pressed="true"] { background: var(--color-bo-action); color: var(--color-bo-action-text); }
+.bo-svc-wahl:disabled { opacity: 0.45; cursor: not-allowed; }
+.bo-svc-wahl--gross { min-height: 64px; padding: 0 20px; border-radius: 20px; font-size: 16px; justify-content: flex-start; }
+
+/* Combobox / Trefferliste */
+.bo-svc-treffer { display: flex; flex-direction: column; max-height: 280px; overflow-y: auto; padding: 6px; border-radius: 20px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-float); }
+.bo-svc-treffer__gruppe { padding: 8px 10px 4px; font-size: 12px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-svc-treffer__opt { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: baseline; padding: 8px 10px; border-radius: 12px; cursor: pointer; font-size: 14px; }
+.bo-svc-treffer__opt[aria-selected="true"], .bo-svc-treffer__opt:hover { background: var(--color-bo-fill-2); }
+.bo-svc-treffer__code { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--color-bo-text); white-space: nowrap; }
+
+/* Kanban (Service) – nutzt kanban.css, ergänzt Kartenteile */
+.bo-svc-kb__chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.bo-svc-kb__fuss { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 12px; }
+.bo-svc-kb__spalte--eingeklappt { width: 56px !important; cursor: pointer; }
+
+/* Kalender-Woche (Einsätze) */
+.bo-svc-woche { display: grid; grid-template-columns: 168px repeat(var(--tage, 5), minmax(0, 1fr)); min-width: 760px; }
+.bo-svc-woche__kopf { padding: 0 8px 12px; font-size: 13px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-svc-woche__kopf[data-heute] { color: var(--color-bo-text); font-weight: 600; }
+.bo-svc-woche__person { display: flex; align-items: flex-start; gap: 10px; padding: 12px 8px; border-top: var(--bo-hair, 1px) solid var(--color-bo-line); }
+.bo-svc-woche__zelle { min-height: 96px; padding: 8px 6px; border-top: var(--bo-hair, 1px) solid var(--color-bo-line); display: flex; flex-direction: column; gap: 6px; }
+.bo-svc-woche__zelle[data-heute] { background: var(--color-bo-fill); }
+.bo-svc-einsatz {
+  position: relative; display: block; padding: 10px 12px; border-radius: 14px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-card);
+  font-size: 13px; line-height: 18px; transition: transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease), box-shadow 200ms ease;
+}
+.bo-svc-einsatz:hover { transform: translateY(-1px); box-shadow: var(--bo-sh-lift); }
+.bo-svc-einsatz[data-art="Wartung"], .bo-svc-einsatz[data-art="Pflege"] { box-shadow: inset 3px 0 0 var(--color-bo-salbei), var(--bo-sh-card); }
+.bo-svc-einsatz[data-status="Unterwegs"], .bo-svc-einsatz[data-status="In Arbeit"] { box-shadow: inset 3px 0 0 var(--color-bo-see), var(--bo-sh-card); }
+.bo-svc-einsatz__zeit { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--color-bo-text); }
+.bo-svc-einsatz__kunde { display: block; font-weight: 500; color: var(--color-bo-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bo-svc-einsatz__unter { display: block; color: var(--color-bo-text-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bo-svc-einsatz__kennz { display: inline-block; margin-top: 4px; padding: 1px 8px; border-radius: 999px; font-size: 12px; background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+
+/* Fenster-Wahl (A14) */
+.bo-svc-fenster { display: flex; flex-wrap: wrap; gap: 6px; }
+.bo-svc-fenster button { min-height: 36px; padding: 0 12px; border: 0; border-radius: 999px; background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); font: inherit; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; cursor: pointer; transition: background-color 160ms ease, color 160ms ease; }
+.bo-svc-fenster button:hover { background: var(--color-bo-fill-2); color: var(--color-bo-text); }
+.bo-svc-fenster button[aria-pressed="true"] { background: var(--color-bo-action); color: var(--color-bo-action-text); }
+
+/* Schrittleiste der Assistenten */
+.bo-svc-schritte { display: flex; flex-wrap: wrap; gap: 8px; }
+.bo-svc-schritte li { display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px 0 6px; border-radius: 999px; background: var(--color-bo-fill); font-size: 13px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-svc-schritte li span:first-child { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px; background: var(--color-bo-surface); font-size: 12px; font-variant-numeric: tabular-nums; }
+.bo-svc-schritte li[aria-current="step"] { background: var(--color-bo-action); color: var(--color-bo-action-text); }
+.bo-svc-schritte li[aria-current="step"] span:first-child { background: var(--color-bo-surface); color: var(--color-bo-text); }
+.bo-svc-schritte li[data-fertig] span:first-child { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+
+/* Baum (Fehlerkatalog) */
+.bo-svc-baum { display: flex; flex-direction: column; gap: 8px; }
+.bo-svc-baum__bereich { border-radius: 20px; background: var(--color-bo-surface-2); }
+.bo-svc-baum__kopf { display: flex; width: 100%; align-items: center; gap: 12px; min-height: 56px; padding: 0 16px; border: 0; border-radius: 20px; background: transparent; color: var(--color-bo-text); font: inherit; text-align: left; cursor: pointer; }
+.bo-svc-baum__kopf:hover { background: var(--color-bo-fill); }
+.bo-svc-baum__code { display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 48px; padding: 6px 16px 6px 44px; border-radius: 14px; cursor: pointer; font-size: 14px; }
+.bo-svc-baum__code:hover, .bo-svc-baum__code:focus-visible { background: var(--color-bo-fill-2); outline: none; }
+.bo-svc-baum__code[aria-selected="true"] { background: var(--color-bo-surface); box-shadow: inset 3px 0 0 var(--color-bo-action); }
+
+/* ---------------------------------------------------------------- Technik (Telefon) -- */
+.bo-svc-tk { display: flex; flex-direction: column; gap: 12px; padding-bottom: 96px; }
+.bo-svc-tk__karte { position: relative; display: block; padding: 16px 18px; border-radius: 24px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); color: var(--color-bo-text); }
+.bo-svc-tk__zeit { font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.bo-svc-tk__tabs {
+  position: fixed; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 40; translate: -50% 0;
+  display: flex; gap: 4px; padding: 6px; border-radius: 999px;
+  background: var(--color-bo-mat-strong); -webkit-backdrop-filter: blur(32px) saturate(180%); backdrop-filter: blur(32px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float);
+}
+.bo-svc-tk__tab { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: 72px; height: 56px; border: 0; border-radius: 999px; background: transparent; color: var(--color-bo-text-soft); font: inherit; font-size: 12px; font-weight: 500; cursor: pointer; }
+.bo-svc-tk__tab[aria-current="page"], .bo-svc-tk__tab[aria-selected="true"] { background: var(--color-bo-action); color: var(--color-bo-action-text); }
+.bo-svc-tk__primaer {
+  position: sticky; bottom: max(12px, env(safe-area-inset-bottom)); z-index: 30; margin-top: 8px; padding: 10px; border-radius: 32px;
+  background: var(--color-bo-mat-strong); -webkit-backdrop-filter: blur(32px) saturate(180%); backdrop-filter: blur(32px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float);
+}
+.bo-svc-tk__canvas { width: 100%; height: 180px; border-radius: 16px; background: var(--color-bo-surface); box-shadow: inset 0 0 0 1px var(--color-bo-line-control); touch-action: none; }
+
+@supports (corner-shape: superellipse(1.4)) {
+  .bo-svc-karte, .bo-svc-tk__karte, .bo-svc-einsatz, .bo-svc-baum__bereich, .bo-svc-treffer { corner-shape: superellipse(1.35); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bo-svc-chip, .bo-svc-wahl, .bo-svc-einsatz { transition-duration: 1ms; }
+  a.bo-svc-chip:hover, .bo-svc-einsatz:hover { transform: none; }
+}
+
+/* Betragsfeld (BetragFeld) in Service-Feldern: Platz für das €-Zeichen rechts. */
+.bo-svc-feld input[inputmode="decimal"] { padding-right: 36px; text-align: right; }

@@ -1,0 +1,26 @@
+[project]
+name = "ph_kundenkarte"
+authors = [{ name = "MW Immobilienverwaltungs GmbH" }]
+description = "Kundenkarte Stufe 1 (ohne Geldwert): Karten, Stufen, Leistungsvorteile, Einlösungen, Anträge von der Website, Wallet-Pässe, Umsatz- und Stufenberechnung"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    # Keine Pflichtpakete. Keine Geheimnisse.
+]
+
+[project.optional-dependencies]
+# Signierung der Wallet-Pässe (Apple PKCS#7, Google JWT RS256). Ohne das Paket antwortet
+# portal_wallet_pass mit 503 unavailable; alles andere läuft ohne.
+wallet = ["cryptography>=41"]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0,<17.0.0"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"

@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "raum",
+  "laenge_mm",
+  "breite_mm",
+  "hoehe_mm",
+  "flaeche_m2",
+  "skizze",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "raum",
+   "fieldtype": "Data",
+   "label": "Raum",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "laenge_mm",
+   "fieldtype": "Int",
+   "label": "Länge (mm)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "breite_mm",
+   "fieldtype": "Int",
+   "label": "Breite (mm)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "hoehe_mm",
+   "fieldtype": "Int",
+   "label": "Höhe (mm)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "flaeche_m2",
+   "fieldtype": "Float",
+   "label": "Fläche (m²)",
+   "read_only": 1,
+   "precision": "2",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "skizze",
+   "fieldtype": "Attach",
+   "label": "Skizze (Foto/PDF)",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz",
+   "in_list_view": 1,
+   "columns": 2
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Aufmass Raum",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

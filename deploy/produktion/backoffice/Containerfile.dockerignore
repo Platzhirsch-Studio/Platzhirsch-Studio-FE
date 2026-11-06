@@ -1,0 +1,12 @@
+# Build-Kontext = Repo-Root (Backoffice). Nur package.json/-lock und backoffice/ werden gebraucht.
+*
+!package.json
+!package-lock.json
+!backoffice
+backoffice/.next
+backoffice/node_modules
+backoffice/.env*
+backoffice/test-results
+backoffice/playwright-report
+backoffice/qa-screenshots
+**/.DS_Store

@@ -29,9 +29,25 @@ class PHKassenabschluss(Document):
             for s in STUECKELUNG_CENT:
                 self.append("zaehlprotokoll", {"stueckelung_cent": s, "bezeichnung": STUECK_LABEL[s], "anzahl": 0, "summe_cent": 0})
         if self.bargeld_anfang_cent is None:
-            from ph_kassa.ph_kassa.doctype.ph_kassenbuch.ph_kassenbuch import letzter_bestand
+            self.anfang_ermitteln()
 
-            self.bargeld_anfang_cent = letzter_bestand(self.kasse)
+    def anfang_ermitteln(self):
+        """Fachkritik 21 P3/P-F: Anfang = Kassenbuch-Bestand vor Beginn des Geschäftstags (enthält Vortagsbelege,
+        Entnahme in den Tresor und die Differenzbuchung des Vortagsabschlusses) + heutige „Anfangsbestand“-Zeilen
+        + Differenzbuchungen früherer Abschlüsse, die erst heute (z. B. morgens) gebucht wurden."""
+        from ph_kassa.ph_kassa.doctype.ph_kassenbuch.ph_kassenbuch import bestand_vor, tagesbewegungen
+
+        von, bis = geschaeftszeitraum(self.datum)
+        kb = tagesbewegungen(self.kasse, self.datum, von=von, bis=bis)
+        fremd_diff = sum(v for k, v in (kb.get("differenz_je_abschluss") or {}).items() if k != self.name)
+        vortag = frappe.get_all("PH Kassenabschluss", filters={"kasse": self.kasse, "datum": ("<", getdate(self.datum)), "status": ("in", ("Abgeschlossen", "Korrigiert"))}, fields=["bargeld_ist_cent", "chf_ist_cent"], order_by="datum desc", limit=1)
+        a = logik.anfangsbestand(bestand_vor(self.kasse, von) + fremd_diff, kb["anfangsbestand_cent"], vortag[0].bargeld_ist_cent if vortag else None)
+        self.bargeld_anfang_cent = a["bargeld_anfang_cent"]
+        self.anfang_quelle = "Vortag"
+        self.anfang_hinweis = a["hinweis"]
+        if self.meta.has_field("chf_anfang_cent") and not self.chf_anfang_cent:
+            self.chf_anfang_cent = bestand_vor(self.kasse, von, "CHF")
+        return a
 
     def validate(self):
         self.datum = getdate(self.datum or nowdate())
@@ -64,7 +80,8 @@ class PHKassenabschluss(Document):
 
         belege = belege_des_tages(self.kasse, self.datum)
         s = logik.soll_aus_belegen(belege)
-        kb = tagesbewegungen(self.kasse, self.datum)
+        von, bis = geschaeftszeitraum(self.datum)
+        kb = tagesbewegungen(self.kasse, self.datum, von=von, bis=bis)
         self.update(
             {
                 "bar_einnahmen_cent": s["bar_einnahmen_cent"],
@@ -83,6 +100,12 @@ class PHKassenabschluss(Document):
                 "trainings_anzahl": s["trainings_anzahl"],
             }
         )
+        if self.meta.has_field("retouren_cent"):
+            self.retouren_cent = s["retouren_cent"]
+            chf_kb = tagesbewegungen(self.kasse, self.datum, waehrung="CHF", von=von, bis=bis)
+            self.chf_einnahmen_cent = s["chf_einnahmen_cent"]
+            self.chf_soll_cent = int(self.chf_anfang_cent or 0) + s["chf_einnahmen_cent"] + chf_kb["einlagen_cent"] - chf_kb["entnahmen_cent"]
+            self.chf_differenz_cent = (int(self.chf_ist_cent) - self.chf_soll_cent) if self.chf_ist_cent not in (None, "") and (self.chf_ist_cent or self.chf_soll_cent) else 0
         self.bargeld_soll_cent = logik.bargeld_soll(self.bargeld_anfang_cent or 0, self.bar_einnahmen_cent, self.bar_ausgaben_cent, self.einlagen_cent, self.entnahmen_cent)
         self.set("umsatz_je_satz", [])
         for satz, w in sorted(s["je_satz"].items()):
@@ -97,8 +120,9 @@ class PHKassenabschluss(Document):
     # ── Buttons / Page ─────────────────────────────────────────────────────
 
     @frappe.whitelist()
-    def zaehlen(self, zaehlprotokoll=None, bargeld_anfang_cent=None, unterschrift=None, unterschrift_name=None):
-        """Zählprotokoll übernehmen (Mitarbeiter): Status Gezaehlt, Ist/Differenz berechnen."""
+    def zaehlen(self, zaehlprotokoll=None, bargeld_anfang_cent=None, unterschrift=None, unterschrift_name=None, anfang_grund=None, chf_ist_cent=None):
+        """Zählprotokoll übernehmen (Mitarbeiter): Status Gezaehlt, Ist/Differenz berechnen.
+        Abweichender Anfangsbestand nur durch Leitung und mit Grund (P3)."""
         self.check_permission("write")
         try:
             self.status = logik.naechster_status(self.status, "zaehlen")
@@ -110,8 +134,16 @@ class PHKassenabschluss(Document):
             mengen = {int(z.get("stueckelung_cent")): int(z.get("anzahl") or 0) for z in zaehlprotokoll}
             for row in self.zaehlprotokoll:
                 row.anzahl = mengen.get(int(row.stueckelung_cent), 0)
-        if bargeld_anfang_cent is not None:
+        if bargeld_anfang_cent not in (None, "") and int(bargeld_anfang_cent) != int(self.bargeld_anfang_cent or 0):
+            if not set(frappe.get_roles()) & set(LEITUNG):
+                frappe.throw(_("Anfangsbestand kommt aus dem Kassenbuch (Vortag) – Änderung nur durch die Kassa-Leitung."))
+            if not (anfang_grund or "").strip():
+                frappe.throw(_("Grund für den geänderten Anfangsbestand angeben."))
             self.bargeld_anfang_cent = int(bargeld_anfang_cent)
+            self.anfang_quelle = "manuell"
+            self.anfang_grund = anfang_grund
+        if chf_ist_cent not in (None, "") and self.meta.has_field("chf_ist_cent"):
+            self.chf_ist_cent = int(chf_ist_cent)
         if unterschrift:
             self.unterschrift = unterschrift
         if unterschrift_name:
@@ -149,8 +181,12 @@ class PHKassenabschluss(Document):
         if self.differenz_cent and not self.differenz_buchung:
             from ph_kassa.ph_kassa.doctype.ph_kassenbuch.ph_kassenbuch import buchen
 
-            kb = buchen(self.kasse, "Differenz", self.differenz_cent, _("Kassendifferenz Tagesabschluss {0}: {1}").format(self.name, self.differenz_grund or ""), quelle="abschluss", kassenabschluss=self.name, idempotency_key=f"diff:{self.name}")
+            kb = buchen(self.kasse, "Differenz", self.differenz_cent, _("Kassendifferenz Tagesabschluss {0}: {1}").format(self.name, self.differenz_grund or ""), quelle="abschluss", kassenabschluss=self.name, idempotency_key=f"diff:{self.name}", ignore_permissions=True)
             self.differenz_buchung = kb.name
+        if self.meta.has_field("chf_differenz_cent") and int(self.chf_differenz_cent or 0):
+            from ph_kassa.ph_kassa.doctype.ph_kassenbuch.ph_kassenbuch import buchen
+
+            buchen(self.kasse, "Differenz", int(self.chf_differenz_cent), _("CHF-Differenz Tagesabschluss {0}").format(self.name), quelle="abschluss", kassenabschluss=self.name, idempotency_key=f"diff:{self.name}:CHF", waehrung="CHF", ignore_permissions=True)
         if einst["abschluss_nullbeleg_automatisch"] and not self.nullbeleg:
             try:
                 from ph_kassa.schnittstellen import nullbeleg
@@ -213,18 +249,40 @@ class PHKassenabschluss(Document):
             "umsatz_je_satz": [{"steuersatz": s.steuersatz, "anzahl": s.anzahl, "netto_cent": s.netto_cent, "ust_cent": s.ust_cent, "brutto_cent": s.brutto_cent} for s in self.umsatz_je_satz],
             "nullbeleg": self.nullbeleg,
             "differenz_buchung": self.differenz_buchung,
+            "anfang_quelle": self.get("anfang_quelle"),
+            "anfang_hinweis": self.get("anfang_hinweis"),
+            "retouren_cent": self.get("retouren_cent"),
+            "anzahlungen_cent": self.anzahlungen_cent,
+            "gutschein_verkauf_cent": self.gutschein_verkauf_cent,
+            "gutschein_einloesung_cent": self.gutschein_einloesung_cent,
+            "chf": {"anfang_cent": self.get("chf_anfang_cent"), "einnahmen_cent": self.get("chf_einnahmen_cent"), "soll_cent": self.get("chf_soll_cent"), "ist_cent": self.get("chf_ist_cent"), "differenz_cent": self.get("chf_differenz_cent")},
+            "stornos_folgetag": stornos_spaeter(self.kasse, self.datum),
         }
 
 
 # ── Modulfunktionen (Page, Hooks, Reports) ─────────────────────────────────
+
+def geschaeftszeitraum(datum):
+    """(von, bis) des Geschäftstags laut PH Kassa Einstellungen.tageswechsel_uhrzeit."""
+    from ph_kassa.ph_kassa.doctype.ph_kassa_einstellungen.ph_kassa_einstellungen import einstellungen
+
+    return logik.zeitraum(getdate(datum), einstellungen().get("tageswechsel_uhrzeit"))
+
+
+def stornos_spaeter(kasse, datum):
+    """Belege dieses Geschäftstags, die an einem späteren Tag storniert wurden (Hinweis in der Abschluss-Akte)."""
+    von, bis = geschaeftszeitraum(datum)
+    try:
+        return frappe.get_all("PH Kassenbeleg", filters={"kasse": kasse, "docstatus": 1, "datum_uhrzeit": ("between", [von, bis]), "storniert_durch": ("is", "set")}, fields=["name", "storniert_durch"], limit=50)
+    except Exception:  # noqa: BLE001
+        return []
 
 def belege_des_tages(kasse: str, datum) -> list[dict]:
     """Signierte Belege (PH Kassenbeleg, WP10a) einer Kasse an einem Tag als flache dicts für logik.abschluss."""
     if not frappe.db.exists("DocType", "PH Kassenbeleg"):
         return []
     datum = getdate(datum)
-    von = f"{datum} 00:00:00"
-    bis = f"{datum} 23:59:59"
+    von, bis = geschaeftszeitraum(datum)
     felder = ["name", "belegart", "trainings", "gesamt_cent", "bediener"]
     meta = frappe.get_meta("PH Kassenbeleg")
     felder = [f for f in felder if f == "name" or meta.has_field(f)]
@@ -232,7 +290,9 @@ def belege_des_tages(kasse: str, datum) -> list[dict]:
     if not belege:
         return []
     namen = [b.name for b in belege]
-    zahl = frappe.get_all("PH Kassenbeleg Zahlung", filters={"parent": ("in", namen)}, fields=["parent", "zahlart", "betrag_cent"]) if frappe.db.exists("DocType", "PH Kassenbeleg Zahlung") else []
+    zmeta = frappe.get_meta("PH Kassenbeleg Zahlung")
+    zfelder = ["parent", "zahlart", "betrag_cent"] + [f for f in ("retour_cent", "fremdwaehrung", "fremd_gegeben_cent") if zmeta.has_field(f)]
+    zahl = frappe.get_all("PH Kassenbeleg Zahlung", filters={"parent": ("in", namen)}, fields=zfelder) if frappe.db.exists("DocType", "PH Kassenbeleg Zahlung") else []
     pos = frappe.get_all("PH Kassenbeleg Position", filters={"parent": ("in", namen)}, fields=["parent", "art", "steuersatz", "netto_cent", "ust_cent", "brutto_cent"]) if frappe.db.exists("DocType", "PH Kassenbeleg Position") else []
     z_map, p_map = {}, {}
     for z in zahl:
@@ -265,7 +325,7 @@ def ist_gesperrt(kasse: str, datum=None) -> bool:
 
 def sperre_pruefen(doc, method=None):
     """doc_events-Hook PH Kassenbeleg.before_submit (hooks.py WP10b): keine Belege nach Tagesabschluss."""
-    datum = getdate(doc.get("datum_uhrzeit") or nowdate())
+    datum = getdate(doc.get("geschaeftstag") or doc.get("datum_uhrzeit") or nowdate())
     if ist_gesperrt(doc.kasse, datum):
         frappe.throw(_("Kasse {0} ist für den {1} abgeschlossen. Die Leitung muss den Abschluss öffnen, bevor Belege gebucht werden.").format(doc.kasse, frappe.utils.formatdate(datum)))
 

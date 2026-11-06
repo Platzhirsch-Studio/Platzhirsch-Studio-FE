@@ -1,0 +1,216 @@
+{
+  "produkt": "Zendesk",
+  "url": "https://www.zendesk.com/service/ticketing-system/",
+  "stand": "2026-11-04",
+  "zeichen": 14000,
+  "funktionen": [
+    {
+      "name": "Kanalbündelung",
+      "beschreibung": "Der Agent bearbeitet E-Mail, Messaging, Telefon, Social und Live-Chat in einer Oberfläche.",
+      "bereich": "service",
+      "nutzen": "Reklamationen aus allen Kanälen an einer Stelle.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Messaging mit Fortsetzung",
+      "beschreibung": "Der Kunde chattet in Echtzeit und setzt das Gespräch später fort.",
+      "bereich": "service",
+      "nutzen": "Kunde schickt Schadensfoto später nach.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Kanalwechsel ohne Kontextverlust",
+      "beschreibung": "Der Agent verschiebt ein Gespräch von Messaging zu E-Mail, ohne Verlauf zu verlieren.",
+      "bereich": "service",
+      "nutzen": "Formelle Antwort zur Reklamation per E-Mail.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Nebenkonversationen",
+      "beschreibung": "Der Agent zieht Kollegen in ein Ticket ein, ohne es zu verlassen.",
+      "bereich": "service",
+      "nutzen": "Montage/Einkauf zur Reklamation befragen.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Omnichannel-Routing",
+      "beschreibung": "Tickets werden nach Verfügbarkeit und Auslastung der Agenten verteilt.",
+      "bereich": "service",
+      "nutzen": "Gleichmäßige Verteilung im kleinen Team.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Skill-basiertes Routing",
+      "beschreibung": "Tickets gehen an Agenten mit passenden Fähigkeiten.",
+      "bereich": "service",
+      "nutzen": "Küchenreklamationen an Küchenspezialisten.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Themenbasiertes Routing",
+      "beschreibung": "Tickets werden nach Thema zugewiesen.",
+      "bereich": "service",
+      "nutzen": "Lieferung vs. Mangel vs. Rechnung trennen.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Prioritäts-Routing",
+      "beschreibung": "Tickets werden nach Dringlichkeit und Skills priorisiert.",
+      "bereich": "service",
+      "nutzen": "Wasserschaden an Küche vor Kratzer.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "SLA-Zeitsteuerung",
+      "beschreibung": "Tickets werden gegen Servicelevel-Ziele zeitlich gesteuert.",
+      "bereich": "service",
+      "nutzen": "Zugesagte Reaktionszeiten einhalten.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "SLA-Metrik Erste Antwortzeit",
+      "beschreibung": "Der Admin definiert ein Ziel für die Zeit bis zur ersten öffentlichen Antwort.",
+      "bereich": "service",
+      "nutzen": "Kunde erhält rasch Eingangsbestätigung mit Inhalt.",
+      "quelle": "Zendesk",
+      "url": "https://support.zendesk.com/hc/en-us/articles/4408829459866-Defining-SLA-policies"
+    },
+    {
+      "name": "SLA-Metrik Nächste Antwortzeit",
+      "beschreibung": "Der Admin definiert ein Ziel ab der ältesten unbeantworteten Kundennachricht.",
+      "bereich": "service",
+      "nutzen": "Keine liegengebliebenen Rückfragen.",
+      "quelle": "Zendesk",
+      "url": "https://support.zendesk.com/hc/en-us/articles/4408829459866-Defining-SLA-policies"
+    },
+    {
+      "name": "SLA periodisches/pausierbares Update",
+      "beschreibung": "Der Admin legt fest, in welchem Abstand Agenten öffentlich updaten müssen, optional pausiert bei Status 'Wartend'.",
+      "bereich": "service",
+      "nutzen": "Kunde wird bei langer Ersatzteillieferung regelmäßig informiert.",
+      "quelle": "Zendesk",
+      "url": "https://support.zendesk.com/hc/en-us/articles/4408829459866-Defining-SLA-policies"
+    },
+    {
+      "name": "SLA-Lösungsmetriken",
+      "beschreibung": "Der Admin wählt Kundenwartezeit, Agenten-Arbeitszeit oder Gesamtlösungszeit als Ziel.",
+      "bereich": "service",
+      "nutzen": "Reklamationsdauer messbar.",
+      "quelle": "Zendesk",
+      "url": "https://support.zendesk.com/hc/en-us/articles/4408829459866-Defining-SLA-policies"
+    },
+    {
+      "name": "SLA nach Geschäftszeiten und Priorität",
+      "beschreibung": "Der Admin wählt je Priorität Kalender- oder Geschäftszeiten; Policies greifen nach Feldbedingungen.",
+      "bereich": "service",
+      "nutzen": "Realistische Ziele ohne Wochenenden.",
+      "quelle": "Zendesk",
+      "url": "https://support.zendesk.com/hc/en-us/articles/4408829459866-Defining-SLA-policies"
+    },
+    {
+      "name": "Trigger (Wenn-dann-Regeln)",
+      "beschreibung": "Trigger prüfen bei jeder Ticketanlage/-änderung Bedingungen und führen Aktionen wie Benachrichtigungen aus.",
+      "bereich": "service",
+      "nutzen": "Automatische Bestätigung an Kunde bei neuer Reklamation.",
+      "quelle": "Zendesk",
+      "url": "https://support.zendesk.com/hc/en-us/articles/4408822236058-About-triggers-and-how-they-work"
+    },
+    {
+      "name": "Automationen und Workflows",
+      "beschreibung": "Der Admin nutzt vorgefertigte Abläufe, z. B. Alarm bei unbearbeiteten Tickets oder Eskalation von Rückerstattungen an Vorgesetzte.",
+      "bereich": "service",
+      "nutzen": "Kulanzerstattungen gehen automatisch zur Freigabe.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Bedingte Folgeaktionen",
+      "beschreibung": "Nach Ereignissen wie Gruppenzuweisung werden Folgeaktionen ausgelöst, etwa externe Issues angelegt.",
+      "bereich": "service",
+      "nutzen": "Montageeinsatz automatisch anstoßen.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "No-Code-Workflow-Editor",
+      "beschreibung": "Admins bauen und ändern Workflows ohne Entwickler.",
+      "bereich": "zentrale",
+      "nutzen": "Abläufe selbst anpassen.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Makros",
+      "beschreibung": "Der Agent wendet vordefinierte Antworten oder Aktionen mit einem Klick auf ein Ticket an.",
+      "bereich": "service",
+      "nutzen": "Standardantworten z. B. 'Techniker kommt, bitte Fotos senden'.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "KI-Makrovorschläge",
+      "beschreibung": "Das System schlägt dem Agenten passende Antworten vor.",
+      "bereich": "service",
+      "nutzen": "Schnellere Antworten.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Interne Wissensdatenbank",
+      "beschreibung": "Agenten nutzen zentrale Artikel zur Fehlerbehebung.",
+      "bereich": "service",
+      "nutzen": "Pflege-/Garantiewissen je Hersteller.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Kundenprofil im Ticket",
+      "beschreibung": "Der Agent sieht Interaktionshistorie, Präferenzen und Bestellaktivität.",
+      "bereich": "crm",
+      "nutzen": "Bestellung und Lieferdatum direkt zur Reklamation.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Hilfe-Center (Self-Service)",
+      "beschreibung": "Kunden durchsuchen eine öffentliche Wissensdatenbank.",
+      "bereich": "service",
+      "nutzen": "Pflegehinweise und FAQ zu Lieferung reduzieren Anfragen.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Echtzeit-Monitoring",
+      "beschreibung": "Der Supervisor sieht, wer woran arbeitet, um Doppelarbeit zu vermeiden.",
+      "bereich": "service",
+      "nutzen": "Kein doppeltes Bearbeiten derselben Reklamation.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Historische Berichte und Dashboards",
+      "beschreibung": "Der Benutzer wertet Ticketvolumen, Agentenleistung und Tickets je Kanal aus.",
+      "bereich": "zentrale",
+      "nutzen": "Reklamationsquoten je Hersteller erkennen.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    },
+    {
+      "name": "Integrationen und API",
+      "beschreibung": "Der Admin verbindet Tools wie Slack, Jira, Shopify und baut über die API eigene Erweiterungen.",
+      "bereich": "zentrale",
+      "nutzen": "Anbindung an Onlineshop und Backoffice.",
+      "quelle": "Zendesk",
+      "url": "https://www.zendesk.com/service/ticketing-system/"
+    }
+  ]
+}

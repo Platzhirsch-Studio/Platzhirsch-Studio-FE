@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Mindestbesetzung je Wochentag und Zeitfenster (Showroom-Öffnungszeiten).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "wochentag",
+  "von",
+  "bis",
+  "anzahl",
+  "bereich"
+ ],
+ "fields": [
+  {
+   "fieldname": "wochentag",
+   "fieldtype": "Select",
+   "label": "Wochentag",
+   "options": "Montag\nDienstag\nMittwoch\nDonnerstag\nFreitag\nSamstag\nSonntag",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "von",
+   "fieldtype": "Time",
+   "label": "Von",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bis",
+   "fieldtype": "Time",
+   "label": "Bis",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "anzahl",
+   "fieldtype": "Int",
+   "label": "Mindestens (Personen)",
+   "default": "1",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bereich",
+   "fieldtype": "Select",
+   "label": "Bereich",
+   "options": "\nShowroom\nPlanung\nMontage\nLager\nVerwaltung",
+   "default": "Showroom",
+   "in_list_view": 1,
+   "columns": 2
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Personal Besetzung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

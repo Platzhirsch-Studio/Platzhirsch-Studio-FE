@@ -18,10 +18,12 @@ class PHMahnwesenEinstellungen(Document):
 
 
 @frappe.whitelist()
-def mahnlauf_starten(nur_vorschlag=0):
+def mahnlauf_starten(nur_vorschlag=0, rechnungen=None, stichtag=None):
     """Button „Mahnlauf starten“ in den Einstellungen (Leitung/Buchhaltung)."""
     if not set(frappe.get_roles()) & {"PH Faktura Leitung", "PH Faktura Leitung", "System Manager", "PH Geschäftsführung"}:
         frappe.throw(_("Keine Berechtigung für den Mahnlauf."))
     from ph_faktura.ph_faktura.tasks import mahnlauf
 
-    return mahnlauf(nur_vorschlag=cint(nur_vorschlag))
+    if isinstance(rechnungen, str):
+        rechnungen = frappe.parse_json(rechnungen)
+    return mahnlauf(stichtag=stichtag, nur_vorschlag=cint(nur_vorschlag), rechnungen=rechnungen or None)

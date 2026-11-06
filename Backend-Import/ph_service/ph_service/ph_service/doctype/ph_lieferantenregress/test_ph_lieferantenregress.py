@@ -71,5 +71,41 @@ class TestPHLieferantenregress(FrappeTestCase):
         with self.assertRaises(frappe.ValidationError):
             reg.save()
 
+    def test_gutschrift_abgleich_teilbetrag_und_ausbuchen(self):
+        fall, reg = self._regress()
+        reg.status = "Gemeldet"
+        reg.save()
+        r = reg.gutschrift_erfassen(betrag_cent=20000, nummer="GS-1")
+        self.assertEqual(r["abgleich_status"], "Unterdeckung")
+        self.assertEqual(reg.status, "Anerkannt")
+        self.assertEqual(reg.differenz_cent, 15000)
+        reg.differenz_ausbuchen(grund="Lieferant zahlt nur Material")
+        reg.reload()
+        self.assertEqual(reg.abgleich_status, "Ausgebucht")
+        self.assertEqual(reg.status, "Verrechnet")
+        self.assertEqual(reg.betrag_erhalten_cent, 20000)  # kein Auffüllen auf den anerkannten Betrag
+
+    def test_gutschrift_voll_verrechnet(self):
+        fall, reg = self._regress()
+        reg.status = "Gemeldet"
+        reg.betrag_anerkannt_cent = 30000
+        reg.save()
+        r = reg.gutschrift_erfassen(betrag_cent=29950, nummer="GS-2")
+        self.assertEqual(r["abgleich_status"], "Ausgeglichen")
+        self.assertEqual(reg.status, "Verrechnet")
+        with self.assertRaises(frappe.ValidationError):
+            reg.gutschrift_erfassen(betrag_cent=0)
+
+    def test_kostenaufstellung_und_mahnstufe(self):
+        fall, reg = self._regress()
+        r = reg.kosten_uebernehmen()
+        self.assertEqual(r["betrag_gefordert_cent"], 35000)
+        self.assertEqual(sorted(z.kostenart for z in reg.kosten), ["Arbeitszeit", "Ersatzteil"])
+        reg.append("kosten", {"kostenart": "Pauschale", "beschreibung": "Bearbeitung", "menge": 1, "satz_cent": 2500})
+        reg.save()
+        self.assertEqual(reg.betrag_gefordert_cent, 37500)
+        reg.kosten_uebernehmen(ersetzen=1)  # eigene Zeile bleibt
+        self.assertEqual(reg.betrag_gefordert_cent, 37500)
+
     def tearDown(self):
         frappe.db.rollback()

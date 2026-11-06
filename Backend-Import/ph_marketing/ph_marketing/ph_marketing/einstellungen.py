@@ -48,6 +48,14 @@ def einstellungen():
             "empfehlung_bedingungen_url": doc.empfehlung_bedingungen_url,
             "event_erinnerung_tage": cint(doc.event_erinnerung_tage) or 2,
             "event_loeschfrist_monate": cint(doc.event_loeschfrist_monate) or 3,
+            "resend_webhook_aktiv": cint(doc.get("resend_webhook_aktiv")),
+            "soft_bounce_grenze": cint(doc.get("soft_bounce_grenze")) or 3,
+            "abmelde_mailto": doc.get("abmelde_mailto"),
+            "one_click_pfad": doc.get("one_click_pfad") or "/api/newsletter/abmelden-1klick",
+            "mail_ereignis_aufbewahren_tage": cint(doc.get("mail_ereignis_aufbewahren_tage")) or 180,
+            "attribution_modell": doc.get("attribution_modell") or "last",
+            "attribution_fenster_tage": cint(doc.get("attribution_fenster_tage")) or 180,
+            "kampagne_nachlauf_tage": cint(doc.get("kampagne_nachlauf_tage")) if doc.get("kampagne_nachlauf_tage") is not None else 30,
         }
         frappe.cache().set_value(CACHE, data)
     return data

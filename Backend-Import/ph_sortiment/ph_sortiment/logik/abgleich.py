@@ -10,7 +10,14 @@ Reine Logik: Positionen sind dicts, Rückgabe sind dicts für die Kindtabelle PH
 
 from datetime import date
 
-FELDER = ("Preis", "Menge", "Termin", "Artikel")
+FELDER = ("Preis", "Menge", "Termin", "Artikel", "Ausfuehrung")
+
+# Klärung einer Abweichung (Methode PH Herstellerbestellung.abweichung_klaeren) → Bewertung + Klärungsvermerk
+KLAERUNG = {
+    "akzeptieren": ("ok", "akzeptiert"),
+    "lieferant_reklamieren": ("pruefen", "beim Lieferanten reklamiert"),
+    "kunde_rueckfragen": ("pruefen", "Kundenrueckfrage"),
+}
 
 
 def _d(v):
@@ -65,7 +72,37 @@ def abweichungen_position(pos, idx, toleranz_preis_prozent=0, toleranz_termin_ta
         if a != b:
             zeilen.append({**basis, "feld": "Artikel", "bestellt": a, "bestaetigt": b, "abweichung_text": "Artikelnummer weicht ab"})
 
+    # Ausführung (Stoff/Farbe/Maß laut AB gegen bestellte Ausführung, Groß-/Kleinschreibung und Leerraum egal)
+    if pos.get("ab_ausfuehrung_text") and pos.get("ausfuehrung_text"):
+        a, b = _text(pos["ausfuehrung_text"]), _text(pos["ab_ausfuehrung_text"])
+        if a != b:
+            zeilen.append({**basis, "feld": "Ausfuehrung", "bestellt": str(pos["ausfuehrung_text"])[:140], "bestaetigt": str(pos["ab_ausfuehrung_text"])[:140], "abweichung_text": "Ausführung weicht ab"})
+
     return zeilen
+
+
+def _text(v):
+    return " ".join(str(v or "").replace(",", " ").split()).casefold()
+
+
+def klaerung(aktion):
+    """(bewertung, vermerk) für eine Klärungsaktion; unbekannt → ValueError."""
+    if aktion not in KLAERUNG:
+        raise ValueError("Unbekannte Klärung {0}".format(aktion))
+    return KLAERUNG[aktion]
+
+
+def reklamation_text(zeilen, bestellung, ab_nummer=None, zusatz=None):
+    """Mailtext an den Lieferanten zu Abweichungen der AB (Liste Protokollzeilen)."""
+    punkte = "\n".join("- Pos. {0} {1}: {2} bestellt {3}, bestätigt {4}".format(z.get("position"), z.get("bezeichnung") or "", z.get("feld"), z.get("bestellt"), z.get("bestaetigt")) for z in zeilen)
+    return ("Sehr geehrte Damen und Herren,\n\nIhre Auftragsbestätigung {0} zu unserer Bestellung {1} weicht von unserer Bestellung ab:\n{2}\n\n{3}"
+            "Bitte korrigieren Sie die Auftragsbestätigung oder nehmen Sie kurz Stellung.\n\nMit freundlichen Grüßen\nPlatzhirsch Home Living").format(ab_nummer or "", bestellung, punkte, (zusatz + "\n\n") if zusatz else "")
+
+
+def mengen_abgleich(menge_erwartet, menge_erhalten):
+    """Wareneingang je Position: (differenz, 'keine'|'Unterlieferung'|'Ueberlieferung')."""
+    d = int(menge_erhalten or 0) - int(menge_erwartet or 0)
+    return d, ("keine" if d == 0 else ("Ueberlieferung" if d > 0 else "Unterlieferung"))
 
 
 def abweichung_kennzeichen(zeilen):

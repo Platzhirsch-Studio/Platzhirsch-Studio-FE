@@ -16,6 +16,9 @@ def execute(filters=None):
         bedingungen["name"] = filters["mitarbeiter"]
     mitarbeiter = frappe.get_list("PH Mitarbeiter", filters=bedingungen, fields=["name", "titel", "rolle_intern"], order_by="nachname asc")
 
+    from ph_personal.ph_personal.doctype.ph_abwesenheit.ph_abwesenheit import darf_art_sehen
+
+    voll = darf_art_sehen()  # Krankenstand nur Leitung/GF (Art. 9 DSGVO)
     data = []
     for ma in mitarbeiter:
         k = urlaubskonto(ma.name, jahr)
@@ -24,7 +27,9 @@ def execute(filters=None):
             filters={"mitarbeiter": ma.name, "status": "Genehmigt", "von": ("between", [f"{jahr}-01-01", f"{jahr}-12-31"])},
             fields=["art", "tage"],
         )
-        krank = sum(float(r.tage or 0) for r in rows if r.art == "Krankenstand")
+        krank = None
+        if voll and frappe.db.exists("DocType", "PH Krankmeldung"):
+            krank = sum(float(k.tage or 0) for k in frappe.get_all("PH Krankmeldung", filters={"mitarbeiter": ma.name, "status": ("in", ["Gemeldet", "Bestaetigt", "Beendet"]), "von": ("between", [f"{jahr}-01-01", f"{jahr}-12-31"])}, fields=["tage"]))
         za = sum(float(r.tage or 0) for r in rows if r.art == "Zeitausgleich")
         sonstige = sum(float(r.tage or 0) for r in rows if r.art not in ("Urlaub", "Krankenstand", "Zeitausgleich"))
         data.append(
@@ -70,7 +75,7 @@ def execute(filters=None):
     summary = [
         {"value": round(sum(d["genommen"] for d in data), 1), "label": _("Urlaub genommen"), "datatype": "Float", "indicator": "Green"},
         {"value": round(sum(d["rest"] for d in data), 1), "label": _("Resturlaub gesamt"), "datatype": "Float"},
-        {"value": round(sum(d["krank"] for d in data), 1), "label": _("Krankenstandstage"), "datatype": "Float", "indicator": "Red"},
+        {"value": round(sum(d["krank"] or 0 for d in data), 1) if voll else "–", "label": _("Krankenstandstage"), "datatype": "Float" if voll else "Data", "indicator": "Red"},
     ]
-    message = _("Arbeitstage Mo–Fr; Feiertage noch nicht abgezogen (offener Punkt). Anspruch je Mitarbeiter oder Standard aus PH Personal Einstellungen; kein Übertrag aus Vorjahren (Resturlaub aus Vorsystem bei Bedarf als Anspruch anpassen).")
+    message = _("Tage nach Arbeitszeitmodell ohne gesetzliche Feiertage. Anspruch des Urlaubsjahres nach UrlG; Rest = alle unverjährten Urlaubsjahre (Verjährung 2 Jahre nach Ende des Urlaubsjahres, § 4 Abs 5 UrlG). Resturlaub aus dem Vorsystem als Korrektur am PH Urlaubsanspruch erfassen.")
     return columns, data, message, chart, summary

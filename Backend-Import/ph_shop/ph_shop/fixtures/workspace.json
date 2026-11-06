@@ -134,7 +134,7 @@
    {
     "type": "Card Break",
     "label": "Gutscheine und Anzahlungen",
-    "link_count": 3,
+    "link_count": 4,
     "hidden": 0,
     "onboard": 0
    },
@@ -160,6 +160,15 @@
     "type": "Link",
     "label": "PH Anzahlung",
     "link_to": "PH Anzahlung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Wunschliste",
+    "link_to": "PH Wunschliste",
     "link_type": "DocType",
     "hidden": 0,
     "onboard": 0,

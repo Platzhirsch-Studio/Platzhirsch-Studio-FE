@@ -68,3 +68,82 @@ class TestPHLagerbestand(FrappeTestCase):
         b = buche("Wareneingang", self.p, 1, lagerort_nach=self.lager)
         with self.assertRaises(frappe.ValidationError):
             frappe.delete_doc("PH Lagerbewegung", b.name)
+
+
+class TestPHLagerbestandKommissionSperre(FrappeTestCase):
+    """Kommission, Sperre, Reservierung mit Ablauf, Platz-Scan, Wareneingang mit Schaden (ereignisse)."""
+
+    def setUp(self):
+        frappe.set_user("Administrator")
+        self.p = produkt("Testtisch Kommission")
+        self.lager = lagerort("Testlager")
+        lo = frappe.get_doc("PH Lagerort", self.lager)
+        if not any(x.platz == "R1-01" for x in lo.plaetze):
+            lo.append("plaetze", {"platz": "R1-01", "aktiv": 1})
+            lo.save()
+
+    def test_kommissionsware_getrennt_und_nicht_verfuegbar(self):
+        frei = buche("Wareneingang", self.p, 2, lagerort_nach=self.lager)
+        kom = buche("Wareneingang", self.p, 1, lagerort_nach=self.lager, kommission="PH-PRJ-TEST-1")
+        self.assertNotEqual(frei.lagerbestand, kom.lagerbestand)
+        z = frappe.db.get_value("PH Lagerbestand", kom.lagerbestand, ["status", "verfuegbar", "kommission"], as_dict=True)
+        self.assertEqual((z.status, z.verfuegbar, z.kommission), ("Kommission", 0, "PH-PRJ-TEST-1"))
+        from ph_logistik.ph_logistik.lager import kommissionsliste
+
+        k = kommissionsliste("PH-PRJ-TEST-1")
+        self.assertEqual(k["summen"]["im_lager"], 1)
+
+    def test_lieferschein_aus_kommission_bucht_beim_packen(self):
+        kom = buche("Wareneingang", self.p, 1, lagerort_nach=self.lager, kommission="PH-PRJ-TEST-2")
+        from ph_logistik.ph_logistik.lager import lieferschein_aus_kommission
+
+        ls = frappe.get_doc("PH Lieferschein", lieferschein_aus_kommission("PH-PRJ-TEST-2", lieferart="Abholung"))
+        self.assertEqual((ls.kommission, ls.positionen[0].lagerbestand), ("PH-PRJ-TEST-2", kom.lagerbestand))
+        with self.assertRaises(frappe.ValidationError):
+            lieferschein_aus_kommission("PH-PRJ-TEST-2", lieferart="Abholung")  # schon auf offenem Lieferschein
+        ls.positionen_setzen({ls.positionen[0].name: 1}, idempotency_key="t-kom-2")
+        ls.reload()
+        ls.als_gepackt()
+        self.assertEqual(frappe.db.get_value("PH Lagerbestand", kom.lagerbestand, "menge"), 0)
+        ls.reload()
+        ls.stornieren("Test Rückbuchung")
+        self.assertEqual(frappe.db.get_value("PH Lagerbestand", kom.lagerbestand, "menge"), 1)
+
+    def test_sperren_reservieren_platzscan(self):
+        b = buche("Wareneingang", self.p, 3, lagerort_nach=self.lager)
+        doc = frappe.get_doc("PH Lagerbestand", b.lagerbestand)
+        doc.reservieren("PH Lagerbestand", doc.name, 1, bis="2020-01-01")
+        doc.reload()
+        self.assertEqual(str(doc.reserviert_bis), "2020-01-01")
+        from ph_logistik.ph_logistik.lager import platz_aufloesen, reservierungen_freigeben
+
+        reservierungen_freigeben()
+        doc.reload()
+        self.assertEqual((doc.reserviert, doc.reserviert_bis), (0, None))
+        self.assertEqual(platz_aufloesen(f"{self.lager}/R1-01"), (self.lager, "R1-01"))
+        with self.assertRaises(frappe.ValidationError):
+            platz_aufloesen(f"{self.lager}/GIBTSNICHT")
+        doc.umlagern(platz_code=f"{self.lager}/R1-01", menge=1)
+        self.assertTrue(frappe.db.exists("PH Lagerbestand", {"produkt": self.p, "lagerort": self.lager, "platz": "R1-01"}))
+        doc.reload()
+        doc.sperren("Kratzer")
+        doc.reload()
+        self.assertEqual((doc.status, doc.verfuegbar), ("Gesperrt", 0))
+        with self.assertRaises(frappe.ValidationError):
+            doc.reservieren("PH Lagerbestand", doc.name, 1)
+        doc.entsperren()
+        doc.reload()
+        self.assertEqual(doc.status, "Verfuegbar")
+
+    def test_wareneingang_schaden_gesperrt_nur_differenz(self):
+        from ph_logistik.ph_logistik.ereignisse import wareneingang_aktualisiert
+
+        we = frappe._dict(name="WE-TEST-1", status="Teilweise", kommission=None, positionen=[frappe._dict(name="wep1", produkt=self.p, menge_erhalten=1, zustand="Transportschaden"), frappe._dict(name="wep2", produkt=self.p, menge_erhalten=2, zustand="ok")])
+        wareneingang_aktualisiert(we)
+        wareneingang_aktualisiert(we)  # wiederholt: keine Doppelbuchung
+        self.assertEqual(frappe.db.count("PH Lagerbewegung", {"bezug": "WE-TEST-1"}), 2)
+        g = frappe.db.get_value("PH Lagerbestand", {"produkt": self.p, "gesperrt": 1, "lagerort": ("is", "set")}, ["zustand", "status"], as_dict=True)
+        self.assertEqual((g.zustand, g.status), ("B-Ware", "Gesperrt"))
+        we.positionen[1].menge_erhalten = 3  # Nachlieferung erfasst
+        wareneingang_aktualisiert(we)
+        self.assertEqual(frappe.db.count("PH Lagerbewegung", {"bezug": "WE-TEST-1"}), 3)

@@ -20,6 +20,8 @@ VORLAGEN = {
     "anzahlung_erhalten": "PH Anzahlung erhalten",
     "anzahlung_link": "PH Anzahlung Zahlungslink",
     "team_hinweis": "PH Shop Teamhinweis",
+    "zahlungslink": "PH Shop Zahlungslink",
+    "versendet": "PH Shop Versendet",
 }
 
 

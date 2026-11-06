@@ -1,0 +1,50 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 14:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "vorlage_name",
+  "aktiv",
+  "cb_kopf",
+  "raumtyp",
+  "objektart",
+  "sb_fragen",
+  "fragen",
+  "beschreibung"
+ ],
+ "fields": [
+  {"fieldname": "vorlage_name", "fieldtype": "Data", "reqd": 1, "unique": 1, "in_list_view": 1, "label": "Name"},
+  {"fieldname": "aktiv", "fieldtype": "Check", "default": "1", "in_list_view": 1, "in_standard_filter": 1, "label": "Aktiv"},
+  {"fieldname": "cb_kopf", "fieldtype": "Column Break"},
+  {"fieldname": "raumtyp", "fieldtype": "Select", "options": "Wohnen\nEssen\nKueche\nSchlafen\nBad\nKind\nBuero\nFlur\nOutdoor\nPool\nLicht\nHotelzimmer\nLobby\nRestaurant\nGesamt\nSonstiges", "in_list_view": 1, "in_standard_filter": 1, "label": "Haupt-Raumtyp"},
+  {"fieldname": "objektart", "fieldtype": "Select", "options": "\nEinfamilienhaus\nWohnung\nFerienhaus\nGewerbe\nHotel\nYacht\nSonstiges", "label": "Objektart (optional)"},
+  {"fieldname": "sb_fragen", "fieldtype": "Section Break", "label": "Fragen"},
+  {"fieldname": "fragen", "fieldtype": "Table", "options": "PH Beratungsvorlage Frage", "reqd": 1, "label": "Fragen"},
+  {"fieldname": "beschreibung", "fieldtype": "Small Text", "label": "Beschreibung"}
+ ],
+ "links": [
+  {"link_doctype": "PH Beratungsgespraech", "link_fieldname": "vorlage", "group": "Gespräche"}
+ ],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH CRM",
+ "name": "PH Beratungsvorlage",
+ "owner": "Administrator",
+ "permissions": [
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "submit": 0, "cancel": 0, "amend": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Backoffice-Admin", "read": 1, "write": 1, "create": 1, "delete": 1, "submit": 0, "cancel": 0, "amend": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Geschäftsführung", "read": 1, "write": 0, "create": 0, "delete": 0, "submit": 0, "cancel": 0, "amend": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH CRM Leitung", "read": 1, "write": 1, "create": 1, "delete": 1, "submit": 0, "cancel": 0, "amend": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH CRM Mitarbeiter", "read": 1, "write": 1, "create": 1, "delete": 0, "submit": 0, "cancel": 0, "amend": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1}
+ ],
+ "sort_field": "vorlage_name",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:vorlage_name",
+ "naming_rule": "By fieldname",
+ "title_field": "vorlage_name",
+ "search_fields": "raumtyp,objektart",
+ "description": "Gesprächsleitfaden je Raumtyp: Fragen werden ins Beratungsprotokoll übernommen (Konzept CRM §3.4)."
+}

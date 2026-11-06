@@ -1,0 +1,170 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Schnelltaste der Kassa (Konzept 10-kassa §9.1): Produkt, Freitext mit vorbelegtem Betrag/Steuersatz (Lieferpauschale, Montage), Anzahlung oder Gutschein – je Kasse oder für alle Kassen.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "kasse",
+  "reihenfolge",
+  "aktion",
+  "produkt",
+  "bezeichnung",
+  "betrag_cent",
+  "steuersatz",
+  "farbe",
+  "bild",
+  "aktiv"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Beschriftung",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kasse",
+   "fieldtype": "Link",
+   "options": "PH Kasse",
+   "label": "Kasse (leer = alle)",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "reihenfolge",
+   "fieldtype": "Int",
+   "label": "Reihenfolge",
+   "default": "10",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "aktion",
+   "fieldtype": "Select",
+   "label": "Aktion",
+   "options": "Produkt\nFreitext\nAnzahlung\nGutschein Verkauf",
+   "default": "Freitext",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "options": "PH Produkt",
+   "label": "Produkt",
+   "depends_on": "eval:doc.aktion=='Produkt'"
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung am Bon"
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Vorbelegter Betrag brutto (Cent)",
+   "description": "0 = Betrag an der Kassa eingeben."
+  },
+  {
+   "fieldname": "steuersatz",
+   "fieldtype": "Select",
+   "label": "Steuersatz",
+   "options": "Normal 20\nErmaessigt-1 10\nErmaessigt-2 13\nNull 0\nBesonders 19\nSteuerfrei",
+   "default": "Normal 20"
+  },
+  {
+   "fieldname": "farbe",
+   "fieldtype": "Color",
+   "label": "Farbe"
+  },
+  {
+   "fieldname": "bild",
+   "fieldtype": "Attach Image",
+   "label": "Bild"
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "1",
+   "in_standard_filter": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Kassa",
+ "name": "PH Kassa Schnelltaste",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "hash",
+ "track_changes": 1,
+ "title_field": "titel",
+ "search_fields": "titel,kasse,aktion",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kassa Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kassa Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  }
+ ]
+}

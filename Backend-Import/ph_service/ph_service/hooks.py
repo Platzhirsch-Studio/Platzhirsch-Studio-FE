@@ -48,13 +48,25 @@ doc_events = {
 scheduler_events = {
     "cron": {
         # 06:30 täglich: Fristenwarnung (Gewährleistung/Regress), Reaktionsfrist, Eskalation ohne Bewegung
-        "30 6 * * *": ["ph_service.ph_service.tasks.fristen_pruefen", "ph_service.ph_service.tasks.eskalation"],
-        # 06:45 täglich: Wartungs-/Pflegeerinnerungen und Nachkauf-Hinweise
-        "45 6 * * *": ["ph_service.ph_service.tasks.wartungserinnerungen"],
+        # + SLA-Zustand neu bewerten und nach Lösungsfrist eskalieren (Leitung, ab Stufe 2 Geschäftsführung)
+        "30 6 * * *": ["ph_service.ph_service.tasks.fristen_pruefen", "ph_service.ph_service.tasks.eskalation", "ph_service.ph_service.tasks.sla_pruefen"],
+        # 06:45 täglich: Wartungs-/Pflegeerinnerungen, Nachkauf-Hinweise, automatische Wartungseinsätze, überfällige Ersatzteile
+        "45 6 * * *": [
+            "ph_service.ph_service.tasks.wartungserinnerungen",
+            "ph_service.ph_service.tasks.wartungseinsaetze_erzeugen",
+            "ph_service.ph_service.tasks.ersatzteile_ueberfaellig",
+            "ph_service.ph_service.tasks.regress_mahnungen",
+        ],
         # 07:00 Mo: Wochenübersicht der Einsätze an die Leitung
         "0 7 * * 1": ["ph_service.ph_service.tasks.wochenuebersicht"],
     }
 }
+
+# Kontakt-Hook-Vertrag von ph_crm (Zeitleiste, DSGVO-Auskunft/Anonymisierung, Dubletten-Zusammenführung).
+ph_kontakt_zeitleiste = ["ph_service.ph_service.kontakt_daten.zeitleiste"]
+ph_kontakt_datenauskunft = ["ph_service.ph_service.kontakt_daten.datenauskunft"]
+ph_kontakt_anonymisieren = ["ph_service.ph_service.kontakt_daten.anonymisieren"]
+ph_kontakt_zusammengefuehrt = ["ph_service.ph_service.kontakt_daten.zusammengefuehrt"]
 
 # Keine eigenen Website-Routen: die Website ist Next.js (platzhirsch.studio).
 website_route_rules = []

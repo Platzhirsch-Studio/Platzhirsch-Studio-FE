@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:stufenname",
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Stufe der Kundenkarte (Stammdaten): Reihenfolge, Schwelle des Umsatzes im Bewertungszeitraum, Farbe für Karte/Wallet, Kundentext und zugeordnete Leistungsvorteile. Höhere Stufen schließen die Vorteile niedrigerer ein.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "stufenname",
+  "reihenfolge",
+  "aktiv",
+  "cb_1",
+  "schwelle_jahresumsatz_cent",
+  "farbe",
+  "sb_text",
+  "beschreibung_kunde",
+  "beschreibung_intern",
+  "sb_vorteile",
+  "vorteile"
+ ],
+ "fields": [
+  {"fieldname": "stufenname", "fieldtype": "Data", "label": "Stufe", "reqd": 1, "unique": 1, "in_list_view": 1, "description": "Neutraler Name ohne Superlative, z. B. Platzhirsch, Platzhirsch Plus, Platzhirsch Privé."},
+  {"fieldname": "reihenfolge", "fieldtype": "Int", "label": "Reihenfolge", "reqd": 1, "in_list_view": 1, "description": "1 = Startstufe. Schwellen müssen mit der Reihenfolge steigen."},
+  {"fieldname": "aktiv", "fieldtype": "Check", "label": "Aktiv", "default": "1", "in_standard_filter": 1},
+  {"fieldname": "cb_1", "fieldtype": "Column Break"},
+  {"fieldname": "schwelle_jahresumsatz_cent", "fieldtype": "Int", "label": "Schwelle Umsatz im Bewertungszeitraum (Cent)", "default": "0", "in_list_view": 1, "non_negative": 1, "description": "0 = Startstufe. Beträge in Cent (10.000 € = 1000000). Festlegung durch die Inhaberin/den Inhaber."},
+  {"fieldname": "farbe", "fieldtype": "Color", "label": "Farbe (Karte, Wallet)", "default": "#30373e"},
+  {"fieldname": "sb_text", "fieldtype": "Section Break", "label": "Texte"},
+  {"fieldname": "beschreibung_kunde", "fieldtype": "Small Text", "label": "Text für Kundinnen und Kunden (Website, Wallet, Begrüßung)", "description": "Sie-Form, keine Rabatte in Euro oder Prozent, keine Superlative."},
+  {"fieldname": "beschreibung_intern", "fieldtype": "Small Text", "label": "Interner Hinweis"},
+  {"fieldname": "sb_vorteile", "fieldtype": "Section Break", "label": "Leistungsvorteile dieser Stufe"},
+  {"fieldname": "vorteile", "fieldtype": "Table", "label": "Vorteile", "options": "PH Kundenkarte Stufe Vorteil"}
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {"link_doctype": "PH Kundenkarte", "link_fieldname": "stufe", "group": "Karten"}
+ ],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Kundenkarte",
+ "name": "PH Kundenkarte Stufe",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Backoffice-Admin", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Geschäftsführung", "read": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Kundenkarte Leitung", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
+  {"role": "PH Kundenkarte Mitarbeiter", "read": 1, "print": 1, "report": 1},
+  {"role": "PH Kassa Mitarbeiter", "read": 1},
+  {"role": "PH Website Integration", "read": 1}
+ ],
+ "search_fields": "stufenname",
+ "sort_field": "reihenfolge",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "stufenname",
+ "track_changes": 1
+}

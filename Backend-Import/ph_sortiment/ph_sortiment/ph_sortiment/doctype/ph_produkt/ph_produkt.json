@@ -63,10 +63,17 @@
   "preisstand_alt",
   "cb_preise",
   "einkaufspreis_cent",
+  "abverkauf",
+  "abverkauf_preis_cent",
+  "abverkauf_seit",
   "grundpreis_einheit",
   "grundpreis_menge",
   "sb_preise",
   "preise",
+  "sb_einkauf",
+  "einkaufspreise",
+  "sb_variantenpreise",
+  "variantenpreise",
   "sb_lieferzeit",
   "lieferzeit_wochen_von",
   "lieferzeit_wochen_bis",
@@ -466,6 +473,25 @@
    "permlevel": 1
   },
   {
+   "fieldname": "abverkauf",
+   "fieldtype": "Check",
+   "label": "Im Abverkauf (Ausstellungsstück)",
+   "depends_on": "eval:doc.typ=='Ausstellungsstueck'"
+  },
+  {
+   "fieldname": "abverkauf_preis_cent",
+   "fieldtype": "Int",
+   "label": "Abverkaufspreis brutto (Cent)",
+   "depends_on": "eval:doc.abverkauf",
+   "description": "Nur mit Freigabe veröffentlichen; Bestand/Standort in PH Lagerbestand (ph_logistik)."
+  },
+  {
+   "fieldname": "abverkauf_seit",
+   "fieldtype": "Date",
+   "label": "Abverkauf seit",
+   "depends_on": "eval:doc.abverkauf"
+  },
+  {
    "fieldname": "grundpreis_einheit",
    "fieldtype": "Select",
    "label": "Grundpreis-Einheit",
@@ -485,6 +511,33 @@
    "fieldtype": "Table",
    "label": "Preise mit Stand und Quelle",
    "options": "PH Produkt Preis"
+  },
+  {
+   "fieldname": "sb_einkauf",
+   "fieldtype": "Section Break",
+   "label": "Einkaufspreise (nur Leitung)",
+   "collapsible": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "einkaufspreise",
+   "fieldtype": "Table",
+   "label": "Einkaufspreise mit Gültigkeit",
+   "options": "PH Produkt Einkaufspreis",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_variantenpreise",
+   "fieldtype": "Section Break",
+   "label": "Variantenpreise / Preisgruppen-Matrix",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "variantenpreise",
+   "fieldtype": "Table",
+   "label": "Variantenpreise",
+   "options": "PH Produkt Variantenpreis",
+   "description": "Hat Vorrang vor Basis + Aufpreisen der abgedeckten Gruppen (logik/kalkulation.variante_preis)."
   },
   {
    "fieldname": "sb_lieferzeit",
@@ -767,7 +820,7 @@
    "group": "Einkauf"
   }
  ],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Sortiment",
  "name": "PH Produkt",
@@ -909,6 +962,141 @@
    "permlevel": 1,
    "read": 1,
    "write": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Faktura Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Kassa Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Kassa Leitung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Service Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
   }
  ],
  "track_changes": 1,

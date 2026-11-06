@@ -1,6 +1,7 @@
 // src/lib/ideenboard/service.js — geteiltes Ideenboard (Server).
-// Speicher: ./localStore.js (.data/ideenboard bzw. IDEENBOARD_LOCAL_DIR).
-// Nichts von hier schreibt ins produktive Backoffice.
+// Speicher: ./localStore.js (.data/ideenboard bzw. IDEENBOARD_LOCAL_DIR) oder
+// mit IDEENBOARD_STORAGE=ph + Gruppe "ideenboard" auf ph ./phAdapter.js
+// (ph_marketing). Ohne diese Schalter schreibt nichts ins Backoffice.
 //
 // Für das Termin-Team: getSharedBoard(shareId) liefert die öffentliche
 // Ansicht (Karten + Stand) oder null – genau das, was /termin?ideenboard=…
@@ -8,7 +9,8 @@
 import "server-only";
 import path from "node:path";
 import { createLocalStore } from "./localStore";
-import { ideenboardShareAvailable } from "./mode";
+import { createPhStore } from "./phAdapter";
+import { ideenboardShareAvailable, phIdeenboardTarget, storageKind } from "./mode";
 import { isToken, matchesHash, newIds, parseAdminToken, randomToken, sha256 } from "./ids";
 import { BoardError, createRecord, isExpired, ownerView, publicView, syncRecord } from "./model";
 
@@ -17,8 +19,10 @@ const ROOT = process.env.IDEENBOARD_LOCAL_DIR
   : path.join(process.cwd(), ".data", "ideenboard");
 
 const STORE_KEY = Symbol.for("platzhirsch.ideenboard.store");
+const PH_STORE_KEY = Symbol.for("platzhirsch.ideenboard.phStore");
 function store() {
   if (!ideenboardShareAvailable()) throw new BoardError("unavailable", 503);
+  if (storageKind() === "ph") return globalThis[PH_STORE_KEY] || (globalThis[PH_STORE_KEY] = createPhStore(phIdeenboardTarget()));
   const s = globalThis[STORE_KEY] || (globalThis[STORE_KEY] = createLocalStore(ROOT));
   maybeSweep(s);
   return s;
@@ -121,5 +125,6 @@ export async function manageShared(token, action, payload = {}) {
       extra.shareId = shareId;
     } else throw new BoardError("bad_action", 400);
   });
+  if (!record) throw new BoardError("not_found", 404);
   return { board: ownerView(record), ...extra };
 }

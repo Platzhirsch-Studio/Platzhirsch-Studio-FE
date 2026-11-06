@@ -1,0 +1,248 @@
+{
+  "produkt": "HubSpot Sales Hub",
+  "url": "https://knowledge.hubspot.com/object-settings/set-up-and-customize-pipelines",
+  "stand": "2026-11-04",
+  "zeichen": 26000,
+  "funktionen": [
+    {
+      "name": "Mehrere Pipelines und Klonen",
+      "beschreibung": "Der Admin legt Pipelines neu oder als Kopie inklusive Regeln und Automationen an.",
+      "bereich": "crm",
+      "nutzen": "Neue Pipeline für das Objektgeschäft aus Vorlage.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/object-settings/set-up-and-customize-pipelines"
+    },
+    {
+      "name": "Phasen verwalten",
+      "beschreibung": "Der Admin fügt Phasen hinzu, benennt, sortiert, färbt und löscht sie.",
+      "bereich": "crm",
+      "nutzen": "Phasen an den Küchenprozess anpassen.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/object-settings/set-up-and-customize-pipelines"
+    },
+    {
+      "name": "Abschlusswahrscheinlichkeit je Phase",
+      "beschreibung": "Der Admin setzt je Phase eine Wahrscheinlichkeit für gewichtete Summen in der Board-Ansicht.",
+      "bereich": "zentrale",
+      "nutzen": "Realistische Umsatzprognose.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/object-settings/set-up-and-customize-pipelines"
+    },
+    {
+      "name": "Pflichtfelder je Phase",
+      "beschreibung": "Bestimmte Eigenschaften müssen vor dem Speichern in einer Phase ausgefüllt sein.",
+      "bereich": "crm",
+      "nutzen": "Ohne Aufmaßdaten kein Angebot.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/object-settings/set-up-and-customize-pipelines"
+    },
+    {
+      "name": "Bedingte Phaseneigenschaften",
+      "beschreibung": "In bestimmten Phasen werden zusätzliche Felder angezeigt.",
+      "bereich": "crm",
+      "nutzen": "Liefertermin erst bei Auftrag abfragen.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/object-settings/set-up-and-customize-pipelines"
+    },
+    {
+      "name": "Phasen-Automationen",
+      "beschreibung": "Der Admin richtet je Pipeline Automationen im Tab Automatisieren ein.",
+      "bereich": "crm",
+      "nutzen": "Aufgabe bei Phasenwechsel.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/object-settings/set-up-and-customize-pipelines"
+    },
+    {
+      "name": "Pipeline-Regeln und Freigabe",
+      "beschreibung": "Der Admin steuert Bearbeitungsrechte und verlangt Genehmigung für Änderungen.",
+      "bereich": "zentrale",
+      "nutzen": "Änderungen nur mit Freigabe.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/object-settings/set-up-and-customize-pipelines"
+    },
+    {
+      "name": "Sequenz: automatische E-Mail",
+      "beschreibung": "Die Sequenz sendet E-Mails automatisch, als neuen Thread oder Antwort.",
+      "bereich": "marketing",
+      "nutzen": "Nachfass-Serie nach der Beratung.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/sequences/create-and-edit-sequences"
+    },
+    {
+      "name": "Sequenz: Anruf- und Aufgabenschritte",
+      "beschreibung": "Der Nutzer fügt manuelle E-Mail-, Anruf- und allgemeine Aufgaben als Schritte ein.",
+      "bereich": "crm",
+      "nutzen": "Strukturierte Nachbetreuung.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/sequences/create-and-edit-sequences"
+    },
+    {
+      "name": "Verzögerungen in Werktagen",
+      "beschreibung": "Der Nutzer setzt Abstände bis 90 Werktage; Versand nur an Werktagen ist abschaltbar.",
+      "bereich": "crm",
+      "nutzen": "Keine Mails am Wochenende.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/sequences/create-and-edit-sequences"
+    },
+    {
+      "name": "Automatisches Austragen",
+      "beschreibung": "Kontakte werden bei Antwort oder Terminbuchung ausgetragen, optional die ganze Firma.",
+      "bereich": "crm",
+      "nutzen": "Kein Nachhaken nach Rückmeldung.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/sequences/create-and-edit-sequences"
+    },
+    {
+      "name": "Sendefenster",
+      "beschreibung": "Der Nutzer legt ein Sendefenster fest; die Versandzeit richtet sich nach bisherigen Öffnungen.",
+      "bereich": "marketing",
+      "nutzen": "Höhere Öffnungsrate.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/sequences/create-and-edit-sequences"
+    },
+    {
+      "name": "Meeting-Links Einzel/Gruppe/Round Robin",
+      "beschreibung": "Der Nutzer erstellt Buchungsseiten für Einzelne, gemeinsame Teamtermine oder Rotation.",
+      "bereich": "crm",
+      "nutzen": "Kunde bucht den nächsten freien Küchenplaner.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/meetings-tool/create-and-edit-scheduling-pages"
+    },
+    {
+      "name": "Verfügbarkeit, Vorlaufzeit, Puffer",
+      "beschreibung": "Der Nutzer stellt Dauer, Wochenfenster, Buchungszeitraum, Mindestvorlauf und Puffer ein.",
+      "bereich": "crm",
+      "nutzen": "Planungsvorlauf garantieren.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/meetings-tool/create-and-edit-scheduling-pages"
+    },
+    {
+      "name": "Formularfragen bei Buchung",
+      "beschreibung": "Der Nutzer fragt Kontakteigenschaften und eigene Fragen ab, mit Captcha und Datenschutztext.",
+      "bereich": "crm",
+      "nutzen": "Raumgröße und Budget vor dem Termin erfassen.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/meetings-tool/create-and-edit-scheduling-pages"
+    },
+    {
+      "name": "Bestätigung und Erinnerungen",
+      "beschreibung": "Der Kunde erhält eine Bestätigungsmail und bis zu drei Erinnerungen.",
+      "bereich": "service",
+      "nutzen": "Weniger No-Shows.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/meetings-tool/create-and-edit-scheduling-pages"
+    },
+    {
+      "name": "Videokonferenz-Link",
+      "beschreibung": "Ein Teams-, Zoom- oder Meet-Link wird automatisch hinzugefügt; zusätzlich ein Ortsfeld.",
+      "bereich": "crm",
+      "nutzen": "Online-Erstberatung.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/meetings-tool/create-and-edit-scheduling-pages"
+    },
+    {
+      "name": "Angebote mit Positionen",
+      "beschreibung": "Der Verkäufer fügt Produkte aus der Bibliothek oder individuelle Positionen hinzu (bis 500).",
+      "bereich": "faktura",
+      "nutzen": "Komplette Küche als ein Angebot.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/quotes/create-and-send-quotes"
+    },
+    {
+      "name": "Positionsrabatte",
+      "beschreibung": "Der Verkäufer gibt Prozent- oder Betragsrabatte je Position.",
+      "bereich": "faktura",
+      "nutzen": "Ausstellungsrabatt gezielt.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/quotes/create-and-send-quotes"
+    },
+    {
+      "name": "Angebotsvorlagen und Ablaufdatum",
+      "beschreibung": "Der Verkäufer wählt eine Vorlage für Branding und setzt ein Ablaufdatum mit Standardfrist.",
+      "bereich": "faktura",
+      "nutzen": "Gültigkeit wegen Herstellerpreisen begrenzen.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/quotes/create-and-send-quotes"
+    },
+    {
+      "name": "E-Signatur, Annahme, Druck",
+      "beschreibung": "Der Kunde unterschreibt elektronisch, nimmt ohne Signatur an oder druckt und unterschreibt; Gegenzeichner möglich.",
+      "bereich": "faktura",
+      "nutzen": "Auftrag digital oder auf Papier.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/quotes/create-and-send-quotes"
+    },
+    {
+      "name": "Online-Zahlung im Angebot",
+      "beschreibung": "Der Kunde zahlt per Karte, Apple Pay oder Google Pay mit Zahlungsbedingungen.",
+      "bereich": "kassa",
+      "nutzen": "Anzahlung direkt mit der Annahme.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/quotes/create-and-send-quotes"
+    },
+    {
+      "name": "Angebotsfreigabe",
+      "beschreibung": "Der Verkäufer reicht Angebote zur Genehmigung ein.",
+      "bereich": "faktura",
+      "nutzen": "Vier-Augen-Prinzip bei Großprojekten.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/quotes/create-and-send-quotes"
+    },
+    {
+      "name": "Angebot als PDF",
+      "beschreibung": "Der Verkäufer lädt das Angebot als PDF herunter.",
+      "bereich": "faktura",
+      "nutzen": "Ablage und Ausdruck.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/quotes/create-and-send-quotes"
+    },
+    {
+      "name": "Aufgaben-Queues",
+      "beschreibung": "Der Nutzer legt Queues an, teilt sie, filtert und speichert sie als Ansicht.",
+      "bereich": "service",
+      "nutzen": "Gemeinsame Queue 'Reklamationen'.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/tasks/use-task-queues"
+    },
+    {
+      "name": "Automatische Aufgaben in Queue",
+      "beschreibung": "Aufgaben aus Workflows und Sequenzen landen automatisch in einer Queue.",
+      "bereich": "service",
+      "nutzen": "Automatische Zuweisung an den Innendienst.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/tasks/use-task-queues"
+    },
+    {
+      "name": "Playbooks mit Inhalten",
+      "beschreibung": "Der Nutzer erstellt Leitfäden mit Text, Links, Snippets, Videos und Aktionen.",
+      "bereich": "crm",
+      "nutzen": "Gesprächsleitfaden Küchenberatung.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/playbooks/use-playbooks"
+    },
+    {
+      "name": "Playbook-Fragen mit Feldupdate",
+      "beschreibung": "Antworten auf Playbook-Fragen werden in Eigenschaften geschrieben.",
+      "bereich": "crm",
+      "nutzen": "Bedarfsanalyse landet strukturiert im CRM.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/playbooks/use-playbooks"
+    },
+    {
+      "name": "Playbook protokollieren und Folgeaufgabe",
+      "beschreibung": "Der Nutzer speichert das Ergebnis auf der Zeitachse und legt eine Folgeaufgabe an.",
+      "bereich": "crm",
+      "nutzen": "Nichts geht verloren.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/playbooks/use-playbooks"
+    },
+    {
+      "name": "Empfehlungsregeln",
+      "beschreibung": "Ein Playbook wird oben am Datensatz angezeigt, wenn Eigenschaften passen.",
+      "bereich": "crm",
+      "nutzen": "Richtiger Leitfaden je Anfrageart.",
+      "quelle": "HubSpot Sales Hub",
+      "url": "https://knowledge.hubspot.com/playbooks/use-playbooks"
+    }
+  ]
+}

@@ -26,6 +26,8 @@ from .see import signer_fuer
 from .signer import SignaturFehler
 
 ROLLEN_STORNO = ("PH Kassa Leitung", "System Manager", "Administrator")
+# Zusatzfelder, die Page/Notbetrieb an erzeuge_beleg übergeben dürfen (alles andere bleibt Kern-Sache)
+ZUSATZFELDER = ("freigabe_von", "freigabe_gruende", "notbeleg_nr", "notbeleg_zeitpunkt", "id_pruefung_art", "id_pruefung_nummer", "id_pruefung_name", "id_pruefung_von")
 # PH Kassenbeleg.belegart → Vorgaben (Betrag 0, keine Positionen)
 LEERE_SUMMEN = {"betrag_normal_cent": 0, "betrag_ermaessigt1_cent": 0, "betrag_ermaessigt2_cent": 0, "betrag_null_cent": 0, "betrag_besonders_cent": 0}
 SUMMEN_ZU_SATZ = {
@@ -188,6 +190,7 @@ def erzeuge_beleg(
     idempotency_key=None,
     quelle="Kassa",
     ignore_permissions=False,
+    zusatz=None,
 ):
     """Signierten PH Kassenbeleg erzeugen (docstatus 1). Liefert das Dokument.
 
@@ -234,6 +237,7 @@ def erzeuge_beleg(
 
     zeit = get_datetime(datum) if datum else now_datetime()
     nummer = cint(stand.belegnummer_zaehler) + 1
+    geschaeftstag = _geschaeftstag(zeit)
     try:
         daten = rksv_beleg.Belegdaten(
             kassen_id=stand.kassen_id,
@@ -293,6 +297,8 @@ def erzeuge_beleg(
             "kundenbeleg_email": kundenbeleg_email,
             "quelle": quelle,
             "idempotency_key": idempotency_key or None,
+            "geschaeftstag": geschaeftstag,
+            **{k: v for k, v in (zusatz or {}).items() if k in ZUSATZFELDER and v not in (None, "")},
             "docstatus": 1,
         }
     )
@@ -301,6 +307,19 @@ def erzeuge_beleg(
     doc.insert(ignore_permissions=ignore_permissions)
     _kasse_fortschreiben(stand, doc, erg)
     return doc
+
+
+def _geschaeftstag(zeit):
+    """Geschäftstag laut Tageswechsel-Uhrzeit (PH Kassa Einstellungen); ohne Einstellung Kalendertag."""
+    from ph_kassa.logik.abschluss import geschaeftstag
+
+    try:
+        from ph_kassa.ph_kassa.doctype.ph_kassa_einstellungen.ph_kassa_einstellungen import einstellungen
+
+        wechsel = einstellungen().get("tageswechsel_uhrzeit")
+    except Exception:  # noqa: BLE001 – Einstellungen noch nicht migriert
+        wechsel = None
+    return geschaeftstag(get_datetime(zeit), wechsel)
 
 
 # ── Abgeleitete Belege ────────────────────────────────────────────────────────
@@ -336,10 +355,17 @@ def schlussbeleg(kasse, quelle="Desk"):
     return nullbeleg(kasse, belegart="Schlussbeleg", quelle=quelle)
 
 
-def storniere_beleg(beleg, grund, bediener=None, quelle="Kassa"):
-    """Gegenbeleg (Stornobeleg, STO) zu einem Standardbeleg. Nur PH Kassa Leitung."""
-    if not set(frappe.get_roles()) & set(ROLLEN_STORNO):
-        frappe.throw(_("Storno nur durch PH Kassa Leitung."), frappe.PermissionError)
+def storniere_beleg(beleg, grund, bediener=None, quelle="Kassa", erlaube_mitarbeiter=False, freigabe_von=None):
+    """Gegenbeleg (Stornobeleg, STO) zu einem Standardbeleg.
+
+    Rechte (Fachkritik 21 P1): PH Kassa Leitung immer; Mitarbeiter nur, wenn der Aufrufer (Kassa-Page) die
+    Regel geprüft hat (eigener Beleg von heute bis `storno_mitarbeiter_bis_cent`) und `erlaube_mitarbeiter=True`
+    setzt, oder mit Leitungsfreigabe per PIN (`freigabe_von` = Leitungs-User, von der Page verifiziert).
+    """
+    rollen = set(frappe.get_roles())
+    if not rollen & set(ROLLEN_STORNO):
+        if not (erlaube_mitarbeiter or freigabe_von) or "PH Kassa Mitarbeiter" not in rollen:
+            frappe.throw(_("Storno nur durch PH Kassa Leitung."), frappe.PermissionError)
     grund = (grund or "").strip()
     if not grund:
         frappe.throw(_("Stornogrund ist Pflicht."), KassaFehler)
@@ -350,6 +376,12 @@ def storniere_beleg(beleg, grund, bediener=None, quelle="Kassa"):
         frappe.throw(_("Belegart {0} kann nicht storniert werden.").format(alt.belegart), KassaFehler)
     if alt.storniert_durch:
         frappe.throw(_("Beleg wurde bereits storniert ({0}).").format(alt.storniert_durch), KassaFehler)
+    for p in alt.positionen:
+        # Verkaufter Gutschein bereits (teilweise) eingelöst → Storno würde Geld für eine verbrauchte Leistung zurückgeben
+        if p.art == "Gutschein Verkauf" and p.gutschein and frappe.db.exists("PH Gutschein", p.gutschein):
+            wert, rest = frappe.db.get_value("PH Gutschein", p.gutschein, ["wert_cent", "rest_cent"]) or (0, 0)
+            if cint(rest) < cint(wert):
+                frappe.throw(_("Gutschein {0} wurde bereits eingelöst – Storno nicht möglich, Restwert bleibt gültig.").format(p.gutschein), KassaFehler)
     positionen = [
         {
             "art": "Storno",
@@ -362,11 +394,13 @@ def storniere_beleg(beleg, grund, bediener=None, quelle="Kassa"):
             "gutschein": p.gutschein,
             "bezug_doctype": "PH Kassenbeleg",
             "bezug": alt.name,
+            "bezug_zeile": p.name,
+            "ursprungsart": p.art,  # UVA-Abgrenzung (ph_faktura.rechenwerk.uva) braucht die Art der Originalzeile
         }
         for p in alt.positionen
     ]
     zahlarten = [
-        {"zahlart": z.zahlart, "betrag_cent": -cint(z.betrag_cent), "gegeben_cent": 0, "retour_cent": 0, "gutschein": z.gutschein, "terminal_payment_intent": z.terminal_payment_intent}
+        {"zahlart": z.zahlart, "betrag_cent": -cint(z.betrag_cent), "gegeben_cent": 0, "retour_cent": 0, "gutschein": z.gutschein, "terminal_payment_intent": z.terminal_payment_intent, "erstattung_von_zahlung": z.zahlung}
         for z in alt.zahlarten
         if cint(z.betrag_cent)
     ]
@@ -384,6 +418,7 @@ def storniere_beleg(beleg, grund, bediener=None, quelle="Kassa"):
         storno_von=alt.name,
         storno_grund=grund,
         quelle=quelle,
+        zusatz={"freigabe_von": freigabe_von, "freigabe_gruende": "Storno" if freigabe_von else None},
     )
     alt.db_set({"storniert_durch": neu.name, "status": "Storniert"}, update_modified=False)
     alt.add_comment("Info", _("Storniert durch {0}: {1}").format(neu.name, grund))

@@ -5,8 +5,29 @@ frappe.ui.form.on("PH Montageauftrag", {
 	refresh(frm) {
 		frm.page.clear_indicator();
 		if (frm.doc.status) frm.page.set_indicator(__(frm.doc.status), PH_MONTAGE_FARBEN[frm.doc.status] || "gray");
+		if (frm.doc.kollisionen) frm.dashboard.set_headline_alert(frappe.utils.escape_html(frm.doc.kollisionen).replace(/
+/g, "<br>"), "orange");
 		if (frm.is_new()) return;
 
+		if (frm.doc.ware_hinweis) frm.dashboard.add_comment(frappe.utils.escape_html(frm.doc.ware_hinweis).replace(/\n/g, "<br>"), "orange", true);
+		frm.add_custom_button(__("Montagezeit vorschlagen"), () => {
+			frm.call({ method: "montagezeit_vorschlagen", doc: frm.doc, args: { uebernehmen: 0 } }).then((r) => {
+				const e = r.message || {};
+				const ohne = (e.ohne_richtwert || []).length ? "<br>" + __("Ohne Richtwert: {0}", [frappe.utils.escape_html(e.ohne_richtwert.join(", "))]) : "";
+				frappe.confirm(__("Vorschlag: {0} h aus {1} Positionen.", [e.stunden, (e.details || []).length]) + ohne + "<br>" + __("Als Leistung übernehmen?"), () =>
+					frm.call({ method: "montagezeit_vorschlagen", doc: frm.doc, args: { uebernehmen: 1 } }).then(() => frm.reload_doc()), () => frm.reload_doc());
+			});
+		}, __("Planung"));
+		frm.add_custom_button(__("Qualifikationen vorschlagen"), () => {
+			frm.call({ method: "qualifikationen_vorschlagen", doc: frm.doc, args: { uebernehmen: 1 }, freeze: true }).then((r) => {
+				const e = r.message || {};
+				frappe.show_alert({ message: __("Benötigt: {0} · geeignet: {1}", [(e.vorschlag || []).join(", ") || "–", (e.geeignet || []).join(", ") || "–"]), indicator: "blue" }, 8);
+				frm.reload_doc();
+			});
+		}, __("Planung"));
+		frm.add_custom_button(__("E-Geräte aus Stückliste"), () => {
+			frm.call({ method: "geraete_aus_stueckliste", doc: frm.doc, freeze: true }).then((r) => { frappe.show_alert({ message: __("{0} Geräte übernommen", [r.message || 0]), indicator: "green" }); frm.reload_doc(); });
+		}, __("Planung"));
 		frm.add_custom_button(__("Unterschrift erfassen"), () => {
 			const d = new frappe.ui.Dialog({
 				title: __("Unterschrift des Kunden"),

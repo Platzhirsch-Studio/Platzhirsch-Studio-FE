@@ -1,0 +1,295 @@
+/* Bereich Faktura im Lounge-Stil (art-direction/lounge.md §3–§9). Nur Token aus globals.css (--color-bo-*, --bo-sh-*,
+   Radien rounded-bo-*), keine Hex-Werte. Gliederung über Fläche, Schatten und Abstand – keine Rahmen als Gliederung. */
+
+.bo-fk-zahl {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Zu tun (§ 3.1): Zeilen als ruhige Flächen, Symbolkreis in Materialfläche, Betrag rechts, genau ein Knopf */
+.bo-fk-zutun {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bo-fk-zutun__zeile {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 64px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  transition: background-color 120ms var(--ease-feder, ease-out), opacity 160ms ease-in, transform 160ms ease-in;
+}
+.bo-fk-zutun__zeile:hover,
+.bo-fk-zutun__zeile:focus-within {
+  background: var(--color-bo-fill);
+}
+.bo-fk-zutun__zeile[data-weg="true"] {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+.bo-fk-zutun__symbol {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 640px) {
+  .bo-fk-zutun__zeile {
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+  .bo-fk-zutun__betrag,
+  .bo-fk-zutun__aktion {
+    grid-column: 2;
+  }
+}
+
+/* Altersband (§ 3.1/§ 3.4): ein Band, Segment = Filter */
+.bo-fk-band {
+  display: flex;
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  gap: 3px;
+  background: transparent;
+}
+.bo-fk-band__seg {
+  min-width: 6px;
+  height: 100%;
+  border-radius: 999px;
+  transition: transform 160ms ease-out, opacity 160ms ease-out;
+}
+.bo-fk-band__seg:hover {
+  transform: scaleY(1.25);
+}
+.bo-fk-legende {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+@media (max-width: 640px) {
+  .bo-fk-legende {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.bo-fk-legende a {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  transition: background-color 120ms ease-out;
+}
+.bo-fk-legende a:hover,
+.bo-fk-legende a[aria-current="true"] {
+  background: var(--color-bo-fill);
+}
+
+/* Stand-Band des Auftrags (§ 4.3): 8 px, Fläche = bezahlt, Schraffur = abgerechnet, Kontur = geliefert */
+.bo-fk-stand {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-bo-fill-2);
+  overflow: hidden;
+}
+.bo-fk-stand__geliefert {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px var(--color-bo-text-soft);
+}
+.bo-fk-stand__abgerechnet {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 999px;
+  background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--color-bo-ink) 40%, transparent) 0 3px, transparent 3px 6px);
+}
+.bo-fk-stand__bezahlt {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 999px;
+  background: var(--color-bo-ink);
+  transition: width 240ms ease-out;
+}
+
+/* Summenblock: Zeilen ohne Linien, maßgebliche Zahl groß und leicht */
+.bo-fk-summen {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  row-gap: 8px;
+  column-gap: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.bo-fk-summen dt {
+  color: var(--color-bo-text-soft);
+  font-size: 14px;
+}
+.bo-fk-summen dd {
+  text-align: right;
+  font-size: 14px;
+}
+.bo-fk-summen [data-stark] {
+  font-weight: 600;
+  color: var(--color-bo-text);
+}
+.bo-fk-summen [data-gross] {
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* Zahlungsbalken in drei Segmenten wie die Entwurfs-Akte (bezahlt Salbei · offen Eiche · Rest Linie) */
+.bo-fk-zahlbalken {
+  display: flex;
+  gap: 4px;
+  height: 6px;
+}
+.bo-fk-zahlbalken span {
+  border-radius: 999px;
+  min-width: 4px;
+}
+
+/* Liste: Signal-Text (nie Sand), Ausgänge mit Pfeil in Tinte */
+.bo-fk-signal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-bo-accent-text);
+  white-space: nowrap;
+}
+.bo-fk-signal[data-art="ueberfaellig"] {
+  color: var(--color-bo-eiche-text);
+}
+
+.bo-fk-kanban-karte {
+  display: block;
+}
+
+/* Kostenzuordnung: eingelassene Zeilen, Differenz als ruhige Pille */
+.bo-fk-kosten-zeile {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr) 92px 140px 40px;
+  gap: 8px;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .bo-fk-kosten-zeile {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+.bo-fk-feld {
+  height: var(--bo-control-h, 40px);
+  border-radius: 12px;
+  background: var(--color-bo-surface-2);
+  padding: 0 12px;
+  font-size: 14px;
+  width: 100%;
+  min-width: 0;
+  color: var(--color-bo-text);
+  outline: none;
+  border: 0;
+  box-shadow: inset 0 0 0 var(--bo-hair, 1px) var(--color-bo-line);
+}
+.bo-fk-feld:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-bo-focus);
+}
+.bo-fk-feld[aria-invalid="true"] {
+  box-shadow: inset 0 0 0 1.5px var(--color-bo-ziegel);
+}
+textarea.bo-fk-feld {
+  height: auto;
+  min-height: 88px;
+  padding: 10px 12px;
+  line-height: 20px;
+}
+.bo-fk-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-bo-text-soft);
+  margin-bottom: 6px;
+}
+.bo-fk-fehler {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-bo-ziegel-text);
+}
+
+/* Fakten im Dialog (Stellen): Bezeichnung links, Wert rechts */
+.bo-fk-fakten {
+  display: grid;
+  grid-template-columns: minmax(112px, max-content) minmax(0, 1fr);
+  gap: 10px 20px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.bo-fk-fakten dt {
+  color: var(--color-bo-text-soft);
+}
+@media (max-width: 480px) {
+  .bo-fk-fakten {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+  .bo-fk-fakten dd {
+    margin-bottom: 8px;
+  }
+}
+
+/* Positionen (Akte): Tabelle in eingelassener Fläche, Alternativen kursiv gedämpft */
+.bo-fk-pos {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+}
+.bo-fk-pos th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--color-bo-text-soft);
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+.bo-fk-pos td {
+  padding: 10px;
+  vertical-align: middle;
+  border-top: var(--bo-hair, 1px) solid var(--color-bo-line);
+}
+.bo-fk-pos tr[data-alternativ] td {
+  color: var(--color-bo-text-faint);
+  font-style: italic;
+}
+.bo-fk-pos .bo-fk-feld {
+  height: 34px;
+  border-radius: 10px;
+}
+
+/* Präsentationsmodus: Schrift eine Stufe größer (Kundenmodus des Fundaments blendet Internes aus) */
+html[data-bo-kundenmodus="an"] .bo-fk-praesentation {
+  font-size: 17px;
+}
+
+/* Erfolgsmoment nur für Stellen/Schlussrechnung/Anzahlung voll (§ 2.9) – Ergebniskarte zeichnet das Häkchen */
+@media (prefers-reduced-motion: reduce) {
+  .bo-fk-zutun__zeile,
+  .bo-fk-stand__bezahlt,
+  .bo-fk-band__seg {
+    transition-duration: 1ms;
+  }
+}
+
+@media print {
+  .bo-fk-nicht-drucken {
+    display: none !important;
+  }
+}

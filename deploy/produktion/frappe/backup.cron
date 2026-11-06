@@ -1,0 +1,7 @@
+# /etc/cron.d/platzhirsch-frappe-backup – Kopie dieser Datei (Pfad /srv/platzhirsch/repo anpassen).
+# Täglich 02:15 Europe/Vienna (Server-Zeitzone: timedatectl set-timezone Europe/Vienna).
+# Zusätzlich macht der Frappe-Scheduler eigene Backups (System Settings → Backups); dieses hier enthält
+# die Dateien und geht offsite.
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+15 2 * * * root /srv/platzhirsch/repo/deploy/produktion/frappe/backup.sh >> /var/log/platzhirsch-frappe-backup.log 2>&1

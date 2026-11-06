@@ -25,7 +25,7 @@ def offene():
     ls = frappe.get_all(
         "PH Lieferschein",
         {"status": ("in", ["Entwurf", "Gepackt"])},
-        ["name", "titel", "status", "lieferart", "kunde_name", "bestellung", "auftrag", "datum", "wunschtermin", "liefer_ort", "liefer_land", "zerbrechlich", "versichern", "teillieferung", "modified"],
+        ["name", "titel", "status", "lieferart", "kunde_name", "bestellung", "auftrag", "datum", "wunschtermin", "liefer_ort", "liefer_land", "zerbrechlich", "versichern", "teillieferung", "zurueckgestellt", "zurueckgestellt_grund", "modified"],
         order_by="status desc, datum asc",
     )
     for l in ls:  # noqa: E741
@@ -155,9 +155,33 @@ def uebergeben(lieferschein, an="Dienstleister"):
 
 
 @frappe.whitelist()
-def abholung_buchen(lieferschein, empfaenger_name, unterschrift=None):
+def abholung_buchen(lieferschein, empfaenger_name, unterschrift=None, abholcode=None):
     _pruefen()
-    return frappe.get_doc("PH Lieferschein", lieferschein).als_zugestellt(empfaenger_name, unterschrift)
+    return frappe.get_doc("PH Lieferschein", lieferschein).als_zugestellt(empfaenger_name, unterschrift, abholcode)
+
+
+@frappe.whitelist()
+def positionen_setzen(lieferschein, stand, idempotency_key=None):
+    """Offline-Puffer: absoluter Pack-Stand je Position (wiederholbar)."""
+    _pruefen()
+    return frappe.get_doc("PH Lieferschein", lieferschein).positionen_setzen(stand, idempotency_key)
+
+
+@frappe.whitelist()
+def position_minus(lieferschein, position):
+    """Abhaken um eins zurücknehmen (statt ganz auf 0)."""
+    _pruefen()
+    ls = frappe.get_doc("PH Lieferschein", lieferschein)
+    for p in ls.positionen:
+        if p.name == position:
+            return ls.positionen_setzen({position: max(int(p.menge_gepackt or 0) - 1, 0)})
+    frappe.throw(_("Position nicht gefunden."))
+
+
+@frappe.whitelist()
+def problem_melden(lieferschein, grund, text=None, fotos=None):
+    _pruefen()
+    return frappe.get_doc("PH Lieferschein", lieferschein).problem_melden(grund, text, fotos)
 
 
 @frappe.whitelist()
@@ -173,4 +197,5 @@ def statistik():
         "probleme": frappe.db.count("PH Sendung", {"status": "Problem"}),
         "heute_gepackt": frappe.db.count("PH Lieferschein", {"gepackt_am": (">=", heute)}),
         "touren_heute": frappe.db.count("PH Tour", {"datum": heute, "status": ("!=", "Abgebrochen")}),
+        "zurueckgestellt": frappe.db.count("PH Lieferschein", {"status": "Entwurf", "zurueckgestellt": 1}),
     }

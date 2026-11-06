@@ -1,0 +1,111 @@
+/* Formular, Speicherleiste, Vorgangsleiste, Verlauf im Lounge-Stil (Team P0-5b; art-direction/lounge.md
+   §4 Radien, §6 Komponenten, §9 Apple-Qualität). Nur Token aus globals.css, keine Hex-Werte.
+   Gliederung über Fläche + Schatten + Abstand, keine Rahmen. Präfix bo-fo- / bo-speicherleiste. */
+
+/* ------------------------------------------------------------------ Abschnitt = Kachel */
+.bo-fo-abschnitt {
+  min-width: 0;
+  padding: var(--bo-kachel-p, 24px);
+  border-radius: var(--radius-bo-kachel, 28px);
+  background: var(--color-bo-surface);
+  box-shadow: var(--bo-sh-tile);
+}
+.bo-fo-abschnitt__titel { margin-bottom: 20px; font-size: 17px; line-height: 24px; font-weight: 600; letter-spacing: -0.012em; }
+.bo-fo-label { display: block; margin-bottom: 6px; font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-fo-hinweis { margin-top: 6px; font-size: 12px; line-height: 16px; color: var(--color-bo-text-faint); overflow-wrap: anywhere; }
+.bo-fo-fehler { margin-top: 6px; display: flex; gap: 6px; align-items: flex-start; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--color-bo-danger-text); }
+
+/* Felder in Formularen: eingelassene Fläche statt Rahmen, Radius 14, Fokus = 2-px-Ring (Lounge „Feld“). */
+.bo-formular .bo-input {
+  border-color: transparent;
+  border-radius: 14px;
+  background: var(--color-bo-surface-2);
+  box-shadow: inset 0 0 0 var(--bo-hair, 1px) var(--color-bo-line);
+}
+.bo-formular .bo-input:hover:not(:disabled):not([readonly]) { border-color: transparent; box-shadow: inset 0 0 0 var(--bo-hair, 1px) var(--color-bo-line-strong); }
+.bo-formular .bo-input:focus,
+.bo-formular .bo-input:focus-visible { background: var(--color-bo-surface); box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-formular .bo-input:disabled,
+.bo-formular .bo-input[readonly] { box-shadow: none; background: var(--color-bo-fill); }
+.bo-formular .bo-input[aria-invalid="true"] { box-shadow: 0 0 0 1.5px var(--color-bo-danger); }
+.bo-formular input[type="checkbox"] { accent-color: var(--color-bo-action); }
+
+/* Reiter des Formulars: Kapsel wie Segment/Unternav, Indikator gleitet (useGleiter). */
+.bo-fo-reiter {
+  position: relative; isolation: isolate;
+  display: inline-flex; gap: 2px; padding: 4px; max-width: 100%;
+  border-radius: 999px; background: var(--color-bo-fill-2);
+  overflow-x: auto; scrollbar-width: none;
+}
+.bo-fo-reiter::-webkit-scrollbar { display: none; }
+.bo-fo-reiter__i {
+  position: relative; z-index: 1; flex: none;
+  height: 36px; padding: 0 16px; border-radius: 999px;
+  font-size: 14px; font-weight: 500; white-space: nowrap; color: var(--color-bo-text-soft);
+  transition: color 200ms ease, transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease);
+}
+.bo-fo-reiter__i:hover:not([aria-selected="true"]) { color: var(--color-bo-text); }
+.bo-fo-reiter__i:active { transform: scale(0.97); transition-duration: var(--bo-dauer-druck, 80ms); }
+.bo-fo-reiter__i[aria-selected="true"] { color: var(--color-bo-action-text); }
+.bo-fo-reiter:not([data-gemessen]) .bo-fo-reiter__i[aria-selected="true"] { background: var(--color-bo-action); box-shadow: var(--bo-sh-ink); }
+.bo-fo-reiter__ind { position: absolute; left: 0; top: 0; z-index: 0; border-radius: 999px; background: var(--color-bo-action); box-shadow: var(--bo-sh-ink); }
+
+/* ------------------------------------------------------------------ Speicherleiste */
+.bo-speicherleiste {
+  position: relative; z-index: 20;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; min-width: 0;
+  padding: 10px 10px 10px 20px;
+  border-radius: 999px;
+  background: var(--color-bo-fill);
+  transition: box-shadow 240ms ease, background-color 240ms ease;
+}
+.bo-speicherleiste.is-haftend {
+  position: sticky; bottom: 16px;
+  background: var(--color-bo-mat-strong);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  backdrop-filter: blur(32px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float);
+  animation: bo-speicher-ein var(--bo-dauer-weich, 420ms) var(--ease-feder-weich, ease-out) both;
+}
+@keyframes bo-speicher-ein { from { transform: translateY(12px); opacity: 0.6; } to { transform: none; opacity: 1; } }
+@media (max-width: 639px) {
+  .bo-speicherleiste { border-radius: 24px; padding: 12px; }
+  .bo-speicherleiste.is-haftend { bottom: 88px; } /* über der Tab-Kapsel der Shell */
+}
+@media print { .bo-speicherleiste { display: none; } }
+
+/* ------------------------------------------------------------------ Vorgangsleiste (WorkflowLeiste) */
+.bo-fo-vorgang {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; min-width: 0;
+  padding: 12px 12px 12px 20px;
+  border-radius: 24px;
+  background: var(--color-bo-surface);
+  box-shadow: var(--bo-sh-card);
+}
+
+/* ------------------------------------------------------------------ Kindtabelle */
+.bo-fo-kind { border-radius: 20px; background: var(--color-bo-surface-2); padding: 4px 4px 8px; }
+.bo-fo-kind table { border-collapse: separate; border-spacing: 0; }
+.bo-fo-kind th { font-size: 12px; font-weight: 500; color: var(--color-bo-text-soft); padding: 10px 8px 8px; text-align: left; white-space: nowrap; }
+.bo-fo-kind td { padding: 4px; vertical-align: top; border-top: var(--bo-hair, 1px) solid var(--color-bo-line); }
+.bo-fo-kind .bo-fo-kind__nr { position: sticky; left: 0; z-index: 1; background: var(--color-bo-surface-2); width: 32px; padding-left: 12px; font-size: 12px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+.bo-fo-kind .bo-input { background: var(--color-bo-surface); }
+
+/* ------------------------------------------------------------------ Verlauf */
+.bo-fo-verlauf__i { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; }
+.bo-fo-verlauf__ico {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 999px;
+  background: var(--color-bo-surface-2); color: var(--color-bo-text-soft);
+}
+.bo-fo-verlauf__ico[data-art="Version"] { background: var(--color-bo-see-soft); color: var(--color-bo-see-text); }
+.bo-fo-verlauf__ico[data-art="Attachment"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-fo-verlauf__ico[data-art="Comment"] { background: var(--color-bo-cognac-soft); color: var(--color-bo-cognac-text); }
+
+@supports (corner-shape: superellipse(1.4)) {
+  .bo-fo-abschnitt, .bo-fo-kind, .bo-fo-vorgang { corner-shape: superellipse(1.35); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bo-speicherleiste.is-haftend { animation: none; }
+  .bo-fo-reiter__i { transition-duration: 1ms; }
+}

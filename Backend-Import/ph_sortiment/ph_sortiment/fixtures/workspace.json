@@ -49,14 +49,18 @@
    {"type": "Link", "label": "PH Lieferant", "link_to": "PH Lieferant", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
    {"type": "Link", "label": "PH Herstellerbestellung", "link_to": "PH Herstellerbestellung", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
    {"type": "Link", "label": "PH Wareneingang", "link_to": "PH Wareneingang", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
-   {"type": "Card Break", "label": "Berichte und Einstellungen", "link_count": 7, "hidden": 0, "onboard": 0},
+   {"type": "Card Break", "label": "Berichte und Einstellungen", "link_count": 11, "hidden": 0, "onboard": 0},
    {"type": "Link", "label": "Preisstand älter als 3 Monate", "link_to": "PH Preisstand aelter als 3 Monate", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
    {"type": "Link", "label": "Produkte ohne Bildfreigabe", "link_to": "PH Produkte ohne Bildfreigabe", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
    {"type": "Link", "label": "Lieferantenbestellungen offen", "link_to": "PH Lieferantenbestellungen offen", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
    {"type": "Link", "label": "AB-Abweichungen", "link_to": "PH AB Abweichungen", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Liefertermin-Änderungen", "link_to": "PH Liefertermin Aenderungen", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "AB-Merker offen", "link_to": "PH AB Merker offen", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Reklamationen je Lieferant", "link_to": "PH Reklamationen je Lieferant", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
    {"type": "Link", "label": "Claims-Prüfung", "link_to": "PH Claims-Pruefung", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
    {"type": "Link", "label": "Liefertermintreue je Lieferant", "link_to": "PH Liefertermintreue je Lieferant", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
-   {"type": "Link", "label": "PH Sortiment Einstellungen", "link_to": "PH Sortiment Einstellungen", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""}
+   {"type": "Link", "label": "PH Sortiment Einstellungen", "link_to": "PH Sortiment Einstellungen", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Wechselkurs Einstellungen", "link_to": "PH Wechselkurs Einstellungen", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""}
   ],
   "roles": [{"role": "PH Sortiment Mitarbeiter"}, {"role": "PH Sortiment Leitung"}, {"role": "PH Geschäftsführung"}]
  }

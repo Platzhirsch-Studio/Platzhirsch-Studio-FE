@@ -17,6 +17,7 @@ _WORKFLOW_ACTIONS = ["Abholbereit melden", "Abgeholt", "Widerruf erfassen", "Zur
 _EMAIL_TEMPLATES = [
     "PH Shop Bestellbestätigung", "PH Shop Abholbereit", "PH Shop Zahlung fehlgeschlagen", "PH Shop Reservierung abgelaufen",
     "PH Gutschein Versand", "PH Widerruf Eingangsbestätigung", "PH Anzahlung erhalten", "PH Anzahlung Zahlungslink", "PH Shop Teamhinweis",
+    "PH Shop Zahlungslink", "PH Shop Versendet",
 ]
 fixtures = [
     {"dt": "Workspace", "filters": [["module", "=", "PH Shop"]]},
@@ -38,13 +39,20 @@ after_install = "ph_shop.install.after_install"
 
 doc_events = {}
 
+# Kundenakte (Hook-Vertrag von ph_crm, s. ph_crm README „Kontakt-Zeitleiste/DSGVO/Zusammenführen“):
+# Zeitleiste, Datenauskunft, Anonymisierung (BAO § 132: 7 Jahre) und Nacharbeit nach Kontakt-Zusammenführung.
+ph_kontakt_zeitleiste = ["ph_shop.ph_shop.kontakt.zeitleiste"]
+ph_kontakt_datenauskunft = ["ph_shop.ph_shop.kontakt.datenauskunft"]
+ph_kontakt_anonymisieren = ["ph_shop.ph_shop.kontakt.anonymisieren"]
+ph_kontakt_zusammengefuehrt = ["ph_shop.ph_shop.kontakt.zusammengefuehrt"]
+
 # Zeiten Europe/Vienna (System Settings). Funktionen: ph_shop/ph_shop/tasks.py
 scheduler_events = {
     "hourly": ["ph_shop.ph_shop.tasks.offene_checkouts_pruefen"],
     "cron": {
         "0 5 * * *": ["ph_shop.ph_shop.tasks.stripe_abgleich"],
-        "0 6 * * *": ["ph_shop.ph_shop.tasks.fristen_pruefen"],
-        "30 3 * * *": ["ph_shop.ph_shop.tasks.ereignisse_aufraeumen"],
+        "0 6 * * *": ["ph_shop.ph_shop.tasks.fristen_pruefen", "ph_shop.ph_shop.tasks.automatisch_abschliessen"],
+        "30 3 * * *": ["ph_shop.ph_shop.tasks.ereignisse_aufraeumen", "ph_shop.ph_shop.tasks.wunschlisten_aufraeumen"],
     },
 }
 
@@ -52,9 +60,12 @@ scheduler_events = {
 #   ph_stripe_art_handler       = [{"kassa": "ph_kassa.stripe.webhook_handler"}]   (metadata.art → eigene Verarbeitung)
 #   ph_shop_rechnung_erstellen  = ["ph_faktura.api.rechnung_aus_bestellung"]        (Button „Rechnung erstellen“, fn(bestellung_doc))
 #   ph_shop_lieferschein_erstellen = ["ph_logistik.api.lieferschein_aus_bestellung"] (Button „Packen“, fn(bestellung_doc))
+#   ph_shop_gutschrift_erstellen   = ["ph_faktura.api.gutschrift_aus_bestellung"]   (Teilerstattung/Teilstorno nach Zahlung,
+#                                    fn(bestellung_doc, erstattung_zeile) → Belegnummer; satz_json = USt je Satz)
 ph_stripe_art_handler = []
 ph_shop_rechnung_erstellen = []
 ph_shop_lieferschein_erstellen = []
+ph_shop_gutschrift_erstellen = []
 
 # Keine eigenen Website-Routen: die Website ist Next.js (platzhirsch.studio).
 website_route_rules = []

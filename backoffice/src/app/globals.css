@@ -1,0 +1,1245 @@
+/* Backoffice-Stylesheet. Gestaltung „Lounge“ (Inhaber-Entscheidungen Nr. 51/53, maßgeblich:
+   Marktresearch/digital/backoffice/art-direction/lounge.md). Tailwind 4 scannt nur backoffice/src
+   (source("..") = Ordner über src/app). Die Platzhirsch-Rohfarben (Level 1) sind aus der Website
+   KOPIERT (Design-Bibel §4/§5), nicht importiert: das Backoffice ist zur Laufzeit ein eigener Dienst.
+   Wo 03-design-system.md visuell abweicht, gilt Lounge (Team P0-2, Fundament v2).
+
+   Schichten:
+   1. @theme static   Rohfarben, Rollen hell (--color-bo-*), Radien, Schatten-Verweise, Federn, Schrift
+   2. :root           Laufzeit-Werte ohne Utility: Schatten-Stufen (--bo-sh-*), Verläufe (Avatar,
+                      Akzentkachel, Fläche), Haarlinie
+   3. Dunkel          System ODER html[data-theme="dark"] – beide Blöcke gleich (Unit-Test)
+   4. Dichte          kompakt (Maus) · komfortabel (Touch/Wahl) · kiosk (fix je Teilbaum)
+   5. Bausteine       .bo-kachel, .bo-akzent, .bo-rund, .bo-pfeil, .bo-knopf, .bo-pille, .bo-av,
+                      .bo-seg, .bo-schalter, .bo-material, .bo-input, Tooltip, Skelett, Charts
+   Schatten bitte über var(--bo-sh-*) bzw. shadow-(--bo-sh-tile) nutzen: Tailwind schreibt
+   Theme-Schatten fest in die Utility, dort greift der Dunkel-Wert sonst nicht. */
+@import "tailwindcss" source("..");
+
+/* Dunkel = System (prefers-color-scheme) ODER Schalter html[data-theme="dark"];
+   html[data-theme="light"] erzwingt hell auch bei dunklem System (03 §1.4, Q-G9).
+   Die Tailwind-Variante `dark:` folgt derselben Regel wie die Token unten. */
+@custom-variant dark {
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+}
+
+@theme static {
+  /* ---- Level 1: Rohfarben der Website (Design-Bibel §4.1) – unverändert */
+  --color-paper: #faf8f4;
+  --color-bone: #f7f5f1;
+  --color-stone: #ece8e1;
+  --color-linen: #e6e1d8;
+  --color-stone-deep: #d8d2c8;
+  --color-pebble: #8a8174;
+  --color-sand: #8a7a66;
+  --color-ink-soft: #5c636a;
+  --color-ink: #30373e;
+  --color-ink-deep: #1f252b;
+  --color-night: #0f1624;
+  --color-walnut: #3f3129;
+  --color-see: #4f6b68;
+  --color-brass-400: #d1b250;
+  --color-brass-500: #9a7a2a;
+  --color-brass-700: #7a5f17;
+  --color-error: #9b2c2c;
+  --color-success: #2f6b4a;
+  --color-notice: #8a5a00;
+  --color-gold-text: #7a5f17;
+  --color-sand-300: #b8a78f;
+  --color-sand-700: #6b5d4b;
+  --color-ink-faint: #646b72;
+
+  /* ---- Lounge-Materialpalette (lounge.md §3) – sparsam, nur mit Bedeutung */
+  --color-kalk: #ebe7e0;
+  --color-cognac: #8f5230;
+  --color-eiche: #b08850;
+  --color-salbei: #6f8a6a;
+  --color-messing: #b8975a;
+  --color-nuss: #6b4a33;
+  --color-travertin: #cdbfa8;
+  --color-ziegel: #b4442c;
+
+  /* ---- Statusfarben (CONVENTIONS §12), jetzt aus den Materialtönen */
+  --color-st-gruen: #6f8a6a;
+  --color-st-orange: #b08850;
+  --color-st-rot: #b4442c;
+  --color-st-blau: #4f6b68;
+  --color-st-orange-text: #69491b;
+  --color-st-gruen-text: #3b5537;
+  --color-st-lila: #b8975a;
+
+  /* ---- Level 2: Rollen hell – Kalk · Travertin · Leinen. Dunkel: siehe unten. */
+  --color-bo-bg: #ebe7e0;
+  --color-bo-surface: #fbfaf8;
+  --color-bo-surface-2: #f4f1ec;
+  --color-bo-surface-3: #ebe7e0;
+  --color-bo-text: #30373e;
+  --color-bo-text-soft: #5b626a; /* 5,9:1 auf Kachel */
+  --color-bo-text-faint: #62686f; /* 5,4:1 auf Kachel, 4,6:1 auf Fläche */
+  --color-bo-line: rgb(48 55 62 / 0.08);
+  --color-bo-line-strong: rgb(48 55 62 / 0.14);
+  --color-bo-accent: #8f5230;
+  --color-bo-accent-text: #7a4120;
+  --color-bo-action: #30373e;
+  --color-bo-action-text: #f8f5f0;
+  --color-bo-action-hover: #3d454d;
+  --color-bo-focus: #8f5230;
+  --color-bo-nav: rgb(250 248 245 / 0.72);
+  --color-bo-nav-text: #30373e;
+  --color-bo-nav-text-soft: #5b626a;
+  --color-bo-nav-active: rgb(48 55 62 / 0.08);
+  --color-bo-danger: #a83f29;
+  --color-bo-ok: #3b5537;
+  --color-bo-warn: #69491b;
+  --color-bo-line-control: rgb(48 55 62 / 0.22);
+  --color-bo-accent-soft: #f4e7dd;
+  --color-bo-action-soft: rgb(48 55 62 / 0.05);
+  --color-bo-selected: rgb(48 55 62 / 0.07);
+  --color-bo-overlay: rgb(20 18 16 / 0.24);
+  --color-bo-overlay-leicht: rgb(20 18 16 / 0.12);
+  --color-bo-warn-soft: #f2e9da;
+  --color-bo-warn-text: #69491b;
+  --color-bo-danger-soft: #f7e3dd;
+  --color-bo-ok-soft: #e4ebe0;
+  --color-bo-testband: #f2e9da;
+  --color-bo-testband-text: #69491b;
+  --color-bo-testband-line: rgb(176 136 80 / 0.4);
+
+  /* Aliasse (03 §1.7), alte Namen bleiben gültig */
+  --color-bo-ink: var(--color-bo-text);
+  --color-bo-ink-soft: var(--color-bo-text-soft);
+  --color-bo-muted: var(--color-bo-text-faint);
+  --color-bo-ink-inverse: #f8f5f0;
+  --color-bo-ink-inverse-soft: #c9c4bb;
+  --color-bo-surface-inverse: #30373e;
+
+  /* Material (Leiste, Kopf, Sheets), Glas (auf Bildern), Füllungen (Felder, Kapseln) */
+  --color-bo-mat: rgb(250 248 245 / 0.72);
+  --color-bo-mat-strong: rgb(250 248 245 / 0.86);
+  --color-bo-mat-edge: rgb(255 255 255 / 0.9);
+  --color-bo-glass: rgb(255 255 255 / 0.62);
+  --color-bo-glass-edge: rgb(255 255 255 / 0.75);
+  --color-bo-fill: rgb(48 55 62 / 0.05);
+  --color-bo-fill-2: rgb(48 55 62 / 0.08);
+  --color-bo-ink-hover: #3d454d;
+
+  /* Materialtöne als weiche Pillen: Punkt (Grundton) · -text (≥ 4,5:1 auf -soft) · -soft (Fläche) */
+  --color-bo-cognac: #a8643a;
+  --color-bo-cognac-text: #7a4120;
+  --color-bo-cognac-soft: #f4e7dd;
+  --color-bo-eiche: #b08850;
+  --color-bo-eiche-text: #69491b;
+  --color-bo-eiche-soft: #f2e9da;
+  --color-bo-salbei: #6f8a6a;
+  --color-bo-salbei-text: #3b5537;
+  --color-bo-salbei-soft: #e4ebe0;
+  --color-bo-messing: #b8975a;
+  --color-bo-messing-text: #634d1d;
+  --color-bo-messing-soft: #f3ecdb;
+  --color-bo-see: #4f6b68;
+  --color-bo-see-text: #2e4a47;
+  --color-bo-see-soft: #e2ebea;
+  --color-bo-stein: #9a9ea3;
+  --color-bo-stein-text: #555a60;
+  --color-bo-stein-soft: #ecebe8;
+  --color-bo-nuss: #6b4a33;
+  --color-bo-nuss-text: #5a3c27;
+  --color-bo-nuss-soft: #eee4dc;
+  --color-bo-travertin: #b9a88d;
+  --color-bo-travertin-text: #5d5040;
+  --color-bo-travertin-soft: #f0ebe2;
+  --color-bo-ziegel: #b4442c;
+  --color-bo-ziegel-text: #8c2f1d;
+  --color-bo-ziegel-soft: #f7e3dd;
+  --color-bo-on-danger: #ffffff;
+
+  /* Status-Rollen = Materialtöne (StatusBadge-Töne: blau→cognac „neu“, tuerkis→see „in Arbeit“,
+     orange→eiche „wartet“, gruen→salbei „erledigt“, lila→messing, grau→stein, rot→ziegel) */
+  --color-bo-success: var(--color-bo-salbei);
+  --color-bo-success-text: var(--color-bo-salbei-text);
+  --color-bo-success-soft: var(--color-bo-salbei-soft);
+  --color-bo-warning: var(--color-bo-eiche);
+  --color-bo-warning-text: var(--color-bo-eiche-text);
+  --color-bo-warning-soft: var(--color-bo-eiche-soft);
+  --color-bo-danger-text: var(--color-bo-ziegel-text);
+  --color-bo-info: var(--color-bo-cognac);
+  --color-bo-info-text: var(--color-bo-cognac-text);
+  --color-bo-info-soft: var(--color-bo-cognac-soft);
+  --color-bo-progress: var(--color-bo-see);
+  --color-bo-progress-text: var(--color-bo-see-text);
+  --color-bo-progress-soft: var(--color-bo-see-soft);
+  --color-bo-special: var(--color-bo-messing);
+  --color-bo-special-text: var(--color-bo-messing-text);
+  --color-bo-special-soft: var(--color-bo-messing-soft);
+  --color-bo-neutral: var(--color-bo-stein);
+  --color-bo-neutral-text: var(--color-bo-stein-text);
+  --color-bo-neutral-soft: var(--color-bo-stein-soft);
+  --color-bo-skeleton: #f4f1ec;
+  --color-bo-skeleton-shine: rgb(255 255 255 / 0.75);
+  --color-bo-disabled-text: #8a9097;
+
+  /* Akzentkacheln (max. 2 je Bildschirm): Schrift; Verläufe als --bo-ak-* in :root */
+  --color-bo-ak-cognac-text: #fbf2ea;
+  --color-bo-ak-cognac-text-2: #f8ece2;
+  --color-bo-ak-salbei-text: #2b3a2a;
+  --color-bo-ak-salbei-text-2: #43553f;
+
+  /* ---- Diagramme: eine Reihe = Tinte; mit Hervorhebung Rest 16 % Tinte, laufend schraffiert */
+  --color-chart-1: #30373e;
+  --color-chart-2: #8f5230;
+  --color-chart-3: #4f6b68;
+  --color-chart-4: #b08850;
+  --color-chart-5: #6f8a6a;
+  --color-chart-seq-1: #e6e0d6;
+  --color-chart-seq-2: #cdbfa8;
+  --color-chart-seq-3: #a8916f;
+  --color-chart-seq-4: #6b5d4b;
+  --color-chart-seq-5: #30373e;
+  --color-chart-negativ: #b4442c;
+  --color-chart-soft: rgb(48 55 62 / 0.16);
+  --color-chart-hi: #8f5230;
+  --color-chart-grid: rgb(48 55 62 / 0.08);
+  --color-chart-axis: rgb(48 55 62 / 0.16);
+
+  /* ---- Schrift: SF auf Apple-Geräten, sonst Inter (opsz), dann Instrument Sans als Rückfall.
+     Bodoni Moda nur für die Wortmarke. */
+  --font-display: var(--font-bodoni), "Bodoni Moda", Didot, Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, var(--font-inter, "Inter"), "Inter", var(--font-instrument, "Instrument Sans"), ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* ---- Radien nach Hierarchie (lounge.md §4): Fenster 32 · Kachel 28 · Karte 20 · Zeile 16 ·
+     Feld/Knopf 12 · Pille rund. Verschachtelt: innen = außen − Innenabstand. */
+  --radius-bo-xs: 6px;
+  --radius-bo: 12px;
+  --radius-bo-lg: 20px;
+  --radius-bo-xl: 28px;
+  --radius-bo-2xl: 32px;
+  --radius-bo-ctl: 12px;
+  --radius-bo-zeile: 16px;
+  --radius-bo-karte: 20px;
+  --radius-bo-kachel: 28px;
+  --radius-bo-fenster: 32px;
+  --radius-pill: 9999px;
+
+  /* Schatten: Verweise auf die Laufzeit-Stufen in :root (hell/dunkel). */
+  --shadow-bo: var(--bo-sh-card);
+  --shadow-bo-xs: var(--bo-sh-btn);
+  --shadow-bo-lg: var(--bo-sh-float);
+  --shadow-bo-drag: var(--bo-sh-drag);
+  --shadow-bo-focus: var(--bo-sh-focus);
+  --shadow-bo-tile: var(--bo-sh-tile);
+  --shadow-bo-lift: var(--bo-sh-lift);
+  --shadow-bo-float: var(--bo-sh-float);
+  --shadow-bo-card: var(--bo-sh-card);
+  --shadow-bo-btn: var(--bo-sh-btn);
+  --shadow-bo-ink: var(--bo-sh-ink);
+
+  /* ---- Bewegung: Grundtakt (04-motion §2.1) + Lounge-Federn (aus der Feder-DGL berechnet,
+     ζ 0,72 für Knöpfe/Indikatoren/Panels, ζ 0,9 für Einblenden). Nur transform/opacity. */
+  --bo-dur-ack: 50ms;
+  --bo-dur-fast: 120ms;
+  --bo-dur-base: 160ms;
+  --bo-dur-move: 200ms;
+  --ease-quiet: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-feder: linear(0, 0.058, 0.193, 0.358, 0.523, 0.67, 0.791, 0.884, 0.951, 0.995, 1.021, 1.034, 1.038, 1.037, 1.032, 1.025, 1.019, 1.013, 1.008, 1.005, 1.002, 1, 0.999, 1);
+  --ease-feder-weich: linear(0, 0.077, 0.237, 0.412, 0.57, 0.699, 0.797, 0.868, 0.918, 0.951, 0.973, 0.986, 0.994, 0.998, 1, 1.001, 1.002, 1.001, 1);
+}
+
+/* ---- Laufzeit-Werte hell (ohne Utility): Schatten-Stufen, Verläufe, Haarlinie, Federdauern */
+:root {
+  color-scheme: light dark;
+  --bo-hair: 1px;
+  --bo-dauer-feder: 620ms;
+  --bo-dauer-weich: 420ms;
+  --bo-dauer-druck: 80ms;
+
+  --bo-canvas-glow: radial-gradient(1200px 640px at 18% -8%, #f7f3ec 0%, rgb(247 243 236 / 0) 70%), radial-gradient(900px 700px at 100% 0%, #efe6d9 0%, rgb(239 230 217 / 0) 60%);
+
+  /* Ebenen – sehr weich, mehrlagig 1/8/24/64, warmes Braun statt Schwarz, keine Rahmen */
+  --bo-sh-tile: 0 0 0 0.5px rgb(60 46 30 / 0.06), 0 1px 2px rgb(60 46 30 / 0.04), 0 8px 24px rgb(60 46 30 / 0.05), 0 24px 64px rgb(60 46 30 / 0.06);
+  --bo-sh-lift: 0 0 0 0.5px rgb(60 46 30 / 0.07), 0 2px 4px rgb(60 46 30 / 0.05), 0 14px 32px rgb(60 46 30 / 0.08), 0 32px 80px rgb(60 46 30 / 0.09);
+  --bo-sh-float: 0 0 0 0.5px rgb(60 46 30 / 0.08), 0 2px 6px rgb(60 46 30 / 0.05), 0 20px 48px rgb(60 46 30 / 0.1), 0 48px 120px rgb(60 46 30 / 0.12);
+  --bo-sh-card: 0 0 0 0.5px rgb(60 46 30 / 0.07), 0 1px 2px rgb(60 46 30 / 0.05), 0 6px 16px rgb(60 46 30 / 0.05);
+  --bo-sh-btn: 0 0 0 0.5px rgb(60 46 30 / 0.08), 0 1px 2px rgb(60 46 30 / 0.06), 0 4px 12px rgb(60 46 30 / 0.05);
+  --bo-sh-ink: 0 1px 2px rgb(20 24 28 / 0.2), 0 8px 20px rgb(20 24 28 / 0.18);
+  --bo-sh-focus: 0 0 0 3px rgb(143 82 48 / 0.22);
+  --bo-sh-drag: 0 0 0 0.5px rgb(60 46 30 / 0.08), 0 16px 40px rgb(60 46 30 / 0.18);
+
+  /* Akzentkacheln */
+  --bo-ak-cognac: linear-gradient(160deg, #9a5a36 0%, #844a29 100%);
+  --bo-ak-salbei: linear-gradient(160deg, #e2e9dc 0%, #d4dfcd 100%);
+
+  /* Avatare: zwei Stufen desselben Materials, dunkle Initialen (AA) */
+  --bo-av-cognac: linear-gradient(145deg, #f0d6c2, #dcac8a);
+  --bo-av-cognac-fg: #6a3517;
+  --bo-av-eiche: linear-gradient(145deg, #f1e3c8, #dcc196);
+  --bo-av-eiche-fg: #5c3f14;
+  --bo-av-salbei: linear-gradient(145deg, #e3ecdd, #bccdb5);
+  --bo-av-salbei-fg: #33502f;
+  --bo-av-messing: linear-gradient(145deg, #f2e8cf, #d9c48f);
+  --bo-av-messing-fg: #5a4512;
+  --bo-av-see: linear-gradient(145deg, #dfeae8, #b3c8c5);
+  --bo-av-see-fg: #284643;
+  --bo-av-nuss: linear-gradient(145deg, #eadbd0, #c9ab96);
+  --bo-av-nuss-fg: #4f3220;
+  --bo-av-travertin: linear-gradient(145deg, #f3ede3, #dccfba);
+  --bo-av-travertin-fg: #54473a;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+/* Haarlinien auf Retina 0,5 px */
+@media (min-resolution: 2dppx) {
+  :root {
+    --bo-hair: 0.5px;
+  }
+}
+
+/* Dunkel: per Systemeinstellung (ohne data-theme="light") ODER per Schalter
+   html[data-theme="dark"]. Beide Blöcke sind absichtlich gleich – bei Änderungen
+   beide pflegen (Unit-Test backoffice-grundbausteine prüft die Gleichheit). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* Lounge dunkel (lounge.md §3): eigens gewählt, nicht invertiert – Fläche fast schwarz
+       mit warmem Schimmer, Kacheln eine Stufe heller, Aktiv-Pille wird hell. */
+    --color-bo-bg: #121416;
+    --color-bo-surface: #1b1e21;
+    --color-bo-surface-2: #222629;
+    --color-bo-surface-3: #2a2e32;
+    --color-bo-text: #efebe5;
+    --color-bo-text-soft: #b1b4b8;
+    --color-bo-text-faint: #969a9f;
+    --color-bo-line: rgb(255 255 255 / 0.07);
+    --color-bo-line-strong: rgb(255 255 255 / 0.12);
+    --color-bo-accent: #d4895b;
+    --color-bo-accent-text: #eab08a;
+    --color-bo-action: #efebe5;
+    --color-bo-action-text: #1a1d20;
+    --color-bo-action-hover: #ffffff;
+    --color-bo-focus: #e2a77f;
+    --color-bo-nav: rgb(30 33 36 / 0.66);
+    --color-bo-nav-text: #efebe5;
+    --color-bo-nav-text-soft: #b1b4b8;
+    --color-bo-nav-active: rgb(255 255 255 / 0.1);
+    --color-bo-danger: #e0735a;
+    --color-bo-ok: #b4cdab;
+    --color-bo-warn: #e3c38f;
+    --color-st-gruen: #8fae88;
+    --color-st-orange: #c9a066;
+    --color-st-rot: #e0735a;
+    --color-st-blau: #79a19c;
+    --color-st-orange-text: #e3c38f;
+    --color-st-gruen-text: #b4cdab;
+    --color-st-lila: #c9aa69;
+    --color-bo-line-control: rgb(255 255 255 / 0.22);
+    --color-bo-accent-soft: rgb(196 120 74 / 0.18);
+    --color-bo-action-soft: rgb(255 255 255 / 0.06);
+    --color-bo-selected: rgb(255 255 255 / 0.08);
+    --color-bo-overlay: rgb(0 0 0 / 0.5);
+    --color-bo-overlay-leicht: rgb(0 0 0 / 0.3);
+    --color-bo-warn-soft: rgb(196 156 96 / 0.17);
+    --color-bo-warn-text: #e3c38f;
+    --color-bo-danger-soft: rgb(208 96 72 / 0.2);
+    --color-bo-ok-soft: rgb(130 160 124 / 0.18);
+    --color-bo-testband: rgb(196 156 96 / 0.17);
+    --color-bo-testband-text: #e3c38f;
+    --color-bo-testband-line: rgb(201 160 102 / 0.32);
+    --color-bo-ink-inverse: #1a1d20;
+    --color-bo-ink-inverse-soft: #4a4f55;
+    --color-bo-surface-inverse: #efebe5;
+
+    /* Material, Glas, Füllungen */
+    --color-bo-mat: rgb(30 33 36 / 0.66);
+    --color-bo-mat-strong: rgb(30 33 36 / 0.84);
+    --color-bo-mat-edge: rgb(255 255 255 / 0.08);
+    --color-bo-glass: rgb(24 26 29 / 0.52);
+    --color-bo-glass-edge: rgb(255 255 255 / 0.14);
+    --color-bo-fill: rgb(255 255 255 / 0.06);
+    --color-bo-fill-2: rgb(255 255 255 / 0.1);
+    --color-bo-ink-hover: #ffffff;
+
+    /* Materialtöne als weiche Pillen: Punkt · Schrift · Fläche */
+    --color-bo-cognac: #d4895b;
+    --color-bo-cognac-text: #eab08a;
+    --color-bo-cognac-soft: rgb(196 120 74 / 0.18);
+    --color-bo-eiche: #c9a066;
+    --color-bo-eiche-text: #e3c38f;
+    --color-bo-eiche-soft: rgb(196 156 96 / 0.17);
+    --color-bo-salbei: #8fae88;
+    --color-bo-salbei-text: #b4cdab;
+    --color-bo-salbei-soft: rgb(130 160 124 / 0.18);
+    --color-bo-messing: #c9aa69;
+    --color-bo-messing-text: #e2c98f;
+    --color-bo-messing-soft: rgb(200 168 104 / 0.17);
+    --color-bo-see: #79a19c;
+    --color-bo-see-text: #a9cbc6;
+    --color-bo-see-soft: rgb(110 150 146 / 0.19);
+    --color-bo-stein: #8d9196;
+    --color-bo-stein-text: #c2c5c9;
+    --color-bo-stein-soft: rgb(255 255 255 / 0.08);
+    --color-bo-nuss: #a8775a;
+    --color-bo-nuss-text: #d9b49a;
+    --color-bo-nuss-soft: rgb(160 112 80 / 0.2);
+    --color-bo-travertin: #b9a88d;
+    --color-bo-travertin-text: #ddd0bb;
+    --color-bo-travertin-soft: rgb(205 191 168 / 0.13);
+    --color-bo-ziegel: #e0735a;
+    --color-bo-ziegel-text: #f2a593;
+    --color-bo-ziegel-soft: rgb(208 96 72 / 0.2);
+    --color-bo-on-danger: #1a1d20;
+
+    /* Status-Rollen = Materialtöne (Fortschritt: stein → cognac → see → eiche → salbei; ziegel nur Problem) */
+    --color-bo-success: var(--color-bo-salbei);
+    --color-bo-success-text: var(--color-bo-salbei-text);
+    --color-bo-success-soft: var(--color-bo-salbei-soft);
+    --color-bo-warning: var(--color-bo-eiche);
+    --color-bo-warning-text: var(--color-bo-eiche-text);
+    --color-bo-warning-soft: var(--color-bo-eiche-soft);
+    --color-bo-danger-text: var(--color-bo-ziegel-text);
+    --color-bo-info: var(--color-bo-cognac);
+    --color-bo-info-text: var(--color-bo-cognac-text);
+    --color-bo-info-soft: var(--color-bo-cognac-soft);
+    --color-bo-progress: var(--color-bo-see);
+    --color-bo-progress-text: var(--color-bo-see-text);
+    --color-bo-progress-soft: var(--color-bo-see-soft);
+    --color-bo-special: var(--color-bo-messing);
+    --color-bo-special-text: var(--color-bo-messing-text);
+    --color-bo-special-soft: var(--color-bo-messing-soft);
+    --color-bo-neutral: var(--color-bo-stein);
+    --color-bo-neutral-text: var(--color-bo-stein-text);
+    --color-bo-neutral-soft: var(--color-bo-stein-soft);
+    --color-bo-skeleton: #222629;
+    --color-bo-skeleton-shine: rgb(255 255 255 / 0.06);
+    --color-bo-disabled-text: #6f747a;
+
+    /* Akzentkacheln */
+    --color-bo-ak-cognac-text: #fbf0e7;
+    --color-bo-ak-cognac-text-2: #f2dccb;
+    --color-bo-ak-salbei-text: #e6efe0;
+    --color-bo-ak-salbei-text-2: #bdd0b5;
+    --bo-ak-cognac: linear-gradient(160deg, #8e5232 0%, #6f3e24 100%);
+    --bo-ak-salbei: linear-gradient(160deg, #34412f 0%, #2a3527 100%);
+
+    /* Avatare: zwei Stufen desselben Materials, helle Initialen */
+    --bo-av-cognac: linear-gradient(145deg, #6e4128, #4e2d1b);
+    --bo-av-cognac-fg: #f6d5bf;
+    --bo-av-eiche: linear-gradient(145deg, #6c5532, #4c3b22);
+    --bo-av-eiche-fg: #f2dfbb;
+    --bo-av-salbei: linear-gradient(145deg, #4a5c47, #354233);
+    --bo-av-salbei-fg: #dcebd5;
+    --bo-av-messing: linear-gradient(145deg, #6b5a33, #4b3f24);
+    --bo-av-messing-fg: #f3e5bf;
+    --bo-av-see: linear-gradient(145deg, #3f5755, #2d3e3c);
+    --bo-av-see-fg: #d3e7e4;
+    --bo-av-nuss: linear-gradient(145deg, #5a4030, #3f2d22);
+    --bo-av-nuss-fg: #ecd6c6;
+    --bo-av-travertin: linear-gradient(145deg, #5c544a, #403b34);
+    --bo-av-travertin-fg: #efe6d8;
+
+    /* Diagramme: eine Reihe = Tinte, Rest 16 %, Hervorhebung Cognac nur als Zweitfarbe */
+    --color-chart-1: #efebe5;
+    --color-chart-2: #d4895b;
+    --color-chart-3: #79a19c;
+    --color-chart-4: #c9a066;
+    --color-chart-5: #8fae88;
+    --color-chart-seq-1: #2a2e32;
+    --color-chart-seq-2: #4f4b45;
+    --color-chart-seq-3: #8a7a66;
+    --color-chart-seq-4: #c4b49b;
+    --color-chart-seq-5: #efebe5;
+    --color-chart-negativ: #e0735a;
+    --color-chart-soft: rgb(255 255 255 / 0.16);
+    --color-chart-hi: #d4895b;
+    --color-chart-grid: rgb(255 255 255 / 0.07);
+    --color-chart-axis: rgb(255 255 255 / 0.14);
+
+    /* Fläche mit Eiche-/Salbei-Schimmer */
+    --bo-canvas-glow: radial-gradient(1100px 620px at 16% -10%, rgb(176 136 80 / 0.1) 0%, rgb(176 136 80 / 0) 70%), radial-gradient(900px 700px at 100% 0%, rgb(111 138 106 / 0.07) 0%, rgb(111 138 106 / 0) 60%);
+
+    /* Ebenen: Schwarz 22–42 % plus 0,5-px-Innenlichtkante oben */
+    --bo-sh-tile: 0 0 0 0.5px rgb(255 255 255 / 0.06), inset 0 0.5px 0 rgb(255 255 255 / 0.06), 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px rgb(0 0 0 / 0.28), 0 32px 80px rgb(0 0 0 / 0.22);
+    --bo-sh-lift: 0 0 0 0.5px rgb(255 255 255 / 0.09), inset 0 0.5px 0 rgb(255 255 255 / 0.08), 0 2px 4px rgb(0 0 0 / 0.32), 0 18px 40px rgb(0 0 0 / 0.34), 0 40px 96px rgb(0 0 0 / 0.28);
+    --bo-sh-float: 0 0 0 0.5px rgb(255 255 255 / 0.09), inset 0 0.5px 0 rgb(255 255 255 / 0.08), 0 2px 6px rgb(0 0 0 / 0.35), 0 24px 56px rgb(0 0 0 / 0.42), 0 56px 128px rgb(0 0 0 / 0.36);
+    --bo-sh-card: 0 0 0 0.5px rgb(255 255 255 / 0.06), 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 16px rgb(0 0 0 / 0.18);
+    --bo-sh-btn: 0 0 0 0.5px rgb(255 255 255 / 0.08), inset 0 0.5px 0 rgb(255 255 255 / 0.06), 0 1px 2px rgb(0 0 0 / 0.3);
+    --bo-sh-ink: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 20px rgb(0 0 0 / 0.3);
+    --bo-sh-focus: 0 0 0 3px rgb(226 167 127 / 0.3);
+    --bo-sh-drag: 0 0 0 0.5px rgb(255 255 255 / 0.1), 0 16px 40px rgb(0 0 0 / 0.5);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  /* Lounge dunkel (lounge.md §3): eigens gewählt, nicht invertiert – Fläche fast schwarz
+     mit warmem Schimmer, Kacheln eine Stufe heller, Aktiv-Pille wird hell. */
+  --color-bo-bg: #121416;
+  --color-bo-surface: #1b1e21;
+  --color-bo-surface-2: #222629;
+  --color-bo-surface-3: #2a2e32;
+  --color-bo-text: #efebe5;
+  --color-bo-text-soft: #b1b4b8;
+  --color-bo-text-faint: #969a9f;
+  --color-bo-line: rgb(255 255 255 / 0.07);
+  --color-bo-line-strong: rgb(255 255 255 / 0.12);
+  --color-bo-accent: #d4895b;
+  --color-bo-accent-text: #eab08a;
+  --color-bo-action: #efebe5;
+  --color-bo-action-text: #1a1d20;
+  --color-bo-action-hover: #ffffff;
+  --color-bo-focus: #e2a77f;
+  --color-bo-nav: rgb(30 33 36 / 0.66);
+  --color-bo-nav-text: #efebe5;
+  --color-bo-nav-text-soft: #b1b4b8;
+  --color-bo-nav-active: rgb(255 255 255 / 0.1);
+  --color-bo-danger: #e0735a;
+  --color-bo-ok: #b4cdab;
+  --color-bo-warn: #e3c38f;
+  --color-st-gruen: #8fae88;
+  --color-st-orange: #c9a066;
+  --color-st-rot: #e0735a;
+  --color-st-blau: #79a19c;
+  --color-st-orange-text: #e3c38f;
+  --color-st-gruen-text: #b4cdab;
+  --color-st-lila: #c9aa69;
+  --color-bo-line-control: rgb(255 255 255 / 0.22);
+  --color-bo-accent-soft: rgb(196 120 74 / 0.18);
+  --color-bo-action-soft: rgb(255 255 255 / 0.06);
+  --color-bo-selected: rgb(255 255 255 / 0.08);
+  --color-bo-overlay: rgb(0 0 0 / 0.5);
+  --color-bo-overlay-leicht: rgb(0 0 0 / 0.3);
+  --color-bo-warn-soft: rgb(196 156 96 / 0.17);
+  --color-bo-warn-text: #e3c38f;
+  --color-bo-danger-soft: rgb(208 96 72 / 0.2);
+  --color-bo-ok-soft: rgb(130 160 124 / 0.18);
+  --color-bo-testband: rgb(196 156 96 / 0.17);
+  --color-bo-testband-text: #e3c38f;
+  --color-bo-testband-line: rgb(201 160 102 / 0.32);
+  --color-bo-ink-inverse: #1a1d20;
+  --color-bo-ink-inverse-soft: #4a4f55;
+  --color-bo-surface-inverse: #efebe5;
+
+  /* Material, Glas, Füllungen */
+  --color-bo-mat: rgb(30 33 36 / 0.66);
+  --color-bo-mat-strong: rgb(30 33 36 / 0.84);
+  --color-bo-mat-edge: rgb(255 255 255 / 0.08);
+  --color-bo-glass: rgb(24 26 29 / 0.52);
+  --color-bo-glass-edge: rgb(255 255 255 / 0.14);
+  --color-bo-fill: rgb(255 255 255 / 0.06);
+  --color-bo-fill-2: rgb(255 255 255 / 0.1);
+  --color-bo-ink-hover: #ffffff;
+
+  /* Materialtöne als weiche Pillen: Punkt · Schrift · Fläche */
+  --color-bo-cognac: #d4895b;
+  --color-bo-cognac-text: #eab08a;
+  --color-bo-cognac-soft: rgb(196 120 74 / 0.18);
+  --color-bo-eiche: #c9a066;
+  --color-bo-eiche-text: #e3c38f;
+  --color-bo-eiche-soft: rgb(196 156 96 / 0.17);
+  --color-bo-salbei: #8fae88;
+  --color-bo-salbei-text: #b4cdab;
+  --color-bo-salbei-soft: rgb(130 160 124 / 0.18);
+  --color-bo-messing: #c9aa69;
+  --color-bo-messing-text: #e2c98f;
+  --color-bo-messing-soft: rgb(200 168 104 / 0.17);
+  --color-bo-see: #79a19c;
+  --color-bo-see-text: #a9cbc6;
+  --color-bo-see-soft: rgb(110 150 146 / 0.19);
+  --color-bo-stein: #8d9196;
+  --color-bo-stein-text: #c2c5c9;
+  --color-bo-stein-soft: rgb(255 255 255 / 0.08);
+  --color-bo-nuss: #a8775a;
+  --color-bo-nuss-text: #d9b49a;
+  --color-bo-nuss-soft: rgb(160 112 80 / 0.2);
+  --color-bo-travertin: #b9a88d;
+  --color-bo-travertin-text: #ddd0bb;
+  --color-bo-travertin-soft: rgb(205 191 168 / 0.13);
+  --color-bo-ziegel: #e0735a;
+  --color-bo-ziegel-text: #f2a593;
+  --color-bo-ziegel-soft: rgb(208 96 72 / 0.2);
+  --color-bo-on-danger: #1a1d20;
+
+  /* Status-Rollen = Materialtöne (Fortschritt: stein → cognac → see → eiche → salbei; ziegel nur Problem) */
+  --color-bo-success: var(--color-bo-salbei);
+  --color-bo-success-text: var(--color-bo-salbei-text);
+  --color-bo-success-soft: var(--color-bo-salbei-soft);
+  --color-bo-warning: var(--color-bo-eiche);
+  --color-bo-warning-text: var(--color-bo-eiche-text);
+  --color-bo-warning-soft: var(--color-bo-eiche-soft);
+  --color-bo-danger-text: var(--color-bo-ziegel-text);
+  --color-bo-info: var(--color-bo-cognac);
+  --color-bo-info-text: var(--color-bo-cognac-text);
+  --color-bo-info-soft: var(--color-bo-cognac-soft);
+  --color-bo-progress: var(--color-bo-see);
+  --color-bo-progress-text: var(--color-bo-see-text);
+  --color-bo-progress-soft: var(--color-bo-see-soft);
+  --color-bo-special: var(--color-bo-messing);
+  --color-bo-special-text: var(--color-bo-messing-text);
+  --color-bo-special-soft: var(--color-bo-messing-soft);
+  --color-bo-neutral: var(--color-bo-stein);
+  --color-bo-neutral-text: var(--color-bo-stein-text);
+  --color-bo-neutral-soft: var(--color-bo-stein-soft);
+  --color-bo-skeleton: #222629;
+  --color-bo-skeleton-shine: rgb(255 255 255 / 0.06);
+  --color-bo-disabled-text: #6f747a;
+
+  /* Akzentkacheln */
+  --color-bo-ak-cognac-text: #fbf0e7;
+  --color-bo-ak-cognac-text-2: #f2dccb;
+  --color-bo-ak-salbei-text: #e6efe0;
+  --color-bo-ak-salbei-text-2: #bdd0b5;
+  --bo-ak-cognac: linear-gradient(160deg, #8e5232 0%, #6f3e24 100%);
+  --bo-ak-salbei: linear-gradient(160deg, #34412f 0%, #2a3527 100%);
+
+  /* Avatare: zwei Stufen desselben Materials, helle Initialen */
+  --bo-av-cognac: linear-gradient(145deg, #6e4128, #4e2d1b);
+  --bo-av-cognac-fg: #f6d5bf;
+  --bo-av-eiche: linear-gradient(145deg, #6c5532, #4c3b22);
+  --bo-av-eiche-fg: #f2dfbb;
+  --bo-av-salbei: linear-gradient(145deg, #4a5c47, #354233);
+  --bo-av-salbei-fg: #dcebd5;
+  --bo-av-messing: linear-gradient(145deg, #6b5a33, #4b3f24);
+  --bo-av-messing-fg: #f3e5bf;
+  --bo-av-see: linear-gradient(145deg, #3f5755, #2d3e3c);
+  --bo-av-see-fg: #d3e7e4;
+  --bo-av-nuss: linear-gradient(145deg, #5a4030, #3f2d22);
+  --bo-av-nuss-fg: #ecd6c6;
+  --bo-av-travertin: linear-gradient(145deg, #5c544a, #403b34);
+  --bo-av-travertin-fg: #efe6d8;
+
+  /* Diagramme: eine Reihe = Tinte, Rest 16 %, Hervorhebung Cognac nur als Zweitfarbe */
+  --color-chart-1: #efebe5;
+  --color-chart-2: #d4895b;
+  --color-chart-3: #79a19c;
+  --color-chart-4: #c9a066;
+  --color-chart-5: #8fae88;
+  --color-chart-seq-1: #2a2e32;
+  --color-chart-seq-2: #4f4b45;
+  --color-chart-seq-3: #8a7a66;
+  --color-chart-seq-4: #c4b49b;
+  --color-chart-seq-5: #efebe5;
+  --color-chart-negativ: #e0735a;
+  --color-chart-soft: rgb(255 255 255 / 0.16);
+  --color-chart-hi: #d4895b;
+  --color-chart-grid: rgb(255 255 255 / 0.07);
+  --color-chart-axis: rgb(255 255 255 / 0.14);
+
+  /* Fläche mit Eiche-/Salbei-Schimmer */
+  --bo-canvas-glow: radial-gradient(1100px 620px at 16% -10%, rgb(176 136 80 / 0.1) 0%, rgb(176 136 80 / 0) 70%), radial-gradient(900px 700px at 100% 0%, rgb(111 138 106 / 0.07) 0%, rgb(111 138 106 / 0) 60%);
+
+  /* Ebenen: Schwarz 22–42 % plus 0,5-px-Innenlichtkante oben */
+  --bo-sh-tile: 0 0 0 0.5px rgb(255 255 255 / 0.06), inset 0 0.5px 0 rgb(255 255 255 / 0.06), 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px rgb(0 0 0 / 0.28), 0 32px 80px rgb(0 0 0 / 0.22);
+  --bo-sh-lift: 0 0 0 0.5px rgb(255 255 255 / 0.09), inset 0 0.5px 0 rgb(255 255 255 / 0.08), 0 2px 4px rgb(0 0 0 / 0.32), 0 18px 40px rgb(0 0 0 / 0.34), 0 40px 96px rgb(0 0 0 / 0.28);
+  --bo-sh-float: 0 0 0 0.5px rgb(255 255 255 / 0.09), inset 0 0.5px 0 rgb(255 255 255 / 0.08), 0 2px 6px rgb(0 0 0 / 0.35), 0 24px 56px rgb(0 0 0 / 0.42), 0 56px 128px rgb(0 0 0 / 0.36);
+  --bo-sh-card: 0 0 0 0.5px rgb(255 255 255 / 0.06), 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 16px rgb(0 0 0 / 0.18);
+  --bo-sh-btn: 0 0 0 0.5px rgb(255 255 255 / 0.08), inset 0 0.5px 0 rgb(255 255 255 / 0.06), 0 1px 2px rgb(0 0 0 / 0.3);
+  --bo-sh-ink: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 20px rgb(0 0 0 / 0.3);
+  --bo-sh-focus: 0 0 0 3px rgb(226 167 127 / 0.3);
+  --bo-sh-drag: 0 0 0 0.5px rgb(255 255 255 / 0.1), 0 16px 40px rgb(0 0 0 / 0.5);
+}
+
+/* ---- Dichte (03 §4, Q-G6, M-06): kompakt bei feinem Zeiger, komfortabel bei Touch,
+   per html[data-dichte="kompakt"|"komfortabel"] wählbar (DichteSchalter in Segment.js).
+   [data-dichte="kiosk"] gilt für jeden Teilbaum (KioskShell) und ist fix.
+   Nutzung in Komponenten: min-h-(--bo-control-h), h-(--bo-row-h), p-(--bo-card-p) …
+   Lounge-Maße: Kachel-Innenabstand 24 (dicht 20), Rundknopf 40/44, Segment-Kapsel 40/44. */
+:root,
+[data-dichte="kompakt"] {
+  --bo-row-h: 36px;
+  --bo-control-h-s: 28px;
+  --bo-control-h: 32px;
+  --bo-control-h-l: 40px;
+  --bo-key-h: 64px;
+  --bo-cell-px: 12px;
+  --bo-card-p: 16px;
+  --bo-font-table: 13px;
+  --bo-gap: 16px;
+  --bo-segment-h: 40px;
+  --bo-font-body: 14px;
+  --bo-kachel-p: 24px;
+  --bo-kachel-p-dicht: 20px;
+  --bo-bento-gap: 24px;
+  --bo-rund: 40px;
+  --bo-rund-s: 32px;
+  --bo-pille-h: 26px;
+}
+@media (pointer: coarse) {
+  :root:not([data-dichte]) {
+    --bo-row-h: 44px;
+    --bo-control-h-s: 32px;
+    --bo-control-h: 40px;
+    --bo-control-h-l: 48px;
+    --bo-cell-px: 16px;
+    --bo-card-p: 20px;
+    --bo-font-table: 14px;
+    --bo-gap: 24px;
+    --bo-segment-h: 44px;
+    --bo-font-body: 15px;
+    --bo-rund: 44px;
+    --bo-rund-s: 40px;
+    --bo-pille-h: 28px;
+  }
+}
+[data-dichte="komfortabel"] {
+  --bo-row-h: 44px;
+  --bo-control-h-s: 32px;
+  --bo-control-h: 40px;
+  --bo-control-h-l: 48px;
+  --bo-cell-px: 16px;
+  --bo-card-p: 20px;
+  --bo-font-table: 14px;
+  --bo-gap: 24px;
+  --bo-segment-h: 44px;
+  --bo-font-body: 15px;
+  --bo-rund: 44px;
+  --bo-rund-s: 40px;
+  --bo-pille-h: 28px;
+}
+[data-dichte="kiosk"] {
+  --bo-row-h: 56px;
+  --bo-control-h-s: 44px;
+  --bo-control-h: 48px;
+  --bo-control-h-l: 56px;
+  --bo-key-h: 64px;
+  --bo-cell-px: 16px;
+  --bo-card-p: 20px;
+  --bo-font-table: 16px;
+  --bo-gap: 16px;
+  --bo-segment-h: 52px;
+  --bo-font-body: 16px;
+  --bo-kachel-p: 20px;
+  --bo-kachel-p-dicht: 16px;
+  --bo-bento-gap: 16px;
+  --bo-rund: 48px;
+  --bo-rund-s: 44px;
+  --bo-pille-h: 32px;
+}
+
+html,
+body {
+  background-color: var(--color-bo-bg);
+  color: var(--color-bo-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Kalk-Fläche mit zwei weichen Licht-Verläufen (Leinen/Travertin), dunkel mit Schimmer. */
+body {
+  background-image: var(--bo-canvas-glow);
+  background-attachment: fixed;
+  font-size: var(--bo-font-body, 14px);
+  line-height: 1.45;
+  letter-spacing: -0.006em;
+  font-feature-settings: "cv11", "ss01", "ss03";
+  font-optical-sizing: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Fokus sichtbar (WCAG 2.4.7): ein Ring für alles, Cognac. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-bo-focus);
+  outline-offset: 2px;
+}
+
+/* Komponentenklassen in @layer components: Tailwind-Utilities (w-*, p-*, min-h-*) überschreiben sie. */
+@layer components {
+/* Wortmarke in Bodoni Moda, gesperrt 0,3 em – einzige Serifenstelle. */
+.bo-wortmarke {
+  font-family: var(--font-display);
+  letter-spacing: 0.3em;
+  font-weight: 500;
+  font-optical-sizing: auto;
+}
+
+/* Typo-Skala (lounge.md §5). Höchstens drei Größen je Kachel. */
+.bo-gruss { font-size: 56px; line-height: 60px; font-weight: 300; letter-spacing: -0.035em; color: var(--color-bo-text-soft); }
+.bo-titel-gross { font-size: 34px; line-height: 40px; font-weight: 600; letter-spacing: -0.022em; }
+.bo-titel { font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: -0.016em; }
+.bo-titel-kachel { font-size: 17px; line-height: 24px; font-weight: 600; letter-spacing: -0.012em; }
+.bo-unterzeile { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-zahl-gross { font-size: 34px; line-height: 36px; font-weight: 400; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.bo-zahl-akzent { font-size: 64px; line-height: 56px; font-weight: 300; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+
+/* Material: durchscheinend, Inhalte laufen sichtbar darunter durch, 0,5-px-Lichtkante oben. */
+.bo-material {
+  background: var(--color-bo-mat);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  backdrop-filter: blur(32px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float);
+}
+.bo-material-stark {
+  background: var(--color-bo-mat-strong);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float);
+}
+.bo-glas {
+  background: var(--color-bo-glass);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-glass-edge);
+}
+
+/* ---- Kachel (Radius 28, Innenabstand 24/20, ohne Rahmen, nur weicher Schatten) */
+.bo-kachel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--bo-kachel-p);
+  border-radius: var(--radius-bo-kachel);
+  background: var(--color-bo-surface);
+  color: var(--color-bo-text);
+  box-shadow: var(--bo-sh-tile);
+  transition: transform var(--bo-dauer-feder) var(--ease-feder), box-shadow 320ms ease;
+}
+.bo-kachel--dicht { padding: var(--bo-kachel-p-dicht); }
+.bo-kachel--flach { padding: 0; overflow: hidden; }
+/* eingelassene Karte: Radius = Kachel − Innenabstand-Differenz (28 − 8 = 20) */
+.bo-kachel--eingelassen {
+  border-radius: calc(var(--radius-bo-kachel) - 8px);
+  background: var(--color-bo-surface-2);
+  box-shadow: inset 0 0 0 var(--bo-hair) var(--color-bo-line);
+}
+.bo-kachel__kopf { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; min-width: 0; }
+.bo-kachel__titel { font-size: 17px; line-height: 24px; font-weight: 600; letter-spacing: -0.012em; }
+.bo-kachel__unter { margin-top: 2px; font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-kachel__werkzeuge { display: flex; flex-shrink: 0; align-items: center; gap: 8px; }
+.bo-kachel__fuss { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding-top: 16px; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .bo-kachel--lift:hover { transform: translateY(-2px); box-shadow: var(--bo-sh-lift); }
+}
+
+/* Akzentkachel: Materialton vollflächig, Bezeichnung oben, kurzer Satz, sehr große Zahl unten links. */
+.bo-akzent { padding: 20px; box-shadow: var(--bo-sh-tile); }
+.bo-akzent[data-ton="cognac"] { background: var(--bo-ak-cognac); color: var(--color-bo-ak-cognac-text); }
+.bo-akzent[data-ton="salbei"] { background: var(--bo-ak-salbei); color: var(--color-bo-ak-salbei-text); }
+.bo-akzent__cap { font-size: 13px; line-height: 18px; font-weight: 500; }
+.bo-akzent[data-ton="cognac"] .bo-akzent__cap { color: var(--color-bo-ak-cognac-text-2); }
+.bo-akzent[data-ton="salbei"] .bo-akzent__cap { color: var(--color-bo-ak-salbei-text-2); }
+.bo-akzent__text { margin-top: 8px; max-width: 18ch; font-size: 15px; line-height: 20px; font-weight: 500; letter-spacing: -0.01em; }
+.bo-akzent__zahl { font-size: 64px; line-height: 56px; font-weight: 300; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; margin-bottom: -4px; }
+
+/* Bento-Raster: 12 Spalten, Gutter 24 (Kiosk 16). Kacheln erscheinen gestaffelt (30 ms). */
+.bo-bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--bo-bento-gap); }
+/* Kinder spannen standardmäßig alle 12 Spalten (Telefon: einspaltig); Breite mit md:col-span-*,
+   Akzentkacheln am Telefon paarweise mit col-span-6. */
+.bo-bento > * { grid-column: span 12 / span 12; min-width: 0; }
+
+/* ---- Knöpfe: Pille, Druck-Feder 0,97 (Feedback < 100 ms, federt zurück) */
+.bo-knopf {
+  border-radius: var(--radius-pill);
+  letter-spacing: -0.01em;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--bo-dauer-weich) var(--ease-feder), background-color 200ms ease, box-shadow 200ms ease, color 200ms ease;
+}
+.bo-knopf:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(0.97); transition-duration: var(--bo-dauer-druck); }
+.bo-knopf--primary { background: var(--color-bo-action); color: var(--color-bo-action-text); box-shadow: var(--bo-sh-ink); }
+.bo-knopf--primary:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--color-bo-ink-hover); }
+.bo-knopf--secondary { background: var(--color-bo-surface); color: var(--color-bo-text); box-shadow: var(--bo-sh-btn); }
+.bo-knopf--secondary:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--color-bo-surface-2); }
+.bo-knopf--ghost { color: var(--color-bo-text); }
+.bo-knopf--ghost:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--color-bo-fill-2); }
+.bo-knopf--danger { background: var(--color-bo-surface); color: var(--color-bo-danger); box-shadow: var(--bo-sh-btn); }
+.bo-knopf--danger:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--color-bo-danger-soft); }
+.bo-knopf--danger-solid { background: var(--color-bo-ziegel); color: var(--color-bo-on-danger); box-shadow: var(--bo-sh-ink); }
+.bo-knopf--danger-solid:hover:not(:disabled):not([aria-disabled="true"]) { filter: brightness(0.94); }
+.bo-knopf--link { border-radius: 4px; }
+.bo-knopf--link:active:not(:disabled) { transform: none; }
+
+/* Rundknopf 44 (40 in Kacheln/kompakt), Kachel-Fläche + Knopfschatten; aktiv = Tinte. */
+.bo-rund {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: var(--bo-rund);
+  height: var(--bo-rund);
+  border-radius: 50%;
+  background: var(--color-bo-surface);
+  color: var(--color-bo-text);
+  box-shadow: var(--bo-sh-btn);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--bo-dauer-weich) var(--ease-feder), background-color 200ms ease, box-shadow 200ms ease, color 200ms ease;
+}
+.bo-rund--s { width: var(--bo-rund-s); height: var(--bo-rund-s); }
+.bo-rund--l { width: 48px; height: 48px; }
+.bo-rund:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--color-bo-surface-2); }
+.bo-rund:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(0.94); transition-duration: var(--bo-dauer-druck); }
+.bo-rund--flach { background: transparent; box-shadow: none; color: var(--color-bo-text-soft); }
+.bo-rund--flach:hover:not(:disabled) { background: var(--color-bo-fill-2); color: var(--color-bo-text); }
+.bo-rund[aria-pressed="true"], .bo-rund.is-an { background: var(--color-bo-action); color: var(--color-bo-action-text); box-shadow: var(--bo-sh-ink); }
+.bo-rund:disabled, .bo-rund[aria-disabled="true"] { cursor: not-allowed; opacity: 0.5; }
+.bo-rund__badge {
+  position: absolute; top: -2px; right: -2px;
+  min-width: 20px; height: 20px; padding: 0 6px;
+  display: grid; place-items: center;
+  border-radius: 999px;
+  font-size: 11px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums;
+  background: var(--color-cognac); color: #fff;
+  box-shadow: 0 0 0 2px var(--color-bo-bg);
+}
+.bo-rund__badge--punkt { min-width: 8px; width: 8px; height: 8px; padding: 0; top: 2px; right: 2px; box-shadow: 0 0 0 2px var(--color-bo-surface); }
+
+/* Pfeil-Knopf „öffnen“: Tinte (auf Cognac hell), unten rechts in Kacheln; dreht 45° mit Feder. */
+.bo-pfeil {
+  display: inline-grid; place-items: center; flex: none;
+  width: var(--bo-rund); height: var(--bo-rund);
+  border-radius: 50%;
+  background: var(--color-bo-action); color: var(--color-bo-action-text);
+  box-shadow: var(--bo-sh-ink);
+  transition: transform var(--bo-dauer-feder) var(--ease-feder), background-color 200ms ease;
+}
+.bo-pfeil svg { transition: transform var(--bo-dauer-feder) var(--ease-feder); }
+.bo-pfeil--hell { background: rgb(255 255 255 / 0.94); color: #30373e; box-shadow: 0 1px 2px rgb(0 0 0 / 0.12), 0 8px 20px rgb(0 0 0 / 0.14); }
+.bo-pfeil:active { transform: scale(0.92); transition-duration: var(--bo-dauer-druck); }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-kachel:hover .bo-pfeil svg, .bo-pfeil:hover svg, .bo-pfeil:focus-visible svg, a:hover > .bo-pfeil svg { transform: rotate(45deg); }
+}
+
+/* ---- Status-Pille: Punkt/Symbol + Wort auf weicher Materialfläche, nie Farbe allein */
+.bo-pille {
+  display: inline-flex; align-items: center; gap: 6px;
+  max-width: 100%; flex-shrink: 0;
+  border-radius: 999px;
+  font-weight: 500; line-height: 1; white-space: nowrap;
+}
+
+/* ---- Avatar: Initialen-Kreis im Materialverlauf; Reihe überlappt 18 %, Ring in Kachelfarbe */
+.bo-av {
+  --av: 32px;
+  display: inline-grid; place-items: center; flex: none;
+  width: var(--av); height: var(--av);
+  border-radius: 50%;
+  font-size: calc(var(--av) * 0.36); font-weight: 600; line-height: 1; letter-spacing: 0.01em;
+  background: var(--bo-av-travertin); color: var(--bo-av-travertin-fg);
+  user-select: none;
+}
+.bo-av--ring { box-shadow: 0 0 0 2px var(--color-bo-surface); }
+.bo-av[data-m="cognac"] { background: var(--bo-av-cognac); color: var(--bo-av-cognac-fg); }
+.bo-av[data-m="eiche"] { background: var(--bo-av-eiche); color: var(--bo-av-eiche-fg); }
+.bo-av[data-m="salbei"] { background: var(--bo-av-salbei); color: var(--bo-av-salbei-fg); }
+.bo-av[data-m="messing"] { background: var(--bo-av-messing); color: var(--bo-av-messing-fg); }
+.bo-av[data-m="see"] { background: var(--bo-av-see); color: var(--bo-av-see-fg); }
+.bo-av[data-m="nuss"] { background: var(--bo-av-nuss); color: var(--bo-av-nuss-fg); }
+.bo-av--mehr { background: var(--color-bo-action); color: var(--color-bo-action-text); font-size: calc(var(--av) * 0.34); }
+.bo-avreihe { display: inline-flex; align-items: center; }
+.bo-avreihe > * + * { margin-left: calc(var(--av) * -0.18); }
+
+/* ---- Segmented Control (iOS): Kapsel 8 % Tinte, gleitender Indikator mit Feder */
+.bo-seg {
+  position: relative; isolation: isolate;
+  display: inline-flex; align-items: stretch; max-width: 100%;
+  height: var(--bo-segment-h); padding: 4px;
+  border-radius: 999px;
+  background: var(--color-bo-fill-2);
+}
+.bo-seg--s { height: calc(var(--bo-control-h-s) + 4px); padding: 2px; }
+.bo-seg__i {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-width: 0; padding: 0 14px;
+  border-radius: 999px;
+  font-size: 14px; font-weight: 500; white-space: nowrap;
+  color: var(--color-bo-text-soft);
+  -webkit-tap-highlight-color: transparent;
+  transition: color 240ms ease, transform var(--bo-dauer-weich) var(--ease-feder);
+}
+.bo-seg--s .bo-seg__i { padding: 0 10px; font-size: 13px; }
+.bo-seg__i:hover:not([data-segment-aktiv="true"]):not(:disabled) { color: var(--color-bo-text); }
+.bo-seg__i:active:not(:disabled) { transform: scale(0.97); transition-duration: var(--bo-dauer-druck); }
+.bo-seg__i[data-segment-aktiv="true"] { color: var(--color-bo-action-text); }
+.bo-seg__i:disabled { cursor: not-allowed; opacity: 0.45; }
+.bo-seg__n { font-size: 12px; font-variant-numeric: tabular-nums; opacity: 0.72; }
+.bo-seg__ind {
+  position: absolute; z-index: 0; left: 0; top: 4px; bottom: 4px;
+  border-radius: 999px;
+  background: var(--color-bo-action); box-shadow: var(--bo-sh-ink);
+  transition: transform var(--bo-dauer-feder) var(--ease-feder), width var(--bo-dauer-feder) var(--ease-feder);
+}
+.bo-seg--s .bo-seg__ind { top: 2px; bottom: 2px; }
+/* bis der Indikator gemessen ist (SSR, erster Paint), trägt das aktive Segment die Fläche selbst */
+.bo-seg:not([data-gemessen]) .bo-seg__i[data-segment-aktiv="true"] { background: var(--color-bo-action); box-shadow: var(--bo-sh-ink); }
+.bo-seg--hell .bo-seg__ind, .bo-seg--hell:not([data-gemessen]) .bo-seg__i[data-segment-aktiv="true"] { background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); }
+.bo-seg--hell .bo-seg__i[data-segment-aktiv="true"] { color: var(--color-bo-text); }
+
+/* ---- iOS-Schalter 51×31, Daumen 27 mit Doppelschatten, Feder; gedrückt verbreitert sich der Daumen */
+.bo-schalter__spur {
+  position: relative; flex: none;
+  width: 51px; height: 31px;
+  border-radius: 999px;
+  background: var(--color-bo-fill-2);
+  box-shadow: inset 0 0 0 var(--bo-hair) var(--color-bo-line);
+  transition: background-color 250ms ease;
+}
+.bo-schalter__daumen {
+  position: absolute; left: 2px; top: 2px;
+  width: 27px; height: 27px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 0.15), 0 1px 1px rgb(0 0 0 / 0.16);
+  transition: transform var(--bo-dauer-feder) var(--ease-feder), width var(--bo-dauer-weich) var(--ease-feder);
+}
+.bo-schalter[aria-checked="true"] .bo-schalter__spur { background: var(--color-salbei); box-shadow: none; }
+.bo-schalter[aria-checked="true"] .bo-schalter__daumen { transform: translateX(20px); }
+.bo-schalter:active:not(:disabled) .bo-schalter__daumen { width: 31px; }
+.bo-schalter[aria-checked="true"]:active:not(:disabled) .bo-schalter__daumen { transform: translateX(16px); }
+.bo-schalter--s .bo-schalter__spur { width: 38px; height: 23px; }
+.bo-schalter--s .bo-schalter__daumen { width: 19px; height: 19px; }
+.bo-schalter--s[aria-checked="true"] .bo-schalter__daumen { transform: translateX(15px); }
+.bo-schalter--s:active:not(:disabled) .bo-schalter__daumen { width: 22px; }
+.bo-schalter--s[aria-checked="true"]:active:not(:disabled) .bo-schalter__daumen { transform: translateX(12px); }
+.bo-schalter:disabled { cursor: not-allowed; opacity: 0.5; }
+
+/* ---- Eingabefelder: gefüllte Fläche, Haarlinie, Radius 12, Fokus = 2-px-Ring in Cognac */
+.bo-input {
+  display: block;
+  width: 100%;
+  min-height: var(--bo-control-h, 2.5rem);
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--color-bo-line-strong);
+  border-radius: var(--radius-bo-ctl);
+  background: var(--color-bo-surface);
+  color: var(--color-bo-text);
+  font: inherit;
+  min-width: 0;
+  transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+.bo-input::placeholder {
+  color: var(--color-bo-text-faint);
+}
+.bo-input:hover:not(:disabled):not([readonly]) {
+  border-color: var(--color-bo-line-control);
+}
+.bo-input:focus-visible,
+.bo-input:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px var(--color-bo-focus);
+}
+.bo-input:disabled,
+.bo-input[readonly] {
+  border-color: transparent;
+  background: var(--color-bo-fill);
+  color: var(--color-bo-text-soft);
+}
+select.bo-input {
+  appearance: none;
+  padding-right: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236a7077' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.625rem center;
+  text-overflow: ellipsis;
+}
+.bo-input[aria-invalid="true"] {
+  border-color: var(--color-bo-danger);
+}
+/* Suche als Pille (40/48), Fokus = Ring */
+.bo-suche {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 40px; min-width: 0; padding: 0 16px;
+  border-radius: 999px;
+  background: var(--color-bo-fill); color: var(--color-bo-text-soft);
+  transition: background-color 200ms ease, box-shadow 200ms ease;
+}
+.bo-suche:focus-within { background: var(--color-bo-surface); box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-suche input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--color-bo-text); font: inherit; font-size: 14px; }
+.bo-suche input::placeholder { color: var(--color-bo-text-faint); }
+
+/* Tabellenzeile im Fokus (Tastaturnavigation DataTable). */
+.bo-row:focus-within,
+.bo-row[data-aktiv="true"] {
+  background: var(--color-bo-surface-2);
+}
+}
+
+/* Kontinuierliche Rundung (Squircle) als progressive Verbesserung, wo der Browser es kann. */
+@supports (corner-shape: superellipse(1.4)) {
+  :is(.bo-kachel, .bo-akzent, .bo-material, .bo-material-stark, .bo-glas) {
+    corner-shape: superellipse(1.35);
+  }
+}
+
+/* Lade-Skelett in exakter Zielform: gleiche Radien, Kachel-2-Fläche, 1,2-s-Schimmer. */
+@keyframes bo-shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+.bo-skeleton {
+  border-radius: var(--radius-bo-xs);
+  background: linear-gradient(90deg, var(--color-bo-skeleton) 25%, var(--color-bo-skeleton-shine) 50%, var(--color-bo-skeleton) 75%), var(--color-bo-skeleton);
+  background-size: 200% 100%;
+  animation: bo-shimmer 1.2s linear infinite;
+}
+
+/* Mikrobewegungen: nur opacity/transform. Einblenden mit der weichen Feder. */
+@keyframes bo-pop-in {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes bo-rise-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes bo-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes bo-kachel-ein {
+  from { opacity: 0; transform: translateY(12px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+.bo-pop { animation: bo-pop-in var(--bo-dur-base) var(--ease-quiet) both; transform-origin: top; }
+.bo-rise { animation: bo-rise-in var(--bo-dur-move) var(--ease-quiet) both; }
+.bo-fade { animation: bo-fade-in var(--bo-dur-base) var(--ease-quiet) both; }
+dialog.bo-dialog[open] { animation: bo-pop-in var(--bo-dur-move) var(--ease-quiet) both; }
+dialog.bo-dialog::backdrop {
+  background: var(--color-bo-overlay);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+}
+dialog.bo-dialog[open]::backdrop { animation: bo-fade-in var(--bo-dur-base) ease both; }
+
+/* Bento: Kacheln erscheinen an fester Stelle, gestaffelt 30 ms (Raster steht vor dem Inhalt).
+   Kiosk (data-bo-kiosk) und reduzierte Bewegung: ohne Staffel. */
+.bo-bento[data-einblenden] > * { animation: bo-kachel-ein 700ms var(--ease-feder-weich) both; }
+.bo-bento[data-einblenden] > :nth-child(2) { animation-delay: 30ms; }
+.bo-bento[data-einblenden] > :nth-child(3) { animation-delay: 60ms; }
+.bo-bento[data-einblenden] > :nth-child(4) { animation-delay: 90ms; }
+.bo-bento[data-einblenden] > :nth-child(5) { animation-delay: 120ms; }
+.bo-bento[data-einblenden] > :nth-child(6) { animation-delay: 150ms; }
+.bo-bento[data-einblenden] > :nth-child(7) { animation-delay: 180ms; }
+.bo-bento[data-einblenden] > :nth-child(n + 8) { animation-delay: 210ms; }
+[data-bo-kiosk] .bo-bento[data-einblenden] > *, [data-dichte="kiosk"] .bo-bento[data-einblenden] > * { animation: none; }
+
+/* Tooltip ohne JS: [data-tip] auf einem Element mit aria-label (Text ist nie einzige Quelle).
+   Tinte-Pille, gleitet mit weicher Feder ein. */
+.bo-tip { position: relative; }
+@keyframes bo-tip-ein {
+  from { opacity: 0; translate: -50% -4px; }
+  to { opacity: 1; translate: -50% 0; }
+}
+.bo-tip[data-tip]:hover::after,
+.bo-tip[data-tip]:focus-visible::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  z-index: 70;
+  translate: -50% 0;
+  width: max-content;
+  max-width: min(18rem, 70vw);
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: var(--color-bo-action);
+  color: var(--color-bo-action-text);
+  box-shadow: var(--bo-sh-ink);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  letter-spacing: -0.006em;
+  text-align: left;
+  white-space: normal;
+  pointer-events: none;
+  animation: bo-tip-ein var(--bo-dauer-weich) var(--ease-feder-weich) 0.3s both;
+}
+
+/* Waagrechte Scrollbereiche. */
+.bo-scroll-x { scrollbar-width: thin; }
+
+/* ---- Grundbausteine v2 (Team P0-2) */
+
+/* Zielfläche: kompakte Icon-Knöpfe (32 px sichtbar) bekommen 44 px Trefferfläche (03 §4). */
+.bo-ziel { position: relative; }
+/* Touch: -4 px (40 → 48, 32 → 40), damit Nachbarn mit 8 px Abstand sich nicht überlappen (WCAG 2.5.8, axe target-size). */
+.bo-ziel::before { content: ""; position: absolute; inset: -4px; }
+@media (pointer: fine) {
+  :root:not([data-dichte="komfortabel"]) .bo-ziel::before { inset: -2px; }
+}
+
+/* Spinner in Knöpfen: 16 px Ring, 1,5 px, 800 ms linear (03 §8.19). */
+@keyframes bo-dreh { to { transform: rotate(360deg); } }
+.bo-spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  border: 1.5px solid currentColor;
+  border-right-color: transparent;
+  animation: bo-dreh 800ms linear infinite;
+}
+
+/* Zahl (Kennzahl): Hochzählen beim Erscheinen und kurze Hervorhebung nach einer Änderung.
+   Bis die Seite bereit ist, steht der Endwert unsichtbar an seinem Platz (kein Springen);
+   ohne Skript oder bei reduzierter Bewegung sofort sichtbar, spätestens nach 2 s. */
+@keyframes bo-zahl-sicher { to { opacity: 1; } }
+.bo-zahl { transition: color var(--bo-dur-fast) var(--ease-quiet); }
+.bo-zahl[data-markiert="true"] { color: var(--color-bo-accent-text); transition-duration: var(--bo-dur-base); }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .bo-zahl[data-hochzaehlen="warte"] { opacity: 0; animation: bo-zahl-sicher 1ms 2s forwards; }
+}
+
+/* Charts: Balken wachsen aus der Grundlinie (Feder), Linie deckt auf, Donut läuft, Sparkline.
+   Einblenden nur mit Prop `einblenden` bzw. in .bo-chart-auf (Lounge: beim Erscheinen). */
+@keyframes bo-chart-wachsen { from { transform: scaleY(0); } }
+@keyframes bo-chart-aufdecken { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes bo-chart-segment { from { stroke-dasharray: 0 100; } }
+@keyframes bo-chart-wert { from { opacity: 0; } }
+.bo-chart-ein .bo-chart-balken {
+  animation: bo-chart-wachsen 900ms var(--ease-feder-weich) both;
+  animation-delay: calc(var(--i, 0) * 40ms + 120ms);
+}
+.bo-chart-ein .bo-chart-wert { animation: bo-chart-wert var(--bo-dur-fast) var(--ease-quiet) 320ms both; }
+.bo-chart-ein .bo-chart-linie { animation: bo-chart-aufdecken 700ms cubic-bezier(0.65, 0, 0.35, 1) both; }
+.bo-chart-ein .bo-chart-punkt { animation: bo-chart-wert var(--bo-dur-fast) var(--ease-quiet) 560ms both; }
+.bo-chart-ein .bo-chart-segment {
+  animation: bo-chart-segment 700ms cubic-bezier(0.65, 0, 0.35, 1) both;
+  animation-delay: calc(var(--start, 0) * 4ms);
+}
+.bo-chart-ein.bo-sparkline { animation: bo-chart-aufdecken var(--bo-dur-slow, 240ms) var(--ease-quiet) both; }
+.bo-chart-balken { transition: opacity 200ms ease, background-color 200ms ease; }
+/* Balken-Spalte: Tooltip-Pille je Balken bei Hover */
+.bo-chart-spalte .bo-chart-tip {
+  position: absolute; left: 50%; z-index: 2;
+  translate: -50% 4px;
+  padding: 4px 8px; border-radius: 8px;
+  font-size: 12px; font-weight: 600; line-height: 16px; white-space: nowrap; font-variant-numeric: tabular-nums;
+  background: var(--color-bo-action); color: var(--color-bo-action-text);
+  opacity: 0; pointer-events: none;
+  transition: opacity 160ms ease, translate 300ms var(--ease-feder-weich);
+}
+.bo-chart-spalte:hover .bo-chart-tip { opacity: 1; translate: -50% 0; }
+.bo-chart-spalte:hover .bo-chart-balken[data-weich] { opacity: 0.72; }
+.bo-chart-laufend {
+  background: repeating-linear-gradient(135deg, var(--color-chart-soft) 0 4px, transparent 4px 8px) !important;
+  box-shadow: inset 0 0 0 1px var(--color-chart-soft);
+}
+
+/* Reduzierte Bewegung: Transform/Opacity sofort, Farbübergänge bleiben, Häkchen gezeichnet. */
+@media (prefers-reduced-motion: reduce) {
+  .bo-skeleton { animation: none; }
+  .bo-spinner { animation-duration: 2400ms; }
+  .bo-chart-ein .bo-chart-balken, .bo-chart-ein .bo-chart-wert, .bo-chart-ein .bo-chart-linie,
+  .bo-chart-ein .bo-chart-punkt, .bo-chart-ein .bo-chart-segment, .bo-chart-ein.bo-sparkline { animation: none; }
+  .bo-pop, .bo-rise, .bo-fade, dialog.bo-dialog[open], dialog.bo-dialog[open]::backdrop { animation: none; }
+  .bo-bento[data-einblenden] > * { animation: none; }
+  .bo-kachel, .bo-knopf, .bo-rund, .bo-pfeil, .bo-pfeil svg, .bo-seg__i, .bo-seg__ind, .bo-schalter__daumen { transition-duration: 1ms; }
+  .bo-tip[data-tip]:hover::after, .bo-tip[data-tip]:focus-visible::after { animation-duration: 1ms; }
+  .bo-motion { transition-property: color, background-color, border-color, box-shadow !important; }
+  html:focus-within { scroll-behavior: auto; }
+}
+
+/* Druckansicht (/druck/...): nur das Blatt, keine Schatten/Unschärfe. */
+@media print {
+  .bo-no-print { display: none !important; }
+  html, body { background: #fff; color: #000; background-image: none; }
+  .bo-kachel, .bo-akzent, .bo-material, .bo-material-stark { box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}

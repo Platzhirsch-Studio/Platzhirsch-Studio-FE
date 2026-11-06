@@ -21,6 +21,8 @@
   "tara_g",
   "max_artikel_gewicht_g",
   "max_stueck",
+  "packmittel_produkt",
+  "gewicht_max_g",
   "sb_eigenschaften",
   "zerbrechlich",
   "glas",
@@ -131,6 +133,18 @@
    "default": "1"
   },
   {
+   "fieldname": "packmittel_produkt",
+   "fieldtype": "Link",
+   "label": "Packmittel (Lagerartikel)",
+   "options": "PH Produkt",
+   "description": "Karton/Packmittel als Lagerartikel – je Paket 1 Stück Abgang beim Verpacken."
+  },
+  {
+   "fieldname": "gewicht_max_g",
+   "fieldtype": "Int",
+   "label": "Plausibilitätsgrenze Gewicht (g)"
+  },
+  {
    "fieldname": "sb_eigenschaften",
    "fieldtype": "Section Break",
    "label": "Eigenschaften"
@@ -213,7 +227,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 15:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Logistik",
  "name": "PH Paketprofil",

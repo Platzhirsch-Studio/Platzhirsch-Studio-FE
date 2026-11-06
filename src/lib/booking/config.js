@@ -29,6 +29,7 @@
 // Keine "@/..."-Importe: node --test lädt die Datei direkt.
 import path from "node:path";
 import { DSE_SECTIONS, dseGateOpen } from "../legal/dseSections.js";
+import { resolveBackend } from "../backend/config.js";
 
 export { TIME_ZONE, LEAD_HOURS, HORIZON_DAYS, SLOT_STEP_MIN, MAX_RANGE_DAYS, CONSENT_VERSION, VERIFY_TTL_MIN, MEET_OPEN_MIN } from "./constants.js";
 
@@ -38,8 +39,19 @@ export function isProduction(env = process.env) {
   return env.NODE_ENV === "production";
 }
 
-/** Zugangsdaten Backoffice (nur Server). null, wenn unvollständig. */
+/** Methodenbasis der neuen App-Familie (ph_crm/api/termin.py, gleiche Namen/Parameter). */
+export const PH_BOOKING_METHOD_BASE = "ph_crm.api";
+
+/**
+ * Zugangsdaten Backoffice (nur Server). null, wenn unvollständig.
+ * BACKEND_GENERATION (src/lib/backend/config.js) Gruppe "termin" auf ph:
+ * BACKEND_PH_URL/BACKEND_PH_TOKEN + Methodenbasis ph_crm.api (null ohne
+ * vollständigen ph-Zugang → Mock bzw. in Produktion "off"). Ob gebucht wird,
+ * entscheidet weiter BOOKING_PROVIDER=frappe (terminMode).
+ */
 export function frappeCredentials(env = process.env) {
+  const backend = resolveBackend("termin", env);
+  if (backend.generation === "ph") return backend.ph ? { ...backend.ph, methodBase: PH_BOOKING_METHOD_BASE } : null;
   const url = String(env.FRAPPE_BOOKING_URL || "").trim().replace(/\/+$/, "");
   const key = String(env.FRAPPE_BOOKING_KEY || "").trim();
   const secret = String(env.FRAPPE_BOOKING_SECRET || "").trim();

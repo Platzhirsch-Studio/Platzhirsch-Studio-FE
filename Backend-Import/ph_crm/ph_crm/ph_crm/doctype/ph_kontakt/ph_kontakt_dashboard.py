@@ -7,7 +7,8 @@ TRANSAKTIONEN = (
     (_("Vertrieb"), ["PH Anfrage", "PH Termin", "PH Beratungsgespraech"]),
     (_("Projekte und Belege"), ["PH Projekt", "PH Angebot", "PH Auftragsbestaetigung", "PH Rechnung"]),
     (_("Shop und Logistik"), ["PH Bestellung", "PH Gutschein", "PH Lieferschein"]),
-    (_("Service und Marketing"), ["PH Servicefall", "PH Newsletter Abo", "PH Einwilligung"]),
+    (_("Service und Marketing"), ["PH Servicefall", "PH Newsletter Abo", "PH Einwilligung", "PH Kundenkarte"]),
+    (_("Datenschutz"), ["PH Datenschutzanfrage"]),
 )
 
 
@@ -19,6 +20,6 @@ def get_data():
             transactions.append({"label": label, "items": vorhanden})
     return {
         "fieldname": "kontakt",
-        "non_standard_fieldnames": {"PH Aufgabe": "referenz_name"},
-        "transactions": transactions + [{"label": _("Aufgaben"), "items": ["PH Aufgabe"]}],
+        "non_standard_fieldnames": {"PH Aufgabe": "referenz_name", "PH Kontakt": "firma_kontakt"},
+        "transactions": transactions + [{"label": _("Aufgaben"), "items": ["PH Aufgabe"]}, {"label": _("Personen der Firma"), "items": ["PH Kontakt"]}],
     }

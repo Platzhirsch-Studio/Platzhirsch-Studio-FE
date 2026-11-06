@@ -1,0 +1,184 @@
+{
+  "produkt": "helloCash",
+  "url": "https://hellocash.at/funktionen",
+  "stand": "2026-11-04",
+  "zeichen": 14000,
+  "funktionen": [
+    {
+      "name": "Signatureinrichtung",
+      "beschreibung": "Der Benutzer bezieht über helloCash ein Signaturzertifikat und aktiviert es nach kurzer Verifikation.",
+      "bereich": "kassa",
+      "nutzen": "RKSV-Signaturpflicht (§ 131b BAO) ohne eigenen Zertifikatskauf erfüllen.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/signatureinrichtung"
+    },
+    {
+      "name": "Exporte für Buchhaltung",
+      "beschreibung": "Der Benutzer exportiert Kassendaten zur Weiterverarbeitung in Buchhaltungsprogrammen.",
+      "bereich": "faktura",
+      "nutzen": "Kassadaten an Steuerberater übergeben.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/exporte"
+    },
+    {
+      "name": "Tagesabschluss-Export PDF/CSV",
+      "beschreibung": "Der Benutzer exportiert automatisch erstellte Tagesabschlüsse als PDF oder CSV mit konfigurierbarem Inhalt.",
+      "bereich": "kassa",
+      "nutzen": "Täglicher Kassenabschluss für Kontrolle und Ablage.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/exporte"
+    },
+    {
+      "name": "Monatsabschluss-Export",
+      "beschreibung": "Der Benutzer exportiert Monatsabschlüsse aus den Auswertungen als PDF oder CSV.",
+      "bereich": "kassa",
+      "nutzen": "Monatliche Abstimmung Showroom-Kassa mit Buchhaltung.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/exporte"
+    },
+    {
+      "name": "Umsatzübersicht nach Steuersätzen",
+      "beschreibung": "Der Benutzer exportiert Umsätze eines Zeitraums nach Mitarbeiter und Steuersatz aufgeschlüsselt.",
+      "bereich": "faktura",
+      "nutzen": "Erleichtert USt-Voranmeldung.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/exporte"
+    },
+    {
+      "name": "Auswertungen",
+      "beschreibung": "Der Benutzer sieht Statistiken zu Umsatz, Mitarbeiterleistung und Top-Artikeln.",
+      "bereich": "zentrale",
+      "nutzen": "Bestseller und Beraterleistung im Showroom erkennen.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/auswertungen"
+    },
+    {
+      "name": "Kundenverwaltung mit Top-Kunden",
+      "beschreibung": "Der Benutzer verwaltet den Kundenstamm und sieht die umsatzstärksten Kunden mit Besuchshäufigkeit.",
+      "bereich": "crm",
+      "nutzen": "Stammkunden für Küchen-/Möbel-Folgegeschäft erkennen.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/kundenverwaltung"
+    },
+    {
+      "name": "Rechnungsübersicht pro Kunde",
+      "beschreibung": "Der Benutzer öffnet alle Rechnungen eines Kunden.",
+      "bereich": "crm",
+      "nutzen": "Bei Reklamation sofort den Kaufbeleg finden.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/kundenverwaltung"
+    },
+    {
+      "name": "Automatischer Kundengesamtumsatz",
+      "beschreibung": "Die Kassa berechnet den bisherigen Umsatz je Kunde als Grundlage für Rabatte.",
+      "bereich": "crm",
+      "nutzen": "Rabattentscheidungen bei Großkunden begründen.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/kundenverwaltung"
+    },
+    {
+      "name": "Geburtstags-Reiter",
+      "beschreibung": "Der Benutzer sieht Kundengeburtstage und kann Grüße oder Angebote senden.",
+      "bereich": "marketing",
+      "nutzen": "Persönliche Kundenansprache.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/kundenverwaltung"
+    },
+    {
+      "name": "Kartenzahlung via Terminal",
+      "beschreibung": "Der Benutzer nimmt Kartenzahlungen über ein Kartenterminal (z. B. SumUp) mit Smartphone/Tablet an.",
+      "bereich": "kassa",
+      "nutzen": "Mobile Kartenzahlung auch bei Montage/Lieferung.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/kartenzahlung"
+    },
+    {
+      "name": "Gutscheinverwaltung mit Restbetrag",
+      "beschreibung": "Der Benutzer sieht verkaufte Gutscheine, Käufer und offenen Restbetrag.",
+      "bereich": "kassa",
+      "nutzen": "Offene Gutscheinverbindlichkeiten jederzeit kennen.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/gutscheinverwaltung"
+    },
+    {
+      "name": "Gutscheintypen",
+      "beschreibung": "Der Benutzer legt Geschenk-, Wert-, Rabatt-, Produkt- und Dienstleistungsgutscheine an.",
+      "bereich": "kassa",
+      "nutzen": "Z. B. Gutschein für Küchenplanung oder Montage als Dienstleistung.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/gutscheinverwaltung"
+    },
+    {
+      "name": "Gutschein-Teileinlösung",
+      "beschreibung": "Der Benutzer löst einen Gutschein in mehreren Teilbeträgen ein; jede Einlösung wird erfasst.",
+      "bereich": "kassa",
+      "nutzen": "Hohe Wertgutscheine über mehrere Käufe verbrauchen.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/gutscheinverwaltung"
+    },
+    {
+      "name": "Automatische Gutscheincodes",
+      "beschreibung": "Jeder Gutschein erhält automatisch einen eigenen Code.",
+      "bereich": "kassa",
+      "nutzen": "Erschwert Gutscheinbetrug.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/gutscheinverwaltung"
+    },
+    {
+      "name": "Individuelle Einstellungen",
+      "beschreibung": "Der Benutzer passt die Kassa über Einstellungen an, etwa MwSt.-Sätze und Logo auf Rechnungen.",
+      "bereich": "zentrale",
+      "nutzen": "Belege im eigenen Branding.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/funktionen"
+    },
+    {
+      "name": "helloCash App mit Bluetooth-Drucker",
+      "beschreibung": "Der Benutzer kassiert mobil auf Android/iOS und druckt über mobile Bluetooth-Drucker.",
+      "bereich": "kassa",
+      "nutzen": "Kassieren bei Hausmessen oder Restzahlung bei Auslieferung.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/app"
+    },
+    {
+      "name": "Plattformunabhängige Synchronisierung",
+      "beschreibung": "Der Benutzer greift von jedem Gerät auf synchronisierte Daten zu.",
+      "bereich": "zentrale",
+      "nutzen": "Backoffice sieht Showroom-Umsätze live.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/plattformunabhaengig"
+    },
+    {
+      "name": "Mitarbeiter-Berechtigungssystem",
+      "beschreibung": "Der Benutzer legt fest, welche Kassenbereiche einzelne Mitarbeiter nutzen dürfen.",
+      "bereich": "personal",
+      "nutzen": "Storno/Rabatt nur für Verkaufsleitung.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/berechtigungssystem"
+    },
+    {
+      "name": "Warenwirtschaft & Inventur",
+      "beschreibung": "Der Benutzer verwaltet Artikel und führt Inventuren durch.",
+      "bereich": "logistik",
+      "nutzen": "Jährliche Inventur des Mitnahme-/Ausstellungslagers.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/warenwirtschaft-und-inventur"
+    },
+    {
+      "name": "Lieferscheine & Angebote",
+      "beschreibung": "Der Benutzer erstellt individuelle Lieferscheine und Angebote.",
+      "bereich": "faktura",
+      "nutzen": "Möbelangebote und Lieferscheine aus dem Kassensystem.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/angebote-und-lieferscheine"
+    },
+    {
+      "name": "API",
+      "beschreibung": "Der Benutzer bindet externe Systeme über die API an (Premium/Gastro).",
+      "bereich": "zentrale",
+      "nutzen": "Anbindung an Backoffice/Onlineshop.",
+      "quelle": "helloCash",
+      "url": "https://hellocash.at/registrierkasse-funktionen/api"
+    }
+  ]
+}

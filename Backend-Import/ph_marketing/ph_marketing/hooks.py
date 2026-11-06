@@ -47,8 +47,20 @@ scheduler_events = {
         "0 7 * * *": ["ph_marketing.ph_marketing.tasks.empfehlungen_pruefen"],
         "0 8 * * *": ["ph_marketing.ph_marketing.tasks.event_erinnerungen"],
         "0 9 * * *": ["ph_marketing.ph_marketing.tasks.reisen_senden"],
+        "45 3 * * *": ["ph_marketing.ph_marketing.tasks.datenschutz_aufraeumen"],
+        "0 5 * * *": ["ph_marketing.ph_marketing.tasks.kampagnen_attribution"],
     }
 }
+
+# Jinja: QR-Code für das Druckformat „PH Event Ticket“ (Check-in)
+jinja = {"methods": ["ph_marketing.ph_marketing.checkin.ph_event_ticket_qr"]}
+
+# Kontakt-Hooks (Vertrag von ph_crm: Zeitleiste, Auskunft Art. 15, Löschen Art. 17, Zusammenführen)
+ph_kontakt_zeitleiste = ["ph_marketing.ph_marketing.kontakt_hooks.zeitleiste"]
+ph_kontakt_zeitleiste_ersetzt = ["PH Newsletter Abo", "PH Einwilligung", "PH Kampagne Kontaktpunkt", "PH Empfehlung", "PH Bewertung"]
+ph_kontakt_datenauskunft = ["ph_marketing.ph_marketing.kontakt_hooks.datenauskunft"]
+ph_kontakt_anonymisieren = ["ph_marketing.ph_marketing.kontakt_hooks.anonymisieren"]
+ph_kontakt_zusammengefuehrt = ["ph_marketing.ph_marketing.kontakt_hooks.zusammengefuehrt"]
 
 # Keine eigenen Website-Routen: die Website ist Next.js (platzhirsch.studio).
 website_route_rules = []

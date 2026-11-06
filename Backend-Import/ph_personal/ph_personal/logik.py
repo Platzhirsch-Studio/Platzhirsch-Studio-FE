@@ -46,6 +46,7 @@ KATEGORIE = {
 ZEITRAUM = {
     "Monat": {"de": "Monat", "en": "month", "fr": "mois", "it": "mese"},
     "Jahr": {"de": "Jahr", "en": "year", "fr": "an", "it": "anno"},
+    "Stunde": {"de": "Stunde", "en": "hour", "fr": "heure", "it": "ora"},
 }
 UEBERZAHLUNG_TEXT = {
     "de": "Bereitschaft zur Überzahlung je nach Qualifikation und Erfahrung.",
@@ -86,21 +87,12 @@ def slug(titel):
 
 
 def entgelt_vollstaendig(kv_mindest_brutto_cent, zeitraum, kollektivvertrag, ueberzahlung, ueberzahlung_text=""):
-    """§ 9 Abs 2 GlBG (Website: stellen.js entgeltVollstaendig): Betrag > 0, Zeitraum Monat/Jahr,
-    Kollektivvertrag benannt, Überzahlungsbereitschaft entschieden (ja/nein oder eigener Wortlaut)."""
-    try:
-        betrag = int(kv_mindest_brutto_cent or 0)
-    except (TypeError, ValueError):
-        return False
-    if betrag <= 0:
-        return False
-    if zeitraum not in ("Monat", "Jahr"):
-        return False
-    if not str(kollektivvertrag or "").strip():
-        return False
-    if ueberzahlung in ("ja", "nein"):
-        return True
-    return bool(str(ueberzahlung_text or "").strip())
+    """§ 9 Abs 2 GlBG (Website: stellen.js entgeltVollstaendig): Betrag > 0, Zeitraum Monat/Jahr/Stunde,
+    Kollektivvertrag benannt, Überzahlungsbereitschaft entschieden (ja/nein oder eigener Wortlaut).
+    Prüflogik: ph_personal/utils/glbg.py."""
+    from ph_personal.utils.glbg import entgelt_vollstaendig as pruefen
+
+    return pruefen(kv_mindest_brutto_cent, zeitraum, kollektivvertrag, ueberzahlung, ueberzahlung_text)
 
 
 def euro(cent, sprache="de"):

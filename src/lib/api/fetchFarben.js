@@ -1,12 +1,13 @@
 // src/lib/api/fetchFarben.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { katalogMethod } from "@/lib/backend/katalog";
 import { backofficeFetch } from "@/lib/api/http";
 
 // Color options (with hex swatch) for the /produkte/[category] filter
 // panel (Frappe doctype Produkte Farbe).
 export async function fetchFarben() {
-  const API_URL = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.produkte_farbe.api.get_all_farben_api`;
+  const API_URL = katalogMethod("produkte_farbe.api", "get_all_farben_api", NEW_API_BASE_URL);
 
   try {
     const response = await backofficeFetch(API_URL, {

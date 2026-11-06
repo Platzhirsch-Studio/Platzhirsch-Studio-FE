@@ -1,6 +1,7 @@
 // src/lib/api/fetchSubKategorien.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { katalogMethod } from "@/lib/backend/katalog";
 import { backofficeFetch } from "@/lib/api/http";
 
 // Subcategory options (e.g. Chandeliers -> wall-mounted/ceiling-mounted/
@@ -9,7 +10,7 @@ import { backofficeFetch } from "@/lib/api/http";
 // `kategorie`. Not yet deployed to the production SERVER, so this calls
 // NEW_API_BASE_URL instead (see src/lib/apiBaseUrl.js), same as fetchKategorien.js.
 export async function fetchSubKategorien() {
-  const API_URL = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.sub_kategorie.api.get_all_sub_kategorien_api`;
+  const API_URL = katalogMethod("sub_kategorie.api", "get_all_sub_kategorien_api", NEW_API_BASE_URL);
 
   try {
     const response = await backofficeFetch(API_URL, {

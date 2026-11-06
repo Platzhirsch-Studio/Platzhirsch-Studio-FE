@@ -105,3 +105,39 @@ bench --site <site> run-tests --app ph_faktura
 3. `PH Lieferschein` (ph_logistik) schreibt `lieferschein_menge`; bis dahin Button „Lieferung melden“ in der AB.
 4. UID-Prüfung (MIAS/FinanzOnline) ist Platzhalter (`uid_geprueft_am`). Mehrsprachige Druckformate (en/fr/it) folgen nach Freigabe der Texte.
 5. wkhtmltopdf/QR-Bibliothek auf Staging prüfen (PDF-Fixierung und EPC-QR degradieren sauber, Fehler ins Error Log).
+
+## Backend-Lücken geschlossen (04.11.2026, Mandat Nr. 50)
+
+Vollständige Liste: `Marktresearch/digital/backoffice/50-backend-luecken-kassa-faktura.md`.
+
+| Bereich | Umsetzung |
+|---|---|
+| UVA mit Kassa | `rechenwerk/uva.py` (eine Regel für Faktura und Kassa-Report): Kassenumsatz je Satz, ohne Zahlungen auf Rechnungen, ohne Anzahlungen auf Anzahlungsrechnungen (Ist dort), ohne Mehrzweck-Gutscheinverkauf; Barverkaufsrechnungen mit `kassenbeleg` zählen nicht doppelt; Schalter `kassa_in_uva` |
+| Kassa-Anzahlung | `kassa.py`: Anzahlungsrechnung wird automatisch gestellt (§ 19 Abs 2 UStG Ist, Abzug in der Schlussrechnung), Storno einer Kassa-Anzahlung bucht Zahlung/Zahlungsplan zurück |
+| Barverkaufsrechnung | `api.create_invoice_from_receipt(kassenbeleg, kontakt=None)` |
+| Skonto | `rechenwerk/skonto.py`; Rechnung `skonto_promille/skonto_bis/skonto_cent`; `zahlung_erfassen(skonto=1)`, Bank `zuordnen(skonto=1)`; UVA mindert im Zahlungsmonat |
+| Mahnwesen AT | Basiszins + 9,2 Pp (§ 456 UGB, `basiszinssatz_bp`), 40 € Pauschale B2B einmal je Forderung (§ 458 UGB); `PH Rechnung.mahnvorschau`; Mahnlauf mit Auswahl/Stichtag |
+| E-Rechnung | `rechenwerk/erechnung.py` ebInterface 6.1 (Bund: Lieferantennummer, Auftragsreferenz, Positionsnummer), ZUGFeRD EN16931 / XRechnung (CII); `PH Rechnung.erechnung_erzeugen(format)` hängt XML an; Einreichung über e-rechnung.gv.at/PEPPOL durch die Buchhaltung |
+| SEPA | `rechenwerk/sepa.py` pain.001.001.03 + IBAN-Prüfung; `api.sepa_zahllauf(eingangsrechnungen, ausfuehrung)` |
+| Export | RZL CSV (`rzl_csv`), DATEV-Formatversion 12/13 (`datev_formatversion`) |
+| Rechnung | `pflichtangaben_vorschau`, `nummer_vorschau`, `als_gesendet_markieren` (auch Angebot/Gutschrift), `korrigieren(grund)` (Storno-Gutschrift + neuer Entwurf, Zahlungen werden verrechnet), Ausfuhr-/igL-Nachweis mit `nachweis_status` |
+| Bank | Rücküberweisung an Kunden (Gutschrift Rückzahlung) als Vorschlag, `zuordnen_mehrere` |
+| Auftrag | `rechnung_vorschau(art, mengen)` (Trockenlauf im Savepoint), Zahlungsplan-Erinnerung täglich 06:00 (`tasks.zahlungsplan_erinnern`) |
+| Journal | `api.journal_kette_pruefen` (Leitung/GF/Buchhaltung extern) |
+
+Tests ohne Site: `ph_faktura/tests/test_luecken.py` (11 Tests).
+
+
+## Integration Runde 3 (04.11.2026)
+
+| Bedarf | Umsetzung | Test |
+|---|---|---|
+| Hook `ph_shop_gutschrift_erstellen` | `hooks.ph_shop_gutschrift_erstellen = ["ph_faktura.api.gutschrift_aus_bestellung"]`, Signatur fn(bestellung_doc, erstattung_zeile) → Belegnummer (ph_shop `PHBestellung._gutschrift_anstossen`): Gutschrift je USt-Satz aus `satz_json.posten`, gestellt, Status „Erstattet“, idempotent `shop-erstattung:<zeile>`, Feld `PH Gutschrift.bestellung`; ohne Rechnung → Kommentar, None | test_integration.TestShopErstattung, Site |
+| Gutschrift aus Warenrücknahme | `api.create_credit_note_from_return(warenruecknahme)` → Entwurf zur Rechnung (Lieferschein-Teilrechnung/Bestellung/Auftrag), Zuordnung AB-Position bzw. Produkt, Menge gedeckelt; `gutschrift_hinweis` = Grund; Feld `warenruecknahme` | test_integration.TestWarenruecknahme |
+| Angebot aus Pflege-/Wartungsvertrag | `api.create_quote_from_care_contract(pflege_abo)`; Button „Angebot erstellen“ an PH Pflege Abo (`doctype_js`); Preis je Termin brutto, jährlich = Termine/Jahr; ohne Preis Fehler (nie schätzen); Rückverweis `PH Pflege Abo.angebot`, `PH Angebot.pflege_abo` | test_integration.TestPflegeAngebot, Site |
+| Lieferanten-Gutschrift ↔ Regress | PH Eingangsrechnung `belegart` (Rechnung/Gutschrift), `bezug_eingangsrechnung`, `lieferantenregress`, `regress_gebucht`; Freigabe → `PH Lieferantenregress.gutschrift_erfassen(netto, nummer, datum, beleg, eingangsrechnung)`; kein Zahllauf, „Als verrechnet buchen“; Export Kreditor im Soll (BMD negativ), UVA Vorsteuerkorrektur; Button am Regress (`doctype_js`) | test_integration.TestLieferantenGutschrift, Site |
+| Ausbuchung Regress-Differenz | doc_event PH Lieferantenregress.on_update → Buchungsjournal „Ausbuchung“ (einmalig) → Export-Zeile Aufwand (`konto_regress_ausbuchung`, Platzhalter 7800) an Kreditor | test_integration, Site |
+| Portal-PDF-Fehler (60-…) | `portal_document_pdf`: Fehler als `{code, message}` mit HTTP 403/400/404/410/503 statt 500; Kundenprüfung vereinheitlicht (`ph_projekte.api.basis.kunde`: portal_aktiv, Ablauf, Sitzungen) | Site |
+| Kassa-Rabattzeile | Barverkaufsrechnung übernimmt Kassa-Position „Rabatt“ als Rabatt-Position | – |
+
+**Feldnamen für die ph_crm-Kundenakte (bestätigt 04.11.):** ph_crm `kontakt360` liest `PH Rechnung.brutto_cent` (Umsatz) und `PH Rechnung.offen_cent` (offen), `PH Auftragsbestaetigung.brutto_cent`/`auftragswert_cent`. Ein Feld `gesamt_cent` gibt es in ph_faktura **nicht** (Mapping: gesamt = `brutto_cent`; zahlbar nach Anzahlungen = `zahlbar_cent`; offen = `offen_cent`). Gutschriften (`PH Gutschrift.brutto_cent`) mindern den Umsatz in der Kundenakte derzeit nicht – Vorschlag an ph_crm: Umsatz − Σ Gutschrift.brutto_cent (docstatus 1).

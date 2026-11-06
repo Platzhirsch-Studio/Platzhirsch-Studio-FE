@@ -1,0 +1,44 @@
+# deploy/produktion/website/compose.yml – Website-Host (platzhirsch.studio → 127.0.0.1:3000).
+# Vorher: /srv/platzhirsch/website/.env.production (aus .env.example) und
+#         /srv/platzhirsch/website/public-ezarri/ (Kopie von public/ezarri).
+# Bauen + starten (aus diesem Ordner):
+#   GIT_SHA=$(git rev-parse --short=12 HEAD) docker compose build && GIT_SHA=$(git rev-parse --short=12 HEAD) docker compose up -d
+# Rollback: WEBSITE_TAG=<älterer SHA> docker compose up -d   (alte Images bleiben lokal liegen)
+
+name: ph-website
+
+services:
+  website:
+    image: platzhirsch/website:${WEBSITE_TAG:-${GIT_SHA:-latest}}
+    build:
+      context: ../../..
+      dockerfile: deploy/produktion/website/Containerfile
+      args:
+        NEXT_DEPLOYMENT_ID: ${GIT_SHA:-}
+      additional_contexts:
+        ezarri: ${EZARRI_DIR:-/srv/platzhirsch/website/public-ezarri}
+      secrets:
+        - website_env
+    restart: unless-stopped
+    env_file:
+      - ${WEBSITE_ENV_FILE:-/srv/platzhirsch/website/.env.production}
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+    # Nur lokal – Caddy/Nginx auf demselben Host terminiert TLS. Das Rate-Limit vertraut X-Forwarded-For
+    # nur, weil Port 3000 von außen nicht erreichbar ist (tools/ci/nginx-platzhirsch.conf.example).
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - ${WEBSITE_DATA_DIR:-/srv/platzhirsch/website/data}:/app/.data
+    logging:
+      driver: json-file
+      options: { max-size: "20m", max-file: "5" }
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+
+secrets:
+  website_env:
+    file: ${WEBSITE_ENV_FILE:-/srv/platzhirsch/website/.env.production}

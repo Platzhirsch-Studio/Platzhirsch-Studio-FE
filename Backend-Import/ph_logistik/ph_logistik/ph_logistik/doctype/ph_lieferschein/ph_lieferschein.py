@@ -10,9 +10,12 @@ from frappe.model.document import Document
 from frappe.utils import flt, now_datetime, nowdate
 
 from ph_logistik.ph_logistik import packtisch_logik as pl
-from ph_logistik.ph_logistik.helfer import einstellungen, mail_senden, produkt_info, setze_status
+from ph_logistik.ph_logistik.helfer import einstellungen, idempotent, mail_senden, produkt_info, setze_status
 
 OFFEN = ("Entwurf", "Gepackt", "Uebergeben")
+LEITUNG = {"PH Logistik Leitung", "System Manager", "PH Backoffice-Admin"}
+ERFUELLUNG_AUS_LIEFERART = {"Versand": "Paket", "Spedition": "Spedition", "Abholung": "Abholung", "Eigenlieferung": "Eigenlieferung"}
+LIEFERART_AUS_ERFUELLUNG = {"Paket": "Versand", "Spedition": "Spedition", "Abholung": "Abholung", "Eigenlieferung": "Eigenlieferung", "Montage": "Eigenlieferung"}
 
 
 class PHLieferschein(Document):
@@ -45,6 +48,17 @@ class PHLieferschein(Document):
                     p.zerbrechlich = 1
                 if not p.paketprofil and info.get("paketprofil"):
                     p.paketprofil = info["paketprofil"]
+            # Packtisch nach JTL (M4): ohne EAN/Seriennummer → Handbestätigung
+            from ph_logistik.ph_logistik.packtisch_regeln import ohne_barcode
+
+            p.ohne_barcode = int(ohne_barcode(p.as_dict()))
+        standard = ERFUELLUNG_AUS_LIEFERART.get(self.lieferart)
+        for p in self.positionen:
+            if not p.erfuellung:
+                p.erfuellung = standard
+        arten = {p.erfuellung for p in self.positionen if p.erfuellung}
+        if len(arten) > 1 and self.status == "Entwurf":
+            frappe.msgprint(_("Gemischte Erfüllung ({0}) – „Nach Erfüllung aufteilen“ erzeugt je Methode einen Lieferschein.").format(", ".join(sorted(arten))), indicator="orange", alert=True)
         for i, pk in enumerate(self.pakete, start=1):
             if not pk.paket_nr:
                 pk.paket_nr = i
@@ -177,6 +191,13 @@ class PHLieferschein(Document):
                     buche("Verkauf", p.produkt, int(p.menge), lagerort_von=lo, lagerbestand=p.lagerbestand, bezug_doctype="PH Lieferschein", bezug=self.name, idempotency_key=f"ls:{self.name}:{p.name}", quelle="packtisch")
                 except Exception:  # noqa: BLE001
                     frappe.log_error(title="PH Lieferschein: Bestand ausbuchen")
+        # Packtisch nach JTL (S3): Kartons/Packmittel der Pakete als Lagerartikel abbuchen
+        try:
+            from ph_logistik.ph_logistik.packtisch_ablauf import packmittel_ausbuchen
+
+            packmittel_ausbuchen(self)
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title="PH Lieferschein: Packmittel ausbuchen")
 
     @frappe.whitelist()
     def tarife(self, neu=0):
@@ -215,20 +236,53 @@ class PHLieferschein(Document):
         return s.name
 
     @frappe.whitelist()
-    def uebergeben(self, an="Dienstleister"):
+    def retourenetikett(self, warenruecknahme=None, menge=None, tarif_id=None):
+        """Button „Retourenetikett“: LetMeShip-Rücksendung zu diesem Lieferschein (Abholung an der Lieferadresse,
+        Zustellung an den Absender). Mock ohne Netz, solange Testmodus/keine Zugangsdaten. Idempotent. → Sendungsname"""
+        self.check_permission("write")
+        if self.status not in ("Uebergeben", "Zugestellt"):
+            frappe.throw(_("Retourenetikett erst nach Übergabe/Zustellung."))
+        if self.lieferart not in ("Versand", "Spedition"):
+            frappe.throw(_("Retourenetikett nur für versendete Lieferungen – Abholung über eine Warenrücknahme planen."))
+        from ph_logistik.letmeship import ShippingError
+        from ph_logistik.letmeship.dienst import retourenlabel_erzeugen
+
+        try:
+            s = retourenlabel_erzeugen(self, warenruecknahme=warenruecknahme, menge_zurueck=int(menge) if menge else None, tarif_id=tarif_id)
+        except ShippingError as e:
+            frappe.throw(_("Retourenetikett nicht möglich ({0}{1}).").format(e.code, f": {e.detail}" if e.detail else ""))
+        self.add_comment("Info", _("Retourenetikett {0} ({1}) erzeugt.").format(s.name, s.tracking_nr or "–"))
+        return s.name
+
+    @frappe.whitelist()
+    def uebergeben(self, an="Dienstleister", ohne_tracking=0):
         self.check_permission("write")
         if self.status != "Gepackt":
             frappe.throw(_("Nur gepackte Lieferscheine werden übergeben."))
+        if self.lieferart == "Versand" and an != "Spedition":
+            # Packtisch nach JTL (M9): „versendet“ erst, wenn jedes Paket eine Sendung mit Tracking-Nummer hat
+            from ph_logistik.ph_logistik.packtisch_regeln import alle_pakete_mit_tracking
+
+            tracking = {s.name: s.tracking_nr for s in frappe.get_all("PH Sendung", {"lieferschein": self.name, "richtung": "Ausgang", "status": ("!=", "Storniert")}, ["name", "tracking_nr"])}
+            ok, ohne = alle_pakete_mit_tracking([pk.as_dict() for pk in self.pakete], tracking)
+            if not ok and not (int(ohne_tracking or 0) and LEITUNG & set(frappe.get_roles())):
+                frappe.throw(_("Noch nicht versendet: Paket(e) {0} ohne Tracking-Nummer – zuerst Etikett erzeugen (Leitung: „ohne Tracking übergeben“).").format(", ".join(str(x) for x in ohne) or "–"))
         setze_status(self, "Uebergeben", uebergeben_am=now_datetime(), uebergeben_an=an)
         self._auftrag_fortschreiben()
         return self.status
 
     @frappe.whitelist()
-    def als_zugestellt(self, empfaenger_name=None, unterschrift=None):
-        """Abholung (Unterschrift am Tresen), Eigenlieferung (Tour) oder manuell."""
+    def als_zugestellt(self, empfaenger_name=None, unterschrift=None, abholcode=None):
+        """Abholung (Unterschrift am Tresen, Abholcode serverseitig geprüft), Eigenlieferung (Tour) oder manuell."""
         self.check_permission("write")
         if self.status not in ("Gepackt", "Uebergeben"):
             frappe.throw(_("Lieferschein ist nicht gepackt/übergeben."))
+        if self.lieferart == "Abholung" and self.abholcode:
+            if abholcode:
+                if not pl.abholcode_passt(self.abholcode, abholcode):
+                    frappe.throw(_("Abholcode stimmt nicht."))
+            elif einstellungen().get("abholcode_pflicht") and not (LEITUNG & set(frappe.get_roles())):
+                frappe.throw(_("Bitte den Abholcode des Kunden eingeben (ohne Code nur Leitung)."))
         werte = {"zugestellt_am": now_datetime()}
         if empfaenger_name:
             werte["empfaenger_name"] = empfaenger_name
@@ -265,15 +319,137 @@ class PHLieferschein(Document):
 
     @frappe.whitelist()
     def stornieren(self, grund=None):
+        """Storno; nach „Gepackt“ nur Leitung – gebuchte Verkäufe aus dem Lager werden per Gegenbuchung zurückgebucht."""
         self.check_permission("write")
         if self.status == "Zugestellt":
-            frappe.throw(_("Zugestellte Lieferscheine werden nicht storniert (Retoure anlegen)."))
+            frappe.throw(_("Zugestellte Lieferscheine werden nicht storniert (Warenrücknahme anlegen)."))
+        if self.status in ("Gepackt", "Uebergeben") and not (LEITUNG & set(frappe.get_roles())):
+            frappe.throw(_("Gepackte/übergebene Lieferscheine storniert nur die Leitung."))
         for s in frappe.get_all("PH Sendung", {"lieferschein": self.name, "status": ("in", ["Angelegt", "Etikett"])}, pluck="name"):
             from ph_logistik.letmeship.dienst import stornieren
 
             stornieren(frappe.get_doc("PH Sendung", s), grund)
+        zurueck = self._bestand_zurueckbuchen()
         setze_status(self, "Storniert", storno_grund=grund)
+        if zurueck:
+            self.add_comment("Info", _("{0} Lagerbewegung(en) zurückgebucht").format(zurueck))
         return self.status
+
+    def _bestand_zurueckbuchen(self):
+        """Verkaufsbuchungen dieses Lieferscheins (Schlüssel ls:<name>:…) stornieren → Bestand wieder da."""
+        from ph_logistik.ph_logistik.bestand import storno
+
+        n = 0
+        for b in frappe.get_all("PH Lagerbewegung", {"bezug_doctype": "PH Lieferschein", "bezug": self.name, "art": "Verkauf", "status": "Gebucht"}, pluck="name"):
+            try:
+                storno(b)
+                n += 1
+            except Exception:  # noqa: BLE001
+                frappe.log_error(title=f"PH Lieferschein {self.name}: Rückbuchung {b}")
+        return n
+
+    @frappe.whitelist()
+    def positionen_setzen(self, stand, idempotency_key=None):
+        """Offline-Puffer Packtisch: absoluter Stand {position: menge_gepackt}; wiederholbar (gleicher Schlüssel → gleiche Antwort)."""
+        self.check_permission("write")
+        if isinstance(stand, str):
+            stand = frappe.parse_json(stand)
+
+        def ausfuehren():
+            if self.status != "Entwurf":
+                frappe.throw(_("Nur im Status Entwurf packen."))
+            neu = pl.stand_anwenden([p.as_dict() for p in self.positionen], stand or {})
+            for p in self.positionen:
+                if p.name in neu:
+                    p.menge_gepackt, voll = neu[p.name]
+                    p.gepackt = int(voll)
+            self.save()
+            return {"gesetzt": len(neu), "alles_gepackt": pl.alles_gepackt([x.as_dict() for x in self.positionen])}
+
+        return idempotent(f"ls-stand:{self.name}:{idempotency_key}" if idempotency_key else None, ausfuehren)
+
+    @frappe.whitelist()
+    def problem_melden(self, grund, text=None, fotos=None):
+        """Packtisch/Tour: Problem am Lieferschein (Beschädigt, Fehlt, Falscher Artikel, Adresse unklar, Sonstiges) mit Fotos.
+        → Kommentar + Aufgabe an Leitung; bei Beschädigt zusätzlich Servicefall (ph_service, nur wenn installiert)."""
+        self.check_permission("write")
+        if grund not in pl.PROBLEM_GRUENDE:
+            frappe.throw(_("Unbekannter Grund: {0}").format(grund))
+        if isinstance(fotos, str):
+            fotos = frappe.parse_json(fotos)
+        for f in fotos or []:
+            url = f.get("foto") if isinstance(f, dict) else f
+            if url:
+                self.append("fotos", {"foto": url, "art": "schaden" if grund == "Beschaedigt" else "uebergabe", "zeit": now_datetime(), "hinweis": (f.get("hinweis") if isinstance(f, dict) else None) or grund})
+        self.problem_grund, self.problem_text, self.problem_am = grund, text, now_datetime()
+        self.save()
+        self.add_comment("Comment", _("Problem: {0} – {1}").format(_(grund), text or ""))
+        from ph_logistik.ph_logistik.tasks import _aufgabe
+
+        _aufgabe(f"Lieferschein {self.name}: {grund}" + (f" – {text}" if text else ""), "PH Lieferschein", self.name)
+        servicefall = None
+        if grund == "Beschaedigt" and frappe.db.exists("DocType", "PH Servicefall"):
+            try:
+                fn = frappe.get_attr("ph_service.ph_service.doctype.ph_servicefall.ph_servicefall.aus_dokument")
+                servicefall = fn("PH Lieferschein", self.name, beschreibung=text or _("Beschädigung am Lieferschein {0}").format(self.name), art="Transportschaden")
+            except Exception:  # noqa: BLE001
+                frappe.log_error(title=f"PH Lieferschein {self.name}: Servicefall anlegen")
+        return {"problem": grund, "servicefall": servicefall, "fotos": len(self.fotos)}
+
+    @frappe.whitelist()
+    def nach_erfuellung_aufteilen(self):
+        """Gemischter Entwurf (Paket + Spedition + Abholung + Montage): Positionen mit abweichender Erfüllung in je einen neuen
+        Lieferschein verschieben (Kopf kopiert, Lieferart passend). Bleibt: die Erfüllung der Lieferart dieses Lieferscheins. → neue Namen"""
+        self.check_permission("write")
+        if self.status != "Entwurf":
+            frappe.throw(_("Nur Entwürfe werden aufgeteilt."))
+        bleibt = ERFUELLUNG_AUS_LIEFERART.get(self.lieferart)
+        gruppen = {}
+        for p in self.positionen:
+            if p.erfuellung and p.erfuellung != bleibt:
+                gruppen.setdefault(p.erfuellung, []).append(p)
+        if not gruppen:
+            return []
+        if sum(len(z) for z in gruppen.values()) == len(self.positionen):
+            # keine Position passt zur Lieferart → dieser Lieferschein übernimmt die erste Gruppe
+            erste = next(iter(gruppen))
+            self.lieferart = LIEFERART_AUS_ERFUELLUNG[erste]
+            gruppen.pop(erste)
+            if not gruppen:
+                self.save()
+                return []
+        neue = []
+        kopf = {k: self.get(k) for k in ("kontakt", "kunde_name", "kunde_email", "kunde_telefon", "sprache", "bestellung", "auftrag", "projekt", "kommission", "wunschtermin", "liefer_name", "liefer_firma", "liefer_strasse", "liefer_hausnr", "liefer_zusatz", "liefer_plz", "liefer_ort", "liefer_land", "liefer_telefon", "liefer_email", "lieferhinweis", "abholcode")}
+        for erf, zeilen in gruppen.items():
+            neu = frappe.get_doc({"doctype": "PH Lieferschein", **kopf, "lieferart": LIEFERART_AUS_ERFUELLUNG[erf], "teillieferung": 1, "quelle": "backoffice"})
+            for z in zeilen:
+                d = z.as_dict()
+                for k in ("name", "parent", "parenttype", "parentfield", "idx", "creation", "modified", "owner", "modified_by", "doctype"):
+                    d.pop(k, None)
+                neu.append("positionen", d)
+                self.remove(z)
+            neu.insert()
+            neue.append(neu.name)
+        self.teillieferung = 1
+        self.save()
+        self.add_comment("Info", _("Nach Erfüllung aufgeteilt: {0}").format(", ".join(neue)))
+        return neue
+
+    @frappe.whitelist()
+    def speditionsauftrag_anlegen(self):
+        """Button „Speditionsauftrag“ (Großmöbel): Auftrag Lager → Kunde mit Adresse, Packstücken aus den Paketen."""
+        self.check_permission("write")
+        from ph_logistik.ph_logistik.doctype.ph_speditionsauftrag.ph_speditionsauftrag import aus_lieferschein
+
+        return aus_lieferschein(self.name)
+
+    @frappe.whitelist()
+    def warenruecknahme_anlegen(self):
+        """Button „Warenrücknahme“ (nach Zustellung): Rücknahme mit den Positionen dieses Lieferscheins."""
+        self.check_permission("read")
+        from ph_logistik.ph_logistik.doctype.ph_warenruecknahme.ph_warenruecknahme import aus_lieferschein
+
+        return aus_lieferschein(self.name)
 
     @frappe.whitelist()
     def abholbereit_melden(self):

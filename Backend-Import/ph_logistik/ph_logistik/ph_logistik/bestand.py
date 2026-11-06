@@ -19,6 +19,10 @@ def bestand_finden(produkt, lagerort, ausfuehrung=None, seriennummer=None, platz
         filt["seriennummer"] = seriennummer
     else:
         filt["ausstellungsstueck"] = 0
+        # Getrennte Zeilen für B-Ware, gesperrte Ware (Schaden/an Lieferant) und Kommissionsware je Projekt/Auftrag
+        filt["zustand"] = "B-Ware" if extra.get("zustand") == "B-Ware" else ("!=", "B-Ware")
+    filt["gesperrt"] = int(bool(extra.get("gesperrt")))
+    filt["kommission"] = extra.get("kommission") or ("is", "not set")
     name = frappe.db.get_value("PH Lagerbestand", filt, "name")
     if name:
         return frappe.get_doc("PH Lagerbestand", name)
@@ -71,6 +75,7 @@ def buche(art, produkt, menge, lagerort_von=None, lagerort_nach=None, ausfuehrun
             "produkt": produkt,
             "ausfuehrung": ausfuehrung,
             "lagerbestand": bestand_name,
+            "lagerbestand_von": b.get("lagerbestand_von"),
             "menge": abs(int(menge)) if art != "Inventur" else int(menge),
             "lagerort_von": lagerort_von,
             "platz_von": platz_von,
@@ -112,22 +117,26 @@ def bestand_anpassen(b, produkt, ausfuehrung=None, seriennummer=None, lagerbesta
         if neu_res > max(neu_menge, 0) and dr > 0:
             frappe.throw(_("Mehr reserviert als vorhanden ({0}).").format(bs.produkt_name or produkt))
         neu_res = min(neu_res, max(neu_menge, 0))
-        werte = {"menge": neu_menge, "reserviert": neu_res, "verfuegbar": verfuegbar(neu_menge, neu_res)}
+        gesperrt, kommission = int(bs.get("gesperrt") or 0), bs.get("kommission")
+        werte = {"menge": neu_menge, "reserviert": neu_res, "verfuegbar": verfuegbar(neu_menge, neu_res, gesperrt, kommission)}
         verkauft = art == "Verkauf" and neu_menge <= 0
         ausgeschieden = art == "Ausbuchung" and neu_menge <= 0
-        werte["status"] = status_aus(neu_menge, neu_res, ausgeschieden=ausgeschieden, verkauft=verkauft)
+        werte["status"] = status_aus(neu_menge, neu_res, ausgeschieden=ausgeschieden, verkauft=verkauft, gesperrt=gesperrt, kommission=kommission)
         if ausgeschieden:
             werte["ausgeschieden_am"] = nowdate()
         if art == "Reservierung" and bezug:
             werte.update(reserviert_fuer_doctype=bezug_doctype, reserviert_fuer=bezug)
         if art == "Freigabe" and neu_res == 0:
-            werte.update(reserviert_fuer_doctype=None, reserviert_fuer=None)
+            werte.update(reserviert_fuer_doctype=None, reserviert_fuer=None, reserviert_bis=None, reserviert_kontakt=None, reserviert_kunde_name=None)
         if art == "Inventur":
             werte["inventur_am"] = nowdate()
         if art == "Umlagerung" and ort == lagerort_nach and platz_nach:
             werte["platz"] = platz_nach
         bs.db_set(werte, update_modified=True)
 
+    # Quellzeile einer Umlagerung merken (Rückrechnung zum Stichtag, inventur_logik.zeilen_wirkung)
+    if art == "Umlagerung" and lagerort_von in zeilen:
+        b["lagerbestand_von"] = zeilen[lagerort_von].name
     if len(zeilen) == 1:
         return next(iter(zeilen.values())).name
     if lagerort_nach in zeilen:

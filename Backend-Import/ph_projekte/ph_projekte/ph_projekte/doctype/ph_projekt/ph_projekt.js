@@ -74,8 +74,83 @@ frappe.ui.form.on("PH Projekt", {
 			frm.call({ method: "summen_aktualisieren", doc: frm.doc, freeze: true }).then(() => frm.reload_doc());
 		}, __("Aktionen"));
 
+		// Lieferung je Position: Herstellerbestellungen, Teil-/Nachlieferung
+		const offen = (frm.doc.positionen || []).filter((p) => (p.lieferstatus || "offen") === "offen" && !p.herstellerbestellung);
+		if (offen.length || (frm.doc.positionen || []).some((p) => p.nachlieferung_noetig)) {
+			frm.add_custom_button(__("Herstellerbestellungen erzeugen"), () => {
+				frappe.confirm(__("Offene Positionen und Nachlieferungen je Lieferant als Bestellentwurf sammeln?"), () =>
+					frm.call({ method: "herstellerbestellungen_erzeugen", doc: frm.doc, freeze: true }).then((r) => {
+						const e = r.message || {};
+						const ohne = (e.ohne_lieferant || []).length;
+						frappe.show_alert({ message: __("{0} Bestellentwürfe", [(e.bestellungen || []).length]) + (ohne ? " · " + __("{0} Positionen ohne Lieferant", [ohne]) : ""), indicator: ohne ? "orange" : "green" });
+						frm.reload_doc();
+					}));
+			}, __("Lieferung"));
+		}
+		const zeilen = (frm.doc.positionen || []).map((p) => ({ value: p.name, label: `${p.raum ? p.raum + " · " : ""}${p.bezeichnung} (${p.menge_geliefert || 0}/${p.menge})` }));
+		if (zeilen.length) {
+			frm.add_custom_button(__("Lieferung/Montage buchen"), () => {
+				const d = new frappe.ui.Dialog({
+					title: __("Teillieferung oder Montage buchen"),
+					fields: [
+						{ fieldname: "zeile", fieldtype: "Select", label: __("Position"), options: zeilen, reqd: 1 },
+						{ fieldname: "menge", fieldtype: "Int", label: __("Menge"), default: 1, reqd: 1 },
+						{ fieldname: "datum", fieldtype: "Date", label: __("Datum"), default: frappe.datetime.get_today() },
+						{ fieldname: "montiert", fieldtype: "Check", label: __("montiert (statt geliefert)") },
+					],
+					primary_action_label: __("Buchen"),
+					primary_action(v) { frm.call({ method: "lieferung_buchen", doc: frm.doc, args: v, freeze: true }).then(() => { d.hide(); frm.reload_doc(); }); },
+				});
+				d.show();
+			}, __("Lieferung"));
+			frm.add_custom_button(__("Nachlieferung anlegen"), () => {
+				const d = new frappe.ui.Dialog({
+					title: __("Nachlieferung (fehlend/beschädigt)"),
+					fields: [
+						{ fieldname: "zeile", fieldtype: "Select", label: __("Position"), options: zeilen, reqd: 1 },
+						{ fieldname: "menge", fieldtype: "Int", label: __("Menge"), default: 1, reqd: 1 },
+						{ fieldname: "grund", fieldtype: "Data", label: __("Grund"), reqd: 1 },
+						{ fieldname: "termin", fieldtype: "Date", label: __("Benötigt bis") },
+						{ fieldname: "bestellen", fieldtype: "Check", label: __("Sofort beim Lieferanten bestellen"), default: 1 },
+					],
+					primary_action_label: __("Anlegen"),
+					primary_action(v) { frm.call({ method: "nachlieferung_anlegen", doc: frm.doc, args: v, freeze: true }).then(() => { d.hide(); frm.reload_doc(); }); },
+				});
+				d.show();
+			}, __("Lieferung"));
+		}
+
+		frm.add_custom_button(__("Kalkulation Soll/Ist"), () => {
+			frm.call({ method: "kalkulation", doc: frm.doc }).then((r) => {
+				const k = r.message;
+				const eur = (c) => format_currency((c || 0) / 100, "EUR");
+				const zeile = (l, f) => `<tr><td>${l}</td><td style="text-align:right">${f(k.soll)}</td><td style="text-align:right">${f(k.ist)}</td></tr>`;
+				frappe.msgprint({
+					title: __("Kalkulation Soll/Ist"),
+					message: `<table class="table table-sm"><tr><th></th><th>${__("Soll")}</th><th>${__("Ist")}</th></tr>${zeile(__("Verkauf"), (x) => eur(x.vk_cent))}${zeile(__("Einkauf"), (x) => eur(x.ek_cent))}${zeile(__("Montage h"), (x) => x.montage_h)}${zeile(__("Montagekosten"), (x) => eur(x.montage_cent))}${zeile(__("Deckungsbeitrag"), (x) => eur(x.db_cent))}${zeile(__("Marge"), (x) => (x.marge_promille == null ? "–" : (x.marge_promille / 10).toFixed(1) + " %"))}</table>`,
+				});
+			});
+		}, __("Aktionen"));
+		if (frappe.user.has_role(["PH Projekte Leitung", "PH Geschäftsführung", "System Manager", "PH Backoffice-Admin"])) ph_nachkalkulation_buttons(frm);
+		frm.add_custom_button(__("Auftragsmappe als PDF"), () => {
+			const teile = ["deckblatt", "statusbericht", "aufmass", "planung", "nachtrag", "montagebericht", "abnahme", "produktpass"];
+			const d = new frappe.ui.Dialog({
+				title: __("Auftragsmappe als PDF"),
+				fields: teile.map((t) => ({ fieldname: t, fieldtype: "Check", label: __(t.charAt(0).toUpperCase() + t.slice(1)), default: 1 })),
+				primary_action_label: __("Erzeugen"),
+				primary_action(v) {
+					const auswahl = teile.filter((t) => v[t]);
+					frappe.call({ method: "ph_projekte.api.auftragsmappe_pdf", args: { projekt: frm.doc.name, teile: JSON.stringify(auswahl) }, freeze: true, freeze_message: __("PDF wird zusammengestellt …") }).then((r) => {
+						d.hide();
+						if (r.message && r.message.datei) window.open(r.message.datei);
+					});
+				},
+			});
+			d.show();
+		}, __("Aktionen"));
+
 		// Schnellanlage verknüpfter Dokumente
-		[["PH Planung", __("Planung")], ["PH Rendering", __("Rendering")], ["PH Projekt Dokument", __("Dokument")], ["PH Fremdgewerk", __("Fremdgewerk")], ["PH Projekt Aufgabe", __("Aufgabe")], ["PH Projektzeit", __("Zeit buchen")]].forEach(([dt, label]) => {
+		[["PH Aufmass", __("Aufmaß")], ["PH Nachtrag", __("Nachtrag")], ["PH Planung", __("Planung")], ["PH Rendering", __("Rendering")], ["PH Projekt Dokument", __("Dokument")], ["PH Fremdgewerk", __("Fremdgewerk")], ["PH Projekt Aufgabe", __("Aufgabe")], ["PH Projektzeit", __("Zeit buchen")]].forEach(([dt, label]) => {
 			frm.add_custom_button(label, () => frappe.new_doc(dt, { projekt: frm.doc.name }), __("Neu"));
 		});
 
@@ -116,4 +191,40 @@ function ph_projekt_galerie(frm) {
 			frappe.set_route(...bilder[Number(this.dataset.i)].route);
 		});
 	});
+}
+
+
+// ── Projektnachkalkulation (Leitung/GF): laufende Kalkulation, Budget, Snapshot ─────────────────────────
+function ph_nachkalkulation_buttons(frm) {
+	const eur = (c) => format_currency((c || 0) / 100, "EUR");
+	const pz = (p) => (p === null || p === undefined ? "–" : `${Number(p).toFixed(1)} %`);
+	const farbe = { gruen: "#15803d", gelb: "#b45309", rot: "#b91c1c" };
+	const punkt = (a) => (a ? `<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${farbe[a]}"></span>` : "");
+	frm.add_custom_button(__("Laufende Kalkulation"), () => {
+		frm.call({ method: "kalkulation_v2", doc: frm.doc, freeze: true }).then((r) => {
+			const k = r.message, h = k.kopf, s = k.stufen_prognose, i = k.stufen_ist;
+			const esc = frappe.utils.escape_html;
+			const stufe = (n) => `<tr><td>${n.toUpperCase()}</td><td style="text-align:right">${eur(i[n + "_cent"])}</td><td style="text-align:right">${pz(i[n + "_prozent"])}</td><td style="text-align:right">${eur(s[n + "_cent"])}</td><td style="text-align:right">${pz(s[n + "_prozent"])}</td></tr>`;
+			const zeilen = k.kostenarten.map((z) => `<tr><td>${punkt(z.ampel)} ${esc(z.bezeichnung)}</td><td style="text-align:right">${eur(z.budget_cent)}</td><td style="text-align:right">${eur(z.ist_cent)}</td><td style="text-align:right">${eur(z.obligo_cent)}</td><td style="text-align:right">${eur(z.rest_cent)}${z.rest_manuell ? " *" : ""}</td><td style="text-align:right">${eur(z.prognose_cent)}</td><td style="text-align:right">${eur(z.abweichung_cent)}</td></tr>`).join("");
+			const stufen = ["db1", "db2", "db3"].concat(k.gemeinkosten_aktiv ? ["db4"] : []);
+			frappe.msgprint({
+				title: __("Laufende Kalkulation {0}", [esc(frm.doc.name)]),
+				wide: true,
+				message: `<p>${punkt(h.ampel)} ${__("Erlös")} <b>${eur(h.erloes_cent)}</b> (${esc(h.erloes_basis)}) · ${__("Fertigstellung")} <b>${h.fertigstellungsgrad} %</b> · ${__("DB laufend")} <b>${pz(h.db_laufend_prozent)}</b> · ${__("End-DB Prognose")} <b>${pz(h.db_prognose_prozent)}</b></p>
+					<table class="table table-sm"><tr><th></th><th style="text-align:right">${__("Ist")}</th><th></th><th style="text-align:right">${__("Prognose")}</th><th></th></tr>${stufen.map(stufe).join("")}</table>
+					<table class="table table-sm"><tr><th>${__("Kostenart")}</th><th style="text-align:right">${__("Budget")}</th><th style="text-align:right">${__("Ist")}</th><th style="text-align:right">${__("Obligo")}</th><th style="text-align:right">${__("Rest")}</th><th style="text-align:right">${__("Prognose")}</th><th style="text-align:right">${__("Abw.")}</th></tr>${zeilen}</table>
+					${(k.hinweise || []).map((x) => `<p class="text-muted small">${esc(x)}</p>`).join("")}`,
+			});
+		});
+	}, __("Kalkulation"));
+	if (!frm.doc.kalk_budget_eingefroren_am) {
+		frm.add_custom_button(__("Budget vorbelegen"), () => frm.call({ method: "budget_vorbelegen", doc: frm.doc, args: { ueberschreiben: 0 } }).then(() => frm.reload_doc()), __("Kalkulation"));
+		frm.add_custom_button(__("Budget bei Auftrag einfrieren"), () => frappe.confirm(__("Budget bei Auftrag einfrieren? Danach nur noch Anpassungen (protokolliert)."), () => frm.call({ method: "budget_einfrieren", doc: frm.doc }).then(() => frm.reload_doc())), __("Kalkulation"));
+	}
+	frm.add_custom_button(frm.doc.nachkalkulation ? __("Nachkalkulation öffnen") : __("Nachkalkulation anlegen"), () => {
+		if (frm.doc.nachkalkulation) return frappe.set_route("Form", "PH Projekt Nachkalkulation", frm.doc.nachkalkulation);
+		frm.call({ method: "nachkalkulation_anlegen", doc: frm.doc, freeze: true }).then((r) => frappe.set_route("Form", "PH Projekt Nachkalkulation", r.message));
+	}, __("Kalkulation"));
+	frm.add_custom_button(__("Protokoll"), () => frappe.set_route("List", "PH Kalkulation Protokoll", { projekt: frm.doc.name }), __("Kalkulation"));
+	if (frm.doc.kalk_ampel === "rot") frm.dashboard.set_headline(__("Kalkulation rot: Prognose über Budget oder End-DB unter Ziel."), "red");
 }

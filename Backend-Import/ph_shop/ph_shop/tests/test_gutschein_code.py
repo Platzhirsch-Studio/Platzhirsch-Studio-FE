@@ -43,3 +43,28 @@ class TestGutscheinCode(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestGutscheinErgaenzungen(unittest.TestCase):
+    def test_abholcode_mit_L_bleibt_erkennbar(self):
+        # L ist Teil des Alphabets – darf nicht zu 1 werden (10-konzept-shop §10)
+        self.assertEqual(gc.normalisiere_abhol("ab-l2kq"), "ABL2KQ")
+
+    def test_steuer_mehrzweck_einzweck(self):
+        m = gc.steuer("Mehrzweck")
+        self.assertEqual((m["steuersatz_promille"], m["steuersatz"], m["umsatz_bei_verkauf"], m["zahlungsmittel"]), (0, "Null 0", False, True))
+        self.assertEqual(gc.steuer("Einzweck", 1000)["steuersatz"], "Ermaessigt-1 10")
+        self.assertEqual(gc.steuer("Einzweck", "2000")["steuersatz_promille"], 2000)
+
+    def test_einzweck_ohne_satz_fehler(self):
+        for satz in (None, "", 0, 1234):
+            with self.assertRaises(gc.GutscheinSteuerFehler):
+                gc.steuer("Einzweck", satz)
+
+    def test_rabattgutschein(self):
+        r = gc.steuer("Rabatt")
+        self.assertEqual((r["steuersatz"], r["mindert_entgelt"], r["zahlungsmittel"]), (None, True, False))
+
+    def test_sperrgruende(self):
+        self.assertTrue(gc.sperrgrund_gueltig("Verlust gemeldet"))
+        self.assertFalse(gc.sperrgrund_gueltig("weil"))

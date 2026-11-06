@@ -17,6 +17,24 @@
   "cb_2",
   "pause_ab_minuten",
   "pause_minuten",
+  "sb_urlaub",
+  "urlaubsjahr",
+  "urlaubsjahr_grundlage",
+  "cb_urlaub",
+  "landesfeiertag_frei",
+  "betriebsruhe_behandlung",
+  "sb_genehmigung",
+  "genehmiger_fuer_leitung",
+  "krank_bestaetigung_ab_tag",
+  "cb_genehmigung",
+  "benutzer_bei_austritt_deaktivieren",
+  "sb_dienstplan",
+  "mindestbesetzung",
+  "sb_datenschutz",
+  "aufbewahrung_zeiten_jahre",
+  "notfallkontakt_loeschen_tage",
+  "cb_datenschutz",
+  "offene_bewerbung_warnung_tage",
   "sb_vorlagen",
   "absage_text",
   "zusage_text",
@@ -25,39 +43,267 @@
   "hinweis_schluessel"
  ],
  "fields": [
-  {"fieldname": "sb_bewerbung", "fieldtype": "Section Break", "label": "Bewerbungen"},
-  {"fieldname": "loeschfrist_monate", "fieldtype": "Int", "label": "Löschfrist nach Absage (Monate)", "default": "7", "description": "GlBG § 15: 6 Monate Klagefrist nach Absage plus Puffer. Nach Ablauf löscht der tägliche Job Unterlagen und Anschreiben und pseudonymisiert die Person (außer bei Einwilligung zur Evidenzhaltung)."},
-  {"fieldname": "bewerbung_email", "fieldtype": "Data", "label": "Bewerbungspostfach", "options": "Email", "default": "info@platzhirsch.studio", "description": "Erscheint im Stellenaushang und in der Website-API (bewerbung_email)."},
-  {"fieldname": "cb_1", "fieldtype": "Column Break"},
-  {"fieldname": "standard_ansprechpartner", "fieldtype": "Link", "label": "Standard-Ansprechperson", "options": "User"},
-  {"fieldname": "standort", "fieldtype": "Data", "label": "Standort (Arbeitsort)", "default": "Lochau am Bodensee, Landstraße 11"},
-  {"fieldname": "sb_arbeitszeit", "fieldtype": "Section Break", "label": "Arbeitszeit und Urlaub"},
-  {"fieldname": "standard_wochenstunden", "fieldtype": "Float", "label": "Normalarbeitszeit (Stunden/Woche)", "default": "38.5", "precision": "2", "description": "KV Handel: 38,5 h. Je Mitarbeiter überschreibbar (Teilzeit)."},
-  {"fieldname": "urlaubsanspruch_tage", "fieldtype": "Int", "label": "Urlaubsanspruch (Arbeitstage/Jahr)", "default": "25", "description": "UrlG § 2: 30 Werktage = 25 Arbeitstage bei 5-Tage-Woche; ab 25 Dienstjahren 30 Arbeitstage (je Mitarbeiter überschreibbar)."},
-  {"fieldname": "cb_2", "fieldtype": "Column Break"},
-  {"fieldname": "pause_ab_minuten", "fieldtype": "Int", "label": "Pause automatisch ab (Minuten Arbeitszeit)", "default": "360", "description": "AZG § 11: ab mehr als 6 Stunden mindestens 30 Minuten Ruhepause. Wird als Vorschlag eingetragen, wenn keine Pause erfasst ist."},
-  {"fieldname": "pause_minuten", "fieldtype": "Int", "label": "Pausenvorschlag (Minuten)", "default": "30"},
-  {"fieldname": "sb_vorlagen", "fieldtype": "Section Break", "label": "Briefvorlagen (Druckformate Absage/Zusage)"},
-  {"fieldname": "absage_text", "fieldtype": "Text Editor", "label": "Absagetext", "default": "<p>vielen Dank für Ihre Bewerbung und das Interesse an unserem Haus. Wir haben uns Ihre Unterlagen aufmerksam angesehen.</p><p>Leider können wir Ihnen für diese Position keine Zusage geben; wir haben uns für eine Bewerbung entschieden, die dem Anforderungsprofil noch näher kommt. Diese Entscheidung ist keine Bewertung Ihrer Qualifikation.</p><p>Ihre Unterlagen bewahren wir entsprechend den gesetzlichen Fristen auf und löschen sie danach. Wir wünschen Ihnen für Ihren weiteren Weg alles Gute.</p>"},
-  {"fieldname": "zusage_text", "fieldtype": "Text Editor", "label": "Zusagetext", "default": "<p>wir freuen uns sehr, Ihnen die Position anbieten zu können. Die Einzelheiten (Beginn, Beschäftigungsausmaß, Einstufung nach Kollektivvertrag und Entgelt) finden Sie im beiliegenden Dienstvertrag bzw. Dienstzettel.</p><p>Bitte bestätigen Sie uns kurz Ihre Annahme. Wir heißen Sie herzlich willkommen im Team.</p>"},
-  {"fieldname": "sb_website", "fieldtype": "Section Break", "label": "Website"},
-  {"fieldname": "website_revalidate_aktiv", "fieldtype": "Check", "label": "Website-Cache nach Änderungen an Stellen erneuern", "default": "1", "description": "POST an <ph_website_revalidate_url>/revalidate/karriere mit Header X-Revalidate-Secret (beide Werte aus site_config.json). Auf Staging aus lassen, wenn keine Website angebunden ist."},
-  {"fieldname": "hinweis_schluessel", "fieldtype": "HTML", "label": "Schlüsselnamen", "options": "<p>In <code>site_config.json</code>: <code>ph_website_revalidate_url</code> (z. B. https://platzhirsch.studio) und <code>ph_website_revalidate_secret</code>. Nie hier eintragen.</p>"}
+  {
+   "fieldname": "sb_bewerbung",
+   "fieldtype": "Section Break",
+   "label": "Bewerbungen"
+  },
+  {
+   "fieldname": "loeschfrist_monate",
+   "fieldtype": "Int",
+   "label": "Löschfrist nach Absage (Monate)",
+   "default": "7",
+   "description": "Mindestens 6 Monate ab Zugang der Absage (§ 15 Abs 1 GlBG); Standard 7 (Puffer)."
+  },
+  {
+   "fieldname": "bewerbung_email",
+   "fieldtype": "Data",
+   "label": "Bewerbungspostfach",
+   "options": "Email",
+   "default": "info@platzhirsch.studio",
+   "description": "Erscheint im Stellenaushang und in der Website-API (bewerbung_email)."
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "standard_ansprechpartner",
+   "fieldtype": "Link",
+   "label": "Standard-Ansprechperson",
+   "options": "User"
+  },
+  {
+   "fieldname": "standort",
+   "fieldtype": "Data",
+   "label": "Standort (Arbeitsort)",
+   "default": "Lochau am Bodensee, Landstraße 11"
+  },
+  {
+   "fieldname": "sb_arbeitszeit",
+   "fieldtype": "Section Break",
+   "label": "Arbeitszeit und Urlaub"
+  },
+  {
+   "fieldname": "standard_wochenstunden",
+   "fieldtype": "Float",
+   "label": "Normalarbeitszeit (Stunden/Woche)",
+   "default": "38.5",
+   "precision": "2",
+   "description": "KV Handel: 38,5 h. Je Mitarbeiter überschreibbar (Teilzeit)."
+  },
+  {
+   "fieldname": "urlaubsanspruch_tage",
+   "fieldtype": "Int",
+   "label": "Urlaubsanspruch (Arbeitstage/Jahr)",
+   "default": "25",
+   "description": "UrlG § 2: 30 Werktage = 25 Arbeitstage bei 5-Tage-Woche; ab 25 Dienstjahren 30 Arbeitstage (je Mitarbeiter überschreibbar)."
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pause_ab_minuten",
+   "fieldtype": "Int",
+   "label": "Pause automatisch ab (Minuten Arbeitszeit)",
+   "default": "360",
+   "description": "AZG § 11: ab mehr als 6 Stunden mindestens 30 Minuten Ruhepause. Wird als Vorschlag eingetragen, wenn keine Pause erfasst ist."
+  },
+  {
+   "fieldname": "pause_minuten",
+   "fieldtype": "Int",
+   "label": "Pausenvorschlag (Minuten)",
+   "default": "30"
+  },
+  {
+   "fieldname": "sb_urlaub",
+   "fieldtype": "Section Break",
+   "label": "Urlaub und Feiertage"
+  },
+  {
+   "fieldname": "urlaubsjahr",
+   "fieldtype": "Select",
+   "label": "Urlaubsjahr",
+   "options": "Arbeitsjahr\nKalenderjahr",
+   "default": "Arbeitsjahr",
+   "description": "Gesetzlich: Arbeitsjahr (§ 2 Abs 4 UrlG). Kalenderjahr nur mit KV/Betriebsvereinbarung."
+  },
+  {
+   "fieldname": "urlaubsjahr_grundlage",
+   "fieldtype": "Small Text",
+   "label": "Grundlage Kalenderjahr",
+   "depends_on": "eval:doc.urlaubsjahr=='Kalenderjahr'",
+   "mandatory_depends_on": "eval:doc.urlaubsjahr=='Kalenderjahr'"
+  },
+  {
+   "fieldname": "cb_urlaub",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "landesfeiertag_frei",
+   "fieldtype": "Check",
+   "label": "Landesfeiertag arbeitsfrei (Josefstag)",
+   "default": "1",
+   "description": "Showroom am 19.3. geschlossen → Soll 0, kein Urlaubsverbrauch."
+  },
+  {
+   "fieldname": "betriebsruhe_behandlung",
+   "fieldtype": "Select",
+   "label": "Betriebsruhe (24./31.12., Betriebsurlaub)",
+   "options": "Bezahlt frei\nUrlaub\nZeitausgleich",
+   "default": "Bezahlt frei",
+   "description": "Kein gesetzlicher Feiertag. Urlaub/Zeitausgleich nur nach Vereinbarung (UrlG § 4 Abs 1)."
+  },
+  {
+   "fieldname": "sb_genehmigung",
+   "fieldtype": "Section Break",
+   "label": "Genehmigung"
+  },
+  {
+   "fieldname": "genehmiger_fuer_leitung",
+   "fieldtype": "Link",
+   "label": "Genehmigt Anträge der Leitung",
+   "options": "User",
+   "description": "Z. B. Geschäftsführung. Niemand genehmigt eigene Anträge."
+  },
+  {
+   "fieldname": "krank_bestaetigung_ab_tag",
+   "fieldtype": "Int",
+   "label": "AU-Bestätigung verlangen ab Kalendertag",
+   "default": "3",
+   "description": "Hinweis an die Leitung; das Verlangen selbst ist eine Entscheidung im Einzelfall (§ 8 Abs 8 AngG)."
+  },
+  {
+   "fieldname": "cb_genehmigung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "benutzer_bei_austritt_deaktivieren",
+   "fieldtype": "Check",
+   "label": "Benutzer am Austrittstag deaktivieren",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_dienstplan",
+   "fieldtype": "Section Break",
+   "label": "Dienstplan – Mindestbesetzung",
+   "description": "Je Wochentag und Zeitfenster (Showroom-Öffnungszeiten). Feiertage werden übersprungen."
+  },
+  {
+   "fieldname": "mindestbesetzung",
+   "fieldtype": "Table",
+   "label": "Mindestbesetzung",
+   "options": "PH Personal Besetzung"
+  },
+  {
+   "fieldname": "sb_datenschutz",
+   "fieldtype": "Section Break",
+   "label": "Datenschutz Beschäftigte und Bewerbungen"
+  },
+  {
+   "fieldname": "aufbewahrung_zeiten_jahre",
+   "fieldtype": "Int",
+   "label": "Aufbewahrung Zeit-/Abwesenheitsdaten (Jahre ab Jahresende)",
+   "default": "7",
+   "description": "Vorschlag BAO § 132 – mit Steuerberatung bestätigen."
+  },
+  {
+   "fieldname": "notfallkontakt_loeschen_tage",
+   "fieldtype": "Int",
+   "label": "Notfallkontakt/Privates löschen (Tage nach Austritt)",
+   "default": "30"
+  },
+  {
+   "fieldname": "cb_datenschutz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "offene_bewerbung_warnung_tage",
+   "fieldtype": "Int",
+   "label": "Offene Bewerbung: Hinweis nach (Tagen)",
+   "default": "90"
+  },
+  {
+   "fieldname": "sb_vorlagen",
+   "fieldtype": "Section Break",
+   "label": "Briefvorlagen (Druckformate Absage/Zusage)"
+  },
+  {
+   "fieldname": "absage_text",
+   "fieldtype": "Text Editor",
+   "label": "Absagetext",
+   "default": "<p>vielen Dank für Ihre Bewerbung und das Interesse an unserem Haus. Wir haben uns Ihre Unterlagen aufmerksam angesehen.</p><p>Leider können wir Ihnen für diese Position keine Zusage geben; wir haben uns für eine Bewerbung entschieden, die dem Anforderungsprofil noch näher kommt. Diese Entscheidung ist keine Bewertung Ihrer Qualifikation.</p><p>Ihre Unterlagen bewahren wir entsprechend den gesetzlichen Fristen auf und löschen sie danach. Wir wünschen Ihnen für Ihren weiteren Weg alles Gute.</p>"
+  },
+  {
+   "fieldname": "zusage_text",
+   "fieldtype": "Text Editor",
+   "label": "Zusagetext",
+   "default": "<p>wir freuen uns sehr, Ihnen die Position anbieten zu können. Die Einzelheiten (Beginn, Beschäftigungsausmaß, Einstufung nach Kollektivvertrag und Entgelt) finden Sie im beiliegenden Dienstvertrag bzw. Dienstzettel.</p><p>Bitte bestätigen Sie uns kurz Ihre Annahme. Wir heißen Sie herzlich willkommen im Team.</p>"
+  },
+  {
+   "fieldname": "sb_website",
+   "fieldtype": "Section Break",
+   "label": "Website"
+  },
+  {
+   "fieldname": "website_revalidate_aktiv",
+   "fieldtype": "Check",
+   "label": "Website-Cache nach Änderungen an Stellen erneuern",
+   "default": "1",
+   "description": "POST an <ph_website_revalidate_url>/revalidate/karriere mit Header X-Revalidate-Secret (beide Werte aus site_config.json). Auf Staging aus lassen, wenn keine Website angebunden ist."
+  },
+  {
+   "fieldname": "hinweis_schluessel",
+   "fieldtype": "HTML",
+   "label": "Schlüsselnamen",
+   "options": "<p>In <code>site_config.json</code>: <code>ph_website_revalidate_url</code> (z. B. https://platzhirsch.studio) und <code>ph_website_revalidate_secret</code>. Nie hier eintragen.</p>"
+  }
  ],
  "index_web_pages_for_search": 0,
  "issingle": 1,
  "links": [],
- "modified": "2026-11-04 00:30:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Personal",
  "name": "PH Personal Einstellungen",
  "owner": "Administrator",
  "permissions": [
-  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "print": 1, "email": 1, "share": 1},
-  {"role": "PH Backoffice-Admin", "read": 1, "write": 1, "create": 1, "print": 1, "email": 1, "share": 1},
-  {"role": "PH Personal Leitung", "read": 1, "write": 1, "create": 1, "print": 1, "email": 1, "share": 1},
-  {"role": "PH Personal Mitarbeiter", "read": 1},
-  {"role": "PH Geschäftsführung", "read": 1}
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Mitarbeiter",
+   "read": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",

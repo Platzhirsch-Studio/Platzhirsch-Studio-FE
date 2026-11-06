@@ -130,6 +130,10 @@ class PHAuftragsbestaetigung(BelegMixin, Document):
         """Button „Anzahlungsrechnung erstellen“: je offener Anzahlungs-Zeile des Zahlungsplans eine
         Rechnung (Art Anzahlungsrechnung) mit einer Position je USt-Satz, Entwurf → Buchhaltung stellt."""
         self.check_permission("write")
+        return self.anzahlungsrechnungen_anlegen(zeile)
+
+    def anzahlungsrechnungen_anlegen(self, zeile=None, ignore_permissions=False):
+        """Ohne Button-Rechteprüfung – Aufruf aus der Kassa-Anbindung (ph_faktura.ph_faktura.kassa)."""
         if self.status == "Storniert":
             frappe.throw(_("Auftrag ist storniert."))
         zeilen = [z for z in self.zahlungsplan if z.art == "Anzahlung" and not z.rechnung and cint(z.betrag_cent) > 0 and (not zeile or z.name == zeile)]
@@ -157,7 +161,7 @@ class PHAuftragsbestaetigung(BelegMixin, Document):
                     "ust_satz_promille": t["ust_satz_promille"],
                 })
             re.flags.ph_anzahlung = True
-            re.insert()
+            re.insert(ignore_permissions=ignore_permissions)
             frappe.db.set_value("PH Zahlungsplan", z.name, {"rechnung": re.name, "status": "In Rechnung"}, update_modified=False)
             namen.append(re.name)
             journal.schreibe("Anzahlung", re, re.brutto_cent, f"Anzahlungsrechnung zu {self.name} ({z.prozent} %)")
@@ -192,6 +196,24 @@ class PHAuftragsbestaetigung(BelegMixin, Document):
         re.anzahlungen_verrechnen(speichern=True)
         self.add_comment("Info", _("{0} {1} erzeugt").format(_(art), re.name))
         return re.name
+
+    @frappe.whitelist()
+    def rechnung_vorschau(self, art="Schlussrechnung", mengen=None):
+        """Trockenlauf Teil-/Schlussrechnung (Konzept 10-faktura §12 Nr. 1): Entwurf in einem Savepoint bauen,
+        Summen/Anzahlungsabzug lesen, alles zurückrollen – es entsteht kein Beleg und kein Zähler."""
+        self.check_permission("read")
+        frappe.db.savepoint("ph_rechnung_vorschau")
+        try:
+            re = frappe.get_doc("PH Rechnung", self.rechnung_erstellen(art=art, mengen=mengen))
+            return {
+                "art": art, "netto_cent": re.netto_cent, "ust_cent": re.ust_cent, "brutto_cent": re.brutto_cent,
+                "anzahlung_brutto_cent": re.anzahlung_brutto_cent, "zahlbar_cent": re.zahlbar_cent,
+                "positionen": [{"bezeichnung": p.bezeichnung, "menge": p.menge, "netto_cent": p.netto_cent, "ust_satz_promille": p.ust_satz_promille} for p in re.positionen],
+                "ust_aufteilung": [{"ust_satz_promille": a.ust_satz_promille, "netto_cent": a.netto_cent, "ust_cent": a.ust_cent} for a in re.ust_aufteilung],
+                "anzahlungen": [{"anzahlungsrechnung": a.anzahlungsrechnung, "brutto_cent": a.brutto_cent, "ust_cent": a.ust_cent} for a in re.anzahlungen_verrechnet],
+            }
+        finally:
+            frappe.db.rollback(save_point="ph_rechnung_vorschau")
 
     def offene_anzahlungen(self, ausser=None):
         """Noch nicht verrechnete Anzahlungsbeträge je Anzahlungsrechnung und USt-Satz (für PH Rechnung)."""

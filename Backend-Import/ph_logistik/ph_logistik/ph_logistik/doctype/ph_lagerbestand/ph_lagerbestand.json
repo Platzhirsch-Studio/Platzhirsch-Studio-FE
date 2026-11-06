@@ -17,12 +17,15 @@
   "cb_kopf",
   "lagerort",
   "platz",
+  "kommission",
   "menge",
   "reserviert",
   "verfuegbar",
   "sb_stueck",
   "ausstellungsstueck",
   "zustand",
+  "gesperrt",
+  "sperrgrund",
   "seriennummer",
   "ean",
   "cb_stueck",
@@ -36,6 +39,9 @@
   "cb_preise",
   "reserviert_fuer_doctype",
   "reserviert_fuer",
+  "reserviert_bis",
+  "reserviert_kontakt",
+  "reserviert_kunde_name",
   "sb_herkunft",
   "bezug_doctype",
   "bezug",
@@ -68,7 +74,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Verfuegbar\nReserviert\nVerkauft\nAusgeschieden",
+   "options": "Verfuegbar\nReserviert\nKommission\nGesperrt\nVerkauft\nAusgeschieden",
    "default": "Verfuegbar",
    "read_only": 1,
    "in_list_view": 1,
@@ -121,6 +127,14 @@
    "in_list_view": 1
   },
   {
+   "fieldname": "kommission",
+   "fieldtype": "Data",
+   "label": "Kommission (Projekt/Auftrag)",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Projekt- oder AB-Nummer: Ware gehört diesem Auftrag und ist nicht frei verkäuflich."
+  },
+  {
    "fieldname": "menge",
    "fieldtype": "Int",
    "label": "Menge",
@@ -160,6 +174,20 @@
    "label": "Zustand",
    "options": "Neu\nAusstellung\nB-Ware",
    "default": "Neu"
+  },
+  {
+   "fieldname": "gesperrt",
+   "fieldtype": "Check",
+   "label": "Gesperrt",
+   "in_standard_filter": 1,
+   "description": "Schaden, Rückgabe an Lieferant, Klärung – nicht verkäuflich."
+  },
+  {
+   "fieldname": "sperrgrund",
+   "fieldtype": "Data",
+   "label": "Sperrgrund",
+   "depends_on": "gesperrt",
+   "mandatory_depends_on": "gesperrt"
   },
   {
    "fieldname": "seriennummer",
@@ -233,6 +261,24 @@
    "fieldtype": "Dynamic Link",
    "label": "Reserviert für",
    "options": "reserviert_fuer_doctype",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reserviert_bis",
+   "fieldtype": "Date",
+   "label": "Reserviert bis",
+   "description": "Abgelaufene Reservierungen gibt der Scheduler täglich frei."
+  },
+  {
+   "fieldname": "reserviert_kontakt",
+   "fieldtype": "Link",
+   "label": "Reserviert für Kunde",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "reserviert_kunde_name",
+   "fieldtype": "Data",
+   "label": "Kundenname",
    "read_only": 1
   },
   {
@@ -382,6 +428,29 @@
    "export": 0,
    "report": 1,
    "share": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
   }
  ],
  "sort_field": "modified",
@@ -402,10 +471,18 @@
   {
    "title": "Ausgeschieden",
    "color": "Gray"
+  },
+  {
+   "title": "Kommission",
+   "color": "Purple"
+  },
+  {
+   "title": "Gesperrt",
+   "color": "Red"
   }
  ],
  "track_changes": 1,
- "search_fields": "produkt_name,seriennummer,ean,lagerort",
+ "search_fields": "produkt_name,seriennummer,ean,lagerort,kommission",
  "title_field": "titel",
  "track_seen": 0,
  "autoname": "naming_series:",

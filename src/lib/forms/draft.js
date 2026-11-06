@@ -36,7 +36,10 @@ export function readHandoff(raw, { lineKeys = [], now = Date.now() } = {}) {
     if (!h || typeof h.text !== "string" || !h.text.trim()) return null;
     if (!Number.isFinite(h.at) || now - h.at > HANDOFF_MAX_MS || h.at > now + 60_000) return null;
     if (!lineKeys.includes(String(h.planer || ""))) return null;
-    return { text: h.text.trim().slice(0, 4000), url: typeof h.url === "string" ? h.url : "" };
+    const out = { text: h.text.trim().slice(0, 4000), url: typeof h.url === "string" ? h.url : "" };
+    // Sofaplaner: der Plan als Objekt (planerFields.js, nur an ph_crm). Ohne ihn wie bisher.
+    if (h.config && typeof h.config === "object" && !Array.isArray(h.config)) out.config = h.config;
+    return out;
   } catch {
     return null;
   }

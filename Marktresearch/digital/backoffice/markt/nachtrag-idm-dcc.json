@@ -1,0 +1,104 @@
+{
+ "produkt": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+ "url": "https://dcc-moebel.org/",
+ "stand": "2026-11-04",
+ "zeichen": 14000,
+ "funktionen": [
+  {
+   "name": "Standards für Katalogdaten und Bewegungsdaten (EDI)",
+   "beschreibung": "Der DCC definiert Standards für Katalogdaten (Stammdaten) und Bewegungsdaten (EDI) zwischen Industrie, Handel und Softwarehäusern.",
+   "bereich": "sortiment",
+   "nutzen": "Herstellerdaten und Bestellnachrichten in einem einheitlichen Format.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://dcc-moebel.org/"
+  },
+  {
+   "name": "IDM - Integriertes Datenmodell (seit 2002)",
+   "beschreibung": "Hersteller liefern Katalogdaten im einheitlichen Format IDM, das Planungs- und Warenwirtschaftssysteme einlesen.",
+   "bereich": "sortiment",
+   "nutzen": "Ein Katalogformat für variantenreiche, planungsintensive Möbel.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://docs.roomle.com/rubens/content-creation/idm/idmabout.md"
+  },
+  {
+   "name": "IDM-Sparten Küche/Bad, Polster, Wohnen",
+   "beschreibung": "IDM existiert für die Sparten Küche/Bad, Polster und Wohnen.",
+   "bereich": "sortiment",
+   "nutzen": "Küchen- und Wohnmöbelhersteller über denselben Standard anbinden.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://www.shd.de/fileadmin/data_news/pdf/MK_07_13_S68.pdf"
+  },
+  {
+   "name": "IDM Polster mit Grafikoptionen (2D-Magnetplaner, Farbberatung)",
+   "beschreibung": "IDM Polster (ab 2.3) enthält Grafikoptionen für 2D-Magnetplaner, Farbberatungsfotos und Milieudarstellung.",
+   "bereich": "sortiment",
+   "nutzen": "Sofa-Konfiguration mit Bildern am POS.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://www.shd.de/fileadmin/data_news/pdf/MK_07_13_S68.pdf"
+  },
+  {
+   "name": "Bestellabwicklung vom Kunden über Handel zur Fertigung und zurück",
+   "beschreibung": "Bei Anbindung bis in die Warenwirtschaft erlaubt IDM die Bestellabwicklung Kunde-Handel-Fertigung in beide Richtungen.",
+   "bereich": "logistik",
+   "nutzen": "Bestellung aus der Konfiguration direkt an den Hersteller.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://www.shd.de/fileadmin/data_news/pdf/MK_07_13_S68.pdf"
+  },
+  {
+   "name": "Plausibilitätsprüfungen bei Konfiguration",
+   "beschreibung": "Prüfungen in IDM-basierten Konfiguratoren vermeiden Rückfragen und erhöhen Bestellqualität.",
+   "bereich": "sortiment",
+   "nutzen": "Weniger Fehlbestellungen bei Polstervarianten.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://www.shd.de/fileadmin/data_news/pdf/MK_07_13_S68.pdf"
+  },
+  {
+   "name": "Systemwechsel ohne Datenverlust",
+   "beschreibung": "Da Datenkataloge auf einem einheitlichen Standard basieren, kann der Systemanbieter gewechselt werden.",
+   "bereich": "zentrale",
+   "nutzen": "Kein Lock-in bei Planungs-/ERP-Software.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://www.shd.de/fileadmin/data_news/pdf/MK_07_13_S68.pdf"
+  },
+  {
+   "name": "IWOfurn als IDM-Datendrehscheibe",
+   "beschreibung": "IWOfurn kommuniziert Stamm- und Bewegungsdaten, kaufmännisch und grafisch, auf IDM-Basis zwischen Industrie und Handel bis in die Warenwirtschaft.",
+   "bereich": "logistik",
+   "nutzen": "Ein Anschluss statt Einzelanbindung je Hersteller.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://www.shd.de/fileadmin/data_news/pdf/MK_07_13_S68.pdf"
+  },
+  {
+   "name": "Multichannel-Datenbereitstellung",
+   "beschreibung": "IDM-Daten werden über IWOfurn auch für Onlineplattformen (Amazon, eBay, Apps) bereitgestellt.",
+   "bereich": "shop",
+   "nutzen": "Onlineshop mit Herstellerdaten befüllen.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://www.shd.de/fileadmin/data_news/pdf/MK_07_13_S68.pdf"
+  },
+  {
+   "name": "EDI-Bestellung/AB/Rechnung über IWOfurn (Praxis)",
+   "beschreibung": "Warenwirtschaften tauschen Bestellungen, Auftragsbestätigungen und Rechnungen über EDI und IWOfurn aus.",
+   "bereich": "logistik",
+   "nutzen": "AB und Rechnung elektronisch statt Papier.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://sauter-held.de/einfach-arbeiten/integration-planungssysteme/"
+  },
+  {
+   "name": "EDI-AB mit GLN-Stammdaten",
+   "beschreibung": "Für EDI-Bestellung und AB werden GLN-Nummern sowie gepflegte Konditionen und Katalogpflege vorausgesetzt.",
+   "bereich": "sortiment",
+   "nutzen": "Vorbereitung: GLN je Lieferant pflegen.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://www.moebelpilot.com/warenwirtschaftssystem/digitale-loesungen/edi-bestellung-und-ab-abwicklung/"
+  },
+  {
+   "name": "Digitaler Produktpass und Digitale Zwillinge",
+   "beschreibung": "Der DCC entwickelt Standards für Digitalen Produktpass und Digitale Zwillinge.",
+   "bereich": "sortiment",
+   "nutzen": "Vorbereitung auf EU-Produktpass-Pflichten.",
+   "quelle": "IDM-Datenstandard (Daten Competence Center e.V., DCC)",
+   "url": "https://dcc-moebel.org/"
+  }
+ ]
+}

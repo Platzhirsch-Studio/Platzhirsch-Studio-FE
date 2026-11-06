@@ -5,9 +5,10 @@ import frappe
 
 
 def execute():
-    from ph_crm.install import einstellungen_anlegen, terminarten_anlegen
+    from ph_crm.install import beratungsvorlagen_anlegen, einstellungen_anlegen, terminarten_anlegen
 
     if not frappe.db.exists("DocType", "PH Terminart"):
         return
     terminarten_anlegen()
     einstellungen_anlegen()
+    beratungsvorlagen_anlegen()

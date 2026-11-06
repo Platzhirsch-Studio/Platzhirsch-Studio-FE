@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Gemeinkostenzuschlag (aus / % auf Wareneinsatz / % auf Gesamtkosten / % auf Erlös / € je Projektstunde) je Projektart mit Gültigkeit – erzeugt die Stufe DB4.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "projektart",
+  "art",
+  "prozent",
+  "betrag_je_stunde_cent",
+  "gueltig_ab",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "projektart",
+   "fieldtype": "Autocomplete",
+   "label": "Projektart",
+   "options": "Alle\nWohnung\nHaus\nKueche\nBad\nHotel\nObjekt\nYacht\nOutdoor\nSonstiges",
+   "default": "Alle",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Zuschlagsart",
+   "options": "Aus\nProzent auf Wareneinsatz\nProzent auf Gesamtkosten\nProzent auf Erloes\nBetrag je Projektstunde",
+   "default": "Aus",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "prozent",
+   "fieldtype": "Percent",
+   "label": "Prozent",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "betrag_je_stunde_cent",
+   "fieldtype": "Int",
+   "label": "Cent je Projektstunde",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "gueltig_ab",
+   "fieldtype": "Date",
+   "label": "Gültig ab",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Data",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Gemeinkosten Regel",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

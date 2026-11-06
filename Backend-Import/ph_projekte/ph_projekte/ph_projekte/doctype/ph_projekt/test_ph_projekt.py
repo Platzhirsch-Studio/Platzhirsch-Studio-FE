@@ -132,3 +132,43 @@ class TestPHProjekt(FrappeTestCase):
         for key in ("projekt", "phasen", "positionen", "planungen", "renderings", "dokumente", "montagen", "gewerke", "abnahmen", "aufgaben", "zeiten", "nachrichten", "apps"):
             self.assertIn(key, d)
         self.assertEqual(d["projekt"]["name"], p.name)
+
+
+class TestPHProjektLieferung(FrappeTestCase):
+    """Positionen je Raum mit Lieferant → Herstellerbestellung (ph_sortiment) → Lieferstatus, Terminänderung, Kalkulation."""
+
+    def setUp(self):
+        frappe.set_user("Administrator")
+        if not frappe.db.exists("PH Lieferant", "Test Möbelwerk"):
+            frappe.get_doc({"doctype": "PH Lieferant", "firmenname": "Test Möbelwerk", "status": "Aktiv"}).insert()
+        self.p = testprojekt("Lieferung Test")
+        if not any(z.lieferant for z in self.p.positionen):
+            self.p.append("positionen", {"bezeichnung": "Esstisch Eiche", "menge": 2, "raum": "Essen", "lieferant": "Test Möbelwerk", "preis_cent": 150000, "ek_cent": 80000})
+            self.p.save()
+
+    def test_bestellen_und_terminaenderung(self):
+        erg = self.p.herstellerbestellungen_erzeugen()
+        self.assertTrue(erg["bestellungen"])
+        self.p.reload()
+        zeile = next(z for z in self.p.positionen if z.lieferant == "Test Möbelwerk")
+        self.assertTrue(zeile.herstellerbestellung)
+        hb = frappe.get_doc("PH Herstellerbestellung", zeile.herstellerbestellung)
+        self.assertEqual(hb.bezug_name, self.p.name)
+        hb_pos = next(z for z in hb.positionen if z.bezug_zeile == zeile.name)
+        hb_pos.bestaetigter_termin = "2027-02-15"
+        hb.save()
+        self.p.reload()
+        zeile = next(z for z in self.p.positionen if z.lieferant == "Test Möbelwerk")
+        self.assertEqual(str(zeile.liefertermin), "2027-02-15")
+
+    def test_lieferung_nachlieferung_kalkulation(self):
+        zeile = next(z for z in self.p.positionen if z.lieferant == "Test Möbelwerk")
+        r = self.p.lieferung_buchen(zeile.name, 1)
+        self.assertEqual(r["lieferstatus"], "teilgeliefert")
+        self.p.reload()
+        self.p.nachlieferung_anlegen(zeile.name, 1, "Platte beschädigt", bestellen=0)
+        self.p.reload()
+        self.assertTrue(next(z for z in self.p.positionen if z.name == zeile.name).nachlieferung_noetig)
+        k = self.p.kalkulation()
+        self.assertGreaterEqual(k["soll"]["vk_cent"], 300000)
+        self.assertIn("ist", k)

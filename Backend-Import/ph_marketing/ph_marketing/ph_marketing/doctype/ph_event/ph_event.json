@@ -23,6 +23,9 @@
   "cb_2",
   "warteliste",
   "max_personen_je_anmeldung",
+  "nachruecken_automatisch",
+  "kontingent_einladung",
+  "kontingent_bis",
   "kostenlos",
   "sb_programm",
   "programm",
@@ -37,6 +40,14 @@
   "erinnerung_gesendet_am",
   "einladungs_reise",
   "kampagne",
+  "sb_einladung",
+  "einladung_segment",
+  "einladung_vorlage",
+  "cb_e1",
+  "einladungen_gesendet",
+  "absage_vorlage",
+  "nachrueck_vorlage",
+  "einladungen",
   "sb_dsgvo",
   "loeschfrist_monate",
   "anmeldungen_geloescht_am",
@@ -154,6 +165,24 @@
    "default": "10"
   },
   {
+   "fieldname": "nachruecken_automatisch",
+   "fieldtype": "Check",
+   "label": "Warteliste automatisch nachrücken",
+   "default": "1",
+   "description": "Bei Absage rücken Wartende in Anmeldereihenfolge nach und erhalten eine Mail."
+  },
+  {
+   "fieldname": "kontingent_einladung",
+   "fieldtype": "Int",
+   "label": "Kontingent für Eingeladene (Plätze)",
+   "description": "Bis „Kontingent bis“ nur für eingeladene Adressen buchbar; danach für alle."
+  },
+  {
+   "fieldname": "kontingent_bis",
+   "fieldtype": "Date",
+   "label": "Kontingent bis"
+  },
+  {
    "fieldname": "kostenlos",
    "fieldtype": "Check",
    "label": "Kostenlos",
@@ -231,6 +260,51 @@
    "options": "PH Kampagne"
   },
   {
+   "fieldname": "sb_einladung",
+   "fieldtype": "Section Break",
+   "label": "Einladung"
+  },
+  {
+   "fieldname": "einladung_segment",
+   "fieldtype": "Link",
+   "label": "Segment (Zweck einladungen)",
+   "options": "PH Segment"
+  },
+  {
+   "fieldname": "einladung_vorlage",
+   "fieldtype": "Link",
+   "label": "Einladungs-Vorlage",
+   "options": "PH Mail Vorlage"
+  },
+  {
+   "fieldname": "cb_e1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "einladungen_gesendet",
+   "fieldtype": "Int",
+   "label": "Einladungen gesendet",
+   "read_only": 1
+  },
+  {
+   "fieldname": "absage_vorlage",
+   "fieldtype": "Link",
+   "label": "Vorlage Absage an Teilnehmer",
+   "options": "PH Mail Vorlage"
+  },
+  {
+   "fieldname": "nachrueck_vorlage",
+   "fieldtype": "Link",
+   "label": "Vorlage Nachrücken",
+   "options": "PH Mail Vorlage"
+  },
+  {
+   "fieldname": "einladungen",
+   "fieldtype": "Table",
+   "label": "Einladungen",
+   "options": "PH Event Einladung"
+  },
+  {
    "fieldname": "sb_dsgvo",
    "fieldtype": "Section Break",
    "label": "Datenschutz"
@@ -284,7 +358,7 @@
    "group": "Einladungen"
   }
  ],
- "modified": "2026-11-04 10:00:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Marketing",
  "name": "PH Event",

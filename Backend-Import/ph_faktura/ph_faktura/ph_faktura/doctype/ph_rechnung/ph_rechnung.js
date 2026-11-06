@@ -21,6 +21,30 @@ frappe.ui.form.on("PH Rechnung", {
 				if (offen.length && !(frm.doc.anzahlungen_verrechnet || []).length) frm.dashboard.set_headline_alert(__("{0} offene Anzahlungsbeträge – bitte „Anzahlungen verrechnen“.", [offen.length]), "orange");
 			}
 		}
+		if (frm.doc.docstatus === 0) {
+			frm.add_custom_button(__("Pflichtangaben prüfen"), () => frm.call({ method: "pflichtangaben_vorschau", doc: frm.doc }).then((r) => {
+				const m = r.message || {};
+				frappe.msgprint(m.ok ? __("Alle Pflichtangaben nach § 11 UStG vorhanden.") : __("Es fehlt: {0}", [(m.fehlt || []).join(", ")]));
+			}), __("Prüfen"));
+			frm.add_custom_button(__("Nächste Nummer"), () => frm.call({ method: "nummer_vorschau", doc: frm.doc }).then((r) => frappe.show_alert(__("Vorschau: {0} (wird beim Stellen vergeben)", [r.message]))), __("Prüfen"));
+		}
+		if (frm.doc.docstatus === 1) {
+			frm.add_custom_button(__("E-Rechnung (XML)"), () => {
+				const d = new frappe.ui.Dialog({ title: __("E-Rechnung erzeugen"), fields: [{ fieldname: "format", fieldtype: "Select", label: __("Format"), options: ["ebInterface 6.1", "ZUGFeRD EN16931", "XRechnung"], default: frm.doc.erechnung_format || "ebInterface 6.1" }],
+					primary_action_label: __("Erzeugen"), primary_action: (v) => frm.call({ method: "erechnung_erzeugen", doc: frm.doc, args: v }).then((r) => { d.hide(); frm.reload_doc(); if (r.message && r.message.hinweis) frappe.msgprint(r.message.hinweis); }) });
+				d.show();
+			}, __("Aktionen"));
+			frm.add_custom_button(__("Als gesendet markieren"), () => frappe.prompt({ fieldname: "kanal", fieldtype: "Select", label: __("Kanal"), options: ["Post", "Persoenlich", "Portal", "E-Rechnung"], default: "Post" }, (v) => frm.call({ method: "als_gesendet_markieren", doc: frm.doc, args: v }).then(() => frm.reload_doc())), __("Aktionen"));
+			if (frm.doc.status !== "Storniert") {
+				frm.add_custom_button(__("Rechnung korrigieren"), () => frappe.prompt({ fieldname: "grund", fieldtype: "Small Text", label: __("Grund der Korrektur"), reqd: 1 }, (v) => frappe.confirm(__("Storno-Gutschrift stellen und neuen Entwurf anlegen?"), () => frm.call({ method: "korrigieren", doc: frm.doc, args: v, freeze: true }).then((r) => r.message && frappe.set_route("Form", "PH Rechnung", r.message.rechnung)))), __("Aktionen"));
+			}
+			if (Number(frm.doc.offen_cent) > 0) {
+				frm.add_custom_button(__("Mahnvorschau"), () => frm.call({ method: "mahnvorschau", doc: frm.doc }).then((r) => {
+					const m = r.message || {};
+					frappe.msgprint(__("Stufe {0}: {1} Verzugstage, Gebühr {2}, Zinsen {3}, Gesamt {4}", [m.stufe, m.verzugstage, format_currency((m.mahngebuehr_cent || 0) / 100, "EUR"), format_currency((m.verzugszinsen_cent || 0) / 100, "EUR"), format_currency((m.gesamt_cent || 0) / 100, "EUR")]));
+				}), __("Prüfen"));
+			}
+		}
 		if (frm.doc.docstatus === 1) {
 			const offen = Number(frm.doc.offen_cent) > 0 && !["Storniert", "Uneinbringlich"].includes(frm.doc.status);
 			frm.add_custom_button(__("Als PDF senden"), () => ph_faktura.senden_dialog(frm), __("Aktionen"));

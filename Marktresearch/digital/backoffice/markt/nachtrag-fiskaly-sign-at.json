@@ -1,0 +1,160 @@
+{
+  "produkt": "fiskaly SIGN AT",
+  "url": "https://workspace.fiskaly.com/countries/austria/",
+  "stand": "2026-11-04",
+  "zeichen": 16000,
+  "funktionen": [
+    {
+      "name": "Cloud-Signaturerstellungseinheit (SCU)",
+      "beschreibung": "Der Integrator legt pro Organisation eine SCU per API an, die fiskaly als Sicherheitseinrichtung betreibt.",
+      "bereich": "kassa",
+      "nutzen": "Keine Signaturkarte/Hardware im Showroom nötig.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/sign-at/integration-guide/"
+    },
+    {
+      "name": "Software-only, plattformunabhängig",
+      "beschreibung": "Die Kassa nutzt SIGN AT über eine REST-API und benötigt nur eine stabile Internetverbindung.",
+      "bereich": "kassa",
+      "nutzen": "Eigene Backoffice-Kassa (Web) kann RKSV-konform signieren.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://developer.fiskaly.com/sign-at/introduction"
+    },
+    {
+      "name": "Kassen anlegen",
+      "beschreibung": "Der Integrator legt je physischer Kassa ein Cash-Register-Objekt an.",
+      "bereich": "kassa",
+      "nutzen": "Showroom-Kassa und mobile Kassa getrennt führen.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/sign-at/integration-guide/"
+    },
+    {
+      "name": "FinanzOnline-Authentifizierung",
+      "beschreibung": "Der Benutzer hinterlegt einmal pro Steuerpflichtigem die Zugangsdaten des Registrierkassen-Webservice-Benutzers.",
+      "bereich": "kassa",
+      "nutzen": "Registrierung bei FinanzOnline ohne manuelle Formulare.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/sign-at/integration-guide/"
+    },
+    {
+      "name": "Automatische SCU-Registrierung",
+      "beschreibung": "Beim Übergang der SCU auf INITIALIZED wird sie automatisch in FinanzOnline registriert.",
+      "bereich": "kassa",
+      "nutzen": "Fristgerechte Registrierung ohne Handarbeit.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/sign-at/integration-guide/"
+    },
+    {
+      "name": "Kassenregistrierung und Startbeleg-Prüfung",
+      "beschreibung": "Beim Setzen der Kassa auf REGISTERED/INITIALIZED registriert SIGN AT die Kassa und erstellt und validiert den Startbeleg in FinanzOnline.",
+      "bereich": "kassa",
+      "nutzen": "Startbeleg-Prüfpflicht automatisch erfüllt.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/sign-at/integration-guide/"
+    },
+    {
+      "name": "Beleg signieren",
+      "beschreibung": "Die Kassa ruft signReceipt auf und erhält QR-Code-Daten, Belegnummer, Zeitstempel und Kassenseriennummer für den Bon.",
+      "bereich": "kassa",
+      "nutzen": "Jeder Showroom-Beleg trägt den RKSV-QR-Code.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/sign-at/integration-guide/"
+    },
+    {
+      "name": "RKSV-QR-Code mit Pflichtdaten",
+      "beschreibung": "Der Beleg enthält den maschinenlesbaren Code mit Barbeträgen je Steuersatz, Kassen-ID und Zeitpunkt.",
+      "bereich": "kassa",
+      "nutzen": "Belege sind mit der BMF-Belegcheck-App prüfbar.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/sign-at/receipt-data/"
+    },
+    {
+      "name": "Automatischer Monatsbeleg",
+      "beschreibung": "Fällt eine neue Transaktion in einen neuen Monat, erstellt die API zuerst automatisch den Monatsbeleg (MONTHLY_CLOSE).",
+      "bereich": "kassa",
+      "nutzen": "Monatsbeleg wird nie vergessen.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/countries/austria/faq/"
+    },
+    {
+      "name": "Automatischer Jahresbeleg",
+      "beschreibung": "Beim Jahreswechsel erstellt die API automatisch den Jahresbeleg (YEARLY_CLOSE).",
+      "bereich": "kassa",
+      "nutzen": "Jahresbeleg als Basis für die Prüfung bis 15.2.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/countries/austria/faq/"
+    },
+    {
+      "name": "Schlussbeleg bei Außerbetriebnahme",
+      "beschreibung": "Der Benutzer setzt die Kassa auf DECOMMISSIONED; SIGN AT erstellt den Schlussbeleg und meldet die Außerbetriebnahme an FinanzOnline.",
+      "bereich": "kassa",
+      "nutzen": "Kassentausch/Filialschließung rechtskonform.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/countries/austria/faq/"
+    },
+    {
+      "name": "Nullbeleg",
+      "beschreibung": "Der Benutzer erstellt einen Beleg ohne Positionen als Nullbeleg, z. B. auf Verlangen eines Prüfers.",
+      "bereich": "kassa",
+      "nutzen": "Prüferanforderungen schnell erfüllen.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/countries/austria/faq/"
+    },
+    {
+      "name": "Stornobeleg",
+      "beschreibung": "Der Benutzer storniert einen Beleg durch einen CANCELLATION-Beleg mit negativen Beträgen und stellt danach den richtigen Beleg aus.",
+      "bereich": "kassa",
+      "nutzen": "Fehlbuchungen RKSV-konform korrigieren.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/countries/austria/faq/"
+    },
+    {
+      "name": "DEP7-Export",
+      "beschreibung": "Der Benutzer exportiert über exportCashRegister das Datenerfassungsprotokoll (DEP7); fiskaly empfiehlt mindestens alle 3 Monate.",
+      "bereich": "kassa",
+      "nutzen": "Vierteljährliche DEP-Sicherung und Vorlage bei Betriebsprüfung.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/countries/austria/faq/"
+    },
+    {
+      "name": "Ersatzsignatur bei TSP-Ausfall",
+      "beschreibung": "Ist der Vertrauensdiensteanbieter nicht erreichbar, erhalten Belege den Hinweis 'Sicherheitseinrichtung ausgefallen' und bleiben gültig.",
+      "bereich": "kassa",
+      "nutzen": "Showroom kann bei Störung weiter verkaufen.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/countries/austria/faq/"
+    },
+    {
+      "name": "Automatischer Sammelbeleg nach Ausfall",
+      "beschreibung": "Nach Wiedererreichbarkeit erstellt SIGN AT automatisch einen Nullbeleg, der das Ende des Ausfalls markiert.",
+      "bereich": "kassa",
+      "nutzen": "Pflicht-Sammelbeleg nach § 17 RKSV automatisch.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/countries/austria/faq/"
+    },
+    {
+      "name": "Nacherfassung bei API-Ausfall",
+      "beschreibung": "Die Kassa speichert die Anfrage mit Beleg-UUID, druckt Ausfallhinweis und QR-Code und spielt die Anfragen später mit derselben UUID nach.",
+      "bereich": "kassa",
+      "nutzen": "Kein Umsatzverlust bei Internetausfall im Showroom.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/countries/austria/faq/"
+    },
+    {
+      "name": "FinanzOnline-Meldungen durch fiskaly",
+      "beschreibung": "fiskaly übermittelt die für RKSV-Vorgänge nötigen Meldungen an FinanzOnline.",
+      "bereich": "kassa",
+      "nutzen": "Weniger manuelle Behördenmeldungen.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/countries/austria/faq/"
+    },
+    {
+      "name": "Sandbox/TEST-Umgebung",
+      "beschreibung": "Der Integrator testet die Integration in einer Sandbox mit simuliertem FinanzOnline, bevor Produktion freigeschaltet wird.",
+      "bereich": "zentrale",
+      "nutzen": "Eigene Kassa gefahrlos entwickeln und testen.",
+      "quelle": "fiskaly SIGN AT",
+      "url": "https://workspace.fiskaly.com/countries/austria/"
+    }
+  ]
+}

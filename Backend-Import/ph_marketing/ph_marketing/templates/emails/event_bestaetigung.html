@@ -11,6 +11,7 @@
 <p style="{{ P }}">Ort: {{ event_ort or "Showroom und Café, Landstraße 11, 6911 Lochau" }}</p>
 {% if event_programm %}<div style="{{ P }}">{{ event_programm }}</div>{% endif %}
 <p style="{{ P }}">Falls Sie doch nicht kommen können, geben Sie uns bitte kurz Bescheid{% if absagen_url %}: <a href="{{ absagen_url }}" style="color:#30373e">Anmeldung absagen</a>{% endif %}. Dann freut sich jemand anderes über den Platz.</p>
+{% if checkin_code %}<p style="{{ P }}">Ihr Einlass-Code (am Eingang zeigen oder Namen nennen): <strong style="font-family:monospace;font-size:13px">{{ checkin_code }}</strong></p>{% endif %}
 <p style="{{ P }}">Herzlich<br>Susanne Messmer</p>
 {% endblock %}
 {% block fusszeile %}Diese Nachricht bestätigt Ihre Anmeldung bei Platzhirsch Home Living. Ihre Anmeldedaten löschen wir drei Monate nach der Veranstaltung.{% endblock %}

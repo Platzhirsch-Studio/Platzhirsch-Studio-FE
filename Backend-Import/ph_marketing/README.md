@@ -24,18 +24,52 @@ Newsletter mit Double-Opt-in, Einwilligungs-Protokoll, Kundenreisen (einfache Au
 Workflows (`fixtures/workflow*.json`): **PH Newsletter Ausgabe** Entwurf → Freigabe → Geplant (Leitung, nur versandbereit + Zeitpunkt) → Wird versendet → Versendet / Abgebrochen · **PH Event** Geplant → Offen (Leitung, nur mit Uhrzeit) → Ausgebucht ↔ Offen → Durchgeführt / Abgesagt · **PH Kampagne** Entwurf → Aktiv ↔ Pausiert → Beendet · **PH Social Beitrag** Idee → Entwurf → Freigegeben (Leitung, Bedingung Bildquelle ≠ offen) → Geplant → Veröffentlicht / Verworfen.
 Kanban: PH Social Beiträge, PH Kampagnen, PH Events; Kalenderansicht Social-Beiträge. Print Formats: PH Event Teilnehmerliste, PH Event Namensschilder (85 × 54 mm), PH Einwilligung Nachweis, PH Kampagnenbericht. Charts: Abos je Woche, Abos nach Quelle, Einwilligungen nach Zweck, Beiträge je Kanal, Abmeldungen je Monat. Number Cards: Aktive Abos, Unbestätigt > 48 h, DOI-Quote 30 Tage, Aktive Kampagnen, Event-Anmeldungen, Beiträge diese Woche. Reports: PH Newsletter-Entwicklung (Abos je Monat/Quelle, DOI-Quote, Abmeldungen), PH Kampagnen-ROI, PH Einwilligungen nach Zweck, PH Event-Auslastung, PH Social Redaktionsplan, PH Top-Seiten (Einblicke). Workspace „PH Marketing“ (sequence 9).
 
+## Ergänzungen 04.11. (Backend-Lücken, Inhaber-Entscheidung Nr. 50)
+
+| Baustein | Zweck | Datei |
+|---|---|---|
+| PH Segment + PH Segment Regel | Segment-Builder: Interesse, Sprache, PLZ/Land, Kontaktart/-status, Kundenkarte-Stufe, Kauf in/seit N Tagen, Umsatz 12 M/gesamt, Anzahl Käufe, Event-Teilnahme, Abo-Quelle; UND/ODER, Negation; **Einwilligungsprüfung je Zweck zwingend** (Abo Aktiv/DOI, Widerruf, Bounce/Beschwerde, nicht kontaktieren, Email Unsubscribe); Vorschau mit Ausschlussgründen | `utils/segment.py`, `ph_marketing/segmente.py`, `doctype/ph_segment/` |
+| Newsletter → Segment | Zielgruppe „Segment“ (nur Zweck newsletter), Empfängerliste `empfaenger_liste()`, Zustellstatistik `zustellung()`, ToDo an Leitung bei „Zur Freigabe“, Realtime-Fortschritt `ph_marketing_versand` | `doctype/ph_newsletter_ausgabe/` |
+| Versandprotokoll | Status gesendet/verzoegert/zugestellt/bounce_weich/bounce_hart/beschwerde/abgemeldet; Hard-Bounce und Beschwerde sperren sofort, weiche ab 3; Beschwerde widerruft alle werblichen Zwecke | `utils/mail_ereignis.py`, `ph_marketing/mail_ereignisse.py`, PH Mail Ereignis (180 Tage) |
+| Resend-Webhook | `POST ph_marketing.api.webhook.resend` (einzige Guest-Methode, Svix-HMAC, ±5 min) | `api/webhook.py` |
+| List-Unsubscribe | RFC 2369/8058-Header bei Resend; `ph_marketing.api.unsubscribe_one_click(token, body)` für die Website-Route `one_click_pfad` | `versand.abmelde_kopfzeilen` |
+| Event: Kontingent/Warteliste | Kontingent für Eingeladene bis Datum, automatisches Nachrücken (FIFO ohne Blockade durch große Gruppen) mit Mail, Einladung an Segment (Zweck einladungen), Absage-Mail an Teilnehmer, Begleitpersonen | `utils/eventlogik.py`, `events.py`, PH Event Einladung |
+| Event: Check-in | QR-Code `PHE1.<event>.<zeile>.<HMAC>` ohne Personenbezug, Schlüssel aus dem Site-Verschlüsselungsschlüssel, Doppel-Check-in erkannt, `erschienen_am`/`checkin_durch`; Druckformat „PH Event Ticket“, Code in der Bestätigungsmail | `checkin.py`, `api/backoffice.event_check_in` |
+| Kampagnen-Attribution | PH Kampagne Kontaktpunkt aus Website-UTM (Anfrage, Newsletter-, Event-Anmeldung), Modelle last/first/linear, Fenster 180 Tage, Nachlauf beendeter Kampagnen 30 Tage; Umsatz aus PH Auftragsbestaetigung/PH Bestellung (wenn installiert); ROI ‰, Zielfortschritt; CSV-Import Plattform-Kennzahlen | `utils/attribution.py`, `kampagnen.py`, `utils/kennzahlen_csv.py`, Report „PH Kampagnen-ROI“ |
+| Backoffice-API | `ph_marketing.api.backoffice.create_subscription`, `resend_doi_bulk`, `unsubscribe_bulk`, `preview_segment`, `list_recipients`, `event_check_in`, `journey_dry_run`, `check_order_source` | `api/backoffice.py` |
+| Kontakt-Hooks (ph_crm) | Zeitleiste, Auskunft Art. 15, Löschplan Art. 17 (Einwilligungsnachweis 3 J., Empfehlung mit Gutschein 7 J. BAO, Rest löschen/anonymisieren), Zusammenführen (Widerruf hat Vorrang) | `kontakt_hooks.py`, `utils/datenschutz.py` |
+| A14 Löschfristen | Katalog je Datenkategorie (Abo, Einwilligung, Event, Versand, Kontaktpunkt, Mail-Ereignis, Empfehlung) mit Frist, Aktion, Grundlage; täglicher Lauf, Report „PH Marketing Löschfristen“ als Vorlage fürs Verarbeitungsverzeichnis | `utils/datenschutz.LOESCHFRISTEN`, `loeschfristen.py` |
+| UTM-Quelle | Attribution liest `utm_*`/`klick_id` der PH Anfrage (ph_crm); eigene Custom Fields entfernt (Patch `v0_2.utm_felder_entfernen`); Kundenkarten-Stufe/-Umsatz im Segment nur mit Einwilligung `kundenkarte_auswertung` | `ereignisse.py`, `segmente.py` |
+| Report „PH Newsletter Zustellung“ | Zustellung, Bounces, Beschwerden, Abmeldungen je Ausgabe | `report/ph_newsletter_zustellung/` |
+
+| PH Ideenboard + PH Ideenboard Karte | Speicher des geteilten Ideenboards (Teilen-Link, `src/lib/ideenboard`): gleiche Schnittstelle wie `localStore.js` (create/get/getByShare/update/remove/sweep). Website erzeugt boardId/shareId/adminSecret und prüft den Verwaltungsschlüssel selbst; hier nur boardId + SHA-256-Hashes, keine Personendaten. Name = `board_id` (kein Nummernkreis). Löschung 12 Monate nach der letzten Änderung (`expiresAt`, 03:45) | `ph_marketing/ideenboard.py`, `utils/ideenboard.py`, `doctype/ph_ideenboard/` |
+| PH Bewertung (Serie `PH-BWT-.YYYY.-.#####`) | Direkte Rückmeldung (`/de/bewerten`, QR-Karte) und Google-Bewertungen (Desk-Import, `externe_id`). Kein Gating: keine Weiche nach Sternen, öffentliche Liste nie nach Sternen gefiltert, Ausblenden nur aus festen Gründen (Rechtsverletzung, Spam, kein Kundenbezug, Widerruf). Öffentlich nur maskierter Name, E-Mail/Telefon im Text entfernt; direkte Rückmeldungen nur mit Einwilligung zur Veröffentlichung. Buttons Veröffentlichen/Ausblenden (Leitung), Number Card „PH Neue Rückmeldungen“, Kontakt-Hooks (Zeitleiste, Art. 15, Art. 17), Löschfrist 2 Jahre (anonymisieren) | `ph_marketing/bewertung.py`, `utils/bewertung.py`, `doctype/ph_bewertung/` |
+
+Scheduler neu: 03:45 `datenschutz_aufraeumen` (Mail-Ereignisse > 180 Tage, widerrufene Einwilligungen > 3 Jahre), 05:00 `kampagnen_attribution`, 08:00 zusätzlich abgelaufene Kontingente → Nachrücken. Nummernkreise: Segment = Kennung, Protokolle = hash, Ideenboard = `board_id`; neu nur `PH Bewertung` `PH-BWT-.YYYY.-.#####` (in ph_core NUMMERNKREISE eingetragen). 03:45 löscht zusätzlich abgelaufene Ideenboards.
+
 ## Website-API (`ph_marketing.api`, Token des Benutzers `website@platzhirsch.studio`)
 
 | Methode | Parameter | Antwort | Ersetzt |
 |---|---|---|---|
-| `subscribe_newsletter` | `email` (+ optional `sprache`, `interessen`, `textversion`, `quelle`, `name`, `idempotency_key`) | `{success: true, doi}` – **neutral auch bei Duplikat** | `newsletter_website.api.subscribe_newsletter` (`src/lib/forms/newsletter.js`) |
+| `subscribe_newsletter` | `email` (+ optional `sprache`, `interessen`, `textversion`, `quelle`, `name`, `utm_*`, `idempotency_key`) | `{success: true, doi}` – **neutral auch bei Duplikat** | `newsletter_website.api.subscribe_newsletter` (`src/lib/forms/newsletter.js`) |
 | `confirm_newsletter` | `token` | `{status: bestaetigt \| bereits_bestaetigt}`; 404 `invalid_token`, 410 `expired` | neu (DOI) |
 | `unsubscribe` | `token` oder `email` | `{status: abgemeldet \| bereits_abgemeldet}` | neu |
-| `register_event` | `event_id, name, email, personen, telefon?, nachricht?, textversion?` | `{success, status: angemeldet \| warteliste, plaetze_frei, email (maskiert)}`; 409 `conflict` wenn voll ohne Warteliste | Adventsabend-Formular über `/api/kontakt` |
-| `cancel_event_registration` | `token` | `{status: abgesagt}` | neu |
+| `register_event` | `event_id, name, email, personen, begleitung?, telefon?, nachricht?, textversion?, utm_*?` | `{success, status: angemeldet \| warteliste, plaetze_frei, email (maskiert)}`; 409 `conflict` wenn voll ohne Warteliste | Adventsabend-Formular über `/api/kontakt` |
+| `cancel_event_registration` | `token` | `{status: abgesagt}` – Wartende rücken automatisch nach | neu |
+| `unsubscribe_one_click` | `token, body` (RFC 8058) | `{status}` | neu |
 | `get_event` | `event_id` | Eckdaten ohne Teilnehmerdaten | `event.js`-Konstanten |
 | `record_consent` / `confirm_consent` | `email, zweck, textversion, quelle?, daten?` | `{success, doi, einwilligung}` | neu (Foto-Referenz, WhatsApp, Merkliste, Planer, Rückmeldung) |
 | `tag_speichern` | `datum, schema, meta, teil?, seiten/heatmaps/pfade/signale/planer` | `{datum, teile, status}` | `platzhirsch_einblicke.api.tag_speichern` (`src/lib/einblicke/frappe.server.js`) |
+| `create_ideenboard` (POST, idempotent) | `record` = model.js `createRecord` `{v, boardId, shareHash, adminHash, status, createdAt, updatedAt, expiresAt, cards[]}` | `{record}`; 400 `invalid`/`empty`, 409 `conflict` | `localStore.create` (`src/lib/ideenboard/service.js createShared`) |
+| `get_ideenboard` (GET/POST) | `board_id` | `{record}` bzw. `{record: null}` (unbekannt/abgelaufen) | `localStore.get` |
+| `get_ideenboard_by_share` (GET/POST) | `share_hash` (= sha256(shareId), bevorzugt) oder `share_id` | `{record}` bzw. `{record: null}` | `localStore.getByShare` (`getSharedBoard`) |
+| `update_ideenboard` (POST) | `board_id, record, expected_updated_at?` (Alias `expected_modified`) | `{record}`; 404 `not_found`, 409 `conflict` bei paralleler Änderung, `adminHash`/`createdAt` unveränderlich | `localStore.update` (`manageShared` sync/revoke/renew) |
+| `remove_ideenboard` (POST) | `board_id` | `{removed}` | `localStore.remove` (`manageShared` delete) |
+| `sweep_ideenboards` (POST) | – | `{checked, removed, orphans: 0}` | `localStore.sweep` / `tools/ideenboard/sweep.mjs` |
+| `create_bewertung` (POST, idempotent) | `sterne? (1–5), text?, name?, email?, anlass? (lieferung/montage/abholung/beratung/service), quelle? (direkt/qr/mail), einwilligung_veroeffentlichung?, textversion?, seite?` – Sterne oder Text Pflicht | `{referenz, status: "Neu", email (maskiert)}` | neu (Weg „Lieber direkt an uns?“ auf `/de/bewerten`, heute Mail-Link) |
+| `get_bewertungen` (GET/POST) | `limit? (≤ 100), quelle? (google/direkt/qr/mail)` | `{count, average, reviews: [{id, author (maskiert), rating, text, date, source, occasion, reply}]}` | neu (ReviewSummary AP6, `ReviewNotice` „summary“) |
+
+Ideenboard-Antworten enthalten die Hashes und sind nur für den Website-Server bestimmt; an den Browser gehen weiter nur `publicView`/`ownerView` (bildet die Website).
 
 Links in Mails zeigen auf Website-Seiten (`PH Marketing Einstellungen.bestaetigen_pfad` = `/de/newsletter/bestaetigen?token=…`, `abmelden_pfad`, Event-Absage `/de/adventsabend/absagen?token=…`); die Website ruft von dort die API auf (nie `allow_guest`).
 
@@ -79,5 +113,5 @@ Danach im Desk: `PH Marketing Einstellungen` prüfen (Testadresse, Versandweg, A
 2. Kanzlei: Fußzeilen A/B, Einladung an Bestandskunden (B), Bewertungsbitte, Empfehlungsbedingungen – Schalter in den Einstellungen bleiben bis dahin aus.
 3. Datenquelle Aufträge (abgeglichen 04.11.): PH Auftragsbestaetigung `kunde_name`, `kontakt`, `liefertermin_bestaetigt`, `zugewiesen_an`, `status`; E-Mail/Anrede über PH Kontakt; Pflegekategorie/Outdoor liegen nur am PH Produktpass (ph_projekte) – Felder leer = kein Pflege-/Outdoor-Segment. Mail über Frappe-Queue läuft über `ph_core.utils.mail.sende` (reply_to, Absendername); Resend-Versand bleibt in `versand.py`.
 4. Nummernkreise `PH-NL-.YYYY.-.###` (Newsletter Ausgabe) und `PH-SOC-.YYYY.-.####` (Social Beitrag) sind in `ANFRAGEN-AN-CORE.md` beantragt.
-5. Bounce-Verarbeitung: `newsletter.bounce_verarbeiten(email, art)` ist vorhanden, der Anschluss an Email-Queue-Fehler bzw. Resend-Webhook folgt mit dem Mail-Entscheid (PLAN Frage 13).
+5. Bounce-Verarbeitung: Resend-Webhook `ph_marketing.api.webhook.resend` ist gebaut (Svix-Signatur, `resend_webhook_aktiv` = 0 bis zum Mail-Entscheid PLAN Frage 13; Geheimnis `ph_resend_webhook_secret`). Bei Versand über die Frappe-Queue fehlen Bounces und List-Unsubscribe-Header (ph_core.utils.mail.sende reicht keine Kopfzeilen durch).
 6. Adventsabend: Uhrzeit, Programm, Plätze erst nach Bestätigung des Inhabers eintragen; bis dahin Status „Geplant“.

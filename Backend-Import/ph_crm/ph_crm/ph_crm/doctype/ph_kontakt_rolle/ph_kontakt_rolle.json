@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 14:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "rolle",
+  "bezug_doctype",
+  "bezug_name",
+  "notiz"
+ ],
+ "fields": [
+  {"fieldname": "rolle", "fieldtype": "Select", "options": "Bauherr\nArchitekt\nInnenarchitekt\nPlaner\nHotelier\nBautraeger\nHausverwaltung\nEntscheider\nAnsprechpartner\nEmpfehlungsgeber\nHandwerker\nSonstige", "reqd": 1, "in_list_view": 1, "columns": 2, "label": "Rolle"},
+  {"fieldname": "bezug_doctype", "fieldtype": "Link", "options": "DocType", "in_list_view": 1, "columns": 2, "label": "Bezug (Art)"},
+  {"fieldname": "bezug_name", "fieldtype": "Dynamic Link", "options": "bezug_doctype", "in_list_view": 1, "columns": 3, "label": "Bezug"},
+  {"fieldname": "notiz", "fieldtype": "Data", "in_list_view": 1, "columns": 3, "label": "Notiz"}
+ ],
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH CRM",
+ "name": "PH Kontakt Rolle",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

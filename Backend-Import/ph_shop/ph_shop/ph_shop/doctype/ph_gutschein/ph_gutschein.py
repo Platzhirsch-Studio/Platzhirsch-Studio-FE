@@ -50,6 +50,15 @@ class PHGutschein(Document):
         self.wert_eur = cint(self.wert_cent) / 100
         self.rest_eur = cint(self.rest_cent) / 100
         self.kaeufer_email = (self.kaeufer_email or "").strip().lower() or None
+        if self.art not in gc.ARTEN:
+            frappe.throw(_("Unbekannte Gutscheinart {0}.").format(self.art))
+        if self.art == "Einzweck":
+            try:
+                gc.steuer(self.art, self.ust_satz_promille)
+            except gc.GutscheinSteuerFehler:
+                frappe.throw(_("Einzweckgutschein: USt-Satz ist Pflicht (z. B. 2000 = 20 %, 1000 = 10 %)."))
+        else:
+            self.ust_satz_promille = None
         self.titel = f"…{self.code_letzte4 or '????'} · {cint(self.wert_cent) / 100:.0f} € · Rest {cint(self.rest_cent) / 100:.2f} €"[:140]
 
     def after_insert(self):
@@ -77,6 +86,8 @@ class PHGutschein(Document):
             self.check_permission("write")
         betrag_cent = cint(betrag_cent)
         self.pruefe_einloesbar(betrag_cent)
+        if self.art == "Rabatt" and cint(zahlung_buchen):
+            frappe.throw(_("Rabattgutschein ist kein Zahlungsmittel – als Preisnachlass (Entgeltminderung) erfassen, nicht als Zahlung."))
         rest = cint(self.rest_cent) - betrag_cent
         zahlung_name = None
         if cint(zahlung_buchen):
@@ -91,21 +102,48 @@ class PHGutschein(Document):
         return {"rest_cent": rest, "status": neu, "zahlung": zahlung_name}
 
     @frappe.whitelist()
-    def sperren(self, grund="gesperrt"):
-        self.check_permission("write")
+    def sperren(self, grund="gesperrt", sperrgrund_art=None):
+        """Sperren (jede Shop-Rolle darf – Sicherheitsmaßnahme). sperrgrund_art aus gutschein_code.SPERRGRUENDE."""
+        if not self.flags.ignore_permissions:
+            self.check_permission("write")
         if self.status in ("Gesperrt", "Erstattet"):
             return self.status
-        st.setzen(self, "Gesperrt", grund, None, {"gesperrt_am": now_datetime(), "sperrgrund": (grund or "")[:140]})
+        art = sperrgrund_art if gc.sperrgrund_gueltig(sperrgrund_art) else ("Ersetzt" if str(grund or "").startswith(("ersetzt", "Ersetzt")) else "Sonstiges")
+        st.setzen(self, "Gesperrt", f"{art}: {grund}" if grund else art, None, {"gesperrt_am": now_datetime(), "sperrgrund": (grund or art)[:140], "sperrgrund_art": art})
         return "Gesperrt"
 
     @frappe.whitelist()
-    def entsperren(self):
+    def entsperren(self, grund=None):
+        """Nur Leitung, mit Begründung (Kommentar). Ersetzte Gutscheine bleiben gesperrt."""
         self.check_permission("write")
+        if not _leitung():
+            frappe.throw(_("Entsperren darf nur die Shop-Leitung."), frappe.PermissionError)
         if self.status != "Gesperrt":
             frappe.throw(_("Nur gesperrte Gutscheine können entsperrt werden."))
+        if self.ersetzt_durch or self.sperrgrund_art in ("Ersetzt", "Verkauf storniert"):
+            frappe.throw(_("Ersetzte oder stornierte Gutscheine können nicht entsperrt werden."))
         neu = "Eingeloest" if cint(self.rest_cent) <= 0 else ("Teilweise eingeloest" if cint(self.rest_cent) < cint(self.wert_cent) else "Aktiv")
-        st.setzen(self, neu, "entsperrt", None, {"gesperrt_am": None, "sperrgrund": None})
+        st.setzen(self, neu, _("entsperrt: {0}").format(grund or "–"), None, {"gesperrt_am": None, "sperrgrund": None, "sperrgrund_art": None})
+        self.add_comment("Info", _("Entsperrt durch {0}: {1}").format(frappe.session.user, grund or "–"))
         return neu
+
+    def gutschreiben(self, betrag_cent, grund=None, beleg_doctype=None, beleg=None):
+        """Teilbetrag zurück auf den Gutschein (Teilerstattung/Storno einer Bestellung, Kassa-Retoure).
+        Gegenzeile (negativer Betrag) in Einlösungen; Restwert höchstens Wert. Serverfunktion (Aufrufer prüft Rechte)."""
+        betrag_cent = cint(betrag_cent)
+        if betrag_cent <= 0:
+            frappe.throw(_("Betrag muss größer als 0 Cent sein."))
+        if self.status in ("Gesperrt", "Erstattet"):
+            frappe.throw(_("Gutschein ist {0} – keine Gutschrift möglich.").format(self.status))
+        rest = cint(self.rest_cent) + betrag_cent
+        if rest > cint(self.wert_cent):
+            frappe.throw(_("Gutschrift ({0} Cent) übersteigt den eingelösten Betrag.").format(betrag_cent))
+        ok_dt = beleg_doctype if beleg_doctype and frappe.db.exists("DocType", beleg_doctype) else None
+        zeile = self.append("einloesungen", {"datum": now_datetime(), "betrag_cent": -betrag_cent, "rest_danach_cent": rest, "kanal": "Online" if beleg_doctype == "PH Bestellung" else "Kassa", "beleg_doctype": ok_dt, "beleg": beleg if ok_dt else None, "mitarbeiter": frappe.session.user, "hinweis": f"GUTSCHRIFT {grund or ''}"[:140]})
+        zeile.db_insert()
+        neu = "Aktiv" if rest >= cint(self.wert_cent) else "Teilweise eingeloest"
+        st.setzen(self, neu, _("Gutschrift {0} Cent ({1})").format(betrag_cent, beleg or grund or "–"), None, {"rest_cent": rest, "rest_eur": rest / 100})
+        return {"gutschein": self.name, "rest_cent": rest, "status": neu}
 
     def erstattet_markieren(self, grund="erstattet"):
         """Nach Stripe-Erstattung: ungenutzt → Erstattet (Rest 0); teilweise eingelöst → nur Hinweis (Team entscheidet)."""
@@ -121,8 +159,8 @@ class PHGutschein(Document):
         self.check_permission("write")
         if self.status not in EINLOESBAR:
             frappe.throw(_("Nur aktive Gutscheine können ersetzt werden."))
-        neu, code = ausstellen(cint(self.rest_cent), test=bool(self.test), kanal="Ersatz", motiv=self.motiv, empfaenger=self.empfaenger, grusstext=self.grusstext, kaeufer={"name": self.kaeufer_name, "email": self.kaeufer_email, "firma": self.kaeufer_firma, "kontakt": self.kaeufer_kontakt}, gutschein_bestellung=self.gutschein_bestellung, zahlung=self.zahlung, livemode=bool(self.livemode), quelle="backoffice", art=self.art)
-        self.sperren(_("ersetzt durch {0}").format(neu.name))
+        neu, code = ausstellen(cint(self.rest_cent), test=bool(self.test), kanal="Ersatz", motiv=self.motiv, empfaenger=self.empfaenger, grusstext=self.grusstext, kaeufer={"name": self.kaeufer_name, "email": self.kaeufer_email, "firma": self.kaeufer_firma, "kontakt": self.kaeufer_kontakt}, gutschein_bestellung=self.gutschein_bestellung, zahlung=self.zahlung, livemode=bool(self.livemode), quelle="backoffice", art=self.art, ust_satz_promille=self.ust_satz_promille)
+        self.sperren(_("ersetzt durch {0}").format(neu.name), sperrgrund_art="Ersetzt")
         self.db_set({"ersetzt_durch": neu.name, "rest_cent": 0, "rest_eur": 0})
         return {"gutschein": neu.name, "code": code}
 
@@ -160,6 +198,14 @@ class PHGutschein(Document):
             self.db_set("mail_gesendet_am", now_datetime(), update_modified=False)
         return ok
 
+    def steuer(self):
+        """Steuer beim Verkauf (Kassa): Mehrzweck → Satz Null (kein Umsatz), Einzweck → gespeicherter Satz,
+        Rabatt → mindert Entgelt (kein Satz, nicht verkäuflich)."""
+        try:
+            return gc.steuer(self.art, self.ust_satz_promille)
+        except gc.GutscheinSteuerFehler:
+            frappe.throw(_("Gutschein {0}: Einzweck ohne USt-Satz – bitte Satz nachtragen.").format(self.name))
+
     def oeffentliche_sicht(self):
         """get_voucher: nur Status/Restwert (kein Käufer, kein Code)."""
         return {"status": self.status, "einloesbar": self.status in EINLOESBAR and not (self.gueltig_bis and getdate(self.gueltig_bis) < getdate(nowdate())), "wert_cent": self.wert_cent, "rest_cent": self.rest_cent, "waehrung": self.waehrung, "gueltig_bis": str(self.gueltig_bis) if self.gueltig_bis else None, "test": bool(self.test), "ende": self.code_letzte4}
@@ -175,8 +221,15 @@ def finde_nach_code(code):
     return frappe.get_doc("PH Gutschein", name) if name else None
 
 
-def ausstellen(wert_cent, *, test=False, kanal="Showroom", motiv="schlicht", empfaenger=None, grusstext=None, kaeufer=None, gutschein_bestellung=None, zahlung=None, livemode=None, quelle="backoffice", art=None, aktiv=True, idempotency_key=None):
-    """Neuen Gutschein anlegen → (doc, code_klartext). Bis zu 5 Versuche für einen freien Hash."""
+def ausstellen(wert_cent, *, test=False, kanal="Showroom", motiv="schlicht", empfaenger=None, grusstext=None, kaeufer=None, gutschein_bestellung=None, zahlung=None, livemode=None, quelle="backoffice", art=None, aktiv=True, idempotency_key=None, ausgabe_beleg_doctype=None, ausgabe_beleg=None, ust_satz_promille=None):
+    """Neuen Gutschein anlegen → (doc, code_klartext). Bis zu 5 Versuche für einen freien Hash.
+    Idempotent über idempotency_key: gleicher Schlüssel → derselbe Gutschein, Klartext None (nur beim ersten Mal)."""
+    if idempotency_key:
+        vorhanden = frappe.db.get_value("PH Gutschein", {"idempotency_key": idempotency_key}, "name")
+        if vorhanden:
+            doc = frappe.get_doc("PH Gutschein", vorhanden)
+            doc.flags.bereits_ausgestellt = True
+            return doc, None
     kaeufer = kaeufer or {}
     for _versuch in range(5):
         code = gc.neuer_code(test=bool(test))
@@ -206,6 +259,9 @@ def ausstellen(wert_cent, *, test=False, kanal="Showroom", motiv="schlicht", emp
                 "art": art,
                 "quelle": quelle,
                 "idempotency_key": idempotency_key,
+                "ausgabe_beleg_doctype": ausgabe_beleg_doctype if ausgabe_beleg_doctype and frappe.db.exists("DocType", ausgabe_beleg_doctype) else None,
+                "ausgabe_beleg": ausgabe_beleg if ausgabe_beleg_doctype and frappe.db.exists("DocType", ausgabe_beleg_doctype) else None,
+                "ust_satz_promille": cint(ust_satz_promille) or None,
             }
         )
         doc.flags.aktiv = aktiv
@@ -213,6 +269,11 @@ def ausstellen(wert_cent, *, test=False, kanal="Showroom", motiv="schlicht", emp
         doc.insert(ignore_permissions=True)
         return doc, code
     frappe.throw(_("Kein eindeutiger Gutscheincode (5 Versuche)."))
+
+
+def _leitung(user=None):
+    rollen = set(frappe.get_roles(user or frappe.session.user))
+    return bool(rollen & {"PH Shop Leitung", "PH Geschäftsführung", "System Manager"}) or frappe.session.user == "Administrator"
 
 
 def restwert_gesamt_cent(test=False):

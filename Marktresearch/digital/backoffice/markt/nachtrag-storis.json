@@ -1,0 +1,144 @@
+{
+ "produkt": "STORIS (US-Möbelhandels-ERP)",
+ "url": "https://supergood.ai/docs/storis-api",
+ "stand": "2026-11-04",
+ "zeichen": 8000,
+ "funktionen": [
+  {
+   "name": "Enhanced Special Order mit Auftragsvorlagen",
+   "beschreibung": "Verkäufer erfassen Sonderbestellungen über anpassbare Vorlagen (je Lieferant/SKU).",
+   "bereich": "kassa",
+   "nutzen": "Polster-/Sonderanfertigungen schnell und fehlerfrei erfassen.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/stoney-creek-furniture-ltd-customer-case-study"
+  },
+  {
+   "name": "Attribut-Dropdowns für Bezugsstoffe/Optionen",
+   "beschreibung": "Lieferanten- und SKU-spezifische Optionen wie Stoffe werden über Attribut-Auswahllisten gewählt.",
+   "bereich": "sortiment",
+   "nutzen": "Nur gültige Varianten bestellbar.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/stoney-creek-furniture-ltd-customer-case-study"
+  },
+  {
+   "name": "Preisvorbelegung und Kopierfunktion für Konfigurationen",
+   "beschreibung": "Preise werden automatisch vorbelegt, frühere Konfigurationen können kopiert werden.",
+   "bereich": "kassa",
+   "nutzen": "Wiederholbestellungen in Sekunden.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/stoney-creek-furniture-ltd-customer-case-study"
+  },
+  {
+   "name": "Automatische Bestellerzeugung aus Sonderauftrag",
+   "beschreibung": "Aus der Sonderbestellung wird die Lieferantenbestellung (PO) automatisch erzeugt.",
+   "bereich": "logistik",
+   "nutzen": "Keine vergessene Herstellerbestellung.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/stoney-creek-furniture-ltd-customer-case-study"
+  },
+  {
+   "name": "POS-basierte Lieferterminplanung",
+   "beschreibung": "Der Verkäufer plant den Liefertermin direkt beim Verkauf am POS.",
+   "bereich": "logistik",
+   "nutzen": "Realistische Terminzusage im Showroom.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/circle-furniture-customer-case-study"
+  },
+  {
+   "name": "Generische SKU-Logik und Kollektionen",
+   "beschreibung": "Artikel werden über generische SKUs und Kollektionen strukturiert.",
+   "bereich": "sortiment",
+   "nutzen": "Variantenreiche Programme übersichtlich.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/circle-furniture-customer-case-study"
+  },
+  {
+   "name": "Warenstatus-Codes",
+   "beschreibung": "Artikel erhalten Merchandise-Statuscodes zur Statusverfolgung.",
+   "bereich": "sortiment",
+   "nutzen": "Ausstellungs-/Abverkaufsstücke steuern.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/circle-furniture-customer-case-study"
+  },
+  {
+   "name": "BI-Suite mit Drill-down und Report Builder",
+   "beschreibung": "Management analysiert Sortiments- und Lieferkennzahlen per Drill-down und baut eigene Berichte.",
+   "bereich": "zentrale",
+   "nutzen": "Lieferperformance und Sortiment steuern.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/circle-furniture-customer-case-study"
+  },
+  {
+   "name": "Mobile POS auf Tablets",
+   "beschreibung": "Verkäufer kassieren mit Tablets auf der Fläche.",
+   "bereich": "kassa",
+   "nutzen": "Checkout von 11 auf 2 Minuten (Fallbeispiel).",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/an-eye-on-unified-commerce-with-mobile-pos-ecommerce"
+  },
+  {
+   "name": "Finanzierungsantrag-Queue",
+   "beschreibung": "Ratenfinanzierungsanträge werden über eine integrierte Warteschlange abgewickelt.",
+   "bereich": "kassa",
+   "nutzen": "Finanzkauf ohne Medienbruch.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/an-eye-on-unified-commerce-with-mobile-pos-ecommerce"
+  },
+  {
+   "name": "Echtzeit-Webbestand (eSTORIS)",
+   "beschreibung": "Der Onlineshop zeigt Bestände in Echtzeit aus dem ERP.",
+   "bereich": "shop",
+   "nutzen": "Online nur lieferbare Ware anzeigen.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/an-eye-on-unified-commerce-with-mobile-pos-ecommerce"
+  },
+  {
+   "name": "WMS mit RF-Barcodescannen",
+   "beschreibung": "Lagerprozesse laufen über ein integriertes WMS mit Funk-Barcodescannern.",
+   "bereich": "logistik",
+   "nutzen": "Kommissionierung für Auslieferung fehlerarm.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/furniture-connection-customer-case-study"
+  },
+  {
+   "name": "EDI-Lieferanteneinkauf",
+   "beschreibung": "Bestellungen an Lieferanten laufen per EDI.",
+   "bereich": "logistik",
+   "nutzen": "Automatisierter Einkauf.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://www.casestudies.com/company/storis/case-study/furniture-connection-customer-case-study"
+  },
+  {
+   "name": "Serviceaufträge als eigener Auftragstyp",
+   "beschreibung": "Neben Verkaufsaufträgen und Angeboten werden Serviceaufträge geführt.",
+   "bereich": "service",
+   "nutzen": "Reklamation/Service im selben Auftragssystem.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://supergood.ai/docs/storis-api"
+  },
+  {
+   "name": "Lieferungen, Reservierungen, Fulfillment-Events",
+   "beschreibung": "Lieferungen, Warenreservierungen und Fulfillment-Ereignisse sind eigene Objekte im System.",
+   "bereich": "logistik",
+   "nutzen": "Teil-/Lieferstatus je Auftrag nachvollziehbar.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://supergood.ai/docs/storis-api"
+  },
+  {
+   "name": "Zahlungen, Finanzierung und Hauptbuch",
+   "beschreibung": "Zahlungen, Finanzierungs-/Kreditanträge, Hauptbuch werden im ERP geführt.",
+   "bereich": "faktura",
+   "nutzen": "Anzahlungen und Finanzierung am Auftrag.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://supergood.ai/docs/storis-api"
+  },
+  {
+   "name": "Nachfrageprognose im Einkauf",
+   "beschreibung": "Einkaufswerkzeuge enthalten Bestellungen, Lieferanten und Nachfrageprognosen.",
+   "bereich": "logistik",
+   "nutzen": "Lagerware bedarfsgerecht disponieren.",
+   "quelle": "STORIS (US-Möbelhandels-ERP)",
+   "url": "https://supergood.ai/docs/storis-api"
+  }
+ ]
+}

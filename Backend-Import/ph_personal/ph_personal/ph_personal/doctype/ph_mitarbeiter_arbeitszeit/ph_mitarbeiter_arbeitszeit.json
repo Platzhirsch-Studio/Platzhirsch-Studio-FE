@@ -1,0 +1,130 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Arbeitszeitmodell mit Gültigkeit: Minuten je Wochentag (Soll, Urlaubstage, Feiertagsgutschrift).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "gueltig_ab",
+  "modell",
+  "mo_min",
+  "di_min",
+  "mi_min",
+  "do_min",
+  "fr_min",
+  "sa_min",
+  "so_min",
+  "wochenstunden",
+  "tage_pro_woche",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "gueltig_ab",
+   "fieldtype": "Date",
+   "label": "Gültig ab",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "modell",
+   "fieldtype": "Select",
+   "label": "Modell",
+   "options": "Fix\nGleitzeit\nDurchrechnung",
+   "default": "Fix",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Gleitzeit nur mit Gleitzeitvereinbarung (§ 4b AZG); Durchrechnung nur nach KV/Betriebsvereinbarung."
+  },
+  {
+   "fieldname": "mo_min",
+   "fieldtype": "Int",
+   "label": "Mo (min)",
+   "in_list_view": 1,
+   "columns": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "di_min",
+   "fieldtype": "Int",
+   "label": "Di (min)",
+   "in_list_view": 1,
+   "columns": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "mi_min",
+   "fieldtype": "Int",
+   "label": "Mi (min)",
+   "in_list_view": 1,
+   "columns": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "do_min",
+   "fieldtype": "Int",
+   "label": "Do (min)",
+   "in_list_view": 1,
+   "columns": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "fr_min",
+   "fieldtype": "Int",
+   "label": "Fr (min)",
+   "in_list_view": 1,
+   "columns": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "sa_min",
+   "fieldtype": "Int",
+   "label": "Sa (min)",
+   "in_list_view": 1,
+   "columns": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "so_min",
+   "fieldtype": "Int",
+   "label": "So (min)",
+   "default": "0"
+  },
+  {
+   "fieldname": "wochenstunden",
+   "fieldtype": "Float",
+   "label": "Wochenstunden",
+   "read_only": 1,
+   "precision": "2",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "tage_pro_woche",
+   "fieldtype": "Int",
+   "label": "Arbeitstage/Woche",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Data",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Mitarbeiter Arbeitszeit",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

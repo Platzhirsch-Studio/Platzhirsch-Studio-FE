@@ -1,0 +1,248 @@
+/* Bereich Shop im Lounge-Stil (art-direction/lounge.md §4–§9; 10-konzept-shop). Nur Token aus globals.css,
+   Präfix bo-shop-. Gliederung über Fläche + Schatten + Abstand, keine Rahmen; Radien 28/20/16/12/rund;
+   Bewegung nur transform/opacity mit Feder, bei reduzierter Bewegung ohne Ortswechsel. */
+
+/* ---------------------------------------------------------------- Filterzeile ---- */
+.bo-shop-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; min-width: 0; margin-bottom: 20px; }
+.bo-shop-filter__rechts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-left: auto; min-width: 0; }
+.bo-shop-suche { position: relative; display: flex; align-items: center; min-width: 0; width: 280px; max-width: 100%; }
+.bo-shop-suche svg { position: absolute; left: 14px; color: var(--color-bo-text-faint); pointer-events: none; }
+.bo-shop-suche input {
+  width: 100%; height: 40px; padding: 0 16px 0 40px; border: 0; border-radius: 999px;
+  background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); font-size: 14px; color: var(--color-bo-text);
+}
+.bo-shop-suche input::placeholder { color: var(--color-bo-text-faint); }
+.bo-shop-suche input:focus-visible { outline: 2px solid var(--color-bo-focus); outline-offset: 2px; }
+.bo-shop-chipzeile { display: flex; flex-wrap: wrap; gap: 6px; }
+.bo-shop-chip {
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 14px; border-radius: 999px;
+  background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); font-size: 13px; font-weight: 500; color: var(--color-bo-text-soft);
+  transition: background-color 160ms ease, color 160ms ease, transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease);
+}
+.bo-shop-chip:hover { color: var(--color-bo-text); }
+.bo-shop-chip:active { transform: scale(0.97); transition-duration: 80ms; }
+.bo-shop-chip[aria-pressed="true"], .bo-shop-chip[aria-current="true"] { background: var(--color-bo-ink); color: var(--color-bo-ink-inverse); }
+.bo-shop-chip__n { font-variant-numeric: tabular-nums; opacity: 0.7; }
+
+/* ---------------------------------------------------------------- Tabelle ---- */
+.bo-shop-raster { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (min-width: 1280px) { .bo-shop-raster[data-vorschau] { grid-template-columns: minmax(0, 1fr) 400px; } }
+.bo-shop-zelle-nr { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; color: var(--color-bo-text-soft); white-space: nowrap; }
+.bo-shop-betrag { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 500; }
+.bo-shop-betrag[data-minus] { color: var(--color-bo-text-soft); }
+.bo-shop-unter { display: block; margin-top: 2px; font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-shop-unter[data-ton="warn"] { color: var(--color-bo-eiche-text); font-weight: 500; }
+.bo-shop-unter[data-ton="gefahr"] { color: var(--color-bo-ziegel-text); font-weight: 500; }
+.bo-shop-bildstapel { display: flex; flex: none; }
+.bo-shop-bildstapel > * + * { margin-left: -14px; }
+.bo-shop-thumb {
+  position: relative; flex: none; width: 48px; height: 48px; overflow: hidden; border-radius: 14px;
+  background: var(--color-bo-surface-3); box-shadow: 0 0 0 2px var(--color-bo-surface);
+}
+.bo-shop-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.bo-shop-thumb--s { width: 28px; height: 28px; border-radius: 9px; }
+.bo-shop-thumb__ico { display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; color: var(--color-bo-text-soft); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bo-shop-thumb img { filter: brightness(0.9) saturate(0.95); } }
+:root[data-theme="dark"] .bo-shop-thumb img { filter: brightness(0.9) saturate(0.95); }
+
+/* Nächster Schritt */
+.bo-shop-schritt { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.bo-shop-schritt__ico {
+  display: inline-flex; flex: none; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 999px;
+  background: var(--color-bo-fill-2); color: var(--color-bo-text-soft);
+}
+.bo-shop-schritt[data-ton="rot"] .bo-shop-schritt__ico { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.bo-shop-schritt[data-ton="cognac"] .bo-shop-schritt__ico { background: var(--color-bo-cognac-soft); color: var(--color-bo-cognac-text); }
+.bo-shop-schritt__text { min-width: 0; font-size: 14px; line-height: 18px; font-weight: 500; }
+.bo-shop-schritt__faellig { display: block; font-size: 12px; line-height: 16px; font-weight: 400; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+.bo-shop-schritt[data-ton="rot"] .bo-shop-schritt__faellig { color: var(--color-bo-ziegel-text); }
+.bo-shop-schritt[data-ton="cognac"] .bo-shop-schritt__faellig { color: var(--color-bo-cognac-text); }
+
+/* Zeilenknopf erscheint in „Alle“ bei Hover/Fokus, immer bei Touch und in Arbeitsansichten (§ 3.5) */
+.bo-shop-zeilenknopf { opacity: 1; }
+[data-arbeit="nein"] .bo-shop-zeilenknopf { opacity: 0; transition: opacity 160ms ease; }
+[data-arbeit="nein"] tr:hover .bo-shop-zeilenknopf, [data-arbeit="nein"] tr:focus-within .bo-shop-zeilenknopf { opacity: 1; }
+@media (pointer: coarse) { [data-arbeit="nein"] .bo-shop-zeilenknopf { opacity: 1; } }
+
+/* Spalten nur breit genug (iPad quer: 4 Prioritätsspalten) */
+@media (max-width: 1279px) { .bo-shop-tab [data-nur-breit] { display: none; } }
+
+/* ---------------------------------------------------------------- Vorschau (Peek) ---- */
+.bo-shop-vorschau {
+  position: sticky; top: 104px; min-width: 0; overflow: hidden; border-radius: var(--radius-bo-kachel, 28px);
+  background: var(--color-bo-surface); box-shadow: var(--bo-sh-float);
+  animation: bo-shop-ein var(--bo-dauer-feder, 620ms) var(--ease-feder-weich, ease-out) both;
+}
+@keyframes bo-shop-ein { from { opacity: 0; transform: translateX(24px) scale(0.985); } to { opacity: 1; transform: none; } }
+.bo-shop-vorschau__bild { position: relative; height: 200px; margin: 8px; overflow: hidden; border-radius: 20px; background: var(--color-bo-surface-3); }
+.bo-shop-vorschau__bild img { width: 100%; height: 100%; object-fit: cover; }
+.bo-shop-vorschau__chips { position: absolute; left: 12px; bottom: 12px; display: flex; gap: 6px; }
+.bo-shop-vorschau__zu { position: absolute; right: 12px; top: 12px; }
+.bo-shop-vorschau__inhalt { padding: 12px 24px 24px; }
+.bo-shop-fakten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 16px; margin: 0; }
+.bo-shop-fakten dt { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-shop-fakten dd { margin: 2px 0 0; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--color-bo-text); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.bo-shop-fakten--eins { grid-template-columns: minmax(0, 1fr); }
+
+/* ---------------------------------------------------------------- Phasenleiste ---- */
+.bo-shop-phasen { display: flex; align-items: flex-start; min-width: 0; padding: 18px 20px 14px; border-radius: 24px; background: var(--color-bo-surface-2); overflow-x: auto; }
+.bo-shop-phase { position: relative; display: flex; flex: 1 1 0; min-width: 96px; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.bo-shop-phase::before {
+  content: ""; position: absolute; top: 15px; right: 50%; width: 100%; height: 0;
+  border-top: 1.5px dashed var(--color-bo-line-strong);
+}
+.bo-shop-phase:first-child::before { display: none; }
+.bo-shop-phase[data-zustand="erledigt"]::before, .bo-shop-phase[data-zustand="aktuell"]::before { border-top-style: solid; border-top-color: var(--color-bo-ink); }
+.bo-shop-phase__knoten {
+  position: relative; z-index: 1; display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 999px;
+  background: var(--color-bo-surface); box-shadow: inset 0 0 0 1.5px var(--color-bo-line-strong); color: var(--color-bo-text-faint);
+  transition: background-color 200ms ease, transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease);
+}
+.bo-shop-phase[data-zustand="erledigt"] .bo-shop-phase__knoten { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); box-shadow: none; }
+.bo-shop-phase[data-zustand="aktuell"] .bo-shop-phase__knoten { background: var(--color-bo-ink); color: var(--color-bo-ink-inverse); box-shadow: var(--bo-sh-ink); }
+.bo-shop-phase__titel { font-size: 13px; line-height: 16px; font-weight: 600; color: var(--color-bo-text); }
+.bo-shop-phase[data-zustand="offen"] .bo-shop-phase__titel { color: var(--color-bo-text-soft); font-weight: 500; }
+.bo-shop-phase__datum { font-size: 12px; line-height: 14px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+button.bo-shop-phase__knoten:hover { transform: scale(1.06); }
+
+/* ---------------------------------------------------------------- Kanban ---- */
+.bo-shop-kb { display: grid; grid-auto-flow: column; grid-auto-columns: 296px; gap: 16px; overflow-x: auto; padding: 4px 4px 20px; scroll-snap-type: x proximity; }
+.bo-shop-kb__spalte { display: flex; min-height: 360px; flex-direction: column; gap: 10px; padding: 14px 10px 10px; border-radius: 24px; background: var(--color-bo-surface-2); scroll-snap-align: start; transition: box-shadow 160ms ease, opacity 120ms ease; }
+.bo-shop-kb__spalte[data-ziel="ja"] { box-shadow: inset 0 0 0 1.5px var(--color-bo-ink); }
+.bo-shop-kb__spalte[data-ziel="nein"] { opacity: 0.5; }
+.bo-shop-kb__spalte[data-ton="rot"] { box-shadow: inset 3px 0 0 var(--color-bo-ziegel); }
+.bo-shop-kb__kopf { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 6px 4px; font-size: 14px; font-weight: 600; }
+.bo-shop-kb__n { font-size: 13px; font-weight: 500; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+.bo-shop-kb__leer { margin: 8px 6px; font-size: 13px; color: var(--color-bo-text-soft); }
+.bo-shop-karte {
+  position: relative; display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 20px;
+  background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); cursor: grab; text-align: left;
+  transition: transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease), box-shadow 200ms ease, opacity 200ms ease;
+}
+.bo-shop-karte:hover { transform: translateY(-2px); box-shadow: var(--bo-sh-lift); }
+.bo-shop-karte:focus-visible { outline: 2px solid var(--color-bo-focus); outline-offset: 2px; }
+.bo-shop-karte[data-zieht] { opacity: 0.4; }
+.bo-shop-karte[data-laeuft] { box-shadow: var(--bo-sh-card), 0 0 0 1.5px var(--color-bo-see); }
+.bo-shop-karte__fuss { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.bo-shop-abschluss {
+  display: flex; align-items: center; justify-content: center; min-height: 360px; padding: 16px; border-radius: 24px;
+  background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); font-weight: 600; text-align: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bo-shop-karte, .bo-shop-chip, .bo-shop-phase__knoten { transition-duration: 1ms; }
+  .bo-shop-karte:hover { transform: none; }
+  .bo-shop-vorschau, .bo-shop-erscheinen { animation: none; }
+}
+
+/* ---------------------------------------------------------------- Zu tun / Zeilen ---- */
+.bo-shop-zeilen { display: flex; flex-direction: column; }
+.bo-shop-zeile { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: 14px; min-height: 64px; padding: 10px 12px; border-radius: 16px; transition: background-color 160ms ease; }
+.bo-shop-zeile + .bo-shop-zeile { box-shadow: inset 0 var(--bo-hair, 1px) 0 var(--color-bo-line); }
+.bo-shop-zeile:hover { background: var(--color-bo-surface-2); box-shadow: none; }
+.bo-shop-zeile:hover + .bo-shop-zeile { box-shadow: none; }
+.bo-shop-zeile__ico { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 999px; background: var(--color-bo-fill-2); color: var(--color-bo-text-soft); }
+.bo-shop-zeile__ico[data-ton="ziegel"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.bo-shop-zeile__ico[data-ton="eiche"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-shop-zeile__ico[data-ton="see"] { background: var(--color-bo-see-soft); color: var(--color-bo-see-text); }
+.bo-shop-zeile__ico[data-ton="salbei"] { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+.bo-shop-zeile__titel { font-size: 15px; line-height: 20px; font-weight: 600; }
+
+/* ---------------------------------------------------------------- Zeitleiste ---- */
+.bo-shop-zeit { position: relative; display: flex; flex-direction: column; gap: 18px; margin: 0; padding: 0; list-style: none; }
+.bo-shop-zeit li { position: relative; display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 12px; align-items: start; }
+.bo-shop-zeit li:not(:last-child)::after { content: ""; position: absolute; left: 15px; top: 36px; bottom: -14px; width: 0; border-left: 1px solid var(--color-bo-line); }
+.bo-shop-zeit__ico { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 999px; background: var(--color-bo-fill-2); color: var(--color-bo-text-soft); }
+.bo-shop-zeit__titel { font-size: 14px; line-height: 20px; font-weight: 600; }
+.bo-shop-zeit__text { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); overflow-wrap: anywhere; }
+.bo-shop-zeit__zeit { font-size: 12px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ---------------------------------------------------------------- Beträge / Balken ---- */
+.bo-shop-zahl { font-size: 40px; line-height: 44px; font-weight: 400; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.bo-shop-balken { display: flex; gap: 4px; height: 8px; margin: 14px 0 10px; }
+.bo-shop-balken > span { min-width: 4px; border-radius: 999px; background: var(--color-bo-line-strong); }
+.bo-shop-balken > span[data-teil="bezahlt"] { background: var(--color-bo-salbei); }
+.bo-shop-balken > span[data-teil="offen"] { background: var(--color-bo-eiche); }
+.bo-shop-balken > span[data-teil="erstattet"] { background: var(--color-bo-stein); }
+.bo-shop-posten { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.bo-shop-posten li { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 40px; font-size: 14px; }
+.bo-shop-posten li + li { box-shadow: inset 0 var(--bo-hair, 1px) 0 var(--color-bo-line); }
+.bo-shop-punkt { display: inline-block; width: 8px; height: 8px; margin-right: 10px; border-radius: 999px; background: var(--color-bo-line-strong); }
+.bo-shop-punkt[data-teil="bezahlt"] { background: var(--color-bo-salbei); }
+.bo-shop-punkt[data-teil="offen"] { background: var(--color-bo-eiche); }
+.bo-shop-restbalken { position: relative; height: 4px; width: 72px; overflow: hidden; border-radius: 999px; background: var(--color-bo-fill-2); }
+.bo-shop-restbalken > span { position: absolute; inset: 0 auto 0 0; border-radius: 999px; background: var(--color-bo-salbei); }
+
+/* ---------------------------------------------------------------- Code / Kassa ---- */
+.bo-shop-code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 24px; line-height: 32px; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
+.bo-shop-code--gross { font-size: 32px; line-height: 40px; }
+.bo-shop-flaeche { padding: 16px 18px; border-radius: 20px; background: var(--color-bo-surface-2); }
+.bo-shop-flaeche[data-ton="warn"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-shop-flaeche[data-ton="gefahr"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.bo-shop-flaeche[data-ton="ok"] { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+.bo-shop-livesatz { min-height: 20px; font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); font-variant-numeric: tabular-nums; }
+
+/* Wertkacheln (S5) */
+.bo-shop-wahl { display: flex; flex-wrap: wrap; gap: 8px; }
+.bo-shop-wahl button {
+  min-width: 72px; height: 44px; padding: 0 14px; border-radius: 14px; background: var(--color-bo-surface-2); font-size: 14px; font-weight: 600;
+  font-variant-numeric: tabular-nums; transition: background-color 120ms ease, color 120ms ease, transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease);
+}
+.bo-shop-wahl button:active { transform: scale(0.96); transition-duration: 80ms; }
+.bo-shop-wahl button[aria-pressed="true"], .bo-shop-wahl button[aria-checked="true"] { background: var(--color-bo-ink); color: var(--color-bo-ink-inverse); }
+.bo-shop-gutschein {
+  display: flex; min-height: 180px; flex-direction: column; justify-content: space-between; padding: 22px; border-radius: 20px;
+  background: linear-gradient(160deg, var(--color-bo-cognac-soft), var(--color-bo-surface-2)); color: var(--color-bo-text);
+}
+.bo-shop-gutschein[data-motiv="geweih"] { background: linear-gradient(160deg, var(--color-bo-salbei-soft), var(--color-bo-surface-2)); }
+.bo-shop-gutschein[data-motiv="schlicht"] { background: var(--color-bo-surface-2); }
+
+/* Felder in Dialogen */
+.bo-shop-feld { display: flex; min-width: 0; flex-direction: column; gap: 6px; }
+.bo-shop-feld > label, .bo-shop-feld > .bo-shop-label { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-shop-input {
+  width: 100%; min-height: 44px; padding: 10px 14px; border: 0; border-radius: 14px; background: var(--color-bo-surface-2);
+  box-shadow: inset 0 0 0 var(--bo-hair, 1px) var(--color-bo-line); font-size: 15px; color: var(--color-bo-text);
+}
+.bo-shop-input:focus-visible { outline: 2px solid var(--color-bo-focus); outline-offset: 2px; }
+.bo-shop-input[aria-invalid="true"] { box-shadow: inset 0 0 0 1.5px var(--color-bo-ziegel); }
+.bo-shop-fehler { font-size: 12px; line-height: 16px; color: var(--color-bo-ziegel-text); }
+.bo-shop-hinweis { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-shop-stepper { display: inline-flex; align-items: center; gap: 4px; padding: 3px; border-radius: 999px; background: var(--color-bo-fill-2); }
+.bo-shop-stepper button { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 999px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); }
+.bo-shop-stepper button:disabled { opacity: 0.4; }
+.bo-shop-stepper output { min-width: 28px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+.bo-shop-treffer { display: flex; flex-direction: column; gap: 2px; margin-top: 6px; padding: 6px; border-radius: 16px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-float); }
+.bo-shop-treffer button { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 6px 10px; border-radius: 12px; text-align: left; }
+.bo-shop-treffer button:hover, .bo-shop-treffer button[aria-selected="true"] { background: var(--color-bo-surface-2); }
+
+/* ---------------------------------------------------------------- Kiosk (Abholung) ---- */
+.bo-shop-tasten { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; }
+.bo-shop-tasten button {
+  height: 56px; border-radius: 16px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn);
+  font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums;
+  transition: transform var(--bo-dauer-weich, 420ms) var(--ease-feder, ease);
+}
+.bo-shop-tasten button:active { transform: scale(0.94); transition-duration: 80ms; }
+.bo-shop-codefeld { display: flex; gap: 8px; }
+.bo-shop-codefeld span {
+  display: inline-flex; width: 56px; height: 64px; align-items: center; justify-content: center; border-radius: 16px;
+  background: var(--color-bo-surface-2); font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 28px; font-weight: 600;
+}
+.bo-shop-codefeld[data-ergebnis="unbekannt"] { animation: bo-shop-wackeln 420ms var(--ease-feder, ease) both; }
+.bo-shop-codefeld[data-ergebnis="unbekannt"] span { box-shadow: inset 0 0 0 1.5px var(--color-bo-ziegel); }
+@keyframes bo-shop-wackeln { 0%, 100% { transform: none; } 20% { transform: translateX(-8px); } 40% { transform: translateX(7px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(2px); } }
+@media (prefers-reduced-motion: reduce) { .bo-shop-codefeld[data-ergebnis="unbekannt"] { animation: none; } }
+
+@supports (corner-shape: superellipse(1.4)) {
+  .bo-shop-vorschau, .bo-shop-karte, .bo-shop-kb__spalte, .bo-shop-phasen, .bo-shop-flaeche, .bo-shop-gutschein { corner-shape: superellipse(1.35); }
+}
+
+/* Mit offener Vorschau: Nebenspalten ausblenden, Schritt-Spalte nicht zerdrücken */
+.bo-shop-raster[data-vorschau] [data-nur-breit] { display: none; }
+.bo-shop-schritt { min-width: 168px; }
+
+/* Kopfzelle der Liste begrenzen, damit Status und Nächster Schritt am iPad sichtbar bleiben */
+.bo-shop-tab .bo-dt__kopfzelle { max-width: 300px; }
+.bo-shop-tab .bo-dt__kopfzelle .bo-dt-objekt { max-width: 100%; }
+.bo-shop-tab .bo-dt__kopfzelle .bo-dt-objekt > span:last-child { min-width: 0; overflow: hidden; }
+@media (max-width: 1279px) { .bo-shop-tab .bo-dt__kopfzelle { max-width: 220px; } .bo-shop-tab .bo-shop-bildstapel > * + * { display: none; } }

@@ -22,6 +22,11 @@ class PHNewsletterAusgabe(Document):
         self.titel = f"Post aus Lochau · {self.slug}" if not self.nummer else f"Post aus Lochau Nr. {self.nummer} · {self.slug}"
         if self.zielgruppe == "Interesse" and not self.zielgruppe_interesse:
             frappe.throw(_("Zielgruppe „Interesse“ braucht ein Interesse."))
+        if self.zielgruppe == "Segment":
+            if not self.get("segment"):
+                frappe.throw(_("Zielgruppe „Segment“ braucht ein Segment."))
+            if frappe.db.get_value("PH Segment", self.segment, "zweck") != "newsletter":
+                frappe.throw(_("Für den Newsletter nur Segmente mit Zweck „newsletter“ (Einwilligung)."))
         for b in self.bloecke:
             if b.typ in regeln.SLOT_TYPEN and b.bild and b.bildquelle != "eigen":
                 frappe.throw(_("Zeile {0}: Im Newsletter nur eigene Fotos (Design-Bibel §7). Bildquelle „eigen“ setzen oder Bild entfernen.").format(b.idx))
@@ -44,7 +49,36 @@ class PHNewsletterAusgabe(Document):
             self.freigegeben_am = now_datetime()
             self.empfaenger_anzahl = len(newsletter.empfaenger_fuer(self))
 
+    def on_update(self):
+        # Konzept L4: Übergang „Zur Freigabe“ → ToDo für die Leitung (keine Mail nach außen)
+        if self.has_value_changed("status") and self.status == "Freigabe":
+            try:
+                from frappe.desk.form.assign_to import add as zuweisen
+
+                leitung = [u for u in frappe.get_all("Has Role", filters={"role": "PH Marketing Leitung", "parenttype": "User"}, pluck="parent") if frappe.db.get_value("User", u, "enabled")]
+                if leitung:
+                    zuweisen({"doctype": self.doctype, "name": self.name, "assign_to": leitung[:5], "description": _("Newsletter {0} wartet auf Freigabe").format(self.titel), "notify": 0})
+            except Exception:  # noqa: BLE001
+                frappe.log_error(title=f"PH Newsletter Freigabe-ToDo {self.name}")
+
     # ── Buttons (ph_newsletter_ausgabe.js) ────────────────────────────────
+    @frappe.whitelist()
+    def empfaenger_liste(self, start=0, limit=100):
+        """Konzept L2: Empfänger als Liste (E-Mail maskiert für Mitarbeiter, voll für Leitung)."""
+        self.check_permission("read")
+        from ph_marketing.utils.token import email_maskieren
+
+        voll = bool({"PH Marketing Leitung", "System Manager"} & set(frappe.get_roles()))
+        alle = newsletter.empfaenger_fuer(self)
+        start, limit = frappe.utils.cint(start), min(frappe.utils.cint(limit) or 100, 500)
+        return {"gesamt": len(alle), "zeilen": [{"email": a["email"] if voll else email_maskieren(a["email"]), "sprache": a.get("sprache")} for a in alle[start:start + limit]]}
+
+    @frappe.whitelist()
+    def zustellung(self):
+        """Zustellstatistik aus dem Versandprotokoll (zugestellt, Bounces, Beschwerden, Abmeldungen)."""
+        self.check_permission("read")
+        rows = frappe.get_all("PH Newsletter Versand", filters={"ausgabe": self.name}, fields=["status", "count(name) as n"], group_by="status")
+        return {r.status: r.n for r in rows}
     @frappe.whitelist()
     def vorschau(self):
         self.check_permission("read")

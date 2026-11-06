@@ -59,6 +59,17 @@ class PHWiderruf(Document):
         if self.flags.bestaetigung_senden is not False:
             self.bestaetigung_senden(intern=True)
 
+    def on_update(self):
+        """Nachträgliche Zuordnung: Rückwärtslink PH Bestellung.widerruf setzen (10-konzept-shop §10). Wirft nie."""
+        try:
+            if self.bestellung and self.has_value_changed("bestellung") and not self.flags.in_insert:
+                if not frappe.db.get_value("PH Bestellung", self.bestellung, "widerruf"):
+                    b = frappe.get_doc("PH Bestellung", self.bestellung)
+                    b.db_set("widerruf", self.name, update_modified=False)
+                    st.verlauf(b, b.status, _("Widerruf {0} nachträglich zugeordnet").format(self.name), "backoffice")
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title=f"PH Widerruf {self.name}: Rückwärtslink")
+
     # ── Buttons ──────────────────────────────────────────────────────────────
     @frappe.whitelist()
     def bestaetigung_senden(self, intern=False):

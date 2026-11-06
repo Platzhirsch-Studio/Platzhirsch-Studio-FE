@@ -15,7 +15,7 @@ frappe.ui.form.on("PH Wareneingang", {
 					frm.call({ method: "reklamation_melden", doc: frm.doc, freeze: true }).then((r) => frappe.show_alert({ message: __("Gesendet an {0}", [r.message]), indicator: "green" }));
 				});
 			}, __("Aktionen"));
-			if (frappe.boot.single_types && frappe.get_meta("PH Servicefall")) frm.add_custom_button(__("Servicefall anlegen"), () => frappe.new_doc("PH Servicefall", { lieferschein: frm.doc.name }), __("Aktionen"));
+			// Servicefall: Knopf „Schaden → Servicefall“ (unten)
 		}
 		frm.add_custom_button(__("Bestellung öffnen"), () => frappe.set_route("Form", "PH Herstellerbestellung", frm.doc.herstellerbestellung), __("Ansehen"));
 	},
@@ -43,3 +43,27 @@ function positionen_laden(frm) {
 		frm.refresh_field("positionen");
 	});
 }
+
+// ── Ergänzung 04.11. (Backend-Lücken 51)
+frappe.ui.form.on("PH Wareneingang", {
+	refresh(frm) {
+		if (frm.is_new()) return;
+		const schaden = (frm.doc.positionen || []).some((z) => ["Transportschaden", "beschaedigt", "falsch", "fehlt"].includes(z.zustand));
+		if (frm.doc.unterlieferung || frm.doc.ueberlieferung) frm.dashboard.add_indicator(__("Unterlieferung {0} · Überlieferung {1}", [frm.doc.unterlieferung || 0, frm.doc.ueberlieferung || 0]), "orange");
+		if (frm.doc.servicefall_ref) frm.add_custom_button(__("Servicefall {0}", [frm.doc.servicefall_ref]), () => frappe.set_route("Form", "PH Servicefall", frm.doc.servicefall_ref), __("Ansehen"));
+		if (schaden && !frm.doc.servicefall_ref) {
+			frm.add_custom_button(__("Schaden → Servicefall"), () => {
+				frappe.prompt([
+					{ fieldname: "beschreibung", fieldtype: "Small Text", label: __("Beschreibung (leer = aus Positionen)") },
+					{ fieldname: "regress", fieldtype: "Check", label: __("Lieferantenregress anlegen") },
+				], (v) => {
+					frm.call({ method: "schaden_melden", doc: frm.doc, args: v, freeze: true }).then((r) => {
+						const m = r.message || {};
+						frappe.show_alert({ message: m.servicefall ? __("Servicefall {0} angelegt", [m.servicefall]) : __("Aufgabe angelegt: {0}", [m.hinweis]), indicator: "green" });
+						frm.reload_doc();
+					});
+				}, __("Schaden melden"), __("Anlegen"));
+			}, __("Aktionen"));
+		}
+	},
+});

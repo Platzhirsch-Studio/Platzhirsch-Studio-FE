@@ -16,7 +16,26 @@
   "produkt",
   "ausfuehrung_text",
   "produktpass",
-  "preis_cent"
+  "preis_cent",
+  "pos_nr",
+  "lieferant",
+  "hersteller_artikelnr",
+  "ausfuehrung",
+  "montage_art",
+  "ek_cent",
+  "sb_lieferung",
+  "lieferstatus",
+  "menge_bestellt",
+  "menge_geliefert",
+  "menge_montiert",
+  "liefertermin",
+  "herstellerbestellung",
+  "cb_lieferung",
+  "nachlieferung_noetig",
+  "nachlieferung_menge",
+  "nachlieferung_grund",
+  "nachlieferung_termin",
+  "nachtrag"
  ],
  "fields": [
   {
@@ -90,11 +109,120 @@
    "label": "Preis (Cent, intern)",
    "permlevel": 1,
    "description": "Nur Leitung; Portal zeigt Preise erst nach Freigabe (PH Projekt.portal_positionen_preise)."
+  },
+  {
+   "fieldname": "pos_nr",
+   "fieldtype": "Data",
+   "label": "Pos."
+  },
+  {
+   "fieldname": "lieferant",
+   "fieldtype": "Link",
+   "label": "Lieferant",
+   "options": "PH Lieferant"
+  },
+  {
+   "fieldname": "hersteller_artikelnr",
+   "fieldtype": "Data",
+   "label": "Artikel-/Typnr."
+  },
+  {
+   "fieldname": "ausfuehrung",
+   "fieldtype": "Link",
+   "label": "Ausführung (Katalog)",
+   "options": "PH Produkt Ausfuehrung"
+  },
+  {
+   "fieldname": "montage_art",
+   "fieldtype": "Select",
+   "label": "Montage",
+   "options": "\nEigenmontage\nFremdgewerk\nohne"
+  },
+  {
+   "fieldname": "ek_cent",
+   "fieldtype": "Int",
+   "label": "EK je Stück (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_lieferung",
+   "fieldtype": "Section Break",
+   "label": "Lieferung"
+  },
+  {
+   "fieldname": "lieferstatus",
+   "fieldtype": "Select",
+   "label": "Lieferstatus",
+   "options": "offen\nbestellt\nbestaetigt\nteilgeliefert\ngeliefert\nmontiert\nstorniert",
+   "default": "offen",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "menge_bestellt",
+   "fieldtype": "Int",
+   "label": "Bestellt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menge_geliefert",
+   "fieldtype": "Int",
+   "label": "Geliefert"
+  },
+  {
+   "fieldname": "menge_montiert",
+   "fieldtype": "Int",
+   "label": "Montiert"
+  },
+  {
+   "fieldname": "liefertermin",
+   "fieldtype": "Date",
+   "label": "Liefertermin",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "herstellerbestellung",
+   "fieldtype": "Link",
+   "label": "Herstellerbestellung",
+   "options": "PH Herstellerbestellung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_lieferung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "nachlieferung_noetig",
+   "fieldtype": "Check",
+   "label": "Nachlieferung nötig"
+  },
+  {
+   "fieldname": "nachlieferung_menge",
+   "fieldtype": "Int",
+   "label": "Nachliefermenge"
+  },
+  {
+   "fieldname": "nachlieferung_grund",
+   "fieldtype": "Data",
+   "label": "Grund Nachlieferung"
+  },
+  {
+   "fieldname": "nachlieferung_termin",
+   "fieldtype": "Date",
+   "label": "Nachlieferung bis"
+  },
+  {
+   "fieldname": "nachtrag",
+   "fieldtype": "Link",
+   "label": "Nachtrag",
+   "options": "PH Nachtrag",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Projekte",
  "name": "PH Projekt Position",

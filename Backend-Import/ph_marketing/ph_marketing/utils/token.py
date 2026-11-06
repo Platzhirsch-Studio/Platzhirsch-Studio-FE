@@ -56,3 +56,29 @@ def email_maskieren(email):
         return ""
     lokal, domain = e.split("@", 1)
     return f"{lokal[:1]}***@{domain}"
+
+
+# ── Signierte Codes (Event-Check-in per QR) ─────────────────────────────────
+# Der QR-Code enthält keinen Personenbezug, nur Event, Zeile und eine HMAC-Signatur (gekürzt auf 20 Zeichen
+# base32 = 100 Bit). Der Schlüssel wird aus dem Frappe-Verschlüsselungsschlüssel der Site abgeleitet
+# (ph_marketing/checkin.py) – kein zusätzliches Geheimnis nötig, nie in Dateien.
+import base64 as _b64  # noqa: E402
+import hmac as _hmac  # noqa: E402
+
+SIGNATUR_LAENGE = 20
+
+
+def signieren(text, schluessel):
+    if not schluessel:
+        raise ValueError("Schlüssel fehlt")
+    if isinstance(schluessel, str):
+        schluessel = schluessel.encode("utf-8")
+    d = _hmac.new(schluessel, (PRAEFIX + str(text)).encode("utf-8"), hashlib.sha256).digest()
+    return _b64.b32encode(d).decode("ascii").rstrip("=")[:SIGNATUR_LAENGE]
+
+
+def signatur_gueltig(text, signatur, schluessel):
+    try:
+        return _hmac.compare_digest(signieren(text, schluessel), str(signatur or "").strip().upper())
+    except ValueError:
+        return False

@@ -7,6 +7,9 @@ class PHEinstellungen(Document):
     def validate(self):
         if (self.api_rate_limit_pro_minute or 0) < 1:
             frappe.throw(_("Ratenbegrenzung muss mindestens 1 je Minute sein."))
+        for feld in ("api_rate_limit_gast_pro_minute", "api_rate_limit_gesamt_pro_minute"):
+            if (self.get(feld) or 0) < 0:
+                self.set(feld, 0)
         if (self.api_idempotenz_tage or 0) < 1:
             self.api_idempotenz_tage = 7
         if (self.api_protokoll_aufbewahrung_tage or 0) < 7:
@@ -38,6 +41,8 @@ def einstellungen():
             "testmodus": int(doc.testmodus or 0),
             "api_aktiv": int(doc.api_aktiv or 0),
             "api_rate_limit_pro_minute": int(doc.api_rate_limit_pro_minute or 120),
+            "api_rate_limit_gast_pro_minute": int(doc.get("api_rate_limit_gast_pro_minute") if doc.get("api_rate_limit_gast_pro_minute") is not None else 600),
+            "api_rate_limit_gesamt_pro_minute": int(doc.get("api_rate_limit_gesamt_pro_minute") if doc.get("api_rate_limit_gesamt_pro_minute") is not None else 2400),
             "api_idempotenz_tage": int(doc.api_idempotenz_tage or 7),
             "api_protokoll_aufbewahrung_tage": int(doc.api_protokoll_aufbewahrung_tage or 90),
             "api_protokoll_nutzdaten": int(doc.api_protokoll_nutzdaten or 0),

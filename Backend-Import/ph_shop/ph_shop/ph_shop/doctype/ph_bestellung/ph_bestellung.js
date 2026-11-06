@@ -13,6 +13,8 @@ frappe.ui.form.on("PH Bestellung", {
 		if (frm.doc.status) frm.page.set_indicator(__(frm.doc.status), FARBEN_BESTELLUNG[frm.doc.status] || "gray");
 		if (frm.doc.modus === "test") frm.dashboard.set_headline_alert(__("Testbestellung – keine echte Zahlung."), "orange");
 		if (frm.doc.status === "pruefen") frm.dashboard.set_headline_alert(__("Betrag weicht von Stripe ab – bitte prüfen."), "red");
+		if (frm.doc.radar_markiert) frm.dashboard.set_headline_alert(__("Stripe Radar: erhöhtes Risiko ({0}, Wert {1}) – vor Versand/Übergabe prüfen.", [frappe.utils.escape_html(frm.doc.radar_risk_level || "–"), frm.doc.radar_risk_score ?? "–"]) + (frm.doc.radar_geprueft_von ? " " + __("Geprüft von {0}", [frappe.utils.escape_html(frm.doc.radar_geprueft_von)]) : ""), frm.doc.radar_geprueft_von ? "orange" : "red");
+		if (frm.doc.bestellart === "Ersatz" && frm.doc.ersatz_fuer) frm.dashboard.set_headline_alert(__("Ersatzlieferung (0 €) zu {0}", [frappe.utils.escape_html(frm.doc.ersatz_fuer)]), "blue");
 		if (frm.is_new()) return;
 		const s = frm.doc.status;
 		const bezahlt = Boolean(frm.doc.bezahlt_am);
@@ -48,6 +50,23 @@ frappe.ui.form.on("PH Bestellung", {
 		if (leitung && !["storniert", "erstattet", "abgeschlossen"].includes(s)) {
 			frm.add_custom_button(__("Stornieren & erstatten"), () => stornieren(frm), __("Aktionen"));
 		}
+		const offen = (frm.doc.gesamt_cent || 0) - (frm.doc.betrag_bezahlt_cent || 0);
+		if (!bezahlt && offen > 0 && ["offen", "fehlgeschlagen", "checkout_fehler", "zahlung_ausstehend"].includes(s)) {
+			frm.add_custom_button(__("Zahlungslink erzeugen/senden"), () => frappe.confirm(__("Zahlungslink über {0} erzeugen und an {1} senden?", [euro(offen), frappe.utils.escape_html(frm.doc.kunde_email || "–")]), () => aufruf(frm, "zahlungslink_erstellen", { senden: 1 }).then((r) => {
+				const m = r.message || {};
+				frappe.msgprint({ title: __("Zahlungslink"), message: `<a href="${encodeURI(m.url || "")}" target="_blank" rel="noopener">${frappe.utils.escape_html(m.url || "")}</a>${m.simuliert ? "<br>" + __("(simuliert – kein echter Stripe-Aufruf)") : ""}`, indicator: "green" });
+			})), __("Aktionen"));
+		}
+		if (!["storniert", "abgeschlossen", "erstattet", "versendet", "abgeholt", "widerrufen"].includes(s)) {
+			frm.add_custom_button(__("Positionen stornieren"), () => teilDialog(frm, "positionen_stornieren"), __("Aktionen"));
+		}
+		if (leitung && (bezahlt || frm.doc.betrag_bezahlt_cent > 0) && !["erstattet", "storniert"].includes(s)) {
+			frm.add_custom_button(__("Teilerstattung"), () => teilDialog(frm, "teilerstatten"), __("Aktionen"));
+		}
+		if (bezahlt && frm.doc.bestellart !== "Ersatz") frm.add_custom_button(__("Ersatzlieferung anlegen"), () => teilDialog(frm, "ersatzlieferung_anlegen"), __("Aktionen"));
+		if (s === "abholbereit" && frm.doc.abholcode) frm.add_custom_button(__("Abholcode erneut senden"), () => aufruf(frm, "abholcode_erneut_senden", {}, __("Gesendet")), __("Aktionen"));
+		if (s === "abgeholt" && leitung) frm.add_custom_button(__("Übergabe zurücknehmen"), () => frappe.prompt({ fieldname: "grund", fieldtype: "Data", label: __("Grund"), reqd: 1 }, (v) => aufruf(frm, "abholung_zuruecknehmen", v), __("Übergabe zurücknehmen")), __("Aktionen"));
+		if (frm.doc.radar_markiert && !frm.doc.radar_geprueft_von) frm.add_custom_button(__("Risiko geprüft"), () => frappe.prompt({ fieldname: "notiz", fieldtype: "Data", label: __("Notiz (z. B. Kunde telefonisch bestätigt)") }, (v) => aufruf(frm, "radar_geprueft", v)), __("Aktionen"));
 		if (frm.doc.zahlung_ref) frm.add_custom_button(__("Zahlung öffnen"), () => frappe.set_route("Form", "PH Zahlung", frm.doc.zahlung_ref));
 		if (frm.doc.payment_intent) {
 			const live = frm.doc.livemode ? "" : "test/";
@@ -154,6 +173,49 @@ function stornieren(frm) {
 			d.hide();
 			frappe.confirm(__("Bestellung {0} wirklich stornieren?", [frm.doc.name]), () => aufruf(frm, "stornieren", v, __("Storniert ({0})")));
 		},
+	});
+	d.show();
+}
+
+// Teilstorno / Teilerstattung / Ersatzlieferung: Mengen je Position, Vorschau vom Server (USt je Satz)
+function teilDialog(frm, methode) {
+	const ersatz = methode === "ersatzlieferung_anlegen";
+	const titel = { positionen_stornieren: __("Positionen stornieren"), teilerstatten: __("Teilerstattung"), ersatzlieferung_anlegen: __("Ersatzlieferung (0 €)") }[methode];
+	const zeilen = (frm.doc.positionen || []).map((p) => ({ idx: p.idx, bezeichnung: p.bezeichnung, offen: (p.menge || 0) - (ersatz ? 0 : p.zurueck_menge || 0) }));
+	const felder = zeilen.map((z) => ({ fieldname: `m_${z.idx}`, fieldtype: "Int", label: `${z.idx}. ${frappe.utils.escape_html(z.bezeichnung || "")} (${__("max.")} ${z.offen})`, default: 0 }));
+	if (methode === "teilerstatten") {
+		felder.push({ fieldname: "versand_cent", fieldtype: "Int", label: __("Versandanteil (Cent)"), default: 0 });
+		felder.push({ fieldname: "kulanz_cent", fieldtype: "Int", label: __("Kulanz/Preisminderung ohne Rücknahme (Cent)"), default: 0 });
+	}
+	felder.push({ fieldname: "grund", fieldtype: "Data", label: __("Grund"), reqd: 1 });
+	if (!ersatz) felder.push({ fieldname: "vorschau", fieldtype: "HTML" });
+	const d = new frappe.ui.Dialog({ title: titel, fields: felder });
+	const args = () => {
+		const v = d.get_values(true) || {};
+		const z = {};
+		zeilen.forEach((r) => { if (v[`m_${r.idx}`] > 0) z[r.idx] = v[`m_${r.idx}`]; });
+		return { zeilen: JSON.stringify(z), versand_cent: v.versand_cent || 0, kulanz_cent: v.kulanz_cent || 0, grund: v.grund };
+	};
+	const vorschau = () => {
+		if (ersatz) return;
+		const a = args();
+		frm.call({ method: "erstattung_vorschau", doc: frm.doc, args: { zeilen: a.zeilen, versand_cent: a.versand_cent, kulanz_cent: a.kulanz_cent } }).then((r) => {
+			const m = r.message || {};
+			const posten = (m.posten || []).map((p) => `${p.satz_promille / 100} %: ${euro(p.brutto_cent)} (USt ${euro(p.ust_cent)})`).join("<br>");
+			const weg = (m.verteilung || []).map((t) => `${frappe.utils.escape_html(t.kanal || "")} ${euro(t.betrag_cent)}`).join(", ");
+			d.fields_dict.vorschau.$wrapper.html(`<div class="text-muted">${m.nur_forderung ? __("Unbezahlt – mindert nur die Forderung") : __("Erstattung")} <b>${euro(m.betrag_cent)}</b><br>${posten}${weg ? "<br>" + __("über") + " " + weg : ""}</div>`);
+		}).catch(() => d.fields_dict.vorschau.$wrapper.html(""));
+	};
+	felder.filter((f) => f.fieldtype === "Int").forEach((f) => d.fields_dict[f.fieldname].$input.on("change", vorschau));
+	d.set_primary_action(ersatz ? __("Anlegen") : __("Buchen"), () => {
+		const a = args();
+		if (!a.grund) return;
+		const los = () => {
+			d.hide();
+			aufruf(frm, methode, ersatz ? { zeilen: a.zeilen, grund: a.grund } : a).then((r) => { if (ersatz && r.message) frappe.set_route("Form", "PH Bestellung", r.message); });
+		};
+		if (methode === "teilerstatten") frappe.confirm(__("Erstattung wirklich auslösen? Geld geht an den Kunden zurück."), los);
+		else los();
 	});
 	d.show();
 }

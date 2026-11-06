@@ -18,6 +18,8 @@ export const PORTAL_NAV = [
   { href: "/de/portal/gewerke", key: "trades", label: "Gewerke", icon: "trades" },
   // Service Nr. 4 (Integration 29.10.2026): Meine Stücke & Pflege.
   { href: "/de/portal/pflege", key: "care", label: "Pflege", icon: "care" },
+  // Kundenkarte (04.11.2026): Stufe, Vorteile, Wallet (in Vorbereitung).
+  { href: "/de/portal/kundenkarte", key: "card", label: "Kundenkarte", icon: "card" },
 ];
 
 /** Call to action, shown as a button right of the desktop tabs and in "Mehr". */

@@ -65,3 +65,31 @@ class TestPHMontageauftrag(FrappeTestCase):
         self.assertEqual(eintrag["kind"], "montage")
         self.assertTrue(eintrag["start"].startswith("2026-12-04T08:00:00"))
         self.assertIn("+", eintrag["start"])  # ISO 8601 mit Offset
+
+
+class TestPHMontageKollision(FrappeTestCase):
+    def setUp(self):
+        frappe.set_user("Administrator")
+        self.p = testprojekt("Montage Kollision Test")
+
+    def test_fahrzeug_und_monteur_kollision(self):
+        werte = {"doctype": "PH Montageauftrag", "projekt": self.p.name, "start": "2027-01-12 08:00:00", "ende": "2027-01-12 12:00:00", "fahrzeug": "b-123ab", "team": [{"user": "Administrator", "rolle": "Monteur"}]}
+        a = frappe.get_doc(werte).insert()
+        self.assertEqual(a.fahrzeug, "B-123AB")
+        self.assertFalse(a.kollisionen)
+        b = frappe.get_doc({**werte, "start": "2027-01-12 10:00:00", "ende": "2027-01-12 14:00:00"}).insert()
+        self.assertIn("B-123AB", b.kollisionen)
+        self.assertIn("Administrator", b.kollisionen)
+        from ph_projekte.api import montage_kollisionen, montage_plantafel
+
+        treffer = montage_kollisionen("2027-01-12 11:00:00", "2027-01-12 13:00:00", monteure='["Administrator"]', fahrzeug="B-123AB", ausser=b.name)
+        self.assertTrue(any(t["name"] == a.name for t in treffer))
+        tafel = montage_plantafel("2027-01-12", "2027-01-13")
+        self.assertTrue(any(m["name"] == b.name for m in tafel["montagen"]))
+
+    def test_abnahme_uebernimmt_nur_offene_maengel(self):
+        m = frappe.get_doc({"doctype": "PH Montageauftrag", "projekt": self.p.name, "start": "2027-01-20 08:00:00", "maengel": [{"beschreibung": "Kratzer Front", "status": "behoben"}, {"beschreibung": "Griff fehlt", "status": "offen", "verantwortlich": "Lieferant"}]}).insert()
+        abn = frappe.get_doc("PH Abnahme", m.abnahme_anlegen())
+        texte = [p.bezeichnung for p in abn.positionen]
+        self.assertIn("Griff fehlt", texte)
+        self.assertNotIn("Kratzer Front", texte)

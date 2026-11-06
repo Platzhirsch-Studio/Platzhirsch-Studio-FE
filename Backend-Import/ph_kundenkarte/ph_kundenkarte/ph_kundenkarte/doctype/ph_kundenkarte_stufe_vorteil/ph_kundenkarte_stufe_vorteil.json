@@ -1,0 +1,27 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["vorteil", "titel", "art", "hinweis"],
+ "fields": [
+  {"fieldname": "vorteil", "fieldtype": "Link", "label": "Vorteil", "options": "PH Kundenkarte Vorteil", "reqd": 1, "in_list_view": 1, "columns": 3},
+  {"fieldname": "titel", "fieldtype": "Data", "label": "Titel", "fetch_from": "vorteil.titel", "read_only": 1, "in_list_view": 1, "columns": 3},
+  {"fieldname": "art", "fieldtype": "Data", "label": "Art", "fetch_from": "vorteil.art", "read_only": 1, "in_list_view": 1, "columns": 2},
+  {"fieldname": "hinweis", "fieldtype": "Data", "label": "Hinweis für diese Stufe", "in_list_view": 1, "columns": 2, "description": "z. B. „ab Lieferung im Umkreis“ – keine Euro-/Prozentangaben."}
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Kundenkarte",
+ "name": "PH Kundenkarte Stufe Vorteil",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

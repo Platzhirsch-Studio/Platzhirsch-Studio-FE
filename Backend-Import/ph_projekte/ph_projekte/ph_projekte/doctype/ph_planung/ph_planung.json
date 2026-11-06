@@ -24,6 +24,16 @@
   "echt_bestaetigt",
   "kunde_sichtbar",
   "freigabe_durch_kunde_am",
+  "aufmass",
+  "vorgelegt_am",
+  "kunde_entscheidung",
+  "kunde_kommentar",
+  "freigabe_quelle",
+  "freigabe_ip_hash",
+  "vorlage_dokument",
+  "import_format",
+  "import_protokoll",
+  "abgleich_protokoll",
   "sb_inhalt",
   "beschreibung",
   "daten_json",
@@ -73,7 +83,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Entwurf\nKunde vorgelegt\nFreigegeben\nVerworfen",
+   "options": "Entwurf\nKunde vorgelegt\nAenderung gewuenscht\nFreigegeben\nVerworfen",
    "default": "Entwurf",
    "read_only": 1,
    "in_list_view": 1,
@@ -149,6 +159,69 @@
    "read_only": 1
   },
   {
+   "fieldname": "aufmass",
+   "fieldtype": "Link",
+   "label": "Aufmaß",
+   "options": "PH Aufmass"
+  },
+  {
+   "fieldname": "vorgelegt_am",
+   "fieldtype": "Datetime",
+   "label": "Vorgelegt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kunde_entscheidung",
+   "fieldtype": "Select",
+   "label": "Entscheidung Kunde",
+   "options": "\noffen\nfreigegeben\naenderung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kunde_kommentar",
+   "fieldtype": "Small Text",
+   "label": "Kommentar Kunde",
+   "read_only": 1
+  },
+  {
+   "fieldname": "freigabe_quelle",
+   "fieldtype": "Select",
+   "label": "Freigabe über",
+   "options": "\nportal\nbackoffice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "freigabe_ip_hash",
+   "fieldtype": "Data",
+   "label": "IP (Hash) Freigabe",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vorlage_dokument",
+   "fieldtype": "Link",
+   "label": "Dokument (Portal)",
+   "options": "PH Projekt Dokument",
+   "read_only": 1
+  },
+  {
+   "fieldname": "import_format",
+   "fieldtype": "Data",
+   "label": "Importformat",
+   "read_only": 1
+  },
+  {
+   "fieldname": "import_protokoll",
+   "fieldtype": "Small Text",
+   "label": "Import-Protokoll",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abgleich_protokoll",
+   "fieldtype": "Small Text",
+   "label": "Änderungsabgleich (letzter)",
+   "read_only": 1
+  },
+  {
    "fieldname": "sb_inhalt",
    "fieldtype": "Section Break",
    "label": "Inhalt"
@@ -210,7 +283,7 @@
    "group": "Renderings"
   }
  ],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Projekte",
  "name": "PH Planung",
@@ -290,6 +363,70 @@
    "export": 1,
    "report": 1,
    "share": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
   }
  ],
  "sort_field": "modified",
@@ -310,6 +447,10 @@
   {
    "title": "Verworfen",
    "color": "Red"
+  },
+  {
+   "title": "Aenderung gewuenscht",
+   "color": "Orange"
   }
  ],
  "track_changes": 1,

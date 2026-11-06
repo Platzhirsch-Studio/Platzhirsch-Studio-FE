@@ -48,6 +48,9 @@ def soll_aus_belegen(belege: list[dict]) -> dict:
         "anzahlungen_cent": 0,
         "gutschein_verkauf_cent": 0,
         "gutschein_einloesung_cent": 0,
+        "retouren_cent": 0,
+        "retouren_anzahl": 0,
+        "chf_einnahmen_cent": 0,
         "je_satz": {},
         "je_zahlart": {},
         "je_bediener": {},
@@ -73,7 +76,11 @@ def soll_aus_belegen(belege: list[dict]) -> dict:
             za = z.get("zahlart")
             betrag = int(z.get("betrag_cent") or 0)
             out["je_zahlart"][za] = out["je_zahlart"].get(za, 0) + betrag
-            if za == "Bar":
+            if za == "Bar" and z.get("fremdwaehrung"):
+                # Fremdwährung (CHF): CHF-Lade erhält den gegebenen Betrag, Rückgeld geht in Euro aus der EUR-Lade
+                out["chf_einnahmen_cent"] += int(z.get("fremd_gegeben_cent") or 0)
+                out["bar_ausgaben_cent"] += int(z.get("retour_cent") or 0)
+            elif za == "Bar":
                 if betrag >= 0:
                     out["bar_einnahmen_cent"] += betrag
                 else:
@@ -97,7 +104,48 @@ def soll_aus_belegen(belege: list[dict]) -> dict:
                 out["gutschein_verkauf_cent"] += int(p.get("brutto_cent") or 0)
             elif pa == "Gutschein Einloesung":
                 out["gutschein_einloesung_cent"] += -int(p.get("brutto_cent") or 0)
+            elif pa == "Retoure":
+                out["retouren_cent"] += -int(p.get("brutto_cent") or 0)
+                out["retouren_anzahl"] += 1
     return out
+
+
+def geschaeftstag(zeitpunkt, wechsel_uhrzeit: str | None = None):
+    """Geschäftstag eines Zeitpunkts: vor der Tageswechsel-Uhrzeit (z. B. „03:00“ bei Abendveranstaltungen)
+    zählt ein Beleg zum Vortag. Ohne Einstellung = Kalendertag. zeitpunkt: datetime."""
+    from datetime import timedelta
+
+    if not wechsel_uhrzeit or str(wechsel_uhrzeit) in ("0:00:00", "00:00", "00:00:00"):
+        return zeitpunkt.date()
+    h, m = (int(x) for x in str(wechsel_uhrzeit).split(":")[:2])
+    return (zeitpunkt - timedelta(hours=h, minutes=m)).date()
+
+
+def zeitraum(datum, wechsel_uhrzeit: str | None = None) -> tuple[str, str]:
+    """(von, bis) als Text 'YYYY-MM-DD HH:MM:SS' für den Geschäftstag `datum` (date)."""
+    from datetime import datetime, time, timedelta
+
+    h, m = 0, 0
+    if wechsel_uhrzeit and str(wechsel_uhrzeit) not in ("0:00:00", "00:00", "00:00:00"):
+        h, m = (int(x) for x in str(wechsel_uhrzeit).split(":")[:2])
+    von = datetime.combine(datum, time(h, m))
+    bis = von + timedelta(days=1) - timedelta(seconds=1)
+    return von.strftime("%Y-%m-%d %H:%M:%S"), bis.strftime("%Y-%m-%d %H:%M:%S")
+
+
+def anfangsbestand(bestand_vortag_cent: int, anfangsbuchungen_heute_cent: int = 0, vortag_ist_cent: int | None = None) -> dict:
+    """Bargeld-Anfang eines Abschlusses (Fachkritik 21 P3/P-F).
+
+    Grundlage ist der Kassenbuch-Bestand am Ende des Vortags (enthält Bar-Belege, Einlagen/Entnahmen, Differenz-
+    buchung des letzten Abschlusses) plus heute gebuchte „Anfangsbestand“-Zeilen (Ersteinrichtung). Einlagen/
+    Entnahmen von heute laufen getrennt ins Soll. vortag_ist_cent dient nur der Plausibilität: nach Differenz-
+    buchung muss Kassenbuch-Bestand = gezähltes Ist des Vortags sein, sonst Hinweis.
+    """
+    anfang = int(bestand_vortag_cent) + int(anfangsbuchungen_heute_cent or 0)
+    hinweis = None
+    if vortag_ist_cent is not None and int(vortag_ist_cent) != int(bestand_vortag_cent):
+        hinweis = f"Kassenbuch-Bestand Vortag ({int(bestand_vortag_cent)} ct) ≠ gezähltes Ist Vortag ({int(vortag_ist_cent)} ct) – Buchung nach Abschluss prüfen."
+    return {"bargeld_anfang_cent": anfang, "quelle": "Vortag", "hinweis": hinweis}
 
 
 def bargeld_soll(bargeld_anfang_cent: int, bar_einnahmen_cent: int, bar_ausgaben_cent: int, einlagen_cent: int = 0, entnahmen_cent: int = 0) -> int:

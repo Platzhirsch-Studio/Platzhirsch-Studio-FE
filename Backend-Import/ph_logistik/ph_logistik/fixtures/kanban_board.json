@@ -10,10 +10,30 @@
   "filters": "[[\"PH Lieferschein\",\"status\",\"not in\",[\"Storniert\"]]]",
   "fields": "[\"titel\",\"lieferart\",\"kunde_name\",\"datum\",\"wunschtermin\",\"tour\"]",
   "columns": [
-   {"column_name": "Entwurf", "indicator": "Blue", "status": "Active", "order": "[]"},
-   {"column_name": "Gepackt", "indicator": "Orange", "status": "Active", "order": "[]"},
-   {"column_name": "Uebergeben", "indicator": "Purple", "status": "Active", "order": "[]"},
-   {"column_name": "Zugestellt", "indicator": "Green", "status": "Active", "order": "[]"}
+   {
+    "column_name": "Entwurf",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Gepackt",
+    "indicator": "Orange",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Uebergeben",
+    "indicator": "Purple",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Zugestellt",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   }
   ]
  },
  {
@@ -27,11 +47,36 @@
   "filters": "[[\"PH Sendung\",\"status\",\"not in\",[\"Storniert\"]]]",
   "fields": "[\"titel\",\"carrier\",\"tracking_nr\",\"richtung\",\"preis_brutto_cent\",\"env\"]",
   "columns": [
-   {"column_name": "Angelegt", "indicator": "Blue", "status": "Active", "order": "[]"},
-   {"column_name": "Etikett", "indicator": "Cyan", "status": "Active", "order": "[]"},
-   {"column_name": "Unterwegs", "indicator": "Orange", "status": "Active", "order": "[]"},
-   {"column_name": "Problem", "indicator": "Red", "status": "Active", "order": "[]"},
-   {"column_name": "Zugestellt", "indicator": "Green", "status": "Active", "order": "[]"}
+   {
+    "column_name": "Angelegt",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Etikett",
+    "indicator": "Cyan",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Unterwegs",
+    "indicator": "Orange",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Problem",
+    "indicator": "Red",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Zugestellt",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   }
   ]
  },
  {
@@ -45,10 +90,68 @@
   "filters": "[[\"PH Tour\",\"status\",\"not in\",[\"Abgebrochen\"]]]",
   "fields": "[\"titel\",\"datum\",\"fahrer\",\"fahrzeug\",\"anzahl_stopps\",\"anzahl_erledigt\"]",
   "columns": [
-   {"column_name": "Geplant", "indicator": "Blue", "status": "Active", "order": "[]"},
-   {"column_name": "Freigegeben", "indicator": "Cyan", "status": "Active", "order": "[]"},
-   {"column_name": "Unterwegs", "indicator": "Orange", "status": "Active", "order": "[]"},
-   {"column_name": "Abgeschlossen", "indicator": "Green", "status": "Active", "order": "[]"}
+   {
+    "column_name": "Geplant",
+    "indicator": "Blue",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Freigegeben",
+    "indicator": "Cyan",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Unterwegs",
+    "indicator": "Orange",
+    "status": "Active",
+    "order": "[]"
+   },
+   {
+    "column_name": "Abgeschlossen",
+    "indicator": "Green",
+    "status": "Active",
+    "order": "[]"
+   }
   ]
+ },
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Speditionsauftraege",
+  "kanban_board_name": "PH Speditionsauftraege",
+  "reference_doctype": "PH Speditionsauftrag",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "columns": [
+   {
+    "column_name": "Entwurf",
+    "status": "Active",
+    "indicator": "Gray"
+   },
+   {
+    "column_name": "Gesendet",
+    "status": "Active",
+    "indicator": "Blue"
+   },
+   {
+    "column_name": "Bestaetigt",
+    "status": "Active",
+    "indicator": "Cyan"
+   },
+   {
+    "column_name": "Abgeholt",
+    "status": "Active",
+    "indicator": "Orange"
+   },
+   {
+    "column_name": "Zugestellt",
+    "status": "Active",
+    "indicator": "Green"
+   }
+  ],
+  "filters": "[[\"PH Speditionsauftrag\", \"status\", \"!=\", \"Storniert\"]]",
+  "fields": "[\"richtung\", \"spediteur\", \"zustell_datum\", \"lademeter\"]"
  }
 ]

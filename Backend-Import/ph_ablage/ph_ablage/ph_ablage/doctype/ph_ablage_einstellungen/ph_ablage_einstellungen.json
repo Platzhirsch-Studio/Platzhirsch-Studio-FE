@@ -1,0 +1,301 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Einstellungen der Dateiablage: Speicher-Adapter (Zugangsdaten nur in site_config), Größen, Dateitypen, Ordnervorlagen, Papierkorb, Vorschau, Freigaben.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sb_speicher",
+  "speicher_adapter",
+  "speicher_praefix",
+  "konfig_status",
+  "cb_speicher",
+  "presign_sekunden",
+  "upload_token_stunden",
+  "chunk_mb",
+  "max_groesse_mb",
+  "s3_pruefsumme_nachrechnen",
+  "sb_endungen",
+  "erlaubte_endungen",
+  "cb_endungen",
+  "gesperrte_endungen",
+  "duplikat_verhalten",
+  "sb_ordner",
+  "automatische_ordner",
+  "ordnervorlagen",
+  "sb_papierkorb",
+  "papierkorb_tage",
+  "cb_papierkorb",
+  "sperre_stunden",
+  "sb_vorschau",
+  "vorschau_aktiv",
+  "vorschau_px",
+  "office_vorschau",
+  "soffice_pfad",
+  "video_poster",
+  "cb_vorschau",
+  "volltext_aktiv",
+  "volltext_max_mb",
+  "sb_freigabe",
+  "freigabe_basis_url",
+  "freigabe_standard_tage",
+  "cb_freigabe",
+  "freigabe_max_tage",
+  "freigabe_passwort_pflicht"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_speicher",
+   "fieldtype": "Section Break",
+   "label": "Speicher"
+  },
+  {
+   "fieldname": "speicher_adapter",
+   "fieldtype": "Select",
+   "label": "Speicher-Adapter für neue Uploads",
+   "options": "lokal\ns3\ngoogle_drive\nonedrive",
+   "default": "lokal",
+   "reqd": 1,
+   "description": "Bestehende Versionen bleiben bei ihrem Adapter, bis „Speicher umziehen“ sie kopiert. Zugangsdaten nur in site_config.json."
+  },
+  {
+   "fieldname": "speicher_praefix",
+   "fieldtype": "Data",
+   "label": "Schlüssel-Präfix im Speicher",
+   "description": "Optional, z. B. „platzhirsch/“ (gemeinsamer Bucket mehrerer Sites)"
+  },
+  {
+   "fieldname": "konfig_status",
+   "fieldtype": "Small Text",
+   "label": "site_config-Schlüssel (nur ob gesetzt)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_speicher",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "presign_sekunden",
+   "fieldtype": "Int",
+   "label": "Gültigkeit Download-/Upload-Links (Sekunden)",
+   "default": "300"
+  },
+  {
+   "fieldname": "upload_token_stunden",
+   "fieldtype": "Int",
+   "label": "Upload-Token gültig (Stunden)",
+   "default": "24"
+  },
+  {
+   "fieldname": "chunk_mb",
+   "fieldtype": "Int",
+   "label": "Teilgröße beim Hochladen über den Server (MB)",
+   "default": "8"
+  },
+  {
+   "fieldname": "max_groesse_mb",
+   "fieldtype": "Int",
+   "label": "Höchstgröße je Datei (MB)",
+   "default": "2048"
+  },
+  {
+   "fieldname": "s3_pruefsumme_nachrechnen",
+   "fieldtype": "Check",
+   "label": "S3: Prüfsumme nach Direkt-Upload nachrechnen (Hintergrund)",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_endungen",
+   "fieldtype": "Section Break",
+   "label": "Dateitypen"
+  },
+  {
+   "fieldname": "erlaubte_endungen",
+   "fieldtype": "Small Text",
+   "label": "Erlaubte Endungen",
+   "description": "Leer = alle außer gesperrten. Kommagetrennt, ohne Punkt."
+  },
+  {
+   "fieldname": "cb_endungen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gesperrte_endungen",
+   "fieldtype": "Small Text",
+   "label": "Gesperrte Endungen"
+  },
+  {
+   "fieldname": "duplikat_verhalten",
+   "fieldtype": "Select",
+   "label": "Bei gleicher Prüfsumme im Ordner",
+   "options": "melden\nverwerfen",
+   "default": "melden"
+  },
+  {
+   "fieldname": "sb_ordner",
+   "fieldtype": "Section Break",
+   "label": "Automatische Ordner"
+  },
+  {
+   "fieldname": "automatische_ordner",
+   "fieldtype": "Check",
+   "label": "Ordner beim Anlegen von Kontakt/Projekt/Lieferant/Mitarbeiter/Servicefall erzeugen",
+   "default": "1"
+  },
+  {
+   "fieldname": "ordnervorlagen",
+   "fieldtype": "Table",
+   "label": "Ordnervorlagen",
+   "options": "PH Ablage Ordnervorlage"
+  },
+  {
+   "fieldname": "sb_papierkorb",
+   "fieldtype": "Section Break",
+   "label": "Papierkorb und Bearbeitung"
+  },
+  {
+   "fieldname": "papierkorb_tage",
+   "fieldtype": "Int",
+   "label": "Papierkorb-Frist (Tage)",
+   "default": "30"
+  },
+  {
+   "fieldname": "cb_papierkorb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sperre_stunden",
+   "fieldtype": "Int",
+   "label": "Check-out (Bearbeitungssperre) Standard (Stunden)",
+   "default": "8"
+  },
+  {
+   "fieldname": "sb_vorschau",
+   "fieldtype": "Section Break",
+   "label": "Vorschau und Volltext"
+  },
+  {
+   "fieldname": "vorschau_aktiv",
+   "fieldtype": "Check",
+   "label": "Vorschauen erzeugen",
+   "default": "1"
+  },
+  {
+   "fieldname": "vorschau_px",
+   "fieldtype": "Int",
+   "label": "Vorschau-Kantenlänge (px)",
+   "default": "512"
+  },
+  {
+   "fieldname": "office_vorschau",
+   "fieldtype": "Check",
+   "label": "Office → PDF per LibreOffice (soffice) im Hintergrund",
+   "default": "0"
+  },
+  {
+   "fieldname": "soffice_pfad",
+   "fieldtype": "Data",
+   "label": "Pfad zu soffice",
+   "default": "soffice"
+  },
+  {
+   "fieldname": "video_poster",
+   "fieldtype": "Check",
+   "label": "Video-Posterbild per ffmpeg (falls vorhanden)",
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_vorschau",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "volltext_aktiv",
+   "fieldtype": "Check",
+   "label": "Volltext für PDF/DOCX/XLSX/PPTX/TXT extrahieren",
+   "default": "1"
+  },
+  {
+   "fieldname": "volltext_max_mb",
+   "fieldtype": "Int",
+   "label": "Volltext nur bis Dateigröße (MB)",
+   "default": "50"
+  },
+  {
+   "fieldname": "sb_freigabe",
+   "fieldtype": "Section Break",
+   "label": "Freigabelinks"
+  },
+  {
+   "fieldname": "freigabe_basis_url",
+   "fieldtype": "Data",
+   "label": "Basis-URL der Freigabeseite",
+   "description": "Seite im Backoffice (Next.js), die ph_ablage.api.freigabe_aufloesen aufruft, z. B. https://backoffice.platzhirsch.studio/f/"
+  },
+  {
+   "fieldname": "freigabe_standard_tage",
+   "fieldtype": "Int",
+   "label": "Standard-Gültigkeit (Tage)",
+   "default": "7"
+  },
+  {
+   "fieldname": "cb_freigabe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "freigabe_max_tage",
+   "fieldtype": "Int",
+   "label": "Höchste Gültigkeit (Tage)",
+   "default": "90"
+  },
+  {
+   "fieldname": "freigabe_passwort_pflicht",
+   "fieldtype": "Check",
+   "label": "Passwort für Freigabelinks verpflichtend",
+   "default": "0"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Ablage",
+ "name": "PH Ablage Einstellungen",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "PH Ablage Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  },
+  {
+   "role": "PH Ablage Mitarbeiter",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "issingle": 1
+}

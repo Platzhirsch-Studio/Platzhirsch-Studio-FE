@@ -10,10 +10,15 @@
   "produkt",
   "beschreibung",
   "ausfuehrung_text",
+  "bereich",
+  "erfuellung",
   "marke",
   "menge",
   "menge_gepackt",
   "gepackt",
+  "ohne_barcode",
+  "hand_bestaetigt",
+  "hand_bestaetigt_von",
   "paket_nr",
   "paketprofil",
   "zerbrechlich",
@@ -47,6 +52,21 @@
    "label": "Ausführung"
   },
   {
+   "fieldname": "bereich",
+   "fieldtype": "Data",
+   "label": "Raum/Bereich",
+   "in_list_view": 1,
+   "description": "z. B. Zimmer 204, Salon, Küche – für Hotel, Objekt, Yacht."
+  },
+  {
+   "fieldname": "erfuellung",
+   "fieldtype": "Select",
+   "label": "Erfüllung",
+   "options": "\nPaket\nSpedition\nAbholung\nEigenlieferung\nMontage",
+   "in_list_view": 1,
+   "description": "Leer = Lieferart des Lieferscheins. Gemischte Lieferscheine → „Nach Erfüllung aufteilen“."
+  },
+  {
    "fieldname": "marke",
    "fieldtype": "Data",
    "label": "Marke"
@@ -75,6 +95,25 @@
    "read_only": 1,
    "in_list_view": 1,
    "columns": 1
+  },
+  {
+   "fieldname": "ohne_barcode",
+   "fieldtype": "Check",
+   "label": "Ohne Barcode",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hand_bestaetigt",
+   "fieldtype": "Check",
+   "label": "Per Hand bestätigt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hand_bestaetigt_von",
+   "fieldtype": "Link",
+   "label": "Hand bestätigt von",
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "paket_nr",
@@ -135,7 +174,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 15:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Logistik",
  "name": "PH Lieferschein Position",

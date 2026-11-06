@@ -4,6 +4,7 @@ import { AlertCircle } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import Button from "@/components/ui/Button";
 import { SuccessIcon } from "@/components/Forms/FormField";
+import { withAttributionFields } from "@/lib/forms/client";
 
 // Error codes from /api/newsletter_subscribe → keys of `labels.errors`.
 const ERROR_KEYS = {
@@ -54,7 +55,8 @@ const Newsletter = ({ labels }) => {
       const response = await fetch("/api/newsletter_subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: value, website }),
+        // utm_* / klick_id nur mit Ads-Einwilligung (Bericht 60, Abschnitt 2.3).
+        body: JSON.stringify(withAttributionFields("/api/newsletter_subscribe", { email: value, website })),
       });
       const result = await response.json().catch(() => ({}));
 

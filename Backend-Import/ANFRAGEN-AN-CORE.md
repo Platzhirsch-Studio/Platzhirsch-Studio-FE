@@ -70,3 +70,7 @@ Je App ein Abschnitt, nur anhängen (PLAN.md, Abschnitt 5). **Status je Wunsch v
 2. ✅ Anhangsformat `[{"fname", "fcontent"}]` bleibt (Docstring).
 3. ✅ `ph_satz(promille)` als Core-Jinja-Helfer (`ph_core/utils/druck.py`, Logik in `ph_core/utils/zahlen.py satz_text`: 2000 → „20 %“, 1950 → „19,5 %“) – `ph_faktura.druck.ph_satz` kann entfallen (gleiche Ausgabe wie `steuer.satz_prozent_text`).
 4. ✅ `ph_core.install.FIRMA` enthält FN 443753 d, Landesgericht Feldkirch, ATU70035339, Landstraße 11, 6911 Lochau; vorhandene Firma wird um leere Felder ergänzt (`after_install` und `after_migrate`). Bank/IBAN/BIC bleiben Eingabe des Inhabers.
+
+## Backoffice-Fundament (Next.js `backoffice/`, Nr. 48/49, 04.11.2026)
+
+- ✅ DocType **PH Geraet** (`PH-GER-.####`, Data-Feld `kasse` statt Link, weil ph_kassa später installiert wird; validate prüft den Datensatz, sobald `PH Kasse` existiert), Dokumentmethoden `registrieren`/`token_erneuern`/`sperren`/`entsperren`, API `ph_core.api.geraete.register_device/verify_device/touch_device/list_devices`, Workspace-Link „PH Geräte“. PIN am User: Custom Fields `ph_core_pin_hash` (PBKDF2, hidden), `ph_core_pin_gesetzt_am`, `ph_core_standort`, `ph_core_kurzname`; API `ph_core.api.bediener.set_pin/verify_pin/list_operators`. Palette/Strom: `ph_core.api.suche.global_search`, `ph_core.api.aktivitaet.recent_activity`. Alle mit `@ph_api(intern=True)` (kein Website-Wartungsschalter, Guest 403, Rate-Limit, Protokoll). Signaturen/Antwortformen: `ph_core/README.md` Abschnitt „Backoffice-Schnittstellen“.

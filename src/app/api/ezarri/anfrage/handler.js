@@ -9,7 +9,7 @@
 // Produktion ohne Backoffice-Schalter: 503 {success:false, code:"unavailable"} –
 // nichts wird abgelegt, das Formular nennt Telefon und E-Mail (QM P1-4).
 import { guardForm, errorResponse } from "../../../../lib/forms/guard.js";
-import { forwardJson } from "../../../../lib/forms/forward.js";
+import { forwardInquiry } from "../../../../lib/backend/forms.js";
 import { anfrageSchema, MAX_BYTES } from "./schema.js";
 import { decodeMix, decodeRechner } from "../../../../lib/ezarri/rechner/url.js";
 import { BACKOFFICE_URL, anfrageText, inPostausgang, postausgangAlsTest, toBackofficePayload, versandModus } from "./versand.js";
@@ -73,7 +73,9 @@ export function createAnfrageHandler(deps = {}) {
 
       if (modus === "backoffice") {
         const payload = toBackofficePayload(data, opts);
-        const result = await forwardJson(BACKOFFICE_URL, payload, { fetchImpl: deps.fetchImpl || fetch });
+        // alt: BACKOFFICE_URL wie bisher; ph (BACKEND_GENERATION): ph_crm.api.create_anfrage mit art "Ezarri".
+        const result = await forwardInquiry("ezarri", payload, { altUrl: BACKOFFICE_URL, fetchImpl: deps.fetchImpl || fetch, env: deps.env });
+        if (result.kind === "not_configured") return errorResponse("unavailable", 503, { message: "Anfrage derzeit nicht möglich" });
         if (result.kind === "ok") return json({ success: true });
         console.error(`[ezarri-anfrage] backoffice ${result.kind}`, result.status || "");
         // Nichts verlieren: ablegen und ehrlich als Fehler melden.

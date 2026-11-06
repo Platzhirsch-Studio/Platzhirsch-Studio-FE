@@ -1,12 +1,13 @@
 // src/lib/api/fetchMaterialien.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { katalogMethod } from "@/lib/backend/katalog";
 import { backofficeFetch } from "@/lib/api/http";
 
 // Material options for the /produkte/[category] filter panel (Frappe
 // doctype Produkte Material).
 export async function fetchMaterialien() {
-  const API_URL = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.produkte_material.api.get_all_materialien_api`;
+  const API_URL = katalogMethod("produkte_material.api", "get_all_materialien_api", NEW_API_BASE_URL);
 
   try {
     const response = await backofficeFetch(API_URL, {

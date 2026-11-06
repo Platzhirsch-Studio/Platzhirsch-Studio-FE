@@ -1,0 +1,25 @@
+// Texte für BerichtSeite (G-13, Team P0-5b). Reines Modul.
+
+export const BERICHT = {
+  ueber: "Bericht",
+  filter: "Filter",
+  zeitraum: "Zeitraum",
+  von: "von",
+  bis: "bis",
+  alle: "Alle",
+  anwenden: "Anwenden",
+  zuruecksetzen: "Zurücksetzen",
+  ergebnis: "Ergebnis",
+  zeilen: (n) => `${n} ${n === 1 ? "Zeile" : "Zeilen"}`,
+  summe: "Summe",
+  csv: "CSV",
+  pdf: "PDF",
+  pdfFehlt: "Noch nicht verfügbar – als CSV exportieren",
+  exportiert: (datei) => `CSV exportiert (${datei})`,
+  exportVerboten: "Export erfordert das Recht „Export“ (Leitung, Geschäftsführung, Admin).",
+  leerTitel: "Keine Daten im Zeitraum",
+  leerText: "Zeitraum oder Filter ändern.",
+  zeitlimitTitel: "Zeitraum eingrenzen",
+  zeitlimitText: "Die Auswertung dauert länger als 8 Sekunden. Bitte einen kürzeren Zeitraum wählen.",
+  laedt: "Bericht wird geladen",
+};

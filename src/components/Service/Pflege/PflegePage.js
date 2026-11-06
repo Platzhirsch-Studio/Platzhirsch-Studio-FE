@@ -16,6 +16,7 @@ import { PFLEGE_CONFIG, gesetzt, konditionenZeilen } from "@/lib/service/pflege/
 import { MATERIAL_KEYS, leistungenVon } from "@/lib/service/pflege/materials";
 import { pflegeSchema } from "@/lib/service/pflege/schema";
 import PflegeAnfrage from "./PflegeAnfrage";
+import { REKLAMATION_PATH, reklamationCopy } from "@/lib/service/reklamation/copy";
 
 // Holz und Stein stehen auf der Seite in einer Karte („Holz, Furnier und Marmor“).
 const GROUPS = [["leder"], ["stoff"], ["holz", "stein"]];
@@ -227,6 +228,13 @@ export default function PflegePage({ locale, termin = null }) {
                 </LinkArrow>
               </p>
             )}
+            {/* Reklamation (Schaden, Mangel): eigenes Formular /service/reklamation (ph_service). */}
+            <p className="mt-6 text-body text-text" data-pflege-reklamation>
+              {reklamationCopy(locale).pflege.text}{" "}
+              <LinkArrow href={REKLAMATION_PATH} prefetch={false}>
+                {reklamationCopy(locale).pflege.link}
+              </LinkArrow>
+            </p>
           </div>
           <div className="lg:col-span-7 lg:col-start-6">
             <PflegeAnfrage locale={locale} copy={c.FORM} />

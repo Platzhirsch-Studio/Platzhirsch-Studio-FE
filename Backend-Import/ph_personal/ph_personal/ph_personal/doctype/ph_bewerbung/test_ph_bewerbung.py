@@ -78,6 +78,17 @@ class TestPHBewerbung(FrappeTestCase):
         doc.reload()
         self.assertEqual(doc.loeschfrist, getdate(bis))
 
+    def test_api_gehaltsvorstellung_permlevel(self):
+        """gehaltsvorstellung kommt vom Formular und steht im permlevel-1-Feld (nur Personal-Leitung/GF lesen)."""
+        r = create_bewerbung(stelle="testplaner-in-m-w-d", nachname="Gehalt", email="gehalt@example.com", einwilligung_datenschutz=1, gehaltsvorstellung="3.200 € brutto/Monat", idempotency_key="bew-gehalt-1")
+        self.assertEqual(frappe.db.get_value("PH Bewerbung", r["referenz"], "gehaltsvorstellung"), "3.200 € brutto/Monat")
+        meta = frappe.get_meta("PH Bewerbung")
+        self.assertEqual(meta.get_field("gehaltsvorstellung").permlevel, 1)
+        rollen = {p.role for p in meta.permissions if p.permlevel == 1 and p.read}
+        self.assertIn("PH Personal Leitung", rollen)
+        self.assertNotIn("PH Personal Mitarbeiter", rollen)
+        self.assertNotIn("PH Website Integration", rollen)
+
     def test_api_create_idempotent_und_unterlage_privat(self):
         daten = {
             "stelle": "testplaner-in-m-w-d",

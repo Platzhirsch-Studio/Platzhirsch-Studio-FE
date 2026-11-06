@@ -67,6 +67,10 @@ function ReserveForm({ shareId, item, onDone, onCancel }) {
       onDone(null, "taken");
       return;
     }
+    if (res.error === "conflict") {
+      onDone(res.items, "conflict");
+      return;
+    }
     setStatus({ type: "error", text: c(`errors.${["rate_limited", "network", "not_found"].includes(res.error) ? res.error : "generic"}`) });
   }
 
@@ -115,6 +119,9 @@ export default function PublicItems({ shareId, items: initial }) {
       ownStore.refresh(shareId);
       if (res.ok) apply(res.items);
       setNotice(c("public.released"));
+    } else if (res.error === "conflict") {
+      apply(res.items);
+      setNotice(c("errors.conflict"));
     } else setNotice(c(`errors.${res.error === "network" ? "network" : "generic"}`));
   }
 
@@ -194,6 +201,9 @@ export default function PublicItems({ shareId, items: initial }) {
                       if (result === "taken") {
                         setItems((list) => list.map((i) => (i.key === item.key ? { ...i, reserved: true } : i)));
                         setNotice(c("errors.already_reserved"));
+                      } else if (result === "conflict") {
+                        apply(states);
+                        setNotice(c("errors.conflict"));
                       } else {
                         apply(states);
                         ownStore.refresh(shareId);

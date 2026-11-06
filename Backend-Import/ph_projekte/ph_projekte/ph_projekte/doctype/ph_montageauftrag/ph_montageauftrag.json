@@ -17,6 +17,8 @@
   "start",
   "ende",
   "montageleiter",
+  "fahrzeug",
+  "qualifikationen",
   "sb_ort",
   "strasse",
   "plz",
@@ -32,6 +34,11 @@
   "sb_fotos",
   "fotos",
   "galerie_html",
+  "sb_vorschaeden",
+  "vorschaeden_keine",
+  "vorschaeden_text",
+  "vorschaeden_bestaetigt",
+  "geraete",
   "sb_bericht",
   "sprache_bericht",
   "bericht",
@@ -50,6 +57,9 @@
   "cb_zeiten",
   "stunden_geplant",
   "stunden_ist",
+  "kollisionen",
+  "stunden_vorschlag",
+  "ware_hinweis",
   "notiz_intern",
   "sb_system",
   "quelle",
@@ -132,6 +142,18 @@
    "in_standard_filter": 1
   },
   {
+   "fieldname": "fahrzeug",
+   "fieldtype": "Data",
+   "label": "Fahrzeug (Kennzeichen)",
+   "description": "PH Fahrzeug (ph_logistik), Kennzeichen; Kollisionsprüfung"
+  },
+  {
+   "fieldname": "qualifikationen",
+   "fieldtype": "Table",
+   "label": "Benötigte Qualifikationen",
+   "options": "PH Montage Qualifikation"
+  },
+  {
    "fieldname": "sb_ort",
    "fieldtype": "Section Break",
    "label": "Einsatzort"
@@ -209,6 +231,33 @@
    "fieldname": "galerie_html",
    "fieldtype": "HTML",
    "label": "Galerie"
+  },
+  {
+   "fieldname": "sb_vorschaeden",
+   "fieldtype": "Section Break",
+   "label": "Vorschäden und E-Geräte"
+  },
+  {
+   "fieldname": "vorschaeden_keine",
+   "fieldtype": "Check",
+   "label": "Keine Vorschäden festgestellt"
+  },
+  {
+   "fieldname": "vorschaeden_text",
+   "fieldtype": "Small Text",
+   "label": "Vorschäden beim Kunden",
+   "description": "Fotos mit Art „vorschaden“"
+  },
+  {
+   "fieldname": "vorschaeden_bestaetigt",
+   "fieldtype": "Check",
+   "label": "Vorschäden vom Kunden bestätigt"
+  },
+  {
+   "fieldname": "geraete",
+   "fieldtype": "Table",
+   "label": "E-Geräte",
+   "options": "PH Montage Geraet"
   },
   {
    "fieldname": "sb_bericht",
@@ -312,6 +361,25 @@
    "precision": "2"
   },
   {
+   "fieldname": "kollisionen",
+   "fieldtype": "Small Text",
+   "label": "Kollisionen (Prüfung)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stunden_vorschlag",
+   "fieldtype": "Float",
+   "label": "Montagezeit-Vorschlag (h)",
+   "read_only": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "ware_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis Ware",
+   "read_only": 1
+  },
+  {
    "fieldname": "notiz_intern",
    "fieldtype": "Small Text",
    "label": "Interne Notiz",
@@ -351,7 +419,7 @@
    "group": "Zeiten"
   }
  ],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Projekte",
  "name": "PH Montageauftrag",
@@ -446,6 +514,85 @@
    "export": 0,
    "report": 0,
    "share": 0
+  },
+  {
+   "role": "PH Montage",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
   }
  ],
  "sort_field": "start",

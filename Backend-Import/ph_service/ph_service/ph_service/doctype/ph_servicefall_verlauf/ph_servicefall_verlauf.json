@@ -7,7 +7,7 @@
  "field_order": ["zeit", "ereignis", "status", "von", "hinweis"],
  "fields": [
   {"fieldname": "zeit", "fieldtype": "Datetime", "label": "Zeit", "reqd": 1, "in_list_view": 1, "columns": 2},
-  {"fieldname": "ereignis", "fieldtype": "Select", "label": "Ereignis", "options": "Status\nKommunikation\nEinsatz\nErsatzteil\nRegress\nEskalation\nFrist\nNotiz", "default": "Status", "in_list_view": 1, "columns": 2},
+  {"fieldname": "ereignis", "fieldtype": "Select", "label": "Ereignis", "options": "Status\nKommunikation\nEinsatz\nErsatzteil\nRegress\nEskalation\nFrist\nNotiz\nSLA\nKulanz", "default": "Status", "in_list_view": 1, "columns": 2},
   {"fieldname": "status", "fieldtype": "Data", "label": "Status", "in_list_view": 1, "columns": 2},
   {"fieldname": "von", "fieldtype": "Data", "label": "Von", "in_list_view": 1, "columns": 2},
   {"fieldname": "hinweis", "fieldtype": "Small Text", "label": "Hinweis", "in_list_view": 1, "columns": 2}

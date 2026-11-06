@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Protokoll der Änderungen des bestätigten Liefertermins (Kopf = Position 0); ph_projekte informiert Projekt/Kunde.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "geaendert_am",
+  "position",
+  "bezug_zeile",
+  "termin_alt",
+  "termin_neu",
+  "quelle",
+  "grund",
+  "projekt_informiert",
+  "kunde_informiert"
+ ],
+ "fields": [
+  {
+   "fieldname": "geaendert_am",
+   "fieldtype": "Datetime",
+   "label": "Geändert am",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Int",
+   "label": "Position (0 = Kopf)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "bezug_zeile",
+   "fieldtype": "Data",
+   "label": "Bezugszeile"
+  },
+  {
+   "fieldname": "termin_alt",
+   "fieldtype": "Date",
+   "label": "Termin alt",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "termin_neu",
+   "fieldtype": "Date",
+   "label": "Termin neu",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "AB\nLieferant\nManuell",
+   "default": "Manuell",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Data",
+   "label": "Grund",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "projekt_informiert",
+   "fieldtype": "Check",
+   "label": "Projekt informiert",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "kunde_informiert",
+   "fieldtype": "Check",
+   "label": "Kunde informiert",
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Herstellerbestellung Terminaenderung",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

@@ -1,0 +1,222 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Fachliche Schalter der Kundenkarte: Startstufe, Bewertungszeitraum, Herabstufung, Double-Opt-in, Wallet-Kennungen (nur Namen – Zertifikate liegen in site_config.json), Begrüßungstext.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sb_stufen",
+  "startstufe",
+  "bewertungszeitraum_monate",
+  "cb_1",
+  "herabstufung_erlaubt",
+  "umsatz_nur_mit_einwilligung",
+  "sb_antrag",
+  "doi_pflicht",
+  "doi_gueltig_stunden",
+  "website_automatisch_annehmen",
+  "cb_2",
+  "berater_standard",
+  "bedingungen_version",
+  "sb_wallet",
+  "wallet_pass_type_id",
+  "wallet_team_id",
+  "wallet_organisation",
+  "cb_3",
+  "wallet_google_class_suffix",
+  "wallet_origins",
+  "wallet_hinweis",
+  "sb_texte",
+  "text_begruessung",
+  "text_datenschutz_karte"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_stufen",
+   "fieldtype": "Section Break",
+   "label": "Stufen"
+  },
+  {
+   "fieldname": "startstufe",
+   "fieldtype": "Link",
+   "label": "Startstufe",
+   "options": "PH Kundenkarte Stufe",
+   "description": "Stufe neuer Karten und Karten ohne Einwilligung zur Auswertung."
+  },
+  {
+   "fieldname": "bewertungszeitraum_monate",
+   "fieldtype": "Int",
+   "label": "Bewertungszeitraum (Monate, rollierend)",
+   "default": "12",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "herabstufung_erlaubt",
+   "fieldtype": "Check",
+   "label": "Herabstufung erlaubt (erst nach Ablauf eines vollen Bewertungszeitraums)",
+   "default": "0"
+  },
+  {
+   "fieldname": "umsatz_nur_mit_einwilligung",
+   "fieldtype": "Check",
+   "label": "Umsatz nur mit Einwilligung zur Auswertung berechnen",
+   "default": "1",
+   "read_only": 1,
+   "description": "Fest: ohne Einwilligung keine Kaufhistorien-Auswertung (DSGVO)."
+  },
+  {
+   "fieldname": "sb_antrag",
+   "fieldtype": "Section Break",
+   "label": "Anträge"
+  },
+  {
+   "fieldname": "doi_pflicht",
+   "fieldtype": "Check",
+   "label": "Double-Opt-in für Website-Anträge",
+   "default": "1"
+  },
+  {
+   "fieldname": "doi_gueltig_stunden",
+   "fieldtype": "Int",
+   "label": "DOI-Link gültig (Stunden)",
+   "default": "48"
+  },
+  {
+   "fieldname": "website_automatisch_annehmen",
+   "fieldtype": "Check",
+   "label": "Website-Anträge nach Double-Opt-in automatisch annehmen (Karte sofort aktiv)",
+   "default": "1",
+   "description": "Stufe 1 ohne Geldwert: Karte wird nach bestätigter E-Mail sofort ausgestellt. Abschalten = Prüfung durch Mitarbeiter (Button „Annehmen“)."
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "berater_standard",
+   "fieldtype": "Link",
+   "label": "Standard-Beraterin/-Berater (Geburtstagsaufgaben, Karten ohne Zuordnung)",
+   "options": "User"
+  },
+  {
+   "fieldname": "bedingungen_version",
+   "fieldtype": "Data",
+   "label": "Aktuelle Version der Teilnahmebedingungen",
+   "description": "Erst nach Kanzlei-Freigabe (Verbindlichkeit der Vorteile, Kündigung, Datenschutz)."
+  },
+  {
+   "fieldname": "sb_wallet",
+   "fieldtype": "Section Break",
+   "label": "Wallet-Pässe (nur Kennungen)"
+  },
+  {
+   "fieldname": "wallet_pass_type_id",
+   "fieldtype": "Data",
+   "label": "Apple Pass Type ID",
+   "description": "z. B. pass.studio.platzhirsch.kundenkarte"
+  },
+  {
+   "fieldname": "wallet_team_id",
+   "fieldtype": "Data",
+   "label": "Apple Team ID"
+  },
+  {
+   "fieldname": "wallet_organisation",
+   "fieldtype": "Data",
+   "label": "Organisationsname im Pass",
+   "default": "Platzhirsch"
+  },
+  {
+   "fieldname": "cb_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wallet_google_class_suffix",
+   "fieldtype": "Data",
+   "label": "Google Wallet Class-Suffix",
+   "default": "platzhirsch_kundenkarte"
+  },
+  {
+   "fieldname": "wallet_origins",
+   "fieldtype": "Small Text",
+   "label": "Erlaubte Origins (Google, eine je Zeile)",
+   "default": "https://platzhirsch.studio"
+  },
+  {
+   "fieldname": "wallet_hinweis",
+   "fieldtype": "HTML",
+   "label": "Hinweis",
+   "options": "<p>Zertifikate und Schlüssel liegen ausschließlich in <code>site_config.json</code>: <code>ph_wallet_apple_cert</code>, <code>ph_wallet_apple_key</code>, <code>ph_wallet_apple_wwdr</code>, <code>ph_wallet_google_issuer_id</code>, <code>ph_wallet_google_service_account</code>. Fehlen sie, antwortet die API mit 503 „unavailable“.</p>"
+  },
+  {
+   "fieldname": "sb_texte",
+   "fieldtype": "Section Break",
+   "label": "Texte"
+  },
+  {
+   "fieldname": "text_begruessung",
+   "fieldtype": "Text Editor",
+   "label": "Begrüßungstext (Anschreiben)",
+   "description": "Sie-Form, keine Rabattversprechen in Euro oder Prozent."
+  },
+  {
+   "fieldname": "text_datenschutz_karte",
+   "fieldtype": "Small Text",
+   "label": "Datenschutzhinweis auf der Karte (Rückseite)",
+   "default": "Die Karte ist personengebunden und hat keinen Geldwert. Informationen zum Datenschutz: platzhirsch.studio/datenschutz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Kundenkarte",
+ "name": "PH Kundenkarte Einstellungen",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kundenkarte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kundenkarte Mitarbeiter",
+   "read": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

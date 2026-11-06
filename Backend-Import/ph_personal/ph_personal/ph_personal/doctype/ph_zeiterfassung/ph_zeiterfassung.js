@@ -18,6 +18,35 @@ frappe.ui.form.on("PH Zeiterfassung", {
 				frm.call({ method: "gehen_jetzt", doc: frm.doc, freeze: true }).then(() => frm.reload_doc());
 			}).addClass("btn-primary");
 		}
+		if (frm.doc.gehen && !frm.doc.pause_bestaetigt && frm.doc.pause_min) {
+			frm.dashboard.set_headline_alert(__("Pause {0} min vorgeschlagen – bitte bestätigen.", [frm.doc.pause_min]), "blue");
+			frm.add_custom_button(__("Pause bestätigen"), () => {
+				frappe.prompt({ fieldname: "pause_min", fieldtype: "Int", label: __("Pause genommen (Minuten)"), default: frm.doc.pause_min, reqd: 1 },
+					(v) => frm.call({ method: "pause_bestaetigen", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Pause bestätigen"));
+			}, __("Aktionen"));
+		}
+		if (frm.doc.korrektur_status !== "Beantragt") {
+			frm.add_custom_button(__("Korrektur beantragen"), () => {
+				new frappe.ui.Dialog({
+					title: __("Korrektur beantragen"),
+					fields: [
+						{ fieldname: "kommen", fieldtype: "Time", label: __("Kommen"), default: frm.doc.kommen },
+						{ fieldname: "gehen", fieldtype: "Time", label: __("Gehen"), default: frm.doc.gehen },
+						{ fieldname: "pause_min", fieldtype: "Int", label: __("Pause (min)"), default: frm.doc.pause_min },
+						{ fieldname: "grund", fieldtype: "Small Text", label: __("Grund"), reqd: 1 },
+					],
+					primary_action_label: __("Beantragen"),
+					primary_action(v) { this.hide(); frm.call({ method: "korrektur_beantragen", doc: frm.doc, args: v }).then(() => frm.reload_doc()); },
+				}).show();
+			}, __("Aktionen"));
+		} else if (frappe.user.has_role("PH Personal Leitung")) {
+			frm.dashboard.set_headline_alert(__("Korrektur beantragt: {0}–{1}, Pause {2} min – {3}", [frm.doc.korrektur_kommen || "", frm.doc.korrektur_gehen || "", frm.doc.korrektur_pause_min || 0, frappe.utils.escape_html(frm.doc.korrektur_grund || "")]), "orange");
+			frm.add_custom_button(__("Korrektur bestätigen"), () => frm.call({ method: "korrektur_entscheiden", doc: frm.doc, args: { bestaetigen: 1 } }).then(() => frm.reload_doc()), __("Aktionen"));
+			frm.add_custom_button(__("Korrektur ablehnen"), () => {
+				frappe.prompt({ fieldname: "notiz", fieldtype: "Small Text", label: __("Begründung"), reqd: 1 },
+					(v) => frm.call({ method: "korrektur_entscheiden", doc: frm.doc, args: { bestaetigen: 0, notiz: v.notiz } }).then(() => frm.reload_doc()));
+			}, __("Aktionen"));
+		}
 		frm.add_custom_button(__("Mitarbeiter öffnen"), () => frappe.set_route("Form", "PH Mitarbeiter", frm.doc.mitarbeiter));
 	},
 	kommen: vorschau,

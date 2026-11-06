@@ -110,7 +110,7 @@
    "fieldname": "ereignistypen",
    "fieldtype": "Small Text",
    "label": "Ereignistypen (eine je Zeile)",
-   "default": "checkout.session.completed\ncheckout.session.async_payment_succeeded\ncheckout.session.async_payment_failed\ncheckout.session.expired\ncharge.refunded\npayment_intent.succeeded\npayment_intent.payment_failed\npayout.created\npayout.paid\npayout.failed\ncharge.dispute.created"
+   "default": "checkout.session.completed\ncheckout.session.async_payment_succeeded\ncheckout.session.async_payment_failed\ncheckout.session.expired\ncharge.refunded\npayment_intent.succeeded\npayment_intent.payment_failed\npayout.created\npayout.paid\npayout.failed\ncharge.dispute.created\ncharge.succeeded\ncharge.updated\nreview.opened\nreview.closed\nradar.early_fraud_warning.created\ncharge.dispute.updated\ncharge.dispute.closed"
   },
   {
    "fieldname": "cb_ereignisse",
@@ -138,7 +138,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Shop",
  "name": "PH Stripe Einstellungen",

@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Kalkulationsfaktor je Kategorie einer Marke (Override des Markenfaktors).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kategorie",
+  "faktor_promille",
+  "rundung"
+ ],
+ "fields": [
+  {
+   "fieldname": "kategorie",
+   "fieldtype": "Link",
+   "label": "Kategorie",
+   "options": "PH Kategorie",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "faktor_promille",
+   "fieldtype": "Int",
+   "label": "Faktor (Promille, 2200 = ×2,2)",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "rundung",
+   "fieldtype": "Select",
+   "label": "Rundung",
+   "options": "\nkeine\nauf 1 Euro\nauf 5 Euro\nauf 10 Euro\nauf 9er-Endung",
+   "in_list_view": 1,
+   "columns": 3
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Marke Kalkulation",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

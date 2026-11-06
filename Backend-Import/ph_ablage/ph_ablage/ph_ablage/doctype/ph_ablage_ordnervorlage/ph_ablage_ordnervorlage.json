@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Ordnervorlage je Bezugsart: wird beim Anlegen des Bezugs automatisch erzeugt (idempotent).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bezug_doctype",
+  "pfad",
+  "rechte_modus",
+  "aufbewahrungsklasse",
+  "farbe",
+  "reihenfolge"
+ ],
+ "fields": [
+  {
+   "fieldname": "bezug_doctype",
+   "fieldtype": "Link",
+   "label": "Bezugsart",
+   "options": "DocType",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "pfad",
+   "fieldtype": "Data",
+   "label": "Ordner",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 4,
+   "description": "Unterordner mit „ > “, z. B. „07 Fotos > Baustelle“"
+  },
+  {
+   "fieldname": "rechte_modus",
+   "fieldtype": "Select",
+   "label": "Rechte-Modus",
+   "options": "\nintern\nteam\nleitung",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "aufbewahrungsklasse",
+   "fieldtype": "Select",
+   "label": "Aufbewahrung",
+   "options": "\nAllgemein\nBeleg\nPersonal\nProjekt\nMarketing",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "farbe",
+   "fieldtype": "Color",
+   "label": "Farbe",
+   "columns": 1
+  },
+  {
+   "fieldname": "reihenfolge",
+   "fieldtype": "Int",
+   "label": "Reihenfolge",
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Ablage",
+ "name": "PH Ablage Ordnervorlage",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

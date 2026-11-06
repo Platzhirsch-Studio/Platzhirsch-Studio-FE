@@ -1,0 +1,674 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Speditionsauftrag für Großmöbel: Abholung beim Hersteller oder Zustellung an Kunden mit Packstücken, Lademeter, Zusatzleistungen und Quittung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "richtung",
+  "cb_kopf",
+  "spediteur",
+  "spediteur_email",
+  "spediteur_referenz",
+  "sb_bezug",
+  "lieferschein",
+  "herstellerbestellung",
+  "sendung",
+  "cb_bezug",
+  "kontakt",
+  "kunde_name",
+  "projekt",
+  "kommission",
+  "sb_abholung",
+  "abhol_name",
+  "abhol_strasse",
+  "abhol_plz",
+  "abhol_ort",
+  "abhol_land",
+  "abhol_ansprechpartner",
+  "abhol_telefon",
+  "cb_abholung",
+  "abhol_datum",
+  "abhol_von",
+  "abhol_bis",
+  "sb_ziel",
+  "ziel_name",
+  "ziel_strasse",
+  "ziel_plz",
+  "ziel_ort",
+  "ziel_land",
+  "ziel_ansprechpartner",
+  "ziel_telefon",
+  "cb_ziel",
+  "zustell_datum",
+  "zustell_von",
+  "zustell_bis",
+  "zustellart",
+  "sb_leistung",
+  "avis_noetig",
+  "etage",
+  "aufzug",
+  "cb_leistung",
+  "hebebuehne",
+  "trageservice",
+  "montage",
+  "verpackung_entsorgen",
+  "hinweise",
+  "sb_packstuecke",
+  "packstuecke",
+  "anzahl_packstuecke",
+  "gewicht_g",
+  "cb_summen",
+  "volumen_m3",
+  "lademeter",
+  "warenwert_cent",
+  "versichern",
+  "sb_preis",
+  "preis_angefragt_cent",
+  "preis_bestaetigt_cent",
+  "waehrung",
+  "cb_preis",
+  "gesendet_am",
+  "bestaetigt_am",
+  "abgeholt_am",
+  "zugestellt_am",
+  "sb_quittung",
+  "empfaenger_name",
+  "unterschrift",
+  "storno_grund",
+  "notiz_intern",
+  "sb_system",
+  "idempotency_key",
+  "quelle"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-SPA-.YYYY.-.####",
+   "default": "PH-SPA-.YYYY.-.####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nGesendet\nBestaetigt\nAbgeholt\nZugestellt\nStorniert",
+   "default": "Entwurf",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "richtung",
+   "fieldtype": "Select",
+   "label": "Richtung",
+   "options": "Hersteller an Lager\nLager an Kunde\nHersteller an Kunde",
+   "default": "Lager an Kunde",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "spediteur",
+   "fieldtype": "Link",
+   "label": "Spediteur",
+   "options": "PH Lieferant",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "spediteur_email",
+   "fieldtype": "Data",
+   "label": "E-Mail Spediteur",
+   "options": "Email"
+  },
+  {
+   "fieldname": "spediteur_referenz",
+   "fieldtype": "Data",
+   "label": "Auftragsnummer Spediteur"
+  },
+  {
+   "fieldname": "sb_bezug",
+   "fieldtype": "Section Break",
+   "label": "Bezug"
+  },
+  {
+   "fieldname": "lieferschein",
+   "fieldtype": "Link",
+   "label": "Lieferschein",
+   "options": "PH Lieferschein"
+  },
+  {
+   "fieldname": "herstellerbestellung",
+   "fieldtype": "Link",
+   "label": "Herstellerbestellung",
+   "options": "PH Herstellerbestellung"
+  },
+  {
+   "fieldname": "sendung",
+   "fieldtype": "Link",
+   "label": "Sendung",
+   "options": "PH Sendung"
+  },
+  {
+   "fieldname": "cb_bezug",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kunde",
+   "options": "PH Kontakt"
+  },
+  {
+   "fieldname": "kunde_name",
+   "fieldtype": "Data",
+   "label": "Kundenname"
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Data",
+   "label": "Projekt",
+   "in_standard_filter": 1,
+   "description": "Projektnummer (ph_projekte)"
+  },
+  {
+   "fieldname": "kommission",
+   "fieldtype": "Data",
+   "label": "Kommission"
+  },
+  {
+   "fieldname": "sb_abholung",
+   "fieldtype": "Section Break",
+   "label": "Abholung"
+  },
+  {
+   "fieldname": "abhol_name",
+   "fieldtype": "Data",
+   "label": "Abholung: Name/Firma"
+  },
+  {
+   "fieldname": "abhol_strasse",
+   "fieldtype": "Data",
+   "label": "Straße, Nr."
+  },
+  {
+   "fieldname": "abhol_plz",
+   "fieldtype": "Data",
+   "label": "PLZ"
+  },
+  {
+   "fieldname": "abhol_ort",
+   "fieldtype": "Data",
+   "label": "Ort"
+  },
+  {
+   "fieldname": "abhol_land",
+   "fieldtype": "Data",
+   "label": "Land (ISO)",
+   "default": "AT"
+  },
+  {
+   "fieldname": "abhol_ansprechpartner",
+   "fieldtype": "Data",
+   "label": "Ansprechpartner vor Ort"
+  },
+  {
+   "fieldname": "abhol_telefon",
+   "fieldtype": "Data",
+   "label": "Telefon vor Ort"
+  },
+  {
+   "fieldname": "cb_abholung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abhol_datum",
+   "fieldtype": "Date",
+   "label": "Abholdatum",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "abhol_von",
+   "fieldtype": "Time",
+   "label": "Abholung von"
+  },
+  {
+   "fieldname": "abhol_bis",
+   "fieldtype": "Time",
+   "label": "Abholung bis"
+  },
+  {
+   "fieldname": "sb_ziel",
+   "fieldtype": "Section Break",
+   "label": "Zustellung"
+  },
+  {
+   "fieldname": "ziel_name",
+   "fieldtype": "Data",
+   "label": "Zustellung: Name/Firma"
+  },
+  {
+   "fieldname": "ziel_strasse",
+   "fieldtype": "Data",
+   "label": "Straße, Nr."
+  },
+  {
+   "fieldname": "ziel_plz",
+   "fieldtype": "Data",
+   "label": "PLZ"
+  },
+  {
+   "fieldname": "ziel_ort",
+   "fieldtype": "Data",
+   "label": "Ort"
+  },
+  {
+   "fieldname": "ziel_land",
+   "fieldtype": "Data",
+   "label": "Land (ISO)",
+   "default": "AT"
+  },
+  {
+   "fieldname": "ziel_ansprechpartner",
+   "fieldtype": "Data",
+   "label": "Ansprechpartner vor Ort"
+  },
+  {
+   "fieldname": "ziel_telefon",
+   "fieldtype": "Data",
+   "label": "Telefon vor Ort"
+  },
+  {
+   "fieldname": "cb_ziel",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zustell_datum",
+   "fieldtype": "Date",
+   "label": "Zustelldatum",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "zustell_von",
+   "fieldtype": "Time",
+   "label": "Zustellung von"
+  },
+  {
+   "fieldname": "zustell_bis",
+   "fieldtype": "Time",
+   "label": "Zustellung bis"
+  },
+  {
+   "fieldname": "zustellart",
+   "fieldtype": "Select",
+   "label": "Zustellart",
+   "options": "Bordsteinkante\nBis Verwendungsstelle\nMit Montage",
+   "default": "Bis Verwendungsstelle"
+  },
+  {
+   "fieldname": "sb_leistung",
+   "fieldtype": "Section Break",
+   "label": "Leistungen Großmöbel"
+  },
+  {
+   "fieldname": "avis_noetig",
+   "fieldtype": "Check",
+   "label": "Telefonisches Avis",
+   "default": "1"
+  },
+  {
+   "fieldname": "etage",
+   "fieldtype": "Int",
+   "label": "Etage"
+  },
+  {
+   "fieldname": "aufzug",
+   "fieldtype": "Check",
+   "label": "Aufzug vorhanden"
+  },
+  {
+   "fieldname": "cb_leistung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hebebuehne",
+   "fieldtype": "Check",
+   "label": "Hebebühne"
+  },
+  {
+   "fieldname": "trageservice",
+   "fieldtype": "Check",
+   "label": "Trageservice (2 Personen)"
+  },
+  {
+   "fieldname": "montage",
+   "fieldtype": "Check",
+   "label": "Montage durch Spediteur"
+  },
+  {
+   "fieldname": "verpackung_entsorgen",
+   "fieldtype": "Check",
+   "label": "Verpackung mitnehmen"
+  },
+  {
+   "fieldname": "hinweise",
+   "fieldtype": "Small Text",
+   "label": "Hinweise an den Spediteur"
+  },
+  {
+   "fieldname": "sb_packstuecke",
+   "fieldtype": "Section Break",
+   "label": "Packstücke"
+  },
+  {
+   "fieldname": "packstuecke",
+   "fieldtype": "Table",
+   "label": "Packstücke",
+   "options": "PH Speditionsauftrag Packstueck"
+  },
+  {
+   "fieldname": "anzahl_packstuecke",
+   "fieldtype": "Int",
+   "label": "Packstücke gesamt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gewicht_g",
+   "fieldtype": "Int",
+   "label": "Gewicht gesamt (g)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_summen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "volumen_m3",
+   "fieldtype": "Float",
+   "label": "Volumen (m³)",
+   "read_only": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "lademeter",
+   "fieldtype": "Float",
+   "label": "Lademeter",
+   "read_only": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "warenwert_cent",
+   "fieldtype": "Int",
+   "label": "Warenwert (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "versichern",
+   "fieldtype": "Check",
+   "label": "Versichern"
+  },
+  {
+   "fieldname": "sb_preis",
+   "fieldtype": "Section Break",
+   "label": "Preis und Ablauf"
+  },
+  {
+   "fieldname": "preis_angefragt_cent",
+   "fieldtype": "Int",
+   "label": "Preis lt. Angebot (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "preis_bestaetigt_cent",
+   "fieldtype": "Int",
+   "label": "Preis bestätigt (Cent)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "waehrung",
+   "fieldtype": "Link",
+   "label": "Währung",
+   "options": "Currency",
+   "default": "EUR"
+  },
+  {
+   "fieldname": "cb_preis",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Angefragt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bestaetigt_am",
+   "fieldtype": "Datetime",
+   "label": "Bestätigt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abgeholt_am",
+   "fieldtype": "Datetime",
+   "label": "Abgeholt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "zugestellt_am",
+   "fieldtype": "Datetime",
+   "label": "Zugestellt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_quittung",
+   "fieldtype": "Section Break",
+   "label": "Quittung"
+  },
+  {
+   "fieldname": "empfaenger_name",
+   "fieldtype": "Data",
+   "label": "Empfänger"
+  },
+  {
+   "fieldname": "unterschrift",
+   "fieldtype": "Signature",
+   "label": "Unterschrift Empfänger"
+  },
+  {
+   "fieldname": "storno_grund",
+   "fieldtype": "Small Text",
+   "label": "Stornogrund",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz_intern",
+   "fieldtype": "Text",
+   "label": "Interne Notiz",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nwebsite\npacktisch\nmobil\nscheduler",
+   "default": "backoffice"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Speditionsauftrag",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "permlevel": 1,
+   "read": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "spediteur,projekt,lieferschein,herstellerbestellung",
+ "sort_field": "zustell_datum",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Gray"
+  },
+  {
+   "title": "Gesendet",
+   "color": "Blue"
+  },
+  {
+   "title": "Bestaetigt",
+   "color": "Cyan"
+  },
+  {
+   "title": "Abgeholt",
+   "color": "Orange"
+  },
+  {
+   "title": "Zugestellt",
+   "color": "Green"
+  },
+  {
+   "title": "Storniert",
+   "color": "Red"
+  }
+ ],
+ "title_field": "titel",
+ "track_changes": 1,
+ "track_seen": 1
+}

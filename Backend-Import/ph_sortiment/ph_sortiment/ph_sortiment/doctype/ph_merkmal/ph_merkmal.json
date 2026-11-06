@@ -10,6 +10,7 @@
   "gruppe",
   "key",
   "status",
+  "website_sichtbar",
   "cb_merkmal",
   "code",
   "farbe_hex",
@@ -62,6 +63,14 @@
    "default": "Aktiv",
    "reqd": 1,
    "in_standard_filter": 1
+  },
+  {
+   "fieldname": "website_sichtbar",
+   "fieldtype": "Check",
+   "label": "Auf der Website sichtbar",
+   "default": "1",
+   "in_standard_filter": 1,
+   "description": "Aus = erscheint weder in den Farb-/Materialfiltern noch in colorKeys/materialKeys der Produktkarten (ph_sortiment.api)."
   },
   {
    "fieldname": "cb_merkmal",
@@ -130,7 +139,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Sortiment",
  "name": "PH Merkmal",

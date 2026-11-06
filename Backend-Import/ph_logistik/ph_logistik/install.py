@@ -14,6 +14,9 @@ def after_install():
     lagerorte_anlegen()
     paketprofile_anlegen()
     einstellungen_setzen()
+    from ph_logistik.ph_logistik.packtisch_ablauf import standardregeln_anlegen  # Packtisch nach JTL: Start-Dokument-/Packhinweisregeln
+
+    standardregeln_anlegen()
     frappe.db.commit()
 
 
@@ -51,3 +54,24 @@ def einstellungen_setzen():
         pass
     e.letmeship_testmodus = 1
     e.save(ignore_permissions=True)
+    bewertung_standard_setzen()
+
+
+def bewertung_standard_setzen():
+    """Lager & Inventur Ergänzung: Platzhalter-Abwertungsstaffel und Konten (nur wenn leer; Steuerberater bestätigt)."""
+    from ph_logistik.ph_logistik.inventur_logik import STANDARD_STAFFEL
+
+    e = frappe.get_single("PH Logistik Einstellungen")
+    geaendert = False
+    if not e.get("abwertung_staffel"):
+        for r in STANDARD_STAFFEL:
+            e.append("abwertung_staffel", {**r, "platzhalter": 1, "hinweis": "Platzhalter – Steuerberater"})
+        geaendert = True
+    for feld, wert in (("bewertung_methode", "Gleitender Durchschnitt"), ("konto_handelswaren", "1600"), ("konto_bestandsveraenderung", "5010"), ("geschaeftsjahr_beginn_monat", 1),
+                       ("teilinventur_plaetze_je_lauf", 10), ("meldebestand_verbrauch_tage", 90), ("bewertung_ust_basispunkte", 2000)):
+        if not e.get(feld):
+            e.set(feld, wert)
+            geaendert = True
+    if geaendert:
+        e.flags.ignore_permissions = True
+        e.save(ignore_permissions=True)

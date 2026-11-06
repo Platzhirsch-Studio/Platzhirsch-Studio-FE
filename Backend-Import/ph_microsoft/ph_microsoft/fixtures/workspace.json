@@ -1,0 +1,222 @@
+[
+ {
+  "doctype": "Workspace",
+  "name": "PH Microsoft",
+  "title": "PH Microsoft",
+  "label": "PH Microsoft",
+  "module": "PH Microsoft",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "setting-gear",
+  "indicator_color": "blue",
+  "sequence_id": 14.0,
+  "for_user": "",
+  "parent_page": "",
+  "shortcuts": [
+   {
+    "label": "Einstellungen",
+    "link_to": "PH Microsoft Einstellungen",
+    "type": "DocType",
+    "color": "Grey"
+   },
+   {
+    "label": "Postfächer",
+    "link_to": "PH Postfach",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Blue"
+   },
+   {
+    "label": "Kalender-Zuordnungen",
+    "link_to": "PH Kalender Zuordnung",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Blue"
+   },
+   {
+    "label": "Webhook-Abos",
+    "link_to": "PH Graph Abo",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Orange",
+    "stats_filter": "{\"status\": \"Aktiv\"}"
+   },
+   {
+    "label": "Sync-Fehler",
+    "link_to": "PH Sync Fehler",
+    "type": "Report",
+    "color": "Red"
+   },
+   {
+    "label": "Sync-Protokoll",
+    "link_to": "PH Sync Protokoll",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Grey"
+   },
+   {
+    "label": "Adressen und Sperrliste",
+    "link_to": "PH Mail Adresse",
+    "type": "DocType",
+    "doc_view": "List",
+    "color": "Grey"
+   }
+  ],
+  "charts": [
+   {
+    "chart_name": "PH Sync je Tag",
+    "label": "Sync je Tag"
+   },
+   {
+    "chart_name": "PH Sync nach Ergebnis",
+    "label": "Sync nach Ergebnis"
+   },
+   {
+    "chart_name": "PH Sync nach Bereich",
+    "label": "Sync nach Bereich"
+   }
+  ],
+  "number_cards": [
+   {
+    "number_card_name": "PH Sync Fehler heute",
+    "label": "Sync-Fehler (heute)"
+   },
+   {
+    "number_card_name": "PH Kalender Konflikte offen",
+    "label": "Kalender-Konflikte"
+   },
+   {
+    "number_card_name": "PH Graph Abos gestoert",
+    "label": "Abos abgelaufen/Fehler"
+   },
+   {
+    "number_card_name": "PH Graph Abos aktiv",
+    "label": "Aktive Webhook-Abos"
+   },
+   {
+    "number_card_name": "PH Postfaecher mit Fehler",
+    "label": "Postfächer mit Fehler"
+   },
+   {
+    "number_card_name": "PH Zugeordnete Mails heute",
+    "label": "Zugeordnete Mails (heute)"
+   }
+  ],
+  "links": [
+   {
+    "type": "Card Break",
+    "label": "Einrichtung",
+    "link_count": 3,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Microsoft Einstellungen",
+    "link_to": "PH Microsoft Einstellungen",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Postfach",
+    "link_to": "PH Postfach",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Kalender Zuordnung",
+    "link_to": "PH Kalender Zuordnung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Abgleich",
+    "link_count": 3,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Graph Abo",
+    "link_to": "PH Graph Abo",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Graph Verknüpfung",
+    "link_to": "PH Graph Verknuepfung",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Mail Adresse",
+    "link_to": "PH Mail Adresse",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Card Break",
+    "label": "Protokolle",
+    "link_count": 3,
+    "hidden": 0,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "label": "PH Sync Protokoll",
+    "link_to": "PH Sync Protokoll",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH Sync Fehler",
+    "link_to": "PH Sync Fehler",
+    "link_type": "Report",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   },
+   {
+    "type": "Link",
+    "label": "PH API Protokoll",
+    "link_to": "PH API Protokoll",
+    "link_type": "DocType",
+    "hidden": 0,
+    "onboard": 0,
+    "dependencies": ""
+   }
+  ],
+  "roles": [
+   {
+    "role": "System Manager"
+   },
+   {
+    "role": "PH Backoffice-Admin"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ],
+  "content": "[{\"id\": \"ph_ms_h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Microsoft 365 – Status</b></span>\", \"col\": 12}}, {\"id\": \"ph_ms_nc0\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Sync Fehler heute\", \"col\": 4}}, {\"id\": \"ph_ms_nc1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Kalender Konflikte offen\", \"col\": 4}}, {\"id\": \"ph_ms_nc2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Graph Abos gestoert\", \"col\": 4}}, {\"id\": \"ph_ms_nc3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Graph Abos aktiv\", \"col\": 4}}, {\"id\": \"ph_ms_nc4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Postfaecher mit Fehler\", \"col\": 4}}, {\"id\": \"ph_ms_nc5\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PH Zugeordnete Mails heute\", \"col\": 4}}, {\"id\": \"ph_ms_c1\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Sync je Tag\", \"col\": 12}}, {\"id\": \"ph_ms_c2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Sync nach Ergebnis\", \"col\": 6}}, {\"id\": \"ph_ms_c3\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PH Sync nach Bereich\", \"col\": 6}}, {\"id\": \"ph_ms_h2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\", \"col\": 12}}, {\"id\": \"ph_ms_s0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Einstellungen\", \"col\": 3}}, {\"id\": \"ph_ms_s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Postfächer\", \"col\": 3}}, {\"id\": \"ph_ms_s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Kalender-Zuordnungen\", \"col\": 3}}, {\"id\": \"ph_ms_s3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Webhook-Abos\", \"col\": 3}}, {\"id\": \"ph_ms_s4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sync-Fehler\", \"col\": 3}}, {\"id\": \"ph_ms_s5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sync-Protokoll\", \"col\": 3}}, {\"id\": \"ph_ms_s6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Adressen und Sperrliste\", \"col\": 3}}, {\"id\": \"ph_ms_k0\", \"type\": \"card\", \"data\": {\"card_name\": \"Einrichtung\", \"col\": 4}}, {\"id\": \"ph_ms_k1\", \"type\": \"card\", \"data\": {\"card_name\": \"Abgleich\", \"col\": 4}}, {\"id\": \"ph_ms_k2\", \"type\": \"card\", \"data\": {\"card_name\": \"Protokolle\", \"col\": 4}}]"
+ }
+]

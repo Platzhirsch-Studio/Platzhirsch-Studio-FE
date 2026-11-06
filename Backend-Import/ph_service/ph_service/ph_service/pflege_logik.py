@@ -55,3 +55,23 @@ def wartungen_im_zeitraum(start, ende, intervall_monate):
 def standard_intervall(bereich):
     """Vorschlag je Bereich (Monate): Whirlpool/Sauna technisch jährlich, Polster/Holz jährlich, Pool halbjährlich."""
     return {"Whirlpool": 12, "Sauna": 12, "Pool-Technik": 6, "Leder": 12, "Stoff": 12, "Holz": 12, "Stein": 12}.get(bereich, 12)
+
+
+def einsatz_faellig(heute, naechster, vorlauf_tage=28, schon_geplant=False, automatisch=True):
+    """Automatische Terminerzeugung (Wartungsvertrag): Einsatz anlegen, sobald der nächste Termin im Vorlauf liegt
+    (auch überfällige), noch keiner für diesen Termin existiert und der Vertrag es erlaubt."""
+    if not automatisch or schon_geplant or not naechster:
+        return False
+    return heute >= naechster - timedelta(days=max(0, int(vorlauf_tage or 0)))
+
+
+def plantag(naechster, feiertage=()):
+    """Geplanter Einsatztag = nächster Werktag ab Fälligkeit (Wochenende/Feiertag → verschoben)."""
+    from ph_service.utils.sla import naechster_werktag
+
+    return naechster_werktag(naechster, feiertage)
+
+
+def planschluessel(abo, termin):
+    """Idempotenz-Schlüssel des automatisch erzeugten Einsatzes (je Vertrag und Fälligkeit genau einer)."""
+    return f"wartung:{abo}:{termin.isoformat()}"

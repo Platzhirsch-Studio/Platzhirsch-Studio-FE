@@ -1,0 +1,22 @@
+[project]
+name = "ph_microsoft"
+authors = [{ name = "MW Immobilienverwaltungs GmbH" }]
+description = "Microsoft 365 für das Platzhirsch-Backoffice: Entra-ID-Anmeldung (SSO-Brücke), Exchange-Mail in der Kundenakte, Outlook-Kalender, Teams-Links, Outlook-Kontakte, Graph-Token für ph_ablage"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    # requests und cryptography sind Frappe-Abhängigkeiten (kein Zusatzpaket, kein Microsoft-SDK).
+    # Keine Geheimnisse in dieser Datei.
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0,<17.0.0"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"

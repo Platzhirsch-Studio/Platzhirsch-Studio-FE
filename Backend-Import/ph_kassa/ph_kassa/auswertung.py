@@ -36,10 +36,10 @@ def belege_zeitraum(von, bis, kasse=None, mit_training=False, bediener=None) -> 
     namen = [b.name for b in belege]
     z_map, p_map = {}, {}
     if frappe.db.exists("DocType", "PH Kassenbeleg Zahlung"):
-        for z in frappe.get_all("PH Kassenbeleg Zahlung", filters={"parent": ("in", namen)}, fields=_felder("PH Kassenbeleg Zahlung", ["parent", "zahlart", "betrag_cent", "gutschein", "terminal_payment_intent"])):
+        for z in frappe.get_all("PH Kassenbeleg Zahlung", filters={"parent": ("in", namen)}, fields=_felder("PH Kassenbeleg Zahlung", ["parent", "zahlart", "betrag_cent", "gutschein", "terminal_payment_intent", "retour_cent", "fremdwaehrung", "fremd_gegeben_cent"])):
             z_map.setdefault(z.parent, []).append(z)
     if frappe.db.exists("DocType", "PH Kassenbeleg Position"):
-        for p in frappe.get_all("PH Kassenbeleg Position", filters={"parent": ("in", namen)}, fields=_felder("PH Kassenbeleg Position", ["parent", "art", "bezeichnung", "produkt", "menge", "steuersatz", "netto_cent", "ust_cent", "brutto_cent", "bezug"])):
+        for p in frappe.get_all("PH Kassenbeleg Position", filters={"parent": ("in", namen)}, fields=_felder("PH Kassenbeleg Position", ["parent", "art", "ursprungsart", "bezeichnung", "produkt", "menge", "steuersatz", "netto_cent", "ust_cent", "brutto_cent", "bezug"])):
             p_map.setdefault(p.parent, []).append(p)
     return [{**b, "datum": getdate(b.get("datum_uhrzeit")), "zahlarten": z_map.get(b.name, []), "positionen": p_map.get(b.name, [])} for b in belege]
 

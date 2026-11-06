@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "art",
+  "von",
+  "bis",
+  "status",
+  "termin",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Aufmass\nVorinstallation\nMontage\nNacharbeit\nAbnahme",
+   "default": "Montage",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "von",
+   "fieldtype": "Datetime",
+   "label": "Von",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bis",
+   "fieldtype": "Datetime",
+   "label": "Bis",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "geplant\nbestaetigt\nerledigt\nabgesagt",
+   "default": "geplant",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "termin",
+   "fieldtype": "Link",
+   "label": "PH Termin",
+   "options": "PH Termin"
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Data",
+   "label": "Notiz",
+   "in_list_view": 1,
+   "columns": 3
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Fremdgewerk Termin",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

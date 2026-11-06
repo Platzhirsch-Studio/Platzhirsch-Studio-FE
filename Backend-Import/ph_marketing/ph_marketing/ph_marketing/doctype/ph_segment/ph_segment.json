@@ -1,0 +1,236 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "segment_id",
+  "titel",
+  "status",
+  "cb_1",
+  "zweck",
+  "verknuepfung",
+  "zustaendig",
+  "sb_regeln",
+  "regeln",
+  "beschreibung",
+  "sb_vorschau",
+  "vorschau_treffer",
+  "vorschau_empfaenger",
+  "cb_2",
+  "vorschau_ausgeschlossen",
+  "vorschau_am",
+  "sb_system",
+  "quelle_system"
+ ],
+ "fields": [
+  {
+   "fieldname": "segment_id",
+   "fieldtype": "Data",
+   "label": "Kennung",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Kleinbuchstaben, Ziffern, Bindestrich (z. B. kueche-vorarlberg-gold)."
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aktiv\nArchiviert",
+   "default": "Aktiv",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zweck",
+   "fieldtype": "Select",
+   "label": "Zweck (Einwilligung)",
+   "options": "newsletter\neinladungen\nmerkliste_erinnerung\nplaner_erinnerung\nrueckmeldung\npflege_nachkauf",
+   "default": "newsletter",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "description": "Versand nur an Adressen mit bestätigter Einwilligung für genau diesen Zweck (TKG § 174, DSGVO Art. 7)."
+  },
+  {
+   "fieldname": "verknuepfung",
+   "fieldtype": "Select",
+   "label": "Regeln verknüpfen",
+   "options": "UND\nODER",
+   "default": "UND"
+  },
+  {
+   "fieldname": "zustaendig",
+   "fieldtype": "Link",
+   "label": "Zuständig",
+   "options": "User"
+  },
+  {
+   "fieldname": "sb_regeln",
+   "fieldtype": "Section Break",
+   "label": "Regeln"
+  },
+  {
+   "fieldname": "regeln",
+   "fieldtype": "Table",
+   "label": "Regeln",
+   "options": "PH Segment Regel"
+  },
+  {
+   "fieldname": "beschreibung",
+   "fieldtype": "Small Text",
+   "label": "Beschreibung"
+  },
+  {
+   "fieldname": "sb_vorschau",
+   "fieldtype": "Section Break",
+   "label": "Vorschau"
+  },
+  {
+   "fieldname": "vorschau_treffer",
+   "fieldtype": "Int",
+   "label": "Treffer (vor Einwilligungsprüfung)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vorschau_empfaenger",
+   "fieldtype": "Int",
+   "label": "Empfänger (zulässig)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vorschau_ausgeschlossen",
+   "fieldtype": "Small Text",
+   "label": "Ausgeschlossen (Grund: Anzahl)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vorschau_am",
+   "fieldtype": "Datetime",
+   "label": "Vorschau berechnet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "quelle_system",
+   "fieldtype": "Data",
+   "label": "Quelle (System)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Newsletter Ausgabe",
+   "link_fieldname": "segment",
+   "group": "Versand"
+  },
+  {
+   "link_doctype": "PH Event",
+   "link_fieldname": "einladung_segment",
+   "group": "Versand"
+  }
+ ],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Segment",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Archiviert",
+   "color": "Gray"
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "autoname": "field:segment_id",
+ "naming_rule": "By fieldname",
+ "title_field": "titel",
+ "search_fields": "titel,zweck,status",
+ "track_seen": 0,
+ "description": "Zielgruppe aus Regeln (Interessen, Kauf, Kundenkarte-Stufe, Region, Sprache) mit zwingender Einwilligungsprüfung je Zweck."
+}

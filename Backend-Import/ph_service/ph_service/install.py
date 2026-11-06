@@ -106,6 +106,15 @@ def fehlerkatalog_anlegen():
                     "aktiv": 1,
                 }
             ).insert(ignore_permissions=True)
+    sonstiges_je_bereich()
+
+
+def sonstiges_je_bereich():
+    """<BER>-99 Sonstiges für jeden Bereich (auch nachträglich angelegte) – Patch v0_2 ruft das für Bestandssites auf."""
+    from ph_service.ph_service.doctype.ph_fehlerbereich.ph_fehlerbereich import sonstiges_anlegen
+
+    for b in frappe.get_all("PH Fehlerbereich", fields=["name", "bezeichnung"]):
+        sonstiges_anlegen(b.name, b.bezeichnung)
 
 
 def einstellungen_anlegen():

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CalendarDays, FileText, Hammer, Mail, MapPin, PencilRuler, Phone, ShieldCheck } from "lucide-react";
+import { ArrowRight, CalendarDays, CreditCard, FileText, Hammer, Mail, MapPin, PencilRuler, Phone, ShieldCheck } from "lucide-react";
 import { APPOINTMENT_KINDS, DOCUMENT_TYPES, PROJECT_STEPS, TRADES, amountLabel } from "@/lib/portal/constants";
 import { formatDate, formatShortDate, formatTimeRange, formatWeekday, greeting, relativeDays } from "@/lib/portal/format";
 import StatusTimeline from "./StatusTimeline";
@@ -209,13 +209,15 @@ const QUICK_LINKS = [
   { href: "/de/portal/pass", label: "Produktpass", text: "Pflege, Garantie und Service zu Ihren Stücken", Icon: ShieldCheck },
   { href: "/de/portal/gewerke", label: "Gewerke", text: "Wer wann an Ihrem Projekt arbeitet", Icon: Hammer },
   { href: "/de/portal/anfragen", label: "Neue Planung", text: "Ein weiterer Raum oder ein neues Vorhaben", Icon: PencilRuler },
+  // Kundenkarte (04.11.2026): Stufe und Leistungsvorteile – kein Guthaben.
+  { href: "/de/portal/kundenkarte", label: "Kundenkarte", text: "Ihre Stufe, Ihre Vorteile, Ihre Karte", Icon: CreditCard },
 ];
 
 /** Tile row to the areas that are not in the mobile bottom bar. */
 export function QuickLinks() {
   return (
     <nav aria-label="Weitere Bereiche" className="mt-5 lg:mt-6">
-      <ul className="grid gap-3 sm:grid-cols-3 lg:gap-6">
+      <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
         {QUICK_LINKS.map(({ href, label, text, Icon }) => (
           <li key={href}>
             <Link

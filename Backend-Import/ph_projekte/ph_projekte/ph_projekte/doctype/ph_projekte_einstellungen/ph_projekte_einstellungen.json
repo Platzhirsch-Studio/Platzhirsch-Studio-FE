@@ -18,10 +18,35 @@
   "portal_token_tage",
   "sb_montage",
   "montage_tagesstunden",
+  "montage_kostensatz_cent",
+  "liefertermin_kunde_automatisch",
+  "maengel_erinnerung_tage",
+  "sb_montagezeit",
+  "montage_grundzeit_min",
+  "montage_standard_min",
+  "montage_richtwerte",
+  "monteur_qualifikationen",
+  "montage_nur_bei_ware_komplett",
+  "montage_verschiebung_kunde_automatisch",
   "haftungshinweis_fremdgewerke",
   "cb_montage",
   "montagebericht_fusstext",
-  "abnahme_fusstext"
+  "abnahme_fusstext",
+  "sb_kalkulation",
+  "kalkulation_hinweis",
+  "kostensaetze",
+  "ziel_db",
+  "gemeinkosten_regeln",
+  "sb_kalkulation_2",
+  "budget_gelb_prozent",
+  "budget_rot_prozent",
+  "ampel_gelb_unter",
+  "ampel_rot_unter",
+  "cb_kalkulation",
+  "abweichung_kommentar_prozent",
+  "kalkulation_warnung_aktiv",
+  "budget_bei_auftrag_vorbelegen",
+  "kalkulation_eingerichtet"
  ],
  "fields": [
   {
@@ -90,6 +115,65 @@
    "precision": "1"
   },
   {
+   "fieldname": "montage_kostensatz_cent",
+   "fieldtype": "Int",
+   "label": "Kostensatz Montage je Stunde (Cent, intern)",
+   "permlevel": 1,
+   "description": "Für die Projekt-Kalkulation Soll/Ist; ohne Wert = 0."
+  },
+  {
+   "fieldname": "liefertermin_kunde_automatisch",
+   "fieldtype": "Check",
+   "label": "Kunde bei Liefertermin-Änderung automatisch informieren",
+   "description": "Aus: ToDo an Berater mit vorbereitetem Text."
+  },
+  {
+   "fieldname": "maengel_erinnerung_tage",
+   "fieldtype": "Int",
+   "label": "Mängel: Erinnerung alle X Tage",
+   "default": "3"
+  },
+  {
+   "fieldname": "sb_montagezeit",
+   "fieldtype": "Section Break",
+   "label": "Montagezeit und Monteure"
+  },
+  {
+   "fieldname": "montage_grundzeit_min",
+   "fieldtype": "Int",
+   "label": "Grundzeit je Montage (min)",
+   "description": "Anfahrt, Einrichten, Aufräumen"
+  },
+  {
+   "fieldname": "montage_standard_min",
+   "fieldtype": "Int",
+   "label": "Standard je Stück ohne Richtwert (min)"
+  },
+  {
+   "fieldname": "montage_richtwerte",
+   "fieldtype": "Table",
+   "label": "Richtwerte je Kategorie",
+   "options": "PH Montage Richtwert"
+  },
+  {
+   "fieldname": "monteur_qualifikationen",
+   "fieldtype": "Table",
+   "label": "Qualifikationen je Monteur",
+   "options": "PH Montage Qualifikation"
+  },
+  {
+   "fieldname": "montage_nur_bei_ware_komplett",
+   "fieldtype": "Check",
+   "label": "Montage erst starten, wenn Ware komplett",
+   "description": "Aus: nur Warnung"
+  },
+  {
+   "fieldname": "montage_verschiebung_kunde_automatisch",
+   "fieldtype": "Check",
+   "label": "Kunde bei Montageverschiebung automatisch informieren",
+   "description": "Aus: Aufgabe an Berater mit vorbereitetem Text"
+  },
+  {
    "fieldname": "haftungshinweis_fremdgewerke",
    "fieldtype": "Small Text",
    "label": "Hinweis Fremdgewerke (Druck/Portal)",
@@ -110,11 +194,114 @@
    "fieldtype": "Small Text",
    "label": "Fußtext Abnahmeprotokoll (de)",
    "default": "Festgestellte Mängel werden innerhalb der genannten Fristen behoben. Gewährleistungsrechte bleiben unberührt."
+  },
+  {
+   "fieldname": "sb_kalkulation",
+   "fieldtype": "Section Break",
+   "label": "Kalkulation (Leitung/Geschäftsführung)",
+   "permlevel": 1,
+   "description": "Alle Kalkulationsparameter. Änderungen werden protokolliert (PH Kalkulation Protokoll). 0/leer = noch nicht eingerichtet."
+  },
+  {
+   "fieldname": "kalkulation_hinweis",
+   "fieldtype": "HTML",
+   "label": "Hinweis",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kostensaetze",
+   "fieldtype": "Table",
+   "label": "Kostensätze je Tätigkeit",
+   "options": "PH Kostensatz",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "ziel_db",
+   "fieldtype": "Table",
+   "label": "Ziel-DB und Ampel je Projektart",
+   "options": "PH Kalkulation Ziel",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "gemeinkosten_regeln",
+   "fieldtype": "Table",
+   "label": "Gemeinkostenzuschlag",
+   "options": "PH Gemeinkosten Regel",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_kalkulation_2",
+   "fieldtype": "Section Break",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "budget_gelb_prozent",
+   "fieldtype": "Percent",
+   "label": "Budget gelb ab % (Standard)",
+   "default": "90",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "budget_rot_prozent",
+   "fieldtype": "Percent",
+   "label": "Budget rot über % (Standard)",
+   "default": "100",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "ampel_gelb_unter",
+   "fieldtype": "Float",
+   "label": "DB gelb ab x Punkte unter Ziel (Standard)",
+   "default": "0",
+   "precision": "1",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "ampel_rot_unter",
+   "fieldtype": "Float",
+   "label": "DB rot ab y Punkte unter Ziel (Standard)",
+   "default": "5",
+   "precision": "1",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "cb_kalkulation",
+   "fieldtype": "Column Break",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "abweichung_kommentar_prozent",
+   "fieldtype": "Percent",
+   "label": "Kommentarpflicht Nachkalkulation ab Abweichung %",
+   "default": "10",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalkulation_warnung_aktiv",
+   "fieldtype": "Check",
+   "label": "Tägliche Warnung bei Rot (Aufgabe + Glocke)",
+   "default": "1",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "budget_bei_auftrag_vorbelegen",
+   "fieldtype": "Check",
+   "label": "Budget bei Phase Auftrag vorbelegen und einfrieren",
+   "default": "1",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalkulation_eingerichtet",
+   "fieldtype": "Check",
+   "label": "Kalkulation eingerichtet",
+   "read_only": 1,
+   "permlevel": 1,
+   "description": "Gesetzt, sobald mindestens ein Kostensatz > 0 und ein Ziel-DB eingetragen sind."
   }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Projekte",
  "name": "PH Projekte Einstellungen",
@@ -152,8 +339,65 @@
    "read": 1
   },
   {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "print": 0,
+   "email": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "print": 0,
+   "email": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "print": 0,
+   "email": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
    "role": "PH Geschäftsführung",
-   "read": 1
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 0,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
   }
  ],
  "sort_field": "modified",

@@ -26,6 +26,27 @@ class PHTerminEinstellungen(Document):
     def on_update(self):
         frappe.cache().delete_value(CACHE)
 
+    @frappe.whitelist()
+    def meet_verbindung_pruefen(self):
+        """Knopf „Verbindung prüfen“ (Tab Videoberatung): Meet-Site erreichbar und Schlüssel gültig?"""
+        frappe.only_for(("System Manager", "PH CRM Leitung", "PH Backoffice-Admin"))
+        if not self.meet_basis_url:
+            return {"ok": False, "meldung": _("Keine Meet-Site-URL eingetragen.")}
+        token = frappe.conf.get(self.meet_schluesselname or "ph_meet_api_token")
+        if not token:
+            return {"ok": False, "meldung": _("Schlüssel {0} fehlt in site_config.json.").format(self.meet_schluesselname or "ph_meet_api_token")}
+        try:
+            from frappe.integrations.utils import make_get_request
+
+            antwort = make_get_request(f"{self.meet_basis_url.rstrip('/')}/api/method/frappe.auth.get_logged_user", headers={"Authorization": f"token {token}"})
+            return {"ok": True, "meldung": _("Verbindung ok – angemeldet als {0}.").format((antwort or {}).get("message"))}
+        except Exception as e:  # noqa: BLE001
+            return {"ok": False, "meldung": _("Keine Verbindung: {0}").format(str(e)[:200])}
+
+
+def _an(wert):
+    return 1 if wert is None else int(wert)
+
 
 def einstellungen():
     data = frappe.cache().get_value(CACHE)
@@ -48,6 +69,10 @@ def einstellungen():
             "meet_schluesselname": doc.meet_schluesselname or "ph_meet_api_token",
             "meet_link_ab_min": int(doc.meet_link_ab_min or 15),
             "feiertage": {str(z.datum): z.bezeichnung for z in doc.feiertage},
+            # Automationen R1–R8 (Konzept CRM §8.2); ungesetzt = an
+            **{k: _an(doc.get(k)) for k in ("auto_wiedervorlage", "auto_ruhend", "auto_termin_abschluss", "auto_no_show", "auto_vortag", "auto_gewonnen", "auto_duplikat")},
+            "ruhe_schwellen": {"Neu": 1, "Qualifiziert": int(doc.get("ruhe_qualifiziert_tage") or 7), "Termin vereinbart": int(doc.get("ruhe_termin_tage") or 14), "Angebot": int(doc.get("ruhe_angebot_tage") or 21)},
+            "duplikat_tage": int(doc.get("duplikat_tage") or 7),
             "oeffnungszeiten": [(int(str(z.wochentag).split()[0]), str(z.von), str(z.bis)) for z in doc.oeffnungszeiten],
         }
         frappe.cache().set_value(CACHE, data)

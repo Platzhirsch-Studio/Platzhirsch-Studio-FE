@@ -1,0 +1,77 @@
+[
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Sync je Tag",
+  "chart_name": "PH Sync je Tag",
+  "chart_type": "Count",
+  "document_type": "PH Sync Protokoll",
+  "based_on": "zeitpunkt",
+  "timeseries": 1,
+  "timespan": "Last Month",
+  "time_interval": "Daily",
+  "type": "Bar",
+  "filters_json": "[]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Microsoft",
+  "color": "#30373e",
+  "roles": [
+   {
+    "role": "PH Backoffice-Admin"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Sync nach Ergebnis",
+  "chart_name": "PH Sync nach Ergebnis",
+  "chart_type": "Group By",
+  "document_type": "PH Sync Protokoll",
+  "group_by_type": "Count",
+  "group_by_based_on": "ergebnis",
+  "number_of_groups": 5,
+  "timeseries": 0,
+  "type": "Donut",
+  "filters_json": "[]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Microsoft",
+  "color": "#8a7a66",
+  "roles": [
+   {
+    "role": "PH Backoffice-Admin"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "PH Sync nach Bereich",
+  "chart_name": "PH Sync nach Bereich",
+  "chart_type": "Group By",
+  "document_type": "PH Sync Protokoll",
+  "group_by_type": "Count",
+  "group_by_based_on": "bereich",
+  "number_of_groups": 5,
+  "timeseries": 0,
+  "type": "Pie",
+  "filters_json": "[]",
+  "is_public": 1,
+  "is_standard": 1,
+  "module": "PH Microsoft",
+  "color": "#1d4ed8",
+  "roles": [
+   {
+    "role": "PH Backoffice-Admin"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ }
+]

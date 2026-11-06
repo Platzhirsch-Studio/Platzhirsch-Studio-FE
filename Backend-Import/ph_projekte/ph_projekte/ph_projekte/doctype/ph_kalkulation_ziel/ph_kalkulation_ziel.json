@@ -1,0 +1,114 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Ziel-Deckungsbeiträge und Ampelschwellen je Projektart mit Gültigkeit.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "projektart",
+  "ziel_db1",
+  "ziel_db2",
+  "ziel_db3",
+  "ampel_gelb_unter",
+  "ampel_rot_unter",
+  "budget_gelb",
+  "budget_rot",
+  "gueltig_ab",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "projektart",
+   "fieldtype": "Autocomplete",
+   "label": "Projektart",
+   "options": "Alle\nWohnung\nHaus\nKueche\nBad\nHotel\nObjekt\nYacht\nOutdoor\nSonstiges",
+   "default": "Alle",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "ziel_db1",
+   "fieldtype": "Percent",
+   "label": "Ziel DB1 %",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "0/leer = kein Ziel, keine DB-Ampel"
+  },
+  {
+   "fieldname": "ziel_db2",
+   "fieldtype": "Percent",
+   "label": "Ziel DB2 %",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ziel_db3",
+   "fieldtype": "Percent",
+   "label": "Ziel DB3 %",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ampel_gelb_unter",
+   "fieldtype": "Float",
+   "label": "Gelb ab x Punkte unter Ziel",
+   "precision": "1",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ampel_rot_unter",
+   "fieldtype": "Float",
+   "label": "Rot ab y Punkte unter Ziel",
+   "precision": "1",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "0/leer = Standard aus den Einstellungen"
+  },
+  {
+   "fieldname": "budget_gelb",
+   "fieldtype": "Percent",
+   "label": "Budget gelb ab %",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "0/leer = Standard aus den Einstellungen"
+  },
+  {
+   "fieldname": "budget_rot",
+   "fieldtype": "Percent",
+   "label": "Budget rot über %",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "gueltig_ab",
+   "fieldtype": "Date",
+   "label": "Gültig ab",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Data",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Kalkulation Ziel",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

@@ -21,7 +21,13 @@
   "erinnerung_gesendet_am",
   "anmelde_token_hash",
   "anfrage",
-  "notiz"
+  "notiz",
+  "begleitung",
+  "eingeladen",
+  "nachgerueckt_am",
+  "erschienen_am",
+  "checkin_durch",
+  "absage_mail_am"
  ],
  "fields": [
   {
@@ -132,11 +138,48 @@
    "fieldname": "notiz",
    "fieldtype": "Data",
    "label": "Notiz"
+  },
+  {
+   "fieldname": "begleitung",
+   "fieldtype": "Data",
+   "label": "Begleitperson(en)",
+   "description": "Namen für Namensschilder; Anzahl zählt über „Personen“."
+  },
+  {
+   "fieldname": "eingeladen",
+   "fieldtype": "Check",
+   "label": "Eingeladen (Kontingent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "nachgerueckt_am",
+   "fieldtype": "Datetime",
+   "label": "Nachgerückt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "erschienen_am",
+   "fieldtype": "Datetime",
+   "label": "Check-in am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "checkin_durch",
+   "fieldtype": "Link",
+   "label": "Check-in durch",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "absage_mail_am",
+   "fieldtype": "Datetime",
+   "label": "Absage-Mail am",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 10:00:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Marketing",
  "name": "PH Event Anmeldung",

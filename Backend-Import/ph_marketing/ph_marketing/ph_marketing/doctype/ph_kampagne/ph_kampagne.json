@@ -37,6 +37,15 @@
   "anfragen_gesamt",
   "kosten_je_anfrage_cent",
   "kosten_je_klick_cent",
+  "sb_attribution",
+  "attribution_modell",
+  "ziel_ist",
+  "kontaktpunkte_gesamt",
+  "cb_att",
+  "abschluesse_attribuiert",
+  "umsatz_attribuiert_cent",
+  "roi_promille",
+  "attribution_am",
   "auswertung_notiz",
   "notiz_intern",
   "sb_system",
@@ -234,6 +243,59 @@
    "read_only": 1
   },
   {
+   "fieldname": "sb_attribution",
+   "fieldtype": "Section Break",
+   "label": "Attribution (Umsatz aus Aufträgen/Bestellungen)"
+  },
+  {
+   "fieldname": "attribution_modell",
+   "fieldtype": "Select",
+   "label": "Modell",
+   "options": "\nlast\nfirst\nlinear",
+   "description": "Leer = Standard aus den Einstellungen."
+  },
+  {
+   "fieldname": "ziel_ist",
+   "fieldtype": "Int",
+   "label": "Zielkennzahl erreicht",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kontaktpunkte_gesamt",
+   "fieldtype": "Int",
+   "label": "Kontaktpunkte",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_att",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abschluesse_attribuiert",
+   "fieldtype": "Int",
+   "label": "Abschlüsse (attribuiert)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "umsatz_attribuiert_cent",
+   "fieldtype": "Int",
+   "label": "Umsatz attribuiert (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "roi_promille",
+   "fieldtype": "Int",
+   "label": "ROI (‰)",
+   "read_only": 1,
+   "description": "(Umsatz − Ausgaben) / Ausgaben × 1000"
+  },
+  {
+   "fieldname": "attribution_am",
+   "fieldtype": "Datetime",
+   "label": "Berechnet am",
+   "read_only": 1
+  },
+  {
    "fieldname": "auswertung_notiz",
    "fieldtype": "Text Editor",
    "label": "Fazit"
@@ -282,9 +344,14 @@
    "link_doctype": "PH Event",
    "link_fieldname": "kampagne",
    "group": "Inhalte"
+  },
+  {
+   "link_doctype": "PH Kampagne Kontaktpunkt",
+   "link_fieldname": "kampagne",
+   "group": "Auswertung"
   }
  ],
- "modified": "2026-11-04 10:00:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Marketing",
  "name": "PH Kampagne",

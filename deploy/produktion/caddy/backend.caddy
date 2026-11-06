@@ -1,0 +1,42 @@
+# Frappe-Backend: backend.platzhirsch.studio → Frappe-Nginx 127.0.0.1:8080 (deploy/produktion/frappe).
+# NUR erreichbar aus dem Netz von Website und Backoffice sowie von Admin-IPs. Alles andere: 403.
+# Einzige öffentliche Ausnahme: der Stripe-Webhook von ph_shop (Signatur wird in Frappe geprüft,
+# Backend-Import/ph_shop/ph_shop/api/stripe.py) – nur nötig, sobald Stripe auf Frappe zeigt (M6/M9).
+#
+#   WEBSITE_IPS     öffentliche/private Adresse(n) des Website-Hosts (z. B. 10.0.0.2/32 im privaten Netz)
+#   BACKOFFICE_IPS  Adresse(n) des Backoffice-Hosts
+#   ADMIN_IPS       Büro/VPN/Admin (Desk-Zugang /app nur von hier)
+# Ohne Angabe: nur 127.0.0.1 (fail-closed).
+
+backend.platzhirsch.studio {
+	import sicherheit
+	import zugriffslog backend
+	header X-Robots-Tag "noindex, nofollow, noarchive"
+	request_body {
+		max_size 50MB
+	}
+
+	@stripe {
+		method POST
+		path /api/method/ph_shop.api.stripe.webhook
+	}
+	handle @stripe {
+		reverse_proxy 127.0.0.1:8080 {
+			import proxy_header
+		}
+	}
+
+	@erlaubt remote_ip {$WEBSITE_IPS:127.0.0.1/32} {$BACKOFFICE_IPS:127.0.0.1/32} {$ADMIN_IPS:127.0.0.1/32}
+	handle @erlaubt {
+		reverse_proxy 127.0.0.1:8080 {
+			import proxy_header
+			transport http {
+				read_timeout 300s
+			}
+		}
+	}
+
+	handle {
+		respond "Kein Zugriff" 403
+	}
+}

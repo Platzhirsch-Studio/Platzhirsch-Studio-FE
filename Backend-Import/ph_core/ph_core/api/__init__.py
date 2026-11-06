@@ -12,8 +12,12 @@ Der Decorator liefert in dieser Reihenfolge:
   1. Wartungsschalter: PH Einstellungen.api_aktiv = 0 → 503 {"code": "unavailable"}.
   2. Rollenprüfung: der angemeldete Benutzer (API-Token) braucht `rolle` (Standard
      „PH Website Integration“); Administrator darf immer. Sonst 403 {"code": "forbidden"}.
-  3. Ratenbegrenzung je Methode und Benutzer (Redis-Zähler, Fenster 60 s, Grenze aus
-     PH Einstellungen oder `limit_pro_minute`) → 429 {"code": "rate_limited"}.
+  3. Ratenbegrenzung je Methode, Benutzer und Client (Redis-Zähler, Fenster 60 s, Grenze aus
+     PH Einstellungen.api_rate_limit_pro_minute oder `limit_pro_minute`) → 429 {"code": "rate_limited"}.
+     Client = Header `X-PH-Client` (sha256 der Besucher-IP, nur Rolle PH Website Integration), sonst
+     IP-Hash; zusätzlich Obergrenze je Methode und Benutzer über alle Clients
+     (api_rate_limit_gesamt_pro_minute). Gast-Methoden ohne ph_api: Decorator `gast_rate_limit`
+     (api_rate_limit_gast_pro_minute je Methode und IP). Logik: ph_core/utils/ratelimit.py.
   4. Idempotenz (nur mit idempotent=True): Parameter `idempotency_key` (≤ 80 Zeichen).
      Gleicher Schlüssel + gleiche Methode innerhalb der Gültigkeit → dieselbe Antwort,
      ohne die Funktion erneut auszuführen (PH API Protokoll, Status „Wiederholt“).
@@ -32,6 +36,10 @@ HTTP-Methoden: Der HTTP-Status wird über frappe.local.response["http_status_cod
 übernimmt ihn in frappe.utils.response.build_response → as_json() unabhängig von der Methode, also
 auch bei GET-Aufrufen ohne Body (ph_crm get_freie_slots/get_termin/get_terminarten). Bei GET kommen
 die Parameter aus der Query-String in **kwargs (Strings!) – `cmd`/`idempotency_key` werden entfernt.
+
+Desk-/Backoffice-Methoden (ph_core.api.geraete, bediener, suche, aktivitaet) verwenden
+@ph_api(intern=True, …): kein Wartungsschalter, Guest → 403, Rechte über frappe.has_permission
+bzw. hilfsweise `rolle_pruefen(...)`; Rate-Limit und Protokoll wie bei der Website.
 
 Die Website erwartet Fehlercodes als `body.code` (src/lib/booking/adapters/frappe.js,
 src/lib/forms/forward.js): invalid 400, forbidden 403, not_found/invalid_token 404,
@@ -73,8 +81,7 @@ def _einstellungen():
     return einstellungen()
 
 
-def _rate_limit_pruefen(methode, benutzer, limit):
-    schluessel = f"ph_api:rl:{methode}:{benutzer}:{int(time.time() // 60)}"
+def _zaehlen(schluessel):
     cache = frappe.cache()
     zaehler = cache.incr(schluessel) if hasattr(cache, "incr") else None
     if zaehler is None:
@@ -83,7 +90,55 @@ def _rate_limit_pruefen(methode, benutzer, limit):
         cache.set_value(schluessel, zaehler, expires_in_sec=120)
     elif zaehler == 1:
         cache.expire(schluessel, 120)
-    return zaehler <= limit
+    return cint(zaehler)
+
+
+def _client_header():
+    try:
+        req = getattr(frappe.local, "request", None)
+        return req.headers.get("X-PH-Client") if req is not None else None
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _rate_limit_pruefen(methode, benutzer, limit, gesamt=0, ist_website=False):
+    """True = erlaubt. Zählt je Methode+Benutzer+Client und (gesamt > 0) je Methode+Benutzer."""
+    from ph_core.utils import ratelimit as RL
+
+    jetzt = time.time()
+    client = RL.client_kennung(benutzer in (None, "", "Guest"), ist_website, _client_header(), ip_hash())
+    if not RL.erlaubt(_zaehlen(RL.schluessel(methode, benutzer, client, jetzt)), limit):
+        return False
+    if gesamt and gesamt > 0 and not RL.erlaubt(_zaehlen(RL.gesamt_schluessel(methode, benutzer, jetzt)), gesamt):
+        return False
+    return True
+
+
+def gast_rate_limit(fn):
+    """Ratenbegrenzung für allow_guest-Lesemethoden (Katalog, Karriere) je Methode und IP-Hash.
+
+    Grenze PH Einstellungen.api_rate_limit_gast_pro_minute (0 = aus). Über der Grenze: HTTP 429 und
+    {"code": "rate_limited"} statt der Daten. Kein Protokoll (Lesezugriffe, Datensparsamkeit). Für
+    angemeldete Aufrufer (Token) gilt dieselbe Grenze je Benutzer und Client.
+    Reihenfolge: @frappe.whitelist(...) außen, @gast_rate_limit innen.
+    """
+    methode = f"{fn.__module__}.{fn.__name__}"
+
+    @functools.wraps(fn)
+    def inner(*args, **kwargs):
+        try:
+            einst = _einstellungen()
+            grenze = cint(einst.get("api_rate_limit_gast_pro_minute"))
+            benutzer = frappe.session.user or "Guest"
+            ist_website = benutzer not in ("Guest", "Administrator") and ROLLE_WEBSITE in frappe.get_roles(benutzer)
+            ok = grenze <= 0 or _rate_limit_pruefen(methode, benutzer, grenze, ist_website=ist_website)
+        except Exception:  # noqa: BLE001 – Zählerfehler sperren nie den Katalog
+            ok = True
+        if not ok:
+            return _antwort_setzen(429, {"code": "rate_limited", "message": _("Zu viele Anfragen.")})
+        return fn(*args, **kwargs)
+
+    return inner
 
 
 def _antwort_setzen(http_status, body):
@@ -102,12 +157,17 @@ def _protokoll(**werte):
         frappe.log_error(title="PH API Protokoll konnte nicht geschrieben werden")
 
 
-def ph_api(rolle=ROLLE_WEBSITE, idempotent=False, limit_pro_minute=None, referenz=None):
+def ph_api(rolle=ROLLE_WEBSITE, idempotent=False, limit_pro_minute=None, referenz=None, intern=False):
     """Decorator, siehe Modul-Docstring.
 
     referenz: optionaler Callable(ergebnis) → (doctype, name) für das Protokoll,
     z. B. referenz=lambda r: ("PH Anfrage", r["referenz"]).
+    intern=True: Methode für Desk-/Backoffice-Benutzer (ph_core.api.geraete, bediener, suche,
+    aktivitaet). Der Wartungsschalter `api_aktiv` (gilt der Website) greift nicht; stattdessen wird
+    Guest immer mit 403 abgewiesen. Rollenprüfung nur, wenn `rolle` gesetzt ist (Standard dann None).
     """
+    if intern and rolle == ROLLE_WEBSITE:
+        rolle = None
 
     def wrapper(fn):
         methode = f"{fn.__module__}.{fn.__name__}"
@@ -129,13 +189,17 @@ def ph_api(rolle=ROLLE_WEBSITE, idempotent=False, limit_pro_minute=None, referen
                 _protokoll(**eintrag)
                 return _antwort_setzen(http_status, body)
 
-            if not einst["api_aktiv"]:
+            if intern:
+                if not benutzer or benutzer == "Guest":
+                    return fertig("Abgelehnt", 403, {"code": "forbidden", "message": _("Anmeldung erforderlich.")})
+            elif not einst["api_aktiv"]:
                 return fertig("Abgelehnt", 503, {"code": "unavailable", "message": _("Website-API ist abgeschaltet.")})
             if benutzer != "Administrator" and rolle and rolle not in frappe.get_roles(benutzer):
                 return fertig("Abgelehnt", 403, {"code": "forbidden", "message": _("Keine Berechtigung.")})
 
             limit = limit_pro_minute or einst["api_rate_limit_pro_minute"]
-            if not _rate_limit_pruefen(methode, benutzer, limit):
+            ist_website = benutzer not in ("Guest", "Administrator") and ROLLE_WEBSITE in frappe.get_roles(benutzer)
+            if not _rate_limit_pruefen(methode, benutzer, limit, cint(einst.get("api_rate_limit_gesamt_pro_minute")), ist_website):
                 return fertig("Rate-Limit", 429, {"code": "rate_limited", "message": _("Zu viele Anfragen.")})
 
             if idem:
@@ -201,6 +265,42 @@ def text(wert, laenge):
     return str(wert or "").strip()[:laenge]
 
 
+ROLLEN_ADMIN = ("System Manager", "PH Backoffice-Admin")
+
+
+def hat_rolle(*rollen, leitung=False, benutzer=None):
+    """True, wenn der Benutzer Administrator ist, eine der Rollen hat oder (leitung=True) eine „PH … Leitung“-Rolle."""
+    benutzer = benutzer or frappe.session.user
+    if benutzer == "Administrator":
+        return True
+    eigene = set(frappe.get_roles(benutzer))
+    if eigene & set(rollen):
+        return True
+    return bool(leitung and any(r.startswith("PH ") and r.endswith(" Leitung") for r in eigene))
+
+
+def rolle_pruefen(*rollen, leitung=False):
+    """Wirft ApiFehler("forbidden", 403), wenn hat_rolle() falsch ist."""
+    if not hat_rolle(*rollen, leitung=leitung):
+        raise ApiFehler("forbidden", 403, _("Keine Berechtigung."))
+
+
+def liste(wert):
+    """Parameter als Liste: JSON-String, kommagetrennter String, Liste oder None → list[str]."""
+    if not wert:
+        return []
+    if isinstance(wert, str):
+        s = wert.strip()
+        if s.startswith("["):
+            try:
+                wert = json.loads(s)
+            except ValueError:
+                wert = s.split(",")
+        else:
+            wert = s.split(",")
+    return [str(x).strip() for x in wert if str(x).strip()]
+
+
 def _text_ohne_html(s):
     import re
 
@@ -212,12 +312,48 @@ def token_hash(token):
     return hashlib.sha256(str(token or "").encode()).hexdigest()
 
 
-def portal_kontakt_pruefen(kontakt, kunde_token):
-    """Zentrale Kundenportal-Prüfung für ph_projekte, ph_faktura, ph_service (CONVENTIONS 11).
+def _portal_sitzung_pruefen(kontakt, kunde_token):
+    """Kunden-Token einer `PH Portal Sitzung` (ph_projekte, mehrere aktive Sitzungen je Kontakt)?
 
-    Prüft: Kontakt übergeben, PH Kontakt installiert (ph_crm), Kontakt existiert, portal_aktiv,
+    1. Hook `ph_portal_token_pruefen` (hooks.py einer App, z. B. ph_projekte:
+       ph_portal_token_pruefen = ["ph_projekte.api.basis.sitzung_pruefen"]): Signatur (kontakt, kunde_token)
+       → dict/True = gültige Sitzung, None = kein Sitzungs-Token; Fehler als ApiFehler. Der Hook hat Vorrang,
+       weil die App dabei aktiviert, letzter_zugriff pflegt und überzählige Sitzungen bereinigt.
+    2. Ohne Hook, aber mit DocType PH Portal Sitzung: rein lesende Prüfung hier (Kontakt, Status
+       Angefordert/Aktiv, ablauf_am) über ph_core/utils/portal.py.
+    3. Sonst None → Rückfall auf PH Kontakt.portal_token_hash.
+    → True (gültige Sitzung) oder None.
+    """
+    for pfad in frappe.get_hooks("ph_portal_token_pruefen") or []:
+        ergebnis = frappe.get_attr(pfad)(kontakt, kunde_token)
+        if ergebnis:
+            return True
+    if frappe.get_hooks("ph_portal_token_pruefen"):
+        return None
+    if not frappe.db.exists("DocType", "PH Portal Sitzung"):
+        return None
+    from ph_core.utils.portal import sitzung_zustand
+
+    s = frappe.db.get_value("PH Portal Sitzung", {"token_hash": token_hash(kunde_token)}, ["kontakt", "status", "ablauf_am"], as_dict=True)
+    if not s:
+        return None
+    zustand = sitzung_zustand(s, kontakt, now_datetime())
+    if zustand == "abgelaufen":
+        raise ApiFehler("expired", 410, _("Kunden-Token abgelaufen."))
+    if zustand != "ok":
+        raise ApiFehler("invalid_token", 404, _("Zugang ungültig."))
+    return True
+
+
+def portal_kontakt_pruefen(kontakt, kunde_token):
+    """Zentrale Kundenportal-Prüfung für ph_projekte, ph_faktura, ph_service, ph_kundenkarte (CONVENTIONS 11).
+
+    Prüft: Kontakt übergeben, PH Kontakt installiert (ph_crm), Kontakt existiert, portal_aktiv, dann
+    zuerst eine gültige `PH Portal Sitzung` mit sha256(kunde_token) (_portal_sitzung_pruefen: Hook
+    `ph_portal_token_pruefen` oder lesende Prüfung, nur wenn der DocType existiert), sonst Rückfall auf
     portal_token_hash == sha256(kunde_token) in konstanter Zeit. Rückgabe: Name des Kontakts.
-    Fehler: invalid 400, unavailable 503 (ph_crm fehlt/Felder fehlen), not_found 404, invalid_token 404.
+    Fehler: invalid 400, unavailable 503 (ph_crm fehlt/Felder fehlen), not_found 404, invalid_token 404,
+    expired 410 (Sitzung abgelaufen).
     """
     import hmac
 
@@ -230,6 +366,10 @@ def portal_kontakt_pruefen(kontakt, kunde_token):
         raise ApiFehler("unavailable", 503, _("Portal-Felder an PH Kontakt fehlen."))
     if not k:
         raise ApiFehler("not_found", 404, _("Kontakt unbekannt."))
-    if not cint(k.portal_aktiv) or not k.portal_token_hash or not hmac.compare_digest(str(k.portal_token_hash), token_hash(kunde_token)):
+    if not cint(k.portal_aktiv):
+        raise ApiFehler("invalid_token", 404, _("Zugang ungültig."))
+    if _portal_sitzung_pruefen(kontakt, kunde_token):
+        return kontakt
+    if not k.portal_token_hash or not hmac.compare_digest(str(k.portal_token_hash), token_hash(kunde_token)):
         raise ApiFehler("invalid_token", 404, _("Zugang ungültig."))
     return kontakt

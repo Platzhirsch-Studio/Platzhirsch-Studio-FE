@@ -1,0 +1,247 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Kundenportal-Sitzung: ein Token je Login-Anfrage (Magic Link), höchstens 5 aktive je Kontakt, Ablauf; Logout widerruft nur die eigene Sitzung (60-website-backend-umstellung.md, Backend-Lücken ph_projekte 1).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "kontakt",
+  "status",
+  "token_hash",
+  "cb_zeit",
+  "angefordert_am",
+  "aktiviert_am",
+  "letzter_zugriff",
+  "ablauf_am",
+  "widerrufen_am",
+  "widerruf_grund",
+  "sb_system",
+  "ip_hash",
+  "quelle"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kontakt",
+   "options": "PH Kontakt",
+   "reqd": 1,
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Angefordert\nAktiv\nAbgelaufen\nWiderrufen",
+   "default": "Angefordert",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "token_hash",
+   "fieldtype": "Data",
+   "label": "Token-Hash (SHA-256)",
+   "read_only": 1,
+   "unique": 1,
+   "description": "Nur der Hash wird gespeichert – der Klartext-Token existiert nur in der Antwort an die Website."
+  },
+  {
+   "fieldname": "cb_zeit",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "angefordert_am",
+   "fieldtype": "Datetime",
+   "label": "Angefordert am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "aktiviert_am",
+   "fieldtype": "Datetime",
+   "label": "Aktiviert am (erste Nutzung)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "letzter_zugriff",
+   "fieldtype": "Datetime",
+   "label": "Letzter Zugriff",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ablauf_am",
+   "fieldtype": "Datetime",
+   "label": "Läuft ab am",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "widerrufen_am",
+   "fieldtype": "Datetime",
+   "label": "Widerrufen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "widerruf_grund",
+   "fieldtype": "Data",
+   "label": "Widerrufsgrund",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "ip_hash",
+   "fieldtype": "Data",
+   "label": "IP-Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "website\nbackoffice\nsystem",
+   "default": "website",
+   "read_only": 1
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Portal Sitzung",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "search_fields": "kontakt,status",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "title_field": "titel",
+ "track_changes": 0,
+ "track_seen": 0,
+ "states": [
+  {
+   "title": "Angefordert",
+   "color": "Blue"
+  },
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Abgelaufen",
+   "color": "Gray"
+  },
+  {
+   "title": "Widerrufen",
+   "color": "Red"
+  }
+ ]
+}

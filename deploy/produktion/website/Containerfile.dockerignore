@@ -1,0 +1,27 @@
+# Build-Kontext = Repo-Root (Website). Alles, was der Server weder beim Build noch zur Laufzeit liest.
+# Gleiche Liste wie outputFileTracingExcludes in next.config.js, plus Backoffice/Backend/Deploy.
+.git
+.github
+node_modules
+.next
+.data
+.env*
+Marktresearch
+Herstellermaterial
+qa-screenshots
+docs
+tests
+tools
+scripts
+target
+Druck
+backoffice
+Backend-Import
+deploy
+playwright-report
+test-results
+public/ezarri
+public/preview/pinterest
+**/*.tmp.mjs
+**/__pycache__
+**/.DS_Store

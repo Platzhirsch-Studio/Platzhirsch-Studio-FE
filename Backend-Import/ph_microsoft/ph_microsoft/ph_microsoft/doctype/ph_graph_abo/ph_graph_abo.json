@@ -1,0 +1,207 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Microsoft-Graph-Subscription (Webhook) mit Ablauf; wird stündlich erneuert. clientState nur als Hash.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "art",
+  "status",
+  "ablauf",
+  "cb_1",
+  "subscription_id",
+  "ressource",
+  "change_type",
+  "postfach",
+  "kalender_zuordnung",
+  "sb_status",
+  "erstellt_am",
+  "erneuert_am",
+  "letzte_benachrichtigung",
+  "benachrichtigungen",
+  "letzter_fehler",
+  "client_state_hash"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Mail\nKalender",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aktiv\nAbgelaufen\nFehler\nGeloescht",
+   "default": "Aktiv",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "ablauf",
+   "fieldtype": "Datetime",
+   "label": "Ablauf (UTC)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "subscription_id",
+   "fieldtype": "Data",
+   "label": "Subscription-ID",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "ressource",
+   "fieldtype": "Small Text",
+   "label": "Ressource",
+   "read_only": 1
+  },
+  {
+   "fieldname": "change_type",
+   "fieldtype": "Data",
+   "label": "Änderungsarten",
+   "read_only": 1
+  },
+  {
+   "fieldname": "postfach",
+   "fieldtype": "Link",
+   "label": "Postfach",
+   "options": "PH Postfach",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kalender_zuordnung",
+   "fieldtype": "Link",
+   "label": "Kalender-Zuordnung",
+   "options": "PH Kalender Zuordnung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_status",
+   "fieldtype": "Section Break",
+   "label": "Verlauf",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "erstellt_am",
+   "fieldtype": "Datetime",
+   "label": "Angelegt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "erneuert_am",
+   "fieldtype": "Datetime",
+   "label": "Zuletzt erneuert",
+   "read_only": 1
+  },
+  {
+   "fieldname": "letzte_benachrichtigung",
+   "fieldtype": "Datetime",
+   "label": "Letzte Benachrichtigung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "benachrichtigungen",
+   "fieldtype": "Int",
+   "label": "Benachrichtigungen",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "letzter_fehler",
+   "fieldtype": "Small Text",
+   "label": "Letzter Fehler",
+   "read_only": 1
+  },
+  {
+   "fieldname": "client_state_hash",
+   "fieldtype": "Data",
+   "label": "clientState (SHA-256)",
+   "read_only": 1,
+   "hidden": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Microsoft",
+ "name": "PH Graph Abo",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ],
+ "search_fields": "art,status,ablauf",
+ "sort_field": "ablauf",
+ "sort_order": "ASC",
+ "states": [
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Abgelaufen",
+   "color": "Orange"
+  },
+  {
+   "title": "Fehler",
+   "color": "Red"
+  },
+  {
+   "title": "Geloescht",
+   "color": "Gray"
+  }
+ ],
+ "title_field": "titel",
+ "track_changes": 1
+}

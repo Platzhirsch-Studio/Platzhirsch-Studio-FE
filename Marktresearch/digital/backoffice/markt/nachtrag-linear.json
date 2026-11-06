@@ -1,0 +1,208 @@
+{
+  "produkt": "Linear",
+  "url": "https://linear.app/docs/triage",
+  "stand": "2026-11-04",
+  "zeichen": 17000,
+  "funktionen": [
+    {
+      "name": "Triage annehmen",
+      "beschreibung": "Der Bearbeiter übernimmt ein eingehendes Issue in den Team-Workflow.",
+      "bereich": "service",
+      "nutzen": "Reklamation geprüft übernehmen.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/triage"
+    },
+    {
+      "name": "Ablehnen mit Kommentar",
+      "beschreibung": "Der Bearbeiter bricht ein Issue mit Begründung ab.",
+      "bereich": "service",
+      "nutzen": "Unbegründete Fälle dokumentiert schließen.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/triage"
+    },
+    {
+      "name": "Als Duplikat zusammenführen",
+      "beschreibung": "Der Bearbeiter führt ein Issue inklusive Anhängen und Kundenanfragen mit einem bestehenden zusammen.",
+      "bereich": "service",
+      "nutzen": "Doppelmeldung per Mail und Telefon bündeln.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/triage"
+    },
+    {
+      "name": "Snoozen",
+      "beschreibung": "Der Bearbeiter blendet ein Issue bis zu einem Zeitpunkt oder neuer Aktivität aus.",
+      "bereich": "service",
+      "nutzen": "Warten auf Herstellerantwort.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/triage"
+    },
+    {
+      "name": "Triage-Verantwortung",
+      "beschreibung": "Bestimmte Mitglieder überwachen den Eingang oder erhalten Issues automatisch, auch im Rotationsplan.",
+      "bereich": "service",
+      "nutzen": "Tagesdienst für Kundenanfragen.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/triage"
+    },
+    {
+      "name": "Triage-Regeln",
+      "beschreibung": "Eingehende Issues erhalten automatisch Team, Status, Zuständigen, Label, Projekt oder Priorität.",
+      "bereich": "service",
+      "nutzen": "Küchenthemen automatisch ans Küchenteam.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/triage"
+    },
+    {
+      "name": "Triage Intelligence",
+      "beschreibung": "Das System schlägt Zuständige, Labels und mögliche Duplikate vor.",
+      "bereich": "service",
+      "nutzen": "Schnellere Verteilung.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/triage"
+    },
+    {
+      "name": "Asks-Webformulare",
+      "beschreibung": "Mitarbeiter ohne Account reichen Anfragen per Formular ein, die als Issue in der Triage landen.",
+      "bereich": "service",
+      "nutzen": "Interne Anfragen vom Verkauf ans Backoffice.",
+      "quelle": "Linear",
+      "url": "https://linear.app/changelog/2026-04-02-web-forms-for-linear-asks"
+    },
+    {
+      "name": "E-Mail-Rückfragen zu Asks",
+      "beschreibung": "Einreicher verfolgen ihre Anfrage per synchronisiertem E-Mail-Thread.",
+      "bereich": "service",
+      "nutzen": "Rückmeldung ohne Login.",
+      "quelle": "Linear",
+      "url": "https://linear.app/changelog/2026-04-02-web-forms-for-linear-asks"
+    },
+    {
+      "name": "SLA-Zielzeiten",
+      "beschreibung": "Der Admin setzt SLAs manuell oder per Regeln nach Priorität, Team, Projekt, Label.",
+      "bereich": "service",
+      "nutzen": "Reklamation binnen 48 Stunden bearbeiten.",
+      "quelle": "Linear",
+      "url": "https://linear.app/changelog/2023-03-16-slas"
+    },
+    {
+      "name": "SLA-Warnungen",
+      "beschreibung": "Abonnenten werden bei drohender oder eingetretener SLA-Verletzung benachrichtigt.",
+      "bereich": "service",
+      "nutzen": "Keine vergessene Reklamation.",
+      "quelle": "Linear",
+      "url": "https://linear.app/changelog/2023-03-16-slas"
+    },
+    {
+      "name": "Issue-Vorlagen",
+      "beschreibung": "Der Nutzer erstellt Issues aus Vorlagen.",
+      "bereich": "service",
+      "nutzen": "Standardfall Transportschaden.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/creating-issues"
+    },
+    {
+      "name": "Issues per E-Mail",
+      "beschreibung": "Das Team nimmt Issues per E-Mail entgegen.",
+      "bereich": "service",
+      "nutzen": "Kundenmails werden zu Vorgängen.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/creating-issues"
+    },
+    {
+      "name": "Priorität und Schätzung",
+      "beschreibung": "Der Nutzer setzt Priorität (Urgent bis Low) und Schätzpunkte/T-Shirt-Größen.",
+      "bereich": "projekte",
+      "nutzen": "Dringlichkeit klar sichtbar.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/creating-issues"
+    },
+    {
+      "name": "Wiederkehrende Issues",
+      "beschreibung": "Nach Ablauf der Fälligkeit wird automatisch der nächste Vorgang erzeugt.",
+      "bereich": "zentrale",
+      "nutzen": "Monatliche Inventur oder Ausstellungspflege.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/creating-issues"
+    },
+    {
+      "name": "Unteraufgaben",
+      "beschreibung": "Der Nutzer legt Sub-Issues an, auch aus Checklisten, Kommentaren oder Vorlagen.",
+      "bereich": "projekte",
+      "nutzen": "Küche in Lieferung, Montage, Anschluss zerlegen.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/parent-and-sub-issues"
+    },
+    {
+      "name": "Automatischer Elternstatus",
+      "beschreibung": "Der Eltern-Vorgang schließt automatisch, wenn alle Sub-Issues erledigt sind (oder umgekehrt).",
+      "bereich": "projekte",
+      "nutzen": "Auftrag automatisch abgeschlossen.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/parent-and-sub-issues"
+    },
+    {
+      "name": "Mit Unteraufgaben duplizieren",
+      "beschreibung": "Der Nutzer kopiert einen Eltern-Vorgang samt Sub-Issues.",
+      "bereich": "projekte",
+      "nutzen": "Standardablauf je Küchenauftrag wiederverwenden.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/parent-and-sub-issues"
+    },
+    {
+      "name": "Zyklen",
+      "beschreibung": "Das Team arbeitet in wiederkehrenden 1–8-Wochen-Zyklen mit optionalem Cooldown.",
+      "bereich": "projekte",
+      "nutzen": "Wochenplanung der Montage.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/use-cycles"
+    },
+    {
+      "name": "Auto-Rollover",
+      "beschreibung": "Offene Issues wandern automatisch in den nächsten Zyklus.",
+      "bereich": "projekte",
+      "nutzen": "Nichts fällt durch.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/use-cycles"
+    },
+    {
+      "name": "Kapazitätsanzeige",
+      "beschreibung": "Eine Anzeige prognostiziert anhand der letzten drei Zyklen, ob der Plan schaffbar ist.",
+      "bereich": "personal",
+      "nutzen": "Realistische Planung.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/use-cycles"
+    },
+    {
+      "name": "Projekte mit Meilensteinen",
+      "beschreibung": "Der Nutzer führt Projekte mit Meilensteinen, Zieldaten, Lead, Mitgliedern und Dokumenten.",
+      "bereich": "projekte",
+      "nutzen": "Hotelprojekt mit Bauphasen.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/projects"
+    },
+    {
+      "name": "Initiativen",
+      "beschreibung": "Der Nutzer bündelt Projekte unter einem Ziel mit Status, Owner, Labels und Zieldatum.",
+      "bereich": "zentrale",
+      "nutzen": "Jahresziel 'Objektgeschäft ausbauen'.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/initiatives"
+    },
+    {
+      "name": "Health-Status und Updates",
+      "beschreibung": "Updates melden on track, at risk oder off track; Projekt-Ampeln werden zusammengefasst.",
+      "bereich": "zentrale",
+      "nutzen": "Ampelbericht für den Inhaber.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/initiatives"
+    },
+    {
+      "name": "Fortschrittsgraph",
+      "beschreibung": "Der Nutzer sieht die Erledigungsrate je Projekt über die Zeit.",
+      "bereich": "zentrale",
+      "nutzen": "Fortschritt sichtbar.",
+      "quelle": "Linear",
+      "url": "https://linear.app/docs/initiatives"
+    }
+  ]
+}

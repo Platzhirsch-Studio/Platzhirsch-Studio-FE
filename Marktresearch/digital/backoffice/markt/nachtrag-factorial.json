@@ -1,0 +1,248 @@
+{
+  "produkt": "Factorial",
+  "url": "https://factorialhr.de/",
+  "stand": "2026-11-04",
+  "zeichen": 30000,
+  "funktionen": [
+    {
+      "name": "Abwesenheit beantragen (Desktop/App)",
+      "beschreibung": "Mitarbeitende reichen Urlaub und andere Abwesenheiten am Desktop oder in der App ein.",
+      "bereich": "personal",
+      "nutzen": "Urlaubsantrag vom Handy.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/urlaubsverwaltung"
+    },
+    {
+      "name": "Abwesenheit mit einem Klick genehmigen",
+      "beschreibung": "Vorgesetzte prüfen eingegangene Anträge und bestätigen sie mit einem Klick.",
+      "bereich": "personal",
+      "nutzen": "Schnelle Freigabe durch die Teamleitung.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/urlaubsverwaltung"
+    },
+    {
+      "name": "Abwesenheitskalender",
+      "beschreibung": "Die Kalenderübersicht zeigt anstehende Urlaube und wer verfügbar ist.",
+      "bereich": "personal",
+      "nutzen": "Montageplanung sieht Urlaube der Monteure.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/urlaubsverwaltung"
+    },
+    {
+      "name": "Resturlaub im Blick",
+      "beschreibung": "Nutzer sehen ihre verbleibenden Urlaubstage.",
+      "bereich": "personal",
+      "nutzen": "Weniger Rückfragen.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/urlaubsverwaltung"
+    },
+    {
+      "name": "Abwesenheiten auswerten & exportieren",
+      "beschreibung": "Abwesenheiten werden in Listen/Dashboards ausgewertet und exportiert.",
+      "bereich": "personal",
+      "nutzen": "Krankenstandsquote je Team.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/urlaubsverwaltung"
+    },
+    {
+      "name": "Krankmeldungen an Gehaltsabrechnung",
+      "beschreibung": "Krankmeldungen werden erfasst und an die Gehaltsabrechnung übergeben.",
+      "bereich": "personal",
+      "nutzen": "Lohnbüro bekommt Krankenstände automatisch.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/urlaubsverwaltung"
+    },
+    {
+      "name": "Abwesenheit mit Schicht/Zeit verknüpft",
+      "beschreibung": "Abwesenheiten werden im Zusammenhang mit Arbeitszeiten und Schichtplänen angezeigt.",
+      "bereich": "personal",
+      "nutzen": "Kein Monteur wird eingeplant, der Urlaub hat.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/urlaubsverwaltung"
+    },
+    {
+      "name": "Schichten per Drag-and-Drop",
+      "beschreibung": "Vorgesetzte ordnen Schichten per Drag-and-Drop neu zu.",
+      "bereich": "personal",
+      "nutzen": "Showroom-Samstage schnell umplanen.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/schichtplanung"
+    },
+    {
+      "name": "Konfliktprüfung vor Bestätigung",
+      "beschreibung": "Überschneidungen und Hinweise werden vor dem Bestätigen des Plans angezeigt.",
+      "bereich": "personal",
+      "nutzen": "Keine Doppelbelegung.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/schichtplanung"
+    },
+    {
+      "name": "Schichttausch per App",
+      "beschreibung": "Mitarbeitende schlagen über das Smartphone einen Schichttausch mit Kolleg:innen vor.",
+      "bereich": "personal",
+      "nutzen": "Selbstorganisation im Verkaufsteam.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/schichtplanung"
+    },
+    {
+      "name": "Dienstplan mobil mit Änderungsbenachrichtigung",
+      "beschreibung": "Mitarbeitende sehen ihre Schichten in der App und werden über Änderungen benachrichtigt.",
+      "bereich": "personal",
+      "nutzen": "Planänderungen erreichen alle sofort.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/schichtplanung"
+    },
+    {
+      "name": "Kommentare im Plan",
+      "beschreibung": "Vorgesetzte und Teams stimmen sich per Kommentarfunktion im Plan ab.",
+      "bereich": "personal",
+      "nutzen": "Abstimmung ohne Chatgruppe.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/schichtplanung"
+    },
+    {
+      "name": "Ein-/Ausstempeln per Klick",
+      "beschreibung": "Mitarbeitende stempeln mit einem Klick in der App ein und aus, mobil oder am Laptop.",
+      "bereich": "personal",
+      "nutzen": "Einfache Zeiterfassung.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/zeiterfassung-mitarbeiter"
+    },
+    {
+      "name": "QR-Code-Stempeln (ortsgebunden)",
+      "beschreibung": "Arbeitszeit wird durch Scannen eines QR-Codes ortsgebunden erfasst.",
+      "bereich": "personal",
+      "nutzen": "QR-Code im Lager/Showroom als Stempelort.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/zeiterfassung-mitarbeiter"
+    },
+    {
+      "name": "Kiosk-Stempeln mit persönlicher ID",
+      "beschreibung": "Vor Ort wird an einem Gerät wie einem Tablet mit persönlicher ID eingestempelt.",
+      "bereich": "personal",
+      "nutzen": "Gemeinsames Tablet am Eingang.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/zeiterfassung-mitarbeiter"
+    },
+    {
+      "name": "Erinnerung bei vergessenem Stempeln",
+      "beschreibung": "Mitarbeitende erhalten automatische Erinnerungen, wenn Ein- oder Ausstempeln vergessen wurde.",
+      "bereich": "personal",
+      "nutzen": "Lückenlose Aufzeichnung (AZG).",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/zeiterfassung-mitarbeiter"
+    },
+    {
+      "name": "Mitarbeiternachrichten im App-Dashboard",
+      "beschreibung": "Mitarbeitende lesen Nachrichten im Dashboard der App.",
+      "bereich": "personal",
+      "nutzen": "Infos an das Montage-Team ohne Aushang.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/zeiterfassung-mitarbeiter"
+    },
+    {
+      "name": "Dokumente digital anfordern & ablegen",
+      "beschreibung": "HR fordert Unterlagen elektronisch bei Mitarbeitenden an und legt sie direkt in der Personalakte ab.",
+      "bereich": "personal",
+      "nutzen": "Meldezettel oder Führerschein-Kopie digital einholen.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/dokumentenmanagement"
+    },
+    {
+      "name": "Fehlende Unterlagen erkennen",
+      "beschreibung": "Es wird angezeigt, bei welchen Mitarbeitenden Dokumente oder Unterschriften ausstehen.",
+      "bereich": "personal",
+      "nutzen": "Vollständige Personalakten.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/dokumentenmanagement"
+    },
+    {
+      "name": "E-Signatur für Dokumente",
+      "beschreibung": "Dokumente werden zur digitalen Unterzeichnung versendet, etwa beim Onboarding.",
+      "bereich": "personal",
+      "nutzen": "Dienstvertrag digital unterschreiben.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/dokumentenmanagement"
+    },
+    {
+      "name": "Lohnzettel-Massenupload mit Zuordnung",
+      "beschreibung": "Gehaltsabrechnungen werden massenhaft hochgeladen und per Name/ID automatisch den Mitarbeitenden zugeordnet.",
+      "bereich": "personal",
+      "nutzen": "Lohnzettel vom Steuerberater in einem Schritt verteilen.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/dokumentenmanagement"
+    },
+    {
+      "name": "Dokumentrechte per Rolle",
+      "beschreibung": "Über Rollen und Berechtigungen wird festgelegt, wer welche Dokumente sehen oder herunterladen darf.",
+      "bereich": "zentrale",
+      "nutzen": "Lohndokumente bleiben vertraulich.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/dokumentenmanagement"
+    },
+    {
+      "name": "Formulare automatisch ausfüllen",
+      "beschreibung": "Vorhandene Mitarbeiterdaten werden in Formulare und Dokumente übernommen.",
+      "bereich": "personal",
+      "nutzen": "Dienstzettel und Bestätigungen schneller erstellen.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/dokumentenmanagement"
+    },
+    {
+      "name": "KI-Dokumentensuche",
+      "beschreibung": "Verträge/Richtlinien werden per natürlicher Sprache gesucht und Inhalte zusammengefasst.",
+      "bereich": "personal",
+      "nutzen": "Schnell nachsehen, was im Vertrag zu Überstunden steht.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/dokumentenmanagement"
+    },
+    {
+      "name": "Onboarding/Offboarding",
+      "beschreibung": "Ein- und Austritte von Mitarbeitenden werden organisiert.",
+      "bereich": "personal",
+      "nutzen": "Checkliste Schlüssel, Firmenhandy, ÖGK-Meldung.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/"
+    },
+    {
+      "name": "Bewerbermanagement",
+      "beschreibung": "Talente werden gesucht und rekrutiert.",
+      "bereich": "personal",
+      "nutzen": "Bewerbungen zentral bearbeiten.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/"
+    },
+    {
+      "name": "Lohn-Schnittstellen DATEV/Export",
+      "beschreibung": "Lohnrelevante Daten werden per DATEV oder Export an die Lohnbuchhaltung übergeben.",
+      "bereich": "personal",
+      "nutzen": "Übergabe an den Steuerberater.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/"
+    },
+    {
+      "name": "Spesen- & Reisekosten",
+      "beschreibung": "Unternehmensausgaben und Reisekosten werden verwaltet.",
+      "bereich": "personal",
+      "nutzen": "Messe- und Montagespesen.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/"
+    },
+    {
+      "name": "Hinweisgebersystem",
+      "beschreibung": "Vertrauliche Meldestelle nach Hinweisgeberschutzgesetz.",
+      "bereich": "zentrale",
+      "nutzen": "Compliance-Baustein.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/"
+    },
+    {
+      "name": "Geräteverwaltung (MDM)",
+      "beschreibung": "Geräte, Apps und Zugriffe werden zentral verwaltet und abgesichert.",
+      "bereich": "zentrale",
+      "nutzen": "Tablets/Handys der Monteure verwalten.",
+      "quelle": "Factorial",
+      "url": "https://factorialhr.de/"
+    }
+  ]
+}

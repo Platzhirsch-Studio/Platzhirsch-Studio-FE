@@ -108,3 +108,36 @@ class TestPHProdukt(FrappeTestCase):
         p = produkt("Entwurf Glas")
         frappe.cache().delete_keys("ph_sortiment:api:")
         self.assertEqual(get_produkt_by_path_field_api(p.name), {})
+
+
+class TestPHProduktKalkulation(FrappeTestCase):
+    """Backend-Lücken 04.11.: EK mit Gültigkeit, Kalkulationsfaktor, Variantenmatrix, Abverkauf."""
+
+    def setUp(self):
+        frappe.set_user("Administrator")
+
+    def test_ek_gueltigkeit_und_vk_vorschlag(self):
+        p = produkt("Kalkglas")
+        frappe.db.set_value("PH Marke", p.marke, {"kalkulationsfaktor_promille": 2200, "vk_rundung": "auf 9er-Endung"})
+        p.append("einkaufspreise", {"listen_cent": 100000, "rabatt_promille": 400, "ab": "2026-01-01"})
+        p.append("einkaufspreise", {"listen_cent": 999999, "ab": "2099-01-01"})
+        p.save()
+        self.assertEqual(p.einkaufspreise[0].netto_ek_cent, 60000)
+        self.assertEqual(p.einkaufspreis_cent, 60000)
+        self.assertEqual(p.vk_vorschlag()["vk_cent"], 132900)
+
+    def test_variantenmatrix(self):
+        p = produkt("Variantenglas")
+        p.append("variantenpreise", {"kombination": "groesse=gross", "vk_cent": 99900})
+        p.save()
+        r = p.variante_berechnen({"groesse": "gross"})
+        self.assertIn("Option unbekannt: groesse=gross", r["fehler"])
+        p.append("variantenpreise", {"kombination": "ohne-gleich"})
+        with self.assertRaises(frappe.ValidationError):
+            p.save()
+
+    def test_abverkauf_nur_ausstellungsstueck(self):
+        p = produkt("Abverkaufglas")
+        p.abverkauf = 1
+        with self.assertRaises(frappe.ValidationError):
+            p.save()

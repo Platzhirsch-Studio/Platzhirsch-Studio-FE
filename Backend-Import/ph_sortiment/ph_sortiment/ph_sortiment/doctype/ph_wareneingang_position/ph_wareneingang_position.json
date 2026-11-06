@@ -10,6 +10,8 @@
   "bezeichnung",
   "menge_erwartet",
   "menge_erhalten",
+  "differenz",
+  "mengen_abweichung",
   "zustand",
   "foto",
   "seriennummer",
@@ -55,6 +57,22 @@
    "default": "0"
   },
   {
+   "fieldname": "differenz",
+   "fieldtype": "Int",
+   "label": "Differenz",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "mengen_abweichung",
+   "fieldtype": "Select",
+   "label": "Mengenabweichung",
+   "options": "keine\nUnterlieferung\nUeberlieferung",
+   "default": "keine",
+   "read_only": 1
+  },
+  {
    "fieldname": "zustand",
    "fieldtype": "Select",
    "label": "Zustand",
@@ -91,7 +109,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Sortiment",
  "name": "PH Wareneingang Position",

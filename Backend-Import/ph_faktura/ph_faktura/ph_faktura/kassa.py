@@ -27,7 +27,7 @@ MARKER = "ph_faktura:kassenbeleg_gebucht"
 
 def kassenbeleg_gebucht(beleg):
     """Kassenbeleg mit Auftrag/Rechnung verknüpfen; Rückgabe dict mit dem, was gebucht wurde (für Tests/Kommentar)."""
-    ergebnis = {"beleg": beleg, "rechnung": None, "zahlungsplan": None, "zahlungen": [], "hinweise": []}
+    ergebnis = {"beleg": beleg, "rechnung": None, "anzahlungsrechnung": None, "zahlungsplan": None, "zahlungen": [], "hinweise": []}
     try:
         doc = frappe.get_doc("PH Kassenbeleg", beleg)
     except Exception:  # noqa: BLE001
@@ -37,11 +37,11 @@ def kassenbeleg_gebucht(beleg):
         if _bereits_verarbeitet(doc):
             ergebnis["hinweise"].append("bereits verarbeitet")
             return ergebnis
-        arten = {p.art for p in (doc.get("positionen") or [])}
+        arten = {p.art for p in (doc.get("positionen") or [])} | {p.get("ursprungsart") for p in (doc.get("positionen") or []) if p.art == "Storno"}
         if not (arten & set(KASSA_ARTEN)):
             return ergebnis
         if doc.get("belegart") == "Stornobeleg":
-            ergebnis["hinweise"].append("Stornobeleg: Rückbuchung erfolgt über PH Zahlung.on_cancel/Erstattung")
+            _storno(doc, ergebnis)
             _kommentar(doc, ergebnis)
             return ergebnis
         zahlungen = _zahlungen_des_belegs(doc)
@@ -141,6 +141,10 @@ def _auf_auftrag(doc, zahlungen, betrag, datum, ergebnis):
         ergebnis["hinweise"].append(_("kein Zahlungsplan – Zahlung bleibt als Guthaben am Auftrag (PH Zahlung Bezug Kassenbeleg)"))
         _stand(ab)
         return None
+    if not zeile.rechnung and zeile.art == "Anzahlung" and _ar_automatisch():
+        ar = _anzahlungsrechnung_stellen(ab, zeile, ergebnis)
+        if ar:
+            zeile.rechnung = ar
     if zeile.rechnung and frappe.db.exists("PH Rechnung", {"name": zeile.rechnung, "docstatus": 1}):
         # Anzahlungsrechnung existiert: dort verbuchen, Stand ergibt sich aus der Rechnung
         ergebnis["rechnung"] = zeile.rechnung
@@ -181,3 +185,72 @@ def offene_anzahlung(auftrag):
         if z.art in KASSA_ARTEN:
             out.append({"zeile": z.name, "art": z.art, "betrag_cent": cint(z.betrag_cent), "bezahlt_cent": cint(z.bezahlt_cent), "offen_cent": max(cint(z.betrag_cent) - cint(z.bezahlt_cent), 0), "status": z.status, "rechnung": z.rechnung})
     return out
+
+
+def _ar_automatisch():
+    """Kassa-Einstellung „Anzahlungsrechnung automatisch stellen“ (Standard an; ph_kassa optional)."""
+    try:
+        if frappe.db.exists("DocType", "PH Kassa Einstellungen"):
+            wert = frappe.db.get_single_value("PH Kassa Einstellungen", "anzahlungsrechnung_automatisch")
+            return wert is None or bool(cint(wert))
+    except Exception:  # noqa: BLE001
+        pass
+    return True
+
+
+def _anzahlungsrechnung_stellen(ab, zeile, ergebnis):
+    """Kassa-Anzahlung ohne Anzahlungsrechnung: Anzahlungsrechnung anlegen und stellen (USt mit Vereinnahmung,
+    § 19 Abs 2 Z 1 lit a UStG; Abzug in der Schlussrechnung braucht sie). Fehlt etwas (Anschrift), bleibt der
+    Entwurf liegen und die Kassa zeigt einen Hinweis."""
+    try:
+        name = ab.anzahlungsrechnungen_anlegen(zeile=zeile.name, ignore_permissions=True)
+        name = name[0] if isinstance(name, list) else name
+        re = frappe.get_doc("PH Rechnung", name)
+        re.flags.ignore_permissions = True
+        try:
+            re.save()
+            re.submit()
+        except frappe.ValidationError as e:
+            ergebnis["hinweise"].append(_("Anzahlungsrechnung {0} als Entwurf angelegt – nicht gestellt: {1}").format(name, str(e)[:160]))
+            return None
+        ergebnis["anzahlungsrechnung"] = re.name
+        ergebnis["hinweise"].append(_("Anzahlungsrechnung {0} gestellt").format(re.name))
+        return re.name
+    except Exception:  # noqa: BLE001
+        frappe.log_error(title=f"ph_faktura.kassa: Anzahlungsrechnung zu {ab.name}")
+        ergebnis["hinweise"].append(_("Anzahlungsrechnung fehlt – in Faktura erstellen (USt mit Vereinnahmung fällig)."))
+        return None
+
+
+def _storno(doc, ergebnis):
+    """Stornobeleg einer Kassa-Anzahlung/-Zahlung: Zahlung auf der Rechnung negativ gegenbuchen (UVA-Ist sinkt),
+    Zahlungsplan-Zeile zurücksetzen, Auftragsstand neu rechnen. Idempotent über den Hinweis „KB-Storno:<beleg>“."""
+    alt = frappe.get_doc("PH Kassenbeleg", doc.storno_von) if doc.get("storno_von") else None
+    betrag = -sum(cint(p.brutto_cent) for p in doc.positionen if (p.get("ursprungsart") or p.art) in KASSA_ARTEN)
+    if not alt or betrag <= 0:
+        ergebnis["hinweise"].append(_("Stornobeleg ohne Original oder Betrag"))
+        return
+    zeile_name = alt.get("zahlungsplan_position")
+    rechnung = alt.get("rechnung")
+    if not rechnung and zeile_name:
+        rechnung = frappe.db.get_value("PH Zahlungsplan", zeile_name, "rechnung")
+    marker = f"KB-Storno:{alt.name}"
+    if rechnung and frappe.db.exists("PH Rechnung", {"name": rechnung, "docstatus": 1}):
+        re = frappe.get_doc("PH Rechnung", rechnung)
+        if not any((r.hinweis or "") == marker for r in re.zahlungen) and re.status != "Storniert":
+            zl.zahlung_auf_rechnung(re, -betrag, "Bar", getdate(doc.get("datum_uhrzeit")), zahlung_name=None, hinweis=marker)
+            re.reload()
+            if cint(re.bezahlt_cent) <= 0 and re.status in ("Bezahlt", "Teilbezahlt"):
+                re.db_set({"status": "Gestellt", "workflow_state": "PH Gestellt", "bezahlt_am": None})
+            elif cint(re.offen_cent) > 0 and re.status == "Bezahlt":
+                re.db_set({"status": "Teilbezahlt", "workflow_state": "PH Teilbezahlt", "bezahlt_am": None})
+        ergebnis["rechnung"] = rechnung
+    if zeile_name and frappe.db.exists("PH Zahlungsplan", zeile_name):
+        z = frappe.db.get_value("PH Zahlungsplan", zeile_name, ["bezahlt_cent", "rechnung"], as_dict=True)
+        if not (rechnung and frappe.db.exists("PH Rechnung", {"name": rechnung, "docstatus": 1})):
+            neu = max(cint(z.bezahlt_cent) - betrag, 0)
+            frappe.db.set_value("PH Zahlungsplan", zeile_name, {"bezahlt_cent": neu, "status": "In Rechnung" if z.rechnung else "Offen"}, update_modified=False)
+        ergebnis["zahlungsplan"] = zeile_name
+    if alt.get("auftrag") and frappe.db.exists("PH Auftragsbestaetigung", alt.auftrag):
+        _stand(frappe.get_doc("PH Auftragsbestaetigung", alt.auftrag))
+    ergebnis["hinweise"].append(_("Storno {0}: {1} Cent auf Rechnung/Zahlungsplan zurückgebucht").format(alt.name, betrag))

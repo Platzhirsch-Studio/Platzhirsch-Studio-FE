@@ -11,6 +11,8 @@
   "herstellerbestellung",
   "lieferant",
   "kommission",
+  "kontakt",
+  "projekt",
   "status",
   "cb_kopf",
   "datum",
@@ -24,6 +26,10 @@
   "reklamation",
   "reklamation_text",
   "servicefall_hinweis",
+  "servicefall_ref",
+  "regress_ref",
+  "unterlieferung",
+  "ueberlieferung",
   "cb_zustand",
   "lagerort_text",
   "fotos",
@@ -76,6 +82,19 @@
    "fieldtype": "Data",
    "label": "Kommission",
    "fetch_from": "herstellerbestellung.kommission",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kontakt",
+   "fieldtype": "Link",
+   "label": "Kunde (aus Bezug)",
+   "options": "PH Kontakt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Data",
+   "label": "Projekt (aus Bezug)",
    "read_only": 1
   },
   {
@@ -159,6 +178,30 @@
    "description": "Link auf PH Servicefall ergänzt ph_service per Custom Field."
   },
   {
+   "fieldname": "servicefall_ref",
+   "fieldtype": "Data",
+   "label": "Servicefall",
+   "read_only": 1
+  },
+  {
+   "fieldname": "regress_ref",
+   "fieldtype": "Data",
+   "label": "Lieferantenregress",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unterlieferung",
+   "fieldtype": "Int",
+   "label": "Positionen mit Unterlieferung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ueberlieferung",
+   "fieldtype": "Int",
+   "label": "Positionen mit Überlieferung",
+   "read_only": 1
+  },
+  {
    "fieldname": "cb_zustand",
    "fieldtype": "Column Break"
   },
@@ -192,7 +235,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Sortiment",
  "name": "PH Wareneingang",
@@ -292,6 +335,81 @@
    "export": 1,
    "report": 1,
    "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Projekte Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Service Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
   }
  ],
  "track_changes": 1,

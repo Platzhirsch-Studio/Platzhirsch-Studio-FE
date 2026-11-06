@@ -10,6 +10,9 @@
   "beschreibung",
   "foto",
   "frist",
+  "verantwortlich",
+  "verantwortlich_ref",
+  "erinnert_am",
   "status",
   "servicefall_ref",
   "behoben_am"
@@ -38,6 +41,25 @@
    "columns": 2
   },
   {
+   "fieldname": "verantwortlich",
+   "fieldtype": "Select",
+   "label": "Verantwortlich",
+   "options": "\nStudio\nLieferant\nFremdgewerk",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "verantwortlich_ref",
+   "fieldtype": "Data",
+   "label": "Verantwortlich (Name/Beleg)",
+   "description": "Lieferant, PH Fremdgewerk oder Benutzer"
+  },
+  {
+   "fieldname": "erinnert_am",
+   "fieldtype": "Date",
+   "label": "Zuletzt erinnert",
+   "read_only": 1
+  },
+  {
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
@@ -62,7 +84,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Projekte",
  "name": "PH Montage Mangel",

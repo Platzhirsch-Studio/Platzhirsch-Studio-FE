@@ -12,6 +12,10 @@
   "status",
   "lagerort",
   "datum",
+  "inventur_art",
+  "anlass",
+  "plaetze",
+  "geschaeftsjahr",
   "cb_kopf",
   "nur_ausstellungsstuecke",
   "gezaehlt_von",
@@ -26,6 +30,7 @@
   "differenz_positionen",
   "differenz_summe",
   "bemerkung",
+  "gezaehlte_plaetze",
   "sb_system",
   "idempotency_key",
   "quelle"
@@ -73,6 +78,36 @@
    "label": "Stichtag",
    "reqd": 1,
    "in_list_view": 1
+  },
+  {
+   "fieldname": "inventur_art",
+   "fieldtype": "Select",
+   "label": "Inventur-Art",
+   "options": "Stichtag\nTeilinventur\nAnlass",
+   "default": "Stichtag",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Stichtag = ganzer Lagerort; Teilinventur = permanente/rollierende Inventur einzelner Plätze; Anlass = Sonderzählung (Schaden, Umbau)."
+  },
+  {
+   "fieldname": "anlass",
+   "fieldtype": "Data",
+   "label": "Anlass",
+   "depends_on": "eval:doc.inventur_art=='Anlass'",
+   "mandatory_depends_on": "eval:doc.inventur_art=='Anlass'"
+  },
+  {
+   "fieldname": "plaetze",
+   "fieldtype": "Small Text",
+   "label": "Plätze (einer je Zeile)",
+   "depends_on": "eval:doc.inventur_art!='Stichtag'",
+   "description": "Nur diese Plätze werden gezählt; „(ohne Platz)“ = Bestand ohne Platz. Button „Nächste Plätze vorschlagen“."
+  },
+  {
+   "fieldname": "geschaeftsjahr",
+   "fieldtype": "Data",
+   "label": "Geschäftsjahr",
+   "read_only": 1
   },
   {
    "fieldname": "cb_kopf",
@@ -152,6 +187,12 @@
    "label": "Bemerkung"
   },
   {
+   "fieldname": "gezaehlte_plaetze",
+   "fieldtype": "Small Text",
+   "label": "Gezählte Plätze (Abdeckung)",
+   "read_only": 1
+  },
+  {
    "fieldname": "sb_system",
    "fieldtype": "Section Break",
    "label": "System",
@@ -181,7 +222,7 @@
    "group": "Bewegungen"
   }
  ],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 15:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Logistik",
  "name": "PH Inventur",

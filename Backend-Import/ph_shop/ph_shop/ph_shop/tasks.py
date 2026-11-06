@@ -33,6 +33,8 @@ def offene_checkouts_pruefen():
 def _checkout_pruefen(dt, name):
     doc = frappe.get_doc(dt, name)
     doc.flags.ignore_permissions = True
+    if dt == "PH Bestellung" and doc.get("bestellart") == "Telefon" and (not doc.zahlungslink_gueltig_bis or get_datetime(doc.zahlungslink_gueltig_bis) > now_datetime()):
+        return  # Telefonbestellung: Frist läuft erst ab dem Zahlungslink (gueltig_bis)
     session = stripe_client.session_abrufen(doc.stripe_session) if doc.stripe_session else None
     if session and session.get("payment_status") in ("paid", "no_payment_required"):
         doc.zahlung_eingegangen(dict(session), bool(session.get("livemode")))
@@ -66,6 +68,27 @@ def _abholfrist_abgelaufen(name):
     if frappe.db.exists("ToDo", {"reference_type": "PH Bestellung", "reference_name": name, "status": "Open"}):
         return
     mails.aufgabe(_("Bestellung {0}: Abholfrist {1} verstrichen – Kunde kontaktieren oder stornieren.").format(name, doc.abholung_bis), "PH Bestellung", name, rolle="PH Shop Mitarbeiter", prioritaet="Medium")
+
+
+def automatisch_abschliessen():
+    """Täglich 06:00: versendet/abgeholt seit auto_abschliessen_tage (Standard 30) ohne offenen Widerruf → abgeschlossen
+    (Lücke 10-konzept-shop §10 „Automatisches Abschließen nach Widerrufsfrist“). 0 = aus."""
+    tage = cint(frappe.get_cached_value("PH Shop Einstellungen", None, "auto_abschliessen_tage"))
+    if tage <= 0:
+        return
+    grenze = add_days(now_datetime(), -tage)
+    for status, feld in (("versendet", "versendet_am"), ("abgeholt", "abgeholt_am")):
+        for name in frappe.get_all("PH Bestellung", {"status": status, feld: ("<", grenze)}, pluck="name", limit=300):
+            _sicher(_abschliessen, name)
+
+
+def _abschliessen(name):
+    doc = frappe.get_doc("PH Bestellung", name)
+    if doc.widerruf and frappe.db.get_value("PH Widerruf", doc.widerruf, "status") not in ("Abgelehnt", "Erstattet"):
+        return
+    if frappe.db.exists("PH Retoure", {"bestellung": name, "status": ("not in", ("Erstattet", "Abgelehnt"))}):
+        return
+    st.setzen(doc, "abgeschlossen", _("automatisch nach Widerrufsfrist"), "System")
 
 
 def _gutschein_abgelaufen(name):
@@ -102,3 +125,10 @@ def ereignisse_aufraeumen():
     from ph_shop.ph_shop.doctype.ph_stripe_ereignis.ph_stripe_ereignis import payload_kuerzen
 
     _sicher(payload_kuerzen)
+
+
+def wunschlisten_aufraeumen():
+    """Täglich: abgelaufene Wunschlisten löschen (Speicherfrist src/lib/wunschliste/config.js retentionMonths)."""
+    from ph_shop.ph_shop.doctype.ph_wunschliste.ph_wunschliste import abgelaufene_loeschen
+
+    _sicher(abgelaufene_loeschen)

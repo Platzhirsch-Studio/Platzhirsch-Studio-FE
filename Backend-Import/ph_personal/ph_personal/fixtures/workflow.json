@@ -9,24 +9,128 @@
   "send_email_alert": 0,
   "workflow_state_field": "workflow_state",
   "states": [
-   {"state": "PH Entwurf", "doc_status": "0", "allow_edit": "PH Personal Mitarbeiter", "update_field": "status", "update_value": "Entwurf", "is_optional_state": 0},
-   {"state": "PH Aktiv", "doc_status": "0", "allow_edit": "PH Personal Mitarbeiter", "update_field": "status", "update_value": "Aktiv", "is_optional_state": 0},
-   {"state": "PH Pausiert", "doc_status": "0", "allow_edit": "PH Personal Mitarbeiter", "update_field": "status", "update_value": "Pausiert", "is_optional_state": 0},
-   {"state": "PH Besetzt", "doc_status": "0", "allow_edit": "PH Personal Leitung", "update_field": "status", "update_value": "Besetzt", "is_optional_state": 0},
-   {"state": "PH Archiviert", "doc_status": "0", "allow_edit": "PH Personal Leitung", "update_field": "status", "update_value": "Archiviert", "is_optional_state": 0}
+   {
+    "state": "PH Entwurf",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Entwurf",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Aktiv",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Aktiv",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Pausiert",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Pausiert",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Besetzt",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Leitung",
+    "update_field": "status",
+    "update_value": "Besetzt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Archiviert",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Leitung",
+    "update_field": "status",
+    "update_value": "Archiviert",
+    "is_optional_state": 0
+   }
   ],
   "transitions": [
-   {"state": "PH Entwurf", "action": "Veröffentlichen", "next_state": "PH Aktiv", "allowed": "PH Personal Leitung", "allow_self_approval": 1, "condition": "doc.entgelt_vollstaendig and doc.stellenbeschreibung and doc.aufgaben_de and doc.anforderungen_de"},
-   {"state": "PH Entwurf", "action": "Archivieren", "next_state": "PH Archiviert", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Aktiv", "action": "Pausieren", "next_state": "PH Pausiert", "allowed": "PH Personal Mitarbeiter", "allow_self_approval": 1},
-   {"state": "PH Aktiv", "action": "Als besetzt schließen", "next_state": "PH Besetzt", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Aktiv", "action": "Archivieren", "next_state": "PH Archiviert", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Pausiert", "action": "Wieder aktivieren", "next_state": "PH Aktiv", "allowed": "PH Personal Leitung", "allow_self_approval": 1, "condition": "doc.entgelt_vollstaendig"},
-   {"state": "PH Pausiert", "action": "Als besetzt schließen", "next_state": "PH Besetzt", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Pausiert", "action": "Archivieren", "next_state": "PH Archiviert", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Besetzt", "action": "Archivieren", "next_state": "PH Archiviert", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Besetzt", "action": "Wieder aktivieren", "next_state": "PH Aktiv", "allowed": "PH Personal Leitung", "allow_self_approval": 1, "condition": "doc.entgelt_vollstaendig"},
-   {"state": "PH Archiviert", "action": "Zurück auf Entwurf", "next_state": "PH Entwurf", "allowed": "PH Personal Leitung", "allow_self_approval": 1}
+   {
+    "state": "PH Entwurf",
+    "action": "Veröffentlichen",
+    "next_state": "PH Aktiv",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1,
+    "condition": "doc.entgelt_vollstaendig and doc.stellenbeschreibung and doc.aufgaben_de and doc.anforderungen_de"
+   },
+   {
+    "state": "PH Entwurf",
+    "action": "Archivieren",
+    "next_state": "PH Archiviert",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Aktiv",
+    "action": "Pausieren",
+    "next_state": "PH Pausiert",
+    "allowed": "PH Personal Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Aktiv",
+    "action": "Als besetzt schließen",
+    "next_state": "PH Besetzt",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Aktiv",
+    "action": "Archivieren",
+    "next_state": "PH Archiviert",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Pausiert",
+    "action": "Wieder aktivieren",
+    "next_state": "PH Aktiv",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1,
+    "condition": "doc.entgelt_vollstaendig"
+   },
+   {
+    "state": "PH Pausiert",
+    "action": "Als besetzt schließen",
+    "next_state": "PH Besetzt",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Pausiert",
+    "action": "Archivieren",
+    "next_state": "PH Archiviert",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Besetzt",
+    "action": "Archivieren",
+    "next_state": "PH Archiviert",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Besetzt",
+    "action": "Wieder aktivieren",
+    "next_state": "PH Aktiv",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1,
+    "condition": "doc.entgelt_vollstaendig"
+   },
+   {
+    "state": "PH Archiviert",
+    "action": "Zurück auf Entwurf",
+    "next_state": "PH Entwurf",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   }
   ]
  },
  {
@@ -39,29 +143,200 @@
   "send_email_alert": 0,
   "workflow_state_field": "workflow_state",
   "states": [
-   {"state": "PH Eingegangen", "doc_status": "0", "allow_edit": "PH Personal Mitarbeiter", "update_field": "status", "update_value": "Eingegangen", "is_optional_state": 0},
-   {"state": "PH Gesichtet", "doc_status": "0", "allow_edit": "PH Personal Mitarbeiter", "update_field": "status", "update_value": "Gesichtet", "is_optional_state": 0},
-   {"state": "PH Gespraech", "doc_status": "0", "allow_edit": "PH Personal Mitarbeiter", "update_field": "status", "update_value": "Gespraech", "is_optional_state": 0},
-   {"state": "PH Angebot", "doc_status": "0", "allow_edit": "PH Personal Leitung", "update_field": "status", "update_value": "Angebot", "is_optional_state": 0},
-   {"state": "PH Eingestellt", "doc_status": "0", "allow_edit": "PH Personal Leitung", "update_field": "status", "update_value": "Eingestellt", "is_optional_state": 0},
-   {"state": "PH Abgesagt", "doc_status": "0", "allow_edit": "PH Personal Leitung", "update_field": "status", "update_value": "Abgesagt", "is_optional_state": 0},
-   {"state": "PH Zurueckgezogen", "doc_status": "0", "allow_edit": "PH Personal Leitung", "update_field": "status", "update_value": "Zurueckgezogen", "is_optional_state": 0}
+   {
+    "state": "PH Eingegangen",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Eingegangen",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Gesichtet",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Gesichtet",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Gespraech",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Mitarbeiter",
+    "update_field": "status",
+    "update_value": "Gespraech",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Angebot",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Leitung",
+    "update_field": "status",
+    "update_value": "Angebot",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Eingestellt",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Leitung",
+    "update_field": "status",
+    "update_value": "Eingestellt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgesagt",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Leitung",
+    "update_field": "status",
+    "update_value": "Abgesagt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Zurueckgezogen",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Leitung",
+    "update_field": "status",
+    "update_value": "Zurueckgezogen",
+    "is_optional_state": 0
+   }
   ],
   "transitions": [
-   {"state": "PH Eingegangen", "action": "Sichten", "next_state": "PH Gesichtet", "allowed": "PH Personal Mitarbeiter", "allow_self_approval": 1},
-   {"state": "PH Eingegangen", "action": "Absagen", "next_state": "PH Abgesagt", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Eingegangen", "action": "Zurückziehen", "next_state": "PH Zurueckgezogen", "allowed": "PH Personal Mitarbeiter", "allow_self_approval": 1},
-   {"state": "PH Gesichtet", "action": "Termin vereinbaren", "next_state": "PH Gespraech", "allowed": "PH Personal Mitarbeiter", "allow_self_approval": 1},
-   {"state": "PH Gesichtet", "action": "Absagen", "next_state": "PH Abgesagt", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Gesichtet", "action": "Zurückziehen", "next_state": "PH Zurueckgezogen", "allowed": "PH Personal Mitarbeiter", "allow_self_approval": 1},
-   {"state": "PH Gespraech", "action": "Angebot erstellen", "next_state": "PH Angebot", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Gespraech", "action": "Absagen", "next_state": "PH Abgesagt", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Gespraech", "action": "Zurückziehen", "next_state": "PH Zurueckgezogen", "allowed": "PH Personal Mitarbeiter", "allow_self_approval": 1},
-   {"state": "PH Angebot", "action": "Einstellen", "next_state": "PH Eingestellt", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Angebot", "action": "Absagen", "next_state": "PH Abgesagt", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Angebot", "action": "Zurückziehen", "next_state": "PH Zurueckgezogen", "allowed": "PH Personal Mitarbeiter", "allow_self_approval": 1},
-   {"state": "PH Abgesagt", "action": "Zurück auf Gesichtet", "next_state": "PH Gesichtet", "allowed": "PH Personal Leitung", "allow_self_approval": 1, "condition": "not doc.pseudonymisiert"},
-   {"state": "PH Zurueckgezogen", "action": "Zurück auf Gesichtet", "next_state": "PH Gesichtet", "allowed": "PH Personal Leitung", "allow_self_approval": 1, "condition": "not doc.pseudonymisiert"}
+   {
+    "state": "PH Eingegangen",
+    "action": "Sichten",
+    "next_state": "PH Gesichtet",
+    "allowed": "PH Personal Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Eingegangen",
+    "action": "Absagen",
+    "next_state": "PH Abgesagt",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Eingegangen",
+    "action": "Zurückziehen",
+    "next_state": "PH Zurueckgezogen",
+    "allowed": "PH Personal Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gesichtet",
+    "action": "Termin vereinbaren",
+    "next_state": "PH Gespraech",
+    "allowed": "PH Personal Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gesichtet",
+    "action": "Absagen",
+    "next_state": "PH Abgesagt",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gesichtet",
+    "action": "Zurückziehen",
+    "next_state": "PH Zurueckgezogen",
+    "allowed": "PH Personal Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gespraech",
+    "action": "Angebot erstellen",
+    "next_state": "PH Angebot",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gespraech",
+    "action": "Absagen",
+    "next_state": "PH Abgesagt",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gespraech",
+    "action": "Zurückziehen",
+    "next_state": "PH Zurueckgezogen",
+    "allowed": "PH Personal Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Angebot",
+    "action": "Einstellen",
+    "next_state": "PH Eingestellt",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Angebot",
+    "action": "Absagen",
+    "next_state": "PH Abgesagt",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Angebot",
+    "action": "Zurückziehen",
+    "next_state": "PH Zurueckgezogen",
+    "allowed": "PH Personal Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Abgesagt",
+    "action": "Zurück auf Gesichtet",
+    "next_state": "PH Gesichtet",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1,
+    "condition": "not doc.pseudonymisiert"
+   },
+   {
+    "state": "PH Zurueckgezogen",
+    "action": "Zurück auf Gesichtet",
+    "next_state": "PH Gesichtet",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1,
+    "condition": "not doc.pseudonymisiert"
+   },
+   {
+    "state": "PH Gesichtet",
+    "action": "Zurück auf Eingegangen",
+    "next_state": "PH Eingegangen",
+    "allowed": "PH Personal Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Eingegangen",
+    "action": "Termin vereinbaren",
+    "next_state": "PH Gespraech",
+    "allowed": "PH Personal Mitarbeiter",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Angebot",
+    "action": "Zurück auf Gespräch",
+    "next_state": "PH Gespraech",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Gespraech",
+    "action": "Einstellen",
+    "next_state": "PH Eingestellt",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Eingestellt",
+    "action": "Nicht angetreten",
+    "next_state": "PH Zurueckgezogen",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1,
+    "condition": "not doc.pseudonymisiert"
+   }
   ]
  },
  {
@@ -74,17 +349,117 @@
   "send_email_alert": 0,
   "workflow_state_field": "workflow_state",
   "states": [
-   {"state": "PH Beantragt", "doc_status": "0", "allow_edit": "PH Personal Selbstservice", "update_field": "status", "update_value": "Beantragt", "is_optional_state": 0},
-   {"state": "PH Genehmigt", "doc_status": "0", "allow_edit": "PH Personal Leitung", "update_field": "status", "update_value": "Genehmigt", "is_optional_state": 0},
-   {"state": "PH Abgelehnt", "doc_status": "0", "allow_edit": "PH Personal Leitung", "update_field": "status", "update_value": "Abgelehnt", "is_optional_state": 0},
-   {"state": "PH Storniert", "doc_status": "0", "allow_edit": "PH Personal Leitung", "update_field": "status", "update_value": "Storniert", "is_optional_state": 0}
+   {
+    "state": "PH Beantragt",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Selbstservice",
+    "update_field": "status",
+    "update_value": "Beantragt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Genehmigt",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Leitung",
+    "update_field": "status",
+    "update_value": "Genehmigt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Abgelehnt",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Leitung",
+    "update_field": "status",
+    "update_value": "Abgelehnt",
+    "is_optional_state": 0
+   },
+   {
+    "state": "PH Storniert",
+    "doc_status": "0",
+    "allow_edit": "PH Personal Leitung",
+    "update_field": "status",
+    "update_value": "Storniert",
+    "is_optional_state": 0
+   }
   ],
   "transitions": [
-   {"state": "PH Beantragt", "action": "Genehmigen", "next_state": "PH Genehmigt", "allowed": "PH Personal Leitung", "allow_self_approval": 0},
-   {"state": "PH Beantragt", "action": "Ablehnen", "next_state": "PH Abgelehnt", "allowed": "PH Personal Leitung", "allow_self_approval": 0},
-   {"state": "PH Beantragt", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Personal Selbstservice", "allow_self_approval": 1},
-   {"state": "PH Genehmigt", "action": "Stornieren", "next_state": "PH Storniert", "allowed": "PH Personal Leitung", "allow_self_approval": 1},
-   {"state": "PH Abgelehnt", "action": "Erneut beantragen", "next_state": "PH Beantragt", "allowed": "PH Personal Selbstservice", "allow_self_approval": 1}
+   {
+    "state": "PH Beantragt",
+    "action": "Genehmigen",
+    "next_state": "PH Genehmigt",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1,
+    "condition": "frappe.session.user != frappe.db.get_value(\"PH Mitarbeiter\", doc.mitarbeiter, \"user\")"
+   },
+   {
+    "state": "PH Beantragt",
+    "action": "Ablehnen",
+    "next_state": "PH Abgelehnt",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1,
+    "condition": "frappe.session.user != frappe.db.get_value(\"PH Mitarbeiter\", doc.mitarbeiter, \"user\")"
+   },
+   {
+    "state": "PH Beantragt",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Personal Selbstservice",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Genehmigt",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Abgelehnt",
+    "action": "Erneut beantragen",
+    "next_state": "PH Beantragt",
+    "allowed": "PH Personal Selbstservice",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "PH Beantragt",
+    "action": "Genehmigen",
+    "next_state": "PH Genehmigt",
+    "allowed": "PH Geschäftsführung",
+    "allow_self_approval": 1,
+    "condition": "frappe.session.user != frappe.db.get_value(\"PH Mitarbeiter\", doc.mitarbeiter, \"user\")"
+   },
+   {
+    "state": "PH Beantragt",
+    "action": "Ablehnen",
+    "next_state": "PH Abgelehnt",
+    "allowed": "PH Geschäftsführung",
+    "allow_self_approval": 1,
+    "condition": "frappe.session.user != frappe.db.get_value(\"PH Mitarbeiter\", doc.mitarbeiter, \"user\")"
+   },
+   {
+    "state": "PH Genehmigt",
+    "action": "Wieder öffnen",
+    "next_state": "PH Beantragt",
+    "allowed": "PH Personal Leitung",
+    "allow_self_approval": 1,
+    "condition": "str(doc.von) > frappe.utils.now()[:10]"
+   },
+   {
+    "state": "PH Genehmigt",
+    "action": "Stornieren",
+    "next_state": "PH Storniert",
+    "allowed": "PH Personal Selbstservice",
+    "allow_self_approval": 1,
+    "condition": "str(doc.von) > frappe.utils.now()[:10]"
+   },
+   {
+    "state": "PH Storniert",
+    "action": "Erneut beantragen",
+    "next_state": "PH Beantragt",
+    "allowed": "PH Personal Selbstservice",
+    "allow_self_approval": 1,
+    "condition": "str(doc.von) > frappe.utils.now()[:10]"
+   }
   ]
  }
 ]

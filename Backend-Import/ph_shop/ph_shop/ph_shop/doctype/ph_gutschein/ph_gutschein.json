@@ -12,6 +12,7 @@
   "titel",
   "status",
   "art",
+  "ust_satz_promille",
   "test",
   "cb_kopf",
   "wert_cent",
@@ -39,6 +40,7 @@
   "sb_sperre",
   "gesperrt_am",
   "sperrgrund",
+  "sperrgrund_art",
   "cb_sperre",
   "hinweis",
   "ersetzt_durch",
@@ -50,6 +52,8 @@
   "cb_kaeufer",
   "gutschein_bestellung",
   "zahlung",
+  "ausgabe_beleg_doctype",
+  "ausgabe_beleg",
   "livemode",
   "tb_system",
   "idempotency_key",
@@ -97,10 +101,18 @@
    "fieldname": "art",
    "fieldtype": "Select",
    "label": "Art",
-   "options": "Mehrzweck\nEinzweck",
+   "options": "Mehrzweck\nEinzweck\nRabatt",
    "default": "Mehrzweck",
    "reqd": 1,
-   "description": "Mehrzweck: USt entsteht erst bei Einlösung (Inhaber/Steuerberater 03.11.2026)."
+   "description": "Mehrzweck: Zahlungsmittel, kein Umsatz beim Verkauf. Einzweck: USt beim Verkauf (Satz Pflicht). Rabatt: mindert das Entgelt beim Einlösen (kein Zahlungsmittel, nicht verkäuflich)."
+  },
+  {
+   "fieldname": "ust_satz_promille",
+   "fieldtype": "Int",
+   "label": "USt-Satz (Einzweck, ×100)",
+   "depends_on": "eval:doc.art=='Einzweck'",
+   "description": "Pflicht bei Einzweck: 2000 = 20 %, 1000 = 10 %. Kein stiller Standard.",
+   "mandatory_depends_on": "eval:doc.art=='Einzweck'"
   },
   {
    "fieldname": "test",
@@ -191,7 +203,7 @@
    "fieldname": "kanal_ausgabe",
    "fieldtype": "Select",
    "label": "Ausgabekanal",
-   "options": "Online\nShowroom\nErsatz",
+   "options": "Online\nShowroom\nErsatz\nKassa",
    "default": "Showroom",
    "in_standard_filter": 1
   },
@@ -284,6 +296,14 @@
    "no_copy": 1
   },
   {
+   "fieldname": "sperrgrund_art",
+   "fieldtype": "Select",
+   "label": "Sperrgrund (Katalog)",
+   "options": "\nVerlust gemeldet\nBetrugsverdacht\nZahlung storniert/Rückbuchung\nErsetzt\nVerkauf storniert\nFehlausgabe\nSonstiges",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
    "fieldname": "cb_sperre",
    "fieldtype": "Column Break"
   },
@@ -349,6 +369,22 @@
    "read_only": 1
   },
   {
+   "fieldname": "ausgabe_beleg_doctype",
+   "fieldtype": "Link",
+   "label": "Ausgabebeleg (Art)",
+   "options": "DocType",
+   "read_only": 1,
+   "description": "z. B. PH Kassenbeleg beim Verkauf im Showroom."
+  },
+  {
+   "fieldname": "ausgabe_beleg",
+   "fieldtype": "Dynamic Link",
+   "label": "Ausgabebeleg",
+   "options": "ausgabe_beleg_doctype",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
    "fieldname": "livemode",
    "fieldtype": "Check",
    "label": "Livemodus (Stripe)",
@@ -406,7 +442,7 @@
    "group": "Ersatz"
   }
  ],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 16:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Shop",
  "name": "PH Gutschein",

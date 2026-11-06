@@ -13,7 +13,17 @@
   "show_percentage_stats": 1,
   "stats_time_interval": "Monthly",
   "color": "#30373e",
-  "roles": [{"role": "PH Projekte Mitarbeiter"}, {"role": "PH Projekte Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Projekte Mitarbeiter"
+   },
+   {
+    "role": "PH Projekte Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -28,7 +38,17 @@
   "module": "PH Projekte",
   "show_percentage_stats": 0,
   "color": "#b45309",
-  "roles": [{"role": "PH Projekte Mitarbeiter"}, {"role": "PH Projekte Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Projekte Mitarbeiter"
+   },
+   {
+    "role": "PH Projekte Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -43,7 +63,17 @@
   "module": "PH Projekte",
   "show_percentage_stats": 0,
   "color": "#1d4ed8",
-  "roles": [{"role": "PH Projekte Mitarbeiter"}, {"role": "PH Projekte Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Projekte Mitarbeiter"
+   },
+   {
+    "role": "PH Projekte Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -57,7 +87,17 @@
   "module": "PH Projekte",
   "show_percentage_stats": 0,
   "color": "#b91c1c",
-  "roles": [{"role": "PH Projekte Mitarbeiter"}, {"role": "PH Projekte Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Projekte Mitarbeiter"
+   },
+   {
+    "role": "PH Projekte Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -71,7 +111,17 @@
   "module": "PH Projekte",
   "show_percentage_stats": 0,
   "color": "#b45309",
-  "roles": [{"role": "PH Projekte Mitarbeiter"}, {"role": "PH Projekte Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Projekte Mitarbeiter"
+   },
+   {
+    "role": "PH Projekte Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  },
  {
   "doctype": "Number Card",
@@ -86,6 +136,86 @@
   "module": "PH Projekte",
   "show_percentage_stats": 0,
   "color": "#8a7a66",
-  "roles": [{"role": "PH Projekte Mitarbeiter"}, {"role": "PH Projekte Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {
+    "role": "PH Projekte Mitarbeiter"
+   },
+   {
+    "role": "PH Projekte Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Projekte ueber Budget",
+  "label": "Projekte über Budget",
+  "type": "Document Type",
+  "document_type": "PH Projekt",
+  "function": "Count",
+  "filters_json": "[[\"PH Projekt\", \"kalk_ueber_budget\", \"=\", 1, false], [\"PH Projekt\", \"status\", \"in\", [\"Auftrag\", \"Bestellung\", \"Lieferung\", \"Montage\", \"Uebergabe\"], false]]",
+  "is_public": 0,
+  "is_standard": 1,
+  "module": "PH Projekte",
+  "show_percentage_stats": 0,
+  "stats_time_interval": "Monthly",
+  "color": "#b91c1c",
+  "roles": [
+   {
+    "role": "PH Projekte Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH DB1 laufende Projekte",
+  "label": "Ø DB1 laufende Projekte (%)",
+  "type": "Document Type",
+  "document_type": "PH Projekt",
+  "function": "Average",
+  "aggregate_function_based_on": "kalk_db1_prozent",
+  "filters_json": "[[\"PH Projekt\", \"status\", \"in\", [\"Auftrag\", \"Bestellung\", \"Lieferung\", \"Montage\", \"Uebergabe\"], false], [\"PH Projekt\", \"kalk_erloes_cent\", \">\", 0, false]]",
+  "is_public": 0,
+  "is_standard": 1,
+  "module": "PH Projekte",
+  "show_percentage_stats": 0,
+  "stats_time_interval": "Monthly",
+  "color": "#15803d",
+  "roles": [
+   {
+    "role": "PH Projekte Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
+ },
+ {
+  "doctype": "Number Card",
+  "name": "PH Projekte Kalkulation rot",
+  "label": "Projekte mit Ampel rot",
+  "type": "Document Type",
+  "document_type": "PH Projekt",
+  "function": "Count",
+  "filters_json": "[[\"PH Projekt\", \"kalk_ampel\", \"=\", \"rot\", false], [\"PH Projekt\", \"status\", \"in\", [\"Auftrag\", \"Bestellung\", \"Lieferung\", \"Montage\", \"Uebergabe\"], false]]",
+  "is_public": 0,
+  "is_standard": 1,
+  "module": "PH Projekte",
+  "show_percentage_stats": 0,
+  "stats_time_interval": "Monthly",
+  "color": "#b45309",
+  "roles": [
+   {
+    "role": "PH Projekte Leitung"
+   },
+   {
+    "role": "PH Geschäftsführung"
+   }
+  ]
  }
 ]

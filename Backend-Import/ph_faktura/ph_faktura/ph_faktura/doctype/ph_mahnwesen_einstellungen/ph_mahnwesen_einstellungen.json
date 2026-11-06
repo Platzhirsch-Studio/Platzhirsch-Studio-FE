@@ -25,6 +25,9 @@
   "zinsen_ab_stufe",
   "zinssatz_verbraucher_promille",
   "zinssatz_unternehmer_promille",
+  "basiszinssatz_bp",
+  "basiszinssatz_gueltig_ab",
+  "pauschale_unternehmer_cent",
   "sb_texte",
   "text1",
   "text2",
@@ -144,6 +147,24 @@
    "description": "§ 456 UGB: 9,2 Prozentpunkte über Basiszinssatz – Wert pflegen."
   },
   {
+   "fieldname": "basiszinssatz_bp",
+   "fieldtype": "Int",
+   "label": "Basiszinssatz OeNB (Basispunkte, 153 = 1,53 %)",
+   "description": "Wenn gepflegt: Unternehmer-Verzugszinsen = Basiszins + 9,2 Prozentpunkte (§ 456 UGB). Stichtage 1.1./1.7."
+  },
+  {
+   "fieldname": "basiszinssatz_gueltig_ab",
+   "fieldtype": "Date",
+   "label": "Basiszinssatz gültig ab"
+  },
+  {
+   "fieldname": "pauschale_unternehmer_cent",
+   "fieldtype": "Int",
+   "label": "Betreibungspauschale Unternehmer (Cent)",
+   "default": "4000",
+   "description": "§ 458 UGB: 40 € einmal je Forderung, nur B2B."
+  },
+  {
    "fieldname": "sb_texte",
    "fieldtype": "Section Break",
    "label": "Texte"
@@ -169,7 +190,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 08:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Faktura",
  "name": "PH Mahnwesen Einstellungen",

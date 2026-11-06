@@ -1,0 +1,434 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Eingefrorene Nachkalkulation eines Projekts bei Abschluss: Erlös, DB-Stufen, Budget/Ist je Kostenart mit Kommentarpflicht, Lernwerte Montagezeit, alle Quellen.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "projekt",
+  "status",
+  "ampel",
+  "cb_kopf",
+  "stichtag",
+  "projektart",
+  "berater",
+  "fertigstellungsgrad",
+  "sb_zahlen",
+  "erloes_cent",
+  "erloes_basis",
+  "auftragswert_cent",
+  "kosten_ist_cent",
+  "budget_auftrag_cent",
+  "budget_aktuell_cent",
+  "abweichung_cent",
+  "cb_zahlen",
+  "db1_cent",
+  "db1_prozent",
+  "db2_cent",
+  "db2_prozent",
+  "db3_cent",
+  "db3_prozent",
+  "gemeinkosten_aktiv",
+  "gemeinkosten_cent",
+  "db4_cent",
+  "db4_prozent",
+  "cb_ziel",
+  "ziel_db1",
+  "ziel_db2",
+  "ziel_db3",
+  "schwelle_prozent",
+  "sb_kostenarten",
+  "kostenarten",
+  "sb_lernwerte",
+  "lernwerte",
+  "richtwerte_uebernommen",
+  "sb_fazit",
+  "fazit",
+  "cb_fazit",
+  "abgeschlossen_von",
+  "abgeschlossen_am",
+  "sb_daten",
+  "daten_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Serie",
+   "options": "PH-NK-.YYYY.-.####",
+   "default": "PH-NK-.YYYY.-.####",
+   "hidden": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nAbgeschlossen",
+   "default": "Entwurf",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "ampel",
+   "fieldtype": "Select",
+   "label": "Ampel",
+   "options": "\ngruen\ngelb\nrot",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stichtag",
+   "fieldtype": "Date",
+   "label": "Stichtag",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "projektart",
+   "fieldtype": "Data",
+   "label": "Projektart",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "berater",
+   "fieldtype": "Link",
+   "label": "Berater",
+   "options": "User",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "fertigstellungsgrad",
+   "fieldtype": "Int",
+   "label": "Fertigstellungsgrad %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_zahlen",
+   "fieldtype": "Section Break",
+   "label": "Ergebnis"
+  },
+  {
+   "fieldname": "erloes_cent",
+   "fieldtype": "Int",
+   "label": "Erlös netto (Cent)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "erloes_basis",
+   "fieldtype": "Data",
+   "label": "Erlös-Basis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "auftragswert_cent",
+   "fieldtype": "Int",
+   "label": "Auftragswert inkl. Nachträge (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kosten_ist_cent",
+   "fieldtype": "Int",
+   "label": "Kosten Ist (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "budget_auftrag_cent",
+   "fieldtype": "Int",
+   "label": "Budget bei Auftrag (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "budget_aktuell_cent",
+   "fieldtype": "Int",
+   "label": "Budget aktuell (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abweichung_cent",
+   "fieldtype": "Int",
+   "label": "Abweichung Ist − Budget bei Auftrag (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_zahlen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "db1_cent",
+   "fieldtype": "Int",
+   "label": "DB1 (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "db1_prozent",
+   "fieldtype": "Percent",
+   "label": "DB1 %",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "db2_cent",
+   "fieldtype": "Int",
+   "label": "DB2 (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "db2_prozent",
+   "fieldtype": "Percent",
+   "label": "DB2 %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "db3_cent",
+   "fieldtype": "Int",
+   "label": "DB3 (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "db3_prozent",
+   "fieldtype": "Percent",
+   "label": "DB3 %",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "gemeinkosten_aktiv",
+   "fieldtype": "Check",
+   "label": "Gemeinkosten aktiv",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gemeinkosten_cent",
+   "fieldtype": "Int",
+   "label": "Gemeinkosten (Cent)",
+   "read_only": 1,
+   "depends_on": "eval:doc.gemeinkosten_aktiv"
+  },
+  {
+   "fieldname": "db4_cent",
+   "fieldtype": "Int",
+   "label": "DB4 / Ergebnis nach Gemeinkosten (Cent)",
+   "read_only": 1,
+   "depends_on": "eval:doc.gemeinkosten_aktiv"
+  },
+  {
+   "fieldname": "db4_prozent",
+   "fieldtype": "Percent",
+   "label": "DB4 %",
+   "read_only": 1,
+   "depends_on": "eval:doc.gemeinkosten_aktiv"
+  },
+  {
+   "fieldname": "cb_ziel",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ziel_db1",
+   "fieldtype": "Percent",
+   "label": "Ziel DB1 %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ziel_db2",
+   "fieldtype": "Percent",
+   "label": "Ziel DB2 %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ziel_db3",
+   "fieldtype": "Percent",
+   "label": "Ziel DB3 %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "schwelle_prozent",
+   "fieldtype": "Float",
+   "label": "Kommentarpflicht ab Abweichung %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_kostenarten",
+   "fieldtype": "Section Break",
+   "label": "Abweichungsanalyse je Kostenart"
+  },
+  {
+   "fieldname": "kostenarten",
+   "fieldtype": "Table",
+   "label": "Kostenarten",
+   "options": "PH Projekt Nachkalkulation Zeile"
+  },
+  {
+   "fieldname": "sb_lernwerte",
+   "fieldtype": "Section Break",
+   "label": "Lernwerte Montagezeit"
+  },
+  {
+   "fieldname": "lernwerte",
+   "fieldtype": "Table",
+   "label": "Lernwerte",
+   "options": "PH Projekt Nachkalkulation Lernwert"
+  },
+  {
+   "fieldname": "richtwerte_uebernommen",
+   "fieldtype": "Check",
+   "label": "Richtwerte übernommen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_fazit",
+   "fieldtype": "Section Break",
+   "label": "Abschlussbesprechung"
+  },
+  {
+   "fieldname": "fazit",
+   "fieldtype": "Text Editor",
+   "label": "Fazit / Lehren"
+  },
+  {
+   "fieldname": "cb_fazit",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abgeschlossen_von",
+   "fieldtype": "Link",
+   "label": "Abgeschlossen von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abgeschlossen_am",
+   "fieldtype": "Datetime",
+   "label": "Abgeschlossen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_daten",
+   "fieldtype": "Section Break",
+   "label": "Eingefrorene Daten (alle Zahlen und Quellen)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "daten_json",
+   "fieldtype": "Code",
+   "label": "Daten (JSON)",
+   "options": "JSON",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Projekt Nachkalkulation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "stichtag",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Orange"
+  },
+  {
+   "title": "Abgeschlossen",
+   "color": "Green"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "projekt,projektart,status"
+}

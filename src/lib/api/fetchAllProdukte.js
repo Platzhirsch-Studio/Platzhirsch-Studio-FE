@@ -1,6 +1,7 @@
 // src/lib/api/fetchAllProdukte.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { isKatalogPh, katalogApi, mapPhProduktDetail } from "@/lib/backend/katalog";
 import { backofficeFetch } from "@/lib/api/http";
 import { fetchProduktDetail } from "@/lib/api/produktDetail";
 import { cleanProductName, displayBrandName } from "@/lib/content/brands";
@@ -16,7 +17,8 @@ import { cleanProductName, displayBrandName } from "@/lib/content/brands";
 // store, so every page re-downloaded it and the build timed out. Each page
 // now asks only for the slice it shows (one category, one product, a few
 // search hits), all small enough to be cached.
-const PRODUKTE_NEW_API = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.produkte_new.api`;
+// BACKEND_GENERATION (src/lib/backend/config.js): alt = platzhirsch_studio, ph = ph_sortiment.api.
+const PRODUKTE_NEW_API = katalogApi("produkte_new.api", NEW_API_BASE_URL);
 
 async function getMessage(url, { fallback, label, init }) {
   try {
@@ -118,10 +120,11 @@ async function isUnknownProductPath(path_field) {
 export async function fetchProduktNewByPathField(path_field, locale = "de") {
   if (!path_field) return null;
   if (await isUnknownProductPath(path_field)) return null;
+  // BACKEND_GENERATION ph: Material/Farbe aus merkmale (src/lib/backend/katalog.js).
   return fetchProduktDetail(
     `${PRODUKTE_NEW_API}.get_produkt_by_path_field_api?path_field=${encodeURIComponent(path_field)}&lang=${encodeURIComponent(locale)}`,
     { next: { revalidate: 3600, tags: ["products"] }, timeoutMs: 7000, budgetMs: 15000 }
-  );
+  ).then((detail) => (isKatalogPh() ? mapPhProduktDetail(detail) : detail));
 }
 
 // Just the URL parts ({path_field, kategories, modified}) of every active,

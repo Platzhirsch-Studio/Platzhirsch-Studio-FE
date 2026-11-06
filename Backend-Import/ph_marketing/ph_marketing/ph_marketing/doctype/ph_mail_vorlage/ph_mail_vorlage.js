@@ -11,3 +11,15 @@ frappe.ui.form.on("PH Mail Vorlage", {
 		});
 	},
 });
+
+// Lücken 04.11.: Testmail direkt aus der Vorlage (L14)
+frappe.ui.form.on("PH Mail Vorlage", {
+	refresh(frm) {
+		if (frm.is_new()) return;
+		frm.add_custom_button(__("Testmail senden"), () => {
+			frappe.prompt([{ fieldname: "empfaenger", fieldtype: "Data", options: "Email", label: __("An (leer = Testadresse)") }], (v) => {
+				frm.call({ method: "testmail", doc: frm.doc, args: v }).then((r) => frappe.show_alert({ message: __("Testmail an {0}", [r.message]), indicator: "green" }));
+			}, __("Testmail"), __("Senden"));
+		}, __("Aktionen"));
+	},
+});

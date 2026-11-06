@@ -1,0 +1,53 @@
+[
+ {
+  "doctype": "Workspace",
+  "name": "PH Kundenkarte",
+  "title": "PH Kundenkarte",
+  "label": "PH Kundenkarte",
+  "module": "PH Kundenkarte",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "star",
+  "indicator_color": "green",
+  "sequence_id": 12.0,
+  "for_user": "",
+  "parent_page": "",
+  "content": "[{\"id\":\"ph_kk_h1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Kundenkarte</b></span>\",\"col\":12}},{\"id\":\"ph_kk_nc1\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Aktive Kundenkarten\",\"col\":4}},{\"id\":\"ph_kk_nc2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Offene Antraege\",\"col\":4}},{\"id\":\"ph_kk_nc3\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PH Einloesungen 30 Tage\",\"col\":4}},{\"id\":\"ph_kk_c1\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Neue Karten je Monat\",\"col\":8}},{\"id\":\"ph_kk_c2\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Karten je Stufe\",\"col\":4}},{\"id\":\"ph_kk_c3\",\"type\":\"chart\",\"data\":{\"chart_name\":\"PH Einloesungen je Vorteil\",\"col\":12}},{\"id\":\"ph_kk_h2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Schnellzugriff</b></span>\",\"col\":12}},{\"id\":\"ph_kk_s1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Anträge (Kanban)\",\"col\":3}},{\"id\":\"ph_kk_s2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Neue Karte\",\"col\":3}},{\"id\":\"ph_kk_s3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Aktive Karten\",\"col\":3}},{\"id\":\"ph_kk_s4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Kundenwert\",\"col\":3}},{\"id\":\"ph_kk_s5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vorteile Nutzung\",\"col\":3}},{\"id\":\"ph_kk_s6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Karten ohne Einkauf\",\"col\":3}},{\"id\":\"ph_kk_s7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Meine Aufgaben\",\"col\":3}},{\"id\":\"ph_kk_h3\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Bereiche</b></span>\",\"col\":12}},{\"id\":\"ph_kk_card1\",\"type\":\"card\",\"data\":{\"card_name\":\"Karten und Anträge\",\"col\":4}},{\"id\":\"ph_kk_card2\",\"type\":\"card\",\"data\":{\"card_name\":\"Stufen und Vorteile\",\"col\":4}},{\"id\":\"ph_kk_card3\",\"type\":\"card\",\"data\":{\"card_name\":\"Berichte\",\"col\":4}}]",
+  "shortcuts": [
+   {"label": "Anträge (Kanban)", "link_to": "PH Kundenkarte Antrag", "type": "DocType", "doc_view": "Kanban", "kanban_board": "PH Kundenkarten Antraege", "color": "Blue"},
+   {"label": "Neue Karte", "link_to": "PH Kundenkarte", "type": "DocType", "doc_view": "New", "color": "Grey"},
+   {"label": "Aktive Karten", "link_to": "PH Kundenkarte", "type": "DocType", "doc_view": "List", "color": "Green", "stats_filter": "{\"status\": \"Aktiv\"}"},
+   {"label": "Kundenwert", "link_to": "PH Kundenwert", "type": "Report", "color": "Grey"},
+   {"label": "Vorteile Nutzung", "link_to": "PH Vorteile Nutzung", "type": "Report", "color": "Grey"},
+   {"label": "Karten ohne Einkauf", "link_to": "PH Karten ohne Einkauf 12 Monate", "type": "Report", "color": "Orange"},
+   {"label": "Meine Aufgaben", "link_to": "ToDo", "type": "DocType", "doc_view": "List", "color": "Grey"}
+  ],
+  "charts": [
+   {"chart_name": "PH Neue Karten je Monat", "label": "Neue Karten je Monat"},
+   {"chart_name": "PH Karten je Stufe", "label": "Karten je Stufe"},
+   {"chart_name": "PH Einloesungen je Vorteil", "label": "Einlösungen je Vorteil"}
+  ],
+  "number_cards": [
+   {"number_card_name": "PH Aktive Kundenkarten", "label": "Aktive Kundenkarten"},
+   {"number_card_name": "PH Offene Antraege", "label": "Offene Anträge"},
+   {"number_card_name": "PH Einloesungen 30 Tage", "label": "Einlösungen (30 Tage)"}
+  ],
+  "links": [
+   {"type": "Card Break", "label": "Karten und Anträge", "link_count": 4, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Kundenkarte", "link_to": "PH Kundenkarte", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
+   {"type": "Link", "label": "PH Kundenkarte Antrag", "link_to": "PH Kundenkarte Antrag", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
+   {"type": "Link", "label": "PH Kundenkarte Einlösung", "link_to": "PH Kundenkarte Einloesung", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Kundenkarte Ereignis (Protokoll)", "link_to": "PH Kundenkarte Ereignis", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Stufen und Vorteile", "link_count": 3, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "PH Kundenkarte Stufe", "link_to": "PH Kundenkarte Stufe", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Kundenkarte Vorteil", "link_to": "PH Kundenkarte Vorteil", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "PH Kundenkarte Einstellungen", "link_to": "PH Kundenkarte Einstellungen", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Card Break", "label": "Berichte", "link_count": 4, "hidden": 0, "onboard": 0},
+   {"type": "Link", "label": "Kundenwert", "link_to": "PH Kundenwert", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Stufenwechsel", "link_to": "PH Stufenwechsel", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Vorteile Nutzung", "link_to": "PH Vorteile Nutzung", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Karten ohne Einkauf 12 Monate", "link_to": "PH Karten ohne Einkauf 12 Monate", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1}
+  ],
+  "roles": [{"role": "PH Kundenkarte Mitarbeiter"}, {"role": "PH Kundenkarte Leitung"}, {"role": "PH Geschäftsführung"}]
+ }
+]

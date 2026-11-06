@@ -1,0 +1,61 @@
+# syntax=docker/dockerfile:1.7
+# deploy/produktion/website/Containerfile – Website (Next.js 16, Port 3000), Host www/platzhirsch.studio.
+#
+# Build-Kontext = Repo-Root:
+#   docker build -f deploy/produktion/website/Containerfile \
+#     --secret id=website_env,src=/srv/platzhirsch/website/.env.production \
+#     --build-context ezarri=/srv/platzhirsch/website/public-ezarri \
+#     --build-arg NEXT_DEPLOYMENT_ID=$(git rev-parse --short=12 HEAD) \
+#     -t platzhirsch/website:$(git rev-parse --short=12 HEAD) .
+# (compose.yml im selben Ordner macht genau das.)
+#
+# WICHTIG – kein standalone-Output: next.config.js setzt heute KEIN `output: "standalone"`.
+# Darum wird wie bei scripts/deploy.sh der ganze (bereinigte) Projektordner ausgeliefert und mit
+# `next start` gestartet. Das ist auch nötig, weil der Server zur Laufzeit aus dem Projektordner liest
+# (process.cwd(): .data/*, src/content/ratgeber, src/lib/stilfinder/fonts|materials, public/…).
+# Optimierung mit standalone siehe ../README.md („Nötige Änderungen“) – hier bewusst nicht umgesetzt.
+#
+# Build-Umgebung: Next liest .env.production beim Build (NEXT_PUBLIC_* werden eingebacken, SERVER wird
+# für das Vorrendern von Produkt-/Markenseiten gebraucht). Die Datei kommt als BuildKit-Secret und
+# landet NICHT in einer Image-Schicht. Zur Laufzeit kommen die Variablen aus env_file (compose.yml).
+#
+# public/ezarri (~565 MB, nicht im Repo): als benannter Build-Kontext "ezarri" (Ordner auf dem Server).
+# Next liefert nur Dateien aus public/ aus, die beim Build da waren – darum beim Build, nicht als Volume.
+
+ARG NODE_VERSION=24
+
+FROM node:${NODE_VERSION}-bookworm-slim AS deps
+WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci --no-audit --no-fund
+
+FROM deps AS build
+COPY . .
+COPY --from=ezarri . public/ezarri/
+ARG NEXT_DEPLOYMENT_ID
+ENV NODE_ENV=production \
+    NEXT_DEPLOYMENT_ID=${NEXT_DEPLOYMENT_ID}
+RUN --mount=type=secret,id=website_env,target=/app/.env.production,required=true \
+    npm run build \
+ && npm prune --omit=dev --no-audit --no-fund \
+ && rm -rf .next/cache
+
+FROM node:${NODE_VERSION}-bookworm-slim AS runtime
+WORKDIR /app
+ENV NODE_ENV=production \
+    NEXT_TELEMETRY_DISABLED=1 \
+    PORT=3000 \
+    HOSTNAME=0.0.0.0
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates tini \
+ && rm -rf /var/lib/apt/lists/*
+COPY --from=build --chown=node:node /app /app
+# Laufzeitdaten (Uploads, Portal, Shop-Store …) überleben Releases nur als Volume.
+RUN mkdir -p /app/.data && chown node:node /app/.data
+VOLUME ["/app/.data"]
+USER node
+EXPOSE 3000
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+  CMD curl -fsS -o /dev/null http://127.0.0.1:3000/de || exit 1
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["node_modules/.bin/next", "start", "-H", "0.0.0.0", "-p", "3000"]

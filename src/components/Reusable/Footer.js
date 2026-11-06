@@ -229,6 +229,11 @@ export default function Footer({ activeCategoryKeys = null }) {
     const at = serviceLinks.findIndex((l) => l.href === GERAETE_PATH);
     serviceLinks.splice(at >= 0 ? at + 1 : serviceLinks.length, 0, { label: t("badWellness"), href: "/bad-wellness" });
   }
+  // Kundenkarte (Inhaber 04.11.2026): /kundenkarte, index, 200 in allen vier Sprachen,
+  // gleicher Pfad – am Ende der Service-Spalte.
+  if (!serviceLinks.some((l) => l.href === "/kundenkarte")) serviceLinks.push({ label: t("customerCard"), href: "/kundenkarte" });
+  // Reklamation melden (/service/reklamation, index, 200 in allen vier Sprachen, gleicher Pfad).
+  if (!serviceLinks.some((l) => l.href === "/service/reklamation")) serviceLinks.push({ label: t("complaint"), href: "/service/reklamation" });
 
   const brandBase = ROUTES.marken[locale] || ROUTES.marken.de;
   const brands = [

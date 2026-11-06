@@ -7,53 +7,250 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "naming_series", "titel", "kasse", "see", "art", "status", "cb_kopf", "zeitpunkt", "ende", "dauer_h", "meldung_finanzonline_noetig", "gemeldet_am",
-  "sb_details", "beleg", "anzahl_belege", "notiz", "nachweis", "automatisch"
+  "naming_series",
+  "titel",
+  "kasse",
+  "see",
+  "art",
+  "status",
+  "cb_kopf",
+  "zeitpunkt",
+  "ende",
+  "dauer_h",
+  "meldung_finanzonline_noetig",
+  "gemeldet_am",
+  "sb_details",
+  "beleg",
+  "anzahl_belege",
+  "notiz",
+  "nachweis",
+  "automatisch"
  ],
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Nummernkreis", "options": "PH-KEV-.YYYY.-.#####", "default": "PH-KEV-.YYYY.-.#####", "reqd": 1, "hidden": 1, "print_hide": 1},
-  {"fieldname": "titel", "fieldtype": "Data", "label": "Titel", "read_only": 1, "in_list_view": 1},
-  {"fieldname": "kasse", "fieldtype": "Link", "label": "Kasse", "options": "PH Kasse", "in_list_view": 1, "in_standard_filter": 1},
-  {"fieldname": "see", "fieldtype": "Link", "label": "Signaturerstellungseinheit", "options": "PH Signatureinheit", "in_standard_filter": 1},
-  {"fieldname": "art", "fieldtype": "Select", "label": "Art", "options": "SEE Ausfall Beginn\nSEE Ausfall Ende\nKasse Ausfall Beginn\nKasse Ausfall Ende\nFinanzOnline Meldung\nNachsignatur\nStartbeleg Pruefung\nJahresbeleg Pruefung\nMonatsbeleg nachgeholt\nHinweis", "reqd": 1, "in_list_view": 1, "in_standard_filter": 1},
-  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Offen\nBeendet\nGemeldet\nErledigt", "default": "Offen", "read_only": 1, "in_list_view": 1, "in_standard_filter": 1},
-  {"fieldname": "cb_kopf", "fieldtype": "Column Break"},
-  {"fieldname": "zeitpunkt", "fieldtype": "Datetime", "label": "Zeitpunkt (Beginn)", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "ende", "fieldtype": "Datetime", "label": "Ende"},
-  {"fieldname": "dauer_h", "fieldtype": "Float", "label": "Dauer (Stunden)", "read_only": 1, "precision": "2"},
-  {"fieldname": "meldung_finanzonline_noetig", "fieldtype": "Check", "label": "FinanzOnline-Meldung nötig (> 48 h)", "read_only": 1, "default": "0"},
-  {"fieldname": "gemeldet_am", "fieldtype": "Datetime", "label": "In FinanzOnline gemeldet am", "description": "Manuell durch Inhaber; Nachweis anhängen."},
-  {"fieldname": "sb_details", "fieldtype": "Section Break", "label": "Details"},
-  {"fieldname": "beleg", "fieldtype": "Link", "label": "Beleg (Sammel-/Start-/Jahresbeleg)", "options": "PH Kassenbeleg"},
-  {"fieldname": "anzahl_belege", "fieldtype": "Int", "label": "Betroffene Belege", "read_only": 1},
-  {"fieldname": "notiz", "fieldtype": "Small Text", "label": "Notiz"},
-  {"fieldname": "nachweis", "fieldtype": "Attach", "label": "Nachweis (FinanzOnline-Bestätigung, Belegcheck-Screenshot)"},
-  {"fieldname": "automatisch", "fieldtype": "Check", "label": "Automatisch erzeugt", "read_only": 1, "default": "0"}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-KEV-.YYYY.-.#####",
+   "default": "PH-KEV-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kasse",
+   "fieldtype": "Link",
+   "label": "Kasse",
+   "options": "PH Kasse",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "see",
+   "fieldtype": "Link",
+   "label": "Signaturerstellungseinheit",
+   "options": "PH Signatureinheit",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "SEE Ausfall Beginn\nSEE Ausfall Ende\nKasse Ausfall Beginn\nKasse Ausfall Ende\nFinanzOnline Meldung\nNachsignatur\nStartbeleg Pruefung\nJahresbeleg Pruefung\nMonatsbeleg nachgeholt\nNacherfassung Notbelege\nLade geoeffnet\nKassensturz\nHinweis",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Offen\nBeendet\nGemeldet\nErledigt",
+   "default": "Offen",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zeitpunkt",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt (Beginn)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ende",
+   "fieldtype": "Datetime",
+   "label": "Ende"
+  },
+  {
+   "fieldname": "dauer_h",
+   "fieldtype": "Float",
+   "label": "Dauer (Stunden)",
+   "read_only": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "meldung_finanzonline_noetig",
+   "fieldtype": "Check",
+   "label": "FinanzOnline-Meldung nötig (> 48 h)",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "gemeldet_am",
+   "fieldtype": "Datetime",
+   "label": "In FinanzOnline gemeldet am",
+   "description": "Manuell durch Inhaber; Nachweis anhängen."
+  },
+  {
+   "fieldname": "sb_details",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "beleg",
+   "fieldtype": "Link",
+   "label": "Beleg (Sammel-/Start-/Jahresbeleg)",
+   "options": "PH Kassenbeleg"
+  },
+  {
+   "fieldname": "anzahl_belege",
+   "fieldtype": "Int",
+   "label": "Betroffene Belege",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  },
+  {
+   "fieldname": "nachweis",
+   "fieldtype": "Attach",
+   "label": "Nachweis (FinanzOnline-Bestätigung, Belegcheck-Screenshot)"
+  },
+  {
+   "fieldname": "automatisch",
+   "fieldtype": "Check",
+   "label": "Automatisch erzeugt",
+   "read_only": 1,
+   "default": "0"
+  }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Kassa",
  "name": "PH Kassa Ereignis",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
-  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Backoffice-Admin", "read": 1, "write": 1, "create": 1, "delete": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Geschäftsführung", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Kassa Leitung", "read": 1, "write": 1, "create": 1, "delete": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Kassa Mitarbeiter", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 1, "email": 0, "export": 0, "report": 1, "share": 0},
-  {"role": "PH Buchhaltung extern", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 1, "email": 0, "export": 1, "report": 1, "share": 0}
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kassa Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kassa Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  }
  ],
  "search_fields": "kasse,art,status",
  "sort_field": "zeitpunkt",
  "sort_order": "DESC",
  "states": [
-  {"title": "Offen", "color": "Orange"},
-  {"title": "Beendet", "color": "Blue"},
-  {"title": "Gemeldet", "color": "Green"},
-  {"title": "Erledigt", "color": "Green"}
+  {
+   "title": "Offen",
+   "color": "Orange"
+  },
+  {
+   "title": "Beendet",
+   "color": "Blue"
+  },
+  {
+   "title": "Gemeldet",
+   "color": "Green"
+  },
+  {
+   "title": "Erledigt",
+   "color": "Green"
+  }
  ],
  "title_field": "titel",
  "track_changes": 1

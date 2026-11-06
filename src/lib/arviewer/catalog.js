@@ -15,6 +15,7 @@ import path from "node:path";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { headers } from "next/headers";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { katalogApi } from "@/lib/backend/katalog";
 import { backofficeFetch } from "@/lib/api/http";
 import { loadSortimentRows } from "./sortiment-load.js";
 import { fetchKategorienWithCounts, fetchProduktNewByPathField } from "@/lib/api/fetchAllProdukte";
@@ -65,7 +66,7 @@ async function categoryLabels() {
 // Eigener, strenger Abruf: fetchProdukteNewByMarke() liefert bei Fehlern still [] –
 // damit ließe sich „Marke hat 0 Produkte“ nicht von „Marke nicht geladen“ trennen.
 // Gleiche URL und gleicher Data Cache (1 h, Tag "products"), aber Fehler werfen.
-const PRODUKTE_NEW_API = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.produkte_new.api`;
+const PRODUKTE_NEW_API = katalogApi("produkte_new.api", NEW_API_BASE_URL);
 const SNAPSHOT_FILE = path.join(process.cwd(), ".data", "ar-viewer", "sortiment-snapshot.json");
 const SNAPSHOT_MIN_AGE_MS = 10 * 60 * 1000; // nicht bei jedem Request neu schreiben
 let memSnapshot = null; // letzter vollständiger Stand im Prozess (falls .data nicht beschreibbar ist)

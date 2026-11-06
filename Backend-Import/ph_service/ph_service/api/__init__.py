@@ -12,6 +12,7 @@ Decorator ph_core.api.ph_api; Portal-Methoden prüfen zusätzlich kunde_token ge
   Website ohne Portal:
     create_service_case(**d)                                         → Reklamationsformular (findet/erzeugt PH Kontakt per E-Mail)
     get_service_status(referenz, email)                              → Status abfragen (Referenz + E-Mail)
+    add_service_photo(referenz, email, foto_base64, mime, dateiname) → Foto nachreichen ohne Login (≤ 14 Tage, ≤ 10 Dateien)
     get_fehlerkatalog()                                              → Bereiche und Codes für Formulare
 
 Antworten: flache dicts, Zeiten ISO 8601, Beträge Cent, keine Telefon-/E-Mail-Klartexte außer maskiert.
@@ -43,7 +44,6 @@ PORTAL_STATUS = {
 }
 ARTEN_PORTAL = {"mangel": "Mangel", "transportschaden": "Transportschaden", "montagefehler": "Montagefehler", "garantie": "Garantie", "pflegefrage": "Pflegefrage", "kulanz": "Kulanz"}
 WUNSCH_PORTAL = {"verbesserung": "Verbesserung", "austausch": "Austausch", "preisminderung": "Preisminderung", "wandlung": "Wandlung", "beratung": "Beratung"}
-BILD_MIME = {"image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/heic": "heic", "application/pdf": "pdf"}
 
 
 # ── Helfer ──────────────────────────────────────────────────────────────────
@@ -78,46 +78,53 @@ def _eigener_fall(kontakt, referenz):
 
 
 def _datei_anlegen(doc, foto, idx):
-    """foto = {"name": "bild.jpg", "content": "<base64>" | "data:image/jpeg;base64,…", "hinweis": "…"} → private File-URL."""
+    """foto = {"name": "bild.jpg", "content": "<base64>" | "data:image/jpeg;base64,…", "hinweis": "…"}
+    → (private File-URL, Medientyp). Der Typ wird am Dateikopf erkannt (ph_service/utils/medien.py), nicht an
+    MIME/Endung des Browsers; erlaubt Bild (JPG/PNG/WEBP/HEIC), PDF, Video (MP4/MOV/WEBM) mit eigenen Größengrenzen."""
+    from ph_service.utils import medien
+
     einst = einstellungen()
     inhalt = str(foto.get("content") or foto.get("data") or "")
-    mime = None
     if inhalt.startswith("data:"):
-        kopf, _, inhalt = inhalt.partition(",")
-        mime = kopf[5:].split(";")[0]
+        inhalt = inhalt.partition(",")[2]
     try:
         roh = base64.b64decode(inhalt, validate=False)
     except Exception:  # noqa: BLE001
-        raise ApiFehler("invalid", 400, _("Foto {0} ist nicht lesbar.").format(idx + 1))
-    if len(roh) > int(einst["portal_foto_max_mb"]) * 1024 * 1024:
-        raise ApiFehler("invalid", 400, _("Foto {0} ist größer als {1} MB.").format(idx + 1, einst["portal_foto_max_mb"]))
-    if not roh:
-        raise ApiFehler("invalid", 400, _("Foto {0} ist leer.").format(idx + 1))
-    endung = BILD_MIME.get(mime) or (str(foto.get("name") or "").rsplit(".", 1)[-1].lower() if "." in str(foto.get("name") or "") else "jpg")
-    if endung not in BILD_MIME.values():
-        raise ApiFehler("invalid", 400, _("Dateityp nicht erlaubt (JPG, PNG, WEBP, HEIC, PDF)."))
+        raise ApiFehler("invalid", 400, _("Datei {0} ist nicht lesbar.").format(idx + 1))
+    try:
+        endung, typ = medien.pruefen(roh, bild_max_mb=int(einst["portal_foto_max_mb"]), video_max_mb=int(einst["portal_video_max_mb"]))
+    except ValueError as e:
+        raise ApiFehler("invalid", 400, _("Datei {0}: {1}").format(idx + 1, _(str(e))))
     dateiname = f"{doc.name}-{idx + 1}.{endung}"
     f = frappe.get_doc({"doctype": "File", "file_name": dateiname, "content": roh, "is_private": 1, "attached_to_doctype": doc.doctype, "attached_to_name": doc.name, "attached_to_field": "fotos"})
     f.flags.ignore_permissions = True
     f.insert()
-    return f.file_url
+    return f.file_url, typ
 
 
 def _fotos_anhaengen(doc, fotos, quelle="Kunde"):
+    """Fotos/Videos/PDF an den Servicefall (privat). Grenzen: portal_fotos_max (alle Dateien), portal_videos_max (Videos)."""
     einst = einstellungen()
     fotos = fotos or []
     if isinstance(fotos, str):
         fotos = frappe.parse_json(fotos)
     if len(fotos) + len(doc.fotos or []) > int(einst["portal_fotos_max"]):
-        raise ApiFehler("invalid", 400, _("Höchstens {0} Fotos je Servicefall.").format(einst["portal_fotos_max"]))
+        raise ApiFehler("invalid", 400, _("Höchstens {0} Dateien je Servicefall.").format(einst["portal_fotos_max"]))
+    videos = sum(1 for z in doc.fotos or [] if z.get("medientyp") == "Video")
     urls = []
     for i, foto in enumerate(fotos):
         if not isinstance(foto, dict):
             continue
-        url = _datei_anlegen(doc, foto, len(doc.fotos or []) + i)
-        doc.append("fotos", {"bild": url, "hinweis": text(foto.get("hinweis"), 140), "quelle": quelle, "datum": frappe.utils.nowdate(), "an_lieferant": 1})
+        url, typ = _datei_anlegen(doc, foto, len(doc.fotos or []) + i)
+        if typ == "Video":
+            videos += 1
+            if videos > int(einst["portal_videos_max"]):
+                frappe.delete_doc("File", frappe.db.get_value("File", {"file_url": url}, "name"), ignore_permissions=True, force=True)
+                raise ApiFehler("invalid", 400, _("Höchstens {0} Videos je Servicefall.").format(einst["portal_videos_max"]))
+        doc.append("fotos", {"bild": url, "medientyp": typ, "hinweis": text(foto.get("hinweis"), 140), "quelle": quelle, "datum": frappe.utils.nowdate(), "an_lieferant": 1})
         urls.append(url)
     return urls
+
 
 
 def _fall_kurz(d):
@@ -394,6 +401,69 @@ def create_service_case(**d):
     return {"referenz": doc.name, "status": PORTAL_STATUS[doc.status]}
 
 
+FOTO_FALL_LIMIT = 10  # Uploads je Servicefall und 10 Minuten (zusätzlich zum Rate-Limit je Client im Decorator)
+
+
+def _fall_rate_limit(referenz, grenze=FOTO_FALL_LIMIT, fenster_s=600):
+    import time
+
+    key = "ph_service:foto:{0}:{1}".format(hashlib.sha256(referenz.encode()).hexdigest()[:16], int(time.time() // fenster_s))
+    cache = frappe.cache()
+    n = cache.incr(key) if hasattr(cache, "incr") else None
+    if n is None:
+        n = cint(cache.get_value(key)) + 1
+        cache.set_value(key, n, expires_in_sec=fenster_s * 2)
+    elif n == 1:
+        cache.expire(key, fenster_s * 2)
+    if n > grenze:
+        raise ApiFehler("rate_limited", 429, _("Zu viele Uploads – bitte später erneut versuchen."))
+
+
+@frappe.whitelist(allow_guest=False, methods=["POST"])
+@ph_api(idempotent=True, limit_pro_minute=20, referenz=lambda r: ("PH Servicefall", r["referenz"]))
+def add_service_photo(referenz=None, email=None, foto_base64=None, mime=None, dateiname=None, hinweis=None, **_rest):
+    """Website-Reklamation ohne Portal-Login: Foto/Video/PDF zu einem Servicefall nachreichen.
+
+    Prüfung: Referenz + E-Mail (sha256, konstanter Vergleich) – unbekannt oder falsche E-Mail → dieselbe 404
+    `not_found`; Inhaltstyp am Dateikopf (utils/medien.py), `mime` darf nicht widersprechen; privat gespeichert;
+    höchstens 10 Dateien je Fall (und portal_fotos_max); nur innerhalb von 14 Tagen nach `gemeldet_am`
+    (sonst 410 `expired`); abgeschlossen → 409 `conflict`; Rate-Limit je Client und je Fall (429).
+    → {referenz, fotos, medientyp}. Keine Personendaten in der Antwort."""
+    from ph_service.utils import reklamation_foto as RF
+
+    pflicht({"referenz": referenz, "email": email, "foto_base64": foto_base64}, "referenz", "email", "foto_base64")
+    referenz = text(referenz, 40)
+    _fall_rate_limit(referenz)
+    d = frappe.db.get_value("PH Servicefall", referenz, ["name", "kunde_email", "gemeldet_am", "creation", "status"], as_dict=True)
+    if not d or not RF.email_passt(d.kunde_email, email):
+        raise ApiFehler("not_found", 404, _("Kein Servicefall zu dieser Referenz und E-Mail."))
+    if d.status in ("Geschlossen", "Abgelehnt"):
+        raise ApiFehler("conflict", 409, _("Servicefall ist abgeschlossen."))
+    if not RF.in_frist(get_datetime(d.gemeldet_am or d.creation), now_datetime()):
+        raise ApiFehler("expired", 410, _("Fotos können nur innerhalb von {0} Tagen nach der Meldung nachgereicht werden.").format(RF.FRIST_TAGE))
+    doc = frappe.get_doc("PH Servicefall", d.name)
+    if not RF.platz_frei(len(doc.fotos or [])):
+        raise ApiFehler("conflict", 409, _("Höchstens {0} Dateien je Servicefall.").format(RF.MAX_DATEIEN))
+    if mime:
+        # Vorabprüfung des Browser-MIME gegen den Dateikopf (der Dateikopf entscheidet, MIME darf nur nicht widersprechen)
+        from ph_service.utils import medien
+
+        inhalt = str(foto_base64)
+        b64 = inhalt.partition(",")[2] if inhalt.startswith("data:") else inhalt
+        try:
+            kopf = base64.b64decode(b64[:88], validate=False)  # 88 Zeichen = 66 Bytes Dateikopf
+        except Exception:  # noqa: BLE001
+            kopf = b""
+        endung = medien.erkennen(kopf)
+        if endung and not RF.mime_passt(mime, medien.ENDUNGEN[endung]):
+            raise ApiFehler("invalid", 400, _("Dateityp passt nicht zur Angabe."), {"field": "mime"})
+    urls = _fotos_anhaengen(doc, [{"name": text(dateiname, 120), "content": foto_base64, "hinweis": hinweis}], quelle="Kunde")
+    doc.save(ignore_permissions=True)
+    doc.add_comment("Info", _("Kunde hat über die Website eine Datei nachgereicht."))
+    typ = doc.fotos[-1].medientyp if doc.fotos else None
+    return {"referenz": doc.name, "fotos": len(doc.fotos or []), "medientyp": typ, "datei": bool(urls)}
+
+
 @frappe.whitelist(allow_guest=False, methods=["GET", "POST"])
 @ph_api(limit_pro_minute=30)
 def get_service_status(referenz, email):
@@ -416,3 +486,94 @@ def get_fehlerkatalog():
     from ph_service.ph_service.doctype.ph_fehlercode.ph_fehlercode import katalog
 
     return {"bereiche": katalog(1), "arten": sorted(ARTEN_PORTAL.keys()), "wuensche": sorted(WUNSCH_PORTAL.keys())}
+
+
+# ── Backoffice (Benutzer-Token, Rechte der Rolle; keine Website-Methoden) ───
+
+
+def _fall_zaehler(names):
+    """Zähler aus Kindtabellen/Einsätzen/Regress je Fall für utils/schritte.py – eine Abfrage je Quelle."""
+    z = {n: {"ersatzteile_benoetigt": 0, "ersatzteile_offen": 0, "einsaetze_offen": 0, "regress_vorhanden": 0, "naechster_einsatz": None, "ersatzteile_erwartet_am": None} for n in names}
+    for r in frappe.get_all("PH Servicefall Ersatzteil", filters={"parenttype": "PH Servicefall", "parent": ("in", names)}, fields=["parent", "status", "bestellung"]):
+        if r.status == "Benoetigt" and not r.bestellung:
+            z[r.parent]["ersatzteile_benoetigt"] += 1
+        elif r.status == "Bestellt":
+            z[r.parent]["ersatzteile_offen"] += 1
+    for e in frappe.get_all("PH Serviceeinsatz", filters={"servicefall": ("in", names), "status": ("in", ["Geplant", "Bestaetigt", "Unterwegs", "In Arbeit"])}, fields=["servicefall", "datum"], order_by="datum asc"):
+        z[e.servicefall]["einsaetze_offen"] += 1
+        z[e.servicefall]["naechster_einsatz"] = z[e.servicefall]["naechster_einsatz"] or e.datum
+    for r in frappe.get_all("PH Lieferantenregress", filters={"servicefall": ("in", names)}, fields=["servicefall"]):
+        z[r.servicefall]["regress_vorhanden"] = 1
+    for b in frappe.get_all("PH Ersatzteilbestellung", filters={"servicefall": ("in", names), "status": ("in", ["Gesendet", "Bestaetigt", "Teilgeliefert"])}, fields=["servicefall", "erwartet_am"], order_by="erwartet_am asc"):
+        z[b.servicefall]["ersatzteile_erwartet_am"] = z[b.servicefall]["ersatzteile_erwartet_am"] or b.erwartet_am
+    return z
+
+
+@frappe.whitelist(methods=["GET", "POST"])
+def get_next_steps(names):
+    """Nächster Schritt je Servicefall mit sortierbarer Fälligkeit (Konzept §9/§12: naechste_schritte).
+    names = Liste (max. 200) → {name: {schritt, aktion, faellig, rang}}."""
+    from ph_service.utils.schritte import naechster_schritt
+
+    if isinstance(names, str):
+        names = frappe.parse_json(names) if names.strip().startswith("[") else [names]
+    names = [str(n) for n in (names or [])][:200]
+    if not names:
+        return {}
+    frappe.has_permission("PH Servicefall", "read", throw=True)
+    felder = ["name", "status", "erstreaktion_am", "frist_reaktion", "frist_loesung", "fehlercode", "entscheidung", "kulanz_freigabe_status", "lieferantenrelevant", "kunde_informiert_am", "abnahme_bestaetigt", "regress_frist_bis"]
+    faelle = frappe.get_list("PH Servicefall", filters={"name": ("in", names)}, fields=felder, limit=len(names))
+    zaehler = _fall_zaehler([f.name for f in faelle])
+    return {f.name: naechster_schritt({**f, **zaehler.get(f.name, {})}) for f in faelle}
+
+
+@frappe.whitelist(methods=["GET", "POST"])
+def get_service_case_file(name):
+    """Akte eines Servicefalls in einem Aufruf (Konzept §12: servicefall_akte): Fall, Einsätze, Ersatzteilbestellungen,
+    Regresse, nächster Schritt, Fristen, SLA. Kosten/EK nur mit permlevel-Recht (Leitung)."""
+    from ph_service.utils.schritte import naechster_schritt
+
+    doc = frappe.get_doc("PH Servicefall", name)
+    doc.check_permission("read")
+    daten = doc.as_dict(convert_dates_to_str=True)
+    if not frappe.has_permission("PH Servicefall", "write", doc=doc) or "PH Techniker" in frappe.get_roles() and "PH Service Mitarbeiter" not in frappe.get_roles():
+        for feld in ("notiz_intern", "kosten", "kosten_intern_cent", "kosten_extern_cent", "netto_kosten_cent"):
+            daten.pop(feld, None)
+    zaehler = _fall_zaehler([doc.name])[doc.name]
+    return {
+        "fall": daten,
+        "einsaetze": frappe.get_list("PH Serviceeinsatz", filters={"servicefall": doc.name}, fields=["name", "titel", "status", "datum", "zeit_von", "zeit_bis", "techniker", "ergebnis", "bestaetigt_kunde_am", "bericht_gesendet_am"], order_by="datum desc"),
+        "ersatzteilbestellungen": frappe.get_list("PH Ersatzteilbestellung", filters={"servicefall": doc.name}, fields=["name", "titel", "status", "erwartet_am", "geliefert_am", "ueberfaellig"], order_by="creation desc"),
+        "regresse": frappe.get_list("PH Lieferantenregress", filters={"servicefall": doc.name}, fields=["name", "status", "betrag_gefordert_cent", "betrag_anerkannt_cent", "betrag_erhalten_cent", "abgleich_status", "differenz_cent", "frist_bis"], order_by="creation desc"),
+        "naechsterSchritt": naechster_schritt({**doc.as_dict(), **zaehler}),
+        "fristen": doc.fristen_info(),
+        "sla": doc.sla_info(),
+    }
+
+
+@frappe.whitelist(methods=["GET", "POST"])
+def get_technician_slots(datum, dauer_min=60, techniker=None):
+    """Freie Zeitfenster je Techniker an einem Tag (Konzept §12: freie_slots_techniker): belegte Einsätze + Puffer,
+    Technikertag aus PH Service Einstellungen. techniker leer = alle Benutzer mit Rolle PH Techniker."""
+    from ph_service.utils.einsatz import freie_fenster
+
+    frappe.has_permission("PH Serviceeinsatz", "read", throw=True)
+    einst = einstellungen()
+    if techniker:
+        liste = [techniker]
+    else:
+        liste = [r.parent for r in frappe.get_all("Has Role", filters={"role": "PH Techniker", "parenttype": "User"}, fields=["parent"]) if r.parent not in ("Administrator", "Guest")]
+    out = {}
+    for t in sorted(set(liste)):
+        belegt = [(e.zeit_von or "08:00", e.zeit_bis) for e in frappe.get_all("PH Serviceeinsatz", filters={"datum": datum, "status": ("in", ["Geplant", "Bestaetigt", "Unterwegs", "In Arbeit"]), "techniker": t}, fields=["zeit_von", "zeit_bis"])]
+        belegt += [(e.zeit_von or "08:00", e.zeit_bis) for e in frappe.get_all("PH Serviceeinsatz", filters={"datum": datum, "status": ("in", ["Geplant", "Bestaetigt", "Unterwegs", "In Arbeit"]), "techniker_2": t}, fields=["zeit_von", "zeit_bis"])]
+        if frappe.db.exists("DocType", "PH Abwesenheit"):
+            try:
+                ma = frappe.db.get_value("PH Mitarbeiter", {"user": t}, "name")
+                if ma and frappe.db.exists("PH Abwesenheit", {"mitarbeiter": ma, "von": ("<=", datum), "bis": (">=", datum), "status": ("in", ["Genehmigt", "Beantragt"])}):
+                    out[t] = []
+                    continue
+            except Exception:  # noqa: BLE001 – Feldnamen ph_personal abweichend
+                pass
+        out[t] = [{"von": a, "bis": b} for a, b in freie_fenster(belegt, str(einst["techniker_tag_von"])[:5], str(einst["techniker_tag_bis"])[:5], int(dauer_min), 30, int(einst["einsatz_puffer_min"]))]
+    return {"datum": str(datum), "dauerMin": int(dauer_min), "techniker": out}

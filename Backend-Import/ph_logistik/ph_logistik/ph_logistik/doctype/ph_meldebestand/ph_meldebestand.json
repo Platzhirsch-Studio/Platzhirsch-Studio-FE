@@ -1,0 +1,393 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "creation": "2026-11-04 15:00:00.000000",
+ "description": "Meldebestand/Zielbestand je Produkt (Ausführung) und Lagerort für Lagerware (Accessoires/Shop-Artikel); Ersatzteile bleiben in ph_service.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "titel",
+  "status",
+  "produkt",
+  "produkt_name",
+  "ausfuehrung",
+  "marke",
+  "kategorie",
+  "cb_kopf",
+  "lagerort",
+  "lieferant",
+  "wiederbeschaffung_tage",
+  "sb_regel",
+  "meldebestand",
+  "zielbestand",
+  "cb_regel",
+  "bestellmenge_min",
+  "verpackungseinheit",
+  "sicherheit_tage",
+  "sb_kennzahlen",
+  "bestand",
+  "reserviert",
+  "kommission",
+  "gesperrt",
+  "cb_kennzahlen",
+  "offen_bestellt",
+  "verfuegbar",
+  "unter_meldebestand",
+  "empfehlung_meldebestand",
+  "wbz_quelle",
+  "berechnet_am",
+  "letzter_vorschlag",
+  "sb_system",
+  "idempotency_key",
+  "quelle"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-MB-.#####",
+   "default": "PH-MB-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aktiv\nInaktiv",
+   "default": "Aktiv",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "produkt_name",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "fetch_from": "produkt.titel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ausfuehrung",
+   "fieldtype": "Link",
+   "label": "Ausführung",
+   "options": "PH Produkt Ausfuehrung",
+   "description": "Leer = alle Ausführungen gemeinsam."
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Link",
+   "label": "Marke",
+   "options": "PH Marke",
+   "fetch_from": "produkt.marke",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kategorie",
+   "fieldtype": "Link",
+   "label": "Warengruppe",
+   "options": "PH Kategorie",
+   "fetch_from": "produkt.kategorie",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lagerort",
+   "fieldtype": "Link",
+   "label": "Lagerort",
+   "options": "PH Lagerort",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "lieferant",
+   "fieldtype": "Link",
+   "label": "Lieferant",
+   "options": "PH Lieferant",
+   "in_standard_filter": 1,
+   "description": "Leer = Lieferant der Marke (ph_sortiment)."
+  },
+  {
+   "fieldname": "wiederbeschaffung_tage",
+   "fieldtype": "Int",
+   "label": "Wiederbeschaffungszeit (Tage)",
+   "description": "Leer = aus Lieferzeiten des Lieferanten bzw. Produkts."
+  },
+  {
+   "fieldname": "sb_regel",
+   "fieldtype": "Section Break",
+   "label": "Regel"
+  },
+  {
+   "fieldname": "meldebestand",
+   "fieldtype": "Int",
+   "label": "Meldebestand",
+   "default": "0",
+   "in_list_view": 1,
+   "description": "Erreicht der verfügbare Bestand diesen Wert, entsteht ein Vorschlag."
+  },
+  {
+   "fieldname": "zielbestand",
+   "fieldtype": "Int",
+   "label": "Zielbestand",
+   "default": "0",
+   "in_list_view": 1,
+   "description": "Auf diese Menge wird aufgefüllt (0 = Regel ruht)."
+  },
+  {
+   "fieldname": "cb_regel",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bestellmenge_min",
+   "fieldtype": "Int",
+   "label": "Mindestbestellmenge",
+   "default": "0"
+  },
+  {
+   "fieldname": "verpackungseinheit",
+   "fieldtype": "Int",
+   "label": "Verpackungseinheit",
+   "default": "0",
+   "description": "Bestellmenge wird auf ein Vielfaches aufgerundet (0/1 = Stück)."
+  },
+  {
+   "fieldname": "sicherheit_tage",
+   "fieldtype": "Int",
+   "label": "Sicherheitstage (Empfehlung)",
+   "default": "7"
+  },
+  {
+   "fieldname": "sb_kennzahlen",
+   "fieldtype": "Section Break",
+   "label": "Berechnung (täglich)"
+  },
+  {
+   "fieldname": "bestand",
+   "fieldtype": "Int",
+   "label": "Bestand",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reserviert",
+   "fieldtype": "Int",
+   "label": "Reserviert",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kommission",
+   "fieldtype": "Int",
+   "label": "Kommission",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gesperrt",
+   "fieldtype": "Int",
+   "label": "Gesperrt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_kennzahlen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "offen_bestellt",
+   "fieldtype": "Int",
+   "label": "Offen bestellt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verfuegbar",
+   "fieldtype": "Int",
+   "label": "Verfügbar (disponierbar)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "unter_meldebestand",
+   "fieldtype": "Check",
+   "label": "Unter Meldebestand",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "empfehlung_meldebestand",
+   "fieldtype": "Int",
+   "label": "Empfehlung Meldebestand",
+   "read_only": 1,
+   "description": "Abgang der letzten Tage × (Wiederbeschaffungszeit + Sicherheitstage); nicht automatisch übernommen."
+  },
+  {
+   "fieldname": "wbz_quelle",
+   "fieldtype": "Data",
+   "label": "Quelle Wiederbeschaffungszeit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "berechnet_am",
+   "fieldtype": "Datetime",
+   "label": "Berechnet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "letzter_vorschlag",
+   "fieldtype": "Link",
+   "label": "Letzter Vorschlag",
+   "options": "PH Bestellvorschlag",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "backoffice\nmobil\nscheduler",
+   "default": "backoffice"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "link_doctype": "PH Bestellvorschlag",
+   "link_fieldname": "meldebestand_regel",
+   "group": "Vorschläge"
+  }
+ ],
+ "modified": "2026-11-04 15:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Meldebestand",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Inaktiv",
+   "color": "Gray"
+  }
+ ],
+ "track_changes": 1,
+ "track_seen": 0,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titel",
+ "search_fields": "produkt_name,lagerort"
+}

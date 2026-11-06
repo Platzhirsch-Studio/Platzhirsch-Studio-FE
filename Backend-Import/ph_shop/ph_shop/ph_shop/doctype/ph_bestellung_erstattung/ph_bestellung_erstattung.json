@@ -1,0 +1,126 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Kindtabelle von PH Bestellung: Teilstorno, Teilerstattung, Kulanz mit USt-Aufteilung je Satz.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "datum",
+  "art",
+  "status",
+  "betrag_cent",
+  "ust_cent",
+  "netto_cent",
+  "satz_json",
+  "positionen_text",
+  "grund",
+  "zahlungen",
+  "gutschein_gutschrift_cent",
+  "gutschrift",
+  "von"
+ ],
+ "fields": [
+  {
+   "fieldname": "datum",
+   "fieldtype": "Datetime",
+   "label": "Datum",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Teilstorno\nTeilerstattung\nKulanz\nVersand",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "erstattet\nangefordert\nnur_forderung",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "nur_forderung = vor Zahlung storniert, kein Geldfluss."
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Brutto (Cent)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ust_cent",
+   "fieldtype": "Int",
+   "label": "USt (Cent)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "netto_cent",
+   "fieldtype": "Int",
+   "label": "Netto (Cent)"
+  },
+  {
+   "fieldname": "satz_json",
+   "fieldtype": "Code",
+   "label": "Aufteilung je Steuersatz",
+   "options": "JSON",
+   "description": "[{satz_promille, brutto_cent, ust_cent, netto_cent}] – Grundlage für die Gutschrift (ph_faktura)."
+  },
+  {
+   "fieldname": "positionen_text",
+   "fieldtype": "Small Text",
+   "label": "Positionen",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "grund",
+   "fieldtype": "Data",
+   "label": "Grund",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "zahlungen",
+   "fieldtype": "Small Text",
+   "label": "Gegenbuchungen (PH Zahlung)"
+  },
+  {
+   "fieldname": "gutschein_gutschrift_cent",
+   "fieldtype": "Int",
+   "label": "Auf Gutschein zurückgebucht (Cent)"
+  },
+  {
+   "fieldname": "gutschrift",
+   "fieldtype": "Data",
+   "label": "Gutschrift (ph_faktura)",
+   "description": "Vom Hook ph_shop_gutschrift_erstellen zurückgegebene Belegnummer."
+  },
+  {
+   "fieldname": "von",
+   "fieldtype": "Link",
+   "label": "Von",
+   "options": "User"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "editable_grid": 0,
+ "links": [],
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Bestellung Erstattung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "modified": "2026-11-04 14:00:00.000000"
+}

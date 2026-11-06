@@ -12,6 +12,8 @@
   "produkt_name",
   "platz",
   "seriennummer",
+  "ean",
+  "fund",
   "soll",
   "ist",
   "gezaehlt",
@@ -53,6 +55,18 @@
    "fieldname": "seriennummer",
    "fieldtype": "Data",
    "label": "Seriennummer"
+  },
+  {
+   "fieldname": "ean",
+   "fieldtype": "Data",
+   "label": "EAN",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fund",
+   "fieldtype": "Check",
+   "label": "Fund (nicht in Zählliste)",
+   "read_only": 1
   },
   {
    "fieldname": "soll",

@@ -16,7 +16,7 @@ export const NO_STORE = Object.freeze({
 export const json = (data, status = 200, extra = {}) => NextResponse.json(data, { status, headers: { ...NO_STORE, ...extra } });
 
 export function fail(error) {
-  if (error instanceof WishlistError) return json({ ok: false, error: error.code }, error.status);
+  if (error instanceof WishlistError) return json({ ok: false, error: error.code, ...(Array.isArray(error.items) ? { items: error.items } : {}) }, error.status);
   console.error("[wunschliste]", error);
   return json({ ok: false, error: "server_error" }, 500);
 }

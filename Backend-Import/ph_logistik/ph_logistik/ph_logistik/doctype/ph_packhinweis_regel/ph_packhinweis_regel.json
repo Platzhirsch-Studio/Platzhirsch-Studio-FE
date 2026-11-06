@@ -1,0 +1,207 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2026-11-04 15:00:00.000000",
+ "description": "Regelbasierte Packhinweise vor dem Verpacken (Warengruppe, Marke, Land, Warenwert, Lieferart, zerbrechlich).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bezeichnung",
+  "aktiv",
+  "prioritaet",
+  "bestaetigen",
+  "cb_kopf",
+  "hinweis",
+  "sb_bedingung",
+  "kategorie",
+  "marke",
+  "laender",
+  "cb_bed",
+  "wert_ab_cent",
+  "wert_bis_cent",
+  "lieferart",
+  "nur_zerbrechlich"
+ ],
+ "fields": [
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "aktiv",
+   "fieldtype": "Check",
+   "label": "Aktiv",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "prioritaet",
+   "fieldtype": "Int",
+   "label": "Priorität",
+   "default": "0"
+  },
+  {
+   "fieldname": "bestaetigen",
+   "fieldtype": "Check",
+   "label": "Packer muss bestätigen",
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_bedingung",
+   "fieldtype": "Section Break",
+   "label": "Bedingungen (leer = egal)"
+  },
+  {
+   "fieldname": "kategorie",
+   "fieldtype": "Link",
+   "label": "Warengruppe (Kategorie)",
+   "options": "PH Kategorie"
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Link",
+   "label": "Marke",
+   "options": "PH Marke"
+  },
+  {
+   "fieldname": "laender",
+   "fieldtype": "Data",
+   "label": "Länder",
+   "description": "z. B. AT, DE · EU · Drittland"
+  },
+  {
+   "fieldname": "cb_bed",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wert_ab_cent",
+   "fieldtype": "Int",
+   "label": "Warenwert ab (Cent)"
+  },
+  {
+   "fieldname": "wert_bis_cent",
+   "fieldtype": "Int",
+   "label": "Warenwert bis (Cent)"
+  },
+  {
+   "fieldname": "lieferart",
+   "fieldtype": "Select",
+   "label": "Lieferart",
+   "options": "\nVersand\nAbholung\nEigenlieferung\nSpedition"
+  },
+  {
+   "fieldname": "nur_zerbrechlich",
+   "fieldtype": "Check",
+   "label": "Nur bei zerbrechlicher Ware"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 15:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Packhinweis Regel",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Logistik Mitarbeiter",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 0,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "bezeichnung,hinweis",
+ "title_field": "bezeichnung",
+ "track_seen": 0,
+ "autoname": "field:bezeichnung",
+ "naming_rule": "By fieldname"
+}

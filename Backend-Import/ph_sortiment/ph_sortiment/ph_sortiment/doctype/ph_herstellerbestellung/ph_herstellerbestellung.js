@@ -56,12 +56,23 @@ frappe.ui.form.on("PH Herstellerbestellung", {
 			}, __("Aktionen"));
 		}
 
-		frm.add_custom_button(__("Als IWOfurn/pCon exportieren"), () => {
-			frm.call({ method: "export_schnittstelle", doc: frm.doc, args: { format: "csv" } }).then((r) => {
-				if (r.message) window.open(r.message, "_blank");
-				frm.reload_doc();
-			});
+		frm.add_custom_button(__("Exportdatei erzeugen (CSV/IWOfurn/EDI)"), () => {
+			frappe.prompt([{ fieldname: "weg", fieldtype: "Select", label: __("Format"), options: "\nCSV\nIWOfurn\nEDI", description: __("Leer = laut Bestellweg. IWOfurn/EDI sind unverifiziert und brauchen GLN.") }], (v) => {
+				frm.call({ method: "exportieren", doc: frm.doc, args: v, freeze: true }).then((r) => {
+					const m = r.message || {};
+					if (m.hinweis) frappe.msgprint(m.hinweis);
+					if (m.datei) window.open(m.datei, "_blank");
+					frm.reload_doc();
+				});
+			}, __("Exportdatei"), __("Erzeugen"));
 		}, __("Aktionen"));
+		["Uebermittelt", "Bestaetigt", "Fehler"].forEach((st) => {
+			frm.add_custom_button(__("Übermittlung: {0}", [__({ Uebermittelt: "übermittelt", Bestaetigt: "bestätigt", Fehler: "Fehler" }[st])]), () => {
+				frappe.prompt([{ fieldname: "hinweis", fieldtype: "Data", label: __("Hinweis") }], (v) => {
+					frm.call({ method: "uebermittlung_setzen", doc: frm.doc, args: { status: st, hinweis: v.hinweis } }).then(() => frm.reload_doc());
+				}, __("Übermittlungsstatus"), __("Setzen"));
+			}, __("Übermittlung"));
+		});
 
 		frm.add_custom_button(__("Wareneingänge"), () => frappe.set_route("List", "PH Wareneingang", { herstellerbestellung: frm.doc.name }), __("Ansehen"));
 		if (frm.doc.ab_datei) frm.add_custom_button(__("AB-Datei"), () => window.open(frm.doc.ab_datei, "_blank"), __("Ansehen"));
@@ -113,7 +124,7 @@ function ab_dialog(frm) {
 			cannot_add_rows: true,
 			cannot_delete_rows: true,
 			in_place_edit: true,
-			data: (frm.doc.positionen || []).map((p) => ({ idx: p.idx, bezeichnung: p.bezeichnung, menge: p.menge, ab_menge: p.ab_menge, ab_ek_eur: p.ab_ek_cent ? p.ab_ek_cent / 100 : null, bestaetigter_termin: p.bestaetigter_termin || p.wunschtermin, ab_artikelnr: p.ab_artikelnr || p.hersteller_artikelnr })),
+			data: (frm.doc.positionen || []).map((p) => ({ idx: p.idx, bezeichnung: p.bezeichnung, menge: p.menge, ab_menge: p.ab_menge, ab_ek_eur: p.ab_ek_cent ? p.ab_ek_cent / 100 : null, bestaetigter_termin: p.bestaetigter_termin || p.wunschtermin, ab_artikelnr: p.ab_artikelnr || p.hersteller_artikelnr, ab_ausfuehrung_text: p.ab_ausfuehrung_text || p.ausfuehrung_text })),
 			fields: [
 				{ fieldname: "idx", fieldtype: "Int", label: __("Pos."), in_list_view: 1, read_only: 1, columns: 1 },
 				{ fieldname: "bezeichnung", fieldtype: "Data", label: __("Bezeichnung"), in_list_view: 1, read_only: 1, columns: 3 },
@@ -122,6 +133,7 @@ function ab_dialog(frm) {
 				{ fieldname: "ab_ek_eur", fieldtype: "Currency", label: __("AB EK (EUR)"), in_list_view: 1, columns: 2, options: "EUR" },
 				{ fieldname: "bestaetigter_termin", fieldtype: "Date", label: __("AB Termin"), in_list_view: 1, columns: 2 },
 				{ fieldname: "ab_artikelnr", fieldtype: "Data", label: __("AB Artikelnr."), columns: 2 },
+				{ fieldname: "ab_ausfuehrung_text", fieldtype: "Data", label: __("AB Ausführung"), columns: 2 },
 			],
 		},
 	];
@@ -131,7 +143,7 @@ function ab_dialog(frm) {
 		fields: felder,
 		primary_action_label: __("Übernehmen und abgleichen"),
 		primary_action(v) {
-			const positionen = (v.positionen || []).map((z) => ({ idx: z.idx, ab_menge: z.ab_menge, ab_ek_cent: z.ab_ek_eur != null && z.ab_ek_eur !== "" ? Math.round(flt(z.ab_ek_eur) * 100) : null, bestaetigter_termin: z.bestaetigter_termin, ab_artikelnr: z.ab_artikelnr }));
+			const positionen = (v.positionen || []).map((z) => ({ idx: z.idx, ab_menge: z.ab_menge, ab_ek_cent: z.ab_ek_eur != null && z.ab_ek_eur !== "" ? Math.round(flt(z.ab_ek_eur) * 100) : null, bestaetigter_termin: z.bestaetigter_termin, ab_artikelnr: z.ab_artikelnr, ab_ausfuehrung_text: z.ab_ausfuehrung_text }));
 			frm.call({ method: "ab_einlesen", doc: frm.doc, args: { ab_nummer: v.ab_nummer, ab_datum: v.ab_datum, ab_datei: v.ab_datei, positionen }, freeze: true }).then((r) => {
 				d.hide();
 				frappe.show_alert({ message: __("AB erfasst, {0} Abweichungen", [r.message.abweichungen]), indicator: r.message.abweichungen ? "orange" : "green" });
@@ -141,3 +153,48 @@ function ab_dialog(frm) {
 	});
 	d.show();
 }
+
+// ── Ergänzung 04.11. (Backend-Lücken 51)
+frappe.ui.form.on("PH Herstellerbestellung", {
+	refresh(frm) {
+		if (frm.is_new()) return;
+		if (frm.doc.status === "Gesendet") {
+			frm.add_custom_button(__("AB nachfragen"), () => {
+				frappe.prompt([{ fieldname: "nachricht", fieldtype: "Small Text", label: __("Nachricht (leer = Standardtext)") }], (v) => {
+					frm.call({ method: "ab_nachfragen", doc: frm.doc, args: v, freeze: true }).then((r) => frappe.show_alert({ message: __("Nachgefragt bei {0}", [r.message]), indicator: "green" }));
+				}, __("AB nachfragen"), __("Senden"));
+			}, __("Aktionen"));
+		}
+		if (["AB erhalten", "AB geprueft", "Teilgeliefert"].includes(frm.doc.status)) {
+			frm.add_custom_button(__("Liefertermin ändern"), () => {
+				frappe.prompt([
+					{ fieldname: "termin", fieldtype: "Date", label: __("Neuer Liefertermin"), reqd: 1 },
+					{ fieldname: "position", fieldtype: "Int", label: __("Position (leer = alle offenen)") },
+					{ fieldname: "quelle", fieldtype: "Select", label: __("Quelle"), options: "Lieferant\nAB\nManuell", default: "Lieferant" },
+					{ fieldname: "grund", fieldtype: "Data", label: __("Grund"), reqd: 1 },
+				], (v) => {
+					frm.call({ method: "termin_aendern", doc: frm.doc, args: v, freeze: true }).then(() => {
+						frappe.show_alert({ message: __("Termin geändert – Projekt/Kunde werden informiert"), indicator: "orange" });
+						frm.reload_doc();
+					});
+				}, __("Liefertermin ändern"), __("Speichern"));
+			}, __("Aktionen"));
+		}
+		const offen = (frm.doc.ab_abgleich || []).filter((z) => ["offen", "pruefen"].includes(z.bewertung));
+		if (offen.length) {
+			frm.add_custom_button(__("Abweichung klären"), () => {
+				frappe.prompt([
+					{ fieldname: "zeile", fieldtype: "Select", label: __("Abweichung"), reqd: 1, options: offen.map((z) => ({ value: z.name, label: `Pos. ${z.position} ${z.feld}: ${z.bestellt} → ${z.bestaetigt}` })) },
+					{ fieldname: "aktion", fieldtype: "Select", label: __("Aktion"), reqd: 1, options: [{ value: "akzeptieren", label: __("Akzeptieren") }, { value: "lieferant_reklamieren", label: __("Beim Lieferanten reklamieren (Mail)") }, { value: "kunde_rueckfragen", label: __("Kundenrückfrage (Aufgabe)") }] },
+					{ fieldname: "text", fieldtype: "Small Text", label: __("Text/Kommentar") },
+				], (v) => {
+					frm.call({ method: "abweichung_klaeren", doc: frm.doc, args: v, freeze: true }).then((r) => {
+						frappe.show_alert({ message: __("{0} – noch {1} offen", [r.message.klaerung, r.message.offen]), indicator: "green" });
+						frm.reload_doc();
+					});
+				}, __("Abweichung klären"), __("Ausführen"));
+			}, __("Aktionen"));
+		}
+		if ((frm.doc.terminaenderungen || []).length) frm.dashboard.add_indicator(__("{0} Terminänderungen", [frm.doc.terminaenderungen.length]), "orange");
+	},
+});

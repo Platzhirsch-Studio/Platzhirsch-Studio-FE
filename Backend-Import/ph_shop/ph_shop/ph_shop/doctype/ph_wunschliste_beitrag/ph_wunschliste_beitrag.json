@@ -1,0 +1,135 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Wunschliste Beitrag",
+ "owner": "Administrator",
+ "istable": 1,
+ "editable_grid": 0,
+ "description": "Kindtabelle von PH Wunschliste: Beitrag zum Gemeinschafts-Gutschein (Anfrage oder Stripe).",
+ "fields": [
+  {
+   "fieldname": "beitrag_id",
+   "fieldtype": "Data",
+   "label": "Beitrags-ID",
+   "reqd": 1,
+   "read_only": 1,
+   "length": 40
+  },
+  {
+   "fieldname": "zeitpunkt",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt",
+   "in_list_view": 1,
+   "columns": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Vorschlag (Cent)",
+   "in_list_view": 1,
+   "columns": 1,
+   "non_negative": 1,
+   "description": "Vorgeschlagener Betrag; maßgeblich ist bei Stripe der bezahlte Betrag."
+  },
+  {
+   "fieldname": "schenker_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "in_list_view": 1,
+   "columns": 2,
+   "length": 80
+  },
+  {
+   "fieldname": "schenker_email",
+   "fieldtype": "Data",
+   "label": "E-Mail",
+   "options": "Email",
+   "in_list_view": 1,
+   "columns": 2,
+   "length": 254,
+   "description": "Nur für das Studio (Abstimmung des Gutscheins); die Website erhält sie maskiert."
+  },
+  {
+   "fieldname": "gruss",
+   "fieldtype": "Small Text",
+   "label": "Gruß"
+  },
+  {
+   "fieldname": "cb_b",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "name_anzeigen",
+   "fieldtype": "Check",
+   "label": "Name und Gruß anzeigen",
+   "default": "1",
+   "description": "Freiwillige Einwilligung (Art. 7 DSGVO)."
+  },
+  {
+   "fieldname": "einwilligung_am",
+   "fieldtype": "Datetime",
+   "label": "Einwilligung am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kanal",
+   "fieldtype": "Select",
+   "label": "Kanal",
+   "options": "anfrage\nstripe",
+   "default": "anfrage",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "angefragt\noffen\nbezahlt\nerstattet",
+   "default": "angefragt",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "stripe_session",
+   "fieldtype": "Data",
+   "label": "Stripe-Session",
+   "length": 120
+  },
+  {
+   "fieldname": "bezahlt_cent",
+   "fieldtype": "Int",
+   "label": "Bezahlt (Cent)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "gutschein",
+   "fieldtype": "Link",
+   "label": "Gutschein",
+   "options": "PH Gutschein",
+   "description": "Ausgestellter Gutschein (Gemeinschafts-Gutschein, im Desk zugeordnet)."
+  }
+ ],
+ "permissions": [],
+ "field_order": [
+  "beitrag_id",
+  "zeitpunkt",
+  "betrag_cent",
+  "schenker_name",
+  "schenker_email",
+  "gruss",
+  "cb_b",
+  "name_anzeigen",
+  "einwilligung_am",
+  "kanal",
+  "status",
+  "stripe_session",
+  "bezahlt_cent",
+  "gutschein"
+ ]
+}

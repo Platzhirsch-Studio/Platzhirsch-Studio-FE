@@ -3,6 +3,7 @@
 // also called internally by /api/upload/inquiry/produkt. Checks:
 // src/lib/forms/guard.js + produktSchema (allowlist). Same backoffice URL,
 // headers and success answer as before; 10 s timeout.
+import { forwardInquiry } from "@/lib/backend/forms";
 import { inquiryHandler } from "@/lib/forms/forward";
 import { originalRequestHeaders } from "@/lib/forms/requestHeaders";
 import { MAX_BYTES, produktSchema } from "@/lib/forms/schemas";
@@ -17,4 +18,6 @@ export const POST = inquiryHandler({
   successMessage: "Inquiry submitted successfully",
   failMessage: "Failed to submit inquiry",
   resolveHeaders: originalRequestHeaders,
+  // BACKEND_GENERATION (src/lib/backend/config.js): alt = API_URL wie bisher, ph = ph_crm.api.
+  forward: (fields, o) => forwardInquiry("produkt", fields, { altUrl: API_URL, ...o }),
 });

@@ -38,5 +38,29 @@
   "use_html": 1,
   "response_html": "<p>Sehr geehrte Damen und Herren,</p><p>anbei unsere Reklamationsmeldung <b>{{ doc.name }}</b> zu <b>{{ doc.produkt_name or doc.produkt or \"–\" }}</b>{% if doc.marke %} ({{ doc.marke }}){% endif %}{% if doc.seriennummer %}, Seriennummer {{ doc.seriennummer }}{% endif %}.</p><ul><li>Fehler: {{ doc.fehlercode or \"\" }} {{ doc.fehlercode_bezeichnung or \"\" }}</li><li>Kauf/Übergabe an Endkunden: {{ frappe.utils.formatdate(doc.kaufdatum, \"dd.MM.yyyy\") if doc.kaufdatum else \"–\" }} / {{ frappe.utils.formatdate(doc.uebergabe_datum, \"dd.MM.yyyy\") if doc.uebergabe_datum else \"–\" }}</li>{% if regress %}<li>Regressvorgang: {{ regress }}</li>{% endif %}</ul><p>{{ frappe.utils.strip_html(doc.beschreibung or \"\") }}</p>{% if zusatz %}<p>{{ zusatz }}</p>{% endif %}<p>Wir bitten um Stellungnahme innerhalb von 10 Werktagen sowie um Ersatzteil, Austausch oder Gutschrift im Rahmen von Gewährleistung/Garantie bzw. Regress nach § 933b ABGB. Fotos und die Meldung als PDF liegen bei.</p><p>Mit freundlichen Grüßen<br>{{ firma.firmenname or \"MW Immobilienverwaltungs GmbH\" }} · Platzhirsch Service<br>{{ firma.telefon or \"\" }} · {{ firma.email or \"\" }}</p>",
   "response": "Reklamationsmeldung {{ doc.name }} – Details und Fotos im Anhang. Wir bitten um Stellungnahme innerhalb von 10 Werktagen."
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Service Ablehnung",
+  "subject": "Ihr Servicefall {{ doc.name }} – unsere Entscheidung",
+  "use_html": 1,
+  "response_html": "<p>Guten Tag {{ doc.kunde_name }},</p><p>vielen Dank für Ihre Meldung <b>{{ doc.name }}</b>{% if doc.produkt_name %} ({{ doc.produkt_name }}){% endif %}. Wir haben Ihr Anliegen sorgfältig geprüft.</p><p>Leider können wir es nicht als Gewährleistungs- oder Garantiefall anerkennen.</p><p><b>Begründung:</b> {{ zusatz or doc.entscheidung_begruendung or \"\" }}</p><p>Diese Entscheidung lässt Ihre gesetzlichen Rechte unberührt. Gern unterbreiten wir Ihnen ein Angebot für eine Reparatur, Aufarbeitung oder Pflege – antworten Sie einfach auf diese E-Mail.</p><p>Mit freundlichen Grüßen<br>{{ firma.kurzname or firma.firmenname or \"Platzhirsch Home Living\" }} · Service</p>",
+  "response": "Guten Tag {{ doc.kunde_name }}, Ihr Servicefall {{ doc.name }} konnte nicht als Gewährleistungs- oder Garantiefall anerkannt werden. Begründung: {{ zusatz or doc.entscheidung_begruendung }}"
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Service Nachricht",
+  "subject": "Ihr Servicefall {{ doc.name }}",
+  "use_html": 1,
+  "response_html": "<p>Guten Tag {{ doc.kunde_name }},</p><div>{{ zusatz }}</div><p>Mit freundlichen Grüßen<br>{{ firma.kurzname or firma.firmenname or \"Platzhirsch Home Living\" }} · Service</p>",
+  "response": "Guten Tag {{ doc.kunde_name }}, {{ zusatz }}"
+ },
+ {
+  "doctype": "Email Template",
+  "name": "PH Service Servicebericht",
+  "subject": "Servicebericht {{ doc.name }} vom {{ frappe.utils.formatdate(doc.datum) }}",
+  "use_html": 1,
+  "response_html": "<p>Guten Tag {{ doc.kunde_name }},</p><p>vielen Dank für Ihre Zeit beim Serviceeinsatz am {{ frappe.utils.formatdate(doc.datum) }}. Im Anhang finden Sie den Servicebericht mit den durchgeführten Arbeiten{% if doc.unterschrift_art == \"Unterschrift\" %} und Ihrer Bestätigung{% endif %}.</p>{% if doc.folgeeinsatz_noetig %}<p>Ein weiterer Termin ist nötig – wir melden uns mit einem Vorschlag.</p>{% endif %}{% if zusatz %}<p>{{ zusatz }}</p>{% endif %}<p>Mit freundlichen Grüßen<br>{{ firma.kurzname or firma.firmenname or \"Platzhirsch Home Living\" }} · Service</p>",
+  "response": "Guten Tag {{ doc.kunde_name }}, im Anhang finden Sie den Servicebericht {{ doc.name }}."
  }
 ]

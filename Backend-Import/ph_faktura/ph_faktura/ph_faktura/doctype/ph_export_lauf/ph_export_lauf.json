@@ -66,7 +66,7 @@
    "fieldname": "format",
    "fieldtype": "Select",
    "label": "Format",
-   "options": "BMD CSV\nDATEV Buchungsstapel\nCSV generisch",
+   "options": "BMD CSV\nRZL CSV\nDATEV Buchungsstapel\nCSV generisch",
    "reqd": 1,
    "in_list_view": 1,
    "in_standard_filter": 1
@@ -202,7 +202,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 08:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Faktura",
  "name": "PH Export Lauf",

@@ -3,9 +3,12 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import get_datetime
+from frappe.utils import get_datetime, now_datetime
 
+from ph_projekte.utils.montageplan import abhaengigkeit_konflikt, termine_spanne
 from ph_projekte.utils.portal import gewerk_uebergang_erlaubt
+
+ABNAHME = ("abgenommen", "mit Maengeln", "verweigert")
 
 
 class PHFremdgewerk(Document):
@@ -14,6 +17,12 @@ class PHFremdgewerk(Document):
             self.status = "Offen"
 
     def validate(self):
+        if self.termine:
+            von, bis = termine_spanne([t.as_dict() for t in self.termine])
+            if von:
+                self.termin_von = von
+            if bis:
+                self.termin_bis = bis
         if self.termin_von and self.termin_bis and get_datetime(self.termin_bis) < get_datetime(self.termin_von):
             frappe.throw(_("Termin bis liegt vor Termin von."))
         if self.abhaengig_von == self.name:
@@ -22,6 +31,13 @@ class PHFremdgewerk(Document):
             self.partner_text = frappe.db.get_value("PH Lieferant", self.partnerbetrieb, "firmenname") or self.partnerbetrieb
         partner = self.partner_text or _("Partnerbetrieb (Name folgt)")
         self.titel = f"{self.gewerk}: {partner}"[:140]
+        self.abhaengigkeit_hinweis = ""
+        if self.abhaengig_von:
+            v = frappe.db.get_value("PH Fremdgewerk", self.abhaengig_von, ["status", "termin_bis", "titel"], as_dict=True)
+            hinweis = abhaengigkeit_konflikt(v.status, v.termin_bis, self.termin_von) if v else None
+            if hinweis:
+                self.abhaengigkeit_hinweis = f"{v.titel}: {_(hinweis)}"
+                frappe.msgprint(self.abhaengigkeit_hinweis, title=_("Abhängigkeit prüfen"), indicator="orange")
         if not self.haftungshinweis:
             self.haftungshinweis = frappe.db.get_single_value("PH Projekte Einstellungen", "haftungshinweis_fremdgewerke")
 
@@ -51,3 +67,38 @@ class PHFremdgewerk(Document):
         t.insert()
         self.db_set("termin", t.name)
         return t.name
+
+    @frappe.whitelist()
+    def termin_hinzufuegen(self, art, von, bis=None, notiz=None):
+        self.check_permission("write")
+        self.append("termine", {"art": art, "von": von, "bis": bis, "notiz": notiz, "status": "geplant"})
+        if self.status in ("Offen", "Angefragt"):
+            self.status = "Geplant" if gewerk_uebergang_erlaubt(self.status, "Geplant") else self.status
+        self.save()
+        return len(self.termine)
+
+    @frappe.whitelist()
+    def abnehmen(self, ergebnis, notiz=None, maengel=None):
+        """Abnahme der Fremdleistung durch das Studio (Koordination, keine Bauleitung): abgenommen | mit Maengeln | verweigert.
+        maengel = [{beschreibung, frist}] → Kindtabelle (verantwortlich = Fremdgewerk)."""
+        self.check_permission("write")
+        if ergebnis not in ABNAHME:
+            frappe.throw(_("Unbekanntes Abnahmeergebnis."))
+        maengel = frappe.parse_json(maengel) if maengel else []
+        if ergebnis == "mit Maengeln" and not maengel and not self.maengel:
+            frappe.throw(_("Bitte mindestens einen Mangel erfassen."))
+        for m in maengel or []:
+            if (m.get("beschreibung") or "").strip():
+                self.append("maengel", {"beschreibung": m["beschreibung"][:140], "frist": m.get("frist"), "status": "offen", "verantwortlich": "Fremdgewerk", "verantwortlich_ref": self.name})
+        self.abnahme_status = ergebnis
+        self.abnahme_notiz = notiz
+        self.abgenommen_am = now_datetime()
+        self.abgenommen_von = frappe.session.user
+        if ergebnis == "abgenommen" and self.status in ("Geplant", "In Arbeit"):  # Abnahme heißt: Leistung fertig
+            self.status = "Erledigt"
+        for t in self.termine:
+            if t.art == "Abnahme" and t.status in ("geplant", "bestaetigt"):
+                t.status = "erledigt"
+        self.save()
+        self.add_comment("Info", _("Abnahme: {0}").format(_(ergebnis)) + (f" – {notiz}" if notiz else ""))
+        return self.abnahme_status

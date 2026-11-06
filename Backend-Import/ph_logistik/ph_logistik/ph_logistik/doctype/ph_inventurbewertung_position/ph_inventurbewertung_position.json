@@ -1,0 +1,170 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 15:00:00.000000",
+ "description": "Bewertungszeile: Menge zum Stichtag × Einstandspreis, Abwertung, Niederstwert.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "lagerbestand",
+  "produkt",
+  "produkt_name",
+  "ausfuehrung",
+  "marke",
+  "warengruppe",
+  "lagerort",
+  "platz",
+  "seriennummer",
+  "bewertungsart",
+  "menge",
+  "einstandspreis_cent",
+  "ek_quelle",
+  "alter_monate",
+  "abwertung_promille",
+  "nettoerloes_cent",
+  "einzelwert_cent",
+  "wert_ak_cent",
+  "abwertung_cent",
+  "wert_cent",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "lagerbestand",
+   "fieldtype": "Link",
+   "label": "Bestand",
+   "options": "PH Lagerbestand",
+   "columns": 1
+  },
+  {
+   "fieldname": "produkt",
+   "fieldtype": "Link",
+   "label": "Produkt",
+   "options": "PH Produkt"
+  },
+  {
+   "fieldname": "produkt_name",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "ausfuehrung",
+   "fieldtype": "Link",
+   "label": "Ausführung",
+   "options": "PH Produkt Ausfuehrung"
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke"
+  },
+  {
+   "fieldname": "warengruppe",
+   "fieldtype": "Data",
+   "label": "Warengruppe"
+  },
+  {
+   "fieldname": "lagerort",
+   "fieldtype": "Data",
+   "label": "Lagerort",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "platz",
+   "fieldtype": "Data",
+   "label": "Platz"
+  },
+  {
+   "fieldname": "seriennummer",
+   "fieldtype": "Data",
+   "label": "Seriennummer"
+  },
+  {
+   "fieldname": "bewertungsart",
+   "fieldtype": "Data",
+   "label": "Bewertungsart",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Int",
+   "label": "Menge",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "einstandspreis_cent",
+   "fieldtype": "Int",
+   "label": "Einstandspreis (Cent)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "ek_quelle",
+   "fieldtype": "Data",
+   "label": "EK-Quelle"
+  },
+  {
+   "fieldname": "alter_monate",
+   "fieldtype": "Int",
+   "label": "Alter (Monate)"
+  },
+  {
+   "fieldname": "abwertung_promille",
+   "fieldtype": "Int",
+   "label": "Abwertung (Promille)"
+  },
+  {
+   "fieldname": "nettoerloes_cent",
+   "fieldtype": "Int",
+   "label": "Nettoerlös (Cent)"
+  },
+  {
+   "fieldname": "einzelwert_cent",
+   "fieldtype": "Int",
+   "label": "Einzelwert (Cent)"
+  },
+  {
+   "fieldname": "wert_ak_cent",
+   "fieldtype": "Int",
+   "label": "Wert AK (Cent)"
+  },
+  {
+   "fieldname": "abwertung_cent",
+   "fieldtype": "Int",
+   "label": "Abwertung (Cent)"
+  },
+  {
+   "fieldname": "wert_cent",
+   "fieldtype": "Int",
+   "label": "Bilanzwert (Cent)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 15:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Inventurbewertung Position",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "track_seen": 0,
+ "istable": 1,
+ "editable_grid": 0
+}

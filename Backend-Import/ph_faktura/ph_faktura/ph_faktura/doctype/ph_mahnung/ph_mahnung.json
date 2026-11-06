@@ -23,6 +23,8 @@
   "verzugszinsen_cent",
   "cb_betraege",
   "zinssatz_promille",
+  "zinssatz_bp",
+  "pauschale_cent",
   "verzugstage",
   "gesamt_cent",
   "sb_text",
@@ -157,6 +159,18 @@
    "default": "0"
   },
   {
+   "fieldname": "zinssatz_bp",
+   "fieldtype": "Int",
+   "label": "Zinssatz (Basispunkte)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pauschale_cent",
+   "fieldtype": "Int",
+   "label": "davon Pauschale § 458 UGB (Cent)",
+   "read_only": 1
+  },
+  {
    "fieldname": "verzugstage",
    "fieldtype": "Int",
    "label": "Verzugstage",
@@ -218,7 +232,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 08:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Faktura",
  "name": "PH Mahnung",

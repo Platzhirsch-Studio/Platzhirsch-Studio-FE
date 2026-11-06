@@ -57,6 +57,33 @@ class PHKampagne(Document):
         return n
 
     @frappe.whitelist()
+    def attribution_berechnen(self):
+        """Umsatz aus Aufträgen/Bestellungen über Kontaktpunkte (Modell First/Last/Linear), ROI, Zielfortschritt."""
+        self.check_permission("read")
+        from ph_marketing.ph_marketing import kampagnen
+
+        return kampagnen.kampagne_aktualisieren(self)
+
+    @frappe.whitelist()
+    def kennzahlen_import(self, csv_text, vorschau=1):
+        """CSV-Export von Meta/Google/Pinterest einlesen (Konzept L9). vorschau=1 → nur prüfen."""
+        self.check_permission("write")
+        from ph_marketing.utils.kennzahlen_csv import lesen
+
+        zeilen, fehler = lesen(csv_text or "")
+        if cint(vorschau) or fehler:
+            return {"zeilen": zeilen[:50], "anzahl": len(zeilen), "fehler": fehler, "kosten_cent": sum(z["kosten_cent"] for z in zeilen)}
+        vorhanden = {(str(z.datum), cint(z.impressionen), cint(z.klicks), cint(z.kosten_cent)) for z in self.kennzahlen}
+        neu = 0
+        for z in zeilen:
+            if (z["datum"], z["impressionen"], z["klicks"], z["kosten_cent"]) in vorhanden:
+                continue  # gleicher Export zweimal importiert
+            self.append("kennzahlen", {**z, "notiz": "CSV-Import"})
+            neu += 1
+        self.save()
+        return {"anzahl": len(zeilen), "neu": neu, "fehler": [], "ausgaben_cent": self.ausgaben_cent}
+
+    @frappe.whitelist()
     def auswertung(self):
         """Daten für den Kampagnenbericht (Print Format) und den Dialog „Auswertung“."""
         self.check_permission("read")
@@ -70,4 +97,8 @@ class PHKampagne(Document):
             "newsletter": frappe.db.count("PH Newsletter Ausgabe", {"kampagne": self.name, "status": "Versendet"}),
             "events": frappe.get_all("PH Event", filters={"kampagne": self.name}, fields=["name", "titel", "datum", "plaetze_belegt"]),
             "budget_rest_cent": cint(self.budget_cent) - cint(self.ausgaben_cent),
+            "kontaktpunkte": frappe.db.count("PH Kampagne Kontaktpunkt", {"kampagne": self.name}),
+            "umsatz_attribuiert_cent": cint(self.get("umsatz_attribuiert_cent")),
+            "roi_promille": self.get("roi_promille"),
+            "ziel_ist": cint(self.get("ziel_ist")),
         }

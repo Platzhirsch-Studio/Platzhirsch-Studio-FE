@@ -82,9 +82,12 @@ class PHPflegeAbo(Document):
     # ── Buttons ─────────────────────────────────────────────────────────────
 
     @frappe.whitelist()
-    def einsatz_planen(self, datum, zeit_von=None, zeit_bis=None, techniker=None):
-        """Button „Nächsten Termin planen“: PH Serviceeinsatz (Art Wartung/Pflege)."""
+    def einsatz_planen(self, datum, zeit_von=None, zeit_bis=None, techniker=None, planschluessel=None):
+        """Button „Nächsten Termin planen“: PH Serviceeinsatz (Art Wartung/Pflege). Scheduler
+        tasks.wartungseinsaetze_erzeugen ruft mit planschluessel (Idempotenz) auf."""
         self.check_permission("write")
+        if planschluessel and frappe.db.exists("PH Serviceeinsatz", {"planschluessel": planschluessel}):
+            return frappe.db.get_value("PH Serviceeinsatz", {"planschluessel": planschluessel}, "name")
         einsatz = frappe.get_doc(
             {
                 "doctype": "PH Serviceeinsatz",
@@ -96,8 +99,10 @@ class PHPflegeAbo(Document):
                 "zeit_bis": zeit_bis,
                 "hinweis_intern": self.leistungen,
                 "mitzubringen": ", ".join(s.bezeichnung for s in self.stuecke or [] if s.bezeichnung),
+                "planschluessel": planschluessel,
             }
         ).insert()
+        self.db_set("naechster_einsatz", einsatz.name, update_modified=False)
         return einsatz.name
 
     @frappe.whitelist()

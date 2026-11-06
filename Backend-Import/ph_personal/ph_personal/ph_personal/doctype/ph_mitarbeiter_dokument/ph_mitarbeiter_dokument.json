@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Personalakt-Dokumente (Dienstvertrag, Dienstzettel, Zeugnis …) – immer private Dateien, nur Leitung/Geschäftsführung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "art",
+  "bezeichnung",
+  "datei",
+  "datum",
+  "gueltig_bis",
+  "hochgeladen_von",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Dienstvertrag\nDienstzettel\nZusatzvereinbarung\nGleitzeitvereinbarung\nDienstzeugnis\nFuehrerschein\nSchulungsnachweis\nUnterweisung ASchG\nArbeitsbewilligung\nSonstiges",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Bezeichnung",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "datei",
+   "fieldtype": "Attach",
+   "label": "Datei (privat)",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Datum",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "gueltig_bis",
+   "fieldtype": "Date",
+   "label": "Gültig bis",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "hochgeladen_von",
+   "fieldtype": "Link",
+   "label": "Hochgeladen von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Mitarbeiter Dokument",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

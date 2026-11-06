@@ -1,0 +1,151 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 12:00:00.000000",
+ "description": "Version einer Datei: Speicher-Schlüssel, Größe, Prüfsumme, Hochlader, Kommentar.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "version",
+  "hochgeladen_am",
+  "hochgeladen_von",
+  "groesse",
+  "kommentar",
+  "cb_v",
+  "dateiname_damals",
+  "endung",
+  "mime",
+  "sha256",
+  "geprueft",
+  "wiederhergestellt_aus",
+  "sb_speicher",
+  "speicher",
+  "schluessel",
+  "vorschau_speicher",
+  "vorschau_schluessel",
+  "vorschau_mime"
+ ],
+ "fields": [
+  {
+   "fieldname": "version",
+   "fieldtype": "Int",
+   "label": "Version",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "hochgeladen_am",
+   "fieldtype": "Datetime",
+   "label": "Hochgeladen am",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "hochgeladen_von",
+   "fieldtype": "Link",
+   "label": "Hochgeladen von",
+   "options": "User",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "groesse",
+   "fieldtype": "Int",
+   "label": "Größe (Bytes)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "kommentar",
+   "fieldtype": "Small Text",
+   "label": "Kommentar",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "cb_v",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dateiname_damals",
+   "fieldtype": "Data",
+   "label": "Dateiname beim Hochladen",
+   "length": 200
+  },
+  {
+   "fieldname": "endung",
+   "fieldtype": "Data",
+   "label": "Endung"
+  },
+  {
+   "fieldname": "mime",
+   "fieldtype": "Data",
+   "label": "MIME-Typ"
+  },
+  {
+   "fieldname": "sha256",
+   "fieldtype": "Data",
+   "label": "Prüfsumme SHA-256",
+   "length": 64
+  },
+  {
+   "fieldname": "geprueft",
+   "fieldtype": "Check",
+   "label": "Prüfsumme bestätigt"
+  },
+  {
+   "fieldname": "wiederhergestellt_aus",
+   "fieldtype": "Int",
+   "label": "Wiederhergestellt aus Version"
+  },
+  {
+   "fieldname": "sb_speicher",
+   "fieldtype": "Section Break",
+   "label": "Speicher (technisch)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "speicher",
+   "fieldtype": "Select",
+   "label": "Speicher-Adapter",
+   "options": "lokal\ns3\ngoogle_drive\nonedrive\nfrappe_datei"
+  },
+  {
+   "fieldname": "schluessel",
+   "fieldtype": "Data",
+   "label": "Speicher-Schlüssel",
+   "length": 300
+  },
+  {
+   "fieldname": "vorschau_speicher",
+   "fieldtype": "Data",
+   "label": "Vorschau-Adapter"
+  },
+  {
+   "fieldname": "vorschau_schluessel",
+   "fieldtype": "Data",
+   "label": "Vorschau-Schlüssel",
+   "length": 300
+  },
+  {
+   "fieldname": "vorschau_mime",
+   "fieldtype": "Data",
+   "label": "Vorschau-MIME"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Ablage",
+ "name": "PH Datei Version",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 0
+}

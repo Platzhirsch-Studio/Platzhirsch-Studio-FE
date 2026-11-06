@@ -19,12 +19,34 @@
 //             "off", /de/gutscheine 404): kein Beitrags-Abschnitt, die API
 //             antwortet 409 (QA Technik P2-5). In der Entwicklung bleibt der
 //             Anfrage-Weg sichtbar, damit er geprüft werden kann.
+//
+// Speicher (storageKind):
+//   "ph"     WUNSCHLISTE_STORAGE=frappe|ph UND Gruppe "wunschliste" auf ph mit
+//            Zugang (src/lib/backend/config.js) → ./phAdapter.js (ph_shop)
+//   null     WUNSCHLISTE_STORAGE=frappe|ph, Gruppe auf ph gewünscht, aber
+//            BACKEND_PH_* unvollständig → aus (nichts landet still lokal)
+//   "frappe" alter, nie freigeschalteter Adapter (./frappeAdapter.js)
+//   "local"  sonst wie bisher
 import { frappeWunschlisteReady } from "./frappeAdapter.js";
 import { DATENSCHUTZ_WUNSCHLISTE, GEMEINSCHAFTS_GUTSCHEIN } from "./config.js";
+import { resolveBackend } from "../backend/config.js";
 
 export const isProd = (env = process.env) => env.NODE_ENV === "production" || env.VERCEL_ENV === "production";
 
+const backendStorage = (env) => ["frappe", "ph"].includes(String(env.WUNSCHLISTE_STORAGE || "").trim().toLowerCase());
+
+/** ph-Zugang der Wunschliste ({url,key,secret}) oder null; undefined = ph nicht gewünscht. */
+export function phWunschlisteTarget(env = process.env) {
+  if (!backendStorage(env)) return undefined;
+  const target = resolveBackend("wunschliste", env);
+  if (target.generation !== "ph") return undefined;
+  return target.ph || null;
+}
+
 export function storageKind(env = process.env) {
+  const ph = phWunschlisteTarget(env);
+  if (ph) return "ph";
+  if (ph === null) return null;
   if (frappeWunschlisteReady(env)) return "frappe";
   if (!isProd(env) || env.WUNSCHLISTE_LOCAL_DIR) return "local";
   return null;
@@ -44,6 +66,7 @@ export function contributionChannel(voucherMode, env = process.env, group = GEME
   if (voucherMode === "stripe" && groupVoucherStripeReady(group)) return "stripe";
   if (isProd(env) && voucherMode !== "stripe" && voucherMode !== "anfrage") return "aus";
   // Anfragen erreichen das Studio nur über Frappe; in der Entwicklung bleiben sie lokal.
-  if (isProd(env) && storageKind(env) !== "frappe") return "kontakt";
+  const kind = storageKind(env);
+  if (isProd(env) && kind !== "frappe" && kind !== "ph") return "kontakt";
   return "anfrage";
 }

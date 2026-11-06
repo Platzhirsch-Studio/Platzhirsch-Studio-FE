@@ -57,6 +57,8 @@ test("Newsletter-Route: Schreib-Basis statt NEW_API_BASE_URL, Sperre vor dem Han
   assert.match(src, /const base = formsBackendBaseUrl\(\);/);
   assert.match(src, /const handler = base \? newsletterHandler\(/);
   assert.match(src, /if \(!handler\) return backofficeNotConfigured\("newsletter_subscribe"\);/);
-  // The apiBaseUrl read default is untouched for the guest GET endpoints.
-  assert.match(read("src/lib/apiBaseUrl.js"), /export const NEW_API_SERVER = \(SERVER \|\| DEFAULT_BACKOFFICE\)/);
+  // The apiBaseUrl read default is untouched for the guest GET endpoints
+  // (katalogFileServer() returns it unchanged unless BACKEND_GENERATION switches "katalog" to ph).
+  assert.match(read("src/lib/apiBaseUrl.js"), /const ALT_API_SERVER = \(SERVER \|\| DEFAULT_BACKOFFICE\)/);
+  assert.match(read("src/lib/apiBaseUrl.js"), /export const NEW_API_SERVER = katalogFileServer\(ALT_API_SERVER\);/);
 });

@@ -14,7 +14,14 @@
   "versandweg",
   "nachricht_id",
   "gesendet_am",
-  "grund"
+  "grund",
+  "sb_zustellung",
+  "zugestellt_am",
+  "bounce_typ",
+  "cb_2",
+  "ereignis_letztes",
+  "ereignis_am",
+  "abgemeldet_am"
  ],
  "fields": [
   {
@@ -44,7 +51,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "geplant\ngesendet\nfehler\nuebersprungen\nbounce",
+   "options": "geplant\ngesendet\nverzoegert\nzugestellt\nfehler\nuebersprungen\nbounce\nbounce_weich\nbounce_hart\nbeschwerde\nabgemeldet",
    "in_list_view": 1,
    "in_standard_filter": 1
   },
@@ -72,11 +79,51 @@
    "fieldname": "grund",
    "fieldtype": "Data",
    "label": "Grund (Fehler/übersprungen)"
+  },
+  {
+   "fieldname": "sb_zustellung",
+   "fieldtype": "Section Break",
+   "label": "Zustellung (Anbieter-Ereignisse)"
+  },
+  {
+   "fieldname": "zugestellt_am",
+   "fieldtype": "Datetime",
+   "label": "Zugestellt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bounce_typ",
+   "fieldtype": "Select",
+   "label": "Bounce-Typ",
+   "options": "\nhart\nweich",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ereignis_letztes",
+   "fieldtype": "Data",
+   "label": "Letztes Ereignis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ereignis_am",
+   "fieldtype": "Datetime",
+   "label": "Ereignis am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "abgemeldet_am",
+   "fieldtype": "Datetime",
+   "label": "Abgemeldet am (aus dieser Mail)",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 10:00:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Marketing",
  "name": "PH Newsletter Versand",
@@ -103,6 +150,30 @@
   {
    "title": "bounce",
    "color": "Orange"
+  },
+  {
+   "title": "zugestellt",
+   "color": "Green"
+  },
+  {
+   "title": "verzoegert",
+   "color": "Yellow"
+  },
+  {
+   "title": "bounce_weich",
+   "color": "Orange"
+  },
+  {
+   "title": "bounce_hart",
+   "color": "Red"
+  },
+  {
+   "title": "beschwerde",
+   "color": "Red"
+  },
+  {
+   "title": "abgemeldet",
+   "color": "Gray"
   }
  ],
  "track_changes": 0,

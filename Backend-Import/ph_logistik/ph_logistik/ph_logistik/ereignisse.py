@@ -4,25 +4,40 @@ import frappe
 
 
 def wareneingang_aktualisiert(doc, method=None):
-    """PH Wareneingang (ph_sortiment, Felder geprüft 04.11.: status Offen|Teilweise|Vollstaendig|Reklamiert; Position produkt,
-    menge_erhalten, zustand ok|Transportschaden|beschaedigt|falsch|fehlt) → Wareneingangsbewegungen je Position (idempotent über Schlüssel).
-    Lagerort: Custom Field ph_logistik_lagerort der Position, sonst Standard-Lagerort."""
+    """PH Wareneingang (ph_sortiment, Felder geprüft 04.11.: status Offen|Teilweise|Vollstaendig|Reklamiert; kommission;
+    Position produkt, menge_erhalten, zustand ok|Transportschaden|beschaedigt|falsch|fehlt, seriennummer) → Wareneingangsbewegungen
+    je Position. Nur die Differenz zur bereits gebuchten Menge wird gebucht (Nacherfassung ohne Doppelbuchung).
+    Lagerort/Platz/Kommission: Custom Fields ph_logistik_lagerort/_platz/_kommission der Position, sonst Standard-Lagerort und
+    Kopf-Kommission. Schaden (Transportschaden/beschaedigt) → B-Ware gesperrt (Sperrbestand bis Servicefall/Regress entschieden);
+    auch Reklamiert bucht die erhaltene Ware (sie steht physisch im Lager)."""
     try:
-        if doc.get("status") not in ("Teilweise", "Vollstaendig"):
+        if doc.get("status") not in ("Teilweise", "Vollstaendig", "Reklamiert"):
             return
         from ph_logistik.ph_logistik.bestand import buche
+        from ph_logistik.ph_logistik.bestand_logik import einlagerung_aus_wareneingang
         from ph_logistik.ph_logistik.doctype.ph_lagerort.ph_lagerort import standard_lagerort
 
         std = standard_lagerort()
         for p in doc.get("positionen") or []:
-            menge = int(p.get("menge_erhalten") or 0)
+            gesamt = int(p.get("menge_erhalten") or 0)
             produkt = p.get("produkt")
-            if menge <= 0 or not produkt or p.get("zustand") in ("falsch", "fehlt"):
+            buchen, zustand, gesperrt = einlagerung_aus_wareneingang(p.get("zustand"))
+            if gesamt <= 0 or not produkt or not buchen:
                 continue
             lo = p.get("ph_logistik_lagerort") or std
             if not lo:
                 continue
-            buche("Wareneingang", produkt, menge, lagerort_nach=lo, bezug_doctype="PH Wareneingang", bezug=doc.name, idempotency_key=f"we:{doc.name}:{p.name}:{menge}", grund=f"Wareneingang {doc.name}", quelle="backoffice")
+            bisher = sum(
+                int(b.menge or 0)
+                for b in frappe.get_all("PH Lagerbewegung", {"bezug_doctype": "PH Wareneingang", "bezug": doc.name, "art": "Wareneingang", "status": "Gebucht", "idempotency_key": ("like", f"we:{doc.name}:{p.name}:%")}, ["menge"])
+            )
+            menge = gesamt - bisher
+            if menge <= 0:
+                continue
+            extra = {"zustand": zustand, "gesperrt": gesperrt, "kommission": p.get("ph_logistik_kommission") or doc.get("kommission") or None}
+            if gesperrt:
+                extra["sperrgrund"] = f"{p.get('zustand')} – Wareneingang {doc.name}"
+            buche("Wareneingang", produkt, menge, lagerort_nach=lo, platz_nach=p.get("ph_logistik_platz"), seriennummer=None, bezug_doctype="PH Wareneingang", bezug=doc.name, idempotency_key=f"we:{doc.name}:{p.name}:{gesamt}", grund=f"Wareneingang {doc.name}" + (f" ({p.get('zustand')})" if gesperrt else ""), quelle="backoffice", **extra)
     except Exception:  # noqa: BLE001
         frappe.log_error(title="ph_logistik: Wareneingang buchen")
 

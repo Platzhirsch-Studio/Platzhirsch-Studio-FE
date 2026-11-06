@@ -160,7 +160,7 @@ export default function ResultPanel({ plan, family, onLoad, calendar = false }) 
     } catch {
       /* gesperrt */
     }
-    storeHandoff(storage, { text: planText(plan, family, link), shareUrl: link, locale: T.locale });
+    storeHandoff(storage, { text: planText(plan, family, link), shareUrl: link, locale: T.locale, config: plan });
     window.location.assign(handoffHref({ ...handoffBase, calendar: cal, shareUrl: link }));
   };
 

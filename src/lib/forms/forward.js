@@ -52,7 +52,10 @@ export async function forwardJson(url, payload, { fetchImpl = fetch, headers, ti
 /**
  * inquiryHandler(config) → async POST(request)
  * config: { route, url, schema, maxBytes, successMessage, failMessage,
- *           resolveHeaders?, fetchImpl?, limiter?, now?, env? }
+ *           resolveHeaders?, fetchImpl?, limiter?, now?, env?, forward? }
+ * forward(fields, { fetchImpl, idempotencyKey, env }) → Ergebnis wie forwardJson
+ * (plus kind "not_configured" → 503); gesetzt von den Routen über
+ * src/lib/backend/forms.js (BACKEND_GENERATION alt|ph).
  * First check: Origin/Referer against the site host (origin.js) → 403 forbidden.
  * resolveHeaders: async () => Headers of the original request (route files
  * pass originalRequestHeaders from requestHeaders.js), so the rate limit also
@@ -93,7 +96,16 @@ export function inquiryHandler(config) {
       // lead_ref stays on our side (it is in the Herkunft text block): the
       // backoffice gets exactly the fields it knew before (R4-leads).
       const { lead_ref: leadRef, ...fields } = guard.data;
-      const result = await forwardJson(url, fields, { fetchImpl: config.fetchImpl || fetch });
+      // config.forward (optional): Weiterleiter der Backend-Umschaltung
+      // (src/lib/backend/forms.js forwardInquiry). Ohne ihn: wie bisher.
+      const fetchImpl = config.fetchImpl || fetch;
+      const result = config.forward
+        ? await config.forward(fields, { fetchImpl, idempotencyKey: leadRef || null, env: config.env })
+        : await forwardJson(url, fields, { fetchImpl });
+      if (result.kind === "not_configured") {
+        console.error(`[forms] ${route}: ph-Backend gewählt, aber BACKEND_PH_URL/BACKEND_PH_TOKEN fehlen – nichts gesendet`);
+        return errorResponse("not_configured", 503, { message: failMessage });
+      }
       if (result.kind === "ok") {
         return Response.json({ success: true, message: result.data?.message || successMessage, data: result.data });
       }

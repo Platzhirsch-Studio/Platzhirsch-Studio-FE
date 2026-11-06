@@ -16,6 +16,7 @@
   "cb_kopf",
   "lieferschein",
   "retoure",
+  "warenruecknahme",
   "bestellung",
   "kontakt",
   "sb_dienst",
@@ -145,6 +146,14 @@
    "fieldtype": "Link",
    "label": "Retoure (Shop)",
    "options": "PH Retoure",
+   "depends_on": "eval:doc.richtung=='Retoure'"
+  },
+  {
+   "fieldname": "warenruecknahme",
+   "fieldtype": "Link",
+   "label": "Warenrücknahme",
+   "options": "PH Warenruecknahme",
+   "read_only": 1,
    "depends_on": "eval:doc.richtung=='Retoure'"
   },
   {

@@ -11,6 +11,7 @@ import {
 } from "../schemas";
 import { readJson, updateJson } from "../store";
 import { buildSeed } from "./mockSeed";
+import { buildDemoCard } from "../../kundenkarte/portalMock";
 
 // Mock adapter: serves the demo data from /.data/portal/demo.json (seeded on
 // first access). Writes (feedback, planning requests) are appended there too.
@@ -144,6 +145,14 @@ export const mockAdapter = {
       });
       return { value: current, result: changed };
     });
+  },
+
+  // Kundenkarte (04.11.2026): Demo-Karte nur für bekannte Kunden; Frappe später
+  // ph_kundenkarte.api.portal_card(kontakt, kunde_token). Daten: src/lib/kundenkarte/portalMock.js.
+  async getCustomerCard(customerId) {
+    const { customers } = await db();
+    if (!customers.some((c) => c.id === customerId)) return null;
+    return buildDemoCard();
   },
 
   async sendMessage(customerId, input) {

@@ -3,7 +3,7 @@
  "allow_rename": 0,
  "autoname": "naming_series:",
  "creation": "2026-11-04 00:30:00.000000",
- "description": "Urlaub und Abwesenheiten (Zeitausgleich, Krankenstand, Pflegefreistellung, Sonderurlaub, Fortbildung, unbezahlt) mit Genehmigung durch die Leitung (Workflow „PH Abwesenheit“: Beantragt → Genehmigt/Abgelehnt). Urlaubskonto je Jahr.",
+ "description": "Urlaub und Abwesenheiten (Zeitausgleich, Pflegefreistellung, Sonderurlaub, Fortbildung, Berufsschule, unbezahlt, Karenz/Mutterschutz/Präsenzdienst) mit Genehmigung durch die Leitung (Workflow „PH Abwesenheit“). Urlaubstage nach Arbeitszeitmodell und Feiertagen; Urlaubskonto nach UrlG (PH Urlaubsanspruch). Krankenstand: PH Krankmeldung.",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -18,6 +18,7 @@
   "bis",
   "halbtags",
   "tage",
+  "stunden",
   "sb_details",
   "begruendung",
   "vertretung",
@@ -27,66 +28,379 @@
   "genehmigt_von",
   "genehmigt_am",
   "ablehnungsgrund",
+  "vorgriff_vereinbart",
+  "sb_unterbrechung",
+  "unterbrechung_von",
+  "unterbrechung_bis",
+  "unterbrechung_krankmeldung",
+  "verkuerzt_von",
   "sb_konto",
   "urlaub_anspruch",
   "urlaub_genommen",
   "cb_konto",
   "urlaub_beantragt",
-  "urlaub_rest"
+  "urlaub_rest",
+  "urlaub_verfuegbar",
+  "urlaub_verjaehrung",
+  "tage_je_urlaubsjahr"
  ],
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Nummernkreis", "options": "PH-ABW-.YYYY.-.#####", "default": "PH-ABW-.YYYY.-.#####", "reqd": 1, "hidden": 1, "print_hide": 1},
-  {"fieldname": "titel", "fieldtype": "Data", "label": "Titel", "read_only": 1, "in_list_view": 1},
-  {"fieldname": "mitarbeiter", "fieldtype": "Link", "label": "Mitarbeiter", "options": "PH Mitarbeiter", "reqd": 1, "in_standard_filter": 1},
-  {"fieldname": "mitarbeiter_name", "fieldtype": "Data", "label": "Name", "fetch_from": "mitarbeiter.titel", "read_only": 1, "in_list_view": 1},
-  {"fieldname": "art", "fieldtype": "Select", "label": "Art", "options": "Urlaub\nZeitausgleich\nKrankenstand\nPflegefreistellung\nSonderurlaub\nFortbildung\nUnbezahlt", "default": "Urlaub", "reqd": 1, "in_list_view": 1, "in_standard_filter": 1},
-  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Beantragt\nGenehmigt\nAbgelehnt\nStorniert", "default": "Beantragt", "reqd": 1, "read_only": 1, "in_list_view": 1, "in_standard_filter": 1, "description": "Setzt der Workflow „PH Abwesenheit“ (Genehmigung durch PH Personal Leitung)."},
-  {"fieldname": "cb_kopf", "fieldtype": "Column Break"},
-  {"fieldname": "von", "fieldtype": "Date", "label": "Von", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "bis", "fieldtype": "Date", "label": "Bis", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "halbtags", "fieldtype": "Check", "label": "Halber Tag", "description": "Nur bei einem Tag (von = bis)."},
-  {"fieldname": "tage", "fieldtype": "Float", "label": "Arbeitstage", "read_only": 1, "precision": "1", "in_list_view": 1, "description": "Mo–Fr ohne Feiertage (Feiertagskalender: offen, s. README)."},
-  {"fieldname": "sb_details", "fieldtype": "Section Break", "label": "Details"},
-  {"fieldname": "begruendung", "fieldtype": "Small Text", "label": "Anmerkung", "description": "Bei Krankenstand keine Diagnose eintragen (Art 9 DSGVO)."},
-  {"fieldname": "vertretung", "fieldtype": "Link", "label": "Vertretung", "options": "PH Mitarbeiter", "ignore_user_permissions": 1},
-  {"fieldname": "cb_details", "fieldtype": "Column Break"},
-  {"fieldname": "beantragt_von", "fieldtype": "Link", "label": "Beantragt von", "options": "User", "read_only": 1},
-  {"fieldname": "beantragt_am", "fieldtype": "Datetime", "label": "Beantragt am", "read_only": 1},
-  {"fieldname": "genehmigt_von", "fieldtype": "Link", "label": "Entschieden von", "options": "User", "read_only": 1},
-  {"fieldname": "genehmigt_am", "fieldtype": "Datetime", "label": "Entschieden am", "read_only": 1},
-  {"fieldname": "ablehnungsgrund", "fieldtype": "Small Text", "label": "Ablehnungsgrund", "depends_on": "eval:doc.status=='Abgelehnt'"},
-  {"fieldname": "sb_konto", "fieldtype": "Section Break", "label": "Urlaubskonto (Jahr des Beginns)", "depends_on": "eval:doc.art=='Urlaub'", "collapsible": 1},
-  {"fieldname": "urlaub_anspruch", "fieldtype": "Float", "label": "Anspruch", "read_only": 1, "precision": "1"},
-  {"fieldname": "urlaub_genommen", "fieldtype": "Float", "label": "Genommen (genehmigt)", "read_only": 1, "precision": "1"},
-  {"fieldname": "cb_konto", "fieldtype": "Column Break"},
-  {"fieldname": "urlaub_beantragt", "fieldtype": "Float", "label": "Beantragt (offen)", "read_only": 1, "precision": "1"},
-  {"fieldname": "urlaub_rest", "fieldtype": "Float", "label": "Rest nach diesem Antrag", "read_only": 1, "precision": "1"}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "PH-ABW-.YYYY.-.#####",
+   "default": "PH-ABW-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "mitarbeiter",
+   "fieldtype": "Link",
+   "label": "Mitarbeiter",
+   "options": "PH Mitarbeiter",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "mitarbeiter_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "fetch_from": "mitarbeiter.titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Urlaub\nZeitausgleich\nPflegefreistellung\nSonderurlaub\nFortbildung\nBerufsschule\nUnbezahlt\nKarenz\nMutterschutz\nZivil-/Praesenzdienst",
+   "default": "Urlaub",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Krankenstand über PH Krankmeldung (Gesundheitsdatum, keine Genehmigung)."
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Beantragt\nGenehmigt\nAbgelehnt\nStorniert",
+   "default": "Beantragt",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Setzt der Workflow „PH Abwesenheit“ (Genehmigung durch PH Personal Leitung)."
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "von",
+   "fieldtype": "Date",
+   "label": "Von",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "bis",
+   "fieldtype": "Date",
+   "label": "Bis",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "halbtags",
+   "fieldtype": "Check",
+   "label": "Halber Tag",
+   "description": "Nur bei einem Tag (von = bis)."
+  },
+  {
+   "fieldname": "tage",
+   "fieldtype": "Float",
+   "label": "Arbeitstage",
+   "read_only": 1,
+   "precision": "1",
+   "in_list_view": 1,
+   "description": "Tage, an denen die Person laut Arbeitszeitmodell arbeiten würde, ohne gesetzliche Feiertage (und ohne Krankenstand während des Urlaubs, § 5 UrlG)."
+  },
+  {
+   "fieldname": "stunden",
+   "fieldtype": "Float",
+   "label": "Stunden",
+   "precision": "2",
+   "depends_on": "eval:in_list(['Zeitausgleich','Pflegefreistellung'], doc.art)",
+   "description": "Stundenweiser Zeitausgleich / Pflegefreistellung (optional). Zeitausgleich mindert das Guthaben, weil keine Gutschrift entsteht."
+  },
+  {
+   "fieldname": "sb_details",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "begruendung",
+   "fieldtype": "Small Text",
+   "label": "Anmerkung",
+   "description": "Keine Gesundheitsangaben eintragen (Art 9 DSGVO)."
+  },
+  {
+   "fieldname": "vertretung",
+   "fieldtype": "Link",
+   "label": "Vertretung",
+   "options": "PH Mitarbeiter",
+   "ignore_user_permissions": 1
+  },
+  {
+   "fieldname": "cb_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "beantragt_von",
+   "fieldtype": "Link",
+   "label": "Beantragt von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "beantragt_am",
+   "fieldtype": "Datetime",
+   "label": "Beantragt am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "genehmigt_von",
+   "fieldtype": "Link",
+   "label": "Entschieden von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "genehmigt_am",
+   "fieldtype": "Datetime",
+   "label": "Entschieden am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ablehnungsgrund",
+   "fieldtype": "Small Text",
+   "label": "Ablehnungsgrund",
+   "depends_on": "eval:doc.status=='Abgelehnt'"
+  },
+  {
+   "fieldname": "vorgriff_vereinbart",
+   "fieldtype": "Check",
+   "label": "Urlaubsvorgriff vereinbart",
+   "depends_on": "eval:doc.art=='Urlaub'",
+   "description": "Pflicht, wenn der Urlaub den entstandenen Anspruch übersteigt (Leitung)."
+  },
+  {
+   "fieldname": "sb_unterbrechung",
+   "fieldtype": "Section Break",
+   "label": "Unterbrechung durch Krankenstand (§ 5 UrlG)",
+   "collapsible": 1,
+   "depends_on": "eval:doc.unterbrechung_krankmeldung"
+  },
+  {
+   "fieldname": "unterbrechung_von",
+   "fieldtype": "Date",
+   "label": "Unterbrochen von",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unterbrechung_bis",
+   "fieldtype": "Date",
+   "label": "Unterbrochen bis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unterbrechung_krankmeldung",
+   "fieldtype": "Link",
+   "label": "Krankmeldung",
+   "options": "PH Krankmeldung",
+   "read_only": 1,
+   "ignore_user_permissions": 1
+  },
+  {
+   "fieldname": "verkuerzt_von",
+   "fieldtype": "Date",
+   "label": "Ursprünglich bis",
+   "read_only": 1,
+   "description": "Bei vorzeitiger Rückkehr (Verkürzen durch die Leitung)."
+  },
+  {
+   "fieldname": "sb_konto",
+   "fieldtype": "Section Break",
+   "label": "Urlaubskonto (UrlG, Stand Antragsbeginn)",
+   "depends_on": "eval:doc.art=='Urlaub'",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "urlaub_anspruch",
+   "fieldtype": "Float",
+   "label": "Anspruch",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "urlaub_genommen",
+   "fieldtype": "Float",
+   "label": "Genommen (genehmigt)",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "cb_konto",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "urlaub_beantragt",
+   "fieldtype": "Float",
+   "label": "Beantragt (offen)",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "urlaub_rest",
+   "fieldtype": "Float",
+   "label": "Rest nach diesem Antrag",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "urlaub_verfuegbar",
+   "fieldtype": "Float",
+   "label": "Verfügbar (aliquot)",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "urlaub_verjaehrung",
+   "fieldtype": "Date",
+   "label": "Nächste Verjährung",
+   "read_only": 1,
+   "description": "Ältester offener Rest verjährt an diesem Tag (§ 4 Abs 5 UrlG)."
+  },
+  {
+   "fieldname": "tage_je_urlaubsjahr",
+   "fieldtype": "Small Text",
+   "label": "Tage je Urlaubsjahr",
+   "read_only": 1
+  }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 00:30:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Personal",
  "name": "PH Abwesenheit",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
-  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Backoffice-Admin", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Geschäftsführung", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 1, "email": 0, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Personal Leitung", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Personal Mitarbeiter", "read": 1, "write": 1, "create": 1, "delete": 0, "print": 1, "email": 0, "export": 0, "report": 1, "share": 0},
-  {"role": "PH Personal Selbstservice", "read": 1, "write": 1, "create": 1, "delete": 0, "print": 1, "email": 0, "export": 0, "report": 1, "share": 0}
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Personal Selbstservice",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  }
  ],
  "search_fields": "mitarbeiter_name,art,status",
  "sort_field": "von",
  "sort_order": "DESC",
  "states": [
-  {"title": "Beantragt", "color": "Orange"},
-  {"title": "Genehmigt", "color": "Green"},
-  {"title": "Abgelehnt", "color": "Red"},
-  {"title": "Storniert", "color": "Gray"}
+  {
+   "title": "Beantragt",
+   "color": "Orange"
+  },
+  {
+   "title": "Genehmigt",
+   "color": "Green"
+  },
+  {
+   "title": "Abgelehnt",
+   "color": "Red"
+  },
+  {
+   "title": "Storniert",
+   "color": "Gray"
+  }
  ],
  "title_field": "titel",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1
 }

@@ -12,6 +12,7 @@ from ph_core.api import ApiFehler
 from ph_marketing.ph_marketing import einwilligung as ew
 from ph_marketing.ph_marketing import versand
 from ph_marketing.ph_marketing.einstellungen import einstellungen
+from ph_marketing.utils import eventlogik
 from ph_marketing.utils.token import email_normalisieren, email_plausibel, hash_token, neuer_token
 
 BELEGT_STATUS = ("angemeldet", "bestaetigt", "erschienen")
@@ -27,8 +28,18 @@ def plaetze_aktualisieren(event):
     event.plaetze_frei = max(cint(event.kapazitaet) - belegt, 0) if event.kapazitaet else None
 
 
-def ist_ausgebucht(event, personen=1):
-    return bool(event.kapazitaet) and belegte_plaetze(event) + cint(personen) > cint(event.kapazitaet)
+def _zeilen(event):
+    return [{"name": a.name, "status": a.status, "personen": a.personen, "eingeladen": cint(a.get("eingeladen")), "angemeldet_am": a.angemeldet_am} for a in event.anmeldungen]
+
+
+def ist_eingeladen(event, email):
+    return any(e.email == email and e.status in ("gesendet", "angemeldet") for e in (event.get("einladungen") or []))
+
+
+def ist_ausgebucht(event, personen=1, eingeladen=False):
+    """Kontingent für Eingeladene beachten (utils/eventlogik.frei)."""
+    f = eventlogik.frei(event.kapazitaet, _zeilen(event), eingeladen=eingeladen, kontingent=event.get("kontingent_einladung"), kontingent_bis=event.get("kontingent_bis"), heute=nowdate())
+    return f is not None and cint(personen) > f
 
 
 def status_nach_plaetzen(event):
@@ -45,7 +56,7 @@ def status_nach_plaetzen(event):
     event.db_set(werte, update_modified=False)
 
 
-def anmelden(event_id, name_person, email, personen=1, telefon="", nachricht="", quelle="website", textversion="", kontakt=None, anfrage=None, idempotency_key=None):
+def anmelden(event_id, name_person, email, personen=1, telefon="", nachricht="", quelle="website", textversion="", kontakt=None, anfrage=None, idempotency_key=None, begleitung="", utm=None):
     """Anmeldung anlegen. → dict für API/Button. Fehler als ApiFehler (API) – der Decorator mappt sie."""
     if not frappe.db.exists("PH Event", event_id):
         raise ApiFehler("not_found", 404, _("Event nicht gefunden."))
@@ -67,7 +78,8 @@ def anmelden(event_id, name_person, email, personen=1, telefon="", nachricht="",
         return {"success": True, "status": bestehend.status, "event": event.name, "personen": bestehend.personen, "bereits_angemeldet": True}
 
     status = "angemeldet"
-    if ist_ausgebucht(event, personen):
+    eingeladen = ist_eingeladen(event, email)
+    if ist_ausgebucht(event, personen, eingeladen=eingeladen):
         if not event.warteliste:
             raise ApiFehler("conflict", 409, _("Das Event ist ausgebucht."), {"ausgebucht": True})
         status = "warteliste"
@@ -100,14 +112,26 @@ def anmelden(event_id, name_person, email, personen=1, telefon="", nachricht="",
             "textversion": einw.textversion,
             "nachricht": escape_html((nachricht or "").strip())[:500],
             "anmelde_token_hash": hash_token(token),
+            "eingeladen": int(eingeladen),
+            "begleitung": escape_html((begleitung or "").strip())[:140] or None,
         },
     )
+    for e in event.get("einladungen") or []:
+        if e.email == email and e.status == "gesendet":
+            e.status = "angemeldet"
     event.flags.ignore_permissions = True
     event.save()  # on_update → status_nach_plaetzen (db_set)
     try:
         bestaetigung_senden(event, zeile, token)
     except Exception:  # noqa: BLE001
         frappe.log_error(title=f"PH Event Bestätigung {event.name} → {email}")
+    if utm or event.kampagne:
+        try:
+            from ph_marketing.ph_marketing import kampagnen
+
+            kampagnen.kontaktpunkt(utm or {}, "Event-Anmeldung", email=email, kontakt=kontakt, referenz=("PH Event", f"{event.name}/{zeile.name}"), kampagne=None if (utm or {}).get("utm_campaign") else event.kampagne)
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title=f"PH Event Kontaktpunkt {event.name}")
     return {"success": True, "status": status, "event": event.name, "personen": personen, "plaetze_frei": event.plaetze_frei, "bereits_angemeldet": False}
 
 
@@ -126,8 +150,102 @@ def absagen_mit_token(token):
         if a.name == zeile.name:
             a.status = "abgesagt"
     event.flags.ignore_permissions = True
-    event.save()  # on_update → status_nach_plaetzen (db_set)
+    event.save()  # on_update → status_nach_plaetzen (db_set) + Nachrücken
     return {"status": "abgesagt", "event": event.name}
+
+
+# ── Warteliste: automatisch nachrücken (Konzept L6) ─────────────────────────
+def nachruecken(event, mail=True):
+    """Wartende in Anmeldereihenfolge auf „angemeldet“ setzen, solange Plätze frei sind (Kontingent beachtet).
+    db_set statt save (läuft aus on_update). → Anzahl."""
+    if not cint(event.get("nachruecken_automatisch")) or event.status in ("Durchgefuehrt", "Abgesagt"):
+        return 0
+    if event.datum and getdate(event.datum) < getdate(nowdate()):
+        return 0
+    zeilen = eventlogik.nachruecker(_zeilen(event), event.kapazitaet, event.get("kontingent_einladung"), event.get("kontingent_bis"), nowdate())
+    n = 0
+    for z in zeilen:
+        frappe.db.set_value("PH Event Anmeldung", z["name"], {"status": "angemeldet", "nachgerueckt_am": now_datetime()})
+        a = next((x for x in event.anmeldungen if x.name == z["name"]), None)
+        if a:
+            a.status = "angemeldet"
+        n += 1
+        if mail and a and a.email and not str(a.email).endswith(".invalid"):
+            try:
+                vorlage = event.get("nachrueck_vorlage") or "event_nachgerueckt"
+                ctx = {**_event_ctx(event), "anrede": versand.anrede_fuer(a.name_person), "personen": a.personen}
+                betreff, html = versand.rendern(vorlage, ctx)
+                versand.sende(a.email, betreff, html, referenz_doctype="PH Event", referenz_name=event.name)
+            except Exception:  # noqa: BLE001
+                frappe.log_error(title=f"PH Event Nachrücken-Mail {event.name}")
+    if n:
+        event.add_comment("Info", _("{0} Anmeldung(en) von der Warteliste nachgerückt").format(n))
+        status_nach_plaetzen(event)
+    return n
+
+
+def kontingente_freigeben():
+    """Täglich: Kontingent abgelaufen (kontingent_bis gestern) → freie Plätze an die Warteliste."""
+    n = 0
+    for name in frappe.get_all("PH Event", filters={"status": ("in", ("Offen", "Ausgebucht")), "kontingent_bis": add_days(nowdate(), -1)}, pluck="name"):
+        n += nachruecken(frappe.get_doc("PH Event", name))
+        frappe.db.commit()
+    return n
+
+
+# ── Einladung an ein Segment (Zweck einladungen) mit Kontingent ─────────────
+def einladungen_senden(event, trockenlauf=True, limit=500):
+    """Empfänger = Segment (Einwilligung „einladungen“ zwingend, utils/segment.py) ohne bereits Eingeladene/Angemeldete.
+    trockenlauf → nur zählen. → dict(empfaenger, gesendet, uebersprungen)."""
+    if not event.get("einladung_segment"):
+        frappe.throw(_("Kein Segment für die Einladung gewählt."))
+    if event.status not in ("Offen", "Geplant"):
+        frappe.throw(_("Einladungen nur für geplante oder offene Events."))
+    from ph_marketing.ph_marketing import segmente
+
+    profile = segmente.empfaenger(event.einladung_segment, "einladungen")
+    schon = {e.email for e in event.get("einladungen") or []} | {a.email for a in event.anmeldungen}
+    neu = [p for p in profile if p["email"] not in schon][: cint(limit) or 500]
+    if cint(trockenlauf):
+        return {"empfaenger": len(neu), "gesendet": 0, "uebersprungen": len(profile) - len(neu)}
+    vorlage = event.get("einladung_vorlage") or "event_einladung"
+    gesendet = 0
+    for p in neu:
+        zeile = {"email": p["email"], "kontakt": p.get("kontakt"), "status": "geplant", "einwilligung": frappe.db.get_value("PH Einwilligung", {"email": p["email"], "zweck": "einladungen", "status": "Bestaetigt"}, "name")}
+        try:
+            ctx = {**_event_ctx(event), "anrede": "Guten Tag", "anmelden_url": event.url or versand.website_url("/de/adventsabend"), "abmelde_url": versand.website_url(einstellungen()["abmelden_pfad"]) + "?zweck=einladungen", "kontingent_bis": versand.datum_lang(event.get("kontingent_bis")) if event.get("kontingent_bis") else ""}
+            betreff, html = versand.rendern(vorlage, ctx)
+            versand.sende(p["email"], betreff, html, referenz_doctype="PH Event", referenz_name=event.name, absender_art="gastgeberin")
+            zeile.update(status="gesendet", gesendet_am=now_datetime())
+            gesendet += 1
+        except Exception as ex:  # noqa: BLE001
+            zeile.update(status="fehler", grund=str(ex)[:140])
+            frappe.log_error(title=f"PH Event Einladung {event.name}")
+        event.append("einladungen", zeile)
+    event.einladungen_gesendet = cint(event.get("einladungen_gesendet")) + gesendet
+    event.flags.ignore_permissions = True
+    event.flags.kein_nachruecken = True
+    event.save()
+    return {"empfaenger": len(neu), "gesendet": gesendet, "uebersprungen": len(profile) - len(neu)}
+
+
+# ── Event abgesagt: Teilnehmer informieren (Konzept L7) ─────────────────────
+def absage_an_teilnehmer(event, hinweis=""):
+    """Mail an alle angemeldeten/wartenden Teilnehmer (einmal je Zeile). → Anzahl."""
+    vorlage = event.get("absage_vorlage") or "event_absage"
+    n = 0
+    for a in event.anmeldungen:
+        if a.status not in ("angemeldet", "bestaetigt", "warteliste") or a.get("absage_mail_am") or str(a.email or "").endswith(".invalid"):
+            continue
+        try:
+            ctx = {**_event_ctx(event), "anrede": versand.anrede_fuer(a.name_person), "hinweis": escape_html(hinweis or "")}
+            betreff, html = versand.rendern(vorlage, ctx)
+            versand.sende(a.email, betreff, html, referenz_doctype="PH Event", referenz_name=event.name, absender_art="gastgeberin")
+            frappe.db.set_value("PH Event Anmeldung", a.name, "absage_mail_am", now_datetime(), update_modified=False)
+            n += 1
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title=f"PH Event Absage-Mail {event.name}")
+    return n
 
 
 def _event_ctx(event):
@@ -144,6 +262,13 @@ def _event_ctx(event):
 def bestaetigung_senden(event, zeile, token=None):
     vorlage = event.bestaetigung_vorlage or "event_bestaetigung"
     ctx = {**_event_ctx(event), "anrede": versand.anrede_fuer(zeile.name_person), "personen": zeile.personen, "warteliste": zeile.status == "warteliste", "absagen_url": f"{versand.website_url('/de/adventsabend/absagen')}?token={token}" if token else ""}
+    if zeile.status != "warteliste" and zeile.name:
+        try:
+            from ph_marketing.ph_marketing import checkin
+
+            ctx["checkin_code"] = checkin.code_fuer(event.name, zeile.name)
+        except Exception:  # noqa: BLE001 – ohne Schlüssel (Tests) einfach ohne Code
+            ctx["checkin_code"] = ""
     betreff, html = versand.rendern(vorlage, ctx)
     versand.sende(zeile.email, betreff, html, referenz_doctype="PH Event", referenz_name=event.name)
     frappe.db.set_value("PH Event Anmeldung", zeile.name, "bestaetigung_gesendet_am", now_datetime(), update_modified=False)
@@ -200,7 +325,9 @@ def anmeldedaten_loeschen():
         if getdate(add_months(ev.datum, monate)) > getdate(nowdate()):
             continue
         for a in ev.anmeldungen:
-            a.update({"name_person": "gelöscht", "email": "geloescht@platzhirsch.invalid", "telefon": None, "nachricht": None, "notiz": None, "anmelde_token_hash": None, "kontakt": None, "anfrage": None})
+            a.update({"name_person": "gelöscht", "email": "geloescht@platzhirsch.invalid", "telefon": None, "nachricht": None, "notiz": None, "anmelde_token_hash": None, "kontakt": None, "anfrage": None, "begleitung": None, "checkin_durch": None})
+        for e in ev.get("einladungen") or []:
+            e.update({"email": "geloescht@platzhirsch.invalid", "name_person": None, "kontakt": None})
         ev.anmeldungen_geloescht_am = now_datetime()
         ev.flags.ignore_permissions = True
         ev.flags.ignore_validate = True

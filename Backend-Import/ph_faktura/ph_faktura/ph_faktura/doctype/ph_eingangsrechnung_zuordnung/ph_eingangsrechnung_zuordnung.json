@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Kostenzuordnung einer Eingangsrechnung auf Projekt/Kostenart (ganz, nach Positionen, aliquot).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "projekt",
+  "kostenart",
+  "prozent",
+  "betrag_cent",
+  "belegposition",
+  "bezug_doctype",
+  "bezug_name",
+  "bemerkung",
+  "vorschlag"
+ ],
+ "fields": [
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "kostenart",
+   "fieldtype": "Link",
+   "label": "Kostenart",
+   "options": "PH Kostenart",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "prozent",
+   "fieldtype": "Percent",
+   "label": "Anteil %",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Aliquot: Prozent vom Netto – oder Betrag eintragen"
+  },
+  {
+   "fieldname": "betrag_cent",
+   "fieldtype": "Int",
+   "label": "Betrag netto (Cent)",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "belegposition",
+   "fieldtype": "Int",
+   "label": "Belegposition",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Modus „Nach Positionen“: Pos-Nr. der Belegposition"
+  },
+  {
+   "fieldname": "bezug_doctype",
+   "fieldtype": "Link",
+   "label": "Bezug-Typ",
+   "options": "DocType",
+   "description": "Herstellerbestellung, Speditionsauftrag, Fremdgewerk … (verhindert Doppelzählung mit dem Obligo)"
+  },
+  {
+   "fieldname": "bezug_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Bezug",
+   "options": "bezug_doctype",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "bemerkung",
+   "fieldtype": "Data",
+   "label": "Bemerkung",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "vorschlag",
+   "fieldtype": "Check",
+   "label": "Vorschlag",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Faktura",
+ "name": "PH Eingangsrechnung Zuordnung",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

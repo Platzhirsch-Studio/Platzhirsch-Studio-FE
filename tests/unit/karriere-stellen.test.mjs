@@ -182,6 +182,19 @@ test("Entgelt-Pflicht (§ 9 Abs 2 GlBG) blockiert die Veröffentlichung", () => 
   assert.equal(ok.salary, 2400);
   assert.equal(ok.salary_unit, "MONTH");
   assert.equal(buildStelle({ ...STELLEN_META[0], entgelt: { ...VOLL, zeitraum: "Jahr" } }).salary_unit, "YEAR");
+  // Stundenlohn (ph_personal entgelt_zeitraum „Stunde“): vollständig, HOUR, Satz in allen vier Sprachen.
+  const stunde = { ...VOLL, kvMindestBrutto: 14.5, zeitraum: "Stunde" };
+  assert.equal(entgeltVollstaendig(stunde), true);
+  const stundenJob = buildStelle({ ...STELLEN_META[0], entgelt: stunde });
+  assert.equal(stundenJob.salary_unit, "HOUR");
+  assert.equal(stundenJob.salary, 14.5);
+  assert.equal(publishableJob(stundenJob), true);
+  assert.match(entgeltText(stunde, "de"), /brutto pro Stunde \(Handel\)/);
+  assert.match(entgeltText(stunde, "en"), /gross per hour \(Handel\)/);
+  assert.match(entgeltText(stunde, "fr"), /brut par heure \(Handel\)/);
+  assert.match(entgeltText(stunde, "it"), /lordi all’ora \(Handel\)/);
+  assert.match(entgeltText(VOLL, "it"), /lordi al mese \(Handel\)/);
+  assert.match(entgeltText({ ...VOLL, zeitraum: "Jahr" }, "it"), /lordi all’anno \(Handel\)/);
   assert.equal(visibleJobs([ok], false).length, 1);
   assert.equal(publishableJob(buildStelle({ ...STELLEN_META[0], entgelt: { ...VOLL, ueberzahlung: false } })), true);
   assert.match(entgeltText(VOLL, "de"), /^Das kollektivvertragliche Mindestentgelt beträgt €\s2\.400,00 brutto pro Monat \(Handel\)\. Bereitschaft zur Überzahlung/);

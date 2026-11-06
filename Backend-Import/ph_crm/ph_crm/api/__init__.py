@@ -6,6 +6,9 @@ Anfragen (hier):
 Termine (ph_crm/api/termin.py, hier re-exportiert, Namen wie src/lib/booking/adapters/frappe.js):
   get_terminarten, get_freie_slots, create_termin, verify_termin, get_termin, cancel_termin,
   reschedule_termin, get_meet_link
+Kundenakte/DSGVO (ph_crm/api/kontakt.py, Backoffice-Session): get_kundenakte (= kundenakte), get_zeitleiste
+  (= zeitleiste), find_duplicates, merge_kontakte, create_kontakt, export_kontakt_daten, get_loeschplan,
+  anonymize_kontakt
 
 create_anfrage-Payloads (src/app/api/{kontakt,beratung_anfrage,anfrage_produkt}/route.js):
   kontakt_form.create_contact     { name, company, email_address, telefon, ihre_nachricht }
@@ -14,7 +17,13 @@ create_anfrage-Payloads (src/app/api/{kontakt,beratung_anfrage,anfrage_produkt}/
   anfrage_produkt.create_anfrage  { anfrage_type, anfrage_vorname, anfrage_nachname, anfrage_email,
                                     anfrage_phone, anfrage_country, anfrage_city, anfrage_address,
                                     anfrage_beschreibung, anfrage_company, anfrage_fiscal_number, produkte[] }
-Zusätzlich optional: art, quelle, sprache, idempotency_key, einwilligung_text_version, upload_erwartet.
+Zusätzlich optional: art, quelle, sprache, idempotency_key, einwilligung_text_version, upload_erwartet,
+utm_source, utm_medium, utm_campaign, utm_term, utm_content, klick_id (sonst aus dem Herkunftsblock),
+planer (sofaplaner|dreilaender|kuechenplaner|…, Werte wie src/lib/forms/beratungContext.js), planer_konfiguration
+(JSON-Objekt ≤ 64 KB: Sofaplaner planSchema, Dreiländer {land, wert, …}), planer_link (Teilen-Link, https
+*.platzhirsch.studio) → Felder planer/planer_link/planer_konfiguration + privater Anhang planer_datei
+(utils/planer.py). Gilt für create_anfrage und create_contact.
+Doppelte Anfrage (R8): gleiche E-Mail, offene Anfrage jünger als n Tage → duplikat_von + Kommentar.
 Der Herkunftsblock („── Herkunft (automatisch) ──“, src/lib/forms/leadPayload.js) wird aus dem Text
 getrennt und in kanal / referenz_website / herkunft_block abgelegt.
 Antwort: {"referenz": "<PH Anfrage name>", "status"} – der `name` ist die `ref` des Upload-Tickets.
@@ -27,6 +36,18 @@ from frappe import _
 from frappe.utils import cint, now_datetime
 
 from ph_core.api import ApiFehler, ip_hash, pflicht, ph_api, text
+from ph_crm.api.kontakt import (  # noqa: F401 – re-export: ph_crm.api.get_kundenakte usw.
+    anonymize_kontakt,
+    create_kontakt,
+    export_kontakt_daten,
+    find_duplicates,
+    get_kundenakte,
+    get_loeschplan,
+    get_zeitleiste,
+    kundenakte,
+    merge_kontakte,
+    zeitleiste,
+)
 from ph_crm.api.termin import (  # noqa: F401 – re-export: ph_crm.api.get_freie_slots usw.
     cancel_termin,
     create_termin,
@@ -118,6 +139,14 @@ def create_anfrage(**d):
         zusatz = []
 
     eigen, block, herkunft = _herkunft_trennen(roh)
+    from ph_crm.utils.pipeline import utm_aus_herkunft
+
+    utm = utm_aus_herkunft(herkunft, d)
+    planer = _planer(d)
+    if planer:
+        zusatz.append(_("Planer: {0}").format(planer["label"]) + (f" ({planer['zusammenfassung']})" if planer["zusammenfassung"] else ""))
+        if planer["link"]:
+            zusatz.append(_("Planer-Link: {0}").format(planer["link"]))
     anliegen = frappe.utils.escape_html(eigen)
     if zusatz:
         anliegen += "\n\n" + "\n".join(frappe.utils.escape_html(z) for z in zusatz)
@@ -155,13 +184,65 @@ def create_anfrage(**d):
             "upload_status": "offen" if cint(d.get("upload_erwartet")) else None,
             "ip_hash": ip_hash(),
             "produkte": produkte,
+            "planer": planer["planer"] if planer else None,
+            "planer_link": planer["link"] if planer else None,
+            "planer_konfiguration": planer["json"] if planer else None,
+            **{k: v or None for k, v in utm.items()},
         }
     )
     if doc.quelle not in ("website", "agent", "telefon", "showroom", "email", "empfehlung", "messe", "sonstige"):
         doc.quelle = "agent" if "agent" in doc.quelle else "website"
     doc.flags.ignore_permissions = False
+    vorher = _duplikat_suchen(doc.email)
+    if vorher:
+        doc.duplikat_von = vorher
     doc.insert()
+    if planer and planer["json"]:
+        _planer_anhang(doc, planer)
+    if vorher:
+        try:
+            frappe.get_doc("PH Anfrage", vorher).add_comment("Info", _("Weitere Anfrage derselben Person: {0}").format(doc.name))
+        except Exception:  # noqa: BLE001
+            frappe.log_error(title=f"PH Anfrage {doc.name}: Duplikat-Hinweis fehlgeschlagen")
     return {"referenz": doc.name, "status": doc.status}
+
+
+def _planer(d):
+    """planer/planer_konfiguration/planer_link prüfen → dict oder None; Fehler → 400 invalid mit Feld."""
+    from ph_crm.utils.planer import PlanerFehler, planer_pruefen
+
+    try:
+        return planer_pruefen(d.get("planer"), d.get("planer_konfiguration"), d.get("planer_link"))
+    except PlanerFehler as e:
+        raise ApiFehler("invalid", 400, _(e.meldung), {"field": e.feld}) from e
+
+
+def _planer_anhang(doc, planer):
+    """Konfiguration zusätzlich als privaten JSON-Anhang an der Anfrage ablegen (Download/Weitergabe an Planung)."""
+    f = frappe.get_doc({
+        "doctype": "File",
+        "file_name": f"{planer['planer']}-{doc.name}.json",
+        "attached_to_doctype": "PH Anfrage",
+        "attached_to_name": doc.name,
+        "attached_to_field": "planer_datei",
+        "is_private": 1,
+        "content": planer["json"].encode(),
+    })
+    f.flags.ignore_permissions = True
+    f.insert()
+    frappe.db.set_value("PH Anfrage", doc.name, "planer_datei", f.file_url, update_modified=False)
+
+
+def _duplikat_suchen(email):
+    """R8 (Konzept CRM §8.2): offene Anfrage mit gleicher E-Mail innerhalb von n Tagen → deren Name."""
+    from frappe.utils import add_days
+
+    from ph_crm.ph_crm.doctype.ph_termin_einstellungen.ph_termin_einstellungen import einstellungen
+
+    e = einstellungen()
+    if not email or not e.get("auto_duplikat", 1):
+        return None
+    return frappe.db.get_value("PH Anfrage", {"email": str(email).strip().lower(), "status": ("in", ["Neu", "Qualifiziert", "Termin vereinbart", "Angebot"]), "eingang": (">", add_days(now_datetime(), -int(e.get("duplikat_tage") or 7)))}, "name", order_by="eingang desc")
 
 
 # Alias für die alte Kontaktformular-Route (gleiche Logik, Art wird erkannt).

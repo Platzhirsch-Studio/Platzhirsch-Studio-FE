@@ -1,0 +1,97 @@
+{
+  "produkt": "DATEV (Unternehmen online + DATEV-Format)",
+  "url": "https://www.datev.de/web/de/loesungen/steuerberater/klassisches-kanzleigeschaeft/belege-und-daten-digital-in-die-kanzlei-uebertragen/datev-unternehmen-online/",
+  "stand": "2026-11-04",
+  "zeichen": 8000,
+  "hinweis": "developer.datev.de ist JS-gerendert; WebFetch lieferte leeren Inhalt. DATEV-Format-Angaben stammen aus dem Suchindex-Auszug von developer.datev.de/datev/platform/en/dtvf. Die offizielle Feldbeschreibung Buchungsstapel (DATEV-PDF) nennt laut Suche Änderungen am 02.08.2025 (Felder 43, 44, 119, 120); Drittquellen nennen Formatversion 12 bzw. 13.",
+  "funktionen": [
+    {
+      "name": "Belege online hochladen/mailen mit OCR",
+      "beschreibung": "Belege werden hochgeladen oder per E-Mail weitergeleitet; Geschäftspartner/IBAN werden per OCR vorbelegt.",
+      "bereich": "faktura",
+      "nutzen": "Eingangsrechnungen digital an den Steuerberater.",
+      "quelle": "DATEV (Unternehmen online + DATEV-Format)",
+      "url": "https://www.datev.de/web/de/loesungen/steuerberater/klassisches-kanzleigeschaeft/belege-und-daten-digital-in-die-kanzlei-uebertragen/datev-unternehmen-online/"
+    },
+    {
+      "name": "Bank online mit Belegzuordnung",
+      "beschreibung": "Kontoumsätze werden per PIN/TAN oder EBICS abgerufen und per OCR den passenden Rechnungen zugeordnet, auch bei Skonto.",
+      "bereich": "faktura",
+      "nutzen": "Zahlungsabgleich gemeinsam mit der Kanzlei.",
+      "quelle": "DATEV (Unternehmen online + DATEV-Format)",
+      "url": "https://www.datev.de/web/de/loesungen/steuerberater/klassisches-kanzleigeschaeft/belege-und-daten-digital-in-die-kanzlei-uebertragen/datev-unternehmen-online/"
+    },
+    {
+      "name": "Kassenbuch GoBD-konform",
+      "beschreibung": "Bis zu 99 Barkassen werden von der Erfassung bis zum Zählprotokoll geführt.",
+      "bereich": "faktura",
+      "nutzen": "Showroom-Barkassa dokumentieren.",
+      "quelle": "DATEV (Unternehmen online + DATEV-Format)",
+      "url": "https://www.datev.de/web/de/loesungen/steuerberater/klassisches-kanzleigeschaeft/belege-und-daten-digital-in-die-kanzlei-uebertragen/datev-unternehmen-online/"
+    },
+    {
+      "name": "Auswertungen BWA/OPOS/UStVA",
+      "beschreibung": "Kontoblatt, Summen-/Saldenliste, OPOS-Liste, UStVA-Werteblatt, ZM und BWA werden bereitgestellt.",
+      "bereich": "faktura",
+      "nutzen": "Inhaber sieht die Zahlen der Kanzlei.",
+      "quelle": "DATEV (Unternehmen online + DATEV-Format)",
+      "url": "https://www.datev.de/web/de/loesungen/steuerberater/klassisches-kanzleigeschaeft/belege-und-daten-digital-in-die-kanzlei-uebertragen/datev-unternehmen-online/"
+    },
+    {
+      "name": "Upload mobil",
+      "beschreibung": "Belege werden mit der App fotografiert und per SmartLogin übermittelt.",
+      "bereich": "faktura",
+      "nutzen": "Tankbeleg des Montagebusses sofort erfasst.",
+      "quelle": "DATEV (Unternehmen online + DATEV-Format)",
+      "url": "https://www.datev.de/web/de/loesungen/steuerberater/klassisches-kanzleigeschaeft/belege-und-daten-digital-in-die-kanzlei-uebertragen/datev-unternehmen-online/"
+    },
+    {
+      "name": "E-Rechnung ZUGFeRD 2.x / XRechnung übernehmen",
+      "beschreibung": "E-Rechnungen in ZUGFeRD 2.x und XRechnung werden übernommen und weiterverarbeitet.",
+      "bereich": "faktura",
+      "nutzen": "Strukturierte Lieferantenrechnungen ohne Abtippen.",
+      "quelle": "DATEV (Unternehmen online + DATEV-Format)",
+      "url": "https://www.datev.de/web/de/loesungen/steuerberater/klassisches-kanzleigeschaeft/belege-und-daten-digital-in-die-kanzlei-uebertragen/datev-unternehmen-online/"
+    },
+    {
+      "name": "Zahlungsverkehr aus Belegbild",
+      "beschreibung": "Überweisungen/Lastschriften werden aus dem Belegbild vorausgefüllt und ohne separates Banking-Programm übermittelt.",
+      "bereich": "faktura",
+      "nutzen": "Lieferantenrechnung direkt bezahlen.",
+      "quelle": "DATEV (Unternehmen online + DATEV-Format)",
+      "url": "https://www.datev.de/web/de/loesungen/steuerberater/klassisches-kanzleigeschaeft/belege-und-daten-digital-in-die-kanzlei-uebertragen/datev-unternehmen-online/"
+    },
+    {
+      "name": "Personal: Stammdaten, Sofortmeldung, Monatsdaten",
+      "beschreibung": "Personalstammdaten, Sofortmeldungen, eAU-Abruf, Lohnauswertungen und Monatsdaten werden online erfasst.",
+      "bereich": "personal",
+      "nutzen": "Lohnvorerfassung für die Kanzlei (DE-Prozesse).",
+      "quelle": "DATEV (Unternehmen online + DATEV-Format)",
+      "url": "https://www.datev.de/web/de/loesungen/steuerberater/klassisches-kanzleigeschaeft/belege-und-daten-digital-in-die-kanzlei-uebertragen/datev-unternehmen-online/"
+    },
+    {
+      "name": "DATEV-Format: EXTF-CSV-Aufbau",
+      "beschreibung": "Export als CSV mit festem Präfix EXTF_...csv; Zeile 1 Kopfsatz mit Metadaten, Zeile 2 Spaltenüberschriften, ab Zeile 3 Daten.",
+      "bereich": "faktura",
+      "nutzen": "Backoffice kann Buchungsstapel für DATEV-Kanzleien liefern.",
+      "quelle": "DATEV (Unternehmen online + DATEV-Format)",
+      "url": "https://developer.datev.de/datev/platform/en/dtvf"
+    },
+    {
+      "name": "DATEV-Format: Trenn- und Textregeln",
+      "beschreibung": "Felder werden mit Semikolon getrennt, Zeilen enden mit CR/LF, Textfelder stehen in Anführungszeichen (innere verdoppelt), Dezimaltrenner ist Komma.",
+      "bereich": "faktura",
+      "nutzen": "Fehlerfreier Import beim Steuerberater.",
+      "quelle": "DATEV (Unternehmen online + DATEV-Format)",
+      "url": "https://developer.datev.de/datev/platform/en/dtvf"
+    },
+    {
+      "name": "DATEV-Format: Kopfsatz Buchungsstapel",
+      "beschreibung": "Der Kopfsatz beginnt z. B. mit \"EXTF\";700;21;\"Buchungsstapel\";13 (Kennzeichen, Header-Version, Kategorie 21, Formatname, Formatversion).",
+      "bereich": "faktura",
+      "nutzen": "Versionsfeld korrekt setzen (aktuelle Formatversion vor Umsetzung prüfen).",
+      "quelle": "DATEV (Unternehmen online + DATEV-Format)",
+      "url": "https://developer.datev.de/datev/platform/en/dtvf"
+    }
+  ]
+}

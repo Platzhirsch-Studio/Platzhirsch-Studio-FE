@@ -21,7 +21,49 @@ KATEGORIE_DE = {"Planung": "Planung", "Verkauf": "Verkauf", "Montage": "Montage"
 def after_install():
     einstellungen_anlegen()
     stellen_importieren()
+    checklisten_anlegen()
     frappe.db.commit()
+
+
+# Standard-Checklisten (Fachkritik P14/B8/B10). Rechtsgrundlagen als Hinweis, keine Rechtsberatung.
+ONBOARDING = [
+    ("ÖGK-Anmeldung vor Arbeitsantritt", -1, "Lohnverrechnung", 1, "§ 33 ASVG", "oegk_anmeldung_am"),
+    ("Dienstzettel/Dienstvertrag übergeben", 0, "Leitung", 1, "§ 2 AVRAG", "dienstzettel_am"),
+    ("Datenschutzinformation für Beschäftigte übergeben", 0, "Leitung", 1, "Art. 13 DSGVO", "datenschutzinfo_am"),
+    ("Sicherheitsunterweisung (Montage, Lager, Fahrzeug)", 0, "Leitung", 1, "§ 14 ASchG", "unterweisung_am"),
+    ("Arbeitszeitmodell und Urlaubsanspruch erfassen", 0, "Sachbearbeitung", 0, "", ""),
+    ("Benutzer, Kassa-PIN und Geräte einrichten", 0, "Technik", 0, "", ""),
+    ("Schlüssel/Arbeitsmittel ausgeben und eintragen", 0, "Leitung", 0, "", ""),
+    ("Einschulung Showroom/Kassa/Planungssoftware", 7, "Leitung", 0, "", ""),
+    ("Feedbackgespräch Ende Probemonat", 28, "Leitung", 0, "§ 19 AngG", ""),
+]
+OFFBOARDING = [
+    ("Zugang entziehen (Benutzer, Kassa-PIN, Sitzungen)", 1, "Technik", 1, "Art. 32 DSGVO", "zugang_entzogen_am"),
+    ("ÖGK-Abmeldung", 7, "Lohnverrechnung", 1, "§ 33 ASVG (binnen 7 Tagen)", "oegk_abmeldung_am"),
+    ("Arbeitsmittel zurück (Schlüssel, Fahrzeug, Tablet, Kleidung)", 0, "Leitung", 0, "", ""),
+    ("Endabrechnung: Urlaubsersatzleistung und Zeitguthaben an Lohnverrechnung", 0, "Leitung", 1, "§ 10 UrlG, § 19e AZG", ""),
+    ("Dienstzeugnis ausstellen (auf Verlangen)", 14, "Leitung", 0, "§ 39 AngG / § 1163 ABGB", "dienstzeugnis_am"),
+]
+
+
+def checklisten_anlegen():
+    """Standardvorlagen Onboarding/Offboarding (idempotent, nur wenn nicht vorhanden)."""
+    for titel, art, aufgaben in (("Standard Onboarding", "Onboarding", ONBOARDING), ("Standard Offboarding", "Offboarding", OFFBOARDING)):
+        if frappe.db.exists("PH Onboarding Vorlage", titel):
+            continue
+        frappe.get_doc(
+            {
+                "doctype": "PH Onboarding Vorlage",
+                "titel": titel,
+                "art": art,
+                "standard": 1,
+                "aktiv": 1,
+                "aufgaben": [
+                    {"aufgabe": a, "tage_relativ": t, "verantwortlich": v, "pflicht": pf, "rechtsgrundlage": r, "nachweis_feld": n}
+                    for a, t, v, pf, r, n in aufgaben
+                ],
+            }
+        ).insert(ignore_permissions=True)
 
 
 def einstellungen_anlegen():

@@ -1,0 +1,1026 @@
+// Bereich Marketing – alle sichtbaren Texte, Label-Maps und Glossar (10-konzept-marketing § 2.0.3, MASTER § 5.3 Nr. 6).
+// Eine Quelle: Seiten, Komponenten, Server Actions und Tests lesen hier. Fachbegriffe des Datenbestands (Schlüssel
+// ohne Umlaut, englische Kürzel) erscheinen nie roh in der Oberfläche – nur über die Maps unten.
+// Keine Superlative, keine erfundenen Zahlen, Du-Form intern, Sie in Kundenmails. Reines Datenmodul.
+
+export const BEREICH = "Marketing";
+
+/** Seitentitel nach Q-B10: „<Objekt> · Marketing · Platzhirsch Backoffice“ – der Shell-Titel hängt den Rest an. */
+export const seitentitel = (objekt) => `${objekt} · ${BEREICH}`;
+
+// ---------------------------------------------------------------------------------------------- Status
+
+/** Status-Schlüssel → Anzeige, je DocType (Filter senden den Schlüssel, § 9.2). */
+export const STATUS_TEXT = Object.freeze({
+  ausgabe: { Entwurf: "Entwurf", Freigabe: "Wartet auf Freigabe", Geplant: "Geplant", "Wird versendet": "Wird versendet", Versendet: "Versendet", Abgebrochen: "Abgebrochen" },
+  abo: { "Angemeldet unbestaetigt": "Unbestätigt", Aktiv: "Aktiv", Abgemeldet: "Abgemeldet", Bounce: "Unzustellbar", Beschwerde: "Als Spam gemeldet" },
+  einwilligung: { Offen: "Offen", Bestaetigt: "Bestätigt", Widerrufen: "Widerrufen", Abgelaufen: "Abgelaufen" },
+  event: { Geplant: "Geplant", Offen: "Offen", Ausgebucht: "Ausgebucht", Durchgefuehrt: "Durchgeführt", Abgesagt: "Abgesagt" },
+  anmeldung: { angemeldet: "Angemeldet", bestaetigt: "Bestätigt", warteliste: "Warteliste", abgesagt: "Abgesagt", erschienen: "Da", "nicht erschienen": "Nicht erschienen" },
+  kampagne: { Entwurf: "Entwurf", Aktiv: "Aktiv", Pausiert: "Pausiert", Beendet: "Beendet" },
+  social: { Idee: "Idee", Entwurf: "Entwurf", Wartet: "Wartet auf Freigabe", Freigegeben: "Freigegeben", Geplant: "Geplant", Veroeffentlicht: "Veröffentlicht", Verworfen: "Verworfen" },
+  empfehlung: { "Code ausgegeben": "Code ausgegeben", "Anfrage eingegangen": "Anfrage eingegangen", "Auftrag erteilt": "Auftrag erteilt", "Geliefert und bezahlt": "Geliefert und bezahlt", "Gutschein faellig": "Gutschein fällig", "Gutschein ausgegeben": "Gutschein ausgegeben", Verfallen: "Verfallen", Abgelehnt: "Abgelehnt" },
+  reise: { Entwurf: "Entwurf", Aktiv: "Aktiv", AktivWartet: "Aktiv · wartet auf Automatik", Pausiert: "Pausiert" },
+  segment: { Aktiv: "Aktiv", Archiviert: "Archiviert" },
+  versand: { geplant: "Geplant", gesendet: "Gesendet", verzoegert: "Verzögert", zugestellt: "Zugestellt", fehler: "Fehler", uebersprungen: "Übersprungen", bounce: "Unzustellbar", bounce_weich: "Vorübergehend unzustellbar", bounce_hart: "Unzustellbar", beschwerde: "Als Spam gemeldet", abgemeldet: "Abgemeldet" },
+  reiseVersand: { geplant: "Geplant", gesendet: "Gesendet", uebersprungen: "Übersprungen", fehler: "Fehler" },
+});
+
+export const statusText = (gruppe, wert) => STATUS_TEXT[gruppe]?.[wert] ?? (wert ? String(wert) : "–");
+
+// ---------------------------------------------------------------------------------------------- Glossar
+
+export const ZWECK_TEXT = Object.freeze({
+  newsletter: "Newsletter",
+  einladungen: "Einladungen zu Abenden",
+  merkliste_erinnerung: "Merkliste-Erinnerung",
+  planer_erinnerung: "Planer-Erinnerung",
+  rueckmeldung: "Rückmeldung",
+  pflege_nachkauf: "Pflege und Nachkauf",
+  whatsapp: "WhatsApp",
+  foto_referenz: "Foto-Referenz",
+  kundenkarte_auswertung: "Kundenkarte-Auswertung",
+  teilnahme: "Teilnahme an Event (kein Werbezweck)",
+});
+export const ZWECKE = Object.freeze(["newsletter", "einladungen", "merkliste_erinnerung", "planer_erinnerung", "rueckmeldung", "pflege_nachkauf", "whatsapp", "foto_referenz", "kundenkarte_auswertung"]);
+/** Zwecke mit Bestätigungsmail (Spiegel regeln.py DOI_ZWECKE). */
+export const ZWECKE_MIT_BESTAETIGUNG = Object.freeze(["newsletter", "einladungen", "merkliste_erinnerung", "planer_erinnerung", "rueckmeldung", "pflege_nachkauf"]);
+/** Werbliche Zwecke, die „Keine Werbung mehr“ widerruft. */
+export const WERBE_ZWECKE = Object.freeze(["newsletter", "einladungen", "merkliste_erinnerung", "planer_erinnerung", "rueckmeldung", "pflege_nachkauf", "whatsapp"]);
+
+export const KANAL_TEXT = Object.freeze({ website: "Website", showroom: "Showroom", telefon: "Telefon", email: "E-Mail", whatsapp: "WhatsApp", papier: "Papier", backoffice: "Backoffice" });
+export const QUELLE_TEXT = Object.freeze({ website: "Website", showroom: "Showroom", event: "Event", shop: "Shop", portal: "Kundenportal", import: "Import", backoffice: "Backoffice", sonstige: "Sonstige", telefon: "Telefon", email: "E-Mail" });
+export const SPRACHE_TEXT = Object.freeze({ de: "Deutsch", en: "Englisch", fr: "Französisch", it: "Italienisch" });
+export const ABMELDE_KANAL_TEXT = Object.freeze({ link: "Abmeldelink", one_click: "Abmeldung im Mailprogramm", antwort_mail: "Antwortmail", backoffice: "Backoffice", bounce: "Unzustellbar", beschwerde: "Als Spam gemeldet", import: "Import", telefon: "Telefon", showroom: "Showroom" });
+
+export const GRUNDLAGE_TEXT = Object.freeze({ V: "Vertrag/Service (keine Werbung)", B: "Bestandskunde, ähnliche Produkte", E: "Einwilligung" });
+export const GRUNDLAGE_KURZ = Object.freeze({ V: "Vertrag/Service", B: "Bestandskunde", E: "Einwilligung" });
+
+export const AUSLOESER_TEXT = Object.freeze({ datum: "Datum aus dem Auftrag", jahrestag: "Jahrestag", jaehrlich: "Jährlich an einem Tag", event: "Event", einwilligung: "Einwilligung erteilt", abo_bestaetigt: "Newsletter bestätigt" });
+export const AUSLOESER_FELD_TEXT = Object.freeze({ liefertermin_bestaetigt: "Lieferung", lieferdatum: "Lieferung", montage: "Montage", kaufdatum: "Kauf", creation: "Anlage" });
+
+export const KRITERIUM_TEXT = Object.freeze({
+  interesse: "Interesse", sprache: "Sprache", plz: "Postleitzahl", land: "Land", kontaktart: "Kontaktart", kontakt_status: "Kontaktstatus",
+  kundenkarte_stufe: "Kundenkarten-Stufe", kauf_in_tagen: "Kauf in den letzten … Tagen", kein_kauf_seit_tagen: "Kein Kauf seit … Tagen",
+  umsatz_12m_cent: "Umsatz 12 Monate", umsatz_gesamt_cent: "Umsatz gesamt", kaeufe_anzahl: "Anzahl Käufe", event: "Event", abo_quelle: "Abo-Quelle",
+});
+export const KRITERIEN_LEITUNG = Object.freeze(["umsatz_12m_cent", "umsatz_gesamt_cent", "kundenkarte_stufe"]);
+export const OPERATOR_TEXT = Object.freeze({ ist: "ist", "ist nicht": "ist nicht", "beginnt mit": "beginnt mit", zwischen: "zwischen", mindestens: "mindestens", hoechstens: "höchstens", enthaelt: "enthält", vorhanden: "vorhanden", fehlt: "fehlt" });
+
+export const KAMPAGNE_KANAL = Object.freeze(["Meta", "Pinterest", "Google", "Newsletter", "Print", "Event", "Social organisch", "Empfehlung", "Sonstige"]);
+export const ZIEL_KENNZAHL = Object.freeze(["Anfragen", "Termine", "Abos", "Event-Anmeldungen", "Klicks", "Reichweite"]);
+export const ATTRIBUTION_TEXT = Object.freeze({ last: "letzter Kontakt zählt", first: "erster Kontakt zählt", linear: "alle Kontakte zählen gleich" });
+
+export const SOCIAL_KANAELE = Object.freeze(["Pinterest", "Instagram", "LinkedIn", "YouTube", "Facebook"]);
+export const SOCIAL_FORMATE = Object.freeze({ Pinterest: ["Pin", "Board", "Video"], Instagram: ["Post", "Reel", "Story", "Karussell"], LinkedIn: ["Post", "Karussell", "Video"], YouTube: ["Video"], Facebook: ["Post", "Reel", "Story", "Video"] });
+export const SOCIAL_BOARDS = Object.freeze(["bodensee", "chalet", "pool-spa", "kueche", "outdoor", "yacht", "hotel", "ski"]);
+export const BILDQUELLE_TEXT = Object.freeze({ offen: "Bildquelle offen", eigen: "Eigenes Foto von Platzhirsch", "Hersteller freigegeben": "Hersteller, schriftlich freigegeben" });
+export const BILDQUELLE_FOLGE = Object.freeze({
+  offen: "Solange die Bildquelle offen ist, kann der Beitrag nicht freigegeben werden.",
+  eigen: "Bildnachweis „Platzhirsch Home Living“ wird gesetzt.",
+  "Hersteller freigegeben": "Marke und schriftliche Bildfreigabe sind Pflicht; der Bildnachweis nennt den Hersteller.",
+});
+export const KENNZEICHNUNG_TEXT = Object.freeze({ nein: "Keine Kooperation", kooperation: "Kooperation mit Hersteller", bezahlt: "Bezahlte Werbung" });
+
+export const BLOCK_TEXT = Object.freeze({ brief: "Brief", neueStuecke: "Neue Stücke", skizze: "Haralds Skizze", termine: "Termine", gutZuWissen: "Ein Tipp", arbeitsweise: "Arbeitsweise" });
+export const BLOCK_REIHE = Object.freeze(["brief", "neueStuecke", "skizze", "termine", "gutZuWissen", "arbeitsweise"]);
+
+export const ZIELGRUPPE_TEXT = Object.freeze({ "Alle aktiven Abos": "Alle aktiven Abos", Interesse: "Interesse", Sprache: "Sprache", Segment: "Zielgruppe", Testadresse: "Testadresse" });
+export const VERSANDWEG_TEXT = Object.freeze({ "Frappe Email Queue": "Versand über das System", Resend: "Versand über Mail-Dienst" });
+export const VORLAGE_ART = Object.freeze(["System", "Newsletter", "Event", "Kundenreise"]);
+export const FUSSZEILE_TEXT = Object.freeze({ A: "Fußzeile mit Abmeldelink", B: "Fußzeile mit Abmeldelink (Bestandskunde)", V: "Fußzeile ohne Abmeldelink (Service)", S: "Fußzeile ohne Abmeldelink (Service)", "je Empfänger": "je Empfänger passend" });
+export const EVENT_ART = Object.freeze(["Abend im Showroom", "Workshop", "Markenpräsentation", "Messe", "Sonstige"]);
+
+export const MONATE = Object.freeze(["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]);
+export const MONATE_KURZ = Object.freeze(["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]);
+export const WOCHENTAGE = Object.freeze(["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"]);
+export const WOCHENTAGE_KURZ = Object.freeze(["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"]);
+
+// ---------------------------------------------------------------------------------------------- Navigation
+
+export const NAV = Object.freeze({
+  uebersicht: "Übersicht", newsletter: "Newsletter", social: "Social", events: "Events", kampagnen: "Kampagnen", empfaenger: "Empfänger",
+  kundenreisen: "Kundenreisen", zielgruppen: "Zielgruppen", empfehlungen: "Empfehlungen", einblicke: "Einblicke", berichte: "Berichte", vorlagen: "Vorlagen", einstellungen: "Einstellungen",
+});
+
+// ---------------------------------------------------------------------------------------------- Allgemein
+
+export const ALLG = Object.freeze({
+  zuruecksetzen: "Filter zurücksetzen",
+  speichern: "Speichern",
+  abbrechen: "Abbrechen",
+  schliessen: "Schließen",
+  oeffnen: "Öffnen",
+  mehr: "Mehr",
+  aktionen: "Aktionen",
+  keinRecht: "Dafür fehlt dir das Recht.",
+  unerwartet: "Das hat nicht geklappt. Bitte erneut versuchen.",
+  ungueltig: "Bitte die markierten Felder prüfen.",
+  nichtGeladen: "Konnte nicht geladen werden",
+  erneut: "Erneut",
+  stand: (zeit) => `Stand ${zeit}`,
+  keineWerte: "Noch keine Werte",
+  pflicht: "Pflichtfeld",
+  nurLeitung: "Nur Leitung Marketing",
+  leitungBitten: "Leitung bitten",
+  gespeichert: (zeit) => `Gespeichert ${zeit}`,
+  speichert: "Speichert …",
+  nichtGespeichert: "Nicht gespeichert",
+  technisch: "Technische Angaben",
+  suche: "Suchen",
+  personen: (n) => `${n} ${n === 1 ? "Person" : "Personen"}`,
+  stueck: (n, ein, mehr) => `${n} ${n === 1 ? ein : mehr}`,
+  testmodus: (adresse) => `Testmodus – alle Mails gehen an die Testadresse${adresse ? ` ${adresse}` : ""}.`,
+  sperreBand: "Einige Funktionen warten auf den nächsten Backend-Stand.",
+  sperreDetails: "Details",
+  automatikAus: "Kundenreisen sind ausgeschaltet – es werden keine automatischen Mails geplant.",
+});
+
+export const ERSTBESUCH = Object.freeze({
+  start: "Oben steht, was auf dich wartet. Nichts geht ohne Freigabe der Leitung nach außen.",
+  newsletter: "Eine Ausgabe im Monat. „Neue Ausgabe“ legt sie mit einem Klick an.",
+  empfaenger: "Eine Zeile je Adresse – Newsletter und Einwilligungen zusammen.",
+  social: "Ein Klick auf einen Tag legt einen Beitrag an. Freigegeben wird mit Bild und Bildrechten.",
+  events: "Anmeldungen am Telefon über „Anmeldung erfassen“. Am Eventtag öffnet der Check-in.",
+  kampagnen: "Kennzahlen trägst du über den Knopf in der Zeile ein.",
+});
+
+// ---------------------------------------------------------------------------------------------- Übersicht
+
+export const START = Object.freeze({
+  titel: "Marketing",
+  untertitel: "Post aus Lochau, Abende im Showroom, Redaktionsplan und Kampagnen",
+  zuTun: "Zu tun",
+  zuTunUnter: { leitung: "Freigaben zuerst", mitarbeiter: "Deine Aufgaben" },
+  nichtsWartet: "Nichts wartet auf dich.",
+  ersteSchritte: "Erste Schritte",
+  ersteSchritteUnter: "Drei Schritte, dann verschwindet diese Karte.",
+  schritte: { ausgabe: "Erste Ausgabe anlegen", event: "Event anlegen", beitrag: "Beitrag planen" },
+  kennzahlen: {
+    abos: "Aktive Abos",
+    unbestaetigt: "Unbestätigt über 48 Std.",
+    anmeldungen: "Anmeldungen nächstes Event",
+    beitraege: "Beiträge diese Woche",
+  },
+  vormonat: (d) => (d === 0 ? "wie im Vormonat" : `${d > 0 ? "+" : "−"}${Math.abs(d)} zum Vormonat`),
+  naechsteAusgabe: "Nächste Ausgabe",
+  bereit: "bereit",
+  nichtBereit: (was) => `noch nicht bereit: ${was}`,
+  empfaenger: (n) => `${n} Empfänger`,
+  keineAusgabe: (monat) => `Noch keine Ausgabe für ${monat}`,
+  ausgabeAnlegen: "Ausgabe anlegen",
+  dieseWoche: "Diese Woche",
+  dieseWocheUnter: "Social und Events",
+  dieseWocheLeer: "In dieser Woche ist nichts geplant.",
+  kalenderOeffnen: "Kalender öffnen",
+  naechstesEvent: "Nächstes Event",
+  keinEvent: "Kein Event geplant",
+  eventAnlegen: "Event anlegen",
+  anmeldungErfassen: "Anmeldung erfassen",
+  checkinOeffnen: "Check-in öffnen",
+  plaetze: (b, k) => (k ? `${b} von ${k} Plätzen` : `${b} Personen angemeldet`),
+  akzentFreigabe: "Wartet auf Freigabe",
+  akzentFreigabeText: "Ausgaben und Beiträge, die du freigibst.",
+  akzentBeitraege: "Heute geplant",
+  akzentBeitraegeText: "Beiträge, die heute veröffentlicht werden.",
+  mehrZahlen: "Mehr Zahlen",
+  mehrZahlenUnter: "Abos je Woche · Abos nach Quelle · Einwilligungen nach Zweck",
+  abosJeWoche: "Abos je Woche",
+  abosNachQuelle: "Abos nach Quelle",
+  einwilligungenNachZweck: "Einwilligungen nach Zweck",
+  bestaetigungsquote: "Bestätigungsquote 30 Tage",
+  neu: "Neu",
+  neuMenue: { ausgabe: "Newsletter-Ausgabe", beitrag: "Social-Beitrag", event: "Event", kampagne: "Kampagne", anmeldung: "Newsletter-Anmeldung", einwilligung: "Einwilligung erfassen", empfehlung: "Empfehlungscode" },
+});
+
+export const ZUTUN = Object.freeze({
+  ausgabeFreigabe: (titel, wer) => `${titel} wartet auf Freigabe${wer ? ` · ${wer}` : ""}`,
+  socialFreigabe: (titel) => `Beitrag „${titel}“ wartet auf Freigabe`,
+  gutscheinFaellig: (wer) => `Gutschein fällig · Empfehlung ${wer}`,
+  uhrzeitFehlt: (titel) => `${titel}: Uhrzeit fehlt – Einladung kann nicht starten`,
+  kanzleiOffen: (n) => `${n} werbliche ${n === 1 ? "Reise wartet" : "Reisen warten"} auf die Kanzlei-Freigabe`,
+  zurueckgegeben: (titel, grund) => `${titel} zurückgegeben${grund ? `: „${grund}“` : ""}`,
+  heuteGeplant: (titel) => `Heute geplant: „${titel}“ – als veröffentlicht markieren?`,
+  kennzahlFehlt: (titel) => `Kampagne „${titel}“: letzte Kennzahl vor über 7 Tagen`,
+  eventMorgen: (titel, n) => `Morgen ${titel}: ${n} Personen – Teilnehmerliste drucken`,
+  knopf: { ansehen: "Ansehen", freigeben: "Freigeben", gutschein: "Gutschein …", eintragen: "Eintragen", oeffnen: "Öffnen", markieren: "Markieren …", kennzahl: "Kennzahl", drucken: "Drucken", einstellungen: "Einstellungen" },
+});
+
+// ---------------------------------------------------------------------------------------------- Newsletter
+
+export const NEWSLETTER = Object.freeze({
+  titel: "Newsletter",
+  untertitel: "Post aus Lochau – eine Ausgabe im Monat",
+  neueAusgabe: "Neue Ausgabe",
+  leerBeginnen: "Leer beginnen",
+  kopieLetzte: "Kopie der letzten Ausgabe mit Inhalt",
+  spalten: { ausgabe: "Ausgabe", versand: "Versand", empfaenger: "Empfänger", zustellung: "Zugestellt / Fehler", status: "Status" },
+  leer: "Noch keine Ausgabe. Post aus Lochau erscheint einmal im Monat – die erste Ausgabe beginnt mit dem Brief.",
+  gefiltert: (s) => `Keine Ausgabe mit Status „${s}“.`,
+  angelegt: (m) => `Ausgabe ${m} angelegt`,
+  gibtEsSchon: (m) => `Für ${m} gibt es schon eine Ausgabe`,
+  anzahl: (n) => `${n} ${n === 1 ? "Ausgabe" : "Ausgaben"}`,
+  tabs: { inhalt: "Inhalt", versand: "Empfänger & Versand", protokoll: "Protokoll", verlauf: "Verlauf" },
+  bereit: (n, m) => `Bereit · ${n} von ${m} nötigen Teilen`,
+  nichtBereit: (was) => `Noch nicht bereit: ${was}`,
+  regel: "Bereit = Brief + ein gefüllter Teil „Neue Stücke“ oder „Skizze“ + mindestens zwei Inhaltsblöcke.",
+  fehlt: { brief: "Brief fehlt", slot: "Neue Stücke oder Skizze fehlt", inhalt: "zweiter Inhaltsblock fehlt" },
+  zurFreigabe: "Zur Freigabe",
+  freigebenUndPlanen: "Freigeben und planen …",
+  freigeben: "Freigeben …",
+  zurueckgeben: "Zurückgeben …",
+  zurueckAufEntwurf: "Zurück auf Entwurf",
+  jetztVersenden: "Jetzt versenden …",
+  terminAendern: "Termin ändern …",
+  protokoll: "Protokoll",
+  duplizieren: "Duplizieren als nächste Ausgabe",
+  abbrechen: "Abbrechen …",
+  testmail: "Testmail …",
+  html: "HTML herunterladen",
+  drucken: "Drucken",
+  wartetBadge: "Wartet auf Freigabe",
+  zurFreigabeToast: (m) => `Ausgabe ${m} zur Freigabe gegeben`,
+  freigegebenToast: (m, t) => `Ausgabe ${m} freigegeben – sendet ${t}`,
+  zurueckToast: "Zurück auf Entwurf – erneute Freigabe nötig",
+  eingefroren: (zeit) => `Versendet am ${zeit} – Inhalt ist eingefroren`,
+  abgebrochenBand: (grund) => `Abgebrochen${grund ? `: ${grund}` : ""}`,
+  sendetIn: (txt) => `sendet ${txt}`,
+  fortschritt: (g, n, f) => `${g} von ${n} gesendet${f ? ` · ${f} Fehler` : ""}`,
+  teilfehler: (ok, f) => `${ok} zugestellt, ${f} fehlgeschlagen – Protokoll ansehen`,
+  bloeckeLeer: "Diese Ausgabe hat noch keine Blöcke.",
+  standardBloecke: "Standardblöcke einfügen",
+  blockDabei: "dabei",
+  blockOptional: "optional, leer",
+  blockUnvollstaendig: (grund) => `unvollständig: ${grund}`,
+  blockHinzu: "Block",
+  blockMenue: { hoch: "Nach oben", runter: "Nach unten", anfang: "An den Anfang", duplizieren: "Duplizieren", entfernen: "Entfernen" },
+  blockEntfernt: (t) => `Block „${t}“ entfernt`,
+  felder: { absender: "Absender", text: "Text", titel: "Titel", bild: "Bild", bild_alt: "Bildbeschreibung", marke: "Marke", url: "Link", link_label: "Linktext", event: "Event", betreff: "Betreff", sprache: "Sprache", kampagne: "Kampagne", zielgruppe: "Zielgruppe", versand_geplant: "Versand geplant" },
+  eigenesFoto: "Eigenes Foto von Platzhirsch",
+  eigenesFotoHinweis: "Im Newsletter nur eigene Fotos. Herstellerbilder gehen über Social-Beiträge mit Freigabe.",
+  kundenprojekt: "Kundenprojekt – Einwilligung Foto-Referenz nötig",
+  markeHinweis: "nur „im Showroom“, keine Preisangaben",
+  langFuerMail: (n) => `${n} Zeichen – lang für eine Mail`,
+  vorschau: "Vorschau",
+  vorschauTitel: (m, art) => `Mail-Vorschau Ausgabe ${m}, ${art}`,
+  vorschauFehler: "Vorschau konnte nicht erzeugt werden",
+  ohneVorschau: "Ohne Vorschau keine Freigabe",
+  desktop: "Desktop",
+  mobil: "Mobil",
+  aktualisiertGleich: "Aktualisiert gleich …",
+  zielgruppeSatz: "Unbestätigte Adressen und alte Adressen ohne Bestätigung sind nie dabei.",
+  empfaengerAnzeigen: "Empfänger anzeigen",
+  werbefensterSatz: "Newsletter sind Werbung – empfohlen Dienstag bis Donnerstag.",
+  sperrtag: (d) => `Sperrtag: ${d}`,
+  protokollLeer: "Das Protokoll entsteht beim Versand.",
+  schreiben: "Schreiben",
+  segmentFehlt: "Zielgruppe wählen",
+  interesseFehlt: "Interesse wählen",
+  bearbeitetZurueck: "Zurück auf Entwurf – erneute Freigabe nötig",
+});
+
+export const FREIGABE = Object.freeze({
+  titelAusgabe: (m) => `Ausgabe ${m} freigeben`,
+  titelSocial: (t) => `Beitrag „${t}“ freigeben`,
+  pruefliste: "Prüfliste",
+  bereit: "Bereit",
+  testmail: (zeit) => `Testmail gesendet ${zeit}`,
+  keineTestmail: "Noch keine Testmail",
+  empfaenger: (n) => `Empfänger ${n}`,
+  fotos: "Kundenprojekt-Fotos mit Einwilligung",
+  versandzeit: "Versandzeit",
+  knopf: (termin) => `Freigeben – ${termin}`,
+  freigebenKnopf: "Freigeben",
+  zurueckgeben: "Zurückgeben …",
+  grund: "Was soll geändert werden?",
+  grundPflicht: "Bitte kurz sagen, was geändert werden soll.",
+  zurueckgegeben: (t) => `${t} zurückgegeben`,
+  eigenerAntrag: "Eigener Antrag – zweite Person nötig",
+  pruefungen: { quelle: "Bildquelle", kundenprojekt: "Kundenprojekt", kennzeichnung: "Kennzeichnung" },
+  kennzeichnungFehlt: "Bei Kooperation oder bezahlter Werbung muss „Anzeige“ oder „Werbung“ im Text stehen.",
+  kundenprojektFrage: "Zeigt das Bild Personen oder Räume von Kunden?",
+  kundenprojektHaken: "Einwilligung Foto-Referenz liegt vor",
+  kennzeichnungFrage: "Kooperation oder bezahlt?",
+  bildFehlt: "Ohne Bild keine Freigabe",
+  altFehlt: "Bildbeschreibung fehlt",
+});
+
+export const TESTMAIL = Object.freeze({
+  titel: "Testmail senden",
+  adresse: "An",
+  senden: "Senden",
+  nurIntern: "Testmails nur an interne Adressen",
+  gesendet: (a) => `Testmail an ${a} gesendet`,
+  fehler: "Testmail konnte nicht gesendet werden – Mail-Dienst antwortet nicht",
+});
+
+export const VERSAND = Object.freeze({
+  jetztTitel: (m) => `Ausgabe ${m} jetzt versenden?`,
+  jetztText: "Die Mails gehen sofort an alle Empfänger. Das lässt sich nicht zurückholen.",
+  jetztKnopf: "Jetzt versenden",
+  abbrechenTitel: (m) => `Versand der Ausgabe ${m} abbrechen?`,
+  abbrechenText: "Offene Empfänger werden übersprungen.",
+  abbrechenKnopf: "Versand abbrechen",
+  grund: "Grund",
+  terminTitel: "Versandtermin ändern",
+  terminVerschoben: (t) => `Versand auf ${t} verschoben`,
+  versendet: (m) => `Versand der Ausgabe ${m} ausgelöst`,
+  abgebrochen: (m) => `Ausgabe ${m} abgebrochen`,
+  fakten: { empfaenger: "Empfänger", zielgruppe: "Zielgruppe", testmail: "Letzte Testmail", testmodus: "Testmodus" },
+});
+
+// ---------------------------------------------------------------------------------------------- Empfänger
+
+export const EMPFAENGER = Object.freeze({
+  titel: "Empfänger",
+  untertitel: "Newsletter und Einwilligungen je Adresse",
+  personen: "Personen",
+  einwilligungen: "Einwilligungen",
+  anmeldung: "Newsletter-Anmeldung",
+  einwilligung: "Einwilligung",
+  spalten: { person: "Person", newsletter: "Newsletter", zwecke: "Zwecke", quelle: "Quelle", zustellung: "Letzte Zustellung", zweck: "Zweck", status: "Status", kanal: "Kanal", textversion: "Textversion", zeitpunkt: "Zeitpunkt" },
+  altbestand: "Alte Adresse ohne Bestätigung – wird nicht angeschrieben",
+  seit: (std) => `seit ${std} Std.`,
+  linkAbgelaufen: "Link abgelaufen",
+  loeschtIn: (t) => `wird in ${t} ${t === 1 ? "Tag" : "Tagen"} gelöscht, wenn nicht bestätigt`,
+  leer: "Noch keine Empfänger. Anmeldungen kommen über die Website (mit Bestätigungsmail) oder werden hier am Tresen erfasst.",
+  leerEinwilligungen: "Noch keine Einwilligungen. Sie entstehen mit jeder bestätigten Website-Anmeldung; Papier- und Showroom-Einwilligungen werden hier erfasst.",
+  gefiltert: "Keine Personen mit diesen Filtern.",
+  gefiltertEinw: "Keine Einwilligung mit diesen Filtern.",
+  masse: { bestaetigung: "Bestätigungsmail erneut senden …", abmelden: "Abmelden …", nachweis: "Nachweis drucken", widerruf: "Widerruf erfassen …" },
+  auswahl: (n) => `${n} ausgewählt`,
+  vorschauMoeglich: (n, m, g) => `${n + m} ausgewählt – ${n} möglich${m ? `, ${m} übersprungen (${g})` : ""}`,
+  ergebnisBestaetigung: (n) => `Bestätigungsmail an ${n} ${n === 1 ? "Adresse" : "Adressen"} gesendet`,
+  ergebnisAbmelden: (n) => `${n} ${n === 1 ? "Adresse" : "Adressen"} abgemeldet`,
+  uebersprungenGrund: { abgemeldet: "abgemeldet", kurz: "vor Kurzem gesendet", spam: "als Spam gemeldet", aktiv: "schon bestätigt", unzustellbar: "unzustellbar" },
+});
+
+export const PERSON = Object.freeze({
+  tabs: { uebersicht: "Übersicht", einwilligungen: "Einwilligungen", zustellungen: "Zustellungen", verlauf: "Verlauf" },
+  keineWerbung: "Keine Werbung mehr …",
+  nurNewsletter: "Nur Newsletter abbestellen …",
+  einwilligungErfassen: "Einwilligung erfassen …",
+  bestaetigungErneut: "Bestätigungsmail erneut senden …",
+  adresseAendern: "Adresse ändern …",
+  nachweis: "Nachweis (PDF)",
+  auskunft: "Auskunft (Art. 15)",
+  datenLoeschen: "Daten löschen …",
+  newsletter: "Newsletter",
+  angemeldet: "Angemeldet",
+  bestaetigungsmail: "Bestätigungsmail",
+  bestaetigt: "Bestätigt",
+  interessen: "Interessen",
+  anredeName: "Name für Anrede",
+  sprache: "Sprache",
+  statusNurUeber: "Status ändert sich nur über Bestätigen oder Abmelden",
+  nachweisfeld: "Nachweisfeld – nicht änderbar",
+  korrektur: "Falsch erfasst? Widerruf mit Grund „Erfassungsfehler“ und neu erfassen.",
+  bezuege: "Bezüge",
+  kundenakte: "Kundenakte",
+  zustellungenLeer: "Noch keine Zustellung.",
+  einwilligungenLeer: "Noch keine Einwilligung zu dieser Adresse.",
+  linkGueltig: (bis) => `Link ist noch gültig (bis ${bis})`,
+  zuletztVor: (min) => `zuletzt vor ${min} Min. gesendet`,
+  nurUnbestaetigt: "Nur bei unbestätigten Adressen",
+  loeschenTitel: (e) => `Daten von ${e} löschen?`,
+  loeschenText: "Die Einwilligungs-Einträge bleiben als Nachweis mit Widerruf.",
+  loeschenTippen: "Zum Bestätigen „löschen“ eintippen",
+  loeschenNurStatus: "Nur bei Abgemeldet, Unbestätigt, Unzustellbar oder Als Spam gemeldet",
+  geloescht: "Daten gelöscht",
+  adresseHilfe: "Neue Adresse über Website-Anmeldung, alte Adresse abmelden (Grund „Adresswechsel“).",
+  auskunftTitel: "Auskunft nach Art. 15",
+  auskunftVollstaendig: "Vollständige Auskunft über die Kundenakte",
+  dsgvoAnfrage: "Anfrage mit Frist anlegen",
+  sperreKontakt: "Diese Person will keinen Kontakt – keine Marketing-Aktionen",
+  nichtVerknuepft: "nicht verknüpft",
+});
+
+export const ANMELDUNG = Object.freeze({
+  titel: "Newsletter-Anmeldung",
+  email: "E-Mail",
+  name: "Name für Anrede",
+  sprache: "Sprache",
+  interessen: "Interessen",
+  quelle: "Wo angemeldet?",
+  satz: "Die Kundin bekommt eine Bestätigungsmail. Erst nach dem Klick ist sie angemeldet.",
+  hinweisHaken: "Auf die Bestätigungsmail hingewiesen",
+  knopf: "Anmelden – Bestätigungsmail senden",
+  vorschlag: (d) => `Meinten Sie ${d}?`,
+  ok: (e) => `Bestätigungsmail an ${e} gesendet`,
+  qrTitel: "Am Tablet selbst eintragen",
+  qrText: "Die Kundin trägt sich auf ihrem Telefon oder dem Showroom-Tablet ein und bekommt die Bestätigungsmail.",
+  schon: "Diese Adresse ist schon angemeldet.",
+});
+
+export const EINWILLIGUNG = Object.freeze({
+  titel: "Einwilligung erfassen",
+  person: "E-Mail",
+  zweck: "Zweck",
+  wie: "Wie erteilt?",
+  formular: "Unterschriebenes Formular",
+  textversion: "Textversion",
+  bezug: "Bezug (optional)",
+  satzMail: "Die Kundin bekommt eine Bestätigungsmail. Erst nach dem Klick gilt die Einwilligung.",
+  satzPapier: "Das unterschriebene Formular ist der Nachweis.",
+  wirdGespeichert: (z, k, t, zeit) => `Wird gespeichert: ${z} · ${k} · Textversion ${t} · ${zeit} – danach nicht mehr änderbar`,
+  knopfMail: "Erfassen – Bestätigung senden",
+  knopfPapier: "Erfassen mit Formular",
+  ohneFormular: "Ohne Formular kein Nachweis",
+  kanalGesperrt: "Kommt mit dem nächsten Backend-Stand – bis dahin: Formular unterschreiben lassen",
+  ok: (z) => `Einwilligung „${z}“ erfasst`,
+  widerrufTitel: (z) => `Widerruf „${z}“ erfassen?`,
+  widerrufText: "Alle wirksamen Einträge dieses Zwecks werden widerrufen, beim Newsletter auch das Abo.",
+  widerrufKnopf: "Widerruf erfassen",
+  widerrufen: (z) => `Widerruf „${z}“ erfasst`,
+  belegTitel: "Bestätigung mit Beleg",
+  belegText: "Beleg (z. B. „Formular vom 28.10. im Ordner“)",
+  belegKnopf: "Bestätigen",
+});
+
+export const KEINE_WERBUNG = Object.freeze({
+  titel: (e) => `Keine Werbung mehr für ${e}?`,
+  umfang: "Umfang",
+  umfaenge: { alle: "Werbung aller Art", kontakt: "Jede Kontaktaufnahme außer Vertrag/Service", newsletter: "Nur Newsletter" },
+  kanal: "Wie gemeldet?",
+  kanaele: { antwort_mail: "Antwortmail", telefon: "Telefon", showroom: "Showroom", backoffice: "Backoffice" },
+  grund: "Grund (optional)",
+  fakten: {
+    alle: (zwecke) => `Newsletter wird abgemeldet.${zwecke.length ? ` Einwilligungen ${zwecke.map((z) => `„${z}“`).join(", ")} werden widerrufen.` : ""} Erneute Anmeldung nur mit neuer Bestätigungsmail.`,
+    kontakt: "Zusätzlich wird eine Kontaktsperre gesetzt – nur noch Mails zu Vertrag und Service.",
+    newsletter: "Nur der Newsletter wird abgemeldet. Andere Einwilligungen bleiben.",
+  },
+  knopf: "Keine Werbung mehr",
+  ok: (e) => `Keine Werbung mehr für ${e}`,
+  crmAufgabe: "Kontaktsperre als Aufgabe an das CRM gegeben",
+});
+
+export const ABMELDEN = Object.freeze({
+  titel: (n) => (n === 1 ? "Adresse abmelden?" : `${n} Adressen abmelden?`),
+  text: "Abmelden ist endgültig. Erneute Anmeldung nur mit neuer Bestätigungsmail.",
+  knopf: "Abmelden",
+  bestaetigungTitel: (n) => `Bestätigungsmail an ${n} ${n === 1 ? "Adresse" : "Adressen"} senden?`,
+  bestaetigungKnopf: "Senden",
+});
+
+// ---------------------------------------------------------------------------------------------- Events
+
+export const EVENTS = Object.freeze({
+  titel: "Events",
+  untertitel: "Abende im Showroom, Workshops und Präsentationen",
+  neu: "Neues Event",
+  spalten: { datum: "Datum", event: "Event", plaetze: "Plätze", status: "Status" },
+  leer: "Noch kein Event. Der Adventsabend wird mit der App angelegt (Status Geplant).",
+  gefiltert: "Kein Event mit diesen Filtern.",
+  uhrzeitOffen: "Uhrzeit offen",
+  heute: "Heute",
+  warteliste: (n) => `Warteliste ${n}`,
+  frei: (n) => `frei ${n}`,
+  personen: (b, k) => (k ? `${b} / ${k} Personen` : `${b} Personen`),
+  erinnerung: (t) => `Erinnerung ${t}`,
+  tabs: { anmeldungen: "Anmeldungen", eckdaten: "Eckdaten", mails: "Mails", verlauf: "Verlauf" },
+  veroeffentlichen: "Veröffentlichen …",
+  zuerstUhrzeit: "Zuerst Uhrzeit eintragen",
+  veroeffentlichenTitel: (t) => `${t} auf der Website zur Anmeldung öffnen?`,
+  veroeffentlicht: (t) => `${t} veröffentlicht`,
+  anmeldungErfassen: "Anmeldung erfassen",
+  checkinOeffnen: "Check-in öffnen",
+  teilnehmerliste: "Teilnehmerliste",
+  namensschilder: "Namensschilder drucken",
+  erinnerungSenden: "Erinnerung senden …",
+  erinnerungTitel: (n) => `Erinnerung an ${n} ${n === 1 ? "Person" : "Personen"} senden, die noch keine bekommen haben?`,
+  erinnerungAuch: (n) => `Auch an ${n} bereits Erinnerte`,
+  erinnerungGesendet: (n) => `Erinnerung an ${n} ${n === 1 ? "Person" : "Personen"} gesendet`,
+  ausgebucht: "Als ausgebucht markieren",
+  ausgebuchtToast: (t) => `${t} als ausgebucht markiert`,
+  wiederOeffnen: "Wieder öffnen",
+  verschieben: "Verschieben …",
+  absagen: "Absagen und informieren …",
+  absagenTitel: (t) => `${t} absagen?`,
+  absagenFakten: (m, o) => `${m} ${m === 1 ? "Person wird" : "Personen werden"} per Mail informiert${o ? `, ${o} ohne E-Mail – Telefonliste drucken` : ""}.`,
+  absagenOhneMail: "Bitte Teilnehmerliste drucken und informieren.",
+  absagenKnopf: "Absagen",
+  abgesagt: (t) => `${t} abgesagt`,
+  einladung: "Einladung an Zielgruppe …",
+  einladungGesperrt: "Gesperrt: Einladungs-Einwilligungen aus früheren Anmeldungen müssen erst bereinigt werden.",
+  duplizieren: "Duplizieren für nächstes Jahr",
+  nachruecken: "Nachrücken …",
+  nachrueckenTitel: (n, p) => `${n} (${p} ${p === 1 ? "Person" : "Personen"}) bekommt einen Platz und die Mail „Platz frei geworden“.`,
+  nachrueckenKnopf: "Nachrücken",
+  nachgerueckt: (n) => `${n} ist nachgerückt`,
+  automatischNachruecken: "Rückt automatisch nach, sobald Plätze frei werden",
+  wartelisteTitel: "Warteliste",
+  wartelisteLeer: "Niemand auf der Warteliste.",
+  anmeldungenLeer: "Noch keine Anmeldung.",
+  summe: (a, p) => `${a} ${a === 1 ? "Anmeldung" : "Anmeldungen"} · ${p} ${p === 1 ? "Person" : "Personen"}`,
+  statusSetzen: "Status setzen",
+  statusGesetzt: (n, s) => `${n}: ${s}`,
+  personenAendern: "Personen ändern …",
+  keineEmail: "keine E-Mail",
+  bestaetigung: "Bestätigung",
+  eckdatenHinweis: "Uhrzeit, Programm und Plätze erst nach Bestätigung des Inhabers eintragen.",
+  datenschutz: "Datenschutz",
+  nachweisSatzVorher: "Nachweis-Einträge der Anmeldungen bleiben vorerst erhalten (Bereinigung folgt).",
+  loeschfrist: (m) => `Anmeldedaten werden ${m} Monate nach dem Event gelöscht.`,
+  kostenlos: "Kostenlos",
+  kostenbeitragSpaeter: "Events mit Kostenbeitrag kommen später (Zahlung und Beleg fehlen noch).",
+  anlegenFuss: "Anlegen – bleibt „Geplant“, bis die Uhrzeit bestätigt ist",
+  angelegt: (t) => `Event ${t} angelegt`,
+  mails: { bestaetigung: "Bestätigung", erinnerung: "Erinnerung", nachrueck: "Platz frei geworden", absage: "Absage", einladung: "Einladung" },
+  erinnerungTage: (n) => `${n} ${n === 1 ? "Tag" : "Tage"} vorher`,
+  keinKnopfDurchgefuehrt: "Das Event wird am Folgetag automatisch abgeschlossen.",
+  durchgefuehrtBand: "Durchgeführt – Teilnehmerliste zum Nachlesen",
+  abgesagtBand: "Abgesagt",
+  felder: { titel: "Titel", art: "Art", datum: "Datum", uhrzeit_von: "Uhrzeit von", uhrzeit_bis: "bis", ort: "Ort", url: "Website-Link", kapazitaet: "Plätze", warteliste: "Warteliste erlauben", max_personen_je_anmeldung: "Höchstens Personen je Anmeldung", nachruecken_automatisch: "Automatisch nachrücken", programm: "Programm", beschreibung: "Interne Beschreibung", kampagne: "Kampagne", erinnerung_tage_vorher: "Erinnerung … Tage vorher", loeschfrist_monate: "Löschfrist (Monate)", einwilligung_textversion: "Textversion", fotos_hinweis: "Foto-Hinweis (Aushang)" },
+  plaetzeHinweis: "Leer = unbegrenzt. Nur echte Angabe.",
+  programmHinweis: "Nur fest Zugesagtes",
+});
+
+export const ANMELDUNG_EVENT = Object.freeze({
+  titel: (t) => `Anmeldung ${t}`,
+  name: "Name",
+  email: "E-Mail",
+  telefon: "Telefon",
+  personen: "Personen",
+  quelle: "Wie angemeldet?",
+  quellen: { telefon: "Telefon", showroom: "Showroom", email: "E-Mail", backoffice: "Backoffice" },
+  nachricht: "Nachricht",
+  nurDieserAbend: "Die Anmeldung gilt nur für diesen Abend.",
+  einladungenJa: "Einladungen zu künftigen Abenden: Gast hat ausdrücklich ja gesagt",
+  einladungenSatz: "Wir senden dafür eine eigene Bestätigungsmail.",
+  emailPflicht: "Ohne E-Mail: bitte Gast am Abend über „+ Gast ohne Anmeldung“ zählen.",
+  knopf: "Anmelden",
+  ok: (e) => `Angemeldet – Bestätigung geht an ${e}`,
+  okOhneMail: "Angemeldet – keine Bestätigungsmail (keine E-Mail-Adresse)",
+  warteliste: "Auf Warteliste gesetzt",
+  schon: (p) => `Diese Adresse ist schon angemeldet (${p} ${p === 1 ? "Person" : "Personen"}).`,
+  ausgebucht: "Das Event ist ausgebucht",
+  wartelisteErlauben: "Warteliste in Eckdaten erlauben",
+  nichtOffen: "Anmeldungen sind erst nach dem Veröffentlichen möglich.",
+});
+
+export const CHECKIN = Object.freeze({
+  titel: "Event-Check-in",
+  fertig: "Fertig",
+  da: "Da",
+  daSeit: (z) => `Da · ${z}`,
+  rueckgaengig: "Rückgängig",
+  suche: "Name, E-Mail oder Telefon …",
+  codeScannen: "Code scannen",
+  gastOhne: (n) => `Gast ohne Anmeldung${n ? ` (${n})` : ""}`,
+  zaehler: (d, g) => `Da: ${d} von ${g} Personen`,
+  online: "Online",
+  offline: (n) => `Offline – ${n} ${n === 1 ? "Änderung wartet" : "Änderungen warten"}`,
+  schonDa: (z) => `Schon da seit ${z} (anderes Gerät)`,
+  ungueltig: "Code nicht erkannt – bitte Namen suchen",
+  personen: "Personen …",
+  personenTitel: (n) => `Wie viele Personen sind von ${n} da?`,
+  fertigTitel: (d, g) => `${d} von ${g} Personen da.`,
+  fertigFrage: (n) => `Übrige ${n} als „nicht erschienen“ markieren?`,
+  markieren: "Markieren",
+  offenLassen: "Offen lassen",
+  wartelisteAbgesagt: (w, a) => `Warteliste ${w} · Abgesagt ${a}`,
+  keinTreffer: "Niemand gefunden. Spontane Anmeldung über „Gast ohne Anmeldung“ zählen.",
+  nichtHeute: "Der Check-in öffnet am Eventtag.",
+  gaesteKommentar: (n) => `${n} ${n === 1 ? "Gast" : "Gäste"} ohne Anmeldung`,
+  fertigToast: "Check-in abgeschlossen",
+});
+
+// ---------------------------------------------------------------------------------------------- Social
+
+export const SOCIAL = Object.freeze({
+  titel: "Social",
+  untertitel: "Redaktionsplan für Pinterest, Instagram und weitere Kanäle",
+  neu: "Neuer Beitrag",
+  ansichten: { kalender: "Kalender", kanban: "Kanban", liste: "Liste" },
+  spalten: { beitrag: "Beitrag", datum: "Datum", bildrechte: "Bildrechte", zustaendig: "Zuständig", status: "Status" },
+  leerWoche: "Keine Beiträge in dieser Woche.",
+  planen: "Beitrag planen",
+  gefiltert: "Keine Beiträge mit diesen Filtern.",
+  neuTitel: "Neuer Beitrag",
+  neuDatum: (d) => `Am ${d}`,
+  angelegt: (t) => `Beitrag „${t}“ angelegt`,
+  datumGesetzt: (t, d) => `„${t}“ auf ${d} verschoben`,
+  tabs: { beitrag: "Beitrag", bild: "Bild & Bildrechte", veroeffentlichung: "Veröffentlichung", verlauf: "Verlauf" },
+  ausarbeiten: "Ausarbeiten",
+  zurFreigabe: "Zur Freigabe",
+  freigeben: "Freigeben …",
+  zurueckgeben: "Zurückgeben …",
+  datumSetzen: "Datum setzen …",
+  alsVeroeffentlicht: "Als veröffentlicht markieren …",
+  kennzahlen: "Kennzahlen erfassen …",
+  verwerfen: "Verwerfen",
+  wiederherstellen: "Wiederherstellen",
+  textKopieren: "Text kopieren",
+  bildLaden: "Bild herunterladen",
+  kopiert: "Text kopiert",
+  verworfenToast: (t) => `„${t}“ verworfen`,
+  zurFreigabeToast: (t) => `„${t}“ zur Freigabe gegeben`,
+  freigegebenToast: (t) => `„${t}“ freigegeben`,
+  veroeffentlichtToast: (t) => `„${t}“ als veröffentlicht markiert`,
+  ausarbeitenToast: (t) => `„${t}“ wird ausgearbeitet`,
+  wartetChip: "wartet auf Freigabe",
+  bildrechteOk: "Bildrechte geklärt",
+  bildrechteOffen: "Bildrechte offen",
+  url: "Adresse des Beitrags",
+  urlPflicht: "Ohne Adresse kein Nachweis der Veröffentlichung",
+  gesperrtGrund: { bild: "Bild fehlt", alt: "Bildbeschreibung fehlt", quelle: "Bildquelle offen", kennzeichnung: "Kennzeichnung fehlt im Text", kundenprojekt: "Einwilligung Foto-Referenz fehlt" },
+  zaehler: (n, max) => `${n} / ${max}`,
+  zuLang: "Text ist länger als der Kanal erlaubt",
+  felder: { titel: "Titel", overline: "Dachzeile", text: "Text", hashtags: "Hashtags", link: "Ziel-Link", sprache: "Sprache", alt_text: "Bildbeschreibung", kanal: "Kanal", format: "Format", board: "Board", kampagne: "Kampagne", zustaendig: "Zuständig", produkt_slug: "Produkt", datum_geplant: "Datum", uhrzeit_geplant: "Uhrzeit", marke_name: "Marke", bild_credit: "Bildnachweis", bild_bearbeitung: "Bearbeitung", bild_layout: "Bildaufteilung", reichweite: "Reichweite", likes: "Likes", saves: "Saves", klicks: "Klicks", kommentare: "Kommentare" },
+  freigabePruefen: "Bild-Freigabe prüfen",
+  freigabeChip: { erteilt: "schriftlich erteilt", keineMarke: "keine Marke verknüpft", nichtErreichbar: "Markenverwaltung nicht erreichbar" },
+  ideenleisteFehlt: "Ideen ohne Datum kommen mit dem nächsten Backend-Stand.",
+  kennzahlenGespeichert: "Kennzahlen gespeichert",
+  hinweisKein: "Kein direktes Posten – Text kopieren und im Kanal veröffentlichen.",
+});
+
+// ---------------------------------------------------------------------------------------------- Kampagnen
+
+export const KAMPAGNEN = Object.freeze({
+  titel: "Kampagnen",
+  untertitel: "Budget, Kampagnen-Link und Kennzahlen je Kampagne",
+  neu: "Neue Kampagne",
+  spalten: { kampagne: "Kampagne", budget: "Budget / Ausgaben", anfragen: "Anfragen", jeAnfrage: "€ je Anfrage", status: "Status" },
+  kennzahl: "Kennzahl",
+  leer: "Noch keine Kampagne. Eine Kampagne bündelt Budget, Kampagnen-Link und Kennzahlen – Anfragen über den Kampagnen-Link werden automatisch zugeordnet.",
+  gefiltert: "Keine Kampagne mit diesen Filtern.",
+  summe: (b, a, n) => `Summe gefiltert: Budget ${b} · Ausgaben ${a} · Anfragen ${n}`,
+  summeWaehrung: (w) => `Summe ${w} (eigene Zeile, nur Euro wird zusammengezählt)`,
+  zeitraumVorbei: "Zeitraum vorbei – beenden?",
+  ruht: (t) => `ruht seit ${t} Tagen`,
+  tabs: { uebersicht: "Übersicht", kennzahlen: "Kennzahlen", anfragen: "Anfragen", auswertung: "Auswertung" },
+  aktivieren: "Aktivieren",
+  pausieren: "Pausieren",
+  fortsetzen: "Fortsetzen",
+  beenden: "Beenden …",
+  wiederAktivieren: "Wieder aktivieren …",
+  beendenTitel: (t) => `Kampagne ${t} beenden?`,
+  beendenText: (n) => `Kennzahlen bleiben erfassbar. Anfragen werden noch ${n} Tage nach Zeitraumende zugeordnet.`,
+  wiederTitel: (t) => `Kampagne ${t} wieder aktivieren?`,
+  pausiert: (t) => `${t} pausiert`,
+  fortgesetzt: (t) => `${t} fortgesetzt`,
+  beendet: (t) => `${t} beendet`,
+  aktiviert: (t) => `${t} aktiviert`,
+  zeitraumFehlt: "Zuerst Beginn des Zeitraums eintragen",
+  budgetZeile: (a, b, p) => `${a} von ${b}${p != null ? ` (${p} %)` : ""}`,
+  zielZeile: (k, z, i, p) => `Ziel ${k} ${z} → ${i}${p != null ? ` (${p} %)` : ""}`,
+  ueberBudget: "Ausgaben übersteigen das Budget",
+  kampagnenLink: "Kampagnen-Link für Anzeigen",
+  linkSatz: "Anfragen über diesen Link werden automatisch zugeordnet.",
+  kopieren: "Kopieren",
+  kopiert: "Kampagnen-Link kopiert",
+  inhalte: "Inhalte der Kampagne",
+  inhalteLeer: "Noch keine Inhalte mit dieser Kampagne.",
+  beitragZu: "Beitrag zu dieser Kampagne",
+  kennzahlenLeer: "Noch keine Kennzahl erfasst.",
+  csvImport: "CSV importieren …",
+  csvVorschau: (n, f) => `${n} ${n === 1 ? "Zeile" : "Zeilen"} gelesen${f ? `, ${f} mit Fehler` : ""}`,
+  csvUebernehmen: (n) => `${n} ${n === 1 ? "Zeile" : "Zeilen"} übernehmen`,
+  csvLeer: "Keine lesbare Zeile gefunden. Erwartet: Datum, Impressionen, Klicks, Kosten.",
+  csvOk: (n) => `${n} Kennzahlen übernommen`,
+  anfragenLeer: "Noch keine Anfrage über diese Kampagne.",
+  anfragenStand: (z) => `Stand ${z}`,
+  kontaktpunkte: "Kontaktpunkte",
+  kostenBelegt: "Kosten belegt (netto)",
+  kostenBelegtFolgt: "Zuordnung der Eingangsrechnungen folgt",
+  kostenGemeldet: "Kosten gemeldet",
+  umsatz: "Umsatz netto nach Gutschriften",
+  umsatzFolgt: "Bericht wird auf netto umgestellt",
+  modell: (m) => `Zuordnung: ${m}`,
+  fazit: "Fazit",
+  bericht: "Kampagnenbericht (PDF)",
+  angelegt: (t) => `Kampagne ${t} angelegt`,
+  felder: { titel: "Titel", kanal: "Kanal", zeitraum_von: "Beginn", zeitraum_bis: "Ende", budget: "Budget", ziel_kennzahl: "Ziel-Kennzahl", ziel_wert: "Zielwert", zustaendig: "Zuständig", landingpage: "Zielseite", utm_source: "Quelle", utm_medium: "Medium", utm_campaign: "Kampagnen-Kennung", beschreibung: "Briefing", waehrung: "Währung" },
+  kennzahlTitel: (t) => `Kennzahl für ${t}`,
+  kennzahlFelder: { datum: "Datum", impressionen: "Impressionen", klicks: "Klicks", kosten: "Kosten (netto)", anfragen: "Anfragen manuell", notiz: "Notiz" },
+  anfragenHinweis: "nur Anfragen ohne Kampagnen-Link",
+  kostenHinweis: "Kosten netto eingeben",
+  kennzahlOk: "Kennzahl gespeichert",
+  manuell: "manuell",
+  tooltipAnfragen: (crm, man) => `${crm} über den Kampagnen-Link, ${man} manuell`,
+});
+
+// ---------------------------------------------------------------------------------------------- Empfehlungen
+
+export const EMPFEHLUNGEN = Object.freeze({
+  titel: "Empfehlungen",
+  untertitel: "Unter Freunden – Code, Anfrage, Auftrag, Gutschein",
+  neu: "Empfehlungscode",
+  spalten: { empfehlung: "Empfehlung", empfohlen: "Empfohlene Person", auftrag: "Auftrag", status: "Status" },
+  codeGesendet: (d) => `Code gesendet ${d}`,
+  codeNichtGesendet: "Code nicht gesendet",
+  leer: "Noch keine Empfehlung. Ein Code entsteht, wenn eine Kundin mit eigenem Auftrag ihn anfordert.",
+  gefiltert: "Keine Empfehlung mit diesen Filtern.",
+  leerFaellig: "Kein Gutschein fällig. Fällig wird er automatisch, wenn der empfohlene Auftrag geliefert und bezahlt ist und keine Rücktrittsfrist mehr läuft.",
+  codeSenden: "Code senden",
+  codeGesendetToast: (c) => `Code ${c} gesendet`,
+  ablehnen: "Ablehnen …",
+  ablehnenTitel: (c) => `Empfehlung ${c} ablehnen?`,
+  ablehnenGrund: "Grund",
+  abgelehnt: (c) => `Empfehlung ${c} abgelehnt`,
+  gutschein: "Gutschein …",
+  gutscheinTitel: "Gutschein senden",
+  gutscheinKnopf: (w) => `Gutschein über ${w} erstellen und senden`,
+  gutscheinGesperrt: "Gutschein-Art „Aktion“ fehlt im Shop – Ausgabe nach Abstimmung mit dem Steuerberater",
+  gutschrift: "Gutschrift anlegen …",
+  unternehmer: "Empfehler ist Unternehmer (Architekt, Planerin …)",
+  unternehmerHinweis: "Bei Unternehmern Provisionsgutschrift über Faktura statt Gutschein.",
+  schritte: ["Code ausgegeben", "Anfrage", "Auftrag erteilt", "Geliefert und bezahlt", "Gutschein fällig", "Gutschein ausgegeben"],
+  empfehler: "Empfehlende Person",
+  empfohlen: "Empfohlene Person",
+  zustimmung: (z) => `Zustimmung zur Zuordnung ${z}`,
+  keineZustimmung: "Ohne Zustimmung der empfohlenen Person keine Zuordnung",
+  auftrag: "Auftrag",
+  eigenerAuftrag: "Eigener Auftrag",
+  faelligSatz: "Gutschein fällig, wenn geliefert, bezahlt und keine Rücktrittsfrist mehr läuft.",
+  ampeln: { storno: "Storno", lieferung: "Lieferung", zahlung: "Zahlung", frist: "Frist" },
+  ampelText: {
+    storno: { ok: "nicht storniert", nein: "storniert" },
+    lieferung: { ok: "vollständig geliefert", nein: "noch nicht vollständig geliefert", offen: "kein Auftrag verknüpft" },
+    zahlung: { ok: "bezahlt", nein: (b) => `offen ${b}` },
+    frist: { ok: "Rücktrittsfrist abgelaufen", nein: (d) => `Rücktrittsfrist läuft bis ${d}` },
+  },
+  gesperrt: (was) => `Gesperrt: ${was}`,
+  storniertBand: "Auftrag storniert – Empfehlung abgelehnt",
+  storniertBandVorher: "Auftrag storniert – bitte Empfehlung ablehnen",
+  verfallen: "Laufzeit des Codes klärt der Inhaber mit der Kanzlei.",
+  offen: (b) => `offen ${b}`,
+  zugestellt: (d) => `zugestellt ${d}`,
+  felder: { empfehler_name: "Name", empfehler_email: "E-Mail", empfehler_auftrag: "Eigener Auftrag (AB-Nummer)", empfohlen_name: "Name", empfohlen_email: "E-Mail" },
+  angelegt: (c) => `Empfehlungscode ${c} angelegt`,
+  anlegenKnopf: "Anlegen und Code senden",
+  mailVorschau: "Mail-Vorschau",
+});
+
+// ---------------------------------------------------------------------------------------------- Zielgruppen / Reisen
+
+export const ZIELGRUPPEN = Object.freeze({
+  titel: "Zielgruppen",
+  untertitel: "Empfänger nach Interessen, Käufen oder Ort – immer mit passender Einwilligung",
+  neu: "Zielgruppe anlegen",
+  spalten: { titel: "Zielgruppe", zweck: "Zweck", regeln: "Regeln", treffer: "Treffer", status: "Status" },
+  leer: "Noch keine Zielgruppe. Eine Zielgruppe wählt Empfänger nach Interessen, Käufen oder Ort – immer nur mit passender Einwilligung.",
+  zweckSatz: (z) => `Es zählen nur Personen mit wirksamer Einwilligung „${z}“.`,
+  und: "alle Bedingungen (UND)",
+  oder: "eine reicht (ODER)",
+  bedingung: "Bedingung",
+  nicht: "nicht",
+  aus: "aus",
+  vorschau: "Vorschau",
+  treffer: "Treffer",
+  anschreibbar: "anschreibbar",
+  ausgeschlossen: "ausgeschlossen",
+  standSpeichern: "Stand speichern",
+  gespeichert: "Stand gespeichert",
+  archivieren: "Archivieren",
+  archiviert: (t) => `${t} archiviert`,
+  einladungenGesperrt: "Zielgruppen für Einladungen sind bis zur Bereinigung der Einladungs-Einwilligungen nicht verwendbar.",
+  ersteZwanzig: "Die ersten Personen",
+  keineRegel: "Ohne Bedingung zählen alle mit passender Einwilligung.",
+  angelegt: (t) => `Zielgruppe ${t} angelegt`,
+  regelSatz: "Regeln als Satz",
+  ausschlussGruende: { ohne_einwilligung: "ohne Einwilligung", nicht_kontaktieren: "will keinen Kontakt", abgemeldet: "abgemeldet", unzustellbar: "unzustellbar" },
+});
+
+export const REISEN = Object.freeze({
+  titel: "Kundenreisen",
+  untertitel: "Leise, regelbasierte Mails – Service und Werbung getrennt",
+  duplizieren: "Reise duplizieren …",
+  leerBeginnen: "Leer beginnen",
+  werbungHeute: (tag, ok) => `Werbung heute: ${tag} – ${ok ? "erlaubt" : "nicht erlaubt"}`,
+  automatik: (an) => `Automatik: ${an ? "an" : "aus"}`,
+  spalten: { reise: "Reise", ausloeser: "Auslöser", grundlage: "Grundlage", regeln: "Regeln", status: "Status" },
+  gesendet: (n, z) => `gesendet ${n} · zuletzt ${z || "–"}`,
+  fehlerZahl: (n) => `${n} ${n === 1 ? "Hinweis" : "Hinweise"}`,
+  kanzlei: "Kanzlei",
+  fehltApp: "Die mitgelieferten Kundenreisen fehlen. Bitte Administrator informieren.",
+  gefiltert: "Keine Reise mit diesen Filtern.",
+  nurLeitung: "Nur die Leitung bearbeitet Kundenreisen. Lesen ist möglich.",
+  tabs: { regel: "Regel", grundlage: "Rechtsgrundlage", vorlage: "Vorlage", protokoll: "Protokoll" },
+  aktivieren: "Aktivieren …",
+  pausieren: "Pausieren",
+  fortsetzen: "Fortsetzen",
+  heutePlanen: "Fällige heute planen …",
+  trockenlauf: "Wer wäre heute dran?",
+  trockenlaufKnopf: "Trockenlauf",
+  trockenlaufErgebnis: (n) => `${n} ${n === 1 ? "Person wäre" : "Personen wären"} heute dran`,
+  aktivierenTitel: (t) => `${t} aktivieren?`,
+  aktivierenFakten: { werbung: "Werbung", grundlage: "Grundlage", ab: "Gesendet ab" },
+  abMorgen: (an) => (an ? "morgen 09:00" : "morgen 09:00, wenn die Automatik an ist"),
+  aktiviert: (t) => `${t} aktiviert`,
+  pausiertToast: (t) => `${t} pausiert`,
+  geplant: (n) => `${n} Versand-Einträge für heute angelegt – gesendet wird um 09:00`,
+  regelGeaendert: "Regel geändert – Reise ist wieder Entwurf und braucht eine neue Freigabe.",
+  wenn: "Wenn",
+  dann: "dann Mail",
+  plusTage: "Tage",
+  nurFuer: "Nur für",
+  outdoor: "Aufträge mit Outdoor-Position",
+  pflege: "Aufträge mit Pflegekategorie",
+  einmalig: "höchstens einmal je Person",
+  hoechstzahl: "Höchstzahl je Person",
+  lieferHinweis: "Heute zählt der bestätigte Liefertermin – bei Verschiebung oder Teillieferung kann die Mail zu früh kommen.",
+  wirbt: "Diese Mail wirbt (Angebot, Einladung, Hinweis auf Neues)",
+  karten: {
+    V: "Bestätigungen, Liefer- und Termininfos, Danke, Pflegehinweise zum gekauften Stück. Täglich, ohne Abmeldelink.",
+    B: "Werbung für eigene, ähnliche Produkte an Käuferinnen und Käufer, die nicht widersprochen haben.",
+    E: "Genau der Zweck, für den eingewilligt wurde. Mit Abmeldelink in jeder Mail.",
+  },
+  bGesperrt: "Nicht verfügbar: Der Hinweis auf das Werberecht beim Kauf wird noch nicht dokumentiert (Kundenakte).",
+  aehnlich: "Begründung „ähnliche Produkte“",
+  regelpruefung: "Regelprüfung",
+  regelOk: "Keine Hinweise",
+  laufzeit: "Versandbedingungen zur Laufzeit",
+  kommt: "kommt",
+  darf: "Was diese Reise darf",
+  vorlage: "Vorlage",
+  absender: "Absender",
+  absenderText: { berater: "Berater", gastgeberin: "Gastgeberin" },
+  vorlageBearbeiten: "Vorlage bearbeiten",
+  protokollLeer: "Noch kein Versand. Geplant wird täglich um 06:00, gesendet um 09:00 (Werbung nur Dienstag bis Donnerstag).",
+  dupTitel: "Reise duplizieren",
+  dupQuelle: "Vorlage-Reise",
+  dupTitelFeld: "Neuer Titel",
+  dupKnopf: "Duplizieren",
+  dupOk: (t) => `Reise ${t} angelegt`,
+  assistent: "Neue Kundenreise",
+  assistentSchritte: ["Zweck und Titel", "Auslöser", "Werbung", "Grundlage", "Vorlage", "Regelprüfung"],
+  anlegen: "Anlegen",
+  weiter: "Weiter",
+  zurueck: "Zurück",
+  laufzeitZeilen: [
+    "Person will keinen Kontakt",
+    "Fußzeilen ohne Kanzlei-Freigabe",
+    "Reklamation offen",
+    "Anfrage offen",
+    "höchstens {n} werbliche Mails in 30 Tagen",
+    "Widerspruch",
+    "Bestandskunden-Einladung ohne Kanzlei-Bestätigung",
+    "kein passender Kauf",
+    "Kein Werbehinweis beim Kauf dokumentiert",
+    "Abgleich mit der Robinson-Liste fehlt",
+    "keine Grundlage",
+  ],
+  laufzeitNeu: ["Auftrag storniert", "Retoure offen", "keine E-Mail-Adresse"],
+  aktivWartet: "Automatik einschalten (Einstellungen)",
+});
+
+/** Regeltexte des Servers (engine.pruefe_reise) → Satz in der Oberfläche (1:1 inhaltlich, ohne Kürzel). */
+export const REGEL_SATZ = Object.freeze({
+  "keine Rechtsgrundlage": "Es ist keine Rechtsgrundlage gewählt.",
+  "Werbung kann nicht auf Vertrag/Service (V) gestützt werden": "Werbung kann nicht auf Vertrag/Service gestützt werden.",
+  "Service-Mail braucht nur V; B/E nur für Werbung": "Eine Service-Mail braucht nur Vertrag/Service – Bestandskunde und Einwilligung gelten nur für Werbung.",
+  "B ohne Begründung eigene, ähnliche Produkte": "Bestandskunde braucht die Begründung „eigene, ähnliche Produkte“.",
+  "E ohne gültigen Zweck": "Einwilligung braucht einen Zweck.",
+  "Merkliste/Planer nur mit Einwilligung (E)": "Merkliste- und Planer-Erinnerungen nur mit Einwilligung.",
+  "Bewertungsbitte bis zur Klärung durch die Kanzlei nur mit Einwilligung (E)": "Die Bewertungsbitte bis zur Klärung durch die Kanzlei nur mit Einwilligung.",
+  "Service-Vorlage enthält Werbewörter (Gutschein/Angebot/Rabatt/Neu/Einladung)": "Die Service-Vorlage enthält Werbewörter (Gutschein, Angebot, Rabatt, Neu, Einladung).",
+  "Werbung ohne Abmeldelink in der Vorlage": "Die werbliche Vorlage hat keinen Abmeldelink.",
+  "Bewertungsbitte darf keinen Anreiz und keine Empfehlung enthalten": "Die Bewertungsbitte darf keinen Anreiz und keine Empfehlung enthalten.",
+  "kein Auslöser": "Es ist kein Auslöser eingetragen.",
+});
+export const regelSatz = (t) => REGEL_SATZ[t] || String(t || "");
+
+// ---------------------------------------------------------------------------------------------- Vorlagen / Einblicke / Berichte / Einstellungen
+
+export const VORLAGEN = Object.freeze({
+  titel: "Vorlagen",
+  untertitel: "Mail-Vorlagen für Bestätigung, Events, Newsletter und Kundenreisen",
+  gruppen: { System: "System", Newsletter: "Newsletter", Event: "Event", Kundenreise: "Kundenreise" },
+  systemBand: "Diese Vorlage wird von Website-Abläufen (Bestätigung, Event) verwendet.",
+  werbungBrauchtLink: "Werbliche Fußzeilen brauchen einen Abmeldelink.",
+  felder: { betreff: "Betreff", preheader: "Vorschauzeile", art: "Art", sprache: "Sprache", fusszeile: "Fußzeile", html: "Inhalt", rechtsgrundlage: "Rechtsgrundlage" },
+  platzhalter: "Platzhalter",
+  einfuegen: (p) => `${p} einfügen`,
+  testmailHinweis: "Testmail über eine Reise oder Ausgabe, die diese Vorlage nutzt",
+  duplizieren: "Duplizieren",
+  dupliziert: (t) => `Vorlage ${t} angelegt`,
+  fehlt: "Die mitgelieferten Vorlagen fehlen. Bitte Administrator informieren.",
+  waehlen: "Vorlage links wählen.",
+});
+
+export const EINBLICKE = Object.freeze({
+  titel: "Einblicke",
+  untertitel: "Was auf der Website gelesen wird – ohne Personenbezug",
+  zeitraum: "Zeitraum",
+  tage: (n) => `${n} Tage`,
+  topSeiten: "Top-Seiten",
+  spalten: { seite: "Seite", besuche: "Besuche", tage: "Tage mit Daten", scroll: "Scrolltiefe Ø", ziele: "Ziele" },
+  tageEmpfangen: "Tage empfangen",
+  besucheTop: "Besuche (Top-Seiten)",
+  empfang: "Empfang je Tag",
+  keinDatensatz: "kein Datensatz",
+  hilfe: "Kein Tracking-Pixel, keine Öffnungsraten. Die Website sendet täglich eine Zusammenfassung ohne Personenbezug.",
+  leer: "Noch keine Einblicke. Die Website sendet nach ihrer Umstellung jeden Tag eine Zusammenfassung ohne Personenbezug.",
+});
+
+export const BERICHTE = Object.freeze({
+  titel: "Berichte",
+  liste: {
+    "newsletter-entwicklung": { titel: "Newsletter-Entwicklung", report: "PH Newsletter-Entwicklung" },
+    "kampagnen-roi": { titel: "Kampagnen-ROI", report: "PH Kampagnen-ROI", leitung: true },
+    "einwilligungen-nach-zweck": { titel: "Einwilligungen nach Zweck", report: "PH Einwilligungen nach Zweck" },
+    "event-auslastung": { titel: "Event-Auslastung", report: "PH Event-Auslastung" },
+    "social-redaktionsplan": { titel: "Social-Redaktionsplan", report: "PH Social Redaktionsplan" },
+    "top-seiten": { titel: "Top-Seiten", report: "PH Top-Seiten (Einblicke)" },
+  },
+  roiHinweis: "Dieser Bericht rechnet noch mit Bruttowerten ohne Gutschriften – Zahlen nur als Richtwert.",
+  roiFuss: "Umsatz netto, ohne stornierte und gutgeschriebene Beträge.",
+  keineDaten: "Keine Daten im Zeitraum.",
+  waehlen: "Bericht wählen",
+});
+
+export const EINSTELLUNGEN = Object.freeze({
+  titel: "Einstellungen",
+  untertitel: "Versand, Bestätigung, Auftragsdaten, Empfehlungen und Events",
+  tabs: { allgemein: "Allgemein", versand: "Bestätigung und Versand", auftrag: "Auftragsdaten", empfehlung: "Empfehlungen und Events" },
+  ampeln: { automatik: "Kundenreisen-Automatik", fusszeilen: "Fußzeilen (Kanzlei)", bEinladung: "Bestandskunden-Einladung (Kanzlei)", robinson: "Robinson-Abgleich gültig bis", versandweg: "Versandweg", avv: "Versanddienst-Vertrag", aufbewahrung: "Aufbewahrung" },
+  an: "an", aus: "aus", offen: "offen", freigegeben: "freigegeben",
+  bereitschaft: (n) => (n ? `Bereitschaft für Livebetrieb: ${n} ${n === 1 ? "offener Punkt" : "offene Punkte"}` : "Bereitschaft für Livebetrieb: alle Punkte erledigt"),
+  automatikGesperrt: (n) => `Gesperrt: ${n} Punkte vor Livebetrieb offen`,
+  schalterFolge: {
+    automatik: { an: "Kundenreisen planen ab morgen 06:00 automatisch Mails.", aus: "Es werden keine automatischen Mails mehr geplant." },
+    fusszeilen: { an: "Werbliche Reisen dürfen aktiviert werden.", aus: "Werbliche Reisen bleiben gesperrt." },
+    bEinladung: { an: "Einladungen an Bestandskunden sind freigegeben.", aus: "Einladungen an Bestandskunden bleiben gesperrt." },
+  },
+  schalterTitel: (was, an) => `${was} ${an ? "einschalten" : "ausschalten"}?`,
+  eingetragen: (was) => `${was} eingetragen`,
+  geheimnis: "Schlüssel hinterlegt im Server (Name):",
+  pruefen: "Prüfen",
+  feldVorhanden: (f) => `Feld ${f} vorhanden`,
+  feldFehlt: (f) => `Feld ${f} fehlt`,
+  felder: {
+    test_empfaenger: "Testadresse", absender_name: "Absendername", absender_gastgeberin_name: "Absendername Gastgeberin", absender_gastgeberin: "Absenderadresse Gastgeberin", antwort_an: "Antwort an",
+    doi_gueltig_stunden: "Bestätigungslink gültig (Stunden)", doi_erinnerung_nach_stunden: "Erinnerung nach (Stunden)", unbestaetigt_loeschen_tage: "Unbestätigte löschen nach (Tagen)",
+    ip_hash_speichern: "IP-Prüfwert speichern", einwilligung_textversion: "Textversion Einwilligung", website_url: "Website", bestaetigen_pfad: "Pfad Bestätigung", abmelden_pfad: "Pfad Abmeldung",
+    werbung_pro_30_tage: "Werbliche Mails je 30 Tage", werbung_wochentage: "Werbefenster", sperrtage: "Sperrtage", versandweg: "Versandweg", versand_stapel: "Mails je Lauf",
+    auftrags_doctype: "Datenquelle Aufträge", feld_email: "Feld E-Mail", feld_name: "Feld Name", feld_anrede: "Feld Anrede", feld_lieferdatum: "Feld Lieferdatum", feld_berater: "Feld Berater", feld_produkt: "Feld Produkt", feld_storniert: "Feld Storno", wert_storniert: "Wert Storno", positionen_tabelle: "Positionen", feld_pflegekategorie: "Feld Pflegekategorie", feld_outdoor: "Feld Outdoor", feld_kontakt: "Feld Kontakt",
+    empfehlung_gutschein_cent: "Gutscheinwert Empfehlung", empfehlung_ruecktritt_tage: "Rücktrittsfrist (Tage)", empfehlung_bedingungen_url: "Bedingungen (Link)",
+    event_erinnerung_tage: "Event-Erinnerung (Tage vorher)", event_loeschfrist_monate: "Löschfrist Anmeldedaten (Monate)",
+    resend_webhook_aktiv: "Zustellmeldungen des Mail-Dienstes", soft_bounce_grenze: "Grenze vorübergehend unzustellbar", mail_ereignis_aufbewahren_tage: "Zustellmeldungen aufbewahren (Tage)",
+    attribution_modell: "Zuordnungsmodell", attribution_fenster_tage: "Zuordnungsfenster (Tage)", kampagne_nachlauf_tage: "Nachlauf Kampagne (Tage)",
+  },
+  gespeichert: "Einstellungen gespeichert",
+  avvFolgt: "Felder für Versanddienst-Vertrag und Aufbewahrung kommen mit dem nächsten Backend-Stand.",
+  versandwegHinweis: "Versand über Mail-Dienst erst mit Versanddienst-Vertrag und Transfergrundlage.",
+});
+
+export const BEREITSCHAFT = Object.freeze({
+  titel: "Vor dem Livebetrieb",
+  punkte: {
+    "P0-1": "Zweck „Teilnahme an Event“ und eigene Einladungs-Einwilligung",
+    "P0-2": "Einladungs-Zustimmung je Event-Anmeldung",
+    "P0-3": "Bestätigungsmail außer bei Papier erzwingen",
+    "P0-4": "Werbehinweis beim Kauf in der Kundenakte",
+    "P0-5": "Stopp bei Storno und Retoure vor jeder Mail",
+    "P0-6": "Bestätigungsmail erneut nur mit Sperre und Zähler",
+    "P0-7": "Kontaktsperre und globale Abmeldung",
+    "P0-8": "Empfehlung: Auftrag verknüpft, Fälligkeit nach Lieferung",
+    "P0-9": "Gutschein-Art „Aktion“ im Shop",
+    "P0-10": "Abmeldelink je Versandzeile",
+    "P0-11": "Testmails nur an interne Adressen",
+    kanzleiFusszeilen: "Kanzlei: Fußzeilen mit Abmeldelink",
+    kanzleiEinladung: "Kanzlei: Bestandskunden-Einladung",
+    robinson: "Abgleich mit der Robinson-Liste",
+  },
+  erledigt: "erledigt",
+  offen: "offen",
+});
+
+// ---------------------------------------------------------------------------------------------- Fähigkeiten
+
+export const SPERRE = Object.freeze({
+  anmeldung: "Kommt mit dem nächsten Backend-Stand – bis dahin am Tablet selbst eintragen",
+  kanaele: "Bis dahin: Formular unterschreiben lassen",
+  einladung: "Einladungs-Einwilligungen aus früheren Anmeldungen müssen erst bereinigt werden",
+  checkin: "Check-in ohne Code: Status in der Liste setzen",
+  nachruecken: "Bis dahin Status in der Zeile auf „angemeldet“ setzen",
+  absage: "Teilnehmerliste drucken und informieren",
+  gutschein: "Gutschein-Art „Aktion“ fehlt im Shop – Ausgabe nach Abstimmung mit dem Steuerberater",
+  bestandskunde: "Werbehinweis beim Kauf wird noch nicht dokumentiert",
+  trockenlauf: "Kommt mit dem nächsten Backend-Stand",
+  adresse: "Neue Adresse über Website-Anmeldung, alte abmelden",
+  ideen: "Ideen ohne Datum kommen später",
+  socialFelder: "Kontrollkästchen im Freigabe-Dialog, Kommentar am Beitrag",
+  kostenBelegt: "Zuordnung der Eingangsrechnungen folgt",
+  roi: "Bericht rechnet noch brutto",
+  ohneEmail: "Gast ohne Anmeldung am Eingang zählen",
+  dsgvo: "Anfrage im CRM erfassen",
+  socialFreigabe: "Kommentar und Aufgabe an die Leitung",
+  csv: "Zeilen einzeln übernehmen",
+});
+
+// ---------------------------------------------------------------------------------------------- Druck
+
+export const DRUCK = Object.freeze({
+  teilnehmerliste: "Teilnehmerliste",
+  namensschilder: "Namensschilder",
+  nachweis: "Einwilligungsnachweis",
+  kampagnenbericht: "Kampagnenbericht",
+  ticket: "Event-Ticket",
+});
+
+// ---------------------------------------------------------------------------------------------- Verbotene Wörter (Abnahme-Grep § 14)
+
+/** Wörter, die in sichtbaren Strings des Bereichs nie stehen (Test durchsucht Seiten, Komponenten, Bibliothek ohne texte.js). */
+export const VERBOTEN = Object.freeze(["DOI", "Opt-in", "Bounce", "Claim-Guard", "Slot", "Preheader", "Overline", "UTM", "ECG", "Frappe", "DocType", "Workflow", "Jinja", "Doku"]);

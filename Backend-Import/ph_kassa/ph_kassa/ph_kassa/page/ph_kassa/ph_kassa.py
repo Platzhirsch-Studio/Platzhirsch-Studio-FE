@@ -16,15 +16,16 @@ import frappe
 from frappe import _
 from frappe.utils import getdate, now_datetime, nowdate
 
-from ph_kassa import schnittstellen
+from ph_kassa import dienste, schnittstellen
 from ph_kassa.ph_kassa.doctype.ph_kassa_einstellungen.ph_kassa_einstellungen import einstellungen
-from ph_kassa.ph_kassa.doctype.ph_kassenabschluss.ph_kassenabschluss import ist_gesperrt, oeffnen_oder_holen
+from ph_kassa.ph_kassa.doctype.ph_kassenabschluss.ph_kassenabschluss import geschaeftszeitraum, ist_gesperrt, oeffnen_oder_holen
 from ph_kassa.ph_kassa.doctype.ph_kassenbuch.ph_kassenbuch import buchen as kassenbuch_buchen_fn
 from ph_kassa.ph_kassa.doctype.ph_kassenbuch.ph_kassenbuch import letzter_bestand
 from ph_kassa.ph_kassa.doctype.ph_terminal.ph_terminal import reader_fuer_kasse, zahlung_merken
 from ph_kassa.druck.bon import bon_text
 from ph_kassa.druck.drucker import druckauftrag, firma_dict
 from ph_kassa.logik.betraege import STEUERSAETZE, KassenFehler, beleg_pruefen as logik_beleg_pruefen, stueckelung
+from ph_kassa.logik.integration import karten_fehler
 
 # PH Produkt.ust_klasse (ph_sortiment) → Kassa-Steuersatz (Select); Rechenskala intern wie ph_shop/ph_faktura: Int×100 (STEUERSAETZE)
 UST_KLASSE_STEUERSATZ = {"normal": "Normal 20", "ermaessigt": "Ermaessigt-1 10"}
@@ -86,13 +87,17 @@ def kontext(kasse=None):
         "firma": firma_dict(),
         "doctypes": {dt: bool(frappe.db.exists("DocType", dt)) for dt in ("PH Kontakt", "PH Produkt", "PH Auftragsbestaetigung", "PH Rechnung", "PH Bestellung", "PH Gutschein", "PH Kassenbeleg", "PH Kasse")},
         "heute_umsatz_cent": _heute_umsatz(kasse) if kasse else 0,
+        "offene_kartenzahlungen": dienste.offene_kartenzahlungen(kasse) if kasse else [],
+        "schnelltasten": schnelltasten(kasse) if kasse else [],
+        "geschaeftstag": str(_heute()),
+        "chf": {"aktiv": einst["chf_annahme_aktiv"], "kurs_mikro": einst["chf_kurs_mikro"], "kurs_datum": einst["chf_kurs_datum"]},
     }
 
 
 def _heute_umsatz(kasse):
     if not frappe.db.exists("DocType", "PH Kassenbeleg"):
         return 0
-    filters = {"kasse": kasse, "docstatus": 1, "datum_uhrzeit": ("between", [f"{nowdate()} 00:00:00", f"{nowdate()} 23:59:59"])}
+    filters = {"kasse": kasse, "docstatus": 1, "datum_uhrzeit": ("between", list(geschaeftszeitraum(_heute())))}
     if _hat("PH Kassenbeleg", "trainings"):
         filters["trainings"] = 0
     rows = frappe.get_all("PH Kassenbeleg", filters=filters, fields=["gesamt_cent"])
@@ -125,7 +130,7 @@ def suche_kunde(q):
 def _auftraege(kontakt, name=None):
     if not frappe.db.exists("DocType", "PH Auftragsbestaetigung") or not (kontakt or name):
         return []
-    felder = _felder("PH Auftragsbestaetigung", ["name", "status", "datum", "auftragswert_cent", "anzahlung_soll_cent", "anzahlung_ist_cent", "offen_cent", "projekt"])
+    felder = _felder("PH Auftragsbestaetigung", ["name", "status", "datum", "auftragswert_cent", "anzahlung_soll_cent", "anzahlung_ist_cent", "offen_cent", "projekt", "vertragsort", "fagg_frist_ende"])
     filters = {"name": name} if name else {"kontakt": kontakt, "docstatus": ("<", 2)}
     if not name and _hat("PH Auftragsbestaetigung", "status"):
         filters["status"] = ("not in", ("Storniert", "Abgerechnet"))
@@ -134,8 +139,19 @@ def _auftraege(kontakt, name=None):
     for r in rows:
         soll = int(r.get("anzahlung_soll_cent") or 0)
         ist = int(r.get("anzahlung_ist_cent") or 0)
-        out.append({"auftrag": r.name, "status": r.get("status"), "datum": str(r.get("datum") or ""), "auftragswert_cent": int(r.get("auftragswert_cent") or 0), "anzahlung_offen_cent": max(0, soll - ist), "offen_cent": int(r.get("offen_cent") or 0), "steuersatz": _auftrag_steuersatz(r.name)})
+        out.append({"auftrag": r.name, "status": r.get("status"), "datum": str(r.get("datum") or ""), "auftragswert_cent": int(r.get("auftragswert_cent") or 0), "anzahlung_offen_cent": max(0, soll - ist), "offen_cent": int(r.get("offen_cent") or 0), "steuersatz": _auftrag_steuersatz(r.name),
+                    "zahlungsplan": _zahlungsplan(r.name), "vertragsort": r.get("vertragsort"), "fagg_frist_ende": str(r.get("fagg_frist_ende") or "") or None})
     return out
+
+
+def _zahlungsplan(auftrag):
+    """Zahlungsplan-Zeilen des Auftrags (ph_faktura.kassa.offene_anzahlung) – Kassa wählt die Rate (Konzept §9.1)."""
+    try:
+        from ph_faktura.ph_faktura.kassa import offene_anzahlung
+
+        return offene_anzahlung(auftrag)
+    except Exception:  # noqa: BLE001 – ph_faktura fehlt oder Auftrag nicht lesbar
+        return []
 
 
 def _auftrag_steuersatz(auftrag):
@@ -153,11 +169,20 @@ def _auftrag_steuersatz(auftrag):
 def _rechnungen(kontakt):
     if not frappe.db.exists("DocType", "PH Rechnung") or not kontakt:
         return []
-    felder = _felder("PH Rechnung", ["name", "art", "status", "brutto_cent", "offen_cent", "datum"])
+    felder = _felder("PH Rechnung", ["name", "art", "status", "brutto_cent", "offen_cent", "datum", "nummer"])
     filters = {"kontakt": kontakt, "docstatus": 1}
     if _hat("PH Rechnung", "offen_cent"):
         filters["offen_cent"] = (">", 0)
-    return [{"rechnung": r.name, "art": r.get("art"), "status": r.get("status"), "offen_cent": int(r.get("offen_cent") or r.get("brutto_cent") or 0), "datum": str(r.get("datum") or "")} for r in frappe.get_all("PH Rechnung", filters=filters, fields=felder, limit=10)]
+    return [{"rechnung": r.name, "art": r.get("art"), "status": r.get("status"), "offen_cent": int(r.get("offen_cent") or r.get("brutto_cent") or 0), "datum": str(r.get("datum") or ""), "steuersatz": _rechnung_steuersatz(r.name)} for r in frappe.get_all("PH Rechnung", filters=filters, fields=felder, limit=10)]
+
+
+def _rechnung_steuersatz(rechnung):
+    """Teil-/Schlusszahlung bar: Steuersatz der Rechnung für die RKSV-Summe (Fachkritik 21 P-C); gemischt → Normal."""
+    if not _hat("PH Beleg Steuer", "ust_satz_promille"):
+        return "Normal 20"
+    saetze = {int(a.ust_satz_promille or 0) for a in frappe.get_all("PH Beleg Steuer", filters={"parent": rechnung, "parenttype": "PH Rechnung"}, fields=["ust_satz_promille"])}
+    umkehr = {v: k for k, v in STEUERSAETZE.items() if k != "Steuerfrei"}
+    return umkehr.get(saetze.pop(), "Normal 20") if len(saetze) == 1 else "Normal 20"
 
 
 def _bestellungen(kontakt):
@@ -220,23 +245,97 @@ def beleg_vorschau(kasse, positionen, zahlarten=None, kontakt=None):
 
 
 @frappe.whitelist()
-def beleg_buchen(kasse, positionen, zahlarten, kontakt=None, auftrag=None, rechnung=None, bestellung=None, trainings=0, kundenbeleg_email=None, drucken=None):
-    """Beleg prüfen → WP10a erzeuge_beleg → (optional) drucken → Ergebnis mit Vorschau/Druckauftrag."""
+def beleg_buchen(kasse, positionen, zahlarten, kontakt=None, auftrag=None, rechnung=None, bestellung=None, trainings=0, kundenbeleg_email=None, drucken=None,
+                 idempotency_key=None, kunde_name=None, zahlungsplan_position=None, kundenkarte=None, kundenkarte_vorteile=None, freigabe=None,
+                 empfaenger=None, rechnung_erstellen=0, identitaet=None, retoure_original=None):
+    """Beleg prüfen → WP10a erzeuge_beleg → (optional) drucken → Ergebnis mit Vorschau/Druckauftrag.
+
+    Neu (50-backend-luecken-kassa-faktura.md): idempotency_key (Doppel-F12/Netzabbruch), kunde_name, zahlungsplan_position,
+    kundenkarte (+ Vorteile einlösen), Leitungsfreigabe per PIN (freigabe = {email, pin, geraet_token}) für Rabatt/
+    Überzahlung/Retoure bar, Rechnungsempfänger (empfaenger = {name|firma, strasse, plz, ort, land, uid, email} →
+    PH Kontakt) und Barverkaufsrechnung (ab 400 € automatisch), Identität ab 10.000 € bar (identitaet = {art, nummer, name}),
+    Retoure (retoure_original = Originalbeleg), CHF bar (Kurs vom Server), Einzweck-/Mehrzweck-Gutscheine.
+    """
     _rollen()
     einst = einstellungen()
     positionen = _json(positionen)
     zahlarten = _json(zahlarten)
-    if ist_gesperrt(kasse, nowdate()):
+    empfaenger = _json(empfaenger) if empfaenger else None
+    identitaet = _json(identitaet) if identitaet else None
+    if idempotency_key:
+        alt = frappe.db.get_value("PH Kassenbeleg", {"idempotency_key": idempotency_key, "docstatus": 1}, "name")
+        if alt:
+            return {"beleg": alt, "belegnummer": frappe.db.get_value("PH Kassenbeleg", alt, "belegnummer"), "wiederholung": True}
+    if ist_gesperrt(kasse, _heute()):
         frappe.throw(_("Kasse {0} ist heute abgeschlossen – Leitung muss den Abschluss öffnen.").format(kasse))
     trainings = int(trainings or 0)
     if not trainings and _hat("PH Kasse", "trainings_modus"):
         trainings = int(frappe.db.get_value("PH Kasse", kasse, "trainings_modus") or 0)
+
+    # Steuersätze, die der Server festlegt (nie dem Client glauben)
+    gutscheinart = einst["gutschein_art"]
+    for p in positionen:
+        if p.get("art") == "Gutschein Verkauf":
+            p["steuersatz"] = "Null 0" if gutscheinart == "Mehrzweck" else einst["standard_steuersatz"]
+            if float(p.get("menge") or 1) != 1:
+                frappe.throw(_("Gutscheine einzeln verkaufen (Menge 1 je Gutschein)."))
+        if p.get("art") == "Gutschein Einloesung":
+            p["steuersatz"] = einst["standard_steuersatz"]
+        if p.get("art") in ("Teilzahlung", "Schlusszahlung") and rechnung:
+            p["steuersatz"] = _rechnung_steuersatz(rechnung)
+        if p.get("art") == "Anzahlung" and auftrag:
+            p["steuersatz"] = _auftrag_steuersatz(auftrag)
+    for z in zahlarten:
+        if z.get("fremdwaehrung"):
+            _chf_pruefen(einst)
+            z["kurs_mikro"] = einst["chf_kurs_mikro"]
+    gutschein_hinweise = []
+    if not any(p.get("art") == "Retoure" for p in positionen):
+        positionen, zahlarten, gutschein_hinweise = _gutscheine_nach_art(positionen, zahlarten)
+    _ausstellungsstuecke_pruefen(positionen)
+    # Retoure: Mengen gegen Originalbeleg, Rückzahlung auf die Originalkarte
+    original = None
+    if any(p.get("art") == "Retoure" for p in positionen):
+        if retoure_original:
+            original, zeilen = dienste.retoure_daten(retoure_original)
+            nach_zeile = {z["name"]: z for z in zeilen}
+            for p in positionen:
+                if p.get("art") != "Retoure":
+                    continue
+                z = nach_zeile.get(p.get("bezug_zeile"))
+                if not z or float(p.get("menge") or 1) > float(z["ruecknehmbar"]) + 1e-9:
+                    frappe.throw(_("Rücknahme „{0}“ übersteigt die rücknehmbare Menge des Originalbelegs.").format(p.get("bezeichnung")))
+                p.update(bezug_doctype="PH Kassenbeleg", bezug=original.name, steuersatz=z.get("steuersatz"), einzel_brutto_cent=-abs(int(z.get("einzel_brutto_cent") or 0)))
+            for z in zahlarten:
+                if z.get("zahlart") == "Karte Stripe Terminal" and not z.get("terminal_payment_intent"):
+                    orig = next((o for o in original.zahlarten if o.zahlart == "Karte Stripe Terminal"), None)
+                    if not orig:
+                        frappe.throw(_("Originalbeleg wurde nicht mit dem Terminal bezahlt – Rückzahlung bar oder per Überweisung."))
+                    z.update(terminal_payment_intent=orig.terminal_payment_intent, erstattung_von_zahlung=orig.zahlung)
+            kontakt = kontakt or original.kontakt
     try:
         s = logik_beleg_pruefen(positionen, zahlarten)
     except KassenFehler as e:
         frappe.throw(str(e))
+
+    # Fachregeln (logik/regeln.py) und Leitungsfreigabe
+    from ph_kassa.logik import regeln
+    from ph_kassa.logik.betraege import rabatt_freigabe_noetig
+
+    auftrag_info = next((a for a in _auftraege(None, auftrag)), None) if auftrag else None
+    pruef = regeln.pruefe({
+        "positionen": s["positionen"], "zahlarten": s["zahlarten"], "gesamt_cent": s["gesamt_cent"], "kontakt": kontakt, "auftrag": auftrag, "rechnung": rechnung,
+        "empfaenger": empfaenger, "identitaet": identitaet, "retoure_original": bool(original),
+        "auftrag_offen_cent": auftrag_info["anzahlung_offen_cent"] if auftrag_info and auftrag_info["anzahlung_offen_cent"] else None,
+        "vertragsort": (auftrag_info or {}).get("vertragsort"), "fagg_frist_ende": (auftrag_info or {}).get("fagg_frist_ende"),
+        "rabatt_freigabe_index": rabatt_freigabe_noetig(positionen, einst["rabatt_freigabe_ab_promille"]),
+    }, einst)
+    if pruef["fehler"]:
+        frappe.throw("<br>".join(pruef["fehler"]))
+    freigabe_von = dienste.freigabe_pruefen(freigabe, [regeln.FREIGABE_TEXTE[c] for c in pruef["freigaben"]])
+
     for z in s["zahlarten"]:
-        if z["zahlart"] == "Karte Stripe Terminal":
+        if z["zahlart"] == "Karte Stripe Terminal" and z["betrag_cent"] > 0:
             if not z.get("terminal_payment_intent"):
                 frappe.throw(_("Terminalzahlung wurde nicht gestartet."))
             st = dienst(erzwinge_mock=_mock_terminal()).status(z["terminal_payment_intent"])
@@ -246,12 +345,42 @@ def beleg_buchen(kasse, positionen, zahlarten, kontakt=None, auftrag=None, rechn
                 frappe.throw(_("Terminalbetrag weicht vom Belegbetrag ab."))
         if z["zahlart"] == "Gutschein" and not z.get("gutschein"):
             frappe.throw(_("Gutschein wurde nicht geprüft."))
-    for p in s["positionen"]:
-        if p.get("art") == "Gutschein Verkauf" and einst["gutschein_art"] == "Mehrzweck":
-            p["steuersatz"] = "Null 0"  # Mehrzweckgutschein: kein Umsatz beim Verkauf (Steuerberater bestätigt, PLAN.md)
 
-    doc = schnittstellen.erzeuge_beleg(kasse=kasse, positionen=s["positionen"], zahlarten=s["zahlarten"], belegart="Trainingsbeleg" if trainings else "Standard", kontakt=kontakt or None, auftrag=auftrag or None, rechnung=rechnung or None, bestellung=bestellung or None, trainings=bool(trainings), bediener=frappe.session.user, kundenbeleg_email=kundenbeleg_email or None)
-    ergebnis = {"beleg": doc.name, "belegnummer": doc.get("belegnummer"), "gesamt_cent": s["gesamt_cent"], "rueckgeld_cent": s["rueckgeld_cent"], "trainings": trainings}
+    # Rechnungsempfänger anlegen (Laufkunde)
+    if empfaenger and not kontakt:
+        neu = dienste.kunde_anlegen(**{k: empfaenger.get(k) for k in ("name", "vorname", "nachname", "firma", "strasse", "plz", "ort", "land", "uid", "email", "telefon")})
+        kontakt = neu["kontakt"]
+        if neu.get("bestehend"):
+            pruef["hinweise"].append(_("Rechnungsempfänger: bestehender Kontakt {0} verwendet (Dublettenprüfung ph_crm).").format(kontakt))
+    if kontakt and not kunde_name and frappe.db.exists("DocType", "PH Kontakt"):
+        kunde_name = frappe.db.get_value("PH Kontakt", kontakt, "titel")
+    zusatz = {"freigabe_von": freigabe_von, "freigabe_gruende": ", ".join(pruef["freigaben"]) or None}
+    if identitaet:
+        zusatz.update(id_pruefung_art=identitaet.get("art"), id_pruefung_nummer=identitaet.get("nummer"), id_pruefung_name=identitaet.get("name") or kunde_name, id_pruefung_von=frappe.session.user)
+
+    doc = schnittstellen.erzeuge_beleg(kasse=kasse, positionen=s["positionen"], zahlarten=s["zahlarten"], belegart="Trainingsbeleg" if trainings else "Standard", kontakt=kontakt or None, auftrag=auftrag or None, rechnung=rechnung or None, bestellung=bestellung or None, trainings=bool(trainings), bediener=frappe.session.user, kundenbeleg_email=kundenbeleg_email or None,
+                                       idempotency_key=idempotency_key or None, kunde_name=kunde_name or None, zahlungsplan_position=zahlungsplan_position or None, zusatz=zusatz)
+    ergebnis = {"beleg": doc.name, "belegnummer": doc.get("belegnummer"), "gesamt_cent": s["gesamt_cent"], "rueckgeld_cent": s["rueckgeld_cent"], "trainings": trainings,
+                "hinweise": list(pruef["hinweise"]) + gutschein_hinweise, "freigabe_von": freigabe_von,
+                "gutschein_codes": doc.flags.get("ph_gutschein_codes") or [], "faktura": doc.flags.get("ph_faktura"), "erstattungen": doc.flags.get("ph_refunds") or [], "klaerfaelle": doc.flags.get("ph_klaerfaelle") or []}
+    for z in s["zahlarten"]:
+        if z.get("terminal_payment_intent") and z["betrag_cent"] > 0:
+            dienste.vorgang_merken(z["terminal_payment_intent"], status="Verbucht", beleg=doc.name, beendet_am=now_datetime())
+    # Kundenkarte (ph_kundenkarte ist optional, nach ph_kassa installiert)
+    if kundenkarte:
+        ergebnis["kundenkarte"] = _kundenkarte_buchen(doc, kundenkarte, _json(kundenkarte_vorteile) if kundenkarte_vorteile else [])
+    # Barverkaufsrechnung (§ 11 UStG über 400 € oder auf Wunsch)
+    umsatz = sum(int(p.get("brutto_cent") or 0) for p in s["positionen"] if p.get("art") in ("Artikel", "Freitext", "Gutschein Einloesung", "Retoure", "Rabatt"))
+    if not trainings and not rechnung and kontakt and (int(rechnung_erstellen or 0) or umsatz > einst["barverkauf_rechnung_ab_cent"]):
+        try:
+            from ph_faktura.api import create_invoice_from_receipt
+
+            r = create_invoice_from_receipt(doc.name, kontakt=kontakt)
+            frappe.db.set_value("PH Kassenbeleg", doc.name, "barverkauf_rechnung", r["rechnung"], update_modified=False)
+            ergebnis["rechnung"] = r
+        except Exception as e:  # noqa: BLE001 – Beleg ist gebucht; Rechnung kann die Faktura nachholen
+            frappe.log_error(title=f"PH Kassa: Barverkaufsrechnung {doc.name}")
+            ergebnis["hinweise"].append(_("Rechnung nicht erstellt ({0}) – in Faktura „Rechnung aus Kassenbeleg“.").format(str(e)[:120]))
     bar = any(z["zahlart"] == "Bar" for z in s["zahlarten"])
     soll_drucken = einst["automatisch_drucken"] if drucken is None else int(drucken)
     try:
@@ -268,8 +397,127 @@ def beleg_buchen(kasse, positionen, zahlarten, kontakt=None, auftrag=None, rechn
         except Exception:  # noqa: BLE001
             frappe.log_error(title="PH Kassa: Beleg-Mail fehlgeschlagen")
             ergebnis["email_fehler"] = True
-    _display(kasse, {"zustand": "fertig", "gesamt_cent": s["gesamt_cent"], "rueckgeld_cent": s["rueckgeld_cent"], "beleg": doc.name})
+    # Belegerteilungspflicht (§ 132a Abs 1 BAO): ohne Druck und ohne E-Mail Beleg am Kundendisplay zeigen
+    ohne_papier = ergebnis["druck"].get("modus") in ("fehler", "keiner") and not ergebnis.get("email")
+    if ohne_papier:
+        ergebnis["beleg_aushaendigen"] = _("Beleg nicht gedruckt – QR-Beleg am Kundendisplay zeigen oder per E-Mail senden (Belegerteilungspflicht).")
+    _display(kasse, {"zustand": "beleg" if ohne_papier else "fertig", "gesamt_cent": s["gesamt_cent"], "rueckgeld_cent": s["rueckgeld_cent"], "beleg": doc.name, "qr": doc.get("maschinenlesbarer_code") if ohne_papier else None})
     return ergebnis
+
+
+def _chf_pruefen(einst):
+    from frappe.utils import date_diff
+
+    if not einst["chf_annahme_aktiv"]:
+        frappe.throw(_("CHF-Annahme ist nicht aktiviert."))
+    if not einst["chf_kurs_mikro"] or not einst["chf_kurs_datum"] or date_diff(_heute(), einst["chf_kurs_datum"]) > einst["chf_kurs_max_alter_tage"]:
+        frappe.throw(_("CHF-Kurs fehlt oder ist veraltet – Leitung pflegt den Kurs in PH Kassa Einstellungen."))
+
+
+def _kundenkarte_buchen(doc, kartennummer, vorteile):
+    """Kartennummer am Beleg speichern (Custom Field von ph_kundenkarte) und Vorteile einlösen (Bezug = Beleg)."""
+    out = {"kartennummer": kartennummer, "vorteile": [], "fehler": []}
+    try:
+        if _hat("PH Kassenbeleg", "ph_kundenkarte_kartennummer"):
+            frappe.db.set_value("PH Kassenbeleg", doc.name, "ph_kundenkarte_kartennummer", kartennummer, update_modified=False)
+    except Exception:  # noqa: BLE001
+        frappe.log_error(title=f"PH Kassa: Kundenkarte am Beleg {doc.name}")
+    if not vorteile:
+        return out
+    try:
+        # Integration Runde 3 (52-…, Abschnitt 8): direkte Python-Funktionen – kein commit/rollback im Kassen-Request,
+        # Fehler als ApiFehler (card_*, limit_reached …) → Kassa-Fehlerform; der Beleg bleibt gültig.
+        from ph_core.api import ApiFehler
+        from ph_kundenkarte.ph_kundenkarte.kassa import einloesen
+    except ImportError:
+        out["fehler"].append(karten_fehler("unavailable", _("ph_kundenkarte nicht installiert.")))
+        return out
+    for v in vorteile:
+        try:
+            out["vorteile"].append(einloesen(kartennummer, v, bezug_doctype="PH Kassenbeleg", bezug=doc.name, ort="Kassa"))
+        except ApiFehler as e:
+            out["fehler"].append(karten_fehler(e.code, e.meldung, v, e.http_status))
+        except Exception as e:  # noqa: BLE001 – unerwartet: protokollieren, Beleg bleibt
+            frappe.log_error(title=f"PH Kassa: Kundenkarte {kartennummer} Vorteil {v}")
+            out["fehler"].append(karten_fehler("unavailable", str(e)[:120], v, 500))
+    out["codes"] = sorted({f["code"] for f in out["fehler"]})
+    return out
+
+
+def _gutscheine_nach_art(positionen, zahlarten):
+    """Server prüft jeden Gutschein über ph_shop.gutschein.pruefen (Art, Satz, Restwert) und stellt um:
+    Rabatt (mindert_entgelt) → Rabattposition je Steuersatz der Ware statt Gutschein-Zahlung; Einzweck → Satz der Ausgabe;
+    Einzweck ohne Satz → klare Meldung (ph_shop bricht ab, bis der Satz nachgetragen ist)."""
+    namen = {z.get("gutschein") for z in zahlarten if z.get("zahlart") == "Gutschein" and z.get("gutschein")}
+    namen |= {p.get("gutschein") for p in positionen if p.get("art") == "Gutschein Einloesung" and p.get("gutschein")}
+    if not namen or not frappe.db.exists("DocType", "PH Gutschein"):
+        return positionen, zahlarten, []
+    from ph_shop.gutschein import pruefen
+
+    from ph_kassa.logik.integration import EINZWECK_OHNE_SATZ, gutscheine_umstellen
+
+    je = {}
+    for g in namen:
+        try:
+            je[g] = pruefen(g)
+        except frappe.DoesNotExistError:
+            frappe.throw(_("Gutschein {0} nicht gefunden.").format(g))
+        except frappe.ValidationError as e:
+            if "Einzweck" in str(e):
+                frappe.throw(_(EINZWECK_OHNE_SATZ).format(g), title=_("Gutschein nicht einlösbar"))
+            raise
+        if not je[g].get("einloesbar"):
+            frappe.throw(_("Gutschein {0} ist nicht einlösbar ({1}).").format(g, _(je[g].get("status") or "")))
+    try:
+        return gutscheine_umstellen(positionen, zahlarten, je)
+    except KassenFehler as e:
+        frappe.throw(str(e))
+
+
+def _ausstellungsstuecke_pruefen(positionen):
+    """Positionen mit Bezug PH Lagerbestand: Ausstellungsstück, verkäuflich, nicht schon kassiert (Server prüft)."""
+    from ph_kassa.logik.integration import ausstellungsstuecke_im_beleg
+
+    try:
+        zeilen = ausstellungsstuecke_im_beleg(positionen)
+    except KassenFehler as e:
+        frappe.throw(str(e))
+    if not zeilen:
+        return
+    if not frappe.db.exists("DocType", "PH Lagerbestand"):
+        frappe.throw(_("Ausstellungsstück: ph_logistik ist nicht installiert."))
+    for p in zeilen:
+        lb = frappe.db.get_value("PH Lagerbestand", p["bezug"], ["name", "ausstellungsstueck", "status"], as_dict=True)
+        if not lb or not lb.ausstellungsstueck:
+            frappe.throw(_("{0} ist kein Ausstellungsstück.").format(p["bezug"]))
+        if lb.status in ("Ausgeschieden", "Gesperrt", "Reserviert"):
+            frappe.throw(_("Ausstellungsstück {0} ist {1}.").format(lb.name, _(lb.status)))
+        kassiert = frappe.get_all("PH Kassenbeleg Position", filters={"parenttype": "PH Kassenbeleg", "lagerbestand_ref": lb.name}, pluck="parent")
+        if kassiert and frappe.db.exists("PH Kassenbeleg", {"name": ("in", kassiert), "docstatus": 1, "belegart": "Standard", "storniert_durch": ("is", "not set")}):
+            frappe.throw(_("Ausstellungsstück {0} wurde bereits kassiert.").format(lb.name))
+        p["lagerbestand_ref"] = lb.name
+        for k in ("ausstellungsstueck", "bereits_gebucht"):
+            p.pop(k, None)
+
+
+@frappe.whitelist()
+def ausstellungsstueck(lagerbestand, vk_cent=None):
+    """Kassenposition „Ausstellungsstück“ zu PH Lagerbestand (ph_logistik als_ausstellungsstueck_verkaufen / Scan).
+    Der Verkauf im Bestand wird beim Buchen des Belegs gebucht (PH Kassenbeleg._ausstellungsstuecke_buchen)."""
+    _rollen()
+    if not frappe.db.exists("DocType", "PH Lagerbestand"):
+        frappe.throw(_("ph_logistik ist nicht installiert."))
+    felder = _felder("PH Lagerbestand", ["name", "produkt", "produkt_name", "marke", "seriennummer", "ausstellungsstueck", "status", "verfuegbar", "vk_cent_ausstellung", "zustand"])
+    lb = frappe.db.get_value("PH Lagerbestand", lagerbestand, felder, as_dict=True)
+    if not lb:
+        frappe.throw(_("Lagerbestand {0} nicht gefunden.").format(lagerbestand))
+    ust_klasse = frappe.db.get_value("PH Produkt", lb.produkt, "ust_klasse") if lb.get("produkt") and _hat("PH Produkt", "ust_klasse") else None
+    from ph_kassa.logik.integration import ausstellungsstueck_position
+
+    try:
+        return ausstellungsstueck_position(lb, int(vk_cent) if vk_cent not in (None, "") else None, einstellungen()["standard_steuersatz"], ust_klasse)
+    except KassenFehler as e:
+        frappe.throw(str(e))
 
 
 def _beleg_dict(doc):
@@ -304,7 +552,7 @@ def belege_heute(kasse, limit=30):
     if not frappe.db.exists("DocType", "PH Kassenbeleg"):
         return []
     felder = _felder("PH Kassenbeleg", ["name", "belegnummer", "belegart", "datum_uhrzeit", "gesamt_cent", "trainings", "bediener", "storno_von", "kontakt"])
-    return frappe.get_all("PH Kassenbeleg", filters={"kasse": kasse, "docstatus": 1, "datum_uhrzeit": ("between", [f"{nowdate()} 00:00:00", f"{nowdate()} 23:59:59"])}, fields=felder, order_by="datum_uhrzeit desc", limit=int(limit))
+    return frappe.get_all("PH Kassenbeleg", filters={"kasse": kasse, "docstatus": 1, "datum_uhrzeit": ("between", list(geschaeftszeitraum(_heute())))}, fields=felder, order_by="datum_uhrzeit desc", limit=int(limit))
 
 
 @frappe.whitelist()
@@ -333,31 +581,59 @@ def beleg_mailen(beleg, email):
 
 
 @frappe.whitelist()
-def storno(beleg, grund):
-    """Storno (Leitung) → WP10a Stornobeleg. Mitarbeiter dürfen nur eigene Belege desselben Tages stornieren."""
+def storno(beleg, grund, freigabe=None):
+    """Storno → WP10a Stornobeleg (Fachkritik 21 P1). Mitarbeiter: eigene Belege von heute bis
+    `storno_mitarbeiter_bis_cent`; sonst Leitungsfreigabe per PIN (freigabe = {email, pin, geraet_token}).
+    Rückzahlung je Zahlart: Bar aus der Lade (Schublade öffnet), Karte → Stripe-Refund, Gutschein → Restwert zurück."""
     leitung = _rollen()
     if not (grund or "").strip():
         frappe.throw(_("Bitte einen Stornogrund angeben."))
-    alt = frappe.db.get_value("PH Kassenbeleg", beleg, _felder("PH Kassenbeleg", ["name", "kasse", "bediener", "datum_uhrzeit", "docstatus", "belegart"]), as_dict=True)
+    alt = frappe.db.get_value("PH Kassenbeleg", beleg, _felder("PH Kassenbeleg", ["name", "kasse", "bediener", "datum_uhrzeit", "docstatus", "belegart", "gesamt_cent", "geschaeftstag"]), as_dict=True)
     if not alt or alt.docstatus != 1:
         frappe.throw(_("Beleg nicht gefunden oder nicht signiert."))
-    if not leitung and (alt.get("bediener") != frappe.session.user or getdate(alt.get("datum_uhrzeit")) != getdate()):
-        frappe.throw(_("Storno fremder oder älterer Belege nur durch die Kassa-Leitung."), frappe.PermissionError)
-    if alt.get("belegart") in ("Stornobeleg", "Nullbeleg", "Startbeleg", "Monatsbeleg", "Jahresbeleg", "Schlussbeleg"):
+    if alt.get("belegart") in ("Stornobeleg", "Nullbeleg", "Startbeleg", "Monatsbeleg", "Jahresbeleg", "Schlussbeleg", "Sammelbeleg"):
         frappe.throw(_("Dieser Beleg kann nicht storniert werden."))
     if _hat("PH Kassenbeleg", "storno_von") and frappe.db.exists("PH Kassenbeleg", {"storno_von": beleg, "docstatus": 1}):
         frappe.throw(_("Beleg ist bereits storniert."))
-    if ist_gesperrt(alt.kasse, nowdate()):
+    if ist_gesperrt(alt.kasse, _heute()):
         frappe.throw(_("Kasse ist heute abgeschlossen."))
-    doc = schnittstellen.storniere_beleg(beleg, grund, bediener=frappe.session.user)
+    from ph_kassa.logik import regeln
+
+    tag = getdate(alt.get("geschaeftstag") or alt.get("datum_uhrzeit"))
+    noetig = regeln.storno_freigabe({"bediener": alt.get("bediener"), "datum": tag, "gesamt_cent": alt.get("gesamt_cent")}, frappe.session.user, _heute(), leitung, einstellungen()["storno_mitarbeiter_bis_cent"])
+    freigabe_von = dienste.freigabe_pruefen(freigabe, [regeln.FREIGABE_TEXTE[c] for c in noetig]) if noetig else None
+    doc = schnittstellen.storniere_beleg(beleg, grund, bediener=frappe.session.user, erlaube_mitarbeiter=not noetig, freigabe_von=freigabe_von)
+    kundenkarte = _kundenkarte_zuruecknehmen(beleg, grund)
     einst = einstellungen()
-    ergebnis = {"beleg": doc.name, "belegnummer": doc.get("belegnummer")}
-    if einst["automatisch_drucken"]:
+    ergebnis = {"beleg": doc.name, "belegnummer": doc.get("belegnummer"), "freigabe_von": freigabe_von, "erstattungen": doc.flags.get("ph_refunds") or [], "klaerfaelle": doc.flags.get("ph_klaerfaelle") or [], "faktura": doc.flags.get("ph_faktura"),
+                "rueckzahlung": [{"zahlart": z.zahlart, "betrag_cent": -int(z.betrag_cent or 0)} for z in doc.zahlarten]}
+    if kundenkarte:
+        ergebnis["kundenkarte"] = kundenkarte
+    bar = any(z.zahlart == "Bar" for z in doc.zahlarten)
+    if einst["automatisch_drucken"] or bar:
         try:
-            ergebnis["druck"] = druckauftrag(doc)
+            ergebnis["druck"] = druckauftrag(doc, schublade=bar)
         except frappe.ValidationError as e:
             ergebnis["druck"] = {"modus": "fehler", "fehler": str(e)}
     return ergebnis
+
+
+def _kundenkarte_zuruecknehmen(beleg, grund):
+    """Einlösungen der Kundenkarte mit Bezug auf den stornierten Beleg zurücknehmen (ph_kundenkarte.kassa, idempotent:
+    nur Status „Eingeloest“; der doc_event der Kundenkarte am Stornobeleg darf vorher gelaufen sein)."""
+    if not frappe.db.exists("DocType", "PH Kundenkarte Einloesung"):
+        return None
+    if not frappe.db.exists("PH Kundenkarte Einloesung", {"bezug_doctype": "PH Kassenbeleg", "bezug": beleg, "status": "Eingeloest"}):
+        return None
+    try:
+        from ph_core.api import ApiFehler
+        from ph_kundenkarte.ph_kundenkarte.kassa import einloesung_zuruecknehmen
+    except ImportError:
+        return None
+    try:
+        return einloesung_zuruecknehmen(bezug_doctype="PH Kassenbeleg", bezug=beleg, grund=_("Kassenstorno: {0}").format(grund)[:140])
+    except ApiFehler as e:
+        return {"storniert": [], "fehler": [karten_fehler(e.code, e.meldung, None, e.http_status)]}
 
 
 @frappe.whitelist()
@@ -396,26 +672,78 @@ def kassenbuch_buchen(kasse, art, betrag_cent, grund):
     return {"name": doc.name, "bestand_danach_cent": doc.bestand_danach_cent}
 
 
+def _abschluss_datum(datum):
+    """Heute für alle; frühere Tage (Abschluss nachholen) nur Leitung."""
+    tag = getdate(datum) if datum else _heute()
+    if tag > _heute():
+        frappe.throw(_("Abschluss für zukünftige Tage ist nicht möglich."))
+    if tag < _heute():
+        _rollen(leitung=True)
+    return tag
+
+
 @frappe.whitelist()
-def abschluss_laden(kasse):
+def abschluss_laden(kasse, datum=None):
     _rollen()
-    return oeffnen_oder_holen(kasse, nowdate()).zusammenfassung()
+    return oeffnen_oder_holen(kasse, _abschluss_datum(datum)).zusammenfassung()
 
 
 @frappe.whitelist()
-def abschluss_zaehlen(kasse, zaehlprotokoll, bargeld_anfang_cent=None, unterschrift=None, unterschrift_name=None):
+def abschluss_zaehlen(kasse, zaehlprotokoll, bargeld_anfang_cent=None, unterschrift=None, unterschrift_name=None, datum=None, anfang_grund=None, chf_ist_cent=None):
     _rollen()
-    doc = oeffnen_oder_holen(kasse, nowdate())
-    return doc.zaehlen(zaehlprotokoll=_json(zaehlprotokoll), bargeld_anfang_cent=bargeld_anfang_cent, unterschrift=unterschrift, unterschrift_name=unterschrift_name)
+    doc = oeffnen_oder_holen(kasse, _abschluss_datum(datum))
+    return doc.zaehlen(zaehlprotokoll=_json(zaehlprotokoll), bargeld_anfang_cent=bargeld_anfang_cent, unterschrift=unterschrift, unterschrift_name=unterschrift_name, anfang_grund=anfang_grund, chf_ist_cent=chf_ist_cent)
 
 
 @frappe.whitelist()
-def abschluss_abschliessen(kasse, differenz_grund=None, unterschrift=None, unterschrift_name=None):
+def abschluss_abschliessen(kasse, differenz_grund=None, unterschrift=None, unterschrift_name=None, datum=None, tresor_entnahme_cent=None):
+    """Abschließen (Leitung). tresor_entnahme_cent: vorher Entnahme in den Tresor/Bank buchen (Fachkritik 21 P-G)."""
     _rollen(leitung=True)
-    doc = oeffnen_oder_holen(kasse, nowdate())
+    tag = _abschluss_datum(datum)
+    if int(tresor_entnahme_cent or 0) > 0:
+        kassenbuch_buchen_fn(kasse, "Entnahme", int(tresor_entnahme_cent), _("Entnahme Tresor/Bank beim Tagesabschluss"), quelle="kassa", idempotency_key=f"tresor:{kasse}:{tag}")
+    doc = oeffnen_oder_holen(kasse, tag)
     z = doc.abschliessen(differenz_grund=differenz_grund, unterschrift=unterschrift, unterschrift_name=unterschrift_name)
     z["pdf_url"] = f"/api/method/frappe.utils.print_format.download_pdf?doctype=PH%20Kassenabschluss&name={frappe.utils.quote(doc.name)}&format={frappe.utils.quote('PH Kassenabschluss Protokoll')}&no_letterhead=1"
     return z
+
+
+@frappe.whitelist()
+def kassensturz(kasse, zaehlprotokoll=None, chf_ist_cent=None):
+    """Kassensturz jederzeit (BAO § 131): Soll-Bestand laut Kassenbuch (enthält alle Bar-Belege) gegen Zählung –
+    ohne Abschluss; mit Zählung wird ein Ereignis „Kassensturz“ protokolliert."""
+    _rollen()
+    from ph_kassa.logik.abschluss import zaehlprotokoll_summe
+    from ph_kassa.ph_kassa.doctype.ph_kassenbuch.ph_kassenbuch import letzter_bestand as bestand
+
+    soll = bestand(kasse)
+    soll_chf = bestand(kasse, "CHF")
+    out = {"soll_cent": soll, "chf_soll_cent": soll_chf, "zeitpunkt": str(now_datetime())}
+    if zaehlprotokoll:
+        try:
+            ist = zaehlprotokoll_summe(_json(zaehlprotokoll))
+        except KassenFehler as e:
+            frappe.throw(str(e))
+        out.update(ist_cent=ist, differenz_cent=ist - soll)
+        if chf_ist_cent not in (None, ""):
+            out.update(chf_ist_cent=int(chf_ist_cent), chf_differenz_cent=int(chf_ist_cent) - soll_chf)
+        from ph_kassa.rksv.buchung import _ereignis
+
+        _ereignis(kasse, "Kassensturz", notiz=_("Kassensturz durch {0}: Soll {1} ct, Ist {2} ct, Differenz {3} ct").format(frappe.session.user, soll, ist, ist - soll), status="Erledigt", automatisch=False)
+    return out
+
+
+@frappe.whitelist()
+def lade_oeffnen(kasse, grund):
+    """Kassenlade ohne Verkauf öffnen (Wechselgeld) – protokolliert als Ereignis (UX-Kritik 20 Z7)."""
+    _rollen()
+    if not (grund or "").strip():
+        frappe.throw(_("Grund angeben (z. B. Wechselgeld)."))
+    from ph_kassa.druck.drucker import schublade_auftrag
+    from ph_kassa.rksv.buchung import _ereignis
+
+    _ereignis(kasse, "Lade geoeffnet", notiz=_("{0}: {1}").format(frappe.session.user, grund), status="Erledigt", automatisch=False)
+    return schublade_auftrag(kasse)
 
 
 # ── Terminal ───────────────────────────────────────────────────────────────
@@ -432,6 +760,7 @@ def terminal_start(kasse, terminal, betrag_cent, beschreibung=None):
     except TerminalFehler as e:
         frappe.throw(_("Terminal: {0}").format(e.meldung))
     zahlung_merken(terminal, st["payment_intent"], st["status"])
+    dienste.vorgang_merken(st["payment_intent"], kasse=kasse, terminal=terminal, betrag_cent=int(betrag_cent), stripe_status=st["status"], status="Gestartet")
     _display(kasse, {"zustand": "karte", "gesamt_cent": int(betrag_cent)})
     return st
 
@@ -445,6 +774,21 @@ def terminal_status(payment_intent, terminal=None):
         frappe.throw(_("Terminal: {0}").format(e.meldung))
     if terminal:
         zahlung_merken(terminal, payment_intent, st["status"])
+    dienste.vorgang_status(payment_intent, st["status"])
+    # Zeitüberschreitung (UX-Kritik 20 Z2/E3): Hinweis nach terminal_warnung_s, Abbruch nach terminal_timeout_s
+    if not st.get("fertig"):
+        from ph_kassa.terminal import zeitueberschreitung
+
+        einst = einstellungen()
+        zustand = zeitueberschreitung(dienste.vorgang_alter(payment_intent), now_datetime(), einst["terminal_warnung_s"], einst["terminal_timeout_s"])
+        st["zeit"] = zustand
+        if zustand == "abbruch":
+            try:
+                st = dienst(erzwinge_mock=_mock_terminal()).abbrechen(payment_intent, terminal)
+                st["zeit"] = "abgebrochen"
+                dienste.vorgang_merken(payment_intent, status="Zeitueberschreitung", beendet_am=now_datetime(), stripe_status=st["status"])
+            except TerminalFehler as e:  # z. B. in letzter Sekunde bezahlt
+                st["zeit_hinweis"] = e.meldung
     return st
 
 
@@ -457,6 +801,7 @@ def terminal_abbruch(payment_intent, terminal=None):
         frappe.throw(_("Terminal: {0}").format(e.meldung))
     if terminal:
         zahlung_merken(terminal, payment_intent, st["status"])
+    dienste.vorgang_merken(payment_intent, status="Abgebrochen", beendet_am=now_datetime(), stripe_status=st["status"])
     return st
 
 
@@ -487,3 +832,151 @@ def _display(kasse, daten):
         frappe.publish_realtime(f"ph_kassa_display_{kasse}", daten, after_commit=False)
     except Exception:  # noqa: BLE001
         pass
+
+
+# ── Neue Endpunkte (50-backend-luecken-kassa-faktura.md) ─────────────────────
+
+def _heute():
+    """Geschäftstag jetzt (Tageswechsel-Uhrzeit aus den Einstellungen)."""
+    from ph_kassa.logik.abschluss import geschaeftstag
+
+    return geschaeftstag(now_datetime(), einstellungen().get("tageswechsel_uhrzeit"))
+
+
+@frappe.whitelist()
+def code_erkennen(code):
+    """Scanner-Code → {art, wert, treffer}: Kundenkarte, Gutschein, Kassenbeleg/RKSV-QR, Auftrag, Rechnung, Bestellung, EAN, Suche."""
+    _rollen()
+    from ph_kassa.logik.codes import erkennen
+
+    e = erkennen(code)
+    art, wert = e["art"], e["wert"]
+    try:
+        if art == "ean":
+            e["treffer"] = suche_produkt(wert)
+        elif art == "gutschein":
+            e["treffer"] = schnittstellen.gutschein_pruefen(wert)
+        elif art == "kundenkarte":
+            from ph_core.api import ApiFehler
+            from ph_kundenkarte.ph_kundenkarte.kassa import karte_pruefen
+
+            try:
+                e["treffer"] = karte_pruefen(wert)
+                if e["treffer"].get("code") not in (None, "ok"):
+                    e["code"] = e["treffer"]["code"]
+            except ApiFehler as ex:
+                e["treffer"] = None
+                e.update(code=ex.code, fehler=karten_fehler(ex.code, ex.meldung, None, ex.http_status)["meldung"])
+        elif art in ("kassenbeleg", "rksv_qr"):
+            name = wert if art == "kassenbeleg" else frappe.db.get_value("PH Kassenbeleg", {"maschinenlesbarer_code": wert}, "name")
+            e["treffer"] = frappe.db.get_value("PH Kassenbeleg", name, ["name", "belegnummer", "belegart", "gesamt_cent", "datum_uhrzeit", "kontakt"], as_dict=True) if name else None
+        elif art == "auftrag":
+            e["treffer"] = _auftraege(None, wert)
+        elif art == "rechnung":
+            e["treffer"] = frappe.db.get_value("PH Rechnung", {"name": wert, "docstatus": 1}, ["name", "kontakt", "offen_cent", "art", "status"], as_dict=True) if frappe.db.exists("DocType", "PH Rechnung") else None
+        elif art == "bestellung":
+            e["treffer"] = frappe.db.get_value("PH Bestellung", wert, ["name", "status", "gesamt_cent", "kontakt"], as_dict=True) if frappe.db.exists("DocType", "PH Bestellung") else None
+        else:
+            e["treffer"] = {"produkte": suche_produkt(wert), "kunden": suche_kunde(wert)}
+    except Exception as ex:  # noqa: BLE001 – Erkennung liefert trotzdem die Art
+        e["treffer"] = None
+        e["fehler"] = str(ex)[:160]
+    return e
+
+
+@frappe.whitelist()
+def kundenkarte_uebergeben(kartennummer):
+    """Beantragte Kundenkarte bei Übergabe an der Kassa aktivieren (ph_kundenkarte.kassa.karte_uebergeben)."""
+    _rollen()
+    from ph_core.api import ApiFehler
+
+    try:
+        from ph_kundenkarte.ph_kundenkarte.kassa import karte_uebergeben
+    except ImportError:
+        return {"kartennummer": kartennummer, "fehler": karten_fehler("unavailable", _("ph_kundenkarte nicht installiert."), None, 503)}
+    try:
+        return karte_uebergeben(kartennummer, ort="Kassa")
+    except ApiFehler as e:
+        return {"kartennummer": kartennummer, "fehler": karten_fehler(e.code, e.meldung, None, e.http_status)}
+
+
+@frappe.whitelist()
+def kunde_anlegen(name=None, firma=None, strasse=None, plz=None, ort=None, land="AT", uid=None, email=None, telefon=None, vorname=None, nachname=None):
+    """Schnellanlage Rechnungsempfänger (§ 11 UStG ab 400 €)."""
+    _rollen()
+    return dienste.kunde_anlegen(name=name, vorname=vorname, nachname=nachname, firma=firma, strasse=strasse, plz=plz, ort=ort, land=land, uid=uid, email=email, telefon=telefon)
+
+
+@frappe.whitelist()
+def retoure_vorbereiten(beleg, auswahl=None, grund=None):
+    """Rücknahme: Originalzeilen mit rücknehmbarer Menge; mit auswahl {zeile: menge} + grund fertige Retoure-Positionen
+    und Vorschlag der Rückzahlungswege (Karte zuerst auf die Originalkarte, sonst Bar/Gutschein laut Einstellung)."""
+    _rollen()
+    from ph_kassa.logik.retoure import erstattungsweg_vorschlag, retoure_positionen
+
+    doc, zeilen = dienste.retoure_daten(beleg)
+    out = {"beleg": doc.name, "kontakt": doc.kontakt, "kunde_name": doc.kunde_name, "datum": str(doc.datum_uhrzeit), "zeilen": zeilen, "standard": einstellungen()["retoure_standard"]}
+    if auswahl:
+        try:
+            pos = retoure_positionen(doc.name, _json(auswahl), zeilen, grund)
+        except KassenFehler as e:
+            frappe.throw(str(e))
+        betrag = -sum(int(p["einzel_brutto_cent"]) * float(p["menge"]) for p in pos)
+        out.update(positionen=pos, betrag_cent=int(round(betrag)), rueckzahlung=erstattungsweg_vorschlag([z.as_dict() for z in doc.zahlarten], int(round(betrag))))
+    return out
+
+
+@frappe.whitelist()
+def schnelltasten(kasse=None):
+    _rollen()
+    if not frappe.db.exists("DocType", "PH Kassa Schnelltaste"):
+        return []
+    rows = frappe.get_all("PH Kassa Schnelltaste", filters={"aktiv": 1}, fields=["name", "titel", "aktion", "produkt", "bezeichnung", "betrag_cent", "steuersatz", "farbe", "bild", "reihenfolge", "kasse"], order_by="reihenfolge asc, titel asc", limit=200)
+    return [r for r in rows if not r.kasse or r.kasse == kasse][:60]
+
+
+@frappe.whitelist()
+def kassen_katalog(stand=None, limit=2000):
+    """Offline-Katalog für die Next-Kassa (IndexedDB): Produkte mit Preis/Steuersatz, geändert seit `stand` (ISO)."""
+    _rollen()
+    if not frappe.db.exists("DocType", "PH Produkt"):
+        return {"stand": str(now_datetime()), "produkte": []}
+    felder = _felder("PH Produkt", ["name", "titel", "marke", "ean", "hersteller_artikelnr", "aktueller_preis_cent", "preisart", "ust_klasse", "bild_hauptbild", "status", "modified"])
+    filters = {"modified": (">", stand)} if stand else {}
+    einst = einstellungen()
+    rows = frappe.get_all("PH Produkt", filters=filters, fields=felder, order_by="modified asc", limit=int(limit))
+    return {"stand": str(now_datetime()), "produkte": [{"produkt": r.name, "bezeichnung": r.get("titel") or r.name, "marke": r.get("marke"), "ean": r.get("ean"), "bild": r.get("bild_hauptbild"), "status": r.get("status"),
+                                                         "einzel_brutto_cent": int(r.get("aktueller_preis_cent") or 0) if r.get("preisart") != "Auf Anfrage" else 0, "steuersatz": UST_KLASSE_STEUERSATZ.get(r.get("ust_klasse") or "", einst["standard_steuersatz"])} for r in rows]}
+
+
+@frappe.whitelist()
+def kassen_kunden(stand=None, limit=1000):
+    """Offline-Kundencache (nur Name, Ort, Kontakt-ID – keine Telefonnummern/E-Mails, Datenminimierung)."""
+    _rollen()
+    if not frappe.db.exists("DocType", "PH Kontakt"):
+        return {"stand": str(now_datetime()), "kunden": []}
+    filters = {"modified": (">", stand)} if stand else {}
+    felder = _felder("PH Kontakt", ["name", "titel", "ort", "status", "anonymisiert_am"])
+    rows = frappe.get_all("PH Kontakt", filters=filters, fields=felder, order_by="modified asc", limit=int(limit))
+    return {"stand": str(now_datetime()), "kunden": [{"kontakt": r.name, "titel": r.get("titel"), "ort": r.get("ort")} for r in rows if not r.get("anonymisiert_am")]}
+
+
+@frappe.whitelist(methods=["POST"])
+def notbelege_einspielen(kasse, belege, geraet_token=None):
+    """Nacherfassung von Notbelegen nach Kassenausfall (RKSV § 17) – je Notbeleg ein eigener signierter Beleg."""
+    _rollen()
+    return dienste.notbelege_einspielen(kasse, _json(belege), geraet_token=geraet_token)
+
+
+@frappe.whitelist()
+def leitung_freigabe_pruefen(email, pin, geraet_token=None):
+    """PIN der Leitung vorab prüfen (Oberfläche zeigt Ergebnis, bevor gebucht wird). Bucht nichts."""
+    _rollen()
+    return {"freigabe_von": dienste.freigabe_pruefen({"email": email, "pin": pin, "geraet_token": geraet_token}, ["Vorabprüfung"])}
+
+
+@frappe.whitelist()
+def zahlungsplan(auftrag):
+    """Raten eines Auftrags für die Anzahlungs-Kachel (Konzept §9.1 Lücke „zahlungsplan_position“)."""
+    _rollen()
+    return _zahlungsplan(auftrag)

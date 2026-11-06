@@ -1,0 +1,89 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Lernwert Montagezeit je Kategorie aus einem abgeschlossenen Projekt (für PH Montage Richtwert).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "kategorie",
+  "menge",
+  "plan_min",
+  "ist_min",
+  "min_je_stueck",
+  "richtwert_min",
+  "uebernehmen"
+ ],
+ "fields": [
+  {
+   "fieldname": "kategorie",
+   "fieldtype": "Data",
+   "label": "Kategorie",
+   "in_list_view": 1,
+   "columns": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "menge",
+   "fieldtype": "Int",
+   "label": "Stück",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "plan_min",
+   "fieldtype": "Int",
+   "label": "Plan (min)",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "ist_min",
+   "fieldtype": "Int",
+   "label": "Ist anteilig (min)",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "min_je_stueck",
+   "fieldtype": "Int",
+   "label": "Ist je Stück (min)",
+   "in_list_view": 1,
+   "columns": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "richtwert_min",
+   "fieldtype": "Int",
+   "label": "Richtwert bisher (min)",
+   "in_list_view": 1,
+   "columns": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "uebernehmen",
+   "fieldtype": "Check",
+   "label": "In Richtwerte übernehmen",
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Projekt Nachkalkulation Lernwert",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "istable": 1,
+ "editable_grid": 1
+}

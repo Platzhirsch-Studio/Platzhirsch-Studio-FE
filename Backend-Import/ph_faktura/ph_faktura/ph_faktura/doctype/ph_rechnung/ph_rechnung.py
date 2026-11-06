@@ -14,6 +14,7 @@ from frappe.utils import add_days, cint, getdate, now_datetime, nowdate
 from ph_faktura import einstellungen, journal, versand, zahlung
 from ph_faktura.beleg import BelegMixin
 from ph_faktura.rechenwerk import anzahlung as A
+from ph_faktura.rechenwerk import skonto as SK
 from ph_faktura.rechenwerk import steuer as S
 
 OFFEN = ("Gestellt", "Teilbezahlt", "Ueberfaellig", "Gemahnt")
@@ -32,7 +33,8 @@ class PHRechnung(BelegMixin, Document):
 
     def validate(self):
         if getattr(self, "_action", None) == "update_after_submit":
-            # Nachträgliche Speicherungen (Zahlung, Export) ändern nur allow_on_submit-Felder.
+            # Nachträgliche Speicherungen (Zahlung, Export, Nachweise) ändern nur allow_on_submit-Felder.
+            self.nachweis_status = nachweis_status(self)
             self.titel = self.titel_bilden()
             return
         e = einstellungen.faktura()
@@ -64,7 +66,21 @@ class PHRechnung(BelegMixin, Document):
         self.anzahlungen_summieren()
         if not self.schluss and self.art != "Anzahlungsrechnung":
             self.schluss = e.get("rechnung_schluss")
+        self.skonto_setzen()
+        self.nachweis_status = nachweis_status(self)
         self.titel = self.titel_bilden()
+
+    def skonto_setzen(self):
+        """Skonto aus der Zahlungsbedingung des Auftrags (sonst Standard-Zahlungsbedingung) übernehmen."""
+        if self.art in ("Anzahlungsrechnung", "Barverkauf") or self.skonto_bis:
+            return
+        zb = (frappe.db.get_value("PH Auftragsbestaetigung", self.auftrag, "zahlungsbedingung") if self.auftrag else None) or einstellungen.faktura().get("standard_zahlungsbedingung")
+        if not zb:
+            return
+        promille, tage = frappe.db.get_value("PH Zahlungsbedingung", zb, ["skonto_promille", "skonto_tage"]) or (0, 0)
+        if cint(promille) and cint(tage):
+            self.skonto_promille = cint(promille)
+            self.skonto_bis = SK.skonto_bis(getdate(self.datum), cint(tage))
 
     def titel_bilden(self):
         return f"{_(self.art)} {self.nummer or self.name}: {self.kunde_name or self.kontakt}"[:140]
@@ -122,16 +138,19 @@ class PHRechnung(BelegMixin, Document):
     def pflichtangaben_pruefen(self):
         if not [p for p in self.positionen if p.art not in ("Text", "Zwischensumme")]:
             frappe.throw(_("Rechnung ohne Positionen kann nicht gestellt werden."))
+        fehlt = self._pflichtangaben_fehlt()
+        if fehlt:
+            frappe.throw(_("Pflichtangaben nach § 11 UStG fehlen: {0}").format(", ".join(fehlt)))
+
+    def _pflichtangaben_fehlt(self):
         firma = einstellungen.firma()
         e = einstellungen.faktura()
-        fehlt = S.pflichtangaben_pruefen({
+        return S.pflichtangaben_pruefen({
             "kunde_name": self.kunde_name, "strasse": self.strasse, "ort": self.ort, "datum": self.datum, "positionen": self.positionen,
             "leistungsdatum": self.leistungsdatum, "leistungszeitraum_von": self.leistungszeitraum_von, "leistungszeitraum_bis": self.leistungszeitraum_bis,
             "brutto_cent": self.brutto_cent, "uid_empfaenger": self.uid_empfaenger, "ust_fall": self.ust_fall, "ust_hinweistext": self.ust_hinweistext,
             "kleinbetrag": bool(self.kleinbetragsrechnung), "firma_uid": firma.get("uid"), "uid_grenze_cent": e["uid_pflicht_ab_cent"],
         })
-        if fehlt:
-            frappe.throw(_("Pflichtangaben nach § 11 UStG fehlen: {0}").format(", ".join(fehlt)))
 
     def nummer_vergeben(self):
         if self.name.startswith("ENTW-"):
@@ -150,6 +169,16 @@ class PHRechnung(BelegMixin, Document):
             frappe.db.set_value("PH Bestellung", self.bestellung, "ph_faktura_rechnung", self.name, update_modified=False)
         if einstellungen.faktura().get("pdf_bei_stellen") and not frappe.flags.in_test:
             versand.pdf_fixieren(self)
+        if self.korrektur_von:
+            self._guthaben_aus_korrektur()
+
+    def _guthaben_aus_korrektur(self):
+        """Rechnungskorrektur: Zahlungen der stornierten Ursprungsrechnung als Verrechnung übernehmen."""
+        alt = frappe.db.get_value("PH Rechnung", self.korrektur_von, ["bezahlt_cent", "nummer"], as_dict=True)
+        betrag = min(cint(alt.bezahlt_cent) if alt else 0, cint(self.zahlbar_cent))
+        frappe.db.set_value("PH Rechnung", self.korrektur_von, "korrigiert_durch", self.name, update_modified=False)
+        if betrag > 0:
+            zahlung.zahlung_auf_rechnung(self, betrag, "Verrechnung", nowdate(), zahlung_name=None, hinweis=_("Guthaben aus {0}").format(alt.nummer or self.korrektur_von))
 
     def auftrag_fortschreiben(self):
         ab = frappe.get_doc("PH Auftragsbestaetigung", self.auftrag)
@@ -185,8 +214,9 @@ class PHRechnung(BelegMixin, Document):
         return self.name
 
     @frappe.whitelist()
-    def zahlung_erfassen(self, betrag_cent, kanal="Ueberweisung", datum=None, hinweis=None):
-        """Button „Zahlung erfassen“: PH Zahlung (ph_shop) buchen und der Rechnung zuordnen."""
+    def zahlung_erfassen(self, betrag_cent, kanal="Ueberweisung", datum=None, hinweis=None, skonto=0):
+        """Button „Zahlung erfassen“: PH Zahlung (ph_shop) buchen und der Rechnung zuordnen.
+        skonto=1: Differenz zum offenen Betrag als Skonto ausbuchen, wenn innerhalb Frist und Höhe (§ 16 UStG)."""
         self.check_permission("write")
         if self.docstatus != 1:
             frappe.throw(_("Zahlungen nur auf gestellte Rechnungen."))
@@ -195,9 +225,122 @@ class PHRechnung(BelegMixin, Document):
             frappe.throw(_("Betrag muss größer 0 sein."))
         if betrag_cent > cint(self.offen_cent) + 1 and kanal != "Verrechnung":
             frappe.msgprint(_("Hinweis: Zahlung übersteigt den offenen Betrag – Überzahlung wird als Guthaben vermerkt."), indicator="orange")
+        sk = None
+        if cint(skonto):
+            sk = SK.skonto_pruefen(cint(self.offen_cent), betrag_cent, cint(self.zahlbar_cent), cint(self.skonto_promille), getdate(self.skonto_bis) if self.skonto_bis else None, getdate(datum or nowdate()))
+            if not sk["zulaessig"]:
+                frappe.throw(_("Skonto nicht zulässig: {0}").format(sk["grund"]))
         name = zahlung.buche("Eingang", kanal, betrag_cent, "PH Rechnung", self.name, zeitpunkt=datum, kontakt=self.kontakt, zahlungsreferenz=self.zahlungsreferenz, notiz=hinweis)
         zahlung.zahlung_auf_rechnung(self, betrag_cent, kanal, datum, zahlung_name=name, hinweis=hinweis)
+        if sk:
+            self.skonto_buchen(sk["skonto_cent"], datum)
         return name
+
+    def skonto_buchen(self, skonto_cent, datum=None):
+        """Skonto als OP-Ausgleich (Kanal „Skonto“, keine PH Zahlung); UVA mindert Bemessung und USt im Monat der Zahlung."""
+        re = frappe.get_doc("PH Rechnung", self.name)
+        zahlung.zahlung_auf_rechnung(re, cint(skonto_cent), "Skonto", datum, zahlung_name=None, hinweis=_("Skonto {0} ‰").format(cint(self.skonto_promille)))
+        frappe.db.set_value("PH Rechnung", self.name, "skonto_cent", cint(re.skonto_cent) + cint(skonto_cent), update_modified=False)
+        journal.schreibe("Korrektur", re, cint(skonto_cent), "Skonto (Entgeltsminderung § 16 UStG)")
+
+    # ── Lesende Methoden (Konzept 10-faktura §12 Nr. 1) ──────────────────────
+    @frappe.whitelist()
+    def pflichtangaben_vorschau(self):
+        """Pflichtangaben § 11 UStG prüfen, ohne zu stellen → {ok, fehlt[]}."""
+        self.check_permission("read")
+        fehlt = self._pflichtangaben_fehlt()
+        if not [p for p in self.positionen if p.art not in ("Text", "Zwischensumme")]:
+            fehlt.append(_("Positionen"))
+        return {"ok": not fehlt, "fehlt": fehlt}
+
+    @frappe.whitelist()
+    def nummer_vorschau(self):
+        """Nächste Nummer der Serie (nur Anzeige, nicht reserviert – vergeben wird beim Stellen in der Transaktion)."""
+        self.check_permission("read")
+        return naechste_nummer(self.naming_series or "RE-.YYYY.-.#####")
+
+    @frappe.whitelist()
+    def mahnvorschau(self, stufe=None, stichtag=None):
+        """Gebühr, Verzugszinsen, Frist der nächsten Mahnstufe ohne Anlage."""
+        self.check_permission("read")
+        from ph_faktura.rechenwerk import mahnen as M
+
+        einst = einstellungen.mahnwesen()
+        stichtag = getdate(stichtag or nowdate())
+        stufe = cint(stufe) or min(cint(self.mahnstufe) + 1, 3)
+        tage = M.verzugstage(getdate(self.faellig), stichtag, 0) if self.faellig else 0
+        bereits = bool(frappe.db.exists("PH Mahnung", {"rechnung": self.name, "pauschale_cent": (">", 0), "status": ("!=", "Storniert")}))
+        b = M.mahnbetrag(cint(self.offen_cent), stufe, tage, einst, unternehmer=bool(self.firma or self.uid_empfaenger), pauschale_bereits=bereits)
+        return {"stufe": stufe, "verzugstage": tage, "frist": add_days(stichtag, cint(einst.get("frist_tage") or 7)), "mahnsperre": bool(self.mahnsperre), **b}
+
+    @frappe.whitelist()
+    def als_gesendet_markieren(self, kanal="Post"):
+        """Versand außerhalb des Systems (Post, persönlich, Portal) dokumentieren."""
+        self.check_permission("write")
+        if self.docstatus != 1:
+            frappe.throw(_("Nur gestellte Rechnungen."))
+        self.db_set({"gesendet_am": now_datetime(), "versandkanal": kanal})
+        self.add_comment("Info", _("Als gesendet markiert ({0})").format(kanal))
+        return True
+
+    @frappe.whitelist()
+    def korrigieren(self, grund):
+        """Rechnungskorrektur (§ 11 Abs 14 UStG analog Storno + Neuausstellung): Storno-Gutschrift stellen und eine
+        neue Rechnung als Entwurf mit gleichen Daten anlegen; bezahlte Beträge werden beim Stellen verrechnet."""
+        self.check_permission("write")
+        if self.docstatus != 1 or self.status == "Storniert":
+            frappe.throw(_("Nur gestellte, nicht stornierte Rechnungen können korrigiert werden."))
+        if not (grund or "").strip():
+            frappe.throw(_("Grund der Korrektur angeben."))
+        gu_name = self.gutschrift_erstellen(art="Storno", grund=_("Korrektur: {0}").format(grund), erstattung_art="Keine (Kulanz ohne Zahlung)")
+        gu = frappe.get_doc("PH Gutschrift", gu_name)
+        gu.stellen()
+        neu = frappe.copy_doc(self)
+        for f in ("nummer", "gestellt_am", "gesendet_am", "pdf", "storno_durch", "storniert_am", "export_lauf", "zahlungsreferenz", "bezahlt_am", "erechnung_datei", "korrigiert_durch", "idempotency_key", "letzte_mahnung", "kassenbeleg"):
+            neu.set(f, None)
+        neu.update({"datum": nowdate(), "faellig": None, "status": "Entwurf", "mahnstufe": 0, "export_status": "offen", "korrektur_von": self.name, "skonto_cent": 0})
+        neu.set("zahlungen", [])
+        neu.insert()
+        self.add_comment("Info", _("Korrektur: Storno {0}, neuer Entwurf {1} – {2}").format(gu.name, neu.name, grund))
+        return {"gutschrift": gu.name, "rechnung": neu.name}
+
+    # ── E-Rechnung ───────────────────────────────────────────────────────────
+    def erechnung_daten(self):
+        f = einstellungen.firma()
+        b = einstellungen.bankkonto()
+        land = (self.land or "AT")[:2].upper()
+        return {
+            "art": "Rechnung", "nummer": self.nummer or self.name, "datum": getdate(self.datum), "faellig": getdate(self.faellig) if self.faellig else None,
+            "leistungsdatum": getdate(self.leistungsdatum) if self.leistungsdatum else None,
+            "leistung_von": getdate(self.leistungszeitraum_von) if self.leistungszeitraum_von else None, "leistung_bis": getdate(self.leistungszeitraum_bis) if self.leistungszeitraum_bis else None,
+            "waehrung": self.waehrung or "EUR", "ust_fall": self.ust_fall, "ust_hinweistext": self.ust_hinweistext, "bestellreferenz": self.bestellreferenz or self.auftrag,
+            "leitweg_id": self.leitweg_id, "lieferantennummer": self.lieferantennummer, "bund": bool(self.erechnung_bund), "zahlungsreferenz": self.zahlungsreferenz,
+            "verkaeufer": {"name": f.get("firmenname"), "strasse": f.get("strasse"), "plz": f.get("plz"), "ort": f.get("ort"), "land": (f.get("land") or "AT")[:2].upper(), "uid": f.get("uid"), "email": f.get("email"), "iban": b.get("iban"), "bic": b.get("bic")},
+            "kaeufer": {"name": self.kunde_name, "strasse": self.strasse, "plz": self.plz, "ort": self.ort, "land": land, "uid": self.uid_empfaenger, "email": self.kontakt_email()},
+            "positionen": [{"pos": p.pos or p.idx, "bezeichnung": p.bezeichnung, "menge": p.menge, "einheit": p.einheit, "einzel_netto_cent": p.einzel_netto_cent, "netto_cent": p.netto_cent, "ust_satz_promille": p.ust_satz_promille, "bestellposition": p.get("bestellposition")} for p in self.positionen if p.art not in ("Text", "Zwischensumme") and not p.alternativ],
+            "steuer": [{"ust_satz_promille": a.ust_satz_promille, "netto_cent": a.netto_cent, "ust_cent": a.ust_cent} for a in self.ust_aufteilung],
+            "netto_cent": self.netto_cent, "ust_cent": self.ust_cent, "brutto_cent": self.brutto_cent, "anzahlung_brutto_cent": self.anzahlung_brutto_cent, "zahlbar_cent": self.zahlbar_cent,
+            "skonto_promille": self.skonto_promille, "skonto_bis": getdate(self.skonto_bis) if self.skonto_bis else None,
+        }
+
+    @frappe.whitelist()
+    def erechnung_erzeugen(self, format=None):
+        """E-Rechnung als XML-Datei anhängen (ebInterface 6.1 / ZUGFeRD EN16931 / XRechnung). Rechnungen an den Bund
+        werden über e-rechnung.gv.at (USP) oder PEPPOL eingebracht – Upload macht die Buchhaltung, nicht ph_faktura."""
+        self.check_permission("write")
+        if self.docstatus != 1:
+            frappe.throw(_("E-Rechnung nur für gestellte Rechnungen."))
+        from ph_faktura.rechenwerk import erechnung as ER
+
+        fmt = format or self.erechnung_format or "ebInterface 6.1"
+        try:
+            dateiname, xml = ER.erzeuge(fmt, self.erechnung_daten())
+        except ER.ERechnungFehler as e:
+            frappe.throw(str(e))
+        datei = frappe.get_doc({"doctype": "File", "file_name": dateiname, "content": xml.encode("utf-8"), "is_private": 1, "attached_to_doctype": self.doctype, "attached_to_name": self.name}).insert(ignore_permissions=True)
+        self.db_set({"erechnung_datei": datei.file_url, "erechnung_format": fmt})
+        journal.schreibe("Export", self, 0, f"E-Rechnung {fmt} {dateiname}")
+        return {"datei": datei.file_url, "format": fmt, "hinweis": _("Bund: Upload über e-rechnung.gv.at (USP) oder PEPPOL-Zugangspunkt.") if self.erechnung_bund else None}
 
     @frappe.whitelist()
     def gutschrift_erstellen(self, art="Storno", grund=None, erstattung_art=None):
@@ -270,3 +413,22 @@ def ueberfaellig_setzen(stichtag=None):
         frappe.db.set_value("PH Rechnung", r, {"status": "Ueberfaellig", "workflow_state": "PH Ueberfaellig"}, update_modified=False)
         n += 1
     return n
+
+
+def nachweis_status(doc):
+    """Steuerfreie Ausfuhr (§ 7 UStG) / igL (Art. 7 UStG) nur mit Nachweis – sonst Status „fehlt“ (Report/Erinnerung)."""
+    if doc.ust_fall == "Ausfuhr":
+        return "vorhanden" if (doc.get("ausfuhr_mrn") or doc.get("ausfuhr_nachweis")) else "fehlt"
+    if doc.ust_fall == "Innergemeinschaftlich steuerfrei":
+        return "vorhanden" if doc.get("gelangensbestaetigung") else "fehlt"
+    return "nicht noetig"
+
+
+def naechste_nummer(serie, datum=None):
+    """Vorschau der nächsten Nummer einer Serie wie „RE-.YYYY.-.#####“ (tabSeries), ohne zu reservieren."""
+    jahr = getdate(datum or nowdate()).strftime("%Y")
+    teile = serie.split(".")
+    praefix = "".join(jahr if t == "YYYY" else t for t in teile if t and not t.startswith("#"))
+    breite = max((len(t) for t in teile if t.startswith("#")), default=5)
+    zeile = frappe.db.sql("select current from `tabSeries` where name = %s", praefix)
+    return f"{praefix}{(cint(zeile[0][0]) if zeile else 0) + 1:0{breite}d}"

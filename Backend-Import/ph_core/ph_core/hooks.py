@@ -23,6 +23,8 @@ PH_ROLLEN = [
     "PH Kassa Mitarbeiter", "PH Kassa Leitung",
     "PH Service Mitarbeiter", "PH Service Leitung",
     "PH Montage", "PH Techniker", "PH Personal Selbstservice",
+    "PH Kundenkarte Mitarbeiter", "PH Kundenkarte Leitung",
+    "PH Ablage Mitarbeiter", "PH Ablage Leitung",
 ]
 PH_ROLLENPROFILE = [
     "PH Verkauf", "PH Verkaufsleitung", "PH Einkauf", "PH Shop und Kassa", "PH Lager und Montage",
@@ -53,6 +55,8 @@ fixtures = [
     {"dt": "Print Format", "filters": [["module", "=", "PH Core"]]},
     {"dt": "Dashboard Chart", "filters": [["module", "=", "PH Core"]]},
     {"dt": "Number Card", "filters": [["module", "=", "PH Core"]]},
+    # Bediener-PIN/Kurzname/Standort am Frappe-User (Backoffice Nr. 49, api/bediener.py)
+    {"dt": "Custom Field", "filters": [["module", "=", "PH Core"]]},
 ]
 
 # Nach der Installation: Firma (inkl. FN/UID), Einstellungen, Integrationsbenutzer (ohne Schlüssel) anlegen.

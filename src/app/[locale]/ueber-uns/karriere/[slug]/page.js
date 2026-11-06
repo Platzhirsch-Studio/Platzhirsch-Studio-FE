@@ -3,6 +3,7 @@
 // are mapped here by src/proxy.js).
 import { fetchKarriereData } from "@/lib/api/fetchKarrierData";
 import JobDetail from "@/components/Karriere/JobDetail";
+import { bewerbungOnline } from "@/lib/karriere/bewerbungSend";
 import { generateSlug } from "@/lib/slugify";
 import { notFound } from "next/navigation";
 import { ROUTES } from "@/utils/routing";
@@ -130,7 +131,7 @@ export default async function JobDetailsPage({ params }) {
     <>
       {/* JobPosting erst mit Entgeltangabe (Google Jobs, § 9 Abs 2 GlBG). */}
       {live && <JobPostingJsonLd job={job} locale={locale} />}
-      <JobDetail job={job} blocked={!live} />
+      <JobDetail job={job} blocked={!live} bewerbungOnline={bewerbungOnline()} />
     </>
   );
 }

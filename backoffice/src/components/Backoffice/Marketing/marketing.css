@@ -1,0 +1,278 @@
+/* Bereich Marketing – Lounge-Stil (art-direction/lounge.md §3–§9, Inhaber-Freigabe Nr. 51/53).
+   Präfix bo-mar-, nur Token aus globals.css. Gliederung über Fläche, Schatten und Abstand – keine Rahmen,
+   keine Kästen-Raster, keine Versalien. Radien nach Hierarchie: Kachel 28 · Karte 20 · Zeile 16 · Bild 14. */
+
+/* ---------------------------------------------------------------- Texte */
+.bo-mar-titel { font-size: 15px; line-height: 20px; font-weight: 600; letter-spacing: -0.01em; color: var(--color-bo-text); }
+.bo-mar-unter { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-mar-klein { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-mar-warn { color: var(--color-bo-eiche-text); }
+.bo-mar-gefahr { color: var(--color-bo-ziegel-text); }
+.bo-mar-ok { color: var(--color-bo-salbei-text); }
+.bo-mar-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; letter-spacing: 0.01em; }
+.bo-mar-zahl { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bo-mar-link { border-radius: 6px; }
+.bo-mar-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.bo-mar-link--zeile::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
+
+/* ---------------------------------------------------------------- Werkzeugzeile (Segment · Suche · Filter) */
+.bo-mar-werkzeuge { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; margin-bottom: 24px; min-width: 0; }
+.bo-mar-werkzeuge__rechts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-width: 0; }
+.bo-mar-suche { background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); width: 260px; max-width: 100%; }
+.bo-mar-auswahlpille { position: relative; display: inline-flex; align-items: center; height: 40px; border-radius: 999px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-btn); color: var(--color-bo-text); font-size: 14px; font-weight: 500; }
+.bo-mar-auswahlpille select { appearance: none; height: 100%; padding: 0 36px 0 16px; border: 0; border-radius: 999px; background: transparent; color: inherit; font: inherit; cursor: pointer; max-width: 220px; }
+.bo-mar-auswahlpille select:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-mar-auswahlpille svg { position: absolute; right: 14px; pointer-events: none; color: var(--color-bo-text-soft); }
+@media (max-width: 640px) { .bo-mar-suche { width: 100%; } .bo-mar-werkzeuge__rechts { width: 100%; } .bo-mar-werkzeuge__rechts > * { flex: 1 1 auto; } }
+
+/* ---------------------------------------------------------------- Tabelle in Kachel (Lounge §6) */
+.bo-mar-liste { padding: 20px 16px 12px; min-width: 0; }
+.bo-mar-liste__kopf { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 12px 12px; font-size: 13px; color: var(--color-bo-text-soft); }
+.bo-mar-liste__fuss { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 12px 4px; font-size: 13px; color: var(--color-bo-text-soft); }
+.bo-mar-tabelle { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 14px; line-height: 20px; }
+.bo-mar-tabelle th { text-align: left; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--color-bo-text-soft); padding: 0 12px 12px; white-space: nowrap; }
+.bo-mar-tabelle th.r, .bo-mar-tabelle td.r { text-align: right; }
+.bo-mar-tabelle td { padding: 12px; vertical-align: middle; border-top: var(--bo-hair) solid var(--color-bo-line); }
+.bo-mar-tabelle tbody tr { position: relative; transition: background-color 160ms ease; }
+.bo-mar-tabelle tbody tr:hover td, .bo-mar-tabelle tbody tr:focus-within td { background: var(--color-bo-surface-2); }
+.bo-mar-tabelle tbody tr:hover td, .bo-mar-tabelle tbody tr:hover + tr td,
+.bo-mar-tabelle tbody tr:focus-within td, .bo-mar-tabelle tbody tr:focus-within + tr td { border-top-color: transparent; }
+.bo-mar-tabelle tbody td:first-child { border-radius: 16px 0 0 16px; }
+.bo-mar-tabelle tbody td:last-child { border-radius: 0 16px 16px 0; }
+.bo-mar-tabelle tbody tr[data-gewaehlt="true"] td { background: var(--color-bo-surface-2); border-top-color: transparent; }
+.bo-mar-tabelle tbody tr[data-gewaehlt="true"] td:first-child { box-shadow: inset 3px 0 0 var(--color-bo-text); }
+.bo-mar-tabelle tbody tr[data-warn="true"] td:first-child { box-shadow: inset 3px 0 0 var(--color-bo-eiche); }
+.bo-mar-tabelle tbody tr[data-gedimmt="true"] td { color: var(--color-bo-text-soft); }
+.bo-mar-tabelle tbody tr :is(button, input, select, a:not(.bo-mar-link--zeile), label) { position: relative; z-index: 1; }
+.bo-mar-tabelle tfoot td { padding: 14px 12px 4px; font-size: 13px; color: var(--color-bo-text-soft); border-top: var(--bo-hair) solid var(--color-bo-line); }
+.bo-mar-karten { display: none; }
+@media (max-width: 767px) {
+  .bo-mar-tabelle-huelle { display: none; }
+  .bo-mar-karten { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .bo-mar-liste { padding: 12px 8px 8px; }
+}
+.bo-mar-karte-zeile { position: relative; display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 16px; transition: background-color 160ms ease; min-width: 0; }
+.bo-mar-karte-zeile:hover, .bo-mar-karte-zeile:focus-within { background: var(--color-bo-surface-2); }
+.bo-mar-karte-zeile + .bo-mar-karte-zeile { box-shadow: inset 0 var(--bo-hair) 0 var(--color-bo-line); }
+
+/* ---------------------------------------------------------------- Bilder */
+.bo-mar-bild { position: relative; display: block; flex-shrink: 0; overflow: hidden; border-radius: 14px; background: var(--color-bo-surface-3); }
+.bo-mar-bild img { width: 100%; height: 100%; object-fit: cover; }
+.bo-mar-bild__leer { position: absolute; inset: 0; display: grid; place-items: center; color: var(--color-bo-text-faint); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bo-mar-bild img { filter: brightness(0.92); } }
+:root[data-theme="dark"] .bo-mar-bild img { filter: brightness(0.92); }
+
+/* ---------------------------------------------------------------- Datum groß (Event-Zeile, Lounge Kalender-Anmutung) */
+.bo-mar-datum { display: grid; place-items: center; width: 52px; height: 56px; border-radius: 16px; background: var(--color-bo-surface-2); flex-shrink: 0; }
+.bo-mar-datum b { font-size: 20px; line-height: 22px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.bo-mar-datum span { font-size: 11px; line-height: 14px; color: var(--color-bo-text-soft); }
+.bo-mar-datum[data-heute="true"] { background: var(--color-bo-text); color: var(--color-bo-surface); }
+.bo-mar-datum[data-heute="true"] span { color: inherit; opacity: 0.8; }
+
+/* ---------------------------------------------------------------- Balken (Plätze, Budget) */
+.bo-mar-balken { position: relative; display: block; height: 6px; border-radius: 999px; background: var(--color-bo-fill-2); overflow: hidden; min-width: 80px; }
+.bo-mar-balken > i { position: absolute; inset: 0 auto 0 0; border-radius: 999px; background: var(--color-bo-text); transform-origin: left center; }
+.bo-mar-balken[data-ton="warn"] > i { background: var(--color-bo-eiche); }
+.bo-mar-balken[data-ton="gefahr"] > i { background: var(--color-bo-ziegel); }
+.bo-mar-balken[data-ton="ok"] > i { background: var(--color-bo-salbei); }
+.bo-mar-balken--fortschritt { height: 2px; }
+.bo-mar-balken--fortschritt > i { background: var(--color-bo-cognac); }
+
+/* ---------------------------------------------------------------- Fakten, Checkliste */
+.bo-mar-fakten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 20px; }
+.bo-mar-fakten dt { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-mar-fakten dd { margin-top: 2px; font-size: 15px; line-height: 22px; font-weight: 500; min-width: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.bo-mar-fakten--eins { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 520px) { .bo-mar-fakten { grid-template-columns: minmax(0, 1fr); } }
+.bo-mar-check { display: flex; flex-direction: column; gap: 2px; }
+.bo-mar-check li, .bo-mar-check > a, .bo-mar-check > button { display: flex; align-items: center; gap: 10px; min-height: 36px; padding: 0 8px; border-radius: 12px; font-size: 14px; text-align: left; }
+.bo-mar-check > a:hover, .bo-mar-check > button:hover { background: var(--color-bo-fill); }
+.bo-mar-check__ico { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 999px; flex-shrink: 0; background: var(--color-bo-fill-2); color: var(--color-bo-text-soft); }
+[data-ok="true"] > .bo-mar-check__ico { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+[data-ok="false"] > .bo-mar-check__ico { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+[data-ok="leer"] > .bo-mar-check__ico { background: var(--color-bo-fill); color: var(--color-bo-text-faint); }
+
+/* ---------------------------------------------------------------- Zu tun */
+.bo-mar-zutun { display: flex; flex-direction: column; gap: 2px; }
+.bo-mar-zutun__zeile { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 60px; padding: 8px 8px 8px 8px; border-radius: 16px; transition: background-color 160ms ease; }
+.bo-mar-zutun__zeile:hover, .bo-mar-zutun__zeile:focus-within { background: var(--color-bo-surface-2); }
+.bo-mar-zutun__ico { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 999px; background: var(--color-bo-fill); color: var(--color-bo-text-soft); }
+.bo-mar-zutun__zeile[data-ton="orange"] .bo-mar-zutun__ico { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-mar-zutun__zeile[data-ton="blau"] .bo-mar-zutun__ico { background: var(--color-bo-cognac-soft); color: var(--color-bo-cognac-text); }
+.bo-mar-zutun__knoepfe { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+@media (max-width: 640px) { .bo-mar-zutun__zeile { grid-template-columns: auto minmax(0, 1fr); } .bo-mar-zutun__knoepfe { grid-column: 2; justify-content: flex-start; } }
+
+/* ---------------------------------------------------------------- Diese Woche (Agenda-Zeilen) */
+.bo-mar-agenda { display: flex; flex-direction: column; gap: 4px; }
+.bo-mar-agenda a { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 52px; padding: 6px 8px; border-radius: 14px; }
+.bo-mar-agenda a:hover { background: var(--color-bo-surface-2); }
+.bo-mar-agenda__tag { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.bo-mar-agenda__tag small { display: block; font-size: 11px; font-weight: 400; color: var(--color-bo-text-soft); }
+
+/* ---------------------------------------------------------------- Bänder und Zustandszeile */
+.bo-mar-band { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; border-radius: 20px; font-size: 14px; line-height: 20px; margin-bottom: 20px; }
+.bo-mar-band[data-ton="test"] { display: flex; width: fit-content; max-width: 100%; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; font-size: 13px; line-height: 18px; font-weight: 500; background: var(--color-bo-messing-soft); color: var(--color-bo-messing-text); margin-bottom: 16px; }
+.bo-mar-band[data-ton="test"] svg { margin-top: 0; }
+.bo-mar-band[data-ton="info"] { background: var(--color-bo-fill); color: var(--color-bo-text); }
+.bo-mar-band[data-ton="warn"] { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-mar-band[data-ton="gefahr"] { background: var(--color-bo-ziegel-soft); color: var(--color-bo-ziegel-text); }
+.bo-mar-band svg { flex-shrink: 0; margin-top: 2px; }
+.bo-mar-zustand { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; font-size: 13px; color: var(--color-bo-text-soft); margin: -8px 0 20px; }
+.bo-mar-zustand > span { display: inline-flex; align-items: center; gap: 6px; }
+
+/* ---------------------------------------------------------------- Akte-Kopf (ohne Hero) */
+.bo-mar-kopfzeile { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 8px; font-size: 14px; color: var(--color-bo-text-soft); }
+.bo-mar-kopfzeile > * { display: inline-flex; align-items: center; gap: 6px; }
+.bo-mar-aktionen { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; min-width: 0; }
+
+/* ---------------------------------------------------------------- Zwei Spalten in Akten */
+.bo-mar-akte { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--bo-bento-gap, 24px); align-items: start; }
+@media (min-width: 1280px) { .bo-mar-akte { grid-template-columns: minmax(0, 1fr) 360px; } .bo-mar-akte--breit { grid-template-columns: minmax(0, 1fr) 420px; } }
+.bo-mar-akte__rechts { display: flex; flex-direction: column; gap: var(--bo-bento-gap, 24px); min-width: 0; position: sticky; top: 104px; }
+@media (max-width: 1279px) { .bo-mar-akte__rechts { position: static; } }
+.bo-mar-stapel { display: flex; flex-direction: column; gap: var(--bo-bento-gap, 24px); min-width: 0; }
+
+/* ---------------------------------------------------------------- Block-Editor */
+.bo-mar-block { position: relative; display: flex; flex-direction: column; gap: 14px; padding: 20px; border-radius: 24px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); transition: box-shadow 200ms ease; min-width: 0; corner-shape: superellipse(1.35); }
+.bo-mar-block[data-zustand="leer"] { background: var(--color-bo-surface-2); box-shadow: none; }
+.bo-mar-block[data-markiert="true"] { box-shadow: 0 0 0 2px var(--color-bo-focus), var(--bo-sh-card); }
+.bo-mar-block__kopf { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.bo-mar-block__griff { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 10px; color: var(--color-bo-text-faint); cursor: grab; }
+.bo-mar-block__griff:hover { background: var(--color-bo-fill); color: var(--color-bo-text); }
+.bo-mar-block__titel { font-size: 16px; line-height: 22px; font-weight: 600; letter-spacing: -0.01em; flex: 1; min-width: 0; }
+.bo-mar-felder { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 16px; }
+.bo-mar-felder > .voll { grid-column: 1 / -1; }
+@media (max-width: 640px) { .bo-mar-felder { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------------------------------------------------------------- Felder */
+.bo-mar-feld { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.bo-mar-feld > span:first-child, .bo-mar-feld > label:first-child { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-mar-feld__fehler { font-size: 12px; line-height: 16px; color: var(--color-bo-ziegel-text); }
+.bo-mar-feld__hinweis { font-size: 12px; line-height: 16px; color: var(--color-bo-text-soft); }
+.bo-mar-eingabe { width: 100%; min-height: 44px; padding: 0 14px; border: 0; border-radius: 14px; background: var(--color-bo-fill); color: var(--color-bo-text); font: inherit; font-size: 15px; transition: box-shadow 160ms ease, background-color 160ms ease; }
+textarea.bo-mar-eingabe { padding: 12px 14px; min-height: 120px; resize: vertical; line-height: 22px; }
+select.bo-mar-eingabe { appearance: none; padding-right: 36px; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+.bo-mar-eingabe:focus-visible { outline: none; background: var(--color-bo-surface); box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-mar-eingabe[aria-invalid="true"] { box-shadow: 0 0 0 1.5px var(--color-bo-ziegel); }
+.bo-mar-eingabe:disabled { opacity: 0.6; }
+.bo-mar-eingabe--klein { min-height: 36px; font-size: 14px; border-radius: 12px; padding: 0 10px; }
+.bo-mar-eingabe--titel { font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: -0.015em; min-height: 52px; }
+.bo-mar-haken { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 20px; cursor: pointer; }
+.bo-mar-haken input { width: 18px; height: 18px; margin-top: 1px; accent-color: var(--color-bo-text); flex-shrink: 0; }
+
+/* ---------------------------------------------------------------- Chips (Zwecke, Interessen) */
+.bo-mar-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.bo-mar-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 0 10px; border-radius: 999px; background: var(--color-bo-fill); font-size: 12px; font-weight: 500; color: var(--color-bo-text); white-space: nowrap; }
+.bo-mar-chip button { display: grid; place-items: center; width: 20px; height: 20px; margin-right: -4px; border-radius: 999px; color: var(--color-bo-text-soft); }
+.bo-mar-chip button:hover { background: var(--color-bo-fill-2); color: var(--color-bo-text); }
+.bo-mar-chip[aria-pressed="true"] { background: var(--color-bo-text); color: var(--color-bo-surface); }
+button.bo-mar-chip { min-height: 32px; transition: background-color 160ms ease, transform 420ms var(--ease-feder, ease); }
+button.bo-mar-chip:active { transform: scale(0.96); transition-duration: 80ms; }
+@media (pointer: coarse) { button.bo-mar-chip { min-height: 44px; padding: 0 14px; font-size: 14px; } }
+
+/* ---------------------------------------------------------------- Vorschau (Mail im Rahmen) */
+.bo-mar-vorschau { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.bo-mar-vorschau__rahmen { position: relative; display: flex; justify-content: center; padding: 16px; border-radius: 20px; background: var(--color-bo-surface-2); overflow: hidden; min-height: 420px; }
+.bo-mar-vorschau__rahmen iframe { width: 100%; max-width: 600px; height: 560px; border: 0; border-radius: 14px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); transition: max-width 320ms var(--ease-feder, ease); }
+.bo-mar-vorschau__rahmen[data-breite="mobil"] iframe { max-width: 360px; }
+.bo-mar-vorschau__leiste { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+
+/* ---------------------------------------------------------------- Kennzahlen-Zeile (Kopfzahlen in Akten) */
+.bo-mar-kz { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
+.bo-mar-kz > div { display: flex; flex-direction: column; gap: 2px; }
+.bo-mar-kz b { font-size: 28px; line-height: 34px; font-weight: 400; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.bo-mar-kz span { font-size: 13px; color: var(--color-bo-text-soft); }
+
+/* ---------------------------------------------------------------- Schrittleiste (Empfehlung, kompakt) */
+.bo-mar-schritte { display: flex; align-items: flex-start; gap: 0; overflow-x: auto; padding: 4px 2px 8px; }
+.bo-mar-schritt { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; flex: 1 1 0; min-width: 112px; position: relative; }
+.bo-mar-schritt__punkt { position: relative; z-index: 1; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: var(--color-bo-surface-2); color: var(--color-bo-text-soft); box-shadow: inset 0 0 0 1.5px var(--color-bo-line-strong); }
+.bo-mar-schritt[data-zustand="erledigt"] .bo-mar-schritt__punkt { background: var(--color-bo-text); color: var(--color-bo-surface); box-shadow: none; }
+.bo-mar-schritt[data-zustand="aktuell"] .bo-mar-schritt__punkt { background: var(--color-bo-cognac); color: var(--color-bo-surface); box-shadow: 0 0 0 4px var(--color-bo-cognac-soft); }
+.bo-mar-schritt__text { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); padding-right: 8px; }
+.bo-mar-schritt[data-zustand="aktuell"] .bo-mar-schritt__text { color: var(--color-bo-text); font-weight: 600; }
+.bo-mar-schritt:not(:last-child)::after { content: ""; position: absolute; left: 28px; right: 0; top: 13px; height: 2px; background: var(--color-bo-line-strong); }
+.bo-mar-schritt[data-zustand="erledigt"]:not(:last-child)::after { background: var(--color-bo-text); }
+
+/* ---------------------------------------------------------------- Ampeln (Form + Text) */
+.bo-mar-ampeln { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.bo-mar-ampel { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; border-radius: 18px; background: var(--color-bo-surface-2); }
+.bo-mar-ampel b { display: block; font-size: 13px; font-weight: 600; }
+.bo-mar-ampel span { font-size: 13px; color: var(--color-bo-text-soft); }
+.bo-mar-ampel__ico { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 999px; flex-shrink: 0; }
+.bo-mar-ampel[data-ok="true"] .bo-mar-ampel__ico { background: var(--color-bo-salbei-soft); color: var(--color-bo-salbei-text); }
+.bo-mar-ampel[data-ok="false"] .bo-mar-ampel__ico { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-mar-ampel[data-ok="null"] .bo-mar-ampel__ico { background: var(--color-bo-fill-2); color: var(--color-bo-text-faint); }
+
+/* ---------------------------------------------------------------- Karten-Auswahl (Rechtsgrundlage, Bildquelle) */
+.bo-mar-wahl { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.bo-mar-wahl label { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 16px; border-radius: 20px; background: var(--color-bo-surface-2); cursor: pointer; transition: box-shadow 160ms ease, background-color 160ms ease; min-width: 0; }
+.bo-mar-wahl label:hover { background: var(--color-bo-fill-2); }
+.bo-mar-wahl input { position: absolute; opacity: 0; pointer-events: none; }
+.bo-mar-wahl label:has(input:checked) { background: var(--color-bo-surface); box-shadow: inset 0 0 0 1.5px var(--color-bo-text), var(--bo-sh-card); }
+.bo-mar-wahl label:has(input:focus-visible) { box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-mar-wahl label:has(input:disabled) { opacity: 0.55; cursor: not-allowed; }
+.bo-mar-wahl b { font-size: 15px; font-weight: 600; }
+.bo-mar-wahl span { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+
+/* ---------------------------------------------------------------- Auswahl-Leiste (Massenaktionen) */
+.bo-mar-auswahl { position: sticky; bottom: 16px; z-index: 20; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 16px auto 0; padding: 8px 8px 8px 20px; width: fit-content; max-width: 100%; border-radius: 999px; box-shadow: var(--bo-sh-float); }
+.bo-mar-auswahl__zahl { font-size: 14px; font-weight: 600; margin-right: 8px; font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------------- Social-Karten (Kanban, Liste) */
+.bo-mar-social-karte { position: relative; display: flex; gap: 10px; align-items: center; padding: 8px; border-radius: 18px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); min-width: 0; }
+.bo-mar-social-karte[data-wartet="true"] { box-shadow: inset 0 0 0 1.5px var(--color-bo-line-strong); background: var(--color-bo-surface-2); outline: 1.5px dashed var(--color-bo-line-strong); outline-offset: -1.5px; }
+.bo-mar-kanban { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 1fr); gap: 16px; overflow-x: auto; padding: 4px 4px 16px; }
+.bo-mar-kanban__spalte { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding: 12px; border-radius: 24px; background: var(--color-bo-fill); }
+.bo-mar-kanban__spalte[data-ziel="true"] { box-shadow: inset 0 0 0 1.5px var(--color-bo-text); }
+.bo-mar-kanban__spalte[data-gesperrt="true"] { opacity: 0.5; }
+.bo-mar-kanban__kopf { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 6px 6px; }
+.bo-mar-kanban__leer { display: grid; place-items: center; min-height: 72px; border-radius: 18px; box-shadow: inset 0 0 0 1px var(--color-bo-line-strong); color: var(--color-bo-text-faint); font-size: 13px; }
+
+/* ---------------------------------------------------------------- Check-in (Kiosk, Ziele ≥ 48, Schrift ≥ 18) */
+.bo-mar-checkin { display: flex; flex-direction: column; gap: 16px; padding: 0 16px 24px; min-width: 0; font-size: 18px; }
+.bo-mar-checkin__werkzeuge { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 12px; align-items: center; }
+@media (max-width: 900px) { .bo-mar-checkin__werkzeuge { grid-template-columns: minmax(0, 1fr); } }
+.bo-mar-checkin__suche { display: flex; align-items: center; gap: 12px; height: 64px; padding: 0 24px; border-radius: 999px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); }
+.bo-mar-checkin__suche:focus-within { box-shadow: 0 0 0 2px var(--color-bo-focus), var(--bo-sh-card); }
+.bo-mar-checkin__suche input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; font: inherit; font-size: 20px; color: var(--color-bo-text); }
+.bo-mar-checkin__liste { display: flex; flex-direction: column; gap: 6px; }
+.bo-mar-checkin__zeile { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px; min-height: 72px; padding: 10px 12px 10px 24px; border-radius: 20px; background: var(--color-bo-surface); box-shadow: var(--bo-sh-card); }
+.bo-mar-checkin__zeile[data-da="true"]::before { content: ""; position: absolute; left: 8px; top: 16px; bottom: 16px; width: 3px; border-radius: 3px; background: var(--color-bo-salbei); }
+.bo-mar-checkin__zeile[data-da="true"] { background: var(--color-bo-surface-2); }
+.bo-mar-checkin__name { font-size: 20px; line-height: 26px; font-weight: 600; letter-spacing: -0.01em; }
+.bo-mar-checkin__neben { font-size: 15px; color: var(--color-bo-text-soft); }
+.bo-mar-checkin__da { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 132px; min-height: 56px; padding: 0 24px; border-radius: 999px; background: var(--color-bo-text); color: var(--color-bo-surface); font-size: 18px; font-weight: 600; box-shadow: var(--bo-sh-ink); transition: transform 420ms var(--ease-feder, ease); }
+.bo-mar-checkin__da:active { transform: scale(0.96); transition-duration: 80ms; }
+.bo-mar-checkin__da[data-art="rueck"] { background: transparent; color: var(--color-bo-text); box-shadow: none; text-decoration: underline; text-underline-offset: 4px; min-width: 132px; }
+.bo-mar-checkin__zaehler { font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+[data-dimmen="true"] .bo-mar-checkin { opacity: 0.4; transition: opacity 400ms ease; }
+
+/* ---------------------------------------------------------------- Heat (Einblicke) */
+.bo-mar-heat { display: grid; grid-template-columns: repeat(auto-fill, minmax(18px, 1fr)); gap: 4px; }
+.bo-mar-heat span { aspect-ratio: 1; border-radius: 6px; background: var(--color-bo-fill-2); }
+.bo-mar-heat span[data-stufe="1"] { background: var(--color-chart-seq-1); }
+.bo-mar-heat span[data-stufe="2"] { background: var(--color-chart-seq-2); }
+.bo-mar-heat span[data-stufe="3"] { background: var(--color-chart-seq-3); }
+.bo-mar-heat span[data-stufe="4"] { background: var(--color-chart-seq-4); }
+.bo-mar-heat span[data-stufe="5"] { background: var(--color-chart-seq-5); }
+
+/* ---------------------------------------------------------------- Code (Vorlagen) */
+.bo-mar-code { width: 100%; min-height: 360px; padding: 16px; border: 0; border-radius: 16px; background: var(--color-bo-surface-2); color: var(--color-bo-text); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; line-height: 20px; resize: vertical; tab-size: 2; }
+.bo-mar-code:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-mar-seitenliste { display: flex; flex-direction: column; gap: 2px; }
+.bo-mar-seitenliste a { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 14px; color: var(--color-bo-text); }
+.bo-mar-seitenliste a:hover { background: var(--color-bo-fill); }
+.bo-mar-seitenliste a[aria-current="true"] { background: var(--color-bo-text); color: var(--color-bo-surface); }
+.bo-mar-seitenliste a[aria-current="true"] .bo-mar-klein { color: inherit; opacity: 0.8; }
+
+/* ---------------------------------------------------------------- Satz-Regeln (Zielgruppen, Reisen) */
+.bo-mar-satz { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 18px; background: var(--color-bo-surface-2); }
+.bo-mar-satz > .bo-mar-klein { min-width: 40px; }
+
+@media print {
+  .bo-mar-auswahl, .bo-mar-werkzeuge, .bo-mar-aktionen { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bo-mar-vorschau__rahmen iframe { transition: none; }
+}

@@ -19,6 +19,10 @@ Kontakte, Anfragen/Leads, Termine (Online-Buchung der Website mit Double-Opt-in)
 | **PH Beratungsgespraech** | Gesprächsprotokoll: Räume/Wünsche/Budget (Cent), Stil, Zeitrahmen, nächster Schritt | `PH-BG-.YYYY.-.#####` | Offen → Planung beauftragt → Angebot → Abgeschlossen (Buttons) |
 | PH Beratungsgespraech Raum (Kind) | | | |
 | **PH Aufgabe** | Aufgabe mit Fälligkeit, Priorität, Dynamic Link auf den Vorgang; spiegelt Frappe-Zuweisung (ToDo) | `PH-AUF-.YYYY.-.#####` | Offen → In Arbeit → Erledigt / Verworfen (Buttons, Kanban) |
+| PH Kontakt Rolle (Kind) | Rollen eines Kontakts in Projekten (Bauherr, Architekt, Innenarchitekt, Hotelier, Bauträger …) mit Bezug (Dynamic Link) | | |
+| **PH Beratungsvorlage** | Gesprächsleitfaden je Raumtyp (Küche, Wohnen, Schlafen, Bad, Outdoor/Pool, Hotelzimmer) – Fragen mit Pflichtkennzeichen | `field:vorlage_name` | aktiv |
+| PH Beratungsvorlage Frage / PH Beratungsgespraech Frage (Kind) | Fragen der Vorlage / Checkliste im Protokoll (offene Pflichtfrage blockiert „Abgeschlossen“) | | |
+| **PH Datenschutzanfrage** | Betroffenenanfrage Art. 15–21 DSGVO: Frist (1 Monat, verlängerbar), Identität, JSON-Export, Lösch-/Aufbewahrungsplan, Nachweis | `PH-DSA-.YYYY.-.#####` (**neu, in ph_core eintragen**) | Offen → In Arbeit → Erledigt / Abgelehnt (Buttons) |
 
 Kommunikation: Frappe `Communication` + `Email Account` (info@) – eingehende Mails an Anfrage/Termin werden zusätzlich am Kontakt in der Timeline verknüpft (`ereignisse.kommunikation_an_kontakt`). Mail-Vorlagen: `PH Termin Bestätigung`, `PH Termin Absage`, `PH Termin Erinnerung` (Fixtures).
 
@@ -56,6 +60,35 @@ Scheduler (`ph_crm/ph_crm/tasks.py`): Erinnerung n h vorher (stündlich), Reserv
 4. PH Beratungsgespraech: **Aufgabe: nächster Schritt**, **Planung beauftragen** (→ PH Projekt, wenn ph_projekte installiert), **Angebot**, **Abschließen**, **Protokoll drucken**.
 5. PH Kontakt: **Portal-Zugang erzeugen/sperren/erneuern** (Token einmalig sichtbar, nur Hash gespeichert), **Als Kunde markieren** (ph_faktura ruft `als_kunde_markieren` bei der ersten AB), **Widerspruch erfassen**, **Alle Vorgänge** (Verknüpfungs-Dashboard über alle installierten Apps), **DSGVO-Auskunft** (Report + Druckformat).
 
+### Kundenakte 360°, Dubletten, Pipeline, DSGVO (Ausbau 04.11.2026, Lückenliste 52)
+
+- **Dubletten:** `PH Kontakt.telefon_norm` (E.164, automatisch) · `aehnliche_kontakte()` (E-Mail ohne +Zusatz, Telefon/Mobil, Nachname + PLZ, Vor- + Nachname, Firmendatensatz; Kollegen derselben Firma sind keine Dublette) · Hinweisband im Formular · `zusammenfuehren(quelle, felder)` (Leitung: Feldübernahme `utils/dubletten.feld_uebernahme`, Adressen/Rollen kopieren, `frappe.rename_doc(merge=True)` biegt alle Links aller Apps um) · `keine_dublette(anderer)` · Report **PH Kontakt Dubletten**.
+- **Firma + Personen:** `firma_kontakt` (Person → Firmendatensatz), `funktion`, Kindtabelle `rollen` (Architekt/Bauherr/Hotelier …); Dashboard „Personen der Firma“.
+- **Zeitleiste/Kundenakte:** `ph_crm.api.get_zeitleiste` (= `zeitleiste`) und `get_kundenakte` (= `kundenakte`) sammeln generisch jede DocType mit Link auf PH Kontakt (DocField + Custom Field, `frappe.db.exists`), Mails (Communication + Timeline-Links), Notizen, Statuswechsel und Hook-Ereignisse.
+- **E-Mail Ein-/Ausgang:** `ereignisse.kommunikation_an_kontakt` verknüpft jede Mail mit Bezug auf eine DocType mit Feld `kontakt` oder mit bekannter Absender-/Empfängeradresse und setzt `letzter_kontakt`; `PH Kontakt.mail_senden` (bei Widerspruch nur vertragsbezogen).
+- **Pipeline:** `PH Anfrage.wert_cent`, `wahrscheinlichkeit_prozent` (Standard je Status 10/25/40/60/100/0, manuell überschreibbar), `gewichtet_cent`, `erwarteter_abschluss`, `gewonnen_am`/`verloren_am`; Verlust mit Grund-Katalog, Details, Mitbewerber (`als_verloren`, `als_gewonnen`); Reports **PH Pipeline**, **PH Verlustgruende**.
+- **Quelle/Kampagne:** UTM (`utm_source/medium/campaign/term/content`, `klick_id`) aus dem Website-Herkunftsblock oder Payload an PH Anfrage, Erstkontakt-UTM am PH Kontakt; Report **PH Anfragen nach Kampagne** (Grundlage ROI in ph_marketing, Custom Field `ph_marketing_kampagne`).
+- **Wiedervorlagen/Automationen** (Schalter in PH Termin Einstellungen): R1 Wiedervorlage (Anfrage + Kontakt), R2 ruhende Anfragen (7/14/21 Tage), R3 Termin ohne Abschluss, R4 No-Show-Aufgabe, R5 Band „nächster Schritt als Aufgabe?“, R6 Vortages-Übersicht 17:00, R7 erste AB → Anfrage im Angebot gewonnen, R8 doppelte Anfrage (`duplikat_von`).
+- **Termine:** `termin_vorschlagen(…, berater, thema, mail, ohne_pruefung)` mit Slot-Prüfung FOR UPDATE; **Terminserien** `serie_anlegen(intervall, anzahl|bis)` / `serie_stornieren`; Rückweg `wieder_bestaetigen` (Leitung); Website-Hinweis nach Backoffice-Umbuchung (`website_benachrichtigen` → Frappe-Webhook); `PH Termin Einstellungen.meet_verbindung_pruefen`.
+- **Beratungsprotokoll:** Vorlage je Raumtyp (`vorlage_anwenden`), Pflichtfragen, `protokoll_senden(empfaenger, nachricht)` (PDF über die Mail-Warteschlange), `planung_beauftragen(planer)`.
+- **DSGVO:** `datenauskunft_export` (JSON aller Apps, privat), `loeschplan` (je Vorgang löschen/anonymisieren/aufbewahren mit Frist, `utils/aufbewahrung.py`: § 132 BAO 7 Jahre ab Ende des Kalenderjahres; gebuchte Belege fremder Apps = submittable + docstatus 1), `anonymisieren` (Leitung, Tippwort ANONYMISIEREN; löscht auch Versionen, Kommentare, Papierkorb-Kopien), PH Datenschutzanfrage mit Frist und Nachweis, Task `dsgvo_fristen` (Fristwarnung, Rest-Anonymisierung nach Fristende). Druckformat **PH Kontakt Etikett** (99 × 38 mm).
+
+- **Nachtrag 32-marktfunktionen (CRM):** Kundenakte liefert `kanaele` = Käufe (PH Bestellung, PH Kassenbeleg, PH Auftragsbestaetigung), Rechnungen, Planungen (PH Projekt, PH Planung über Projekt) und Reklamationen (PH Servicefall) je Kanal Showroom/Shop/Objekt (`utils/kanaele.py`, jede Quelle nur wenn installiert und Feld vorhanden; Beträge nur Leitung/GF/Faktura). Adressarten Liefer/Rechnung/Baustelle/Montage/Objekt. Verkaufsphase `PH Anfrage.phase` (Erstberatung → Aufmass → Planung → Angebot → Kaufvertrag) mit Pflichtfeldern je Phase und Standard-Wahrscheinlichkeit 20/35/50/60/100 %. Anonymisierung ruft zusätzlich `ph_kassa.dienste.kontakt_anonymisieren` (nur wenn ph_kassa installiert; Kassenbelege bleiben, Kontaktbezug weg).
+
+### Hook-Vertrag Kundenakte (für alle Apps)
+
+Registrierung in der **eigenen** `hooks.py` der Fach-App (Listen von Dotted Paths). ph_crm ruft jede Funktion in try/except auf (`kontakt360.hooks_aufrufen`, Fehler → Error Log).
+
+| Hook | Signatur | Rückgabe |
+|---|---|---|
+| `ph_kontakt_zeitleiste` | `fn(kontakt, vor=None, limit=30)` | `[{zeit (ISO 8601), art, doctype, name, titel, text, app}]` – nur Ereignisse vor `vor` |
+| `ph_kontakt_zeitleiste_ersetzt` | Liste von DocType-Namen | generische „angelegt/Status“-Einträge dieser DocTypes entfallen (App liefert eigene) |
+| `ph_kontakt_datenauskunft` | `fn(kontakt)` | `[{abschnitt, doctype, name, daten: dict}]` |
+| `ph_kontakt_anonymisieren` | `fn(kontakt, ausfuehren=False)` | `[{doctype, name, aktion (anonymisieren / aufbewahren / loeschen), grund, frist_bis}]`; bei `ausfuehren=True` führt die App ihre Zeilen selbst aus (ph_crm fasst sie dann nicht an) |
+| `ph_kontakt_zusammengefuehrt` | `fn(alt, neu)` | – (nach `rename_doc(merge=True)`; alle Links zeigen schon auf `neu`) |
+
+Ohne Hook gilt generisch: Vorgänge mit Link-Feld auf PH Kontakt erscheinen in Zeitleiste/Auskunft; beim Löschen werden gebuchte Belege (Liste `BUCHUNGSRELEVANT` oder submittable + gebucht) aufbewahrt, CRM-Vorgänge gelöscht, übrige anonymisiert (bekannte Personenfelder geleert).
+
 ## Oberfläche (Screenshots-Beschreibung für die Abnahme)
 
 - **Workspace „PH CRM“**: oben acht Kennzahlen (Offene Anfragen, Neu ohne Reaktion, Termine heute, Unbestätigte Termine, Offene/Überfällige Aufgaben, Gewonnen Quartal, Neue Kunden Monat), darunter Schnellzugriffe (Kanban Anfragen/Termine/Aufgaben, Terminkalender, Neue Anfrage, Neuer Termin, Kontakte, Vertriebscockpit), dann sechs Charts (Anfragen je Woche, nach Art, Termine je Woche, nach Modus, Reaktionszeit je Woche, No-Show-Quote je Berater), unten fünf Karten mit Links.
@@ -73,6 +106,10 @@ Scheduler (`ph_crm/ph_crm/tasks.py`): Erinnerung n h vorher (stündlich), Reserv
 | PH Termine je Berater | Query | Termine je Berater und Modus, No-Show-Quote, Stunden |
 | PH Vertriebscockpit | Script | Trichter Anfragen → Termine → Gespräche → Angebote → Aufträge je Periode; Auftragswert, offene Angebote, Anzahlungsstand aus ph_faktura (wenn installiert) |
 | PH Kontakt Datenauskunft | Script | Art. 15 DSGVO: alle Daten und Vorgänge eines Kontakts |
+| PH Kontakt Dubletten | Script | Paare möglicher Dubletten mit Punkten, Gründen, Vorschlag Ziel/Quelle |
+| PH Pipeline | Script | offene Anfragen je Status/Zuständig/Monat/Quelle/Kampagne: Anzahl, Wert, gewichtet (Mitarbeiter: nur eigene) |
+| PH Verlustgruende | Script | verlorene Anfragen je Grund oder Mitbewerber, Anteil, Wert |
+| PH Anfragen nach Kampagne | Script | UTM-Kampagne/Quelle/Medium/Kanal: Anfragen, Termine, Gewonnen, Quote, Wert |
 
 ## Rollen und Rechte
 
@@ -89,6 +126,12 @@ Scheduler (`ph_crm/ph_crm/tasks.py`): Erinnerung n h vorher (stündlich), Reserv
 | Termine (`lib/booking/adapters/frappe.js`) | `platzhirsch_studio.termin.api.*` (Mock) | `methodBase = "ph_crm.api"`, `BOOKING_PROVIDER=frappe` |
 
 Auth: `Authorization: token <key>:<secret>` des Benutzers `website@platzhirsch.studio`. Antwortfelder von `create_termin`/`verify_termin`/`get_termin` entsprechen `fromFrappe()` (referenz, terminart, modus in Website-Schreibweise, start/ende ISO mit Offset, status, email_verifiziert, reserviert_bis, link_version, sequence, sprache, vorname, nachname, email, meet_url, bereits_bestaetigt).
+
+Kampagnenfelder: `create_termin` speichert `utm_source, utm_medium, utm_campaign, utm_term, utm_content, klick_id` (Website `withAttributionFields`, nur mit Einwilligung) in gleichnamigen Feldern an **PH Termin** (Abschnitt „Kampagne (UTM)“).
+
+Terminarten: Die vier Website-Keys `studio`, `video`, `vor_ort`, `planung` legt `install.py` / Patch `v0_2.terminarten_website` idempotent an (Daten `ph_crm/utils/terminarten.py`: Dauer, Puffer, Anfahrt, feste Startzeiten, Wochentage 0 = Mo, Themen, Texte aus `src/lib/booking/types.js`/`copy.js`; Test `tests/test_terminarten.py` vergleicht direkt mit `types.js`). Bewusst **kein** Fixture: ein Fixture-Sync ersetzt den Datensatz samt Berater-Tabelle, sobald er im Desk geändert wurde.
+
+Planer-Ergebnisse (Sofaplaner, Dreiländer-Rechner …; ph_projekte ist für die Website nicht freigegeben): `create_anfrage`/`create_contact` nehmen zusätzlich `planer` (`sofaplaner|dreilaender|kuechenplaner|ezarri|3d|stil-finder|yacht|bodensee-licht`, wie `src/lib/forms/beratungContext.js`), `planer_konfiguration` (JSON-Objekt ≤ 64 KB, z. B. Sofaplaner `planSchema` v2 bzw. `{land, wert, lieferart}`) und `planer_link` (https, `*.platzhirsch.studio`). Ablage: PH Anfrage `planer`, `planer_link`, `planer_konfiguration` (JSON) + privater Anhang `planer_datei` (`<planer>-<anfrage>.json`); eine Zeile „Planer: …“ im Anliegen. Fehler 400 `invalid` mit `field` (`planer`, `planer_konfiguration`, `planer_link`). Logik `utils/planer.py`.
 
 Abweichungen zur Spec: `manage_hash` wird akzeptiert, die Website arbeitet aber mit `link_version` (signierter Link auf Website-Seite) – beides wird geprüft, wenn übergeben. `get_meet_link` nimmt `link_version` statt `manage_hash`.
 
@@ -107,5 +150,7 @@ Danach im Desk: Berater-Verfügbarkeiten (PH Verfuegbarkeit) je Benutzer eintrag
 
 - `Holiday List` gibt es ohne ERPNext nicht → eigene Feiertagstabelle in PH Termin Einstellungen (Wunsch an ph_core: gemeinsamer Feiertagskalender, s. ANFRAGEN-AN-CORE.md).
 - Nummernkreise `PH-BG-` (Beratungsgespräch) und `PH-AUF-` (Aufgabe) müssen in `ph_core/utils/naming.py NUMMERNKREISE` ergänzt werden.
+- **Neu:** `"PH Datenschutzanfrage": "PH-DSA-.YYYY.-.#####"` in `NUMMERNKREISE` eintragen (bis dahin meldet check.py die Abweichung).
+- Recht/Steuer vor Echtbetrieb klären: Umfang `BUCHUNGSRELEVANT` (Angebote, Lieferscheine, Geschäftsbriefe als Geschäftspapiere i. S. § 132 BAO?), Nachweisfrist Datenschutzanfragen 3 Jahre, Löschfrist für Interessenten ohne Kauf (Vorschlag 3 Jahre nach letztem Kontakt), Gewährleistungsfristen der Service-App als `frist_bis` im Hook.
 - Webhook PH Termin → Website (Spec B6) ist ein Frappe-`Webhook`-Datensatz, den der Admin im Desk anlegt (Secret nur dort).
 - „Projekt anlegen“ in PH Anfrage und `projekt`-Felder liefern ph_projekte als Custom Field/Client Script; `kampagne` liefert ph_marketing.

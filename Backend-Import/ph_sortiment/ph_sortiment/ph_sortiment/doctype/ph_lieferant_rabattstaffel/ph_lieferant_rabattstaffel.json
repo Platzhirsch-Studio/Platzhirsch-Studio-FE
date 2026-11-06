@@ -1,0 +1,68 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 20:00:00.000000",
+ "description": "Rabattstaffel eines Lieferanten je Marke/Kategorie und Bestellwert (spezifischste Zeile, höchste erreichte Schwelle).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "marke",
+  "kategorie",
+  "ab_wert_cent",
+  "rabatt_promille",
+  "hinweis"
+ ],
+ "fields": [
+  {
+   "fieldname": "marke",
+   "fieldtype": "Link",
+   "label": "Marke",
+   "options": "PH Marke",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "kategorie",
+   "fieldtype": "Link",
+   "label": "Kategorie",
+   "options": "PH Kategorie",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "ab_wert_cent",
+   "fieldtype": "Int",
+   "label": "Ab Bestellwert (Cent)",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "rabatt_promille",
+   "fieldtype": "Int",
+   "label": "Rabatt (Promille, 400 = 40 %)",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "hinweis",
+   "fieldtype": "Data",
+   "label": "Hinweis",
+   "in_list_view": 1,
+   "columns": 2
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Sortiment",
+ "name": "PH Lieferant Rabattstaffel",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": [],
+ "track_changes": 0
+}

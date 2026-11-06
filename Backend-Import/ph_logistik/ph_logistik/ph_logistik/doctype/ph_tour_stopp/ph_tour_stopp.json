@@ -20,7 +20,11 @@
   "telefon",
   "zeitfenster_von",
   "zeitfenster_bis",
+  "fahrt_min",
+  "eta",
+  "zeitfenster_konflikt",
   "dauer_min",
+  "montage_min",
   "status",
   "ankunft",
   "abfahrt",
@@ -28,6 +32,8 @@
   "unterschrift_name",
   "navigation_url",
   "bestaetigung_gesendet_am",
+  "avis_gesendet_am",
+  "avis_kanal",
   "notiz"
  ],
  "fields": [
@@ -120,10 +126,35 @@
    "label": "Zeitfenster bis"
   },
   {
+   "fieldname": "fahrt_min",
+   "fieldtype": "Int",
+   "label": "Fahrzeit (min)",
+   "description": "Fahrzeit vom vorigen Stopp; leer = Standard aus den Einstellungen (keine Routenberechnung)."
+  },
+  {
+   "fieldname": "eta",
+   "fieldtype": "Time",
+   "label": "Ankunft (geplant)",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "zeitfenster_konflikt",
+   "fieldtype": "Check",
+   "label": "Zeitfenster nicht haltbar",
+   "read_only": 1
+  },
+  {
    "fieldname": "dauer_min",
    "fieldtype": "Int",
    "label": "Dauer (min)",
    "default": "30"
+  },
+  {
+   "fieldname": "montage_min",
+   "fieldtype": "Int",
+   "label": "Montagezeit (min)",
+   "description": "Montage am Kunden (Wandzeit mit dem eingeteilten Team), getrennt von der Liefer-/Abladezeit `dauer_min`."
   },
   {
    "fieldname": "status",
@@ -167,6 +198,18 @@
    "fieldname": "bestaetigung_gesendet_am",
    "fieldtype": "Datetime",
    "label": "Lieferbestätigung gesendet",
+   "read_only": 1
+  },
+  {
+   "fieldname": "avis_gesendet_am",
+   "fieldtype": "Datetime",
+   "label": "Avis gesendet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "avis_kanal",
+   "fieldtype": "Data",
+   "label": "Avis-Kanal",
    "read_only": 1
   },
   {

@@ -12,6 +12,7 @@
   "lieferant",
   "lieferant_name",
   "rechnungsnummer_lieferant",
+  "belegart",
   "cb_kopf",
   "datum",
   "eingang",
@@ -23,6 +24,9 @@
   "auftrag",
   "cb_bezug",
   "projekt",
+  "bezug_eingangsrechnung",
+  "lieferantenregress",
+  "regress_gebucht",
   "abweichung_zur_ab",
   "tab_positionen",
   "positionen",
@@ -38,6 +42,17 @@
   "vorsteuer_cent",
   "rc_steuer_cent",
   "konto_aufwand",
+  "tab_kosten",
+  "zuordnung_modus",
+  "kostenart",
+  "bestellung_vollstaendig_berechnet",
+  "cb_kosten",
+  "zuordnung_status",
+  "zuordnung_summe_cent",
+  "zuordnung_differenz_cent",
+  "budget_hinweis",
+  "sb_zuordnung",
+  "zuordnung",
   "tab_zahlung",
   "skonto_promille",
   "skonto_bis",
@@ -126,6 +141,16 @@
    "in_global_search": 1
   },
   {
+   "fieldname": "belegart",
+   "fieldtype": "Select",
+   "label": "Belegart",
+   "options": "Rechnung\nGutschrift",
+   "default": "Rechnung",
+   "in_standard_filter": 1,
+   "in_list_view": 1,
+   "description": "Gutschrift = Lieferanten-Gutschrift (Eingangsseite): Beträge positiv erfassen, Export/UVA mit umgekehrtem Vorzeichen."
+  },
+  {
    "fieldname": "cb_kopf",
    "fieldtype": "Column Break"
   },
@@ -184,6 +209,27 @@
    "fieldtype": "Link",
    "label": "Projekt",
    "options": "PH Projekt"
+  },
+  {
+   "fieldname": "bezug_eingangsrechnung",
+   "fieldtype": "Link",
+   "label": "Zu Eingangsrechnung",
+   "options": "PH Eingangsrechnung",
+   "depends_on": "eval:doc.belegart=='Gutschrift'"
+  },
+  {
+   "fieldname": "lieferantenregress",
+   "fieldtype": "Data",
+   "label": "Lieferantenregress (ph_service)",
+   "depends_on": "eval:doc.belegart=='Gutschrift'",
+   "description": "PH Lieferantenregress – bei Freigabe wird der Netto-Betrag dort als Gutschrift erfasst (Abgleich Soll/Ist). Kein Link: ph_service ist nicht Voraussetzung von ph_faktura."
+  },
+  {
+   "fieldname": "regress_gebucht",
+   "fieldtype": "Check",
+   "label": "Im Regress erfasst",
+   "read_only": 1,
+   "depends_on": "eval:doc.lieferantenregress"
   },
   {
    "fieldname": "abweichung_zur_ab",
@@ -278,6 +324,74 @@
    "label": "Aufwands-/Wareneinsatzkonto",
    "default": "5000",
    "description": "Kontenrahmen Kanzlei; Standard aus PH Faktura Einstellungen."
+  },
+  {
+   "fieldname": "tab_kosten",
+   "fieldtype": "Tab Break",
+   "label": "Kostenzuordnung"
+  },
+  {
+   "fieldname": "zuordnung_modus",
+   "fieldtype": "Select",
+   "label": "Zuordnung",
+   "options": "\nGanz einem Projekt\nNach Positionen\nAliquot\nGemeinkosten",
+   "in_standard_filter": 1,
+   "description": "Pflicht bei Freigabe. Ganz = Kopf-Projekt + Kostenart · Nach Positionen = je Belegposition · Aliquot = Prozent/Betrag je Projekt · Gemeinkosten = kein Projekt"
+  },
+  {
+   "fieldname": "kostenart",
+   "fieldtype": "Link",
+   "label": "Kostenart",
+   "options": "PH Kostenart",
+   "depends_on": "eval:doc.zuordnung_modus=='Ganz einem Projekt'"
+  },
+  {
+   "fieldname": "bestellung_vollstaendig_berechnet",
+   "fieldtype": "Check",
+   "label": "Bestellung damit vollständig berechnet",
+   "depends_on": "eval:doc.herstellerbestellung",
+   "description": "Restliches Obligo der Herstellerbestellung entfällt (z. B. Minderlieferung)."
+  },
+  {
+   "fieldname": "cb_kosten",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zuordnung_status",
+   "fieldtype": "Select",
+   "label": "Zuordnungsstatus",
+   "options": "Offen\nVollstaendig\nGemeinkosten",
+   "default": "Offen",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "zuordnung_summe_cent",
+   "fieldtype": "Int",
+   "label": "Zugeordnet (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "zuordnung_differenz_cent",
+   "fieldtype": "Int",
+   "label": "Differenz zu Netto (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "budget_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Budget-Hinweis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_zuordnung",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "zuordnung",
+   "fieldtype": "Table",
+   "label": "Zuordnung",
+   "options": "PH Eingangsrechnung Zuordnung"
   },
   {
    "fieldname": "tab_zahlung",
@@ -485,7 +599,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 08:00:00.000000",
+ "modified": "2026-11-04 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Faktura",
  "name": "PH Eingangsrechnung",

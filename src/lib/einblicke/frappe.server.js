@@ -14,19 +14,29 @@
 // assertTargetAllowed(), bevor eine Verbindung entsteht (Unit-Test).
 // Schlüssel nie NEXT_PUBLIC_*, nie geloggt.
 import { writeOutbox } from "./store.server.js";
+import { resolveBackend } from "../backend/config.js";
 
 export const METHOD = "/api/method/platzhirsch_einblicke.api.tag_speichern";
+/** BACKEND_GENERATION Gruppe "einblicke" auf ph: ph_marketing.api.tag_speichern (gleiche Parameter). */
+export const PH_METHOD = "/api/method/ph_marketing.api.tag_speichern";
 export const PROTECTED_HOSTS = ["backoffice.platzhirsch.studio"];
 export const SPLIT_BYTES = 1024 * 1024;
 const PARTS = ["seiten", "heatmaps", "pfade", "signale", "planer"];
 
 export function frappeConfig(env = process.env) {
+  const backend = resolveBackend("einblicke", env);
+  if (backend.generation === "ph") {
+    // Zugang aus BACKEND_PH_URL/BACKEND_PH_TOKEN; ohne ihn "aus" (nur outbox).
+    const p = backend.ph;
+    const mode = !p ? "aus" : env.EINBLICKE_FRAPPE_DRYRUN === "1" ? "dry-run" : "live";
+    return { url: p?.url || "", key: p?.key || "", secret: p?.secret || "", mode, method: PH_METHOD };
+  }
   const url = String(env.EINBLICKE_FRAPPE_URL || "").trim().replace(/\/+$/, "");
   const key = String(env.EINBLICKE_FRAPPE_KEY || "").trim();
   const secret = String(env.EINBLICKE_FRAPPE_SECRET || "").trim();
   const complete = Boolean(url && key && secret);
   const mode = !complete ? "aus" : env.EINBLICKE_FRAPPE_DRYRUN === "1" ? "dry-run" : "live";
-  return { url, key, secret, mode };
+  return { url, key, secret, mode, method: METHOD };
 }
 export const frappeMode = (env = process.env) => frappeConfig(env).mode;
 
@@ -82,7 +92,7 @@ export async function pushDay(agg, { env = process.env, fetchImpl = globalThis.f
   }
   assertTargetAllowed(cfg.url, env);
   for (const body of parts) {
-    const res = await fetchImpl(cfg.url + METHOD, {
+    const res = await fetchImpl(cfg.url + (cfg.method || METHOD), {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json", Authorization: `token ${cfg.key}:${cfg.secret}` },
       body: JSON.stringify(body),

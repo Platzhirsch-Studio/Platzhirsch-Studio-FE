@@ -38,6 +38,7 @@ import { domChoice } from "@/components/Forms/domChoice";
 import Heading from "@/components/ui/Heading";
 import { trackLead } from "@/lib/analytics";
 import { firstError, isEmail, isPhone, postForm } from "@/lib/forms/client";
+import { planerPayload } from "@/lib/forms/planerFields";
 import { UploadHandoff, handoffAfterSend, prefetchHandoff } from "@/components/Forms/lazyHandoff";
 import SelfReportField from "@/components/Forms/SelfReportField";
 import FormField, { RadioCards } from "@/components/Forms/FormField";
@@ -181,6 +182,8 @@ export function BeratungForm({ context = null, produkt = null, boardCount = null
   const [moreTopics, setMoreTopics] = useState(false);
   const [restored, setRestored] = useState(false);
   const draftReady = useRef(false);
+  // Planer-Übergabe (Sofaplaner: Plan + Link) für planer_* der Anfrage (planerFields.js, nur ph).
+  const planerHandoff = useRef(null);
   const initialMessage = useRef(values.message);
   // The values the page started with (URL context): a draft is only worth keeping once they differ.
   const initialValues = useRef(values);
@@ -205,6 +208,7 @@ export function BeratungForm({ context = null, produkt = null, boardCount = null
     }
     const handoff = takeHandoff(store, (context?.lines || []).map((l) => l.key));
     if (handoff) {
+      planerHandoff.current = handoff;
       // Der Plan hängt schon als Anlage dran (?plan=) – Link nicht doppelt im Text.
       const text = withoutPlanLine(handoff.text, context?.plan || null);
       setValues((v) => (v.message === initialMessage.current ? { ...v, message: `${text}\n` } : v));
@@ -391,6 +395,8 @@ export function BeratungForm({ context = null, produkt = null, boardCount = null
       nachname: values.nachname,
       email: values.email,
       telefon: values.telefon,
+      // Sofaplaner / Dreiländer-Rechner: planer, planer_konfiguration, planer_link (Server gibt sie nur an ph weiter).
+      ...planerPayload(context, planerHandoff.current),
     };
 
     serverError.clear();

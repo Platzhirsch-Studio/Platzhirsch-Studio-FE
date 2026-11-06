@@ -1,0 +1,89 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Packstück eines Speditionsauftrags (Palette, Kolli, Möbel lose) mit Maßen und Gewicht je Stück.",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "art",
+  "anzahl",
+  "bezeichnung",
+  "laenge_cm",
+  "breite_cm",
+  "hoehe_cm",
+  "gewicht_g",
+  "stapelbar",
+  "zerbrechlich"
+ ],
+ "fields": [
+  {
+   "fieldname": "art",
+   "fieldtype": "Select",
+   "label": "Art",
+   "options": "Palette\nKolli\nMoebel lose\nGitterbox",
+   "default": "Kolli",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "anzahl",
+   "fieldtype": "Int",
+   "label": "Anzahl",
+   "default": "1",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Inhalt",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "laenge_cm",
+   "fieldtype": "Int",
+   "label": "Länge (cm)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "breite_cm",
+   "fieldtype": "Int",
+   "label": "Breite (cm)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "hoehe_cm",
+   "fieldtype": "Int",
+   "label": "Höhe (cm)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "gewicht_g",
+   "fieldtype": "Int",
+   "label": "Gewicht je Stück (g)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "stapelbar",
+   "fieldtype": "Check",
+   "label": "Stapelbar"
+  },
+  {
+   "fieldname": "zerbrechlich",
+   "fieldtype": "Check",
+   "label": "Zerbrechlich"
+  }
+ ],
+ "istable": 1,
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Logistik",
+ "name": "PH Speditionsauftrag Packstueck",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

@@ -10,7 +10,8 @@
 // Keine Zahlung, kein Vertragsschluss, kein Stripe.
 // Keine "@/..."-Importe: direkt mit `node --test` getestet (fetch immer gemockt).
 import { guardForm, errorResponse } from "../forms/guard.js";
-import { forwardJson, outerHeadersOf } from "../forms/forward.js";
+import { outerHeadersOf } from "../forms/forward.js";
+import { forwardInquiry } from "../backend/forms.js";
 import { atelierMode, voucherMode } from "./mode.js";
 import { MAX_BYTES as VOUCHER_MAX_BYTES, voucherSchema, voucherToBackoffice } from "./voucher.js";
 import { MAX_BYTES as RESERVATION_MAX_BYTES, reservationSchema, reservationToBackoffice } from "./reservation.js";
@@ -58,7 +59,9 @@ export function commerceHandler(config) {
       const prepared = await toPayload(fields);
       if (prepared?.error) return prepared.error;
 
-      const result = await forwardJson(config.url || BACKOFFICE_URL, prepared, { fetchImpl: config.fetchImpl || fetch });
+      // alt: wie bisher forwardJson(config.url || BACKOFFICE_URL, …); ph: ph_crm.api.create_contact mit art.
+      const result = await forwardInquiry(config.kind || "kontakt", prepared, { altUrl: config.url || BACKOFFICE_URL, fetchImpl: config.fetchImpl || fetch, idempotencyKey: leadRef || null, env: config.env });
+      if (result.kind === "not_configured") return errorResponse("not_configured", 503, { message: "Failed to submit" });
       if (result.kind === "ok") return Response.json({ success: true, message: successMessage });
       console.error(`[commerce] ${route}: backoffice ${result.kind}`, result.status || "", leadRef ? `lead_ref=${leadRef}` : "");
       if (result.kind === "timeout") return errorResponse("timeout", 504, { message: "Failed to submit" });
@@ -77,6 +80,8 @@ export function commerceHandler(config) {
 export function voucherHandler({ env = process.env, termsStatus, ...options } = {}) {
   return commerceHandler({
     route: "gutschein_anfrage",
+    kind: "gutschein",
+    env,
     modeOf: () => (termsStatus === undefined ? voucherMode(env) : voucherMode(env, termsStatus)),
     schema: voucherSchema,
     maxBytes: VOUCHER_MAX_BYTES,
@@ -94,6 +99,8 @@ export function voucherHandler({ env = process.env, termsStatus, ...options } = 
 export function reservationHandler({ env = process.env, sourceFetch, ...options } = {}) {
   return commerceHandler({
     route: "atelier_reservierung",
+    kind: "reservierung",
+    env,
     modeOf: () => atelierMode(env),
     schema: reservationSchema,
     maxBytes: RESERVATION_MAX_BYTES,

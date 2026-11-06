@@ -1,6 +1,7 @@
 // src/lib/api/fetchCollections.js
 import "server-only";
 import { NEW_API_BASE_URL } from "@/lib/apiBaseUrl";
+import { katalogMethod } from "@/lib/backend/katalog";
 import { backofficeFetch } from "@/lib/api/http";
 
 // Collections of one brand (Produkte New doctype): [{ name, produkt_count, image }].
@@ -9,7 +10,7 @@ import { backofficeFetch } from "@/lib/api/http";
 export async function fetchCollectionsByMarke(markenName) {
   if (!markenName) return [];
 
-  const API_URL = `${NEW_API_BASE_URL}platzhirsch_studio.platzhirsch_studio.doctype.produkte_new.api.get_collections?marken=${encodeURIComponent(markenName)}`;
+  const API_URL = `${katalogMethod("produkte_new.api", "get_collections", NEW_API_BASE_URL)}?marken=${encodeURIComponent(markenName)}`;
 
   try {
     const response = await backofficeFetch(API_URL, {

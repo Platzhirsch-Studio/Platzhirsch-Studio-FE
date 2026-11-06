@@ -24,6 +24,11 @@
   "lieferschwelle_eu_netto_cent",
   "fernverkaeufe_eu_laufend_cent",
   "ist_versteuerung",
+  "kassa_in_uva",
+  "methode_bestaetigt",
+  "methode_bestaetigt_am",
+  "methode_bestaetigt_durch",
+  "zahlungsplan_erinnerung_tage",
   "cb_ust",
   "ust_text_ig",
   "ust_text_rc",
@@ -32,6 +37,7 @@
   "ust_text_anzahlung",
   "tab_konten",
   "export_format_standard",
+  "datev_formatversion",
   "berater_nr",
   "mandanten_nr",
   "sachkontenlaenge",
@@ -45,7 +51,9 @@
   "erloeskonto_rc",
   "erloeskonto_ausfuhr",
   "konto_anzahlungen_erhalten",
+  "erloesminderung_skonto_konto",
   "aufwandskonto_standard",
+  "konto_regress_ausbuchung",
   "debitoren_ab",
   "kreditoren_ab",
   "konten_hinweis",
@@ -167,6 +175,33 @@
    "description": "Vom Steuerberater bestätigen. Anzahlungen sind immer Ist (Vereinnahmung)."
   },
   {
+   "fieldname": "kassa_in_uva",
+   "fieldtype": "Check",
+   "label": "Kassenumsätze (ph_kassa) in die UVA übernehmen",
+   "default": "1"
+  },
+  {
+   "fieldname": "methode_bestaetigt",
+   "fieldtype": "Check",
+   "label": "Methode und Steuercodes vom Steuerberater bestätigt"
+  },
+  {
+   "fieldname": "methode_bestaetigt_am",
+   "fieldtype": "Date",
+   "label": "Bestätigt am"
+  },
+  {
+   "fieldname": "methode_bestaetigt_durch",
+   "fieldtype": "Data",
+   "label": "Bestätigt durch (Kanzlei)"
+  },
+  {
+   "fieldname": "zahlungsplan_erinnerung_tage",
+   "fieldtype": "Int",
+   "label": "Erinnerung Zahlungsplan: Tage vor Fälligkeit",
+   "default": "3"
+  },
+  {
    "fieldname": "cb_ust",
    "fieldtype": "Column Break"
   },
@@ -209,8 +244,16 @@
    "fieldname": "export_format_standard",
    "fieldtype": "Select",
    "label": "Exportformat Standard",
-   "options": "BMD CSV\nDATEV Buchungsstapel\nCSV generisch",
+   "options": "BMD CSV\nRZL CSV\nDATEV Buchungsstapel\nCSV generisch",
    "default": "BMD CSV"
+  },
+  {
+   "fieldname": "datev_formatversion",
+   "fieldtype": "Select",
+   "label": "DATEV Formatversion Buchungsstapel",
+   "options": "12\n13",
+   "default": "12",
+   "description": "Mit der Kanzlei klären (32-marktfunktionen-nachtrag.md)."
   },
   {
    "fieldname": "berater_nr",
@@ -287,10 +330,22 @@
    "default": "3700"
   },
   {
+   "fieldname": "erloesminderung_skonto_konto",
+   "fieldtype": "Data",
+   "label": "Konto Kundenskonto (Erlösminderung)"
+  },
+  {
    "fieldname": "aufwandskonto_standard",
    "fieldtype": "Data",
    "label": "Wareneinsatz/Aufwand Standard",
    "default": "5000"
+  },
+  {
+   "fieldname": "konto_regress_ausbuchung",
+   "fieldtype": "Data",
+   "label": "Aufwand Regress-Differenz (Ausbuchung)",
+   "default": "7800",
+   "description": "Gegenkonto, wenn die Service-Leitung eine Regress-Unterdeckung ausbucht (ph_service differenz_ausbuchen). Platzhalter – Konto mit der Kanzlei abstimmen."
   },
   {
    "fieldname": "debitoren_ab",
@@ -342,7 +397,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 08:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Faktura",
  "name": "PH Faktura Einstellungen",

@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Shop",
+ "name": "PH Wunschliste Position",
+ "owner": "Administrator",
+ "istable": 1,
+ "editable_grid": 0,
+ "description": "Kindtabelle von PH Wunschliste: ein Stück aus der Merkliste, ggf. reserviert.",
+ "fields": [
+  {
+   "fieldname": "item_key",
+   "fieldtype": "Data",
+   "label": "Stück-Schlüssel",
+   "reqd": 1,
+   "read_only": 1,
+   "length": 16,
+   "description": "sha256(id-name-kategorie)[:16] wie src/lib/wunschliste/ids.js itemKeyOf."
+  },
+  {
+   "fieldname": "produkt_name",
+   "fieldtype": "Data",
+   "label": "Produkt",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3,
+   "length": 160
+  },
+  {
+   "fieldname": "marke",
+   "fieldtype": "Data",
+   "label": "Marke/Kategorie",
+   "in_list_view": 1,
+   "columns": 2,
+   "length": 120
+  },
+  {
+   "fieldname": "bild",
+   "fieldtype": "Data",
+   "label": "Bild (Pfad)",
+   "length": 400
+  },
+  {
+   "fieldname": "href",
+   "fieldtype": "Data",
+   "label": "Link (Website)",
+   "length": 300
+  },
+  {
+   "fieldname": "cb_res",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reserviert",
+   "fieldtype": "Check",
+   "label": "Reserviert",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "reserviert_am",
+   "fieldtype": "Datetime",
+   "label": "Reserviert am",
+   "in_list_view": 1,
+   "columns": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "reserviert_name",
+   "fieldtype": "Data",
+   "label": "Reserviert von (Name)",
+   "length": 80,
+   "read_only": 1,
+   "description": "Freiwillige Angabe der Schenkenden; sieht nur der Ersteller."
+  },
+  {
+   "fieldname": "reserviert_notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz",
+   "read_only": 1
+  },
+  {
+   "fieldname": "storno_hash",
+   "fieldtype": "Data",
+   "label": "Storno-Hash",
+   "read_only": 1,
+   "hidden": 1,
+   "length": 64,
+   "description": "sha256 des Storno-Schlüssels; der Klartext liegt nur im Browser der Schenkenden."
+  }
+ ],
+ "permissions": [],
+ "field_order": [
+  "item_key",
+  "produkt_name",
+  "marke",
+  "bild",
+  "href",
+  "cb_res",
+  "reserviert",
+  "reserviert_am",
+  "reserviert_name",
+  "reserviert_notiz",
+  "storno_hash"
+ ]
+}

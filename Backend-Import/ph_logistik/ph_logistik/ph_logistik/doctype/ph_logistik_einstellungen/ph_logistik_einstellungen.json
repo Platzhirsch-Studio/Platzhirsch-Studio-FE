@@ -43,7 +43,46 @@
   "cb_lager",
   "lieferbestaetigung_vorlage",
   "abholbereit_vorlage",
-  "packtisch_hinweis"
+  "packtisch_hinweis",
+  "sb_touren_lager",
+  "avis_vorlage",
+  "avis_sms_aktiv",
+  "fahrt_min_standard",
+  "stopp_dauer_min_standard",
+  "cb_touren_lager",
+  "reservierung_tage_standard",
+  "abholcode_pflicht",
+  "spediteur_standard",
+  "ladebreite_cm",
+  "sb_liefertermine",
+  "arbeitsbeginn",
+  "tageskapazitaet_min",
+  "vorschlag_tage_max",
+  "tour_samstag",
+  "cb_liefertermine",
+  "avis_bei_verschiebung",
+  "avis_aenderung_vorlage",
+  "sb_meldebestand",
+  "meldebestand_aktiv",
+  "meldebestand_aufgabe",
+  "cb_meldebestand",
+  "meldebestand_verbrauch_tage",
+  "sb_inventur_plan",
+  "geschaeftsjahr_beginn_monat",
+  "teilinventur_aktiv",
+  "teilinventur_plaetze_je_lauf",
+  "cb_inventur_plan",
+  "inventur_vier_augen",
+  "inventur_soll_ausblenden",
+  "sb_bewertung",
+  "bewertung_methode",
+  "bewertung_ust_basispunkte",
+  "bewertung_vertriebskosten_promille",
+  "abwertung_platzhalter",
+  "cb_bewertung",
+  "konto_handelswaren",
+  "konto_bestandsveraenderung",
+  "abwertung_staffel"
  ],
  "fields": [
   {
@@ -259,11 +298,246 @@
    "fieldname": "packtisch_hinweis",
    "fieldtype": "Small Text",
    "label": "Hinweis am Packtisch (z. B. Druckername)"
+  },
+  {
+   "fieldname": "sb_touren_lager",
+   "fieldtype": "Section Break",
+   "label": "Touren, Avis, Lager"
+  },
+  {
+   "fieldname": "avis_vorlage",
+   "fieldtype": "Link",
+   "label": "Avis-Mailvorlage",
+   "options": "Email Template",
+   "description": "Leer = Standardtext de/en/fr/it (tour_logik.AVIS)."
+  },
+  {
+   "fieldname": "avis_sms_aktiv",
+   "fieldtype": "Check",
+   "label": "Avis auch per SMS",
+   "description": "Nur wirksam, wenn Frappe „SMS Settings“ eingerichtet ist; sonst wird der Text nur protokolliert."
+  },
+  {
+   "fieldname": "fahrt_min_standard",
+   "fieldtype": "Int",
+   "label": "Fahrzeit je Stopp (min, Standard)",
+   "default": "30"
+  },
+  {
+   "fieldname": "stopp_dauer_min_standard",
+   "fieldtype": "Int",
+   "label": "Dauer je Stopp (min, Standard)",
+   "default": "30"
+  },
+  {
+   "fieldname": "cb_touren_lager",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reservierung_tage_standard",
+   "fieldtype": "Int",
+   "label": "Reservierung gültig (Tage)",
+   "default": "14"
+  },
+  {
+   "fieldname": "abholcode_pflicht",
+   "fieldtype": "Check",
+   "label": "Abholcode bei Abholung prüfen",
+   "default": "1"
+  },
+  {
+   "fieldname": "spediteur_standard",
+   "fieldtype": "Link",
+   "label": "Standard-Spediteur",
+   "options": "PH Lieferant"
+  },
+  {
+   "fieldname": "ladebreite_cm",
+   "fieldtype": "Int",
+   "label": "Ladebreite für Lademeter (cm)",
+   "default": "240"
+  },
+  {
+   "fieldname": "sb_liefertermine",
+   "fieldtype": "Section Break",
+   "label": "Liefertermin-Generator"
+  },
+  {
+   "fieldname": "arbeitsbeginn",
+   "fieldtype": "Time",
+   "label": "Arbeitsbeginn Touren",
+   "default": "07:30"
+  },
+  {
+   "fieldname": "tageskapazitaet_min",
+   "fieldtype": "Int",
+   "label": "Tageskapazität je Fahrzeug/Team (min)",
+   "default": "480"
+  },
+  {
+   "fieldname": "vorschlag_tage_max",
+   "fieldtype": "Int",
+   "label": "Vorschläge höchstens (Tage voraus)",
+   "default": "30"
+  },
+  {
+   "fieldname": "tour_samstag",
+   "fieldtype": "Check",
+   "label": "Samstag planbar"
+  },
+  {
+   "fieldname": "cb_liefertermine",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "avis_bei_verschiebung",
+   "fieldtype": "Check",
+   "label": "Kunde bei Terminverschiebung informieren",
+   "default": "1",
+   "description": "Nur Stopps, deren Kunde bereits ein Avis erhielt (Vorlage „Terminänderung“, Kanal wie Avis)."
+  },
+  {
+   "fieldname": "avis_aenderung_vorlage",
+   "fieldtype": "Link",
+   "label": "Mailvorlage Terminänderung",
+   "options": "Email Template"
+  },
+  {
+   "fieldname": "sb_meldebestand",
+   "fieldtype": "Section Break",
+   "label": "Meldebestand und Nachbestellung"
+  },
+  {
+   "fieldname": "meldebestand_aktiv",
+   "fieldtype": "Check",
+   "label": "Täglicher Nachbestell-Lauf",
+   "default": "1"
+  },
+  {
+   "fieldname": "meldebestand_aufgabe",
+   "fieldtype": "Check",
+   "label": "Aufgabe an Leitung bei neuen Vorschlägen",
+   "default": "1"
+  },
+  {
+   "fieldname": "cb_meldebestand",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "meldebestand_verbrauch_tage",
+   "fieldtype": "Int",
+   "label": "Zeitraum Abgang für Empfehlung (Tage)",
+   "default": "90"
+  },
+  {
+   "fieldname": "sb_inventur_plan",
+   "fieldtype": "Section Break",
+   "label": "Inventur: Teilinventur und Zählmodus"
+  },
+  {
+   "fieldname": "geschaeftsjahr_beginn_monat",
+   "fieldtype": "Int",
+   "label": "Geschäftsjahr beginnt im Monat",
+   "default": "1"
+  },
+  {
+   "fieldname": "teilinventur_aktiv",
+   "fieldtype": "Check",
+   "label": "Permanente/rollierende Teilinventur",
+   "description": "Plan: jeder Lagerplatz mindestens 1× je Geschäftsjahr; wöchentliche Prüfung mit Aufgabe bei Rückstand."
+  },
+  {
+   "fieldname": "teilinventur_plaetze_je_lauf",
+   "fieldtype": "Int",
+   "label": "Plätze je Teilinventur (Vorschlag)",
+   "default": "10"
+  },
+  {
+   "fieldname": "cb_inventur_plan",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inventur_vier_augen",
+   "fieldtype": "Check",
+   "label": "Vier-Augen-Freigabe (nicht die zählende Person)",
+   "default": "1"
+  },
+  {
+   "fieldname": "inventur_soll_ausblenden",
+   "fieldtype": "Check",
+   "label": "Zählmodus: Soll ausblenden (Blindzählung)",
+   "description": "Mitarbeiter sehen im mobilen Zählmodus kein Soll; Leitung immer."
+  },
+  {
+   "fieldname": "sb_bewertung",
+   "fieldtype": "Section Break",
+   "label": "Inventurbewertung (Jahresabschluss)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "bewertung_methode",
+   "fieldtype": "Select",
+   "label": "Bewertungsmethode",
+   "options": "Gleitender Durchschnitt\nLetzter EK",
+   "default": "Gleitender Durchschnitt",
+   "permlevel": 1,
+   "description": "Gleitender Durchschnitt: jeder Wareneingang mischt (Bestand × Ø + Menge × EK)/(Bestand + Menge), Abgänge ändern den Ø nicht (UGB § 209 Abs 2). Letzter EK: EK des letzten Wareneingangs bis zum Stichtag. Ohne Wareneingang mit EK: EK der Bestandszeile bzw. gültiger EK des Produkts. Methode mit Steuerberater abstimmen und beibehalten (Stetigkeit)."
+  },
+  {
+   "fieldname": "bewertung_ust_basispunkte",
+   "fieldtype": "Int",
+   "label": "USt für Nettoerlös (Basispunkte)",
+   "default": "2000",
+   "permlevel": 1,
+   "description": "2000 = 20 %; rechnet VK Ausstellung/Abverkauf brutto in netto."
+  },
+  {
+   "fieldname": "bewertung_vertriebskosten_promille",
+   "fieldtype": "Int",
+   "label": "Vertriebskosten-Abschlag Nettoerlös (Promille)",
+   "default": "0",
+   "permlevel": 1,
+   "description": "Platzhalter – Steuerberater."
+  },
+  {
+   "fieldname": "abwertung_platzhalter",
+   "fieldtype": "Check",
+   "label": "Abwertungssätze sind Platzhalter",
+   "default": "1",
+   "permlevel": 1,
+   "description": "Erst nach Bestätigung durch den Steuerberater abhaken (steht auf Druck und Bericht)."
+  },
+  {
+   "fieldname": "cb_bewertung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "konto_handelswaren",
+   "fieldtype": "Data",
+   "label": "Konto Handelswarenvorrat",
+   "default": "1600",
+   "permlevel": 1,
+   "description": "Platzhalter – Kontenrahmen der Kanzlei."
+  },
+  {
+   "fieldname": "konto_bestandsveraenderung",
+   "fieldtype": "Data",
+   "label": "Konto Bestandsveränderung",
+   "default": "5010",
+   "permlevel": 1,
+   "description": "Platzhalter – Kontenrahmen der Kanzlei."
+  },
+  {
+   "fieldname": "abwertung_staffel",
+   "fieldtype": "Table",
+   "label": "Abwertungsstaffel",
+   "options": "PH Logistik Abwertung",
+   "permlevel": 1
   }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 15:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Logistik",
  "name": "PH Logistik Einstellungen",
@@ -343,6 +617,70 @@
    "export": 0,
    "report": 1,
    "share": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Logistik Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "permlevel": 1
   }
  ],
  "sort_field": "modified",

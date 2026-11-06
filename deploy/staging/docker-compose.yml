@@ -1,0 +1,138 @@
+# deploy/staging/docker-compose.yml – Ein-Befehl-Staging für die 12 PH-Apps (Frappe v15, ohne ERPNext).
+# Aufbau wie frappe_docker pwd.yml: backend (gunicorn), frontend (nginx), websocket (socketio),
+# queue-short/queue-long (Worker), scheduler, configurator (einmalig), MariaDB 10.6, Redis cache/queue.
+# Start: ./setup.sh   (nicht "docker compose up" allein – die Site wird von setup.sh angelegt)
+
+name: ${COMPOSE_PROJECT_NAME:-ph-staging}
+
+x-frappe: &frappe
+  image: platzhirsch/frappe-ph:staging
+  restart: unless-stopped
+  volumes:
+    - sites:/home/frappe/frappe-bench/sites
+    - logs:/home/frappe/frappe-bench/logs
+    - ./scripts:/opt/ph-deploy:ro
+  networks: [frappe]
+
+services:
+  backend:
+    <<: *frappe
+    build:
+      context: ../..
+      dockerfile: deploy/staging/Containerfile.frappe
+      args:
+        FRAPPE_BRANCH: ${FRAPPE_BRANCH:-version-15}
+        PH_DEV_TOOLS: "1"
+        PH_WALLET: ${PH_WALLET:-1}
+    depends_on:
+      configurator:
+        condition: service_completed_successfully
+
+  configurator:
+    <<: *frappe
+    restart: "no"
+    entrypoint: ["bash", "-c"]
+    # Gemeinsame Konfiguration aller Sites; apps.txt aus dem Image neu schreiben (Volume kann alt sein).
+    command:
+      - >
+        printf '%s\n' frappe $$PH_APPS > sites/apps.txt;
+        bench set-config -g db_host db;
+        bench set-config -gp db_port 3306;
+        bench set-config -g redis_cache "redis://redis-cache:6379";
+        bench set-config -g redis_queue "redis://redis-queue:6379";
+        bench set-config -g redis_socketio "redis://redis-queue:6379";
+        bench set-config -gp socketio_port 9000;
+        echo "configurator fertig";
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+
+  frontend:
+    <<: *frappe
+    command: ["nginx-entrypoint.sh"]
+    environment:
+      BACKEND: backend:8000
+      SOCKETIO: websocket:9000
+      FRAPPE_SITE_NAME_HEADER: ${SITE_NAME:-staging.platzhirsch.local}
+      UPSTREAM_REAL_IP_ADDRESS: 127.0.0.1
+      UPSTREAM_REAL_IP_HEADER: X-Forwarded-For
+      UPSTREAM_REAL_IP_RECURSIVE: "off"
+      PROXY_READ_TIMEOUT: "120"
+      CLIENT_MAX_BODY_SIZE: 50m
+    ports:
+      - "${STAGING_BIND:-127.0.0.1}:${STAGING_PORT:-8080}:8080"
+    depends_on: [backend, websocket]
+
+  websocket:
+    <<: *frappe
+    command: ["node", "/home/frappe/frappe-bench/apps/frappe/socketio.js"]
+    depends_on:
+      configurator:
+        condition: service_completed_successfully
+
+  queue-short:
+    <<: *frappe
+    command: ["bench", "worker", "--queue", "short,default"]
+    depends_on:
+      configurator:
+        condition: service_completed_successfully
+
+  queue-long:
+    <<: *frappe
+    command: ["bench", "worker", "--queue", "long,default,short"]
+    depends_on:
+      configurator:
+        condition: service_completed_successfully
+
+  scheduler:
+    <<: *frappe
+    command: ["bench", "schedule"]
+    depends_on:
+      configurator:
+        condition: service_completed_successfully
+
+  db:
+    image: mariadb:10.6
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?DB_ROOT_PASSWORD fehlt – setup.sh legt .env an}
+      MARIADB_AUTO_UPGRADE: "1"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p\"$$MARIADB_ROOT_PASSWORD\" --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    volumes:
+      - db-data:/var/lib/mysql
+    networks: [frappe]
+
+  redis-cache:
+    image: redis:6.2-alpine
+    restart: unless-stopped
+    networks: [frappe]
+
+  redis-queue:
+    image: redis:6.2-alpine
+    restart: unless-stopped
+    volumes:
+      - redis-queue-data:/data
+    networks: [frappe]
+
+networks:
+  frappe: {}
+
+volumes:
+  sites: {}
+  logs: {}
+  db-data: {}
+  redis-queue-data: {}

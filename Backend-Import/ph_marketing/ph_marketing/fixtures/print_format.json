@@ -74,5 +74,24 @@
   "page_number": "Bottom Right",
   "html": "{% extends \"templates/print/ph_basis.html\" %}\n{% block titel %}Kampagnenbericht {{ doc.name }}{% endblock %}\n{% block kopfrechts %}{{ doc.name }}<br>{{ ph_datum(doc.zeitraum_von) }}{% if doc.zeitraum_bis %} – {{ ph_datum(doc.zeitraum_bis) }}{% endif %}<br>{{ _(doc.status) }}{% endblock %}\n{% block inhalt %}\n<h1>{{ doc.titel }}</h1>\n<div class=\"ph-feld\"><b>Kanal</b> {{ doc.kanal }}</div>\n<div class=\"ph-feld\"><b>Ziel</b> {{ doc.ziel or \"–\" }}{% if doc.ziel_kennzahl %} ({{ doc.ziel_kennzahl }}: {{ doc.ziel_wert or \"–\" }}){% endif %}</div>\n<div class=\"ph-feld\"><b>UTM</b> {{ doc.utm_source or \"–\" }} / {{ doc.utm_medium or \"–\" }} / {{ doc.utm_campaign or \"–\" }}</div>\n<h2>Kennzahlen</h2>\n<table class=\"ph-tabelle\"><tbody>\n<tr><td>Budget</td><td class=\"zahl\">{{ ph_betrag(doc.budget_cent) or \"–\" }}</td></tr>\n<tr><td>Ausgaben</td><td class=\"zahl\">{{ ph_betrag(doc.ausgaben_cent) }}</td></tr>\n<tr><td>Impressionen / Klicks</td><td class=\"zahl\">{{ doc.impressionen_gesamt or 0 }} / {{ doc.klicks_gesamt or 0 }} ({{ (doc.klickrate_promille or 0) / 10 }} %)</td></tr>\n<tr><td>Anfragen</td><td class=\"zahl\">{{ doc.anfragen_gesamt or 0 }}</td></tr>\n<tr class=\"ph-summe\"><td>Kosten je Anfrage</td><td class=\"zahl\">{{ ph_betrag(doc.kosten_je_anfrage_cent) if doc.anfragen_gesamt else \"–\" }}</td></tr>\n</tbody></table>\n{% if doc.kennzahlen %}<h2>Verlauf</h2>\n<table class=\"ph-tabelle\"><thead><tr><th>Datum</th><th class=\"zahl\">Impressionen</th><th class=\"zahl\">Klicks</th><th class=\"zahl\">Kosten</th><th>Notiz</th></tr></thead><tbody>\n{% for z in doc.kennzahlen %}<tr><td>{{ ph_datum(z.datum) }}</td><td class=\"zahl\">{{ z.impressionen or 0 }}</td><td class=\"zahl\">{{ z.klicks or 0 }}</td><td class=\"zahl\">{{ ph_betrag(z.kosten_cent) }}</td><td>{{ z.notiz or \"\" }}</td></tr>{% endfor %}\n</tbody></table>{% endif %}\n{% if doc.auswertung_notiz %}<h2>Fazit</h2><div>{{ doc.auswertung_notiz }}</div>{% endif %}\n{% endblock %}",
   "css": ""
+ },
+ {
+  "doctype": "Print Format",
+  "name": "PH Event Ticket",
+  "doc_type": "PH Event",
+  "module": "PH Marketing",
+  "standard": "Yes",
+  "custom_format": 1,
+  "print_format_type": "Jinja",
+  "disabled": 0,
+  "default_print_language": "de",
+  "font_size": 10,
+  "margin_top": 10,
+  "margin_bottom": 10,
+  "margin_left": 15,
+  "margin_right": 15,
+  "page_number": "Bottom Right",
+  "html": "{% extends \"templates/print/ph_basis.html\" %}\n{% block titel %}Einlass {{ doc.titel }}{% endblock %}\n{% block kopfrechts %}{{ doc.titel }}<br>{{ ph_datum(doc.datum) }}{% if doc.uhrzeit_von %} · ab {{ doc.uhrzeit_von|string|truncate(5, True, '') }} Uhr{% endif %}{% endblock %}\n{% block inhalt %}\n{% for a in doc.anmeldungen|selectattr(\"status\", \"in\", [\"angemeldet\", \"bestaetigt\"])|sort(attribute=\"name_person\") %}\n<div class=\"ph-ticket\">\n  <div>{{ ph_event_ticket_qr(doc.name, a.name) }}</div>\n  <div><h3>{{ a.name_person }}</h3>\n  {{ a.personen or 1 }} {% if (a.personen or 1) == 1 %}Person{% else %}Personen{% endif %}{% if a.begleitung %} · {{ a.begleitung }}{% endif %}<br>\n  <small>{{ doc.ort or \"Showroom und Café, Landstraße 11, 6911 Lochau\" }} · Code am Eingang scannen</small></div>\n</div>\n{% else %}<p>Keine angemeldeten Teilnehmer.</p>{% endfor %}\n{% endblock %}",
+  "css": ".ph-ticket{border:1px solid #8a7a66;border-radius:3mm;padding:5mm;margin:0 0 6mm;page-break-inside:avoid;display:flex;gap:6mm;align-items:center}.ph-ticket h3{margin:0 0 2mm;font-size:13pt}.ph-ticket small{color:#8a7a66}"
  }
 ]

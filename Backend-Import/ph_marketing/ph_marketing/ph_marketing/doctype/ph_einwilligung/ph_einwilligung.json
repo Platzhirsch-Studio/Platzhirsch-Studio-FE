@@ -31,6 +31,7 @@
   "cb_3",
   "widerruf_grund",
   "widerruf_beleg",
+  "erteilung_beleg",
   "sb_daten",
   "interessen",
   "daten_json",
@@ -69,11 +70,11 @@
    "fieldname": "zweck",
    "fieldtype": "Select",
    "label": "Zweck",
-   "options": "newsletter\neinladungen\nmerkliste_erinnerung\nplaner_erinnerung\nrueckmeldung\npflege_nachkauf\nwhatsapp\nfoto_referenz",
+   "options": "newsletter\neinladungen\nmerkliste_erinnerung\nplaner_erinnerung\nrueckmeldung\npflege_nachkauf\nwhatsapp\nfoto_referenz\nkundenkarte_auswertung",
    "reqd": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "description": "newsletter = Newsletter „Post aus Lochau“ · einladungen = Einladungen zu Events · rueckmeldung = Bewertungsbitte · whatsapp = Kontakt per WhatsApp · foto_referenz = Referenzfotos aus dem Projekt · merkliste_/planer_erinnerung = Erinnerung an gesicherte Auswahl · pflege_nachkauf = Pflegehinweise mit Nachkauf (ph_service)"
+   "description": "newsletter = Newsletter „Post aus Lochau“ · einladungen = Einladungen zu Events · rueckmeldung = Bewertungsbitte · whatsapp = Kontakt per WhatsApp · foto_referenz = Referenzfotos aus dem Projekt · merkliste_/planer_erinnerung = Erinnerung an gesicherte Auswahl · pflege_nachkauf = Pflegehinweise mit Nachkauf (ph_service) · kundenkarte_auswertung = Auswertung der Einkäufe für Kundenkarten-Stufen und Empfehlungen (ph_kundenkarte, getrennt vom Newsletter, kein DOI – Nachweis ist der bestätigte Antrag)"
   },
   {
    "fieldname": "status",
@@ -207,6 +208,12 @@
    "label": "Beleg (z. B. E-Mail)"
   },
   {
+   "fieldname": "erteilung_beleg",
+   "fieldtype": "Attach",
+   "label": "Beleg der Erteilung (Papier/Scan)",
+   "description": "Nur für Kanal papier/showroom; nachträglich unveränderlich."
+  },
+  {
    "fieldname": "sb_daten",
    "fieldtype": "Section Break",
    "label": "Zusatzdaten",
@@ -279,7 +286,7 @@
    "group": "Versand"
   }
  ],
- "modified": "2026-11-04 10:00:00.000000",
+ "modified": "2026-11-04 14:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Marketing",
  "name": "PH Einwilligung",

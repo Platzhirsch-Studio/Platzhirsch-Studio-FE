@@ -1,0 +1,198 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-04 18:00:00.000000",
+ "description": "Änderungsprotokoll der Kalkulation (Einstellungen, Budget, Projekt-Abweichungen, ER-Umbuchungen): wer, wann, alt → neu.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "zeitpunkt",
+  "user",
+  "bereich",
+  "cb_1",
+  "referenz_doctype",
+  "referenz_name",
+  "projekt",
+  "sb_1",
+  "feld",
+  "alt",
+  "neu",
+  "begruendung"
+ ],
+ "fields": [
+  {
+   "fieldname": "zeitpunkt",
+   "fieldtype": "Datetime",
+   "label": "Zeitpunkt",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "Benutzer",
+   "options": "User",
+   "in_list_view": 1,
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "bereich",
+   "fieldtype": "Select",
+   "label": "Bereich",
+   "options": "Einstellungen\nProjekt\nBudget\nEingangsrechnung\nNachkalkulation",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "referenz_doctype",
+   "fieldtype": "Link",
+   "label": "Referenz-Typ",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "referenz_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Referenz",
+   "options": "referenz_doctype",
+   "in_list_view": 1,
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "projekt",
+   "fieldtype": "Link",
+   "label": "Projekt",
+   "options": "PH Projekt",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "feld",
+   "fieldtype": "Data",
+   "label": "Feld/Tabelle",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "alt",
+   "fieldtype": "Long Text",
+   "label": "Alt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "neu",
+   "fieldtype": "Long Text",
+   "label": "Neu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "begruendung",
+   "fieldtype": "Small Text",
+   "label": "Begründung",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Projekte",
+ "name": "PH Kalkulation Protokoll",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Faktura Leitung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "zeitpunkt",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0,
+ "autoname": "hash",
+ "in_create": 1,
+ "title_field": "feld"
+}

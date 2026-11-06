@@ -85,7 +85,17 @@ function StatusIcon({ type }) {
   );
 }
 
-export default function AdventsabendForm({ dateLabel, calendarHref = null }) {
+// submitUrl: "/api/kontakt" (Standard, heutiges Payload) oder im ph-Modus
+// "/api/adventsabend/anmelden" (src/lib/backend/adventsabend.js → ph_marketing
+// register_event; eigene Felder personen/nachricht, Bestätigung mit Absage-Link).
+const PH_URL = "/api/adventsabend/anmelden";
+const PH_ERRORS = {
+  ausgebucht: "Der Adventsabend ist leider ausgebucht. Rufen Sie uns gern an – vielleicht wird noch ein Platz frei.",
+  geschlossen: "Eine Anmeldung ist derzeit leider nicht möglich. Rufen Sie uns gern an.",
+};
+
+export default function AdventsabendForm({ dateLabel, calendarHref = null, submitUrl = "/api/kontakt" }) {
+  const ph = submitUrl === PH_URL;
   const [form, setForm] = useState(EMPTY);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -139,24 +149,32 @@ export default function AdventsabendForm({ dateLabel, calendarHref = null }) {
 
     const personen = Number(form.personen);
     const nachricht = form.nachricht.trim();
-    const payload = {
-      name: form.name.trim(),
-      company: "",
-      email_address: form.email.trim(),
-      telefon: form.telefon.trim(),
-      ihre_nachricht:
-        `[Anmeldung Adventsabend ${dateLabel}] ${personen} ${personen === 1 ? "Person" : "Personen"}` +
-        (nachricht ? `\n\nNachricht: ${nachricht}` : ""),
-    };
+    const payload = ph
+      ? { name: form.name.trim(), email_address: form.email.trim(), telefon: form.telefon.trim(), personen, nachricht }
+      : {
+        name: form.name.trim(),
+        company: "",
+        email_address: form.email.trim(),
+        telefon: form.telefon.trim(),
+        ihre_nachricht:
+          `[Anmeldung Adventsabend ${dateLabel}] ${personen} ${personen === 1 ? "Person" : "Personen"}` +
+          (nachricht ? `\n\nNachricht: ${nachricht}` : ""),
+      };
     const body = guard(payload, e.currentTarget);
 
     setLoading(true);
     setStatus(null);
     try {
-      const result = await postForm("/api/kontakt", body);
+      const result = await postForm(ph ? PH_URL : "/api/kontakt", body);
       if (!result.ok) {
+        // ph: ausgebucht / Anmeldung geschlossen mit eigenem Text.
+        const phText = ph ? PH_ERRORS[result.data?.code] : undefined;
+        if (phText) {
+          setStatus({ type: "error", text: phText });
+          return;
+        }
         // 400 mit `field`: am Feld zeigen (Kontakt-Schema → Formularfeld).
-        const key = result.code === "invalid" ? { name: "name", email_address: "email", telefon: "telefon" }[result.field] : undefined;
+        const key = result.code === "invalid" ? { name: "name", email_address: "email", telefon: "telefon", personen: "personen" }[result.field] : undefined;
         if (key) {
           serverError.set(key, form[key]);
           const message = validateField(key, form) || "Bitte prüfen Sie diese Angabe.";
@@ -172,7 +190,11 @@ export default function AdventsabendForm({ dateLabel, calendarHref = null }) {
       trackLead("adventsabend", { transaction_id: result.leadRef });
       setStatus({
         type: "success",
-        text: `Danke, ${payload.name}. Ihre Anmeldung für ${personen} ${personen === 1 ? "Person" : "Personen"} ist bei uns angekommen. Wir freuen uns auf Ihren Besuch.`,
+        text:
+          ph && result.data?.warteliste
+            ? `Danke, ${payload.name}. Der Abend ist im Moment voll – wir haben Sie mit ${personen} ${personen === 1 ? "Person" : "Personen"} auf die Warteliste gesetzt und melden uns, sobald ein Platz frei wird.`
+            : `Danke, ${payload.name}. Ihre Anmeldung für ${personen} ${personen === 1 ? "Person" : "Personen"} ist bei uns angekommen. Wir freuen uns auf Ihren Besuch.` +
+              (ph ? " Sie erhalten eine Bestätigung per E-Mail, darin finden Sie auch einen Link, falls Sie absagen möchten." : ""),
       });
       setForm(EMPTY);
       setTouched({});

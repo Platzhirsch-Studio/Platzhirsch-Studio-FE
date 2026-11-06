@@ -40,7 +40,10 @@ class PHMahnung(Document):
             self.frist = add_days(self.datum or nowdate(), cint(einst.get("frist_tage") or 7))
         self.verzugstage = M.verzugstage(getdate(re.faellig), getdate(self.datum or nowdate()), 0) if re.faellig else 0
         if self.status == "Entwurf" and not self.get_doc_before_save():
-            b = M.mahnbetrag(self.offen_cent, self.stufe, self.verzugstage, einst, unternehmer=bool(re.firma))
+            bereits = bool(frappe.db.exists("PH Mahnung", {"rechnung": self.rechnung, "pauschale_cent": (">", 0), "status": ("!=", "Storniert"), "name": ("!=", self.name)}))
+            b = M.mahnbetrag(self.offen_cent, self.stufe, self.verzugstage, einst, unternehmer=bool(re.firma), pauschale_bereits=bereits)
+            self.zinssatz_bp = b.get("zinssatz_bp")
+            self.pauschale_cent = b.get("pauschale_cent")
             self.mahngebuehr_cent = b["mahngebuehr_cent"]
             self.verzugszinsen_cent = b["verzugszinsen_cent"]
             self.zinssatz_promille = b["zinssatz_promille"]

@@ -20,6 +20,9 @@
   "freigegeben_von",
   "sb_soll",
   "bargeld_anfang_cent",
+  "anfang_quelle",
+  "anfang_grund",
+  "anfang_hinweis",
   "bar_einnahmen_cent",
   "bar_ausgaben_cent",
   "einlagen_cent",
@@ -33,6 +36,7 @@
   "anzahlungen_cent",
   "gutschein_verkauf_cent",
   "gutschein_einloesung_cent",
+  "retouren_cent",
   "sb_belege",
   "belege_anzahl",
   "stornos_anzahl",
@@ -45,6 +49,12 @@
   "differenz_cent",
   "cb_zaehlung",
   "differenz_grund",
+  "sb_chf",
+  "chf_anfang_cent",
+  "chf_einnahmen_cent",
+  "chf_soll_cent",
+  "chf_ist_cent",
+  "chf_differenz_cent",
   "differenz_buchung",
   "sb_satz",
   "umsatz_je_satz",
@@ -59,83 +69,484 @@
   "notiz"
  ],
  "fields": [
-  {"fieldname": "naming_series", "fieldtype": "Select", "label": "Nummernkreis", "options": "KA-.YYYY.-.#####", "default": "KA-.YYYY.-.#####", "reqd": 1, "hidden": 1, "print_hide": 1},
-  {"fieldname": "titel", "fieldtype": "Data", "label": "Titel", "read_only": 1, "in_list_view": 1},
-  {"fieldname": "kasse", "fieldtype": "Link", "label": "Kasse", "options": "PH Kasse", "reqd": 1, "in_list_view": 1, "in_standard_filter": 1},
-  {"fieldname": "datum", "fieldtype": "Date", "label": "Abschlusstag", "reqd": 1, "in_list_view": 1, "in_standard_filter": 1},
-  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Offen\nGezaehlt\nAbgeschlossen\nKorrigiert", "default": "Offen", "reqd": 1, "read_only": 1, "in_list_view": 1, "in_standard_filter": 1, "description": "Gesetzt über die Buttons Zählen / Abschließen / Öffnen (keine manuelle Änderung)."},
-  {"fieldname": "cb_kopf", "fieldtype": "Column Break"},
-  {"fieldname": "eroeffnet_am", "fieldtype": "Datetime", "label": "Eröffnet am", "read_only": 1},
-  {"fieldname": "geschlossen_am", "fieldtype": "Datetime", "label": "Abgeschlossen am", "read_only": 1},
-  {"fieldname": "von_user", "fieldtype": "Link", "label": "Gezählt von", "options": "User", "read_only": 1},
-  {"fieldname": "freigegeben_von", "fieldtype": "Link", "label": "Abgeschlossen von (Leitung)", "options": "User", "read_only": 1},
-  {"fieldname": "sb_soll", "fieldtype": "Section Break", "label": "Soll aus Belegen und Kassenbuch (Cent)"},
-  {"fieldname": "bargeld_anfang_cent", "fieldtype": "Int", "label": "Bargeld Anfang (Wechselgeld)", "description": "Bestand laut Kassenbuch zu Tagesbeginn; beim ersten Abschluss einer Kasse eintragen."},
-  {"fieldname": "bar_einnahmen_cent", "fieldtype": "Int", "label": "Bareinnahmen (Belege)", "read_only": 1},
-  {"fieldname": "bar_ausgaben_cent", "fieldtype": "Int", "label": "Barausgaben (Stornos/Rückzahlungen)", "read_only": 1},
-  {"fieldname": "einlagen_cent", "fieldtype": "Int", "label": "Einlagen (Kassenbuch)", "read_only": 1},
-  {"fieldname": "entnahmen_cent", "fieldtype": "Int", "label": "Entnahmen (Kassenbuch)", "read_only": 1},
-  {"fieldname": "bargeld_soll_cent", "fieldtype": "Int", "label": "Bargeld Soll", "read_only": 1, "bold": 1},
-  {"fieldname": "cb_soll", "fieldtype": "Column Break"},
-  {"fieldname": "karten_cent", "fieldtype": "Int", "label": "Karte (Terminal + extern)", "read_only": 1},
-  {"fieldname": "gutschein_cent", "fieldtype": "Int", "label": "Gutschein-Einlösungen (Zahlart)", "read_only": 1},
-  {"fieldname": "ueberweisung_cent", "fieldtype": "Int", "label": "Überweisung", "read_only": 1},
-  {"fieldname": "umsatz_cent", "fieldtype": "Int", "label": "Belegsumme gesamt", "read_only": 1, "bold": 1},
-  {"fieldname": "anzahlungen_cent", "fieldtype": "Int", "label": "davon Anzahlungen/Teil-/Schlusszahlungen", "read_only": 1},
-  {"fieldname": "gutschein_verkauf_cent", "fieldtype": "Int", "label": "davon Gutscheinverkauf", "read_only": 1},
-  {"fieldname": "gutschein_einloesung_cent", "fieldtype": "Int", "label": "Gutschein-Einlösungen (Position)", "read_only": 1},
-  {"fieldname": "sb_belege", "fieldtype": "Section Break", "label": "Belege"},
-  {"fieldname": "belege_anzahl", "fieldtype": "Int", "label": "Belege", "read_only": 1},
-  {"fieldname": "stornos_anzahl", "fieldtype": "Int", "label": "davon Stornobelege", "read_only": 1},
-  {"fieldname": "cb_belege", "fieldtype": "Column Break"},
-  {"fieldname": "trainings_anzahl", "fieldtype": "Int", "label": "Trainingsbelege (ohne Umsatz)", "read_only": 1},
-  {"fieldname": "nullbeleg", "fieldtype": "Link", "label": "Nullbeleg zum Abschluss", "options": "PH Kassenbeleg", "read_only": 1},
-  {"fieldname": "sb_zaehlung", "fieldtype": "Section Break", "label": "Zählprotokoll"},
-  {"fieldname": "zaehlprotokoll", "fieldtype": "Table", "label": "Scheine und Münzen", "options": "PH Kassenabschluss Zaehlung"},
-  {"fieldname": "bargeld_ist_cent", "fieldtype": "Int", "label": "Bargeld Ist (gezählt)", "read_only": 1, "bold": 1},
-  {"fieldname": "differenz_cent", "fieldtype": "Int", "label": "Differenz (Ist − Soll)", "read_only": 1, "bold": 1},
-  {"fieldname": "cb_zaehlung", "fieldtype": "Column Break"},
-  {"fieldname": "differenz_grund", "fieldtype": "Small Text", "label": "Grund der Differenz", "depends_on": "eval:doc.differenz_cent"},
-  {"fieldname": "differenz_buchung", "fieldtype": "Link", "label": "Differenzbuchung (Kassenbuch)", "options": "PH Kassenbuch", "read_only": 1},
-  {"fieldname": "sb_satz", "fieldtype": "Section Break", "label": "Umsatz je Steuersatz (Zuarbeit UVA)"},
-  {"fieldname": "umsatz_je_satz", "fieldtype": "Table", "label": "Je Steuersatz", "options": "PH Kassenabschluss Steuersatz", "read_only": 1},
-  {"fieldname": "sb_unterschrift", "fieldtype": "Section Break", "label": "Unterschrift"},
-  {"fieldname": "unterschrift", "fieldtype": "Signature", "label": "Unterschrift (Zähler/in)"},
-  {"fieldname": "cb_unterschrift", "fieldtype": "Column Break"},
-  {"fieldname": "unterschrift_name", "fieldtype": "Data", "label": "Name in Druckbuchstaben"},
-  {"fieldname": "pdf", "fieldtype": "Attach", "label": "Abschluss-PDF", "read_only": 1},
-  {"fieldname": "sb_system", "fieldtype": "Section Break", "label": "System", "collapsible": 1},
-  {"fieldname": "idempotency_key", "fieldtype": "Data", "label": "Idempotenz-Schlüssel", "read_only": 1, "unique": 1},
-  {"fieldname": "quelle", "fieldtype": "Select", "label": "Quelle", "options": "kassa\nmanuell", "default": "manuell", "read_only": 1},
-  {"fieldname": "notiz", "fieldtype": "Small Text", "label": "Notiz"}
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Nummernkreis",
+   "options": "KA-.YYYY.-.#####",
+   "default": "KA-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kasse",
+   "fieldtype": "Link",
+   "label": "Kasse",
+   "options": "PH Kasse",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Abschlusstag",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Offen\nGezaehlt\nAbgeschlossen\nKorrigiert",
+   "default": "Offen",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Gesetzt über die Buttons Zählen / Abschließen / Öffnen (keine manuelle Änderung)."
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "eroeffnet_am",
+   "fieldtype": "Datetime",
+   "label": "Eröffnet am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "geschlossen_am",
+   "fieldtype": "Datetime",
+   "label": "Abgeschlossen am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "von_user",
+   "fieldtype": "Link",
+   "label": "Gezählt von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "freigegeben_von",
+   "fieldtype": "Link",
+   "label": "Abgeschlossen von (Leitung)",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_soll",
+   "fieldtype": "Section Break",
+   "label": "Soll aus Belegen und Kassenbuch (Cent)"
+  },
+  {
+   "fieldname": "bargeld_anfang_cent",
+   "fieldtype": "Int",
+   "label": "Bargeld Anfang (Wechselgeld)",
+   "description": "Bestand laut Kassenbuch zu Tagesbeginn; beim ersten Abschluss einer Kasse eintragen."
+  },
+  {
+   "fieldname": "anfang_quelle",
+   "fieldtype": "Select",
+   "label": "Herkunft Anfangsbestand",
+   "options": "Vortag\nmanuell",
+   "default": "Vortag",
+   "read_only": 1
+  },
+  {
+   "fieldname": "anfang_grund",
+   "fieldtype": "Small Text",
+   "label": "Grund manueller Anfangsbestand"
+  },
+  {
+   "fieldname": "anfang_hinweis",
+   "fieldtype": "Small Text",
+   "label": "Hinweis Anfangsbestand",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bar_einnahmen_cent",
+   "fieldtype": "Int",
+   "label": "Bareinnahmen (Belege)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bar_ausgaben_cent",
+   "fieldtype": "Int",
+   "label": "Barausgaben (Stornos/Rückzahlungen)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "einlagen_cent",
+   "fieldtype": "Int",
+   "label": "Einlagen (Kassenbuch)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "entnahmen_cent",
+   "fieldtype": "Int",
+   "label": "Entnahmen (Kassenbuch)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bargeld_soll_cent",
+   "fieldtype": "Int",
+   "label": "Bargeld Soll",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "cb_soll",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "karten_cent",
+   "fieldtype": "Int",
+   "label": "Karte (Terminal + extern)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gutschein_cent",
+   "fieldtype": "Int",
+   "label": "Gutschein-Einlösungen (Zahlart)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ueberweisung_cent",
+   "fieldtype": "Int",
+   "label": "Überweisung",
+   "read_only": 1
+  },
+  {
+   "fieldname": "umsatz_cent",
+   "fieldtype": "Int",
+   "label": "Belegsumme gesamt",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "anzahlungen_cent",
+   "fieldtype": "Int",
+   "label": "davon Anzahlungen/Teil-/Schlusszahlungen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gutschein_verkauf_cent",
+   "fieldtype": "Int",
+   "label": "davon Gutscheinverkauf",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gutschein_einloesung_cent",
+   "fieldtype": "Int",
+   "label": "Gutschein-Einlösungen (Position)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "retouren_cent",
+   "fieldtype": "Int",
+   "label": "Retouren (Cent)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_belege",
+   "fieldtype": "Section Break",
+   "label": "Belege"
+  },
+  {
+   "fieldname": "belege_anzahl",
+   "fieldtype": "Int",
+   "label": "Belege",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stornos_anzahl",
+   "fieldtype": "Int",
+   "label": "davon Stornobelege",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_belege",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trainings_anzahl",
+   "fieldtype": "Int",
+   "label": "Trainingsbelege (ohne Umsatz)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "nullbeleg",
+   "fieldtype": "Link",
+   "label": "Nullbeleg zum Abschluss",
+   "options": "PH Kassenbeleg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_zaehlung",
+   "fieldtype": "Section Break",
+   "label": "Zählprotokoll"
+  },
+  {
+   "fieldname": "zaehlprotokoll",
+   "fieldtype": "Table",
+   "label": "Scheine und Münzen",
+   "options": "PH Kassenabschluss Zaehlung"
+  },
+  {
+   "fieldname": "bargeld_ist_cent",
+   "fieldtype": "Int",
+   "label": "Bargeld Ist (gezählt)",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "differenz_cent",
+   "fieldtype": "Int",
+   "label": "Differenz (Ist − Soll)",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "cb_zaehlung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "differenz_grund",
+   "fieldtype": "Small Text",
+   "label": "Grund der Differenz",
+   "depends_on": "eval:doc.differenz_cent"
+  },
+  {
+   "fieldname": "sb_chf",
+   "fieldtype": "Section Break",
+   "label": "CHF-Lade",
+   "collapsible": 1,
+   "depends_on": "eval:doc.chf_soll_cent || doc.chf_ist_cent"
+  },
+  {
+   "fieldname": "chf_anfang_cent",
+   "fieldtype": "Int",
+   "label": "CHF Anfang (Rappen)"
+  },
+  {
+   "fieldname": "chf_einnahmen_cent",
+   "fieldtype": "Int",
+   "label": "CHF Einnahmen (Rappen)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "chf_soll_cent",
+   "fieldtype": "Int",
+   "label": "CHF Soll (Rappen)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "chf_ist_cent",
+   "fieldtype": "Int",
+   "label": "CHF gezählt (Rappen)"
+  },
+  {
+   "fieldname": "chf_differenz_cent",
+   "fieldtype": "Int",
+   "label": "CHF Differenz (Rappen)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "differenz_buchung",
+   "fieldtype": "Link",
+   "label": "Differenzbuchung (Kassenbuch)",
+   "options": "PH Kassenbuch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_satz",
+   "fieldtype": "Section Break",
+   "label": "Umsatz je Steuersatz (Zuarbeit UVA)"
+  },
+  {
+   "fieldname": "umsatz_je_satz",
+   "fieldtype": "Table",
+   "label": "Je Steuersatz",
+   "options": "PH Kassenabschluss Steuersatz",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_unterschrift",
+   "fieldtype": "Section Break",
+   "label": "Unterschrift"
+  },
+  {
+   "fieldname": "unterschrift",
+   "fieldtype": "Signature",
+   "label": "Unterschrift (Zähler/in)"
+  },
+  {
+   "fieldname": "cb_unterschrift",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "unterschrift_name",
+   "fieldtype": "Data",
+   "label": "Name in Druckbuchstaben"
+  },
+  {
+   "fieldname": "pdf",
+   "fieldtype": "Attach",
+   "label": "Abschluss-PDF",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotenz-Schlüssel",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Select",
+   "label": "Quelle",
+   "options": "kassa\nmanuell",
+   "default": "manuell",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
  ],
  "index_web_pages_for_search": 0,
  "links": [
-  {"link_doctype": "PH Kassenbuch", "link_fieldname": "kassenabschluss", "group": "Kassenbuch"},
-  {"link_doctype": "PH Kassenbeleg", "link_fieldname": "kassenabschluss", "group": "Belege"}
+  {
+   "link_doctype": "PH Kassenbuch",
+   "link_fieldname": "kassenabschluss",
+   "group": "Kassenbuch"
+  },
+  {
+   "link_doctype": "PH Kassenbeleg",
+   "link_fieldname": "kassenabschluss",
+   "group": "Belege"
+  }
  ],
- "modified": "2026-11-04 01:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Kassa",
  "name": "PH Kassenabschluss",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
-  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Backoffice-Admin", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Geschäftsführung", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Kassa Leitung", "read": 1, "write": 1, "create": 1, "delete": 0, "print": 1, "email": 1, "export": 1, "report": 1, "share": 1},
-  {"role": "PH Kassa Mitarbeiter", "read": 1, "write": 1, "create": 1, "delete": 0, "print": 1, "email": 0, "export": 0, "report": 1, "share": 0},
-  {"role": "PH Buchhaltung extern", "read": 1, "write": 0, "create": 0, "delete": 0, "print": 1, "email": 0, "export": 1, "report": 1, "share": 0}
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kassa Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Kassa Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Buchhaltung extern",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 0
+  }
  ],
  "search_fields": "kasse,datum,status",
  "sort_field": "datum",
  "sort_order": "DESC",
  "states": [
-  {"title": "Offen", "color": "Blue"},
-  {"title": "Gezaehlt", "color": "Orange"},
-  {"title": "Abgeschlossen", "color": "Green"},
-  {"title": "Korrigiert", "color": "Purple"}
+  {
+   "title": "Offen",
+   "color": "Blue"
+  },
+  {
+   "title": "Gezaehlt",
+   "color": "Orange"
+  },
+  {
+   "title": "Abgeschlossen",
+   "color": "Green"
+  },
+  {
+   "title": "Korrigiert",
+   "color": "Purple"
+  }
  ],
  "title_field": "titel",
  "track_changes": 1

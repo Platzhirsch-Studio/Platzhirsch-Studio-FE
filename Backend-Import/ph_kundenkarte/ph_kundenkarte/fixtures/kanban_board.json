@@ -1,0 +1,17 @@
+[
+ {
+  "doctype": "Kanban Board",
+  "name": "PH Kundenkarten Antraege",
+  "kanban_board_name": "PH Kundenkarten Antraege",
+  "reference_doctype": "PH Kundenkarte Antrag",
+  "field_name": "status",
+  "private": 0,
+  "show_labels": 1,
+  "filters": "[[\"PH Kundenkarte Antrag\",\"status\",\"not in\",[\"Angenommen\",\"Abgelehnt\",\"Doppelt\"]]]",
+  "fields": "[\"titel\",\"quelle\",\"eingang\",\"plz\",\"einwilligung_auswertung\"]",
+  "columns": [
+   {"column_name": "Neu", "indicator": "Blue", "status": "Active", "order": "[]"},
+   {"column_name": "Bestaetigt", "indicator": "Cyan", "status": "Active", "order": "[]"}
+  ]
+ }
+]

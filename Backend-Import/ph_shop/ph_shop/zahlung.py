@@ -209,3 +209,28 @@ def _vorhandene(art, stripe_payment_intent, stripe_refund, idempotency_key):
     if idempotency_key:
         return frappe.db.get_value("PH Zahlung", {"idempotency_key": str(idempotency_key)[:140]}, "name")
     return None
+
+
+def erstattung_erfassen(*, payment_intent, betrag_cent, grund, stripe_refund, idempotency_key=None, von=None, quelle="kassa", stripe_ereignis=None):
+    """Erstattung zu einem bereits bei Stripe ausgelösten Refund buchen (ph_kassa: StripeTerminalDienst.erstatten).
+
+    Sucht die Eingangszahlung zum Payment Intent (Kanal Stripe Terminal/Checkout/Link) und bucht die Gegenbuchung
+    über erstatte(). Idempotent: gleicher stripe_refund (auch wenn der Webhook charge.refunded zuerst kam) oder
+    gleicher idempotency_key → vorhandene Gegenbuchung. Kein Netzaufruf.
+    → {"zahlung", "gegenbuchung", "erstattet_cent", "status", "bereits_gebucht"}
+    """
+    if not payment_intent or not stripe_refund:
+        frappe.throw(_("payment_intent und stripe_refund sind Pflicht."))
+    if idempotency_key:
+        alt = frappe.db.get_value("PH Zahlung", {"idempotency_key": idempotency_key, "art": "Erstattung"}, ["name", "ursprung"], as_dict=True)
+        if alt:
+            u = frappe.db.get_value("PH Zahlung", alt.ursprung, ["erstattet_cent", "status"], as_dict=True) or {}
+            return {"zahlung": alt.ursprung, "gegenbuchung": alt.name, "erstattet_cent": cint(u.get("erstattet_cent")), "status": u.get("status"), "bereits_gebucht": True}
+    name = finde(stripe_payment_intent=payment_intent)
+    if not name:
+        frappe.throw(_("Keine gebuchte Zahlung zum Payment Intent {0}.").format(payment_intent), frappe.DoesNotExistError)
+    gegen = erstatte(name, betrag_cent, grund, stripe_refund=stripe_refund, von=von, quelle=quelle, stripe_ereignis=stripe_ereignis)
+    if idempotency_key and not gegen.flags.bereits_gebucht and not gegen.idempotency_key:
+        gegen.db_set("idempotency_key", idempotency_key, update_modified=False)
+    u = frappe.db.get_value("PH Zahlung", name, ["erstattet_cent", "status"], as_dict=True)
+    return {"zahlung": name, "gegenbuchung": gegen.name, "erstattet_cent": cint(u.erstattet_cent), "status": u.status, "bereits_gebucht": bool(gegen.flags.bereits_gebucht)}

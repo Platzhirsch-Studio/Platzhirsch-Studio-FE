@@ -1,7 +1,12 @@
 """Site-Test (bench --site <site> run-tests --app ph_core): Standardfirma und Validierung."""
 
-import frappe
-from frappe.tests.utils import FrappeTestCase
+import unittest
+
+try:
+    import frappe
+    from frappe.tests.utils import FrappeTestCase
+except ImportError:  # ohne Bench (python -m unittest discover): überspringen statt scheitern
+    raise unittest.SkipTest("Site-Test – nur mit bench run-tests")
 
 
 class TestPHFirma(FrappeTestCase):

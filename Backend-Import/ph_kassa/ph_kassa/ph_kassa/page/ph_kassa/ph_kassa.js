@@ -53,7 +53,9 @@ class PHKassa {
 		if (k && this.ctx && k !== this.kasse) {
 			this.kasse = k;
 			this.laden();
+			return;
 		}
+		if (this.ctx) this.ausstellungsstueck_aus_route();
 	}
 
 	reset_beleg() {
@@ -73,6 +75,22 @@ class PHKassa {
 			this.render();
 			this.belege_heute_laden();
 			this.tasten_binden();
+			this.ausstellungsstueck_aus_route();
+		});
+	}
+
+	ausstellungsstueck_aus_route() {
+		// ph_logistik PH Lagerbestand „Als Ausstellungsstück verkaufen“ → /app/ph-kassa?lagerbestand=<name> (Integration Runde 3)
+		const lb = (frappe.route_options && frappe.route_options.lagerbestand) || frappe.utils.get_url_arg("lagerbestand");
+		if (!lb || this.beleg.positionen.some((p) => p.bezug === lb)) return;
+		const vk_cent = (frappe.route_options && frappe.route_options.vk_cent) || null;
+		if (frappe.route_options) { delete frappe.route_options.lagerbestand; delete frappe.route_options.vk_cent; }
+		frappe.call({ method: PH_METHODE + "ausstellungsstueck", args: { lagerbestand: lb, vk_cent } }).then((r) => {
+			const pos = r.message;
+			if (!pos) return;
+			this.beleg.positionen.push(pos);
+			this.render_positionen();
+			frappe.show_alert({ message: __("Ausstellungsstück {0} übernommen", [lb]), indicator: "green" });
 		});
 	}
 

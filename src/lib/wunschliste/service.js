@@ -6,7 +6,8 @@ import "server-only";
 import path from "node:path";
 import { createLocalStore } from "./localStore";
 import { frappeAdapter } from "./frappeAdapter";
-import { storageKind, wunschlisteAvailable } from "./mode";
+import { createPhStore } from "./phAdapter";
+import { phWunschlisteTarget, storageKind, wunschlisteAvailable } from "./mode";
 import { parseAdminToken } from "./ids";
 import {
   WishlistError,
@@ -31,9 +32,12 @@ const ROOT = process.env.WUNSCHLISTE_LOCAL_DIR
   : path.join(process.cwd(), ".data", "wunschliste");
 
 const STORE_KEY = Symbol.for("platzhirsch.wunschliste.store");
+const PH_STORE_KEY = Symbol.for("platzhirsch.wunschliste.phStore");
 function store() {
   if (!wunschlisteAvailable()) throw new WishlistError("unavailable", 503);
-  if (storageKind() === "frappe") return frappeAdapter;
+  const kind = storageKind();
+  if (kind === "ph") return globalThis[PH_STORE_KEY] || (globalThis[PH_STORE_KEY] = createPhStore(phWunschlisteTarget()));
+  if (kind === "frappe") return frappeAdapter;
   return globalThis[STORE_KEY] || (globalThis[STORE_KEY] = createLocalStore(ROOT));
 }
 
@@ -84,10 +88,22 @@ export async function getPublic(shareId) {
 async function mutateShared(shareId, fn) {
   const record = await loadShared(shareId);
   if (!record || record.status !== "aktiv") throw new WishlistError("not_found", 404);
-  const { record: saved, result } = await store().update(record.listId, (r) => {
-    if (r.status !== "aktiv") throw new WishlistError("not_found", 404);
-    return fn(r);
-  });
+  let updated;
+  try {
+    updated = await store().update(record.listId, (r) => {
+      if (r.status !== "aktiv") throw new WishlistError("not_found", 404);
+      return fn(r);
+    });
+  } catch (error) {
+    // ph: Liste wurde parallel geändert (409 nach mehreren Versuchen) → aktuellen
+    // Stand mitgeben, damit die Seite neu lädt und einen Hinweis zeigt.
+    if (error instanceof WishlistError && error.code === "conflict") {
+      const fresh = await loadShared(shareId).catch(() => null);
+      if (fresh && fresh.status === "aktiv") error.items = publicView(fresh).items.map(({ key, reserved }) => ({ key, reserved }));
+    }
+    throw error;
+  }
+  const { record: saved, result } = updated;
   if (!saved) throw new WishlistError("not_found", 404);
   return { view: publicView(saved), result };
 }
@@ -118,7 +134,8 @@ export async function manage(token, action, payload = {}) {
     return { deleted: true };
   }
   let extra = {};
-  const { record } = await s.update(parsed.listId, (r) => {
+  // Ansehen ändert nichts – kein Schreibzugriff (im ph-Speicher sonst ein update_wishlist je Aufruf).
+  const { record } = action === "view" ? { record: current } : await s.update(parsed.listId, (r) => {
     if (action === "rotate") rotateShare(r, parsed.secret);
     else if (action === "revoke") setStatus(r, "widerrufen");
     else if (action === "restore") {
@@ -128,6 +145,7 @@ export async function manage(token, action, payload = {}) {
     else if (action === "release") releaseItem(r, payload.item, { owner: true });
     else if (action === "update") updateDetails(r, payload);
   });
+  if (!record) throw new WishlistError("not_found", 404);
   const shareId = record.status === "aktiv" ? shareIdFor(record, parsed.secret) : null;
   return { list: ownerView(record), summary: groupSummary(record), ...extra, shareId };
 }

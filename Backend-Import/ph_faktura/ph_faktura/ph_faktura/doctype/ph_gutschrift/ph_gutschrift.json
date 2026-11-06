@@ -18,6 +18,8 @@
   "datum",
   "grund",
   "auftrag",
+  "bestellung",
+  "warenruecknahme",
   "sb_adresse",
   "firma",
   "strasse",
@@ -50,6 +52,8 @@
   "sb_versand",
   "gestellt_am",
   "gesendet_am",
+  "versandkanal",
+  "erechnung_datei",
   "pdf",
   "cb_versand",
   "export_status",
@@ -156,6 +160,21 @@
    "label": "Auftragsbestätigung",
    "options": "PH Auftragsbestaetigung",
    "read_only": 1
+  },
+  {
+   "fieldname": "bestellung",
+   "fieldtype": "Link",
+   "label": "Shop-Bestellung",
+   "options": "PH Bestellung",
+   "read_only": 1,
+   "description": "Gutschrift aus Shop-Erstattung/Widerruf (Hook ph_shop_gutschrift_erstellen)."
+  },
+  {
+   "fieldname": "warenruecknahme",
+   "fieldtype": "Data",
+   "label": "Warenrücknahme (ph_logistik)",
+   "read_only": 1,
+   "description": "PH Warenruecknahme – Gutschrift aus der Rücknahme (Button dort)."
   },
   {
    "fieldname": "sb_adresse",
@@ -357,6 +376,20 @@
    "allow_on_submit": 1
   },
   {
+   "fieldname": "versandkanal",
+   "fieldtype": "Select",
+   "label": "Versandkanal",
+   "options": "\nE-Mail\nPost\nPersoenlich\nPortal\nE-Rechnung",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "erechnung_datei",
+   "fieldtype": "Attach",
+   "label": "E-Gutschrift (XML)",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
    "fieldname": "pdf",
    "fieldtype": "Attach",
    "label": "PDF (final)",
@@ -427,7 +460,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-04 08:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Faktura",
  "name": "PH Gutschrift",

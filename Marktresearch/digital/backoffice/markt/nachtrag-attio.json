@@ -1,0 +1,216 @@
+{
+  "produkt": "Attio",
+  "url": "https://attio.com/help",
+  "stand": "2026-11-04",
+  "zeichen": 16000,
+  "funktionen": [
+    {
+      "name": "Standardobjekte konfigurieren",
+      "beschreibung": "Der Admin konfiguriert eingebaute Objekte wie Personen und Firmen.",
+      "bereich": "crm",
+      "nutzen": "Privat- und Objektkunden sauber trennen.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/managing-your-data/objects"
+    },
+    {
+      "name": "Eigene Objekte",
+      "beschreibung": "Der Admin erstellt und konfiguriert Custom Objects.",
+      "bereich": "crm",
+      "nutzen": "Objekt 'Küchenplanung' oder 'Hotelprojekt' abbilden.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/managing-your-data/objects"
+    },
+    {
+      "name": "Objektzugriff und Änderungsregeln",
+      "beschreibung": "Der Admin legt Zugriff je Mitglied und Regeln für Datensatzänderungen fest.",
+      "bereich": "zentrale",
+      "nutzen": "Verkäufer sehen nur Relevantes.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/managing-your-data/objects"
+    },
+    {
+      "name": "Attribute",
+      "beschreibung": "Der Admin legt verschiedene Attributtypen an und referenziert sie.",
+      "bereich": "crm",
+      "nutzen": "Raummaße, Stilwunsch, Budget erfassen.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/managing-your-data"
+    },
+    {
+      "name": "Automatische Anreicherung",
+      "beschreibung": "Datensätze werden automatisch mit zusätzlichen Daten angereichert.",
+      "bereich": "crm",
+      "nutzen": "Firmendaten bei Objektkunden.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/managing-your-data"
+    },
+    {
+      "name": "Listen",
+      "beschreibung": "Der Nutzer legt Listen für Prozesse und Projekte an, benennt, ordnet und steuert den Zugriff.",
+      "bereich": "projekte",
+      "nutzen": "Pipeline 'Hotelausstattung 2027'.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/managing-your-data/lists"
+    },
+    {
+      "name": "Bulk-Update per Import/Einfügen",
+      "beschreibung": "Der Nutzer ändert Listen- und Datensatzattribute massenhaft per Import oder Einfügen.",
+      "bereich": "zentrale",
+      "nutzen": "Messe-Leads schnell einpflegen.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/managing-your-data/lists"
+    },
+    {
+      "name": "Tabellen- und Kanban-Ansicht",
+      "beschreibung": "Der Nutzer zeigt Datensätze als Tabelle oder Kanban an, filtert und sortiert.",
+      "bereich": "crm",
+      "nutzen": "Planungsstand visuell verfolgen.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/managing-your-data/views"
+    },
+    {
+      "name": "Vorlagen für Datensätze",
+      "beschreibung": "Der Nutzer erstellt Vorlagen für Datensätze und Listeneinträge.",
+      "bereich": "crm",
+      "nutzen": "Einheitliche Anlage neuer Projekte.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/managing-your-data"
+    },
+    {
+      "name": "Dashboards",
+      "beschreibung": "Der Nutzer stellt Dashboards aus Berichten zusammen.",
+      "bereich": "zentrale",
+      "nutzen": "Verkaufsleitung sieht die Umsatz-Pipeline.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/managing-your-data/dashboard-and-reports"
+    },
+    {
+      "name": "Funnel- und Phasenberichte",
+      "beschreibung": "Der Nutzer erstellt Funnel-, Zeit-in-Phase-, Phasenwechsel- und Verlaufsberichte.",
+      "bereich": "zentrale",
+      "nutzen": "Erkennen, wo Küchenanfragen hängen bleiben.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/managing-your-data/dashboard-and-reports"
+    },
+    {
+      "name": "E-Mail- und Kalender-Sync",
+      "beschreibung": "Der Nutzer synchronisiert Postfach und Kalender mit dem CRM.",
+      "bereich": "crm",
+      "nutzen": "Kundenkommunikation automatisch am Kontakt.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/email-calendar"
+    },
+    {
+      "name": "E-Mails aus Attio senden",
+      "beschreibung": "Der Nutzer versendet E-Mails direkt aus dem CRM und sieht den Status in der Outbox.",
+      "bereich": "crm",
+      "nutzen": "Angebotsnachfass ohne Toolwechsel.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/email-calendar"
+    },
+    {
+      "name": "E-Mails teilen oder privat halten",
+      "beschreibung": "Der Nutzer teilt E-Mails mit dem Team oder schränkt die Sichtbarkeit ein.",
+      "bereich": "zentrale",
+      "nutzen": "Datenschutz bei persönlicher Korrespondenz.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/email-calendar"
+    },
+    {
+      "name": "E-Mail-Weiterleitung ins CRM",
+      "beschreibung": "Der Nutzer leitet einzelne E-Mails ins CRM weiter.",
+      "bereich": "crm",
+      "nutzen": "Ohne vollen Sync einzelne Mails ablegen.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/email-calendar"
+    },
+    {
+      "name": "Trigger Datensatz/Attribut",
+      "beschreibung": "Ein Workflow startet bei Anlage, Änderung oder bei einem bestimmten Attributwert.",
+      "bereich": "crm",
+      "nutzen": "Bei Status 'Auftrag' automatisch Montage-Aufgabe.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/automations/workflows/workflows-block-library"
+    },
+    {
+      "name": "Webhook- und Zeitplan-Trigger",
+      "beschreibung": "Ein Workflow startet per Webhook, täglich/wöchentlich/monatlich/Cron oder manuell.",
+      "bereich": "zentrale",
+      "nutzen": "Shop-Ereignisse ins CRM übernehmen.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/automations/workflows/workflows-block-library"
+    },
+    {
+      "name": "Record-Action-Button",
+      "beschreibung": "Ein Button am Datensatz startet einen Workflow manuell.",
+      "bereich": "crm",
+      "nutzen": "'Aufmaß beauftragen' per Klick.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/automations/workflows/workflows-block-library"
+    },
+    {
+      "name": "Datensätze anlegen/aktualisieren/finden",
+      "beschreibung": "Der Workflow erstellt, aktualisiert (upsert) oder findet Datensätze.",
+      "bereich": "crm",
+      "nutzen": "Dubletten vermeiden.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/automations/workflows/workflows-block-library"
+    },
+    {
+      "name": "Verzweigungen If/Switch/Filter",
+      "beschreibung": "Der Workflow verzweigt oder stoppt nach Bedingungen.",
+      "bereich": "crm",
+      "nutzen": "Privat- und Objektkunde unterschiedlich behandeln.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/automations/workflows/workflows-block-library"
+    },
+    {
+      "name": "Aufgaben anlegen/abschließen",
+      "beschreibung": "Der Workflow erstellt Aufgaben mit Fälligkeit, Zuständigen, verknüpften Datensätzen oder schließt sie ab.",
+      "bereich": "crm",
+      "nutzen": "Nachfass 7 Tage nach Angebot.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/automations/workflows/workflows-block-library"
+    },
+    {
+      "name": "Notiz anlegen",
+      "beschreibung": "Der Workflow fügt einem Datensatz eine Notiz hinzu.",
+      "bereich": "crm",
+      "nutzen": "Automatische Protokolle.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/automations/workflows/workflows-block-library"
+    },
+    {
+      "name": "Verzögerung",
+      "beschreibung": "Der Workflow pausiert für eine Dauer oder bis zu einem Datum.",
+      "bereich": "crm",
+      "nutzen": "Erinnerung vor dem Liefertermin.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/automations/workflows/workflows-block-library"
+    },
+    {
+      "name": "KI-Klassifizierung und Zusammenfassung",
+      "beschreibung": "KI vergibt Tags, fasst Datensätze zusammen oder führt einen Custom Agent aus.",
+      "bereich": "crm",
+      "nutzen": "Anfragen nach Küchen/Wohnen/Objekt sortieren.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/automations/workflows/workflows-block-library"
+    },
+    {
+      "name": "HTTP-Request",
+      "beschreibung": "Der Workflow sendet Anfragen an externe Systeme.",
+      "bereich": "zentrale",
+      "nutzen": "Anbindung an ERP/Frappe.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/automations/workflows/workflows-block-library"
+    },
+    {
+      "name": "Call-Recording-Trigger",
+      "beschreibung": "Ein Workflow startet, wenn Transkript und Zusammenfassung eines Anrufs fertig sind.",
+      "bereich": "crm",
+      "nutzen": "Beratungsgespräch automatisch dokumentiert.",
+      "quelle": "Attio",
+      "url": "https://attio.com/help/reference/automations/workflows/workflows-block-library"
+    }
+  ]
+}

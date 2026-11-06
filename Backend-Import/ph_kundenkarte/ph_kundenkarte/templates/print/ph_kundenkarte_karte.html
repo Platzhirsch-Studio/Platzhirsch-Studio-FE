@@ -1,0 +1,50 @@
+{#- ph_kundenkarte/templates/print/ph_kundenkarte_karte.html – Scheckkarte 85,6 × 54 mm, Vorder- und Rückseite.
+    Erbt ph_basis.html (Schriften, Firma, Helfer); Kopf- und Fußzeile der Basis werden per CSS ausgeblendet,
+    weil sie auf eine Karte nicht passen. Druck auf Kartendrucker oder A4 (zwei Karten untereinander, Schnittmarken). -#}
+{% extends "templates/print/ph_basis.html" %}
+{% set stufe = frappe.get_cached_doc("PH Kundenkarte Stufe", doc.stufe) if doc.stufe else None %}
+{% set einst = frappe.get_single("PH Kundenkarte Einstellungen") %}
+{% set farbe = (stufe.farbe if stufe and stufe.farbe else "#30373e") %}
+{% block titel %}Kundenkarte {{ doc.kartennummer }}{% endblock %}
+{% block kopfrechts %}{% endblock %}
+{% block css %}
+  @page { size: 90mm 120mm; margin: 2mm; }
+  .ph-kopf, .ph-fuss, footer, header { display: none !important; }
+  .kk-karte { width: 85.6mm; height: 54mm; border-radius: 3.2mm; box-sizing: border-box; padding: 5mm 6mm; position: relative; overflow: hidden; page-break-inside: avoid; margin: 0 0 4mm; border: 0.2mm solid #d9d4cc; }
+  .kk-vorne { background: {{ farbe }}; color: #fff; }
+  .kk-vorne .kk-wortmarke { font-family: "Bodoni Moda", Georgia, serif; font-size: 13pt; letter-spacing: 0.2em; }
+  .kk-vorne .kk-unter { font-size: 5.5pt; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; margin-top: 0.5mm; }
+  .kk-vorne .kk-stufe { position: absolute; top: 5mm; right: 6mm; font-size: 6.5pt; letter-spacing: 0.1em; text-transform: uppercase; border: 0.2mm solid rgba(255,255,255,0.7); padding: 0.8mm 2mm; border-radius: 2mm; }
+  .kk-vorne .kk-name { position: absolute; left: 6mm; bottom: 10mm; font-size: 9.5pt; font-weight: 500; letter-spacing: 0.03em; }
+  .kk-vorne .kk-nummer { position: absolute; left: 6mm; bottom: 5mm; font-size: 7pt; letter-spacing: 0.18em; opacity: 0.9; }
+  .kk-vorne .kk-seit { position: absolute; right: 6mm; bottom: 5mm; font-size: 6pt; opacity: 0.85; text-align: right; }
+  .kk-hinten { background: #faf8f4; color: #30373e; }
+  .kk-hinten .kk-qr { position: absolute; right: 5mm; top: 5mm; width: 22mm; height: 22mm; }
+  .kk-hinten .kk-qr svg { width: 22mm; height: 22mm; }
+  .kk-hinten .kk-text { width: 48mm; font-size: 5.6pt; line-height: 1.35; }
+  .kk-hinten .kk-text b { display: block; font-size: 6pt; margin-bottom: 1mm; letter-spacing: 0.08em; text-transform: uppercase; }
+  .kk-hinten .kk-firma { position: absolute; left: 6mm; bottom: 4mm; right: 6mm; font-size: 5.2pt; color: #6b7280; border-top: 0.2mm solid #d9d4cc; padding-top: 1.2mm; }
+  .kk-hinten .kk-nr2 { position: absolute; right: 6mm; bottom: 9mm; font-size: 6pt; letter-spacing: 0.15em; }
+{% endblock %}
+{% block inhalt %}
+<div class="kk-karte kk-vorne">
+  <div class="kk-wortmarke">PLATZHIRSCH</div>
+  <div class="kk-unter">Kundenkarte · {{ firma.ort or "Lochau" }}</div>
+  {% if doc.stufe %}<div class="kk-stufe">{{ doc.stufe }}</div>{% endif %}
+  <div class="kk-name">{{ doc.kunde_name }}</div>
+  <div class="kk-nummer">{{ doc.kartennummer }}</div>
+  <div class="kk-seit">{% if doc.ausgestellt_am %}seit {{ ph_datum(doc.ausgestellt_am) }}{% endif %}</div>
+</div>
+
+<div class="kk-karte kk-hinten">
+  <div class="kk-text">
+    <b>Ihre Kundenkarte</b>
+    {% if stufe and stufe.beschreibung_kunde %}{{ stufe.beschreibung_kunde }}<br><br>{% endif %}
+    {{ einst.text_datenschutz_karte or "Die Karte ist personengebunden und hat keinen Geldwert." }}
+    Bei Verlust bitte melden – wir sperren die Karte und stellen eine neue aus.
+  </div>
+  <div class="kk-qr">{{ ph_qr_svg(doc.kartennummer, 22, "#30373e") }}</div>
+  <div class="kk-nr2">{{ doc.kartennummer }}</div>
+  <div class="kk-firma">{{ firma.firmenname }} · {{ firma.strasse }} · {{ firma.plz }} {{ firma.ort }} · {{ firma.telefon or "" }} · {{ firma.website or "" }}</div>
+</div>
+{% endblock %}

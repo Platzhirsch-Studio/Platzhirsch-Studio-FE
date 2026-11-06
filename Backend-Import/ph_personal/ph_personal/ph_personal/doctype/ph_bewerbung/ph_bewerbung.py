@@ -2,8 +2,9 @@
 
 Datenschutz:
   - Unterlagen immer private Dateien (validate erzwingt is_private).
-  - Löschfrist = Entscheidung (Absage/Rückzug) + Monate aus PH Personal Einstellungen (Standard 7:
-    GlBG § 15 Klagefrist 6 Monate + Puffer); mit Einwilligung zur Evidenzhaltung bis einwilligung_evidenz_bis.
+  - Löschfrist = max(Entscheidung, Zugang der Absage – absage_versand_am) + Monate aus PH Personal Einstellungen
+    (mind. 6, Standard 7: GlBG § 15 Abs 1 Frist ab Ablehnung + Puffer); mit Einwilligung zur Evidenzhaltung bis
+    einwilligung_evidenz_bis (utils/datenschutz.loeschfrist_bewerbung).
   - unterlagen_entfernen() löscht Dateien, Anschreiben, Versionen und Kommunikation und pseudonymisiert
     die Person (Scheduler: ph_personal.ph_personal.tasks.loeschfristen_ausfuehren, Button „Unterlagen jetzt löschen“).
 """
@@ -15,7 +16,8 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.utils import cint, date_diff, getdate, now_datetime, nowdate
 
-from ph_personal.logik import BEWERBUNG_ENDE, loeschfrist as berechne_loeschfrist
+from ph_personal.logik import BEWERBUNG_ENDE
+from ph_personal.utils.datenschutz import loeschfrist_bewerbung
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 OFFEN = ("Eingegangen", "Gesichtet", "Gespraech", "Angebot")
@@ -45,6 +47,11 @@ class PHBewerbung(Document):
         self.nachname = (self.nachname or "").strip()
         self.initiativ = int(not self.stelle)
         self.titel = self.bilde_titel()
+        if self.quelle not in (None, "", "Website") and not self.datenschutzinfo_am and not self.pseudonymisiert and self.flags.in_insert:
+            frappe.msgprint(_("Bitte die Datenschutzinformation (Art. 13/14 DSGVO) übermitteln und unter „Datenschutz“ erfassen."), indicator="orange", alert=True)
+        if self.einwilligung_datenschutz and not self.datenschutzinfo_am:
+            self.datenschutzinfo_am = self.einwilligung_zeitpunkt or now_datetime()
+            self.datenschutzinfo_art = self.datenschutzinfo_art or "Website-Formular"
         self._unterlagen_privat()
         self._verlauf()
         self._loeschfrist()
@@ -110,7 +117,9 @@ class PHBewerbung(Document):
         if self.status in ("Abgesagt", "Zurueckgezogen") and self.entschieden_am:
             from ph_personal.ph_personal.doctype.ph_personal_einstellungen.ph_personal_einstellungen import einstellungen
 
-            self.loeschfrist = berechne_loeschfrist(getdate(self.entschieden_am), einstellungen()["loeschfrist_monate"])
+            self.loeschfrist = loeschfrist_bewerbung(
+                getdate(self.entschieden_am), getdate(self.absage_versand_am) if self.absage_versand_am else None, einstellungen()["loeschfrist_monate"]
+            )
 
     def on_update(self):
         if self.zugewiesen_an and self.has_value_changed("zugewiesen_an"):
@@ -174,7 +183,10 @@ class PHBewerbung(Document):
                 from ph_core.utils.mail import sende
 
                 sende(self.email, _("Ihre Bewerbung bei Platzhirsch – {0}").format(self.stelle_titel or _("Initiativbewerbung")), html, referenz_doctype=self.doctype, referenz_name=self.name)
-                self.db_set("absage_gesendet_am", now_datetime())
+                jetzt = now_datetime()
+                self.db_set({"absage_gesendet_am": jetzt, "absage_versand": "E-Mail", "absage_versand_am": jetzt})
+                self.reload()
+                self.save(ignore_permissions=True)  # Löschfrist ab Zugang neu berechnen
                 self.add_comment("Info", _("Absage per E-Mail gesendet"))
             except Exception:  # noqa: BLE001
                 frappe.log_error(title="PH Bewerbung: Absage-Mail fehlgeschlagen")
@@ -182,32 +194,110 @@ class PHBewerbung(Document):
         return self.status
 
     @frappe.whitelist()
-    def einstellen(self, eintritt, rolle_intern="Verkauf", stelle_schliessen=0):
-        """Button „Einstellen“: PH Mitarbeiter anlegen, Status Eingestellt, optional Stelle als besetzt schließen."""
+    def einstellen(self, eintritt, rolle_intern="Verkauf", stelle_schliessen=0, beschaeftigungsart=None, wochenstunden=None,
+                   urlaubsanspruch_tage=None, user=None, arbeitszeit=None):
+        """Button „Einstellen“ (Leitung): PH Mitarbeiter anlegen und Status Eingestellt in **einer** Transaktion
+        (Fachkritik P2 – vorher konnte ein zweiter Mitarbeiter entstehen). arbeitszeit = dict mo_min … so_min
+        (optional, Gültigkeit ab Eintritt)."""
         self.check_permission("write")
         if self.mitarbeiter:
             return self.mitarbeiter
         if self.status not in ("Gespraech", "Angebot"):
             frappe.throw(_("Einstellen ist erst nach Gespräch oder Angebot möglich."))
-        ma = frappe.get_doc(
-            {
-                "doctype": "PH Mitarbeiter",
-                "vorname": self.vorname,
-                "nachname": self.nachname,
-                "rolle_intern": rolle_intern,
-                "eintritt": eintritt,
-                "email_dienst": None,
-                "telefon_dienst": None,
-                "bewerbung": self.name,
-                "status": "Aktiv",
-            }
-        ).insert()
-        self.mitarbeiter = ma.name
-        self.zusage_gesendet_am = self.zusage_gesendet_am or now_datetime()
-        self._status_setzen("Eingestellt", _("Eingestellt – Mitarbeiter {0}").format(ma.name))
+        daten = {
+            "doctype": "PH Mitarbeiter",
+            "vorname": self.vorname,
+            "nachname": self.nachname,
+            "rolle_intern": rolle_intern,
+            "eintritt": eintritt,
+            "email_dienst": None,
+            "telefon_dienst": None,
+            "bewerbung": self.name,
+            "status": "Aktiv",
+        }
+        if beschaeftigungsart:
+            daten["beschaeftigungsart"] = beschaeftigungsart
+        if wochenstunden not in (None, ""):
+            daten["wochenstunden"] = float(wochenstunden)
+        if urlaubsanspruch_tage not in (None, ""):
+            daten["urlaubsanspruch_tage"] = cint(urlaubsanspruch_tage)
+        if user:
+            daten["user"] = user
+        if arbeitszeit:
+            if isinstance(arbeitszeit, str):
+                arbeitszeit = frappe.parse_json(arbeitszeit)
+            daten["arbeitszeiten"] = [{**arbeitszeit, "gueltig_ab": eintritt}]
+        savepoint = "ph_einstellen"
+        frappe.db.savepoint(savepoint)
+        try:
+            ma = frappe.get_doc(daten).insert()
+            self.mitarbeiter = ma.name
+            self.zusage_gesendet_am = self.zusage_gesendet_am or now_datetime()
+            self._status_setzen("Eingestellt", _("Eingestellt – Mitarbeiter {0}").format(ma.name))
+        except Exception:
+            frappe.db.rollback(save_point=savepoint)
+            self.mitarbeiter = None
+            raise
         if cint(stelle_schliessen) and self.stelle:
             frappe.get_doc("PH Stelle", self.stelle).als_besetzt(self.name)
         return ma.name
+
+    @frappe.whitelist()
+    def nichtantritt(self, grund=None):
+        """Button „Nicht angetreten“ (Leitung): Zusage zurückgenommen bzw. Person tritt nicht an – Mitarbeiter wird
+        Ausgetreten (Austritt = Eintritt), Bewerbung Zurueckgezogen mit Löschfrist. ÖGK-Anmeldung stornieren (Hinweis)."""
+        if "PH Personal Leitung" not in frappe.get_roles() and frappe.session.user != "Administrator":
+            frappe.throw(_("Nur die Personal-Leitung."), frappe.PermissionError)
+        if self.status != "Eingestellt":
+            frappe.throw(_("Nur für eingestellte Bewerbungen."))
+        if self.mitarbeiter:
+            ma = frappe.get_doc("PH Mitarbeiter", self.mitarbeiter)
+            if ma.eintritt and getdate(ma.eintritt) < getdate(nowdate()) and frappe.db.count("PH Zeiterfassung", {"mitarbeiter": ma.name}):
+                frappe.throw(_("Die Person hat bereits gearbeitet – Austritt über den Mitarbeiter erfassen."))
+            ma.austritt = ma.eintritt or nowdate()
+            ma.status = "Ausgetreten"
+            ma.save()
+        self.absage_grund = "Zurückgezogen"
+        self._status_setzen("Zurueckgezogen", _("Nicht angetreten{0}").format(f": {grund}" if grund else ""))
+        frappe.msgprint(_("Falls bereits erfolgt: ÖGK-Anmeldung stornieren."), indicator="orange")
+        return self.status
+
+    @frappe.whitelist()
+    def absage_dokumentieren(self, versand, am=None):
+        """Button „Absage dokumentieren“: Übermittlung per Post/Telefon/persönlich festhalten – startet die
+        Löschfrist ab Zugang (§ 15 Abs 1 GlBG)."""
+        self.check_permission("write")
+        if versand not in ("E-Mail", "Post", "Telefon", "Persönlich"):
+            frappe.throw(_("Unbekannter Versandweg."))
+        if self.status not in ("Abgesagt",):
+            frappe.throw(_("Nur für abgesagte Bewerbungen."))
+        self.absage_versand = versand
+        self.absage_versand_am = am or now_datetime()
+        self.save()
+        return self.loeschfrist
+
+    @frappe.whitelist()
+    def eingang_bestaetigen(self, per_mail=1):
+        """Button „Eingang bestätigen“: Eingangsbestätigung mit Datenschutzinformation (Art. 13/14 DSGVO)."""
+        self.check_permission("write")
+        if self.eingang_bestaetigt_am:
+            return self.eingang_bestaetigt_am
+        if cint(per_mail) and self.email:
+            text = _("<p>vielen Dank für Ihre Bewerbung. Wir haben Ihre Unterlagen erhalten und melden uns, sobald wir sie gesichtet haben.</p><p>Informationen zur Verarbeitung Ihrer Daten finden Sie unter https://platzhirsch.studio/datenschutz (Abschnitt Bewerbungen). Ihre Unterlagen löschen wir spätestens sieben Monate nach Abschluss des Verfahrens, sofern Sie keiner längeren Aufbewahrung zustimmen.</p>")
+            try:
+                from ph_core.utils.mail import sende
+
+                sende(self.email, _("Ihre Bewerbung bei Platzhirsch – Eingangsbestätigung"), self._brief_html(text, ""), referenz_doctype=self.doctype, referenz_name=self.name)
+            except Exception:  # noqa: BLE001
+                frappe.log_error(title="PH Bewerbung: Eingangsbestätigung fehlgeschlagen")
+                frappe.throw(_("Die E-Mail konnte nicht gesendet werden (siehe Fehlerprotokoll)."))
+        jetzt = now_datetime()
+        self.eingang_bestaetigt_am = jetzt
+        if not self.datenschutzinfo_am:
+            self.datenschutzinfo_am = jetzt
+            self.datenschutzinfo_art = "E-Mail" if cint(per_mail) and self.email else "Post"
+        self.save()
+        return jetzt
 
     @frappe.whitelist()
     def unterlagen_loeschen(self):
@@ -241,6 +331,22 @@ def unterlagen_entfernen(doc, grund=""):
     frappe.db.delete("Communication", {"reference_doctype": "PH Bewerbung", "reference_name": doc.name})
     frappe.db.delete("Comment", {"reference_doctype": "PH Bewerbung", "reference_name": doc.name, "comment_type": ("in", ["Comment", "Attachment", "Edit"])})
     frappe.db.delete("PH Bewerbung Unterlage", {"parent": doc.name, "parenttype": "PH Bewerbung"})
+    # Fachkritik P3/F16: Gespräche, Kalender-Events, Zuweisungen, Mail-Warteschlange
+    for g in frappe.get_all("PH Bewerbungsgespraech", {"bewerbung": doc.name}, ["name", "kalender_event"]):
+        if g.kalender_event and frappe.db.exists("Event", g.kalender_event):
+            frappe.delete_doc("Event", g.kalender_event, ignore_permissions=True, force=True)
+        frappe.db.delete("Version", {"ref_doctype": "PH Bewerbungsgespraech", "docname": g.name})
+        frappe.db.delete("Comment", {"reference_doctype": "PH Bewerbungsgespraech", "reference_name": g.name})
+        frappe.db.set_value(
+            "PH Bewerbungsgespraech", g.name,
+            {"bewerber": _("Gelöscht"), "bewertung": 0, "notiz": None, "weitere_teilnehmer": None, "ort": None, "kalender_event": None, "naechster_schritt": None, "titel": _("Gelöscht")},
+            update_modified=False,
+        )
+    for referenz in [("PH Bewerbung", doc.name)] + [("PH Bewerbungsgespraech", g) for g in frappe.get_all("PH Bewerbungsgespraech", {"bewerbung": doc.name}, pluck="name")]:
+        frappe.db.delete("ToDo", {"reference_type": referenz[0], "reference_name": referenz[1]})
+        for q in frappe.get_all("Email Queue", {"reference_doctype": referenz[0], "reference_name": referenz[1]}, pluck="name"):
+            frappe.db.delete("Email Queue Recipient", {"parent": q})
+            frappe.db.delete("Email Queue", {"name": q})
     werte = {
         "anschreiben": None,
         "vorname": "",
@@ -253,8 +359,12 @@ def unterlagen_entfernen(doc, grund=""):
         "eindruck": None,
         "notiz_intern": None,
         "gehaltsvorstellung_cent": 0,
+        "gehaltsvorstellung": None,
         "herkunft": None,
         "ip_hash": None,
+        "referenz_website": None,
+        "idempotency_key": None,
+        "angebot_brutto_cent": 0,
         "unterlagen_geloescht_am": now_datetime(),
         "pseudonymisiert": 1,
         "titel": f"{_('Gelöscht')} – {doc.stelle_titel or _('Initiativ')}",

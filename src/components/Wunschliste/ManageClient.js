@@ -75,6 +75,11 @@ export default function ManageClient() {
       setState({ phase: "ready", ...res });
       const kept = res.kept?.length ? ` ${c("manage.syncKept", { names: res.kept.join(", ") })}` : "";
       setNotice(`${message}${kept}`);
+    } else if (res.error === "conflict") {
+      // Parallel geändert (ph-Speicher, 409): aktuellen Stand neu laden, dann Hinweis.
+      const fresh = await run("view");
+      if (fresh.ok) setState({ phase: "ready", ...fresh });
+      setNotice(c("errors.conflict"));
     } else setNotice(c(`errors.${["rate_limited", "network", "not_found", "items"].includes(res.error) ? res.error : res.error === "no_items" ? "items" : "generic"}`));
   }
 

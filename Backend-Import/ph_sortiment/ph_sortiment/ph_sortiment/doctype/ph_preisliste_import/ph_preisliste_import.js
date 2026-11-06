@@ -38,3 +38,24 @@ frappe.ui.form.on("PH Preisliste Import", {
 		}
 	},
 });
+
+// ── Ergänzung 04.11. (Backend-Lücken 51)
+frappe.ui.form.on("PH Preisliste Import", {
+	refresh(frm) {
+		if (frm.is_new() || !frm.doc.datei) return;
+		frm.add_custom_button(__("Vorschau"), () => {
+			frm.call({ method: "vorschau", doc: frm.doc, freeze: true }).then((r) => {
+				const v = r.message;
+				frappe.msgprint({ title: __("Vorschau: {0} Zeilen, {1} zugeordnet, {2} ohne Produkt", [v.zeilen, v.zugeordnet, v.ohne]), message: v.html, wide: true });
+			});
+		}, __("Aktionen"));
+		if (frm.doc.lieferant && frm.doc.mapping_json !== undefined) {
+			frm.add_custom_button(__("Mapping beim Lieferanten speichern"), () => {
+				frm.call({ method: "mapping_speichern", doc: frm.doc }).then((r) => frappe.show_alert({ message: __("Vorlage bei {0} gespeichert", [r.message]), indicator: "green" }));
+			}, __("Aktionen"));
+		}
+	},
+	preisart(frm) {
+		if (frm.doc.preisart === "Einkaufspreis" && !frappe.user.has_role(["PH Sortiment Leitung", "PH Geschäftsführung", "System Manager"])) frappe.msgprint(__("Einkaufspreislisten liest nur die Leitung ein."));
+	},
+});

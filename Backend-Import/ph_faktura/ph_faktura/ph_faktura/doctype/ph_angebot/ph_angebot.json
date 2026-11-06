@@ -13,6 +13,7 @@
   "kunde_name",
   "projekt",
   "anfrage",
+  "pflege_abo",
   "cb_kopf",
   "datum",
   "gueltig_bis",
@@ -57,6 +58,7 @@
   "schluss",
   "tab_verlauf",
   "gesendet_am",
+  "versandkanal",
   "angenommen_am",
   "abgelehnt_grund",
   "unterschrift_kunde",
@@ -129,6 +131,13 @@
    "fieldtype": "Link",
    "label": "Anfrage",
    "options": "PH Anfrage"
+  },
+  {
+   "fieldname": "pflege_abo",
+   "fieldtype": "Data",
+   "label": "Pflege-/Wartungsvertrag (ph_service)",
+   "read_only": 1,
+   "description": "PH Pflege Abo – Angebot aus dem Vertrag (Button „Angebot erstellen“ dort)."
   },
   {
    "fieldname": "cb_kopf",
@@ -398,6 +407,12 @@
    "read_only": 1
   },
   {
+   "fieldname": "versandkanal",
+   "fieldtype": "Select",
+   "label": "Versandkanal",
+   "options": "\nE-Mail\nPost\nPersoenlich\nPortal"
+  },
+  {
    "fieldname": "angenommen_am",
    "fieldtype": "Datetime",
    "label": "Angenommen am",
@@ -499,7 +514,7 @@
    "group": "Versionen"
   }
  ],
- "modified": "2026-11-04 08:00:00.000000",
+ "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Faktura",
  "name": "PH Angebot",

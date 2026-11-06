@@ -1,0 +1,548 @@
+/* Bewegung des Backoffice (MASTER G-31). Besitzer: Team Q2.
+   Maßstab: art-direction/lounge.md § 8 „Bewegung (Apple-Qualität)“ und § 9 (Inhaber-Freigabe
+   Nr. 51/53); funktionale Regeln aus 04-motion.md und MASTER Q-H1…Q-H8, wo Lounge schweigt.
+   Eine Datei für Token, Keyframes, Bewegungsklassen und View Transitions – keine Streuung in
+   Komponenten-CSS. Wird in src/app/layout.js NACH globals.css geladen.
+
+   Grundsätze:
+   - Physik statt linearer Übergänge: zwei aus der Feder-Differentialgleichung berechnete
+     linear()-Kurven (--bo-feder ζ 0,72 für Knöpfe/Indikatoren/Panels, --bo-feder-sanft ζ 0,9
+     für Einblenden). Werte identisch mit dem freigegebenen Entwurf (entwurf/lounge/lounge.css).
+   - Nur transform-Familie (translate/scale/rotate), opacity, clip-path, stroke-dashoffset
+     (+ Farbe/Schatten bei Hover/Fokus). Einzige Ausnahme: Breite des Segment-Indikators.
+   - Ortswechsel (translate/scale/rotate) stehen ausschließlich in
+     @media (prefers-reduced-motion: no-preference). Bei „reduce“ bleibt nur Opazität (≤ 120 ms).
+   - Bewegung blockiert nie den nächsten Klick oder Scan (Q-H8): keine pointer-events-Sperren,
+     neue Zustände ersetzen laufende Übergänge (CSS-Transitions setzen vom Ist-Wert aus fort).
+   - Kiosk (Kassa/Packtisch, Q-H7): KioskShell setzt data-bo-kiosk am Wurzelelement → keine
+     Hover-Bewegung, Staffel 25 ms (Lounge-Kassa), keine Seitenübergänge.
+
+   Arbeitsteilung mit globals.css (Team P0-2): Die Bewegung der Lounge-BAUSTEINE steht dort am
+   Baustein (.bo-knopf/.bo-rund/.bo-pfeil Druck-Feder, .bo-kachel--lift, .bo-seg__ind,
+   .bo-schalter__daumen, .bo-tip, .bo-bento[data-einblenden], .bo-chart-*). Diese Datei liefert
+   die gemeinsamen Token (als Alias auf --ease-feder/--bo-dauer-* aus globals.css, gleiche Werte),
+   allgemeine Bewegungsklassen für alles andere, Overlays (Dialog/Sheet/Menü/Toast), Erfolg,
+   Scan und View Transitions. Klassen hier nie mit gleichnamigen Baustein-Klassen doppeln. */
+
+/* ================================================================== Token */
+:root {
+  /* Federn (Lounge § 8). Breite Stützstellen → auf jedem Bildschirm ohne Stufen. */
+  --bo-feder: var(--ease-feder, linear(0, 0.058, 0.193, 0.358, 0.523, 0.67, 0.791, 0.884, 0.951, 0.995, 1.021, 1.034, 1.038, 1.037, 1.032, 1.025, 1.019, 1.013, 1.008, 1.005, 1.002, 1, 0.999, 1));
+  --bo-feder-sanft: var(--ease-feder-weich, linear(0, 0.077, 0.237, 0.412, 0.57, 0.699, 0.797, 0.868, 0.918, 0.951, 0.973, 0.986, 0.994, 0.998, 1, 1.001, 1.002, 1.001, 1));
+  --bo-dur-feder: var(--bo-dauer-feder, 620ms);     /* Panel, Sheet, Indikator, Kachel-Hub */
+  --bo-dur-feder-kurz: var(--bo-dauer-weich, 420ms); /* Rückfedern nach Druck, Kanban-Ablage */
+  --bo-dur-druck: var(--bo-dauer-druck, 80ms);      /* Eindrücken (Rückmeldung < 100 ms) */
+  --bo-dur-erscheinen: 700ms;  /* Kachel/Spalte/Zeile erscheint (Feder sanft) */
+  --bo-dur-wachsen: 900ms;     /* Balken wachsen aus der Grundlinie */
+  --bo-dur-haken: 520ms;       /* Häkchen zeichnet sich … */
+  --bo-haken-verzoegerung: 220ms; /* … nach 220 ms */
+  --bo-dur-zaehlen: 900ms;     /* Zahl zählt beim Erscheinen hoch */
+  --bo-staffel: 30ms;          /* Bento, Reise-Spalten; Kiosk 25 ms */
+  --bo-druck-scale: 0.97;      /* Knopf; Rundknopf 0.94, kleine Plus-/Stepper-Knöpfe 0.88 */
+
+  /* Kurze Funktionsdauern (Hover-Farbe, Austritt, Blende, Toast-Balken – 04/Q-H1). */
+  --bo-dur-ack: 50ms;
+  --bo-dur-fast: 120ms;
+  --bo-dur-base: 160ms;
+  --bo-dur-move: 200ms;
+  --bo-dur-slow: 240ms;
+  --bo-dur-spring: 420ms;      /* = --bo-dur-feder-kurz (Kanban-Ablage), Name aus Q-H1 */
+  --bo-dur-draw: 520ms;        /* = --bo-dur-haken, Name aus Q-H1 */
+  --bo-dur-shimmer: 1200ms;    /* Lounge § 9.8: 1,2-s-Schimmer */
+  --bo-dur-markiert: 1200ms;
+  --bo-stagger: var(--bo-staffel);
+  --bo-spinner-delay: 300ms;
+
+  --bo-ease-out: cubic-bezier(0.22, 1, 0.36, 1);   /* Blenden, die ankommen */
+  --bo-ease-in: cubic-bezier(0.4, 0, 1, 1);        /* alles, was geht */
+  --bo-ease-inout: cubic-bezier(0.65, 0, 0.35, 1); /* Zeichnen, Morph */
+  --bo-ease-linear: linear;                        /* Schimmer, Undo-Balken */
+  --bo-ease-spring: var(--bo-feder);
+  --bo-ease-spring-fallback: cubic-bezier(0.34, 1.3, 0.64, 1);
+
+  /* Hervorhebung „das ist deine Zeile“ – aus Rollen-Token, hell wie dunkel. */
+  --bo-markiert-akzent: color-mix(in srgb, var(--color-bo-accent) 16%, transparent);
+  --bo-markiert-warn: color-mix(in srgb, var(--color-bo-warn) 16%, transparent);
+  --bo-markiert-ok: color-mix(in srgb, var(--color-bo-ok) 18%, transparent);
+}
+
+/* Browser ohne linear(): Ersatzkurven mit gleichem Charakter (leichter Überschwinger bzw. sanft). */
+@supports not (transition-timing-function: linear(0, 1)) {
+  :root {
+    --bo-feder: cubic-bezier(0.34, 1.3, 0.64, 1);
+    --bo-feder-sanft: cubic-bezier(0.22, 1, 0.36, 1);
+    --bo-ease-spring: var(--bo-ease-spring-fallback);
+  }
+}
+
+[data-bo-kiosk] { --bo-staffel: 25ms; }
+
+/* Reduzierte Bewegung (Lounge § 8, 04 § 2.4, Q-H6): Ortswechsel-Dauern 0, Blenden ≤ 120 ms,
+   Zahlen sofort final (motion.js), Häkchen gezeichnet, keine Staffel. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --bo-dur-feder: 0ms;
+    --bo-dur-feder-kurz: 0ms;
+    --bo-dur-druck: 0ms;
+    --bo-dur-erscheinen: 120ms;
+    --bo-dur-wachsen: 120ms;
+    --bo-dur-haken: 0ms;
+    --bo-haken-verzoegerung: 0ms;
+    --bo-dur-zaehlen: 0ms;
+    --bo-staffel: 0ms;
+    --bo-dur-ack: 0ms;
+    --bo-dur-base: 120ms;
+    --bo-dur-move: 0ms;
+    --bo-dur-slow: 0ms;
+    --bo-dur-spring: 0ms;
+    --bo-dur-draw: 0ms;
+  }
+  [data-bo-kiosk] { --bo-staffel: 0ms; }
+}
+
+/* ================================================================== Keyframes */
+@keyframes bo-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes bo-rise-4 { from { translate: 0 4px; } to { translate: 0 0; } }
+@keyframes bo-vt-fade-only { from { opacity: 0; } to { opacity: 1; } }
+/* Lounge lg-rise: 12 px + scale .985 → Ruhe (Feder sanft). */
+@keyframes bo-erscheinen { from { opacity: 0; translate: 0 12px; scale: 0.985; } to { opacity: 1; translate: 0 0; scale: 1; } }
+/* Lounge lg-slide: Panel/Warenkorb von rechts. */
+@keyframes bo-panel-ein { from { opacity: 0; translate: 24px 0; scale: 0.985; } to { opacity: 1; translate: 0 0; scale: 1; } }
+/* Lounge kd-in / lg-pop: neueste Zeile bzw. Zähler federn herein. */
+@keyframes bo-neu { from { opacity: 0; translate: 0 16px; scale: 0.96; } to { opacity: 1; translate: 0 0; scale: 1; } }
+@keyframes bo-pop { from { opacity: 0; scale: 0.4; } to { opacity: 1; scale: 1; } }
+@keyframes bo-wachsen-y { from { scale: 1 0; } to { scale: 1 1; } }
+@keyframes bo-wachsen-x { from { scale: 0 1; } to { scale: 1 1; } }
+@keyframes bo-markiert { from { background-color: var(--bo-markiert-farbe, var(--bo-markiert-akzent)); } to { background-color: transparent; } }
+/* Lounge lg-shake: 6/5/3/2 px, abklingend. */
+@keyframes bo-shake { 0%, 100% { translate: 0; } 20% { translate: -6px; } 40% { translate: 5px; } 60% { translate: -3px; } 80% { translate: 2px; } }
+@keyframes bo-zeichnen { to { stroke-dashoffset: 0; } }
+@keyframes bo-balken { from { scale: 1 1; } to { scale: 0 1; } }
+@keyframes bo-wachsen { from { scale: 1 0; } to { scale: 1 1; } }
+@keyframes bo-enthuellen { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes bo-blatt { 0% { clip-path: inset(100% 0 0 0); } 60%, 100% { clip-path: inset(0 0 0 0); } }
+@keyframes bo-puls { 0%, 100% { scale: 1; } 50% { scale: 1.15; } }
+/* Kontaktlos-Hinweis (Kundendisplay „bezahlen“): Ring weitet sich und verblasst. */
+@keyframes bo-welle { 0% { scale: 1; opacity: 0.5; } 100% { scale: 1.7; opacity: 0; } }
+
+/* ================================================================== Allgemeine Lounge-Bewegung (für alles ohne eigenen Baustein) */
+
+/* --- Druck-Feder (Lounge § 8): eindrücken in 80 ms, mit Feder zurück.
+   .bo-druck an Knopf/Kachel-Ziel; Stärke über --bo-druck-scale oder die Varianten.
+   Wirkt auch, wenn das Element zusätzlich Tailwind-translate nutzt (eigene Eigenschaft scale). */
+@media (prefers-reduced-motion: no-preference) {
+  .bo-druck {
+    transition:
+      scale var(--bo-dur-feder-kurz) var(--bo-feder),
+      color var(--bo-dur-fast) var(--bo-ease-out),
+      background-color var(--bo-dur-fast) var(--bo-ease-out),
+      box-shadow var(--bo-dur-fast) var(--bo-ease-out);
+  }
+  .bo-druck:active:not(:disabled, [aria-disabled="true"]) {
+    scale: var(--bo-druck-scale);
+    transition-duration: var(--bo-dur-druck), var(--bo-dur-fast), var(--bo-dur-fast), var(--bo-dur-fast);
+  }
+  .bo-druck-rund { --bo-druck-scale: 0.94; }
+  .bo-druck-klein { --bo-druck-scale: 0.88; }
+  .bo-druck-flaeche { --bo-druck-scale: 0.98; }
+  /* Kachel mit innerem Druckziel gibt mit nach (Kassa-Produktkachel). */
+  .bo-druck-traeger { transition: scale var(--bo-dur-feder) var(--bo-feder); }
+  .bo-druck-traeger:has(.bo-druck:active:not(:disabled)) { scale: 0.98; }
+}
+
+/* „+“ in Kacheln dreht 90° (Lounge Glas-Kachel „hinzufügen“). */
+.bo-plus-dreh svg { transition: rotate var(--bo-dur-feder-kurz) var(--bo-feder); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .bo-plus-dreh:hover svg { rotate: 90deg; }
+}
+
+/* --- Erscheinen mit Staffel (Lounge § 8): Bento-Kacheln, Reise-Spalten, Produktkacheln.
+   .bo-staffel am Eltern-Element staffelt die ersten 8 Kinder je --bo-staffel (30 ms);
+   einzelne Elemente: .bo-erscheinen mit style="--i: n" (Deckel bei 10 Stufen).
+   Raster steht vor dem Inhalt: nur opacity/translate/scale, keine Höhe. */
+.bo-staffel > *,
+.bo-erscheinen { animation: bo-fade var(--bo-dur-erscheinen) var(--bo-ease-out) both; }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-staffel > *,
+  .bo-erscheinen { animation: bo-erscheinen var(--bo-dur-erscheinen) var(--bo-feder-sanft) both; }
+  .bo-staffel > :nth-child(2) { animation-delay: calc(1 * var(--bo-staffel)); }
+  .bo-staffel > :nth-child(3) { animation-delay: calc(2 * var(--bo-staffel)); }
+  .bo-staffel > :nth-child(4) { animation-delay: calc(3 * var(--bo-staffel)); }
+  .bo-staffel > :nth-child(5) { animation-delay: calc(4 * var(--bo-staffel)); }
+  .bo-staffel > :nth-child(6) { animation-delay: calc(5 * var(--bo-staffel)); }
+  .bo-staffel > :nth-child(7) { animation-delay: calc(6 * var(--bo-staffel)); }
+  .bo-staffel > :nth-child(n + 8) { animation-delay: calc(7 * var(--bo-staffel)); }
+  .bo-erscheinen { animation-delay: calc(min(var(--i, 0), 10) * var(--bo-staffel) + var(--bo-erscheinen-ab, 0ms)); }
+}
+
+/* --- Panel / Warenkorb / Vorschau (Lounge § 6): gleitet mit Feder von rechts ein. */
+.bo-panel { animation: bo-fade var(--bo-dur-base) var(--bo-ease-out) both; }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-panel { animation: bo-panel-ein var(--bo-dur-feder) var(--bo-feder) both; }
+}
+
+/* --- Neueste Zeile federt herein (Kassa-Warenkorb, Kundendisplay, Packtisch-Positionen). */
+.bo-neu { animation: bo-fade var(--bo-dur-base) var(--bo-ease-out) both; }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-neu { animation: bo-neu var(--bo-dur-feder) var(--bo-feder) both; animation-delay: var(--bo-neu-ab, 0ms); }
+  /* Zähler-Badge (Korb, Glocke): Feder-Pop bei jedem neuen Wert (key={wert} setzen). */
+  .bo-anim-pop { animation: bo-pop 520ms var(--bo-feder) both; }
+}
+
+/* --- Gleitender Indikator für eigene Reiter/Leisten (useGleiter in motion.js); das Segmented
+   Control (Segment.js) hat seinen eigenen .bo-seg__ind in globals.css. */
+.bo-gleiter {
+  transition:
+    transform var(--bo-dur-feder) var(--bo-feder),
+    width var(--bo-dur-feder) var(--bo-feder);
+}
+/* Erster Stand ohne Gleiten (motion.js useGleiter setzt data-bo-bereit erst nach dem Messen). */
+.bo-gleiter:not([data-bo-bereit]) { transition: none; }
+
+/* --- Balken wachsen aus der Grundlinie (Lounge § 8): style="--i: n" je Balken. */
+.bo-wachsen-y,
+.bo-wachsen-x { animation: bo-fade var(--bo-dur-wachsen) var(--bo-ease-out) both; }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-wachsen-y {
+    transform-box: fill-box;
+    transform-origin: bottom;
+    animation: bo-wachsen-y var(--bo-dur-wachsen) var(--bo-feder-sanft) both;
+    animation-delay: calc(200ms + min(var(--i, 0), 11) * 40ms);
+  }
+  .bo-wachsen-x {
+    transform-box: fill-box;
+    transform-origin: left;
+    animation: bo-wachsen-x var(--bo-dur-wachsen) var(--bo-feder-sanft) both;
+    animation-delay: calc(200ms + min(var(--i, 0), 11) * 40ms);
+  }
+}
+
+/* --- Fortschrittsring (Packtisch): Bogen folgt dem Wert mit Feder. */
+.bo-ring-bogen { transition: stroke-dashoffset var(--bo-dur-feder) var(--bo-feder); }
+
+/* --- Kontaktlos-Welle (Kundendisplay): zwei <i class="bo-welle">, das zweite 1,2 s versetzt. */
+.bo-welle { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-welle { animation: bo-welle 2.4s var(--bo-ease-out) infinite; }
+  .bo-welle + .bo-welle { animation-delay: 1.2s; }
+}
+
+/* ================================================================== Listen-Einträge (04 § 3.3) */
+/* Neuer Eintrag nach Mount: Feder sanft, opacity + 4 px von oben, Staffel max. 3 Stufen. */
+.bo-anim-eintrag,
+.bo-anim-eintrag-fade {
+  transition: opacity var(--bo-dur-base) var(--bo-ease-out);
+}
+@starting-style {
+  .bo-anim-eintrag,
+  .bo-anim-eintrag-fade { opacity: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bo-anim-eintrag {
+    transition: opacity var(--bo-dur-base) var(--bo-ease-out), translate var(--bo-dur-feder-kurz) var(--bo-feder-sanft);
+  }
+  @starting-style {
+    .bo-anim-eintrag { translate: 0 -4px; }
+  }
+  .bo-anim-eintrag:nth-child(2) { transition-delay: var(--bo-staffel); }
+  .bo-anim-eintrag:nth-child(3) { transition-delay: calc(2 * var(--bo-staffel)); }
+  [data-bo-viele="true"] > .bo-anim-eintrag { transition-delay: 0s; }
+}
+
+/* Hervorhebung nach Speichern/Anlegen/Rücksprung (?markiert=<name>): Farbe, keine Bewegung.
+   "ok" = Lounge-Packtisch „Gerade +1“ (Salbei-Fläche, abklingend). */
+:is(.bo-row, .bo-markierbar)[data-markiert="true"],
+:is(.bo-row, .bo-markierbar)[data-markiert="warn"],
+:is(.bo-row, .bo-markierbar)[data-markiert="ok"] {
+  animation: bo-markiert var(--bo-dur-markiert) var(--bo-ease-out) 200ms both;
+}
+:is(.bo-row, .bo-markierbar)[data-markiert="warn"] { --bo-markiert-farbe: var(--bo-markiert-warn); }
+:is(.bo-row, .bo-markierbar)[data-markiert="ok"] { --bo-markiert-farbe: var(--bo-markiert-ok); animation-delay: 0ms; }
+
+/* Gleiche Route, neue Daten (3.1.3): Inhalt nach 300 ms auf 60 %, sofort zurück. */
+[data-bo-wartet] { transition: opacity var(--bo-dur-fast) var(--bo-ease-out); }
+[data-bo-wartet="true"] { opacity: 0.6; cursor: progress; transition-delay: var(--bo-spinner-delay); }
+
+/* ================================================================== Kanban (04 § 3.4) */
+/* Geist = Klon der Karte (position: fixed), folgt dem Zeiger; Landung per motion.js lande(). */
+.bo-kanban-geist {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 80;
+  pointer-events: none;
+  box-shadow: var(--bo-sh-float, var(--shadow-bo-drag));
+  will-change: transform;
+}
+.bo-kanban-platzhalter { opacity: 0.35; }
+
+/* ================================================================== Dialog, Sheet, Menü */
+/* Löst die Keyframe-Variante aus globals.css ab (P0-2 entfernt sie dort).
+   Opazität kommt schnell (160 ms, voll sichtbar ≤ 200 ms), die Form federt nach (Lounge). */
+dialog.bo-dialog[open],
+dialog.bo-dialog[open]::backdrop { animation: none; }
+
+dialog.bo-dialog,
+dialog.bo-sheet {
+  opacity: 0;
+  transition:
+    opacity var(--bo-dur-fast) var(--bo-ease-in),
+    overlay var(--bo-dur-fast) allow-discrete,
+    display var(--bo-dur-fast) allow-discrete;
+}
+dialog.bo-dialog[open],
+dialog.bo-sheet[open] {
+  opacity: 1;
+  transition-duration: var(--bo-dur-base);
+  transition-timing-function: var(--bo-ease-out);
+}
+@starting-style {
+  dialog.bo-dialog[open],
+  dialog.bo-sheet[open] { opacity: 0; }
+}
+dialog.bo-dialog::backdrop,
+dialog.bo-sheet::backdrop {
+  opacity: 0;
+  transition:
+    opacity var(--bo-dur-fast) var(--bo-ease-in),
+    overlay var(--bo-dur-fast) allow-discrete,
+    display var(--bo-dur-fast) allow-discrete;
+}
+dialog.bo-dialog[open]::backdrop,
+dialog.bo-sheet[open]::backdrop { opacity: 1; transition-duration: 240ms; transition-timing-function: var(--bo-ease-out); }
+@starting-style {
+  dialog.bo-dialog[open]::backdrop,
+  dialog.bo-sheet[open]::backdrop { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Dialog: scale .96 → 1 mit Feder; Schließen 120 ms ohne Feder. */
+  dialog.bo-dialog {
+    scale: 0.98;
+    transition:
+      opacity var(--bo-dur-fast) var(--bo-ease-in),
+      scale var(--bo-dur-fast) var(--bo-ease-in),
+      overlay var(--bo-dur-fast) allow-discrete,
+      display var(--bo-dur-fast) allow-discrete;
+  }
+  dialog.bo-dialog[open] {
+    scale: 1;
+    transition:
+      opacity var(--bo-dur-base) var(--bo-ease-out),
+      scale var(--bo-dur-feder) var(--bo-feder),
+      overlay var(--bo-dur-base) allow-discrete,
+      display var(--bo-dur-base) allow-discrete;
+  }
+  @starting-style {
+    dialog.bo-dialog[open] { scale: 0.96; }
+  }
+  /* Sheet rechts (Vorschau, Bearbeiten): 24 px + scale .985 → Ruhe mit Feder. */
+  dialog.bo-sheet {
+    translate: 12px 0;
+    transition:
+      opacity var(--bo-dur-fast) var(--bo-ease-in),
+      translate var(--bo-dur-fast) var(--bo-ease-in),
+      scale var(--bo-dur-fast) var(--bo-ease-in),
+      overlay var(--bo-dur-fast) allow-discrete,
+      display var(--bo-dur-fast) allow-discrete;
+  }
+  dialog.bo-sheet[open] {
+    translate: 0 0;
+    scale: 1;
+    transition:
+      opacity var(--bo-dur-base) var(--bo-ease-out),
+      translate var(--bo-dur-feder) var(--bo-feder),
+      scale var(--bo-dur-feder) var(--bo-feder),
+      overlay var(--bo-dur-base) allow-discrete,
+      display var(--bo-dur-base) allow-discrete;
+  }
+  @starting-style {
+    dialog.bo-sheet[open] { translate: 24px 0; scale: 0.985; }
+  }
+  /* Sheet von unten (Kassa „Bezahlt“, iPhone-Vorschau): 40 px + scale .96 → Ruhe. */
+  dialog.bo-sheet[data-seite="unten"] { translate: 0 16px; }
+  dialog.bo-sheet[data-seite="unten"][open] { translate: 0 0; }
+  @starting-style {
+    dialog.bo-sheet[data-seite="unten"][open] { translate: 0 40px; scale: 0.96; }
+  }
+}
+
+/* Menü/Popover/Kontextmenü: Feder sanft ein, Schließen sofort (Element wird entfernt). */
+.bo-menue { transition: opacity var(--bo-dur-fast) var(--bo-ease-out); }
+@starting-style { .bo-menue { opacity: 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-menue {
+    transform-origin: var(--bo-menue-ursprung, top);
+    transition:
+      opacity var(--bo-dur-fast) var(--bo-ease-out),
+      translate var(--bo-dur-feder-kurz) var(--bo-feder-sanft),
+      scale var(--bo-dur-feder-kurz) var(--bo-feder-sanft);
+  }
+  @starting-style { .bo-menue { translate: 0 -4px; scale: 0.98; } }
+}
+
+/* ================================================================== Toast mit Undo-Balken (04 § 3.6) */
+/* Eintritt mit Feder, Austritt 120 ms (data-geht="true" setzen, nach 120 ms entfernen).
+   Der Balken ist nur Anzeige: Wahrheit ist immer der Timer im JS (animationend ignorieren). */
+.bo-toast {
+  position: relative;
+  overflow: hidden;
+  transition: opacity var(--bo-dur-base) var(--bo-ease-out);
+}
+@starting-style { .bo-toast { opacity: 0; } }
+.bo-toast[data-geht="true"] { opacity: 0; transition: opacity var(--bo-dur-fast) var(--bo-ease-in); }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-toast { transition: opacity var(--bo-dur-base) var(--bo-ease-out), translate var(--bo-dur-feder) var(--bo-feder), scale var(--bo-dur-feder) var(--bo-feder); }
+  @starting-style { .bo-toast { translate: 0 12px; scale: 0.98; } }
+  @starting-style { [data-bo-kiosk] .bo-toast { translate: 0 -12px; } }
+  .bo-toast[data-geht="true"] { translate: 0 4px; transition: opacity var(--bo-dur-fast) var(--bo-ease-in), translate var(--bo-dur-fast) var(--bo-ease-in); }
+}
+.bo-toast-balken {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.5;
+  transform-origin: left;
+  pointer-events: none;
+  animation: bo-balken var(--undo-ms, 8000ms) linear forwards;
+}
+.bo-toast:is(:hover, :focus-within) .bo-toast-balken,
+.bo-toast[data-pausiert="true"] .bo-toast-balken { animation-play-state: paused; }
+.bo-toast[data-rueckgaengig="true"] .bo-toast-balken { opacity: 0; transition: opacity var(--bo-dur-fast) linear; }
+@media (prefers-reduced-motion: reduce) {
+  .bo-toast-balken { animation: none; scale: 1 1; }
+}
+
+/* ================================================================== Diagramme (Bestand P0-2) */
+/* Ältere Klassen (Charts von P0-2); neue Diagramme nehmen .bo-wachsen-y/-x. */
+.bo-anim-wachsen {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: bo-wachsen var(--bo-dur-wachsen) var(--bo-feder-sanft) both;
+  animation-delay: calc(min(var(--i, 0), 11) * 40ms);
+}
+[data-bo-viele="true"] > .bo-anim-wachsen { animation-delay: 0s; }
+.bo-anim-zeichnen { stroke-dasharray: 1; stroke-dashoffset: 1; animation: bo-zeichnen var(--bo-dur-draw) var(--bo-ease-inout) forwards; }
+.bo-anim-enthuellen { animation: bo-enthuellen var(--bo-dur-slow) var(--bo-ease-out) both; }
+@media (prefers-reduced-motion: reduce) {
+  .bo-anim-wachsen, .bo-anim-enthuellen { animation: bo-fade var(--bo-dur-fast) linear both; }
+  .bo-anim-zeichnen { animation: none; stroke-dashoffset: 0; }
+}
+
+/* ================================================================== Druck-Feedback (04 § 3.11) */
+.bo-druck-blatt { clip-path: inset(100% 0 0 0); }
+[data-druck="druckt"] .bo-druck-blatt { animation: bo-blatt 900ms var(--bo-ease-inout) infinite; }
+@media (prefers-reduced-motion: reduce) {
+  [data-druck="druckt"] .bo-druck-blatt { animation: none; clip-path: inset(0 0 0 0); }
+}
+
+/* ================================================================== Scan-Bestätigung (04 § 3.12, Lounge Packtisch) */
+/* Farbe ist nie allein: Symbol + Text stehen immer daneben. data-ergebnis nach 1500 ms
+   zurücksetzen oder key={scanZaehler} – ein neuer Scan ersetzt den alten sofort (Q-H8).
+   Ring statt Rahmen (Lounge: keine Linien als Gliederung). */
+.bo-scan { transition: box-shadow var(--bo-dur-slow) var(--bo-ease-out); }
+.bo-scan[data-ergebnis="bereit"] { box-shadow: var(--bo-scan-grund, 0 0 0 0 transparent), 0 0 0 3px color-mix(in srgb, var(--color-bo-ok) 55%, transparent); }
+.bo-scan[data-ergebnis="erkannt"] { box-shadow: var(--bo-scan-grund, 0 0 0 0 transparent), 0 0 0 3px var(--color-bo-ok); }
+.bo-scan[data-ergebnis="unbekannt"] { box-shadow: var(--bo-scan-grund, 0 0 0 0 transparent), 0 0 0 3px var(--color-bo-danger); }
+.bo-scan[data-ergebnis="doppelt"] { box-shadow: var(--bo-scan-grund, 0 0 0 0 transparent), 0 0 0 3px var(--color-bo-warn); }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-scan[data-ergebnis="unbekannt"] { animation: bo-shake 420ms var(--bo-feder) both; }
+}
+
+/* ================================================================== Erfolgsmoment (Lounge § 9.8) */
+/* Ein Moment je abgeschlossenem Vorgang (Q-H5), nie je Speichern. Belegnummer steht sofort. */
+.bo-erfolg { transition: opacity var(--bo-dur-base) var(--bo-ease-out); }
+@starting-style { .bo-erfolg { opacity: 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  .bo-erfolg { transition: opacity var(--bo-dur-base) var(--bo-ease-out), translate var(--bo-dur-feder) var(--bo-feder), scale var(--bo-dur-feder) var(--bo-feder); }
+  @starting-style { .bo-erfolg { translate: 0 16px; scale: 0.97; } }
+}
+/* Häkchen zeichnet sich nach 220 ms in 520 ms. <svg class="bo-tick"><path pathLength="1" …/></svg>
+   Bei reduzierter Bewegung steht es sofort gezeichnet. */
+.bo-tick { color: var(--color-bo-ok); }
+.bo-tick > path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset var(--bo-dur-haken) var(--bo-ease-inout) var(--bo-haken-verzoegerung);
+}
+@starting-style { .bo-tick > path { stroke-dashoffset: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .bo-tick > path { transition: none; }
+}
+.bo-erfolg-schritte { transition: opacity var(--bo-dur-base) var(--bo-ease-out) 320ms; }
+@starting-style { .bo-erfolg-schritte { opacity: 0; } }
+
+/* ================================================================== Kleinteile */
+@media (prefers-reduced-motion: no-preference) {
+  .bo-anim-puls { animation: bo-puls var(--bo-dur-feder-kurz) var(--bo-feder); }
+}
+/* Akkordeon/Untermenü: grid-template-rows 0fr ↔ 1fr (einzige erlaubte Höhen-Transition). */
+.bo-subnav { display: grid; grid-template-rows: 1fr; transition: grid-template-rows var(--bo-dur-feder-kurz) var(--bo-feder-sanft); }
+.bo-subnav[data-zu="true"] { grid-template-rows: 0fr; }
+.bo-subnav > * { overflow: hidden; min-height: 0; }
+/* Skelett in Kachelform: 1,2-s-Schimmer, statisch bei reduzierter Bewegung (globals .bo-skeleton). */
+
+/* ================================================================== Kiosk (Q-H7, P8) */
+[data-bo-kiosk] .bo-anim-eintrag { transition-delay: 0s; transition-duration: var(--bo-dur-fast); }
+
+/* ================================================================== Seitenwechsel (View Transitions) */
+/* Klicks laufen während des Übergangs durch (P12, Q-H8). */
+::view-transition { pointer-events: none; }
+
+/* Seiteninhalt (SeitenUebergang in motion.js): alt 120 ms aus, neu 12 px + scale .995 mit sanfter
+   Feder herein – dieselbe Geste wie das Erscheinen der Kacheln. Keine Richtungsschübe. */
+@keyframes bo-vt-ein { from { translate: 0 12px; scale: 0.995; } to { translate: 0 0; scale: 1; } }
+::view-transition-old(.bo-seite) { animation: var(--bo-dur-fast) var(--bo-ease-in) both bo-fade reverse; }
+::view-transition-new(.bo-seite) {
+  animation:
+    240ms var(--bo-ease-out) 60ms both bo-fade,
+    var(--bo-dur-erscheinen) var(--bo-feder-sanft) 60ms both bo-vt-ein;
+}
+
+/* Browser-Zurück (3.1.2): sofortiger Wechsel. motion.js setzt data-bo-nav="zurueck" am <html>
+   beim popstate und entfernt es bei der nächsten Eingabe. */
+:root[data-bo-nav="zurueck"]::view-transition-old(.bo-seite) { display: none; }
+:root[data-bo-nav="zurueck"]::view-transition-new(.bo-seite) { animation: none; }
+
+/* Skelett → Inhalt (3.9): Geometrie ist gleich, also nur Opazität. */
+::view-transition-old(.bo-skelett) { animation: var(--bo-dur-fast) var(--bo-ease-in) both bo-fade reverse; }
+::view-transition-new(.bo-inhalt) { animation: 240ms var(--bo-ease-out) 60ms both bo-fade; }
+
+/* Gleicher Ort, anderer Inhalt (Reiter, Zeitraum): Crossfade. */
+::view-transition-old(.bo-wechsel) { animation: var(--bo-dur-fast) var(--bo-ease-in) both bo-fade reverse; }
+::view-transition-new(.bo-wechsel) { animation: 200ms var(--bo-ease-out) both bo-fade; }
+::view-transition-group(.bo-wechsel) { animation-duration: 200ms; }
+
+/* Morph (Bild → Hero, Titel; opt-in share="bo-morph"): Feder. */
+::view-transition-group(.bo-morph) { animation-duration: var(--bo-dur-feder); animation-timing-function: var(--bo-feder); }
+
+/* Ruhende Hülle: Leiste und Kopfzeile wechseln sofort statt mitzublenden. Die Kopfzeile der
+   Shell bekommt hier ihren Namen (liegt über dem Inhalt, sonst schöbe sich der Schnappschuss
+   des Inhalts beim Blenden über die haftende Kopfzeile). Die Leiste bleibt bewusst unbenannt
+   (benannte Elemente sind während des Übergangs nicht klickbar) und liegt im
+   Wurzel-Schnappschuss, der ohne Blende wechselt. */
+header:has(+ main#bo-inhalt) { view-transition-name: bo-kopf; }
+::view-transition-group(root) { animation: none; }
+::view-transition-old(root) { display: none; }
+::view-transition-new(root) { animation: none; }
+::view-transition-group(bo-nav),
+::view-transition-group(bo-kopf) { animation: none; z-index: 100; }
+::view-transition-old(bo-nav),
+::view-transition-old(bo-kopf) { display: none; }
+::view-transition-new(bo-nav),
+::view-transition-new(bo-kopf) { animation: none; }
+
+/* Reduzierte Bewegung: View Transitions nur als 120-ms-Blende, keine Ortswechsel (Q-H6). */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*) { animation: none !important; }
+  ::view-transition-old(*) { animation: 120ms linear both bo-vt-fade-only reverse !important; }
+  ::view-transition-new(*) { animation: 120ms linear both bo-vt-fade-only !important; }
+  ::view-transition-new(root),
+  ::view-transition-new(bo-nav),
+  ::view-transition-new(bo-kopf),
+  :root[data-bo-nav="zurueck"]::view-transition-new(.bo-seite) { animation: none !important; }
+}

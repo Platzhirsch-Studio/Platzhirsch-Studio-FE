@@ -34,6 +34,9 @@ frappe.ui.form.on("PH Anfrage", {
 						{ fieldname: "start", fieldtype: "Datetime", label: __("Beginn"), reqd: 1 },
 						{ fieldname: "dauer_min", fieldtype: "Int", label: __("Dauer (Minuten)"), default: 60 },
 						{ fieldname: "modus", fieldtype: "Select", label: __("Modus"), options: ["Showroom", "Vor Ort", "Video"], default: frm.doc.ort_der_beratung === "Video" ? "Video" : "Showroom" },
+						{ fieldname: "berater", fieldtype: "Link", options: "User", label: __("Berater"), default: frm.doc.zugewiesen_an },
+						{ fieldname: "thema", fieldtype: "Data", label: __("Thema") },
+						{ fieldname: "mail", fieldtype: "Check", label: __("Bestätigung per E-Mail senden"), default: frm.doc.email ? 1 : 0, hidden: frm.doc.email ? 0 : 1 },
 					],
 					primary_action_label: __("Anlegen"),
 					primary_action(values) {
@@ -82,12 +85,46 @@ frappe.ui.form.on("PH Anfrage", {
 
 		// Hinweis bei Spam-Verdacht (keine Mail, kein Telefon)
 		if (!frm.doc.email && !frm.doc.telefon) frm.dashboard.set_headline_alert(__("Keine Kontaktmöglichkeit hinterlegt."), "orange");
+		if (frm.doc.duplikat_von) frm.dashboard.set_headline_alert(__("Mögliches Duplikat von {0}", [`<a href="/app/ph-anfrage/${encodeURIComponent(frm.doc.duplikat_von)}">${frappe.utils.escape_html(frm.doc.duplikat_von)}</a>`]), "orange");
+
+		const offen = ["Neu", "Qualifiziert", "Termin vereinbart", "Angebot"].includes(frm.doc.status);
+		frm.add_custom_button(__("Wiedervorlage"), () => {
+			frappe.prompt([
+				{ fieldname: "datum", fieldtype: "Date", label: __("Am"), default: frm.doc.wiedervorlage || frappe.datetime.add_days(frappe.datetime.get_today(), 7) },
+				{ fieldname: "notiz", fieldtype: "Data", label: __("Anlass"), default: frm.doc.wiedervorlage_notiz },
+			], (v) => frm.call({ method: "wiedervorlage_setzen", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Wiedervorlage"));
+		}, __("Aktionen"));
+		if (offen) {
+			frm.add_custom_button(__("Verloren …"), () => {
+				const df = frappe.meta.get_docfield("PH Anfrage", "verloren_grund", frm.doc.name);
+				frappe.prompt([
+					{ fieldname: "grund", fieldtype: "Select", label: __("Grund"), options: df.options, reqd: 1 },
+					{ fieldname: "mitbewerber", fieldtype: "Data", label: __("Mitbewerber"), depends_on: "eval:doc.grund=='Mitbewerber'" },
+					{ fieldname: "details", fieldtype: "Small Text", label: __("Details") },
+				], (v) => frm.call({ method: "als_verloren", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Anfrage verloren"));
+			}, __("Aktionen"));
+			frm.add_custom_button(__("Gewonnen"), () => {
+				frappe.prompt({ fieldname: "wert", fieldtype: "Currency", label: __("Auftragswert (€)"), default: (frm.doc.wert_cent || 0) / 100 }, (v) => frm.call({ method: "als_gewonnen", doc: frm.doc, args: { wert_cent: Math.round((v.wert || 0) * 100) } }).then(() => frm.reload_doc()), __("Anfrage gewonnen"));
+			}, __("Aktionen"));
+		}
+	},
+
+	wert_cent: rechnePipeline,
+	wahrscheinlichkeit_prozent(frm) {
+		if (!frm.doc.wahrscheinlichkeit_manuell) frm.set_value("wahrscheinlichkeit_manuell", 1);
+		rechnePipeline(frm);
 	},
 
 	vorname: aktualisiereTitel,
 	nachname: aktualisiereTitel,
 	art: aktualisiereTitel,
 });
+
+function rechnePipeline(frm) {
+	const w = parseInt(frm.doc.wert_cent || 0, 10);
+	const p = parseInt(frm.doc.wahrscheinlichkeit_prozent || 0, 10);
+	frm.set_value("gewichtet_cent", Math.floor((w * p + 50) / 100));
+}
 
 function aktualisiereTitel(frm) {
 	const name = [frm.doc.vorname, frm.doc.nachname].filter(Boolean).join(" ") || frm.doc.firma || frm.doc.email || "ohne Namen";

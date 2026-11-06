@@ -1,0 +1,447 @@
+/* =====================================================================
+   Shell v2 im Lounge-Stil (Team P0-7, G-26) – Maßstab art-direction/lounge.md § 4/6/8/9/12.
+   Nur Token aus globals.css (--color-bo-*, --bo-sh-*, --ease-feder*, --bo-dauer-*), Präfix bo-schale.
+   Raster 4/8. Leiste 72 breit, 16 vom Rand, Radius 36; Inhalt ab 120 px, rechts 32; Kopf 88 sticky,
+   ab 8 px Scroll Material. Tablet: Leiste 64, Inhalt ab 96. Telefon: Tab-Kapsel unten.
+   ===================================================================== */
+
+.bo-schale {
+  --leiste-x: 16px;
+  --leiste-b: 72px;
+  --leiste-punkt: 48px;
+  --leiste-abstand: 4px;
+  --inhalt-l: calc(var(--leiste-x) + var(--leiste-b) + 32px);
+  --inhalt-r: 32px;
+  min-height: 100dvh;
+}
+.bo-schale[data-beschriftet="true"],
+.bo-schale:has(.bo-schale-leiste[data-beschriftet="true"]) {
+  --leiste-b: 232px;
+}
+
+.bo-schale-sprung {
+  position: absolute; left: 16px; top: -64px; z-index: 100;
+  padding: 12px 16px; border-radius: var(--radius-bo-ctl);
+  background: var(--color-bo-action); color: var(--color-bo-action-text);
+  font-weight: 600;
+}
+.bo-schale-sprung:focus { top: 16px; }
+
+/* ---------------------------------------------------------------- Leiste */
+.bo-schale-leiste {
+  position: fixed; z-index: 45;
+  left: var(--leiste-x); top: 16px; bottom: 16px; width: var(--leiste-b);
+  border-radius: 36px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  padding: 12px 0;
+}
+.bo-schale-leiste__logo {
+  flex: none;
+  width: 48px; height: 48px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 24px; font-weight: 500; line-height: 1; padding-bottom: 2px;
+  background: var(--color-bo-action); color: var(--color-bo-action-text);
+  box-shadow: var(--bo-sh-ink);
+  transition: transform var(--bo-dauer-weich) var(--ease-feder);
+}
+.bo-schale-leiste__logo:active { transform: scale(0.94); transition-duration: var(--bo-dauer-druck); }
+.bo-schale-leiste__liste {
+  flex: 1; min-height: 0;
+  display: flex; flex-direction: column; align-items: center; gap: var(--leiste-abstand);
+  margin: 8px 0 0; padding: 0; list-style: none;
+}
+.bo-schale-leiste__fuss { flex: none; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+.bo-schale-leiste__punkt {
+  position: relative; flex: none;
+  width: var(--leiste-punkt); height: var(--leiste-punkt); border-radius: 999px;
+  display: grid; place-items: center;
+  color: var(--color-bo-text-soft);
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 240ms ease, color 240ms ease, transform var(--bo-dauer-weich) var(--ease-feder-weich);
+}
+.bo-schale-leiste__punkt:hover { background: var(--color-bo-fill-2); color: var(--color-bo-text); }
+.bo-schale-leiste__punkt:active { transform: scale(0.94); transition-duration: var(--bo-dauer-druck); }
+.bo-schale-leiste__punkt.is-an { background: var(--color-bo-action); color: var(--color-bo-action-text); box-shadow: var(--bo-sh-ink); }
+.bo-schale-leiste__klein { --leiste-punkt: 36px; }
+.bo-schale-leiste__name { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Tooltip-Pille rechts der Leiste, gleitet mit sanfter Feder ein */
+.bo-schale-leiste__tip {
+  position: absolute; left: calc(100% + 16px); top: 50%; z-index: 2;
+  translate: -4px -50%;
+  padding: 6px 12px; border-radius: 999px; white-space: nowrap;
+  font-size: 13px; line-height: 18px; font-weight: 500;
+  color: var(--color-bo-action-text); background: var(--color-bo-action); box-shadow: var(--bo-sh-ink);
+  opacity: 0; pointer-events: none;
+  transition: opacity 160ms ease, translate var(--bo-dauer-weich) var(--ease-feder-weich);
+}
+.bo-schale-leiste__punkt:hover .bo-schale-leiste__tip,
+.bo-schale-leiste__punkt:focus-visible .bo-schale-leiste__tip { opacity: 1; translate: 0 -50%; transition-delay: 120ms, 120ms; }
+
+/* Viele Bereiche (GF/Admin: bis 14) – Kreise und Abstände nach Fensterhöhe, Liste scrollt nur im Notfall */
+@media (max-height: 979px) {
+  .bo-schale-leiste[data-viele="true"] { --leiste-punkt: 40px; --leiste-abstand: 2px; gap: 8px; }
+}
+@media (max-height: 849px) {
+  .bo-schale-leiste[data-viele="true"] { --leiste-punkt: 36px; --leiste-abstand: 0px; }
+  .bo-schale-leiste[data-viele="true"] .bo-schale-leiste__klein,
+  .bo-schale-leiste[data-viele="true"] .bo-schale-thema { display: none; }
+}
+@media (max-height: 679px) {
+  .bo-schale-leiste__liste { overflow-y: auto; scrollbar-width: none; }
+}
+
+/* Beschriftete Leiste (Strg+B): Pillen mit Namen statt Kreisen */
+.bo-schale-leiste[data-beschriftet="true"] { align-items: stretch; padding: 12px; }
+.bo-schale-leiste[data-beschriftet="true"] .bo-schale-leiste__logo { margin-left: 0; }
+.bo-schale-leiste[data-beschriftet="true"] .bo-schale-leiste__liste { align-items: stretch; }
+.bo-schale-leiste[data-beschriftet="true"] .bo-schale-leiste__liste .bo-schale-leiste__punkt {
+  width: 100%; display: flex; justify-content: flex-start; gap: 12px; padding: 0 14px;
+}
+.bo-schale-leiste[data-beschriftet="true"] .bo-schale-leiste__name { position: static; width: auto; height: auto; margin: 0; clip-path: none; font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bo-schale-leiste[data-beschriftet="true"] .bo-schale-leiste__liste .bo-schale-leiste__tip { display: none; }
+.bo-schale-leiste[data-beschriftet="true"] .bo-schale-leiste__fuss { flex-direction: row; justify-content: space-between; }
+
+/* Hell/Dunkel-Symbol rein per CSS (kein Springen beim Laden) */
+.bo-schale-thema__mond, .bo-schale-thema__sonne { display: grid; }
+.bo-schale-thema__sonne { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .bo-schale-thema__sonne { display: grid; }
+  :root:not([data-theme="light"]) .bo-schale-thema__mond { display: none; }
+}
+:root[data-theme="dark"] .bo-schale-thema__sonne { display: grid; }
+:root[data-theme="dark"] .bo-schale-thema__mond { display: none; }
+
+/* Eigener Avatar unten (Benutzermenü) */
+.bo-schale-ich {
+  position: relative; display: grid; place-items: center; border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--bo-dauer-weich) var(--ease-feder);
+}
+.bo-schale-ich:hover { transform: scale(1.04); }
+.bo-schale-ich:active { transform: scale(0.94); transition-duration: var(--bo-dauer-druck); }
+
+/* ---------------------------------------------------------------- Spalte, Band, Kopf, Inhalt */
+.bo-schale-spalte { min-width: 0; }
+
+/* Testband: erste Zeile im Inhalt unter der Kopfzeile – Kopf bleibt bündig mit dem Leisten-Logo */
+.bo-schale-band { margin: -4px 0 20px; }
+.bo-schale-band__pille {
+  display: inline-flex; align-items: center; gap: 8px; max-width: 100%;
+  min-height: 28px; padding: 4px 12px; border-radius: 999px;
+  font-size: 12px; line-height: 16px; font-weight: 500;
+  background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text);
+}
+.bo-schale-band__pille strong { font-weight: 600; }
+.bo-schale-band__punkt { width: 6px; height: 6px; flex: none; border-radius: 50%; background: var(--color-bo-eiche); }
+.bo-schale-band__lang { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bo-schale-band__kurz { display: none; }
+
+.bo-schale-kopf {
+  position: sticky; top: 0; z-index: 40;
+  display: grid; grid-template-columns: minmax(max-content, 1fr) minmax(0, auto) minmax(max-content, 1fr); grid-template-areas: "marke reiter werkzeuge";
+  align-items: center; column-gap: 24px;
+  height: 88px; padding: 0 var(--inhalt-r) 0 var(--inhalt-l);
+  transition: background-color 240ms ease, box-shadow 240ms ease;
+}
+.bo-schale-kopf.is-gescrollt {
+  background: var(--color-bo-mat-strong);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  backdrop-filter: blur(32px) saturate(180%);
+  box-shadow: 0 var(--bo-hair) 0 var(--color-bo-line);
+}
+.bo-schale-kopf__marke {
+  grid-area: marke; justify-self: start;
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 8px 12px; margin-left: -12px; border-radius: var(--radius-bo-ctl);
+}
+.bo-schale-kopf__monogramm {
+  display: none;
+  width: 40px; height: 40px; border-radius: 50%; place-items: center; flex: none;
+  font-family: var(--font-display); font-size: 20px; font-weight: 500; line-height: 1; padding-bottom: 2px;
+  background: var(--color-bo-action); color: var(--color-bo-action-text); box-shadow: var(--bo-sh-ink);
+}
+.bo-schale-marke { display: inline-flex; flex-direction: column; gap: 2px; line-height: 1; }
+.bo-schale-marke__wort { font-size: 17px; letter-spacing: 0.3em; margin-right: -0.3em; color: var(--color-bo-text); }
+.bo-schale-marke__unter { font-size: 11px; line-height: 14px; letter-spacing: 0.02em; color: var(--color-bo-text-soft); }
+.bo-schale-kopf__werkzeuge { grid-area: werkzeuge; justify-self: end; display: flex; align-items: center; gap: 8px; }
+.bo-schale-kopf__slot { display: flex; align-items: center; gap: 8px; margin-right: 8px; }
+.bo-schale-kopf .bo-schale-werkzeug { width: 44px; height: 44px; }
+
+.bo-schale-inhalt { padding: 8px var(--inhalt-r) 64px var(--inhalt-l); max-width: 1600px; outline: none; }
+.bo-schale[data-breit="true"] .bo-schale-inhalt { max-width: none; }
+
+/* ---------------------------------------------------------------- Pillen-Reiter */
+.bo-schale-reiter { grid-area: reiter; justify-self: center; min-width: 0; max-width: 100%; }
+.bo-schale-reiter-platz { grid-area: reiter; }
+.bo-schale-reiter__liste {
+  position: relative; isolation: isolate;
+  display: flex; gap: 4px; margin: 0; padding: 4px; list-style: none;
+  max-width: 100%; overflow-x: auto; scrollbar-width: none;
+  border-radius: 999px;
+  background: var(--color-bo-mat);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-btn);
+}
+.bo-schale-reiter__liste::-webkit-scrollbar { display: none; }
+.bo-schale-reiter__liste > li { flex: none; }
+.bo-schale-reiter__i {
+  position: relative; z-index: 1;
+  height: 40px; padding: 0 20px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  font-size: 14px; font-weight: 500; color: var(--color-bo-text-soft);
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 200ms ease, color 200ms ease, transform var(--bo-dauer-weich) var(--ease-feder);
+}
+.bo-schale-reiter__i:hover:not(.is-an) { color: var(--color-bo-text); background: var(--color-bo-fill); }
+.bo-schale-reiter__i:active { transform: scale(0.97); transition-duration: var(--bo-dauer-druck); }
+.bo-schale-reiter__i.is-an { color: var(--color-bo-action-text); }
+.bo-schale-reiter__i.is-flaeche { background: var(--color-bo-action); box-shadow: var(--bo-sh-ink); }
+.bo-schale-reiter__ind {
+  position: absolute; left: 0; top: 0; z-index: 0;
+  border-radius: 999px; background: var(--color-bo-action); box-shadow: var(--bo-sh-ink);
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------- gemeinsame Kleinteile */
+.bo-schale-klein { font-size: 13px; line-height: 18px; color: var(--color-bo-text-soft); }
+.bo-schale-gruppentitel { margin: 0; padding: 12px 12px 6px; font-size: 13px; line-height: 18px; font-weight: 500; color: var(--color-bo-text-soft); }
+.bo-schale-symbol {
+  width: 36px; height: 36px; flex: none; border-radius: 50%;
+  display: inline-grid; place-items: center;
+  background: var(--color-bo-fill-2); color: var(--color-bo-text-soft);
+}
+.bo-schale-symbol--warn { background: var(--color-bo-eiche-soft); color: var(--color-bo-eiche-text); }
+.bo-schale-neu { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--color-bo-cognac); }
+.bo-schale-textknopf {
+  display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; margin: 0 -4px; border-radius: 999px;
+  font-size: 13px; font-weight: 500; color: var(--color-bo-text-soft);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+.bo-schale-textknopf:hover { background: var(--color-bo-fill); color: var(--color-bo-text); }
+.bo-schale-chip {
+  display: inline-flex; align-items: center; gap: 6px; max-width: 100%;
+  min-height: 28px; padding: 0 12px; border-radius: 999px;
+  font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  background: var(--color-bo-surface); color: var(--color-bo-text); box-shadow: var(--bo-sh-btn);
+  transition: background-color 200ms ease;
+}
+a.bo-schale-chip:hover { background: var(--color-bo-surface-2); }
+.bo-schale-chip--ruhig { background: var(--color-bo-fill-2); box-shadow: none; color: var(--color-bo-text-soft); }
+.bo-schale-kappe {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  min-width: 22px; height: 22px; padding: 0 6px; border-radius: 6px;
+  font-family: inherit; font-size: 11px; font-weight: 600; line-height: 1;
+  background: var(--color-bo-fill-2); color: var(--color-bo-text-soft);
+}
+.bo-schale-tasten { font-size: 12px; line-height: 16px; color: var(--color-bo-text-faint); }
+.bo-schale-leer { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 32px 16px; font-size: 14px; color: var(--color-bo-text-soft); text-align: center; }
+.bo-schale-fehler { font-size: 13px; line-height: 18px; color: var(--color-bo-danger); }
+.bo-schale-ok { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-bo-salbei-text); }
+
+/* Zeile in Panels (Glocke, Menü, Palette, Hilfe): luftig, Hover = gerundete Fläche, keine Linien */
+.bo-schale-zeile {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  min-height: 48px; padding: 6px 10px; border-radius: 16px;
+  text-align: left; color: var(--color-bo-text); cursor: pointer;
+  transition: background-color 160ms ease, transform var(--bo-dauer-weich) var(--ease-feder);
+}
+.bo-schale-zeile:hover, .bo-schale-zeile[data-aktiv="true"], .bo-schale-zeile.is-aktiv { background: var(--color-bo-fill-2); }
+.bo-schale-zeile:active { transform: scale(0.985); transition-duration: var(--bo-dauer-druck); }
+.bo-schale-zeile[aria-current="true"] { background: var(--color-bo-fill); }
+.bo-schale-zeile__titel { display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 15px; line-height: 20px; font-weight: 500; letter-spacing: -0.006em; }
+
+/* ---------------------------------------------------------------- Glocke */
+.bo-schale-glocke { display: flex; flex-direction: column; gap: 12px; width: min(400px, calc(100vw - 32px)); max-height: min(72vh, 640px); padding: 8px; }
+.bo-schale-glocke__kopf { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 4px 0 8px; }
+.bo-schale-glocke__liste { flex: 1; min-height: 120px; overflow-y: auto; margin: 0 -4px; padding: 0 4px; scrollbar-width: thin; }
+.bo-schale-glocke__gruppe + .bo-schale-glocke__gruppe { margin-top: 4px; }
+.bo-schale-glocke__frei { padding: 4px 0; border-radius: 22px; }
+.bo-schale-glocke__frei[data-aktiv="true"] .bo-schale-freigabe { box-shadow: inset 0 0 0 1.5px var(--color-bo-line-strong); }
+.bo-schale-glocke__fuss { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 4px 0 8px; flex-wrap: wrap; }
+
+/* ---------------------------------------------------------------- Freigabe */
+.bo-schale-freigabe {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 16px; border-radius: 20px;
+  background: var(--color-bo-surface-2);
+  transition: box-shadow 200ms ease;
+}
+.bo-schale-freigabe__kopf { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.bo-schale-freigabe__titel { font-size: 15px; line-height: 20px; font-weight: 600; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bo-schale-freigabe__betrag { flex: none; font-size: 17px; line-height: 22px; font-weight: 500; letter-spacing: -0.012em; font-variant-numeric: tabular-nums; }
+.bo-schale-freigabe__inhalt { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.bo-schale-freigabe__grund { padding-left: 12px; border-left: 2px solid var(--color-bo-text); font-size: 14px; line-height: 20px; color: var(--color-bo-text); }
+.bo-schale-freigabe__knoepfe { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+.bo-schale-freigabe__ablehnen { display: flex; flex-direction: column; gap: 6px; }
+.bo-schale-freigabe__warte { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--color-bo-text-soft); }
+.bo-schale-freigabe__eigen { display: inline-flex; align-items: center; gap: 6px; }
+
+/* ---------------------------------------------------------------- Benutzermenü */
+.bo-schale-menu { display: flex; flex-direction: column; gap: 4px; width: min(340px, calc(100vw - 32px)); padding: 8px; }
+.bo-schale-menu__ich { display: flex; align-items: center; gap: 12px; padding: 8px 8px 4px; }
+.bo-schale-menu__name { font-size: 17px; line-height: 22px; font-weight: 600; letter-spacing: -0.012em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bo-schale-menu__rollen { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 4px 8px 8px; list-style: none; }
+.bo-schale-menu__rollen .bo-schale-chip { min-height: 24px; padding: 0 10px; font-size: 12px; }
+.bo-schale-menu__abschnitt { display: flex; flex-direction: column; padding-top: 4px; }
+.bo-schale-menu__abschnitt .bo-schale-gruppentitel { padding: 8px 8px 6px; }
+.bo-schale-menu__einstellungen { gap: 4px; padding: 8px; margin: 4px 0; border-radius: 20px; background: var(--color-bo-surface-2); }
+.bo-schale-menu__einstellungen .bo-schale-gruppentitel { padding: 4px 4px 2px; }
+.bo-schale-menu__einstellungen .bo-seg { width: 100%; }
+.bo-schale-zeile--knopf { background: none; border: 0; font: inherit; }
+
+/* ---------------------------------------------------------------- Befehlspalette */
+dialog.bo-schale-palette {
+  position: fixed; inset: 12vh 0 auto; margin: 0 auto;
+  width: min(640px, calc(100vw - 32px)); max-width: none; max-height: 76vh;
+  padding: 8px; border: 0; border-radius: var(--radius-bo-kachel);
+  display: none; flex-direction: column;
+  color: var(--color-bo-text);
+  background: var(--color-bo-mat-strong);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
+  box-shadow: inset 0 0.5px 0 var(--color-bo-mat-edge), var(--bo-sh-float);
+}
+dialog.bo-schale-palette[open] { display: flex; }
+.bo-schale-palette__feld {
+  display: flex; align-items: center; gap: 10px;
+  height: 52px; padding: 0 12px 0 16px; border-radius: 999px;
+  background: var(--color-bo-fill);
+  transition: box-shadow 200ms ease, background-color 200ms ease;
+}
+.bo-schale-palette__feld:focus-within { background: var(--color-bo-surface); box-shadow: 0 0 0 2px var(--color-bo-focus); }
+.bo-schale-palette__eingabe { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; color: var(--color-bo-text); font: inherit; font-size: 17px; letter-spacing: -0.01em; }
+.bo-schale-palette__eingabe::placeholder { color: var(--color-bo-text-faint); }
+.bo-schale-palette__eingabe:focus-visible { outline: none; }
+.bo-schale-palette__liste { flex: 1; min-height: 0; margin: 0; padding: 4px 0; list-style: none; overflow-y: auto; scrollbar-width: thin; }
+.bo-schale-palette__gruppe > ul { margin: 0; padding: 0; list-style: none; }
+.bo-schale-zeile--option { min-height: 44px; border-radius: 14px; }
+.bo-schale-palette__fuss { padding: 8px 16px 4px; font-size: 12px; line-height: 16px; color: var(--color-bo-text-faint); }
+.bo-schale-token {
+  display: inline-flex; align-items: center; gap: 6px; flex: none;
+  height: 28px; padding: 0 10px; border-radius: 999px;
+  font-size: 13px; font-weight: 600; white-space: nowrap;
+  background: var(--color-bo-action); color: var(--color-bo-action-text);
+}
+.bo-schale-token--ruhig { background: var(--color-bo-cognac-soft); color: var(--color-bo-cognac-text); font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------------- Hilfe-Panel und Artikel */
+.bo-schale-hilfe { display: flex; flex-direction: column; gap: 24px; }
+.bo-schale-hilfe__ohne { display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 20px; background: var(--color-bo-surface-2); font-size: 14px; color: var(--color-bo-text-soft); }
+.bo-schale-hilfe__abschnitt { display: flex; flex-direction: column; gap: 4px; }
+.bo-schale-hilfe__abschnitt > .bo-schale-gruppentitel { padding: 0 4px 4px; }
+.bo-schale-hilfe__karte { margin: 0; padding: 6px; list-style: none; border-radius: 20px; background: var(--color-bo-surface-2); }
+.bo-schale-hilfe__kuerzel { margin: 0; padding: 6px 12px; border-radius: 20px; background: var(--color-bo-surface-2); }
+.bo-schale-hilfe__kuerzel > div { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 36px; }
+.bo-schale-hilfe__kuerzel dt { font-size: 14px; color: var(--color-bo-text); }
+.bo-schale-hilfe__kuerzel dd { margin: 0; }
+.bo-schale-hilfe__abschnitt > .bo-schale-textknopf { align-self: flex-start; margin-top: 4px; }
+
+.bo-schale-artikel { display: flex; flex-direction: column; gap: 12px; font-size: 15px; line-height: 22px; color: var(--color-bo-text); }
+.bo-schale-artikel h3 { margin-top: 8px; font-size: 15px; line-height: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.bo-schale-artikel ul { margin: 0; padding-left: 20px; list-style: disc; display: flex; flex-direction: column; gap: 6px; }
+.bo-schale-artikel strong { font-weight: 600; }
+
+/* ---------------------------------------------------------------- Erstbesuch-Band (G-27) */
+.bo-schale-erstbesuch {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin: 0 0 24px; padding: 14px 14px 14px 16px; border-radius: 20px;
+  background: var(--color-bo-surface); box-shadow: var(--bo-sh-card);
+}
+.bo-schale-erstbesuch__symbol { width: 36px; height: 36px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--color-bo-cognac-soft); color: var(--color-bo-cognac-text); }
+.bo-schale-erstbesuch__titel { font-size: 15px; line-height: 20px; font-weight: 600; }
+.bo-schale-erstbesuch__text { font-size: 14px; line-height: 20px; color: var(--color-bo-text-soft); max-width: 72ch; }
+.bo-schale-erstbesuch__knoepfe { display: flex; gap: 8px; margin-left: auto; }
+
+/* ---------------------------------------------------------------- Sitzung */
+.bo-schale-sitzung {
+  position: fixed; z-index: 60; left: 50%; bottom: 24px; translate: -50% 0;
+  display: flex; align-items: center; gap: 12px; max-width: calc(100vw - 32px);
+  padding: 8px 8px 8px 20px; border-radius: 999px; font-size: 14px;
+}
+
+/* ---------------------------------------------------------------- Kundenmodus (G-20) */
+.bo-schale-rueckkehr {
+  position: relative; grid-area: marke; justify-self: start;
+  padding: 8px 12px; margin-left: -12px; border-radius: var(--radius-bo-ctl);
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; touch-action: manipulation;
+}
+.bo-schale-rueckkehr__ring {
+  position: absolute; left: 12px; right: 12px; bottom: 0; height: 2px; border-radius: 2px;
+  background: var(--color-bo-action); transform: scaleX(0); transform-origin: left;
+  transition: transform 160ms ease;
+}
+.bo-schale-rueckkehr[data-drueckt="true"] .bo-schale-rueckkehr__ring { transform: scaleX(1); transition: transform 800ms linear; }
+
+:root[data-bo-kundenmodus="an"] [data-bo-intern] { display: none !important; }
+:root[data-bo-kundenmodus="an"] .bo-schale { --inhalt-l: 48px; --inhalt-r: 48px; }
+:root[data-bo-kundenmodus="an"] .bo-schale-leiste,
+:root[data-bo-kundenmodus="an"] .bo-schale-band { display: none; }
+:root[data-bo-kundenmodus="an"] .bo-schale-kopf { grid-template-columns: 1fr; }
+:root[data-bo-kundenmodus="an"] .bo-schale-inhalt { font-size: calc(var(--bo-font-body, 14px) + 2px); }
+
+/* ---------------------------------------------------------------- Tablet (Leiste 64, Reiter in zweiter Reihe) */
+@media (max-width: 1099px) {
+  .bo-schale { --leiste-x: 12px; --leiste-b: 64px; --inhalt-l: calc(var(--leiste-x) + var(--leiste-b) + 20px); --inhalt-r: 20px; }
+  .bo-schale-leiste { top: 12px; bottom: 12px; border-radius: 32px; }
+  .bo-schale-kopf { height: auto; min-height: 72px; padding-top: 12px; padding-bottom: 12px; row-gap: 12px; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "marke werkzeuge" "reiter reiter"; }
+  .bo-schale-reiter { justify-self: start; }
+}
+
+/* ---------------------------------------------------------------- Telefon: Tab-Kapsel unten */
+@media (max-width: 767px) {
+  .bo-schale { --inhalt-l: 16px; --inhalt-r: 16px; }
+  .bo-schale:has(.bo-schale-leiste[data-beschriftet="true"]) { --leiste-b: 64px; }
+  .bo-schale-leiste {
+    top: auto; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: auto; height: 64px;
+    flex-direction: row; gap: 4px; padding: 8px; border-radius: 32px;
+  }
+  .bo-schale-leiste[data-beschriftet="true"] { padding: 8px; }
+  .bo-schale-leiste__logo, .bo-schale-leiste__klein, .bo-schale-thema, .bo-schale-leiste__tip { display: none; }
+  .bo-schale-leiste__liste { flex-direction: row; margin: 0; gap: 4px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; align-items: center; }
+  .bo-schale-leiste__liste::-webkit-scrollbar { display: none; }
+  .bo-schale-leiste .bo-schale-leiste__punkt,
+  .bo-schale-leiste[data-beschriftet="true"] .bo-schale-leiste__liste .bo-schale-leiste__punkt { --leiste-punkt: 48px; width: 48px; padding: 0; justify-content: center; }
+  .bo-schale-leiste[data-beschriftet="true"] .bo-schale-leiste__name { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .bo-schale-leiste__fuss { flex-direction: row; }
+  .bo-schale-kopf { min-height: 64px; padding-top: 8px; padding-bottom: 8px; column-gap: 12px; }
+  .bo-schale-kopf__monogramm { display: inline-grid; }
+  .bo-schale-kopf__marke .bo-schale-marke { display: none; }
+  .bo-schale-kopf__werkzeuge { gap: 4px; }
+  .bo-schale-kopf .bo-schale-werkzeug { width: 44px; height: 44px; }
+  .bo-schale-kopf__slot { margin-right: 4px; }
+  .bo-schale-reiter { justify-self: stretch; }
+  .bo-schale-reiter__i { height: 36px; padding: 0 16px; }
+  .bo-schale-inhalt { padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)); }
+  .bo-schale-band__lang { display: none; }
+  .bo-schale-band__kurz { display: inline; }
+  .bo-schale-erstbesuch__knoepfe { margin-left: 50px; }
+  .bo-schale-sitzung { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* Nur Entwicklung (next dev): das Next-Symbol unten links (20 px vom Rand, 36 px) liegt sonst über dem
+   eigenen Avatar bzw. dem ersten Kreis der Tab-Kapsel. Im Betrieb ohne Wirkung. */
+.bo-schale[data-entwicklung="true"] .bo-schale-leiste { padding-bottom: 60px; }
+@media (max-width: 767px) {
+  .bo-schale[data-entwicklung="true"] .bo-schale-leiste { padding-bottom: 8px; left: 68px; }
+}
+
+/* Kontinuierliche Rundung, wo der Browser es kann */
+@supports (corner-shape: superellipse(1.4)) {
+  :is(.bo-schale-leiste, dialog.bo-schale-palette, .bo-schale-freigabe, .bo-schale-erstbesuch, .bo-schale-hilfe__karte, .bo-schale-menu__einstellungen) {
+    corner-shape: superellipse(1.35);
+  }
+}
+
+/* Reduzierte Bewegung: Ortswechsel sofort, Farbübergänge bleiben */
+@media (prefers-reduced-motion: reduce) {
+  .bo-schale-leiste__punkt, .bo-schale-leiste__logo, .bo-schale-leiste__tip, .bo-schale-ich, .bo-schale-reiter__i, .bo-schale-zeile, .bo-schale-rueckkehr__ring { transition-duration: 1ms !important; }
+  .bo-schale-ich:hover { transform: none; }
+}
+
+@media print {
+  .bo-schale-leiste, .bo-schale-kopf, .bo-schale-band, .bo-schale-sitzung, .bo-schale-erstbesuch { display: none !important; }
+  .bo-schale-inhalt { padding: 0; max-width: none; }
+}

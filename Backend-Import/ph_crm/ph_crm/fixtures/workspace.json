@@ -22,7 +22,8 @@
    {"label": "Neuer Termin", "link_to": "PH Termin", "type": "DocType", "doc_view": "New", "color": "Grey"},
    {"label": "Kontakte", "link_to": "PH Kontakt", "type": "DocType", "doc_view": "List", "color": "Grey", "stats_filter": "{\"status\": \"Kunde\"}"},
    {"label": "Vertriebscockpit", "link_to": "PH Vertriebscockpit", "type": "Report", "color": "Grey"},
-   {"label": "Anfragen nach Quelle", "link_to": "PH Anfragen nach Quelle", "type": "Report", "color": "Grey"}
+   {"label": "Anfragen nach Quelle", "link_to": "PH Anfragen nach Quelle", "type": "Report", "color": "Grey"},
+   {"label": "Pipeline", "link_to": "PH Pipeline", "type": "Report", "color": "Green"}
   ],
   "charts": [
    {"chart_name": "PH Anfragen je Woche", "label": "Anfragen je Woche"},
@@ -43,31 +44,41 @@
    {"number_card_name": "PH Neue Kunden dieser Monat", "label": "Neue Kunden (Monat)"}
   ],
   "links": [
-   {"type": "Card Break", "label": "Anfragen und Kontakte", "link_count": 4, "hidden": 0, "onboard": 0},
+   {"type": "Card Break", "label": "Anfragen und Kontakte", "link_count": 5, "hidden": 0, "onboard": 0},
    {"type": "Link", "label": "PH Anfrage", "link_to": "PH Anfrage", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
    {"type": "Link", "label": "PH Kontakt", "link_to": "PH Kontakt", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
    {"type": "Link", "label": "PH Beratungsgespräch", "link_to": "PH Beratungsgespraech", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
    {"type": "Link", "label": "Kanban Anfragen", "link_to": "PH Anfrage", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "Datenschutzanfragen (DSGVO)", "link_to": "PH Datenschutzanfrage", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
    {"type": "Card Break", "label": "Termine", "link_count": 4, "hidden": 0, "onboard": 0},
    {"type": "Link", "label": "PH Termin", "link_to": "PH Termin", "link_type": "DocType", "hidden": 0, "onboard": 1, "dependencies": ""},
    {"type": "Link", "label": "PH Terminart", "link_to": "PH Terminart", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
    {"type": "Link", "label": "PH Verfügbarkeit", "link_to": "PH Verfuegbarkeit", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
    {"type": "Link", "label": "Kalender-Events", "link_to": "Event", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
-   {"type": "Card Break", "label": "Berichte", "link_count": 5, "hidden": 0, "onboard": 0},
+   {"type": "Card Break", "label": "Berichte", "link_count": 9, "hidden": 0, "onboard": 0},
    {"type": "Link", "label": "Vertriebscockpit", "link_to": "PH Vertriebscockpit", "link_type": "Report", "hidden": 0, "onboard": 1, "dependencies": "", "is_query_report": 1},
    {"type": "Link", "label": "Anfragen nach Quelle", "link_to": "PH Anfragen nach Quelle", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
    {"type": "Link", "label": "Reaktionszeiten", "link_to": "PH Reaktionszeiten", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
    {"type": "Link", "label": "Termine je Berater", "link_to": "PH Termine je Berater", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
    {"type": "Link", "label": "Kontakt-Datenauskunft (DSGVO)", "link_to": "PH Kontakt Datenauskunft", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": "", "is_query_report": 1},
+   {"type": "Link", "label": "Pipeline", "link_to": "PH Pipeline", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "Verlustgründe", "link_to": "PH Verlustgruende", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "Anfragen nach Kampagne", "link_to": "PH Anfragen nach Kampagne", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "Kontakt-Dubletten", "link_to": "PH Kontakt Dubletten", "link_type": "Report", "hidden": 0, "onboard": 0, "dependencies": ""},
    {"type": "Card Break", "label": "Aufgaben und Kommunikation", "link_count": 4, "hidden": 0, "onboard": 0},
    {"type": "Link", "label": "PH Aufgabe", "link_to": "PH Aufgabe", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
    {"type": "Link", "label": "ToDo (Zuweisungen)", "link_to": "ToDo", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
    {"type": "Link", "label": "E-Mails (Communication)", "link_to": "Communication", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
    {"type": "Link", "label": "E-Mail-Vorlagen", "link_to": "Email Template", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
-   {"type": "Card Break", "label": "Einstellungen", "link_count": 2, "hidden": 0, "onboard": 0},
+   {"type": "Card Break", "label": "Einstellungen", "link_count": 3, "hidden": 0, "onboard": 0},
    {"type": "Link", "label": "PH Termin Einstellungen", "link_to": "PH Termin Einstellungen", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
-   {"type": "Link", "label": "E-Mail-Konto (info@)", "link_to": "Email Account", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""}
+   {"type": "Link", "label": "E-Mail-Konto (info@)", "link_to": "Email Account", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""},
+   {"type": "Link", "label": "Beratungsvorlagen", "link_to": "PH Beratungsvorlage", "link_type": "DocType", "hidden": 0, "onboard": 0, "dependencies": ""}
   ],
-  "roles": [{"role": "PH CRM Mitarbeiter"}, {"role": "PH CRM Leitung"}, {"role": "PH Geschäftsführung"}]
+  "roles": [
+   {"role": "PH CRM Mitarbeiter"},
+   {"role": "PH CRM Leitung"},
+   {"role": "PH Geschäftsführung"}
+  ]
  }
 ]

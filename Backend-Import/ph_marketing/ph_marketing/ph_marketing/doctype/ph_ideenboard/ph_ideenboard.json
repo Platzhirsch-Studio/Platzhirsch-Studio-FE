@@ -1,0 +1,256 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 18:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "modified": "2026-11-04 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Marketing",
+ "name": "PH Ideenboard",
+ "owner": "Administrator",
+ "index_web_pages_for_search": 0,
+ "autoname": "field:board_id",
+ "naming_rule": "By fieldname",
+ "allow_import": 0,
+ "allow_rename": 0,
+ "title_field": "titel",
+ "search_fields": "status,anzahl_karten",
+ "sort_field": "aktualisiert_am",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "description": "Geteiltes Ideenboard der Website (Teilen-Link, src/lib/ideenboard): Kopie ohne Personendaten, nur Hashes der Schlüssel, Löschung 12 Monate nach der letzten Änderung.",
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aktiv\nWiderrufen",
+   "default": "Aktiv",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "anzahl_karten",
+   "fieldtype": "Int",
+   "label": "Karten",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "erstellt_am",
+   "fieldtype": "Datetime",
+   "label": "Erstellt (Website)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "aktualisiert_am",
+   "fieldtype": "Datetime",
+   "label": "Zuletzt geändert",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "laeuft_ab_am",
+   "fieldtype": "Datetime",
+   "label": "Löschung am",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_karten",
+   "fieldtype": "Section Break",
+   "label": "Karten"
+  },
+  {
+   "fieldname": "karten",
+   "fieldtype": "Table",
+   "label": "Karten",
+   "options": "PH Ideenboard Karte",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_system",
+   "fieldtype": "Section Break",
+   "label": "System",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "board_id",
+   "fieldtype": "Data",
+   "label": "Board-ID",
+   "length": 32,
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "share_hash",
+   "fieldtype": "Data",
+   "label": "Teilen-Link (SHA-256)",
+   "length": 64,
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "admin_hash",
+   "fieldtype": "Data",
+   "label": "Verwaltungsschlüssel (SHA-256)",
+   "length": 64,
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "Idempotency-Key",
+   "length": 80,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "quelle",
+   "fieldtype": "Data",
+   "label": "Quelle",
+   "read_only": 1,
+   "default": "website"
+  }
+ ],
+ "links": [],
+ "states": [
+  {
+   "title": "Aktiv",
+   "color": "Green"
+  },
+  {
+   "title": "Widerrufen",
+   "color": "Gray"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Marketing Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Website Integration",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  }
+ ],
+ "field_order": [
+  "titel",
+  "status",
+  "anzahl_karten",
+  "cb_1",
+  "erstellt_am",
+  "aktualisiert_am",
+  "laeuft_ab_am",
+  "sb_karten",
+  "karten",
+  "sb_system",
+  "board_id",
+  "share_hash",
+  "admin_hash",
+  "cb_2",
+  "idempotency_key",
+  "quelle"
+ ]
+}

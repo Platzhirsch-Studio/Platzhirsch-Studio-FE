@@ -49,6 +49,13 @@ jinja = {
 # Gemeinsame Desk-Hilfen (Summenblock, Dialoge) für alle Faktura-Formulare
 app_include_js = ["/assets/ph_faktura/js/ph_faktura.js"]
 
+# Buttons auf DocTypes von ph_service (wird nach ph_faktura installiert → doctype_js statt Client-Script-Fixture,
+# das bei fehlendem DocType die Installation bräche). Integration Runde 3.
+doctype_js = {
+    "PH Pflege Abo": "public/js/ph_pflege_abo_faktura.js",
+    "PH Lieferantenregress": "public/js/ph_lieferantenregress_faktura.js",
+}
+
 # Zahlungen aus ph_shop/ph_kassa (PH Zahlung) auf Rechnungen verbuchen
 doc_events = {
     "PH Zahlung": {
@@ -57,12 +64,18 @@ doc_events = {
     },
     "PH Faktura Einstellungen": {"on_update": "ph_faktura.ph_faktura.ereignisse.einstellungen_geaendert"},
     "PH Mahnwesen Einstellungen": {"on_update": "ph_faktura.ph_faktura.ereignisse.einstellungen_geaendert"},
+    # Integration Runde 3: ausgebuchte Regress-Differenz (ph_service) → Buchungsjournal „Ausbuchung“ → Export-Zeile
+    "PH Lieferantenregress": {"on_update": "ph_faktura.ph_faktura.integration.regress_aktualisiert"},
 }
+
+# ph_shop Erweiterungspunkt (ph_shop/hooks.py): Gutschrift aus Teilerstattung/Teilstorno/Kulanz nach Zahlung,
+# fn(bestellung_doc, erstattung_zeile) → Belegnummer (PH Bestellung Erstattung.gutschrift)
+ph_shop_gutschrift_erstellen = ["ph_faktura.api.gutschrift_aus_bestellung"]
 
 # Zeitgesteuert (Europe/Vienna laut System Settings)
 scheduler_events = {
     "cron": {
-        "0 6 * * *": ["ph_faktura.ph_faktura.tasks.ueberfaellig_pruefen", "ph_faktura.ph_faktura.tasks.angebote_ablaufen"],
+        "0 6 * * *": ["ph_faktura.ph_faktura.tasks.ueberfaellig_pruefen", "ph_faktura.ph_faktura.tasks.angebote_ablaufen", "ph_faktura.ph_faktura.tasks.zahlungsplan_erinnern"],
         "30 6 * * 1-5": ["ph_faktura.ph_faktura.tasks.mahnlauf_automatisch"],
         "0 7 * * 1": ["ph_faktura.ph_faktura.tasks.oss_schwelle_pruefen"],
         "15 6 1 * *": ["ph_faktura.ph_faktura.tasks.uva_entwurf_monat"],

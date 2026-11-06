@@ -38,7 +38,11 @@ export function frappeMessage(data) {
   }
 }
 
-export function newsletterHandler({ url, fetchImpl, limiter, now, resolveHeaders, env } = {}) {
+// headers (optional): Kopfzeilen des Ziels – bei BACKEND_GENERATION=ph mit
+// Token (src/lib/backend/forms.js newsletterPhTarget); sonst wie bisher.
+// Auch als (async) Funktion (request) => headers, z. B. für X-PH-Client je Besucher.
+// extraFields(data) (optional): weitere Felder an das Ziel, z. B. utm_* für ph_marketing.
+export function newsletterHandler({ url, fetchImpl, limiter, now, resolveHeaders, env, headers, extraFields } = {}) {
   return async function POST(request) {
     try {
       const outerHeaders = await outerHeadersOf(resolveHeaders);
@@ -61,8 +65,8 @@ export function newsletterHandler({ url, fetchImpl, limiter, now, resolveHeaders
 
       const result = await forwardJson(
         url,
-        { email: guard.data.email.trim() },
-        { fetchImpl: fetchImpl || fetch, headers: { "Content-Type": "application/json", Accept: "application/json" } }
+        { email: guard.data.email.trim(), ...(typeof extraFields === "function" ? extraFields(guard.data) : {}) },
+        { fetchImpl: fetchImpl || fetch, headers: (typeof headers === "function" ? await headers(request) : headers) || { "Content-Type": "application/json", Accept: "application/json" } }
       );
       if (result.kind === "timeout" || result.kind === "network" || result.kind === "non_json") {
         console.error(`[forms] newsletter_subscribe: backoffice ${result.kind}`, result.status || "", result.detail || "");

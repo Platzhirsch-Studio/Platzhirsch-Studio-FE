@@ -24,8 +24,13 @@ frappe.ui.form.on("PH Gutschein", {
 				});
 			}), __("Aktionen"));
 		}
-		if (einloesbar && leitung) frm.add_custom_button(__("Sperren"), () => frappe.prompt({ fieldname: "grund", fieldtype: "Data", label: __("Sperrgrund"), reqd: 1 }, (v) => frm.call({ method: "sperren", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Sperren")), __("Aktionen"));
-		if (frm.doc.status === "Gesperrt" && leitung) frm.add_custom_button(__("Entsperren"), () => frm.call({ method: "entsperren", doc: frm.doc }).then(() => frm.reload_doc()), __("Aktionen"));
+		if (einloesbar) frm.add_custom_button(__("Sperren"), () => frappe.prompt([
+			{ fieldname: "sperrgrund_art", fieldtype: "Select", label: __("Sperrgrund"), options: ["Verlust gemeldet", "Betrugsverdacht", "Zahlung storniert/Rückbuchung", "Fehlausgabe", "Sonstiges"], reqd: 1 },
+			{ fieldname: "grund", fieldtype: "Data", label: __("Notiz"), reqd: 1 },
+		], (v) => frm.call({ method: "sperren", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Sperren")), __("Aktionen"));
+		if (frm.doc.status === "Gesperrt" && leitung && !frm.doc.ersetzt_durch) frm.add_custom_button(__("Entsperren"), () => frappe.prompt({ fieldname: "grund", fieldtype: "Data", label: __("Begründung"), reqd: 1 }, (v) => frm.call({ method: "entsperren", doc: frm.doc, args: v }).then(() => frm.reload_doc()), __("Entsperren")), __("Aktionen"));
+		if (frm.doc.sperrgrund_art) frm.dashboard.add_indicator(__("Gesperrt: {0}", [__(frm.doc.sperrgrund_art)]), "red");
+		if (frm.doc.ausgabe_beleg) frm.add_custom_button(__("Ausgabebeleg öffnen"), () => frappe.set_route("Form", frm.doc.ausgabe_beleg_doctype, frm.doc.ausgabe_beleg));
 		if (frm.doc.pdf) {
 			frm.add_custom_button(__("PDF senden"), () => frappe.prompt({ fieldname: "empfaenger", fieldtype: "Data", options: "Email", label: __("An"), default: frm.doc.kaeufer_email, reqd: 1 }, (v) => frm.call({ method: "pdf_senden", doc: frm.doc, args: v, freeze: true }).then(() => { frappe.show_alert({ message: __("Gesendet"), indicator: "green" }); frm.reload_doc(); }), __("Senden")), __("Aktionen"));
 			frm.add_custom_button(__("PDF öffnen"), () => window.open(frm.doc.pdf, "_blank"));

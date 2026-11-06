@@ -36,6 +36,9 @@
   "baustelle_telefon",
   "sb_termine",
   "liefertermin_geplant",
+  "ware_komplett",
+  "ware_komplett_am",
+  "ware_fehlend",
   "montage_von",
   "montage_bis",
   "cb_termine",
@@ -57,7 +60,36 @@
   "anzahlung_cent",
   "bezahlt_cent",
   "offen_cent",
+  "nachtraege_cent",
   "zeit_min_gesamt",
+  "sb_kalkulation",
+  "kalk_ampel",
+  "kalk_ueber_budget",
+  "kalk_fertigstellung",
+  "kalk_aktualisiert_am",
+  "cb_kalk_1",
+  "kalk_erloes_cent",
+  "kalk_ist_cent",
+  "kalk_obligo_cent",
+  "kalk_prognose_cent",
+  "cb_kalk_2",
+  "kalk_db1_prozent",
+  "kalk_db_laufend_prozent",
+  "kalk_db_prognose_prozent",
+  "nachkalkulation",
+  "sb_kalk_budget",
+  "kalk_budget",
+  "kalk_budget_eingefroren_am",
+  "sb_kalk_abweichung",
+  "kalk_abweichung_aktiv",
+  "kalk_ziel_db1",
+  "kalk_ziel_db2",
+  "kalk_ziel_db3",
+  "cb_kalk_3",
+  "kalk_gemeinkosten_art",
+  "kalk_gemeinkosten_prozent",
+  "kalk_gemeinkosten_je_h_cent",
+  "kalk_abweichung_begruendung",
   "sb_portal",
   "portal_sichtbar",
   "portal_positionen_preise",
@@ -182,7 +214,10 @@
    "fieldname": "planer",
    "fieldtype": "Link",
    "label": "Planer",
-   "options": "User"
+   "options": "User",
+   "in_standard_filter": 1,
+   "in_list_view": 1,
+   "description": "Verantwortliche Planerin/verantwortlicher Planer. Standard: wer das Projekt anlegt (Website-Anlage: leer, bis das Team zuweist)."
   },
   {
    "fieldname": "montageleiter",
@@ -252,6 +287,26 @@
    "fieldtype": "Date",
    "label": "Liefertermin geplant",
    "in_standard_filter": 1
+  },
+  {
+   "fieldname": "ware_komplett",
+   "fieldtype": "Check",
+   "label": "Ware komplett",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "description": "Alle bestellpflichtigen Positionen vollständig geliefert („Küche komplett“)"
+  },
+  {
+   "fieldname": "ware_komplett_am",
+   "fieldtype": "Date",
+   "label": "Ware komplett seit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ware_fehlend",
+   "fieldtype": "Small Text",
+   "label": "Fehlt noch",
+   "read_only": 1
   },
   {
    "fieldname": "montage_von",
@@ -382,11 +437,212 @@
    "permlevel": 1
   },
   {
+   "fieldname": "nachtraege_cent",
+   "fieldtype": "Int",
+   "label": "Freigegebene Nachträge (Cent)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
    "fieldname": "zeit_min_gesamt",
    "fieldtype": "Int",
    "label": "Erfasste Zeit (Minuten)",
    "read_only": 1,
    "permlevel": 1
+  },
+  {
+   "fieldname": "sb_kalkulation",
+   "fieldtype": "Section Break",
+   "label": "Kalkulation (Leitung)",
+   "permlevel": 1,
+   "collapsible": 1
+  },
+  {
+   "fieldname": "kalk_ampel",
+   "fieldtype": "Select",
+   "label": "Ampel",
+   "options": "\ngruen\ngelb\nrot",
+   "read_only": 1,
+   "permlevel": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kalk_ueber_budget",
+   "fieldtype": "Check",
+   "label": "Über Budget (Prognose)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_fertigstellung",
+   "fieldtype": "Int",
+   "label": "Fertigstellungsgrad %",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_aktualisiert_am",
+   "fieldtype": "Datetime",
+   "label": "Kalkulation aktualisiert",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "cb_kalk_1",
+   "fieldtype": "Column Break",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_erloes_cent",
+   "fieldtype": "Int",
+   "label": "Erlös netto (Cent)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_ist_cent",
+   "fieldtype": "Int",
+   "label": "Kosten Ist (Cent)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_obligo_cent",
+   "fieldtype": "Int",
+   "label": "Obligo (Cent)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_prognose_cent",
+   "fieldtype": "Int",
+   "label": "Kosten Prognose (Cent)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "cb_kalk_2",
+   "fieldtype": "Column Break",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_db1_prozent",
+   "fieldtype": "Percent",
+   "label": "DB1 % (Prognose)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_db_laufend_prozent",
+   "fieldtype": "Percent",
+   "label": "DB laufend % (Ist)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_db_prognose_prozent",
+   "fieldtype": "Percent",
+   "label": "End-DB % (Prognose)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "nachkalkulation",
+   "fieldtype": "Link",
+   "label": "Nachkalkulation",
+   "options": "PH Projekt Nachkalkulation",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_kalk_budget",
+   "fieldtype": "Section Break",
+   "label": "Budget je Kostenart",
+   "permlevel": 1,
+   "collapsible": 1
+  },
+  {
+   "fieldname": "kalk_budget",
+   "fieldtype": "Table",
+   "label": "Budget",
+   "options": "PH Projekt Budget",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_budget_eingefroren_am",
+   "fieldtype": "Datetime",
+   "label": "Budget bei Auftrag eingefroren am",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "sb_kalk_abweichung",
+   "fieldtype": "Section Break",
+   "label": "Abweichende Kalkulationsparameter (nur dieses Projekt)",
+   "permlevel": 1,
+   "collapsible": 1
+  },
+  {
+   "fieldname": "kalk_abweichung_aktiv",
+   "fieldtype": "Check",
+   "label": "Abweichung aktiv",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_ziel_db1",
+   "fieldtype": "Percent",
+   "label": "Ziel DB1 %",
+   "permlevel": 1,
+   "depends_on": "eval:doc.kalk_abweichung_aktiv"
+  },
+  {
+   "fieldname": "kalk_ziel_db2",
+   "fieldtype": "Percent",
+   "label": "Ziel DB2 %",
+   "permlevel": 1,
+   "depends_on": "eval:doc.kalk_abweichung_aktiv"
+  },
+  {
+   "fieldname": "kalk_ziel_db3",
+   "fieldtype": "Percent",
+   "label": "Ziel DB3 %",
+   "permlevel": 1,
+   "depends_on": "eval:doc.kalk_abweichung_aktiv"
+  },
+  {
+   "fieldname": "cb_kalk_3",
+   "fieldtype": "Column Break",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kalk_gemeinkosten_art",
+   "fieldtype": "Select",
+   "label": "Gemeinkosten",
+   "options": "\nAus\nProzent auf Wareneinsatz\nProzent auf Gesamtkosten\nProzent auf Erloes\nBetrag je Projektstunde",
+   "permlevel": 1,
+   "depends_on": "eval:doc.kalk_abweichung_aktiv"
+  },
+  {
+   "fieldname": "kalk_gemeinkosten_prozent",
+   "fieldtype": "Percent",
+   "label": "Gemeinkosten %",
+   "permlevel": 1,
+   "depends_on": "eval:doc.kalk_abweichung_aktiv"
+  },
+  {
+   "fieldname": "kalk_gemeinkosten_je_h_cent",
+   "fieldtype": "Int",
+   "label": "Gemeinkosten Cent je Stunde",
+   "permlevel": 1,
+   "depends_on": "eval:doc.kalk_abweichung_aktiv"
+  },
+  {
+   "fieldname": "kalk_abweichung_begruendung",
+   "fieldtype": "Small Text",
+   "label": "Begründung",
+   "permlevel": 1,
+   "depends_on": "eval:doc.kalk_abweichung_aktiv",
+   "mandatory_depends_on": "eval:doc.kalk_abweichung_aktiv"
   },
   {
    "fieldname": "sb_portal",
@@ -529,9 +785,24 @@
    "link_doctype": "PH Projekt Nachricht",
    "link_fieldname": "projekt",
    "group": "Kunde"
+  },
+  {
+   "link_doctype": "PH Aufmass",
+   "link_fieldname": "projekt",
+   "group": "Planung"
+  },
+  {
+   "link_doctype": "PH Nachtrag",
+   "link_fieldname": "projekt",
+   "group": "Auftrag"
+  },
+  {
+   "link_doctype": "PH Projekt Nachkalkulation",
+   "link_fieldname": "projekt",
+   "group": "Auftrag"
   }
  ],
- "modified": "2026-11-04 09:00:00.000000",
+ "modified": "2026-11-04 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "PH Projekte",
  "name": "PH Projekt",
@@ -626,6 +897,85 @@
    "export": 0,
    "report": 0,
    "share": 0
+  },
+  {
+   "role": "PH Montage",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Projekte Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 0,
+   "email": 0,
+   "export": 0,
+   "report": 0,
+   "share": 0,
+   "permlevel": 1
   }
  ],
  "sort_field": "eingang",

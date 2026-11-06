@@ -1,0 +1,11 @@
+{% extends "templates/emails/ph_mail_basis.html" %}
+{% set P = "margin:0 0 16px;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#30373e" %}
+{% block preheader %}Leider müssen wir absagen.{% endblock %}
+{% block inhalt %}
+<p style="{{ P }}">{{ anrede or "Guten Tag" }},</p>
+<p style="{{ P }}">leider müssen wir „{{ event_titel }}“ am {{ event_datum }} absagen. Das tut uns sehr leid – danke, dass Sie sich angemeldet hatten.</p>
+{% if hinweis %}<p style="{{ P }}">{{ hinweis }}</p>{% endif %}
+<p style="{{ P }}">Ihre Anmeldedaten löschen wir wie angekündigt. Wenn Sie Fragen haben, antworten Sie einfach auf diese Mail.</p>
+<p style="{{ P }}">Herzlich<br>Susanne Messmer</p>
+{% endblock %}
+{% block fusszeile %}Diese Nachricht gehört zu Ihrer Anmeldung bei Platzhirsch Home Living.{% endblock %}

@@ -1,0 +1,243 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-04 14:00:00.000000",
+ "description": "Wochendienstplan (Showroom-Öffnungszeiten, Planung, Montage) mit Mindestbesetzung, Abwesenheits-, Ruhezeit- (11 h) und Wochenruhe-Prüfung.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "titel",
+  "kennung",
+  "status",
+  "cb_kopf",
+  "woche_von",
+  "woche_bis",
+  "jahr",
+  "kalenderwoche",
+  "sb_schichten",
+  "schichten",
+  "sb_pruefung",
+  "unterbesetzung_anzahl",
+  "konflikte_anzahl",
+  "cb_pruefung",
+  "geprueft_am",
+  "pruefergebnis",
+  "sb_frei",
+  "veroeffentlicht_am",
+  "veroeffentlicht_von",
+  "notiz"
+ ],
+ "fields": [
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "label": "Titel",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kennung",
+   "fieldtype": "Data",
+   "label": "Kennung",
+   "read_only": 1,
+   "description": "JJJJ-KWnn"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Entwurf\nVeroeffentlicht",
+   "default": "Entwurf",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cb_kopf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "woche_von",
+   "fieldtype": "Date",
+   "label": "Woche ab (Montag)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "woche_bis",
+   "fieldtype": "Date",
+   "label": "bis (Sonntag)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "jahr",
+   "fieldtype": "Int",
+   "label": "Jahr",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "kalenderwoche",
+   "fieldtype": "Int",
+   "label": "KW",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_schichten",
+   "fieldtype": "Section Break",
+   "label": "Schichten"
+  },
+  {
+   "fieldname": "schichten",
+   "fieldtype": "Table",
+   "label": "Schichten",
+   "options": "PH Dienstplan Schicht"
+  },
+  {
+   "fieldname": "sb_pruefung",
+   "fieldtype": "Section Break",
+   "label": "Prüfung"
+  },
+  {
+   "fieldname": "unterbesetzung_anzahl",
+   "fieldtype": "Int",
+   "label": "Unterbesetzte Zeitfenster",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "konflikte_anzahl",
+   "fieldtype": "Int",
+   "label": "Konflikte",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_pruefung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "geprueft_am",
+   "fieldtype": "Datetime",
+   "label": "Geprüft am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pruefergebnis",
+   "fieldtype": "Long Text",
+   "label": "Prüfergebnis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_frei",
+   "fieldtype": "Section Break",
+   "label": "Veröffentlichung",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "veroeffentlicht_am",
+   "fieldtype": "Datetime",
+   "label": "Veröffentlicht am",
+   "read_only": 1
+  },
+  {
+   "fieldname": "veroeffentlicht_von",
+   "fieldtype": "Link",
+   "label": "Veröffentlicht von",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notiz",
+   "fieldtype": "Small Text",
+   "label": "Notiz"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PH Personal",
+ "name": "PH Dienstplan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Backoffice-Admin",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  },
+  {
+   "role": "PH Geschäftsführung",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Leitung",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PH Personal Mitarbeiter",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 0,
+   "export": 0,
+   "report": 1,
+   "share": 0
+  }
+ ],
+ "sort_field": "woche_von",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "title": "Entwurf",
+   "color": "Orange"
+  },
+  {
+   "title": "Veroeffentlicht",
+   "color": "Green"
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "format:DP-{kennung}",
+ "naming_rule": "Expression",
+ "title_field": "titel",
+ "search_fields": "kennung,status"
+}
