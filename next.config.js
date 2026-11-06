@@ -139,6 +139,14 @@ const baseConfig = {
       "./target/**/*",
       "./.git/**/*",
       "./.next/cache/**/*",
+      // Vercel (Hobby: max. 12 Functions): public/ (730 MB) kommt vom CDN, nicht
+      // aus dem Function-Bundle. Ohne diesen Ausschluss zieht stilfinder/config.js
+      // (PUBLIC_DIR) ~10.500 Dateien in jede Route, Vercel kann die Routen dann
+      // nicht zu wenigen Functions buendeln. Backend/Backoffice/Deploy laufen separat.
+      "./public/**/*",
+      "./Backend-Import/**/*",
+      "./backoffice/**/*",
+      "./deploy/**/*",
     ],
   },
 
