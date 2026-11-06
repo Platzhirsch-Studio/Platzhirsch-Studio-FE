@@ -16,7 +16,9 @@ import { metaBeschreibung, shopTitel } from "./shopMeta";
 const WELT = "accessoires";
 // Titel aller Shop-Produkte je Sprache (einmal je Prozess berechnet, garantiert verschieden).
 const TITEL = new Map();
-export const dynamicParams = false;
+// true: Detailseiten ausserhalb von PRERENDER_SCOPE entstehen beim ersten Aufruf;
+// unbekannte Slugs -> notFound() in produktProps (src/lib/build/prerender.js).
+export const dynamicParams = true;
 // Täglich neu: Preise (Nr. 26/27) blenden sich nach Ablauf aus, ohne neuen Build.
 export const revalidate = 86400;
 
