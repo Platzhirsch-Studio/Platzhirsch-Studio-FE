@@ -4,7 +4,9 @@ import ProduktDetail from "@/components/Katalog/ProduktDetail";
 import { produktMetadata, produktParams, produktProps } from "@/components/Katalog/katalogRoutes";
 
 const WELT = "kuechengeraete";
-export const dynamicParams = false;
+// true: Detailseiten ausserhalb von PRERENDER_SCOPE entstehen beim ersten Aufruf;
+// unbekannte Slugs -> notFound() in produktProps (src/lib/build/prerender.js).
+export const dynamicParams = true;
 // Täglich neu: Preise (Nr. 26/27) blenden sich nach Ablauf aus, ohne neuen Build.
 export const revalidate = 86400;
 
