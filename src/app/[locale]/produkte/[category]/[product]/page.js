@@ -8,6 +8,7 @@ import { Breadcrumbs, CTABand, Container, Heading, Leitsatz } from "@/components
 import ProductGallery from "@/components/ShopCatalog/productGallery";
 import { probeImageSize } from "@/components/MarkenItems/imageSize";
 import { NEW_API_SERVER } from "@/lib/apiBaseUrl";
+import { limitPrerender } from "@/lib/build/prerender";
 import BrandDesignerShowcase from "@/components/ShopCatalog/brandDesignerShowcase";
 import ProductDetailSections from "@/components/ShopCatalog/productInfoTabs";
 import BuiltToStay from "@/components/ShopCatalog/builtToStay";
@@ -163,7 +164,7 @@ export async function generateStaticParams() {
     }
   }
 
-  return params;
+  return limitPrerender(params);
 }
 
 // CMS metadata_description_<locale> → the product's own description text in
