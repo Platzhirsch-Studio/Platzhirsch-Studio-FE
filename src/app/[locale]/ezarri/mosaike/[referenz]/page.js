@@ -26,6 +26,7 @@ import {
   toReferenceCard,
 } from "@/lib/ezarri/data";
 import { mosaikHeading } from "@/lib/ezarri/indexierung";
+import { limitPrerender } from "@/lib/build/prerender";
 import { EZARRI_WELT_LOCALES, ezarriCredit, ezarriWeltLocaleEnabled, ezarriUrlFor } from "@/lib/ezarri/config";
 import { ezLinkProps } from "@/lib/ezarri/deLinks";
 import { dezimal, ezCopy, ezT, herstellerText, wert } from "@/lib/ezarri/lang";
@@ -54,11 +55,13 @@ const masz = (v) => (typeof v === "string" ? v.replace(/(\d)mm\b/g, "$1 mm").re
 // Volle Params (locale + referenz) wie ratgeber/[slug]; alle Sprachen der Ezarri-Welt (01.11.2026: de, en, fr, it).
 
 export function generateStaticParams() {
-  return EZARRI_WELT_LOCALES.flatMap((locale) => getReferenceIds().map((referenz) => ({ locale, referenz })));
+  return limitPrerender(EZARRI_WELT_LOCALES.flatMap((locale) => getReferenceIds().map((referenz) => ({ locale, referenz }))));
 }
 // Technik R7 (r6-technik P0-1): complete local list → unknown referenz and
 // other locales get the prerendered 404, no cache entry per URL.
-export const dynamicParams = false;
+// true: Referenzen ausserhalb von PRERENDER_SCOPE entstehen beim ersten Aufruf;
+// unbekannte Referenz/Sprache -> notFound() in MosaikDetailPage.
+export const dynamicParams = true;
 
 // Format DIESER Referenz (Basalt 50 → „50 mm“); weitere Formate der Familie stehen unter „Ausführungen“.
 // Ohne eigenes Format (Corner, Cove, Motive) die Formate der Familie.
