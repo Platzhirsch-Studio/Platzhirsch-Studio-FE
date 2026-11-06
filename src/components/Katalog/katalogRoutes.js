@@ -15,6 +15,7 @@
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { buildPageMetadata } from "@/lib/seo/pageMetadata";
+import { limitPrerender } from "@/lib/build/prerender";
 import { KATALOG_LOCALES, kategorieKey, textOf } from "@/lib/katalog/schema";
 import { WELTEN, WELT_IDS, kategoriePath, markePath, produktPath, produktePath, seitePath } from "@/lib/katalog/welten";
 import { letzterSatz, produktBeschreibung, weltTitel } from "./katalogMeta";
@@ -192,7 +193,7 @@ export async function kategorieProps(welt, { params }) {
 
 // ------------------------------------------------------------------ Produkt
 export function produktParams(welt) {
-  return forLocales((locale) => produkteByWelt(welt).map((p) => ({ locale, slug: p.slug })));
+  return limitPrerender(forLocales((locale) => produkteByWelt(welt).map((p) => ({ locale, slug: p.slug }))));
 }
 
 function produktOf(welt, slug) {
